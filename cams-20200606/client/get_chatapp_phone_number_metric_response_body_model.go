@@ -22,13 +22,17 @@ type iGetChatappPhoneNumberMetricResponseBody interface {
 }
 
 type GetChatappPhoneNumberMetricResponseBody struct {
-	// The details about the access denial.
+	// Details about the access denial.
 	//
 	// example:
 	//
-	// NONE
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The value OK indicates that the request was successful.
+	// The status code of the request. Valid values:
+	//
+	// - OK: The request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -46,7 +50,7 @@ type GetChatappPhoneNumberMetricResponseBody struct {
 	//
 	// example:
 	//
-	// 1612C226-E271-4CFE-9F18-4066D******
+	// 608F9CCA-B5EB-3D72-8047-B25D6D75BDEC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -123,19 +127,13 @@ type GetChatappPhoneNumberMetricResponseBodyData struct {
 	//
 	// 5
 	DeliveredCount *int32 `json:"DeliveredCount,omitempty" xml:"DeliveredCount,omitempty"`
-	// The end of the time range that you queried.
+	// The end time of metric collection. This is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1667196043904
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The granularity of the metric.
-	//
-	// Valid values:
-	//
-	// 	- DAILY
-	//
-	// 	- HALF_HOUR
+	// The granularity of the metrics.
 	//
 	// example:
 	//
@@ -145,7 +143,7 @@ type GetChatappPhoneNumberMetricResponseBodyData struct {
 	//
 	// example:
 	//
-	// 861380000
+	// 861380000****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// The number of sent messages.
 	//
@@ -153,7 +151,7 @@ type GetChatappPhoneNumberMetricResponseBodyData struct {
 	//
 	// 10
 	SentCount *int32 `json:"SentCount,omitempty" xml:"SentCount,omitempty"`
-	// The beginning of the time range that you queried.
+	// The start time of metric collection. This is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

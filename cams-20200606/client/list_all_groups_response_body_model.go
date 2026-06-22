@@ -24,22 +24,19 @@ type iListAllGroupsResponseBody interface {
 }
 
 type ListAllGroupsResponseBody struct {
-	// example:
-	//
-	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// OK
+	// 示例值示例值
 	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []*ListAllGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
-	// success
+	// 示例值示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 608F9CCA-B5EB-3D72-XXXXB25D6D75BDEC
+	// 示例值
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
@@ -125,15 +122,15 @@ func (s *ListAllGroupsResponseBody) Validate() error {
 type ListAllGroupsResponseBodyData struct {
 	// example:
 	//
-	// 1789000
+	// 示例值示例值示例值
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// example:
 	//
-	// aaa
+	// 示例值示例值
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// example:
 	//
-	// 5435
+	// 示例值示例值
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

@@ -26,22 +26,36 @@ type iDeleteChatGroupRequest interface {
 }
 
 type DeleteChatGroupRequest struct {
+	// The business phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8613800***
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// The type. Valid value:
+	//
+	// - **WHATSAPP**
+	//
+	// > Only the WhatsApp channel is supported.
+	//
 	// example:
 	//
 	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The Space ID of the ISV sub-customer, or the instance ID of the direct customer. View the Space ID on the
+	//
+	// <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cams-**
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

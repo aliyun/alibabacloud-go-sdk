@@ -22,23 +22,23 @@ type iUpdateCommerceSettingResponseBody interface {
 }
 
 type UpdateCommerceSettingResponseBody struct {
-	// The details about the access denial.
+	// Details about the access denial.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code.
+	// The request status code.
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - A value of OK indicates that the request is successful.
 	//
-	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// The response message. This parameter is returned when an error occurs.
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type UpdateCommerceSettingResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- **true**
+	// - **true**: successful.
 	//
-	// 	- **false**
+	// - **false**: failed.
 	//
 	// example:
 	//

@@ -24,27 +24,21 @@ type iUpdateFlowJSONAssetRequest interface {
 }
 
 type UpdateFlowJSONAssetRequest struct {
-	// SpaceId/instance ID of ISV sub customer.
-	//
 	// example:
 	//
-	// 9399393
+	// 示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// JSON file generated according to Facebook flow rules.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// https://aliyun/json.json
+	// 示例值示例值示例值
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// The Flow ID.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// flow_001
+	// 示例值示例值
 	FlowId               *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

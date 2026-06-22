@@ -24,22 +24,19 @@ type iListViberServiceMessageResponseBody interface {
 }
 
 type ListViberServiceMessageResponseBody struct {
-	// example:
-	//
-	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// OK
+	// 示例值
 	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []*ListViberServiceMessageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
-	// successful
+	// 示例值示例值示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// ddhjdn-dnjdnkdjknd**
+	// 示例值示例值
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
@@ -137,11 +134,11 @@ type ListViberServiceMessageResponseBodyData struct {
 	MessageDestinationInternationalCountry []*string `json:"MessageDestinationInternationalCountry,omitempty" xml:"MessageDestinationInternationalCountry,omitempty" type:"Repeated"`
 	// example:
 	//
-	// 25644
+	// 示例值示例值示例值
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// example:
 	//
-	// stop
+	// 示例值示例值示例值
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 

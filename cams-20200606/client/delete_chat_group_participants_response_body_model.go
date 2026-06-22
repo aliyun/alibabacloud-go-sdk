@@ -24,23 +24,46 @@ type iDeleteChatGroupParticipantsResponseBody interface {
 }
 
 type DeleteChatGroupParticipantsResponseBody struct {
+	// Details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code. Valid values:
+	//
+	// - OK: The request is successful.
+	//
+	// - For other error codes, see the [error code list](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
-	// 示例值
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// R39***
+	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of rows affected.
+	//
 	// example:
 	//
 	// 20
 	Result *int64 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// false

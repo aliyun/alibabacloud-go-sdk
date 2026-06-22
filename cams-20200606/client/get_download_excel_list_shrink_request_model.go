@@ -36,24 +36,21 @@ type iGetDownloadExcelListShrinkRequest interface {
 type GetDownloadExcelListShrinkRequest struct {
 	// example:
 	//
-	// ALICOM_OPAAS
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// example:
-	//
-	// {}
+	// 示例值示例值示例值
+	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	// example:
 	//
-	// aa
+	// 示例值示例值
 	Condition          *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
 	CountryNamesShrink *string `json:"CountryNames,omitempty" xml:"CountryNames,omitempty"`
 	// example:
 	//
-	// 2025-12-01
+	// 示例值示例值
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// example:
 	//
-	// 111
+	// 示例值
 	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	GroupIdsShrink       *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -61,7 +58,7 @@ type GetDownloadExcelListShrinkRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// example:
 	//
-	// 2025-11-01
+	// 示例值示例值
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 

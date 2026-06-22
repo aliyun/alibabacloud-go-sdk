@@ -22,7 +22,7 @@ type iQueryWabaBusinessInfoRequest interface {
 }
 
 type QueryWabaBusinessInfoRequest struct {
-	// The space ID of the RAM user within the independent software vendor (ISV) account.
+	// The space ID of ISV sub-customer.
 	//
 	// This parameter is required.
 	//
@@ -39,7 +39,7 @@ type QueryWabaBusinessInfoRequest struct {
 	//
 	// example:
 	//
-	// 293848822333
+	// 29384882****
 	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
 }
 

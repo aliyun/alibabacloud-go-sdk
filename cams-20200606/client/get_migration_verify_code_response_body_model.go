@@ -22,17 +22,17 @@ type iGetMigrationVerifyCodeResponseBody interface {
 }
 
 type GetMigrationVerifyCodeResponseBody struct {
-	// The details about the access denial.
+	// Details about the access denial.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
+	// The request status code.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// - A value of OK indicates that the request was successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetMigrationVerifyCodeResponseBody struct {
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -117,17 +117,17 @@ func (s *GetMigrationVerifyCodeResponseBody) Validate() error {
 }
 
 type GetMigrationVerifyCodeResponseBodyData struct {
-	// The ID of the number.
+	// The phone number ID.
 	//
 	// example:
 	//
-	// 82828893332
+	// 8282889****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Phone number.
+	// The phone number.
 	//
 	// example:
 	//
-	// 8613800001234
+	// 861380000****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 }
 

@@ -28,13 +28,17 @@ type GetChatappTemplateMetricResponseBody struct {
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The value OK indicates that the request was successful.
+	// The status code of the request. Valid values:
+	//
+	// - OK: The request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The list of returned data.
 	Data []*GetChatappTemplateMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error message.
 	//
@@ -46,7 +50,7 @@ type GetChatappTemplateMetricResponseBody struct {
 	//
 	// example:
 	//
-	// 90E63D28-E31D-1EB2-8939-A9486641****
+	// 608F9CCA-B5EB-3D72-8047-B25D6D75BDEC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -117,7 +121,7 @@ func (s *GetChatappTemplateMetricResponseBody) Validate() error {
 }
 
 type GetChatappTemplateMetricResponseBodyData struct {
-	// The statistics on button clicks.
+	// The statistics about button clicks.
 	Cliented []*GetChatappTemplateMetricResponseBodyDataCliented `json:"Cliented,omitempty" xml:"Cliented,omitempty" type:"Repeated"`
 	// The number of delivered messages.
 	//
@@ -125,13 +129,13 @@ type GetChatappTemplateMetricResponseBodyData struct {
 	//
 	// 6
 	DeliveredCount *int32 `json:"DeliveredCount,omitempty" xml:"DeliveredCount,omitempty"`
-	// The end of the time range you queried.
+	// The end time for metric collection. This is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1668138331485
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The template language.
+	// The language of the template.
 	//
 	// example:
 	//
@@ -149,7 +153,7 @@ type GetChatappTemplateMetricResponseBodyData struct {
 	//
 	// 10
 	SentCount *int32 `json:"SentCount,omitempty" xml:"SentCount,omitempty"`
-	// The beginning of the time range you queried.
+	// The start time for metric collection. This is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -159,7 +163,7 @@ type GetChatappTemplateMetricResponseBodyData struct {
 	//
 	// example:
 	//
-	// 83837774838*****
+	// 1100***************
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
@@ -257,11 +261,11 @@ func (s *GetChatappTemplateMetricResponseBodyData) Validate() error {
 }
 
 type GetChatappTemplateMetricResponseBodyDataCliented struct {
-	// The text on the button.
+	// The button text.
 	//
 	// example:
 	//
-	// Open url
+	// reply
 	ButtonContent *string `json:"ButtonContent,omitempty" xml:"ButtonContent,omitempty"`
 	// The number of clicks.
 	//
@@ -269,15 +273,13 @@ type GetChatappTemplateMetricResponseBodyDataCliented struct {
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The button type.
+	// The button type. Valid values:
 	//
-	// Valid values:
+	// - phone_number_button: The call button.
 	//
-	// 	- phone_number_button
+	// - url_button: The URL button.
 	//
-	// 	- url_button
-	//
-	// 	- quick_relpy_button
+	// - quick_reply_button: The auto-reply button.
 	//
 	// example:
 	//

@@ -38,54 +38,44 @@ type iCreateChatappTemplateRequest interface {
 type CreateChatappTemplateRequest struct {
 	// Deprecated
 	//
-	// Specifies whether to allow Facebook to automatically change the directory of the template. If you set this parameter to true, the review success rate of the template is improved. This parameter is valid only when TemplateType is set to WHATSAPP.
+	// Indicates whether to allow Facebook to automatically change the category of the template. This can increase the approval rate of the template. This parameter is valid only when TemplateType is set to WHATSAPP.
+	//
+	// 	Notice: This property is deprecated. WhatsApp no longer supports this property.
 	//
 	// example:
 	//
 	// true
 	AllowCategoryChange *bool `json:"AllowCategoryChange,omitempty" xml:"AllowCategoryChange,omitempty"`
-	// The category of the template if TemplateType is set to WHATSAPP. Valid values:
+	// WhatsApp template categories:
 	//
-	// 	- **UTILITY**: the transaction template
+	// - **UTILITY**: Transactional.
 	//
-	// 	- **MARKETING**: the marketing template
+	// - **MARKETING**: Marketing.
 	//
-	// 	- **AUTHENTICATION**: the authentication template
+	// - **AUTHENTICATION**: Authentication.
 	//
-	// The category of the template if TemplateType is set to VIBER. Valid values:
+	// Viber template categories:
 	//
-	// 	- **text**: the template that contains only text
+	// - **UTILITY**: Transactional.
 	//
-	// 	- **image**: the template that contains only images
+	// - **MARKETING**: Marketing.
 	//
-	// 	- **text_image_button**: the template that contains text, images, and buttons
-	//
-	// 	- **text_button**: the template that contains text and buttons
-	//
-	// 	- **document**: the template that contains only documents
-	//
-	// 	- **video**: the template that contains only videos
-	//
-	// 	- **text_video**: the template that contains text and videos
-	//
-	// 	- **text_video_button**: the template that contains text, videos, and buttons
-	//
-	// 	- **text_image**: the template that contains text and images
+	// - **AUTHENTICATION**: Authentication.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// The code of the message template.
+	// UTILITY
 	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	CategoryChangePaused *bool   `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
-	// The components of the message template.
+	// The list of message template components.
 	//
-	// >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter must be empty.
+	// > When Category is set to AUTHENTICATION, the Components array cannot contain a component of the HEADER type. If the component type is BODY or FOOTER, the Text parameter must be empty.
 	//
 	// This parameter is required.
 	Components []*CreateChatappTemplateRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The space ID of the user within the ISV account.
+	// The Space ID of the ISV sub-customer or the instance ID of the direct customer.
 	//
 	// example:
 	//
@@ -93,23 +83,27 @@ type CreateChatappTemplateRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
 	//
-	// The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+	// The WhatsApp Business Account (WABA) ID of the independent software vendor (ISV) customer.
 	//
-	// > CustWabaId is an obsolete parameter. Use CustSpaceId instead.
+	// > This parameter is deprecated. Use CustSpaceId instead.
 	//
 	// example:
 	//
 	// 65921621816****
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	// The examples of variables that are used when you create the message template.
+	// An example of how to create a template.
+	//
+	// example:
+	//
+	// hello_whatsapp
 	Example map[string]*string `json:"Example,omitempty" xml:"Example,omitempty"`
-	// The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
+	// The ISV verification code, used to verify whether the RAM user is authorized by the ISV.
 	//
 	// example:
 	//
 	// skdi3kksloslikdkkdk
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+	// The template language. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
 	//
 	// This parameter is required.
 	//
@@ -117,15 +111,17 @@ type CreateChatappTemplateRequest struct {
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// Validity period of authentication template message sending in WhatsApp
+	// The time-to-live (TTL) of the template message in WhatsApp.
 	//
-	// > This attribute requires providing waba in advance to Alibaba operators to open the whitelist, otherwise it will result in template submission failure
+	// - For AUTHENTICATION templates, the value ranges from 30 to 900.
+	//
+	// - For UTILITY templates, the value ranges from 30 to 43200.
 	//
 	// example:
 	//
 	// 120
 	MessageSendTtlSeconds *int32 `json:"MessageSendTtlSeconds,omitempty" xml:"MessageSendTtlSeconds,omitempty"`
-	// The name of the message template.
+	// The template name.
 	//
 	// This parameter is required.
 	//
@@ -133,13 +129,11 @@ type CreateChatappTemplateRequest struct {
 	//
 	// hello_whatsapp
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the message template.
+	// The template type.
 	//
-	// 	- **WHATSAPP**
+	// - **WHATSAPP**
 	//
-	// 	- **VIBER**
-	//
-	// 	- LINE: the Line message template. This type of message template will be released later.
+	// - **VIBER**
 	//
 	// This parameter is required.
 	//
@@ -279,111 +273,131 @@ func (s *CreateChatappTemplateRequest) Validate() error {
 }
 
 type CreateChatappTemplateRequestComponents struct {
-	// The note indicating that customers cannot share verification codes with others. The note is displayed in the message body. This parameter is valid if Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to BODY for a WhatsApp message template.
+	// This parameter is valid for WhatsApp templates when Category is set to AUTHENTICATION and the component type is Body. It indicates that a security recommendation is displayed above the body, advising the user not to share the verification code.
 	//
 	// example:
 	//
 	// true
 	AddSecretRecommendation *bool `json:"AddSecretRecommendation,omitempty" xml:"AddSecretRecommendation,omitempty"`
-	// The buttons. Specify this parameter only if you set the Type sub-parameter of the Components parameter to **BUTTONS**.
+	// The list of buttons. This parameter applies only to the **BUTTONS*	- component.
 	//
-	// >  ####
+	// > Number of buttons for WhatsApp
 	//
-	// 	- A marketing or utility WhatsApp message template can contain up to 10 buttons.
+	// >
 	//
-	// 	- A WhatsApp message template can contain only one phone call button.
+	// > - For MARKETING or UTILITY templates, you can add up to 10 buttons.
 	//
-	// 	- A WhatsApp message template can contain up to two URL buttons.
+	// >
 	//
-	// 	- In a WhatsApp message template, a quick reply button cannot be used together with a phone call button or a URL button.
+	// > - You can add only one button of the PHONE_NUMBER type.
+	//
+	// >
+	//
+	// > - You can add up to two buttons of the URL type.
+	//
+	// >
+	//
+	// > - Buttons of the QUICK_REPLY type cannot be mixed with buttons of the PHONE_NUMBER or URL type.
+	//
+	// > Number of buttons for Viber
+	//
+	// >
+	//
+	// > - Only one button of the URL type is allowed.
+	//
+	// >
+	//
+	// > - If the HEADER component contains a video, the button type is URL, but you cannot set a URL.
 	Buttons []*CreateChatappTemplateRequestComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
-	// The description of the document.
+	// The description of the file.
 	//
 	// example:
 	//
 	// This is a video
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	// The carousel cards of the carousel template.
+	// The list of cards for a carousel template.
 	Cards []*CreateChatappTemplateRequestComponentsCards `json:"Cards,omitempty" xml:"Cards,omitempty" type:"Repeated"`
-	// The validity period of the verification code in the WhatsApp authentication template. Unit: minutes. This parameter is valid only when Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to FOOTER. The validity period of the verification code is displayed in the footer.
+	// The validity period of the verification code for a WhatsApp AUTHENTICATION template, in minutes. This parameter is valid only for WhatsApp messages when Category is set to AUTHENTICATION and the component type is Footer. This information is displayed in the footer.
 	//
 	// example:
 	//
 	// 5
 	CodeExpirationMinutes *int32 `json:"CodeExpirationMinutes,omitempty" xml:"CodeExpirationMinutes,omitempty"`
-	// The length of the video in the Viber message template. Unit: seconds. Valid values: 0 to 600.
+	// The duration of the video in a Viber video message, in seconds. The value ranges from 0 to 600.
 	//
 	// example:
 	//
 	// 120
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The name of the document.
+	// The name of the file.
 	//
 	// example:
 	//
-	// video name
+	// Express delivery video
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The type of the document attached in the Viber message template.
+	// The file type of a Viber file message.
 	//
 	// example:
 	//
 	// docx
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The type of the media resource. Valid values:
+	// The type of the media resource.
 	//
-	// 	- **TEXT**
+	// - **TEXT**: text
 	//
-	// 	- **IMAGE**
+	// - **IMAGE**: image
 	//
-	// 	- **DOCUMENT**
+	// - **DOCUMENT**: document
 	//
-	// 	- **VIDEO**
+	// - **VIDEO**: video
 	//
 	// example:
 	//
 	// TEXT
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// Specifies whether the coupon code has an expiration time. Specify this parameter if the Type sub-parameter of the Components parameter is set to LIMITED_TIME_OFFER.
+	// Indicates whether the coupon code has an expiration time. This parameter is used when type is set to LIMITED_TIME_OFFER.
 	//
 	// example:
 	//
 	// true
 	HasExpiration *bool `json:"HasExpiration,omitempty" xml:"HasExpiration,omitempty"`
-	// The text of the message that you want to send.
+	// The text of the message to send.
 	//
-	// >  If Category is set to AUTHENTICATION, the Text sub-parameter of the Components parameter must be empty.
+	// > For WhatsApp templates, if Category is set to AUTHENTICATION, this parameter is empty.
 	//
 	// example:
 	//
 	// hello whatsapp
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The thumbnail URL of the video in the Viber message template.
+	// The thumbnail of a Viber message that contains a video.
 	//
 	// example:
 	//
 	// https://cdn.multiplymall.mobiapp.cloud/yunmall/B-LM-LMALL202207130001/20220730/d712a057-a6af-4513-bbe6-7ee57ea60983.png?x-oss-process=image/resize,w_100
 	ThumbUrl *string `json:"ThumbUrl,omitempty" xml:"ThumbUrl,omitempty"`
-	// The type of the component. Valid values:
+	// The component type. Valid values:
 	//
-	// 	- **BODY**
+	// - **BODY**
 	//
-	// 	- **HEADER**
+	// - **HEADER**
 	//
-	// 	- **FOOTER**
+	// - **FOOTER**
 	//
-	// 	- **BUTTONS**
+	// - **BUTTONS**
 	//
-	// 	- **CAROUSEL**
+	// - **CAROUSEL**
 	//
-	// 	- **LIMITED_TIME_OFFER**
+	// - **LIMITED_TIME_OFFER**
+	//
+	// > 	- For WhatsApp templates, the BODY component can contain up to 1,024 characters. The HEADER and FOOTER components can contain up to 60 characters.
 	//
 	// >
 	//
-	// 	- In a WhatsApp message template, a **Body*	- component cannot exceed 1,024 characters in length. A **HEADER*	- or **FOOTER*	- component cannot exceed 60 characters in length.
+	// > 	- For Viber templates, the FOOTER, CAROUSEL, and LIMITED_TIME_OFFER types are invalid.
 	//
-	// 	- **FOOTER**, **CAROUSEL**, and **LIMITED_TIME_OFFER*	- components are not supported in Viber message templates.
+	// >
 	//
-	// 	- In Viber message templates, media resources such as images, videos, and documents are placed in the **HEADER*	- component. If a Viber message contains text and an image, the image is placed below the text in the message received on a device.
+	// > 	- For Viber templates, images, videos, and files are placed in the HEADER component. The client displays the image below the text. The text is placed in the BODY component.
 	//
 	// This parameter is required.
 	//
@@ -391,9 +405,9 @@ type CreateChatappTemplateRequestComponents struct {
 	//
 	// BODY
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The URL of the media resource.
+	// The path of the media resource.
 	//
-	// >  We recommend that you use 800 × 800 images in Viber message templates.
+	// > For Viber templates, the recommended image size is 800 × 800 pixels.
 	//
 	// example:
 	//
@@ -558,43 +572,41 @@ func (s *CreateChatappTemplateRequestComponents) Validate() error {
 }
 
 type CreateChatappTemplateRequestComponentsButtons struct {
-	// The text of the one-tap autofill button. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP for a WhatsApp message template.
+	// This parameter is required for WhatsApp templates when Category is set to AUTHENTICATION and the button type is ONE_TAP or ZERO_TAP. It specifies the button text for the WhatsApp autofill action.
 	//
 	// example:
 	//
 	// Autofill
 	AutofillText *string `json:"AutofillText,omitempty" xml:"AutofillText,omitempty"`
-	// The coupon code. It can contain only letters and digits. You can set this parameter to a variable such as $(couponCode). Specify the value of couponCode when you send a message.
+	// The value of the coupon code. It supports only letters and digits. You can pass a variable such as $(couponCode) and then pass the actual coupon code when sending the message.
 	//
 	// example:
 	//
 	// 120293
 	CouponCode *string `json:"CouponCode,omitempty" xml:"CouponCode,omitempty"`
-	// The Flow action.
+	// The flow data event type. Valid values:
 	//
-	// Valid values:
+	// - DATA_EXCHANGE: Data exchange.
 	//
-	// 	- DATA_EXCHANGE
-	//
-	// 	- NAVIGATE
+	// - NAVIGATE: Navigation.
 	//
 	// example:
 	//
 	// NAVIGATE
 	FlowAction *string `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
-	// The Flow ID.
+	// The flow ID.
 	//
 	// example:
 	//
-	// 479884093605183
+	// 479884093605****
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The unsubscribe button. This parameter is valid if Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY for a WhatsApp message template. Marketing messages will not be sent to customers if you configure message sending in the Chat App Message Service console and the customers click this button.
+	// This parameter is valid for WhatsApp templates when Category is set to Marketing and the button type is QUICK_REPLY. It indicates that the button is a marketing opt-out button. If a customer clicks this button and you have configured sending control operations in ChatApp, subsequent marketing messages will not be sent to the customer.
 	//
 	// example:
 	//
 	// false
 	IsOptOut *bool `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
-	// The first screen in the Flow. This parameter is required if FlowAction is set to NAVIGATE.
+	// The screen to navigate to. This parameter is required when FlowAction is set to NAVIGATE.
 	//
 	// example:
 	//
@@ -602,13 +614,13 @@ type CreateChatappTemplateRequestComponentsButtons struct {
 	NavigateScreen *string `json:"NavigateScreen,omitempty" xml:"NavigateScreen,omitempty"`
 	// Deprecated
 	//
-	// The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP for a WhatsApp message template.
+	// Use the properties under SupportedApps.
 	//
 	// example:
 	//
 	// com.demo
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
-	// The phone number. This parameter is valid only when the Type sub-parameter of the Buttons parameter is set to **PHONE_NUMBER**.
+	// The phone number. This parameter is valid only when the button type is **PHONE_NUMBER**.
 	//
 	// example:
 	//
@@ -616,37 +628,45 @@ type CreateChatappTemplateRequestComponentsButtons struct {
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// Deprecated
 	//
-	// The app signing key hash that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP for a WhatsApp message template.
+	// Use the properties under SupportedApps.
 	//
 	// example:
 	//
 	// wi299382
 	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
-	// List of supported apps.
+	// The list of supported apps.
 	SupportedApps []*CreateChatappTemplateRequestComponentsButtonsSupportedApps `json:"SupportedApps,omitempty" xml:"SupportedApps,omitempty" type:"Repeated"`
-	// The display name of the button.
+	// The name displayed on the button.
 	//
 	// example:
 	//
 	// Call Me
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The type of the button. Valid values:
+	// The button type.
 	//
-	// 	- **PHONE_NUMBER**: phone call button
+	// - **PHONE_NUMBER**: A call button.
 	//
-	// 	- **URL**: URL button
+	// - **URL**: A URL button.
 	//
-	// 	- **QUICK_REPLY**: quick reply button
+	// - **QUICK_REPLY**: A quick reply button.
 	//
-	// 	- **COPY_CODE**: copy code button
+	// - **COPY_CODE**: A button to copy a verification code or coupon code.
 	//
-	// 	- **ONE_TAP**: one-tap autofill button if Category is set to AUTHENTICATION
+	// - **ONE_TAP**: An autofill button for AUTHENTICATION templates.
+	//
+	// - **ZERO_TAP**: An autofill button for AUTHENTICATION templates.
+	//
+	// - **MPM**: A multi-product message.
+	//
+	// - **CATALOG**: A catalog.
+	//
+	// - **FLOW**: Opens a WhatsApp flow.
+	//
+	// > 	- For WhatsApp templates, if Category is set to AUTHENTICATION, only one button is allowed. The button type must be COPY_CODE or ONE_TAP. If you set the button type to COPY_CODE, the Text parameter is required. If you set the button type to ONE_TAP, the Text (the name of the copy code button displayed on the client if the destination app is not installed), SignatureHash, PackageName, and AutofillText parameters are required.
 	//
 	// >
 	//
-	// 	- If Category is set to AUTHENTICATION for a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If Type is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If Type is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value of Text indicates that you must manually copy the verification code.
-	//
-	// 	- You can add only one button to a Viber message template, and you must set the Type sub-parameter of the Buttons parameter to URL.
+	// > 	- For Viber templates, only one button is allowed, and it must be of the URL type.
 	//
 	// This parameter is required.
 	//
@@ -654,17 +674,17 @@ type CreateChatappTemplateRequestComponentsButtons struct {
 	//
 	// PHONE_NUMBER
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The URL to be accessed when you click the URL button.
+	// The URL that is visited when the URL button is clicked.
 	//
 	// example:
 	//
 	// https://example.com
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// The type of the URL. Valid values:
+	// The URL type.
 	//
-	// 	- **static**
+	// - **static**: Static
 	//
-	// 	- **dynamic**
+	// - **dynamic**: Dynamic
 	//
 	// example:
 	//
@@ -820,13 +840,13 @@ func (s *CreateChatappTemplateRequestComponentsButtons) Validate() error {
 }
 
 type CreateChatappTemplateRequestComponentsButtonsSupportedApps struct {
-	// The name of the Android application package. This parameter is required if you create an Android application.
+	// This parameter is required for WhatsApp templates when Category is set to AUTHENTICATION and the button type is ONE_TAP or ZERO_TAP. It specifies the package name of the app that WhatsApp will launch.
 	//
 	// example:
 	//
 	// com.kuaidian.waimaistaff
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
-	// WhatsApp template is required when Category is Authoritative and Button Type is ONE_TAP/ZERO-TAP, indicating the signature hash value of the WhatsApp application.
+	// This parameter is required for WhatsApp templates when Category is set to AUTHENTICATION and the button type is ONE_TAP or ZERO_TAP. It specifies the signature hash of the app that WhatsApp will launch.
 	//
 	// example:
 	//
@@ -865,7 +885,7 @@ func (s *CreateChatappTemplateRequestComponentsButtonsSupportedApps) Validate() 
 }
 
 type CreateChatappTemplateRequestComponentsCards struct {
-	// The components of the carousel card.
+	// The list of controls in the carousel card.
 	//
 	// This parameter is required.
 	CardComponents []*CreateChatappTemplateRequestComponentsCardsCardComponents `json:"CardComponents,omitempty" xml:"CardComponents,omitempty" type:"Repeated"`
@@ -902,31 +922,31 @@ func (s *CreateChatappTemplateRequestComponentsCards) Validate() error {
 }
 
 type CreateChatappTemplateRequestComponentsCardsCardComponents struct {
-	// The buttons. Specify this parameter only if you set the Type sub-parameter of the CardComponents parameter to BUTTONS. A carousel card can contain up to two buttons.
+	// The list of buttons. This parameter applies only to the BUTTONS component. Each card in a carousel can have a maximum of two buttons.
 	Buttons []*CreateChatappTemplateRequestComponentsCardsCardComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
-	// The type of the media resource. This parameter is valid if the Type sub-parameter of the CardComponents parameter is set to HEADER. Valid values:
+	// The type of the media resource. This parameter is valid when Type is set to HEADER.
 	//
-	// 	- **IMAGE**
+	// - **IMAGE**: image
 	//
-	// 	- **VIDEO**
+	// - **VIDEO**: video
 	//
 	// example:
 	//
 	// IMAGE
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The body content of the carousel card.
+	// The content of the BODY component in the carousel card.
 	//
 	// example:
 	//
 	// Who is the very powerful team
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The type of the component. Valid values:
+	// The component type. Valid values:
 	//
-	// 	- **BODY**
+	// - **BODY**
 	//
-	// 	- **HEADER**
+	// - **HEADER**
 	//
-	// 	- **BUTTONS**
+	// - **BUTTONS**
 	//
 	// This parameter is required.
 	//
@@ -934,7 +954,7 @@ type CreateChatappTemplateRequestComponentsCardsCardComponents struct {
 	//
 	// BODY
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The URL of the media resource.
+	// The path of the media resource.
 	//
 	// example:
 	//
@@ -1013,21 +1033,21 @@ type CreateChatappTemplateRequestComponentsCardsCardComponentsButtons struct {
 	//
 	// example:
 	//
-	// +8613800
+	// +86138007****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The text of the button.
+	// The button text.
 	//
 	// example:
 	//
 	// Call me
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The type of the button. Valid values:
+	// The button type.
 	//
-	// 	- **PHONE_NUMBER**: phone call button
+	// - **PHONE_NUMBER**: A call button.
 	//
-	// 	- **URL**: URL button
+	// - **URL**: A URL button.
 	//
-	// 	- **QUICK_REPLY**: quick reply button
+	// - **QUICK_REPLY**: A quick reply button.
 	//
 	// This parameter is required.
 	//
@@ -1035,17 +1055,17 @@ type CreateChatappTemplateRequestComponentsCardsCardComponentsButtons struct {
 	//
 	// PHONE_NUMBER
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The URL to which you are redirected when you click the URL button.
+	// The URL that is visited when the button is clicked.
 	//
 	// example:
 	//
 	// https://alibaba.com/xx
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// The type of the URL. Valid values:
+	// The URL type.
 	//
-	// 	- **static**
+	// - **static**: Static
 	//
-	// 	- **dynamic**
+	// - **dynamic**: Dynamic
 	//
 	// example:
 	//

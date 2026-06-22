@@ -14,6 +14,8 @@ type iQueryInstanceRequest interface {
 }
 
 type QueryInstanceRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

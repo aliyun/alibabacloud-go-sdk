@@ -24,38 +24,20 @@ type iListBindingRelationsForFlowVersionResponseBody interface {
 }
 
 type ListBindingRelationsForFlowVersionResponseBody struct {
-	// Access denied details.
-	//
-	// example:
-	//
-	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Error code. For more information, see [Error Codes](https://help.aliyun.com/document_detail/196974.html).
-	//
 	// example:
 	//
-	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data list.
+	// 示例值示例值
+	Code *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Error message.
-	//
 	// example:
 	//
-	// 无
+	// 示例值示例值示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
-	//
 	// example:
 	//
-	// 90E63D28-E31D-1EB2-8939-A94866411B2O
+	// 示例值示例值
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Values:
-	//
-	// - true: Success.
-	//
-	// - false: Failure.
-	//
 	// example:
 	//
 	// true

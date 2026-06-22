@@ -21,17 +21,17 @@ type iGetPermissionByCodeResponseBody interface {
 
 type GetPermissionByCodeResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code.
+	// The status code of the request.
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - A value of OK indicates that the request was successful.
 	//
-	// 	- For more information about other response codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Error description information.
+	// The error message.
 	//
 	// example:
 	//

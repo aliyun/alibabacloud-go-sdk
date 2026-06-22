@@ -32,18 +32,26 @@ type iListMessageCampaignRequest interface {
 }
 
 type ListMessageCampaignRequest struct {
+	// The ID of the Meta ad account.
+	//
 	// example:
 	//
 	// 239**
 	AdAccountId *string `json:"AdAccountId,omitempty" xml:"AdAccountId,omitempty"`
+	// The ID of the budget.
+	//
 	// example:
 	//
 	// 233**
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// The name of the campaign.
+	//
 	// example:
 	//
 	// test-campaign
 	CampaignName *string `json:"CampaignName,omitempty" xml:"CampaignName,omitempty"`
+	// The Space ID of the ISV sub-customer or the instance ID of the direct customer. You can view this ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -51,8 +59,12 @@ type ListMessageCampaignRequest struct {
 	// cams-**
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The pagination parameters.
+	//
 	// This parameter is required.
 	Page *ListMessageCampaignRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// The Page ID for Messenger.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -61,6 +73,8 @@ type ListMessageCampaignRequest struct {
 	PageId               *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The status of the budget.
+	//
 	// example:
 	//
 	// AVAILABLE
@@ -175,12 +189,16 @@ func (s *ListMessageCampaignRequest) Validate() error {
 }
 
 type ListMessageCampaignRequestPage struct {
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// This parameter is required.
 	//
 	// example:

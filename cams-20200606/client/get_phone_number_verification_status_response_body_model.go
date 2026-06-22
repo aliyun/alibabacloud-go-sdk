@@ -23,25 +23,25 @@ type iGetPhoneNumberVerificationStatusResponseBody interface {
 
 type GetPhoneNumberVerificationStatusResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
+	// The request status code.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// - A value of OK indicates that the request was successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *GetPhoneNumberVerificationStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -118,17 +118,17 @@ type GetPhoneNumberVerificationStatusResponseBodyData struct {
 	//
 	// VERIFIED
 	CodeVerificationStatus *string `json:"CodeVerificationStatus,omitempty" xml:"CodeVerificationStatus,omitempty"`
-	// The ID of the number.
+	// The ID of the phone number.
 	//
 	// example:
 	//
-	// 2224342624
+	// 222434****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The phone number.
 	//
 	// example:
 	//
-	// 8613900001234
+	// 861390000****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 }
 

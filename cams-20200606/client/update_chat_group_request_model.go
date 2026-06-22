@@ -32,26 +32,42 @@ type iUpdateChatGroupRequest interface {
 }
 
 type UpdateChatGroupRequest struct {
+	// The business number. To view the business numbers, call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8613800***
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// The channel type. Valid value:
+	//
+	// - **WHATSAPP**.
+	//
+	// > Only the WhatsApp channel is supported.
+	//
 	// example:
 	//
 	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The Space ID of the ISV sub-customer, or the instance ID of the direct customer. View the Space ID on the
+	//
+	// <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cams-***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The group description.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The group ID. To view the group IDs, call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -59,15 +75,29 @@ type UpdateChatGroupRequest struct {
 	// EA303***
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// example:
+	// The group profile picture.
 	//
-	// https://aliyun.com/img.jpg
+	// > Image requirements
+	//
+	// >
+	//
+	// > - Supported MIME type: image/jpeg.
+	//
+	// >
+	//
+	// > - Maximum file size: 5 MB.
+	//
+	// >
+	//
+	// > - The image must be square. Minimum dimensions: 192x192 pixels.
 	ProfilePictureFile   *string `json:"ProfilePictureFile,omitempty" xml:"ProfilePictureFile,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The group title.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// This is a test title.
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
 }
 

@@ -34,66 +34,37 @@ type iListChatFlowShrinkRequest interface {
 }
 
 type ListChatFlowShrinkRequest struct {
-	// Business tenant code, default is “ALICOM_OPAAS”.
-	//
 	// example:
 	//
-	// ALICOM_OPAAS
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Business extension information, default is “{}”.
-	//
-	// example:
-	//
-	// {}
+	// 示例值示例值
+	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
-	// Flow trigger type, enum values:
-	//
-	// - TriggeredManually
-	//
-	// - TriggeredByWhatsApp
-	//
-	// - TriggeredByInstagram
-	//
-	// - TriggeredByViber
-	//
-	// - TriggeredByMessenger
-	//
 	// example:
 	//
 	// 示例值
 	FlowTriggerType *string `json:"FlowTriggerType,omitempty" xml:"FlowTriggerType,omitempty"`
-	// Search keyword.
-	//
 	// example:
 	//
 	// 示例值示例值
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Page number
-	//
 	// example:
 	//
-	// 1
+	// 41
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Page size.
-	//
 	// example:
 	//
-	// 20
+	// 42
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Whether to return the online status
-	//
 	// example:
 	//
 	// true
 	ReturnWithOnlineVersion *bool `json:"ReturnWithOnlineVersion,omitempty" xml:"ReturnWithOnlineVersion,omitempty"`
-	// Flow status
-	//
 	// example:
 	//
-	// NORMAL
+	// 示例值示例值示例值
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

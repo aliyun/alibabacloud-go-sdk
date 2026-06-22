@@ -26,22 +26,34 @@ type iDeleteChatGroupInviteLinkRequest interface {
 }
 
 type DeleteChatGroupInviteLinkRequest struct {
+	// The business number. Call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation to obtain the business number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8613800***
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// The channel type. Set this parameter to the following value:
+	//
+	// - **WHATSAPP**.
+	//
+	// > Only the WhatsApp channel is supported.
+	//
 	// example:
 	//
 	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The space ID or instance ID for an ISV\\"s sub-customer. This ID also serves as the channel ID. You can find this ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cams-8***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The group ID. Call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation to obtain the group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

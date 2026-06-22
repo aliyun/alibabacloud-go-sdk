@@ -24,20 +24,34 @@ type iCreateInstanceResponseBody interface {
 }
 
 type CreateInstanceResponseBody struct {
+	// Details of the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. A value of `OK` indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data object.
 	Data *CreateInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// NULL
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 2992939*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of `true` indicates success and `false` indicates failure.
+	//
 	// example:
 	//
 	// false
@@ -116,29 +130,41 @@ func (s *CreateInstanceResponseBody) Validate() error {
 }
 
 type CreateInstanceResponseBodyData struct {
+	// The channel type.
+	//
 	// example:
 	//
-	// 示例值
+	// example
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The description of the instance.
+	//
 	// example:
 	//
 	// des
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// 2999292
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance.
+	//
 	// example:
 	//
 	// ins
 	InstanceName *int64 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The ID of the region where the resource is located.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The time when the request was submitted.
+	//
 	// example:
 	//
-	// 示例值
+	// example
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
 }
 

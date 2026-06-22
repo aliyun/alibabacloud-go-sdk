@@ -24,9 +24,6 @@ type iAddContactsResponseBody interface {
 }
 
 type AddContactsResponseBody struct {
-	// example:
-	//
-	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//

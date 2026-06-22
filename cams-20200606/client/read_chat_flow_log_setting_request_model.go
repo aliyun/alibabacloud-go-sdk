@@ -20,11 +20,9 @@ type iReadChatFlowLogSettingRequest interface {
 }
 
 type ReadChatFlowLogSettingRequest struct {
-	// Process code.
-	//
 	// example:
 	//
-	// f4912c16943b4dfba44bd6fedacf****
+	// 示例值示例值
 	FlowCode             *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

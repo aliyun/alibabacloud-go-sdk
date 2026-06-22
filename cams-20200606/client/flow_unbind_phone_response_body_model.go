@@ -24,33 +24,20 @@ type iFlowUnbindPhoneResponseBody interface {
 }
 
 type FlowUnbindPhoneResponseBody struct {
-	// Access denied details, this field is returned only when RAM verification fails.
-	//
-	// example:
-	//
-	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Request status code.
-	//
 	// example:
 	//
 	// 示例值示例值
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Error message.
-	//
 	// example:
 	//
 	// 示例值示例值示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request result data.
-	//
 	// example:
 	//
 	// false
 	Model     *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the operation was successful. Values: true: success; false: failure.
-	//
 	// example:
 	//
 	// true

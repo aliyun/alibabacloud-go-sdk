@@ -30,43 +30,32 @@ type iFlowBindPhoneRequest interface {
 }
 
 type FlowBindPhoneRequest struct {
-	// Message channel Code
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 示例值示例值示例值
 	ChannelCode *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
-	// Message channel Type
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 示例值示例值
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// Flow code.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 示例值示例值
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
-	// Flow version
-	//
 	// example:
 	//
-	// 1
-	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Phone numbers or PageIds under the channel instance, etc.
+	// 示例值示例值示例值
+	FlowVersion          *string   `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PhoneNumbers         []*string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// WABA account ID, or PageId for other channel types, etc.
-	//
 	// This parameter is required.
 	//
 	// example:

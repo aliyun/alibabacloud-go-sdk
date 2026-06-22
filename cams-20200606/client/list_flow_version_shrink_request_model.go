@@ -30,44 +30,29 @@ type iListFlowVersionShrinkRequest interface {
 }
 
 type ListFlowVersionShrinkRequest struct {
-	// Business tenant code, default is “ALICOM_OPAAS”.
-	//
 	// example:
 	//
-	// ALICOM_OPAAS
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Business extension information, default is “{}”.
-	//
-	// example:
-	//
-	// {}
+	// 示例值示例值
+	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
-	// Flow code.
-	//
 	// example:
 	//
-	// f4912c16943b4dfba44bd6fedacf****
+	// 示例值示例值
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Current page number.
-	//
 	// example:
 	//
-	// 1
+	// 97
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Page size.
-	//
 	// example:
 	//
-	// 5
+	// 97
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Flow version status.
-	//
 	// example:
 	//
-	// DRAFT
+	// 示例值示例值
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

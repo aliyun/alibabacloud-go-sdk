@@ -32,26 +32,38 @@ type iCreateCustomAudienceRequest interface {
 }
 
 type CreateCustomAudienceRequest struct {
+	// The Meta ad account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23**
 	AdAccountId *string `json:"AdAccountId,omitempty" xml:"AdAccountId,omitempty"`
+	// The Space ID of the ISV sub-customer, or the instance ID of the direct customer. View the Space ID on the
+	//
+	// <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cams-***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The file path.
+	//
 	// example:
 	//
 	// bucket/file.xlsx
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The name of the custom audience.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -59,6 +71,8 @@ type CreateCustomAudienceRequest struct {
 	// audience name
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The Page ID for Messenger.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -67,6 +81,8 @@ type CreateCustomAudienceRequest struct {
 	PageId               *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The upload method.
+	//
 	// This parameter is required.
 	//
 	// example:

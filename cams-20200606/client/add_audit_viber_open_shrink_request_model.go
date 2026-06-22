@@ -24,16 +24,21 @@ type iAddAuditViberOpenShrinkRequest interface {
 }
 
 type AddAuditViberOpenShrinkRequest struct {
+	// The audit record.
 	AuditRecordShrink *string `json:"AuditRecord,omitempty" xml:"AuditRecord,omitempty"`
+	// The audit result.
+	//
 	// example:
 	//
-	// 示例值
+	// example
 	AuditResult *string `json:"AuditResult,omitempty" xml:"AuditResult,omitempty"`
+	// The Space ID of the ISV sub-customer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// example
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// example:
 	//

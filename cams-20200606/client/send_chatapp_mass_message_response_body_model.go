@@ -22,35 +22,35 @@ type iSendChatappMassMessageResponseBody interface {
 }
 
 type SendChatappMassMessageResponseBody struct {
-	// The details about the access denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
+	// The request status code.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// - A value of OK indicates that the request was successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the message group.
+	// The bulk message ID.
 	//
 	// example:
 	//
 	// 890000010002****
 	GroupMessageId *string `json:"GroupMessageId,omitempty" xml:"GroupMessageId,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// User not authorized to operate on the specified resource.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

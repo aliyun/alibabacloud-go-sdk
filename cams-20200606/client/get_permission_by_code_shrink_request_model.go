@@ -24,22 +24,17 @@ type iGetPermissionByCodeShrinkRequest interface {
 }
 
 type GetPermissionByCodeShrinkRequest struct {
-	// Authorize code information.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// flow_001
+	// 示例值示例值示例值
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The space ID of the RAM user within the independent software vendor (ISV) account.
-	//
 	// example:
 	//
-	// 393847477
-	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The permissions.
+	// 示例值
+	CustSpaceId          *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PermissionsShrink    *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

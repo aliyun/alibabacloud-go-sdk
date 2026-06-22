@@ -22,22 +22,18 @@ type iChatappPhoneNumberDeregisterRequest interface {
 }
 
 type ChatappPhoneNumberDeregisterRequest struct {
-	// The space ID of the RAM user within the independent software vendor (ISV) account.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 939283893939
+	// 示例值示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The phone number that you want to deregister.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 8613800000000
+	// 示例值示例值
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

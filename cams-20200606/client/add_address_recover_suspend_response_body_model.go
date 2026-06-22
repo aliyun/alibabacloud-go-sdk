@@ -24,9 +24,6 @@ type iAddAddressRecoverSuspendResponseBody interface {
 }
 
 type AddAddressRecoverSuspendResponseBody struct {
-	// example:
-	//
-	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//

@@ -32,51 +32,69 @@ type iCreateInstanceRequest interface {
 }
 
 type CreateInstanceRequest struct {
+	// The channel type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// VIBER
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The contact email address.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	ContactMail *string `json:"ContactMail,omitempty" xml:"ContactMail,omitempty"`
+	// The country code.
+	//
 	// example:
 	//
 	// 1
 	CountryId *string `json:"CountryId,omitempty" xml:"CountryId,omitempty"`
-	// FacebookBmId
+	// The ID of the Facebook Business Manager (BM).
 	//
 	// example:
 	//
 	// 393992929
 	FacebookBmId *string `json:"FacebookBmId,omitempty" xml:"FacebookBmId,omitempty"`
+	// The description of the instance.
+	//
 	// example:
 	//
 	// ins
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// viber_ins
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Specifies whether to confirm the audit.
+	//
 	// example:
 	//
 	// Y
 	IsConfirmAudit *string `json:"IsConfirmAudit,omitempty" xml:"IsConfirmAudit,omitempty"`
+	// The URL of the ISV terms file.
+	//
 	// example:
 	//
 	// https://a.com/1.pdf
 	IsvTerms *string `json:"IsvTerms,omitempty" xml:"IsvTerms,omitempty"`
+	// The office address of the business.
+	//
 	// example:
 	//
-	// 长沙麓谷
+	// example
 	OfficeAddress *string `json:"OfficeAddress,omitempty" xml:"OfficeAddress,omitempty"`
+	// The ID of the resource group that contains the instance.
+	//
 	// example:
 	//
-	// 示例值
+	// example
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 

@@ -48,11 +48,11 @@ type GetWhatsappHealthStatusRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- template: message template
+	// - template: message template
 	//
-	// 	- phone: phone number
+	// - phone: phone number
 	//
-	// 	- waba: WhatsApp Business Account (WABA)
+	// - waba: WhatsApp Business Account (WABA)
 	//
 	// This parameter is required.
 	//

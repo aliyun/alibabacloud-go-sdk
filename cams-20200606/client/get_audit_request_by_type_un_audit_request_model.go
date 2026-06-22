@@ -26,14 +26,14 @@ type GetAuditRequestByTypeUnAuditRequest struct {
 	//
 	// example:
 	//
-	// cams-***
+	// 示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// viberOpen
+	// 示例值
 	RequestType          *string `json:"RequestType,omitempty" xml:"RequestType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

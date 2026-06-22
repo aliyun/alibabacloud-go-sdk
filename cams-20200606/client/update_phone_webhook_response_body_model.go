@@ -24,13 +24,13 @@ type UpdatePhoneWebhookResponseBody struct {
 	//
 	// example:
 	//
-	// None
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// - A value of OK indicates that the call is successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//

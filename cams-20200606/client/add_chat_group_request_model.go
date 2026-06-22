@@ -30,26 +30,40 @@ type iAddChatGroupRequest interface {
 }
 
 type AddChatGroupRequest struct {
+	// The phone number associated with the business account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8613800***
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// The channel type. Valid value:
+	//
+	// - **WHATSAPP**
+	//
+	// > Currently, only the WhatsApp channel type is supported.
+	//
 	// example:
 	//
 	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The SpaceId or instance ID of the ISV sub-customer, which is the channel ID. Find it on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cams-***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The group description.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// This is a newly created group
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The link to the WhatsApp group.
+	//
 	// example:
 	//
 	// https://t.me/testgroup
@@ -57,9 +71,11 @@ type AddChatGroupRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The group title.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// test
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
 }
 

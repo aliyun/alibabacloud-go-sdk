@@ -24,22 +24,19 @@ type iListFacebookPostsResponseBody interface {
 }
 
 type ListFacebookPostsResponseBody struct {
-	// example:
-	//
-	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// OK
+	// 示例值示例值示例值
 	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []*ListFacebookPostsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
-	// success
+	// 示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 90E63D28-E31D-1EB2-8939-A94866***
+	// 示例值
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
@@ -125,35 +122,35 @@ func (s *ListFacebookPostsResponseBody) Validate() error {
 type ListFacebookPostsResponseBodyData struct {
 	// example:
 	//
-	// 2025-04-08T10:44:48
+	// 示例值示例值
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// example:
 	//
-	// N/A
+	// 示例值示例值
 	FullPicture *string `json:"FullPicture,omitempty" xml:"FullPicture,omitempty"`
 	// example:
 	//
-	// 1
+	// 示例值示例值示例值
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// example:
 	//
-	// 1
+	// 示例值示例值
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	// example:
 	//
-	// https://xxxxxx07
+	// 示例值示例值示例值
 	MediaUrl *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
 	// example:
 	//
-	// success
+	// 示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// https://xxxxxxx
+	// 示例值
 	PermalinkUrl *string `json:"PermalinkUrl,omitempty" xml:"PermalinkUrl,omitempty"`
 	// example:
 	//
-	// 453645465***
+	// 示例值示例值
 	RequestNo *string `json:"RequestNo,omitempty" xml:"RequestNo,omitempty"`
 }
 

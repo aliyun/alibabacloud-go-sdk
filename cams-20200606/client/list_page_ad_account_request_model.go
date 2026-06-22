@@ -26,14 +26,14 @@ type ListPageAdAccountRequest struct {
 	//
 	// example:
 	//
-	// cams-**
+	// 示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 230***
+	// 示例值示例值
 	PageId               *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

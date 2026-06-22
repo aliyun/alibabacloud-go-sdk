@@ -22,7 +22,7 @@ type iGetWhatsappConversionApiRequest interface {
 type GetWhatsappConversionApiRequest struct {
 	// example:
 	//
-	// chatbot-cn-VBe6QXXX
+	// 示例值示例值
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

@@ -24,23 +24,42 @@ type iCheckDirectSendMessageSampleResponseBody interface {
 }
 
 type CheckDirectSendMessageSampleResponseBody struct {
+	// Details about the access denial.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code of the request.
+	//
+	// - `OK` indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
+	//
 	// example:
 	//
-	// 示例值
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *CheckDirectSendMessageSampleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. Use this ID to trace logs and troubleshoot issues.
+	//
 	// example:
 	//
-	// 示例值
+	// example
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -119,10 +138,22 @@ func (s *CheckDirectSendMessageSampleResponseBody) Validate() error {
 }
 
 type CheckDirectSendMessageSampleResponseBodyData struct {
+	// The category of the WhatsApp template. Valid values:
+	//
+	// - **UTILITY**: A template related to a specific, agreed-upon transaction.
+	//
+	// - **MARKETING**: A template for promotional or marketing purposes.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// example
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Whether the validation was successful. Valid values:
+	//
+	// - true: The validation succeeded.
+	//
+	// - false: The validation failed.
+	//
 	// example:
 	//
 	// true

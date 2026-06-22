@@ -28,50 +28,30 @@ type iListChatFlowTemplateRequest interface {
 }
 
 type ListChatFlowTemplateRequest struct {
-	// Business tenant code, default is “ALICOM_OPAAS”.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ALICOM_OPAAS
+	// 示例值
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Search keyword.
-	//
 	// example:
 	//
-	// LLM
+	// 示例值示例值
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Page number
-	//
 	// example:
 	//
-	// 1
+	// 75
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Number of records per page.
-	//
 	// example:
 	//
-	// 10
+	// 72
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Trigger type, with the following enum values:
-	//
-	// - TriggeredManually
-	//
-	// - TriggeredByWhatsApp
-	//
-	// - TriggeredByInstagram
-	//
-	// - TriggeredByViber
-	//
-	// - TriggeredByMessenger
-	//
 	// example:
 	//
-	// TriggeredByWhatsApp
+	// 示例值
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 }
 

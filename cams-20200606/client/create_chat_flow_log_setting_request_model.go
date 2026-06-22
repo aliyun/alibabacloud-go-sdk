@@ -20,8 +20,6 @@ type iCreateChatFlowLogSettingRequest interface {
 }
 
 type CreateChatFlowLogSettingRequest struct {
-	// Process code.
-	//
 	// example:
 	//
 	// 示例值

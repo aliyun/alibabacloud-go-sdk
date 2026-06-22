@@ -23,7 +23,7 @@ type iCreateFlowResponseBody interface {
 
 type CreateFlowResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// If OK is returned, the request was successful.
+	// The response code. A value of OK indicates that the request was successful.
 	//
 	// example:
 	//
@@ -108,15 +108,15 @@ func (s *CreateFlowResponseBody) Validate() error {
 }
 
 type CreateFlowResponseBodyData struct {
-	// The categories of the Flow.
+	// The list of categories.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The Flow ID.
+	// The flow ID.
 	//
 	// example:
 	//
 	// 333993838***
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The name of the Flow.
+	// The name of the flow.
 	//
 	// example:
 	//

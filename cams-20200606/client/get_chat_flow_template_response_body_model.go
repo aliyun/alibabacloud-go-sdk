@@ -24,38 +24,12 @@ type iGetChatFlowTemplateResponseBody interface {
 }
 
 type GetChatFlowTemplateResponseBody struct {
-	// Access denied details, this field is returned only when RAM verification fails.
-	//
-	// example:
-	//
-	// 无
-	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// System returned error code. For more details on error codes, please refer to the error code documentation.
-	//
-	// example:
-	//
-	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
-	Data *GetChatFlowTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error message.
-	//
-	// example:
-	//
-	// 无
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Unique request ID.
-	//
-	// example:
-	//
-	// 90E63D28-E31D-1EB2-8939-A9486641****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Values: true: success; false: failure.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string                              `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *GetChatFlowTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success            *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetChatFlowTemplateResponseBody) String() string {
@@ -130,11 +104,6 @@ func (s *GetChatFlowTemplateResponseBody) Validate() error {
 }
 
 type GetChatFlowTemplateResponseBodyData struct {
-	// Content of the returned data.
-	//
-	// example:
-	//
-	// 无
 	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
 }
 

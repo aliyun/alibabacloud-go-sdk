@@ -36,7 +36,7 @@ type GetChatappTemplateDetailRequest struct {
 	//
 	// The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
 	//
-	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
+	// > CustWabaId is an obsolete parameter. Use CustSpaceId instead.
 	//
 	// example:
 	//
@@ -70,11 +70,11 @@ type GetChatappTemplateDetailRequest struct {
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The type of the message template. Valid values:
 	//
-	// 	- **WHATSAPP**
+	// - **WHATSAPP**
 	//
-	// 	- **VIBER**
+	// - **VIBER**
 	//
-	// 	- LINE (developing)
+	// - LINE (developing)
 	//
 	// example:
 	//

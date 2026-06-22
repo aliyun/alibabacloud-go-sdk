@@ -26,11 +26,11 @@ type iCreateWhatsappConversionApiRequest interface {
 type CreateWhatsappConversionApiRequest struct {
 	// example:
 	//
-	// code
+	// 示例值
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
-	// 131
+	// 示例值示例值
 	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Permissions          []*string `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`

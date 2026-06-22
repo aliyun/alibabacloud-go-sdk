@@ -24,22 +24,16 @@ type iListFlowNodeGroupResponseBody interface {
 }
 
 type ListFlowNodeGroupResponseBody struct {
-	// example:
-	//
-	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// OK
+	// 43
 	Code *int64                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *ListFlowNodeGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// example:
 	//
-	// successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 90E63D28-E31D-1EB2-8939-A9486641****
+	// 示例值示例值
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
@@ -155,11 +149,11 @@ func (s *ListFlowNodeGroupResponseBodyData) Validate() error {
 type ListFlowNodeGroupResponseBodyDataModel struct {
 	// example:
 	//
-	// 0
+	// 示例值示例值
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
-	// {}
+	// 示例值示例值
 	PublicExtend *string `json:"PublicExtend,omitempty" xml:"PublicExtend,omitempty"`
 }
 

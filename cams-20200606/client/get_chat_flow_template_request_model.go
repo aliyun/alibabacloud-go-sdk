@@ -22,16 +22,12 @@ type iGetChatFlowTemplateRequest interface {
 }
 
 type GetChatFlowTemplateRequest struct {
-	// Business tenant code, default is “ALICOM_OPAAS”.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ALICOM_OPAAS
+	// 示例值
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Template ID
-	//
 	// example:
 	//
 	// 2

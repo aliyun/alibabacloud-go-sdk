@@ -16,10 +16,14 @@ type iListWhatAppTemplateRequest interface {
 }
 
 type ListWhatAppTemplateRequest struct {
+	// The space ID of the ISV sub-customer or the instance ID of the direct customer.
+	//
 	// example:
 	//
 	// 2983883892
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// This parameter is reserved for internal use.
+	//
 	// example:
 	//
 	// {}

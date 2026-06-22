@@ -34,13 +34,13 @@ type iGetChatappTemplateMetricRequest interface {
 }
 
 type GetChatappTemplateMetricRequest struct {
-	// The space ID of the RAM user within the ISV account.
+	// The Space ID or instance ID of the ISV sub-customer. This is the channel ID. View the channel ID on the <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
 	//
 	// example:
 	//
-	// 293483938849493
+	// cams-************
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The end of the time range to query.
+	// The end of the time range to query. This is a UNIX timestamp. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -48,25 +48,23 @@ type GetChatappTemplateMetricRequest struct {
 	//
 	// 1693407714687
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The granularity of the metric.
+	// The metric granularity. Valid values:
 	//
-	// Valid values:
+	// - DAILY: Metrics are collected by day.
 	//
-	// 	- DAILY
-	//
-	// 	- HALF_HOUR
+	// - HALF_HOUR: Metrics are collected every half an hour.
 	//
 	// example:
 	//
 	// DAILY
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// The independent software vendor (ISV) verification code, which is used to verify whether the RAM user is authorized by the ISV account.
+	// The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV.
 	//
 	// example:
 	//
-	// skdi3kksloslikdkkdk
+	// skdi3kksloslikd****
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The template language.
+	// The language of the template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
 	//
 	// example:
 	//
@@ -75,7 +73,7 @@ type GetChatappTemplateMetricRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query.
+	// The start of the time range to query. This is a UNIX timestamp. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -83,21 +81,19 @@ type GetChatappTemplateMetricRequest struct {
 	//
 	// 1693107714687
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The template code.
+	// The template code. View the template code on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage*	- > **Template Design*	- page.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 744c4b5c79c9432497a075bdfca36bf5
+	// 1100***************
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// The template type. If you do not specify this parameter, the default value WHATSAPP is used.
+	// The template type. Valid value:
 	//
-	// Valid values:
+	// - WHATSAPP
 	//
-	// 	- VIBER
-	//
-	// 	- WHATSAPP
+	// > If you do not pass this parameter, the default value WHATSAPP is used.
 	//
 	// example:
 	//

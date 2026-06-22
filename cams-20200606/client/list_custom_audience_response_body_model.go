@@ -26,24 +26,48 @@ type iListCustomAudienceResponseBody interface {
 }
 
 type ListCustomAudienceResponseBody struct {
+	// Details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - A value of OK indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*ListCustomAudienceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 39**
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call was successful.
+	//
+	// - **true**: successful.
+	//
+	// - **false**: failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 69
@@ -135,46 +159,68 @@ func (s *ListCustomAudienceResponseBody) Validate() error {
 }
 
 type ListCustomAudienceResponseBodyData struct {
+	// The Meta ad account ID.
+	//
 	// example:
 	//
 	// 339**
 	AdAccountId *string `json:"AdAccountId,omitempty" xml:"AdAccountId,omitempty"`
+	// The time when the audience was created.
+	//
 	// example:
 	//
 	// 1720356898
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the custom audience.
+	//
 	// example:
 	//
 	// 339**
 	CustomAudienceId *string `json:"CustomAudienceId,omitempty" xml:"CustomAudienceId,omitempty"`
+	// The name of the custom audience.
+	//
 	// example:
 	//
 	// custom audience name
 	CustomAudienceName *string `json:"CustomAudienceName,omitempty" xml:"CustomAudienceName,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The Page ID for Messenger.
+	//
 	// example:
 	//
 	// 239**
 	PageId *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The status.
+	//
 	// example:
 	//
-	// NONE
+	// None
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of tokens.
+	//
 	// example:
 	//
 	// 70
 	TokenTotal *int64 `json:"TokenTotal,omitempty" xml:"TokenTotal,omitempty"`
+	// The token type.
+	//
 	// example:
 	//
 	// custom
 	TokenType *string `json:"TokenType,omitempty" xml:"TokenType,omitempty"`
+	// The time when the audience was last updated.
+	//
 	// example:
 	//
 	// 51
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The upload type.
+	//
 	// example:
 	//
 	// excel

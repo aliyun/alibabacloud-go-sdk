@@ -24,9 +24,6 @@ type iQueryMMLActiveResponseBody interface {
 }
 
 type QueryMMLActiveResponseBody struct {
-	// example:
-	//
-	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
@@ -38,7 +35,7 @@ type QueryMMLActiveResponseBody struct {
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// example:
 	//
-	// success
+	// 示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//

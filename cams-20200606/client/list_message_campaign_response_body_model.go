@@ -26,24 +26,48 @@ type iListMessageCampaignResponseBody interface {
 }
 
 type ListMessageCampaignResponseBody struct {
-	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Details about the access denial.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	// None
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - A value of OK indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
+	// example:
+	//
+	// Example
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data object.
 	Data []*ListMessageCampaignResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 23**
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: successful.
+	//
+	// - false: failed.
+	//
 	// example:
 	//
-	// false
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 70
@@ -135,34 +159,50 @@ func (s *ListMessageCampaignResponseBody) Validate() error {
 }
 
 type ListMessageCampaignResponseBodyData struct {
+	// The ID of the Meta ad account.
+	//
 	// example:
 	//
 	// 2339**
 	AdAccountId *string `json:"AdAccountId,omitempty" xml:"AdAccountId,omitempty"`
+	// The budget.
+	//
 	// example:
 	//
 	// 62
 	Budget *int64 `json:"Budget,omitempty" xml:"Budget,omitempty"`
+	// The budget type.
+	//
 	// example:
 	//
 	// daily
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
+	// The campaign ID.
+	//
 	// example:
 	//
 	// 233**
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// The name of the campaign.
+	//
 	// example:
 	//
 	// campaign-name
 	CampaignName *string `json:"CampaignName,omitempty" xml:"CampaignName,omitempty"`
+	// The time when the campaign was created.
+	//
 	// example:
 	//
 	// 173029392838
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The Page ID for Messenger.
+	//
 	// example:
 	//
 	// 238***
 	PageId *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The status of the campaign.
+	//
 	// example:
 	//
 	// AVAILABLE

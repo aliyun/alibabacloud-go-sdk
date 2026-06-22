@@ -24,9 +24,6 @@ type iAddMarketingFlowResponseBody interface {
 }
 
 type AddMarketingFlowResponseBody struct {
-	// example:
-	//
-	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//

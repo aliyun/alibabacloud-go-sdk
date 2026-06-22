@@ -79,7 +79,7 @@ func (client *Client) AddAddressRecoverSuspendWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 注册viber账号，开户
+// Signs up for a Viber account.
 //
 // @param tmpReq - AddAuditViberOpenRequest
 //
@@ -149,7 +149,19 @@ func (client *Client) AddAuditViberOpenWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// # AddChatGroup
+// Creates an IM group.
+//
+// Description:
+//
+//	Notice:
+//
+// Creating IM groups via the API is a feature in closed beta testing by Meta. Please contact your account manager to be added to the allowlist.
+//
+// - You can only create an IM group by calling this API.
+//
+// - After creating an IM group, you can call the [AddChatGroupInviteLink](https://help.aliyun.com/document_detail/3019211.html) API to generate an invite link.
+//
+// - For the WhatsApp channel type, an IM group is limited to eight members.
 //
 // @param request - AddChatGroupRequest
 //
@@ -225,7 +237,23 @@ func (client *Client) AddChatGroupWithContext(ctx context.Context, request *AddC
 
 // Summary:
 //
-// # AddChatGroupInviteLink
+// Adds an invite link for an Instant Messaging (IM) group.
+//
+// Description:
+//
+//	Notice:
+//
+// The API for adding invite links to IM groups is in beta testing on Meta. Contact your account manager to add your account to the allowlist.
+//
+// - Before you call this operation, make sure that an IM group has been created.
+//
+// - If you do not have an IM group, call the [AddChatGroup](https://help.aliyun.com/document_detail/2932518.html) operation to create one.
+//
+// - After you add an invite link by calling this operation, you can use the link to invite members to the group.
+//
+// - Currently, members can join an IM group only using an invite link.
+//
+// - A WhatsApp group can have a maximum of 8 members.
 //
 // @param request - AddChatGroupInviteLinkRequest
 //
@@ -293,7 +321,11 @@ func (client *Client) AddChatGroupInviteLinkWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Adds a phone number for a WhatsApp Business account (WABA).
+// Adds a phone number to a WhatsApp Business Account (WABA).
+//
+// Description:
+//
+// This API is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - AddChatappPhoneNumberRequest
 //
@@ -463,7 +495,11 @@ func (client *Client) AddContactsWithContext(ctx context.Context, tmpReq *AddCon
 
 // Summary:
 //
-// 增加自定义受众(这个接口需要从镇元直接配置）
+// Adds users to a custom audience.
+//
+// Description:
+//
+// After users are submitted to a custom audience, Meta matches them. If fewer than 100 users are matched, Meta discards the data. This prevents phone numbers from being linked directly to user tokens. Each API call supports up to 10,000 user records.
 //
 // @param tmpReq - AddCustomAudienceUserRequest
 //
@@ -1007,11 +1043,11 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Binds the WhatsApp Business account with ChatApp.
+// Binds a WhatsApp Business Account (WABA).
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - ChatappBindWabaRequest
 //
@@ -1131,11 +1167,11 @@ func (client *Client) ChatappMigrationRegisterWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Verifies a specified phone number for migration.
+// Verifies a phone number for migration.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - ChatappMigrationVerifiedRequest
 //
@@ -1199,11 +1235,11 @@ func (client *Client) ChatappMigrationVerifiedWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deregisters a phone number from a WhatsApp Business account (WABA).
+// Deregisters a phone number from a WhatsApp Business Account (WABA).
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 10 queries per second (QPS) per user. If you exceed this limit, API calls are throttled, which may affect your business. Call this API at a reasonable rate.
 //
 // @param request - ChatappPhoneNumberDeregisterRequest
 //
@@ -1267,7 +1303,7 @@ func (client *Client) ChatappPhoneNumberDeregisterWithContext(ctx context.Contex
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - ChatappPhoneNumberRegisterRequest
 //
@@ -1331,7 +1367,7 @@ func (client *Client) ChatappPhoneNumberRegisterWithContext(ctx context.Context,
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 10 requests per second (RPS) per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
 // @param request - ChatappSyncPhoneNumberRequest
 //
@@ -1391,7 +1427,7 @@ func (client *Client) ChatappSyncPhoneNumberWithContext(ctx context.Context, req
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 10 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
 // @param request - ChatappVerifyAndRegisterRequest
 //
@@ -1455,7 +1491,7 @@ func (client *Client) ChatappVerifyAndRegisterWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 直发消息检查
+// Validates direct message content for WhatsApp.
 //
 // @param tmpReq - CheckDirectSendMessageSampleRequest
 //
@@ -1589,7 +1625,7 @@ func (client *Client) CopyTemplateWithContext(ctx context.Context, request *Copy
 
 // Summary:
 //
-// # Create Chatflow
+// 创建Chatflow
 //
 // @param tmpReq - CreateChatFlowRequest
 //
@@ -1667,7 +1703,7 @@ func (client *Client) CreateChatFlowWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// # Import and create flow
+// 导入并创建flow
 //
 // @param tmpReq - CreateChatFlowByImportRequest
 //
@@ -1745,7 +1781,7 @@ func (client *Client) CreateChatFlowByImportWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// # Create chatFlow log setting
+// 创建chatFlow日志设置
 //
 // @param request - CreateChatFlowLogSettingRequest
 //
@@ -1801,11 +1837,11 @@ func (client *Client) CreateChatFlowLogSettingWithContext(ctx context.Context, r
 
 // Summary:
 //
-// The ID of the number.
+// Initiates the migration of a phone number.
 //
 // Description:
 //
-// The status of the phone number.
+// This API is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - CreateChatappMigrationInitiateRequest
 //
@@ -1869,17 +1905,17 @@ func (client *Client) CreateChatappMigrationInitiateWithContext(ctx context.Cont
 
 // Summary:
 //
-// The HTTP status code.
-//
-// \\\\\\\\	- Example: OK. This parameter indicates that the request is successful.
-//
-// \\\\\\\\	- Other values indicate that the request fails. For more information, see \\\\\\[Error codes]\\\\\\(https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
+// Creates a message template. After a template is approved, you can use it to send messages.
 //
 // Description:
 //
-// ### [](#qps-)QPS limit
+// ### QPS limit
 //
-// You can call this operation up to 50 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this API operation is 50 for a single user. If you exceed the limit, API calls are rate-limited, which may affect your business. We recommend that you call this operation at a reasonable frequency.
+//
+// ### Status change
+//
+// You can monitor template status and quality changes using Message Service (MNS) or HTTP. For more information, see [Message receipts](https://help.aliyun.com/document_detail/421545.html).
 //
 // @param tmpReq - CreateChatappTemplateRequest
 //
@@ -1977,7 +2013,7 @@ func (client *Client) CreateChatappTemplateWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 创建自定义受众
+// Creates a custom audience.
 //
 // @param request - CreateCustomAudienceRequest
 //
@@ -2057,11 +2093,11 @@ func (client *Client) CreateCustomAudienceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a Flow.
+// Creates a flow.
 //
 // Description:
 //
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 5 for each user. API calls that exceed this limit are throttled. Because throttling may affect your business, we recommend that you call this operation at a reasonable rate.
 //
 // @param tmpReq - CreateFlowRequest
 //
@@ -2213,7 +2249,7 @@ func (client *Client) CreateFlowVersionWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 新建实例
+// Creates an instance.
 //
 // @param request - CreateInstanceRequest
 //
@@ -2293,7 +2329,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建预算
+// Creates a budget.
 //
 // @param request - CreateMessageCampaignRequest
 //
@@ -2447,7 +2483,21 @@ func (client *Client) CreateMessengerPageWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Creates a quick-response (QR) code that contains a message.
+// Creates a message QR code.
+//
+// Description:
+//
+// - After a QR code is created, users can scan it with WhatsApp to start a chat with your business number.
+//
+// - Before calling this API, make sure you have a WhatsApp channel.
+//
+// - If you do not have a WhatsApp channel, create one on the
+//
+//	<props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
+//
+// #### QPS limit
+//
+// This API is limited to 5 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - CreatePhoneMessageQrdlRequest
 //
@@ -2585,7 +2635,7 @@ func (client *Client) CreateWhatsappConversionApiWithContext(ctx context.Context
 
 // Summary:
 //
-// # Delete Process
+// 删除流程
 //
 // @param tmpReq - DeleteChatFlowRequest
 //
@@ -2655,7 +2705,19 @@ func (client *Client) DeleteChatFlowWithContext(ctx context.Context, tmpReq *Del
 
 // Summary:
 //
-// # DeleteChatGroup
+// Deletes an Instant Messaging (IM) group.
+//
+// Description:
+//
+//	Notice:
+//
+// This API is in beta testing for Meta. Contact your account manager to be added to the allowlist before using this endpoint.
+//
+// - Before you call this API, ensure that you have created an IM group.
+//
+// - If you have not created one, create one by calling the [AddChatGroup](https://help.aliyun.com/document_detail/2932518.html) operation.
+//
+// - After an IM group is deleted, it cannot be recovered. Proceed with caution.
 //
 // @param request - DeleteChatGroupRequest
 //
@@ -2723,7 +2785,19 @@ func (client *Client) DeleteChatGroupWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// # DeleteChatGroupInviteLink
+// Deletes an IM group invitation link.
+//
+// Description:
+//
+//	Notice:
+//
+// Deleting an IM group invitation link via the API is a feature in beta testing for Meta. To use this feature, contact your account manager to be added to the allowlist.
+//
+// - Before calling this operation, ensure an invitation link has been added to your IM group.
+//
+// - If you do not have an IM group, call the [AddChatGroup](https://help.aliyun.com/document_detail/2998429.html) and [AddChatGroupInviteLink](https://help.aliyun.com/document_detail/3019211.html) operations to create one and add an invitation link.
+//
+// - After deleting the invitation link, you can no longer invite members to the IM group. Proceed with caution.
 //
 // @param request - DeleteChatGroupInviteLinkRequest
 //
@@ -2791,7 +2865,19 @@ func (client *Client) DeleteChatGroupInviteLinkWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # DeleteChatGroupParticipants
+// Removes members from an IM group.
+//
+// Description:
+//
+//	Notice:
+//
+// This operation is a beta feature from Meta. Contact your account manager to add your account to the allowlist before use.
+//
+// - This operation requires an existing IM group that members have joined via an invitation link.
+//
+// - To create an IM group and add an invitation link, call the [AddChatGroup](https://help.aliyun.com/document_detail/2998429.html) and [AddChatGroupInviteLink](https://help.aliyun.com/document_detail/3019211.html) operations.
+//
+// - Removed members no longer receive messages from the group. Use this operation with caution.
 //
 // @param tmpReq - DeleteChatGroupParticipantsRequest
 //
@@ -2875,7 +2961,7 @@ func (client *Client) DeleteChatGroupParticipantsWithContext(ctx context.Context
 //
 // ### QPS limit
 //
-// You can call this operation up to five times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
 // @param request - DeleteChatappTemplateRequest
 //
@@ -3093,11 +3179,11 @@ func (client *Client) DeleteContactsByIdsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes a Flow. Only Flows in the DRAFT state can be deleted.
+// Deletes a WhatsApp flow. Only flows in the draft state can be deleted.
 //
 // Description:
 //
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled and may result in service interruptions.
 //
 // @param request - DeleteFlowRequest
 //
@@ -3157,7 +3243,7 @@ func (client *Client) DeleteFlowWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// # Delete Flow Version
+// 删除流程版本
 //
 // @param tmpReq - DeleteFlowVersionRequest
 //
@@ -3347,7 +3433,7 @@ func (client *Client) DeleteInstagramPageWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除实例
+// Deletes the specified instance.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -3451,7 +3537,7 @@ func (client *Client) DeleteMarketingFlowWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除预算
+// Deletes the budget for a marketing campaign.
 //
 // @param request - DeleteMessageCampaignRequest
 //
@@ -3579,7 +3665,17 @@ func (client *Client) DeleteMessengerPageWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes a quick-response (QR) code that contains a message.
+// Deletes a message QR code.
+//
+// Description:
+//
+// - After a message QR code is deleted, users can no longer scan the QR code to start a chat with your business number. Proceed with caution.
+//
+// - If you have not created a message QR code, call the [CreatePhoneMessageQrdl](https://help.aliyun.com/document_detail/2638749.html) API to create one.
+//
+// #### QPS limits
+//
+// This API is limited to 5 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - DeletePhoneMessageQrdlRequest
 //
@@ -3643,7 +3739,11 @@ func (client *Client) DeletePhoneMessageQrdlWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deprecates a Flow.
+// Deprecates a WhatsApp flow.
+//
+// Description:
+//
+// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled and may result in service interruptions.
 //
 // @param request - DeprecateFlowRequest
 //
@@ -3703,11 +3803,19 @@ func (client *Client) DeprecateFlowWithContext(ctx context.Context, request *Dep
 
 // Summary:
 //
-// Enables the statistics on the metrics that are related to WhatsApp.
+// Enables statistics for WhatsApp metrics.
 //
 // Description:
 //
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// - Before retrieving metrics for messages sent through WhatsApp channels or for Marketing templates, call this operation to enable statistics for WhatsApp Return on Investment (ROI) metrics.
+//
+// - After you enable statistics for WhatsApp ROI metrics, it takes at least one day for data to become available. Metrics for messages sent and for Marketing templates used before you enabled this feature are not collected.
+//
+// - After you enable it, you can call the [GetChatappPhoneNumberMetric](https://help.aliyun.com/document_detail/2557788.html) operation to query metrics for messages sent from a phone number, or the [GetChatappTemplateMetric](https://help.aliyun.com/document_detail/2557790.html) operation to query metrics for Marketing templates.
+//
+// ### QPS limit
+//
+// This API is limited to 5 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - EnableWhatsappROIMetricRequest
 //
@@ -3767,7 +3875,7 @@ func (client *Client) EnableWhatsappROIMetricWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Bind phone numbers to flow
+// flow绑定号码
 //
 // @param tmpReq - FlowBindPhoneRequest
 //
@@ -3849,7 +3957,7 @@ func (client *Client) FlowBindPhoneWithContext(ctx context.Context, tmpReq *Flow
 
 // Summary:
 //
-// # Rebind phone number for flow
+// flow重绑定手机号
 //
 // @param tmpReq - FlowRebindPhoneRequest
 //
@@ -3931,7 +4039,7 @@ func (client *Client) FlowRebindPhoneWithContext(ctx context.Context, tmpReq *Fl
 
 // Summary:
 //
-// # Unbind phone number from flow
+// flow解绑手机号
 //
 // @param tmpReq - FlowUnbindPhoneRequest
 //
@@ -4121,7 +4229,7 @@ func (client *Client) GetAuditRequestByTypeUnAuditWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询自动生成的模板
+// Retrieves auto-generated templates.
 //
 // @param request - GetAutoGeneratedTemplateRequest
 //
@@ -4173,7 +4281,7 @@ func (client *Client) GetAutoGeneratedTemplateWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Get ChatFlow Runtime Data
+// 获取ChatFlow运行数据
 //
 // @param tmpReq - GetChatFlowMetricRequest
 //
@@ -4267,7 +4375,7 @@ func (client *Client) GetChatFlowMetricWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// # Query chatFlow template
+// 查询chatFlow模板
 //
 // @param request - GetChatFlowTemplateRequest
 //
@@ -4379,11 +4487,19 @@ func (client *Client) GetChatappOpenStatusWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the number of messages that are sent by using a phone number by a specific metric.
+// Queries the message sending metrics for a phone number in a WhatsApp channel.
 //
 // Description:
 //
-// You can call this operation up to 50 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// - You can call this operation to query message sending metrics. Alternatively, you can query the metrics in the ChatApp console by choosing <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage*	- > **Daily Statistics Reports for Customers**.
+//
+// - Before you call this operation, call the [EnableWhatsAppROIMetric](https://help.aliyun.com/document_detail/2557789.html) operation to enable return on investment (ROI) metric collection for WhatsApp. Statistics are available at least one day after you enable this feature. Message sending metrics generated before you enable the feature are not collected.
+//
+// - After you enable ROI metric collection for WhatsApp, make sure that messages are successfully sent from your channel. To send messages, go to the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) page, select a WhatsApp channel, and choose **Message Sending**. You can also call [SendChatappMessage](https://help.aliyun.com/document_detail/432208.html) or [SendChatappMassMessage](https://help.aliyun.com/document_detail/447926.html).
+//
+// ### QPS limit
+//
+// This operation allows a maximum of 50 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
 // @param request - GetChatappPhoneNumberMetricRequest
 //
@@ -4519,13 +4635,13 @@ func (client *Client) GetChatappPhoneNumberSettingWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the information of a message template.
+// Queries the details of a message template.
 //
 // Description:
 //
 // ### QPS limit
 //
-// You can call this API operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 5 requests per second (RPS) per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
 // @param request - GetChatappTemplateDetailRequest
 //
@@ -4593,11 +4709,19 @@ func (client *Client) GetChatappTemplateDetailWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the metrics about a marketing template.
+// Queries the metrics for a marketing template.
 //
 // Description:
 //
-// You can call this operation up to 50 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// - This API queries metrics only for marketing templates of WhatsApp channels.
+//
+// - Before you call this operation, call [EnableWhatsAppROIMetric](https://help.aliyun.com/document_detail/2557789.html) to enable metric statistics for WhatsApp Return on Investment (ROI). It takes at least one day for the data to become available after you enable this feature. Metrics are not collected for marketing templates that were used before this feature was enabled.
+//
+// - After you enable metric statistics for WhatsApp ROI, ensure that messages have been sent using the marketing templates of your channels. To send messages, go to the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) page, select a WhatsApp channel, and choose **Message Sending**. You can also call [SendChatappMessage](https://help.aliyun.com/document_detail/432208.html) or [SendChatappMassMessage](https://help.aliyun.com/document_detail/447926.html).
+//
+// ### QPS limits
+//
+// This API is limited to 50 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - GetChatappTemplateMetricRequest
 //
@@ -4685,7 +4809,7 @@ func (client *Client) GetChatappTemplateMetricWithContext(ctx context.Context, r
 //
 // Description:
 //
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
 // @param request - GetChatappUploadAuthorizationRequest
 //
@@ -4741,11 +4865,11 @@ func (client *Client) GetChatappUploadAuthorizationWithContext(ctx context.Conte
 
 // Summary:
 //
-// Obtains a verification code.
+// Requests a verification code to be sent to the specified phone number.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - GetChatappVerifyCodeRequest
 //
@@ -4817,7 +4941,7 @@ func (client *Client) GetChatappVerifyCodeWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 10 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
 // @param request - GetCommerceSettingRequest
 //
@@ -4877,15 +5001,15 @@ func (client *Client) GetCommerceSettingWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Configures welcoming messages, opening remarks, and commands.
+// Queries the conversational automation settings for a phone number.
 //
 // Description:
 //
 // ### [](#qps-)QPS limit
 //
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
-// This operation will directly obtain data from Facebook, which sets an upper limit on the total number of calls for operations. We recommend that you take note of the limit when you call this operation.
+// This operation retrieves data directly from Meta. Meta imposes its own rate limits on the total number of calls. Stay within the specified limit.
 //
 // @param request - GetConversationalAutomationRequest
 //
@@ -5215,11 +5339,17 @@ func (client *Client) GetFbMessengerPagesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the information about a Flow.
+// Queries the details of a WhatsApp flow, including its status, name, categories, and preview URL.
 //
 // Description:
 //
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// - Before calling this operation, make sure that you have created a WhatsApp flow.
+//
+// - If you have not created a WhatsApp flow, call the [CreateFlow](https://help.aliyun.com/document_detail/2638742.html) API to create one.
+//
+// #### QPS limit
+//
+// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled and may result in service interruptions.
 //
 // @param request - GetFlowRequest
 //
@@ -5279,7 +5409,17 @@ func (client *Client) GetFlowWithContext(ctx context.Context, request *GetFlowRe
 
 // Summary:
 //
-// Queries the JSON content of a Flow.
+// Queries the JSON content of a WhatsApp flow.
+//
+// Description:
+//
+// - Before calling this operation, make sure that you have created a WhatsApp flow.
+//
+// - If you have not created a WhatsApp flow, call the [CreateFlow](https://help.aliyun.com/document_detail/2638742.html) API to create one.
+//
+// #### QPS limit
+//
+// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled and may result in service interruptions.
 //
 // @param request - GetFlowJSONAssestRequest
 //
@@ -5339,11 +5479,19 @@ func (client *Client) GetFlowJSONAssestWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Obtains the preview URL of a Flow.
+// Generates a temporary preview URL for a WhatsApp flow.
 //
 // Description:
 //
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// - After you create a WhatsApp flow, call this operation to generate a temporary preview URL for the flow.
+//
+// - Before you call this operation, make sure that you have created a WhatsApp flow.
+//
+// - If you do not have a WhatsApp flow, you can call the [CreateFlow](https://help.aliyun.com/document_detail/2638742.html) API to create one.
+//
+// #### QPS limit
+//
+// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled and may result in service interruptions.
 //
 // @param request - GetFlowPreviewUrlRequest
 //
@@ -5473,7 +5621,7 @@ func (client *Client) GetGroupExistWithContext(ctx context.Context, tmpReq *GetG
 
 // Summary:
 //
-// 查询预算指标
+// Retrieves campaign metrics.
 //
 // @param request - GetMessageCampaignInsightsRequest
 //
@@ -5541,11 +5689,11 @@ func (client *Client) GetMessageCampaignInsightsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Obtain the verification code for the migration number.
+// Gets the verification code for phone number migration.
 //
 // Description:
 //
-// The single user QPS limit for this interface is 10 times per second. Exceeding the limit may result in restricted API calls, which may affect your business. Please make reasonable calls.
+// This API is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - GetMigrationVerifyCodeRequest
 //
@@ -5613,7 +5761,11 @@ func (client *Client) GetMigrationVerifyCodeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Obtains permissions based on the authorization code obtained from embedded signup.
+// Gets permissions using the code obtained from the embeded signup flow.
+//
+// Description:
+//
+// This API is limited to 5 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param tmpReq - GetPermissionByCodeRequest
 //
@@ -5683,7 +5835,17 @@ func (client *Client) GetPermissionByCodeWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Queries the encryption public key of a phone number.
+// Retrieves the public key for a phone number.
+//
+// Description:
+//
+// - Before calling this API, make sure that you have added a verified phone number to your WhatsApp Business Account (WABA).
+//
+// - If no phone number is added to your WABA, call the [GetChatappVerifyCode](https://help.aliyun.com/document_detail/600746.html) and [ChatappVerifyAndRegister](https://help.aliyun.com/document_detail/600770.html) APIs to get a verification code to register and verify the phone number.
+//
+// #### QPS limit
+//
+// This API is limited to 5 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - GetPhoneEncryptionPublicKeyRequest
 //
@@ -5743,11 +5905,17 @@ func (client *Client) GetPhoneEncryptionPublicKeyWithContext(ctx context.Context
 
 // Summary:
 //
-// Obtains the verification status of a phone number.
+// Retrieves the verification status of a phone number.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// - You can call this operation to retrieve the verification status of a phone number. You can also view the status on the <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage*	- > **WABA Management*	- > **Phone Number Management*	- page.
+//
+// - Before calling this operation, add a phone number to your WhatsApp Business Account (WABA) and submit it for verification.
+//
+// - If you have not added a phone number to your WABA, call the [GetChatappVerifyCode](https://help.aliyun.com/document_detail/600746.html) and [ChatappVerifyAndRegister](https://help.aliyun.com/document_detail/600770.html) APIs to obtain a verification code and register the number.
+//
+// This operation allows a maximum of 10 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
 // @param request - GetPhoneNumberVerificationStatusRequest
 //
@@ -5867,11 +6035,11 @@ func (client *Client) GetPledgeTemplateAddressWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Obtains the ID of a pre-registered phone number used for embedded signup without the need to re-obtain a verification code.
+// Gets the ID for a pre-validated phone number. Use this ID to select the number in the Embedded Signup flow without obtaining a new verification code.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - GetPreValidatePhoneIdRequest
 //
@@ -5919,7 +6087,7 @@ func (client *Client) GetPreValidatePhoneIdWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 通过requestNo查询申请单
+// Retrieves the application by its requestNo.
 //
 // @param request - GetViberByRequestNoRequest
 //
@@ -6039,7 +6207,7 @@ func (client *Client) GetViberPauseTimesWithContext(ctx context.Context, request
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 10 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
 // @param request - GetWhatsappConnectionCatalogRequest
 //
@@ -6161,9 +6329,9 @@ func (client *Client) GetWhatsappConversionApiWithContext(ctx context.Context, r
 //
 // ### [](#qps-)QPS limit
 //
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
-// This operation will directly obtain data from Facebook, which sets an upper limit on the total number of calls for operations. We recommend that you take note of the limit when you call this operation.
+// This operation retrieves data directly from Meta. Meta imposes its own rate limits on the total number of calls. Stay within the specified limit.
 //
 // @param request - GetWhatsappHealthStatusRequest
 //
@@ -6239,11 +6407,11 @@ func (client *Client) GetWhatsappHealthStatusWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Obtains the application ID under the ISV account.
+// Gets the App ID for an Independent Software Vendor (ISV).
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - IsvGetAppIdRequest
 //
@@ -6429,15 +6597,7 @@ func (client *Client) ListBindDmAccountWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Query Bound List Based on flowCode
-//
-// Description:
-//
-// - You can call this interface to query the list of phone numbers or merchant account IDs bound to a process, or you can view the list in the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **Settings*	- interface.
-//
-// - Before calling this interface, make sure that the process you created has already been bound to a phone number or merchant account ID.
-//
-// - If the process you created is not bound to a phone number or merchant account ID, you can manually bind a phone number or merchant account ID in the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **Settings*	- interface, or bind it through the [FlowBindPhone](https://help.aliyun.com/document_detail/2937190.html) interface.
+// 根据flowCode查询已绑定列表
 //
 // @param request - ListBindingRelationsForFlowVersionRequest
 //
@@ -6497,7 +6657,7 @@ func (client *Client) ListBindingRelationsForFlowVersionWithContext(ctx context.
 
 // Summary:
 //
-// # List Flows
+// 列举流程
 //
 // @param tmpReq - ListChatFlowRequest
 //
@@ -6587,7 +6747,7 @@ func (client *Client) ListChatFlowWithContext(ctx context.Context, tmpReq *ListC
 
 // Summary:
 //
-// # ChatFlow Template List
+// chatFlow模板列表
 //
 // @param request - ListChatFlowTemplateRequest
 //
@@ -6659,7 +6819,19 @@ func (client *Client) ListChatFlowTemplateWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # ListChatGroup
+// Retrieves a list of IM groups.
+//
+// Description:
+//
+//	Notice:
+//
+// Retrieving the IM group list via the API is a beta feature. Contact your account manager to be added to the allowlist.
+//
+// - You must have an IM group before you call this operation.
+//
+// - If you do not have an IM group, you can only create one by calling the [AddChatGroup](https://help.aliyun.com/document_detail/2932518.html) API.
+//
+// - The optional parameters for this operation filter the IM group list. If you do not specify any filters, the operation returns the complete IM group list.
 //
 // @param tmpReq - ListChatGroupRequest
 //
@@ -6749,7 +6921,17 @@ func (client *Client) ListChatGroupWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// # ListChatGroupParticipants
+// Lists the members of an IM group.
+//
+// Description:
+//
+//	Notice:
+//
+// This operation is an internal preview feature. Contact your account manager to request access.
+//
+// - Before calling this operation, ensure you have created an IM group with an invitation link, and that members have joined by using that link.
+//
+// - To create an IM group and add an invitation link, call the [AddChatGroup](https://help.aliyun.com/document_detail/2998429.html) and [AddChatGroupInviteLink](https://help.aliyun.com/document_detail/3019211.html) operations.
 //
 // @param tmpReq - ListChatGroupParticipantsRequest
 //
@@ -6947,7 +7129,7 @@ func (client *Client) ListChatappMessageWithContext(ctx context.Context, tmpReq 
 //
 // ### QPS limit
 //
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
 // @param tmpReq - ListChatappTemplateRequest
 //
@@ -7045,7 +7227,7 @@ func (client *Client) ListChatappTemplateWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 查询自定义受众组列表
+// Queries a list of custom audiences.
 //
 // @param tmpReq - ListCustomAudienceRequest
 //
@@ -7319,11 +7501,11 @@ func (client *Client) ListFacebookPostsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries a list of Flows.
+// Retrieves a list of WhatsApp flows.
 //
 // Description:
 //
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 5 requests per second (RPS) per account. Excess requests are throttled and may result in service interruptions.
 //
 // @param tmpReq - ListFlowRequest
 //
@@ -7393,7 +7575,7 @@ func (client *Client) ListFlowWithContext(ctx context.Context, tmpReq *ListFlowR
 
 // Summary:
 //
-// 列举流程组件分组
+// # ListFlowNodeGroup
 //
 // @param request - ListFlowNodeGroupRequest
 //
@@ -7525,7 +7707,7 @@ func (client *Client) ListFlowNodePrototypeV2WithContext(ctx context.Context, re
 
 // Summary:
 //
-// # List Flow Versions
+// 列举流程版本
 //
 // @param tmpReq - ListFlowVersionRequest
 //
@@ -7719,7 +7901,7 @@ func (client *Client) ListInstagramPostsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询实例列表
+// Lists instances.
 //
 // @param request - ListInstanceRequest
 //
@@ -7885,7 +8067,7 @@ func (client *Client) ListMarketingFlowWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 查询预算列表
+// Retrieves a list of budgets.
 //
 // @param tmpReq - ListMessageCampaignRequest
 //
@@ -7971,7 +8153,7 @@ func (client *Client) ListMessageCampaignWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 查询订阅token
+// Queries custom audiences and subscription tokens.
 //
 // @param request - ListMessengerSubscriptionTokenRequest
 //
@@ -8107,7 +8289,11 @@ func (client *Client) ListPageAdAccountWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the information about a list of quick-response (QR) codes that contain messages.
+// Queries message QR codes.
+//
+// Description:
+//
+// This API is limited to 5 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - ListPhoneMessageQrdlRequest
 //
@@ -8167,11 +8353,11 @@ func (client *Client) ListPhoneMessageQrdlWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries products in a product catalog.
+// Retrieves products in a catalog.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - ListProductRequest
 //
@@ -8255,7 +8441,7 @@ func (client *Client) ListProductWithContext(ctx context.Context, request *ListP
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 10 requests per second (RPS) per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
 // @param request - ListProductCatalogRequest
 //
@@ -8387,7 +8573,7 @@ func (client *Client) ListViberServiceMessageWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 模板列表查询
+// Lists message templates.
 //
 // @param request - ListWhatAppTemplateRequest
 //
@@ -8435,11 +8621,17 @@ func (client *Client) ListWhatAppTemplateWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// The code of the message template.
+// Modifies a message template. You can modify only templates that are unreviewed or have been rejected.
 //
 // Description:
 //
-// The name of the message template.
+// ### QPS limits
+//
+// The queries per second (QPS) limit for this API is 50 calls per second for each user. If you exceed this limit, your API calls are subject to rate limiting. This may affect your business. Make sure that you call this API within the specified limit.
+//
+// ### Status changes
+//
+// You can monitor changes in template status and quality through MNS or HTTP. For more information, see [Receipt messages](https://help.aliyun.com/document_detail/421545.html).
 //
 // @param tmpReq - ModifyChatappTemplateRequest
 //
@@ -8613,11 +8805,11 @@ func (client *Client) ModifyChatappTemplatePropertiesWithContext(ctx context.Con
 
 // Summary:
 //
-// Modifies the basic information about a Flow.
+// Modifies a flow.
 //
 // Description:
 //
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 5 queries per second (QPS) per account. Calls that exceed this limit trigger flow control, which can affect your business. Plan your API calls accordingly.
 //
 // @param tmpReq - ModifyFlowRequest
 //
@@ -8871,7 +9063,7 @@ func (client *Client) MoveContactToGroupWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// # Offline Flow Version
+// 下线流程版本
 //
 // @param tmpReq - OfflineFlowVersionRequest
 //
@@ -8949,7 +9141,7 @@ func (client *Client) OfflineFlowVersionWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// # Online Flow Version
+// 上线流程版本
 //
 // @param tmpReq - OnlineFlowVersionRequest
 //
@@ -9139,11 +9331,17 @@ func (client *Client) PauseMarketingFLowWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Publishes a Flow.
+// Publishes a WhatsApp flow.
 //
 // Description:
 //
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// - Before you call this operation, ensure that you have created a WhatsApp flow.
+//
+// - If you have not created a WhatsApp flow, call the [CreateFlow](https://help.aliyun.com/document_detail/2638742.html) operation to create one.
+//
+// #### QPS limit
+//
+// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled and may result in service interruptions.
 //
 // @param request - PublishFlowRequest
 //
@@ -9203,11 +9401,11 @@ func (client *Client) PublishFlowWithContext(ctx context.Context, request *Publi
 
 // Summary:
 //
-// Query the WhatsApp Business account you associate with ChatApp.
+// Queries the WhatsApp Business Account (WABA) that is bound to a customer account.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API has a per-user QPS limit of 10. Calls that exceed this limit are subject to flow control, which may impact your business. Make API calls at a reasonable rate.
 //
 // @param request - QueryChatappBindWabaRequest
 //
@@ -9267,11 +9465,11 @@ func (client *Client) QueryChatappBindWabaWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries phone numbers that receive messages and statuses of these numbers under a specified user.
+// Queries all phone numbers used for sending messages and their statuses for a customer.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - QueryChatappPhoneNumbersRequest
 //
@@ -9335,7 +9533,7 @@ func (client *Client) QueryChatappPhoneNumbersWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询实例
+// Gets the details of a specified instance.
 //
 // @param request - QueryInstanceRequest
 //
@@ -9435,11 +9633,11 @@ func (client *Client) QueryMMLActiveWithContext(ctx context.Context, request *Qu
 
 // Summary:
 //
-// Queries the business information of the account to which a specified phone number is bound.
+// Queries the business information of a phone number.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - QueryPhoneBusinessProfileRequest
 //
@@ -9503,7 +9701,7 @@ func (client *Client) QueryPhoneBusinessProfileWithContext(ctx context.Context, 
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 10 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
 // @param request - QueryWabaBusinessInfoRequest
 //
@@ -9563,7 +9761,7 @@ func (client *Client) QueryWabaBusinessInfoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Retrieve Flow
+// 获取流程
 //
 // @param tmpReq - ReadChatFlowRequest
 //
@@ -9633,7 +9831,7 @@ func (client *Client) ReadChatFlowWithContext(ctx context.Context, tmpReq *ReadC
 
 // Summary:
 //
-// # View chatFlow log settings
+// 查看chatFlow日志设置
 //
 // @param request - ReadChatFlowLogSettingRequest
 //
@@ -9689,7 +9887,7 @@ func (client *Client) ReadChatFlowLogSettingWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Get Flow Version
+// 获取流程版本
 //
 // @param tmpReq - ReadFlowVersionRequest
 //
@@ -9827,7 +10025,11 @@ func (client *Client) RemoveContactByIdWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 请求Whatsapp Conversion api
+// Sends a request to the WhatsApp Conversions API.
+//
+// Description:
+//
+// The China-specific QPS limit for a single user of this API operation is 100 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param tmpReq - RequestWhatsappConversionApiRequest
 //
@@ -9897,13 +10099,33 @@ func (client *Client) RequestWhatsappConversionApiWithContext(ctx context.Contex
 
 // Summary:
 //
-// Sends a message to multiple phone numbers by using ChatAPP at a time.
+// Sends bulk messages to multiple recipients.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// - You can call this operation to send messages in bulk. You can also send messages in the console. To do so, go to the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList), click a channel, and then choose **Message Sending**.
 //
-// You can send messages to up to 1,000 phone numbers in a single request.
+// - Before you call this operation, make sure that you have created a channel and have an approved template.
+//
+// - For a WhatsApp channel, you must [register and bind a WABA](t2012827.xdita#) and [add a phone number](t2012827.xdita#).
+//
+// - For a Messenger channel, you must [connect to a Facebook Page](t2746072.xdita#).
+//
+// - For an Instagram channel, you must [connect to an Instagram professional account](t2746079.xdita#).
+//
+// <props="intl">
+//
+// - For a Viber channel, you must [connect to an Instagram professional account](t2746079.xdita#).
+//
+// ### QPS limits
+//
+// - This operation allows a maximum of 10 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
+//
+// - A single request supports a maximum of 1,000 numbers.
+//
+// ### Status changes
+//
+// Message sending status can be monitored via Simple Message Service or HTTP callback. For details, see [Message receipts](https://help.aliyun.com/document_detail/421545.html).
 //
 // @param tmpReq - SendChatappMassMessageRequest
 //
@@ -10029,11 +10251,31 @@ func (client *Client) SendChatappMassMessageWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Sends messages by using ChatAPP.
+// Sends a ChatApp message.
 //
 // Description:
 //
-// You can call this operation up to 200 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// - Call this operation to send messages. You can also send messages manually in the console at <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage*	- > **Message Sending**.
+//
+// - Before calling this operation, you must create a channel and have an approved template.
+//
+// - For a WhatsApp channel, you must [register and bind a WABA](https://help.aliyun.com/document_detail/172335.html) and [add a phone number](https://help.aliyun.com/document_detail/2656131.html).
+//
+// - For a Messenger channel, you must [connect to a Facebook Page](https://help.aliyun.com/document_detail/2837713.html).
+//
+// - For an Instagram channel, you must [connect to an Instagram professional account](https://help.aliyun.com/document_detail/2837720.html).
+//
+// <props="intl">
+//
+// - For a Viber channel, you must [apply for a service ID](https://help.aliyun.com/document_detail/2807995.html).
+//
+// ### QPS limit
+//
+// The QPS limit for this operation is 250 per user. API calls that exceed this limit are throttled. To prevent service disruptions, ensure your calls stay within this limit.
+//
+// ### Status changes
+//
+// You can receive notifications about message status changes by using MNS or HTTP callbacks. For more information, see [message receipts](https://help.aliyun.com/document_detail/421545.html).
 //
 // @param tmpReq - SendChatappMessageRequest
 //
@@ -10227,7 +10469,65 @@ func (client *Client) SendChatappMessageWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 同步business app历史记录等
+// Submits the result of a verification code check.
+//
+// @param request - SubmitVerifyCodeResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitVerifyCodeResultResponse
+func (client *Client) SubmitVerifyCodeResultWithContext(ctx context.Context, request *SubmitVerifyCodeResultRequest, runtime *dara.RuntimeOptions) (_result *SubmitVerifyCodeResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MessageId) {
+		query["MessageId"] = request.MessageId
+	}
+
+	if !dara.IsNil(request.Result) {
+		query["Result"] = request.Result
+	}
+
+	if !dara.IsNil(request.To) {
+		query["To"] = request.To
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitVerifyCodeResult"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitVerifyCodeResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Synchronizes the business app history.
+//
+// Description:
+//
+// - Before you call this operation, you must configure a webhook for messages and receipts by calling [UpdatePhoneWebhook](https://help.aliyun.com/document_detail/600763.html) and [UpdateAccountWebhook](https://help.aliyun.com/document_detail/600765.html). Otherwise, history synchronization will fail because the system cannot find the configured webhook URL.
+//
+// - This is a one-time operation. Subsequent calls have no effect.
 //
 // @param request - SyncBusinessAppHistoryRequest
 //
@@ -10343,7 +10643,7 @@ func (client *Client) SyncFlowWithContext(ctx context.Context, request *SyncFlow
 
 // Summary:
 //
-// 同步查询预算
+// Synchronously queries the budget.
 //
 // @param request - SyncMessageCampaignRequest
 //
@@ -10403,7 +10703,7 @@ func (client *Client) SyncMessageCampaignWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询Messenger订阅token
+// Retrieves the Messenger subscription token.
 //
 // @param request - SyncMessengerSubscriptionTokenRequest
 //
@@ -10471,11 +10771,17 @@ func (client *Client) SyncMessengerSubscriptionTokenWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Trigger an Online ChatFlow
+// Triggers an online chat flow that has a manual trigger.
 //
 // Description:
 //
-// After triggering an online flow, if your flow contains components that incur costs for cloud products, such as message sending or function calls, please ensure you fully understand the billing methods and prices of the related products before using this interface.
+// - You can call this operation to trigger a published version of a flow that has a manual trigger. You can also trigger the flow from the [Marketing Campaign Management](https://chatapp.console.aliyun.com/MarketingActivityManagement) page if the flow is associated with a marketing campaign.
+//
+// - Before you call this operation, make sure that the flow has a manual trigger and is published.
+//
+// - If a flow with a manual trigger does not have a published version, you must publish it. In [Chat Flow](https://chatapp.console.aliyun.com/ChatFlowBuilder), you can click the flow name to open the canvas and publish the version. Alternatively, you can call the [OnlineFlowVersion](https://help.aliyun.com/document_detail/2937203.html) API to publish the version.
+//
+// - If your flow contains components that incur costs, such as message sending or function invocations, make sure that you understand the billing methods and pricing for these products before you trigger the flow.
 //
 // @param tmpReq - TriggerChatFlowRequest
 //
@@ -10617,7 +10923,7 @@ func (client *Client) UnbindDmAccountWithContext(ctx context.Context, request *U
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 10 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
 // @param request - UpdateAccountWebhookRequest
 //
@@ -10685,7 +10991,7 @@ func (client *Client) UpdateAccountWebhookWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 修改viber申请单
+// Modifies a Viber application.
 //
 // @param tmpReq - UpdateAuditRequestRequest
 //
@@ -10759,7 +11065,7 @@ func (client *Client) UpdateAuditRequestWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// # Get Process
+// 获取流程
 //
 // @param tmpReq - UpdateChatFlowRequest
 //
@@ -10837,7 +11143,7 @@ func (client *Client) UpdateChatFlowWithContext(ctx context.Context, tmpReq *Upd
 
 // Summary:
 //
-// # Modify chatFlow log settings
+// 修改chatFlow日志设置
 //
 // @param request - UpdateChatFlowLogSettingRequest
 //
@@ -10901,7 +11207,17 @@ func (client *Client) UpdateChatFlowLogSettingWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # UpdateChatGroup
+// Updates the information for an Instant Messaging (IM) group.
+//
+// Description:
+//
+//	Notice:
+//
+// This operation is in beta testing for Meta. Contact your account manager to be added to the allowlist before using this endpoint.
+//
+// - Before you call this operation, ensure that you have created an IM group.
+//
+// - If you do not have an IM group, call the [AddChatGroup](https://help.aliyun.com/document_detail/2932518.html) operation to create one.
 //
 // @param request - UpdateChatGroupRequest
 //
@@ -10981,11 +11297,11 @@ func (client *Client) UpdateChatGroupWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Modifies the business settings of a phone number.
+// Updates the commerce settings for a phone number.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - UpdateCommerceSettingRequest
 //
@@ -11149,9 +11465,9 @@ func (client *Client) UpdateContactByIdWithContext(ctx context.Context, tmpReq *
 //
 // ### [](#qps-)QPS limit
 //
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
 //
-// This operation will directly obtain data from Facebook, which sets an upper limit on the total number of calls for operations. We recommend that you take note of the limit when you call this operation.
+// This operation retrieves data directly from Meta. Meta imposes its own rate limits on the total number of calls. Stay within the specified limit.
 //
 // @param tmpReq - UpdateConversationalAutomationRequest
 //
@@ -11233,7 +11549,11 @@ func (client *Client) UpdateConversationalAutomationWithContext(ctx context.Cont
 
 // Summary:
 //
-// Updates a Flow by using JSON content.
+// Updates the content of a WhatsApp flow by using a JSON definition.
+//
+// Description:
+//
+// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled and may result in service interruptions.
 //
 // @param request - UpdateFlowJSONAssetRequest
 //
@@ -11297,7 +11617,7 @@ func (client *Client) UpdateFlowJSONAssetWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Update flow version, used for updating the flow DSL on the canvas
+// 更新流程版本，用于画布更新流程dsl
 //
 // @param tmpReq - UpdateFlowVersionRequest
 //
@@ -11439,7 +11759,7 @@ func (client *Client) UpdateGroupNameWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// 修改实例
+// Updates the specified instance.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -11625,7 +11945,17 @@ func (client *Client) UpdateMarketingFLowWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Updates the encryption public key of a phone number.
+// Updates the encryption key for a phone number.
+//
+// Description:
+//
+// - Before you call this API, you must add and verify a phone number for your WhatsApp Business Account (WABA).
+//
+// - If you do not have a phone number for your WABA, call the [GetChatappVerifyCode](https://help.aliyun.com/document_detail/600746.html) and [ChatappVerifyAndRegister](https://help.aliyun.com/document_detail/600770.html) APIs to obtain a verification code and verifythe phone number.
+//
+// #### QPS limit
+//
+// This API is limited to 5 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - UpdatePhoneEncryptionPublicKeyRequest
 //
@@ -11689,7 +12019,17 @@ func (client *Client) UpdatePhoneEncryptionPublicKeyWithContext(ctx context.Cont
 
 // Summary:
 //
-// Modifies a quick-response (QR) code that contains a message.
+// Updates a message QR code.
+//
+// Description:
+//
+// - After you update a message QR code, users can no longer scan the original QR code to start a chat with the associated business phone number. Use this operation with caution.
+//
+// - If you have not created a message QR code, call the [CreatePhoneMessageQrdl](https://help.aliyun.com/document_detail/2638749.html) API to create one.
+//
+// #### QPS limit
+//
+// This API is limited to 5 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. Call this API within the specified limit.
 //
 // @param request - UpdatePhoneMessageQrdlRequest
 //
@@ -11763,9 +12103,9 @@ func (client *Client) UpdatePhoneMessageQrdlWithContext(ctx context.Context, req
 //
 // The HTTP status code returned.
 //
-// \\	- A value of OK indicates that the call is successful.
+// \\\\	- A value of OK indicates that the call is successful.
 //
-// \\	- Other values indicate that the call fails. For more information, see [Error codes]\\(~~196974~~).
+// \\\\	- Other values indicate that the call fails. For more information, see \\[Error codes]\\\\(~~196974~~).
 //
 // Description:
 //
@@ -11909,7 +12249,7 @@ func (client *Client) UpdateWabaMmlStatusWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Whatsapp 语音电话
+// Places, answers, or ends WhatsApp voice calls.
 //
 // @param tmpReq - WhatsappCallRequest
 //

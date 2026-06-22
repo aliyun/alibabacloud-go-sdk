@@ -26,12 +26,18 @@ type iUpdateAuditRequestShrinkRequest interface {
 }
 
 type UpdateAuditRequestShrinkRequest struct {
+	// Viber audit items.
+	//
 	// This parameter is required.
 	AuditRecordShrink *string `json:"AuditRecord,omitempty" xml:"AuditRecord,omitempty"`
+	// The audit result.
+	//
 	// example:
 	//
 	// unAudit
 	AuditResult *string `json:"AuditResult,omitempty" xml:"AuditResult,omitempty"`
+	// The Space ID of the ISV sub-customer or the instance ID. View it on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -42,6 +48,8 @@ type UpdateAuditRequestShrinkRequest struct {
 	//
 	// 1500111740532860
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The request number.
+	//
 	// This parameter is required.
 	//
 	// example:

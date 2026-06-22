@@ -22,39 +22,39 @@ type iGetChatappVerifyCodeResponseBody interface {
 }
 
 type GetChatappVerifyCodeResponseBody struct {
-	// The details about the access denial.
+	// Details about the access denial.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
+	// The status code of the request.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// - A value of OK indicates that the request is successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
-	// None.
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1612C226-E271-4CFE-9F18-4066D550F91B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the call is successful.
 	//
-	// 	- **true**: The call was successful.
+	// - **true**: successful.
 	//
-	// 	- **false**: The call failed.
+	// - **false**: failed.
 	//
 	// example:
 	//

@@ -24,23 +24,42 @@ type iGetMessageCampaignInsightsResponseBody interface {
 }
 
 type GetMessageCampaignInsightsResponseBody struct {
+	// Details about the access denial.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code. Valid values:
+	//
+	// - OK: The request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*GetMessageCampaignInsightsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error description.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// s39**
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: successful.
+	//
+	// - false: failed.
+	//
 	// example:
 	//
 	// true
@@ -123,42 +142,62 @@ func (s *GetMessageCampaignInsightsResponseBody) Validate() error {
 }
 
 type GetMessageCampaignInsightsResponseBodyData struct {
+	// The start time.
+	//
 	// example:
 	//
 	// 2025-07-01
 	DateStart *string `json:"DateStart,omitempty" xml:"DateStart,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
 	// 2025-07-29
 	DateStop *string `json:"DateStop,omitempty" xml:"DateStop,omitempty"`
+	// The average cost per delivered message.
+	//
 	// example:
 	//
 	// 2755
 	MarketingMessagesCostPerDelivered *string `json:"MarketingMessagesCostPerDelivered,omitempty" xml:"MarketingMessagesCostPerDelivered,omitempty"`
+	// The average cost per message link click. This metric excludes messages sent to Europe, Argentina, Türkiye, South Korea, and Japan.
+	//
 	// example:
 	//
 	// 268
 	MarketingMessagesCostPerLinkBtnClick *string `json:"MarketingMessagesCostPerLinkBtnClick,omitempty" xml:"MarketingMessagesCostPerLinkBtnClick,omitempty"`
+	// The number of messages that are sent by the business and successfully delivered to users. Some messages may fail to deliver if a user\\"s device is unavailable. This metric excludes messages delivered to Europe and Japan. In some cases, this metric is an estimate. The value may differ from the data on your bill due to minor discrepancies during data processing.
+	//
 	// example:
 	//
 	// 2755
 	MarketingMessagesDelivered *string `json:"MarketingMessagesDelivered,omitempty" xml:"MarketingMessagesDelivered,omitempty"`
+	// The message delivery rate.
+	//
 	// example:
 	//
 	// 79.419238
 	MarketingMessagesDeliveryRate *string `json:"MarketingMessagesDeliveryRate,omitempty" xml:"MarketingMessagesDeliveryRate,omitempty"`
+	// The number of times users click or tap a marketing message that take users to an on-Meta or off-Meta destination, as specified by the advertiser. This metric excludes messages sent to Europe, Argentina, Türkiye, South Korea, and Japan.
+	//
 	// example:
 	//
 	// 268
 	MarketingMessagesLinkBtnClick *string `json:"MarketingMessagesLinkBtnClick,omitempty" xml:"MarketingMessagesLinkBtnClick,omitempty"`
+	// The percentage of delivered messages that received a link click. This metric excludes messages sent to Europe, Argentina, Türkiye, South Korea, and Japan.
+	//
 	// example:
 	//
 	// 79.419238
 	MarketingMessagesLinkBtnClickRate *string `json:"MarketingMessagesLinkBtnClickRate,omitempty" xml:"MarketingMessagesLinkBtnClickRate,omitempty"`
+	// The number of read messages divided by the number of delivered messages. The read status of some messages may not be captured if a customer disables read receipts. This metric excludes messages sent to Europe and Japan.
+	//
 	// example:
 	//
 	// 79.419238
 	MarketingMessagesReadRate *string `json:"MarketingMessagesReadRate,omitempty" xml:"MarketingMessagesReadRate,omitempty"`
+	// The total amount spent on a campaign, message group, or message during over its lifetime.
+	//
 	// example:
 	//
 	// 38.87

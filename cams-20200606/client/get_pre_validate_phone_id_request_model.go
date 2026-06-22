@@ -22,15 +22,15 @@ type GetPreValidatePhoneIdRequest struct {
 	//
 	// example:
 	//
-	// 861380000
+	// 86138****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The verification code provided when you purchased the pre-registered phone number.
+	// The verification code provided when you purchased the pre-validated phone number.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 208393
+	// 2083**
 	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
 }
 

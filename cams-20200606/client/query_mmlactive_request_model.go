@@ -22,7 +22,7 @@ type iQueryMMLActiveRequest interface {
 type QueryMMLActiveRequest struct {
 	// example:
 	//
-	// erer-retreerew**
+	// 示例值示例值
 	CustSpaceId          *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

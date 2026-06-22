@@ -26,27 +26,48 @@ type iListInstanceResponseBody interface {
 }
 
 type ListInstanceResponseBody struct {
+	// The details of the access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - `OK` indicates that the request was successful.
+	//
+	// - For other error codes, see the [Error Code List](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// An array of objects, each representing an instance.
 	Data []*ListInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The response message.
+	//
 	// example:
 	//
 	// NULL
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2993*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call succeeded.
+	//
+	// - **true**: The call succeeded.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries that match the specified criteria.
+	//
 	// example:
 	//
 	// 15
@@ -138,58 +159,86 @@ func (s *ListInstanceResponseBody) Validate() error {
 }
 
 type ListInstanceResponseBodyData struct {
+	// The channel type.
+	//
 	// example:
 	//
 	// VIBER
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The contact email address.
+	//
 	// example:
 	//
 	// ma**@gmail.com
 	ContactMail *string `json:"ContactMail,omitempty" xml:"ContactMail,omitempty"`
+	// The country ID.
+	//
 	// example:
 	//
 	// 1
 	CountryId *string `json:"CountryId,omitempty" xml:"CountryId,omitempty"`
+	// The customer space ID.
+	//
 	// example:
 	//
 	// dad-gf**
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The ID of the associated Facebook Business Manager account.
+	//
 	// example:
 	//
 	// 1
 	FacebookBmId *string `json:"FacebookBmId,omitempty" xml:"FacebookBmId,omitempty"`
+	// The instance description.
+	//
 	// example:
 	//
 	// ins
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 29339****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// viber_ins
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The ISV terms.
+	//
 	// example:
 	//
 	// aa
 	IsvTerms *string `json:"IsvTerms,omitempty" xml:"IsvTerms,omitempty"`
+	// The office address.
+	//
 	// example:
 	//
-	// 示例值
+	// example
 	OfficeAddress *string `json:"OfficeAddress,omitempty" xml:"OfficeAddress,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// 12
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the region where the resource is located.
+	//
 	// example:
 	//
 	// 11
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The state of the instance.
+	//
 	// example:
 	//
 	// published
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The time when the instance was submitted.
+	//
 	// example:
 	//
 	// 2023-12-12 00:00:00

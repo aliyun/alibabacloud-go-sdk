@@ -24,7 +24,7 @@ type ListInstagramPageRequest struct {
 	//
 	// example:
 	//
-	// inst-8t47hh***5pyj0ps
+	// 示例值示例值示例值
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

@@ -24,23 +24,42 @@ type iUpdateInstanceResponseBody interface {
 }
 
 type UpdateInstanceResponseBody struct {
+	// Details about why access was denied.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code of the response.
+	//
+	// - `OK` indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data object.
 	Data *UpdateInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message. If the request fails, this field contains error details.
+	//
 	// example:
 	//
 	// NULL
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// false
@@ -119,30 +138,44 @@ func (s *UpdateInstanceResponseBody) Validate() error {
 }
 
 type UpdateInstanceResponseBodyData struct {
+	// The channel type.
+	//
 	// example:
 	//
 	// VIBER
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// des
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance description.
+	//
 	// example:
 	//
 	// des
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 293992992
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance.
+	//
 	// example:
 	//
 	// ins
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The ID of the region where the instance is located.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The time when the instance information was submitted.
+	//
 	// example:
 	//
 	// 2020-12-01 00:00:00

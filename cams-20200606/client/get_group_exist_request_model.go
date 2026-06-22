@@ -26,17 +26,14 @@ type iGetGroupExistRequest interface {
 type GetGroupExistRequest struct {
 	// example:
 	//
-	// ALICOM_OPAAS
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// example:
-	//
-	// {}
+	// 示例值示例值
+	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// aaa
+	// 示例值示例值
 	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

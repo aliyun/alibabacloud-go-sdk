@@ -40,20 +40,18 @@ type iListChatappTemplateRequest interface {
 type ListChatappTemplateRequest struct {
 	// The review state of the template. Valid values:
 	//
-	// 	- **pass**: The template is approved.
+	// - **pass**: The template is approved.
 	//
-	// 	- **fail**: The template is rejected.
+	// - **fail**: The template is rejected.
 	//
-	// 	- **auditing**: The template is being reviewed.
+	// - **auditing**: The template is being reviewed.
 	//
-	// 	- **unaudit**: The review is suspended.
+	// - **unaudit**: The review is suspended.
 	//
 	// example:
 	//
 	// pass
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// The category of the message template.
-	//
 	// example:
 	//
 	// AUTHENTICATION
@@ -74,7 +72,7 @@ type ListChatappTemplateRequest struct {
 	//
 	// The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
 	//
-	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
+	// > CustWabaId is an obsolete parameter. Use CustSpaceId instead.
 	//
 	// example:
 	//
@@ -109,9 +107,9 @@ type ListChatappTemplateRequest struct {
 	ResourceOwnerId      *int64                          `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the message template.
 	//
-	// 	- **WHATSAPP**
+	// - **WHATSAPP**
 	//
-	// 	- **VIBER**
+	// - **VIBER**
 	//
 	// example:
 	//

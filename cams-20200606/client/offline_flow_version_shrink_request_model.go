@@ -28,36 +28,23 @@ type iOfflineFlowVersionShrinkRequest interface {
 }
 
 type OfflineFlowVersionShrinkRequest struct {
-	// Business tenant code, default is “ALICOM_OPAAS”.
-	//
 	// example:
 	//
-	// ALICOM_OPAAS
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Business extension information, default is “{}”.
-	//
-	// example:
-	//
-	// {}
+	// 示例值
+	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
-	// Flow code.
-	//
 	// example:
 	//
-	// f4912c16943b4dfba44bd6fedacf****
+	// 示例值示例值
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
-	// Flow version
-	//
 	// example:
 	//
-	// 1
+	// 示例值示例值
 	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Flow remarks
-	//
 	// example:
 	//
-	// We don\\"t need this old version.
+	// 示例值
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

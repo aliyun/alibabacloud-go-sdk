@@ -23,19 +23,19 @@ type iListPhoneMessageQrdlResponseBody interface {
 
 type ListPhoneMessageQrdlResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// If OK is returned, the request was successful.
+	// A value of OK indicates that the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned data object.
 	Data []*ListPhoneMessageQrdlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Error description information.
+	// The error message.
 	//
 	// example:
 	//
-	// None
+	// 无
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -112,13 +112,13 @@ func (s *ListPhoneMessageQrdlResponseBody) Validate() error {
 }
 
 type ListPhoneMessageQrdlResponseBodyData struct {
-	// The URL of the deep link.
+	// The deep link URL.
 	//
 	// example:
 	//
 	// https://wa.msg/
 	DeepLinkUrl *string `json:"DeepLinkUrl,omitempty" xml:"DeepLinkUrl,omitempty"`
-	// The format of the generated image.
+	// The type of the generated image.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type ListPhoneMessageQrdlResponseBodyData struct {
 	//
 	// example:
 	//
-	// 8613800
+	// 86138009****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// The message content.
 	//
@@ -142,7 +142,7 @@ type ListPhoneMessageQrdlResponseBodyData struct {
 	//
 	// https://img.png
 	QrImageUrl *string `json:"QrImageUrl,omitempty" xml:"QrImageUrl,omitempty"`
-	// The mode of the quick-response (QR) code.
+	// The code.
 	//
 	// example:
 	//

@@ -24,9 +24,6 @@ type iDeleteContactsByIdsResponseBody interface {
 }
 
 type DeleteContactsByIdsResponseBody struct {
-	// example:
-	//
-	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
@@ -35,11 +32,8 @@ type DeleteContactsByIdsResponseBody struct {
 	// example:
 	//
 	// 示例值示例值
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// True
-	Model map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
 	// example:
 	//
 	// 示例值示例值

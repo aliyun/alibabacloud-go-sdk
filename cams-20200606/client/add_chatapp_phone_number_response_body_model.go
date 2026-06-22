@@ -22,31 +22,39 @@ type iAddChatappPhoneNumberResponseBody interface {
 }
 
 type AddChatappPhoneNumberResponseBody struct {
-	// com.alicom.access.oxs.client.channel.aliyun.flow.AyFlowExecuteService
+	// Details about the access denial.
 	//
 	// example:
 	//
-	// http://pop_access_slb_sgvpc/#vpc
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The phone number.
+	// The status code of the request.
+	//
+	// - A value of OK indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// com.alicom.access.oxs.client.channel.aliyun.flow.dto.AyCommonApiRequest
+	// The error message.
 	//
 	// example:
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// formData
+	// The request ID.
 	//
 	// example:
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 13800000000
+	// Indicates whether the call was successful.
+	//
+	// - **true**: successful.
+	//
+	// - **false**: failed.
 	//
 	// example:
 	//

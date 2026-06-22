@@ -24,11 +24,8 @@ type iListAllGroupsShrinkRequest interface {
 type ListAllGroupsShrinkRequest struct {
 	// example:
 	//
-	// ALICOM_OPAAS
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// example:
-	//
-	// {}
+	// 示例值示例值示例值
+	BizCode              *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtendShrink      *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

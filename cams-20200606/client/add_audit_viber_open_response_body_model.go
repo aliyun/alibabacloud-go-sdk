@@ -24,26 +24,46 @@ type iAddAuditViberOpenResponseBody interface {
 }
 
 type AddAuditViberOpenResponseBody struct {
+	// Detailed information about the access denial.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response status code.
+	//
+	// - `OK`: The request succeeded.
+	//
+	// - For other values, see [Error Codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	//
 	// example:
 	//
 	// 122
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// A message describing the result of the request.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 2121-112
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request succeeded.
+	//
+	// - **true**: The request succeeded.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

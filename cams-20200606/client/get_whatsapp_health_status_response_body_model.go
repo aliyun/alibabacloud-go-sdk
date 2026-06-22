@@ -28,13 +28,13 @@ type GetWhatsappHealthStatusResponseBody struct {
 	//
 	// example:
 	//
-	// None
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response code.
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - The value OK indicates that the request was successful.
 	//
-	// 	- For more information about other response codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For more information about other response codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetWhatsappHealthStatusResponseBody struct {
 	//
 	// example:
 	//
-	// None
+	// 无
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -56,9 +56,9 @@ type GetWhatsappHealthStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

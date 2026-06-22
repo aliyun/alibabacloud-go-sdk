@@ -24,7 +24,7 @@ type iDeleteMarketingFlowRequest interface {
 type DeleteMarketingFlowRequest struct {
 	// example:
 	//
-	// 1111
+	// 示例值示例值
 	ActivityCode *string `json:"ActivityCode,omitempty" xml:"ActivityCode,omitempty"`
 	// example:
 	//

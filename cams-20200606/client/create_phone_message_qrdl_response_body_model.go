@@ -23,7 +23,7 @@ type iCreatePhoneMessageQrdlResponseBody interface {
 
 type CreatePhoneMessageQrdlResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// If OK is returned, the request was successful.
+	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -35,7 +35,7 @@ type CreatePhoneMessageQrdlResponseBody struct {
 	//
 	// example:
 	//
-	// none
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -108,13 +108,13 @@ func (s *CreatePhoneMessageQrdlResponseBody) Validate() error {
 }
 
 type CreatePhoneMessageQrdlResponseBodyData struct {
-	// The URL of the deep link.
+	// The deep link URL.
 	//
 	// example:
 	//
 	// https://wa.qrdl/
 	DeepLinkUrl *string `json:"DeepLinkUrl,omitempty" xml:"DeepLinkUrl,omitempty"`
-	// The format of the generated image.
+	// The type of the generated image.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type CreatePhoneMessageQrdlResponseBodyData struct {
 	//
 	// example:
 	//
-	// 8613800
+	// 86138009****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// The message content.
 	//
@@ -138,7 +138,7 @@ type CreatePhoneMessageQrdlResponseBodyData struct {
 	//
 	// http://img.png
 	QrImageUrl *string `json:"QrImageUrl,omitempty" xml:"QrImageUrl,omitempty"`
-	// The mode of the quick-response (QR) code.
+	// The code.
 	//
 	// example:
 	//

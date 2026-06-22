@@ -24,20 +24,42 @@ type iWhatsappCallResponseBody interface {
 }
 
 type WhatsappCallResponseBody struct {
+	// Details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - OK: The request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error description.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
-	Message *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model   *WhatsappCallResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// None
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned result.
+	Model *WhatsappCallResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// xik-x**
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// false
@@ -116,9 +138,11 @@ func (s *WhatsappCallResponseBody) Validate() error {
 }
 
 type WhatsappCallResponseBodyModel struct {
+	// The unique identifier for each call.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// wamid-xx**
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 }
 

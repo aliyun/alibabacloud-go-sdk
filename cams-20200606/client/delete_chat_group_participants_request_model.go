@@ -28,28 +28,41 @@ type iDeleteChatGroupParticipantsRequest interface {
 }
 
 type DeleteChatGroupParticipantsRequest struct {
+	// The business number. You can obtain the business number by calling the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8613800**
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// The channel type. Valid value:
+	//
+	// - **WHATSAPP**
+	//
+	// > Currently, only the WhatsApp channel is supported.
+	//
 	// example:
 	//
-	// WHATSAPP。
+	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The space ID of the ISV sub-customer or the instance ID. This ID is also the channel ID. You can find the channel ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cams-**
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The group ID. You can obtain the group ID by calling the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// EA93UU****
-	GroupId              *string                                   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// A list of group members to remove.
 	List                 []*DeleteChatGroupParticipantsRequestList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	OwnerId              *int64                                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string                                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -150,6 +163,8 @@ func (s *DeleteChatGroupParticipantsRequest) Validate() error {
 }
 
 type DeleteChatGroupParticipantsRequestList struct {
+	// The participant number of the group member. You can obtain the participant numbers of group members by calling the [ListChatGroupParticipants](https://help.aliyun.com/document_detail/2932628.html) operation.
+	//
 	// example:
 	//
 	// 86138***

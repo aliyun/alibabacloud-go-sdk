@@ -26,13 +26,13 @@ type iGetMigrationVerifyCodeRequest interface {
 }
 
 type GetMigrationVerifyCodeRequest struct {
-	// The space ID of the user under the independent software vendor (ISV) account.
+	// The Space ID of the Independent Software Vendor (ISV) sub-customer.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 293483938849493
+	// 29348393884****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// The language.
 	//
@@ -42,7 +42,7 @@ type GetMigrationVerifyCodeRequest struct {
 	//
 	// zh_CN
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	// The method to obtain the verification code. Valid values: SMS and VOICE.
+	// The verification method.
 	//
 	// This parameter is required.
 	//
@@ -51,13 +51,13 @@ type GetMigrationVerifyCodeRequest struct {
 	// sms
 	Method  *string `json:"Method,omitempty" xml:"Method,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Phone number.
+	// The phone number.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 8613800001234
+	// 861380000****
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

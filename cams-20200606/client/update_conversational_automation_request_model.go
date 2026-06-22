@@ -157,7 +157,7 @@ type UpdateConversationalAutomationRequestCommands struct {
 	//
 	// example:
 	//
-	// Command 1.
+	// Command 1
 	CommandDescription *string `json:"CommandDescription,omitempty" xml:"CommandDescription,omitempty"`
 	// The command name.
 	//

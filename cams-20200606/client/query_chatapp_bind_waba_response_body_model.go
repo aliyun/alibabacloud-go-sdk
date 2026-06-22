@@ -24,41 +24,41 @@ type iQueryChatappBindWabaResponseBody interface {
 }
 
 type QueryChatappBindWabaResponseBody struct {
-	// The details about the access denial.
+	// The access denial details.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
+	// The request status code.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// - A value of `OK` indicates the request was successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *QueryChatappBindWabaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request was successful:
 	//
-	// 	- **true**
+	// - `true`: The request was successful.
 	//
-	// 	- **false**
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -138,31 +138,29 @@ func (s *QueryChatappBindWabaResponseBody) Validate() error {
 }
 
 type QueryChatappBindWabaResponseBodyData struct {
-	// The review state of the WhatsApp Business account (WABA).
+	// The account review status. Valid values:
 	//
-	// >  Valid values:
+	// - `PENDING`: The account is under review.
 	//
-	// 	- PENDING: The WABA is to be reviewed.
+	// - `APPROVED`: The account is approved.
 	//
-	// 	- APPROVED: The WABA was approved.
+	// - `REJECTED`: The account is rejected.
 	//
-	// 	- REJECTED: The WABA was rejected.
-	//
-	// 	- DISABLED: The WABA was forbidden.
+	// - `DISABLED`: The account is disabled.
 	//
 	// example:
 	//
 	// APPROVED
 	AccountReviewStatus *string `json:"AccountReviewStatus,omitempty" xml:"AccountReviewStatus,omitempty"`
-	// WABA related information.
+	// Details about the WABA account.
 	AuthInternationalRateEligibility map[string]interface{} `json:"AuthInternationalRateEligibility,omitempty" xml:"AuthInternationalRateEligibility,omitempty"`
-	// The business ID.
+	// The Business platform ID.
 	//
 	// example:
 	//
 	// 19293988***
 	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// The business name.
+	// The Business platform name.
 	//
 	// example:
 	//
@@ -174,7 +172,7 @@ type QueryChatappBindWabaResponseBodyData struct {
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The ID of the WhatsApp Business account.
+	// The WABA account ID.
 	//
 	// example:
 	//
@@ -184,25 +182,25 @@ type QueryChatappBindWabaResponseBodyData struct {
 	//
 	// N
 	IsOnBizApp *string `json:"IsOnBizApp,omitempty" xml:"IsOnBizApp,omitempty"`
-	// The Marketing Messaging Lite status.
+	// The MML status.
 	//
 	// example:
 	//
 	// Y
 	MarketingMessageLiteStatus *string `json:"MarketingMessageLiteStatus,omitempty" xml:"MarketingMessageLiteStatus,omitempty"`
-	// The namespace of the message template.
+	// The template namespace.
 	//
 	// example:
 	//
-	// 90E63D28-E31D-1EB2-8939-A9486641****
+	// 93e6b26e_8a67_4163_a093_ebfe645a66b0
 	MessageTemplateNamespace *string `json:"MessageTemplateNamespace,omitempty" xml:"MessageTemplateNamespace,omitempty"`
-	// The name of the WhatsApp Business account.
+	// The WABA account name.
 	//
 	// example:
 	//
 	// Alibaba
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The start time when the authentication-international rate applies.
+	// The international rate capability qualification.
 	//
 	// example:
 	//

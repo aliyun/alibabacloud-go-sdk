@@ -20,13 +20,13 @@ type iGetChatappUploadAuthorizationRequest interface {
 }
 
 type GetChatappUploadAuthorizationRequest struct {
-	// The space ID of the RAM user within the independent software vendor (ISV) account.
+	// The space ID of ISV sub-customer.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 293483938849493
+	// 29348393884****
 	CustSpaceId          *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

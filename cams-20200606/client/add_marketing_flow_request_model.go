@@ -57,10 +57,7 @@ type AddMarketingFlowRequest struct {
 	// example:
 	//
 	// 示例值
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// example:
-	//
-	// {}
+	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	// example:
 	//
@@ -80,11 +77,8 @@ type AddMarketingFlowRequest struct {
 	// example:
 	//
 	// 示例值
-	ParamFlag *string `json:"ParamFlag,omitempty" xml:"ParamFlag,omitempty"`
-	// example:
-	//
-	// {}
-	Params map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
+	ParamFlag *string                `json:"ParamFlag,omitempty" xml:"ParamFlag,omitempty"`
+	Params    map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
 	// example:
 	//
 	// 示例值

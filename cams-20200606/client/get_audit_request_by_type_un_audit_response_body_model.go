@@ -24,22 +24,19 @@ type iGetAuditRequestByTypeUnAuditResponseBody interface {
 }
 
 type GetAuditRequestByTypeUnAuditResponseBody struct {
-	// example:
-	//
-	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// OK
+	// 示例值示例值示例值
 	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *GetAuditRequestByTypeUnAuditResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// example:
 	//
-	// success
+	// 示例值示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 90E63D28-E31D-1EB2-8939-A9486***
+	// 示例值示例值
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
@@ -121,58 +118,56 @@ func (s *GetAuditRequestByTypeUnAuditResponseBody) Validate() error {
 type GetAuditRequestByTypeUnAuditResponseBodyData struct {
 	// example:
 	//
-	// 21432
+	// 示例值示例值
 	AliUid      *string                                                  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	AuditRecord *GetAuditRequestByTypeUnAuditResponseBodyDataAuditRecord `json:"AuditRecord,omitempty" xml:"AuditRecord,omitempty" type:"Struct"`
 	// example:
 	//
-	// pass
+	// 示例值示例值
 	AuditResult *string `json:"AuditResult,omitempty" xml:"AuditResult,omitempty"`
 	// example:
 	//
-	// 20250106
+	// 示例值
 	AuditTime *string `json:"AuditTime,omitempty" xml:"AuditTime,omitempty"`
 	// example:
 	//
-	// 11
+	// 示例值示例值示例值
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	// example:
 	//
-	// 1789200
+	// 示例值示例值
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// example:
 	//
-	// 20251624
+	// 示例值示例值示例值
 	GmtModifier *string `json:"GmtModifier,omitempty" xml:"GmtModifier,omitempty"`
-	// ID
-	//
 	// example:
 	//
-	// id
+	// 示例值示例值
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// example:
 	//
-	// 475646
+	// 示例值示例值
 	MaapServiceNo *string `json:"MaapServiceNo,omitempty" xml:"MaapServiceNo,omitempty"`
 	// example:
 	//
-	// 1
+	// 示例值示例值示例值
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
 	// example:
 	//
-	// 45345435435
+	// 示例值示例值示例值
 	RequestNo *string `json:"RequestNo,omitempty" xml:"RequestNo,omitempty"`
 	// example:
 	//
-	// viber_open
+	// 示例值示例值
 	RequestType *string `json:"RequestType,omitempty" xml:"RequestType,omitempty"`
 	// example:
 	//
-	// A
+	// 示例值示例值
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// example:
 	//
-	// 345436456546
+	// 示例值示例值
 	SubscriberCode *string `json:"SubscriberCode,omitempty" xml:"SubscriberCode,omitempty"`
 }
 
@@ -322,91 +317,89 @@ func (s *GetAuditRequestByTypeUnAuditResponseBodyData) Validate() error {
 type GetAuditRequestByTypeUnAuditResponseBodyDataAuditRecord struct {
 	// example:
 	//
-	// eighteenUp
+	// 示例值示例值示例值
 	AgeLimit *string `json:"AgeLimit,omitempty" xml:"AgeLimit,omitempty"`
 	// example:
 	//
-	// bnv
+	// 示例值示例值
 	ApplyReason *string `json:"ApplyReason,omitempty" xml:"ApplyReason,omitempty"`
 	// example:
 	//
-	// aaa
+	// 示例值
 	BusinessAccountName *string                                                                  `json:"BusinessAccountName,omitempty" xml:"BusinessAccountName,omitempty"`
 	CompanyAddress      []*GetAuditRequestByTypeUnAuditResponseBodyDataAuditRecordCompanyAddress `json:"CompanyAddress,omitempty" xml:"CompanyAddress,omitempty" type:"Repeated"`
 	// example:
 	//
-	// Company English Name
+	// 示例值示例值
 	CompanyEnglishName *string `json:"CompanyEnglishName,omitempty" xml:"CompanyEnglishName,omitempty"`
 	// example:
 	//
-	// xxxxcompany
+	// 示例值示例值
 	CompanyLegalName *string `json:"CompanyLegalName,omitempty" xml:"CompanyLegalName,omitempty"`
 	// example:
 	//
-	// jack
+	// 示例值示例值
 	CompanyLegalPerson *string `json:"CompanyLegalPerson,omitempty" xml:"CompanyLegalPerson,omitempty"`
 	// example:
 	//
-	// CompanyProfile
+	// 示例值示例值示例值
 	CompanyProfile           *string                                                              `json:"CompanyProfile,omitempty" xml:"CompanyProfile,omitempty"`
 	CompanyRegisteredCountry []*string                                                            `json:"CompanyRegisteredCountry,omitempty" xml:"CompanyRegisteredCountry,omitempty" type:"Repeated"`
 	CompanyTel               []*GetAuditRequestByTypeUnAuditResponseBodyDataAuditRecordCompanyTel `json:"CompanyTel,omitempty" xml:"CompanyTel,omitempty" type:"Repeated"`
 	// example:
 	//
-	// qqemail@gmail.com
+	// 示例值
 	ContactMail *string `json:"ContactMail,omitempty" xml:"ContactMail,omitempty"`
 	// example:
 	//
-	// N
+	// 示例值示例值
 	EnableAutoReply *string `json:"EnableAutoReply,omitempty" xml:"EnableAutoReply,omitempty"`
 	// example:
 	//
-	// xxx
+	// 示例值示例值示例值
 	IndustryDescription *string `json:"IndustryDescription,omitempty" xml:"IndustryDescription,omitempty"`
 	// example:
 	//
-	// it
+	// 示例值
 	IndustryInvolved *string `json:"IndustryInvolved,omitempty" xml:"IndustryInvolved,omitempty"`
 	// example:
 	//
-	// https://www.xxxxxxx
+	// 示例值示例值
 	LetterGuarantee                        *string   `json:"LetterGuarantee,omitempty" xml:"LetterGuarantee,omitempty"`
 	Logo                                   []*string `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
 	MessageDestinationCountry              []*string `json:"MessageDestinationCountry,omitempty" xml:"MessageDestinationCountry,omitempty" type:"Repeated"`
 	MessageDestinationInternationalCountry []*string `json:"MessageDestinationInternationalCountry,omitempty" xml:"MessageDestinationInternationalCountry,omitempty" type:"Repeated"`
 	// example:
 	//
-	// MessageDialogueIntroduction
+	// 示例值示例值示例值
 	MessageDialogueIntroduction *string `json:"MessageDialogueIntroduction,omitempty" xml:"MessageDialogueIntroduction,omitempty"`
 	// example:
 	//
-	// 2025-11-01
+	// 示例值示例值
 	MessageEnableDate *string `json:"MessageEnableDate,omitempty" xml:"MessageEnableDate,omitempty"`
 	// example:
 	//
-	// Message Session Name
+	// 示例值示例值
 	MessageSessionName *string `json:"MessageSessionName,omitempty" xml:"MessageSessionName,omitempty"`
 	// example:
 	//
-	// n
+	// 示例值示例值示例值
 	NowRecovery *string `json:"NowRecovery,omitempty" xml:"NowRecovery,omitempty"`
 	// example:
 	//
-	// 2025-111-06
+	// 示例值示例值
 	RecoveryDate *string `json:"RecoveryDate,omitempty" xml:"RecoveryDate,omitempty"`
 	// example:
 	//
-	// aaaqq
+	// 示例值示例值
 	ReplyContent *string `json:"ReplyContent,omitempty" xml:"ReplyContent,omitempty"`
-	// SuspensionDate
-	//
 	// example:
 	//
-	// SuspensionDate
+	// 示例值示例值
 	SuspensionDate *string `json:"SuspensionDate,omitempty" xml:"SuspensionDate,omitempty"`
 	// example:
 	//
-	// www.xxxxx
+	// 示例值
 	WebAddress *string `json:"WebAddress,omitempty" xml:"WebAddress,omitempty"`
 }
 
@@ -677,11 +670,11 @@ func (s *GetAuditRequestByTypeUnAuditResponseBodyDataAuditRecord) Validate() err
 type GetAuditRequestByTypeUnAuditResponseBodyDataAuditRecordCompanyAddress struct {
 	// example:
 	//
-	// xxxxcompany
+	// 示例值示例值示例值
 	CompanyAddress *string `json:"CompanyAddress,omitempty" xml:"CompanyAddress,omitempty"`
 	// example:
 	//
-	// 111
+	// 示例值示例值示例值
 	CompanyAddressTitle *string `json:"CompanyAddressTitle,omitempty" xml:"CompanyAddressTitle,omitempty"`
 }
 
@@ -718,11 +711,11 @@ func (s *GetAuditRequestByTypeUnAuditResponseBodyDataAuditRecordCompanyAddress) 
 type GetAuditRequestByTypeUnAuditResponseBodyDataAuditRecordCompanyTel struct {
 	// example:
 	//
-	// 143243**
+	// 示例值
 	CompanyTelNumber *string `json:"CompanyTelNumber,omitempty" xml:"CompanyTelNumber,omitempty"`
 	// example:
 	//
-	// example
+	// 示例值
 	CompanyTelTitle *string `json:"CompanyTelTitle,omitempty" xml:"CompanyTelTitle,omitempty"`
 }
 

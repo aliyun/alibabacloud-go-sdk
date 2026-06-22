@@ -26,29 +26,18 @@ type iDeleteFlowVersionRequest interface {
 }
 
 type DeleteFlowVersionRequest struct {
-	// Business tenant code, default is “ALICOM_OPAAS”.
-	//
 	// example:
 	//
-	// ALICOM_OPAAS
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Business extension information, default is “{}”.
-	//
-	// example:
-	//
-	// {}
+	// 示例值
+	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
-	// Flow code.
-	//
 	// example:
 	//
-	// f4912c16943b4dfba44bd6fedacf****
+	// 示例值
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
-	// Flow version
-	//
 	// example:
 	//
-	// 1
+	// 示例值示例值
 	FlowVersion          *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

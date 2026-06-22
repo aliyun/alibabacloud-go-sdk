@@ -30,35 +30,35 @@ type QueryPhoneBusinessProfileResponseBody struct {
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
+	// The status code of the request.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// - OK indicates that the request is successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data *QueryPhoneBusinessProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call is successful.
 	//
-	// 	- **true**
+	// - **true**: successful.
 	//
-	// 	- **false**
+	// - **false**: failed.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ func (s *QueryPhoneBusinessProfileResponseBody) Validate() error {
 }
 
 type QueryPhoneBusinessProfileResponseBodyData struct {
-	// Regarding.
+	// The business profile.
 	//
 	// example:
 	//
@@ -160,13 +160,13 @@ type QueryPhoneBusinessProfileResponseBodyData struct {
 	//
 	// example:
 	//
-	// aa@aliyun.com
+	// example@aliyun.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The profile picture.
 	//
 	// example:
 	//
-	// https://....img
+	// https://example.img
 	ProfilePictureUrl *string `json:"ProfilePictureUrl,omitempty" xml:"ProfilePictureUrl,omitempty"`
 	// The industry.
 	//
@@ -174,7 +174,7 @@ type QueryPhoneBusinessProfileResponseBodyData struct {
 	//
 	// Retail
 	Vertical *string `json:"Vertical,omitempty" xml:"Vertical,omitempty"`
-	// The website.
+	// The websites.
 	Websites []*string `json:"Websites,omitempty" xml:"Websites,omitempty" type:"Repeated"`
 }
 

@@ -24,23 +24,42 @@ type iGetViberByRequestNoResponseBody interface {
 }
 
 type GetViberByRequestNoResponseBody struct {
+	// Access denial details.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code of the request.
+	//
+	// - `OK`: The request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *GetViberByRequestNoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID for the request. You can use this Aliyun-generated ID for troubleshooting.
+	//
 	// example:
 	//
 	// 90E63D28-E31D-1EB2-8**9-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates if the request was successful. Valid values:
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// false
@@ -119,57 +138,82 @@ func (s *GetViberByRequestNoResponseBody) Validate() error {
 }
 
 type GetViberByRequestNoResponseBodyData struct {
+	// The audit record details.
 	AuditRecord *GetViberByRequestNoResponseBodyDataAuditRecord `json:"AuditRecord,omitempty" xml:"AuditRecord,omitempty" type:"Struct"`
+	// The audit result.
+	//
 	// example:
 	//
 	// pass
 	AuditResult *string `json:"AuditResult,omitempty" xml:"AuditResult,omitempty"`
+	// The audit time.
+	//
 	// example:
 	//
 	// 1785465
 	AuditTime *string `json:"AuditTime,omitempty" xml:"AuditTime,omitempty"`
+	// The creator of the resource.
+	//
 	// example:
 	//
 	// 11
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1753236426000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 17833636
 	GmtModifier *string `json:"GmtModifier,omitempty" xml:"GmtModifier,omitempty"`
-	// ID。
+	// The ID of the resource.
 	//
 	// example:
 	//
 	// 11
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The Viber service ID.
+	//
 	// example:
 	//
 	// 735221
 	MaapServiceNo *string `json:"MaapServiceNo,omitempty" xml:"MaapServiceNo,omitempty"`
+	// The user who last modified the resource.
+	//
 	// example:
 	//
 	// 11
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// The audit comment.
+	//
 	// example:
 	//
 	// aa
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The unique number for the application request.
+	//
 	// example:
 	//
 	// 5435435435
 	RequestNo *string `json:"RequestNo,omitempty" xml:"RequestNo,omitempty"`
+	// The type of the request.
+	//
 	// example:
 	//
 	// viberOpen
 	RequestType *string `json:"RequestType,omitempty" xml:"RequestType,omitempty"`
+	// The status of the request.
+	//
 	// example:
 	//
 	// A
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The subscriber code.
+	//
 	// example:
 	//
 	// 4534**
@@ -320,121 +364,180 @@ func (s *GetViberByRequestNoResponseBodyData) Validate() error {
 }
 
 type GetViberByRequestNoResponseBodyDataAuditRecord struct {
+	// The age restriction.
+	//
 	// example:
 	//
 	// eighteenUp
 	AgeLimit *string `json:"AgeLimit,omitempty" xml:"AgeLimit,omitempty"`
+	// The reason for the application.
+	//
 	// example:
 	//
 	// aaa
 	ApplyReason *string `json:"ApplyReason,omitempty" xml:"ApplyReason,omitempty"`
+	// The name of the business account.
+	//
 	// example:
 	//
 	// aaaa
 	BusinessAccountName *string `json:"BusinessAccountName,omitempty" xml:"BusinessAccountName,omitempty"`
+	// The business license registration number.
+	//
 	// example:
 	//
 	// 43645465465
-	BusinessLicenseRegistrationNumber *string                                                         `json:"BusinessLicenseRegistrationNumber,omitempty" xml:"BusinessLicenseRegistrationNumber,omitempty"`
-	CompanyAddress                    []*GetViberByRequestNoResponseBodyDataAuditRecordCompanyAddress `json:"CompanyAddress,omitempty" xml:"CompanyAddress,omitempty" type:"Repeated"`
+	BusinessLicenseRegistrationNumber *string `json:"BusinessLicenseRegistrationNumber,omitempty" xml:"BusinessLicenseRegistrationNumber,omitempty"`
+	// The company addresses.
+	CompanyAddress []*GetViberByRequestNoResponseBodyDataAuditRecordCompanyAddress `json:"CompanyAddress,omitempty" xml:"CompanyAddress,omitempty" type:"Repeated"`
+	// The English name of the company.
+	//
 	// example:
 	//
 	// english
 	CompanyEnglishName *string `json:"CompanyEnglishName,omitempty" xml:"CompanyEnglishName,omitempty"`
+	// The legal name of the company.
+	//
 	// example:
 	//
 	// xxxxxxcompany
 	CompanyLegalName *string `json:"CompanyLegalName,omitempty" xml:"CompanyLegalName,omitempty"`
+	// The name of the company\\"s legal representative.
+	//
 	// example:
 	//
 	// jack
 	CompanyLegalPerson *string `json:"CompanyLegalPerson,omitempty" xml:"CompanyLegalPerson,omitempty"`
+	// The company profile.
+	//
 	// example:
 	//
 	// new
 	CompanyProfile *string `json:"CompanyProfile,omitempty" xml:"CompanyProfile,omitempty"`
+	// The country or region where the company is registered.
+	//
 	// example:
 	//
 	// beijing
-	CompanyRegisteredCountry *string                                                     `json:"CompanyRegisteredCountry,omitempty" xml:"CompanyRegisteredCountry,omitempty"`
-	CompanyTel               []*GetViberByRequestNoResponseBodyDataAuditRecordCompanyTel `json:"CompanyTel,omitempty" xml:"CompanyTel,omitempty" type:"Repeated"`
+	CompanyRegisteredCountry *string `json:"CompanyRegisteredCountry,omitempty" xml:"CompanyRegisteredCountry,omitempty"`
+	// The company telephone numbers.
+	CompanyTel []*GetViberByRequestNoResponseBodyDataAuditRecordCompanyTel `json:"CompanyTel,omitempty" xml:"CompanyTel,omitempty" type:"Repeated"`
+	// The complete address of the company\\"s headquarters.
+	//
 	// example:
 	//
 	// address
 	CompleteAddressOfHeadquarters *string `json:"CompleteAddressOfHeadquarters,omitempty" xml:"CompleteAddressOfHeadquarters,omitempty"`
+	// The contact person\\"s email address.
+	//
 	// example:
 	//
 	// 6944**@gmail.com
 	ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+	// The contact email address.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	ContactMail *string `json:"ContactMail,omitempty" xml:"ContactMail,omitempty"`
+	// The contact person\\"s name.
+	//
 	// example:
 	//
 	// qwq
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// The contact person\\"s phone number.
+	//
 	// example:
 	//
 	// 861151515***
 	ContactPhone *string `json:"ContactPhone,omitempty" xml:"ContactPhone,omitempty"`
+	// The contact person\\"s position.
+	//
 	// example:
 	//
-	// 职员
+	// example
 	ContactPosition *string `json:"ContactPosition,omitempty" xml:"ContactPosition,omitempty"`
+	// Indicates whether auto-reply is enabled.
+	//
 	// example:
 	//
 	// N
 	EnableAutoReply *string `json:"EnableAutoReply,omitempty" xml:"EnableAutoReply,omitempty"`
+	// A description of the industry.
+	//
 	// example:
 	//
 	// Description
 	IndustryDescription *string `json:"IndustryDescription,omitempty" xml:"IndustryDescription,omitempty"`
+	// The company\\"s industry.
+	//
 	// example:
 	//
 	// cateringServices
 	IndustryInvolved *string `json:"IndustryInvolved,omitempty" xml:"IndustryInvolved,omitempty"`
+	// The URL of the letter of guarantee.
+	//
 	// example:
 	//
 	// https://xxxxxxxxxx
-	LetterGuarantee                        *string   `json:"LetterGuarantee,omitempty" xml:"LetterGuarantee,omitempty"`
-	Logo                                   []*string `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
-	MessageDestinationCountry              []*string `json:"MessageDestinationCountry,omitempty" xml:"MessageDestinationCountry,omitempty" type:"Repeated"`
+	LetterGuarantee *string `json:"LetterGuarantee,omitempty" xml:"LetterGuarantee,omitempty"`
+	// The logo URLs.
+	Logo []*string `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
+	// The local destination countries or regions.
+	MessageDestinationCountry []*string `json:"MessageDestinationCountry,omitempty" xml:"MessageDestinationCountry,omitempty" type:"Repeated"`
+	// The international destination countries or regions.
 	MessageDestinationInternationalCountry []*string `json:"MessageDestinationInternationalCountry,omitempty" xml:"MessageDestinationInternationalCountry,omitempty" type:"Repeated"`
+	// A brief introduction to the business messaging conversation.
+	//
 	// example:
 	//
 	// aaa
 	MessageDialogueIntroduction *string `json:"MessageDialogueIntroduction,omitempty" xml:"MessageDialogueIntroduction,omitempty"`
+	// The date business messaging is enabled.
+	//
 	// example:
 	//
 	// 2025-08-05
 	MessageEnableDate *string `json:"MessageEnableDate,omitempty" xml:"MessageEnableDate,omitempty"`
+	// The name of the business messaging conversation.
+	//
 	// example:
 	//
 	// name
 	MessageSessionName *string `json:"MessageSessionName,omitempty" xml:"MessageSessionName,omitempty"`
+	// The recovery status.
+	//
 	// example:
 	//
 	// NowRecovery
 	NowRecovery *string `json:"NowRecovery,omitempty" xml:"NowRecovery,omitempty"`
+	// The URL for supplementary information.
+	//
 	// example:
 	//
 	// https://wwwxxxx
 	OtherLetterGuarantee *string `json:"OtherLetterGuarantee,omitempty" xml:"OtherLetterGuarantee,omitempty"`
+	// The date of recovery.
+	//
 	// example:
 	//
 	// 2025-11-11
 	RecoveryDate *string `json:"RecoveryDate,omitempty" xml:"RecoveryDate,omitempty"`
+	// The content of the auto-reply message.
+	//
 	// example:
 	//
 	// aaa
 	ReplyContent *string `json:"ReplyContent,omitempty" xml:"ReplyContent,omitempty"`
-	// SuspensionDate
+	// The suspension date.
 	//
 	// example:
 	//
 	// SuspensionDate
 	SuspensionDate *string `json:"SuspensionDate,omitempty" xml:"SuspensionDate,omitempty"`
+	// The company website.
+	//
 	// example:
 	//
 	// https://xxxxxx
@@ -769,10 +872,14 @@ func (s *GetViberByRequestNoResponseBodyDataAuditRecord) Validate() error {
 }
 
 type GetViberByRequestNoResponseBodyDataAuditRecordCompanyAddress struct {
+	// The company address.
+	//
 	// example:
 	//
 	// address
 	CompanyAddress *string `json:"CompanyAddress,omitempty" xml:"CompanyAddress,omitempty"`
+	// The title of the company address.
+	//
 	// example:
 	//
 	// 111
@@ -810,10 +917,14 @@ func (s *GetViberByRequestNoResponseBodyDataAuditRecordCompanyAddress) Validate(
 }
 
 type GetViberByRequestNoResponseBodyDataAuditRecordCompanyTel struct {
+	// The company telephone number.
+	//
 	// example:
 	//
 	// 134213213
 	CompanyTelNumber *string `json:"CompanyTelNumber,omitempty" xml:"CompanyTelNumber,omitempty"`
+	// The title for the telephone number.
+	//
 	// example:
 	//
 	// xxx

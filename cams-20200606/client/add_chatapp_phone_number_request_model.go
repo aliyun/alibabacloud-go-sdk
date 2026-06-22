@@ -28,7 +28,7 @@ type iAddChatappPhoneNumberRequest interface {
 }
 
 type AddChatappPhoneNumberRequest struct {
-	// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+	// The country code.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type AddChatappPhoneNumberRequest struct {
 	//
 	// 86
 	Cc *string `json:"Cc,omitempty" xml:"Cc,omitempty"`
-	// Adds a phone number for a WhatsApp Business account (WABA).
+	// The Space ID of the Independent Software Vendor (ISV) sub-customer.
 	//
 	// This parameter is required.
 	//
@@ -45,7 +45,7 @@ type AddChatappPhoneNumberRequest struct {
 	// 93928389****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// AddChatappPhoneNumber
+	// The phone number.
 	//
 	// This parameter is required.
 	//
@@ -55,7 +55,9 @@ type AddChatappPhoneNumberRequest struct {
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// Deprecated
 	//
-	// cams:ChatappPhoneNumberRegister
+	// The pre-verified phone number.
+	//
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
@@ -63,7 +65,7 @@ type AddChatappPhoneNumberRequest struct {
 	PreValidateId        *string `json:"PreValidateId,omitempty" xml:"PreValidateId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Private
+	// The name of the phone number.
 	//
 	// This parameter is required.
 	//

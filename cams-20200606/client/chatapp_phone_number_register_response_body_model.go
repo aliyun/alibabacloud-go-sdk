@@ -22,39 +22,39 @@ type iChatappPhoneNumberRegisterResponseBody interface {
 }
 
 type ChatappPhoneNumberRegisterResponseBody struct {
-	// The details about the access denial.
+	// Details about the access denial.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
+	// The request status code.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// - A return value of OK indicates that the request is successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
-	// None.
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful.
 	//
-	// 	- **true**
+	// - **true**: successful.
 	//
-	// 	- **false**
+	// - **false**: failed.
 	//
 	// example:
 	//

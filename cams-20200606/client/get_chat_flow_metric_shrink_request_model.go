@@ -34,53 +34,36 @@ type iGetChatFlowMetricShrinkRequest interface {
 }
 
 type GetChatFlowMetricShrinkRequest struct {
-	// Business tenant code, default is “ALICOM_OPAAS”.
-	//
 	// example:
 	//
-	// ALICOM_OPAAS
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Business extension information, default is “{}”.
-	//
-	// example:
-	//
-	// {}
+	// 示例值示例值示例值
+	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
-	// Flow code.
-	//
 	// example:
 	//
-	// f4912c16943b4dfba44bd6fedacf****
+	// 示例值示例值
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
-	// Flow version.
-	//
 	// example:
 	//
-	// 1
+	// 示例值示例值
 	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
-	// Start timestamp in seconds.
-	//
 	// example:
 	//
-	// 1751299200
+	// 31
 	From *int64 `json:"From,omitempty" xml:"From,omitempty"`
-	// Metric name.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// nodeUsageStatistics
+	// 示例值示例值
 	MetricName           *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	MetricParamShrink    *string `json:"MetricParam,omitempty" xml:"MetricParam,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// End timestamp in seconds.
-	//
 	// example:
 	//
-	// 1751385599
+	// 81
 	To *int64 `json:"To,omitempty" xml:"To,omitempty"`
 }
 

@@ -23,11 +23,7 @@ type iGetPhoneEncryptionPublicKeyResponseBody interface {
 
 type GetPhoneEncryptionPublicKeyResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code.
-	//
-	// 	- The value OK indicates that the request was successful.
-	//
-	// 	- For more information about other response codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -35,7 +31,7 @@ type GetPhoneEncryptionPublicKeyResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetPhoneEncryptionPublicKeyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error description information.
+	// The error message.
 	//
 	// example:
 	//
@@ -45,7 +41,7 @@ type GetPhoneEncryptionPublicKeyResponseBody struct {
 	//
 	// example:
 	//
-	// 90E63D28-E31D-1EB2-8939-A9486641****
+	// DAC72B08-3327-33EF-BEDC-8EC3E83A6575
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -116,29 +112,13 @@ type GetPhoneEncryptionPublicKeyResponseBodyData struct {
 	//
 	// example:
 	//
-	// -----BEGIN PUBLIC KEY-----
-	//
-	// AAA
-	//
-	// BBB
-	//
-	// CCC
-	//
-	// DDD
-	//
-	// EEE
-	//
-	// FFF
-	//
-	// GGG
-	//
-	// -----END PUBLIC KEY-----
+	// -----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAt+PMrYw4zUDEk+VeTrp0\\n8LZaoVpiVFErX7iuoDjUs4F9vkxMQuIABjcXw\\/swzTMEopLORQV28uqN\\/2\\/x9hjU\\****\\/Zwa\\/Vk5Svp4\\niVY4e22FsJCCWUEMvayO8Q+3UGq0eXXQ+8SlUWEMq1VaJ4pwCLsMnmgybA+VmJxi\\nkwIDAQAB\\n-----END PUBLIC KEY-----"
 	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitempty" xml:"EncryptionPublicKey,omitempty"`
-	// The validity state of the public key. Valid values:
+	// The status of the public key. Valid values:
 	//
-	// 	- MISMATCH: The public key is invalid.
+	// - MISMATCH: The public key is invalid.
 	//
-	// 	- VALID: The public key is valid.
+	// - VALID: The public key is valid.
 	//
 	// example:
 	//
@@ -148,7 +128,7 @@ type GetPhoneEncryptionPublicKeyResponseBodyData struct {
 	//
 	// example:
 	//
-	// 86138000**
+	// 861526377****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 }
 

@@ -26,18 +26,24 @@ type iGetMessageCampaignInsightsRequest interface {
 }
 
 type GetMessageCampaignInsightsRequest struct {
+	// The Meta ad account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23***
 	AdAccountId *string `json:"AdAccountId,omitempty" xml:"AdAccountId,omitempty"`
+	// The ID of the campaign.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23**
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// The Space ID of the Independent Software Vendor (ISV) sub-customer or the instance ID of the direct customers. This is the channel ID. You can find the channel ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -45,6 +51,8 @@ type GetMessageCampaignInsightsRequest struct {
 	// cams-x**
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The Page ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -32,11 +32,11 @@ type ListFlowNodePrototypeV2Request struct {
 	//
 	// example:
 	//
-	// ALICOM_OPAAS
+	// 示例值示例值示例值
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	// example:
 	//
-	// Core
+	// 示例值示例值
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
 	// example:
 	//
@@ -47,13 +47,13 @@ type ListFlowNodePrototypeV2Request struct {
 	//
 	// example:
 	//
-	// 1
+	// 6
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 20
+	// 7
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

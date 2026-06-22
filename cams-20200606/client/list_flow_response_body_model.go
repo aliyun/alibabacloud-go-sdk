@@ -23,19 +23,19 @@ type iListFlowResponseBody interface {
 
 type ListFlowResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// If OK is returned, the request was successful.
+	// A value of OK indicates that the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned data object.
 	Data []*ListFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error message.
 	//
 	// example:
 	//
-	// None
+	// 无
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -112,15 +112,15 @@ func (s *ListFlowResponseBody) Validate() error {
 }
 
 type ListFlowResponseBodyData struct {
-	// The categories of the Flows.
+	// The categories.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The Flow ID.
+	// The flow ID.
 	//
 	// example:
 	//
-	// 3939393***
+	// 92675332812643****
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The Flow name.
+	// The name of the flow.
 	//
 	// example:
 	//

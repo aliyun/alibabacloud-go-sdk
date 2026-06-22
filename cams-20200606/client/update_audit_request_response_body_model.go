@@ -24,29 +24,49 @@ type iUpdateAuditRequestResponseBody interface {
 }
 
 type UpdateAuditRequestResponseBody struct {
+	// Access denied details.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Request status code.
+	//
+	// - OK indicates a successful request.
+	//
+	// - For other error codes, see [Error Codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returns the RequestNo.
+	//
 	// example:
 	//
 	// 14111561****
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of this API call request. Alibaba Cloud generates this unique identifier for the request. Use it to troubleshoot and locate issues.
+	//
 	// example:
 	//
-	// 示例值
+	// example
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
-	// false
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

@@ -24,22 +24,19 @@ type iGetChatappPhoneNumberSettingResponseBody interface {
 }
 
 type GetChatappPhoneNumberSettingResponseBody struct {
-	// example:
-	//
-	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// OK
+	// 示例值
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
-	// success
+	// 示例值示例值
 	Message *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model   *GetChatappPhoneNumberSettingResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 	// example:
 	//
-	// 42602478-F7C1-58D2-AFFE-88F7A18***6
+	// 示例值示例值
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//

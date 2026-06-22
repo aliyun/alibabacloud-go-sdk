@@ -30,47 +30,65 @@ type iUpdateInstanceRequest interface {
 }
 
 type UpdateInstanceRequest struct {
+	// The contact email address.
+	//
 	// example:
 	//
 	// 123@alibaba.com
 	ContactMail *string `json:"ContactMail,omitempty" xml:"ContactMail,omitempty"`
+	// The country code.
+	//
+	// > For a list of country codes, see [Country Codes](https://help.aliyun.com/document_detail/608210.html).
+	//
 	// example:
 	//
 	// 1
 	CountryId *string `json:"CountryId,omitempty" xml:"CountryId,omitempty"`
-	// fb bmId
+	// The Facebook Business Manager ID.
 	//
 	// example:
 	//
-	// 3939982828
+	// 393998****
 	FacebookBmId *string `json:"FacebookBmId,omitempty" xml:"FacebookBmId,omitempty"`
+	// The description of the instance.
+	//
 	// example:
 	//
 	// ins
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 82838838****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// viber_ins
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Specifies whether to enable automatic audit confirmation.
+	//
 	// example:
 	//
 	// Y
 	IsConfirmAudit *string `json:"IsConfirmAudit,omitempty" xml:"IsConfirmAudit,omitempty"`
+	// The URL of the Independent Software Vendor (ISV) agreement file.
+	//
 	// example:
 	//
 	// https://aa.com/a.pdf
 	IsvTerms *string `json:"IsvTerms,omitempty" xml:"IsvTerms,omitempty"`
+	// The company address.
+	//
 	// example:
 	//
-	// 长沙麓谷
+	// example
 	OfficeAddress *string `json:"OfficeAddress,omitempty" xml:"OfficeAddress,omitempty"`
 }
 

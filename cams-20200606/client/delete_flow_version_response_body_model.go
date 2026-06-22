@@ -24,38 +24,20 @@ type iDeleteFlowVersionResponseBody interface {
 }
 
 type DeleteFlowVersionResponseBody struct {
-	// Detailed reason for access denial.
-	//
-	// example:
-	//
-	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Status code.
-	//
 	// example:
 	//
-	// OK
+	// 示例值
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Error message.
-	//
 	// example:
 	//
-	// 无
+	// 示例值示例值示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
-	//
 	// example:
 	//
-	// 90E63D28-E31D-1EB2-8939-A9486641****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Content of the returned data.
-	//
-	// example:
-	//
-	// 无
-	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
-	// Indicates whether the operation was successful. Values: true: success; false: failure.
-	//
+	// 示例值示例值
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Response  map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
 	// example:
 	//
 	// false

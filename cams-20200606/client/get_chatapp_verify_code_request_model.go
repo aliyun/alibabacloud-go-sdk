@@ -26,15 +26,15 @@ type iGetChatappVerifyCodeRequest interface {
 }
 
 type GetChatappVerifyCodeRequest struct {
-	// The space ID of the RAM user within the ISV account.
+	// The Space ID of the Independent Software Vendor (ISV) sub-customer.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 229393838*****
+	// cams-kei****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The language. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+	// The language. For values, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
 	//
 	// This parameter is required.
 	//
@@ -42,19 +42,13 @@ type GetChatappVerifyCodeRequest struct {
 	//
 	// zh_CN
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	// The verification method.
-	//
-	// Valid values:
-	//
-	// 	- Voice: sends the verification code via phone call.
-	//
-	// 	- sms: sends the verification code via SMS.
+	// The method to receive the verification code.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// SMS
+	// sms
 	Method  *string `json:"Method,omitempty" xml:"Method,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The phone number.
@@ -63,7 +57,7 @@ type GetChatappVerifyCodeRequest struct {
 	//
 	// example:
 	//
-	// 8613800001234
+	// 861380000****
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

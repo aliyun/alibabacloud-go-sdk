@@ -22,22 +22,40 @@ type iDeleteInstanceResponseBody interface {
 }
 
 type DeleteInstanceResponseBody struct {
+	// The details of the access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - A value of `OK` means the request was successful.
+	//
+	// - For other error codes, see the [Error Code List](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// NULL
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID for the request. Use it for troubleshooting.
+	//
 	// example:
 	//
 	// 3993939******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Specifies whether the request was successful. Valid values:
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// false

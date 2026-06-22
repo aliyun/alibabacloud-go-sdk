@@ -26,27 +26,48 @@ type iListMessengerSubscriptionTokenResponseBody interface {
 }
 
 type ListMessengerSubscriptionTokenResponseBody struct {
+	// Details about the access denial.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code of the request.
+	//
+	// - A return value of OK indicates that the request was successful.
+	//
+	// - For a list of other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
-	Code *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*ListMessengerSubscriptionTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The identifier for the next page. Pass this value to query the next page.
+	//
 	// example:
 	//
 	// 3399***
 	NextPage *string `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ei**
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: successful.
+	//
+	// - false: failed.
+	//
 	// example:
 	//
 	// true
@@ -138,30 +159,44 @@ func (s *ListMessengerSubscriptionTokenResponseBody) Validate() error {
 }
 
 type ListMessengerSubscriptionTokenResponseBodyData struct {
+	// The time when the security token was created.
+	//
 	// example:
 	//
 	// 172546854885
 	CreationTimestamp *int64 `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
+	// The custom audience ID.
+	//
 	// example:
 	//
-	// 示例值
+	// Example
 	CustomAudienceId *string `json:"CustomAudienceId,omitempty" xml:"CustomAudienceId,omitempty"`
+	// The time when the application can send the next marketing message to the recipient.
+	//
 	// example:
 	//
 	// 172546854885
 	NextEligibleTime *int64 `json:"NextEligibleTime,omitempty" xml:"NextEligibleTime,omitempty"`
+	// The re-subscription status.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// Example
 	NotificationMessagesReoptin *string `json:"NotificationMessagesReoptin,omitempty" xml:"NotificationMessagesReoptin,omitempty"`
+	// The customer\\"s time zone.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// Example
 	NotificationMessagesTimezone *string `json:"NotificationMessagesTimezone,omitempty" xml:"NotificationMessagesTimezone,omitempty"`
+	// The page-scoped ID of the customer.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// Example
 	NotificationMessagesToken *string `json:"NotificationMessagesToken,omitempty" xml:"NotificationMessagesToken,omitempty"`
+	// The page ID for Messenger.
+	//
 	// example:
 	//
 	// 239***
@@ -170,8 +205,10 @@ type ListMessengerSubscriptionTokenResponseBodyData struct {
 	//
 	// example:
 	//
-	// 示例值示例值
+	// Example
 	RecipientId *string `json:"RecipientId,omitempty" xml:"RecipientId,omitempty"`
+	// The expiration time of the security token.
+	//
 	// example:
 	//
 	// 172546854885
@@ -180,11 +217,13 @@ type ListMessengerSubscriptionTokenResponseBodyData struct {
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// Example
 	TopicTitle *string `json:"TopicTitle,omitempty" xml:"TopicTitle,omitempty"`
+	// The status of the security token.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// Example
 	UserTokenStatus *string `json:"UserTokenStatus,omitempty" xml:"UserTokenStatus,omitempty"`
 }
 

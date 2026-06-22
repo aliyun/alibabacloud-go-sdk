@@ -23,7 +23,7 @@ type iGetFlowResponseBody interface {
 
 type GetFlowResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// If OK is returned, the request was successful.
+	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type GetFlowResponseBody struct {
 	//
 	// example:
 	//
-	// 90E63D28-E31D-1EB2-8939-A9486641****
+	// DAC72B08-3327-33EF-BEDC-8EC3E83A6575
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -108,9 +108,9 @@ func (s *GetFlowResponseBody) Validate() error {
 }
 
 type GetFlowResponseBodyData struct {
-	// The categories of the Flow.
+	// The list of categories.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The version number of the API.
+	// The API version.
 	//
 	// example:
 	//
@@ -120,17 +120,17 @@ type GetFlowResponseBodyData struct {
 	//
 	// http://abc.com
 	EndpointUri *string `json:"EndpointUri,omitempty" xml:"EndpointUri,omitempty"`
-	// The Flow ID.
+	// The flow ID.
 	//
 	// example:
 	//
-	// flow_id_arms
+	// 92675332812643****
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The Flow name.
+	// The flow name.
 	//
 	// example:
 	//
-	// dnjn
+	// flow_001
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 	// The JSON version.
 	//
@@ -144,39 +144,13 @@ type GetFlowResponseBodyData struct {
 	//
 	// https://pre-url
 	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
-	// The time when the preview URL expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The expiration time of the preview URL.
 	//
 	// example:
 	//
 	// 1700617436633
 	PreviewUrlExpires *int64 `json:"PreviewUrlExpires,omitempty" xml:"PreviewUrlExpires,omitempty"`
-	// The state of the Flow.
-	//
-	// Valid values:
-	//
-	// 	- PUBLISHED
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DRAFT
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DEPRECATED
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The status of the flow.
 	//
 	// example:
 	//

@@ -28,38 +28,25 @@ type iCreateChatFlowRequest interface {
 }
 
 type CreateChatFlowRequest struct {
-	// Business tenant code, default is “ALICOM_OPAAS”.
-	//
 	// example:
 	//
-	// ALICOM_OPAAS
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Business extension information, default is “{}”.
-	//
-	// example:
-	//
-	// {}
+	// 示例值示例值
+	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
-	// Flow trigger type
-	//
 	// example:
 	//
-	// TriggeredByWhatsApp
+	// 示例值
 	FlowTriggerType *string `json:"FlowTriggerType,omitempty" xml:"FlowTriggerType,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Flow remarks
-	//
 	// example:
 	//
-	// ChatFlow for WhatsApp Customer Service Auto-Reply.
+	// 示例值示例值
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Flow title
-	//
 	// example:
 	//
-	// Auto Reply
+	// 示例值
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

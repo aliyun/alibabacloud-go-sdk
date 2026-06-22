@@ -24,9 +24,6 @@ type iDeleteMessengerPageResponseBody interface {
 }
 
 type DeleteMessengerPageResponseBody struct {
-	// example:
-	//
-	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//

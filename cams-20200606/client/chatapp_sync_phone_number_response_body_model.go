@@ -28,13 +28,13 @@ type ChatappSyncPhoneNumberResponseBody struct {
 	//
 	// example:
 	//
-	// None
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// - A value of OK indicates that the call is successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ChatappSyncPhoneNumberResponseBody struct {
 	//
 	// example:
 	//
-	// None.
+	// 无
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The phone numbers.
 	PhoneNumbers []*ChatappSyncPhoneNumberResponseBodyPhoneNumbers `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty" type:"Repeated"`
@@ -56,9 +56,9 @@ type ChatappSyncPhoneNumberResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**: The call was successful.
+	// - **true**: The call was successful.
 	//
-	// 	- **false**: The call failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -147,20 +147,18 @@ type ChatappSyncPhoneNumberResponseBodyPhoneNumbers struct {
 	//
 	// Valid values:
 	//
-	// 	- REVOKED: The review application is revoked.
+	// - REVOKED: The review application is revoked.
 	//
-	// 	- MORE_INFORMATION_REQUESTED: More information needs to be provided.
+	// - MORE_INFORMATION_REQUESTED: More information needs to be provided.
 	//
-	// 	- VERIFIED: The phone number passes the verification.
+	// - VERIFIED: The phone number passes the verification.
 	//
-	// 	- REJECTED: The phone number fails to pass the verification.
+	// - REJECTED: The phone number fails to pass the verification.
 	//
 	// example:
 	//
 	// VERIFIED
 	CodeVerificationStatus *string `json:"CodeVerificationStatus,omitempty" xml:"CodeVerificationStatus,omitempty"`
-	// Indicates whether it is a WhatsApp Official Business Account (OBA).
-	//
 	// example:
 	//
 	// N
@@ -169,7 +167,7 @@ type ChatappSyncPhoneNumberResponseBodyPhoneNumbers struct {
 	//
 	// example:
 	//
-	// TIER_10
+	// TIER_10K
 	MessagingLimitTier *string `json:"MessagingLimitTier,omitempty" xml:"MessagingLimitTier,omitempty"`
 	// The review status of the business display name.
 	//
@@ -187,17 +185,17 @@ type ChatappSyncPhoneNumberResponseBodyPhoneNumbers struct {
 	//
 	// example:
 	//
-	// 8613800001234
+	// 861380000****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// The quality rating of the phone number.
 	//
 	// Valid values:
 	//
-	// 	- RED
+	// - RED
 	//
-	// 	- YELLOW
+	// - YELLOW
 	//
-	// 	- GREEN
+	// - GREEN
 	//
 	// example:
 	//
@@ -207,27 +205,27 @@ type ChatappSyncPhoneNumberResponseBodyPhoneNumbers struct {
 	//
 	// Valid values:
 	//
-	// 	- MIGRATED
+	// - MIGRATED
 	//
-	// 	- FLAGGED
+	// - FLAGGED
 	//
-	// 	- DISCONNECTED
+	// - DISCONNECTED
 	//
-	// 	- UNVERIFIED
+	// - UNVERIFIED
 	//
-	// 	- BANNED
+	// - BANNED
 	//
-	// 	- RATE_LIMITED
+	// - RATE_LIMITED
 	//
-	// 	- PENDING
+	// - PENDING
 	//
-	// 	- CONNECTED
+	// - CONNECTED
 	//
-	// 	- UNKNOWN
+	// - UNKNOWN
 	//
-	// 	- DELETED
+	// - DELETED
 	//
-	// 	- RESTRICTED
+	// - RESTRICTED
 	//
 	// example:
 	//
@@ -243,7 +241,7 @@ type ChatappSyncPhoneNumberResponseBodyPhoneNumbers struct {
 	//
 	// example:
 	//
-	// alicom-09399200-queue
+	// alicom-0939****-queue
 	StatusQueue *string `json:"StatusQueue,omitempty" xml:"StatusQueue,omitempty"`
 	// The URL that receives the MO messages.
 	//
@@ -255,7 +253,7 @@ type ChatappSyncPhoneNumberResponseBodyPhoneNumbers struct {
 	//
 	// example:
 	//
-	// alicom-09399200-queue
+	// alicom-0939****-queue
 	UpQueue *string `json:"UpQueue,omitempty" xml:"UpQueue,omitempty"`
 	// The display name of the business to which the phone number belongs.
 	//

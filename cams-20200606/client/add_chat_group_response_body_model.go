@@ -24,23 +24,46 @@ type iAddChatGroupResponseBody interface {
 }
 
 type AddChatGroupResponseBody struct {
+	// Details of the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response status code. Valid values:
+	//
+	// - `OK`: The request was successful.
+	//
+	// - For other error codes, see the [error code list](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique identifier for the request.
+	//
 	// example:
 	//
-	// 399s88-***
+	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates if the API call succeeded. Valid values:
+	//
+	// - **true**: The API call was successful.
+	//
+	// - **false**: The API call failed.
+	//
 	// example:
 	//
-	// false
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The unique request code.
+	//
 	// example:
 	//
 	// 8938****

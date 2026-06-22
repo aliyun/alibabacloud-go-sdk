@@ -28,13 +28,13 @@ type QueryWabaBusinessInfoResponseBody struct {
 	//
 	// example:
 	//
-	// None
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// - A value of OK indicates that the call is successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type QueryWabaBusinessInfoResponseBody struct {
 	//
 	// example:
 	//
-	// None.
+	// 无
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	//
@@ -56,9 +56,9 @@ type QueryWabaBusinessInfoResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type QueryWabaBusinessInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// 192882828733
+	// 19288282****
 	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
 	// The Business Manager name.
 	//

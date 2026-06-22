@@ -24,13 +24,10 @@ type iListInstagramPageResponseBody interface {
 }
 
 type ListInstagramPageResponseBody struct {
-	// example:
-	//
-	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// OK
+	// ok
 	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *ListInstagramPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// example:

@@ -24,38 +24,20 @@ type iListChatFlowResponseBody interface {
 }
 
 type ListChatFlowResponseBody struct {
-	// Access denied details, this field is returned only when RAM verification fails.
-	//
-	// example:
-	//
-	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// System error code. For more details on error codes, please refer to the error code documentation.
-	//
 	// example:
 	//
 	// 示例值示例值
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Error message.
-	//
 	// example:
 	//
 	// 示例值示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
-	//
 	// example:
 	//
 	// 示例值示例值
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Response data
-	//
-	// example:
-	//
-	// 无
-	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
-	// Whether the request was successful.
-	//
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Response  map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
 	// example:
 	//
 	// true

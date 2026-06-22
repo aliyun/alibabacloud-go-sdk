@@ -24,32 +24,20 @@ type iUpdateChatFlowLogSettingRequest interface {
 }
 
 type UpdateChatFlowLogSettingRequest struct {
-	// Flow code.
-	//
 	// example:
 	//
-	// f4912c16943b4dfba44bd6fedacf****
+	// 示例值示例值示例值
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
-	// Setting ID.
-	//
 	// example:
 	//
-	// 100
+	// 74
 	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Log enable status, enum values:
-	//
-	// - ENABLED: Enabled, enables log writing
-	//
-	// - DISABLED: Create or retain related resources, but do not enable log writing
-	//
-	// - DELETED: Delete, and decide whether to delete related resources based on options
-	//
 	// example:
 	//
-	// ENABLED
+	// 示例值
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

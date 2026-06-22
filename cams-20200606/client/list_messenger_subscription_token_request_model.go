@@ -30,33 +30,45 @@ type iListMessengerSubscriptionTokenRequest interface {
 }
 
 type ListMessengerSubscriptionTokenRequest struct {
+	// The space ID of the ISV sub-customer or the instance ID. View the ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cams-**
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The custom audience ID.
+	//
 	// example:
 	//
 	// 233**
 	CustomAudienceId *string `json:"CustomAudienceId,omitempty" xml:"CustomAudienceId,omitempty"`
+	// The number of entries to return. Valid values: 1 to 1000.
+	//
 	// example:
 	//
 	// 67
 	Limit   *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page ID for Messenger.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 239***
 	PageId *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The pagination key.
+	//
 	// example:
 	//
 	// 2ie**
 	PageKey              *string `json:"PageKey,omitempty" xml:"PageKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The token type.
+	//
 	// This parameter is required.
 	//
 	// example:

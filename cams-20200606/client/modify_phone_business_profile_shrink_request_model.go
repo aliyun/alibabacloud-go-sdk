@@ -46,7 +46,7 @@ type ModifyPhoneBusinessProfileShrinkRequest struct {
 	//
 	// example:
 	//
-	// The phone number.
+	// Sichuan
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// The space ID of the RAM user within the independent software vendor (ISV) account.
 	//
@@ -75,7 +75,7 @@ type ModifyPhoneBusinessProfileShrinkRequest struct {
 	//
 	// example:
 	//
-	// 8613800001234
+	// 861380000****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// The URL of the profile picture.
 	//
@@ -87,7 +87,7 @@ type ModifyPhoneBusinessProfileShrinkRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The industry.
 	//
-	// >  Valid values: OTHER, AUTO, BEAUTY, APPAREL, EDU, ENTERTAIN, EVENT_PLAN, FINANCE, GROCERY, GOVT, HOTEL, HEALTH, NONPROFIT, PROF_SERVICES, RETAIL, TRAVEL, and RESTAURANT.
+	// > Valid values: OTHER, AUTO, BEAUTY, APPAREL, EDU, ENTERTAIN, EVENT_PLAN, FINANCE, GROCERY, GOVT, HOTEL, HEALTH, NONPROFIT, PROF_SERVICES, RETAIL, TRAVEL, and RESTAURANT.
 	//
 	// example:
 	//

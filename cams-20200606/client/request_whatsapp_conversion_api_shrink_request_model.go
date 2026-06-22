@@ -24,6 +24,8 @@ type iRequestWhatsappConversionApiShrinkRequest interface {
 }
 
 type RequestWhatsappConversionApiShrinkRequest struct {
+	// The space ID or instance ID of the customer.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31,12 +33,15 @@ type RequestWhatsappConversionApiShrinkRequest struct {
 	// 929399382
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The PageId of Meta.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1939848838
-	PageId               *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageId *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The request data.
 	RequestDataShrink    *string `json:"RequestData,omitempty" xml:"RequestData,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

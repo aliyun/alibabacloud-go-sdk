@@ -24,38 +24,20 @@ type iUpdateChatFlowLogSettingResponseBody interface {
 }
 
 type UpdateChatFlowLogSettingResponseBody struct {
-	// Access denied details, this field is returned only when RAM verification fails.
-	//
-	// example:
-	//
-	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Status code.
-	//
 	// example:
 	//
-	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data object.
-	//
-	// example:
-	//
-	// 无
+	// 示例值
+	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Error message.
-	//
 	// example:
 	//
-	// 无
+	// 示例值示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
-	//
 	// example:
 	//
-	// 90E63D28-E31D-1EB2-8939-A9486641****
+	// 示例值示例值示例值
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the operation was successful. Values: true: success; false: failure.
-	//
 	// example:
 	//
 	// true

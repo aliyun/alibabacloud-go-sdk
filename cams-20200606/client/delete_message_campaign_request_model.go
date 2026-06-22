@@ -26,18 +26,24 @@ type iDeleteMessageCampaignRequest interface {
 }
 
 type DeleteMessageCampaignRequest struct {
+	// The Meta ad account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 293**
 	AdAccountId *string `json:"AdAccountId,omitempty" xml:"AdAccountId,omitempty"`
+	// The campaign ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 329**
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// The space ID of an Independent Software Vendor (ISV) sub-customer or the instance ID of a direct customer.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -45,6 +51,8 @@ type DeleteMessageCampaignRequest struct {
 	// cams-x**
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The Page ID of Messenger.
+	//
 	// This parameter is required.
 	//
 	// example:

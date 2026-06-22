@@ -30,35 +30,35 @@ type IsvGetAppIdResponseBody struct {
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The message ID.
+	// The app ID.
 	//
 	// example:
 	//
-	// 23hr3v
+	// 23hr3v****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The HTTP status code returned.
+	// The status code of the request.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// - A value of OK indicates that the request was successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For information about other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the configuration item.
+	// The configuration ID.
 	//
 	// example:
 	//
 	// 28972951817****
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// null
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

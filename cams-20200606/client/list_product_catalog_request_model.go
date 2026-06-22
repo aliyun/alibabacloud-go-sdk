@@ -48,17 +48,15 @@ type ListProductCatalogRequest struct {
 	//
 	// example:
 	//
-	// 28
+	// 105048970863****
 	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
 	// The space ID of the user within the independent software vendor (ISV) account.
 	//
 	// example:
 	//
-	// 293483938849493
+	// C29398882929
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The fields. Separate multiple fields with commas (,).
-	//
-	// see  [catalog fields](https://help.aliyun.com/document_detail/2579419.html)
+	// The fields. Separate multiple fields with commas (,). see [catalog fields](https://help.aliyun.com/document_detail/2579419.html)
 	//
 	// example:
 	//

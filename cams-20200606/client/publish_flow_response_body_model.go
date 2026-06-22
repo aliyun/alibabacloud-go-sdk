@@ -21,7 +21,7 @@ type iPublishFlowResponseBody interface {
 
 type PublishFlowResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// If OK is returned, the request was successful.
+	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -33,11 +33,11 @@ type PublishFlowResponseBody struct {
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// 90E63D28-E31D-1EB2-8939-A9486641****
+	// DAC72B08-3327-33EF-BEDC-8EC3E83A6575
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

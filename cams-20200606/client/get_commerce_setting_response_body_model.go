@@ -28,13 +28,13 @@ type GetCommerceSettingResponseBody struct {
 	//
 	// example:
 	//
-	// None
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response code.
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - The value OK indicates that the request was successful.
 	//
-	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetCommerceSettingResponseBody struct {
 	//
 	// example:
 	//
-	// None
+	// 无
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -56,9 +56,9 @@ type GetCommerceSettingResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -140,9 +140,9 @@ func (s *GetCommerceSettingResponseBody) Validate() error {
 type GetCommerceSettingResponseBodyData struct {
 	// Indicates whether the shopping cart button is displayed. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -150,9 +150,9 @@ type GetCommerceSettingResponseBodyData struct {
 	CartEnable *bool `json:"CartEnable,omitempty" xml:"CartEnable,omitempty"`
 	// Indicates whether the catalog button is displayed. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

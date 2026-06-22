@@ -28,34 +28,60 @@ type iListInstanceRequest interface {
 }
 
 type ListInstanceRequest struct {
+	// The channel type. Valid values:
+	//
+	// - **whatsapp**
+	//
+	// - **messenger**
+	//
+	// - **instagram**
+	//
+	// <props="intl">
+	//
+	// - **viber**
+	//
 	// example:
 	//
 	// VIBER
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The filter string for the query.
+	//
 	// example:
 	//
 	// aa
 	FilterStr *string `json:"FilterStr,omitempty" xml:"FilterStr,omitempty"`
+	// The instance ID. Use this parameter for non-Alibaba Cloud hosts only.
+	//
 	// example:
 	//
 	// r-uf6wd7pkyjwxvlxfhk
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// viber_ins
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The page number to return.
+	//
 	// example:
 	//
 	// 92
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of items to return per page.
+	//
 	// example:
 	//
 	// 87
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the resource group that contains the instance.
+	//
 	// example:
 	//
 	// 11
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The submission time, in `YYYY-MM-DD HH:MM:SS` format.
+	//
 	// example:
 	//
 	// 2023-12-12 00:00:00

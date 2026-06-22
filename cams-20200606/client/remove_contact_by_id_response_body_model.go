@@ -24,9 +24,6 @@ type iRemoveContactByIdResponseBody interface {
 }
 
 type RemoveContactByIdResponseBody struct {
-	// example:
-	//
-	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//

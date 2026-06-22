@@ -32,27 +32,39 @@ type iListCustomAudienceShrinkRequest interface {
 }
 
 type ListCustomAudienceShrinkRequest struct {
+	// The Meta ad account ID.
+	//
 	// example:
 	//
 	// 339**
 	AdAccountId *string `json:"AdAccountId,omitempty" xml:"AdAccountId,omitempty"`
+	// The Space ID of the Independent Software Vendor (ISV) sub-customer or the instance ID of the direct customers. This is the channel ID. Find the ID on the <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cams-**
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The ID of the custom audience.
+	//
 	// example:
 	//
 	// 239**
 	CustomAudienceId *string `json:"CustomAudienceId,omitempty" xml:"CustomAudienceId,omitempty"`
+	// The name of the custom audience.
+	//
 	// example:
 	//
 	// name
 	CustomAudienceName *string `json:"CustomAudienceName,omitempty" xml:"CustomAudienceName,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The pagination settings.
+	//
 	// This parameter is required.
 	PageShrink *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The Page ID for Messenger.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -61,6 +73,8 @@ type ListCustomAudienceShrinkRequest struct {
 	PageId               *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The token type.
+	//
 	// example:
 	//
 	// custom

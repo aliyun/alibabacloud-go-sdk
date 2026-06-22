@@ -38,54 +38,44 @@ type iCreateChatappTemplateShrinkRequest interface {
 type CreateChatappTemplateShrinkRequest struct {
 	// Deprecated
 	//
-	// Specifies whether to allow Facebook to automatically change the directory of the template. If you set this parameter to true, the review success rate of the template is improved. This parameter is valid only when TemplateType is set to WHATSAPP.
+	// Indicates whether to allow Facebook to automatically change the category of the template. This can increase the approval rate of the template. This parameter is valid only when TemplateType is set to WHATSAPP.
+	//
+	// 	Notice: This property is deprecated. WhatsApp no longer supports this property.
 	//
 	// example:
 	//
 	// true
 	AllowCategoryChange *bool `json:"AllowCategoryChange,omitempty" xml:"AllowCategoryChange,omitempty"`
-	// The category of the template if TemplateType is set to WHATSAPP. Valid values:
+	// WhatsApp template categories:
 	//
-	// 	- **UTILITY**: the transaction template
+	// - **UTILITY**: Transactional.
 	//
-	// 	- **MARKETING**: the marketing template
+	// - **MARKETING**: Marketing.
 	//
-	// 	- **AUTHENTICATION**: the authentication template
+	// - **AUTHENTICATION**: Authentication.
 	//
-	// The category of the template if TemplateType is set to VIBER. Valid values:
+	// Viber template categories:
 	//
-	// 	- **text**: the template that contains only text
+	// - **UTILITY**: Transactional.
 	//
-	// 	- **image**: the template that contains only images
+	// - **MARKETING**: Marketing.
 	//
-	// 	- **text_image_button**: the template that contains text, images, and buttons
-	//
-	// 	- **text_button**: the template that contains text and buttons
-	//
-	// 	- **document**: the template that contains only documents
-	//
-	// 	- **video**: the template that contains only videos
-	//
-	// 	- **text_video**: the template that contains text and videos
-	//
-	// 	- **text_video_button**: the template that contains text, videos, and buttons
-	//
-	// 	- **text_image**: the template that contains text and images
+	// - **AUTHENTICATION**: Authentication.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// The code of the message template.
+	// UTILITY
 	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	CategoryChangePaused *bool   `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
-	// The components of the message template.
+	// The list of message template components.
 	//
-	// >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter must be empty.
+	// > When Category is set to AUTHENTICATION, the Components array cannot contain a component of the HEADER type. If the component type is BODY or FOOTER, the Text parameter must be empty.
 	//
 	// This parameter is required.
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
-	// The space ID of the user within the ISV account.
+	// The Space ID of the ISV sub-customer or the instance ID of the direct customer.
 	//
 	// example:
 	//
@@ -93,23 +83,27 @@ type CreateChatappTemplateShrinkRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
 	//
-	// The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+	// The WhatsApp Business Account (WABA) ID of the independent software vendor (ISV) customer.
 	//
-	// > CustWabaId is an obsolete parameter. Use CustSpaceId instead.
+	// > This parameter is deprecated. Use CustSpaceId instead.
 	//
 	// example:
 	//
 	// 65921621816****
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	// The examples of variables that are used when you create the message template.
+	// An example of how to create a template.
+	//
+	// example:
+	//
+	// hello_whatsapp
 	ExampleShrink *string `json:"Example,omitempty" xml:"Example,omitempty"`
-	// The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
+	// The ISV verification code, used to verify whether the RAM user is authorized by the ISV.
 	//
 	// example:
 	//
 	// skdi3kksloslikdkkdk
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+	// The template language. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
 	//
 	// This parameter is required.
 	//
@@ -117,15 +111,17 @@ type CreateChatappTemplateShrinkRequest struct {
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// Validity period of authentication template message sending in WhatsApp
+	// The time-to-live (TTL) of the template message in WhatsApp.
 	//
-	// > This attribute requires providing waba in advance to Alibaba operators to open the whitelist, otherwise it will result in template submission failure
+	// - For AUTHENTICATION templates, the value ranges from 30 to 900.
+	//
+	// - For UTILITY templates, the value ranges from 30 to 43200.
 	//
 	// example:
 	//
 	// 120
 	MessageSendTtlSeconds *int32 `json:"MessageSendTtlSeconds,omitempty" xml:"MessageSendTtlSeconds,omitempty"`
-	// The name of the message template.
+	// The template name.
 	//
 	// This parameter is required.
 	//
@@ -133,13 +129,11 @@ type CreateChatappTemplateShrinkRequest struct {
 	//
 	// hello_whatsapp
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the message template.
+	// The template type.
 	//
-	// 	- **WHATSAPP**
+	// - **WHATSAPP**
 	//
-	// 	- **VIBER**
-	//
-	// 	- LINE: the Line message template. This type of message template will be released later.
+	// - **VIBER**
 	//
 	// This parameter is required.
 	//

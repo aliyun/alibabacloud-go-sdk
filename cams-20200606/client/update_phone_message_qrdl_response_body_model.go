@@ -23,7 +23,7 @@ type iUpdatePhoneMessageQrdlResponseBody interface {
 
 type UpdatePhoneMessageQrdlResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The result returns OK as normal.
+	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -31,7 +31,7 @@ type UpdatePhoneMessageQrdlResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *UpdatePhoneMessageQrdlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error description information.
+	// The error message.
 	//
 	// example:
 	//
@@ -108,41 +108,41 @@ func (s *UpdatePhoneMessageQrdlResponseBody) Validate() error {
 }
 
 type UpdatePhoneMessageQrdlResponseBodyData struct {
-	// Deep link address.
+	// The deep link URL.
 	//
 	// example:
 	//
 	// https://wa.msg/
 	DeepLinkUrl *string `json:"DeepLinkUrl,omitempty" xml:"DeepLinkUrl,omitempty"`
-	// Generate image types.
+	// The type of the generated image.
 	//
 	// example:
 	//
 	// PNG
 	GenerateQrImage *string `json:"GenerateQrImage,omitempty" xml:"GenerateQrImage,omitempty"`
-	// Number.
+	// The phone number.
 	//
 	// example:
 	//
-	// 8613800
+	// 86158********
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// Message content.
+	// The message content.
 	//
 	// example:
 	//
 	// Hello
 	PrefilledMessage *string `json:"PrefilledMessage,omitempty" xml:"PrefilledMessage,omitempty"`
-	// QR code address.
+	// The URL of the QR code.
 	//
 	// example:
 	//
 	// https://img.png
 	QrImageUrl *string `json:"QrImageUrl,omitempty" xml:"QrImageUrl,omitempty"`
-	// QR code encoding.
+	// The code.
 	//
 	// example:
 	//
-	// DEDEE998
+	// D9AA3***
 	QrdlCode *string `json:"QrdlCode,omitempty" xml:"QrdlCode,omitempty"`
 }
 

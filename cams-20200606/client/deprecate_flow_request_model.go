@@ -22,19 +22,15 @@ type iDeprecateFlowRequest interface {
 }
 
 type DeprecateFlowRequest struct {
-	// The space ID of the RAM user within the independent software vendor (ISV) account.
-	//
 	// example:
 	//
-	// 38877483
+	// 示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The Flow ID.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// flow_001
+	// 示例值示例值
 	FlowId               *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

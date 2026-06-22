@@ -22,13 +22,10 @@ type iSyncFlowResponseBody interface {
 }
 
 type SyncFlowResponseBody struct {
-	// example:
-	//
-	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// OK
+	// 66
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//

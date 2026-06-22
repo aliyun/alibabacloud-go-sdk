@@ -26,7 +26,7 @@ type GetWhatsappConnectionCatalogRequest struct {
 	//
 	// example:
 	//
-	// C2020939922929292
+	// C20209399229****
 	CustSpaceId          *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -37,7 +37,7 @@ type GetWhatsappConnectionCatalogRequest struct {
 	//
 	// example:
 	//
-	// 292939399393
+	// 29293939****
 	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
 }
 

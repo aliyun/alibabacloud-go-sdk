@@ -24,9 +24,6 @@ type iUpdateWabaMmlStatusResponseBody interface {
 }
 
 type UpdateWabaMmlStatusResponseBody struct {
-	// example:
-	//
-	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
@@ -35,11 +32,8 @@ type UpdateWabaMmlStatusResponseBody struct {
 	// example:
 	//
 	// 示例值示例值示例值
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 1
-	Model map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
 	// example:
 	//
 	// 示例值示例值

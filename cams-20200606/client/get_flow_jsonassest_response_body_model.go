@@ -23,7 +23,7 @@ type iGetFlowJSONAssestResponseBody interface {
 
 type GetFlowJSONAssestResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// If OK is returned, the request was successful.
+	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -31,7 +31,7 @@ type GetFlowJSONAssestResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetFlowJSONAssestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error description information.
+	// The error message.
 	//
 	// example:
 	//
@@ -112,13 +112,13 @@ type GetFlowJSONAssestResponseBodyData struct {
 	//
 	// example:
 	//
-	// https://url.com/json.json
+	// https://bucket-*****-ap-southeast-1.aliyuncs.com/9658820125168****.json
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// The Flow ID.
+	// The flow ID.
 	//
 	// example:
 	//
-	// flow_id_arms
+	// 92675332812643****
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 }
 

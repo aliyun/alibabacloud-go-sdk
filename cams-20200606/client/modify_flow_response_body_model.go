@@ -23,7 +23,7 @@ type iModifyFlowResponseBody interface {
 
 type ModifyFlowResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// If OK is returned, the request was successful.
+	// A value of OK indicates that the request was successful.
 	//
 	// example:
 	//
@@ -108,23 +108,23 @@ func (s *ModifyFlowResponseBody) Validate() error {
 }
 
 type ModifyFlowResponseBodyData struct {
-	// The categories of the Flow.
+	// The flow categories.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
 	// example:
 	//
 	// http://www.abc.com
 	EndpointUri *string `json:"EndpointUri,omitempty" xml:"EndpointUri,omitempty"`
-	// The Flow ID.
+	// The flow ID.
 	//
 	// example:
 	//
-	// 3939399****
+	// 92675332812643****
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The Flow name.
+	// The flow name.
 	//
 	// example:
 	//
-	// flow-00203
+	// flow_001
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 }
 

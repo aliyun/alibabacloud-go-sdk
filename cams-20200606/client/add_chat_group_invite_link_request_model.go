@@ -26,22 +26,34 @@ type iAddChatGroupInviteLinkRequest interface {
 }
 
 type AddChatGroupInviteLinkRequest struct {
+	// The business phone number. To obtain this number, call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8613800***
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// The type. Valid value:
+	//
+	// - **WHATSAPP**.
+	//
+	// > Currently, only the WhatsApp channel type is supported.
+	//
 	// example:
 	//
 	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The SpaceId or instance ID of the ISV sub-customer. This is the channel ID. View the channel ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cams-x***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The group ID. To obtain this ID, call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:

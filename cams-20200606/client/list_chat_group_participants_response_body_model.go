@@ -24,20 +24,42 @@ type iListChatGroupParticipantsResponseBody interface {
 }
 
 type ListChatGroupParticipantsResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code. Valid values:
+	//
+	// - OK: The request was successful.
+	//
+	// - For other values, see the [error code list](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *ListChatGroupParticipantsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
-	// 示例值
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// E9d9****
+	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -116,7 +138,10 @@ func (s *ListChatGroupParticipantsResponseBody) Validate() error {
 }
 
 type ListChatGroupParticipantsResponseBodyData struct {
+	// The list of group members.
 	List []*ListChatGroupParticipantsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The total number of participants.
+	//
 	// example:
 	//
 	// 8
@@ -163,6 +188,8 @@ func (s *ListChatGroupParticipantsResponseBodyData) Validate() error {
 }
 
 type ListChatGroupParticipantsResponseBodyDataList struct {
+	// The phone number of the group member.
+	//
 	// example:
 	//
 	// 861382***

@@ -24,11 +24,11 @@ type iGetPledgeTemplateAddressRequest interface {
 type GetPledgeTemplateAddressRequest struct {
 	// example:
 	//
-	// cams-x***
+	// 示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// example:
 	//
-	// it
+	// 示例值示例值
 	IndustryType         *string `json:"IndustryType,omitempty" xml:"IndustryType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

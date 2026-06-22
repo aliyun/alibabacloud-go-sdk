@@ -22,6 +22,8 @@ type iSyncBusinessAppHistoryRequest interface {
 }
 
 type SyncBusinessAppHistoryRequest struct {
+	// The SpaceId of the ISV sub-client.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29,6 +31,8 @@ type SyncBusinessAppHistoryRequest struct {
 	// cams-x***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The business number.
+	//
 	// This parameter is required.
 	//
 	// example:

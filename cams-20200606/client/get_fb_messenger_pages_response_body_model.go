@@ -24,13 +24,10 @@ type iGetFbMessengerPagesResponseBody interface {
 }
 
 type GetFbMessengerPagesResponseBody struct {
-	// example:
-	//
-	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// OK
+	// ok
 	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []*GetFbMessengerPagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:

@@ -30,35 +30,48 @@ type iWhatsappCallShrinkRequest interface {
 }
 
 type WhatsappCallShrinkRequest struct {
+	// The business number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 86138***
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// The action to perform on the call.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// connect
 	CallAction *string `json:"CallAction,omitempty" xml:"CallAction,omitempty"`
+	// The call ID.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// wamid-xx**
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The Space ID of the ISV sub-customer, or the instance ID of the direct customer. View the Space ID on the
+	//
+	// <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// cams-xx**
 	CustSpaceId          *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SessionShrink        *string `json:"Session,omitempty" xml:"Session,omitempty"`
+	// The call negotiation information.
+	SessionShrink *string `json:"Session,omitempty" xml:"Session,omitempty"`
+	// The user\\"s number.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 86131***
 	UserNumber *string `json:"UserNumber,omitempty" xml:"UserNumber,omitempty"`
 }
 

@@ -28,29 +28,42 @@ type iListChatGroupParticipantsShrinkRequest interface {
 }
 
 type ListChatGroupParticipantsShrinkRequest struct {
+	// The business number. You can call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation to obtain the business number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8613800***
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// The channel type. Valid value:
+	//
+	// - **WHATSAPP**
+	//
+	// > This operation supports only the WhatsApp channel.
+	//
 	// example:
 	//
 	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// This is the instance ID for direct customers or the SpaceId for ISV sub-customers. You can find the ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cams-k***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The group ID. You can call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation to obtain the group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// EA939****
-	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The paging information.
 	PageShrink           *string `json:"Page,omitempty" xml:"Page,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

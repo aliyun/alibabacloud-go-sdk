@@ -57,10 +57,7 @@ type AddMarketingFlowShrinkRequest struct {
 	// example:
 	//
 	// 示例值
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// example:
-	//
-	// {}
+	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	// example:
 	//
@@ -80,10 +77,7 @@ type AddMarketingFlowShrinkRequest struct {
 	// example:
 	//
 	// 示例值
-	ParamFlag *string `json:"ParamFlag,omitempty" xml:"ParamFlag,omitempty"`
-	// example:
-	//
-	// {}
+	ParamFlag    *string `json:"ParamFlag,omitempty" xml:"ParamFlag,omitempty"`
 	ParamsShrink *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// example:
 	//

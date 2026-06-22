@@ -46,7 +46,7 @@ type iUpdateMarketingFLowShrinkRequest interface {
 type UpdateMarketingFLowShrinkRequest struct {
 	// example:
 	//
-	// 115311507XXXX49888
+	// 示例值示例值
 	ActivityCode *string `json:"ActivityCode,omitempty" xml:"ActivityCode,omitempty"`
 	// example:
 	//
@@ -54,49 +54,49 @@ type UpdateMarketingFLowShrinkRequest struct {
 	ActivityDesc *string `json:"ActivityDesc,omitempty" xml:"ActivityDesc,omitempty"`
 	// example:
 	//
-	// 674574575658675XX
+	// 示例值示例值示例值
 	ActivityId *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
 	// example:
 	//
-	// test
-	ActivityName   *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	// 示例值示例值示例值
+	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
 	// example:
 	//
-	// 2025-11-26 09:59:00
+	// 示例值示例值
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1
+	// 示例值示例值示例值
 	ExecutionType *string `json:"ExecutionType,omitempty" xml:"ExecutionType,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// example:
 	//
 	// 示例值
-	ParamFlag *string `json:"ParamFlag,omitempty" xml:"ParamFlag,omitempty"`
-	// example:
-	//
-	// {"testEmail":"wy****999@alibaba-inc.com"}
+	ParamFlag    *string `json:"ParamFlag,omitempty" xml:"ParamFlag,omitempty"`
 	ParamsShrink *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// example:
 	//
-	// cf-kr3k31**mfeir8w
+	// 示例值
 	RelatedFlowCode *string `json:"RelatedFlowCode,omitempty" xml:"RelatedFlowCode,omitempty"`
 	// example:
 	//
-	// testflow
+	// 示例值示例值
 	RelatedFlowName *string `json:"RelatedFlowName,omitempty" xml:"RelatedFlowName,omitempty"`
 	// example:
 	//
-	// 114345654645XX
+	// 42
 	RelatedGroupId       *int64  `json:"RelatedGroupId,omitempty" xml:"RelatedGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// example:
 	//
-	// 2025-11-25 09:59:00
+	// 示例值示例值
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 

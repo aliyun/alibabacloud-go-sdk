@@ -22,6 +22,8 @@ type iSyncMessageCampaignRequest interface {
 }
 
 type SyncMessageCampaignRequest struct {
+	// The ID of the Meta ad account.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29,6 +31,8 @@ type SyncMessageCampaignRequest struct {
 	// 244**
 	AdAccountId *string `json:"AdAccountId,omitempty" xml:"AdAccountId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the Messenger page.
+	//
 	// This parameter is required.
 	//
 	// example:

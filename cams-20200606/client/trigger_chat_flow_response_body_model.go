@@ -24,41 +24,37 @@ type iTriggerChatFlowResponseBody interface {
 }
 
 type TriggerChatFlowResponseBody struct {
-	// Details of access denial
+	// Details about the access denied error.
 	//
 	// example:
 	//
-	// 无
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
-	// 无
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
-	//
-	// example:
-	//
-	// {}
+	// The returned data.
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Error description message.
+	// The error message.
 	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
-	// 无
+	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the call was successful.
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: Call succeeded.
+	// - **true**: The request was successful.
 	//
-	// - **false**: Call failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//

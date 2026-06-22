@@ -24,20 +24,42 @@ type iListChatGroupResponseBody interface {
 }
 
 type ListChatGroupResponseBody struct {
+	// Details about the access denied error.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code. Valid values:
+	//
+	// - `OK`: The request succeeded.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ListChatGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message. This parameter is returned only when an error occurs.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Valid values:
+	//
+	// - **true**: The request succeeded.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -116,7 +138,10 @@ func (s *ListChatGroupResponseBody) Validate() error {
 }
 
 type ListChatGroupResponseBodyData struct {
+	// The group list.
 	List []*ListChatGroupResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 51
@@ -163,50 +188,70 @@ func (s *ListChatGroupResponseBodyData) Validate() error {
 }
 
 type ListChatGroupResponseBodyDataList struct {
+	// The business number.
+	//
 	// example:
 	//
 	// 8613800**
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// The role of the bot in the group.
+	//
 	// example:
 	//
-	// 示例值
+	// example
 	BusinessRole *string `json:"BusinessRole,omitempty" xml:"BusinessRole,omitempty"`
+	// The group description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time the group was last updated.
+	//
 	// example:
 	//
 	// 94
 	GmtModifier *int64 `json:"GmtModifier,omitempty" xml:"GmtModifier,omitempty"`
+	// The group ID.
+	//
 	// example:
 	//
 	// EA30d***
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The group link.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	GroupLink *string `json:"GroupLink,omitempty" xml:"GroupLink,omitempty"`
+	// The group status.
+	//
 	// example:
 	//
 	// ACTIVE
 	GroupStatus *string `json:"GroupStatus,omitempty" xml:"GroupStatus,omitempty"`
+	// The group type.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// example
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The group invitation link.
+	//
 	// example:
 	//
 	// https://chat.whatsapp.com/***
 	InviteLink *string `json:"InviteLink,omitempty" xml:"InviteLink,omitempty"`
-	// example:
-	//
-	// https://aliyun.com/png.jpg
+	// The group\\"s profile picture.
 	ProfilePictureFile *string `json:"ProfilePictureFile,omitempty" xml:"ProfilePictureFile,omitempty"`
+	// The group subject.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// This is a test subject
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	// The total number of group participants.
+	//
 	// example:
 	//
 	// 35

@@ -50,20 +50,17 @@ type ListMarketingFlowShrinkRequest struct {
 	ActivityStatus *string `json:"ActivityStatus,omitempty" xml:"ActivityStatus,omitempty"`
 	// example:
 	//
-	// ALICOM_OPAAS
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// example:
-	//
-	// {}
+	// 示例值
+	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// example:
 	//
-	// 1
+	// 示例值示例值示例值
 	PageIndex *string `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	// example:
 	//
-	// 1
+	// 示例值示例值
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// example:
 	//

@@ -24,38 +24,20 @@ type iOnlineFlowVersionResponseBody interface {
 }
 
 type OnlineFlowVersionResponseBody struct {
-	// Details of access denial.
-	//
-	// example:
-	//
-	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Status code.
-	//
 	// example:
 	//
 	// 示例值
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Error message.
-	//
 	// example:
 	//
 	// 示例值示例值示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
-	//
 	// example:
 	//
 	// 示例值示例值
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Content of the returned data.
-	//
-	// example:
-	//
-	// 无
-	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
-	// Indicates whether the operation was successful. true means success, false means failure.
-	//
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Response  map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
 	// example:
 	//
 	// true

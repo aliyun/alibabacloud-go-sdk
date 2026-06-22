@@ -22,11 +22,15 @@ type iGetViberByRequestNoRequest interface {
 }
 
 type GetViberByRequestNoRequest struct {
+	// The Space ID of an ISV sub-customer or the Instance ID of a direct customer.
+	//
 	// example:
 	//
 	// 28251486512358****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The request ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -20,22 +20,33 @@ type iCheckDirectSendMessageSampleShrinkRequest interface {
 }
 
 type CheckDirectSendMessageSampleShrinkRequest struct {
+	// The SpaceId of an ISV sub-customer or the instance ID of a direct customer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cams-xx**
-	CustSpaceId       *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The body of an interactive message.
 	InteractiveShrink *string `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
+	// The body of a text message.
+	//
 	// example:
 	//
 	// {"text": "This is a direct send message"}
 	TextShrink *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The type of the direct message content. Valid values:
+	//
+	// - interactive
+	//
+	// - text
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// interactive
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

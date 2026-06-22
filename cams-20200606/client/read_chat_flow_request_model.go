@@ -24,20 +24,11 @@ type iReadChatFlowRequest interface {
 }
 
 type ReadChatFlowRequest struct {
-	// Business tenant code, default is “ALICOM_OPAAS”.
-	//
 	// example:
 	//
-	// ALICOM_OPAAS
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Business extension information, default is “{}”.
-	//
-	// example:
-	//
-	// {}
+	// 示例值示例值
+	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
-	// Flow code.
-	//
 	// example:
 	//
 	// 示例值

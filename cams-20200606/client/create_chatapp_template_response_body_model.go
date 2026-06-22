@@ -28,29 +28,29 @@ type CreateChatappTemplateResponseBody struct {
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
+	// The status code of the request.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// - An \\`OK\\` response indicates that the request was successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [API error codes](https://www.alibabacloud.com/help/en/cams/latest/api-error-codes).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	//
 	// example:
 	//
 	// {"templateCode": "****4b5c79c9432497a075bdfca36bf5"，"templateName": "hello_whatsapp"}
 	Data *CreateChatappTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// User not authorized to operate on the specified resource.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -121,13 +121,13 @@ func (s *CreateChatappTemplateResponseBody) Validate() error {
 }
 
 type CreateChatappTemplateResponseBodyData struct {
-	// The code of the message template.
+	// The template code.
 	//
 	// example:
 	//
 	// SMS_232907****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// The name of the message template.
+	// The template name.
 	//
 	// example:
 	//

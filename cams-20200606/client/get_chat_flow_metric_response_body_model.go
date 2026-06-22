@@ -24,38 +24,17 @@ type iGetChatFlowMetricResponseBody interface {
 }
 
 type GetChatFlowMetricResponseBody struct {
-	// Details of access denial.
-	//
-	// example:
-	//
-	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Status code.
-	//
 	// example:
 	//
-	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data object.
-	//
-	// example:
-	//
-	// 无
+	// 示例值示例值示例值
+	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Error message.
-	//
 	// example:
 	//
-	// 无
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Unique request ID.
-	//
-	// example:
-	//
-	// 90E63D28-E31D-1EB2-8939-A9486641****
+	// 示例值示例值
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Values: true: success; false: failure.
-	//
 	// example:
 	//
 	// false

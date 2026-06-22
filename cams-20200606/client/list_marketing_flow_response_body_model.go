@@ -26,13 +26,10 @@ type iListMarketingFlowResponseBody interface {
 }
 
 type ListMarketingFlowResponseBody struct {
-	// example:
-	//
-	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// OK
+	// 2993***
 	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []*ListMarketingFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
@@ -41,7 +38,7 @@ type ListMarketingFlowResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// CB6122C9-09B5-5926-**476A96CB0
+	// OK
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
@@ -140,35 +137,32 @@ func (s *ListMarketingFlowResponseBody) Validate() error {
 type ListMarketingFlowResponseBodyData struct {
 	// example:
 	//
-	// 3243243***
+	// 示例值示例值
 	ActivityCode *string `json:"ActivityCode,omitempty" xml:"ActivityCode,omitempty"`
 	// example:
 	//
-	// aaa
+	// 示例值示例值
 	ActivityDesc *string `json:"ActivityDesc,omitempty" xml:"ActivityDesc,omitempty"`
 	// example:
 	//
-	// aaa
+	// 示例值示例值示例值
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
 	// example:
 	//
-	// active
+	// 示例值示例值示例值
 	ActivityStatus *string `json:"ActivityStatus,omitempty" xml:"ActivityStatus,omitempty"`
 	// example:
 	//
-	// {}
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// example:
-	//
-	// {}
+	// 示例值示例值
+	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	// example:
 	//
-	// 0 0 4 1/1 	- ?
+	// 示例值
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
 	// example:
 	//
-	// 2025-01-01 XX1:11:11
+	// 示例值
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// example:
 	//
@@ -176,11 +170,11 @@ type ListMarketingFlowResponseBodyData struct {
 	ExecutionType *string `json:"ExecutionType,omitempty" xml:"ExecutionType,omitempty"`
 	// example:
 	//
-	// 2025-XX-01 11:11:11
+	// 示例值
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// example:
 	//
-	// N/A
+	// 示例值
 	GmtModifier *string `json:"GmtModifier,omitempty" xml:"GmtModifier,omitempty"`
 	// example:
 	//
@@ -189,26 +183,23 @@ type ListMarketingFlowResponseBodyData struct {
 	// example:
 	//
 	// Y
-	ParamFlag *string `json:"ParamFlag,omitempty" xml:"ParamFlag,omitempty"`
+	ParamFlag *string                `json:"ParamFlag,omitempty" xml:"ParamFlag,omitempty"`
+	Params    map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
 	// example:
 	//
-	// {\\"CustomerLimit\\":false}
-	Params map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
-	// example:
-	//
-	// dsafdsf***
+	// 示例值示例值
 	RelatedFlowCode *string `json:"RelatedFlowCode,omitempty" xml:"RelatedFlowCode,omitempty"`
 	// example:
 	//
-	// aaa
+	// 示例值示例值
 	RelatedFlowName *string `json:"RelatedFlowName,omitempty" xml:"RelatedFlowName,omitempty"`
 	// example:
 	//
-	// 54354**
+	// 示例值
 	RelatedGroupId *string `json:"RelatedGroupId,omitempty" xml:"RelatedGroupId,omitempty"`
 	// example:
 	//
-	// AAA
+	// 示例值示例值
 	RelatedGroupName *string `json:"RelatedGroupName,omitempty" xml:"RelatedGroupName,omitempty"`
 	// example:
 	//
@@ -216,11 +207,11 @@ type ListMarketingFlowResponseBodyData struct {
 	SpecificTime *string `json:"SpecificTime,omitempty" xml:"SpecificTime,omitempty"`
 	// example:
 	//
-	// 2025-01-XX 11:11:11
+	// 示例值示例值
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	// example:
 	//
-	// 1111
+	// 示例值示例值示例值
 	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 }
 

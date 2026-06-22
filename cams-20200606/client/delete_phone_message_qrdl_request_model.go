@@ -24,28 +24,22 @@ type iDeletePhoneMessageQrdlRequest interface {
 }
 
 type DeletePhoneMessageQrdlRequest struct {
-	// The space ID of the RAM user within the independent software vendor (ISV) account.
-	//
 	// example:
 	//
-	// 883873773
+	// 示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The phone number. Add the country code before the phone number.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 861380000
+	// 示例值示例值
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// QR code encoding.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 29338838
+	// 示例值示例值示例值
 	QrdlCode             *string `json:"QrdlCode,omitempty" xml:"QrdlCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

@@ -20,17 +20,17 @@ type iChatappPhoneNumberDeregisterResponseBody interface {
 }
 
 type ChatappPhoneNumberDeregisterResponseBody struct {
-	// The details about the access denial.
+	// Details about the access denial.
 	//
 	// example:
 	//
-	// None
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code.
+	// The request status code.
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - A value of OK indicates that the request is successful.
 	//
-	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ChatappPhoneNumberDeregisterResponseBody struct {
 	//
 	// example:
 	//
-	// None
+	// 无
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

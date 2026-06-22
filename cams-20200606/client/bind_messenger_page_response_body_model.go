@@ -24,9 +24,6 @@ type iBindMessengerPageResponseBody interface {
 }
 
 type BindMessengerPageResponseBody struct {
-	// example:
-	//
-	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//

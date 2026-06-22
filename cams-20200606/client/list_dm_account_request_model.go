@@ -28,22 +28,22 @@ type iListDmAccountRequest interface {
 type ListDmAccountRequest struct {
 	// example:
 	//
-	// a
+	// 示例值
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// example:
 	//
-	// 1
+	// 83
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	// example:
 	//
-	// 10
+	// 86
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// example:
 	//
-	// batch
+	// 示例值示例值
 	SendType *string `json:"SendType,omitempty" xml:"SendType,omitempty"`
 }
 

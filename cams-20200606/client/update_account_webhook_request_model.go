@@ -26,19 +26,19 @@ type iUpdateAccountWebhookRequest interface {
 }
 
 type UpdateAccountWebhookRequest struct {
-	// The space ID of the RAM user within the independent software vendor (ISV) account.
+	// The space ID of the ISV sub-customer.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 293483938849493**
+	// 2934839388494****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Specifies whether to use HTTP callbacks to receive message receipts. Valid values:
 	//
-	// 	- Y: indicates that HTTP callbacks are used to receive receipts.
+	// - Y: indicates that HTTP callbacks are used to receive receipts.
 	//
-	// 	- N: indicates that HTTP callbacks are not used to receive receipts.
+	// - N: indicates that HTTP callbacks are not used to receive receipts.
 	//
 	// example:
 	//
@@ -47,9 +47,9 @@ type UpdateAccountWebhookRequest struct {
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to use Message Service (MNS) queues to receive receipts. Valid values:
 	//
-	// 	- Y: indicates that MNS queues are used to receive receipts.
+	// - Y: indicates that MNS queues are used to receive receipts.
 	//
-	// 	- N: indicates that MNS queues are not used to receive receipts.
+	// - N: indicates that MNS queues are not used to receive receipts.
 	//
 	// example:
 	//

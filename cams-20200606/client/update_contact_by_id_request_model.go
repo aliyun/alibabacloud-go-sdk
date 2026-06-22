@@ -37,10 +37,7 @@ type UpdateContactByIdRequest struct {
 	// example:
 	//
 	// 示例值
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// example:
-	//
-	// {}
+	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	// This parameter is required.
 	//

@@ -26,17 +26,23 @@ type iSyncMessengerSubscriptionTokenRequest interface {
 }
 
 type SyncMessengerSubscriptionTokenRequest struct {
+	// The Space ID of the Independent Software Vendor (ISV) sub-customer or the instance ID of the direct customer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cams-xi****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The custom audience ID.
+	//
 	// example:
 	//
 	// 20399***
 	CustomAudienceId *string `json:"CustomAudienceId,omitempty" xml:"CustomAudienceId,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The Page ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -45,6 +51,8 @@ type SyncMessengerSubscriptionTokenRequest struct {
 	PageId               *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The token type.
+	//
 	// This parameter is required.
 	//
 	// example:

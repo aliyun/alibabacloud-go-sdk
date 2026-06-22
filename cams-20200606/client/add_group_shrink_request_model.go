@@ -39,10 +39,7 @@ type AddGroupShrinkRequest struct {
 	// example:
 	//
 	// 示例值示例值示例值
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// example:
-	//
-	// {}
+	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	// example:
 	//
@@ -59,10 +56,7 @@ type AddGroupShrinkRequest struct {
 	// example:
 	//
 	// 示例值示例值
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// example:
-	//
-	// src/main/resources/config/promql_node.yaml
+	Email    *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	// This parameter is required.
 	//

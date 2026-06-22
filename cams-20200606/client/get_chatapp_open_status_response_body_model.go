@@ -20,22 +20,10 @@ type iGetChatappOpenStatusResponseBody interface {
 }
 
 type GetChatappOpenStatusResponseBody struct {
-	// example:
-	//
-	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// true
-	OpenStatus *bool `json:"OpenStatus,omitempty" xml:"OpenStatus,omitempty"`
-	// example:
-	//
-	// 90E63D28-E31D-1EB2-8939-A9486641****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	OpenStatus *bool   `json:"OpenStatus,omitempty" xml:"OpenStatus,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetChatappOpenStatusResponseBody) String() string {

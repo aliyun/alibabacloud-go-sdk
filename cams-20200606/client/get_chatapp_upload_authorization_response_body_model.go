@@ -26,13 +26,13 @@ type GetChatappUploadAuthorizationResponseBody struct {
 	//
 	// example:
 	//
-	// None
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// - A value of OK indicates that the call is successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type GetChatappUploadAuthorizationResponseBody struct {
 	//
 	// example:
 	//
-	// None
+	// 无
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	//
@@ -139,7 +139,7 @@ type GetChatappUploadAuthorizationResponseBodyData struct {
 	//
 	// example:
 	//
-	// 1000102939
+	// 100010****
 	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
 	// The address of the OSS server to which a file is uploaded.
 	//
@@ -157,7 +157,7 @@ type GetChatappUploadAuthorizationResponseBodyData struct {
 	//
 	// example:
 	//
-	// dkdieiii**
+	// dkdieiii****
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 

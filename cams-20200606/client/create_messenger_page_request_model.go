@@ -34,26 +34,26 @@ type CreateMessengerPageRequest struct {
 	//
 	// example:
 	//
-	// EAA****
+	// 示例值
 	AuthenticationCode *string `json:"AuthenticationCode,omitempty" xml:"AuthenticationCode,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 293***
+	// 示例值示例值
 	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// cams-s***
+	// 示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 19283***
+	// 示例值示例值示例值
 	PageId               *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

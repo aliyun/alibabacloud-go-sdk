@@ -32,33 +32,45 @@ type iAddCustomAudienceUserShrinkRequest interface {
 }
 
 type AddCustomAudienceUserShrinkRequest struct {
+	// The ID of the Meta ad account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3939**
 	AdAccountId *string `json:"AdAccountId,omitempty" xml:"AdAccountId,omitempty"`
+	// Indicates whether this is the last batch of data.
+	//
 	// example:
 	//
 	// false
 	BatchLastFlag *bool `json:"BatchLastFlag,omitempty" xml:"BatchLastFlag,omitempty"`
+	// The space ID of the Independent Software Vendor (ISV) sub-customer or the instance ID of a direct customer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cams-**
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The ID of the custom audience.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 399**
 	CustomAudienceId *string `json:"CustomAudienceId,omitempty" xml:"CustomAudienceId,omitempty"`
+	// The estimated total number of users.
+	//
 	// example:
 	//
 	// 26
 	EstimatedNumTotal *int64 `json:"EstimatedNumTotal,omitempty" xml:"EstimatedNumTotal,omitempty"`
 	OwnerId           *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The Page ID for Messenger.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -67,6 +79,8 @@ type AddCustomAudienceUserShrinkRequest struct {
 	PageId               *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// A list of users.
+	//
 	// This parameter is required.
 	UsersShrink *string `json:"Users,omitempty" xml:"Users,omitempty"`
 }

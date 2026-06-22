@@ -30,25 +30,22 @@ type iMoveContactToGroupShrinkRequest interface {
 type MoveContactToGroupShrinkRequest struct {
 	// example:
 	//
-	// ALICOM_OPAAS
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// example:
-	//
-	// {}
+	// 示例值示例值示例值
+	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// [{"id":1}]
+	// 示例值示例值
 	Contacts *string `json:"Contacts,omitempty" xml:"Contacts,omitempty"`
 	// example:
 	//
-	// [{"id":1}]
+	// 示例值
 	LinkExistGroups *string `json:"LinkExistGroups,omitempty" xml:"LinkExistGroups,omitempty"`
 	// example:
 	//
-	// [{"groupName":"aaa"}]
+	// 示例值示例值示例值
 	LinkNewGroups        *string `json:"LinkNewGroups,omitempty" xml:"LinkNewGroups,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

@@ -24,17 +24,17 @@ type iChatappBindWabaResponseBody interface {
 }
 
 type ChatappBindWabaResponseBody struct {
-	// The details about the access denial.
+	// Details about the access denial.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
+	// The request status code.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// - A value of OK indicates that the request was successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -42,23 +42,23 @@ type ChatappBindWabaResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *ChatappBindWabaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful.
 	//
-	// 	- **true**
+	// - **true**: successful.
 	//
-	// 	- **false**
+	// - **false**: failed.
 	//
 	// example:
 	//
@@ -138,17 +138,17 @@ func (s *ChatappBindWabaResponseBody) Validate() error {
 }
 
 type ChatappBindWabaResponseBodyData struct {
-	// The space ID of the user within the independent software vendor (ISV) account.
+	// The customer\\"s Space ID.
 	//
 	// example:
 	//
-	// C02029392939939
+	// C0202939293****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The ID of the WhatsApp Business Account (WABA).
+	// The WABA ID.
 	//
 	// example:
 	//
-	// 2939828282
+	// 293982****
 	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
 }
 

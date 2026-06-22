@@ -37,10 +37,7 @@ type UpdateContactByIdShrinkRequest struct {
 	// example:
 	//
 	// 示例值
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// example:
-	//
-	// {}
+	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	// This parameter is required.
 	//

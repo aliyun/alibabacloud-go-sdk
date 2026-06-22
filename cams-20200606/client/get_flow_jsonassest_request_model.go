@@ -22,17 +22,13 @@ type iGetFlowJSONAssestRequest interface {
 }
 
 type GetFlowJSONAssestRequest struct {
-	// The space ID of the user within the independent software vendor (ISV) account.
-	//
 	// example:
 	//
-	// 83883873
+	// 示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The Flow ID.
-	//
 	// example:
 	//
-	// flow_001
+	// 示例值示例值
 	FlowId               *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

@@ -24,7 +24,7 @@ type iCreateChatappMigrationInitiateRequest interface {
 }
 
 type CreateChatappMigrationInitiateRequest struct {
-	// The code of the country or region.
+	// The country code.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreateChatappMigrationInitiateRequest struct {
 	//
 	// 86
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	// The space ID of the user within the ISV account.
+	// The Space ID of the Independent Software Vendor (ISV) sub-customer.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type CreateChatappMigrationInitiateRequest struct {
 	//
 	// 293483938849493****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The mobile number without the country code or region code.
+	// The phone number. Do not include the country code.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 13900001234
+	// 1390000****
 	MobileNumber         *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

@@ -40,9 +40,9 @@ type UpdatePhoneWebhookRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Whether to use HTTP to receive receipts. Value:
 	//
-	// 	- Y: Yes.
+	// - Y: Yes.
 	//
-	// 	- N: No.
+	// - N: No.
 	//
 	// example:
 	//
@@ -55,13 +55,13 @@ type UpdatePhoneWebhookRequest struct {
 	//
 	// example:
 	//
-	// 8613800001234
+	// 861380000****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// Whether to use queue method to receive receipts. Value:
 	//
-	// 	- Y: Yes.
+	// - Y: Yes.
 	//
-	// 	- N: No.
+	// - N: No.
 	//
 	// example:
 	//

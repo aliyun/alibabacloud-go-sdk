@@ -28,7 +28,7 @@ type GetCommerceSettingRequest struct {
 	//
 	// example:
 	//
-	// 293483938849493
+	// 29348393884****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The phone number.

@@ -41,7 +41,7 @@ type CopyTemplateRequest struct {
 	//
 	// example:
 	//
-	// 12456
+	// 示例值
 	SceneTemplateCode *string `json:"SceneTemplateCode,omitempty" xml:"SceneTemplateCode,omitempty"`
 	// This parameter is required.
 	//

@@ -24,13 +24,10 @@ type iPauseMarketingFLowResponseBody interface {
 }
 
 type PauseMarketingFLowResponseBody struct {
-	// example:
-	//
-	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// OK
+	// 示例值示例值
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//

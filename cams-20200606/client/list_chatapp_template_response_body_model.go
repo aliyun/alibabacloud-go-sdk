@@ -30,13 +30,13 @@ type ListChatappTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// None
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// - A value of OK indicates that the call is successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -56,12 +56,6 @@ type ListChatappTemplateResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- **true**: The request was successful.
-	//
-	// 	- **false**: The request failed.
-	//
 	// example:
 	//
 	// false
@@ -161,13 +155,13 @@ func (s *ListChatappTemplateResponseBody) Validate() error {
 type ListChatappTemplateResponseBodyListTemplate struct {
 	// The review state of the template. Valid values:
 	//
-	// 	- **pass**: The template is approved.
+	// - **pass**: The template is approved.
 	//
-	// 	- **fail**: The template is rejected.
+	// - **fail**: The template is rejected.
 	//
-	// 	- **auditing**: The template is being reviewed.
+	// - **auditing**: The template is being reviewed.
 	//
-	// 	- **unaudit**: The review is suspended.
+	// - **unaudit**: The review is suspended.
 	//
 	// example:
 	//
@@ -175,35 +169,35 @@ type ListChatappTemplateResponseBodyListTemplate struct {
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
 	// The category of the WhatsApp message template. Valid values:
 	//
-	// 	- **UTILITY**
+	// - **UTILITY**
 	//
-	// 	- **MARKETING**
+	// - **MARKETING**
 	//
-	// 	- **AUTHENTICATION**
+	// - **AUTHENTICATION**
 	//
 	// The category of the Viber template. Valid values:
 	//
-	// 	- **text**: template that contains only text
+	// - **text**: template that contains only text
 	//
-	// 	- **image**: template that contains only images
+	// - **image**: template that contains only images
 	//
-	// 	- **text_image_button**: template that contains text, images, and buttons
+	// - **text_image_button**: template that contains text, images, and buttons
 	//
-	// 	- **text_button**: template that contains text and buttons
+	// - **text_button**: template that contains text and buttons
 	//
-	// 	- **document**: template that contains only documents
+	// - **document**: template that contains only documents
 	//
-	// 	- **video**: template that contains only videos
+	// - **video**: template that contains only videos
 	//
-	// 	- **text_video**: template that contains text and videos
+	// - **text_video**: template that contains text and videos
 	//
-	// 	- **text_video_button**: template that contains text, videos, and buttons
+	// - **text_video_button**: template that contains text, videos, and buttons
 	//
-	// 	- **text_image**: template that contains text and images
+	// - **text_image**: template that contains text and images
 	//
 	// example:
 	//
-	// TRANSACTIONAL
+	// UTILITY
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
 	//

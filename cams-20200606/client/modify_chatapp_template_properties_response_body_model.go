@@ -32,11 +32,8 @@ type ModifyChatappTemplatePropertiesResponseBody struct {
 	// example:
 	//
 	// 示例值示例值
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// true
-	Model map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
 	// example:
 	//
 	// 示例值示例值示例值

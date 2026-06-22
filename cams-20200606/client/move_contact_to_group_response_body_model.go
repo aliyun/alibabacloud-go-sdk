@@ -24,13 +24,10 @@ type iMoveContactToGroupResponseBody interface {
 }
 
 type MoveContactToGroupResponseBody struct {
-	// example:
-	//
-	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// OK
+	// 示例值
 	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// example:

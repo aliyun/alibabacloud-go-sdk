@@ -24,38 +24,12 @@ type iListChatFlowTemplateResponseBody interface {
 }
 
 type ListChatFlowTemplateResponseBody struct {
-	// Access denied details.
-	//
-	// example:
-	//
-	// 无
-	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Status code.
-	//
-	// example:
-	//
-	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data object.
-	Data *ListChatFlowTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error message.
-	//
-	// example:
-	//
-	// 无
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
-	//
-	// example:
-	//
-	// 90E63D28-E31D-1EB2-8939-A9486641****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Values: true: success; false: failure.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string                               `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *ListChatFlowTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success            *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListChatFlowTemplateResponseBody) String() string {
@@ -130,11 +104,6 @@ func (s *ListChatFlowTemplateResponseBody) Validate() error {
 }
 
 type ListChatFlowTemplateResponseBodyData struct {
-	// Content of the returned data.
-	//
-	// example:
-	//
-	// 无
 	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
 }
 

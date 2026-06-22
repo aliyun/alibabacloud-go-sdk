@@ -24,16 +24,21 @@ type iAddAuditViberOpenRequest interface {
 }
 
 type AddAuditViberOpenRequest struct {
+	// The audit record.
 	AuditRecord *AddAuditViberOpenRequestAuditRecord `json:"AuditRecord,omitempty" xml:"AuditRecord,omitempty" type:"Struct"`
+	// The audit result.
+	//
 	// example:
 	//
-	// 示例值
+	// example
 	AuditResult *string `json:"AuditResult,omitempty" xml:"AuditResult,omitempty"`
+	// The Space ID of the ISV sub-customer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// example
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// example:
 	//
@@ -121,106 +126,159 @@ func (s *AddAuditViberOpenRequest) Validate() error {
 }
 
 type AddAuditViberOpenRequestAuditRecord struct {
+	// The age limit.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	AgeLimit *string `json:"AgeLimit,omitempty" xml:"AgeLimit,omitempty"`
+	// The name of the business account.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// example
 	BusinessAccountName *string `json:"BusinessAccountName,omitempty" xml:"BusinessAccountName,omitempty"`
+	// The registration number of the business license.
+	//
 	// example:
 	//
-	// 示例值示例值
-	BusinessLicenseRegistrationNumber *string                                              `json:"BusinessLicenseRegistrationNumber,omitempty" xml:"BusinessLicenseRegistrationNumber,omitempty"`
-	CompanyAddress                    []*AddAuditViberOpenRequestAuditRecordCompanyAddress `json:"CompanyAddress,omitempty" xml:"CompanyAddress,omitempty" type:"Repeated"`
+	// example
+	BusinessLicenseRegistrationNumber *string `json:"BusinessLicenseRegistrationNumber,omitempty" xml:"BusinessLicenseRegistrationNumber,omitempty"`
+	// A list of company addresses.
+	CompanyAddress []*AddAuditViberOpenRequestAuditRecordCompanyAddress `json:"CompanyAddress,omitempty" xml:"CompanyAddress,omitempty" type:"Repeated"`
+	// The English name of the company.
+	//
 	// example:
 	//
 	// 7Pj6
 	CompanyEnglishName *string `json:"CompanyEnglishName,omitempty" xml:"CompanyEnglishName,omitempty"`
+	// The legal name of the company.
+	//
 	// example:
 	//
-	// 示例值
+	// abc
 	CompanyLegalName *string `json:"CompanyLegalName,omitempty" xml:"CompanyLegalName,omitempty"`
+	// The legal representative of the company.
+	//
 	// example:
 	//
 	// jerry
 	CompanyLegalPerson *string `json:"CompanyLegalPerson,omitempty" xml:"CompanyLegalPerson,omitempty"`
+	// The company profile.
+	//
 	// example:
 	//
 	// CompanyProfile
 	CompanyProfile *string `json:"CompanyProfile,omitempty" xml:"CompanyProfile,omitempty"`
+	// The country where the company is registered.
+	//
 	// example:
 	//
 	// cn
-	CompanyRegisteredCountry *string                                          `json:"CompanyRegisteredCountry,omitempty" xml:"CompanyRegisteredCountry,omitempty"`
-	CompanyTel               []*AddAuditViberOpenRequestAuditRecordCompanyTel `json:"CompanyTel,omitempty" xml:"CompanyTel,omitempty" type:"Repeated"`
+	CompanyRegisteredCountry *string `json:"CompanyRegisteredCountry,omitempty" xml:"CompanyRegisteredCountry,omitempty"`
+	// A list of company phone number objects.
+	CompanyTel []*AddAuditViberOpenRequestAuditRecordCompanyTel `json:"CompanyTel,omitempty" xml:"CompanyTel,omitempty" type:"Repeated"`
+	// The complete address of the headquarters.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// example
 	CompleteAddressOfHeadquarters *string `json:"CompleteAddressOfHeadquarters,omitempty" xml:"CompleteAddressOfHeadquarters,omitempty"`
+	// The email address of the contact person.
+	//
 	// example:
 	//
 	// 7151***5@qq.com
 	ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+	// The email address.
+	//
 	// example:
 	//
 	// 123@123.com
 	ContactMail *string `json:"ContactMail,omitempty" xml:"ContactMail,omitempty"`
+	// The name of the contact person.
+	//
 	// example:
 	//
 	// mary
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// The phone number of the contact person.
+	//
 	// example:
 	//
 	// 8615115**777
 	ContactPhone *string `json:"ContactPhone,omitempty" xml:"ContactPhone,omitempty"`
+	// The position of the contact person.
+	//
 	// example:
 	//
-	// 职员
+	// example
 	ContactPosition *string `json:"ContactPosition,omitempty" xml:"ContactPosition,omitempty"`
+	// Specifies whether to enable auto-reply.
+	//
 	// example:
 	//
-	// 示例值
+	// example
 	EnableAutoReply *string `json:"EnableAutoReply,omitempty" xml:"EnableAutoReply,omitempty"`
+	// A description of the industry.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	IndustryDescription *string `json:"IndustryDescription,omitempty" xml:"IndustryDescription,omitempty"`
+	// The industry involved.
+	//
 	// example:
 	//
 	// NFUwytiBnm11
 	IndustryInvolved *string `json:"IndustryInvolved,omitempty" xml:"IndustryInvolved,omitempty"`
+	// The letter of guarantee.
+	//
 	// example:
 	//
 	// tiCaYNHR8ttt
-	LetterGuarantee                        *string   `json:"LetterGuarantee,omitempty" xml:"LetterGuarantee,omitempty"`
-	Logo                                   []*string `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
-	MessageDestinationCountry              []*string `json:"MessageDestinationCountry,omitempty" xml:"MessageDestinationCountry,omitempty" type:"Repeated"`
+	LetterGuarantee *string `json:"LetterGuarantee,omitempty" xml:"LetterGuarantee,omitempty"`
+	// A list of logos.
+	Logo []*string `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
+	// A list of destination countries/regions for messages.
+	MessageDestinationCountry []*string `json:"MessageDestinationCountry,omitempty" xml:"MessageDestinationCountry,omitempty" type:"Repeated"`
+	// A list of destination countries/regions for international messages.
 	MessageDestinationInternationalCountry []*string `json:"MessageDestinationInternationalCountry,omitempty" xml:"MessageDestinationInternationalCountry,omitempty" type:"Repeated"`
+	// The introduction in the message dialog box.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// example
 	MessageDialogueIntroduction *string `json:"MessageDialogueIntroduction,omitempty" xml:"MessageDialogueIntroduction,omitempty"`
+	// The date when messaging is enabled.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	MessageEnableDate *string `json:"MessageEnableDate,omitempty" xml:"MessageEnableDate,omitempty"`
+	// The name of the message session.
+	//
 	// example:
 	//
 	// nPHK8uaRo
 	MessageSessionName *string `json:"MessageSessionName,omitempty" xml:"MessageSessionName,omitempty"`
+	// Other letters of guarantee.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	OtherLetterGuarantee *string `json:"OtherLetterGuarantee,omitempty" xml:"OtherLetterGuarantee,omitempty"`
+	// The content of the reply.
+	//
 	// example:
 	//
 	// hello
 	ReplyContent *string `json:"ReplyContent,omitempty" xml:"ReplyContent,omitempty"`
+	// The website address.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	WebAddress *string `json:"WebAddress,omitempty" xml:"WebAddress,omitempty"`
 }
 
@@ -516,10 +574,14 @@ func (s *AddAuditViberOpenRequestAuditRecord) Validate() error {
 }
 
 type AddAuditViberOpenRequestAuditRecordCompanyAddress struct {
+	// The company address.
+	//
 	// example:
 	//
 	// address
 	CompanyAddress *string `json:"CompanyAddress,omitempty" xml:"CompanyAddress,omitempty"`
+	// The title of the company address.
+	//
 	// example:
 	//
 	// title
@@ -557,10 +619,14 @@ func (s *AddAuditViberOpenRequestAuditRecordCompanyAddress) Validate() error {
 }
 
 type AddAuditViberOpenRequestAuditRecordCompanyTel struct {
+	// The company phone number.
+	//
 	// example:
 	//
 	// 156********
 	CompanyTelNumber *string `json:"CompanyTelNumber,omitempty" xml:"CompanyTelNumber,omitempty"`
+	// The title of the company phone number.
+	//
 	// example:
 	//
 	// title

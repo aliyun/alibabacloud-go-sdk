@@ -34,39 +34,73 @@ type iListChatGroupShrinkRequest interface {
 }
 
 type ListChatGroupShrinkRequest struct {
+	// The business number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8613800***
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// The channel type. Valid value: **WHATSAPP**.
+	//
+	// > Only the WhatsApp channel is supported.
+	//
 	// example:
 	//
 	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The instance ID (or SpaceId) of an ISV sub-customer, which also serves as the channel ID. You can find it on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cams-x***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The Telegram group link.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	GroupLink *string `json:"GroupLink,omitempty" xml:"GroupLink,omitempty"`
+	// The group status. Valid values:
+	//
+	// - ACTIVE: In use.
+	//
+	// - INACTIVE: Not activated.
+	//
+	// - SUSPENDED: Suspended.
+	//
+	// - CREATING: Being created.
+	//
+	// - DELETING: Being deleted.
+	//
+	// - UPDATING: Being updated.
+	//
 	// example:
 	//
 	// ACTIVE
 	GroupStatus *string `json:"GroupStatus,omitempty" xml:"GroupStatus,omitempty"`
+	// The Telegram group type.
+	//
 	// example:
 	//
-	// 示例值
+	// example
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The paging information.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Example value
 	PageShrink           *string `json:"Page,omitempty" xml:"Page,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The group title.
+	//
 	// example:
 	//
 	// test

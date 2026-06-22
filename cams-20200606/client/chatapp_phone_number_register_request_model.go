@@ -22,13 +22,13 @@ type iChatappPhoneNumberRegisterRequest interface {
 }
 
 type ChatappPhoneNumberRegisterRequest struct {
-	// The space ID of the user under the independent software vendor (ISV) account.
+	// The Space ID of the Independent Software Vendor (ISV) sub-customer.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 939283893939***
+	// 93928389****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The phone number.
@@ -37,7 +37,7 @@ type ChatappPhoneNumberRegisterRequest struct {
 	//
 	// example:
 	//
-	// 8613800001234
+	// 861380000****
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

@@ -21,7 +21,7 @@ type iDeleteFlowResponseBody interface {
 
 type DeleteFlowResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// If OK is returned, the request was successful.
+	// A value of OK indicates that the request was successful.
 	//
 	// example:
 	//
@@ -31,7 +31,7 @@ type DeleteFlowResponseBody struct {
 	//
 	// example:
 	//
-	// None
+	// 无
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

@@ -21,13 +21,13 @@ type iDeprecateFlowResponseBody interface {
 
 type DeprecateFlowResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The result returns OK as normal.
+	// OK indicates that the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Error description information.
+	// The error message.
 	//
 	// example:
 	//

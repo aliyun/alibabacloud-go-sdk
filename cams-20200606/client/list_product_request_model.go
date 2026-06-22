@@ -32,41 +32,41 @@ type iListProductRequest interface {
 }
 
 type ListProductRequest struct {
-	// The cursor that points to the end of the page of the returned data.
+	// The cursor that points to the start of the next page of results.
 	//
 	// example:
 	//
 	// kdkii48jfjjei3
 	After *string `json:"After,omitempty" xml:"After,omitempty"`
-	// The cursor that points to the beginning of the page of the returned data.
+	// The cursor that points to the end of the previous page of results.
 	//
 	// example:
 	//
 	// wiidkd939kek93
 	Before *string `json:"Before,omitempty" xml:"Before,omitempty"`
-	// The catalog ID.
+	// The catalog ID. You can get it from the Meta platform.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 29398389292
+	// 2939838xxxx
 	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	// The space ID of the user within the independent software vendor (ISV) account.
+	// The Space ID of the ISV sub-customer.
 	//
 	// example:
 	//
-	// C29398388383
+	// C2939838xxxx
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The fields. Separate multiple fields with commas (,).
+	// A list of fields to return. Separate multiple fields with a comma (,).
 	//
-	//  see [product fields](https://help.aliyun.com/document_detail/2579419.html)
+	// For more information, see [Product fields](https://help.aliyun.com/document_detail/2579419.html).
 	//
 	// example:
 	//
 	// id,name
 	Fields *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
-	// The number of products to be queried. Valid values: 1 to 1000.
+	// The number of items to return. Valid values: 1 to 1000.
 	//
 	// example:
 	//
@@ -75,13 +75,13 @@ type ListProductRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the WhatsApp Business account (WABA).
+	// The WhatsApp Business Account (WABA) ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 38487474747
+	// 3848747xxxx
 	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
 }
 

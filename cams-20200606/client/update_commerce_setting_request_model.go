@@ -26,11 +26,11 @@ type iUpdateCommerceSettingRequest interface {
 }
 
 type UpdateCommerceSettingRequest struct {
-	// Specifies whether to display the shopping cart button. Valid values:
+	// Specifies whether to enable the shopping cart. Valid values:
 	//
-	// 	- true
+	// - true: Enable the shopping cart.
 	//
-	// 	- false
+	// - false: Disable the shopping cart.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,11 @@ type UpdateCommerceSettingRequest struct {
 	//
 	// true
 	CartEnable *bool `json:"CartEnable,omitempty" xml:"CartEnable,omitempty"`
-	// Specifies whether to display the catalog button. Valid values:
+	// Specifies whether to enable the product catalog. Valid values:
 	//
-	// 	- true
+	// - true: Enable the product catalog.
 	//
-	// 	- false
+	// - false: Disable the product catalog.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type UpdateCommerceSettingRequest struct {
 	//
 	// false
 	CatalogVisible *bool `json:"CatalogVisible,omitempty" xml:"CatalogVisible,omitempty"`
-	// The space ID of the user within the independent software vendor (ISV) account.
+	// The Space ID of the Independent Software Vendor (ISV) sub-customer.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 293483938849493
+	// 29348393884****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The phone number.

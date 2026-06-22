@@ -20,11 +20,11 @@ type iGetPreValidatePhoneIdResponseBody interface {
 }
 
 type GetPreValidatePhoneIdResponseBody struct {
-	// The response code.
+	// The request status code.
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - A value of OK indicates that the request was successful.
 	//
-	// 	- For more information about other response codes, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
+	// - For other error codes, see [Error codes](https://www.alibabacloud.com/help/en/cams/latest/api-error-codes).
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type GetPreValidatePhoneIdResponseBodyData struct {
 	//
 	// example:
 	//
-	// 929833
+	// 92****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The ID of the phone number.
+	// The phone number ID.
 	//
 	// example:
 	//
-	// 8613800000000
+	// 861380000****
 	PhoneNumberId *string `json:"PhoneNumberId,omitempty" xml:"PhoneNumberId,omitempty"`
 }
 

@@ -26,28 +26,21 @@ type iFlowUnbindPhoneRequest interface {
 }
 
 type FlowUnbindPhoneRequest struct {
-	// Message channel type
-	//
 	// example:
 	//
 	// 示例值示例值
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// Flow code.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 示例值
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
-	// Flow version
-	//
 	// example:
 	//
 	// 示例值示例值示例值
-	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Phone numbers or PageIds under the channel instance, etc.
+	FlowVersion          *string   `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PhoneNumbers         []*string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

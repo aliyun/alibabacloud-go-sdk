@@ -24,13 +24,13 @@ type iChatappMigrationVerifiedRequest interface {
 }
 
 type ChatappMigrationVerifiedRequest struct {
-	// The space ID of the RAM user within the independent software vendor (ISV) account.
+	// The Space ID of the Independent Software Vendor (ISV) sub-customer.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 293483938849493
+	// 29348393884****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The phone number.
@@ -39,7 +39,7 @@ type ChatappMigrationVerifiedRequest struct {
 	//
 	// example:
 	//
-	// 861380001234
+	// 86138000****
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -49,7 +49,7 @@ type ChatappMigrationVerifiedRequest struct {
 	//
 	// example:
 	//
-	// 828798
+	// 8287**
 	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
 }
 

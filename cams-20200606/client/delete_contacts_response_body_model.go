@@ -24,17 +24,14 @@ type iDeleteContactsResponseBody interface {
 }
 
 type DeleteContactsResponseBody struct {
-	// example:
-	//
-	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// OK
+	// 示例值示例值
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
-	// true
+	// 示例值
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// example:
 	//
@@ -42,7 +39,7 @@ type DeleteContactsResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 11111
+	// 示例值
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//

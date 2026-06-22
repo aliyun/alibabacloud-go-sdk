@@ -23,13 +23,13 @@ type iGetFlowPreviewUrlResponseBody interface {
 
 type GetFlowPreviewUrlResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// If OK is returned, the request was successful.
+	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned data object.
 	Data *GetFlowPreviewUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -108,19 +108,19 @@ func (s *GetFlowPreviewUrlResponseBody) Validate() error {
 }
 
 type GetFlowPreviewUrlResponseBodyData struct {
-	// The Flow ID.
+	// The flow ID.
 	//
 	// example:
 	//
-	// 6dd31e1b7cc940fc99e293d9952b5b79
+	// 92675332812643****
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	// The temporary preview URL.
 	//
 	// example:
 	//
-	// https://url
+	// https://business.facebook.com/****
 	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
-	// The time when the preview URL expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The expiration time of the preview URL.
 	//
 	// example:
 	//

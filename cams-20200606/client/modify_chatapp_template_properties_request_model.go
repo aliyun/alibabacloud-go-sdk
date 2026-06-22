@@ -42,13 +42,13 @@ type ModifyChatappTemplatePropertiesRequest struct {
 	//
 	// example:
 	//
-	// cams-idk***
+	// 示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// zh_CN
+	// 示例值示例值示例值
 	Language             *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -57,13 +57,13 @@ type ModifyChatappTemplatePropertiesRequest struct {
 	//
 	// example:
 	//
-	// 929938***
+	// 示例值示例值示例值
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// WHATSAPP
+	// 示例值示例值
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 

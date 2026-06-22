@@ -24,22 +24,22 @@ type iQueryChatappPhoneNumbersRequest interface {
 }
 
 type QueryChatappPhoneNumbersRequest struct {
-	// The space ID of the RAM user within the ISV account.
+	// The Space ID of the ISV sub-customer.
 	//
 	// example:
 	//
-	// 293483938849493
+	// 29348393884****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The independent software vendor (ISV) verification code, which is used to verify whether the RAM user is authorized by the ISV account.
+	// The verification code of the Independent Software Vendor (ISV). This code is used to verify if the user is authorized by the ISV.
 	//
 	// example:
 	//
-	// aksik93kdkkxmwol93939
+	// aksik93kdkkxmwol9****
 	IsvCode              *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The state of the phone number.
+	// The status of the phone number.
 	//
 	// example:
 	//

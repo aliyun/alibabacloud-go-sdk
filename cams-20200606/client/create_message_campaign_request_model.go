@@ -30,37 +30,49 @@ type iCreateMessageCampaignRequest interface {
 }
 
 type CreateMessageCampaignRequest struct {
+	// The Meta ad account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3993**
 	AdAccountId *string `json:"AdAccountId,omitempty" xml:"AdAccountId,omitempty"`
+	// The budget, in cents.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 300
 	Budget *int64 `json:"Budget,omitempty" xml:"Budget,omitempty"`
+	// The budget type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// daily
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
+	// The space ID of an Independent Software Vendor (ISV) sub-customer or the instance ID of a direct customer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cams-x***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The budget name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// Example
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The Messenger Page ID.
+	//
 	// This parameter is required.
 	//
 	// example:

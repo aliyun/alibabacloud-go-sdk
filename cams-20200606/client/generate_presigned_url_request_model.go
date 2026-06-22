@@ -24,7 +24,7 @@ type GeneratePresignedUrlRequest struct {
 	//
 	// example:
 	//
-	// /aaa/111/aa.png
+	// 示例值示例值
 	FilePath             *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
