@@ -19,8 +19,14 @@ type iPublishMessageRequest interface {
 
 type PublishMessageRequest struct {
 	MessageAttributes *PublishMessageRequestMessageAttributes `json:"MessageAttributes,omitempty" xml:"MessageAttributes,omitempty" type:"Struct"`
-	MessageBody       *string                                 `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
-	MessageTag        *string                                 `json:"MessageTag,omitempty" xml:"MessageTag,omitempty"`
+	// example:
+	//
+	// hello topic
+	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// example:
+	//
+	// order-event
+	MessageTag *string `json:"MessageTag,omitempty" xml:"MessageTag,omitempty"`
 }
 
 func (s PublishMessageRequest) String() string {
@@ -68,9 +74,18 @@ func (s *PublishMessageRequest) Validate() error {
 }
 
 type PublishMessageRequestMessageAttributes struct {
+	// example:
+	//
+	// 详见 https://help.aliyun.com/zh/direct-mail/singlesendmail
 	DirectMail *string `json:"DirectMail,omitempty" xml:"DirectMail,omitempty"`
-	DirectSMS  *string `json:"DirectSMS,omitempty" xml:"DirectSMS,omitempty"`
-	Push       *string `json:"Push,omitempty" xml:"Push,omitempty"`
+	// example:
+	//
+	// {"FreeSignName":"阿里云","TemplateCode":"SMS_123456","Type":"singleContent","Receiver":"13800000000","SmsParams":"{\\"code\\":\\"1234\\"}"}
+	DirectSMS *string `json:"DirectSMS,omitempty" xml:"DirectSMS,omitempty"`
+	// example:
+	//
+	// 移动推送属性示例值
+	Push *string `json:"Push,omitempty" xml:"Push,omitempty"`
 }
 
 func (s PublishMessageRequestMessageAttributes) String() string {

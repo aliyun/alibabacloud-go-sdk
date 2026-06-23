@@ -13,11 +13,14 @@ type iBatchSendMessageResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *BatchSendMessageResponse
 	GetStatusCode() *int32
+	SetBody(v *BatchSendMessageResponseBody) *BatchSendMessageResponse
+	GetBody() *BatchSendMessageResponseBody
 }
 
 type BatchSendMessageResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchSendMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchSendMessageResponse) String() string {
@@ -36,6 +39,10 @@ func (s *BatchSendMessageResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *BatchSendMessageResponse) GetBody() *BatchSendMessageResponseBody {
+	return s.Body
+}
+
 func (s *BatchSendMessageResponse) SetHeaders(v map[string]*string) *BatchSendMessageResponse {
 	s.Headers = v
 	return s
@@ -46,6 +53,16 @@ func (s *BatchSendMessageResponse) SetStatusCode(v int32) *BatchSendMessageRespo
 	return s
 }
 
+func (s *BatchSendMessageResponse) SetBody(v *BatchSendMessageResponseBody) *BatchSendMessageResponse {
+	s.Body = v
+	return s
+}
+
 func (s *BatchSendMessageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

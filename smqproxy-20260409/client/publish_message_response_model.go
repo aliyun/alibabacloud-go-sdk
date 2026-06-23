@@ -13,11 +13,14 @@ type iPublishMessageResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *PublishMessageResponse
 	GetStatusCode() *int32
+	SetBody(v *PublishMessageResponseBody) *PublishMessageResponse
+	GetBody() *PublishMessageResponseBody
 }
 
 type PublishMessageResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PublishMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PublishMessageResponse) String() string {
@@ -36,6 +39,10 @@ func (s *PublishMessageResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *PublishMessageResponse) GetBody() *PublishMessageResponseBody {
+	return s.Body
+}
+
 func (s *PublishMessageResponse) SetHeaders(v map[string]*string) *PublishMessageResponse {
 	s.Headers = v
 	return s
@@ -46,6 +53,16 @@ func (s *PublishMessageResponse) SetStatusCode(v int32) *PublishMessageResponse 
 	return s
 }
 
+func (s *PublishMessageResponse) SetBody(v *PublishMessageResponseBody) *PublishMessageResponse {
+	s.Body = v
+	return s
+}
+
 func (s *PublishMessageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

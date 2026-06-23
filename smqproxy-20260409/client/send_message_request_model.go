@@ -22,10 +22,25 @@ type iSendMessageRequest interface {
 }
 
 type SendMessageRequest struct {
-	DelaySeconds   *int32  `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	MessageBody    *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// example:
+	//
+	// 0
+	DelaySeconds *int32 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// example:
+	//
+	// "Hello MNS"
+	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// example:
+	//
+	// group-123
 	MessageGroupId *string `json:"MessageGroupId,omitempty" xml:"MessageGroupId,omitempty"`
-	Priority       *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 2
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// {"key1":"value1", "key2":"value2"}
 	UserProperties *string `json:"UserProperties,omitempty" xml:"UserProperties,omitempty"`
 }
 

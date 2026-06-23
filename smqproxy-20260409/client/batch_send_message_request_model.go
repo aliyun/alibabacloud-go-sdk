@@ -48,10 +48,22 @@ func (s *BatchSendMessageRequest) Validate() error {
 }
 
 type BatchSendMessageRequestMessages struct {
-	DelaySeconds   *int32  `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	MessageBody    *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// example:
+	//
+	// 60
+	DelaySeconds *int32 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// example:
+	//
+	// This is test message 1.
+	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// example:
+	//
+	// group1
 	MessageGroupId *string `json:"MessageGroupId,omitempty" xml:"MessageGroupId,omitempty"`
-	Priority       *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s BatchSendMessageRequestMessages) String() string {
