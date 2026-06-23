@@ -16,13 +16,13 @@ type iCreateCompressionRuleResponseBody interface {
 }
 
 type CreateCompressionRuleResponseBody struct {
-	// The unique ID of the configuration.
+	// The configuration ID.
 	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -14,9 +14,13 @@ type iGetPerformanceDataCollectionRequest interface {
 }
 
 type GetPerformanceDataCollectionRequest struct {
-	// The Site ID.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 

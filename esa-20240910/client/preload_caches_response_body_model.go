@@ -22,7 +22,7 @@ type PreloadCachesResponseBody struct {
 	//
 	// 9732E117-8A37-49FD-A36F-ABBB87556CA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The prefetch task ID.
+	// The task ID. A task ID is returned when you create a prefetch task.
 	//
 	// example:
 	//

@@ -48,13 +48,13 @@ type GetScheduledPreloadJobResponseBody struct {
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The creation time of the task.
+	// The time when the task was created, in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
 	// 2024-06-02T02:23:26Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The list of domain names to preload.
+	// The list of domain names for prefetch.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type GetScheduledPreloadJobResponseBody struct {
 	//
 	// invalid domain:test.com
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	// The URL of the OSS file that contains the URLs that failed to preload.
+	// The OSS address of the failed file.
 	//
 	// example:
 	//
 	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
 	FailedFileOss *string `json:"FailedFileOss,omitempty" xml:"FailedFileOss,omitempty"`
-	// The ID of the file that contains the list of URLs. You can use this ID to download the file.
+	// The ID of the URL list file, used for downloading.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type GetScheduledPreloadJobResponseBody struct {
 	//
 	// 665d3af3621bccf3fe29e1a4
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The method used to submit the URLs.
+	// The URL insertion method.
 	//
 	// example:
 	//
@@ -108,19 +108,19 @@ type GetScheduledPreloadJobResponseBody struct {
 	//
 	// 190007158391808
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The number of URLs submitted for the preload task.
+	// The number of URLs that have been submitted to the system for prefetch.
 	//
 	// example:
 	//
 	// 1
 	TaskSubmitted *int32 `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
-	// The task type. Valid values are `preload` and `refresh`.
+	// The task type (refresh or prefetch).
 	//
 	// example:
 	//
 	// preload
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The total number of URLs in the task.
+	// The total number of URLs.
 	//
 	// example:
 	//

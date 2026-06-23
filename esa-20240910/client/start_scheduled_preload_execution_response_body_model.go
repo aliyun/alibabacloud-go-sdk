@@ -30,65 +30,65 @@ type iStartScheduledPreloadExecutionResponseBody interface {
 }
 
 type StartScheduledPreloadExecutionResponseBody struct {
-	// Alibaba Cloud account ID.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// End time of the scheduled prefetch plan.
+	// The end time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
 	// 2024-05-31T18:10:48.849+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Prefetch plan ID.
+	// The prefetch plan ID.
 	//
 	// example:
 	//
 	// 665d3b48621bccf3fe29e1a7
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Time interval between batches of scheduled prefetches, in seconds.
+	// The execution interval between each batch of the scheduled prefetch plan, in seconds.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// Prefetch task ID.
+	// The prefetch task ID.
 	//
 	// example:
 	//
 	// 665d3af3621bccf3fe29e1a4
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 65C66B7B-671A-8297-9187-2R5477247B76
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Number of URLs per batch of scheduled prefetches.
+	// The number of URLs in each batch of the scheduled prefetch.
 	//
 	// example:
 	//
 	// 10
 	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
-	// Start time of the scheduled prefetch plan.
+	// The start time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
 	// 2024-05-31T17:10:48.849+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Status of the scheduled prefetch plan. Valid values:
+	// The status of the scheduled prefetch plan. Valid values:
 	//
-	// - **waiting**: Waiting to run.
+	// - **waiting**: Waiting to be executed.
 	//
-	// - **running**: Running.
+	// - **running**: Being executed.
 	//
-	// - **finished**: Completed.
+	// - **finished**: Execution completed.
 	//
-	// - **failed**: Failed.
+	// - **failed**: Execution failed.
 	//
-	// - **stopped**: Paused.
+	// - **stopped**: Execution paused.
 	//
 	// example:
 	//

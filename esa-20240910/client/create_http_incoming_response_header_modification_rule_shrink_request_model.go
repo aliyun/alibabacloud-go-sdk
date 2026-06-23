@@ -26,43 +26,43 @@ type iCreateHttpIncomingResponseHeaderModificationRuleShrinkRequest interface {
 }
 
 type CreateHttpIncomingResponseHeaderModificationRuleShrinkRequest struct {
-	// Specifies the modifications for a response header. The supported operations are `add`, `del`, and `modify`.
+	// The response header modifications. Three operation types are supported: add, delete, and modify.
 	//
 	// This parameter is required.
 	ResponseHeaderModificationShrink *string `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty"`
-	// The conditional expression used to match an incoming request. This parameter is not required when adding a Global configuration. Two scenarios are supported:
+	// The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when you add a global configuration. Two scenarios are supported:
 	//
-	// - To match all incoming requests, set the value to `true`.
+	// - Match all incoming requests: set the value to true.
 	//
-	// - To match specific requests, use a custom expression. For example: `(http.host eq "video.example.com")`
+	// - Match specified requests: set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Indicates if the Rule is enabled. This parameter is not required when adding a Global configuration. Valid values:
+	// The rule switch. You do not need to set this parameter when you add a global configuration. Valid values:
 	//
-	// - `on`: Enables the Rule.
+	// - on: enabled.
 	//
-	// - `off`: Disables the Rule.
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The Rule name. This parameter is not required when adding a Global configuration.
+	// The rule name. You do not need to set this parameter when you add a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The Rule execution order. A smaller value indicates a higher priority, and the Rule is executed sooner.
+	// The rule execution order. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The unique identifier for the Site. To get this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type CreateHttpIncomingResponseHeaderModificationRuleShrinkRequest struct {
 	//
 	// 608665779308176
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The configuration Version for the Site. If version management is enabled, this parameter specifies the target Version. Defaults to 0.
+	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. The default value is 0.
 	//
 	// example:
 	//

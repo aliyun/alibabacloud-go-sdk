@@ -22,7 +22,7 @@ type iCreateScheduledPreloadJobRequest interface {
 }
 
 type CreateScheduledPreloadJobRequest struct {
-	// The method for uploading the preload file. Valid values are `Textbox` and `OSS`.
+	// The method of uploading prefetch files. Text box and OSS upload methods are supported.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type CreateScheduledPreloadJobRequest struct {
 	//
 	// oss
 	InsertWay *string `json:"InsertWay,omitempty" xml:"InsertWay,omitempty"`
-	// The name of the scheduled preload job.
+	// The name of the scheduled prefetch task.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,15 @@ type CreateScheduledPreloadJobRequest struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The URL of the OSS file that contains the URLs to preload.
+	// The OSS file for the scheduled prefetch task. Enter the address of the OSS file.
+	//
+	// Note: The OSS file contains the URLs that you want to prefetch.
 	//
 	// example:
 	//
 	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
 	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
-	// The ID of the site. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The site ID. You can obtain it by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +54,7 @@ type CreateScheduledPreloadJobRequest struct {
 	//
 	// 190007158391808
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The list of URLs to preload. This parameter is used when `InsertWay` is set to `Textbox`.
+	// The list of URLs to prefetch. This parameter is used when you upload prefetch files via the text box.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCreateHttpIncomingResponseHeaderModificationRuleResponseBody interface {
 }
 
 type CreateHttpIncomingResponseHeaderModificationRuleResponseBody struct {
-	// The ID of the created rule.
+	// The configuration ID.
 	//
 	// example:
 	//

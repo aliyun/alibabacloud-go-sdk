@@ -22,25 +22,25 @@ type iListScheduledPreloadJobsRequest interface {
 }
 
 type ListScheduledPreloadJobsRequest struct {
-	// End of the time range for querying job creation time, in milliseconds since the UNIX epoch.
+	// The end of the time range to query based on task creation time, in millisecond timestamp.
 	//
 	// example:
 	//
 	// 1717225277000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Page number to retrieve.
+	// The page number to retrieve.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of entries per page.
+	// The page size, indicating the number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Site ID
+	// Site ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ListScheduledPreloadJobsRequest struct {
 	//
 	// 190007158391808
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Start of the time range for querying job creation time, in milliseconds since the UNIX epoch.
+	// The beginning of the time range to query based on task creation time, in millisecond timestamp.
 	//
 	// example:
 	//

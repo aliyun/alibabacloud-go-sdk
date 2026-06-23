@@ -22,13 +22,13 @@ type iUpdateScheduledPreloadExecutionRequest interface {
 }
 
 type UpdateScheduledPreloadExecutionRequest struct {
-	// The end time of the scheduled preload plan.
+	// The end time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
 	// 2024-05-31T18:10:48.849+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the preload plan.
+	// The prefetch plan ID.
 	//
 	// This parameter is required.
 	//
@@ -36,19 +36,19 @@ type UpdateScheduledPreloadExecutionRequest struct {
 	//
 	// 66599bd7397885b43804901c
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The execution interval for each batch in the scheduled preload plan, in seconds.
+	// The execution interval between each batch of the scheduled prefetch plan, in seconds.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The number of URLs in each scheduled preload batch.
+	// The number of URLs to prefetch per batch.
 	//
 	// example:
 	//
 	// 10
 	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
-	// The start time of the scheduled preload plan.
+	// The start time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//

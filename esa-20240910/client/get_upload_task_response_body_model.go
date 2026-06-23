@@ -18,7 +18,7 @@ type iGetUploadTaskResponseBody interface {
 }
 
 type GetUploadTaskResponseBody struct {
-	// The error message returned when the file upload task failed.
+	// The error message returned when the file upload task fails.
 	//
 	// example:
 	//
@@ -30,19 +30,19 @@ type GetUploadTaskResponseBody struct {
 	//
 	// ET5BF670-09D5-4D0B-BEBY-D96A2A52****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task status.
+	// The task status. Valid values:
 	//
-	// 	- **INIT**: The task is being initialized.
+	// - **init**: The task is being initialized.
 	//
-	// 	- **activacted**: The task is activated.
+	// - **activacted**: The task is activated.
 	//
-	// 	- **running**: The task is running.
+	// - **running**: The task is running.
 	//
-	// 	- **success**: The task is successful.
+	// - **success**: The task succeeded.
 	//
-	// 	- **partial**: The task is partially successful.
+	// - **partial**: The task partially succeeded.
 	//
-	// 	- **fail**: The task failed.
+	// - **fail**: The task failed.
 	//
 	// example:
 	//

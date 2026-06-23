@@ -16,7 +16,7 @@ type iGetEdgeContainerLogsResponseBody interface {
 }
 
 type GetEdgeContainerLogsResponseBody struct {
-	// The logs.
+	// The log list.
 	Items []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The request ID.
 	//

@@ -18,7 +18,7 @@ type iUpdateEdgeContainerAppLogRiverResponseBody interface {
 }
 
 type UpdateEdgeContainerAppLogRiverResponseBody struct {
-	// The log path of the container.
+	// The log file of the container.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type UpdateEdgeContainerAppLogRiverResponseBody struct {
 	//
 	// 42DE97FA-45D2-5615-9A31-55D9EC0D7563
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the standard output of the container is collected.
+	// Specifies whether to enable standard output collection for the container.
 	//
 	// example:
 	//

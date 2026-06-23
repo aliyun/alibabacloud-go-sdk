@@ -18,15 +18,15 @@ type iListScheduledPreloadJobsResponseBody interface {
 }
 
 type ListScheduledPreloadJobsResponseBody struct {
-	// List of prefetch job details.
+	// The list of prefetch task information.
 	Jobs []*ListScheduledPreloadJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of records after filtering.
+	// The total number of records after filtering.
 	//
 	// example:
 	//
@@ -83,91 +83,91 @@ func (s *ListScheduledPreloadJobsResponseBody) Validate() error {
 }
 
 type ListScheduledPreloadJobsResponseBodyJobs struct {
-	// Alibaba Cloud account ID.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// Job creation time.
+	// The task creation time in ISO 8601 format (e.g., 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
 	// 2024-06-01T08:53:13Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// List of domains to prefetch.
+	// The list of prefetch domains.
 	//
 	// example:
 	//
 	// testurl.com
 	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	// Error message.
+	// The error information.
 	//
 	// example:
 	//
 	// invalid domain:test.com
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	// Number of prefetch schedules.
+	// The number of prefetch plans.
 	//
 	// example:
 	//
 	// 1
 	ExecutionCount *int32 `json:"ExecutionCount,omitempty" xml:"ExecutionCount,omitempty"`
-	// The OSS address of the failed file.
+	// The OSS URL of the failed file.
 	//
 	// example:
 	//
 	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
 	FailedFileOss *string `json:"FailedFileOss,omitempty" xml:"FailedFileOss,omitempty"`
-	// URL list file ID (used for downloading).
+	// The URL list file ID (used for downloading).
 	//
 	// example:
 	//
 	// 665d3b48621bccf3fe29e1a7
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// Job ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// 665d3af3621bccf3fe29e1a4
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// URL insertion method.
+	// The URL insertion method.
 	//
 	// example:
 	//
 	// oss
 	InsertWay *string `json:"InsertWay,omitempty" xml:"InsertWay,omitempty"`
-	// Job name.
+	// The task name.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Site ID
+	// Site ID.
 	//
 	// example:
 	//
 	// 190007158391808
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Number of URLs submitted to the system for prefetching.
+	// The number of URLs that have been submitted to the system for prefetch.
 	//
 	// example:
 	//
 	// 1
 	TaskSubmitted *int32 `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
-	// Task type (refresh or prefetch).
+	// The task type (refresh/prefetch).
 	//
 	// example:
 	//
 	// preload
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// Total number of URLs.
+	// The total number of URLs.
 	//
 	// example:
 	//
 	// 2
 	UrlCount *int32 `json:"UrlCount,omitempty" xml:"UrlCount,omitempty"`
-	// Number of URLs submitted.
+	// The number of submitted URLs.
 	//
 	// example:
 	//

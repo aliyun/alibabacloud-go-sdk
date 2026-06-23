@@ -24,11 +24,11 @@ type iCreateScheduledPreloadExecutionsResponseBody interface {
 }
 
 type CreateScheduledPreloadExecutionsResponseBody struct {
-	// The information about the prefetch plans that failed to be added.
+	// The information about prefetch plans that failed to be added.
 	FailedExecutions []*CreateScheduledPreloadExecutionsResponseBodyFailedExecutions `json:"FailedExecutions,omitempty" xml:"FailedExecutions,omitempty" type:"Repeated"`
-	// The list of error messages for the plans that failed to be added.
+	// The list of failure messages for plans that failed to be added.
 	FailedMessages []*string `json:"FailedMessages,omitempty" xml:"FailedMessages,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type CreateScheduledPreloadExecutionsResponseBody struct {
 	//
 	// 12
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The information about the prefetch plans that were successfully added.
+	// The information about prefetch plans that were successfully added.
 	SuccessExecutions []*CreateScheduledPreloadExecutionsResponseBodySuccessExecutions `json:"SuccessExecutions,omitempty" xml:"SuccessExecutions,omitempty" type:"Repeated"`
-	// The total number of plans that you requested to add.
+	// The total number of plans requested to be added.
 	//
 	// example:
 	//
@@ -135,43 +135,43 @@ func (s *CreateScheduledPreloadExecutionsResponseBody) Validate() error {
 }
 
 type CreateScheduledPreloadExecutionsResponseBodyFailedExecutions struct {
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The end time of the scheduled prefetch plan.
+	// The end time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
 	// 2024-06-03T02:43:35Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the prefetch plan.
+	// The prefetch plan ID.
 	//
 	// example:
 	//
 	// 66599bd7397885b43804901c
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The interval at which batches of a scheduled prefetch plan are executed. Unit: seconds.
+	// The interval between each batch execution of the scheduled prefetch plan. Unit: seconds.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The ID of the prefetch task.
+	// The prefetch task ID.
 	//
 	// example:
 	//
 	// 665d3af3621bccf3fe29e1a4
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The number of URLs to prefetch in each batch.
+	// The number of URLs to prefetch per batch.
 	//
 	// example:
 	//
 	// 10
 	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
-	// The start time of the scheduled prefetch plan.
+	// The start time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
@@ -179,15 +179,15 @@ type CreateScheduledPreloadExecutionsResponseBodyFailedExecutions struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the scheduled prefetch plan. Valid values:
 	//
-	// - **waiting**: The plan is waiting to be executed.
+	// - **waiting**: Waiting to be executed.
 	//
-	// - **running**: The plan is being executed.
+	// - **running**: Being executed.
 	//
-	// - **finished**: The plan is executed.
+	// - **finished**: Execution completed.
 	//
-	// - **failed**: The plan failed to be executed.
+	// - **failed**: Execution failed.
 	//
-	// - **stopped**: The execution of the plan is paused.
+	// - **stopped**: Execution paused.
 	//
 	// example:
 	//
@@ -280,43 +280,43 @@ func (s *CreateScheduledPreloadExecutionsResponseBodyFailedExecutions) Validate(
 }
 
 type CreateScheduledPreloadExecutionsResponseBodySuccessExecutions struct {
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The end time of the scheduled prefetch plan.
+	// The end time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
 	// 2024-06-03T02:43:35Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the prefetch plan.
+	// The prefetch plan ID.
 	//
 	// example:
 	//
 	// 66599bd7397885b43804901c
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The interval at which batches of a scheduled prefetch plan are executed. Unit: seconds.
+	// The interval between each batch execution of the scheduled prefetch plan. Unit: seconds.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The ID of the prefetch task.
+	// The prefetch task ID.
 	//
 	// example:
 	//
 	// 665d3af3621bccf3fe29e1a4
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The number of URLs to prefetch in each batch.
+	// The number of URLs to prefetch per batch.
 	//
 	// example:
 	//
 	// 10
 	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
-	// The start time of the scheduled prefetch plan.
+	// The start time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
@@ -324,15 +324,15 @@ type CreateScheduledPreloadExecutionsResponseBodySuccessExecutions struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the scheduled prefetch plan. Valid values:
 	//
-	// - **waiting**: The plan is waiting to be executed.
+	// - **waiting**: Waiting to be executed.
 	//
-	// - **running**: The plan is being executed.
+	// - **running**: Being executed.
 	//
-	// - **finished**: The plan is executed.
+	// - **finished**: Execution completed.
 	//
-	// - **failed**: The plan failed to be executed.
+	// - **failed**: Execution failed.
 	//
-	// - **stopped**: The execution of the plan is paused.
+	// - **stopped**: Execution paused.
 	//
 	// example:
 	//

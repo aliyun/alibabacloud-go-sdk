@@ -22,29 +22,29 @@ type iPurgeCachesShrinkRequest interface {
 }
 
 type PurgeCachesShrinkRequest struct {
-	// Content to be refreshed.
+	// The refresh content.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Used for refreshing cached resources in edge computing, such as allowing the refresh of content cached using the CacheAPI interface of an edge function.
+	// Specifies whether to refresh edge computing cached resources. For example, this allows you to refresh content cached by the Edge Routine CacheAPI API operation using the edge function.
 	//
 	// example:
 	//
 	// true
 	EdgeComputePurge *bool `json:"EdgeComputePurge,omitempty" xml:"EdgeComputePurge,omitempty"`
-	// Indicates whether to refresh all resources under the directory when the content from the origin and the source resource are inconsistent. The default is false.
+	// Specifies whether to refresh all resources under the corresponding directory when the back-to-origin content is inconsistent with the origin server resources. Default value: false.
 	//
-	// - **true**: Refreshes all resources under the specified directory.
+	// - **true**: Refreshes all resources under the corresponding directory.
 	//
-	// - **false**: Refreshes only the changed resources under the specified directory.
+	// - **false**: Refreshes only the changed resources under the corresponding directory.
 	//
 	// >
 	//
-	// >  Applies to: Directory refresh, cachetag refresh, ignoreParams refresh, hostname refresh, and purge all cache of the site.
+	// >  This parameter takes effect for directory refresh, cache tag refresh, parameter-ignored refresh, hostname refresh, and full site refresh.
 	//
 	// example:
 	//
 	// true
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -52,21 +52,21 @@ type PurgeCachesShrinkRequest struct {
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The type of refresh task. Possible values:
+	// The type of the refresh node. Valid values:
 	//
-	// - **file*	- (default): File refresh.
+	// - **file*	- (default): file refresh.
 	//
-	// - **cachekey**: Cachekey refresh.
+	// - **cachekey**: cache key refresh.
 	//
-	// - **cachetag**: Cachetag refresh.
+	// - **cachetag**: cache label refresh.
 	//
-	// - **directory**: Directory refresh.
+	// - **directory**: folder refresh.
 	//
-	// - **ignoreParams**: Ignore parameters refresh. Ignoring parameters means removing the ? and everything after it in the request URL. When performing an ignore parameters refresh, the user first submits the URL without parameters through the interface. The submitted URLs to be refreshed will then be matched against the cached resource URLs with the parameters removed. If the cached resource URL, after removing the parameters, matches the URL to be refreshed, the CDN node will refresh the cached resources.
+	// - **ignoreParams**: parameter-ignored refresh. This refers to removing the question mark (?) and all parameters after it from the request URL. When you commit a parameter-stripped URL through this API operation, the committed URL is matched against cached resource URLs after their parameters are also stripped. If a cached resource URL matches the committed URL after parameter stripping, the point of presence executes the refresh on the cached resource.
 	//
-	// - **hostname**: Hostname refresh.
+	// - **hostname**: hostname refresh.
 	//
-	// - **purgeall**: Purge all cache under the site.
+	// - **purgeall**: refreshes all cached content under the site.
 	//
 	// This parameter is required.
 	//

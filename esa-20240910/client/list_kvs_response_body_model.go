@@ -22,7 +22,7 @@ type iListKvsResponseBody interface {
 }
 
 type ListKvsResponseBody struct {
-	// The list of key-value pairs returned by this traversal.
+	// The list of key-value pairs retrieved in this traversal.
 	Keys []*ListKvsResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 	// The total number of pages.
 	//
@@ -30,7 +30,7 @@ type ListKvsResponseBody struct {
 	//
 	// 100
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on each page.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type ListKvsResponseBodyKeys struct {
 	//
 	// Key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the key was last updated.
+	// The time when the key was last updated, in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iDescribePurgeTasksRequest interface {
 }
 
 type DescribePurgeTasksRequest struct {
-	// The content to purge. Exact match is supported.
+	// The query content. Exact match is used.
 	//
 	// example:
 	//
@@ -36,25 +36,26 @@ type DescribePurgeTasksRequest struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
+	//
 	// > The end time must be later than the start time.
 	//
 	// example:
 	//
 	// 2022-11-18T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number. Valid values: 1 to 100000.
+	// The page number to return. Valid values: **1 to 100000**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 20. Valid values: 1 to 50.
+	// The number of entries per page. Default value: **20**. Maximum value: **50**. Valid values: any integer from **1*	- to **50**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// example:
 	//
@@ -66,7 +67,7 @@ type DescribePurgeTasksRequest struct {
 	//
 	// 2022-11-16T05:33:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task status. Valid values:
+	// The task execution status. Valid values:
 	//
 	// - **Complete**: The task is complete.
 	//
@@ -80,17 +81,17 @@ type DescribePurgeTasksRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The task type. Valid values:
 	//
-	// - **file*	- (default): purges the cache by file.
+	// - **file*	- (default): file refresh.
 	//
-	// - **cachetag**: purges the cache by cache tag.
+	// - **cachetag**: cache tag refresh.
 	//
-	// - **directory**: purges the cache by directory.
+	// - **directory**: directory refresh.
 	//
-	// - **ignoreParams**: purges the cache by URL with specified parameters ignored.
+	// - **ignoreParams**: parameter-stripped refresh.
 	//
-	// - **hostname**: purges the cache by hostname.
+	// - **hostname**: hostname refresh.
 	//
-	// - **purgeall**: purges all cache.
+	// - **purgeall**: refresh all cached content of the site.
 	//
 	// example:
 	//

@@ -137,7 +137,7 @@ type ListRoutineCodeVersionsResponseBodyCodeVersions struct {
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
 	// The configuration items of the code version.
 	ConfOptions *ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions `json:"ConfOptions,omitempty" xml:"ConfOptions,omitempty" type:"Struct"`
-	// The time when the code version was created.
+	// The time when the code version was created, in RFC 3339 format in the UTC time zone.
 	//
 	// example:
 	//

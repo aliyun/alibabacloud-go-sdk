@@ -52,7 +52,7 @@ type iCreateWaitingRoomEventRequest interface {
 }
 
 type CreateWaitingRoomEventRequest struct {
-	// The custom waiting room page content. This parameter is required when the waiting room type is custom. The content must use Base64 encoding.
+	// The custom waiting room page content. This parameter is required when the waiting room type is set to custom. The content must use Base64 encoding.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// example:
 	//
-	// 测试等候室
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to disable session renewal. Valid values:
 	//
-	// - **on**: Enabled.
+	// - **on**: enabled.
 	//
-	// - **off**: Disabled.
+	// - **off**: disabled.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type CreateWaitingRoomEventRequest struct {
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
 	// The waiting room switch. Valid values:
 	//
-	// - **on**: Enabled.
+	// - **on**: enabled.
 	//
-	// - **off**: Disabled.
+	// - **off**: disabled.
 	//
 	// This parameter is required.
 	//
@@ -96,15 +96,15 @@ type CreateWaitingRoomEventRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Specifies whether to enable JSON response. When enabled, requests with an Accept header containing "application/json" return JSON data. Valid values:
 	//
-	// - **on**: Enabled.
+	// - **on**: enabled.
 	//
-	// - **off**: Disabled.
+	// - **off**: disabled.
 	//
 	// example:
 	//
 	// on
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
-	// The language of the waiting room page. This parameter is required when the waiting room type is default. Valid values:
+	// The language of the waiting room page. This parameter is required when the waiting room type is set to default. Valid values:
 	//
 	// - **enus**: English.
 	//
@@ -134,9 +134,9 @@ type CreateWaitingRoomEventRequest struct {
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
 	// Specifies whether to enable pre-queuing. Valid values:
 	//
-	// - **on**: Enabled.
+	// - **on**: enabled.
 	//
-	// - **off**: Disabled.
+	// - **off**: disabled.
 	//
 	// example:
 	//
@@ -180,9 +180,9 @@ type CreateWaitingRoomEventRequest struct {
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
 	// Specifies whether to enable random pre-queuing. Valid values:
 	//
-	// - **on**: Enabled.
+	// - **on**: enabled.
 	//
-	// - **off**: Disabled.
+	// - **off**: disabled.
 	//
 	// example:
 	//
@@ -226,7 +226,7 @@ type CreateWaitingRoomEventRequest struct {
 	//
 	// 6a51d5bc6460887abd1291dc7d4db28b
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
-	// The waiting room type. Valid values:
+	// The type of the waiting room. Valid values:
 	//
 	// - **default**: default type.
 	//

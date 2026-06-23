@@ -14,7 +14,7 @@ type iGetOriginProtectionRequest interface {
 }
 
 type GetOriginProtectionRequest struct {
-	// The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to get the site ID.
+	// Site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

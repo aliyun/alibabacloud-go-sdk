@@ -48,13 +48,13 @@ type ResetScheduledPreloadJobResponseBody struct {
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The time when the task was created.
+	// The time when the job was created, in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
 	// 2024-06-02T02:23:26Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The list of domain names to prefetch.
+	// The list of preload domains.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ type ResetScheduledPreloadJobResponseBody struct {
 	//
 	// invalid domain:test.com
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	// The OSS address of the failed file.
+	// The OSS URL of the failed file.
 	//
 	// example:
 	//
-	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
+	// https://xxxobject.oss-cn-region.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
 	FailedFileOss *string `json:"FailedFileOss,omitempty" xml:"FailedFileOss,omitempty"`
-	// The ID of the URL list file, which is used for downloading.
+	// The file ID of the URL list, which is used for downloading.
 	//
 	// example:
 	//
 	// 665d3b48621bccf3fe29e1a7
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type ResetScheduledPreloadJobResponseBody struct {
 	//
 	// oss
 	InsertWay *string `json:"InsertWay,omitempty" xml:"InsertWay,omitempty"`
-	// The task name.
+	// The job name.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type ResetScheduledPreloadJobResponseBody struct {
 	//
 	// 190007158391808
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The number of URLs that have been submitted to the system for prefetch.
+	// The number of URLs that have been submitted to the system for preloading.
 	//
 	// example:
 	//
 	// 1
 	TaskSubmitted *int32 `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
-	// The task type, such as refresh or prefetch.
+	// The task type (refresh/preload).
 	//
 	// example:
 	//

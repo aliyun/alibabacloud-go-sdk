@@ -22,31 +22,33 @@ type iUpdateEdgeContainerAppResourceReserveShrinkRequest interface {
 }
 
 type UpdateEdgeContainerAppResourceReserveShrinkRequest struct {
-	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	// The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
+	//
+	// 	Notice: The AppId format is the app- prefix followed by a numeric suffix, with a total length of 20 to 64 characters (example: app-8806886***83794688). Call ListEdgeContainerApps to obtain an existing AppId, or call CreateEdgeContainerApp to create an application first.</notice>.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The end time of the reservation. The input time is UTC. It takes +8 hours to enter Beijing time. For example, if the current time is 2006-01-02 06:04:05, you need to enter "2006-01-02T14:04:05Z".
+	// The reservation end time. This parameter uses UTC time. To convert from UTC+8, add 8 hours. For example, if the current time is 2006-01-02 06:04:05 in UTC+8, enter "2006-01-02T14:04:05Z".
 	//
 	// example:
 	//
 	// 2006-01-02T15:04:05Z
 	DurationTime *string `json:"DurationTime,omitempty" xml:"DurationTime,omitempty"`
-	// Whether to enable resource reservation.
+	// Specifies whether to enable resource reservation.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Whether to permanently enable the reservation. Once it is enabled, you are not allowed to set the reservation deadline.
+	// Specifies whether to permanently enable reservation. Once enabled, you cannot set a reservation end time.
 	//
 	// example:
 	//
 	// true
 	Forever *bool `json:"Forever,omitempty" xml:"Forever,omitempty"`
-	// Reserved resource list.
+	// The list of reserved resources.
 	ReserveSetShrink *string `json:"ReserveSet,omitempty" xml:"ReserveSet,omitempty"`
 }
 

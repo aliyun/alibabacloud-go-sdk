@@ -62,7 +62,7 @@ type DescribeTraceDiagnoseReportResponseBody struct {
 	//
 	// 33.7.98.136
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// Creation time. Format: yyyy-MM-dd HH:mm:ss, timezone: +08:00.
+	// Creation time. Format: yyyy-MM-dd HH:mm:ss. Time zone: +08:00.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type DescribeTraceDiagnoseReportResponseBody struct {
 	//
 	// 1678701915
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Remaining available diagnosis count.
+	// Remaining available diagnostic attempts.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type DescribeTraceDiagnoseReportResponseBody struct {
 	RemainDiagnoseTimes *int64 `json:"RemainDiagnoseTimes,omitempty" xml:"RemainDiagnoseTimes,omitempty"`
 	// Diagnostic report details.
 	Report *DescribeTraceDiagnoseReportResponseBodyReport `json:"Report,omitempty" xml:"Report,omitempty" type:"Struct"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -114,11 +114,11 @@ type DescribeTraceDiagnoseReportResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Report generation status.
 	//
-	// 0: Success.
+	// 0: Successful.
 	//
-	// 1: Failure.
+	// 1: Failed.
 	//
-	// 2: Timeout.
+	// 2: Timed out.
 	//
 	// 3: Running.
 	//

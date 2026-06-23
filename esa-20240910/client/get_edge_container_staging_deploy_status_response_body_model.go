@@ -30,51 +30,63 @@ type iGetEdgeContainerStagingDeployStatusResponseBody interface {
 }
 
 type GetEdgeContainerStagingDeployStatusResponseBody struct {
-	// Indicates whether the container is ready.
+	// Indicates whether the container status is ready. Valid values:
 	//
-	// 	- ok
+	// - **ok**: Ready.
 	//
-	// 	- unready
+	// - **unready**: Not ready.
 	//
 	// example:
 	//
 	// ok
 	ContainersReady *string `json:"ContainersReady,omitempty" xml:"ContainersReady,omitempty"`
-	// The time when the container was created. The value is a timestamp.
+	// The creation time (UNIX timestamp).
 	//
 	// example:
 	//
 	// 2024-09-24T06:46:35Z
 	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
-	// The initialization status of the container.
+	// The container initialization status. Valid values:
 	//
-	// 	- ok
+	// - **ok**: Succeeded.
 	//
-	// 	- unready
+	// - **unready**: Not completed.
 	//
 	// example:
 	//
 	// ok
 	Initialized *string `json:"Initialized,omitempty" xml:"Initialized,omitempty"`
-	// The status of the container in the staging environment.
+	// The status of the container in the staging environment. Valid values:
 	//
-	// 	- NoContainer: created.
+	// - NoContainer: no container.
 	//
-	// 	- Running: running.
+	// - Pending: pending deployment.
 	//
-	// 	- Failed: abnormal.
+	// - ContainerCreating: the container is being created.
+	//
+	// - Running: running.
+	//
+	// - Succeeded: completed.
+	//
+	// - ImagePullBackOff: image pull failed.
+	//
+	// - CrashLoopBackOff: abnormal container startup.
+	//
+	// - Failed: failed.
+	//
+	// - Unknown: unknown.
 	//
 	// example:
 	//
 	// Running
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The details of container restart.
+	// The container restart status.
 	PodRestartState *GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState `json:"PodRestartState,omitempty" xml:"PodRestartState,omitempty" type:"Struct"`
-	// Indicates whether domain names are associated with the container.
+	// Indicates whether the container is ready to receive traffic. Valid values:
 	//
-	// 	- ok
+	// - **ok**: Ready.
 	//
-	// 	- unready
+	// - **unready**: Not ready.
 	//
 	// example:
 	//
@@ -86,17 +98,17 @@ type GetEdgeContainerStagingDeployStatusResponseBody struct {
 	//
 	// 2F2C992B-3FE2-5EBB-A61F-F9DD4EB257DA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scheduling status of the container.
+	// The container scheduling status. Valid values:
 	//
-	// 	- ok
+	// - **ok**: Succeeded.
 	//
-	// 	- unready
+	// - **unready**: Not completed.
 	//
 	// example:
 	//
 	// ok
 	Scheduled *string `json:"Scheduled,omitempty" xml:"Scheduled,omitempty"`
-	// The virtual IP addresses.
+	// The list of VIPs.
 	VIPs []*string `json:"VIPs,omitempty" xml:"VIPs,omitempty" type:"Repeated"`
 }
 
@@ -205,7 +217,7 @@ type GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState struct {
 	//
 	// OOMKilled
 	LastTerminatedReason *string `json:"LastTerminatedReason,omitempty" xml:"LastTerminatedReason,omitempty"`
-	// The number of times that the container restarted.
+	// The number of restarts.
 	//
 	// example:
 	//

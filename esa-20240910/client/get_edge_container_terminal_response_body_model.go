@@ -38,13 +38,13 @@ type GetEdgeContainerTerminalResponseBody struct {
 	//
 	// worker0
 	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// example:
 	//
 	// ns1
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The name of the container group.
+	// The pod name.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type GetEdgeContainerTerminalResponseBody struct {
 	//
 	// af22f4xxxxxxxxxxxxxxxxxx
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The information about the shared token.
+	// The sharing token information.
 	//
 	// example:
 	//

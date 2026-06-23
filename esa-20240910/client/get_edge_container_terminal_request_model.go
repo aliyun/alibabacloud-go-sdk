@@ -14,7 +14,11 @@ type iGetEdgeContainerTerminalRequest interface {
 }
 
 type GetEdgeContainerTerminalRequest struct {
-	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	// The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
+	//
+	// <notice>This parameter is required. If this parameter is not specified, the API returns InvalidParameter.appid(400).
+	//
+	// Full dependency chain: CreateEdgeContainerApp → CreateEdgeContainerAppVersion → PublishEdgeContainerAppVersion → Wait for the container status to become Running → Call this API.</notice>.
 	//
 	// example:
 	//

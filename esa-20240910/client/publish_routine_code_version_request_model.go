@@ -18,10 +18,27 @@ type iPublishRoutineCodeVersionRequest interface {
 }
 
 type PublishRoutineCodeVersionRequest struct {
+	// The version number of the code to publish.
+	//
+	// example:
+	//
+	// 1710120201067203242
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	// The environment name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// production
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The name of the Edge Routine.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-routine1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

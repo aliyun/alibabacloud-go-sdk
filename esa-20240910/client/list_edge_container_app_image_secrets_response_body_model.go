@@ -16,9 +16,9 @@ type iListEdgeContainerAppImageSecretsResponseBody interface {
 }
 
 type ListEdgeContainerAppImageSecretsResponseBody struct {
-	// List of image secrets.
+	// The list of image secrets.
 	ImageSecretList []*ListEdgeContainerAppImageSecretsResponseBodyImageSecretList `json:"ImageSecretList,omitempty" xml:"ImageSecretList,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ func (s *ListEdgeContainerAppImageSecretsResponseBody) Validate() error {
 }
 
 type ListEdgeContainerAppImageSecretsResponseBodyImageSecretList struct {
-	// Name of the image secret.
+	// The name of the image secret.
 	//
 	// example:
 	//
 	// reg-123****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Registry address.
+	// The image repository address.
 	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com
 	Registry *string `json:"Registry,omitempty" xml:"Registry,omitempty"`
-	// Username for the image repository
+	// The username of the image repository.
 	//
 	// example:
 	//

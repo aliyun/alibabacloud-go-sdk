@@ -18,7 +18,7 @@ type iGetEdgeContainerAppLogRiverResponseBody interface {
 }
 
 type GetEdgeContainerAppLogRiverResponseBody struct {
-	// The log path of the container. It must be an absolute path that starts with a forward slash (/). You can use asterisks (\\*) and question marks (?) as wildcards.
+	// The log file path of the container. The path must be an absolute path that starts with a forward slash (/). Asterisks (*) and question marks (?) can be used as wildcards.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type GetEdgeContainerAppLogRiverResponseBody struct {
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the standard output of the container is collected.
+	// Indicates whether standard output collection is enabled for the container.
 	Stdout *bool `json:"Stdout,omitempty" xml:"Stdout,omitempty"`
 }
 

@@ -30,59 +30,59 @@ type iCreateCompressionRuleRequest interface {
 }
 
 type CreateCompressionRuleRequest struct {
-	// Specifies whether to enable Brotli compression. Valid values:
+	// Brotli compression. Valid values:
 	//
-	// - `on`: Enables Brotli compression.
+	// - on: Enabled.
 	//
-	// - `off`: Disables Brotli compression.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	Brotli *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
-	// Specifies whether to enable Gzip compression. Valid values:
+	// Gzip compression. Valid values:
 	//
-	// - `on`: Enables Gzip compression.
+	// - on: Enabled.
 	//
-	// - `off`: Disables Gzip compression.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	// The conditional expression used to match user requests. This parameter is not required when adding a global configuration. There are two use cases:
+	// The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
 	//
-	// - To match all incoming requests, set the value to `true`.
+	// - Match all incoming requests: Set the value to true.
 	//
-	// - To match specific requests, set the value to a custom expression, for example, `(http.host eq "video.example.com")`.
+	// - Match specified requests: Set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether to enable the rule. This parameter is not required when adding a global configuration. Valid values:
+	// The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
 	//
-	// - `on`: Enables the rule.
+	// - on: Enabled.
 	//
-	// - `off`: Disables the rule.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The name of the rule. This parameter is not required when adding a global configuration.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The execution priority of the rule. A smaller value indicates a higher priority.
+	// The rule execution order. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The unique identifier of the site. To obtain this value, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -90,17 +90,17 @@ type CreateCompressionRuleRequest struct {
 	//
 	// 1231231221***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the site\\"s configuration. If versioning is enabled for the site, this parameter specifies the version to modify. Defaults to 0.
+	// The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. The default value is version 0.
 	//
 	// example:
 	//
 	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// Specifies whether to enable Zstd compression. Valid values:
+	// Zstd compression. Valid values:
 	//
-	// - `on`: Enables Zstd compression.
+	// - on: Enabled.
 	//
-	// - `off`: Disables Zstd compression.
+	// - off: Disabled.
 	//
 	// example:
 	//

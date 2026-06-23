@@ -24,8 +24,13 @@ type CommitRoutineStagingCodeRequest struct {
 	//
 	// description of this code ver
 	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
-	DeployEnv       *string `json:"DeployEnv,omitempty" xml:"DeployEnv,omitempty"`
-	// The name of the edge function (Routine).
+	// The deployment environment whose environment variable configuration is used. If you do not specify this parameter, environment variables are not used.
+	//
+	// example:
+	//
+	// production
+	DeployEnv *string `json:"DeployEnv,omitempty" xml:"DeployEnv,omitempty"`
+	// The name of the Edge Routine.
 	//
 	// This parameter is required.
 	//

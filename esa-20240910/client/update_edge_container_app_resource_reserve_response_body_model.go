@@ -22,19 +22,19 @@ type iUpdateEdgeContainerAppResourceReserveResponseBody interface {
 }
 
 type UpdateEdgeContainerAppResourceReserveResponseBody struct {
-	// The end time of the reservation. The input time is UTC. It takes +8 hours to enter Beijing time. For example, if the current time is 2006-01-02 06:04:05, you need to enter "2006-01-02T14:04:05Z".
+	// The reservation end time. This parameter uses UTC time. To convert from UTC+8, add 8 hours. For example, if the current time is 2006-01-02 06:04:05 in UTC+8, enter "2006-01-02T14:04:05Z".
 	//
 	// example:
 	//
 	// 2006-01-02T15:04:05Z
 	DurationTime *string `json:"DurationTime,omitempty" xml:"DurationTime,omitempty"`
-	// Whether to enable resource reservation.
+	// Specifies whether to enable resource reservation.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Enable Permanent Incremental Backup
+	// Indicates whether reservation is permanently enabled.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type UpdateEdgeContainerAppResourceReserveResponseBody struct {
 	//
 	// 1AB799CF-562A-5CAF-A99E-4354053D814F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Reserved resource list.
+	// The list of reserved resources.
 	ReserveSet []*UpdateEdgeContainerAppResourceReserveResponseBodyReserveSet `json:"ReserveSet,omitempty" xml:"ReserveSet,omitempty" type:"Repeated"`
 }
 
@@ -117,95 +117,95 @@ func (s *UpdateEdgeContainerAppResourceReserveResponseBody) Validate() error {
 }
 
 type UpdateEdgeContainerAppResourceReserveResponseBodyReserveSet struct {
-	// The ISP. The following types are supported. You do not need to enter the ISP in regions outside the Chinese mainland:
+	// The Internet service provider (ISP). The following ISPs are supported. You do not need to specify an ISP for special administrative regions or areas outside China:
 	//
-	// 	- China Mobile: cmcc
+	// - China Mobile: cmcc
 	//
-	// 	- China Telecom: chinanet
+	// - China Telecom: chinanet
 	//
-	// 	- China Unicom: unicom
+	// - China Unicom: unicom.
 	//
 	// example:
 	//
 	// cmcc
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// Information about the region. The Chinese mainland supports the input of regions and special administrative regions, and the regions outside the Chinese mainland support the input of countries. The following is the corresponding parameter mapping:
+	// The region information. For the Chinese mainland, you can specify a major region. For special administrative regions and areas outside China, you can specify a country or region. The following list shows the parameter mappings:
 	//
 	// Chinese mainland:
 	//
-	// 	- East China: huadong
+	// - East China: huadong
 	//
-	// 	- South China: huanan
+	// - South China: huanan
 	//
-	// 	- Central China: huazhong
+	// - Central China: huazhong
 	//
-	// 	- North China: huabei
+	// - North China: huabei
 	//
-	// 	- Northwest China: xibei
+	// - Northwest China: xibei
 	//
-	// 	- Southwest China: xinan
+	// - Southwest China: xinan
 	//
-	// 	- Northeast China: dongbei
+	// - Northeast China: dongbei
 	//
-	// Special Administrative Regions and overseas:
+	// Special administrative regions and outside China:
 	//
-	// 	- Taiwan, China: tw
+	// - Taiwan (China): tw
 	//
-	// 	- Macau, China: mo
+	// - Macao (China): mo
 	//
-	// 	- Hong Kong, China: hk
+	// - Hong Kong (China): hk
 	//
-	// 	- Japan: jp
+	// - Japan: jp
 	//
-	// 	- United States: us
+	// - United States: us
 	//
-	// 	- Thailand: th
+	// - Thailand: th
 	//
-	// 	- Korea: kr
+	// - South Korea: kr
 	//
-	// 	- Russia: ru
+	// - Russia: ru
 	//
-	// 	- Singapore: sg
+	// - Singapore: sg
 	//
-	// 	- France: fr
+	// - France: fr
 	//
-	// 	- Spain: es
+	// - Spain: es
 	//
-	// 	- Italy: it
+	// - Italy: it
 	//
-	// 	- Sweden: se
+	// - Sweden: se
 	//
-	// 	- UAE: ae
+	// - United Arab Emirates: ae
 	//
-	// 	- Indonesia: id
+	// - Indonesia: id
 	//
-	// 	- Chile: cl
+	// - Chile: cl
 	//
-	// 	- Philippines: ph
+	// - Philippines: ph
 	//
-	// 	- Malaysia: my
+	// - Malaysia: my
 	//
-	// 	- Vietnam: vn
+	// - Vietnam: vn
 	//
-	// 	- Argentina: AR
+	// - Argentina: ar
 	//
-	// 	- Australia: au
+	// - Australia: au
 	//
-	// 	- Brazil: br
+	// - Brazil: br
 	//
-	// 	- Colombia: co
+	// - Colombia: co
 	//
-	// 	- Germany: de
+	// - Germany: de
 	//
-	// 	- UK: GB
+	// - United Kingdom: gb
 	//
-	// 	- Peru: pe
+	// - Peru: pe
 	//
-	// 	- Saudi Arabia: sa
+	// - Saudi Arabia: sa
 	//
-	// 	- Netherlands: nl
+	// - Netherlands: nl
 	//
-	// 	- South Africa: za
+	// - South Africa: za.
 	//
 	// example:
 	//

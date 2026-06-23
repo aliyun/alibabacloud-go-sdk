@@ -40,9 +40,9 @@ type DescribePurgeTasksResponseBody struct {
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A123425345
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tasks.
+	// The task list.
 	Tasks []*DescribePurgeTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,31 +117,31 @@ func (s *DescribePurgeTasksResponseBody) Validate() error {
 }
 
 type DescribePurgeTasksResponseBodyTasks struct {
-	// The purged content.
+	// The refresh object.
 	//
 	// example:
 	//
 	// http://a.com/1.jpg?b=1
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The time when the task was created.
+	// The creation time, in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
 	// 2023-07-26T01:56:15Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error description returned when the purge task failed.
+	// The error description returned when the refresh task fails.
 	//
 	// example:
 	//
 	// Internal Error
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The progress of the task, in percentage.
+	// The task completion progress in percentage.
 	//
 	// example:
 	//
 	// 100%
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// The task status.
+	// The task status. Valid values:
 	//
 	// - **Complete**: The task is complete.
 	//
@@ -159,19 +159,19 @@ type DescribePurgeTasksResponseBodyTasks struct {
 	//
 	// 16346513304
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the purge task. Valid values:
+	// The refresh task type. Valid values:
 	//
-	// - **file*	- (default): purges the cache by file.
+	// - **file*	- (default): file refresh.
 	//
-	// - **cachetag**: purges the cache by cache tag.
+	// - **cachetag**: cache tag refresh.
 	//
-	// - **directory**: purges the cache by directory.
+	// - **directory**: directory refresh.
 	//
-	// - **ignoreParams**: purges the cache by URL with specified parameters ignored.
+	// - **ignoreParams**: parameter-stripped refresh.
 	//
-	// - **hostname**: purges the cache by hostname.
+	// - **hostname**: hostname refresh.
 	//
-	// - **purgeall**: purges all cache.
+	// - **purgeall**: refresh all cached content of the site.
 	//
 	// example:
 	//

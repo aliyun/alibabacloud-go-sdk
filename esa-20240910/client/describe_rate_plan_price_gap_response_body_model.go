@@ -74,7 +74,7 @@ type DescribeRatePlanPriceGapResponseBodyPriceModel struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discount amount of the order.
+	// The order discount amount.
 	//
 	// example:
 	//
@@ -99,7 +99,7 @@ type DescribeRatePlanPriceGapResponseBodyPriceModel struct {
 	//
 	// entranceplan
 	TargetPlanCode *string `json:"TargetPlanCode,omitempty" xml:"TargetPlanCode,omitempty"`
-	// The original order price, which equals the actual transaction price plus the discount amount.
+	// The original order price. Original order price = actual transaction price + discount amount.
 	//
 	// example:
 	//

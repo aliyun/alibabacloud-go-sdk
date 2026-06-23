@@ -28,7 +28,7 @@ type GetPurgeQuotaResponseBody struct {
 	//
 	// 100000
 	Quota *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	// The total quota available in a 30-day period. A value of 0 indicates that this quota is not configured.
+	// The total quota at 30-day granularity. A value of 0 indicates that this quota is not configured.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetPurgeQuotaResponseBody struct {
 	//
 	// 10
 	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	// The quota used within the 30-day period.
+	// The used quota at 30-day granularity.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iUploadFileRequest interface {
 }
 
 type UploadFileRequest struct {
-	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -28,15 +28,15 @@ type UploadFileRequest struct {
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The type of the purge or prefetch task. Valid values:
+	// The type of the refresh or prefetch task. Valid values:
 	//
-	// 	- **file*	- (default): purges the cache by file.
+	// - **file*	- (default): file refresh.
 	//
-	// 	- **preload**: prefetches the file.
+	// - **preload**: file prefetch.
 	//
-	// 	- **directory**: purges the cache by directory.
+	// - **directory**: directory refresh.
 	//
-	// 	- **ignoreParams**: purges the cache by URL with specified parameters ignored.
+	// - **ignoreParams**: parameter-ignored refresh.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,17 @@ type UploadFileRequest struct {
 	//
 	// purge_task_2024_11_11
 	UploadTaskName *string `json:"UploadTaskName,omitempty" xml:"UploadTaskName,omitempty"`
-	// The OSS URL of the file that contains resources to be purged or prefetched.
+	// The URL of the refresh or prefetch file stored in OSS. The Url parameter accepts URLs in two formats:
+	//
+	// - Transit URL (recommended): automatically generated through the file transfer feature of the ESA console or SDK.
+	//
+	// - OSS pre-signed HTTPS URL: generated after you upload the file to an authorized OSS bucket. The isFileTransferUrl field specifies whether to use the transit URL mode.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// https://xxxxx.oss-cn-shenzhen.aliyuncs.com/test_oss_file?Expires=1708659191&OSSAccessKeyId=**********&Signature=**********
+	// https://XXXXXX.oss-cn-hangzhou.aliyuncs.com/{prefix}_{account_uid}_{hash}
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 

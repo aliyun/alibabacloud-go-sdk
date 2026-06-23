@@ -14,7 +14,9 @@ type iResetScheduledPreloadJobRequest interface {
 }
 
 type ResetScheduledPreloadJobRequest struct {
-	// The ID of the scheduled prefetch task.
+	// The scheduled preload job ID.
+	//
+	// 	Notice: The scheduled preload job ID. This parameter is required. You can obtain the ID from the response of CreateScheduledPreloadJob after creating a job, or query existing job IDs by calling GetScheduledPreloadJob or ListScheduledPreloadJobs.
 	//
 	// example:
 	//

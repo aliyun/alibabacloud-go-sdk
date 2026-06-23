@@ -16,13 +16,13 @@ type iCreateCustomResponseCodeRuleResponseBody interface {
 }
 
 type CreateCustomResponseCodeRuleResponseBody struct {
-	// Configuration ID.
+	// The configuration ID.
 	//
 	// example:
 	//
 	// 3528160969****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

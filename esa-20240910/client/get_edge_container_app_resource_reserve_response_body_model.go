@@ -22,19 +22,19 @@ type iGetEdgeContainerAppResourceReserveResponseBody interface {
 }
 
 type GetEdgeContainerAppResourceReserveResponseBody struct {
-	// The end time of the reservation. The input is UTC time. It takes +8 hours to enter Beijing time. For example, if the current time is 2006-01-02 06:04:05 , you need to enter "2006-01-02T14:04:05Z".
+	// The reservation expiration time. This parameter uses UTC time. To convert from UTC+8, add 8 hours. For example, if the current UTC+8 time is 2006-01-02 06:04:05, enter "2006-01-02T14:04:05Z".
 	//
 	// example:
 	//
 	// 2006-01-02T15:04:05Z
 	DurationTime *string `json:"DurationTime,omitempty" xml:"DurationTime,omitempty"`
-	// Whether to enable resource reservation.
+	// Indicates whether resource reservation is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Whether to enable resource reservation permanently.
+	// Indicates whether the reservation is permanently enabled.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetEdgeContainerAppResourceReserveResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Reserved resource list.
+	// The list of reserved resources.
 	ReserveSet []*GetEdgeContainerAppResourceReserveResponseBodyReserveSet `json:"ReserveSet,omitempty" xml:"ReserveSet,omitempty" type:"Repeated"`
 }
 
@@ -117,93 +117,95 @@ func (s *GetEdgeContainerAppResourceReserveResponseBody) Validate() error {
 }
 
 type GetEdgeContainerAppResourceReserveResponseBodyReserveSet struct {
-	// The following ISPs are supported. You do not need to enter this field for overseas and special administrative regions. ISP:
+	// The following Internet service providers (ISPs) are supported. This parameter is not required for regions outside the Chinese mainland.
 	//
-	// 	- China Mobile: cmcc
+	// Valid values:
 	//
-	// 	- China Telecom: chinanet
+	// - cmcc: China Mobile
 	//
-	// 	- China Unicom: unicom
+	// - chinanet: China Telecom
+	//
+	// - unicom: China Unicom.
 	//
 	// example:
 	//
 	// cmcc
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// Chinese mainland:
+	// The Chinese mainland:
 	//
-	// 	- East China: huadong
+	// - East China: huadong
 	//
-	// 	- South China: huanan
+	// - South China: huanan
 	//
-	// 	- Central China: huazhong
+	// - Central China: huazhong
 	//
-	// 	- North China: huabei
+	// - North China: huabei
 	//
-	// 	- Northwest: xibei
+	// - Northwest China: xibei
 	//
-	// 	- Southwest: xinan
+	// - Southwest China: xinan
 	//
-	// 	- Northeast China: dongbei
+	// - Northeast China: dongbei
 	//
-	// Special Administrative Regions and Overseas:
+	// Special administrative regions and outside China:
 	//
-	// 	- Taiwan, China: tw
+	// - Taiwan (China): tw
 	//
-	// 	- Macau China: mo
+	// - Macao (China): mo
 	//
-	// 	- Hong Kong, China: hk
+	// - Hong Kong (China): hk
 	//
-	// 	- Japan: jp
+	// - Japan: jp
 	//
-	// 	- United States: us
+	// - United States: us
 	//
-	// 	- Thailand: th
+	// - Thailand: th
 	//
-	// 	- Korea: kr
+	// - South Korea: kr
 	//
-	// 	- Russia: ru
+	// - Russia: ru
 	//
-	// 	- Singapore: sg
+	// - Singapore: sg
 	//
-	// 	- France: fr
+	// - France: fr
 	//
-	// 	- Spain: es
+	// - Spain: es
 	//
-	// 	- Italy: it
+	// - Italy: it
 	//
-	// 	- Sweden: se
+	// - Sweden: se
 	//
-	// 	- UAE: ae
+	// - United Arab Emirates: ae
 	//
-	// 	- Indonesia: id
+	// - Indonesia: id
 	//
-	// 	- Chile: cl
+	// - Chile: cl
 	//
-	// 	- Philippines: ph
+	// - Philippines: ph
 	//
-	// 	- Malaysia: my
+	// - Malaysia: my
 	//
-	// 	- Vietnam: vn
+	// - Vietnam: vn
 	//
-	// 	- Argentina: ar
+	// - Argentina: ar
 	//
-	// 	- Australia: au
+	// - Australia: au
 	//
-	// 	- Brazil: br
+	// - Brazil: br
 	//
-	// 	- Colombia: co
+	// - Colombia: co
 	//
-	// 	- Germany: de
+	// - Germany: de
 	//
-	// 	- UK: gb
+	// - United Kingdom: gb
 	//
-	// 	- Peru: pe
+	// - Peru: pe
 	//
-	// 	- Saudi Arabia: sa
+	// - Saudi Arabia: sa
 	//
-	// 	- Netherlands: nl
+	// - Netherlands: nl
 	//
-	// 	- South Africa: za
+	// - South Africa: za.
 	//
 	// example:
 	//

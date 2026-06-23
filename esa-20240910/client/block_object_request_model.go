@@ -24,13 +24,13 @@ type BlockObjectRequest struct {
 	//
 	// This parameter is required.
 	Content []*string `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	// The effective period of the block, in seconds. Specify this parameter when Type is set to block.
+	// The effective period of the block, in seconds. This parameter is required when the type is set to block.
 	//
 	// example:
 	//
 	// 864000
 	Maxage *int32 `json:"Maxage,omitempty" xml:"Maxage,omitempty"`
-	// The ID of the site. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type BlockObjectRequest struct {
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// The type. Valid values:
 	//
-	// - **block**: Blocks access.
+	// - **block**: blocks the URLs.
 	//
-	// - **unblock**: Unblocks access.
+	// - **unblock**: unblocks the URLs.
 	//
 	// This parameter is required.
 	//

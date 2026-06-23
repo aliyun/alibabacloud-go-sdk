@@ -54,7 +54,7 @@ type CreateWaitingRoomShrinkRequest struct {
 	//
 	// __aliwaitingroom_example
 	CookieName *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
-	// The custom waiting room page content. This parameter is required when the waiting room type is custom. The content must be Base64-encoded.
+	// The custom waiting room page content. This parameter is required when the waiting room type is set to custom. The content must use Base64 encoding.
 	//
 	// example:
 	//
@@ -64,23 +64,23 @@ type CreateWaitingRoomShrinkRequest struct {
 	//
 	// example:
 	//
-	// 测试
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Disable session renewal. Valid values:
+	// Specifies whether to disable session renewal. Valid values:
 	//
-	// - **on**: enabled.
+	// - **on**: Enabled.
 	//
-	// - **off**: disabled.
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
-	// The waiting room switch. Valid values:
+	// Specifies whether to enable the waiting room. Valid values:
 	//
-	// - **on**: enabled.
+	// - **on**: Enabled.
 	//
-	// - **off**: disabled.
+	// - **off**: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -88,21 +88,21 @@ type CreateWaitingRoomShrinkRequest struct {
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The hostnames and paths.
+	// The hostname and path configurations.
 	//
 	// This parameter is required.
 	HostNameAndPathShrink *string `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty"`
-	// JSON response. After this feature is enabled, a JSON response is returned if the Accept request header contains "application/json". Valid values:
+	// Specifies whether to enable JSON response. When enabled, requests with an Accept header containing "application/json" return JSON data. Valid values:
 	//
-	// - **on**: enabled.
+	// - **on**: Enabled.
 	//
-	// - **off**: disabled.
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
-	// The language of the waiting room page. This parameter is required when the waiting room type is default. Valid values:
+	// The language of the waiting room page. This parameter is required when the waiting room type is set to default. Valid values:
 	//
 	// - **enus**: English.
 	//
@@ -130,11 +130,11 @@ type CreateWaitingRoomShrinkRequest struct {
 	//
 	// 200
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
-	// Queue all. Valid values:
+	// Specifies whether to queue all visitors. Valid values:
 	//
-	// - **on**: enabled.
+	// - **on**: Enabled.
 	//
-	// - **off**: disabled.
+	// - **off**: Disabled.
 	//
 	// example:
 	//
@@ -142,13 +142,13 @@ type CreateWaitingRoomShrinkRequest struct {
 	QueueAllEnable *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
 	// The queuing method. Valid values:
 	//
-	// - **random**: random.
+	// - **random**: Random.
 	//
-	// - **fifo**: first-in, first-out.
+	// - **fifo**: First in, first out.
 	//
-	// - **passthrough**: passthrough.
+	// - **passthrough**: Passthrough.
 	//
-	// - **reject-all**: reject all.
+	// - **reject-all**: Reject all.
 	//
 	// This parameter is required.
 	//
@@ -162,7 +162,7 @@ type CreateWaitingRoomShrinkRequest struct {
 	//
 	// - **202**
 	//
-	// - **429**
+	// - **429**.
 	//
 	// This parameter is required.
 	//
@@ -178,7 +178,7 @@ type CreateWaitingRoomShrinkRequest struct {
 	//
 	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -196,9 +196,9 @@ type CreateWaitingRoomShrinkRequest struct {
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
 	// The type of the waiting room. Valid values:
 	//
-	// - **default**: default type.
+	// - **default**: Default type.
 	//
-	// - **custom**: custom type.
+	// - **custom**: Custom type.
 	//
 	// This parameter is required.
 	//

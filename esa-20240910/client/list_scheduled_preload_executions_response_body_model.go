@@ -18,15 +18,15 @@ type iListScheduledPreloadExecutionsResponseBody interface {
 }
 
 type ListScheduledPreloadExecutionsResponseBody struct {
-	// A list of execution plans.
+	// The execution information.
 	Executions []*ListScheduledPreloadExecutionsResponseBodyExecutions `json:"Executions,omitempty" xml:"Executions,omitempty" type:"Repeated"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ET5BF670-09D5-4D0B-BEBY-D96A2A528000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of execution plans.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -83,59 +83,59 @@ func (s *ListScheduledPreloadExecutionsResponseBody) Validate() error {
 }
 
 type ListScheduledPreloadExecutionsResponseBodyExecutions struct {
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The end time of the execution plan.
+	// The end time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
 	// 2024-05-31T18:10:48.849+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the execution plan.
+	// The ID of the prefetch plan.
 	//
 	// example:
 	//
 	// 66599bd7397885b43804901c
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The execution interval between batches, in seconds.
+	// The interval between each batch execution of the scheduled prefetch plan. Unit: seconds.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The ID of the scheduled preload task.
+	// The ID of the prefetch task.
 	//
 	// example:
 	//
 	// 665d3af3621bccf3fe29e1a4
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The number of URLs to preload in each batch.
+	// The number of URLs in each batch of the scheduled prefetch.
 	//
 	// example:
 	//
 	// 10
 	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
-	// The start time of the execution plan.
+	// The start time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
 	// 2024-05-31T17:10:48.849+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the execution plan. Valid values:
+	// The status of the scheduled prefetch plan. Valid values:
 	//
-	// - **waiting**: Pending execution.
+	// - **waiting**: Waiting to be executed.
 	//
-	// - **running**: Executing.
+	// - **running**: Being executed.
 	//
-	// - **finished**: Completed.
+	// - **finished**: Execution completed.
 	//
-	// - **failed**: Failed.
+	// - **failed**: Execution failed.
 	//
-	// - **stopped**: Paused.
+	// - **stopped**: Execution paused.
 	//
 	// example:
 	//

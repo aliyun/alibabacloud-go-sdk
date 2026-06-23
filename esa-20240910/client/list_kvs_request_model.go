@@ -20,7 +20,7 @@ type iListKvsRequest interface {
 }
 
 type ListKvsRequest struct {
-	// The name that you specified when you called [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html).
+	// The name specified when you called [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html).
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type ListKvsRequest struct {
 	//
 	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The page number to return. The value of PageNumber \\	- PageSize cannot exceed 50,000.
+	// The page number. The product of PageNumber and PageSize cannot exceed 50000.
 	//
 	// example:
 	//
 	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default: **50**. Maximum: **100**.
+	// The page size. Default value: **50**. Maximum value: **100**.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The prefix of the keys to return.
+	// The prefix used to filter keys.
 	//
 	// example:
 	//

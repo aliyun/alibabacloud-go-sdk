@@ -36,61 +36,61 @@ type iGetOriginProtectionResponseBody interface {
 }
 
 type GetOriginProtectionResponseBody struct {
-	// Indicates whether the latest back-to-origin IP address list is automatically enabled.
+	// Automatically enable the latest origin IP list.
 	//
 	// example:
 	//
 	// off
 	AutoConfirmIPList *string `json:"AutoConfirmIPList,omitempty" xml:"AutoConfirmIPList,omitempty"`
-	// The back-to-origin IP address whitelist that the site currently uses.
+	// The current origin IP whitelist used by the site.
 	CurrentIPWhitelist *GetOriginProtectionResponseBodyCurrentIPWhitelist `json:"CurrentIPWhitelist,omitempty" xml:"CurrentIPWhitelist,omitempty" type:"Struct"`
-	// The changes in the back-to-origin IP address whitelist.
+	// The changed origin IP whitelist.
 	DiffIPWhitelist *GetOriginProtectionResponseBodyDiffIPWhitelist `json:"DiffIPWhitelist,omitempty" xml:"DiffIPWhitelist,omitempty" type:"Struct"`
-	// The latest back-to-origin IP address whitelist.
+	// The latest origin IP whitelist.
 	LatestIPWhitelist *GetOriginProtectionResponseBodyLatestIPWhitelist `json:"LatestIPWhitelist,omitempty" xml:"LatestIPWhitelist,omitempty" type:"Struct"`
-	// Indicates whether the back-to-origin IP address whitelist needs to be updated. If the current whitelist differs from the latest one, this parameter returns true.
+	// Indicates whether the origin IP whitelist needs to be updated. When the current origin IP whitelist differs from the latest origin IP whitelist, an update is needed and this value returns true.
 	//
-	// - true: An update is required.
+	// - true: Update is needed.
 	//
-	// - false: No update is required.
+	// - false: No update is needed.
 	//
 	// example:
 	//
 	// true
 	NeedUpdate *bool `json:"NeedUpdate,omitempty" xml:"NeedUpdate,omitempty"`
-	// The back-to-origin convergence switch.
+	// Origin convergence switch:
 	//
-	// - on: enabled.
+	// - on: Enabled.
 	//
-	// - off: disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	OriginConverge *string `json:"OriginConverge,omitempty" xml:"OriginConverge,omitempty"`
-	// The origin protection switch.
+	// Origin protection switch:
 	//
-	// - on: enabled.
+	// - on: Enabled.
 	//
-	// - off: disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	OriginProtection *string `json:"OriginProtection,omitempty" xml:"OriginProtection,omitempty"`
-	// The regional back-to-origin IP address whitelist that the site currently uses.
+	// The regional origin IP whitelist currently used by the site.
 	RegionalCurrentIPWhitelist *GetOriginProtectionResponseBodyRegionalCurrentIPWhitelist `json:"RegionalCurrentIPWhitelist,omitempty" xml:"RegionalCurrentIPWhitelist,omitempty" type:"Struct"`
-	// The IP address whitelist for back-to-origin requests, differentiated by region.
+	// The changed regional origin IP whitelist.
 	RegionalDiffIPWhitelist *GetOriginProtectionResponseBodyRegionalDiffIPWhitelist `json:"RegionalDiffIPWhitelist,omitempty" xml:"RegionalDiffIPWhitelist,omitempty" type:"Struct"`
-	// The latest regional back-to-origin IP address whitelist.
+	// The latest regional origin IP whitelist.
 	RegionalLatestIPWhitelist *GetOriginProtectionResponseBodyRegionalLatestIPWhitelist `json:"RegionalLatestIPWhitelist,omitempty" xml:"RegionalLatestIPWhitelist,omitempty" type:"Struct"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The site ID.
+	// Site ID.
 	//
 	// example:
 	//
@@ -249,9 +249,9 @@ func (s *GetOriginProtectionResponseBody) Validate() error {
 }
 
 type GetOriginProtectionResponseBodyCurrentIPWhitelist struct {
-	// The IPv4 addresses or CIDR blocks in the back-to-origin IP address whitelist that the site currently uses.
+	// The current origin IP whitelist used by the site, IPv4 addresses or CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
-	// The IPv6 addresses or CIDR blocks in the back-to-origin IP address whitelist that the site currently uses.
+	// The current origin IP whitelist used by the site, IPv6 addresses or CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 
@@ -286,11 +286,11 @@ func (s *GetOriginProtectionResponseBodyCurrentIPWhitelist) Validate() error {
 }
 
 type GetOriginProtectionResponseBodyDiffIPWhitelist struct {
-	// The added back-to-origin IP address whitelist.
+	// The added origin IP whitelist entries.
 	AddedIPWhitelist *GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist `json:"AddedIPWhitelist,omitempty" xml:"AddedIPWhitelist,omitempty" type:"Struct"`
-	// The unchanged back-to-origin IP address whitelist.
+	// The unchanged origin IP whitelist entries.
 	NoChangeIpWhitelist *GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist `json:"NoChangeIpWhitelist,omitempty" xml:"NoChangeIpWhitelist,omitempty" type:"Struct"`
-	// The removed back-to-origin IP address whitelist.
+	// The removed origin IP whitelist entries.
 	RemovedIPWhitelist *GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist `json:"RemovedIPWhitelist,omitempty" xml:"RemovedIPWhitelist,omitempty" type:"Struct"`
 }
 
@@ -349,9 +349,9 @@ func (s *GetOriginProtectionResponseBodyDiffIPWhitelist) Validate() error {
 }
 
 type GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist struct {
-	// The IPv4 addresses or CIDR blocks in the back-to-origin IP address whitelist.
+	// Origin IP whitelist, IPv4 addresses or CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
-	// The IPv6 addresses or CIDR blocks in the back-to-origin IP address whitelist.
+	// Origin IP whitelist, IPv6 addresses or CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 
@@ -386,9 +386,9 @@ func (s *GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist) Validat
 }
 
 type GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist struct {
-	// The IPv4 addresses or CIDR blocks in the back-to-origin IP address whitelist.
+	// Origin IP whitelist, IPv4 addresses or CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
-	// The IPv6 addresses or CIDR blocks in the back-to-origin IP address whitelist.
+	// Origin IP whitelist, IPv6 addresses or CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 
@@ -423,9 +423,9 @@ func (s *GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist) Vali
 }
 
 type GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist struct {
-	// The IPv4 addresses or CIDR blocks in the back-to-origin IP address whitelist.
+	// Origin IP whitelist, IPv4 addresses or CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
-	// The IPv6 addresses or CIDR blocks in the back-to-origin IP address whitelist.
+	// Origin IP whitelist, IPv6 addresses or CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 
@@ -460,9 +460,9 @@ func (s *GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist) Valid
 }
 
 type GetOriginProtectionResponseBodyLatestIPWhitelist struct {
-	// The IPv4 addresses or CIDR blocks in the latest back-to-origin IP address whitelist.
+	// The latest origin IP whitelist, IPv4 addresses or CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
-	// The IPv6 addresses or CIDR blocks in the latest back-to-origin IP address whitelist.
+	// The latest origin IP whitelist, IPv6 addresses or CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 
@@ -497,9 +497,9 @@ func (s *GetOriginProtectionResponseBodyLatestIPWhitelist) Validate() error {
 }
 
 type GetOriginProtectionResponseBodyRegionalCurrentIPWhitelist struct {
-	// The IPv4 CIDR blocks and regions in the regional back-to-origin IP address whitelist that the site currently uses.
+	// The regional origin IP whitelist currently used by the site, IPv4 CIDR blocks and regions.
 	RegionalIPv4 []*GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv4 `json:"RegionalIPv4,omitempty" xml:"RegionalIPv4,omitempty" type:"Repeated"`
-	// The IPv6 CIDR blocks and regions in the regional back-to-origin IP address whitelist that the site currently uses.
+	// The regional origin IP whitelist currently used by the site, IPv6 CIDR blocks and regions.
 	RegionalIPv6 []*GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv6 `json:"RegionalIPv6,omitempty" xml:"RegionalIPv6,omitempty" type:"Repeated"`
 }
 
@@ -552,13 +552,17 @@ func (s *GetOriginProtectionResponseBodyRegionalCurrentIPWhitelist) Validate() e
 }
 
 type GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv4 struct {
-	// The IPv4 CIDR block.
+	// IPv4 CIDR block.
 	//
 	// example:
 	//
 	// 101.66.250.0/25
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The IPv4 region.
+	// IPv4 region. Valid values:
+	//
+	// - chinese_mainland: Chinese mainland.
+	//
+	// - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
 	//
 	// example:
 	//
@@ -597,13 +601,17 @@ func (s *GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv4) 
 }
 
 type GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv6 struct {
-	// The IPv6 CIDR block.
+	// IPv6 CIDR block.
 	//
 	// example:
 	//
 	// 101.66.250.0/25
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The IPv6 region.
+	// IPv6 region. Valid values:
+	//
+	// - chinese_mainland: Chinese mainland.
+	//
+	// - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
 	//
 	// example:
 	//
@@ -642,11 +650,11 @@ func (s *GetOriginProtectionResponseBodyRegionalCurrentIPWhitelistRegionalIPv6) 
 }
 
 type GetOriginProtectionResponseBodyRegionalDiffIPWhitelist struct {
-	// The added regional back-to-origin IP address whitelist.
+	// The added regional origin IP whitelist entries.
 	AddedIPRegionWhitelist *GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelist `json:"AddedIPRegionWhitelist,omitempty" xml:"AddedIPRegionWhitelist,omitempty" type:"Struct"`
-	// The unchanged regional back-to-origin IP address whitelist.
+	// The unchanged regional origin IP whitelist entries.
 	NoChangeIpWhitelist *GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelist `json:"NoChangeIpWhitelist,omitempty" xml:"NoChangeIpWhitelist,omitempty" type:"Struct"`
-	// The removed regional back-to-origin IP address whitelist.
+	// The removed regional origin IP whitelist entries.
 	RemovedIPRegionWhitelist *GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelist `json:"RemovedIPRegionWhitelist,omitempty" xml:"RemovedIPRegionWhitelist,omitempty" type:"Struct"`
 }
 
@@ -705,9 +713,9 @@ func (s *GetOriginProtectionResponseBodyRegionalDiffIPWhitelist) Validate() erro
 }
 
 type GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelist struct {
-	// The IPv4 CIDR blocks and regions in the regional back-to-origin IP address whitelist.
+	// Regional origin IP whitelist, IPv4 CIDR blocks and regions.
 	RegionalIPv4 []*GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelistRegionalIPv4 `json:"RegionalIPv4,omitempty" xml:"RegionalIPv4,omitempty" type:"Repeated"`
-	// The IPv6 CIDR blocks and regions in the regional back-to-origin IP address whitelist.
+	// Regional origin IP whitelist, IPv6 CIDR blocks and regions.
 	RegionalIPv6 []*GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelistRegionalIPv6 `json:"RegionalIPv6,omitempty" xml:"RegionalIPv6,omitempty" type:"Repeated"`
 }
 
@@ -760,13 +768,17 @@ func (s *GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhit
 }
 
 type GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelistRegionalIPv4 struct {
-	// The IPv4 CIDR block.
+	// IPv4 CIDR block.
 	//
 	// example:
 	//
 	// 101.66.250.0/25
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The IPv4 region.
+	// IPv4 region. Valid values:
+	//
+	// - chinese_mainland: Chinese mainland.
+	//
+	// - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
 	//
 	// example:
 	//
@@ -805,13 +817,17 @@ func (s *GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhit
 }
 
 type GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhitelistRegionalIPv6 struct {
-	// The IPv6 CIDR block.
+	// IPv6 CIDR block.
 	//
 	// example:
 	//
 	// 101.66.250.0/25
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The IPv6 region.
+	// IPv6 region. Valid values:
+	//
+	// - chinese_mainland: Chinese mainland.
+	//
+	// - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
 	//
 	// example:
 	//
@@ -850,9 +866,9 @@ func (s *GetOriginProtectionResponseBodyRegionalDiffIPWhitelistAddedIPRegionWhit
 }
 
 type GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelist struct {
-	// The IPv4 CIDR blocks and regions in the regional back-to-origin IP address whitelist.
+	// Regional origin IP whitelist, IPv4 CIDR blocks and regions.
 	RegionalIPv4 []*GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelistRegionalIPv4 `json:"RegionalIPv4,omitempty" xml:"RegionalIPv4,omitempty" type:"Repeated"`
-	// The IPv6 CIDR blocks and regions in the regional back-to-origin IP address whitelist.
+	// Regional origin IP whitelist, IPv6 CIDR blocks and regions.
 	RegionalIPv6 []*GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelistRegionalIPv6 `json:"RegionalIPv6,omitempty" xml:"RegionalIPv6,omitempty" type:"Repeated"`
 }
 
@@ -905,13 +921,17 @@ func (s *GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhiteli
 }
 
 type GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelistRegionalIPv4 struct {
-	// The IPv4 CIDR block.
+	// IPv4 CIDR block.
 	//
 	// example:
 	//
 	// 101.66.250.0/25
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The IPv4 region.
+	// IPv4 region. Valid values:
+	//
+	// - chinese_mainland: Chinese mainland.
+	//
+	// - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
 	//
 	// example:
 	//
@@ -950,13 +970,17 @@ func (s *GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhiteli
 }
 
 type GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhitelistRegionalIPv6 struct {
-	// The IPv6 CIDR block.
+	// IPv6 CIDR block.
 	//
 	// example:
 	//
 	// 101.66.250.0/25
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The IPv6 region.
+	// IPv6 region. Valid values:
+	//
+	// - chinese_mainland: Chinese mainland.
+	//
+	// - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
 	//
 	// example:
 	//
@@ -995,9 +1019,9 @@ func (s *GetOriginProtectionResponseBodyRegionalDiffIPWhitelistNoChangeIpWhiteli
 }
 
 type GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelist struct {
-	// The IPv4 CIDR blocks and regions in the regional back-to-origin IP address whitelist.
+	// Regional origin IP whitelist, IPv4 CIDR blocks and regions.
 	RegionalIPv4 []*GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelistRegionalIPv4 `json:"RegionalIPv4,omitempty" xml:"RegionalIPv4,omitempty" type:"Repeated"`
-	// The IPv6 CIDR blocks and regions in the regional back-to-origin IP address whitelist.
+	// Regional origin IP whitelist, IPv6 CIDR blocks and regions.
 	RegionalIPv6 []*GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelistRegionalIPv6 `json:"RegionalIPv6,omitempty" xml:"RegionalIPv6,omitempty" type:"Repeated"`
 }
 
@@ -1050,13 +1074,17 @@ func (s *GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWh
 }
 
 type GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelistRegionalIPv4 struct {
-	// The IPv4 CIDR block.
+	// IPv4 CIDR block.
 	//
 	// example:
 	//
 	// 101.66.250.0/25
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The IPv4 region.
+	// IPv4 region. Valid values:
+	//
+	// - chinese_mainland: Chinese mainland.
+	//
+	// - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
 	//
 	// example:
 	//
@@ -1095,13 +1123,17 @@ func (s *GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWh
 }
 
 type GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWhitelistRegionalIPv6 struct {
-	// The IPv6 CIDR block.
+	// IPv6 CIDR block.
 	//
 	// example:
 	//
 	// 101.66.250.0/25
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The IPv6 region.
+	// IPv6 region. Valid values:
+	//
+	// - chinese_mainland: Chinese mainland.
+	//
+	// - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
 	//
 	// example:
 	//
@@ -1140,9 +1172,9 @@ func (s *GetOriginProtectionResponseBodyRegionalDiffIPWhitelistRemovedIPRegionWh
 }
 
 type GetOriginProtectionResponseBodyRegionalLatestIPWhitelist struct {
-	// The IPv4 CIDR blocks and regions in the latest regional back-to-origin IP address whitelist.
+	// The latest regional origin IP whitelist, IPv4 CIDR blocks and regions.
 	RegionalIPv4 []*GetOriginProtectionResponseBodyRegionalLatestIPWhitelistRegionalIPv4 `json:"RegionalIPv4,omitempty" xml:"RegionalIPv4,omitempty" type:"Repeated"`
-	// The IPv6 CIDR blocks and regions in the latest regional back-to-origin IP address whitelist.
+	// The latest regional origin IP whitelist, IPv6 CIDR blocks and regions.
 	RegionalIPv6 []*GetOriginProtectionResponseBodyRegionalLatestIPWhitelistRegionalIPv6 `json:"RegionalIPv6,omitempty" xml:"RegionalIPv6,omitempty" type:"Repeated"`
 }
 
@@ -1195,13 +1227,17 @@ func (s *GetOriginProtectionResponseBodyRegionalLatestIPWhitelist) Validate() er
 }
 
 type GetOriginProtectionResponseBodyRegionalLatestIPWhitelistRegionalIPv4 struct {
-	// The IPv4 CIDR block.
+	// IPv4 CIDR block.
 	//
 	// example:
 	//
 	// 101.66.250.0/25
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The IPv4 region.
+	// IPv4 region. Valid values:
+	//
+	// - chinese_mainland: Chinese mainland.
+	//
+	// - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
 	//
 	// example:
 	//
@@ -1240,13 +1276,17 @@ func (s *GetOriginProtectionResponseBodyRegionalLatestIPWhitelistRegionalIPv4) V
 }
 
 type GetOriginProtectionResponseBodyRegionalLatestIPWhitelistRegionalIPv6 struct {
-	// The IPv6 CIDR block.
+	// IPv6 CIDR block.
 	//
 	// example:
 	//
 	// 101.66.250.0/25
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The IPv6 region.
+	// IPv6 region. Valid values:
+	//
+	// - chinese_mainland: Chinese mainland.
+	//
+	// - global_excluding_chinese_mainland: Global (excluding Chinese mainland).
 	//
 	// example:
 	//

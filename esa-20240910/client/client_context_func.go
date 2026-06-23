@@ -49,7 +49,13 @@ func (client *Client) ActivateClientCertificateWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Enable Version Management
+// Enables version management. This allows a site to support multiple configuration versions and multiple deployment environments, providing more flexible management of site traffic and configuration.
+//
+// Description:
+//
+// Prerequisites for enabling site version management:
+//
+// 1. The site plan must include the version management quota item `version_management_available`, and its value must be `true`.
 //
 // @param request - ActivateVersionManagementRequest
 //
@@ -381,17 +387,21 @@ func (client *Client) BatchDeleteKvWithContext(ctx context.Context, tmpReq *Batc
 
 // Summary:
 //
-// Batch deletes key-value pairs in the specified KV namespace based on a specified list of key names. The maximum request body size allowed is 100 MB.
+// Batch deletes key-value pairs from a specified KV namespace based on a specified list of key names. The maximum request body size is 100 MB.
 //
 // Description:
 //
-// This operation has the same functionality as [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html), but allows a larger request body. When the request body is small, we recommend that you directly use the [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html) operation to reduce server-side processing time. This operation must be called by using an SDK. Take the Golang SDK as an example. You need to use the BatchDeleteKvWithHighCapacityAdvance function to call it.
+//	Notice:
+//
+// Prerequisites for non-SDK calls: (1) You must have an OSS bucket with read and write permissions. (2) You must be able to generate a pre-signed HTTPS GET URL by using the OSS SDK or API. (3) The uploaded JSON file must use the same format as the BatchDeleteKv request body..
+//
+// This operation provides the same functionality as [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html), but allows a larger request body. If the request body is small, use the [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html) operation to reduce server-side processing time. This operation must be called by using an SDK. For example, when using the Golang SDK, call the BatchDeleteKvWithHighCapacityAdvance function.
 //
 // ```
 //
 // func TestBatchDeleteWithHighCapacity() error {
 //
-//	// Initialize configuration
+//	// Initialize the configuration
 //
 //	cfg := new(openapi.Config)
 //
@@ -407,9 +417,9 @@ func (client *Client) BatchDeleteKvWithContext(ctx context.Context, tmpReq *Batc
 //
 //	}
 //
-//	runtime := &util.RuntimeOptions{}
+//	runtime := &util.RuntimeOptions{}.
 //
-//	// Construct the request for the key-value pairs to be batch deleted
+//	// Construct the batch delete request for key-value pairs
 //
 //	namespace := "test_batch_put"
 //
@@ -433,9 +443,9 @@ func (client *Client) BatchDeleteKvWithContext(ctx context.Context, tmpReq *Batc
 //
 //		return err
 //
-//	}
+//	}.
 //
-//	// If the payload is larger than 2 MB, call the high-capacity operation to perform deletion
+//	// If the payload is larger than 2 MB, call the high-capacity operation to delete the key-value pairs
 //
 //	reqHighCapacity := BatchDeleteKvWithHighCapacityAdvanceRequest{
 //
@@ -455,7 +465,7 @@ func (client *Client) BatchDeleteKvWithContext(ctx context.Context, tmpReq *Batc
 //
 //	return nil
 //
-// }
+// }.
 //
 // @param request - BatchDeleteKvWithHighCapacityRequest
 //
@@ -631,17 +641,17 @@ func (client *Client) BatchPutKvWithContext(ctx context.Context, tmpReq *BatchPu
 
 // Summary:
 //
-// Writes key-value pairs in a batch to a specified namespace. This API supports a request body of up to 100 MB.
+// Batch sets key-value pairs in a specified KV namespace based on a specified list of key names. The maximum request body size is 100 MB.
 //
 // Description:
 //
-// This API is similar to the [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html) API but supports a larger request body. For smaller request bodies, use the [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html) API for faster server-side processing. You must use an SDK to call this API. For example, if you use the Go SDK, you must call the BatchPutKvWithHighCapacityAdvance function.
+// This operation provides the same functionality as [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html), but allows larger request bodies. If the request body is small, use the [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html) operation to reduce server-side processing time. This operation must be called by using an SDK. For example, when using the Golang SDK, call the BatchPutKvWithHighCapacityAdvance function.
 //
 // ```
 //
 // func TestBatchPutKvWithHighCapacity() error {
 //
-//	// Initialize the configuration.
+//	// Initialize the configuration
 //
 //	cfg := new(openapi.Config)
 //
@@ -657,9 +667,9 @@ func (client *Client) BatchPutKvWithContext(ctx context.Context, tmpReq *BatchPu
 //
 //	}
 //
-//	runtime := &util.RuntimeOptions{}
+//	runtime := &util.RuntimeOptions{}.
 //
-//	// Construct the request for batch-uploading key-value pairs.
+//	// Construct the key-value pairs for batch upload
 //
 //	namespace := "test_batch_put"
 //
@@ -691,7 +701,7 @@ func (client *Client) BatchPutKvWithContext(ctx context.Context, tmpReq *BatchPu
 //
 //		KvList:    kvList,
 //
-//	}
+//	}.
 //
 //	payload, err := json.Marshal(rawReq)
 //
@@ -699,9 +709,9 @@ func (client *Client) BatchPutKvWithContext(ctx context.Context, tmpReq *BatchPu
 //
 //		return err
 //
-//	}
+//	}.
 //
-//	// If the payload is larger than 2 MB, call the high-capacity API to upload it.
+//	// If the payload is larger than 2 MB, call the high-capacity operation to upload it
 //
 //	reqHighCapacity := BatchPutKvWithHighCapacityAdvanceRequest{
 //
@@ -721,9 +731,7 @@ func (client *Client) BatchPutKvWithContext(ctx context.Context, tmpReq *BatchPu
 //
 //	return nil
 //
-// }
-//
-// ```
+// }.
 //
 // @param request - BatchPutKvWithHighCapacityRequest
 //
@@ -1033,7 +1041,7 @@ func (client *Client) CheckUserProjectNameWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Submits the test (unstable) version code of an edge function (Routine) and generates a formal version.
+// Submits the test version (unstable) code of an Edge Routine and generates a production version.
 //
 // @param request - CommitRoutineStagingCodeRequest
 //
@@ -1299,7 +1307,7 @@ func (client *Client) CreateClientCertificateWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Add a compression rule for a site.
+// Creates a compression rule configuration for a site.
 //
 // @param request - CreateCompressionRuleRequest
 //
@@ -1375,13 +1383,13 @@ func (client *Client) CreateCompressionRuleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a custom hostname for a site.
+// Creates a SaaS domain name for a site.
 //
 // Description:
 //
-// - If you set the acceleration region to **Chinese mainland only*	- or **global**, your site must have an ICP filing.
+// - If the acceleration area is set to the Chinese mainland only or global, the site domain name must have a valid China Internet Content Provider (ICP) filing.
 //
-// - Each user can call this operation up to 100 times per hour.
+// - Each user can invoke this operation up to 100 times per hour.
 //
 // @param request - CreateCustomHostnameRequest
 //
@@ -1457,7 +1465,7 @@ func (client *Client) CreateCustomHostnameWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Add a custom response code configuration for a site.
+// Creates a custom response code rule for a site.
 //
 // @param request - CreateCustomResponseCodeRuleRequest
 //
@@ -1859,7 +1867,7 @@ func (client *Client) CreateEdgeContainerAppVersionWithContext(ctx context.Conte
 
 // Summary:
 //
-// Adds a configuration for modifying a site\\"s HTTP inbound request headers.
+// Creates a configuration for modifying HTTP inbound request headers for a site.
 //
 // @param tmpReq - CreateHttpIncomingRequestHeaderModificationRuleRequest
 //
@@ -1933,7 +1941,7 @@ func (client *Client) CreateHttpIncomingRequestHeaderModificationRuleWithContext
 
 // Summary:
 //
-// Creates a configuration to modify HTTP inbound response headers for a site.
+// Creates a configuration for modifying HTTP inbound response headers for a site.
 //
 // @param tmpReq - CreateHttpIncomingResponseHeaderModificationRuleRequest
 //
@@ -3665,7 +3673,7 @@ func (client *Client) CreateRoutineWithAssetsCodeVersionWithContext(ctx context.
 
 // Summary:
 //
-// Plan to batch add scheduled prefetch tasks.
+// Creates execution plans for batch scheduled prefetch tasks.
 //
 // @param tmpReq - CreateScheduledPreloadExecutionsRequest
 //
@@ -3721,7 +3729,7 @@ func (client *Client) CreateScheduledPreloadExecutionsWithContext(ctx context.Co
 
 // Summary:
 //
-// Create a scheduled prefetch task.
+// Add a scheduled prefetch task.
 //
 // @param request - CreateScheduledPreloadJobRequest
 //
@@ -4623,7 +4631,7 @@ func (client *Client) CreateWafRulesetWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Create a site waiting room.
+// Creates a waiting room for a website.
 //
 // @param tmpReq - CreateWaitingRoomRequest
 //
@@ -4737,11 +4745,11 @@ func (client *Client) CreateWaitingRoomWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Creates a waiting room event with options for queuing method and type.
+// Creates a waiting room event. You can specify the queuing method and type.
 //
 // Description:
 //
-// Your site plan must be Advanced Edition or higher to use this feature. The number of configurations for this feature cannot exceed the quota included in your site plan.
+// Your site plan must be Advanced or higher to use this feature. The number of configurations for this feature cannot exceed the quota included in your site plan.
 //
 // @param request - CreateWaitingRoomEventRequest
 //
@@ -7557,7 +7565,7 @@ func (client *Client) DescribeBotPriceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Invokes DescribeCacheReservePrice to query the query cache reserve instance price.
+// Invokes DescribeCacheReservePrice to query the price of a query cache reserve instance.
 //
 // @param request - DescribeCacheReservePriceRequest
 //
@@ -7803,6 +7811,98 @@ func (client *Client) DescribeDDoSBpsListWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDDoSBpsListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the peak bits per second (BPS) and packets per second (PPS) data of DDoS attacks at the network layer.
+//
+// @param request - DescribeDDoSBpsMaxRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDDoSBpsMaxResponse
+func (client *Client) DescribeDDoSBpsMaxWithContext(ctx context.Context, request *DescribeDDoSBpsMaxRequest, runtime *dara.RuntimeOptions) (_result *DescribeDDoSBpsMaxResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDDoSBpsMax"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDDoSBpsMaxResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the peak values of DDoS attack events within a specified time range.
+//
+// @param request - DescribeDDoSEventMaxRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDDoSEventMaxResponse
+func (client *Client) DescribeDDoSEventMaxWithContext(ctx context.Context, request *DescribeDDoSEventMaxRequest, runtime *dara.RuntimeOptions) (_result *DescribeDDoSEventMaxResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDDoSEventMax"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDDoSEventMaxResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8245,7 +8345,7 @@ func (client *Client) DescribePreloadTasksWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries purge tasks.
+// Queries the execution status of a refresh task.
 //
 // @param request - DescribePurgeTasksRequest
 //
@@ -8679,11 +8779,11 @@ func (client *Client) DescribeSiteTopDataWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Get diagnostic report details. 1. Call GenerateTraceDiagnose to obtain the diagnostic link. 2. Open the link in a browser to complete client-side diagnosis. 3. Call ListTraceTasks to obtain TaskId/TraceId. 4. Call this API to get the report.
+// Get diagnostic report details. 1. Call GenerateTraceDiagnose to obtain the diagnostic link. 2. Open the link in a browser to complete client-side diagnosis. 3. Call ListTraceTasks to obtain the TaskId/TraceId. 4. Call this API to get the report.
 //
 // Description:
 //
-//	Notice: Please ensure that the Layer 4 acceleration service is activated before using this API.1. Call GenerateTraceDiagnose to obtain the diagnostic link. 2. Open the link in a browser to complete client-side diagnosis. 3. Call ListTraceTasks to obtain TaskId/TraceId. 4. Call this API to get the report.
+//	Notice: Make sure you have activated the Layer 4 acceleration service before using this API.1. Call GenerateTraceDiagnose to obtain the diagnostic link. 2. Open the link in a browser to complete client-side diagnosis. 3. Call ListTraceTasks to obtain the TaskId/TraceId. 4. Call this API to get the report.
 //
 // @param request - DescribeTraceDiagnoseReportRequest
 //
@@ -9803,7 +9903,7 @@ func (client *Client) GetEdgeContainerAppWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the log collection configuration of a containerized application.
+// Retrieves the log collection configuration of an edge container application.
 //
 // @param request - GetEdgeContainerAppLogRiverRequest
 //
@@ -9843,7 +9943,7 @@ func (client *Client) GetEdgeContainerAppLogRiverWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the resource capacity of a containerized application at the edge.
+// # Get the resource capacity of an edge container application
 //
 // @param request - GetEdgeContainerAppResourceCapacityRequest
 //
@@ -9887,7 +9987,7 @@ func (client *Client) GetEdgeContainerAppResourceCapacityWithContext(ctx context
 
 // Summary:
 //
-// Obtain the resource reservation configuration of the edge container.
+// Retrieves the resource reservation configuration of an edge container application.
 //
 // @param request - GetEdgeContainerAppResourceReserveRequest
 //
@@ -10063,7 +10163,7 @@ func (client *Client) GetEdgeContainerAppVersionWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries regions where a containerized application is deployed based on the application ID.
+// Retrieves the deployment regions of an edge container application by application ID.
 //
 // @param request - GetEdgeContainerDeployRegionsRequest
 //
@@ -10103,7 +10203,7 @@ func (client *Client) GetEdgeContainerDeployRegionsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries Edge Container logs.
+// Retrieves log information for an edge container. You can specify the number of output lines.
 //
 // @param request - GetEdgeContainerLogsRequest
 //
@@ -10143,7 +10243,7 @@ func (client *Client) GetEdgeContainerLogsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the deployment status of an application in the staging environment by using the application ID.
+// Retrieves the staging environment deployment status of an application by application ID.
 //
 // @param request - GetEdgeContainerStagingDeployStatusRequest
 //
@@ -10183,7 +10283,7 @@ func (client *Client) GetEdgeContainerStagingDeployStatusWithContext(ctx context
 
 // Summary:
 //
-// Queries the terminal information of a containerized application.
+// Retrieves terminal information of an edge container application.
 //
 // @param request - GetEdgeContainerTerminalRequest
 //
@@ -11131,7 +11231,7 @@ func (client *Client) GetOriginPoolWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// This operation queries the origin protection settings for a site. These settings include the origin protection switch, the back-to-origin convergence switch, and whether the back-to-origin IP address whitelist requires an update. The response also includes details about the whitelist, such as the current list, the latest list, and the differences between them.
+// Queries site origin protection configurations, including the origin protection switch, the origin convergence switch, whether the origin IP whitelist needs to be updated, and detailed information about the origin IP whitelist, including the current origin IP whitelist used by the site, the latest origin IP whitelist, and the differences between them.
 //
 // @param request - GetOriginProtectionRequest
 //
@@ -11255,7 +11355,7 @@ func (client *Client) GetPageWithContext(ctx context.Context, request *GetPageRe
 
 // Summary:
 //
-// Retrieves the Collection Configuration for Data Quality.
+// Queries the data quality collection configuration.
 //
 // @param request - GetPerformanceDataCollectionRequest
 //
@@ -11299,7 +11399,7 @@ func (client *Client) GetPerformanceDataCollectionWithContext(ctx context.Contex
 
 // Summary:
 //
-// Retrieves the total and used quota for different purge types.
+// Retrieves the quota and used quota for different refresh types.
 //
 // @param request - GetPurgeQuotaRequest
 //
@@ -11643,6 +11743,60 @@ func (client *Client) GetRoutineCodeVersionWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// Queries the status and other information of a specific code version of a specified Edge Routine.
+//
+// Description:
+//
+// ## Operation description
+//
+// By calling this API operation, you can retrieve detailed information about a specific Edge Routine at a specified version, including but not limited to the version status, creation time, and whether the version contains asset resource files. You must provide the Edge Routine name and the specific code version number as request parameters.
+//
+// @param request - GetRoutineCodeVersionInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRoutineCodeVersionInfoResponse
+func (client *Client) GetRoutineCodeVersionInfoWithContext(ctx context.Context, request *GetRoutineCodeVersionInfoRequest, runtime *dara.RuntimeOptions) (_result *GetRoutineCodeVersionInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CodeVersion) {
+		body["CodeVersion"] = request.CodeVersion
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRoutineCodeVersionInfo"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRoutineCodeVersionInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves a specific edge function route configuration.
 //
 // @param request - GetRoutineRouteRequest
@@ -11745,7 +11899,7 @@ func (client *Client) GetRoutineStagingCodeUploadInfoWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries a single scheduled preload job by its task ID.
+// Queries a single scheduled prefetch task by task ID.
 //
 // @param request - GetScheduledPreloadJobRequest
 //
@@ -12305,7 +12459,7 @@ func (client *Client) GetTransportLayerApplicationWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the execution status and running information of a file upload task based on the task ID.
+// Queries the execution status and runtime information of a file upload task by task ID.
 //
 // @param request - GetUploadTaskRequest
 //
@@ -12777,7 +12931,7 @@ func (client *Client) ListCacheReserveInstancesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Lists cache configurations.
+// Queries multiple cache configurations.
 //
 // @param request - ListCacheRulesRequest
 //
@@ -13397,7 +13551,7 @@ func (client *Client) ListESAIPInfoWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// # Retrieve the list of image secrets for edge container applications
+// Retrieves the list of image secrets for an edge container application.
 //
 // @param request - ListEdgeContainerAppImageSecretsRequest
 //
@@ -14081,7 +14235,7 @@ func (client *Client) ListKeylessServersWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Lists all key-value pairs in a specified namespace.
+// Lists all key-value pairs in a specified KV storage namespace under your account.
 //
 // @param request - ListKvsRequest
 //
@@ -14789,13 +14943,13 @@ func (client *Client) ListRewriteUrlRulesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Performs a paged query to retrieve the code version information of a specified Edge Routine program.
+// Queries the code version information of a specified Edge Routine program by paging.
 //
 // Description:
 //
-// Queries the code version list of a specified Edge Routine program. This operation supports paged query and fuzzy search. You can set the Name parameter to specify the Edge Routine program name, use PageNumber and PageSize for paging control, and use SearchKeyWord for fuzzy match on code version descriptions.
+// Queries the code version list of a specified Edge Routine program. This operation supports paging and fuzzy search. You can set the Name parameter to specify the Edge Routine program name, use PageNumber and PageSize for paging control, and use SearchKeyWord for fuzzy matching against code version descriptions.
 //
-// The response includes details of each code version, such as the revision number, description, and creation time.
+// The response includes detailed information about each code version, such as the revision number, description, and creation time.
 //
 // @param request - ListRoutineCodeVersionsRequest
 //
@@ -14963,7 +15117,7 @@ func (client *Client) ListRoutineRoutesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Lists execution plans for a scheduled preload task.
+// Lists the execution plans of a specified scheduled prefetch task by task ID.
 //
 // @param request - ListScheduledPreloadExecutionsRequest
 //
@@ -15003,7 +15157,7 @@ func (client *Client) ListScheduledPreloadExecutionsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Lists scheduled prefetch jobs for a site.
+// Lists scheduled prefetch tasks for a site.
 //
 // @param request - ListScheduledPreloadJobsRequest
 //
@@ -15417,7 +15571,7 @@ func (client *Client) ListTransportLayerApplicationsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the execution status and running information of file upload tasks based on the task time and type.
+// Lists the execution status and runtime information of file upload tasks by time and type.
 //
 // @param request - ListUploadTasksRequest
 //
@@ -16325,6 +16479,50 @@ func (client *Client) ListWaitingRoomsWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Activates the edge container service.
+//
+// @param request - OpenEdgeContainerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenEdgeContainerResponse
+func (client *Client) OpenEdgeContainerWithContext(ctx context.Context, request *OpenEdgeContainerRequest, runtime *dara.RuntimeOptions) (_result *OpenEdgeContainerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OpenEdgeContainer"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OpenEdgeContainerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # OpenErService
 //
 // @param request - OpenErServiceRequest
@@ -16369,7 +16567,7 @@ func (client *Client) OpenErServiceWithContext(ctx context.Context, request *Ope
 
 // Summary:
 //
-// Prefetches cache.
+// Prefetches resources.
 //
 // @param tmpReq - PreloadCachesRequest
 //
@@ -16515,7 +16713,7 @@ func (client *Client) PublishEdgeContainerAppVersionWithContext(ctx context.Cont
 
 // Summary:
 //
-// 发布Routine某版本代码
+// Publishes a specific version of Edge Routine code to the staging or production environment. When publishing to the production environment, you can choose canary release to specific regions.
 //
 // @param request - PublishRoutineCodeVersionRequest
 //
@@ -16721,7 +16919,7 @@ func (client *Client) PurchaseRatePlanWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Purges resources cached on points of presence (POPs). You can purge the cache by file URL, directory, cache tag, hostname, or URL with specified parameters ignored, or purge all the cache.
+// Refreshes file content on nodes. Supports refreshing by file, directory, cache tag, ignored parameters, hostname, and entire site.
 //
 // @param tmpReq - PurgeCachesRequest
 //
@@ -16853,17 +17051,17 @@ func (client *Client) PutKvWithContext(ctx context.Context, request *PutKvReques
 
 // Summary:
 //
-// Set a single high-capacity key-value pair in a KV namespace. This operation supports values up to 25 MB.
+// Sets a single large-capacity key-value pair in a KV namespace. The maximum value size is 25 MB.
 //
 // Description:
 //
-// This interface provides the same functionality as [PutKv](~~PutKv~~), but supports larger request bodies. If your request body is small, use the [PutKv](~~PutKv~~) interface instead to reduce server-side processing time. Call this interface using an SDK. For example, with the Go SDK, call the PutKvWithHighCapacityAdvance function.
+// This operation provides the same functionality as [PutKv](~~PutKv~~), but allows you to upload a larger request body. If the request body is small, use the [PutKv](~~PutKv~~) operation to reduce server-side processing time. This operation must be called by using an SDK. For example, when you use the Golang SDK, call the PutKvWithHighCapacityAdvance function.
 //
 // ```
 //
 // func TestPutKvWithHighCapacity() {
 //
-//	// Configure initialization
+//	// Configuration initialization
 //
 //	cfg := new(openapi.Config)
 //
@@ -16879,9 +17077,9 @@ func (client *Client) PutKvWithContext(ctx context.Context, request *PutKvReques
 //
 //	}
 //
-//	runtime := &util.RuntimeOptions{}
+//	runtime := &util.RuntimeOptions{}.
 //
-//	// Construct the key-value pair request to be uploaded
+//	// Construct the key-value pair request to upload
 //
 //	namespace := "test-put-kv"
 //
@@ -16905,9 +17103,9 @@ func (client *Client) PutKvWithContext(ctx context.Context, request *PutKvReques
 //
 //		return err
 //
-//	}
+//	}.
 //
-//	// If the payload is larger than 2 MB, call the high-capacity interface to upload
+//	// If the payload is larger than 2 MB, call the high-capacity operation to upload it
 //
 //	reqHighCapacity := &PutKvWithHighCapacityAdvanceRequest{
 //
@@ -16917,7 +17115,7 @@ func (client *Client) PutKvWithContext(ctx context.Context, request *PutKvReques
 //
 //		UrlObject: bytes.NewReader([]byte(payload)),
 //
-//	}
+//	}.
 //
 //	resp, err := cli.PutKvWithHighCapacityAdvance(reqHighCapacity, runtime)
 //
@@ -16929,9 +17127,7 @@ func (client *Client) PutKvWithContext(ctx context.Context, request *PutKvReques
 //
 //	return nil
 //
-// }
-//
-// ```
+// }.
 //
 // @param request - PutKvWithHighCapacityRequest
 //
@@ -16983,7 +17179,7 @@ func (client *Client) PutKvWithHighCapacityWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Rebuilds the staging environment for containerized applications.
+// Rebuild the staging environment of an edge container application.
 //
 // @param request - RebuildEdgeContainerAppStagingEnvRequest
 //
@@ -17071,9 +17267,9 @@ func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// Resets the progress of a scheduled prefetch task and restarts the prefetch from the beginning.
+// Resets the progress of a scheduled preload job and restarts the preload from the beginning.
 //
-// Prerequisites: You must first create a scheduled prefetch task by calling CreateScheduledPreloadJob to obtain a valid task ID, and then pass the ID to this operation to reset the task.
+// Prerequisite: You must first create a scheduled preload job by calling CreateScheduledPreloadJob to obtain a valid job ID, and then pass it to this API for resetting.
 //
 // @param request - ResetScheduledPreloadJobRequest
 //
@@ -17869,7 +18065,7 @@ func (client *Client) SetOriginClientCertificateHostnamesWithContext(ctx context
 
 // Summary:
 //
-// Start a scheduled prefetch using a prefetch plan ID.
+// Starts a scheduled prefetch based on the prefetch plan ID.
 //
 // @param request - StartScheduledPreloadExecutionRequest
 //
@@ -17915,7 +18111,7 @@ func (client *Client) StartScheduledPreloadExecutionWithContext(ctx context.Cont
 //
 // Stops a single scheduled prefetch plan by prefetch plan ID.
 //
-// Prerequisites: (1) This operation takes effect only when the execution plan is in the running state. Execution plans in the waiting or failed state cannot be stopped. (2) Whether an execution plan can reach the running state depends on whether the site to which it belongs has passed the access verification (site Status=active).
+// Prerequisites: (1) This operation takes effect only when the execution plan is in the running state. Execution plans in the waiting or failed state cannot be stopped. (2) Whether an execution plan can reach the running state depends on whether the associated site has passed the access verification (site Status=active).
 //
 // @param request - StopScheduledPreloadExecutionRequest
 //
@@ -18827,7 +19023,7 @@ func (client *Client) UpdateDevelopmentModeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Updates the log collection configuration of a containerized application.
+// Updates the log collection configuration of an edge container application.
 //
 // @param request - UpdateEdgeContainerAppLogRiverRequest
 //
@@ -18879,7 +19075,7 @@ func (client *Client) UpdateEdgeContainerAppLogRiverWithContext(ctx context.Cont
 
 // Summary:
 //
-// Updates the resource reservation configuration of an edge container.
+// Updates the resource reservation configuration of an edge container application.
 //
 // @param tmpReq - UpdateEdgeContainerAppResourceReserveRequest
 //
@@ -20791,7 +20987,7 @@ func (client *Client) UpdateRoutineRouteWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates a scheduled preload task based on the preload plan ID.
+// Updates a scheduled prefetch plan by prefetch plan ID.
 //
 // @param request - UpdateScheduledPreloadExecutionRequest
 //
@@ -22287,13 +22483,13 @@ func (client *Client) UploadClientCaCertificateWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Uploads the file that contains resources to be purged or prefetched.
+// Uploads a refresh or prefetch file to improve access speed.
 //
 // Description:
 //
 // >
 //
-//   - The file can be up to 10 MB in size.
+// > - The maximum file size is 10 MB.
 //
 // @param request - UploadFileRequest
 //

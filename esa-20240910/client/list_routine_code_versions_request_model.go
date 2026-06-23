@@ -20,7 +20,7 @@ type iListRoutineCodeVersionsRequest interface {
 }
 
 type ListRoutineCodeVersionsRequest struct {
-	// The name of the Edge Routine program.
+	// The name of the Edge Routine.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ListRoutineCodeVersionsRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keyword for fuzzy match.
+	// The keyword for fuzzy matching.
 	//
 	// example:
 	//

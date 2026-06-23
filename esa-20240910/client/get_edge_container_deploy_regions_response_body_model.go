@@ -16,7 +16,7 @@ type iGetEdgeContainerDeployRegionsResponseBody interface {
 }
 
 type GetEdgeContainerDeployRegionsResponseBody struct {
-	// The regions.
+	// The list of regions.
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The request ID.
 	//

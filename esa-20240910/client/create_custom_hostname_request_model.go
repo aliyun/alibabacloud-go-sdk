@@ -30,41 +30,41 @@ type iCreateCustomHostnameRequest interface {
 }
 
 type CreateCustomHostnameRequest struct {
-	// The ID of the CAS certificate. This parameter is required if `CertType` is set to `cas`.
+	// The SSL Certificates Service certificate ID. This parameter is required when CertType is set to cas.
 	//
 	// example:
 	//
 	// 30000478
 	CasId *int64 `json:"CasId,omitempty" xml:"CasId,omitempty"`
-	// The region of the CAS certificate. This parameter is required if `CertType` is set to `cas`.
+	// The region of the SSL Certificates Service certificate. This parameter is required when CertType is set to cas.
 	//
-	// - For accounts on the China site, set this parameter to `cn-hangzhou`.
+	// - For Chinese site accounts, set this parameter to cn-hangzhou.
 	//
-	// - For accounts on the International site, set this parameter to `ap-southeast-1`.
+	// - For International site accounts, set this parameter to ap-southeast-1.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	CasRegion *string `json:"CasRegion,omitempty" xml:"CasRegion,omitempty"`
-	// The certificate type. This parameter is required if `SslFlag` is set to `on`. Valid values:
+	// The certificate type. This parameter is required when SslFlag is set to on. Valid values:
 	//
-	// - **free**: A free certificate.
+	// - **free**: free certificate.
 	//
-	// - **upload**: A user-uploaded certificate.
+	// - **upload**: uploaded certificate.
 	//
-	// - **cas**: A CAS certificate.
+	// - **cas**: SSL Certificates Service certificate.
 	//
 	// example:
 	//
 	// free
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The content of the certificate. This parameter is required if `CertType` is set to `upload`.
+	// The certificate content. This parameter is required when CertType is set to upload.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The custom hostname.
+	// The SaaS domain name.
 	//
 	// This parameter is required.
 	//
@@ -72,13 +72,13 @@ type CreateCustomHostnameRequest struct {
 	//
 	// custom.site.com
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The private key of the certificate. This parameter is required if `CertType` is set to `upload`.
+	// The certificate private key. This parameter is required when CertType is set to upload.
 	//
 	// example:
 	//
 	// -----BEGIN PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	// The ID of the record to bind. Call the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation to get this ID.
+	// The ID of the record to bind. You can call the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation to obtain the record ID.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreateCustomHostnameRequest struct {
 	//
 	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to get this ID.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

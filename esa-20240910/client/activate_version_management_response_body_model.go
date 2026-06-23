@@ -14,7 +14,7 @@ type iActivateVersionManagementResponseBody interface {
 }
 
 type ActivateVersionManagementResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iListUploadTasksResponseBody interface {
 }
 
 type ListUploadTasksResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The file upload tasks.
+	// The list of file upload tasks.
 	Tasks []*ListUploadTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
@@ -66,39 +66,39 @@ func (s *ListUploadTasksResponseBody) Validate() error {
 }
 
 type ListUploadTasksResponseBodyTasks struct {
-	// The time when the task was created.
+	// The creation time in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
 	// 2023-07-26T01:56:15Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error message returned when the file upload task failed.
+	// The error message returned when the file upload task fails.
 	//
 	// example:
 	//
 	// invalid url
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The error code. Multiple error codes are separated by commas (,).
+	// The error code. Multiple error codes are separated by commas. Valid values:
 	//
-	// 	- **InvalidUrl**: The URL format is incorrect.
+	// - **InvalidUrl**: The URL format is invalid.
 	//
-	// 	- **InvalidDomain**: The domain ownership fails to be verified.
+	// - **InvalidDomain**: The domain name ownership verification failed.
 	//
-	// 	- **QuotaExcess**: The quota limit has been reached.
+	// - **QuotaExcess**: The quota limit is exceeded.
 	//
-	// 	- **OtherErrors**: Other errors.
+	// - **OtherErrors**: Other errors occurred.
 	//
 	// example:
 	//
 	// InvalidUrl,InvalidDomain
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The task status.
+	// The task status. Valid values:
 	//
-	// 	- **Complete**: The task is complete.
+	// - **Complete**: The task is complete.
 	//
-	// 	- **Refreshing**: The task is in progress.
+	// - **Refreshing**: The task is in progress.
 	//
-	// 	- **Failed**: The task failed.
+	// - **Failed**: The task failed.
 	//
 	// example:
 	//
@@ -106,13 +106,13 @@ type ListUploadTasksResponseBodyTasks struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The task type. Valid values:
 	//
-	// 	- **file**: purges the cache by file URL.
+	// - **file**: URL file purge.
 	//
-	// 	- **preload**: prefetches files.
+	// - **preload**: resource prefetch.
 	//
-	// 	- **directory**: purges the cache by directory.
+	// - **directory**: directory purge.
 	//
-	// 	- **ignoreparams**: purges the cache by URL with specified parameters ignored.
+	// - **ignoreparams**: purge with parameters ignored.
 	//
 	// example:
 	//

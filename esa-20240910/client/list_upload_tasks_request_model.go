@@ -20,19 +20,25 @@ type iListUploadTasksRequest interface {
 }
 
 type ListUploadTasksRequest struct {
-	// The time when the task ends. Specify the time in the YYYY-MM-DDThh:mm:ssZ format.
+	// The end time in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
+	//
+	// 	Notice: StartTime and EndTime must be provided together to define the query time window. An error is returned if either one is missing..
 	//
 	// example:
 	//
 	// 2019-12-06T12:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can obtain this value by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// 	Notice: This parameter is required when you call the ListUploadTasks operation..
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The time when the task starts. Specify the time in the YYYY-MM-DDThh:mm:ssZ format.
+	// The start time in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
+	//
+	// 	Notice: StartTime and EndTime must be provided together to define the query time window. An error is returned if either one is missing..
 	//
 	// example:
 	//
@@ -40,13 +46,13 @@ type ListUploadTasksRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task type. Valid values:
 	//
-	// 	- **file**: purges the cache by file URL.
+	// - **file**: URL file purge.
 	//
-	// 	- **preload**: prefetches files.
+	// - **preload**: resource prefetch.
 	//
-	// 	- **directory**: purges the cache by directory.
+	// - **directory**: directory purge.
 	//
-	// 	- **ignoreparams**: purges the cache by URL with specified parameters ignored.
+	// - **ignoreparams**: purge with parameters ignored.
 	//
 	// example:
 	//

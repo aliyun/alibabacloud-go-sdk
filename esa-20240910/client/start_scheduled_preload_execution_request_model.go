@@ -14,7 +14,7 @@ type iStartScheduledPreloadExecutionRequest interface {
 }
 
 type StartScheduledPreloadExecutionRequest struct {
-	// Prefetch plan ID.
+	// The prefetch plan ID.
 	//
 	// This parameter is required.
 	//

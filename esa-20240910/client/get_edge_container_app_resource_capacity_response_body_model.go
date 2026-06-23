@@ -18,7 +18,7 @@ type iGetEdgeContainerAppResourceCapacityResponseBody interface {
 type GetEdgeContainerAppResourceCapacityResponseBody struct {
 	// The available regions.
 	Regions []*GetEdgeContainerAppResourceCapacityResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,93 +66,95 @@ func (s *GetEdgeContainerAppResourceCapacityResponseBody) Validate() error {
 }
 
 type GetEdgeContainerAppResourceCapacityResponseBodyRegions struct {
-	// The carrier. This parameter is returned only for regions in the Chinese mainland. Valid values:
+	// The following Internet service providers (ISPs) are supported. This field is not returned for regions outside the Chinese mainland.
 	//
-	// - cmcc: China Mobile
+	// ISPs:
 	//
-	// - chinanet: China Telecom
+	// - China Mobile: cmcc
 	//
-	// - unicom: China Unicom
+	// - China Telecom: chinanet
+	//
+	// - China Unicom: unicom
 	//
 	// example:
 	//
 	// unicom
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The Chinese mainland:
+	// Chinese mainland:
 	//
-	// - huadong: East China
+	// - East China: huadong
 	//
-	// - huanan: South China
+	// - South China: huanan
 	//
-	// - huazhong: Central China
+	// - Central China: huazhong
 	//
-	// - huabei: North China
+	// - North China: huabei
 	//
-	// - xibei: Northwest China
+	// - Northwest China: xibei
 	//
-	// - xinan: Southwest China
+	// - Southwest China: xinan
 	//
-	// - dongbei: Northeast China
+	// - Northeast China: dongbei
 	//
-	// Special administrative regions and regions outside the Chinese mainland:
+	// Special administrative regions and overseas:
 	//
-	// - tw: Taiwan (China)
+	// - Taiwan (China): tw
 	//
-	// - mo: Macao (China)
+	// - Macao (China): mo
 	//
-	// - hk: Hong Kong (China)
+	// - Hong Kong (China): hk
 	//
-	// - jp: Japan
+	// - Japan: jp
 	//
-	// - us: US
+	// - United States: us
 	//
-	// - th: Thailand
+	// - Thailand: th
 	//
-	// - kr: South Korea
+	// - South Korea: kr
 	//
-	// - ru: Russia
+	// - Russia: ru
 	//
-	// - sg: Singapore
+	// - Singapore: sg
 	//
-	// - fr: France
+	// - France: fr
 	//
-	// - es: Spain
+	// - Spain: es
 	//
-	// - it: Italy
+	// - Italy: it
 	//
-	// - se: Sweden
+	// - Sweden: se
 	//
-	// - ae: UAE
+	// - United Arab Emirates: ae
 	//
-	// - id: Indonesia
+	// - Indonesia: id
 	//
-	// - cl: Chile
+	// - Chile: cl
 	//
-	// - ph: Philippines
+	// - Philippines: ph
 	//
-	// - my: Malaysia
+	// - Malaysia: my
 	//
-	// - vn: Vietnam
+	// - Vietnam: vn
 	//
-	// - ar: Argentina
+	// - Argentina: ar
 	//
-	// - au: Australia
+	// - Australia: au
 	//
-	// - br: Brazil
+	// - Brazil: br
 	//
-	// - co: Colombia
+	// - Colombia: co
 	//
-	// - de: Germany
+	// - Germany: de
 	//
-	// - gb: UK
+	// - United Kingdom: gb
 	//
-	// - pe: Peru
+	// - Peru: pe
 	//
-	// - sa: Saudi Arabia
+	// - Saudi Arabia: sa
 	//
-	// - nl: Netherlands
+	// - Netherlands: nl
 	//
-	// - za: South Africa
+	// - South Africa: za
 	//
 	// example:
 	//

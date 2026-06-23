@@ -32,37 +32,37 @@ type ListCacheRulesRequest struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configuration type. You can use this parameter to retrieve the global configuration or rule configurations. Valid values:
+	// The configuration type. You can use this parameter to query global or rule configurations. Valid values:
 	//
-	// - `global`: Returns the global configuration.
+	// - global: queries global configurations.
 	//
-	// - `rule`: Returns rule configurations.
+	// - rule: queries rule configurations.
 	//
-	// This parameter is optional. If you omit this parameter, both global and rule configurations are returned.
+	// This parameter is optional. If you do not specify this parameter, both global and rule configurations are returned.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The page number. The default value is 1.
+	// The page number for a paged query. The value must be greater than or equal to 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The maximum value is 500. The default value is 500.
+	// The number of entries per page for a paged query. Valid values: 1 to 500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The rule name. This parameter is not required for a global configuration.
+	// The rule name. You do not need to set this parameter when you add a global configuration.
 	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The site ID. You can get this ID by calling the [ListSites](~~ListSites~~) API.
+	// The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type ListCacheRulesRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The site version. For a site with version management enabled, this parameter specifies the version to which the configuration applies. The default value is 0.
+	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
 	//
 	// example:
 	//

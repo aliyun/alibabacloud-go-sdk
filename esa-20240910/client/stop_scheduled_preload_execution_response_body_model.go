@@ -36,7 +36,7 @@ type StopScheduledPreloadExecutionResponseBody struct {
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The end time of the scheduled prefetch plan.
+	// The end time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type StopScheduledPreloadExecutionResponseBody struct {
 	//
 	// 66599bd7397885b43804901c
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The execution interval between batches in the scheduled prefetch plan. Unit: seconds.
+	// The interval between each batch execution of the scheduled prefetch plan, in seconds.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The prefetch task ID.
+	// The prefetch job ID.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type StopScheduledPreloadExecutionResponseBody struct {
 	//
 	// 10
 	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
-	// The start time of the scheduled prefetch plan.
+	// The start time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
