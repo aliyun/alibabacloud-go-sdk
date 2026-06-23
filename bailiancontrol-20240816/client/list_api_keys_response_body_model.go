@@ -30,17 +30,15 @@ type iListApiKeysResponseBody interface {
 }
 
 type ListApiKeysResponseBody struct {
-	// apiKey
 	ApiKeys        []*ListApiKeysResponseBodyApiKeys `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
 	Code           *string                           `json:"code,omitempty" xml:"code,omitempty"`
 	HttpStatusCode *int32                            `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	MaxResults     *int32                            `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	Message        *string                           `json:"message,omitempty" xml:"message,omitempty"`
 	NextToken      *string                           `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success    *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	TotalCount *int32  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	RequestId      *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+	TotalCount     *int32                            `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListApiKeysResponseBody) String() string {

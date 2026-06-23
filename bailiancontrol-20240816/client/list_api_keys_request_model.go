@@ -17,6 +17,10 @@ type iListApiKeysRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListApiKeysRequest
 	GetNextToken() *string
+	SetOrder(v string) *ListApiKeysRequest
+	GetOrder() *string
+	SetOrderBy(v string) *ListApiKeysRequest
+	GetOrderBy() *string
 	SetSkip(v int32) *ListApiKeysRequest
 	GetSkip() *int32
 	SetUid(v string) *ListApiKeysRequest
@@ -30,6 +34,8 @@ type ListApiKeysRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	MaxResults  *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	NextToken   *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Order       *string `json:"order,omitempty" xml:"order,omitempty"`
+	OrderBy     *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
 	Skip        *int32  `json:"skip,omitempty" xml:"skip,omitempty"`
 	Uid         *string `json:"uid,omitempty" xml:"uid,omitempty"`
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
@@ -57,6 +63,14 @@ func (s *ListApiKeysRequest) GetMaxResults() *int32 {
 
 func (s *ListApiKeysRequest) GetNextToken() *string {
 	return s.NextToken
+}
+
+func (s *ListApiKeysRequest) GetOrder() *string {
+	return s.Order
+}
+
+func (s *ListApiKeysRequest) GetOrderBy() *string {
+	return s.OrderBy
 }
 
 func (s *ListApiKeysRequest) GetSkip() *int32 {
@@ -88,6 +102,16 @@ func (s *ListApiKeysRequest) SetMaxResults(v int32) *ListApiKeysRequest {
 
 func (s *ListApiKeysRequest) SetNextToken(v string) *ListApiKeysRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListApiKeysRequest) SetOrder(v string) *ListApiKeysRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListApiKeysRequest) SetOrderBy(v string) *ListApiKeysRequest {
+	s.OrderBy = &v
 	return s
 }
 

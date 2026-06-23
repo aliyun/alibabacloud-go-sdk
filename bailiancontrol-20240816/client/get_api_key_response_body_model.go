@@ -28,9 +28,8 @@ type GetApiKeyResponseBody struct {
 	Code           *string                      `json:"code,omitempty" xml:"code,omitempty"`
 	HttpStatusCode *int32                       `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	Message        *string                      `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId      *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool                        `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetApiKeyResponseBody) String() string {

@@ -157,6 +157,14 @@ func (client *Client) ListApiKeysWithOptions(request *ListApiKeysRequest, header
 		query["nextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.Order) {
+		query["order"] = request.Order
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["orderBy"] = request.OrderBy
+	}
+
 	if !dara.IsNil(request.Skip) {
 		query["skip"] = request.Skip
 	}
