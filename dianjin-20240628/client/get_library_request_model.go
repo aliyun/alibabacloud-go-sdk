@@ -14,6 +14,8 @@ type iGetLibraryRequest interface {
 }
 
 type GetLibraryRequest struct {
+	// The document library ID.
+	//
 	// This parameter is required.
 	//
 	// example:

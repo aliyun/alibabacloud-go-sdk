@@ -28,10 +28,28 @@ type iGetTaskResultResponseBody interface {
 }
 
 type GetTaskResultResponseBody struct {
+	// The time consumed.
+	//
 	// example:
 	//
 	// null
 	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// The result of the asynchronous task.
+	//
+	// ## PDF translation task
+	//
+	// The returned file_url is a downloadable file address.
+	//
+	// ```
+	//
+	// {
+	//
+	//   "file_url": "https://finllmworks.oss-cn-zhangjiakou.aliyuncs.com/render_pdf/5336180997111160501.pdf"
+	//
+	// }
+	//
+	// ```
+	//
 	// example:
 	//
 	// {
@@ -40,26 +58,38 @@ type GetTaskResultResponseBody struct {
 	//
 	// }
 	Data map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// The data type.
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9D5D6BB5-BEAE-53C8-A70A-7275CC1F856C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The timestamp.
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34

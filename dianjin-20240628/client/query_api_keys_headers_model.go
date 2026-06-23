@@ -17,10 +17,7 @@ type iQueryApiKeysHeaders interface {
 
 type QueryApiKeysHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// example:
-	//
-	// true
-	XLoadTest *bool `json:"X-Load-Test,omitempty" xml:"X-Load-Test,omitempty"`
+	XLoadTest     *bool              `json:"X-Load-Test,omitempty" xml:"X-Load-Test,omitempty"`
 }
 
 func (s QueryApiKeysHeaders) String() string {

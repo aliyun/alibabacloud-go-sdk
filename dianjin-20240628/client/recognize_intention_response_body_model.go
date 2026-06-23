@@ -28,31 +28,46 @@ type iRecognizeIntentionResponseBody interface {
 }
 
 type RecognizeIntentionResponseBody struct {
+	// Processing time in milliseconds.
+	//
 	// example:
 	//
 	// null
-	Cost *int64                              `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Response data.
 	Data *RecognizeIntentionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Data type.
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 003D019A-1BB3-53EC-A0D2-CE76DA5D73B1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp.
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34
@@ -149,15 +164,42 @@ func (s *RecognizeIntentionResponseBody) Validate() error {
 }
 
 type RecognizeIntentionResponseBodyData struct {
-	AnalysisProcess *string `json:"analysisProcess,omitempty" xml:"analysisProcess,omitempty"`
+	// Analysis process.
+	//
 	// example:
 	//
-	// 1
-	IntentionCode      *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
-	IntentionName      *string `json:"intentionName,omitempty" xml:"intentionName,omitempty"`
-	IntentionScript    *string `json:"intentionScript,omitempty" xml:"intentionScript,omitempty"`
+	// 客户回答的内容与提供的意图列表描述均不匹配，没有表达出对账单、还款、天气或其他服务的具体需求或问题。
+	AnalysisProcess *string `json:"analysisProcess,omitempty" xml:"analysisProcess,omitempty"`
+	// Intent code.
+	//
+	// example:
+	//
+	// -1
+	IntentionCode *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	// Intent name.
+	//
+	// example:
+	//
+	// 其它
+	IntentionName *string `json:"intentionName,omitempty" xml:"intentionName,omitempty"`
+	// Intent script.
+	//
+	// example:
+	//
+	// 朱先生，理解您可能对天气感兴趣，但更重要的是您的账户情况。请让我们专注于您未偿还的款项，这对您的信用健康至关重要。
+	IntentionScript *string `json:"intentionScript,omitempty" xml:"intentionScript,omitempty"`
+	// Recommended intent.
+	//
+	// example:
+	//
+	// 客户试图回避谈论逾期还款的话题
 	RecommendIntention *string `json:"recommendIntention,omitempty" xml:"recommendIntention,omitempty"`
-	RecommendScript    *string `json:"recommendScript,omitempty" xml:"recommendScript,omitempty"`
+	// Recommended script.
+	//
+	// example:
+	//
+	// 朱先生，理解您可能对天气感兴趣，但更重要的是您的账户情况。请让我们专注于您未偿还的款项，这对您的信用健康至关重要。
+	RecommendScript *string `json:"recommendScript,omitempty" xml:"recommendScript,omitempty"`
 }
 
 func (s RecognizeIntentionResponseBodyData) String() string {

@@ -16,8 +16,12 @@ type iUpdateDocumentChunkRequest interface {
 }
 
 type UpdateDocumentChunkRequest struct {
+	// List of document chunks.
+	//
 	// This parameter is required.
 	Chunks []*UpdateDocumentChunkRequestChunks `json:"chunks,omitempty" xml:"chunks,omitempty" type:"Repeated"`
+	// Library ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -66,13 +70,21 @@ func (s *UpdateDocumentChunkRequest) Validate() error {
 }
 
 type UpdateDocumentChunkRequestChunks struct {
+	// Document chunk ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1987834755763847
 	ChunkId *string `json:"chunkId,omitempty" xml:"chunkId,omitempty"`
+	// Document chunk text.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 这是一段测试文本
 	ChunkText *string `json:"chunkText,omitempty" xml:"chunkText,omitempty"`
 }
 

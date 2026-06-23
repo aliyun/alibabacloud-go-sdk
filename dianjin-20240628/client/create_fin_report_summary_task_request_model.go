@@ -28,39 +28,58 @@ type iCreateFinReportSummaryTaskRequest interface {
 }
 
 type CreateFinReportSummaryTaskRequest struct {
+	// Document ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// Enable table
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	EnableTable *bool `json:"enableTable,omitempty" xml:"enableTable,omitempty"`
+	// End page
+	//
 	// example:
 	//
 	// 10
-	EndPage     *int32  `json:"endPage,omitempty" xml:"endPage,omitempty"`
+	EndPage *int32 `json:"endPage,omitempty" xml:"endPage,omitempty"`
+	// Instruction
+	//
+	// example:
+	//
+	// 请帮我总结一下。
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
+	// Document library ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3akzl28vap
 	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// Model ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qwen-max
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// Start page
+	//
 	// example:
 	//
 	// 1
 	StartPage *int32 `json:"startPage,omitempty" xml:"startPage,omitempty"`
+	// Task type. Optional. Defaults to finance_report. If you set this to custom, provide an instruction.
+	//
 	// example:
 	//
 	// custom

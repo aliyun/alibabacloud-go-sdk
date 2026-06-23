@@ -29,15 +29,9 @@ type ExchangeEntitlementResponseBody struct {
   Data *ExchangeEntitlementResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
   // example:
   // 
-  // success
+  // ok
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
-  // example:
-  // 
-  // false
   RetryAble *bool `json:"retryAble,omitempty" xml:"retryAble,omitempty"`
-  // example:
-  // 
-  // true
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -122,15 +116,12 @@ type ExchangeEntitlementResponseBodyData struct {
   ExpireAt *string `json:"expireAt,omitempty" xml:"expireAt,omitempty"`
   // example:
   // 
-  // a1b2c3d4e5f6...
+  // a1b2c3d4e5f6
   KeyHash *string `json:"keyHash,omitempty" xml:"keyHash,omitempty"`
   // example:
   // 
   // ORD20240101000001
   RedemptionOrderNo *string `json:"redemptionOrderNo,omitempty" xml:"redemptionOrderNo,omitempty"`
-  // example:
-  // 
-  // false
   Reused *bool `json:"reused,omitempty" xml:"reused,omitempty"`
   Template *ExchangeEntitlementResponseBodyDataTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
 }
@@ -228,7 +219,7 @@ type ExchangeEntitlementResponseBodyDataTemplate struct {
   AllowedModels []*string `json:"allowedModels,omitempty" xml:"allowedModels,omitempty" type:"Repeated"`
   // example:
   // 
-  // 1000
+  // 100000
   QuotaLimit *int64 `json:"quotaLimit,omitempty" xml:"quotaLimit,omitempty"`
   // example:
   // 

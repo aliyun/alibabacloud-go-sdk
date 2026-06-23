@@ -34,40 +34,79 @@ type iRealTimeDialogRequest interface {
 }
 
 type RealTimeDialogRequest struct {
+	// Specifies whether to perform analysis.
+	//
 	// example:
 	//
 	// false
 	Analysis *bool `json:"analysis,omitempty" xml:"analysis,omitempty"`
+	// The business type. The default value is mixIntentChat.
+	//
 	// example:
 	//
 	// mixIntentChat
 	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	// The list of conversations.
+	//
 	// This parameter is required.
 	ConversationModel []*RealTimeDialogRequestConversationModel `json:"conversationModel,omitempty" xml:"conversationModel,omitempty" type:"Repeated"`
+	// The number of historical conversation turns to include.
+	//
 	// example:
 	//
 	// 3
-	DialogMemoryTurns *int32                 `json:"dialogMemoryTurns,omitempty" xml:"dialogMemoryTurns,omitempty"`
-	MetaData          map[string]interface{} `json:"metaData,omitempty" xml:"metaData,omitempty"`
+	DialogMemoryTurns *int32 `json:"dialogMemoryTurns,omitempty" xml:"dialogMemoryTurns,omitempty"`
+	// The metadata used to encapsulate prompts.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "phoneTailNumber": "机主尾号：98X1",
+	//
+	//       "preScreeningQuota": "预审额度：3万",
+	//
+	//       "generalInterest": "平台一般利息：20.4%"
+	//
+	//     }
+	MetaData map[string]interface{} `json:"metaData,omitempty" xml:"metaData,omitempty"`
+	// The operation type. Only common and hierarchical are supported.
+	//
 	// example:
 	//
 	// common
 	OpType *string `json:"opType,omitempty" xml:"opType,omitempty"`
+	// The recommended intent.
+	//
 	// example:
 	//
 	// false
-	Recommend           *bool   `json:"recommend,omitempty" xml:"recommend,omitempty"`
+	Recommend *bool `json:"recommend,omitempty" xml:"recommend,omitempty"`
+	// The part of the previous script from the customer service representative that has been played.
+	//
+	// example:
+	//
+	// 你好，我是
 	ScriptContentPlayed *string `json:"scriptContentPlayed,omitempty" xml:"scriptContentPlayed,omitempty"`
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 237645726354
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// Specifies whether to return the response in a stream.
+	//
 	// example:
 	//
 	// false
-	Stream  *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+	// Specifies whether the user interrupted the conversation.
+	//
+	// example:
+	//
+	// true
 	UserVad *bool `json:"userVad,omitempty" xml:"userVad,omitempty"`
 }
 
@@ -192,42 +231,66 @@ func (s *RealTimeDialogRequest) Validate() error {
 }
 
 type RealTimeDialogRequestConversationModel struct {
+	// The start time of the sentence, in milliseconds, relative to the start of the session.
+	//
 	// example:
 	//
 	// 5
 	Begin *int32 `json:"begin,omitempty" xml:"begin,omitempty"`
+	// The start time of this sentence.
+	//
 	// example:
 	//
 	// 2024-11-08 09:51:16
 	BeginTime *string `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
+	// The specific content of the conversation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 人工客服
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The unique ID of the conversation role. This parameter is **required**.
+	//
 	// example:
 	//
 	// 98457834685635
 	CustomerId *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	// The ID of the customer service representative. This parameter is **required**.
+	//
 	// example:
 	//
 	// 1374683645635
 	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	// The type of the customer service representative. 0: bot, 1: human.
+	//
 	// example:
 	//
 	// 0
 	CustomerServiceType *string `json:"customerServiceType,omitempty" xml:"customerServiceType,omitempty"`
+	// The end time of the sentence, in milliseconds, relative to the start of the session.
+	//
 	// example:
 	//
 	// 10
 	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
+	// The intent code.
+	//
 	// example:
 	//
-	// 1983746378992743
+	// 198379874354
 	IntentionCode *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	// The role. 0 indicates the customer, and 1 indicates the customer service representative.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	Role *int32 `json:"role,omitempty" xml:"role,omitempty"`
+	// The type of the conversation content. Valid values: text, audio, and image.
+	//
 	// This parameter is required.
 	//
 	// example:

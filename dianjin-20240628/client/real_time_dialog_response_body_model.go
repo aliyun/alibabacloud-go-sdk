@@ -22,19 +22,28 @@ type iRealTimeDialogResponseBody interface {
 }
 
 type RealTimeDialogResponseBody struct {
+	// An array of generated content. It can contain one or more choice objects.
 	Choices []*RealTimeDialogResponseBodyChoices `json:"choices,omitempty" xml:"choices,omitempty" type:"Repeated"`
+	// The timestamp when this request was created.
+	//
 	// example:
 	//
 	// 1735139569523
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
+	// The unique identifier for this call. Each chunk object has the same ID.
+	//
 	// example:
 	//
 	// eb2b6139-ddf1-91a0-a47f-df7617ae9032
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5E3FBAF1-17AF-53B7-AF0A-CDCEEB6DE658
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -108,15 +117,21 @@ func (s *RealTimeDialogResponseBody) Validate() error {
 }
 
 type RealTimeDialogResponseBodyChoices struct {
+	// The incremental result returned for streaming responses. This is empty for non-streaming responses.
 	Delta *RealTimeDialogResponseBodyChoicesDelta `json:"delta,omitempty" xml:"delta,omitempty" type:"Struct"`
+	// The value is \\`stop\\` if the session ends. The value is \\`null\\` if the session is in progress. If \\`success\\` is \\`false\\`, this parameter returns an error message.
+	//
 	// example:
 	//
 	// stop
 	FinishReason *string `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
+	// The sequence number in the choices list.
+	//
 	// example:
 	//
 	// 0
-	Index   *int32                                    `json:"index,omitempty" xml:"index,omitempty"`
+	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
+	// The full result returned for non-streaming responses. This is empty for streaming responses.
 	Message *RealTimeDialogResponseBodyChoicesMessage `json:"message,omitempty" xml:"message,omitempty" type:"Struct"`
 }
 
@@ -179,38 +194,78 @@ func (s *RealTimeDialogResponseBodyChoices) Validate() error {
 }
 
 type RealTimeDialogResponseBodyChoicesDelta struct {
+	// The analysis process.
+	//
 	// example:
 	//
 	// null
 	AnalysisProcess *string `json:"analysisProcess,omitempty" xml:"analysisProcess,omitempty"`
-	// time
+	// The time.
 	//
 	// example:
 	//
 	// null
 	CallTime *string `json:"callTime,omitempty" xml:"callTime,omitempty"`
+	// Hangs up the dialog.
+	//
 	// example:
 	//
 	// false
 	HangUpDialog *bool `json:"hangUpDialog,omitempty" xml:"hangUpDialog,omitempty"`
+	// The intent code.
+	//
 	// example:
 	//
 	// 1853360771162058752
-	IntentionCode   *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
-	IntentionName   *string `json:"intentionName,omitempty" xml:"intentionName,omitempty"`
+	IntentionCode *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	// The intent name.
+	//
+	// example:
+	//
+	// 其他
+	IntentionName *string `json:"intentionName,omitempty" xml:"intentionName,omitempty"`
+	// The intent script.
+	//
+	// example:
+	//
+	// 抱歉，我没有明白您的意思，或者您可以拨打我们的客服热线，请客服人员为您解答。
 	IntentionScript *string `json:"intentionScript,omitempty" xml:"intentionScript,omitempty"`
-	Interrupt       *bool   `json:"interrupt,omitempty" xml:"interrupt,omitempty"`
+	// Specifies whether the conversation was interrupted.
+	//
+	// example:
+	//
+	// false
+	Interrupt *bool `json:"interrupt,omitempty" xml:"interrupt,omitempty"`
+	// The recommended intent.
+	//
 	// example:
 	//
 	// null
 	RecommendIntention *string `json:"recommendIntention,omitempty" xml:"recommendIntention,omitempty"`
+	// The recommended script.
+	//
 	// example:
 	//
 	// null
-	RecommendScript               *string `json:"recommendScript,omitempty" xml:"recommendScript,omitempty"`
-	SelfDirectedScript            *string `json:"selfDirectedScript,omitempty" xml:"selfDirectedScript,omitempty"`
+	RecommendScript *string `json:"recommendScript,omitempty" xml:"recommendScript,omitempty"`
+	// The script for the Q\\&A pair. This is incremental data.
+	//
+	// example:
+	//
+	// 话题
+	SelfDirectedScript *string `json:"selfDirectedScript,omitempty" xml:"selfDirectedScript,omitempty"`
+	// The script for the Q\\&A pair. This is the full data.
+	//
+	// example:
+	//
+	// 关于宇宙的大小，这是一个非常深奥的科学话题
 	SelfDirectedScriptFullContent *string `json:"selfDirectedScriptFullContent,omitempty" xml:"selfDirectedScriptFullContent,omitempty"`
-	SkipCurrentRecognize          *bool   `json:"skipCurrentRecognize,omitempty" xml:"skipCurrentRecognize,omitempty"`
+	// Specifies whether to skip the current recognition.
+	//
+	// example:
+	//
+	// false
+	SkipCurrentRecognize *bool `json:"skipCurrentRecognize,omitempty" xml:"skipCurrentRecognize,omitempty"`
 }
 
 func (s RealTimeDialogResponseBodyChoicesDelta) String() string {
@@ -334,41 +389,74 @@ func (s *RealTimeDialogResponseBodyChoicesDelta) Validate() error {
 }
 
 type RealTimeDialogResponseBodyChoicesMessage struct {
+	// The analysis process.
+	//
 	// example:
 	//
 	// null
 	AnalysisProcess *string `json:"analysisProcess,omitempty" xml:"analysisProcess,omitempty"`
-	// time
+	// The time.
 	//
 	// example:
 	//
 	// 1735139569523
 	CallTime *string `json:"callTime,omitempty" xml:"callTime,omitempty"`
+	// Hang up the dialog.
+	//
 	// example:
 	//
 	// false
 	HangUpDialog *bool `json:"hangUpDialog,omitempty" xml:"hangUpDialog,omitempty"`
+	// The intent code.
+	//
 	// example:
 	//
 	// 1853360771162058752
-	IntentionCode   *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
-	IntentionName   *string `json:"intentionName,omitempty" xml:"intentionName,omitempty"`
+	IntentionCode *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	// The intent name.
+	//
+	// example:
+	//
+	// 其它
+	IntentionName *string `json:"intentionName,omitempty" xml:"intentionName,omitempty"`
+	// The intent script.
+	//
+	// example:
+	//
+	// 抱歉，我没有明白您的意思，或者您可以拨打我们的客服热线，请客服人员为您解答。
 	IntentionScript *string `json:"intentionScript,omitempty" xml:"intentionScript,omitempty"`
-	Interrupt       *bool   `json:"interrupt,omitempty" xml:"interrupt,omitempty"`
+	// Specifies whether the conversation was interrupted.
+	//
+	// example:
+	//
+	// false
+	Interrupt *bool `json:"interrupt,omitempty" xml:"interrupt,omitempty"`
+	// The recommended intent.
+	//
 	// example:
 	//
 	// null
 	RecommendIntention *string `json:"recommendIntention,omitempty" xml:"recommendIntention,omitempty"`
+	// The recommended script.
+	//
 	// example:
 	//
 	// null
 	RecommendScript *string `json:"recommendScript,omitempty" xml:"recommendScript,omitempty"`
+	// The script for the Q\\&A pair. This is incremental data. This is empty for streaming responses.
+	//
 	// example:
 	//
 	// null
-	SelfDirectedScript            *string `json:"selfDirectedScript,omitempty" xml:"selfDirectedScript,omitempty"`
+	SelfDirectedScript *string `json:"selfDirectedScript,omitempty" xml:"selfDirectedScript,omitempty"`
+	// The script for the Q\\&A pair. This is the full data.
+	//
+	// example:
+	//
+	// 关于宇宙的大小，这是一个非常深奥的科学话题
 	SelfDirectedScriptFullContent *string `json:"selfDirectedScriptFullContent,omitempty" xml:"selfDirectedScriptFullContent,omitempty"`
-	SkipCurrentRecognize          *bool   `json:"skipCurrentRecognize,omitempty" xml:"skipCurrentRecognize,omitempty"`
+	// Specifies whether to skip the current recognition.
+	SkipCurrentRecognize *bool `json:"skipCurrentRecognize,omitempty" xml:"skipCurrentRecognize,omitempty"`
 }
 
 func (s RealTimeDialogResponseBodyChoicesMessage) String() string {

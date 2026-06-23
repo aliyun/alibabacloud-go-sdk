@@ -24,27 +24,38 @@ type iRunChatResultGenerationRequest interface {
 }
 
 type RunChatResultGenerationRequest struct {
+	// Hyperparameters used for inference.
+	//
 	// example:
 	//
 	// {"topP": 0.8}
 	InferenceParameters map[string]interface{} `json:"inferenceParameters,omitempty" xml:"inferenceParameters,omitempty"`
+	// Messages to input into the model.
+	//
 	// This parameter is required.
 	Messages []*RunChatResultGenerationRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+	// The model service type. Get this value from the /api/app/config API endpoint in the llmHelperTypeList field.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qwen-max
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// Session ID. Use this to mark a conversation.
+	//
 	// example:
 	//
 	// 237645726354
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// Streaming mode. Set to true for streaming responses. Set to false for full responses. Default is false.
+	//
 	// example:
 	//
 	// false
-	Stream *bool                                  `json:"stream,omitempty" xml:"stream,omitempty"`
-	Tools  []*RunChatResultGenerationRequestTools `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+	// Tool information. Specify a list of tools the model can call. When multiple tools are provided, the model selects one to generate a response.
+	Tools []*RunChatResultGenerationRequestTools `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 }
 
 func (s RunChatResultGenerationRequest) String() string {
@@ -132,7 +143,14 @@ func (s *RunChatResultGenerationRequest) Validate() error {
 }
 
 type RunChatResultGenerationRequestMessages struct {
+	// Message content.
+	//
+	// example:
+	//
+	// 你是一个信息处理专家
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Message role.
+	//
 	// example:
 	//
 	// user
@@ -170,7 +188,10 @@ func (s *RunChatResultGenerationRequestMessages) Validate() error {
 }
 
 type RunChatResultGenerationRequestTools struct {
+	// An object containing name, description, and parameters.
 	Function *RunChatResultGenerationRequestToolsFunction `json:"function,omitempty" xml:"function,omitempty" type:"Struct"`
+	// A string indicating the tool type. Currently, only "function" is supported.
+	//
 	// example:
 	//
 	// function
@@ -213,13 +234,22 @@ func (s *RunChatResultGenerationRequestTools) Validate() error {
 }
 
 type RunChatResultGenerationRequestToolsFunction struct {
+	// A string describing the tool function. This helps the model decide when and how to call it.
+	//
+	// example:
+	//
+	// 工具函数的描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// A string representing the tool function name. It must contain only letters, digits, underscores, and hyphens. Maximum length is 64 characters.
+	//
 	// example:
 	//
 	// get_time
-	Name       *string                                                `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// An object describing the tool parameters. It must be a valid JSON Schema.
 	Parameters *RunChatResultGenerationRequestToolsFunctionParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Struct"`
-	Required   []*string                                              `json:"required,omitempty" xml:"required,omitempty" type:"Repeated"`
+	// List of required parameters.
+	Required []*string `json:"required,omitempty" xml:"required,omitempty" type:"Repeated"`
 }
 
 func (s RunChatResultGenerationRequestToolsFunction) String() string {
@@ -276,6 +306,8 @@ func (s *RunChatResultGenerationRequestToolsFunction) Validate() error {
 }
 
 type RunChatResultGenerationRequestToolsFunctionParameters struct {
+	// Properties.
+	//
 	// example:
 	//
 	// {
@@ -304,6 +336,8 @@ type RunChatResultGenerationRequestToolsFunctionParameters struct {
 	//
 	//                         }
 	Properties map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
+	// Type.
+	//
 	// example:
 	//
 	// object

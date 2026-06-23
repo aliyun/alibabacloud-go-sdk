@@ -18,12 +18,18 @@ type iUpdateQaLibraryRequest interface {
 }
 
 type UpdateQaLibraryRequest struct {
+	// A list of parsed Q\\&A pair results.
+	//
 	// This parameter is required.
 	ParseQaResults []*UpdateQaLibraryRequestParseQaResults `json:"parseQaResults,omitempty" xml:"parseQaResults,omitempty" type:"Repeated"`
+	// The ID of the Q\\&A library.
+	//
 	// example:
 	//
 	// 6jh378d
 	QaLibraryId *string `json:"qaLibraryId,omitempty" xml:"qaLibraryId,omitempty"`
+	// The request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -81,9 +87,21 @@ func (s *UpdateQaLibraryRequest) Validate() error {
 }
 
 type UpdateQaLibraryRequestParseQaResults struct {
+	// The answer.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 这款**糯米大烧麦的净含量是900g。
 	Answer *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	// The question.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 这款**糯米大烧麦的净含量是多少？
 	Question *string `json:"question,omitempty" xml:"question,omitempty"`
 }
 

@@ -30,26 +30,48 @@ type iRecognizeIntentionRequest interface {
 }
 
 type RecognizeIntentionRequest struct {
+	// Enable analysis.
+	//
 	// example:
 	//
 	// false
 	Analysis *bool `json:"analysis,omitempty" xml:"analysis,omitempty"`
+	// Business type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// common
 	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	// Conversation text.
+	//
 	// This parameter is required.
-	Conversation              *string                                               `json:"conversation,omitempty" xml:"conversation,omitempty"`
-	GlobalIntentionList       []*RecognizeIntentionRequestGlobalIntentionList       `json:"globalIntentionList,omitempty" xml:"globalIntentionList,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// ##客服##：您好，请问是朱杰先生吗？这里是诚信财务的周莉。我们发现您有一项款项昨天是账单日，但您还没还款，这很可能是一个小小的疏忽。来电是提醒您尽快完成还款，避免影响您的信用记录。\\n ##客户##：今天天气怎么样呢？
+	Conversation *string `json:"conversation,omitempty" xml:"conversation,omitempty"`
+	// Global intent list. Required when opType is hierarchical.
+	GlobalIntentionList []*RecognizeIntentionRequestGlobalIntentionList `json:"globalIntentionList,omitempty" xml:"globalIntentionList,omitempty" type:"Repeated"`
+	// Hierarchical intent list. Required when opType is hierarchical.
 	HierarchicalIntentionList []*RecognizeIntentionRequestHierarchicalIntentionList `json:"hierarchicalIntentionList,omitempty" xml:"hierarchicalIntentionList,omitempty" type:"Repeated"`
-	IntentionDomainCode       *string                                               `json:"intentionDomainCode,omitempty" xml:"intentionDomainCode,omitempty"`
-	IntentionList             []*RecognizeIntentionRequestIntentionList             `json:"intentionList,omitempty" xml:"intentionList,omitempty" type:"Repeated"`
+	// Intent library: Local intent library code.
+	//
+	// example:
+	//
+	// collection
+	IntentionDomainCode *string `json:"intentionDomainCode,omitempty" xml:"intentionDomainCode,omitempty"`
+	// Intent list. Required when bizType is not attitude.
+	IntentionList []*RecognizeIntentionRequestIntentionList `json:"intentionList,omitempty" xml:"intentionList,omitempty" type:"Repeated"`
+	// Operation type.
+	//
 	// example:
 	//
 	// common
 	OpType *string `json:"opType,omitempty" xml:"opType,omitempty"`
+	// Recommend intent.
+	//
 	// example:
 	//
 	// false
@@ -177,12 +199,29 @@ func (s *RecognizeIntentionRequest) Validate() error {
 }
 
 type RecognizeIntentionRequestGlobalIntentionList struct {
+	// Intent description.
+	//
+	// example:
+	//
+	// 正常付款3
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Intention   *string `json:"intention,omitempty" xml:"intention,omitempty"`
+	// Intent name.
+	//
+	// example:
+	//
+	// 正常付款3
+	Intention *string `json:"intention,omitempty" xml:"intention,omitempty"`
+	// Intent code.
+	//
 	// example:
 	//
 	// 1810566978021232640
-	IntentionCode   *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	IntentionCode *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	// Intent script.
+	//
+	// example:
+	//
+	// 好的，那先不打扰您了，祝您生活愉快！再见！
 	IntentionScript *string `json:"intentionScript,omitempty" xml:"intentionScript,omitempty"`
 }
 
@@ -235,12 +274,29 @@ func (s *RecognizeIntentionRequestGlobalIntentionList) Validate() error {
 }
 
 type RecognizeIntentionRequestHierarchicalIntentionList struct {
+	// Intent description.
+	//
+	// example:
+	//
+	// 询问股票价格
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Intention   *string `json:"intention,omitempty" xml:"intention,omitempty"`
+	// Intent name.
+	//
+	// example:
+	//
+	// 询问股票价格
+	Intention *string `json:"intention,omitempty" xml:"intention,omitempty"`
+	// Intent code.
+	//
 	// example:
 	//
 	// 1810929291010150400
-	IntentionCode   *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	IntentionCode *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	// Intent script.
+	//
+	// example:
+	//
+	// 好的，那先不打扰您了，祝您生活愉快！再见！
 	IntentionScript *string `json:"intentionScript,omitempty" xml:"intentionScript,omitempty"`
 }
 
@@ -293,12 +349,29 @@ func (s *RecognizeIntentionRequestHierarchicalIntentionList) Validate() error {
 }
 
 type RecognizeIntentionRequestIntentionList struct {
+	// Intent description.
+	//
+	// example:
+	//
+	// 客户表示忘记还款
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Intention   *string `json:"intention,omitempty" xml:"intention,omitempty"`
+	// Intent name.
+	//
+	// example:
+	//
+	// 客户表示忘记还款
+	Intention *string `json:"intention,omitempty" xml:"intention,omitempty"`
+	// Intent code.
+	//
 	// example:
 	//
 	// 1808766224000262144
-	IntentionCode   *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	IntentionCode *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	// Intent script.
+	//
+	// example:
+	//
+	// 好的，那先不打扰您了，祝您生活愉快！再见！
 	IntentionScript *string `json:"intentionScript,omitempty" xml:"intentionScript,omitempty"`
 }
 

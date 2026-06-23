@@ -18,11 +18,11 @@ type iGetUsageRequest interface {
 type GetUsageRequest struct {
 	// example:
 	//
-	// 1001
+	// 1
 	ExternalUserId *string `json:"externalUserId,omitempty" xml:"externalUserId,omitempty"`
 	// example:
 	//
-	// R123456789
+	// 1
 	RedemptionOrderNo *string `json:"redemptionOrderNo,omitempty" xml:"redemptionOrderNo,omitempty"`
 }
 

@@ -48,63 +48,96 @@ type iRunLibraryChatGenerationRequest interface {
 }
 
 type RunLibraryChatGenerationRequest struct {
+	// A list of document IDs.
 	DocIdList []*string `json:"docIdList,omitempty" xml:"docIdList,omitempty" type:"Repeated"`
+	// Specifies whether to enable multi-turn enhancement.
+	//
 	// example:
 	//
 	// false
 	EnableFollowUp *bool `json:"enableFollowUp,omitempty" xml:"enableFollowUp,omitempty"`
+	// Specifies whether to enable query splitting.
+	//
 	// example:
 	//
 	// false
 	EnableMultiQuery *bool `json:"enableMultiQuery,omitempty" xml:"enableMultiQuery,omitempty"`
+	// Specifies whether to enable openQA.
+	//
 	// example:
 	//
 	// false
 	EnableOpenQa *bool `json:"enableOpenQa,omitempty" xml:"enableOpenQa,omitempty"`
+	// The Large Language Model (LLM) used for multi-turn query enhancement.
+	//
 	// example:
 	//
 	// qwen-max
 	FollowUpLlm *string `json:"followUpLlm,omitempty" xml:"followUpLlm,omitempty"`
+	// The ID of the document library.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3akzl28vap
 	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// The type of the LLM.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qwen-max
 	LlmType *string `json:"llmType,omitempty" xml:"llmType,omitempty"`
+	// The LLM used for query splitting.
+	//
 	// example:
 	//
 	// qwen-max
 	MultiQueryLlm *string `json:"multiQueryLlm,omitempty" xml:"multiQueryLlm,omitempty"`
+	// The query entered by the user.
+	//
 	// This parameter is required.
-	Query         *string                                       `json:"query,omitempty" xml:"query,omitempty"`
+	//
+	// example:
+	//
+	// 这两天北京气候怎么样
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The property filter.
 	QueryCriteria *RunLibraryChatGenerationRequestQueryCriteria `json:"queryCriteria,omitempty" xml:"queryCriteria,omitempty" type:"Struct"`
+	// The type of the sort policy. Valid values: \\`linear\\` and \\`model\\`. \\`linear\\`: rule-based sorting. \\`model\\`: model-based sorting (LLM).
+	//
 	// example:
 	//
 	// linear
 	RerankType *string `json:"rerankType,omitempty" xml:"rerankType,omitempty"`
-	// sessionId
+	// The session ID.
 	//
 	// example:
 	//
 	// null
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// Specifies whether to use streaming or non-streaming mode.
+	//
 	// example:
 	//
 	// false
-	Stream              *bool                                               `json:"stream,omitempty" xml:"stream,omitempty"`
-	SubQueryList        []*string                                           `json:"subQueryList,omitempty" xml:"subQueryList,omitempty" type:"Repeated"`
+	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+	// A list of subqueries.
+	SubQueryList []*string `json:"subQueryList,omitempty" xml:"subQueryList,omitempty" type:"Repeated"`
+	// Search engine parameters: text search parameters.
 	TextSearchParameter *RunLibraryChatGenerationRequestTextSearchParameter `json:"textSearchParameter,omitempty" xml:"textSearchParameter,omitempty" type:"Struct"`
+	// The final number of retrieved corpus entries.
+	//
 	// example:
 	//
 	// 1
-	TopK                  *int32                                                `json:"topK,omitempty" xml:"topK,omitempty"`
+	TopK *int32 `json:"topK,omitempty" xml:"topK,omitempty"`
+	// Search engine parameters: vector search parameters.
 	VectorSearchParameter *RunLibraryChatGenerationRequestVectorSearchParameter `json:"vectorSearchParameter,omitempty" xml:"vectorSearchParameter,omitempty" type:"Struct"`
+	// Specifies whether to return document references.
+	//
 	// example:
 	//
 	// false
@@ -301,8 +334,10 @@ func (s *RunLibraryChatGenerationRequest) Validate() error {
 }
 
 type RunLibraryChatGenerationRequestQueryCriteria struct {
+	// The \\`and\\` expression, used to filter documents or document chunks.
 	And []*RunLibraryChatGenerationRequestQueryCriteriaAnd `json:"and,omitempty" xml:"and,omitempty" type:"Repeated"`
-	Or  []*RunLibraryChatGenerationRequestQueryCriteriaOr  `json:"or,omitempty" xml:"or,omitempty" type:"Repeated"`
+	// The \\`or\\` expression, used to filter documents or document chunks.
+	Or []*RunLibraryChatGenerationRequestQueryCriteriaOr `json:"or,omitempty" xml:"or,omitempty" type:"Repeated"`
 }
 
 func (s RunLibraryChatGenerationRequestQueryCriteria) String() string {
@@ -354,19 +389,40 @@ func (s *RunLibraryChatGenerationRequestQueryCriteria) Validate() error {
 }
 
 type RunLibraryChatGenerationRequestQueryCriteriaAnd struct {
+	// The weight of the tag. A value less than 1 decreases the weight of the corresponding keyword. A value greater than 1 increases the weight.
+	//
 	// example:
 	//
 	// 0.5
 	Boost *float32 `json:"boost,omitempty" xml:"boost,omitempty"`
+	// The key of the tag.
+	//
 	// example:
 	//
 	// city
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The operator for the tag. It specifies the relationship between the metadata key\\"s stored value and your input value.
+	//
+	// - eq: Equal to.
+	//
+	// - lte: Less than or equal to.
+	//
+	// - gte: Greater than or equal to.
+	//
+	// - lt: Less than.
+	//
+	// - gt: Greater than.
+	//
 	// example:
 	//
 	// eq
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// 北京
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s RunLibraryChatGenerationRequestQueryCriteriaAnd) String() string {
@@ -418,19 +474,40 @@ func (s *RunLibraryChatGenerationRequestQueryCriteriaAnd) Validate() error {
 }
 
 type RunLibraryChatGenerationRequestQueryCriteriaOr struct {
+	// The weight of the tag. A value less than 1 decreases the weight of the corresponding keyword. A value greater than 1 increases the weight.
+	//
 	// example:
 	//
 	// 0.5
 	Boost *float32 `json:"boost,omitempty" xml:"boost,omitempty"`
+	// The key of the tag.
+	//
 	// example:
 	//
 	// city
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The operator for the tag. It specifies the relationship between the metadata key\\"s stored value and your input value.
+	//
+	// - eq: Equal to.
+	//
+	// - lte: Less than or equal to.
+	//
+	// - gte: Greater than or equal to.
+	//
+	// - lt: Less than.
+	//
+	// - gt: Greater than.
+	//
 	// example:
 	//
 	// eq
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// 北京
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s RunLibraryChatGenerationRequestQueryCriteriaOr) String() string {
@@ -482,10 +559,14 @@ func (s *RunLibraryChatGenerationRequestQueryCriteriaOr) Validate() error {
 }
 
 type RunLibraryChatGenerationRequestTextSearchParameter struct {
+	// The number of rows to return.
+	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The search tokenizer. Valid values: \\`Standard\\`, \\`IkMaxWord\\`, and \\`IkSmart\\`. Configure this parameter as needed. If left empty, the tokenizer attached to the document library is used.
+	//
 	// example:
 	//
 	// IkMaxWord
@@ -523,6 +604,8 @@ func (s *RunLibraryChatGenerationRequestTextSearchParameter) Validate() error {
 }
 
 type RunLibraryChatGenerationRequestVectorSearchParameter struct {
+	// The number of rows to return.
+	//
 	// example:
 	//
 	// 10

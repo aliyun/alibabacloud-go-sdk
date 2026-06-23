@@ -28,31 +28,54 @@ type iRunAgentRequest interface {
 }
 
 type RunAgentRequest struct {
+	// Agent ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// d6zxykawk9
 	BotId *string `json:"botId,omitempty" xml:"botId,omitempty"`
+	// Model ID. Optional. If empty, the agent uses the model from its configuration.
+	//
 	// example:
 	//
 	// qwen-plus
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// Enable streaming. Default is true.
+	//
 	// example:
 	//
 	// true
 	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+	// Thread ID. Optional. If empty, a new thread starts.
+	//
 	// example:
 	//
 	// 4vlag5ken3
 	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+	// Use the draft version. Drafts are unpublished versions in the editor. They are unstable. Default is false.
+	//
 	// example:
 	//
 	// false
 	UseDraft *bool `json:"useDraft,omitempty" xml:"useDraft,omitempty"`
+	// User input
+	//
 	// This parameter is required.
-	UserContent *string                `json:"userContent,omitempty" xml:"userContent,omitempty"`
-	UserInputs  map[string]interface{} `json:"userInputs,omitempty" xml:"userInputs,omitempty"`
+	//
+	// example:
+	//
+	// 你是谁
+	UserContent *string `json:"userContent,omitempty" xml:"userContent,omitempty"`
+	// More complex user-defined input parameters
+	//
+	// example:
+	//
+	// {"name": "zhangsan"}
+	UserInputs map[string]interface{} `json:"userInputs,omitempty" xml:"userInputs,omitempty"`
+	// Version ID to run
+	//
 	// example:
 	//
 	// w4paqoezm2

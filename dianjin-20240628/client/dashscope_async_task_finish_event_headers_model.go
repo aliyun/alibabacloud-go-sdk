@@ -17,7 +17,8 @@ type iDashscopeAsyncTaskFinishEventHeaders interface {
 
 type DashscopeAsyncTaskFinishEventHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XLoadTest     *bool              `json:"X-Load-Test,omitempty" xml:"X-Load-Test,omitempty"`
+	// Indicates whether the request is part of a stress test
+	XLoadTest *bool `json:"X-Load-Test,omitempty" xml:"X-Load-Test,omitempty"`
 }
 
 func (s DashscopeAsyncTaskFinishEventHeaders) String() string {

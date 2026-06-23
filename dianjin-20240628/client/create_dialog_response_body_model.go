@@ -28,31 +28,46 @@ type iCreateDialogResponseBody interface {
 }
 
 type CreateDialogResponseBody struct {
+	// The time consumed.
+	//
 	// example:
 	//
 	// null
-	Cost *int64                        `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// The response data.
 	Data *CreateDialogResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The data type.
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 003D019A-1BB3-53EC-A0D2-CE76DA5D73B1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The timestamp.
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
@@ -149,7 +164,14 @@ func (s *CreateDialogResponseBody) Validate() error {
 }
 
 type CreateDialogResponseBodyData struct {
+	// The opening remarks.
+	//
+	// example:
+	//
+	// 你好，我是XX客服人员。
 	OpeningRemarks *string `json:"openingRemarks,omitempty" xml:"openingRemarks,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 1728545917713234

@@ -28,34 +28,50 @@ type iUploadDocumentResponseBody interface {
 }
 
 type UploadDocumentResponseBody struct {
+	// The processing time, in milliseconds.
+	//
 	// example:
 	//
 	// null
 	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// 1782981430906818562
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The data type.
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ff3fef67-48d9-4379-a237-9ba8143fe739
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp.
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34

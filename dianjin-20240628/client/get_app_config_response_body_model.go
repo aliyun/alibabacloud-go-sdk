@@ -28,31 +28,46 @@ type iGetAppConfigResponseBody interface {
 }
 
 type GetAppConfigResponseBody struct {
+	// Time consumed
+	//
 	// example:
 	//
 	// null
-	Cost *int64                        `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Returned data
 	Data *GetAppConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Data type
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// None
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// EF4B5C9B-3BC8-5171-A47B-4C5CF3DC3258
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Is successful
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34
@@ -149,12 +164,18 @@ func (s *GetAppConfigResponseBody) Validate() error {
 }
 
 type GetAppConfigResponseBodyData struct {
-	EmbeddingTypeList         []map[string]*string `json:"embeddingTypeList,omitempty" xml:"embeddingTypeList,omitempty" type:"Repeated"`
-	FrontendConfig            map[string]*bool     `json:"frontendConfig,omitempty" xml:"frontendConfig,omitempty"`
+	// Embedding type list
+	EmbeddingTypeList []map[string]*string `json:"embeddingTypeList,omitempty" xml:"embeddingTypeList,omitempty" type:"Repeated"`
+	// Frontend configuration
+	FrontendConfig map[string]*bool `json:"frontendConfig,omitempty" xml:"frontendConfig,omitempty"`
+	// Document library status list
 	LibraryDocumentStatusList []map[string]*string `json:"libraryDocumentStatusList,omitempty" xml:"libraryDocumentStatusList,omitempty" type:"Repeated"`
-	LlmHelperTypeList         []map[string]*string `json:"llmHelperTypeList,omitempty" xml:"llmHelperTypeList,omitempty" type:"Repeated"`
-	TextIndexCategoryList     []*string            `json:"textIndexCategoryList,omitempty" xml:"textIndexCategoryList,omitempty" type:"Repeated"`
-	VectorIndexCategoryList   []*string            `json:"vectorIndexCategoryList,omitempty" xml:"vectorIndexCategoryList,omitempty" type:"Repeated"`
+	// Large Language Model (LLM) type list
+	LlmHelperTypeList []map[string]*string `json:"llmHelperTypeList,omitempty" xml:"llmHelperTypeList,omitempty" type:"Repeated"`
+	// Text index category list
+	TextIndexCategoryList []*string `json:"textIndexCategoryList,omitempty" xml:"textIndexCategoryList,omitempty" type:"Repeated"`
+	// Vector index category list
+	VectorIndexCategoryList []*string `json:"vectorIndexCategoryList,omitempty" xml:"vectorIndexCategoryList,omitempty" type:"Repeated"`
 }
 
 func (s GetAppConfigResponseBodyData) String() string {

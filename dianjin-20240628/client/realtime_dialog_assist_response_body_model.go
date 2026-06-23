@@ -28,31 +28,46 @@ type iRealtimeDialogAssistResponseBody interface {
 }
 
 type RealtimeDialogAssistResponseBody struct {
+	// Time consumed
+	//
 	// example:
 	//
 	// null
-	Cost *int64                                `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Response data
 	Data *RealtimeDialogAssistResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Data type
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID. This is the system-recorded request ID. If issues arise, provide this ID to the Model Studio DianJin R\\&D team for troubleshooting.
+	//
 	// example:
 	//
 	// 67C7021A-D268-553D-8C15-A087B9604028
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Whether successful
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34
@@ -149,18 +164,35 @@ func (s *RealtimeDialogAssistResponseBody) Validate() error {
 }
 
 type RealtimeDialogAssistResponseBodyData struct {
-	AnalysisProcess   *string                                                  `json:"analysisProcess,omitempty" xml:"analysisProcess,omitempty"`
-	AssistScripts     []*RealtimeDialogAssistResponseBodyDataAssistScripts     `json:"assistScripts,omitempty" xml:"assistScripts,omitempty" type:"Repeated"`
-	AssistSop         []*RealtimeDialogAssistResponseBodyDataAssistSop         `json:"assistSop,omitempty" xml:"assistSop,omitempty" type:"Repeated"`
+	// Analysis process
+	//
+	// example:
+	//
+	// 客户回答的内容与提供的意图列表描述均不匹配，没有表达出对账单、还款、天气或其他服务的具体需求或问题。
+	AnalysisProcess *string `json:"analysisProcess,omitempty" xml:"analysisProcess,omitempty"`
+	// List of dialog assist results
+	AssistScripts []*RealtimeDialogAssistResponseBodyDataAssistScripts `json:"assistScripts,omitempty" xml:"assistScripts,omitempty" type:"Repeated"`
+	// List of flow assist results
+	AssistSop []*RealtimeDialogAssistResponseBodyDataAssistSop `json:"assistSop,omitempty" xml:"assistSop,omitempty" type:"Repeated"`
+	// Current dialog content
 	ConversationModel []*RealtimeDialogAssistResponseBodyDataConversationModel `json:"conversationModel,omitempty" xml:"conversationModel,omitempty" type:"Repeated"`
-	Interrupt         *bool                                                    `json:"interrupt,omitempty" xml:"interrupt,omitempty"`
+	// Whether interrupted
+	//
+	// example:
+	//
+	// true
+	Interrupt *bool `json:"interrupt,omitempty" xml:"interrupt,omitempty"`
+	// Unique request ID. This request ID matches the request ID in the input parameter.
+	//
 	// example:
 	//
 	// 0FC6636E-380A-5369-AE01-D1C15BB9B254
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
-	// 1915593248420413441
+	// "1915593248420413441"
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 }
 
@@ -267,17 +299,36 @@ func (s *RealtimeDialogAssistResponseBodyData) Validate() error {
 }
 
 type RealtimeDialogAssistResponseBodyDataAssistScripts struct {
-	AssistScript *string `json:"assistScript,omitempty" xml:"assistScript,omitempty"`
+	// Recommended utterance
+	//
 	// example:
 	//
-	// 1920005488515465216
+	// 可按照SOP流程回应。
+	AssistScript *string `json:"assistScript,omitempty" xml:"assistScript,omitempty"`
+	// Intent encoding
+	//
+	// example:
+	//
+	// "1920005488515465216"
 	IntentCode *string `json:"intentCode,omitempty" xml:"intentCode,omitempty"`
+	// Intent labels
+	//
 	// example:
 	//
 	// null
 	IntentLabels *string `json:"intentLabels,omitempty" xml:"intentLabels,omitempty"`
-	IntentName   *string `json:"intentName,omitempty" xml:"intentName,omitempty"`
-	IsDefault    *bool   `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
+	// Intent name
+	//
+	// example:
+	//
+	// 礼貌问答
+	IntentName *string `json:"intentName,omitempty" xml:"intentName,omitempty"`
+	// Whether intent escaped
+	//
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
 }
 
 func (s RealtimeDialogAssistResponseBodyDataAssistScripts) String() string {
@@ -338,19 +389,30 @@ func (s *RealtimeDialogAssistResponseBodyDataAssistScripts) Validate() error {
 }
 
 type RealtimeDialogAssistResponseBodyDataAssistSop struct {
+	// Recommended flow
+	//
 	// example:
 	//
 	// XXX
 	AssistSop *string `json:"assistSop,omitempty" xml:"assistSop,omitempty"`
+	// Intent encoding
+	//
 	// example:
 	//
 	// XXX
 	IntentCode *string `json:"intentCode,omitempty" xml:"intentCode,omitempty"`
+	// Intent name
+	//
 	// example:
 	//
 	// XXX
 	IntentName *string `json:"intentName,omitempty" xml:"intentName,omitempty"`
-	IsDefault  *bool   `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
+	// Indicates whether the intent is to escape.
+	//
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
 }
 
 func (s RealtimeDialogAssistResponseBodyDataAssistSop) String() string {
@@ -402,23 +464,38 @@ func (s *RealtimeDialogAssistResponseBodyDataAssistSop) Validate() error {
 }
 
 type RealtimeDialogAssistResponseBodyDataConversationModel struct {
+	// Specific content of the dialog
+	//
+	// example:
+	//
+	// 你好
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Unique identity of the dialog role
+	//
 	// example:
 	//
-	// 98457834685635
+	// "98457834685635"
 	CustomerId *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	// Customer service ID
+	//
 	// example:
 	//
-	// 1374683645635
+	// "1374683645635"
 	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	// Agent type. 0: Robot, 1: Human.
+	//
 	// example:
 	//
-	// 0
+	// "0"
 	CustomerServiceType *string `json:"customerServiceType,omitempty" xml:"customerServiceType,omitempty"`
+	// Role. 0 indicates customer, 1 indicates agent.
+	//
 	// example:
 	//
-	// 0
+	// "0"
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// Type of dialog content
+	//
 	// example:
 	//
 	// text

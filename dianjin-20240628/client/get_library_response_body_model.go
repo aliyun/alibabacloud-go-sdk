@@ -28,31 +28,46 @@ type iGetLibraryResponseBody interface {
 }
 
 type GetLibraryResponseBody struct {
+	// Response time in milliseconds.
+	//
 	// example:
 	//
 	// null
-	Cost *int64                      `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// The response data object.
 	Data *GetLibraryResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The data type.
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Fault type
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 44BD277A-87F9-5310-8D63-3E6645F1DA85
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// UNIX timestamp
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
@@ -149,25 +164,44 @@ func (s *GetLibraryResponseBody) Validate() error {
 }
 
 type GetLibraryResponseBodyData struct {
+	// The document library description.
+	//
+	// example:
+	//
+	// 文档库的描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The number of documents in the library.
+	//
 	// example:
 	//
 	// 10
 	DocumentCount *int64 `json:"documentCount,omitempty" xml:"documentCount,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The last modification time in YYYY-MM-DD HH:MM:SS format.
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The document library ID.
+	//
 	// example:
 	//
 	// 19386728376
-	Id           *string                                 `json:"id,omitempty" xml:"id,omitempty"`
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The document library index settings.
 	IndexSetting *GetLibraryResponseBodyDataIndexSetting `json:"indexSetting,omitempty" xml:"indexSetting,omitempty" type:"Struct"`
-	LibraryName  *string                                 `json:"libraryName,omitempty" xml:"libraryName,omitempty"`
+	// The document library name.
+	//
+	// example:
+	//
+	// 测试文档库
+	LibraryName *string `json:"libraryName,omitempty" xml:"libraryName,omitempty"`
 }
 
 func (s GetLibraryResponseBodyData) String() string {
@@ -251,12 +285,23 @@ func (s *GetLibraryResponseBodyData) Validate() error {
 }
 
 type GetLibraryResponseBodyDataIndexSetting struct {
-	ChunkStrategy      *GetLibraryResponseBodyDataIndexSettingChunkStrategy      `json:"chunkStrategy,omitempty" xml:"chunkStrategy,omitempty" type:"Struct"`
-	ModelConfig        *GetLibraryResponseBodyDataIndexSettingModelConfig        `json:"modelConfig,omitempty" xml:"modelConfig,omitempty" type:"Struct"`
-	PromptRoleStyle    *string                                                   `json:"promptRoleStyle,omitempty" xml:"promptRoleStyle,omitempty"`
-	QueryEnhancer      *GetLibraryResponseBodyDataIndexSettingQueryEnhancer      `json:"queryEnhancer,omitempty" xml:"queryEnhancer,omitempty" type:"Struct"`
-	RecallStrategy     *GetLibraryResponseBodyDataIndexSettingRecallStrategy     `json:"recallStrategy,omitempty" xml:"recallStrategy,omitempty" type:"Struct"`
-	TextIndexSetting   *GetLibraryResponseBodyDataIndexSettingTextIndexSetting   `json:"textIndexSetting,omitempty" xml:"textIndexSetting,omitempty" type:"Struct"`
+	// The chunking strategy.
+	ChunkStrategy *GetLibraryResponseBodyDataIndexSettingChunkStrategy `json:"chunkStrategy,omitempty" xml:"chunkStrategy,omitempty" type:"Struct"`
+	// Model configuration.
+	ModelConfig *GetLibraryResponseBodyDataIndexSettingModelConfig `json:"modelConfig,omitempty" xml:"modelConfig,omitempty" type:"Struct"`
+	// The prompt role style.
+	//
+	// example:
+	//
+	// 你是一个信息处理专家。
+	PromptRoleStyle *string `json:"promptRoleStyle,omitempty" xml:"promptRoleStyle,omitempty"`
+	// Query enhancement settings.
+	QueryEnhancer *GetLibraryResponseBodyDataIndexSettingQueryEnhancer `json:"queryEnhancer,omitempty" xml:"queryEnhancer,omitempty" type:"Struct"`
+	// The recall strategy.
+	RecallStrategy *GetLibraryResponseBodyDataIndexSettingRecallStrategy `json:"recallStrategy,omitempty" xml:"recallStrategy,omitempty" type:"Struct"`
+	// Text index settings.
+	TextIndexSetting *GetLibraryResponseBodyDataIndexSettingTextIndexSetting `json:"textIndexSetting,omitempty" xml:"textIndexSetting,omitempty" type:"Struct"`
+	// Vector index settings.
 	VectorIndexSetting *GetLibraryResponseBodyDataIndexSettingVectorIndexSetting `json:"vectorIndexSetting,omitempty" xml:"vectorIndexSetting,omitempty" type:"Struct"`
 }
 
@@ -366,38 +411,56 @@ func (s *GetLibraryResponseBodyDataIndexSetting) Validate() error {
 }
 
 type GetLibraryResponseBodyDataIndexSettingChunkStrategy struct {
+	// Enable layout-based splitting.
+	//
 	// example:
 	//
 	// true
 	DocTreeSplit *bool `json:"docTreeSplit,omitempty" xml:"docTreeSplit,omitempty"`
+	// The layout-based splitting size.
+	//
 	// example:
 	//
 	// 160
 	DocTreeSplitSize *int32 `json:"docTreeSplitSize,omitempty" xml:"docTreeSplitSize,omitempty"`
+	// Enhance images.
+	//
 	// example:
 	//
 	// true
 	EnhanceGraph *bool `json:"enhanceGraph,omitempty" xml:"enhanceGraph,omitempty"`
+	// Enhance tables.
+	//
 	// example:
 	//
 	// true
 	EnhanceTable *bool `json:"enhanceTable,omitempty" xml:"enhanceTable,omitempty"`
+	// The overlap length between chunks.
+	//
 	// example:
 	//
 	// 40
 	Overlap *int32 `json:"overlap,omitempty" xml:"overlap,omitempty"`
+	// Split by sentence.
+	//
 	// example:
 	//
 	// true
 	SentenceSplit *bool `json:"sentenceSplit,omitempty" xml:"sentenceSplit,omitempty"`
+	// The sentence-based splitting size.
+	//
 	// example:
 	//
 	// 160
 	SentenceSplitSize *int32 `json:"sentenceSplitSize,omitempty" xml:"sentenceSplitSize,omitempty"`
+	// The chunk size.
+	//
 	// example:
 	//
 	// 256
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// Enable chunking.
+	//
 	// example:
 	//
 	// true
@@ -498,6 +561,8 @@ func (s *GetLibraryResponseBodyDataIndexSettingChunkStrategy) Validate() error {
 }
 
 type GetLibraryResponseBodyDataIndexSettingModelConfig struct {
+	// temperature
+	//
 	// example:
 	//
 	// 0.8
@@ -541,30 +606,44 @@ func (s *GetLibraryResponseBodyDataIndexSettingModelConfig) Validate() error {
 }
 
 type GetLibraryResponseBodyDataIndexSettingQueryEnhancer struct {
+	// Enable multi-turn query enhancement.
+	//
 	// example:
 	//
 	// true
 	EnableFollowUp *bool `json:"enableFollowUp,omitempty" xml:"enableFollowUp,omitempty"`
+	// Use Large Language Model (LLM) knowledge to decompose queries.
+	//
 	// example:
 	//
 	// true
 	EnableMultiQuery *bool `json:"enableMultiQuery,omitempty" xml:"enableMultiQuery,omitempty"`
+	// Use Large Language Model (LLM) knowledge to answer questions.
+	//
 	// example:
 	//
 	// true
 	EnableOpenQa *bool `json:"enableOpenQa,omitempty" xml:"enableOpenQa,omitempty"`
+	// Rewrite queries using domain-specific knowledge.
+	//
 	// example:
 	//
 	// true
 	EnableQueryRewrite *bool `json:"enableQueryRewrite,omitempty" xml:"enableQueryRewrite,omitempty"`
+	// Record session history.
+	//
 	// example:
 	//
 	// true
 	EnableSession *bool `json:"enableSession,omitempty" xml:"enableSession,omitempty"`
+	// The document library ID used for knowledge rewriting.
+	//
 	// example:
 	//
 	// 2836482634
 	LocalKnowledgeId *string `json:"localKnowledgeId,omitempty" xml:"localKnowledgeId,omitempty"`
+	// Include document references in responses.
+	//
 	// example:
 	//
 	// true
@@ -647,10 +726,14 @@ func (s *GetLibraryResponseBodyDataIndexSettingQueryEnhancer) Validate() error {
 }
 
 type GetLibraryResponseBodyDataIndexSettingRecallStrategy struct {
+	// The merge and sort policy.
+	//
 	// example:
 	//
 	// model
 	DocumentRankType *string `json:"documentRankType,omitempty" xml:"documentRankType,omitempty"`
+	// The number of results returned after merging two recall paths.
+	//
 	// example:
 	//
 	// 10
@@ -688,26 +771,38 @@ func (s *GetLibraryResponseBodyDataIndexSettingRecallStrategy) Validate() error 
 }
 
 type GetLibraryResponseBodyDataIndexSettingTextIndexSetting struct {
+	// The text index type.
+	//
 	// example:
 	//
 	// ElasticSearch
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// Enable text indexing.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The text index analyzer: Standard, IkMaxWord, or IkSmart.
+	//
 	// example:
 	//
 	// IkMaxWord
 	IndexAnalyzer *string `json:"indexAnalyzer,omitempty" xml:"indexAnalyzer,omitempty"`
+	// The ranking threshold for text indexing.
+	//
 	// example:
 	//
 	// null
 	RankThreshold *float64 `json:"rankThreshold,omitempty" xml:"rankThreshold,omitempty"`
+	// The text index search analyzer: Standard, IkMaxWord, or IkSmart.
+	//
 	// example:
 	//
 	// Standard
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty" xml:"searchAnalyzer,omitempty"`
+	// The number of final summary results from text indexing.
+	//
 	// example:
 	//
 	// 10
@@ -781,22 +876,32 @@ func (s *GetLibraryResponseBodyDataIndexSettingTextIndexSetting) Validate() erro
 }
 
 type GetLibraryResponseBodyDataIndexSettingVectorIndexSetting struct {
+	// The vector index source. We recommend ADB.
+	//
 	// example:
 	//
 	// ADB
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// The text embedding model for the vector index.
+	//
 	// example:
 	//
 	// DashScope
 	EmbeddingType *string `json:"embeddingType,omitempty" xml:"embeddingType,omitempty"`
+	// Enable vector indexing.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The ranking threshold for vector indexing.
+	//
 	// example:
 	//
 	// null
 	RankThreshold *float64 `json:"rankThreshold,omitempty" xml:"rankThreshold,omitempty"`
+	// Number of final results returned by the vector index.
+	//
 	// example:
 	//
 	// 10

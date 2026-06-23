@@ -14,6 +14,8 @@ type iGetSummaryTaskResultRequest interface {
 }
 
 type GetSummaryTaskResultRequest struct {
+	// Task ID
+	//
 	// This parameter is required.
 	//
 	// example:

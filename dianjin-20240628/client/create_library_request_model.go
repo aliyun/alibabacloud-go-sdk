@@ -18,10 +18,23 @@ type iCreateLibraryRequest interface {
 }
 
 type CreateLibraryRequest struct {
+	// Document library description
+	//
 	// This parameter is required.
-	Description  *string                           `json:"description,omitempty" xml:"description,omitempty"`
+	//
+	// example:
+	//
+	// 描述文档库的具体作用
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Index settings for the document library
 	IndexSetting *CreateLibraryRequestIndexSetting `json:"indexSetting,omitempty" xml:"indexSetting,omitempty" type:"Struct"`
+	// Document library name
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 金融知识文档库
 	LibraryName *string `json:"libraryName,omitempty" xml:"libraryName,omitempty"`
 }
 
@@ -70,12 +83,23 @@ func (s *CreateLibraryRequest) Validate() error {
 }
 
 type CreateLibraryRequestIndexSetting struct {
-	ChunkStrategy      *CreateLibraryRequestIndexSettingChunkStrategy      `json:"chunkStrategy,omitempty" xml:"chunkStrategy,omitempty" type:"Struct"`
-	ModelConfig        *CreateLibraryRequestIndexSettingModelConfig        `json:"modelConfig,omitempty" xml:"modelConfig,omitempty" type:"Struct"`
-	PromptRoleStyle    *string                                             `json:"promptRoleStyle,omitempty" xml:"promptRoleStyle,omitempty"`
-	QueryEnhancer      *CreateLibraryRequestIndexSettingQueryEnhancer      `json:"queryEnhancer,omitempty" xml:"queryEnhancer,omitempty" type:"Struct"`
-	RecallStrategy     *CreateLibraryRequestIndexSettingRecallStrategy     `json:"recallStrategy,omitempty" xml:"recallStrategy,omitempty" type:"Struct"`
-	TextIndexSetting   *CreateLibraryRequestIndexSettingTextIndexSetting   `json:"textIndexSetting,omitempty" xml:"textIndexSetting,omitempty" type:"Struct"`
+	// Chunking strategy
+	ChunkStrategy *CreateLibraryRequestIndexSettingChunkStrategy `json:"chunkStrategy,omitempty" xml:"chunkStrategy,omitempty" type:"Struct"`
+	// Model configuration
+	ModelConfig *CreateLibraryRequestIndexSettingModelConfig `json:"modelConfig,omitempty" xml:"modelConfig,omitempty" type:"Struct"`
+	// Prompt role style. Specify a role and tone to guide response quality. Examples: Document analysis expert, friendly customer service agent, professional financial analyst.
+	//
+	// example:
+	//
+	// 你是一位信息处理专家，耐心、友好、逻辑清晰。
+	PromptRoleStyle *string `json:"promptRoleStyle,omitempty" xml:"promptRoleStyle,omitempty"`
+	// Query enhancement configuration
+	QueryEnhancer *CreateLibraryRequestIndexSettingQueryEnhancer `json:"queryEnhancer,omitempty" xml:"queryEnhancer,omitempty" type:"Struct"`
+	// Retrieval strategy
+	RecallStrategy *CreateLibraryRequestIndexSettingRecallStrategy `json:"recallStrategy,omitempty" xml:"recallStrategy,omitempty" type:"Struct"`
+	// Text index configuration
+	TextIndexSetting *CreateLibraryRequestIndexSettingTextIndexSetting `json:"textIndexSetting,omitempty" xml:"textIndexSetting,omitempty" type:"Struct"`
+	// Vector index settings
 	VectorIndexSetting *CreateLibraryRequestIndexSettingVectorIndexSetting `json:"vectorIndexSetting,omitempty" xml:"vectorIndexSetting,omitempty" type:"Struct"`
 }
 
@@ -185,38 +209,56 @@ func (s *CreateLibraryRequestIndexSetting) Validate() error {
 }
 
 type CreateLibraryRequestIndexSettingChunkStrategy struct {
+	// Layout-based chunking
+	//
 	// example:
 	//
 	// true
 	DocTreeSplit *bool `json:"docTreeSplit,omitempty" xml:"docTreeSplit,omitempty"`
+	// Layout-based chunk size
+	//
 	// example:
 	//
 	// 300
 	DocTreeSplitSize *int32 `json:"docTreeSplitSize,omitempty" xml:"docTreeSplitSize,omitempty"`
+	// Parse images in documents
+	//
 	// example:
 	//
 	// true
 	EnhanceGraph *bool `json:"enhanceGraph,omitempty" xml:"enhanceGraph,omitempty"`
+	// Parse tables in documents
+	//
 	// example:
 	//
 	// true
 	EnhanceTable *bool `json:"enhanceTable,omitempty" xml:"enhanceTable,omitempty"`
+	// Chunk overlap length
+	//
 	// example:
 	//
 	// 20
 	Overlap *int32 `json:"overlap,omitempty" xml:"overlap,omitempty"`
+	// Split by sentence
+	//
 	// example:
 	//
 	// true
 	SentenceSplit *bool `json:"sentenceSplit,omitempty" xml:"sentenceSplit,omitempty"`
+	// Sentence-based chunk size
+	//
 	// example:
 	//
 	// 300
 	SentenceSplitSize *int32 `json:"sentenceSplitSize,omitempty" xml:"sentenceSplitSize,omitempty"`
+	// Chunk size
+	//
 	// example:
 	//
 	// 300
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// Enable chunking
+	//
 	// example:
 	//
 	// true
@@ -317,10 +359,16 @@ func (s *CreateLibraryRequestIndexSettingChunkStrategy) Validate() error {
 }
 
 type CreateLibraryRequestIndexSettingModelConfig struct {
+	// Control the randomness and diversity of model responses. Higher values flatten the probability distribution over candidate tokens, increasing diversity. Lower values sharpen the distribution, increasing determinism.
+	//
+	// Valid range: [0, 2). Avoid 0.
+	//
 	// example:
 	//
 	// 0.8
 	Temperature *float64 `json:"temperature,omitempty" xml:"temperature,omitempty"`
+	// Probability threshold for nucleus sampling. For example, with a value of 0.8, only the smallest set of most likely tokens whose cumulative probability is at least 0.8 is used. Higher values increase randomness. Lower values increase determinism.
+	//
 	// example:
 	//
 	// 0.8
@@ -358,30 +406,44 @@ func (s *CreateLibraryRequestIndexSettingModelConfig) Validate() error {
 }
 
 type CreateLibraryRequestIndexSettingQueryEnhancer struct {
+	// Rewrite queries using history
+	//
 	// example:
 	//
 	// true
 	EnableFollowUp *bool `json:"enableFollowUp,omitempty" xml:"enableFollowUp,omitempty"`
+	// Use Large Language Models (LLMs) to decompose queries
+	//
 	// example:
 	//
 	// true
 	EnableMultiQuery *bool `json:"enableMultiQuery,omitempty" xml:"enableMultiQuery,omitempty"`
+	// Use LLMs to answer queries
+	//
 	// example:
 	//
 	// true
 	EnableOpenQa *bool `json:"enableOpenQa,omitempty" xml:"enableOpenQa,omitempty"`
+	// Enable query rewriting
+	//
 	// example:
 	//
 	// true
 	EnableQueryRewrite *bool `json:"enableQueryRewrite,omitempty" xml:"enableQueryRewrite,omitempty"`
+	// Enable multi-turn conversations
+	//
 	// example:
 	//
 	// true
 	EnableSession *bool `json:"enableSession,omitempty" xml:"enableSession,omitempty"`
+	// Document library ID for knowledge rewriting
+	//
 	// example:
 	//
 	// xxxx
 	LocalKnowledgeId *string `json:"localKnowledgeId,omitempty" xml:"localKnowledgeId,omitempty"`
+	// Include document references in responses
+	//
 	// example:
 	//
 	// true
@@ -464,10 +526,14 @@ func (s *CreateLibraryRequestIndexSettingQueryEnhancer) Validate() error {
 }
 
 type CreateLibraryRequestIndexSettingRecallStrategy struct {
+	// Merge and sort policy
+	//
 	// example:
 	//
 	// model
 	DocumentRankType *string `json:"documentRankType,omitempty" xml:"documentRankType,omitempty"`
+	// Number of results from two-way merge and summarization
+	//
 	// example:
 	//
 	// 20
@@ -505,26 +571,38 @@ func (s *CreateLibraryRequestIndexSettingRecallStrategy) Validate() error {
 }
 
 type CreateLibraryRequestIndexSettingTextIndexSetting struct {
+	// Text index type. Only ElasticSearch is supported.
+	//
 	// example:
 	//
 	// ElasticSearch
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// Enable text indexing
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Text index analyzer: Standard, IkMaxWord, or IkSmart
+	//
 	// example:
 	//
 	// Standard
 	IndexAnalyzer *string `json:"indexAnalyzer,omitempty" xml:"indexAnalyzer,omitempty"`
+	// Text index ranking threshold
+	//
 	// example:
 	//
 	// 0.5
 	RankThreshold *float64 `json:"rankThreshold,omitempty" xml:"rankThreshold,omitempty"`
+	// Text index search analyzer: Standard, IkMaxWord, or IkSmart
+	//
 	// example:
 	//
 	// Standard
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty" xml:"searchAnalyzer,omitempty"`
+	// Number of final text index results
+	//
 	// example:
 	//
 	// 50
@@ -598,22 +676,32 @@ func (s *CreateLibraryRequestIndexSettingTextIndexSetting) Validate() error {
 }
 
 type CreateLibraryRequestIndexSettingVectorIndexSetting struct {
+	// Vector index source. Only ADB is supported.
+	//
 	// example:
 	//
 	// ADB
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// Text embedding type for vector indexing
+	//
 	// example:
 	//
 	// DashScope
 	EmbeddingType *string `json:"embeddingType,omitempty" xml:"embeddingType,omitempty"`
+	// Enable vector indexing
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Vector index ranking threshold
+	//
 	// example:
 	//
 	// 0.5
 	RankThreshold *float64 `json:"rankThreshold,omitempty" xml:"rankThreshold,omitempty"`
+	// Number of final vector index results
+	//
 	// example:
 	//
 	// 50

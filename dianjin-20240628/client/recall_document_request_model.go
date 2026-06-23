@@ -20,13 +20,26 @@ type iRecallDocumentRequest interface {
 }
 
 type RecallDocumentRequest struct {
+	// Metadata filter conditions.
 	Filters []*RecallDocumentRequestFilters `json:"filters,omitempty" xml:"filters,omitempty" type:"Repeated"`
+	// Text.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 欧洲杯历史上有哪些球队因为球员的适应新文化而受益
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// Enable parent-child document chunk retrieval.
+	//
+	// - Parent-child document chunks: During document parsing, a complete semantic block, such as a paragraph or a section, might split into multiple document chunks. This depends on your chunking strategy. When you enable parent-child document retrieval, the system attempts to complete the semantic block of the retrieved document chunk. This makes the corpus more semantically complete when constructing prompts, improving answer completeness and accuracy.
+	//
 	// example:
 	//
 	// false
 	Rearrangement *bool `json:"rearrangement,omitempty" xml:"rearrangement,omitempty"`
+	// The number of document chunks to retrieve.
+	//
 	// example:
 	//
 	// 10
@@ -91,20 +104,28 @@ func (s *RecallDocumentRequest) Validate() error {
 }
 
 type RecallDocumentRequestFilters struct {
+	// AND expression, used to filter documents/document chunks.
 	And []*RecallDocumentRequestFiltersAnd `json:"and,omitempty" xml:"and,omitempty" type:"Repeated"`
+	// Document chunk type, used to filter document chunks, such as: Text, Graph, Table, FAQ.
+	//
 	// example:
 	//
 	// Text
-	ChunkType *string   `json:"chunkType,omitempty" xml:"chunkType,omitempty"`
+	ChunkType *string `json:"chunkType,omitempty" xml:"chunkType,omitempty"`
+	// Document ID list, used to filter documents/document chunks.
 	DocIdList []*string `json:"docIdList,omitempty" xml:"docIdList,omitempty" type:"Repeated"`
+	// Document library ID, used to filter documents/document chunks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sdbjhvs
-	LibraryId *string                           `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
-	Or        []*RecallDocumentRequestFiltersOr `json:"or,omitempty" xml:"or,omitempty" type:"Repeated"`
-	Status    []*string                         `json:"status,omitempty" xml:"status,omitempty" type:"Repeated"`
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// OR expression, used to filter documents/document chunks.
+	Or []*RecallDocumentRequestFiltersOr `json:"or,omitempty" xml:"or,omitempty" type:"Repeated"`
+	// Document status list, used to filter documents.
+	Status []*string `json:"status,omitempty" xml:"status,omitempty" type:"Repeated"`
 }
 
 func (s RecallDocumentRequestFilters) String() string {
@@ -192,19 +213,42 @@ func (s *RecallDocumentRequestFilters) Validate() error {
 }
 
 type RecallDocumentRequestFiltersAnd struct {
+	// Keyword weight.
+	//
 	// example:
 	//
 	// 20
 	Boost *float32 `json:"boost,omitempty" xml:"boost,omitempty"`
+	// The key of the metadata in the document library.
+	//
 	// example:
 	//
 	// docType
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The relationship between the value stored in the document library metadata key and the value you enter.
+	//
+	// - eq: The value stored in the document library metadata key equals the value you enter.
+	//
+	// - lte: The value stored in the document library metadata key is less than or equal to the value you enter.
+	//
+	// - gte: The value stored in the document library metadata key is greater than or equal to the value you enter.
+	//
+	// - lt: The value stored in the document library metadata key is less than the value you enter.
+	//
+	// - gt: The value stored in the document library metadata key is greater than the value you enter.
+	//
+	// - contains: The list of values stored in the document library metadata key contains the value you enter.
+	//
 	// example:
 	//
 	// contains
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The value of the metadata you enter.
+	//
+	// example:
+	//
+	// 策略报告
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s RecallDocumentRequestFiltersAnd) String() string {
@@ -256,18 +300,38 @@ func (s *RecallDocumentRequestFiltersAnd) Validate() error {
 }
 
 type RecallDocumentRequestFiltersOr struct {
+	// Keyword weight.
+	//
 	// example:
 	//
 	// 30
 	Boost *float32 `json:"boost,omitempty" xml:"boost,omitempty"`
+	// The key of the metadata in the document library.
+	//
 	// example:
 	//
 	// researcher
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The relationship between the value stored in the document library metadata key and the value you enter.
+	//
+	// - eq: The value stored in the document library metadata key equals the value you enter.
+	//
+	// - lte: The value stored in the document library metadata key is less than or equal to the value you enter.
+	//
+	// - gte: The value stored in the document library metadata key is greater than or equal to the value you enter.
+	//
+	// - lt: The value stored in the document library metadata key is less than the value you enter.
+	//
+	// - gt: The value stored in the document library metadata key is greater than the value you enter.
+	//
+	// - contains: The list of values stored in the document library metadata key contains the value you enter.
+	//
 	// example:
 	//
 	// eq
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The value of the metadata you enter.
+	//
 	// example:
 	//
 	// zhangsan

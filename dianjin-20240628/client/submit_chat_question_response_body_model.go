@@ -28,31 +28,46 @@ type iSubmitChatQuestionResponseBody interface {
 }
 
 type SubmitChatQuestionResponseBody struct {
+	// Time taken
+	//
 	// example:
 	//
 	// null
-	Cost *int64                              `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Response data
 	Data *SubmitChatQuestionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Data type
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 915AAAB9-4908-5224-9E53-9E9D7D0AA94B
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34
@@ -149,6 +164,8 @@ func (s *SubmitChatQuestionResponseBody) Validate() error {
 }
 
 type SubmitChatQuestionResponseBodyData struct {
+	// Batch ID
+	//
 	// example:
 	//
 	// 1869307330227937280

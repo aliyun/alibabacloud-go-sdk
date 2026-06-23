@@ -20,18 +20,26 @@ type iDeleteLibraryResponseBody interface {
 }
 
 type DeleteLibraryResponseBody struct {
+	// Error code
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 30F6AD44-F078-540D-B5A5-1E519C8E9E6D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true

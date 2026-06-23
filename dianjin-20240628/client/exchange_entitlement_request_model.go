@@ -26,11 +26,11 @@ type ExchangeEntitlementRequest struct {
   // 
   // example:
   // 
-  // your_user_id_001
+  // 1
   ExternalUserId *string `json:"externalUserId,omitempty" xml:"externalUserId,omitempty"`
   // example:
   // 
-  // a1b2c3d4e5f6...
+  // sbyusgdfjsg
   KeyHash *string `json:"keyHash,omitempty" xml:"keyHash,omitempty"`
   // This parameter is required.
   // 
@@ -42,7 +42,7 @@ type ExchangeEntitlementRequest struct {
   // 
   // example:
   // 
-  // 10001
+  // 1
   TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
   // example:
   // 

@@ -16,12 +16,16 @@ type iGetChatQuestionRespRequest interface {
 }
 
 type GetChatQuestionRespRequest struct {
+	// Question batch ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1869307330227937280
 	BatchId *string `json:"batchId,omitempty" xml:"batchId,omitempty"`
+	// Session ID
+	//
 	// This parameter is required.
 	//
 	// example:

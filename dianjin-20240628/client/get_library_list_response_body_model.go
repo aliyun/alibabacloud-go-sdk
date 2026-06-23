@@ -28,31 +28,46 @@ type iGetLibraryListResponseBody interface {
 }
 
 type GetLibraryListResponseBody struct {
+	// Time consumed
+	//
 	// example:
 	//
 	// null
-	Cost *int64                          `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Returned data
 	Data *GetLibraryListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Data type
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 0a06dfe817156528535968405edce3
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Successful
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
@@ -149,19 +164,28 @@ func (s *GetLibraryListResponseBody) Validate() error {
 }
 
 type GetLibraryListResponseBodyData struct {
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// Number of records per page
+	//
 	// example:
 	//
 	// 10
-	PageSize *int64                                   `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Records  []*GetLibraryListResponseBodyDataRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Record list
+	Records []*GetLibraryListResponseBodyDataRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// Total pages
+	//
 	// example:
 	//
 	// 10
 	TotalPages *int64 `json:"totalPages,omitempty" xml:"totalPages,omitempty"`
+	// Total records
+	//
 	// example:
 	//
 	// 100
@@ -235,25 +259,44 @@ func (s *GetLibraryListResponseBodyData) Validate() error {
 }
 
 type GetLibraryListResponseBodyDataRecords struct {
+	// Document library description
+	//
+	// example:
+	//
+	// 文档库
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Document count
+	//
 	// example:
 	//
 	// 10
 	DocumentCount *int64 `json:"documentCount,omitempty" xml:"documentCount,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// Modification time
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// Document library ID
+	//
 	// example:
 	//
 	// 24vs4aa42jv1rg7
-	Id           *string                                            `json:"id,omitempty" xml:"id,omitempty"`
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Document library index settings
 	IndexSetting *GetLibraryListResponseBodyDataRecordsIndexSetting `json:"indexSetting,omitempty" xml:"indexSetting,omitempty" type:"Struct"`
-	LibraryName  *string                                            `json:"libraryName,omitempty" xml:"libraryName,omitempty"`
+	// Document library name
+	//
+	// example:
+	//
+	// 测试文档库
+	LibraryName *string `json:"libraryName,omitempty" xml:"libraryName,omitempty"`
 }
 
 func (s GetLibraryListResponseBodyDataRecords) String() string {
@@ -337,12 +380,23 @@ func (s *GetLibraryListResponseBodyDataRecords) Validate() error {
 }
 
 type GetLibraryListResponseBodyDataRecordsIndexSetting struct {
-	ChunkStrategy      *GetLibraryListResponseBodyDataRecordsIndexSettingChunkStrategy      `json:"chunkStrategy,omitempty" xml:"chunkStrategy,omitempty" type:"Struct"`
-	ModelConfig        *GetLibraryListResponseBodyDataRecordsIndexSettingModelConfig        `json:"modelConfig,omitempty" xml:"modelConfig,omitempty" type:"Struct"`
-	PromptRoleStyle    *string                                                              `json:"promptRoleStyle,omitempty" xml:"promptRoleStyle,omitempty"`
-	QueryEnhancer      *GetLibraryListResponseBodyDataRecordsIndexSettingQueryEnhancer      `json:"queryEnhancer,omitempty" xml:"queryEnhancer,omitempty" type:"Struct"`
-	RecallStrategy     *GetLibraryListResponseBodyDataRecordsIndexSettingRecallStrategy     `json:"recallStrategy,omitempty" xml:"recallStrategy,omitempty" type:"Struct"`
-	TextIndexSetting   *GetLibraryListResponseBodyDataRecordsIndexSettingTextIndexSetting   `json:"textIndexSetting,omitempty" xml:"textIndexSetting,omitempty" type:"Struct"`
+	// Chunking strategy
+	ChunkStrategy *GetLibraryListResponseBodyDataRecordsIndexSettingChunkStrategy `json:"chunkStrategy,omitempty" xml:"chunkStrategy,omitempty" type:"Struct"`
+	// Model Configuration
+	ModelConfig *GetLibraryListResponseBodyDataRecordsIndexSettingModelConfig `json:"modelConfig,omitempty" xml:"modelConfig,omitempty" type:"Struct"`
+	// Prompt role style
+	//
+	// example:
+	//
+	// 你是一个信息处理专家。
+	PromptRoleStyle *string `json:"promptRoleStyle,omitempty" xml:"promptRoleStyle,omitempty"`
+	// Query enhancement
+	QueryEnhancer *GetLibraryListResponseBodyDataRecordsIndexSettingQueryEnhancer `json:"queryEnhancer,omitempty" xml:"queryEnhancer,omitempty" type:"Struct"`
+	// Recall strategy
+	RecallStrategy *GetLibraryListResponseBodyDataRecordsIndexSettingRecallStrategy `json:"recallStrategy,omitempty" xml:"recallStrategy,omitempty" type:"Struct"`
+	// Text index settings
+	TextIndexSetting *GetLibraryListResponseBodyDataRecordsIndexSettingTextIndexSetting `json:"textIndexSetting,omitempty" xml:"textIndexSetting,omitempty" type:"Struct"`
+	// Vector index settings
 	VectorIndexSetting *GetLibraryListResponseBodyDataRecordsIndexSettingVectorIndexSetting `json:"vectorIndexSetting,omitempty" xml:"vectorIndexSetting,omitempty" type:"Struct"`
 }
 
@@ -452,38 +506,56 @@ func (s *GetLibraryListResponseBodyDataRecordsIndexSetting) Validate() error {
 }
 
 type GetLibraryListResponseBodyDataRecordsIndexSettingChunkStrategy struct {
+	// Layout chunking
+	//
 	// example:
 	//
 	// true
 	DocTreeSplit *bool `json:"docTreeSplit,omitempty" xml:"docTreeSplit,omitempty"`
+	// Layout chunking size
+	//
 	// example:
 	//
 	// 160
 	DocTreeSplitSize *int32 `json:"docTreeSplitSize,omitempty" xml:"docTreeSplitSize,omitempty"`
+	// Enhance images
+	//
 	// example:
 	//
 	// true
 	EnhanceGraph *bool `json:"enhanceGraph,omitempty" xml:"enhanceGraph,omitempty"`
+	// Enhance tables
+	//
 	// example:
 	//
 	// true
 	EnhanceTable *bool `json:"enhanceTable,omitempty" xml:"enhanceTable,omitempty"`
+	// Chunk overlap length
+	//
 	// example:
 	//
 	// 40
 	Overlap *int32 `json:"overlap,omitempty" xml:"overlap,omitempty"`
+	// Split by sentence
+	//
 	// example:
 	//
 	// true
 	SentenceSplit *bool `json:"sentenceSplit,omitempty" xml:"sentenceSplit,omitempty"`
+	// Split by sentence size
+	//
 	// example:
 	//
 	// 160
 	SentenceSplitSize *int32 `json:"sentenceSplitSize,omitempty" xml:"sentenceSplitSize,omitempty"`
+	// Chunk size
+	//
 	// example:
 	//
 	// 256
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// Chunking enabled
+	//
 	// example:
 	//
 	// true
@@ -584,6 +656,8 @@ func (s *GetLibraryListResponseBodyDataRecordsIndexSettingChunkStrategy) Validat
 }
 
 type GetLibraryListResponseBodyDataRecordsIndexSettingModelConfig struct {
+	// Temperature
+	//
 	// example:
 	//
 	// 0.8
@@ -627,30 +701,44 @@ func (s *GetLibraryListResponseBodyDataRecordsIndexSettingModelConfig) Validate(
 }
 
 type GetLibraryListResponseBodyDataRecordsIndexSettingQueryEnhancer struct {
+	// Multi-turn enhancement
+	//
 	// example:
 	//
 	// true
 	EnableFollowUp *bool `json:"enableFollowUp,omitempty" xml:"enableFollowUp,omitempty"`
+	// Use Large Language Model (LLM) knowledge to decompose questions
+	//
 	// example:
 	//
 	// true
 	EnableMultiQuery *bool `json:"enableMultiQuery,omitempty" xml:"enableMultiQuery,omitempty"`
+	// Use Large Language Model (LLM) knowledge to answer questions
+	//
 	// example:
 	//
 	// true
 	EnableOpenQa *bool `json:"enableOpenQa,omitempty" xml:"enableOpenQa,omitempty"`
+	// Rewrite questions based on domain knowledge
+	//
 	// example:
 	//
 	// true
 	EnableQueryRewrite *bool `json:"enableQueryRewrite,omitempty" xml:"enableQueryRewrite,omitempty"`
+	// Record session
+	//
 	// example:
 	//
 	// true
 	EnableSession *bool `json:"enableSession,omitempty" xml:"enableSession,omitempty"`
+	// Document library ID used for knowledge rewriting
+	//
 	// example:
 	//
 	// sdbcjsbc
 	LocalKnowledgeId *string `json:"localKnowledgeId,omitempty" xml:"localKnowledgeId,omitempty"`
+	// Include document reference
+	//
 	// example:
 	//
 	// true
@@ -733,10 +821,14 @@ func (s *GetLibraryListResponseBodyDataRecordsIndexSettingQueryEnhancer) Validat
 }
 
 type GetLibraryListResponseBodyDataRecordsIndexSettingRecallStrategy struct {
+	// Merge and sort policy
+	//
 	// example:
 	//
 	// model
 	DocumentRankType *string `json:"documentRankType,omitempty" xml:"documentRankType,omitempty"`
+	// Number of results from two-way merge summary
+	//
 	// example:
 	//
 	// 10
@@ -774,26 +866,38 @@ func (s *GetLibraryListResponseBodyDataRecordsIndexSettingRecallStrategy) Valida
 }
 
 type GetLibraryListResponseBodyDataRecordsIndexSettingTextIndexSetting struct {
+	// Text index type
+	//
 	// example:
 	//
 	// ElasticSearch
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// Text index enabled
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Index analyzer for text index: (Standard, IkMaxWord, IkSmart)
+	//
 	// example:
 	//
 	// Standard
 	IndexAnalyzer *string `json:"indexAnalyzer,omitempty" xml:"indexAnalyzer,omitempty"`
+	// Text index sort threshold
+	//
 	// example:
 	//
 	// null
 	RankThreshold *float64 `json:"rankThreshold,omitempty" xml:"rankThreshold,omitempty"`
+	// Search analyzer for text index: (Standard, IkMaxWord, IkSmart)
+	//
 	// example:
 	//
 	// Standard
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty" xml:"searchAnalyzer,omitempty"`
+	// Number of final summary results for text index
+	//
 	// example:
 	//
 	// 10
@@ -867,22 +971,32 @@ func (s *GetLibraryListResponseBodyDataRecordsIndexSettingTextIndexSetting) Vali
 }
 
 type GetLibraryListResponseBodyDataRecordsIndexSettingVectorIndexSetting struct {
+	// Vector index source. Recommended: ADB
+	//
 	// example:
 	//
 	// ADB
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// Vector index text embedding model
+	//
 	// example:
 	//
 	// DashScope
 	EmbeddingType *string `json:"embeddingType,omitempty" xml:"embeddingType,omitempty"`
+	// Enabled
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Vector index sort threshold
+	//
 	// example:
 	//
 	// null
 	RankThreshold *float64 `json:"rankThreshold,omitempty" xml:"rankThreshold,omitempty"`
+	// Number of final summary results for vector index
+	//
 	// example:
 	//
 	// 10

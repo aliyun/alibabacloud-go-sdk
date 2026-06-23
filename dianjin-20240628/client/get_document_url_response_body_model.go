@@ -28,34 +28,50 @@ type iGetDocumentUrlResponseBody interface {
 }
 
 type GetDocumentUrlResponseBody struct {
+	// The time spent, in milliseconds.
+	//
 	// example:
 	//
 	// null
 	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// The download URL for the document. The URL expires in 1 hour.
+	//
 	// example:
 	//
 	// https://path_to_file
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The data type.
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 66249B43-8C2B-5EE7-AE78-B382306621C6
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The UNIX timestamp.
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00

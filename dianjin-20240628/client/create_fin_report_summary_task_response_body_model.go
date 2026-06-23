@@ -28,34 +28,50 @@ type iCreateFinReportSummaryTaskResponseBody interface {
 }
 
 type CreateFinReportSummaryTaskResponseBody struct {
+	// Time taken
+	//
 	// example:
 	//
 	// null
 	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Response data, task ID. Use this ID to query the task status and results later.
+	//
 	// example:
 	//
 	// 3284627354
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// Data type
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 5E3FBAF1-17AF-53B7-AF0A-CDCEEB6DE658
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Success
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34

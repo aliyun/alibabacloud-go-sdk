@@ -14,6 +14,8 @@ type iEvictTaskRequest interface {
 }
 
 type EvictTaskRequest struct {
+  // The task ID.
+  // 
   // This parameter is required.
   // 
   // example:

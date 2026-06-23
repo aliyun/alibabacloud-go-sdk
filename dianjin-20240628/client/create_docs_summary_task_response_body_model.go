@@ -28,34 +28,50 @@ type iCreateDocsSummaryTaskResponseBody interface {
 }
 
 type CreateDocsSummaryTaskResponseBody struct {
+	// Processing time, in milliseconds
+	//
 	// example:
 	//
 	// null
 	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Response data. Task ID.
+	//
 	// example:
 	//
 	// 765675376
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// Data type
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 32FFC91D-0A9F-585A-B84F-8A54C5187035
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00

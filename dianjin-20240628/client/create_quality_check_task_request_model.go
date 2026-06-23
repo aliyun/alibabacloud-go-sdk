@@ -26,23 +26,38 @@ type iCreateQualityCheckTaskRequest interface {
 }
 
 type CreateQualityCheckTaskRequest struct {
+	// The conversation content. If associated with a quality check scenario, pass multiple conversations. Otherwise, pass only one.
+	//
 	// This parameter is required.
 	ConversationList *CreateQualityCheckTaskRequestConversationList `json:"conversationList,omitempty" xml:"conversationList,omitempty" type:"Struct"`
+	// The business occurrence time. The system uses this to record submission time, make task scheduling priority decisions, and so on.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-09-27 11:23:20
-	GmtService   *string            `json:"gmtService,omitempty" xml:"gmtService,omitempty"`
-	MetaData     map[string]*string `json:"metaData,omitempty" xml:"metaData,omitempty"`
-	QualityGroup []*string          `json:"qualityGroup,omitempty" xml:"qualityGroup,omitempty" type:"Repeated"`
+	GmtService *string `json:"gmtService,omitempty" xml:"gmtService,omitempty"`
+	// The metadata. These are properties related to business that rules consume during execution. The business system passes these in real-time when initiating a quality check.
+	MetaData map[string]*string `json:"metaData,omitempty" xml:"metaData,omitempty"`
+	// The quality check rule group.
+	QualityGroup []*string `json:"qualityGroup,omitempty" xml:"qualityGroup,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0FC6636E-380A-5369-AE01-D1C15BB9B254
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The scenario code.
+	//
+	// example:
+	//
+	// o9c8u8
 	SceneCode *string `json:"sceneCode,omitempty" xml:"sceneCode,omitempty"`
+	// Quality check type:
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -132,22 +147,42 @@ func (s *CreateQualityCheckTaskRequest) Validate() error {
 }
 
 type CreateQualityCheckTaskRequestConversationList struct {
+	// Call type:
+	//
 	// example:
 	//
 	// 1
 	CallType *string `json:"callType,omitempty" xml:"callType,omitempty"`
+	// The Customer ID.
+	//
 	// example:
 	//
 	// 1
-	CustomerId   *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	CustomerId *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	// The customer name.
+	//
+	// example:
+	//
+	// 张三
 	CustomerName *string `json:"customerName,omitempty" xml:"customerName,omitempty"`
+	// The customer service ID.
+	//
 	// example:
 	//
 	// xxx
-	CustomerServiceId   *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	// The customer service name.
+	//
+	// example:
+	//
+	// 李四
 	CustomerServiceName *string `json:"customerServiceName,omitempty" xml:"customerServiceName,omitempty"`
+	// The list of dialogue details.
+	//
 	// This parameter is required.
 	DialogueList []*CreateQualityCheckTaskRequestConversationListDialogueList `json:"dialogueList,omitempty" xml:"dialogueList,omitempty" type:"Repeated"`
+	// The conversation time.
+	//
 	// example:
 	//
 	// 2024-09-27 11:23:20
@@ -239,38 +274,60 @@ func (s *CreateQualityCheckTaskRequestConversationList) Validate() error {
 }
 
 type CreateQualityCheckTaskRequestConversationListDialogueList struct {
+	// The start time of this sentence. This is the offset time in milliseconds from the start of the conversation.
+	//
 	// example:
 	//
 	// 0
 	Begin *int32 `json:"begin,omitempty" xml:"begin,omitempty"`
+	// The start time of this sentence.
+	//
 	// example:
 	//
 	// 2024-05-23 14:57:50
 	BeginTime *string `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
+	// The specific content of the dialogue.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 您好，我是2001，很高兴为您服务！
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The unique identifier of the dialogue role.
+	//
 	// example:
 	//
 	// 2348234
 	CustomerId *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	// The customer service ID.
+	//
 	// example:
 	//
 	// 23874627346
 	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	// Agent type:
+	//
 	// example:
 	//
 	// 0
 	CustomerServiceType *string `json:"customerServiceType,omitempty" xml:"customerServiceType,omitempty"`
+	// The end time of this sentence. This is the offset time in milliseconds from the start of the conversation.
+	//
 	// example:
 	//
 	// 0
 	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
+	// Role:
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// Dialogue content type:
+	//
 	// This parameter is required.
 	//
 	// example:

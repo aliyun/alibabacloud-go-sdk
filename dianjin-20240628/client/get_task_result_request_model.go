@@ -14,6 +14,8 @@ type iGetTaskResultRequest interface {
 }
 
 type GetTaskResultRequest struct {
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

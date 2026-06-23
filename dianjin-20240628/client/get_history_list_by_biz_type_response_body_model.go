@@ -28,31 +28,46 @@ type iGetHistoryListByBizTypeResponseBody interface {
 }
 
 type GetHistoryListByBizTypeResponseBody struct {
+	// Response time in milliseconds
+	//
 	// example:
 	//
 	// null
-	Cost *int64                                   `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Response data
 	Data *GetHistoryListByBizTypeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Data type
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 9DF9B3F3-9FFE-52CB-A8DC-F7BD5F842F0E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
@@ -149,19 +164,28 @@ func (s *GetHistoryListByBizTypeResponseBody) Validate() error {
 }
 
 type GetHistoryListByBizTypeResponseBodyData struct {
+	// Current page number
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// Number of records per page
+	//
 	// example:
 	//
 	// 10
-	PageSize *int64                                            `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Records  []*GetHistoryListByBizTypeResponseBodyDataRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Records
+	Records []*GetHistoryListByBizTypeResponseBodyDataRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// Total number of pages
+	//
 	// example:
 	//
 	// 10
 	TotalPages *int64 `json:"totalPages,omitempty" xml:"totalPages,omitempty"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 100
@@ -235,40 +259,71 @@ func (s *GetHistoryListByBizTypeResponseBodyData) Validate() error {
 }
 
 type GetHistoryListByBizTypeResponseBodyDataRecords struct {
+	// Business ID
+	//
 	// example:
 	//
 	// GysYBsxx
 	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	// Business type
+	//
 	// example:
 	//
 	// LibraryChat
 	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	// Extension information
+	//
 	// example:
 	//
 	// null
 	ExtraMessage interface{} `json:"extraMessage,omitempty" xml:"extraMessage,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// Last modified time
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// History record ID
+	//
 	// example:
 	//
 	// 210
-	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// Large Language Model (LLM) response
+	//
+	// example:
+	//
+	// 你好。
 	LlmAnswer *string `json:"llmAnswer,omitempty" xml:"llmAnswer,omitempty"`
+	// Prompt for the Large Language Model (LLM)
+	//
+	// example:
+	//
+	// 请使用以下上下文来回答最后的问题。\\n以下是上下文内容：
 	LlmPrompt *string `json:"llmPrompt,omitempty" xml:"llmPrompt,omitempty"`
+	// Large Language Model (LLM) type
+	//
 	// example:
 	//
 	// qwen-max
 	LlmType *string `json:"llmType,omitempty" xml:"llmType,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// null
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// User query
+	//
+	// example:
+	//
+	// 你是谁
 	UserQuery *string `json:"userQuery,omitempty" xml:"userQuery,omitempty"`
 }
 

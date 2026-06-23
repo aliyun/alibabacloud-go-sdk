@@ -18,19 +18,28 @@ type iGetParseResultRequest interface {
 }
 
 type GetParseResultRequest struct {
+	// The document ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 873648346573245
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// The document library ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sjdgdsfg
-	LibraryId    *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
-	UseUrlResult *bool   `json:"useUrlResult,omitempty" xml:"useUrlResult,omitempty"`
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// Specifies whether to return the result as a URL. If true, the parsing result is in resultUrl, and result is empty. If false, the parsing result is in result, and resultUrl is empty.
+	//
+	// example:
+	//
+	// false
+	UseUrlResult *bool `json:"useUrlResult,omitempty" xml:"useUrlResult,omitempty"`
 }
 
 func (s GetParseResultRequest) String() string {

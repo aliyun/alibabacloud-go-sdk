@@ -28,14 +28,66 @@ type iGetTaskStatusResponseBody interface {
 }
 
 type GetTaskStatusResponseBody struct {
-	Cost      *int64  `json:"cost,omitempty" xml:"cost,omitempty"`
-	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
-	DataType  *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
-	ErrCode   *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Execution time, in milliseconds
+	//
+	// example:
+	//
+	// null
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Response data. The current status of the task.
+	//
+	// - invalid: Parameters or dependent resources are unavailable.
+	//
+	// - success: The task completed successfully.
+	//
+	// - evict: The task was canceled.
+	//
+	// - error: The task failed.
+	//
+	// - running: The task is running.
+	//
+	// - pending: The task is queued.
+	//
+	// example:
+	//
+	// running
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// Data type
+	//
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code
+	//
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message
+	//
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// 30F6AD44-F078-540D-B5A5-1E519C8E9E6D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	Time      *string `json:"time,omitempty" xml:"time,omitempty"`
+	// Indicates whether the request succeeded
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp
+	//
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 }
 
 func (s GetTaskStatusResponseBody) String() string {

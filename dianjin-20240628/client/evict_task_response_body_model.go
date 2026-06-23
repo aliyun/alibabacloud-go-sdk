@@ -28,31 +28,50 @@ type iEvictTaskResponseBody interface {
 }
 
 type EvictTaskResponseBody struct {
+  // The time consumed.
+  // 
   // example:
   // 
   // null
   Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+  // The response data, which is the task ID.
+  // 
   // example:
   // 
   // 17071319
   Data *string `json:"data,omitempty" xml:"data,omitempty"`
+  // The data type.
+  // 
   // example:
   // 
   // null
   DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+  // The error code.
+  // 
   // example:
   // 
   // 0
   ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+  // The error message.
+  // 
+  // example:
+  // 
+  // 返回任务取消的结果，成功/失败。
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // 44BD277A-87F9-5310-8D63-3E6645F1DA85
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+  // The timestamp.
+  // 
   // example:
   // 
   // 2024-04-24 11:54:34

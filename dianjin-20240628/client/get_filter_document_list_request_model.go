@@ -26,24 +26,50 @@ type iGetFilterDocumentListRequest interface {
 }
 
 type GetFilterDocumentListRequest struct {
-	And       []*GetFilterDocumentListRequestAnd `json:"and,omitempty" xml:"and,omitempty" type:"Repeated"`
-	DocIdList []*string                          `json:"docIdList,omitempty" xml:"docIdList,omitempty" type:"Repeated"`
+	// AND expression to filter documents or document chunks.
+	And []*GetFilterDocumentListRequestAnd `json:"and,omitempty" xml:"and,omitempty" type:"Repeated"`
+	// List of document IDs to filter documents or document chunks.
+	DocIdList []*string `json:"docIdList,omitempty" xml:"docIdList,omitempty" type:"Repeated"`
+	// Document library ID to filter documents or document chunks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cjshcxxxx
-	LibraryId *string                           `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
-	Or        []*GetFilterDocumentListRequestOr `json:"or,omitempty" xml:"or,omitempty" type:"Repeated"`
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// OR expression to filter documents or document chunks.
+	Or []*GetFilterDocumentListRequestOr `json:"or,omitempty" xml:"or,omitempty" type:"Repeated"`
+	// Page number for pagination.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Number of records per page for pagination.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Status   []*string `json:"status,omitempty" xml:"status,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// List of document statuses to filter documents.
+	//
+	// ### Document parsing status codes
+	//
+	// *Status codes: WaitRefresh, InQueue, FetchingData, Embedding, Completed, FormatError, Error*
+	//
+	// - Completed: Active. Document parsing completed.
+	//
+	// - Error: Inactive. Document parsing failed.
+	//
+	// - FormatError: File format error. Re-upload the file in the correct format if it is encrypted or incomplete.
+	//
+	// - InQueue: Pending. Document is waiting for parsing.
+	//
+	// - Parsed: Parsing completed.
+	//
+	// - Other statuses are internal system states. For example, WaitRefresh means the task is scheduled. FetchingData means parsing is in progress. Embedding means index building is in progress.
+	Status []*string `json:"status,omitempty" xml:"status,omitempty" type:"Repeated"`
 }
 
 func (s GetFilterDocumentListRequest) String() string {
@@ -140,18 +166,30 @@ func (s *GetFilterDocumentListRequest) Validate() error {
 }
 
 type GetFilterDocumentListRequestAnd struct {
+	// Weight of the value in the text retrieval engine. Default is 1.
+	//
 	// example:
 	//
 	// 1
 	Boost *float32 `json:"boost,omitempty" xml:"boost,omitempty"`
+	// Metadata key in the document library.
+	//
 	// example:
 	//
 	// company
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// ### Relationship between the stored metadata value and your input value
+	//
+	// - eq: The stored metadata value equals your input value.
+	//
+	// - contains: The stored metadata value list contains your input value.
+	//
 	// example:
 	//
 	// eq
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// Input metadata value.
+	//
 	// example:
 	//
 	// alibaba
@@ -207,18 +245,30 @@ func (s *GetFilterDocumentListRequestAnd) Validate() error {
 }
 
 type GetFilterDocumentListRequestOr struct {
+	// Weight of the value in the text retrieval engine. Default is 1.
+	//
 	// example:
 	//
 	// 1
 	Boost *float32 `json:"boost,omitempty" xml:"boost,omitempty"`
+	// Metadata key in the document library.
+	//
 	// example:
 	//
 	// company
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// ### Relationship between the stored metadata value and your input value
+	//
+	// - eq: The stored metadata value equals your input value.
+	//
+	// - contains: The stored metadata value list contains your input value.
+	//
 	// example:
 	//
 	// contains
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// Input metadata value.
+	//
 	// example:
 	//
 	// alibaba

@@ -28,31 +28,46 @@ type iGetQualityCheckTaskResultResponseBody interface {
 }
 
 type GetQualityCheckTaskResultResponseBody struct {
+	// Processing time, in milliseconds
+	//
 	// example:
 	//
 	// null
-	Cost *int64                                     `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Response data
 	Data *GetQualityCheckTaskResultResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Data type
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 67C7021A-D268-553D-8C15-A087B9604028
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Whether the request succeeded
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
@@ -149,24 +164,36 @@ func (s *GetQualityCheckTaskResultResponseBody) Validate() error {
 }
 
 type GetQualityCheckTaskResultResponseBodyData struct {
+	// Original conversation content
 	ConversationList *GetQualityCheckTaskResultResponseBodyDataConversationList `json:"conversationList,omitempty" xml:"conversationList,omitempty" type:"Struct"`
+	// Task creation time. This is when the task was submitted
+	//
 	// example:
 	//
 	// 2024-09-27 11:23:20
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// System execution end time
+	//
 	// example:
 	//
 	// 2024-09-27 11:23:20
 	GmtEnd *string `json:"gmtEnd,omitempty" xml:"gmtEnd,omitempty"`
+	// System execution start time
+	//
 	// example:
 	//
 	// 2024-09-27 11:23:20
-	GmtStart         *string                                                      `json:"gmtStart,omitempty" xml:"gmtStart,omitempty"`
+	GmtStart *string `json:"gmtStart,omitempty" xml:"gmtStart,omitempty"`
+	// Quality check result set
 	QualityCheckList []*GetQualityCheckTaskResultResponseBodyDataQualityCheckList `json:"qualityCheckList,omitempty" xml:"qualityCheckList,omitempty" type:"Repeated"`
+	// Task status
+	//
 	// example:
 	//
 	// INIT
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// 1703557101831
@@ -263,21 +290,40 @@ func (s *GetQualityCheckTaskResultResponseBodyData) Validate() error {
 }
 
 type GetQualityCheckTaskResultResponseBodyDataConversationList struct {
+	// Call type:
+	//
 	// example:
 	//
 	// 1
 	CallType *string `json:"callType,omitempty" xml:"callType,omitempty"`
+	// Customer ID
+	//
 	// example:
 	//
 	// 234234
-	CustomerId   *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	CustomerId *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	// Customer name
+	//
+	// example:
+	//
+	// 张三
 	CustomerName *string `json:"customerName,omitempty" xml:"customerName,omitempty"`
+	// Agent ID
+	//
 	// example:
 	//
 	// 23984763826
-	CustomerServiceId   *string                                                                  `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
-	CustomerServiceName *string                                                                  `json:"customerServiceName,omitempty" xml:"customerServiceName,omitempty"`
-	DialogueList        []*GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList `json:"dialogueList,omitempty" xml:"dialogueList,omitempty" type:"Repeated"`
+	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	// Agent name
+	//
+	// example:
+	//
+	// 李四
+	CustomerServiceName *string `json:"customerServiceName,omitempty" xml:"customerServiceName,omitempty"`
+	// Dialogue details list
+	DialogueList []*GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList `json:"dialogueList,omitempty" xml:"dialogueList,omitempty" type:"Repeated"`
+	// Conversation time
+	//
 	// example:
 	//
 	// 2024-09-27 11:23:20
@@ -369,36 +415,62 @@ func (s *GetQualityCheckTaskResultResponseBodyDataConversationList) Validate() e
 }
 
 type GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList struct {
+	// Start time of this utterance, in milliseconds relative to the start of the conversation
+	//
 	// example:
 	//
 	// 0
 	Begin *int32 `json:"begin,omitempty" xml:"begin,omitempty"`
+	// Start time of this utterance
+	//
 	// example:
 	//
 	// 2024-09-27 11:23:20
 	BeginTime *string `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	Content   *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Dialogue content
+	//
+	// example:
+	//
+	// 您好，我是2001，很高兴为您服务！
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Unique identifier for the dialogue role
+	//
 	// example:
 	//
 	// null
-	CustomerId        *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	CustomerId *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	// Agent ID
+	//
+	// example:
+	//
+	// 李四
 	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	// Agent type
+	//
 	// example:
 	//
 	// 0
 	CustomerServiceType *string `json:"customerServiceType,omitempty" xml:"customerServiceType,omitempty"`
+	// End time of this utterance, in milliseconds relative to the start of the conversation
+	//
 	// example:
 	//
 	// 0
 	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
+	// Unique identifier for this utterance. Assigned internally
+	//
 	// example:
 	//
 	// 1
 	Id *int32 `json:"id,omitempty" xml:"id,omitempty"`
+	// Role
+	//
 	// example:
 	//
 	// 0
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// Content type
+	//
 	// example:
 	//
 	// TEXT
@@ -508,40 +580,81 @@ func (s *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) 
 }
 
 type GetQualityCheckTaskResultResponseBodyDataQualityCheckList struct {
-	BizType          *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	// Rule business type
+	//
+	// example:
+	//
+	// No
+	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	// Reason for passing or failing the quality check
+	//
+	// example:
+	//
+	// 暂无
 	CheckExplanation *string `json:"checkExplanation,omitempty" xml:"checkExplanation,omitempty"`
+	// Whether the quality check passed
+	//
 	// example:
 	//
 	// PASSED
-	CheckPassed  *string `json:"checkPassed,omitempty" xml:"checkPassed,omitempty"`
+	CheckPassed *string `json:"checkPassed,omitempty" xml:"checkPassed,omitempty"`
+	// Description of the quality check process
+	//
+	// example:
+	//
+	// 暂无
 	CheckProcess *string `json:"checkProcess,omitempty" xml:"checkProcess,omitempty"`
+	// Whether the rule matched
+	//
 	// example:
 	//
 	// HIT
 	Checked *string `json:"checked,omitempty" xml:"checked,omitempty"`
+	// Quality check completion time
+	//
 	// example:
 	//
 	// 2024-05-23 14:57:50
 	GmtEnd *string `json:"gmtEnd,omitempty" xml:"gmtEnd,omitempty"`
+	// Quality check start time
+	//
 	// example:
 	//
 	// 2024-05-23 14:57:50
 	GmtStart *string `json:"gmtStart,omitempty" xml:"gmtStart,omitempty"`
+	// Internal quality check mode
+	//
 	// example:
 	//
 	// 0
-	Mode           *string                                                                    `json:"mode,omitempty" xml:"mode,omitempty"`
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// Original dialogue list
 	OriginDialogue []*GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue `json:"originDialogue,omitempty" xml:"originDialogue,omitempty" type:"Repeated"`
+	// Quality check group ID
+	//
 	// example:
 	//
 	// warning_customers
-	QualityGroupId  *string `json:"qualityGroupId,omitempty" xml:"qualityGroupId,omitempty"`
+	QualityGroupId *string `json:"qualityGroupId,omitempty" xml:"qualityGroupId,omitempty"`
+	// Quality check item description
+	//
+	// example:
+	//
+	// 进入检测预警客户流程
 	RuleDescription *string `json:"ruleDescription,omitempty" xml:"ruleDescription,omitempty"`
+	// Quality check item ID
+	//
 	// example:
 	//
 	// wcm_start
-	RuleId     *string       `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	RuleType   *string       `json:"ruleType,omitempty" xml:"ruleType,omitempty"`
+	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
+	// Rule direction. 0: negative, 1: positive
+	//
+	// example:
+	//
+	// 0
+	RuleType *string `json:"ruleType,omitempty" xml:"ruleType,omitempty"`
+	// Child node
 	SubNodeCol []interface{} `json:"subNodeCol,omitempty" xml:"subNodeCol,omitempty" type:"Repeated"`
 }
 
@@ -693,39 +806,62 @@ func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) Validate() e
 }
 
 type GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue struct {
+	// Start time of this utterance, in milliseconds relative to the start of the conversation
+	//
 	// example:
 	//
 	// 0
 	Begin *int32 `json:"begin,omitempty" xml:"begin,omitempty"`
+	// Start time of this utterance
+	//
 	// example:
 	//
 	// 2024-05-23 14:57:50
 	BeginTime *string `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	Content   *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Dialogue content
+	//
+	// example:
+	//
+	// 您好，我是2001，很高兴为您服务！
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Unique identifier for the dialogue role
+	//
 	// example:
 	//
 	// xxx
 	CustomerId *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	// Agent ID
+	//
 	// example:
 	//
 	// 23876432
 	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	// Agent type
+	//
 	// example:
 	//
 	// 0
 	CustomerServiceType *string `json:"customerServiceType,omitempty" xml:"customerServiceType,omitempty"`
+	// End time of this utterance, in milliseconds relative to the start of the conversation
+	//
 	// example:
 	//
 	// 0
 	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
+	// Unique identifier for this utterance. Assigned internally
+	//
 	// example:
 	//
 	// 1
 	Id *int32 `json:"id,omitempty" xml:"id,omitempty"`
+	// Role
+	//
 	// example:
 	//
 	// 0
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// Content type
+	//
 	// example:
 	//
 	// TEXT

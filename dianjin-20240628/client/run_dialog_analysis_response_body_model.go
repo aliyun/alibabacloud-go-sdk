@@ -28,31 +28,46 @@ type iRunDialogAnalysisResponseBody interface {
 }
 
 type RunDialogAnalysisResponseBody struct {
+	// The time consumed, in milliseconds.
+	//
 	// example:
 	//
 	// null
-	Cost *int64                             `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// The response data.
 	Data *RunDialogAnalysisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The data type.
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 02CD4454-3F2C-57D0-9060-68DEAA1F6993
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The timestamp.
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34
@@ -149,6 +164,7 @@ func (s *RunDialogAnalysisResponseBody) Validate() error {
 }
 
 type RunDialogAnalysisResponseBodyData struct {
+	// The list of session analysis results.
 	DialogAnalysisRespList []*RunDialogAnalysisResponseBodyDataDialogAnalysisRespList `json:"dialogAnalysisRespList,omitempty" xml:"dialogAnalysisRespList,omitempty" type:"Repeated"`
 }
 
@@ -183,16 +199,24 @@ func (s *RunDialogAnalysisResponseBodyData) Validate() error {
 }
 
 type RunDialogAnalysisResponseBodyDataDialogAnalysisRespList struct {
+	// The result of the session analysis.
 	AnalysisResp *RunDialogAnalysisResponseBodyDataDialogAnalysisRespListAnalysisResp `json:"analysisResp,omitempty" xml:"analysisResp,omitempty" type:"Struct"`
-	FailNode     []*string                                                            `json:"failNode,omitempty" xml:"failNode,omitempty" type:"Repeated"`
+	// The list of failed nodes.
+	FailNode []*string `json:"failNode,omitempty" xml:"failNode,omitempty" type:"Repeated"`
+	// The time when the session was created.
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 1759457905S001vejpvd6vej
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// The execution status of the session analysis task.
+	//
 	// example:
 	//
 	// success
@@ -262,12 +286,30 @@ func (s *RunDialogAnalysisResponseBodyDataDialogAnalysisRespList) Validate() err
 }
 
 type RunDialogAnalysisResponseBodyDataDialogAnalysisRespListAnalysisResp struct {
-	DialogExecPlan        *string                                                                            `json:"dialogExecPlan,omitempty" xml:"dialogExecPlan,omitempty"`
-	DialogLabels          []*RunDialogAnalysisResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels `json:"dialogLabels,omitempty" xml:"dialogLabels,omitempty" type:"Repeated"`
-	DialogOpenAnalysis    map[string]interface{}                                                             `json:"dialogOpenAnalysis,omitempty" xml:"dialogOpenAnalysis,omitempty"`
-	DialogProcessAnalysis map[string]interface{}                                                             `json:"dialogProcessAnalysis,omitempty" xml:"dialogProcessAnalysis,omitempty"`
-	DialogSop             *string                                                                            `json:"dialogSop,omitempty" xml:"dialogSop,omitempty"`
-	DialogSummary         *string                                                                            `json:"dialogSummary,omitempty" xml:"dialogSummary,omitempty"`
+	// The session execution plan.
+	//
+	// example:
+	//
+	// 1. 核实客户账户信息，确认还款情况。\\\\n2. 若未收到还款，联系财务部门确认是否到账延迟。\\\\n3. 若已还款，更新客户记录并致歉。\\\\n4. 跟进客户，确保问题解决。
+	DialogExecPlan *string `json:"dialogExecPlan,omitempty" xml:"dialogExecPlan,omitempty"`
+	// The list of session labels.
+	DialogLabels []*RunDialogAnalysisResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels `json:"dialogLabels,omitempty" xml:"dialogLabels,omitempty" type:"Repeated"`
+	// The session open analysis.
+	DialogOpenAnalysis map[string]interface{} `json:"dialogOpenAnalysis,omitempty" xml:"dialogOpenAnalysis,omitempty"`
+	// The session process analysis.
+	DialogProcessAnalysis map[string]interface{} `json:"dialogProcessAnalysis,omitempty" xml:"dialogProcessAnalysis,omitempty"`
+	// The session SOP.
+	//
+	// example:
+	//
+	// 营销
+	DialogSop *string `json:"dialogSop,omitempty" xml:"dialogSop,omitempty"`
+	// The session summary.
+	//
+	// example:
+	//
+	// - 是否有资金需求：否\\\\n- 是否有意向：否，客户认为自己已经解决，对当前状态表示不解\\\\n- 是否可营销：否，对话中未表现出对营销信息的兴趣或接受度\\\\n- 待满足需求：客户希望在三天内解决问题
+	DialogSummary *string `json:"dialogSummary,omitempty" xml:"dialogSummary,omitempty"`
 }
 
 func (s RunDialogAnalysisResponseBodyDataDialogAnalysisRespListAnalysisResp) String() string {
@@ -346,7 +388,17 @@ func (s *RunDialogAnalysisResponseBodyDataDialogAnalysisRespListAnalysisResp) Va
 }
 
 type RunDialogAnalysisResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels struct {
-	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The label name.
+	//
+	// example:
+	//
+	// 二级标签
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// 协商还款
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

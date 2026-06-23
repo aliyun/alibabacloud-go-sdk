@@ -18,7 +18,7 @@ type QueryApiKeysRequest struct {
 	//
 	// example:
 	//
-	// 1001
+	// 1
 	ExternalUserId *string `json:"externalUserId,omitempty" xml:"externalUserId,omitempty"`
 }
 

@@ -28,35 +28,50 @@ type iGetDocumentChunkListRequest interface {
 }
 
 type GetDocumentChunkListRequest struct {
+	// List of document chunk IDs
 	ChunkIdList []*string `json:"chunkIdList,omitempty" xml:"chunkIdList,omitempty" type:"Repeated"`
+	// Document ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 182364872346
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// Library ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dsjgfdjgfxxx
 	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// Sorting method
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"order,omitempty" xml:"order,omitempty"`
+	// Sort field
+	//
 	// example:
 	//
 	// gmtCreate
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Search query keyword
+	//
 	// example:
 	//
 	// test

@@ -16,10 +16,14 @@ type iGetDialogLogRequest interface {
 }
 
 type GetDialogLogRequest struct {
+	// The \\`id\\` field returned by the real-time conversation API.
+	//
 	// example:
 	//
 	// 175600129454077743fb03ac54955a4be72ec08f9c216
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 1758010668S001w4paq82azm

@@ -32,45 +32,78 @@ type iRealtimeDialogAssistRequest interface {
 }
 
 type RealtimeDialogAssistRequest struct {
+	// Whether to analyze
+	//
 	// example:
 	//
 	// false
 	Analysis *bool `json:"analysis,omitempty" xml:"analysis,omitempty"`
+	// Business type. Currently, only dialogAssist is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dialogAssist
 	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	// Dialog list
+	//
 	// This parameter is required.
 	ConversationModel []*RealtimeDialogAssistRequestConversationModel `json:"conversationModel,omitempty" xml:"conversationModel,omitempty" type:"Repeated"`
+	// Number of historical dialog turns included
+	//
 	// example:
 	//
 	// 0
 	DialogMemoryTurns *int32 `json:"dialogMemoryTurns,omitempty" xml:"dialogMemoryTurns,omitempty"`
+	// Hang up the session
+	//
 	// example:
 	//
 	// false
 	HangUpDialog *bool `json:"hangUpDialog,omitempty" xml:"hangUpDialog,omitempty"`
 	// metaData
+	//
+	// example:
+	//
+	// {
+	//
+	//       "phoneTailNumber": "机主尾号：98X1",
+	//
+	//       "preScreeningQuota": "预审额度：3万",
+	//
+	//       "generalInterest": "平台一般利息：20.4%"
+	//
+	//     }
 	MetaData map[string]interface{} `json:"metaData,omitempty" xml:"metaData,omitempty"`
+	// Request ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0FC6636E-380A-5369-AE01-D1C15BB9B254
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Portion of the previous agent utterance already broadcast
+	//
 	// example:
 	//
 	// 你好
 	ScriptContentPlayed *string `json:"scriptContentPlayed,omitempty" xml:"scriptContentPlayed,omitempty"`
+	// Session ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1915593248420413441
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	UserVad   *bool   `json:"userVad,omitempty" xml:"userVad,omitempty"`
+	// Whether the user interrupted
+	//
+	// example:
+	//
+	// true
+	UserVad *bool `json:"userVad,omitempty" xml:"userVad,omitempty"`
 }
 
 func (s RealtimeDialogAssistRequest) String() string {
@@ -185,38 +218,60 @@ func (s *RealtimeDialogAssistRequest) Validate() error {
 }
 
 type RealtimeDialogAssistRequestConversationModel struct {
+	// Start time of this utterance, offset in milliseconds from the session start.
+	//
 	// example:
 	//
 	// 1
 	Begin *int32 `json:"begin,omitempty" xml:"begin,omitempty"`
+	// Start time of this utterance
+	//
 	// example:
 	//
 	// 2025-12-12 09:00:00
 	BeginTime *string `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
+	// Specific content of the dialog
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 你好
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Unique identity of the dialog role
+	//
 	// example:
 	//
 	// 98457834685635
 	CustomerId *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	// Customer service ID
+	//
 	// example:
 	//
 	// 1374683645635
 	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	// Agent type. 0: Robot, 1: Human.
+	//
 	// example:
 	//
 	// 0
 	CustomerServiceType *string `json:"customerServiceType,omitempty" xml:"customerServiceType,omitempty"`
+	// End time of this utterance, offset in milliseconds from the session start.
+	//
 	// example:
 	//
 	// 1
 	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
+	// Role. 0 indicates customer, 1 indicates agent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	Role *int32 `json:"role,omitempty" xml:"role,omitempty"`
+	// Type of dialog content. Currently, only text is supported.
+	//
 	// example:
 	//
 	// text

@@ -28,31 +28,46 @@ type iGetDocumentListResponseBody interface {
 }
 
 type GetDocumentListResponseBody struct {
+	// The time consumed.
+	//
 	// example:
 	//
 	// null
-	Cost *int64                           `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// The response data.
 	Data *GetDocumentListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The data type.
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5E3FBAF1-17AF-53B7-AF0A-CDCEEB6DE658
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The timestamp.
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34
@@ -149,19 +164,28 @@ func (s *GetDocumentListResponseBody) Validate() error {
 }
 
 type GetDocumentListResponseBodyData struct {
+	// The current page number. This is a paging parameter.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// The number of entries per page. This is a paging parameter.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int64                                    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Records  []*GetDocumentListResponseBodyDataRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The records.
+	Records []*GetDocumentListResponseBodyDataRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// The total number of pages. This is a paging parameter.
+	//
 	// example:
 	//
 	// 10
 	TotalPages *int64 `json:"totalPages,omitempty" xml:"totalPages,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -235,35 +259,52 @@ func (s *GetDocumentListResponseBodyData) Validate() error {
 }
 
 type GetDocumentListResponseBodyDataRecords struct {
+	// The document ID.
+	//
 	// example:
 	//
 	// 8326748346
-	DocId        *string                `json:"docId,omitempty" xml:"docId,omitempty"`
+	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// The document metadata.
 	DocumentMeta map[string]interface{} `json:"documentMeta,omitempty" xml:"documentMeta,omitempty"`
+	// The document type.
+	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The ID of the library to which the document belongs.
+	//
 	// example:
 	//
 	// skjdhshbv
 	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// The document status. Valid values: WaitRefresh (waiting for refresh), InQueue (pending), FetchingData (retrieving data), Embedding (processing document), Error (error), Completed (available), and Null (unknown).
+	//
 	// example:
 	//
 	// WaitRefresh
 	StatusCode *string `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	// The document title.
+	//
 	// example:
 	//
 	// test
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The document URL. This field will be deprecated. The value is empty. To get the document URL, use the GetDocumentUrl operation.
+	//
 	// example:
 	//
 	// null

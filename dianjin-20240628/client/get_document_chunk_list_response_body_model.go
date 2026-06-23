@@ -28,31 +28,46 @@ type iGetDocumentChunkListResponseBody interface {
 }
 
 type GetDocumentChunkListResponseBody struct {
+	// Time consumed
+	//
 	// example:
 	//
 	// null
-	Cost *int64                                `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Response data
 	Data *GetDocumentChunkListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Data type
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 2B8F6DC9-6FAF-576F-9095-CCD90FB2BDDF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Success status
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34
@@ -149,19 +164,28 @@ func (s *GetDocumentChunkListResponseBody) Validate() error {
 }
 
 type GetDocumentChunkListResponseBodyData struct {
+	// Current page
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// Records per page
+	//
 	// example:
 	//
 	// 10
-	PageSize *int64                                         `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Records  []*GetDocumentChunkListResponseBodyDataRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Records
+	Records []*GetDocumentChunkListResponseBodyDataRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// Total pages
+	//
 	// example:
 	//
 	// 10
 	TotalPages *int64 `json:"totalPages,omitempty" xml:"totalPages,omitempty"`
+	// Total records
+	//
 	// example:
 	//
 	// 100
@@ -235,49 +259,82 @@ func (s *GetDocumentChunkListResponseBodyData) Validate() error {
 }
 
 type GetDocumentChunkListResponseBodyDataRecords struct {
+	// Document chunk ID
+	//
 	// example:
 	//
 	// 28377468263482764
 	ChunkId *string `json:"chunkId,omitempty" xml:"chunkId,omitempty"`
+	// Document chunk metadata
+	//
 	// example:
 	//
 	// {"a":"1"}
 	ChunkMeta map[string]interface{} `json:"chunkMeta,omitempty" xml:"chunkMeta,omitempty"`
+	// Document chunk OSS address
+	//
 	// example:
 	//
 	// oss-xxxx-hangzhou.com/test.pdf
 	ChunkOssUrl *string `json:"chunkOssUrl,omitempty" xml:"chunkOssUrl,omitempty"`
-	ChunkText   *string `json:"chunkText,omitempty" xml:"chunkText,omitempty"`
+	// Document chunk text
+	//
+	// example:
+	//
+	// 这是一段测试文本
+	ChunkText *string `json:"chunkText,omitempty" xml:"chunkText,omitempty"`
+	// Document chunk type
+	//
 	// example:
 	//
 	// text
 	ChunkType *string `json:"chunkType,omitempty" xml:"chunkType,omitempty"`
+	// Document ID
+	//
 	// example:
 	//
 	// 8947387648356
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// Document type
+	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	// Library ID
+	//
 	// example:
 	//
 	// jhsdvne
-	LibraryId   *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// Library name
+	//
+	// example:
+	//
+	// 测试文档库
 	LibraryName *string `json:"libraryName,omitempty" xml:"libraryName,omitempty"`
+	// Next document chunk ID
+	//
 	// example:
 	//
 	// 947538465
-	NextChunkId *string                                           `json:"nextChunkId,omitempty" xml:"nextChunkId,omitempty"`
-	Pos         []*GetDocumentChunkListResponseBodyDataRecordsPos `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
+	NextChunkId *string `json:"nextChunkId,omitempty" xml:"nextChunkId,omitempty"`
+	// Document chunk position
+	Pos []*GetDocumentChunkListResponseBodyDataRecordsPos `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
+	// Previous document chunk ID
+	//
 	// example:
 	//
 	// 9848346548365
 	PreChunkId *string `json:"preChunkId,omitempty" xml:"preChunkId,omitempty"`
+	// Document chunk score
+	//
 	// example:
 	//
 	// 0.5
 	Score *float32 `json:"score,omitempty" xml:"score,omitempty"`
+	// Document title
+	//
 	// example:
 	//
 	// test
@@ -432,11 +489,15 @@ func (s *GetDocumentChunkListResponseBodyDataRecords) Validate() error {
 }
 
 type GetDocumentChunkListResponseBodyDataRecordsPos struct {
+	// Coordinate
 	AxisArray []*float64 `json:"axisArray,omitempty" xml:"axisArray,omitempty" type:"Repeated"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
-	Page              *int32   `json:"page,omitempty" xml:"page,omitempty"`
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Text highlight area, used for highlighting text-type files
 	TextHighlightArea []*int32 `json:"textHighlightArea,omitempty" xml:"textHighlightArea,omitempty" type:"Repeated"`
 }
 

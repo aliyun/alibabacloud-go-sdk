@@ -17,9 +17,6 @@ type iExchangeEntitlementHeaders interface {
 
 type ExchangeEntitlementHeaders struct {
   CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-  // example:
-  // 
-  // false
   XLoadTest *bool `json:"X-Load-Test,omitempty" xml:"X-Load-Test,omitempty"`
 }
 

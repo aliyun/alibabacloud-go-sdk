@@ -17,10 +17,7 @@ type iQueryRedemptionRecordsHeaders interface {
 
 type QueryRedemptionRecordsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// example:
-	//
-	// false
-	XLoadTest *bool `json:"X-Load-Test,omitempty" xml:"X-Load-Test,omitempty"`
+	XLoadTest     *bool              `json:"X-Load-Test,omitempty" xml:"X-Load-Test,omitempty"`
 }
 
 func (s QueryRedemptionRecordsHeaders) String() string {

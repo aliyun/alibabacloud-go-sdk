@@ -4,6 +4,7 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
+	websocketutils "github.com/alibabacloud-go/darabonba-openapi/v2/websocketUtils"
 	"github.com/alibabacloud-go/tea/dara"
 )
 
@@ -24,7 +25,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-beijing": dara.String("dianjin.cn-beijing.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -139,7 +143,103 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建按年文档总结任务
+// 申请取数
+//
+// @param request - CommercializeFetchRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CommercializeFetchResponse
+func (client *Client) CommercializeFetchWithOptions(workspaceId *string, cjfCode *string, zjfCode *string, request *CommercializeFetchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CommercializeFetchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChannelId) {
+		body["channelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.Data) {
+		body["data"] = request.Data
+	}
+
+	if !dara.IsNil(request.ProductId) {
+		body["productId"] = request.ProductId
+	}
+
+	if !dara.IsNil(request.RequestId) {
+		body["requestId"] = request.RequestId
+	}
+
+	if !dara.IsNil(request.SecretKey) {
+		body["secretKey"] = request.SecretKey
+	}
+
+	if !dara.IsNil(request.Sign) {
+		body["sign"] = request.Sign
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CommercializeFetch"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/spi/path/" + dara.PercentEncode(dara.StringValue(cjfCode)) + "/api/support/" + dara.PercentEncode(dara.StringValue(zjfCode)) + "/firefly/commercializeFetch"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CommercializeFetchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 申请取数
+//
+// @param request - CommercializeFetchRequest
+//
+// @return CommercializeFetchResponse
+func (client *Client) CommercializeFetch(workspaceId *string, cjfCode *string, zjfCode *string, request *CommercializeFetchRequest) (_result *CommercializeFetchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CommercializeFetchResponse{}
+	_body, _err := client.CommercializeFetchWithOptions(workspaceId, cjfCode, zjfCode, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Create a task to summarize documents by year.
+//
+// Description:
+//
+// Before you use this operation, review the billing methods and pricing for Alibaba Cloud Tongyi Dianjin.
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// Obtain your [workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreateAnnualDocSummaryTaskRequest
 //
@@ -202,7 +302,17 @@ func (client *Client) CreateAnnualDocSummaryTaskWithOptions(workspaceId *string,
 
 // Summary:
 //
-// 创建按年文档总结任务
+// Create a task to summarize documents by year.
+//
+// Description:
+//
+// Before you use this operation, review the billing methods and pricing for Alibaba Cloud Tongyi Dianjin.
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// Obtain your [workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreateAnnualDocSummaryTaskRequest
 //
@@ -221,7 +331,7 @@ func (client *Client) CreateAnnualDocSummaryTask(workspaceId *string, request *C
 
 // Summary:
 //
-// 创建外呼会话
+// Creates an outbound call session.
 //
 // @param request - CreateDialogRequest
 //
@@ -292,7 +402,7 @@ func (client *Client) CreateDialogWithOptions(workspaceId *string, request *Crea
 
 // Summary:
 //
-// 创建外呼会话
+// Creates an outbound call session.
 //
 // @param request - CreateDialogRequest
 //
@@ -311,7 +421,17 @@ func (client *Client) CreateDialog(workspaceId *string, request *CreateDialogReq
 
 // Summary:
 //
-// 创建会话分析任务
+// Creates a session analysis task. After the task is created, use the session ID with GetDialogAnalysisResult to retrieve the results.
+//
+// Description:
+//
+// Before you use this API, review the billing methods and pricing for DianJin.
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and DianJin.
+//
+// Obtain a workspace ID. For more information, see [Get a workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreateDialogAnalysisTaskRequest
 //
@@ -374,7 +494,17 @@ func (client *Client) CreateDialogAnalysisTaskWithOptions(workspaceId *string, r
 
 // Summary:
 //
-// 创建会话分析任务
+// Creates a session analysis task. After the task is created, use the session ID with GetDialogAnalysisResult to retrieve the results.
+//
+// Description:
+//
+// Before you use this API, review the billing methods and pricing for DianJin.
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and DianJin.
+//
+// Obtain a workspace ID. For more information, see [Get a workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreateDialogAnalysisTaskRequest
 //
@@ -393,7 +523,17 @@ func (client *Client) CreateDialogAnalysisTask(workspaceId *string, request *Cre
 
 // Summary:
 //
-// 创建财报总结任务
+// Creates a multi-document summary task.
+//
+// Description:
+//
+// Before you use this API, review the billing methods and pricing for Alibaba Cloud Tongyi Dianjin.
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// You have obtained a [workspace identifier](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreateDocsSummaryTaskRequest
 //
@@ -452,7 +592,17 @@ func (client *Client) CreateDocsSummaryTaskWithOptions(workspaceId *string, requ
 
 // Summary:
 //
-// 创建财报总结任务
+// Creates a multi-document summary task.
+//
+// Description:
+//
+// Before you use this API, review the billing methods and pricing for Alibaba Cloud Tongyi Dianjin.
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// You have obtained a [workspace identifier](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreateDocsSummaryTaskRequest
 //
@@ -471,7 +621,17 @@ func (client *Client) CreateDocsSummaryTask(workspaceId *string, request *Create
 
 // Summary:
 //
-// 创建财报总结任务
+// Creates a financial report summary.
+//
+// Description:
+//
+// Before using this API, review the pricing and billing methods for Alibaba Cloud Gold products.
+//
+// **Prerequisites**
+//
+// - Enable Alibaba Cloud Model Studio and Alibaba Cloud Gold services.
+//
+// - Obtain the workspace ID. For more information, see [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreateFinReportSummaryTaskRequest
 //
@@ -546,7 +706,17 @@ func (client *Client) CreateFinReportSummaryTaskWithOptions(workspaceId *string,
 
 // Summary:
 //
-// 创建财报总结任务
+// Creates a financial report summary.
+//
+// Description:
+//
+// Before using this API, review the pricing and billing methods for Alibaba Cloud Gold products.
+//
+// **Prerequisites**
+//
+// - Enable Alibaba Cloud Model Studio and Alibaba Cloud Gold services.
+//
+// - Obtain the workspace ID. For more information, see [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreateFinReportSummaryTaskRequest
 //
@@ -652,7 +822,15 @@ func (client *Client) CreateImageDetectionTask(workspaceId *string, request *Cre
 
 // Summary:
 //
-// 创建文档库
+// Creates a document library. A document library isolates document and index data. If your use case requires frequent natural language search by category, create multiple libraries to isolate different data types. You can customize vector and text indexes by format.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - Obtain the workspace ID: Retrieve the [workspace identifier](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreateLibraryRequest
 //
@@ -707,7 +885,15 @@ func (client *Client) CreateLibraryWithOptions(workspaceId *string, request *Cre
 
 // Summary:
 //
-// 创建文档库
+// Creates a document library. A document library isolates document and index data. If your use case requires frequent natural language search by category, create multiple libraries to isolate different data types. You can customize vector and text indexes by format.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - Obtain the workspace ID: Retrieve the [workspace identifier](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreateLibraryRequest
 //
@@ -726,7 +912,17 @@ func (client *Client) CreateLibrary(workspaceId *string, request *CreateLibraryR
 
 // Summary:
 //
-// 创建PDF翻译任务
+// Create a PDF document translation task. Submit the task to start asynchronous translation.
+//
+// Description:
+//
+// Before you use this operation, review the billing methods and pricing for Alibaba Cloud Tongyi Dianjin.
+//
+// **Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - You have obtained a workspace ID. To obtain your [workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreatePdfTranslateTaskRequest
 //
@@ -789,7 +985,17 @@ func (client *Client) CreatePdfTranslateTaskWithOptions(workspaceId *string, req
 
 // Summary:
 //
-// 创建PDF翻译任务
+// Create a PDF document translation task. Submit the task to start asynchronous translation.
+//
+// Description:
+//
+// Before you use this operation, review the billing methods and pricing for Alibaba Cloud Tongyi Dianjin.
+//
+// **Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - You have obtained a workspace ID. To obtain your [workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreatePdfTranslateTaskRequest
 //
@@ -808,7 +1014,17 @@ func (client *Client) CreatePdfTranslateTask(workspaceId *string, request *Creat
 
 // Summary:
 //
-// 创建预定义文档
+// Creates document chunks based on your business scenarios.
+//
+// Description:
+//
+// Before using this API, review the billing methods and pricing for Tongyi Dianjin.
+//
+// **Prerequisites**
+//
+// - Activate Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - Obtain a workspace ID. For more information, see [Get a workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreatePredefinedDocumentRequest
 //
@@ -867,7 +1083,17 @@ func (client *Client) CreatePredefinedDocumentWithOptions(workspaceId *string, r
 
 // Summary:
 //
-// 创建预定义文档
+// Creates document chunks based on your business scenarios.
+//
+// Description:
+//
+// Before using this API, review the billing methods and pricing for Tongyi Dianjin.
+//
+// **Prerequisites**
+//
+// - Activate Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - Obtain a workspace ID. For more information, see [Get a workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreatePredefinedDocumentRequest
 //
@@ -886,7 +1112,17 @@ func (client *Client) CreatePredefinedDocument(workspaceId *string, request *Cre
 
 // Summary:
 //
-// 创建财报总结的任务
+// Creates a quality check task.
+//
+// Description:
+//
+// Before using this API, review the pricing and billing methods for the Tongyi Dianjin product.
+//
+// # Prerequisites
+//
+// Activate Alibaba Cloud Model Studio and Tongyi Dianjin services.
+//
+// Obtain the workspaceId: Retrieve the [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreateQualityCheckTaskRequest
 //
@@ -957,7 +1193,17 @@ func (client *Client) CreateQualityCheckTaskWithOptions(workspaceId *string, req
 
 // Summary:
 //
-// 创建财报总结的任务
+// Creates a quality check task.
+//
+// Description:
+//
+// Before using this API, review the pricing and billing methods for the Tongyi Dianjin product.
+//
+// # Prerequisites
+//
+// Activate Alibaba Cloud Model Studio and Tongyi Dianjin services.
+//
+// Obtain the workspaceId: Retrieve the [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - CreateQualityCheckTaskRequest
 //
@@ -1067,7 +1313,7 @@ func (client *Client) CreateVideoCreationTask(workspaceId *string, request *Crea
 
 // Summary:
 //
-// # Dashscope异步任务完成事件处理
+// A callback event that indicates the completion of a Dashscope asynchronous task.
 //
 // @param request - DashscopeAsyncTaskFinishEventRequest
 //
@@ -1123,7 +1369,7 @@ func (client *Client) DashscopeAsyncTaskFinishEventWithOptions(workspaceId *stri
 
 // Summary:
 //
-// # Dashscope异步任务完成事件处理
+// A callback event that indicates the completion of a Dashscope asynchronous task.
 //
 // @param request - DashscopeAsyncTaskFinishEventRequest
 //
@@ -1142,7 +1388,15 @@ func (client *Client) DashscopeAsyncTaskFinishEvent(workspaceId *string, request
 
 // Summary:
 //
-// 删除文档
+// Deletes a document. After deletion, you cannot view the original document or recall it.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin services.
+//
+// - Obtain your workspace ID: retrieve your [workspace identifier](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - DeleteDocumentRequest
 //
@@ -1193,7 +1447,15 @@ func (client *Client) DeleteDocumentWithOptions(workspaceId *string, request *De
 
 // Summary:
 //
-// 删除文档
+// Deletes a document. After deletion, you cannot view the original document or recall it.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin services.
+//
+// - Obtain your workspace ID: retrieve your [workspace identifier](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - DeleteDocumentRequest
 //
@@ -1212,7 +1474,15 @@ func (client *Client) DeleteDocument(workspaceId *string, request *DeleteDocumen
 
 // Summary:
 //
-// 删除文档库
+// Delete a document library. ⚠️ This operation deletes the library and all its associated documents.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - Activate Alibaba Cloud Model Studio and Tongyi Dianjin services.
+//
+// - Obtain your workspaceId. For more information, refer to the [workspace identifier](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - DeleteLibraryRequest
 //
@@ -1259,7 +1529,15 @@ func (client *Client) DeleteLibraryWithOptions(workspaceId *string, request *Del
 
 // Summary:
 //
-// 删除文档库
+// Delete a document library. ⚠️ This operation deletes the library and all its associated documents.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - Activate Alibaba Cloud Model Studio and Tongyi Dianjin services.
+//
+// - Obtain your workspaceId. For more information, refer to the [workspace identifier](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - DeleteLibraryRequest
 //
@@ -1278,7 +1556,7 @@ func (client *Client) DeleteLibrary(workspaceId *string, request *DeleteLibraryR
 
 // Summary:
 //
-// 端到端实时对话
+// This API uses the WebSocket protocol to perform real-time conversational transcription, intent recognition, and speech synthesis. It supports various audio formats for both input and output to ensure real-time performance and high compatibility.
 //
 // @param request - EndToEndRealTimeDialogRequest
 //
@@ -1336,28 +1614,35 @@ func (client *Client) EndToEndRealTimeDialogWithOptions(workspaceId *string, req
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
-		Action:      dara.String("EndToEndRealTimeDialog"),
-		Version:     dara.String("2024-06-28"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ws/realtime/dialog"),
-		Method:      dara.String("GET"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
+		Action:               dara.String("EndToEndRealTimeDialog"),
+		Version:              dara.String("2024-06-28"),
+		Protocol:             dara.String("wss"),
+		Pathname:             dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ws/realtime/dialog"),
+		Method:               dara.String("GET"),
+		AuthType:             dara.String("AK"),
+		Style:                dara.String("ROA"),
+		ReqBodyType:          dara.String("json"),
+		BodyType:             dara.String("json"),
+		WebsocketSubProtocol: dara.String("awap"),
 	}
-	_result = &EndToEndRealTimeDialogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	res := &EndToEndRealTimeDialogResponse{}
+	callApiTmp, err := client.CallApi(params, req, runtime)
+	if err != nil {
+		_err = err
 		return _result, _err
 	}
-	_err = dara.Convert(_body, &_result)
+	tmp := dara.ToMap(callApiTmp)
+	if !dara.IsNil(tmp["webSocketClient"]) {
+		res.WebSocketClient = websocketutils.CreateWebSocketClient(tmp["webSocketClient"])
+	}
+
+	_result = res
 	return _result, _err
 }
 
 // Summary:
 //
-// 端到端实时对话
+// This API uses the WebSocket protocol to perform real-time conversational transcription, intent recognition, and speech synthesis. It supports various audio formats for both input and output to ensure real-time performance and high compatibility.
 //
 // @param request - EndToEndRealTimeDialogRequest
 //
@@ -1376,7 +1661,7 @@ func (client *Client) EndToEndRealTimeDialog(workspaceId *string, request *EndTo
 
 // Summary:
 //
-// 中断任务
+// Terminate the job.
 //
 // @param request - EvictTaskRequest
 //
@@ -1423,7 +1708,7 @@ func (client *Client) EvictTaskWithOptions(workspaceId *string, request *EvictTa
 
 // Summary:
 //
-// 中断任务
+// Terminate the job.
 //
 // @param request - EvictTaskRequest
 //
@@ -1533,7 +1818,17 @@ func (client *Client) ExchangeEntitlement(workspaceId *string, tenantId *string,
 
 // Summary:
 //
-// 根据文档解析问答QA
+// Parses question and answer (Q&A) pairs from a document. You can use the UpdateQaLibrary API to update the Q&A pairs.
+//
+// Description:
+//
+// Before you use this API, make sure you understand the billing methods and pricing of the Tongyi Dianjin product.
+//
+// # Prerequisites
+//
+// Activate Alibaba Cloud Model Studio and the Tongyi Dianjin service.
+//
+// Obtain a workspace ID. For more information, see [Get a workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GenDocQaResultRequest
 //
@@ -1588,7 +1883,17 @@ func (client *Client) GenDocQaResultWithOptions(workspaceId *string, request *Ge
 
 // Summary:
 //
-// 根据文档解析问答QA
+// Parses question and answer (Q&A) pairs from a document. You can use the UpdateQaLibrary API to update the Q&A pairs.
+//
+// Description:
+//
+// Before you use this API, make sure you understand the billing methods and pricing of the Tongyi Dianjin product.
+//
+// # Prerequisites
+//
+// Activate Alibaba Cloud Model Studio and the Tongyi Dianjin service.
+//
+// Obtain a workspace ID. For more information, see [Get a workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GenDocQaResultRequest
 //
@@ -1607,7 +1912,15 @@ func (client *Client) GenDocQaResult(workspaceId *string, request *GenDocQaResul
 
 // Summary:
 //
-// 获取app配置
+// Retrieve app configuration.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Gold services.
+//
+// - You can obtain the workspace ID. For details, see [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%E3%80%9DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GetAppConfigRequest
 //
@@ -1648,7 +1961,15 @@ func (client *Client) GetAppConfigWithOptions(workspaceId *string, request *GetA
 
 // Summary:
 //
-// 获取app配置
+// Retrieve app configuration.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Gold services.
+//
+// - You can obtain the workspace ID. For details, see [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%E3%80%9DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GetAppConfigRequest
 //
@@ -1667,7 +1988,7 @@ func (client *Client) GetAppConfig(workspaceId *string, request *GetAppConfigReq
 
 // Summary:
 //
-// 获取问答结果
+// Retrieves the Q&A results generated by the SubmitChatQuestion API.
 //
 // @param request - GetChatQuestionRespRequest
 //
@@ -1718,7 +2039,7 @@ func (client *Client) GetChatQuestionRespWithOptions(workspaceId *string, reques
 
 // Summary:
 //
-// 获取问答结果
+// Retrieves the Q&A results generated by the SubmitChatQuestion API.
 //
 // @param request - GetChatQuestionRespRequest
 //
@@ -1737,7 +2058,7 @@ func (client *Client) GetChatQuestionResp(workspaceId *string, request *GetChatQ
 
 // Summary:
 //
-// 获取外呼会话分析结果
+// Retrieve session analysis results. You can retrieve results in batches by specifying a list of session IDs or a time range.
 //
 // @param request - GetDialogAnalysisResultRequest
 //
@@ -1800,7 +2121,7 @@ func (client *Client) GetDialogAnalysisResultWithOptions(workspaceId *string, re
 
 // Summary:
 //
-// 获取外呼会话分析结果
+// Retrieve session analysis results. You can retrieve results in batches by specifying a list of session IDs or a time range.
 //
 // @param request - GetDialogAnalysisResultRequest
 //
@@ -1819,7 +2140,7 @@ func (client *Client) GetDialogAnalysisResult(workspaceId *string, request *GetD
 
 // Summary:
 //
-// 获取异步任务的结果
+// Retrieve session details.
 //
 // @param request - GetDialogDetailRequest
 //
@@ -1866,7 +2187,7 @@ func (client *Client) GetDialogDetailWithOptions(workspaceId *string, request *G
 
 // Summary:
 //
-// 获取异步任务的结果
+// Retrieve session details.
 //
 // @param request - GetDialogDetailRequest
 //
@@ -1885,7 +2206,13 @@ func (client *Client) GetDialogDetail(workspaceId *string, request *GetDialogDet
 
 // Summary:
 //
-// 查询会话日志
+// Retrieves records of real-time conversations and the results of intent analysis.
+//
+// Description:
+//
+// ## Request description
+//
+// This API retrieves conversation records between customers and service agents, along with intent analysis results generated by the model.
 //
 // @param request - GetDialogLogRequest
 //
@@ -1936,7 +2263,13 @@ func (client *Client) GetDialogLogWithOptions(workspaceId *string, request *GetD
 
 // Summary:
 //
-// 查询会话日志
+// Retrieves records of real-time conversations and the results of intent analysis.
+//
+// Description:
+//
+// ## Request description
+//
+// This API retrieves conversation records between customers and service agents, along with intent analysis results generated by the model.
 //
 // @param request - GetDialogLogRequest
 //
@@ -1955,7 +2288,15 @@ func (client *Client) GetDialogLog(workspaceId *string, request *GetDialogLogReq
 
 // Summary:
 //
-// 获取文档的chunk列表
+// Retrieve a list of document chunks. You can filter them by query conditions.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - Activate Alibaba Cloud Model Studio and Tongyi Gold Service.
+//
+// - Obtain the workspaceId and the [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%B3).
 //
 // @param request - GetDocumentChunkListRequest
 //
@@ -2030,7 +2371,15 @@ func (client *Client) GetDocumentChunkListWithOptions(workspaceId *string, reque
 
 // Summary:
 //
-// 获取文档的chunk列表
+// Retrieve a list of document chunks. You can filter them by query conditions.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - Activate Alibaba Cloud Model Studio and Tongyi Gold Service.
+//
+// - Obtain the workspaceId and the [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%B3).
 //
 // @param request - GetDocumentChunkListRequest
 //
@@ -2049,7 +2398,15 @@ func (client *Client) GetDocumentChunkList(workspaceId *string, request *GetDocu
 
 // Summary:
 //
-// 分页查询文档库的文档列表
+// Retrieves a list of documents from a document library. This operation supports paged queries and filtering by document status.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and the Tongyi Gold Point service.
+//
+// - You have obtained a workspace ID. For more information, see [Get a workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GetDocumentListRequest
 //
@@ -2108,7 +2465,15 @@ func (client *Client) GetDocumentListWithOptions(workspaceId *string, request *G
 
 // Summary:
 //
-// 分页查询文档库的文档列表
+// Retrieves a list of documents from a document library. This operation supports paged queries and filtering by document status.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and the Tongyi Gold Point service.
+//
+// - You have obtained a workspace ID. For more information, see [Get a workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GetDocumentListRequest
 //
@@ -2127,7 +2492,15 @@ func (client *Client) GetDocumentList(workspaceId *string, request *GetDocumentL
 
 // Summary:
 //
-// 获取文档URL
+// Retrieve a download URL for a document. The URL expires after 1 hour.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - Obtain the workspace ID. For more information, see [Get the workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GetDocumentUrlRequest
 //
@@ -2174,7 +2547,15 @@ func (client *Client) GetDocumentUrlWithOptions(workspaceId *string, request *Ge
 
 // Summary:
 //
-// 获取文档URL
+// Retrieve a download URL for a document. The URL expires after 1 hour.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - Obtain the workspace ID. For more information, see [Get the workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GetDocumentUrlRequest
 //
@@ -2193,7 +2574,15 @@ func (client *Client) GetDocumentUrl(workspaceId *string, request *GetDocumentUr
 
 // Summary:
 //
-// 带条件的分页查询文档库的文档列表
+// This operation retrieves a list of documents. You can filter documents by metadata or use paging.
+//
+// Description:
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// To obtain the workspace ID, see [the document about obtaining the workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GetFilterDocumentListRequest
 //
@@ -2264,7 +2653,15 @@ func (client *Client) GetFilterDocumentListWithOptions(workspaceId *string, requ
 
 // Summary:
 //
-// 带条件的分页查询文档库的文档列表
+// This operation retrieves a list of documents. You can filter documents by metadata or use paging.
+//
+// Description:
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// To obtain the workspace ID, see [the document about obtaining the workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GetFilterDocumentListRequest
 //
@@ -2283,7 +2680,7 @@ func (client *Client) GetFilterDocumentList(workspaceId *string, request *GetFil
 
 // Summary:
 //
-// 分页查询文档库列表
+// Retrieve conversation history records by business type.
 //
 // @param request - GetHistoryListByBizTypeRequest
 //
@@ -2342,7 +2739,7 @@ func (client *Client) GetHistoryListByBizTypeWithOptions(workspaceId *string, re
 
 // Summary:
 //
-// 分页查询文档库列表
+// Retrieve conversation history records by business type.
 //
 // @param request - GetHistoryListByBizTypeRequest
 //
@@ -2440,7 +2837,15 @@ func (client *Client) GetImageDetectionTaskResult(workspaceId *string, request *
 
 // Summary:
 //
-// 获取文档库配置详情
+// Retrieves the detailed configuration of a document library, including its name, description, and index settings.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - Activate the Alibaba Cloud Model Studio and Tongyi Dianjin services.
+//
+// - Obtain a [workspace identifier](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GetLibraryRequest
 //
@@ -2487,7 +2892,15 @@ func (client *Client) GetLibraryWithOptions(workspaceId *string, request *GetLib
 
 // Summary:
 //
-// 获取文档库配置详情
+// Retrieves the detailed configuration of a document library, including its name, description, and index settings.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - Activate the Alibaba Cloud Model Studio and Tongyi Dianjin services.
+//
+// - Obtain a [workspace identifier](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GetLibraryRequest
 //
@@ -2506,7 +2919,15 @@ func (client *Client) GetLibrary(workspaceId *string, request *GetLibraryRequest
 
 // Summary:
 //
-// 分页查询文档库列表
+// Retrieve the document library list. The list includes document names, descriptions, and unique identifiers.
+//
+// Description:
+//
+// # Prerequisites
+//
+// - You must activate Alibaba Cloud Model Studio and Tongyi Dianjin services.
+//
+// - Obtain the workspaceId. For more information, see [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GetLibraryListRequest
 //
@@ -2561,7 +2982,15 @@ func (client *Client) GetLibraryListWithOptions(workspaceId *string, request *Ge
 
 // Summary:
 //
-// 分页查询文档库列表
+// Retrieve the document library list. The list includes document names, descriptions, and unique identifiers.
+//
+// Description:
+//
+// # Prerequisites
+//
+// - You must activate Alibaba Cloud Model Studio and Tongyi Dianjin services.
+//
+// - Obtain the workspaceId. For more information, see [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GetLibraryListRequest
 //
@@ -2580,7 +3009,15 @@ func (client *Client) GetLibraryList(workspaceId *string, request *GetLibraryLis
 
 // Summary:
 //
-// 获取解析结果
+// Retrieve document parsing results. You can query the document\\"s parsing status and obtain the parsing results.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Gold services.
+//
+// - Obtain the workspace ID. For more information, see [the workspace identity document](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GetParseResultRequest
 //
@@ -2635,7 +3072,15 @@ func (client *Client) GetParseResultWithOptions(workspaceId *string, request *Ge
 
 // Summary:
 //
-// 获取解析结果
+// Retrieve document parsing results. You can query the document\\"s parsing status and obtain the parsing results.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Gold services.
+//
+// - Obtain the workspace ID. For more information, see [the workspace identity document](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - GetParseResultRequest
 //
@@ -2654,7 +3099,7 @@ func (client *Client) GetParseResult(workspaceId *string, request *GetParseResul
 
 // Summary:
 //
-// 获取异步任务的结果
+// Retrieve quality check results.
 //
 // @param request - GetQualityCheckTaskResultRequest
 //
@@ -2701,7 +3146,7 @@ func (client *Client) GetQualityCheckTaskResultWithOptions(workspaceId *string, 
 
 // Summary:
 //
-// 获取异步任务的结果
+// Retrieve quality check results.
 //
 // @param request - GetQualityCheckTaskResultRequest
 //
@@ -2720,7 +3165,127 @@ func (client *Client) GetQualityCheckTaskResult(workspaceId *string, request *Ge
 
 // Summary:
 //
-// 获取财报总结任务结果
+// 获取报告结果
+//
+// @param request - GetReportResponseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetReportResponseResponse
+func (client *Client) GetReportResponseWithOptions(workspaceId *string, sceneCode *string, fundProduct *string, outRequestNo *string, request *GetReportResponseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetReportResponseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetReportResponse"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/firefly/v1/" + dara.PercentEncode(dara.StringValue(sceneCode)) + "/" + dara.PercentEncode(dara.StringValue(fundProduct)) + "/tasks/" + dara.PercentEncode(dara.StringValue(outRequestNo)) + "/report"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetReportResponseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取报告结果
+//
+// @param request - GetReportResponseRequest
+//
+// @return GetReportResponseResponse
+func (client *Client) GetReportResponse(workspaceId *string, sceneCode *string, fundProduct *string, outRequestNo *string, request *GetReportResponseRequest) (_result *GetReportResponseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetReportResponseResponse{}
+	_body, _err := client.GetReportResponseWithOptions(workspaceId, sceneCode, fundProduct, outRequestNo, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务状态
+//
+// @param request - GetReportTaskStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetReportTaskStatusResponse
+func (client *Client) GetReportTaskStatusWithOptions(workspaceId *string, sceneCode *string, fundProduct *string, outRequestNo *string, request *GetReportTaskStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetReportTaskStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetReportTaskStatus"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/firefly/v1/" + dara.PercentEncode(dara.StringValue(sceneCode)) + "/" + dara.PercentEncode(dara.StringValue(fundProduct)) + "/tasks/" + dara.PercentEncode(dara.StringValue(outRequestNo))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetReportTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务状态
+//
+// @param request - GetReportTaskStatusRequest
+//
+// @return GetReportTaskStatusResponse
+func (client *Client) GetReportTaskStatus(workspaceId *string, sceneCode *string, fundProduct *string, outRequestNo *string, request *GetReportTaskStatusRequest) (_result *GetReportTaskStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetReportTaskStatusResponse{}
+	_body, _err := client.GetReportTaskStatusWithOptions(workspaceId, sceneCode, fundProduct, outRequestNo, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the result of a financial report summary task.
 //
 // @param request - GetSummaryTaskResultRequest
 //
@@ -2767,7 +3332,7 @@ func (client *Client) GetSummaryTaskResultWithOptions(workspaceId *string, reque
 
 // Summary:
 //
-// 获取财报总结任务结果
+// Retrieves the result of a financial report summary task.
 //
 // @param request - GetSummaryTaskResultRequest
 //
@@ -2786,7 +3351,7 @@ func (client *Client) GetSummaryTaskResult(workspaceId *string, request *GetSumm
 
 // Summary:
 //
-// 获取异步任务结果
+// Retrieves the result of an asynchronous task.
 //
 // @param request - GetTaskResultRequest
 //
@@ -2833,7 +3398,7 @@ func (client *Client) GetTaskResultWithOptions(workspaceId *string, request *Get
 
 // Summary:
 //
-// 获取异步任务结果
+// Retrieves the result of an asynchronous task.
 //
 // @param request - GetTaskResultRequest
 //
@@ -2852,7 +3417,7 @@ func (client *Client) GetTaskResult(workspaceId *string, request *GetTaskResultR
 
 // Summary:
 //
-// 获取财报总结任务结果
+// Gets the status of a task.
 //
 // @param request - GetTaskStatusRequest
 //
@@ -2899,7 +3464,7 @@ func (client *Client) GetTaskStatusWithOptions(workspaceId *string, request *Get
 
 // Summary:
 //
-// 获取财报总结任务结果
+// Gets the status of a task.
 //
 // @param request - GetTaskStatusRequest
 //
@@ -3076,7 +3641,15 @@ func (client *Client) GetVideoCreationTaskResult(workspaceId *string, request *G
 
 // Summary:
 //
-// 插件调试接口
+// Call a plugin and retrieve its response.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin services.
+//
+// - Obtain the workspace ID. For more information, see [Get the workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - InvokePluginRequest
 //
@@ -3127,7 +3700,15 @@ func (client *Client) InvokePluginWithOptions(workspaceId *string, request *Invo
 
 // Summary:
 //
-// 插件调试接口
+// Call a plugin and retrieve its response.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin services.
+//
+// - Obtain the workspace ID. For more information, see [Get the workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - InvokePluginRequest
 //
@@ -3146,7 +3727,15 @@ func (client *Client) InvokePlugin(workspaceId *string, request *InvokePluginReq
 
 // Summary:
 //
-// 获取文档预览
+// Preview documents. Retrieve document download links, types, and titles. Use this operation to preview documents.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You must activate Alibaba Cloud Model Studio and Tongyi Gold services.
+//
+// - Obtain the workspace ID. For more information, see [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - PreviewDocumentRequest
 //
@@ -3193,7 +3782,15 @@ func (client *Client) PreviewDocumentWithOptions(workspaceId *string, request *P
 
 // Summary:
 //
-// 获取文档预览
+// Preview documents. Retrieve document download links, types, and titles. Use this operation to preview documents.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You must activate Alibaba Cloud Model Studio and Tongyi Gold services.
+//
+// - Obtain the workspace ID. For more information, see [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - PreviewDocumentRequest
 //
@@ -3374,7 +3971,17 @@ func (client *Client) QueryRedemptionRecords(workspaceId *string, tenantId *stri
 
 // Summary:
 //
-// 重新索引
+// Reindexing reprocesses the specified document by parsing it, splitting it into chunks, and building a new index.
+//
+// Description:
+//
+// Before you use this operation, review the billing method and pricing for Tongyi Dianjin.
+//
+// **Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - You have obtained a workspace ID: Retrieve the [workspace identifier](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - ReIndexRequest
 //
@@ -3421,7 +4028,17 @@ func (client *Client) ReIndexWithOptions(workspaceId *string, request *ReIndexRe
 
 // Summary:
 //
-// 重新索引
+// Reindexing reprocesses the specified document by parsing it, splitting it into chunks, and building a new index.
+//
+// Description:
+//
+// Before you use this operation, review the billing method and pricing for Tongyi Dianjin.
+//
+// **Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - You have obtained a workspace ID: Retrieve the [workspace identifier](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - ReIndexRequest
 //
@@ -3440,7 +4057,17 @@ func (client *Client) ReIndex(workspaceId *string, request *ReIndexRequest) (_re
 
 // Summary:
 //
-// 实时对话
+// Starts a real-time session. After you create a session by calling the CreateDialog API, use this API to conduct the real-time interaction.
+//
+// Description:
+//
+// Before using this API, make sure you understand the billing methods and pricing of the Tongyi Gold service.
+//
+// # Prerequisites
+//
+// Alibaba Cloud Model Studio and the Tongyi Gold service are activated.
+//
+// Obtain a workspaceId. For more information, see [Get an app ID and workspace](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RealTimeDialogRequest
 //
@@ -3457,7 +4084,17 @@ func (client *Client) RealTimeDialogWithSSE(workspaceId *string, request *RealTi
 
 // Summary:
 //
-// 实时对话
+// Starts a real-time session. After you create a session by calling the CreateDialog API, use this API to conduct the real-time interaction.
+//
+// Description:
+//
+// Before using this API, make sure you understand the billing methods and pricing of the Tongyi Gold service.
+//
+// # Prerequisites
+//
+// Alibaba Cloud Model Studio and the Tongyi Gold service are activated.
+//
+// Obtain a workspaceId. For more information, see [Get an app ID and workspace](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RealTimeDialogRequest
 //
@@ -3544,7 +4181,17 @@ func (client *Client) RealTimeDialogWithOptions(workspaceId *string, request *Re
 
 // Summary:
 //
-// 实时对话
+// Starts a real-time session. After you create a session by calling the CreateDialog API, use this API to conduct the real-time interaction.
+//
+// Description:
+//
+// Before using this API, make sure you understand the billing methods and pricing of the Tongyi Gold service.
+//
+// # Prerequisites
+//
+// Alibaba Cloud Model Studio and the Tongyi Gold service are activated.
+//
+// Obtain a workspaceId. For more information, see [Get an app ID and workspace](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RealTimeDialogRequest
 //
@@ -3563,7 +4210,17 @@ func (client *Client) RealTimeDialog(workspaceId *string, request *RealTimeDialo
 
 // Summary:
 //
-// 实时会话辅助
+// Provides real-time dialog assistance after a session is created using CreateDialog. Note: This operation returns multiple intents, tags, and SOP flows. Unlike real-time sessions, it does not support streaming responses.
+//
+// Description:
+//
+// Before you use this API, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/zh/model-studio/tongyi-dianjin-overview?spm=a2c4g.11186623.help-menu-2400256.d_1_6_6_0.15e77499sSMTGb) of Alibaba Cloud Model Studio DianJin.
+//
+// # Prerequisites
+//
+// Activate the Alibaba Cloud Model Studio and Model Studio DianJin services.
+//
+// Obtain the [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8) to use as your workspaceId.
 //
 // @param request - RealtimeDialogAssistRequest
 //
@@ -3646,7 +4303,17 @@ func (client *Client) RealtimeDialogAssistWithOptions(workspaceId *string, reque
 
 // Summary:
 //
-// 实时会话辅助
+// Provides real-time dialog assistance after a session is created using CreateDialog. Note: This operation returns multiple intents, tags, and SOP flows. Unlike real-time sessions, it does not support streaming responses.
+//
+// Description:
+//
+// Before you use this API, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/zh/model-studio/tongyi-dianjin-overview?spm=a2c4g.11186623.help-menu-2400256.d_1_6_6_0.15e77499sSMTGb) of Alibaba Cloud Model Studio DianJin.
+//
+// # Prerequisites
+//
+// Activate the Alibaba Cloud Model Studio and Model Studio DianJin services.
+//
+// Obtain the [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8) to use as your workspaceId.
 //
 // @param request - RealtimeDialogAssistRequest
 //
@@ -3665,7 +4332,17 @@ func (client *Client) RealtimeDialogAssist(workspaceId *string, request *Realtim
 
 // Summary:
 //
-// 重建任务
+// Rebuilds an existing task. You cannot rebuild tasks that are queued or currently executing.
+//
+// Description:
+//
+// Before you use this API, review the billing methods and pricing for the Dianjin service.
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and the Dianjin service.
+//
+// You have obtained a workspace ID. For more information, see [Get an app ID and workspace](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RebuildTaskRequest
 //
@@ -3712,7 +4389,17 @@ func (client *Client) RebuildTaskWithOptions(workspaceId *string, request *Rebui
 
 // Summary:
 //
-// 重建任务
+// Rebuilds an existing task. You cannot rebuild tasks that are queued or currently executing.
+//
+// Description:
+//
+// Before you use this API, review the billing methods and pricing for the Dianjin service.
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and the Dianjin service.
+//
+// You have obtained a workspace ID. For more information, see [Get an app ID and workspace](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RebuildTaskRequest
 //
@@ -3731,7 +4418,15 @@ func (client *Client) RebuildTask(workspaceId *string, request *RebuildTaskReque
 
 // Summary:
 //
-// 文档召回。
+// You can retrieve document chunks from a document library using text. You can specify the number of chunks to retrieve, filter them by metadata conditions, and choose whether to complete the document chunks.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - Activate the Alibaba Cloud Model Studio service and the Tongyi Dianjin service.
+//
+// - Obtain the workspace ID. Obtain the [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%93%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RecallDocumentRequest
 //
@@ -3790,7 +4485,15 @@ func (client *Client) RecallDocumentWithOptions(workspaceId *string, request *Re
 
 // Summary:
 //
-// 文档召回。
+// You can retrieve document chunks from a document library using text. You can specify the number of chunks to retrieve, filter them by metadata conditions, and choose whether to complete the document chunks.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - Activate the Alibaba Cloud Model Studio service and the Tongyi Dianjin service.
+//
+// - Obtain the workspace ID. Obtain the [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%93%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RecallDocumentRequest
 //
@@ -3809,7 +4512,17 @@ func (client *Client) RecallDocument(workspaceId *string, request *RecallDocumen
 
 // Summary:
 //
-// 意图识别
+// Detects intents. This operation supports global and hierarchical intent detection, attitude detection, and enterprise detection.
+//
+// Description:
+//
+// Before you use this operation, review the billing methods and pricing of Alibaba Cloud Tongyi Dianjin.
+//
+// **Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - You have obtained a [workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RecognizeIntentionRequest
 //
@@ -3888,7 +4601,17 @@ func (client *Client) RecognizeIntentionWithOptions(workspaceId *string, request
 
 // Summary:
 //
-// 意图识别
+// Detects intents. This operation supports global and hierarchical intent detection, attitude detection, and enterprise detection.
+//
+// Description:
+//
+// Before you use this operation, review the billing methods and pricing of Alibaba Cloud Tongyi Dianjin.
+//
+// **Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - You have obtained a [workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RecognizeIntentionRequest
 //
@@ -3907,7 +4630,77 @@ func (client *Client) RecognizeIntention(workspaceId *string, request *Recognize
 
 // Summary:
 //
-// 运行智能体
+// 重试任务
+//
+// @param request - RetryReportTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetryReportTaskResponse
+func (client *Client) RetryReportTaskWithOptions(workspaceId *string, sceneCode *string, fundProduct *string, outRequestNo *string, request *RetryReportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RetryReportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RetryReportTask"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/firefly/v1/" + dara.PercentEncode(dara.StringValue(sceneCode)) + "/" + dara.PercentEncode(dara.StringValue(fundProduct)) + "/tasks/" + dara.PercentEncode(dara.StringValue(outRequestNo)) + "/retry"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RetryReportTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重试任务
+//
+// @param request - RetryReportTaskRequest
+//
+// @return RetryReportTaskResponse
+func (client *Client) RetryReportTask(workspaceId *string, sceneCode *string, fundProduct *string, outRequestNo *string, request *RetryReportTaskRequest) (_result *RetryReportTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RetryReportTaskResponse{}
+	_body, _err := client.RetryReportTaskWithOptions(workspaceId, sceneCode, fundProduct, outRequestNo, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Run an agent. This API supports both streaming and non-streaming responses.
+//
+// Description:
+//
+// Before you use this API, review the billing model and pricing for Tongyi Dianjin.
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// Obtain a workspace ID: [Obtain your workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RunAgentRequest
 //
@@ -3924,7 +4717,17 @@ func (client *Client) RunAgentWithSSE(workspaceId *string, request *RunAgentRequ
 
 // Summary:
 //
-// 运行智能体
+// Run an agent. This API supports both streaming and non-streaming responses.
+//
+// Description:
+//
+// Before you use this API, review the billing model and pricing for Tongyi Dianjin.
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// Obtain a workspace ID: [Obtain your workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RunAgentRequest
 //
@@ -3999,7 +4802,17 @@ func (client *Client) RunAgentWithOptions(workspaceId *string, request *RunAgent
 
 // Summary:
 //
-// 运行智能体
+// Run an agent. This API supports both streaming and non-streaming responses.
+//
+// Description:
+//
+// Before you use this API, review the billing model and pricing for Tongyi Dianjin.
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// Obtain a workspace ID: [Obtain your workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RunAgentRequest
 //
@@ -4018,7 +4831,17 @@ func (client *Client) RunAgent(workspaceId *string, request *RunAgentRequest) (_
 
 // Summary:
 //
-// 获取生成式对话结果
+// Generates chat responses. You can select a model for the conversation and choose streaming or non-streaming output.
+//
+// Description:
+//
+// Before you use this API, review the billing method and pricing for Alibaba Cloud Tongyi Dianjin.
+//
+// **Prerequisites**
+//
+// - Activate Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - Obtain your workspace ID: retrieve your [workspace identifier](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RunChatResultGenerationRequest
 //
@@ -4035,7 +4858,17 @@ func (client *Client) RunChatResultGenerationWithSSE(workspaceId *string, reques
 
 // Summary:
 //
-// 获取生成式对话结果
+// Generates chat responses. You can select a model for the conversation and choose streaming or non-streaming output.
+//
+// Description:
+//
+// Before you use this API, review the billing method and pricing for Alibaba Cloud Tongyi Dianjin.
+//
+// **Prerequisites**
+//
+// - Activate Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - Obtain your workspace ID: retrieve your [workspace identifier](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RunChatResultGenerationRequest
 //
@@ -4102,7 +4935,17 @@ func (client *Client) RunChatResultGenerationWithOptions(workspaceId *string, re
 
 // Summary:
 //
-// 获取生成式对话结果
+// Generates chat responses. You can select a model for the conversation and choose streaming or non-streaming output.
+//
+// Description:
+//
+// Before you use this API, review the billing method and pricing for Alibaba Cloud Tongyi Dianjin.
+//
+// **Prerequisites**
+//
+// - Activate Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - Obtain your workspace ID: retrieve your [workspace identifier](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RunChatResultGenerationRequest
 //
@@ -4121,7 +4964,17 @@ func (client *Client) RunChatResultGeneration(workspaceId *string, request *RunC
 
 // Summary:
 //
-// 流式获取外呼会话分析结果
+// Retrieves session analysis results through a streaming API.
+//
+// Description:
+//
+// Before you use this API, make sure that you understand the billing methods and pricing for Tongyi Gold.
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and Tongyi Gold.
+//
+// You must have a workspace ID. For more information, see [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RunDialogAnalysisRequest
 //
@@ -4138,7 +4991,17 @@ func (client *Client) RunDialogAnalysisWithSSE(workspaceId *string, request *Run
 
 // Summary:
 //
-// 流式获取外呼会话分析结果
+// Retrieves session analysis results through a streaming API.
+//
+// Description:
+//
+// Before you use this API, make sure that you understand the billing methods and pricing for Tongyi Gold.
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and Tongyi Gold.
+//
+// You must have a workspace ID. For more information, see [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RunDialogAnalysisRequest
 //
@@ -4185,7 +5048,17 @@ func (client *Client) RunDialogAnalysisWithOptions(workspaceId *string, request 
 
 // Summary:
 //
-// 流式获取外呼会话分析结果
+// Retrieves session analysis results through a streaming API.
+//
+// Description:
+//
+// Before you use this API, make sure that you understand the billing methods and pricing for Tongyi Gold.
+//
+// # Prerequisites
+//
+// You have activated Alibaba Cloud Model Studio and Tongyi Gold.
+//
+// You must have a workspace ID. For more information, see [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - RunDialogAnalysisRequest
 //
@@ -4204,7 +5077,7 @@ func (client *Client) RunDialogAnalysis(workspaceId *string, request *RunDialogA
 
 // Summary:
 //
-// 获取生成式对话结果
+// Generates a chat response from a document library. You can ask questions in natural language, and the system retrieves relevant information to provide a summarized answer.
 //
 // @param request - RunLibraryChatGenerationRequest
 //
@@ -4221,7 +5094,7 @@ func (client *Client) RunLibraryChatGenerationWithSSE(workspaceId *string, reque
 
 // Summary:
 //
-// 获取生成式对话结果
+// Generates a chat response from a document library. You can ask questions in natural language, and the system retrieves relevant information to provide a summarized answer.
 //
 // @param request - RunLibraryChatGenerationRequest
 //
@@ -4336,7 +5209,7 @@ func (client *Client) RunLibraryChatGenerationWithOptions(workspaceId *string, r
 
 // Summary:
 //
-// 获取生成式对话结果
+// Generates a chat response from a document library. You can ask questions in natural language, and the system retrieves relevant information to provide a summarized answer.
 //
 // @param request - RunLibraryChatGenerationRequest
 //
@@ -4355,7 +5228,17 @@ func (client *Client) RunLibraryChatGeneration(workspaceId *string, request *Run
 
 // Summary:
 //
-// 提交问题列表
+// Submit a list of questions and retrieve results by calling the `GetChatQuestionResp` API.
+//
+// Description:
+//
+// Review the pricing and billing details for the Tongyi Dianjin product before you use this API.
+//
+// # Prerequisites
+//
+// Activate Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// Obtain the \\`workspaceId\\`: Retrieve the [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - SubmitChatQuestionRequest
 //
@@ -4422,7 +5305,17 @@ func (client *Client) SubmitChatQuestionWithOptions(workspaceId *string, request
 
 // Summary:
 //
-// 提交问题列表
+// Submit a list of questions and retrieve results by calling the `GetChatQuestionResp` API.
+//
+// Description:
+//
+// Review the pricing and billing details for the Tongyi Dianjin product before you use this API.
+//
+// # Prerequisites
+//
+// Activate Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// Obtain the \\`workspaceId\\`: Retrieve the [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - SubmitChatQuestionRequest
 //
@@ -4441,7 +5334,15 @@ func (client *Client) SubmitChatQuestion(workspaceId *string, request *SubmitCha
 
 // Summary:
 //
-// 更新文档
+// Updates the title, metadata, and other information of a document.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - Activate the Alibaba Cloud Model Studio service and the Tongyi Gold service.
+//
+// - Obtain your workspace ID. For more information, see [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - UpdateDocumentRequest
 //
@@ -4500,7 +5401,15 @@ func (client *Client) UpdateDocumentWithOptions(workspaceId *string, request *Up
 
 // Summary:
 //
-// 更新文档
+// Updates the title, metadata, and other information of a document.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - Activate the Alibaba Cloud Model Studio service and the Tongyi Gold service.
+//
+// - Obtain your workspace ID. For more information, see [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - UpdateDocumentRequest
 //
@@ -4519,7 +5428,17 @@ func (client *Client) UpdateDocument(workspaceId *string, request *UpdateDocumen
 
 // Summary:
 //
-// 更新文档的chunk
+// Update the text content of a document chunk in a document.
+//
+// Description:
+//
+// Before using this API, ensure you understand the billing methods and pricing of the Tongyi Gold product.
+//
+// # Prerequisites
+//
+// You must activate Alibaba Cloud Model Studio and Tongyi Gold services.
+//
+// Obtain the workspaceId. For more information, see the [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - UpdateDocumentChunkRequest
 //
@@ -4570,7 +5489,17 @@ func (client *Client) UpdateDocumentChunkWithOptions(workspaceId *string, reques
 
 // Summary:
 //
-// 更新文档的chunk
+// Update the text content of a document chunk in a document.
+//
+// Description:
+//
+// Before using this API, ensure you understand the billing methods and pricing of the Tongyi Gold product.
+//
+// # Prerequisites
+//
+// You must activate Alibaba Cloud Model Studio and Tongyi Gold services.
+//
+// Obtain the workspaceId. For more information, see the [workspace identity](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - UpdateDocumentChunkRequest
 //
@@ -4589,7 +5518,15 @@ func (client *Client) UpdateDocumentChunk(workspaceId *string, request *UpdateDo
 
 // Summary:
 //
-// 更新文档库配置
+// Updates a document library. You can update the library name, description, and index configuration.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - Obtain the workspace ID. For more information, see [Get the workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - UpdateLibraryRequest
 //
@@ -4648,7 +5585,15 @@ func (client *Client) UpdateLibraryWithOptions(workspaceId *string, request *Upd
 
 // Summary:
 //
-// 更新文档库配置
+// Updates a document library. You can update the library name, description, and index configuration.
+//
+// Description:
+//
+// *Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - Obtain the workspace ID. For more information, see [Get the workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - UpdateLibraryRequest
 //
@@ -4667,7 +5612,7 @@ func (client *Client) UpdateLibrary(workspaceId *string, request *UpdateLibraryR
 
 // Summary:
 //
-// 更新QA问答库
+// Updates a Q&A library. After the update, use the GenDocQaResult API to parse the Q&A pairs.
 //
 // @param request - UpdateQaLibraryRequest
 //
@@ -4722,7 +5667,7 @@ func (client *Client) UpdateQaLibraryWithOptions(workspaceId *string, request *U
 
 // Summary:
 //
-// 更新QA问答库
+// Updates a Q&A library. After the update, use the GenDocQaResult API to parse the Q&A pairs.
 //
 // @param request - UpdateQaLibraryRequest
 //
@@ -4741,7 +5686,17 @@ func (client *Client) UpdateQaLibrary(workspaceId *string, request *UpdateQaLibr
 
 // Summary:
 //
-// 上传文档到文档库
+// Upload a document to a document library. The system parses the document, splits it into chunks, and builds an index.
+//
+// Description:
+//
+// Before you use this operation, review the Tongyi Dianjin pricing details.
+//
+// **Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - You have obtained a workspace ID. For more information, see [Get the workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - UploadDocumentRequest
 //
@@ -4800,7 +5755,17 @@ func (client *Client) UploadDocumentWithOptions(workspaceId *string, request *Up
 
 // Summary:
 //
-// 上传文档到文档库
+// Upload a document to a document library. The system parses the document, splits it into chunks, and builds an index.
+//
+// Description:
+//
+// Before you use this operation, review the Tongyi Dianjin pricing details.
+//
+// **Prerequisites**
+//
+// - You have activated Alibaba Cloud Model Studio and Tongyi Dianjin.
+//
+// - You have obtained a workspace ID. For more information, see [Get the workspace ID](https://help.aliyun.com/zh/model-studio/developer-reference/get-app-id-and-workspace?spm=openapi-amp.newDocPublishment.0.0.2eb8281foUVd15#2612f896detsz:~:text=%E6%9F%A5%E7%9C%8BAPI%2DKEY%E3%80%82-,%E8%8E%B7%E5%8F%96APP%2DID%E5%92%8CWORKSPACE,-%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8).
 //
 // @param request - UploadDocumentRequest
 //

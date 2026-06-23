@@ -14,6 +14,8 @@ type iReIndexRequest interface {
 }
 
 type ReIndexRequest struct {
+	// The ID of the document.
+	//
 	// This parameter is required.
 	//
 	// example:

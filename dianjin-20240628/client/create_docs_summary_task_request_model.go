@@ -20,13 +20,30 @@ type iCreateDocsSummaryTaskRequest interface {
 }
 
 type CreateDocsSummaryTaskRequest struct {
+	// Document information list
+	//
 	// This parameter is required.
 	DocInfos []*CreateDocsSummaryTaskRequestDocInfos `json:"docInfos,omitempty" xml:"docInfos,omitempty" type:"Repeated"`
+	// Enable table parsing. Default is true.
+	//
 	// example:
 	//
 	// true
-	EnableTable *bool   `json:"enableTable,omitempty" xml:"enableTable,omitempty"`
+	EnableTable *bool `json:"enableTable,omitempty" xml:"enableTable,omitempty"`
+	// Instruction
+	//
+	// example:
+	//
+	// 你是资深的证券研究员，对xx年上市公司进行业绩分析。根据参考信息从如下方面详细分析：
+	//
+	// 1. 整体业绩变化情况，包括营收，利润等详细指标变化情况
+	//
+	// 2. 业绩变化情况具体原因，包括各个业务变化情况
+	//
+	// 严格只输出xx年情况。
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
+	// Model ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -93,22 +110,30 @@ func (s *CreateDocsSummaryTaskRequest) Validate() error {
 }
 
 type CreateDocsSummaryTaskRequestDocInfos struct {
+	// Document ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 198386463432
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// End page number
+	//
 	// example:
 	//
 	// 2
 	EndPage *int32 `json:"endPage,omitempty" xml:"endPage,omitempty"`
+	// Document library ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rdxrmo6amk
 	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// Start page number
+	//
 	// example:
 	//
 	// 1

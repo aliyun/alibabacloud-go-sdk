@@ -14,6 +14,8 @@ type iDashscopeAsyncTaskFinishEventRequest interface {
 }
 
 type DashscopeAsyncTaskFinishEventRequest struct {
+	// Request body parameters
+	//
 	// example:
 	//
 	// {}

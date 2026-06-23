@@ -14,6 +14,8 @@ type iRunDialogAnalysisRequest interface {
 }
 
 type RunDialogAnalysisRequest struct {
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:

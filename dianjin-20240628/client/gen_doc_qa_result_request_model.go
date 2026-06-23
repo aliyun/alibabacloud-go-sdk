@@ -18,18 +18,24 @@ type iGenDocQaResultRequest interface {
 }
 
 type GenDocQaResultRequest struct {
+	// The document ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 182364872346
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// The document library ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sjdgdsfg
 	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// The request ID. This ID uniquely identifies the request. The first request with this ID starts the Q\\&A pair parsing. Subsequent requests with the same ID query the parsing status and results.
+	//
 	// This parameter is required.
 	//
 	// example:

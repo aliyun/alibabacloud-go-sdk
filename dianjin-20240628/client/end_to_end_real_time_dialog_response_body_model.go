@@ -14,6 +14,8 @@ type iEndToEndRealTimeDialogResponseBody interface {
 }
 
 type EndToEndRealTimeDialogResponseBody struct {
+  // The request ID.
+  // 
   // example:
   // 
   // 1C98B466-D6E0-5252-A60B-F345CBB33DDB

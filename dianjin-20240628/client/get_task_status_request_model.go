@@ -14,7 +14,13 @@ type iGetTaskStatusRequest interface {
 }
 
 type GetTaskStatusRequest struct {
+	// Task ID
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 17071319
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 

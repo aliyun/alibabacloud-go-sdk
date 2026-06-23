@@ -28,31 +28,46 @@ type iCreateDialogAnalysisTaskResponseBody interface {
 }
 
 type CreateDialogAnalysisTaskResponseBody struct {
+	// The time consumed by the request.
+	//
 	// example:
 	//
 	// null
-	Cost *int64    `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// The response data, which is a list of session IDs.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The data type.
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EF4B5C9B-3BC8-5171-A47B-4C5CF3DC3258
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The timestamp.
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34

@@ -28,31 +28,46 @@ type iGenDocQaResultResponseBody interface {
 }
 
 type GenDocQaResultResponseBody struct {
+	// The time consumed.
+	//
 	// example:
 	//
 	// null
-	Cost *int64                          `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// The response data.
 	Data *GenDocQaResultResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The data type.
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 44BD277A-87F9-5310-8D63-3E6645F1DA85
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The timestamp.
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34
@@ -149,18 +164,25 @@ func (s *GenDocQaResultResponseBody) Validate() error {
 }
 
 type GenDocQaResultResponseBodyData struct {
+	// The current status. Valid values: \\`INIT\\`, \\`PROCESSING\\`, \\`COMPLETED\\`, and \\`FAIL\\`.
+	//
 	// example:
 	//
 	// PROCESSING
 	CurrentStatus *string `json:"currentStatus,omitempty" xml:"currentStatus,omitempty"`
+	// The document ID.
+	//
 	// example:
 	//
 	// 873648346573245
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// The document library ID.
+	//
 	// example:
 	//
 	// 7wxwrjpabj
-	LibraryId      *string                                         `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// The results of the Q\\&A pair parsing.
 	ParseQaResults []*GenDocQaResultResponseBodyDataParseQaResults `json:"parseQaResults,omitempty" xml:"parseQaResults,omitempty" type:"Repeated"`
 }
 
@@ -222,7 +244,17 @@ func (s *GenDocQaResultResponseBodyData) Validate() error {
 }
 
 type GenDocQaResultResponseBodyDataParseQaResults struct {
-	Answer   *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	// The answer.
+	//
+	// example:
+	//
+	// 今天的天气不错，多云转晴。
+	Answer *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	// The question.
+	//
+	// example:
+	//
+	// 今天的天气怎么样？
 	Question *string `json:"question,omitempty" xml:"question,omitempty"`
 }
 

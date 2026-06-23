@@ -28,31 +28,46 @@ type iGetChatQuestionRespResponseBody interface {
 }
 
 type GetChatQuestionRespResponseBody struct {
+	// Time consumed
+	//
 	// example:
 	//
 	// null
-	Cost *int64                               `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Response data
 	Data *GetChatQuestionRespResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Data type
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 44BD277A-87F9-5310-8D63-3E6645F1DA85
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
@@ -149,10 +164,13 @@ func (s *GetChatQuestionRespResponseBody) Validate() error {
 }
 
 type GetChatQuestionRespResponseBodyData struct {
+	// Current state [INIT (Initialization), PROCESSING (Processing), COMPLETED (Completed)]
+	//
 	// example:
 	//
 	// PROCESSING
-	CurrentState *string                                            `json:"currentState,omitempty" xml:"currentState,omitempty"`
+	CurrentState *string `json:"currentState,omitempty" xml:"currentState,omitempty"`
+	// Question list
 	QuestionList []*GetChatQuestionRespResponseBodyDataQuestionList `json:"questionList,omitempty" xml:"questionList,omitempty" type:"Repeated"`
 }
 
@@ -196,25 +214,53 @@ func (s *GetChatQuestionRespResponseBodyData) Validate() error {
 }
 
 type GetChatQuestionRespResponseBodyDataQuestionList struct {
+	// Question content
+	//
+	// example:
+	//
+	// 今天天气怎么样
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Original question time
+	//
 	// example:
 	//
 	// 2024-11-17 10:05:00
-	GmtCreate  *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// Original question
+	//
+	// example:
+	//
+	// 今天天气怎么样
 	OriContent *string `json:"oriContent,omitempty" xml:"oriContent,omitempty"`
-	Reply      *string `json:"reply,omitempty" xml:"reply,omitempty"`
+	// Reply content
+	//
+	// example:
+	//
+	// 感谢您的支持！
+	Reply *string `json:"reply,omitempty" xml:"reply,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// 1732846760323001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// Question type [PRODUCT_QA (Audio submission), GOSSIP (Operation submission), UNKNOWN (Unknown)]
+	//
 	// example:
 	//
 	// PRODUCT_QA
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Unique ID of the user who asked the question in the live channel.
+	//
 	// example:
 	//
 	// 39847834568436
-	UserId   *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// Name of the user who asked the question in the live channel.
+	//
+	// example:
+	//
+	// 张*
 	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 

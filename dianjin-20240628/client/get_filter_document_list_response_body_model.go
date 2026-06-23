@@ -28,31 +28,46 @@ type iGetFilterDocumentListResponseBody interface {
 }
 
 type GetFilterDocumentListResponseBody struct {
+	// Time spent on the request, in milliseconds.
+	//
 	// example:
 	//
 	// null
-	Cost *int64                                 `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Response data.
 	Data *GetFilterDocumentListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Data type.
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 7ADF010C-FD89-569D-A079-2D4D5247E943
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp.
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
@@ -149,19 +164,28 @@ func (s *GetFilterDocumentListResponseBody) Validate() error {
 }
 
 type GetFilterDocumentListResponseBodyData struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// Number of records per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int64                                          `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Records  []*GetFilterDocumentListResponseBodyDataRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Records.
+	Records []*GetFilterDocumentListResponseBodyDataRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 10
 	TotalPages *int64 `json:"totalPages,omitempty" xml:"totalPages,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -235,35 +259,56 @@ func (s *GetFilterDocumentListResponseBodyData) Validate() error {
 }
 
 type GetFilterDocumentListResponseBodyDataRecords struct {
+	// Document ID.
+	//
 	// example:
 	//
 	// 29368126816
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// Document metadata.
+	//
 	// example:
 	//
 	// {"a": "1"}
 	DocumentMeta map[string]interface{} `json:"documentMeta,omitempty" xml:"documentMeta,omitempty"`
+	// File type.
+	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// Modification time.
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// Document library ID.
+	//
 	// example:
 	//
 	// sdfgsjdfg
 	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// Document status. Valid values: WaitRefresh (waiting for refresh), InQueue (pending), FetchingData (retrieving data), Embedding (processing document), Error (failed), Completed (active), Null (unknown).
+	//
 	// example:
 	//
 	// WaitRefresh
 	StatusCode *string `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Title      *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Document title.
+	//
+	// example:
+	//
+	// 公司文档
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Document URL.
+	//
 	// example:
 	//
 	// null

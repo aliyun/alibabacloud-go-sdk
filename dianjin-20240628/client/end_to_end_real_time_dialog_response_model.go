@@ -2,6 +2,7 @@
 package client
 
 import (
+  websocketutils "github.com/alibabacloud-go/darabonba-openapi/v2/websocketUtils"
   "github.com/alibabacloud-go/tea/dara"
 )
 
@@ -9,18 +10,12 @@ type iEndToEndRealTimeDialogResponse interface {
   dara.Model
   String() string
   GoString() string
-  SetHeaders(v map[string]*string) *EndToEndRealTimeDialogResponse
-  GetHeaders() map[string]*string 
-  SetStatusCode(v int32) *EndToEndRealTimeDialogResponse
-  GetStatusCode() *int32 
-  SetBody(v *EndToEndRealTimeDialogResponseBody) *EndToEndRealTimeDialogResponse
-  GetBody() *EndToEndRealTimeDialogResponseBody 
+  SetWebSocketClient(v *websocketutils.WebSocketClient) *EndToEndRealTimeDialogResponse
+  GetWebSocketClient() *websocketutils.WebSocketClient 
 }
 
 type EndToEndRealTimeDialogResponse struct {
-  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-  StatusCode *int32 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-  Body *EndToEndRealTimeDialogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+  WebSocketClient *websocketutils.WebSocketClient `json:"webSocketClient,omitempty" xml:"webSocketClient,omitempty"`
 }
 
 func (s EndToEndRealTimeDialogResponse) String() string {
@@ -31,36 +26,18 @@ func (s EndToEndRealTimeDialogResponse) GoString() string {
   return s.String()
 }
 
-func (s *EndToEndRealTimeDialogResponse) GetHeaders() map[string]*string  {
-  return s.Headers
+func (s *EndToEndRealTimeDialogResponse) GetWebSocketClient() *websocketutils.WebSocketClient  {
+  return s.WebSocketClient
 }
 
-func (s *EndToEndRealTimeDialogResponse) GetStatusCode() *int32  {
-  return s.StatusCode
-}
-
-func (s *EndToEndRealTimeDialogResponse) GetBody() *EndToEndRealTimeDialogResponseBody  {
-  return s.Body
-}
-
-func (s *EndToEndRealTimeDialogResponse) SetHeaders(v map[string]*string) *EndToEndRealTimeDialogResponse {
-  s.Headers = v
-  return s
-}
-
-func (s *EndToEndRealTimeDialogResponse) SetStatusCode(v int32) *EndToEndRealTimeDialogResponse {
-  s.StatusCode = &v
-  return s
-}
-
-func (s *EndToEndRealTimeDialogResponse) SetBody(v *EndToEndRealTimeDialogResponseBody) *EndToEndRealTimeDialogResponse {
-  s.Body = v
+func (s *EndToEndRealTimeDialogResponse) SetWebSocketClient(v *websocketutils.WebSocketClient) *EndToEndRealTimeDialogResponse {
+  s.WebSocketClient = v
   return s
 }
 
 func (s *EndToEndRealTimeDialogResponse) Validate() error {
-  if s.Body != nil {
-    if err := s.Body.Validate(); err != nil {
+  if s.WebSocketClient != nil {
+    if err := s.WebSocketClient.Validate(); err != nil {
       return err
     }
   }

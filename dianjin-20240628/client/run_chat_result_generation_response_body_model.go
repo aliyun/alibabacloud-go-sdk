@@ -28,32 +28,46 @@ type iRunChatResultGenerationResponseBody interface {
 }
 
 type RunChatResultGenerationResponseBody struct {
+	// Details of the model-generated content.
 	Choices []*RunChatResultGenerationResponseBodyChoices `json:"choices,omitempty" xml:"choices,omitempty" type:"Repeated"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 1720602203
 	Created *int64 `json:"created,omitempty" xml:"created,omitempty"`
+	// Request identifier.
+	//
 	// example:
 	//
 	// eb2b6139-ddf1-91a0-a47f-df7617ae9032
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Large Language Model (LLM) ID.
+	//
 	// example:
 	//
 	// qwen-max
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// eb2b6139-ddf1-91a0-a47f-df7617ae9032
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Timestamp.
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// Total tokens.
+	//
 	// example:
 	//
 	// 500
-	TotalTokens *int32                                    `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
-	Usage       *RunChatResultGenerationResponseBodyUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+	TotalTokens *int32 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+	// Usage.
+	Usage *RunChatResultGenerationResponseBodyUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
 }
 
 func (s RunChatResultGenerationResponseBody) String() string {
@@ -155,14 +169,25 @@ func (s *RunChatResultGenerationResponseBody) Validate() error {
 }
 
 type RunChatResultGenerationResponseBodyChoices struct {
+	// Three possible values:
+	//
+	// - null while generating;
+	//
+	// - "stop" if generation ends due to a stop condition in the input parameters;
+	//
+	// - "length" if generation ends because the output is too long.
+	//
 	// example:
 	//
 	// null
 	FinishReason *string `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
+	// Sequence number of the generated result. Default is 0.
+	//
 	// example:
 	//
 	// 0
-	Index   *int32                                             `json:"index,omitempty" xml:"index,omitempty"`
+	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
+	// Chat message.
 	Message *RunChatResultGenerationResponseBodyChoicesMessage `json:"message,omitempty" xml:"message,omitempty" type:"Struct"`
 }
 
@@ -211,11 +236,19 @@ func (s *RunChatResultGenerationResponseBodyChoices) Validate() error {
 }
 
 type RunChatResultGenerationResponseBodyChoicesMessage struct {
+	// Message content.
+	//
+	// example:
+	//
+	// 你是谁
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Role.
+	//
 	// example:
 	//
 	// user
-	Role      *string                  `json:"role,omitempty" xml:"role,omitempty"`
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// List of tool calls.
 	ToolCalls []map[string]interface{} `json:"toolCalls,omitempty" xml:"toolCalls,omitempty" type:"Repeated"`
 }
 
@@ -259,22 +292,32 @@ func (s *RunChatResultGenerationResponseBodyChoicesMessage) Validate() error {
 }
 
 type RunChatResultGenerationResponseBodyUsage struct {
+	// Number of images. Returned by models such as wanx.
+	//
 	// example:
 	//
 	// 0
 	ImageCount *int32 `json:"imageCount,omitempty" xml:"imageCount,omitempty"`
+	// Image tokens. Returned by models such as qwen-vl.
+	//
 	// example:
 	//
 	// 0
 	ImageTokens *int32 `json:"imageTokens,omitempty" xml:"imageTokens,omitempty"`
+	// Input tokens.
+	//
 	// example:
 	//
 	// 200
 	InputTokens *int32 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// Output tokens.
+	//
 	// example:
 	//
 	// 300
 	OutputTokens *int32 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// Total tokens.
+	//
 	// example:
 	//
 	// 500

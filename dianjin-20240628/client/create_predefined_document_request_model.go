@@ -20,15 +20,22 @@ type iCreatePredefinedDocumentRequest interface {
 }
 
 type CreatePredefinedDocumentRequest struct {
+	// A list of document chunks.
 	Chunks []*CreatePredefinedDocumentRequestChunks `json:"chunks,omitempty" xml:"chunks,omitempty" type:"Repeated"`
+	// The ID of the document library.
+	//
 	// example:
 	//
 	// a1b2c3
 	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// The metadata.
+	//
 	// example:
 	//
 	// {"a": "1"}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// The title of the document.
+	//
 	// example:
 	//
 	// 测试文档
@@ -93,18 +100,26 @@ func (s *CreatePredefinedDocumentRequest) Validate() error {
 }
 
 type CreatePredefinedDocumentRequestChunks struct {
+	// The metadata for the document chunk.
+	//
 	// example:
 	//
 	// {"a": "1"}
 	ChunkMeta map[string]interface{} `json:"chunkMeta,omitempty" xml:"chunkMeta,omitempty"`
+	// The order of the chunk. This parameter is optional.
+	//
 	// example:
 	//
 	// 1
 	ChunkOrder *int32 `json:"chunkOrder,omitempty" xml:"chunkOrder,omitempty"`
+	// The text content of the document chunk.
+	//
 	// example:
 	//
 	// 这是一段测试文本
 	ChunkText *string `json:"chunkText,omitempty" xml:"chunkText,omitempty"`
+	// The type of the document chunk.
+	//
 	// example:
 	//
 	// text

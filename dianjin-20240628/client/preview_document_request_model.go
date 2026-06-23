@@ -14,6 +14,8 @@ type iPreviewDocumentRequest interface {
 }
 
 type PreviewDocumentRequest struct {
+	// Document ID.
+	//
 	// This parameter is required.
 	//
 	// example:

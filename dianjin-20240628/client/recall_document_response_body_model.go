@@ -28,31 +28,46 @@ type iRecallDocumentResponseBody interface {
 }
 
 type RecallDocumentResponseBody struct {
+	// Time elapsed.
+	//
 	// example:
 	//
 	// 0
-	Cost *int64                          `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Response data.
 	Data *RecallDocumentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Data type.
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0bc13a9517168617617186457e401f
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Success.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp.
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34
@@ -149,24 +164,38 @@ func (s *RecallDocumentResponseBody) Validate() error {
 }
 
 type RecallDocumentResponseBodyData struct {
-	ChunkList     []*RecallDocumentResponseBodyDataChunkList     `json:"chunkList,omitempty" xml:"chunkList,omitempty" type:"Repeated"`
+	// Chunk list.
+	ChunkList []*RecallDocumentResponseBodyDataChunkList `json:"chunkList,omitempty" xml:"chunkList,omitempty" type:"Repeated"`
+	// Chunk part (layout recognition result) list.
 	ChunkPartList []*RecallDocumentResponseBodyDataChunkPartList `json:"chunkPartList,omitempty" xml:"chunkPartList,omitempty" type:"Repeated"`
-	ChunkTextList []*string                                      `json:"chunkTextList,omitempty" xml:"chunkTextList,omitempty" type:"Repeated"`
-	Documents     []*RecallDocumentResponseBodyDataDocuments     `json:"documents,omitempty" xml:"documents,omitempty" type:"Repeated"`
+	// Chunk text list.
+	ChunkTextList []*string `json:"chunkTextList,omitempty" xml:"chunkTextList,omitempty" type:"Repeated"`
+	// Document list.
+	Documents []*RecallDocumentResponseBodyDataDocuments `json:"documents,omitempty" xml:"documents,omitempty" type:"Repeated"`
+	// Vector computation time elapsed.
+	//
 	// example:
 	//
 	// 100
-	EmbeddingElapsedMs *int64                                         `json:"embeddingElapsedMs,omitempty" xml:"embeddingElapsedMs,omitempty"`
-	TextChunkList      []*RecallDocumentResponseBodyDataTextChunkList `json:"textChunkList,omitempty" xml:"textChunkList,omitempty" type:"Repeated"`
+	EmbeddingElapsedMs *int64 `json:"embeddingElapsedMs,omitempty" xml:"embeddingElapsedMs,omitempty"`
+	// List of chunks retrieved from the text index.
+	TextChunkList []*RecallDocumentResponseBodyDataTextChunkList `json:"textChunkList,omitempty" xml:"textChunkList,omitempty" type:"Repeated"`
+	// Text search time elapsed.
+	//
 	// example:
 	//
 	// 100
 	TextSearchElapsedMs *int64 `json:"textSearchElapsedMs,omitempty" xml:"textSearchElapsedMs,omitempty"`
+	// Total time elapsed, including vector computation time, vector search time, and text search time (depending on retrieval parameters).
+	//
 	// example:
 	//
 	// 400
-	TotalElapsedMs  *int64                                           `json:"totalElapsedMs,omitempty" xml:"totalElapsedMs,omitempty"`
+	TotalElapsedMs *int64 `json:"totalElapsedMs,omitempty" xml:"totalElapsedMs,omitempty"`
+	// List of chunks retrieved from the vector index.
 	VectorChunkList []*RecallDocumentResponseBodyDataVectorChunkList `json:"vectorChunkList,omitempty" xml:"vectorChunkList,omitempty" type:"Repeated"`
+	// Vector search time elapsed.
+	//
 	// example:
 	//
 	// 100
@@ -321,49 +350,82 @@ func (s *RecallDocumentResponseBodyData) Validate() error {
 }
 
 type RecallDocumentResponseBodyDataChunkList struct {
+	// Document chunk ID.
+	//
 	// example:
 	//
 	// 823746762354
 	ChunkId *string `json:"chunkId,omitempty" xml:"chunkId,omitempty"`
+	// Document chunk metadata.
+	//
 	// example:
 	//
 	// {"a":"1"}
 	ChunkMeta map[string]interface{} `json:"chunkMeta,omitempty" xml:"chunkMeta,omitempty"`
+	// Document chunk OSS address.
+	//
 	// example:
 	//
 	// http://oss-xxx-hangzhou.com/xxx
 	ChunkOssUrl *string `json:"chunkOssUrl,omitempty" xml:"chunkOssUrl,omitempty"`
-	ChunkText   *string `json:"chunkText,omitempty" xml:"chunkText,omitempty"`
+	// Document chunk text.
+	//
+	// example:
+	//
+	// 测试文档块
+	ChunkText *string `json:"chunkText,omitempty" xml:"chunkText,omitempty"`
+	// Document chunk type.
+	//
 	// example:
 	//
 	// text
 	ChunkType *string `json:"chunkType,omitempty" xml:"chunkType,omitempty"`
+	// Document ID.
+	//
 	// example:
 	//
 	// 839468263472
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// Document type.
+	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	// Document library ID.
+	//
 	// example:
 	//
 	// dscsbdsk
-	LibraryId   *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// Document library name.
+	//
+	// example:
+	//
+	// 测试文档库
 	LibraryName *string `json:"libraryName,omitempty" xml:"libraryName,omitempty"`
+	// Next document chunk ID.
+	//
 	// example:
 	//
 	// 982374872364
-	NextChunkId *string                                       `json:"nextChunkId,omitempty" xml:"nextChunkId,omitempty"`
-	Pos         []*RecallDocumentResponseBodyDataChunkListPos `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
+	NextChunkId *string `json:"nextChunkId,omitempty" xml:"nextChunkId,omitempty"`
+	// Document chunk position.
+	Pos []*RecallDocumentResponseBodyDataChunkListPos `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
+	// Previous document chunk ID.
+	//
 	// example:
 	//
 	// 827364827364832
 	PreChunkId *string `json:"preChunkId,omitempty" xml:"preChunkId,omitempty"`
+	// Document chunk score.
+	//
 	// example:
 	//
 	// 0.5
 	Score *float32 `json:"score,omitempty" xml:"score,omitempty"`
+	// Document title.
+	//
 	// example:
 	//
 	// test
@@ -518,11 +580,15 @@ func (s *RecallDocumentResponseBodyDataChunkList) Validate() error {
 }
 
 type RecallDocumentResponseBodyDataChunkListPos struct {
+	// Coordinates.
 	AxisArray []*float64 `json:"axisArray,omitempty" xml:"axisArray,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
-	Page              *int32   `json:"page,omitempty" xml:"page,omitempty"`
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Text highlight area, used for text-type file highlighting.
 	TextHighlightArea []*int32 `json:"textHighlightArea,omitempty" xml:"textHighlightArea,omitempty" type:"Repeated"`
 }
 
@@ -566,50 +632,86 @@ func (s *RecallDocumentResponseBodyDataChunkListPos) Validate() error {
 }
 
 type RecallDocumentResponseBodyDataChunkPartList struct {
+	// Document chunk ID.
+	//
 	// example:
 	//
 	// 98327482364
 	ChunkId *string `json:"chunkId,omitempty" xml:"chunkId,omitempty"`
+	// Document chunk metadata.
+	//
 	// example:
 	//
 	// {"a":"1"}
 	ChunkMeta map[string]interface{} `json:"chunkMeta,omitempty" xml:"chunkMeta,omitempty"`
+	// Document chunk OSS address.
+	//
 	// example:
 	//
 	// http://oss-xxx-hangzhou.com/xxx
 	ChunkOssUrl *string `json:"chunkOssUrl,omitempty" xml:"chunkOssUrl,omitempty"`
-	ChunkText   *string `json:"chunkText,omitempty" xml:"chunkText,omitempty"`
+	// Document chunk text.
+	//
+	// example:
+	//
+	// 测试文档块
+	ChunkText *string `json:"chunkText,omitempty" xml:"chunkText,omitempty"`
+	// Document chunk type.
+	//
 	// example:
 	//
 	// text
 	ChunkType *string `json:"chunkType,omitempty" xml:"chunkType,omitempty"`
+	// Document ID.
+	//
 	// example:
 	//
 	// 92837482364
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// Document type.
+	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	// Document library ID.
+	//
 	// example:
 	//
 	// sjdhgjsd
-	LibraryId   *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// Document library name.
+	//
+	// example:
+	//
+	// 测试文档库
 	LibraryName *string `json:"libraryName,omitempty" xml:"libraryName,omitempty"`
+	// Next document chunk ID.
+	//
 	// example:
 	//
 	// 2387648263542
-	NextChunkId *string                                           `json:"nextChunkId,omitempty" xml:"nextChunkId,omitempty"`
-	Pos         []*RecallDocumentResponseBodyDataChunkPartListPos `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
+	NextChunkId *string `json:"nextChunkId,omitempty" xml:"nextChunkId,omitempty"`
+	// Document chunk position.
+	Pos []*RecallDocumentResponseBodyDataChunkPartListPos `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
+	// Previous document chunk ID.
+	//
 	// example:
 	//
 	// 32874682764
 	PreChunkId *string `json:"preChunkId,omitempty" xml:"preChunkId,omitempty"`
+	// Document chunk score.
+	//
 	// example:
 	//
 	// 0.5
 	Score *float32 `json:"score,omitempty" xml:"score,omitempty"`
-	Title *string  `json:"title,omitempty" xml:"title,omitempty"`
+	// Document title.
+	//
+	// example:
+	//
+	// 测试文档标题
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s RecallDocumentResponseBodyDataChunkPartList) String() string {
@@ -760,11 +862,15 @@ func (s *RecallDocumentResponseBodyDataChunkPartList) Validate() error {
 }
 
 type RecallDocumentResponseBodyDataChunkPartListPos struct {
+	// Coordinates.
 	AxisArray []*float64 `json:"axisArray,omitempty" xml:"axisArray,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
-	Page              *int32   `json:"page,omitempty" xml:"page,omitempty"`
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Text highlight area, used for text-type file highlighting.
 	TextHighlightArea []*int32 `json:"textHighlightArea,omitempty" xml:"textHighlightArea,omitempty" type:"Repeated"`
 }
 
@@ -808,30 +914,44 @@ func (s *RecallDocumentResponseBodyDataChunkPartListPos) Validate() error {
 }
 
 type RecallDocumentResponseBodyDataDocuments struct {
+	// Document ID.
+	//
 	// example:
 	//
 	// 92837482364
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// Document metadata.
+	//
 	// example:
 	//
 	// {"a":"1"}
 	DocumentMeta map[string]interface{} `json:"documentMeta,omitempty" xml:"documentMeta,omitempty"`
+	// Document type.
+	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// Document library ID.
+	//
 	// example:
 	//
 	// sjdhgjsd
 	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// Document title.
+	//
 	// example:
 	//
 	// test
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Document link.
+	//
 	// example:
 	//
 	// http://oss-xxx-hangzhou.com/test.pdf
@@ -914,50 +1034,86 @@ func (s *RecallDocumentResponseBodyDataDocuments) Validate() error {
 }
 
 type RecallDocumentResponseBodyDataTextChunkList struct {
+	// Document chunk ID.
+	//
 	// example:
 	//
 	// 32874682364
 	ChunkId *string `json:"chunkId,omitempty" xml:"chunkId,omitempty"`
+	// Document chunk metadata.
+	//
 	// example:
 	//
 	// {"a":"1"}
 	ChunkMeta map[string]interface{} `json:"chunkMeta,omitempty" xml:"chunkMeta,omitempty"`
+	// Document chunk OSS address.
+	//
 	// example:
 	//
 	// http://oss-xxx-hangzhou.com/xxx
 	ChunkOssUrl *string `json:"chunkOssUrl,omitempty" xml:"chunkOssUrl,omitempty"`
-	ChunkText   *string `json:"chunkText,omitempty" xml:"chunkText,omitempty"`
+	// Document chunk text.
+	//
+	// example:
+	//
+	// 这是一段测试文档块
+	ChunkText *string `json:"chunkText,omitempty" xml:"chunkText,omitempty"`
+	// Document chunk type.
+	//
 	// example:
 	//
 	// text
 	ChunkType *string `json:"chunkType,omitempty" xml:"chunkType,omitempty"`
+	// Document ID.
+	//
 	// example:
 	//
 	// 8372467263542
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// Document type.
+	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	// Document library ID.
+	//
 	// example:
 	//
 	// djsgfsjd
-	LibraryId   *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// Document library name.
+	//
+	// example:
+	//
+	// 测试文档库
 	LibraryName *string `json:"libraryName,omitempty" xml:"libraryName,omitempty"`
+	// Next document chunk ID.
+	//
 	// example:
 	//
 	// 23874682432
-	NextChunkId *string                                           `json:"nextChunkId,omitempty" xml:"nextChunkId,omitempty"`
-	Pos         []*RecallDocumentResponseBodyDataTextChunkListPos `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
+	NextChunkId *string `json:"nextChunkId,omitempty" xml:"nextChunkId,omitempty"`
+	// Document chunk position.
+	Pos []*RecallDocumentResponseBodyDataTextChunkListPos `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
+	// Previous document chunk ID.
+	//
 	// example:
 	//
 	// 89473868346
 	PreChunkId *string `json:"preChunkId,omitempty" xml:"preChunkId,omitempty"`
+	// Document chunk score.
+	//
 	// example:
 	//
 	// 0.5
 	Score *float32 `json:"score,omitempty" xml:"score,omitempty"`
-	Title *string  `json:"title,omitempty" xml:"title,omitempty"`
+	// Document title.
+	//
+	// example:
+	//
+	// 测试文档标题
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s RecallDocumentResponseBodyDataTextChunkList) String() string {
@@ -1108,11 +1264,15 @@ func (s *RecallDocumentResponseBodyDataTextChunkList) Validate() error {
 }
 
 type RecallDocumentResponseBodyDataTextChunkListPos struct {
+	// Coordinates.
 	AxisArray []*float64 `json:"axisArray,omitempty" xml:"axisArray,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
-	Page              *int32   `json:"page,omitempty" xml:"page,omitempty"`
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Text highlight area, used for text-type file highlighting.
 	TextHighlightArea []*int32 `json:"textHighlightArea,omitempty" xml:"textHighlightArea,omitempty" type:"Repeated"`
 }
 
@@ -1156,49 +1316,82 @@ func (s *RecallDocumentResponseBodyDataTextChunkListPos) Validate() error {
 }
 
 type RecallDocumentResponseBodyDataVectorChunkList struct {
+	// Document chunk ID.
+	//
 	// example:
 	//
 	// 8723642345276
 	ChunkId *string `json:"chunkId,omitempty" xml:"chunkId,omitempty"`
+	// Document chunk metadata.
+	//
 	// example:
 	//
 	// {"a":"1"}
 	ChunkMeta map[string]interface{} `json:"chunkMeta,omitempty" xml:"chunkMeta,omitempty"`
+	// Document chunk OSS address.
+	//
 	// example:
 	//
 	// https://oss-xxxx-hangzhou.com/test.pdf
 	ChunkOssUrl *string `json:"chunkOssUrl,omitempty" xml:"chunkOssUrl,omitempty"`
-	ChunkText   *string `json:"chunkText,omitempty" xml:"chunkText,omitempty"`
+	// Document chunk text.
+	//
+	// example:
+	//
+	// 这是一段测试文本
+	ChunkText *string `json:"chunkText,omitempty" xml:"chunkText,omitempty"`
+	// Document chunk type.
+	//
 	// example:
 	//
 	// text
 	ChunkType *string `json:"chunkType,omitempty" xml:"chunkType,omitempty"`
+	// Document ID.
+	//
 	// example:
 	//
 	// 78326476235675372
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// Document type.
+	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	// Document library ID.
+	//
 	// example:
 	//
 	// djsgfsjd
-	LibraryId   *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// Document library name.
+	//
+	// example:
+	//
+	// 测试文档库
 	LibraryName *string `json:"libraryName,omitempty" xml:"libraryName,omitempty"`
+	// Next document chunk ID.
+	//
 	// example:
 	//
 	// 293846872343
-	NextChunkId *string                                             `json:"nextChunkId,omitempty" xml:"nextChunkId,omitempty"`
-	Pos         []*RecallDocumentResponseBodyDataVectorChunkListPos `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
+	NextChunkId *string `json:"nextChunkId,omitempty" xml:"nextChunkId,omitempty"`
+	// Document chunk position.
+	Pos []*RecallDocumentResponseBodyDataVectorChunkListPos `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
+	// Previous document chunk ID.
+	//
 	// example:
 	//
 	// 873647326542
 	PreChunkId *string `json:"preChunkId,omitempty" xml:"preChunkId,omitempty"`
+	// Document chunk score.
+	//
 	// example:
 	//
 	// 0.5
 	Score *float32 `json:"score,omitempty" xml:"score,omitempty"`
+	// Document title.
+	//
 	// example:
 	//
 	// test
@@ -1353,11 +1546,15 @@ func (s *RecallDocumentResponseBodyDataVectorChunkList) Validate() error {
 }
 
 type RecallDocumentResponseBodyDataVectorChunkListPos struct {
+	// Coordinates.
 	AxisArray []*float64 `json:"axisArray,omitempty" xml:"axisArray,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
-	Page              *int32   `json:"page,omitempty" xml:"page,omitempty"`
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Text highlight area, used for text-type file highlighting.
 	TextHighlightArea []*int32 `json:"textHighlightArea,omitempty" xml:"textHighlightArea,omitempty" type:"Repeated"`
 }
 

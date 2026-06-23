@@ -29,16 +29,10 @@ type GetUsageResponseBody struct {
 	Data *GetUsageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// example:
 	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// false
-	RetryAble *bool `json:"retryAble,omitempty" xml:"retryAble,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// ok
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RetryAble *bool   `json:"retryAble,omitempty" xml:"retryAble,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetUsageResponseBody) String() string {
@@ -175,7 +169,7 @@ type GetUsageResponseBodyDataEntitlements struct {
 	AllowedModels []*string `json:"allowedModels,omitempty" xml:"allowedModels,omitempty" type:"Repeated"`
 	// example:
 	//
-	// 238746
+	// 1
 	BindingId *int64 `json:"bindingId,omitempty" xml:"bindingId,omitempty"`
 	// example:
 	//
@@ -183,27 +177,27 @@ type GetUsageResponseBodyDataEntitlements struct {
 	EffectiveAt *string `json:"effectiveAt,omitempty" xml:"effectiveAt,omitempty"`
 	// example:
 	//
-	// 2024-01-31T00:00:00Z
+	// 2024-01-01T00:00:00Z
 	ExpireAt *string `json:"expireAt,omitempty" xml:"expireAt,omitempty"`
 	// example:
 	//
-	// 1000
+	// 1
 	QuotaInitial *int64 `json:"quotaInitial,omitempty" xml:"quotaInitial,omitempty"`
 	// example:
 	//
-	// 500
+	// 1
 	QuotaRemaining *int64 `json:"quotaRemaining,omitempty" xml:"quotaRemaining,omitempty"`
 	// example:
 	//
-	// 500
+	// 1
 	QuotaUsed *int64 `json:"quotaUsed,omitempty" xml:"quotaUsed,omitempty"`
 	// example:
 	//
-	// ACTIVE
+	// success
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// example:
 	//
-	// 893724
+	// 1
 	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
 	// example:
 	//
@@ -316,15 +310,15 @@ func (s *GetUsageResponseBodyDataEntitlements) Validate() error {
 type GetUsageResponseBodyDataModelStats struct {
 	// example:
 	//
-	// 1000
+	// 50
 	InputUsage *int64 `json:"inputUsage,omitempty" xml:"inputUsage,omitempty"`
 	// example:
 	//
-	// qwen-turbo
+	// qwen-max
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
 	// example:
 	//
-	// 500
+	// 50
 	OutputUsage *int64 `json:"outputUsage,omitempty" xml:"outputUsage,omitempty"`
 	// example:
 	//
@@ -332,7 +326,7 @@ type GetUsageResponseBodyDataModelStats struct {
 	Requests *int64 `json:"requests,omitempty" xml:"requests,omitempty"`
 	// example:
 	//
-	// 1500
+	// 100
 	TotalUsage *int64 `json:"totalUsage,omitempty" xml:"totalUsage,omitempty"`
 }
 
@@ -396,11 +390,11 @@ func (s *GetUsageResponseBodyDataModelStats) Validate() error {
 type GetUsageResponseBodyDataSummary struct {
 	// example:
 	//
-	// 500
+	// 50
 	TotalInputUsage *int64 `json:"totalInputUsage,omitempty" xml:"totalInputUsage,omitempty"`
 	// example:
 	//
-	// 500
+	// 50
 	TotalOutputUsage *int64 `json:"totalOutputUsage,omitempty" xml:"totalOutputUsage,omitempty"`
 	// example:
 	//
@@ -408,7 +402,7 @@ type GetUsageResponseBodyDataSummary struct {
 	TotalRequests *int64 `json:"totalRequests,omitempty" xml:"totalRequests,omitempty"`
 	// example:
 	//
-	// 1000
+	// 100
 	TotalUsage *int64 `json:"totalUsage,omitempty" xml:"totalUsage,omitempty"`
 }
 

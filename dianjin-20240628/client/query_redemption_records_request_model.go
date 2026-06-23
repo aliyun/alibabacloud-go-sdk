@@ -22,7 +22,7 @@ type iQueryRedemptionRecordsRequest interface {
 type QueryRedemptionRecordsRequest struct {
 	// example:
 	//
-	// 1001
+	// 1
 	ExternalUserId *string `json:"externalUserId,omitempty" xml:"externalUserId,omitempty"`
 	// example:
 	//
@@ -34,7 +34,7 @@ type QueryRedemptionRecordsRequest struct {
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// example:
 	//
-	// ORD20240101000001
+	// 1
 	RedemptionOrderNo *string `json:"redemptionOrderNo,omitempty" xml:"redemptionOrderNo,omitempty"`
 }
 

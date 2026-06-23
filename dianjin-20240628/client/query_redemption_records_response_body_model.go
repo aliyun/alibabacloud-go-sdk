@@ -29,16 +29,10 @@ type QueryRedemptionRecordsResponseBody struct {
 	Data *QueryRedemptionRecordsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// example:
 	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// false
-	RetryAble *bool `json:"retryAble,omitempty" xml:"retryAble,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// ok
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RetryAble *bool   `json:"retryAble,omitempty" xml:"retryAble,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s QueryRedemptionRecordsResponseBody) String() string {
@@ -115,7 +109,7 @@ type QueryRedemptionRecordsResponseBodyData struct {
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// example:
 	//
-	// 0
+	// 100
 	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 	// example:
 	//
@@ -197,7 +191,7 @@ type QueryRedemptionRecordsResponseBodyDataItems struct {
 	EffectiveAt *string `json:"effectiveAt,omitempty" xml:"effectiveAt,omitempty"`
 	// example:
 	//
-	// 2024-01-31T23:59:59Z
+	// 2024-01-01T00:00:00Z
 	ExpireAt *string `json:"expireAt,omitempty" xml:"expireAt,omitempty"`
 	// example:
 	//
@@ -209,15 +203,15 @@ type QueryRedemptionRecordsResponseBodyDataItems struct {
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
 	// example:
 	//
-	// a1b2c3d4e5f6...
+	// 1
 	KeyHash *string `json:"keyHash,omitempty" xml:"keyHash,omitempty"`
 	// example:
 	//
-	// AR123233333
+	// 1
 	OutBizNo *string `json:"outBizNo,omitempty" xml:"outBizNo,omitempty"`
 	// example:
 	//
-	// 500
+	// 100
 	QuotaBalance *int64 `json:"quotaBalance,omitempty" xml:"quotaBalance,omitempty"`
 	// example:
 	//
@@ -225,7 +219,7 @@ type QueryRedemptionRecordsResponseBodyDataItems struct {
 	QuotaStatus *string `json:"quotaStatus,omitempty" xml:"quotaStatus,omitempty"`
 	// example:
 	//
-	// ORD20240101000001
+	// 1
 	RedemptionOrderNo *string `json:"redemptionOrderNo,omitempty" xml:"redemptionOrderNo,omitempty"`
 	// example:
 	//
@@ -233,11 +227,11 @@ type QueryRedemptionRecordsResponseBodyDataItems struct {
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// example:
 	//
-	// 37624
+	// 1
 	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
 	// example:
 	//
-	// 10001
+	// 1
 	TenantId *int64 `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

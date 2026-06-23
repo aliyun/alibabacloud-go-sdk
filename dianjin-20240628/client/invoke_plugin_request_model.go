@@ -16,7 +16,30 @@ type iInvokePluginRequest interface {
 }
 
 type InvokePluginRequest struct {
+	// Request parameters.
+	//
+	// example:
+	//
+	// {
+	//
+	//         "query": "介绍一下贵金属业务",
+	//
+	//         "filters": [
+	//
+	//             {
+	//
+	//                 "libraryId": "9xznrxw"
+	//
+	//             }
+	//
+	//         ],
+	//
+	//         "topK": 1
+	//
+	//     }
 	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
+	// The plugin ID.
+	//
 	// example:
 	//
 	// 3mj87da7zr

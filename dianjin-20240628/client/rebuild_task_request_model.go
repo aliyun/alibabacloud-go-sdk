@@ -14,6 +14,8 @@ type iRebuildTaskRequest interface {
 }
 
 type RebuildTaskRequest struct {
+	// A list of task IDs.
+	//
 	// This parameter is required.
 	TaskIds []*string `json:"taskIds,omitempty" xml:"taskIds,omitempty" type:"Repeated"`
 }

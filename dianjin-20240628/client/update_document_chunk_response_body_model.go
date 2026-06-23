@@ -28,34 +28,50 @@ type iUpdateDocumentChunkResponseBody interface {
 }
 
 type UpdateDocumentChunkResponseBody struct {
+	// Processing time
+	//
 	// example:
 	//
 	// null
 	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Response data.
+	//
 	// example:
 	//
 	// SUCCESS
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// Data type.
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 003D019A-1BB3-53EC-A0D2-CE76DA5D73B1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Is successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Timestamp.
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00

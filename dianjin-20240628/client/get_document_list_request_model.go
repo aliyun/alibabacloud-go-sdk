@@ -20,21 +20,32 @@ type iGetDocumentListRequest interface {
 }
 
 type GetDocumentListRequest struct {
+	// The document library ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3akzl28vap
 	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Status   *string `json:"status,omitempty" xml:"status,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The document status.
+	//
+	// example:
+	//
+	// 即将可用
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s GetDocumentListRequest) String() string {

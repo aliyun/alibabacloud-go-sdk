@@ -16,8 +16,12 @@ type iDeleteDocumentRequest interface {
 }
 
 type DeleteDocumentRequest struct {
+	// List of document IDs.
+	//
 	// This parameter is required.
 	DocIds []*string `json:"docIds,omitempty" xml:"docIds,omitempty" type:"Repeated"`
+	// Document library ID.
+	//
 	// This parameter is required.
 	//
 	// example:

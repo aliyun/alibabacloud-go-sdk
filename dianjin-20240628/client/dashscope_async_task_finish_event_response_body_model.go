@@ -20,16 +20,22 @@ type iDashscopeAsyncTaskFinishEventResponseBody interface {
 }
 
 type DashscopeAsyncTaskFinishEventResponseBody struct {
+	// Return code
+	//
 	// example:
 	//
 	// 0
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Return message
+	//
 	// example:
 	//
 	// 成功
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
-	RetryAble *bool   `json:"retryAble,omitempty" xml:"retryAble,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Indicates whether the operation can be retried
+	RetryAble *bool `json:"retryAble,omitempty" xml:"retryAble,omitempty"`
+	// Indicates whether the operation succeeded
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DashscopeAsyncTaskFinishEventResponseBody) String() string {

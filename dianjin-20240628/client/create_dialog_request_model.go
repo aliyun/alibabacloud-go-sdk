@@ -26,31 +26,50 @@ type iCreateDialogRequest interface {
 }
 
 type CreateDialogRequest struct {
+	// The channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// taobao
-	Channel       *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	EnableLibrary *bool   `json:"enableLibrary,omitempty" xml:"enableLibrary,omitempty"`
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// Specifies whether to enable the intent library.
+	//
+	// example:
+	//
+	// false
+	EnableLibrary *bool `json:"enableLibrary,omitempty" xml:"enableLibrary,omitempty"`
+	// Other information.
+	//
 	// example:
 	//
 	// null
 	MetaData map[string]interface{} `json:"metaData,omitempty" xml:"metaData,omitempty"`
+	// The playbook code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// live_broadcast_qa
-	PlayCode      *string   `json:"playCode,omitempty" xml:"playCode,omitempty"`
+	PlayCode *string `json:"playCode,omitempty" xml:"playCode,omitempty"`
+	// A list of Q\\&A library IDs.
 	QaLibraryList []*string `json:"qaLibraryList,omitempty" xml:"qaLibraryList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ebf83826-dc1c-46f8-9759-0fb6da4c8xxx
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	SelfDirected *bool   `json:"selfDirected,omitempty" xml:"selfDirected,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Specifies whether to enable autonomous Q\\&A.
+	//
+	// example:
+	//
+	// false
+	SelfDirected *bool `json:"selfDirected,omitempty" xml:"selfDirected,omitempty"`
 }
 
 func (s CreateDialogRequest) String() string {

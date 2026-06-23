@@ -22,9 +22,28 @@ type iCreateDialogAnalysisTaskRequest interface {
 }
 
 type CreateDialogAnalysisTaskRequest struct {
+	// A list of analysis nodes. If you leave this parameter empty, all nodes are analyzed. You can specify one or more nodes.
 	AnalysisNodes []*string `json:"analysisNodes,omitempty" xml:"analysisNodes,omitempty" type:"Repeated"`
+	// The session content. You can specify multiple sessions.
+	//
 	// This parameter is required.
 	ConversationList []*CreateDialogAnalysisTaskRequestConversationList `json:"conversationList,omitempty" xml:"conversationList,omitempty" type:"Repeated"`
+	// The metadata. This includes business-related properties that are used during session analysis. The business system passes these properties in real time when it initiates the analysis task.
+	//
+	// ```
+	//
+	// {
+	//
+	//   "labels": "XXX",  // Tags
+	//
+	//   "summaryConstraints": "XXX",   // Summary dimensions
+	//
+	//   "sopInfo": "XXX"  // SOP information
+	//
+	// }
+	//
+	// ```
+	//
 	// example:
 	//
 	// {
@@ -37,12 +56,16 @@ type CreateDialogAnalysisTaskRequest struct {
 	//
 	// }
 	MetaData map[string]interface{} `json:"metaData,omitempty" xml:"metaData,omitempty"`
+	// The session scenario code, which is associated with the session analysis configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// common
 	PlayCode *string `json:"playCode,omitempty" xml:"playCode,omitempty"`
+	// The request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -118,6 +141,8 @@ func (s *CreateDialogAnalysisTaskRequest) Validate() error {
 }
 
 type CreateDialogAnalysisTaskRequestConversationList struct {
+	// A list of dialogues.
+	//
 	// This parameter is required.
 	DialogueList []*CreateDialogAnalysisTaskRequestConversationListDialogueList `json:"dialogueList,omitempty" xml:"dialogueList,omitempty" type:"Repeated"`
 }
@@ -153,8 +178,16 @@ func (s *CreateDialogAnalysisTaskRequestConversationList) Validate() error {
 }
 
 type CreateDialogAnalysisTaskRequestConversationListDialogueList struct {
+	// The content of the dialogue.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 您好，我是2001，很高兴为您服务！
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The role.
+	//
 	// This parameter is required.
 	//
 	// example:

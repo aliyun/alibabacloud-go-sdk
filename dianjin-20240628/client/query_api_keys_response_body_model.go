@@ -30,15 +30,9 @@ type QueryApiKeysResponseBody struct {
 	// example:
 	//
 	// ok
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// false
-	RetryAble *bool `json:"retryAble,omitempty" xml:"retryAble,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RetryAble *bool   `json:"retryAble,omitempty" xml:"retryAble,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s QueryApiKeysResponseBody) String() string {
@@ -110,7 +104,7 @@ func (s *QueryApiKeysResponseBody) Validate() error {
 type QueryApiKeysResponseBodyData struct {
 	// example:
 	//
-	// 2024-12-31T23:59:59Z
+	// 2024-01-01T00:00:00Z
 	ExpiresAt *string `json:"expiresAt,omitempty" xml:"expiresAt,omitempty"`
 	// example:
 	//
@@ -122,21 +116,19 @@ type QueryApiKeysResponseBodyData struct {
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	// example:
 	//
-	// a1b2c3d4e5f6...
+	// 1
 	KeyHash *string `json:"keyHash,omitempty" xml:"keyHash,omitempty"`
-	// **API Key ID**
-	//
 	// example:
 	//
-	// key_001
+	// 1
 	KeyId *string `json:"keyId,omitempty" xml:"keyId,omitempty"`
 	// example:
 	//
-	// ACTIVE
+	// success
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// example:
 	//
-	// 100
+	// 1
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

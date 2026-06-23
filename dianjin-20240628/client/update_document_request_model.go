@@ -20,18 +20,24 @@ type iUpdateDocumentRequest interface {
 }
 
 type UpdateDocumentRequest struct {
+	// Document ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// Document library ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// abc123
 	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// Document metadata.
+	//
 	// example:
 	//
 	// {
@@ -40,6 +46,8 @@ type UpdateDocumentRequest struct {
 	//
 	//     }
 	Meta map[string]interface{} `json:"meta,omitempty" xml:"meta,omitempty"`
+	// Document title.
+	//
 	// example:
 	//
 	// test

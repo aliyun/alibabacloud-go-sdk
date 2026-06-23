@@ -20,22 +20,30 @@ type iGetHistoryListByBizTypeRequest interface {
 }
 
 type GetHistoryListByBizTypeRequest struct {
+	// Unique business identifier. When bizType is LibraryChat, bizId is the document library ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// GysYBsxx
 	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	// Business type. Supported values are LlmChat and LibraryChat.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// LibraryChat
 	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Number of records per page
+	//
 	// example:
 	//
 	// 10

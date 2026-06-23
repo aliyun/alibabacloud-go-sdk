@@ -14,6 +14,8 @@ type iGetQualityCheckTaskResultRequest interface {
 }
 
 type GetQualityCheckTaskResultRequest struct {
+	// Task ID
+	//
 	// This parameter is required.
 	//
 	// example:

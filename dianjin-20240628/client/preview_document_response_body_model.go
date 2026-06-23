@@ -28,31 +28,46 @@ type iPreviewDocumentResponseBody interface {
 }
 
 type PreviewDocumentResponseBody struct {
+	// Time consumed.
+	//
 	// example:
 	//
 	// null
-	Cost *int64                           `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// Returned data.
 	Data *PreviewDocumentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Data type.
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// Error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ff551395-1c8a-4f30-8ffd-ef7e87c70b4c
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Is successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Time.
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34
@@ -149,18 +164,26 @@ func (s *PreviewDocumentResponseBody) Validate() error {
 }
 
 type PreviewDocumentResponseBodyData struct {
+	// Preview type.
+	//
 	// example:
 	//
 	// pdf
 	PreviewType *string `json:"previewType,omitempty" xml:"previewType,omitempty"`
+	// Document title.
+	//
 	// example:
 	//
 	// test
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Upload time.
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
 	UploadTime *string `json:"uploadTime,omitempty" xml:"uploadTime,omitempty"`
+	// Document URL.
+	//
 	// example:
 	//
 	// https://agi.alicdn.com/user/d0o/d3c1f50d-a6c2-49b3-b0c8-3e613c3f20ee_16872_3236784461.png

@@ -14,6 +14,8 @@ type iGetDocumentUrlRequest interface {
 }
 
 type GetDocumentUrlRequest struct {
+	// The document ID.
+	//
 	// This parameter is required.
 	//
 	// example:

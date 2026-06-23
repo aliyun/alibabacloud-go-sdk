@@ -18,15 +18,24 @@ type iGetLibraryListRequest interface {
 }
 
 type GetLibraryListRequest struct {
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Number of records per page
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Query    *string `json:"query,omitempty" xml:"query,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Search keywords. Supports document library names and descriptions.
+	//
+	// example:
+	//
+	// 测试文档库
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 }
 
 func (s GetLibraryListRequest) String() string {

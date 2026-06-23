@@ -14,6 +14,8 @@ type iGetDialogDetailRequest interface {
 }
 
 type GetDialogDetailRequest struct {
+	// Session ID
+	//
 	// This parameter is required.
 	//
 	// example:

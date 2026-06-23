@@ -28,31 +28,46 @@ type iGetParseResultResponseBody interface {
 }
 
 type GetParseResultResponseBody struct {
+	// The time consumed.
+	//
 	// example:
 	//
 	// null
-	Cost *int64                          `json:"cost,omitempty" xml:"cost,omitempty"`
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// The response data.
 	Data *GetParseResultResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The data type.
+	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0abb793617204049360065953ec6dd
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The timestamp.
+	//
 	// example:
 	//
 	// 2024-04-24 11:54:34
@@ -149,18 +164,26 @@ func (s *GetParseResultResponseBody) Validate() error {
 }
 
 type GetParseResultResponseBodyData struct {
+	// The file type.
+	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	// The provider type.
+	//
 	// example:
 	//
 	// null
 	ProviderType *string `json:"providerType,omitempty" xml:"providerType,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// b0a202e2-5031-4589-a6d7-39185f0d8d01
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The parsing result.
+	//
 	// example:
 	//
 	// {
@@ -174,8 +197,15 @@ type GetParseResultResponseBodyData struct {
 	//           "TaskId": "docmind-20240601-123abc"
 	//
 	//         }
-	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
-	ResultUrl *string                `json:"resultUrl,omitempty" xml:"resultUrl,omitempty"`
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	// The parsing result returned as a URL. You can download it directly. Note: Only PDF, DOC, DOCX, PPT, and PPTX file types have parsing results.
+	//
+	// example:
+	//
+	// https://xxx.oss-cn-beijing.aliyuncs.com/library/3mjeoywx7z/1826661605606129665.json
+	ResultUrl *string `json:"resultUrl,omitempty" xml:"resultUrl,omitempty"`
+	// The document parsing status.
+	//
 	// example:
 	//
 	// WaitRefresh
