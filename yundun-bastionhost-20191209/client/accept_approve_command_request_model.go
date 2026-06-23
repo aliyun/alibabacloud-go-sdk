@@ -20,7 +20,7 @@ type iAcceptApproveCommandRequest interface {
 type AcceptApproveCommandRequest struct {
 	// The ID of the command that you want to approve.
 	//
-	// >  You can call the [ListApproveCommands](https://help.aliyun.com/document_detail/2584310.html) operation to query the IDs of all commands that need to be reviewed.
+	// > You can call the [ListApproveCommands](https://help.aliyun.com/document_detail/2584310.html) operation to query the IDs of all commands that need to be reviewed.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type AcceptApproveCommandRequest struct {
 	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
 	// The ID of the bastion host.
 	//
-	// >  You can call the DescribeInstances operation to query the ID of the bastion host.
+	// > You can call the DescribeInstances operation to query the ID of the bastion host.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type AcceptApproveCommandRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

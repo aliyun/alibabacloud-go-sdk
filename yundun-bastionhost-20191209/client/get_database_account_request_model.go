@@ -20,7 +20,7 @@ type iGetDatabaseAccountRequest interface {
 type GetDatabaseAccountRequest struct {
 	// The ID of the database account to query.
 	//
-	// >  You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+	// > You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
 	//
 	// This parameter is required.
 	//

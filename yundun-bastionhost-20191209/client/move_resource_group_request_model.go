@@ -20,7 +20,7 @@ type iMoveResourceGroupRequest interface {
 }
 
 type MoveResourceGroupRequest struct {
-	// The region ID of the bastion host.
+	// The region ID of the Bastionhost instance.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type MoveResourceGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the bastion host is moved.
+	// The ID of the destination resource group.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the resource group ID of the bastion host.
+	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the resource group ID of the Bastionhost instance.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type MoveResourceGroupRequest struct {
 	//
 	// rg-aekznp3oyo****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the bastion host for which you want to change the resource group.
+	// The ID of the Bastionhost instance whose resource group you want to change.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the ID of the Bastionhost instance.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type MoveResourceGroupRequest struct {
 	//
 	// bastionhost-cn-78v1gh****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. Set the value to **INSTANCE**, which indicates that the resource is a bastion host.
+	// The resource type. Set the value to **INSTANCE**, which indicates that the resource is a Bastionhost instance.
 	//
 	// This parameter is required.
 	//

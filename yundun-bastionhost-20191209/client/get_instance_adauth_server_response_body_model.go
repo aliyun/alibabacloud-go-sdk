@@ -94,9 +94,9 @@ type GetInstanceADAuthServerResponseBodyAD struct {
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// Indicates whether passwords are required. Valid values:
 	//
-	// 	- **true**:
+	// - **true**:
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -104,9 +104,9 @@ type GetInstanceADAuthServerResponseBodyAD struct {
 	HasPassword *bool `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
 	// Indicates whether SSL is supported. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

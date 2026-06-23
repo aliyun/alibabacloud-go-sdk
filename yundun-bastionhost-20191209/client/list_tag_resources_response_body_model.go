@@ -18,7 +18,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token for starting the next query.
+	// The token to start the next query.
 	//
 	// example:
 	//
@@ -30,9 +30,9 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 134D6018-EB68-4B7C-BABF-4DB09023E014
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about Bastionhost instances and the tags bound to Bastionhost instances.
+	// A list of Bastionhost instances and their tags.
 	//
-	// The following information is included: instance ID, resource type, tag key, and tag value.
+	// This list includes the instance ID, resource type, tag key, and tag value.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -85,27 +85,27 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// bastionhost-cn-78v1gc****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
-	// The returned value is INSTANCE, which indicates that the resource is a Bastionhost instance.
+	// The only valid value is INSTANCE, which indicates a Bastionhost instance.
 	//
 	// example:
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// test
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

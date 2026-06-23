@@ -84,7 +84,7 @@ type DetachDatabaseAccountsFromUserGroupResponseBodyResults struct {
 	//
 	// example:
 	//
-	// N/A
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The user group ID.
 	//
@@ -177,7 +177,7 @@ type DetachDatabaseAccountsFromUserGroupResponseBodyResultsDatabaseAccounts stru
 	//
 	// example:
 	//
-	// N/A
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

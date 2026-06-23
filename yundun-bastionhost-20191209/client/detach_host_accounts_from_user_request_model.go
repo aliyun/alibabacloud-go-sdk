@@ -22,7 +22,7 @@ type iDetachHostAccountsFromUserRequest interface {
 type DetachHostAccountsFromUserRequest struct {
 	// The IDs of the hosts and host accounts on which you want to revoke permissions from the user. You can specify up to 10 host IDs and up to 10 host account IDs for each host. You can specify only host IDs. In this case, the permissions on the specified hosts and all accounts of the hosts are revoked from the user. For more information about this parameter, see the Description of the Hosts parameter section of this topic.
 	//
-	// >  You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the host IDs and the [ListHostAccountsForUser](https://help.aliyun.com/document_detail/466581.html) operation to query the host account IDs.
+	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the host IDs and the [ListHostAccountsForUser](https://help.aliyun.com/document_detail/466581.html) operation to query the host account IDs.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DetachHostAccountsFromUserRequest struct {
 	Hosts *string `json:"Hosts,omitempty" xml:"Hosts,omitempty"`
 	// The ID of the bastion host on which you want to revoke permissions on the specified hosts and host accounts from the user.
 	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DetachHostAccountsFromUserRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the bastion host on which you want to revoke permissions on the specified hosts and host accounts from the user.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DetachHostAccountsFromUserRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user from whom you want to revoke permissions on the specified hosts and host accounts.
 	//
-	// >  You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
+	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
 	//
 	// This parameter is required.
 	//

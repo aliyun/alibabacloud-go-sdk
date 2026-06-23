@@ -68,19 +68,19 @@ func (s *AddHostsToGroupResponseBody) Validate() error {
 type AddHostsToGroupResponseBodyResults struct {
 	// The return code that indicates whether the call was successful. Valid values:
 	//
-	// 	- **OK**: The call was successful.
+	// - **OK**: The call was successful.
 	//
-	// 	- **UNEXPECTED**: An unknown error occurred.
+	// - **UNEXPECTED**: An unknown error occurred.
 	//
-	// 	- **INVALID_ARGUMENT**: A request parameter is invalid.
+	// - **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
-	//     >Make sure that the request parameters are valid and call the operation again.
+	//   > Make sure that the request parameters are valid and call the operation again.
 	//
-	// 	- **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
 	//
-	//     > Make sure that the specified bastion host ID and host IDs are valid. Then, call the operation again.
+	//   > Make sure that the specified bastion host ID and host IDs are valid. Then, call the operation again.
 	//
-	// 	- **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type AddHostsToGroupResponseBodyResults struct {
 	//
 	// example:
 	//
-	// N/A
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

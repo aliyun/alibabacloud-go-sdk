@@ -18,13 +18,16 @@ type iImportKMSSecretsForHostResponseBody interface {
 }
 
 type ImportKMSSecretsForHostResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*ImportKMSSecretsForHostResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The import result for each secret.
+	Results []*ImportKMSSecretsForHostResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// The number of secrets that were successfully imported.
+	//
 	// example:
 	//
 	// 1
@@ -80,14 +83,20 @@ func (s *ImportKMSSecretsForHostResponseBody) Validate() error {
 }
 
 type ImportKMSSecretsForHostResponseBodyResults struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the secret.
+	//
 	// example:
 	//
 	// test1

@@ -81,6 +81,10 @@ type DetachDatabaseAccountsFromUserResponseBodyResults struct {
 	// 4
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
 	// The error message that is returned.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The user ID.
 	//
@@ -170,6 +174,10 @@ type DetachDatabaseAccountsFromUserResponseBodyResultsDatabaseAccounts struct {
 	// 9
 	DatabaseAccountId *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
 	// The error message that is returned.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

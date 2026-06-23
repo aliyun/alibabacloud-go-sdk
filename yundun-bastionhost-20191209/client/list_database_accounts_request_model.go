@@ -32,7 +32,7 @@ type ListDatabaseAccountsRequest struct {
 	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
 	// The ID of the database whose database accounts you want to query.
 	//
-	// >  You can call the [ListDatabases](https://help.aliyun.com/document_detail/2758822.html) operation to query the database ID.
+	// > You can call the [ListDatabases](https://help.aliyun.com/document_detail/2758822.html) operation to query the database ID.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListDatabaseAccountsRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.\\
+	// The number of entries per page.<br>
 	//
 	// Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
 	//

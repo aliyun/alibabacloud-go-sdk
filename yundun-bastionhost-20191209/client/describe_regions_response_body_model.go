@@ -16,9 +16,9 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The information about regions where you can create bastion hosts.
+	// The regions that support Bastionhost instances.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The ID of request.
+	// The ID of the request.
 	//
 	// example:
 	//

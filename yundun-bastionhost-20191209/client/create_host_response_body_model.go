@@ -16,7 +16,7 @@ type iCreateHostResponseBody interface {
 }
 
 type CreateHostResponseBody struct {
-	// The ID of the host.
+	// The ID of the new host.
 	//
 	// example:
 	//

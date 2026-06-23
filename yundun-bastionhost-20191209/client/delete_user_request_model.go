@@ -20,7 +20,7 @@ type iDeleteUserRequest interface {
 type DeleteUserRequest struct {
 	// The ID of the bastion host to which the user to be deleted belongs.
 	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DeleteUserRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the bastion host to which the user to be deleted belongs.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DeleteUserRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user to be deleted.
 	//
-	// >  You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
+	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
 	//
 	// This parameter is required.
 	//

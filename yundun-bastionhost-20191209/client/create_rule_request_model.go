@@ -60,7 +60,7 @@ type CreateRuleRequest struct {
 	Hosts []*CreateRuleRequestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
 	// The bastion host ID.
 	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
 	//
 	// This parameter is required.
 	//
@@ -235,15 +235,7 @@ type CreateRuleRequestDatabases struct {
 	//
 	// example:
 	//
-	// [
-	//
-	//     {
-	//
-	//         "DatabaseId": "1"
-	//
-	//     }
-	//
-	// ]
+	// 2
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
 }
 
@@ -284,7 +276,7 @@ type CreateRuleRequestHostGroups struct {
 	//
 	// example:
 	//
-	// [{"HostGroupId":"1"}]
+	// 3
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
 }
 
@@ -325,7 +317,7 @@ type CreateRuleRequestHosts struct {
 	//
 	// example:
 	//
-	// [{"HostId":"1"}]
+	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 }
 

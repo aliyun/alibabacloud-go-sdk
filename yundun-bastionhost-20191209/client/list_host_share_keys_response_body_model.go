@@ -111,7 +111,7 @@ type ListHostShareKeysResponseBodyHostShareKeys struct {
 	//
 	// example:
 	//
-	// ****
+	// aa:10:f5:21:7f:8b:3e:86:b0:8b:f0:e0******
 	PrivateKeyFingerPrint *string `json:"PrivateKeyFingerPrint,omitempty" xml:"PrivateKeyFingerPrint,omitempty"`
 }
 

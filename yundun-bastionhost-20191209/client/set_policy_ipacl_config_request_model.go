@@ -36,7 +36,7 @@ type SetPolicyIPAclConfigRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the control policy that you want to modify.
 	//
-	// >  You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
 	//
 	// This parameter is required.
 	//
@@ -110,9 +110,9 @@ func (s *SetPolicyIPAclConfigRequest) Validate() error {
 type SetPolicyIPAclConfigRequestIPAclConfig struct {
 	// The mode of access control on source IP addresses. Valid values:
 	//
-	// 	- **black**: blacklist mode.
+	// - **black**: blacklist mode.
 	//
-	// 	- **white**: whitelist mode.
+	// - **white**: whitelist mode.
 	//
 	// This parameter is required.
 	//
@@ -124,9 +124,9 @@ type SetPolicyIPAclConfigRequestIPAclConfig struct {
 	//
 	// >
 	//
-	// 	- This parameter is required if AclType is set to white.
+	// - This parameter is required if AclType is set to white.
 	//
-	// 	- If AclType is set to black but you do not want to add IP addresses to the blacklist, you can leave IPs empty.
+	// - If AclType is set to black but you do not want to add IP addresses to the blacklist, you can leave IPs empty.
 	//
 	// This parameter is required.
 	IPs []*string `json:"IPs,omitempty" xml:"IPs,omitempty" type:"Repeated"`

@@ -44,13 +44,13 @@ type ListDatabasesForUserRequest struct {
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The engine of the database to query. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **SQLServer**
+	// - **SQLServer**
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ListDatabasesForUserRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.\\
+	// The number of entries per page.<br>
 	//
 	// Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
 	//

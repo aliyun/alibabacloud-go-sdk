@@ -20,7 +20,7 @@ type iDeleteHostAccountRequest interface {
 type DeleteHostAccountRequest struct {
 	// The ID of the host account that you want to remove.
 	//
-	// >  You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the ID of the host account.
+	// > You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the ID of the host account.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DeleteHostAccountRequest struct {
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
 	// The ID of the bastion host from which you want to remove the host account.
 	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DeleteHostAccountRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the bastion host from which you want to remove the host account.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

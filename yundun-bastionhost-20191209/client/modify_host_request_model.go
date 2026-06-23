@@ -86,9 +86,9 @@ type ModifyHostRequest struct {
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
 	// The new operating system of the host. Valid values:
 	//
-	// 	- **Linux**
+	// - **Linux**
 	//
-	// 	- **Windows**
+	// - **Windows**
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ type ModifyHostRequest struct {
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 	// The preferred key exchange algorithm of the host. If you set OSType to Linux, you can modify this parameter. Valid values:
 	//
-	// 	- **default**
+	// - **default**
 	//
-	// 	- **diffie-hellman-group1-sha1**
+	// - **diffie-hellman-group1-sha1**
 	//
-	// 	- **diffie-hellman-group14-sha1**
+	// - **diffie-hellman-group14-sha1**
 	//
-	// 	- **diffie-hellman-group-exchange-sha1**
+	// - **diffie-hellman-group-exchange-sha1**
 	//
 	// example:
 	//

@@ -25,6 +25,10 @@ type iModifyPolicyRequest interface {
 
 type ModifyPolicyRequest struct {
 	// The new remarks of the control policy.
+	//
+	// example:
+	//
+	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The ID of the bastion host to which the control policy to modify belongs.
 	//

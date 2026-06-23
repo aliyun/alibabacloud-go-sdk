@@ -18,7 +18,7 @@ type iListOperationDatabasesResponseBody interface {
 }
 
 type ListOperationDatabasesResponseBody struct {
-	// The databases returned.
+	// The databases.
 	Databases []*ListOperationDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -26,7 +26,7 @@ type ListOperationDatabasesResponseBody struct {
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of databases.
 	//
 	// example:
 	//
@@ -83,95 +83,95 @@ func (s *ListOperationDatabasesResponseBody) Validate() error {
 }
 
 type ListOperationDatabasesResponseBodyDatabases struct {
-	// The address type of the database. Valid values:
+	// The endpoint type of the database. Valid values:
 	//
-	// 	- **Public**
+	// - **Public**: a public endpoint
 	//
-	// 	- **Private**
+	// - **Private**: a private endpoint
 	//
 	// example:
 	//
 	// Private
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The remarks of the database.
+	// The comment on the database.
 	//
 	// example:
 	//
 	// cpp
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The database ID.
+	// The ID of the database.
 	//
 	// example:
 	//
 	// 26
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
 	// zDatabase
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The port of the database.
+	// The database port.
 	//
 	// example:
 	//
 	// 3306
 	DatabasePort *int64 `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
-	// The private address of the database.
+	// The private endpoint of the database.
 	//
 	// example:
 	//
 	// rm-b******9b.mysql.rds.aliyuncs.com
 	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
-	// The public address of the database.
+	// The public endpoint of the database.
 	//
 	// example:
 	//
 	// rm-uf******p45.mysql.rds.aliyuncs.com
 	DatabasePublicAddress *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
-	// The database engine. Valid values:
+	// The database type. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
-	// 	- **SQLServer**
+	// - **SQLServer**
 	//
 	// example:
 	//
 	// MySQL
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The database type. Valid values:
+	// The source of the database.
 	//
-	// 	- **Local**: on-premises database.
+	// - **Local**: a local database
 	//
-	// 	- **Rds**: ApsaraDB RDS instance.
+	// - **Rds**: an ApsaraDB RDS database
 	//
-	// 	- **PolarDB**: PolarDB cluster.
+	// - **PolarDB**: a PolarDB database
 	//
 	// example:
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the ApsaraDB RDS instance.
+	// The ID of the source instance.
 	//
 	// example:
 	//
 	// i-wz9225bhipya******
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// The region ID of the ApsaraDB RDS instance.
+	// The region ID of the source instance.
 	//
 	// example:
 	//
 	// cn-shanghai
 	SourceInstanceRegionId *string `json:"SourceInstanceRegionId,omitempty" xml:"SourceInstanceRegionId,omitempty"`
-	// The database status. Valid values:
+	// The status of the source instance:
 	//
-	// 	- **Normal**
+	// - **Normal**: The instance is running.
 	//
-	// 	- **Release**
+	// - **Release**: The instance is released.
 	//
 	// example:
 	//

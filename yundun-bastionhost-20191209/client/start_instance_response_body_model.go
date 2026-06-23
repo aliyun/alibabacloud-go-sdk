@@ -16,7 +16,7 @@ type iStartInstanceResponseBody interface {
 }
 
 type StartInstanceResponseBody struct {
-	// The ID of the bastion host that you enable.
+	// The ID of the bastion host that is enabled.
 	//
 	// example:
 	//

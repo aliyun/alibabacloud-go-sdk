@@ -68,19 +68,19 @@ func (s *AttachHostAccountsToUserResponseBody) Validate() error {
 type AttachHostAccountsToUserResponseBodyResults struct {
 	// The return code that indicates whether the call was successful. Valid values:
 	//
-	// 	- **OK**: The call was successful.
+	// - **OK**: The call was successful.
 	//
-	// 	- **UNEXPECTED**: An unknown error occurred.
+	// - **UNEXPECTED**: An unknown error occurred.
 	//
-	// 	- **INVALID_ARGUMENT**: A request parameter is invalid.
+	// - **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
 	// > Make sure that the request parameters are valid and call the operation again.
 	//
-	// 	- **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
 	//
 	// > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
 	//
-	// 	- **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	//
 	// example:
 	//
@@ -95,6 +95,10 @@ type AttachHostAccountsToUserResponseBodyResults struct {
 	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the user.
 	//
@@ -173,15 +177,15 @@ func (s *AttachHostAccountsToUserResponseBodyResults) Validate() error {
 type AttachHostAccountsToUserResponseBodyResultsHostAccounts struct {
 	// The return code that indicates whether the user was authorized to manage the host accounts. Valid values:
 	//
-	// 	- **OK**: The call was successful.
+	// - **OK**: The call was successful.
 	//
-	// 	- **UNEXPECTED**: An unknown error occurred.
+	// - **UNEXPECTED**: An unknown error occurred.
 	//
-	// 	- **INVALID_ARGUMENT**: A request parameter is invalid.
+	// - **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
-	// 	- **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
 	//
-	// 	- **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	//
 	// example:
 	//
@@ -194,6 +198,10 @@ type AttachHostAccountsToUserResponseBodyResultsHostAccounts struct {
 	// 1
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

@@ -16,9 +16,9 @@ type iGenerateAssetOperationTokenResponseBody interface {
 }
 
 type GenerateAssetOperationTokenResponseBody struct {
-	// The data returned.
+	// The asset operation token.
 	AssetOperationToken *GenerateAssetOperationTokenResponseBodyAssetOperationToken `json:"AssetOperationToken,omitempty" xml:"AssetOperationToken,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,31 +62,31 @@ func (s *GenerateAssetOperationTokenResponseBody) Validate() error {
 }
 
 type GenerateAssetOperationTokenResponseBodyAssetOperationToken struct {
-	// The remaining number of times that you can use the O\\&M token.
+	// The number of remaining uses for the token.
 	//
 	// example:
 	//
 	// 1
 	CountLeft *int64 `json:"CountLeft,omitempty" xml:"CountLeft,omitempty"`
-	// The time when the O\\&M token expires. The value is a UNIX timestamp.
+	// The expiration time of the token. This value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1709110797
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the number of times that you can use the O\\&M token is limited.
+	// Indicates whether the token has a use limit.
 	//
 	// example:
 	//
 	// true
 	HasCountLimit *bool `json:"HasCountLimit,omitempty" xml:"HasCountLimit,omitempty"`
-	// The maximum number of renewals. A value of 0 indicates that renewal is not supported.
+	// The maximum number of times the token can be renewed. A value of 0 indicates that the token cannot be renewed.
 	//
 	// example:
 	//
 	// 10
 	MaxRenewCount *int64 `json:"MaxRenewCount,omitempty" xml:"MaxRenewCount,omitempty"`
-	// The number of times the O\\&M token is renewed.
+	// The number of times the token has been renewed.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type GenerateAssetOperationTokenResponseBodyAssetOperationToken struct {
 	//
 	// sso://eyJOT0RFX0NPTU1PTiI6eyJNb2R******
 	SsoUrl *string `json:"SsoUrl,omitempty" xml:"SsoUrl,omitempty"`
-	// The O\\&M token that you apply for.
+	// The O\\&M token that is requested.
 	//
 	// example:
 	//

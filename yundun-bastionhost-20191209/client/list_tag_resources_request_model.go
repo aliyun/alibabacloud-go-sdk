@@ -24,7 +24,7 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The token for starting the next query.
+	// The token to start the next query.
 	//
 	// example:
 	//
@@ -39,15 +39,15 @@ type ListTagResourcesRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The IDs of instances.
+	// The resource ID.
 	//
 	// example:
 	//
 	// bastionhost-cn-78v1gcxxxxx
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource.
+	// The type of resource.
 	//
-	// Set the value to INSTANCE, which indicates that the resource is a Bastionhost instance.
+	// The only valid value is INSTANCE, which indicates a Bastionhost instance.
 	//
 	// This parameter is required.
 	//
@@ -55,7 +55,7 @@ type ListTagResourcesRequest struct {
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -135,7 +135,7 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of tag N.
+	// The tag key.
 	//
 	// Valid values of N: 1 to 20.
 	//
@@ -143,7 +143,7 @@ type ListTagResourcesRequestTag struct {
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
+	// The tag value.
 	//
 	// Valid values of N: 1 to 20.
 	//

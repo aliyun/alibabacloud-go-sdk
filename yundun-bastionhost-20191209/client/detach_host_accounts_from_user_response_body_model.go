@@ -68,15 +68,15 @@ func (s *DetachHostAccountsFromUserResponseBody) Validate() error {
 type DetachHostAccountsFromUserResponseBodyResults struct {
 	// The return code that indicates whether the call was successful. Valid values:
 	//
-	// 	- **OK**: The call was successful.
+	// - **OK**: The call was successful.
 	//
-	// 	- **UNEXPECTED**: An unknown error occurred.
+	// - **UNEXPECTED**: An unknown error occurred.
 	//
-	// 	- **INVALID_ARGUMENT**: A request parameter is invalid.
+	// - **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
-	// 	- **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
 	//
-	// 	- **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	//
 	// example:
 	//
@@ -91,6 +91,10 @@ type DetachHostAccountsFromUserResponseBodyResults struct {
 	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The user ID.
 	//
@@ -169,15 +173,15 @@ func (s *DetachHostAccountsFromUserResponseBodyResults) Validate() error {
 type DetachHostAccountsFromUserResponseBodyResultsHostAccounts struct {
 	// The return code that indicates whether permissions on the specified host accounts were revoked from the user. Valid values:
 	//
-	// 	- **OK**: The call was successful.
+	// - **OK**: The call was successful.
 	//
-	// 	- **UNEXPECTED**: An unknown error occurred.
+	// - **UNEXPECTED**: An unknown error occurred.
 	//
-	// 	- **INVALID_ARGUMENT**: A request parameter is invalid.
+	// - **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
-	// 	- **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
 	//
-	// 	- **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	//
 	// example:
 	//
@@ -190,6 +194,10 @@ type DetachHostAccountsFromUserResponseBodyResultsHostAccounts struct {
 	// 1
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

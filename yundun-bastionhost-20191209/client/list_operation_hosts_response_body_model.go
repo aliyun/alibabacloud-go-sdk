@@ -18,15 +18,15 @@ type iListOperationHostsResponseBody interface {
 }
 
 type ListOperationHostsResponseBody struct {
-	// The hosts returned.
+	// A list of the hosts.
 	Hosts []*ListOperationHostsResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 4F6C075F-FC86-476E-943B-097BD4E12948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of hosts returned.
+	// The total number of hosts.
 	//
 	// example:
 	//
@@ -83,77 +83,77 @@ func (s *ListOperationHostsResponseBody) Validate() error {
 }
 
 type ListOperationHostsResponseBodyHosts struct {
-	// The address type of the host. Valid values:
+	// The address type of the host.
 	//
-	// 	- **Public**
+	// - **Public**: The public endpoint is used.
 	//
-	// 	- **Private**
+	// - **Private**: The private endpoint is used.
 	//
 	// example:
 	//
 	// Public
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The remarks of the host.
+	// The comments on the host.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The host ID.
+	// The ID of the host.
 	//
 	// example:
 	//
 	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The host name.
+	// The name of the host.
 	//
 	// example:
 	//
 	// host1
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The private IP address of the host.
+	// The private address of the host.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
-	// The public IP address of the host.
+	// The public address of the host.
 	//
 	// example:
 	//
 	// 10.158.XX.XX
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
-	// The host OS.
+	// The operating system of the host.
 	//
-	// 	- **Linux**
+	// - **Linux**
 	//
-	// 	- **Windows**
+	// - **Windows**
 	//
 	// example:
 	//
 	// Linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// The host type. Valid values:
+	// The source of the host.
 	//
-	// 	- **Local**: on-premises host.
+	// - **Local**: a local host
 	//
-	// 	- **Ecs**: Elastic Compute Service (ECS) instance.
+	// - **Ecs**: an ECS instance
 	//
 	// example:
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ECS instance ID.
+	// The ID of the ECS instance.
 	//
 	// example:
 	//
 	// i-bp19ienyt0yax748****
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// The host status. Valid values:
+	// The state of the host.
 	//
-	// 	- **Normal**
+	// - **Normal**: The host is running.
 	//
-	// 	- **Release**
+	// - **Release**: The host is released.
 	//
 	// example:
 	//

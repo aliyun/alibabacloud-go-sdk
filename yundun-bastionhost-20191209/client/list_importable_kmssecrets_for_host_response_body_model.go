@@ -20,21 +20,26 @@ type iListImportableKMSSecretsForHostResponseBody interface {
 }
 
 type ListImportableKMSSecretsForHostResponseBody struct {
+	// The value of the `MaxResults` parameter in the request. If the parameter was not specified, the default value of 20 is returned.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results. If this field is empty, all results have been returned.
+	//
 	// example:
 	//
 	// 4ieSWJCwxvW3dk3wF.BqkrZmP72nWu5zJ5NWydMqyEs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
-	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Secrets   []*ListImportableKMSSecretsForHostResponseBodySecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of importable secrets.
+	Secrets []*ListImportableKMSSecretsForHostResponseBodySecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
 }
 
 func (s ListImportableKMSSecretsForHostResponseBody) String() string {
@@ -95,14 +100,22 @@ func (s *ListImportableKMSSecretsForHostResponseBody) Validate() error {
 }
 
 type ListImportableKMSSecretsForHostResponseBodySecrets struct {
+	// The name of the secret.
+	//
 	// example:
 	//
 	// test1
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The type of the secret. Valid value:
+	//
+	// - `ECS`: an ECS secret.
+	//
 	// example:
 	//
 	// ECS
 	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
+	// The tags associated with the secret.
+	//
 	// example:
 	//
 	// test

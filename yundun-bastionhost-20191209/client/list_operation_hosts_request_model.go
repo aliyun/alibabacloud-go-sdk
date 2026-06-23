@@ -32,21 +32,21 @@ type iListOperationHostsRequest interface {
 }
 
 type ListOperationHostsRequest struct {
-	// The address of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
+	// The address of the host. You can specify a domain name or an IP address. Only exact matches are supported.
 	//
 	// example:
 	//
-	// 10.162.172.132
+	// 10.162.XX.XX
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The name of the host that you want to query. Only exact match is supported.
+	// The name of the host. Only exact matches are supported.
 	//
 	// example:
 	//
 	// abc
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the bastion host.
+	// The ID of the Bastionhost instance.
 	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -54,61 +54,59 @@ type ListOperationHostsRequest struct {
 	//
 	// bastionhost-cn-09k22avmw0q
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The operating system of the host that you want to query. Valid values:
+	// The operating system of the host. Valid values:
 	//
-	// 	- **Linux**
+	// - **Linux**
 	//
-	// 	- **Windows**
+	// - **Windows**
 	//
 	// example:
 	//
 	// Linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// The page number. Default value: 1.
+	// The number of the page to return. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.\\
+	// The number of entries to return on each page.<br> The maximum value is 100. The default value is 20. If you do not specify this parameter, the default value is used.<br>
 	//
-	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Specify a value for this parameter.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host.
+	// The ID of the region where the Bastionhost instance resides.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source of the host that you want to query. Valid values:
+	// The source of the host. Valid values:
 	//
-	// 	- **Local**
+	// - **Local**: a local host
 	//
-	// 	- **Ecs**
+	// - **Ecs**: an ECS instance
 	//
 	// example:
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the Elastic Compute Service (ECS) instance. Exact match is supported.
+	// The ID of the ECS instance. Only exact matches are supported.
 	//
 	// example:
 	//
 	// i-bp19ienyt0yax748****
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// The status of the host that you want to query. Valid values:
+	// The state of the host. Valid values:
 	//
-	// 	- **Normal**
+	// - **Normal**: The host is running.
 	//
-	// 	- **Release**
+	// - **Release**: The host is released.
 	//
 	// example:
 	//

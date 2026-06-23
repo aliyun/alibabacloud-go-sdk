@@ -68,15 +68,15 @@ func (s *AttachHostGroupAccountsToUserGroupResponseBody) Validate() error {
 type AttachHostGroupAccountsToUserGroupResponseBodyResults struct {
 	// The return code that indicates whether the call was successful. Valid values:
 	//
-	// 	- **OK**: The call was successful.
+	// - **OK**: The call was successful.
 	//
-	// 	- **UNEXPECTED**: An unknown error occurred.
+	// - **UNEXPECTED**: An unknown error occurred.
 	//
-	// 	- **INVALID_ARGUMENT**: A request parameter is invalid.
+	// - **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
-	// 	- **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
 	//
-	// 	- **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	//
 	// example:
 	//
@@ -91,6 +91,10 @@ type AttachHostGroupAccountsToUserGroupResponseBodyResults struct {
 	// 1
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the user group.
 	//
@@ -169,15 +173,15 @@ func (s *AttachHostGroupAccountsToUserGroupResponseBodyResults) Validate() error
 type AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames struct {
 	// The return code that indicates whether the user group was authorized to manage the specified host account. Valid values:
 	//
-	// 	- **OK**: The call was successful.
+	// - **OK**: The call was successful.
 	//
-	// 	- **UNEXPECTED**: An unknown error occurred.
+	// - **UNEXPECTED**: An unknown error occurred.
 	//
-	// 	- **INVALID_ARGUMENT**: A request parameter is invalid.
+	// - **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
-	// 	- **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
 	//
-	// 	- **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	//
 	// example:
 	//
@@ -190,6 +194,10 @@ type AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames struc
 	// abc
 	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

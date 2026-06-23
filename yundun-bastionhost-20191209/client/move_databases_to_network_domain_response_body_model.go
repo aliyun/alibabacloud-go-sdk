@@ -84,7 +84,7 @@ type MoveDatabasesToNetworkDomainResponseBodyResults struct {
 	//
 	// example:
 	//
-	// N/A
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

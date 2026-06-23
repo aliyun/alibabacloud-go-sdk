@@ -85,9 +85,9 @@ func (s *ListHostsForUserResponseBody) Validate() error {
 type ListHostsForUserResponseBodyHosts struct {
 	// The endpoint type of the host. Valid values:
 	//
-	// 	- **Public**: public endpoint
+	// - **Public**: public endpoint
 	//
-	// 	- **Private**: internal endpoint
+	// - **Private**: internal endpoint
 	//
 	// example:
 	//
@@ -125,9 +125,9 @@ type ListHostsForUserResponseBodyHosts struct {
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
 	// The operating system of the host. Valid values:
 	//
-	// 	- **Linux**
+	// - **Linux**
 	//
-	// 	- **Windows**
+	// - **Windows**
 	//
 	// example:
 	//

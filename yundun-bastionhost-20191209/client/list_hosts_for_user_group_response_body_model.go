@@ -18,15 +18,15 @@ type iListHostsForUserGroupResponseBody interface {
 }
 
 type ListHostsForUserGroupResponseBody struct {
-	// The hosts returned.
+	// A list of hosts.
 	Hosts []*ListHostsForUserGroupResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of hosts returned.
+	// The total number of hosts.
 	//
 	// example:
 	//
@@ -85,15 +85,15 @@ func (s *ListHostsForUserGroupResponseBody) Validate() error {
 type ListHostsForUserGroupResponseBodyHosts struct {
 	// The address type of the host. Valid values:
 	//
-	// 	- **Public**: public endpoint
+	// - **Public**: a public IP address
 	//
-	// 	- **Private**: internal endpoint
+	// - **Private**: a private IP address
 	//
 	// example:
 	//
 	// Public
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The description of the host.
+	// The remarks of the host.
 	//
 	// example:
 	//
@@ -111,23 +111,23 @@ type ListHostsForUserGroupResponseBodyHosts struct {
 	//
 	// host1
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The internal endpoint of the host. The value is a domain name or an IP address.
+	// The private IP address of the host. This can be a domain name or an IP address.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
-	// The public endpoint of the host. The value is a domain name or an IP address.
+	// The public IP address of the host. This can be a domain name or an IP address.
 	//
 	// example:
 	//
 	// 10.158.XX.XX
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
-	// The operating system of the host. Valid values:
+	// The OS type of the host. Valid values:
 	//
-	// 	- **Linux**
+	// - **Linux**
 	//
-	// 	- **Windows**
+	// - **Windows**
 	//
 	// example:
 	//

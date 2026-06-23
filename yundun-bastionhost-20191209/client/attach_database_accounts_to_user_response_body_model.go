@@ -81,6 +81,10 @@ type AttachDatabaseAccountsToUserResponseBodyResults struct {
 	// 22
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
 	// The error message that is returned.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The user ID.
 	//

@@ -58,9 +58,9 @@ type ModifyNetworkDomainRequest struct {
 	NetworkDomainName *string `json:"NetworkDomainName,omitempty" xml:"NetworkDomainName,omitempty"`
 	// The new connection mode of the network domain. Valid values:
 	//
-	// 	- **Direct**
+	// - **Direct**
 	//
-	// 	- **Proxy**
+	// - **Proxy**
 	//
 	// example:
 	//
@@ -171,9 +171,9 @@ type ModifyNetworkDomainRequestProxies struct {
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// The node type of the proxy server to modify. Valid values:
 	//
-	// 	- **Master**: primary proxy server.
+	// - **Master**: primary proxy server.
 	//
-	// 	- **Slave**: secondary proxy server.
+	// - **Slave**: secondary proxy server.
 	//
 	// example:
 	//
@@ -193,11 +193,11 @@ type ModifyNetworkDomainRequestProxies struct {
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The new proxy mode. Valid values:
 	//
-	// 	- **SSHProxy**
+	// - **SSHProxy**
 	//
-	// 	- **HTTPProxy**
+	// - **HTTPProxy**
 	//
-	// 	- **Socks5Proxy**
+	// - **Socks5Proxy**
 	//
 	// example:
 	//

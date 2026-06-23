@@ -66,7 +66,7 @@ type GetUserResponseBodyUser struct {
 	//
 	// example:
 	//
-	// comment
+	// commet
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The display name of the user.
 	//
@@ -104,9 +104,9 @@ type GetUserResponseBodyUser struct {
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// Indicates whether notifications are sent in the language specified in the global settings or a custom language.
 	//
-	// 	- **Global**: Global
+	// - **Global**: Global
 	//
-	// 	- **Custom**: Custom
+	// - **Custom**: Custom
 	//
 	// example:
 	//
@@ -120,43 +120,43 @@ type GetUserResponseBodyUser struct {
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The location in which the mobile number of the user is registered. Valid values:
 	//
-	// 	- **CN**: the Chinese mainland, whose country calling code is +86
+	// - **CN**: the Chinese mainland, whose country calling code is +86
 	//
-	// 	- **HK**: Hong Kong (China), whose country calling code is +852
+	// - **HK**: Hong Kong (China), whose country calling code is +852
 	//
-	// 	- **MO**: Macao (China), whose country calling code is +853
+	// - **MO**: Macao (China), whose country calling code is +853
 	//
-	// 	- **TW**: Taiwan (China), whose country calling code is +886
+	// - **TW**: Taiwan (China), whose country calling code is +886
 	//
-	// 	- **RU**: Russia, whose country calling code is +7
+	// - **RU**: Russia, whose country calling code is +7
 	//
-	// 	- **SG**: Singapore, whose country calling code is +65
+	// - **SG**: Singapore, whose country calling code is +65
 	//
-	// 	- **MY**: Malaysia, whose country calling code is +60
+	// - **MY**: Malaysia, whose country calling code is +60
 	//
-	// 	- **ID**: Indonesia, whose country calling code is +62
+	// - **ID**: Indonesia, whose country calling code is +62
 	//
-	// 	- **DE**: Germany, whose country calling code is +49
+	// - **DE**: Germany, whose country calling code is +49
 	//
-	// 	- **AU**: Australia, whose country calling code is +61
+	// - **AU**: Australia, whose country calling code is +61
 	//
-	// 	- **US**: US, whose country calling code is +1
+	// - **US**: US, whose country calling code is +1
 	//
-	// 	- **AE**: United Arab Emirates, whose country calling code is +971
+	// - **AE**: United Arab Emirates, whose country calling code is +971
 	//
-	// 	- **JP:*	- Japan, whose country calling code is +81
+	// - **JP:*	- Japan, whose country calling code is +81
 	//
-	// 	- **GB**: UK, whose country calling code is +44
+	// - **GB**: UK, whose country calling code is +44
 	//
-	// 	- **IN**: India, whose country calling code is +91
+	// - **IN**: India, whose country calling code is +91
 	//
-	// 	- **KR**: Republic of Korea, whose country calling code is +82
+	// - **KR**: Republic of Korea, whose country calling code is +82
 	//
-	// 	- **PH**: Philippines, whose country calling code is +63
+	// - **PH**: Philippines, whose country calling code is +63
 	//
-	// 	- **CH**: Switzerland, whose country calling code is +41
+	// - **CH**: Switzerland, whose country calling code is +41
 	//
-	// 	- **SE**: Sweden, whose country calling code is +46
+	// - **SE**: Sweden, whose country calling code is +46
 	//
 	// example:
 	//
@@ -164,9 +164,9 @@ type GetUserResponseBodyUser struct {
 	MobileCountryCode *string `json:"MobileCountryCode,omitempty" xml:"MobileCountryCode,omitempty"`
 	// Specifies whether password reset is required upon the next logon. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes
 	//
-	// 	- **false**: no
+	// - **false**: no
 	//
 	// example:
 	//
@@ -174,9 +174,9 @@ type GetUserResponseBodyUser struct {
 	NeedResetPassword *bool `json:"NeedResetPassword,omitempty" xml:"NeedResetPassword,omitempty"`
 	// The source of the user. Valid values:
 	//
-	// 	- **Local**: a local user
+	// - **Local**: a local user
 	//
-	// 	- **Ram**: a RAM user
+	// - **Ram**: a RAM user
 	//
 	// example:
 	//
@@ -194,11 +194,11 @@ type GetUserResponseBodyUser struct {
 	TwoFactorMethods []*string `json:"TwoFactorMethods,omitempty" xml:"TwoFactorMethods,omitempty" type:"Repeated"`
 	// The two-factor authentication status of the user. Valid values:
 	//
-	// 	- **Global**: The global settings are used.
+	// - **Global**: The global settings are used.
 	//
-	// 	- **Disable**: The two-factor authentication is disabled.
+	// - **Disable**: The two-factor authentication is disabled.
 	//
-	// 	- **Enable**: The two-factor authentication is enabled and the user-specific setting is used.
+	// - **Enable**: The two-factor authentication is enabled and the user-specific setting is used.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iCreateDatabaseResponseBody interface {
 }
 
 type CreateDatabaseResponseBody struct {
-	// The database ID.
+	// The ID of the database instance.
 	//
 	// example:
 	//
 	// 334
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

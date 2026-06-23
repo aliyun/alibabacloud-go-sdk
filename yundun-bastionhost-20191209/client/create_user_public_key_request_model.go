@@ -54,7 +54,7 @@ type CreateUserPublicKeyRequest struct {
 	//
 	// example:
 	//
-	// Public key of a user
+	// KeyName
 	PublicKeyName *string `json:"PublicKeyName,omitempty" xml:"PublicKeyName,omitempty"`
 	// Specifies the region ID of the bastion host on which you want to create a public key for the user.
 	//
@@ -66,7 +66,7 @@ type CreateUserPublicKeyRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user for whom you want to create a public key.
 	//
-	// >  You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
+	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
 	//
 	// This parameter is required.
 	//

@@ -24,9 +24,9 @@ type iListNetworkDomainsRequest interface {
 }
 
 type ListNetworkDomainsRequest struct {
-	// The bastion host ID.
+	// The ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -35,36 +35,38 @@ type ListNetworkDomainsRequest struct {
 	// bastionhost-cn-tl329pvu70x
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the network domain.
+	//
+	// example:
+	//
+	// SSH Proxy
 	NetworkDomainName *string `json:"NetworkDomainName,omitempty" xml:"NetworkDomainName,omitempty"`
-	// The connection mode of the network domain. Valid values:
+	// The type of the network domain. Valid values:
 	//
-	// 	- **Direct**
+	// - **Direct**: direct connection
 	//
-	// 	- **Proxy**
+	// - **Proxy**: proxy connection
 	//
 	// example:
 	//
 	// Proxy
 	NetworkDomainType *string `json:"NetworkDomainType,omitempty" xml:"NetworkDomainType,omitempty"`
-	// The page number. Default value: **1**.
+	// The number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.\\
+	// The number of entries to return on each page.<br> The maximum value is 100. The default value is 20. If you do not specify this parameter, 20 entries are returned on each page.<br>
 	//
-	// Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave the PageSize value empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host.
+	// The region ID of the Bastionhost instance.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

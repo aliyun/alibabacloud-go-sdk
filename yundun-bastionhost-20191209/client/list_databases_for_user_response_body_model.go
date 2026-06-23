@@ -85,9 +85,9 @@ func (s *ListDatabasesForUserResponseBody) Validate() error {
 type ListDatabasesForUserResponseBodyDatabases struct {
 	// The address type of the database. Valid values:
 	//
-	// 	- **Public**
+	// - **Public**
 	//
-	// 	- **Private**
+	// - **Private**
 	//
 	// example:
 	//
@@ -121,23 +121,23 @@ type ListDatabasesForUserResponseBodyDatabases struct {
 	//
 	// example:
 	//
-	// rm-wz97******
+	// 192.168.XX.XX
 	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
 	// The public endpoint of the database. The value is a domain name or an IP address.
 	//
 	// example:
 	//
-	// rm-uf65******
+	// www.example.com
 	DatabasePublicAddress *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
 	// The database engine. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **SQLServer**
+	// - **SQLServer**
 	//
 	// example:
 	//
@@ -151,11 +151,11 @@ type ListDatabasesForUserResponseBodyDatabases struct {
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
 	// The database type. Valid values:
 	//
-	// 	- **Local**: on-premises database.
+	// - **Local**: on-premises database.
 	//
-	// 	- **Rds**: ApsaraDB RDS instance.
+	// - **Rds**: ApsaraDB RDS instance.
 	//
-	// 	- **PolarDB**: PolarDB cluster.
+	// - **PolarDB**: PolarDB cluster.
 	//
 	// example:
 	//
@@ -163,11 +163,11 @@ type ListDatabasesForUserResponseBodyDatabases struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The ID of the ApsaraDB RDS instance or PolarDB cluster.
 	//
-	// >  No value is returned for this parameter if **Source*	- is set to **Local**.
+	// > No value is returned for this parameter if **Source*	- is set to **Local**.
 	//
 	// example:
 	//
-	// i-wz9fv2hwux78x9h1pmje
+	// i-wz9fv2hwux78x9******
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
 }
 

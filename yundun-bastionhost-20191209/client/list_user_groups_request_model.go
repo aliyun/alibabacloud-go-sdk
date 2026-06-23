@@ -24,7 +24,7 @@ type iListUserGroupsRequest interface {
 type ListUserGroupsRequest struct {
 	// The ID of the bastion host on which you want to query user groups.
 	//
-	//  >You can call the [DescribeInstances ](https://help.aliyun.com/document_detail/462953.html)operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances ](https://help.aliyun.com/document_detail/462953.html)operation to query the ID of the bastion host.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,7 @@ type ListUserGroupsRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
 	//
 	// example:
 	//

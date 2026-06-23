@@ -30,13 +30,13 @@ type iListDatabasesRequest interface {
 type ListDatabasesRequest struct {
 	// The engine of the database to query. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **SQLServer**
+	// - **SQLServer**
 	//
 	// example:
 	//
@@ -92,11 +92,11 @@ type ListDatabasesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the database to query. Valid values:
 	//
-	// 	- **Local**: on-premises database.
+	// - **Local**: on-premises database.
 	//
-	// 	- **Rds**: ApsaraDB for RDS instance.
+	// - **Rds**: ApsaraDB for RDS instance.
 	//
-	// 	- **PolarDB**: PolarDB cluster
+	// - **PolarDB**: PolarDB cluster
 	//
 	// example:
 	//

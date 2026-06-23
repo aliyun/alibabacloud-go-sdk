@@ -109,9 +109,9 @@ type ListDatabaseAccountsResponseBodyDatabaseAccounts struct {
 	DatabaseSchema *string `json:"DatabaseSchema,omitempty" xml:"DatabaseSchema,omitempty"`
 	// Indicates whether the database account has a password. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

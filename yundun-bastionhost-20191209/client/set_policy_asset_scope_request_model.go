@@ -28,7 +28,7 @@ type iSetPolicyAssetScopeRequest interface {
 type SetPolicyAssetScopeRequest struct {
 	// The databases to which the control policy applies.
 	//
-	// >  This parameter is required if ScopeType is set to Database. You can specify up to 500 databases.
+	// > This parameter is required if ScopeType is set to Database. You can specify up to 500 databases.
 	Databases []*SetPolicyAssetScopeRequestDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
 	// The asset groups to which the control policy applies.
 	//
@@ -50,7 +50,7 @@ type SetPolicyAssetScopeRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the control policy that you want to modify.
 	//
-	// >  You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
 	//
 	// This parameter is required.
 	//
@@ -68,13 +68,13 @@ type SetPolicyAssetScopeRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The scope of assets to which the control policy applies. Valid values:
 	//
-	// 	- **All**: The control policy applies to all assets.
+	// - **All**: The control policy applies to all assets.
 	//
-	// 	- **Host**: The control policy applies to specified hosts.
+	// - **Host**: The control policy applies to specified hosts.
 	//
-	// 	- **Database**: The control policy applies to specified databases.
+	// - **Database**: The control policy applies to specified databases.
 	//
-	// 	- **HostGroup**: The control policy applies to specified asset groups.
+	// - **HostGroup**: The control policy applies to specified asset groups.
 	//
 	// This parameter is required.
 	//
@@ -189,9 +189,9 @@ func (s *SetPolicyAssetScopeRequest) Validate() error {
 type SetPolicyAssetScopeRequestDatabases struct {
 	// The scope of database accounts to which the control policy applies. Valid values:
 	//
-	// 	- **All**: The control policy applies to all database accounts of the database.
+	// - **All**: The control policy applies to all database accounts of the database.
 	//
-	// 	- **AccountId**: The control policy applies to specified database accounts of the database.
+	// - **AccountId**: The control policy applies to specified database accounts of the database.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type SetPolicyAssetScopeRequestDatabases struct {
 	AccountScopeType *string `json:"AccountScopeType,omitempty" xml:"AccountScopeType,omitempty"`
 	// The database accounts to which the control policy applies.
 	//
-	// >  This parameter is required if AccountScopeType is set to AccountId.
+	// > This parameter is required if AccountScopeType is set to AccountId.
 	DatabaseAccountIds []*string `json:"DatabaseAccountIds,omitempty" xml:"DatabaseAccountIds,omitempty" type:"Repeated"`
 	// The database ID.
 	//
@@ -255,9 +255,9 @@ type SetPolicyAssetScopeRequestHostGroups struct {
 	AccountNames []*string `json:"AccountNames,omitempty" xml:"AccountNames,omitempty" type:"Repeated"`
 	// The scope of asset accounts to which the control policy applies. Valid values:
 	//
-	// 	- **All**: The control policy applies to all accounts in the asset group.
+	// - **All**: The control policy applies to all accounts in the asset group.
 	//
-	// 	- **AccountName**: The control policy applies to specified accounts in the asset group.
+	// - **AccountName**: The control policy applies to specified accounts in the asset group.
 	//
 	// example:
 	//
@@ -313,9 +313,9 @@ func (s *SetPolicyAssetScopeRequestHostGroups) Validate() error {
 type SetPolicyAssetScopeRequestHosts struct {
 	// The scope of host accounts to which the control policy applies. Valid values:
 	//
-	// 	- **All**: The control policy applies to all accounts of the host.
+	// - **All**: The control policy applies to all accounts of the host.
 	//
-	// 	- **AccountId**: The control policy applies specified accounts of the host.
+	// - **AccountId**: The control policy applies specified accounts of the host.
 	//
 	// example:
 	//

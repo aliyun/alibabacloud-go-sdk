@@ -36,9 +36,9 @@ type iModifyDatabaseRequest interface {
 type ModifyDatabaseRequest struct {
 	// The new address type of the database. Valid values:
 	//
-	// 	- **Public**
+	// - **Public**
 	//
-	// 	- **Private**
+	// - **Private**
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type ModifyDatabaseRequest struct {
 	//
 	// example:
 	//
-	// pc-bp169******
+	// 192.168.XX.XX
 	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
 	// The new public address of the database. Specify an IPv4 address or a domain name.
 	//
 	// example:
 	//
-	// pgm-uf6c******
+	// www.example.com
 	DatabasePublicAddress *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
 	// The ID of the bastion host that manages the database to modify.
 	//
@@ -94,7 +94,7 @@ type ModifyDatabaseRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the new network domain for the database.
 	//
-	// >  You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
+	// > You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
 	//
 	// example:
 	//

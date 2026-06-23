@@ -18,15 +18,15 @@ type iListNetworkDomainsResponseBody interface {
 }
 
 type ListNetworkDomainsResponseBody struct {
-	// The network domains that are returned.
+	// The list of network domains.
 	NetworkDomains []*ListNetworkDomainsResponseBodyNetworkDomains `json:"NetworkDomains,omitempty" xml:"NetworkDomains,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of network domains that are returned.
+	// The total number of network domains.
 	//
 	// example:
 	//
@@ -83,23 +83,23 @@ func (s *ListNetworkDomainsResponseBody) Validate() error {
 }
 
 type ListNetworkDomainsResponseBodyNetworkDomains struct {
-	// The remarks of the network domain.
+	// The comments on the network domain.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Indicates whether the network domain is built-in.
+	// Indicates whether the network domain is a built-in domain.
 	//
-	// 	- **true**
+	// - **true**: yes
 	//
-	// 	- **false**
+	// - **false**: no
 	//
 	// example:
 	//
 	// true
 	Default *bool `json:"Default,omitempty" xml:"Default,omitempty"`
-	// The network domain ID.
+	// The ID of the network domain.
 	//
 	// example:
 	//
@@ -111,17 +111,18 @@ type ListNetworkDomainsResponseBodyNetworkDomains struct {
 	//
 	// test
 	NetworkDomainName *string `json:"NetworkDomainName,omitempty" xml:"NetworkDomainName,omitempty"`
-	// The connection mode of the network domain. Valid values:
+	// The type of the network domain. Valid values:
 	//
-	// 	- **Direct**
+	// - **Direct**: direct connection
 	//
-	// 	- **Proxy**
+	// - **Proxy**: proxy connection
 	//
 	// example:
 	//
 	// Proxy
-	NetworkDomainType *string                                                     `json:"NetworkDomainType,omitempty" xml:"NetworkDomainType,omitempty"`
-	ProxiesState      []*ListNetworkDomainsResponseBodyNetworkDomainsProxiesState `json:"ProxiesState,omitempty" xml:"ProxiesState,omitempty" type:"Repeated"`
+	NetworkDomainType *string `json:"NetworkDomainType,omitempty" xml:"NetworkDomainType,omitempty"`
+	// The information about the proxy servers.
+	ProxiesState []*ListNetworkDomainsResponseBodyNetworkDomainsProxiesState `json:"ProxiesState,omitempty" xml:"ProxiesState,omitempty" type:"Repeated"`
 }
 
 func (s ListNetworkDomainsResponseBodyNetworkDomains) String() string {
@@ -202,19 +203,19 @@ func (s *ListNetworkDomainsResponseBodyNetworkDomains) Validate() error {
 type ListNetworkDomainsResponseBodyNetworkDomainsProxiesState struct {
 	// The node type of the proxy server. Valid values:
 	//
-	// 	- **Master**: primary proxy server.
+	// - **Master**: the master proxy server
 	//
-	// 	- **Slave**: secondary proxy server.
+	// - **Slave**: the slave proxy server
 	//
 	// example:
 	//
 	// Master
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The status of the proxy server.
+	// The status of the proxy server. Valid values:
 	//
-	// 	- **Available**
+	// - **Available**
 	//
-	// 	- **Unavailable**
+	// - **Unavailable**
 	//
 	// example:
 	//

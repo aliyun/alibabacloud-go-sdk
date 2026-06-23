@@ -93,7 +93,7 @@ type ListUserGroupsResponseBodyUserGroups struct {
 	//
 	// example:
 	//
-	// 5
+	// 6
 	MemberCount *int32 `json:"MemberCount,omitempty" xml:"MemberCount,omitempty"`
 	// The ID of the user group.
 	//

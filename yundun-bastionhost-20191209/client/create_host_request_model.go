@@ -38,11 +38,11 @@ type iCreateHostRequest interface {
 }
 
 type CreateHostRequest struct {
-	// The endpoint type of the host that you want to create. Valid values:
+	// The address type of the host. Valid values:
 	//
-	// 	- **Public**: public endpoint
+	// - **Public**: a public address
 	//
-	// 	- **Private**: internal endpoint
+	// - **Private**: a private address
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type CreateHostRequest struct {
 	//
 	// Public
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The description of the host that you want to create. The value can be up to 500 characters in length.
+	// The comment for the host. The comment can be up to 500 characters in length.
 	//
 	// example:
 	//
 	// Local Host
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name of the host that you want to create. The name can be up to 128 characters in length.
+	// The name of the host. The name can be up to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -64,25 +64,25 @@ type CreateHostRequest struct {
 	//
 	// host01
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The internal endpoint of the host that you want to create. You can set this parameter to a domain name or an IP address.
+	// The private address of the host. You can use a domain name or an IP address.
 	//
-	// > This parameter is required if the **ActiveAddressType*	- parameter is set to **Private**.
+	// > This parameter is required when **ActiveAddressType*	- is set to **Private**.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
-	// The public endpoint of the host that you want to create. You can set this parameter to a domain name or an IP address.
+	// The public address of the host. You can use a domain name or an IP address.
 	//
-	// > This parameter is required if the **ActiveAddressType*	- parameter is set to **Public**.
+	// > This parameter is required when **ActiveAddressType*	- is set to **Public**.
 	//
 	// example:
 	//
 	// 172.16.XX.XX
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
-	// The ID of the bastion host in which you want to create the host.
+	// The ID of the Bastionhost instance where you want to create the host.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -90,31 +90,33 @@ type CreateHostRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the ECS instance belongs.
+	//
 	// example:
 	//
-	// 1
+	// 1605494xxxx
 	InstanceMemberId *int64 `json:"InstanceMemberId,omitempty" xml:"InstanceMemberId,omitempty"`
-	// The ID of the region to which the ECS instance or the host in an ApsaraDB MyBase dedicated cluster belongs.
+	// The region ID of the ECS instance or the host in the dedicated cluster.
 	//
-	// > This parameter is required if the **Source*	- parameter is set to **Ecs*	- or **Rds**.
+	// > This parameter is required when **Source*	- is set to **Ecs*	- or **Rds**.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
-	// The ID of the network domain to which the host to be imported belongs.
+	// The ID of the network domain to which the host belongs.
 	//
-	// > You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
+	// > Call the [ListNetworkDomains ](https://help.aliyun.com/document_detail/2758827.html)operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 1
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
-	// The operating system of the host that you want to create. Valid values:
+	// The operating system of the host. Valid values:
 	//
-	// 	- **Linux**
+	// - **Linux**
 	//
-	// 	- **Windows**
+	// - **Windows**
 	//
 	// This parameter is required.
 	//
@@ -122,21 +124,21 @@ type CreateHostRequest struct {
 	//
 	// Linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// The region ID of the bastion host to which you want to import the host.
+	// The region ID of the Bastionhost instance where you want to create the host.
 	//
-	// > For information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source of the host that you want to create. Valid values:
+	// The source of the host. Valid values:
 	//
-	// 	- **Local**: a host in a data center
+	// - **Local**: a local host
 	//
-	// 	- **Ecs**: an Elastic Compute Service (ECS) instance
+	// - **Ecs**: an ECS instance
 	//
-	// 	- **Rds**: a host in an ApsaraDB MyBase dedicated cluster
+	// - **Rds**: a host in an ApsaraDB RDS dedicated cluster
 	//
 	// This parameter is required.
 	//
@@ -144,9 +146,9 @@ type CreateHostRequest struct {
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster.
+	// The ID of the ECS instance or the host in the dedicated cluster.
 	//
-	// > This parameter is required if the **Source*	- parameter is set to **Ecs*	- or **Rds**.
+	// > This parameter is required when **Source*	- is set to **Ecs*	- or **Rds**.
 	//
 	// example:
 	//

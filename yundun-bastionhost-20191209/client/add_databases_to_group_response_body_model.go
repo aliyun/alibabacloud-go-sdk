@@ -85,6 +85,10 @@ type AddDatabasesToGroupResponseBodyResults struct {
 	// 1
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

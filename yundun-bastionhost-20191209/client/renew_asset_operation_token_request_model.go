@@ -20,7 +20,7 @@ type iRenewAssetOperationTokenRequest interface {
 type RenewAssetOperationTokenRequest struct {
 	// The bastion host ID.
 	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type RenewAssetOperationTokenRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the O\\&M token that you want to renew.
 	//
-	// >  You can call the [GenerateAssetOperationToken](https://help.aliyun.com/document_detail/2758861.html) operation to query the O\\&M token ID.
+	// > You can call the [GenerateAssetOperationToken](https://help.aliyun.com/document_detail/2758861.html) operation to query the O\\&M token ID.
 	//
 	// example:
 	//

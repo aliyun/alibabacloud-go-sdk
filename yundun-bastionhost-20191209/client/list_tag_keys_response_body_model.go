@@ -22,27 +22,27 @@ type iListTagKeysResponseBody interface {
 }
 
 type ListTagKeysResponseBody struct {
-	// The page number of the returned page.
+	// The returned page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 50177258-E817-4D2F-A5C6-3FD7BC4806E3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of tags.
+	// An array of tag keys.
 	TagKeys []*ListTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
-	// The total number of tags returned.
+	// The total number of tag keys.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListTagKeysResponseBody) Validate() error {
 }
 
 type ListTagKeysResponseBodyTagKeys struct {
-	// The total number of tag keys.
+	// The number of resources with this tag key.
 	//
 	// example:
 	//
 	// 2
 	TagCount *int32 `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
-	// The name of the tag key.
+	// The tag key.
 	//
 	// example:
 	//

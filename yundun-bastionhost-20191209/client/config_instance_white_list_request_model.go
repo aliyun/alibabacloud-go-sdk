@@ -20,9 +20,9 @@ type iConfigInstanceWhiteListRequest interface {
 }
 
 type ConfigInstanceWhiteListRequest struct {
-	// The ID of the bastion host for which you want to configure a whitelist of public IP addresses.
+	// The ID of the Bastionhost instance to configure.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > To obtain the instance ID, call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -30,18 +30,19 @@ type ConfigInstanceWhiteListRequest struct {
 	//
 	// bastionhost-cn-78v1gh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host.
+	// The region ID of the Bastionhost instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IP address whitelist that you want to configure.
+	// The list of IP addresses to add to the whitelist.
 	//
 	// example:
 	//
 	// 10.162.XX.XX
-	WhiteList         []*string                                          `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
+	WhiteList []*string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
+	// The policies for the public IP address whitelist.
 	WhiteListPolicies []*ConfigInstanceWhiteListRequestWhiteListPolicies `json:"WhiteListPolicies,omitempty" xml:"WhiteListPolicies,omitempty" type:"Repeated"`
 }
 
@@ -103,8 +104,14 @@ func (s *ConfigInstanceWhiteListRequest) Validate() error {
 }
 
 type ConfigInstanceWhiteListRequestWhiteListPolicies struct {
+	// The description of this whitelist rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Entry       *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	// The IP addresses to add to the whitelist. You can specify up to 50 IP addresses, separated by a comma.
+	//
+	// example:
+	//
+	// 10.162.XX.XX,192.168.XX.XX
+	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 
 func (s ConfigInstanceWhiteListRequestWhiteListPolicies) String() string {

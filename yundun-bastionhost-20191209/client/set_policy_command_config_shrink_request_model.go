@@ -28,7 +28,7 @@ type SetPolicyCommandConfigShrinkRequest struct {
 	CommandConfigShrink *string `json:"CommandConfig,omitempty" xml:"CommandConfig,omitempty"`
 	// The bastion host ID.
 	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type SetPolicyCommandConfigShrinkRequest struct {
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

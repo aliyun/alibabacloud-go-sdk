@@ -30,44 +30,90 @@ type iCreateOperationTicketRequest interface {
 }
 
 type CreateOperationTicketRequest struct {
+	// The comments on the ticket.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Comment
 	ApproveComment *string `json:"ApproveComment,omitempty" xml:"ApproveComment,omitempty"`
+	// The logon name of the asset account for the O\\&M request.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// root
 	AssetAccountName *string `json:"AssetAccountName,omitempty" xml:"AssetAccountName,omitempty"`
+	// The ID of the asset for which to request O\\&M.
+	//
+	// > Call the [ListOperationDatabases](https://help.aliyun.com/document_detail/2758856.html) and [ListOperationHosts](https://help.aliyun.com/document_detail/2758857.html) operations to obtain this parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
+	// The end time of the validity period for the logon request. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// > The end time must be later than the start time.
+	//
 	// example:
 	//
 	// 1679393152
 	EffectEndTime *int64 `json:"EffectEndTime,omitempty" xml:"EffectEndTime,omitempty"`
+	// The start time of the validity period for the logon request. This value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1685600242
 	EffectStartTime *int64 `json:"EffectStartTime,omitempty" xml:"EffectStartTime,omitempty"`
+	// The ID of the Bastionhost instance.
+	//
+	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether the ticket is valid for a single logon. Valid values:
+	//
+	// - **true**: The ticket is valid for a single logon.
+	//
+	// - **false**: The ticket is valid for multiple logons within the validity period.
+	//
 	// example:
 	//
 	// false
 	IsOneTimeEffect *bool `json:"IsOneTimeEffect,omitempty" xml:"IsOneTimeEffect,omitempty"`
+	// The name of the protocol for the O\\&M request. Valid values:
+	//
+	// - SSH
+	//
+	// - RDP
+	//
+	// - MySQL
+	//
+	// - PostgreSQL
+	//
+	// - Oracle
+	//
+	// - SQLServer
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SSH
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
+	// The region ID of the Bastionhost instance.
+	//
+	// > For more information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	//
 	// example:
 	//
 	// cn-hangzhou

@@ -24,9 +24,9 @@ type iModifyInstanceTwoFactorRequest interface {
 type ModifyInstanceTwoFactorRequest struct {
 	// Specifies whether to enable two-factor authentication. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes
 	//
-	// 	- **false**: no
+	// - **false**: no
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type ModifyInstanceTwoFactorRequest struct {
 	SkipTwoFactorTime *string `json:"SkipTwoFactorTime,omitempty" xml:"SkipTwoFactorTime,omitempty"`
 	// The method used to send a verification code for two-factor authentication. If EnableTwoFactor is set to true, you must specify at least one method. Valid values:
 	//
-	// 	- **sms:*	- text message.
+	// - **sms:*	- text message.
 	//
-	// 	- **email**: email.
+	// - **email**: email.
 	//
-	// 	- **dingtalk**: notice in DingTalk.
+	// - **dingtalk**: notice in DingTalk.
 	//
-	// 	- **totp**: one-time password (OTP) token.
+	// - **totp**: one-time password (OTP) token.
 	//
-	// 	- **gmusbkey**: SM-based USB key.
+	// - **gmusbkey**: SM-based USB key.
 	//
 	// example:
 	//

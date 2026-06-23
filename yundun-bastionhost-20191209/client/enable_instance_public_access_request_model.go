@@ -16,9 +16,9 @@ type iEnableInstancePublicAccessRequest interface {
 }
 
 type EnableInstancePublicAccessRequest struct {
-  // The ID of the bastion host.
+  // The ID of the Bastionhost instance.
   // 
-  // >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+  // > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the ID of the Bastionhost instance.
   // 
   // This parameter is required.
   // 
@@ -26,7 +26,7 @@ type EnableInstancePublicAccessRequest struct {
   // 
   // bastionhost-cn-78v1gh****
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-  // The region ID of the bastion host.
+  // The region ID of the Bastionhost instance.
   // 
   // example:
   // 

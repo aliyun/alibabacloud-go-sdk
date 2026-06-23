@@ -22,7 +22,7 @@ type iAttachHostAccountsToHostShareKeyRequest interface {
 type AttachHostAccountsToHostShareKeyRequest struct {
 	// The host account IDs.
 	//
-	// >  You must specify this parameter. You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/462937.html) operation to query the host account IDs.
+	// > You must specify this parameter. You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/462937.html) operation to query the host account IDs.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type AttachHostAccountsToHostShareKeyRequest struct {
 	HostAccountIds *string `json:"HostAccountIds,omitempty" xml:"HostAccountIds,omitempty"`
 	// The shared key ID.
 	//
-	// >  You must specify this parameter. You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to query the shared key ID.
+	// > You must specify this parameter. You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to query the shared key ID.
 	//
 	// example:
 	//

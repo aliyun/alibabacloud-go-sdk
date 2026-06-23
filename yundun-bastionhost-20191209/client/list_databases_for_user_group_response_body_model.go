@@ -18,15 +18,15 @@ type iListDatabasesForUserGroupResponseBody interface {
 }
 
 type ListDatabasesForUserGroupResponseBody struct {
-	// The databases returned.
+	// The list of databases that are queried.
 	Databases []*ListDatabasesForUserGroupResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	// The request ID.
+	// The unique ID that Alibaba Cloud generates for the request.
 	//
 	// example:
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of databases returned.
+	// The total number of databases that are queried.
 	//
 	// example:
 	//
@@ -83,35 +83,35 @@ func (s *ListDatabasesForUserGroupResponseBody) Validate() error {
 }
 
 type ListDatabasesForUserGroupResponseBodyDatabases struct {
-	// The address type of the database. Valid values:
+	// The type of the database address. Valid values:
 	//
-	// 	- **Public**
+	// - **Public**: public address
 	//
-	// 	- **Private**
+	// - **Private**: private address
 	//
 	// example:
 	//
 	// Private
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The remarks of the database.
+	// The description of the database instance.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The total number of database accounts returned.
+	// The total number of database accounts that are queried.
 	//
 	// example:
 	//
 	// 2
 	DatabaseAccountCount *int64 `json:"DatabaseAccountCount,omitempty" xml:"DatabaseAccountCount,omitempty"`
-	// The ID of the database to which the database account belongs.
+	// The ID of the database instance to which the database account belongs.
 	//
 	// example:
 	//
 	// 2
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The name of the database.
+	// The name of the database instance.
 	//
 	// example:
 	//
@@ -123,53 +123,53 @@ type ListDatabasesForUserGroupResponseBodyDatabases struct {
 	//
 	// 3306
 	DatabasePort *int64 `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
-	// The internal address of the database. The value is a domain name or an IP address.
+	// The private endpoint of the database, which can be a domain name or an IP address.
 	//
 	// example:
 	//
 	// rm-bp1******
 	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
-	// The public address of the database. The value is a domain name or an IP address.
+	// The public address of the database, which can be a domain name or an IP address.
 	//
 	// example:
 	//
 	// rm-uf65******
 	DatabasePublicAddress *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
-	// The database engine. Valid values:
+	// The type of the database. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **SQLServer**
+	// - **SQLServer**
 	//
 	// example:
 	//
 	// MySQL
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The ID of the network domain where the database resides.
+	// The ID of the network domain to which the database belongs.
 	//
 	// example:
 	//
 	// 5
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
-	// The type of the database. Valid values:
+	// The source of the database. Valid values:
 	//
-	// 	- **Local**: on-premises database.
+	// - **Local**: local database instance
 	//
-	// 	- **Rds**: ApsaraDB RDS instance.
+	// - **Rds**: RDS database instance
 	//
-	// 	- **PolarDB**: PolarDB cluster.
+	// - **PolarDB**: PolarDB database instance
 	//
 	// example:
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the ApsaraDB RDS instance or PolarDB cluster.
+	// The ID of the RDS instance or PolarDB instance that corresponds to the database.
 	//
-	// > No value is returned for this parameter if **Source*	- is set to **Local**.
+	// > If **Source*	- is set to **Local**, this parameter is empty.
 	//
 	// example:
 	//

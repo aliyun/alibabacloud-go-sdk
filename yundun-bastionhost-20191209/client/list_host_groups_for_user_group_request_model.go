@@ -44,9 +44,9 @@ type ListHostGroupsForUserGroupRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies the category of the host group that you want to query. Valid values:
 	//
-	// 	- **Authorized**: queries the host groups that the user group is authorized to manage. This is the default value.
+	// - **Authorized**: queries the host groups that the user group is authorized to manage. This is the default value.
 	//
-	// 	- **Unauthorized**: queries the host groups that the user group is not authorized to manage.
+	// - **Unauthorized**: queries the host groups that the user group is not authorized to manage.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListHostGroupsForUserGroupRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.\\
+	// The number of entries to return on each page.<br>
 	//
 	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
 	//

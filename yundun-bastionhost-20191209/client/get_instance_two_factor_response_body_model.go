@@ -64,9 +64,9 @@ func (s *GetInstanceTwoFactorResponseBody) Validate() error {
 type GetInstanceTwoFactorResponseBodyConfig struct {
 	// Indicates whether two-factor authentication is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

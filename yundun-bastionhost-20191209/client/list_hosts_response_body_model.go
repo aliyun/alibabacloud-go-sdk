@@ -85,9 +85,9 @@ func (s *ListHostsResponseBody) Validate() error {
 type ListHostsResponseBodyHosts struct {
 	// The address type of the host. Valid values:
 	//
-	// 	- **Public**: a public address
+	// - **Public**: a public address
 	//
-	// 	- **Private**: a private address
+	// - **Private**: a private address
 	//
 	// example:
 	//
@@ -131,9 +131,9 @@ type ListHostsResponseBodyHosts struct {
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
 	// The operating system of the host. Valid values:
 	//
-	// 	- **Linux**
+	// - **Linux**
 	//
-	// 	- **Windows**
+	// - **Windows**
 	//
 	// example:
 	//
@@ -141,11 +141,11 @@ type ListHostsResponseBodyHosts struct {
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 	// The source of the host. Valid values:
 	//
-	// 	- **Local**: a host in a data center
+	// - **Local**: a host in a data center
 	//
-	// 	- **Ecs**: an ECS instance
+	// - **Ecs**: an ECS instance
 	//
-	// 	- **Rds**: a host in an ApsaraDB MyBase dedicated cluster
+	// - **Rds**: a host in an ApsaraDB MyBase dedicated cluster
 	//
 	// example:
 	//
@@ -161,9 +161,9 @@ type ListHostsResponseBodyHosts struct {
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
 	// The status of the host. Valid values:
 	//
-	// 	- **Normal**: normal
+	// - **Normal**: normal
 	//
-	// 	- **Release**: released
+	// - **Release**: released
 	//
 	// example:
 	//

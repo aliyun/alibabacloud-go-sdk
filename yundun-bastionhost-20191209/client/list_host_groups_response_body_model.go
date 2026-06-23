@@ -87,7 +87,7 @@ type ListHostGroupsResponseBodyHostGroups struct {
 	//
 	// example:
 	//
-	// Description
+	// Comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The asset group ID.
 	//
@@ -99,7 +99,7 @@ type ListHostGroupsResponseBodyHostGroups struct {
 	//
 	// example:
 	//
-	// Host group 1
+	// HostGroup1
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
 	// The number of hosts in the asset group.
 	//

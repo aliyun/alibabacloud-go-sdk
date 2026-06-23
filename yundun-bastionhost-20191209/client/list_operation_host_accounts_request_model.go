@@ -32,7 +32,7 @@ type ListOperationHostAccountsRequest struct {
 	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
 	// The ID of the host whose accounts you want to query.
 	//
-	// >  You can call the [ListOperationHosts](https://help.aliyun.com/document_detail/2758857.html) operation to query the host ID.
+	// > You can call the [ListOperationHosts](https://help.aliyun.com/document_detail/2758857.html) operation to query the host ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ListOperationHostAccountsRequest struct {
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The bastion host ID.
 	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
 	//
 	// This parameter is required.
 	//
@@ -56,11 +56,9 @@ type ListOperationHostAccountsRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.\\
+	// The number of entries per page.<br> Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
 	//
-	// Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > We recommend that you do not leave this parameter empty.
 	//
 	// example:
 	//
@@ -68,7 +66,7 @@ type ListOperationHostAccountsRequest struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

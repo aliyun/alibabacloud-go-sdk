@@ -85,9 +85,9 @@ func (s *ListOperationHostAccountsResponseBody) Validate() error {
 type ListOperationHostAccountsResponseBodyHostAccounts struct {
 	// Indicates whether a password is configured for the host account.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -125,9 +125,9 @@ type ListOperationHostAccountsResponseBodyHostAccounts struct {
 	PrivateKeyFingerprint *string `json:"PrivateKeyFingerprint,omitempty" xml:"PrivateKeyFingerprint,omitempty"`
 	// The protocol that is used by the host account.
 	//
-	// 	- **SSH**
+	// - **SSH**
 	//
-	// 	- **RDP**
+	// - **RDP**
 	//
 	// example:
 	//

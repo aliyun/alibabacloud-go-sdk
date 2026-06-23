@@ -103,9 +103,9 @@ type ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts struct {
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
 	// Indicates whether the user group is authorized to manage the database account. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ type ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts struct {
 	IsAuthorized *bool `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
 	// The protocol used by the database account. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **SQLServer**
+	// - **SQLServer**
 	//
 	// example:
 	//

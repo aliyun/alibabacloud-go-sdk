@@ -84,6 +84,10 @@ func (s *ListPoliciesResponseBody) Validate() error {
 
 type ListPoliciesResponseBodyPolicies struct {
 	// The remarks of the control policy.
+	//
+	// example:
+	//
+	// Comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The control policy ID.
 	//

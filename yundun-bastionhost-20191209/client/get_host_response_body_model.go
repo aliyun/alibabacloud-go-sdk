@@ -64,9 +64,9 @@ func (s *GetHostResponseBody) Validate() error {
 type GetHostResponseBodyHost struct {
 	// The address type of the host. Valid values:
 	//
-	// 	- **Public**: a public address
+	// - **Public**: a public address
 	//
-	// 	- **Private**: a private address
+	// - **Private**: a private address
 	//
 	// example:
 	//
@@ -110,9 +110,9 @@ type GetHostResponseBodyHost struct {
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
 	// The operating system of the host. Valid values:
 	//
-	// 	- **Linux**
+	// - **Linux**
 	//
-	// 	- **Windows**
+	// - **Windows**
 	//
 	// example:
 	//
@@ -120,13 +120,13 @@ type GetHostResponseBodyHost struct {
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 	// The preferred key exchange algorithm of the host. The value of this parameter is returned if OSType is set to Linux. Valid values:
 	//
-	// 	- **default**
+	// - **default**
 	//
-	// 	- **diffie-hellman-group1-sha1**
+	// - **diffie-hellman-group1-sha1**
 	//
-	// 	- **diffie-hellman-group14-sha1**
+	// - **diffie-hellman-group14-sha1**
 	//
-	// 	- **diffie-hellman-group-exchange-sha1**
+	// - **diffie-hellman-group-exchange-sha1**
 	//
 	// example:
 	//
@@ -136,11 +136,11 @@ type GetHostResponseBodyHost struct {
 	Protocols []*GetHostResponseBodyHostProtocols `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
 	// The source of the host. Valid values:
 	//
-	// 	- **Local**: a host in a data center
+	// - **Local**: a host in a data center
 	//
-	// 	- **Ecs**: an Elastic Compute Service (ECS) instance
+	// - **Ecs**: an Elastic Compute Service (ECS) instance
 	//
-	// 	- **Rds**: a host in an ApsaraDB MyBase dedicated cluster
+	// - **Rds**: a host in an ApsaraDB MyBase dedicated cluster
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type GetHostResponseBodyHost struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster.
 	//
-	// >  If **Local*	- is returned for the **Source*	- parameter, no value is returned for this parameter.
+	// > If **Local*	- is returned for the **Source*	- parameter, no value is returned for this parameter.
 	//
 	// example:
 	//
@@ -156,9 +156,9 @@ type GetHostResponseBodyHost struct {
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
 	// The status of the host. Valid values:
 	//
-	// 	- **Normal**: normal
+	// - **Normal**: normal
 	//
-	// 	- **Release**: released
+	// - **Release**: released
 	//
 	// example:
 	//
@@ -319,9 +319,9 @@ type GetHostResponseBodyHostProtocols struct {
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The protocol that is used to connect to the host. Valid values:
 	//
-	// 	- **SSH**
+	// - **SSH**
 	//
-	// 	- **RDP**
+	// - **RDP**
 	//
 	// example:
 	//

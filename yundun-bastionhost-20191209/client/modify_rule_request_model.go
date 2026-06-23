@@ -37,6 +37,10 @@ type iModifyRuleRequest interface {
 
 type ModifyRuleRequest struct {
 	// The new remarks of the authorization rule. It can be up to 500 characters in length.
+	//
+	// example:
+	//
+	// TEST
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The databases and database accounts that a user associated with the modified rule can manage.
 	Databases []*ModifyRuleRequestDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
@@ -248,15 +252,7 @@ type ModifyRuleRequestDatabases struct {
 	//
 	// example:
 	//
-	// [
-	//
-	//     {
-	//
-	//         "DatabaseId": "1"
-	//
-	//     }
-	//
-	// ]
+	// 2
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
 }
 
@@ -297,7 +293,7 @@ type ModifyRuleRequestHostGroups struct {
 	//
 	// example:
 	//
-	// [{"HostGroupId":"1"}]
+	// 1
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
 }
 
@@ -338,7 +334,7 @@ type ModifyRuleRequestHosts struct {
 	//
 	// example:
 	//
-	// [{"HostId":"1"}]
+	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 }
 

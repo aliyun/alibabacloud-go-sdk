@@ -26,11 +26,11 @@ type ListHostGroupsRequest struct {
 	//
 	// example:
 	//
-	// Host group 1
+	// HostGroup1
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
 	// The ID of the bastion host to query.
 	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/462953.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/462953.html) operation to query the bastion host ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ListHostGroupsRequest struct {
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > We recommend that you do not leave this parameter empty.
 	//
 	// example:
 	//

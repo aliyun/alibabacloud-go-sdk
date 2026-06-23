@@ -16,10 +16,14 @@ type iCreateOperationTicketResponseBody interface {
 }
 
 type CreateOperationTicketResponseBody struct {
+	// The ID of the O\\&M ticket.
+	//
 	// example:
 	//
 	// 2
 	OperationTicketId *string `json:"OperationTicketId,omitempty" xml:"OperationTicketId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0ECCC399-4D35-48A7-8379-5C6180E66235

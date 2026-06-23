@@ -68,15 +68,15 @@ func (s *DetachHostGroupAccountsFromUserResponseBody) Validate() error {
 type DetachHostGroupAccountsFromUserResponseBodyResults struct {
 	// The return code that indicates whether the call was successful. Valid values:
 	//
-	// 	- **OK**: The call was successful.
+	// - **OK**: The call was successful.
 	//
-	// 	- **UNEXPECTED**: An unknown error occurred.
+	// - **UNEXPECTED**: An unknown error occurred.
 	//
-	// 	- **INVALID_ARGUMENT**: A request parameter is invalid.
+	// - **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
-	// 	- **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
 	//
-	// 	- **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type DetachHostGroupAccountsFromUserResponseBodyResults struct {
 	//
 	// example:
 	//
-	// N/A
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the user.
 	//
@@ -173,15 +173,15 @@ func (s *DetachHostGroupAccountsFromUserResponseBodyResults) Validate() error {
 type DetachHostGroupAccountsFromUserResponseBodyResultsHostAccountNames struct {
 	// The return code that indicates whether permissions on the specified host account were revoked from the user. Valid values:
 	//
-	// 	- **OK**: The call was successful.
+	// - **OK**: The call was successful.
 	//
-	// 	- **UNEXPECTED**: An unknown error occurred.
+	// - **UNEXPECTED**: An unknown error occurred.
 	//
-	// 	- **INVALID_ARGUMENT**: A request parameter is invalid.
+	// - **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
-	// 	- **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
 	//
-	// 	- **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type DetachHostGroupAccountsFromUserResponseBodyResultsHostAccountNames struct {
 	//
 	// example:
 	//
-	// N/A
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

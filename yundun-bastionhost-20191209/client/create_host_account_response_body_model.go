@@ -16,7 +16,7 @@ type iCreateHostAccountResponseBody interface {
 }
 
 type CreateHostAccountResponseBody struct {
-	// The operation that you want to perform. Set the value to **CreateHostAccount**.
+	// The ID of the host account.
 	//
 	// example:
 	//

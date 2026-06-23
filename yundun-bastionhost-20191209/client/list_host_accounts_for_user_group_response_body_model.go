@@ -103,9 +103,9 @@ type ListHostAccountsForUserGroupResponseBodyHostAccounts struct {
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// Indicates whether the user group is authorized to manage the host account. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes
 	//
-	// 	- **false**: no
+	// - **false**: no
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ type ListHostAccountsForUserGroupResponseBodyHostAccounts struct {
 	IsAuthorized *bool `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
 	// The protocol that is used by the host. Valid values:
 	//
-	// 	- **SSH**
+	// - **SSH**
 	//
-	// 	- **RDP**
+	// - **RDP**
 	//
 	// example:
 	//

@@ -46,7 +46,7 @@ type iModifyUserRequest interface {
 type ModifyUserRequest struct {
 	// The new remarks of the user. The remarks can be up to 500 characters in length.
 	//
-	// >  Leave this parameter empty if you do not want to change the remarks of the user.
+	// > Leave this parameter empty if you do not want to change the remarks of the user.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ModifyUserRequest struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The new display name of the user. The display name can be up to 128 characters in length.
 	//
-	// >  Leave this parameter empty if you do not want to change the display name of the user.
+	// > Leave this parameter empty if you do not want to change the display name of the user.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ModifyUserRequest struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The end time of the validity period of the user. Specify a UNIX timestamp. Unit: seconds.
 	//
-	// >  Leave this parameter empty if you do not want to change the end time of the validity period.
+	// > Leave this parameter empty if you do not want to change the end time of the validity period.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ModifyUserRequest struct {
 	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
 	// The start time of the validity period of the user. Specify a UNIX timestamp. Unit: seconds.
 	//
-	// >  Leave this parameter empty if you do not want to change the start time of the validity period.
+	// > Leave this parameter empty if you do not want to change the start time of the validity period.
 	//
 	// example:
 	//
@@ -80,11 +80,11 @@ type ModifyUserRequest struct {
 	//
 	// >
 	//
-	// 	- This parameter is required if TwoFactorStatus is set to Enable and TwoFactorMethods is set to email, or if TwoFactorStatus is set to Global and TwoFactorMethods is set to email in the global two-factor authentication settings.
+	// - This parameter is required if TwoFactorStatus is set to Enable and TwoFactorMethods is set to email, or if TwoFactorStatus is set to Global and TwoFactorMethods is set to email in the global two-factor authentication settings.
 	//
-	// 	- You can call the [GetInstanceTwoFactor](https://help.aliyun.com/document_detail/462968.html) operation to query the global two-factor authentication settings.
+	// - You can call the [GetInstanceTwoFactor](https://help.aliyun.com/document_detail/462968.html) operation to query the global two-factor authentication settings.
 	//
-	// 	- Leave this parameter empty if you do not want to change the email address of the user.
+	// - Leave this parameter empty if you do not want to change the email address of the user.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type ModifyUserRequest struct {
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The ID of the bastion host on which you want to modify the information about the user.
 	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
 	//
 	// This parameter is required.
 	//
@@ -112,11 +112,11 @@ type ModifyUserRequest struct {
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// Specifies whether to send notifications in the language specified in the global settings or a custom language.
 	//
-	// 	- **Global**
+	// - **Global**
 	//
-	// 	- **Custom**
+	// - **Custom**
 	//
-	// >  Leave this parameter empty if you do not want to change the natural language used to notify the user.
+	// > Leave this parameter empty if you do not want to change the natural language used to notify the user.
 	//
 	// example:
 	//
@@ -126,11 +126,11 @@ type ModifyUserRequest struct {
 	//
 	// >
 	//
-	// 	- This parameter is required if TwoFactorStatus is set to Enable and TwoFactorMethods is set to sms or dingtalk, or if TwoFactorStatus is set to Global and TwoFactorMethods is set to sms or dingtalk in the global two-factor authentication settings.
+	// - This parameter is required if TwoFactorStatus is set to Enable and TwoFactorMethods is set to sms or dingtalk, or if TwoFactorStatus is set to Global and TwoFactorMethods is set to sms or dingtalk in the global two-factor authentication settings.
 	//
-	// 	- You can call the [GetInstanceTwoFactor](https://help.aliyun.com/document_detail/462968.html) operation to query the global two-factor authentication settings.
+	// - You can call the [GetInstanceTwoFactor](https://help.aliyun.com/document_detail/462968.html) operation to query the global two-factor authentication settings.
 	//
-	// 	- Leave this parameter empty if you do not want to change the mobile phone number of the user.
+	// - Leave this parameter empty if you do not want to change the mobile phone number of the user.
 	//
 	// example:
 	//
@@ -138,45 +138,45 @@ type ModifyUserRequest struct {
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The country where the new mobile number of the user is registered. Valid values:
 	//
-	// 	- **CN:*	- the Chinese mainland, whose country calling code is +86
+	// - **CN:*	- the Chinese mainland, whose country calling code is +86
 	//
-	// 	- **HK:*	- Hong Kong (China), whose country calling code is +852
+	// - **HK:*	- Hong Kong (China), whose country calling code is +852
 	//
-	// 	- **MO:*	- Macao (China), whose country calling code is +853
+	// - **MO:*	- Macao (China), whose country calling code is +853
 	//
-	// 	- **TW:*	- Taiwan (China), whose country calling code is +886
+	// - **TW:*	- Taiwan (China), whose country calling code is +886
 	//
-	// 	- **RU:*	- Russia, whose country calling code is +7
+	// - **RU:*	- Russia, whose country calling code is +7
 	//
-	// 	- **SG:*	- Singapore, whose country calling code is +65
+	// - **SG:*	- Singapore, whose country calling code is +65
 	//
-	// 	- **MY:*	- Malaysia, whose country calling code is +60
+	// - **MY:*	- Malaysia, whose country calling code is +60
 	//
-	// 	- **ID:*	- Indonesia, whose country calling code is +62
+	// - **ID:*	- Indonesia, whose country calling code is +62
 	//
-	// 	- **DE:*	- Germany, whose country calling code is +49
+	// - **DE:*	- Germany, whose country calling code is +49
 	//
-	// 	- **AU:*	- Australia, whose country calling code is +61
+	// - **AU:*	- Australia, whose country calling code is +61
 	//
-	// 	- **US:*	- US, whose country calling code is +1
+	// - **US:*	- US, whose country calling code is +1
 	//
-	// 	- **AE:*	- United Arab Emirates, whose country calling code is +971
+	// - **AE:*	- United Arab Emirates, whose country calling code is +971
 	//
-	// 	- **JP:*	- Japan, whose country calling code is +81
+	// - **JP:*	- Japan, whose country calling code is +81
 	//
-	// 	- **GB:*	- UK, whose country calling code is +44
+	// - **GB:*	- UK, whose country calling code is +44
 	//
-	// 	- **IN:*	- India, whose country calling code is +91
+	// - **IN:*	- India, whose country calling code is +91
 	//
-	// 	- **KR:*	- Republic of Korea, whose country calling code is +82
+	// - **KR:*	- Republic of Korea, whose country calling code is +82
 	//
-	// 	- **PH:*	- Philippines, whose country calling code is +63
+	// - **PH:*	- Philippines, whose country calling code is +63
 	//
-	// 	- **CH:*	- Switzerland, whose country calling code is +41
+	// - **CH:*	- Switzerland, whose country calling code is +41
 	//
-	// 	- **SE:*	- Sweden, whose country calling code is +46
+	// - **SE:*	- Sweden, whose country calling code is +46
 	//
-	// 	- **SA:*	- Saudi Arabia, whose country calling code is +966
+	// - **SA:*	- Saudi Arabia, whose country calling code is +966
 	//
 	// example:
 	//
@@ -184,11 +184,11 @@ type ModifyUserRequest struct {
 	MobileCountryCode *string `json:"MobileCountryCode,omitempty" xml:"MobileCountryCode,omitempty"`
 	// Specifies whether password reset is required upon the next logon. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
-	// >  Leave this parameter empty if you do not want to change the password reset settings for the user.
+	// > Leave this parameter empty if you do not want to change the password reset settings for the user.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ type ModifyUserRequest struct {
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The region ID of the bastion host on which you want to modify the information about the user.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -212,29 +212,33 @@ type ModifyUserRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The two-factor authentication method. You can select only one method. Valid values:
 	//
-	// 	- **sms**: text message-based two-factor authentication.
+	// - **sms**: text message-based two-factor authentication.
 	//
-	// 	- **email**: email-based two-factor authentication.
+	// - **email**: email-based two-factor authentication.
 	//
-	// 	- **dingtalk**: DingTalk-based two-factor authentication.
+	// - **dingtalk**: DingTalk-based two-factor authentication.
 	//
-	// 	- **totp OTP:*	- one-time password (OTP) token-based two-factor authentication.
+	// - **totp OTP:*	- one-time password (OTP) token-based two-factor authentication.
 	//
-	// >  If TwoFactorStatus is set to Enable, you must specify one of the valid values as TwoFactorMethods.
+	// > If TwoFactorStatus is set to Enable, you must specify one of the valid values as TwoFactorMethods.
 	//
 	// example:
 	//
-	// sms
+	// [
+	//
+	//       "sms"
+	//
+	// ]
 	TwoFactorMethods *string `json:"TwoFactorMethods,omitempty" xml:"TwoFactorMethods,omitempty"`
 	// Specifies whether two-factor authentication is enabled for the user. Valid values:
 	//
-	// 	- **Global**: The global settings apply.
+	// - **Global**: The global settings apply.
 	//
-	// 	- **Disable**: Two-factor authentication is disabled.
+	// - **Disable**: Two-factor authentication is disabled.
 	//
-	// 	- **Enable**: Two-factor authentication is enabled and user-specific settings apply.
+	// - **Enable**: Two-factor authentication is enabled and user-specific settings apply.
 	//
-	// >  Leave this parameter empty if you do not want to change the two-factory authentication settings for the user.
+	// > Leave this parameter empty if you do not want to change the two-factory authentication settings for the user.
 	//
 	// example:
 	//
@@ -242,7 +246,7 @@ type ModifyUserRequest struct {
 	TwoFactorStatus *string `json:"TwoFactorStatus,omitempty" xml:"TwoFactorStatus,omitempty"`
 	// The ID of the user whose information you want to modify.
 	//
-	// >  You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
+	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
 	//
 	// This parameter is required.
 	//

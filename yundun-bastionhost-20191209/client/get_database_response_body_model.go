@@ -64,9 +64,9 @@ func (s *GetDatabaseResponseBody) Validate() error {
 type GetDatabaseResponseBodyDatabase struct {
 	// The address type of the database. Valid values:
 	//
-	// 	- Public
+	// - Public
 	//
-	// 	- Private
+	// - Private
 	//
 	// example:
 	//
@@ -110,13 +110,13 @@ type GetDatabaseResponseBodyDatabase struct {
 	DatabasePublicAddress *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
 	// The database engine. Valid values:
 	//
-	// 	- **mysql**
+	// - **mysql**
 	//
-	// 	- **sqlserver**
+	// - **sqlserver**
 	//
-	// 	- **postgresql**
+	// - **postgresql**
 	//
-	// 	- **oracle**
+	// - **oracle**
 	//
 	// example:
 	//
@@ -130,11 +130,11 @@ type GetDatabaseResponseBodyDatabase struct {
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
 	// The database type. Valid values:
 	//
-	// 	- **Local**: on-premises database.
+	// - **Local**: on-premises database.
 	//
-	// 	- **Rds**: ApsaraDB RDS instance.
+	// - **Rds**: ApsaraDB RDS instance.
 	//
-	// 	- **PolarDB**: PolarDB cluster.
+	// - **PolarDB**: PolarDB cluster.
 	//
 	// example:
 	//
@@ -156,9 +156,9 @@ type GetDatabaseResponseBodyDatabase struct {
 	SourceInstanceRegionId *string `json:"SourceInstanceRegionId,omitempty" xml:"SourceInstanceRegionId,omitempty"`
 	// The status of the database. Valid values:
 	//
-	// 	- **Normal**
+	// - **Normal**
 	//
-	// 	- **Release**
+	// - **Release**
 	//
 	// example:
 	//

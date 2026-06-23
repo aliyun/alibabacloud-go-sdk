@@ -26,9 +26,15 @@ type iStartInstanceRequest interface {
 }
 
 type StartInstanceRequest struct {
-	ClientSecurityGroupIds    []*string `json:"ClientSecurityGroupIds,omitempty" xml:"ClientSecurityGroupIds,omitempty" type:"Repeated"`
-	EnablePortalPrivateAccess *bool     `json:"EnablePortalPrivateAccess,omitempty" xml:"EnablePortalPrivateAccess,omitempty"`
-	// The ID of the bastion host that you want to enable.
+	// The IDs of the security groups for the endpoint that is used to access the bastion host over a private network.
+	ClientSecurityGroupIds []*string `json:"ClientSecurityGroupIds,omitempty" xml:"ClientSecurityGroupIds,omitempty" type:"Repeated"`
+	// Specifies whether to enable the O\\&M portal of the bastion host to be accessed over a private network.
+	//
+	// example:
+	//
+	// true
+	EnablePortalPrivateAccess *bool `json:"EnablePortalPrivateAccess,omitempty" xml:"EnablePortalPrivateAccess,omitempty"`
+	// The ID of the bastion host to start.
 	//
 	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
 	//
@@ -44,7 +50,7 @@ type StartInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// An array consisting of the IDs of security groups to which the bastion host is added.
+	// The IDs of the security groups to which the bastion host is bound.
 	//
 	// This parameter is required.
 	//
@@ -52,8 +58,13 @@ type StartInstanceRequest struct {
 	//
 	// sg-bp1aiupc4yjqgmm****
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	SlaveVswitchId   *string   `json:"SlaveVswitchId,omitempty" xml:"SlaveVswitchId,omitempty"`
-	// The ID of the vSwitch to which the bastion host belongs.
+	// The ID of the secondary vSwitch to which the bastion host is bound.
+	//
+	// example:
+	//
+	// vsw-9dpspfku7gita****
+	SlaveVswitchId *string `json:"SlaveVswitchId,omitempty" xml:"SlaveVswitchId,omitempty"`
+	// The ID of the vSwitch to which the bastion host is bound.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type DeleteHostGroupRequest struct {
 	//
 	// example:
 	//
-	// 1
+	// 2
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
 	// The ID of the bastion host whose asset group you want to delete.
 	//

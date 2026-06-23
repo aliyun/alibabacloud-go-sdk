@@ -62,19 +62,19 @@ func (s *GetPolicyResponseBody) Validate() error {
 }
 
 type GetPolicyResponseBodyPolicy struct {
-	// The details of the logon period restrictions.
+	// The time-based access control settings.
 	AccessTimeRangeConfig *GetPolicyResponseBodyPolicyAccessTimeRangeConfig `json:"AccessTimeRangeConfig,omitempty" xml:"AccessTimeRangeConfig,omitempty" type:"Struct"`
-	// The O\\&M approval setting.
+	// The O\\&M approval settings.
 	ApprovalConfig *GetPolicyResponseBodyPolicyApprovalConfig `json:"ApprovalConfig,omitempty" xml:"ApprovalConfig,omitempty" type:"Struct"`
-	// The details of the command policy.
+	// The command control policy.
 	CommandConfig *GetPolicyResponseBodyPolicyCommandConfig `json:"CommandConfig,omitempty" xml:"CommandConfig,omitempty" type:"Struct"`
-	// The description of the control policy.
+	// The remarks on the policy.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The access control settings on source IP addresses.
+	// The source IP address-based access control settings.
 	IPAclConfig *GetPolicyResponseBodyPolicyIPAclConfig `json:"IPAclConfig,omitempty" xml:"IPAclConfig,omitempty" type:"Struct"`
 	// The ID of the control policy.
 	//
@@ -94,7 +94,7 @@ type GetPolicyResponseBodyPolicy struct {
 	//
 	// 1
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The details of protocol control.
+	// The protocol control settings.
 	ProtocolConfig *GetPolicyResponseBodyPolicyProtocolConfig `json:"ProtocolConfig,omitempty" xml:"ProtocolConfig,omitempty" type:"Struct"`
 }
 
@@ -217,7 +217,7 @@ func (s *GetPolicyResponseBodyPolicy) Validate() error {
 }
 
 type GetPolicyResponseBodyPolicyAccessTimeRangeConfig struct {
-	// The details of the periods during which logons are allowed.
+	// The allowed access time slots.
 	EffectiveTime []*GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty" type:"Repeated"`
 }
 
@@ -252,9 +252,9 @@ func (s *GetPolicyResponseBodyPolicyAccessTimeRangeConfig) Validate() error {
 }
 
 type GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime struct {
-	// The days of a week on which logons are allowed.
+	// The days of the week when access is allowed.
 	Days []*string `json:"Days,omitempty" xml:"Days,omitempty" type:"Repeated"`
-	// The time periods during which logons are allowed.
+	// The hours of the day when access is allowed.
 	Hours []*string `json:"Hours,omitempty" xml:"Hours,omitempty" type:"Repeated"`
 }
 
@@ -289,11 +289,11 @@ func (s *GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime) Validate
 }
 
 type GetPolicyResponseBodyPolicyApprovalConfig struct {
-	// Indicates whether O\\&M approval is enabled in the control policy. Valid values:
+	// Indicates whether O\\&M approval is enabled. Valid values:
 	//
-	// 	- **On**: O\\&M approval is enabled.
+	// - **On**: O\\&M approval is enabled.
 	//
-	// 	- **Off**: O\\&M approval is disabled.
+	// - **Off**: O\\&M approval is disabled.
 	//
 	// example:
 	//
@@ -323,9 +323,9 @@ func (s *GetPolicyResponseBodyPolicyApprovalConfig) Validate() error {
 }
 
 type GetPolicyResponseBodyPolicyCommandConfig struct {
-	// The details of the command approval settings.
+	// The command approval settings.
 	Approval *GetPolicyResponseBodyPolicyCommandConfigApproval `json:"Approval,omitempty" xml:"Approval,omitempty" type:"Struct"`
-	// The details of the command control setting.
+	// The command control settings.
 	Deny *GetPolicyResponseBodyPolicyCommandConfigDeny `json:"Deny,omitempty" xml:"Deny,omitempty" type:"Struct"`
 }
 
@@ -370,7 +370,7 @@ func (s *GetPolicyResponseBodyPolicyCommandConfig) Validate() error {
 }
 
 type GetPolicyResponseBodyPolicyCommandConfigApproval struct {
-	// An array of commands that can be run only after approval.
+	// The commands that require approval.
 	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
 }
 
@@ -396,17 +396,17 @@ func (s *GetPolicyResponseBodyPolicyCommandConfigApproval) Validate() error {
 }
 
 type GetPolicyResponseBodyPolicyCommandConfigDeny struct {
-	// The type of command control. Valid values:
+	// The command control mode. Valid values:
 	//
-	// 	- white: whitelist mode.
+	// - `white`: allowlist.
 	//
-	// 	- black: blacklist mode.
+	// - `black`: denylist.
 	//
 	// example:
 	//
 	// black
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// An array of controlled commands.
+	// The commands in the list.
 	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
 }
 
@@ -441,17 +441,17 @@ func (s *GetPolicyResponseBodyPolicyCommandConfigDeny) Validate() error {
 }
 
 type GetPolicyResponseBodyPolicyIPAclConfig struct {
-	// The mode of access control on source IP addresses. Valid values:
+	// The source IP address-based access control mode. Valid values:
 	//
-	// 	- white: whitelist mode.
+	// - `white`: allowlist.
 	//
-	// 	- black: blacklist mode.
+	// - `black`: denylist.
 	//
 	// example:
 	//
 	// black
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The IP addresses from which logons are not allowed.
+	// The IP addresses in the ACL.
 	IPs []*string `json:"IPs,omitempty" xml:"IPs,omitempty" type:"Repeated"`
 }
 
@@ -486,9 +486,9 @@ func (s *GetPolicyResponseBodyPolicyIPAclConfig) Validate() error {
 }
 
 type GetPolicyResponseBodyPolicyProtocolConfig struct {
-	// The configuration details of Remote Desktop Protocol (RDP) options.
+	// The RDP security settings.
 	RDP *GetPolicyResponseBodyPolicyProtocolConfigRDP `json:"RDP,omitempty" xml:"RDP,omitempty" type:"Struct"`
-	// The configuration details of SSH and SSH File Transfer Protocol (SFTP) options.
+	// The SSH and SFTP security settings.
 	SSH *GetPolicyResponseBodyPolicyProtocolConfigSSH `json:"SSH,omitempty" xml:"SSH,omitempty" type:"Struct"`
 }
 
@@ -533,31 +533,31 @@ func (s *GetPolicyResponseBodyPolicyProtocolConfig) Validate() error {
 }
 
 type GetPolicyResponseBodyPolicyProtocolConfigRDP struct {
-	// Indicates whether downloading from the clipboard is enabled. Valid values:
+	// Indicates whether clipboard download is enabled. Valid values:
 	//
-	// 	- Enable
+	// - `Enable`
 	//
-	// 	- Disable
+	// - `Disable`
 	//
 	// example:
 	//
 	// Enable
 	ClipboardDownload *string `json:"ClipboardDownload,omitempty" xml:"ClipboardDownload,omitempty"`
-	// Indicates whether file uploading from the clipboard is enabled. Valid values:
+	// Indicates whether clipboard upload is enabled. Valid values:
 	//
-	// 	- Enable
+	// - `Enable`
 	//
-	// 	- Disable
+	// - `Disable`
 	//
 	// example:
 	//
 	// Enable
 	ClipboardUpload *string `json:"ClipboardUpload,omitempty" xml:"ClipboardUpload,omitempty"`
-	// Indicates whether driver mapping is enabled. Valid values:
+	// Indicates whether drive redirection and printer mapping are enabled. Valid values:
 	//
-	// 	- Enable
+	// - `Enable`
 	//
-	// 	- Disable
+	// - `Disable`
 	//
 	// example:
 	//
@@ -573,9 +573,9 @@ type GetPolicyResponseBodyPolicyProtocolConfigRDP struct {
 	DiskRedirectionUpload *string `json:"DiskRedirectionUpload,omitempty" xml:"DiskRedirectionUpload,omitempty"`
 	// Indicates whether keyboard recording is enabled. Valid values:
 	//
-	// 	- Enable
+	// - `Enable`
 	//
-	// 	- Disable
+	// - `Disable`
 	//
 	// example:
 	//
@@ -660,89 +660,89 @@ type GetPolicyResponseBodyPolicyProtocolConfigSSH struct {
 	AllowTcpForwarding *string `json:"AllowTcpForwarding,omitempty" xml:"AllowTcpForwarding,omitempty"`
 	// Indicates whether remote command execution is enabled. Valid values:
 	//
-	// 	- Enable
+	// - `Enable`
 	//
-	// 	- Disable
+	// - `Disable`
 	//
 	// example:
 	//
 	// Enable
 	ExecCommand *string `json:"ExecCommand,omitempty" xml:"ExecCommand,omitempty"`
-	// Indicates whether the SFTP channel option is enabled. Valid values:
+	// Indicates whether the SFTP channel is enabled. Valid values:
 	//
-	// 	- Enable
+	// - `Enable`
 	//
-	// 	- Disable
+	// - `Disable`
 	//
 	// example:
 	//
 	// Enable
 	SFTPChannel *string `json:"SFTPChannel,omitempty" xml:"SFTPChannel,omitempty"`
-	// Indicates whether file downloading is enabled in SFTP-based O\\&M. Valid values:
+	// Indicates whether file downloads over SFTP are enabled. Valid values:
 	//
-	// 	- Enable
+	// - `Enable`
 	//
-	// 	- Disable
+	// - `Disable`
 	//
 	// example:
 	//
 	// Enable
 	SFTPDownloadFile *string `json:"SFTPDownloadFile,omitempty" xml:"SFTPDownloadFile,omitempty"`
-	// Indicates whether folder creation is enabled in SFTP-based O\\&M. Valid values:
+	// Indicates whether directory creation over SFTP is enabled. Valid values:
 	//
-	// 	- Enable
+	// - `Enable`
 	//
-	// 	- Disable
+	// - `Disable`
 	//
 	// example:
 	//
 	// Enable
 	SFTPMkdir *string `json:"SFTPMkdir,omitempty" xml:"SFTPMkdir,omitempty"`
-	// Indicates whether file deletion is enabled in SFTP-based O\\&M. Valid values:
+	// Indicates whether file deletion over SFTP is enabled. Valid values:
 	//
-	// 	- Enable
+	// - `Enable`
 	//
-	// 	- Disable
+	// - `Disable`
 	//
 	// example:
 	//
 	// Enable
 	SFTPRemoveFile *string `json:"SFTPRemoveFile,omitempty" xml:"SFTPRemoveFile,omitempty"`
-	// Indicates whether file renaming is enabled in SFTP-based O\\&M. Valid values:
+	// Indicates whether file renaming over SFTP is enabled. Valid values:
 	//
-	// 	- Enable
+	// - `Enable`
 	//
-	// 	- Disable
+	// - `Disable`
 	//
 	// example:
 	//
 	// Enable
 	SFTPRenameFile *string `json:"SFTPRenameFile,omitempty" xml:"SFTPRenameFile,omitempty"`
-	// Indicates whether folder deletion is enabled in SFTP-based O\\&M. Valid values:
+	// Indicates whether directory deletion over SFTP is enabled. Valid values:
 	//
-	// 	- Enable
+	// - `Enable`
 	//
-	// 	- Disable
+	// - `Disable`
 	//
 	// example:
 	//
 	// Enable
 	SFTPRmdir *string `json:"SFTPRmdir,omitempty" xml:"SFTPRmdir,omitempty"`
-	// Indicates whether file uploading is enabled in SFTP-based O\\&M. Valid values:
+	// Indicates whether file uploads over SFTP are enabled. Valid values:
 	//
-	// 	- Enable
+	// - `Enable`
 	//
-	// 	- Disable
+	// - `Disable`
 	//
 	// example:
 	//
 	// Enable
 	SFTPUploadFile *string `json:"SFTPUploadFile,omitempty" xml:"SFTPUploadFile,omitempty"`
-	// Indicates whether the SSH channel option is enabled. Valid values:
+	// Indicates whether the SSH channel is enabled. Valid values:
 	//
-	// 	- Enable
+	// - `Enable`
 	//
-	// 	- Disable
+	// - `Disable`
 	//
 	// example:
 	//
@@ -754,9 +754,9 @@ type GetPolicyResponseBodyPolicyProtocolConfigSSH struct {
 	TcpForwarding *string `json:"TcpForwarding,omitempty" xml:"TcpForwarding,omitempty"`
 	// Indicates whether X11 forwarding is enabled. Valid values:
 	//
-	// 	- Enable
+	// - `Enable`
 	//
-	// 	- Disable
+	// - `Disable`
 	//
 	// example:
 	//

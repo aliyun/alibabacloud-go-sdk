@@ -43,12 +43,16 @@ type CreateNetworkDomainRequest struct {
 	// The name of the network domain that you want to create. The name can be up to 128 characters in length.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// SSH Proxy
 	NetworkDomainName *string `json:"NetworkDomainName,omitempty" xml:"NetworkDomainName,omitempty"`
 	// The connection mode of the network domain to be created. Valid values:
 	//
-	// 	- Direct
+	// - Direct
 	//
-	// 	- Proxy
+	// - Proxy
 	//
 	// This parameter is required.
 	//
@@ -164,7 +168,7 @@ type CreateNetworkDomainRequestProxies struct {
 	//
 	// example:
 	//
-	// ***
+	// UWdi******Ng==
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The port of the proxy server.
 	//

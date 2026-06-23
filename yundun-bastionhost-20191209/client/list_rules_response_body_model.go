@@ -115,9 +115,9 @@ type ListRulesResponseBodyRules struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The state of the authorization rule.
 	//
-	// 	- **Enabled**
+	// - **Enabled**
 	//
-	// 	- **Disabled**
+	// - **Disabled**
 	//
 	// example:
 	//

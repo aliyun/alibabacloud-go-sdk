@@ -20,21 +20,34 @@ type iImportKMSSecretsForHostRequest interface {
 }
 
 type ImportKMSSecretsForHostRequest struct {
+	// The ID of the host to import the KMS secrets to.
+	//
+	// > Only ECS hosts can import KMS secrets. You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to obtain this parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	HostId *int32 `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// The ID of the Bastionhost instance.
+	//
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	//
 	// example:
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the Bastionhost instance.
+	//
+	// > For more information about region IDs and names, see [Regions and availability zones](https://help.aliyun.com/document_detail/40654.html).
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Secrets  []*ImportKMSSecretsForHostRequestSecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The KMS secrets to import.
+	Secrets []*ImportKMSSecretsForHostRequestSecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
 }
 
 func (s ImportKMSSecretsForHostRequest) String() string {
@@ -95,10 +108,16 @@ func (s *ImportKMSSecretsForHostRequest) Validate() error {
 }
 
 type ImportKMSSecretsForHostRequestSecrets struct {
+	// The name of the KMS secret.
+	//
 	// example:
 	//
 	// secret
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The type of the KMS secret. Valid values:
+	//
+	// - **ECS**: an ECS credential.
+	//
 	// example:
 	//
 	// ECS

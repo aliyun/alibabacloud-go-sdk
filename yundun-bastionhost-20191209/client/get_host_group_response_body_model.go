@@ -66,7 +66,7 @@ type GetHostGroupResponseBodyHostGroup struct {
 	//
 	// example:
 	//
-	// Description
+	// Comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The asset group ID.
 	//
@@ -78,7 +78,7 @@ type GetHostGroupResponseBodyHostGroup struct {
 	//
 	// example:
 	//
-	// Host group 1
+	// Group1
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
 }
 

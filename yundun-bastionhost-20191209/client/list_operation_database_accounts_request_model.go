@@ -32,9 +32,7 @@ type ListOperationDatabaseAccountsRequest struct {
 	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
 	// The database ID.
 	//
-	// >  You can call the [ListOperationDatabases](https://help.aliyun.com/document_detail/2758856.html) operation to query the database ID.
-	//
-	// This parameter is required.
+	// > You can call the [ListOperationDatabases](https://help.aliyun.com/document_detail/2758856.html) operation to query the database ID.
 	//
 	// example:
 	//
@@ -42,7 +40,7 @@ type ListOperationDatabaseAccountsRequest struct {
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
 	// The ID of the bastion host.
 	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
 	//
 	// This parameter is required.
 	//
@@ -56,11 +54,11 @@ type ListOperationDatabaseAccountsRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.\\
+	// The number of entries per page.<br>
 	//
 	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > We recommend that you do not leave this parameter empty.
 	//
 	// example:
 	//
@@ -68,7 +66,7 @@ type ListOperationDatabaseAccountsRequest struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

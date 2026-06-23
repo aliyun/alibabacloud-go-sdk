@@ -18,18 +18,28 @@ type iRemoveInstanceRdMemberRequest interface {
 }
 
 type RemoveInstanceRdMemberRequest struct {
+	// The ID of the Bastionhost instance.
+	//
+	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The UID of the RD member account to remove.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1597141696147832
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The region ID of the Bastionhost instance.
+	//
+	// > For more information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	//
 	// example:
 	//
 	// cn-hangzhou

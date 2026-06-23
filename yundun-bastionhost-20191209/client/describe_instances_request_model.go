@@ -26,57 +26,57 @@ type iDescribeInstancesRequest interface {
 }
 
 type DescribeInstancesRequest struct {
-	// An array that consists of the IDs of the bastion hosts.
+	// The IDs of the bastion host instances.
 	//
 	// example:
 	//
 	// bastionhost-cn-78v1ghxxxxx
 	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	// The status of the bastion host. Valid values:
+	// The status of the bastion host instance. Valid values:
 	//
-	// 	- **PENDING**: The bastion host is not initialized.
+	// - **PENDING**: The instance is not initialized.
 	//
-	// 	- **CREATING**: The bastion host is being created.
+	// - **CREATING**: The instance is being created.
 	//
-	// 	- **RUNNING**: The bastion host is running.
+	// - **RUNNING**: The instance is running.
 	//
-	// 	- **EXPIRED**: The bastion host expired.
+	// - **EXPIRED**: The instance is expired.
 	//
-	// 	- **CREATE_FAILED**: The bastion host fails to be created.
+	// - **CREATE_FAILED**: The instance creation failed.
 	//
-	// 	- **UPGRADING**: The configurations of the bastion host are being changed.
+	// - **UPGRADING**: The instance is being upgraded.
 	//
-	// 	- **UPGRADE_FAILED**: The configurations of the bastion host fail to be changed.
+	// - **UPGRADE_FAILED**: The instance upgrade failed.
 	//
 	// example:
 	//
 	// RUNNING
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of bastion host instances to return on each page. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host.
+	// The ID of the region in which the bastion host instances reside.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the bastion host belongs.
+	// The ID of the resource group to which the bastion host instance belongs.
 	//
 	// example:
 	//
 	// rg-acfm26ougi****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// An array consisting of the tags that are added to the bastion hosts.
+	// The tags attached to the bastion host instances.
 	Tag []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

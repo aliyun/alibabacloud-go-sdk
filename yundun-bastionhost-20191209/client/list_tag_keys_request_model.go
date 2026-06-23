@@ -22,19 +22,19 @@ type iListTagKeysRequest interface {
 }
 
 type ListTagKeysRequest struct {
-	// The number of the page to return.
+	// The page number to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host.
+	// The region ID of the Bastionhost instance.
 	//
 	// This parameter is required.
 	//
@@ -45,7 +45,7 @@ type ListTagKeysRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of the resource.
 	//
-	// Set the value to INSTANCE, which indicates that the resource is a bastion host.
+	// The only valid value is INSTANCE, which represents a Bastionhost instance.
 	//
 	// This parameter is required.
 	//

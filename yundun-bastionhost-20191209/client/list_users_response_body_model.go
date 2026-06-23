@@ -115,9 +115,9 @@ type ListUsersResponseBodyUsers struct {
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// This parameter is required if LanguageStatus is set to Custom. Valid values:
 	//
-	// 	- **zh-cn**: simplified Chinese.
+	// - **zh-cn**: simplified Chinese.
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -125,9 +125,9 @@ type ListUsersResponseBodyUsers struct {
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// Indicates whether notifications are sent in the language specified in the global settings or a custom language.
 	//
-	// 	- **Global**
+	// - **Global**
 	//
-	// 	- **Custom**
+	// - **Custom**
 	//
 	// example:
 	//
@@ -141,43 +141,43 @@ type ListUsersResponseBodyUsers struct {
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The location where the mobile phone number of the user is registered. Valid values:
 	//
-	// 	- **CN**: the Chinese mainland, whose international dialing code is +86.
+	// - **CN**: the Chinese mainland, whose international dialing code is +86.
 	//
-	// 	- **HK**: Hong Kong (China), whose international dialing code is +852.
+	// - **HK**: Hong Kong (China), whose international dialing code is +852.
 	//
-	// 	- **MO**: Macao (China), whose international dialing code is +853.
+	// - **MO**: Macao (China), whose international dialing code is +853.
 	//
-	// 	- **TW**: Taiwan (China), whose international dialing code is +886.
+	// - **TW**: Taiwan (China), whose international dialing code is +886.
 	//
-	// 	- **RU**: Russia, whose international dialing code is +7.
+	// - **RU**: Russia, whose international dialing code is +7.
 	//
-	// 	- **SG**: Singapore, whose international dialing code is +65.
+	// - **SG**: Singapore, whose international dialing code is +65.
 	//
-	// 	- **MY**: Malaysia, whose international dialing code is +60.
+	// - **MY**: Malaysia, whose international dialing code is +60.
 	//
-	// 	- **ID**: Indonesia, whose international dialing code is +62.
+	// - **ID**: Indonesia, whose international dialing code is +62.
 	//
-	// 	- **DE**: Germany, whose international dialing code is +49.
+	// - **DE**: Germany, whose international dialing code is +49.
 	//
-	// 	- **AU**: Australia, whose international dialing code is +61.
+	// - **AU**: Australia, whose international dialing code is +61.
 	//
-	// 	- **US**: US, whose international dialing code is +1.
+	// - **US**: US, whose international dialing code is +1.
 	//
-	// 	- **AE**: United Arab Emirates, whose international dialing code is +971.
+	// - **AE**: United Arab Emirates, whose international dialing code is +971.
 	//
-	// 	- **JP:*	- Japan, whose international dialing code is +81.
+	// - **JP:*	- Japan, whose international dialing code is +81.
 	//
-	// 	- **GB**: UK, whose international dialing code is +44.
+	// - **GB**: UK, whose international dialing code is +44.
 	//
-	// 	- **IN**: India, whose international dialing code is +91.
+	// - **IN**: India, whose international dialing code is +91.
 	//
-	// 	- **KR**: Republic of Korea, whose international dialing code is +82.
+	// - **KR**: Republic of Korea, whose international dialing code is +82.
 	//
-	// 	- **PH**: Philippines, whose international dialing code is +63.
+	// - **PH**: Philippines, whose international dialing code is +63.
 	//
-	// 	- **CH**: Switzerland, whose international dialing code is +41.
+	// - **CH**: Switzerland, whose international dialing code is +41.
 	//
-	// 	- **SE**: Sweden, whose international dialing code is +46.
+	// - **SE**: Sweden, whose international dialing code is +46.
 	//
 	// example:
 	//
@@ -185,9 +185,9 @@ type ListUsersResponseBodyUsers struct {
 	MobileCountryCode *string `json:"MobileCountryCode,omitempty" xml:"MobileCountryCode,omitempty"`
 	// Indicates whether password reset is required upon the next logon. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -195,13 +195,13 @@ type ListUsersResponseBodyUsers struct {
 	NeedResetPassword *bool `json:"NeedResetPassword,omitempty" xml:"NeedResetPassword,omitempty"`
 	// The type of the user. Valid values:
 	//
-	// 	- **Local**: a local user.
+	// - **Local**: a local user.
 	//
-	// 	- **Ram**: a RAM user.
+	// - **Ram**: a RAM user.
 	//
-	// 	- **AD**: an AD-authenticated user.
+	// - **AD**: an AD-authenticated user.
 	//
-	// 	- **LDAP**: an LDAP-authenticated user.
+	// - **LDAP**: an LDAP-authenticated user.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type ListUsersResponseBodyUsers struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The unique ID of the user.
 	//
-	// >  This parameter uniquely identifies a RAM user of the bastion host. A value is returned for this parameter if **Source*	- is set to **Ram**. No value is returned for this parameter if **Source*	- is set to **Local**.
+	// > This parameter uniquely identifies a RAM user of the bastion host. A value is returned for this parameter if **Source*	- is set to **Ram**. No value is returned for this parameter if **Source*	- is set to **Local**.
 	//
 	// example:
 	//
@@ -219,11 +219,11 @@ type ListUsersResponseBodyUsers struct {
 	TwoFactorMethods []*string `json:"TwoFactorMethods,omitempty" xml:"TwoFactorMethods,omitempty" type:"Repeated"`
 	// Indicates whether two-factor authentication is enabled for the user. Valid values:
 	//
-	// 	- **Global**: The global setting applies.
+	// - **Global**: The global setting applies.
 	//
-	// 	- **Disable**: Two-factor authentication is disabled.
+	// - **Disable**: Two-factor authentication is disabled.
 	//
-	// 	- **Enable**: Two-factor authentication is enabled. The user-specific setting for the authentication method applies.
+	// - **Enable**: Two-factor authentication is enabled. The user-specific setting for the authentication method applies.
 	//
 	// example:
 	//

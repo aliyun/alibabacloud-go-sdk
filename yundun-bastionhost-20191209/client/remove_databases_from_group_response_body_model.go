@@ -85,6 +85,10 @@ type RemoveDatabasesFromGroupResponseBodyResults struct {
 	// 1
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
 	// The error message that is returned.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

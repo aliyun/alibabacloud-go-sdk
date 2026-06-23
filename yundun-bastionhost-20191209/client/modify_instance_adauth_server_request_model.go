@@ -78,7 +78,7 @@ type ModifyInstanceADAuthServerRequest struct {
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The bastion host ID.
 	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
 	//
 	// This parameter is required.
 	//
@@ -88,9 +88,9 @@ type ModifyInstanceADAuthServerRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether SSL is supported. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// This parameter is required.
 	//
@@ -126,7 +126,7 @@ type ModifyInstanceADAuthServerRequest struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

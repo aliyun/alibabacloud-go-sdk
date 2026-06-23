@@ -36,7 +36,7 @@ type CreateDatabaseAccountRequest struct {
 	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
 	// The ID of the database for which you want to create a database account.
 	//
-	// >  You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+	// > You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
 	//
 	// This parameter is required.
 	//
@@ -62,9 +62,9 @@ type CreateDatabaseAccountRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The logon attribute. This parameter is required for Oracle databases. Valid values:
 	//
-	// 	- SERVICENAME
+	// - SERVICENAME
 	//
-	// 	- SID
+	// - SID
 	//
 	// example:
 	//

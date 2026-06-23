@@ -54,9 +54,9 @@ type ListHostsForUserRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies the category of the hosts that you want to query. Valid values:
 	//
-	// 	- **Authorized**: queries the hosts that the user is authorized to manage. This is the default value.
+	// - **Authorized**: queries the hosts that the user is authorized to manage. This is the default value.
 	//
-	// 	- **Unauthorized**: queries the hosts that the user is not authorized to manage.
+	// - **Unauthorized**: queries the hosts that the user is not authorized to manage.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type ListHostsForUserRequest struct {
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The operating system of the host that you want to query. Valid values:
 	//
-	// 	- **Linux**
+	// - **Linux**
 	//
-	// 	- **Windows**
+	// - **Windows**
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ListHostsForUserRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.\\
+	// The number of entries per page.<br>
 	//
 	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//

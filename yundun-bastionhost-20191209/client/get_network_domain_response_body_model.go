@@ -16,9 +16,9 @@ type iGetNetworkDomainResponseBody interface {
 }
 
 type GetNetworkDomainResponseBody struct {
-	// The detailed information about the network domain.
+	// The details of the network domain.
 	NetworkDomain *GetNetworkDomainResponseBodyNetworkDomain `json:"NetworkDomain,omitempty" xml:"NetworkDomain,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,23 +62,23 @@ func (s *GetNetworkDomainResponseBody) Validate() error {
 }
 
 type GetNetworkDomainResponseBodyNetworkDomain struct {
-	// The remarks of the network domain.
+	// The comment for the network domain.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Indicates whether the network domain is a built-in network domain.
+	// Specifies whether the network domain is built-in. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Yes
 	//
-	// 	- **false**
+	// - **false**: No
 	//
 	// example:
 	//
 	// false
 	Default *bool `json:"Default,omitempty" xml:"Default,omitempty"`
-	// The network domain ID.
+	// The ID of the network domain.
 	//
 	// example:
 	//
@@ -90,17 +90,17 @@ type GetNetworkDomainResponseBodyNetworkDomain struct {
 	//
 	// SSH Proxy
 	NetworkDomainName *string `json:"NetworkDomainName,omitempty" xml:"NetworkDomainName,omitempty"`
-	// The connection mode of the network domain. Valid values:
+	// The type of the network domain. Valid values:
 	//
-	// 	- Direct
+	// - Direct: direct connection
 	//
-	// 	- Proxy
+	// - Proxy: proxy
 	//
 	// example:
 	//
 	// Proxy
 	NetworkDomainType *string `json:"NetworkDomainType,omitempty" xml:"NetworkDomainType,omitempty"`
-	// The information about the proxy servers.
+	// A list of proxy servers.
 	Proxies []*GetNetworkDomainResponseBodyNetworkDomainProxies `json:"Proxies,omitempty" xml:"Proxies,omitempty" type:"Repeated"`
 }
 
@@ -180,17 +180,17 @@ func (s *GetNetworkDomainResponseBodyNetworkDomain) Validate() error {
 }
 
 type GetNetworkDomainResponseBodyNetworkDomainProxies struct {
-	// The IP address of the proxy server.
+	// The address of the proxy server.
 	//
 	// example:
 	//
 	// ``47.102.**.**``
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// Indicates whether the proxy server has a password. Valid values:
+	// Specifies whether a password is set for the proxy server. Valid values:
 	//
-	// - **true**
+	// - **true**: A password is set.
 	//
-	// - **false**
+	// - **false**: No password is set.
 	//
 	// example:
 	//
@@ -198,9 +198,9 @@ type GetNetworkDomainResponseBodyNetworkDomainProxies struct {
 	HasPassword *bool `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
 	// The node type of the proxy server. Valid values:
 	//
-	// - **Master**: primary proxy server.
+	// - Master: primary proxy server
 	//
-	// - **Slave**: secondary proxy server.
+	// - Slave: secondary proxy server
 	//
 	// example:
 	//
@@ -212,37 +212,37 @@ type GetNetworkDomainResponseBodyNetworkDomainProxies struct {
 	//
 	// 22
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The status of the proxy server.
+	// The status of the proxy server. Valid values:
 	//
-	// - **Available**
+	// - **Available**: available
 	//
-	// - **Unavailable**
+	// - **Unavailable**: unavailable
 	//
 	// example:
 	//
 	// Unavailable
 	ProxyState *string `json:"ProxyState,omitempty" xml:"ProxyState,omitempty"`
-	// The error code that indicates the status of the proxy server.
+	// The error code that is returned if the proxy server is unavailable. Valid values:
 	//
-	// - **CHECK_PWD_FAILED**: The password is invalid.
+	// - **CHECK_PWD_FAILED**: Incorrect password.
 	//
-	// - **CHECK_PWD_TIMEOUT**: The password verification session timed out.
+	// - **CHECK_PWD_TIMEOUT**: Password verification timeout.
 	//
-	// - **CHECK_PWD_NETWORK_ERR**: A network error occurred.
+	// - **CHECK_PWD_NETWORK_ERR**: Network error.
 	//
-	// - **UNEXPECTED**: An unknown error occurred.
+	// - **UNEXPECTED**: Unknown error.
 	//
 	// example:
 	//
 	// CHECK_PWD_TIMEOUT
 	ProxyStateErrorCode *string `json:"ProxyStateErrorCode,omitempty" xml:"ProxyStateErrorCode,omitempty"`
-	// The proxy type. Valid values:
+	// The proxy method. Valid values:
 	//
-	// - **SSHProxy**
+	// - SSHProxy: SSH proxy
 	//
-	// - **HTTPProxy**
+	// - HTTPProxy: HTTP proxy
 	//
-	// - **Socks5Proxy**
+	// - Socks5Proxy: SOCKS5 proxy
 	//
 	// example:
 	//

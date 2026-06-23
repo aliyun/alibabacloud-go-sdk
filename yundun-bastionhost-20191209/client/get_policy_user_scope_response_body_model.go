@@ -64,9 +64,9 @@ func (s *GetPolicyUserScopeResponseBody) Validate() error {
 type GetPolicyUserScopeResponseBodyUserScope struct {
 	// The scope of users to whom the control policy applies.
 	//
-	// 	- If **All*	- is returned for this parameter, the control policy applies to all users.
+	// - If **All*	- is returned for this parameter, the control policy applies to all users.
 	//
-	// 	- If no value is returned for this parameter, the control policy applies to the assets specified in the return values of UserGroupIds and UserIds.
+	// - If no value is returned for this parameter, the control policy applies to the assets specified in the return values of UserGroupIds and UserIds.
 	//
 	// example:
 	//

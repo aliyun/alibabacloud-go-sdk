@@ -81,6 +81,10 @@ type MoveHostsToNetworkDomainResponseBodyResults struct {
 	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The error message that is returned.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

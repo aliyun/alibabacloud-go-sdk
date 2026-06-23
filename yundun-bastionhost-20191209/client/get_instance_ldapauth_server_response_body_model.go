@@ -88,9 +88,9 @@ type GetInstanceLDAPAuthServerResponseBodyLDAP struct {
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// Indicates whether passwords are required. Valid values:
 	//
-	// 	- **true**: required
+	// - **true**: required
 	//
-	// 	- **false**: not required
+	// - **false**: not required
 	//
 	// example:
 	//
@@ -98,9 +98,9 @@ type GetInstanceLDAPAuthServerResponseBodyLDAP struct {
 	HasPassword *string `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
 	// Indicates whether SSL is supported. Valid values:
 	//
-	// 	- **true**: supported
+	// - **true**: supported
 	//
-	// 	- **false**: not supported
+	// - **false**: not supported
 	//
 	// example:
 	//

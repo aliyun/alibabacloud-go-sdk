@@ -34,7 +34,7 @@ type ListHostGroupsForUserRequest struct {
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
 	// The ID of the bastion host whose user you want to query.
 	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +44,9 @@ type ListHostGroupsForUserRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The category of the host groups to query. Valid values:
 	//
-	// 	- **Authorized*	- (default): queries the host groups that the user is authorized to manage.
+	// - **Authorized*	- (default): queries the host groups that the user is authorized to manage.
 	//
-	// 	- **Unauthorized**: queries the host groups that the user is not authorized to manage.
+	// - **Unauthorized**: queries the host groups that the user is not authorized to manage.
 	//
 	// example:
 	//
@@ -58,11 +58,9 @@ type ListHostGroupsForUserRequest struct {
 	//
 	// １
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.\\
+	// The number of entries per page.<br> Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
 	//
-	// Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > We recommend that you do not leave this parameter empty.
 	//
 	// example:
 	//
@@ -70,7 +68,7 @@ type ListHostGroupsForUserRequest struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the bastion host whose user you want to query.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -78,7 +76,7 @@ type ListHostGroupsForUserRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The user ID.
 	//
-	// >  You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
+	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
 	//
 	// This parameter is required.
 	//

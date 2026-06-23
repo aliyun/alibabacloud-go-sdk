@@ -36,85 +36,83 @@ type ListOperationDatabasesRequest struct {
 	//
 	// example:
 	//
-	// 10.167.66.167
+	// 10.167.XX.XX
 	DatabaseAddress *string `json:"DatabaseAddress,omitempty" xml:"DatabaseAddress,omitempty"`
-	// The name of the database instance. The system supports exact search.
+	// The name of the database. This parameter supports only exact matches.
 	//
 	// example:
 	//
 	// aaa
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The type of the database. Valid values:
+	// The database type. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **SQLServer**
+	// - **SQLServer**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
 	// example:
 	//
 	// MySQL
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The bastion host ID.
+	// The ID of the Bastionhost instance.
 	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// bastionhost-cn-tl32wloo90y
+	// bastionhost-cn-tl32wdd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.\\
+	// The number of entries to return on each page.<br>The maximum value is 100. The default value is 20. If you do not specify this parameter, 20 entries are returned.<br>
 	//
-	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Specify a value for this parameter.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host.
+	// The region ID of the Bastionhost instance.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source of the database instance. Valid values:
+	// The source of the database. Valid values:
 	//
-	// 	- **Local**
+	// - **Local**: a local database
 	//
-	// 	- **Rds**
+	// - **Rds**: an ApsaraDB RDS database
 	//
-	// 	- **PolarDB**
+	// - **PolarDB**: a PolarDB database
 	//
 	// example:
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the ApsaraDB RDS instance. The system supports exact search.
+	// The ID of the source instance. This parameter supports only exact matches.
 	//
 	// example:
 	//
 	// i-bp19ienyt0yax748****
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// The instance state.
+	// The status of the source instance. You can use this parameter to filter the results.
 	//
-	// 	- **Normal**
+	// - **Normal**: The instance is running.
 	//
-	// 	- **RemoteRelease**
+	// - **RemoteRelease**: The instance is released.
 	//
 	// example:
 	//

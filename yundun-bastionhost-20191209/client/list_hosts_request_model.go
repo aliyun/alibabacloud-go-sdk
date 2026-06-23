@@ -66,9 +66,9 @@ type ListHostsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The operating system of the host that you want to query. Valid values:
 	//
-	// 	- **Linux**
+	// - **Linux**
 	//
-	// 	- **Windows**
+	// - **Windows**
 	//
 	// example:
 	//
@@ -98,11 +98,11 @@ type ListHostsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The source of the host that you want to query. Valid values:
 	//
-	// 	- **Local**: a host in a data center
+	// - **Local**: a host in a data center
 	//
-	// 	- **Ecs**: an Elastic Compute Service (ECS) instance
+	// - **Ecs**: an Elastic Compute Service (ECS) instance
 	//
-	// 	- **Rds**: a host in an ApsaraDB MyBase dedicated cluster
+	// - **Rds**: a host in an ApsaraDB MyBase dedicated cluster
 	//
 	// example:
 	//
@@ -116,9 +116,9 @@ type ListHostsRequest struct {
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
 	// The status of the host that you want to query. Valid values:
 	//
-	// 	- **Normal**: normal
+	// - **Normal**: normal
 	//
-	// 	- **Release**: released
+	// - **Release**: released
 	//
 	// example:
 	//

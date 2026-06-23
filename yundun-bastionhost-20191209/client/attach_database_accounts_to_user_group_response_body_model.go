@@ -16,13 +16,13 @@ type iAttachDatabaseAccountsToUserGroupResponseBody interface {
 }
 
 type AttachDatabaseAccountsToUserGroupResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 5D0EB759-CB0A-537D-A2CC-13A9854FA08D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the call.
+	// The results of the call.
 	Results []*AttachDatabaseAccountsToUserGroupResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -66,23 +66,27 @@ func (s *AttachDatabaseAccountsToUserGroupResponseBody) Validate() error {
 }
 
 type AttachDatabaseAccountsToUserGroupResponseBodyResults struct {
-	// The error code returned. If OK is returned, the authorization was successful. If another error code is returned, the authorization failed.
+	// The error code. If the value is \\`OK\\`, the authorization was successful. Other values indicate that the authorization failed.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// A list that shows the authorization results of the database accounts.
+	// A list of database account information.
 	DatabaseAccounts []*AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts `json:"DatabaseAccounts,omitempty" xml:"DatabaseAccounts,omitempty" type:"Repeated"`
-	// The database ID.
+	// The ID of the database instance.
 	//
 	// example:
 	//
 	// 2
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The error message returned.
+	// The error message.
+	//
+	// example:
+	//
+	// NULL
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The user group ID.
+	// The ID of the user group.
 	//
 	// example:
 	//
@@ -157,19 +161,23 @@ func (s *AttachDatabaseAccountsToUserGroupResponseBodyResults) Validate() error 
 }
 
 type AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts struct {
-	// The error code returned. If OK is returned, the authorization was successful. If another error code is returned, the authorization failed.
+	// The error code. If the value is \\`OK\\`, the authorization was successful. Other values indicate that the authorization failed.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The database account ID.
+	// The ID of the database account.
 	//
 	// example:
 	//
 	// 8
 	DatabaseAccountId *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
-	// The error message returned.
+	// The error message.
+	//
+	// example:
+	//
+	// NULL
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

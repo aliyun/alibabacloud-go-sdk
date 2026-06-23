@@ -18,9 +18,9 @@ type iGetPolicyRequest interface {
 }
 
 type GetPolicyRequest struct {
-	// The ID of the bastion host to which the control policy to query belongs.
+	// The ID of the bastion host instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to get this ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type GetPolicyRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the control policy that you want to query.
 	//
-	// >  You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to get this ID.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type GetPolicyRequest struct {
 	//
 	// 3
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The region ID of the bastion host to which the control policy to query belongs.
+	// The region ID of the bastion host instance.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about region IDs, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

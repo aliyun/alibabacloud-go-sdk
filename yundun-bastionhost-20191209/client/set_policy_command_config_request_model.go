@@ -28,7 +28,7 @@ type SetPolicyCommandConfigRequest struct {
 	CommandConfig *SetPolicyCommandConfigRequestCommandConfig `json:"CommandConfig,omitempty" xml:"CommandConfig,omitempty" type:"Struct"`
 	// The bastion host ID.
 	//
-	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type SetPolicyCommandConfigRequest struct {
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -189,9 +189,9 @@ func (s *SetPolicyCommandConfigRequestCommandConfigApproval) Validate() error {
 type SetPolicyCommandConfigRequestCommandConfigDeny struct {
 	// The type of command control. Valid values:
 	//
-	// 	- **black**: blacklist mode.
+	// - **black**: blacklist mode.
 	//
-	// 	- **white**: whitelist mode.
+	// - **white**: whitelist mode.
 	//
 	// This parameter is required.
 	//

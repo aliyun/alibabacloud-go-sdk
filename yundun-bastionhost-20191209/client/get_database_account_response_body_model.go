@@ -84,9 +84,9 @@ type GetDatabaseAccountResponseBodyDatabaseAccount struct {
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -94,9 +94,9 @@ type GetDatabaseAccountResponseBodyDatabaseAccount struct {
 	HasPassword *bool `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
 	// The logon attribute. A value is returned for this parameter if the database engine is Oracle. Valid values:
 	//
-	// 	- SERVICENAME
+	// - SERVICENAME
 	//
-	// 	- SID
+	// - SID
 	//
 	// example:
 	//

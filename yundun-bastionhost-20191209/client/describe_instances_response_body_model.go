@@ -18,15 +18,15 @@ type iDescribeInstancesResponseBody interface {
 }
 
 type DescribeInstancesResponseBody struct {
-	// An array that consists of the bastion hosts returned.
+	// An array of Bastionhost instances.
 	Instances []*DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates this unique ID for troubleshooting purposes.
 	//
 	// example:
 	//
 	// 61D36C55-AAFC-4678-8FAD-34FEF9E7182E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of bastion hosts that are queried.
+	// The total number of Bastionhost instances returned.
 	//
 	// example:
 	//
@@ -83,125 +83,135 @@ func (s *DescribeInstancesResponseBody) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstances struct {
+	// The default bandwidth of the instance, in Mbit/s.
+	//
+	// example:
+	//
+	// 60M
 	BandWidth *int64 `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
-	// The remarks of the bastion host.
+	// The custom description of the Bastionhost instance.
 	//
 	// example:
 	//
 	// Test API
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The timestamp when the bastion host expires. Unit: milliseconds.
+	// The expiration time of the Bastionhost instance, specified as a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1578326400000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The image version of the bastion host.
+	// The image version of the Bastionhost instance.
 	//
 	// example:
 	//
-	// 3.0.0
+	// 3.2.41
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	// The bastion host ID.
+	// The ID of the Bastionhost instance.
 	//
 	// example:
 	//
 	// bastionhost-cn-78v1gh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the bastion host. Valid values:
+	// The status of the Bastionhost instance. Valid values:
 	//
-	// 	- **PENDING**: The bastion host is not initialized.
+	// - **PENDING**: Not initialized
 	//
-	// 	- **CREATING**: The bastion host is being created.
+	// - **CREATING**: The instance is being created.
 	//
-	// 	- **RUNNING**: The bastion host is running.
+	// - **RUNNING**: The instance is running.
 	//
-	// 	- **EXPIRED**: The bastion host expired.
+	// - **EXPIRED**: The instance has expired.
 	//
-	// 	- **CREATE_FAILED**: The bastion host fails to be created.
+	// - **CREATE_FAILED**: Instance creation failed.
 	//
-	// 	- **UPGRADING**: The configurations of the bastion host are being changed.
+	// - **UPGRADING**: The instance is being upgraded.
 	//
-	// 	- **UPGRADE_FAILED**: The configurations of the bastion host fail to be changed.
+	// - **UPGRADE_FAILED**: Instance upgrade failed.
 	//
 	// example:
 	//
 	// RUNNING
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The public O\\&M address of the bastion host.
+	// The public domain name of the Bastionhost instance.
 	//
 	// example:
 	//
-	// drawvxalwb-public.bastionhost.aliyuncs.com
+	// ******lwb-public.bastionhost.aliyuncs.com
 	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
-	// The private O\\&M address of the bastion host.
+	// The private domain name of the Bastionhost instance.
 	//
 	// example:
 	//
-	// drawvxalwb.bastionhost.aliyuncs.com
+	// ******lwb.bastionhost.aliyuncs.com
 	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	// Indicates whether the bastion host runs an earlier version. Valid values:
+	// Indicates whether the Bastionhost instance is a legacy instance. Valid values:
 	//
-	// 	- **true**: The bastion host runs V2 or V3.1.
+	// - **true**: The instance is of the V2 or V3.1 series.
 	//
-	// 	- **false**: The bastion host runs V3.2.
+	// - **false**: The instance is of the V3.2 series.
 	//
 	// example:
 	//
 	// false
 	Legacy *bool `json:"Legacy,omitempty" xml:"Legacy,omitempty"`
-	// The license code of the bastion host.
+	// The license code of the Bastionhost instance.
 	//
 	// example:
 	//
 	// bhah_ent_50_asset
 	LicenseCode *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
-	// The edition of the bastion host. Valid values:
+	// The edition of the Bastionhost instance. Valid values:
 	//
-	// 	- **cloudbastion**: Basic Edition.
+	// - **cloudbastion**: Basic Edition
 	//
-	// 	- **cloudbastion_ha**: Enterprise Edition.
+	// - **cloudbastion_ha**: Enterprise Edition
 	//
 	// example:
 	//
 	// cloudbastion_ha
 	PlanCode *string `json:"PlanCode,omitempty" xml:"PlanCode,omitempty"`
-	// Indicates whether the bastion host can be accessed from the Internet. Valid values:
+	// Indicates whether the Bastionhost instance is accessible over the Internet. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The instance is accessible over the Internet.
 	//
-	// 	- **false**
+	// - **false**: The instance is not accessible over the Internet.
 	//
 	// example:
 	//
 	// true
 	PublicNetworkAccess *bool `json:"PublicNetworkAccess,omitempty" xml:"PublicNetworkAccess,omitempty"`
-	// The region ID of the bastion host.
+	// The region ID of the Bastionhost instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the bastion host belongs.
+	// The ID of the resource group to which the Bastionhost instance belongs.
 	//
 	// example:
 	//
 	// g-acfm26ougi****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SlaveVswitchId  *string `json:"SlaveVswitchId,omitempty" xml:"SlaveVswitchId,omitempty"`
-	// The timestamp when the bastion host is purchased or renewed. Unit: milliseconds.
+	// The ID of the standby vSwitch to which the Bastionhost instance is attached.
+	//
+	// example:
+	//
+	// vsw-uf6j0u49poi8qr****
+	SlaveVswitchId *string `json:"SlaveVswitchId,omitempty" xml:"SlaveVswitchId,omitempty"`
+	// The purchase or renewal time of the Bastionhost instance, specified as a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1577681345000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the bastion host belongs.
+	// The ID of the VPC to which the Bastionhost instance is attached.
 	//
 	// example:
 	//
 	// vpc-bp1c85tzgqu1bf5b****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the vSwitch to which the bastion host belongs.
+	// The ID of the vSwitch to which the Bastionhost instance is attached.
 	//
 	// example:
 	//

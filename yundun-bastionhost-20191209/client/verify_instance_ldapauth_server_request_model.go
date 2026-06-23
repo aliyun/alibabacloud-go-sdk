@@ -32,52 +32,76 @@ type iVerifyInstanceLDAPAuthServerRequest interface {
 }
 
 type VerifyInstanceLDAPAuthServerRequest struct {
+	// The account of the server.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn=Manager,dc=test,dc=com
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// The Base DN.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dc=test,dc=com
 	BaseDN *string `json:"BaseDN,omitempty" xml:"BaseDN,omitempty"`
+	// The filter condition for users.
+	//
 	// example:
 	//
 	// (objectClass=top)
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The ID of the Bastionhost instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether SSL is supported. Valid values:
+	//
+	// - **true**: supported
+	//
+	// - **false**: not supported
+	//
 	// example:
 	//
 	// true
 	IsSSL *string `json:"IsSSL,omitempty" xml:"IsSSL,omitempty"`
+	// The password of the server account.
+	//
 	// example:
 	//
 	// ******
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The port used to access the server.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 389
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The region ID of the Bastionhost instance. For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The address of the server.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The address of the standby server.
+	//
 	// example:
 	//
 	// 192.168.XX.XX

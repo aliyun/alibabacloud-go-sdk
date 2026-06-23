@@ -115,9 +115,9 @@ type ListOperationDatabaseAccountsResponseBodyDatabaseAccounts struct {
 	HasPassword *string `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
 	// The logon attribute. One of the following values is returned if the database engine is Oracle:
 	//
-	// 	- **SERVICENAME**
+	// - **SERVICENAME**
 	//
-	// 	- **SID**
+	// - **SID**
 	//
 	// example:
 	//
