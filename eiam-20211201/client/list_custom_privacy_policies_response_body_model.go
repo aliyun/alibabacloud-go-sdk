@@ -24,21 +24,21 @@ type iListCustomPrivacyPoliciesResponseBody interface {
 }
 
 type ListCustomPrivacyPoliciesResponseBody struct {
-	// A list of custom privacy policies.
+	// The list of custom terms.
 	CustomPrivacyPolicies []*ListCustomPrivacyPoliciesResponseBodyCustomPrivacyPolicies `json:"CustomPrivacyPolicies,omitempty" xml:"CustomPrivacyPolicies,omitempty" type:"Repeated"`
-	// The number of entries to return on each page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The token that is used to retrieve the previous page of results.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListCustomPrivacyPoliciesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -134,19 +134,19 @@ func (s *ListCustomPrivacyPoliciesResponseBody) Validate() error {
 }
 
 type ListCustomPrivacyPoliciesResponseBodyCustomPrivacyPolicies struct {
-	// The ID of the custom privacy policy.
+	// The custom term ID.
 	//
 	// example:
 	//
 	// pp_xxxxx
 	CustomPrivacyPolicyId *string `json:"CustomPrivacyPolicyId,omitempty" xml:"CustomPrivacyPolicyId,omitempty"`
-	// The name of the custom privacy policy.
+	// The custom term name.
 	//
 	// example:
 	//
 	// Custom Privacy Policy Name
 	CustomPrivacyPolicyName *string `json:"CustomPrivacyPolicyName,omitempty" xml:"CustomPrivacyPolicyName,omitempty"`
-	// The default language of the policy. The value is the LanguageCode returned by the ListLanguages operation.
+	// The default language term entry. The value is obtained from the LanguageCode field returned by the ListLanguages operation.
 	//
 	// example:
 	//
@@ -158,13 +158,13 @@ type ListCustomPrivacyPoliciesResponseBodyCustomPrivacyPolicies struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the custom privacy policy.
+	// The custom term status.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The user consent type for the policy.
+	// The consent type of the custom term.
 	//
 	// example:
 	//

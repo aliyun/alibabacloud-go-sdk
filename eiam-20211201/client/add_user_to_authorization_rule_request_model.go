@@ -32,7 +32,7 @@ type AddUserToAuthorizationRuleRequest struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// A client token that you provide to ensure the idempotence of the request. Make sure that the client token is unique for each request. The client token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type AddUserToAuthorizationRuleRequest struct {
 	//
 	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The time range of the validity period. This parameter is valid only when **ValidityType*	- is set to **time_bound**.
+	// The time range of the validity period. This parameter takes effect only when **ValidityType*	- is set to **time_bound**.
 	ValidityPeriod *AddUserToAuthorizationRuleRequestValidityPeriod `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty" type:"Struct"`
-	// The type of the validity period for the relationship. Valid values:
+	// The validity type of the relationship. Valid values:
 	//
-	// - permanent: The authorization is permanent.
+	// - permanent: permanent
 	//
-	// - time_bound: The authorization is valid for a custom time range.
+	// - time_bound: custom time range.
 	//
 	// This parameter is required.
 	//
@@ -144,13 +144,13 @@ func (s *AddUserToAuthorizationRuleRequest) Validate() error {
 }
 
 type AddUserToAuthorizationRuleRequestValidityPeriod struct {
-	// The end time of the validity period. The value is a UNIX timestamp. Unit: milliseconds.
+	// The end time of the validity period. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1704062061000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the validity period. The value is a UNIX timestamp. Unit: milliseconds.
+	// The start time of the validity period. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -62,7 +62,7 @@ func (s *GetNetworkZoneResponseBody) Validate() error {
 }
 
 type GetNetworkZoneResponseBodyNetworkZone struct {
-	// The description of the network zone.
+	// The network zone description.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type GetNetworkZoneResponseBodyNetworkZone struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IPv4 CIDR blocks.
+	// The IPv4 CIDR blocks of the network zone.
 	Ipv4Cidrs []*string `json:"Ipv4Cidrs,omitempty" xml:"Ipv4Cidrs,omitempty" type:"Repeated"`
-	// The IPv6 CIDR blocks.
+	// The IPv6 CIDR blocks of the network zone.
 	Ipv6Cidrs []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
 	// The network zone ID.
 	//
@@ -84,13 +84,13 @@ type GetNetworkZoneResponseBodyNetworkZone struct {
 	//
 	// network_m6fbr2bcbcadu3bcdpgzcxxxxx
 	NetworkZoneId *string `json:"NetworkZoneId,omitempty" xml:"NetworkZoneId,omitempty"`
-	// The name of the network zone.
+	// The network zone name.
 	//
 	// example:
 	//
 	// test4_name
 	NetworkZoneName *string `json:"NetworkZoneName,omitempty" xml:"NetworkZoneName,omitempty"`
-	// The type of the network zone.
+	// The network zone type.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iDeleteDomainProxyTokenRequest interface {
 }
 
 type DeleteDomainProxyTokenRequest struct {
-	// The ID of the domain name.
+	// The domain name ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteDomainProxyTokenRequest struct {
 	//
 	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The ID of the proxy token of the domain name.
+	// The domain proxy token ID.
 	//
 	// This parameter is required.
 	//

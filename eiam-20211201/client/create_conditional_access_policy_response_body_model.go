@@ -16,7 +16,7 @@ type iCreateConditionalAccessPolicyResponseBody interface {
 }
 
 type CreateConditionalAccessPolicyResponseBody struct {
-	// Conditional Access Policy ID
+	// Conditional access policy ID.
 	//
 	// example:
 	//

@@ -22,15 +22,15 @@ type iListAuthorizationResourcesResponseBody interface {
 }
 
 type ListAuthorizationResourcesResponseBody struct {
-	// A list of authorized resources.
+	// The list of authorization resources.
 	AuthorizationResources []*ListAuthorizationResourcesResponseBodyAuthorizationResources `json:"AuthorizationResources,omitempty" xml:"AuthorizationResources,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// The number of entries per page in the paged query. This is the paging size.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. This parameter is returned when the results are paged.
+	// The pagination token returned in this call. Use this token for the next page query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListAuthorizationResourcesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -117,21 +117,21 @@ func (s *ListAuthorizationResourcesResponseBody) Validate() error {
 }
 
 type ListAuthorizationResourcesResponseBodyAuthorizationResources struct {
-	// The ID of the associated resource entity.
+	// The resource entity ID associated with the authorization resource.
 	//
 	// example:
 	//
 	// carole_01kmek49aqxxxx
 	AuthorizationResourceEntityId *string `json:"AuthorizationResourceEntityId,omitempty" xml:"AuthorizationResourceEntityId,omitempty"`
-	// The type of the associated resource entity. Valid values:
+	// The resource entity type associated with the authorization resource. Valid values:
 	//
-	// - cloud_account_role: A cloud role.
+	// - cloud_account_role: cloud role.
 	//
 	// example:
 	//
 	// cloud_account_role
 	AuthorizationResourceEntityType *string `json:"AuthorizationResourceEntityType,omitempty" xml:"AuthorizationResourceEntityType,omitempty"`
-	// The authorized resource ID.
+	// The authorization resource ID.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type ListAuthorizationResourcesResponseBodyAuthorizationResources struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the associated resource entity.
+	// The cloud account ID to which the resource entity associated with the authorization resource belongs.
 	//
 	// example:
 	//

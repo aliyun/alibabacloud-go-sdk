@@ -20,13 +20,13 @@ type iListInstancesResponseBody interface {
 type ListInstancesResponseBody struct {
 	// The list of instance information.
 	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyInstances struct {
-	// The creation time of the instance, in Unix timestamp format, in milliseconds.
+	// The time when the instance was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -109,26 +109,26 @@ type ListInstancesResponseBodyInstances struct {
 	//
 	// inactive
 	InstanceFailoverStatus *string `json:"InstanceFailoverStatus,omitempty" xml:"InstanceFailoverStatus,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_eypq6ljgyeuwmlw672sulxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The service code of the cloud service that manages the instance.
+	// The service code of the Alibaba Cloud service that manages the instance.
 	//
 	// example:
 	//
 	// sase
 	ManagedServiceCode       *string                                                     `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
 	ReplicationConfiguration *ListInstancesResponseBodyInstancesReplicationConfiguration `json:"ReplicationConfiguration,omitempty" xml:"ReplicationConfiguration,omitempty" type:"Struct"`
-	// Indicates whether the instance is managed by a cloud service.
+	// Indicates whether the instance is managed by an Alibaba Cloud service.
 	//
 	// example:
 	//
 	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// Instance status. Valid values:
+	// The instance status. Valid values:
 	//
 	// - creating: Being created.
 	//

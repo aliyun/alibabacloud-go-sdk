@@ -14,7 +14,7 @@ type iEnableInitDomainAutoRedirectRequest interface {
 }
 
 type EnableInitDomainAutoRedirectRequest struct {
-  // The instance ID.
+  // Instance ID.
   // 
   // This parameter is required.
   // 

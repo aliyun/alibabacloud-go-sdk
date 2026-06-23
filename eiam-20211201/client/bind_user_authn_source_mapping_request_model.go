@@ -36,7 +36,7 @@ type BindUserAuthnSourceMappingRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The external mapping ID.
+	// The external association ID.
 	//
 	// This parameter is required.
 	//

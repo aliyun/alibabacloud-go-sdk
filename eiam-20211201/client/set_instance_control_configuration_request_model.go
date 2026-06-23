@@ -16,7 +16,7 @@ type iSetInstanceControlConfigurationRequest interface {
 }
 
 type SetInstanceControlConfigurationRequest struct {
-	// The control items for the instance.
+	// The instance control elements.
 	ControlElements []*SetInstanceControlConfigurationRequestControlElements `json:"ControlElements,omitempty" xml:"ControlElements,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -68,15 +68,15 @@ func (s *SetInstanceControlConfigurationRequest) Validate() error {
 }
 
 type SetInstanceControlConfigurationRequestControlElements struct {
-	// The name of the control item.
+	// The name of the instance control element.
 	//
 	// example:
 	//
 	// human_verification
 	ElementName *string `json:"ElementName,omitempty" xml:"ElementName,omitempty"`
-	// The CAPTCHA configuration.
+	// The CAPTCHA authenticate configuration.
 	HumanVerificationConfig *SetInstanceControlConfigurationRequestControlElementsHumanVerificationConfig `json:"HumanVerificationConfig,omitempty" xml:"HumanVerificationConfig,omitempty" type:"Struct"`
-	// The status of the control item.
+	// The status of the instance control element.
 	//
 	// example:
 	//

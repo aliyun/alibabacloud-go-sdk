@@ -24,13 +24,13 @@ type iListNetworkZonesResponseBody interface {
 type ListNetworkZonesResponseBody struct {
 	// The list of network zones.
 	NetworkZones []*ListNetworkZonesResponseBodyNetworkZones `json:"NetworkZones,omitempty" xml:"NetworkZones,omitempty" type:"Repeated"`
-	// The token that is used to retrieve the next page of results.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The token that is used to retrieve the previous page of results.
+	// The pagination token for the previous page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListNetworkZonesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListNetworkZonesResponseBody) Validate() error {
 }
 
 type ListNetworkZonesResponseBodyNetworkZones struct {
-	// The description of the network zone.
+	// The network zone description.
 	//
 	// example:
 	//
@@ -129,9 +129,9 @@ type ListNetworkZonesResponseBodyNetworkZones struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IPv4 CIDR blocks.
+	// The IPv4 CIDR blocks of the network zone.
 	Ipv4Cidrs []*string `json:"Ipv4Cidrs,omitempty" xml:"Ipv4Cidrs,omitempty" type:"Repeated"`
-	// The IPv6 CIDR blocks.
+	// The IPv6 CIDR blocks of the network zone.
 	Ipv6Cidrs []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
 	// The network zone ID.
 	//
@@ -145,7 +145,7 @@ type ListNetworkZonesResponseBodyNetworkZones struct {
 	//
 	// test_name
 	NetworkZoneName *string `json:"NetworkZoneName,omitempty" xml:"NetworkZoneName,omitempty"`
-	// The type of the network zone.
+	// The network zone type.
 	//
 	// example:
 	//

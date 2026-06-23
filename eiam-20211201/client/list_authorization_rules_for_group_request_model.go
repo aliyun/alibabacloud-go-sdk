@@ -36,17 +36,17 @@ type ListAuthorizationRulesForGroupRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of records to return on each page.
+	// The maximum number of entries per page.
 	//
-	// - If this parameter is not specified, the default value is 20.
+	// - Default value: 20.
 	//
-	// - The maximum value is 100.
+	// - Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that specifies the start of the next page for a paged query.
+	// The token that identifies the start position of the next page.
 	//
 	// - If this parameter is not specified, the query starts from the first page.
 	//

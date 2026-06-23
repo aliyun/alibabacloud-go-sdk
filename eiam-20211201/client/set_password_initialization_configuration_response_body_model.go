@@ -14,7 +14,7 @@ type iSetPasswordInitializationConfigurationResponseBody interface {
 }
 
 type SetPasswordInitializationConfigurationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

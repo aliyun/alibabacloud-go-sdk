@@ -16,7 +16,7 @@ type iGetInstanceTrialStatusResponseBody interface {
 }
 
 type GetInstanceTrialStatusResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

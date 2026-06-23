@@ -18,7 +18,7 @@ type iRemoveCustomPrivacyPoliciesFromBrandRequest interface {
 }
 
 type RemoveCustomPrivacyPoliciesFromBrandRequest struct {
-	// The branding ID.
+	// The brand ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type RemoveCustomPrivacyPoliciesFromBrandRequest struct {
 	//
 	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// A list of policy IDs.
+	// The list of term IDs.
 	//
 	// This parameter is required.
 	CustomPrivacyPolicyIds []*string `json:"CustomPrivacyPolicyIds,omitempty" xml:"CustomPrivacyPolicyIds,omitempty" type:"Repeated"`

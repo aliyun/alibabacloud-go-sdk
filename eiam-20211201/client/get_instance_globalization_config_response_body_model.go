@@ -16,7 +16,7 @@ type iGetInstanceGlobalizationConfigResponseBody interface {
 }
 
 type GetInstanceGlobalizationConfigResponseBody struct {
-	// The language and time zone configuration for the instance.
+	// The language and time zone configuration of the instance.
 	GlobalizationConfig *GetInstanceGlobalizationConfigResponseBodyGlobalizationConfig `json:"GlobalizationConfig,omitempty" xml:"GlobalizationConfig,omitempty" type:"Struct"`
 	// The request ID.
 	//

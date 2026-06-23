@@ -16,7 +16,7 @@ type iGetCustomFieldResponseBody interface {
 }
 
 type GetCustomFieldResponseBody struct {
-	// Custom field information.
+	// The custom field information.
 	CustomField *GetCustomFieldResponseBodyCustomField `json:"CustomField,omitempty" xml:"CustomField,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *GetCustomFieldResponseBody) Validate() error {
 }
 
 type GetCustomFieldResponseBodyCustomField struct {
-	// The creation time of the custom field, in UNIX timestamp format in milliseconds.
+	// The time when the extended field was created, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type GetCustomFieldResponseBodyCustomField struct {
 	//
 	// test
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The description of the custom field.
+	// The description of the extended field.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type GetCustomFieldResponseBodyCustomField struct {
 	//
 	// user
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// Field value configuration items.
+	// The field value configuration items.
 	FieldDataConfig *GetCustomFieldResponseBodyCustomFieldFieldDataConfig `json:"FieldDataConfig,omitempty" xml:"FieldDataConfig,omitempty" type:"Struct"`
 	// The data type.
 	//
@@ -136,7 +136,7 @@ type GetCustomFieldResponseBodyCustomField struct {
 	//
 	// false
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// The status of the custom field.
+	// The status of the extended field.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type GetCustomFieldResponseBodyCustomField struct {
 	//
 	// false
 	Unique *bool `json:"Unique,omitempty" xml:"Unique,omitempty"`
-	// The last update time of the custom field, in UNIX timestamp format in milliseconds.
+	// The time when the extended field was last updated, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 17642960730
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// User-side (portal) permissions.
+	// The user-side (portal-side) permission.
 	//
 	// example:
 	//
@@ -333,7 +333,7 @@ func (s *GetCustomFieldResponseBodyCustomField) Validate() error {
 }
 
 type GetCustomFieldResponseBodyCustomFieldFieldDataConfig struct {
-	// A list of field configuration items.
+	// The list of field configuration items.
 	Items []*GetCustomFieldResponseBodyCustomFieldFieldDataConfigItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 

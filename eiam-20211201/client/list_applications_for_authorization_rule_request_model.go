@@ -40,19 +40,19 @@ type ListApplicationsForAuthorizationRuleRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of records to return in a paged query.
+	// The maximum number of entries per page.
 	//
-	// - The default value is 20.
+	// - Default value: 20.
 	//
-	// - The maximum value cannot exceed 100.
+	// - Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to mark the start of the next page for a paged query.
+	// The pagination token that indicates the start position of the next page.
 	//
-	// - If you do not specify this parameter, the query starts from the first page.
+	// - If this parameter is not specified, the query starts from the first page.
 	//
 	// example:
 	//
@@ -127,15 +127,15 @@ func (s *ListApplicationsForAuthorizationRuleRequest) Validate() error {
 }
 
 type ListApplicationsForAuthorizationRuleRequestFilter struct {
-	// The name of the field to filter. Valid values:
+	// The name of the filter field. Valid values:
 	//
-	// - ApplicationId: The application ID.
+	// - ApplicationId: the application ID.
 	//
 	// example:
 	//
 	// ApplicationId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of values for the filter field.
+	// The values of the filter field.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

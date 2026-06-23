@@ -16,7 +16,7 @@ type iDeleteCustomPrivacyPolicyRequest interface {
 }
 
 type DeleteCustomPrivacyPolicyRequest struct {
-	// The custom privacy policy ID.
+	// The custom clause ID.
 	//
 	// This parameter is required.
 	//

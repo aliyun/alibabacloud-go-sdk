@@ -16,7 +16,7 @@ type iGetConditionalAccessPolicyRequest interface {
 }
 
 type GetConditionalAccessPolicyRequest struct {
-	// The ID of the conditional access policy.
+	// Conditional access policy ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetConditionalAccessPolicyRequest struct {
 	//
 	// cap_11111
 	ConditionalAccessPolicyId *string `json:"ConditionalAccessPolicyId,omitempty" xml:"ConditionalAccessPolicyId,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//

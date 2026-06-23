@@ -16,7 +16,7 @@ type iGetCustomPrivacyPolicyRequest interface {
 }
 
 type GetCustomPrivacyPolicyRequest struct {
-	// The ID of the custom privacy policy.
+	// The custom privacy policy ID.
 	//
 	// This parameter is required.
 	//

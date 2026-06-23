@@ -16,7 +16,7 @@ type iCreateInstanceTrialLicenseResponseBody interface {
 }
 
 type CreateInstanceTrialLicenseResponseBody struct {
-	// The unique ID of the license.
+	// The unique identifier of the License.
 	//
 	// example:
 	//

@@ -62,15 +62,15 @@ func (s *GetAuthorizationResourceResponseBody) Validate() error {
 }
 
 type GetAuthorizationResourceResponseBodyAuthorizationResource struct {
-	// The ID of the resource entity that is associated with the authorized resource.
+	// The ID of the resource entity associated with the authorized resource.
 	//
 	// example:
 	//
 	// carole_01kmek49aqxxxx
 	AuthorizationResourceEntityId *string `json:"AuthorizationResourceEntityId,omitempty" xml:"AuthorizationResourceEntityId,omitempty"`
-	// The type of the resource entity that is associated with the authorized resource. Valid value:
+	// The type of the resource entity associated with the authorized resource. Valid values:
 	//
-	// - cloud_account_role: a cloud role
+	// - cloud_account_role: cloud role.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type GetAuthorizationResourceResponseBodyAuthorizationResource struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resource entity that is associated with the authorized resource belongs.
+	// The ID of the cloud account to which the resource entity associated with the authorized resource belongs.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iEnableConditionalAccessPolicyRequest interface {
 }
 
 type EnableConditionalAccessPolicyRequest struct {
-  // The ID of the conditional access policy.
+  // The conditional access policy ID.
   // 
   // This parameter is required.
   // 

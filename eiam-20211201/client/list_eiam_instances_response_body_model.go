@@ -16,7 +16,7 @@ type iListEiamInstancesResponseBody interface {
 }
 
 type ListEiamInstancesResponseBody struct {
-	// The instance list.
+	// The list of instances.
 	Instances []*ListEiamInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,19 +66,19 @@ func (s *ListEiamInstancesResponseBody) Validate() error {
 }
 
 type ListEiamInstancesResponseBodyInstances struct {
-	// The instance description.
+	// The description of the instance.
 	//
 	// example:
 	//
 	// Production environment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The private domain name of the instance Developer API.
+	// The private domain name of the developer API for the instance.
 	//
 	// example:
 	//
 	// eiam-developerapi-cn.vpc-proxy.aliyuncs.com
 	DeveloperAPIPrivateDomain *string `json:"DeveloperAPIPrivateDomain,omitempty" xml:"DeveloperAPIPrivateDomain,omitempty"`
-	// The public domain of the instance Developer API.
+	// The public domain name of the developer API for the instance.
 	//
 	// example:
 	//
@@ -98,29 +98,23 @@ type ListEiamInstancesResponseBodyInstances struct {
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// The instance version.
 	//
-	// Valid values:
-	//
-	// - EIAM 2.0
-	//
-	// - EIAM 1.0
-	//
 	// example:
 	//
 	// EIAM 2.0
 	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
-	// The private domain of the instance OpenAPI.
+	// The private domain name of the OpenAPI for the instance.
 	//
 	// example:
 	//
 	// eiam-cn.vpc-proxy.aliyuncs.com
 	OpenAPIPrivateDomain *string `json:"OpenAPIPrivateDomain,omitempty" xml:"OpenAPIPrivateDomain,omitempty"`
-	// The public domain of the instance OpenAPI.
+	// The public domain name of the OpenAPI for the instance.
 	//
 	// example:
 	//
 	// eiam.cn-hangzhou.aliyuncs.com
 	OpenAPIPublicDomain *string `json:"OpenAPIPublicDomain,omitempty" xml:"OpenAPIPublicDomain,omitempty"`
-	// The single sign-on (SSO) domain of the instance.
+	// The SSO domain name of the instance.
 	//
 	// example:
 	//

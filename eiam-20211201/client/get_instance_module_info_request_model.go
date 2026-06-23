@@ -24,7 +24,7 @@ type GetInstanceModuleInfoRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The identifier of the primary module.
+	// The identifier of the first-level module.
 	//
 	// This parameter is required.
 	//

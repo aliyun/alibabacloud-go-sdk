@@ -24,13 +24,13 @@ type iListAuthorizationRulesForApplicationResponseBody interface {
 type ListAuthorizationRulesForApplicationResponseBody struct {
 	// The list of authorization rules.
 	AuthorizationRules []*ListAuthorizationRulesForApplicationResponseBodyAuthorizationRules `json:"AuthorizationRules,omitempty" xml:"AuthorizationRules,omitempty" type:"Repeated"`
-	// The number of entries on each page of a paged query.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to use for the next paged query.
+	// The pagination token returned in this call. Use this token to query the next page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListAuthorizationRulesForApplicationResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type ListAuthorizationRulesForApplicationResponseBodyAuthorizationRules struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time range of the validity period. This parameter is returned only when **ValidityType*	- is set to **time_bound**.
+	// The time range of the validity period. This parameter takes effect only when ValidityType is set to time_bound.
 	ValidityPeriod *ListAuthorizationRulesForApplicationResponseBodyAuthorizationRulesValidityPeriod `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty" type:"Struct"`
-	// The type of the validity period for the relationship. Valid values:
+	// The validity type of the relationship. Valid values:
 	//
-	// - permanent: The relationship is permanent.
+	// - permanent: permanent
 	//
-	// - time_bound: The relationship is valid within a custom time range.
+	// - time_bound: custom time range.
 	//
 	// example:
 	//
@@ -197,13 +197,13 @@ func (s *ListAuthorizationRulesForApplicationResponseBodyAuthorizationRules) Val
 }
 
 type ListAuthorizationRulesForApplicationResponseBodyAuthorizationRulesValidityPeriod struct {
-	// The end time of the validity period. This is a UNIX timestamp in milliseconds.
+	// The end time of the validity period, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1704042061000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the validity period. This is a UNIX timestamp in milliseconds.
+	// The start time of the validity period, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//

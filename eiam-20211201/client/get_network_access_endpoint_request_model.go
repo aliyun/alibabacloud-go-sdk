@@ -24,7 +24,7 @@ type GetNetworkAccessEndpointRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The unique identifier of the network access endpoint.
+	// The dedicated network access endpoint ID.
 	//
 	// This parameter is required.
 	//

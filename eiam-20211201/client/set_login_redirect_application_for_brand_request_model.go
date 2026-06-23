@@ -18,7 +18,7 @@ type iSetLoginRedirectApplicationForBrandRequest interface {
 }
 
 type SetLoginRedirectApplicationForBrandRequest struct {
-	// The application ID.
+	// Application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type SetLoginRedirectApplicationForBrandRequest struct {
 	//
 	// app_xxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The brand ID.
+	// Brand ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type SetLoginRedirectApplicationForBrandRequest struct {
 	//
 	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//

@@ -16,13 +16,13 @@ type iCreateNetworkZoneResponseBody interface {
 }
 
 type CreateNetworkZoneResponseBody struct {
-	// The ID of the network zone.
+	// Network zone ID.
 	//
 	// example:
 	//
 	// network_m6a57vre4g3h7m725yrq6pxxxx
 	NetworkZoneId *string `json:"NetworkZoneId,omitempty" xml:"NetworkZoneId,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//

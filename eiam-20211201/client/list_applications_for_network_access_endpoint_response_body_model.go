@@ -20,9 +20,9 @@ type iListApplicationsForNetworkAccessEndpointResponseBody interface {
 }
 
 type ListApplicationsForNetworkAccessEndpointResponseBody struct {
-	// The collection of applications for the network access endpoint.
+	// The collection of applications under the network access endpoint.
 	ApplicationsForNetworkAccessEndpoint []*ListApplicationsForNetworkAccessEndpointResponseBodyApplicationsForNetworkAccessEndpoint `json:"ApplicationsForNetworkAccessEndpoint,omitempty" xml:"ApplicationsForNetworkAccessEndpoint,omitempty" type:"Repeated"`
-	// The token for the next page of results.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListApplicationsForNetworkAccessEndpointResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//

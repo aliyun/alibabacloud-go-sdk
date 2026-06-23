@@ -14,7 +14,7 @@ type iListNetworkAccessEndpointAvailableZonesRequest interface {
 }
 
 type ListNetworkAccessEndpointAvailableZonesRequest struct {
-	// The ID of the region that supports exclusive network endpoints.
+	// The ID of the region supported by dedicated network endpoints.
 	//
 	// This parameter is required.
 	//

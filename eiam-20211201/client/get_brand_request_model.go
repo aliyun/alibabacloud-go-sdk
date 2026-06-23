@@ -16,7 +16,7 @@ type iGetBrandRequest interface {
 }
 
 type GetBrandRequest struct {
-	// The brand ID.
+	// Brand ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetBrandRequest struct {
 	//
 	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//

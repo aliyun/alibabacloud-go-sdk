@@ -16,13 +16,13 @@ type iCreateNetworkAccessEndpointResponseBody interface {
 }
 
 type CreateNetworkAccessEndpointResponseBody struct {
-	// The unique identifier of the network access endpoint.
+	// Network access endpoint ID.
 	//
 	// example:
 	//
 	// nae_examplexxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//

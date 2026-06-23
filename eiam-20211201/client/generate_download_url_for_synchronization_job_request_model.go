@@ -24,7 +24,7 @@ type GenerateDownloadUrlForSynchronizationJobRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the sync task.
+	// The synchronization task ID.
 	//
 	// This parameter is required.
 	//

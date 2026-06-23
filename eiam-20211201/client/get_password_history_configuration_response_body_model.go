@@ -16,7 +16,7 @@ type iGetPasswordHistoryConfigurationResponseBody interface {
 }
 
 type GetPasswordHistoryConfigurationResponseBody struct {
-	// The password history configurations.
+	// The password history check configuration.
 	PasswordHistoryConfiguration *GetPasswordHistoryConfigurationResponseBodyPasswordHistoryConfiguration `json:"PasswordHistoryConfiguration,omitempty" xml:"PasswordHistoryConfiguration,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,17 +62,17 @@ func (s *GetPasswordHistoryConfigurationResponseBody) Validate() error {
 }
 
 type GetPasswordHistoryConfigurationResponseBodyPasswordHistoryConfiguration struct {
-	// The maximum number of recent passwords that are retained.
+	// The maximum number of recent password records to retain.
 	//
 	// example:
 	//
 	// 3
 	PasswordHistoryMaxRetention *int32 `json:"PasswordHistoryMaxRetention,omitempty" xml:"PasswordHistoryMaxRetention,omitempty"`
-	// Indicates whether the password history feature is enabled. Valid values:
+	// The status of the password history configuration. Valid values:
 	//
-	// 	- enabled
+	// - enabled: Enabled.
 	//
-	// 	- disabled
+	// - disabled: Disabled.
 	//
 	// example:
 	//

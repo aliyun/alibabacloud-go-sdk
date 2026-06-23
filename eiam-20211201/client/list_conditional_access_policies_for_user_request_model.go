@@ -24,7 +24,7 @@ type ListConditionalAccessPoliciesForUserRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the user associated with the conditional access policy.
+	// The user ID associated with the conditional access policy.
 	//
 	// This parameter is required.
 	//

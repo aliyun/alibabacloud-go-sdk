@@ -14,7 +14,7 @@ type iUpdateDomainIcpNumberResponseBody interface {
 }
 
 type UpdateDomainIcpNumberResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//

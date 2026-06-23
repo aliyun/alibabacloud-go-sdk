@@ -28,37 +28,37 @@ type ListInstancesRequest struct {
 	//
 	// disabled
 	CrossRegionReplication *string `json:"CrossRegionReplication,omitempty" xml:"CrossRegionReplication,omitempty"`
-	// The edition of the license. Valid values:
+	// The license edition. Valid values:
 	//
-	// - free: Free edition.
+	// - free: Free Edition.
 	//
-	// - trial: Trial edition.
+	// - trial: Trial Edition.
 	//
-	// - scalability: Scalability edition.
+	// - scalability: Capability Expansion Edition.
 	//
-	// - standard: Standard edition.
+	// - standard: Standard Edition.
 	//
-	// - enterprise: Enterprise edition.
+	// - enterprise: Enterprise Edition.
 	//
 	// example:
 	//
 	// free
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// Instance ID list.
+	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size.
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Instance status. Valid values:
+	// The instance status. Valid values:
 	//
 	// - creating: Being created.
 	//

@@ -16,7 +16,7 @@ type iEnableCustomPrivacyPolicyRequest interface {
 }
 
 type EnableCustomPrivacyPolicyRequest struct {
-  // The custom privacy policy ID.
+  // The ID of the custom clause.
   // 
   // This parameter is required.
   // 

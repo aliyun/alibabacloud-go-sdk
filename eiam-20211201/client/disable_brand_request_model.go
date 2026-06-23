@@ -16,7 +16,7 @@ type iDisableBrandRequest interface {
 }
 
 type DisableBrandRequest struct {
-	// The branding ID.
+	// The brand ID.
 	//
 	// This parameter is required.
 	//

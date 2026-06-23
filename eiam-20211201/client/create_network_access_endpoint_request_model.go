@@ -24,13 +24,13 @@ type iCreateNetworkAccessEndpointRequest interface {
 }
 
 type CreateNetworkAccessEndpointRequest struct {
-	// Idempotent token.
+	// Ensures the idempotency of the request. Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The region ID of the VPC.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type CreateNetworkAccessEndpointRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Private network endpoint name.
+	// Network access endpoint name.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type CreateNetworkAccessEndpointRequest struct {
 	//
 	// Xx-business VPC access endpoint
 	NetworkAccessEndpointName *string `json:"NetworkAccessEndpointName,omitempty" xml:"NetworkAccessEndpointName,omitempty"`
-	// The IDs of vSwitches.
+	// List of specified vSwitches connected to the network access endpoint.
 	//
 	// example:
 	//
 	// vsw-examplexxx
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the VPC.
+	// VPC ID connected to the network access endpoint.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CreateNetworkAccessEndpointRequest struct {
 	//
 	// vpc-examplexxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The region ID of the outbound VPC.
+	// Region of the VPC ID connected to the network access endpoint.
 	//
 	// This parameter is required.
 	//

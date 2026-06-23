@@ -16,7 +16,7 @@ type iCreateDomainProxyTokenResponseBody interface {
 }
 
 type CreateDomainProxyTokenResponseBody struct {
-	// The ID of the proxy token of the domain name.
+	// The domain proxy token ID.
 	//
 	// example:
 	//

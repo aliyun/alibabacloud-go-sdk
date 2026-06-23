@@ -26,7 +26,7 @@ type SetInstanceGlobalizationConfigRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language.
+	// The language type.
 	//
 	// This parameter is required.
 	//

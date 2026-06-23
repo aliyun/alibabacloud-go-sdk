@@ -16,9 +16,9 @@ type iGetPasswordExpirationConfigurationResponseBody interface {
 }
 
 type GetPasswordExpirationConfigurationResponseBody struct {
-	// The password expiration configurations.
+	// The password expiration configuration.
 	PasswordExpirationConfiguration *GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfiguration `json:"PasswordExpirationConfiguration,omitempty" xml:"PasswordExpirationConfiguration,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,69 +62,69 @@ func (s *GetPasswordExpirationConfigurationResponseBody) Validate() error {
 }
 
 type GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfiguration struct {
-	// The list of valid authentication IDs. The default is all ["ia_all"]
+	// The list of effective authentication source IDs. Default value: ["ia_all"].
 	//
-	// ia_all: All. If you fill in this value, you cannot fill in other values
+	// - ia_all: All authentication sources. If this value is specified, no other values can be specified.
 	//
-	// ia_password: Account password login
+	// - ia_password: Account password logon.
 	//
-	// ia_otp_sms: SMS verification code login method
+	// - ia_otp_sms: SMS verification code logon.
 	//
-	// ia_webauthn: WebAuthn authenticator login method
+	// - ia_webauthn: WebAuthn authenticator logon.
 	//
-	// idp_xxx: Specific identity provider authentication method
+	// - idp_xxx: Authentication method of a specific identity provider.
 	EffectiveAuthenticationSourceIds []*string `json:"EffectiveAuthenticationSourceIds,omitempty" xml:"EffectiveAuthenticationSourceIds,omitempty" type:"Repeated"`
 	// The action to take when a password expires. Valid values:
 	//
-	// 	- forbid_login: Prohibit the user from using the password to log on to IDaaS.
+	// - forbid_login: Forbid logon.
 	//
-	// 	- force_update_password: Force the user to change the password.
+	// - force_update_password: Force password change.
 	//
-	// 	- remind_update_password: Remind the user to change the password.
+	// - remind_update_password: Remind password change.
 	//
 	// example:
 	//
 	// forbid_login
 	PasswordExpirationAction *string `json:"PasswordExpirationAction,omitempty" xml:"PasswordExpirationAction,omitempty"`
-	// The methods for receiving password expiration notifications.
+	// The list of password expiration notification channels.
 	//
 	// example:
 	//
 	// login
 	PasswordExpirationNotificationChannels []*string `json:"PasswordExpirationNotificationChannels,omitempty" xml:"PasswordExpirationNotificationChannels,omitempty" type:"Repeated"`
-	// The number of days before the expiration date during which password expiration notifications are sent. Unit: day.
+	// The advance notice period before password expiration. Unit: days.
 	//
 	// example:
 	//
 	// 7
 	PasswordExpirationNotificationDuration *int32 `json:"PasswordExpirationNotificationDuration,omitempty" xml:"PasswordExpirationNotificationDuration,omitempty"`
-	// Indicates whether the password expiration notification feature is enabled. Valid values:
+	// The status of password expiration notification. Valid values:
 	//
-	// 	- enabled
+	// - enabled: Enabled.
 	//
-	// 	- disabled
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	PasswordExpirationNotificationStatus *string `json:"PasswordExpirationNotificationStatus,omitempty" xml:"PasswordExpirationNotificationStatus,omitempty"`
-	// Indicates whether the password expiration feature is enabled. Valid values:
+	// The status of the password expiration configuration. Valid values:
 	//
-	// 	- enabled
+	// - enabled: Enabled.
 	//
-	// 	- disabled
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	PasswordExpirationStatus *string `json:"PasswordExpirationStatus,omitempty" xml:"PasswordExpirationStatus,omitempty"`
-	// The number of days before which users must change the password to prevent password expiration. Unit: day.
+	// The grace period for forced password change after expiration. Unit: days.
 	//
 	// example:
 	//
 	// 3
 	PasswordForcedUpdateDuration *int32 `json:"PasswordForcedUpdateDuration,omitempty" xml:"PasswordForcedUpdateDuration,omitempty"`
-	// The validity period of a password. Unit: day.
+	// The maximum validity period of a password. Unit: days.
 	//
 	// example:
 	//

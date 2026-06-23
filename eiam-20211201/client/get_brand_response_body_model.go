@@ -16,9 +16,9 @@ type iGetBrandResponseBody interface {
 }
 
 type GetBrandResponseBody struct {
-	// The brand.
+	// Brand.
 	Brand *GetBrandResponseBodyBrand `json:"Brand,omitempty" xml:"Brand,omitempty" type:"Struct"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -62,31 +62,31 @@ func (s *GetBrandResponseBody) Validate() error {
 }
 
 type GetBrandResponseBodyBrand struct {
-	// The brand ID.
+	// Brand ID.
 	//
 	// example:
 	//
 	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// The brand name.
+	// Brand name.
 	//
 	// example:
 	//
 	// Custom Brand
 	BrandName *string `json:"BrandName,omitempty" xml:"BrandName,omitempty"`
-	// The brand type.
+	// Brand type.
 	//
 	// example:
 	//
 	// user_custom
 	BrandType *string `json:"BrandType,omitempty" xml:"BrandType,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The brand status.
+	// Brand status.
 	//
 	// example:
 	//

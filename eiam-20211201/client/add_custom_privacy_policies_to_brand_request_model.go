@@ -18,7 +18,7 @@ type iAddCustomPrivacyPoliciesToBrandRequest interface {
 }
 
 type AddCustomPrivacyPoliciesToBrandRequest struct {
-	// The ID of the brand.
+	// The brand ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type AddCustomPrivacyPoliciesToBrandRequest struct {
 	//
 	// brand_xxxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// A list of custom privacy policy IDs.
+	// The list of term IDs.
 	//
 	// This parameter is required.
 	CustomPrivacyPolicyIds []*string `json:"CustomPrivacyPolicyIds,omitempty" xml:"CustomPrivacyPolicyIds,omitempty" type:"Repeated"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

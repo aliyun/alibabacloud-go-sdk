@@ -16,7 +16,7 @@ type iGetLoginRedirectApplicationForBrandResponseBody interface {
 }
 
 type GetLoginRedirectApplicationForBrandResponseBody struct {
-	// The information about the post-logon redirect application for the brand.
+	// The brand logon redirect application information.
 	BrandLoginRedirectApplication *GetLoginRedirectApplicationForBrandResponseBodyBrandLoginRedirectApplication `json:"BrandLoginRedirectApplication,omitempty" xml:"BrandLoginRedirectApplication,omitempty" type:"Struct"`
 	// The request ID.
 	//

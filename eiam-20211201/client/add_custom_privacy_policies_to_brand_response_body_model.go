@@ -14,7 +14,7 @@ type iAddCustomPrivacyPoliciesToBrandResponseBody interface {
 }
 
 type AddCustomPrivacyPoliciesToBrandResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

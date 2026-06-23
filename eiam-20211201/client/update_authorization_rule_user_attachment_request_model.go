@@ -32,7 +32,7 @@ type UpdateAuthorizationRuleUserAttachmentRequest struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// A client token used to ensure the idempotence of the request. Generate a unique value from your client for this parameter. ClientToken supports only ASCII characters and must be no more than 64 characters long. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type UpdateAuthorizationRuleUserAttachmentRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The user ID.
+	// The account ID.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type UpdateAuthorizationRuleUserAttachmentRequest struct {
 	//
 	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The time range of the validity period. This parameter takes effect when ValidityType is set to time_bound.
+	// The time range of the validity period. This parameter takes effect only when **ValidityType*	- is set to **time_bound**.
 	ValidityPeriod *UpdateAuthorizationRuleUserAttachmentRequestValidityPeriod `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty" type:"Struct"`
-	// The validity period type of the association. Valid values:
+	// The validity type of the relationship. Valid values:
 	//
-	// - permanent: The association is permanent.
+	// - permanent: permanent
 	//
-	// - time_bound: The association is valid for a custom time range.
+	// - time_bound: custom time range.
 	//
 	// This parameter is required.
 	//
@@ -144,13 +144,13 @@ func (s *UpdateAuthorizationRuleUserAttachmentRequest) Validate() error {
 }
 
 type UpdateAuthorizationRuleUserAttachmentRequestValidityPeriod struct {
-	// The end time of the validity period. This is a UNIX timestamp. Unit: milliseconds.
+	// The end time of the validity period, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1704062061000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the validity period. This is a UNIX timestamp. Unit: milliseconds.
+	// The start time of the validity period, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//

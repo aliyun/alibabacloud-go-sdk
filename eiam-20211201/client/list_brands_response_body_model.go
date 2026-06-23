@@ -24,21 +24,21 @@ type iListBrandsResponseBody interface {
 }
 
 type ListBrandsResponseBody struct {
-	// A list of brands.
+	// The list of brand data.
 	Brands []*ListBrandsResponseBodyBrands `json:"Brands,omitempty" xml:"Brands,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The token that is used to retrieve the previous page of results.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListBrandsResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//

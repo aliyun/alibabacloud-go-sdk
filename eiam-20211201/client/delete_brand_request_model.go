@@ -16,7 +16,7 @@ type iDeleteBrandRequest interface {
 }
 
 type DeleteBrandRequest struct {
-	// The brand ID.
+	// Brand ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteBrandRequest struct {
 	//
 	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//

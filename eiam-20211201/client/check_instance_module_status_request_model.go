@@ -20,7 +20,7 @@ type iCheckInstanceModuleStatusRequest interface {
 }
 
 type CheckInstanceModuleStatusRequest struct {
-	// The identifier for the secondary module.
+	// The secondary module identifier.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type CheckInstanceModuleStatusRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The identifier for the primary module.
+	// The primary module identifier.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type CheckInstanceModuleStatusRequest struct {
 	//
 	// urn:alibaba:idaas:license:module:ud
 	ModuleKey *string `json:"ModuleKey,omitempty" xml:"ModuleKey,omitempty"`
-	// The identifier for the tertiary module.
+	// The tertiary module identifier.
 	//
 	// example:
 	//

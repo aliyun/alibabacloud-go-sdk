@@ -62,21 +62,21 @@ func (s *GetCustomPrivacyPolicyResponseBody) Validate() error {
 }
 
 type GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicy struct {
-	// The details of the custom privacy policy content.
+	// The content details of the custom privacy policy.
 	CustomPrivacyPolicyContents []*GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyContents `json:"CustomPrivacyPolicyContents,omitempty" xml:"CustomPrivacyPolicyContents,omitempty" type:"Repeated"`
-	// The ID of the custom privacy policy.
+	// The custom privacy policy ID.
 	//
 	// example:
 	//
 	// pp_xxxxx
 	CustomPrivacyPolicyId *string `json:"CustomPrivacyPolicyId,omitempty" xml:"CustomPrivacyPolicyId,omitempty"`
-	// The name of the custom privacy policy.
+	// The custom privacy policy name.
 	//
 	// example:
 	//
 	// Custom Privacy Policy Name
 	CustomPrivacyPolicyName *string `json:"CustomPrivacyPolicyName,omitempty" xml:"CustomPrivacyPolicyName,omitempty"`
-	// The language of the custom privacy policy. The value is the LanguageCode returned by the ListLanguages operation.
+	// The language of the custom privacy policy. The value is obtained from the LanguageCode parameter returned by the ListLanguages operation.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicy struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The valid values for the account status are:
+	// The status of the custom privacy policy. Valid values:
 	//
 	// - enabled: Enabled.
 	//
@@ -98,7 +98,7 @@ type GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicy struct {
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Agreement Type.
+	// The user consent type.
 	//
 	// example:
 	//
@@ -191,15 +191,15 @@ func (s *GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicy) Validate() error
 }
 
 type GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyContents struct {
-	// The items of the custom privacy policy.
+	// The custom privacy policy items.
 	CustomPrivacyPolicyItems []*GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyContentsCustomPrivacyPolicyItems `json:"CustomPrivacyPolicyItems,omitempty" xml:"CustomPrivacyPolicyItems,omitempty" type:"Repeated"`
-	// The prompt for the custom privacy policy content.
+	// The tip for the custom privacy policy content.
 	//
 	// example:
 	//
 	// Please read and agree：
 	CustomPrivacyPolicyTip *string `json:"CustomPrivacyPolicyTip,omitempty" xml:"CustomPrivacyPolicyTip,omitempty"`
-	// The language of the custom privacy policy. The value is the LanguageCode returned by the ListLanguages operation.
+	// The language of the custom privacy policy. The value is obtained from the LanguageCode parameter returned by the ListLanguages operation.
 	//
 	// example:
 	//
@@ -262,7 +262,7 @@ type GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyCon
 	//
 	// item name
 	CustomPrivacyPolicyItemName *string `json:"CustomPrivacyPolicyItemName,omitempty" xml:"CustomPrivacyPolicyItemName,omitempty"`
-	// The URL of the custom privacy policy item. The URL must start with https\\://.
+	// The URL of the custom privacy policy item. The URL must start with https://.
 	//
 	// example:
 	//

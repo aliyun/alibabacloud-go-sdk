@@ -16,9 +16,9 @@ type iGetRootOrganizationalUnitResponseBody interface {
 }
 
 type GetRootOrganizationalUnitResponseBody struct {
-	// The data object of the organizational unit.
+	// The organizational unit data object.
 	OrganizationalUnit *GetRootOrganizationalUnitResponseBodyOrganizationalUnit `json:"OrganizationalUnit,omitempty" xml:"OrganizationalUnit,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetRootOrganizationalUnitResponseBody) Validate() error {
 }
 
 type GetRootOrganizationalUnitResponseBodyOrganizationalUnit struct {
-	// The time when the organizational unit was created. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the organizational unit was created, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -74,25 +74,25 @@ type GetRootOrganizationalUnitResponseBodyOrganizationalUnit struct {
 	//
 	// Test organization
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the organizational unit.
+	// The organizational unit ID.
 	//
 	// example:
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
-	// The name of the organization.
+	// The organizational unit name.
 	//
 	// example:
 	//
 	// name001
 	OrganizationalUnitName *string `json:"OrganizationalUnitName,omitempty" xml:"OrganizationalUnitName,omitempty"`
-	// The time when the organizational unit was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the organizational unit was last updated, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//

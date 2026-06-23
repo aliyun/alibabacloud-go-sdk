@@ -62,7 +62,7 @@ func (s *GetInstanceResponseBody) Validate() error {
 }
 
 type GetInstanceResponseBodyInstance struct {
-	// The time when the instance was created, in Unix timestamp format, measured in milliseconds.
+	// The time when the instance was created. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// primary
 	CrossRegionReplicationRole *string `json:"CrossRegionReplicationRole,omitempty" xml:"CrossRegionReplicationRole,omitempty"`
-	// The default endpoint of the instance. This field is no longer maintained. Use the DomainConfig related fields or refer to the domain list query API instead.
+	// The default domain name of the instance. This field is no longer maintained. Use the DomainConfig fields or refer to the query domain name list operation instead.
 	DefaultEndpoint *GetInstanceResponseBodyInstanceDefaultEndpoint `json:"DefaultEndpoint,omitempty" xml:"DefaultEndpoint,omitempty" type:"Struct"`
 	// The description of the instance.
 	//
@@ -84,9 +84,9 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// instance_for_test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The domain-related configuration of the instance.
+	// The domain name configuration of the instance.
 	DomainConfig *GetInstanceResponseBodyInstanceDomainConfig `json:"DomainConfig,omitempty" xml:"DomainConfig,omitempty" type:"Struct"`
-	// The egress public IP address ranges of the instance. For example, during AD account synchronization, the EIAM instance accesses your AD service through these public IP address ranges.
+	// The public egress CIDR blocks of the instance. For example, during Active Directory (AD) account synchronization, the EIAM instance accesses your AD server through these public CIDR blocks.
 	EgressAddresses []*string `json:"EgressAddresses,omitempty" xml:"EgressAddresses,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -98,7 +98,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// idaas_abt3pfwojojcq323si6g5xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The service code of the cloud service that manages the instance.
+	// The ServiceCode of the Alibaba Cloud service that manages the instance.
 	//
 	// if can be null:
 	// false
@@ -108,7 +108,7 @@ type GetInstanceResponseBodyInstance struct {
 	// sase
 	ManagedServiceCode       *string                                                  `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
 	ReplicationConfiguration *GetInstanceResponseBodyInstanceReplicationConfiguration `json:"ReplicationConfiguration,omitempty" xml:"ReplicationConfiguration,omitempty" type:"Struct"`
-	// Indicates whether the instance is managed by a cloud service.
+	// Indicates whether the instance is managed by an Alibaba Cloud service.
 	//
 	// if can be null:
 	// false
@@ -274,13 +274,13 @@ func (s *GetInstanceResponseBodyInstance) Validate() error {
 }
 
 type GetInstanceResponseBodyInstanceDefaultEndpoint struct {
-	// The endpoint address of the instance.
+	// The domain name of the instance.
 	//
 	// example:
 	//
 	// example-xxx.aliyunidaas.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The status of the instance endpoint. Valid values:
+	// The status of the instance domain name. Valid values:
 	//
 	// - resolved: Resolved.
 	//
@@ -323,19 +323,19 @@ func (s *GetInstanceResponseBodyInstanceDefaultEndpoint) Validate() error {
 }
 
 type GetInstanceResponseBodyInstanceDomainConfig struct {
-	// The default domain of the instance.
+	// The default domain name of the instance.
 	//
 	// example:
 	//
 	// login.example.com
 	DefaultDomain *string `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
-	// The initialization domain of the instance.
+	// The initialization domain name of the instance.
 	//
 	// example:
 	//
 	// rx72nxxx.example.com
 	InitDomain *string `json:"InitDomain,omitempty" xml:"InitDomain,omitempty"`
-	// The auto-redirect status of the initialization domain. Valid values:
+	// The automatic redirect status of the initialization domain name. Valid values:
 	//
 	// - enabled: Enabled.
 	//

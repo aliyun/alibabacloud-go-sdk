@@ -131,7 +131,7 @@ func (client *Client) AddApplicationToAuthorizationRuleWithContext(ctx context.C
 
 // Summary:
 //
-// # Assign terms to a brand
+// Adds terms to a brand.
 //
 // @param request - AddCustomPrivacyPoliciesToBrandRequest
 //
@@ -249,7 +249,7 @@ func (client *Client) AddGroupToAuthorizationRuleWithContext(ctx context.Context
 
 // Summary:
 //
-// Adds a user to an authorization rule.
+// Adds an account to an authorization rule.
 //
 // @param request - AddUserToAuthorizationRuleRequest
 //
@@ -875,7 +875,7 @@ func (client *Client) AuthorizeResourceServerToClientWithContext(ctx context.Con
 
 // Summary:
 //
-// Binds a user to a third-party logon account.
+// Associates a third-party logon account.
 //
 // @param request - BindUserAuthnSourceMappingRequest
 //
@@ -983,11 +983,7 @@ func (client *Client) CheckApplicationProvisioningUserPrimaryOrganizationalUnitW
 
 // Summary:
 //
-// Checks if an instance can be deleted.
-//
-// Description:
-//
-// Verify that the instance is no longer in use. Deleting an EIAM instance permanently removes all its associated data.
+// Checks whether an instance can be deleted.
 //
 // @param request - CheckInstanceForDeleteRequest
 //
@@ -1031,11 +1027,7 @@ func (client *Client) CheckInstanceForDeleteWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Determines whether an instance has a specific module feature.
-//
-// Description:
-//
-// Ensure that your current instance is no longer in use. When you delete an EIAM instance, all related data is deleted.
+// Determines whether an instance has the feature of a specific module.
 //
 // @param request - CheckInstanceModuleStatusRequest
 //
@@ -1791,11 +1783,11 @@ func (client *Client) CreateCloudAccountRoleWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Create Conditional Access Policy
+// Creates a conditional access policy.
 //
 // Description:
 //
-// # Create Conditional Access Policy
+// Creates a conditional access policy.
 //
 // @param request - CreateConditionalAccessPolicyRequest
 //
@@ -2035,7 +2027,7 @@ func (client *Client) CreateCredentialProviderWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Creates an extension field.
+// Creates an extended field.
 //
 // @param request - CreateCustomFieldRequest
 //
@@ -2631,7 +2623,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates a trial license for an instance.
+// Creates a trial License for an instance.
 //
 // @param request - CreateInstanceTrialLicenseRequest
 //
@@ -2675,7 +2667,7 @@ func (client *Client) CreateInstanceTrialLicenseWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates a dedicated endpoint.
+// Creates a network access endpoint.
 //
 // @param request - CreateNetworkAccessEndpointRequest
 //
@@ -3299,7 +3291,7 @@ func (client *Client) DeleteApplicationTokenWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes an authorization resource.
+// Deletes an authorized resource.
 //
 // @param request - DeleteAuthorizationResourceRequest
 //
@@ -3351,7 +3343,7 @@ func (client *Client) DeleteAuthorizationResourceWithContext(ctx context.Context
 
 // Summary:
 //
-// Deletes an authorization rule. An authorization rule must be disabled before it can be deleted.
+// Deletes an authorization rule. The authorization rule can be deleted only when it is in the disabled state.
 //
 // @param request - DeleteAuthorizationRuleRequest
 //
@@ -3399,7 +3391,7 @@ func (client *Client) DeleteAuthorizationRuleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Deletes a brand.
+// # Delete Brand
 //
 // @param request - DeleteBrandRequest
 //
@@ -3607,7 +3599,7 @@ func (client *Client) DeleteCloudAccountRoleWithContext(ctx context.Context, req
 //
 // Description:
 //
-// Before you delete a conditional access policy, ensure that it is no longer in use. This action permanently deletes all of its configuration data, which cannot be recovered.
+// Before you delete a conditional access policy, make sure that the policy is no longer in use. After the policy is deleted, all configuration data is permanently removed and cannot be recovered.
 //
 // @param request - DeleteConditionalAccessPolicyRequest
 //
@@ -3751,7 +3743,7 @@ func (client *Client) DeleteCredentialProviderWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deletes an extension field.
+// Deletes an extended character field.
 //
 // @param request - DeleteCustomFieldRequest
 //
@@ -3799,7 +3791,7 @@ func (client *Client) DeleteCustomFieldWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Deleting custom clauses
+// Deletes a custom clause.
 //
 // @param request - DeleteCustomPrivacyPolicyRequest
 //
@@ -3847,7 +3839,7 @@ func (client *Client) DeleteCustomPrivacyPolicyWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes a custom domain name of an Employee Identity and Access Management (EIAM) instance. You cannot delete the initial domain name and default domain name of the instance.
+// Deletes a custom domain name of a specified Employee Identity and Access Management (EIAM) instance. Deletion of the instance initialization domain name or default domain name is rejected.
 //
 // @param request - DeleteDomainRequest
 //
@@ -3895,7 +3887,7 @@ func (client *Client) DeleteDomainWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. Only the proxy tokens in the disabled state can be deleted.
+// Deletes a proxy token for a specified domain name of an EIAM instance. Only proxy tokens in the disabled state can be deleted.
 //
 // @param request - DeleteDomainProxyTokenRequest
 //
@@ -4091,11 +4083,11 @@ func (client *Client) DeleteIdentityProviderWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS) that you do not need.
+// Deletes an Employee Identity and Access Management (EIAM) instance that you no longer use.
 //
 // Description:
 //
-// Make sure that the instance to be deleted is no longer used. If the instance is deleted, all data related to the instance will be deleted.
+// Make sure that the instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -4139,7 +4131,7 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Delete a network endpoint of a specific type.
+// Deletes a dedicated network access endpoint.
 //
 // @param request - DeleteNetworkAccessEndpointRequest
 //
@@ -5201,7 +5193,7 @@ func (client *Client) DisableCloudAccountRoleWithContext(ctx context.Context, re
 //
 // Description:
 //
-// When you disable a conditional access policy, the policy no longer blocks access. Make sure that you are aware of the potential threats that may arise from this operation.
+// When you change a conditional access policy from the enabled state to the disabled state, the policy no longer intercepts requests. Confirm that you are aware of the security risks that this operation may cause.
 //
 // @param request - DisableConditionalAccessPolicyRequest
 //
@@ -5349,7 +5341,7 @@ func (client *Client) DisableCredentialProviderWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Disables a custom field.
+// Disables a field.
 //
 // @param request - DisableCustomFieldRequest
 //
@@ -5397,7 +5389,7 @@ func (client *Client) DisableCustomFieldWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Disables a custom privacy policy.
+// Disables a custom term.
 //
 // @param request - DisableCustomPrivacyPolicyRequest
 //
@@ -5445,7 +5437,7 @@ func (client *Client) DisableCustomPrivacyPolicyWithContext(ctx context.Context,
 
 // Summary:
 //
-// Disables a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. After the proxy token is disabled, the domain name may not be used as expected.
+// Disables a specified domain proxy token for an EIAM instance. After the token is disabled, domain usage is affected.
 //
 // @param request - DisableDomainProxyTokenRequest
 //
@@ -5693,7 +5685,7 @@ func (client *Client) DisableIdentityProviderUdPullWithContext(ctx context.Conte
 
 // Summary:
 //
-// Disables the feature of automatically redirecting the initial domain name to the default domain name for an Employee Identity and Access Management (EIAM) instance. After the feature is disabled, users who visit the portal page by using the initial domain name are not redirected to the default domain name.
+// Disables automatic redirect from the initialization domain to the default domain for an EIAM instance. After disabling, accessing the portal via the initialization domain will no longer redirect to the default domain.
 //
 // @param request - DisableInitDomainAutoRedirectRequest
 //
@@ -6543,7 +6535,7 @@ func (client *Client) EnableCloudAccountRoleWithContext(ctx context.Context, req
 //
 // Description:
 //
-// When you disable a conditional access policy, it no longer blocks access. Be aware of the potential threats before you perform this operation.
+// When you change a conditional access policy from enabled to disabled, the policy no longer intercepts requests. Confirm that you are aware of the risks that this operation may cause.
 //
 // @param request - EnableConditionalAccessPolicyRequest
 //
@@ -6691,11 +6683,11 @@ func (client *Client) EnableCredentialProviderWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Enables a custom field.
+// Enables a field.
 //
 // Description:
 //
-// *Before you use this API, make sure you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) for IDaaS EIAM.**
+// *Before you use this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**.
 //
 // @param request - EnableCustomFieldRequest
 //
@@ -6743,7 +6735,7 @@ func (client *Client) EnableCustomFieldWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Enabling custom terms
+// Enables a custom clause.
 //
 // @param request - EnableCustomPrivacyPolicyRequest
 //
@@ -6791,7 +6783,7 @@ func (client *Client) EnableCustomPrivacyPolicyWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Enables a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. The proxy token is used to verify the security of the domain name.
+// Enables a domain proxy token for a specified EIAM instance domain name to verify domain security.
 //
 // @param request - EnableDomainProxyTokenRequest
 //
@@ -7039,7 +7031,7 @@ func (client *Client) EnableIdentityProviderUdPullWithContext(ctx context.Contex
 
 // Summary:
 //
-// Enables automatic redirection from the initialization domain name to the default domain name for an EIAM instance. After this feature is enabled, portal access via the initialization domain name is redirected to the default domain name.
+// Enables automatic redirection from the initialization domain to the default domain for an EIAM instance. After this feature is enabled, accessing the portal through the initialization domain will redirect to the default domain address.
 //
 // @param request - EnableInitDomainAutoRedirectRequest
 //
@@ -7287,7 +7279,7 @@ func (client *Client) ExecIdentityProviderMetadataUrlResolutionWithContext(ctx c
 
 // Summary:
 //
-// Generates a download URL for the result of a file import.
+// Generates a download URL for file import results.
 //
 // @param request - GenerateDownloadUrlForSynchronizationJobRequest
 //
@@ -7439,7 +7431,7 @@ func (client *Client) GenerateOauthTokenWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Generates an upload credential.
+// # Get Upload Authentication
 //
 // @param request - GenerateUploadAuthRequest
 //
@@ -8027,7 +8019,7 @@ func (client *Client) GetApplicationTemplateWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the information about an authorized resource.
+// Queries information about an authorized resource.
 //
 // @param request - GetAuthorizationResourceRequest
 //
@@ -8127,7 +8119,55 @@ func (client *Client) GetAuthorizationRuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves the details of a brand.
+// 查询授权服务器
+//
+// @param request - GetAuthorizationServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAuthorizationServerResponse
+func (client *Client) GetAuthorizationServerWithContext(ctx context.Context, request *GetAuthorizationServerRequest, runtime *dara.RuntimeOptions) (_result *GetAuthorizationServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationServerId) {
+		query["AuthorizationServerId"] = request.AuthorizationServerId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAuthorizationServer"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAuthorizationServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get Brand Details
 //
 // @param request - GetBrandRequest
 //
@@ -8327,11 +8367,11 @@ func (client *Client) GetCloudAccountRoleWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves a conditional access policy.
+// Get a conditional access policy.
 //
 // Description:
 //
-// This operation retrieves a conditional access policy.
+// Query a conditional access policy.
 //
 // @param request - GetConditionalAccessPolicyRequest
 //
@@ -8475,11 +8515,7 @@ func (client *Client) GetCredentialProviderWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves custom field information.
-//
-// Description:
-//
-// *Before using this operation, review the IDaaS pricing model and [pricing details](https://www.aliyun.com/price/product#/ecs/detail).**
+// Retrieves the information about an extended field.
 //
 // @param request - GetCustomFieldRequest
 //
@@ -8527,7 +8563,7 @@ func (client *Client) GetCustomFieldWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// # Obtaining custom terms
+// Retrieves a custom privacy policy.
 //
 // @param request - GetCustomPrivacyPolicyRequest
 //
@@ -8719,7 +8755,7 @@ func (client *Client) GetFederatedCredentialProviderWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the forgot-password configuration for a specified EIAM instance.
+// Queries the forgot password policy of a specified EIAM instance.
 //
 // @param request - GetForgetPasswordConfigurationRequest
 //
@@ -9055,7 +9091,7 @@ func (client *Client) GetIdentityProviderUdPushConfigurationWithContext(ctx cont
 
 // Summary:
 //
-// Queries the detailed information of an EIAM instance.
+// Queries the details of an EIAM instance.
 //
 // @param request - GetInstanceRequest
 //
@@ -9099,7 +9135,7 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, request *GetIn
 
 // Summary:
 //
-// Queries the control configuration for an instance.
+// Queries instance control items.
 //
 // @param request - GetInstanceControlConfigurationRequest
 //
@@ -9147,11 +9183,7 @@ func (client *Client) GetInstanceControlConfigurationWithContext(ctx context.Con
 
 // Summary:
 //
-// Retrieves the language and time zone information for an instance.
-//
-// Description:
-//
-// When you disable a conditional access policy, it no longer intercepts access requests. Confirm that you understand the security risks associated with this action.
+// Retrieves the language and time zone information of an instance.
 //
 // @param request - GetInstanceGlobalizationConfigRequest
 //
@@ -9243,7 +9275,7 @@ func (client *Client) GetInstanceLicenseWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves information about all modules within a primary module.
+// Retrieves all module information under a first-level module.
 //
 // @param request - GetInstanceModuleInfoRequest
 //
@@ -9291,7 +9323,7 @@ func (client *Client) GetInstanceModuleInfoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves the quota of a specific type for an instance.
+// Retrieves the quota of a single type for an instance.
 //
 // @param request - GetInstanceQuotaRequest
 //
@@ -9383,7 +9415,7 @@ func (client *Client) GetInstanceTrialStatusWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Configure the post-logon redirect application for a brand
+// Sets the post-logon redirect application for a brand.
 //
 // @param request - GetLoginRedirectApplicationForBrandRequest
 //
@@ -9431,7 +9463,7 @@ func (client *Client) GetLoginRedirectApplicationForBrandWithContext(ctx context
 
 // Summary:
 //
-// # Get Network Endpoint Information
+// Queries the information about a specified network access endpoint.
 //
 // @param request - GetNetworkAccessEndpointRequest
 //
@@ -9619,7 +9651,7 @@ func (client *Client) GetPasswordComplexityConfigurationWithContext(ctx context.
 
 // Summary:
 //
-// Queries the password expiration configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Queries the password expiration policy of a specified EIAM instance.
 //
 // @param request - GetPasswordExpirationConfigurationRequest
 //
@@ -9663,7 +9695,7 @@ func (client *Client) GetPasswordExpirationConfigurationWithContext(ctx context.
 
 // Summary:
 //
-// Queries the password history configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Queries the password history policy of a specified EIAM instance.
 //
 // @param request - GetPasswordHistoryConfigurationRequest
 //
@@ -9707,7 +9739,7 @@ func (client *Client) GetPasswordHistoryConfigurationWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the password initialization configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Queries the password initialization policy of Employee Identity and Access Management (EIAM).
 //
 // @param request - GetPasswordInitializationConfigurationRequest
 //
@@ -9803,7 +9835,7 @@ func (client *Client) GetResourceServerScopeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the information about the root organizational unit in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Queries the root organizational unit information of EIAM.
 //
 // @param request - GetRootOrganizationalUnitRequest
 //
@@ -9847,7 +9879,7 @@ func (client *Client) GetRootOrganizationalUnitWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Queries a service quota
+// Retrieves the service quota.
 //
 // @param request - GetServiceQuotaRequest
 //
@@ -10579,7 +10611,7 @@ func (client *Client) ListApplicationsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the applications that are associated with an authorization rule.
+// Lists the applications associated with an authorization rule.
 //
 // @param request - ListApplicationsForAuthorizationRuleRequest
 //
@@ -10699,7 +10731,7 @@ func (client *Client) ListApplicationsForGroupWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Lists the applications for a network access endpoint.
+// Retrieves application information under a network access endpoint.
 //
 // @param request - ListApplicationsForNetworkAccessEndpointRequest
 //
@@ -10755,7 +10787,7 @@ func (client *Client) ListApplicationsForNetworkAccessEndpointWithContext(ctx co
 
 // Summary:
 //
-// Retrieves a list of applications associated with a network domain.
+// Retrieves the list of applications associated with a network domain.
 //
 // @param request - ListApplicationsForNetworkZoneRequest
 //
@@ -10943,7 +10975,7 @@ func (client *Client) ListApplicationsForUserWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries a list of authorized resources.
+// Queries a list of authorization resource information.
 //
 // @param request - ListAuthorizationResourcesRequest
 //
@@ -11171,7 +11203,7 @@ func (client *Client) ListAuthorizationRulesForGroupWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the authorization rules associated with a user.
+// Lists the authorization rules associated with an account.
 //
 // @param request - ListAuthorizationRulesForUserRequest
 //
@@ -11217,6 +11249,58 @@ func (client *Client) ListAuthorizationRulesForUserWithContext(ctx context.Conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAuthorizationRulesForUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of all authorization servers under an instance.
+//
+// @param request - ListAuthorizationServersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthorizationServersResponse
+func (client *Client) ListAuthorizationServersWithContext(ctx context.Context, request *ListAuthorizationServersRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizationServersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAuthorizationServers"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAuthorizationServersResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11455,11 +11539,11 @@ func (client *Client) ListCloudAccountsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # List of Conditional Access Policies
+// List conditional access policies.
 //
 // Description:
 //
-// # Paginated query for the list of conditional access policies
+// Query the list of conditional access policies with pagination.
 //
 // @param request - ListConditionalAccessPoliciesRequest
 //
@@ -11563,11 +11647,11 @@ func (client *Client) ListConditionalAccessPoliciesForApplicationWithContext(ctx
 
 // Summary:
 //
-// # List Conditional Access Policies Associated with Network Areas
+// Retrieves the list of conditional access policies associated with a network zone.
 //
 // Description:
 //
-// # List Conditional Access Policies Associated with Network Zones
+// Retrieves the list of conditional access policies associated with a network zone.
 //
 // @param request - ListConditionalAccessPoliciesForNetworkZoneRequest
 //
@@ -11615,7 +11699,7 @@ func (client *Client) ListConditionalAccessPoliciesForNetworkZoneWithContext(ctx
 
 // Summary:
 //
-// Retrieves a list of conditional access policies that are associated with a user.
+// Retrieves the list of conditional access policies associated with a user.
 //
 // @param request - ListConditionalAccessPoliciesForUserRequest
 //
@@ -11807,7 +11891,7 @@ func (client *Client) ListCredentialsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Retrieves a list of custom privacy policies.
+// Queries the list of custom terms.
 //
 // @param request - ListCustomPrivacyPoliciesRequest
 //
@@ -11927,7 +12011,7 @@ func (client *Client) ListCustomPrivacyPoliciesForBrandWithContext(ctx context.C
 
 // Summary:
 //
-// Retrieves a list of proxy tokens for a domain name in an EIAM instance.
+// Queries a list of domain proxy tokens of an EIAM instance.
 //
 // @param request - ListDomainProxyTokensRequest
 //
@@ -12023,7 +12107,7 @@ func (client *Client) ListDomainsWithContext(ctx context.Context, request *ListD
 
 // Summary:
 //
-// Queries the information about Employee Identity and Access Management (EIAM) V1.0 instances or EIAM V2.0 instances.
+// Queries the list of EIAM 2.0 and EIAM 1.0 instances.
 //
 // @param request - ListEiamInstancesRequest
 //
@@ -12607,7 +12691,7 @@ func (client *Client) ListIdentityProvidersForNetworkAccessEndpointWithContext(c
 
 // Summary:
 //
-// Queries information about one or more EIAM instances.
+// Queries information about one or more Employee Identity and Access Management (EIAM) instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -12671,7 +12755,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries the zones that support creating network endpoints for IDaaS in a specified region.
+// Queries the list of zones that support the creation of network endpoints in a specified region for IDaaS EIAM.
 //
 // @param request - ListNetworkAccessEndpointAvailableZonesRequest
 //
@@ -12783,7 +12867,7 @@ func (client *Client) ListNetworkAccessEndpointsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Lists the access paths for a specified network endpoint.
+// Queries the list of access paths under a specified network access endpoint.
 //
 // @param request - ListNetworkAccessPathsRequest
 //
@@ -12831,7 +12915,7 @@ func (client *Client) ListNetworkAccessPathsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Lists network zone objects.
+// Queries the list of network zone objects.
 //
 // @param request - ListNetworkZonesRequest
 //
@@ -13275,17 +13359,17 @@ func (client *Client) ListResourceServersForUserWithContext(ctx context.Context,
 
 // Summary:
 //
-// Lists the details of synchronization tasks.
+// Query the list of synchronization job details.
 //
 // Description:
 //
-// You can view the returned data in one of the following two ways:
+// The following two methods are supported for viewing returned data:
 //
-// - Method 1: To query the first page, set MaxResults to limit the number of entries to return. The NextToken value in the response is the token for the next page. To query subsequent pages, set NextToken to the value from the previous response and set MaxResults. If no more data is available, NextToken is not returned. The maximum value for MaxResults is 100.
+// - Method 1: When querying the first page, you only need to set MaxResults to limit the number of entries returned. The NextToken in the response serves as the credential for querying subsequent pages. When querying subsequent pages, set the NextToken parameter to the NextToken value obtained from the previous response as the query credential, and set MaxResults to limit the number of entries returned. If there are no more pages, NextToken is no longer returned. The maximum value of MaxResults is 100.
 //
-// - Method 2: Set PageSize to specify the number of entries per page and PageNumber to specify the page number.
+// - Method 2: Set the number of entries returned per page using PageSize, and set the page number using PageNumber.
 //
-// You can use only one of these methods. Method 1 is recommended when many entries are returned. If you set MaxResults or NextToken, the PageSize and PageNumber parameters are ignored.
+// You can only choose one of the above two methods. When a large number of entries are returned, Method 1 is recommended. If the MaxResults or NextToken parameter is set, the PageSize and PageNumber request parameters become invalid.
 //
 // @param request - ListSynchronizationJobsRequest
 //
@@ -14121,7 +14205,7 @@ func (client *Client) RemoveApplicationFromAuthorizationRuleWithContext(ctx cont
 
 // Summary:
 //
-// # Removing a brand association
+// Removes custom terms associated with a brand.
 //
 // @param request - RemoveCustomPrivacyPoliciesFromBrandRequest
 //
@@ -14381,7 +14465,7 @@ func (client *Client) RemoveUsersFromGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Renewing the Free Edition
+// Renews a Free Edition instance.
 //
 // @param request - RenewFreeLicenseEndTimeRequest
 //
@@ -15341,7 +15425,7 @@ func (client *Client) SetDefaultDomainWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Configures a forgot password policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Sets the forgot password policy for an EIAM instance.
 //
 // @param request - SetForgetPasswordConfigurationRequest
 //
@@ -15601,7 +15685,7 @@ func (client *Client) SetIdentityProviderUdPushConfigurationWithContext(ctx cont
 
 // Summary:
 //
-// Configures the control settings for an instance.
+// Sets the control elements of an instance.
 //
 // @param request - SetInstanceControlConfigurationRequest
 //
@@ -15649,7 +15733,7 @@ func (client *Client) SetInstanceControlConfigurationWithContext(ctx context.Con
 
 // Summary:
 //
-// Sets the language and time zone for an instance.
+// Sets the language and time zone information for an instance.
 //
 // @param request - SetInstanceGlobalizationConfigRequest
 //
@@ -15701,7 +15785,7 @@ func (client *Client) SetInstanceGlobalizationConfigWithContext(ctx context.Cont
 
 // Summary:
 //
-// Sets the post-logon redirect application for a brand.
+// # Set login redirect application for brand
 //
 // @param request - SetLoginRedirectApplicationForBrandRequest
 //
@@ -15809,7 +15893,7 @@ func (client *Client) SetPasswordComplexityConfigurationWithContext(ctx context.
 
 // Summary:
 //
-// Sets the password expiration policy for a specified EIAM instance.
+// Sets the password expiration policy for a specified Enterprise Identity and Access Management (EIAM) instance.
 //
 // @param request - SetPasswordExpirationConfigurationRequest
 //
@@ -15885,7 +15969,7 @@ func (client *Client) SetPasswordExpirationConfigurationWithContext(ctx context.
 
 // Summary:
 //
-// Configures a password history policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Sets the password history policy for a specified Enterprise Identity and Access Management (EIAM) instance.
 //
 // @param request - SetPasswordHistoryConfigurationRequest
 //
@@ -15937,7 +16021,7 @@ func (client *Client) SetPasswordHistoryConfigurationWithContext(ctx context.Con
 
 // Summary:
 //
-// Sets the password initialization configurations for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Sets the password initialization policy for a specified EIAM instance.
 //
 // @param request - SetPasswordInitializationConfigurationRequest
 //
@@ -17131,7 +17215,7 @@ func (client *Client) UpdateAuthorizationRuleDescriptionWithContext(ctx context.
 
 // Summary:
 //
-// Updates the properties of the association between an authorization rule and a group.
+// Updates the relationship properties between an authorization rule and a group.
 //
 // @param request - UpdateAuthorizationRuleGroupAttachmentRequest
 //
@@ -17197,7 +17281,7 @@ func (client *Client) UpdateAuthorizationRuleGroupAttachmentWithContext(ctx cont
 
 // Summary:
 //
-// Updates the properties of an association between an authorization rule and a user.
+// Updates the relationship properties between an authorization rule and an account.
 //
 // @param request - UpdateAuthorizationRuleUserAttachmentRequest
 //
@@ -17263,7 +17347,131 @@ func (client *Client) UpdateAuthorizationRuleUserAttachmentWithContext(ctx conte
 
 // Summary:
 //
-// Updates a brand.
+// Updates the configuration of an authorization server.
+//
+// @param request - UpdateAuthorizationServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAuthorizationServerResponse
+func (client *Client) UpdateAuthorizationServerWithContext(ctx context.Context, request *UpdateAuthorizationServerRequest, runtime *dara.RuntimeOptions) (_result *UpdateAuthorizationServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationServerId) {
+		query["AuthorizationServerId"] = request.AuthorizationServerId
+	}
+
+	if !dara.IsNil(request.AuthorizationServerName) {
+		query["AuthorizationServerName"] = request.AuthorizationServerName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.IssuerDomain) {
+		query["IssuerDomain"] = request.IssuerDomain
+	}
+
+	if !dara.IsNil(request.IssuerMode) {
+		query["IssuerMode"] = request.IssuerMode
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAuthorizationServer"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAuthorizationServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the description of an authorization server.
+//
+// @param request - UpdateAuthorizationServerDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAuthorizationServerDescriptionResponse
+func (client *Client) UpdateAuthorizationServerDescriptionWithContext(ctx context.Context, request *UpdateAuthorizationServerDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateAuthorizationServerDescriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationServerId) {
+		query["AuthorizationServerId"] = request.AuthorizationServerId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAuthorizationServerDescription"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAuthorizationServerDescriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a brand.
 //
 // @param request - UpdateBrandRequest
 //
@@ -17967,7 +18175,7 @@ func (client *Client) UpdateDomainBrandWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Updates the ICP filing number for a domain name.
+// Updates the ICP filing number of a domain.
 //
 // @param request - UpdateDomainIcpNumberRequest
 //
@@ -18335,7 +18543,7 @@ func (client *Client) UpdateIdentityProviderWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies the description of an Enterprise Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+// Modifies the description of a specified EIAM instance.
 //
 // @param request - UpdateInstanceDescriptionRequest
 //

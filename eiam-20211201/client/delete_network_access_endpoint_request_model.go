@@ -24,7 +24,7 @@ type DeleteNetworkAccessEndpointRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Network Access Endpoint ID.
+	// The ID of the dedicated network access endpoint. Only network access endpoints whose NetworkEndpointType is private can be deleted.
 	//
 	// This parameter is required.
 	//

@@ -32,13 +32,13 @@ type iCreateConditionalAccessPolicyRequest interface {
 }
 
 type CreateConditionalAccessPolicyRequest struct {
-	// Idempotent token.
+	// Idempotency token.
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Conditional access policy name
+	// Conditional access policy name.
 	//
 	// This parameter is required.
 	//
@@ -46,9 +46,9 @@ type CreateConditionalAccessPolicyRequest struct {
 	//
 	// My conditional access policy
 	ConditionalAccessPolicyName *string `json:"ConditionalAccessPolicyName,omitempty" xml:"ConditionalAccessPolicyName,omitempty"`
-	// Type of the conditional access policy, with the following options:
+	// Conditional access policy type. Valid values:
 	//
-	// arn:alibaba:idaas:authn:access:policy:system: System policy.
+	// arn:alibaba:idaas:authn:access:policy:system: system policy.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type CreateConditionalAccessPolicyRequest struct {
 	//
 	// arn:alibaba:idaas:authn:access:policy:system
 	ConditionalAccessPolicyType *string `json:"ConditionalAccessPolicyType,omitempty" xml:"ConditionalAccessPolicyType,omitempty"`
-	// Condition content configuration for the conditional access policy
+	// Conditional access policy condition configuration.
 	ConditionsConfig *CreateConditionalAccessPolicyRequestConditionsConfig `json:"ConditionsConfig,omitempty" xml:"ConditionsConfig,omitempty" type:"Struct"`
-	// Action configuration for the conditional access policy
+	// Conditional access policy action configuration.
 	DecisionConfig *CreateConditionalAccessPolicyRequestDecisionConfig `json:"DecisionConfig,omitempty" xml:"DecisionConfig,omitempty" type:"Struct"`
-	// Execution type of the conditional access policy, with the following options:
+	// Conditional access policy execution type. Valid values:
 	//
-	// enforcement: Enforce the policy.
+	// enforcement: enforcement policy.
 	//
 	// This parameter is required.
 	//
@@ -70,15 +70,15 @@ type CreateConditionalAccessPolicyRequest struct {
 	//
 	// enforcement
 	DecisionType *string `json:"DecisionType,omitempty" xml:"DecisionType,omitempty"`
-	// Description of the conditional access policy
+	// Conditional access policy description.
 	//
 	// example:
 	//
 	// Test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Execution point of the conditional access policy, with the following options:
+	// Conditional access policy evaluation point. Valid values:
 	//
-	// - arn:alibaba:idaas:authn:access:rule:eval_at:after_step1: Allow.
+	// - arn:alibaba:idaas:authn:access:rule:eval_at:after_step1: allow.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,11 @@ type CreateConditionalAccessPolicyRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Priority of the conditional access policy, lower values indicate higher priority Minimum value: 1 Maximum value: 100
+	// Conditional access policy priority. A smaller value indicates a higher priority.
+	//
+	// Minimum value: 1.
+	//
+	// Maximum value: 100.
 	//
 	// example:
 	//
@@ -215,11 +219,11 @@ func (s *CreateConditionalAccessPolicyRequest) Validate() error {
 }
 
 type CreateConditionalAccessPolicyRequestConditionsConfig struct {
-	// Target applications for the conditional access policy
+	// Conditional access policy target applications.
 	Applications *CreateConditionalAccessPolicyRequestConditionsConfigApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Struct"`
-	// Network zones for conditional access policy
+	// Conditional access policy network zones.
 	NetworkZones *CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones `json:"NetworkZones,omitempty" xml:"NetworkZones,omitempty" type:"Struct"`
-	// Target users of the conditional access policy
+	// Conditional access policy target users.
 	Users *CreateConditionalAccessPolicyRequestConditionsConfigUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
@@ -278,9 +282,9 @@ func (s *CreateConditionalAccessPolicyRequestConditionsConfig) Validate() error 
 }
 
 type CreateConditionalAccessPolicyRequestConditionsConfigApplications struct {
-	// Excluded applications
+	// Excluded applications.
 	ExcludeApplications []*string `json:"ExcludeApplications,omitempty" xml:"ExcludeApplications,omitempty" type:"Repeated"`
-	// Included applications
+	// Included applications.
 	IncludeApplications []*string `json:"IncludeApplications,omitempty" xml:"IncludeApplications,omitempty" type:"Repeated"`
 }
 
@@ -315,9 +319,9 @@ func (s *CreateConditionalAccessPolicyRequestConditionsConfigApplications) Valid
 }
 
 type CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones struct {
-	// Excluded network zones
+	// Excluded network zones.
 	ExcludeNetworkZones []*string `json:"ExcludeNetworkZones,omitempty" xml:"ExcludeNetworkZones,omitempty" type:"Repeated"`
-	// Included network zones
+	// Included network zones.
 	IncludeNetworkZones []*string `json:"IncludeNetworkZones,omitempty" xml:"IncludeNetworkZones,omitempty" type:"Repeated"`
 }
 
@@ -352,17 +356,17 @@ func (s *CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones) Valid
 }
 
 type CreateConditionalAccessPolicyRequestConditionsConfigUsers struct {
-	// Excluded user groups
+	// Excluded user groups.
 	ExcludeGroups []*string `json:"ExcludeGroups,omitempty" xml:"ExcludeGroups,omitempty" type:"Repeated"`
-	// Excluded organizations
+	// Excluded organizational units.
 	ExcludeOrganizationalUnits []*string `json:"ExcludeOrganizationalUnits,omitempty" xml:"ExcludeOrganizationalUnits,omitempty" type:"Repeated"`
-	// Excluded users
+	// Excluded users.
 	ExcludeUsers []*string `json:"ExcludeUsers,omitempty" xml:"ExcludeUsers,omitempty" type:"Repeated"`
-	// Included user groups
+	// Included user groups.
 	IncludeGroups []*string `json:"IncludeGroups,omitempty" xml:"IncludeGroups,omitempty" type:"Repeated"`
-	// Included organizations
+	// Included organizational units.
 	IncludeOrganizationalUnits []*string `json:"IncludeOrganizationalUnits,omitempty" xml:"IncludeOrganizationalUnits,omitempty" type:"Repeated"`
-	// Selected user
+	// Included users.
 	IncludeUsers []*string `json:"IncludeUsers,omitempty" xml:"IncludeUsers,omitempty" type:"Repeated"`
 }
 
@@ -433,47 +437,47 @@ func (s *CreateConditionalAccessPolicyRequestConditionsConfigUsers) Validate() e
 }
 
 type CreateConditionalAccessPolicyRequestDecisionConfig struct {
-	// Whether to enable session reuse
+	// Specifies whether to enable session reuse.
 	//
 	// example:
 	//
 	// enabled
 	ActiveSessionReuseStatus *string `json:"ActiveSessionReuseStatus,omitempty" xml:"ActiveSessionReuseStatus,omitempty"`
-	// Decision action for the conditional access policy, with the following options:
+	// Conditional access policy decision action. Valid values:
 	//
-	// - allow: Allow.
+	// - allow: allow.
 	//
-	// - deny: Deny.
+	// - deny: deny.
 	//
 	// example:
 	//
 	// allow or deny
 	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
-	// Re-authentication interval (in seconds) for the conditional access policy
+	// Conditional access policy re-authentication interval (seconds).
 	//
-	// - Maximum MFA re-authentication interval: 86400
+	// - Maximum MFA authentication interval: 86400.
 	//
-	// - Minimum MFA re-authentication interval: 300
+	// - Minimum MFA authentication interval: 300.
 	//
 	// example:
 	//
 	// 500
 	MfaAuthenticationIntervalSeconds *int64 `json:"MfaAuthenticationIntervalSeconds,omitempty" xml:"MfaAuthenticationIntervalSeconds,omitempty"`
-	// Allowed MFA types for the conditional access policy, with the following options:
+	// MFA types allowed by the conditional access policy. Valid values:
 	//
-	// - ia_otp_sms: SMS verification code
+	// - ia_otp_sms: SMS verification code.
 	//
-	// - ia_otp_email: Email verification code
+	// - ia_otp_email: email verification code.
 	//
-	// - ia_totp: OTP dynamic password
+	// - ia_totp: OTP dynamic password.
 	//
-	// - ia_webauthn: WebAuthn
+	// - ia_webauthn: WebAuthn.
 	MfaAuthenticationMethods []*string `json:"MfaAuthenticationMethods,omitempty" xml:"MfaAuthenticationMethods,omitempty" type:"Repeated"`
-	// MFA type for the conditional access policy, with the following options:
+	// Conditional access policy MFA type. Valid values:
 	//
-	// - directly_access: Direct access
+	// - directly_access: direct access.
 	//
-	// - mfa_required: MFA required
+	// - mfa_required: MFA required.
 	//
 	// example:
 	//

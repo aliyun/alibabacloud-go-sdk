@@ -28,19 +28,19 @@ type ListConditionalAccessPoliciesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Number of items per page in a paginated query.
+	// Number of rows per page in paginated queries.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Token for the next page query.
+	// Next page query token.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Token for the previous page query.
+	// Previous page query token.
 	//
 	// example:
 	//

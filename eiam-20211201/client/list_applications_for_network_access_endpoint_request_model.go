@@ -28,7 +28,7 @@ type ListApplicationsForNetworkAccessEndpointRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListApplicationsForNetworkAccessEndpointRequest struct {
 	//
 	// nae_mxzj4c44ctyectkggtg4mxxxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// The token for the next page of results.
+	// The pagination token.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCheckInstanceModuleStatusResponseBody interface {
 }
 
 type CheckInstanceModuleStatusResponseBody struct {
-	// Status update information.
+	// The module status information.
 	Module *CheckInstanceModuleStatusResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *CheckInstanceModuleStatusResponseBody) Validate() error {
 }
 
 type CheckInstanceModuleStatusResponseBodyModule struct {
-	// The status of the module.
+	// The module status.
 	//
 	// example:
 	//

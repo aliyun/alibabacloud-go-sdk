@@ -62,7 +62,7 @@ func (s *GetInstanceControlConfigurationResponseBody) Validate() error {
 }
 
 type GetInstanceControlConfigurationResponseBodyInstanceControlConfiguration struct {
-	// The list of control elements.
+	// The instance control configuration.
 	ControlElements []*GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElements `json:"ControlElements,omitempty" xml:"ControlElements,omitempty" type:"Repeated"`
 }
 
@@ -97,15 +97,15 @@ func (s *GetInstanceControlConfigurationResponseBodyInstanceControlConfiguration
 }
 
 type GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElements struct {
-	// The element name.
+	// The name of the instance control item.
 	//
 	// example:
 	//
 	// human_verification
 	ElementName *string `json:"ElementName,omitempty" xml:"ElementName,omitempty"`
-	// The human verification configuration.
+	// The Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) authenticate configuration.
 	HumanVerificationConfig *GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElementsHumanVerificationConfig `json:"HumanVerificationConfig,omitempty" xml:"HumanVerificationConfig,omitempty" type:"Struct"`
-	// The status of the control element.
+	// The status of the instance control item.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ func (s *GetInstanceControlConfigurationResponseBodyInstanceControlConfiguration
 }
 
 type GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElementsHumanVerificationConfig struct {
-	// The human verification type.
+	// The CAPTCHA type.
 	//
 	// example:
 	//

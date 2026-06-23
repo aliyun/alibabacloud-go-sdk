@@ -62,15 +62,15 @@ func (s *GetInstanceModuleInfoResponseBody) Validate() error {
 }
 
 type GetInstanceModuleInfoResponseBodyModule struct {
-	// The information about the secondary modules.
+	// The second-level module information.
 	Features []*GetInstanceModuleInfoResponseBodyModuleFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	// The identifier of the primary module.
+	// The identifier of the first-level module.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:license:module:application
 	ModuleKey *string `json:"ModuleKey,omitempty" xml:"ModuleKey,omitempty"`
-	// The status of the primary module.
+	// The status of the first-level module.
 	//
 	// example:
 	//
@@ -127,13 +127,13 @@ func (s *GetInstanceModuleInfoResponseBodyModule) Validate() error {
 }
 
 type GetInstanceModuleInfoResponseBodyModuleFeatures struct {
-	// The identifier of the secondary module.
+	// The identifier of the second-level module.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:license:module:application:standard:oidc
 	FeatureKey *string `json:"FeatureKey,omitempty" xml:"FeatureKey,omitempty"`
-	// The status of the secondary module.
+	// The status of the second-level module.
 	//
 	// example:
 	//

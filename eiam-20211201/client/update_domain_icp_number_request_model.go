@@ -18,7 +18,7 @@ type iUpdateDomainIcpNumberRequest interface {
 }
 
 type UpdateDomainIcpNumberRequest struct {
-	// The domain name ID.
+	// Domain ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type UpdateDomainIcpNumberRequest struct {
 	//
 	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The ICP filing number associated with the domain name.
+	// The ICP filing number associated with the domain.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateDomainIcpNumberRequest struct {
 	//
 	// 浙xx-xxxxxx
 	IcpNumber *string `json:"IcpNumber,omitempty" xml:"IcpNumber,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//

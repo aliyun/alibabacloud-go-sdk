@@ -14,7 +14,7 @@ type iSetLoginRedirectApplicationForBrandResponseBody interface {
 }
 
 type SetLoginRedirectApplicationForBrandResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//

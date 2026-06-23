@@ -22,7 +22,7 @@ type iSetPasswordInitializationConfigurationRequest interface {
 }
 
 type SetPasswordInitializationConfigurationRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,27 +30,27 @@ type SetPasswordInitializationConfigurationRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether to enable forcible password change upon first logon. Valid values:
+	// The password forced update status. Valid values:
 	//
-	// 	- enabled
+	// - enabled: Enabled.
 	//
-	// 	- disabled
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	PasswordForcedUpdateStatus *string `json:"PasswordForcedUpdateStatus,omitempty" xml:"PasswordForcedUpdateStatus,omitempty"`
-	// The methods for receiving password initialization notifications.
+	// The list of password initialization notification channels.
 	//
 	// example:
 	//
 	// email
 	PasswordInitializationNotificationChannels []*string `json:"PasswordInitializationNotificationChannels,omitempty" xml:"PasswordInitializationNotificationChannels,omitempty" type:"Repeated"`
-	// Specifies whether to enable password initialization. Valid values:
+	// The password initialization configuration status. Valid values:
 	//
-	// 	- enabled
+	// - enabled: Enabled.
 	//
-	// 	- disabled
+	// - disabled: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -58,9 +58,9 @@ type SetPasswordInitializationConfigurationRequest struct {
 	//
 	// enabled
 	PasswordInitializationStatus *string `json:"PasswordInitializationStatus,omitempty" xml:"PasswordInitializationStatus,omitempty"`
-	// The password initialization method. This parameter is required when PasswordInitializationStatus is set to enabled. Set the value to random.
+	// The password initialization method. This parameter is required when PasswordInitializationStatus is set to enabled. Valid values:
 	//
-	// 	- random: A randomly generated password is used.
+	// - random: Random.
 	//
 	// example:
 	//

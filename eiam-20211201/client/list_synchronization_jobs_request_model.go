@@ -36,25 +36,25 @@ type iListSynchronizationJobsRequest interface {
 }
 
 type ListSynchronizationJobsRequest struct {
-	// The direction of the sync task. Valid values:
+	// Synchronization job direction. Valid values:
 	//
-	// - ingress: Inbound.
+	// - ingress: inbound
 	//
-	// - egress: Outbound.
+	// - egress: outbound
 	//
 	// example:
 	//
 	// ingress
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The synchronization end time. The value is a UNIX timestamp. Unit: milliseconds.
+	// Synchronization end time in Unix timestamp format, in milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The filter parameters.
+	// Filter parameters
 	Filters []*ListSynchronizationJobsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -62,63 +62,63 @@ type ListSynchronizationJobsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return on each page. The maximum value is 100.
+	// Number of rows per page for paginated queries. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. If no more pages exist, this parameter is not returned.
+	// Token for querying the next page. This parameter is not returned when there are no more pages.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number. The value starts from 1.
+	// Page number, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The maximum value is 100.
+	// Page size. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The synchronization start time. The value is a UNIX timestamp. Unit: milliseconds.
+	// Synchronization start time in Unix timestamp format, in milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the sync task. Valid values:
+	// Synchronization job status. Valid values:
 	//
-	// - pending: The task is pending.
+	// - pending: initial state
 	//
-	// - running: The task is running.
+	// - running: running
 	//
-	// - failed: The task failed.
+	// - failed: failed
 	//
-	// - partial_success: The task is partially successful.
+	// - partial_success: partially succeeded
 	//
-	// - success: The task is successful.
+	// - success: succeeded
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A list of synchronization target IDs. For example, \\`[idp_111XXXX,idp_222XXXX]\\`.
+	// List of synchronization target IDs. [idp_111XXXX,idp_222XXXX]
 	//
 	// example:
 	//
 	// target_001
 	TargetIds []*string `json:"TargetIds,omitempty" xml:"TargetIds,omitempty" type:"Repeated"`
-	// The type of the synchronization target. Valid values:
+	// Synchronization target type. Valid values:
 	//
-	// - identity_provider: Identity provider.
+	// - identity_provider: identity provider
 	//
-	// - application: Application.
+	// - application: application
 	//
 	// example:
 	//
@@ -256,13 +256,13 @@ func (s *ListSynchronizationJobsRequest) Validate() error {
 }
 
 type ListSynchronizationJobsRequestFilters struct {
-	// The name of the dynamic parameter.
+	// Dynamic parameter name
 	//
 	// example:
 	//
 	// qps
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The values of the dynamic parameter.
+	// Dynamic parameter values
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

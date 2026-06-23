@@ -14,7 +14,7 @@ type iDeleteBrandResponseBody interface {
 }
 
 type DeleteBrandResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//

@@ -66,7 +66,7 @@ func (s *ListNetworkAccessEndpointAvailableZonesResponseBody) Validate() error {
 }
 
 type ListNetworkAccessEndpointAvailableZonesResponseBodyZones struct {
-	// The name of the zone.
+	// The zone name.
 	//
 	// example:
 	//

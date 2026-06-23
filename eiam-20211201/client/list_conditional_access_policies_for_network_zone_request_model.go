@@ -16,7 +16,7 @@ type iListConditionalAccessPoliciesForNetworkZoneRequest interface {
 }
 
 type ListConditionalAccessPoliciesForNetworkZoneRequest struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ListConditionalAccessPoliciesForNetworkZoneRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Application ID associated with the conditional access policy
+	// The network zone ID associated with the conditional access policy.
 	//
 	// This parameter is required.
 	//

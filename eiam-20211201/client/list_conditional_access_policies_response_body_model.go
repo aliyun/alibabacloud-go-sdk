@@ -22,15 +22,15 @@ type iListConditionalAccessPoliciesResponseBody interface {
 }
 
 type ListConditionalAccessPoliciesResponseBody struct {
-	// Collection of conditional access policies
+	// Collection of conditional access policies.
 	ConditionalAccessPolicies []*ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies `json:"ConditionalAccessPolicies,omitempty" xml:"ConditionalAccessPolicies,omitempty" type:"Repeated"`
-	// The token value returned by this call for the next page query.
+	// The query token value returned by this call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Previous page query token (Token)
+	// Previous page query token.
 	//
 	// example:
 	//
@@ -117,71 +117,71 @@ func (s *ListConditionalAccessPoliciesResponseBody) Validate() error {
 }
 
 type ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies struct {
-	// Conditional access policy ID
+	// Conditional access policy ID.
 	//
 	// example:
 	//
 	// cp_xxxxx
 	ConditionalAccessPolicyId *string `json:"ConditionalAccessPolicyId,omitempty" xml:"ConditionalAccessPolicyId,omitempty"`
-	// Conditional access policy name
+	// Conditional access policy name.
 	//
 	// example:
 	//
 	// My policy
 	ConditionalAccessPolicyName *string `json:"ConditionalAccessPolicyName,omitempty" xml:"ConditionalAccessPolicyName,omitempty"`
-	// Type of the conditional access policy
+	// Conditional access policy type.
 	//
 	// example:
 	//
 	// arn:alibaba:idaas:authn:access:policy:system
 	ConditionalAccessPolicyType *string `json:"ConditionalAccessPolicyType,omitempty" xml:"ConditionalAccessPolicyType,omitempty"`
-	// Content of the conditional access policy
+	// Conditional access policy conditions.
 	ConditionsConfig *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig `json:"ConditionsConfig,omitempty" xml:"ConditionsConfig,omitempty" type:"Struct"`
-	// Creation time
+	// Creation time.
 	//
 	// example:
 	//
 	// 1741857554000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Action of the conditional access policy
+	// Conditional access policy execution action.
 	DecisionConfig *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig `json:"DecisionConfig,omitempty" xml:"DecisionConfig,omitempty" type:"Struct"`
-	// Execution type of the conditional access policy
+	// Conditional access policy execution type.
 	//
 	// example:
 	//
 	// enforcement
 	DecisionType *string `json:"DecisionType,omitempty" xml:"DecisionType,omitempty"`
-	// Description of the conditional access policy
+	// Conditional access policy description.
 	//
 	// example:
 	//
 	// My policy description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Execution point of the conditional access policy
+	// Conditional access policy evaluation point.
 	//
 	// example:
 	//
 	// arn:alibaba:idaas:authn:access:rule:eval_at:after_step1
 	EvaluateAt *string `json:"EvaluateAt,omitempty" xml:"EvaluateAt,omitempty"`
-	// Instance ID
+	// Instance ID.
 	//
 	// example:
 	//
 	// idaas_ksvv5c7f2l6uzh6oqspeks23ni
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Last updated time
+	// Update time.
 	//
 	// example:
 	//
 	// 1741857554000
 	LastUpdatedTime *int64 `json:"LastUpdatedTime,omitempty" xml:"LastUpdatedTime,omitempty"`
-	// Priority, 1-100
+	// Priority, ranging from 1 to 100.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// Enable or disable status of the conditional access policy
+	// Conditional access policy enabled/disabled status.
 	//
 	// example:
 	//
@@ -329,11 +329,11 @@ func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) Val
 }
 
 type ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig struct {
-	// Target applications of the conditional access policy
+	// Conditional access policy target applications.
 	Applications *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Struct"`
-	// Network zones for conditional access policies
+	// Conditional access policy network zones.
 	NetworkZones *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones `json:"NetworkZones,omitempty" xml:"NetworkZones,omitempty" type:"Struct"`
-	// Target users of the conditional access policy
+	// Conditional access policy target users.
 	Users *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
@@ -392,9 +392,9 @@ func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesCondi
 }
 
 type ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications struct {
-	// Excluded applications
+	// Excluded applications.
 	ExcludeApplications []*string `json:"ExcludeApplications,omitempty" xml:"ExcludeApplications,omitempty" type:"Repeated"`
-	// Selected applications
+	// Included applications.
 	IncludeApplications []*string `json:"IncludeApplications,omitempty" xml:"IncludeApplications,omitempty" type:"Repeated"`
 }
 
@@ -429,9 +429,9 @@ func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesCondi
 }
 
 type ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones struct {
-	// Excluded network zones
+	// Excluded network zones.
 	ExcludeNetworkZones []*string `json:"ExcludeNetworkZones,omitempty" xml:"ExcludeNetworkZones,omitempty" type:"Repeated"`
-	// Included network ranges
+	// Included network zones.
 	IncludeNetworkZones []*string `json:"IncludeNetworkZones,omitempty" xml:"IncludeNetworkZones,omitempty" type:"Repeated"`
 }
 
@@ -466,17 +466,17 @@ func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesCondi
 }
 
 type ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers struct {
-	// Excluded user groups
+	// Excluded user groups.
 	ExcludeGroups []*string `json:"ExcludeGroups,omitempty" xml:"ExcludeGroups,omitempty" type:"Repeated"`
-	// Excluded organizations
+	// Excluded organizational units.
 	ExcludeOrganizationalUnits []*string `json:"ExcludeOrganizationalUnits,omitempty" xml:"ExcludeOrganizationalUnits,omitempty" type:"Repeated"`
-	// Excluded users
+	// Excluded users.
 	ExcludeUsers []*string `json:"ExcludeUsers,omitempty" xml:"ExcludeUsers,omitempty" type:"Repeated"`
-	// Included user groups
+	// Included user groups.
 	IncludeGroups []*string `json:"IncludeGroups,omitempty" xml:"IncludeGroups,omitempty" type:"Repeated"`
-	// Included organizations
+	// Included organizational units.
 	IncludeOrganizationalUnits []*string `json:"IncludeOrganizationalUnits,omitempty" xml:"IncludeOrganizationalUnits,omitempty" type:"Repeated"`
-	// Selected users
+	// Included users.
 	IncludeUsers []*string `json:"IncludeUsers,omitempty" xml:"IncludeUsers,omitempty" type:"Repeated"`
 }
 
@@ -547,27 +547,31 @@ func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesCondi
 }
 
 type ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig struct {
-	// Whether to enable session reuse for secondary authentication
+	// Whether to enable secondary authentication session reuse.
 	//
 	// example:
 	//
 	// disabled
 	ActiveSessionReuseStatus *string `json:"ActiveSessionReuseStatus,omitempty" xml:"ActiveSessionReuseStatus,omitempty"`
-	// Decision action of the conditional access policy: deny Deny allow Allow
+	// Conditional access policy decision action:
+	//
+	// deny: Deny access.
+	//
+	// allow: Allow access.
 	//
 	// example:
 	//
 	// deny
 	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
-	// Re-authentication interval for the conditional access policy (in seconds) 300-86400
+	// Conditional access policy re-authentication interval (seconds), ranging from 300 to 86400.
 	//
 	// example:
 	//
 	// 300
 	MfaAuthenticationIntervalSeconds *int64 `json:"MfaAuthenticationIntervalSeconds,omitempty" xml:"MfaAuthenticationIntervalSeconds,omitempty"`
-	// MFA types allowed by the conditional access policy
+	// MFA types allowed by the conditional access policy.
 	MfaAuthenticationMethods []*string `json:"MfaAuthenticationMethods,omitempty" xml:"MfaAuthenticationMethods,omitempty" type:"Repeated"`
-	// Conditional Access Policy Mfa Type
+	// Conditional access policy MFA type.
 	//
 	// example:
 	//

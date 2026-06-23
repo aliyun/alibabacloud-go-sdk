@@ -26,17 +26,17 @@ type SetPasswordHistoryConfigurationRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of recent passwords that can be retained. This parameter must be specified when PasswordHistoryStatus is set to enabled.
+	// The number of recent password records to retain. This parameter is required when PasswordHistoryStatus is set to enabled.
 	//
 	// example:
 	//
 	// 3
 	PasswordHistoryMaxRetention *int32 `json:"PasswordHistoryMaxRetention,omitempty" xml:"PasswordHistoryMaxRetention,omitempty"`
-	// Specifies whether to enable the password history feature. Valid values:
+	// The status of the password history configuration. Valid values:
 	//
-	// 	- enabled
+	// - enabled: Enabled.
 	//
-	// 	- disabled
+	// - disabled: Disabled.
 	//
 	// This parameter is required.
 	//

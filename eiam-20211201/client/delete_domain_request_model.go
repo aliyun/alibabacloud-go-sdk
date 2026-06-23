@@ -16,7 +16,7 @@ type iDeleteDomainRequest interface {
 }
 
 type DeleteDomainRequest struct {
-	// The ID of the domain name.
+	// The domain name ID.
 	//
 	// This parameter is required.
 	//

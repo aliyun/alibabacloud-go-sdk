@@ -14,7 +14,7 @@ type iEnableInitDomainAutoRedirectResponseBody interface {
 }
 
 type EnableInitDomainAutoRedirectResponseBody struct {
-  // The request ID.
+  // Request ID.
   // 
   // example:
   // 

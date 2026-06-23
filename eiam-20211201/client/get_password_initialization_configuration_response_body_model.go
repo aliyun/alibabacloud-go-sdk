@@ -16,7 +16,7 @@ type iGetPasswordInitializationConfigurationResponseBody interface {
 }
 
 type GetPasswordInitializationConfigurationResponseBody struct {
-	// The password initialization configurations.
+	// The password initialization configuration.
 	PasswordInitializationConfiguration *GetPasswordInitializationConfigurationResponseBodyPasswordInitializationConfiguration `json:"PasswordInitializationConfiguration,omitempty" xml:"PasswordInitializationConfiguration,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,35 +62,35 @@ func (s *GetPasswordInitializationConfigurationResponseBody) Validate() error {
 }
 
 type GetPasswordInitializationConfigurationResponseBodyPasswordInitializationConfiguration struct {
-	// Indicates whether forcible password change upon first logon is enabled. Valid values:
+	// The status of forced password update. Valid values:
 	//
-	// 	- enabled
+	// - enabled: Enabled.
 	//
-	// 	- disabled
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	PasswordForcedUpdateStatus *string `json:"PasswordForcedUpdateStatus,omitempty" xml:"PasswordForcedUpdateStatus,omitempty"`
-	// The methods for receiving password initialization notifications.
+	// The list of password initialization notification channels.
 	//
 	// example:
 	//
 	// email
 	PasswordInitializationNotificationChannels []*string `json:"PasswordInitializationNotificationChannels,omitempty" xml:"PasswordInitializationNotificationChannels,omitempty" type:"Repeated"`
-	// Indicates whether the password initialization feature is enabled. Valid values:
+	// The status of the password initialization configuration. Valid values:
 	//
-	// 	- enabled
+	// - enabled: Enabled.
 	//
-	// 	- disabled
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	PasswordInitializationStatus *string `json:"PasswordInitializationStatus,omitempty" xml:"PasswordInitializationStatus,omitempty"`
-	// The password initialization method. Set the value to random.
+	// The password initialization method. Valid values:
 	//
-	// 	- random: A randomly generated password is used.
+	// - random: Random.
 	//
 	// example:
 	//
