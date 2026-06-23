@@ -36,7 +36,7 @@ type ModifyRouteTableAttributesRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 描述信息
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

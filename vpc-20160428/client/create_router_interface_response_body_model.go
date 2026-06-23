@@ -22,7 +22,7 @@ type CreateRouterInterfaceResponseBody struct {
 	//
 	// example:
 	//
-	// 202008594930117
+	// 20210101123456
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The request ID.
 	//

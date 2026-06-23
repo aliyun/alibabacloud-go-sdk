@@ -14,6 +14,8 @@ type iAssociateMacSecKeyResponseBody interface {
 }
 
 type AssociateMacSecKeyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D32B3C26-6C6C-4988-93E9-D2A6444CE6AE

@@ -30,15 +30,15 @@ type iDeletionProtectionRequest interface {
 type DeletionProtectionRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the instance for which you want to enable deletion protection.
+	// The ID of the instance for which you want to set deletion protection in Settings.
 	//
 	// This parameter is required.
 	//
@@ -49,9 +49,9 @@ type DeletionProtectionRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to enable deletion protection. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: enables deletion protection.
 	//
-	// 	- **false**: no
+	// - **false**: disables deletion protection.
 	//
 	// This parameter is required.
 	//
@@ -59,7 +59,7 @@ type DeletionProtectionRequest struct {
 	//
 	// true
 	ProtectionEnable *bool `json:"ProtectionEnable,omitempty" xml:"ProtectionEnable,omitempty"`
-	// The ID of the region where the instance for which you want to enable deletion protection is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the instance for which you want to enable or disable deletion protection. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -69,13 +69,13 @@ type DeletionProtectionRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of instance. Valid values:
+	// The type of the instance for which you want to enable or disable deletion protection. Valid values:
 	//
-	// 	- **EIP**: Elastic IP Address (EIP)
+	// - **EIP**: elastic IP address (EIP).
 	//
-	// 	- **CBWP**: EIP bandwidth plan
+	// - **CBWP**: Internet Shared Bandwidth.
 	//
-	// 	- **NATGW**: NAT gateway
+	// - **NATGW**: NAT gateway.
 	//
 	// This parameter is required.
 	//

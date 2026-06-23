@@ -22,11 +22,11 @@ type iUpdateVirtualBorderBandwidthResponseBody interface {
 }
 
 type UpdateVirtualBorderBandwidthResponseBody struct {
-	// The error code.
+	// The response code.
 	//
 	// example:
 	//
-	// OK
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The HTTP status code.
 	//
@@ -34,11 +34,11 @@ type UpdateVirtualBorderBandwidthResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
-	// none
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -46,11 +46,11 @@ type UpdateVirtualBorderBandwidthResponseBody struct {
 	//
 	// AA4486A8-B6AE-469E-AB09-820EF8ECFA2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. Valid values:
+	// Indicates whether the modification was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Successful.
 	//
-	// 	- **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//

@@ -38,15 +38,15 @@ type iDescribeVpcGrantRulesToEcrRequest interface {
 }
 
 type DescribeVpcGrantRulesToEcrRequest struct {
-	// The ID of the ECR that you want to query.
+	// The ID of the Express Connect Router.
 	//
 	// example:
 	//
 	// ecr-ncxadcujadncsa****
 	EcrInstanceId *string `json:"EcrInstanceId,omitempty" xml:"EcrInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the ECR belongs.
+	// The ID of the Alibaba Cloud account (main account) that owns the Express Connect Router.
 	//
-	// > If you want to connect to a network instance that belongs to a different account, this parameter is required.
+	// > This parameter is required when querying a cross-account network instance.
 	//
 	// example:
 	//
@@ -58,27 +58,27 @@ type DescribeVpcGrantRulesToEcrRequest struct {
 	//
 	// vpc-wz9ek66wd7tl5xqpy****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of instance. Valid values:
+	// The type of instance whose authorization rules you want to query. Valid values:
 	//
-	// 	- **VBR**: queries the permissions that are granted to a VBR.
+	// - **VBR**: Set the value to **VBR*	- to query the Virtual Private Cloud (VPC) instances authorized to connect to the specified virtual border router (VBR).
 	//
-	// 	- **VPC**: queries the permissions that are granted from a VPC.
+	// - **VPC**: Set the value to **VPC*	- to query the VBRs to which the specified VPC has granted authorization.
 	//
 	// example:
 	//
 	// VPC
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The number of entries to return per page. Valid values: **1*	- to **100**. Default value: **10**.
+	// The number of entries to return per page. Valid values: **1*	- to **100**. Default value: **100**.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The token used to retrieve the next page of results. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - Omit this parameter for the first request.
 	//
-	// 	- If a value is returned for NextToken, you must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// - For subsequent requests, set this to the **NextToken*	- value from the previous response.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type DescribeVpcGrantRulesToEcrRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the network instance that you want to query.
+	// The ID of the region where the network instance is located.
 	//
 	// This parameter is required.
 	//
@@ -102,7 +102,7 @@ type DescribeVpcGrantRulesToEcrRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tag.
+	// The tags. You can specify up to 20 tags.
 	Tags []*DescribeVpcGrantRulesToEcrRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -245,17 +245,17 @@ func (s *DescribeVpcGrantRulesToEcrRequest) Validate() error {
 }
 
 type DescribeVpcGrantRulesToEcrRequestTags struct {
-	// The key of the tag. You must specify at least one tag key and at most 20 tag keys. The tag key cannot be an empty string.
+	// The tag key. The tag key cannot be an empty string.
 	//
-	// A tag key can be up to 128 characters in length. It cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can enter a maximum of 20 tag values. The tag value can be an empty string.
+	// The tag value. The tag value can be an empty string.
 	//
-	// The tag key can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

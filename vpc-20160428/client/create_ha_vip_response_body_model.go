@@ -18,19 +18,19 @@ type iCreateHaVipResponseBody interface {
 }
 
 type CreateHaVipResponseBody struct {
-	// The ID of the HaVip.
+	// The ID of the HAVIP.
 	//
 	// example:
 	//
 	// havip-2zeo05qre24nhrqpy****
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
-	// The IP address of the HaVip.
+	// The IP address of the HAVIP.
 	//
 	// example:
 	//
 	// 192.XX.XX.10
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

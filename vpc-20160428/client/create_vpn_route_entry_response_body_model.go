@@ -30,27 +30,27 @@ type iCreateVpnRouteEntryResponseBody interface {
 }
 
 type CreateVpnRouteEntryResponseBody struct {
-	// The timestamp when the destination-based route was created. Unit: milliseconds.
+	// The timestamp when the destination route was created. Unit: milliseconds.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The timestamp follows the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1492747187000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the destination-based route.
+	// The description of the destination route.
 	//
 	// example:
 	//
 	// mytest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The next hop of the destination-based route.
+	// The next hop of the destination route.
 	//
 	// example:
 	//
 	// vco-bp15oes1py4i66rmd****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
+	// The tunneling protocol. Set the value to **Ipsec*	- (IPsec tunneling protocol).
 	//
 	// example:
 	//
@@ -62,33 +62,33 @@ type CreateVpnRouteEntryResponseBody struct {
 	//
 	// 5BE01CD7-5A50-472D-AC14-CA181C5C03BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The destination CIDR block of the destination-based route.
+	// The destination CIDR block of the destination route.
 	//
 	// example:
 	//
 	// 10.0.0.0/24
 	RouteDest *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
-	// The status of the destination-based route.
+	// The publish status of the destination route.
 	//
-	// 	- **published**: advertised to the VPC route table.
+	// - **published**: The destination route has been published to the route table of the VPC.
 	//
-	// 	- **normal**: not advertised to the VPC route table.
+	// - **normal**: The destination route has not been published to the route table of the VPC.
 	//
 	// example:
 	//
 	// published
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The ID of the VPN gateway.
+	// The instance ID of the VPN gateway.
 	//
 	// example:
 	//
 	// vpn-bp1a3kqjiiq9legfx****
 	VpnInstanceId *string `json:"VpnInstanceId,omitempty" xml:"VpnInstanceId,omitempty"`
-	// The weight of the destination-based route. Valid values:
+	// The weight of the destination route. Valid values:
 	//
-	// 	- **100**: a high priority
+	// - **100**: The destination route has a high priority.
 	//
-	// 	- **0**: a low priority
+	// - **0**: The destination route has a low priority.
 	//
 	// example:
 	//

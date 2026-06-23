@@ -28,7 +28,9 @@ type iDescribe95TrafficRequest interface {
 }
 
 type Describe95TrafficRequest struct {
-	// The date in UTC+8. Format: year-month-day.
+	// The date to query, in UTC+8. Format: YYYY-MM-DD.
+	//
+	// > You can query only data from last month or earlier.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +50,7 @@ type Describe95TrafficRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the resource.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +60,7 @@ type Describe95TrafficRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The resource type. Set the value to cbwp, which specifies Internet Shared Bandwidth.
+	// The resource type. Only **cbwp*	- is supported, which represents Internet Shared Bandwidth.
 	//
 	// This parameter is required.
 	//

@@ -38,23 +38,23 @@ type iDescribeNatGatewayAssociateNetworkInterfacesRequest interface {
 type DescribeNatGatewayAssociateNetworkInterfacesRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The **RequestId*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The filter information. You can specify a filter key and a filter value.
+	// The filter information. You can specify key-value pairs to filter the query results.
 	Filter []*DescribeNatGatewayAssociateNetworkInterfacesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The number of entries to return per page. Valid values: **1 to 100**. Default value: **20**.
+	// The number of entries per page for a paged query. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The ID of the NAT gateway.
+	// The ID of the NAT gateway to query.
 	//
 	// This parameter is required.
 	//
@@ -62,11 +62,11 @@ type DescribeNatGatewayAssociateNetworkInterfacesRequest struct {
 	//
 	// ngw-bp1uewa15k4iy5770****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid value:
+	// The pagination token. Valid values:
 	//
-	// 	- If no value is returned for NetToken, you do not need to specify this parameter.
+	// - If this is the first query or no subsequent query is required, you do not need to specify this parameter.
 	//
-	// 	- If a value is returned for NextToken, you must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// - If a subsequent query is required, set the value to the **NextToken*	- value returned in the previous API call.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type DescribeNatGatewayAssociateNetworkInterfacesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the Internet NAT gateway.
+	// The region ID of the NAT gateway.
 	//
-	// Call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type DescribeNatGatewayAssociateNetworkInterfacesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The information about resource tags.
+	// The list of resource tags.
 	Tag []*DescribeNatGatewayAssociateNetworkInterfacesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -235,25 +235,25 @@ func (s *DescribeNatGatewayAssociateNetworkInterfacesRequest) Validate() error {
 }
 
 type DescribeNatGatewayAssociateNetworkInterfacesRequestFilter struct {
-	// The filter key.
+	// The key of the filter. Valid values:
 	//
-	// 	- ResourceId
+	// - ResourceId
 	//
-	// >  Specify the service resource ID in the Value field.
+	// >Set Value to the ID of the EPS resource that you want to query.
 	//
-	// 	- NetworkInterfaceId
+	// - NetworkInterfaceId
 	//
-	// >  Specify the ENI ID in the Value field.
+	// >Set Value to the ID of the elastic network interface (ENI) that you want to query.
 	//
-	// 	- ResourceOwnerId
+	// - ResourceOwnerId
 	//
-	// >  Specify the UID of the account to which the service resource belongs.
+	// >Set Value to the UID of the user to whom the EPS resource belongs for resource ownership query.
 	//
 	// example:
 	//
 	// ResourceId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Separate multiple values with commas (,).
+	// The filter value. You can specify multiple values separated by commas (,).
 	//
 	// example:
 	//
@@ -292,17 +292,17 @@ func (s *DescribeNatGatewayAssociateNetworkInterfacesRequestFilter) Validate() e
 }
 
 type DescribeNatGatewayAssociateNetworkInterfacesRequestTag struct {
-	// The tag key You can specify at most 20 tag keys. It cannot be an empty string,
+	// The tag key of the instance. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag key. You can specify at most 20 tag keys. It cannot be an empty string.
+	// The tag key of the instance. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

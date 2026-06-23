@@ -106,7 +106,7 @@ type SecondApplyPhysicalConnectionLOARequest struct {
 	//
 	// example:
 	//
-	// XX Number, XX Road, XX Town, XX District, Hangzhou City, Zhejiang Province.
+	// 杭州
 	PeerLocation *string `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
 	// The region where the Express Connect circuit is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//
@@ -124,7 +124,7 @@ type SecondApplyPhysicalConnectionLOARequest struct {
 	//
 	// example:
 	//
-	// company
+	// 阿里
 	Si *string `json:"Si,omitempty" xml:"Si,omitempty"`
 }
 
@@ -310,7 +310,7 @@ type SecondApplyPhysicalConnectionLOARequestPMInfo struct {
 	//
 	// example:
 	//
-	// Zhangsan
+	// 张三
 	PMName *string `json:"PMName,omitempty" xml:"PMName,omitempty"`
 }
 

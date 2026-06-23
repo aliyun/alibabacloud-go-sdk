@@ -60,7 +60,7 @@ type ModifyRouterInterfaceAttributeRequest struct {
 	//
 	// example:
 	//
-	// The description of the router interface.
+	// 路由器接口
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The rate of health checks. Unit: milliseconds. The recommended value is **2000**. This value specifies the interval at which probe packets are sent during a health check.
 	//

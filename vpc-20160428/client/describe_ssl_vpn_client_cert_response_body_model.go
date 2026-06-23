@@ -42,25 +42,63 @@ type DescribeSslVpnClientCertResponseBody struct {
 	//
 	// example:
 	//
-	// CA certificate
+	// -----BEGIN CERTIFICATE-----
+	//
+	// MIID****r4w=
+	//
+	// -----END CERTIFICATE-----
 	CaCert *string `json:"CaCert,omitempty" xml:"CaCert,omitempty"`
 	// The client certificate.
 	//
 	// example:
 	//
-	// Client certificate
+	// -----BEGIN CERTIFICATE-----
+	//
+	// MIIDR****A==
+	//
+	// -----END CERTIFICATE-----
 	ClientCert *string `json:"ClientCert,omitempty" xml:"ClientCert,omitempty"`
 	// The client configuration.
 	//
 	// example:
 	//
-	// Client configuration
+	// client
+	//
+	// dev tun
+	//
+	// proto tcp
+	//
+	// remote 120.XX.XX.33 1194
+	//
+	// resolv-retry infinite
+	//
+	// nobind
+	//
+	// persist-key
+	//
+	// persist-tun
+	//
+	// ca ca.crt
+	//
+	// cert vsc-bp15t7****.crt
+	//
+	// key vsc-bp15t7****.key
+	//
+	// cipher AES-128-CBC
+	//
+	// ;comp-lzo
+	//
+	// verb 4
 	ClientConfig *string `json:"ClientConfig,omitempty" xml:"ClientConfig,omitempty"`
 	// The client key.
 	//
 	// example:
 	//
-	// The key of the client
+	// -----BEGIN RSA PRIVATE KEY-----
+	//
+	// MIIEpAI****ZzNFhuM/za==
+	//
+	// -----END RSA PRIVATE KEY-----
 	ClientKey *string `json:"ClientKey,omitempty" xml:"ClientKey,omitempty"`
 	// The timestamp that indicates when the SSL client certificate was created. Unit: milliseconds.
 	//

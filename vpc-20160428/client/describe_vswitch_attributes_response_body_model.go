@@ -60,7 +60,7 @@ type DescribeVSwitchAttributesResponseBody struct {
 	//
 	// example:
 	//
-	// 192.168.0.0/24
+	// 192.168.0.1/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	// The time when the vSwitch was created.
 	//
@@ -106,7 +106,7 @@ type DescribeVSwitchAttributesResponseBody struct {
 	//
 	// example:
 	//
-	// nacl-bp1fg655nh68xyz9****
+	// 1
 	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
 	// The ID of the Alibaba Cloud account to which the resource belongs.
 	//

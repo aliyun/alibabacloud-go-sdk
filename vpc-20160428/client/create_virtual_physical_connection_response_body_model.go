@@ -22,7 +22,7 @@ type CreateVirtualPhysicalConnectionResponseBody struct {
 	//
 	// CD14EA74-E9C3-59A9-942A-DFEC7E12818D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the hosted connection.
+	// The instance ID of the shared Express Connect circuits.
 	//
 	// example:
 	//

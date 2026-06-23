@@ -32,9 +32,9 @@ type iModifyTunnelAttributeRequest interface {
 type ModifyTunnelAttributeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate a token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId*	- as the **client token**. The value of **RequestId*	- is different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- may be different for each request.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ModifyTunnelAttributeRequest struct {
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the IPsec connection is established.
+	// The region ID of the IPsec-VPN connection.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
@@ -60,9 +60,9 @@ type ModifyTunnelAttributeRequest struct {
 	//
 	// tun-gbyz2e070xzo93****
 	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
-	// The tunnel configurations.
+	// The tunnel configuration to modify.
 	TunnelOptionsSpecification *ModifyTunnelAttributeRequestTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Struct"`
-	// The ID of the IPsec connection.
+	// The ID of the IPsec-VPN connection.
 	//
 	// This parameter is required.
 	//
@@ -171,17 +171,17 @@ func (s *ModifyTunnelAttributeRequest) Validate() error {
 }
 
 type ModifyTunnelAttributeRequestTunnelOptionsSpecification struct {
-	// The ID of the customer gateway associated with the tunnel.
+	// The instance ID of the customer gateway associated with the tunnel.
 	//
 	// example:
 	//
 	// cgw-1nmwbpgrp7ssqm1yn****
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// Specifies whether to enable dead peer detection (DPD). Valid values:
+	// Specifies whether to enable the Dead Peer Detection (DPD) feature. Valid values:
 	//
-	// 	- **true*	- The IPsec initiator sends DPD packets to check the IPsec peer is alive. If no response is received from the peer within a specified period of time, the IPsec peer is considered disconnected. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
+	// - **true**: Enabled. The initiator of the IPsec-VPN connection sends DPD packets to check whether the peer is alive. If no correct response is received within the specified period of time, the connection fails. The ISAKMP SA and the corresponding IPsec SA are deleted, and the tunnel is also deleted.
 	//
-	// 	- **false**: DPD is disabled. The IPsec initiator does not send DPD packets.
+	// - **false**: Disabled. The initiator of the IPsec-VPN connection does not send DPD packets.
 	//
 	// example:
 	//
@@ -189,27 +189,27 @@ type ModifyTunnelAttributeRequestTunnelOptionsSpecification struct {
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
 	// Specifies whether to enable NAT traversal. Valid values:
 	//
-	// 	- **true**: enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec-VPN tunnel.
+	// - **true**: Enabled. After NAT traversal is enabled, the verification of the UDP port number is removed during IKE negotiations, and the NAT gateway device in the VPN tunnel can be discovered.
 	//
-	// 	- **false**: disables NAT traversal.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// The peer certificate authority (CA) certificate when you want to attach the IPsec connection to a virtual private network (VPN) gateway that uses a ShangMi (SM) certificate.
+	// The CA certificate of the peer when you use an IPsec-VPN connection with a Chinese SM VPN gateway.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE----- MIIB7zCCAZW***	- -----END CERTIFICATE-----
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
-	// The Border Gateway Protocol (BGP) configurations of the tunnel.
+	// The BGP configuration of the tunnel to modify.
 	//
-	// If the BGP feature is not enabled for the tunnel, you must call the [ModifyVpnConnectionAttribute](https://help.aliyun.com/document_detail/120381.html) operation to enable the feature and configure BGP.
+	// If BGP was not previously enabled for the tunnel, call the [ModifyVpnConnectionAttribute](https://help.aliyun.com/document_detail/120381.html) operation to enable BGP for the tunnel and add the BGP configuration.
 	TunnelBgpConfig *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
-	// The configurations of IKE Phase 1.
+	// The IKE phase (Phase 1) configuration of the tunnel to modify.
 	TunnelIkeConfig *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
-	// The configurations of IPsec Phase 2.
+	// The IPsec phase (Phase 2) configuration of the tunnel to modify.
 	TunnelIpsecConfig *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
 }
 
@@ -304,23 +304,23 @@ func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecification) Validate() erro
 }
 
 type ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig struct {
-	// The local autonomous system number (ASN). Valid values: **1*	- to **4294967295**.
+	// The autonomous system number (ASN) of the local end of the tunnel. Valid values: **1*	- to **4294967295**.
 	//
 	// example:
 	//
 	// 65530
 	LocalAsn *int64 `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// The BGP IP address of the tunnel. The address needs to be an IP address within the **TunnelCidr**.
+	// The BGP IP address of the local end of the tunnel. The IP address must fall within the **TunnelCidr*	- CIDR block.
 	//
 	// example:
 	//
 	// 169.254.11.1
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// The CIDR block of the tunnel.
+	// The CIDR block of the BGP IP address on the local end of the tunnel.
 	//
-	// The CIDR block must fall within 169.254.0.0/16 and the mask of the CIDR block must be 30 bits in length. The CIDR block cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
+	// The CIDR block must be a CIDR block with a mask length of 30 within 169.254.0.0/16 and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
 	//
-	// >  The CIDR block of the IPsec tunnel for each IPsec-VPN connection on a VPN gateway must be unique.
+	// > The IPsec tunnel CIDR block of each IPsec-VPN connection under a VPN gateway instance must be unique.
 	//
 	// example:
 	//
@@ -368,58 +368,64 @@ func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig) 
 }
 
 type ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig struct {
-	// The authentication algorithm that is used in IKE Phase 1 negotiations.
-	//
+	// The authentication algorithm used in Phase 1 negotiations.
 	//
 	// <props="china">
 	//
-	// 	- If an IPsec-VPN gateway is associated with a standard VPN gateway, the valid values are **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+	// - If the IPsec-VPN connection is associated with a standard VPN gateway, valid values are **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
 	//
-	// 	- If the IPsec-VPN gateway is associated with an SSL-VPN gateway, the valid value is **sm3**.
+	// - If the IPsec-VPN connection is associated with a Chinese SM VPN gateway, the value is **sm3**.
+	//
+	//
 	//
 	//
 	// <props="intl">
 	//
 	// Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
 	//
+	// .
+	//
 	// example:
 	//
 	// sha1
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The encryption algorithm that is used in IKE Phase 1 negotiations.
+	// The encryption algorithm used in Phase 1 negotiations.
 	//
 	// <props="china">
 	//
-	// 	- If an IPsec-VPN gateway is associated with a standard VPN gateway, the valid values are **aes**, **aes192**, **aes256**, **des**, and **3des**.
+	// - If the IPsec-VPN connection is associated with a standard VPN gateway, valid values are **aes**, **aes192**, **aes256**, **des**, and **3des**.
 	//
-	// 	- If the IPsec-VPN gateway is associated with an SSL-VPN gateway, set the value to **sm4**.
+	// - If the IPsec-VPN connection is associated with a Chinese SM VPN gateway, the value is **sm4**.
+	//
 	//
 	//
 	// <props="intl">
 	//
 	// Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
 	//
+	// .
+	//
 	// example:
 	//
 	// aes
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The SA lifetime as a result of Phase 1 negotiations. Unit: seconds Valid values: **0 to 86400**.
+	// The lifetime of the SA negotiated in Phase 1. Unit: seconds. Valid values: **0*	- to **86400**.
 	//
 	// example:
 	//
 	// 86400
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// The negotiation mode of IKE. Valid values:
+	// The negotiation mode of the IKE version. Valid values:
 	//
-	// 	- **main:*	- This mode offers higher security during negotiations.
+	// - **main**: main mode. This mode offers high security during negotiations.
 	//
-	// 	- **aggressive**: This mode is faster and has a higher success rate.
+	// - **aggressive**: aggressive mode. This mode supports fast negotiations and a higher success rate.
 	//
 	// example:
 	//
 	// main
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
+	// The Diffie-Hellman key exchange algorithm used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
 	//
 	// example:
 	//
@@ -431,25 +437,27 @@ type ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig struc
 	//
 	// ikev2
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The tunnel identifier. The identifier can be up to 100 characters in length and cannot contain spaces. It supports fully qualified domain names (FQDNs) and IP addresses. The default value is the IP address of the tunnel.
+	// The identifier of the local end of the tunnel. The identifier can be up to 100 characters in length and cannot contain spaces. It supports FQDN and IP formats. Default value: the IP address of the tunnel.
 	//
 	// example:
 	//
 	// 47.XX.XX.87
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
-	// The pre-shared key that is used to verify identities between the tunnel and peer.
+	// The pre-shared key used for identity authentication between the tunnel and the peer.
 	//
-	// 	- The key must be 1 to 100 characters in length, and can contain digits, and letters. It cannot contain spaces. ``~!`@#$%^&*()_-+={}[]|;:\\",.<>/?``
 	//
-	// 	- If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/120374.html) operation to query the pre-shared key that is automatically generated by the system.
 	//
-	// >  The pre-shared key that is configured for the tunnel and the tunnel peer must be the same. Otherwise, the system cannot establish the tunnel.
+	//    - The key must be 1 to 100 characters in length and can contain digits, uppercase letters, lowercase letters, and the following characters. It cannot contain spaces. ```~!`@#$%^&*()_-+={}[]|;:\\",.<>/?```
+	//
+	//    - If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/120374.html) operation to query the pre-shared key that is automatically generated by the system.
+	//
+	//    > The pre-shared keys configured on the tunnel and the peer must be the same. Otherwise, the tunnel cannot be established.
 	//
 	// example:
 	//
 	// 123456****
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The peer identifier. The identifier can be up to 100 characters in length, and cannot contain spaces. It supports FQDNs and IP addresses. The default identifier is the IP address of the customer gateway associated with the tunnel.
+	// The identifier of the peer end of the tunnel. The identifier can be up to 100 characters in length and cannot contain spaces. It supports FQDN and IP formats. Default value: the IP address of the customer gateway instance associated with the tunnel.
 	//
 	// example:
 	//
@@ -551,13 +559,13 @@ func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) 
 }
 
 type ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig struct {
-	// The authentication algorithm that is used in IPsec Phase 2 negotiations.
+	// The authentication algorithm used in Phase 2 negotiations.
 	//
 	// <props="china">
 	//
-	// 	- If an IPsec-VPN gateway is associated with a standard VPN gateway, the valid values are **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+	// - If the IPsec-VPN connection is associated with a standard VPN gateway, valid values are **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
 	//
-	// 	- If the IPsec-VPN gateway is associated with an SSL-VPN gateway, set the value to **sm3**.
+	// - If the IPsec-VPN connection is associated with a Chinese SM VPN gateway, the value is **sm3**.
 	//
 	//
 	//
@@ -565,17 +573,19 @@ type ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig str
 	//
 	// Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
 	//
+	// .
+	//
 	// example:
 	//
 	// sha1
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The encryption algorithm that is used in IPsec Phase 2 negotiations.
+	// The encryption algorithm used in Phase 2 negotiations.
 	//
 	// <props="china">
 	//
-	// 	- If an IPsec-VPN gateway is associated with a standard VPN gateway, the valid values are **aes**, **aes192**, **aes256**, **des**, and **3des**.
+	// - If the IPsec-VPN connection is associated with a standard VPN gateway, valid values are **aes**, **aes192**, **aes256**, **des**, and **3des**.
 	//
-	// 	- If the IPsec connection is attached to a VPN gateway that uses an SM certificate, set the value to **sm4**.
+	// - If the IPsec-VPN connection is associated with a Chinese SM VPN gateway, the value is **sm4**.
 	//
 	//
 	//
@@ -583,17 +593,19 @@ type ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig str
 	//
 	// Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
 	//
+	// .
+	//
 	// example:
 	//
 	// aes
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The SA lifetime as a result of Phase 2 negotiations. Unit: seconds Valid values: **0 to 86400**.
+	// The lifetime of the SA negotiated in Phase 2. Unit: seconds. Valid values: **0*	- to **86400**.
 	//
 	// example:
 	//
 	// 86400
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
+	// The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
 	//
 	// example:
 	//

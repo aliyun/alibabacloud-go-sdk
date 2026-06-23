@@ -40,7 +40,7 @@ type DeleteFailoverTestJobRequest struct {
 	//
 	// example:
 	//
-	// ftj-xxxxxxxxx
+	// ftj-bp1yh6mvi13aq3g8w****
 	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

@@ -22,13 +22,13 @@ type iAllocateEipAddressProResponseBody interface {
 }
 
 type AllocateEipAddressProResponseBody struct {
-	// The EIP ID.
+	// The ID of the Elastic IP Address (EIP).
 	//
 	// example:
 	//
 	// eip-25877c70gddh****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The IP address that is allocated to the EIP. This parameter is returned only when **InstanceChargeType*	- is set to **PostPaid**.
+	// The IP address of the EIP. This parameter is returned only when **InstanceChargeType*	- is set to **PostPaid**.
 	//
 	// example:
 	//
@@ -36,7 +36,9 @@ type AllocateEipAddressProResponseBody struct {
 	EipAddress *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
 	// The order ID.
 	//
-	// This parameter is returned when InstanceChargeType is set to PrePaid. If AutoPay is set to false, you must manually complete the payment in the [Order Center](https://usercenter2-intl.aliyun.com/order/list).
+	// <props="china">This parameter is returned when `InstanceChargeType` is set to `PrePaid` (subscription). If `AutoPay` is set to `false`, go to the [Order Center](https://usercenter2.aliyun.com/order/list) to complete the payment.
+	//
+	// <props="intl">This parameter is returned when `InstanceChargeType` is set to `PrePaid` (subscription). If `AutoPay` is set to `false`, go to the [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
 	//
 	// example:
 	//

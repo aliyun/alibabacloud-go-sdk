@@ -30,13 +30,13 @@ type iListGatewayRouteTableEntriesRequest interface {
 }
 
 type ListGatewayRouteTableEntriesRequest struct {
-	// The destination CIDR block of the route entry in the gateway route table.
+	// The destination CIDR block of the route entry in the gateway route table that you want to query.
 	//
 	// example:
 	//
 	// 192.168.0.5
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the gateway route table that you want to query.
+	// The ID of the gateway route table to query.
 	//
 	// This parameter is required.
 	//
@@ -44,17 +44,17 @@ type ListGatewayRouteTableEntriesRequest struct {
 	//
 	// vtb-5ts0ohchwkp3dydt2****
 	GatewayRouteTableId *string `json:"GatewayRouteTableId,omitempty" xml:"GatewayRouteTableId,omitempty"`
-	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **10**.
+	// The number of entries per page for a paged query. Valid values: **1*	- to **100**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - If this is the first query or no subsequent query exists, leave this parameter empty.
 	//
-	// 	- If a value is returned for NextToken, specify the value in the next request to retrieve a new page of results.
+	// - If a subsequent query exists, set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type ListGatewayRouteTableEntriesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the gateway route table.
+	// The region ID of the gateway route table that you want to query.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent list of regions.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//

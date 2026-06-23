@@ -32,11 +32,17 @@ type iModifyVpnGatewayAttributeRequest interface {
 }
 
 type ModifyVpnGatewayAttributeRequest struct {
-	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	// Specifies whether to enable routing automatic propagation for the VPN gateway. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
-	// 	- **false**
+	//     After routing automatic propagation is enabled, the VPN gateway instance performs automatic learning of system routes from the system route table of the VPC-connected instance and automatically propagates routes of the on-premises data center to the system route table of the VPC-connected instance.
+	//
+	// - **false**: disabled.
+	//
+	//
+	//
+	//     Before you disable routing automatic propagation, make sure that the BGP dynamic route feature is disabled for all IPsec-VPN connections under the VPN gateway.
 	//
 	// example:
 	//
@@ -46,13 +52,15 @@ type ModifyVpnGatewayAttributeRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-4266****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The new description of the VPN connection.
+	// The new description of the VPN gateway.
+	//
+	//
 	//
 	// The description must be 1 to 100 characters in length.
 	//
@@ -62,7 +70,7 @@ type ModifyVpnGatewayAttributeRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The new name of the VPN gateway.
 	//
-	// The name must be 2 to 100 characters in length and cannot start with `http://` or `https://`. It must start with a letter and can contain letters, digits, underscores (_), hyphens (-), and periods (.). Other characters are not supported.
+	// The name must be 2 to 100 characters in length and cannot start with `http://` or `https://`. It must start with an uppercase or lowercase letter and can contain uppercase and lowercase letters, digits, underscores (_), hyphens (-), and periods (.). Other special characters are not supported.
 	//
 	// example:
 	//
@@ -70,17 +78,17 @@ type ModifyVpnGatewayAttributeRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the VPN gateway instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// cn-shanghai
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the VPN gateway.
+	// The ID of the VPN gateway instance.
 	//
 	// This parameter is required.
 	//

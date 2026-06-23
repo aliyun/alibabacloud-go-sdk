@@ -50,21 +50,21 @@ type DescribeVpcsRequest struct {
 	//
 	// dopt-o6w0df4epg9zo8isy****
 	DhcpOptionsSetId *string `json:"DhcpOptionsSetId,omitempty" xml:"DhcpOptionsSetId,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): sends a normal request. If the check succeeds, an HTTP 2xx status code is returned and the resource is queried.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Query for VPCs in the specified region that have enabled IPv6 CIDR blocks. The value is empty by default, which means no filtering based on IPv6 availability is conducted. Valid values:
+	// Specifies whether to query VPCs that have IPv6 CIDR blocks enabled in the specified region. The default value is empty, which means no filtering is performed based on IPv6 enablement. Valid values:
 	//
-	// - false: disabled
+	// - **false**: IPv6 is not enabled.
 	//
-	// - true: enabled
+	// - **true**: IPv6 is enabled.
 	//
 	// if can be null:
 	// true
@@ -75,9 +75,9 @@ type DescribeVpcsRequest struct {
 	EnableIpv6 *bool `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
 	// Specifies whether to query the default VPC in the specified region. Valid values:
 	//
-	// 	- **true*	- (default)
+	// - **true*	- (default): Queries the default VPC in the specified region.
 	//
-	// 	- **false**
+	// - **false**: Does not query the default VPC.
 	//
 	// example:
 	//
@@ -91,7 +91,7 @@ type DescribeVpcsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for paging. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -99,7 +99,7 @@ type DescribeVpcsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the VPC.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -107,7 +107,7 @@ type DescribeVpcsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the VPC to be queried belongs.
+	// The ID of the resource group to which the VPC belongs.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ type DescribeVpcsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The tags of the resource.
 	Tag []*DescribeVpcsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// You can specify up to 20 VPC IDs. Separate multiple IDs with commas (,).
 	//
@@ -131,7 +131,7 @@ type DescribeVpcsRequest struct {
 	//
 	// Vpc-1
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	// The Alibaba Cloud account ID of the VPC owner.
 	//
 	// example:
 	//
@@ -305,7 +305,7 @@ func (s *DescribeVpcsRequest) Validate() error {
 }
 
 type DescribeVpcsRequestTag struct {
-	// The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
 	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
@@ -313,9 +313,9 @@ type DescribeVpcsRequestTag struct {
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

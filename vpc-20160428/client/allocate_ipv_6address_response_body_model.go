@@ -26,7 +26,7 @@ type AllocateIpv6AddressResponseBody struct {
 	//
 	// 2408:XXXX:153:3921:851c:c435:7b12:1c5f
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
-	// The ID of the IPv6 address.
+	// The instance ID of the IPv6 address.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type AllocateIpv6AddressResponseBody struct {
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

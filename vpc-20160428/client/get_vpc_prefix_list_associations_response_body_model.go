@@ -22,23 +22,23 @@ type iGetVpcPrefixListAssociationsResponseBody interface {
 }
 
 type GetVpcPrefixListAssociationsResponseBody struct {
-	// The number of entries.
+	// The number of entries returned.
 	//
 	// example:
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no subsequent query exists.
 	//
-	// 	- If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The information about the network instances that are associated with the prefix list.
+	// The association information of the prefix list.
 	PrefixListAssociation []*GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation `json:"PrefixListAssociation,omitempty" xml:"PrefixListAssociation,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -46,7 +46,7 @@ type GetVpcPrefixListAssociationsResponseBody struct {
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -121,25 +121,25 @@ func (s *GetVpcPrefixListAssociationsResponseBody) Validate() error {
 }
 
 type GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation struct {
-	// List of CIDR addresses where the prefix list is effective in the currently associated resources.
+	// The list of CIDR blocks in the prefix list that are effective for the associated resource.
 	//
 	// example:
 	//
 	// 192.168.0.0/16
 	CidrList *string `json:"CidrList,omitempty" xml:"CidrList,omitempty"`
-	// The ID of the Alibaba Cloud account to which the prefix list belongs.
+	// The ID of the Alibaba Cloud account that owns the prefix list.
 	//
 	// example:
 	//
 	// 153460731706****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The prefix list ID.
+	// The instance ID of the prefix list.
 	//
 	// example:
 	//
 	// pl-0b7hwu67****
 	PrefixListId *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
-	// The reason why the association failed.
+	// The reason for the association failure.
 	//
 	// example:
 	//
@@ -159,33 +159,33 @@ type GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the associated resource. Valid values:
 	//
-	// 	- **vpcRouteTable**: virtual private cloud (VPC) route table.
+	// - **vpcRouteTable**: VPC route table.
 	//
-	// 	- **trRouteTable**: route table of a transit router.
+	// - **trRouteTable**: transit router route table.
 	//
 	// example:
 	//
 	// vpcRouteTable
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resource associated with the prefix list belongs.
+	// The ID of the Alibaba Cloud account that owns the resource associated with the prefix list.
 	//
 	// example:
 	//
 	// 132193271328****
 	ResourceUid *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
-	// The status of the prefix list. Valid values:
+	// The association status of the prefix list. Valid values:
 	//
-	// 	- **Created**
+	// - **Created**: The association is created.
 	//
-	// 	- **ModifyFailed**
+	// - **ModifyFailed**: The association is not updated to the latest version.
 	//
-	// 	- **Creating**
+	// - **Creating**: The association is being created.
 	//
-	// 	- **Modifying**
+	// - **Modifying**: The association is being modified.
 	//
-	// 	- **Deleting**
+	// - **Deleting**: The association is being deleted.
 	//
-	// 	- **Deleted**
+	// - **Deleted**: The association is deleted.
 	//
 	// example:
 	//

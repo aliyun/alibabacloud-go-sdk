@@ -70,7 +70,7 @@ type ListEnhanhcedNatGatewayAvailableZonesResponseBodyZones struct {
 	//
 	// example:
 	//
-	// Dubai Zone A
+	// 中东1 可用区A
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The ID of the zone where the instance is deployed.
 	//

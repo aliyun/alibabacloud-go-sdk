@@ -84,6 +84,10 @@ func (s *ListBusinessRegionsResponseBody) Validate() error {
 
 type ListBusinessRegionsResponseBodyGeographicSubRegions struct {
 	// The name of the region where circuits are available.
+	//
+	// example:
+	//
+	// 华东1(杭州)
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region where circuits are available.
 	//

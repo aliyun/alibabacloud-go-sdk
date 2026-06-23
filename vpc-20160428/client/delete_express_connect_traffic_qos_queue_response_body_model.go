@@ -14,7 +14,7 @@ type iDeleteExpressConnectTrafficQosQueueResponseBody interface {
 }
 
 type DeleteExpressConnectTrafficQosQueueResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

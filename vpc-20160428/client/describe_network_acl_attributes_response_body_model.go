@@ -92,7 +92,7 @@ type DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute struct {
 	//
 	// example:
 	//
-	// 253460731706911258
+	// 2546073170691****
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the network ACL.
 	//

@@ -114,7 +114,16 @@ type CreateVpnConnectionRequest struct {
 	//
 	// cgw-p0w2jemrcj5u61un8****
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	DryRun            *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to perform a dry run of the request. Valid values:
+	//
+	// - **true**: Sends a dry run request without creating the IPsec connection. The system checks whether required parameters are specified, whether the request format is valid, and whether the request complies with service limits. If the check fails, an error is returned. If the check passes, the error code `DryRunOperation` is returned.
+	//
+	// - **false*	- (default): Sends a normal request. If the check passes, the IPsec connection is created immediately.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to immediately start IPsec negotiations. Valid values:
 	//
 	// 	- **true**: immediately starts IPsec negotiations.

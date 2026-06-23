@@ -28,9 +28,9 @@ type iMoveResourceGroupRequest interface {
 }
 
 type MoveResourceGroupRequest struct {
-	// The ID of the resource group to which you want to move the resource.
+	// The ID of the resource group to which you want to move the cloud resource instance.
 	//
-	// >  You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://help.aliyun.com/document_detail/94475.html)
+	// > A resource group is a mechanism for managing resources by group within an Alibaba Cloud account. Resource groups help you address complex resource grouping and authorization management issues within a single cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html).
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type MoveResourceGroupRequest struct {
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region to which the cloud resource belongs.
+	// The region ID of the cloud resource.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type MoveResourceGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource ID.
+	// The instance ID of the cloud resource for which you want to modify the resource group.
 	//
 	// This parameter is required.
 	//
@@ -60,33 +60,35 @@ type MoveResourceGroupRequest struct {
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource for which you want to modify the resource group. Valid values:
+	// The type of the cloud resource for which you want to modify the resource group. Valid values:
 	//
-	// 	- **Vpc**
+	// - **Vpc**: virtual private cloud (VPC)
 	//
-	// 	- **Eip**
+	// - **Eip**: elastic IP address (EIP)
 	//
-	// 	- **BandwidthPackage**
+	// - **BandwidthPackage**: Internet Shared Bandwidth
 	//
-	// 	- **PrefixList**
+	// - **PrefixList**: prefix list
 	//
-	// 	- **PublicIpAddressPool**
+	// - **PublicIpAddressPool**: IPAM pool
 	//
-	// 	- **FlowLog**
+	// - **FlowLog**: flow log
 	//
-	// 	- **HaVip**
+	// - **HaVip**: high-availability (HA) virtual IP address
 	//
-	// 	- **TrafficMirrorFilter**
+	// - **TrafficMirrorFilter**: traffic mirror filter
 	//
-	// 	- **TrafficMirrorSession**
+	// - **TrafficMirrorSession**: traffic mirror session
 	//
-	// 	- **IPv4Gateway**
+	// - **IPv4Gateway**: IPv4 gateway
 	//
-	// 	- **IPv6Gateway**
+	// - **IPv6Gateway**: IPv6 gateway
 	//
-	// 	- **DhcpOptionsSet**
+	// - **IPv6Address**: IPv6 address
 	//
-	// 	- **GatewayEndpoint**
+	// - **DhcpOptionsSet**: DHCP options set
+	//
+	// - **GatewayEndpoint**: gateway endpoint
 	//
 	// This parameter is required.
 	//

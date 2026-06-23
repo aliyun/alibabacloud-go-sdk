@@ -14,7 +14,7 @@ type iUpdateRouteTargetGroupResponseBody interface {
 }
 
 type UpdateRouteTargetGroupResponseBody struct {
-	// Request ID.
+	// Id of the request
 	//
 	// example:
 	//

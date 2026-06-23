@@ -20,13 +20,13 @@ type iDeleteVpnAttachmentResponseBody interface {
 }
 
 type DeleteVpnAttachmentResponseBody struct {
-	// The status code returned by the current operation. **200*	- indicates that the operation is successful.
+	// The status code returned by the current task. A value of **200*	- indicates that the task is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information returned by the current operation.
+	// The message returned by the current task.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type DeleteVpnAttachmentResponseBody struct {
 	//
 	// 29440C49-398F-3D06-BA8B-E3CD13F3246D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the current operation is successful.
+	// Indicates whether the current task is successfully executed.
 	//
-	// 	- **true**
+	// - **true**: The task is successfully executed.
 	//
-	// 	- **false**
+	// - **false**: The task failed to be executed.
 	//
 	// example:
 	//

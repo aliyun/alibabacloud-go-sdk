@@ -30,9 +30,9 @@ type iTagResourcesForExpressConnectRequest interface {
 type TagResourcesForExpressConnectRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the resource is deployed.
+	// The region ID of the resource to which you want to create and bind tags.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -40,19 +40,21 @@ type TagResourcesForExpressConnectRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. You can specify up to 20 resource IDs.
+	// The resource ID. You can specify up to 20 resource IDs.
 	//
 	// This parameter is required.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- **PHYSICALCONNECTION**: Express Connect circuit.
+	// - **PHYSICALCONNECTION**: Express Connect circuit instance.
 	//
-	// 	- **VIRTUALBORDERROUTER**: virtual border router (VBR).
+	// - **VIRTUALBORDERROUTER**: Virtual Border Router.
 	//
-	// 	- **ROUTERINTERFACE**: router interface.
+	// - **ROUTERINTERFACE**: VBR uplink.
+	//
+	// - **TRAFFICQOS**: QoS policy.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +62,7 @@ type TagResourcesForExpressConnectRequest struct {
 	//
 	// PHYSICALCONNECTION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags to add to the resource.
+	// The list of resource tags.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesForExpressConnectRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -160,17 +162,17 @@ func (s *TagResourcesForExpressConnectRequest) Validate() error {
 }
 
 type TagResourcesForExpressConnectRequestTag struct {
-	// The key of the tag to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

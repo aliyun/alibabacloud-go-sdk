@@ -18,17 +18,13 @@ type iAssociateVpcCidrBlockResponseBody interface {
 }
 
 type AssociateVpcCidrBlockResponseBody struct {
-	// The IPv4 CIDR block to be added.
+	// The secondary CIDR block added to the VPC.
 	//
 	// example:
 	//
 	// 192.168.0.0/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The version of the IP address. Valid values:
-	//
-	// 	- **IPV4**: the IPv4 address.
-	//
-	// 	- **IPV6**: the IPv6 address.
+	// The IP address type of the secondary CIDR block.
 	//
 	// example:
 	//

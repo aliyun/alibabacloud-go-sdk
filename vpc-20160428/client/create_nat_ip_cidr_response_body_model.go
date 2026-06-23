@@ -16,7 +16,7 @@ type iCreateNatIpCidrResponseBody interface {
 }
 
 type CreateNatIpCidrResponseBody struct {
-	// The ID of the NAT CIDR block.
+	// The instance ID of the NAT CIDR block.
 	//
 	// example:
 	//

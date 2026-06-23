@@ -114,7 +114,16 @@ type CreateVpnAttachmentRequest struct {
 	//
 	// cgw-p0w2jemrcj5u61un8****
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	DryRun            *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to perform a dry run of the request. Valid values:
+	//
+	// - **true**: Sends a dry run request without creating the IPsec-VPN connection. The system checks whether required parameters are specified, whether the request format is valid, and whether business limits are met. If the check fails, an error is returned. If the check passes, the error code `DryRunOperation` is returned.
+	//
+	// - **false*	- (default): Sends a normal request. If the check passes, the IPsec-VPN connection is created immediately.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
 	//
 	// 	- **true**: immediately starts IPsec negotiations after the configuration is complete.
@@ -315,8 +324,17 @@ type CreateVpnAttachmentRequest struct {
 	// The tag value can be an empty string and cannot exceed 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// Each tag key corresponds to one tag value. You can specify up to 20 tag values in each call.
-	Tags            []*CreateVpnAttachmentRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TunnelBandwidth *string                           `json:"TunnelBandwidth,omitempty" xml:"TunnelBandwidth,omitempty"`
+	Tags []*CreateVpnAttachmentRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Specifies the bandwidth specification for a single VPN tunnel. Valid values:
+	//
+	// Standard (Default Value): medium, with a default bandwidth of 1 Gbps
+	//
+	// Large: large, with a default bandwidth of 3 Gbps
+	//
+	// example:
+	//
+	// Standard
+	TunnelBandwidth *string `json:"TunnelBandwidth,omitempty" xml:"TunnelBandwidth,omitempty"`
 	// The tunnel configurations.
 	//
 	// 	- You can specify parameters in the **TunnelOptionsSpecification*	- array when you create an IPsec-VPN connection in dual tunnel mode.

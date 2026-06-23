@@ -76,7 +76,7 @@ type ModifyNatGatewayAttributeRequest struct {
 	//
 	// example:
 	//
-	// false
+	// true
 	IcmpReplyEnabled *bool `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
 	// Session log configuration information.
 	LogDelivery *ModifyNatGatewayAttributeRequestLogDelivery `json:"LogDelivery,omitempty" xml:"LogDelivery,omitempty" type:"Struct"`

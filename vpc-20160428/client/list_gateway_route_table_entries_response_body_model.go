@@ -20,13 +20,13 @@ type iListGatewayRouteTableEntriesResponseBody interface {
 }
 
 type ListGatewayRouteTableEntriesResponseBody struct {
-	// The details of the routes in the gateway route table.
+	// The details of route entries in the gateway route table.
 	GatewayRouteEntryModels []*ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels `json:"GatewayRouteEntryModels,omitempty" xml:"GatewayRouteEntryModels,omitempty" type:"Repeated"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no subsequent query exists.
 	//
-	// 	- If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ func (s *ListGatewayRouteTableEntriesResponseBody) Validate() error {
 }
 
 type ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels struct {
-	// The name of the route entry.
+	// The description of the route entry.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination CIDR block of the route.
+	// The destination CIDR block of the route entry.
 	//
 	// example:
 	//
@@ -118,39 +118,39 @@ type ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels struct {
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
 	// The name of the route entry.
 	//
-	// The name must be 2 to 128 characters in length and can contain letter, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the next hop.
+	// The instance ID of the next hop.
 	//
 	// example:
 	//
 	// i-bp11gcl0sm85t9bi****
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The type of the next hop. Valid values:
+	// The next hop type. Valid values:
 	//
-	// 	- **EcsInstance**: Elastic Compute Service (ECS) instance
+	// - **EcsInstance**: ECS instance.
 	//
-	// 	- **NetworkInterface**: elastic network interfaces (ENIs).
+	// - **NetworkInterface**: elastic network interfaces (ENIs).
 	//
-	// 	- **Local**: local next hop
+	// - **Local**: local.
 	//
 	// example:
 	//
 	// EcsInstance
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The information about the next hop.
+	// The next hop information.
 	NextHops []*ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops `json:"NextHops,omitempty" xml:"NextHops,omitempty" type:"Repeated"`
-	// The status of the route entry. Valid values:
+	// The status of the route entry.
 	//
-	// 	- **Pending**
+	// - **Pending**: being configured.
 	//
-	// 	- **Available**
+	// - **Available**: available.
 	//
-	// 	- **Modifying**
+	// - **Modifying**: being modified.
 	//
 	// example:
 	//
@@ -245,43 +245,43 @@ func (s *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels) Valida
 type ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops struct {
 	// Indicates whether the route is available. Valid values:
 	//
-	// 	- **0**: unavailable
+	// - **0**: unavailable.
 	//
-	// 	- **1**: available
+	// - **1**: available.
 	//
 	// example:
 	//
 	// 1
 	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The ID of the next hop.
+	// The instance ID of the next hop.
 	//
 	// example:
 	//
 	// vpn-bp10zyaph5cc8b7c7****
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The type of the next hop. Valid values:
+	// The next hop type. Valid values:
 	//
-	// 	- **Instance*	- (default): an ECS instance
+	// - **Instance*	- (default): ECS instance.
 	//
-	// 	- **HaVip**: a high-availability virtual IP address (HaVip).
+	// - **HaVip**: high-availability virtual IP address (HaVip).
 	//
-	// 	- **VpnGateway**: a VPN gateway
+	// - **VpnGateway**: VPN gateway.
 	//
-	// 	- **NatGateway**: a NAT gateway
+	// - **NatGateway**: NAT gateway.
 	//
-	// 	- **NetworkInterface**: a secondary ENI
+	// - **NetworkInterface**: secondary elastic network interfaces (ENIs).
 	//
-	// 	- **RouterInterface**: a router interface
+	// - **RouterInterface**: vRouter interface.
 	//
-	// 	- **IPv6Gateway**: an IPv6 gateway
+	// - **IPv6Gateway**: IPv6 gateway.
 	//
-	// 	- **Attachment**: a transit router
+	// - **Attachment**: transit router.
 	//
 	// example:
 	//
 	// Instance
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The weight of the route.
+	// The weight of the route entry.
 	//
 	// example:
 	//

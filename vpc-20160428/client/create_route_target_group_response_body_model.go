@@ -16,13 +16,13 @@ type iCreateRouteTargetGroupResponseBody interface {
 }
 
 type CreateRouteTargetGroupResponseBody struct {
-	// ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 8AA5CE21-2E6A-4530-BDF5-F055849476E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the route target group instance.
+	// The instance ID of the route target group.
 	//
 	// example:
 	//

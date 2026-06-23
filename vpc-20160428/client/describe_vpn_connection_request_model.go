@@ -26,9 +26,9 @@ type iDescribeVpnConnectionRequest interface {
 type DescribeVpnConnectionRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the IPsec-VPN connection is created.
+	// The CIDR block on the Alibaba Cloud side.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// Multiple CIDR blocks are separated by commas (,).
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeVpnConnectionRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the IPsec-VPN connection.
+	// The request ID.
 	//
 	// This parameter is required.
 	//

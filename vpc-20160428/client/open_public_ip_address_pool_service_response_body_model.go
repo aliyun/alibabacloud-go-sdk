@@ -18,13 +18,13 @@ type iOpenPublicIpAddressPoolServiceResponseBody interface {
 }
 
 type OpenPublicIpAddressPoolServiceResponseBody struct {
-	// The error code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response messages.
+	// The message returned when the IP address pool feature is activated.
 	//
 	// example:
 	//

@@ -22,13 +22,13 @@ type iDescribePhysicalConnectionsResponseBody interface {
 }
 
 type DescribePhysicalConnectionsResponseBody struct {
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**. Valid values: **1*	- to **50**.
+	// The number of entries per page in a paged query. Default value: **10**. Valid values: **1*	- to **50**.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribePhysicalConnectionsResponseBody struct {
 	//
 	// 0E6D0EC4-7C91-53E2-9F65-64BF713114B0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of returned entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//

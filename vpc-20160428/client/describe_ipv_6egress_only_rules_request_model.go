@@ -36,23 +36,23 @@ type iDescribeIpv6EgressOnlyRulesRequest interface {
 }
 
 type DescribeIpv6EgressOnlyRulesRequest struct {
-	// The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
+	// The ID of the IPv6 address for which the IPv6 egress-only rule is configured.
 	//
 	// example:
 	//
-	// ipv6gw-bp1rhhs9zjlxukc5e****
+	// ipv6-bp12uzwhac8tv3xx6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the instance to which you want to apply the egress-only rule. Valid values:
+	// The type of the instance for which you want to configure an IPv6 egress-only rule. Valid values:
 	//
-	// 	- IPv6Address (default)
+	// - IPv6Address (default): The instance is a single IPv6 address.
 	//
-	// 	- IPv6Prefix
+	// - IPv6Prefix: The instance is an IPv6 CIDR block.
 	//
 	// example:
 	//
 	// Ipv6Address
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The ID of the egress-only rule that you want to query.
+	// The ID of the IPv6 egress-only rule to query.
 	//
 	// example:
 	//
@@ -74,19 +74,19 @@ type DescribeIpv6EgressOnlyRulesRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the IPv6 gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

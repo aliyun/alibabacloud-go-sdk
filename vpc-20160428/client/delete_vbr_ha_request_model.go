@@ -28,15 +28,15 @@ type iDeleteVbrHaRequest interface {
 type DeleteVbrHaRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is different.
 	//
 	// example:
 	//
 	// CBCE910E-D396-4944-8****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the VBR failover group.
+	// The instance ID of the VBR failover group.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DeleteVbrHaRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the VBR is deployed.
+	// The region ID of the VBR.
 	//
 	// This parameter is required.
 	//

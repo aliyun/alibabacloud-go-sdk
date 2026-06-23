@@ -22,13 +22,13 @@ type iDescribeSslVpnClientCertsResponseBody interface {
 }
 
 type DescribeSslVpnClientCertsResponseBody struct {
-	// The number of the page to return.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query. This is used for paging.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeSslVpnClientCertsResponseBody struct {
 	// 5BE01CD7-5A50-472D-AC14-CA181C5C03BE
 	RequestId            *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SslVpnClientCertKeys *DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeys `json:"SslVpnClientCertKeys,omitempty" xml:"SslVpnClientCertKeys,omitempty" type:"Struct"`
-	// The number of entries returned.
+	// The total number of entries in the list.
 	//
 	// example:
 	//

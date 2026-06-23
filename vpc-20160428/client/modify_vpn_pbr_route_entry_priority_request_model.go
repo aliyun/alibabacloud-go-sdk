@@ -40,9 +40,9 @@ type iModifyVpnPbrRouteEntryPriorityRequest interface {
 type ModifyVpnPbrRouteEntryPriorityRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken parameter supports only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is different.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type ModifyVpnPbrRouteEntryPriorityRequest struct {
 	//
 	// 5
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the region where the VPN gateway is created.
+	// The region ID of the VPN gateway instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -104,7 +104,7 @@ type ModifyVpnPbrRouteEntryPriorityRequest struct {
 	//
 	// 192.168.1.0/24
 	RouteSource *string `json:"RouteSource,omitempty" xml:"RouteSource,omitempty"`
-	// The ID of the VPN gateway.
+	// The ID of the VPN gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -112,7 +112,7 @@ type ModifyVpnPbrRouteEntryPriorityRequest struct {
 	//
 	// vpn-bp1a3kqjiiq9legfx****
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
-	// The weight of the policy-based route. Valid values:
+	// The weight of the policy-based route.
 	//
 	// This parameter is required.
 	//

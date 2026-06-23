@@ -36,7 +36,7 @@ type DissociateRouteTablesFromVpcGatewayEndpointRequest struct {
 	//
 	// example:
 	//
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
+	// TF-DissociateRouteTablesFromVpcGatewayEndpoint-1634369235-8f****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
@@ -54,7 +54,7 @@ type DissociateRouteTablesFromVpcGatewayEndpointRequest struct {
 	//
 	// example:
 	//
-	// vpce-m5e371h5clm3uadih****
+	// vpce-bp11cwae3p6z7ftbm****
 	EndpointId   *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

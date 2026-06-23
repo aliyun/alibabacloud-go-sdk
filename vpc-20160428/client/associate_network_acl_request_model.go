@@ -44,7 +44,7 @@ type AssociateNetworkAclRequest struct {
 	//
 	// example:
 	//
-	// true
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the network ACL.
 	//

@@ -28,7 +28,7 @@ type iMoveVpnResourceGroupRequest interface {
 }
 
 type MoveVpnResourceGroupRequest struct {
-	// The ID of the resource.
+	// The instance ID of the resource.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type MoveVpnResourceGroupRequest struct {
 	//
 	// vpn-8vb3lzn7biepthri8****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the new resource group.
+	// The ID of the new resource group to which the resource belongs.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type MoveVpnResourceGroupRequest struct {
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the resource.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -58,17 +58,19 @@ type MoveVpnResourceGroupRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of resource.
+	// The resource type. Valid values:
 	//
-	// 	- **VpnGateway**: VPN gateway
+	// - **VpnGateway**: VPN gateway instance.
 	//
-	//     After you move a VPN gateway to a new resource group, the following associated resources are also moved to the new resource group: IPsec servers, SSL servers, SSL client certificates, and IPsec-VPN connections.
+	//   After you change the resource group of a VPN gateway instance, the resource group of the IPsec server, SSL server, SSL client certificate, and IPsec-VPN connections (IPsec-VPN connections associated with the VPN gateway instance) under the VPN gateway instance is also changed.
 	//
-	// 	- **CustomerGateway**: customer gateway
+	// - **CustomerGateway**: customer gateway instance.
 	//
-	// 	- **VpnAttachment**: IPsec-VPN connection
+	// - **VpnAttachment**: IPsec-VPN connection instance.
 	//
-	//     An IPsec-VPN connection associated with a transit router or not associate with a resource.
+	//
+	//
+	//   This refers to IPsec-VPN connections associated with a transit router instance or IPsec-VPN connections that are not associated with any resource.
 	//
 	// This parameter is required.
 	//

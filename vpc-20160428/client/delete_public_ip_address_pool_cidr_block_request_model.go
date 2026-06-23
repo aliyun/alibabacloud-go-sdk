@@ -38,7 +38,7 @@ type DeletePublicIpAddressPoolCidrBlockRequest struct {
 	//
 	// 47.0.XX.XX/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotency of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
@@ -46,11 +46,11 @@ type DeletePublicIpAddressPoolCidrBlockRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs only a dry run. The CIDR block is not deleted. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DeletePublicIpAddressPoolCidrBlockRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the IP address pool.
+	// The instance ID of the IPAM pool.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type DeletePublicIpAddressPoolCidrBlockRequest struct {
 	//
 	// pippool-6wetvn6fumkgycssx****
 	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
-	// The region ID of the IP address pool from which you want to delete a CIDR block.
+	// The region ID of the IP address pool from which you want to delete the CIDR block.
 	//
 	// This parameter is required.
 	//

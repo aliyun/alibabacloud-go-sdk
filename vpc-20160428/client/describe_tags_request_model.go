@@ -38,11 +38,11 @@ type DescribeTagsRequest struct {
 	//
 	// 50
 	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If this is your first query or no next query is to be sent, ignore this parameter.
+	// - If this is the first query or no subsequent query exists, leave this parameter empty.
 	//
-	// 	- If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+	// - If a subsequent query exists, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type DescribeTagsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region to which the resource belongs.
+	// The region ID of the resource.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -60,31 +60,55 @@ type DescribeTagsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs.
+	// The resource ID. You can specify up to 50 resource IDs.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// 	- **VPC**: virtual private cloud (VPC)
+	// - **VPC**: virtual private cloud (VPC) instance.
 	//
-	// 	- **VSWITCH**: vSwitch
+	// - **VSWITCH**: virtual switch instance.
 	//
-	// 	- **ROUTETABLE**: route table
+	// - **ROUTETABLE**: route table instance.
 	//
-	// 	- **EIP**: elastic IP address (EIP)
+	// - **EIP**: elastic IP address (EIP) instance.
 	//
-	// 	- **VpnGateway**: VPN gateway
+	// - **VPNGATEWAY**: VPN gateway instance.
 	//
-	// 	- **NATGATEWAY**: NAT gateway
+	// - **NATGATEWAY**: NAT gateway instance.
 	//
-	// 	- **COMMONBANDWIDTHPACKAGE**: EIP bandwidth plan
+	// - **COMMONBANDWIDTHPACKAGE**: Internet Shared Bandwidth instance.
+	//
+	// - **PREFIXLIST**: prefix list instance.
+	//
+	// - **PUBLICIPADDRESSPOOL**: IP address pool instance.
+	//
+	// - **IPV4GATEWAY**: IPv4 gateway instance.
+	//
+	// - **IPV6GATEWAY**: IPv6 gateway instance.
+	//
+	// - **NETWORKACL**: network ACL instance.
+	//
+	// - **TRAFFICMIRRORFILTER**: traffic mirror filter instance.
+	//
+	// - **TRAFFICMIRRORSESSION**: traffic mirror session instance.
+	//
+	// - **FLOWLOG**: flow log instance.
+	//
+	// - **HAVIP**: high-availability virtual IP address instance.
+	//
+	// - **DHCPOPTIONSSET**: DHCP options set instance.
+	//
+	// - **GATEWAYENDPOINT**: gateway endpoint instance.
+	//
+	// > The resource type value is case-insensitive.
 	//
 	// example:
 	//
 	// VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The tags of the resource.
 	Tag []*DescribeTagsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -200,17 +224,17 @@ func (s *DescribeTagsRequest) Validate() error {
 }
 
 type DescribeTagsRequestTag struct {
-	// The key of the tag that is added to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys.
 	//
-	// The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot be an empty string or start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag that is added to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values.
 	//
-	// The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// A tag value can be up to 128 characters in length. It can be an empty string but cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

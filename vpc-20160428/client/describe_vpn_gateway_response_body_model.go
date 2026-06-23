@@ -70,11 +70,11 @@ type iDescribeVpnGatewayResponseBody interface {
 }
 
 type DescribeVpnGatewayResponseBody struct {
-	// Indicates whether BGP routes are automatically advertised to the VPC. Valid values:
+	// Indicates whether the routing automatic propagation feature is enabled for the VPN gateway. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
-	// 	- **false**
+	// - **false**: disabled.
 	//
 	// example:
 	//
@@ -82,17 +82,21 @@ type DescribeVpnGatewayResponseBody struct {
 	AutoPropagate *bool `json:"AutoPropagate,omitempty" xml:"AutoPropagate,omitempty"`
 	// The payment status of the VPN gateway. Valid values:
 	//
-	// 	- **Normal**
+	// - **Normal**: Normal.
 	//
-	// 	- **FinancialLocked**
+	// - **FinancialLocked**: locked due to overdue payment.
 	//
 	// example:
 	//
 	// Normal
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The billing method. Valid value:
+	// The billing method. Value:
 	//
-	// **POSTPAY**: pay-as-you-go
+	// <props="intl">**POSTPAY**: pay-as-you-go billing method.
+	//
+	// <props="partner">**POSTPAY**: pay-as-you-go billing method.
+	//
+	// <props="china">**Prepay**: subscription.
 	//
 	// example:
 	//
@@ -100,7 +104,7 @@ type DescribeVpnGatewayResponseBody struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The timestamp when the VPN gateway was created. Unit: milliseconds.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The timestamp follows the UNIX time format, which represents the total number of milliseconds elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -112,56 +116,56 @@ type DescribeVpnGatewayResponseBody struct {
 	//
 	// vpngatewaydescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The second IP address assigned by the system to create an IPsec-VPN connection.
+	// The second IP address assigned by the system to the VPN gateway instance for creating IPsec-VPN connections.
 	//
-	// This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+	// This parameter is returned only for VPN gateway instances that support creating dual-tunnel IPsec-VPN connections.
 	//
 	// example:
 	//
 	// 47.91.XX.XX
 	DisasterRecoveryInternetIp *string `json:"DisasterRecoveryInternetIp,omitempty" xml:"DisasterRecoveryInternetIp,omitempty"`
-	// The ID of the second vSwitch associated with the VPN gateway.
+	// The ID of the second vSwitch associated with the VPN gateway instance.
 	//
-	// This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+	// This parameter is returned only for VPN gateway instances that support creating dual-tunnel IPsec-VPN connections.
 	//
 	// example:
 	//
 	// vsw-p0w95ql6tmr2ludkt****
 	DisasterRecoveryVSwitchId *string `json:"DisasterRecoveryVSwitchId,omitempty" xml:"DisasterRecoveryVSwitchId,omitempty"`
-	// Indicates whether BGP is enabled for the VPN gateway. Valid values:
+	// The enabling status of the BGP feature for the VPN gateway. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
-	// 	- **false**
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// true
 	EnableBgp *bool `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
-	// The timestamp when the VPN gateway expires. Unit: milliseconds.
+	// The expiration timestamp of the VPN gateway. Unit: milliseconds.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The timestamp follows the UNIX time format, which represents the total number of milliseconds elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1544666102000
 	EndTime        *int64                                        `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	EniInstanceIds *DescribeVpnGatewayResponseBodyEniInstanceIds `json:"EniInstanceIds,omitempty" xml:"EniInstanceIds,omitempty" type:"Struct"`
-	// Type of VPN gateway:
+	// The type of the VPN gateway. Valid values:
 	//
-	// - **Traditional**: Traditional-type VPN gateway, supports both IPSec and SSL.
+	// - **Traditional**: traditional VPN gateway that supports both IPsec and SSL features.
 	//
-	// - **Enhanced.SiteToSite**: Enhanced Site-to-Site VPN gateway, only supports IPSec.
+	// - **Enhanced.SiteToSite**: enhanced site-to-cloud VPN gateway that supports only the IPsec feature.
 	//
 	// example:
 	//
 	// Enhanced.SiteToSite
 	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	// 	- If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
+	// - If the VPN gateway instance supports creating single-tunnel IPsec-VPN connections, this address is the IP address of the VPN gateway instance and can be used to create IPsec-VPN connections or SSL-VPN connections.
 	//
-	// 	- If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
+	// - If the VPN gateway instance supports creating dual-tunnel IPsec-VPN connections, this address is the first IP address used to create IPsec-VPN connections and cannot be used to create SSL-VPN connections.
 	//
-	//     If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
+	//     If the VPN gateway instance supports creating dual-tunnel IPsec-VPN connections, the system assigns two IPsec IP addresses to the VPN gateway instance for creating dual-tunnel IPsec-VPN connections.
 	//
 	// example:
 	//
@@ -169,9 +173,9 @@ type DescribeVpnGatewayResponseBody struct {
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// Indicates whether the IPsec-VPN feature is enabled. Valid values:
 	//
-	// 	- **enable**
+	// - **enable**: enabled.
 	//
-	// 	- **disable**
+	// - **disable**: disabled.
 	//
 	// example:
 	//
@@ -185,9 +189,9 @@ type DescribeVpnGatewayResponseBody struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The network type of the VPN gateway.
 	//
-	// 	- **public**
+	// - **public**: public VPN gateway.
 	//
-	// 	- **private**
+	// - **private**: private VPN gateway.
 	//
 	// example:
 	//
@@ -199,19 +203,19 @@ type DescribeVpnGatewayResponseBody struct {
 	//
 	// 27E4E088-8DE0-4672-BF5C-0A412389DB9E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about pending orders.
+	// The pending order data.
 	//
-	// > This set of parameters is returned only when **IncludeReservationData*	- is set to **true**.
+	// >This parameter is returned only when **IncludeReservationData*	- is set to **true**.
 	ReservationData *DescribeVpnGatewayResponseBodyReservationData `json:"ReservationData,omitempty" xml:"ReservationData,omitempty" type:"Struct"`
 	// The ID of the resource group to which the VPN gateway belongs.
 	//
-	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
+	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
 	//
 	// example:
 	//
 	// rg-acfmzs372yg****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
+	// The bandwidth specification of the VPN gateway. Unit: Mbit/s.
 	//
 	// example:
 	//
@@ -223,11 +227,11 @@ type DescribeVpnGatewayResponseBody struct {
 	//
 	// 5
 	SslMaxConnections *int64 `json:"SslMaxConnections,omitempty" xml:"SslMaxConnections,omitempty"`
-	// The status of the SSL-VPN feature. Valid values:
+	// The enabling status of the SSL-VPN feature. Valid values:
 	//
-	// 	- **enable**
+	// - **enable**: enabled.
 	//
-	// 	- **disable**
+	// - **disable**: disabled.
 	//
 	// example:
 	//
@@ -235,7 +239,7 @@ type DescribeVpnGatewayResponseBody struct {
 	SslVpn *string `json:"SslVpn,omitempty" xml:"SslVpn,omitempty"`
 	// The IP address of the SSL-VPN connection.
 	//
-	// This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+	// This parameter is returned only when the SSL-VPN feature is enabled on a VPN gateway instance of the public network type that supports creating dual-tunnel IPsec-VPN connections.
 	//
 	// example:
 	//
@@ -243,55 +247,55 @@ type DescribeVpnGatewayResponseBody struct {
 	SslVpnInternetIp *string `json:"SslVpnInternetIp,omitempty" xml:"SslVpnInternetIp,omitempty"`
 	// The status of the VPN gateway. Valid values:
 	//
-	// 	- **init**
+	// - **init**: initializing.
 	//
-	// 	- **provisioning**
+	// - **provisioning**: preparing.
 	//
-	// 	- **active**
+	// - **active**: Normal.
 	//
-	// 	- **updating**
+	// - **updating**: updating.
 	//
-	// 	- **deleting**
+	// - **deleting**: deleting.
 	//
 	// example:
 	//
 	// init
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag that is automatically generated for the VPN gateway. The tag consists of the following parameters:
+	// The labels automatically generated by the system for the VPN gateway.
 	//
-	// 	- **VpnEnableBgp**: indicates whether the VPN gateway supports BGP. Valid values:
+	// - **VpnEnableBgp**: indicates whether the VPN gateway supports the BGP feature.
 	//
-	//     	- **true**
+	//     - **true**: Supported.
 	//
-	//     	- **false**
+	//     - **false**: Not supported.
 	//
-	// 	- **VisuallySsl**: indicates whether the VPN gateway allows you to view the connection information of SSL clients. Valid values:
+	// - **VisuallySsl**: indicates whether the VPN gateway supports viewing connection information of SSL clients.
 	//
-	//     	- **true**
+	//     - **true**: Supported.
 	//
-	//     	- **false**
+	//     - **false**: Not supported.
 	//
-	// 	- **PbrPriority**: indicates whether the VPN gateway allows you to configure priorities for policy-based routes. Valid values:
+	// - **PbrPriority**: indicates whether the VPN gateway supports configuring policy priority for policy-based routing.
 	//
-	//     	- **true**
+	//     - **true**: Supported.
 	//
-	//     	- **false**
+	//     - **false**: Not supported.
 	//
-	// 	- **VpnNewImage**: indicates whether the VPN gateway is upgraded. Valid values:
+	// - **VpnNewImage**: indicates whether the VPN gateway is a new-generation VPN gateway.
 	//
-	//     	- **true**
+	//     - **true**: Yes.
 	//
-	//     	- **false**
+	//     - **false**: No.
 	//
-	// 	- **description**: the description of the VPN gateway. This parameter is only for internal use.
+	// - **description**: the description of the VPN gateway, which is used only for internal system purposes.
 	//
-	// 	- **VpnVersion**: the version of the VPN gateway.
+	// - **VpnVersion**: the version number of the VPN gateway.
 	//
-	// 	- **IDaaSNewVersion**: indicates whether the VPN gateway can be associated with an EIAM 2.0 instance.
+	// - **IDaaSNewVersion**: indicates whether the VPN gateway supports attaching to an EIAM 2.0 instance.
 	//
-	//     	- **true**
+	//     - **true**: Supported.
 	//
-	//     	- **false**
+	//     - **false**: Not supported.
 	//
 	// example:
 	//
@@ -310,13 +314,23 @@ type DescribeVpnGatewayResponseBody struct {
 	//
 	// vpc-bp19m2yx1m5q0avyq****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the VPN gateway.
+	// The instance ID of the VPN gateway.
 	//
 	// example:
 	//
 	// vpn-bp1r3v1xqkl0w519g****
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
-	// The type of VPN gateway. Only **Normal*	- may be returned, which indicates a standard VPN gateway.
+	// <props="intl">The type of the VPN gateway. Value: **Normal**, which indicates a standard VPN gateway.
+	//
+	// <props="china">
+	//
+	// The type of the VPN gateway. Valid values:
+	//
+	// - **Normal**: standard.
+	//
+	// - **NationalStandard**: Chinese SM algorithm-based.
+	//
+	// .
 	//
 	// example:
 	//
@@ -638,19 +652,19 @@ func (s *DescribeVpnGatewayResponseBodyEniInstanceIds) Validate() error {
 }
 
 type DescribeVpnGatewayResponseBodyReservationData struct {
-	// If the order type is **TEMP_UPGRADE*	- (temporary upgrade), this parameter specifies the time when the temporary upgrade expires.
+	// If the pending order type is **TEMP_UPGRADE*	- (temporary upgrade), this parameter indicates the revert time for the temporary upgrade.
 	//
-	// If the order type is **RENEWCHANGE*	- (renewal with a specification change) or **RENEW*	- (renewal), this parameter indicates the time when the renewal or renewal with a specification change takes effect.
+	// If the pending order type is **RENEWCHANGE*	- (renewal with specification change) or **RENEW*	- (renewal), this parameter indicates the effective period when the renewal or renewal with specification change takes effect.
 	//
 	// example:
 	//
 	// 2020-07-20T16:00:00Z
 	ReservationEndTime *string `json:"ReservationEndTime,omitempty" xml:"ReservationEndTime,omitempty"`
-	// The IPsec-VPN status of the pending order. Valid values:
+	// The enabling status of the IPsec-VPN feature for the pending order. Valid values:
 	//
-	// 	- **enable**
+	// - **enable**: enabled.
 	//
-	// 	- **disable**
+	// - **disable**: disabled.
 	//
 	// example:
 	//
@@ -664,27 +678,27 @@ type DescribeVpnGatewayResponseBodyReservationData struct {
 	ReservationMaxConnections *int32 `json:"ReservationMaxConnections,omitempty" xml:"ReservationMaxConnections,omitempty"`
 	// The type of the pending order. Valid values:
 	//
-	// 	- **RENEWCHANGE**: renewal with upgrade or downgrade
+	// - **RENEWCHANGE**: renewal with specification change.
 	//
-	// 	- **TEMP_UPGRADE**: temporary upgrade
+	// - **TEMP_UPGRADE**: temporary upgrade.
 	//
-	// 	- **RENEW**: renewal
+	// - **RENEW**: renewal.
 	//
 	// example:
 	//
 	// TEMP_UPGRADE
 	ReservationOrderType *string `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
-	// The bandwidth of the pending order. Unit: Mbit/s.
+	// The bandwidth specification of the pending order. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 5
 	ReservationSpec *string `json:"ReservationSpec,omitempty" xml:"ReservationSpec,omitempty"`
-	// The SSL-VPN status of the pending order. Valid values:
+	// The enabling status of the SSL-VPN feature for the pending order. Valid values:
 	//
-	// 	- **enable**
+	// - **enable**: enabled.
 	//
-	// 	- **disable**
+	// - **disable**: disabled.
 	//
 	// example:
 	//
@@ -692,9 +706,9 @@ type DescribeVpnGatewayResponseBodyReservationData struct {
 	ReservationSsl *string `json:"ReservationSsl,omitempty" xml:"ReservationSsl,omitempty"`
 	// The status of the pending order. Valid values:
 	//
-	// 	- **1**: indicates that the order of the renewal or specification change has not taken effect.
+	// - **1**: The renewal or renewal with specification change order has not taken effect.
 	//
-	// 	- **2**: indicates that the order is an order for temporary upgrade and the order has taken effect. After the temporary upgrade expires, the system restores the VPN gateway to its previous specifications. In this case, **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl*	- indicate the previous specification.
+	// - **2**: The temporary upgrade order has taken effect. After the restoration time is reached, the system restores the VPN gateway to the specification before the temporary upgrade. In this case, **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl*	- indicate the specifications before the temporary upgrade.
 	//
 	// example:
 	//
@@ -812,17 +826,7 @@ func (s *DescribeVpnGatewayResponseBodyTags) Validate() error {
 }
 
 type DescribeVpnGatewayResponseBodyTagsTag struct {
-	// 标签键。
-	//
-	// example:
-	//
-	// aaa
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值。
-	//
-	// example:
-	//
-	// bbb
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

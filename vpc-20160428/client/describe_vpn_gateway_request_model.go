@@ -26,11 +26,11 @@ type iDescribeVpnGatewayRequest interface {
 }
 
 type DescribeVpnGatewayRequest struct {
-	// Specifies whether to include the data about pending orders. Valid values:
+	// Specifies whether to include pending order data. Valid values:
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): does not include pending order data.
 	//
-	// 	- **true**
+	// - **true**: includes pending order data.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeVpnGatewayRequest struct {
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the VPN gateway.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type DescribeVpnGatewayRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the VPN gateway.
+	// The instance ID of the VPN gateway.
 	//
 	// This parameter is required.
 	//

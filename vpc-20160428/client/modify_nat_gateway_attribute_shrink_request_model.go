@@ -76,7 +76,7 @@ type ModifyNatGatewayAttributeShrinkRequest struct {
 	//
 	// example:
 	//
-	// false
+	// true
 	IcmpReplyEnabled *bool `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
 	// Session log configuration information.
 	LogDeliveryShrink *string `json:"LogDelivery,omitempty" xml:"LogDelivery,omitempty"`

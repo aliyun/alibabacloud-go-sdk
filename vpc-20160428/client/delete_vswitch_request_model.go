@@ -28,9 +28,9 @@ type iDeleteVSwitchRequest interface {
 type DeleteVSwitchRequest struct {
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: Sends a check request without deleting the VSwitch. The check items include whether required parameters are specified, the request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
 	//
-	// - **false*	- (default): sends the request directly without performing a dry run. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): Sends a normal request. After the check succeeds, an HTTP 2xx status code is returned and the VSwitch is directly deleted.
 	//
 	// example:
 	//
@@ -38,9 +38,9 @@ type DeleteVSwitchRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the vSwitch.
+	// The region ID of the VSwitch to delete.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DeleteVSwitchRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the vSwitch that you want to delete.
+	// The ID of the VSwitch to delete.
 	//
 	// This parameter is required.
 	//

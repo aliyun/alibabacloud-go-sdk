@@ -27,41 +27,41 @@ type iDescribeNatGatewayAssociateNetworkInterfacesResponseBody interface {
 
 type DescribeNatGatewayAssociateNetworkInterfacesResponseBody struct {
 	AssociateNetworkInterfaces *DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfaces `json:"AssociateNetworkInterfaces,omitempty" xml:"AssociateNetworkInterfaces,omitempty" type:"Struct"`
-	// Number of associated ENIs.
+	// The number of associated ENIs.
 	//
 	// example:
 	//
 	// 0
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The number of entries to return per page. Valid values: **1 to 100**. Default value: **20**.
+	// The number of entries per page for a paged query. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The ID of the VPC NAT gateway.
+	// The instance ID of the VPC NAT gateway.
 	//
 	// example:
 	//
 	// ngw-bp1uewa15k4iy5770****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// Indicates whether the token for the next query exists. Valid value:
+	// The pagination token. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, there is no next page.
+	// - If **NextToken*	- is empty, no subsequent query exists.
 	//
-	// 	- If the value returned of **NextToken*	- is not empty, the value indicates the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2315DEB7-5E92-423A-91F7-4C1EC9AD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//

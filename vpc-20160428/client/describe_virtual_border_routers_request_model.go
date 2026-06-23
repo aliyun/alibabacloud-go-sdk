@@ -32,32 +32,32 @@ type iDescribeVirtualBorderRoutersRequest interface {
 }
 
 type DescribeVirtualBorderRoutersRequest struct {
-	// The information about the filter.
+	// The filter information.
 	Filter []*DescribeVirtualBorderRoutersRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// Specifies whether cross-account VBRs are included.
+	// Specifies whether to include cross-account Virtual Border Routers.
 	//
-	// 	- **true**
+	// - **true**: Included.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): Not included.
 	//
 	// example:
 	//
 	// false
 	IncludeCrossAccountVbr *bool  `json:"IncludeCrossAccountVbr,omitempty" xml:"IncludeCrossAccountVbr,omitempty"`
 	OwnerId                *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the VBR is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+	// The region ID of the VBR. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -67,7 +67,7 @@ type DescribeVirtualBorderRoutersRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
 	//
-	// For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html)
+	// For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html).
 	//
 	// example:
 	//
@@ -75,7 +75,7 @@ type DescribeVirtualBorderRoutersRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The list of tags.
+	// The tags of the resource.
 	Tags []*DescribeVirtualBorderRoutersRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -200,27 +200,27 @@ func (s *DescribeVirtualBorderRoutersRequest) Validate() error {
 }
 
 type DescribeVirtualBorderRoutersRequestFilter struct {
-	// The filter conditions. You can specify up to five filter conditions. Valid values:
+	// The filter condition. You can specify up to 5 filter conditions. The following filter conditions are supported:
 	//
-	// 	- **PhysicalConnectionId**: Filter by Express Connect circuit ID.
+	// 	- **PhysicalConnectionId**: instance ID of the Express Connect circuit instance.
 	//
-	// 	- **VbrId**: Filter by VBR ID.
+	// 	- **VbrId**: instance ID of the Virtual Border Router instance.
 	//
-	// 	- **Status**: Filter by VBR status.
+	// 	- **Status**: the status of the Virtual Border Router.
 	//
-	// 	- **Name**: Filter by VBR name.
+	// 	- **Name**: the name of the Virtual Border Router.
 	//
-	// 	- **AccessPointId**: Filter by access point ID.
+	// 	- **AccessPointId**: instance ID of the access point.
 	//
-	// 	- **eccId:*	- Filter by Express Cloud Connect (ECC) instance ID.
+	// 	- **eccId**: instance ID of the Express Cloud Connect instance.
 	//
-	// 	- **type**: Filter by Express Connect circuit type.
+	// 	- **type**: the type of the Express Connect circuit.
 	//
 	// example:
 	//
 	// Status
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The filter values for keys. You can specify multiple filter values for one key. The logical operator between filter values is OR. If one filter value is matched, the filter condition is matched.
+	// The filter value based on the specified Key. You can specify multiple filter values for a Key. The relationship between filter values is OR, which means that a match is found if any of the filter values is met.
 	//
 	// example:
 	//
@@ -259,17 +259,17 @@ func (s *DescribeVirtualBorderRoutersRequestFilter) Validate() error {
 }
 
 type DescribeVirtualBorderRoutersRequestTags struct {
-	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You must specify at least 1 tag key and can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The key cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

@@ -46,7 +46,7 @@ type iCreateFlowLogRequest interface {
 }
 
 type CreateFlowLogRequest struct {
-	// The sampling interval of the flow log. Unit: seconds. Valid values: **1**, **5**, and **10*	- (default).
+	// The sampling interval of the flow log. Unit: minutes. Valid values: **1**, **5**, and **10*	- (default).
 	//
 	// example:
 	//
@@ -68,14 +68,19 @@ type CreateFlowLogRequest struct {
 	//
 	// myFlowlog
 	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	IpVersion   *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The name of the Logstore that stores the captured traffic data.
+	// The IP version of the traffic captured by the flow log.
 	//
-	// 	- The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// example:
 	//
-	// 	- The name must start and end with a lowercase letter or a digit.
+	// IPv4
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The name of the Logstore that stores the captured traffic.
 	//
-	// 	- The name must be 3 to 63 characters in length.
+	// - The Logstore name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// - The name must start and end with a lowercase letter or digit.
+	//
+	// - The name must be 3 to 63 characters in length.
 	//
 	// example:
 	//
@@ -83,19 +88,19 @@ type CreateFlowLogRequest struct {
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the project that stores the captured traffic data.
+	// The name of the project that manages the captured traffic.
 	//
-	// 	- The name can contain only lowercase letters, digits, and hyphens (-).
+	// - The project name can contain only lowercase letters, digits, and hyphens (-).
 	//
-	// 	- The name must start and end with a lowercase letter or a digit.
+	// - The name must start and end with a lowercase letter or digit.
 	//
-	// 	- The name must be 3 to 63 characters in length.
+	// - The name must be 3 to 63 characters in length.
 	//
 	// example:
 	//
 	// FlowLogProject
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The ID of the region where you want to create the flow log. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the flow log. You can call [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -109,7 +114,7 @@ type CreateFlowLogRequest struct {
 	//
 	// rg-acfmxazdjdhd****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the resource whose traffic you want to capture.
+	// The ID of the resource from which to capture traffic.
 	//
 	// This parameter is required.
 	//
@@ -119,13 +124,17 @@ type CreateFlowLogRequest struct {
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource whose traffic you want to capture. Valid values:
+	// The type of resource from which to capture traffic. Valid values:
 	//
-	// 	- **NetworkInterface**: elastic network interface (ENI)
+	// - **NetworkInterface**: network interface controller (NIC).
 	//
-	// 	- **VSwitch**: all ENIs in a vSwitch
 	//
-	// 	- **VPC**: all ENIs in a virtual private cloud (VPC)
+	//
+	// - **VSwitch**: all network interface controllers (NICs) in a vSwitch.
+	//
+	//
+	//
+	// - **VPC**: all network interface controllers (NICs) in a virtual private cloud (VPC).
 	//
 	// This parameter is required.
 	//
@@ -133,21 +142,25 @@ type CreateFlowLogRequest struct {
 	//
 	// NetworkInterface
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag of the resource.
+	// The tags of the resource.
 	Tag []*CreateFlowLogRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The scope of the traffic that you want to capture. Valid values:
+	// The traffic path to capture. Valid values:
 	//
-	// 	- **all**: all traffic.
+	// - **all**: captures all traffic.
 	//
-	// 	- **internetGateway**: Internet traffic.
+	// - **internetGateway**: captures Internet traffic.
 	TrafficPath []*string `json:"TrafficPath,omitempty" xml:"TrafficPath,omitempty" type:"Repeated"`
-	// The type of traffic that you want to capture. Valid values:
+	// The traffic type to collect. Valid values:
 	//
-	// 	- **All**: all traffic
+	// - **All**: all traffic.
 	//
-	// 	- **Allow**: traffic that is allowed
 	//
-	// 	- **Drop**: traffic that is rejected
+	//
+	// - **Allow**: traffic allowed by access control.
+	//
+	//
+	//
+	// - **Drop**: traffic denied by access control.
 	//
 	// This parameter is required.
 	//
@@ -332,17 +345,17 @@ func (s *CreateFlowLogRequest) Validate() error {
 }
 
 type CreateFlowLogRequestTag struct {
-	// The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

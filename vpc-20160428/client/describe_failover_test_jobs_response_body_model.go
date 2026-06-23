@@ -156,7 +156,7 @@ type DescribeFailoverTestJobsResponseBodyFailoverTestJobList struct {
 	//
 	// example:
 	//
-	// ftj-xxxxxxxxx
+	// ftj-bp1yh6mvi13aq3g8w****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// Indicates whether the failover test is performed immediately. Valid values:
 	//

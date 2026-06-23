@@ -22,7 +22,7 @@ type CreateBgpPeerResponseBody struct {
 	//
 	// bgp-m5eoyp2mwegk8ce9v****
 	BgpPeerId *string `json:"BgpPeerId,omitempty" xml:"BgpPeerId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

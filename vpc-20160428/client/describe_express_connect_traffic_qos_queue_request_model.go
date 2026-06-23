@@ -30,9 +30,9 @@ type iDescribeExpressConnectTrafficQosQueueRequest interface {
 type DescribeExpressConnectTrafficQosQueueRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
 	//
 	// example:
 	//
@@ -40,19 +40,19 @@ type DescribeExpressConnectTrafficQosQueueRequest struct {
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the QoS policy.
+	// The QoS policy ID.
 	//
 	// example:
 	//
-	// qos-2giu0a6vd5x0mv4700
+	// qos-2giu0a6vd5x0mv****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The IDs of the QoS queues.
+	// The QoS queue IDs.
 	QueueIdList []*string `json:"QueueIdList,omitempty" xml:"QueueIdList,omitempty" type:"Repeated"`
-	// The names of the QoS queues.
+	// The QoS queue names.
 	QueueNameList []*string `json:"QueueNameList,omitempty" xml:"QueueNameList,omitempty" type:"Repeated"`
 	// The region ID of the QoS policy.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
 	//
 	// This parameter is required.
 	//

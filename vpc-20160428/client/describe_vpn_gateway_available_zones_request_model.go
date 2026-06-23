@@ -30,17 +30,28 @@ type iDescribeVpnGatewayAvailableZonesRequest interface {
 type DescribeVpnGatewayAvailableZonesRequest struct {
 	// The language in which the returned results are displayed. Valid values:
 	//
-	// 	- **zh-CN**: Chinese
+	// - **zh-CN**: Chinese.
 	//
-	// 	- **en-US*	- (default): English
+	// - **en-US*	- (default): English.
 	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	GatewayType    *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The VPN gateway type. Valid values:
+	//
+	// - **Traditional**: Returns zone information for creating traditional VPN gateways.
+	//
+	// - **Enhanced.SiteToSite**: Returns zone information for creating enhanced site-to-cloud VPN gateways.
+	//
+	// - **Default value**: Returns zone information for creating all types of VPN gateways.
+	//
+	// example:
+	//
+	// Traditional
+	GatewayType  *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -53,27 +64,27 @@ type DescribeVpnGatewayAvailableZonesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The bandwidth specification.
 	//
-	// 	- If an IPsec-VPN connection can be associated with the VPN gateway, this parameter specifies the bandwidth specification of the VPN gateway.
+	// - If the IPsec-VPN connection is associated with a VPN gateway instance, this parameter specifies the bandwidth specification of the VPN gateway instance.
 	//
-	// 	- In scenarios where an IPsec-VPN connection can be associated with a transit router. This parameter specifies the bandwidth specification supported by an IPsec-VPN connection.
+	// - If the IPsec-VPN connection is associated with a transit router, this parameter specifies the expected bandwidth specification that the IPsec-VPN connection can support.
 	//
-	// Different bandwidth specifications may affect returned zone information. Valid values:
+	// Different bandwidth specifications may affect the zone information returned. Valid values:
 	//
-	// 	- **5M**
+	// - **5M**
 	//
-	// 	- **10M**
+	// - **10M**
 	//
-	// 	- **20M**
+	// - **20M**
 	//
-	// 	- **50M**
+	// - **50M**
 	//
-	// 	- **100M**
+	// - **100M**
 	//
-	// 	- **200M**
+	// - **200M**
 	//
-	// 	- **500M**
+	// - **500M**
 	//
-	// 	- **1000M**
+	// - **1000M**.
 	//
 	// This parameter is required.
 	//

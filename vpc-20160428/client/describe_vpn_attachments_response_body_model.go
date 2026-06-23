@@ -22,13 +22,13 @@ type iDescribeVpnAttachmentsResponseBody interface {
 }
 
 type DescribeVpnAttachmentsResponseBody struct {
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page when paging is used.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type DescribeVpnAttachmentsResponseBody struct {
 	//
 	// 9F0725BB-186A-3564-91C3-AAE48042F853
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of IPsec-VPN connections associated with the transit router.
+	// The list of IPsec-VPN connections that are associated with transit router instances.
 	VpnAttachments []*DescribeVpnAttachmentsResponseBodyVpnAttachments `json:"VpnAttachments,omitempty" xml:"VpnAttachments,omitempty" type:"Repeated"`
 }
 
@@ -117,17 +117,17 @@ func (s *DescribeVpnAttachmentsResponseBody) Validate() error {
 }
 
 type DescribeVpnAttachmentsResponseBodyVpnAttachments struct {
-	// The type of resource that is associated with the IPsec-VPN connection. The value is set to **CEN**, which indicates that the IPsec-VPN connection is associated with a transit router.
+	// The type of resource to which the IPsec-VPN connection is attached. The value is **CEN**, which indicates that the IPsec-VPN connection is associated with a transit router instance.
 	//
 	// example:
 	//
 	// CEN
 	AttachType *string `json:"AttachType,omitempty" xml:"AttachType,omitempty"`
-	// Indicates whether the IPsec-VPN connection is associated with a transit router that belongs to another Alibaba Cloud account. Valid values:
+	// Indicates whether the IPsec-VPN connection is associated with a transit router instance that belongs to a different Alibaba Cloud account.
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
-	// 	- **false**
+	// - **false**: no.
 	//
 	// example:
 	//
@@ -153,37 +153,37 @@ type DescribeVpnAttachmentsResponseBodyVpnAttachments struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The system tags of the IPsec-VPN connection.
 	//
-	// You can check whether an IPsec-VPN connection supports BGP based on the system tags.
+	// You can use system tags to check whether the IPsec-VPN connection supports BGP. You do not need to pay attention to other properties.
 	//
 	// **BGPSupport**: indicates whether the IPsec-VPN connection supports BGP.
 	//
-	// 	- **true**
+	//    - **true**: supported.
 	//
-	// 	- **false**
+	//    - **false**: not supported.
 	//
 	// example:
 	//
-	// {\\"description\\":\\"forwarding 1.7.22\\",\\"VisuallySsl\\":\\"true\\",\\"PbrPriority\\":\\"true\\",\\"BGPSupport\\":\\"true\\",\\"IDaaSNewVersion\\":\\"true\\"}
+	// {\\"description\\":\\"转发1.7.22\\",\\"VisuallySsl\\":\\"true\\",\\"PbrPriority\\":\\"true\\",\\"BGPSupport\\":\\"true\\",\\"IDaaSNewVersion\\":\\"true\\"}
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The list of tags to be added to the IPsec-VPN connection.
+	// The list of tags that are attached to the IPsec-VPN connection.
 	Tags []*DescribeVpnAttachmentsResponseBodyVpnAttachmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the transit router with which the IPsec-VPN connection is associated.
+	// The ID of the transit routing instance to which the IPsec-VPN connection is attached.
 	//
 	// example:
 	//
 	// tr-p0wkh4yryb1dnanqw****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The name of the transit router.
+	// The name of the transit router instance.
 	//
 	// example:
 	//
 	// nametest2
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
-	// Specifies the bandwidth specifications for a single tunnel in VPN attachment. Available options:
+	// The bandwidth specification of a single VPN tunnel. Valid values:
 	//
-	// - **Standard**: Standard, 1Gbps
+	// Standard (default): standard. The default bandwidth is 1 Gbit/s.
 	//
-	// - **Large**:  Large-sized, 3Gbps
+	// Large: large. The default bandwidth is 3 Gbit/s.
 	//
 	// example:
 	//
@@ -303,13 +303,13 @@ func (s *DescribeVpnAttachmentsResponseBodyVpnAttachments) Validate() error {
 }
 
 type DescribeVpnAttachmentsResponseBodyVpnAttachmentsTags struct {
-	// The tag key of the IPsec-VPN connection.
+	// The tag key.
 	//
 	// example:
 	//
 	// TagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the IPsec-VPN connection.
+	// The tag value.
 	//
 	// example:
 	//

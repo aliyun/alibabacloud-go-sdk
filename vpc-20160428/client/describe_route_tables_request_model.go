@@ -48,7 +48,7 @@ type DescribeRouteTablesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page during paging. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -56,69 +56,79 @@ type DescribeRouteTablesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the VPC to which the route table belongs.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// ap-southeast-6
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the route table to be queried belongs.
+	// The ID of the resource group to which the route table belongs.
 	//
 	// example:
 	//
-	// rg-acfmxazccb4ph****
+	// rg-acfmxazb4ph****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the route table that you want to query.
+	// The ID of the route table to query.
+	//
+	// >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
 	//
 	// example:
 	//
-	// rtb-bp12mw1f8k3jgygk9****
+	// vtb-bp145q7glnuzdvzu2****
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The name of the route table that you want to query.
+	// The name of the route table to query.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+	// The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	//
+	// >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
 	//
 	// example:
 	//
-	// RouteTable-1
+	// doctest
 	RouteTableName *string `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
 	// The ID of the router to which the route table belongs.
 	//
+	// >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
+	//
 	// example:
 	//
-	// vtb-bp1krxxzp0c29fmon****
+	// vrt-bp1lhl0taikrteen8****
 	RouterId *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
 	// The type of the router to which the route table belongs. Valid values:
 	//
-	// 	- **VRouter*	- (default)
+	// - **VRouter*	- (default): vRouter.
 	//
-	// 	- **VBR**
+	// - **VBR**: Virtual Border Router.
 	//
 	// example:
 	//
 	// VRouter
 	RouterType *string `json:"RouterType,omitempty" xml:"RouterType,omitempty"`
-	// The route type. Valid values:
+	// The destination type of the route to query. Valid values:
 	//
-	// 	- **Custom**
+	// - **Custom**: custom route.
 	//
-	// 	- **System**
+	// - **System**: system route.
 	//
-	// 	- **BGP**
+	// - **BGP**: BGP route.
 	//
-	// 	- **CEN**
+	// - **CEN**: Cloud Enterprise Network (CEN) route.
+	//
+	// - **ECR**: Express Connect Router (ECR) route.
 	//
 	// example:
 	//
-	// custom
+	// Custom
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the vRouter.
+	// The ID of the vRouter to query.
+	//
+	// >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
 	//
 	// example:
 	//
-	// vtb-bp1krxxzp0c29fmon****
+	// vrt-bp1lhl0taikrteen****
 	VRouterId *string `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
 }
 

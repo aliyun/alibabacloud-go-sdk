@@ -346,13 +346,13 @@ type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig struct 
 	//
 	// example:
 	//
-	// ikev1
+	// ikev2
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
 	// The identifier of the customer gateway. FQDN and IP formats are supported. The default value is the IP address of the customer gateway.
 	//
 	// example:
 	//
-	// 116.62.XX.XX
+	// 139.196.XX.XX
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
 	// The pre-shared key.
 	//
@@ -364,7 +364,7 @@ type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig struct 
 	//
 	// example:
 	//
-	// 139.196.XX.XX
+	// 116.62.XX.XX
 	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
 }
 

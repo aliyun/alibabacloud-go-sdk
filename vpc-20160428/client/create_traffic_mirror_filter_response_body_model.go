@@ -18,19 +18,19 @@ type iCreateTrafficMirrorFilterResponseBody interface {
 }
 
 type CreateTrafficMirrorFilterResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 28DB147D-217B-43E8-9E94-A3F6837DDC8A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the mirrored traffic belongs.
+	// The ID of the resource group to which the traffic mirror belongs.
 	//
 	// example:
 	//
 	// rg-bp67acfmxazb4ph****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the filter.
+	// The instance ID of the traffic mirror filter.
 	//
 	// example:
 	//

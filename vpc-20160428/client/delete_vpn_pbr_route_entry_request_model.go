@@ -42,7 +42,7 @@ type DeleteVpnPbrRouteEntryRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type DeleteVpnPbrRouteEntryRequest struct {
 	//
 	// vco-bp15oes1py4i66rmd****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. Set the value to **Ipsec**.
+	// The tunneling protocol. Set the value to **Ipsec*	- (IPsec tunneling protocol).
 	//
 	// example:
 	//
@@ -64,19 +64,19 @@ type DeleteVpnPbrRouteEntryRequest struct {
 	OverlayMode  *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The priority of the policy-based route.
+	// The policy priority of the policy-based route.
 	//
-	// 	- If the route was not assigned a priority, this parameter is optional.
+	// - If no policy priority was previously configured for the policy-based route, you do not need to specify this parameter.
 	//
-	// 	- If the route was assigned a priority, this parameter is optional.
+	// - If a policy priority was previously configured for the policy-based route, this parameter is optional.
 	//
-	//         If you specify this parameter, set the value to the priority configured for the policy-based route. Otherwise, the operation cannot be performed.
+	//     If you specify this parameter, set it to the previously configured policy priority. If you set it to a different value, the operation fails.
 	//
 	// example:
 	//
 	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the VPN gateway instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -102,7 +102,7 @@ type DeleteVpnPbrRouteEntryRequest struct {
 	//
 	// 192.168.1.0/24
 	RouteSource *string `json:"RouteSource,omitempty" xml:"RouteSource,omitempty"`
-	// The ID of the VPN gateway.
+	// The instance ID of the VPN gateway.
 	//
 	// This parameter is required.
 	//
@@ -110,9 +110,9 @@ type DeleteVpnPbrRouteEntryRequest struct {
 	//
 	// vpn-bp1a3kqjiiq9legfx****
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
-	// The weight of the policy-based route. Valid values:
+	// The weight of the policy-based route.
 	//
-	// You can call [DescribeVpnPbrRouteEntries](https://help.aliyun.com/document_detail/2526959.html) to query weights of policy-based routes.
+	// You can call the [DescribeVpnPbrRouteEntries](https://help.aliyun.com/document_detail/2526959.html) operation to query the weight of the policy-based route.
 	//
 	// This parameter is required.
 	//

@@ -18,11 +18,11 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// 	- If no value is returned for **NextToken**, no next queries are sent.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// 	- If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
+	// - If **NextToken*	- has a return value, the value is the token used to start the next query.
 	//
 	// example:
 	//

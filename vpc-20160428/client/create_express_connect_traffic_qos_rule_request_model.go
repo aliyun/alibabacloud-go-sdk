@@ -66,7 +66,7 @@ type CreateExpressConnectTrafficQosRuleRequest struct {
 	//
 	// example:
 	//
-	// 1.1.1.0/24
+	// ``1.1.**.**``/24
 	DstCidr *string `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
 	// The destination IPv6 CIDR block that matches the QoS rule traffic.
 	//
@@ -74,7 +74,7 @@ type CreateExpressConnectTrafficQosRuleRequest struct {
 	//
 	// example:
 	//
-	// 2001:0db8:1234:5678::/64
+	// 2001:0db8:1234:****::/64
 	DstIPv6Cidr *string `json:"DstIPv6Cidr,omitempty" xml:"DstIPv6Cidr,omitempty"`
 	// The range of destination ports that match the QoS rule traffic. Valid values: **0*	- to **65535**. If the traffic does not match, the value is -1. You can specify only one port. The start port number must be the same as the end port number. Different protocols correspond to different ports. Valid values:
 	//
@@ -176,7 +176,7 @@ type CreateExpressConnectTrafficQosRuleRequest struct {
 	//
 	// example:
 	//
-	// qos-2giu0a6vd5x0mv4700
+	// qos-2giu0a6vd5x0mv****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
 	// The ID of the QoS queue.
 	//
@@ -184,7 +184,7 @@ type CreateExpressConnectTrafficQosRuleRequest struct {
 	//
 	// example:
 	//
-	// qos-queue-9nyx2u7n71s2rcy4n5
+	// qos-queue-9nyx2u7n71s2rc****
 	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
 	// The region ID of the QoS policy.
 	//
@@ -225,7 +225,7 @@ type CreateExpressConnectTrafficQosRuleRequest struct {
 	//
 	// example:
 	//
-	// 1.1.1.0/24
+	// ``1.1.**.**``/24
 	SrcCidr *string `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
 	// The source IPv6 CIDR block that matches the QoS rule traffic.
 	//
@@ -233,7 +233,7 @@ type CreateExpressConnectTrafficQosRuleRequest struct {
 	//
 	// example:
 	//
-	// 2001:0db8:1234:5678::/64
+	// 2001:0db8:1234:****::/64
 	SrcIPv6Cidr *string `json:"SrcIPv6Cidr,omitempty" xml:"SrcIPv6Cidr,omitempty"`
 	// The range of source ports that match the QoS rule traffic. Valid values: **0*	- to **65535**. If the traffic does not match, the value is -1. You can specify only one port. The start port number must be the same as the end port number.
 	//

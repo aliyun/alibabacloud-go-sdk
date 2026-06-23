@@ -64,7 +64,7 @@ type ModifyPhysicalConnectionAttributeRequest struct {
 	//
 	// example:
 	//
-	// The description of the Express Connect circuit.
+	// 物理专线的描述信息
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The connectivity provider of the Express Connect circuit. Valid values:
 	//
@@ -90,7 +90,7 @@ type ModifyPhysicalConnectionAttributeRequest struct {
 	//
 	// example:
 	//
-	// Name
+	// 物理专线的名称
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -98,7 +98,7 @@ type ModifyPhysicalConnectionAttributeRequest struct {
 	//
 	// example:
 	//
-	// XX Number, XX Road, XX Town, XX District, Hangzhou City, Zhejiang Province.
+	// 浙江省杭州市XX区XX街道XX号
 	PeerLocation *string `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
 	// The ID of the Express Connect circuit.
 	//

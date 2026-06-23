@@ -32,15 +32,15 @@ type iAssociateHaVipRequest interface {
 type AssociateHaVipRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId*	- as **ClientToken**. The value of **RequestId*	- in each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the HaVip.
+	// The ID of the HaVip to be associated.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type AssociateHaVipRequest struct {
 	//
 	// havip-2zeo05qre24nhrqpy****
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
-	// The ID of the ECS instance to be associated with the HaVip.
+	// The instance ID of the ECS instance to attach to the HaVip.
 	//
 	// This parameter is required.
 	//
@@ -56,11 +56,11 @@ type AssociateHaVipRequest struct {
 	//
 	// i-faf344422ffsfad****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the instance to be associated with the HaVip. Valid values:
+	// The type of the instance to attach to the HaVip. Valid values:
 	//
-	// 	- **EcsInstance**: an ECS instance
+	// - **EcsInstance**: ECS instance.
 	//
-	// 	- **NetworkInterface**: an ENI. If you want to associate the HaVip with an ENI, this parameter is required.
+	// - **NetworkInterface**: network interface controller (NIC) instance. If the instance to attach to the HaVip is a network interface controller (NIC), this parameter is required.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type AssociateHaVipRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region to which the HaVip belongs.
+	// The region ID of the HaVip.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//

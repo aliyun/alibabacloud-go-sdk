@@ -40,51 +40,51 @@ type iCreateHighReliablePhysicalConnectionRequest interface {
 }
 
 type CreateHighReliablePhysicalConnectionRequest struct {
-	// The language to display the results. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh-CN*	- (default): Chinese
+	// - **zh-CN*	- (default): Chinese.
 	//
-	// 	- **en-US**: English
+	// - **en-US**: English.
 	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The access points.
+	// The list of access points.
 	//
 	// This parameter is required.
 	ApList []*CreateHighReliablePhysicalConnectionRequestApList `json:"ApList,omitempty" xml:"ApList,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The advanced features of the device.
+	// The list of advanced device capabilities.
 	DeviceAdvancedCapacity []*string `json:"DeviceAdvancedCapacity,omitempty" xml:"DeviceAdvancedCapacity,omitempty" type:"Repeated"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without creating the instance. The system checks the required parameters, request format, and instance status. If the check fails, the error code `DRYRUN.FAIL` is returned along with the corresponding error list. If the check succeeds, the code `DRYRUN.SUCCESS` is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): sends the request. After the request passes the check, the instance is created.
 	//
 	// example:
 	//
 	// false
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The high availability mode. Valid values:
+	// The zone-redundancy mode. Valid values:
 	//
-	// - **MultiApMultiDevice*	- : This mode supports two access points and two devices, and provides the maximum disaster recovery capability.
+	// - **MultiApMultiDevice**: maximum disaster recovery. This mode supports two different access points and two different devices, providing maximum disaster recovery.
 	//
-	// - **MultiApSingleDevice*	- : This mode supports two access points and one device, and provides robust disaster recovery capability.
+	// - **MultiApSingleDevice**: enhanced disaster recovery. This mode supports two different access points and one device, providing enhanced disaster recovery.
 	//
-	// - **SingleApMultiDevice*	- : This mode supports one access point and two devices, and is recommended for non-critical business test and development.
+	// - **SingleApMultiDevice**: development and testing. This mode supports one access point and two devices. This mode is recommended only for development and testing of non-critical workloads.
 	//
-	// - **SingleApMultiConnection*	- : This mode supports one access point, one device, and multiple physical ports. Only users in the whitelist can use this mode. To use this mode, contact your account manager.
+	// - **SingleApMultiConnection**: high-bandwidth load balancing. This mode is available only to users in the whitelist. It supports one access point, one device, and multiple physical ports. To use this mode, contact your account manager.
 	//
 	// This parameter is required.
 	//
@@ -94,39 +94,35 @@ type CreateHighReliablePhysicalConnectionRequest struct {
 	HighReliableType *string `json:"HighReliableType,omitempty" xml:"HighReliableType,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The port type. Valid values:
+	// The port type of the Express Connect circuit. Valid values:
 	//
-	// 	- **100Base-T**: 100 Mbit/s copper Ethernet port
+	// - **1000Base-LX**: GE single-mode optical port (10 km).
 	//
-	// 	- **1000Base-T**: 1,000 Mbit/s copper Ethernet port
+	// - **10GBase-LR**: 10 GE single-mode optical port (10 km).
 	//
-	// 	- **1000Base-LX**: 1,000 Mbit/s single-mode optical port (10 km)
+	// - **40GBase-LR**: 40 GE single-mode optical port.
 	//
-	// 	- **10GBase-T**: 10,000 Mbit/s copper Ethernet port
+	// - **100GBase-LR**: 100 GE single-mode optical port.
 	//
-	// 	- **10GBase-LR**: 10,000 Mbit/s single-mode optical port (10 km)
 	//
-	// 	- **40GBase-LR**: 40,000 Mbit/s single-mode optical port
 	//
-	// 	- **100GBase-LR**: 100,000 Mbit/s single-mode optical port
-	//
-	// >  To use ports 40GBase-LR and 100GBase-LR, you must first contact your account manager.
+	// > 40GBase-LR and 100GBase-LR are subject to the actual port availability. For information about port availability, contact your account manager.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1000Base-T
+	// 1000Base-LX
 	PortType *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
 	// The region ID of the Express Connect circuit.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource group to which the Express Connect circuit belongs.
 	//
 	// example:
 	//
@@ -295,9 +291,9 @@ func (s *CreateHighReliablePhysicalConnectionRequest) Validate() error {
 }
 
 type CreateHighReliablePhysicalConnectionRequestApList struct {
-	// The ID of the access point that is associated with the Express Connect circuit.
+	// The ID of the access point for the Express Connect circuit.
 	//
-	// > Two access points must be specified when **HighReliableType*	- is set to **MultiApMultiDevice*	- or **MultiApSingleDevice**. One access point must be specified when **HighReliableType*	- is set to **SingleApMultiDevice*	- or **SingleApMultiConnection**.
+	// > When **HighReliableType*	- is set to **MultiApMultiDevice*	- or **MultiApSingleDevice**, you must specify two different access points. When **HighReliableType*	- is set to **SingleApMultiDevice*	- or **SingleApMultiConnection**, you must specify one access point.
 	//
 	// This parameter is required.
 	//
@@ -305,7 +301,7 @@ type CreateHighReliablePhysicalConnectionRequestApList struct {
 	//
 	// ap-cn-beijing-ft-A
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
-	// The maximum bandwidth of the hosted connection. Unit: Mbit/s.
+	// The bandwidth of the shared Express Connect circuits. Unit: Mbit/s.
 	//
 	// Valid values: 50, 100, 200, 300, 400, 500, 1000, 2000, 4000, 5000, 8000, and 10000.
 	//
@@ -313,7 +309,7 @@ type CreateHighReliablePhysicalConnectionRequestApList struct {
 	//
 	// 50
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The circuit code of the Express Connect circuit, which is provided by the connectivity provider.
+	// The circuit code provided by the connectivity provider for the Express Connect circuit.
 	//
 	// example:
 	//
@@ -321,7 +317,7 @@ type CreateHighReliablePhysicalConnectionRequestApList struct {
 	CircuitCode *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
 	// The description of the Express Connect circuit.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 2 to 256 characters in length and must start with a letter or Chinese character, but cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -329,17 +325,17 @@ type CreateHighReliablePhysicalConnectionRequestApList struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The connectivity provider of the Express Connect circuit. Valid values:
 	//
-	// 	- **CT**: China Telecom.
+	// - **CT**: China Telecom.
 	//
-	// 	- **CU**: China Unicom.
+	// - **CU**: China Unicom.
 	//
-	// 	- **CM**: China Mobile.
+	// - **CM**: China Mobile.
 	//
-	// 	- **CO**: other connectivity providers in the Chinese mainland.
+	// - **CO**: other Chinese carriers.
 	//
-	// 	- **Equinix**: Equinix.
+	// - **Equinix**: Equinix.
 	//
-	// 	- **Other**: other connectivity providers outside the Chinese mainland.
+	// - **Other**: other carriers outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -349,20 +345,57 @@ type CreateHighReliablePhysicalConnectionRequestApList struct {
 	LineOperator *string `json:"LineOperator,omitempty" xml:"LineOperator,omitempty"`
 	// The name of the Express Connect circuit.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter but cannot start with `http://` or` https://`.
+	// The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It can contain digits, underscores (_), and hyphens (-), but cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// test
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OpticalModuleModel *string `json:"OpticalModuleModel,omitempty" xml:"OpticalModuleModel,omitempty"`
-	// The geographical location of the data center.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The optical module model supported by the access point of the Express Connect circuit. Valid values:
+	//
+	// - 1000Base-LX:
+	//
+	//   - `SFP-GE-LR-SM1310,10KM`
+	//
+	//   - `SFP-GE-ER-SM1310,40KM`
+	//
+	//   - `SFP-GE-ZR-SM1550,80KM`
+	//
+	// - 10GBase-LR:
+	//
+	//   - `SFP-10G-LR-SM1310,10KM`
+	//
+	//   - `SFP-10G-ER-SM1550,40KM`
+	//
+	//   - `SFP-10G-ZR-SM1550,80KM`
+	//
+	// - 40GBase-LR:
+	//
+	//   - `QSFP-40G-LR4-WDM1300,10KM`
+	//
+	//   - `QSFP-40G-ER4-WDM1300,40KM`
+	//
+	//   - `QSFP-40G-ZR4-WDM1300,80KM`
+	//
+	// - 100GBase-LR:
+	//
+	//   - `QSFP28-100G-LR4-WDM1300,10KM`
+	//
+	//   - `QSFP28-100G-ER4-WDM1300,40KM`
+	//
+	//   - `QSFP28-100G-ZR4-WDM1300,80KM`.
 	//
 	// example:
 	//
-	// ram-test
+	// SFP-GE-LR-SM1310,10KM
+	OpticalModuleModel *string `json:"OpticalModuleModel,omitempty" xml:"OpticalModuleModel,omitempty"`
+	// The geographic location of the on-premises data center.
+	//
+	// example:
+	//
+	// XX街道
 	PeerLocation *string `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
-	// The number of ports. Valid values: 2 to 16. This parameter is required only when **HighReliableType*	- is set to **SingleApMultiConnection**.
+	// The number of ports. This parameter is required only when **HighReliableType*	- is set to **SingleApMultiConnection**. Valid values: 2 to 16.
 	//
 	// example:
 	//
@@ -370,7 +403,7 @@ type CreateHighReliablePhysicalConnectionRequestApList struct {
 	PortNum *int32 `json:"PortNum,omitempty" xml:"PortNum,omitempty"`
 	// The region ID of the Express Connect circuit.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -498,17 +531,17 @@ func (s *CreateHighReliablePhysicalConnectionRequestApList) Validate() error {
 }
 
 type CreateHighReliablePhysicalConnectionRequestTag struct {
-	// The key of tag N to add to the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and must start with a letter or Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the resource. Valid values of N: 1 to 20. The tag value cannot be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and must start with a letter or Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

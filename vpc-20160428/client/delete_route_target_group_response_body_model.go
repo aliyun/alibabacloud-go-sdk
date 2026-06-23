@@ -14,7 +14,7 @@ type iDeleteRouteTargetGroupResponseBody interface {
 }
 
 type DeleteRouteTargetGroupResponseBody struct {
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//

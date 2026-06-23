@@ -30,11 +30,9 @@ type iAllocateVpcIpv6CidrRequest interface {
 }
 
 type AllocateVpcIpv6CidrRequest struct {
-	// The type of the IPv6 address pool. Valid values:
+	// The type of the IPv6 address pool. Set the value to **custom**.
 	//
-	// - **aliyun*	- (default): IPv6 CIDR block is allocated by the system.
-	//
-	// - **custom**: custom IPv6 CIDR block.
+	// >  This parameter is required.
 	//
 	// example:
 	//
@@ -56,25 +54,19 @@ type AllocateVpcIpv6CidrRequest struct {
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
 	// The type of IPv6 CIDR block. Valid values:
 	//
-	// 	- **BGP*	- (default): BGP (Multi-ISP)
+	// 	- **BGP*	- (default)
 	//
-	// 	- **BGP_International**: BGP (Multi-ISP) International
+	// 	- **ChinaMobile**
 	//
-	// 	- **ChinaMobile**: China Mobile (Single-ISP)
+	// 	- **ChinaUnicom**
 	//
-	// 	- **ChinaUnicom**: China Unicom (Single-ISP)
+	// 	- **ChinaTelecom**
 	//
-	// 	- **ChinaTelecom**: China Telecom (Single-ISP)
+	// >
 	//
-	// 	- **ChinaMobile_L2**: China Mobile (Single-ISP)_L2
+	// 	- If your Alibaba Cloud account is allowed to use single-ISP bandwidth, valid values are: **ChinaTelecom**, **ChinaUnicom**, and **ChinaMobile**.
 	//
-	// 	- **ChinaUnicom_L2**: China Unicom (Single-ISP)_L2
-	//
-	// 	- **ChinaTelecom_L2**: China Telecom (Single-ISP)_L2
-	//
-	// > 	- If your account is included in the whitelist, you can set this parameter to one of the following values: **ChinaTelecom**, **ChinaUnicom**, **ChinaMobile**, **ChinaTelecom_L2**, **ChinaUnicom_L2**, **ChinaMobile_L2**, and **BGP_International**.
-	//
-	// > 	- You can reserve only one IPv6 CIDR block of each type. You can reserve another IPv6 CIDR block only after the existing one is allocated to a VPC.
+	// 	- You can reserve only one IPv6 CIDR block of each type. After a reserved IPv6 CIDR block of a type is allocated to a VPC, you can reserve another IPv6 CIDR of the type.
 	//
 	// example:
 	//

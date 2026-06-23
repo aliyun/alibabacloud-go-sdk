@@ -32,19 +32,19 @@ type iCreateDefaultVpcRequest interface {
 type CreateDefaultVpcRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to enable IPv6. Valid values:
+	// Specifies whether to enable the IPv6 CIDR block. Valid values:
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): does not enable the IPv6 CIDR block.
 	//
-	// 	- **true**
+	// - **true**: enables the IPv6 CIDR block.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type CreateDefaultVpcRequest struct {
 	EnableIpv6 *bool `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
 	// The IPv6 CIDR block of the default VPC.
 	//
-	// > When **EnableIpv6*	- is set to **true**, this parameter is required.
+	// > This parameter is required when **EnableIpv6*	- is set to **true**.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type CreateDefaultVpcRequest struct {
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region to which the default VPC belongs.
+	// The region ID of the default VPC.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

@@ -242,7 +242,7 @@ type ModifyVpnAttachmentAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// vpn-p0wa1c1018pmeb6cu****
+	// vpn-not-exist
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
 }
 

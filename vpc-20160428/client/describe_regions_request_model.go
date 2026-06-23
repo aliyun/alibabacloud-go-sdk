@@ -26,9 +26,11 @@ type iDescribeRegionsRequest interface {
 type DescribeRegionsRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- **zh-CN*	- (default): Chinese
 	//
-	// 	- **en-US**: English
+	//
+	// - **zh-CN*	- (default): Chinese.
+	//
+	// - **en-US**: English.
 	//
 	// example:
 	//
@@ -36,7 +38,7 @@ type DescribeRegionsRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The service type. Default value: **VPC**.
+	// The product type. Default value: **VPC**.
 	//
 	// example:
 	//

@@ -184,7 +184,7 @@ type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList struct {
 	//
 	// example:
 	//
-	// 121012345612****
+	// 121012345612*****
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the IP address pool.
 	//

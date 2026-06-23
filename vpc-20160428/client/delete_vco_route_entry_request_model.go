@@ -34,15 +34,15 @@ type iDeleteVcoRouteEntryRequest interface {
 type DeleteVcoRouteEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- value as the **ClientToken*	- value. The **RequestId*	- value is different for each API request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-4266****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The next hop of the destination-based route that you want to delete.
+	// The next hop of the destination route entry to be deleted.
 	//
 	// This parameter is required.
 	//
@@ -50,16 +50,16 @@ type DeleteVcoRouteEntryRequest struct {
 	//
 	// vco-p0w5112fgnl2ihlmf****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. Set the value to **Ipsec**, which specifies the IPsec tunneling protocol.
+	// The tunneling protocol. Set the value to **Ipsec*	- (default), which specifies the IPsec tunneling protocol.
 	//
 	// example:
 	//
 	// Ipsec
 	OverlayMode  *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	// The region ID of the IPsec-VPN connection.
+	// The region ID of the IPsec connection.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -69,7 +69,7 @@ type DeleteVcoRouteEntryRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The destination CIDR block of the destination-based route that you want to delete.
+	// The destination CIDR block of the destination route entry to be deleted.
 	//
 	// This parameter is required.
 	//
@@ -77,7 +77,7 @@ type DeleteVcoRouteEntryRequest struct {
 	//
 	// 192.168.10.0/24
 	RouteDest *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
-	// The ID of the IPsec-VPN attachment.
+	// The ID of the IPsec connection.
 	//
 	// This parameter is required.
 	//
@@ -85,11 +85,11 @@ type DeleteVcoRouteEntryRequest struct {
 	//
 	// vco-p0w5112fgnl2ihlmf****
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
-	// The weight of the destination-based route that you want to delete. Valid values:
+	// The weight of the destination route entry to be deleted. Valid values:
 	//
-	// 	- **0**: a low priority
+	// - **0**: low priority.
 	//
-	// 	- **100**: a high priority
+	// - **100**: high priority.
 	//
 	// This parameter is required.
 	//

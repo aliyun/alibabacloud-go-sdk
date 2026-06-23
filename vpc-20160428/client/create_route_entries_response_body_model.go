@@ -22,13 +22,13 @@ type iCreateRouteEntriesResponseBody interface {
 }
 
 type CreateRouteEntriesResponseBody struct {
-	// The number of custom route entries that failed to be added.
+	// The number of custom routes that failed to be added.
 	//
 	// example:
 	//
 	// 2
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The details about the custom route entry that failed to be added.
+	// The details about the custom routes that failed to be added.
 	FailedRouteEntries []*CreateRouteEntriesResponseBodyFailedRouteEntries `json:"FailedRouteEntries,omitempty" xml:"FailedRouteEntries,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -36,9 +36,9 @@ type CreateRouteEntriesResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the ID of the custom route entry that was successfully added.
+	// The information about the IDs of the custom routes that are successfully added.
 	RouteEntryIds []*string `json:"RouteEntryIds,omitempty" xml:"RouteEntryIds,omitempty" type:"Repeated"`
-	// The number of custom route entries that were successfully added.
+	// The number of custom routes that are successfully added.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *CreateRouteEntriesResponseBody) Validate() error {
 }
 
 type CreateRouteEntriesResponseBodyFailedRouteEntries struct {
-	// The destination CIDR block of the custom route entry that failed to be added.
+	// The destination CIDR block of the custom route that failed to be added.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type CreateRouteEntriesResponseBodyFailedRouteEntries struct {
 	//
 	// Specified CIDR block is already exists, entry.cidrBlock=xxxx
 	FailedMessage *string `json:"FailedMessage,omitempty" xml:"FailedMessage,omitempty"`
-	// The ID of the next hop of the custom route entry that failed to be added.
+	// The ID of the next hop of the custom route that failed to be added.
 	//
 	// example:
 	//

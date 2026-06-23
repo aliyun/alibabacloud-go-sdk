@@ -16,13 +16,13 @@ type iVpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody interface {
 }
 
 type VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody struct {
-	// The number of endpoints that can be created.
+	// The number of EPs that can be created.
 	//
 	// example:
 	//
 	// 2
 	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

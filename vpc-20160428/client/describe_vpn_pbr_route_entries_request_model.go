@@ -50,7 +50,7 @@ type DescribeVpnPbrRouteEntriesRequest struct {
 	//
 	// example:
 	//
-	// cn-zhangjiakou
+	// eu-central-1
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

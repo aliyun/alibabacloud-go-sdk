@@ -54,7 +54,8 @@ type CreateIpv6EgressOnlyRuleRequest struct {
 	//
 	// ruledescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// A dry run of the request without actually executing it.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the IPv6 address for which you want to create an egress-only rule.
 	//
 	// This parameter is required.

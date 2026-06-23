@@ -282,7 +282,7 @@ type ModifyVpnAttachmentAttributeRequest struct {
 	//
 	// example:
 	//
-	// c20ycDI1NnYxIENBIChURVNUIFN****
+	// -----BEGIN CERTIFICATE----- MIIB7zCCAZW***	- -----END CERTIFICATE-----
 	RemoteCaCert *string `json:"RemoteCaCert,omitempty" xml:"RemoteCaCert,omitempty"`
 	// The CIDR block of the data center that communicates with the VPC. This CIDR block is used in Phase 2 negotiations.
 	//

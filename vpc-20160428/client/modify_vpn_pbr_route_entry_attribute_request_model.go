@@ -42,21 +42,21 @@ type iModifyVpnPbrRouteEntryAttributeRequest interface {
 type ModifyVpnPbrRouteEntryAttributeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// d7d24a21-f4ba-4454-9173-b3****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The new priority of the policy-based route. Valid values: **1*	- to **100**.
+	// The new policy priority of the policy-based route. Valid values: **1*	- to **100**.
 	//
 	// A smaller value indicates a higher priority.
 	//
-	// If you do not specify this parameter, the priority of the policy-based route is not modified.
+	// If you do not specify this parameter, the policy priority of the policy-based route is not modified.
 	//
-	// >  You must specify at least one of **NewPriority*	- and **NewWeight**.
+	// > You must specify at least one of the **NewPriority*	- and **NewWeight*	- parameters.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ type ModifyVpnPbrRouteEntryAttributeRequest struct {
 	NewPriority *int32 `json:"NewPriority,omitempty" xml:"NewPriority,omitempty"`
 	// The new weight of the policy-based route. Valid values:
 	//
-	// 	- **100**: The IPsec-VPN connection associated with the policy-based route serves as the active connection.
+	// - **100**: The IPsec-VPN connection associated with the policy-based route serves as the active link.
 	//
-	// 	- **0**: The IPsec-VPN connection associated with the policy-based route serves as the standby connection.
+	// - **0**: The IPsec-VPN connection associated with the policy-based route serves as the standby link.
 	//
 	// If you do not specify this parameter, the weight of the policy-based route is not modified.
 	//
-	// >  You must specify at least one of **NewPriority*	- and **NewWeight**.
+	// > You must specify at least one of the **NewPriority*	- and **NewWeight*	- parameters.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type ModifyVpnPbrRouteEntryAttributeRequest struct {
 	NextHop      *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The original priority of the policy-based route. Valid values: **1*	- to **100**.
+	// The original policy priority of the policy-based route. Valid values: **1*	- to **100**.
 	//
 	// A smaller value indicates a higher priority.
 	//
@@ -96,9 +96,9 @@ type ModifyVpnPbrRouteEntryAttributeRequest struct {
 	//
 	// 5
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The region ID of the VPN gateway.
+	// The region ID of the VPN gateway instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -124,7 +124,7 @@ type ModifyVpnPbrRouteEntryAttributeRequest struct {
 	//
 	// 192.168.1.0/24
 	RouteSource *string `json:"RouteSource,omitempty" xml:"RouteSource,omitempty"`
-	// The ID of the VPN gateway.
+	// The instance ID of the VPN gateway.
 	//
 	// This parameter is required.
 	//
@@ -134,9 +134,9 @@ type ModifyVpnPbrRouteEntryAttributeRequest struct {
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
 	// The original weight of the policy-based route. Valid values:
 	//
-	// 	- **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
+	// - **100**: The IPsec-VPN connection associated with the policy-based route serves as the active link.
 	//
-	// 	- **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
+	// - **0**: The IPsec-VPN connection associated with the policy-based route serves as the standby link.
 	//
 	// This parameter is required.
 	//

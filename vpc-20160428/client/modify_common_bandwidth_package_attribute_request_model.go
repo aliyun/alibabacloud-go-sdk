@@ -40,7 +40,7 @@ type ModifyCommonBandwidthPackageAttributeRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the EIP bandwidth plan. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot start with `http://` or `https://`.
 	//

@@ -60,7 +60,7 @@ type ModifyExpressConnectTrafficQosQueueRequest struct {
 	//
 	// example:
 	//
-	// qos-2giu0a6vd5x0mv4700
+	// qos-2giu0a6vd5x0mv****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
 	// The description of the QoS queue.
 	//
@@ -76,7 +76,7 @@ type ModifyExpressConnectTrafficQosQueueRequest struct {
 	//
 	// example:
 	//
-	// qos-queue-9nyx2u7n71s2rcy4n5
+	// qos-queue-9nyx2u7n71s2rc****
 	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
 	// The name of the QoS queue.
 	//

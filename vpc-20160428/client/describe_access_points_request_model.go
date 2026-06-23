@@ -28,9 +28,9 @@ type iDescribeAccessPointsRequest interface {
 type DescribeAccessPointsRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- **zh-CN**: Chinese
+	// - **zh-CN**: Chinese.
 	//
-	// 	- **en-US*	- (default): English
+	// - **en-US*	- (default): English.
 	//
 	// example:
 	//
@@ -49,9 +49,9 @@ type DescribeAccessPointsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the access point.
+	// The ID of the region where the access point is located.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//

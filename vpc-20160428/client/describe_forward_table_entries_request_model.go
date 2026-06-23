@@ -118,7 +118,7 @@ type DescribeForwardTableEntriesRequest struct {
 	//
 	// example:
 	//
-	// TCP
+	// tcp
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	// The ID of the NAT gateway.
 	//

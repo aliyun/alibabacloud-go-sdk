@@ -23,13 +23,13 @@ type iDescribeEipSegmentResponseBody interface {
 
 type DescribeEipSegmentResponseBody struct {
 	EipSegments *DescribeEipSegmentResponseBodyEipSegments `json:"EipSegments,omitempty" xml:"EipSegments,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//

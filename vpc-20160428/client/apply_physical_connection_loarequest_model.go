@@ -106,7 +106,7 @@ type ApplyPhysicalConnectionLOARequest struct {
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// 杭州
 	PeerLocation *string `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
 	// The region ID of the Express Connect circuit.
 	//
@@ -126,7 +126,7 @@ type ApplyPhysicalConnectionLOARequest struct {
 	//
 	// example:
 	//
-	// company
+	// 阿里
 	Si *string `json:"Si,omitempty" xml:"Si,omitempty"`
 }
 
@@ -312,7 +312,7 @@ type ApplyPhysicalConnectionLOARequestPMInfo struct {
 	//
 	// example:
 	//
-	// Zhangsan
+	// 张三
 	PMName *string `json:"PMName,omitempty" xml:"PMName,omitempty"`
 }
 

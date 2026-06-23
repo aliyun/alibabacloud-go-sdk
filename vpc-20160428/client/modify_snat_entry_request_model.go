@@ -40,37 +40,39 @@ type iModifySnatEntryRequest interface {
 type ModifySnatEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-001****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Whether to perform a dry run of this request, with values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: Sends a check request without modifying the SNAT entry. The checks include whether the required parameters are filled in, the request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, an error code `DryRunOperation` is returned.
+	// - **true**: performs a dry run without modifying the SNAT entry. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): Sends a normal request. After passing the check, it returns a 2xx HTTP status code and modifies the SNAT entry.
+	// - **false*	- (default): performs a dry run and sends the request. After the check succeeds, a 2xx HTTP status code is returned and the SNAT entry is modified.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Whether to enable IP affinity. Values:
+	// Specifies whether to enable EIP affinity. Valid values:
 	//
-	// - **0**: Disable IP affinity.
+	// - **0**: disables EIP affinity.
 	//
-	//  - **1**: Enable IP affinity.
+	// - **1**: enables EIP affinity.
 	//
-	// > After enabling the IP affinity switch, if an SNAT entry is bound to multiple EIPs or NAT IPs, the same client will use the same EIP or NAT IP for access; otherwise, the client will randomly select from the bound EIPs or NAT IPs for access.
+	// > After you enable EIP affinity, if the SNAT entry is associated with multiple EIPs or NAT IP addresses, the same client uses the same EIP or NAT IP address for access. Otherwise, the client randomly selects an EIP or NAT IP address from the associated ones for access.
 	//
 	// example:
 	//
 	// 1
 	EipAffinity *int32 `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
-	// Elastic Network Interface ID. The IPv4 address set of the elastic network interface will be used as the SNAT address.
+	// The ID of the elastic network interfaces (ENIs).
+	//
+	// > The IPv4 addresses of the network interface controller (NIC) are used as the SNAT addresses.
 	//
 	// example:
 	//
@@ -80,7 +82,7 @@ type ModifySnatEntryRequest struct {
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the NAT gateway.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -100,17 +102,21 @@ type ModifySnatEntryRequest struct {
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
 	// The name of the SNAT entry.
 	//
-	// The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// SnatEntry-1
 	SnatEntryName *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
-	// 	- The elastic IP addresses (EIPs) specified in the SNAT entry when you modify an SNAT entry of an Internet NAT gateway. Separate EIPs with commas (,).
+	// - When you modify an SNAT entry for an Internet NAT gateway, this parameter specifies the EIPs in the SNAT entry. Separate multiple EIPs with commas (,).
 	//
-	//     If you select multiple EIPs to create an SNAT address pool, connections are hashed to these EIPs. Network traffic may not be evenly distributed to the EIPs because the amount of traffic passes through each connection varies. We recommend that you associate these EIPs with the same EIP bandwidth plan to prevent service interruptions due to the bandwidth limit of an individual EIP.
 	//
-	// 	- When you modify an SNAT entry of a VPC NAT gateway, this parameter specifies the NAT IP address in the SNAT entry.
+	//
+	// > When you specify multiple EIPs to allocate an SNAT IP IPAM pool, service traffic is distributed across the EIPs by using a hash algorithm. Because traffic varies across connections, service traffic may be unevenly distributed across the EIPs. Add all EIPs to the same Internet Shared Bandwidth instance to prevent service interruptions caused by bandwidth throttling on a single EIP.
+	//
+	// - When you modify an SNAT entry for a VPC NAT gateway, this parameter specifies the NAT IP addresses in the SNAT entry. Separate multiple NAT IP addresses with commas (,).
+	//
+	// - The SnatIp and NetworkInterfaceId parameters cannot be specified at the same time.
 	//
 	// example:
 	//

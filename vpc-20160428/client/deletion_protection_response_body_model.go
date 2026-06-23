@@ -14,7 +14,7 @@ type iDeletionProtectionResponseBody interface {
 }
 
 type DeletionProtectionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

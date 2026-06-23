@@ -32,24 +32,50 @@ type iUpdateEnhancedVpnGatewayRequest interface {
 }
 
 type UpdateEnhancedVpnGatewayRequest struct {
+	// Specifies whether to enable automatic route propagation for the enhanced VPN gateway. Valid values:
+	//
+	// - **true**<br>
+	//
+	//   The enhanced VPN gateway automatically learns system routes from the system route table of the VPC and propagates routes from the on-premises data center to the system route table of the VPC.<br>
+	//
+	// - **false**<br>
+	//
+	//   Automatic route propagation is disabled. Before you disable this feature, make sure that BGP dynamic routing is disabled for all IPsec-VPN connections of the enhanced VPN gateway.<br>
+	//
 	// example:
 	//
 	// true
 	AutoPropagate *bool `json:"AutoPropagate,omitempty" xml:"AutoPropagate,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can generate a token from your client to make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// > If you do not specify a `ClientToken`, the system automatically uses the `RequestId` of the API request as the `ClientToken`. Each API request has a different `RequestId`.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-4266****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The new description of the enhanced VPN gateway.
+	//
+	// The description must be 1 to 100 characters in length.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The new name of the enhanced VPN gateway.
+	//
+	// The name must be 2 to 100 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+	//
 	// example:
 	//
 	// myvpn
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the enhanced VPN gateway is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -58,6 +84,8 @@ type UpdateEnhancedVpnGatewayRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the enhanced VPN gateway.
+	//
 	// This parameter is required.
 	//
 	// example:

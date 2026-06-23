@@ -46,71 +46,69 @@ type iDescribeRouteEntryListRequest interface {
 }
 
 type DescribeRouteEntryListRequest struct {
-	// The destination CIDR blocks of the routes.
+	// The list of destination CIDR blocks of route entries.
 	DestCidrBlockList []*string `json:"DestCidrBlockList,omitempty" xml:"DestCidrBlockList,omitempty" type:"Repeated"`
-	// The destination CIDR block of the route. IPv4 and IPv6 CIDR blocks are supported.
+	// The destination CIDR block of the route entry. Both IPv4 and IPv6 CIDR blocks are supported.
 	//
 	// example:
 	//
 	// 192.168.2.0/24
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The IP version. Valid values:
+	// The version of the IP protocol. Valid values:
 	//
-	// 	- **IPv4**
+	// - **ipv4**: IPv4 protocol.
 	//
-	// 	- **IPv6**
+	// - **ipv6**: IPv6 protocol.
 	//
 	// example:
 	//
-	// IPv4
+	// ipv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **10**.
+	// The number of entries to return per page during a paged query. Valid values: **1*	- to **100**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
-	// The ID of the next hop.
+	// The ID of the next hop instance.
 	//
 	// example:
 	//
 	// vpn-bp10zyaph5cc8b7c7****
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The next hop type. Valid values:
+	// The type of the next hop. Valid values:
 	//
-	// 	- **Instance**: an Elastic Compute Service (ECS) instance. This is the default value.
+	// - **Instance*	- (default): ECS instance.
 	//
-	// 	- **HaVip**: a high-availability virtual IP address (HaVip).
+	// - **HaVip**: high-availability virtual IP address (HAVIP).
 	//
-	// 	- **VpnGateway**: a VPN gateway.
+	// - **VpnGateway**: VPN gateway.
 	//
-	// 	- **NatGateway**: a NAT gateway.
+	// - **NatGateway**: NAT gateway.
 	//
-	// 	- **NetworkInterface**: a secondary elastic network interface (ENI).
+	// - **NetworkInterface**: secondary elastic network interface.
 	//
-	// 	- **RouterInterface**: a router interface.
+	// - **RouterInterface**: router interface.
 	//
-	// 	- **IPv6Gateway**: an IPv6 gateway.
+	// - **IPv6Gateway**: IPv6 gateway.
 	//
-	// 	- **Attachment**: a transit router.
+	// - **Attachment**: transit router.
 	//
-	// 	- **Ipv4Gateway**: an IPv4 gateway.
+	// - **Ipv4Gateway**: IPv4 gateway.
 	//
-	// 	- **GatewayEndpoint**: a gateway endpoint.
+	// - **GatewayEndpoint**: gateway endpoint.
 	//
-	// 	- **CenBasic**: CEN does not support transit routers.
-	//
-	// 	- **Ecr**: Express Connect Router (ECR).
+	// - **Ecr**: Express Connect Router.
 	//
 	// example:
 	//
 	// Instance
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// Specifies whether a next query token (Token) exists. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - You do not need to specify this parameter for the first query or if no next query exists.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	// - If a next query exists, set the value to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
@@ -118,9 +116,9 @@ type DescribeRouteEntryListRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the route table.
+	// The region ID of the route table to which the route entry belongs.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -130,7 +128,7 @@ type DescribeRouteEntryListRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the route that you want to query.
+	// The ID of the route entry to query.
 	//
 	// example:
 	//
@@ -144,23 +142,23 @@ type DescribeRouteEntryListRequest struct {
 	//
 	// abc
 	RouteEntryName *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
-	// The route type. Valid values:
+	// The type of the route. Valid values:
 	//
-	// 	- **Custom**: custom routes.
+	// - **Custom**: custom route.
 	//
-	// 	- **System**: system routes.
+	// - **System**: system route.
 	//
-	// 	- **BGP**: BGP routes.
+	// - **BGP**: BGP route.
 	//
-	// 	- **CEN**: Cloud Enterprise Network (CEN) routes.
+	// - **CEN**: Cloud Enterprise Network (CEN) route.
 	//
-	// 	- **ECR**: Express Connect Router (ECR) routes.
+	// - **ECR**: Express Connect Router route.
 	//
 	// example:
 	//
 	// System
 	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
-	// The ID of the route table that you want to query.
+	// The ID of the route table to query.
 	//
 	// This parameter is required.
 	//
@@ -168,9 +166,9 @@ type DescribeRouteEntryListRequest struct {
 	//
 	// vtb-bp1r9pvl4xen8s9ju****
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// Specifies whether to host the route. If the parameter is empty, the route is not hosted.
+	// The type of route service. If this field is empty, it indicates that the route is not managed.
 	//
-	// Set the value to **TR**, which specifies that the route is hosted by a transit router.
+	// Valid value: **TR**, which indicates that the managed type is transit router.
 	//
 	// example:
 	//

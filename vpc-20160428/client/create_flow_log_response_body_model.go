@@ -20,13 +20,13 @@ type iCreateFlowLogResponseBody interface {
 }
 
 type CreateFlowLogResponseBody struct {
-	// The ID of the flow log.
+	// The flow log ID.
 	//
 	// example:
 	//
 	// fl-m5e8vhz2t21sel1nq****
 	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type CreateFlowLogResponseBody struct {
 	//
 	// rg-acfmxazdjdhd****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the operation is successful. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: The call is successful.
 	//
-	// 	- **false**: no
+	// - **false**: The call failed.
 	//
 	// example:
 	//

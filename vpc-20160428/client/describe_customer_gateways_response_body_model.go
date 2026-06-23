@@ -23,13 +23,13 @@ type iDescribeCustomerGatewaysResponseBody interface {
 
 type DescribeCustomerGatewaysResponseBody struct {
 	CustomerGateways *DescribeCustomerGatewaysResponseBodyCustomerGateways `json:"CustomerGateways,omitempty" xml:"CustomerGateways,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeCustomerGatewaysResponseBody struct {
 	//
 	// E82612A9-CB90-4D7E-B394-1DB7F6509B29
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of returned entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//

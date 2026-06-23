@@ -30,17 +30,29 @@ type iRemoveCommonBandwidthPackageIpRequest interface {
 }
 
 type RemoveCommonBandwidthPackageIpRequest struct {
+	// The ID of the Internet Shared Bandwidth instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cbwp-2ze2ic1xd2qeqk145****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	// A client token used to ensure the idempotence of the request.
+	//
+	// Generate a unique value for this parameter from your client to guarantee uniqueness across different requests. ClientToken supports only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the EIP instance.
+	//
+	// You can call the [DescribeEipAddresses](https://help.aliyun.com/document_detail/36018.html) API to query the ID of the EIP instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -49,6 +61,10 @@ type RemoveCommonBandwidthPackageIpRequest struct {
 	IpInstanceId *string `json:"IpInstanceId,omitempty" xml:"IpInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the Internet Shared Bandwidth instance.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) API to obtain the region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

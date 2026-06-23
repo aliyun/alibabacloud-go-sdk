@@ -58,7 +58,7 @@ type GetVpcRouteEntrySummaryRequest struct {
 	//
 	// example:
 	//
-	// Custom
+	// custom
 	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
 	// The ID of the route table that you want to query.
 	//

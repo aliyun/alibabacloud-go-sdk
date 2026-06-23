@@ -56,9 +56,9 @@ type iCreateVpcRequest interface {
 type CreateVpcRequest struct {
 	// VPC CIDR.
 	//
-	// 	- We recommend using the private IPv4 address specified in RFC 1918 as the primary IPv4 CIDR block of the VPC with a recommended mask length of 16 to 28 bits. For example, 10.0.0.0/16, 172.16.0.0/16, and 192.168.0.0/16.
+	// - We recommend using the private IPv4 address specified in RFC 1918 as the primary IPv4 CIDR block of the VPC with a recommended mask length of 16 to 28 bits. For example, 10.0.0.0/16, 172.16.0.0/16, and 192.168.0.0/16.
 	//
-	// 	- You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the primary IPv4 CIDR block.
+	// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the primary IPv4 CIDR block.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CreateVpcRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
 	//
 	// example:
 	//
@@ -84,9 +84,9 @@ type CreateVpcRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -104,9 +104,9 @@ type CreateVpcRequest struct {
 	EnableDnsHostname *bool `json:"EnableDnsHostname,omitempty" xml:"EnableDnsHostname,omitempty"`
 	// Indicates whether IPv6 is enabled. Valid values:
 	//
-	// 	- **false*	- (default): disabled.
+	// - **false*	- (default): disabled.
 	//
-	// 	- **true**: enabled.
+	// - **true**: enabled.
 	//
 	// example:
 	//
@@ -146,15 +146,15 @@ type CreateVpcRequest struct {
 	Ipv6IpamPoolId *string `json:"Ipv6IpamPoolId,omitempty" xml:"Ipv6IpamPoolId,omitempty"`
 	// The type of the IPv6 CIDR block of the VPC. Valid values:
 	//
-	// 	- **BGP*	- (default)
+	// - **BGP*	- (default)
 	//
-	// 	- **ChinaMobile**
+	// - **ChinaMobile**
 	//
-	// 	- **ChinaUnicom**
+	// - **ChinaUnicom**
 	//
-	// 	- **ChinaTelecom**
+	// - **ChinaTelecom**
 	//
-	// >  If you are allowed to use single-ISP bandwidth, you can set the value to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
+	// > If you are allowed to use single-ISP bandwidth, you can set the value to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type CreateVpcRequest struct {
 	//
 	// example:
 	//
-	// 192.168.0.0/16
+	// 192.168.0.0/12
 	UserCidr *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
 	// The name of the VPC.
 	//

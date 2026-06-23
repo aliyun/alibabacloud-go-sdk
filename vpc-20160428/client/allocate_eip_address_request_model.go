@@ -68,9 +68,9 @@ type AllocateEipAddressRequest struct {
 	ActivityId *int64 `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// 	- **false*	- (default): The automatic payment is disabled. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
+	// - **false*	- (default): The automatic payment is disabled. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
 	//
-	// 	- **true**: The automatic payment is enabled. Payments are automatically complete after an order is generated.
+	// - **true**: The automatic payment is enabled. Payments are automatically complete after an order is generated.
 	//
 	// If **InstanceChargeType*	- is set to **PrePaid**, this parameter is required. If **InstanceChargeType*	- is set to **PostPaid**, this parameter is not required.
 	//
@@ -80,11 +80,11 @@ type AllocateEipAddressRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The maximum bandwidth of the EIP. Unit: Mbit/s.
 	//
-	// 	- Valid values when **InstanceChargeType*	- is set to **PostPaid*	- and **InternetChargeType*	- is set to **PayByBandwidth**: **1*	- to **500**.****
+	// - Valid values when **InstanceChargeType*	- is set to **PostPaid*	- and **InternetChargeType*	- is set to **PayByBandwidth**: **1*	- to **500**.\\*\\*\\*\\*
 	//
-	// 	- Valid values when **InstanceChargeType*	- is set to **PostPaid*	- and **InternetChargeType*	- is set to **PayByTraffic**: **1*	- to **200**.****
+	// - Valid values when **InstanceChargeType*	- is set to **PostPaid*	- and **InternetChargeType*	- is set to **PayByTraffic**: **1*	- to **200**.\\*\\*\\*\\*
 	//
-	// 	- Valid values when **InstanceChargeType*	- is set to **PrePaid**: **1*	- to **1000**.****
+	// - Valid values when **InstanceChargeType*	- is set to **PrePaid**: **1*	- to **1000**.\\*\\*\\*\\*
 	//
 	// Default value: **5**. Unit: Mbit/s.
 	//
@@ -96,7 +96,7 @@ type AllocateEipAddressRequest struct {
 	//
 	// You can use the client to generate a token, but you must make sure that the token is unique among different requests. The **client token*	- can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId*	- as the **client token**. The value of **RequestId*	- is different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the value of **RequestId*	- as the **client token**. The value of **RequestId*	- is different for each API request.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type AllocateEipAddressRequest struct {
 	//
 	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
 	//
-	// >  You cannot specify this parameter if you create a subscription EIP.
+	// > You cannot specify this parameter if you create a subscription EIP.
 	//
 	// example:
 	//
@@ -114,27 +114,27 @@ type AllocateEipAddressRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The line type. Valid values:
 	//
-	// 	- **BGP*	- (default): BGP (Multi-ISP) All regions support BGP (Multi-ISP) EIPs.
+	// - **BGP*	- (default): BGP (Multi-ISP) All regions support BGP (Multi-ISP) EIPs.
 	//
-	// 	- **BGP_PRO**: BGP (Multi-ISP) Pro Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
+	// - **BGP_PRO**: BGP (Multi-ISP) Pro Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
 	//
 	// For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the "Line types" section of [What is EIP?](https://help.aliyun.com/document_detail/32321.html)
 	//
-	// 	- If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+	// - If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
 	//
-	//     	- **ChinaTelecom**
+	//   - **ChinaTelecom**
 	//
-	//     	- **ChinaUnicom**
+	//   - **ChinaUnicom**
 	//
-	//     	- **ChinaMobile**
+	//   - **ChinaMobile**
 	//
-	//     	- **ChinaTelecom_L2**
+	//   - **ChinaTelecom_L2**
 	//
-	//     	- **ChinaUnicom_L2**
+	//   - **ChinaUnicom_L2**
 	//
-	//     	- **ChinaMobile_L2**
+	//   - **ChinaMobile_L2**
 	//
-	// 	- If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
+	// - If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
 	//
 	// example:
 	//
@@ -142,9 +142,9 @@ type AllocateEipAddressRequest struct {
 	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
 	// The billing method of the EIP. Valid values:
 	//
-	// 	- **PrePaid**: subscription
+	// - **PrePaid**: subscription
 	//
-	// 	- **PostPaid*	- (default): pay-as-you-go
+	// - **PostPaid*	- (default): pay-as-you-go
 	//
 	// If **InstanceChargeType*	- is set to **PrePaid**, set **InternetChargeType*	- to **PayByBandwidth**. If **InstanceChargeType*	- is set to **PostPaid**, set **InternetChargeType*	- to **PayByBandwidth*	- or **PayByTraffic**.
 	//
@@ -162,9 +162,9 @@ type AllocateEipAddressRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The metering method of the EIP. Valid values:
 	//
-	// 	- **PayByBandwidth*	- (default): pay-by-bandwidth
+	// - **PayByBandwidth*	- (default): pay-by-bandwidth
 	//
-	// 	- **PayByTraffic**: pay-by-data-transfer
+	// - **PayByTraffic**: pay-by-data-transfer
 	//
 	// When **InstanceChargeType*	- is set to **PrePaid**, set **InternetChargeType*	- to **PayByBandwidth**.
 	//
@@ -186,7 +186,7 @@ type AllocateEipAddressRequest struct {
 	//
 	// The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
-	// >  You cannot specify this parameter if you create a subscription EIP.
+	// > You cannot specify this parameter if you create a subscription EIP.
 	//
 	// example:
 	//
@@ -202,9 +202,9 @@ type AllocateEipAddressRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The subscription duration of the EIP.
 	//
-	// Valid values when **PricingCycle*	- is set to **Month**: **1*	- to **9**.****
+	// Valid values when **PricingCycle*	- is set to **Month**: **1*	- to **9**.\\*\\*\\*\\*
 	//
-	// Valid values when **PricingCycle*	- is set to **Year**: **1*	- to **5**.****
+	// Valid values when **PricingCycle*	- is set to **Year**: **1*	- to **5**.\\*\\*\\*\\*
 	//
 	// This parameter must be specified when **InstanceChargeType*	- is set to **PrePaid**. This parameter is optional when **InstanceChargeType*	- is set to **PostPaid**.
 	//
@@ -214,9 +214,9 @@ type AllocateEipAddressRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The billing cycle of the subscription EIP. Valid values:
 	//
-	// 	- **Month*	- (default)
+	// - **Month*	- (default)
 	//
-	// 	- **Year**
+	// - **Year**
 	//
 	// If **InstanceChargeType*	- is set to **PrePaid**, this parameter is required. If **InstanceChargeType*	- is set to **PostPaid**, this parameter is not required.
 	//
@@ -254,17 +254,18 @@ type AllocateEipAddressRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The editions of Anti-DDoS.
 	//
-	// 	- If you do not specify this parameter, Anti-DDoS Origin Basic is used.
+	// - If you do not specify this parameter, Anti-DDoS Origin Basic is used.
 	//
-	// 	- If you set the parameter to **AntiDDoS_Enhanced**, Anti-DDoS Pro/Premium is used.
+	// - If you set the parameter to **AntiDDoS_Enhanced**, Anti-DDoS Pro/Premium is used.
 	//
 	// You can specify up to 10 editions of Anti-DDoS.
 	//
 	// example:
 	//
 	// AntiDDoS_Enhanced
-	SecurityProtectionTypes []*string                       `json:"SecurityProtectionTypes,omitempty" xml:"SecurityProtectionTypes,omitempty" type:"Repeated"`
-	Tag                     []*AllocateEipAddressRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SecurityProtectionTypes []*string `json:"SecurityProtectionTypes,omitempty" xml:"SecurityProtectionTypes,omitempty" type:"Repeated"`
+	// The tags of the resource.
+	Tag []*AllocateEipAddressRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The zone of the EIP.
 	//
 	// When the service type of the IP address pool specified by **PublicIpAddressPoolId*	- is CloudBox, the default value is the zone of the IP address pool.
@@ -273,7 +274,7 @@ type AllocateEipAddressRequest struct {
 	//
 	// example:
 	//
-	// cn-hangzhou-a
+	// ap-southeast-1-lzdvn-cb
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
@@ -515,7 +516,19 @@ func (s *AllocateEipAddressRequest) Validate() error {
 }
 
 type AllocateEipAddressRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the resource. You can specify up to 20 tag keys. If you specify this value, it cannot be an empty string.
+	//
+	// A tag key can contain up to 128 characters, must not start with `aliyun` or `acs:`, and must not contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. When you invoke the API, use the format Tag.N.Value, where N ranges from 1 to 20. If you specify this value, it cannot be an empty string. It can contain up to 128 characters, must not start with `aliyun` or `acs:`, and must not contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

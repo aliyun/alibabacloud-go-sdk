@@ -18,7 +18,7 @@ type EnablePhysicalConnectionResponseBody struct {
   // 
   // example:
   // 
-  // 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
+  // 20365164-5b0d-460a-83c2-2189972b3349
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

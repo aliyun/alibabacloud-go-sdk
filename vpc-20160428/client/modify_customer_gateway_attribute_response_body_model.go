@@ -26,13 +26,13 @@ type iModifyCustomerGatewayAttributeResponseBody interface {
 }
 
 type ModifyCustomerGatewayAttributeResponseBody struct {
-	// The timestamp generated when the customer gateway was created.
+	// The timestamp when the customer gateway was created.
 	//
 	// example:
 	//
 	// 1492747187000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the customer gateway.
+	// The instance ID of the customer gateway.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ModifyCustomerGatewayAttributeResponseBody struct {
 	//
 	// desctest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The public IP address of the gateway device in the data center.
+	// The public IP address of the on-premises data center gateway device.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ModifyCustomerGatewayAttributeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group to which the customer gateway belongs.
 	//
-	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
+	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
 	//
 	// example:
 	//

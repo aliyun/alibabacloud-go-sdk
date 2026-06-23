@@ -26,21 +26,21 @@ type iDescribeSslVpnClientsResponseBody interface {
 }
 
 type DescribeSslVpnClientsResponseBody struct {
-	// The list of clients.
+	// The list of client information.
 	ClientInfoList []*DescribeSslVpnClientsResponseBodyClientInfoList `json:"ClientInfoList,omitempty" xml:"ClientInfoList,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID.
+	// The region ID of the VPN gateway instance.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type DescribeSslVpnClientsResponseBody struct {
 	//
 	// 885E117D-06A9-38A3-8DD2-40BDAC429FFC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of returned entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The ID of the VPN gateway.
+	// The VPN gateway instance ID.
 	//
 	// example:
 	//
@@ -151,47 +151,47 @@ func (s *DescribeSslVpnClientsResponseBody) Validate() error {
 }
 
 type DescribeSslVpnClientsResponseBodyClientInfoList struct {
-	// The SSL client certificate used by the client.
+	// The SSL client certificate used by the client to establish the SSL-VPN connection to Alibaba Cloud.
 	//
-	// >  If the client uses two-factor authentication to establish an SSL-VPN connection to Alibaba Cloud, the return value is the username of the client.
+	// > If the client uses two-factor identity authentication to establish the SSL-VPN connection to Alibaba Cloud, the value of this parameter is the username of the client.
 	//
 	// example:
 	//
 	// CN=vsc-gw8gkh6gtilf1whgc****
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The timestamp that indicates when the client connected to Alibaba Cloud through an SSL-VPN connection. Unit: milliseconds.
+	// The timestamp when the client established the SSL-VPN connection to Alibaba Cloud. Unit: milliseconds.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp is in the UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the SSL-VPN connection was established.
 	//
 	// example:
 	//
 	// 1670985008000
 	ConnectedTime *int64 `json:"ConnectedTime,omitempty" xml:"ConnectedTime,omitempty"`
-	// The actual public IP address used by the client when the client established an SSL-VPN connection to Alibaba Cloud.
+	// The public IP address that the client used to establish the SSL-VPN connection to Alibaba Cloud.
 	//
 	// example:
 	//
 	// 8.XX.XX.15
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The port used by the client when the client established an SSL-VPN connection to Alibaba Cloud.
+	// The port number that the client used to establish the SSL-VPN connection to Alibaba Cloud.
 	//
 	// example:
 	//
 	// 4****
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The private IP address allocated to the client by the VPN gateway when the client established an SSL-VPN connection to Alibaba Cloud.
+	// The private IP address that the VPN gateway assigned to the client when the client established an SSL-VPN connection to Alibaba Cloud.
 	//
 	// example:
 	//
 	// 10.10.10.10
 	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// The amount of data transferred from the client to the VPN gateway through the SSL-VPN connection. Unit: bytes.
+	// The traffic that the VPN gateway received from the client over the SSL-VPN connection. Unit: bytes.
 	//
 	// example:
 	//
 	// 60782
 	ReceiveBytes *int64 `json:"ReceiveBytes,omitempty" xml:"ReceiveBytes,omitempty"`
-	// The amount of data transferred from the VPN gateway to the client through the SSL-VPN connection. Unit: bytes.
+	// The traffic that the VPN gateway sent to the client over the SSL-VPN connection. Unit: bytes.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type DescribeSslVpnClientsResponseBodyClientInfoList struct {
 	SendBytes *int64 `json:"SendBytes,omitempty" xml:"SendBytes,omitempty"`
 	// The status of the SSL-VPN connection.
 	//
-	// The value is set to **online**, which indicates that the client has connected to Alibaba Cloud through an SSL-VPN connection.
+	// Valid values: **online**, which indicates that the client has successfully established an SSL-VPN connection to Alibaba Cloud.
 	//
 	// example:
 	//

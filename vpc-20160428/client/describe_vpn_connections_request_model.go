@@ -44,21 +44,21 @@ type DescribeVpnConnectionsRequest struct {
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page. Default value: **10**. Valid values: **1*	- to **50**.
+	// The number of entries per page for paging queries. Default value: **10**. Valid values: **1*	- to **50**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the IPsec-VPN connection is created.
+	// The region ID of the IPsec-VPN connection.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -76,11 +76,9 @@ type DescribeVpnConnectionsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tag value.
+	// The list of tags bound to the IPsec-VPN connection.
 	//
-	// The tag value can be an empty string and cannot exceed 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-	//
-	// Each tag key corresponds to one tag value. You can specify up to 20 tag values in each call.
+	// You can specify up to 20 tags at a time.
 	Tag []*DescribeVpnConnectionsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the IPsec-VPN connection.
 	//
@@ -88,7 +86,7 @@ type DescribeVpnConnectionsRequest struct {
 	//
 	// vco-bp10lz7aejumd****
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
-	// The ID of the VPN gateway.
+	// The instance ID of the VPN gateway.
 	//
 	// example:
 	//
@@ -226,11 +224,11 @@ func (s *DescribeVpnConnectionsRequest) Validate() error {
 }
 
 type DescribeVpnConnectionsRequestTag struct {
-	// The tag key. The tag key cannot be an empty string.
+	// The tag key. If you specify this parameter, the value cannot be an empty string.
 	//
-	// It can be at most 64 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// You can specify at most 20 tag keys in each call.
+	// You can specify up to 20 tag keys at a time.
 	//
 	// example:
 	//
@@ -238,9 +236,9 @@ type DescribeVpnConnectionsRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// The tag value can be an empty string and cannot exceed 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and can be an empty string. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
-	// Each tag key corresponds to one tag value. You can specify at most 20 tag values in each call.
+	// Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
 	//
 	// example:
 	//

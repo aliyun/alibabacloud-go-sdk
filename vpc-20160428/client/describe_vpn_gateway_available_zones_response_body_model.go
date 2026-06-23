@@ -18,7 +18,7 @@ type iDescribeVpnGatewayAvailableZonesResponseBody interface {
 }
 
 type DescribeVpnGatewayAvailableZonesResponseBody struct {
-	// The zones.
+	// The list of zones.
 	AvailableZoneIdList []*DescribeVpnGatewayAvailableZonesResponseBodyAvailableZoneIdList `json:"AvailableZoneIdList,omitempty" xml:"AvailableZoneIdList,omitempty" type:"Repeated"`
 	// The region ID.
 	//

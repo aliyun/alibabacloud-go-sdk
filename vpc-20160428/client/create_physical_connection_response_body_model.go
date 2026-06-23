@@ -16,7 +16,7 @@ type iCreatePhysicalConnectionResponseBody interface {
 }
 
 type CreatePhysicalConnectionResponseBody struct {
-	// The ID of the Express Connect circuit.
+	// The instance ID of the Express Connect circuit.
 	//
 	// example:
 	//

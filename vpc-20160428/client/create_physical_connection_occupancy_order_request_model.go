@@ -47,8 +47,22 @@ type CreatePhysicalConnectionOccupancyOrderRequest struct {
 	// example:
 	//
 	// false
-	AutoPay           *bool  `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew         *bool  `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Whether to enable auto-renewal. Valid values:
+	//
+	// - **false*	- (**default**): disable auto-renewal.
+	//
+	// - **true**: enable auto-renewal.
+	//
+	// example:
+	//
+	// false
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The auto-renewal duration. Unit: months. Valid values: **0*	- to **2147483647**. Default Value: **1**.
+	//
+	// example:
+	//
+	// 1
 	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//

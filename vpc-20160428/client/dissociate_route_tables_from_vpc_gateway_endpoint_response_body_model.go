@@ -18,7 +18,7 @@ type DissociateRouteTablesFromVpcGatewayEndpointResponseBody struct {
 	//
 	// example:
 	//
-	// 59BDDA2D-FB52-59F9-9DC5-5EA7D6808B8E
+	// 30F711D5-E7E2-5D42-A247-0FA7288BEAAA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

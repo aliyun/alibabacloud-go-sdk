@@ -22,7 +22,7 @@ type Describe95TrafficResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information returned.
+	// The bandwidth statistics for Internet Shared Bandwidth billed by enhanced 95th percentile.
 	Traffic95Summary *Describe95TrafficResponseBodyTraffic95Summary `json:"Traffic95Summary,omitempty" xml:"Traffic95Summary,omitempty" type:"Struct"`
 }
 
@@ -62,15 +62,17 @@ func (s *Describe95TrafficResponseBody) Validate() error {
 }
 
 type Describe95TrafficResponseBodyTraffic95Summary struct {
-	// The peak bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+	// The peak bandwidth of the Internet Shared Bandwidth instance on the queried date. Unit: Mbps.
 	//
 	// example:
 	//
 	// 20000.0
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The daily peak bandwidth. Unit: Mbit/s.
+	// The daily peak bandwidth. Unit: Mbps.
 	//
-	// <props="china"> For more information, see [Daily peak bandwidth](https://help.aliyun.com/document_detail/89729.html).
+	// <props="china">
+	//
+	// For more information, see [Daily peak bandwidth](https://help.aliyun.com/document_detail/89729.html).
 	//
 	// example:
 	//
@@ -82,19 +84,19 @@ type Describe95TrafficResponseBodyTraffic95Summary struct {
 	//
 	// cbwp-wz9j19xrwf78fvz7*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The metering method of the Internet Shared Bandwidth instance. Valid values:
+	// The billing method of the Internet Shared Bandwidth instance on the queried date. Valid values:
 	//
-	// 	- PayBy95: pay-by-enhanced-95th-percentile
+	// - **PayBy95**: pay-by-enhanced-95th-percentile
 	//
-	// 	- PayByBandwidth: pay-by-bandwidth
+	// - **PayByBandwidth**: pay-by-bandwidth
 	//
-	// 	- PayByDominantTraffic: pay-by-dominant-traffic
+	// - **PayByDominantTraffic**: pay-by-dominant-traffic
 	//
 	// example:
 	//
 	// PayBy95
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The guaranteed bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+	// The minimum bandwidth commitment of the Internet Shared Bandwidth instance on the queried date. Unit: Mbps.
 	//
 	// example:
 	//

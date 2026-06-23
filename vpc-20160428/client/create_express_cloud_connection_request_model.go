@@ -72,7 +72,7 @@ type CreateExpressCloudConnectionRequest struct {
 	//
 	// example:
 	//
-	// ECC
+	// 高速上云服务
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID card number of the contact who applies for ECC.
 	//
@@ -102,7 +102,7 @@ type CreateExpressCloudConnectionRequest struct {
 	//
 	// example:
 	//
-	// Hangzhou
+	// 杭州
 	PeerCity *string `json:"PeerCity,omitempty" xml:"PeerCity,omitempty"`
 	// The geographical location of the data center.
 	//
@@ -112,7 +112,7 @@ type CreateExpressCloudConnectionRequest struct {
 	//
 	// example:
 	//
-	// \\*\\*city\\*\\*district/county\\*\\*road\\*\\*number\\*\\*property or building name\\*\\*building\\*\\*floor\\*\\*room number\\*\\*server rack number\\*\\*server rack name\\*\\*device\\*\\*port
+	// **市**区/县**路**号**物业或楼宇名称**座**楼层**房间号**机柜号**机柜名称**设备**端口
 	PeerLocation *string `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
 	// The port of the Express Connect circuit. Valid values:
 	//

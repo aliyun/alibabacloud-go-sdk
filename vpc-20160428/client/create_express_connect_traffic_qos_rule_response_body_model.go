@@ -24,13 +24,13 @@ type CreateExpressConnectTrafficQosRuleResponseBody struct {
 	//
 	// example:
 	//
-	// qos-2giu0a6vd5x0mv4700
+	// qos-2giu0a6vd5x0mv****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
 	// The ID of the QoS queue.
 	//
 	// example:
 	//
-	// qos-queue-9nyx2u7n71s2rcy4n5
+	// qos-queue-9nyx2u7n71s2rc****
 	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
 	// The request ID.
 	//
@@ -42,7 +42,7 @@ type CreateExpressConnectTrafficQosRuleResponseBody struct {
 	//
 	// example:
 	//
-	// qos-rule-iugg0l9x27f2nocouj
+	// qos-rule-iugg0l9x27f2no****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 

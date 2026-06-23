@@ -22,30 +22,50 @@ type iAssociateMacSecKeyRequest interface {
 }
 
 type AssociateMacSecKeyRequest struct {
+	// The key secret. This parameter accepts only hexadecimal characters. Lowercase letters are automatically converted to uppercase. The cipher suite determines the required length of the key secret: 32 hexadecimal characters for GCM-AES-128 or GCM-AES-XPN-128, and 64 hexadecimal characters for GCM-AES-256 or GCM-AES-XPN-256.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0123456789ABCDEF0123456789ABCDEF
 	Cak *string `json:"Cak,omitempty" xml:"Cak,omitempty"`
+	// The cipher suite. Valid values:
+	//
+	// - GCM-AES-128
+	//
+	// - GCM-AES-XPN-128
+	//
+	// - GCM-AES-256
+	//
+	// - GCM-AES-XPN-256
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// GCM-AES-128
 	CipherSuite *string `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	// The key name. This parameter accepts only hexadecimal characters. Lowercase letters are automatically converted to uppercase. The cipher suite determines the required length of the key name: 32 hexadecimal characters for GCM-AES-128 or GCM-AES-XPN-128, and 64 hexadecimal characters for GCM-AES-256 or GCM-AES-XPN-256.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0123456789ABCDEF0123456789ABCDEF
 	Ckn *string `json:"Ckn,omitempty" xml:"Ckn,omitempty"`
+	// The ID of the Express Connect physical connection.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-bp1hp0wr072f6****
 	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
+	// The region ID of the Express Connect physical connection.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to obtain the region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

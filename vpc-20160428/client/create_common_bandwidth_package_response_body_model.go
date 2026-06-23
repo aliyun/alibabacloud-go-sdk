@@ -30,7 +30,7 @@ type CreateCommonBandwidthPackageResponseBody struct {
 	//
 	// FF39F653-033E-4CD9-9EDF-3CCA5A71FBC3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

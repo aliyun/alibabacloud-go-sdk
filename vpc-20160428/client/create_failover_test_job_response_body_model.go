@@ -20,7 +20,7 @@ type CreateFailoverTestJobResponseBody struct {
 	//
 	// example:
 	//
-	// ftj-xxxxxxxxx
+	// ftj-bp1yh6mvi13aq3g8w****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
 	//

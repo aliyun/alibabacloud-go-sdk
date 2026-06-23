@@ -26,19 +26,19 @@ type CreateDefaultVpcResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The route table ID that is automatically created by the system after you create a default VPC.
+	// The ID of the route table that the system automatically creates after the default VPC is created.
 	//
 	// example:
 	//
 	// vtb-bp1q1uirugzb1x32m****
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The vRouter ID that is automatically created by the system after you create a default VPC.
+	// The ID of the vRouter that the system automatically creates after the default VPC is created.
 	//
 	// example:
 	//
 	// vrt-bp1lhl0taikrteen8****
 	VRouterId *string `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
-	// The ID of the default VPC.
+	// The ID of the default VPC that is created.
 	//
 	// example:
 	//

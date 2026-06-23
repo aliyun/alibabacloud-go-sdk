@@ -22,7 +22,7 @@ type CreateVbrHaResponseBody struct {
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the VBR failover group.
+	// The instance ID of the VBR failover group.
 	//
 	// example:
 	//

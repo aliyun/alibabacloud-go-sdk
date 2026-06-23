@@ -16,9 +16,9 @@ type iDescribePhysicalConnectionLOAResponseBody interface {
 }
 
 type DescribePhysicalConnectionLOAResponseBody struct {
-	// The LOA information about the Express Connect circuit.
+	// Information about the physical connection\\"s LOA.
 	PhysicalConnectionLOAType *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType `json:"PhysicalConnectionLOAType,omitempty" xml:"PhysicalConnectionLOAType,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,85 +62,87 @@ func (s *DescribePhysicalConnectionLOAResponseBody) Validate() error {
 }
 
 type DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType struct {
-	// The name of the construction company.
+	// The localized name of the company.
 	//
 	// example:
 	//
 	// company
 	CompanyLocalizedName *string `json:"CompanyLocalizedName,omitempty" xml:"CompanyLocalizedName,omitempty"`
-	// The name of the organization that requires the Express Connect circuit.
+	// The name of the company that requires the physical connection.
 	//
 	// example:
 	//
 	// test1234
 	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
-	// The time when construction starts.
+	// The time when construction personnel enter the site.
 	//
 	// example:
 	//
 	// 2019-02-26T08:00:00Z
 	ConstructionTime *string `json:"ConstructionTime,omitempty" xml:"ConstructionTime,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the Express Connect circuit.
+	// The description of the LOA.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID of the physical connection.
 	//
 	// example:
 	//
 	// pc-bp1ca4wca27****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The circuit code provided by the connectivity provider.
+	// The line code assigned by the line service provider.
 	//
 	// example:
 	//
 	// aaa111
 	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	// The label of the cable in the data center.
+	// The line label for the in-building cable at the data center.
 	//
 	// example:
 	//
 	// bbb222
 	LineLabel *string `json:"LineLabel,omitempty" xml:"LineLabel,omitempty"`
-	// The contact information about line O\\&M.
+	// The contact information of the line O\\&M personnel.
 	//
 	// example:
 	//
 	// 1388888****
 	LineSPContactInfo *string `json:"LineSPContactInfo,omitempty" xml:"LineSPContactInfo,omitempty"`
-	// The ISP. Valid values:
+	// The line service provider. Valid values:
 	//
-	// 	- **China Telecom**
+	// - **China Telecom**
 	//
-	// 	- **China Unicom**
+	// - **China Unicom**
 	//
-	// 	- **China Mobile**
+	// - **China Mobile**
 	//
-	// 	- **Other ISPs in China**
+	// - **Other**
 	//
 	// example:
 	//
-	// Other ISPs in China
+	// 中国其他
 	LineServiceProvider *string `json:"LineServiceProvider,omitempty" xml:"LineServiceProvider,omitempty"`
-	// The type of the Express Connect circuit. Valid values:
+	// The line type of the physical connection. Valid values:
 	//
-	// 	- **MSTP**
+	// - **MSTP**
 	//
-	// 	- **MPLSVPN**
+	// - **MPLSVPN**
 	//
-	// 	- **FIBRE**
+	// - **FIBRE**
 	//
-	// 	- **Other**
+	// - **Other**
 	//
 	// example:
 	//
 	// FIBRE
 	LineType *string `json:"LineType,omitempty" xml:"LineType,omitempty"`
-	// The download URL of the LOA file.
+	// The URL to download the LOA file.
 	//
 	// example:
 	//
 	// http://******
-	LoaUrl *string                                                                   `json:"LoaUrl,omitempty" xml:"LoaUrl,omitempty"`
+	LoaUrl *string `json:"LoaUrl,omitempty" xml:"LoaUrl,omitempty"`
+	// Information about the construction personnel.
 	PMInfo *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOATypePMInfo `json:"PMInfo,omitempty" xml:"PMInfo,omitempty" type:"Struct"`
-	// The on-site construction company.
+	// The system integrator (SI).
 	//
 	// example:
 	//
@@ -148,19 +150,19 @@ type DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType struct {
 	SI *string `json:"SI,omitempty" xml:"SI,omitempty"`
 	// The status of the LOA. Valid values:
 	//
-	// 	- **Applying**: The LOA is pending for approval.
+	// - **Applying**: The LOA application is in progress.
 	//
-	// 	- **Accept**: The LOA is approved.
+	// - **Accept**: The LOA application is approved.
 	//
-	// 	- **Available**: The LOA is available.
+	// - **Available**: The LOA is available.
 	//
-	// 	- **Rejected**: The LOA is rejected.
+	// - **Rejected**: The LOA application is rejected.
 	//
-	// 	- **Completing**: The Express Connect circuit is under construction.
+	// - **Completing**: The construction of the physical connection is in progress.
 	//
-	// 	- **Complete**: The Express Connect circuit is installed.
+	// - **Complete**: The construction of the physical connection is complete.
 	//
-	// 	- **Deleted**: The LOA is deleted.
+	// - **Deleted**: The LOA is deleted.
 	//
 	// example:
 	//

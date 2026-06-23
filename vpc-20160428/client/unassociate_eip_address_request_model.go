@@ -34,7 +34,7 @@ type iUnassociateEipAddressRequest interface {
 }
 
 type UnassociateEipAddressRequest struct {
-	// The ID of the EIP that you want to disassociate.
+	// The ID of the EIP to disassociate.
 	//
 	// This parameter is required.
 	//
@@ -46,39 +46,43 @@ type UnassociateEipAddressRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
+	// Specifies whether to forcefully disassociate the EIP when the EIP is associated with a NAT gateway that has DNAT or SNAT entries configured. Valid values:
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): does not forcefully disassociate the EIP.
 	//
-	// 	- **true**
+	// - **true**: forcefully disassociates the EIP.
 	//
 	// example:
 	//
 	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The ID of the instance from which you want to disassociate the EIP.
+	// The instance ID of the cloud resource from which to disassociate the EIP.
+	//
+	// You can enter the instance ID of a NAT gateway, Classic Load Balancer (CLB) instance, ECS instance, secondary elastic network interface controller (NIC), high availability virtual IP address instance, or an IP address.
 	//
 	// example:
 	//
 	// i-hp3akk9irtd69jad****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of instance from which you want to disassociate the EIP. Valid values:
+	// The type of the cloud resource from which to disassociate the EIP. Valid values:
 	//
-	// 	- **EcsInstance*	- (default): an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC)
+	// - **EcsInstance*	- (default): an ECS instance in a virtual private cloud (VPC).
 	//
-	// 	- **SlbInstance**: a Server Load Balancer (SLB) instance in a VPC
+	// - **SlbInstance**: a load balancing instance in a virtual private cloud (VPC).
 	//
-	// 	- **NetworkInterface**: a secondary elastic network interface (ENI) in a VPC
+	// - **NetworkInterface**: a secondary elastic network interface controller (NIC) in a virtual private cloud (VPC).
 	//
-	// 	- **Nat**: a NAT gateway
+	// - **Nat**: a NAT gateway.
 	//
-	// 	- **HaVip**: a high-availability virtual IP address (HAVIP)
+	// - **HaVip**: a high availability virtual IP address.
+	//
+	// - **IpAddress**: an IP address.
 	//
 	// example:
 	//
@@ -86,13 +90,15 @@ type UnassociateEipAddressRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The private IP address of the ECS instance or the secondary ENI from which you want to disassociate the EIP.
+	// The private IP address of the ECS instance or secondary elastic network interface controller (NIC) instance from which to disassociate the EIP.
 	//
 	// example:
 	//
 	// 192.XX.XX.2
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The ID of the region to which the EIP belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the EIP to disassociate.
+	//
+	//  You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query region IDs.
 	//
 	// example:
 	//

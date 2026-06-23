@@ -317,7 +317,7 @@ type DescribeExpressConnectTrafficQosResponseBodyQosListAssociatedInstanceList s
 	//
 	// example:
 	//
-	// pc-bp159zj8zujwy3p07j83e
+	// pc-bp159zj8zujwy3p07****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The configuration progress of the instance to which the QoS policy is associated. Valid values: **0*	- to **100**.
 	//
@@ -408,7 +408,7 @@ type DescribeExpressConnectTrafficQosResponseBodyQosListQueueList struct {
 	//
 	// example:
 	//
-	// qos-pksbqfmotl5hzqmhf8
+	// qos-pksbqfmotl5hzq****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
 	// The description of the QoS queue.
 	//
@@ -422,7 +422,7 @@ type DescribeExpressConnectTrafficQosResponseBodyQosListQueueList struct {
 	//
 	// example:
 	//
-	// qos-queue-9nyx2u7n71s2rcy4n5
+	// qos-queue-9nyx2u7n71s2rc****
 	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
 	// The name of the QoS queue.
 	//

@@ -23,19 +23,19 @@ type iDescribeIpv6EgressOnlyRulesResponseBody interface {
 
 type DescribeIpv6EgressOnlyRulesResponseBody struct {
 	Ipv6EgressOnlyRules *DescribeIpv6EgressOnlyRulesResponseBodyIpv6EgressOnlyRules `json:"Ipv6EgressOnlyRules,omitempty" xml:"Ipv6EgressOnlyRules,omitempty" type:"Struct"`
-	// The number of the returned page. Default value: **1**.
+	// The page number of the list to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

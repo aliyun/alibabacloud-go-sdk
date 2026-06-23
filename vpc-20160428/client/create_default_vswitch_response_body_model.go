@@ -22,7 +22,7 @@ type CreateDefaultVSwitchResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the default vSwitch.
+	// The ID of the default vSwitch that was created.
 	//
 	// example:
 	//

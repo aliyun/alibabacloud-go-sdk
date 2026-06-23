@@ -22,14 +22,15 @@ type iDescribeAccessPointsResponseBody interface {
 }
 
 type DescribeAccessPointsResponseBody struct {
+	// The list of access points.
 	AccessPointSet *DescribeAccessPointsResponseBodyAccessPointSet `json:"AccessPointSet,omitempty" xml:"AccessPointSet,omitempty" type:"Struct"`
-	// The page number. Default value: **1**.
+	// The page number. Default: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page. Maximum: **50**. Default: **10**.
 	//
 	// example:
 	//
@@ -41,7 +42,7 @@ type DescribeAccessPointsResponseBody struct {
 	//
 	// 3E85D803-C7CF-4BCD-9CFE-6DBA1DFFA027
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

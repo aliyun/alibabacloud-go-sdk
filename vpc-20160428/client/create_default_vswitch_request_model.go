@@ -32,13 +32,13 @@ type CreateDefaultVSwitchRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The last eight bits of the IPv6 CIDR block of the vSwitch. Valid values: **0*	- to **255**.
+	// The last 8 bits of the IPv6 CIDR block of the vSwitch. Valid values: **0*	- to **255**.
 	//
 	// example:
 	//
@@ -46,27 +46,27 @@ type CreateDefaultVSwitchRequest struct {
 	Ipv6CidrBlock *int32  `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the default vSwitch.
+	// The region ID of the default vSwitch that you want to create.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ap-southeast-1
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The zone ID of the default vSwitch.
+	// The zone ID of the default vSwitch that you want to create.
 	//
-	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the most recent zone list.
+	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query zone IDs.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ap-southeast-1a
+	// cn-hangzhou-b
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 

@@ -16,7 +16,7 @@ type iDescribeExpressConnectTrafficQosQueueResponseBody interface {
 }
 
 type DescribeExpressConnectTrafficQosQueueResponseBody struct {
-	// The information about the QoS queues.
+	// The list of QoS queues.
 	QueueList []*DescribeExpressConnectTrafficQosQueueResponseBodyQueueList `json:"QueueList,omitempty" xml:"QueueList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,35 +66,35 @@ func (s *DescribeExpressConnectTrafficQosQueueResponseBody) Validate() error {
 }
 
 type DescribeExpressConnectTrafficQosQueueResponseBodyQueueList struct {
-	// The percentage of bandwidth allocated to a QoS queue.
+	// The bandwidth percentage of the QoS queue.
 	//
-	// 	- If QueueType is set to **Medium**, this parameter is returned. Valid values: **1*	- to **100**.
+	// 	- When the QoS queue type is **Medium**, this field is required. Valid values: **1*	- to **100**.
 	//
-	// 	- If QueueType is set to **Default**, a value of - is returned.
+	// 	- When the QoS queue type is **Default**, this field is "-".
 	//
 	// example:
 	//
 	// 100
 	BandwidthPercent *string `json:"BandwidthPercent,omitempty" xml:"BandwidthPercent,omitempty"`
-	// The ID of the QoS policy.
+	// The QoS policy ID.
 	//
 	// example:
 	//
-	// qos-ncfgzxg40zks5n0qze
+	// qos-ncfgzxg40zks5n****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
 	// The description of the QoS queue.
 	//
-	// The name must be **0*	- to **256*	- characters in length and cannot start with `http://` or `https://`.
+	// The description must be **0*	- to **256*	- characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// qos-queue-test
 	QueueDescription *string `json:"QueueDescription,omitempty" xml:"QueueDescription,omitempty"`
-	// The ID of the QoS queue.
+	// The QoS queue ID.
 	//
 	// example:
 	//
-	// qos-queue-9nyx2u7n71s2rcy4n5
+	// qos-queue-9nyx2u7n71s2rc****
 	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
 	// The name of the QoS queue.
 	//
@@ -104,31 +104,29 @@ type DescribeExpressConnectTrafficQosQueueResponseBodyQueueList struct {
 	//
 	// qos-queue-test
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The priority of the QoS queue. Valid values:
+	// The type of the QoS queue. Valid values:
 	//
-	// 	- **High**
+	// - **High**: high-priority queue.
 	//
-	// 	- **Medium**
+	// - **Medium**: medium-priority queue.
 	//
-	// 	- **Default**
+	// - **Default**: default-priority queue.
 	//
-	//
-	//
-	// >  You cannot create a QoS queue of the default priority.
+	// > The default-priority queue cannot be created.
 	//
 	// example:
 	//
 	// High
 	QueueType *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
-	// The information about the QoS rules.
+	// The list of QoS rules.
 	RuleList []*DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
-	// The state of the QoS queue. Valid values:
+	// The status of the QoS queue. Valid values:
 	//
-	// 	- **Normal**: The QoS queue is available.
+	// - **Normal**: active.
 	//
-	// 	- **Configuring**: The QoS queue is being configured.
+	// - **Configuring**: being configured.
 	//
-	// 	- **Deleting**: The QoS queue is being deleted.
+	// - **Deleting**: being deleted.
 	//
 	// example:
 	//
@@ -230,127 +228,123 @@ func (s *DescribeExpressConnectTrafficQosQueueResponseBodyQueueList) Validate() 
 }
 
 type DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList struct {
-	// The destination IPv4 CIDR block that matches the QoS rule traffic.
+	// The destination IP address IPv4 CIDR block that is used for traffic matching by the QoS rule.
 	//
-	//
-	//
-	// > If the parameter is unavailable, specify **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
+	// > You cannot specify this parameter together with **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
 	//
 	// example:
 	//
-	// 1.1.1.0/24
+	// ``1.1.**.**``/24
 	DstCidr *string `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
-	// The destination IPv6 CIDR block that matches the QoS rule traffic.
+	// The destination IP address IPv6 CIDR block that is used for traffic matching by the QoS rule.
 	//
-	//
-	//
-	// > If the parameter is unavailable, specify **SrcCidr*	- or **DstCidr**.
+	// > You cannot specify this parameter together with **SrcCidr*	- or **DstCidr**.
 	//
 	// example:
 	//
-	// 2001:0db8:1234:5678::/64
+	// 2001:0db8:1234:****::/64
 	DstIPv6Cidr *string `json:"DstIPv6Cidr,omitempty" xml:"DstIPv6Cidr,omitempty"`
-	// The range of destination ports that match the QoS rule traffic. Valid values: **0*	- to **65535**. If the traffic does not match, the value is -1. You can specify only one port. The start port number must be the same as the end port number. Different protocols correspond to different ports. Valid values:
+	// The destination port range that is used for traffic matching by the QoS rule. Valid values: **0*	- to **65535**. A value of -1 indicates that no port is matched. Only a single port number is supported. The start and end port numbers must be the same. The destination port range is fixed for each protocol type. Valid values:
 	//
-	// 	- **ALL*	- (uneditable): -1/-1.
+	// - **ALL**: -1/-1, not editable.
 	//
-	// 	- **ICMP(IPv4)*	- (uneditable): -1/-1.
+	// - **ICMP(IPv4)**: -1/-1, not editable.
 	//
-	// 	- **ICMPv6(IPv6)*	- (uneditable): -1/-1.
+	// - **ICMPv6(IPv6)**: -1/-1, not editable.
 	//
-	// 	- **TCP*	- (editable): -1/-1.
+	// - **TCP**: -1/-1, editable.
 	//
-	// 	- **UDP*	- (editable): -1/-1.
+	// - **UDP**: -1/-1, editable.
 	//
-	// 	- **GRE*	- (uneditable): -1/-1.
+	// - **GRE**: -1/-1, not editable.
 	//
-	// 	- **SSH*	- (uneditable): 22/22.
+	// - **SSH**: 22/22, not editable.
 	//
-	// 	- **Telnet*	- (uneditable): 23/23.
+	// - **Telnet**: 23/23, not editable.
 	//
-	// 	- **HTTP*	- (uneditable): 80/80.
+	// - **HTTP**: 80/80, not editable.
 	//
-	// 	- **HTTPS*	- (uneditable): 443/443.
+	// - **HTTPS**: 443/443, not editable.
 	//
-	// 	- **MS SQL*	- (uneditable): 1443/1443.
+	// - **MS SQL**: 1443/1443, not editable.
 	//
-	// 	- **Oracle*	- (uneditable): 1521/1521.
+	// - **Oracle**: 1521/1521, not editable.
 	//
-	// 	- **MySql*	- (uneditable): 3306/3306.
+	// - **MySql**: 3306/3306, not editable.
 	//
-	// 	- **RDP*	- (uneditable): 3389/3389.
+	// - **RDP**: 3389/3389, not editable.
 	//
-	// 	- **PostgreSQL*	- (uneditable): 5432/5432.
+	// - **PostgreSQL**: 5432/5432, not editable.
 	//
-	// 	- **Redis*	- (uneditable): 6379/6379.
+	// - **Redis**: 6379/6379, not editable.
 	//
 	// example:
 	//
 	// -1/-1
 	DstPortRange *string `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty"`
-	// The DSCP value that matches the QoS rule traffic. Valid values: **0*	- to **63**. If no value is matched, the value is -1.
+	// The DSCP value that is used for traffic matching by the QoS rule. Valid values: **0*	- to **63**. A value of -1 indicates that no DSCP value is matched.
 	//
 	// example:
 	//
 	// 1
 	MatchDscp *int32 `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
-	// The priority of the QoS rule. Valid values: **1*	- to **9000**. A larger value indicates a higher priority. The priority of each QoS rule must be unique in the same QoS policy.
+	// The priority of the QoS rule. Valid values: **1*	- to **9000**. A larger value indicates a higher priority. The priority of each QoS rule must be unique within the same QoS policy.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The protocol of the QoS rule. Valid values:
+	// The protocol type of the QoS rule. Valid values:
 	//
-	// 	- **ALL**
+	// - **ALL**
 	//
-	// 	- **ICMP(IPv4)**
+	// - **ICMP(IPv4)**
 	//
-	// 	- **ICMPv6(IPv6)**
+	// - **ICMPv6(IPv6)**
 	//
-	// 	- **TCP**
+	// - **TCP**
 	//
-	// 	- **UDP**
+	// - **UDP**
 	//
-	// 	- **GRE**
+	// - **GRE**
 	//
-	// 	- **SSH**
+	// - **SSH**
 	//
-	// 	- **Telnet**
+	// - **Telnet**
 	//
-	// 	- **HTTP**
+	// - **HTTP**
 	//
-	// 	- **HTTPS**
+	// - **HTTPS**
 	//
-	// 	- **MS SQL**
+	// - **MS SQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
-	// 	- **MySql**
+	// - **MySql**
 	//
-	// 	- **RDP**
+	// - **RDP**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **Redis**
+	// - **Redis**.
 	//
 	// example:
 	//
 	// ALL
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The ID of the QoS policy.
+	// The QoS policy ID.
 	//
 	// example:
 	//
-	// qos-91xz9f8zd7yj8xwknz
+	// qos-91xz9f8zd7yj8x****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The ID of the QoS queue.
+	// The QoS queue ID.
 	//
 	// example:
 	//
-	// qos-queue-iugg0l9x27f2nocouj
+	// qos-queue-iugg0l9x27f2no****
 	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
-	// The new DSCP value. Valid values: **0*	- to **63**. If you do not change the value, the value is -1.
+	// The new DSCP value to remark in the traffic. Valid values: **0*	- to **63**. A value of -1 indicates that the DSCP value is not modified.
 	//
 	// example:
 	//
@@ -358,17 +352,17 @@ type DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList struct {
 	RemarkingDscp *int32 `json:"RemarkingDscp,omitempty" xml:"RemarkingDscp,omitempty"`
 	// The description of the QoS rule.
 	//
-	// The name must be **0*	- to **256*	- characters in length and cannot start with `http://` or `https://`.
+	// The description must be **0*	- to **256*	- characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// qos-rule-test
 	RuleDescription *string `json:"RuleDescription,omitempty" xml:"RuleDescription,omitempty"`
-	// The ID of the QoS rule.
+	// The QoS rule ID.
 	//
 	// example:
 	//
-	// qos-rule-iugg0l9x27f2nocouj
+	// qos-rule-iugg0l9x27f2no****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The name of the QoS rule.
 	//
@@ -378,27 +372,23 @@ type DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList struct {
 	//
 	// qos-rule-test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The source IPv4 CIDR block that matches the QoS rule traffic.
+	// The source IPv4 CIDR block that is used for traffic matching by the QoS rule.
 	//
-	//
-	//
-	//  > If the parameter is unavailable, specify **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
+	// > You cannot specify this parameter together with **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
 	//
 	// example:
 	//
-	// 1.1.1.0/24
+	// ``1.1.**.**``/24
 	SrcCidr *string `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
-	// The source IPv6 CIDR block that matches the QoS rule traffic.
+	// The source IPv6 CIDR block that is used for traffic matching by the QoS rule.
 	//
-	//
-	//
-	// > If the parameter is unavailable, specify **SrcCidr*	- or **DstCidr**.
+	// > You cannot specify this parameter together with **SrcCidr*	- or **DstCidr**.
 	//
 	// example:
 	//
-	// 2001:0db8:1234:5678::/64
+	// 2001:0db8:1234:****::/64
 	SrcIPv6Cidr *string `json:"SrcIPv6Cidr,omitempty" xml:"SrcIPv6Cidr,omitempty"`
-	// The range of source ports that match the QoS rule traffic. Valid values: **0*	- to **65535**. If the traffic does not match, the value is -1. You can specify only one port. The start port number must be the same as the end port number.
+	// The source port range that is used for traffic matching by the QoS rule. Valid values: **0*	- to **65535**. A value of -1 indicates that no port is matched. Only a single port number is supported. The start and end port numbers must be the same.
 	//
 	// example:
 	//
@@ -406,11 +396,11 @@ type DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList struct {
 	SrcPortRange *string `json:"SrcPortRange,omitempty" xml:"SrcPortRange,omitempty"`
 	// The status of the QoS rule. Valid values:
 	//
-	// 	- **Normal**: The QoS queue is available.
+	// - **Normal**: active.
 	//
-	// 	- **Configuring**: The QoS queue is being configured.
+	// - **Configuring**: being configured.
 	//
-	// 	- **Deleting**: The QoS queue is being deleted.
+	// - **Deleting**: being deleted.
 	//
 	// example:
 	//

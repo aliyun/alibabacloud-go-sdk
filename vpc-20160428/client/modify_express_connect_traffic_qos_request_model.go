@@ -32,16 +32,16 @@ type iModifyExpressConnectTrafficQosRequest interface {
 }
 
 type ModifyExpressConnectTrafficQosRequest struct {
-	// The instances to be added. Ignore this parameter if no instances are to be added.
+	// The list of instances to add in this update. You do not need to specify this parameter if no instances need to be added.
 	//
 	// if can be null:
 	// false
 	AddInstanceList []*ModifyExpressConnectTrafficQosRequestAddInstanceList `json:"AddInstanceList,omitempty" xml:"AddInstanceList,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -50,6 +50,8 @@ type ModifyExpressConnectTrafficQosRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The description of the QoS policy.
+	//
+	// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -61,17 +63,19 @@ type ModifyExpressConnectTrafficQosRequest struct {
 	//
 	// example:
 	//
-	// qos-2giu0a6vd5x0mv4700
+	// qos-2giu0a6vd5x0mv****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
 	// The name of the QoS policy.
+	//
+	// The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// qos-test
 	QosName *string `json:"QosName,omitempty" xml:"QosName,omitempty"`
-	// The region ID of the resource.
+	// The region ID of the QoS policy.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -79,7 +83,7 @@ type ModifyExpressConnectTrafficQosRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The instances to be removed. Ignore this parameter if no instances are to be removed.
+	// The list of instances to remove in this update. You do not need to specify this parameter if no instances need to be removed.
 	RemoveInstanceList   []*ModifyExpressConnectTrafficQosRequestRemoveInstanceList `json:"RemoveInstanceList,omitempty" xml:"RemoveInstanceList,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string                                                    `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
@@ -205,13 +209,13 @@ func (s *ModifyExpressConnectTrafficQosRequest) Validate() error {
 }
 
 type ModifyExpressConnectTrafficQosRequestAddInstanceList struct {
-	// The ID of the instance to be associated.
+	// The instance ID of the instance to associate.
 	//
 	// example:
 	//
 	// pc-bp159zj8zujwy3p07****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of instance to be associated. Set the value to **PHYSICALCONNECTION**.
+	// The type of the instance to associate. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
 	//
 	// example:
 	//
@@ -250,13 +254,13 @@ func (s *ModifyExpressConnectTrafficQosRequestAddInstanceList) Validate() error 
 }
 
 type ModifyExpressConnectTrafficQosRequestRemoveInstanceList struct {
-	// The ID of the associated instance.
+	// The instance ID of the associated instance.
 	//
 	// example:
 	//
 	// pc-bp1j37am632492qzw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the associated instance. Set the value to **PHYSICALCONNECTION**.
+	// The type of the associated instance. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
 	//
 	// example:
 	//

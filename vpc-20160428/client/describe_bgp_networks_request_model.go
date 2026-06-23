@@ -58,7 +58,7 @@ type DescribeBgpNetworksRequest struct {
 	//
 	// example:
 	//
-	// vrt-bp1lhl0taikrteen8****
+	// vbr-bp1ctxy813985gkuk****
 	RouterId *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
 }
 

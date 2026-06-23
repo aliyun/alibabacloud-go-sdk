@@ -57,6 +57,10 @@ type DescribeVpnGatewaysRequest struct {
 	// Traditional：传统型VPN网关，覆盖IPsec功能和SSL功能
 	//
 	// Enhance.SiteToSite：增强型站点入云VPN，只覆盖IPsec功能
+	//
+	// example:
+	//
+	// Enhance.SiteToSite
 	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	// Specifies whether to return information about pending orders. Valid values:
 	//

@@ -170,7 +170,7 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// Peer interface.
+	// 对端接口
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The end of the time range during which data was queried.
 	//
@@ -258,7 +258,7 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// RouterInterface1
+	// 路由器接口1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the peer access point.
 	//

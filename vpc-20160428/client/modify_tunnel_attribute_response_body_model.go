@@ -38,17 +38,17 @@ type iModifyTunnelAttributeResponseBody interface {
 }
 
 type ModifyTunnelAttributeResponseBody struct {
-	// The ID of the customer gateway associated with the customer gateway.
+	// The instance ID of the customer gateway associated with the tunnel.
 	//
 	// example:
 	//
 	// cgw-p0wx48ayhrygitm80****
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// Indicates whether DPD is enabled. Valid values:
+	// Indicates whether the Dead Peer Detection (DPD) feature is enabled.
 	//
-	// 	- **false**
+	// - **false**: disabled.
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
 	// example:
 	//
@@ -56,21 +56,21 @@ type ModifyTunnelAttributeResponseBody struct {
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
 	// Indicates whether NAT traversal is enabled. Valid values:
 	//
-	// 	- **false**
+	// - **false**: disabled.
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
 	// example:
 	//
 	// true
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// The tunnel IP address.
+	// The IP address of the tunnel.
 	//
 	// example:
 	//
 	// 47.XX.XX.87
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The peer CA certificate when a VPN gateway that uses an SM certificate is used to create the IPsec connection.
+	// The CA certificate of the peer when an IPsec-VPN connection is created with a Chinese SM VPN gateway.
 	//
 	// example:
 	//
@@ -82,29 +82,29 @@ type ModifyTunnelAttributeResponseBody struct {
 	//
 	// E6F36FF0-9544-3AEE-8673-A4647D50064C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tunnel role. Valid values:
+	// The role of the tunnel.
 	//
-	// 	- **master**
+	// - **master**: the active tunnel.
 	//
-	// 	- **slave**
+	// - **slave**: the standby tunnel.
 	//
 	// example:
 	//
 	// master
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The tunnel status. Valid values:
+	// The status of the tunnel.
 	//
-	// 	- **active**
+	// - **active**: available.
 	//
-	// 	- **updating**
+	// - **updating**: being updated.
 	//
-	// 	- **deleting**
+	// - **deleting**: being deleted.
 	//
 	// example:
 	//
 	// active
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The BGP configuration.
+	// The BGP configuration of the tunnel.
 	TunnelBgpConfig *ModifyTunnelAttributeResponseBodyTunnelBgpConfig `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
 	// The tunnel ID.
 	//
@@ -112,11 +112,11 @@ type ModifyTunnelAttributeResponseBody struct {
 	//
 	// tun-gbyz2e070xzo93****
 	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
-	// The Phase 1 configuration.
+	// The IKE phase (Phase 1) configuration of the tunnel.
 	TunnelIkeConfig *ModifyTunnelAttributeResponseBodyTunnelIkeConfig `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
-	// The configurations of IPsec Phase 2.
+	// The IPsec phase (Phase 2) configuration of the tunnel.
 	TunnelIpsecConfig *ModifyTunnelAttributeResponseBodyTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
-	// The tunnel zone.
+	// The zone of the tunnel.
 	//
 	// example:
 	//
@@ -269,41 +269,41 @@ func (s *ModifyTunnelAttributeResponseBody) Validate() error {
 }
 
 type ModifyTunnelAttributeResponseBodyTunnelBgpConfig struct {
-	// Indicates whether the BGP feature is enabled. Valid values:
+	// The enabling status of BGP.
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	EnableBgp *bool `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
-	// The local ASN.
+	// The autonomous system number (ASN) of the local end of the tunnel.
 	//
 	// example:
 	//
 	// 65530
 	LocalAsn *int64 `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// The BGP IP address of the tunnel.
+	// The BGP IP address of the local end of the tunnel.
 	//
 	// example:
 	//
 	// 169.254.11.1
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// The peer ASN.
+	// The autonomous system number (ASN) of the peer end of the tunnel.
 	//
 	// example:
 	//
 	// 65531
 	PeerAsn *int64 `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
-	// The BGP IP address of the peer.
+	// The BGP IP address of the peer end of the tunnel.
 	//
 	// example:
 	//
 	// 169.254.11.2
 	PeerBgpIp *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
-	// The CIDR block to which the tunnel BGP IP address belongs.
+	// The CIDR block of the tunnel BGP IP address.
 	//
 	// example:
 	//
@@ -398,9 +398,9 @@ type ModifyTunnelAttributeResponseBodyTunnelIkeConfig struct {
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
 	// The IKE negotiation mode.
 	//
-	// 	- **main:*	- This mode offers higher security during negotiations.
+	// - **main**: main mode. This mode offers high security during negotiations.
 	//
-	// 	- **aggressive**: This mode is faster and has a higher success rate.
+	// - **aggressive**: aggressive mode. This mode supports fast negotiations and a higher success rate.
 	//
 	// example:
 	//
@@ -412,19 +412,19 @@ type ModifyTunnelAttributeResponseBodyTunnelIkeConfig struct {
 	//
 	// group2
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The IKE version.
+	// The IKE protocol version.
 	//
-	// 	- **ikev1**
+	// - **ikev1**
 	//
-	// 	- **ikev2**
+	// - **ikev2**
 	//
-	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for scenarios with multiple CIDR blocks.
+	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multi-CIDR-block scenarios.
 	//
 	// example:
 	//
 	// ikev2
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The tunnel identifier. The identifier supports FQDNs and IP addresses. The default value is the tunnel IP address.
+	// The identifier of the local end of the tunnel. It supports FQDN and IP formats. Default value: the IP address of the current tunnel.
 	//
 	// example:
 	//
@@ -436,7 +436,7 @@ type ModifyTunnelAttributeResponseBodyTunnelIkeConfig struct {
 	//
 	// 123456****
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The peer identifier. The identifier supports FQDNs and IP addresses. The default identifier is the IP address of the customer gateway associated with the tunnel.
+	// The identifier of the peer end of the tunnel. It supports FQDN and IP formats. Default value: the IP address of the customer gateway instance associated with the tunnel.
 	//
 	// example:
 	//

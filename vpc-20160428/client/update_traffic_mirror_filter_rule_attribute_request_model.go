@@ -46,7 +46,7 @@ type UpdateTrafficMirrorFilterRuleAttributeRequest struct {
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId*	- as **ClientToken**. **RequestId*	- may be different for each API request.
+	// > If you do not set this parameter, the system uses **RequestId*	- as **ClientToken**. **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type UpdateTrafficMirrorFilterRuleAttributeRequest struct {
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
 	// The new destination port range of the inbound or outbound traffic.
 	//
-	// >  If you set **Protocol*	- to **ICMP**, you cannot change the port range.
+	// > If you set **Protocol*	- to **ICMP**, you cannot change the port range.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type UpdateTrafficMirrorFilterRuleAttributeRequest struct {
 	DestinationPortRange *string `json:"DestinationPortRange,omitempty" xml:"DestinationPortRange,omitempty"`
 	// Specifies whether to check the request without performing the operation. Valid values:
 	//
-	// 	- **true**: only checks the API request. The configuration of the inbound or outbound rule is not modified. The system checks the required parameters, request syntax, and limits. If the request fails to pass the check, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// - **true**: only checks the API request. The configuration of the inbound or outbound rule is not modified. The system checks the required parameters, request syntax, and limits. If the request fails to pass the check, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**: sends the request. This is the default value. If the request passes the check, a 2xx HTTP status code is returned and the configuration of the inbound or outbound rule is modified.
+	// - **false**: sends the request. This is the default value. If the request passes the check, a 2xx HTTP status code is returned and the configuration of the inbound or outbound rule is modified.
 	//
 	// example:
 	//
@@ -86,13 +86,13 @@ type UpdateTrafficMirrorFilterRuleAttributeRequest struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The new protocol that is used by the traffic to be mirrored by the inbound or outbound rule. Valid values:
 	//
-	// 	- **ALL**: all protocols
+	// - **ALL**: all protocols
 	//
-	// 	- **ICMP**: Internet Control Message Protocol (ICMP)
+	// - **ICMP**: Internet Control Message Protocol (ICMP)
 	//
-	// 	- **TCP**: TCP
+	// - **TCP**: TCP
 	//
-	// 	- **UDP**: User Datagram Protocol (UDP)
+	// - **UDP**: User Datagram Protocol (UDP)
 	//
 	// example:
 	//
@@ -112,9 +112,9 @@ type UpdateTrafficMirrorFilterRuleAttributeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The new action of the inbound or outbound rule. Valid values:
 	//
-	// 	- **accept**: accepts network traffic.
+	// - **accept**: accepts network traffic.
 	//
-	// 	- **drop**: drops network traffic.
+	// - **drop**: drops network traffic.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type UpdateTrafficMirrorFilterRuleAttributeRequest struct {
 	SourceCidrBlock *string `json:"SourceCidrBlock,omitempty" xml:"SourceCidrBlock,omitempty"`
 	// The new source port range of the inbound or outbound traffic.
 	//
-	// >  If you set **Protocol*	- to **ICMP**, you cannot change the port range.
+	// > If you set **Protocol*	- to **ICMP**, you cannot change the port range.
 	//
 	// example:
 	//

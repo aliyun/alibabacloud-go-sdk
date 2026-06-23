@@ -16,7 +16,7 @@ type iListBusinessAccessPointsResponseBody interface {
 }
 
 type ListBusinessAccessPointsResponseBody struct {
-	// The list of access points.
+	// A list of access points.
 	BusinessAccessPoints []*ListBusinessAccessPointsResponseBodyBusinessAccessPoints `json:"BusinessAccessPoints,omitempty" xml:"BusinessAccessPoints,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -76,11 +76,11 @@ type ListBusinessAccessPointsResponseBodyBusinessAccessPoints struct {
 	//
 	// example:
 	//
-	// hangzhou-xs-B
+	// 杭州-萧山-B
 	AccessPointName *string `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
-	// The ID of the cloud box.
+	// The ID of the Cloud Box instance.
 	//
-	// >  You can query this parameter if the Express Connect circuits and access points are of the cloud box type.
+	// > This parameter is returned only for access points that are associated with Cloud Box instances.
 	//
 	// example:
 	//
@@ -97,43 +97,44 @@ type ListBusinessAccessPointsResponseBodyBusinessAccessPoints struct {
 	// example:
 	//
 	// 120.247514
-	Longitude           *float64                                                                       `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	Longitude *float64 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	// The supported model of the optical module.
 	OpticalModuleModels []*ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels `json:"OpticalModuleModels,omitempty" xml:"OpticalModuleModels,omitempty" type:"Repeated"`
-	// The connectivity provider of the Express Connect circuit. Valid values:
+	// The connectivity provider for the Express Connect circuit. Valid values:
 	//
-	// 	- **CT**: China Telecom.
+	// - **CT**: China Telecom.
 	//
-	// 	- **CU**: China Unicom.
+	// - **CU**: China Unicom.
 	//
-	// 	- **CM**: China Mobile.
+	// - **CM**: China Mobile.
 	//
-	// 	- **CO**: other connectivity providers in the Chinese mainland.
+	// - **CO**: other connectivity providers in the Chinese mainland.
 	//
-	// 	- **Equinix**: Equinix.
+	// - **Equinix**: Equinix.
 	//
-	// 	- **Other**: other connectivity providers outside the Chinese mainland.
+	// - **Other**: other connectivity providers outside the Chinese mainland.
 	//
 	// example:
 	//
 	// CT
 	SupportLineOperator *string `json:"SupportLineOperator,omitempty" xml:"SupportLineOperator,omitempty"`
-	// The port type supported by the access point. Valid values:
+	// The port types supported by the access point. Valid values:
 	//
-	// 	- **100Base-T**: 100 Mbit/s copper Ethernet port
+	// - **100Base-T**: 100 Mbit/s copper port.
 	//
-	// 	- **1000Base-T**: 1,000 Mbit/s copper Ethernet port
+	// - **1000Base-T**: 1,000 Mbit/s copper port.
 	//
-	// 	- **1000Base-LX**: 1,000 Mbit/s single-mode optical port (10 km)
+	// - **1000Base-LX**: 1,000 Mbit/s single-mode optical port (10 km).
 	//
-	// 	- **10GBase-T**: 10,000 Mbit/s copper Ethernet port
+	// - **10GBase-T**: 10,000 Mbit/s copper port.
 	//
-	// 	- **10GBase-LR**: 10,000 Mbit/s single-mode optical port (10 km)
+	// - **10GBase-LR**: 10,000 Mbit/s single-mode optical port (10 km).
 	//
-	// 	- **40GBase-LR**: 40,000 Mbit/s single-mode optical port
+	// - **40GBase-LR**: 40,000 Mbit/s single-mode optical port.
 	//
-	// 	- **100GBase-LR**: 100,000 Mbit/s single-mode optical port
+	// - **100GBase-LR**: 100,000 Mbit/s single-mode optical port.
 	//
-	// >  To use ports 40GBase-LR and 100GBase-LR, you must first contact your account manager.
+	// > The 40GBase-LR and 100GBase-LR port types are subject to availability. To use these port types, contact your account manager.
 	//
 	// example:
 	//
@@ -235,8 +236,10 @@ func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) Validate() er
 }
 
 type ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels struct {
+	// The model of the optical module.
 	OpticalModuleModel *string `json:"OpticalModuleModel,omitempty" xml:"OpticalModuleModel,omitempty"`
-	PortType           *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
+	// The port type.
+	PortType *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
 }
 
 func (s ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels) String() string {

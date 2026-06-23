@@ -42,9 +42,9 @@ type iCreateRouteEntryRequest interface {
 type CreateRouteEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters.
+	// Generate a parameter value from your client. Make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request may be different.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -52,17 +52,21 @@ type CreateRouteEntryRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the custom route entry.
 	//
-	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination CIDR block of the custom route entry. Both IPv4 and IPv6 CIDR blocks are supported. Make sure that the destination CIDR block meets the following requirements:
+	// The destination CIDR block of the custom route entry. IPv4 CIDR blocks, IPv6 CIDR blocks, destination CIDR blocks of prefix lists, and instance IDs of prefix lists are supported. The following requirements must be met:
 	//
-	// 	- The destination CIDR block is not 100.64.0.0/10 or a subset of 100.64.0.0/10.
 	//
-	// 	- The destination CIDR block of the custom route entry is different from the destination CIDR blocks of other route entries in the same route table.
+	//
+	// - The destination CIDR block cannot point to or be contained by 100.64.0.0/10.
+	//
+	//
+	//
+	// - The destination CIDR blocks of different route entries in the same route table must be unique.
 	//
 	// This parameter is required.
 	//
@@ -72,49 +76,53 @@ type CreateRouteEntryRequest struct {
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the required parameters, request syntax, and limits. If the request fails, an error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run. The system checks the required parameters, request format, and business restrictions. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+	// - **false*	- (default): sends a normal request, passes the dry run, and returns an HTTP 2xx status code. The route is directly created.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the next hop for the custom route.
+	// The ID of the next hop instance of the custom route entry.
 	//
-	// >  [](#-nexthoptype--ecr-describeexpressconnectrouterassociation--associationid--id)If you set the NextHopType parameter to ECR, call the [DescribeExpressConnectRouterAssociation](https://help.aliyun.com/document_detail/2712069.html) operation to access the AssociationId and use it as the next hop ID.
+	// > If you set NextHopType to ECR, you can call the [DescribeExpressConnectRouterAssociation](https://help.aliyun.com/document_detail/2712069.html) operation to obtain the AssociationId as the next hop ID.
+	//
+	// > -.
 	//
 	// example:
 	//
 	// i-j6c2fp57q8rr4jlu****
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The next hop list.
+	// The information about the next hops.
 	NextHopList []*CreateRouteEntryRequestNextHopList `json:"NextHopList,omitempty" xml:"NextHopList,omitempty" type:"Repeated"`
 	// The type of next hop of the custom route entry. Valid values:
 	//
-	// 	- **Instance**: an Elastic Compute Service (ECS) instance. This is the default value.
+	// - **Instance*	- (default): ECS instance.
 	//
-	// 	- **HaVip**: a high-availability virtual IP address (HaVip).
+	// - **HaVip**: high-availability virtual IP address.
 	//
-	// 	- **RouterInterface**: a router interface.
+	// - **RouterInterface**: vRouter interface.
 	//
-	// 	- **NetworkInterface**: an elastic network interface (ENI).
+	// - **NetworkInterface**: network interface controller (NIC).
 	//
-	// 	- **VpnGateway**: a VPN gateway.
+	// - **VpnGateway**: VPN gateway.
 	//
-	// 	- **IPv6Gateway**: an IPv6 gateway.
+	// - **IPv6Gateway**: IPv6 gateway.
 	//
-	// 	- **NatGateway**: a NAT gateway.
+	// - **NatGateway**: NAT gateway.
 	//
-	// 	- **Attachment**: a transit router.
+	// - **Attachment**: transit router.
 	//
-	// 	- **VpcPeer**: a VPC peering connection.
+	// - **VpcPeer**: VPC peering connection.
 	//
-	// 	- **Ipv4Gateway**: an IPv4 gateway.
+	// - **Ipv4Gateway**: IPv4 gateway.
 	//
-	// 	- **GatewayEndpoint**: a gateway endpoint.
+	// - **GatewayEndpoint**: gateway endpoint.
 	//
-	// 	- **Ecr**: an Express Connect Router (ECR).
+	// - **Ecr**: Express Connect Router (ECR).
+	//
+	// - **GatewayLoadBalancerEndpoint**: Gateway Load Balancer endpoint (GWLBe).
 	//
 	// example:
 	//
@@ -124,7 +132,7 @@ type CreateRouteEntryRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the route table.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// example:
 	//
@@ -132,9 +140,9 @@ type CreateRouteEntryRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The name of the custom route entry that you want to add.
+	// The name of the custom route entry to add.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -298,19 +306,19 @@ func (s *CreateRouteEntryRequest) Validate() error {
 }
 
 type CreateRouteEntryRequestNextHopList struct {
-	// The ID of the next hop of the ECMP route.
+	// The ID of the next hop instance of the ECMP route.
 	//
 	// example:
 	//
 	// ri-2zeo3xzyf3cd8r4****
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The type of next hop of the ECMP route entry. Set the value to **RouterInterface**.
+	// The type of next hop of the ECMP route. Valid value: **RouterInterface*	- (router interface).
 	//
 	// example:
 	//
 	// RouterInterface
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The weight of the next hop of the ECMP route entry.
+	// The weight of the next hop of the ECMP route.
 	//
 	// example:
 	//

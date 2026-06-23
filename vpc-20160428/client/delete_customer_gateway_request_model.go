@@ -28,15 +28,15 @@ type iDeleteCustomerGatewayRequest interface {
 type DeleteCustomerGatewayRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client generates this parameter value, which must be unique among different requests. The maximum length is 64 ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-0016e04****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the customer gateway.
+	// The ID of the customer gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DeleteCustomerGatewayRequest struct {
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the customer gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the customer gateway. You can obtain the region ID by calling the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation.
 	//
 	// This parameter is required.
 	//

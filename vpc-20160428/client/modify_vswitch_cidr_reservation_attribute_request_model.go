@@ -32,7 +32,25 @@ type iModifyVSwitchCidrReservationAttributeRequest interface {
 }
 
 type ModifyVSwitchCidrReservationAttributeRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// A client token used to ensure the idempotence of the request.
+	//
+	// Generate a unique value from your client for this parameter to guarantee uniqueness across different requests. ClientToken supports only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
+	//
+	// example:
+	//
+	// 02fb3da4-230e-11e9-8e44-0016e04115b
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run of the request. Valid values:
+	//
+	// - **true**: Sends a dry run request without creating any resource (performing the API operation). The system checks whether required parameters are specified, whether the request format is valid, and whether business limits are met. If the check fails, an error is returned. If the check passes, the error code `DryRunOperation` is returned.
+	//
+	// - **false*	- (default): Sends a normal request. If the check passes, an HTTP 2xx status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

@@ -20,25 +20,25 @@ type iDescribeVpcGrantRulesToEcrResponseBody interface {
 }
 
 type DescribeVpcGrantRulesToEcrResponseBody struct {
-	// The authorization information.
+	// A list of authorization rules.
 	GrantRuleModels []*DescribeVpcGrantRulesToEcrResponseBodyGrantRuleModels `json:"GrantRuleModels,omitempty" xml:"GrantRuleModels,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token for the next page of results. A non-empty value indicates that more results are available. If this parameter is not returned or is empty, all results have been retrieved.
 	//
-	// 	- If **NextToken*	- is empty, there is no next page.
+	// - If **NextToken*	- is empty, there are no more queries.
 	//
-	// 	- ****
+	// - If **NextToken*	- has a value, the value is the token to start the next query.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The unique ID that Alibaba Cloud generates for the request.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 66342E8E-5E87-5FF9-80C7-C3E3571A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of instances queried. If you specify the MaxResults and NextToken request parameters to perform a paged query, the value of the TotalCount response parameter is invalid.
+	// The total number of entries. Note: When you perform a paged query by using the `MaxResults` and `NextToken` parameters, the value of this parameter is for reference only.
 	//
 	// example:
 	//
@@ -104,19 +104,19 @@ func (s *DescribeVpcGrantRulesToEcrResponseBody) Validate() error {
 }
 
 type DescribeVpcGrantRulesToEcrResponseBodyGrantRuleModels struct {
-	// The creation time in milliseconds.
+	// The time when the authorization was created.
 	//
 	// example:
 	//
 	// 2024-09-09T02:14:51Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ECR ID.
+	// The ID of the Express Connect Router.
 	//
 	// example:
 	//
 	// ecr-tz7w3chlaptxr2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the ECR belongs.
+	// The ID of the Alibaba Cloud account (main account) that owns the Express Connect Router.
 	//
 	// example:
 	//
@@ -128,23 +128,23 @@ type DescribeVpcGrantRulesToEcrResponseBodyGrantRuleModels struct {
 	//
 	// vpc-wz9ek66wd7tl5xqpy****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the instance belongs.
+	// The ID of the Alibaba Cloud account (main account) that owns the network instance.
 	//
 	// example:
 	//
 	// 192745367151****
 	InstanceUid *int64 `json:"InstanceUid,omitempty" xml:"InstanceUid,omitempty"`
-	// The ID of the region where the instance is deployed.
+	// The ID of the region where the network instance is located.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The type of instance. Valid values:
+	// The type of the network instance. Valid values:
 	//
-	// 	- **VBR**: queries the permissions that are granted to a VBR.
+	// - **VBR**: virtual border router
 	//
-	// 	- **VPC**: queries the permissions that are granted from a VPC.
+	// - **VPC**: Virtual Private Cloud
 	//
 	// example:
 	//
