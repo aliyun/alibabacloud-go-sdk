@@ -14,6 +14,8 @@ type iGetInstanceRequest interface {
 }
 
 type GetInstanceRequest struct {
+	// The ID of the Message Queue for RabbitMQ instance.
+	//
 	// This parameter is required.
 	//
 	// example:

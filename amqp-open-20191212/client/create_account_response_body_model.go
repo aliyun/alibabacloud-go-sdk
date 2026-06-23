@@ -22,7 +22,7 @@ type iCreateAccountResponseBody interface {
 }
 
 type CreateAccountResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the request was successful.
+	// The return code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type CreateAccountResponseBody struct {
 	//
 	// example:
 	//
-	// 92385FD2-624A-48C9-8FB5-753F2AFA***
+	// FEBA5E0C-50D0-4FA6-A794-4901E5465***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ func (s *CreateAccountResponseBody) Validate() error {
 }
 
 type CreateAccountResponseBodyData struct {
-	// The AccessKey ID that is used to create the password.
+	// The AccessKey ID that is used to create the username and password.
 	//
 	// example:
 	//
 	// LTAI****************
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	// The timestamp that indicates when the password was created. Unit: milliseconds.
+	// The timestamp when the username and password were created. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -131,21 +131,23 @@ type CreateAccountResponseBodyData struct {
 	//
 	// amqp-cn-*********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The Alibaba Cloud account ID or RAM user to which the AccessKey pair that is used to create the static username and password belongs.
+	// The ID of the Alibaba Cloud account or RAM user that owns the AccessKey. The AccessKey is used to create the static username and password.
 	//
 	// example:
 	//
-	// 15657*********01
+	// 1565***********01
 	MasterUId *int64 `json:"MasterUId,omitempty" xml:"MasterUId,omitempty"`
 	// The created static password.
 	//
 	// example:
 	//
-	// NEMxQTYzNjdDRTVDNDI1NUU5NjE3**************1MzNGODoxNjcxMTc1MzEzNTIy
+	// OUYwQzM2QjZBRkUxNDRFM***************MzZCNzdDQzoxNjcxNDMwMzkyODI1
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
-	// ***环境
+	// **	- environment
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The created static username.
 	//

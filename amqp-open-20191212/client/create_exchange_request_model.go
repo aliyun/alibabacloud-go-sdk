@@ -28,7 +28,7 @@ type iCreateExchangeRequest interface {
 }
 
 type CreateExchangeRequest struct {
-	// The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
+	// The alternate exchange. Configure an alternate exchange to receive messages that fail to be routed.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type CreateExchangeRequest struct {
 	AlternateExchange *string `json:"AlternateExchange,omitempty" xml:"AlternateExchange,omitempty"`
 	// Specifies whether to automatically delete the exchange. Valid values:
 	//
-	// 	- **true**: If the last queue that is bound to the exchange is unbound, the exchange is automatically deleted.
+	// - **true**: Yes. The exchange is automatically deleted after the last queue is unbound from it.
 	//
-	// 	- **false**: If the last queue that is bound to the exchange is unbound, the exchange is not automatically deleted.
+	// - **false**: No. The exchange is not automatically deleted after the last queue is unbound from it.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +46,11 @@ type CreateExchangeRequest struct {
 	//
 	// false
 	AutoDeleteState *bool `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
-	// The name of the exchange that you want to create. The exchange name must meet the following conventions:
+	// The name of the exchange. Note:
 	//
-	// 	- The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+	// - The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
 	//
-	// 	- After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
+	// - The name of an exchange cannot be changed after the exchange is created. To change the name, delete the exchange and create a new one.
 	//
 	// This parameter is required.
 	//
@@ -58,17 +58,15 @@ type CreateExchangeRequest struct {
 	//
 	// DemoExchange
 	ExchangeName *string `json:"ExchangeName,omitempty" xml:"ExchangeName,omitempty"`
-	// The exchange type. Valid values:
+	// The type of the exchange. Valid values:
 	//
-	// 	- **DIRECT**: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
+	// - **DIRECT**: This routing rule type routes messages to a queue whose binding key exactly matches the routing key of the message.
 	//
-	// 	- **TOPIC**: This type of exchange is similar to direct exchanges. An exchange of this type routes a message to one or more queues based on the results of the fuzzy match or multi-condition match between the routing key of the message and the binding keys of the current exchange.
+	// - **TOPIC**: This type is similar to the DIRECT type. It routes messages to bound queues using routing key pattern matching and string comparison.
 	//
-	// 	- **FANOUT**: An exchange of this type routes all received messages to all queues bound to this exchange. You can use a fanout exchange to broadcast messages.
+	// - **FANOUT**: This routing rule type is simple. It routes all messages sent to the exchange to all queues that are bound to the exchange. This works like a broadcast feature.
 	//
-	// 	- **HEADERS**: This type of exchange is similar to direct exchanges. The only difference is that a headers exchange routes messages based on the headers attributes instead of routing keys. When you bind a headers exchange to a queue, you must configure binding attributes in the key-value format for the binding. When you send a message to a headers exchange, you must configure the headers attributes in the key-value format for the message. After a headers exchange receives a message, the exchange routes the message based on the matching results between the headers attributes of the message and the binding attributes of the bound queues.
-	//
-	// 	- **X-CONSISTENT-HASH**: An exchange of this type allows you to perform hash calculations on routing keys or header values and use consistent hashing to route a message to different queues.
+	// - **HEADERS**: This type is similar to the DIRECT type. It uses header properties instead of a routing key for routing. When a queue is bound to a headers exchange, key-value pairs are defined for the binding. When a message is sent to the exchange, key-value pairs are defined in the message header. The exchange routes the message by comparing the key-value pairs in the header with the key-value pairs of the binding.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +74,7 @@ type CreateExchangeRequest struct {
 	//
 	// DIRECT
 	ExchangeType *string `json:"ExchangeType,omitempty" xml:"ExchangeType,omitempty"`
-	// The ID of the ApsaraMQ for RabbitMQ for which you want to create an exchange.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -86,9 +84,9 @@ type CreateExchangeRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether the exchange is an internal exchange. Valid values:
 	//
-	// 	- **false**
+	// - **false**: No
 	//
-	// 	- **true**
+	// - **true**: Yes
 	//
 	// This parameter is required.
 	//
@@ -96,14 +94,29 @@ type CreateExchangeRequest struct {
 	//
 	// false
 	Internal *bool `json:"Internal,omitempty" xml:"Internal,omitempty"`
-	// The name of the vhost to which the exchange that you want to create belongs.
+	// The name of the vhost to which the exchange belongs.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
-	VirtualHost  *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
+	VirtualHost *string `json:"VirtualHost,omitempty" xml:"VirtualHost,omitempty"`
+	// An x-delayed-message exchange lets you use the x-delay header property to specify a delivery delay for a message in milliseconds. The routing rule for the delayed message is determined by the exchange type that you specify for the XDelayedType parameter. This parameter sets the actual exchange type to which the message is delivered after the delay. Valid values:
+	//
+	// - **DIRECT**: Delivers the delayed message to the specified queue that is bound to a DIRECT exchange.
+	//
+	// - **TOPIC**: Delivers the delayed message to queues that are bound to a TOPIC exchange.
+	//
+	// - **FANOUT**: Delivers the delayed message to queues that are bound to a FANOUT exchange.
+	//
+	// - **HEADERS**: Delivers the delayed message to queues that are bound to a HEADERS exchange.
+	//
+	// - **X-JMS-TOPIC**: Delivers the delayed message to queues that are bound to an X-JMS-TOPIC exchange.
+	//
+	// example:
+	//
+	// DIRECT
 	XDelayedType *string `json:"XDelayedType,omitempty" xml:"XDelayedType,omitempty"`
 }
 

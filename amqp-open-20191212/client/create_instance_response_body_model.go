@@ -22,7 +22,7 @@ type iCreateInstanceResponseBody interface {
 }
 
 type CreateInstanceResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the request is successful.
+	// The return code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -34,19 +34,19 @@ type CreateInstanceResponseBody struct {
 	//
 	// amqp-cn-xxxxx
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned message.
+	// A message providing additional details about the response.
 	//
 	// example:
 	//
 	// xxx failed,xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID. You can use the ID to troubleshoot issues. This parameter is a common parameter.
+	// The unique ID of the request. This is a common parameter used for troubleshooting.
 	//
 	// example:
 	//
 	// CCBB1225-C392-480E-8C7F-D09AB2CD2***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

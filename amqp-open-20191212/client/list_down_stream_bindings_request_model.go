@@ -22,7 +22,7 @@ type iListDownStreamBindingsRequest interface {
 }
 
 type ListDownStreamBindingsRequest struct {
-	// The exchange name.
+	// The name of the exchange.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type ListDownStreamBindingsRequest struct {
 	//
 	// 1880770869023***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries to return.
+	// The maximum number of results to return.
 	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
+	// The token that is used to retrieve the next page of results. If this is your first call, or if you have retrieved all results, leave this parameter empty.
 	//
 	// example:
 	//

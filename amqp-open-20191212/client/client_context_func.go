@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 增加实例白名单
+// Adds an entry to the whitelist of an instance.
 //
 // @param tmpReq - AddInstanceWhiteListRequest
 //
@@ -67,7 +67,7 @@ func (client *Client) AddInstanceWhiteListWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Creates a pair of static username and password. If you access an ApsaraMQ for RabbitMQ broker from an open source RabbitMQ client, you must use a pair of username and password for authentication. You can access the ApsaraMQ for RabbitMQ broker only after the authentication is passed. ApsaraMQ for RabbitMQ allows you to generate usernames and passwords by using AccessKey pairs provided by Alibaba Cloud Resource Access Management (RAM).
+// When an open-source client accesses an ApsaraMQ for RabbitMQ server, it must provide a username and password for authentication. ApsaraMQ for RabbitMQ lets you generate a username and password from an AccessKey ID and AccessKey secret provided by Resource Access Management (RAM).
 //
 // @param request - CreateAccountRequest
 //
@@ -135,7 +135,7 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates a binding. In ApsaraMQ for RabbitMQ, after a producer sends a message to an exchange, the exchange routes the message to a queue or another exchange based on the binding relationship and the routing rule.
+// A producer sends a message to an exchange, which then routes the message to a specified queue or another exchange based on the binding and routing rules.
 //
 // @param request - CreateBindingRequest
 //
@@ -203,7 +203,7 @@ func (client *Client) CreateBindingWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates an exchange. In ApsaraMQ for RabbitMQ, an exchange is used to route a message that is received from a producer to one or more queues or to discard the message. An exchange routes a message to queues by using the routing key and binding keys.
+// A producer sends a message to an exchange. The exchange then routes the message to one or more queues based on the routing key and the binding key, or discards the message.
 //
 // @param request - CreateExchangeRequest
 //
@@ -276,10 +276,6 @@ func (client *Client) CreateExchangeWithContext(ctx context.Context, request *Cr
 // Summary:
 //
 // Creates an ApsaraMQ for RabbitMQ instance.
-//
-// Description:
-//
-// *Before you call this operation, make sure that you fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/606747.html) of ApsaraMQ for RabbitMQ.
 //
 // @param tmpReq - CreateInstanceRequest
 //
@@ -453,7 +449,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// Creates a queue. In ApsaraMQ for RabbitMQ, a queue is a message queue. All messages in ApsaraMQ for RabbitMQ are sent to a specific exchange and then routed to a bound queue by the exchange.
+// A queue is a buffer that stores messages. In ApsaraMQ for RabbitMQ, messages are sent to a specified exchange and then routed to a bound queue.
 //
 // @param request - CreateQueueRequest
 //
@@ -585,7 +581,7 @@ func (client *Client) CreateVirtualHostWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes a pair of username and password.
+// Deletes a static username and password.
 //
 // @param request - DeleteAccountRequest
 //
@@ -633,7 +629,7 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes a binding to unbind a queue or an exchange from a source exchange.
+// The DeleteBinding operation detaches a source exchange from a target queue or another exchange.
 //
 // @param request - DeleteBindingRequest
 //
@@ -701,11 +697,11 @@ func (client *Client) DeleteBindingWithContext(ctx context.Context, request *Del
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Usage notes
 //
-//   - You cannot delete exchanges of the **headers*	- and **x-jms-topic*	- types.
+// - You cannot delete exchanges with the type **headers**.
 //
-//   - You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
+// - You cannot delete the three built-in exchanges in a vhost: amq.direct, amq.topic, or amq.fanout.
 //
 // @param request - DeleteExchangeRequest
 //
@@ -813,7 +809,7 @@ func (client *Client) DeleteQueueWithContext(ctx context.Context, request *Delet
 //
 // Description:
 //
-// Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
+// Before you delete a vhost, you must delete all exchanges and queues in it.
 //
 // @param request - DeleteVirtualHostRequest
 //
@@ -861,7 +857,7 @@ func (client *Client) DeleteVirtualHostWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an ApsaraMQ for RabbitMQ instance.
 //
 // @param request - GetInstanceRequest
 //
@@ -901,7 +897,7 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, request *GetIn
 
 // Summary:
 //
-// Queries the maximum number of vhosts, exchanges, and queues that you can create and the number of created vhosts, exchanges, and queues on an ApsaraMQ for RabbitMQ instance.
+// Queries the current and maximum numbers of vhosts, exchanges, and queues for a specified ApsaraMQ for RabbitMQ instance.
 //
 // @param request - GetMetadataAmountRequest
 //
@@ -941,7 +937,7 @@ func (client *Client) GetMetadataAmountWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the static username and password of an ApsaraMQ for RabbitMQ.
+// Lists the usernames and passwords for a specified ApsaraMQ for RabbitMQ instance.
 //
 // @param request - ListAccountsRequest
 //
@@ -985,7 +981,7 @@ func (client *Client) ListAccountsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries all bindings of a virtual host (vhost) on an ApsaraMQ for RabbitMQ instance.
+// Queries all bindings that are created in a vhost of a specified ApsaraMQ for RabbitMQ instance.
 //
 // @param request - ListBindingsRequest
 //
@@ -1025,7 +1021,7 @@ func (client *Client) ListBindingsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries all exchanges or queues to which an exchange is bound.
+// Queries the exchanges or queues that are bound to a specified exchange.
 //
 // @param request - ListDownStreamBindingsRequest
 //
@@ -1065,7 +1061,7 @@ func (client *Client) ListDownStreamBindingsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries all queues or exchanges that are bound to an exchange.
+// Queries the queues or other exchanges that are bound to a specified exchange.
 //
 // @param request - ListExchangeUpStreamBindingsRequest
 //
@@ -1105,7 +1101,7 @@ func (client *Client) ListExchangeUpStreamBindingsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries all exchanges that are created in a virtual host (vhost).
+// Lists all exchanges in a specified vhost of an instance.
 //
 // @param request - ListExchangesRequest
 //
@@ -1145,7 +1141,7 @@ func (client *Client) ListExchangesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 查询实例ip/vpc白名单
+// Queries the IP or VPC whitelist for an instance.
 //
 // @param request - ListInstanceWhiteListRequest
 //
@@ -1193,7 +1189,7 @@ func (client *Client) ListInstanceWhiteListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries all AparaMQ for RabbitMQ instances in a region. The returned data includes the basic information, endpoint, and specification limits of each instance.
+// Queries a list of ApsaraMQ for RabbitMQ instances in a specified region and returns basic information about each instance, such as its endpoints and specification limits.
 //
 // @param request - ListInstancesRequest
 //
@@ -1233,11 +1229,11 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries the online consumers of a queue.
+// Queries the online consumer clients of a specified queue.
 //
 // Description:
 //
-// ApsaraMQ for RabbitMQ allows you to query only online consumers.
+// ApsaraMQ for RabbitMQ lets you query only online consumer clients. You cannot query offline consumer clients.
 //
 // @param request - ListQueueConsumersRequest
 //
@@ -1277,7 +1273,7 @@ func (client *Client) ListQueueConsumersWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the exchanges that are bound to a queue.
+// Queries the exchanges that are bound to a specified queue.
 //
 // @param request - ListQueueUpStreamBindingsRequest
 //
@@ -1317,7 +1313,7 @@ func (client *Client) ListQueueUpStreamBindingsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries all queues in a vhost of an ApsaraMQ for RabbitMQ instance.
+// Queries information about all queues in a vhost on a specified ApsaraMQ for RabbitMQ instance.
 //
 // @param request - ListQueuesRequest
 //
@@ -1357,7 +1353,7 @@ func (client *Client) ListQueuesWithContext(ctx context.Context, request *ListQu
 
 // Summary:
 //
-// Queries all virtual hosts (vhosts) on an ApsaraMQ for RabbitMQ instance.
+// Lists all vhosts in a specified ApsaraMQ for RabbitMQ instance.
 //
 // @param request - ListVirtualHostsRequest
 //
@@ -1397,7 +1393,7 @@ func (client *Client) ListVirtualHostsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除实例ip/vpc白名单
+// Removes an IP address or a VPC from an instance\\"s whitelist.
 //
 // @param request - RemoveInstanceWhiteListRequest
 //
@@ -1449,7 +1445,7 @@ func (client *Client) RemoveInstanceWhiteListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Upgrades or downgrades the configurations of an ApsaraMQ for RabbitMQ instance.
+// Upgrades or downgrades the specifications of an ApsaraMQ for RabbitMQ instance.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -1557,7 +1553,7 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Updates the name of an ApsaraMQ for RabbitMQ instance. After an ApsaraMQ for RabbitMQ instance is created, the ID of the instance is used as its name by default. You can specify a custom name for an instance to facilitate instance identification.
+// An ApsaraMQ for RabbitMQ instance is named after its instance ID by default. You can change the name for easier identification.
 //
 // @param request - UpdateInstanceNameRequest
 //
@@ -1595,6 +1591,58 @@ func (client *Client) UpdateInstanceNameWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateInstanceNameResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the elastic scaling switch of a serverless instance.
+//
+// @param request - UpdateInstanceServerlessSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceServerlessSwitchResponse
+func (client *Client) UpdateInstanceServerlessSwitchWithContext(ctx context.Context, request *UpdateInstanceServerlessSwitchRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceServerlessSwitchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ServerlessSwitch) {
+		query["ServerlessSwitch"] = request.ServerlessSwitch
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateInstanceServerlessSwitch"),
+		Version:     dara.String("2019-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateInstanceServerlessSwitchResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

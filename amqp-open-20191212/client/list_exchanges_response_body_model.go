@@ -70,11 +70,11 @@ type ListExchangesResponseBodyData struct {
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the end of the current returned page.``
+	// The token that marks the start of the next query.
 	//
-	// 	- If the value of this parameter is empty, the next query is not required and the token used to start the next query is unavailable.``
+	// - If this parameter is empty, no more data is available.
 	//
-	// 	- If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.``
+	// - If a value is returned, use the value as the `NextToken` value in the next call to continue the query.
 	//
 	// example:
 	//
@@ -131,38 +131,39 @@ func (s *ListExchangesResponseBodyData) Validate() error {
 }
 
 type ListExchangesResponseBodyDataExchanges struct {
-	// The attributes. This parameter is unavailable in the current version.
+	// The attributes of the exchange. This parameter is not supported.
 	//
 	// example:
 	//
 	// test
 	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// Indicates whether the exchange was automatically deleted.
+	// Indicates whether the exchange is an auto-delete exchange.
 	//
 	// example:
 	//
 	// false
 	AutoDeleteState *bool `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
-	// The timestamp that indicates when the exchange was created. Unit: milliseconds.
+	// The time when the exchange was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1580886216000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The exchange type.
+	// The type of the exchange.
 	//
 	// example:
 	//
 	// DIRECT
 	ExchangeType *string `json:"ExchangeType,omitempty" xml:"ExchangeType,omitempty"`
-	Internal     *bool   `json:"Internal,omitempty" xml:"Internal,omitempty"`
-	// The exchange name.
+	// Indicates whether the exchange is an internal exchange.
+	Internal *bool `json:"Internal,omitempty" xml:"Internal,omitempty"`
+	// The name of the exchange.
 	//
 	// example:
 	//
 	// amq.direct
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The vhost name.
+	// The name of the vhost to which the exchange belongs.
 	//
 	// example:
 	//

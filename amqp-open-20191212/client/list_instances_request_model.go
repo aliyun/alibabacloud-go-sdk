@@ -18,7 +18,7 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
-	// The maximum number of entries to return. Valid values: 1 to 100.
+	// The maximum number of results to return. The recommended value is from 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type ListInstancesRequest struct {
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
+	// The token to retrieve the next page of results. If this is your first query, leave this parameter empty.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the resource group to which the instances belong.
+	// The ID of the resource group that contains the instance.
 	//
 	// example:
 	//

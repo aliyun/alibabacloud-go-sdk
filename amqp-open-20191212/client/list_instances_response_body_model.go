@@ -16,7 +16,7 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *ListInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,15 +62,15 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyData struct {
-	// The instances.
+	// A list of instances.
 	Instances []*ListInstancesResponseBodyDataInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The maximum number of entries returned.
+	// The maximum number of entries returned per page.
 	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+	// The token for the next page of results. If this field is empty, it means all results have been returned.
 	//
 	// example:
 	//
@@ -127,32 +127,41 @@ func (s *ListInstancesResponseBodyData) Validate() error {
 }
 
 type ListInstancesResponseBodyDataInstances struct {
-	// Indicates whether the instance is automatically renewed.
+	// Indicates whether auto-renewal is enabled for the instance.
 	//
 	// example:
 	//
 	// false
 	AutoRenewInstance *bool `json:"AutoRenewInstance,omitempty" xml:"AutoRenewInstance,omitempty"`
-	// The endpoint that is used to access the instance over the classic network. This parameter is no longer available.
+	// The classic network endpoint. This parameter is deprecated.
 	//
 	// example:
 	//
 	// amqp-cn-st21x7kv****.not-support
 	ClassicEndpoint *string `json:"ClassicEndpoint,omitempty" xml:"ClassicEndpoint,omitempty"`
-	Edition         *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// Indicates whether the encryption at rest feature is enabled for the instance.
+	// The deployment architecture, which is applicable only to Serverless Edition instances. Valid values:
+	//
+	// - shared: A shared architecture, used for reserved, elastic (shared), and pay-as-you-go instances.
+	//
+	// - dedicated: A dedicated architecture, used for reserved and elastic (dedicated) instances.
+	//
+	// example:
+	//
+	// shared
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// Indicates whether storage encryption is enabled for the instance.
 	//
 	// example:
 	//
 	// false
 	EncryptedInstance *bool `json:"EncryptedInstance,omitempty" xml:"EncryptedInstance,omitempty"`
-	// The timestamp that indicates when the instance expires. Unit: milliseconds.
+	// The expiration timestamp of the instance, in milliseconds.
 	//
 	// example:
 	//
 	// 1651507200000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The instance ID
+	// The instance ID.
 	//
 	// example:
 	//
@@ -164,53 +173,59 @@ type ListInstancesResponseBodyDataInstances struct {
 	//
 	// amqp-cn-st21x7kv****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The instance type.
+	// The instance type. Valid values:
 	//
-	// 	- PROFESSIONAL: Professional Edition
+	// - professional: Professional Edition
 	//
-	// 	- ENTERPRISE: Enterprise Edition
+	// - enterprise: Enterprise Edition
 	//
-	// 	- VIP: Enterprise Platinum Edition
+	// - vip: Platinum Edition
+	//
+	// <props="china">
+	//
+	// - serverless: Serverless Edition
 	//
 	// example:
 	//
 	// professional
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The ID of the Key Management Service (KMS) key used for the data disk.
+	// The ID of the KMS key used for data disk encryption.
 	//
 	// example:
 	//
 	// key-bjj66c2a893vmhawtq5fd
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The port listener mode of the instance. `tcp_and_ssl` enables both port `5672` and port `5671`, while `ssl_only` enables only port `5671`.
+	//
 	// example:
 	//
 	// tcp_and_ssl
 	ListenerMode *string `json:"ListenerMode,omitempty" xml:"ListenerMode,omitempty"`
-	// The maximum number of Internet-based transactions per second (TPS) for the instance.
+	// The peak transactions per second (TPS) of the instance over the public network.
 	//
 	// example:
 	//
 	// 24832
 	MaxEipTps *int32 `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
-	// The maximum number of queues on the instance.
+	// The maximum number of queues for the instance.
 	//
 	// example:
 	//
 	// 50
 	MaxQueue *int32 `json:"MaxQueue,omitempty" xml:"MaxQueue,omitempty"`
-	// The maximum number of VPC-based TPS for the instance.
+	// The peak transactions per second (TPS) of the instance over the private network.
 	//
 	// example:
 	//
 	// 5000
 	MaxTps *int32 `json:"MaxTps,omitempty" xml:"MaxTps,omitempty"`
-	// The maximum number of vhosts on the instance.
+	// The maximum number of vhosts for the instance.
 	//
 	// example:
 	//
 	// 50
 	MaxVhost *int32 `json:"MaxVhost,omitempty" xml:"MaxVhost,omitempty"`
-	// The timestamp that indicates when the order was created. Unit: milliseconds.
+	// The creation timestamp of the order, in milliseconds.
 	//
 	// example:
 	//
@@ -218,33 +233,40 @@ type ListInstancesResponseBodyDataInstances struct {
 	OrderCreateTime *int64 `json:"OrderCreateTime,omitempty" xml:"OrderCreateTime,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- PrePaid: the subscription billing method.
+	// - PRE_PAID: The instance uses the subscription billing method.
 	//
-	// 	- POST_PAID: the pay-as-you-go billing method.
+	// - POST_PAID: The instance uses the pay-as-you-go billing method.
 	//
 	// example:
 	//
 	// PRE_PAID
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The virtual private cloud (VPC) endpoint of the instance.
+	// The VPC endpoint of the instance.
 	//
 	// example:
 	//
 	// amqp-cn-st21x7kv****.mq-amqp.cn-hangzhou-a.aliyuncs.com
-	PrivateEndpoint     *string `json:"PrivateEndpoint,omitempty" xml:"PrivateEndpoint,omitempty"`
-	ProvisionedCapacity *int32  `json:"ProvisionedCapacity,omitempty" xml:"ProvisionedCapacity,omitempty"`
+	PrivateEndpoint *string `json:"PrivateEndpoint,omitempty" xml:"PrivateEndpoint,omitempty"`
+	// The reserved TPS capacity for reserved and elastic instances.
+	//
+	// example:
+	//
+	// 2000
+	ProvisionedCapacity *int32 `json:"ProvisionedCapacity,omitempty" xml:"ProvisionedCapacity,omitempty"`
 	// The public endpoint of the instance.
 	//
 	// example:
 	//
 	// amqp-cn-st21x7kv****.mq-amqp.cn-hangzhou-a.aliyuncs.com
 	PublicEndpoint *string `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aek3axfj2w4czrq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the security group to which the instance belongs. This security group is used for PrivateLink endpoint creation.
+	//
 	// example:
 	//
 	// sg-xxx
@@ -252,38 +274,41 @@ type ListInstancesResponseBodyDataInstances struct {
 	ServerlessSwitch *bool   `json:"ServerlessSwitch,omitempty" xml:"ServerlessSwitch,omitempty"`
 	// The instance status. Valid values:
 	//
-	// 	- DEPLOYING: The instance is being deployed.
+	// - DEPLOYING: The instance is being deployed.
 	//
-	// 	- EXPIRED: The instance is expired.
+	// - EXPIRED: The instance has expired.
 	//
-	// 	- SERVING: The instance is running.
+	// - SERVING: The instance is running.
 	//
-	// 	- RELEASED: The instance is released.
+	// - RELEASED: The instance is released.
 	//
 	// example:
 	//
 	// SERVING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The disk size. Unit: GB.
+	// The storage capacity of the disk. Unit: GB.
 	//
-	// >  For Professional Edition instances and Enterprise Edition instances, this parameter is unavailable and \\*\\*-1\\*\\	- is returned.
+	// > This parameter returns a value of **-1*	- for Professional Edition and Enterprise Edition instances, to which it does not apply.
 	//
 	// example:
 	//
 	// 200
 	StorageSize *int32 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// Indicates whether the instance supports elastic IP addresses (EIPs).
+	// Indicates whether the instance supports EIPs.
 	//
 	// example:
 	//
 	// true
 	SupportEIP *bool `json:"SupportEIP,omitempty" xml:"SupportEIP,omitempty"`
-	// The tags that are added to the instance.
+	// The tags attached to the instance.
 	Tags []*ListInstancesResponseBodyDataInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the VPC in which the instance resides. This VPC is used for PrivateLink endpoint creation.
+	//
 	// example:
 	//
 	// vpc-xxx
-	VpcId      *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The IDs of the VSwitches to which the instance is connected. These VSwitches are used for PrivateLink endpoint creation.
 	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
 }
 

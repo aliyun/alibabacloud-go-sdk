@@ -62,13 +62,13 @@ func (s *ListQueuesResponseBody) Validate() error {
 }
 
 type ListQueuesResponseBodyData struct {
-	// The maximum number of entries returned.
+	// The maximum number of results returned.
 	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+	// The token that is used to retrieve the next page of results. If this parameter is empty, all results have been returned.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type ListQueuesResponseBodyDataQueues struct {
 	//
 	// test
 	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// Indicates whether the queue was automatically deleted.
+	// The auto-delete status.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type ListQueuesResponseBodyDataQueues struct {
 	//
 	// false
 	ExclusiveState *bool `json:"ExclusiveState,omitempty" xml:"ExclusiveState,omitempty"`
-	// The time when messages in the queue were last consumed.
+	// The last time a message was consumed from the queue.
 	//
 	// example:
 	//
@@ -163,11 +163,11 @@ type ListQueuesResponseBodyDataQueues struct {
 	//
 	// QueueTest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
+	// The ID of the instance to which the queue belongs.
 	//
 	// example:
 	//
-	// 1880770869023***
+	// amqp-cn-5yd3aw******
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The vhost name.
 	//

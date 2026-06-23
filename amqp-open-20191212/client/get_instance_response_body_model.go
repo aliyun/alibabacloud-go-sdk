@@ -16,7 +16,10 @@ type iGetInstanceResponseBody interface {
 }
 
 type GetInstanceResponseBody struct {
+	// The returned data.
 	Data *GetInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The unique ID generated for the request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 92385FD2-624A-48C9-8FB5-753F2AFA***
@@ -59,105 +62,220 @@ func (s *GetInstanceResponseBody) Validate() error {
 }
 
 type GetInstanceResponseBodyData struct {
+	// Indicates whether auto-renewal is enabled for the instance.
+	//
 	// example:
 	//
 	// false
 	AutoRenewInstance *bool `json:"AutoRenewInstance,omitempty" xml:"AutoRenewInstance,omitempty"`
+	// The classic network endpoint. This parameter is deprecated.
+	//
 	// example:
 	//
 	// amqp-cn-st21x7kv****.not-support
-	ClassicEndpoint   *string `json:"ClassicEndpoint,omitempty" xml:"ClassicEndpoint,omitempty"`
-	Edition           *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	EncryptedInstance *bool   `json:"EncryptedInstance,omitempty" xml:"EncryptedInstance,omitempty"`
+	ClassicEndpoint *string `json:"ClassicEndpoint,omitempty" xml:"ClassicEndpoint,omitempty"`
+	// The deployment architecture. Valid values:
+	//
+	// - shared: shared architecture, which is suitable for reserved and elastic (shared) instances and pay-as-you-go instances.
+	//
+	// - dedicated: dedicated architecture, which is suitable for reserved and elastic (dedicated) instances.
+	//
+	// example:
+	//
+	// shared
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// Indicates whether storage encryption is enabled for the instance data.
+	//
+	// example:
+	//
+	// true
+	EncryptedInstance *bool `json:"EncryptedInstance,omitempty" xml:"EncryptedInstance,omitempty"`
+	// The timestamp that indicates when the instance expires, in milliseconds.
+	//
+	// > The value is a long integer. Handle it with care in certain programming languages to prevent precision loss.
+	//
 	// example:
 	//
 	// 1651507200000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// amqp-cn-*********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance. A length of 64 characters or less is recommended.
+	//
 	// example:
 	//
 	// yunQi-instance
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance type.
+	//
+	// - PROFESSIONAL: Professional Edition
+	//
+	// - ENTERPRISE: Enterprise Edition
+	//
+	// - VIP: Platinum Edition
+	//
+	// - SERVERLESS: Serverless Edition
+	//
 	// example:
 	//
 	// enterprise
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	KmsKeyId     *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The KMS key ID of the cloud disk.
+	//
+	// example:
+	//
+	// key-hzz6566e86byam3lg5rw4
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The listener mode. A value of tcp_and_ssl enables both port 5672 and 5671, while ssl_only enables only port 5671.
+	//
 	// example:
 	//
 	// tcp_and_ssl
 	ListenerMode *string `json:"ListenerMode,omitempty" xml:"ListenerMode,omitempty"`
+	// The maximum number of connections.
+	//
+	// For valid values, see the [ApsaraMQ for RabbitMQ purchase page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+	//
 	// example:
 	//
 	// 1500
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	// The peak public TPS.
+	//
+	// For valid values, see the [ApsaraMQ for RabbitMQ purchase page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+	//
 	// example:
 	//
 	// 1000
 	MaxEipTps *int32 `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
+	// The maximum number of queues for the instance.
+	//
 	// example:
 	//
 	// 1000
 	MaxQueue *int32 `json:"MaxQueue,omitempty" xml:"MaxQueue,omitempty"`
+	// The peak private TPS.
+	//
 	// example:
 	//
 	// 1000
 	MaxTps *int32 `json:"MaxTps,omitempty" xml:"MaxTps,omitempty"`
+	// The maximum number of vhosts for the instance.
+	//
 	// example:
 	//
 	// 50
 	MaxVhost *int32 `json:"MaxVhost,omitempty" xml:"MaxVhost,omitempty"`
+	// The timestamp that indicates when the order was created, in milliseconds.
+	//
+	// > The value is a long integer. Handle it with care in certain programming languages to prevent precision loss.
+	//
 	// example:
 	//
 	// 1651507200000
 	OrderCreateTime *int64 `json:"OrderCreateTime,omitempty" xml:"OrderCreateTime,omitempty"`
+	// The billing method.
+	//
+	// - PRE_PAID: subscription
+	//
+	// - POST_PAID: pay-as-you-go
+	//
 	// example:
 	//
 	// PRE_PAID
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The VPC endpoint of the instance.
+	//
 	// example:
 	//
 	// amqp-cn-st21x7kv****.mq-amqp.cn-hangzhou-a.aliyuncs.com
-	PrivateEndpoint     *string `json:"PrivateEndpoint,omitempty" xml:"PrivateEndpoint,omitempty"`
-	ProvisionedCapacity *int32  `json:"ProvisionedCapacity,omitempty" xml:"ProvisionedCapacity,omitempty"`
+	PrivateEndpoint *string `json:"PrivateEndpoint,omitempty" xml:"PrivateEndpoint,omitempty"`
+	// The reserved TPS capacity for reserved and elastic instances.
+	//
+	// example:
+	//
+	// 2000
+	ProvisionedCapacity *int32 `json:"ProvisionedCapacity,omitempty" xml:"ProvisionedCapacity,omitempty"`
+	// The public endpoint of the instance.
+	//
 	// example:
 	//
 	// xxx.cn-hangzhou.xxx.net.mq.amqp.aliyuncs.com
-	PublicEndpoint  *string `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
+	PublicEndpoint *string `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
+	// The ID of the resource group for the instance.
+	//
+	// example:
+	//
+	// rg-acfm2vn6jkayvfy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The security group ID used to create a PrivateLink endpoint for the instance.
+	//
 	// example:
 	//
 	// sg-xxx
 	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	ServerlessSwitch *bool   `json:"ServerlessSwitch,omitempty" xml:"ServerlessSwitch,omitempty"`
+	// The instance status. Valid values:
+	//
+	// - DEPLOYING: The instance is being deployed.
+	//
+	// - EXPIRED: The instance has expired.
+	//
+	// - SERVING: The instance is in service.
+	//
+	// - RELEASED: The instance has been released.
+	//
 	// example:
 	//
 	// SERVING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The disk capacity. Unit: GB.
+	//
+	// > For Professional and Enterprise Edition instances, this parameter returns **-1**.
+	//
 	// example:
 	//
 	// 200
 	StorageSize *int32 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// Indicates whether the instance supports EIPs.
+	//
 	// example:
 	//
 	// true
 	SupportEIP *bool `json:"SupportEIP,omitempty" xml:"SupportEIP,omitempty"`
+	// Indicates whether the message trace feature is enabled.
+	//
 	// example:
 	//
 	// True
-	SupportTracing *bool                              `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
-	Tags           []*GetInstanceResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SupportTracing *bool `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
+	// The list of tags.
+	Tags []*GetInstanceResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The retention period of message traces. Unit: days. Valid values:
+	//
+	// - 3: 3 days
+	//
+	// - 7: 7 days
+	//
+	// - 15: 15 days
+	//
+	// This parameter applies only when `SupportTracing` is set to true.
+	//
 	// example:
 	//
 	// 15
 	TracingStorageTime *int32 `json:"TracingStorageTime,omitempty" xml:"TracingStorageTime,omitempty"`
+	// The VPC ID used to create a PrivateLink endpoint for the instance.
+	//
 	// example:
 	//
 	// vpc-xxx
-	VpcId      *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VSwitch IDs used to create a PrivateLink endpoint for the instance.
 	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
 }
 
@@ -462,7 +580,17 @@ func (s *GetInstanceResponseBodyData) Validate() error {
 }
 
 type GetInstanceResponseBodyDataTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// Tag key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// Tag value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

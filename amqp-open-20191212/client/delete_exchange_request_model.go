@@ -18,7 +18,7 @@ type iDeleteExchangeRequest interface {
 }
 
 type DeleteExchangeRequest struct {
-	// The name of the exchange that you want to delete.
+	// The name of the exchange to delete.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteExchangeRequest struct {
 	//
 	// DemoExchange
 	ExchangeName *string `json:"ExchangeName,omitempty" xml:"ExchangeName,omitempty"`
-	// The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
+	// The ID of the ApsaraMQ for RabbitMQ instance that contains the exchange.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteExchangeRequest struct {
 	//
 	// amqp-cn-v0h1kb9nu***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The vhost to which the exchange that you want to delete belongs.
+	// The name of the vhost that contains the exchange.
 	//
 	// This parameter is required.
 	//

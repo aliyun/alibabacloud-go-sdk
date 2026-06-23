@@ -16,12 +16,18 @@ type iListInstanceWhiteListRequest interface {
 }
 
 type ListInstanceWhiteListRequest struct {
+	// The ID of the instance whose whitelist to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rabbitmq-cn-xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of whitelist to query.
+	//
+	// VPC whitelists apply only to instances whose VPC endpoint is of the `anytunnel` type. The latest instance versions use a `PrivateLink` VPC endpoint and do not support VPC whitelists.
+	//
 	// This parameter is required.
 	//
 	// example:

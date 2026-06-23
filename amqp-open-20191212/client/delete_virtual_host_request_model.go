@@ -16,7 +16,7 @@ type iDeleteVirtualHostRequest interface {
 }
 
 type DeleteVirtualHostRequest struct {
-	// The ID of the ApsaraMQ for RabbitMQ instance to which the vhost you want to delete belongs.
+	// The ID of the ApsaraMQ for RabbitMQ instance.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteVirtualHostRequest struct {
 	//
 	// amqp-cn-v0h1kb9nu***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the vhost that you want to delete.
+	// The name of the vhost to delete.
 	//
 	// This parameter is required.
 	//

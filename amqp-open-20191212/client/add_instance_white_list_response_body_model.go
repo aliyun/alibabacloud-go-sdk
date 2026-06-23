@@ -24,28 +24,38 @@ type iAddInstanceWhiteListResponseBody interface {
 }
 
 type AddInstanceWhiteListResponseBody struct {
+	// The status code. A value of `200` indicates a successful request.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data returned by the operation.
+	//
 	// example:
 	//
 	// true
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message returned with the response. This is typically an error message if the request fails.
+	//
 	// example:
 	//
 	// The specified parameter \\"[\\"vpc-xxx\\"]\\" is not valid
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 8BFB1C9D-08A2-4859-A47C-403C9EFA2***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code for the response. A value of `200` indicates success.
+	//
 	// example:
 	//
 	// 200
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

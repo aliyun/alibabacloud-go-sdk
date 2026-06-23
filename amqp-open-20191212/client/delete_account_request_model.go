@@ -16,21 +16,21 @@ type iDeleteAccountRequest interface {
 }
 
 type DeleteAccountRequest struct {
-	// The timestamp that indicates when the pair of static username and password that you want to delete was created. Unit: milliseconds.
+	// The timestamp that indicates when the static username and password were created. Unit: milliseconds.
 	//
-	// You can call the [ListAccounts](https://help.aliyun.com/document_detail/472730.html) operation to view the timestamp.
+	// Call the [ListAccounts](https://help.aliyun.com/document_detail/472730.html) operation to find this value.
 	//
 	// example:
 	//
 	// 1671175303522
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The pair of username and password that you want to delete.
+	// The static username to delete.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// MjphbXFwLWNuLXVxbTJ5cjc3djAwMzpMVEFJNXQ4YmVNbVZNMWVSWnRFSjZ2Zm1=
+	// MjphbXFwLWNuLXVxbTJ6cjc2djAwMzpMVEFJNX*******ZNMWVSWnRFSjZ2Zm8=
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

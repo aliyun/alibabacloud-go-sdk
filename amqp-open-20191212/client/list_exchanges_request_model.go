@@ -28,23 +28,23 @@ type ListExchangesRequest struct {
 	//
 	// amqp-cn-7pp2mwbc****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries to return. Valid values: **1 to 100**
+	// The maximum number of results to return. Valid values: **1 to 100**.
 	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token for retrieving the next page of results. Set this parameter to the token value returned from the previous call.
 	//
-	// 	- If you call this operation for the first time or a next query is not required, leave this parameter empty.
+	// - Omit this parameter on your first call.
 	//
-	// 	- If a next query is to be sent, set the value to the value of `NextToken` that is returned from the previous request.
+	// - If a subsequent call is required, set this parameter to the `NextToken` value returned from the previous call.
 	//
 	// example:
 	//
 	// AAAANDQBYW1xcC1jbi03cHAybXdiY3AwMGEBdmhvc3QBAXNkZndhYWJhATE2NDkzMTM4OTU5NDIB4o3z1pPwWzk4aYuiRffi8R6-****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The vhost name.
+	// The name of the vhost.
 	//
 	// This parameter is required.
 	//

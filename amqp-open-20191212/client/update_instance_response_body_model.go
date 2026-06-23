@@ -24,13 +24,13 @@ type iUpdateInstanceResponseBody interface {
 }
 
 type UpdateInstanceResponseBody struct {
-	// The response code. The status code 200 indicates that the request was successful.
+	// The return code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data, which includes orderId and instanceId. Sample returned data:
+	// The returned data. It includes the order ID and instance ID. For example:
 	//
 	// ```json
 	//
@@ -46,7 +46,7 @@ type UpdateInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// {“instanceId”: “amqp-cn-jtexxxxx”, “orderId”: 2222222}
+	// {\\"instanceId\\": \\"rabbitmq-serverless-cn-lf63qsjlf06\\", \\"orderId\\": 234170302080010}
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
@@ -54,13 +54,13 @@ type UpdateInstanceResponseBody struct {
 	//
 	// InstanceNotExist
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The request ID. Each request has a unique ID. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 628705FD-03EE-4ABE-BB21-E1672960***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response code.
+	// The status code.
 	//
 	// example:
 	//

@@ -78,96 +78,109 @@ type CreateInstanceRequest struct {
 	//
 	// ram openSource
 	AuthModel *string `json:"AuthModel,omitempty" xml:"AuthModel,omitempty"`
-	// Specifies whether to enable auto-renewal. Valid values:
+	// The renewal method. Valid values:
 	//
-	// 	- true: enables auto-renewal.
+	// - `true`: Enables auto-renewal.
 	//
-	// 	- false: disables auto-renewal. If you select this value, you must manually renew the instance.
+	// - `false`: Disables auto-renewal.
 	//
 	// example:
 	//
-	// AutoRenewal
+	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal period. The unit of the auto-renewal period is specified by RenewalDurationUnit. Default value: Month.
+	// The auto-renewal duration. The `RenewalDurationUnit` parameter specifies the unit, which defaults to month.
 	//
-	// >  This parameter takes effect only if you set AutoRenew to true. Default value: 1.
+	// > This parameter is required if you set `AutoRenew` to `true`. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	// The client token.
+	// The client token used to ensure request idempotence.
 	//
 	// example:
 	//
 	// c2c5d1274axxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Edition     *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// Specifies whether to enable storage encryption for the instance. This parameter is available only for exclusive instances.
+	// The deployment architecture for the serverless instance. Valid values:
+	//
+	// - `shared`: The shared architecture, which is applicable to reserved and elastic (shared) instances and pay-as-you-go instances.
+	//
+	// - `dedicated`: The dedicated architecture, which is applicable to reserved and elastic (dedicated) instances.
+	//
+	// example:
+	//
+	// shared
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// This parameter is applicable only to dedicated instances. Specifies whether to enable data-at-rest encryption for the instance.
 	//
 	// example:
 	//
 	// false
 	EncryptedInstance *bool `json:"EncryptedInstance,omitempty" xml:"EncryptedInstance,omitempty"`
-	// The name of the instance. We recommend that you specify a name that does not exceed 64 characters in length.
+	// The name of the instance. The name can be up to 64 characters long.
 	//
 	// example:
 	//
 	// amqp-xxxxx
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The instance edition. Valid values if you create a subscription instance:
+	// The instance type.
 	//
-	// 	- professional: Professional Edition.
+	// This parameter is required for subscription instances. Valid values:
 	//
-	// 	- enterprise: Enterprise Edition
+	// - `professional`: Professional Edition
 	//
-	// 	- vip: Enterprise Platinum Edition
+	// - `enterprise`: Enterprise Edition
 	//
-	// If you create a serverless instance, you do not need to specify this parameter.
+	// - `vip`: Platinum Edition
+	//
+	// You do not need to specify this parameter for serverless instances.
 	//
 	// example:
 	//
 	// professional
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The ID of the Key Management Service (KMS)-managed key used for storage encryption. This parameter is available only for exclusive instances and required only if you set EncryptedInstance to true. The key must meet the following conditions:
+	// This parameter applies only to dedicated instances and is required if `EncryptedInstance` is set to `true`. It specifies the ID of the KMS key used for data-at-rest encryption. The key must meet the following requirements:
 	//
-	// 	- The key cannot be a service key.
+	// - The key cannot be a service key.
 	//
-	// 	- The key must be in the Enabled state.
+	// - The key must be in the Enabled state.
 	//
-	// 	- The key must be a symmetric key.
+	// - The key must be a symmetric key, not an asymmetric key.
 	//
-	// 	- The key must be used for encryption and decryption.
+	// - The key usage must be for encryption and decryption.
 	//
-	// 	- After the key is expired or deleted, you cannot read or write data and exceptions can occur in the ApsaraMQ for RabbitMQ instance.
+	// - If the KMS key expires or is deleted, data reads and writes will become unavailable, and the ApsaraMQ for RabbitMQ instance may become inoperable.
 	//
 	// example:
 	//
 	// key-xxx
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// Specifies whether to enable only the TLS-encrypted port. This parameter applies only to reserved and elastic (dedicated) instances, and Platinum Edition instances.
+	//
 	// example:
 	//
 	// tcp_and_ssl
 	ListenerMode *string `json:"ListenerMode,omitempty" xml:"ListenerMode,omitempty"`
-	// The maximum number of connections that can be established to the instance.
+	// The maximum number of connections.
 	//
-	// Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+	// For information about the valid values, see the instance specifications on the [ApsaraMQ for RabbitMQ](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre) product page.
 	//
 	// example:
 	//
 	// 50000
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum number of Internet-based TPS on the instance.
+	// The peak transactions per second (TPS) of the instance over the public network.
 	//
-	// Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+	// For information about the valid values, see the instance specifications on the [ApsaraMQ for RabbitMQ](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre) product page.
 	//
 	// example:
 	//
 	// 128
 	MaxEipTps *int64 `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
-	// The maximum number of virtual private cloud (VPC)-based transactions per second (TPS) on the instance.
+	// The peak transactions per second (TPS) of the instance over a private network.
 	//
-	// Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+	// For information about the valid values, see the instance specifications on the [ApsaraMQ for RabbitMQ](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre) product page.
 	//
 	// example:
 	//
@@ -175,9 +188,9 @@ type CreateInstanceRequest struct {
 	MaxPrivateTps *int64 `json:"MaxPrivateTps,omitempty" xml:"MaxPrivateTps,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// 	- Subscription: subscription instance
+	// - `Subscription`: The subscription-based billing method.
 	//
-	// 	- PayAsYouGo: serverless instance
+	// - `PayAsYouGo`: The pay-as-you-go method for serverless instances.
 	//
 	// This parameter is required.
 	//
@@ -185,50 +198,55 @@ type CreateInstanceRequest struct {
 	//
 	// Subscription
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The subscription period. The unit of the subscription period is specified by periodCycle.
+	// The subscription duration. The `PeriodCycle` parameter specifies the unit.
 	//
-	// >  This parameter takes effect only if you set PaymentType to Subscription. Default value: 1.
+	// > This parameter is required if you set `PaymentType` to `Subscription`. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription period. Valid values:
+	// The unit of the subscription duration. Valid values:
 	//
-	// 	- Month
+	// - `Month`: month
 	//
-	// 	- Year
+	// - `Year`: year
 	//
-	// This parameter is valid only if you set PaymentType to Subscription. Default value: Month.
+	// This parameter is required if you set `PaymentType` to `Subscription`. The default value is `Month`.
 	//
 	// example:
 	//
 	// Month
-	PeriodCycle         *string `json:"PeriodCycle,omitempty" xml:"PeriodCycle,omitempty"`
-	ProvisionedCapacity *int32  `json:"ProvisionedCapacity,omitempty" xml:"ProvisionedCapacity,omitempty"`
-	// The number of queues on the instance.
+	PeriodCycle *string `json:"PeriodCycle,omitempty" xml:"PeriodCycle,omitempty"`
+	// The provisioned TPS capacity for a reserved and elastic instance.
 	//
-	// Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+	// example:
+	//
+	// 2000
+	ProvisionedCapacity *int32 `json:"ProvisionedCapacity,omitempty" xml:"ProvisionedCapacity,omitempty"`
+	// The queue capacity of the instance.
+	//
+	// For information about the valid values, see the instance specifications on the [ApsaraMQ for RabbitMQ](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre) product page.
 	//
 	// example:
 	//
 	// 1000
 	QueueCapacity *int32 `json:"QueueCapacity,omitempty" xml:"QueueCapacity,omitempty"`
-	// The renewal status. This parameter is the same as AutoRenew. You can configure one of these parameters. Valid value:
+	// The renewal status. This parameter is equivalent to `AutoRenew`. Valid value:
 	//
-	// 	- AutoRenewal
+	// - `AutoRenewal`: Enables auto-renewal.
 	//
-	// >  If you configure both this parameter and AutoRenew, the value of this parameter is used.
+	// > Both `AutoRenew` and `RenewStatus` specify the renewal method. If you specify both parameters, the value of `RenewStatus` takes precedence.
 	//
 	// example:
 	//
 	// false
 	RenewStatus *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
-	// The unit of the auto-renewal period. Valid values:
+	// The unit of the auto-renewal duration. Valid values:
 	//
-	// 	- Month
+	// - `Month`: month
 	//
-	// 	- Year
+	// - `Year`: year
 	//
 	// example:
 	//
@@ -240,38 +258,46 @@ type CreateInstanceRequest struct {
 	//
 	// rg-acfmvvajg5qkxhi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the security group. This security group is used for the PrivateLink-based endpoint. The security group must meet the following requirements:
+	//
+	// 1. Add an inbound rule to allow traffic on TCP ports 5672 and 5671.
+	//
+	// 2. Managed security groups are not supported.
+	//
+	// 3. The security group must belong to the specified VPC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sg-xxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The billing method of the serverless instance. Valid value:
+	// The billing type of the serverless instance. Valid value:
 	//
-	// 	- onDemand: You are charged based on your actual usage.
+	// - `onDemand`: pay-as-you-go
 	//
 	// example:
 	//
 	// onDemand
 	ServerlessChargeType *string `json:"ServerlessChargeType,omitempty" xml:"ServerlessChargeType,omitempty"`
 	ServerlessSwitch     *bool   `json:"ServerlessSwitch,omitempty" xml:"ServerlessSwitch,omitempty"`
-	// The storage capacity. Unit: GB. Valid values:
+	// The message storage space. Unit: GB. Valid values:
 	//
-	// 	- Professional Edition and Enterprise Edition instances: Set the value to 0.
+	// - Professional Edition and Enterprise Edition instances: The value is fixed at 0.
 	//
-	// >  The value 0 specifies that storage space is available for Professional Edition and Enterprise Edition instances, but no storage fees are generated.
+	// > A value of 0 means storage is not charged for Professional Edition and Enterprise Edition instances; it does not mean the instances lack storage space.
 	//
-	// 	- Enterprise Platinum Edition instances: Set the value to m × 100, where m is an integer that ranges from 7 to 28.
+	// - Platinum Edition instances: m × 100, where m is an integer from 7 to 28.
 	//
 	// example:
 	//
 	// 7
 	StorageSize *int32 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// Specifies whether elastic IP addresses (EIPs) are supported. Valid values:
+	// Specifies whether to enable access over the public network. Valid values:
 	//
-	// 	- True
+	// - `true`: Enables access over the public network.
 	//
-	// 	- False
+	// - `false`: Disables access over the public network.
 	//
 	// example:
 	//
@@ -279,41 +305,54 @@ type CreateInstanceRequest struct {
 	SupportEip *bool `json:"SupportEip,omitempty" xml:"SupportEip,omitempty"`
 	// Specifies whether to enable the message trace feature. Valid values:
 	//
-	// 	- true
+	// - `true`: Enables the message trace feature.
 	//
-	// 	- false
+	// - `false`: Disables the message trace feature.
 	//
-	// >
+	// > 	- The message trace feature is included for 15 days at no charge on Platinum Edition instances. For these instances, you must enable this feature and set the retention period to 15 days.
 	//
-	// 	- Enterprise Platinum Edition instances allow you to retain message traces for 15 days free of charge. If you create an Enterprise Platinum Edition instance, you can set this parameter only to true and TracingStorageTime only to 15.
-	//
-	// 	- For instances of other editions, you can set this parameter to true or false.
+	// - For other instance types, you can enable or disable this feature.
 	//
 	// example:
 	//
 	// true
-	SupportTracing *bool                        `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
-	Tags           []*CreateInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The retention period of messages. Unit: days. Valid values:
+	SupportTracing *bool `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
+	// The resource tags.
+	Tags []*CreateInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The retention period of message traces. Unit: days. Valid values:
 	//
-	// 	- 3
+	// - `3`
 	//
-	// 	- 7
+	// - `7`
 	//
-	// 	- 15
+	// - `15`
 	//
-	// This parameter is valid only if you set SupportTracing to true.
+	// This parameter is required if you set `SupportTracing` to `true`.
 	//
 	// example:
 	//
 	// 3
 	TracingStorageTime *int32 `json:"TracingStorageTime,omitempty" xml:"TracingStorageTime,omitempty"`
+	// The ID of the VPC. This parameter is used to create a PrivateLink-based endpoint.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vpc-xxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The vSwitch IDs used to create a PrivateLink-based endpoint when you create the instance. The vSwitches must meet the following requirements:
+	//
+	// 1. You must specify two vSwitches that reside in different availability zones, except for regions that have only a single availability zone.
+	//
+	// 2. The vSwitches must belong to the specified VPC.
+	//
+	// 3. The vSwitches must be in the Available state.
+	//
+	// 4. Each vSwitch must have at least 20 available IP addresses.
+	//
+	// 5. The availability zones for the specified vSwitches must support NLB instance creation.
+	//
 	// This parameter is required.
 	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
 }
@@ -619,10 +658,14 @@ func (s *CreateInstanceRequest) Validate() error {
 }
 
 type CreateInstanceRequestTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// testValue

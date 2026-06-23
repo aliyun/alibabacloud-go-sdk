@@ -22,7 +22,7 @@ type iDeleteAccountResponseBody interface {
 }
 
 type DeleteAccountResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the request is successful.
+	// The return code. A value of 200 indicates that the call is successful.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type DeleteAccountResponseBody struct {
 	//
 	// example:
 	//
-	// 021788F6-E50C-4BD6-9F80-66B0A19A6***
+	// 021788F6-E50C-4BD6-9F80-66B0A1******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

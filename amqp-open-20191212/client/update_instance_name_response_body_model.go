@@ -22,19 +22,19 @@ type iUpdateInstanceNameResponseBody interface {
 }
 
 type UpdateInstanceNameResponseBody struct {
-	// The returned HTTP status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	//
 	// example:
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message that is returned when an error occurs during the update of the instance name.
+	// The error message returned if the request fails.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type UpdateInstanceNameResponseBody struct {
 	//
 	// 6DC68EC9-0E76-5435-B8C0-FF9492B4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned message that indicates the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

@@ -24,10 +24,14 @@ type iListInstanceWhiteListResponseBody interface {
 }
 
 type ListInstanceWhiteListResponseBody struct {
+	// The return code. A value of `200` indicates a successful request.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data, which is an array of whitelist entries. Each object in the array contains an `id` (a sequence number used for deletion) and a `value` (the actual entry, such as an IP address range or a VPC ID).
+	//
 	// example:
 	//
 	// "Data": [
@@ -42,18 +46,26 @@ type ListInstanceWhiteListResponseBody struct {
 	//
 	//   ]
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message returned on a failed request.
+	//
 	// example:
 	//
 	// xxx failed,xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 6DC68EC9-0E76-5435-B8C0-FF9492B4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code. A value of `200` indicates a successful request.
+	//
 	// example:
 	//
 	// 200
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

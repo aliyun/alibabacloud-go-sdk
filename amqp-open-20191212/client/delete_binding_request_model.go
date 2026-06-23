@@ -30,11 +30,11 @@ type DeleteBindingRequest struct {
 	//
 	// .test.
 	BindingKey *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
-	// The type of the object that you want to unbind from the source exchange. Valid values:
+	// The type of the destination object. Valid values:
 	//
-	// 	- **QUEUE**
+	// - **QUEUE**
 	//
-	// 	- **EXCHANGE**
+	// - **EXCHANGE**
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DeleteBindingRequest struct {
 	//
 	// QUEUE
 	BindingType *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
-	// The name of the object that you want to unbind from the source exchange.
+	// The name of the destination object.
 	//
 	// This parameter is required.
 	//

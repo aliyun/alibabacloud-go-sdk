@@ -62,15 +62,15 @@ func (s *ListQueueConsumersResponseBody) Validate() error {
 }
 
 type ListQueueConsumersResponseBodyData struct {
-	// The consumers.
+	// The consumer information.
 	Consumers []*ListQueueConsumersResponseBodyDataConsumers `json:"Consumers,omitempty" xml:"Consumers,omitempty" type:"Repeated"`
-	// The maximum number of entries returned.
+	// The maximum number of results.
 	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+	// The token to retrieve the next page of results. An empty value indicates that all results have been returned.
 	//
 	// example:
 	//

@@ -24,26 +24,38 @@ type iRemoveInstanceWhiteListResponseBody interface {
 }
 
 type RemoveInstanceWhiteListResponseBody struct {
+	// The status code. A value of 200 indicates the request was successful.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned for the request.
+	//
 	// example:
 	//
 	// true
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// can not find resource: instanceId:amqp-cn-xxx, whiteListItemId:420, whiteListType:1
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID for the request.
+	//
 	// example:
 	//
 	// 92385FD2-624A-48C9-8FB5-753F2AFA***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code. A value of 200 indicates the request was successful.
+	//
 	// example:
 	//
 	// 200
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

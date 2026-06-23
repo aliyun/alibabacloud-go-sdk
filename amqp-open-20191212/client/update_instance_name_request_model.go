@@ -16,7 +16,7 @@ type iUpdateInstanceNameRequest interface {
 }
 
 type UpdateInstanceNameRequest struct {
-	// The ID of the ApsaraMQ for RabbitMQ instance for which you want to update the name.
+	// The ID of the ApsaraMQ for RabbitMQ instance.
 	//
 	// This parameter is required.
 	//
@@ -24,13 +24,13 @@ type UpdateInstanceNameRequest struct {
 	//
 	// amqp-cn-zvp2ajsj****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The new name of the instance. No limits are imposed on the value. We recommend that you set this parameter to a maximum of 64 characters in length.
+	// The new name of the instance. The name can be any string of up to 64 characters.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// amqp-cn-ZVp2ajsj****
+	// amqp_test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 

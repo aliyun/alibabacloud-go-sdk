@@ -62,37 +62,37 @@ func (s *GetMetadataAmountResponseBody) Validate() error {
 }
 
 type GetMetadataAmountResponseBodyData struct {
-	// The number of created exchanges on the ApsaraMQ for RabbitMQ instance.
+	// The number of existing exchanges.
 	//
 	// example:
 	//
 	// 7
 	CurrentExchanges *int32 `json:"CurrentExchanges,omitempty" xml:"CurrentExchanges,omitempty"`
-	// The number of created queues on the ApsaraMQ for RabbitMQ instance.
+	// The number of existing queues.
 	//
 	// example:
 	//
 	// 1
 	CurrentQueues *int32 `json:"CurrentQueues,omitempty" xml:"CurrentQueues,omitempty"`
-	// The number of created vhosts on the ApsaraMQ for RabbitMQ instance.
+	// The number of existing vhosts.
 	//
 	// example:
 	//
 	// 1
 	CurrentVirtualHosts *int32 `json:"CurrentVirtualHosts,omitempty" xml:"CurrentVirtualHosts,omitempty"`
-	// The maximum number of exchanges that can be created on the ApsaraMQ for RabbitMQ instance.
+	// The maximum number of exchanges that you can create.
 	//
 	// example:
 	//
 	// 20
 	MaxExchanges *int32 `json:"MaxExchanges,omitempty" xml:"MaxExchanges,omitempty"`
-	// The maximum number of queues that can be created on the ApsaraMQ for RabbitMQ instance.
+	// The maximum number of queues that you can create.
 	//
 	// example:
 	//
 	// 20
 	MaxQueues *int32 `json:"MaxQueues,omitempty" xml:"MaxQueues,omitempty"`
-	// The maximum number of vhosts that can be created on the ApsaraMQ for RabbitMQ instance.
+	// The maximum number of vhosts that you can create.
 	//
 	// example:
 	//

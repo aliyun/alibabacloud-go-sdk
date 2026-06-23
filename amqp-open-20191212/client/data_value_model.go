@@ -28,7 +28,7 @@ type iDataValue interface {
 }
 
 type DataValue struct {
-	// The Alibaba Cloud account ID or Resource Access Management (RAM) user to which the AccessKey pair that is used to create the static username and password belongs.
+	// The ID of the Alibaba Cloud account or RAM user that created the static username and password.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DataValue struct {
 	//
 	// amqp-cn-uqm******03
 	CInstanceId *string `json:"cInstanceId,omitempty" xml:"cInstanceId,omitempty"`
-	// The AccessKey ID that is used to create the static username and password.
+	// The AccessKey ID that was used to create the static username and password.
 	//
 	// example:
 	//
@@ -58,21 +58,23 @@ type DataValue struct {
 	//
 	// OUYwQzM2QjZBRkUxNDRFM***************MzZCNzdDQzoxNjcxNDMwMzkyODI1
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// The timestamp that indicates when the static username and password were deleted. Unit: milliseconds.
+	// The UNIX timestamp when the static username and password were deleted. Unit: milliseconds.
 	//
 	// example:
 	//
-	// 1671175303522
+	// 0
 	Deleted *int64 `json:"deleted,omitempty" xml:"deleted,omitempty"`
-	// The timestamp that indicates when the static username and password were created. Unit: milliseconds.
+	// The UNIX timestamp when the static username and password were created. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1671175303522
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The remark.
+	//
 	// example:
 	//
-	// ***环境
+	// **	- environment
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 

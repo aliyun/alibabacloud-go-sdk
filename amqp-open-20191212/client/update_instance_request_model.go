@@ -52,8 +52,21 @@ type UpdateInstanceRequest struct {
 	//
 	// c2c5d1274axxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Edition     *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// 实例是否开通数据存储加密功能
+	// The deployment architecture of the Serverless instance. Valid values:
+	//
+	// - shared: A shared architecture. This applies to reserved plus elastic (shared) and pay-as-you-go instances.
+	//
+	// - dedicated: A dedicated architecture. This applies to reserved plus elastic (dedicated) instances.
+	//
+	// example:
+	//
+	// shared
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// This feature is for dedicated instances only. Specifies whether to enable data encryption.
+	//
+	// - You cannot change the EncryptedInstance and KmsKeyId properties of a dedicated instance. This includes changing its encryption status or downgrading it to a shared instance. Do not include the EncryptedInstance and KmsKeyId parameters when you call UpdateInstance to upgrade or downgrade a dedicated instance.
+	//
+	// - The EncryptedInstance and KmsKeyId parameters are used only when you upgrade a shared instance to an encrypted dedicated instance.
 	//
 	// example:
 	//
@@ -67,78 +80,99 @@ type UpdateInstanceRequest struct {
 	//
 	// amqp-cn-jtexxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance edition. Valid values for subscription instances:
+	// The instance type. This parameter is required for subscription instances. Valid values:
 	//
-	// 	- professional: Professional Edition
+	// - professional: Professional Edition
 	//
-	// 	- enterprise: Enterprise Edition
+	// - enterprise: Enterprise Edition
 	//
-	// 	- vip: Enterprise Platinum Edition.
+	// - vip: Platinum Edition
 	//
-	// If your instance is a pay-as-you-go instance, you do not need to configure this parameter.
+	// You do not need to specify this parameter for pay-as-you-go instances.
 	//
 	// example:
 	//
 	// professional
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// 使用同地域下KMS密钥ID
+	// This feature is for dedicated instances only. This parameter is required if EncryptedInstance is set to true.
+	//
+	// It specifies the ID of the KMS key used for data encryption.
+	//
+	// The key must meet the following requirements:
+	//
+	// - The KMS key must be in the same region as the ApsaraMQ for RabbitMQ instance.
+	//
+	// - The key cannot be a service key.
+	//
+	// - The key must be active.
+	//
+	// - The key must be a symmetric key.
+	//
+	// - The key must be used for encryption and decryption.
+	//
+	// - If the KMS key expires or is deleted, data reads and writes will fail, and the ApsaraMQ for RabbitMQ instance will become unavailable.
 	//
 	// example:
 	//
 	// key-bjj66c2a893vmhawtq5fd
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The maximum number of connections that can be created on the instance.
+	// The maximum number of connections.
 	//
 	// example:
 	//
 	// 1000
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The peak TPS for accessing the instance over the Internet.
+	// The peak TPS for public network traffic.
 	//
 	// example:
 	//
 	// 128
 	MaxEipTps *int64 `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
-	// The peak transactions per second (TPS) for accessing the instance in a virtual private cloud (VPC).
+	// The peak transactions per second (TPS) for private network traffic.
 	//
 	// example:
 	//
 	// 1000
 	MaxPrivateTps *int64 `json:"MaxPrivateTps,omitempty" xml:"MaxPrivateTps,omitempty"`
-	// The type of the configuration change. Valid values:
+	// The type of specification change. Valid values:
 	//
-	// 	- UPGRADE
+	// - UPGRADE: Upgrade
 	//
-	// 	- DOWNGRADE
+	// - DOWNGRADE: Downgrade
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UPGRADE
-	ModifyType          *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	ProvisionedCapacity *int32  `json:"ProvisionedCapacity,omitempty" xml:"ProvisionedCapacity,omitempty"`
-	// The maximum number of queues that can be created on the instance.
+	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	// The provisioned TPS capacity for a reserved plus elastic instance.
+	//
+	// example:
+	//
+	// 2000
+	ProvisionedCapacity *int32 `json:"ProvisionedCapacity,omitempty" xml:"ProvisionedCapacity,omitempty"`
+	// The maximum number of queues.
 	//
 	// example:
 	//
 	// 1000
 	QueueCapacity *int32 `json:"QueueCapacity,omitempty" xml:"QueueCapacity,omitempty"`
-	// The billing method of the serverless instance. Valid values:
+	// The billing method of the pay-as-you-go (Serverless) instance. Valid value:
 	//
-	// 	- onDemand: You are charged based on your actual usage.
+	// - onDemand: Pay-as-you-go
 	//
 	// example:
 	//
 	// onDemand
 	ServerlessChargeType *string `json:"ServerlessChargeType,omitempty" xml:"ServerlessChargeType,omitempty"`
-	// The size of the storage space that can be used to store messages.
+	// The message storage capacity. Unit: GB.
 	//
 	// example:
 	//
 	// 7
 	StorageSize *int32 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// Specifies whether elastic IP addresses (EIPs) are supported.
+	// Specifies whether to enable Internet access.
 	//
 	// example:
 	//
@@ -150,15 +184,7 @@ type UpdateInstanceRequest struct {
 	//
 	// false
 	SupportTracing *bool `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
-	// The retention period of message traces.
-	//
-	// Valid values:
-	//
-	// 	- 3
-	//
-	// 	- 7
-	//
-	// 	- 15
+	// The retention period for message traces. Unit: days.
 	//
 	// example:
 	//

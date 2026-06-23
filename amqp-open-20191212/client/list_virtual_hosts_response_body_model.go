@@ -62,19 +62,19 @@ func (s *ListVirtualHostsResponseBody) Validate() error {
 }
 
 type ListVirtualHostsResponseBodyData struct {
-	// The maximum number of entries returned.
+	// The maximum number of results returned.
 	//
 	// example:
 	//
 	// 2
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+	// The token that is used to retrieve the next page of results. If this parameter is not returned, all data has been returned.
 	//
 	// example:
 	//
 	// caebacccb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The vhosts.
+	// The list of vhosts.
 	VirtualHosts []*ListVirtualHostsResponseBodyDataVirtualHosts `json:"VirtualHosts,omitempty" xml:"VirtualHosts,omitempty" type:"Repeated"`
 }
 
@@ -127,7 +127,7 @@ func (s *ListVirtualHostsResponseBodyData) Validate() error {
 }
 
 type ListVirtualHostsResponseBodyDataVirtualHosts struct {
-	// The vhost name.
+	// The name of the vhost.
 	//
 	// example:
 	//
