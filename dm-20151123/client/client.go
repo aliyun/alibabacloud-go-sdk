@@ -24,7 +24,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-east-1":      dara.String("dm.us-east-1.aliyuncs.com"),
+		"eu-central-1":   dara.String("dm.eu-central-1.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("dm.aliyuncs.com"),
+		"ap-southeast-1": dara.String("dm.ap-southeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -6469,7 +6475,7 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 
 // Summary:
 //
-// Validates an email address.
+// Validate an email address.
 //
 // @param request - ValidateEmailRequest
 //
@@ -6490,6 +6496,10 @@ func (client *Client) ValidateEmailWithOptions(request *ValidateEmailRequest, ru
 
 	if !dara.IsNil(request.Email) {
 		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.ProbeType) {
+		query["ProbeType"] = request.ProbeType
 	}
 
 	if !dara.IsNil(request.Timeout) {
@@ -6521,7 +6531,7 @@ func (client *Client) ValidateEmailWithOptions(request *ValidateEmailRequest, ru
 
 // Summary:
 //
-// Validates an email address.
+// Validate an email address.
 //
 // @param request - ValidateEmailRequest
 //

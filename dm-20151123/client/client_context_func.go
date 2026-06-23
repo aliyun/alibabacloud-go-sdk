@@ -4523,7 +4523,7 @@ func (client *Client) UpdateUserWithContext(ctx context.Context, tmpReq *UpdateU
 
 // Summary:
 //
-// Validates an email address.
+// Validate an email address.
 //
 // @param request - ValidateEmailRequest
 //
@@ -4544,6 +4544,10 @@ func (client *Client) ValidateEmailWithContext(ctx context.Context, request *Val
 
 	if !dara.IsNil(request.Email) {
 		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.ProbeType) {
+		query["ProbeType"] = request.ProbeType
 	}
 
 	if !dara.IsNil(request.Timeout) {
