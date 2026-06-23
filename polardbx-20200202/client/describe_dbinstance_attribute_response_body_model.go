@@ -62,6 +62,7 @@ func (s *DescribeDBInstanceAttributeResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
+	AiGatewayEnabled *string `json:"AiGatewayEnabled,omitempty" xml:"AiGatewayEnabled,omitempty"`
 	// Indicates whether the In-Memory Column Index feature is supported.
 	//
 	// example:
@@ -125,7 +126,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	// pxc-sprpx766vo****.polarx.singapore.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	CpuType          *string `json:"CpuType,omitempty" xml:"CpuType,omitempty"`
-	// The time when the instance was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -161,13 +162,13 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	//
 	// polarx
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The database engine version.
+	// The database version.
 	//
 	// example:
 	//
 	// 5.5
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The description of the instance.
+	// The instance description.
 	//
 	// example:
 	//
@@ -225,7 +226,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	//
 	// 2
 	DnNodeCount *int32 `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
-	// The disk space of the DN data nodes, in GB.
+	// The disk space of the DN data node, in GB.
 	DnStorageSpace *string `json:"DnStorageSpace,omitempty" xml:"DnStorageSpace,omitempty"`
 	// The database type. The value is fixed as polarx.
 	//
@@ -234,7 +235,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	// polarx
 	Engine        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The expiration time. The time is in the yyyy-MM-ddTHH:mm:ss.sss+0000 format (UTC).
+	// The expiration time. Format: yyyy-MM-ddTHH:mm:ss.sss+0000 (UTC).
 	//
 	// example:
 	//
@@ -242,9 +243,9 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
 	// Indicates whether the instance has expired. Valid values:
 	//
-	// - **true**: The instance has expired.
+	// - **true**: Expired.
 	//
-	// - **false**: The instance is running normally.
+	// - **false**: Not expired.
 	//
 	// example:
 	//
@@ -259,7 +260,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	//
 	// pxc-zkralxpc5d****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance DPI engine version code. This is an internal parameter.
+	// The engine version of the instance. This is an internal parameter.
 	//
 	// example:
 	//
@@ -267,7 +268,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	KindCode *int32 `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
 	// This parameter is required.
 	LTSVersions []*string `json:"LTSVersions,omitempty" xml:"LTSVersions,omitempty" type:"Repeated"`
-	// The latest kernel version supported by the instance.
+	// The latest minor engine version supported by the instance.
 	//
 	// example:
 	//
@@ -275,17 +276,17 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	LatestMinorVersion *string `json:"LatestMinorVersion,omitempty" xml:"LatestMinorVersion,omitempty"`
 	// The lock mode of the instance. Valid values:
 	//
-	// - **Unlock**: The instance is running normally.
+	// - **Unlock**: Normal.
 	//
-	// - **ManualLock**: The instance is manually locked.
+	// - **ManualLock**: Manually locked.
 	//
-	// - **LockByExpiration**: The instance is automatically locked due to expiration.
+	// - **LockByExpiration**: Automatically locked due to instance expiration.
 	//
-	// - **LockByRestoration**: The instance is automatically locked before a rollback.
+	// - **LockByRestoration**: Automatically locked before instance rollback.
 	//
-	// - **LockByDiskQuota**: The instance is automatically locked because the storage is full.
+	// - **LockByDiskQuota**: Automatically locked due to insufficient disk space.
 	//
-	// - **LockReadInstanceByDiskQuota**: The read-only instance is automatically locked because the storage is full.
+	// - **LockReadInstanceByDiskQuota**: Read-only instance automatically locked due to insufficient disk space.
 	//
 	// example:
 	//
@@ -303,13 +304,13 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	//
 	// 06:00
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The current kernel version.
+	// The current minor engine version.
 	//
 	// example:
 	//
 	// polarx-kernel_5.4.11-16301083_xcluster-20210805
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	// The network type of the instance. Only VPC is supported, which indicates a virtual private cloud (VPC).
+	// The network type of the instance. Only VPC is supported, which indicates Virtual Private Cloud.
 	//
 	// example:
 	//
@@ -348,7 +349,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -372,7 +373,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	//
 	// - **processing**: Being processed.
 	//
-	// - **unknown**: Unknown. The instance may be disconnected.
+	// - **unknown**: Unknown. This may be caused by the instance being unreachable.
 	//
 	// example:
 	//
@@ -410,7 +411,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	StorageUsed *int64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
 	// The tag set.
 	TagSet []*DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
-	// The third zone.
+	// The tertiary zone for Three-zone deployment.
 	//
 	// example:
 	//
@@ -464,6 +465,10 @@ func (s DescribeDBInstanceAttributeResponseBodyDBInstance) String() string {
 
 func (s DescribeDBInstanceAttributeResponseBodyDBInstance) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetAiGatewayEnabled() *string {
+	return s.AiGatewayEnabled
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetCanNotCreateColumnar() *bool {
@@ -700,6 +705,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetVSwitchId() *stri
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetAiGatewayEnabled(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.AiGatewayEnabled = &v
+	return s
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetCanNotCreateColumnar(v bool) *DescribeDBInstanceAttributeResponseBodyDBInstance {
