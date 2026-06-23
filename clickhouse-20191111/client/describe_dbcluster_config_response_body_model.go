@@ -16,7 +16,7 @@ type iDescribeDBClusterConfigResponseBody interface {
 }
 
 type DescribeDBClusterConfigResponseBody struct {
-	// The information about the parameter settings of the cluster.
+	// The parameter configuration of the cluster.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type DescribeColumnsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The database name. You can call the [DescribeSchemas](https://help.aliyun.com/document_detail/350931.html) operation to query database names.
+	// The name of the database. You can call the [DescribeSchemas](https://help.aliyun.com/document_detail/350931.html) operation to query database names.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DescribeColumnsRequest struct {
 	//
 	// database
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The table name. You can call the [DescribeTables](https://help.aliyun.com/document_detail/350932.html) operation to query table names.
+	// The name of the table. You can call the [DescribeTables](https://help.aliyun.com/document_detail/350932.html) operation to query table names.
 	//
 	// This parameter is required.
 	//

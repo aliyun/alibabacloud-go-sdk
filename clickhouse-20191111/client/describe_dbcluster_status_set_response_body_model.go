@@ -16,10 +16,13 @@ type iDescribeDBClusterStatusSetResponseBody interface {
 }
 
 type DescribeDBClusterStatusSetResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DE309AA1-BD83-5E1F-9945-8A4D336E0829
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The set of instance statuses.
 	StatusSet []*string `json:"StatusSet,omitempty" xml:"StatusSet,omitempty" type:"Repeated"`
 }
 

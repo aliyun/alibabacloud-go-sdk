@@ -30,6 +30,8 @@ type iCancelRestartInstanceRequest interface {
 }
 
 type CancelRestartInstanceRequest struct {
+	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all clusters in a specific region. The information includes the cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -38,31 +40,38 @@ type CancelRestartInstanceRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of pages.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Default value: 30. Valid values:
+	// The number of entries to return on each page. Valid values:
 	//
-	// 	- 30
+	// - 30 (default)
 	//
-	// 	- 50
+	// - 50
 	//
-	// 	- 100
+	// - 100
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RestartTime          *string `json:"RestartTime,omitempty" xml:"RestartTime,omitempty"`
+	// The scheduled restart time. The time must be in the \\`yyyy-MM-ddTHH:mmZ\\` format and in UTC.
+	//
+	// example:
+	//
+	// 2023-03-22T00:00:50Z
+	RestartTime *string `json:"RestartTime,omitempty" xml:"RestartTime,omitempty"`
 }
 
 func (s CancelRestartInstanceRequest) String() string {

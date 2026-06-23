@@ -22,13 +22,13 @@ type iDescribeSynDbsResponseBody interface {
 }
 
 type DescribeSynDbsResponseBody struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of records on each page.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type DescribeSynDbsResponseBody struct {
 	//
 	// 7655F5F9-1313-5ABA-8516-F6EB79605A5F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about data synchronization between the ApsaraDB for ClickHouse cluster and an ApsaraDB RDS for MySQL instance.
+	// The synchronized data.
 	SynDbs []*DescribeSynDbsResponseBodySynDbs `json:"SynDbs,omitempty" xml:"SynDbs,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,21 +117,21 @@ func (s *DescribeSynDbsResponseBody) Validate() error {
 }
 
 type DescribeSynDbsResponseBodySynDbs struct {
-	// 	- When the value **true*	- is returned for the **SynStatus*	- parameter, the system does not return the ErrorMsg parameter.
+	// - This parameter is not returned if **SynStatus*	- is **true**.
 	//
-	// 	- When the value **false*	- is returned for the **SynStatus*	- parameter, the system returns for the ErrorMsg parameter the cause why the data synchronization failed.
+	// - If **SynStatus*	- is **false**, this parameter indicates the reason for the synchronization failure.
 	//
 	// example:
 	//
 	// ClickHouse exception, code: 49, host: 100.100.118.132, port: 49670; Code: 49, e.displayText() = DB::Exception: Logical error: there is no global context (version 20.8.17.25)n
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The ID of the ApsaraDB RDS for MySQL instance.
+	// The instance ID of the ApsaraDB RDS for MySQL instance.
 	//
 	// example:
 	//
 	// rm-wz9d11qg1j0h4****
 	RdsId *string `json:"RdsId,omitempty" xml:"RdsId,omitempty"`
-	// The database account that is used to log on to the ApsaraDB RDS for MySQL instance.
+	// The database account for the ApsaraDB RDS for MySQL instance.
 	//
 	// example:
 	//
@@ -143,17 +143,17 @@ type DescribeSynDbsResponseBodySynDbs struct {
 	//
 	// rm-bp16t9h3999xb0a711****.mysql.rds.aliyuncs.com:3306
 	RdsVpcUrl *string `json:"RdsVpcUrl,omitempty" xml:"RdsVpcUrl,omitempty"`
-	// The name of the database in the ApsaraDB RDS for MySQL instance.
+	// The database in the ApsaraDB RDS for MySQL instance.
 	//
 	// example:
 	//
 	// database
 	SynDb *string `json:"SynDb,omitempty" xml:"SynDb,omitempty"`
-	// Indicates whether the data synchronization succeeded. Valid values:
+	// Indicates whether the synchronization was successful. Valid values:
 	//
-	// 	- **true**: The data synchronization succeeded.
+	// - **true**: The synchronization was successful.
 	//
-	// 	- **false**: The data synchronization failed.
+	// - **false**: The synchronization failed.
 	//
 	// example:
 	//

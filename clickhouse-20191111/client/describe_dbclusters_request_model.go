@@ -36,7 +36,7 @@ type iDescribeDBClustersRequest interface {
 }
 
 type DescribeDBClustersRequest struct {
-	// The description of the cluster.
+	// The cluster description.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeDBClustersRequest struct {
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	// The cluster ID.
 	//
-	// >  If you do not specify this parameter, the information about all clusters is queried.
+	// > If you do not specify this parameter, information about all clusters is queried by default.
 	//
 	// example:
 	//
@@ -52,15 +52,15 @@ type DescribeDBClustersRequest struct {
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
 	// The state of the cluster. Valid values:
 	//
-	// 	- **Preparing**: The cluster is being prepared.
+	// - **Preparing**: The cluster is being prepared.
 	//
-	// 	- **Creating**: The cluster is being created.
+	// - **Creating**: The cluster is being created.
 	//
-	// 	- **Running**: The cluster is running.
+	// - **Running**: The cluster is running.
 	//
-	// 	- **Deleting**: The cluster is being deleted.
+	// - **Deleting**: The cluster is being deleted.
 	//
-	// 	- **SCALING_OUT**: The storage capacity of the cluster is being expanded.
+	// - **SCALING_OUT**: The cluster is being scaled out.
 	//
 	// example:
 	//
@@ -74,19 +74,19 @@ type DescribeDBClustersRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (Default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -236,13 +236,13 @@ func (s *DescribeDBClustersRequest) Validate() error {
 }
 
 type DescribeDBClustersRequestTag struct {
-	// The tag name.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// department
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

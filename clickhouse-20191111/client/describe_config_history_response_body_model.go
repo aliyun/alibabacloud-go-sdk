@@ -16,7 +16,7 @@ type iDescribeConfigHistoryResponseBody interface {
 }
 
 type DescribeConfigHistoryResponseBody struct {
-	// The change records of the configuration parameters.
+	// The change history of the configuration parameters.
 	ConfigHistoryItems []*DescribeConfigHistoryResponseBodyConfigHistoryItems `json:"ConfigHistoryItems,omitempty" xml:"ConfigHistoryItems,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -72,29 +72,29 @@ type DescribeConfigHistoryResponseBodyConfigHistoryItems struct {
 	//
 	// 1
 	ChangeId *string `json:"ChangeId,omitempty" xml:"ChangeId,omitempty"`
-	// The user ID (UID) of the Alibaba Cloud account.
+	// The UID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 253460731706911258
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The reason for the setting modification of the configuration parameters.
+	// The reason for the parameter change.
 	//
 	// example:
 	//
 	// test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// Indicates whether the setting modification of the configuration parameters took effect. Valid values:
+	// Indicates whether the parameter change took effect. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The change took effect.
 	//
-	// 	- **false**
+	// - **false**: The change did not take effect.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The time when the values of the configuration parameters were changed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the change was made. Use the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
 	//
 	// example:
 	//

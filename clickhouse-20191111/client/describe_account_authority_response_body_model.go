@@ -28,31 +28,31 @@ type iDescribeAccountAuthorityResponseBody interface {
 }
 
 type DescribeAccountAuthorityResponseBody struct {
-	// The name of the database account.
+	// The database account name.
 	//
 	// example:
 	//
 	// test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Databases to which permissions have been granted.
+	// The list of authorized databases.
 	AllowDatabases []*string `json:"AllowDatabases,omitempty" xml:"AllowDatabases,omitempty" type:"Repeated"`
-	// Dictionaries to which permissions have been granted.
+	// The list of authorized dictionaries.
 	AllowDictionaries []*string `json:"AllowDictionaries,omitempty" xml:"AllowDictionaries,omitempty" type:"Repeated"`
-	// Indicates whether the database account has DDL permissions. Valid values:
+	// Indicates whether the account has DDL permissions. Valid values:
 	//
-	// 	- **true**: has DDL permissions.
+	// - **true**: DDL permissions are granted.
 	//
-	// 	- **false**: does not have DDL permissions.
+	// - **false**: DDL permissions are denied.
 	//
 	// example:
 	//
 	// true
 	DdlAuthority *bool `json:"DdlAuthority,omitempty" xml:"DdlAuthority,omitempty"`
-	// Indicates whether the database account has DML permissions. Valid values:
+	// The DML permission level for the account. Valid values:
 	//
-	// 	- **all**
+	// - **all**: read, write, and settings permissions.
 	//
-	// 	- **readOnly,modify**
+	// - **readOnly,modify**: read and settings permissions.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type DescribeAccountAuthorityResponseBody struct {
 	//
 	// F5178C10-1407-4987-9133-DE4DC9119F75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// All databases.
+	// A list of all databases in the cluster.
 	TotalDatabases []*string `json:"TotalDatabases,omitempty" xml:"TotalDatabases,omitempty" type:"Repeated"`
-	// All dictionaries.
+	// A list of all dictionaries in the cluster.
 	TotalDictionaries []*string `json:"TotalDictionaries,omitempty" xml:"TotalDictionaries,omitempty" type:"Repeated"`
 }
 

@@ -38,7 +38,7 @@ type iDescribeProcessListRequest interface {
 }
 
 type DescribeProcessListRequest struct {
-	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to find information about all clusters in the destination region, including the cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -46,33 +46,33 @@ type DescribeProcessListRequest struct {
 	//
 	// cc-bp1190tj036am****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the query statement.
+	// The ID of the query.
 	//
 	// example:
 	//
 	// 6c69d508-f05f-4c74-857c-d982b7e7e79f
 	InitialQueryId *string `json:"InitialQueryId,omitempty" xml:"InitialQueryId,omitempty"`
-	// The account that is used to log on to the database.
+	// The database account.
 	//
 	// example:
 	//
 	// user
 	InitialUser *string `json:"InitialUser,omitempty" xml:"InitialUser,omitempty"`
-	// The keyword that is used to query.
+	// The keyword for the query.
 	//
 	// example:
 	//
 	// join
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Sorting by the specified column name. Valid values:
+	// The column to use for sorting. Valid values:
 	//
-	// 	- elapsed: the cumulative execution time
+	// - elapsed: The total running time.
 	//
-	// 	- written_rows: the number of written rows
+	// - written_rows: The number of rows written.
 	//
-	// 	- read_rows: the number of read rows
+	// - read_rows: The number of rows read.
 	//
-	// 	- memory_usage: the memory usage
+	// - memory_usage: The amount of memory used.
 	//
 	// example:
 	//
@@ -80,31 +80,31 @@ type DescribeProcessListRequest struct {
 	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value must be greater than 0 and cannot exceed the maximum value of the Integer data type. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Default value: 30. Valid values:
+	// The number of entries to return on each page. Valid values:
 	//
-	// 	- **30**
+	// - **30*	- (Default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The minimum query duration. The minimum value is **1000**, and the default value is **1000**. Unit: milliseconds. Queries that last longer than this duration are returned in response parameters.
+	// The shortest query duration. The minimum value is **1000**. The default value is **1000**. The unit is milliseconds. The response returns queries that run longer than this duration.
 	//
 	// example:
 	//
 	// 500
 	QueryDurationMs *int32 `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to find the region ID.
 	//
 	// example:
 	//

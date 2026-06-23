@@ -30,12 +30,18 @@ type iDescribeSlowLogTrendRequest interface {
 }
 
 type DescribeSlowLogTrendRequest struct {
+	// The cluster ID. Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all clusters in a specific region, including cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-bp11xxl475ui8****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end of the time range to query. Specify the time in the \\`yyyy-MM-dd hh:mm:ss\\` format. The time is in UTC.
+	//
+	// > The end time must be later than the start time. The time range cannot exceed 7 days.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -44,18 +50,22 @@ type DescribeSlowLogTrendRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The execution duration of slow SQL queries. Minimum value: **1000**. Default value: **1000**. Unit: milliseconds. Slow SQL queries that last longer than the specified duration are returned in response parameters.
+	// The execution duration of a slow SQL query, in milliseconds. The minimum value is **1000**. The default value is **1000**. The operation returns slow SQL queries that take longer than this duration to execute.
 	//
 	// example:
 	//
 	// 1000
 	QueryDurationMs *int32 `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
+	// The region ID. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the \\`yyyy-MM-dd hh:mm:ss\\` format. The time is in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:

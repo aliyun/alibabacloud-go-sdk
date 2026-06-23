@@ -34,37 +34,37 @@ type iModifyDBClusterRequest interface {
 }
 
 type ModifyDBClusterRequest struct {
-	// The specifications of the cluster.
+	// The cluster specifications.
 	//
-	// 	- Valid values when the cluster is of Single-replica Edition:
+	// - For single-replica editions, valid values are:
 	//
-	//     	- **S8**
+	//   - **S8**
 	//
-	//     	- **S16**
+	//   - **S16**
 	//
-	//     	- **S32**
+	//   - **S32**
 	//
-	//     	- **S64**
+	//   - **S64**
 	//
-	//     	- **S104**
+	//   - **S104**
 	//
-	// 	- Valid values when the cluster is of Double-replica Edition:
+	// - For dual-replica editions, valid values are:
 	//
-	//     	- **C8**
+	//   - **C8**
 	//
-	//     	- **C16**
+	//   - **C16**
 	//
-	//     	- **C32**
+	//   - **C32**
 	//
-	//     	- **C64**
+	//   - **C64**
 	//
-	//     	- **C104**
+	//   - **C104**
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// S4-NEW
+	// S8
 	DBClusterClass *string `json:"DBClusterClass,omitempty" xml:"DBClusterClass,omitempty"`
 	// The cluster ID.
 	//
@@ -72,11 +72,11 @@ type ModifyDBClusterRequest struct {
 	//
 	// cc-bp19lo45sy98x****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The number of nodes in the cluster.
+	// The number of nodes.
 	//
-	// 	- If the cluster is of Single-replica Edition, the value must be an integer that ranges from 1 to 48.
+	// - For single-replica editions, the valid values are integers from 1 to 48.
 	//
-	// 	- If the cluster is of Double-replica Edition, the value must be an integer that ranges from 1 to 24.
+	// - For dual-replica editions, the valid values are integers from 1 to 24.
 	//
 	// This parameter is required.
 	//
@@ -84,11 +84,11 @@ type ModifyDBClusterRequest struct {
 	//
 	// 1
 	DBNodeGroupCount *string `json:"DBNodeGroupCount,omitempty" xml:"DBNodeGroupCount,omitempty"`
-	// The storage capacity of a single node of the cluster. Unit: GB.
+	// The storage space of a single node. Unit: GB.
 	//
 	// Valid values: 100 to 32000.
 	//
-	// >  This value is a multiple of 100.
+	// > The step size is 100 GB.
 	//
 	// This parameter is required.
 	//
@@ -96,23 +96,23 @@ type ModifyDBClusterRequest struct {
 	//
 	// 100
 	DBNodeStorage *string `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
-	// The storage type of the cluster. Valid values:
+	// The storage class. Valid values:
 	//
-	// 	- **CloudESSD**: The cluster uses an Enterprise SSD (ESSD) of performance level 1 (PL1).
+	// - **CloudESSD**: ESSD PL1 disk.
 	//
-	// 	- **CloudESSD_PL2**: The cluster uses an ESSD of PL2.
+	// - **CloudESSD_PL2**: ESSD PL2 disk.
 	//
-	// 	- **CloudESSD_PL3**: The cluster uses an ESSD of PL3.
+	// - **CloudESSD_PL3**: ESSD PL3 disk.
 	//
-	// 	- **CloudEfficiency**: The cluster uses an ultra disk.
+	// - **CloudEfficiency**: ultra disk.
 	//
-	// 	- **CloudSSD**: The cluster uses a standard SSD.
+	// - **CloudSSD**: standard SSD.
 	//
 	// example:
 	//
 	// CloudESSD
 	DbNodeStorageType *string `json:"DbNodeStorageType,omitempty" xml:"DbNodeStorageType,omitempty"`
-	// The time window during which write operations are stopped. Separate the start time and end time with commas (,). Specify the time in the ISO 8601 standard.
+	// The write-inaccessible window. Separate the start time and the end time with a comma. Use the ISO 8601 format for the time.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type ModifyDBClusterRequest struct {
 	DisableWriteWindows *string `json:"DisableWriteWindows,omitempty" xml:"DisableWriteWindows,omitempty"`
 	OwnerAccount        *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

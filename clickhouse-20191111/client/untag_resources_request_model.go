@@ -32,11 +32,11 @@ type iUntagResourcesRequest interface {
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags from the cluster. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default)
 	//
-	// >  This parameter is valid only when **TagKey.N*	- is left empty.
+	// > This parameter is valid only when the **TagKey.N*	- parameter is empty.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type UntagResourcesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -54,19 +54,22 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource ID.
+	//
 	// This parameter is required.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Set the value to **CLUSTER**.
+	// The resource type. Set the value to **DBCLUSTER**.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// CLUSTER
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// DBCLUSTER
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag key.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {

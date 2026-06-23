@@ -24,11 +24,11 @@ type iModifyDBClusterDescriptionRequest interface {
 }
 
 type ModifyDBClusterDescriptionRequest struct {
-	// The cluster name. When you set the cluster name, take note of the following rules:
+	// The cluster description. The description must meet the following requirements:
 	//
-	// 	- The cluster name cannot start with http:// or https://.
+	// - It cannot start with http\\:// or https\\://.
 	//
-	// 	- The cluster name must be 2 to 256 characters in length.
+	// - It must be 2 to 256 characters in length.
 	//
 	// This parameter is required.
 	//

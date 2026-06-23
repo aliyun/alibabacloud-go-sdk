@@ -18,11 +18,20 @@ type iDescribeActiveOperationMaintainConfResponseBody interface {
 }
 
 type DescribeActiveOperationMaintainConfResponseBody struct {
+	// The active O\\&M configuration items.
 	Config *DescribeActiveOperationMaintainConfResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// Indicates whether a configuration is set.
+	//
+	// - 1: A configuration is set.
+	//
+	// - 0: No configuration is set.
+	//
 	// example:
 	//
 	// 1
 	HasConfig *int32 `json:"HasConfig,omitempty" xml:"HasConfig,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9A23C87D-87DF-4DA0-A50E-CB13F4F7923D
@@ -74,30 +83,52 @@ func (s *DescribeActiveOperationMaintainConfResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationMaintainConfResponseBodyConfig struct {
+	// The time when the configuration was created.
+	//
 	// example:
 	//
 	// 2025-03-18T06:51:11+08:00
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The day of the cycle.
+	//
+	// - If CycleType is Month, this parameter returns one or more numbers from 1 to 28 that indicate the day of the month. Multiple numbers are separated by commas (,).
+	//
+	// - If CycleType is Week, this parameter returns one or more numbers from 1 to 7 that indicate the day of the week. Multiple numbers are separated by commas (,).
+	//
 	// example:
 	//
 	// 1
 	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
+	// The cycle type.
+	//
+	// - Month
+	//
+	// - Week
+	//
 	// example:
 	//
 	// Week
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// The end time of the maintenance window.
+	//
 	// example:
 	//
 	// 22:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time of the maintenance window.
+	//
 	// example:
 	//
 	// 18:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// The time when the configuration was last modified.
+	//
 	// example:
 	//
 	// 2025-06-27T07:12:53Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The status of the configuration. A value of 1 indicates that the configuration is enabled. A value of 2 indicates that the configuration is disabled.
+	//
 	// example:
 	//
 	// 1

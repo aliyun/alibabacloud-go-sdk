@@ -44,23 +44,23 @@ type iCreateAccountAndAuthorityRequest interface {
 type CreateAccountAndAuthorityRequest struct {
 	// The description of the database account.
 	//
-	// 	- The description cannot start with http:// or https://.
+	// - Cannot start with `http://` or `https://`.
 	//
-	// 	- The description must be 0 to 256 characters in length.
+	// - Must be 0 to 256 characters in length.
 	//
 	// example:
 	//
 	// ceshi
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The database account.
+	// The name of the database account.
 	//
-	// 	- The name must be unique within the cluster.
+	// - Must be unique within the cluster.
 	//
-	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	// - Can contain only lowercase letters, digits, and underscores (_).
 	//
-	// 	- The name must start with a lowercase letter and end with a lowercase letter or digit.
+	// - Must start with a lowercase letter and end with a lowercase letter or a digit.
 	//
-	// 	- The name must be 2 to 64 characters in length.
+	// - Must be 2 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -68,15 +68,13 @@ type CreateAccountAndAuthorityRequest struct {
 	//
 	// test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password of your database account.
+	// The password for the database account.
 	//
-	// >
+	// > - Must contain characters from at least three of the following types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// 	- The password contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+	// - The supported special characters are `!@#$%^&*()_+-=`.
 	//
-	// 	- The password can contain the following special characters: ! @ # $ % ^ & \\	- ( ) _ + - =
-	//
-	// 	- The password must be 8 to 32 characters in length.
+	// - Must be 8 to 32 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +82,7 @@ type CreateAccountAndAuthorityRequest struct {
 	//
 	// 123456Aa
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// The databases to which you want to grant permissions. Separate databases with commas (,).
+	// The databases to which the account has permissions. Separate multiple database names with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -92,7 +90,7 @@ type CreateAccountAndAuthorityRequest struct {
 	//
 	// db1
 	AllowDatabases *string `json:"AllowDatabases,omitempty" xml:"AllowDatabases,omitempty"`
-	// The dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+	// The dictionaries to which the account has permissions. Separate multiple dictionary names with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -108,11 +106,11 @@ type CreateAccountAndAuthorityRequest struct {
 	//
 	// cc-bp1p816075e21****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to grant the DDL permissions to the database account. Valid values:
+	// Specifies whether to grant DDL permissions to the database account. Valid values:
 	//
-	// 	- **true**
+	// - **true**: DDL operations are allowed.
 	//
-	// 	- **false**
+	// - **false**: DDL operations are denied.
 	//
 	// This parameter is required.
 	//
@@ -120,11 +118,11 @@ type CreateAccountAndAuthorityRequest struct {
 	//
 	// true
 	DdlAuthority *bool `json:"DdlAuthority,omitempty" xml:"DdlAuthority,omitempty"`
-	// Specifies whether to grant DML permissions to the database account. Valid values:
+	// Specifies the DML permissions for the database account. Valid values:
 	//
-	// 	- **all**
+	// - **all**: read, write, and settings permissions.
 	//
-	// 	- **readOnly,modify**
+	// - **readOnly,modify**: read and settings permissions.
 	//
 	// This parameter is required.
 	//
@@ -134,7 +132,7 @@ type CreateAccountAndAuthorityRequest struct {
 	DmlAuthority *string `json:"DmlAuthority,omitempty" xml:"DmlAuthority,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -142,13 +140,13 @@ type CreateAccountAndAuthorityRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// All databases. Separate databases with commas (,).
+	// All databases in the cluster. Separate multiple database names with commas (,).
 	//
 	// example:
 	//
 	// db1,db2
 	TotalDatabases *string `json:"TotalDatabases,omitempty" xml:"TotalDatabases,omitempty"`
-	// All dictionaries. Separate dictionaries with commas (,).
+	// All dictionaries in the cluster. Separate multiple dictionary names with commas (,).
 	//
 	// example:
 	//

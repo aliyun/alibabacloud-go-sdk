@@ -16,7 +16,7 @@ type iDeleteSLBRequest interface {
 }
 
 type DeleteSLBRequest struct {
-	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to view cluster IDs.
+	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to view the cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,12 @@ type DeleteSLBRequest struct {
 	//
 	// cc-uf6bnitmve5n0****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Product     *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The product code.
+	//
+	// example:
+	//
+	// clickhouse
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 }
 
 func (s DeleteSLBRequest) String() string {

@@ -16,17 +16,17 @@ type iCheckModifyConfigNeedRestartResponseBody interface {
 }
 
 type CheckModifyConfigNeedRestartResponseBody struct {
-	// Indicates whether the cluster was restarted after you modified the configuration parameters. Valid values:
+	// 变更配置参数后是否重启。取值说明：
 	//
-	// 	- **true**: The cluster was restarted.
+	// - **true**：重启。
 	//
-	// 	- **false**: The cluster was not restarted.
+	// - **false**：不重启。
 	//
 	// example:
 	//
 	// true
 	NeedRestart *bool `json:"NeedRestart,omitempty" xml:"NeedRestart,omitempty"`
-	// The request ID.
+	// 请求 ID。
 	//
 	// example:
 	//

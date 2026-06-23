@@ -30,7 +30,7 @@ type iCreateBackupPolicyRequest interface {
 }
 
 type CreateBackupPolicyRequest struct {
-	// The backup retention period. The default retention period is seven days. Valid values: 7 to 730. Unit: day.
+	// The backup retention period in days. The value must be an integer from 7 to 730. The default value is 7.
 	//
 	// example:
 	//
@@ -46,21 +46,21 @@ type CreateBackupPolicyRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The day of a week when the system regularly backs up data. If you specify multiple days of a week, separate them with commas (,). Valid values:
+	// The backup cycle. If you specify multiple days, separate them with commas. Valid values:
 	//
-	// 	- **Monday**
+	// - **Monday**
 	//
-	// 	- **Tuesday**
+	// - **Tuesday**
 	//
-	// 	- **Wednesday**
+	// - **Wednesday**
 	//
-	// 	- **Thursday**
+	// - **Thursday**
 	//
-	// 	- **Friday**
+	// - **Friday**
 	//
-	// 	- **Saturday**
+	// - **Saturday**
 	//
-	// 	- **Sunday**
+	// - **Sunday**
 	//
 	// This parameter is required.
 	//
@@ -68,9 +68,9 @@ type CreateBackupPolicyRequest struct {
 	//
 	// Monday,Friday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The backup window. Specify the time in the ISO 8601 standard in the HH:mmZ-HH:mmZ format. The time must be in Coordinated Universal Time (UTC).
+	// The backup time in UTC. The format is HH:mmZ-HH:mmZ.
 	//
-	// For example, if you set the backup window to 00:00Z-01:00Z, the data of the cluster can be backed up from 08:00 (UTC+8) to 09:00 (UTC+8).
+	// Example: 00:00Z-01:00Z. This means that data backup can be performed from 00:00 to 01:00 UTC (08:00 to 09:00 UTC+8).
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type CreateBackupPolicyRequest struct {
 	//
 	// 10:00Z-11:00Z
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+	// The region ID. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
 	//
 	// example:
 	//

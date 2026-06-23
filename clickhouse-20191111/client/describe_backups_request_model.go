@@ -32,7 +32,7 @@ type iDescribeBackupsRequest interface {
 }
 
 type DescribeBackupsRequest struct {
-	// The backup task ID.
+	// The data backup task ID.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeBackupsRequest struct {
 	//
 	// cc-bp1qx68m06981****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	// The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -64,11 +64,11 @@ type DescribeBackupsRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type DescribeBackupsRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

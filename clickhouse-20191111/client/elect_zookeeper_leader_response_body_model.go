@@ -14,6 +14,8 @@ type iElectZookeeperLeaderResponseBody interface {
 }
 
 type ElectZookeeperLeaderResponseBody struct {
+  // The request ID.
+  // 
   // example:
   // 
   // 7D3ECB0E-98CA-5E08-A9CA-F70C5A1E9BDF

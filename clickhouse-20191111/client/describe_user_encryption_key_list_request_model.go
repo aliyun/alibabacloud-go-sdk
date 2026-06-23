@@ -18,14 +18,26 @@ type iDescribeUserEncryptionKeyListRequest interface {
 }
 
 type DescribeUserEncryptionKeyListRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// - **30*	- (default)
+	//
+	// - **50**
+	//
+	// - **100**
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

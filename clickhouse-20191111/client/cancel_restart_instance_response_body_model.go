@@ -14,6 +14,8 @@ type iCancelRestartInstanceResponseBody interface {
 }
 
 type CancelRestartInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F5178C10-1407-4987-9133-DE4DC9119F34

@@ -46,7 +46,7 @@ type iCreateRDSToClickhouseDbRequest interface {
 }
 
 type CreateRDSToClickhouseDbRequest struct {
-	// The password of the account that is used to log on to the database in the ApsaraDB for ClickHouse cluster.
+	// The password for the database account of the ApsaraDB for ClickHouse cluster.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type CreateRDSToClickhouseDbRequest struct {
 	//
 	// 123456Aa
 	CkPassword *string `json:"CkPassword,omitempty" xml:"CkPassword,omitempty"`
-	// The account that is used to log on to the database in the ApsaraDB for ClickHouse cluster.
+	// The database account of the ApsaraDB for ClickHouse cluster.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type CreateRDSToClickhouseDbRequest struct {
 	//
 	// cc-2ze5zeyl72188****
 	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
-	// The maximum number of rows that can be synchronized per second.
+	// The maximum number of rows to sync per second.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type CreateRDSToClickhouseDbRequest struct {
 	//
 	// rm-8vb989qj9roh0****
 	RdsId *string `json:"RdsId,omitempty" xml:"RdsId,omitempty"`
-	// The password of the account that is used to log on to the ApsaraDB RDS for MySQL instance.
+	// The password for the database account of the ApsaraDB RDS for MySQL instance.
 	//
 	// This parameter is required.
 	//
@@ -106,7 +106,7 @@ type CreateRDSToClickhouseDbRequest struct {
 	//
 	// 3306
 	RdsPort *int64 `json:"RdsPort,omitempty" xml:"RdsPort,omitempty"`
-	// The account that is used to log on to the database in the ApsaraDB RDS for MySQL instance.
+	// The database account of the ApsaraDB RDS for MySQL instance.
 	//
 	// This parameter is required.
 	//
@@ -114,13 +114,13 @@ type CreateRDSToClickhouseDbRequest struct {
 	//
 	// user2
 	RdsUserName *string `json:"RdsUserName,omitempty" xml:"RdsUserName,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the ApsaraDB RDS for MySQL instance belongs.
+	// The VPC ID of the ApsaraDB RDS for MySQL instance.
 	//
 	// example:
 	//
 	// vpc-2zen93xryil99jsfy****
 	RdsVpcId *string `json:"RdsVpcId,omitempty" xml:"RdsVpcId,omitempty"`
-	// The private endpoint of the ApsaraDB RDS for MySQL instance.
+	// The internal endpoint of the ApsaraDB RDS instance.
 	//
 	// example:
 	//
@@ -128,11 +128,11 @@ type CreateRDSToClickhouseDbRequest struct {
 	RdsVpcUrl            *string `json:"RdsVpcUrl,omitempty" xml:"RdsVpcUrl,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to ignore the table schemas that do not support synchronization. Valid values:
+	// Specifies whether to skip unsupported table schemas. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Skip.
 	//
-	// 	- **false**
+	// - **false**: Do not skip.
 	//
 	// This parameter is required.
 	//
@@ -140,7 +140,7 @@ type CreateRDSToClickhouseDbRequest struct {
 	//
 	// true
 	SkipUnsupported *bool `json:"SkipUnsupported,omitempty" xml:"SkipUnsupported,omitempty"`
-	// The tables whose data you want to synchronize.
+	// The tables to sync.
 	//
 	// This parameter is required.
 	//

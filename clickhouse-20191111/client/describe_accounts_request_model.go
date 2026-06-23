@@ -30,11 +30,11 @@ type iDescribeAccountsRequest interface {
 type DescribeAccountsRequest struct {
 	// The name of the database account.
 	//
-	// >  If you do not specify this parameter, the information about all database accounts in the ApsaraDB for ClickHouse cluster is queried by default.
+	// > If this parameter is not specified, the operation queries information about all database accounts.
 	//
 	// example:
 	//
-	// test
+	// testAccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The cluster ID.
 	//
@@ -46,19 +46,19 @@ type DescribeAccountsRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from 1. Default value: **1**.
+	// The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values:
+	// The number of entries to return on each page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//

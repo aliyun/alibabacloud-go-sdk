@@ -36,13 +36,13 @@ type DescribeSynDbsRequest struct {
 	DbClusterId  *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of records to return on each page.
 	//
 	// example:
 	//

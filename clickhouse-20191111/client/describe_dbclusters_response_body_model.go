@@ -23,7 +23,7 @@ type iDescribeDBClustersResponseBody interface {
 
 type DescribeDBClustersResponseBody struct {
 	DBClusters *DescribeDBClustersResponseBodyDBClusters `json:"DBClusters,omitempty" xml:"DBClusters,omitempty" type:"Struct"`
-	// The total number of returned pages.
+	// The page number.
 	//
 	// example:
 	//
@@ -31,11 +31,11 @@ type DescribeDBClustersResponseBody struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (Default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
@@ -47,7 +47,7 @@ type DescribeDBClustersResponseBody struct {
 	//
 	// F5178C10-1407-4987-9133-DE4DC9119F75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that are returned.
+	// The total number of entries.
 	//
 	// example:
 	//

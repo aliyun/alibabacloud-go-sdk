@@ -30,9 +30,9 @@ type iTagResourcesRequest interface {
 type TagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -40,18 +40,22 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource ID.
+	//
 	// This parameter is required.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Set the value to **CLUSTER**.
+	// The resource type. The value must be **DBCLUSTER**.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// CLUSTER
+	// DBCLUSTER
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of tags.
+	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -150,13 +154,13 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The key of the tag to add to the resource. You can add N tag keys. N is an integer. Valid values of N: **1 to 20**.
+	// The tag key. You can add up to **20*	- tag keys.
 	//
 	// example:
 	//
 	// testkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag to add to the resource. You can add N tag values. N is an integer. Valid values of N: **1 to 20**.
+	// The value of the tag key. You can add up to **20*	- tag values.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iDescribeBackupsResponseBody interface {
 }
 
 type DescribeBackupsResponseBody struct {
-	// The backup sets.
+	// The list of backup sets.
 	Items []*DescribeBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -30,13 +30,13 @@ type DescribeBackupsResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeBackupsResponseBody struct {
 	//
 	// F5178C10-1407-4987-9133-DE4DC9119F75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -123,41 +123,41 @@ func (s *DescribeBackupsResponseBody) Validate() error {
 }
 
 type DescribeBackupsResponseBodyItems struct {
-	// The end time of the backup task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
+	// The end time of the backup. The time is in the yyyy-MM-ddTHH:mmZ format and is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-11-22T18:28:41Z
 	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	// The backup task ID.
+	// The data backup task ID.
 	//
 	// example:
 	//
 	// 117403****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The backup method. Valid values: Only **Physical*	- is returned. This value indicates that a physical backup was performed.
+	// The backup method. The value is always **Physical**, which indicates a physical backup.
 	//
 	// example:
 	//
 	// Physical
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The number of nodes in the cluster.
+	// The number of cluster nodes.
 	//
-	// 	- If the cluster is of Single-replica Edition, the value ranges from 1 to 48.
+	// - For a single-replica edition cluster, the value is an integer from 1 to 48.
 	//
-	// 	- If the cluster is of Double-replica Edition, the value ranges from 1 to 24.
+	// - For a double-replica edition cluster, the value is an integer from 1 to 24.
 	//
 	// example:
 	//
-	// {"shard_count":4}
+	// {"shard_count": 4}
 	BackupSetInfo *string `json:"BackupSetInfo,omitempty" xml:"BackupSetInfo,omitempty"`
-	// The size of the backup set. Unit: MB.
+	// The backup size. Unit: MB.
 	//
 	// example:
 	//
 	// 131072
 	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The start time of the backup task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
+	// The start time of the backup. The time is in the yyyy-MM-ddTHH:mmZ format and is displayed in UTC.
 	//
 	// example:
 	//
@@ -165,9 +165,9 @@ type DescribeBackupsResponseBodyItems struct {
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
 	// The backup status. Valid values:
 	//
-	// 	- **Success**
+	// - **Success**: The backup is successful.
 	//
-	// 	- **Failure**
+	// - **Failure**: The backup failed.
 	//
 	// example:
 	//
@@ -175,9 +175,9 @@ type DescribeBackupsResponseBodyItems struct {
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
 	// The backup type. Valid values:
 	//
-	// 	- **FullBackup**
+	// - **FullBackup**: full backup.
 	//
-	// 	- **IncrementalBackup**
+	// - **IncrementalBackup**: incremental backup.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ type DescribeBackupsResponseBodyItems struct {
 	//
 	// cc-bp1qx68m06981****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The time when the backup set expired. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
+	// The expiration time of the backup set. The time is in the yyyy-MM-ddTHH:mmZ format and is displayed in UTC.
 	//
 	// example:
 	//

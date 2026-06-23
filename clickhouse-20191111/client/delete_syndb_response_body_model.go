@@ -26,9 +26,9 @@ type DeleteSyndbResponseBody struct {
 	//
 	// 0
 	ErrorCode *int64 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 	- If the value **true*	- is returned for the **Status*	- parameter, the system does not return the ErrorMsg parameter.
+	// - This parameter is not returned if **Status*	- is **true**.
 	//
-	// 	- If the value **false*	- is returned for the **Status*	- parameter, the system returns the deletion failure cause for the ErrorMsg parameter.
+	// - If **Status*	- is **false**, this parameter indicates the reason for the failure.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type DeleteSyndbResponseBody struct {
 	//
 	// 2C7393F1-5FD1-5CEE-A2EA-270A2CF99693
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the database used for data synchronization was deleted. Valid values:
+	// Indicates whether the deletion was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The deletion was successful.
 	//
-	// 	- **false**
+	// - **false**: The deletion failed.
 	//
 	// example:
 	//

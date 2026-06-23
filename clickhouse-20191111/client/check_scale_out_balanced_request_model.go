@@ -25,6 +25,8 @@ type iCheckScaleOutBalancedRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *CheckScaleOutBalancedRequest
 	GetResourceOwnerId() *int64
+	SetScalingType(v string) *CheckScaleOutBalancedRequest
+	GetScalingType() *string
 }
 
 type CheckScaleOutBalancedRequest struct {
@@ -38,25 +40,25 @@ type CheckScaleOutBalancedRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of pages to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Default value: 30. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// 	- **30**
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -66,6 +68,7 @@ type CheckScaleOutBalancedRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScalingType          *string `json:"ScalingType,omitempty" xml:"ScalingType,omitempty"`
 }
 
 func (s CheckScaleOutBalancedRequest) String() string {
@@ -108,6 +111,10 @@ func (s *CheckScaleOutBalancedRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *CheckScaleOutBalancedRequest) GetScalingType() *string {
+	return s.ScalingType
+}
+
 func (s *CheckScaleOutBalancedRequest) SetDBClusterId(v string) *CheckScaleOutBalancedRequest {
 	s.DBClusterId = &v
 	return s
@@ -145,6 +152,11 @@ func (s *CheckScaleOutBalancedRequest) SetResourceOwnerAccount(v string) *CheckS
 
 func (s *CheckScaleOutBalancedRequest) SetResourceOwnerId(v int64) *CheckScaleOutBalancedRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CheckScaleOutBalancedRequest) SetScalingType(v string) *CheckScaleOutBalancedRequest {
+	s.ScalingType = &v
 	return s
 }
 

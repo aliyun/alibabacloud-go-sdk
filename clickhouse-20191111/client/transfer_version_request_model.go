@@ -44,7 +44,7 @@ type iTransferVersionRequest interface {
 }
 
 type TransferVersionRequest struct {
-	// The ID of the source ApsaraDB for ClickHouse cluster.
+	// The ID of the source cluster.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type TransferVersionRequest struct {
 	//
 	// cc-bp1tm8zf130ew****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The time window during which write operations are stopped.
+	// The time windows during which writes are disabled.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ type TransferVersionRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values:
+	// The number of entries to return on each page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (Default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+	// The ID of the region. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent list of regions.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type TransferVersionRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The database account that is used to log on to the database in the source ApsaraDB for ClickHouse cluster.
+	// The source account.
 	//
 	// This parameter is required.
 	//
@@ -96,13 +96,15 @@ type TransferVersionRequest struct {
 	//
 	// test
 	SourceAccount *string `json:"SourceAccount,omitempty" xml:"SourceAccount,omitempty"`
-	// The name of the self-managed ClickHouse cluster. You can execute the `SELECT 	- FROM system.clusters` statement to query the cluster name.
+	// The name of the self-managed ClickHouse cluster.
+	//
+	// To obtain the name, execute `SELECT 	- FROM system.clusters`.
 	//
 	// example:
 	//
 	// default
 	SourceClusterName *string `json:"SourceClusterName,omitempty" xml:"SourceClusterName,omitempty"`
-	// The password that corresponds to the database account for logging on to the database in the source ApsaraDB for ClickHouse cluster.
+	// The password of the source account.
 	//
 	// This parameter is required.
 	//
@@ -110,13 +112,13 @@ type TransferVersionRequest struct {
 	//
 	// 123456Aa
 	SourcePassword *string `json:"SourcePassword,omitempty" xml:"SourcePassword,omitempty"`
-	// The endpoint and TCP port of the self-managed ClickHouse cluster.
+	// The addresses and TCP ports of the shards in the self-managed ClickHouse cluster.
 	//
 	// example:
 	//
 	// 192.168.0.4:9000,192.168.0.5:9000,192.168.0.6:9000
 	SourceShards *string `json:"SourceShards,omitempty" xml:"SourceShards,omitempty"`
-	// The database account that is used to log on to the database in the destination ApsaraDB for ClickHouse cluster.
+	// The destination account.
 	//
 	// This parameter is required.
 	//
@@ -124,7 +126,7 @@ type TransferVersionRequest struct {
 	//
 	// test01
 	TargetAccount *string `json:"TargetAccount,omitempty" xml:"TargetAccount,omitempty"`
-	// The ID of the destination ApsaraDB for ClickHouse cluster.
+	// The ID of the destination cluster.
 	//
 	// This parameter is required.
 	//
@@ -132,7 +134,7 @@ type TransferVersionRequest struct {
 	//
 	// cc-bp14b39djx7zg****
 	TargetDbClusterId *string `json:"TargetDbClusterId,omitempty" xml:"TargetDbClusterId,omitempty"`
-	// The password that corresponds to the database account for logging on to the database in the destination ApsaraDB for ClickHouse cluster.
+	// The password of the destination account.
 	//
 	// This parameter is required.
 	//

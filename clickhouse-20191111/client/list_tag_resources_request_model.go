@@ -30,7 +30,7 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token that is used to retrieve the next page of results. You do not need to specify this parameter for the first query. If a query does not return all results, a NextToken value is returned. You can use this token in a subsequent query to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -40,26 +40,28 @@ type ListTagResourcesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource ID.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Set the value to **CLUSTER**.
+	// The resource type. Set the value to **DBCLUSTER**.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// CLUSTER
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// DBCLUSTER
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -165,17 +167,17 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of the tag that is added to the resource. You can specify N tag keys at a time. N is an integer. Valid values of N: **1 to 20**.
+	// The tag key. You can specify from 1 to **20*	- tag keys.
 	//
-	// >  If you specify **ResourceId.N**, this parameter can be left empty.
+	// > If you specify the **ResourceId.N*	- parameter, you can leave this parameter empty.
 	//
 	// example:
 	//
 	// testkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag that is added to the resource. You can specify N tag values at a time. N is an integer. Valid values of N: **1 to 20**.
+	// The value of the tag. You can specify from 1 to **20*	- tag values.
 	//
-	// >  This parameter can be left empty.
+	// > You can leave this parameter empty.
 	//
 	// example:
 	//

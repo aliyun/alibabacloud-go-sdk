@@ -16,7 +16,7 @@ type iModifyDBClusterResponseBody interface {
 }
 
 type ModifyDBClusterResponseBody struct {
-	// The clusters.
+	// The cluster.
 	DBCluster *ModifyDBClusterResponseBodyDBCluster `json:"DBCluster,omitempty" xml:"DBCluster,omitempty" type:"Struct"`
 	// The request ID.
 	//

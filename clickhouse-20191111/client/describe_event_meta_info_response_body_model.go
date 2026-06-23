@@ -18,11 +18,16 @@ type iDescribeEventMetaInfoResponseBody interface {
 }
 
 type DescribeEventMetaInfoResponseBody struct {
+	// The metadata of O\\&M tasks.
 	Items []*DescribeEventMetaInfoResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 94F92113-FF63-5E57-8401-6FE123AD11DD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -78,10 +83,14 @@ func (s *DescribeEventMetaInfoResponseBody) Validate() error {
 }
 
 type DescribeEventMetaInfoResponseBodyItems struct {
+	// The code of the O\\&M task.
+	//
 	// example:
 	//
 	// Running
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The type of the O\\&M task.
+	//
 	// example:
 	//
 	// Task.TaskStatus

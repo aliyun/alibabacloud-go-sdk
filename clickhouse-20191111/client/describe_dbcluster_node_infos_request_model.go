@@ -28,6 +28,8 @@ type iDescribeDBClusterNodeInfosRequest interface {
 }
 
 type DescribeDBClusterNodeInfosRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -36,14 +38,26 @@ type DescribeDBClusterNodeInfosRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// - **30*	- (default)
+	//
+	// - **50**
+	//
+	// - **100**
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

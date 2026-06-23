@@ -22,7 +22,7 @@ type DescribeSynDbTablesResponseBody struct {
 	//
 	// 851D11EA-681C-5B38-A065-C3F90BBD49DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried tables.
+	// The tables.
 	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 }
 

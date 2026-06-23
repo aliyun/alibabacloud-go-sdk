@@ -24,7 +24,7 @@ type iDeleteAccountRequest interface {
 }
 
 type DeleteAccountRequest struct {
-	// The name of the database account.
+	// The database account.
 	//
 	// This parameter is required.
 	//

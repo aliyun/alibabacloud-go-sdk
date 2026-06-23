@@ -38,7 +38,7 @@ type iModifyAccountAuthorityRequest interface {
 }
 
 type ModifyAccountAuthorityRequest struct {
-	// The name of the database account.
+	// The database account.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ModifyAccountAuthorityRequest struct {
 	//
 	// test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The databases to which you want to grant permissions. Separate databases with commas (,).
+	// The list of databases to authorize. Separate multiple database names with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ModifyAccountAuthorityRequest struct {
 	//
 	// db1
 	AllowDatabases *string `json:"AllowDatabases,omitempty" xml:"AllowDatabases,omitempty"`
-	// The dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+	// The list of dictionaries to authorize. Separate multiple dictionary names with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -72,9 +72,9 @@ type ModifyAccountAuthorityRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Specifies whether to grant DDL permissions to the database account. Valid values:
 	//
-	// 	- **true**: grants DDL permissions to the database account.
+	// - **true**: Allows DDL operations.
 	//
-	// 	- **false**: does not grant DDL permissions to the database account.
+	// - **false**: Denies DDL operations.
 	//
 	// This parameter is required.
 	//
@@ -82,11 +82,11 @@ type ModifyAccountAuthorityRequest struct {
 	//
 	// true
 	DdlAuthority *bool `json:"DdlAuthority,omitempty" xml:"DdlAuthority,omitempty"`
-	// Specifies whether to grant DML permissions to the database account. Valid values:
+	// The DML permissions granted to the database account. Valid values:
 	//
-	// 	- **all**
+	// - **all**: Grants read, write, and modify permissions.
 	//
-	// 	- **readonly,modify**
+	// - **readonly,modify**: Grants read and modify permissions.
 	//
 	// This parameter is required.
 	//
@@ -104,13 +104,13 @@ type ModifyAccountAuthorityRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// All databases. Separate databases with commas (,).
+	// All databases in the cluster. Separate multiple database names with commas (,).
 	//
 	// example:
 	//
 	// db1,db2
 	TotalDatabases *string `json:"TotalDatabases,omitempty" xml:"TotalDatabases,omitempty"`
-	// All dictionaries. Separate dictionaries with commas (,).
+	// All dictionaries in the cluster. Separate multiple dictionary names with commas (,).
 	//
 	// example:
 	//

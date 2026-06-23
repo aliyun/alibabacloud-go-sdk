@@ -32,7 +32,7 @@ type ModifyMinorVersionGreadeTypeRequest struct {
 	//
 	// cc-bp1qx68m06981****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The update type. If you set the parameter to **false**, you perform the manual update.
+	// The upgrade type. Set this parameter to **false*	- for manual upgrades.
 	//
 	// This parameter is required.
 	//

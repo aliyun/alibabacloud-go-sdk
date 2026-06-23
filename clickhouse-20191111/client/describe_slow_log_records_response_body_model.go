@@ -22,7 +22,7 @@ type DescribeSlowLogRecordsResponseBody struct {
 	//
 	// DF203CC8-5F68-5E3F-8050-3C77DD65731A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details about the slow query logs.
+	// The details of the slow query logs.
 	SlowLogRecords *DescribeSlowLogRecordsResponseBodySlowLogRecords `json:"SlowLogRecords,omitempty" xml:"SlowLogRecords,omitempty" type:"Struct"`
 }
 
@@ -69,13 +69,13 @@ type DescribeSlowLogRecordsResponseBodySlowLogRecords struct {
 	//
 	// 1
 	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	// The number of entries per page.
+	// The number of entries on each page.
 	//
 	// example:
 	//
 	// 1
 	RowsBeforeLimitAtLeast *string `json:"RowsBeforeLimitAtLeast,omitempty" xml:"RowsBeforeLimitAtLeast,omitempty"`
-	// The statistics of the results.
+	// The statistics of the query results.
 	Statistics  *DescribeSlowLogRecordsResponseBodySlowLogRecordsStatistics  `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 	TableSchema *DescribeSlowLogRecordsResponseBodySlowLogRecordsTableSchema `json:"TableSchema,omitempty" xml:"TableSchema,omitempty" type:"Struct"`
 }
@@ -312,19 +312,19 @@ func (s *DescribeSlowLogRecordsResponseBodySlowLogRecordsDataResultSet) Validate
 }
 
 type DescribeSlowLogRecordsResponseBodySlowLogRecordsStatistics struct {
-	// The total size of data that were read. Unit: bytes.
+	// The amount of data read, in bytes.
 	//
 	// example:
 	//
 	// 123456
 	BytesRead *int32 `json:"BytesRead,omitempty" xml:"BytesRead,omitempty"`
-	// The time consumed by the slow query. Unit: milliseconds.
+	// The time elapsed for the slow query, in milliseconds.
 	//
 	// example:
 	//
 	// 21.35
 	ElapsedTime *float32 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	// The total number of rows that were read.
+	// The number of rows read.
 	//
 	// example:
 	//

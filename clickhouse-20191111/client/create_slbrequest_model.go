@@ -18,14 +18,19 @@ type iCreateSLBRequest interface {
 }
 
 type CreateSLBRequest struct {
-	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to obtain the cluster ID.
+	// The cluster ID. Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to obtain the cluster ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-uf6bnitmve5n0****
-	DBClusterId     *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The product code.
+	//
+	// example:
+	//
+	// clickhouse
 	Product         *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }

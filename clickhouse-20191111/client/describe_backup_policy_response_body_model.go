@@ -24,39 +24,39 @@ type iDescribeBackupPolicyResponseBody interface {
 }
 
 type DescribeBackupPolicyResponseBody struct {
-	// The retention period for the backup data. By default, the backup data is retained for seven days. Valid values: 7 to 730. Unit: day.
+	// The backup retention period. Default value: 7. Valid values: 7 to 730. Unit: day.
 	//
 	// example:
 	//
 	// 7
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// The size of the backup data. Unit: MB.
+	// The backup size. Unit: MB.
 	//
 	// example:
 	//
 	// 123124
 	BackupSize *string `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The day of a week when the system regularly backs up data. Valid values:
+	// The backup cycle. Valid values:
 	//
-	// 	- **Monday**
+	// - **Monday**
 	//
-	// 	- **Tuesday**
+	// - **Tuesday**
 	//
-	// 	- **Wednesday**
+	// - **Wednesday**
 	//
-	// 	- **Thursday**
+	// - **Thursday**
 	//
-	// 	- **Friday**
+	// - **Friday**
 	//
-	// 	- **Saturday**
+	// - **Saturday**
 	//
-	// 	- **Sunday**
+	// - **Sunday**
 	//
 	// example:
 	//
 	// Monday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The backup window. The time is displayed in Coordinated Universal Time (UTC).
+	// The backup time in UTC.
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type DescribeBackupPolicyResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the backup feature is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The backup feature is enabled.
 	//
-	// 	- **false**
+	// - **false**: The backup feature is disabled.
 	//
 	// example:
 	//

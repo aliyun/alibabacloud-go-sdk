@@ -18,7 +18,7 @@ type iDescribeConfigVersionDifferenceResponseBody interface {
 }
 
 type DescribeConfigVersionDifferenceResponseBody struct {
-	// The values of the configuration parameters after the values of the configuration parameters are changed.
+	// The configuration parameters after the change.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DescribeConfigVersionDifferenceResponseBody struct {
 	//
 	// </yandex>"
 	NewConfigXML *string `json:"NewConfigXML,omitempty" xml:"NewConfigXML,omitempty"`
-	// The values of the configuration parameters before the values of the configuration parameters are changed.
+	// The configuration parameters before the change.
 	//
 	// example:
 	//

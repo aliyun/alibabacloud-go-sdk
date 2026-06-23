@@ -28,20 +28,28 @@ type iDescribeAutoRenewAttributeRequest interface {
 }
 
 type DescribeAutoRenewAttributeRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cc-uf6g4417bo*****
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

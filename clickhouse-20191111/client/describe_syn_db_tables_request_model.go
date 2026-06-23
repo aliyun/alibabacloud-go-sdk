@@ -36,7 +36,7 @@ type DescribeSynDbTablesRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The name of the ApsaraDB RDS for MySQL instance.
+	// The name of the ApsaraDB RDS for MySQL database.
 	//
 	// This parameter is required.
 	//

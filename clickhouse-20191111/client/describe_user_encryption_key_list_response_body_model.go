@@ -16,7 +16,10 @@ type iDescribeUserEncryptionKeyListResponseBody interface {
 }
 
 type DescribeUserEncryptionKeyListResponseBody struct {
+	// The list of KMS keys.
 	KmsKeys []*DescribeUserEncryptionKeyListResponseBodyKmsKeys `json:"KmsKeys,omitempty" xml:"KmsKeys,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D0CEC6AC-7760-409A-A0D5-E6CD8660E9CC
@@ -63,6 +66,8 @@ func (s *DescribeUserEncryptionKeyListResponseBody) Validate() error {
 }
 
 type DescribeUserEncryptionKeyListResponseBodyKmsKeys struct {
+	// The key ID.
+	//
 	// example:
 	//
 	// 0275bd3f-fdbb-4d8c-846b-71b211******

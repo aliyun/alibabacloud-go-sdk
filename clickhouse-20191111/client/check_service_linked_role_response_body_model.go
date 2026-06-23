@@ -16,17 +16,17 @@ type iCheckServiceLinkedRoleResponseBody interface {
 }
 
 type CheckServiceLinkedRoleResponseBody struct {
-	// Indicates whether a service-linked role is created for ApsaraDB for ClickHouse.
+	// Indicates whether the service-linked role exists.
 	//
 	// example:
 	//
-	// xxxx
+	// true
 	HasServiceLinkedRole *bool `json:"HasServiceLinkedRole,omitempty" xml:"HasServiceLinkedRole,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// xxx
+	// 66428721-xxxx-xxxx-xxxx-3BD1B67837E0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

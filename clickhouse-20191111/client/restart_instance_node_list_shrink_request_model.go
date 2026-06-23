@@ -32,29 +32,48 @@ type iRestartInstanceNodeListShrinkRequest interface {
 }
 
 type RestartInstanceNodeListShrinkRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-bp108z124a8o7****
-	DBClusterId    *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The list of nodes to restart.
 	NodeListShrink *string `json:"NodeList,omitempty" xml:"NodeList,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// - **30*	- (default)
+	//
+	// - **50**
+	//
+	// - **100**
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The scheduled restart time. The time is in the yyyy-MM-ddTHH:mmZ format and is in UTC.
+	//
+	// > If this parameter is left empty or set to a time earlier than the current time, the cluster restarts immediately.
+	//
 	// example:
 	//
 	// 2023-03-22T00:00:50Z

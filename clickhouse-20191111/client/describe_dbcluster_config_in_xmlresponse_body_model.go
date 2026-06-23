@@ -16,7 +16,7 @@ type iDescribeDBClusterConfigInXMLResponseBody interface {
 }
 
 type DescribeDBClusterConfigInXMLResponseBody struct {
-	// The values of the configuration parameters.
+	// The configuration parameters.
 	//
 	// example:
 	//

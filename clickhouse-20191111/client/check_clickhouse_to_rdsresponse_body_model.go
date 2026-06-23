@@ -18,9 +18,9 @@ type iCheckClickhouseToRDSResponseBody interface {
 }
 
 type CheckClickhouseToRDSResponseBody struct {
-	// 	- When the value **true*	- is returned for the **Status*	- parameter, the system does not return the ErrorCode parameter.
+	// - This parameter is returned only if the connection fails (**Status*	- is **false**).
 	//
-	// 	- When the value **false*	- is returned for the **Status*	- parameter, the system returns for the ErrorCode parameter the reason why the ApsaraDB for ClickHouse cluster cannot be connected to the ApsaraDB RDS for MySQL instance.
+	// - It indicates the reason for the connection failure.
 	//
 	// example:
 	//
@@ -32,11 +32,11 @@ type CheckClickhouseToRDSResponseBody struct {
 	//
 	// A82758F8-E793-5610-BE11-0E46664305C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the ApsaraDB for ClickHouse cluster can be connected to the ApsaraDB RDS for MySQL instance.
+	// Indicates whether a connection can be established. Valid values:
 	//
-	// 	- **true**: The ApsaraDB for ClickHouse cluster can be connected to the ApsaraDB RDS for MySQL instance.
+	// - **true**: A connection can be established.
 	//
-	// 	- **false**: The ApsaraDB for ClickHouse cluster cannot be connected to the ApsaraDB RDS for MySQL instance.
+	// - **false**: A connection cannot be established.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeConfigVersionDifferenceRequest interface {
 }
 
 type DescribeConfigVersionDifferenceRequest struct {
-	// The ID of the change record. You can call the [DescribeConfigHistory](https://help.aliyun.com/document_detail/452209.html) operation to query the ID of the change record.
+	// The ID of the change record. Call the [DescribeConfigHistory](https://help.aliyun.com/document_detail/452209.html) operation to query the IDs of change records.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeConfigVersionDifferenceRequest struct {
 	//
 	// 1
 	ChangeId *string `json:"ChangeId,omitempty" xml:"ChangeId,omitempty"`
-	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+	// The cluster ID. Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query the IDs of all clusters in the destination region.
 	//
 	// This parameter is required.
 	//

@@ -22,7 +22,7 @@ type iDescribeTransferHistoryRequest interface {
 }
 
 type DescribeTransferHistoryRequest struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// This parameter is required.
 	//

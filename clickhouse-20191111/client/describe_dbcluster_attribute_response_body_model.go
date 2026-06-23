@@ -16,7 +16,7 @@ type iDescribeDBClusterAttributeResponseBody interface {
 }
 
 type DescribeDBClusterAttributeResponseBody struct {
-	// The information about the cluster.
+	// Details about the cluster.
 	DBCluster *DescribeDBClusterAttributeResponseBodyDBCluster `json:"DBCluster,omitempty" xml:"DBCluster,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,23 +62,47 @@ func (s *DescribeDBClusterAttributeResponseBody) Validate() error {
 }
 
 type DescribeDBClusterAttributeResponseBodyDBCluster struct {
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 140692647406****
-	AliUid                                *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AppointmentElectZookeeperDisableWrite *bool   `json:"AppointmentElectZookeeperDisableWrite,omitempty" xml:"AppointmentElectZookeeperDisableWrite,omitempty"`
-	AppointmentElectZookeeperTime         *string `json:"AppointmentElectZookeeperTime,omitempty" xml:"AppointmentElectZookeeperTime,omitempty"`
-	AppointmentRestartNodeList            *string `json:"AppointmentRestartNodeList,omitempty" xml:"AppointmentRestartNodeList,omitempty"`
-	AppointmentRestartNodeTime            *string `json:"AppointmentRestartNodeTime,omitempty" xml:"AppointmentRestartNodeTime,omitempty"`
-	// The scheduled restart time. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in Coordinated Universal Time (UTC).
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// Specifies whether to stop write operations during a primary/secondary switchover. Valid values:
+	//
+	// - `true`: Write operations are stopped for the instance during the switchover.
+	//
+	// - `false`: Write operations are not stopped for the instance during the switchover.
+	//
+	// example:
+	//
+	// true
+	AppointmentElectZookeeperDisableWrite *bool `json:"AppointmentElectZookeeperDisableWrite,omitempty" xml:"AppointmentElectZookeeperDisableWrite,omitempty"`
+	// The scheduled time for a primary/secondary switchover. The time is in the `YYYY-MM-DDThh:mm:ssZ` format and is in UTC.
+	//
+	// example:
+	//
+	// 2023-11-06T12:00:00Z
+	AppointmentElectZookeeperTime *string `json:"AppointmentElectZookeeperTime,omitempty" xml:"AppointmentElectZookeeperTime,omitempty"`
+	// A list of nodes that are scheduled for a restart.
+	//
+	// example:
+	//
+	// ck-k1a976p3n********-****-clickhouse-s-0-r-0,ck-k1a976p3n********-****-clickhouse-s-0-r-1
+	AppointmentRestartNodeList *string `json:"AppointmentRestartNodeList,omitempty" xml:"AppointmentRestartNodeList,omitempty"`
+	// The scheduled time to restart specific nodes. The time is in the `YYYY-MM-DDThh:mm:ssZ` format and is in UTC.
+	//
+	// example:
+	//
+	// 2023-11-06T12:00:00Z
+	AppointmentRestartNodeTime *string `json:"AppointmentRestartNodeTime,omitempty" xml:"AppointmentRestartNodeTime,omitempty"`
+	// The scheduled restart time. The time is in the `YYYY-MM-DDThh:mm:ssZ` format and is in UTC.
 	//
 	// example:
 	//
 	// 2023-11-06T12:00:00Z
 	AppointmentRestartTime *string `json:"AppointmentRestartTime,omitempty" xml:"AppointmentRestartTime,omitempty"`
-	// The major engine versions available for upgrades.
+	// The available major versions to which the cluster can be upgraded, and their latest minor versions.
 	//
 	// example:
 	//
@@ -86,9 +110,9 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	AvailableUpgradeMajorVersion map[string]interface{} `json:"AvailableUpgradeMajorVersion,omitempty" xml:"AvailableUpgradeMajorVersion,omitempty"`
 	// The site ID. Valid values:
 	//
-	// 	- **26842**: the China site (aliyun.com)
+	// - `26842`: China site (aliyun.com).
 	//
-	// 	- **26888**: the international site (alibabacloud.com)
+	// - `26888`: international site (alibabacloud.com).
 	//
 	// example:
 	//
@@ -96,43 +120,43 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
 	// The edition of the cluster. Valid values:
 	//
-	// 	- **Basic**: Single-replica Edition
+	// - `Basic`: single-replica edition.
 	//
-	// 	- **HighAvailability**: Double-replica Edition
+	// - `HighAvailability`: dual-replica edition.
 	//
 	// example:
 	//
 	// HighAvailability
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The commodity code of the cluster.
+	// The commodity code.
 	//
 	// example:
 	//
 	// clickhouse_go_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The VPC endpoint of the cluster.
+	// The VPC endpoint.
 	//
 	// example:
 	//
 	// cc-bp1qx68m06981****.ads.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The version of the ApsaraDB for ClickHouse console that is used to manage the cluster. Valid values:
+	// The version of the backend management system. Valid values:
 	//
-	// 	- **v1**
+	// - `v1`
 	//
-	// 	- **v2**
+	// - `v2`
 	//
 	// example:
 	//
 	// v1
 	ControlVersion *string `json:"ControlVersion,omitempty" xml:"ControlVersion,omitempty"`
-	// The time when the cluster was created. The value is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The creation time of the cluster, in `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
 	//
 	// example:
 	//
 	// 2021-12-13T11:33:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the cluster.
+	// The cluster description.
 	//
 	// example:
 	//
@@ -144,97 +168,97 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	//
 	// cc-bp108z124a8o7****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The network type of the cluster. Only VPC is supported.
+	// The network type. Only VPC is supported.
 	//
 	// example:
 	//
 	// vpc
 	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	// The cluster state. Valid values:
+	// The cluster status. Valid values:
 	//
-	// 	- **Preparing**: The cluster is being prepared.
+	// - `Preparing`: The cluster is being prepared.
 	//
-	// 	- **Creating**: The cluster is being created.
+	// - `Creating`: The cluster is being created.
 	//
-	// 	- **Running**: The cluster is running.
+	// - `Running`: The cluster is running.
 	//
-	// 	- **Deleting**: The cluster is being deleted.
+	// - `Deleting`: The cluster is being deleted.
 	//
-	// 	- **SCALING_OUT**: The storage capacity of the cluster is being expanded.
+	// - `SCALING_OUT`: The cluster is being scaled out.
 	//
 	// example:
 	//
 	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The type of the cluster. Valid values:
+	// The cluster type. Valid values:
 	//
-	// 	- **Common**: a common cluster
+	// - `Common`: a standard cluster.
 	//
-	// 	- **Readonly**: a read-only cluster
+	// - `Readonly`: a read-only cluster.
 	//
-	// 	- **Guard**: a disaster recovery cluster
+	// - `Guard`: a disaster recovery cluster.
 	//
 	// example:
 	//
 	// Common
 	DBClusterType *string `json:"DBClusterType,omitempty" xml:"DBClusterType,omitempty"`
-	// The specifications of the cluster.
+	// The instance type of the cluster nodes.
 	//
-	// 	- Valid values when the cluster is of Single-replica Edition:
+	// - Valid values for a single-replica edition:
 	//
-	//     	- **S4-NEW**
+	//   - `S4-NEW`
 	//
-	//     	- **S8**
+	//   - `S8`
 	//
-	//     	- **S16**
+	//   - `S16`
 	//
-	//     	- **S32**
+	//   - `S32`
 	//
-	//     	- **S64**
+	//   - `S64`
 	//
-	//     	- **S104**
+	//   - `S104`
 	//
-	// 	- Valid values when the cluster is of Double-replica Edition:
+	// - Valid values for a dual-replica edition:
 	//
-	//     	- **C4-NEW**
+	//   - `C4-NEW`
 	//
-	//     	- **C8**
+	//   - `C8`
 	//
-	//     	- **C16**
+	//   - `C16`
 	//
-	//     	- **C32**
+	//   - `C32`
 	//
-	//     	- **C64**
+	//   - `C64`
 	//
-	//     	- **C104**
+	//   - `C104`
 	//
 	// example:
 	//
 	// C8
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// The number of nodes.
+	// The number of nodes in the cluster.
 	//
-	// 	- Valid values when the cluster is of Single-replica Edition: 1 to 48.
+	// - For a single-replica edition, the value range is 1 to 48.
 	//
-	// 	- Valid values when the cluster is of Double-replica Edition: 1 to 24.
+	// - For a dual-replica edition, the value range is 1 to 24.
 	//
 	// example:
 	//
 	// 1
 	DBNodeCount *int64 `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
-	// The storage capacity of a single node of the cluster. Unit: GB.
+	// The storage capacity per node, in GB.
 	//
-	// Valid values: 100 to 32000.
+	// The value can range from 100 to 32000.
 	//
-	// >  This value is a multiple of 100.
+	// > The value must be a multiple of 100.
 	//
 	// example:
 	//
 	// 100
 	DBNodeStorage *int64 `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
-	// The Key Management Service (KMS) key that is used to encrypt data.
+	// The Key Management Service (KMS) key ID.
 	//
-	// >  If the value of the EncryptionType parameter is off, an empty string is returned for this parameter.
+	// > This parameter is empty if `EncryptionType` is set to `off`.
 	//
 	// example:
 	//
@@ -242,27 +266,27 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// The encryption type. Valid values:
 	//
-	// 	- **CloudDisk**: Disk encryption is enabled.
+	// - `CloudDisk`: disk encryption.
 	//
-	// 	- **off**: Data is not encrypted.
+	// - `off`: Encryption is disabled.
 	//
 	// example:
 	//
 	// CloudDisk
 	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	// The type of the database engine.
+	// The database engine.
 	//
 	// example:
 	//
 	// ClickHouse
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The latest minor version to which the cluster can be updated.
+	// The latest minor version to which the cluster can be upgraded.
 	//
 	// example:
 	//
 	// 1.34.0
 	EngineLatestMinorVersion *string `json:"EngineLatestMinorVersion,omitempty" xml:"EngineLatestMinorVersion,omitempty"`
-	// The current minor version.
+	// The engine\\"s current minor version.
 	//
 	// example:
 	//
@@ -274,15 +298,15 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	//
 	// 21.8.10.19
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The time when the cluster expired. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The expiration time of the cluster, in `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
 	//
-	// >  Pay-as-you-go clusters never expire. If the cluster is a pay-as-you-go cluster, an empty string is returned for this parameter.
+	// > This parameter is empty for pay-as-you-go clusters.
 	//
 	// example:
 	//
 	// 2022-11-11T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The extended storage space. Unit: GB.
+	// The extended storage capacity, in GB.
 	//
 	// example:
 	//
@@ -290,78 +314,90 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	ExtStorageSize *int32 `json:"ExtStorageSize,omitempty" xml:"ExtStorageSize,omitempty"`
 	// The extended storage type. Valid values:
 	//
-	// 	- **CloudESSD**: The cluster uses an enhanced SSD (ESSD) of performance level (PL) 1.
+	// <props="china">
 	//
-	// 	- **CloudESSD_PL2**: The cluster uses an ESSD of PL 2.
+	// - `CloudESSD_PL0`: ESSD PL0 disk.
 	//
-	// 	- **CloudESSD_PL3**: The cluster uses an ESSD of PL 3.
 	//
-	// 	- **CloudEfficiency**: The cluster uses an ultra disk.
+	//
+	//
+	// - `CloudESSD`: ESSD PL1 disk.
+	//
+	// - `CloudESSD_PL2`: ESSD PL2 disk.
+	//
+	// - `CloudESSD_PL3`: ESSD PL3 disk.
+	//
+	// - `CloudEfficiency`: Ultra disk.
 	//
 	// example:
 	//
 	// CloudESSD
 	ExtStorageType *string `json:"ExtStorageType,omitempty" xml:"ExtStorageType,omitempty"`
-	// Indicates whether the cluster has expired. Valid values:
+	// Whether the cluster has expired. Valid values:
 	//
-	// 	- **true**
+	// - `true`: The cluster has expired.
 	//
-	// 	- **false**
+	// - `false`: The cluster has not expired.
 	//
 	// example:
 	//
 	// false
 	IsExpired *string `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
-	LbKind    *string `json:"LbKind,omitempty" xml:"LbKind,omitempty"`
+	// The type of the load balancer.
+	//
+	// example:
+	//
+	// clb
+	LbKind *string `json:"LbKind,omitempty" xml:"LbKind,omitempty"`
 	// The lock mode of the cluster. Valid values:
 	//
-	// 	- **Unlock**: The cluster is not locked.
+	// - `Unlock`: The cluster is not locked.
 	//
-	// 	- **ManualLock**: The cluster is manually locked.
+	// - `ManualLock`: The cluster is manually locked.
 	//
-	// 	- **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
+	// - `LockByExpiration`: The cluster is automatically locked upon expiration.
 	//
-	// 	- **LockByRestoration**: The cluster is automatically locked because the cluster is about to be rolled back.
+	// - `LockByRestoration`: The cluster is automatically locked before a rollback.
 	//
-	// 	- **LockByDiskQuota**: The cluster is automatically locked because the disk space is exhausted.
+	// - `LockByDiskQuota`: The cluster is automatically locked because the storage is full.
 	//
 	// example:
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The cause why the cluster was locked.
+	// The reason the cluster was locked.
 	//
-	// >  If the value of the LockMode parameter is Unlock, an empty string is returned for this parameter.
+	// > This parameter is empty if `LockMode` is set to `Unlock`.
 	//
 	// example:
 	//
 	// DISK_FULL
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The update type. If the value of the parameter is **false**, it indicates a manual update.
+	// The upgrade method. A value of `false` indicates that upgrades must be performed manually.
 	//
 	// example:
 	//
 	// false
 	MaintainAutoType *bool `json:"MaintainAutoType,omitempty" xml:"MaintainAutoType,omitempty"`
-	// The maintenance window of the cluster. The value is in the HH:mmZ-HH:mmZ format. The time is displayed in UTC.
+	// The maintenance window of the cluster. The time is in the `HH:mmZ-HH:mmZ` format and is in UTC.
 	//
-	// For example, if you set the maintenance window to 00:00Z-01:00Z, the cluster can be maintained from 08:00 (UTC+8) to 09:00 (UTC+8).
+	// For example, `00:00Z-01:00Z` indicates that the maintenance window is from 00:00 to 01:00 (UTC), which corresponds to 08:00 to 09:00 in Beijing time (UTC+8).
 	//
 	// example:
 	//
 	// 00:00Z-01:00Z
 	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
-	// The billing method of the cluster. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- **Postpaid**: indicates the pay-as-you-go billing method.
+	// - `Postpaid`: pay-as-you-go.
 	//
-	// 	- **Prepaid**: indicates the subscription billing method.
+	// - `Prepaid`: subscription.
 	//
 	// example:
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The HTTP port number.
+	// The HTTP port.
 	//
 	// example:
 	//
@@ -373,13 +409,13 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	//
 	// cc-bp1199ya710s7****.public.clickhouse.ads.aliyuncs.com
 	PublicConnectionString *string `json:"PublicConnectionString,omitempty" xml:"PublicConnectionString,omitempty"`
-	// The IP address that is used to connect to the cluster over the Internet.
+	// The IP address of the public endpoint.
 	//
 	// example:
 	//
 	// 121.40.xx.xx
 	PublicIpAddr *string `json:"PublicIpAddr,omitempty" xml:"PublicIpAddr,omitempty"`
-	// The TCP port number in the public endpoint.
+	// The public TCP port.
 	//
 	// example:
 	//
@@ -397,82 +433,90 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	//
 	// rg-acfmyf65je6****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the data migration task.
+	// The data migration status.
 	ScaleOutStatus *DescribeDBClusterAttributeResponseBodyDBClusterScaleOutStatus `json:"ScaleOutStatus,omitempty" xml:"ScaleOutStatus,omitempty" type:"Struct"`
-	// The storage type of the cluster. Valid values:
+	// The storage type. Valid values:
 	//
-	// 	- **CloudESSD**: The cluster uses an enhanced SSD (ESSD) of performance level (PL) 1.
+	// <props="china">
 	//
-	// 	- **CloudESSD_PL2**: The cluster uses an ESSD of PL 2.
+	// - `CloudESSD_PL0`: ESSD PL0 disk.
 	//
-	// 	- **CloudESSD_PL3**: The cluster uses an ESSD of PL 3.
 	//
-	// 	- **CloudEfficiency**: The cluster uses an ultra disk.
+	//
+	//
+	// - `CloudESSD`: ESSD PL1 disk.
+	//
+	// - `CloudESSD_PL2`: ESSD PL2 disk.
+	//
+	// - `CloudESSD_PL3`: ESSD PL3 disk.
+	//
+	// - `CloudEfficiency`: Ultra disk.
 	//
 	// example:
 	//
 	// CloudESSD
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// Indicates whether data backup is supported. Valid values:
+	// Whether the cluster supports data backup. Valid values:
 	//
-	// 	- **1**: Data backup is supported.
+	// - `1`: Supported.
 	//
-	// 	- **2**: Data backup is not supported.
+	// - `2`: Not supported.
 	//
 	// example:
 	//
 	// 1
 	SupportBackup *int32 `json:"SupportBackup,omitempty" xml:"SupportBackup,omitempty"`
-	// Indicates whether HTTPS ports are supported. Valid values:
+	// Whether the HTTPS port is supported. Valid values:
 	//
-	// 	- **true**
+	// - `true`: Supported.
 	//
-	// 	- **false**
+	// - `false`: Not supported.
 	//
 	// example:
 	//
 	// false
 	SupportHttpsPort *bool `json:"SupportHttpsPort,omitempty" xml:"SupportHttpsPort,omitempty"`
-	// Indicates whether the cluster supports a MySQL port. Valid values:
+	// Whether the MySQL port is supported. Valid values:
 	//
-	// 	- **true**: A MySQL port is supported.
+	// - `true`: Supported.
 	//
-	// 	- **false**: A MySQL port is not supported.
+	// - `false`: Not supported.
 	//
 	// example:
 	//
 	// false
 	SupportMysqlPort *bool `json:"SupportMysqlPort,omitempty" xml:"SupportMysqlPort,omitempty"`
-	// Indicates whether tiered storage of hot data and cold data is supported. Valid values:
+	// Whether the cluster supports tiered storage for hot and cold data. Valid values:
 	//
-	// 	- **1**: Tiered storage of hot data and cold data is supported.
+	// - `1`: Supported.
 	//
-	// 	- **2**: Tiered storage of hot data and cold data is not supported.
+	// - `2`: Not supported.
 	//
 	// example:
 	//
 	// 1
-	SupportOss *int32                                               `json:"SupportOss,omitempty" xml:"SupportOss,omitempty"`
-	Tags       *DescribeDBClusterAttributeResponseBodyDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	SupportOss *int32 `json:"SupportOss,omitempty" xml:"SupportOss,omitempty"`
+	// The tags of the cluster.
+	Tags *DescribeDBClusterAttributeResponseBodyDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp1n874li1t5y57wi****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC in which the cluster is deployed.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-bp10tr8k9qasioaty****
 	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-bp10tr8k9qasioaty****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The IP address that is used to connect to the cluster over the VPC.
+	// The IP address of the VPC endpoint.
 	//
 	// example:
 	//
@@ -492,13 +536,13 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	//
 	// cn-hangzhou-h
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The list of vSwitch IDs in multi-zone clusters.
+	// A map of zone IDs to vSwitch IDs for a multi-zone cluster.
 	//
 	// example:
 	//
 	// cn-shanghai-f: vsw-zm0n42d5vvuo****
 	ZoneIdVswitchMap map[string]interface{} `json:"ZoneIdVswitchMap,omitempty" xml:"ZoneIdVswitchMap,omitempty"`
-	// The ZooKeeper specifications.
+	// The specifications of the ZooKeeper nodes.
 	//
 	// example:
 	//
@@ -1060,17 +1104,17 @@ func (s *DescribeDBClusterAttributeResponseBodyDBCluster) Validate() error {
 }
 
 type DescribeDBClusterAttributeResponseBodyDBClusterScaleOutStatus struct {
-	// The progress of the data migration task in percentage.
+	// The data migration progress, as a percentage.
 	//
-	// >  This parameter is returned only when the cluster is in the SCALING_OUT state.
+	// > This parameter is returned only when the cluster is in the `SCALING_OUT` state.
 	//
 	// example:
 	//
 	// 0
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The progress of the data migration task. This value is displayed in the following format: Data volume that has been migrated/Total data volume.
+	// The data migration progress, displayed as `Amount of data migrated/Total data amount`.
 	//
-	// >  This parameter is returned only when the cluster is in the SCALING_OUT state.
+	// > This parameter is returned only when the cluster is in the `SCALING_OUT` state.
 	//
 	// example:
 	//

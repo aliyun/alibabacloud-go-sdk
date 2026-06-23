@@ -18,18 +18,24 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
+	// The ID of the destination resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rg-4690g37929****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-bp1i43033051****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

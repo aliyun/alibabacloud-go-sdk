@@ -24,24 +24,40 @@ type iDescribeDBClusterNodeInfosResponseBody interface {
 }
 
 type DescribeDBClusterNodeInfosResponseBody struct {
+	// The information about the ClickHouse nodes.
 	NodeInfos []*DescribeDBClusterNodeInfosResponseBodyNodeInfos `json:"NodeInfos,omitempty" xml:"NodeInfos,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// - **30*	- (default)
+	//
+	// - **50**
+	//
+	// - **100**
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 746CD303-0B82-5E8D-886D-93A9FAF3A876
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of nodes.
+	//
 	// example:
 	//
 	// 1
-	TotalNodeCount *int32                                               `json:"TotalNodeCount,omitempty" xml:"TotalNodeCount,omitempty"`
-	ZkNodeInfos    []*DescribeDBClusterNodeInfosResponseBodyZkNodeInfos `json:"ZkNodeInfos,omitempty" xml:"ZkNodeInfos,omitempty" type:"Repeated"`
+	TotalNodeCount *int32 `json:"TotalNodeCount,omitempty" xml:"TotalNodeCount,omitempty"`
+	// The information about the ZooKeeper nodes.
+	ZkNodeInfos []*DescribeDBClusterNodeInfosResponseBodyZkNodeInfos `json:"ZkNodeInfos,omitempty" xml:"ZkNodeInfos,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBClusterNodeInfosResponseBody) String() string {
@@ -129,22 +145,32 @@ func (s *DescribeDBClusterNodeInfosResponseBody) Validate() error {
 }
 
 type DescribeDBClusterNodeInfosResponseBodyNodeInfos struct {
+	// Indicates whether a disaster recovery test is in progress.
+	//
 	// example:
 	//
 	// true
 	FailoverTesting *bool `json:"FailoverTesting,omitempty" xml:"FailoverTesting,omitempty"`
+	// The IP address of the node.
+	//
 	// example:
 	//
 	// 172.168.0.1
 	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	// The node name.
+	//
 	// example:
 	//
 	// ck-bp108z124a8****
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// 1
 	ReplicaId *string `json:"ReplicaId,omitempty" xml:"ReplicaId,omitempty"`
+	// The shard ID.
+	//
 	// example:
 	//
 	// 2
@@ -209,14 +235,20 @@ func (s *DescribeDBClusterNodeInfosResponseBodyNodeInfos) Validate() error {
 }
 
 type DescribeDBClusterNodeInfosResponseBodyZkNodeInfos struct {
+	// Indicates whether a disaster recovery test is in progress.
+	//
 	// example:
 	//
 	// true
 	FailoverTesting *bool `json:"FailoverTesting,omitempty" xml:"FailoverTesting,omitempty"`
+	// The node name.
+	//
 	// example:
 	//
 	// ck-bp108z124a8****
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The ZooKeeper node ID.
+	//
 	// example:
 	//
 	// 1

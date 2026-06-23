@@ -32,30 +32,50 @@ type iElectZookeeperLeaderRequest interface {
 }
 
 type ElectZookeeperLeaderRequest struct {
+  // The cluster ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // cc-bp108z124a8o7****
   DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+  // Specifies whether to disable writes.
+  // 
   // example:
   // 
   // true
   DisableWrite *bool `json:"DisableWrite,omitempty" xml:"DisableWrite,omitempty"`
+  // The time to perform the leader switchover.
+  // 
   // example:
   // 
   // 2025-12-12T07:28:00Z
   ElectTime *string `json:"ElectTime,omitempty" xml:"ElectTime,omitempty"`
   OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+  // The page number.
+  // 
   // example:
   // 
   // 1
   PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+  // The number of entries to return on each page. Valid values:
+  // 
+  // - **30*	- (Default)
+  // 
+  // - **50**
+  // 
+  // - **100**
+  // 
   // example:
   // 
   // 30
   PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+  // The region ID.
+  // 
+  // > Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
+  // 
   // example:
   // 
   // cn-hangzhou

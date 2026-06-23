@@ -44,40 +44,78 @@ type iDescribeActiveOperationTasksRequest interface {
 }
 
 type DescribeActiveOperationTasksRequest struct {
+	// Specifies whether the task can be canceled. Valid values:
+	//
+	// - **0**: The task cannot be canceled.
+	//
+	// - **1**: The task can be canceled.
+	//
 	// example:
 	//
 	// -1
 	AllowCancel *int32 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	// Specifies whether the time can be changed. Valid values:
+	//
+	// - **0**: The time cannot be changed.
+	//
+	// - **1**: The time can be changed.
+	//
 	// example:
 	//
 	// -1
 	AllowChange *int32 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	// The task level. Valid values:
+	//
+	// - **all*	- (Default): All levels.
+	//
+	// - **S0**: Returns tasks for fixing exceptions.
+	//
+	// - **S1**: Returns tasks for system O\\&M.
+	//
 	// example:
 	//
 	// all
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
+	// The database type.
+	//
 	// example:
 	//
 	// clickhouse
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// cc-bp191w*******
 	InsName      *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values:
+	//
+	// - **30*	- (Default)
+	//
+	// - **50**
+	//
+	// - **100**
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The product ID.
+	//
 	// example:
 	//
 	// clickhouse
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -85,10 +123,30 @@ type DescribeActiveOperationTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The task status. This parameter is used to filter tasks.
+	//
+	// - **-1:*	- All tasks.
+	//
+	// - **3:*	- Tasks to be processed.
+	//
+	// - **4:*	- Tasks in progress.
+	//
+	// - **5:*	- Successfully completed tasks.
+	//
+	// - **6:*	- Failed tasks.
+	//
+	// - **7:*	- Canceled tasks.
+	//
 	// example:
 	//
 	// -1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task type. Valid values:
+	//
+	// - **rds_apsaradb_upgrade**: Minor version upgrade.
+	//
+	// - **all**: All task types.
+	//
 	// example:
 	//
 	// all

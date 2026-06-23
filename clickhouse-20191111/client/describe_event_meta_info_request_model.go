@@ -18,6 +18,8 @@ type iDescribeEventMetaInfoRequest interface {
 }
 
 type DescribeEventMetaInfoRequest struct {
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type DescribeEventMetaInfoRequest struct {
 	// cn-beijing
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The codes of O\\&M event types. Separate multiple codes with commas.
+	//
 	// example:
 	//
 	// Event.EventCode

@@ -20,17 +20,17 @@ type iDescribeDBClusterNetInfoItemsResponseBody interface {
 }
 
 type DescribeDBClusterNetInfoItemsResponseBody struct {
-	// The network type of the cluster. Only VPC is supported.
+	// The network type. Only VPC is supported.
 	//
 	// example:
 	//
 	// VPC
 	ClusterNetworkType *string `json:"ClusterNetworkType,omitempty" xml:"ClusterNetworkType,omitempty"`
-	// Indicates whether Server Load Balancer (SLB) is activated in the VPC. Valid values:
+	// Indicates whether Server Load Balancer (SLB) is enabled in the VPC. Valid values:
 	//
-	// 	- true
+	// - true: enabled.
 	//
-	// 	- false
+	// - false: disabled.
 	//
 	// This parameter is required.
 	//

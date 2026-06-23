@@ -26,7 +26,7 @@ type iDescribeAccountAuthorityRequest interface {
 }
 
 type DescribeAccountAuthorityRequest struct {
-	// The name of the database account.
+	// The database account name.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeAccountAuthorityRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the latest region list.
 	//
 	// example:
 	//

@@ -40,7 +40,7 @@ type iCheckClickhouseToRDSRequest interface {
 }
 
 type CheckClickhouseToRDSRequest struct {
-	// The password of the account that is used to log on to the database in the ApsaraDB for ClickHouse cluster.
+	// The password for the ApsaraDB for ClickHouse database account.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CheckClickhouseToRDSRequest struct {
 	//
 	// 123456Aa
 	CkPassword *string `json:"CkPassword,omitempty" xml:"CkPassword,omitempty"`
-	// The account that is used to log on to the database in the ApsaraDB for ClickHouse cluster.
+	// The database account for the ApsaraDB for ClickHouse cluster.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CheckClickhouseToRDSRequest struct {
 	//
 	// 8123
 	ClickhousePort *int64 `json:"ClickhousePort,omitempty" xml:"ClickhousePort,omitempty"`
-	// The ID of the ApsaraDB for ClickHouse cluster.
+	// The ID of the community-compatible ApsaraDB for ClickHouse cluster.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type CheckClickhouseToRDSRequest struct {
 	DbClusterId  *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the ApsaraDB RDS for MySQL instance.
+	// The ID of the ApsaraDB RDS instance.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type CheckClickhouseToRDSRequest struct {
 	//
 	// rm-bp13v4bnwlu8j****
 	RdsId *string `json:"RdsId,omitempty" xml:"RdsId,omitempty"`
-	// The password of the account that is used to log on to the database in the ApsaraDB RDS for MySQL instance.
+	// The password for the ApsaraDB RDS database account.
 	//
 	// This parameter is required.
 	//
@@ -88,13 +88,13 @@ type CheckClickhouseToRDSRequest struct {
 	//
 	// 123456Rr
 	RdsPassword *string `json:"RdsPassword,omitempty" xml:"RdsPassword,omitempty"`
-	// The port number of the ApsaraDB RDS for MySQL instance.
+	// The port number of the ApsaraDB RDS instance.
 	//
 	// example:
 	//
 	// 3306
 	RdsPort *int64 `json:"RdsPort,omitempty" xml:"RdsPort,omitempty"`
-	// The account that is used to log on to the database in the ApsaraDB RDS for MySQL instance.
+	// The database account for the ApsaraDB RDS instance.
 	//
 	// This parameter is required.
 	//
@@ -102,7 +102,7 @@ type CheckClickhouseToRDSRequest struct {
 	//
 	// user2
 	RdsUserName *string `json:"RdsUserName,omitempty" xml:"RdsUserName,omitempty"`
-	// The ID of the VPC in which the ApsaraDB RDS for MySQL instance is deployed.
+	// The VPC ID of the ApsaraDB RDS instance.
 	//
 	// This parameter is required.
 	//
@@ -110,7 +110,7 @@ type CheckClickhouseToRDSRequest struct {
 	//
 	// vpc-wz9mm0qka0winfl47****
 	RdsVpcId *string `json:"RdsVpcId,omitempty" xml:"RdsVpcId,omitempty"`
-	// The internal endpoint of the ApsaraDB RDS for MySQL instance.
+	// The internal endpoint of the ApsaraDB RDS instance.
 	//
 	// This parameter is required.
 	//

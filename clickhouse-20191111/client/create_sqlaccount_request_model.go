@@ -32,23 +32,23 @@ type iCreateSQLAccountRequest interface {
 type CreateSQLAccountRequest struct {
 	// The description of the database account.
 	//
-	// 	- The description cannot start with http:// or https://.
+	// - It cannot start with http\\:// or https\\://.
 	//
-	// 	- The description can be up to 256 characters in length or be an empty string.
+	// - It can be 0 to 256 characters in length.
 	//
 	// example:
 	//
-	// Used for test
+	// For testing
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the database account.
 	//
-	// 	- The name must be unique in the cluster.
+	// - The name must be unique.
 	//
-	// 	- The name can contain lowercase letters, digits, or underscores (_).
+	// - It must consist of lowercase letters, digits, or underscores (_).
 	//
-	// 	- The name must start with a lowercase letter and end with a lowercase letter or digit.
+	// - It must start with a lowercase letter and end with a lowercase letter or a digit.
 	//
-	// 	- The name must be 2 to 64 characters in length.
+	// - It must be 2 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type CreateSQLAccountRequest struct {
 	//
 	// test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password of the database account.
+	// The password for the database account.
 	//
-	// 	- The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// - It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// 	- Special characters include ! @ # $ % ^ & \\	- ( ) _ + - =
+	// - The following characters are special characters: !@#$%^&\\*()_+-=
 	//
-	// 	- The password must be 8 to 32 characters in length.
+	// - It must be 8 to 32 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -72,9 +72,9 @@ type CreateSQLAccountRequest struct {
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// The type of the database account. Valid values:
 	//
-	// 	- **Super**: privileged account.
+	// - **Super**: a privileged account.
 	//
-	// 	- **Normal**: standard account.
+	// - **Normal**: a standard account.
 	//
 	// This parameter is required.
 	//

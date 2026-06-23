@@ -28,27 +28,27 @@ type iCheckScaleOutBalancedResponseBody interface {
 type CheckScaleOutBalancedResponseBody struct {
 	// The check result. Valid values:
 	//
-	// 	- **400**: The cluster failed the check.
+	// - **400**: The check failed.
 	//
-	// 	- **200**: The cluster passed the check.
+	// - **200**: The check succeeded.
 	//
 	// example:
 	//
 	// 400
 	CheckCode *string `json:"CheckCode,omitempty" xml:"CheckCode,omitempty"`
-	// The total number of returned pages.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**.
 	//
 	// example:
 	//
@@ -61,13 +61,13 @@ type CheckScaleOutBalancedResponseBody struct {
 	// F5178C10-1407-4987-9133-DE4DC9119F75
 	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TableDetails *CheckScaleOutBalancedResponseBodyTableDetails `json:"TableDetails,omitempty" xml:"TableDetails,omitempty" type:"Struct"`
-	// The amount of time that is required for the migration and scale-out. Unit: minutes.
+	// The time required for the migration scale-out. Unit: minutes.
 	//
 	// example:
 	//
 	// 21
 	TimeDuration *string `json:"TimeDuration,omitempty" xml:"TimeDuration,omitempty"`
-	// The total number of entries that are returned.
+	// The total number of entries.
 	//
 	// example:
 	//
