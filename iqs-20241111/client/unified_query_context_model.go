@@ -18,12 +18,16 @@ type iUnifiedQueryContext interface {
 }
 
 type UnifiedQueryContext struct {
+	// The search engine used.
+	//
 	// example:
 	//
 	// Generic
-	EngineType    *string               `json:"engineType,omitempty" xml:"engineType,omitempty"`
+	EngineType *string `json:"engineType,omitempty" xml:"engineType,omitempty"`
+	// The initial request.
 	OriginalQuery *UnifiedOriginalQuery `json:"originalQuery,omitempty" xml:"originalQuery,omitempty"`
-	Rewrite       *UnifiedRewrite       `json:"rewrite,omitempty" xml:"rewrite,omitempty"`
+	// The rewritten result.
+	Rewrite *UnifiedRewrite `json:"rewrite,omitempty" xml:"rewrite,omitempty"`
 }
 
 func (s UnifiedQueryContext) String() string {

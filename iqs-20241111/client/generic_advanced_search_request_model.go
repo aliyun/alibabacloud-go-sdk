@@ -20,13 +20,24 @@ type iGenericAdvancedSearchRequest interface {
 }
 
 type GenericAdvancedSearchRequest struct {
+	// The industry. After you specify this parameter, only content from websites within the specified industries is recalled. Separate multiple industries with commas.
 	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	// The query text to search for.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 苹果手机
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The session ID for multi-turn interactions.
+	//
 	// example:
 	//
 	// job-4065bee3-e7aa-49fc-aad2-a8e3a7fd6acd
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// The time range for filtering web pages by publish time.
+	//
 	// example:
 	//
 	// OneWeek

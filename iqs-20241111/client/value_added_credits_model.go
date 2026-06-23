@@ -16,10 +16,14 @@ type iValueAddedCredits interface {
 }
 
 type ValueAddedCredits struct {
+	// The value-added package - enhanced search.
+	//
 	// example:
 	//
 	// 0
 	Advanced *int32 `json:"advanced,omitempty" xml:"advanced,omitempty"`
+	// The value-added package - enhanced summary.
+	//
 	// example:
 	//
 	// 1

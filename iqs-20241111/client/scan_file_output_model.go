@@ -18,11 +18,15 @@ type iScanFileOutput interface {
 }
 
 type ScanFileOutput struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ECB2144C-E277-5434-80E6-12D26678D364
-	RequestId         *string                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ScanFileInfoList  []*ScanFileInfo           `json:"scanFileInfoList,omitempty" xml:"scanFileInfoList,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of scan result objects.
+	ScanFileInfoList []*ScanFileInfo `json:"scanFileInfoList,omitempty" xml:"scanFileInfoList,omitempty" type:"Repeated"`
+	// The search execution information.
 	SearchInformation *UnifiedSearchInformation `json:"searchInformation,omitempty" xml:"searchInformation,omitempty"`
 }
 

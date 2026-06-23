@@ -18,14 +18,19 @@ type iScanFileInput interface {
 }
 
 type ScanFileInput struct {
+	// The Base64 encoding of the image.
+	//
 	// example:
 	//
 	// wrwqr
 	ImageBase64 *string `json:"imageBase64,omitempty" xml:"imageBase64,omitempty"`
+	// The URL of the image.
+	//
 	// example:
 	//
 	// https://www.1241.png
-	ImageUrl            *string              `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+	// The scan parameters.
 	ScanFileInputConfig *ScanFileInputConfig `json:"scanFileInputConfig,omitempty" xml:"scanFileInputConfig,omitempty"`
 }
 

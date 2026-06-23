@@ -18,14 +18,27 @@ type iGlobalPageItem interface {
 }
 
 type GlobalPageItem struct {
+	// The full URL that the search result points to.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://baijiahao.baidu.com/s?id=1787881554557805096
-	Link    *string `json:"link,omitempty" xml:"link,omitempty"`
+	Link *string `json:"link,omitempty" xml:"link,omitempty"`
+	// The description excerpt of the search result in text format.
+	//
+	// example:
+	//
+	// 100km/h-0制动能力上，仅有33.3m，不黑不吹，单看这个，小米SU7确实表现不错。而续航方面，101kWh电池容量，实现CLTC续航800km，还有现5分钟补能220km，15分钟补能510km的800V高压平台。而在...
 	Snippet *string `json:"snippet,omitempty" xml:"snippet,omitempty"`
+	// The title of the search result in plain text.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 小米SU7售价22.99万元起 高管亲自辟谣：发布前不会有价格
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 

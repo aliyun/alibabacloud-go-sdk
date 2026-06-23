@@ -24,23 +24,38 @@ type iUnifiedImageItem interface {
 }
 
 type UnifiedImageItem struct {
+	// Height
+	//
 	// example:
 	//
 	// 1330
 	Height *int32 `json:"height,omitempty" xml:"height,omitempty"`
+	// URL of the web page to which the image belongs
+	//
 	// example:
 	//
 	// http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4541580238898912926
 	HostPageUrl *string `json:"hostPageUrl,omitempty" xml:"hostPageUrl,omitempty"`
+	// Image URL
+	//
 	// example:
 	//
 	// http://pic.rmb.bdstatic.com/bjh/bb87f566c0c/241218/f7936f25837b20211e5ef88d7980c143.jpeg
 	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+	// Web page published time, in ISO time format
+	//
 	// example:
 	//
 	// 2022-07-05T00:54:42+08:00
 	PublishedTime *string `json:"publishedTime,omitempty" xml:"publishedTime,omitempty"`
-	Title         *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Image title
+	//
+	// example:
+	//
+	// 阿里巴巴现在以主业上为主,以电商为主,以能够盈利的业务为主
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Image width
+	//
 	// example:
 	//
 	// 1000

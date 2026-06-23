@@ -14,6 +14,7 @@ type iOmniAnswerRequest interface {
 }
 
 type OmniAnswerRequest struct {
+	// Search information
 	Body *OmniSearchQuery `json:"body,omitempty" xml:"body,omitempty"`
 }
 

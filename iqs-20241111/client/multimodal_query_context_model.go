@@ -14,6 +14,7 @@ type iMultimodalQueryContext interface {
 }
 
 type MultimodalQueryContext struct {
+	// Alibaba
 	OriginalQuery *MultimodalOriginalQuery `json:"originalQuery,omitempty" xml:"originalQuery,omitempty"`
 }
 

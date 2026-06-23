@@ -18,7 +18,10 @@ type iAiSearchResponseBody interface {
 }
 
 type AiSearchResponseBody struct {
+	// The header of the response.
 	Header *AiSearchResponseBodyHeader `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	// The payload of the response. The value is a JSON structure that varies by event type.
+	//
 	// example:
 	//
 	// {"header":{"eventId":"6f617de0-204f-406f-a9be-34779c06d498","event":"on_common_search_start","responseTime":120},"payload":"","requestId":"715d01a0-de7e-42c3-abca-b901fcd79b39"}
@@ -76,15 +79,22 @@ func (s *AiSearchResponseBody) Validate() error {
 }
 
 type AiSearchResponseBodyHeader struct {
+	// The event name.
+	//
 	// example:
 	//
 	// on_common_search_end
 	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// The event ID.
+	//
 	// example:
 	//
 	// 988021f0-951a-43d0-ba4d-785359e7e7be
-	EventId      *string                                 `json:"eventId,omitempty" xml:"eventId,omitempty"`
+	EventId *string `json:"eventId,omitempty" xml:"eventId,omitempty"`
+	// The query context.
 	QueryContext *AiSearchResponseBodyHeaderQueryContext `json:"queryContext,omitempty" xml:"queryContext,omitempty" type:"Struct"`
+	// The response time, in milliseconds.
+	//
 	// example:
 	//
 	// 1293
@@ -145,8 +155,10 @@ func (s *AiSearchResponseBodyHeader) Validate() error {
 }
 
 type AiSearchResponseBodyHeaderQueryContext struct {
+	// The original query.
 	OriginalQuery *AiSearchResponseBodyHeaderQueryContextOriginalQuery `json:"originalQuery,omitempty" xml:"originalQuery,omitempty" type:"Struct"`
-	Rewrite       *AiSearchResponseBodyHeaderQueryContextRewrite       `json:"rewrite,omitempty" xml:"rewrite,omitempty" type:"Struct"`
+	// The rewritten query.
+	Rewrite *AiSearchResponseBodyHeaderQueryContextRewrite `json:"rewrite,omitempty" xml:"rewrite,omitempty" type:"Struct"`
 }
 
 func (s AiSearchResponseBodyHeaderQueryContext) String() string {
@@ -190,9 +202,13 @@ func (s *AiSearchResponseBodyHeaderQueryContext) Validate() error {
 }
 
 type AiSearchResponseBodyHeaderQueryContextOriginalQuery struct {
-	Industry  *string `json:"industry,omitempty" xml:"industry,omitempty"`
-	Page      *int32  `json:"page,omitempty" xml:"page,omitempty"`
-	Query     *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The industry.
+	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	// The page number.
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The query condition.
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The time range.
 	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
 }
 
@@ -245,7 +261,9 @@ func (s *AiSearchResponseBodyHeaderQueryContextOriginalQuery) Validate() error {
 }
 
 type AiSearchResponseBodyHeaderQueryContextRewrite struct {
-	Enabled   *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Indicates whether query rewriting is enabled.
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The rewritten time range.
 	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
 }
 

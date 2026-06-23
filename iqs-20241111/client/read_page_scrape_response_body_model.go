@@ -20,15 +20,22 @@ type iReadPageScrapeResponseBody interface {
 }
 
 type ReadPageScrapeResponseBody struct {
+	// Parsing result of the target URL
 	Data *ReadPageItem `json:"data,omitempty" xml:"data,omitempty"`
+	// error code
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// error message
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// Request ID. Provide this information when troubleshooting issues.
+	//
 	// example:
 	//
 	// 7cd43c86-731a-4d4c-8385-d070cfc509a4

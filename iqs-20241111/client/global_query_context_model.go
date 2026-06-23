@@ -14,6 +14,7 @@ type iGlobalQueryContext interface {
 }
 
 type GlobalQueryContext struct {
+	// The initial query condition.
 	OriginalQuery *GlobalQueryContextOriginalQuery `json:"originalQuery,omitempty" xml:"originalQuery,omitempty" type:"Struct"`
 }
 
@@ -44,11 +45,20 @@ func (s *GlobalQueryContext) Validate() error {
 }
 
 type GlobalQueryContextOriginalQuery struct {
+	// 页码
+	//
 	// example:
 	//
 	// 1
-	Page  *string `json:"page,omitempty" xml:"page,omitempty"`
+	Page *string `json:"page,omitempty" xml:"page,omitempty"`
+	// 查询关键字
+	//
+	// example:
+	//
+	// 特朗普关税最新消息
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// 时间范围
+	//
 	// example:
 	//
 	// NoLimit

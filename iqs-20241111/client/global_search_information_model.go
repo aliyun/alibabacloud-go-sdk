@@ -16,10 +16,14 @@ type iGlobalSearchInformation interface {
 }
 
 type GlobalSearchInformation struct {
+	// The search time, in milliseconds.
+	//
 	// example:
 	//
 	// 1200
 	SearchTime *int64 `json:"searchTime,omitempty" xml:"searchTime,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 10339

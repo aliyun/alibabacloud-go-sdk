@@ -19,10 +19,14 @@ type iGetIqsUsageRequest interface {
 
 type GetIqsUsageRequest struct {
 	CallerId *string `json:"callerId,omitempty" xml:"callerId,omitempty"`
+	// End Date.
+	//
 	// example:
 	//
 	// 20241017
 	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// Start Date.
+	//
 	// example:
 	//
 	// 20241011

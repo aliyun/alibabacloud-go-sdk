@@ -24,7 +24,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-zhangjiakou": dara.String("iqs.cn-zhangjiakou.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +61,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// AI搜索流式接口(废弃)
+// This topic describes the method to invoke the multi-stage streaming API V3 for general search by using the Alibaba Cloud OpenAPI SDK, including parameter descriptions.
+//
+// Description:
+//
+// Provides streaming results in two stages, common_search and post_retrieval, for on-demand use.
+//
+// General search results (common_search): The raw search results. Covers key fields such as web page title, dynamic summary, body text, source website, and publication time. Post-retrieval processing (post_retrieval): Uses a rerank model to rerank and filter the common_search results from the previous stage. The mAP metric for context relevancy improves by approximately 5%, with an additional latency of approximately 110 ms.
 //
 // @param request - AiSearchRequest
 //
@@ -75,7 +84,13 @@ func (client *Client) AiSearchWithSSE(request *AiSearchRequest, headers map[stri
 
 // Summary:
 //
-// AI搜索流式接口(废弃)
+// This topic describes the method to invoke the multi-stage streaming API V3 for general search by using the Alibaba Cloud OpenAPI SDK, including parameter descriptions.
+//
+// Description:
+//
+// Provides streaming results in two stages, common_search and post_retrieval, for on-demand use.
+//
+// General search results (common_search): The raw search results. Covers key fields such as web page title, dynamic summary, body text, source website, and publication time. Post-retrieval processing (post_retrieval): Uses a rerank model to rerank and filter the common_search results from the previous stage. The mAP metric for context relevancy improves by approximately 5%, with an additional latency of approximately 110 ms.
 //
 // @param request - AiSearchRequest
 //
@@ -138,7 +153,13 @@ func (client *Client) AiSearchWithOptions(request *AiSearchRequest, headers map[
 
 // Summary:
 //
-// AI搜索流式接口(废弃)
+// This topic describes the method to invoke the multi-stage streaming API V3 for general search by using the Alibaba Cloud OpenAPI SDK, including parameter descriptions.
+//
+// Description:
+//
+// Provides streaming results in two stages, common_search and post_retrieval, for on-demand use.
+//
+// General search results (common_search): The raw search results. Covers key fields such as web page title, dynamic summary, body text, source website, and publication time. Post-retrieval processing (post_retrieval): Uses a rerank model to rerank and filter the common_search results from the previous stage. The mAP metric for context relevancy improves by approximately 5%, with an additional latency of approximately 110 ms.
 //
 // @param request - AiSearchRequest
 //
@@ -158,6 +179,10 @@ func (client *Client) AiSearch(request *AiSearchRequest) (_result *AiSearchRespo
 // Summary:
 //
 // 自然语言通用查询
+//
+// Description:
+//
+// 自然语言搜索通用接口
 //
 // @param request - CommonQueryBySceneRequest
 //
@@ -201,6 +226,10 @@ func (client *Client) CommonQueryBySceneWithOptions(request *CommonQueryBySceneR
 //
 // 自然语言通用查询
 //
+// Description:
+//
+// 自然语言搜索通用接口
+//
 // @param request - CommonQueryBySceneRequest
 //
 // @return CommonQueryBySceneResponse
@@ -218,7 +247,11 @@ func (client *Client) CommonQueryByScene(request *CommonQueryBySceneRequest) (_r
 
 // Summary:
 //
-// 增强版通用搜索
+// This topic describes how to invoke the enhanced search operation (GenericAdvancedSearch) by using the Alibaba Cloud OpenAPI SDK, including the method and metric description. Compared with GenericSearch, GenericAdvancedSearch provides better recall of authoritative websites, with a maximum recall count of 40, delivering improved authoritativeness and data diversity. The response parameters and format of the enhanced operation are consistent with those of GenericAdvancedSearch.
+//
+// Description:
+//
+// GenericAdvancedSearch is currently in the testing phase. New specifications will be available for purchase in the future.
 //
 // @param request - GenericAdvancedSearchRequest
 //
@@ -277,7 +310,11 @@ func (client *Client) GenericAdvancedSearchWithOptions(request *GenericAdvancedS
 
 // Summary:
 //
-// 增强版通用搜索
+// This topic describes how to invoke the enhanced search operation (GenericAdvancedSearch) by using the Alibaba Cloud OpenAPI SDK, including the method and metric description. Compared with GenericSearch, GenericAdvancedSearch provides better recall of authoritative websites, with a maximum recall count of 40, delivering improved authoritativeness and data diversity. The response parameters and format of the enhanced operation are consistent with those of GenericAdvancedSearch.
+//
+// Description:
+//
+// GenericAdvancedSearch is currently in the testing phase. New specifications will be available for purchase in the future.
 //
 // @param request - GenericAdvancedSearchRequest
 //
@@ -296,7 +333,7 @@ func (client *Client) GenericAdvancedSearch(request *GenericAdvancedSearchReques
 
 // Summary:
 //
-// 通用搜索
+// Performs a general-purpose search.
 //
 // @param tmpReq - GenericSearchRequest
 //
@@ -389,7 +426,7 @@ func (client *Client) GenericSearchWithOptions(tmpReq *GenericSearchRequest, hea
 
 // Summary:
 //
-// 通用搜索
+// Performs a general-purpose search.
 //
 // @param request - GenericSearchRequest
 //
@@ -408,7 +445,7 @@ func (client *Client) GenericSearch(request *GenericSearchRequest) (_result *Gen
 
 // Summary:
 //
-// 信息查询服务接口日维度使用量查询
+// # Query daily usage by dimension for the Information Query Service API
 //
 // @param request - GetIqsUsageRequest
 //
@@ -463,7 +500,7 @@ func (client *Client) GetIqsUsageWithOptions(request *GetIqsUsageRequest, header
 
 // Summary:
 //
-// 信息查询服务接口日维度使用量查询
+// # Query daily usage by dimension for the Information Query Service API
 //
 // @param request - GetIqsUsageRequest
 //
@@ -482,7 +519,11 @@ func (client *Client) GetIqsUsage(request *GetIqsUsageRequest) (_result *GetIqsU
 
 // Summary:
 //
-// 通晓搜索-出海版(全球信息搜索)
+// IQS Search - Global Edition (Global Information Search)
+//
+// Description:
+//
+// This document describes the usage and parameter specifications of GlobalSearch, the global edition of IQS Search.
 //
 // @param request - GlobalSearchRequest
 //
@@ -541,7 +582,11 @@ func (client *Client) GlobalSearchWithOptions(request *GlobalSearchRequest, head
 
 // Summary:
 //
-// 通晓搜索-出海版(全球信息搜索)
+// IQS Search - Global Edition (Global Information Search)
+//
+// Description:
+//
+// This document describes the usage and parameter specifications of GlobalSearch, the global edition of IQS Search.
 //
 // @param request - GlobalSearchRequest
 //
@@ -560,7 +605,7 @@ func (client *Client) GlobalSearch(request *GlobalSearchRequest) (_result *Globa
 
 // Summary:
 //
-// 医疗问答
+// Medical Q&A
 //
 // @param request - MedicalAnswerRequest
 //
@@ -602,7 +647,7 @@ func (client *Client) MedicalAnswerWithOptions(request *MedicalAnswerRequest, he
 
 // Summary:
 //
-// 医疗问答
+// Medical Q&A
 //
 // @param request - MedicalAnswerRequest
 //
@@ -621,7 +666,7 @@ func (client *Client) MedicalAnswer(request *MedicalAnswerRequest) (_result *Med
 
 // Summary:
 //
-// 医疗图谱
+// # Health Graph
 //
 // @param request - MedicalKnowledgeRequest
 //
@@ -663,7 +708,7 @@ func (client *Client) MedicalKnowledgeWithOptions(request *MedicalKnowledgeReque
 
 // Summary:
 //
-// 医疗图谱
+// # Health Graph
 //
 // @param request - MedicalKnowledgeRequest
 //
@@ -682,7 +727,7 @@ func (client *Client) MedicalKnowledge(request *MedicalKnowledgeRequest) (_resul
 
 // Summary:
 //
-// 多模态搜索
+// # Multimodal search
 //
 // @param request - MultimodalSearchRequest
 //
@@ -724,7 +769,7 @@ func (client *Client) MultimodalSearchWithOptions(request *MultimodalSearchReque
 
 // Summary:
 //
-// 多模态搜索
+// # Multimodal search
 //
 // @param request - MultimodalSearchRequest
 //
@@ -743,7 +788,7 @@ func (client *Client) MultimodalSearch(request *MultimodalSearchRequest) (_resul
 
 // Summary:
 //
-// 通用问答
+// This topic describes the intelligent search Q&A streaming API (SearchStream). Based on retrieval-augmented generation (RAG) and large language model technologies, this API accepts natural language questions from users and automatically performs intent recognition, query rewrite, multi-source retrieval, and content generation. The API returns data using the Server-Sent Events (SSE) streaming protocol, supporting real-time output of inference status, reference sources, and token-by-token generated answers. It is suitable for AI chat and search scenarios that require low latency and high interpretability.
 //
 // @param request - OmniAnswerRequest
 //
@@ -760,7 +805,7 @@ func (client *Client) OmniAnswerWithSSE(request *OmniAnswerRequest, headers map[
 
 // Summary:
 //
-// 通用问答
+// This topic describes the intelligent search Q&A streaming API (SearchStream). Based on retrieval-augmented generation (RAG) and large language model technologies, this API accepts natural language questions from users and automatically performs intent recognition, query rewrite, multi-source retrieval, and content generation. The API returns data using the Server-Sent Events (SSE) streaming protocol, supporting real-time output of inference status, reference sources, and token-by-token generated answers. It is suitable for AI chat and search scenarios that require low latency and high interpretability.
 //
 // @param request - OmniAnswerRequest
 //
@@ -802,7 +847,7 @@ func (client *Client) OmniAnswerWithOptions(request *OmniAnswerRequest, headers 
 
 // Summary:
 //
-// 通用问答
+// This topic describes the intelligent search Q&A streaming API (SearchStream). Based on retrieval-augmented generation (RAG) and large language model technologies, this API accepts natural language questions from users and automatically performs intent recognition, query rewrite, multi-source retrieval, and content generation. The API returns data using the Server-Sent Events (SSE) streaming protocol, supporting real-time output of inference status, reference sources, and token-by-token generated answers. It is suitable for AI chat and search scenarios that require low latency and high interpretability.
 //
 // @param request - OmniAnswerRequest
 //
@@ -821,7 +866,15 @@ func (client *Client) OmniAnswer(request *OmniAnswerRequest) (_result *OmniAnswe
 
 // Summary:
 //
-// 页面读取
+// Quickly retrieve HTML and parse static web page content.
+//
+// Description:
+//
+// 1. When the HTTP status code (httpcode) of the target address is less than 500, it is counted as one valid request.
+//
+// 2. If the content type (Content-Type) in the response header of the target address is application/pdf, the system automatically triggers PDF parsing (PDF file size must not exceed 20 MB). This operation is counted as an additional valid request.
+//
+// 3. Trial terms: During the trial period, the API is limited to 5 queries per second (QPS); the trial quota is 1,000 requests per 30 days.
 //
 // @param request - ReadPageBasicRequest
 //
@@ -863,7 +916,15 @@ func (client *Client) ReadPageBasicWithOptions(request *ReadPageBasicRequest, he
 
 // Summary:
 //
-// 页面读取
+// Quickly retrieve HTML and parse static web page content.
+//
+// Description:
+//
+// 1. When the HTTP status code (httpcode) of the target address is less than 500, it is counted as one valid request.
+//
+// 2. If the content type (Content-Type) in the response header of the target address is application/pdf, the system automatically triggers PDF parsing (PDF file size must not exceed 20 MB). This operation is counted as an additional valid request.
+//
+// 3. Trial terms: During the trial period, the API is limited to 5 queries per second (QPS); the trial quota is 1,000 requests per 30 days.
 //
 // @param request - ReadPageBasicRequest
 //
@@ -882,7 +943,17 @@ func (client *Client) ReadPageBasic(request *ReadPageBasicRequest) (_result *Rea
 
 // Summary:
 //
-// 动态页面解析
+// 1. Read HTML and parse web page content through the browser sandbox environment.
+//
+// 2. The API starts parsing after all resources on the target page are fully loaded (the maximum waiting duration can be adjusted via the pageTimeout parameter). The overall Duration of the API call is significantly affected by the resource loading performance of the target site.
+//
+// Description:
+//
+// 1. A request is counted as valid when the HTTP status code (httpcode) of the target URL is less than 500.
+//
+// 2. If the content type (Content-Type) in the response header of the target URL is application/pdf, the system automatically triggers PDF parsing (PDF files up to 20 MB are supported). This operation is counted as an additional valid request.
+//
+// 3. Trial terms: During the trial period, the API is limited to 5 queries per second (QPS); the trial quota is 1,000 requests per 30 days.
 //
 // @param request - ReadPageScrapeRequest
 //
@@ -924,7 +995,17 @@ func (client *Client) ReadPageScrapeWithOptions(request *ReadPageScrapeRequest, 
 
 // Summary:
 //
-// 动态页面解析
+// 1. Read HTML and parse web page content through the browser sandbox environment.
+//
+// 2. The API starts parsing after all resources on the target page are fully loaded (the maximum waiting duration can be adjusted via the pageTimeout parameter). The overall Duration of the API call is significantly affected by the resource loading performance of the target site.
+//
+// Description:
+//
+// 1. A request is counted as valid when the HTTP status code (httpcode) of the target URL is less than 500.
+//
+// 2. If the content type (Content-Type) in the response header of the target URL is application/pdf, the system automatically triggers PDF parsing (PDF files up to 20 MB are supported). This operation is counted as an additional valid request.
+//
+// 3. Trial terms: During the trial period, the API is limited to 5 queries per second (QPS); the trial quota is 1,000 requests per 30 days.
 //
 // @param request - ReadPageScrapeRequest
 //
@@ -1004,7 +1085,7 @@ func (client *Client) ScanFile(request *ScanFileRequest) (_result *ScanFileRespo
 
 // Summary:
 //
-// 通晓统一搜索API
+// Provides access to the Tongxiao unified search API, enabling quick and easy integration of web-wide general search capabilities.
 //
 // @param request - UnifiedSearchRequest
 //
@@ -1046,7 +1127,7 @@ func (client *Client) UnifiedSearchWithOptions(request *UnifiedSearchRequest, he
 
 // Summary:
 //
-// 通晓统一搜索API
+// Provides access to the Tongxiao unified search API, enabling quick and easy integration of web-wide general search capabilities.
 //
 // @param request - UnifiedSearchRequest
 //

@@ -16,14 +16,8 @@ type iSearchInformation interface {
 }
 
 type SearchInformation struct {
-	// example:
-	//
-	// 700
 	SearchTime *int64 `json:"searchTime,omitempty" xml:"searchTime,omitempty"`
-	// example:
-	//
-	// 13
-	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+	Total      *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s SearchInformation) String() string {

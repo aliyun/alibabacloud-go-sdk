@@ -16,7 +16,17 @@ type iUnifiedRewrite interface {
 }
 
 type UnifiedRewrite struct {
-	Enabled   *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Indicates whether rewriting is enabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The rewritten timeRange.
+	//
+	// example:
+	//
+	// OneYear
 	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
 }
 

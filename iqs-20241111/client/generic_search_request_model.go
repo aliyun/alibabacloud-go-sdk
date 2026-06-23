@@ -36,18 +36,40 @@ type iGenericSearchRequest interface {
 type GenericSearchRequest struct {
 	AdvancedParams map[string]interface{} `json:"advancedParams,omitempty" xml:"advancedParams,omitempty"`
 	EnableRerank   *bool                  `json:"enableRerank,omitempty" xml:"enableRerank,omitempty"`
-	Industry       *string                `json:"industry,omitempty" xml:"industry,omitempty"`
+	// The industry. After you specify an industry, only site content related to the specified industry is recalled. Separate multiple industries with commas.
+	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	// The page number. Pages start from 1.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The search keyword.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 苹果手机
 	Query              *string `json:"query,omitempty" xml:"query,omitempty"`
 	ReturnMainText     *bool   `json:"returnMainText,omitempty" xml:"returnMainText,omitempty"`
 	ReturnMarkdownText *bool   `json:"returnMarkdownText,omitempty" xml:"returnMarkdownText,omitempty"`
 	ReturnRichMainBody *bool   `json:"returnRichMainBody,omitempty" xml:"returnRichMainBody,omitempty"`
 	ReturnSummary      *bool   `json:"returnSummary,omitempty" xml:"returnSummary,omitempty"`
-	SessionId          *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// The session ID for multi-turn interaction.
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// The time range for filtering results. Valid values:
+	//
+	// - OneDay: last day
+	//
+	// - OneWeek: last week
+	//
+	// - OneMonth: last month
+	//
+	// - OneYear: last year
+	//
+	// - NoLimit: no limit.
+	//
 	// example:
 	//
 	// OneWeek

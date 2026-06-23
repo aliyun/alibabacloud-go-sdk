@@ -20,10 +20,14 @@ type iReadPageBasicResponseBody interface {
 }
 
 type ReadPageBasicResponseBody struct {
-	Data         *ReadPageItem `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string       `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string       `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	RequestId    *string       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Parsing result of the target URL
+	Data *ReadPageItem `json:"data,omitempty" xml:"data,omitempty"`
+	// Error code
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// Error message
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// Request ID. Provide this information when troubleshooting issues.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ReadPageBasicResponseBody) String() string {

@@ -16,7 +16,14 @@ type iUnifiedOriginalQuery interface {
 }
 
 type UnifiedOriginalQuery struct {
+	// The request query.
+	//
+	// example:
+	//
+	// 杭州美食
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The publish time range.
+	//
 	// example:
 	//
 	// NoLimit

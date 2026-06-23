@@ -14,6 +14,7 @@ type iUnifiedSearchRequest interface {
 }
 
 type UnifiedSearchRequest struct {
+	// The search request parameters.
 	Body *UnifiedSearchInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

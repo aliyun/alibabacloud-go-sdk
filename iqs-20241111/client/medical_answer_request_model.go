@@ -14,6 +14,7 @@ type iMedicalAnswerRequest interface {
 }
 
 type MedicalAnswerRequest struct {
+	// Search information
 	Body *MedicalAnswerInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

@@ -16,7 +16,9 @@ type iUnifiedCostCredits interface {
 }
 
 type UnifiedCostCredits struct {
-	Search     *SearchCredits     `json:"search,omitempty" xml:"search,omitempty"`
+	// The basic search service metering.
+	Search *SearchCredits `json:"search,omitempty" xml:"search,omitempty"`
+	// The value-added service metering.
 	ValueAdded *ValueAddedCredits `json:"valueAdded,omitempty" xml:"valueAdded,omitempty"`
 }
 

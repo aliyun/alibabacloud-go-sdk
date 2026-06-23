@@ -20,12 +20,17 @@ type iMultimodalSearchOutput interface {
 }
 
 type MultimodalSearchOutput struct {
-	ImageItems   []*UnifiedImageItem     `json:"imageItems,omitempty" xml:"imageItems,omitempty" type:"Repeated"`
+	// Image List
+	ImageItems []*UnifiedImageItem `json:"imageItems,omitempty" xml:"imageItems,omitempty" type:"Repeated"`
+	// Query context information
 	QueryContext *MultimodalQueryContext `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// sdfsd234-2vxcg345-345vc
-	RequestId         *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Search basic information
 	SearchInformation *SearchInformation `json:"searchInformation,omitempty" xml:"searchInformation,omitempty"`
 }
 

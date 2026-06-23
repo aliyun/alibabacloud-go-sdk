@@ -14,6 +14,11 @@ type iUnifiedSearchInformation interface {
 }
 
 type UnifiedSearchInformation struct {
+	// The search duration, in ms.
+	//
+	// example:
+	//
+	// 1028
 	SearchTime *int64 `json:"searchTime,omitempty" xml:"searchTime,omitempty"`
 }
 

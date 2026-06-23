@@ -16,10 +16,13 @@ type iSearchCredits interface {
 }
 
 type SearchCredits struct {
+	// The number of basic edition text search requests.
+	//
 	// example:
 	//
 	// 1
-	GenericTextSearch      *int32 `json:"genericTextSearch,omitempty" xml:"genericTextSearch,omitempty"`
+	GenericTextSearch *int32 `json:"genericTextSearch,omitempty" xml:"genericTextSearch,omitempty"`
+	// The number of LiteAdvanced search requests.
 	LiteAdvancedTextSearch *int32 `json:"liteAdvancedTextSearch,omitempty" xml:"liteAdvancedTextSearch,omitempty"`
 }
 

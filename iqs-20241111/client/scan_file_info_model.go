@@ -20,18 +20,26 @@ type iScanFileInfo interface {
 }
 
 type ScanFileInfo struct {
+	// The image rotation angle.
+	//
 	// example:
 	//
 	// 100
 	Angle *int32 `json:"angle,omitempty" xml:"angle,omitempty"`
+	// The image height.
+	//
 	// example:
 	//
 	// 100
 	Height *int32 `json:"height,omitempty" xml:"height,omitempty"`
+	// The Base64 encoding of the image.
+	//
 	// example:
 	//
 	// erwre
 	ImageBase64 *string `json:"imageBase64,omitempty" xml:"imageBase64,omitempty"`
+	// The image width.
+	//
 	// example:
 	//
 	// 100
