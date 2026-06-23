@@ -25,40 +25,16 @@ type iUpdateMdsCubeResourceRequest interface {
 
 type UpdateMdsCubeResourceRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// url
 	MockDataUrl *string `json:"MockDataUrl,omitempty" xml:"MockDataUrl,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// true
 	OnexFlag *bool `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	TemplateResourceId *int64 `json:"TemplateResourceId,omitempty" xml:"TemplateResourceId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ZXCXMAHQ-zh_CN
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dev
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

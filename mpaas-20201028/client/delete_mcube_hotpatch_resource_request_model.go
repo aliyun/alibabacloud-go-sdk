@@ -23,32 +23,13 @@ type iDeleteMcubeHotpatchResourceRequest interface {
 
 type DeleteMcubeHotpatchResourceRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ALIPUBE5C3F6D091419-default
 	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// 321594
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ZXCXMAHQ
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// default
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

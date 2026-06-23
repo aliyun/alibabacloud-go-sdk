@@ -27,35 +27,14 @@ type iUploadBitcodeToMsaRequest interface {
 
 type UploadBitcodeToMsaRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// 3sAXCwAAAAAUAAAACHoAAP
-	Bitcode *string `json:"Bitcode,omitempty" xml:"Bitcode,omitempty"`
-	// example:
-	//
-	// xcode14
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Bitcode     *string `json:"Bitcode,omitempty" xml:"Bitcode,omitempty"`
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	// example:
-	//
-	// {}
-	License *string `json:"License,omitempty" xml:"License,omitempty"`
+	License     *string `json:"License,omitempty" xml:"License,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ZXCXMAHQ-zh_CN
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dev
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

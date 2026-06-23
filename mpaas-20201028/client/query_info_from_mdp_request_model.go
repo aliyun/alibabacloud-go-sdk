@@ -27,35 +27,14 @@ type iQueryInfoFromMdpRequest interface {
 
 type QueryInfoFromMdpRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// 13178195662
-	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// example:
-	//
-	// 2fe6e5fa754be73d1721b9bd2c6cf821
-	MobileMd5 *string `json:"MobileMd5,omitempty" xml:"MobileMd5,omitempty"`
-	// example:
-	//
-	// db0797452ccafce84d7c151eb81596099bda3f097693d1e18b588804e6742ced
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Mobile       *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	MobileMd5    *string `json:"MobileMd5,omitempty" xml:"MobileMd5,omitempty"`
 	MobileSha256 *string `json:"MobileSha256,omitempty" xml:"MobileSha256,omitempty"`
 	MobileSm3    *string `json:"MobileSm3,omitempty" xml:"MobileSm3,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1000
 	RiskScene *string `json:"RiskScene,omitempty" xml:"RiskScene,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// default
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

@@ -21,18 +21,9 @@ type iCreateMcubeHotpatchTaskResponseBody interface {
 
 type CreateMcubeHotpatchTaskResponseBody struct {
 	CreateHotpatchTaskResult *CreateMcubeHotpatchTaskResponseBodyCreateHotpatchTaskResult `json:"CreateHotpatchTaskResult,omitempty" xml:"CreateHotpatchTaskResult,omitempty" type:"Struct"`
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// OK
-	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	// example:
-	//
-	// success
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	RequestId                *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode               *string                                                      `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultMessage            *string                                                      `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s CreateMcubeHotpatchTaskResponseBody) String() string {
@@ -89,26 +80,11 @@ func (s *CreateMcubeHotpatchTaskResponseBody) Validate() error {
 }
 
 type CreateMcubeHotpatchTaskResponseBodyCreateHotpatchTaskResult struct {
-	// example:
-	//
-	// OK
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// example:
-	//
-	// 1490
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	HotpatchTaskId *string `json:"HotpatchTaskId,omitempty" xml:"HotpatchTaskId,omitempty"`
-	// example:
-	//
-	// FD352990-0D38-5580-B6E1-EBE64B234059
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// success
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultMsg      *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateMcubeHotpatchTaskResponseBodyCreateHotpatchTaskResult) String() string {

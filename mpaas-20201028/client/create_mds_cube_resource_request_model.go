@@ -44,70 +44,22 @@ type iCreateMdsCubeResourceRequest interface {
 }
 
 type CreateMdsCubeResourceRequest struct {
-	// example:
-	//
-	// 0.0.0.1
-	AndroidMaxVersion *string `json:"AndroidMaxVersion,omitempty" xml:"AndroidMaxVersion,omitempty"`
-	// example:
-	//
-	// 0.0.0.1
-	AndroidMinVersion *string `json:"AndroidMinVersion,omitempty" xml:"AndroidMinVersion,omitempty"`
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// {}
-	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	// example:
-	//
-	// url
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// example:
-	//
-	// 0.0.0.1
-	IosMaxVersion *string `json:"IosMaxVersion,omitempty" xml:"IosMaxVersion,omitempty"`
-	// example:
-	//
-	// 0.0.0.1
-	IosMinVersion *string `json:"IosMinVersion,omitempty" xml:"IosMinVersion,omitempty"`
-	// example:
-	//
-	// url
-	MockDataUrl *string `json:"MockDataUrl,omitempty" xml:"MockDataUrl,omitempty"`
-	// example:
-	//
-	// true
-	OnexFlag *bool `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
-	// example:
-	//
-	// Android,iOS
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// example:
-	//
-	// url
-	PreviewPictureUrl *string `json:"PreviewPictureUrl,omitempty" xml:"PreviewPictureUrl,omitempty"`
-	// example:
-	//
-	// tempalte_test
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// example:
-	//
-	// resource desc
-	TemplateResourceDesc *string `json:"TemplateResourceDesc,omitempty" xml:"TemplateResourceDesc,omitempty"`
-	// example:
-	//
-	// 0.0.0.1
+	AndroidMaxVersion       *string `json:"AndroidMaxVersion,omitempty" xml:"AndroidMaxVersion,omitempty"`
+	AndroidMinVersion       *string `json:"AndroidMinVersion,omitempty" xml:"AndroidMinVersion,omitempty"`
+	AppId                   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ExtendInfo              *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	FileUrl                 *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	IosMaxVersion           *string `json:"IosMaxVersion,omitempty" xml:"IosMaxVersion,omitempty"`
+	IosMinVersion           *string `json:"IosMinVersion,omitempty" xml:"IosMinVersion,omitempty"`
+	MockDataUrl             *string `json:"MockDataUrl,omitempty" xml:"MockDataUrl,omitempty"`
+	OnexFlag                *bool   `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
+	Platform                *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	PreviewPictureUrl       *string `json:"PreviewPictureUrl,omitempty" xml:"PreviewPictureUrl,omitempty"`
+	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateResourceDesc    *string `json:"TemplateResourceDesc,omitempty" xml:"TemplateResourceDesc,omitempty"`
 	TemplateResourceVersion *string `json:"TemplateResourceVersion,omitempty" xml:"TemplateResourceVersion,omitempty"`
-	// example:
-	//
-	// LZFPEFIM-zh_CN
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// dev
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	TenantId                *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	WorkspaceId             *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateMdsCubeResourceRequest) String() string {

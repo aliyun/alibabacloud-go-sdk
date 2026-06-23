@@ -25,34 +25,13 @@ type iCreateMcubeHotpatchRollbackTaskRequest interface {
 
 type CreateMcubeHotpatchRollbackTaskRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1653905
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// ALIPUBE5C3F6D091419_Android-default
-	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// example:
-	//
-	// 1.0.0
+	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ProductId      *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
-	// example:
-	//
-	// ZXCXMAHQ
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantId       *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// default
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

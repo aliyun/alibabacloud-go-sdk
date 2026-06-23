@@ -22,12 +22,11 @@ type iGetTemplateResponseBody interface {
 }
 
 type GetTemplateResponseBody struct {
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *GetTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Msg  *string                      `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Msg       *string                      `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetTemplateResponseBody) String() string {

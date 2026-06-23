@@ -26,34 +26,13 @@ type iListMdsCubeResourcesRequest interface {
 }
 
 type ListMdsCubeResourcesRequest struct {
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// 1
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// test12435
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// example:
-	//
-	// ZXCXMAHQ-zh_CN
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// dev
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// example:
-	//
-	// test
-	Test *string `json:"test,omitempty" xml:"test,omitempty"`
+	Test        *string `json:"test,omitempty" xml:"test,omitempty"`
 }
 
 func (s ListMdsCubeResourcesRequest) String() string {

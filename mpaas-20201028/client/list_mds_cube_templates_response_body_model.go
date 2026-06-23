@@ -20,19 +20,10 @@ type iListMdsCubeTemplatesResponseBody interface {
 }
 
 type ListMdsCubeTemplatesResponseBody struct {
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// OK
+	RequestId     *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultCode    *string                                        `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	ResultContent *ListMdsCubeTemplatesResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	ResultMessage *string                                        `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s ListMdsCubeTemplatesResponseBody) String() string {
@@ -89,11 +80,8 @@ func (s *ListMdsCubeTemplatesResponseBody) Validate() error {
 }
 
 type ListMdsCubeTemplatesResponseBodyResultContent struct {
-	Data *ListMdsCubeTemplatesResponseBodyResultContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListMdsCubeTemplatesResponseBodyResultContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListMdsCubeTemplatesResponseBodyResultContent) String() string {
@@ -132,23 +120,11 @@ func (s *ListMdsCubeTemplatesResponseBodyResultContent) Validate() error {
 }
 
 type ListMdsCubeTemplatesResponseBodyResultContentData struct {
-	Content *ListMdsCubeTemplatesResponseBodyResultContentDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// example:
-	//
-	// NONE
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// success
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Content   *ListMdsCubeTemplatesResponseBodyResultContentDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	ErrorCode *string                                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultMsg *string                                                   `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	Success   *bool                                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListMdsCubeTemplatesResponseBodyResultContentData) String() string {
@@ -214,43 +190,16 @@ func (s *ListMdsCubeTemplatesResponseBodyResultContentData) Validate() error {
 }
 
 type ListMdsCubeTemplatesResponseBodyResultContentDataContent struct {
-	// example:
-	//
-	// true
-	FirstPage *bool `json:"FirstPage,omitempty" xml:"FirstPage,omitempty"`
-	// example:
-	//
-	// 0
-	FirstResult *int64 `json:"FirstResult,omitempty" xml:"FirstResult,omitempty"`
-	// example:
-	//
-	// true
-	LastPage *bool                                                           `json:"LastPage,omitempty" xml:"LastPage,omitempty"`
-	List     []*ListMdsCubeTemplatesResponseBodyResultContentDataContentList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	NextPage *int64 `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// example:
-	//
-	// 1
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// 1
-	PrePage *int64 `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// example:
-	//
-	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// example:
-	//
-	// 1
-	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	FirstPage   *bool                                                           `json:"FirstPage,omitempty" xml:"FirstPage,omitempty"`
+	FirstResult *int64                                                          `json:"FirstResult,omitempty" xml:"FirstResult,omitempty"`
+	LastPage    *bool                                                           `json:"LastPage,omitempty" xml:"LastPage,omitempty"`
+	List        []*ListMdsCubeTemplatesResponseBodyResultContentDataContentList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	NextPage    *int64                                                          `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	PageNo      *int32                                                          `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize    *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PrePage     *int64                                                          `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	TotalCount  *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage   *int64                                                          `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListMdsCubeTemplatesResponseBodyResultContentDataContent) String() string {
@@ -365,37 +314,13 @@ func (s *ListMdsCubeTemplatesResponseBodyResultContentDataContent) Validate() er
 }
 
 type ListMdsCubeTemplatesResponseBodyResultContentDataContentList struct {
-	// example:
-	//
-	// 570DA89281533-default
-	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	// example:
-	//
-	// 2025-10-24 11:24:34
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// example:
-	//
-	// 2025-10-24 11:24:34
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// example:
-	//
-	// 1
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// template desc
+	AppCode      *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	GmtCreate    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	TemplateDesc *string `json:"TemplateDesc,omitempty" xml:"TemplateDesc,omitempty"`
-	// example:
-	//
-	// template_test
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// example:
-	//
-	// template_test
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

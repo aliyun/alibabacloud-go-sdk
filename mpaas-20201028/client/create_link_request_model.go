@@ -25,34 +25,13 @@ type iCreateLinkRequest interface {
 
 type CreateLinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// BB5953C300957
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// false
-	Cors *bool `json:"Cors,omitempty" xml:"Cors,omitempty"`
-	// example:
-	//
-	// x519.cn
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// example:
-	//
-	// txt
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Cors         *bool   `json:"Cors,omitempty" xml:"Cors,omitempty"`
+	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Dynamicfield *string `json:"Dynamicfield,omitempty" xml:"Dynamicfield,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// https://********
 	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// default
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

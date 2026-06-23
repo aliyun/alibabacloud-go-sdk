@@ -24,30 +24,13 @@ type iMTRSOCRServiceRequest interface {
 }
 
 type MTRSOCRServiceRequest struct {
-	// example:
-	//
-	// ONEX8C7E7FA161089
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xydasf==ac
 	ImageRaw *string `json:"ImageRaw,omitempty" xml:"ImageRaw,omitempty"`
 	Mask     *bool   `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	// example:
-	//
-	// tabcaa
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ID_CARD_OCR
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// default
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

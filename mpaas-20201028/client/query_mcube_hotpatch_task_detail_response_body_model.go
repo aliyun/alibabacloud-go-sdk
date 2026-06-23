@@ -21,18 +21,9 @@ type iQueryMcubeHotpatchTaskDetailResponseBody interface {
 
 type QueryMcubeHotpatchTaskDetailResponseBody struct {
 	QueryHotpatchTaskDetailResult *QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResult `json:"QueryHotpatchTaskDetailResult,omitempty" xml:"QueryHotpatchTaskDetailResult,omitempty" type:"Struct"`
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// OK
-	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	// example:
-	//
-	// success
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	RequestId                     *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode                    *string                                                                `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultMessage                 *string                                                                `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s QueryMcubeHotpatchTaskDetailResponseBody) String() string {
@@ -89,25 +80,11 @@ func (s *QueryMcubeHotpatchTaskDetailResponseBody) Validate() error {
 }
 
 type QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResult struct {
-	// example:
-	//
-	// Success
 	ErrorCode          *string                                                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	HotpatchTaskDetail *QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResultHotpatchTaskDetail `json:"HotpatchTaskDetail,omitempty" xml:"HotpatchTaskDetail,omitempty" type:"Struct"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 61B9F63C-4E6F-5D8E-A694-899450987B48
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// success
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId          *string                                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultMsg          *string                                                                                  `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	Success            *bool                                                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResult) String() string {
@@ -173,123 +150,39 @@ func (s *QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResult) 
 }
 
 type QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResultHotpatchTaskDetail struct {
-	// example:
-	//
-	// ONEXPRE22BA951112038-default
-	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	// example:
-	//
-	// ALIPUB9A63274111812
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// 0
-	BaseInfoId *int64    `json:"BaseInfoId,omitempty" xml:"BaseInfoId,omitempty"`
-	Bundles    []*string `json:"Bundles,omitempty" xml:"Bundles,omitempty" type:"Repeated"`
-	// example:
-	//
-	// ***
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// example:
-	//
-	// https://xxxxx
-	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// example:
-	//
-	// 117
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// example:
-	//
-	// 1766111313000
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// example:
-	//
-	// 2026-01-09 10:14:46
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// example:
-	//
-	// 2026-01-09 10:14:46
-	GmtModifiedStr *string `json:"GmtModifiedStr,omitempty" xml:"GmtModifiedStr,omitempty"`
-	GreyConfigInfo *string `json:"GreyConfigInfo,omitempty" xml:"GreyConfigInfo,omitempty"`
-	// example:
-	//
-	// 2024-01-01 12:00:00
-	GreyEndtimeData *string `json:"GreyEndtimeData,omitempty" xml:"GreyEndtimeData,omitempty"`
-	// example:
-	//
-	// 100
-	GreyNum *int64 `json:"GreyNum,omitempty" xml:"GreyNum,omitempty"`
-	// example:
-	//
-	// 14332
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// 15cf3772223630be907c7aaefe8d51c6
-	Md5  *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
-	// example:
-	//
-	// ***
-	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// example:
-	//
-	// 1664552
-	PackageId *int64 `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
-	// example:
-	//
-	// iOS
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// example:
-	//
-	// ONEXPRE22BA951112038_ANDROID-default
-	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// example:
-	//
-	// 1.0.0
-	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
-	// example:
-	//
-	// 1
-	PublishMode *int64 `json:"PublishMode,omitempty" xml:"PublishMode,omitempty"`
-	// example:
-	//
-	// 2
-	PublishPeriod *int64 `json:"PublishPeriod,omitempty" xml:"PublishPeriod,omitempty"`
-	// example:
-	//
-	// 3
-	PublishType *int64 `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
-	// example:
-	//
-	// 0
-	QuickRollback *int64 `json:"QuickRollback,omitempty" xml:"QuickRollback,omitempty"`
-	// example:
-	//
-	// 81c90a2cafdc6dfc54201e70845b5708
-	ReleaseVersion *string                                                                                                `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
-	RuleJsonList   []*QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResultHotpatchTaskDetailRuleJsonList `json:"RuleJsonList,omitempty" xml:"RuleJsonList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// mpaas.jar
-	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
-	// example:
-	//
-	// 1
-	TaskStatus *int64 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// example:
-	//
-	// 1770442895017
-	TaskVersion *int64                                                                                              `json:"TaskVersion,omitempty" xml:"TaskVersion,omitempty"`
-	Whitelist   []*QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResultHotpatchTaskDetailWhitelist `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 825827
-	WhitelistIds *string `json:"WhitelistIds,omitempty" xml:"WhitelistIds,omitempty"`
-	// example:
-	//
-	// default
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	AppCode         *string                                                                                                `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	AppId           *string                                                                                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BaseInfoId      *int64                                                                                                 `json:"BaseInfoId,omitempty" xml:"BaseInfoId,omitempty"`
+	Bundles         []*string                                                                                              `json:"Bundles,omitempty" xml:"Bundles,omitempty" type:"Repeated"`
+	Creator         *string                                                                                                `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	DownloadUrl     *string                                                                                                `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	FileSize        *string                                                                                                `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	GmtCreate       *string                                                                                                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified     *string                                                                                                `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModifiedStr  *string                                                                                                `json:"GmtModifiedStr,omitempty" xml:"GmtModifiedStr,omitempty"`
+	GreyConfigInfo  *string                                                                                                `json:"GreyConfigInfo,omitempty" xml:"GreyConfigInfo,omitempty"`
+	GreyEndtimeData *string                                                                                                `json:"GreyEndtimeData,omitempty" xml:"GreyEndtimeData,omitempty"`
+	GreyNum         *int64                                                                                                 `json:"GreyNum,omitempty" xml:"GreyNum,omitempty"`
+	Id              *int64                                                                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Md5             *string                                                                                                `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	Memo            *string                                                                                                `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	Modifier        *string                                                                                                `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	PackageId       *int64                                                                                                 `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	Platform        *string                                                                                                `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	ProductId       *string                                                                                                `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	ProductVersion  *string                                                                                                `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
+	PublishMode     *int64                                                                                                 `json:"PublishMode,omitempty" xml:"PublishMode,omitempty"`
+	PublishPeriod   *int64                                                                                                 `json:"PublishPeriod,omitempty" xml:"PublishPeriod,omitempty"`
+	PublishType     *int64                                                                                                 `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	QuickRollback   *int64                                                                                                 `json:"QuickRollback,omitempty" xml:"QuickRollback,omitempty"`
+	ReleaseVersion  *string                                                                                                `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
+	RuleJsonList    []*QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResultHotpatchTaskDetailRuleJsonList `json:"RuleJsonList,omitempty" xml:"RuleJsonList,omitempty" type:"Repeated"`
+	SourceName      *string                                                                                                `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	TaskStatus      *int64                                                                                                 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskVersion     *int64                                                                                                 `json:"TaskVersion,omitempty" xml:"TaskVersion,omitempty"`
+	Whitelist       []*QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResultHotpatchTaskDetailWhitelist    `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
+	WhitelistIds    *string                                                                                                `json:"WhitelistIds,omitempty" xml:"WhitelistIds,omitempty"`
+	WorkspaceId     *string                                                                                                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResultHotpatchTaskDetail) String() string {
@@ -620,22 +513,10 @@ func (s *QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResultHo
 }
 
 type QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResultHotpatchTaskDetailRuleJsonList struct {
-	// example:
-	//
-	// and
-	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// example:
-	//
-	// city
+	Operation   *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	RuleElement *string `json:"RuleElement,omitempty" xml:"RuleElement,omitempty"`
-	// example:
-	//
-	// 0
-	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// example:
-	//
-	// smtp.qiye.aliyun.com
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	RuleType    *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResultHotpatchTaskDetailRuleJsonList) String() string {
@@ -687,42 +568,15 @@ func (s *QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResultHo
 }
 
 type QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResultHotpatchTaskDetailWhitelist struct {
-	// example:
-	//
-	// ONEXPRE40DB571151920-default
-	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	// example:
-	//
-	// business
-	Business *string `json:"Business,omitempty" xml:"Business,omitempty"`
-	// example:
-	//
-	// 1760754049000
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// example:
-	//
-	// 9952804
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// userId
-	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
-	// example:
-	//
-	// iOS
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// 100
-	WhiteListCount *int64 `json:"WhiteListCount,omitempty" xml:"WhiteListCount,omitempty"`
-	// example:
-	//
-	// whitelistName
-	WhiteListName *string `json:"WhiteListName,omitempty" xml:"WhiteListName,omitempty"`
+	AppCode        *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	Business       *string `json:"Business,omitempty" xml:"Business,omitempty"`
+	GmtModified    *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	Platform       *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	Status         *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
+	WhiteListCount *int64  `json:"WhiteListCount,omitempty" xml:"WhiteListCount,omitempty"`
+	WhiteListName  *string `json:"WhiteListName,omitempty" xml:"WhiteListName,omitempty"`
 }
 
 func (s QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResultHotpatchTaskDetailWhitelist) String() string {

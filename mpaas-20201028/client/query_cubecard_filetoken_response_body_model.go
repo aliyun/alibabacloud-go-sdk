@@ -20,19 +20,10 @@ type iQueryCubecardFiletokenResponseBody interface {
 }
 
 type QueryCubecardFiletokenResponseBody struct {
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// OK
+	RequestId     *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultCode    *string                                          `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	ResultContent *QueryCubecardFiletokenResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	ResultMessage *string                                          `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s QueryCubecardFiletokenResponseBody) String() string {
@@ -89,11 +80,8 @@ func (s *QueryCubecardFiletokenResponseBody) Validate() error {
 }
 
 type QueryCubecardFiletokenResponseBodyResultContent struct {
-	Data *QueryCubecardFiletokenResponseBodyResultContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *QueryCubecardFiletokenResponseBodyResultContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryCubecardFiletokenResponseBodyResultContent) String() string {
@@ -132,19 +120,10 @@ func (s *QueryCubecardFiletokenResponseBodyResultContent) Validate() error {
 }
 
 type QueryCubecardFiletokenResponseBodyResultContentData struct {
-	Content *QueryCubecardFiletokenResponseBodyResultContentDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// example:
-	//
-	// NONE
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// example:
-	//
-	// success
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Content   *QueryCubecardFiletokenResponseBodyResultContentDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	ErrorCode *string                                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ResultMsg *string                                                     `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	Success   *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryCubecardFiletokenResponseBodyResultContentData) String() string {
@@ -201,29 +180,11 @@ func (s *QueryCubecardFiletokenResponseBodyResultContentData) Validate() error {
 }
 
 type QueryCubecardFiletokenResponseBodyResultContentDataContent struct {
-	// example:
-	//
-	// LTAI5tFgfNzJFDn4Y4BhoRnc
-	Accessid *string `json:"Accessid,omitempty" xml:"Accessid,omitempty"`
-	// example:
-	//
-	// /home/ecs-assist-user/proof/alert
-	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	// example:
-	//
-	// 1760583447
-	Expire *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	// example:
-	//
-	// 172.23.129.55
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// example:
-	//
-	// Permit
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// example:
-	//
-	// yKplu9LQwgKBTDhxp0YozAeCy9c=
+	Accessid  *string `json:"Accessid,omitempty" xml:"Accessid,omitempty"`
+	Dir       *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
+	Expire    *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 }
 

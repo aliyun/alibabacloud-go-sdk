@@ -29,45 +29,18 @@ type iCreateMcubeHotpatchResourceRequest interface {
 
 type CreateMcubeHotpatchResourceRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// https://mcube-prod.oss-cn-hangzhou.aliyuncs.com/cubecard/tempFileForOnex/ONEXE99ED22171502/preProd/TPHWQYXG/8a6177ce-d7c3-434e-8c62-676a54db9667/main.zip
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FixDesc *string `json:"FixDesc,omitempty" xml:"FixDesc,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// true
 	OnexFlag *bool `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// iOS,Android
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1.0.0
 	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
-	// example:
-	//
-	// ZXCXMAHQ
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantId       *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// default
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

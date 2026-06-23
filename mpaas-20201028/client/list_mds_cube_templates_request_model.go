@@ -24,29 +24,11 @@ type iListMdsCubeTemplatesRequest interface {
 }
 
 type ListMdsCubeTemplatesRequest struct {
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// test
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// example:
-	//
-	// 1
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// ZXCXMAHQ-zh_CN
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// dev
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Keyword     *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

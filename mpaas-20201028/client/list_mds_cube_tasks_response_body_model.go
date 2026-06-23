@@ -20,19 +20,10 @@ type iListMdsCubeTasksResponseBody interface {
 }
 
 type ListMdsCubeTasksResponseBody struct {
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// OK
+	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultCode    *string                                    `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	ResultContent *ListMdsCubeTasksResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	ResultMessage *string                                    `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s ListMdsCubeTasksResponseBody) String() string {
@@ -89,11 +80,8 @@ func (s *ListMdsCubeTasksResponseBody) Validate() error {
 }
 
 type ListMdsCubeTasksResponseBodyResultContent struct {
-	Data *ListMdsCubeTasksResponseBodyResultContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListMdsCubeTasksResponseBodyResultContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListMdsCubeTasksResponseBodyResultContent) String() string {
@@ -132,23 +120,11 @@ func (s *ListMdsCubeTasksResponseBodyResultContent) Validate() error {
 }
 
 type ListMdsCubeTasksResponseBodyResultContentData struct {
-	Content []*ListMdsCubeTasksResponseBodyResultContentDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	// example:
-	//
-	// NONE
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// success
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Content   []*ListMdsCubeTasksResponseBodyResultContentDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	ErrorCode *string                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultMsg *string                                                 `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	Success   *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListMdsCubeTasksResponseBodyResultContentData) String() string {
@@ -218,70 +194,22 @@ func (s *ListMdsCubeTasksResponseBodyResultContentData) Validate() error {
 }
 
 type ListMdsCubeTasksResponseBodyResultContentDataContent struct {
-	// example:
-	//
-	// 570DA89281533-default
-	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	// example:
-	//
-	// 2025-10-24 15:17:15
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// example:
-	//
-	// 2025-10-24 15:17:15
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// example:
-	//
-	// {}
-	GreyConfigInfo *string `json:"GreyConfigInfo,omitempty" xml:"GreyConfigInfo,omitempty"`
-	// example:
-	//
-	// 2025-10-24 15:17:15
-	GreyEndtimeData *string `json:"GreyEndtimeData,omitempty" xml:"GreyEndtimeData,omitempty"`
-	// example:
-	//
-	// 1
-	GreyNum *int32 `json:"GreyNum,omitempty" xml:"GreyNum,omitempty"`
-	// example:
-	//
-	// 1
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// default
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// example:
-	//
-	// 2
-	PublishMode *int32 `json:"PublishMode,omitempty" xml:"PublishMode,omitempty"`
-	// example:
-	//
-	// 3
-	PublishType *int32 `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
-	// example:
-	//
-	// 0.0.0.1
-	ResourceVersion *string `json:"ResourceVersion,omitempty" xml:"ResourceVersion,omitempty"`
-	// example:
-	//
-	// TEST
-	TaskDesc *string `json:"TaskDesc,omitempty" xml:"TaskDesc,omitempty"`
-	// example:
-	//
-	// 1
-	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// example:
-	//
-	// 1
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// example:
-	//
-	// 1
-	TemplateResourceId *int64 `json:"TemplateResourceId,omitempty" xml:"TemplateResourceId,omitempty"`
-	// example:
-	//
-	// TEST
-	WhitelistIds *string `json:"WhitelistIds,omitempty" xml:"WhitelistIds,omitempty"`
+	AppCode            *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GreyConfigInfo     *string `json:"GreyConfigInfo,omitempty" xml:"GreyConfigInfo,omitempty"`
+	GreyEndtimeData    *string `json:"GreyEndtimeData,omitempty" xml:"GreyEndtimeData,omitempty"`
+	GreyNum            *int32  `json:"GreyNum,omitempty" xml:"GreyNum,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Operator           *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	PublishMode        *int32  `json:"PublishMode,omitempty" xml:"PublishMode,omitempty"`
+	PublishType        *int32  `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	ResourceVersion    *string `json:"ResourceVersion,omitempty" xml:"ResourceVersion,omitempty"`
+	TaskDesc           *string `json:"TaskDesc,omitempty" xml:"TaskDesc,omitempty"`
+	TaskStatus         *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateResourceId *int64  `json:"TemplateResourceId,omitempty" xml:"TemplateResourceId,omitempty"`
+	WhitelistIds       *string `json:"WhitelistIds,omitempty" xml:"WhitelistIds,omitempty"`
 }
 
 func (s ListMdsCubeTasksResponseBodyResultContentDataContent) String() string {

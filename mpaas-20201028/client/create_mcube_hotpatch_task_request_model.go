@@ -38,51 +38,20 @@ type iCreateMcubeHotpatchTaskRequest interface {
 }
 
 type CreateMcubeHotpatchTaskRequest struct {
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
 	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	GreyConfigInfo  *string `json:"GreyConfigInfo,omitempty" xml:"GreyConfigInfo,omitempty"`
 	GreyEndtimeData *string `json:"GreyEndtimeData,omitempty" xml:"GreyEndtimeData,omitempty"`
-	// example:
-	//
-	// 100
-	GreyNum *int64  `json:"GreyNum,omitempty" xml:"GreyNum,omitempty"`
-	Memo    *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	GreyNum         *int64  `json:"GreyNum,omitempty" xml:"GreyNum,omitempty"`
+	Memo            *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1662218
-	PackageId *int64 `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
-	// example:
-	//
-	// iOS
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// example:
-	//
-	// 2
-	PublishMode *int64 `json:"PublishMode,omitempty" xml:"PublishMode,omitempty"`
-	// example:
-	//
-	// 3
-	PublishType *int64 `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
-	// example:
-	//
-	// 0
-	SyncMode *string `json:"SyncMode,omitempty" xml:"SyncMode,omitempty"`
-	// example:
-	//
-	// ZXCXMAHQ
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// 825827
+	PackageId    *int64  `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	PublishMode  *int64  `json:"PublishMode,omitempty" xml:"PublishMode,omitempty"`
+	PublishType  *int64  `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	SyncMode     *string `json:"SyncMode,omitempty" xml:"SyncMode,omitempty"`
+	TenantId     *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WhitelistIds *string `json:"WhitelistIds,omitempty" xml:"WhitelistIds,omitempty"`
-	// example:
-	//
-	// dev
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateMcubeHotpatchTaskRequest) String() string {

@@ -23,24 +23,10 @@ type iCreatePayOrderToMsenceResponseBody interface {
 
 type CreatePayOrderToMsenceResponseBody struct {
 	MpaasOrderCreateResponse *CreatePayOrderToMsenceResponseBodyMpaasOrderCreateResponse `json:"MpaasOrderCreateResponse,omitempty" xml:"MpaasOrderCreateResponse,omitempty" type:"Struct"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 200
-	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	// example:
-	//
-	// SUCCESS
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId                *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode               *string                                                     `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultMsg                *string                                                     `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	Success                  *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreatePayOrderToMsenceResponseBody) String() string {
@@ -106,14 +92,8 @@ func (s *CreatePayOrderToMsenceResponseBody) Validate() error {
 }
 
 type CreatePayOrderToMsenceResponseBodyMpaasOrderCreateResponse struct {
-	// example:
-	//
-	// 3929520
 	BizOrderId *string `json:"BizOrderId,omitempty" xml:"BizOrderId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreatePayOrderToMsenceResponseBodyMpaasOrderCreateResponse) String() string {

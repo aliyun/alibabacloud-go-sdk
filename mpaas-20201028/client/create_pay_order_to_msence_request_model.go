@@ -30,42 +30,15 @@ type iCreatePayOrderToMsenceRequest interface {
 }
 
 type CreatePayOrderToMsenceRequest struct {
-	// example:
-	//
-	// 1
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// NPHTGKNR
-	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
-	// example:
-	//
-	// test_custom_id
-	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	// example:
-	//
-	// {}
-	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	// example:
-	//
-	// 123321
-	MiniProgramId *string `json:"MiniProgramId,omitempty" xml:"MiniProgramId,omitempty"`
-	// example:
-	//
-	// mPaaS_Goosefish
-	PlatformId *string `json:"PlatformId,omitempty" xml:"PlatformId,omitempty"`
-	// example:
-	//
-	// NPHTGKNR
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// default
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Amount        *int32                 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AppId         *string                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AuthToken     *string                `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	CustomId      *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	ExtraInfo     map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	MiniProgramId *string                `json:"MiniProgramId,omitempty" xml:"MiniProgramId,omitempty"`
+	PlatformId    *string                `json:"PlatformId,omitempty" xml:"PlatformId,omitempty"`
+	TenantId      *string                `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	WorkspaceId   *string                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreatePayOrderToMsenceRequest) String() string {

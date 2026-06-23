@@ -20,19 +20,10 @@ type iListCubecardAppsResponseBody interface {
 }
 
 type ListCubecardAppsResponseBody struct {
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// OK
+	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultCode    *string                                    `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	ResultContent *ListCubecardAppsResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	ResultMessage *string                                    `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s ListCubecardAppsResponseBody) String() string {
@@ -89,11 +80,8 @@ func (s *ListCubecardAppsResponseBody) Validate() error {
 }
 
 type ListCubecardAppsResponseBodyResultContent struct {
-	Data *ListCubecardAppsResponseBodyResultContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListCubecardAppsResponseBodyResultContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListCubecardAppsResponseBodyResultContent) String() string {
@@ -132,23 +120,11 @@ func (s *ListCubecardAppsResponseBodyResultContent) Validate() error {
 }
 
 type ListCubecardAppsResponseBodyResultContentData struct {
-	Content []*ListCubecardAppsResponseBodyResultContentDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	// example:
-	//
-	// NONE
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// success
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Content   []*ListCubecardAppsResponseBodyResultContentDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	ErrorCode *string                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultMsg *string                                                 `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	Success   *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListCubecardAppsResponseBodyResultContentData) String() string {
@@ -218,13 +194,7 @@ func (s *ListCubecardAppsResponseBodyResultContentData) Validate() error {
 }
 
 type ListCubecardAppsResponseBodyResultContentDataContent struct {
-	// example:
-	//
-	// ALIPUB97DB9F1011141
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// app name
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 

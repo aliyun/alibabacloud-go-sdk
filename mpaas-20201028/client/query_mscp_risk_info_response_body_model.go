@@ -22,36 +22,11 @@ type iQueryMscpRiskInfoResponseBody interface {
 }
 
 type QueryMscpRiskInfoResponseBody struct {
-	// Code
-	//
-	// example:
-	//
-	// Code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Data
-	//
-	// example:
-	//
-	// Data
-	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Msg
-	//
-	// example:
-	//
-	// Msg
-	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success
-	//
-	// example:
-	//
-	// Success
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Msg       *string                `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryMscpRiskInfoResponseBody) String() string {

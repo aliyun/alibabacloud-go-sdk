@@ -26,34 +26,13 @@ type iCheckUserAuthToMsceneRequest interface {
 }
 
 type CheckUserAuthToMsceneRequest struct {
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// 111
-	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
-	// example:
-	//
-	// 9999202604200001
+	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AuthToken     *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
 	MiniProgramId *string `json:"MiniProgramId,omitempty" xml:"MiniProgramId,omitempty"`
-	// example:
-	//
-	// QSz8YsUpMRiCAv0yKLi0OVGd0lQSg9CQkYI148GNIWE=
-	OpenUid *string `json:"OpenUid,omitempty" xml:"OpenUid,omitempty"`
-	// example:
-	//
-	// mPaaS_Goosefish
-	PlatformId *string `json:"PlatformId,omitempty" xml:"PlatformId,omitempty"`
-	// example:
-	//
-	// ZXCXMAHQ-zh_CN
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// default
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	OpenUid       *string `json:"OpenUid,omitempty" xml:"OpenUid,omitempty"`
+	PlatformId    *string `json:"PlatformId,omitempty" xml:"PlatformId,omitempty"`
+	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CheckUserAuthToMsceneRequest) String() string {

@@ -24,30 +24,12 @@ type iGetAuthTokenToMsenceRequest interface {
 }
 
 type GetAuthTokenToMsenceRequest struct {
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// KUAj7XWYYf
-	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	// example:
-	//
-	// 123321
+	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AuthCode      *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	MiniProgramId *string `json:"MiniProgramId,omitempty" xml:"MiniProgramId,omitempty"`
-	// example:
-	//
-	// mPaaS_Goosefish
-	PlatformId *string `json:"PlatformId,omitempty" xml:"PlatformId,omitempty"`
-	// example:
-	//
-	// NPHTGKNR
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// default
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	PlatformId    *string `json:"PlatformId,omitempty" xml:"PlatformId,omitempty"`
+	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetAuthTokenToMsenceRequest) String() string {

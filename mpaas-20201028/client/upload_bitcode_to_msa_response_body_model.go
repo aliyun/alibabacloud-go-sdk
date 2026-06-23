@@ -20,19 +20,10 @@ type iUploadBitcodeToMsaResponseBody interface {
 }
 
 type UploadBitcodeToMsaResponseBody struct {
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// OK
+	RequestId     *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultCode    *string                                      `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	ResultContent *UploadBitcodeToMsaResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
-	// example:
-	//
-	// SYSTEM_ERROR
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	ResultMessage *string                                      `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s UploadBitcodeToMsaResponseBody) String() string {
@@ -89,22 +80,10 @@ func (s *UploadBitcodeToMsaResponseBody) Validate() error {
 }
 
 type UploadBitcodeToMsaResponseBodyResultContent struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// 1234
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// example:
-	//
-	// Normal
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UploadBitcodeToMsaResponseBodyResultContent) String() string {

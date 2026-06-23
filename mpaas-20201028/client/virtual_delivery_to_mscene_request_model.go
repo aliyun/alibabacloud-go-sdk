@@ -24,30 +24,12 @@ type iVirtualDeliveryToMsceneRequest interface {
 }
 
 type VirtualDeliveryToMsceneRequest struct {
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// test_custom_id
-	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	// example:
-	//
-	// 1000001221323232
+	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CustomId      *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
 	MiniProgramId *string `json:"MiniProgramId,omitempty" xml:"MiniProgramId,omitempty"`
-	// example:
-	//
-	// mPaaS_Goosefish
-	PlatformId *string `json:"PlatformId,omitempty" xml:"PlatformId,omitempty"`
-	// example:
-	//
-	// IDUKCGEB
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// default
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	PlatformId    *string `json:"PlatformId,omitempty" xml:"PlatformId,omitempty"`
+	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s VirtualDeliveryToMsceneRequest) String() string {

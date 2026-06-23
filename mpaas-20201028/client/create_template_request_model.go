@@ -40,50 +40,20 @@ type iCreateTemplateRequest interface {
 }
 
 type CreateTemplateRequest struct {
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	DescInfo *string `json:"DescInfo,omitempty" xml:"DescInfo,omitempty"`
-	// example:
-	//
-	// /
-	IconUrls *string `json:"IconUrls,omitempty" xml:"IconUrls,omitempty"`
-	// example:
-	//
-	// /
-	ImageUrls *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
-	// example:
-	//
-	// 1
-	JumpAction *int32 `json:"JumpAction,omitempty" xml:"JumpAction,omitempty"`
-	// example:
-	//
-	// 0
-	PushStyle *int32 `json:"PushStyle,omitempty" xml:"PushStyle,omitempty"`
-	// example:
-	//
-	// 0
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	DescInfo     *string `json:"DescInfo,omitempty" xml:"DescInfo,omitempty"`
+	IconUrls     *string `json:"IconUrls,omitempty" xml:"IconUrls,omitempty"`
+	ImageUrls    *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
+	JumpAction   *int32  `json:"JumpAction,omitempty" xml:"JumpAction,omitempty"`
+	PushStyle    *int32  `json:"PushStyle,omitempty" xml:"PushStyle,omitempty"`
 	ShowStyle    *int64  `json:"ShowStyle,omitempty" xml:"ShowStyle,omitempty"`
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// example:
-	//
-	// GKDDZPFH
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// example:
-	//
-	// /
-	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	// example:
-	//
-	// title,content
-	Variables *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
-	// example:
-	//
-	// default
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	TenantId     *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	Variables    *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
+	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateTemplateRequest) String() string {

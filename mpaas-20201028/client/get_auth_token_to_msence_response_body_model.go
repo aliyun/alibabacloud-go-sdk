@@ -23,24 +23,10 @@ type iGetAuthTokenToMsenceResponseBody interface {
 
 type GetAuthTokenToMsenceResponseBody struct {
 	MpaasSystemOauthTokenResponse *GetAuthTokenToMsenceResponseBodyMpaasSystemOauthTokenResponse `json:"MpaasSystemOauthTokenResponse,omitempty" xml:"MpaasSystemOauthTokenResponse,omitempty" type:"Struct"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 200
-	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	// example:
-	//
-	// SUCCESS
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId                     *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode                    *string                                                        `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultMsg                     *string                                                        `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	Success                       *bool                                                          `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAuthTokenToMsenceResponseBody) String() string {
@@ -106,26 +92,11 @@ func (s *GetAuthTokenToMsenceResponseBody) Validate() error {
 }
 
 type GetAuthTokenToMsenceResponseBodyMpaasSystemOauthTokenResponse struct {
-	// example:
-	//
-	// NPHTGKNR
 	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
-	// example:
-	//
-	// 300
 	ExpiresIn *string `json:"ExpiresIn,omitempty" xml:"ExpiresIn,omitempty"`
-	// example:
-	//
-	// 123456
-	OpenId *string `json:"OpenId,omitempty" xml:"OpenId,omitempty"`
-	// example:
-	//
-	// -
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// example:
-	//
-	// userid001
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	OpenId    *string `json:"OpenId,omitempty" xml:"OpenId,omitempty"`
+	Platform  *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetAuthTokenToMsenceResponseBodyMpaasSystemOauthTokenResponse) String() string {

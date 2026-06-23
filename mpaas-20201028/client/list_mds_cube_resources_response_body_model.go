@@ -20,19 +20,10 @@ type iListMdsCubeResourcesResponseBody interface {
 }
 
 type ListMdsCubeResourcesResponseBody struct {
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// OK
+	RequestId     *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultCode    *string                                        `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	ResultContent *ListMdsCubeResourcesResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	ResultMessage *string                                        `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s ListMdsCubeResourcesResponseBody) String() string {
@@ -89,11 +80,8 @@ func (s *ListMdsCubeResourcesResponseBody) Validate() error {
 }
 
 type ListMdsCubeResourcesResponseBodyResultContent struct {
-	Data *ListMdsCubeResourcesResponseBodyResultContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListMdsCubeResourcesResponseBodyResultContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListMdsCubeResourcesResponseBodyResultContent) String() string {
@@ -132,23 +120,11 @@ func (s *ListMdsCubeResourcesResponseBodyResultContent) Validate() error {
 }
 
 type ListMdsCubeResourcesResponseBodyResultContentData struct {
-	Content *ListMdsCubeResourcesResponseBodyResultContentDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// example:
-	//
-	// NONE
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// success
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Content   *ListMdsCubeResourcesResponseBodyResultContentDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	ErrorCode *string                                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultMsg *string                                                   `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	Success   *bool                                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListMdsCubeResourcesResponseBodyResultContentData) String() string {
@@ -214,47 +190,17 @@ func (s *ListMdsCubeResourcesResponseBodyResultContentData) Validate() error {
 }
 
 type ListMdsCubeResourcesResponseBodyResultContentDataContent struct {
-	// example:
-	//
-	// 0.0.0.1
-	CurrentMaxAndroidVersion *string `json:"CurrentMaxAndroidVersion,omitempty" xml:"CurrentMaxAndroidVersion,omitempty"`
-	// example:
-	//
-	// 0.0.0.1
-	CurrentMaxIosVersion *string `json:"CurrentMaxIosVersion,omitempty" xml:"CurrentMaxIosVersion,omitempty"`
-	// example:
-	//
-	// true
-	FirstPage *bool `json:"FirstPage,omitempty" xml:"FirstPage,omitempty"`
-	// example:
-	//
-	// 0
-	FirstResult *int64 `json:"FirstResult,omitempty" xml:"FirstResult,omitempty"`
-	// example:
-	//
-	// true
-	LastPage *bool                                                           `json:"LastPage,omitempty" xml:"LastPage,omitempty"`
-	List     []*ListMdsCubeResourcesResponseBodyResultContentDataContentList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	NextPage *int64 `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// example:
-	//
-	// 1
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// 1
-	PrePage *int64 `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// example:
-	//
-	// 20
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CurrentMaxAndroidVersion *string                                                         `json:"CurrentMaxAndroidVersion,omitempty" xml:"CurrentMaxAndroidVersion,omitempty"`
+	CurrentMaxIosVersion     *string                                                         `json:"CurrentMaxIosVersion,omitempty" xml:"CurrentMaxIosVersion,omitempty"`
+	FirstPage                *bool                                                           `json:"FirstPage,omitempty" xml:"FirstPage,omitempty"`
+	FirstResult              *int64                                                          `json:"FirstResult,omitempty" xml:"FirstResult,omitempty"`
+	LastPage                 *bool                                                           `json:"LastPage,omitempty" xml:"LastPage,omitempty"`
+	List                     []*ListMdsCubeResourcesResponseBodyResultContentDataContentList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	NextPage                 *int64                                                          `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	PageNo                   *int32                                                          `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize                 *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PrePage                  *int64                                                          `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	TotalCount               *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListMdsCubeResourcesResponseBodyResultContentDataContent) String() string {
@@ -378,101 +324,29 @@ func (s *ListMdsCubeResourcesResponseBodyResultContentDataContent) Validate() er
 }
 
 type ListMdsCubeResourcesResponseBodyResultContentDataContentList struct {
-	// example:
-	//
-	// 0.0.0.1
-	AndroidMaxVersion *string `json:"AndroidMaxVersion,omitempty" xml:"AndroidMaxVersion,omitempty"`
-	// example:
-	//
-	// 0.0.0.1
-	AndroidMinVersion *string `json:"AndroidMinVersion,omitempty" xml:"AndroidMinVersion,omitempty"`
-	// example:
-	//
-	// 570DA89281533-default
-	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	// example:
-	//
-	// 1fbfd6c422762c7083f3bb01c638e48e
-	BinFileMd5 *string `json:"BinFileMd5,omitempty" xml:"BinFileMd5,omitempty"`
-	// example:
-	//
-	// url
-	BinPrivateFileUrl *string `json:"BinPrivateFileUrl,omitempty" xml:"BinPrivateFileUrl,omitempty"`
-	// example:
-	//
-	// url
-	BinPublicFileUrl *string `json:"BinPublicFileUrl,omitempty" xml:"BinPublicFileUrl,omitempty"`
-	// example:
-	//
-	// ""
-	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	// example:
-	//
-	// 2025-10-24 16:42:45
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// example:
-	//
-	// 2025-10-24 16:42:45
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// example:
-	//
-	// 1
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// 0.0.0.1
-	IosMaxVersion *string `json:"IosMaxVersion,omitempty" xml:"IosMaxVersion,omitempty"`
-	// example:
-	//
-	// 0.0.0.1
-	IosMinVersion *string `json:"IosMinVersion,omitempty" xml:"IosMinVersion,omitempty"`
-	// example:
-	//
-	// url
-	JsonPrivateFileUrl *string `json:"JsonPrivateFileUrl,omitempty" xml:"JsonPrivateFileUrl,omitempty"`
-	// example:
-	//
-	// url
-	JsonPublicFileUrl *string `json:"JsonPublicFileUrl,omitempty" xml:"JsonPublicFileUrl,omitempty"`
-	// example:
-	//
-	// ""
-	MinCubeSdkVersion *string `json:"MinCubeSdkVersion,omitempty" xml:"MinCubeSdkVersion,omitempty"`
-	// example:
-	//
-	// url
-	MockDataDownloadUrl *string `json:"MockDataDownloadUrl,omitempty" xml:"MockDataDownloadUrl,omitempty"`
-	// example:
-	//
-	// default
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// example:
-	//
-	// Android
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// example:
-	//
-	// url
-	PreviewPictureUrl *string `json:"PreviewPictureUrl,omitempty" xml:"PreviewPictureUrl,omitempty"`
-	// example:
-	//
-	// 3
-	ResourceStatus *int64 `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// test_template
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// example:
-	//
-	// resource desc
-	TemplateResourceDesc *string `json:"TemplateResourceDesc,omitempty" xml:"TemplateResourceDesc,omitempty"`
-	// example:
-	//
-	// 0.0.0.1
+	AndroidMaxVersion       *string `json:"AndroidMaxVersion,omitempty" xml:"AndroidMaxVersion,omitempty"`
+	AndroidMinVersion       *string `json:"AndroidMinVersion,omitempty" xml:"AndroidMinVersion,omitempty"`
+	AppCode                 *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	BinFileMd5              *string `json:"BinFileMd5,omitempty" xml:"BinFileMd5,omitempty"`
+	BinPrivateFileUrl       *string `json:"BinPrivateFileUrl,omitempty" xml:"BinPrivateFileUrl,omitempty"`
+	BinPublicFileUrl        *string `json:"BinPublicFileUrl,omitempty" xml:"BinPublicFileUrl,omitempty"`
+	ExtendInfo              *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	GmtCreate               *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified             *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                      *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IosMaxVersion           *string `json:"IosMaxVersion,omitempty" xml:"IosMaxVersion,omitempty"`
+	IosMinVersion           *string `json:"IosMinVersion,omitempty" xml:"IosMinVersion,omitempty"`
+	JsonPrivateFileUrl      *string `json:"JsonPrivateFileUrl,omitempty" xml:"JsonPrivateFileUrl,omitempty"`
+	JsonPublicFileUrl       *string `json:"JsonPublicFileUrl,omitempty" xml:"JsonPublicFileUrl,omitempty"`
+	MinCubeSdkVersion       *string `json:"MinCubeSdkVersion,omitempty" xml:"MinCubeSdkVersion,omitempty"`
+	MockDataDownloadUrl     *string `json:"MockDataDownloadUrl,omitempty" xml:"MockDataDownloadUrl,omitempty"`
+	Operator                *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Platform                *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	PreviewPictureUrl       *string `json:"PreviewPictureUrl,omitempty" xml:"PreviewPictureUrl,omitempty"`
+	ResourceStatus          *int64  `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	Status                  *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateResourceDesc    *string `json:"TemplateResourceDesc,omitempty" xml:"TemplateResourceDesc,omitempty"`
 	TemplateResourceVersion *string `json:"TemplateResourceVersion,omitempty" xml:"TemplateResourceVersion,omitempty"`
 }
 

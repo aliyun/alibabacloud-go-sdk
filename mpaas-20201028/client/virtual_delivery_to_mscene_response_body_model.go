@@ -23,24 +23,10 @@ type iVirtualDeliveryToMsceneResponseBody interface {
 
 type VirtualDeliveryToMsceneResponseBody struct {
 	MpaasUserGamecenterPaymentVirtualdeliveryResponse *VirtualDeliveryToMsceneResponseBodyMpaasUserGamecenterPaymentVirtualdeliveryResponse `json:"MpaasUserGamecenterPaymentVirtualdeliveryResponse,omitempty" xml:"MpaasUserGamecenterPaymentVirtualdeliveryResponse,omitempty" type:"Struct"`
-	// Id of the request
-	//
-	// example:
-	//
-	// ac1f0083177615939018778261913
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 200
-	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	// example:
-	//
-	// SUCCESS
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId                                         *string                                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode                                        *string                                                                               `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultMsg                                         *string                                                                               `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	Success                                           *bool                                                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s VirtualDeliveryToMsceneResponseBody) String() string {
@@ -106,9 +92,6 @@ func (s *VirtualDeliveryToMsceneResponseBody) Validate() error {
 }
 
 type VirtualDeliveryToMsceneResponseBodyMpaasUserGamecenterPaymentVirtualdeliveryResponse struct {
-	// example:
-	//
-	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

@@ -30,41 +30,14 @@ type iListAnalysisCoreIndexRequest interface {
 }
 
 type ListAnalysisCoreIndexRequest struct {
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// HMS
-	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// example:
-	//
-	// 1745337419999
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// ALIPUBE5C3F6D091419_ANDROID-default
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// example:
-	//
-	// 1745251200000
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// example:
-	//
-	// 23876
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// example:
-	//
-	// LZFPEFIM
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// SIMPLE
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// default
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Channel     *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Platform    *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

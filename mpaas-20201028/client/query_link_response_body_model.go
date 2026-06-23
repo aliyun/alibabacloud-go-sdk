@@ -20,21 +20,10 @@ type iQueryLinkResponseBody interface {
 }
 
 type QueryLinkResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// D9B3C4E7-BEC7-1E2C-86A3-EA985B4FFD73
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 100
+	RequestId     *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultCode    *string                             `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	ResultContent *QueryLinkResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	ResultMessage *string                             `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s QueryLinkResponseBody) String() string {
@@ -91,46 +80,9 @@ func (s *QueryLinkResponseBody) Validate() error {
 }
 
 type QueryLinkResponseBodyResultContent struct {
-	// example:
-	//
-	// {
-	//
-	//             "Modified": "2024-04-29 16:35:55",
-	//
-	//             "NeedRenderEvent": false,
-	//
-	//             "WorkspaceId": "default",
-	//
-	//             "Cors": false,
-	//
-	//             "Url": "https://xxx/xxx",
-	//
-	//             "Created": "2024-04-29 16:35:55",
-	//
-	//             "LastModified": "2024-04-29 16:35:55",
-	//
-	//             "Target": "http://xxx/test.html",
-	//
-	//             "Dynamictarget": "",
-	//
-	//             "AppId": "BB5953C300957",
-	//
-	//             "Version": 0,
-	//
-	//             "Traceid": "f6c95f06891a19ff2d896ea309581883",
-	//
-	//             "Domain": "u.aliyuncs.com"
-	//
-	//         }
-	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// example:
-	//
-	// https://xxx/xxx/xxx
-	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// example:
-	//
-	// 0
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Data    interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Target  *string     `json:"Target,omitempty" xml:"Target,omitempty"`
+	Version *string     `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s QueryLinkResponseBodyResultContent) String() string {

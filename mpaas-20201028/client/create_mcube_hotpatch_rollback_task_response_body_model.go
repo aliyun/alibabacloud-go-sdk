@@ -21,20 +21,9 @@ type iCreateMcubeHotpatchRollbackTaskResponseBody interface {
 
 type CreateMcubeHotpatchRollbackTaskResponseBody struct {
 	CreateHotpatchRollbackTaskResult *CreateMcubeHotpatchRollbackTaskResponseBodyCreateHotpatchRollbackTaskResult `json:"CreateHotpatchRollbackTaskResult,omitempty" xml:"CreateHotpatchRollbackTaskResult,omitempty" type:"Struct"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 100
-	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	// example:
-	//
-	// success
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	RequestId                        *string                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode                       *string                                                                      `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultMessage                    *string                                                                      `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s CreateMcubeHotpatchRollbackTaskResponseBody) String() string {
@@ -91,22 +80,10 @@ func (s *CreateMcubeHotpatchRollbackTaskResponseBody) Validate() error {
 }
 
 type CreateMcubeHotpatchRollbackTaskResponseBodyCreateHotpatchRollbackTaskResult struct {
-	// example:
-	//
-	// 06D5CA0C-F5D4-5D64-987E-D221C88AED29
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// success
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// 1543
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultMsg      *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
 	RollbackTaskId *string `json:"RollbackTaskId,omitempty" xml:"RollbackTaskId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateMcubeHotpatchRollbackTaskResponseBodyCreateHotpatchRollbackTaskResult) String() string {

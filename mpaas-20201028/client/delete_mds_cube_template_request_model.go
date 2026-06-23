@@ -20,21 +20,9 @@ type iDeleteMdsCubeTemplateRequest interface {
 }
 
 type DeleteMdsCubeTemplateRequest struct {
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// 1
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// example:
-	//
-	// ZXCXMAHQ-zh_CN
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// dev
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

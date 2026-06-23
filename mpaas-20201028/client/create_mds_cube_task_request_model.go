@@ -34,50 +34,17 @@ type iCreateMdsCubeTaskRequest interface {
 }
 
 type CreateMdsCubeTaskRequest struct {
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// ""
-	GreyConfigInfo *string `json:"GreyConfigInfo,omitempty" xml:"GreyConfigInfo,omitempty"`
-	// example:
-	//
-	// ""
-	GreyEndtimeData *string `json:"GreyEndtimeData,omitempty" xml:"GreyEndtimeData,omitempty"`
-	// example:
-	//
-	// 1
-	GreyNum *int32 `json:"GreyNum,omitempty" xml:"GreyNum,omitempty"`
-	// example:
-	//
-	// 0
-	PublishMode *int32 `json:"PublishMode,omitempty" xml:"PublishMode,omitempty"`
-	// example:
-	//
-	// 3
-	PublishType *int32 `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
-	// example:
-	//
-	// task_test
-	TaskDesc *string `json:"TaskDesc,omitempty" xml:"TaskDesc,omitempty"`
-	// example:
-	//
-	// 1
-	TemplateResourceId *int64 `json:"TemplateResourceId,omitempty" xml:"TemplateResourceId,omitempty"`
-	// example:
-	//
-	// ZXCXMAHQ-zh_CN
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// test1,test2
-	WhitelistIds *string `json:"WhitelistIds,omitempty" xml:"WhitelistIds,omitempty"`
-	// example:
-	//
-	// dev
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	GreyConfigInfo     *string `json:"GreyConfigInfo,omitempty" xml:"GreyConfigInfo,omitempty"`
+	GreyEndtimeData    *string `json:"GreyEndtimeData,omitempty" xml:"GreyEndtimeData,omitempty"`
+	GreyNum            *int32  `json:"GreyNum,omitempty" xml:"GreyNum,omitempty"`
+	PublishMode        *int32  `json:"PublishMode,omitempty" xml:"PublishMode,omitempty"`
+	PublishType        *int32  `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	TaskDesc           *string `json:"TaskDesc,omitempty" xml:"TaskDesc,omitempty"`
+	TemplateResourceId *int64  `json:"TemplateResourceId,omitempty" xml:"TemplateResourceId,omitempty"`
+	TenantId           *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	WhitelistIds       *string `json:"WhitelistIds,omitempty" xml:"WhitelistIds,omitempty"`
+	WorkspaceId        *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateMdsCubeTaskRequest) String() string {

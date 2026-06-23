@@ -21,28 +21,12 @@ type iQueryMcubeHotpatchTaskDetailRequest interface {
 
 type QueryMcubeHotpatchTaskDetailRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 6071959
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ZXCXMAHQ
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// default
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

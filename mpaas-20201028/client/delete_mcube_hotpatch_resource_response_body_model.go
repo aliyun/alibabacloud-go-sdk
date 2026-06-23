@@ -21,18 +21,9 @@ type iDeleteMcubeHotpatchResourceResponseBody interface {
 
 type DeleteMcubeHotpatchResourceResponseBody struct {
 	DeleteHotpatchResourceResult *DeleteMcubeHotpatchResourceResponseBodyDeleteHotpatchResourceResult `json:"DeleteHotpatchResourceResult,omitempty" xml:"DeleteHotpatchResourceResult,omitempty" type:"Struct"`
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// OK
-	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	// example:
-	//
-	// success
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	RequestId                    *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode                   *string                                                              `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultMessage                *string                                                              `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s DeleteMcubeHotpatchResourceResponseBody) String() string {
@@ -89,26 +80,11 @@ func (s *DeleteMcubeHotpatchResourceResponseBody) Validate() error {
 }
 
 type DeleteMcubeHotpatchResourceResponseBodyDeleteHotpatchResourceResult struct {
-	// example:
-	//
-	// success
 	DeleteResult *string `json:"DeleteResult,omitempty" xml:"DeleteResult,omitempty"`
-	// example:
-	//
-	// Success
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// example:
-	//
-	// 61B9F63C-4E6F-5D8E-A694-899450987B48
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// success
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultMsg    *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteMcubeHotpatchResourceResponseBodyDeleteHotpatchResourceResult) String() string {

@@ -20,23 +20,10 @@ type iQueryCubecardFiletokenRequest interface {
 }
 
 type QueryCubecardFiletokenRequest struct {
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// true
-	OnexFlag *bool `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
-	// example:
-	//
-	// ZXCXMAHQ-zh_CN
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// dev
+	OnexFlag    *bool   `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
+	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

@@ -21,18 +21,9 @@ type iListMcubeHotpatchResourcesResponseBody interface {
 
 type ListMcubeHotpatchResourcesResponseBody struct {
 	ListHotpatchResourceResult *ListMcubeHotpatchResourcesResponseBodyListHotpatchResourceResult `json:"ListHotpatchResourceResult,omitempty" xml:"ListHotpatchResourceResult,omitempty" type:"Struct"`
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// OK
-	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	// example:
-	//
-	// success
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	RequestId                  *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode                 *string                                                           `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultMessage              *string                                                           `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s ListMcubeHotpatchResourcesResponseBody) String() string {
@@ -89,39 +80,15 @@ func (s *ListMcubeHotpatchResourcesResponseBody) Validate() error {
 }
 
 type ListMcubeHotpatchResourcesResponseBodyListHotpatchResourceResult struct {
-	// example:
-	//
-	// 3
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// example:
-	//
-	// 200
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// example:
-	//
-	// False
+	CurrentPage          *int32                                                                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	ErrorCode            *string                                                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	HasMore              *bool                                                                                   `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
 	HotpatchResourceInfo []*ListMcubeHotpatchResourcesResponseBodyListHotpatchResourceResultHotpatchResourceInfo `json:"HotpatchResourceInfo,omitempty" xml:"HotpatchResourceInfo,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 200
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// 1C23E812-217E-5065-B778-D34586E2105E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// success
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// example:
-	//
-	// 71
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageSize             *int32                                                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId            *string                                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultMsg            *string                                                                                 `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	Success              *bool                                                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount           *int64                                                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListMcubeHotpatchResourcesResponseBodyListHotpatchResourceResult) String() string {
@@ -227,75 +194,24 @@ func (s *ListMcubeHotpatchResourcesResponseBodyListHotpatchResourceResult) Valid
 }
 
 type ListMcubeHotpatchResourcesResponseBodyListHotpatchResourceResultHotpatchResourceInfo struct {
-	// example:
-	//
-	// ALIPUBE5C3F6D091419-default
-	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	// example:
-	//
-	// xxx
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// example:
-	//
-	// https://xxxxx.jar
-	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// example:
-	//
-	// 528
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// example:
-	//
-	// 1745892911000
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// example:
-	//
-	// 1574261514000
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// example:
-	//
-	// 81c90a2cafdc6dfc54201e70845b5708
+	AppCode         *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	Creator         *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	DownloadUrl     *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	FileSize        *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified     *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	HotpatchVersion *string `json:"HotpatchVersion,omitempty" xml:"HotpatchVersion,omitempty"`
-	// example:
-	//
-	// 1358
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// E268154063D1256B4E60FE82B48E0811
-	Md5  *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
-	// example:
-	//
-	// modifier
-	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// example:
-	//
-	// 0
-	PackageId *int64 `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
-	// example:
-	//
-	// iOS,Android
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// example:
-	//
-	// ALIPUBE5C3F6D091419_Android-default
-	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// example:
-	//
-	// 1.0.0
-	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
-	// example:
-	//
-	// 0
-	PublishPeriod *int64 `json:"PublishPeriod,omitempty" xml:"PublishPeriod,omitempty"`
-	// example:
-	//
-	// 81c90a2cafdc6dfc54201e70845b5708
-	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
-	// example:
-	//
-	// mpaas.jar
-	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Md5             *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	Memo            *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	Modifier        *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	PackageId       *int64  `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	Platform        *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	ProductId       *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	ProductVersion  *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
+	PublishPeriod   *int64  `json:"PublishPeriod,omitempty" xml:"PublishPeriod,omitempty"`
+	ReleaseVersion  *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
+	SourceName      *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
 }
 
 func (s ListMcubeHotpatchResourcesResponseBodyListHotpatchResourceResultHotpatchResourceInfo) String() string {

@@ -9648,6 +9648,14 @@ func (client *Client) SaveOrderRelationInfoToMsenceWithOptions(request *SaveOrde
 		body["CustomId"] = request.CustomId
 	}
 
+	if !dara.IsNil(request.ItemId) {
+		body["ItemId"] = request.ItemId
+	}
+
+	if !dara.IsNil(request.ItemTitle) {
+		body["ItemTitle"] = request.ItemTitle
+	}
+
 	if !dara.IsNil(request.MiniProgramId) {
 		body["MiniProgramId"] = request.MiniProgramId
 	}

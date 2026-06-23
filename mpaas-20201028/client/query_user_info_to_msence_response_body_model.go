@@ -23,22 +23,10 @@ type iQueryUserInfoToMsenceResponseBody interface {
 
 type QueryUserInfoToMsenceResponseBody struct {
 	MpaasUserInfoShareResponse *QueryUserInfoToMsenceResponseBodyMpaasUserInfoShareResponse `json:"MpaasUserInfoShareResponse,omitempty" xml:"MpaasUserInfoShareResponse,omitempty" type:"Struct"`
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 200
-	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	// example:
-	//
-	// SUCCESS
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId                  *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode                 *string                                                      `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultMsg                  *string                                                      `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	Success                    *bool                                                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUserInfoToMsenceResponseBody) String() string {
@@ -104,17 +92,8 @@ func (s *QueryUserInfoToMsenceResponseBody) Validate() error {
 }
 
 type QueryUserInfoToMsenceResponseBodyMpaasUserInfoShareResponse struct {
-	// example:
-	//
-	// -
-	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	// example:
-	//
-	// 0
-	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
-	// example:
-	//
-	// -
+	Avatar   *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	Gender   *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 }
 

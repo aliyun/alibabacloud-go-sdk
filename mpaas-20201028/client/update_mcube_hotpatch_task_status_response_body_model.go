@@ -20,17 +20,8 @@ type iUpdateMcubeHotpatchTaskStatusResponseBody interface {
 }
 
 type UpdateMcubeHotpatchTaskStatusResponseBody struct {
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 100
-	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	// example:
-	//
-	// success
+	RequestId                      *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode                     *string                                                                  `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	ResultMessage                  *string                                                                  `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 	UpdateHotpatchTaskStatusResult *UpdateMcubeHotpatchTaskStatusResponseBodyUpdateHotpatchTaskStatusResult `json:"UpdateHotpatchTaskStatusResult,omitempty" xml:"UpdateHotpatchTaskStatusResult,omitempty" type:"Struct"`
 }
@@ -89,28 +80,11 @@ func (s *UpdateMcubeHotpatchTaskStatusResponseBody) Validate() error {
 }
 
 type UpdateMcubeHotpatchTaskStatusResponseBodyUpdateHotpatchTaskStatusResult struct {
-	// example:
-	//
-	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// DD6844B5-279D-5FFD-BD5A-2E1F9BEC39EE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// success
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// example:
-	//
-	// success
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateMcubeHotpatchTaskStatusResponseBodyUpdateHotpatchTaskStatusResult) String() string {

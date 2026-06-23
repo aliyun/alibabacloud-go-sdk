@@ -24,30 +24,12 @@ type iChangeMdsCubeTaskStatusRequest interface {
 }
 
 type ChangeMdsCubeTaskStatusRequest struct {
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// 1
-	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// example:
-	//
-	// 1
-	TemplateResourceId *int64 `json:"TemplateResourceId,omitempty" xml:"TemplateResourceId,omitempty"`
-	// example:
-	//
-	// 1
-	TemplateTaskId *int64 `json:"TemplateTaskId,omitempty" xml:"TemplateTaskId,omitempty"`
-	// example:
-	//
-	// ZXCXMAHQ-zh_CN
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// dev
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	TaskStatus         *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TemplateResourceId *int64  `json:"TemplateResourceId,omitempty" xml:"TemplateResourceId,omitempty"`
+	TemplateTaskId     *int64  `json:"TemplateTaskId,omitempty" xml:"TemplateTaskId,omitempty"`
+	TenantId           *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	WorkspaceId        *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ChangeMdsCubeTaskStatusRequest) String() string {

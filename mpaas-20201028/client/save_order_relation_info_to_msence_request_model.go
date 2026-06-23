@@ -23,6 +23,10 @@ type iSaveOrderRelationInfoToMsenceRequest interface {
 	GetCpExtra() *string
 	SetCustomId(v string) *SaveOrderRelationInfoToMsenceRequest
 	GetCustomId() *string
+	SetItemId(v string) *SaveOrderRelationInfoToMsenceRequest
+	GetItemId() *string
+	SetItemTitle(v string) *SaveOrderRelationInfoToMsenceRequest
+	GetItemTitle() *string
 	SetMiniProgramId(v string) *SaveOrderRelationInfoToMsenceRequest
 	GetMiniProgramId() *string
 	SetOpenUid(v string) *SaveOrderRelationInfoToMsenceRequest
@@ -36,48 +40,20 @@ type iSaveOrderRelationInfoToMsenceRequest interface {
 }
 
 type SaveOrderRelationInfoToMsenceRequest struct {
-	// example:
-	//
-	// 100
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// 3929520
-	BizOrderId *string `json:"BizOrderId,omitempty" xml:"BizOrderId,omitempty"`
-	// example:
-	//
-	// 2
+	Amount         *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BizOrderId     *string `json:"BizOrderId,omitempty" xml:"BizOrderId,omitempty"`
 	BizOrderStatus *int32  `json:"BizOrderStatus,omitempty" xml:"BizOrderStatus,omitempty"`
 	ClientType     *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
 	CpExtra        *string `json:"CpExtra,omitempty" xml:"CpExtra,omitempty"`
-	// example:
-	//
-	// test_custom_id
-	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	// example:
-	//
-	// 123321
-	MiniProgramId *string `json:"MiniProgramId,omitempty" xml:"MiniProgramId,omitempty"`
-	// example:
-	//
-	// 123456
-	OpenUid *string `json:"OpenUid,omitempty" xml:"OpenUid,omitempty"`
-	// example:
-	//
-	// mPaaS_Goosefish
-	PlatformId *string `json:"PlatformId,omitempty" xml:"PlatformId,omitempty"`
-	// example:
-	//
-	// NPHTGKNR
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// default
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	CustomId       *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	ItemId         *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemTitle      *string `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	MiniProgramId  *string `json:"MiniProgramId,omitempty" xml:"MiniProgramId,omitempty"`
+	OpenUid        *string `json:"OpenUid,omitempty" xml:"OpenUid,omitempty"`
+	PlatformId     *string `json:"PlatformId,omitempty" xml:"PlatformId,omitempty"`
+	TenantId       *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	WorkspaceId    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s SaveOrderRelationInfoToMsenceRequest) String() string {
@@ -114,6 +90,14 @@ func (s *SaveOrderRelationInfoToMsenceRequest) GetCpExtra() *string {
 
 func (s *SaveOrderRelationInfoToMsenceRequest) GetCustomId() *string {
 	return s.CustomId
+}
+
+func (s *SaveOrderRelationInfoToMsenceRequest) GetItemId() *string {
+	return s.ItemId
+}
+
+func (s *SaveOrderRelationInfoToMsenceRequest) GetItemTitle() *string {
+	return s.ItemTitle
 }
 
 func (s *SaveOrderRelationInfoToMsenceRequest) GetMiniProgramId() *string {
@@ -168,6 +152,16 @@ func (s *SaveOrderRelationInfoToMsenceRequest) SetCpExtra(v string) *SaveOrderRe
 
 func (s *SaveOrderRelationInfoToMsenceRequest) SetCustomId(v string) *SaveOrderRelationInfoToMsenceRequest {
 	s.CustomId = &v
+	return s
+}
+
+func (s *SaveOrderRelationInfoToMsenceRequest) SetItemId(v string) *SaveOrderRelationInfoToMsenceRequest {
+	s.ItemId = &v
+	return s
+}
+
+func (s *SaveOrderRelationInfoToMsenceRequest) SetItemTitle(v string) *SaveOrderRelationInfoToMsenceRequest {
+	s.ItemTitle = &v
 	return s
 }
 

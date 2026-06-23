@@ -19,22 +19,10 @@ type iQueryLinkRequest interface {
 
 type QueryLinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// BB5953C300957
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 8hGb9SyJARqp7V4PGP92X
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// default
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

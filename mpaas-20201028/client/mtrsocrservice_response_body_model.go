@@ -24,24 +24,12 @@ type iMTRSOCRServiceResponseBody interface {
 }
 
 type MTRSOCRServiceResponseBody struct {
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Msg  *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// example:
-	//
-	// D9B3C4E7-BEC7-1E2C-86A3-EA985B4FFD73
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// {"aa":"ss"}
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// example:
-	//
-	// true/false
-	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// 777799aa
-	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Status    *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s MTRSOCRServiceResponseBody) String() string {

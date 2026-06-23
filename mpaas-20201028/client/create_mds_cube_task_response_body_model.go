@@ -20,19 +20,10 @@ type iCreateMdsCubeTaskResponseBody interface {
 }
 
 type CreateMdsCubeTaskResponseBody struct {
-	// example:
-	//
-	// 0CC8A9CB-9BA3-13FD-A404-6E2E7461881A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// OK
+	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultCode    *string                                     `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	ResultContent *CreateMdsCubeTaskResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	ResultMessage *string                                     `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s CreateMdsCubeTaskResponseBody) String() string {
@@ -89,11 +80,8 @@ func (s *CreateMdsCubeTaskResponseBody) Validate() error {
 }
 
 type CreateMdsCubeTaskResponseBodyResultContent struct {
-	Data *CreateMdsCubeTaskResponseBodyResultContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 0CC8A9CB-9BA3-13FD-A404-6E2E7461881A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *CreateMdsCubeTaskResponseBodyResultContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateMdsCubeTaskResponseBodyResultContent) String() string {
@@ -132,26 +120,11 @@ func (s *CreateMdsCubeTaskResponseBodyResultContent) Validate() error {
 }
 
 type CreateMdsCubeTaskResponseBodyResultContentData struct {
-	// example:
-	//
-	// 1010
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// example:
-	//
-	// NONE
+	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// example:
-	//
-	// 0CC8A9CB-9BA3-13FD-A404-6E2E7461881A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// success
 	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateMdsCubeTaskResponseBodyResultContentData) String() string {

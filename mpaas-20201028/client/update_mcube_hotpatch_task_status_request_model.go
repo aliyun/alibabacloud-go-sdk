@@ -27,42 +27,16 @@ type iUpdateMcubeHotpatchTaskStatusRequest interface {
 
 type UpdateMcubeHotpatchTaskStatusRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// hotpatch
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// example:
-	//
-	// 1692835
-	PackageId *int64 `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
-	// example:
-	//
-	// 69536
-	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	BizType   *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	PackageId *int64  `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// BUILDING
 	TaskStatus *int64 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ZXCXMAHQ
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// default
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

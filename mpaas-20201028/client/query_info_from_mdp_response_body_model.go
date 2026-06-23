@@ -22,26 +22,11 @@ type iQueryInfoFromMdpResponseBody interface {
 }
 
 type QueryInfoFromMdpResponseBody struct {
-	// example:
-	//
-	// {\\"db0797452ccafce84d7c151eb81596099bda3f097693d1e18b588804e6742ced\\":{\\"riskScore\\":\\"3\\"}}
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// OK
-	ResultCode *int32 `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	// example:
-	//
-	// SYSTEM_ERROR
+	Data          *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode    *int32  `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryInfoFromMdpResponseBody) String() string {

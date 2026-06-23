@@ -20,21 +20,10 @@ type iCreateLinkResponseBody interface {
 }
 
 type CreateLinkResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// 0CC8A9CB-9BA3-13FD-A404-6E2E7461881A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 100
+	RequestId     *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultCode    *string                              `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	ResultContent *CreateLinkResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	ResultMessage *string                              `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s CreateLinkResponseBody) String() string {
@@ -91,17 +80,8 @@ func (s *CreateLinkResponseBody) Validate() error {
 }
 
 type CreateLinkResponseBodyResultContent struct {
-	// example:
-	//
-	// https://xxx/xxx
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// example:
-	//
-	// https://xxx/xxx/xxx
-	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// example:
-	//
-	// 0
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Target  *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
