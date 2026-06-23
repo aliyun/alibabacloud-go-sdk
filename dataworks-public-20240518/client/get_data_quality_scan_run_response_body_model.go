@@ -88,15 +88,15 @@ type GetDataQualityScanRunResponseBodyDataQualityScanRun struct {
 	Scan *GetDataQualityScanRunResponseBodyDataQualityScanRunScan `json:"Scan,omitempty" xml:"Scan,omitempty" type:"Struct"`
 	// The current running status.
 	//
-	// 	- Pass
+	// - Pass
 	//
-	// 	- Running
+	// - Running
 	//
-	// 	- Error
+	// - Error
 	//
-	// 	- Warn
+	// - Warn
 	//
-	// 	- Fail
+	// - Fail
 	//
 	// example:
 	//
@@ -286,15 +286,15 @@ type GetDataQualityScanRunResponseBodyDataQualityScanRunResults struct {
 	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
 	// The validation result status.
 	//
-	// 	- Pass
+	// - Pass
 	//
-	// 	- Running
+	// - Running
 	//
-	// 	- Error
+	// - Error
 	//
-	// 	- Warn
+	// - Warn
 	//
-	// 	- Fail
+	// - Fail
 	//
 	// example:
 	//
@@ -383,13 +383,13 @@ type GetDataQualityScanRunResponseBodyDataQualityScanRunResultsDetails struct {
 	ReferenceValue *string `json:"ReferenceValue,omitempty" xml:"ReferenceValue,omitempty"`
 	// The final comparison result status.
 	//
-	// 	- Pass
+	// - Pass
 	//
-	// 	- Error
+	// - Error
 	//
-	// 	- Warn
+	// - Warn
 	//
-	// 	- Fail
+	// - Fail
 	//
 	// example:
 	//
@@ -742,9 +742,9 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunScan) Validate() err
 type GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResource struct {
 	// The workspace environment to which the compute engine belongs.
 	//
-	// 	- Prod
+	// - Prod
 	//
-	// 	- Dev
+	// - Dev
 	//
 	// example:
 	//
@@ -807,11 +807,11 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResource)
 type GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResourceRuntime struct {
 	// The type of the compute engine. Only EMR compute engines support these settings.
 	//
-	// 	- Hive
+	// - Hive
 	//
-	// 	- Spark
+	// - Spark
 	//
-	// 	- Kyuubi
+	// - Kyuubi
 	//
 	// example:
 	//
@@ -873,7 +873,7 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResourceR
 type GetDataQualityScanRunResponseBodyDataQualityScanRunScanHooks struct {
 	// The hook trigger condition. Currently, only one type of expression syntax is supported:
 	//
-	// 	- Specify combinations of severity levels and validation statuses for multiple rules, such as `results.any { r -> r.status == \\"Fail\\" && r.rule.severity == \\"Normal\\" || r.status == \\"Error\\" && r.rule.severity == \\"High\\" || r.status == \\"Warn\\" && r.rule.severity == \\"High\\" }`. This means the hook is triggered if any executed rule has Fail with Normal severity, Error with High severity, or Warn with High severity. In the conditional expression, the severity value matches that in the Spec code, and the status value matches that in DataQualityResult.
+	// - Specify combinations of severity levels and validation statuses for multiple rules, such as `results.any { r -> r.status == \\"Fail\\" && r.rule.severity == \\"Normal\\" || r.status == \\"Error\\" && r.rule.severity == \\"High\\" || r.status == \\"Warn\\" && r.rule.severity == \\"High\\" }`. This means the hook is triggered if any executed rule has Fail with Normal severity, Error with High severity, or Warn with High severity. In the conditional expression, the severity value matches that in the Spec code, and the status value matches that in DataQualityResult.
 	//
 	// example:
 	//
@@ -881,7 +881,7 @@ type GetDataQualityScanRunResponseBodyDataQualityScanRunScanHooks struct {
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
 	// The type of the hook.
 	//
-	// 	- BlockTaskInstance
+	// - BlockTaskInstance
 	//
 	// example:
 	//
@@ -1029,9 +1029,9 @@ type GetDataQualityScanRunResponseBodyDataQualityScanRunScanTrigger struct {
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 	// The trigger method of the data quality monitor.
 	//
-	// 	- ByManual
+	// - ByManual
 	//
-	// 	- BySchedule
+	// - BySchedule
 	//
 	// example:
 	//

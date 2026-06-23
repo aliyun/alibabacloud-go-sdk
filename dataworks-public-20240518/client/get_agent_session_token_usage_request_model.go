@@ -18,15 +18,20 @@ type iGetAgentSessionTokenUsageRequest interface {
 }
 
 type GetAgentSessionTokenUsageRequest struct {
+	// The ID provided by the requester, which is echoed in the response.
+	//
 	// example:
 	//
 	// 1033814166
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. The value is always 2.0.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string                                 `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Params  *GetAgentSessionTokenUsageRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// Business parameters.
+	Params *GetAgentSessionTokenUsageRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
 }
 
 func (s GetAgentSessionTokenUsageRequest) String() string {
@@ -74,6 +79,8 @@ func (s *GetAgentSessionTokenUsageRequest) Validate() error {
 }
 
 type GetAgentSessionTokenUsageRequestParams struct {
+	// The session ID. Required.
+	//
 	// example:
 	//
 	// sess_0f12abc34

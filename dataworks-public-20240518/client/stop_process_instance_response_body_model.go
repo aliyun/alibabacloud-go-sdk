@@ -14,6 +14,8 @@ type iStopProcessInstanceResponseBody interface {
 }
 
 type StopProcessInstanceResponseBody struct {
+	// The request ID. Use this ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 0bc5df3a17****903790e8e8a

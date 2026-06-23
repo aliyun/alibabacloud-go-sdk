@@ -16,13 +16,13 @@ type iImportCertificateResponseBody interface {
 }
 
 type ImportCertificateResponseBody struct {
-	// The ID of the certificate file, which is the unique identifier of the certificate file.
+	// The unique ID of the certificate file.
 	//
 	// example:
 	//
 	// 676303114031776
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID. Used to locate logs and troubleshoot issues.
+	// The ID of the request. This ID is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

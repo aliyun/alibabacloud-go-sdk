@@ -52,9 +52,9 @@ type GetDeploymentPackageResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call succeeded. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -197,19 +197,19 @@ type GetDeploymentPackageResponseBodyDataDeployedItems struct {
 	//
 	// 7
 	FileVersion *int64 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
-	// 	- UNPUBLISHED(0)
+	// - UNPUBLISHED(0)
 	//
-	// 	- SUCCESS(1)
+	// - SUCCESS(1)
 	//
-	// 	- ERROR(2)
+	// - ERROR(2)
 	//
-	// 	- CLONED(3)
+	// - CLONED(3)
 	//
-	// 	- DEPLOY_ERROR(4)
+	// - DEPLOY_ERROR(4)
 	//
-	// 	- CLONING(5)
+	// - CLONING(5)
 	//
-	// 	- REJECT(6)
+	// - REJECT(6)
 	//
 	// example:
 	//
@@ -259,9 +259,9 @@ func (s *GetDeploymentPackageResponseBodyDataDeployedItems) Validate() error {
 type GetDeploymentPackageResponseBodyDataDeployment struct {
 	// The validation status of nodes in the deployment package. For packages deployed to the development environment (toEnviroment=1), you can only proceed to deploy to production if the package Status is 1 (succeeded) and CheckingStatus is empty (validation complete).
 	//
-	// 	- 7: Validation failed
+	// - 7: Validation failed
 	//
-	// 	- 8: Validation in progress
+	// - 8: Validation in progress
 	//
 	// example:
 	//

@@ -14,9 +14,7 @@ type iDeleteProjectRequest interface {
 }
 
 type DeleteProjectRequest struct {
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace page to query the ID.
-	//
-	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	// The ID of the DataWorks workspace. You can obtain the workspace ID from the Workspace Management page in the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list).
 	//
 	// This parameter is required.
 	//

@@ -16,13 +16,13 @@ type iCreateResourceFileResponseBody interface {
 }
 
 type CreateResourceFileResponseBody struct {
-	// The ID of the file that is created.
+	// The ID of the file after successful creation.
 	//
 	// example:
 	//
 	// 1000001
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
+	// The unique ID of this request. If an error occurs, you can use this ID to troubleshoot the issue.
 	//
 	// example:
 	//

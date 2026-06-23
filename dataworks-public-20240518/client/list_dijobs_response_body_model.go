@@ -16,9 +16,9 @@ type iListDIJobsResponseBody interface {
 }
 
 type ListDIJobsResponseBody struct {
-	// The pagination information.
+	// The paging information.
 	PagingInfo *ListDIJobsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ func (s *ListDIJobsResponseBody) Validate() error {
 }
 
 type ListDIJobsResponseBodyPagingInfo struct {
-	// The synchronization tasks returned.
+	// A list of Data Integration jobs.
 	DIJobs []*ListDIJobsResponseBodyPagingInfoDIJobs `json:"DIJobs,omitempty" xml:"DIJobs,omitempty" type:"Repeated"`
-	// The page number.
+	// The returned page number.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListDIJobsResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the filter criteria.
 	//
 	// example:
 	//
@@ -144,43 +144,43 @@ func (s *ListDIJobsResponseBodyPagingInfo) Validate() error {
 type ListDIJobsResponseBodyPagingInfoDIJobs struct {
 	// Deprecated
 	//
-	// This parameter is deprecated. Use the Id parameter instead.
+	// This parameter is deprecated. Use the `Id` parameter instead.
 	//
 	// example:
 	//
 	// 32599
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	// The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, Loghub, STARROCKS, DataHub, ANALYTICDB_FOR_MYSQL, Kafka, and Hive.
+	// The type of the destination data source. Valid values: `Hologres`, `OSS-HDFS`, `OSS`, `MaxCompute`, `LogHub`, `StarRocks`, `DataHub`, `AnalyticDB_For_MySQL`, `Kafka`, and `Hive`.
 	//
 	// example:
 	//
 	// Hologres
 	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
-	// The ID of the synchronization task.
+	// The ID of the Data Integration job.
 	//
 	// example:
 	//
 	// 32599
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the synchronization task.
+	// The name of the job.
 	//
 	// example:
 	//
 	// mysql_to_holo_sync_35197
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The status of the synchronization task. Valid values:
+	// The job status. Valid values:
 	//
-	// 	- Finished
+	// - `Finished`: The job completed successfully.
 	//
-	// 	- Initialized
+	// - `Initialized`: The job is initialized.
 	//
-	// 	- Stopped
+	// - `Stopped`: The job is stopped.
 	//
-	// 	- Failed
+	// - `Failed`: The job failed.
 	//
-	// 	- Running
+	// - `Running`: The job is running.
 	//
-	// 	- Stopping
+	// - `Stopping`: The job is being stopped.
 	//
 	// example:
 	//
@@ -188,28 +188,28 @@ type ListDIJobsResponseBodyPagingInfoDIJobs struct {
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
 	// The synchronization type. Valid values:
 	//
-	// 	- FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
+	// - `FullAndRealtimeIncremental`: full and real-time incremental synchronization
 	//
-	// 	- RealtimeIncremental: real-time incremental synchronization
+	// - `RealtimeIncremental`: real-time incremental synchronization
 	//
-	// 	- Full: full synchronization
+	// - `Full`: full synchronization
 	//
-	// 	- OfflineIncremental: batch incremental synchronization
+	// - `OfflineIncremental`: offline incremental synchronization
 	//
-	// 	- FullAndOfflineIncremental: one-time full synchronization and batch incremental synchronization
+	// - `FullAndOfflineIncremental`: full and offline incremental synchronization
 	//
 	// example:
 	//
 	// FullAndRealtimeIncremental
 	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
 	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The ID of the DataWorks workspace to which the synchronization task belongs.
+	// The ID of the DataWorks workspace that contains the job.
 	//
 	// example:
 	//
 	// 26442
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The source type. Valid values: PolarDB, MySQL, Kafka, Loghub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SqlServer, Doris, and ClickHouse. If you do not configure this parameter, the API operation returns synchronization tasks that use all types of sources.
+	// The type of the source data source. Valid values: `PolarDB`, `MySQL`, `Kafka`, `LogHub`, `Hologres`, `Oracle`, `OceanBase`, `MongoDB`, `RedShift`, `Hive`, `SQLServer`, `Doris`, and `ClickHouse`.
 	//
 	// example:
 	//

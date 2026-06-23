@@ -14,6 +14,8 @@ type iDeleteProcessDefinitionResponseBody interface {
 }
 
 type DeleteProcessDefinitionResponseBody struct {
+	// **The unique ID of the request.**
+	//
 	// example:
 	//
 	// 0bc5df3a17***903790e8e8a

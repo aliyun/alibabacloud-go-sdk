@@ -20,13 +20,13 @@ type UpdateWorkflowDefinitionResponseBody struct {
 	//
 	// example:
 	//
-	// 20BF7E80-668A-5620-8AD8-879B8FEAXXXX
+	// 20BF7E80-668A-5620-8AD8-879B8FEA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

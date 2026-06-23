@@ -18,16 +18,22 @@ type iListImageVersionsRequest interface {
 }
 
 type ListImageVersionsRequest struct {
+	// The image ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Custom_image_xxxx_xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

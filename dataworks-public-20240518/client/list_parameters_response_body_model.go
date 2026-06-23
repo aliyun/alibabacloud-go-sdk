@@ -16,7 +16,10 @@ type iListParametersResponseBody interface {
 }
 
 type ListParametersResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListParametersResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
@@ -59,15 +62,22 @@ func (s *ListParametersResponseBody) Validate() error {
 }
 
 type ListParametersResponseBodyPagingInfo struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize   *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// A list of parameters.
 	Parameters []*ListParametersResponseBodyPagingInfoParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// The total number of parameters.
+	//
 	// example:
 	//
 	// 100
@@ -132,51 +142,82 @@ func (s *ListParametersResponseBodyPagingInfo) Validate() error {
 }
 
 type ListParametersResponseBodyPagingInfoParameters struct {
+	// The time when the parameter was created. This value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1640000000000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The Alibaba Cloud account ID of the creator.
+	//
 	// example:
 	//
 	// 123456789
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The parameter description.
+	//
 	// example:
 	//
-	// 这是一个测试参数
+	// This is a test parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The parameter ID.
+	//
 	// example:
 	//
 	// 12345
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the parameter was last modified. This value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1640000000000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The Alibaba Cloud account ID of the user who last modified the parameter.
+	//
 	// example:
 	//
 	// 123456789
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// workspace.para
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud account ID of the owner.
+	//
 	// example:
 	//
 	// 123456789
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 1000
-	ProjectId  *int64                                                      `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The environment-specific values for the parameter.
 	Properties []*ListParametersResponseBodyPagingInfoParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
+	// The parameter scope.
+	//
 	// example:
 	//
 	// Project
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The parameter type. Valid values:
+	//
+	// - `PlainConstant`: a plaintext constant
+	//
+	// - `SecretConstant`: an encrypted constant
+	//
+	// - `Variable`: a variable
+	//
 	// example:
 	//
 	// PlainConstant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1
@@ -322,10 +363,18 @@ func (s *ListParametersResponseBodyPagingInfoParameters) Validate() error {
 }
 
 type ListParametersResponseBodyPagingInfoParametersProperties struct {
+	// The environment type. Valid values:
+	//
+	// - `Prod`: production environment
+	//
+	// - `Dev`: development environment
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// value123

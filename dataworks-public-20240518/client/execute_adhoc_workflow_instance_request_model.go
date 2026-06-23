@@ -32,9 +32,9 @@ type ExecuteAdhocWorkflowInstanceRequest struct {
   BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
   // The environment of the workspace. Valid values:
   // 
-  // 	- Prod: production environment
+  // - Prod: production environment
   // 
-  // 	- Dev: development environment
+  // - Dev: development environment
   // 
   // example:
   // 
@@ -451,7 +451,7 @@ type ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables struct {
   // 
   // example:
   // 
-  // Value1
+  // upstream_task_output:key1
   Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -579,13 +579,13 @@ type ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables struct {
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
   // The type. Valid values:
   // 
-  // 	- System
+  // - System
   // 
-  // 	- Constant
+  // - Constant
   // 
-  // 	- NodeOutput
+  // - NodeOutput
   // 
-  // 	- PassThrough
+  // - PassThrough
   // 
   // example:
   // 

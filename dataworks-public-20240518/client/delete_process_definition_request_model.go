@@ -14,6 +14,8 @@ type iDeleteProcessDefinitionRequest interface {
 }
 
 type DeleteProcessDefinitionRequest struct {
+	// **The ID of the process definition to delete.**
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,6 +14,8 @@ type iGetMetaEntityRequest interface {
 }
 
 type GetMetaEntityRequest struct {
+	// The entity ID.
+	//
 	// This parameter is required.
 	//
 	// example:

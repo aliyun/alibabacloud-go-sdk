@@ -24,7 +24,7 @@ type UpdateResourceGroupRequest struct {
 	//
 	// example:
 	//
-	// rg-aek2kqofrgXXXXX
+	// rg-aek2kqofrg****
 	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
 	// The ID of the resource group.
 	//

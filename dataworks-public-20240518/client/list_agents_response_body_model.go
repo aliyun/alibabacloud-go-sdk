@@ -16,6 +16,7 @@ type iListAgentsResponseBody interface {
 }
 
 type ListAgentsResponseBody struct {
+	// The response object that conforms to the JSON-RPC specification.
 	JsonRpcResponse *ListAgentsResponseBodyJsonRpcResponse `json:"JsonRpcResponse,omitempty" xml:"JsonRpcResponse,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,12 +62,20 @@ func (s *ListAgentsResponseBody) Validate() error {
 }
 
 type ListAgentsResponseBodyJsonRpcResponse struct {
+	// The request ID passed in by the caller. The value is returned as-is in the response.
+	//
 	// example:
 	//
 	// 70623e38-a889-4192-930a-752ffdd75f48
-	Id      *string                                      `json:"Id,omitempty" xml:"Id,omitempty"`
-	Jsonrpc *string                                      `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Result  *ListAgentsResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. Fixed value: 2.0.
+	//
+	// example:
+	//
+	// 2.0
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The paginated query result for agents.
+	Result *ListAgentsResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListAgentsResponseBodyJsonRpcResponse) String() string {
@@ -114,15 +123,22 @@ func (s *ListAgentsResponseBodyJsonRpcResponse) Validate() error {
 }
 
 type ListAgentsResponseBodyJsonRpcResponseResult struct {
+	// The list of agents.
 	Agents []*ListAgentsResponseBodyJsonRpcResponseResultAgents `json:"Agents,omitempty" xml:"Agents,omitempty" type:"Repeated"`
+	// The actual number of entries per page that takes effect.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page. The value is null when the current page is the last page or no data is available.
+	//
 	// example:
 	//
 	// 2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total number of agents that match the filter criteria.
+	//
 	// example:
 	//
 	// 27
@@ -187,6 +203,8 @@ func (s *ListAgentsResponseBodyJsonRpcResponseResult) Validate() error {
 }
 
 type ListAgentsResponseBodyJsonRpcResponseResultAgents struct {
+	// The agent name.
+	//
 	// example:
 	//
 	// chat_cli_chatbi

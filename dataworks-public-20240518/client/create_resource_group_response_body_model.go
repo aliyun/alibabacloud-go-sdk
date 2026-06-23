@@ -18,13 +18,13 @@ type iCreateResourceGroupResponseBody interface {
 }
 
 type CreateResourceGroupResponseBody struct {
-	// The request ID.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the order that is used to create the serverless resource group.
+	// Information about the resource group creation order.
 	ResourceGroupOrder *CreateResourceGroupResponseBodyResourceGroupOrder `json:"ResourceGroupOrder,omitempty" xml:"ResourceGroupOrder,omitempty" type:"Struct"`
 	// Indicates whether the request was successful.
 	//
@@ -79,19 +79,19 @@ func (s *CreateResourceGroupResponseBody) Validate() error {
 }
 
 type CreateResourceGroupResponseBodyResourceGroupOrder struct {
-	// The ID of the serverless resource group.
+	// The unique identifier of the general-purpose resource group.
 	//
 	// example:
 	//
 	// Serverless_res_group_524257424564736_6831777003XXXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the order that is used to create the serverless resource group.
+	// The ID of the resource group creation order.
 	//
 	// example:
 	//
 	// 2391982058XXXXX
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The instance ID of the order that is used to create the serverless resource group.
+	// The instance ID of the resource group creation order.
 	//
 	// example:
 	//

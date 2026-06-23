@@ -42,11 +42,11 @@ type CreateResourceGroupRequest struct {
 	//
 	// rg-aek2kqofrgXXXXX
 	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
-	// The tags.
+	// The list of Alibaba Cloud tags.
 	AliyunResourceTags []*CreateResourceGroupRequestAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
-	// Specifies whether to enable auto-renewal.
+	// Specifies whether to enable auto-renewal for the subscription.
 	AutoRenewEnabled *bool `json:"AutoRenewEnabled,omitempty" xml:"AutoRenewEnabled,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// A client token to ensure the idempotence of the request.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type CreateResourceGroupRequest struct {
 	//
 	// eb870033-74c8-4b1b-9664-04c4e7cc3465
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the serverless resource group. The name can be a maximum of 128 characters in length and can contain letters, digits, and underscores (_). The name must start with a letter.
+	// The name of the general-purpose resource group. It must be up to 128 characters long, start with a letter, and contain only letters, digits, and underscores (_).
 	//
 	// This parameter is required.
 	//
@@ -68,13 +68,13 @@ type CreateResourceGroupRequest struct {
 	//
 	// 1
 	PaymentDuration *int32 `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
-	// The unit of the subscription duration. Valid values: Month and Year.
+	// The unit of the subscription duration. Valid values: `Month` and `Year`.
 	//
 	// example:
 	//
 	// Month
 	PaymentDurationUnit *string `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
-	// The billing method of the serverless resource group. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
+	// The billing method of the resource group. `PrePaid` indicates subscription, and `PostPaid` indicates pay-as-you-go.
 	//
 	// This parameter is required.
 	//
@@ -82,33 +82,33 @@ type CreateResourceGroupRequest struct {
 	//
 	// PrePaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The description of the serverless resource group. The description can be a maximum of 128 characters in length and can contain letters, digits, and underscores (_).
+	// The remark for the general-purpose resource group. It can be up to 128 characters long and can contain letters, Chinese characters, digits, and underscores (_).
 	//
 	// example:
 	//
 	// Create a serverless resource group for common tasks
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The specifications of the serverless resource group. Unit: CU. This parameter is required only if you set the PaymentType parameter to PrePaid.
+	// The specification of the resource group, in CUs. This parameter is required when `PaymentType` is set to `PrePaid`.
 	//
 	// example:
 	//
 	// 2
 	Spec *int32 `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The ID of the virtual private cloud (VPC) with which the serverless resource group is associated by default.
+	// The ID of the VPC to be bound by default.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// vpc-m2et4f3oc8msfbccXXXXX
+	// vpc-m2et4f3oc8m****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the vSwitch with which the serverless resource group is associated by default.
+	// The ID of the vSwitch to be bound by default.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// vsw-uf8usrhs7hjd9amsXXXXX
+	// vsw-uf8usrhs7hjd9****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 

@@ -46,7 +46,7 @@ type CreateDIAlarmRuleRequest struct {
 	//
 	// example:
 	//
-	// The description of the alert rule.
+	// Alert description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable the alert rule. By default, the alert rule is disabled.
 	//
@@ -56,15 +56,15 @@ type CreateDIAlarmRuleRequest struct {
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The metric type in the alert rule. Valid values:
 	//
-	// 	- Heartbeat
+	// - Heartbeat
 	//
-	// 	- FailoverCount
+	// - FailoverCount
 	//
-	// 	- Delay
+	// - Delay
 	//
-	// 	- DdlReport
+	// - DdlReport
 	//
-	// 	- ResourceUtilization
+	// - ResourceUtilization
 	//
 	// This parameter is required.
 	//
@@ -278,19 +278,19 @@ func (s *CreateDIAlarmRuleRequestNotificationSettings) Validate() error {
 type CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels struct {
 	// The alert notification method. Valid values:
 	//
-	// 	- Mail
+	// - Mail
 	//
-	// 	- Phone
+	// - Phone
 	//
-	// 	- Sms
+	// - Sms
 	//
-	// 	- Ding
+	// - Ding
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 	// The severity level. Valid values:
 	//
-	// 	- Warning
+	// - Warning
 	//
-	// 	- Critical
+	// - Critical
 	//
 	// example:
 	//
@@ -337,9 +337,9 @@ type CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers struct {
 	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
 	// The recipient.
 	//
-	// 	- If the ReceiverType parameter is set to AliyunUid, set this parameter to the Alibaba Cloud account ID of a user.
+	// - If the ReceiverType parameter is set to AliyunUid, set this parameter to the Alibaba Cloud account ID of a user.
 	//
-	// 	- If the ReceiverType parameter is set to DingToken, set this parameter to the token of a DingTalk chatbot.
+	// - If the ReceiverType parameter is set to DingToken, set this parameter to the token of a DingTalk chatbot.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -388,9 +388,9 @@ type CreateDIAlarmRuleRequestTriggerConditions struct {
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The severity level. Valid values:
 	//
-	// 	- Warning
+	// - Warning
 	//
-	// 	- Critical
+	// - Critical
 	//
 	// example:
 	//
@@ -398,11 +398,11 @@ type CreateDIAlarmRuleRequestTriggerConditions struct {
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The alert threshold.
 	//
-	// 	- If the alert rule is for task status, you do not need to specify a threshold.
+	// - If the alert rule is for task status, you do not need to specify a threshold.
 	//
-	// 	- If the alert rule is for failovers, you must specify the number of failovers.
+	// - If the alert rule is for failovers, you must specify the number of failovers.
 	//
-	// 	- If the alert rule is for latency, you must specify the latency duration, in seconds.
+	// - If the alert rule is for latency, you must specify the latency duration, in seconds.
 	//
 	// example:
 	//

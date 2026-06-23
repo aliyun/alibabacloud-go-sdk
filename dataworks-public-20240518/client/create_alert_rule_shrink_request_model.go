@@ -46,7 +46,7 @@ type CreateAlertRuleShrinkRequest struct {
 	//
 	// example:
 	//
-	// 279114181716147735
+	// 279114181****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The alert triggering condition.
 	//

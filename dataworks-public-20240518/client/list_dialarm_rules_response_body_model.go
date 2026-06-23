@@ -176,15 +176,15 @@ type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The metric type in the alert rule. Valid values:
 	//
-	// 	- Heartbeat
+	// - Heartbeat
 	//
-	// 	- FailoverCount
+	// - FailoverCount
 	//
-	// 	- Delay
+	// - Delay
 	//
-	// 	- DdlReport
+	// - DdlReport
 	//
-	// 	- ResourceUtilization
+	// - ResourceUtilization
 	//
 	// example:
 	//
@@ -401,9 +401,9 @@ type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNo
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 	// The severity level. Valid values:
 	//
-	// 	- Warning
+	// - Warning
 	//
-	// 	- Critical
+	// - Critical
 	//
 	// example:
 	//
@@ -450,9 +450,9 @@ type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNo
 	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
 	// The recipient.
 	//
-	// 	- If the value of the ReceiverType parameter is AliyunUid, the value of this parameter is the Alibaba Cloud account ID of a user.
+	// - If the value of the ReceiverType parameter is AliyunUid, the value of this parameter is the Alibaba Cloud account ID of a user.
 	//
-	// 	- If the value of the ReceiverType parameter is DingToken, the value of this parameter is the token of a DingTalk chatbot.
+	// - If the value of the ReceiverType parameter is DingToken, the value of this parameter is the token of a DingTalk chatbot.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -501,9 +501,9 @@ type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions stru
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The severity level. Valid values:
 	//
-	// 	- Warning
+	// - Warning
 	//
-	// 	- Critical
+	// - Critical
 	//
 	// example:
 	//
@@ -511,11 +511,11 @@ type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions stru
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The alert threshold.
 	//
-	// 	- If the alert rule is for task status, no threshold is used.
+	// - If the alert rule is for task status, no threshold is used.
 	//
-	// 	- If the alert rule is for failovers, the threshold is the number of failovers.
+	// - If the alert rule is for failovers, the threshold is the number of failovers.
 	//
-	// 	- If the alert rule is for latency, the threshold is the latency duration, in seconds.
+	// - If the alert rule is for latency, the threshold is the latency duration, in seconds.
 	//
 	// example:
 	//

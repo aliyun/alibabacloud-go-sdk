@@ -20,7 +20,7 @@ type UpdateDataAssetTagResponseBody struct {
 	//
 	// example:
 	//
-	// 0bc1ec92159376
+	// 0bc1ec921****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	//

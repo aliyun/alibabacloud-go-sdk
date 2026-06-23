@@ -14,6 +14,8 @@ type iGetAgentRequest interface {
 }
 
 type GetAgentRequest struct {
+	// The name of the skill to retrieve.
+	//
 	// This parameter is required.
 	//
 	// example:

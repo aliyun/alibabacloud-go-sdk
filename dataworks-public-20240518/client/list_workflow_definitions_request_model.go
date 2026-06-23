@@ -34,9 +34,9 @@ type ListWorkflowDefinitionsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- CycleWorkflow
+	// - CycleWorkflow
 	//
-	// 	- ManualWorkflow
+	// - ManualWorkflow
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type ListWorkflowDefinitionsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- CycleWorkflow
+	// - CycleWorkflow
 	//
-	// 	- ManualWorkflow
+	// - ManualWorkflow
 	//
 	// example:
 	//

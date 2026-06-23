@@ -16,7 +16,10 @@ type iGetProcessDefinitionResponseBody interface {
 }
 
 type GetProcessDefinitionResponseBody struct {
+	// Process definition
 	ProcessDefinition *GetProcessDefinitionResponseBodyProcessDefinition `json:"ProcessDefinition,omitempty" xml:"ProcessDefinition,omitempty" type:"Struct"`
+	// API request ID
+	//
 	// example:
 	//
 	// 0bc5df3a17***903790e8e8a
@@ -59,27 +62,82 @@ func (s *GetProcessDefinitionResponseBody) Validate() error {
 }
 
 type GetProcessDefinitionResponseBodyProcessDefinition struct {
+	// Approval node list
 	ApprovalNodes []*GetProcessDefinitionResponseBodyProcessDefinitionApprovalNodes `json:"ApprovalNodes,omitempty" xml:"ApprovalNodes,omitempty" type:"Repeated"`
-	Description   *string                                                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the business process.
+	//
+	// example:
+	//
+	// 订单业务数据审批流程
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Enable
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Process definition ID
+	//
 	// example:
 	//
 	// 210001039767
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// System Default Policy
+	//
 	// example:
 	//
 	// false
-	IsSystem             *bool                                                                    `json:"IsSystem,omitempty" xml:"IsSystem,omitempty"`
-	Name                 *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	IsSystem *bool `json:"IsSystem,omitempty" xml:"IsSystem,omitempty"`
+	// Process definition name
+	//
+	// example:
+	//
+	// MaxCompute 表审批
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Notification Service Statement
 	NotificationServices []*GetProcessDefinitionResponseBodyProcessDefinitionNotificationServices `json:"NotificationServices,omitempty" xml:"NotificationServices,omitempty" type:"Repeated"`
-	RuleConditions       []*GetProcessDefinitionResponseBodyProcessDefinitionRuleConditions       `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
+	// List of rule conditions
+	RuleConditions []*GetProcessDefinitionResponseBodyProcessDefinitionRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
+	// Subtype:
+	//
+	// - Table
+	//
+	// - Column
+	//
+	// - Database
+	//
+	// - Schema
+	//
+	// - Default
+	//
 	// example:
 	//
 	// Table
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// Process definition type. Valid values:
+	//
+	// - MaxCompute
+	//
+	// - DataService
+	//
+	// - Extension
+	//
+	// - Hologres
+	//
+	// - DlfV1 (Custom creation not supported).
+	//
+	// - EMR (Custom creation not supported).
+	//
+	// - DataAssetGovernance (Custom creation not supported).
+	//
+	// - Lindorm (Custom creation not supported).
+	//
+	// - StarRocks (Custom creation not supported).
+	//
+	// - DlfNext (Custom creation not supported).
+	//
+	// - DataWorks (Custom creation not supported).
+	//
 	// example:
 	//
 	// MaxCompute
@@ -216,16 +274,62 @@ func (s *GetProcessDefinitionResponseBodyProcessDefinition) Validate() error {
 }
 
 type GetProcessDefinitionResponseBodyProcessDefinitionApprovalNodes struct {
+	// **Node approver type**:
+	//
+	// - DataWorksProjectRole project role
+	//
+	// - DataWorksProjectMember project member
+	//
+	// - TableAdministrator table administrator
+	//
+	// - TableOrProjectAdministrator Table or project administrator
+	//
+	// - AliyunResourceOwner Alibaba Cloud account
+	//
+	// - MaxComputeRole MC Administrator
+	//
+	// - DLFAdmin and DlfLegacy administrator
+	//
+	// - DLFNext Administrator
+	//
+	// - TenantRole tenant role
+	//
+	// - EmrAdministrator Emr administrator
+	//
+	// - LindormAdministrator Lindorm Administrator
+	//
+	// - AliyunRamUser RAM user
+	//
 	// example:
 	//
 	// TableOrProjectAdministrator
-	AccountType         *string                `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	Assignees           []*string              `json:"Assignees,omitempty" xml:"Assignees,omitempty" type:"Repeated"`
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// **`AccountType` has different semantics for different types**:
+	//
+	// - DataWorksProjectMember specifies the project member\\"s UserId.
+	//
+	// - DataWorksProjectRole specifies the code of the project role.
+	//
+	// - MaxComputeRole specifies the MaxCompute role.
+	//
+	// - TenantRole specifies the tenant role code.
+	//
+	// - AliyunRamUser specifies the RAM user ID.
+	Assignees []*string `json:"Assignees,omitempty" xml:"Assignees,omitempty" type:"Repeated"`
+	// When `AccountType `is set to different types, you must provide different additional declarations:
+	//
+	// - DataWorksProjectMember: The key is projectId, and the value is the UserIds of project members, separated by commas.
+	//
+	// - MaxComputeRole: The key is a MaxCompute project and the value is a role name in MaxCompute. Multiple role names are separated by a comma.
 	ExtensionProperties map[string]interface{} `json:"ExtensionProperties,omitempty" xml:"ExtensionProperties,omitempty"`
+	// Node ID
+	//
 	// example:
 	//
 	// 7a809b6a-2a62-4c6c-9c23-c2a145e3877d
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// **Node Name**
+	//
 	// example:
 	//
 	// default-name
@@ -290,14 +394,28 @@ func (s *GetProcessDefinitionResponseBodyProcessDefinitionApprovalNodes) Validat
 }
 
 type GetProcessDefinitionResponseBodyProcessDefinitionNotificationServices struct {
+	// Notification channel, an enumeration:
+	//
+	// - Mail
+	//
+	// - Sms
+	//
+	// - DingRobot
+	//
+	// - Weixin
+	//
 	// example:
 	//
 	// DingRobot
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// Additional information in JSON format, such as `{"atAll":"true"}` to specify whether to @all members.
+	//
 	// example:
 	//
 	// {"atAll":"true"}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// You must specify WebhookUrl when Channel is DingRobot or Weixin.
+	//
 	// example:
 	//
 	// https://dingtalk.com
@@ -344,14 +462,34 @@ func (s *GetProcessDefinitionResponseBodyProcessDefinitionNotificationServices) 
 }
 
 type GetProcessDefinitionResponseBodyProcessDefinitionRuleConditions struct {
+	// A conditional expression is in the format `((#type==\\"typeValue\\"))`, such as `((#odpsProject==\\"PX_BEIJING_TEST\\"))`.
+	//
 	// example:
 	//
 	// ((#odpsProject==\\"PX_BEIJING_TEST\\"))
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// rule effective stage:
+	//
+	// - `Deployment` determines whether an application matches this approval policy upon submission.
+	//
+	// - `Running` is used to determine whether an approval process is approval-free. This feature is supported only for the MaxCompute type.
+	//
 	// example:
 	//
 	// Deployment
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The condition type. This is an enumeration:
+	//
+	// - `odpsProject`,
+	//
+	// - `hologresInstanceId`
+	//
+	// - `sensibleLevel`,
+	//
+	// - `tableGuid`,
+	//
+	// - `projectId`
+	//
 	// example:
 	//
 	// odpsProject

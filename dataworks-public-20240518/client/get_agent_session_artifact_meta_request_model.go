@@ -18,15 +18,20 @@ type iGetAgentSessionArtifactMetaRequest interface {
 }
 
 type GetAgentSessionArtifactMetaRequest struct {
+	// A client-provided ID that is echoed in the response.
+	//
 	// example:
 	//
 	// 900335678024
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. The value is `2.0`.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string                                   `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Params  *GetAgentSessionArtifactMetaRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The container for business parameters.
+	Params *GetAgentSessionArtifactMetaRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
 }
 
 func (s GetAgentSessionArtifactMetaRequest) String() string {
@@ -74,10 +79,14 @@ func (s *GetAgentSessionArtifactMetaRequest) Validate() error {
 }
 
 type GetAgentSessionArtifactMetaRequestParams struct {
+	// The path of the artifact.
+	//
 	// example:
 	//
 	// mock/mock_report.md
 	ArtifactPath *string `json:"ArtifactPath,omitempty" xml:"ArtifactPath,omitempty"`
+	// The ID of the session.
+	//
 	// example:
 	//
 	// sess_0f12abc34

@@ -32,21 +32,21 @@ type iCreateDataQualityRuleShrinkRequest interface {
 }
 
 type CreateDataQualityRuleShrinkRequest struct {
-	// The check settings for sample data.
+	// The sample check settings.
 	CheckingConfigShrink *string `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty"`
-	// The description of the rule. The description can be up to 500 characters in length.
+	// The description of the rule. The maximum length is 500 characters.
 	//
 	// example:
 	//
 	// this is a odps _sql task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable the monitoring rule.
+	// Specifies whether to enable the data quality rule.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The operations that you can perform after the rule-based check fails.
+	// The list of issue handlers for the data quality rule check.
 	ErrorHandlersShrink *string `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty"`
 	// The name of the rule.
 	//
@@ -56,7 +56,7 @@ type CreateDataQualityRuleShrinkRequest struct {
 	//
 	// The table cannot be empty.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// This parameter is required.
 	//
@@ -64,25 +64,25 @@ type CreateDataQualityRuleShrinkRequest struct {
 	//
 	// 10726
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The sampling settings.
+	// The settings required for sample collection.
 	SamplingConfigShrink *string `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty"`
-	// The strength of the rule. Valid values:
+	// The severity of the rule for the business (corresponding to the strong/weak rule on the page). Valid values:
 	//
-	// 	- Normal
+	// - Normal
 	//
-	// 	- High
+	// - High
 	//
 	// example:
 	//
 	// Normal
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The monitored object of the rule.
+	// The object monitored by the rule.
 	TargetShrink *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The ID of the template used by the rule.
+	// The unique identifier of the rule template that the rule references.
 	//
 	// example:
 	//
-	// system::user_defined
+	// SYSTEM:table:table_count:fixed
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 

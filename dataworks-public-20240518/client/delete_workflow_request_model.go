@@ -26,9 +26,9 @@ type DeleteWorkflowRequest struct {
 	ClientUniqueCode *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod: production environment
+	// - Prod: production environment
 	//
-	// 	- Dev: development environment
+	// - Dev: development environment
 	//
 	// example:
 	//

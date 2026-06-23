@@ -20,14 +20,26 @@ type iCreateProjectRoleShrinkRequest interface {
 }
 
 type CreateProjectRoleShrinkRequest struct {
-	ClientToken             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token.
+	//
+	// example:
+	//
+	// 保留字段
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The list of DataWorks module permissions.
 	ModulePermissionsShrink *string `json:"ModulePermissions,omitempty" xml:"ModulePermissions,omitempty"`
+	// The role name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// category_role
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the workspace management page to obtain the ID.
+	//
+	// This parameter specifies the DataWorks workspace on which the API operation is performed.
+	//
 	// This parameter is required.
 	//
 	// example:

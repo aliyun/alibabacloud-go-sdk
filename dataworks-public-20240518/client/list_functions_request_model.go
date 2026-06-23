@@ -62,21 +62,21 @@ type ListFunctionsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Math: mathematical operation function
+	// - Math: mathematical operation function
 	//
-	// 	- Aggregate: aggregate function
+	// - Aggregate: aggregate function
 	//
-	// 	- String: string processing function
+	// - String: string processing function
 	//
-	// 	- Date: date function
+	// - Date: date function
 	//
-	// 	- Analytic: window function
+	// - Analytic: window function
 	//
-	// 	- Other: other functions
+	// - Other: other functions
 	//
 	// example:
 	//
-	// MATH
+	// Math
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

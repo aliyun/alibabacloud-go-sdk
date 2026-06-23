@@ -146,9 +146,9 @@ type ListDataAssetTagsResponseBodyPagingInfoDataAssetTags struct {
 	//
 	// Valid values:
 	//
-	// 	- Normal
+	// - Normal
 	//
-	// 	- System
+	// - System
 	//
 	// example:
 	//

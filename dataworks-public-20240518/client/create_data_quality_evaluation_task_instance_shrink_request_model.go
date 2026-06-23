@@ -20,17 +20,17 @@ type iCreateDataQualityEvaluationTaskInstanceShrinkRequest interface {
 }
 
 type CreateDataQualityEvaluationTaskInstanceShrinkRequest struct {
-	// The ID of the data quality monitoring task.
+	// The ID of the data quality evaluation task.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 200001
+	// 2000011
 	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
-	// Data quality verification execution parameters in JSON format. The available keys are as follows:
+	// The execution parameters of the data quality evaluation in the JSON format. The following keys are available:
 	//
-	// - triggerTime: the millisecond timestamp of the trigger time. The baseline time of the $[yyyymmdd] expression in the data range of data quality monitoring. Required.
+	// - triggerTime: the millisecond timestamp of the trigger time. This is the base time for the $[yyyymmdd] expression in the data range of data quality monitoring. This key is required.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type CreateDataQualityEvaluationTaskInstanceShrinkRequest struct {
 	//
 	// { "triggerTime": 1733284062000 }
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the ID.
 	//
-	// This parameter is used to determine the DataWorks workspaces used for this API call.
+	// This parameter specifies the DataWorks workspace in which this API operation is performed.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateDataQualityEvaluationTaskInstanceShrinkRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Resource Group information, which must be filled in when running non-MaxCompute data quality verification.
+	// The resource group information. This parameter is required when you run a data quality evaluation on a non-MaxCompute data source.
 	RuntimeResourceShrink *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
 }
 

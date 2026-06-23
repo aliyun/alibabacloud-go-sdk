@@ -54,9 +54,9 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	DefaultRunPropertiesShrink *string `json:"DefaultRunProperties,omitempty" xml:"DefaultRunProperties,omitempty"`
 	// The project environment. Valid values:
 	//
-	// 	- Prod
+	// - Prod
 	//
-	// 	- Dev
+	// - Dev
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The tag creation policy. Valid values:
 	//
-	// 	- Append: New tags are added on top of the existing tags of the manual workflow.
+	// - Append: New tags are added on top of the existing tags of the manual workflow.
 	//
-	// 	- Overwrite: Existing tags of the manual workflow are not inherited. New tags are created directly.
+	// - Overwrite: Existing tags of the manual workflow are not inherited. New tags are created directly.
 	//
 	// example:
 	//
@@ -106,15 +106,15 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	TaskParameters *string `json:"TaskParameters,omitempty" xml:"TaskParameters,omitempty"`
 	// The type of the workflow instance. Valid values:
 	//
-	// 	- SupplementData: Data backfill. The usage of RootTaskIds and IncludeTaskIds varies based on the backfill mode. See the description of the DefaultRunProperties.Mode parameter.
+	// - SupplementData: Data backfill. The usage of RootTaskIds and IncludeTaskIds varies based on the backfill mode. See the description of the DefaultRunProperties.Mode parameter.
 	//
-	// 	- ManualWorkflow: Manually triggered workflow. WorkflowId is required for a manual workflow. RootTaskIds is optional. If not specified, the system uses the default root task list of the manual workflow.
+	// - ManualWorkflow: Manually triggered workflow. WorkflowId is required for a manual workflow. RootTaskIds is optional. If not specified, the system uses the default root task list of the manual workflow.
 	//
-	// 	- Manual: Manual task. You only need to specify RootTaskIds. This is the list of manual tasks to run.
+	// - Manual: Manual task. You only need to specify RootTaskIds. This is the list of manual tasks to run.
 	//
-	// 	- SmokeTest: Smoke test. You only need to specify RootTaskIds. This is the list of test tasks to run.
+	// - SmokeTest: Smoke test. You only need to specify RootTaskIds. This is the list of test tasks to run.
 	//
-	// 	- TriggerWorkflow: Triggered Workflow You must specify the WorkflowId of the triggered workflow. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the entire workflow runs.
+	// - TriggerWorkflow: Triggered Workflow You must specify the WorkflowId of the triggered workflow. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the entire workflow runs.
 	//
 	// This parameter is required.
 	//
@@ -134,13 +134,13 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	//
 	// example:
 	//
-	// {
+	// "key=value" format:
 	//
-	//   "key1": "value1",
+	// key1=value1 key2=value2
 	//
-	//   "key2": "value2"
+	// JSON format:
 	//
-	// }
+	// {"key1":"value1", "key2": "value2"}
 	WorkflowParameters *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
 }
 

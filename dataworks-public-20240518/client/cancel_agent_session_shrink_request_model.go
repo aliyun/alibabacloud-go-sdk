@@ -18,14 +18,19 @@ type iCancelAgentSessionShrinkRequest interface {
 }
 
 type CancelAgentSessionShrinkRequest struct {
+	// The ID passed by the requester. The value is returned as-is in the response.
+	//
 	// example:
 	//
 	// 676303114031776
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. Fixed value: 2.0.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc      *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The business parameters of the request.
 	ParamsShrink *string `json:"Params,omitempty" xml:"Params,omitempty"`
 }
 

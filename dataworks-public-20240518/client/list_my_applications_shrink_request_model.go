@@ -28,35 +28,63 @@ type iListMyApplicationsShrinkRequest interface {
 }
 
 type ListMyApplicationsShrinkRequest struct {
+	// The resource type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The end time of the application, specified as a Unix timestamp in milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1779724799999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// A token that you can use in a subsequent request to retrieve the next page of results.
+	//
 	// example:
 	//
 	// eyJpZCI6MTIzfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 200.
+	//
 	// example:
 	//
 	// 20
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search criteria for the resource.
 	ResourceShrink *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The name of the leaf node that specifies the resource type. You can specify multiple resource types. Note that different leaf node names can map to the same business logic.
+	//
 	// This parameter is required.
 	ResourceTypeShrink *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The start time of the application, specified as a Unix timestamp in milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1771948800000
-	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The approval statuses for filtering. Valid values:
+	//
+	// - `WaitApproval`: Pending approval
+	//
+	// - `Confirmed`: Pending authorization
+	//
+	// - `RejectApproval`: Approval rejected
+	//
+	// - `AuthorizeSucceed`: Authorization succeeded
+	//
+	// - `AuthorizeFailed`: Authorization failed
+	//
+	// - `Deleted`: The application was deleted.
+	//
+	// - `Canceled`: The application was canceled.
 	StatusesShrink *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
 }
 

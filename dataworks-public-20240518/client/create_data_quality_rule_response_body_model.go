@@ -22,7 +22,7 @@ type CreateDataQualityRuleResponseBody struct {
 	//
 	// 19715
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID.
+	// The ID of the API request.
 	//
 	// example:
 	//

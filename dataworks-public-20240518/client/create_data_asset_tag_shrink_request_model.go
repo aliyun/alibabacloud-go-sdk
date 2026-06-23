@@ -40,13 +40,13 @@ type CreateDataAssetTagShrinkRequest struct {
 	ManagersShrink *string `json:"Managers,omitempty" xml:"Managers,omitempty"`
 	// The type of the tag value. Valid values:
 	//
-	// 	- Boolean
+	// - Boolean
 	//
-	// 	- Int
+	// - Int
 	//
-	// 	- String
+	// - String
 	//
-	// 	- Double
+	// - Double
 	//
 	// example:
 	//

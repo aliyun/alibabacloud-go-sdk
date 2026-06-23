@@ -26,57 +26,57 @@ type iListColumnsRequest interface {
 }
 
 type ListColumnsRequest struct {
-	// The comment. Fuzzy match is supported.
+	// The column comment. Supports fuzzy match.
 	//
 	// example:
 	//
 	// test comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name. Fuzzy match is supported.
+	// The column name. Supports fuzzy match.
 	//
 	// example:
 	//
 	// test_table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sort order. Default value: Asc. Valid values:
+	// The sort order. Default: Asc. Valid values:
 	//
-	// 	- Asc
+	// - Asc
 	//
-	// 	- Desc
+	// - Desc
 	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Default value: 1.
+	// The page number. Default: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page. Default value: 10. Maximum value: 100.
+	// The page size. Default: 10. Maximum: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort field. Default value: Position. Valid values:
+	// The sort field. Default: Position. Valid values:
 	//
-	// 	- Name
+	// - Name
 	//
-	// 	- Position
+	// - Position
 	//
 	// example:
 	//
 	// Position
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The table ID. You can refer to the return result of the ListTables operation. and the [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	// The table ID. Call the ListTables operation or refer to [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html) to obtain this value.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// maxcompute-column:11075xxxx::test_project:test_schema:test_table
+	// maxcompute-table:::project_name:[schema_name]:table_name
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
 }
 

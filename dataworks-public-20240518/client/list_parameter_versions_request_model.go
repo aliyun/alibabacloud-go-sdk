@@ -20,20 +20,30 @@ type iListParameterVersionsRequest interface {
 }
 
 type ListParameterVersionsRequest struct {
+	// The parameter ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Specifies the page number of the results to return. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Specifies the number of entries to return per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies the sort criterion in the format \\<sort field> \\<sort order>. You can omit Asc for ascending order. The only valid value for the sort field is:
+	//
+	// - Version (Desc/Asc)
+	//
 	// example:
 	//
 	// Version Desc

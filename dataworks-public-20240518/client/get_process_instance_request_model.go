@@ -14,6 +14,8 @@ type iGetProcessInstanceRequest interface {
 }
 
 type GetProcessInstanceRequest struct {
+	// The ID of the process instance.
+	//
 	// This parameter is required.
 	//
 	// example:

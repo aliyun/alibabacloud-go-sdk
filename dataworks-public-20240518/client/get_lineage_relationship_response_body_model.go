@@ -16,7 +16,7 @@ type iGetLineageRelationshipResponseBody interface {
 }
 
 type GetLineageRelationshipResponseBody struct {
-	// The lineage structure.
+	// The lineage relationship object.
 	LineageRelationship *LineageRelationship `json:"LineageRelationship,omitempty" xml:"LineageRelationship,omitempty"`
 	// The request ID.
 	//

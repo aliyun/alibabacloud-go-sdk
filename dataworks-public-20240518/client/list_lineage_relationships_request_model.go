@@ -28,77 +28,57 @@ type iListLineageRelationshipsRequest interface {
 }
 
 type ListLineageRelationshipsRequest struct {
-	// The destination entity ID. For more information, see the table ID or field ID in the response returned by the ListTables or ListColumns operation. You can also specify a custom entity ID.
+	// The ID of the destination entity. You can get the ID for a table or column from the response of the `ListTables` or `ListColumns` operation, or specify the ID of a custom entity.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// maxcompute-table:123456XXX::test_project::test_tbl
-	//
-	// dlf-table:123456XXX:test_catalog:test_db::test_tbl
-	//
-	// hms-table:c-abc123xxx::test_db::test_tbl
-	//
-	// holo-table:h-abc123xxx::test_db:test_schema:test_tbl
-	//
-	// custom-api:api123
-	//
-	// custom-table:table456
+	// dlf-table::catalog_id:database_name::table_name
 	DstEntityId *string `json:"DstEntityId,omitempty" xml:"DstEntityId,omitempty"`
-	// The destination entity name. Supports fuzzy matching.
+	// The name of the destination entity. Supports fuzzy matching.
 	//
 	// example:
 	//
 	// dstName
 	DstEntityName *string `json:"DstEntityName,omitempty" xml:"DstEntityName,omitempty"`
-	// The order in which schemas are sorted. Default value: Asc. Valid values:
+	// The sort order. The default value is `Asc`. Valid values:
 	//
-	// 	- Asc: ascending.
+	// - `Asc`: ascending order
 	//
-	// 	- Desc: descending.
+	// - `Desc`: descending order
 	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
+	// The page size. The default value is 10. The maximum value is 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort field. Default value: Name.
+	// The field to sort the results by. The default value is `Name`.
 	//
 	// example:
 	//
 	// Name
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The source entity ID. For more information, see the table ID or field ID in the response returned by the ListTables or ListColumns operation. You can also specify a custom entity ID.
+	// The ID of the source entity. You can get the ID for a table or column from the response of the `ListTables` or `ListColumns` operation, or specify the ID of a custom entity.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// maxcompute-table:123456XXX::test_project::test_tbl
-	//
-	// dlf-table:123456XXX:test_catalog:test_db::test_tbl
-	//
-	// hms-table:c-abc123xxx::test_db::test_tbl
-	//
-	// holo-table:h-abc123xxx::test_db:test_schema:test_tbl
-	//
-	// custom-api:api123
-	//
-	// custom-table:table456
+	// maxcompute-table:::project_name:[schema_name]:table_name
 	SrcEntityId *string `json:"SrcEntityId,omitempty" xml:"SrcEntityId,omitempty"`
-	// The source entity name. Supports fuzzy matching.
+	// The name of the source entity. Supports fuzzy matching.
 	//
 	// example:
 	//

@@ -30,9 +30,9 @@ type ListDataAssetsShrinkRequest struct {
 	DataAssetIdsShrink *string `json:"DataAssetIds,omitempty" xml:"DataAssetIds,omitempty"`
 	// The type of the data asset. Valid values:
 	//
-	// 	- ACS::DataWorks::Table
+	// - ACS::DataWorks::Table
 	//
-	// 	- ACS::DataWorks::Task
+	// - ACS::DataWorks::Task
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListDataAssetsShrinkRequest struct {
 	DataAssetType *string `json:"DataAssetType,omitempty" xml:"DataAssetType,omitempty"`
 	// The environment of the workspace to which the data asset belongs. Valid values:
 	//
-	// 	- Dev: development environment
+	// - Dev: development environment
 	//
-	// 	- Prod: production environment
+	// - Prod: production environment
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type ListDataAssetsShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The tags that are added to data assets. This parameter specifies a filter condition.
 	//
-	// 	- You can specify multiple tags, which are in the logical OR relation. For example, you can query the data assets that contain one of the following tags: `["key1:v1", "key2:v1", "key3:v1"]`.
+	// - You can specify multiple tags, which are in the logical OR relation. For example, you can query the data assets that contain one of the following tags: `["key1:v1", "key2:v1", "key3:v1"]`.
 	//
-	// 	- If you do not configure this parameter, tag-based filtering is not performed.
+	// - If you do not configure this parameter, tag-based filtering is not performed.
 	//
 	// This parameter is required.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`

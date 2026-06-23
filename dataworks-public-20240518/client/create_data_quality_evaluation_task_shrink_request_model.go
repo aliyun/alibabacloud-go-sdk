@@ -32,9 +32,9 @@ type iCreateDataQualityEvaluationTaskShrinkRequest interface {
 }
 
 type CreateDataQualityEvaluationTaskShrinkRequest struct {
-	// The list of monitoring rules that are associated with the monitor. If you configure the ID of a monitoring rule by using the DataQualityRule.Id parameter, the system associates the rule with a created monitor. If you do not configure the ID of a monitoring rule, the system creates a new monitoring rule by using other fields and associates the rule with a created monitor.
+	// The list of data quality rules associated with the data quality monitor. If DataQualityRule.Id is specified, the rule corresponding to that ID is associated with the newly created quality monitor. If not specified, a new rule is created from the other fields and associated with the newly created quality monitor.
 	DataQualityRulesShrink *string `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty"`
-	// The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
+	// The ID of the data source. You can call [ListDataSources](https://help.aliyun.com/document_detail/211431.html) to obtain the ID of the data source.
 	//
 	// This parameter is required.
 	//
@@ -42,15 +42,15 @@ type CreateDataQualityEvaluationTaskShrinkRequest struct {
 	//
 	// 1
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The description of the monitor.
+	// The description of the quality monitoring task.
 	//
 	// example:
 	//
 	// OpenAPI create a data quality monitoring test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The hook.
+	// The hook settings.
 	HooksShrink *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
-	// The name of the monitor.
+	// The name of the quality monitoring task.
 	//
 	// This parameter is required.
 	//
@@ -58,11 +58,11 @@ type CreateDataQualityEvaluationTaskShrinkRequest struct {
 	//
 	// OpenAPI create a data quality monitoring test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The configurations of alert notifications.
+	// The notification subscription configuration.
 	NotificationsShrink *string `json:"Notifications,omitempty" xml:"Notifications,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the ID.
 	//
-	// You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
+	// This parameter specifies the DataWorks workspace used by this API call.
 	//
 	// This parameter is required.
 	//
@@ -70,25 +70,25 @@ type CreateDataQualityEvaluationTaskShrinkRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The extended configurations in JSON-formatted strings. You can use this parameter only for monitors that are used to monitor the quality of E-MapReduce (EMR) data.
+	// The extended configuration, a JSON-formatted string. This setting takes effect only for EMR-type data quality monitors.
 	//
-	// 	- queue: The Yarn queue used when a monitor checks the quality of EMR data. By default, the queue configured for the current workspace is used.
+	// - queue: The YARN queue used when running EMR data quality validation. The default is the queue configured for the current project.
 	//
-	// 	- sqlEngine: The SQL engine used when a monitor checks the quality of EMR data.
+	// - sqlEngine: The SQL engine used when running EMR data validation.
 	//
-	//     	- HIVE_SQL
+	//     + HIVE_SQL
 	//
-	//     	- SPARK_SQL
+	//     + SPARK_SQL
 	//
 	// example:
 	//
 	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	// The monitored object of the monitor.
+	// The data quality monitoring object.
 	//
 	// This parameter is required.
 	TargetShrink *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The trigger configuration of the monitor.
+	// The trigger configuration of the data quality validation task.
 	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
 }
 

@@ -37,6 +37,10 @@ type iDatasetVersion interface {
 
 type DatasetVersion struct {
 	// The dataset version description.
+	//
+	// example:
+	//
+	// 初始版本
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// Creation time (milliseconds)
 	//

@@ -20,13 +20,13 @@ type DeleteDataSourceSharedRuleResponseBody struct {
 	//
 	// example:
 	//
-	// 64B-587A-8CED-969E1973887FXXX-TT
+	// 64B-587A-8CED-969E1973887F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the data source sharing rule is deleted successfully. The value is as follows:
+	// Indicates whether the sharing rule was deleted. Valid values:
 	//
-	// -true: The request is successful.
+	// -true: The sharing rule was deleted.
 	//
-	// -false: The request failed.
+	// -false: The sharing rule failed to be deleted.
 	//
 	// example:
 	//

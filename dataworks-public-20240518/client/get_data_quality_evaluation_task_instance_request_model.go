@@ -14,7 +14,7 @@ type iGetDataQualityEvaluationTaskInstanceRequest interface {
 }
 
 type GetDataQualityEvaluationTaskInstanceRequest struct {
-	// The ID of the data quality monitoring instance.
+	// The instance ID of the data quality monitoring task.
 	//
 	// This parameter is required.
 	//

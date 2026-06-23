@@ -91,9 +91,9 @@ type ListRoutesResponseBodyPagingInfo struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of network resource routing information obtained.
+	// The routes of the network resource.
 	RouteList []*ListRoutesResponseBodyPagingInfoRouteList `json:"RouteList,omitempty" xml:"RouteList,omitempty" type:"Repeated"`
-	// All data entries
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -165,31 +165,31 @@ type ListRoutesResponseBodyPagingInfoRouteList struct {
 	//
 	// 1727055811000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Route destination CIDR
+	// The destination CIDR block of the route.
 	//
 	// example:
 	//
 	// 192.168.0.0/16
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
-	// Route ID
+	// The route ID.
 	//
 	// example:
 	//
 	// 1000
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Network Resource ID
+	// The network resource ID.
 	//
 	// example:
 	//
 	// 1000
 	NetworkId *int64 `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// Unique identifier of the resource group to which it belongs
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// Serverless_res_group_524257424564736_6831777003****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Unique identifier of network resource
+	// The ID of the network resource.
 	//
 	// example:
 	//

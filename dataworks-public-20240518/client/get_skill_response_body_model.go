@@ -16,11 +16,14 @@ type iGetSkillResponseBody interface {
 }
 
 type GetSkillResponseBody struct {
+	// The unique ID for the request.
+	//
 	// example:
 	//
 	// 824F80BA-1778-5D8A-BAFF-668A4D9C4CC7
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Skill     *GetSkillResponseBodySkill `json:"Skill,omitempty" xml:"Skill,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned Skill object.
+	Skill *GetSkillResponseBodySkill `json:"Skill,omitempty" xml:"Skill,omitempty" type:"Struct"`
 }
 
 func (s GetSkillResponseBody) String() string {
@@ -59,40 +62,65 @@ func (s *GetSkillResponseBody) Validate() error {
 }
 
 type GetSkillResponseBodySkill struct {
+	// **The content of the SKILL.md file.**
+	//
+	// example:
+	//
+	// 把大象装冰箱需要3步，把冰箱门打开，把大象放进去，把冰箱门关上。
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// A temporary download link for `bundle.zip`, which does not require authentication and will expire.
+	//
 	// example:
 	//
 	// https://your-bucket.oss-cn-hangzhou.aliyuncs.com/xxx.zip?Expires=...&Signature=...
 	BundleUrl *string `json:"BundleUrl,omitempty" xml:"BundleUrl,omitempty"`
+	// The ID of the user who created the Skill.
+	//
 	// example:
 	//
 	// 123456
-	CreatorId   *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// **The Skill description.**
+	//
+	// example:
+	//
+	// 数据分析技能
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time the Skill was created, provided as a UNIX timestamp in milliseconds.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 1780555634000
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time the Skill was last modified, provided as a UNIX timestamp in milliseconds.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 1780555634000
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The ID of the user who last modified the Skill.
+	//
 	// example:
 	//
 	// 123456
 	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// **The name of the Skill.**
+	//
 	// example:
 	//
 	// my-skill
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// **The visibility level.**
+	//
 	// example:
 	//
 	// TENANT
-	Visibility      *string                                   `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	// **The visibility scope.**
 	VisibilityScope *GetSkillResponseBodySkillVisibilityScope `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty" type:"Struct"`
 }
 
@@ -204,8 +232,10 @@ func (s *GetSkillResponseBodySkill) Validate() error {
 }
 
 type GetSkillResponseBodySkillVisibilityScope struct {
+	// **A list of project IDs that can access the Skill.**
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	UserIds    []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+	// A list of user IDs that can access the Skill.
+	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
 func (s GetSkillResponseBodySkillVisibilityScope) String() string {

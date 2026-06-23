@@ -16,7 +16,10 @@ type iUpdateMcpServerResponseBody interface {
 }
 
 type UpdateMcpServerResponseBody struct {
+	// - The details of the updated MCP Server.
 	McpServer *UpdateMcpServerResponseBodyMcpServer `json:"McpServer,omitempty" xml:"McpServer,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 824F80BA-1778-5D8A-BAFF-668A4D9C4CC7
@@ -59,18 +62,24 @@ func (s *UpdateMcpServerResponseBody) Validate() error {
 }
 
 type UpdateMcpServerResponseBodyMcpServer struct {
+	// The creation time. This value is a millisecond timestamp.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 1780555634000
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// **The last modification time. This value is a millisecond timestamp.**
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 1780555634000
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// **The name of the MCP Server.**
+	//
 	// example:
 	//
 	// my-mcp-server

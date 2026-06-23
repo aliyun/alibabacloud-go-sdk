@@ -14,6 +14,8 @@ type iGetMetaEntityDefRequest interface {
 }
 
 type GetMetaEntityDefRequest struct {
+	// The entity type. The value must match the regular expression `^custom_(?:entity-[A-Za-z0-9_]+|[A-Za-z0-9_]+-(?:database|table|column))$`.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,13 +18,13 @@ type iCreateLineageRelationshipResponseBody interface {
 }
 
 type CreateLineageRelationshipResponseBody struct {
-	// The lineage ID.
+	// The lineage relationship ID.
 	//
 	// example:
 	//
-	// 110xxxx:custom-table.xxxxx:maxcompute-table.project.test_big_lineage_080901:custom-sqlxx.00001
+	// 4as3dasf654a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID. The unique identifier of a request.
+	// The request ID. A unique identifier for the request.
 	//
 	// example:
 	//

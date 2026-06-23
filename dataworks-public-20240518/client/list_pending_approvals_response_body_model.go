@@ -16,7 +16,10 @@ type iListPendingApprovalsResponseBody interface {
 }
 
 type ListPendingApprovalsResponseBody struct {
+	// The paginated results.
 	Data *ListPendingApprovalsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc5df3a17****903790e8e8a
@@ -59,15 +62,22 @@ func (s *ListPendingApprovalsResponseBody) Validate() error {
 }
 
 type ListPendingApprovalsResponseBodyData struct {
+	// The list of pending approvals.
 	Data []*ListPendingApprovalsResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Indicates whether more data is available.
+	//
 	// example:
 	//
 	// false
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// A token to retrieve the next page of results.
+	//
 	// example:
 	//
 	// eyJpZCI6MTIzfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page size. Default: 10. Maximum: 200.
+	//
 	// example:
 	//
 	// 10
@@ -132,20 +142,51 @@ func (s *ListPendingApprovalsResponseBodyData) Validate() error {
 }
 
 type ListPendingApprovalsResponseBodyDataData struct {
-	ApplicationTime *int64                                              `json:"ApplicationTime,omitempty" xml:"ApplicationTime,omitempty"`
-	Contents        []*ListPendingApprovalsResponseBodyDataDataContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	// The submission time of the request.
+	//
+	// example:
+	//
+	// 申请时间
+	ApplicationTime *int64 `json:"ApplicationTime,omitempty" xml:"ApplicationTime,omitempty"`
+	// The content of the request.
+	Contents []*ListPendingApprovalsResponseBodyDataDataContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	// The resource type.
+	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The process instance ID.
+	//
 	// example:
 	//
 	// 176906667488145
 	ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
-	Reason            *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The reason for the request.
+	//
 	// example:
 	//
-	// WAIT_APPROVAL
+	// 业务需要
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The approval status. Valid values:
+	//
+	// - `WaitApproval`: Pending approval
+	//
+	// - `Confirmed`: Pending authorization
+	//
+	// - `RejectApproval`: Rejected
+	//
+	// - `AuthorizeSucceed`: Authorization successful
+	//
+	// - `AuthorizeFailed`: Authorization failed
+	//
+	// - `Deleted`: Deleted
+	//
+	// - `Canceled`: Canceled
+	//
+	// example:
+	//
+	// Deleted
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -225,46 +266,84 @@ func (s *ListPendingApprovalsResponseBodyDataData) Validate() error {
 }
 
 type ListPendingApprovalsResponseBodyDataDataContents struct {
+	// The permissions requested for the resource.
 	AccessTypes []*string `json:"AccessTypes,omitempty" xml:"AccessTypes,omitempty" type:"Repeated"`
+	// The authorization method.
+	//
 	// example:
 	//
 	// default
 	AuthMethod *string `json:"AuthMethod,omitempty" xml:"AuthMethod,omitempty"`
+	// The creation time of the entry.
+	//
 	// example:
 	//
 	// 2025-09-11 10:13:21
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The permission expiration time, in milliseconds since the Unix epoch.
+	//
 	// example:
 	//
 	// 1782354014507
-	ExpirationTime   *int64                                                   `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	FinalAccessTypes []*string                                                `json:"FinalAccessTypes,omitempty" xml:"FinalAccessTypes,omitempty" type:"Repeated"`
-	Grantee          *ListPendingApprovalsResponseBodyDataDataContentsGrantee `json:"Grantee,omitempty" xml:"Grantee,omitempty" type:"Struct"`
+	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// The final permissions granted after approval.
+	FinalAccessTypes []*string `json:"FinalAccessTypes,omitempty" xml:"FinalAccessTypes,omitempty" type:"Repeated"`
+	// Information about the grantee.
+	Grantee *ListPendingApprovalsResponseBodyDataDataContentsGrantee `json:"Grantee,omitempty" xml:"Grantee,omitempty" type:"Struct"`
+	// The unique identifier of the requested item.
+	//
 	// example:
 	//
 	// 210001918826
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// **The process instance ID.**
+	//
 	// example:
 	//
 	// 176906667488145
-	ProcessInstanceId *string                                                   `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
-	Resource          *ListPendingApprovalsResponseBodyDataDataContentsResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
+	// The resource declaration.
+	Resource *ListPendingApprovalsResponseBodyDataDataContentsResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	// The type of the resource, such as a table or function.
+	//
 	// example:
 	//
 	// table
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The approval status. Valid values:
+	//
+	// - `WaitApproval`: Pending approval
+	//
+	// - `Confirmed`: Pending authorization
+	//
+	// - `RejectApproval`: Rejected
+	//
+	// - `AuthorizeSucceed`: Authorization successful
+	//
+	// - `AuthorizeFailed`: Authorization failed
+	//
+	// - `Deleted`: Deleted
+	//
+	// - `Canceled`: Canceled
+	//
 	// example:
 	//
-	// WAIT_APPROVAL
+	// Deleted
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 69973837489
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The time the entry was last updated.
+	//
 	// example:
 	//
 	// 2022-07-06 19:13:05
@@ -420,13 +499,47 @@ func (s *ListPendingApprovalsResponseBodyDataDataContents) Validate() error {
 }
 
 type ListPendingApprovalsResponseBodyDataDataContentsGrantee struct {
+	// The principal ID.
+	//
+	// Note: The meaning of this ID varies based on the `principalType`.
+	//
+	// - If the `principalType` is `RamUser`, this is the DataWorks user ID.
+	//
+	// - If the `principalType` is `RamRole`, this is the DataWorks user ID, prefixed with "ROLE_".
+	//
+	// - If the `principalType` is `DataWorksTenantMember`, this is the DataWorks user ID.
+	//
+	// - If the `principalType` is `DataWorksTenantRole`, this is the DataWorks tenant role code.
+	//
+	// - If the `principalType` is `DataWorksProjectRole`, this is the DataWorks workspace role code.
+	//
+	// - If the `principalType` is `DataWorksProjectMember`, this is the DataWorks user ID.
+	//
+	// - If the `principalType` is `DlfRole`, this is the DLF role name.
+	//
 	// example:
 	//
 	// 213463068144525171
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The principal type. Valid values:
+	//
+	// - `RamRole`: A RAM role.
+	//
+	// - `RamUser`: A RAM user.
+	//
+	// - `DataWorksTenantMember`: A DataWorks tenant member.
+	//
+	// - `DataWorksTenantRole`: A DataWorks tenant role.
+	//
+	// - `DataWorksProjectMember`: A DataWorks workspace member.
+	//
+	// - `DataWorksProjectRole`: A DataWorks workspace role.
+	//
+	// - `DlfRole`: A DLF role.
+	//
 	// example:
 	//
-	// User
+	// RamUser
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 }
 
@@ -461,15 +574,20 @@ func (s *ListPendingApprovalsResponseBodyDataDataContentsGrantee) Validate() err
 }
 
 type ListPendingApprovalsResponseBodyDataDataContentsResource struct {
+	// The name of the `ResourceSchema` used to parse the resource.
+	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The version of the `ResourceSchema` used to parse the resource.
+	//
 	// example:
 	//
 	// v1.0.0
-	DefVersion *string                `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
-	MetaData   map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	DefVersion *string `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
+	// The resource metadata. The content is constrained by the DefSchema.
+	MetaData map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 }
 
 func (s ListPendingApprovalsResponseBodyDataDataContentsResource) String() string {

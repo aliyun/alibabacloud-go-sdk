@@ -144,17 +144,21 @@ func (s *ListDeploymentPackageFilesResponseBodyPagingInfo) Validate() error {
 type ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles struct {
 	// The change type, which is an integer. Valid values:
 	//
-	// 	- 0: addition
+	// - 0: addition
 	//
-	// 	- 1: update
+	// - 1: update
 	//
-	// 	- 2: deletion
+	// - 2: deletion
 	//
 	// example:
 	//
 	// 0
 	ChangeType *int32 `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
 	// The comment for committing.
+	//
+	// example:
+	//
+	// Test submission
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The time for committing.
 	//
@@ -321,36 +325,40 @@ type ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles stru
 	// 27595
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The test status in the development environment.
+	//
+	// example:
+	//
+	// Not tested
 	SmokeTestStatus *string `json:"SmokeTestStatus,omitempty" xml:"SmokeTestStatus,omitempty"`
 	// The status of the code file of the current version. Valid values:
 	//
-	// 	- 2: Commit check in progress.
+	// - 2: Commit check in progress.
 	//
-	// 	- 3: Commit check passed.
+	// - 3: Commit check passed.
 	//
-	// 	- 4: Commit check failed.
+	// - 4: Commit check failed.
 	//
-	// 	- 10: Committing.
+	// - 10: Committing.
 	//
-	// 	- 11: Committed.
+	// - 11: Committed.
 	//
-	// 	- 20: Approved.
+	// - 20: Approved.
 	//
-	// 	- 21: Rejected.
+	// - 21: Rejected.
 	//
-	// 	- 22: Warning detected during checking.
+	// - 22: Warning detected during checking.
 	//
-	// 	- 23: Under code review.
+	// - 23: Under code review.
 	//
-	// 	- 24: Code review rejected.
+	// - 24: Code review rejected.
 	//
-	// 	- 80: Deployment package created.
+	// - 80: Deployment package created.
 	//
-	// 	- 100: Deploying.
+	// - 100: Deploying.
 	//
-	// 	- 101: Deployed to the production environment.
+	// - 101: Deployed to the production environment.
 	//
-	// 	- 200: Cancelled.
+	// - 200: Cancelled.
 	//
 	// example:
 	//
@@ -364,17 +372,17 @@ type ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles stru
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The module to which the file belongs. Valid values:
 	//
-	// 	- NORMAL: The file is used for DataStudio.
+	// - NORMAL: The file is used for DataStudio.
 	//
-	// 	- MANUAL: The file is used for a manually triggered node.
+	// - MANUAL: The file is used for a manually triggered node.
 	//
-	// 	- MANUAL_BIZ: The file is used for a manually triggered workflow.
+	// - MANUAL_BIZ: The file is used for a manually triggered workflow.
 	//
-	// 	- SKIP: The file is used for a dry-run node in DataStudio.
+	// - SKIP: The file is used for a dry-run node in DataStudio.
 	//
-	// 	- ADHOCQUERY: The file is used for an ad hoc query.
+	// - ADHOCQUERY: The file is used for an ad hoc query.
 	//
-	// 	- COMPONENT: The file is used for a script template.
+	// - COMPONENT: The file is used for a script template.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iUpdateDataQualityEvaluationTaskResponseBody interface {
 }
 
 type UpdateDataQualityEvaluationTaskResponseBody struct {
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// Request ID. Used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

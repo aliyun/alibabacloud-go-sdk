@@ -16,7 +16,10 @@ type iListSkillsResponseBody interface {
 }
 
 type ListSkillsResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListSkillsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 824F80BA-1778-5D8A-BAFF-668A4D9C4CC7
@@ -59,15 +62,22 @@ func (s *ListSkillsResponseBody) Validate() error {
 }
 
 type ListSkillsResponseBodyPagingInfo struct {
+	// The maximum number of results returned in this response.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page of results. This parameter is null or empty if all results have been returned.
+	//
 	// example:
 	//
 	// 5
-	NextToken *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Skills    []*ListSkillsResponseBodyPagingInfoSkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of Skills.
+	Skills []*ListSkillsResponseBodyPagingInfoSkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	// The total number of results that match the query.
+	//
 	// example:
 	//
 	// 100
@@ -132,25 +142,40 @@ func (s *ListSkillsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListSkillsResponseBodyPagingInfoSkills struct {
+	// **The creator ID.**
+	//
 	// example:
 	//
 	// 123456
-	CreatorId   *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// **The Skill description.**
+	//
+	// example:
+	//
+	// 数据分析技能
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 1780555634000
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// **The modifier ID.**
+	//
 	// example:
 	//
 	// 123456
 	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// **The Skill name.**
+	//
 	// example:
 	//
 	// my-skill
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// **The visibility level.**
+	//
 	// example:
 	//
 	// TENANT

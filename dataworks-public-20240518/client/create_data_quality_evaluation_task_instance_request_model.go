@@ -20,17 +20,17 @@ type iCreateDataQualityEvaluationTaskInstanceRequest interface {
 }
 
 type CreateDataQualityEvaluationTaskInstanceRequest struct {
-	// The ID of the data quality monitoring task.
+	// The ID of the data quality evaluation task.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 200001
+	// 2000011
 	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
-	// Data quality verification execution parameters in JSON format. The available keys are as follows:
+	// The execution parameters of the data quality evaluation in the JSON format. The following keys are available:
 	//
-	// - triggerTime: the millisecond timestamp of the trigger time. The baseline time of the $[yyyymmdd] expression in the data range of data quality monitoring. Required.
+	// - triggerTime: the millisecond timestamp of the trigger time. This is the base time for the $[yyyymmdd] expression in the data range of data quality monitoring. This key is required.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type CreateDataQualityEvaluationTaskInstanceRequest struct {
 	//
 	// { "triggerTime": 1733284062000 }
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the ID.
 	//
-	// This parameter is used to determine the DataWorks workspaces used for this API call.
+	// This parameter specifies the DataWorks workspace in which this API operation is performed.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateDataQualityEvaluationTaskInstanceRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Resource Group information, which must be filled in when running non-MaxCompute data quality verification.
+	// The resource group information. This parameter is required when you run a data quality evaluation on a non-MaxCompute data source.
 	RuntimeResource *CreateDataQualityEvaluationTaskInstanceRequestRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
 }
 
@@ -106,13 +106,13 @@ func (s *CreateDataQualityEvaluationTaskInstanceRequest) Validate() error {
 }
 
 type CreateDataQualityEvaluationTaskInstanceRequestRuntimeResource struct {
-	// The task runs to configure CU consumption. If Serverless resource groups are used, you must specify this parameter.
+	// The CU consumption configured for the task to run. This parameter must be specified if a serverless resource group is used.
 	//
 	// example:
 	//
 	// 0.25
 	Cu *float64 `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The identifier of the scheduling resource group configured for running the task.
+	// The identifier of the scheduling resource group configured for the task to run.
 	//
 	// example:
 	//

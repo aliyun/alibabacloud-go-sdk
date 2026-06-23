@@ -36,7 +36,7 @@ type CreateDIAlarmRuleResponseBody struct {
 	//
 	// example:
 	//
-	// C636A747-7E4E-594D-94CD-2B4F8A9A9A63
+	// C636A747-7E4E-594D-94CD-2B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -18,13 +18,16 @@ type iGetCustomAttributeResponseBody interface {
 }
 
 type GetCustomAttributeResponseBody struct {
+	// The custom attribute definition.
 	CustomAttribute *CustomAttribute `json:"CustomAttribute,omitempty" xml:"CustomAttribute,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// BA51C9E6-0CBC-5BB9-92BD-0C4FE66E1717
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

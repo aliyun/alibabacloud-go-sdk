@@ -16,7 +16,7 @@ type iAssociateProjectToResourceGroupRequest interface {
 }
 
 type AssociateProjectToResourceGroupRequest struct {
-	// The ID of the DataWorks workspace with which you want to associate the resource group.
+	// The ID of the workspace to associate.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type AssociateProjectToResourceGroupRequest struct {
 	//
 	// 1000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the resource group.
+	// The unique identifier of the resource group.
 	//
 	// This parameter is required.
 	//

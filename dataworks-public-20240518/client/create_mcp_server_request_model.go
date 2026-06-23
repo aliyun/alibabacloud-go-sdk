@@ -20,20 +20,27 @@ type iCreateMcpServerRequest interface {
 }
 
 type CreateMcpServerRequest struct {
+	// The connection configuration for the MCP Server.
+	//
 	// example:
 	//
 	// -
 	Config *CreateMcpServerRequestConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The name of the MCP Server. The name must be unique at the tenant level. It must start with a lowercase letter and contain only characters from `a-z`, `0-9`, `_`, and `-`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my-mcp-server
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The visibility level.
+	//
 	// example:
 	//
 	// TENANT
-	Visibility      *string                                `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	// The visibility scope. The required fields depend on the value of the `Visibility` parameter.
 	VisibilityScope *CreateMcpServerRequestVisibilityScope `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty" type:"Struct"`
 }
 
@@ -96,14 +103,20 @@ func (s *CreateMcpServerRequest) Validate() error {
 }
 
 type CreateMcpServerRequestConfig struct {
+	// The custom request headers, specified as key-value pairs. You cannot override reserved headers.
+	//
 	// example:
 	//
 	// {}
 	CustomHeaders map[string]interface{} `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty"`
+	// The transport protocol.
+	//
 	// example:
 	//
 	// SSE
 	Transport *string `json:"Transport,omitempty" xml:"Transport,omitempty"`
+	// The service address of the MCP Server. It must start with `https://`.
+	//
 	// example:
 	//
 	// https://example.com/mcp/sse
@@ -150,8 +163,10 @@ func (s *CreateMcpServerRequestConfig) Validate() error {
 }
 
 type CreateMcpServerRequestVisibilityScope struct {
+	// The project IDs to which the MCP Server is visible. This parameter is required only when `Visibility` is set to `PROJECT`.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	UserIds    []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+	// The user IDs to which the MCP Server is visible. This parameter is required only when `Visibility` is set to `USER`.
+	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateMcpServerRequestVisibilityScope) String() string {

@@ -30,7 +30,7 @@ type GetPartitionRequest struct {
 	//
 	// example:
 	//
-	// maxcompute-column:11075xxxx::test_project:test_schema:test_table
+	// maxcompute-table:::project_name:[schema_name]:table_name
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
 }
 

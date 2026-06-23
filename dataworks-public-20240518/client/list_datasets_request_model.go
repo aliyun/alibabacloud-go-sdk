@@ -40,19 +40,19 @@ type ListDatasetsRequest struct {
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	// The data type. Multiple selections are allowed. Valid values:
 	//
-	// 	- COMMON
+	// - COMMON
 	//
-	// 	- PIC
+	// - PIC
 	//
-	// 	- TEXT
+	// - TEXT
 	//
-	// 	- TABLE
+	// - TABLE
 	//
-	// 	- VIDEO
+	// - VIDEO
 	//
-	// 	- AUDIO
+	// - AUDIO
 	//
-	// 	- INDEX
+	// - INDEX
 	DataTypeList []*string `json:"DataTypeList,omitempty" xml:"DataTypeList,omitempty" type:"Repeated"`
 	// The dataset name. Supports fuzzy search.
 	//
@@ -64,9 +64,9 @@ type ListDatasetsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Asc: Ascending.
+	// - Asc: Ascending.
 	//
-	// 	- Desc: Descending.
+	// - Desc: Descending.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type ListDatasetsRequest struct {
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The dataset source. Valid values:
 	//
-	// 	- DataWorks
+	// - DataWorks
 	//
-	// 	- PAI
+	// - PAI
 	//
 	// example:
 	//
@@ -104,11 +104,11 @@ type ListDatasetsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- ModifyTime: Modification time.
+	// - ModifyTime: Modification time.
 	//
-	// 	- CreateTime: Creation time.
+	// - CreateTime: Creation time.
 	//
-	// 	- Name
+	// - Name
 	//
 	// example:
 	//
@@ -116,19 +116,19 @@ type ListDatasetsRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The storage type. Multiple selections are allowed. Supported values:
 	//
-	// 	- OSS
+	// - OSS
 	//
-	// 	- NAS: General-purpose NAS file systems
+	// - NAS: General-purpose NAS file systems
 	//
-	// 	- EXTREMENAS: Extreme NAS file systems
+	// - EXTREMENAS: Extreme NAS file systems
 	//
-	// 	- DLF_LANCE: Data Lake Formation
+	// - DLF_LANCE: Data Lake Formation
 	//
-	// 	- CPFS: Cloud Parallel File Storage
+	// - CPFS: Cloud Parallel File Storage
 	//
-	// 	- BMCPFS: CPFS for Lingjun
+	// - BMCPFS: CPFS for Lingjun
 	//
-	// 	- MAXCOMPUTE: MaxCompute table
+	// - MAXCOMPUTE: MaxCompute table
 	StorageTypeList []*string `json:"StorageTypeList,omitempty" xml:"StorageTypeList,omitempty" type:"Repeated"`
 }
 

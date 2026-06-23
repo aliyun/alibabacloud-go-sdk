@@ -40,7 +40,7 @@ type iListWorkflowInstancesShrinkRequest interface {
 }
 
 type ListWorkflowInstancesShrinkRequest struct {
-	// The data timestamp. The value of this parameter is 00:00:00 of the day before the scheduling time of the instance. The value is a UNIX timestamp. Unit: milliseconds. Example: 1743350400000.
+	// The business date. This is generally 00:00:00 of the day before the scheduled instance trigger time, in millisecond-level timestamp format, such as 1743350400000.
 	//
 	// This parameter is required.
 	//
@@ -52,6 +52,8 @@ type ListWorkflowInstancesShrinkRequest struct {
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The filter. In JSON format, multiple filter conditions have an AND relationship. Currently supported fields are: `status, executionDate`.
+	//
 	// example:
 	//
 	// {
@@ -62,21 +64,21 @@ type ListWorkflowInstancesShrinkRequest struct {
 	//
 	// }
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The IDs of the workflow instances. You can query multiple instances at a time by instance ID.
+	// The list of workflow instance IDs. You can use this parameter to query multiple workflow instances at a time.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// The instance name. Fuzzy match is supported.
+	// The name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// WorkflowInstance1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The account ID of the workflow instance owner.
+	// The account ID of the owner.
 	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number, starting from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -88,7 +90,7 @@ type ListWorkflowInstancesShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The workspace ID.
+	// The project ID.
 	//
 	// This parameter is required.
 	//
@@ -96,43 +98,46 @@ type ListWorkflowInstancesShrinkRequest struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+	// The list of sort fields. Sorting by trigger time, start time, and other fields is supported. The format is "sort field + sort order (Desc/Asc)" (Asc can be omitted). Valid values of the sort field:
 	//
-	// 	- TriggerTime (Desc/Asc)
+	// - TriggerTime (Desc/Asc)
 	//
-	// 	- StartedTime (Desc/Asc)
+	// - StartedTime (Desc/Asc)
 	//
-	// 	- FinishedTime (Desc/Asc)
+	// - FinishedTime (Desc/Asc)
 	//
-	// 	- CreateTime (Desc/Asc)
+	// - CreateTime (Desc/Asc)
 	//
-	// 	- Id (Desc/Asc)
+	// - Id (Desc/Asc)
 	//
-	// Default value: Id Desc.
+	// Default value: Id Desc
 	//
 	// example:
 	//
 	// Id Desc
-	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The list of tags. Results are returned if any one of the specified tags is matched.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The type of the workflow instance. Valid values:
+	// The type of the workflow instance.
 	//
-	// 	- Normal: Scheduled execution
+	// - Normal: Periodic scheduling
 	//
-	// 	- Manual: Manually triggered node
+	// - Manual: Manual task
 	//
-	// 	- SmokeTest: Smoke test
+	// - SmokeTest: Testing
 	//
-	// 	- SupplementData: Data backfill
+	// - SupplementData: Backfill data
 	//
-	// 	- ManualWorkflow: Manually triggered workflow
+	// - ManualWorkflow: Manual workflow
 	//
-	// 	- TriggerWorkflow: Triggered Workflow
+	// - TriggerWorkflow: Trigger-based workflow
 	//
 	// example:
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The unified workflow instance ID. All workflow instances within the same business date of a single trigger share the same value for this field.
+	//
 	// example:
 	//
 	// 1234

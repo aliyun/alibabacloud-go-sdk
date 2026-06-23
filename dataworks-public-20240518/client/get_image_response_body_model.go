@@ -18,11 +18,16 @@ type iGetImageResponseBody interface {
 }
 
 type GetImageResponseBody struct {
+	// The image details.
 	Image *GetImageResponseBodyImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
+	// The request ID, which is used to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -74,10 +79,18 @@ func (s *GetImageResponseBody) Validate() error {
 }
 
 type GetImageResponseBodyImage struct {
+	// The image visibility:
+	//
+	// - Public: Visible to all users.
+	//
+	// - Private: Visible only to the creator.
+	//
 	// example:
 	//
 	// Public
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The VPC ID associated with the ACR instance.
+	//
 	// example:
 	//
 	// vpc-xxx
@@ -88,92 +101,176 @@ type GetImageResponseBodyImage struct {
 	//
 	// registry.cn-hangzhou.aliyuncs.com
 	AcrEndpoint *string `json:"AcrEndpoint,omitempty" xml:"AcrEndpoint,omitempty"`
+	// The ACR instance ID.
+	//
 	// example:
 	//
 	// cri-xxx
-	AcrInstanceId *string                               `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	BuildConfig   *GetImageResponseBodyImageBuildConfig `json:"BuildConfig,omitempty" xml:"BuildConfig,omitempty" type:"Struct"`
+	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	// The image build configuration.
+	BuildConfig *GetImageResponseBodyImageBuildConfig `json:"BuildConfig,omitempty" xml:"BuildConfig,omitempty" type:"Struct"`
+	// The creation time, represented as a 64-bit timestamp.
+	//
 	// example:
 	//
 	// 1727055811000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The ID of the creator.
+	//
 	// example:
 	//
 	// 123
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The image description.
+	//
 	// example:
 	//
 	// Test image created by xxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether synchronization to MaxCompute is enabled.
+	//
 	// example:
 	//
 	// false
 	EnableSyncMaxCompute *bool `json:"EnableSyncMaxCompute,omitempty" xml:"EnableSyncMaxCompute,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// Custom_image_xxxx_xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The image tag.
+	//
 	// example:
 	//
 	// v1.0.0
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	// The image URI.
+	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/xxx/xxx:tag
 	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	// The image VPC URI.
+	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com/xxx/xxx:tag
 	ImageVpcUri *string `json:"ImageVpcUri,omitempty" xml:"ImageVpcUri,omitempty"`
+	// Indicates whether the image is the default image.
+	//
 	// example:
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The last modification time, represented as a 64-bit timestamp.
+	//
 	// example:
 	//
 	// 1727055811000
 	LastModifiedTime *int64 `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	// The ID of the modifier.
+	//
 	// example:
 	//
 	// 123
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// The image name.
+	//
 	// example:
 	//
 	// dataworks_image
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Indicates whether the image is an official image.
+	//
 	// example:
 	//
 	// true
 	Official *bool `json:"Official,omitempty" xml:"Official,omitempty"`
+	// The image ID assigned by the provider.
+	//
 	// example:
 	//
 	// acr_image_id
 	ProviderImageId *string `json:"ProviderImageId,omitempty" xml:"ProviderImageId,omitempty"`
+	// The image provider type:
+	//
+	// - ACR: ACR image repository.
+	//
+	// - DataWorks: DataWorks official image.
+	//
 	// example:
 	//
 	// ACR
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	// The publish stage:
+	//
+	// - Untest: Not tested.
+	//
+	// - Testing: Being tested.
+	//
+	// - TestFailed: Test failed.
+	//
+	// - Unpublished: Not published.
+	//
+	// - Publishing: Being published.
+	//
+	// - Published: Published.
+	//
+	// - PublishFailed: Publish failed.
+	//
+	// - Building: Being built.
+	//
+	// - BuildSuccess: Build succeeded.
+	//
+	// - BuildFailed: Build failed.
+	//
+	// - Accelerating: Being accelerated.
+	//
+	// - AccelerateSuccess: Acceleration succeeded.
+	//
+	// - AccelerateFailed: Acceleration failed.
+	//
 	// example:
 	//
 	// Published
 	PublishStage *string `json:"PublishStage,omitempty" xml:"PublishStage,omitempty"`
+	// The repository name.
+	//
 	// example:
 	//
 	// repo_name
 	RepositoryName *string `json:"RepositoryName,omitempty" xml:"RepositoryName,omitempty"`
+	// The image size.
+	//
 	// example:
 	//
 	// 1GB
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The image status:
+	//
+	// - Disabled: The image is disabled.
+	//
+	// - Expired: The image has expired.
+	//
+	// - Available: The image is available.
+	//
+	// - ReadOnly: The image is read-only.
+	//
 	// example:
 	//
 	// Available
-	Status    *string                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The supported modules and task types.
 	Supported *GetImageResponseBodyImageSupported `json:"Supported,omitempty" xml:"Supported,omitempty" type:"Struct"`
+	// The image version.
+	//
 	// example:
 	//
 	// 1
@@ -446,10 +543,13 @@ func (s *GetImageResponseBodyImage) Validate() error {
 }
 
 type GetImageResponseBodyImageBuildConfig struct {
+	// The build type.
+	//
 	// example:
 	//
 	// PackageInstallation
-	BuildType                  *string                                                           `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
+	BuildType *string `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
+	// The list of pre-installation scripts.
 	PackageInstallationScripts []*GetImageResponseBodyImageBuildConfigPackageInstallationScripts `json:"PackageInstallationScripts,omitempty" xml:"PackageInstallationScripts,omitempty" type:"Repeated"`
 }
 
@@ -493,10 +593,14 @@ func (s *GetImageResponseBodyImageBuildConfig) Validate() error {
 }
 
 type GetImageResponseBodyImageBuildConfigPackageInstallationScripts struct {
+	// The script content. If the content consists of package names, separate them with commas (,).
+	//
 	// example:
 	//
 	// requests
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The script type.
+	//
 	// example:
 	//
 	// Python3
@@ -534,10 +638,15 @@ func (s *GetImageResponseBodyImageBuildConfigPackageInstallationScripts) Validat
 }
 
 type GetImageResponseBodyImageSupported struct {
+	// The supported module:
+	//
+	// - Scheduler: Scheduling.
+	//
 	// example:
 	//
 	// Scheduler
-	Module    *string   `json:"Module,omitempty" xml:"Module,omitempty"`
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The list of supported task types.
 	TaskTypes []*string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
 }
 

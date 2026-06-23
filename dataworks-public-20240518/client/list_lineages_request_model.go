@@ -30,38 +30,60 @@ type iListLineagesRequest interface {
 }
 
 type ListLineagesRequest struct {
+	// The ID of the destination entity. This can be a table or column ID returned by the `ListTables` or `ListColumns` API, or the ID of a custom entity.
+	//
 	// example:
 	//
 	// dlf-table::catalog_id:database_name::table_name
 	DstEntityId *string `json:"DstEntityId,omitempty" xml:"DstEntityId,omitempty"`
+	// The name of the destination entity. This parameter supports fuzzy matching.
+	//
 	// example:
 	//
 	// dstName1
 	DstEntityName *string `json:"DstEntityName,omitempty" xml:"DstEntityName,omitempty"`
+	// Specifies whether to include lineage relationships. Default: false.
+	//
 	// example:
 	//
 	// false
 	NeedAttachRelationship *bool `json:"NeedAttachRelationship,omitempty" xml:"NeedAttachRelationship,omitempty"`
+	// The sort order. Default: `Asc`. Valid values:
+	//
+	// - `Asc`: ascending
+	//
+	// - `Desc`: descending
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number to retrieve. Default: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default: 10. Maximum: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field to sort the results by. The default is `Name`, which sorts by entity name.
+	//
 	// example:
 	//
 	// Name
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The ID of the source entity. This can be a table or column ID returned by the `ListTables` or `ListColumns` API, or the ID of a custom entity.
+	//
 	// example:
 	//
 	// maxcompute-table:::project_name:[schema_name]:table_name
 	SrcEntityId *string `json:"SrcEntityId,omitempty" xml:"SrcEntityId,omitempty"`
+	// The name of the source entity. This parameter supports fuzzy matching.
+	//
 	// example:
 	//
 	// srcName1

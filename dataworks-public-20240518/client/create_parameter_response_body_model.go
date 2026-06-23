@@ -16,10 +16,14 @@ type iCreateParameterResponseBody interface {
 }
 
 type CreateParameterResponseBody struct {
+	// The parameter ID.
+	//
 	// example:
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX

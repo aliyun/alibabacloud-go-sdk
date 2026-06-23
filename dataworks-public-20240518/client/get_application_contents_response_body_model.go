@@ -16,7 +16,10 @@ type iGetApplicationContentsResponseBody interface {
 }
 
 type GetApplicationContentsResponseBody struct {
+	// The process instance and its associated application contents.
 	Data *GetApplicationContentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID. Use this ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 34267E2E-0335-1A60-A1F0-ADA530890CBA
@@ -59,20 +62,48 @@ func (s *GetApplicationContentsResponseBody) Validate() error {
 }
 
 type GetApplicationContentsResponseBodyData struct {
+	// The time when the application was submitted. This value is a millisecond-precision timestamp.
+	//
 	// example:
 	//
 	// 1779675618000
-	ApplicationTime *int64                                            `json:"ApplicationTime,omitempty" xml:"ApplicationTime,omitempty"`
-	Contents        []*GetApplicationContentsResponseBodyDataContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	ApplicationTime *int64 `json:"ApplicationTime,omitempty" xml:"ApplicationTime,omitempty"`
+	// A list of the application contents.
+	Contents []*GetApplicationContentsResponseBodyDataContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	// The resource type.
+	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The process instance ID.
+	//
 	// example:
 	//
 	// 332066440109224007
 	ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
-	Reason            *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The reason for the application.
+	//
+	// example:
+	//
+	// 业务需要
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The approval status. Valid values:
+	//
+	// - `WaitApproval`: The application is pending approval.
+	//
+	// - `Confirmed`: The application is pending authorization.
+	//
+	// - `RejectApproval`: The application was rejected.
+	//
+	// - `AuthorizeSucceed`: Authorization was successful.
+	//
+	// - `AuthorizeFailed`: Authorization failed.
+	//
+	// - `Deleted`: The application was deleted.
+	//
+	// - `Canceled`: The application was canceled.
+	//
 	// example:
 	//
 	// WaitApproval
@@ -155,46 +186,84 @@ func (s *GetApplicationContentsResponseBodyData) Validate() error {
 }
 
 type GetApplicationContentsResponseBodyDataContents struct {
+	// A list of the permissions requested for the resource.
 	AccessTypes []*string `json:"AccessTypes,omitempty" xml:"AccessTypes,omitempty" type:"Repeated"`
+	// The authorization method.
+	//
 	// example:
 	//
 	// ranger
 	AuthMethod *string `json:"AuthMethod,omitempty" xml:"AuthMethod,omitempty"`
+	// The time when the content item was created. This value is a millisecond-precision timestamp.
+	//
 	// example:
 	//
 	// 1773972024000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The time when the permissions expire. This value is a millisecond-precision timestamp.
+	//
 	// example:
 	//
 	// 1785835708000
-	ExpirationTime   *int64                                                 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	FinalAccessTypes []*string                                              `json:"FinalAccessTypes,omitempty" xml:"FinalAccessTypes,omitempty" type:"Repeated"`
-	Grantee          *GetApplicationContentsResponseBodyDataContentsGrantee `json:"Grantee,omitempty" xml:"Grantee,omitempty" type:"Struct"`
+	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// A list of the permissions granted in the final approval.
+	FinalAccessTypes []*string `json:"FinalAccessTypes,omitempty" xml:"FinalAccessTypes,omitempty" type:"Repeated"`
+	// The grantee.
+	Grantee *GetApplicationContentsResponseBodyDataContentsGrantee `json:"Grantee,omitempty" xml:"Grantee,omitempty" type:"Struct"`
+	// The unique ID of the application content item.
+	//
 	// example:
 	//
 	// Y9H7AKFmjhWzLYdZNDZA5
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the approval process instance for the application.
+	//
 	// example:
 	//
 	// 777799223
-	ProcessInstanceId *string                                                 `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
-	Resource          *GetApplicationContentsResponseBodyDataContentsResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
+	// The resource declaration.
+	Resource *GetApplicationContentsResponseBodyDataContentsResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	// The specific type of the resource, such as a table.
+	//
 	// example:
 	//
 	// table
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The approval status. Valid values:
+	//
+	// - `WaitApproval`: The item is pending approval.
+	//
+	// - `Confirmed`: The item is pending authorization.
+	//
+	// - `RejectApproval`: The item was rejected.
+	//
+	// - `AuthorizeSucceed`: Authorization was successful.
+	//
+	// - `AuthorizeFailed`: Authorization failed.
+	//
+	// - `Deleted`: The item was deleted during the approval process.
+	//
+	// - `Canceled`: The item was canceled.
+	//
 	// example:
 	//
-	// WAIT_APPROVAL
+	// Deleted
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 69973837489
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The time when the content item was last updated. This value is a millisecond-precision timestamp.
+	//
 	// example:
 	//
 	// 1773972024000
@@ -350,10 +419,26 @@ func (s *GetApplicationContentsResponseBodyDataContents) Validate() error {
 }
 
 type GetApplicationContentsResponseBodyDataContentsGrantee struct {
+	// The ID of the principal. The format of the ID varies based on the `PrincipalType` value:
+	//
+	// - If `PrincipalType` is `RamUser`, this parameter specifies the ID of a DataWorks user.
+	//
+	// - If `PrincipalType` is `RamRole`, this parameter specifies the ID of a role in DataWorks. The ID must be prefixed with `ROLE_`.
+	//
+	// - If `PrincipalType` is `DlfRole`, this parameter specifies the name of a DlfNext role.
+	//
 	// example:
 	//
 	// ROLE_3133343434
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The principal type. Valid values:
+	//
+	// - `RamUser`
+	//
+	// - `RamRole`
+	//
+	// - `DlfRole`
+	//
 	// example:
 	//
 	// RamRole
@@ -391,14 +476,20 @@ func (s *GetApplicationContentsResponseBodyDataContentsGrantee) Validate() error
 }
 
 type GetApplicationContentsResponseBodyDataContentsResource struct {
+	// The name of the `ResourceSchema` that defines how to parse this resource.
+	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The version of the `ResourceSchema` that defines how to parse this resource.
+	//
 	// example:
 	//
 	// v1.0.0
 	DefVersion *string `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
+	// The resource metadata. The structure of the metadata is defined by the `ResourceSchema`.
+	//
 	// example:
 	//
 	// "{\\"schema\\":\\"default\\",\\"threeTierModel\\":false,\\"workspace\\":\\"449656\\",\\"project\\":\\"sync_destination\\",\\"table\\":\\"order_table\\",\\"tenant\\":\\"524997424564736\\"}"

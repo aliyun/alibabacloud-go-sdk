@@ -54,9 +54,9 @@ type CreateUdfFileRequest struct {
 	CmdDescription *string `json:"CmdDescription,omitempty" xml:"CmdDescription,omitempty"`
 	// Specifies whether to automatically create the directory if the specified path (FileFolderPath) does not exist. Valid values:
 	//
-	// 	- true: Automatically creates the directory if it does not exist.
+	// - true: Automatically creates the directory if it does not exist.
 	//
-	// 	- false: The call fails if the directory does not exist.
+	// - false: The call fails if the directory does not exist.
 	//
 	// example:
 	//

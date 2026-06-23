@@ -16,7 +16,10 @@ type iGetMcpServerResponseBody interface {
 }
 
 type GetMcpServerResponseBody struct {
+	// The MCP Server configuration.
 	McpServer *GetMcpServerResponseBodyMcpServer `json:"McpServer,omitempty" xml:"McpServer,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 824F80BA-1778-5D8A-BAFF-668A4D9C4CC7
@@ -59,31 +62,47 @@ func (s *GetMcpServerResponseBody) Validate() error {
 }
 
 type GetMcpServerResponseBodyMcpServer struct {
+	// The connection configuration for the MCP Server.
 	Config *GetMcpServerResponseBodyMcpServerConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The creator ID.
+	//
 	// example:
 	//
 	// 123456
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The creation time, provided as a timestamp in milliseconds.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 1780555634000
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The modification time, provided as a timestamp in milliseconds.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 1780555634000
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The modifier ID.
+	//
 	// example:
 	//
 	// 123456
 	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// The MCP Server name.
+	//
 	// example:
 	//
 	// my-mcp-server
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The visibility level. Valid values: TENANT (visible within the account), PROJECT (visible to specified projects), and USER (visible to specified users).
+	//
+	// example:
+	//
+	// TENANT
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
@@ -168,11 +187,20 @@ func (s *GetMcpServerResponseBodyMcpServer) Validate() error {
 }
 
 type GetMcpServerResponseBodyMcpServerConfig struct {
+	// The custom headers.
+	//
+	// example:
+	//
+	// {}
 	CustomHeaders map[string]interface{} `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty"`
+	// The transport protocol.
+	//
 	// example:
 	//
 	// SSE
 	Transport *string `json:"Transport,omitempty" xml:"Transport,omitempty"`
+	// The service address of the MCP Server.
+	//
 	// example:
 	//
 	// https://example.com/mcp/sse

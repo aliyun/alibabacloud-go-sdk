@@ -14,7 +14,7 @@ type iDeleteProjectResponseBody interface {
 }
 
 type DeleteProjectResponseBody struct {
-	// The request ID.
+	// The Request ID. Use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

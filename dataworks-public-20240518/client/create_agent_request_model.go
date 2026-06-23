@@ -34,24 +34,79 @@ type iCreateAgentRequest interface {
 }
 
 type CreateAgentRequest struct {
-	CallableAgents []*string              `json:"CallableAgents,omitempty" xml:"CallableAgents,omitempty" type:"Repeated"`
-	Description    *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName    *string                `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Metadata       map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Model          map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The list of sub-Agents that can be called by this Agent.
+	//
+	// example:
+	//
+	// -
+	CallableAgents []*string `json:"CallableAgents,omitempty" xml:"CallableAgents,omitempty" type:"Repeated"`
+	// The description of the Agent.
+	//
+	// example:
+	//
+	// 数据分析助手
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the Agent.
+	//
+	// example:
+	//
+	// 我的助手
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Extended metadata (key-value pairs).
+	//
+	// example:
+	//
+	// {}
+	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The model configuration.
+	//
+	// example:
+	//
+	// {
+	//
+	//           "modelName": "dataworks-public-bailian/qwen-max"
+	//
+	//         }
+	Model map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The name of the Agent. It must be unique under the current account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my-agent
-	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Skills       []*string `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
-	SystemPrompt *string   `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	Tools        []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of skills.
+	//
+	// example:
+	//
+	// -
+	Skills []*string `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	// The system prompt.
+	//
+	// example:
+	//
+	// 你是一个数据分析助手。
+	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
+	// The list of tools.
+	//
+	// example:
+	//
+	// -
+	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	// The visibility level.<br>
+	//
+	// `TENANT`: Visible within the account.<br>
+	//
+	// `PROJECT`: Visible to specified projects.<br>
+	//
+	// `USER`: Visible to specified users.
+	//
 	// example:
 	//
 	// TENANT
-	Visibility      *string                            `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	// The visibility scope. The corresponding field is selected based on Visibility.
 	VisibilityScope *CreateAgentRequestVisibilityScope `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty" type:"Struct"`
 }
 
@@ -172,8 +227,10 @@ func (s *CreateAgentRequest) Validate() error {
 }
 
 type CreateAgentRequestVisibilityScope struct {
+	// The list of visible project IDs. Takes effect when Visibility is `PROJECT`.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	UserIds    []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+	// The list of visible user IDs. Takes effect when Visibility is `USER`.
+	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateAgentRequestVisibilityScope) String() string {

@@ -20,7 +20,7 @@ type DeleteDataAssetTagResponseBody struct {
 	//
 	// example:
 	//
-	// 0bc1411515937635973****
+	// 0bc141151593763597*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	//

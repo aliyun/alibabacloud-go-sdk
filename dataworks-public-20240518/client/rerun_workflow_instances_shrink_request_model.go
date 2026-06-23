@@ -82,9 +82,9 @@ type RerunWorkflowInstancesShrinkRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Success
+	// - Success
 	//
-	// 	- Failure
+	// - Failure
 	//
 	// example:
 	//

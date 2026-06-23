@@ -48,9 +48,9 @@ type UpdateFileResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call succeeded. Valid values:
 	//
-	// 	- true: The call succeeded.
+	// - true: The call succeeded.
 	//
-	// 	- false: The call failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

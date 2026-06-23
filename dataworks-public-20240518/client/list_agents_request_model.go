@@ -18,15 +18,20 @@ type iListAgentsRequest interface {
 }
 
 type ListAgentsRequest struct {
+	// The request ID passed in by the caller. The value is returned as-is in the response.
+	//
 	// example:
 	//
 	// 4as3dasf654a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. Fixed value: 2.0.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string                  `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Params  *ListAgentsRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The parameters for this request.
+	Params *ListAgentsRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
 }
 
 func (s ListAgentsRequest) String() string {
@@ -74,14 +79,20 @@ func (s *ListAgentsRequest) Validate() error {
 }
 
 type ListAgentsRequestParams struct {
+	// The exact agent name to filter by. If not specified, all agents are returned.
+	//
 	// example:
 	//
 	// chat_cli_chatbi
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The number of entries per page. Default value: 50.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page, following the Alibaba Cloud OpenAPI convention. Do not specify this parameter for the first page. For subsequent pages, pass in the nextToken value returned in the previous response.
+	//
 	// example:
 	//
 	// 0

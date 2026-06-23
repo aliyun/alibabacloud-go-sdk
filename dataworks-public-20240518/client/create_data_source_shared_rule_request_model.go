@@ -28,11 +28,11 @@ type CreateDataSourceSharedRuleRequest struct {
 	//
 	// 144544
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// Share data sources to the target project environment, including
+	// The environment of the target workspace to which the data source is shared. Valid values:
 	//
-	// - Dev (Development Environment)
+	// - Dev: development environment
 	//
-	// - Prod (production environment)
+	// - Prod: production environment
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateDataSourceSharedRuleRequest struct {
 	//
 	// example:
 	//
-	// 1107550004253538
+	// 110755000****
 	SharedUser *string `json:"SharedUser,omitempty" xml:"SharedUser,omitempty"`
 	// The ID of the workspace to which you want to share the data source. You cannot share the data source to the workspace with which the data source is associated.
 	//

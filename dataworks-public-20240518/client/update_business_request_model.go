@@ -32,7 +32,7 @@ type UpdateBusinessRequest struct {
 	//
 	// example:
 	//
-	// 300000
+	// 300001
 	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
 	// The name of the workflow.
 	//
@@ -40,13 +40,13 @@ type UpdateBusinessRequest struct {
 	//
 	// example:
 	//
-	// MyBusiness
+	// firstBusiness
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
 	// The description of the workflow.
 	//
 	// example:
 	//
-	// modified from my first business
+	// modified from first business
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The owner of the workflow.
 	//
@@ -54,19 +54,19 @@ type UpdateBusinessRequest struct {
 	//
 	// example:
 	//
-	// 348428****
+	// 34842****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace page to obtain the workspace ID. You must configure either this parameter or the `ProjectIdentifier` parameter to determine the DataWorks workspace to which the operation is applied.
 	//
 	// example:
 	//
-	// 10000
+	// 10001
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace page to obtain the name. You must configure either this parameter or the `ProjectId` parameter to determine the DataWorks workspace to which the operation is applied.
 	//
 	// example:
 	//
-	// dw_project
+	// project_dw
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
 }
 

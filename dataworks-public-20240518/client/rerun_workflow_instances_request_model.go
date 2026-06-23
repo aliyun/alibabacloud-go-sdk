@@ -82,9 +82,9 @@ type RerunWorkflowInstancesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Success
+	// - Success
 	//
-	// 	- Failure
+	// - Failure
 	//
 	// example:
 	//

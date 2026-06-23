@@ -32,30 +32,65 @@ type iCustomAttribute interface {
 }
 
 type CustomAttribute struct {
-	Comment    *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Description of the custom attribute. It must be fewer than 256 characters.
+	//
+	// example:
+	//
+	// this is a comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Creation time as a millisecond UNIX timestamp.
+	//
+	// example:
+	//
+	// 1750817692000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether this attribute is displayed on the page. Default is true.
+	//
 	// example:
 	//
 	// true
 	DisplayEnabled *bool `json:"DisplayEnabled,omitempty" xml:"DisplayEnabled,omitempty"`
+	// Display name for the custom attribute. It must be fewer than 128 characters.
+	//
 	// example:
 	//
 	// 业务负责人
-	DisplayName *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// List of applicable entity types. Supports exact entity types and wildcard patterns such as `*-table` and `*-column`, for example:
+	//
+	// - dataworks-project
+	//
+	// - dataworks-dataset
+	//
+	// - maxcompute-table
+	//
+	// - maxcompute-column
 	EntityTypes []*string `json:"EntityTypes,omitempty" xml:"EntityTypes,omitempty" type:"Repeated"`
+	// Custom attribute ID. It must match the regular expression ^custom-attribute:[A-Za-z][A-Za-z0-9_]{0,98}$. The part after `custom-attribute:` must be fewer than 100 characters.
+	//
 	// example:
 	//
 	// custom-attribute:biz_owner
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	ModifyTime *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Modification time as a millisecond UNIX timestamp.
+	//
+	// example:
+	//
+	// 1763380628000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Indicates whether this attribute can be used as a filter on the search page (only affects search in Data Map). Only ENUM attributes can be set to true. Default is false.
+	//
 	// example:
 	//
 	// false
 	SearchFilterEnabled *bool `json:"SearchFilterEnabled,omitempty" xml:"SearchFilterEnabled,omitempty"`
+	// Custom attribute type. Supported types are ENUM, TEXT, and HYPERLINK.
+	//
 	// example:
 	//
 	// TEXT
-	Type       *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Enumeration values. Required when Type is ENUM. Not supported for TEXT or HYPERLINK types.
 	ValueEnums []*string `json:"ValueEnums,omitempty" xml:"ValueEnums,omitempty" type:"Repeated"`
 }
 

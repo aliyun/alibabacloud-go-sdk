@@ -142,17 +142,17 @@ type ListFilesRequest struct {
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
 	// The functional module to which the file belongs. Valid values:
 	//
-	// 	- NORMAL: Data Studio
+	// - NORMAL: Data Studio
 	//
-	// 	- MANUAL: Manually triggered node
+	// - MANUAL: Manually triggered node
 	//
-	// 	- MANUAL_BIZ: Manually triggered workflow
+	// - MANUAL_BIZ: Manually triggered workflow
 	//
-	// 	- SKIP: Dry-run scheduling in Data Studio
+	// - SKIP: Dry-run scheduling in Data Studio
 	//
-	// 	- ADHOCQUERY: Ad hoc query
+	// - ADHOCQUERY: Ad hoc query
 	//
-	// 	- COMPONENT: Component management
+	// - COMPONENT: Component management
 	//
 	// example:
 	//

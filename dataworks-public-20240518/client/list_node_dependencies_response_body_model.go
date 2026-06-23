@@ -16,9 +16,9 @@ type iListNodeDependenciesResponseBody interface {
 }
 
 type ListNodeDependenciesResponseBody struct {
-	// The pagination information.
+	// The pagination settings.
 	PagingInfo *ListNodeDependenciesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *ListNodeDependenciesResponseBody) Validate() error {
 }
 
 type ListNodeDependenciesResponseBodyPagingInfo struct {
-	// The list of dependent nodes.
+	// A list of dependent nodes.
 	Nodes []*ListNodeDependenciesResponseBodyPagingInfoNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// The page number.
+	// The number of the page to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of matching entries.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodes struct {
-	// The timestamp when the node was created.
+	// The creation timestamp of the data development node.
 	//
 	// example:
 	//
@@ -156,63 +156,65 @@ type ListNodeDependenciesResponseBodyPagingInfoNodes struct {
 	//
 	// Node description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The unique identifier of the Data Studio node.
+	// The unique ID of the data development node.
 	//
-	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// 	Notice:
+	//
+	// The data type for this parameter is `Long` for SDKs earlier than v8.0.0 and `String` for SDK v8.0.0 and later. **This change does not affect normal usage, as the parameter\\"s data type matches the SDK definition.*	- However, upgrading from a pre-8.0.0 SDK version may cause a compilation error, requiring you to manually update the data type in your code.
 	//
 	// example:
 	//
 	// 723932906364267XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The node input.
+	// Details about the node\\"s inputs.
 	Inputs *ListNodeDependenciesResponseBodyPagingInfoNodesInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
-	// The timestamp when the node was last modified.
+	// The last modification timestamp of the data development node.
 	//
 	// example:
 	//
 	// 1724505917000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the node.
+	// The name of the data development node.
 	//
 	// example:
 	//
 	// Node name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output of the node.
+	// Details about the node\\"s outputs.
 	Outputs *ListNodeDependenciesResponseBodyPagingInfoNodesOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
-	// The owner of the node.
+	// The owner of the data development node.
 	//
 	// example:
 	//
 	// 110755000425XXXX
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The ID of the workspace to which the node belongs.
+	// The ID of the project that contains the node.
 	//
 	// example:
 	//
 	// 65133
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The scheduling type.
+	// The execution mode of the node.
 	//
 	// Valid values:
 	//
-	// 	- Normal: Nodes are scheduled as expected.
+	// - `Normal`: The node runs as normal.
 	//
-	// 	- Pause: Nodes are paused, and the running of their descendant nodes is blocked.
+	// - `Pause`: The node is paused. This action blocks the execution of downstream nodes that depend on this node.
 	//
-	// 	- Skip: Nodes are dry run. The system does not actually run the nodes but directly prompts that the nodes are successfully run. The running duration of the nodes is 0 seconds. In addition, the nodes do not occupy resources or block the running of their descendant nodes.
+	// - `Skip`: The node is skipped (dry run). The system immediately returns a success status with an execution time of 0 seconds. This action does not block downstream nodes or consume resources.
 	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The information about the resource group.
+	// Details about the resource group.
 	RuntimeResource *ListNodeDependenciesResponseBodyPagingInfoNodesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// The script information.
+	// Details about the script.
 	Script *ListNodeDependenciesResponseBodyPagingInfoNodesScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	// The scheduling policy.
+	// The scheduling strategy.
 	Strategy *ListNodeDependenciesResponseBodyPagingInfoNodesStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
-	// The tags. This parameter is not in use.
+	// A list of tags. This parameter is currently not in use.
 	Tags []*ListNodeDependenciesResponseBodyPagingInfoNodesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the scheduling task.
 	//
@@ -434,13 +436,13 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodes) Validate() error {
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesDataSource struct {
-	// The name of the data source.
+	// The data source name.
 	//
 	// example:
 	//
 	// odps_first
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the data source.
+	// The data source type.
 	//
 	// example:
 	//
@@ -479,11 +481,11 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesDataSource) Validate() e
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesInputs struct {
-	// The node output list.
+	// A list of node outputs.
 	NodeOutputs []*ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs `json:"NodeOutputs,omitempty" xml:"NodeOutputs,omitempty" type:"Repeated"`
-	// The table list.
+	// A list of tables.
 	Tables []*ListNodeDependenciesResponseBodyPagingInfoNodesInputsTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	// The variable list.
+	// A list of variables.
 	Variables []*ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -554,12 +556,17 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputs) Validate() error
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs struct {
-	// The output of the node.
+	// The node output.
 	//
 	// example:
 	//
 	// 860438872620113XXXX
-	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// A human-readable name for the node\\"s target data table. This identifier is for display purposes only and does not enforce logical constraints.
+	//
+	// example:
+	//
+	// testProject.testTableName
 	RefTableName *string `json:"RefTableName,omitempty" xml:"RefTableName,omitempty"`
 }
 
@@ -594,7 +601,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs) Valid
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesInputsTables struct {
-	// The table ID.
+	// The ID of the table.
 	//
 	// example:
 	//
@@ -630,9 +637,11 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables struct {
 	//
 	// Variable
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The variable ID.
+	// The ID of the variable.
 	//
-	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// 	Notice:
+	//
+	// The data type for this parameter is `Long` for SDKs earlier than v8.0.0 and `String` for SDK v8.0.0 and later. **This change does not affect normal usage, as the parameter\\"s data type matches the SDK definition.*	- However, upgrading from a pre-8.0.0 SDK version may cause a compilation error, requiring you to manually update the data type in your code.
 	//
 	// example:
 	//
@@ -646,15 +655,15 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node to which the variable belongs.
 	Node *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariablesNode `json:"Node,omitempty" xml:"Node,omitempty" type:"Struct"`
-	// The scope of the variable. Valid values:
+	// The scope of the variable.
 	//
-	// 	- NodeParameter
+	// - NodeParameter
 	//
-	// 	- NodeContext
+	// - NodeContext
 	//
-	// 	- Workflow
+	// - Workflow
 	//
-	// 	- Workspace
+	// - Workspace
 	//
 	// example:
 	//
@@ -662,21 +671,21 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables struct {
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	// The type of the variable.
 	//
-	// 	- NoKvVariableExpression
+	// - NoKvVariableExpression
 	//
-	// 	- Constant
+	// - Constant
 	//
-	// 	- PassThrough
+	// - PassThrough
 	//
-	// 	- System
+	// - System
 	//
-	// 	- NodeOutput
+	// - NodeOutput
 	//
 	// example:
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The variable name.
+	// The value of the variable.
 	//
 	// example:
 	//
@@ -765,7 +774,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables) Validat
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariablesNode struct {
-	// The output of the node.
+	// The node output.
 	//
 	// example:
 	//
@@ -795,11 +804,11 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariablesNode) Val
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesOutputs struct {
-	// The node output list.
+	// A list of node outputs.
 	NodeOutputs []*ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs `json:"NodeOutputs,omitempty" xml:"NodeOutputs,omitempty" type:"Repeated"`
-	// The table list.
+	// A list of tables.
 	Tables []*ListNodeDependenciesResponseBodyPagingInfoNodesOutputsTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	// The variables.
+	// A list of variables.
 	Variables []*ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -870,12 +879,17 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputs) Validate() erro
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs struct {
-	// The output of the node.
+	// The node output.
 	//
 	// example:
 	//
 	// 463497880880954XXXX
-	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// A human-readable name for the node\\"s target data table. This identifier is for display purposes only and does not enforce logical constraints.
+	//
+	// example:
+	//
+	// testProject.testTableName
 	RefTableName *string `json:"RefTableName,omitempty" xml:"RefTableName,omitempty"`
 }
 
@@ -910,7 +924,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs) Vali
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesOutputsTables struct {
-	// The table ID.
+	// The ID of the table.
 	//
 	// example:
 	//
@@ -946,15 +960,17 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables struct {
 	//
 	// Variable
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The variable ID.
+	// The ID of the variable.
 	//
-	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// 	Notice:
+	//
+	// The data type for this parameter is `Long` for SDKs earlier than v8.0.0 and `String` for SDK v8.0.0 and later. **This change does not affect normal usage, as the parameter\\"s data type matches the SDK definition.*	- However, upgrading from a pre-8.0.0 SDK version may cause a compilation error, requiring you to manually update the data type in your code.
 	//
 	// example:
 	//
 	// 543217824470354XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The variable name.
+	// The name of the variable.
 	//
 	// example:
 	//
@@ -962,37 +978,37 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node to which the variable belongs.
 	Node *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariablesNode `json:"Node,omitempty" xml:"Node,omitempty" type:"Struct"`
-	// The scope of the variable. Valid values:
+	// The scope of the variable.
 	//
-	// 	- NodeParameter
+	// - NodeParameter
 	//
-	// 	- NodeContext
+	// - NodeContext
 	//
-	// 	- Workflow
+	// - Workflow
 	//
-	// 	- Workspace
+	// - Workspace
 	//
 	// example:
 	//
 	// NodeParameter
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The type of the variable. Valid values:
+	// The type of the variable.
 	//
-	// 	- NoKvVariableExpression
+	// - NoKvVariableExpression
 	//
-	// 	- Constant
+	// - Constant
 	//
-	// 	- PassThrough
+	// - PassThrough
 	//
-	// 	- System
+	// - System
 	//
-	// 	- NodeOutput
+	// - NodeOutput
 	//
 	// example:
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The variable name.
+	// The value of the variable.
 	//
 	// example:
 	//
@@ -1081,7 +1097,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables) Valida
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariablesNode struct {
-	// The node output corresponding to the variable.
+	// The node output that corresponds to the variable.
 	//
 	// example:
 	//
@@ -1111,7 +1127,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariablesNode) Va
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesRuntimeResource struct {
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -1143,19 +1159,21 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesRuntimeResource) Validat
 type ListNodeDependenciesResponseBodyPagingInfoNodesScript struct {
 	// The ID of the script.
 	//
-	// >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// 	Notice:
+	//
+	// The data type for this parameter is `Long` for SDKs earlier than v8.0.0 and `String` for SDK v8.0.0 and later. **This change does not affect normal usage, as the parameter\\"s data type matches the SDK definition.*	- However, upgrading from a pre-8.0.0 SDK version may cause a compilation error, requiring you to manually update the data type in your code.
 	//
 	// example:
 	//
 	// 853573334108680XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The script path.
+	// The path of the script.
 	//
 	// example:
 	//
 	// root/demo
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// Runtime
+	// The runtime environment.
 	Runtime *ListNodeDependenciesResponseBodyPagingInfoNodesScriptRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
 }
 
@@ -1204,7 +1222,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesScript) Validate() error
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesScriptRuntime struct {
-	// The command used to distinguish node types.
+	// The command that is used to distinguish between node types.
 	//
 	// example:
 	//
@@ -1236,15 +1254,15 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesScriptRuntime) Validate(
 type ListNodeDependenciesResponseBodyPagingInfoNodesStrategy struct {
 	// The instance generation mode.
 	//
-	// 	- T+1
+	// - T+1
 	//
-	// 	- Immediately
+	// - Immediately
 	//
 	// example:
 	//
 	// T+1
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
-	// The interval between retries after failure. Unit: milliseconds.
+	// The retry interval after a failure, in milliseconds.
 	//
 	// example:
 	//
@@ -1252,23 +1270,23 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesStrategy struct {
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
 	// The rerun mode.
 	//
-	// 	- Allowed
+	// - Allowed
 	//
-	// 	- Denied
+	// - Denied
 	//
-	// 	- FailureAllowed
+	// - FailureAllowed
 	//
 	// example:
 	//
 	// Allowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of retries after failure.
+	// The number of retries after a failure.
 	//
 	// example:
 	//
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
-	// The timeout period. Unit: milliseconds.
+	// The timeout period, in milliseconds.
 	//
 	// example:
 	//
@@ -1379,27 +1397,29 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesTags) Validate() error {
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesTrigger struct {
-	// The cron expression for scheduling.
+	// The cron expression used for scheduling.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The effective end time of the schedule, in the format yyyy-MM-dd HH:mm:ss.
+	// The time when scheduling expires, in `yyyy-MM-dd HH:mm:ss` format.
 	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The unique identifier of the trigger.
+	// The unique ID of the trigger.
 	//
-	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// 	Notice:
+	//
+	// The data type for this parameter is `Long` for SDKs earlier than v8.0.0 and `String` for SDK v8.0.0 and later. **This change does not affect normal usage, as the parameter\\"s data type matches the SDK definition.*	- However, upgrading from a pre-8.0.0 SDK version may cause a compilation error, requiring you to manually update the data type in your code.
 	//
 	// example:
 	//
 	// 543680677872062XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The effective start time of the schedule, in the format yyyy-MM-dd HH:mm:ss.
+	// The time when scheduling becomes effective, in `yyyy-MM-dd HH:mm:ss` format.
 	//
 	// example:
 	//
@@ -1415,11 +1435,11 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesTrigger struct {
 	//
 	// Valid values:
 	//
-	// 	- Scheduler: Periodic scheduling.
+	// - `Scheduler`: Periodic scheduling.
 	//
-	// 	- Manual: Manual scheduling.
+	// - `Manual`: Manual scheduling.
 	//
-	// 	- Streaming: Streaming scheduler.
+	// - `Streaming`: Stream-based scheduling.
 	//
 	// example:
 	//

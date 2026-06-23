@@ -16,13 +16,13 @@ type iListDataQualityRuleTemplatesResponseBody interface {
 }
 
 type ListDataQualityRuleTemplatesResponseBody struct {
-	// The pagination information.
+	// The paginated query result of data quality rule templates.
 	PagingInfo *ListDataQualityRuleTemplatesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The API request ID.
 	//
 	// example:
 	//
-	// 691CA452-D37A-4ED0-9441
+	// 691CA452-D37A-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -62,21 +62,21 @@ func (s *ListDataQualityRuleTemplatesResponseBody) Validate() error {
 }
 
 type ListDataQualityRuleTemplatesResponseBodyPagingInfo struct {
-	// The templates.
+	// The list of rule templates.
 	DataQualityRuleTemplates []*ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates `json:"DataQualityRuleTemplates,omitempty" xml:"DataQualityRuleTemplates,omitempty" type:"Repeated"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Total number of entries
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -142,39 +142,39 @@ func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates struct {
-	// Sample verification settings
+	// The sample verification settings.
 	CheckingConfig *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
-	// Rule template Code
+	// The code of the rule template.
 	//
 	// example:
 	//
 	// USER_DEFINED:123
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The directory in which the template is stored. Slashes (/) are used to separate directory levels. The name of each directory level can be up to 1,024 characters in length. It cannot contain whitespace characters or slashes (/).
+	// The category directory in which the custom template is stored. Levels are separated by forward slashes (/). Each level name can be up to 1,024 characters in length and cannot contain whitespace characters or slashes.
 	//
 	// example:
 	//
 	// /ods/order_data
 	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
-	// The name of the template. The name can be up to 512 characters in length and can contain digits, letters, and punctuation marks.
+	// The name of the rule template. It can be a combination of digits, letters, Chinese characters, and half-width or full-width punctuation marks, and can be up to 512 characters in length.
 	//
 	// example:
 	//
 	// Table row Count Verification
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// DataWorks workspace ID
+	// The DataWorks workspace ID.
 	//
 	// example:
 	//
 	// 2043
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Settings required for sample collection
+	// The settings required for sample collection.
 	SamplingConfig *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// Available range of templates:
+	// The available scope of the template:
 	//
-	// - Tenant: all tenants are available
+	// - Tenant: available to all tenants
 	//
-	// - Project: only available in the current Project
+	// - Project: available only in the current project
 	//
 	// example:
 	//
@@ -268,13 +268,13 @@ func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTempla
 }
 
 type ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig struct {
-	// Some types of thresholds need to query some reference samples, and then summarize the values of the reference samples to obtain the threshold for comparison. Here, an expression is used to represent the query method of the reference samples.
+	// Some types of thresholds require reference samples to be queried, and then the values of the reference samples are aggregated to obtain the threshold for comparison. An expression is used here to indicate the query method of the reference samples.
 	//
 	// example:
 	//
 	// { "bizdate": [ "-1", "-7", "-1m" ] }
 	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
-	// Threshold Calculation method
+	// The threshold calculation method.
 	//
 	// - Fixed
 	//
@@ -325,49 +325,49 @@ func (s *ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTempla
 }
 
 type ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig struct {
-	// The name of the sampled metric.
+	// The name of the sampling metric.
 	//
-	// - Count: number of table rows
+	// - Count: the number of table rows
 	//
-	// - Min: minimum value of the field
+	// - Min: the minimum value of the field
 	//
-	// - Max: The maximum value of the field.
+	// - Max: the maximum value of the field
 	//
-	// - Avg: field mean
+	// - Avg: the average value of the field
 	//
-	// - DistinctCount: number of unique field values
+	// - DistinctCount: the number of unique values of the field
 	//
-	// - DistinctPercent: the ratio of the number of unique field values to the number of data rows.
+	// - DistinctPercent: the ratio of the number of unique values of the field to the number of data rows
 	//
-	// - DuplicatedCount: number of duplicate field values
+	// - DuplicatedCount: the number of duplicate values of the field
 	//
-	// - DuplicatedPercent: the ratio of the number of duplicate field values to the number of data rows.
+	// - DuplicatedPercent: the ratio of the number of duplicate values of the field to the number of data rows
 	//
-	// - TableSize: table size
+	// - TableSize: the size of the table
 	//
-	// - NullValueCount: number of rows with empty fields
+	// - NullValueCount: the number of rows in which the field is null
 	//
-	// - NullValuePercent: the proportion of fields that are empty.
+	// - NullValuePercent: the ratio of rows in which the field is null
 	//
-	// - GroupCount: aggregate each value by field value and the corresponding number of data rows
+	// - GroupCount: each value and the corresponding number of data rows after aggregation by field value
 	//
-	// - CountNotIn: the enumerated value does not match the number of rows.
+	// - CountNotIn: the number of rows in which the enumeration value does not match
 	//
-	// - CountDistinctNotIn: the number of unique values that the enumerated values do not match.
+	// - CountDistinctNotIn: the number of unique values in which the enumeration value does not match
 	//
-	// - UserDefinedSql: use custom SQL to collect samples
+	// - UserDefinedSql: collect samples by using custom SQL
 	//
 	// example:
 	//
 	// Max
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// Parameters required for sample collection
+	// The parameters required for sample collection.
 	//
 	// example:
 	//
 	// {"Sql": "select count(1) from table;"}
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
-	// Before executing the sample statement, insert some runtime parameter setting statements, which can be up to 1000 characters in length. Currently, only MaxCompute are supported.
+	// The runtime parameter setting statements that are inserted and executed before the sampling statement is executed. This parameter can be up to 1,000 characters in length. Currently, only MaxCompute is supported.
 	//
 	// example:
 	//

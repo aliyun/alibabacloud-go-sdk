@@ -40,13 +40,13 @@ type CreateDataAssetTagRequest struct {
 	Managers []*string `json:"Managers,omitempty" xml:"Managers,omitempty" type:"Repeated"`
 	// The type of the tag value. Valid values:
 	//
-	// 	- Boolean
+	// - Boolean
 	//
-	// 	- Int
+	// - Int
 	//
-	// 	- String
+	// - String
 	//
-	// 	- Double
+	// - Double
 	//
 	// example:
 	//

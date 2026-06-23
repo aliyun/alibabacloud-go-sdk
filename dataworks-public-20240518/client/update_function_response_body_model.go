@@ -20,7 +20,7 @@ type UpdateFunctionResponseBody struct {
 	//
 	// example:
 	//
-	// 12123960-CB2C-5086-868E-C6C1D024XXXX
+	// 12123960-CB2C-5086-868E-C6C1D024****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//

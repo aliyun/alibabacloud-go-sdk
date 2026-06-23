@@ -20,13 +20,13 @@ type RemoveEntityFromMetaCollectionRequest struct {
 	//
 	// example:
 	//
-	// dlf-table:123456789:test_catalog:test_database::test_table
+	// maxcompute-table:::project_name:[schema_name]:table_name
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The collection ID. You can call the ListMetaCollections operation to query the ID.
 	//
 	// example:
 	//
-	// category.123
+	// as78d756asd
 	MetaCollectionId *string `json:"MetaCollectionId,omitempty" xml:"MetaCollectionId,omitempty"`
 }
 

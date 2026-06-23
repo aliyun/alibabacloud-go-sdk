@@ -32,9 +32,9 @@ type ListPartitionsRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The sort order. Default: Asc. Valid values:
 	//
-	// 	- Asc: Ascending order.
+	// - Asc: Ascending order.
 	//
-	// 	- Desc: Descending order.
+	// - Desc: Descending order.
 	//
 	// example:
 	//
@@ -54,15 +54,15 @@ type ListPartitionsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The sort field. Default value: CreateTime. Valid values:
 	//
-	// 	- CreateTime: Creation time. Supported only for MaxCompute tables.
+	// - CreateTime: Creation time. Supported only for MaxCompute tables.
 	//
-	// 	- ModifyTime: Modification time. Supported only for MaxCompute tables.
+	// - ModifyTime: Modification time. Supported only for MaxCompute tables.
 	//
-	// 	- Name: Name. Used for HMS-type tables.
+	// - Name: Name. Used for HMS-type tables.
 	//
-	// 	- RecordCount: Record count. Supported only for MaxCompute tables.
+	// - RecordCount: Record count. Supported only for MaxCompute tables.
 	//
-	// 	- DataSize: Storage size. Supported only for MaxCompute tables.
+	// - DataSize: Storage size. Supported only for MaxCompute tables.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListPartitionsRequest struct {
 	//
 	// example:
 	//
-	// maxcompute-column:11075xxxx::test_project:test_schema:test_table
+	// maxcompute-table:::project_name:[schema_name]:table_name
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
 }
 

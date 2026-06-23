@@ -20,7 +20,7 @@ type CreateMetaCollectionResponseBody struct {
 	//
 	// example:
 	//
-	// category.123
+	// 4as3dasf654a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The request ID.
 	//

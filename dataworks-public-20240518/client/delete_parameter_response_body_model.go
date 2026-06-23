@@ -16,10 +16,14 @@ type iDeleteParameterResponseBody interface {
 }
 
 type DeleteParameterResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request was successful.
+	//
 	// example:
 	//
 	// true

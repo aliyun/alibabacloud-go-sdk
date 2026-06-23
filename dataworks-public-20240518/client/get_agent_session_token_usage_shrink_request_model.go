@@ -18,14 +18,19 @@ type iGetAgentSessionTokenUsageShrinkRequest interface {
 }
 
 type GetAgentSessionTokenUsageShrinkRequest struct {
+	// The ID provided by the requester, which is echoed in the response.
+	//
 	// example:
 	//
 	// 1033814166
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. The value is always 2.0.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc      *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// Business parameters.
 	ParamsShrink *string `json:"Params,omitempty" xml:"Params,omitempty"`
 }
 

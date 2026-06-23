@@ -283,9 +283,9 @@ type CreateDataQualityScanRequestComputeResource struct {
 	//
 	// Valid values:
 	//
-	// 	- Prod: production environment .
+	// - Prod: production environment .
 	//
-	// 	- Dev: development environment.
+	// - Dev: development environment.
 	//
 	// example:
 	//
@@ -350,11 +350,11 @@ type CreateDataQualityScanRequestComputeResourceRuntime struct {
 	//
 	// Valid values:
 	//
-	// 	- Hive: Hive SQL
+	// - Hive: Hive SQL
 	//
-	// 	- Spark: Spark SQL
+	// - Spark: Spark SQL
 	//
-	// 	- Kyuubi
+	// - Kyuubi
 	//
 	// example:
 	//
@@ -426,7 +426,7 @@ type CreateDataQualityScanRequestHooks struct {
 	//
 	// Valid values:
 	//
-	// 	- BlockTaskInstance: Blocks the scheduling of the task instance.
+	// - BlockTaskInstance: Blocks the scheduling of the task instance.
 	//
 	// example:
 	//
@@ -576,9 +576,9 @@ type CreateDataQualityScanRequestTrigger struct {
 	//
 	// Valid values:
 	//
-	// 	- ByManual: Manual trigger. This is the default setting.
+	// - ByManual: Manual trigger. This is the default setting.
 	//
-	// 	- BySchedule: Triggered by a scheduled task instance.
+	// - BySchedule: Triggered by a scheduled task instance.
 	//
 	// example:
 	//

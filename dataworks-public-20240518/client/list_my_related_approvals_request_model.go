@@ -32,37 +32,68 @@ type iListMyRelatedApprovalsRequest interface {
 }
 
 type ListMyRelatedApprovalsRequest struct {
+	// The permissions.
 	AccessTypes []*string `json:"AccessTypes,omitempty" xml:"AccessTypes,omitempty" type:"Repeated"`
+	// The resource type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The end of the application time range, specified as a millisecond timestamp.
+	//
 	// example:
 	//
 	// 1779724799999
-	EndTime *int64                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Filters approvals by the specified principal.
 	Grantee *ListMyRelatedApprovalsRequestGrantee `json:"Grantee,omitempty" xml:"Grantee,omitempty" type:"Struct"`
+	// The pagination token that acts as a cursor to retrieve the next page of results.
+	//
 	// example:
 	//
 	// eyJpZCI6MTIzfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 200.
+	//
 	// example:
 	//
 	// 20
-	PageSize *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The resource declaration.
 	Resource *ListMyRelatedApprovalsRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	// The resource type, specified as a leaf node name. Multiple values are supported because a single business semantic can be mapped to multiple leaf node names.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ["table", "column"]
 	ResourceType []*string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" type:"Repeated"`
+	// The start of the application time range, specified as a millisecond timestamp.
+	//
 	// example:
 	//
 	// 1771948800000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Filters the results by approval status. Valid values:
+	//
+	// - `WaitApproval`: Pending approval
+	//
+	// - `Confirmed`: Pending authorization
+	//
+	// - `RejectApproval`: Approval rejected
+	//
+	// - `AuthorizeSucceed`: Authorization succeeded
+	//
+	// - `AuthorizeFailed`: Authorization failed
+	//
+	// - `Deleted`: Deleted
+	//
+	// - `Canceled`: Withdrawn
+	//
 	// example:
 	//
 	// WAIT_APPROVAL
@@ -182,10 +213,42 @@ func (s *ListMyRelatedApprovalsRequest) Validate() error {
 }
 
 type ListMyRelatedApprovalsRequestGrantee struct {
+	// The ID of the principal. The format varies based on the value of `PrincipalType`.
+	//
+	// - If `PrincipalType` is `RamUser`, this parameter is the Dataworks user ID.
+	//
+	// - If `PrincipalType` is `RamRole`, this parameter is a Dataworks user ID that starts with `ROLE_`.
+	//
+	// - If `PrincipalType` is `DataworksTenantMember`, this parameter is the Dataworks user ID.
+	//
+	// - If `PrincipalType` is `DataworksTenantRole`, this parameter is the Dataworks tenant `roleCode`.
+	//
+	// - If `PrincipalType` is `DataworksProjectRole`, this parameter is the Dataworks workspace `roleCode`.
+	//
+	// - If `PrincipalType` is `DataworksProjectMember`, this parameter is the Dataworks user ID.
+	//
+	// - If `PrincipalType` is `DlfRole`, this parameter is the DlfNext role name.
+	//
 	// example:
 	//
 	// ROLE_3133343434
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The type of the principal. Valid values:
+	//
+	// - `RamRole`
+	//
+	// - `RamUser`
+	//
+	// - `DataworksTenantMember`
+	//
+	// - `DataworksTenantRole`
+	//
+	// - `DataworksProjectMember`
+	//
+	// - `DataworksProjectRole`
+	//
+	// - `DlfRole`
+	//
 	// example:
 	//
 	// RamRole
@@ -223,15 +286,20 @@ func (s *ListMyRelatedApprovalsRequestGrantee) Validate() error {
 }
 
 type ListMyRelatedApprovalsRequestResource struct {
+	// The `name` of the `ResourceSchema` used to parse the resource.
+	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The `version` of the `ResourceSchema` used to parse the resource.
+	//
 	// example:
 	//
 	// v1.0.0
-	DefVersion *string                `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
-	MetaData   map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	DefVersion *string `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
+	// The resource metadata. The `ResourceSchema` defines its content.
+	MetaData map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 }
 
 func (s ListMyRelatedApprovalsRequestResource) String() string {

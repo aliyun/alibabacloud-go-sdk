@@ -34,24 +34,79 @@ type iCreateAgentShrinkRequest interface {
 }
 
 type CreateAgentShrinkRequest struct {
+	// The list of sub-Agents that can be called by this Agent.
+	//
+	// example:
+	//
+	// -
 	CallableAgentsShrink *string `json:"CallableAgents,omitempty" xml:"CallableAgents,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName          *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	MetadataShrink       *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	ModelShrink          *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The description of the Agent.
+	//
+	// example:
+	//
+	// 数据分析助手
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the Agent.
+	//
+	// example:
+	//
+	// 我的助手
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Extended metadata (key-value pairs).
+	//
+	// example:
+	//
+	// {}
+	MetadataShrink *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The model configuration.
+	//
+	// example:
+	//
+	// {
+	//
+	//           "modelName": "dataworks-public-bailian/qwen-max"
+	//
+	//         }
+	ModelShrink *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The name of the Agent. It must be unique under the current account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my-agent
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of skills.
+	//
+	// example:
+	//
+	// -
 	SkillsShrink *string `json:"Skills,omitempty" xml:"Skills,omitempty"`
+	// The system prompt.
+	//
+	// example:
+	//
+	// 你是一个数据分析助手。
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	ToolsShrink  *string `json:"Tools,omitempty" xml:"Tools,omitempty"`
+	// The list of tools.
+	//
+	// example:
+	//
+	// -
+	ToolsShrink *string `json:"Tools,omitempty" xml:"Tools,omitempty"`
+	// The visibility level.<br>
+	//
+	// `TENANT`: Visible within the account.<br>
+	//
+	// `PROJECT`: Visible to specified projects.<br>
+	//
+	// `USER`: Visible to specified users.
+	//
 	// example:
 	//
 	// TENANT
-	Visibility            *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	// The visibility scope. The corresponding field is selected based on Visibility.
 	VisibilityScopeShrink *string `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty"`
 }
 

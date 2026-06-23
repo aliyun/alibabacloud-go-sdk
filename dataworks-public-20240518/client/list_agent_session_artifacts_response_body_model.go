@@ -16,8 +16,9 @@ type iListAgentSessionArtifactsResponseBody interface {
 }
 
 type ListAgentSessionArtifactsResponseBody struct {
+	// The JSON-RPC response.
 	JsonRpcResponse *ListAgentSessionArtifactsResponseBodyJsonRpcResponse `json:"JsonRpcResponse,omitempty" xml:"JsonRpcResponse,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,15 +62,20 @@ func (s *ListAgentSessionArtifactsResponseBody) Validate() error {
 }
 
 type ListAgentSessionArtifactsResponseBodyJsonRpcResponse struct {
+	// The ID passed by the caller. The value is returned as-is in the response.
+	//
 	// example:
 	//
 	// 28477817
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. Fixed value: 2.0.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string                                                     `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Result  *ListAgentSessionArtifactsResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The paginated information of artifacts.
+	Result *ListAgentSessionArtifactsResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListAgentSessionArtifactsResponseBodyJsonRpcResponse) String() string {
@@ -117,11 +123,16 @@ func (s *ListAgentSessionArtifactsResponseBodyJsonRpcResponse) Validate() error 
 }
 
 type ListAgentSessionArtifactsResponseBodyJsonRpcResponseResult struct {
+	// The list of artifacts.
 	Artifacts []*ListAgentSessionArtifactsResponseBodyJsonRpcResponseResultArtifacts `json:"Artifacts,omitempty" xml:"Artifacts,omitempty" type:"Repeated"`
+	// The actual number of entries returned per page.
+	//
 	// example:
 	//
 	// 29
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page. The value is null if there are no more pages.
+	//
 	// example:
 	//
 	// CAESExFsbyH...
@@ -177,14 +188,20 @@ func (s *ListAgentSessionArtifactsResponseBodyJsonRpcResponseResult) Validate() 
 }
 
 type ListAgentSessionArtifactsResponseBodyJsonRpcResponseResultArtifacts struct {
+	// The name of the artifact.
+	//
 	// example:
 	//
 	// mock_report.md
 	ArtifactName *string `json:"ArtifactName,omitempty" xml:"ArtifactName,omitempty"`
+	// The path of the artifact.
+	//
 	// example:
 	//
 	// mock/mock_report.md
 	ArtifactPath *string `json:"ArtifactPath,omitempty" xml:"ArtifactPath,omitempty"`
+	// The type of the artifact, which is typically the file extension.
+	//
 	// example:
 	//
 	// md

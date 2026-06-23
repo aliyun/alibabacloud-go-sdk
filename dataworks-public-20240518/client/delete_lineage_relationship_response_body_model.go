@@ -24,9 +24,9 @@ type DeleteLineageRelationshipResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: success.
+	// - true: success.
 	//
-	// 	- false: failure.
+	// - false: failure.
 	//
 	// example:
 	//

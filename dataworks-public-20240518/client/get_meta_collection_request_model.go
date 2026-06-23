@@ -20,7 +20,7 @@ type GetMetaCollectionRequest struct {
 	//
 	// example:
 	//
-	// category.123
+	// as78d756asd
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

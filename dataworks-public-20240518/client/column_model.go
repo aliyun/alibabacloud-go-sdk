@@ -35,22 +35,26 @@ type Column struct {
 	// Business metadata.
 	BusinessMetadata *ColumnBusinessMetadata `json:"BusinessMetadata,omitempty" xml:"BusinessMetadata,omitempty" type:"Struct"`
 	// The comment.
+	//
+	// example:
+	//
+	// 字段1
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Specifies whether the column is a foreign key (only supported by MaxCompute).
+	// Indicates whether the field is a foreign key. Only MaxCompute supports this property.
 	//
 	// example:
 	//
 	// false
 	ForeignKey *bool `json:"ForeignKey,omitempty" xml:"ForeignKey,omitempty"`
-	// The ID. For more information, see [Description of concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	// The ID. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
 	//
-	// The format is: `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database name}:${Schema name}:${Table Name}:${Column name}`. Use empty strings as placeholders for non-existent hierarchy levels.
+	// The format is `${EntityType}:${instance ID or URL-encoded connection string}:${data catalog identifier}:${database name}:${schema name}:${table name}:${field name}`. Use an empty string for any level that does not exist.
 	//
-	// >  For the MaxCompute and DLF types, use an empty string as the placeholder for the instance ID. For MaxCompute, the database name refers to the MaxCompute project name. If the project has schema enabled, you must specify the schema name. Otherwise, use an empty string as the placeholder for the schema name.
+	// > For MaxCompute and DLF types, use an empty string for the instance ID. For MaxCompute, the database name is the MaxCompute project name. If the project uses the three-layer model, provide the schema name. Otherwise, use an empty string for the schema name.
 	//
-	// >  For StarRocks, the catalog identifier is the catalog name. For DLF, it is the catalog ID. Other types do not support the catalog level and you can use an empty string as a placeholder.
+	// > For StarRocks, the data catalog identifier is the catalog name. For DLF, it is the catalog ID. Other types do not support the catalog level, so use an empty string.
 	//
-	// Examples of ID formats for common types are as follows:
+	// Examples of common ID formats:
 	//
 	// `maxcompute-column:::project_name:[schema_name]:table_name:column_name`
 	//
@@ -62,57 +66,57 @@ type Column struct {
 	//
 	// `mysql-column:(instance_id|encoded_jdbc_url)::database_name::table_name:column_name`
 	//
-	// > \\
+	// > Where:<br>
 	//
-	// `instance_id`: The instance ID, required when the data source is registered in instance mode.\\
+	// > `instance_id`: The instance ID, required when the data source is registered in instance mode.<br>
 	//
-	// `encoded_jdbc_url`: The URL-encoded JDBC connection string, which is required when the data source is registered via a connection string.\\
+	// > `encoded_jdbc_url`: The URL-encoded JDBC connection string, required when the data source is registered using a connection string.<br>
 	//
-	// `catalog_id`: The DLF catalog ID.\\
+	// > `catalog_id`: The DLF catalog ID.<br>
 	//
-	// `project_name`: The MaxCompute project name.\\
+	// > `project_name`: The MaxCompute project name.<br>
 	//
-	// `database_name`: The database name.\\
+	// > `database_name`: The database name.<br>
 	//
-	// `schema_name`: The schema name. For the MaxCompute type, this is required only if the project has enabled schema; otherwise, use an empty string as a placeholder.\\
+	// > `schema_name`: The schema name. For MaxCompute, provide this only if the project uses the three-layer model. Otherwise, use an empty string.<br>
 	//
-	// `table_name`: The table name.\\
+	// > `table_name`: The table name.<br>
 	//
-	// `column_name`: The field name.
+	// > `column_name`: The field name.<br><br><br><br><br><br><br><br>
 	//
 	// example:
 	//
-	// maxcompute-column:123456::test_project:default:test_tbl:col1
+	// maxcompute-column:::project_name:[schema_name]:table_name:column_name
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name.
 	//
 	// example:
 	//
-	// col1
+	// column_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether the column is a partition key.
+	// Indicates whether the field is a partition key.
 	//
 	// example:
 	//
 	// false
 	PartitionKey *bool `json:"PartitionKey,omitempty" xml:"PartitionKey,omitempty"`
-	// The position of the field.
+	// The position.
 	//
 	// example:
 	//
 	// 1
 	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
-	// Specifies whether the column is a primary key (only supported by MaxCompute).
+	// Indicates whether the field is a primary key. Only MaxCompute supports this property.
 	//
 	// example:
 	//
 	// false
 	PrimaryKey *bool `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	// The table ID. You can refer to the `Table` object.
+	// The table ID. For details, see the `Table` object.
 	//
 	// example:
 	//
-	// maxcompute-table:123456::test_project:default:test_tbl
+	// maxcompute-table:::project_name:[schema_name]:table_name
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
 	// The type.
 	//
@@ -230,8 +234,13 @@ func (s *Column) Validate() error {
 }
 
 type ColumnBusinessMetadata struct {
+	// Custom attribute values. The key is the custom attribute identifier, and the value is a list of attribute values.
 	CustomAttributes map[string][]*string `json:"CustomAttributes,omitempty" xml:"CustomAttributes,omitempty"`
-	// A business-level description of the field (supported only by MaxCompute, HMS (EMR clusters) and DLF.
+	// The business description of the field. Supported only for MaxCompute, HMS (EMR cluster), and DLF types.
+	//
+	// example:
+	//
+	// 字段1的业务描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 

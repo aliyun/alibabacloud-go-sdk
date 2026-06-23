@@ -20,13 +20,13 @@ type iUpdateNodeRequest interface {
 type UpdateNodeRequest struct {
 	// The unique identifier of the Data Studio node.
 	//
-	// >  This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect normal SDK usage; the parameter will still be returned according to the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// > This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect normal SDK usage; the parameter will still be returned according to the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 652567824470354XXXX
+	// 860438872620113XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
@@ -38,7 +38,7 @@ type UpdateNodeRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The unique identifier of the Data Studio node.
 	//
-	// >  This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// > This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// This parameter is required.
 	//
@@ -72,9 +72,7 @@ type UpdateNodeRequest struct {
 	//
 	//                 "datasource": {
 	//
-	//                     "name": "odps_test",
-	//
-	//                     "type": "odps"
+	//                     "name": "odps_test"
 	//
 	//                 },
 	//
@@ -122,7 +120,7 @@ type UpdateNodeRequest struct {
 	//
 	//                         {
 	//
-	//                             "data": "lwttest_standard_root",
+	//                             "data": "project_root",
 	//
 	//                             "artifactType": "NodeOutput"
 	//

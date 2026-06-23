@@ -172,7 +172,7 @@ type ListFunctionsResponseBodyPagingInfoFunctions struct {
 	//
 	// example:
 	//
-	// odps_first
+	// EMR_lake
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The general description of the function.
 	//
@@ -190,15 +190,15 @@ type ListFunctionsResponseBodyPagingInfoFunctions struct {
 	//
 	// Valid values:
 	//
-	// 	- Python2
+	// - Python2
 	//
-	// 	- Python3
+	// - Python3
 	//
-	// 	- Java8
+	// - Java8
 	//
-	// 	- Java11
+	// - Java11
 	//
-	// 	- Java17
+	// - Java17
 	//
 	// example:
 	//
@@ -208,9 +208,9 @@ type ListFunctionsResponseBodyPagingInfoFunctions struct {
 	//
 	// Valid values:
 	//
-	// 	- File: General resource file.
+	// - File: General resource file.
 	//
-	// 	- Embedded: Embedded resource.
+	// - Embedded: Embedded resource.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ type ListFunctionsResponseBodyPagingInfoFunctions struct {
 	FileResource *string `json:"FileResource,omitempty" xml:"FileResource,omitempty"`
 	// The unique identifier of the UDF.
 	//
-	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// > Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//
@@ -284,21 +284,21 @@ type ListFunctionsResponseBodyPagingInfoFunctions struct {
 	//
 	// Valid values:
 	//
-	// 	- Math: Mathematical operation functions
+	// - Math: Mathematical operation functions
 	//
-	// 	- Aggregate: Aggregation functions
+	// - Aggregate: Aggregation functions
 	//
-	// 	- String: String processing functions
+	// - String: String processing functions
 	//
-	// 	- Date: Date functions
+	// - Date: Date functions
 	//
-	// 	- Analytic: Window functions
+	// - Analytic: Window functions
 	//
-	// 	- Other: Other functions
+	// - Other: Other functions
 	//
 	// example:
 	//
-	// MATH
+	// Math
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -605,7 +605,7 @@ func (s *ListFunctionsResponseBodyPagingInfoFunctionsRuntimeResource) Validate()
 type ListFunctionsResponseBodyPagingInfoFunctionsScript struct {
 	// The ID of the script.
 	//
-	// >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// > This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//

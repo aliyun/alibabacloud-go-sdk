@@ -24,28 +24,39 @@ type iUpdateMcpServerShrinkRequest interface {
 }
 
 type UpdateMcpServerShrinkRequest struct {
+	// The new custom request headers, specified as key-value pairs.
+	//
 	// example:
 	//
 	// {}
 	CustomHeadersShrink *string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty"`
+	// The name of the MCP Server to update.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my-mcp-server
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The new transport protocol.
+	//
 	// example:
 	//
 	// SSE
 	Transport *string `json:"Transport,omitempty" xml:"Transport,omitempty"`
+	// The new service address. The address must start with`https://`.
+	//
 	// example:
 	//
 	// https://example.com/mcp/sse
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The new visibility level.
+	//
 	// example:
 	//
 	// TENANT
-	Visibility            *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	// The new visibility scope. The fields in this object depend on the value of the `Visibility` parameter.
 	VisibilityScopeShrink *string `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty"`
 }
 

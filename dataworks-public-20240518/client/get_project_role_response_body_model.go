@@ -16,7 +16,7 @@ type iGetProjectRoleResponseBody interface {
 }
 
 type GetProjectRoleResponseBody struct {
-	// The role in the DataWorks workspace.
+	// The details of the workspace role.
 	ProjectRole *GetProjectRoleResponseBodyProjectRole `json:"ProjectRole,omitempty" xml:"ProjectRole,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,30 +62,33 @@ func (s *GetProjectRoleResponseBody) Validate() error {
 }
 
 type GetProjectRoleResponseBodyProjectRole struct {
-	// The code of the role in the DataWorks workspace.
+	// The code of the workspace role.
 	//
 	// example:
 	//
 	// role_project_guest
-	Code              *string                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The permissions for the modules in the workspace.
 	ModulePermissions []*GetProjectRoleResponseBodyProjectRoleModulePermissions `json:"ModulePermissions,omitempty" xml:"ModulePermissions,omitempty" type:"Repeated"`
-	// The name of the role in the DataWorks workspace.
+	// The name of the workspace role.
 	//
 	// example:
 	//
 	// Visitors
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
+	//
+	// Note: A fixed value of -1 is returned for a system role.
 	//
 	// example:
 	//
 	// 10002
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the role in the DataWorks workspace. Valid values:
+	// The type of the workspace role. Valid values:
 	//
-	// 	- UserCustom: user-defined role
+	// - UserCustom: a custom role
 	//
-	// 	- System: system role
+	// - System: a system role
 	//
 	// example:
 	//
@@ -160,14 +163,20 @@ func (s *GetProjectRoleResponseBodyProjectRole) Validate() error {
 }
 
 type GetProjectRoleResponseBodyProjectRoleModulePermissions struct {
+	// The module ID.
+	//
 	// example:
 	//
 	// 2
 	ModuleId *int64 `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	// The module name.
+	//
 	// example:
 	//
 	// HoloStudio
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// The permission type.
+	//
 	// example:
 	//
 	// Read

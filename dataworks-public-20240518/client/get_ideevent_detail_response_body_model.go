@@ -199,17 +199,17 @@ type GetIDEEventDetailResponseBodyEventDetailCommittedFile struct {
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The module to which the file belongs. Valid values:
 	//
-	// 	- NORMAL: The file is used for DataStudio.
+	// - NORMAL: The file is used for DataStudio.
 	//
-	// 	- MANUAL: The file is used for a manually triggered node.
+	// - MANUAL: The file is used for a manually triggered node.
 	//
-	// 	- MANUAL_BIZ: The file is used for a manually triggered workflow.
+	// - MANUAL_BIZ: The file is used for a manually triggered workflow.
 	//
-	// 	- SKIP: The file is used for a dry-run node in DataStudio.
+	// - SKIP: The file is used for a dry-run node in DataStudio.
 	//
-	// 	- ADHOCQUERY: The file is used for an ad hoc query.
+	// - ADHOCQUERY: The file is used for an ad hoc query.
 	//
-	// 	- COMPONENT: The file is used for a script template.
+	// - COMPONENT: The file is used for a script template.
 	//
 	// example:
 	//
@@ -480,13 +480,13 @@ type GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration stru
 	DependentNodeIdList *string `json:"DependentNodeIdList,omitempty" xml:"DependentNodeIdList,omitempty"`
 	// The type of the cross-cycle scheduling dependency of the node. Valid values:
 	//
-	// 	- SELF: The instance generated for the node in the current cycle depends on the instance generated for the node in the previous cycle.
+	// - SELF: The instance generated for the node in the current cycle depends on the instance generated for the node in the previous cycle.
 	//
-	// 	- CHILD: The instance generated for the node in the current cycle depends on the instances generated for the descendant nodes at the nearest level of the node in the previous cycle.
+	// - CHILD: The instance generated for the node in the current cycle depends on the instances generated for the descendant nodes at the nearest level of the node in the previous cycle.
 	//
-	// 	- USER_DEFINE: The instance generated for the node in the current cycle depends on the instances generated for one or more specified nodes in the previous cycle.
+	// - USER_DEFINE: The instance generated for the node in the current cycle depends on the instances generated for one or more specified nodes in the previous cycle.
 	//
-	// 	- NONE: No cross-cycle scheduling dependency type is selected for the node.
+	// - NONE: No cross-cycle scheduling dependency type is selected for the node.
 	//
 	// example:
 	//
@@ -506,11 +506,11 @@ type GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration stru
 	ParaValue *string `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
 	// Indicates whether the node that corresponds to the file can be rerun. Valid values:
 	//
-	// 	- ALL_ALLOWED: The node can be rerun regardless of whether it is successfully run or fails to run.
+	// - ALL_ALLOWED: The node can be rerun regardless of whether it is successfully run or fails to run.
 	//
-	// 	- FAILURE_ALLOWED: The node can be rerun only after it fails to run.
+	// - FAILURE_ALLOWED: The node can be rerun only after it fails to run.
 	//
-	// 	- ALL_DENIED: The node cannot be rerun regardless of whether it is successfully run or fails to run.
+	// - ALL_DENIED: The node cannot be rerun regardless of whether it is successfully run or fails to run.
 	//
 	// This parameter corresponds to the Rerun parameter in the Schedule section of the Properties tab on the DataStudio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
@@ -526,13 +526,13 @@ type GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration stru
 	ResourceGroupId *int64 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The scheduling type of the node. Valid values:
 	//
-	// 	- NORMAL: The node is an auto triggered node.
+	// - NORMAL: The node is an auto triggered node.
 	//
-	// 	- MANUAL: The node is a manually triggered node. Manually triggered nodes cannot be automatically triggered. They correspond to the nodes in the Manually Triggered Workflows pane.
+	// - MANUAL: The node is a manually triggered node. Manually triggered nodes cannot be automatically triggered. They correspond to the nodes in the Manually Triggered Workflows pane.
 	//
-	// 	- PAUSE: The node is a paused node.
+	// - PAUSE: The node is a paused node.
 	//
-	// 	- SKIP: The node is a dry-run node. Dry-run nodes are started as scheduled, but the system sets the status of the nodes to successful when it starts to run them.
+	// - SKIP: The node is a dry-run node. Dry-run nodes are started as scheduled, but the system sets the status of the nodes to successful when it starts to run them.
 	//
 	// example:
 	//
@@ -689,9 +689,9 @@ type GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInput
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	// The mode of the configuration file dependency. Valid values:
 	//
-	// 	- MANUAL: Scheduling dependencies are manually configured.
+	// - MANUAL: Scheduling dependencies are manually configured.
 	//
-	// 	- AUTO: Scheduling dependencies are automatically parsed.
+	// - AUTO: Scheduling dependencies are automatically parsed.
 	//
 	// example:
 	//
@@ -847,17 +847,17 @@ type GetIDEEventDetailResponseBodyEventDetailDeletedFile struct {
 	ParentFileId *int64 `json:"ParentFileId,omitempty" xml:"ParentFileId,omitempty"`
 	// The module to which the file belongs. Valid values:
 	//
-	// 	- NORMAL: The file is used for DataStudio.
+	// - NORMAL: The file is used for DataStudio.
 	//
-	// 	- MANUAL: The file is used for a manually triggered node.
+	// - MANUAL: The file is used for a manually triggered node.
 	//
-	// 	- MANUAL_BIZ: The file is used for a manually triggered workflow.
+	// - MANUAL_BIZ: The file is used for a manually triggered workflow.
 	//
-	// 	- SKIP: The file is used for a dry-run node in DataStudio.
+	// - SKIP: The file is used for a dry-run node in DataStudio.
 	//
-	// 	- ADHOCQUERY: The file is used for an ad hoc query.
+	// - ADHOCQUERY: The file is used for an ad hoc query.
 	//
-	// 	- COMPONENT: The file is used for a script template.
+	// - COMPONENT: The file is used for a script template.
 	//
 	// example:
 	//
@@ -1077,9 +1077,9 @@ type GetIDEEventDetailResponseBodyEventDetailTableModel struct {
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
 	// The environment in which the table is used. Valid values:
 	//
-	// 	- DEV
+	// - DEV
 	//
-	// 	- PROD
+	// - PROD
 	//
 	// example:
 	//
@@ -1210,9 +1210,9 @@ type GetIDEEventDetailResponseBodyEventDetailTableModelColumns struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// Indicates whether the column is a partition key column. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

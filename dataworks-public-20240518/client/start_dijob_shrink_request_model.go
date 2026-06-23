@@ -30,9 +30,9 @@ type StartDIJobShrinkRequest struct {
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
 	// Specifies whether to forcefully rerun all synchronization steps. If you do not configure this parameter, the system does not perform the forcible rerun operation.
 	//
-	// 	- If the system does not perform the forcible rerun operation, only the steps that are not run start to run.
+	// - If the system does not perform the forcible rerun operation, only the steps that are not run start to run.
 	//
-	// 	- If the system performs the forcible rerun operation, all steps start to rerun.
+	// - If the system performs the forcible rerun operation, all steps start to rerun.
 	//
 	// example:
 	//
@@ -46,11 +46,15 @@ type StartDIJobShrinkRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The settings for starting real-time synchronization.
 	//
-	//     {
+	// ```
 	//
-	//       "StartTime":1663765058
+	// {
 	//
-	//     }
+	//   "StartTime":1663765058
+	//
+	// }
+	//
+	// ```
 	RealtimeStartSettingsShrink *string `json:"RealtimeStartSettings,omitempty" xml:"RealtimeStartSettings,omitempty"`
 }
 

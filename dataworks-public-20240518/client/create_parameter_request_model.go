@@ -26,34 +26,54 @@ type iCreateParameterRequest interface {
 }
 
 type CreateParameterRequest struct {
+	// The description of the parameter.
+	//
 	// example:
 	//
-	// 这是一个测试参数
+	// This is a test parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The parameter name. It must be unique within the workspace, be prefixed with `workspace.`, and not exceed 255 characters. The part of the name after the prefix must start with a letter and can contain only letters, digits, and underscores (_).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// workspace.para
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The account ID of the owner.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456789
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The workspace ID. This parameter is required when `Scope` is set to `Project`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The value configurations for the parameter. A configuration for the production environment is required. If you provide duplicate configurations for an environment, only the first one is used.
+	//
 	// This parameter is required.
 	Properties []*CreateParameterRequestProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
+	// The scope of the parameter. The default value is `Project`. No other values are currently supported.
+	//
 	// example:
 	//
 	// Project
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The type of the parameter.
+	//
+	// - `PlainConstant`: plaintext constant.
+	//
+	// - `SecretConstant`: secret constant.
+	//
+	// - `Variable`: variable.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -147,10 +167,18 @@ func (s *CreateParameterRequest) Validate() error {
 }
 
 type CreateParameterRequestProperties struct {
+	// The environment.
+	//
+	// - `Prod`: production environment
+	//
+	// - `Dev`: development environment
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The value of the parameter. The value can contain Chinese characters, letters, digits, and the following special characters: /, :, ., [, ], ,, \\, \\", ", _, =, ?, space, carriage return, line feed, +, -, \\*, %, &, @, !, $, #, {, and }.
+	//
 	// example:
 	//
 	// value123

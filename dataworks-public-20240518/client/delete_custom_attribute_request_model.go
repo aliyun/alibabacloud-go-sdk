@@ -14,6 +14,8 @@ type iDeleteCustomAttributeRequest interface {
 }
 
 type DeleteCustomAttributeRequest struct {
+	// The ID of the custom attribute.
+	//
 	// This parameter is required.
 	//
 	// example:

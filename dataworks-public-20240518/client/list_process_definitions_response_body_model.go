@@ -16,7 +16,10 @@ type iListProcessDefinitionsResponseBody interface {
 }
 
 type ListProcessDefinitionsResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListProcessDefinitionsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc5df3a17***903790e8e8a
@@ -59,7 +62,10 @@ func (s *ListProcessDefinitionsResponseBody) Validate() error {
 }
 
 type ListProcessDefinitionsResponseBodyPagingInfo struct {
+	// A list of process definitions. For more information, see the `ProcessDefinition` object.
 	ProcessDefinitions []*ListProcessDefinitionsResponseBodyPagingInfoProcessDefinitions `json:"ProcessDefinitions,omitempty" xml:"ProcessDefinitions,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -106,29 +112,88 @@ func (s *ListProcessDefinitionsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListProcessDefinitionsResponseBodyPagingInfoProcessDefinitions struct {
+	// The description of the process definition.
+	//
+	// example:
+	//
+	// lwt_ide_simple 项目 MaxCompute 表审批策略
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the process definition is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The ID of the process definition.
+	//
 	// example:
 	//
 	// 10354346
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether this is a default system policy. System policies have restricted update capabilities.
+	//
 	// example:
 	//
 	// false
-	IsSystem *bool   `json:"IsSystem,omitempty" xml:"IsSystem,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	IsSystem *bool `json:"IsSystem,omitempty" xml:"IsSystem,omitempty"`
+	// The name of the process definition.
+	//
+	// example:
+	//
+	// MaxCompute 表审批
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The priority. A smaller value indicates a higher priority.
+	//
 	// example:
 	//
 	// 1
-	Priority *string   `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Scopes   []*string `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The phases in which the rule is effective. Valid values:
+	//
+	// - `Deployment`: The policy is checked when an application is submitted.
+	//
+	// - `Running`: The policy is checked during process execution to determine if approval can be skipped. (Supported only for the MaxCompute type)
+	Scopes []*string `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
+	// The subtype. Valid values:
+	//
+	// - Table
+	//
+	// - Column
+	//
+	// - Database
+	//
+	// - Schema
+	//
+	// - Default
+	//
 	// example:
 	//
 	// Table
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// The type of the process definition. Valid values:
+	//
+	// - MaxCompute
+	//
+	// - DataService
+	//
+	// - Extension
+	//
+	// - Hologres
+	//
+	// - DlfV1 (You cannot create custom definitions for this type.)
+	//
+	// - EMR (You cannot create custom definitions for this type.)
+	//
+	// - DataAssetGovernance (You cannot create custom definitions for this type.)
+	//
+	// - Lindorm (You cannot create custom definitions for this type.)
+	//
+	// - StarRocks (You cannot create custom definitions for this type.)
+	//
+	// - DlfNext (You cannot create custom definitions for this type.)
+	//
+	// - DataWorks (You cannot create custom definitions for this type.)
+	//
 	// example:
 	//
 	// MaxCompute

@@ -18,7 +18,7 @@ type iAttachDataQualityRulesToEvaluationTaskShrinkRequest interface {
 }
 
 type AttachDataQualityRulesToEvaluationTaskShrinkRequest struct {
-	// The ID of the data quality monitoring task that is associated with the rule.
+	// The ID of the associated data quality monitoring task.
 	//
 	// This parameter is required.
 	//
@@ -26,17 +26,19 @@ type AttachDataQualityRulesToEvaluationTaskShrinkRequest struct {
 	//
 	// 200001
 	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
-	// The IDs of the monitoring rules.
+	// The list of data quality rule IDs.
 	//
 	// This parameter is required.
 	DataQualityRuleIdsShrink *string `json:"DataQualityRuleIds,omitempty" xml:"DataQualityRuleIds,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Settings page to obtain the workspace ID.
+	//
+	// This parameter specifies the DataWorks workspace in which the API operation is performed.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 10000
+	// 100001
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 

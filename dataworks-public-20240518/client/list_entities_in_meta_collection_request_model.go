@@ -52,13 +52,13 @@ type ListEntitiesInMetaCollectionRequest struct {
 	//
 	// example:
 	//
-	// category.123
+	// as78d756asd
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The sort order. Valid values:
 	//
-	// 	- Asc (default): ascending order.
+	// - Asc (default): ascending order.
 	//
-	// 	- Desc
+	// - Desc
 	//
 	// example:
 	//
@@ -78,9 +78,9 @@ type ListEntitiesInMetaCollectionRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The sort field. Valid values:
 	//
-	// 	- Name (default)
+	// - Name (default)
 	//
-	// 	- CreateTime
+	// - CreateTime
 	//
 	// example:
 	//

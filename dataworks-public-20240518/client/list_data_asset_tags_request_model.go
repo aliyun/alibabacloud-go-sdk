@@ -22,9 +22,9 @@ type iListDataAssetTagsRequest interface {
 type ListDataAssetTagsRequest struct {
 	// The type of the tag. Valid values:
 	//
-	// 	- Normal
+	// - Normal
 	//
-	// 	- System
+	// - System
 	//
 	// example:
 	//

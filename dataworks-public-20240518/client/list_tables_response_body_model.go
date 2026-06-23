@@ -18,7 +18,7 @@ type iListTablesResponseBody interface {
 }
 
 type ListTablesResponseBody struct {
-	// The pagination result.
+	// The pagination information.
 	PagingInfo *ListTablesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -85,15 +85,15 @@ type ListTablesResponseBodyPagingInfo struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of data tables.
+	// The list of tables.
 	Tables []*Table `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	// The total number of records returned.
+	// The total count of entries.
 	//
 	// example:
 	//

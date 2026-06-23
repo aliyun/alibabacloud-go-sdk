@@ -16,7 +16,10 @@ type iGetAgentSessionArtifactMetaResponseBody interface {
 }
 
 type GetAgentSessionArtifactMetaResponseBody struct {
+	// The JSON-RPC response object.
 	JsonRpcResponse *GetAgentSessionArtifactMetaResponseBodyJsonRpcResponse `json:"JsonRpcResponse,omitempty" xml:"JsonRpcResponse,omitempty" type:"Struct"`
+	// The ID of the request. You can use it to trace the request in logs.
+	//
 	// example:
 	//
 	// CE70C54F-A3BD-5C19-88EF-2A7D3451C449
@@ -59,15 +62,20 @@ func (s *GetAgentSessionArtifactMetaResponseBody) Validate() error {
 }
 
 type GetAgentSessionArtifactMetaResponseBodyJsonRpcResponse struct {
+	// The ID from the original request.
+	//
 	// example:
 	//
 	// 300010555
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. The value is `2.0`.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string                                                       `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Result  *GetAgentSessionArtifactMetaResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// Contains the metadata and content of the artifact.
+	Result *GetAgentSessionArtifactMetaResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetAgentSessionArtifactMetaResponseBodyJsonRpcResponse) String() string {
@@ -115,11 +123,20 @@ func (s *GetAgentSessionArtifactMetaResponseBodyJsonRpcResponse) Validate() erro
 }
 
 type GetAgentSessionArtifactMetaResponseBodyJsonRpcResponseResult struct {
+	// The content of the artifact.
+	//
+	// example:
+	//
+	// This is md content
 	ArtifactContent *string `json:"ArtifactContent,omitempty" xml:"ArtifactContent,omitempty"`
+	// The name of the artifact.
+	//
 	// example:
 	//
 	// mock_report.md
 	ArtifactName *string `json:"ArtifactName,omitempty" xml:"ArtifactName,omitempty"`
+	// The path of the artifact.
+	//
 	// example:
 	//
 	// mock/mock_report.md

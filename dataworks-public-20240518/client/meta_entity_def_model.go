@@ -28,22 +28,49 @@ type iMetaEntityDef interface {
 }
 
 type MetaEntityDef struct {
+	// A list of entity attribute definition objects.
 	AttributeDefs []*MetaEntityAttributeDef `json:"AttributeDefs,omitempty" xml:"AttributeDefs,omitempty" type:"Repeated"`
-	CreateTime    *int64                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName   *string                   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The time when the definition was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
-	// custom_entity-customer_api
+	// 1780553640613
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// 业务API
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The entity type.
+	//
+	// example:
+	//
+	// custom_entity-biz_api
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The extension mode. Valid values: NONE and TABLE. NONE indicates a custom type. TABLE indicates that the type extends a table type.
+	//
 	// example:
 	//
 	// NONE
-	Extend     *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	ModifyTime *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// The time when the definition was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
-	// customer_api
+	// 1780553640613
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The name of the type definition.
+	//
+	// example:
+	//
+	// biz_api
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

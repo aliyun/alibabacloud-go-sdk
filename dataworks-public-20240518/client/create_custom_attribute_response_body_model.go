@@ -18,16 +18,20 @@ type iCreateCustomAttributeResponseBody interface {
 }
 
 type CreateCustomAttributeResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 5A1E9EBB-FEA6-5BBB-B7BE-BFC0FB3F8C71
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The creation result.
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

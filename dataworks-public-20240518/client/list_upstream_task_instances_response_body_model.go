@@ -196,9 +196,9 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod
+	// - Prod
 	//
-	// 	- Dev
+	// - Dev
 	//
 	// example:
 	//
@@ -250,9 +250,9 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod: production environment
+	// - Prod: production environment
 	//
-	// 	- Dev: development environment
+	// - Dev: development environment
 	//
 	// example:
 	//
@@ -266,11 +266,11 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The rerun mode. Valid values:
 	//
-	// 	- AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+	// - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
 	//
-	// 	- FailureAllowed: The task can be rerun only after it fails to run.
+	// - FailureAllowed: The task can be rerun only after it fails to run.
 	//
-	// 	- AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
+	// - AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
 	//
 	// example:
 	//
@@ -294,21 +294,21 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// 	- NotRun: The instance is not run.
+	// - NotRun: The instance is not run.
 	//
-	// 	- Running: The instance is running.
+	// - Running: The instance is running.
 	//
-	// 	- WaitTime: The instance is waiting for the scheduling time to arrive.
+	// - WaitTime: The instance is waiting for the scheduling time to arrive.
 	//
-	// 	- CheckingCondition: Branch conditions are being checked for the instance.
+	// - CheckingCondition: Branch conditions are being checked for the instance.
 	//
-	// 	- WaitResource: The instance is waiting for resources.
+	// - WaitResource: The instance is waiting for resources.
 	//
-	// 	- Failure: The instance fails to be run.
+	// - Failure: The instance fails to be run.
 	//
-	// 	- Success: The instance is successfully run.
+	// - Success: The instance is successfully run.
 	//
-	// 	- Checking: Data quality is being checked for the instance.
+	// - Checking: Data quality is being checked for the instance.
 	//
 	// example:
 	//
@@ -316,9 +316,9 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The scheduling dependency type. Valid values:
 	//
-	// 	- Normal: same-cycle scheduling dependency
+	// - Normal: same-cycle scheduling dependency
 	//
-	// 	- CrossCycle: cross-cycle scheduling dependency
+	// - CrossCycle: cross-cycle scheduling dependency
 	//
 	// example:
 	//
@@ -346,15 +346,15 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// example:
 	//
-	// 1
+	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
 	//
-	// 	- Pause
+	// - Pause
 	//
-	// 	- Skip
+	// - Skip
 	//
-	// 	- Normal
+	// - Normal
 	//
 	// example:
 	//
@@ -368,9 +368,9 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// 	- Scheduler: scheduling cycle-based trigger
+	// - Scheduler: scheduling cycle-based trigger
 	//
-	// 	- Manual: manual trigger
+	// - Manual: manual trigger
 	//
 	// example:
 	//
@@ -390,17 +390,17 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
 	// The type of the workflow instance. Valid values:
 	//
-	// 	- SmokeTest
+	// - SmokeTest
 	//
-	// 	- SupplementData
+	// - SupplementData
 	//
-	// 	- Manual
+	// - Manual
 	//
-	// 	- ManualWorkflow
+	// - ManualWorkflow
 	//
-	// 	- Normal
+	// - Normal
 	//
-	// 	- ManualFlow
+	// - ManualFlow
 	//
 	// example:
 	//
@@ -885,9 +885,9 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeReso
 type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances struct {
 	// The scheduling dependency type. Valid values:
 	//
-	// 	- Normal
+	// - Normal
 	//
-	// 	- CrossCycle
+	// - CrossCycle
 	//
 	// example:
 	//
@@ -967,9 +967,9 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The environment in which the data source is used. Valid values:
 	//
-	// 	- Dev
+	// - Dev
 	//
-	// 	- Prod
+	// - Prod
 	//
 	// example:
 	//
@@ -1047,23 +1047,23 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// 	- NotRun: The instance is not run.
+	// - NotRun: The instance is not run.
 	//
-	// 	- Running: The instance is running.
+	// - Running: The instance is running.
 	//
-	// 	- WaitTime: The instance is waiting for the scheduling time to arrive.
+	// - WaitTime: The instance is waiting for the scheduling time to arrive.
 	//
-	// 	- CheckingCondition: Branch conditions are being checked for the instance.
+	// - CheckingCondition: Branch conditions are being checked for the instance.
 	//
-	// 	- WaitResource: The instance is waiting for resources.
+	// - WaitResource: The instance is waiting for resources.
 	//
-	// 	- Failure: The instance fails to be run.
+	// - Failure: The instance fails to be run.
 	//
-	// 	- Success: The instance is successfully run.
+	// - Success: The instance is successfully run.
 	//
-	// 	- Checking: Data quality is being checked for the instance.
+	// - Checking: Data quality is being checked for the instance.
 	//
-	// 	- WaitTrigger: The instance is waiting to be triggered by external scheduling systems.
+	// - WaitTrigger: The instance is waiting to be triggered by external scheduling systems.
 	//
 	// example:
 	//
@@ -1097,11 +1097,11 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
 	//
-	// 	- Pause
+	// - Pause
 	//
-	// 	- Skip
+	// - Skip
 	//
-	// 	- Normal
+	// - Normal
 	//
 	// example:
 	//
@@ -1115,9 +1115,9 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// 	- Scheduler: scheduling cycle-based trigger
+	// - Scheduler: scheduling cycle-based trigger
 	//
-	// 	- Manual: manual trigger
+	// - Manual: manual trigger
 	//
 	// example:
 	//
@@ -1137,15 +1137,15 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
 	// The type of the workflow instance. Valid values:
 	//
-	// 	- Normal
+	// - Normal
 	//
-	// 	- Manual
+	// - Manual
 	//
-	// 	- SmokeTest
+	// - SmokeTest
 	//
-	// 	- SupplementData
+	// - SupplementData
 	//
-	// 	- ManualWorkflow
+	// - ManualWorkflow
 	//
 	// example:
 	//

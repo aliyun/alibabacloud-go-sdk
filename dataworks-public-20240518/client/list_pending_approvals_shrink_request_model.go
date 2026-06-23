@@ -30,33 +30,48 @@ type iListPendingApprovalsShrinkRequest interface {
 }
 
 type ListPendingApprovalsShrinkRequest struct {
+	// The access types.
 	AccessTypesShrink *string `json:"AccessTypes,omitempty" xml:"AccessTypes,omitempty"`
+	// The resource schema type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The end time of the query range, specified as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1779724799999
-	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The grantee object used to filter results.
 	GranteeShrink *string `json:"Grantee,omitempty" xml:"Grantee,omitempty"`
+	// The token used to retrieve the next page of results.
+	//
 	// example:
 	//
 	// eyJpZCI6MTIzfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries to return per page. Default: 10. Maximum: 200.
+	//
 	// example:
 	//
 	// 20
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The criteria to filter resources.
 	ResourceShrink *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The resource type, which corresponds to a leaf node name. You can specify multiple values. A business context can map to multiple leaf node names.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ["table", "column"]
 	ResourceTypeShrink *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The start time of the query range, specified as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1771948800000

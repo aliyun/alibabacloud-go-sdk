@@ -18,14 +18,19 @@ type iGetAgentSessionArtifactMetaShrinkRequest interface {
 }
 
 type GetAgentSessionArtifactMetaShrinkRequest struct {
+	// A client-provided ID that is echoed in the response.
+	//
 	// example:
 	//
 	// 900335678024
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. The value is `2.0`.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc      *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The container for business parameters.
 	ParamsShrink *string `json:"Params,omitempty" xml:"Params,omitempty"`
 }
 

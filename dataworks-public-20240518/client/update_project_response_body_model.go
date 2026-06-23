@@ -14,7 +14,7 @@ type iUpdateProjectResponseBody interface {
 }
 
 type UpdateProjectResponseBody struct {
-	// The ID of the request. It is used to locate logs and troubleshoot problems.
+	// The Request ID. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//

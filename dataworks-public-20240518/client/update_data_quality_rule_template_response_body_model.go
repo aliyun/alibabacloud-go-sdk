@@ -20,9 +20,9 @@ type UpdateDataQualityRuleTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// 691CA452-D37A-4ED0-9441
+	// 691CA452-D37A-4ED0-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the update was successful.
 	//
 	// example:
 	//

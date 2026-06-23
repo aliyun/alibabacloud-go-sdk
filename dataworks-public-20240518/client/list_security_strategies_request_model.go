@@ -20,18 +20,26 @@ type iListSecurityStrategiesRequest interface {
 }
 
 type ListSecurityStrategiesRequest struct {
+	// **The control module.**
+	//
 	// example:
 	//
 	// DataQuery
 	ControlModule *string `json:"ControlModule,omitempty" xml:"ControlModule,omitempty"`
+	// **The control submodule.**
+	//
 	// example:
 	//
 	// MyCatalog
 	ControlSubModule *string `json:"ControlSubModule,omitempty" xml:"ControlSubModule,omitempty"`
+	// The page number. Starts from 1. Default: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default: 20.
+	//
 	// example:
 	//
 	// 10

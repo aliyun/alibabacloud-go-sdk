@@ -42,9 +42,9 @@ type ListSchemasRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The order in which schemas are sorted. Default value: Asc. Valid values:
 	//
-	// 	- Asc: ascending order
+	// - Asc: ascending order
 	//
-	// 	- Desc: descending order
+	// - Desc: descending order
 	//
 	// example:
 	//
@@ -66,25 +66,23 @@ type ListSchemasRequest struct {
 	//
 	// Configure the `ParentMetaEntityId` parameter in the `${EntityType}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}` format. If a level does not exist, leave the level empty.
 	//
-	// >  If you want to query the information about a MaxCompute schema, specify an empty string at the Instance ID level as a placeholder and a MaxCompute project name at the Database name level. Make sure that the schema feature is enabled for the MaxCompute project.
+	// > If you want to query the information about a MaxCompute schema, specify an empty string at the Instance ID level as a placeholder and a MaxCompute project name at the Database name level. Make sure that the schema feature is enabled for the MaxCompute project.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// maxcompute-project:123456XXX::test_project
-	//
-	// holo-database:h-abc123xxx::test_db
+	// maxcompute-project:::project_name
 	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
 	// The field used for sorting. Default value: CreateTime. Valid values:
 	//
-	// 	- CreateTime
+	// - CreateTime
 	//
-	// 	- ModifyTime
+	// - ModifyTime
 	//
-	// 	- Name
+	// - Name
 	//
-	// 	- Type
+	// - Type
 	//
 	// example:
 	//

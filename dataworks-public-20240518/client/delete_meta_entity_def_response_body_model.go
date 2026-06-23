@@ -16,8 +16,6 @@ type iDeleteMetaEntityDefResponseBody interface {
 }
 
 type DeleteMetaEntityDefResponseBody struct {
-	// Id of the request
-	//
 	// example:
 	//
 	// 3C1E755D-B606-57A4-9B9C-7B214E81354C

@@ -32,15 +32,15 @@ type iListResourceGroupsRequest interface {
 }
 
 type ListResourceGroupsRequest struct {
-	// Alibaba Cloud Resource Group ID
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
 	// rg-aek2kqofrgXXXXX
 	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
-	// Alibaba Cloud tag list
+	// The list of Alibaba Cloud tags.
 	AliyunResourceTags []*ListResourceGroupsRequestAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
-	// The name of a resource group, which is used for fuzzy match.
+	// The name of the resource group. Fuzzy search is supported.
 	//
 	// example:
 	//
@@ -52,55 +52,55 @@ type ListResourceGroupsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The billing method of resource groups. Valid values:
+	// The billing method of the resource group. Valid values include:
 	//
-	// 	- PrePaid
+	// - `PrePaid`: subscription.
 	//
-	// 	- PostPaid
+	// - `PostPaid`: pay-as-you-go.
 	//
 	// example:
 	//
 	// PrePaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The ID of the DataWorks workspace.
+	// The ID of the workspace.
 	//
 	// example:
 	//
 	// 1000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
+	// The types of the resource groups to query. **If this parameter is not specified, general-purpose resource groups are queried by default.**
 	ResourceGroupTypes []*string `json:"ResourceGroupTypes,omitempty" xml:"ResourceGroupTypes,omitempty" type:"Repeated"`
-	// The list of fields used for sorting. Fields such as TriggerTime and StartedTime are supported. You must configure this parameter in the Sorting field + Sort by (Desc/Asc). By default, results are sorted in ascending order. Valid values:
+	// The sorting criterion for the results. The format is `FieldName SortOrder`. `SortOrder` can be `Asc` (ascending) or `Desc` (descending). If you do not specify `SortOrder`, the default is `Asc`. The following fields are supported:
 	//
-	// 	- Id (Desc/Asc): the resource group ID
+	// - `Id`: Resource group ID
 	//
-	// 	- Name (Desc/Asc): the name of the resource group
+	// - `Name`: Resource group name
 	//
-	// 	- Remark (Desc/Asc): the remarks of the resource group
+	// - `Remark`: Resource group remarks
 	//
-	// 	- Type (Desc/Asc): the type of the resource group
+	// - `Type`: Resource group type
 	//
-	// 	- Status (Desc/Asc): the status of the resource group
+	// - `Status`: Resource group status
 	//
-	// 	- Spec (Desc/Asc): the specifications of the resource group
+	// - `Spec`: Resource group specifications
 	//
-	// 	- CreateUser (Desc/Asc): the creator of the resource group
+	// - `CreateUser`: The user who created the resource group
 	//
-	// 	- CreateTime (Desc/Asc): the time when the resource group is created
+	// - `CreateTime`: The time when the resource group was created
 	//
-	// Default value: CreateTime Asc
+	// Default value: `CreateTime Asc`
 	//
 	// example:
 	//
 	// CreateTime Asc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The statuses of resource groups.
+	// The statuses of the resource groups to query.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 
@@ -216,13 +216,13 @@ func (s *ListResourceGroupsRequest) Validate() error {
 }
 
 type ListResourceGroupsRequestAliyunResourceTags struct {
-	// Tag Key
+	// The tag key.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Tag Value
+	// The tag value.
 	//
 	// example:
 	//

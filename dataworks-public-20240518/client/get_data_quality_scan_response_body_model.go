@@ -369,9 +369,9 @@ type GetDataQualityScanResponseBodyDataQualityScanComputeResource struct {
 	//
 	// Valid values:
 	//
-	// 	- Prod: production environment .
+	// - Prod: production environment .
 	//
-	// 	- Dev: development environment.
+	// - Dev: development environment.
 	//
 	// example:
 	//
@@ -436,11 +436,11 @@ type GetDataQualityScanResponseBodyDataQualityScanComputeResourceRuntime struct 
 	//
 	// Valid values:
 	//
-	// 	- Hive: Hive SQL
+	// - Hive: Hive SQL
 	//
-	// 	- Spark: Spark SQL
+	// - Spark: Spark SQL
 	//
-	// 	- Kyuubi
+	// - Kyuubi
 	//
 	// example:
 	//
@@ -502,7 +502,7 @@ func (s *GetDataQualityScanResponseBodyDataQualityScanComputeResourceRuntime) Va
 type GetDataQualityScanResponseBodyDataQualityScanHooks struct {
 	// The Hook trigger condition. The hook will run if the condition is met. Currently, only one type of expression syntax is supported:
 	//
-	// 	- You can specify multiple combinations of rule severity levels and validation statuses using an expression such as `results.any { r -> r.status == \\"Fail\\" && r.rule.severity == \\"Normal\\" || r.status == \\"Error\\" && r.rule.severity == \\"High\\" || r.status == \\"Warn\\" && r.rule.severity == \\"High\\" }`. This expression means the condition is met if any executed rule has a result of Fail with severity Normal, Error with severity High, or Warn with severity High. In the condition expression, the values of severity and status are predefined enums. The values of severity must match those defined in the Spec, and the values of status must match those in DataQualityResult.
+	// - You can specify multiple combinations of rule severity levels and validation statuses using an expression such as `results.any { r -> r.status == \\"Fail\\" && r.rule.severity == \\"Normal\\" || r.status == \\"Error\\" && r.rule.severity == \\"High\\" || r.status == \\"Warn\\" && r.rule.severity == \\"High\\" }`. This expression means the condition is met if any executed rule has a result of Fail with severity Normal, Error with severity High, or Warn with severity High. In the condition expression, the values of severity and status are predefined enums. The values of severity must match those defined in the Spec, and the values of status must match those in DataQualityResult.
 	//
 	// example:
 	//
@@ -512,7 +512,7 @@ type GetDataQualityScanResponseBodyDataQualityScanHooks struct {
 	//
 	// Valid values:
 	//
-	// 	- BlockTaskInstance: BlockTaskInstance: Blocks the scheduling of the task instance.
+	// - BlockTaskInstance: BlockTaskInstance: Blocks the scheduling of the task instance.
 	//
 	// example:
 	//
@@ -662,9 +662,9 @@ type GetDataQualityScanResponseBodyDataQualityScanTrigger struct {
 	//
 	// Valid values:
 	//
-	// 	- ByManual: Manual trigger. This is the default setting.
+	// - ByManual: Manual trigger. This is the default setting.
 	//
-	// 	- BySchedule: Triggered by a scheduled task instance.
+	// - BySchedule: Triggered by a scheduled task instance.
 	//
 	// example:
 	//

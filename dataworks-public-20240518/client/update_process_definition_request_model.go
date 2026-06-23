@@ -26,21 +26,38 @@ type iUpdateProcessDefinitionRequest interface {
 }
 
 type UpdateProcessDefinitionRequest struct {
+	// A list of approval nodes. This parameter does not apply to system policies.
 	ApprovalNodes []*UpdateProcessDefinitionRequestApprovalNodes `json:"ApprovalNodes,omitempty" xml:"ApprovalNodes,omitempty" type:"Repeated"`
+	// An idempotent parameter. It ensures that retried requests do not result in duplicate operations.
+	//
 	// example:
 	//
 	// 1AFAE64E-D1BE-432B-A9****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the process definition.
+	//
+	// example:
+	//
+	// lwt_ide_simple 项目 MaxCompute 表审批策略
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the process definition.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 177554881536128
-	Id                   *string                                               `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name                 *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the process definition.
+	//
+	// example:
+	//
+	// MaxCompute 表审批
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The notification service configurations.
 	NotificationServices []*UpdateProcessDefinitionRequestNotificationServices `json:"NotificationServices,omitempty" xml:"NotificationServices,omitempty" type:"Repeated"`
-	RuleConditions       []*UpdateProcessDefinitionRequestRuleConditions       `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
+	// A list of rule conditions. This parameter does not apply to system policies.
+	RuleConditions []*UpdateProcessDefinitionRequestRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
 }
 
 func (s UpdateProcessDefinitionRequest) String() string {
@@ -146,15 +163,60 @@ func (s *UpdateProcessDefinitionRequest) Validate() error {
 }
 
 type UpdateProcessDefinitionRequestApprovalNodes struct {
+	// The approver type for the node. Valid values:
+	//
+	// - `DataWorksProjectRole`: A workspace role.
+	//
+	// - `DataWorksProjectMember`: A workspace member.
+	//
+	// - `TableAdministrator`: A table administrator.
+	//
+	// - `TableOrProjectAdministrator`: The administrator of the table or project.
+	//
+	// - `AliyunResourceOwner`: An Alibaba Cloud account.
+	//
+	// - `MaxComputeRole`: A MaxCompute administrator.
+	//
+	// - `DLFAdmin`: A DlfLegacy administrator.
+	//
+	// - `DLFNextAdmin`: A DLFNext administrator.
+	//
+	// - `TenantRole`: A tenant role.
+	//
+	// - `EmrAdministrator`: An EMR administrator.
+	//
+	// - `LindormAdministrator`: A Lindorm administrator.
+	//
+	// - `AliyunRamUser`: A RAM user.
+	//
 	// example:
 	//
 	// TableOrProjectAdministrator
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// Specifies the approvers. The required value depends on the `AccountType`:
+	//
+	// - If `AccountType` is `DataWorksProjectMember`, this parameter specifies the user IDs of workspace members.
+	//
+	// - If `AccountType` is `DataWorksProjectRole`, this parameter specifies the codes of workspace roles.
+	//
+	// - If `AccountType` is `MaxComputeRole`, this parameter specifies the MaxCompute roles.
+	//
+	// - If `AccountType` is `TenantRole`, this parameter specifies the codes of tenant roles.
+	//
+	// - If `AccountType` is `AliyunRamUser`, this parameter specifies the user IDs of RAM users.
+	//
 	// example:
 	//
 	// DataWorksProjectMember
-	Assignees           *string                `json:"Assignees,omitempty" xml:"Assignees,omitempty"`
+	Assignees *string `json:"Assignees,omitempty" xml:"Assignees,omitempty"`
+	// Additional properties that are required for specific `AccountType` values:
+	//
+	// - If `AccountType` is `DataWorksProjectMember`: The key is `projectId` and the value is the user ID of a workspace member. Use commas (,) to separate multiple user IDs.
+	//
+	// - If `AccountType` is `MaxComputeRole`: The key is the MaxCompute project name and the value is the role name in MaxCompute. Use commas (,) to separate multiple role names.
 	ExtensionProperties map[string]interface{} `json:"ExtensionProperties,omitempty" xml:"ExtensionProperties,omitempty"`
+	// The name of the node.
+	//
 	// example:
 	//
 	// default-name
@@ -210,14 +272,28 @@ func (s *UpdateProcessDefinitionRequestApprovalNodes) Validate() error {
 }
 
 type UpdateProcessDefinitionRequestNotificationServices struct {
+	// The notification channel. Valid values:
+	//
+	// - Mail
+	//
+	// - Sms
+	//
+	// - DingRobot
+	//
+	// - Weixin
+	//
 	// example:
 	//
 	// Mail
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// Additional information in JSON format. For example, use {"atAll":"true"} to specify whether to notify all members.
+	//
 	// example:
 	//
 	// {"atAll":"true"}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The webhook URL. This parameter is required when `Channel` is set to `DingRobot` or `Weixin`.
+	//
 	// example:
 	//
 	// https://dingtalk.com
@@ -264,14 +340,34 @@ func (s *UpdateProcessDefinitionRequestNotificationServices) Validate() error {
 }
 
 type UpdateProcessDefinitionRequestRuleConditions struct {
+	// The conditional expression. Format: ((#type==\\"typeValue\\")). For example: ((#odpsProject==\\"PX_BEIJING_TEST\\")).
+	//
 	// example:
 	//
 	// ((#odpsProject==\\"PX_BEIJING_TEST\\"))
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The phase in which the rule takes effect. Valid values:
+	//
+	// - **Deployment**: Determines whether the approval policy applies when an application is submitted.
+	//
+	// - **Running**: Determines whether to skip the approval during the approval process. This phase is supported only for MaxCompute.
+	//
 	// example:
 	//
 	// Deployment
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The type of the condition. Valid values:
+	//
+	// - `odpsProject`
+	//
+	// - `hologresInstanceId`
+	//
+	// - `sensibleLevel`
+	//
+	// - `tableGuid`
+	//
+	// - `projectId`
+	//
 	// example:
 	//
 	// odpsProject

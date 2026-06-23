@@ -30,37 +30,61 @@ type iCreateSecurityStrategyShrinkRequest interface {
 }
 
 type CreateSecurityStrategyShrinkRequest struct {
+	// A client-generated token that ensures request idempotency, preventing duplicate operations if you retry the request.
+	//
 	// example:
 	//
 	// ABFUOEUOTRTRJKE
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The content of the strategy. This value is constrained by the `SecurityStrategySchema`.
+	//
 	// This parameter is required.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// **The control scope. Valid values: Workspace and Tenant.**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Tenant
 	ControlDwScope *string `json:"ControlDwScope,omitempty" xml:"ControlDwScope,omitempty"`
+	// **Control module**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DataQuery
 	ControlModule *string `json:"ControlModule,omitempty" xml:"ControlModule,omitempty"`
+	// **Control submodule**
+	//
 	// example:
 	//
 	// MyCatalog
 	ControlSubModule *string `json:"ControlSubModule,omitempty" xml:"ControlSubModule,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// **Strategy description**
+	//
+	// example:
+	//
+	// 控制数据分析模块的查询结果安全行为
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// **Strategy name**
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 默认数据分析策略
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// **Schema template name**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DataQuerySecurityStrategySchema
-	SchemaName       *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// A list of associated workspace IDs.
 	WorkspacesShrink *string `json:"Workspaces,omitempty" xml:"Workspaces,omitempty"`
 }
 

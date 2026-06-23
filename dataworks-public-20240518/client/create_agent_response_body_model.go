@@ -16,7 +16,10 @@ type iCreateAgentResponseBody interface {
 }
 
 type CreateAgentResponseBody struct {
+	// Details of the created Agent.
 	Agent *CreateAgentResponseBodyAgent `json:"Agent,omitempty" xml:"Agent,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 824F80BA-1778-5D8A-BAFF-668A4D9C4CC7
@@ -59,18 +62,24 @@ func (s *CreateAgentResponseBody) Validate() error {
 }
 
 type CreateAgentResponseBodyAgent struct {
+	// The creation time (millisecond timestamp).
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 1780555634000
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The last modification time (millisecond timestamp).
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 1780555634000
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The name of the Agent.
+	//
 	// example:
 	//
 	// my-agent

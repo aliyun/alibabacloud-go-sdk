@@ -22,6 +22,8 @@ type iUpdateMetaCollectionRequest interface {
 type UpdateMetaCollectionRequest struct {
 	// The collection administrator IDs. This parameter is available only for data albums. The administrator must be an account within the same tenant.
 	Administrators []*string `json:"Administrators,omitempty" xml:"Administrators,omitempty" type:"Repeated"`
+	// Updated collection description
+	//
 	// example:
 	//
 	// new comment
@@ -32,8 +34,10 @@ type UpdateMetaCollectionRequest struct {
 	//
 	// example:
 	//
-	// category.123
+	// as78d756asd
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Updated collection name
+	//
 	// example:
 	//
 	// new_name

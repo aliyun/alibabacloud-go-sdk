@@ -22,23 +22,25 @@ type iIdentifyCredential interface {
 type IdentifyCredential struct {
 	// The data source.
 	DataSource *IdentifyCredentialDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	// The workspace ID (optional).
+	// The project ID. This parameter is optional.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The user ID. If it is a role, the ROLE_ prefix must be added.
+	// The user UID. If the `UserType` is `Role`, you must prefix this value with `ROLE_`.
 	//
 	// example:
 	//
 	// ROLE_300888674340307309
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 	- Alibaba Cloud account
+	// The user type. Supported values are:
 	//
-	// 	- RAM user
+	// - primary account: `PrimaryAccount`
 	//
-	// 	- Role
+	// - subaccount: `SubAccount`
+	//
+	// - role: `Role`
 	//
 	// example:
 	//
@@ -100,53 +102,47 @@ func (s *IdentifyCredential) Validate() error {
 }
 
 type IdentifyCredentialDataSource struct {
-	// The instance ID of the data source.
+	// The data source instance ID.
 	//
 	// example:
 	//
 	// 710007423244
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name of the data source.
+	// The data source instance name.
 	//
 	// example:
 	//
 	// rm-2zez82ho69yex7s7g
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The password for the data source.
+	// The data source password.
 	//
 	// example:
 	//
 	// ***
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The user type of the data source.
+	// The user role for the data source. Valid values are:
 	//
-	// 	- Admin
+	// - `Admin`
 	//
-	// 	- RegularUser
-	//
-	// Valid values:
-	//
-	// 	- RegularUser: Normal user.
-	//
-	// 	- Admin: Administrator.
+	// - `RegularUser`
 	//
 	// example:
 	//
 	// admin
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The type of the data source. Supported types:
+	// The data source type. Supported values are:
 	//
-	// 	- hive
+	// - `hive`
 	//
-	// 	- lindorm_for_engine
+	// - `lindorm_for_engine`
 	//
-	// 	- starrocks
+	// - `starrocks`
 	//
 	// example:
 	//
 	// hologres
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The username for the data source.
+	// The data source user name.
 	//
 	// example:
 	//

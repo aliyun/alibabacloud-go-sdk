@@ -26,7 +26,7 @@ type CreateDataSourceResponseBody struct {
 	//
 	// example:
 	//
-	// B62EC203-B39E-5DC1-B5B8-EB3C61707009
+	// B62EC203-B39E-5DC1-B5B8-EB3C6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

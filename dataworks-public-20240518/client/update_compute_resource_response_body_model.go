@@ -22,6 +22,12 @@ type UpdateComputeResourceResponseBody struct {
 	//
 	// 7C352CB7-CD88-50CF-9D0D-E81BDF02XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the computing resource was modified successfully:
+	//
+	// - true: Yes
+	//
+	// - false: No
+	//
 	// example:
 	//
 	// true

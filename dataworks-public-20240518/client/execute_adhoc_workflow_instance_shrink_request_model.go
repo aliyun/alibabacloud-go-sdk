@@ -32,9 +32,9 @@ type ExecuteAdhocWorkflowInstanceShrinkRequest struct {
   BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
   // The environment of the workspace. Valid values:
   // 
-  // 	- Prod: production environment
+  // - Prod: production environment
   // 
-  // 	- Dev: development environment
+  // - Dev: development environment
   // 
   // example:
   // 

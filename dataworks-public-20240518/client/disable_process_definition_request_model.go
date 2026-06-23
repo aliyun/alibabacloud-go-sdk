@@ -16,10 +16,14 @@ type iDisableProcessDefinitionRequest interface {
 }
 
 type DisableProcessDefinitionRequest struct {
+	// An idempotence token used to make the request idempotent. A universally unique identifier (UUID) is recommended.
+	//
 	// example:
 	//
 	// 1AFAE64E-D1BE-432B-A9*****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The process definition ID.
+	//
 	// example:
 	//
 	// 11792

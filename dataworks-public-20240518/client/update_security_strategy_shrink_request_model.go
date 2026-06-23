@@ -24,20 +24,37 @@ type iUpdateSecurityStrategyShrinkRequest interface {
 }
 
 type UpdateSecurityStrategyShrinkRequest struct {
+	// A client token to ensure request idempotence.
+	//
 	// example:
 	//
 	// 1AFAE64E-D1BE-432B-A9*****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The policy content, which is constrained by the `SecurityStrategySchema`.
+	//
 	// This parameter is required.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// **The policy description.**
+	//
+	// example:
+	//
+	// 控制数据分析模块的查询结果安全行为
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// **The policy ID.**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 13
-	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// **The policy name.**
+	//
+	// example:
+	//
+	// 默认数据分析策略
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// **A list of associated workspace IDs.**
 	WorkspacesShrink *string `json:"Workspaces,omitempty" xml:"Workspaces,omitempty"`
 }
 

@@ -32,37 +32,68 @@ type iListMyRelatedApprovalsShrinkRequest interface {
 }
 
 type ListMyRelatedApprovalsShrinkRequest struct {
+	// The permissions.
 	AccessTypesShrink *string `json:"AccessTypes,omitempty" xml:"AccessTypes,omitempty"`
+	// The resource type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The end of the application time range, specified as a millisecond timestamp.
+	//
 	// example:
 	//
 	// 1779724799999
-	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Filters approvals by the specified principal.
 	GranteeShrink *string `json:"Grantee,omitempty" xml:"Grantee,omitempty"`
+	// The pagination token that acts as a cursor to retrieve the next page of results.
+	//
 	// example:
 	//
 	// eyJpZCI6MTIzfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 200.
+	//
 	// example:
 	//
 	// 20
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The resource declaration.
 	ResourceShrink *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The resource type, specified as a leaf node name. Multiple values are supported because a single business semantic can be mapped to multiple leaf node names.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ["table", "column"]
 	ResourceTypeShrink *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The start of the application time range, specified as a millisecond timestamp.
+	//
 	// example:
 	//
 	// 1771948800000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Filters the results by approval status. Valid values:
+	//
+	// - `WaitApproval`: Pending approval
+	//
+	// - `Confirmed`: Pending authorization
+	//
+	// - `RejectApproval`: Approval rejected
+	//
+	// - `AuthorizeSucceed`: Authorization succeeded
+	//
+	// - `AuthorizeFailed`: Authorization failed
+	//
+	// - `Deleted`: Deleted
+	//
+	// - `Canceled`: Withdrawn
+	//
 	// example:
 	//
 	// WAIT_APPROVAL

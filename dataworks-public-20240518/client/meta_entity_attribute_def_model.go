@@ -28,28 +28,48 @@ type iMetaEntityAttributeDef interface {
 }
 
 type MetaEntityAttributeDef struct {
+	// Enumeration values. Required when Type is ENUM.
 	AllowedValues []*string `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
-	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Attribute description
+	//
+	// example:
+	//
+	// 层级描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the attribute appears on the product page. Default is true.
+	//
 	// example:
 	//
 	// true
 	DisplayEnabled *bool `json:"DisplayEnabled,omitempty" xml:"DisplayEnabled,omitempty"`
+	// Display name. It can be up to 32 characters long.
+	//
 	// example:
 	//
 	// API编码
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Indicates whether the value is optional. Default is true.	Notice:  Validation occurs when creating an entity. If this value is false and no value is provided during creation, validation fails and an error is returned.
+	//
 	// example:
 	//
 	// true
 	IsOptional *bool `json:"IsOptional,omitempty" xml:"IsOptional,omitempty"`
+	// Attribute identifier. It can contain letters, digits, and underscores. It must start with a letter or digit and be up to 64 characters long.
+	//
 	// example:
 	//
 	// apiCode
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the attribute can be used as a filter on the search page. Default is false.
+	//
+	// Only attributes of type STRING, DATE, ENUM, ARRAY, INT, or BOOLEAN support this setting.
+	//
 	// example:
 	//
 	// false
 	SearchFilterEnabled *bool `json:"SearchFilterEnabled,omitempty" xml:"SearchFilterEnabled,omitempty"`
+	// Attribute type. Supported types include STRING, TEXT, INT, FLOAT, BOOLEAN, DATE, ARRAY, ENUM, and JSON.
+	//
 	// example:
 	//
 	// STRING

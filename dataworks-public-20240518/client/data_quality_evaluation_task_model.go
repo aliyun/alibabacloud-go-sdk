@@ -55,6 +55,10 @@ type DataQualityEvaluationTask struct {
 	// 10001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the data quality monitoring task. The name can be up to 255 characters in length and can contain digits, letters, and punctuation marks.
+	//
+	// example:
+	//
+	// 质量校验任务
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The configurations for alert notifications.
 	Notifications []*DataQualityEvaluationTaskNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`

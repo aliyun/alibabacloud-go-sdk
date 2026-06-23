@@ -164,7 +164,7 @@ type ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities struct {
 	//
 	// example:
 	//
-	// dlf-table:123456789:test_catalog:test_database::test_table
+	// maxcompute-table:::project_name:[schema_name]:table_name
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The last modified time in milliseconds.
 	//
@@ -182,7 +182,7 @@ type ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities struct {
 	//
 	// example:
 	//
-	// dlf-table
+	// maxcompute-table
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

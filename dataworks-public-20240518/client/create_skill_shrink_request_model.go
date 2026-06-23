@@ -31,7 +31,10 @@ type CreateSkillShrinkRequest struct {
 	// example:
 	//
 	// https://example.com/skill.zip
-	BundleUrl   *string `json:"BundleUrl,omitempty" xml:"BundleUrl,omitempty"`
+	BundleUrl *string `json:"BundleUrl,omitempty" xml:"BundleUrl,omitempty"`
+	// example:
+	//
+	// 数据分析技能
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
@@ -47,7 +50,10 @@ type CreateSkillShrinkRequest struct {
 	//
 	// -
 	SkillMdOverride *string `json:"SkillMdOverride,omitempty" xml:"SkillMdOverride,omitempty"`
-	VersionNote     *string `json:"VersionNote,omitempty" xml:"VersionNote,omitempty"`
+	// example:
+	//
+	// 初版
+	VersionNote *string `json:"VersionNote,omitempty" xml:"VersionNote,omitempty"`
 	// example:
 	//
 	// TENANT

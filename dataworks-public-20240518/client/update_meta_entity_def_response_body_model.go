@@ -16,12 +16,14 @@ type iUpdateMetaEntityDefResponseBody interface {
 }
 
 type UpdateMetaEntityDefResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// E08F38AB-3BA0-5047-8E9E-9AA4839263EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

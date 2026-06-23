@@ -168,9 +168,9 @@ type ListWorkflowsResponseBodyPagingInfoWorkflows struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod
+	// - Prod
 	//
-	// 	- Dev
+	// - Dev
 	//
 	// example:
 	//
@@ -436,11 +436,11 @@ type ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The running mode of the workflow after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
 	//
-	// 	- Pause
+	// - Pause
 	//
-	// 	- Skip
+	// - Skip
 	//
-	// 	- Normal
+	// - Normal
 	//
 	// example:
 	//
@@ -454,9 +454,9 @@ type ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// 	- Scheduler: scheduling cycle-based trigger
+	// - Scheduler: scheduling cycle-based trigger
 	//
-	// 	- Manual: manual trigger
+	// - Manual: manual trigger
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iGetDataQualityRuleTemplateResponseBody interface {
 }
 
 type GetDataQualityRuleTemplateResponseBody struct {
-	// The information about the template.
+	// The details of the rule template.
 	DataQualityRuleTemplate *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate `json:"DataQualityRuleTemplate,omitempty" xml:"DataQualityRuleTemplate,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
 	//
-	// 691CA452-D37A-4ED0-9441
+	// 691CA452-D37A-4E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -62,39 +62,39 @@ func (s *GetDataQualityRuleTemplateResponseBody) Validate() error {
 }
 
 type GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate struct {
-	// The check settings for sample data.
+	// The sample verification settings.
 	CheckingConfig *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
-	// The code for the template.
+	// The code of the rule template.
 	//
 	// example:
 	//
 	// USER_DEFINED:123
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The directory in which the template is stored. Slashes (/) are used to separate directory levels. The name of each directory level can be up to 1,024 characters in length. It cannot contain whitespace characters or slashes (/).
+	// The category directory in which the custom template is stored. Levels are separated by forward slashes (/). Each level name can be a maximum of 1,024 characters in length and cannot contain whitespace characters or forward slashes (/).
 	//
 	// example:
 	//
 	// /ods/order_data
 	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
-	// The name of the template. The name can be up to 512 characters in length and can contain digits, letters, and punctuation marks.
+	// The name of the rule template. The name can be a combination of digits, letters, Chinese characters, and half-width or full-width punctuation marks. The name can be a maximum of 512 characters in length.
 	//
 	// example:
 	//
 	// Table row Count Verification
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// example:
 	//
 	// 4020
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The sampling settings.
+	// The settings required for sample collection.
 	SamplingConfig *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// Available range of templates:
+	// The scope in which the template is available:
 	//
-	// - Tenant: all tenants are available
+	// - Tenant: available to the entire tenant.
 	//
-	// - Project: only available in the current Project
+	// - Project: available only in the current project.
 	//
 	// example:
 	//
@@ -188,25 +188,25 @@ func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) Validate
 }
 
 type GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfig struct {
-	// The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference samples and perform aggregate operations on the reference values. In this example, an expression is used to indicate the query method of referenced samples.
+	// Some types of thresholds require you to query reference samples and aggregate the values of the reference samples to obtain the threshold for comparison. An expression is used to indicate the query method of reference samples.
 	//
 	// example:
 	//
 	// { "bizdate": [ "-1", "-7", "-1m" ] }
 	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
-	// The threshold calculation method. Valid values:
+	// The threshold calculation method:
 	//
-	// 	- Fixed
+	// - Fixed
 	//
-	// 	- Fluctation
+	// - Fluctation
 	//
-	// 	- FluctationDiscreate
+	// - FluctationDiscreate
 	//
-	// 	- Auto
+	// - Auto
 	//
-	// 	- Average
+	// - Average
 	//
-	// 	- Variance
+	// - Variance
 	//
 	// example:
 	//
@@ -245,49 +245,49 @@ func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingCo
 }
 
 type GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig struct {
-	// The metrics used for sampling. Valid values:
+	// The name of the metric to be sampled:
 	//
-	// 	- Count: the number of rows in the table.
+	// - Count: the number of rows in the table.
 	//
-	// 	- Min: the minimum value of the field.
+	// - Min: the minimum value of the field.
 	//
-	// 	- Max: the maximum value of the field.
+	// - Max: the maximum value of the field.
 	//
-	// 	- Avg: the average value of the field.
+	// - Avg: the average value of the field.
 	//
-	// 	- DistinctCount: the number of unique values of the field after deduplication.
+	// - DistinctCount: the number of distinct values of the field.
 	//
-	// 	- DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
+	// - DistinctPercent: the ratio of the number of distinct values of the field to the number of data rows.
 	//
-	// 	- DuplicatedCount: the number of duplicated values of the field.
+	// - DuplicatedCount: the number of duplicate values of the field.
 	//
-	// 	- DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
+	// - DuplicatedPercent: the ratio of the number of duplicate values of the field to the number of data rows.
 	//
-	// 	- TableSize: the table size.
+	// - TableSize: the size of the table.
 	//
-	// 	- NullValueCount: the number of rows in which the field value is null.
+	// - NullValueCount: the number of rows in which the field is null.
 	//
-	// 	- NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
+	// - NullValuePercent: the percentage of rows in which the field is null.
 	//
-	// 	- GroupCount: the field value and the number of rows for each field value.
+	// - GroupCount: the number of data rows corresponding to each value after aggregation by field value.
 	//
-	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+	// - CountNotIn: the number of rows whose enumerated values do not match.
 	//
-	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+	// - CountDistinctNotIn: the number of distinct values whose enumerated values do not match.
 	//
-	// 	- UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
+	// - UserDefinedSql: collects samples by using a custom SQL statement.
 	//
 	// example:
 	//
 	// Max
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// The parameters required for sampling.
+	// The parameters required for sample collection.
 	//
 	// example:
 	//
 	// {"SQL": "select count(1) from table;"}
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
-	// The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
+	// The runtime parameter setting statements that are inserted and executed before the specific sampling statement is executed. The setting can be a maximum of 1,000 characters in length. Only MaxCompute is supported.
 	//
 	// example:
 	//

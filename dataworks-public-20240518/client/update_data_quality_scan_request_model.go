@@ -279,9 +279,9 @@ func (s *UpdateDataQualityScanRequest) Validate() error {
 type UpdateDataQualityScanRequestComputeResource struct {
 	// Workspace environment of the compute engine. Valid values:
 	//
-	// 	- Prod
+	// - Prod
 	//
-	// 	- Dev
+	// - Dev
 	//
 	// example:
 	//
@@ -344,11 +344,11 @@ func (s *UpdateDataQualityScanRequestComputeResource) Validate() error {
 type UpdateDataQualityScanRequestComputeResourceRuntime struct {
 	// The engine type. These settings are only supported for the EMR compute engine.This setting? Valid values:
 	//
-	// 	- Hive: Hive SQL
+	// - Hive: Hive SQL
 	//
-	// 	- Spark: Spark SQL
+	// - Spark: Spark SQL
 	//
-	// 	- Kyuubi
+	// - Kyuubi
 	//
 	// example:
 	//
@@ -418,7 +418,7 @@ type UpdateDataQualityScanRequestHooks struct {
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
 	// The type of the hook. Valid values:
 	//
-	// 	- BlockTaskInstance: Block the scheduling of the task instance.
+	// - BlockTaskInstance: Block the scheduling of the task instance.
 	//
 	// example:
 	//
@@ -566,9 +566,9 @@ type UpdateDataQualityScanRequestTrigger struct {
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 	// The trigger mode of the data quality monitor. Valid values:
 	//
-	// 	- ByManual: Manually triggered. Default setting.
+	// - ByManual: Manually triggered. Default setting.
 	//
-	// 	- BySchedule: Triggered by a scheduled task instance.
+	// - BySchedule: Triggered by a scheduled task instance.
 	//
 	// example:
 	//

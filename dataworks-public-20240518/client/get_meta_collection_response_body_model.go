@@ -86,7 +86,7 @@ type GetMetaCollectionResponseBodyMetaCollection struct {
 	//
 	// example:
 	//
-	// category.123
+	// as78d756asd
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The last modified time in milliseconds.
 	//
@@ -104,15 +104,15 @@ type GetMetaCollectionResponseBodyMetaCollection struct {
 	//
 	// example:
 	//
-	// category.12
+	// 4as3dasf654a
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The collection type. Valid values:
 	//
-	// 	- Category
+	// - Category
 	//
-	// 	- Album
+	// - Album
 	//
-	// 	- AlbumCategory: Album subcategory.
+	// - AlbumCategory: Album subcategory.
 	//
 	// example:
 	//

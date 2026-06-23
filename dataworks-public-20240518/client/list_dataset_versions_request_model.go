@@ -42,9 +42,9 @@ type ListDatasetVersionsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Asc: Ascending.
+	// - Asc: Ascending.
 	//
-	// 	- Desc: Descending.
+	// - Desc: Descending.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ type ListDatasetVersionsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- ModifyTime: Modification time.
+	// - ModifyTime: Modification time.
 	//
-	// 	- CreateTime: Creation time.
+	// - CreateTime: Creation time.
 	//
-	// 	- VersionNumber: Version number.
+	// - VersionNumber: Version number.
 	//
 	// example:
 	//

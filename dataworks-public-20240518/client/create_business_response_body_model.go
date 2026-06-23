@@ -24,26 +24,50 @@ type iCreateBusinessResponseBody interface {
 }
 
 type CreateBusinessResponseBody struct {
+	// Business Process ID.
+	//
 	// example:
 	//
 	// 100001
 	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// Error code. The value is as follows:
+	//
+	// - If the request succeeds, the ErrorCode field is not returned.
+	//
+	// - If the request fails, the ErrorCode field is returned.
+	//
+	// For more information, see the error code list in this topic.
+	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The unique ID of this request.<br>
+	//
+	// If an error occurs, you can use this ID to troubleshoot the issue.
+	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the invocation succeeded. Valid values:
+	//
+	// - true: The invocation succeeded.
+	//
+	// - false: The invocation failed.
+	//
 	// example:
 	//
 	// true

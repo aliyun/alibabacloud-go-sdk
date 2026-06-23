@@ -20,18 +20,26 @@ type iUpdateMetaEntityRequest interface {
 }
 
 type UpdateMetaEntityRequest struct {
+	// The entity attributes. Complex values must be serialized into a JSON string.
+	//
 	// example:
 	//
 	// []
 	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The comment on the entity.
+	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The custom attribute values. Each key specifies a custom attribute, and its value is an array that can contain at most one item. To delete an attribute value, provide an empty array.
+	//
 	// example:
 	//
 	// []
 	CustomAttributes map[string][]*string `json:"CustomAttributes,omitempty" xml:"CustomAttributes,omitempty"`
+	// The ID of the entity to update. The entity name, entity type, and parent-child relationship are determined by the ID and cannot be modified using this operation.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,6 +14,8 @@ type iGetApplicationContentsRequest interface {
 }
 
 type GetApplicationContentsRequest struct {
+	// The ID of the approval process instance.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -28,9 +28,9 @@ type DeleteTaskRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Prod: production environment
+	// - Prod: production environment
 	//
-	// 	- Dev: development environment
+	// - Dev: development environment
 	//
 	// example:
 	//

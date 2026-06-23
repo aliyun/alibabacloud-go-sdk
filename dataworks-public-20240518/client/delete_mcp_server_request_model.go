@@ -14,6 +14,8 @@ type iDeleteMcpServerRequest interface {
 }
 
 type DeleteMcpServerRequest struct {
+	// The name of the MCP Server to delete.
+	//
 	// This parameter is required.
 	//
 	// example:

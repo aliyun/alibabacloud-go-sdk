@@ -14,6 +14,8 @@ type iDeleteParameterRequest interface {
 }
 
 type DeleteParameterRequest struct {
+	// The ID of the parameter.
+	//
 	// This parameter is required.
 	//
 	// example:

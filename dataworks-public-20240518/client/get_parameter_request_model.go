@@ -14,6 +14,8 @@ type iGetParameterRequest interface {
 }
 
 type GetParameterRequest struct {
+	// The ID of the parameter.
+	//
 	// This parameter is required.
 	//
 	// example:

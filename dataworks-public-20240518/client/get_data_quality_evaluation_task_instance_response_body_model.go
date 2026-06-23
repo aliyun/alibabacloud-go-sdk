@@ -16,13 +16,13 @@ type iGetDataQualityEvaluationTaskInstanceResponseBody interface {
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBody struct {
-	// The details of the monitor instance.
+	// The details of the data quality monitoring instance.
 	DataQualityEvaluationTaskInstance *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance `json:"DataQualityEvaluationTaskInstance,omitempty" xml:"DataQualityEvaluationTaskInstance,omitempty" type:"Struct"`
-	// The request ID. You can locate logs and troubleshoot issues based on the ID.
+	// The request ID. Used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
-	// 8abcb91f-d266-4073-b907-2ed670378ed1
+	// 8abcb91f-d266-4073-b907-2ed67****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -68,56 +68,56 @@ type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskIn
 	//
 	// 1716344665000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The end time of the instance.
+	// The end time of the instance execution.
 	//
 	// example:
 	//
 	// 1716344665000
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the data quality monitoring instance.
+	// The data quality monitoring instance ID.
 	//
 	// example:
 	//
 	// 7234231689
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Data quality verification execution parameters in JSON format. The available keys are as follows:
+	// The execution parameters for the data quality check, in JSON format. The following keys are available:
 	//
-	// - triggerTime: the millisecond timestamp of the trigger time. The baseline time of the $[yyyymmdd] expression in the data range of data quality monitoring. Required.
+	// - triggerTime: the millisecond-level timestamp of the trigger time. This is the base time for the $[yyyymmdd] expression in the data range of the data quality monitoring task. This key is required.
 	//
 	// example:
 	//
 	// { "triggerTime": 1733284062000 }
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// 98330
 	ProjectId *int64                                                                                      `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	Results   []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// The status of the data quality monitoring instance.
+	// The instance status of the data quality monitoring task. Valid values:
 	//
-	// - Running: Verifying
+	// - Running: The check is in progress.
 	//
-	// - Error: A rule verification Error occurred.
+	// - Error: A rule check encountered an error.
 	//
-	// - Passed: all rules are verified
+	// - Passed: All rule checks passed.
 	//
-	// - Warned: normal alarm threshold triggered by rules
+	// - Warned: A rule triggered a normal alert threshold.
 	//
-	// - Critical: Threshold for serious alerts triggered by rules
+	// - Critical: A rule triggered a critical alert threshold.
 	//
 	// example:
 	//
 	// Passed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The monitor.
+	// The data quality monitoring task.
 	Task *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
-	// The context information when the instance is triggered, in JSON format. The possible keys are as follows:
+	// The context information when the instance is triggered, in JSON format. The following keys may be included:
 	//
-	// - TriggerClient: the trigger source of the data quality monitoring instance, such as CWF2 (scheduling system), may be added later.
+	// - TriggerClient: the trigger source of the data quality monitoring instance, such as CWF2 (scheduling system). More values may be added in the future.
 	//
-	// - TriggerClientId: associated with a specific business resource in the source system. For example, if TriggerClient is CWF2, the ID of the scheduling task is recorded here.
+	// - TriggerClientId: the ID of a specific business resource in the source system. For example, when TriggerClient is CWF2, this field records the scheduling task ID.
 	//
 	// example:
 	//
@@ -906,51 +906,51 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask struct {
-	// The description of the monitor.
+	// The description of the data quality monitoring task.
 	//
 	// example:
 	//
 	// OpenAPI quality monitoring test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The hook.
+	// The callback settings.
 	Hooks []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
-	// The ID of the data quality monitor.
+	// The ID of the data quality monitoring task.
 	//
 	// example:
 	//
 	// 28544990
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the monitor.
+	// The name of the data quality monitoring task.
 	//
 	// example:
 	//
 	// Data quality OpenAPI monitoring test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The configurations of alert notifications.
+	// The notification settings.
 	Notifications *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// 20629
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Extended configuration, JSON-formatted string, takes effect only for EMR-type data quality monitoring.
+	// The extension configuration, a JSON-formatted character string. This parameter takes effect only for EMR-type data quality monitoring tasks.
 	//
-	// - queue: the yarn queue used when performing EMR data quality verification. The default queue is the queue configured for this project.
+	// - queue: The YARN queue used to execute EMR data validation. The default value is the queue configured for the current project.
 	//
-	// - sqlEngine: SQL engine used when performing EMR data verification
+	// - sqlEngine: The SQL engine used to execute EMR data validation. Valid values:
 	//
-	//   - HIVE_ SQL
+	//   - HIVE_SQL
 	//
-	//   - SPARK_ SQL
+	//   - SPARK_SQL.
 	//
 	// example:
 	//
 	// { "queue": "default" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	// The monitored object of the monitor.
+	// The monitored object of the data quality check task. Refer to the DataQualityTarget example.
 	Target *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// The trigger configuration of the monitor.
+	// The trigger configuration of the data quality check task.
 	Trigger *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
@@ -1072,19 +1072,19 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskHooks struct {
-	// The hook trigger condition. When this condition is met, the hook action is triggered. Only two conditional expressions are supported:
+	// The cause that triggers the hook action. When this condition is met, the hook action is triggered. Only two types of conditional expressions are supported:
 	//
-	// 	- Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
+	// - Specify a single combination of rule severity and rule check status. For example, `${severity} == "High" AND ${status} == "Critical"` means that the condition is met if any rule with a severity of High has a check result of Critical.
 	//
-	// 	- Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
+	// - Specify multiple combinations of rule severity and rule check status. For example, `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")` means that the condition is met if any rule with a severity of High has a check result of Critical, or any rule with a severity of Normal has a check result of Critical, or any rule with a severity of Normal has a check result of Error. The severity enumeration values in the conditional expression are consistent with the severity enumeration values in DataQualityRule, and the status enumeration values are consistent with the status values in DataQualityResult.
 	//
 	// example:
 	//
 	// (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// Hook type. Currently, only one type is supported:
+	// The hook type. Only one type is supported:
 	//
-	// - BlockTaskInstance: the blocking scheduling task continues to run. Data quality monitoring is triggered by the scheduling task. After the data quality monitoring is completed, the Hook.Condition is used to determine whether the blocking scheduling task continues to run.
+	// - BlockTaskInstance: Blocks the scheduling node from continuing to run. If the data quality monitoring task is triggered by a scheduling node, after the data quality monitoring task is completed, the system determines whether to block the scheduling node from continuing to run based on Hook.Condition.
 	//
 	// example:
 	//
@@ -1123,17 +1123,17 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotifications struct {
-	// The notification trigger condition. When this condition is met, the alert notification is triggered. Only two conditional expressions are supported:
+	// The cause that triggers a notification. When this condition is met, a message notification is sent. Only two types of conditional expressions are supported:
 	//
-	// 	- Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
+	// - Specify a single combination of rule severity and rule check status. For example, `${severity} == "High" AND ${status} == "Critical"` means that the condition is met if any rule with a severity of High has a check result of Critical.
 	//
-	// 	- Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
+	// - Specify multiple combinations of rule severity and rule check status. For example, `(${severity} == "High"AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")` means that the condition is met if any rule with a severity of High has a check result of Critical, or any rule with a severity of Normal has a check result of Critical, or any rule with a severity of Normal has a check result of Error. The severity enumeration values in the conditional expression are consistent with the severity enumeration values in DataQualityRule, and the status enumeration values are consistent with the status values in DataQualityResult.
 	//
 	// example:
 	//
 	// ${severity} == "High" AND ${status} == "Critical"
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The alert notification methods.
+	// The alert methods.
 	Notifications []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
 }
 
@@ -1177,9 +1177,9 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications struct {
-	// The notification method.
+	// The notification channels.
 	NotificationChannels []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
-	// The value of the receiver.
+	// The notification recipients.
 	NotificationReceivers []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
 }
 
@@ -1232,7 +1232,7 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels struct {
-	// The notification method.
+	// The notification channels.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 }
 
@@ -1258,21 +1258,21 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers struct {
-	// Additional parameter settings for sending alerts in json format. The supported keys are as follows:
+	// The additional parameter settings for sending alerts, in JSON format. The following keys are supported:
 	//
-	// - atAll: when sending DingTalk alerts, do you need to @ everyone in the group. It takes effect when ReceiverType is DingdingUrl.
+	// - atAll: Specifies whether to @everyone in the group when sending a DingTalk alert. This parameter takes effect only when ReceiverType is set to DingdingUrl.
 	//
 	// example:
 	//
 	// { "atAll": true }
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The type of alert recipient.
+	// The type of the alert recipient.
 	//
 	// example:
 	//
 	// DingdingUrl
 	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
-	// The recipient of the alert.
+	// The alert recipients.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -1322,21 +1322,21 @@ type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskIn
 	//
 	// maxcompute
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The partition range monitored.
+	// The partition range to monitor.
 	//
 	// example:
 	//
 	// pt=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
-	// The unique ID of the table in the data map.
+	// The unique ID of the table in DataWorks Data Map.
 	//
 	// example:
 	//
 	// odps.api_trace.ods_d_api_log
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The type of the monitoring object.
+	// The monitored object type. Valid values:
 	//
-	// - Table: Table
+	// - Table: table.
 	//
 	// example:
 	//
@@ -1393,13 +1393,13 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTrigger struct {
-	// The Id list of the scheduled task, which is valid when the Type is ByScheduledTaskInstance.
+	// The list of scheduling node IDs. This parameter is valid only when Type is set to ByScheduledTaskInstance.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// The trigger type of the monitor. Valid values:
+	// The trigger type of the quality monitoring task. Valid values:
 	//
-	// 	- ByManual (default): The monitor is manually triggered.
+	// - ByManual: Manual trigger. This is the default value.
 	//
-	// 	- ByScheduledTaskInstance: The monitor is triggered by the associated scheduling tasks.
+	// - ByScheduledTaskInstance: Triggered by an associated scheduling node.
 	//
 	// example:
 	//

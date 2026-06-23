@@ -18,15 +18,20 @@ type iPromptAgentSessionRequest interface {
 }
 
 type PromptAgentSessionRequest struct {
+	// The ID passed in by the caller. The value is returned as-is in the response.
+	//
 	// example:
 	//
 	// 1021418411
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. Fixed value: 2.0.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string                          `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Params  *PromptAgentSessionRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The business parameters.
+	Params *PromptAgentSessionRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
 }
 
 func (s PromptAgentSessionRequest) String() string {
@@ -74,8 +79,12 @@ func (s *PromptAgentSessionRequest) Validate() error {
 }
 
 type PromptAgentSessionRequestParams struct {
-	Meta   *PromptAgentSessionRequestParamsMeta     `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
+	// The extended metadata.
+	Meta *PromptAgentSessionRequestParamsMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
+	// The array of user message content blocks. For more information, see https\\://agentclientprotocol.com/protocol/content
 	Prompt []*PromptAgentSessionRequestParamsPrompt `json:"Prompt,omitempty" xml:"Prompt,omitempty" type:"Repeated"`
+	// The ID of the target session. If the session does not exist, an SSE error frame is returned.
+	//
 	// example:
 	//
 	// sess_0f12abc34
@@ -136,6 +145,8 @@ func (s *PromptAgentSessionRequestParams) Validate() error {
 }
 
 type PromptAgentSessionRequestParamsMeta struct {
+	// A Map-type value. In custom agent scenarios, you can use this parameter to replace placeholder parameters.
+	//
 	// example:
 	//
 	// {
@@ -170,15 +181,56 @@ func (s *PromptAgentSessionRequestParamsMeta) Validate() error {
 }
 
 type PromptAgentSessionRequestParamsPrompt struct {
-	Description *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	Meta        *PromptAgentSessionRequestParamsPromptMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
-	MimeType    *string                                    `json:"MimeType,omitempty" xml:"MimeType,omitempty"`
-	Name        *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	Size        *int64                                     `json:"Size,omitempty" xml:"Size,omitempty"`
-	Text        *string                                    `json:"Text,omitempty" xml:"Text,omitempty"`
-	Title       *string                                    `json:"Title,omitempty" xml:"Title,omitempty"`
-	Type        *string                                    `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uri         *string                                    `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The description of the file.
+	//
+	// example:
+	//
+	// Sales_Order_Details.csv
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The prompt metadata extended by DataWorks.
+	Meta *PromptAgentSessionRequestParamsPromptMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
+	// The MIME type of the file.
+	//
+	// example:
+	//
+	// text/csv‌
+	MimeType *string `json:"MimeType,omitempty" xml:"MimeType,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// xxx.csv
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The size of the file. Unit: bytes.
+	//
+	// example:
+	//
+	// 1231231
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// **The text content.**
+	//
+	// example:
+	//
+	// Sales in the last 7 days
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The title of the file.
+	//
+	// example:
+	//
+	// Sales_Order_Details.csv
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// **The content block type.**
+	//
+	// example:
+	//
+	// text
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URI of the file.
+	//
+	// example:
+	//
+	// oss://${bucket}/${ossKey}
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s PromptAgentSessionRequestParamsPrompt) String() string {
@@ -280,6 +332,8 @@ func (s *PromptAgentSessionRequestParamsPrompt) Validate() error {
 }
 
 type PromptAgentSessionRequestParamsPromptMeta struct {
+	// Specifies whether to hide the prompt from the user. For example, if a user asks "Sales amount in the last 7 days" in a chat dialog, the calling system may use RAG to retrieve relevant business domain knowledge and append it to the agent context before calling the API. If you do not want to display this supplemental information to the user, set this parameter to true.
+	//
 	// example:
 	//
 	// true or false

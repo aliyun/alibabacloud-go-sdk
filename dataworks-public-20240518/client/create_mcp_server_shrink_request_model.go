@@ -20,20 +20,27 @@ type iCreateMcpServerShrinkRequest interface {
 }
 
 type CreateMcpServerShrinkRequest struct {
+	// The connection configuration for the MCP Server.
+	//
 	// example:
 	//
 	// -
 	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The name of the MCP Server. The name must be unique at the tenant level. It must start with a lowercase letter and contain only characters from `a-z`, `0-9`, `_`, and `-`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my-mcp-server
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The visibility level.
+	//
 	// example:
 	//
 	// TENANT
-	Visibility            *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	// The visibility scope. The required fields depend on the value of the `Visibility` parameter.
 	VisibilityScopeShrink *string `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty"`
 }
 

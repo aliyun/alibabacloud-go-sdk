@@ -38,17 +38,17 @@ type ListNetworksRequest struct {
 	//
 	// example:
 	//
-	// Serverless_res_group_524257424564736_6831777003XXXXX
+	// Serverless_res_group_524257424564736_6831777003****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
 	//
-	// 	- Id (Desc/Asc): the network ID
+	// - Id (Desc/Asc): the network ID
 	//
-	// 	- Status (Desc/Asc): the network status
+	// - Status (Desc/Asc): the network status
 	//
-	// 	- CreateUser (Desc/Asc): the user who created the network
+	// - CreateUser (Desc/Asc): the user who created the network
 	//
-	// 	- CreateTime (Desc/Asc): the time when the network was created
+	// - CreateTime (Desc/Asc): the time when the network was created
 	//
 	// Default value: CreateTime Asc.
 	//

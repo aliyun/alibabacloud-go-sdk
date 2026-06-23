@@ -70,16 +70,17 @@ type GetCreateWorkflowInstancesResultResponseBodyResult struct {
 	FailureMessage *string `json:"FailureMessage,omitempty" xml:"FailureMessage,omitempty"`
 	// The creation status. Valid values:
 	//
-	// 	- Creating
+	// - Creating
 	//
-	// 	- Created
+	// - Created
 	//
-	// 	- CreateFailure
+	// - CreateFailure
 	//
 	// example:
 	//
 	// Created
-	Status                     *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Unified workflow instance ID. For all task instances triggered under the same data timestamp in a single trigger, the value of this field is identical. This field is returned after successful creation.
 	UnifiedWorkflowInstanceIds []*int64 `json:"UnifiedWorkflowInstanceIds,omitempty" xml:"UnifiedWorkflowInstanceIds,omitempty" type:"Repeated"`
 	// The workflow instance IDs. This parameter is returned only if the creation is successful.
 	WorkflowInstanceIds []*int64 `json:"WorkflowInstanceIds,omitempty" xml:"WorkflowInstanceIds,omitempty" type:"Repeated"`

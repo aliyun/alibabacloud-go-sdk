@@ -14,7 +14,7 @@ type iDeleteResourceGroupRequest interface {
 }
 
 type DeleteResourceGroupRequest struct {
-	// The ID of the resource group.
+	// The unique identifier of the resource group.
 	//
 	// This parameter is required.
 	//

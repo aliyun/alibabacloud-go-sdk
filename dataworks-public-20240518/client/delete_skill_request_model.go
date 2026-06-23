@@ -14,6 +14,8 @@ type iDeleteSkillRequest interface {
 }
 
 type DeleteSkillRequest struct {
+	// The name of the Skill to delete.
+	//
 	// This parameter is required.
 	//
 	// example:

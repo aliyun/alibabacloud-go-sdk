@@ -14,6 +14,8 @@ type iDeleteMcpServerResponseBody interface {
 }
 
 type DeleteMcpServerResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 824F80BA-1778-5D8A-BAFF-668A4D9C4CC7

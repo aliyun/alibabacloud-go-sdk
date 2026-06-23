@@ -26,9 +26,9 @@ type GetTaskRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod: production environment
+	// - Prod: production environment
 	//
-	// 	- Dev: development environment
+	// - Dev: development environment
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type CreateProjectRequest struct {
 	//
 	// example:
 	//
-	// rg-acfmzbn7pti3zff
+	// rg-acfmzbn7****
 	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
 	// The tags.
 	AliyunResourceTags []*CreateProjectRequestAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
@@ -46,9 +46,9 @@ type CreateProjectRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable the development environment. Valid values:
 	//
-	// 	- true : enables the development environment. In this case, the development environment is isolated from the production environment in the workspace.
+	// - true : enables the development environment. In this case, the development environment is isolated from the production environment in the workspace.
 	//
-	// 	- false: disables the development environment. In this case, only the production environment is used in the workspace.
+	// - false: disables the development environment. In this case, only the production environment is used in the workspace.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type CreateProjectRequest struct {
 	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
 	// Specifies whether to disable the Develop role. Valid values:
 	//
-	// 	- false (default)
+	// - false (default)
 	//
-	// 	- true
+	// - true
 	//
 	// example:
 	//
@@ -76,11 +76,11 @@ type CreateProjectRequest struct {
 	//
 	// Limits:
 	//
-	// 	- The workspace name must be unqiue in a region.
+	// - The workspace name must be unqiue in a region.
 	//
-	// 	- The workspace name can contain letters, digits, and underscores (_), and must start with a letter.
+	// - The workspace name can contain letters, digits, and underscores (_), and must start with a letter.
 	//
-	// 	- The workspace name must be 3 to 28 characters in length.
+	// - The workspace name must be 3 to 28 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -90,9 +90,9 @@ type CreateProjectRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Specifies whether to enable scheduling of Platform for AI (PAI) tasks. Valid values:
 	//
-	// 	- true: enables scheduling of PAI tasks. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
+	// - true: enables scheduling of PAI tasks. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
 	//
-	// 	- false: disables scheduling of PAI tasks.
+	// - false: disables scheduling of PAI tasks.
 	//
 	// example:
 	//

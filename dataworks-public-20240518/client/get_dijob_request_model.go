@@ -22,27 +22,25 @@ type iGetDIJobRequest interface {
 type GetDIJobRequest struct {
 	// Deprecated
 	//
-	// This parameter is deprecated. Use the Id parameter instead.
+	// This field is deprecated. Use the `Id` field instead.
 	//
 	// example:
 	//
 	// 11588
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	// The ID of the synchronization task.
+	// The ID of the DI job.
 	//
 	// example:
 	//
 	// 11588
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
-	//
-	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	// The DataWorks workspace ID. You can call the `ListProjects` operation to obtain the workspace ID.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Specifies whether to return detailed configuration information, including TransformationRules, TableMappings, and JobSettings. Valid values: true and false. Default value: true.
+	// Specifies whether to return the detailed configuration, including `TransformationRules`, `TableMappings`, and `JobSettings`. This configuration is returned by default.
 	//
 	// example:
 	//

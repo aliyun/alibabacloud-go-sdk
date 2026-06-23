@@ -14,6 +14,8 @@ type iDeleteProjectRoleResponseBody interface {
 }
 
 type DeleteProjectRoleResponseBody struct {
+	// The request ID, which is used to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 5BCD2252-F184-55A8-9675-337C43BE0CD1

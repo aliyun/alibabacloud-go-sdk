@@ -52,9 +52,9 @@ type ListFileVersionsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call succeeded. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -264,9 +264,9 @@ type ListFileVersionsResponseBodyDataFileVersions struct {
 	FileVersion *int32 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
 	// Indicates whether this file version is the latest version in the production environment.
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

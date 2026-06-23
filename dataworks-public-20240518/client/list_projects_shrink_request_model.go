@@ -38,15 +38,15 @@ type ListProjectsShrinkRequest struct {
 	//
 	// example:
 	//
-	// rg-acfmzbn7pti3zff
+	// rg-acfmzbn****
 	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
 	// The tags.
 	AliyunResourceTagsShrink *string `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty"`
 	// Specifies whether the development environment is enabled. Valid values:
 	//
-	// 	- true: The development environment is enabled. In this case, the development environment is isolated from the production environment in a workspace.
+	// - true: The development environment is enabled. In this case, the development environment is isolated from the production environment in a workspace.
 	//
-	// 	- false: The development environment is disabled. In this case, only the production environment is used in a workspace.
+	// - false: The development environment is disabled. In this case, only the production environment is used in a workspace.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type ListProjectsShrinkRequest struct {
 	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
 	// Specifies whether the Develop role is disabled. Valid values:
 	//
-	// 	- false (default)
+	// - false (default)
 	//
-	// 	- true
+	// - true
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type ListProjectsShrinkRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Specifies whether scheduling of Platform for AI (PAI) tasks is enabled. Valid values:
 	//
-	// 	- true: Scheduling of PAI tasks is enabled. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
+	// - true: Scheduling of PAI tasks is enabled. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
 	//
-	// 	- false: Scheduling of PAI tasks is disabled.
+	// - false: Scheduling of PAI tasks is disabled.
 	//
 	// example:
 	//
@@ -90,23 +90,23 @@ type ListProjectsShrinkRequest struct {
 	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
 	// The status of the workspaces. Valid values:
 	//
-	// 	- Available
+	// - Available
 	//
-	// 	- Initializing
+	// - Initializing
 	//
-	// 	- InitFailed
+	// - InitFailed
 	//
-	// 	- Forbidden
+	// - Forbidden
 	//
-	// 	- Deleting
+	// - Deleting
 	//
-	// 	- DeleteFailed
+	// - DeleteFailed
 	//
-	// 	- Frozen
+	// - Frozen
 	//
-	// 	- Updating
+	// - Updating
 	//
-	// 	- UpdateFailed
+	// - UpdateFailed
 	//
 	// example:
 	//

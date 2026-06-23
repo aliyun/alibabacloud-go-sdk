@@ -32,9 +32,9 @@ type iListDataSourcesShrinkRequest interface {
 type ListDataSourcesShrinkRequest struct {
 	// The environment in which the data sources are used. Valid values:
 	//
-	// 	- Dev: development environment
+	// - Dev: development environment
 	//
-	// 	- Prod: production environment
+	// - Prod: production environment
 	//
 	// example:
 	//
@@ -48,15 +48,15 @@ type ListDataSourcesShrinkRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The order in which you want to sort the data sources. Valid values:
 	//
-	// 	- Desc: descending order
+	// - Desc: descending order
 	//
-	// 	- Asc: ascending order
+	// - Asc: ascending order
 	//
 	// Default value: Desc
 	//
 	// example:
 	//
-	// Asc
+	// Desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The page number. Default value: 1.
 	//
@@ -82,23 +82,23 @@ type ListDataSourcesShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The field that you want to use to sort the data sources. Valid values:
 	//
-	// 	- CreateTime
+	// - CreateTime
 	//
-	// 	- Id
+	// - Id
 	//
-	// 	- Name
+	// - Name
 	//
 	// Default value: CreateTime
 	//
 	// example:
 	//
-	// Id
+	// CreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The tag of the data source. This parameter specifies a filter condition.
 	//
-	// 	- You can specify multiple tags, which are in the logical AND relation. For example, you can query the data sources that contain the following tags: `["tag1", "tag2", "tag3"]`.
+	// - You can specify multiple tags, which are in the logical AND relation. For example, you can query the data sources that contain the following tags: `["tag1", "tag2", "tag3"]`.
 	//
-	// 	- If you do not configure this parameter, tag-based filtering is not performed. You can specify up to 10 tags.
+	// - If you do not configure this parameter, tag-based filtering is not performed. You can specify up to 10 tags.
 	//
 	// example:
 	//

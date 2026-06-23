@@ -24,14 +24,19 @@ type iListPipelineRunsRequest interface {
 }
 
 type ListPipelineRunsRequest struct {
-	// The ID of the user who creates the processes. This parameter specifies a filter condition.
+	// Filters the results by the creator of the pipeline.
 	//
 	// example:
 	//
 	// 110755000425****
-	Creator  *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The ID of the artifact.
+	//
+	// example:
+	//
+	// 860438872620113XXXX
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. The default value is 1.
 	//
 	// example:
 	//
@@ -43,9 +48,9 @@ type ListPipelineRunsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	// The ID of the DataWorks workspace. You can obtain this ID from the Workspace Management page in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
-	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	// This parameter specifies the DataWorks workspace to use for the API call.
 	//
 	// This parameter is required.
 	//
@@ -53,21 +58,21 @@ type ListPipelineRunsRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The status of the processes. This parameter specifies a filter condition.
+	// Filters the results by the current status of the pipeline.
 	//
 	// Valid values:
 	//
-	// 	- Init
+	// - `Init`: initializing
 	//
-	// 	- Running
+	// - `Running`: running
 	//
-	// 	- Success
+	// - `Success`: succeeded
 	//
-	// 	- Fail
+	// - `Fail`: failed
 	//
-	// 	- Termination
+	// - `Termination`: terminated
 	//
-	// 	- Cancel
+	// - `Cancel`: canceled
 	//
 	// example:
 	//

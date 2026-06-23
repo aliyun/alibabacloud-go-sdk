@@ -30,33 +30,48 @@ type iListPendingApprovalsRequest interface {
 }
 
 type ListPendingApprovalsRequest struct {
+	// The access types.
 	AccessTypes []*string `json:"AccessTypes,omitempty" xml:"AccessTypes,omitempty" type:"Repeated"`
+	// The resource schema type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The end time of the query range, specified as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1779724799999
-	EndTime *int64                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The grantee object used to filter results.
 	Grantee *ListPendingApprovalsRequestGrantee `json:"Grantee,omitempty" xml:"Grantee,omitempty" type:"Struct"`
+	// The token used to retrieve the next page of results.
+	//
 	// example:
 	//
 	// eyJpZCI6MTIzfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries to return per page. Default: 10. Maximum: 200.
+	//
 	// example:
 	//
 	// 20
-	PageSize *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The criteria to filter resources.
 	Resource *ListPendingApprovalsRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	// The resource type, which corresponds to a leaf node name. You can specify multiple values. A business context can map to multiple leaf node names.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ["table", "column"]
 	ResourceType []*string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" type:"Repeated"`
+	// The start time of the query range, specified as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1771948800000
@@ -167,10 +182,14 @@ func (s *ListPendingApprovalsRequest) Validate() error {
 }
 
 type ListPendingApprovalsRequestGrantee struct {
+	// The ID of the principal.
+	//
 	// example:
 	//
 	// ROLE_3133343434
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The type of principal.
+	//
 	// example:
 	//
 	// RamRole
@@ -208,15 +227,20 @@ func (s *ListPendingApprovalsRequestGrantee) Validate() error {
 }
 
 type ListPendingApprovalsRequestResource struct {
+	// The `name` of the `ResourceSchema` used to parse the resource.
+	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The `version` of the `ResourceSchema` used to parse the resource.
+	//
 	// example:
 	//
 	// v1.0.0
-	DefVersion *string                `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
-	MetaData   map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	DefVersion *string `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
+	// The resource metadata. Its content is constrained by the `ResourceSchema`.
+	MetaData map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 }
 
 func (s ListPendingApprovalsRequestResource) String() string {

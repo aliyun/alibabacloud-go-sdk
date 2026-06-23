@@ -14,6 +14,8 @@ type iBatchCreateMetaEntitiesShrinkRequest interface {
 }
 
 type BatchCreateMetaEntitiesShrinkRequest struct {
+	// An entity list. You can create up to five entities in a batch. All entities in the batch must have the same `EntityType`.
+	//
 	// This parameter is required.
 	//
 	// example:

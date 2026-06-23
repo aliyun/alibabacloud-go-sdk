@@ -22,11 +22,36 @@ type iMetaEntityWriteResult interface {
 }
 
 type MetaEntityWriteResult struct {
-	EntityType   *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The entity type.
+	//
+	// example:
+	//
+	// custom_entity-demo
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The error message if the operation fails for the entity.
+	//
+	// example:
+	//
+	// The specified parameters are invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The entity ID.
+	//
+	// example:
+	//
+	// custom_entity-demo:entity_01
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The entity name.
+	//
+	// example:
+	//
+	// entity_01
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the operation succeeded for the entity.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s MetaEntityWriteResult) String() string {

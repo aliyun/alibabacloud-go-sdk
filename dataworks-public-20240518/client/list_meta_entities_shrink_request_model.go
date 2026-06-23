@@ -30,40 +30,58 @@ type iListMetaEntitiesShrinkRequest interface {
 }
 
 type ListMetaEntitiesShrinkRequest struct {
+	// Conditions for filtering entities by entity attributes. The `AND` operator is used between different filters, and the `OR` operator is used for multiple values within a single filter.
+	//
 	// example:
 	//
 	// []
 	AttributeFiltersShrink *string `json:"AttributeFilters,omitempty" xml:"AttributeFilters,omitempty"`
+	// Filters entities by comment. This is a token-based match.
+	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Conditions for filtering entities by custom attributes. The `AND` operator is used between different filters, and the `OR` operator is used for multiple values within a single filter. This parameter supports only `ENUM` custom attributes.
+	//
 	// example:
 	//
 	// []
 	CustomAttributeFiltersShrink *string `json:"CustomAttributeFilters,omitempty" xml:"CustomAttributeFilters,omitempty"`
+	// The type of the entity to list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// custom_entity-customer_api
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The maximum number of results to return per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Filters entities by name. This is a containment match.
+	//
 	// example:
 	//
 	// xm_create_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The pagination token that specifies the next page of results. To retrieve the first page, do not specify this parameter. To retrieve subsequent pages, set this parameter to the `NextToken` value from the previous response.
+	//
 	// example:
 	//
 	// AAAAAaUpAxoCTD/+sbOf3f+uxvnYyILMeAjoTFQSX64R12GN
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order. Valid values: `Asc` and `Desc`.
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The field to use for sorting the results.
+	//
 	// example:
 	//
 	// Name

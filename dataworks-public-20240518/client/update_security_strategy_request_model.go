@@ -24,20 +24,37 @@ type iUpdateSecurityStrategyRequest interface {
 }
 
 type UpdateSecurityStrategyRequest struct {
+	// A client token to ensure request idempotence.
+	//
 	// example:
 	//
 	// 1AFAE64E-D1BE-432B-A9*****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The policy content, which is constrained by the `SecurityStrategySchema`.
+	//
 	// This parameter is required.
-	Content     *UpdateSecurityStrategyRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Description *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	Content *UpdateSecurityStrategyRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// **The policy description.**
+	//
+	// example:
+	//
+	// 控制数据分析模块的查询结果安全行为
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// **The policy ID.**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 13
-	Id         *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name       *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// **The policy name.**
+	//
+	// example:
+	//
+	// 默认数据分析策略
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// **A list of associated workspace IDs.**
 	Workspaces []*int64 `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
 }
 
@@ -113,6 +130,10 @@ func (s *UpdateSecurityStrategyRequest) Validate() error {
 }
 
 type UpdateSecurityStrategyRequestContent struct {
+	// A list of controllers.
+	//
+	// Note: The valid controllers depend on the selected schema. For more information, see the controller definition and the list of controllers for each schema.
+	//
 	// This parameter is required.
 	Controllers []*UpdateSecurityStrategyRequestContentControllers `json:"Controllers,omitempty" xml:"Controllers,omitempty" type:"Repeated"`
 }
@@ -148,43 +169,70 @@ func (s *UpdateSecurityStrategyRequestContent) Validate() error {
 }
 
 type UpdateSecurityStrategyRequestContentControllers struct {
+	// The default value for the Basic edition.
+	//
 	// example:
 	//
 	// 10000
-	BasicEditionDefaultValue  interface{} `json:"BasicEditionDefaultValue,omitempty" xml:"BasicEditionDefaultValue,omitempty"`
-	BasicEditionIntervalValue []*int32    `json:"BasicEditionIntervalValue,omitempty" xml:"BasicEditionIntervalValue,omitempty" type:"Repeated"`
+	BasicEditionDefaultValue interface{} `json:"BasicEditionDefaultValue,omitempty" xml:"BasicEditionDefaultValue,omitempty"`
+	// The value range for the Basic edition, specified as `[min, max]`.
+	BasicEditionIntervalValue []*int32 `json:"BasicEditionIntervalValue,omitempty" xml:"BasicEditionIntervalValue,omitempty" type:"Repeated"`
+	// The controller identifier. For valid values, see the list of controllers for each schema.
+	//
 	// example:
 	//
 	// viewCount
 	Controller *string `json:"Controller,omitempty" xml:"Controller,omitempty"`
+	// The data type of the controller\\"s value. Valid values: `Boolean`, `Integer`, `Long`, and `String`.
+	//
 	// example:
 	//
 	// Integer
 	ControllerValueType *string `json:"ControllerValueType,omitempty" xml:"ControllerValueType,omitempty"`
-	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// 查询结果-单次展示记录值上限
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The English display name.
+	//
 	// example:
 	//
 	// Query Results - Single Display Record Limit
 	DisplayNameEn *string `json:"DisplayNameEn,omitempty" xml:"DisplayNameEn,omitempty"`
+	// Indicates whether the controller is enabled.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The default value for the Enterprise edition.
+	//
 	// example:
 	//
 	// 10000
-	EnterpriseEditionDefaultValue  interface{} `json:"EnterpriseEditionDefaultValue,omitempty" xml:"EnterpriseEditionDefaultValue,omitempty"`
-	EnterpriseEditionIntervalValue []*int32    `json:"EnterpriseEditionIntervalValue,omitempty" xml:"EnterpriseEditionIntervalValue,omitempty" type:"Repeated"`
+	EnterpriseEditionDefaultValue interface{} `json:"EnterpriseEditionDefaultValue,omitempty" xml:"EnterpriseEditionDefaultValue,omitempty"`
+	// The value range for the Enterprise edition, specified as `[min, max]`.
+	EnterpriseEditionIntervalValue []*int32 `json:"EnterpriseEditionIntervalValue,omitempty" xml:"EnterpriseEditionIntervalValue,omitempty" type:"Repeated"`
+	// The default value for the Professional edition.
+	//
 	// example:
 	//
 	// 10000
-	ProfessionalEditionDefaultValue  interface{} `json:"ProfessionalEditionDefaultValue,omitempty" xml:"ProfessionalEditionDefaultValue,omitempty"`
-	ProfessionalEditionIntervalValue []*int32    `json:"ProfessionalEditionIntervalValue,omitempty" xml:"ProfessionalEditionIntervalValue,omitempty" type:"Repeated"`
+	ProfessionalEditionDefaultValue interface{} `json:"ProfessionalEditionDefaultValue,omitempty" xml:"ProfessionalEditionDefaultValue,omitempty"`
+	// The value range for the Professional edition, specified as `[min, max]`.
+	ProfessionalEditionIntervalValue []*int32 `json:"ProfessionalEditionIntervalValue,omitempty" xml:"ProfessionalEditionIntervalValue,omitempty" type:"Repeated"`
+	// The default value for the Standard edition.
+	//
 	// example:
 	//
 	// 10000
-	StandardEditionDefaultValue  interface{} `json:"StandardEditionDefaultValue,omitempty" xml:"StandardEditionDefaultValue,omitempty"`
-	StandardEditionIntervalValue []*int32    `json:"StandardEditionIntervalValue,omitempty" xml:"StandardEditionIntervalValue,omitempty" type:"Repeated"`
+	StandardEditionDefaultValue interface{} `json:"StandardEditionDefaultValue,omitempty" xml:"StandardEditionDefaultValue,omitempty"`
+	// The value range for the Standard edition, specified as `[min, max]`.
+	StandardEditionIntervalValue []*int32 `json:"StandardEditionIntervalValue,omitempty" xml:"StandardEditionIntervalValue,omitempty" type:"Repeated"`
+	// The user-configured value. The type of this value is determined by the `ControllerValueType` parameter.
+	//
 	// example:
 	//
 	// 20

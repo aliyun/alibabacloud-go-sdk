@@ -94,7 +94,7 @@ type ImportWorkflowDefinitionResponseBodyAsyncJob struct {
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The response.
 	//
-	// >  The workflow ID is returned.
+	// > The workflow ID is returned.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type ImportWorkflowDefinitionResponseBodyAsyncJob struct {
 	//
 	// Valid values:
 	//
-	// 	- Running: The asynchronous task is running.
+	// - Running: The asynchronous task is running.
 	//
-	// 	- Success: The asynchronous task is complete.
+	// - Success: The asynchronous task is complete.
 	//
-	// 	- Fail: The asynchronous task fails.
+	// - Fail: The asynchronous task fails.
 	//
-	// 	- Cancel: The asynchronous task is canceled.
+	// - Cancel: The asynchronous task is canceled.
 	//
 	// example:
 	//
@@ -120,9 +120,9 @@ type ImportWorkflowDefinitionResponseBodyAsyncJob struct {
 	//
 	// Valid values:
 	//
-	// 	- Create: The asynchronous task is used to create an object.
+	// - Create: The asynchronous task is used to create an object.
 	//
-	// 	- Cancel: The asynchronous task is used to cancel an operation.
+	// - Cancel: The asynchronous task is used to cancel an operation.
 	//
 	// example:
 	//

@@ -42,9 +42,9 @@ type ListCatalogsRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The order in which the tables are sorted. Default value: Asc. Valid values:
 	//
-	// 	- Asc: ascending order.
+	// - Asc: ascending order.
 	//
-	// 	- Desc: descending order.
+	// - Desc: descending order.
 	//
 	// example:
 	//
@@ -66,33 +66,29 @@ type ListCatalogsRequest struct {
 	//
 	// Currently, only the DLF and StarRocks types are supported.
 	//
-	// 	- For the DLF type, you can query all catalog lists. The format of `ParentMetaEntityId` is `DLF`.
+	// - For the DLF type, you can query all catalog lists. The format of `ParentMetaEntityId` is `DLF`.
 	//
-	// 	- For the StarRocks type, you can query the catalogs of a specific instance. The format of `ParentMetaEntityId` `is StarRocks:(instance_id|encoded_jdbc_url)`.
+	// - For the StarRocks type, you can query the catalogs of a specific instance. The format of `ParentMetaEntityId` `is StarRocks:(instance_id|encoded_jdbc_url)`.
 	//
-	// > \\
+	// > <br>`instance_id`: The instance ID. Required if the data source is registered in instance mode.<br>
 	//
-	// `instance_id`: The instance ID. Required if the data source is registered in instance mode.\\
-	//
-	// `encoded_jdbc_url`: The JDBC connection string encoded with URL encoding. Required if the data source is registered in connection-string mode.
+	// > `encoded_jdbc_url`: The JDBC connection string encoded with URL encoding. Required if the data source is registered in connection-string mode.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dlf
-	//
-	// starrocks:c-abc123xxx
 	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
 	// The sort field. Default value: CreateTime. Valid values:
 	//
-	// 	- CreateTime
+	// - CreateTime
 	//
-	// 	- ModifyTime
+	// - ModifyTime
 	//
-	// 	- Name
+	// - Name
 	//
-	// 	- Type
+	// - Type
 	//
 	// example:
 	//

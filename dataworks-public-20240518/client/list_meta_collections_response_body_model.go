@@ -22,7 +22,7 @@ type ListMetaCollectionsResponseBody struct {
 	//
 	// example:
 	//
-	// E25887B7-579C-54A5-9C4F-83A0DE367DDE
+	// E25887B7-XXXX-54A5-9C4F-83A0DE367DDE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -157,12 +157,16 @@ type ListMetaCollectionsResponseBodyDataMetaCollections struct {
 	// 456789
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	// The collection description.
+	//
+	// example:
+	//
+	// Test category
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The collection name.
 	//
 	// example:
 	//
-	// category.123
+	// 7a65sd7aasd
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The modification time in milliseconds (timestamp).
 	//
@@ -180,15 +184,15 @@ type ListMetaCollectionsResponseBodyDataMetaCollections struct {
 	//
 	// example:
 	//
-	// category.1
+	// as78d756asd
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The collection type. Valid values:
 	//
-	// 	- Category
+	// - Category
 	//
-	// 	- Album
+	// - Album
 	//
-	// 	- AlbumCategory: Album subcategory
+	// - AlbumCategory: Album subcategory
 	//
 	// example:
 	//

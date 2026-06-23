@@ -16,9 +16,9 @@ type iListProjectMembersResponseBody interface {
 }
 
 type ListProjectMembersResponseBody struct {
-	// The pagination information.
+	// The paging information.
 	PagingInfo *ListProjectMembersResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// The unique ID of the request, used to track logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -68,15 +68,15 @@ type ListProjectMembersResponseBodyPagingInfo struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The members in the workspace.
+	// The list of Workspace members.
 	ProjectMembers []*ListProjectMembersResponseBodyPagingInfoProjectMembers `json:"ProjectMembers,omitempty" xml:"ProjectMembers,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of matching entries.
 	//
 	// example:
 	//
@@ -142,30 +142,31 @@ func (s *ListProjectMembersResponseBodyPagingInfo) Validate() error {
 }
 
 type ListProjectMembersResponseBodyPagingInfoProjectMembers struct {
-	// The ID of the DataWorks workspace.
+	// The ID of the DataWorks Workspace.
 	//
 	// example:
 	//
 	// 62136
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The roles that are assigned to the member.
+	// The roles assigned to the Workspace member.
 	Roles []*ListProjectMembersResponseBodyPagingInfoProjectMembersRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// The status of the member. Valid values:
+	// The status of the Workspace member.
 	//
-	// 	- Normal
+	// - `Normal`: The member is active.
 	//
-	// 	- Forbidden
+	// - `Forbidden`: The member is disabled.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the account used by the member.
+	// The ID of the DataWorks user.
 	//
 	// example:
 	//
 	// 123422344899
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The name of the DataWorks user.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -248,11 +249,11 @@ type ListProjectMembersResponseBodyPagingInfoProjectMembersRoles struct {
 	//
 	// Visitors
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the role. Valid values:
+	// The type of the role.
 	//
-	// 	- UserCustom: user-defined role
+	// - `UserCustom`: A user-defined role.
 	//
-	// 	- System: system role
+	// - `System`: A system role.
 	//
 	// example:
 	//

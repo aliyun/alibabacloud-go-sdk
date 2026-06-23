@@ -20,20 +20,27 @@ type iUpdateParameterRequest interface {
 }
 
 type UpdateParameterRequest struct {
+	// The parameter description.
+	//
 	// example:
 	//
-	// 这是一个测试参数
+	// This is a test parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The parameter ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The owner\\"s account ID.
+	//
 	// example:
 	//
 	// 123456789
-	Owner      *string                             `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The parameter value configuration. This parameter is required for the production environment. If you specify the same environment multiple times, only the first configuration is used.
 	Properties []*UpdateParameterRequestProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
 }
 
@@ -95,10 +102,18 @@ func (s *UpdateParameterRequest) Validate() error {
 }
 
 type UpdateParameterRequestProperties struct {
+	// The project environment.
+	//
+	// - `Prod`: the production environment
+	//
+	// - `Dev`: the development environment
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// value123

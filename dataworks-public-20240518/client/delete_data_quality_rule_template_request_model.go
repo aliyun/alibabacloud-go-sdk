@@ -16,7 +16,7 @@ type iDeleteDataQualityRuleTemplateRequest interface {
 }
 
 type DeleteDataQualityRuleTemplateRequest struct {
-	// The code for the template.
+	// The code of the rule template.
 	//
 	// This parameter is required.
 	//

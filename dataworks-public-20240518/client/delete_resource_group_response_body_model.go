@@ -16,7 +16,7 @@ type iDeleteResourceGroupResponseBody interface {
 }
 
 type DeleteResourceGroupResponseBody struct {
-	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	// The Request ID. Use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

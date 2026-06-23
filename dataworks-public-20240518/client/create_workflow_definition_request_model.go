@@ -92,8 +92,6 @@ type CreateWorkflowDefinitionRequest struct {
 	//
 	//                 "name": "OpenAPITestWorkflowDemo",
 	//
-	//                 "inputs": {},
-	//
 	//                 "outputs": {
 	//
 	//                     "nodeOutputs": [
@@ -111,8 +109,6 @@ type CreateWorkflowDefinitionRequest struct {
 	//                     ]
 	//
 	//                 },
-	//
-	//                 "nodes": [],
 	//
 	//                 "dependencies": []
 	//

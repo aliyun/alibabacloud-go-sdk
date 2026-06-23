@@ -16,10 +16,14 @@ type iCreateSecurityStrategyResponseBody interface {
 }
 
 type CreateSecurityStrategyResponseBody struct {
+	// The security strategy ID.
+	//
 	// example:
 	//
 	// 12345
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc5df3a17****903790e8e8a

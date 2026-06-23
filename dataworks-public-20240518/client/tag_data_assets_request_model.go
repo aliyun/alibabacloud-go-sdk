@@ -36,9 +36,9 @@ type TagDataAssetsRequest struct {
 	DataAssetIds []*string `json:"DataAssetIds,omitempty" xml:"DataAssetIds,omitempty" type:"Repeated"`
 	// The type of the data asset. Valid values:
 	//
-	// 	- ACS::DataWorks::Table
+	// - ACS::DataWorks::Table
 	//
-	// 	- ACS::DataWorks::Task
+	// - ACS::DataWorks::Task
 	//
 	// This parameter is required.
 	//
@@ -48,9 +48,9 @@ type TagDataAssetsRequest struct {
 	DataAssetType *string `json:"DataAssetType,omitempty" xml:"DataAssetType,omitempty"`
 	// The environment of the workspace to which the data asset belongs. Valid values:
 	//
-	// 	- Dev: development environment
+	// - Dev: development environment
 	//
-	// 	- Prod: production environment
+	// - Prod: production environment
 	//
 	// example:
 	//

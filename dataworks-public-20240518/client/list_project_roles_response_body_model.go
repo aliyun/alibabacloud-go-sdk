@@ -18,7 +18,7 @@ type iListProjectRolesResponseBody interface {
 type ListProjectRolesResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListProjectRolesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListProjectRolesResponseBody) Validate() error {
 }
 
 type ListProjectRolesResponseBodyPagingInfo struct {
-	// The page number.
+	// The returned page number.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type ListProjectRolesResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The roles in the DataWorks workspace.
+	// A list of workspace roles.
 	ProjectRoles []*ListProjectRolesResponseBodyPagingInfoProjectRoles `json:"ProjectRoles,omitempty" xml:"ProjectRoles,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of matching entries.
 	//
 	// example:
 	//
@@ -142,26 +142,28 @@ func (s *ListProjectRolesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListProjectRolesResponseBodyPagingInfoProjectRoles struct {
-	// The code of the role in the DataWorks workspace.
+	// The code of the workspace role.
 	//
 	// example:
 	//
 	// role_project_guest
 	Code              *string                                                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	ModulePermissions []*ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions `json:"ModulePermissions,omitempty" xml:"ModulePermissions,omitempty" type:"Repeated"`
-	// The name of the role.
+	// The name of the workspace role.
 	//
 	// example:
 	//
 	// Visitors
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
+	//
+	// Note: For system-defined roles, this parameter returns -1.
 	//
 	// example:
 	//
 	// 21229
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the role in the DataWorks workspace.
+	// The type of the workspace role.
 	//
 	// example:
 	//

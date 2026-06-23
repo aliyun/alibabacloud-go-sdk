@@ -76,9 +76,9 @@ type BatchUpdateTasksRequestTasks struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The project environment.
 	//
-	// 	- Prod: Production
+	// - Prod: Production
 	//
-	// 	- Dev: Development
+	// - Dev: Development
 	//
 	// example:
 	//
@@ -112,11 +112,11 @@ type BatchUpdateTasksRequestTasks struct {
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
 	// The rerun mode. Valid values:
 	//
-	// 	- AllDenied: The task cannot be rerun.
+	// - AllDenied: The task cannot be rerun.
 	//
-	// 	- FailureAllowed: The task can be rerun only after it fails.
+	// - FailureAllowed: The task can be rerun only after it fails.
 	//
-	// 	- AllAllowed: The task can always be rerun.
+	// - AllAllowed: The task can always be rerun.
 	//
 	// example:
 	//
@@ -447,11 +447,11 @@ type BatchUpdateTasksRequestTasksTrigger struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
 	//
-	// 	- Pause
+	// - Pause
 	//
-	// 	- Skip
+	// - Skip
 	//
-	// 	- Normal
+	// - Normal
 	//
 	// example:
 	//
@@ -465,9 +465,9 @@ type BatchUpdateTasksRequestTasksTrigger struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// 	- Scheduler: periodically triggered
+	// - Scheduler: periodically triggered
 	//
-	// 	- Manual
+	// - Manual
 	//
 	// example:
 	//

@@ -56,9 +56,9 @@ type SubmitFileResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful.
 	//
-	// 	- true: success.
+	// - true: success.
 	//
-	// 	- false: failure.
+	// - false: failure.
 	//
 	// example:
 	//

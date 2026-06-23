@@ -20,7 +20,7 @@ type DeleteNetworkResponseBody struct {
 	//
 	// example:
 	//
-	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
+	// 6A6CBE87-9F91-1323-B680-E7A7065****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	//

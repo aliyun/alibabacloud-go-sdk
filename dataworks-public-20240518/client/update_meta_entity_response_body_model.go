@@ -18,13 +18,16 @@ type iUpdateMetaEntityResponseBody interface {
 }
 
 type UpdateMetaEntityResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// AASFDFSDFG-DFSDF-DFSDFD-SDFSDF
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *UpdateMetaEntityResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the update operation.
+	Result *UpdateMetaEntityResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -76,10 +79,14 @@ func (s *UpdateMetaEntityResponseBody) Validate() error {
 }
 
 type UpdateMetaEntityResponseBodyResult struct {
+	// The ID of the entity.
+	//
 	// example:
 	//
 	// custom_entity-customer_api:api_001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the update was successful.
+	//
 	// example:
 	//
 	// true

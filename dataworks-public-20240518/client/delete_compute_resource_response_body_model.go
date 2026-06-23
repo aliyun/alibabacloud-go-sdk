@@ -24,9 +24,9 @@ type DeleteComputeResourceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call succeeded.
 	//
-	// 	- true: The call is successful.
+	// - true: The call is successful.
 	//
-	// 	- false: The call failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

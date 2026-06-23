@@ -20,13 +20,13 @@ type UpdateResourceResponseBody struct {
 	//
 	// example:
 	//
-	// 4CDF7B72-020B-542A-8465-21CFFA81XXXX
+	// 4CDF7B72-020B-542A-8465-21CFFA81****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

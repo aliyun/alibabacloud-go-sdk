@@ -76,13 +76,13 @@ type ListDataSourceSharedRulesResponseBodyDataSourceSharedRules struct {
 	//
 	// example:
 	//
-	// 1
+	// 1107550****
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	// The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
 	//
 	// example:
 	//
-	// 1
+	// 265133
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	// The environment to which the target data source belongs. The values are as follows:
 	//
@@ -98,7 +98,7 @@ type ListDataSourceSharedRulesResponseBodyDataSourceSharedRules struct {
 	//
 	// example:
 	//
-	// 1
+	// 101412
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the data source in the destination workspace.
 	//
@@ -110,19 +110,19 @@ type ListDataSourceSharedRulesResponseBodyDataSourceSharedRules struct {
 	//
 	// example:
 	//
-	// 1
+	// 1107550004253538
 	SharedUser *string `json:"SharedUser,omitempty" xml:"SharedUser,omitempty"`
 	// The ID of the workspace with which the data source is associated.
 	//
 	// example:
 	//
-	// 1
+	// 106560
 	SourceProjectId *int64 `json:"SourceProjectId,omitempty" xml:"SourceProjectId,omitempty"`
 	// The ID of the workspace to which the data source is shared.
 	//
 	// example:
 	//
-	// 1
+	// 106561
 	TargetProjectId *int64 `json:"TargetProjectId,omitempty" xml:"TargetProjectId,omitempty"`
 }
 

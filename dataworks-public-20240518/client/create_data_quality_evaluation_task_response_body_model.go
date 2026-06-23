@@ -16,7 +16,7 @@ type iCreateDataQualityEvaluationTaskResponseBody interface {
 }
 
 type CreateDataQualityEvaluationTaskResponseBody struct {
-	// The ID of the new monitor.
+	// The ID of the newly created data quality monitor.
 	//
 	// example:
 	//

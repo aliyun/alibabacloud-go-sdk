@@ -16,12 +16,16 @@ type iDissociateProjectFromImageRequest interface {
 }
 
 type DissociateProjectFromImageRequest struct {
+	// The ID of the image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Custom_image_xxxx_xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

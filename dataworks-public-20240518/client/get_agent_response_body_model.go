@@ -16,7 +16,10 @@ type iGetAgentResponseBody interface {
 }
 
 type GetAgentResponseBody struct {
+	// The agent details.
 	Agent *GetAgentResponseBodyAgent `json:"Agent,omitempty" xml:"Agent,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 824F80BA-1778-5D8A-BAFF-668A4D9C4CC7
@@ -59,39 +62,81 @@ func (s *GetAgentResponseBody) Validate() error {
 }
 
 type GetAgentResponseBodyAgent struct {
+	// A list of callable sub-agents.
 	CallableAgents []*GetAgentResponseBodyAgentCallableAgents `json:"CallableAgents,omitempty" xml:"CallableAgents,omitempty" type:"Repeated"`
+	// The creator ID.
+	//
 	// example:
 	//
 	// 123456
-	CreatorId   *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// **The description.**
+	//
+	// example:
+	//
+	// 数据分析助手
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// **The display name.**
+	//
+	// example:
+	//
+	// 我的助手
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The creation time, as a Unix timestamp in milliseconds.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 1780555634000
-	GmtModifiedTime *string                         `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Metadata        map[string]interface{}          `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Model           *GetAgentResponseBodyAgentModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The last modification time, as a Unix timestamp in milliseconds.
+	//
+	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 1780555634000
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// **Additional metadata.**
+	//
+	// example:
+	//
+	// {}
+	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// **The model configuration.**
+	Model *GetAgentResponseBodyAgentModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// The ID of the last modifier.
+	//
 	// example:
 	//
 	// 123456
 	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// **The agent name.**
+	//
 	// example:
 	//
 	// my-agent
-	Name            *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequiredRuntime []*string                          `json:"RequiredRuntime,omitempty" xml:"RequiredRuntime,omitempty" type:"Repeated"`
-	Skills          []*GetAgentResponseBodyAgentSkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
-	SystemPrompt    *string                            `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	Tools           []*GetAgentResponseBodyAgentTools  `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The runtime dependencies.
+	RequiredRuntime []*string `json:"RequiredRuntime,omitempty" xml:"RequiredRuntime,omitempty" type:"Repeated"`
+	// A list of skills.
+	Skills []*GetAgentResponseBodyAgentSkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	// **The system prompt.**
+	//
+	// example:
+	//
+	// 你是一个数据分析助手。
+	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
+	// **A list of tools.**
+	Tools []*GetAgentResponseBodyAgentTools `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	// **The visibility level.**
+	//
 	// example:
 	//
 	// TENANT
-	Visibility      *string                                   `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	// The visibility scope.
 	VisibilityScope *GetAgentResponseBodyAgentVisibilityScope `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty" type:"Struct"`
 }
 
@@ -289,13 +334,30 @@ func (s *GetAgentResponseBodyAgent) Validate() error {
 }
 
 type GetAgentResponseBodyAgentCallableAgents struct {
+	// The sub-agent display name.
+	//
+	// example:
+	//
+	// 子助手
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The sub-agent name.
+	//
 	// example:
 	//
 	// sub-agent
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Source  *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Version *int32  `json:"Version,omitempty" xml:"Version,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sub-agent source.
+	//
+	// example:
+	//
+	// custom
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The sub-agent version.
+	//
+	// example:
+	//
+	// -
+	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetAgentResponseBodyAgentCallableAgents) String() string {
@@ -347,15 +409,42 @@ func (s *GetAgentResponseBodyAgentCallableAgents) Validate() error {
 }
 
 type GetAgentResponseBodyAgentModel struct {
-	Config    map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
-	MaxTokens *int32                 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
+	// Additional configuration for the model.
+	//
+	// example:
+	//
+	// {}
+	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The maximum number of tokens to generate in one response.
+	//
+	// example:
+	//
+	// 8192
+	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// qwen3-max
-	ModelName   *string  `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	Stream      *bool    `json:"Stream,omitempty" xml:"Stream,omitempty"`
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Indicates whether streaming output is enabled.
+	//
+	// example:
+	//
+	// true
+	Stream *bool `json:"Stream,omitempty" xml:"Stream,omitempty"`
+	// The temperature.
+	//
+	// example:
+	//
+	// 1
 	Temperature *float64 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
-	TopP        *float64 `json:"TopP,omitempty" xml:"TopP,omitempty"`
+	// The top-p.
+	//
+	// example:
+	//
+	// 1
+	TopP *float64 `json:"TopP,omitempty" xml:"TopP,omitempty"`
 }
 
 func (s GetAgentResponseBodyAgentModel) String() string {
@@ -425,11 +514,18 @@ func (s *GetAgentResponseBodyAgentModel) Validate() error {
 }
 
 type GetAgentResponseBodyAgentSkills struct {
+	// The skill name.
+	//
 	// example:
 	//
 	// my-skill
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Version *int32  `json:"Version,omitempty" xml:"Version,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The skill version.
+	//
+	// example:
+	//
+	// -
+	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetAgentResponseBodyAgentSkills) String() string {
@@ -463,13 +559,26 @@ func (s *GetAgentResponseBodyAgentSkills) Validate() error {
 }
 
 type GetAgentResponseBodyAgentTools struct {
+	// **The name of the built-in tool. This parameter applies only when `Kind` is set to `builtin`.**
+	//
+	// example:
+	//
+	// builtin_sql
 	BuiltinName *string `json:"BuiltinName,omitempty" xml:"BuiltinName,omitempty"`
+	// **The tool type.**
+	//
 	// example:
 	//
 	// builtin
-	Kind          *string   `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	McpItems      []*string `json:"McpItems,omitempty" xml:"McpItems,omitempty" type:"Repeated"`
-	McpServerName *string   `json:"McpServerName,omitempty" xml:"McpServerName,omitempty"`
+	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// **The selected MCP tool items. This parameter applies only when `Kind` is set to `mcp`.**
+	McpItems []*string `json:"McpItems,omitempty" xml:"McpItems,omitempty" type:"Repeated"`
+	// **The name of the associated MCP server. This parameter applies only when `Kind` is set to `mcp`.**
+	//
+	// example:
+	//
+	// server-name
+	McpServerName *string `json:"McpServerName,omitempty" xml:"McpServerName,omitempty"`
 }
 
 func (s GetAgentResponseBodyAgentTools) String() string {
@@ -521,8 +630,10 @@ func (s *GetAgentResponseBodyAgentTools) Validate() error {
 }
 
 type GetAgentResponseBodyAgentVisibilityScope struct {
+	// A list of project IDs that can view the agent.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	UserIds    []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+	// A list of user IDs that can view the agent.
+	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
 func (s GetAgentResponseBodyAgentVisibilityScope) String() string {

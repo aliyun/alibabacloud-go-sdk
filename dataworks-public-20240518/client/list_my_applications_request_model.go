@@ -28,36 +28,64 @@ type iListMyApplicationsRequest interface {
 }
 
 type ListMyApplicationsRequest struct {
+	// The resource type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The end time of the application, specified as a Unix timestamp in milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1779724799999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// A token that you can use in a subsequent request to retrieve the next page of results.
+	//
 	// example:
 	//
 	// eyJpZCI6MTIzfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 200.
+	//
 	// example:
 	//
 	// 20
-	PageSize *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search criteria for the resource.
 	Resource *ListMyApplicationsRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	// The name of the leaf node that specifies the resource type. You can specify multiple resource types. Note that different leaf node names can map to the same business logic.
+	//
 	// This parameter is required.
 	ResourceType []*string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" type:"Repeated"`
+	// The start time of the application, specified as a Unix timestamp in milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1771948800000
-	StartTime *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Statuses  []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The approval statuses for filtering. Valid values:
+	//
+	// - `WaitApproval`: Pending approval
+	//
+	// - `Confirmed`: Pending authorization
+	//
+	// - `RejectApproval`: Approval rejected
+	//
+	// - `AuthorizeSucceed`: Authorization succeeded
+	//
+	// - `AuthorizeFailed`: Authorization failed
+	//
+	// - `Deleted`: The application was deleted.
+	//
+	// - `Canceled`: The application was canceled.
+	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 
 func (s ListMyApplicationsRequest) String() string {
@@ -150,15 +178,20 @@ func (s *ListMyApplicationsRequest) Validate() error {
 }
 
 type ListMyApplicationsRequestResource struct {
+	// The name of the resource schema (`ResourceSchema.name`) required for resource parsing.
+	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The version of the resource schema (`ResourceSchema.version`) required for resource parsing.
+	//
 	// example:
 	//
 	// v1.0.0
-	DefVersion *string                `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
-	MetaData   map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	DefVersion *string `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
+	// The resource metadata. The content is constrained by the `ResourceSchema`.
+	MetaData map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 }
 
 func (s ListMyApplicationsRequestResource) String() string {

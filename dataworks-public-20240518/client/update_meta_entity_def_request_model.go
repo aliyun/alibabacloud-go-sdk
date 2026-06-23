@@ -22,24 +22,34 @@ type iUpdateMetaEntityDefRequest interface {
 }
 
 type UpdateMetaEntityDefRequest struct {
+	// The new description.
+	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The new display name. The maximum length is 32 characters.
+	//
 	// example:
 	//
 	// Business API
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The entity type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// custom_entity-customer_api
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The new attribute definitions. New attributes must be optional.
+	//
 	// example:
 	//
 	// []
 	NewAttributeDefs []*MetaEntityAttributeDef `json:"NewAttributeDefs,omitempty" xml:"NewAttributeDefs,omitempty" type:"Repeated"`
+	// The updates to existing attribute definitions. You can modify only the display name and description. You can also add enumerated values for attributes of the ENUM type.
+	//
 	// example:
 	//
 	// []

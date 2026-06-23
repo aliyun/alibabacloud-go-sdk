@@ -16,7 +16,7 @@ type iDeleteCertificateRequest interface {
 }
 
 type DeleteCertificateRequest struct {
-	// The ID of the certificate file.
+	// The unique identifier of the certificate file.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteCertificateRequest struct {
 	//
 	// 676303114031776
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the workspace to which the certificate file belongs.
+	// The ID of the project to which the certificate file belongs.
 	//
 	// This parameter is required.
 	//

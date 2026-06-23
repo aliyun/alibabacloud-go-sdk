@@ -18,16 +18,20 @@ type iUpdateCustomAttributeResponseBody interface {
 }
 
 type UpdateCustomAttributeResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 6B56C4A2-C7F3-52AF-8417-6DFF7447011B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the update operation was successful.
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Whether the request was successful.
+	//
 	// example:
 	//
 	// true

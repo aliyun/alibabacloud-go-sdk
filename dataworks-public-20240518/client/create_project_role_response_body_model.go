@@ -16,10 +16,14 @@ type iCreateProjectRoleResponseBody interface {
 }
 
 type CreateProjectRoleResponseBody struct {
+	// The unique identifier of the role.
+	//
 	// example:
 	//
 	// base_role_dte
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID, which is used to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// B313938A-4475-599B-98EB-A0875019FD5B

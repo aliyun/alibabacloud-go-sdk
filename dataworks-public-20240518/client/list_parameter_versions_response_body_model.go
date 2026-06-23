@@ -16,7 +16,10 @@ type iListParameterVersionsResponseBody interface {
 }
 
 type ListParameterVersionsResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListParameterVersionsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
@@ -59,15 +62,22 @@ func (s *ListParameterVersionsResponseBody) Validate() error {
 }
 
 type ListParameterVersionsResponseBodyPagingInfo struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
-	PageSize         *int32                                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of parameter versions.
 	ParameterVersion []*ListParameterVersionsResponseBodyPagingInfoParameterVersion `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty" type:"Repeated"`
+	// The total count.
+	//
 	// example:
 	//
 	// 10
@@ -132,51 +142,82 @@ func (s *ListParameterVersionsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListParameterVersionsResponseBodyPagingInfoParameterVersion struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1640000000000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the creator.
+	//
 	// example:
 	//
 	// 123456789
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The parameter description.
+	//
 	// example:
 	//
-	// 这是一个测试参数
+	// This is a test parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The parameter ID.
+	//
 	// example:
 	//
 	// 12345
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1640000000000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The ID of the modifier.
+	//
 	// example:
 	//
 	// 123456789
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// workspace.para
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the owner.
+	//
 	// example:
 	//
 	// 123456789
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 1000
-	ProjectId  *int64                                                                   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The environment-specific configurations of the parameter value.
 	Properties []*ListParameterVersionsResponseBodyPagingInfoParameterVersionProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
+	// The scope of the parameter.
+	//
 	// example:
 	//
 	// Project
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The type of the parameter. Valid values:
+	//
+	// - `PlainConstant`: a plaintext constant.
+	//
+	// - `SecretConstant`: a secret constant.
+	//
+	// - `Variable`: a variable.
+	//
 	// example:
 	//
 	// PlainConstant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1
@@ -322,10 +363,18 @@ func (s *ListParameterVersionsResponseBodyPagingInfoParameterVersion) Validate()
 }
 
 type ListParameterVersionsResponseBodyPagingInfoParameterVersionProperties struct {
+	// The environment type. Valid values:
+	//
+	// - `Prod`: production environment
+	//
+	// - `Dev`: development environment
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// value123

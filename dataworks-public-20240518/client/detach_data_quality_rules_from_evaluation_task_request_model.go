@@ -18,7 +18,7 @@ type iDetachDataQualityRulesFromEvaluationTaskRequest interface {
 }
 
 type DetachDataQualityRulesFromEvaluationTaskRequest struct {
-	// The ID of the data quality monitoring task that is associated with the rule.
+	// The ID of the associated data quality monitoring task.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type DetachDataQualityRulesFromEvaluationTaskRequest struct {
 	//
 	// 10000
 	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
-	// The IDs of the monitoring rules.
+	// The list of data quality rule IDs.
 	//
 	// This parameter is required.
 	DataQualityRuleIds []*int64 `json:"DataQualityRuleIds,omitempty" xml:"DataQualityRuleIds,omitempty" type:"Repeated"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Settings page to obtain the workspace ID.
 	//
 	// This parameter is required.
 	//

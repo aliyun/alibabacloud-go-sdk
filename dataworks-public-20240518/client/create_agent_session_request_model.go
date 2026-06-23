@@ -18,15 +18,20 @@ type iCreateAgentSessionRequest interface {
 }
 
 type CreateAgentSessionRequest struct {
+	// The request ID provided by the client. This ID is returned in the response without modification.
+	//
 	// example:
 	//
 	// 4758330557805415712
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. The value is fixed at `2.0`.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string                          `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Params  *CreateAgentSessionRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The business parameters.
+	Params *CreateAgentSessionRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
 }
 
 func (s CreateAgentSessionRequest) String() string {
@@ -74,6 +79,7 @@ func (s *CreateAgentSessionRequest) Validate() error {
 }
 
 type CreateAgentSessionRequestParams struct {
+	// The extended metadata, which includes information such as agent binding, session source, and session tags.
 	Meta *CreateAgentSessionRequestParamsMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
 }
 
@@ -104,8 +110,11 @@ func (s *CreateAgentSessionRequestParams) Validate() error {
 }
 
 type CreateAgentSessionRequestParamsMeta struct {
-	Agent  *CreateAgentSessionRequestParamsMetaAgent  `json:"Agent,omitempty" xml:"Agent,omitempty" type:"Struct"`
-	Config *CreateAgentSessionRequestParamsMetaConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The agent configuration for this session. The value must be one of the agents returned by the `ListAgents` API.
+	Agent *CreateAgentSessionRequestParamsMetaAgent `json:"Agent,omitempty" xml:"Agent,omitempty" type:"Struct"`
+	// The configuration parameters for the session, such as filters based on session source and session tags.
+	Config               *CreateAgentSessionRequestParamsMetaConfig               `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	InitialConfigOptions *CreateAgentSessionRequestParamsMetaInitialConfigOptions `json:"InitialConfigOptions,omitempty" xml:"InitialConfigOptions,omitempty" type:"Struct"`
 }
 
 func (s CreateAgentSessionRequestParamsMeta) String() string {
@@ -124,6 +133,10 @@ func (s *CreateAgentSessionRequestParamsMeta) GetConfig() *CreateAgentSessionReq
 	return s.Config
 }
 
+func (s *CreateAgentSessionRequestParamsMeta) GetInitialConfigOptions() *CreateAgentSessionRequestParamsMetaInitialConfigOptions {
+	return s.InitialConfigOptions
+}
+
 func (s *CreateAgentSessionRequestParamsMeta) SetAgent(v *CreateAgentSessionRequestParamsMetaAgent) *CreateAgentSessionRequestParamsMeta {
 	s.Agent = v
 	return s
@@ -131,6 +144,11 @@ func (s *CreateAgentSessionRequestParamsMeta) SetAgent(v *CreateAgentSessionRequ
 
 func (s *CreateAgentSessionRequestParamsMeta) SetConfig(v *CreateAgentSessionRequestParamsMetaConfig) *CreateAgentSessionRequestParamsMeta {
 	s.Config = v
+	return s
+}
+
+func (s *CreateAgentSessionRequestParamsMeta) SetInitialConfigOptions(v *CreateAgentSessionRequestParamsMetaInitialConfigOptions) *CreateAgentSessionRequestParamsMeta {
+	s.InitialConfigOptions = v
 	return s
 }
 
@@ -145,10 +163,17 @@ func (s *CreateAgentSessionRequestParamsMeta) Validate() error {
 			return err
 		}
 	}
+	if s.InitialConfigOptions != nil {
+		if err := s.InitialConfigOptions.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type CreateAgentSessionRequestParamsMetaAgent struct {
+	// The agent name to bind to the session. This parameter is required.
+	//
 	// example:
 	//
 	// chat_cli_chatbi
@@ -177,11 +202,14 @@ func (s *CreateAgentSessionRequestParamsMetaAgent) Validate() error {
 }
 
 type CreateAgentSessionRequestParamsMetaConfig struct {
+	// The identifier for the session source. This allows you to search for sessions by their source. For example, if you use an agent on multiple pages, such as Page A and Page B, you can use this parameter to filter and display only the sessions created on Page A. The identifier can be up to 128 characters and can contain letters, digits, hyphens (-), and underscores (_).
+	//
 	// example:
 	//
 	// openapi_sdk
-	SessionSource *string                                                 `json:"SessionSource,omitempty" xml:"SessionSource,omitempty"`
-	SessionTags   []*CreateAgentSessionRequestParamsMetaConfigSessionTags `json:"SessionTags,omitempty" xml:"SessionTags,omitempty" type:"Repeated"`
+	SessionSource *string `json:"SessionSource,omitempty" xml:"SessionSource,omitempty"`
+	// A list of session tags. You can use these tags to search and filter sessions.
+	SessionTags []*CreateAgentSessionRequestParamsMetaConfigSessionTags `json:"SessionTags,omitempty" xml:"SessionTags,omitempty" type:"Repeated"`
 }
 
 func (s CreateAgentSessionRequestParamsMetaConfig) String() string {
@@ -224,6 +252,8 @@ func (s *CreateAgentSessionRequestParamsMetaConfig) Validate() error {
 }
 
 type CreateAgentSessionRequestParamsMetaConfigSessionTags struct {
+	// The session tag. You can use session tags to filter sessions. For example, if your application calls the API with a fixed RAM sub-account but maintains its own user account system, you can pass a user\\"s account ID as a tag. This allows you to filter the session list by your internal account IDs. The tag can be up to 128 characters and can contain letters, digits, hyphens (-), and underscores (_).
+	//
 	// example:
 	//
 	// chatbi
@@ -248,5 +278,46 @@ func (s *CreateAgentSessionRequestParamsMetaConfigSessionTags) SetSessionTagCode
 }
 
 func (s *CreateAgentSessionRequestParamsMetaConfigSessionTags) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateAgentSessionRequestParamsMetaInitialConfigOptions struct {
+	// example:
+	//
+	// chat，cli
+	ExecutionLane *string `json:"ExecutionLane,omitempty" xml:"ExecutionLane,omitempty"`
+	// example:
+	//
+	// yolo
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+}
+
+func (s CreateAgentSessionRequestParamsMetaInitialConfigOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAgentSessionRequestParamsMetaInitialConfigOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) GetExecutionLane() *string {
+	return s.ExecutionLane
+}
+
+func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) GetMode() *string {
+	return s.Mode
+}
+
+func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) SetExecutionLane(v string) *CreateAgentSessionRequestParamsMetaInitialConfigOptions {
+	s.ExecutionLane = &v
+	return s
+}
+
+func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) SetMode(v string) *CreateAgentSessionRequestParamsMetaInitialConfigOptions {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) Validate() error {
 	return dara.Validate(s)
 }

@@ -18,7 +18,7 @@ type iListColumnsResponseBody interface {
 }
 
 type ListColumnsResponseBody struct {
-	// The pagination result.
+	// The pagination information.
 	PagingInfo *ListColumnsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -79,7 +79,7 @@ func (s *ListColumnsResponseBody) Validate() error {
 }
 
 type ListColumnsResponseBodyPagingInfo struct {
-	// The columns in the table.
+	// The table columns.
 	Columns []*Column `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -93,7 +93,7 @@ type ListColumnsResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records returned.
+	// The total number of records.
 	//
 	// example:
 	//

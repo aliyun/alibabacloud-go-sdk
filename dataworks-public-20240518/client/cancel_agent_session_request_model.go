@@ -18,15 +18,20 @@ type iCancelAgentSessionRequest interface {
 }
 
 type CancelAgentSessionRequest struct {
+	// The ID passed by the requester. The value is returned as-is in the response.
+	//
 	// example:
 	//
 	// 676303114031776
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. Fixed value: 2.0.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string                          `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Params  *CancelAgentSessionRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The business parameters of the request.
+	Params *CancelAgentSessionRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
 }
 
 func (s CancelAgentSessionRequest) String() string {
@@ -74,6 +79,8 @@ func (s *CancelAgentSessionRequest) Validate() error {
 }
 
 type CancelAgentSessionRequestParams struct {
+	// The ID of the session to cancel. This parameter is required.
+	//
 	// example:
 	//
 	// sess_0f12abc34

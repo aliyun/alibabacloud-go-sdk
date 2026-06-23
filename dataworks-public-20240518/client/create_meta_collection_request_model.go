@@ -38,15 +38,15 @@ type CreateMetaCollectionRequest struct {
 	//
 	// example:
 	//
-	// category.123
+	// as78d756asd
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The collection name.
 	//
-	// 	- Category
+	// - Category
 	//
-	// 	- Album
+	// - Album
 	//
-	// 	- AlbumCategory: Album subcategory.
+	// - AlbumCategory: Album subcategory.
 	//
 	// This parameter is required.
 	//

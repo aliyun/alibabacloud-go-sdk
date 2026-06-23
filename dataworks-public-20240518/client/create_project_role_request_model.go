@@ -20,14 +20,26 @@ type iCreateProjectRoleRequest interface {
 }
 
 type CreateProjectRoleRequest struct {
-	ClientToken       *string                                      `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token.
+	//
+	// example:
+	//
+	// 保留字段
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The list of DataWorks module permissions.
 	ModulePermissions []*CreateProjectRoleRequestModulePermissions `json:"ModulePermissions,omitempty" xml:"ModulePermissions,omitempty" type:"Repeated"`
+	// The role name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// category_role
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the workspace management page to obtain the ID.
+	//
+	// This parameter specifies the DataWorks workspace on which the API operation is performed.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -94,10 +106,56 @@ func (s *CreateProjectRoleRequest) Validate() error {
 }
 
 type CreateProjectRoleRequestModulePermissions struct {
+	// The DataWorks module ID. Valid values:
+	//
+	// - 2: HoloStudio
+	//
+	// - 3: StreamStudio
+	//
+	// - 4: Deployment management
+	//
+	// - 6: Data Security Guard
+	//
+	// - 7: Data Map
+	//
+	// - 8: Data Service
+	//
+	// - 9: Data Integration
+	//
+	// - 10: Data Modeling (DataBlau DDM)
+	//
+	// - 11: Data Studio
+	//
+	// - 12: Data Quality
+	//
+	// - 13: Data Governance
+	//
+	// - 14: Operation Center
+	//
+	// - 15: Resource optimization
+	//
+	// - 16: Migration Assistant
+	//
+	// - 17: Data Analysis
+	//
+	// - 18: Approval center
+	//
+	// - 19: Security Center
+	//
+	// - 20: Intelligent Data Modeling
+	//
 	// example:
 	//
 	// 2
 	ModuleId *int64 `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	// The permission type. Valid values:
+	//
+	// - Write: Read-only
+	//
+	// - Read: Edit
+	//
+	// - NotSet: Not controlled
+	//
 	// example:
 	//
 	// Write

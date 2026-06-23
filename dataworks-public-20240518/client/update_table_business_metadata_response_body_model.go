@@ -16,7 +16,7 @@ type iUpdateTableBusinessMetadataResponseBody interface {
 }
 
 type UpdateTableBusinessMetadataResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

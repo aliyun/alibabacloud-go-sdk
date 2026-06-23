@@ -18,14 +18,19 @@ type iCreateAgentSessionShrinkRequest interface {
 }
 
 type CreateAgentSessionShrinkRequest struct {
+	// The request ID provided by the client. This ID is returned in the response without modification.
+	//
 	// example:
 	//
 	// 4758330557805415712
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. The value is fixed at `2.0`.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc      *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The business parameters.
 	ParamsShrink *string `json:"Params,omitempty" xml:"Params,omitempty"`
 }
 

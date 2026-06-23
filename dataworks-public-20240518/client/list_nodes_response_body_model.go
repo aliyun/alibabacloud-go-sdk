@@ -16,9 +16,9 @@ type iListNodesResponseBody interface {
 }
 
 type ListNodesResponseBody struct {
-	// The pagination information.
+	// The paging information.
 	PagingInfo *ListNodesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *ListNodesResponseBody) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfo struct {
-	// The list of nodes in Data Studio.
+	// The list of nodes.
 	Nodes []*ListNodesResponseBodyPagingInfoNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the returned data.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the specified filter criteria.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ func (s *ListNodesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodes struct {
-	// The timestamp when the node in Data Studio was created.
+	// The creation timestamp of the node.
 	//
 	// example:
 	//
@@ -156,17 +156,19 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	//
 	// Node description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The unique identifier of the Data Studio node.
+	// The unique identifier of the data development node.
 	//
-	// >  This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// 	Notice:
+	//
+	// This parameter is a `Long` in SDKs earlier than v8.0.0 and a `String` in v8.0.0 and later. **This change does not impact normal SDK use, as the parameter is returned in the type defined by your SDK.*	- Upgrading the SDK across v8.0.0 may cause compilation errors, which you must resolve by manually updating the data type.
 	//
 	// example:
 	//
 	// 860438872620113XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The node input.
+	// The node inputs.
 	Inputs *ListNodesResponseBodyPagingInfoNodesInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
-	// The timestamp when the node in DataStudio was last modified.
+	// The last modification timestamp of the node.
 	//
 	// example:
 	//
@@ -178,15 +180,15 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output of the node.
+	// The node outputs.
 	Outputs *ListNodesResponseBodyPagingInfoNodesOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
-	// The owner of nodes in Data Studio.
+	// The owner of the node.
 	//
 	// example:
 	//
 	// 110755000425XXXX
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	// The ID of the DataWorks workspace. You can find this ID on the Workspace Management page in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -196,23 +198,23 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	//
 	// Valid values:
 	//
-	// 	- Normal: The node is scheduled as expected.
+	// - `Normal`: The node runs as scheduled.
 	//
-	// 	- Pause: The node is paused, and the running of its descendant nodes is blocked.
+	// - `Pause`: The node is paused and blocks the execution of its downstream nodes.
 	//
-	// 	- Skip: The node is dry run. The system does not actually run the node but directly prompts that the node is successfully run. The running duration of the node is 0 seconds. In addition, the node does not occupy resources or block the running of its descendant nodes.
+	// - `Skip`: The node is skipped. The system immediately returns a success status with an execution duration of 0 seconds. This does not block downstream nodes or consume resources.
 	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The information about the resource group.
+	// Information about the resource group.
 	RuntimeResource *ListNodesResponseBodyPagingInfoNodesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// The script information.
+	// Information about the script.
 	Script *ListNodesResponseBodyPagingInfoNodesScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	// The scheduling policy.
+	// The scheduling strategy.
 	Strategy *ListNodesResponseBodyPagingInfoNodesStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
-	// The tag information (not in use).
+	// The tags for the node. This parameter is not in use.
 	Tags []*ListNodesResponseBodyPagingInfoNodesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the scheduling task.
 	//
@@ -479,11 +481,11 @@ func (s *ListNodesResponseBodyPagingInfoNodesDataSource) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodesInputs struct {
-	// The node output list.
+	// The list of node outputs.
 	NodeOutputs []*ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs `json:"NodeOutputs,omitempty" xml:"NodeOutputs,omitempty" type:"Repeated"`
-	// The table list.
+	// The list of tables.
 	Tables []*ListNodesResponseBodyPagingInfoNodesInputsTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	// The variable list.
+	// The list of variables.
 	Variables []*ListNodesResponseBodyPagingInfoNodesInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -554,12 +556,17 @@ func (s *ListNodesResponseBodyPagingInfoNodesInputs) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs struct {
-	// The output of the node.
+	// The node output.
 	//
 	// example:
 	//
 	// 623731286945488XXXX
-	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// A human-readable name for the input data table. This name is for display purposes only and has no functional effect.
+	//
+	// example:
+	//
+	// testProject.testTableName
 	RefTableName *string `json:"RefTableName,omitempty" xml:"RefTableName,omitempty"`
 }
 
@@ -594,7 +601,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs) Validate() error
 }
 
 type ListNodesResponseBodyPagingInfoNodesInputsTables struct {
-	// The table ID.
+	// The ID of the table.
 	//
 	// example:
 	//
@@ -632,7 +639,9 @@ type ListNodesResponseBodyPagingInfoNodesInputsVariables struct {
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
 	// The variable ID.
 	//
-	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// 	Notice:
+	//
+	// This parameter is a `Long` in SDKs earlier than v8.0.0 and a `String` in v8.0.0 and later. **This change does not impact normal SDK use, as the parameter is returned in the type defined by your SDK.*	- Upgrading the SDK across v8.0.0 may cause compilation errors, which you must resolve by manually updating the data type.
 	//
 	// example:
 	//
@@ -646,37 +655,37 @@ type ListNodesResponseBodyPagingInfoNodesInputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node to which the variable belongs.
 	Node *ListNodesResponseBodyPagingInfoNodesInputsVariablesNode `json:"Node,omitempty" xml:"Node,omitempty" type:"Struct"`
-	// The scope of the variable. Valid values:
+	// The scope of the variable.
 	//
-	// 	- WorkSpace
+	// - `WorkSpace`
 	//
-	// 	- NodeParameter
+	// - `NodeParameter`
 	//
-	// 	- NodeContext
+	// - `NodeContext`
 	//
-	// 	- Workflow
+	// - `Workflow`
 	//
 	// example:
 	//
 	// NodeParameter
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The type of the variable. Valid values:
+	// The type of the variable.
 	//
-	// 	- NoKvVariableExpression
+	// - `NoKvVariableExpression`
 	//
-	// 	- Constant
+	// - `Constant`
 	//
-	// 	- PassThrough
+	// - `PassThrough`
 	//
-	// 	- System
+	// - `System`
 	//
-	// 	- NodeOutput
+	// - `NodeOutput`
 	//
 	// example:
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The variable value.
+	// The value of the variable.
 	//
 	// example:
 	//
@@ -765,7 +774,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesInputsVariables) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodesInputsVariablesNode struct {
-	// The output of the node.
+	// The node output.
 	//
 	// example:
 	//
@@ -795,11 +804,11 @@ func (s *ListNodesResponseBodyPagingInfoNodesInputsVariablesNode) Validate() err
 }
 
 type ListNodesResponseBodyPagingInfoNodesOutputs struct {
-	// The node output list.
+	// The list of node outputs.
 	NodeOutputs []*ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs `json:"NodeOutputs,omitempty" xml:"NodeOutputs,omitempty" type:"Repeated"`
-	// The table list.
+	// The list of tables.
 	Tables []*ListNodesResponseBodyPagingInfoNodesOutputsTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	// The variable list.
+	// The list of variables.
 	Variables []*ListNodesResponseBodyPagingInfoNodesOutputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -870,12 +879,17 @@ func (s *ListNodesResponseBodyPagingInfoNodesOutputs) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs struct {
-	// The output of the node.
+	// The node output.
 	//
 	// example:
 	//
 	// 860438872620113XXXX
-	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// A human-readable name for the output data table. This name is for display purposes only and has no functional effect.
+	//
+	// example:
+	//
+	// testProject.testTableName
 	RefTableName *string `json:"RefTableName,omitempty" xml:"RefTableName,omitempty"`
 }
 
@@ -910,7 +924,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs) Validate() erro
 }
 
 type ListNodesResponseBodyPagingInfoNodesOutputsTables struct {
-	// The table ID.
+	// The ID of the table.
 	//
 	// example:
 	//
@@ -948,7 +962,9 @@ type ListNodesResponseBodyPagingInfoNodesOutputsVariables struct {
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
 	// The variable ID.
 	//
-	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// 	Notice:
+	//
+	// This parameter is a `Long` in SDKs earlier than v8.0.0 and a `String` in v8.0.0 and later. **This change does not impact normal SDK use, as the parameter is returned in the type defined by your SDK.*	- Upgrading the SDK across v8.0.0 may cause compilation errors, which you must resolve by manually updating the data type.
 	//
 	// example:
 	//
@@ -962,37 +978,37 @@ type ListNodesResponseBodyPagingInfoNodesOutputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node to which the variable belongs.
 	Node *ListNodesResponseBodyPagingInfoNodesOutputsVariablesNode `json:"Node,omitempty" xml:"Node,omitempty" type:"Struct"`
-	// The variable scope. Valid values:
+	// The scope of the variable.
 	//
-	// 	- NodeParameter
+	// - `NodeParameter`
 	//
-	// 	- NodeContext
+	// - `NodeContext`
 	//
-	// 	- Workflow
+	// - `Workflow`
 	//
-	// 	- Workspace
+	// - `Workspace`
 	//
 	// example:
 	//
 	// NodeParameter
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The variable type. Valid values:
+	// The type of the variable.
 	//
-	// 	- NoKvVariableExpression
+	// - `NoKvVariableExpression`
 	//
-	// 	- Constant
+	// - `Constant`
 	//
-	// 	- PassThrough
+	// - `PassThrough`
 	//
-	// 	- System
+	// - `System`
 	//
-	// 	- NodeOutput
+	// - `NodeOutput`
 	//
 	// example:
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The variable value.
+	// The value of the variable.
 	//
 	// example:
 	//
@@ -1081,7 +1097,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesOutputsVariables) Validate() error 
 }
 
 type ListNodesResponseBodyPagingInfoNodesOutputsVariablesNode struct {
-	// The output of the node.
+	// The node output.
 	//
 	// example:
 	//
@@ -1111,17 +1127,17 @@ func (s *ListNodesResponseBodyPagingInfoNodesOutputsVariablesNode) Validate() er
 }
 
 type ListNodesResponseBodyPagingInfoNodesRuntimeResource struct {
-	// The identifier of the resource group. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to query the identifier of the resource group.
+	// The identifier of the resource group. You can obtain this identifier by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation.
 	//
 	// example:
 	//
 	// S_res_group_XXXX
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
-	// S_resgrop_xxx
+	// 123456XXX
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1158,13 +1174,15 @@ func (s *ListNodesResponseBodyPagingInfoNodesRuntimeResource) Validate() error {
 type ListNodesResponseBodyPagingInfoNodesScript struct {
 	// The ID of the script.
 	//
-	// >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// 	Notice:
+	//
+	// This parameter is a `Long` in SDKs earlier than v8.0.0 and a `String` in v8.0.0 and later. **This change does not impact normal SDK use, as the parameter is returned in the type defined by your SDK.*	- Upgrading the SDK across v8.0.0 may cause compilation errors, which you must resolve by manually updating the data type.
 	//
 	// example:
 	//
 	// 853573334108680XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The script path.
+	// The path of the script.
 	//
 	// example:
 	//
@@ -1219,7 +1237,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesScript) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodesScriptRuntime struct {
-	// The command used to distinguish node types.
+	// The command that identifies the node type.
 	//
 	// example:
 	//
@@ -1249,41 +1267,41 @@ func (s *ListNodesResponseBodyPagingInfoNodesScriptRuntime) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodesStrategy struct {
-	// The instance generation mode. Valid values:
+	// The instance generation mode.
 	//
-	// 	- T+1
+	// - `T+1`
 	//
-	// 	- Immediately
+	// - `Immediately`
 	//
 	// example:
 	//
 	// T+1
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
-	// The rerun interval. Unit: milliseconds.
+	// The retry interval, in milliseconds.
 	//
 	// example:
 	//
 	// 180000
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
-	// The rerun mode. Valid values:
+	// The rerun mode.
 	//
-	// 	- Allowed
+	// - `Allowed`
 	//
-	// 	- Denied
+	// - `Denied`
 	//
-	// 	- FailureAllowed
+	// - `FailureAllowed`
 	//
 	// example:
 	//
 	// Allowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of reruns.
+	// The number of retries.
 	//
 	// example:
 	//
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
-	// Timeout.
+	// The timeout duration.
 	//
 	// example:
 	//
@@ -1394,27 +1412,29 @@ func (s *ListNodesResponseBodyPagingInfoNodesTags) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodesTrigger struct {
-	// The cron expression for scheduling.
+	// The cron expression.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The end time of the validity period of the trigger.
+	// The end of the trigger\\"s validity period.
 	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The trigger ID.
+	// The ID of the trigger.
 	//
-	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// 	Notice:
+	//
+	// This parameter is a `Long` in SDKs earlier than v8.0.0 and a `String` in v8.0.0 and later. **This change does not impact normal SDK use, as the parameter is returned in the type defined by your SDK.*	- Upgrading the SDK across v8.0.0 may cause compilation errors, which you must resolve by manually updating the data type.
 	//
 	// example:
 	//
 	// 543680677872062XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The start time of the validity period of the trigger.
+	// The start of the trigger\\"s validity period.
 	//
 	// example:
 	//
@@ -1426,15 +1446,15 @@ type ListNodesResponseBodyPagingInfoNodesTrigger struct {
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// The trigger type.
+	// The type of the trigger.
 	//
 	// Valid values:
 	//
-	// 	- Scheduler: Periodic scheduling
+	// - `Scheduler`: periodic scheduling
 	//
-	// 	- Manual: Manual trigger
+	// - `Manual`: manual trigger
 	//
-	// 	- Streaming: Streaming task
+	// - `Streaming`: streaming task
 	//
 	// example:
 	//

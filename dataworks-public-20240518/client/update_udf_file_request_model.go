@@ -82,11 +82,11 @@ type UpdateUdfFileRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- ALL_ALLOWD
+	// - ALL_ALLOWD
 	//
-	// 	- FAILURE_ALLOWED
+	// - FAILURE_ALLOWED
 	//
-	// 	- ALL_DENIED
+	// - ALL_DENIED
 	//
 	// example:
 	//

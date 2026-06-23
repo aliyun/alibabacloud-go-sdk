@@ -22,7 +22,7 @@ type GetProjectResponseBody struct {
 	//
 	// example:
 	//
-	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	// 22C97E95-F023-56B5-8852-B1A77A1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -78,9 +78,9 @@ type GetProjectResponseBodyProject struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the development environment is enabled. Valid values:
 	//
-	// 	- true: The development environment is enabled. In this case, the development environment is isolated from the production environment in the workspace.
+	// - true: The development environment is enabled. In this case, the development environment is isolated from the production environment in the workspace.
 	//
-	// 	- false: The development environment is disabled. In this case, only the production environment is used in the workspace.
+	// - false: The development environment is disabled. In this case, only the production environment is used in the workspace.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type GetProjectResponseBodyProject struct {
 	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
 	// Indicates whether the Develop role is disabled. Valid values:
 	//
-	// 	- false
+	// - false
 	//
-	// 	- true
+	// - true
 	//
 	// example:
 	//
@@ -122,9 +122,9 @@ type GetProjectResponseBodyProject struct {
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// Indicates whether scheduling of PAI tasks is enabled. Valid values:
 	//
-	// 	- true: Scheduling of PAI tasks is enabled. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
+	// - true: Scheduling of PAI tasks is enabled. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
 	//
-	// 	- false: Scheduling of PAI tasks is disabled.
+	// - false: Scheduling of PAI tasks is disabled.
 	//
 	// example:
 	//
@@ -132,23 +132,23 @@ type GetProjectResponseBodyProject struct {
 	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
 	// The status of the workspace. Valid values:
 	//
-	// 	- Available
+	// - Available
 	//
-	// 	- Initializing
+	// - Initializing
 	//
-	// 	- InitFailed
+	// - InitFailed
 	//
-	// 	- Forbidden
+	// - Forbidden
 	//
-	// 	- Deleting
+	// - Deleting
 	//
-	// 	- DeleteFailed
+	// - DeleteFailed
 	//
-	// 	- Frozen
+	// - Frozen
 	//
-	// 	- Updating
+	// - Updating
 	//
-	// 	- UpdateFailed
+	// - UpdateFailed
 	//
 	// example:
 	//

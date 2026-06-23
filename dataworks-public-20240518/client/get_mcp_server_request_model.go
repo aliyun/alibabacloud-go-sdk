@@ -14,6 +14,8 @@ type iGetMcpServerRequest interface {
 }
 
 type GetMcpServerRequest struct {
+	// The name of the MCP Server to retrieve.
+	//
 	// This parameter is required.
 	//
 	// example:

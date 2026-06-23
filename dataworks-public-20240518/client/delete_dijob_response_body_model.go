@@ -20,7 +20,7 @@ type DeleteDIJobResponseBody struct {
 	//
 	// example:
 	//
-	// D33D4A51-5845-579A-B4BA-FAADD0F83D53
+	// D33D4A51-5845-579A-B4BA-FAADD0F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// true
 	//

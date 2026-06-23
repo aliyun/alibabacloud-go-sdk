@@ -16,7 +16,7 @@ type iListDataQualityScanRunsResponseBody interface {
 }
 
 type ListDataQualityScanRunsResponseBody struct {
-	// The page information.
+	// The pagination information.
 	PageInfo *ListDataQualityScanRunsResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,21 +62,21 @@ func (s *ListDataQualityScanRunsResponseBody) Validate() error {
 }
 
 type ListDataQualityScanRunsResponseBodyPageInfo struct {
-	// The list of data quality monitor run records.
+	// The list of data quality scan runs.
 	DataQualityScanRuns []*ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRuns `json:"DataQualityScanRuns,omitempty" xml:"DataQualityScanRuns,omitempty" type:"Repeated"`
-	// The page number of the results. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page. Default value: 10.
+	// The number of entries per page. The default value is 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -142,37 +142,37 @@ func (s *ListDataQualityScanRunsResponseBodyPageInfo) Validate() error {
 }
 
 type ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRuns struct {
-	// The time when the data quality monitor starts running.
+	// The start time of the data quality scan run.
 	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the data quality monitor stops.
+	// The end time of the data quality scan run.
 	//
 	// example:
 	//
 	// 1710239005403
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the data quality monitor running record.
+	// The ID of the data quality scan run.
 	//
 	// example:
 	//
 	// 3155
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The parameters configured for the instance.
+	// The parameters used for the run.
 	Parameters []*ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRunsParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The status of the instance.
+	// The status of the data quality scan run. Valid values:
 	//
-	// 	- Pass
+	// - Pass
 	//
-	// 	- Running
+	// - Running
 	//
-	// 	- Error
+	// - Error
 	//
-	// 	- Warn
+	// - Warn
 	//
-	// 	- Fail
+	// - Fail
 	//
 	// example:
 	//

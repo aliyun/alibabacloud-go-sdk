@@ -24,28 +24,50 @@ type iCreateBusinessRequest interface {
 }
 
 type CreateBusinessRequest struct {
+	// Name of the Business Process.<br>
+	//
+	// The name must be unique within the same project space.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// My business process
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
+	// Description of the Business Process.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The Alibaba Cloud account ID of the owner responsible for the Business Process.<br>
+	//
+	// You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console), move the mouse pointer over the profile picture in the upper-right corner of the menu bar, and view the Account ID. If this parameter is empty, the Alibaba Cloud account ID of the invoker is used by default.
+	//
 	// example:
 	//
 	// 1000000000001
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The ID of the DataWorks workspace.<br>
+	//
+	// You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console), go to the Workspace Management page, and view the ID.
+	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The unique identifier of the DataWorks workspace, which is the English identifier displayed when you switch workspaces at the top of the Data Development page. You must specify either this parameter or the projectid parameter to identify the DataWorks project for this API call.
+	//
 	// example:
 	//
 	// dw_project
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// Function module to which the Business Process belongs. Valid values:
+	//
+	// - NORMAL (Data Development)
+	//
+	// - MANUAL_BIZ (manually triggered workflow)
+	//
 	// example:
 	//
 	// NORMAL

@@ -150,7 +150,7 @@ type ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The unique identifier of the deployment.
 	//
-	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// > Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//
@@ -182,15 +182,15 @@ type ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems struct {
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The deployment status. Valid values:
 	//
-	// 	- Init: Initializing
+	// - Init: Initializing
 	//
-	// 	- Running
+	// - Running
 	//
-	// 	- Success
+	// - Success
 	//
-	// 	- Fail
+	// - Fail
 	//
-	// 	- Termination
+	// - Termination
 	//
 	// example:
 	//
@@ -198,13 +198,13 @@ type ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The deployment type. Valid values:
 	//
-	// 	- Node
+	// - Node
 	//
-	// 	- WorkflowDefinition: Workflow definition.
+	// - WorkflowDefinition: Workflow definition.
 	//
-	// 	- Resource
+	// - Resource
 	//
-	// 	- Function: The object is a function.
+	// - Function: The object is a function.
 	//
 	// example:
 	//

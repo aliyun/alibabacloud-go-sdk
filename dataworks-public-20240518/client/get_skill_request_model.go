@@ -14,6 +14,8 @@ type iGetSkillRequest interface {
 }
 
 type GetSkillRequest struct {
+	// The unique name of the Skill.
+	//
 	// This parameter is required.
 	//
 	// example:

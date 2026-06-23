@@ -382,9 +382,9 @@ func (s *ListDataQualityScansResponseBodyPageInfoDataQualityScans) Validate() er
 type ListDataQualityScansResponseBodyPageInfoDataQualityScansComputeResource struct {
 	// Workspace environment of the compute engine. Valid values:
 	//
-	// 	- Prod
+	// - Prod
 	//
-	// 	- Dev
+	// - Dev
 	//
 	// example:
 	//
@@ -447,11 +447,11 @@ func (s *ListDataQualityScansResponseBodyPageInfoDataQualityScansComputeResource
 type ListDataQualityScansResponseBodyPageInfoDataQualityScansComputeResourceRuntime struct {
 	// The engine type. These settings are only supported for the EMR compute engine. Valid values:
 	//
-	// 	- Hive: Hive SQL
+	// - Hive: Hive SQL
 	//
-	// 	- Spark: Spark SQL
+	// - Spark: Spark SQL
 	//
-	// 	- Kyuubi
+	// - Kyuubi
 	//
 	// example:
 	//
@@ -521,7 +521,7 @@ type ListDataQualityScansResponseBodyPageInfoDataQualityScansHooks struct {
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
 	// The type of the hook. Valid values:
 	//
-	// 	- BlockTaskInstance: Blocks the scheduling of the task instance.
+	// - BlockTaskInstance: Blocks the scheduling of the task instance.
 	//
 	// example:
 	//
@@ -669,9 +669,9 @@ type ListDataQualityScansResponseBodyPageInfoDataQualityScansTrigger struct {
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 	// The trigger mode of the data quality monitor. Valid values:
 	//
-	// 	- ByManual: Manually triggered. Default setting.
+	// - ByManual: Manually triggered. Default setting.
 	//
-	// 	- BySchedule: Triggered by a scheduled task instance.
+	// - BySchedule: Triggered by a scheduled task instance.
 	//
 	// example:
 	//

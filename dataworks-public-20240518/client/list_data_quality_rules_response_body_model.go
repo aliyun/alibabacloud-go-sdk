@@ -16,9 +16,9 @@ type iListDataQualityRulesResponseBody interface {
 }
 
 type ListDataQualityRulesResponseBody struct {
-	// The pagination information.
+	// Paginated query result of the rule list.
 	PagingInfo *ListDataQualityRulesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *ListDataQualityRulesResponseBody) Validate() error {
 }
 
 type ListDataQualityRulesResponseBodyPagingInfo struct {
-	// The rules.
+	// Specific rule list.
 	DataQualityRules []*ListDataQualityRulesResponseBodyPagingInfoDataQualityRules `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty" type:"Repeated"`
-	// The page number.
+	// Page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// Page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// Total number of entries.
 	//
 	// example:
 	//
@@ -142,59 +142,59 @@ func (s *ListDataQualityRulesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRules struct {
-	// The check settings for sample data.
+	// Sample validation settings.
 	CheckingConfig *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
-	// The description of the rule. The description can be up to 500 characters in length.
+	// Rule description. Maximum length: 500 characters.
 	//
 	// example:
 	//
 	// this is a odps _sql task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the rule is enabled.
+	// Whether the data quality rule is enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The operations that you can perform after the rule-based check fails.
+	// List of issue handlers for data quality rule validation.
 	ErrorHandlers []*ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
-	// The rule ID.
+	// Rule ID.
 	//
 	// example:
 	//
 	// 22130
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The rule name.
+	// Rule name.
 	//
 	// example:
 	//
 	// The table cannot be empty.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The DataWorks workspace ID.
+	// DataWorks workspace ID.
 	//
 	// example:
 	//
 	// 100001
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The settings for sampling.
+	// Settings required for sample collection.
 	SamplingConfig *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// The strength of the rule. Valid values:
+	// Severity level of the rule for the business (corresponding to strong/weak rules on the page). Valid enumerated values:
 	//
-	// 	- Normal
+	// - Normal
 	//
-	// 	- High
+	// - High
 	//
 	// example:
 	//
 	// High
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The monitored object of the rule.
+	// Object monitored by the rule.
 	Target *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// The ID of the template used by the rule.
+	// Unique identifier of the rule template referenced by the rule.
 	//
 	// example:
 	//
-	// system::user_defined
+	// SYSTEM:user_defined_sql
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
@@ -334,27 +334,27 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) Validate() 
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig struct {
-	// The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference values. In this example, an expression is used to indicate the query method of referenced samples.
+	// Some types of thresholds require querying some reference samples, then aggregating the values of the reference samples to obtain the threshold for comparison. An expression is used here to represent the query method for the reference samples.
 	//
 	// example:
 	//
 	// { "bizdate": [ "-1", "-7", "-1m" ] }
 	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
-	// The threshold settings.
+	// Threshold settings.
 	Thresholds *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
-	// The threshold calculation method. Valid values:
+	// Threshold calculation method.
 	//
-	// 	- Fixed
+	// - Fixed
 	//
-	// 	- Fluctation
+	// - Fluctation
 	//
-	// 	- FluctationDiscreate
+	// - FluctationDiscreate
 	//
-	// 	- Auto
+	// - Auto
 	//
-	// 	- Average
+	// - Average
 	//
-	// 	- Variance
+	// - Variance
 	//
 	// example:
 	//
@@ -407,11 +407,11 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds struct {
-	// The threshold settings for critical alerts.
+	// Threshold settings for critical warnings.
 	Critical *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
-	// The expected threshold setting.
+	// Expected threshold settings.
 	Expected *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
-	// The threshold settings for normal alerts.
+	// Threshold settings for normal warnings.
 	Warned *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
 }
 
@@ -470,41 +470,41 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical struct {
-	// The threshold expression.
+	// Threshold expression.
 	//
-	// If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
+	// Fluctuation rate type rules must use the expression method to indicate the fluctuation threshold. Examples:
 	//
-	// 	- $checkValue > 0.01
+	// - Fluctuation increase greater than 0.01: $checkValue > 0.01
 	//
-	// 	- $checkValue < -0.01
+	// - Fluctuation decrease greater than 0.01: $checkValue < -0.01
 	//
-	// 	- abs($checkValue) > 0.01
+	// - Absolute value of the fluctuation rate: abs($checkValue) > 0.01
 	//
-	// If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
+	// Fixed value type rules can also configure thresholds using expressions. If both are configured, the expression takes precedence over Operator and Value.
 	//
 	// example:
 	//
 	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The comparison operator. Valid values:
+	// Comparison operator.
 	//
-	// 	- \\>
+	// - \\>
 	//
-	// 	- \\>=
+	// - \\>=
 	//
-	// 	- <
+	// - <
 	//
-	// 	- <=
+	// - <=
 	//
-	// 	- !=
+	// - !=
 	//
-	// 	- \\=
+	// - =
 	//
 	// example:
 	//
 	// >
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The threshold value.
+	// Threshold value.
 	//
 	// example:
 	//
@@ -552,41 +552,41 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected struct {
-	// The threshold expression.
+	// Threshold expression.
 	//
-	// If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
+	// Fluctuation rate type rules must use the expression method to indicate the fluctuation threshold. Examples:
 	//
-	// 	- $checkValue > 0.01
+	// - Fluctuation increase greater than 0.01: $checkValue > 0.01
 	//
-	// 	- $checkValue < -0.01
+	// - Fluctuation decrease greater than 0.01: $checkValue < -0.01
 	//
-	// 	- abs($checkValue) > 0.01
+	// - Absolute value of the fluctuation rate: abs($checkValue) > 0.01
 	//
-	// If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
+	// Fixed value type rules can also configure thresholds using expressions. If both are configured, the expression takes precedence over Operator and Value.
 	//
 	// example:
 	//
 	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The comparison operator. Valid values:
+	// Comparison operator.
 	//
-	// 	- \\>
+	// - \\>
 	//
-	// 	- \\>=
+	// - \\>=
 	//
-	// 	- <
+	// - <
 	//
-	// 	- <=
+	// - <=
 	//
-	// 	- !=
+	// - !=
 	//
-	// 	- \\=
+	// - =
 	//
 	// example:
 	//
 	// >
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The threshold value.
+	// Threshold value.
 	//
 	// example:
 	//
@@ -634,41 +634,41 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned struct {
-	// The threshold expression.
+	// Threshold expression.
 	//
-	// If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
+	// Fluctuation rate type rules must use the expression method to indicate the fluctuation threshold. Examples:
 	//
-	// 	- $checkValue > 0.01
+	// - Fluctuation increase greater than 0.01: $checkValue > 0.01
 	//
-	// 	- $checkValue < -0.01
+	// - Fluctuation decrease greater than 0.01: $checkValue < -0.01
 	//
-	// 	- abs($checkValue) > 0.01
+	// - Absolute value of the fluctuation rate: abs($checkValue) > 0.01
 	//
-	// If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
+	// Fixed value type rules can also configure thresholds using expressions. If both are configured, the expression takes precedence over Operator and Value.
 	//
 	// example:
 	//
 	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The comparison operator. Valid values:
+	// Comparison operator.
 	//
-	// 	- \\>
+	// - \\>
 	//
-	// 	- \\>=
+	// - \\>=
 	//
-	// 	- <
+	// - <
 	//
-	// 	- <=
+	// - <=
 	//
-	// 	- !=
+	// - !=
 	//
-	// 	- \\=
+	// - =
 	//
 	// example:
 	//
 	// >
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The threshold value.
+	// Threshold value.
 	//
 	// example:
 	//
@@ -716,15 +716,15 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers struct {
-	// The SQL statement that is used to filter failed tasks. If the rule is defined by custom SQL statements, you must specify an SQL statement to filter failed tasks.
+	// For custom SQL rules, the user needs to specify SQL to filter problem data.
 	//
 	// example:
 	//
 	// SELECT 	- FROM tb_api_log WHERE id IS NULL
 	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
-	// The type of the operation. Valid values:
+	// Handler type:
 	//
-	// 	- SaveErrorData
+	// - SaveErrorData
 	//
 	// example:
 	//
@@ -763,55 +763,55 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig struct {
-	// The metrics used for sampling. Valid values:
+	// Sampling metric name.
 	//
-	// 	- Count: the number of rows in the table.
+	// - Count: number of table rows.
 	//
-	// 	- Min: the minimum value of the field.
+	// - Min: minimum value of the field.
 	//
-	// 	- Max: the maximum value of the field.
+	// - Max: maximum value of the field.
 	//
-	// 	- Avg: the average value of the field.
+	// - Avg: average value of the field.
 	//
-	// 	- DistinctCount: the number of unique values of the field after deduplication.
+	// - DistinctCount: number of distinct values of the field.
 	//
-	// 	- DistinctPercent: the percentage of the number of unique values of the field after deduplication to the number of rows in the table.
+	// - DistinctPercent: ratio of the number of distinct values of the field to the number of data rows.
 	//
-	// 	- DuplicatedCount: the number of duplicated values in the field.
+	// - DuplicatedCount: number of duplicate values of the field.
 	//
-	// 	- DuplicatedPercent: the percentage of the number of duplicated values of the field to the number of rows in the table.
+	// - DuplicatedPercent: ratio of the number of duplicate values of the field to the number of data rows.
 	//
-	// 	- TableSize: the table size.
+	// - TableSize: table size.
 	//
-	// 	- NullValueCount: the number of rows in which the field is set to null.
+	// - NullValueCount: number of rows where the field value is null.
 	//
-	// 	- NullValuePercent: the percentage of the number of rows in which the field is set to null to the number of rows in the table.
+	// - NullValuePercent: percentage of rows where the field value is null.
 	//
-	// 	- GroupCount: the field value and the number of rows for each field value.
+	// - GroupCount: each value and its corresponding number of data rows after aggregation by field value.
 	//
-	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+	// - CountNotIn: number of rows whose enumerated values do not match.
 	//
-	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+	// - CountDistinctNotIn: number of distinct values whose enumerated values do not match.
 	//
-	// 	- UserDefinedSql: indicates that the data is sampled by executing custom SQL statements.
+	// - UserDefinedSql: sample collection via custom SQL.
 	//
 	// example:
 	//
 	// Max
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// The parameters required for sampling.
+	// Parameters required during sample collection.
 	//
 	// example:
 	//
 	// { "Columns": [ "id", "name" ] , "SQL": "select count(1) from table;"}
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
-	// The statements that are used to filter unnecessary data during sampling. The statements can be up to 16,777,215 characters in length.
+	// Condition for the secondary filtering of data that is not of concern during sampling. Maximum length: 16,777,215 characters.
 	//
 	// example:
 	//
 	// id IS NULL
 	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
-	// The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
+	// Runtime parameter setting statements inserted and executed before the sampling statement is actually executed. Maximum length: 1,000 characters. Currently only MaxCompute is supported.
 	//
 	// example:
 	//
@@ -870,35 +870,35 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfi
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget struct {
-	// The type of the database to which the table belongs. Valid values:
+	// For table-type datasets, the database type to which the table belongs.
 	//
-	// 	- maxcompute
+	// - maxcompute
 	//
-	// 	- emr
+	// - emr
 	//
-	// 	- cdh
+	// - cdh
 	//
-	// 	- hologres
+	// - hologres
 	//
-	// 	- analyticdb_for_postgresql
+	// - analyticdb_for_postgresql
 	//
-	// 	- analyticdb_for_mysql
+	// - analyticdb_for_mysql
 	//
-	// 	- starrocks
+	// - starrocks
 	//
 	// example:
 	//
 	// maxcompute
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The ID of the table that is limited by the rule in Data Map.
+	// Unique ID of the table to which the rule applies in Data Map.
 	//
 	// example:
 	//
 	// odps.unit_test.tb_unit_test
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The type of the monitored object. Valid values:
+	// Type of the monitored object.
 	//
-	// 	- Table
+	// - Table
 	//
 	// example:
 	//

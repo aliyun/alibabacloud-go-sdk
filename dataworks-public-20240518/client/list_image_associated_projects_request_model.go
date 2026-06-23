@@ -14,6 +14,8 @@ type iListImageAssociatedProjectsRequest interface {
 }
 
 type ListImageAssociatedProjectsRequest struct {
+	// The ID of the image.
+	//
 	// This parameter is required.
 	//
 	// example:

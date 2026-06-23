@@ -20,13 +20,13 @@ type DetachDataQualityRulesFromEvaluationTaskResponseBody struct {
 	//
 	// example:
 	//
-	// 8abcb91f-d266-4073-b907-2ed670378ed1
+	// 8abcb91f-d266-4073-b907-2ed6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the call is successful. The values are as follows:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The call is successful.
+	// - true: The call was successful.
 	//
-	// - false: the call failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

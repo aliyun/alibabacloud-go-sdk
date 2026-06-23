@@ -16,7 +16,10 @@ type iGetParameterResponseBody interface {
 }
 
 type GetParameterResponseBody struct {
+	// The details of the parameter.
 	Parameter *GetParameterResponseBodyParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
@@ -59,51 +62,82 @@ func (s *GetParameterResponseBody) Validate() error {
 }
 
 type GetParameterResponseBodyParameter struct {
+	// The time when the parameter was created.
+	//
 	// example:
 	//
 	// 1640000000000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the parameter.
+	//
 	// example:
 	//
 	// 123456789
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The description of the parameter.
+	//
 	// example:
 	//
-	// 这是一个测试参数
+	// This is a test parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the parameter.
+	//
 	// example:
 	//
 	// 12345
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the parameter was last modified.
+	//
 	// example:
 	//
 	// 1640000000000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The modifier of the parameter.
+	//
 	// example:
 	//
 	// 123456789
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The name of the parameter.
+	//
 	// example:
 	//
 	// workspace.para
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner of the parameter.
+	//
 	// example:
 	//
 	// 123456789
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// 1000
-	ProjectId  *int64                                         `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The value configurations of the parameter.
 	Properties []*GetParameterResponseBodyParameterProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
+	// The scope of the parameter.
+	//
 	// example:
 	//
 	// Project
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The type of the parameter. Valid values:
+	//
+	// - `PlainConstant`: a constant in plaintext.
+	//
+	// - `SecretConstant`: a constant in ciphertext.
+	//
+	// - `Variable`: a variable.
+	//
 	// example:
 	//
 	// PlainConstant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version of the parameter.
+	//
 	// example:
 	//
 	// 1
@@ -249,10 +283,18 @@ func (s *GetParameterResponseBodyParameter) Validate() error {
 }
 
 type GetParameterResponseBodyParameterProperties struct {
+	// The project environment. Valid values:
+	//
+	// - `Prod`: production.
+	//
+	// - `Dev`: development.
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The value of the parameter.
+	//
 	// example:
 	//
 	// value123

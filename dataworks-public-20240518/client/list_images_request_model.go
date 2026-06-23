@@ -38,33 +38,61 @@ type iListImagesRequest interface {
 }
 
 type ListImagesRequest struct {
+	// The accessibility:
+	//
+	// - Public: Visible to all members.
+	//
+	// - Private: Visible only to the creator.
+	//
 	// example:
 	//
 	// Public
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The image name, used for fuzzy search.
+	//
 	// example:
 	//
 	// image
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Official *bool   `json:"Official,omitempty" xml:"Official,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether the image is an official image.
+	Official *bool `json:"Official,omitempty" xml:"Official,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
-	PageSize      *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectIds    []*int64  `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of workspace IDs.
+	ProjectIds []*int64 `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
+	// The list of image provider types.
 	ProviderTypes []*string `json:"ProviderTypes,omitempty" xml:"ProviderTypes,omitempty" type:"Repeated"`
-	SearchAll     *bool     `json:"SearchAll,omitempty" xml:"SearchAll,omitempty"`
+	// Specifies whether to search all images.
+	SearchAll *bool `json:"SearchAll,omitempty" xml:"SearchAll,omitempty"`
+	// The list of sort fields. You can sort by scheduled time, start time, and other fields. The format is "SortField+SortOrder(Desc/Asc)", where Asc is the default and can be omitted. Valid values of sort fields:
+	//
+	// - CreateTime (Desc/Asc): The creation time.
+	//
+	// - Name (Desc/Asc): The image name.
+	//
+	//   Default value: CreateTime Asc.
+	//
 	// example:
 	//
 	// CreatedTime Desc
-	SortBy             *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Stages             []*string `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
-	Statuses           []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
-	SupportedModules   []*string `json:"SupportedModules,omitempty" xml:"SupportedModules,omitempty" type:"Repeated"`
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The list of image publish stages to query.
+	Stages []*string `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
+	// The list of image statuses to query.
+	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	// The list of supported modules.
+	SupportedModules []*string `json:"SupportedModules,omitempty" xml:"SupportedModules,omitempty" type:"Repeated"`
+	// The list of supported task types.
 	SupportedTaskTypes []*string `json:"SupportedTaskTypes,omitempty" xml:"SupportedTaskTypes,omitempty" type:"Repeated"`
 }
 

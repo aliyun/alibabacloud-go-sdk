@@ -164,9 +164,9 @@ func (s *ListDownstreamTasksResponseBodyPagingInfo) Validate() error {
 type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks struct {
 	// The scheduling dependency type. Valid values:
 	//
-	// 	- Normal: same-cycle scheduling dependency
+	// - Normal: same-cycle scheduling dependency
 	//
-	// 	- CrossCycle: cross-cycle scheduling dependency
+	// - CrossCycle: cross-cycle scheduling dependency
 	//
 	// example:
 	//
@@ -240,9 +240,9 @@ type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod
+	// - Prod
 	//
-	// 	- Dev
+	// - Dev
 	//
 	// example:
 	//
@@ -256,9 +256,9 @@ type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The instance generation mode. Valid values:
 	//
-	// 	- T+1
+	// - T+1
 	//
-	// 	- Immediately
+	// - Immediately
 	//
 	// example:
 	//
@@ -308,11 +308,11 @@ type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask struct {
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
 	// The rerun mode. Valid values:
 	//
-	// 	- AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+	// - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
 	//
-	// 	- FailureAllowed: The task can be rerun only after it fails to run.
+	// - FailureAllowed: The task can be rerun only after it fails to run.
 	//
-	// 	- AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+	// - AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
 	//
 	// example:
 	//
@@ -678,11 +678,11 @@ type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger struct 
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
 	//
-	// 	- Pause
+	// - Pause
 	//
-	// 	- Skip
+	// - Skip
 	//
-	// 	- Normal
+	// - Normal
 	//
 	// example:
 	//
@@ -702,9 +702,9 @@ type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger struct 
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// 	- Scheduler: scheduling cycle-based trigger
+	// - Scheduler: scheduling cycle-based trigger
 	//
-	// 	- Manual: manual trigger
+	// - Manual: manual trigger
 	//
 	// example:
 	//
@@ -807,9 +807,9 @@ type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod
+	// - Prod
 	//
-	// 	- Dev
+	// - Dev
 	//
 	// example:
 	//
@@ -823,9 +823,9 @@ type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The instance generation mode. Valid values:
 	//
-	// 	- T+1
+	// - T+1
 	//
-	// 	- Immediately
+	// - Immediately
 	//
 	// example:
 	//
@@ -867,9 +867,9 @@ type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
 	//
 	// Valid values:
 	//
-	// 	- Prod
+	// - Prod
 	//
-	// 	- Dev
+	// - Dev
 	//
 	// example:
 	//
@@ -891,11 +891,11 @@ type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
 	//
 	// Valid values:
 	//
-	// 	- AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
+	// - AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
 	//
-	// 	- FailureAllowed: The task can be rerun only after it fails to run.
+	// - FailureAllowed: The task can be rerun only after it fails to run.
 	//
-	// 	- AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+	// - AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
 	//
 	// example:
 	//
@@ -911,9 +911,9 @@ type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
 	RuntimeResource *ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
 	// The scheduling dependency type. Valid values:
 	//
-	// 	- Normal: same-cycle scheduling dependency
+	// - Normal: same-cycle scheduling dependency
 	//
-	// 	- CrossCycle: cross-cycle scheduling dependency
+	// - CrossCycle: cross-cycle scheduling dependency
 	//
 	// example:
 	//
@@ -1291,11 +1291,11 @@ type ListDownstreamTasksResponseBodyPagingInfoTasksTrigger struct {
 	//
 	// Valid values:
 	//
-	// 	- Pause
+	// - Pause
 	//
-	// 	- Skip
+	// - Skip
 	//
-	// 	- Normal
+	// - Normal
 	//
 	// example:
 	//
@@ -1317,9 +1317,9 @@ type ListDownstreamTasksResponseBodyPagingInfoTasksTrigger struct {
 	//
 	// Valid values:
 	//
-	// 	- Scheduler: scheduling cycle-based trigger
+	// - Scheduler: scheduling cycle-based trigger
 	//
-	// 	- Manual: manual trigger
+	// - Manual: manual trigger
 	//
 	// example:
 	//

@@ -18,11 +18,16 @@ type iListImageVersionsResponseBody interface {
 }
 
 type ListImageVersionsResponseBody struct {
+	// The pagination details.
 	PagingInfo *ListImageVersionsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID, used to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -74,15 +79,22 @@ func (s *ListImageVersionsResponseBody) Validate() error {
 }
 
 type ListImageVersionsResponseBodyPagingInfo struct {
+	// A list of image version details.
 	ImageVersions []*ListImageVersionsResponseBodyPagingInfoImageVersions `json:"ImageVersions,omitempty" xml:"ImageVersions,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -147,106 +159,198 @@ func (s *ListImageVersionsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListImageVersionsResponseBodyPagingInfoImageVersions struct {
+	// The accessibility of the image. Valid values:
+	//
+	// - `Public`: The image is visible to all users.
+	//
+	// - `Private`: The image is visible only to the creator.
+	//
 	// example:
 	//
 	// Public
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The ID of the VPC associated with the ACR instance.
+	//
 	// example:
 	//
 	// vpc-xxx
 	AcrAssociatedVpcId *string `json:"AcrAssociatedVpcId,omitempty" xml:"AcrAssociatedVpcId,omitempty"`
-	// ACR Endpoint
+	// The ACR endpoint.
 	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com
 	AcrEndpoint *string `json:"AcrEndpoint,omitempty" xml:"AcrEndpoint,omitempty"`
+	// The ACR instance ID.
+	//
 	// example:
 	//
 	// cri-xxx
-	AcrInstanceId *string                                                          `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	BuildConfig   *ListImageVersionsResponseBodyPagingInfoImageVersionsBuildConfig `json:"BuildConfig,omitempty" xml:"BuildConfig,omitempty" type:"Struct"`
+	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	// The image build configuration.
+	BuildConfig *ListImageVersionsResponseBodyPagingInfoImageVersionsBuildConfig `json:"BuildConfig,omitempty" xml:"BuildConfig,omitempty" type:"Struct"`
+	// The time when the image was created, as a 64-bit timestamp.
+	//
 	// example:
 	//
 	// 1727055811000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The ID of the user who created the image.
+	//
 	// example:
 	//
 	// 123
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The image description.
+	//
 	// example:
 	//
 	// Test image created by xxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether MaxCompute synchronization is enabled.
+	//
 	// example:
 	//
 	// false
 	EnableSyncMaxCompute *bool `json:"EnableSyncMaxCompute,omitempty" xml:"EnableSyncMaxCompute,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// Custom_image_xxxx_xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The image tag.
+	//
 	// example:
 	//
 	// v1.0.0
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	// The image URI.
+	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/xxx/xxx:tag
 	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	// The VPC URI of the image.
+	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com/xxx/xxx:tag
 	ImageVpcUri *string `json:"ImageVpcUri,omitempty" xml:"ImageVpcUri,omitempty"`
+	// Indicates whether the image is the default image.
+	//
 	// example:
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The time when the image was last modified, as a 64-bit timestamp.
+	//
 	// example:
 	//
 	// 1727055811000
 	LastModifiedTime *int64 `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	// The ID of the user who last modified the image.
+	//
 	// example:
 	//
 	// 123
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// The image name.
+	//
 	// example:
 	//
 	// dataworks_image
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Indicates whether the image is an official image.
+	//
 	// example:
 	//
 	// true
 	Official *bool `json:"Official,omitempty" xml:"Official,omitempty"`
+	// The ID of the image from the provider.
+	//
 	// example:
 	//
 	// acr_image_id
 	ProviderImageId *string `json:"ProviderImageId,omitempty" xml:"ProviderImageId,omitempty"`
+	// The type of the image provider. Valid values:
+	//
+	// - `ACR`: The image is from an ACR repository.
+	//
+	// - `DataWorks`: The image is an official image provided by DataWorks.
+	//
 	// example:
 	//
 	// ACR
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	// The publishing stage of the image. Valid values:
+	//
+	// - `Untest`: Not tested.
+	//
+	// - `Testing`: Being tested.
+	//
+	// - `TestFailed`: Test failed.
+	//
+	// - `Unpublished`: Not published.
+	//
+	// - `Publishing`: Being published.
+	//
+	// - `Published`: Published.
+	//
+	// - `PublishFailed`: Publishing failed.
+	//
+	// - `Building`: Being built.
+	//
+	// - `BuildSuccess`: Build succeeded.
+	//
+	// - `BuildFailed`: Build failed.
+	//
+	// - `Accelerating`: Being accelerated.
+	//
+	// - `AccelerateSuccess`: Acceleration succeeded.
+	//
+	// - `AccelerateFailed`: Acceleration failed.
+	//
 	// example:
 	//
 	// Published
 	PublishStage *string `json:"PublishStage,omitempty" xml:"PublishStage,omitempty"`
+	// The repository name.
+	//
 	// example:
 	//
 	// repo_name
 	RepositoryName *string `json:"RepositoryName,omitempty" xml:"RepositoryName,omitempty"`
+	// The image size.
+	//
 	// example:
 	//
 	// 1GB
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The status of the image. Valid values:
+	//
+	// - `Disabled`: The image is disabled.
+	//
+	// - `Expired`: The image is expired.
+	//
+	// - `Available`: The image is available.
+	//
+	// - `ReadOnly`: The image is read-only.
+	//
 	// example:
 	//
 	// Available
-	Status    *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The supported modules and task types.
 	Supported *ListImageVersionsResponseBodyPagingInfoImageVersionsSupported `json:"Supported,omitempty" xml:"Supported,omitempty" type:"Struct"`
+	// The image version.
+	//
 	// example:
 	//
 	// 1
@@ -519,10 +623,13 @@ func (s *ListImageVersionsResponseBodyPagingInfoImageVersions) Validate() error 
 }
 
 type ListImageVersionsResponseBodyPagingInfoImageVersionsBuildConfig struct {
+	// The build type.
+	//
 	// example:
 	//
 	// PackageInstallation
-	BuildType                  *string                                                                                      `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
+	BuildType *string `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
+	// The pre-installation scripts.
 	PackageInstallationScripts []*ListImageVersionsResponseBodyPagingInfoImageVersionsBuildConfigPackageInstallationScripts `json:"PackageInstallationScripts,omitempty" xml:"PackageInstallationScripts,omitempty" type:"Repeated"`
 }
 
@@ -566,10 +673,14 @@ func (s *ListImageVersionsResponseBodyPagingInfoImageVersionsBuildConfig) Valida
 }
 
 type ListImageVersionsResponseBodyPagingInfoImageVersionsBuildConfigPackageInstallationScripts struct {
+	// The script content. Separate multiple package names with a comma (,).
+	//
 	// example:
 	//
 	// requests
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The script type.
+	//
 	// example:
 	//
 	// Python3
@@ -607,10 +718,15 @@ func (s *ListImageVersionsResponseBodyPagingInfoImageVersionsBuildConfigPackageI
 }
 
 type ListImageVersionsResponseBodyPagingInfoImageVersionsSupported struct {
+	// The supported module. Valid value:
+	//
+	// - `Scheduler`: The scheduler module.
+	//
 	// example:
 	//
 	// Scheduler
-	Module    *string   `json:"Module,omitempty" xml:"Module,omitempty"`
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The supported task types.
 	TaskTypes []*string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
 }
 

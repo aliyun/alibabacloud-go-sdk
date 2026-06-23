@@ -26,30 +26,44 @@ type iListCustomAttributesRequest interface {
 }
 
 type ListCustomAttributesRequest struct {
+	// The comment on the custom attribute. The service performs a fuzzy search based on this parameter\\"s value.
+	//
 	// example:
 	//
 	// owner
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The display name of the custom attribute. The service performs a partial match based on this parameter\\"s value.
+	//
 	// example:
 	//
 	// Owner
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The entity types to which the custom attribute applies. To specify multiple entity types, separate them with commas (,), for example, `*-table,*-column`. This parameter supports specific entity types, such as `hms-table` and `emr-table`, and wildcard types, such as `*-table` and `*-column`.
+	//
 	// example:
 	//
 	// maxcompute-table
 	EntityTypes *string `json:"EntityTypes,omitempty" xml:"EntityTypes,omitempty"`
+	// The sort order. Valid values: Asc and Desc.
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field to sort by. Valid values: CreateTime and ModifyTime.
+	//
 	// example:
 	//
 	// CreateTime

@@ -14,7 +14,9 @@ import (
 //
 // Description:
 //
-// >  This operation may not be available in earlier versions of the SDK. In this case, use the AbolishDeployment operation. The parameters for AbolishDeployment are the same as those described in this topic.
+//	Notice:
+//
+// This API may not be available in earlier versions of the SDK. In that case, use the AbolishDeployment API, which accepts the same parameters.
 //
 // @param request - AbolishPipelineRunRequest
 //
@@ -63,6 +65,10 @@ func (client *Client) AbolishPipelineRunWithContext(ctx context.Context, request
 // Summary:
 //
 // Adds an entity to a collection in Data Map. Collections include categories and data albums. Entities can be only tables. If you want to add an entity to a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
+//
+// Description:
+//
+// 1. DataWorks Professional Edition or a higher edition is required.
 //
 // @param request - AddEntityIntoMetaCollectionRequest
 //
@@ -114,7 +120,29 @@ func (client *Client) AddEntityIntoMetaCollectionWithContext(ctx context.Context
 
 // Summary:
 //
-// 发起资源访问权限申请
+// Submits a request for permissions on specific resources.
+//
+// Description:
+//
+// ## Request details
+//
+// - **Reason**: The reason for the request. This parameter is required.
+//
+// - **ApplyContents**: A list of permission requests. Each request includes a resource (Resource), a principal (Grantee), the requested permission types (AccessTypes), and the permission expiration time (ExpirationTime). A single request can contain a maximum of 400 items.
+//
+// - **Resource**: The resource for which permissions are requested. You must specify the `name` and `version` of the `ResourceSchema` required for parsing, along with the resource metadata (`MetaData`).
+//
+// - **Grantee**: The principal to which permissions are granted. You must specify the principal type (`PrincipalType`) and principal ID (`PrincipalId`).
+//
+// - **AccessTypes**: A list of permission types.
+//
+// - **ExpirationTime**: The permission expiration time, specified as a Unix timestamp in milliseconds.
+//
+// - **AuthMethod**: The authorization method. This parameter is optional. If not specified, the system\\"s default authorization method is used.
+//
+// - **ClientToken**: A client token to ensure request idempotency. This parameter is optional.
+//
+// Ensure that all required fields are correctly filled out and meet their respective constraints. For example, the `DefVersion` and `MetaData` in the `Resource` object must match the selected `DefSchema`.
 //
 // @param tmpReq - ApplyResourceAccessPermissionRequest
 //
@@ -172,7 +200,17 @@ func (client *Client) ApplyResourceAccessPermissionWithContext(ctx context.Conte
 
 // Summary:
 //
-// 审批权限申请流程实例
+// Approves or rejects a specified approval process instance.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation allows you to approve or reject a specified approval process instance by passing in the ProcessInstanceId and approval information (including ApprovalComment and ApprovalAction).
+//
+// - ApprovalAction can be Agree or Deny, indicating approval or rejection respectively.
+//
+// - ApprovalComment is required and records the specific approval opinion.
 //
 // @param request - ApproveProcessInstanceRequest
 //
@@ -197,6 +235,10 @@ func (client *Client) ApproveProcessInstanceWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.NewExpiration) {
+		body["NewExpiration"] = request.NewExpiration
 	}
 
 	if !dara.IsNil(request.ProcessInstanceId) {
@@ -228,7 +270,13 @@ func (client *Client) ApproveProcessInstanceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Adds a custom image to a workspace.
+// Associates an image with a workspace.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or later to use this operation.
+//
+// 2. **Ensure the AliyunServiceRoleForDataWorks service-linked role is created before you call this operation.**
 //
 // @param request - AssociateProjectToImageRequest
 //
@@ -276,15 +324,15 @@ func (client *Client) AssociateProjectToImageWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Bind a resource group to a workspace.
+// Associates a resource group with a workspace.
 //
 // Description:
 //
-// 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+// 1. This operation requires DataWorks Basic Edition or a more advanced edition.
 //
-// 2.  Your account must be assigned one of the following roles of the desired workspace:
+// 2. You must have one of the following roles in the DataWorks workspace:
 //
-//   - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+// - tenant owner, workspace administrator, project owner, or operator
 //
 // @param request - AssociateProjectToResourceGroupRequest
 //
@@ -334,7 +382,11 @@ func (client *Client) AssociateProjectToResourceGroupWithContext(ctx context.Con
 //
 // Summary:
 //
-// Associates monitoring rules with a data quality monitoring task.
+// Associates data quality rules with a data quality monitoring task.
+//
+// Description:
+//
+// You must purchase DataWorks Basic Edition or higher to use this feature.
 //
 // @param tmpReq - AttachDataQualityRulesToEvaluationTaskRequest
 //
@@ -392,7 +444,11 @@ func (client *Client) AttachDataQualityRulesToEvaluationTaskWithContext(ctx cont
 
 // Summary:
 //
-// Create multiple metadata entities at a time. The metadata entities in a batch must be of the same type. Only the pure custom type and the extended table type (corresponding to Database/Table) are supported.
+// Creates metadata entities in a batch. All entities within a batch must have the same entity type. This operation currently supports only custom types and extended table types, which represent databases and tables.
+//
+// Description:
+//
+// You must purchase DataWorks Professional Edition or a higher edition to use this operation.
 //
 // @param tmpReq - BatchCreateMetaEntitiesRequest
 //
@@ -442,7 +498,11 @@ func (client *Client) BatchCreateMetaEntitiesWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Deletes metadata entity objects in batches. You can delete custom entities and extended table type objects (Database/Table). You cannot delete columns separately. To delete associated column objects, delete the table.
+// Deletes multiple meta entities in a batch. This operation deletes custom meta entities and extended table-based objects, such as databases and tables. You cannot delete a column individually. Instead, you must delete the entire table to remove its associated columns.
+//
+// Description:
+//
+// This operation requires DataWorks Professional Edition or higher.
 //
 // @param tmpReq - BatchDeleteMetaEntitiesRequest
 //
@@ -496,7 +556,7 @@ func (client *Client) BatchDeleteMetaEntitiesWithContext(ctx context.Context, tm
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or higher is required.
 //
 // @param tmpReq - BatchUpdateTasksRequest
 //
@@ -550,7 +610,15 @@ func (client *Client) BatchUpdateTasksWithContext(ctx context.Context, tmpReq *B
 
 // Summary:
 //
-// Interrupts an agent call for a specified session. Streaming response interruption is supported.
+// Cancels an agent call in a specified session. This operation also supports interrupting an ongoing streaming response.
+//
+// Description:
+//
+// ## Description
+//
+// - This operation is used to actively interrupt an ongoing session, especially when the session is generating a streaming response.
+//
+// - `sessionId` is a required parameter that identifies the specific session to cancel.
 //
 // @param tmpReq - CancelAgentSessionRequest
 //
@@ -608,15 +676,15 @@ func (client *Client) CancelAgentSessionWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Clones an existing data source.
+// Clones a data source to create a new data source with the same configurations.
 //
 // Description:
 //
-// 1.  This API operation is available for all DataWorks editions.
+// 1. This operation is available for all DataWorks editions.
 //
-// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+// 2. To call this operation, you must have one of the following roles in DataWorks:
 //
-//   - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+// - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - CloneDataSourceRequest
 //
@@ -664,7 +732,21 @@ func (client *Client) CloneDataSourceWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 创建 Agent
+// # Create Agent
+//
+// Description:
+//
+// ## Request Description
+//
+// - **Agent Name**: Must be unique under the current account.
+//
+// - **Model Configuration**: An optional parameter used to specify the model used by the Agent and its related settings.
+//
+// - **Visibility Level**: Defines who can access the Agent. Supports visibility within the account, to specified projects, or to specific users.
+//
+// - **Visibility Scope**: When `PROJECT` or `USER` is selected as the visibility level, the specific project ID or user ID list must be further specified.
+//
+// - **Other Parameters**: Items such as display name and description are optional and can be filled in based on actual needs.
 //
 // @param tmpReq - CreateAgentRequest
 //
@@ -774,7 +856,19 @@ func (client *Client) CreateAgentWithContext(ctx context.Context, tmpReq *Create
 
 // Summary:
 //
-// Creates a new Agent session and returns the session ID.
+// Creates a new agent session and returns a session ID.
+//
+// Description:
+//
+// ## Description
+//
+// - This API creates a new agent session.
+//
+// - You must specify the agent name to bind to the session using the `_meta.agent.agentName` parameter.
+//
+// - You can specify a session source identifier in the `_meta.config.sessionSource` parameter. This allows you to search for sessions by source later.
+//
+// - You can add session tags using the `_meta.config.sessionTags[].sessionTagCode` parameter.
 //
 // @param tmpReq - CreateAgentSessionRequest
 //
@@ -968,6 +1062,12 @@ func (client *Client) CreateBusinessWithContext(ctx context.Context, request *Cr
 //
 // Creates components.
 //
+// Description:
+//
+//	Notice:
+//
+// This API does not support batch operations. If you specify multiple entities to be published, all entities except the first one are ignored.
+//
 // @param request - CreateComponentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1019,6 +1119,14 @@ func (client *Client) CreateComponentWithContext(ctx context.Context, request *C
 // Summary:
 //
 // Creates a computing resource in the specified workspace. The resource can be for a development environment or a production environment.
+//
+// Description:
+//
+// DataWorks Basic Edition or a more advanced edition is required.
+//
+// You must have at least one of the following roles in the DataWorks workspace:
+//
+// Tenant Owner, Workspace Administrator, Project Owner, O\\&M
 //
 // @param request - CreateComputeResourceRequest
 //
@@ -1082,7 +1190,7 @@ func (client *Client) CreateComputeResourceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Create a custom attribute
+// Creates a custom attribute definition.
 //
 // @param tmpReq - CreateCustomAttributeRequest
 //
@@ -1214,13 +1322,13 @@ func (client *Client) CreateDIAlarmRuleWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Creates a new-version synchronization task.
+// Create a new version of a data integration task.
 //
 // Description:
 //
-//	  This API operation is available for all DataWorks editions.
+// - This API requires DataWorks Basic Edition or a higher edition.
 //
-//		- You can call this API operation to create a synchronization task. When you call this API operation, you must configure parameters such as SourceDataSourceSettings, DestinationDataSourceSettings, MigrationType, TransformationRules, TableMappings, and JobSettings. The SourceDataSourceSettings parameter defines the settings related to the source. The DestinationDataSourceSettings parameter defines the settings related to the destination. The MigrationType parameter defines the synchronization task type. The TransformationRules parameter defines the transformation rules for objects involved in the synchronization task. The TableMappings parameter defines the mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. The JobSettings parameter defines the settings for the dimension of the synchronization task, including policies for data type mappings between source fields and destination fields and settings for periodic scheduling.
+// - This API creates a data integration synchronization task. Key parameters include `SourceDataSourceSettings`, `DestinationDataSourceSettings`, and `MigrationType`. The `TransformationRules` parameter defines transformation rules for synchronized tables, such as adding columns or replacing table names. The `TableMappings` parameter specifies which tables to synchronize and their mapping rules. The `JobSettings` parameter configures task settings, including column mapping and scheduling.
 //
 // @param tmpReq - CreateDIJobRequest
 //
@@ -1430,7 +1538,7 @@ func (client *Client) CreateDataAssetTagWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param tmpReq - CreateDataQualityAlertRuleRequest
 //
@@ -1498,11 +1606,11 @@ func (client *Client) CreateDataQualityAlertRuleWithContext(ctx context.Context,
 //
 // Summary:
 //
-// Creates a monitor in DataWorks Data Quality.
+// Creates a DataWorks data quality monitor.
 //
 // Description:
 //
-// This API operation is supported in all DataWorks editions.
+// DataWorks Basic Edition or higher is required.
 //
 // @param tmpReq - CreateDataQualityEvaluationTaskRequest
 //
@@ -1606,7 +1714,11 @@ func (client *Client) CreateDataQualityEvaluationTaskWithContext(ctx context.Con
 //
 // Summary:
 //
-// Creates a monitor instance.
+// Creates a data quality evaluation task instance.
+//
+// Description:
+//
+// You must purchase DataWorks Basic Edition or higher to use this operation.
 //
 // @param tmpReq - CreateDataQualityEvaluationTaskInstanceRequest
 //
@@ -1670,7 +1782,11 @@ func (client *Client) CreateDataQualityEvaluationTaskInstanceWithContext(ctx con
 //
 // Summary:
 //
-// Creates a data quality monitoring rule.
+// Creates a data quality rule.
+//
+// Description:
+//
+// You must purchase DataWorks Basic Edition or higher to use this feature.
 //
 // @param tmpReq - CreateDataQualityRuleRequest
 //
@@ -1770,7 +1886,11 @@ func (client *Client) CreateDataQualityRuleWithContext(ctx context.Context, tmpR
 //
 // Summary:
 //
-// Creates a data quality monitoring rule template.
+// Creates a rule template.
+//
+// Description:
+//
+// You must purchase DataWorks Basic Edition or above to use this feature.
 //
 // @param tmpReq - CreateDataQualityRuleTemplateRequest
 //
@@ -1848,7 +1968,7 @@ func (client *Client) CreateDataQualityRuleTemplateWithContext(ctx context.Conte
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param tmpReq - CreateDataQualityScanRequest
 //
@@ -1954,11 +2074,11 @@ func (client *Client) CreateDataQualityScanWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Triggers a data quality monitoring task and returns the run instance ID.
+// Triggers the specified data quality scan and returns the run ID.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// This operation is available only in DataWorks Basic Edition and later versions.
 //
 // @param tmpReq - CreateDataQualityScanRunRequest
 //
@@ -2028,7 +2148,7 @@ func (client *Client) CreateDataQualityScanRunWithContext(ctx context.Context, t
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - CreateDataQualityTemplateRequest
 //
@@ -2081,14 +2201,6 @@ func (client *Client) CreateDataQualityTemplateWithContext(ctx context.Context, 
 // Summary:
 //
 // Adds a data source to the development environment or production environment of a workspace.
-//
-// Description:
-//
-// 1.  This API operation is available for all DataWorks editions.
-//
-// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
-//
-//   - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - CreateDataSourceRequest
 //
@@ -2152,15 +2264,15 @@ func (client *Client) CreateDataSourceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates a rule for sharing a data source to other workspaces or RAM users.
+// Creates a sharing rule for a data source to share it with other workspaces or RAM users.
 //
 // Description:
 //
-// 1.  This API operation is available for all DataWorks editions.
+// 1. This operation is available for all DataWorks editions.
 //
-// 2.  If you want to share a data source from Workspace A to Workspace B, you must have the permissions to share the data source in both workspaces. You can call this operation only if you are assigned one of the following roles in DataWorks:
+// 2. To share a data source from Workspace A to Workspace B, you must have the data source sharing permissions in both workspaces. You must have one of the following roles in DataWorks:
 //
-//   - Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
+// - Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
 //
 // @param request - CreateDataSourceSharedRuleRequest
 //
@@ -2588,7 +2700,9 @@ func (client *Client) CreateFolderWithContext(ctx context.Context, request *Crea
 //
 // Description:
 //
-// >  You cannot use this API operation to create multiple UDFs at a time. If you specify multiple UDFs by using FlowSpec, the system creates only the first specified UDF.
+//	Notice:
+//
+// This API does not support batch operations. If you define more than one UDF in the FlowSpec, all UDFs except the first one are ignored.
 //
 // @param request - CreateFunctionRequest
 //
@@ -2640,7 +2754,9 @@ func (client *Client) CreateFunctionWithContext(ctx context.Context, request *Cr
 //
 // Description:
 //
-// >  This operation does not support batch processing. If multiple publishing entities are specified in the parameters, only the first one will be processed; the others will be ignored.
+//	Notice:
+//
+// This operation does not support batch processing. If you specify multiple entities in the request parameters, only the first entity is processed and the rest are ignored.
 //
 // @param tmpReq - CreateIdentifyCredentialRequest
 //
@@ -2690,7 +2806,11 @@ func (client *Client) CreateIdentifyCredentialWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Registers lineage relationships in Data Map. At least one end of the relationship must be a custom object. This interface allows you to connect custom objects (such as external reports or third-party system tables) with metadata entities managed by DataWorks.
+// Registers a data lineage relationship in DataWorks Data Map. You can use this operation to establish lineage relationships between metadata entities managed by DataWorks, including table-to-table, column-to-column, table-to-column, and dataset-to-table scenarios. You can also establish lineage relationships between managed entities and custom entity objects registered by users. This operation is compatible with non-managed custom objects, but this approach is no longer recommended. Before calling this operation, make sure that the managed entities involved in the lineage registration already exist on the DataWorks platform.
+//
+// Description:
+//
+// 1. DataWorks Professional Edition or a higher edition is required.
 //
 // @param tmpReq - CreateLineageRelationshipRequest
 //
@@ -2756,7 +2876,19 @@ func (client *Client) CreateLineageRelationshipWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 登记 MCP Server
+// Creates an MCP Server.
+//
+// Description:
+//
+// ## Usage notes
+//
+// - When you submit a request, the system verifies the availability of the MCP Server based on the connection configuration.
+//
+// - If the MCP Server connection is unavailable, the API returns an error message.
+//
+// - The `Name` must be unique at the tenant level, start with a lowercase letter, and contain only lowercase letters, digits, underscores (_), and hyphens (-).
+//
+// - The `Visibility` parameter specifies the visibility level of the MCP Server. Valid values are `TENANT` (visible within the tenant), `PROJECT` (visible to specified projects), and `USER` (visible to specified users). You must also provide the `VisibilityScope` parameter to define the scope based on the selected visibility level.
 //
 // @param tmpReq - CreateMcpServerRequest
 //
@@ -2824,6 +2956,10 @@ func (client *Client) CreateMcpServerWithContext(ctx context.Context, tmpReq *Cr
 //
 // Creates a collection in Data Map. Collections include categories, subcategories, data albums, and categories that are created in the data albums.
 //
+// Description:
+//
+// 1. DataWorks Professional Edition or a higher edition is required.
+//
 // @param request - CreateMetaCollectionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2878,7 +3014,11 @@ func (client *Client) CreateMetaCollectionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates metadata entity definitions (including pure custom types and extended table types)
+// Creates a metadata entity definition. The definition can be for a pure custom type or an extended table type.
+//
+// Description:
+//
+// This operation requires DataWorks Professional Edition or a higher edition.
 //
 // @param tmpReq - CreateMetaEntityDefRequest
 //
@@ -3008,7 +3148,9 @@ func (client *Client) CreateNetworkWithContext(ctx context.Context, request *Cre
 //
 // Description:
 //
-// >  You cannot use this API operation to create multiple nodes at a time. If you specify multiple nodes by using FlowSpec, the system creates only the first specified node.
+//	Notice:
+//
+// This API does not support batch operations. If you define more than one node in the FlowSpec, all nodes except the first one are ignored.
 //
 // @param request - CreateNodeRequest
 //
@@ -3065,6 +3207,10 @@ func (client *Client) CreateNodeWithContext(ctx context.Context, request *Create
 // Summary:
 //
 // Creates a parameter.
+//
+// Description:
+//
+// This operation requires DataWorks Professional Edition or a later edition.
 //
 // @param tmpReq - CreateParameterRequest
 //
@@ -3142,9 +3288,9 @@ func (client *Client) CreateParameterWithContext(ctx context.Context, tmpReq *Cr
 //
 // Description:
 //
-// >  Batch operations are not currently supported. If you specify multiple entities in the parameters, only the first entity takes effect, and the rest are ignored.
+//	Notice: This API does not support batch operations. If you specify multiple entities to be published, all entities except the first one are ignored.
 //
-// >  This operation may not be available in earlier versions of the SDK. In this case, use the CreateDeployment operation. The parameters for CreateDeployment are the same as those described in this topic.
+//	Notice: This API may not be available in earlier versions of the SDK. In that case, use the CreateDeployment API, which accepts the same parameters.
 //
 // @param tmpReq - CreatePipelineRunRequest
 //
@@ -3206,7 +3352,23 @@ func (client *Client) CreatePipelineRunWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 创建审批流程定义
+// Creates a new approval process definition, supporting custom configuration of approval rules and notification services.
+//
+// Description:
+//
+// ## Usage notes
+//
+// - This API operation allows you to create a new approval process definition, including setting basic information such as the approval policy name, description, type, and subtype.
+//
+// - You can define a list of condition rules (RuleConditions) to specify the conditions under which the approval process is triggered.
+//
+// - Multiple notification services (NotificationServices) can be configured to send notifications to relevant personnel at different stages of the approval process.
+//
+// - The approval node list (ApprovalNodes) defines the nodes that must be traversed during the approval process and the approver information for each node.
+//
+// - You can choose whether to immediately enable the newly created approval process definition.
+//
+// - Note: Certain fields such as Type have specific value constraints. Refer to the constraint descriptions in the documentation.
 //
 // @param tmpReq - CreateProcessDefinitionRequest
 //
@@ -3436,7 +3598,7 @@ func (client *Client) CreateProjectMemberWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// # Create a workspace custom role
+// Creates a custom role for a workspace.
 //
 // @param tmpReq - CreateProjectRoleRequest
 //
@@ -3500,11 +3662,13 @@ func (client *Client) CreateProjectRoleWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// \\>  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
+// \\\\> You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
 //
 // Description:
 //
-// # Private
+//	Notice:
+//
+// This API does not support batch operations. If you define more than one resource file in the FlowSpec, all resource files except the first one are ignored.
 //
 // @param request - CreateResourceRequest
 //
@@ -3556,7 +3720,7 @@ func (client *Client) CreateResourceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates a resource file in DataStudio. The following types are supported: JAR, Archive, File, and Python.
+// Supports users in specifying their own files (such as JAR, PY, archive, or file) to create Data Development resource files.
 //
 // @param request - CreateResourceFileRequest
 //
@@ -3644,13 +3808,15 @@ func (client *Client) CreateResourceFileWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a serverless resource group.
+// Creates a resource group.
 //
 // Description:
 //
-// 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+// 1. You must purchase DataWorks Basic Edition or higher to use this operation.
 //
-// 2.  **Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/document_detail/2680173.html) of serverless resource groups.
+// 2. **Before you call this operation, make sure that you understand how general-purpose resource groups in DataWorks are billed and review the [pricing](https://help.aliyun.com/document_detail/2680173.html).**
+//
+// 3. **Before you call this operation, make sure that you have created the AliyunServiceRoleForDataWorks service-linked role.**
 //
 // @param tmpReq - CreateResourceGroupRequest
 //
@@ -3800,7 +3966,23 @@ func (client *Client) CreateRouteWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 创建安全管控策略
+// Creates a new security control policy to configure various modules and submodules. Requires both DataWorks tenant administrator and security administrator permissions.
+//
+// Description:
+//
+// ## Request
+//
+// - **SchemaName**: Select a schema that fits your business needs.
+//
+// - **ControlModule*	- and **ControlSubModule**: Specify the module and submodule for the policy, ensuring they match the selected schema.
+//
+// - **ControlDwScope**: Set the policy scope to either the tenant or workspace level.
+//
+// - **Workspaces**: If `ControlDwScope` is set to `Workspace`, provide the corresponding workspace IDs.
+//
+// - **Content.Controllers**: The controllers must match the definitions in the selected schema.
+//
+// - This operation cannot create system default policies.
 //
 // @param tmpReq - CreateSecurityStrategyRequest
 //
@@ -3887,6 +4069,16 @@ func (client *Client) CreateSecurityStrategyWithContext(ctx context.Context, tmp
 // Summary:
 //
 // 创建 Skill
+//
+// Description:
+//
+// ## 请求说明
+//
+// - `SkillMdOverride` 与 `BundleUrl` 参数二选一，必须提供其中之一。
+//
+// - `Visibility` 可设置为 `TENANT`、`PROJECT` 或 `USER`，分别表示账号内可见、指定项目可见或指定用户可见。
+//
+// - 当 `Visibility` 设置为 `PROJECT` 时，需要通过 `VisibilityScope.ProjectIds` 指定可见的项目 ID 列表；当设置为 `USER` 时，则需通过 `VisibilityScope.UserIds` 指定可见的用户 ID 列表。
 //
 // @param tmpReq - CreateSkillRequest
 //
@@ -4064,7 +4256,9 @@ func (client *Client) CreateUdfFileWithContext(ctx context.Context, request *Cre
 //
 // Description:
 //
-// > You cannot use this API operation to create multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system creates only the first specified workflow. Other specified workflows and the nodes in the workflows are ignored. You can call the CreateNode operation to create a node.
+//	Notice:
+//
+// This API does not support batch operations. If you define more than one workflow definition in the FlowSpec, all workflow definitions except the first one are ignored. In addition, nodes defined within the workflow definition are also ignored. Call the CreateNode API to create internal nodes one by one.
 //
 // @param request - CreateWorkflowDefinitionRequest
 //
@@ -4113,6 +4307,10 @@ func (client *Client) CreateWorkflowDefinitionWithContext(ctx context.Context, r
 // Summary:
 //
 // Creates a workflow instance, such as a data backfill workflow instance, based on configurations.
+//
+// Description:
+//
+// DataWorks Basic Edition or higher is required.
 //
 // @param tmpReq - CreateWorkflowInstancesRequest
 //
@@ -4219,6 +4417,12 @@ func (client *Client) CreateWorkflowInstancesWithContext(ctx context.Context, tm
 // Summary:
 //
 // 删除 Agent
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该 API 用于从 DataWorks 中删除指定名称的 Agent。调用此接口时，必须提供要删除的 Agent 的名称。
 //
 // @param request - DeleteAgentRequest
 //
@@ -4362,9 +4566,9 @@ func (client *Client) DeleteBusinessWithContext(ctx context.Context, request *De
 //
 // Description:
 //
-// 1.  This API operation is available for all DataWorks editions.
+// 1. This operation requires DataWorks Basic Edition or a later version.
 //
-// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M.
+// 2. This operation requires one of the following roles in the DataWorks workspace: Tenant Owner, Workspace Administrator, Project Owner, or O\\&M.
 //
 // @param request - DeleteCertificateRequest
 //
@@ -4416,7 +4620,9 @@ func (client *Client) DeleteCertificateWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// >  A UDF that is deployed cannot be deleted. If you want to delete such a UDF, you must first undeploy the UDF.
+//	Notice:
+//
+// After a UDF is published, it cannot be deleted. You must unpublish the UDF before you can delete it.
 //
 // @param request - DeleteComponentRequest
 //
@@ -4468,11 +4674,11 @@ func (client *Client) DeleteComponentWithContext(ctx context.Context, request *D
 //
 // Description:
 //
-// 1.  This API operation is available for all DataWorks editions.
+// 1. DataWorks Basic Edition or a more advanced edition is required.
 //
-// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+// 2. You must have at least one of the following roles in the DataWorks workspace:
 //
-// 3.  Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M.
+// 3. Tenant Owner, Workspace Administrator, Project Owner, O\\&M
 //
 // @param request - DeleteComputeResourceRequest
 //
@@ -4520,7 +4726,7 @@ func (client *Client) DeleteComputeResourceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Delete Custom Attribute
+// Deletes a custom attribute definition.
 //
 // @param request - DeleteCustomAttributeRequest
 //
@@ -4710,7 +4916,7 @@ func (client *Client) DeleteDataAssetTagWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-// Subscribe to DataWorks Basic Edition or a higher version to use this API.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - DeleteDataQualityAlertRuleRequest
 //
@@ -4757,6 +4963,10 @@ func (client *Client) DeleteDataQualityAlertRuleWithContext(ctx context.Context,
 // Summary:
 //
 // Deletes a data quality monitoring task.
+//
+// Description:
+//
+// You must purchase DataWorks Basic Edition or higher to use this feature.
 //
 // @param request - DeleteDataQualityEvaluationTaskRequest
 //
@@ -4854,7 +5064,11 @@ func (client *Client) DeleteDataQualityRuleWithContext(ctx context.Context, requ
 //
 // Summary:
 //
-// Deletes a data quality monitoring rule template.
+// Deletes a custom data quality rule template.
+//
+// Description:
+//
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - DeleteDataQualityRuleTemplateRequest
 //
@@ -4906,7 +5120,7 @@ func (client *Client) DeleteDataQualityRuleTemplateWithContext(ctx context.Conte
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - DeleteDataQualityScanRequest
 //
@@ -4958,13 +5172,13 @@ func (client *Client) DeleteDataQualityScanWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// ## [](#)Request description
+// ## Request description
 //
-//   - **Id**: the unique identifier of the user-defined rule template, in the format `USER_DEFINED:<template_id>`.
+// - **Id**: The unique identifier of a custom rule template, in the format of `USER_DEFINED:<template_id>`.
 //
-//   - **ProjectId**: The ID of the DataWorks project to which the rule template belongs.
+// - **ProjectId**: The ID of the DataWorks workspace to which the rule template belongs.
 //
-// This API is used to remove data quality rule templates that are no longer needed from the system. Make sure the provided `Id` and `ProjectId` are correct when calling this API operation; otherwise, the deletion may fail or lead to unexpected data loss. Use this function with caution and verify the exact information of the template before performing the operation.
+// This operation removes a data quality rule template that is no longer needed. Make sure that the `Id` and `ProjectId` values are correct. Otherwise, the deletion may fail or cause unexpected data loss. Exercise caution when performing this operation and verify the template information before proceeding.
 //
 // @param request - DeleteDataQualityTemplateRequest
 //
@@ -5008,15 +5222,15 @@ func (client *Client) DeleteDataQualityTemplateWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Removes a data source by ID.
+// Deletes a data source by data source ID.
 //
 // Description:
 //
-// 1.  This API operation is available for all Dataworks editions.
+// 1. This operation is available for all DataWorks editions.
 //
-// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+// 2. To call this operation, you must have one of the following roles in DataWorks:
 //
-//   - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+// - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -5056,15 +5270,15 @@ func (client *Client) DeleteDataSourceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Deletes a sharing rule of a data source by ID.
+// Deletes a data source sharing rule by rule ID.
 //
 // Description:
 //
-// 1.  This API operation is available for all DataWorks editions.
+// 1. This operation is available for all DataWorks editions.
 //
-// 2.  If you want to delete a sharing rule of a data source from Workspace A to Workspace B, you must have the permissions to share the data source in Workspace A or Workspace B. You can call this operation only if you are assigned one of the following roles in DataWorks:
+// 2. To delete a sharing rule of a data source from Workspace A to Workspace B, you must have the data source sharing permissions in Workspace A or Workspace B. You must have one of the following roles in DataWorks:
 //
-//   - Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
+// - Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
 //
 // @param request - DeleteDataSourceSharedRuleRequest
 //
@@ -5246,6 +5460,10 @@ func (client *Client) DeleteFileWithContext(ctx context.Context, request *Delete
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke DeleteFolder to delete a folder on the Data Development page.
+//
 // @param request - DeleteFolderRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5300,7 +5518,9 @@ func (client *Client) DeleteFolderWithContext(ctx context.Context, request *Dele
 //
 // Description:
 //
-// >  A UDF that is deployed cannot be deleted. If you want to delete such a UDF, you must first undeploy the UDF.
+//	Notice:
+//
+// After a UDF is published, it cannot be deleted. You must unpublish the UDF before you can delete it.
 //
 // @param request - DeleteFunctionRequest
 //
@@ -5350,6 +5570,10 @@ func (client *Client) DeleteFunctionWithContext(ctx context.Context, request *De
 //
 // Deletes a lineage in Data Map.
 //
+// Description:
+//
+// 1. DataWorks Professional Edition or a higher edition is required.
+//
 // @param request - DeleteLineageRelationshipRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5392,7 +5616,19 @@ func (client *Client) DeleteLineageRelationshipWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 删除 MCP Server
+// # Delete MCP Server
+//
+// Description:
+//
+// ## Request Description
+//
+// This API allows you to delete the corresponding MCP Server instance based on the provided MCP Server name. Make sure you have the appropriate permissions and verify that the MCP Server name to be deleted is correct before calling.
+//
+// ### Notes
+//
+// - The deletion operation is irreversible. Proceed with caution.
+//
+// - Ensure that you have sufficient permissions (`dataworks:DeleteMcpServer`) to perform this operation.
 //
 // @param request - DeleteMcpServerRequest
 //
@@ -5436,7 +5672,13 @@ func (client *Client) DeleteMcpServerWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Deletes a collection in Data Map. Collections include categories and data albums. If you want to delete a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
+// Delete a collection object in the specified Data Map, including Data Map categories and data albums.
+//
+// When deleting a data album, the caller must have the AliyunDataWorksFullAccess permission or be the creator or administrator of the album.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Professional Edition or a higher edition to use this feature.
 //
 // @param request - DeleteMetaCollectionRequest
 //
@@ -5480,7 +5722,11 @@ func (client *Client) DeleteMetaCollectionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Delete metadata entity definitions (including pure custom types and extended table types)
+// 删除自定义实体定义
+//
+// Description:
+//
+// 需要购买 DataWorks 专业版及以上版本才能使用。
 //
 // @param request - DeleteMetaEntityDefRequest
 //
@@ -5580,7 +5826,9 @@ func (client *Client) DeleteNetworkWithContext(ctx context.Context, request *Del
 //
 // Description:
 //
-// >  A node that is deployed cannot be deleted. If you want to delete such a node, you must first undeploy the node.
+//	Notice:
+//
+// After a node is published, it cannot be deleted. You must unpublish the node before you can delete it.
 //
 // @param request - DeleteNodeRequest
 //
@@ -5628,7 +5876,11 @@ func (client *Client) DeleteNodeWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// Remove specified parameters.
+// Deletes a specified parameter.
+//
+// Description:
+//
+// This operation is available only in DataWorks professional edition and later versions.
 //
 // @param request - DeleteParameterRequest
 //
@@ -5672,7 +5924,17 @@ func (client *Client) DeleteParameterWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 删除审批流程定义
+// Deletes a process definition by the specified ID.
+//
+// Description:
+//
+// ## Description
+//
+// - This API deletes a process definition by its ID.
+//
+// - This operation is irreversible. Proceed with caution.
+//
+// - Before calling this API, back up relevant data or confirm that the process definition is no longer required.
 //
 // @param request - DeleteProcessDefinitionRequest
 //
@@ -5720,7 +5982,9 @@ func (client *Client) DeleteProcessDefinitionWithContext(ctx context.Context, re
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// To call this API, you must purchase DataWorks Basic Edition or a higher edition.
+//
+// Note: When you delete a workspace, the system moves it to the Recycle Bin. After a 14-day retention period, the system permanently purges the workspace. During this time, you cannot create a new workspace with the same name. You can find the deleted workspace in the Recycle Bin on the Workspace page in the console.
 //
 // @param request - DeleteProjectRequest
 //
@@ -5816,7 +6080,7 @@ func (client *Client) DeleteProjectMemberWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Delete a workspace custom role
+// Deletes a custom role from a workspace.
 //
 // @param request - DeleteProjectRoleRequest
 //
@@ -5868,7 +6132,9 @@ func (client *Client) DeleteProjectRoleWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// >  A file resource that is deployed cannot be deleted. If you want to delete such a file resource, you must first undeploy the file resource.
+//	Notice:
+//
+// After a file resource is published, it cannot be deleted. You must unpublish the file resource before you can delete it.
 //
 // @param request - DeleteResourceRequest
 //
@@ -5916,13 +6182,15 @@ func (client *Client) DeleteResourceWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes a serverless resource group.
+// Deletes a resource group.
 //
 // Description:
 //
-// 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+// 1. This operation requires DataWorks Basic Edition or a later version.
 //
-// 2.  **Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/document_detail/2680173.html) of serverless resource groups.
+// 2. **Before you use this operation, ensure you understand the billing method and [pricing](https://help.aliyun.com/document_detail/2680173.html) for DataWorks resource groups.**
+//
+// 3. **Before you use this operation, ensure you have created the Service-Linked Role AliyunServiceRoleForDataWorks.**
 //
 // @param request - DeleteResourceGroupRequest
 //
@@ -6014,7 +6282,15 @@ func (client *Client) DeleteRouteWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// 删除安全管控策略
+// Deletes a security strategy by its ID. To call this operation, you must have DataWorks tenant administrator and security administrator permissions.
+//
+// Description:
+//
+// ## Usage notes
+//
+// - You can delete a security strategy by providing its ID.
+//
+// - You cannot delete a system strategy.
 //
 // @param request - DeleteSecurityStrategyRequest
 //
@@ -6058,7 +6334,19 @@ func (client *Client) DeleteSecurityStrategyWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除 Skill
+// # Delete Skill
+//
+// Description:
+//
+// ## Request Description
+//
+// This API is used to delete a Skill with the specified name from DataWorks. The exact name of the Skill to delete must be provided when invoking this API.
+//
+// ### Notes
+//
+// - Ensure that you have sufficient permissions to perform the delete operation.
+//
+// - The delete operation is irreversible. Use it with caution.
 //
 // @param request - DeleteSkillRequest
 //
@@ -6216,7 +6504,9 @@ func (client *Client) DeleteWorkflowWithContext(ctx context.Context, request *De
 //
 // Description:
 //
-// >  A workflow that is deployed cannot be deleted. If you want to delete such a workflow, you must first undeploy the workflow.
+//	Notice:
+//
+// After a workflow definition is published, it cannot be deleted. You must unpublish the workflow definition before you can delete it.
 //
 // @param request - DeleteWorkflowDefinitionRequest
 //
@@ -6262,6 +6552,10 @@ func (client *Client) DeleteWorkflowDefinitionWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Publish a file to the production environment.
+//
 // @param request - DeployFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6322,7 +6616,11 @@ func (client *Client) DeployFileWithContext(ctx context.Context, request *Deploy
 //
 // Summary:
 //
-// Disassociates monitoring rules from a data quality monitoring task.
+// Removes the association between a data quality rule and a data quality monitoring task.
+//
+// Description:
+//
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param tmpReq - DetachDataQualityRulesFromEvaluationTaskRequest
 //
@@ -6380,7 +6678,17 @@ func (client *Client) DetachDataQualityRulesFromEvaluationTaskWithContext(ctx co
 
 // Summary:
 //
-// 停用审批流程定义
+// Disables the specified approval process definition.
+//
+// Description:
+//
+// ## Request
+//
+// - This API disables the specified approval process definition.
+//
+// - A disabled approval process definition remains inactive until it is re-enabled.
+//
+// - You must provide a valid process definition ID as a path parameter.
 //
 // @param request - DisableProcessDefinitionRequest
 //
@@ -6429,6 +6737,12 @@ func (client *Client) DisableProcessDefinitionWithContext(ctx context.Context, r
 // Summary:
 //
 // Disassociates an image from a workspace.
+//
+// Description:
+//
+// 1. This operation requires DataWorks Basic Edition or a later version.
+//
+// 2. **Before calling this operation, ensure you have created the AliyunServiceRoleForDataWorks service-linked role.**
 //
 // @param request - DissociateProjectFromImageRequest
 //
@@ -6480,11 +6794,11 @@ func (client *Client) DissociateProjectFromImageWithContext(ctx context.Context,
 //
 // Description:
 //
-// 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+// 1. This operation requires a subscription to DataWorks Basic Edition or a higher edition.
 //
-// 2.  Your account must be assigned one of the following roles of the desired workspace:
+// 2. You must have one of the following roles in the DataWorks workspace:
 //
-//   - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+// - tenant owner, workspace administrator, project owner, or operator
 //
 // @param request - DissociateProjectFromResourceGroupRequest
 //
@@ -6532,7 +6846,13 @@ func (client *Client) DissociateProjectFromResourceGroupWithContext(ctx context.
 
 // Summary:
 //
-// 启用审批流程定义
+// Enables a process definition with the specified ID.
+//
+// Description:
+//
+// ## Request
+//
+// This API enables an existing process definition. You must provide the process definition ID as a path parameter.
 //
 // @param request - EnableProcessDefinitionRequest
 //
@@ -6644,9 +6964,9 @@ func (client *Client) EstablishRelationTableToBusinessWithContext(ctx context.Co
 //
 // Description:
 //
-// >  The stages in a process are sequential. For more information, see the GetDeployment operation. Skipping or repeating a stage is not allowed.
+// > The stages in a process are sequential. For more information, see the GetDeployment operation. Skipping or repeating a stage is not allowed.
 //
-// >  The execution of a stage is asynchronous. The response of this operation indicates only whether a stage is triggered but does not indicate whether the execution of the stage is successful. You can call the GetDeployment operation to check whether the execution is successful.
+// > The execution of a stage is asynchronous. The response of this operation indicates only whether a stage is triggered but does not indicate whether the execution of the stage is successful. You can call the GetDeployment operation to check whether the execution is successful.
 //
 // @param request - ExecPipelineRunStageRequest
 //
@@ -6774,7 +7094,13 @@ func (client *Client) ExecuteAdhocWorkflowInstanceWithContext(ctx context.Contex
 
 // Summary:
 //
-// 匹配最佳安全管控策略
+// Find the security policy that best matches the given conditions.
+//
+// Description:
+//
+// ## Request Description
+//
+// This API is used to find the most suitable security policy based on the provided control module, sub-module, and workspace ID. If a workspace ID is provided, the policy at the specified workspace level is matched first; otherwise, the tenant-level policy is returned. Note that system policies cannot be deleted or modified.
 //
 // @param request - FindBestMatchSecurityStrategyRequest
 //
@@ -6826,7 +7152,13 @@ func (client *Client) FindBestMatchSecurityStrategyWithContext(ctx context.Conte
 
 // Summary:
 //
-// 读取 Agent 详情
+// Retrieves agent details by name.
+//
+// Description:
+//
+// ## Request
+//
+// This API uses an agent\\"s name, provided as a parameter, to retrieve its detailed configuration, including the model configuration, system prompt, and tool list.
 //
 // @param request - GetAgentRequest
 //
@@ -6870,7 +7202,15 @@ func (client *Client) GetAgentWithContext(ctx context.Context, request *GetAgent
 
 // Summary:
 //
-// Obtains the metadata and body content of an Artifact based on the session ID and file path.
+// Retrieves the metadata and content of an artifact based on a session ID and artifact path.
+//
+// Description:
+//
+// ## Description
+//
+// - This operation retrieves the metadata and content of a single artifact based on `SessionId` and `ArtifactPath`.
+//
+// - `SessionId` and `ArtifactPath` are required.
 //
 // @param tmpReq - GetAgentSessionArtifactMetaRequest
 //
@@ -6928,7 +7268,13 @@ func (client *Client) GetAgentSessionArtifactMetaWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the cumulative AI token usage of a session aggregated by session ID.
+// Retrieves the cumulative AI token usage for a specified session.
+//
+// Description:
+//
+// ## Description
+//
+// - This operation retrieves usage statistics for AI tokens in a specified session. It provides a breakdown of tokens for prompts, completions, and thoughts, as well as the total token count and the number of cache-hit tokens.
 //
 // @param tmpReq - GetAgentSessionTokenUsageRequest
 //
@@ -7026,7 +7372,19 @@ func (client *Client) GetAlertRuleWithContext(ctx context.Context, request *GetA
 
 // Summary:
 //
-// 查询数据访问权限申请单
+// Retrieves a resource permission request by its process instance ID.
+//
+// Description:
+//
+// ## Request
+//
+// - This API retrieves details for a resource permission request using the specified `ProcessInstanceId`.
+//
+// - A valid `ProcessInstanceId` is required.
+//
+// - The response includes basic request information, status, and a list of requested items.
+//
+// - Each requested item includes detailed resource information, the principal, and the requested operation permissions.
 //
 // @param request - GetApplicationContentsRequest
 //
@@ -7124,6 +7482,10 @@ func (client *Client) GetBusinessWithContext(ctx context.Context, request *GetBu
 //
 // Queries the information about a catalog in Data Map. Only catalogs of the Data Lake Formation (DLF) and StarRocks metadata crawlers are supported.
 //
+// Description:
+//
+// 1. DataWorks Basic Edition or a higher edition is required.
+//
 // @param request - GetCatalogRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7162,13 +7524,13 @@ func (client *Client) GetCatalogWithContext(ctx context.Context, request *GetCat
 
 // Summary:
 //
-// View certificate details.
+// You can view authentication files.
 //
 // Description:
 //
-// 1.  This API operation is available for all DataWorks editions.
+// 1. This feature is available only in DataWorks Basic Edition and later versions.
 //
-// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M.
+// 2. You must have at least one of the following roles in the DataWorks project: Tenant Owner, Space Administrator, Deployment, Developer, Project Owner, or O\\&M.
 //
 // @param request - GetCertificateRequest
 //
@@ -7209,6 +7571,10 @@ func (client *Client) GetCertificateWithContext(ctx context.Context, request *Ge
 // Summary:
 //
 // Queries the information about a specific field of a table in Data Map.
+//
+// Description:
+//
+// 1. DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - GetColumnRequest
 //
@@ -7252,7 +7618,7 @@ func (client *Client) GetColumnWithContext(ctx context.Context, request *GetColu
 //
 // Description:
 //
-// 1.  This API operation is available for all DataWorks editions.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - GetComponentRequest
 //
@@ -7301,6 +7667,14 @@ func (client *Client) GetComponentWithContext(ctx context.Context, request *GetC
 // Summary:
 //
 // Queries the specified computing resource based on the computing resource ID.
+//
+// Description:
+//
+// 1. DataWorks Basic Edition or a more advanced edition is required.
+//
+// 2. You must have at least one of the following roles in the DataWorks workspace:
+//
+// - Tenant Owner, Workspace Administrator, Deploy, Developer, Project Owner, O\\&M
 //
 // @param request - GetComputeResourceRequest
 //
@@ -7352,7 +7726,7 @@ func (client *Client) GetComputeResourceWithContext(ctx context.Context, request
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - GetCreateWorkflowInstancesResultRequest
 //
@@ -7392,7 +7766,7 @@ func (client *Client) GetCreateWorkflowInstancesResultWithContext(ctx context.Co
 
 // Summary:
 //
-// # Obtain custom property definition details
+// Retrieves a custom attribute definition.
 //
 // @param request - GetCustomAttributeRequest
 //
@@ -7436,11 +7810,11 @@ func (client *Client) GetCustomAttributeWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the information about a synchronization task.
+// View data integration tasks.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// This operation requires DataWorks Basic Edition or later.
 //
 // @param request - GetDIJobRequest
 //
@@ -7524,11 +7898,11 @@ func (client *Client) GetDIJobLogWithContext(ctx context.Context, request *GetDI
 
 // Summary:
 //
-// Queries the details of a data quality monitoring and alerting rule by alert rule ID.
+// Retrieves the details of a data quality alert rule by rule ID.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - GetDataQualityAlertRuleRequest
 //
@@ -7574,7 +7948,11 @@ func (client *Client) GetDataQualityAlertRuleWithContext(ctx context.Context, re
 //
 // Summary:
 //
-// Queries the details of a monitor.
+// Query the details of a data quality validation task.
+//
+// Description:
+//
+// Available only with DataWorks Basic Edition or higher.
 //
 // @param request - GetDataQualityEvaluationTaskRequest
 //
@@ -7616,7 +7994,11 @@ func (client *Client) GetDataQualityEvaluationTaskWithContext(ctx context.Contex
 //
 // Summary:
 //
-// Queries the details of a monitor instance.
+// Retrieves the details of a data quality check task instance.
+//
+// Description:
+//
+// DataWorks Basic Edition or a higher edition is required to use this operation.
 //
 // @param request - GetDataQualityEvaluationTaskInstanceRequest
 //
@@ -7658,11 +8040,11 @@ func (client *Client) GetDataQualityEvaluationTaskInstanceWithContext(ctx contex
 //
 // Summary:
 //
-// Queries the information about a data quality monitoring rule.
+// Queries the details of a data quality rule.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or above to use this feature.
 //
 // @param request - GetDataQualityRuleRequest
 //
@@ -7704,11 +8086,11 @@ func (client *Client) GetDataQualityRuleWithContext(ctx context.Context, request
 //
 // Summary:
 //
-// Queries the information about a data quality monitoring rule template.
+// Queries the details of a data quality rule template.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You can call this operation only if you have purchased DataWorks Basic Edition or a more advanced edition.
 //
 // @param request - GetDataQualityRuleTemplateRequest
 //
@@ -7752,7 +8134,7 @@ func (client *Client) GetDataQualityRuleTemplateWithContext(ctx context.Context,
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - GetDataQualityScanRequest
 //
@@ -7800,7 +8182,7 @@ func (client *Client) GetDataQualityScanWithContext(ctx context.Context, request
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - GetDataQualityScanRunRequest
 //
@@ -7848,7 +8230,7 @@ func (client *Client) GetDataQualityScanRunWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - GetDataQualityScanRunLogRequest
 //
@@ -7896,11 +8278,11 @@ func (client *Client) GetDataQualityScanRunLogWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the details of a data quality rule template by ID.
+// Retrieves the details of a data quality rule template by template ID.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - GetDataQualityTemplateRequest
 //
@@ -7944,15 +8326,15 @@ func (client *Client) GetDataQualityTemplateWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries a data source by ID.
+// Retrieves the details of a data source by data source ID.
 //
 // Description:
 //
-// 1.  This API operation is available for all DataWorks editions.
+// 1. This operation is available for all DataWorks editions.
 //
-// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+// 2. To call this operation, you must have one of the following roles in DataWorks:
 //
-//   - Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
+// - Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
 //
 // @param request - GetDataSourceRequest
 //
@@ -7993,6 +8375,10 @@ func (client *Client) GetDataSourceWithContext(ctx context.Context, request *Get
 // Summary:
 //
 // Queries the information about a specific database in Data Map.
+//
+// Description:
+//
+// 1. DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - GetDatabaseRequest
 //
@@ -8172,7 +8558,7 @@ func (client *Client) GetDeploymentPackageWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the information about a file.
+// Retrieves the details of a file.
 //
 // @param request - GetFileRequest
 //
@@ -8228,7 +8614,7 @@ func (client *Client) GetFileWithContext(ctx context.Context, request *GetFileRe
 
 // Summary:
 //
-// Queries the information about a file version.
+// Invoke GetFileVersion to obtain the version details of a file.
 //
 // @param request - GetFileVersionRequest
 //
@@ -8428,7 +8814,13 @@ func (client *Client) GetIDEEventDetailWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Obtains the details of a specified image by image ID.
+// Gets the details of an image by its ID.
+//
+// Description:
+//
+// 1. A subscription to DataWorks Basic Edition or a higher edition is required.
+//
+// 2. **Make sure that you have created the service-linked role AliyunServiceRoleForDataWorks before you call this operation.**
 //
 // @param request - GetImageRequest
 //
@@ -8516,7 +8908,11 @@ func (client *Client) GetJobStatusWithContext(ctx context.Context, request *GetJ
 
 // Summary:
 //
-// Queries the information about a lineage in Data Map.
+// Retrieves details for a specific lineage relationship in the data map.
+//
+// Description:
+//
+// 1. This operation is available only for DataWorks Standard Edition or later.
 //
 // @param request - GetLineageRelationshipRequest
 //
@@ -8556,7 +8952,19 @@ func (client *Client) GetLineageRelationshipWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 读取 MCP Server 详情
+// Returns the details of an MCP Server.
+//
+// Description:
+//
+// ## Description
+//
+// This API returns the detailed configuration of a specific MCP Server by name. The response includes the creator ID, modifier ID, service address, and transport protocol. You must provide the exact name of the MCP Server in the request.
+//
+// ### Notes
+//
+// - Ensure you have the required permissions to call this API.
+//
+// - The MCP Server name is case-sensitive.
 //
 // @param request - GetMcpServerRequest
 //
@@ -8602,6 +9010,10 @@ func (client *Client) GetMcpServerWithContext(ctx context.Context, request *GetM
 //
 // Queries the information about a collection in Data Map. Collections include categories and data albums.
 //
+// Description:
+//
+// 1. DataWorks Professional Edition or a higher edition is required.
+//
 // @param request - GetMetaCollectionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8640,7 +9052,7 @@ func (client *Client) GetMetaCollectionWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Obtains the details of a metadata entity. Currently, only pure custom types are supported.
+// Retrieves the details of a custom entity.
 //
 // @param request - GetMetaEntityRequest
 //
@@ -8684,7 +9096,7 @@ func (client *Client) GetMetaEntityWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// # Queries the details of a custom entity definition
+// Retrieves the details of a custom entity definition.
 //
 // @param request - GetMetaEntityDefRequest
 //
@@ -8812,7 +9224,11 @@ func (client *Client) GetNodeWithContext(ctx context.Context, request *GetNodeRe
 
 // Summary:
 //
-// Obtains the details of a parameter by parameter ID.
+// Gets the details of a parameter by its ID.
+//
+// Description:
+//
+// This operation is available only in DataWorks Professional Edition or later.
 //
 // @param request - GetParameterRequest
 //
@@ -8860,9 +9276,9 @@ func (client *Client) GetParameterWithContext(ctx context.Context, request *GetP
 //
 // Description:
 //
-// 1.  This API operation is available for all DataWorks editions.
+// 1. DataWorks Basic Edition or a higher edition is required.
 //
-// 2.  This operation supports MaxCompute and HMS (EMR cluster) tables only.
+// 2. Only MaxCompute and HMS (EMR cluster) table types are supported.
 //
 // @param request - GetPartitionRequest
 //
@@ -8902,7 +9318,13 @@ func (client *Client) GetPartitionWithContext(ctx context.Context, request *GetP
 
 // Summary:
 //
-// Queries the information about a process for deploying or undeploying an entity.
+// Gets the details of a Deployment Process.
+//
+// Description:
+//
+//	Notice:
+//
+// For earlier SDK versions that do not include this API, use the GetDeployment API with the same parameters described in this document.
 //
 // @param request - GetPipelineRunRequest
 //
@@ -8942,7 +9364,19 @@ func (client *Client) GetPipelineRunWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 查询审批流程定义详情
+// Retrieves the approval policy for a given process definition ID.
+//
+// Description:
+//
+// ## Request
+//
+// - This API retrieves the details of a specific approval process definition using the `ID` parameter.
+//
+// - The `ID` parameter is required and must be a valid process definition ID.
+//
+// - The response includes the basic properties of the approval process definition, rule conditions, notification service configurations, and approval nodes.
+//
+// - A successful request returns the complete process definition object. A failed request returns an error code and message for troubleshooting.
 //
 // @param request - GetProcessDefinitionRequest
 //
@@ -8986,7 +9420,13 @@ func (client *Client) GetProcessDefinitionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询审批流程实例详情
+// Retrieves details for a specified approval process instance, including its approval nodes and task list.
+//
+// Description:
+//
+// ## Request
+//
+// This API is used to monitor and manage the status of an approval process. By providing the approval process instance ID, you can query for related information, such as the approval process definition, current approval nodes, and the tasks on each node.
 //
 // @param request - GetProcessInstanceRequest
 //
@@ -9074,11 +9514,11 @@ func (client *Client) GetProjectWithContext(ctx context.Context, request *GetPro
 
 // Summary:
 //
-// Queries the details about a member in a workspace.
+// Retrieves the details of a specific member in a Workspace.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// This operation is available only in DataWorks Basic Edition and later.
 //
 // @param request - GetProjectMemberRequest
 //
@@ -9126,11 +9566,11 @@ func (client *Client) GetProjectMemberWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the information about a role in a DataWorks workspace.
+// Queries the details of a workspace role.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You can call this operation only if you have purchased DataWorks Basic Edition or a later edition.
 //
 // @param request - GetProjectRoleRequest
 //
@@ -9178,7 +9618,7 @@ func (client *Client) GetProjectRoleWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Query the result of asynchronous workflow instance reruns.
+// # Query the result of an asynchronous rerun workflow instance
 //
 // @param request - GetRerunWorkflowInstancesResultRequest
 //
@@ -9266,7 +9706,7 @@ func (client *Client) GetResourceWithContext(ctx context.Context, request *GetRe
 //
 // Description:
 //
-// You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+// DataWorks Basic Edition or a more advanced edition is required to use this feature.
 //
 // @param request - GetResourceGroupRequest
 //
@@ -9350,13 +9790,13 @@ func (client *Client) GetRouteWithContext(ctx context.Context, request *GetRoute
 
 // Summary:
 //
-// Queries the information about a schema in Data Map. You can call this API operation to query the information only about MaxCompute and Hologres schemas.
+// Retrieves the schema details of a specified table in Data Map. Only MaxCompute and Hologres schemas are supported.
 //
 // Description:
 //
-// 1.  This API operation is available for all DataWorks editions.
+// 1. DataWorks Basic Edition or a higher edition is required.
 //
-// 2.  You can call this API operation to query the information only about MaxCompute and Hologres schemas.
+// 2. Only MaxCompute and Hologres types are supported.
 //
 // @param request - GetSchemaRequest
 //
@@ -9396,7 +9836,19 @@ func (client *Client) GetSchemaWithContext(ctx context.Context, request *GetSche
 
 // Summary:
 //
-// 查询安全管控策略详情
+// Retrieves the details of a security policy by its ID. This operation requires both DataWorks tenant administrator and security administrator permissions.
+//
+// Description:
+//
+// ## Request
+//
+// - This API retrieves the complete configuration information for a security policy by its ID.
+//
+// - The API returns an error message if the provided `Id` is invalid or does not exist.
+//
+// - The response includes basic policy information, such as its name and description, and policy details, such as control items and their settings.
+//
+// - Note: Some fields in a system default policy cannot be modified or deleted.
 //
 // @param request - GetSecurityStrategyRequest
 //
@@ -9440,7 +9892,17 @@ func (client *Client) GetSecurityStrategyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 读取 Skill 详情
+// Retrieves the details of a specified Skill by name, including the body of the SKILL.md file and the bundle\\"s download link.
+//
+// Description:
+//
+// ## Overview
+//
+// - **request parameters**: The name of the target Skill.
+//
+// - **response parameters**: The details of the Skill, including its name, description, creator ID, modifier ID, visibility level, visibility scope, the body of the SKILL.md file, a temporary download link for bundle.zip (which requires no authentication and will expire), the creation time, and the last modified time.
+//
+// - **Note**: The `BundleUrl` is a temporary download link. Once the link expires, you must call this operation again to get a new one.
 //
 // @param request - GetSkillRequest
 //
@@ -9485,6 +9947,10 @@ func (client *Client) GetSkillWithContext(ctx context.Context, request *GetSkill
 // Summary:
 //
 // Queries the information about a specific table in Data Map.
+//
+// Description:
+//
+// 1. DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - GetTableRequest
 //
@@ -9568,7 +10034,7 @@ func (client *Client) GetTaskWithContext(ctx context.Context, request *GetTaskRe
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - GetTaskInstanceRequest
 //
@@ -9740,7 +10206,7 @@ func (client *Client) GetWorkflowDefinitionWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - GetWorkflowInstanceRequest
 //
@@ -9844,6 +10310,12 @@ func (client *Client) GrantMemberProjectRolesWithContext(ctx context.Context, tm
 //
 // Imports a certificate file.
 //
+// Description:
+//
+// 1. This feature requires DataWorks Basic Edition or a later version.
+//
+// 2. You must be assigned one of the following roles in the DataWorks project: Tenant Owner, Space Administrator, Project Owner, or O\\&M.
+//
 // @param request - ImportCertificateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9902,11 +10374,11 @@ func (client *Client) ImportCertificateWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// >
+//	Notice:
 //
-//   - You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
+// - This API does not support importing multiple workflow definitions. If you define more than one workflow definition in the FlowSpec, all workflow definitions except the first one are ignored.
 //
-//   - ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
+// - This is an asynchronous API. Calling this API returns an asynchronous task object. You must call the GetJobStatus API to query the execution status of the task.
 //
 // @param request - ImportWorkflowDefinitionRequest
 //
@@ -9954,7 +10426,17 @@ func (client *Client) ImportWorkflowDefinitionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the Artifact files that are produced by a specified session.
+// Retrieves a list of artifacts from a specified session.
+//
+// Description:
+//
+// ## Request
+//
+// - This operation retrieves all artifacts from a specific session. You can use the `Params.RequestId` parameter to filter for artifacts from a specific request.
+//
+// - The `NextToken` parameter is a continuation token used to retrieve the next page of results. Do not specify this parameter for the first request.
+//
+// - By default, this operation returns up to 50 artifacts per page. You can use the `MaxResults` parameter to specify a different limit.
 //
 // @param tmpReq - ListAgentSessionArtifactsRequest
 //
@@ -10012,7 +10494,21 @@ func (client *Client) ListAgentSessionArtifactsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Loads the conversation history list of an Agent Session.
+// Retrieves the conversation history for the agent session.
+//
+// Description:
+//
+// ## Request
+//
+// - Specify at least one of `agentName` or `sessionSourceList`.
+//
+// - You can use the `tagList`, `sessionId`, and `sessionTitle` parameters for combined filtering.
+//
+// - The response follows the Alibaba Cloud OpenAPI pagination specification and includes the `totalCount`, `maxResults`, `nextToken`, and `sessionList` fields.
+//
+// - If you provide an invalid string for `nextToken`, its value defaults to `1`.
+//
+// - By default, this operation returns 50 records per page. You can use the `maxResults` parameter to adjust this number.
 //
 // @param tmpReq - ListAgentSessionsRequest
 //
@@ -10070,7 +10566,15 @@ func (client *Client) ListAgentSessionsWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Queries the list of agents available for the current tenant. Supports filtering by name and pagination.
+// Lists agents for the current tenant and supports filtering by name and pagination.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation lists all available agents for the current tenant.
+//
+// - You can filter the results by specifying an exact match for the `agentName` parameter.
 //
 // @param tmpReq - ListAgentsRequest
 //
@@ -10268,6 +10772,10 @@ func (client *Client) ListBusinessWithContext(ctx context.Context, request *List
 //
 // Queries a list of catalogs in Data Map. Only catalogs of the Data Lake Formation (DLF) and StarRocks metadata crawler types are supported. For the DLF metadata crawler type, all supported data catalogs are returned. For the StarRocks metadata crawler type, data catalogs in a specific instance are returned.
 //
+// Description:
+//
+// 1. DataWorks Basic Edition or a higher edition is required.
+//
 // @param tmpReq - ListCatalogsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10312,13 +10820,13 @@ func (client *Client) ListCatalogsWithContext(ctx context.Context, tmpReq *ListC
 
 // Summary:
 //
-// Queries a list of certificate files.
+// Retrieves a list of certificate files.
 //
 // Description:
 //
-// 1.  This API operation is available for all DataWorks editions.
+// 1. This API operation is available for all DataWorks editions.
 //
-// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator.
+// 2. You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator.
 //
 // @param request - ListCertificatesRequest
 //
@@ -10358,7 +10866,11 @@ func (client *Client) ListCertificatesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries a list of fields in a data table in Data Map.
+// Queries the column list of a specified table in Data Map.
+//
+// Description:
+//
+// 1. DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - ListColumnsRequest
 //
@@ -10402,7 +10914,7 @@ func (client *Client) ListColumnsWithContext(ctx context.Context, request *ListC
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - ListComponentsRequest
 //
@@ -10459,6 +10971,14 @@ func (client *Client) ListComponentsWithContext(ctx context.Context, request *Li
 // Summary:
 //
 // Queries the list of computing resources that meet the specified business information.
+//
+// Description:
+//
+// 1. DataWorks Basic Edition or a more advanced edition is required.
+//
+// 2. You must have at least one of the following roles in the DataWorks workspace:
+//
+// 3. Tenant Owner, Workspace Administrator, Deploy, Developer, Visitor, Project Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, Development Platform Administrator, Data Governance Administrator
 //
 // @param tmpReq - ListComputeResourcesRequest
 //
@@ -10536,7 +11056,17 @@ func (client *Client) ListComputeResourcesWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 分页列出 自定义 Agent
+// Retrieves a paginated list of custom agents.
+//
+// Description:
+//
+// ## Request
+//
+// - **Search keyword**: Use the `Q` parameter to perform a fuzzy search by agent name.
+//
+// - **Visibility level filtering**: Use the `Visibility` parameter to filter results by visibility level, such as `TENANT`, `PROJECT`, or `USER`.
+//
+// - **Paging information**: Use the `MaxResults` and `NextToken` parameters to implement paginated queries. `NextToken` retrieves the next page of results.
 //
 // @param tmpReq - ListCustomAgentsRequest
 //
@@ -10600,7 +11130,7 @@ func (client *Client) ListCustomAgentsWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// # Querying a Custom Attribute Definition List
+// Retrieves a list of custom attribute definitions.
 //
 // @param request - ListCustomAttributesRequest
 //
@@ -10846,11 +11376,11 @@ func (client *Client) ListDIJobRunDetailsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries a list of new-version synchronization tasks in Data Integration. A new-version synchronization task can be a real-time synchronization task used to synchronize full or incremental data in a database, a batch synchronization task used to synchronize full or incremental data in a database, or a real-time synchronization task used to synchronize incremental data in a single table.
+// Lists Data Integration jobs.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// This operation requires DataWorks Basic Edition or a later edition.
 //
 // @param request - ListDIJobsRequest
 //
@@ -10992,7 +11522,7 @@ func (client *Client) ListDataAssetsWithContext(ctx context.Context, tmpReq *Lis
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - ListDataQualityAlertRulesRequest
 //
@@ -11054,11 +11584,11 @@ func (client *Client) ListDataQualityAlertRulesWithContext(ctx context.Context, 
 //
 // Summary:
 //
-// Queries a list of instances generated by a data quality monitoring task by page.
+// Performs a paginated query of the quality monitoring task instance list.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or above to use this feature.
 //
 // @param request - ListDataQualityEvaluationTaskInstancesRequest
 //
@@ -11100,11 +11630,11 @@ func (client *Client) ListDataQualityEvaluationTaskInstancesWithContext(ctx cont
 //
 // Summary:
 //
-// Queries a list of data quality monitoring tasks by page.
+// Lists quality monitoring nodes by paging query.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// 需要购买DataWorks基础版及以上版本才能使用
 //
 // @param request - ListDataQualityEvaluationTasksRequest
 //
@@ -11146,11 +11676,11 @@ func (client *Client) ListDataQualityEvaluationTasksWithContext(ctx context.Cont
 //
 // Summary:
 //
-// 查询数据质量规则校验结果列表
+// Queries a list of data quality results by using paging.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// 需要购买DataWorks基础版及以上版本才能使用
 //
 // @param request - ListDataQualityResultsRequest
 //
@@ -11192,7 +11722,11 @@ func (client *Client) ListDataQualityResultsWithContext(ctx context.Context, req
 //
 // Summary:
 //
-// Queries a list of data quality monitoring rule templates.
+// Queries a list of data quality rule templates.
+//
+// Description:
+//
+// You must purchase DataWorks Basic Edition or higher to use this feature.
 //
 // @param request - ListDataQualityRuleTemplatesRequest
 //
@@ -11234,11 +11768,11 @@ func (client *Client) ListDataQualityRuleTemplatesWithContext(ctx context.Contex
 //
 // Summary:
 //
-// Queries a list of data quality monitoring rules by page.
+// Paginated query of data quality monitoring rules.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// Requires DataWorks Basic Edition or above.
 //
 // @param request - ListDataQualityRulesRequest
 //
@@ -11278,11 +11812,11 @@ func (client *Client) ListDataQualityRulesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the execution records of data quality scans in a project.
+// Queries the run history of data quality scans in a specified project.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// This feature requires DataWorks basic edition or higher.
 //
 // @param tmpReq - ListDataQualityScanRunsRequest
 //
@@ -11368,7 +11902,7 @@ func (client *Client) ListDataQualityScanRunsWithContext(ctx context.Context, tm
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - ListDataQualityScansRequest
 //
@@ -11436,7 +11970,7 @@ func (client *Client) ListDataQualityScansWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - ListDataQualityTemplatesRequest
 //
@@ -11496,15 +12030,15 @@ func (client *Client) ListDataQualityTemplatesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries a list of sharing rules of a data source.
+// Retrieves a list of sharing rules for a data source.
 //
 // Description:
 //
-// 1.  This API operation is available for all DataWorks editions.
+// 1. This operation is available for all DataWorks editions.
 //
-// 2.  If you want to query the sharing rules of a data source that is associated with Workspace A, you must have the permissions to share the data source in Workspace A. You can call this operation only if you are assigned one of the following roles in DataWorks:
+// 2. To query the sharing rules of a data source associated with a workspace, you must have the data source sharing permissions in that workspace. You must have one of the following roles in DataWorks:
 //
-//   - Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
+// - Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
 //
 // @param request - ListDataSourceSharedRulesRequest
 //
@@ -11544,15 +12078,15 @@ func (client *Client) ListDataSourceSharedRulesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries a list of data sources based on the business information of data sources.
+// Retrieves a list of data sources that match the specified filter conditions.
 //
 // Description:
 //
-// 1.  This API operation is available for all DataWorks editions.
+// 1. This operation is available for all DataWorks editions.
 //
-// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+// 2. To call this operation, you must have one of the following roles in DataWorks:
 //
-//   - Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
+// - Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
 //
 // @param tmpReq - ListDataSourcesRequest
 //
@@ -11599,6 +12133,12 @@ func (client *Client) ListDataSourcesWithContext(ctx context.Context, tmpReq *Li
 // Summary:
 //
 // Queries a list of databases in an instance, cluster, or data catalog in Data Map. For DLF or StarRocks data sources, you can call this API operation to query databases in a data catalog. For StarRocks data sources, you can call this API operation to query databases in internal catalogs. For other types of data sources, you can call this API operation to query databases in an instance or cluster.
+//
+// Description:
+//
+// 1. DataWorks Basic Edition or a higher edition is required.
+//
+// 2. For the StarRocks type, only the Internal catalog is supported.
 //
 // @param request - ListDatabasesRequest
 //
@@ -12052,6 +12592,10 @@ func (client *Client) ListDownstreamTasksWithContext(ctx context.Context, reques
 //
 // Queries a list of entities in a collection in Data Map. Collections include categories and data albums. Entities can only be tables.
 //
+// Description:
+//
+// 1. DataWorks Professional Edition or a higher edition is required.
+//
 // @param request - ListEntitiesInMetaCollectionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12354,7 +12898,13 @@ func (client *Client) ListFunctionsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries the workspaces associated with an image.
+// Lists the workspaces associated with an image.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or higher to call this operation.
+//
+// 2. **Before you call this operation, ensure that the AliyunServiceRoleForDataWorks service-linked role is created.**
 //
 // @param request - ListImageAssociatedProjectsRequest
 //
@@ -12398,7 +12948,13 @@ func (client *Client) ListImageAssociatedProjectsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the details of a specified image version.
+// Gets the details of a specified image version.
+//
+// Description:
+//
+// 1. To use this API, you must purchase DataWorks Basic Edition or a later edition.
+//
+// 2. **Ensure you create the service-linked role AliyunServiceRoleForDataWorks before you call this API.**
 //
 // @param request - ListImageVersionsRequest
 //
@@ -12450,7 +13006,13 @@ func (client *Client) ListImageVersionsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries a list of images.
+// Retrieves a list of images.
+//
+// Description:
+//
+// 1. You must have DataWorks Basic Edition or a later version to use this API.
+//
+// 2. **Before you use this API, make sure that the service-linked role AliyunServiceRoleForDataWorks is created.**
 //
 // @param tmpReq - ListImagesRequest
 //
@@ -12568,7 +13130,11 @@ func (client *Client) ListImagesWithContext(ctx context.Context, tmpReq *ListIma
 
 // Summary:
 //
-// Queries the lineage between two entities, such as tables, fields, and Object Storage Service (OSS) files, in Data Map.
+// Queries the data map for data lineage relationships between specified entities, such as tables, columns, and OSS objects.
+//
+// Description:
+//
+// 1. This operation is available in DataWorks Standard Edition and later versions.
 //
 // @param request - ListLineageRelationshipsRequest
 //
@@ -12608,7 +13174,13 @@ func (client *Client) ListLineageRelationshipsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries a list of ancestor and descendant entities of an entity in Data Map. You can specify whether to return the lineage between the entities.
+// Queries the upstream and downstream entities for a specified entity in Data Map. You can optionally include detailed lineage relationship information.
+//
+// Description:
+//
+// 1. To use this API, you must purchase DataWorks Standard Edition or a later edition.
+//
+// 2. Use this API to query the upstream and downstream entities of a specific entity and their lineage relationships.
 //
 // @param request - ListLineagesRequest
 //
@@ -12648,7 +13220,21 @@ func (client *Client) ListLineagesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 分页列出 MCP Server
+// Retrieves a paginated list of MCP servers.
+//
+// Description:
+//
+// ## Request
+//
+// This operation retrieves a paginated list of all MCP Servers within your account. You can filter the list by search keyword and visibility level, and control pagination by specifying the maximum number of results and a next page token.
+//
+// - **Q**: Optional. The search keyword for a fuzzy search on MCP Server names.
+//
+// - **Visibility**: Optional. The visibility level for filtering the results.
+//
+// - **MaxResults**: Optional. The maximum number of results to return per page. By default, no limit is applied.
+//
+// - **NextToken**: Optional. The next page token from a previous response. Use this parameter to retrieve the next page of results.
 //
 // @param tmpReq - ListMcpServersRequest
 //
@@ -12714,6 +13300,10 @@ func (client *Client) ListMcpServersWithContext(ctx context.Context, tmpReq *Lis
 //
 // Queries a list of collections in Data Map. Collections include categories and data albums.
 //
+// Description:
+//
+// 1. DataWorks Professional Edition or a higher edition is required.
+//
 // @param request - ListMetaCollectionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12752,7 +13342,7 @@ func (client *Client) ListMetaCollectionsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the list of metadata entities. Currently, only custom types are supported.
+// Lists metadata entities. Support is currently limited to custom types.
 //
 // @param tmpReq - ListMetaEntitiesRequest
 //
@@ -12838,7 +13428,7 @@ func (client *Client) ListMetaEntitiesWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// Queries a list of custom entity definitions (including custom entity types and extended table types).
+// Retrieves a list of custom entity definitions, including custom entity types and extended table types.
 //
 // @param request - ListMetaEntityDefsRequest
 //
@@ -12906,7 +13496,23 @@ func (client *Client) ListMetaEntityDefsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询我发起的权限申请单
+// Lists all resource access requests submitted by the current user.
+//
+// Description:
+//
+// ## Request
+//
+// - This operation supports pagination using the `NextToken` and `PageSize` parameters.
+//
+// - The required `DefSchema` parameter specifies the resource type.
+//
+// - Specify multiple resource types in the `ResourceType` parameter to filter applications more precisely.
+//
+// - Use the `StartTime` and `EndTime` parameters to limit the query to a specific time range.
+//
+// - Use the `Statuses` parameter to filter applications by status, such as pending approval or approved.
+//
+// - To filter by a specific resource or grantee, use the `Resource` and `Grantee` parameters.
 //
 // @param tmpReq - ListMyApplicationsRequest
 //
@@ -12992,7 +13598,21 @@ func (client *Client) ListMyApplicationsWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 查询与我相关的权限申请单
+// Lists permission requests where the current user is an approver or stakeholder.
+//
+// Description:
+//
+// ## Request
+//
+// - This API retrieves all pending and approved permission requests where the current user is an approver.
+//
+// - The `Statuses` parameter filters requests by status.
+//
+// - The `NextToken` parameter enables pagination. For the first request, omit this parameter or set it to `null`. For subsequent requests, pass the `NextToken` value returned in the previous response.
+//
+// - The `PageSize` parameter defaults to 10, with a maximum value of 200.
+//
+// - `DefSchema` and `ResourceType` are required parameters. Other parameters are optional.
 //
 // @param tmpReq - ListMyRelatedApprovalsRequest
 //
@@ -13094,7 +13714,7 @@ func (client *Client) ListMyRelatedApprovalsWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Queries a list of network resources of a serverless resource group.
+// Retrieves a list of network resources for a serverless resource group.
 //
 // Description:
 //
@@ -13138,7 +13758,7 @@ func (client *Client) ListNetworksWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries a list of descendant nodes of a node in DataStudio.
+// Gets a paginated list of dependent nodes for a specified data development node.
 //
 // @param request - ListNodeDependenciesRequest
 //
@@ -13178,7 +13798,7 @@ func (client *Client) ListNodeDependenciesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries a list of nodes in DataStudio. You can also specify filter conditions to query specific nodes.
+// Retrieves a paginated list of data development nodes that can be filtered by specified criteria.
 //
 // @param request - ListNodesRequest
 //
@@ -13218,7 +13838,11 @@ func (client *Client) ListNodesWithContext(ctx context.Context, request *ListNod
 
 // Summary:
 //
-// Queries the list of parameter versions.
+// Lists parameter versions.
+//
+// Description:
+//
+// This feature is available in DataWorks Professional Edition and higher editions.
 //
 // @param request - ListParameterVersionsRequest
 //
@@ -13274,7 +13898,11 @@ func (client *Client) ListParameterVersionsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries a list of parameters.
+// Query parameters.
+//
+// Description:
+//
+// This feature is available in DataWorks Professional Edition or higher.
 //
 // @param tmpReq - ListParametersRequest
 //
@@ -13362,6 +13990,12 @@ func (client *Client) ListParametersWithContext(ctx context.Context, tmpReq *Lis
 //
 // Queries a list of partitions in a table in Data Map. Only tables of the MaxCompute and E-MapReduce (EMR)-type Hive Metastore Service (HMS) metadata crawlers are supported.
 //
+// Description:
+//
+// 1. DataWorks Basic Edition or a higher edition is required.
+//
+// 2. Only maxcompute and hms (EMR cluster) table types are supported.
+//
 // @param request - ListPartitionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13400,7 +14034,45 @@ func (client *Client) ListPartitionsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 查询待我审批的权限申请单
+// Retrieves pending permission requests awaiting approval by the current user.
+//
+// Description:
+//
+// ## Request
+//
+// This API queries all pending permission requests that the current user can approve. You can filter the results by criteria such as resource type, time range, and approval status.
+//
+// - **ResourceType**: The resource type, such as a table. You can specify one or more values.
+//
+// - **Resource**: Search criteria for a resource, such as its project, database, or table name.
+//
+// - **StartTime and EndTime**: The time range when the permission requests were submitted.
+//
+// - **Statuses**: Filters the results by approval status, for example, to retrieve only requests that are pending approval.
+//
+// - **Grantee**: Filters the results by the grantee.
+//
+// - **AccessTypes**: Filters the results by the access type, such as `Read` or `Update`.
+//
+// - **PageSize and NextToken**: Enables pagination. `PageSize` specifies the number of results to return for each request, and `NextToken` is the cursor used to retrieve the next page of results.
+//
+// Notes:
+//
+// - If no filters are specified, the API returns all matching records.
+//
+// - For the first request, you can leave the `NextToken` parameter empty or omit it. To retrieve subsequent pages, you must use the `NextToken` value returned in the previous response.
+//
+// - The default value of `PageSize` is 10, and the maximum value is 200. If you specify a value greater than the maximum, the maximum value is used.
+//
+// - If no more data is available, the `HasMore` field is `false`, and `NextToken` is omitted.
+//
+// ## Response
+//
+// A successful call returns paginated results. Each permission request includes details such as the submission time, resource description, grantee, and requested permissions. The response also contains the approval process status and other relevant metadata.
+//
+// - **Data**: The paginated result set, containing the page size (`PageSize`), cursor (`NextToken`), and a flag indicating if more data is available (`HasMore`).
+//
+// - **ApplicationQueryResponse**: The details of each permission request, including the justification, submission time, status, and a detailed list of requested items.
 //
 // @param tmpReq - ListPendingApprovalsRequest
 //
@@ -13534,7 +14206,13 @@ func (client *Client) ListPipelineRunItemsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries a list of processes that are used to deploy or undeploy entities in DataStudio. You can also specify filter conditions to query specific processes.
+// Retrieve a paginated list of deployment processes. You can also filter this list based on specific criteria.
+//
+// Description:
+//
+//	Notice:
+//
+// Earlier SDK versions may not include this interface. If so, use the ListDeployments interface. It accepts the same parameters.
 //
 // @param request - ListPipelineRunsRequest
 //
@@ -13574,7 +14252,21 @@ func (client *Client) ListPipelineRunsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询审批流程定义列表
+// Queries process definitions of a specified type.
+//
+// Description:
+//
+// ## Description
+//
+// - Queries process definitions of a specified policy type.
+//
+// - This operation supports paginated queries. You can use the`PageSize` and`PageNumber` parameters to control the page size and page number.
+//
+// - You can also use the`NextToken` and`MaxResults` parameters to page through large result sets.
+//
+// - The response includes the total count, page size, current page number, and a list of process definitions.
+//
+// - Each process definition includes key attributes, such as its ID, enabled status, and priority.
 //
 // @param request - ListProcessDefinitionsRequest
 //
@@ -13618,11 +14310,11 @@ func (client *Client) ListProcessDefinitionsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries details about members in a workspace.
+// Gets a paginated list of workspace member details.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// This feature is available in DataWorks Basic Edition and higher.
 //
 // @param tmpReq - ListProjectMembersRequest
 //
@@ -13692,11 +14384,11 @@ func (client *Client) ListProjectMembersWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Queries the information about roles in a DataWorks workspace by page.
+// Returns a paginated list of roles in a workspace.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// This feature is available in DataWorks Basic Edition and higher.
 //
 // @param tmpReq - ListProjectRolesRequest
 //
@@ -13864,13 +14556,15 @@ func (client *Client) ListProjectsWithContext(ctx context.Context, tmpReq *ListP
 
 // Summary:
 //
-// Gets the list of workspaces bound to a resource group.
+// # Query the list of workspaces with which a resource group is associated
 //
 // Description:
 //
-// 1.  This API operation is available for all DataWorks editions.
+// 1. DataWorks Basic Edition or a more advanced edition is required to use this feature.
 //
-// 2.  **Make sure that the AliyunServiceRoleForDataWorks service-linked role is created before you call this operation.
+// 2. **Make sure that the service-linked role AliyunServiceRoleForDataWorks has been created before you call this operation.**
+//
+// 3. This operation returns only the workspaces that the current caller has access to. Unauthorized workspaces are not included in the response.
 //
 // @param request - ListResourceGroupAssociateProjectsRequest
 //
@@ -13915,6 +14609,14 @@ func (client *Client) ListResourceGroupAssociateProjectsWithContext(ctx context.
 // Summary:
 //
 // Queries the metric data of a resource group.
+//
+// Description:
+//
+// 1. DataWorks Basic Edition or a more advanced edition is required to use this feature.
+//
+// 2. **Make sure that the service-linked role AliyunServiceRoleForDataWorks has been created before you call this operation.**
+//
+// 3. This operation applies only to serverless resource groups.
 //
 // @param request - ListResourceGroupMetricDataRequest
 //
@@ -13982,7 +14684,13 @@ func (client *Client) ListResourceGroupMetricDataWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries a list of resource groups.
+// Retrieves a list of resource groups.
+//
+// Description:
+//
+// 1. This operation requires DataWorks Basic Edition or higher.
+//
+// 2. **Before you call this operation, make sure that you have created the service-linked role AliyunServiceRoleForDataWorks.**
 //
 // @param tmpReq - ListResourceGroupsRequest
 //
@@ -14076,7 +14784,7 @@ func (client *Client) ListResourcesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries a list of routes of a network resource.
+// Retrieves a list of routes for a network resource.
 //
 // Description:
 //
@@ -14120,7 +14828,11 @@ func (client *Client) ListRoutesWithContext(ctx context.Context, request *ListRo
 
 // Summary:
 //
-// Queries a list of schemas in a database or a MaxCompute project in Data Map. Only schemas of the MaxCompute and Hologres metadata crawler types are supported.
+// Queries the list of schemas under a specified database or MaxCompute project in Data Map. Currently supports MaxCompute and Holo types.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or higher to use this feature.
 //
 // @param tmpReq - ListSchemasRequest
 //
@@ -14166,7 +14878,19 @@ func (client *Client) ListSchemasWithContext(ctx context.Context, tmpReq *ListSc
 
 // Summary:
 //
-// 分页检索安全管控策略
+// Retrieves a paginated list of security policies based on specified conditions. This operation requires DataWorks tenant administrator or security administrator permissions.
+//
+// Description:
+//
+// ## Request
+//
+// - This API retrieves a paginated list of configured security policies.
+//
+// - The `ControlModule` and `ControlSubModule` parameters filter policies by a specific module or submodule.
+//
+// - The `PageNum` and `PageSize` parameters control pagination. `PageNum` specifies the page number to retrieve (default: 1), and `PageSize` specifies the number of policies to return per page (default: 20).
+//
+// - Use the `MaxResults` and `NextToken` private parameters for advanced pagination.
 //
 // @param request - ListSecurityStrategiesRequest
 //
@@ -14222,7 +14946,21 @@ func (client *Client) ListSecurityStrategiesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 分页列出 Skill
+// Lists the Skills in your account.
+//
+// Description:
+//
+// ## Request
+//
+// This operation lists the Skills in your account. You can filter the results by criteria such as a search keyword and visibility level.
+//
+// - **Q**: An optional search keyword for a fuzzy match on Skill names.
+//
+// - **Visibility**: An optional parameter to filter Skills by their visibility level. You can specify multiple values.
+//
+// - **MaxResults**: An optional parameter that specifies the maximum number of results to return per page.
+//
+// - **NextToken**: An optional pagination token for retrieving the next page of results. Omit this parameter for the first request. For subsequent requests, pass the `NextToken` value from the previous response to fetch the next page.
 //
 // @param tmpReq - ListSkillsRequest
 //
@@ -14286,7 +15024,11 @@ func (client *Client) ListSkillsWithContext(ctx context.Context, tmpReq *ListSki
 
 // Summary:
 //
-// Queries a list of tables in Data Map. For data source types that do not support schemas, you can call this API operation to query a list of tables in a specific database. For data source types that support schemas, you can call this API operation to query a list of tables in a specific database, MaxCompute project, or schema. Only the basic information about tables is returned. The information about technical metadata and business metadata is not returned.
+// Queries a list of tables in the data map. For data source types that do not support schemas, this operation queries tables within a specified database. For data source types that support schemas, you can query tables within a specified database, MaxCompute project, or schema. The response includes basic table information, technical metadata, and business metadata.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param tmpReq - ListTablesRequest
 //
@@ -14332,13 +15074,13 @@ func (client *Client) ListTablesWithContext(ctx context.Context, tmpReq *ListTab
 
 // Summary:
 //
-// Queries a list of operation logs of an instance by page.
+// Retrieves a paginated list of operation logs for a task instance.
 //
 // Description:
 //
 // This API operation is available for all DataWorks editions.
 //
-// You can call this operation to query only the operation logs generated within the previous 31 days.
+// Only operation logs generated within the previous 31 days can be queried.
 //
 // @param request - ListTaskInstanceOperationLogsRequest
 //
@@ -14382,7 +15124,7 @@ func (client *Client) ListTaskInstanceOperationLogsWithContext(ctx context.Conte
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param tmpReq - ListTaskInstancesRequest
 //
@@ -14520,13 +15262,13 @@ func (client *Client) ListTaskInstancesWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Queries a list of operation logs of a task by page.
+// Retrieves a paginated list of operation logs for a task.
 //
 // Description:
 //
 // This API operation is available for all DataWorks editions.
 //
-// You can call this operation to query only the operation logs generated within the previous 31 days.
+// Only operation logs generated within the previous 31 days can be queried.
 //
 // @param request - ListTaskOperationLogsRequest
 //
@@ -14567,6 +15309,10 @@ func (client *Client) ListTaskOperationLogsWithContext(ctx context.Context, requ
 // Summary:
 //
 // Queries a list of tasks by page. You can also specify filter conditions to query tasks.
+//
+// Description:
+//
+// DataWorks Basic Edition or higher is required.
 //
 // @param tmpReq - ListTasksRequest
 //
@@ -14788,11 +15534,11 @@ func (client *Client) ListWorkflowDefinitionsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries a list of workflow instances by page. You can also specify filter conditions to query workflow instances.
+// Returns a paginated list of workflow instances that can be filtered by specific criteria.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// Available with DataWorks Basic Edition or higher.
 //
 // @param tmpReq - ListWorkflowInstancesRequest
 //
@@ -14902,7 +15648,7 @@ func (client *Client) ListWorkflowInstancesWithContext(ctx context.Context, tmpR
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param tmpReq - ListWorkflowsRequest
 //
@@ -14992,7 +15738,21 @@ func (client *Client) ListWorkflowsWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// Loads historical messages of an existing session and returns them in SSE streaming mode. If the session does not exist, a JSONRPCResponse.error with code 400 is output through SSE. Content-Type is text/event-stream. Applicable to scenarios where the session context needs to be restored.
+// Loads the message history of an existing session and returns it as an SSE stream. If the session does not exist, the server sends a JSONRPCResponse.error with a code of 400 through the SSE stream. The Content-Type is text/event-stream. Use this operation to restore session context.
+//
+// Description:
+//
+// ## Request
+//
+// - This operation retrieves session details and streams the Agent response using Server-Sent Events (SSE).
+//
+// - If the target session does not exist, the operation returns an error frame with an error code of 400.
+//
+// - The response includes information about the Agent\\"s request processing, such as message chunks, thought processes, and tool call status updates.
+//
+// - The `stopReason` field indicates why the Agent stops the current turn. Possible values include reaching the maximum turn limit or being canceled.
+//
+// - The returned content conforms to the Agent Client Protocol (ACP). For more information, see https\\://agentclientprotocol.com.
 //
 // @param tmpReq - LoadAgentSessionRequest
 //
@@ -15007,7 +15767,21 @@ func (client *Client) LoadAgentSessionWithSSECtx(ctx context.Context, tmpReq *Lo
 
 // Summary:
 //
-// Loads historical messages of an existing session and returns them in SSE streaming mode. If the session does not exist, a JSONRPCResponse.error with code 400 is output through SSE. Content-Type is text/event-stream. Applicable to scenarios where the session context needs to be restored.
+// Loads the message history of an existing session and returns it as an SSE stream. If the session does not exist, the server sends a JSONRPCResponse.error with a code of 400 through the SSE stream. The Content-Type is text/event-stream. Use this operation to restore session context.
+//
+// Description:
+//
+// ## Request
+//
+// - This operation retrieves session details and streams the Agent response using Server-Sent Events (SSE).
+//
+// - If the target session does not exist, the operation returns an error frame with an error code of 400.
+//
+// - The response includes information about the Agent\\"s request processing, such as message chunks, thought processes, and tool call status updates.
+//
+// - The `stopReason` field indicates why the Agent stops the current turn. Possible values include reaching the maximum turn limit or being canceled.
+//
+// - The returned content conforms to the Agent Client Protocol (ACP). For more information, see https\\://agentclientprotocol.com.
 //
 // @param tmpReq - LoadAgentSessionRequest
 //
@@ -15317,7 +16091,27 @@ func (client *Client) PreviewDatasetVersionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Sends a user prompt to an existing session and streams back the agent response.
+// Sends a prompt to an existing session and streams the agent response.
+//
+// Description:
+//
+// ## Request
+//
+// - This API sends a user prompt to a specified session ID and streams the agent\\"s response over SSE (Server-Sent Events).
+//
+// - The response may include message chunks, thought process, and tool calling status updates.
+//
+// - If the specified session does not exist, the API returns a 400 error in an SSE error frame.
+//
+// - The `stopReason` field indicates why the agent ended the turn.
+//
+// - You can use multiple types of content blocks in the prompt, such as text and OSS file download links.
+//
+// - You can provide additional metadata in the `Meta` parameter to pass more context to the server.
+//
+// - The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com
+//
+// - \\*\\*Review the billing methods and pricing for Data Agent before you use this API\\*\\*: https\\://help.aliyun.com/zh/dataworks/dataworks-data-agent-agent-billing
 //
 // @param tmpReq - PromptAgentSessionRequest
 //
@@ -15332,7 +16126,27 @@ func (client *Client) PromptAgentSessionWithSSECtx(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Sends a user prompt to an existing session and streams back the agent response.
+// Sends a prompt to an existing session and streams the agent response.
+//
+// Description:
+//
+// ## Request
+//
+// - This API sends a user prompt to a specified session ID and streams the agent\\"s response over SSE (Server-Sent Events).
+//
+// - The response may include message chunks, thought process, and tool calling status updates.
+//
+// - If the specified session does not exist, the API returns a 400 error in an SSE error frame.
+//
+// - The `stopReason` field indicates why the agent ended the turn.
+//
+// - You can use multiple types of content blocks in the prompt, such as text and OSS file download links.
+//
+// - You can provide additional metadata in the `Meta` parameter to pass more context to the server.
+//
+// - The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com
+//
+// - \\*\\*Review the billing methods and pricing for Data Agent before you use this API\\*\\*: https\\://help.aliyun.com/zh/dataworks/dataworks-data-agent-agent-billing
 //
 // @param tmpReq - PromptAgentSessionRequest
 //
@@ -15390,7 +16204,13 @@ func (client *Client) PromptAgentSessionWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Removes an entity from a collection in Data Map. Collections include categories and data albums. Entities can be only tables. If you want to remove an entity from a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
+// Remove an entity object from a Data Map collection. The collection supports Data Map categories and data albums, and the entity currently supports only the Data Table type.
+//
+// When removing an entity from a data album, the caller must have the AliyunDataWorksFullAccess permission or be the creator or administrator of the album.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Professional Edition or a higher version to use this feature.
 //
 // @param request - RemoveEntityFromMetaCollectionRequest
 //
@@ -15768,7 +16588,7 @@ func (client *Client) RerunTaskInstancesWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Reruns workflow instances.
+// # Rerun a workflow instance
 //
 // @param tmpReq - RerunWorkflowInstancesRequest
 //
@@ -15982,7 +16802,11 @@ func (client *Client) RevokeMemberProjectRolesWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Rolls back the specified parameter.
+// Rolls back a specified parameter.
+//
+// Description:
+//
+// This operation is available only in DataWorks Professional Edition or a later version.
 //
 // @param request - RollbackParameterRequest
 //
@@ -16138,11 +16962,11 @@ func (client *Client) StartDIJobWithContext(ctx context.Context, tmpReq *StartDI
 
 // Summary:
 //
-// Starts multiple workflow instances at a time.
+// Start multiple workflow instances in batch.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param tmpReq - StartWorkflowInstancesRequest
 //
@@ -16240,7 +17064,17 @@ func (client *Client) StopDIJobWithContext(ctx context.Context, request *StopDIJ
 
 // Summary:
 //
-// 撤回审批流程实例
+// Withdraws or terminates a specified process instance.
+//
+// Description:
+//
+// ## Description
+//
+// - Requesters can use this operation to withdraw an approval process they initiated.
+//
+// - Only the initiator of the approval process can call this operation.
+//
+// - After a successful call, the operation terminates the approval process and updates its status to withdrawn.
 //
 // @param request - StopProcessInstanceRequest
 //
@@ -16600,13 +17434,15 @@ func (client *Client) TagDataAssetsWithContext(ctx context.Context, tmpReq *TagD
 
 // Summary:
 //
-// Tests the connectivity between a data source and a resource group.
+// Test the connectivity of a data source on a resource group.
 //
 // Description:
 //
-// 1.  This API operation is available for all DataWorks editions.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
-// 2.  Your account must be assigned one of the following roles of the desired workspace: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M
+// 2. You must have at least one of the following roles in the DataWorks project space:
+//
+//	Tenant Owner, Space Administrator, Deployment, Developer, Project Owner, or O\\&M.
 //
 // @param request - TestDataSourceConnectivityRequest
 //
@@ -16928,7 +17764,13 @@ func (client *Client) UpdateBusinessWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Updates the business metadata of a column in a table in Data Map. Only the business description of a column can be updated.
+// Updates the business metadata for a column in a data map. This operation can only update the business description and custom attributes.
+//
+// Description:
+//
+// 1. This operation requires DataWorks Basic Edition or a later version.
+//
+// 2. This operation supports only MaxCompute, hms, and dlf tables.
 //
 // @param tmpReq - UpdateColumnBusinessMetadataRequest
 //
@@ -16990,7 +17832,7 @@ func (client *Client) UpdateColumnBusinessMetadataWithContext(ctx context.Contex
 //
 // Description:
 //
-// This operation is currently in beta. To join the beta testing, please submit a request. You can call this operation after we add you to the beta program.
+// This API is currently in trial. To use this API, submit an application. After the administrator adds you to the trial list, you can call this API.
 //
 // @param request - UpdateComponentRequest
 //
@@ -17045,6 +17887,14 @@ func (client *Client) UpdateComponentWithContext(ctx context.Context, request *U
 // Summary:
 //
 // Modifies the specified computing resource based on the computing resource ID.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+//
+// 2. You must have at least one of the following roles in the DataWorks project space:
+//
+// 3. Tenant Owner, tenant administrator, Space Administrator, Project Owner, or O\\&M
 //
 // @param request - UpdateComputeResourceRequest
 //
@@ -17104,7 +17954,7 @@ func (client *Client) UpdateComputeResourceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Updates custom attribute definitions
+// Updates a custom attribute.
 //
 // @param tmpReq - UpdateCustomAttributeRequest
 //
@@ -17232,11 +18082,11 @@ func (client *Client) UpdateDIAlarmRuleWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Updates a synchronization task.
+// Update a Data Integration task.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// This feature requires DataWorks Basic Edition or higher.
 //
 // @param tmpReq - UpdateDIJobRequest
 //
@@ -17410,7 +18260,7 @@ func (client *Client) UpdateDataAssetTagWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param tmpReq - UpdateDataQualityAlertRuleRequest
 //
@@ -17482,11 +18332,11 @@ func (client *Client) UpdateDataQualityAlertRuleWithContext(ctx context.Context,
 //
 // Summary:
 //
-// Updates a monitor.
+// Updates a data quality validation task.
 //
 // Description:
 //
-// This API operation is supported in all DataWorks editions.
+// DataWorks Basic Edition or above must be purchased to use this operation.
 //
 // @param tmpReq - UpdateDataQualityEvaluationTaskRequest
 //
@@ -17594,7 +18444,11 @@ func (client *Client) UpdateDataQualityEvaluationTaskWithContext(ctx context.Con
 //
 // Summary:
 //
-// Updates a data quality monitoring rule.
+// Updates a data quality rule.
+//
+// Description:
+//
+// You must purchase DataWorks Basic Edition or above to use this feature.
 //
 // @param tmpReq - UpdateDataQualityRuleRequest
 //
@@ -17692,7 +18546,11 @@ func (client *Client) UpdateDataQualityRuleWithContext(ctx context.Context, tmpR
 //
 // Summary:
 //
-// Updates a data quality monitoring rule template.
+// Updates a data quality rule template.
+//
+// Description:
+//
+// You can call this operation only after you purchase DataWorks Basic Edition or a higher edition.
 //
 // @param tmpReq - UpdateDataQualityRuleTemplateRequest
 //
@@ -17772,7 +18630,7 @@ func (client *Client) UpdateDataQualityRuleTemplateWithContext(ctx context.Conte
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param tmpReq - UpdateDataQualityScanRequest
 //
@@ -17882,7 +18740,7 @@ func (client *Client) UpdateDataQualityScanWithContext(ctx context.Context, tmpR
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - UpdateDataQualityTemplateRequest
 //
@@ -17941,14 +18799,6 @@ func (client *Client) UpdateDataQualityTemplateWithContext(ctx context.Context, 
 // Summary:
 //
 // Modifies a data source by ID.
-//
-// Description:
-//
-// 1.  This API operation is available for all DataWorks editions.
-//
-// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
-//
-//   - Tenant Owner, Tenant Administrator, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - UpdateDataSourceRequest
 //
@@ -18282,6 +19132,10 @@ func (client *Client) UpdateFileWithContext(ctx context.Context, request *Update
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke UpdateFolder to update the folder information.
+//
 // @param request - UpdateFolderRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -18444,7 +19298,15 @@ func (client *Client) UpdateIDEEventResultWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 更新 MCP Server
+// Updates an MCP Server.
+//
+// Description:
+//
+// ## Description
+//
+// This API updates the configuration of a specified MCP Server. Omitted fields retain their original values.
+//
+// **Note**: When you modify the`Visibility` parameter, you must provide either`ProjectIds` or`UserIds` in`VisibilityScope` to apply the correct access control scope.
 //
 // @param tmpReq - UpdateMcpServerRequest
 //
@@ -18518,7 +19380,13 @@ func (client *Client) UpdateMcpServerWithContext(ctx context.Context, tmpReq *Up
 
 // Summary:
 //
-// Updates the information about a collection in Data Map, including the collection name, description, and administrator. Collections include categories and data albums. If you want to update the information about a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
+// Update Data Map collection objects, including Data Map categories and data albums. You can update the collection name, description, and administrator information.
+//
+// When updating a data album, the caller must have the AliyunDataWorksFullAccess permission or be the creator or an administrator of the album.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Professional Edition or a higher edition to use this feature.
 //
 // @param tmpReq - UpdateMetaCollectionRequest
 //
@@ -18580,7 +19448,11 @@ func (client *Client) UpdateMetaCollectionWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Updates metadata entities. You can update custom objects or extended table objects (Database, Table, and Column).
+// Updates a metadata entity. You can update custom entities or objects of the extended table type, such as databases, tables, and columns.
+//
+// Description:
+//
+// You must purchase DataWorks Professional Edition or a higher edition to use this operation.
 //
 // @param tmpReq - UpdateMetaEntityRequest
 //
@@ -18646,7 +19518,11 @@ func (client *Client) UpdateMetaEntityWithContext(ctx context.Context, tmpReq *U
 
 // Summary:
 //
-// Updates metadata entity definitions (including pure custom types and extended table types)
+// Updates a meta entity definition. This operation supports both custom and extended table entity types.
+//
+// Description:
+//
+// This operation requires DataWorks Professional Edition or a later version.
 //
 // @param tmpReq - UpdateMetaEntityDefRequest
 //
@@ -18768,7 +19644,11 @@ func (client *Client) UpdateNodeWithContext(ctx context.Context, request *Update
 
 // Summary:
 //
-// Updates a parameter. Incremental modification. Only the specified columns are modified.
+// Updates a parameter. This operation performs an incremental update and modifies only the specified fields.
+//
+// Description:
+//
+// This operation is available only in DataWorks Professional Edition and later.
 //
 // @param tmpReq - UpdateParameterRequest
 //
@@ -18830,7 +19710,19 @@ func (client *Client) UpdateParameterWithContext(ctx context.Context, tmpReq *Up
 
 // Summary:
 //
-// 更新审批流程定义
+// Updates an existing approval process definition.
+//
+// Description:
+//
+// ## Request
+//
+// - Use this API to modify an existing approval process definition, including its name, description, rule conditions, notification service, and approval nodes.
+//
+// - The required `Id` parameter identifies the approval process definition to update.
+//
+// - To overwrite the existing configuration, set the `Overwrite` parameter to `true`.
+//
+// - The optional `ClientToken` parameter ensures request idempotency.
 //
 // @param tmpReq - UpdateProcessDefinitionRequest
 //
@@ -18912,7 +19804,11 @@ func (client *Client) UpdateProcessDefinitionWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Updates a DataWorks workspace.
+// This operation updates a DataWorks workspace.
+//
+// Description:
+//
+// This feature requires DataWorks Basic Edition or a later version.
 //
 // @param request - UpdateProjectRequest
 //
@@ -18980,7 +19876,7 @@ func (client *Client) UpdateProjectWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
-// # Update the permissions of a custom role
+// Updates the permissions of a custom role in a workspace.
 //
 // @param tmpReq - UpdateProjectRoleRequest
 //
@@ -19212,7 +20108,21 @@ func (client *Client) UpdateRouteWithContext(ctx context.Context, request *Updat
 
 // Summary:
 //
-// 变更安全管控策略
+// To modify the configuration of an existing security policy, you must be both a DataWorks tenant administrator and a security administrator.
+//
+// Description:
+//
+// ## Usage
+//
+// - Use this API to update a specified security policy, including its name, description, associated workspace IDs, and policy content.
+//
+// - You cannot modify some properties of default system policies, such as the schema name and control module.
+//
+// - When `ControlDwScope` is set to `Workspace`, use the `Workspaces` parameter to associate the policy with specific workspaces.
+//
+// - When updating the policy content (`Content`), ensure that the provided controllers (`Controllers`) conform to the requirements of the selected schema.
+//
+// - The optional `ClientToken` parameter ensures request idempotence.
 //
 // @param tmpReq - UpdateSecurityStrategyRequest
 //
@@ -19286,7 +20196,11 @@ func (client *Client) UpdateSecurityStrategyWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Updates the business metadata of a table in Data Map. Currently, only the usage notes of a table can be updated.
+// Updates the business metadata for a data table in the data map. You can update only the table\\"s Readme and custom attributes.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or a later version to use this operation.
 //
 // @param tmpReq - UpdateTableBusinessMetadataRequest
 //
@@ -19494,11 +20408,11 @@ func (client *Client) UpdateTaskWithContext(ctx context.Context, tmpReq *UpdateT
 
 // Summary:
 //
-// Modifies properties configured for multiple instances at a time. The properties include the priority, resource group for scheduling, and data source.
+// Modify the properties of multiple task instances in batch, including priority, resource group, data source, and more.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param tmpReq - UpdateTaskInstancesRequest
 //
@@ -19644,7 +20558,7 @@ func (client *Client) UpdateUdfFileWithContext(ctx context.Context, request *Upd
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or higher is required.
 //
 // @param tmpReq - UpdateWorkflowRequest
 //
@@ -19762,7 +20676,9 @@ func (client *Client) UpdateWorkflowWithContext(ctx context.Context, tmpReq *Upd
 //
 // Description:
 //
-// >  You cannot use this API operation to create multiple workflows at a time. If you specify multiple workflows in the FlowSpec filed, only the first workflow is created. Other specified workflows and the nodes in the workflows are ignored. You can call the UpdateNode operation to update a node.
+//	Notice:
+//
+// This API does not support batch operations. If you define more than one workflow definition in the FlowSpec, all workflow definitions except the first one are ignored. In addition, nodes defined within the workflow definition are also ignored. Call the UpdateNode API to update internal nodes one by one.
 //
 // @param request - UpdateWorkflowDefinitionRequest
 //

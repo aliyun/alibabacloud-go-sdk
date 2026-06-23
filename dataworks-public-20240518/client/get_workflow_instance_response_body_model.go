@@ -82,9 +82,9 @@ type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod
+	// - Prod
 	//
-	// 	- Dev
+	// - Dev
 	//
 	// example:
 	//
@@ -140,21 +140,21 @@ type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
 	// The status of the workflow instance. Valid values:
 	//
-	// 	- NotRun: The instance is not run.
+	// - NotRun: The instance is not run.
 	//
-	// 	- Running: The instance is running.
+	// - Running: The instance is running.
 	//
-	// 	- WaitTime: The instance is waiting for the scheduling time to arrive.
+	// - WaitTime: The instance is waiting for the scheduling time to arrive.
 	//
-	// 	- CheckingCondition: Branch conditions are being checked for the instance.
+	// - CheckingCondition: Branch conditions are being checked for the instance.
 	//
-	// 	- WaitResource: The instance is waiting for resources.
+	// - WaitResource: The instance is waiting for resources.
 	//
-	// 	- Failure: The instance fails to be run.
+	// - Failure: The instance fails to be run.
 	//
-	// 	- Success: The instance is successfully run.
+	// - Success: The instance is successfully run.
 	//
-	// 	- Checking: Data quality is being checked for the instance.
+	// - Checking: Data quality is being checked for the instance.
 	//
 	// example:
 	//
@@ -164,22 +164,24 @@ type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
 	Tags []*GetWorkflowInstanceResponseBodyWorkflowInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The type of the workflow instance. Valid values:
 	//
-	// 	- Normal: Scheduled execution
+	// - Normal: Scheduled execution
 	//
-	// 	- Manual: Manually triggered node
+	// - Manual: Manually triggered node
 	//
-	// 	- SmokeTest: Testing
+	// - SmokeTest: Testing
 	//
-	// 	- SupplementData: Data backfill
+	// - SupplementData: Data backfill
 	//
-	// 	- ManualWorkflow: Manually triggered workflow
+	// - ManualWorkflow: Manually triggered workflow
 	//
-	// 	- TriggerWorkflow: Triggered Workflow
+	// - TriggerWorkflow: Triggered Workflow
 	//
 	// example:
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The unified pipeline instance ID. For all pipeline instances triggered under the same data timestamp in a single trigger, this field value is identical.
+	//
 	// example:
 	//
 	// 1234
@@ -191,6 +193,16 @@ type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 	// The workflow parameters.
+	//
+	// example:
+	//
+	// 周期工作流：
+	//
+	// key1=value1 key2=value2
+	//
+	// 手动业务流程：
+	//
+	// {"key1":"value1", "key2": "value2"}
 	WorkflowParameters *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
 	// The task instance ID corresponding to the workflow instance.
 	//

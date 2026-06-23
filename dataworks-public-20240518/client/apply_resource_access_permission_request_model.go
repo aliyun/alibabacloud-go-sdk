@@ -18,13 +18,23 @@ type iApplyResourceAccessPermissionRequest interface {
 }
 
 type ApplyResourceAccessPermissionRequest struct {
+	// A list of permission requests.
+	//
 	// This parameter is required.
 	ApplyContents []*ApplyResourceAccessPermissionRequestApplyContents `json:"ApplyContents,omitempty" xml:"ApplyContents,omitempty" type:"Repeated"`
+	// The idempotency parameter, which prevents duplicate operations from repeated calls.
+	//
 	// example:
 	//
 	// ABFUOEUOTRTRJKE
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The reason for the request.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 业务发展需要
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
@@ -77,18 +87,31 @@ func (s *ApplyResourceAccessPermissionRequest) Validate() error {
 }
 
 type ApplyResourceAccessPermissionRequestApplyContents struct {
+	// The requested permissions.
+	//
+	// Note: The supported permission types vary by resource level and are constrained by the `ResourceSchema` of the corresponding resource type.
+	//
 	// This parameter is required.
 	AccessTypes []*string `json:"AccessTypes,omitempty" xml:"AccessTypes,omitempty" type:"Repeated"`
+	// The authorization method.
+	//
+	// Note: This parameter is supported only for `SEVERLESS_STARROCKS` resources. Valid values are `ranger` and `starrocksManager`.
+	//
 	// example:
 	//
 	// ranger
 	AuthMethod *string `json:"AuthMethod,omitempty" xml:"AuthMethod,omitempty"`
+	// The permission expiration time, as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1785835708000
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// The principal to which permissions are granted.
+	//
 	// This parameter is required.
-	Grantee  *ApplyResourceAccessPermissionRequestApplyContentsGrantee  `json:"Grantee,omitempty" xml:"Grantee,omitempty" type:"Struct"`
+	Grantee *ApplyResourceAccessPermissionRequestApplyContentsGrantee `json:"Grantee,omitempty" xml:"Grantee,omitempty" type:"Struct"`
+	// The resource for which permissions are requested.
 	Resource *ApplyResourceAccessPermissionRequestApplyContentsResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 }
 
@@ -160,12 +183,28 @@ func (s *ApplyResourceAccessPermissionRequestApplyContents) Validate() error {
 }
 
 type ApplyResourceAccessPermissionRequestApplyContentsGrantee struct {
+	// The ID of the principal. The value of this parameter depends on the `PrincipalType`:
+	//
+	// - `RamUser`: The Dataworks user ID.
+	//
+	// - `RamRole`: The Dataworks user ID, prefixed with `ROLE_`.
+	//
+	// - `DlfRole`: The DlfNext role name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ROLE_32237475848545
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The principal type. Valid values:
+	//
+	// - RamRole
+	//
+	// - RamUser
+	//
+	// - DlfRole
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -205,17 +244,22 @@ func (s *ApplyResourceAccessPermissionRequestApplyContentsGrantee) Validate() er
 }
 
 type ApplyResourceAccessPermissionRequestApplyContentsResource struct {
+	// The resource type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
+	// The version of `ResourceSchema` that is required to parse the resource.
+	//
 	// example:
 	//
 	// v1.0.0
-	DefVersion *string                `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
-	MetaData   map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	DefVersion *string `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
+	// The resource metadata. The content is constrained by `ResourceSchema`.
+	MetaData map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 }
 
 func (s ApplyResourceAccessPermissionRequestApplyContentsResource) String() string {

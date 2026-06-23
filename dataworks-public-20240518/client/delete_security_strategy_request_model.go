@@ -14,7 +14,13 @@ type iDeleteSecurityStrategyRequest interface {
 }
 
 type DeleteSecurityStrategyRequest struct {
+	// The ID of the security strategy.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

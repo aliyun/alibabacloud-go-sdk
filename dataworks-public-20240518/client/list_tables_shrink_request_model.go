@@ -28,23 +28,23 @@ type iListTablesShrinkRequest interface {
 }
 
 type ListTablesShrinkRequest struct {
-	// The comment. Supports fuzzy matching.
+	// The comment on the table. Fuzzy matching is supported.
 	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name. Supports fuzzy matching.
+	// The name of the table. Fuzzy matching is supported.
 	//
 	// example:
 	//
 	// abc
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The order in which the tables are sorted. Default value: Asc. Valid values:
+	// The sort order. Default value: `Asc`. Valid values:
 	//
-	// 	- Asc
+	// - `Asc`: ascending
 	//
-	// 	- Desc
+	// - `Desc`: descending
 	//
 	// example:
 	//
@@ -56,85 +56,89 @@ type ListTablesShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page. Default value: 10. Maximum value: 100.
+	// The page size. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The parent metadata entity ID. You can refer to the responses of the ListDatabases or ListSchemas operation and [Description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+	// The ID of the parent metadata entity. You can obtain this ID from the response of the ListDatabases or ListSchemas operation. For details, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
 	//
-	// 	- The parent metadata entity is a database: The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
+	// - The value can be the database to which the table belongs. The format is `${EntityType}:${instance ID or URL-encoded connection string}:${data catalog identifier}:${database name}`. Use an empty string as a placeholder for a hierarchy level that does not exist.
 	//
-	// 	- The parent metadata entity is a database schema: The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}:${Schema Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
+	// - The value can also be the schema to which the table belongs. The format is `${EntityType}:${instance ID or URL-encoded connection string}:${data catalog identifier}:${database name}:${schema name}`. Use an empty string as a placeholder for a hierarchy level that does not exist.
 	//
-	// >
-	//
-	// 	- The schema level in `ParentMetaEntityId` is supported only for database services, such as `MaxCompute (with schema enabled), Hologres, PostgreSQL, SQL Server, HybridDB for PostgreSQL, and Oracle`.
-	//
-	// 	- For the MaxCompute and DLF types, use an empty string as the placeholder for the instance ID. For MaxCompute, the database name is the same as the project name.
-	//
-	// 	- For StarRocks, the catalog identifier is the catalog name. For DLF, it is the catalog ID. Other types do not support the catalog level and you can use an empty string as a placeholder.
-	//
-	// Examples of common ParentMetaEntityId formats
-	//
-	// 	- `maxcompute-project:::project_name`
-	//
-	// 	- `maxcompute-schema:::project_name:schema_name` (for MaxCompute projects with schema enabled)
-	//
-	// 	- `dlf-database::catalog_id:database_name`
-	//
-	// 	- `hms-database:instance_id::database_name`
-	//
-	// 	- `holo-schema:instance_id::database_name:schema_name`
-	//
-	// 	- `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
+	// > 	- You can specify a schema in `ParentMetaEntityId` only if the database type supports schemas, such as `maxcompute/holo/postgresql/sqlserver/hybriddb_for_postgresql/oracle`. For the maxcompute type, the three-layer model must be enabled. Otherwise, you can only specify a database.
 	//
 	// >
 	//
-	// 	- `instance_id`: The instance ID, which is required when the data source is registered in instance mode.
+	// > 	- For `maxcompute` and `dlf` data types, use an empty string as a placeholder for the instance ID. For the maxcompute data type, the database name is the MaxCompute project name.
 	//
-	// 	- `encoded_jdbc_url`: The URLEncoded JDBC connection string, which is requiredwhen the data source is registered using a connection string.
+	// >
 	//
-	// 	- `catalog_id`: The DLF catalog ID.
+	// > 	- For the `starrocks` type, the data catalog identifier is the catalog name. For the `dlf` type, the data catalog identifier is the catalog ID. Other types do not support the catalog level, so you can use an empty string as a placeholder.
 	//
-	// 	- `project_name`: The MaxCompute project name.
+	// The following list shows the `ParentMetaEntityId` format for several common data source types:
 	//
-	// 	- `database_name`: The database name.
+	// - `maxcompute-project:::project_name`
 	//
-	// 	- `schema_name`: The schema name.
+	// - `maxcompute-schema:::project_name:schema_name` (Only when the three-layer model is enabled for the project)
+	//
+	// - `dlf-database::catalog_id:database_name`
+	//
+	// - `hms-database:instance_id::database_name`
+	//
+	// - `holo-schema:instance_id::database_name:schema_name`
+	//
+	// - `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
+	//
+	// > In these formats:
+	//
+	// >
+	//
+	// > - `instance_id`: The instance ID. This parameter is required if the data source is registered in instance mode.
+	//
+	// >
+	//
+	// > - `encoded_jdbc_url`: The URL-encoded JDBC connection string. This parameter is required if the data source is registered by using a connection string.
+	//
+	// >
+	//
+	// > - `catalog_id`: The ID of the DLF data catalog.
+	//
+	// >
+	//
+	// > - `project_name`: The name of the MaxCompute project.
+	//
+	// >
+	//
+	// > - `database_name`: The name of the database.
+	//
+	// >
+	//
+	// > - `schema_name`: The name of the schema.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// maxcompute-schema:123456XXX::test_project_with_schema:default
-	//
-	// maxcompute-project:123456XXX::test_project_without_schema
-	//
-	// dlf-database:123456XXX:test_catalog:test_db
-	//
-	// hms-database:c-abc123xxx::test_db
-	//
-	// holo-schema:h-abc123xxx::test_db:test_schema
-	//
-	// mysql-database:jdbc%3Amysql%3A%2F%2F127.0.0.1%3A3306%2Ftest_db::test_db
+	// maxcompute-project:::project_name
 	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
-	// The sort field. Default value: CreateTime. Valid values:
+	// The sort field. Default value: `CreateTime`. Valid values:
 	//
-	// 	- CreateTime
+	// - `CreateTime`: creation time
 	//
-	// 	- ModifyTime
+	// - `ModifyTime`: modification time
 	//
-	// 	- Name
+	// - `Name`: name
 	//
-	// 	- TableType
+	// - `TableType`: table type
 	//
 	// example:
 	//
 	// CreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The list of table types to query. If it\\"s left empty, all types will be queried.
+	// A list of table types to query. If you omit this parameter, tables of all types are returned.
 	TableTypesShrink *string `json:"TableTypes,omitempty" xml:"TableTypes,omitempty"`
 }
 

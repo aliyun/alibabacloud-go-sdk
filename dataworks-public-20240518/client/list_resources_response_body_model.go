@@ -152,7 +152,7 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	DataSource *ListResourcesResponseBodyPagingInfoResourcesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The unique identifier of the file resource.
 	//
-	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// > Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//
@@ -194,13 +194,13 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	//
 	// Valid values:
 	//
-	// 	- Local
+	// - Local
 	//
-	// 	- OSS
+	// - OSS
 	//
 	// example:
 	//
-	// local
+	// Local
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The destination storage path.
 	//
@@ -212,31 +212,31 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	//
 	// Valid values:
 	//
-	// 	- Gateway
+	// - Gateway
 	//
-	// 	- OSS
+	// - OSS
 	//
-	// 	- HDFS
+	// - HDFS
 	//
 	// example:
 	//
-	// oss
+	// Oss
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The resource type.
 	//
 	// Valid values:
 	//
-	// 	- Python
+	// - Python
 	//
-	// 	- Jar
+	// - Jar
 	//
-	// 	- Archive
+	// - Archive
 	//
-	// 	- File
+	// - File
 	//
 	// example:
 	//
-	// jar
+	// Jar
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -427,7 +427,7 @@ func (s *ListResourcesResponseBodyPagingInfoResourcesDataSource) Validate() erro
 type ListResourcesResponseBodyPagingInfoResourcesScript struct {
 	// The ID of the script.
 	//
-	// >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// > This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//

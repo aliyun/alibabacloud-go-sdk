@@ -28,7 +28,7 @@ type CreatePipelineRunRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The IDs of entities to which you want to apply the process.
 	//
-	// >  A process can be applied to only a single entity and its child entities. If you specify multiple entities in the array, the process is applied only to the first entity in the array and its child entities. Make sure that the array in your request contains only one element. Extra elements will be ignored.
+	// > A process can be applied to only a single entity and its child entities. If you specify multiple entities in the array, the process is applied only to the first entity in the array and its child entities. Make sure that the array in your request contains only one element. Extra elements will be ignored.
 	//
 	// This parameter is required.
 	ObjectIds []*string `json:"ObjectIds,omitempty" xml:"ObjectIds,omitempty" type:"Repeated"`
@@ -42,9 +42,9 @@ type CreatePipelineRunRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// Specifies whether to deploy or undeploy the entity. Valid values:
 	//
-	// 	- Online: deploys the entity.
+	// - Online: deploys the entity.
 	//
-	// 	- Offline: undeploys the entity.
+	// - Offline: undeploys the entity.
 	//
 	// This parameter is required.
 	//

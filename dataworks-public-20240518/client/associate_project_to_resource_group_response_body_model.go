@@ -16,7 +16,7 @@ type iAssociateProjectToResourceGroupResponseBody interface {
 }
 
 type AssociateProjectToResourceGroupResponseBody struct {
-	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

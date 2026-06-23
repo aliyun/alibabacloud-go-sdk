@@ -64,6 +64,8 @@ type ListTaskInstancesShrinkRequest struct {
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The filter. It is in JSON format, and multiple filter conditions are combined with a logical AND. Currently supported fields include: `startedTimeStart`, `startedTimeEnd`, `finishedTimeStart`, `finishedTimeEnd`, `createTimeStart`, `createTimeEnd`.
+	//
 	// example:
 	//
 	// {
@@ -110,9 +112,9 @@ type ListTaskInstancesShrinkRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod: production environment
+	// - Prod: production environment
 	//
-	// 	- Dev: development environment
+	// - Dev: development environment
 	//
 	// example:
 	//
@@ -134,17 +136,17 @@ type ListTaskInstancesShrinkRequest struct {
 	RuntimeResource *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
 	// The field used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
 	//
-	// 	- `TriggerTime (Desc/Asc)`
+	// - `TriggerTime (Desc/Asc)`
 	//
-	// 	- `StartedTime (Desc/Asc)`
+	// - `StartedTime (Desc/Asc)`
 	//
-	// 	- `FinishedTime (Desc/Asc)`
+	// - `FinishedTime (Desc/Asc)`
 	//
-	// 	- `CreateTime (Desc/Asc)`
+	// - `CreateTime (Desc/Asc)`
 	//
-	// 	- `Id (Desc/Asc)`
+	// - `Id (Desc/Asc)`
 	//
-	//     Default value: `Id Desc`.
+	//   Default value: `Id Desc`.
 	//
 	// example:
 	//
@@ -152,17 +154,17 @@ type ListTaskInstancesShrinkRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The status of the task instance.
 	//
-	// 	- `NotRun`: Not started
+	// - `NotRun`: Not started
 	//
-	// 	- `Running`
+	// - `Running`
 	//
-	// 	- `Failure`
+	// - `Failure`
 	//
-	// 	- `Success`
+	// - `Success`
 	//
-	// 	- `WaitTime`: Awaiting scheduled time
+	// - `WaitTime`: Awaiting scheduled time
 	//
-	// 	- `WaitResource`: Awaiting resources
+	// - `WaitResource`: Awaiting resources
 	//
 	// example:
 	//
@@ -190,11 +192,11 @@ type ListTaskInstancesShrinkRequest struct {
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
 	//
-	// 	- Pause
+	// - Pause
 	//
-	// 	- Skip
+	// - Skip
 	//
-	// 	- Normal
+	// - Normal
 	//
 	// example:
 	//
@@ -202,14 +204,16 @@ type ListTaskInstancesShrinkRequest struct {
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// 	- Scheduler: scheduling cycle-based trigger
+	// - Scheduler: scheduling cycle-based trigger
 	//
-	// 	- Manual: manual trigger
+	// - Manual: manual trigger
 	//
 	// example:
 	//
 	// Normal
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The unified workflow instance ID. For all task instances under a specific data timestamp within a single trigger, this field has the same value.
+	//
 	// example:
 	//
 	// 1234
@@ -228,17 +232,17 @@ type ListTaskInstancesShrinkRequest struct {
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
 	// The type of the workflow instance. Valid values:
 	//
-	// 	- SmokeTest: Testing
+	// - SmokeTest: Testing
 	//
-	// 	- Manual: Manually triggered node
+	// - Manual: Manually triggered node
 	//
-	// 	- SupplementData: Data backfill
+	// - SupplementData: Data backfill
 	//
-	// 	- ManualWorkflow: Manually triggered workflow
+	// - ManualWorkflow: Manually triggered workflow
 	//
-	// 	- Normal: Scheduled execution
+	// - Normal: Scheduled execution
 	//
-	// 	- TriggerWorkflow: Triggered Workflow
+	// - TriggerWorkflow: Triggered Workflow
 	//
 	// example:
 	//

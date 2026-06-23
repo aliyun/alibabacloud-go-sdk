@@ -18,7 +18,7 @@ type iCreateFunctionResponseBody interface {
 type CreateFunctionResponseBody struct {
 	// The unique identifier of the UDF function.
 	//
-	// >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+	// > Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type CreateFunctionResponseBody struct {
 	//
 	// example:
 	//
-	// AE49C88D-5BEE-5ADD-8B8C-C4BBC0D7XXXX
+	// AE49C88D-5BEE-5ADD-8B8C-C4BBC0D7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

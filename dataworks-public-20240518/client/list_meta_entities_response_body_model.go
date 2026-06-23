@@ -18,13 +18,16 @@ type iListMetaEntitiesResponseBody interface {
 }
 
 type ListMetaEntitiesResponseBody struct {
+	// Pagination information.
 	PagingInfo *ListMetaEntitiesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// RequestId
+	// The request ID.
 	//
 	// example:
 	//
 	// ADFASDFASDFA-ADFASDF-ASDFADSDF-AFFADS
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -76,15 +79,22 @@ func (s *ListMetaEntitiesResponseBody) Validate() error {
 }
 
 type ListMetaEntitiesResponseBodyPagingInfo struct {
+	// The maximum number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	MaxResults   *int32        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A list of metadata entities.
 	MetaEntities []*MetaEntity `json:"MetaEntities,omitempty" xml:"MetaEntities,omitempty" type:"Repeated"`
+	// The token used to retrieve the next page of results. If this parameter is empty, no more results are available.
+	//
 	// example:
 	//
 	// AAAAAdEdsXbwG2ZlbWCzN4wTTg6NmTbhyvglcoMCJsiEdngaTov15YaMyduvjIHYeTOIcEeXqCevM1qffZkwCkUTUYc=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10

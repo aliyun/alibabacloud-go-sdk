@@ -20,18 +20,26 @@ type iListCustomAgentsShrinkRequest interface {
 }
 
 type ListCustomAgentsShrinkRequest struct {
+	// The maximum number of entries to return on a single page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token. Omit this parameter for the first request. For subsequent requests, use the `NextToken` value from the previous response to retrieve the next page.
+	//
 	// example:
 	//
 	// 12345
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The search keyword for a fuzzy match by agent name.
+	//
 	// example:
 	//
 	// analysis
 	Q *string `json:"Q,omitempty" xml:"Q,omitempty"`
+	// Filters the results by visibility level. You can specify multiple levels.
+	//
 	// example:
 	//
 	// -

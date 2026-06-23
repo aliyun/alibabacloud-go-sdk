@@ -66,7 +66,10 @@ type CreateSkillResponseBodySkill struct {
 	// example:
 	//
 	// 123456
-	CreatorId   *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// example:
+	//
+	// 数据分析技能
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -75,6 +78,10 @@ type CreateSkillResponseBodySkill struct {
 	// 1780555634000
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 12345678901
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	// example:
 	//

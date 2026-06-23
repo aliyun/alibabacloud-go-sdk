@@ -146,9 +146,9 @@ type ListDataAssetsResponseBodyPagingInfoDataAssets struct {
 	DataAssetTagMappings []*ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings `json:"DataAssetTagMappings,omitempty" xml:"DataAssetTagMappings,omitempty" type:"Repeated"`
 	// The environment of the workspace to which the data asset belongs. Valid values:
 	//
-	// 	- Dev: development environment
+	// - Dev: development environment
 	//
-	// 	- Prod: production environment
+	// - Prod: production environment
 	//
 	// example:
 	//
@@ -174,9 +174,9 @@ type ListDataAssetsResponseBodyPagingInfoDataAssets struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The type of the data asset. Valid values:
 	//
-	// 	- ACS::DataWorks::Table
+	// - ACS::DataWorks::Table
 	//
-	// 	- ACS::DataWorks::Task
+	// - ACS::DataWorks::Task
 	//
 	// example:
 	//
@@ -286,9 +286,9 @@ type ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The way in which the mapping between the data asset and the tag is created. Valid values:
 	//
-	// 	- System
+	// - System
 	//
-	// 	- UserDefined
+	// - UserDefined
 	//
 	// example:
 	//

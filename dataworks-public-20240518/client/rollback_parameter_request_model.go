@@ -16,12 +16,16 @@ type iRollbackParameterRequest interface {
 }
 
 type RollbackParameterRequest struct {
+	// The parameter ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The rollback version.
+	//
 	// This parameter is required.
 	//
 	// example:

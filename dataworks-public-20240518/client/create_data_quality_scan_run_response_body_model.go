@@ -16,7 +16,7 @@ type iCreateDataQualityScanRunResponseBody interface {
 }
 
 type CreateDataQualityScanRunResponseBody struct {
-	// The RunId that was successfully triggered.
+	// The run ID.
 	//
 	// example:
 	//

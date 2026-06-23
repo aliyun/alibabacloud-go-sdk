@@ -16,12 +16,16 @@ type iGetImageRequest interface {
 }
 
 type GetImageRequest struct {
+	// The image ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Custom_image_xxxx_xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The image version. If you do not specify this parameter, the latest version is returned.
+	//
 	// example:
 	//
 	// 1

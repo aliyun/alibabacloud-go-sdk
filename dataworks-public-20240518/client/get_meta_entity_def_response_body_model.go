@@ -18,13 +18,16 @@ type iGetMetaEntityDefResponseBody interface {
 }
 
 type GetMetaEntityDefResponseBody struct {
+	// The custom entity definition.
 	MetaEntityDef *MetaEntityDef `json:"MetaEntityDef,omitempty" xml:"MetaEntityDef,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// C636A747-7E4E-594D-94CD-2B4F8A9A9A63
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true

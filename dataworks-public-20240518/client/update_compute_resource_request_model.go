@@ -53,6 +53,10 @@ type UpdateComputeResourceRequest struct {
 	// InstanceMode
 	ConnectionPropertiesMode *string `json:"ConnectionPropertiesMode,omitempty" xml:"ConnectionPropertiesMode,omitempty"`
 	// The description of the computing resource. The maximum length is 3000 characters.
+	//
+	// example:
+	//
+	// Level description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the computing resource.
 	//

@@ -18,16 +18,20 @@ type iCreateMetaEntityDefResponseBody interface {
 }
 
 type CreateMetaEntityDefResponseBody struct {
+	// The unique identifier of the created entity type.
+	//
 	// example:
 	//
 	// custom_entity-biz_api
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 0A04C673-BEFA-5803-94E5-89E2D9F8C567
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

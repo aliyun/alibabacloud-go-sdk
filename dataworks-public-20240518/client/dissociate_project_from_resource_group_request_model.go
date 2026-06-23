@@ -16,7 +16,7 @@ type iDissociateProjectFromResourceGroupRequest interface {
 }
 
 type DissociateProjectFromResourceGroupRequest struct {
-	// The ID of the workspace from which you want to disassociate the resource group.
+	// The ID of the workspace to disassociate.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DissociateProjectFromResourceGroupRequest struct {
 	//
 	// 1000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the resource group.
+	// The unique identifier of the resource group.
 	//
 	// This parameter is required.
 	//

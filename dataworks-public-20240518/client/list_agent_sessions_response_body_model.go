@@ -16,8 +16,9 @@ type iListAgentSessionsResponseBody interface {
 }
 
 type ListAgentSessionsResponseBody struct {
+	// The JSON-RPC response.
 	JsonRpcResponse *ListAgentSessionsResponseBodyJsonRpcResponse `json:"JsonRpcResponse,omitempty" xml:"JsonRpcResponse,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,12 +62,20 @@ func (s *ListAgentSessionsResponseBody) Validate() error {
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponse struct {
+	// The ID provided in the request. This value is returned unmodified.
+	//
 	// example:
 	//
 	// 29d9a29c-a284-48c1-9eaa-4a42c7c616d5
-	Id      *string                                             `json:"Id,omitempty" xml:"Id,omitempty"`
-	Jsonrpc *string                                             `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Result  *ListAgentSessionsResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. The value is always `2.0`.
+	//
+	// example:
+	//
+	// 2.0
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The paginated results of the session query.
+	Result *ListAgentSessionsResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListAgentSessionsResponseBodyJsonRpcResponse) String() string {
@@ -114,15 +123,22 @@ func (s *ListAgentSessionsResponseBodyJsonRpcResponse) Validate() error {
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponseResult struct {
+	// A list of sessions.
 	AgentSessions []*ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions `json:"AgentSessions,omitempty" xml:"AgentSessions,omitempty" type:"Repeated"`
+	// The number of entries returned on the current page.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results. To retrieve the first page, use the value `1`.
+	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total number of sessions that match the query.
+	//
 	// example:
 	//
 	// 200
@@ -187,17 +203,34 @@ func (s *ListAgentSessionsResponseBodyJsonRpcResponseResult) Validate() error {
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions struct {
+	// DataWorks-specific session metadata. This field is not part of the standard ACP protocol.
 	Meta *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
+	// The time the session was created.
+	//
 	// example:
 	//
 	// 123456789
-	SessionCreatedAt   *int64  `json:"SessionCreatedAt,omitempty" xml:"SessionCreatedAt,omitempty"`
+	SessionCreatedAt *int64 `json:"SessionCreatedAt,omitempty" xml:"SessionCreatedAt,omitempty"`
+	// The session description.
+	//
+	// example:
+	//
+	// Sales trend analysis
 	SessionDescription *string `json:"SessionDescription,omitempty" xml:"SessionDescription,omitempty"`
+	// The unique session ID.
+	//
 	// example:
 	//
 	// sess_0f12abc34
-	SessionId    *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The session title.
+	//
+	// example:
+	//
+	// Sales analysis for the last 30 days
 	SessionTitle *string `json:"SessionTitle,omitempty" xml:"SessionTitle,omitempty"`
+	// The time the session was last modified.
+	//
 	// example:
 	//
 	// 123456789
@@ -276,11 +309,25 @@ func (s *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions) Valida
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta struct {
+	// The source of the session.
+	//
 	// example:
 	//
 	// openapi_sdk
-	SessionSource  *string                                                                              `json:"SessionSource,omitempty" xml:"SessionSource,omitempty"`
-	SessionStatus  *string                                                                              `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	SessionSource *string `json:"SessionSource,omitempty" xml:"SessionSource,omitempty"`
+	// The session status.
+	//
+	// example:
+	//
+	// 	- NORMAL: 无状态的session
+	//
+	// 	- INIT: 初始化状态
+	//
+	// 	- RUNNING: 运行中
+	//
+	// 	- RELEASED: 释放状态
+	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	// A list of session tags.
 	SessionTagList []*ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSessionTagList `json:"SessionTagList,omitempty" xml:"SessionTagList,omitempty" type:"Repeated"`
 }
 
@@ -333,6 +380,8 @@ func (s *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta) Va
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSessionTagList struct {
+	// A tag for the session, which can be used for filtering. For example, if your application has its own user accounts but calls the API through a single service account, you can pass your application\\"s user ID as a tag. This allows you to filter sessions by your internal users.
+	//
 	// example:
 	//
 	// user_123456

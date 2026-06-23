@@ -64,9 +64,9 @@ func (s *GetComputeResourceResponseBody) Validate() error {
 type GetComputeResourceResponseBodyComputeResource struct {
 	// The specific connection configuration details for the computing resource, including the connection address, access identity, and environment information. envType, which specifies the computing resource environment, is a property of this object. Valid values:
 	//
-	// 	- Dev
+	// - Dev
 	//
-	// 	- Prod Different types of computing resources have different attribute specifications under various configuration modes (ConnectionPropertiesMode).
+	// - Prod Different types of computing resources have different attribute specifications under various configuration modes (ConnectionPropertiesMode).
 	//
 	// example:
 	//
@@ -90,11 +90,11 @@ type GetComputeResourceResponseBodyComputeResource struct {
 	ConnectionProperties interface{} `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
 	// The addition category of the computing resource. Different types will have different subtypes, each with corresponding parameter constraints. For instance:
 	//
-	// 	- InstanceMode: Instance mode
+	// - InstanceMode: Instance mode
 	//
-	// 	- UrlMode: Connection String Mode
+	// - UrlMode: Connection String Mode
 	//
-	// 	- CdhMode: CDH mode
+	// - CdhMode: CDH mode
 	//
 	// example:
 	//

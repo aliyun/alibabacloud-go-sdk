@@ -16,12 +16,16 @@ type iAssociateProjectToImageRequest interface {
 }
 
 type AssociateProjectToImageRequest struct {
+	// The image ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Custom_image_xxxx_xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

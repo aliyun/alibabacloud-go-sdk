@@ -28,24 +28,50 @@ type iLoadAgentSessionResponseBody interface {
 }
 
 type LoadAgentSessionResponseBody struct {
+	// The error object of the SSE frame. This field is present when an error occurs.
+	//
+	// example:
+	//
+	// {"code": 400, "errorCode": "0x50000000001", "message": "not exist session", "data": null}
 	Error interface{} `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The client-generated request ID, returned from the request.
+	//
 	// example:
 	//
 	// 676303114031776
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. The value is `2.0`.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string     `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Method  *string     `json:"Method,omitempty" xml:"Method,omitempty"`
-	Params  interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
-	// Id of the request
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The method of the SSE frame.
+	//
+	// example:
+	//
+	// session/update
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The parameters of the SSE frame.
+	//
+	// example:
+	//
+	// {"sessionId":"af4f5ef8-e8f5-481c-ad1f-94886c6c0aed","update":{"sessionUpdate":"agent_message_chunk","content":{"type":"text","text":"hello world"}}}
+	Params interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The unique request ID generated for this request.
 	//
 	// example:
 	//
 	// 0D41C608-0C60-5EB0-B986-1460909CF642
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result object of the SSE frame. This field is present when the operation is successful.
+	//
+	// example:
+	//
+	// {"stopReason":"end_turn"}
+	Result interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The timestamp.
+	//
 	// example:
 	//
 	// 1769479322828

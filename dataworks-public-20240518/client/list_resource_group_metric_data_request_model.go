@@ -52,7 +52,7 @@ type ListResourceGroupMetricDataRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The number of records to display on each page for paginated queries.
 	//
-	// >  The maximum value of Length for a single request is 1440.
+	// > The maximum value of Length for a single request is 1440.
 	//
 	// example:
 	//
@@ -60,39 +60,39 @@ type ListResourceGroupMetricDataRequest struct {
 	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
 	// The metric name. Valid values:
 	//
-	// 	- CUSpec: Maximum CU capacity of the resource group, in CUs.
+	// - CUSpec: Maximum CU capacity of the resource group, in CUs.
 	//
-	// 	- CUUsage: CU usage of the resource group, in CUs.
+	// - CUUsage: CU usage of the resource group, in CUs.
 	//
-	// 	- CUUtilization: CU utilization of the resource group, in %.
+	// - CUUtilization: CU utilization of the resource group, in %.
 	//
-	// 	- SlotSpec: Maximum number of concurrent slots for resource group scheduling, in slots.
+	// - SlotSpec: Maximum number of concurrent slots for resource group scheduling, in slots.
 	//
-	// 	- SlotUsage: Used concurrency for resource group scheduling, in slots.
+	// - SlotUsage: Used concurrency for resource group scheduling, in slots.
 	//
-	// 	- SchedulerCUMaxSpec: Maximum CU quota for data computing, in CUs.
+	// - SchedulerCUMaxSpec: Maximum CU quota for data computing, in CUs.
 	//
-	// 	- SchedulerCUUsage: CU usage for data computing, in CUs.
+	// - SchedulerCUUsage: CU usage for data computing, in CUs.
 	//
-	// 	- SchedulerCUMinSpec: Minimum guaranteed CUs for data computing, in CUs.
+	// - SchedulerCUMinSpec: Minimum guaranteed CUs for data computing, in CUs.
 	//
-	// 	- DataIntegrationCUMaxSpec: Maximum CU quota for Data Integration, in CUs.
+	// - DataIntegrationCUMaxSpec: Maximum CU quota for Data Integration, in CUs.
 	//
-	// 	- DataIntegrationCUUsage: CU usage for Data Integration, in CUs.
+	// - DataIntegrationCUUsage: CU usage for Data Integration, in CUs.
 	//
-	// 	- DataIntegrationCUMinSpec: Minimum guaranteed CUs for Data Integration, in CUs.
+	// - DataIntegrationCUMinSpec: Minimum guaranteed CUs for Data Integration, in CUs.
 	//
-	// 	- DataServiceCUMaxSpec: Maximum CU quota for DataService Studio, in CUs.
+	// - DataServiceCUMaxSpec: Maximum CU quota for DataService Studio, in CUs.
 	//
-	// 	- DataServiceCUUsage: CU usage for DataService Studio, in CUs.
+	// - DataServiceCUUsage: CU usage for DataService Studio, in CUs.
 	//
-	// 	- DataServiceCUMinSpec: Minimum guaranteed CUs for DataService Studio, in CUs.
+	// - DataServiceCUMinSpec: Minimum guaranteed CUs for DataService Studio, in CUs.
 	//
-	// 	- ServerIdeCUMaxSpec: Maximum CU quota for personal development environment, in CUs.
+	// - ServerIdeCUMaxSpec: Maximum CU quota for personal development environment, in CUs.
 	//
-	// 	- ServerIdeCUUsage: CU usage for personal development environment, in CUs.
+	// - ServerIdeCUUsage: CU usage for personal development environment, in CUs.
 	//
-	// 	- ServerIdeCUMinSpec: Minimum guaranteed CUs for personal development environment, in CUs.
+	// - ServerIdeCUMinSpec: Minimum guaranteed CUs for personal development environment, in CUs.
 	//
 	// This parameter is required.
 	//
@@ -102,7 +102,7 @@ type ListResourceGroupMetricDataRequest struct {
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The pagination cursor.
 	//
-	// >  If this parameter is not set, the first page of data is retrieved. If a value is returned for this parameter, it indicates that there is a next page. You can use the returned NextToken as a parameter to request the next page of data until it returns Null, which means all data has been retrieved.
+	// > If this parameter is not set, the first page of data is retrieved. If a value is returned for this parameter, it indicates that there is a next page. You can use the returned NextToken as a parameter to request the next page of data until it returns Null, which means all data has been retrieved.
 	//
 	// example:
 	//

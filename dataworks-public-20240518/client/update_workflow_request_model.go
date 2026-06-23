@@ -54,9 +54,9 @@ type UpdateWorkflowRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The project environment.
 	//
-	// 	- Prod
+	// - Prod
 	//
-	// 	- Dev
+	// - Dev
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type UpdateWorkflowRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The instance generation mode.
 	//
-	// 	- T+1: the next day
+	// - T+1: the next day
 	//
-	// 	- Immediately Note: Periodic instances will only be generated normally if the workflow\\"s scheduled time is more than 10 minutes after the workflow publication time. Real-time instance generation is not available during the batch instance generation period (23:30 to 24:00). While workflows can be published during this time, instances will not be regenerated immediately after submission.
+	// - Immediately Note: Periodic instances will only be generated normally if the workflow\\"s scheduled time is more than 10 minutes after the workflow publication time. Real-time instance generation is not available during the batch instance generation period (23:30 to 24:00). While workflows can be published during this time, instances will not be regenerated immediately after submission.
 	//
 	// example:
 	//
@@ -283,13 +283,13 @@ func (s *UpdateWorkflowRequest) Validate() error {
 type UpdateWorkflowRequestDependencies struct {
 	// The dependency type. Valid values:
 	//
-	// 	- CrossCycleDependsOnChildren: Depends on level-1 downstream nodes across cycles
+	// - CrossCycleDependsOnChildren: Depends on level-1 downstream nodes across cycles
 	//
-	// 	- CrossCycleDependsOnSelf: Depends on itself across cycles.
+	// - CrossCycleDependsOnSelf: Depends on itself across cycles.
 	//
-	// 	- CrossCycleDependsOnOtherNode: Depends on other nodes across cycles.
+	// - CrossCycleDependsOnOtherNode: Depends on other nodes across cycles.
 	//
-	// 	- Normal: Depends on nodes in the same cycle.
+	// - Normal: Depends on nodes in the same cycle.
 	//
 	// This parameter is required.
 	//
@@ -487,9 +487,9 @@ type UpdateWorkflowRequestTasks struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The project environment.
 	//
-	// 	- Prod
+	// - Prod
 	//
-	// 	- Dev
+	// - Dev
 	//
 	// example:
 	//
@@ -529,11 +529,11 @@ type UpdateWorkflowRequestTasks struct {
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
 	// Configuration for whether the task can be rerun.
 	//
-	// 	- AllDenied: The task cannot be rerun.
+	// - AllDenied: The task cannot be rerun.
 	//
-	// 	- FailureAllowed: The task can be rerun only after it fails.
+	// - FailureAllowed: The task can be rerun only after it fails.
 	//
-	// 	- AllAllowed: The task can always be rerun.
+	// - AllAllowed: The task can always be rerun.
 	//
 	// This parameter is required.
 	//
@@ -848,13 +848,13 @@ func (s *UpdateWorkflowRequestTasksDataSource) Validate() error {
 type UpdateWorkflowRequestTasksDependencies struct {
 	// The dependency type. Valid values:
 	//
-	// 	- CrossCycleDependsOnChildren: Depends on level-1 downstream nodes across cycles
+	// - CrossCycleDependsOnChildren: Depends on level-1 downstream nodes across cycles
 	//
-	// 	- CrossCycleDependsOnSelf: Depends on itself across cycles.
+	// - CrossCycleDependsOnSelf: Depends on itself across cycles.
 	//
-	// 	- CrossCycleDependsOnOtherNode: Depends on other nodes across cycles.
+	// - CrossCycleDependsOnOtherNode: Depends on other nodes across cycles.
 	//
-	// 	- Normal: Depends on nodes in the same cycle.
+	// - Normal: Depends on nodes in the same cycle.
 	//
 	// This parameter is required.
 	//
@@ -959,13 +959,13 @@ type UpdateWorkflowRequestTasksInputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type. Valid values:
 	//
-	// 	- Constant: constant value.
+	// - Constant: constant value.
 	//
-	// 	- PassThrough: node output.
+	// - PassThrough: node output.
 	//
-	// 	- System: variable.
+	// - System: variable.
 	//
-	// 	- NodeOutput: script output.
+	// - NodeOutput: script output.
 	//
 	// This parameter is required.
 	//
@@ -1114,13 +1114,13 @@ type UpdateWorkflowRequestTasksOutputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type. Valid values:
 	//
-	// 	- Constant: constant value.
+	// - Constant: constant value.
 	//
-	// 	- PassThrough: node output.
+	// - PassThrough: node output.
 	//
-	// 	- System: variable.
+	// - System: variable.
 	//
-	// 	- NodeOutput: script output.
+	// - NodeOutput: script output.
 	//
 	// This parameter is required.
 	//
@@ -1332,11 +1332,11 @@ func (s *UpdateWorkflowRequestTasksTags) Validate() error {
 type UpdateWorkflowRequestTasksTrigger struct {
 	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
 	//
-	// 	- Pause
+	// - Pause
 	//
-	// 	- Skip
+	// - Skip
 	//
-	// 	- Normal
+	// - Normal
 	//
 	// This parameter is required.
 	//
@@ -1346,9 +1346,9 @@ type UpdateWorkflowRequestTasksTrigger struct {
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// 	- Scheduler: periodically triggered
+	// - Scheduler: periodically triggered
 	//
-	// 	- Manual
+	// - Manual
 	//
 	// example:
 	//
@@ -1407,9 +1407,9 @@ type UpdateWorkflowRequestTrigger struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// 	- Scheduler: periodically triggered
+	// - Scheduler: periodically triggered
 	//
-	// 	- Manual
+	// - Manual
 	//
 	// This parameter is required.
 	//

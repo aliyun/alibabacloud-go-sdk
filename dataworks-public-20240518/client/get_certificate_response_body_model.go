@@ -16,9 +16,9 @@ type iGetCertificateResponseBody interface {
 }
 
 type GetCertificateResponseBody struct {
-	// The details of the certificate file.
+	// The details of the certificate.
 	Certificate *GetCertificateResponseBodyCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetCertificateResponseBody) Validate() error {
 }
 
 type GetCertificateResponseBodyCertificate struct {
-	// The time when the certificate file was created. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the file was created. This is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -80,25 +80,25 @@ type GetCertificateResponseBodyCertificate struct {
 	//
 	// This is a file
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The size of the certificate file, in bytes.
+	// The file size in bytes.
 	//
 	// example:
 	//
 	// 77549
 	FileSizeInBytes *int64 `json:"FileSizeInBytes,omitempty" xml:"FileSizeInBytes,omitempty"`
-	// The ID of the certificate file.
+	// The unique ID of the certificate file.
 	//
 	// example:
 	//
 	// 676303114031776
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the certificate file.
+	// The file name.
 	//
 	// example:
 	//
 	// ca1.crt
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the workspace to which the certificate file belongs.
+	// The ID of the project to which the certificate file belongs.
 	//
 	// example:
 	//

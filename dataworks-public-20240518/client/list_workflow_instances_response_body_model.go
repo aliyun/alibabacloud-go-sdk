@@ -16,9 +16,9 @@ type iListWorkflowInstancesResponseBody interface {
 }
 
 type ListWorkflowInstancesResponseBody struct {
-	// Pagination information.
+	// The pagination information.
 	PagingInfo *ListWorkflowInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Used for locating logs and troubleshooting issues.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type ListWorkflowInstancesResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The workflow instances.
+	// The list of workflow instances.
 	WorkflowInstances []*ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances `json:"WorkflowInstances,omitempty" xml:"WorkflowInstances,omitempty" type:"Repeated"`
 }
 
@@ -142,6 +142,8 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
+	// The business date.
+	//
 	// example:
 	//
 	// 1710239005403
@@ -152,17 +154,17 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The account ID of the creator.
+	// The account ID of the user who created the instance.
 	//
 	// example:
 	//
 	// 100
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The environment of the workspace. Valid values:
+	// The project environment.
 	//
-	// 	- Prod
+	// - Prod (production)
 	//
-	// 	- Dev
+	// - Dev (development)
 	//
 	// example:
 	//
@@ -174,7 +176,7 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	//
 	// 1710239005403
 	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
-	// The workflow instance ID.
+	// The unique identifier of the workflow instance.
 	//
 	// example:
 	//
@@ -186,13 +188,13 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The account ID of the modifier.
+	// The account ID of the user who last modified the instance.
 	//
 	// example:
 	//
 	// 100
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	// The name of the workflow instance.
+	// The name.
 	//
 	// example:
 	//
@@ -204,60 +206,62 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The workspace ID.
+	// The project ID.
 	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The time when the instance started to run.
+	// The time when the instance started running.
 	//
 	// example:
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	// The status of the workflow instance. Valid values:
+	// The running status of the workflow instance.
 	//
-	// 	- NotRun: The instance is not run.
+	// - NotRun: Not run
 	//
-	// 	- Running: The instance is running.
+	// - Running: Running
 	//
-	// 	- WaitTime: The instance is waiting for the scheduling time to arrive.
+	// - WaitTime: Waiting for TriggerTime
 	//
-	// 	- CheckingCondition: Branch conditions are being checked for the instance.
+	// - CheckingCondition: Checking branch conditions
 	//
-	// 	- WaitResource: The instance is waiting for resources.
+	// - WaitResource: Waiting for resources
 	//
-	// 	- Failure: The instance fails to be run.
+	// - Failure: Failed
 	//
-	// 	- Success: The instance is successfully run.
+	// - Success: Succeeded
 	//
-	// 	- Checking: Data quality is being checked for the instance.
+	// - Checking: Submitted for Data Quality check
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task tag.
+	// The task tags.
 	Tags []*ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The type of the workflow instance. Valid values:
+	// The type of the workflow instance.
 	//
-	// 	- Normal: Scheduled execution
+	// - Normal: Periodic scheduling
 	//
-	// 	- Manual: Manually triggered node
+	// - Manual: Manual task
 	//
-	// 	- SmokeTest: Smoke test
+	// - SmokeTest: Testing
 	//
-	// 	- SupplementData: Data backfill
+	// - SupplementData: Backfill data
 	//
-	// 	- ManualWorkflow: Manually triggered workflow
+	// - ManualWorkflow: Manual workflow
 	//
-	// 	- TriggerWorkflow: Triggered Workflow
+	// - TriggerWorkflow: Trigger-based workflow
 	//
 	// example:
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The unified workflow instance ID. All workflow instances within the same business date of a single trigger share the same value for this field.
+	//
 	// example:
 	//
 	// 1234
@@ -269,6 +273,16 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 	// The workflow parameters.
+	//
+	// example:
+	//
+	// 周期工作流：
+	//
+	// key1=value1 key2=value2
+	//
+	// 手动业务流程：
+	//
+	// {"key1":"value1", "key2": "value2"}
 	WorkflowParameters *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
 	// The task instance ID corresponding to the workflow instance.
 	//
@@ -471,13 +485,13 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) Validate(
 }
 
 type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags struct {
-	// The key of a tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of a tag.
+	// The tag value.
 	//
 	// example:
 	//

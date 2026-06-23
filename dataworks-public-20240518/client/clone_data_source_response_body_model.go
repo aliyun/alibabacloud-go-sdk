@@ -22,7 +22,7 @@ type CloneDataSourceResponseBody struct {
 	//
 	// 19715
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the request. It is used to locate logs and troubleshoot problems.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

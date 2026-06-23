@@ -28,7 +28,7 @@ type CreateResourceResponseBody struct {
 	//
 	// example:
 	//
-	// The ID of the file resource.
+	// A5B97987-66EA-5563-9599-A2752292****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

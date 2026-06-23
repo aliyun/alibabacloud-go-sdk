@@ -45,6 +45,10 @@ type ListMetaCollectionsRequest struct {
 	// 123456
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	// The collection description. Supports fuzzy matching.
+	//
+	// example:
+	//
+	// Test collection
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The collection name. Supports fuzzy matching.
 	//
@@ -54,9 +58,9 @@ type ListMetaCollectionsRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The sort order. Valid values:
 	//
-	// 	- Asc (default): Ascending order
+	// - Asc (default): Ascending order
 	//
-	// 	- Desc
+	// - Desc
 	//
 	// example:
 	//
@@ -78,19 +82,19 @@ type ListMetaCollectionsRequest struct {
 	//
 	// example:
 	//
-	// category.123
+	// as78d756asd
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The sort field. Valid values:
 	//
-	// 	- Id (default)
+	// - Id (default)
 	//
-	// 	- Name
+	// - Name
 	//
-	// 	- CreateUser: Creator ID
+	// - CreateUser: Creator ID
 	//
-	// 	- CreateTime: Creation time
+	// - CreateTime: Creation time
 	//
-	// 	- ModifyTime: Modification time
+	// - ModifyTime: Modification time
 	//
 	// example:
 	//
@@ -98,11 +102,11 @@ type ListMetaCollectionsRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The collection type. Valid values:
 	//
-	// 	- Category
+	// - Category
 	//
-	// 	- Album
+	// - Album
 	//
-	// 	- AlbumCategory: Album subcategory
+	// - AlbumCategory: Album subcategory
 	//
 	// This parameter is required.
 	//

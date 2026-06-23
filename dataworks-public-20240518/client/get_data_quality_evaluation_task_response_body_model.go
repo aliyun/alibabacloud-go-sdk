@@ -16,7 +16,7 @@ type iGetDataQualityEvaluationTaskResponseBody interface {
 }
 
 type GetDataQualityEvaluationTaskResponseBody struct {
-	// The details of the monitor.
+	// Data quality monitoring details.
 	DataQualityEvaluationTask *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask `json:"DataQualityEvaluationTask,omitempty" xml:"DataQualityEvaluationTask,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,27 +62,27 @@ func (s *GetDataQualityEvaluationTaskResponseBody) Validate() error {
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask struct {
-	// The ID of the data source used for the monitor.
+	// Data source ID used by the quality monitoring task.
 	//
 	// example:
 	//
 	// 45238
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The description of the monitor.
+	// Description of the quality monitoring task.
 	//
 	// example:
 	//
 	// The description of the quality monitoring task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The hook.
+	// Callback settings.
 	Hooks []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
-	// The ID of the data quality monitor.
+	// Data quality monitoring ID.
 	//
 	// example:
 	//
 	// 2178
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the monitor.
+	// Name of the quality monitoring task.
 	//
 	// This parameter is required.
 	//
@@ -90,31 +90,31 @@ type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask struct {
 	//
 	// OpenAPI create a data quality monitoring test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The configurations of alert notifications.
+	// Notification subscription configuration.
 	Notifications *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
-	// The workspace ID.
+	// Workspace ID.
 	//
 	// example:
 	//
 	// 2626
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Extended configuration, JSON-formatted string, takes effect only for EMR-type data quality monitoring.
+	// Extended configuration. A JSON-formatted string. Only takes effect for EMR-type data quality monitoring.
 	//
-	// - queue: the yarn queue used when performing EMR data quality verification. The default queue is the queue configured for this project.
+	// - queue: The YARN queue used when executing EMR data quality validation. Defaults to the queue configured for the current project.
 	//
-	// - sqlEngine: SQL engine used when performing EMR data verification
+	// - sqlEngine: The SQL engine used when executing EMR data validation.
 	//
-	//     - HIVE_ SQL
+	//   + HIVE_SQL
 	//
-	//     - SPARK_ SQL
+	//   + SPARK_SQL
 	//
 	// example:
 	//
 	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	// The monitored object of the monitor.
+	// Data quality monitoring object.
 	Target *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// The trigger configuration of the monitor.
+	// Trigger configuration of the data quality validation task.
 	Trigger *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
@@ -245,19 +245,19 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) Vali
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks struct {
-	// The hook trigger condition. When this condition is met, the hook action is triggered. Only two conditional expressions are supported:
+	// Hook trigger condition. When this condition is met, the hook action is triggered. Currently, only two types of conditional expressions are supported:
 	//
-	// 	- Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
+	// - Specify a single group of rule severity type and rule validation status, e.g., `${severity} == "High" AND ${status} == "Critical"`, which means the condition is met if any executed rule with severity High has a validation result of Critical.
 	//
-	// 	- Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
+	// - Specify multiple groups of rule severity types and rule validation statuses, e.g., `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`, which means the condition is met if any executed rule has severity High with validation result Critical, or severity Normal with validation result Critical, or severity Normal with validation result Error. The severity enum in the conditional expression is consistent with the severity enum in DataQualityRule, and the status enum is consistent with the status in DataQualityResult.
 	//
 	// example:
 	//
 	// (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The hook type. Only one hook type is supported.
+	// Hook type. Currently, only one type is supported:
 	//
-	// 	- BlockTaskInstance: Blocks the running of scheduling tasks. A monitor is triggered by scheduling tasks. After a monitor finishes running, the monitor determines whether to block the running of scheduling tasks based on the hook condition.
+	// - BlockTaskInstance: Blocks the scheduled task from continuing to run. When data quality monitoring is triggered by a scheduled task, after the data quality monitoring completes, Hook.Condition is used to determine whether to block the scheduled task from continuing to run.
 	//
 	// example:
 	//
@@ -296,17 +296,17 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks)
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifications struct {
-	// The notification trigger condition. When this condition is met, the alert notification is triggered. Only two conditional expressions are supported:
+	// Notification trigger condition. When this condition is met, the message notification is triggered. Currently, only two types of conditional expressions are supported:
 	//
-	// 	- Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
+	// - Specify a single group of rule severity type and rule validation status, e.g., `${severity} == "High" AND ${status} == "Critical"`, which means the condition is met if any executed rule with severity High has a validation result of Critical.
 	//
-	// 	- Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High"AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
+	// - Specify multiple groups of rule severity types and rule validation statuses, e.g., `(${severity} == "High"AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`, which means the condition is met if any executed rule has severity High with validation result Critical, or severity Normal with validation result Critical, or severity Normal with validation result Error. The severity enum in the conditional expression is consistent with the severity enum in DataQualityRule, and the status enum is consistent with the status in DataQualityResult.
 	//
 	// example:
 	//
 	// (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The configurations of alert notifications.
+	// Notification settings.
 	Notifications []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
 }
 
@@ -350,9 +350,9 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifi
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications struct {
-	// The alert notification methods.
+	// Notification method.
 	NotificationChannels []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
-	// The configurations of alert recipients.
+	// Alert receiver settings.
 	NotificationReceivers []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
 }
 
@@ -405,7 +405,7 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifi
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationChannels struct {
-	// The alert notification methods.
+	// Notification method.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 }
 
@@ -431,33 +431,21 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifi
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers struct {
-	// The extended information.
+	// Extended information.
 	//
 	// example:
 	//
 	// {  "atAll": true }
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The additional parameters that are required when alerts are sent. The parameters are JSON-formatted strings. The following keys are supported:
+	// Additional parameter settings when sending alerts. JSON format. Supported keys are as follows:
 	//
-	// 	- atAll: specifies that all members in a group are mentioned when alerts are sent by using DingTalk. This parameter is valid only if you set ReceiverType to DingdingUrl.
-	//
-	// Valid values:
-	//
-	// 	- WebhookUrl
-	//
-	// 	- FeishuUrl
-	//
-	// 	- DingdingUrl
-	//
-	// 	- WeixinUrl
-	//
-	// 	- AliUid
+	// - atAll: Whether to @everyone in the group when sending DingTalk alerts. Takes effect when ReceiverType is DingdingUrl.
 	//
 	// example:
 	//
 	// DingdingUrl
 	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
-	// The alert recipients.
+	// Alert receiver.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -501,39 +489,39 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifi
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget struct {
-	// The type of the database to which the table belongs. Valid values:
+	// Database type to which the table belongs:
 	//
-	// 	- maxcompute
+	// - maxcompute
 	//
-	// 	- hologres
+	// - hologres
 	//
-	// 	- cdh
+	// - cdh
 	//
-	// 	- analyticdb_for_mysql
+	// - analyticdb_for_mysql
 	//
-	// 	- starrocks
+	// - starrocks
 	//
-	// 	- emr
+	// - emr
 	//
-	// 	- analyticdb_for_postgresql
+	// - analyticdb_for_postgresql
 	//
 	// example:
 	//
 	// maxcompute
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// Data quality monitoring partition range settings.
+	// Partition range setting for data quality monitoring.
 	//
 	// example:
 	//
 	// pt=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
-	// The ID of the table in Data Map.
+	// Unique ID of the table in Data Map.
 	//
 	// example:
 	//
 	// odps.meta_open_api_test_sz.test_partition_tbl
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The type of the monitoring object.
+	// Monitoring object type.
 	//
 	// - Table: Table.
 	//
@@ -592,15 +580,15 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger struct {
-	// The IDs of scheduling tasks. This parameter is valid only if you set Type to ByScheduledTaskInstance.
+	// List of scheduled task IDs. Valid when Type is ByScheduledTaskInstance.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// The trigger type of the monitor. Valid values:
+	// Quality monitoring trigger type:
 	//
-	// 	- ByManual: The monitor is manually triggered.
+	// - ByManual: Manual trigger
 	//
-	// 	- ByScheduledTaskInstance: The monitor is triggered by associated scheduling tasks.
+	// - ByScheduledTaskInstance: Scheduled task trigger
 	//
-	// 	- ByQualityNode: The monitor is triggered by created data quality monitoring nodes.
+	// - ByQualityNode: Quality node trigger
 	//
 	// example:
 	//

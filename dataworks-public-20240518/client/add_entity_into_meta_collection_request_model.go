@@ -24,7 +24,7 @@ type AddEntityIntoMetaCollectionRequest struct {
 	//
 	// example:
 	//
-	// maxcompute-table
+	// maxcompute-table:::project_name:[schema_name]:table_name
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The collection ID. You can refer to the return result of the ListMetaCollections operation.
 	//
@@ -32,7 +32,7 @@ type AddEntityIntoMetaCollectionRequest struct {
 	//
 	// example:
 	//
-	// category.123
+	// as78d756asd
 	MetaCollectionId *string `json:"MetaCollectionId,omitempty" xml:"MetaCollectionId,omitempty"`
 	// Remarks added when adding the entity to a collection. This parameter is currently valid only for album collections.
 	//

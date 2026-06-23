@@ -26,39 +26,23 @@ type iSchema interface {
 }
 
 type Schema struct {
-	// The comment.
+	// 注释。
 	//
 	// example:
 	//
 	// test comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The creation time. The value is a UNIX timestamp. Unit: milliseconds.
+	// 创建时间（毫秒级时间戳）。
 	//
 	// example:
 	//
 	// 1736852168000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The schema ID. For more information, see [Concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html).
+	// ID，可参考[元数据实体相关概念说明](https://help.aliyun.com/document_detail/2880092.html)。
 	//
-	// The format is `${EntityType}:${Instance ID or escaped URL}:${Catalog name}:${Database name}`. Use empty strings as placeholders for levels that do not exist.
+	// 格式为`${EntityType}:${实例ID或转义后的URL}:${数据目录名称}:${数据库名称}:${模式名称}`，对于不存在的层级置空。
 	//
-	// >  For the MaxCompute type, the instance ID level is represented by an empty string. The database name is the name of the MaxCompute project, which has enabled the schema feature.
-	//
-	// Examples of common ID formats
-	//
-	// `maxcompute-project:::project_name` (For MaxCompute projects schema enabled)
-	//
-	// `holo-schema:instance_id::database_name:schema_name`
-	//
-	// > \\
-	//
-	// `instance_id`: The Hologres instance ID\\
-	//
-	// . `database_name`: The database name\\
-	//
-	// . `project_name`: The MaxCompute project name\\
-	//
-	// . `schema_name`: The schema name.
+	// > 对于MaxCompute类型，此处的实例ID即为主账号ID，数据库名称即为MaxCompute项目名称。
 	//
 	// example:
 	//
@@ -66,37 +50,23 @@ type Schema struct {
 	//
 	// holo-schema:h-abc123xxx::test_db:test_schema
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The modification time. The value is a UNIX timestamp. Unit: milliseconds.
+	// 更新时间（毫秒级时间戳）。
 	//
 	// example:
 	//
 	// 1736852168000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name.
+	// 名称。
 	//
 	// example:
 	//
 	// test_db
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parent entity ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	// 父层级元数据实体ID，父层级实体类型取值参考ListCrawlerTypes接口。
 	//
-	// The format: `${EntityType}:${Instance ID or escaped URL}:${Catalog name}:${Database name}`. Use empty strings as placeholders for levels that do not exist.
+	// 格式为`${EntityType}:${实例ID或转义后的URL}:${数据目录名称}:${数据库名称}`，对于不存在的层级置空。
 	//
-	// >  For the MaxCompute type, the instance ID level is represented by an empty string. The database name is the name of the MaxCompute project with schema enabled.
-	//
-	// Examples of common ParentMetaEntityId formats
-	//
-	// `maxcompute-project:::project_name` (For MaxCompute projects with schema enabled)
-	//
-	// `holo-database:instance_id::database_name`
-	//
-	// > \\
-	//
-	// `instance_id`: The Hologres instance ID\\
-	//
-	// . `database_name`: The database name\\
-	//
-	// . `project_name`: The MaxCompute project name.
+	// > 对于MaxCompute类型，此处的实例ID即为主账号ID，数据库名称即为MaxCompute项目名称。
 	//
 	// example:
 	//
@@ -104,7 +74,7 @@ type Schema struct {
 	//
 	// holo-database:h-abc123xxx::test_db
 	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
-	// The type.
+	// 类型。
 	//
 	// example:
 	//

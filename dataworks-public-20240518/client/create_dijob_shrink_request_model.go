@@ -44,38 +44,393 @@ type iCreateDIJobShrinkRequest interface {
 }
 
 type CreateDIJobShrinkRequest struct {
-	// The task description.
+	// The description of the job.
 	//
 	// example:
 	//
-	// The description of the synchronization task.
+	// DI Job Demo
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of destination data source settings.
+	// Settings for the destination data sources.
 	DestinationDataSourceSettingsShrink *string `json:"DestinationDataSourceSettings,omitempty" xml:"DestinationDataSourceSettings,omitempty"`
-	// The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, LogHub, StarRocks, DataHub, AnalyticDB for MySQL, Kafka, and Hive.
+	// The type of the destination data source. Valid values: `Hologres`, `OSS-HDFS`, `OSS`, `MaxCompute`, `LogHub`, `StarRocks`, `DataHub`, `AnalyticDB for MySQL`, `Kafka`, and `Hive`.
 	//
 	// example:
 	//
 	// Hologres
 	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
-	FileSpec                  *string `json:"FileSpec,omitempty" xml:"FileSpec,omitempty"`
+	// The code for a job created in script mode.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "resourceSettings": {
+	//
+	//         "realtimeResourceSettings": {
+	//
+	//             "requestedCu": 2,
+	//
+	//             "resourceGroupIdentifier": "Serverless_res_group_123_456"
+	//
+	//         },
+	//
+	//         "offlineResourceSettings": {
+	//
+	//             "requestedCu": 2,
+	//
+	//             "resourceGroupIdentifier": "Serverless_res_group_123_456"
+	//
+	//         }
+	//
+	//     },
+	//
+	//     "tableMappings": [
+	//
+	//         {
+	//
+	//             "sourceObjectSelectionRules": [
+	//
+	//                 {
+	//
+	//                     "expression": "autotest_hologres",
+	//
+	//                     "action": "Include",
+	//
+	//                     "expressionType": "Exact",
+	//
+	//                     "objectType": "Datasource"
+	//
+	//                 },
+	//
+	//                 {
+	//
+	//                     "expression": "auto_holo_2661647",
+	//
+	//                     "action": "Include",
+	//
+	//                     "expressionType": "Exact",
+	//
+	//                     "objectType": "Table"
+	//
+	//                 },
+	//
+	//                 {
+	//
+	//                     "expression": "public",
+	//
+	//                     "action": "Include",
+	//
+	//                     "expressionType": "Exact",
+	//
+	//                     "objectType": "Schema"
+	//
+	//                 }
+	//
+	//             ],
+	//
+	//             "transformationRules": [
+	//
+	//                 {
+	//
+	//                     "ruleTargetType": "Table",
+	//
+	//                     "ruleActionType": "SourceSchema",
+	//
+	//                     "ruleName": "SourceSchema_Table_BStf8aXPSCJjOWGe"
+	//
+	//                 },
+	//
+	//                 {
+	//
+	//                     "ruleTargetType": "Schema",
+	//
+	//                     "ruleActionType": "Rename",
+	//
+	//                     "ruleName": "Rename_Schema_3qWNOIsljtInvKJy"
+	//
+	//                 },
+	//
+	//                 {
+	//
+	//                     "ruleTargetType": "Table",
+	//
+	//                     "ruleActionType": "Rename",
+	//
+	//                     "ruleName": "Rename_Table_o3PVQq1aIKDGoVVW"
+	//
+	//                 },
+	//
+	//                 {
+	//
+	//                     "ruleTargetType": "Table",
+	//
+	//                     "ruleActionType": "DefineDstTableSettings",
+	//
+	//                     "ruleName": "DefineDstTableSettings_Table_BhJltOmOCIc81fzi"
+	//
+	//                 },
+	//
+	//                 {
+	//
+	//                     "ruleTargetType": "Table",
+	//
+	//                     "ruleActionType": "ColumnMapping",
+	//
+	//                     "ruleName": "ColumnMapping_Table_nP4hJPX1wh2W3fpo"
+	//
+	//                 }
+	//
+	//             ]
+	//
+	//         }
+	//
+	//     ],
+	//
+	//     "sourceDataSourceSettings": [
+	//
+	//         {
+	//
+	//             "dataSourceProperties": {
+	//
+	//                 "timeZone": "Asia/Shanghai"
+	//
+	//             },
+	//
+	//             "dataSourceName": "autotest_hologres"
+	//
+	//         }
+	//
+	//     ],
+	//
+	//     "jobSettings": {
+	//
+	//         "runtimeSettings": [
+	//
+	//         ],
+	//
+	//         "ddlHandlingSettings": [
+	//
+	//         ],
+	//
+	//         "columnDataTypeSettings": [
+	//
+	//         ],
+	//
+	//         "cycleScheduleSettings": {
+	//
+	//         },
+	//
+	//         "channelSettings": {
+	//
+	//             "destinationChannelSettings": {
+	//
+	//                 "conflictMode": "replace",
+	//
+	//                 "dynamicColumnAction": "replay",
+	//
+	//                 "writeMode": "replay"
+	//
+	//             },
+	//
+	//             "sourceChannelSettings": {
+	//
+	//             }
+	//
+	//         }
+	//
+	//     },
+	//
+	//     "destinationDataSourceType": "Hologres",
+	//
+	//     "transformationRules": [
+	//
+	//         {
+	//
+	//             "ruleTargetType": "Table",
+	//
+	//             "ruleName": "SourceSchema_Table_BStf8aXPSCJjOWGe",
+	//
+	//             "ruleActionType": "SourceSchema",
+	//
+	//             "ruleExpression": {
+	//
+	//                 "columns": [
+	//
+	//                     {
+	//
+	//                         "name": "id",
+	//
+	//                         "category": "normal",
+	//
+	//                         "type": "BIGINT"
+	//
+	//                     },
+	//
+	//                     {
+	//
+	//                         "name": "decimal",
+	//
+	//                         "category": "normal",
+	//
+	//                         "type": "DECIMAL"
+	//
+	//                     }
+	//
+	//                 ]
+	//
+	//             }
+	//
+	//         },
+	//
+	//         {
+	//
+	//             "ruleTargetType": "Schema",
+	//
+	//             "ruleName": "Rename_Schema_3qWNOIsljtInvKJy",
+	//
+	//             "ruleActionType": "Rename",
+	//
+	//             "ruleExpression": {
+	//
+	//                 "expression": "public"
+	//
+	//             }
+	//
+	//         },
+	//
+	//         {
+	//
+	//             "ruleTargetType": "Table",
+	//
+	//             "ruleName": "Rename_Table_o3PVQq1aIKDGoVVW",
+	//
+	//             "ruleActionType": "Rename",
+	//
+	//             "ruleExpression": {
+	//
+	//                 "expression": "auto_holo_2661647_dst"
+	//
+	//             }
+	//
+	//         },
+	//
+	//         {
+	//
+	//             "ruleTargetType": "Table",
+	//
+	//             "ruleName": "DefineDstTableSettings_Table_BhJltOmOCIc81fzi",
+	//
+	//             "ruleActionType": "DefineDstTableSettings",
+	//
+	//             "ruleExpression": {
+	//
+	//                 "ddlString": "BEGIN;
+	//
+	// CREATE TABLE IF NOT EXISTS public.auto_holo_2661647_dst (
+	//
+	//    id          BIGINT PRIMARY KEY,
+	//
+	//    "decimal"   DECIMAL(38,18)
+	//
+	// );
+	//
+	// CALL SET_TABLE_PROPERTY(\\"public.auto_holo_2661647_dst\\", \\"time_to_live_in_seconds\\", \\"3153600000\\");
+	//
+	// CALL SET_TABLE_PROPERTY(\\"public.auto_holo_2661647_dst\\", \\"orientation\\", \\"column\\");
+	//
+	// CALL SET_TABLE_PROPERTY(\\"public.auto_holo_2661647_dst\\", \\"binlog.level\\", \\"replica\\");
+	//
+	// CALL SET_TABLE_PROPERTY(\\"public.auto_holo_2661647_dst\\", \\"binlog.ttl\\", \\"2592000\\");
+	//
+	// CALL SET_TABLE_PROPERTY(\\"public.auto_holo_2661647_dst\\", \\"bitmap_columns\\", \\""text","char","varchar"\\");
+	//
+	// CALL SET_TABLE_PROPERTY(\\"public.auto_holo_2661647_dst\\", \\"dictionary_encoding_columns\\", \\""text":auto,"bytea":auto,"char":auto,"varchar":auto\\");
+	//
+	// CALL SET_TABLE_PROPERTY(\\"public.auto_holo_2661647_dst\\", \\"distribution_key\\", \\""id"\\");
+	//
+	// COMMIT;
+	//
+	// ",
+	//
+	//                 "ddlType": "STRUCT"
+	//
+	//             }
+	//
+	//         },
+	//
+	//         {
+	//
+	//             "ruleTargetType": "Table",
+	//
+	//             "ruleName": "ColumnMapping_Table_nP4hJPX1wh2W3fpo",
+	//
+	//             "ruleActionType": "ColumnMapping",
+	//
+	//             "ruleExpression": {
+	//
+	//                 "columnMapping": [
+	//
+	//                     {
+	//
+	//                         "sourceColName": "id",
+	//
+	//                         "dstColName": "id"
+	//
+	//                     },
+	//
+	//                     {
+	//
+	//                         "sourceColName": "decimal",
+	//
+	//                         "dstColName": "decimal"
+	//
+	//                     }
+	//
+	//                 ]
+	//
+	//             }
+	//
+	//         }
+	//
+	//     ],
+	//
+	//     "migrationType": "FullAndRealtimeIncremental",
+	//
+	//     "destinationDataSourceSettings": [
+	//
+	//         {
+	//
+	//             "dataSourceProperties": {
+	//
+	//             },
+	//
+	//             "dataSourceName": "autotest_hologres"
+	//
+	//         }
+	//
+	//     ],
+	//
+	//     "sourceDataSourceType": "Hologres"
+	//
+	// }
+	FileSpec *string `json:"FileSpec,omitempty" xml:"FileSpec,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated and is replaced by the Name parameter.
+	// This parameter is deprecated. Use the `Name` parameter instead.
 	//
 	// example:
 	//
 	// mysql_to_holo_sync_8772
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The task-level settings, including DDL handling policies, column data type mapping between source and destination, and runtime parameters.
+	// The settings for the synchronization job, including DDL processing policies, data type mappings between source and destination columns, and runtime parameters.
 	JobSettingsShrink *string `json:"JobSettings,omitempty" xml:"JobSettings,omitempty"`
-	// The type of the synchronization task. Valid values:
+	// The job type. Valid values:
 	//
-	// 	- DatabaseRealtimeMigration: A real-time synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases in the source.
+	// - `DatabaseRealtimeMigration`: Synchronizes multiple tables from multiple source databases in real time (stream synchronization). This type supports full, incremental, or both full and incremental synchronization.
 	//
-	// 	- DatabaseOfflineMigration: A batch synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases in the source.
+	// - `DatabaseOfflineMigration`: Synchronizes multiple tables from multiple source databases in batches. This type supports full, incremental, or both full and incremental synchronization.
 	//
-	// 	- SingleTableRealtimeMigration: A real-time synchronization task used to synchronize data only in a single table in the source.
+	// - `SingleTableRealtimeMigration`: Synchronizes a single source table in real time (stream synchronization).
 	//
 	// example:
 	//
@@ -83,35 +438,33 @@ type CreateDIJobShrinkRequest struct {
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// The synchronization type. Valid values:
 	//
-	// 	- FullAndRealtimeIncremental
+	// - `FullAndRealtimeIncremental`: Full and real-time incremental synchronization for an entire database.
 	//
-	// 	- RealtimeIncremental
+	// - `RealtimeIncremental`: Real-time incremental synchronization for a single table.
 	//
-	// 	- Full
+	// - `Full`: Full batch synchronization for an entire database.
 	//
-	// 	- OfflineIncremental
+	// - `OfflineIncremental`: Incremental synchronization in batch mode.
 	//
-	// 	- FullAndOfflineIncremental
+	// - `FullAndOfflineIncremental`: Full and incremental batch synchronization for an entire database.
 	//
 	// example:
 	//
 	// FullAndRealtimeIncremental
 	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
-	// The name of the synchronization task.
+	// The name of the job.
 	//
 	// example:
 	//
 	// mysql_to_holo_sync_8772
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The task owner.
+	// The job owner.
 	//
 	// example:
 	//
 	// 3726346
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
-	//
-	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	// The ID of the DataWorks workspace for this API call. To obtain the workspace ID, log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page.
 	//
 	// example:
 	//
@@ -119,21 +472,21 @@ type CreateDIJobShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The resource settings.
 	ResourceSettingsShrink *string `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty"`
-	// The list of source data source settings.
+	// Settings for the source data sources.
 	SourceDataSourceSettingsShrink *string `json:"SourceDataSourceSettings,omitempty" xml:"SourceDataSourceSettings,omitempty"`
-	// The source type. Valid values: PolarDB, MySQL, Kafka, LogHub, Hologres, Oracle, OceanBase, MongoDB, Redshift, Hive, SQL Server, Doris, and ClickHouse.
+	// The type of the source data source. Valid values: `PolarDB`, `MySQL`, `Kafka`, `LogHub`, `Hologres`, `Oracle`, `OceanBase`, `MongoDB`, `Redshift`, `Hive`, `SQL Server`, `Doris`, and `ClickHouse`.
 	//
 	// example:
 	//
 	// MySQL
 	SourceDataSourceType *string `json:"SourceDataSourceType,omitempty" xml:"SourceDataSourceType,omitempty"`
-	// The list of synchronization object transformation mappings. Each element describes a set of source object selection rules and the transformation rules applied to those objects.
+	// Transformation mappings for the objects to be synchronized. Each mapping defines selection rules for a group of source objects and the transformation rules to apply to them.
 	//
-	// >  [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
+	// > [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
 	TableMappingsShrink *string `json:"TableMappings,omitempty" xml:"TableMappings,omitempty"`
-	// The list of synchronization object transformation rule definitions.
+	// A list of transformation rules for the objects to be synchronized.
 	//
-	// >  [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
+	// > [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{\\\\"expression\\\\":\\\\"${srcDatasoureName}_${srcDatabaseName}\\\\"}" } ]
 	TransformationRulesShrink *string `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty"`
 }
 

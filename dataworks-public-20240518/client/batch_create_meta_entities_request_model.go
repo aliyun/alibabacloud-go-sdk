@@ -14,6 +14,8 @@ type iBatchCreateMetaEntitiesRequest interface {
 }
 
 type BatchCreateMetaEntitiesRequest struct {
+	// An entity list. You can create up to five entities in a batch. All entities in the batch must have the same `EntityType`.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53,18 +55,32 @@ func (s *BatchCreateMetaEntitiesRequest) Validate() error {
 }
 
 type BatchCreateMetaEntitiesRequestEntities struct {
+	// The entity attributes. Complex values must be serialized into a JSON string.
 	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The comment for the entity.
+	//
 	// example:
 	//
 	// this is a comment
-	Comment          *string              `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The custom attribute values. The key is the identifier of the custom attribute, and the value is a single-element list.
+	//
+	// 	Notice: The custom attributes used here must be created in advance by using the CreateCustomAttribute API. For example, after you create a custom attribute with the ID `custom-attribute:owner_name`, you can configure the custom attribute by setting this parameter to {\\"owner_name\\": [\\"Bob\\"]}.
 	CustomAttributes map[string][]*string `json:"CustomAttributes,omitempty" xml:"CustomAttributes,omitempty"`
+	// The entity type. All entities in a batch must have the same type. The following types are supported:
+	//
+	// - Custom types, such as `custom_entity-biz_api`.
+	//
+	// - Extended table types. For example, if you have registered the `custom_dw-table` metadata entity type, you can create objects of the corresponding `custom_dw-database` (database) and `custom_dw-table` (table) types.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// custom_entity-customer_api
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The entity name. The name can contain uppercase letters, lowercase letters, digits, and underscores (_). It must start with a letter and not exceed 64 characters.
+	//
 	// This parameter is required.
 	//
 	// example:

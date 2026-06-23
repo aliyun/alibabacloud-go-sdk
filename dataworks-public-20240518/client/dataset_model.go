@@ -39,6 +39,10 @@ type iDataset interface {
 
 type Dataset struct {
 	// The description of the dataset. The length cannot exceed 1024 characters.
+	//
+	// example:
+	//
+	// 测试数据集
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The creation time. This value is a UNIX timestamp in milliseconds.
 	//

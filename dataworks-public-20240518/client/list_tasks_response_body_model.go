@@ -176,9 +176,9 @@ type ListTasksResponseBodyPagingInfoTasks struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The instance generation mode. Valid values:
 	//
-	// 	- T+1
+	// - T+1
 	//
-	// 	- Immediately
+	// - Immediately
 	//
 	// example:
 	//
@@ -218,9 +218,9 @@ type ListTasksResponseBodyPagingInfoTasks struct {
 	//
 	// Valid values:
 	//
-	// 	- Prod: production environment
+	// - Prod: production environment
 	//
-	// 	- Dev: development environment
+	// - Dev: development environment
 	//
 	// example:
 	//
@@ -242,11 +242,11 @@ type ListTasksResponseBodyPagingInfoTasks struct {
 	//
 	// Valid values:
 	//
-	// 	- AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+	// - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
 	//
-	// 	- FailureAllowed: The task can be rerun only after it fails to run.
+	// - FailureAllowed: The task can be rerun only after it fails to run.
 	//
-	// 	- AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+	// - AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
 	//
 	// example:
 	//
@@ -629,11 +629,11 @@ type ListTasksResponseBodyPagingInfoTasksTrigger struct {
 	//
 	// Valid values:
 	//
-	// 	- Pause
+	// - Pause
 	//
-	// 	- Skip
+	// - Skip
 	//
-	// 	- Normal
+	// - Normal
 	//
 	// example:
 	//
@@ -649,9 +649,9 @@ type ListTasksResponseBodyPagingInfoTasksTrigger struct {
 	//
 	// Valid values:
 	//
-	// 	- Scheduler: scheduling cycle-based trigger
+	// - Scheduler: scheduling cycle-based trigger
 	//
-	// 	- Manual: manual trigger
+	// - Manual: manual trigger
 	//
 	// example:
 	//

@@ -44,11 +44,11 @@ type ListDeploymentPackageFilesRequest struct {
 	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
 	// The change type. Valid values:
 	//
-	// 	- 0: addition
+	// - 0: addition
 	//
-	// 	- 1: update
+	// - 1: update
 	//
-	// 	- 2: deletion
+	// - 2: deletion
 	//
 	// example:
 	//

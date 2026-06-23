@@ -59,6 +59,10 @@ type DataQualityRule struct {
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The rule name. The name can be up to 255 characters in length and can contain digits, letters, and punctuation marks.
+	//
+	// example:
+	//
+	// 表不能为空
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The DataWorks workspace ID.
 	//
@@ -375,6 +379,8 @@ func (s *DataQualityRuleCheckingConfigThresholds) Validate() error {
 }
 
 type DataQualityRuleCheckingConfigThresholdsCritical struct {
+	// 校验表达式
+	//
 	// example:
 	//
 	// 波动率类型规则使用，通过表达式来表示波动阈值。如：波动上升大于0.01： $checkValue > 0.01  波动下降大于0.01：$checkValue < -0.01   波动率绝对值：abs($checkValue) > 0.01
@@ -445,6 +451,8 @@ func (s *DataQualityRuleCheckingConfigThresholdsCritical) Validate() error {
 }
 
 type DataQualityRuleCheckingConfigThresholdsExpected struct {
+	// 阈值表达式
+	//
 	// example:
 	//
 	// 波动率类型规则使用，通过表达式来表示波动阈值。如：波动上升大于0.01： $checkValue > 0.01  波动下降大于0.01：$checkValue < -0.01   波动率绝对值：abs($checkValue) > 0.01
@@ -515,6 +523,8 @@ func (s *DataQualityRuleCheckingConfigThresholdsExpected) Validate() error {
 }
 
 type DataQualityRuleCheckingConfigThresholdsWarned struct {
+	// 阈值表达式
+	//
 	// example:
 	//
 	// 波动率类型规则使用，通过表达式来表示波动阈值。如：波动上升大于0.01： $checkValue > 0.01  波动下降大于0.01：$checkValue < -0.01   波动率绝对值：abs($checkValue) > 0.01

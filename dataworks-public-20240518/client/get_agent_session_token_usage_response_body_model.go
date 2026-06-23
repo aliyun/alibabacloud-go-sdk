@@ -16,8 +16,9 @@ type iGetAgentSessionTokenUsageResponseBody interface {
 }
 
 type GetAgentSessionTokenUsageResponseBody struct {
+	// The JSON-RPC result.
 	JsonRpcResponse *GetAgentSessionTokenUsageResponseBodyJsonRpcResponse `json:"JsonRpcResponse,omitempty" xml:"JsonRpcResponse,omitempty" type:"Struct"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -61,15 +62,20 @@ func (s *GetAgentSessionTokenUsageResponseBody) Validate() error {
 }
 
 type GetAgentSessionTokenUsageResponseBodyJsonRpcResponse struct {
+	// The ID provided by the requester, which is echoed in the response.
+	//
 	// example:
 	//
 	// 8212598228302533855
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. The value is always 2.0.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string                                                     `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Result  *GetAgentSessionTokenUsageResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// Token usage result.
+	Result *GetAgentSessionTokenUsageResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetAgentSessionTokenUsageResponseBodyJsonRpcResponse) String() string {
@@ -117,22 +123,32 @@ func (s *GetAgentSessionTokenUsageResponseBodyJsonRpcResponse) Validate() error 
 }
 
 type GetAgentSessionTokenUsageResponseBodyJsonRpcResponseResult struct {
+	// The cumulative number of cache-hit tokens.
+	//
 	// example:
 	//
 	// 4000
 	CachedTokens *int64 `json:"CachedTokens,omitempty" xml:"CachedTokens,omitempty"`
+	// **Cumulative number of completion tokens generated.**
+	//
 	// example:
 	//
 	// 2000
 	CompletionTokens *int64 `json:"CompletionTokens,omitempty" xml:"CompletionTokens,omitempty"`
+	// **Cumulative number of prompt tokens consumed.**
+	//
 	// example:
 	//
 	// 1000
 	PromptTokens *int64 `json:"PromptTokens,omitempty" xml:"PromptTokens,omitempty"`
+	// Cumulative number of tokens used for thoughts.
+	//
 	// example:
 	//
 	// 3000
 	ThoughtsTokens *int64 `json:"ThoughtsTokens,omitempty" xml:"ThoughtsTokens,omitempty"`
+	// The cumulative number of all tokens.
+	//
 	// example:
 	//
 	// 2000

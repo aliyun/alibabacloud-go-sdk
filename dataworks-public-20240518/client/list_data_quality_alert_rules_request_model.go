@@ -54,9 +54,9 @@ type ListDataQualityAlertRulesRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The list of sorting fields. Supports fields such as last modified time and creation time. Format: "SortField+SortOrder (Desc/Asc)", where Asc is the default. Valid values:
 	//
-	// 	- CreateTime (Desc/Asc)
+	// - CreateTime (Desc/Asc)
 	//
-	// 	- Id (Desc/Asc)
+	// - Id (Desc/Asc)
 	//
 	// example:
 	//

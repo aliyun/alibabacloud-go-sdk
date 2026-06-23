@@ -163,21 +163,21 @@ type CreateDataQualityAlertRuleRequestNotificationReceivers struct {
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// The type of alert recipients.
 	//
-	// 	- AliUid
+	// - AliUid
 	//
-	// 	- WebhookUrl
+	// - WebhookUrl
 	//
-	// 	- DingdingUrl
+	// - DingdingUrl
 	//
-	// 	- WeixinUrl
+	// - WeixinUrl
 	//
-	// 	- FeishuUrl
+	// - FeishuUrl
 	//
-	// 	- TaskOwner
+	// - TaskOwner
 	//
-	// 	- DataQualityScanOwner
+	// - DataQualityScanOwner
 	//
-	// 	- ShiftSchedule
+	// - ShiftSchedule
 	//
 	// This parameter is required.
 	//

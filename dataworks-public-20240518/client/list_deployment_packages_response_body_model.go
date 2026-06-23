@@ -186,13 +186,13 @@ type ListDeploymentPackagesResponseBodyDataDeployments struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The status of the deployment package. Valid values:
 	//
-	// 	- 0: It is ready.
+	// - 0: It is ready.
 	//
-	// 	- 1: It was successfully deployed.
+	// - 1: It was successfully deployed.
 	//
-	// 	- 2: It failed to be deployed.
+	// - 2: It failed to be deployed.
 	//
-	// 	- 6: It was rejected.
+	// - 6: It was rejected.
 	//
 	// example:
 	//

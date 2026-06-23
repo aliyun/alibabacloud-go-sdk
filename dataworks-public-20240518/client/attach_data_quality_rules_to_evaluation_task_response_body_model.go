@@ -22,11 +22,11 @@ type AttachDataQualityRulesToEvaluationTaskResponseBody struct {
 	//
 	// E6F0DBDD-5AD8-4870-A6A0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The value of the association is as follows:
+	// Indicates whether the association is successful. Valid values:
 	//
 	// - true: The call is successful.
 	//
-	// - false: the call failed.
+	// - false: The call fails.
 	//
 	// example:
 	//

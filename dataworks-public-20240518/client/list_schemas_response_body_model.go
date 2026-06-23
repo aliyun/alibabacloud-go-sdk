@@ -79,6 +79,8 @@ func (s *ListSchemasResponseBody) Validate() error {
 }
 
 type ListSchemasResponseBodyPagingInfo struct {
+	// Page number.
+	//
 	// example:
 	//
 	// 1
@@ -91,6 +93,8 @@ type ListSchemasResponseBodyPagingInfo struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The schemas.
 	Schemas []*Schema `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
+	// Total number of entries.
+	//
 	// example:
 	//
 	// 1

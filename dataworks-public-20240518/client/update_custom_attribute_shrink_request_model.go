@@ -26,30 +26,50 @@ type iUpdateCustomAttributeShrinkRequest interface {
 }
 
 type UpdateCustomAttributeShrinkRequest struct {
+	// The new description for the custom attribute. It must be 256 characters or less.
+	//
 	// example:
 	//
 	// test comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Whether to display the custom attribute in the UI.
+	//
 	// example:
 	//
 	// true
 	DisplayEnabled *bool `json:"DisplayEnabled,omitempty" xml:"DisplayEnabled,omitempty"`
+	// The new display name for the custom attribute. It must be 128 characters or less.
+	//
 	// example:
 	//
 	// 业务负责人
-	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The applicable entity types. This parameter supports specific types and wildcard formats, such as `*-table` and `*-column`. For example:
+	//
+	// - `dataworks-project`: A DataWorks workspace
+	//
+	// - `dataworks-dataset`: A DataWorks dataset
+	//
+	// - `maxcompute-table`: A MaxCompute table
+	//
+	// - `*-column`: All column types
 	EntityTypesShrink *string `json:"EntityTypes,omitempty" xml:"EntityTypes,omitempty"`
+	// The custom attribute ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// custom-attribute:biz_owner
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Whether the custom attribute can be used as a filter condition.
+	//
 	// example:
 	//
 	// false
-	SearchFilterEnabled *bool   `json:"SearchFilterEnabled,omitempty" xml:"SearchFilterEnabled,omitempty"`
-	ValueEnumsShrink    *string `json:"ValueEnums,omitempty" xml:"ValueEnums,omitempty"`
+	SearchFilterEnabled *bool `json:"SearchFilterEnabled,omitempty" xml:"SearchFilterEnabled,omitempty"`
+	// The enumerated values. This applies only to custom attributes of the `enum` type. You can only append new values during an update.
+	ValueEnumsShrink *string `json:"ValueEnums,omitempty" xml:"ValueEnums,omitempty"`
 }
 
 func (s UpdateCustomAttributeShrinkRequest) String() string {

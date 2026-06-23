@@ -16,9 +16,9 @@ type iGetProjectMemberResponseBody interface {
 }
 
 type GetProjectMemberResponseBody struct {
-	// The details about the member in the workspace.
+	// The details of the Workspace member.
 	ProjectMember *GetProjectMemberResponseBodyProjectMember `json:"ProjectMember,omitempty" xml:"ProjectMember,omitempty" type:"Struct"`
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// The request ID. Use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,30 +62,31 @@ func (s *GetProjectMemberResponseBody) Validate() error {
 }
 
 type GetProjectMemberResponseBodyProjectMember struct {
-	// The DataWorks workspace ID.
+	// The ID of the Workspace.
 	//
 	// example:
 	//
 	// 88757
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The roles that are assigned to the member in the workspace.
+	// Roles assigned to the Workspace member.
 	Roles []*GetProjectMemberResponseBodyProjectMemberRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// The status of the member.
+	// The status of the Workspace member.
 	//
-	// 	- Normal
+	// - Normal: The member is active.
 	//
-	// 	- Forbidden
+	// - Disabled: The member is disabled.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the account used by the member in the workspace.
+	// The ID of the user.
 	//
 	// example:
 	//
 	// 123422344899
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The name of the user.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -156,43 +157,45 @@ func (s *GetProjectMemberResponseBodyProjectMember) Validate() error {
 }
 
 type GetProjectMemberResponseBodyProjectMemberRoles struct {
-	// The code of the role. Valid values:
+	// The code of the Workspace role.
 	//
-	// 	- role_project_admin: Workspace Administrator
+	// The built-in system roles in a DataWorks Workspace include:
 	//
-	// 	- role_project_dev: Develop
+	// - role_project_admin: Workspace Administrator
 	//
-	// 	- role_project_dg_admin: Data Governance Administrator
+	// - role_project_dev: Developer
 	//
-	// 	- role_project_guest: Visitor
+	// - role_project_dg_admin: Data Governance Administrator
 	//
-	// 	- role_project_security: Security Administrator
+	// - role_project_guest: Guest
 	//
-	// 	- role_project_deploy: Deploy
+	// - role_project_security: Security Administrator
 	//
-	// 	- role_project_owner: Workspace Owner
+	// - role_project_deploy: Deployment
 	//
-	// 	- role_project_data_analyst: Data Analyst
+	// - role_project_owner: Workspace Owner
 	//
-	// 	- role_project_pe: O\\&M
+	// - role_project_data_analyst: Data Analyst
 	//
-	// 	- role_project_erd: Model Designer
+	// - role_project_pe: O\\&M (Operations & Maintenance)
+	//
+	// - role_project_erd: Model Designer
 	//
 	// example:
 	//
 	// role_project_guest
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the role.
+	// The name of the Workspace role.
 	//
 	// example:
 	//
 	// Visitors
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the role. Valid values:
+	// The type of the Workspace role.
 	//
-	// 	- UserCustom: custom role
+	// - UserCustom: A user-defined role.
 	//
-	// 	- System: built-in role
+	// - System: A built-in System Role.
 	//
 	// example:
 	//

@@ -20,18 +20,25 @@ type iListSkillsRequest interface {
 }
 
 type ListSkillsRequest struct {
+	// The maximum number of results to return per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token for the next page of results. Omit this for the first request. For subsequent requests, set this to the `NextToken` from the previous response.
+	//
 	// example:
 	//
 	// 5
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The search keyword for a fuzzy match on Skill names.
+	//
 	// example:
 	//
 	// analysis
-	Q          *string   `json:"Q,omitempty" xml:"Q,omitempty"`
+	Q *string `json:"Q,omitempty" xml:"Q,omitempty"`
+	// Filters the results by visibility level. You can specify multiple values.
 	Visibility []*string `json:"Visibility,omitempty" xml:"Visibility,omitempty" type:"Repeated"`
 }
 

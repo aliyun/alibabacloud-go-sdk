@@ -14,6 +14,8 @@ type iUpdateSecurityStrategyResponseBody interface {
 }
 
 type UpdateSecurityStrategyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc5df3a17***903790e8e8a

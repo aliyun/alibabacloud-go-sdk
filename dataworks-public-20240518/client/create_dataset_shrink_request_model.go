@@ -34,19 +34,19 @@ type CreateDatasetShrinkRequest struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The data type. Valid values:
 	//
-	// 	- COMMON: Common (Default)
+	// - COMMON: Common (Default)
 	//
-	// 	- PIC
+	// - PIC
 	//
-	// 	- TEXT
+	// - TEXT
 	//
-	// 	- TABLE
+	// - TABLE
 	//
-	// 	- VIDEO
+	// - VIDEO
 	//
-	// 	- AUDIO
+	// - AUDIO
 	//
-	// 	- INDEX
+	// - INDEX
 	//
 	// example:
 	//
@@ -80,29 +80,29 @@ type CreateDatasetShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The storage type. Currently supported values:
 	//
-	// 	- OSS
+	// - OSS
 	//
-	// 	- NAS: General-purpose NAS file systems
+	// - NAS: General-purpose NAS file systems
 	//
-	// 	- EXTREMENAS: Extreme NAS file systems
+	// - EXTREMENAS: Extreme NAS file systems
 	//
-	// 	- DLF_LANCE: Data Lake Formation
+	// - DLF_LANCE: Data Lake Formation
 	//
 	// Valid values:
 	//
-	// 	- NAS: General-purpose NAS file systems
+	// - NAS: General-purpose NAS file systems
 	//
-	// 	- MAXCOMPUTE: MaxCompute table
+	// - MAXCOMPUTE: MaxCompute table
 	//
-	// 	- CPFS: Cloud Parallel File Storage
+	// - CPFS: Cloud Parallel File Storage
 	//
-	// 	- BMCPFS: CPFS for Lingjun
+	// - BMCPFS: CPFS for Lingjun
 	//
-	// 	- EXTREMENAS: Extreme NAS file systems
+	// - EXTREMENAS: Extreme NAS file systems
 	//
-	// 	- OSS: Object Storage Service
+	// - OSS: Object Storage Service
 	//
-	// 	- DLF_LANCE: Data Lake Formation.
+	// - DLF_LANCE: Data Lake Formation.
 	//
 	// This parameter is required.
 	//

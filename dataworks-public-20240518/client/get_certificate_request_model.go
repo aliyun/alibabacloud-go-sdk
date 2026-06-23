@@ -16,7 +16,7 @@ type iGetCertificateRequest interface {
 }
 
 type GetCertificateRequest struct {
-	// The ID of the certificate file.
+	// The unique ID of the certificate file.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetCertificateRequest struct {
 	//
 	// 676303114031776
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the workspace to which the certificate file belongs.
+	// The ID of the project to which the certificate file belongs.
 	//
 	// This parameter is required.
 	//

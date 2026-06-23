@@ -24,7 +24,7 @@ type iGetFileVersionResponseBody interface {
 }
 
 type GetFileVersionResponseBody struct {
-	// The details of the file version.
+	// Version details of the file.
 	Data *GetFileVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -38,23 +38,23 @@ type GetFileVersionResponseBody struct {
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code.
+	// HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The unique ID of this request. If an error occurs, you can troubleshoot the issue using this ID.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the API call succeeded.
 	//
-	// 	- true
+	// - true: Succeeded.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -134,107 +134,107 @@ func (s *GetFileVersionResponseBody) Validate() error {
 }
 
 type GetFileVersionResponseBodyData struct {
-	// The type of the change to the file of the current version. Valid values: CREATE, UPDATE, and DELETE.
+	// The change type of this file version, including CREATE, UPDATE, and DELETE.
 	//
 	// example:
 	//
 	// UPDATE
 	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
-	// The description of the file version.
+	// Description of this file version.
 	//
 	// example:
 	//
 	// Second version submission
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The time when the file version was generated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// UNIX timestamp (in milliseconds) when the file version was generated.
 	//
 	// example:
 	//
 	// 1593881265000
 	CommitTime *int64 `json:"CommitTime,omitempty" xml:"CommitTime,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to generate the file of the current version.
+	// User ID of the Alibaba Cloud user who generated this file version.
 	//
 	// example:
 	//
 	// 7384234****
 	CommitUser *string `json:"CommitUser,omitempty" xml:"CommitUser,omitempty"`
-	// The code in the file of the current version.
+	// The code of the file for this version.
 	//
 	// example:
 	//
 	// SHOW TABLES;
 	FileContent *string `json:"FileContent,omitempty" xml:"FileContent,omitempty"`
-	// The name of the file of the current version.
+	// File name used to generate this file version.
 	//
 	// example:
 	//
 	// ods_user_info_d
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The basic information about the file of the current version.
+	// Basic information of the file used to generate this file version.
 	//
 	// example:
 	//
 	// {"fileName":"ods_user_info_d","fileType":10}
 	FilePropertyContent *string `json:"FilePropertyContent,omitempty" xml:"FilePropertyContent,omitempty"`
-	// The file version.
+	// The version of the file.
 	//
 	// example:
 	//
 	// 2
 	FileVersion *int32 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
-	// Indicates whether the version is the latest version in the production environment. Valid values:
+	// Indicates whether this file version is the latest version in the current production environment.
 	//
-	// 	- true
+	// - true: It is the latest version.
 	//
-	// 	- false
+	// - false: It is not the latest version.
 	//
 	// example:
 	//
 	// true
 	IsCurrentProd *bool `json:"IsCurrentProd,omitempty" xml:"IsCurrentProd,omitempty"`
-	// The scheduling configurations of the node that corresponds to the file of the current version.
+	// The scan configuration at the time this file version was generated.
 	//
 	// example:
 	//
 	// {"cycleType":0,"cronExpress":"00 05 00 	- 	- ?"}
 	NodeContent *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
-	// The ID of the node that corresponds to the file version.
+	// The ID of the scheduling task corresponding to the generation of this file version.
 	//
 	// example:
 	//
 	// 3000001
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The status of the file version. Valid values:
+	// Current status of the file version. Valid values:
 	//
-	// 	- COMMITTING
+	// - COMMITTING (Submitting)
 	//
-	// 	- COMMITTED or CHECK_OK
+	// - COMMITTED or CHECK_OK (Submitted)
 	//
-	// 	- PACKAGED
+	// - PACKAGED (Preparing for publish)
 	//
-	// 	- DEPLOYING
+	// - DEPLOYING (In Publish)
 	//
-	// 	- DEPLOYED
+	// - DEPLOYED (Published)
 	//
-	// 	- CANCELLED
+	// - CANCELLED (Publish canceled)
 	//
 	// example:
 	//
 	// COMMITTED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The module to which the file belongs. Valid values:
+	// Function module to which the file belongs. Valid values:
 	//
-	// 	- 0: NORMAL, which indicates that the file is used for DataStudio.
+	// - 0: NORMAL (Data Development)
 	//
-	// 	- 1: MANUAL, which indicates that the file is used for a manually triggered node.
+	// - 1: MANUAL (one-time task)
 	//
-	// 	- 2: MANUAL_BIZ, which indicates that the file is used for a manually triggered workflow.
+	// - 2: MANUAL_BIZ (manual pipeline)
 	//
-	// 	- 3: SKIP, which indicates that the file is used for a dry-run node in DataStudio.
+	// - 3: SKIP (Dry-Run scheduling in Data Development)
 	//
-	// 	- 10: ADHOCQUERY, which indicates that the file is used for an ad hoc query.
+	// - 10: ADHOCQUERY (Ad Hoc Query)
 	//
-	// 	- 30: COMPONENT, which indicates that the file is used for a script template.
+	// - 30: COMPONENT (widget Management)
 	//
 	// example:
 	//

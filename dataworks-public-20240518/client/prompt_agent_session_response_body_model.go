@@ -28,27 +28,50 @@ type iPromptAgentSessionResponseBody interface {
 }
 
 type PromptAgentSessionResponseBody struct {
+	// The error information returned in the SSE frame. The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com/protocol/prompt-turn
+	//
+	// example:
+	//
+	// {"code": 400, "errorCode": "0x50000000001", "message": "not exist session", "data": null}
 	Error interface{} `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The ID passed in by the caller. The value is returned as-is in the response.
+	//
 	// example:
 	//
 	// 631478864897630XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. Fixed value: 2.0.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string     `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Method  *string     `json:"Method,omitempty" xml:"Method,omitempty"`
-	Params  interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The SSE method. The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com/protocol/prompt-turn
+	//
+	// example:
+	//
+	// session/update
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The SSE params. The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com/protocol/prompt-turn
+	//
+	// example:
+	//
+	// {"sessionId":"af4f5ef8-e8f5-481c-ad1f-94886c6c0aed","update":{"sessionUpdate":"agent_message_chunk","content":{"type":"text","text":"hello world"}}}
+	Params interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
 	// Id of the request
 	//
 	// example:
 	//
 	// D5D70885-7CC7-594A-80C7-2EF1B00FFB4B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The SSE frame result set. The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com/protocol/prompt-turn
+	//
 	// example:
 	//
-	// end_turn
+	// {"stopReason":"end_turn"}
 	Result interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The timestamp.
+	//
 	// example:
 	//
 	// 1747447032

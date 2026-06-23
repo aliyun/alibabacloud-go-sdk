@@ -48,7 +48,7 @@ type UpdateDIAlarmRuleShrinkRequest struct {
 	//
 	// example:
 	//
-	// The description of the alert rule.
+	// Alert rule description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable the alert rule. By default, the alert rule is disabled.
 	//
@@ -64,15 +64,15 @@ type UpdateDIAlarmRuleShrinkRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The metric type in the alert rule. Valid values:
 	//
-	// 	- Heartbeat
+	// - Heartbeat
 	//
-	// 	- FailoverCount
+	// - FailoverCount
 	//
-	// 	- Delay
+	// - Delay
 	//
-	// 	- DdlReport
+	// - DdlReport
 	//
-	// 	- ResourceUtilization
+	// - ResourceUtilization
 	//
 	// example:
 	//

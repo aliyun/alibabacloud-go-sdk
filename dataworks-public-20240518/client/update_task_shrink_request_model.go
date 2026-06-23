@@ -68,9 +68,9 @@ type UpdateTaskShrinkRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The project environment.
 	//
-	// 	- Prod
+	// - Prod
 	//
-	// 	- Dev
+	// - Dev
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type UpdateTaskShrinkRequest struct {
 	InputsShrink *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
 	// The instance generation mode.
 	//
-	// 	- T+1: the next day
+	// - T+1: the next day
 	//
-	// 	- Immediately Note: Scheduled instances are generated only if the scheduled time is at least 10 minutes after the publish time. Real-time instance generation is unavailable during the global instance generation period (23:30 to 24:00). You can publish nodes during this period, but instances for the new nodes will not be generated automatically.
+	// - Immediately Note: Scheduled instances are generated only if the scheduled time is at least 10 minutes after the publish time. Real-time instance generation is unavailable during the global instance generation period (23:30 to 24:00). You can publish nodes during this period, but instances for the new nodes will not be generated automatically.
 	//
 	// example:
 	//
@@ -114,15 +114,15 @@ type UpdateTaskShrinkRequest struct {
 	//
 	// example:
 	//
-	// 60
+	// 60000
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
 	// The rerun mode. Valid values:
 	//
-	// 	- AllDenied: The task cannot be rerun.
+	// - AllDenied: The task cannot be rerun.
 	//
-	// 	- FailureAllowed: The task can be rerun only after it fails.
+	// - FailureAllowed: The task can be rerun only after it fails.
 	//
-	// 	- AllAllowed: The task can always be rerun.
+	// - AllAllowed: The task can always be rerun.
 	//
 	// example:
 	//

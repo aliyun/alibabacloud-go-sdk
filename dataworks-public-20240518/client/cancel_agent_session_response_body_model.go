@@ -16,8 +16,9 @@ type iCancelAgentSessionResponseBody interface {
 }
 
 type CancelAgentSessionResponseBody struct {
+	// The JSON-RPC response.
 	JsonRpcResponse *CancelAgentSessionResponseBodyJsonRpcResponse `json:"JsonRpcResponse,omitempty" xml:"JsonRpcResponse,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,15 +62,20 @@ func (s *CancelAgentSessionResponseBody) Validate() error {
 }
 
 type CancelAgentSessionResponseBodyJsonRpcResponse struct {
+	// The ID passed by the requester. The value is returned as-is in the response.
+	//
 	// example:
 	//
 	// 7675839888324361477
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. Fixed value: 2.0.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string                                              `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Result  *CancelAgentSessionResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The result object of the session cancellation.
+	Result *CancelAgentSessionResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CancelAgentSessionResponseBodyJsonRpcResponse) String() string {
@@ -117,6 +123,8 @@ func (s *CancelAgentSessionResponseBodyJsonRpcResponse) Validate() error {
 }
 
 type CancelAgentSessionResponseBodyJsonRpcResponseResult struct {
+	// The session ID.
+	//
 	// example:
 	//
 	// session-d5d549fe4c2c4180a9814fb74190f502

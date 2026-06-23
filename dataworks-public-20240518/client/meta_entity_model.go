@@ -32,24 +32,55 @@ type iMetaEntity interface {
 }
 
 type MetaEntity struct {
-	Attributes       map[string]*string   `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	Comment          *string              `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	CreateTime       *int64               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Entity attributes. Complex values are represented as JSON strings.
+	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// Comment
+	//
+	// example:
+	//
+	// this is a comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Creation time as a millisecond-level timestamp
+	//
+	// example:
+	//
+	// 1780553640613
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Custom attribute values. The key is the custom attribute identifier. The value is a list of attribute values.
 	CustomAttributes map[string][]*string `json:"CustomAttributes,omitempty" xml:"CustomAttributes,omitempty"`
+	// Entity type
+	//
 	// example:
 	//
 	// custom_entity-customer_api
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// Entity ID
+	//
 	// example:
 	//
 	// custom_entity-customer_api:api_001
-	Id            *string        `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Attribute definition of the custom entity.
+	//
+	// 	Notice: For historical reasons, this property is not returned and its value is empty. We recommend that you use the GetMetaEntityDef API to obtain the entity type definition.
 	MetaEntityDef *MetaEntityDef `json:"MetaEntityDef,omitempty" xml:"MetaEntityDef,omitempty"`
-	ModifyTime    *int64         `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Modification time as a millisecond-level timestamp
+	//
+	// example:
+	//
+	// 1763380628000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Entity name
+	//
 	// example:
 	//
 	// api_001
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Owner ID. The default value is the Alibaba Cloud UID of the creator.
+	//
+	// example:
+	//
+	// 207924799988354
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 

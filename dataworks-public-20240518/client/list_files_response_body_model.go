@@ -52,9 +52,9 @@ type ListFilesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call succeeded. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -222,9 +222,9 @@ type ListFilesResponseBodyDataFiles struct {
 	AbsoluteFolderPath *string `json:"AbsoluteFolderPath,omitempty" xml:"AbsoluteFolderPath,omitempty"`
 	// Specifies whether automatic parsing is enabled for the file. Valid values:
 	//
-	// 	- true: The file automatically parses code.
+	// - true: The file automatically parses code.
 	//
-	// 	- false: The file does not automatically parse code.
+	// - false: The file does not automatically parse code.
 	//
 	// This parameter corresponds to Analyze Code when you set Dependencies to Same Cycle in the scheduling configuration of a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
@@ -350,17 +350,17 @@ type ListFilesResponseBodyDataFiles struct {
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The functional module to which the file belongs. Valid values:
 	//
-	// 	- NORMAL: Data Studio
+	// - NORMAL: Data Studio
 	//
-	// 	- MANUAL: Manually triggered node
+	// - MANUAL: Manually triggered node
 	//
-	// 	- MANUAL_BIZ: Manually triggered workflow
+	// - MANUAL_BIZ: Manually triggered workflow
 	//
-	// 	- SKIP: Dry-run scheduling in Data Studio
+	// - SKIP: Dry-run scheduling in Data Studio
 	//
-	// 	- ADHOCQUERY: Ad hoc query
+	// - ADHOCQUERY: Ad hoc query
 	//
-	// 	- COMPONENT: Component management
+	// - COMPONENT: Component management
 	//
 	// example:
 	//

@@ -88,11 +88,11 @@ type GetJobStatusResponseBodyJobStatus struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The type of the asynchronous task. Valid values:
 	//
-	// 	- **Create**: The asynchronous task is used to create an object.
+	// - **Create**: The asynchronous task is used to create an object.
 	//
-	// 	- **Update**: The asynchronous task is used to update an object.
+	// - **Update**: The asynchronous task is used to update an object.
 	//
-	// 	- **Cancel**: The asynchronous task is used to cancel an operation.
+	// - **Cancel**: The asynchronous task is used to cancel an operation.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ type GetJobStatusResponseBodyJobStatus struct {
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// The status of the asynchronous task. Valid values:
 	//
-	// 	- **Success**
+	// - **Success**
 	//
-	// 	- **Fail**
+	// - **Fail**
 	//
-	// 	- **Cancel**
+	// - **Cancel**
 	//
-	// 	- **Running**
+	// - **Running**
 	//
 	// example:
 	//

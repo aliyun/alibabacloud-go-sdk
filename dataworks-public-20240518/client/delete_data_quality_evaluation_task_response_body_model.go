@@ -22,11 +22,11 @@ type DeleteDataQualityEvaluationTaskResponseBody struct {
 	//
 	// 0bc1ec92159376****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the deletion is successful.
+	// Indicates whether the deletion was successful. Valid values:
 	//
-	// - true: Successful
+	// - true: successful
 	//
-	// - false: Failed
+	// - false: failed
 	//
 	// example:
 	//

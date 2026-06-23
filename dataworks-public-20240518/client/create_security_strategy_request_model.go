@@ -30,37 +30,61 @@ type iCreateSecurityStrategyRequest interface {
 }
 
 type CreateSecurityStrategyRequest struct {
+	// A client-generated token that ensures request idempotency, preventing duplicate operations if you retry the request.
+	//
 	// example:
 	//
 	// ABFUOEUOTRTRJKE
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The content of the strategy. This value is constrained by the `SecurityStrategySchema`.
+	//
 	// This parameter is required.
 	Content *CreateSecurityStrategyRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// **The control scope. Valid values: Workspace and Tenant.**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Tenant
 	ControlDwScope *string `json:"ControlDwScope,omitempty" xml:"ControlDwScope,omitempty"`
+	// **Control module**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DataQuery
 	ControlModule *string `json:"ControlModule,omitempty" xml:"ControlModule,omitempty"`
+	// **Control submodule**
+	//
 	// example:
 	//
 	// MyCatalog
 	ControlSubModule *string `json:"ControlSubModule,omitempty" xml:"ControlSubModule,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// **Strategy description**
+	//
+	// example:
+	//
+	// 控制数据分析模块的查询结果安全行为
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// **Strategy name**
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 默认数据分析策略
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// **Schema template name**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DataQuerySecurityStrategySchema
-	SchemaName *string  `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// A list of associated workspace IDs.
 	Workspaces []*int64 `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
 }
 
@@ -163,36 +187,58 @@ func (s *CreateSecurityStrategyRequest) Validate() error {
 }
 
 type CreateSecurityStrategyRequestContent struct {
+	// The control scope. This corresponds to the `controlDwScope` property of the `SecurityStrategySchema` associated with the current strategy.
+	//
 	// example:
 	//
 	// Tenant
 	ControlDwScope *string `json:"ControlDwScope,omitempty" xml:"ControlDwScope,omitempty"`
+	// The control module. This corresponds to the `controlModule` property of the `SecurityStrategySchema` associated with the current strategy.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DataStudio
 	ControlModule *string `json:"ControlModule,omitempty" xml:"ControlModule,omitempty"`
+	// The control submodule. This corresponds to the `controlSubModule` property of the `SecurityStrategySchema` associated with the current strategy.
+	//
 	// example:
 	//
 	// MyCatalog
-	ControlSubModule *string                                            `json:"ControlSubModule,omitempty" xml:"ControlSubModule,omitempty"`
-	Controllers      []*CreateSecurityStrategyRequestContentControllers `json:"Controllers,omitempty" xml:"Controllers,omitempty" type:"Repeated"`
-	DisplayName      *string                                            `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	ControlSubModule *string `json:"ControlSubModule,omitempty" xml:"ControlSubModule,omitempty"`
+	// A list of controllers.
+	//
+	// **Note:*	- Valid controllers depend on the selected schema. For more information, see the controller definitions and the list of controllers for each schema.
+	Controllers []*CreateSecurityStrategyRequestContentControllers `json:"Controllers,omitempty" xml:"Controllers,omitempty" type:"Repeated"`
+	// The `displayName` property of the `SecurityStrategySchema` associated with the current strategy.
+	//
+	// example:
+	//
+	// 数据分析
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The `displayNameEn` property of the `SecurityStrategySchema` associated with the current strategy.
+	//
 	// example:
 	//
 	// Data Analysis
 	DisplayNameEn *string `json:"DisplayNameEn,omitempty" xml:"DisplayNameEn,omitempty"`
+	// The `name` property of the `SecurityStrategySchema` associated with the current strategy.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DataQuerySecurityStrategySchema
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The `systemPolicyDisplayName` property of the `SecurityStrategySchema` associated with the current strategy.
+	//
 	// example:
 	//
 	// Default system generate data query policy
 	SystemPolicyDisplayName *string `json:"SystemPolicyDisplayName,omitempty" xml:"SystemPolicyDisplayName,omitempty"`
+	// The `systemPolicyName` property of the `SecurityStrategySchema` associated with the current strategy.
+	//
 	// example:
 	//
 	// SYSTEM_GENERATE_DEFAULT_DATA_QUERY
@@ -302,43 +348,70 @@ func (s *CreateSecurityStrategyRequestContent) Validate() error {
 }
 
 type CreateSecurityStrategyRequestContentControllers struct {
+	// The default value for Basic Edition.
+	//
 	// example:
 	//
 	// 0
-	BasicEditionDefaultValue  interface{} `json:"BasicEditionDefaultValue,omitempty" xml:"BasicEditionDefaultValue,omitempty"`
-	BasicEditionIntervalValue []*int32    `json:"BasicEditionIntervalValue,omitempty" xml:"BasicEditionIntervalValue,omitempty" type:"Repeated"`
+	BasicEditionDefaultValue interface{} `json:"BasicEditionDefaultValue,omitempty" xml:"BasicEditionDefaultValue,omitempty"`
+	// The valid value interval for Basic Edition, in the format `[min, max]`.
+	BasicEditionIntervalValue []*int32 `json:"BasicEditionIntervalValue,omitempty" xml:"BasicEditionIntervalValue,omitempty" type:"Repeated"`
+	// The controller identifier. For valid values, see the list of controllers for each schema.
+	//
 	// example:
 	//
 	// viewCount
 	Controller *string `json:"Controller,omitempty" xml:"Controller,omitempty"`
+	// The value type. Valid values: `Boolean`, `Integer`, `Long`, and `String`.
+	//
 	// example:
 	//
 	// Integer
 	ControllerValueType *string `json:"ControllerValueType,omitempty" xml:"ControllerValueType,omitempty"`
-	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// 查询结果-单次展示记录值上限
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The English display name.
+	//
 	// example:
 	//
 	// Query Results - Single Display Record Limit
 	DisplayNameEn *string `json:"DisplayNameEn,omitempty" xml:"DisplayNameEn,omitempty"`
+	// Specifies whether to enable this controller.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The default value for Enterprise Edition.
+	//
 	// example:
 	//
 	// 500000
-	EnterpriseEditionDefaultValue  interface{} `json:"EnterpriseEditionDefaultValue,omitempty" xml:"EnterpriseEditionDefaultValue,omitempty"`
-	EnterpriseEditionIntervalValue []*int32    `json:"EnterpriseEditionIntervalValue,omitempty" xml:"EnterpriseEditionIntervalValue,omitempty" type:"Repeated"`
+	EnterpriseEditionDefaultValue interface{} `json:"EnterpriseEditionDefaultValue,omitempty" xml:"EnterpriseEditionDefaultValue,omitempty"`
+	// The valid value interval for Enterprise Edition, in the format `[min, max]`.
+	EnterpriseEditionIntervalValue []*int32 `json:"EnterpriseEditionIntervalValue,omitempty" xml:"EnterpriseEditionIntervalValue,omitempty" type:"Repeated"`
+	// The default value for Professional Edition.
+	//
 	// example:
 	//
 	// 200000
-	ProfessionalEditionDefaultValue  interface{} `json:"ProfessionalEditionDefaultValue,omitempty" xml:"ProfessionalEditionDefaultValue,omitempty"`
-	ProfessionalEditionIntervalValue []*int32    `json:"ProfessionalEditionIntervalValue,omitempty" xml:"ProfessionalEditionIntervalValue,omitempty" type:"Repeated"`
+	ProfessionalEditionDefaultValue interface{} `json:"ProfessionalEditionDefaultValue,omitempty" xml:"ProfessionalEditionDefaultValue,omitempty"`
+	// The valid value interval for Professional Edition, in the format `[min, max]`.
+	ProfessionalEditionIntervalValue []*int32 `json:"ProfessionalEditionIntervalValue,omitempty" xml:"ProfessionalEditionIntervalValue,omitempty" type:"Repeated"`
+	// The default value for Standard Edition.
+	//
 	// example:
 	//
 	// 100000
-	StandardEditionDefaultValue  interface{} `json:"StandardEditionDefaultValue,omitempty" xml:"StandardEditionDefaultValue,omitempty"`
-	StandardEditionIntervalValue []*int32    `json:"StandardEditionIntervalValue,omitempty" xml:"StandardEditionIntervalValue,omitempty" type:"Repeated"`
+	StandardEditionDefaultValue interface{} `json:"StandardEditionDefaultValue,omitempty" xml:"StandardEditionDefaultValue,omitempty"`
+	// The valid value interval for Standard Edition, in the format `[min, max]`.
+	StandardEditionIntervalValue []*int32 `json:"StandardEditionIntervalValue,omitempty" xml:"StandardEditionIntervalValue,omitempty" type:"Repeated"`
+	// The user-configured value. The type of this value depends on the `ControllerValueType` parameter.
+	//
 	// example:
 	//
 	// 10

@@ -26,30 +26,44 @@ type iListMetaEntityDefsRequest interface {
 }
 
 type ListMetaEntityDefsRequest struct {
+	// A keyword to search for in the description. The system performs a fuzzy match.
+	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the type definition. This parameter supports partial matching.
+	//
 	// example:
 	//
 	// CustomReport
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Filters the results by extension mode. Valid values: `NONE` and `TABLE`.
+	//
 	// example:
 	//
 	// NONE
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// The sort order. Valid values: `Asc` and `Desc`.
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sort field. Valid values: `Name`, `CreateTime`, and `ModifyTime`.
+	//
 	// example:
 	//
 	// CreateTime

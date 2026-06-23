@@ -14,6 +14,8 @@ type iGetSecurityStrategyRequest interface {
 }
 
 type GetSecurityStrategyRequest struct {
+	// **The ID of the security strategy.**
+	//
 	// This parameter is required.
 	//
 	// example:

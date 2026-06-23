@@ -16,7 +16,10 @@ type iListMcpServersResponseBody interface {
 }
 
 type ListMcpServersResponseBody struct {
+	// The paging information.
 	PagingInfo *ListMcpServersResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 824F80BA-1778-5D8A-BAFF-668A4D9C4CC7
@@ -59,10 +62,26 @@ func (s *ListMcpServersResponseBody) Validate() error {
 }
 
 type ListMcpServersResponseBodyPagingInfo struct {
-	MaxResults *int32                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The maximum number of results returned on the current page.****
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A list of MCP Server objects.
 	McpServers []*ListMcpServersResponseBodyPagingInfoMcpServers `json:"McpServers,omitempty" xml:"McpServers,omitempty" type:"Repeated"`
-	NextToken  *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The token for the next page of results. A null value indicates that all results have been returned.****
+	//
+	// example:
+	//
+	// 2
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total count of entries that match the filter criteria.
+	//
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListMcpServersResponseBodyPagingInfo) String() string {
@@ -123,28 +142,44 @@ func (s *ListMcpServersResponseBodyPagingInfo) Validate() error {
 }
 
 type ListMcpServersResponseBodyPagingInfoMcpServers struct {
-	Config    *ListMcpServersResponseBodyPagingInfoMcpServersConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	CreatorId *string                                               `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The connection configuration of the MCP Server.
+	Config *ListMcpServersResponseBodyPagingInfoMcpServersConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The creator ID.
+	//
+	// example:
+	//
+	// 805298765622151
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The creation time, as a millisecond timestamp.****
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 1780555634000
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The last modified time, as a millisecond timestamp.****
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 1780555634000
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The ID of the user who last modified the server.
+	//
 	// example:
 	//
 	// 123456
 	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// The name of the MCP Server.
+	//
 	// example:
 	//
 	// my-mcp-server
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The visibility level.****
+	//
 	// example:
 	//
 	// TENANT
@@ -232,11 +267,20 @@ func (s *ListMcpServersResponseBodyPagingInfoMcpServers) Validate() error {
 }
 
 type ListMcpServersResponseBodyPagingInfoMcpServersConfig struct {
+	// The custom headers.
+	//
+	// example:
+	//
+	// {}
 	CustomHeaders map[string]interface{} `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty"`
+	// The transport protocol.
+	//
 	// example:
 	//
 	// SSE
 	Transport *string `json:"Transport,omitempty" xml:"Transport,omitempty"`
+	// The service address of the MCP Server.
+	//
 	// example:
 	//
 	// https://example.com/mcp/sse

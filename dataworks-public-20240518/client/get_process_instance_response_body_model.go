@@ -16,7 +16,10 @@ type iGetProcessInstanceResponseBody interface {
 }
 
 type GetProcessInstanceResponseBody struct {
+	// Details of the approval process instance.
 	ProcessInstance *GetProcessInstanceResponseBodyProcessInstance `json:"ProcessInstance,omitempty" xml:"ProcessInstance,omitempty" type:"Struct"`
+	// The request ID. Use this ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 0bc5df3a17****903790e8e8a
@@ -59,34 +62,66 @@ func (s *GetProcessInstanceResponseBody) Validate() error {
 }
 
 type GetProcessInstanceResponseBodyProcessInstance struct {
+	// The user ID of the applicant.
+	//
 	// example:
 	//
 	// 1107558004253538
 	Applicator *string `json:"Applicator,omitempty" xml:"Applicator,omitempty"`
+	// The username of the applicant\\"s Alibaba Cloud account.
+	//
 	// example:
 	//
 	// test_account
-	ApplicatorName            *string                                                                 `json:"ApplicatorName,omitempty" xml:"ApplicatorName,omitempty"`
+	ApplicatorName *string `json:"ApplicatorName,omitempty" xml:"ApplicatorName,omitempty"`
+	// The approval policy applied to this process instance.
 	ApprovalProcessDefinition *GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinition `json:"ApprovalProcessDefinition,omitempty" xml:"ApprovalProcessDefinition,omitempty" type:"Struct"`
-	ApprovalTasks             []*GetProcessInstanceResponseBodyProcessInstanceApprovalTasks           `json:"ApprovalTasks,omitempty" xml:"ApprovalTasks,omitempty" type:"Repeated"`
+	// The approval tasks.
+	ApprovalTasks []*GetProcessInstanceResponseBodyProcessInstanceApprovalTasks `json:"ApprovalTasks,omitempty" xml:"ApprovalTasks,omitempty" type:"Repeated"`
+	// The authorization failure message.
+	//
+	// **Note**: This parameter is returned only if the authorization fails.
+	//
 	// example:
 	//
 	// S-400007:ODPS acl auth failed. odps table acl auth failed
 	AuthErrorMessage *string `json:"AuthErrorMessage,omitempty" xml:"AuthErrorMessage,omitempty"`
+	// The process instance ID.
+	//
 	// example:
 	//
 	// 332066440109224007
-	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The reason for the request.
+	//
+	// example:
+	//
+	// 业务需要
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The time when the approval process started.
+	//
 	// example:
 	//
 	// 2026-05-25 10:20:18 CST
 	StartTime interface{} `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the process instance. Valid values:
+	//
+	// - `Completed`: The request is approved.
+	//
+	// - `Running`: The request is in the approval process.
+	//
+	// - `Aborted`: The request is withdrawn.
+	//
 	// example:
 	//
 	// completed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The name of the process instance.
+	//
+	// example:
+	//
+	// MaxCompute表权限申请
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetProcessInstanceResponseBodyProcessInstance) String() string {
@@ -206,26 +241,76 @@ func (s *GetProcessInstanceResponseBodyProcessInstance) Validate() error {
 }
 
 type GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinition struct {
+	// The approval nodes.
 	ApprovalNodes []*GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionApprovalNodes `json:"ApprovalNodes,omitempty" xml:"ApprovalNodes,omitempty" type:"Repeated"`
-	Description   *string                                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the approval policy.
+	//
+	// example:
+	//
+	// 流程定义描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the policy is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The approval policy ID.
+	//
 	// example:
 	//
 	// 323861511451222099
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the approval policy.
+	//
 	// example:
 	//
 	// SYSTEM_GENERATE_DEFAULT
-	Name                 *string                                                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The notification services.
 	NotificationServices []*GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionNotificationServices `json:"NotificationServices,omitempty" xml:"NotificationServices,omitempty" type:"Repeated"`
-	RuleConditions       []*GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionRuleConditions       `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
+	// The rules that determine when the approval policy takes effect.
+	RuleConditions []*GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
+	// The subtype of the approval policy. Valid values:
+	//
+	// - `Table`
+	//
+	// - `Column`
+	//
+	// - `Database`
+	//
+	// - `Schema`
+	//
+	// - `Default`
+	//
 	// example:
 	//
 	// Table
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// The type of the approval policy. Valid values:
+	//
+	// - `MaxCompute`
+	//
+	// - `DataService`
+	//
+	// - `DlfV1` (Custom creation is not supported)
+	//
+	// - `Extension`
+	//
+	// - `Hologres`
+	//
+	// - `Emr` (Custom creation is not supported)
+	//
+	// - `DataAssetGovernance` (Custom creation is not supported)
+	//
+	// - `Lindorm` (Custom creation is not supported)
+	//
+	// - `StarRocks` (Custom creation is not supported)
+	//
+	// - `DlfNext` (Custom creation is not supported)
+	//
+	// - `DataWorks` (Custom creation is not supported)
+	//
 	// example:
 	//
 	// MaxCompute
@@ -353,19 +438,64 @@ func (s *GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinition)
 }
 
 type GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionApprovalNodes struct {
+	// The type of the approver for the node. Valid values:
+	//
+	// - `DataWorksProjectRole`: A workspace role
+	//
+	// - `DataWorksProjectMember`: A workspace member
+	//
+	// - `TableAdministrator`: A table administrator
+	//
+	// - `TableOrProjectAdministrator`: A table or workspace administrator
+	//
+	// - `AliyunResourceOwner`: An Alibaba Cloud account
+	//
+	// - `MaxComputeRole`: A MaxCompute role
+	//
+	// - `DLFAdmin`: A DlfLegacy administrator
+	//
+	// - `DLFNextAdmin`: A DLFNext administrator
+	//
+	// - `TenantRole`: A tenant role
+	//
+	// - `EmrAdministrator`: An Emr administrator
+	//
+	// - `LindormAdministrator`: A Lindorm administrator
+	//
+	// - `AliyunRamUser`: A RAM user
+	//
 	// example:
 	//
 	// DataWorksProjectRole
-	AccountType *string   `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	Assignees   []*string `json:"Assignees,omitempty" xml:"Assignees,omitempty" type:"Repeated"`
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The specified approvers.
+	//
+	// The contents of this parameter depend on the `AccountType` value:
+	//
+	// - If `AccountType` is `DataWorksProjectMember`, this parameter contains the user IDs of workspace members.
+	//
+	// - If `AccountType` is `DataWorksProjectRole`, this parameter contains the codes of workspace roles.
+	//
+	// - If `AccountType` is `MaxComputeRole`, this parameter contains the MaxCompute roles.
+	//
+	// - If `AccountType` is `TenantRole`, this parameter contains the codes of tenant roles.
+	//
+	// - If `AccountType` is `AliyunRamUser`, this parameter contains the user IDs of RAM users.
+	Assignees []*string `json:"Assignees,omitempty" xml:"Assignees,omitempty" type:"Repeated"`
+	// The extended description of the approval node.
+	//
 	// example:
 	//
 	// none
 	ExtensionProperties *string `json:"ExtensionProperties,omitempty" xml:"ExtensionProperties,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// 7a809b6a-2a62-4c6c-9c23-c2a145e3877d
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The node name.
+	//
 	// example:
 	//
 	// default-name
@@ -430,14 +560,28 @@ func (s *GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionA
 }
 
 type GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionNotificationServices struct {
+	// The notification channel. Valid values:
+	//
+	// - `Mail`
+	//
+	// - `Sms`
+	//
+	// - `DingRobot`
+	//
+	// - `Weixin`
+	//
 	// example:
 	//
 	// Mail
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// Additional information in JSON format. For example, `{"atAll":"true"}` indicates whether to @all members.
+	//
 	// example:
 	//
 	// {"atAll":"true"}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// If `Channel` is set to `DingRobot` or `Weixin`, the value of this parameter must be the webhook URL.
+	//
 	// example:
 	//
 	// https://dingtalk
@@ -484,14 +628,34 @@ func (s *GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionN
 }
 
 type GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionRuleConditions struct {
+	// The expression of the rule condition. Format: `((#type==\\"typeValue\\"))`.
+	//
 	// example:
 	//
 	// ((#odpsProject==\\"PX_BEIJING_TEST\\"))
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The rule scope. Valid values:
+	//
+	// - `Deployment`: Determines whether the policy applies when a request is submitted.
+	//
+	// - `Running`: Determines whether to skip approval while the process instance runs. This value is supported only for MaxCompute approval policies.
+	//
 	// example:
 	//
 	// Deployment
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The type of the rule condition. Valid values:
+	//
+	// - `odpsProject`: Applies to a specific MaxCompute project.
+	//
+	// - `hologresInstanceId`: Applies to a specific Hologres instance.
+	//
+	// - `sensibleLevel`: Applies to a specific security level.
+	//
+	// - `tableGuid`: Applies to a specific table.
+	//
+	// - `projectId`: Applies to a specific workspace.
+	//
 	// example:
 	//
 	// odpsProject
@@ -538,33 +702,67 @@ func (s *GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionR
 }
 
 type GetProcessInstanceResponseBodyProcessInstanceApprovalTasks struct {
-	ApprovalComment *string `json:"ApprovalComment,omitempty" xml:"ApprovalComment,omitempty"`
+	// The approval comment.
+	//
 	// example:
 	//
-	// deny
-	ApprovalDecision *string                                                                 `json:"ApprovalDecision,omitempty" xml:"ApprovalDecision,omitempty"`
-	ApprovalNode     *GetProcessInstanceResponseBodyProcessInstanceApprovalTasksApprovalNode `json:"ApprovalNode,omitempty" xml:"ApprovalNode,omitempty" type:"Struct"`
+	// 同意
+	ApprovalComment *string `json:"ApprovalComment,omitempty" xml:"ApprovalComment,omitempty"`
+	// The approval decision. Valid values:
+	//
+	// - `Agree`
+	//
+	// - `Deny`
+	//
+	// example:
+	//
+	// Deny
+	ApprovalDecision *string `json:"ApprovalDecision,omitempty" xml:"ApprovalDecision,omitempty"`
+	// The approval node from the corresponding approval policy.
+	ApprovalNode *GetProcessInstanceResponseBodyProcessInstanceApprovalTasksApprovalNode `json:"ApprovalNode,omitempty" xml:"ApprovalNode,omitempty" type:"Struct"`
+	// The user ID of the actual approver.
+	//
 	// example:
 	//
 	// 207947399706614297
-	Assignee     *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
+	Assignee *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
+	// The name of the actual approver.
+	//
+	// example:
+	//
+	// 李四
 	AssigneeName *string `json:"AssigneeName,omitempty" xml:"AssigneeName,omitempty"`
+	// The time when the task was completed.
+	//
 	// example:
 	//
 	// 1715590800000
 	CompleteTime *int64 `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 1715587200000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The approval task ID.
+	//
 	// example:
 	//
 	// task_001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// - `Completed`: The task is complete.
+	//
+	// - `Pending`: The task is pending.
+	//
+	// - `Aborted`: The task is aborted.
+	//
 	// example:
 	//
 	// Aborted
-	Status         *string                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The candidate approvers for the task.
 	TaskCandidates []*GetProcessInstanceResponseBodyProcessInstanceApprovalTasksTaskCandidates `json:"TaskCandidates,omitempty" xml:"TaskCandidates,omitempty" type:"Repeated"`
 }
 
@@ -685,15 +883,58 @@ func (s *GetProcessInstanceResponseBodyProcessInstanceApprovalTasks) Validate() 
 }
 
 type GetProcessInstanceResponseBodyProcessInstanceApprovalTasksApprovalNode struct {
+	// The type of the approver for the node. Valid values:
+	//
+	// - `DataWorksProjectRole`: A workspace role
+	//
+	// - `DataWorksProjectMember`: A workspace member
+	//
+	// - `TableAdministrator`: A table administrator
+	//
+	// - `TableOrProjectAdministrator`: A table or workspace administrator
+	//
+	// - `AliyunResourceOwner`: An Alibaba Cloud account
+	//
+	// - `MaxComputeRole`: A MaxCompute role
+	//
+	// - `DLFAdmin`: A DlfLegacy administrator
+	//
+	// - `DLFNextAdmin`: A DLFNext administrator
+	//
+	// - `TenantRole`: A tenant role
+	//
+	// - `EmrAdministrator`: An Emr administrator
+	//
+	// - `LindormAdministrator`: A Lindorm administrator
+	//
+	// - `AliyunRamUser`: A RAM user
+	//
 	// example:
 	//
 	// DataWorksProjectRole
-	AccountType *string   `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	Assignees   []*string `json:"Assignees,omitempty" xml:"Assignees,omitempty" type:"Repeated"`
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The specified approvers.
+	//
+	// The contents of this parameter depend on the `AccountType` value:
+	//
+	// - If `AccountType` is `DataWorksProjectMember`, this parameter contains the user IDs of workspace members.
+	//
+	// - If `AccountType` is `DataWorksProjectRole`, this parameter contains the codes of workspace roles.
+	//
+	// - If `AccountType` is `MaxComputeRole`, this parameter contains the MaxCompute roles.
+	//
+	// - If `AccountType` is `TenantRole`, this parameter contains the codes of tenant roles.
+	//
+	// - If `AccountType` is `AliyunRamUser`, this parameter contains the user IDs of RAM users.
+	Assignees []*string `json:"Assignees,omitempty" xml:"Assignees,omitempty" type:"Repeated"`
+	// The node ID.
+	//
 	// example:
 	//
 	// 7a809b6a-2a62-4c6c-9c23-c2a145e3877d
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The node name.
+	//
 	// example:
 	//
 	// default-name
@@ -749,7 +990,14 @@ func (s *GetProcessInstanceResponseBodyProcessInstanceApprovalTasksApprovalNode)
 }
 
 type GetProcessInstanceResponseBodyProcessInstanceApprovalTasksTaskCandidates struct {
+	// The name of the approver.
+	//
+	// example:
+	//
+	// 李四
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// The user ID of the approver.
+	//
 	// example:
 	//
 	// 207947397776614297

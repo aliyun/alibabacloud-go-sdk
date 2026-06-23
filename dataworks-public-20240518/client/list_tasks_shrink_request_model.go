@@ -68,9 +68,9 @@ type ListTasksShrinkRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Prod
+	// - Prod
 	//
-	// 	- Dev
+	// - Dev
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type ListTasksShrinkRequest struct {
 	RuntimeResource *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
 	// The field that is used to sort tasks. This parameter is configured in the format of "Sorting field Sorting order". You can set the sorting order to Desc or Asc. If you do not specify the sorting order, Asc is used by default. Valid values:
 	//
-	// 	- `ModifyTime (Desc/Asc)`
+	// - `ModifyTime (Desc/Asc)`
 	//
-	// 	- `CreateTime (Desc/Asc)`
+	// - `CreateTime (Desc/Asc)`
 	//
-	// 	- `Id (Desc/Asc)`
+	// - `Id (Desc/Asc)`
 	//
-	//     Default value: `Id Desc`.
+	//   Default value: `Id Desc`.
 	//
 	// example:
 	//
@@ -106,45 +106,45 @@ type ListTasksShrinkRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The type of the task. Valid values:
 	//
-	// 	- ODPS_SQL
+	// - ODPS_SQL
 	//
-	// 	- SPARK
+	// - SPARK
 	//
-	// 	- PY_ODPS
+	// - PY_ODPS
 	//
-	// 	- PY_ODPS3
+	// - PY_ODPS3
 	//
-	// 	- ODPS_SCRIPT
+	// - ODPS_SCRIPT
 	//
-	// 	- ODPS_MR
+	// - ODPS_MR
 	//
-	// 	- COMPONENT_SQL
+	// - COMPONENT_SQL
 	//
-	// 	- EMR_HIVE
+	// - EMR_HIVE
 	//
-	// 	- EMR_MR
+	// - EMR_MR
 	//
-	// 	- EMR_SPARK_SQL
+	// - EMR_SPARK_SQL
 	//
-	// 	- EMR_SPARK
+	// - EMR_SPARK
 	//
-	// 	- EMR_SHELL
+	// - EMR_SHELL
 	//
-	// 	- EMR_PRESTO
+	// - EMR_PRESTO
 	//
-	// 	- EMR_IMPALA
+	// - EMR_IMPALA
 	//
-	// 	- SPARK_STREAMING
+	// - SPARK_STREAMING
 	//
-	// 	- EMR_KYUUBI
+	// - EMR_KYUUBI
 	//
-	// 	- EMR_TRINO
+	// - EMR_TRINO
 	//
-	// 	- HOLOGRES_SQL
+	// - HOLOGRES_SQL
 	//
-	// 	- HOLOGRES_SYNC_DDL
+	// - HOLOGRES_SYNC_DDL
 	//
-	// 	- HOLOGRES_SYNC_DATA
+	// - HOLOGRES_SYNC_DATA
 	//
 	// example:
 	//
@@ -154,11 +154,11 @@ type ListTasksShrinkRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Pause
+	// - Pause
 	//
-	// 	- Skip
+	// - Skip
 	//
-	// 	- Normal
+	// - Normal
 	//
 	// example:
 	//
@@ -168,9 +168,9 @@ type ListTasksShrinkRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Scheduler: Triggered by schedule.
+	// - Scheduler: Triggered by schedule.
 	//
-	// 	- Manual: Triggered manually.
+	// - Manual: Triggered manually.
 	//
 	// example:
 	//

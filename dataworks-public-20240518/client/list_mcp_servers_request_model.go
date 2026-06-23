@@ -20,18 +20,26 @@ type iListMcpServersRequest interface {
 }
 
 type ListMcpServersRequest struct {
+	// The maximum number of results to return per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The next page token from a previous response. Use this token to retrieve the next page of results. Leave this parameter empty for the first request.
+	//
 	// example:
 	//
 	// 12345
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The search keyword for a fuzzy search on MCP Server names.
+	//
 	// example:
 	//
 	// mcp
 	Q *string `json:"Q,omitempty" xml:"Q,omitempty"`
+	// The visibility level for filtering the results.
+	//
 	// example:
 	//
 	// -

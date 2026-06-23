@@ -18,15 +18,20 @@ type iLoadAgentSessionRequest interface {
 }
 
 type LoadAgentSessionRequest struct {
+	// The client-generated request ID, which is returned in the response.
+	//
 	// example:
 	//
 	// 4as3dasf654a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC version. The value must be `2.0`.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string                        `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Params  *LoadAgentSessionRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// Business parameters.
+	Params *LoadAgentSessionRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
 }
 
 func (s LoadAgentSessionRequest) String() string {
@@ -74,7 +79,10 @@ func (s *LoadAgentSessionRequest) Validate() error {
 }
 
 type LoadAgentSessionRequestParams struct {
+	// DataWorks-specific extended parameters for ACP.
 	Meta *LoadAgentSessionRequestParamsMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
+	// The ID of the target session. If the session does not exist, an SSE error frame is returned.
+	//
 	// example:
 	//
 	// sess_0f12abc34
@@ -117,8 +125,18 @@ func (s *LoadAgentSessionRequestParams) Validate() error {
 }
 
 type LoadAgentSessionRequestParamsMeta struct {
+	// In a resumable transfer scenario, this specifies the offset from which to resume fetching the SSE output.
+	//
+	// example:
+	//
+	// 10000
 	BeginLogOffset *int64 `json:"BeginLogOffset,omitempty" xml:"BeginLogOffset,omitempty"`
-	IsReload       *bool  `json:"IsReload,omitempty" xml:"IsReload,omitempty"`
+	// Specifies whether to use resumable transfer. If the SSE stream is interrupted due to issues like an unstable network connection, you can set this parameter to `true` to re-fetch the stream data from the point of failure.
+	//
+	// example:
+	//
+	// true or false
+	IsReload *bool `json:"IsReload,omitempty" xml:"IsReload,omitempty"`
 }
 
 func (s LoadAgentSessionRequestParamsMeta) String() string {

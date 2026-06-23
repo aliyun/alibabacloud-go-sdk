@@ -14,6 +14,8 @@ type iGetProcessDefinitionRequest interface {
 }
 
 type GetProcessDefinitionRequest struct {
+	// The ID of the process definition.
+	//
 	// This parameter is required.
 	//
 	// example:

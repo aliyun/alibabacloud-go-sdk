@@ -288,21 +288,21 @@ type ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRulesNotificat
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// The type of alert recipients.
 	//
-	// 	- ShiftSchedule
+	// - ShiftSchedule
 	//
-	// 	- WebhookUrl
+	// - WebhookUrl
 	//
-	// 	- FeishuUrl
+	// - FeishuUrl
 	//
-	// 	- TaskOwner
+	// - TaskOwner
 	//
-	// 	- WeixinUrl
+	// - WeixinUrl
 	//
-	// 	- DingdingUrl
+	// - DingdingUrl
 	//
-	// 	- DataQualityScanOwner
+	// - DataQualityScanOwner
 	//
-	// 	- AliUid
+	// - AliUid
 	//
 	// example:
 	//

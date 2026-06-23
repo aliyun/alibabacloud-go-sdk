@@ -16,17 +16,17 @@ type iUpdateDIJobResponseBody interface {
 }
 
 type UpdateDIJobResponseBody struct {
-	// The request ID. You can locate logs and troubleshoot issues based on the ID.
+	// The ID of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
-	// AAC30B35-820D-5F3E-A42C-E96BB6379325
+	// AAC30B35-820D-5F3E-A42C-E96BB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - `true`: The request was successful.
 	//
-	// 	- false
+	// - `false`: The request failed.
 	//
 	// example:
 	//

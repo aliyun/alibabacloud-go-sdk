@@ -24,10 +24,14 @@ type DeleteCustomAttributeResponseBody struct {
 	//
 	// 7B4D81F1-98CF-500C-8D25-2865EB652EA0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the deletion.
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

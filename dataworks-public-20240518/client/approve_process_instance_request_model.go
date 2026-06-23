@@ -15,23 +15,47 @@ type iApproveProcessInstanceRequest interface {
 	GetApprovalComment() *string
 	SetClientToken(v string) *ApproveProcessInstanceRequest
 	GetClientToken() *string
+	SetNewExpiration(v int64) *ApproveProcessInstanceRequest
+	GetNewExpiration() *int64
 	SetProcessInstanceId(v string) *ApproveProcessInstanceRequest
 	GetProcessInstanceId() *string
 }
 
 type ApproveProcessInstanceRequest struct {
+	// The approval action. Valid values:
+	//
+	// - Agree: Approved.
+	//
+	// - Deny: Rejected.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Agree
 	ApprovalAction *string `json:"ApprovalAction,omitempty" xml:"ApprovalAction,omitempty"`
+	// The approval comment.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 同意授权
 	ApprovalComment *string `json:"ApprovalComment,omitempty" xml:"ApprovalComment,omitempty"`
+	// The idempotency token. We recommend that you use a UUID.
+	//
 	// example:
 	//
 	// 1AFAE64E-D1BE-432B-A9*****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The new authorization expiration time. Unit: milliseconds (UNIX timestamp).
+	//
+	// example:
+	//
+	// 1782541464000
+	NewExpiration *int64 `json:"NewExpiration,omitempty" xml:"NewExpiration,omitempty"`
+	// The process instance ID. Both new and legacy Security Center approval forms are supported.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -60,6 +84,10 @@ func (s *ApproveProcessInstanceRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *ApproveProcessInstanceRequest) GetNewExpiration() *int64 {
+	return s.NewExpiration
+}
+
 func (s *ApproveProcessInstanceRequest) GetProcessInstanceId() *string {
 	return s.ProcessInstanceId
 }
@@ -76,6 +104,11 @@ func (s *ApproveProcessInstanceRequest) SetApprovalComment(v string) *ApprovePro
 
 func (s *ApproveProcessInstanceRequest) SetClientToken(v string) *ApproveProcessInstanceRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ApproveProcessInstanceRequest) SetNewExpiration(v int64) *ApproveProcessInstanceRequest {
+	s.NewExpiration = &v
 	return s
 }
 

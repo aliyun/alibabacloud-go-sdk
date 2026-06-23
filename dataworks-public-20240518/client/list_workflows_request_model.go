@@ -34,9 +34,9 @@ type iListWorkflowsRequest interface {
 type ListWorkflowsRequest struct {
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod: production environment
+	// - Prod: production environment
 	//
-	// 	- Dev: development environment
+	// - Dev: development environment
 	//
 	// example:
 	//
@@ -78,26 +78,27 @@ type ListWorkflowsRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The field used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
 	//
-	// 	- ModifyTime (Desc/Asc)
+	// - ModifyTime (Desc/Asc)
 	//
-	// 	- CreateTime (Desc/Asc)
+	// - CreateTime (Desc/Asc)
 	//
-	// 	- Id (Desc/Asc)
+	// - Id (Desc/Asc)
 	//
 	// Default value: Id Desc.
 	//
 	// example:
 	//
 	// Id Desc
-	SortBy *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Tags   []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// List of tags. A result is returned if it matches any one of the specified tags.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The trigger type.
 	//
-	// 	- Scheduler
+	// - Scheduler
 	//
-	// 	- Manual
+	// - Manual
 	//
-	// 	- TriggerWorkflow
+	// - TriggerWorkflow
 	//
 	// example:
 	//

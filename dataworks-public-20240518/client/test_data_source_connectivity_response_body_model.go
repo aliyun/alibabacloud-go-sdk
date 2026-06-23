@@ -63,6 +63,10 @@ func (s *TestDataSourceConnectivityResponseBody) Validate() error {
 
 type TestDataSourceConnectivityResponseBodyConnectivity struct {
 	// The error message returned if the connectivity test fails. No such a message is returned if the connectivity test is successful.
+	//
+	// example:
+	//
+	// 连接数据库失败
 	ConnectMessage *string `json:"ConnectMessage,omitempty" xml:"ConnectMessage,omitempty"`
 	// The result of the connectivity test. Valid values: Connectable: The network can be connected. ConfigError: The network can be connected, but the configurations are incorrect. Unreachable: The network cannot be connected. Unsupport: An error is reported due to other causes. For example, the desired resource group is being initialized.
 	//
@@ -136,6 +140,10 @@ type TestDataSourceConnectivityResponseBodyConnectivityDetailLogs struct {
 	// 1730217604002
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The name of the step.
+	//
+	// example:
+	//
+	// Validate input parameters
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The start time of a step.
 	//

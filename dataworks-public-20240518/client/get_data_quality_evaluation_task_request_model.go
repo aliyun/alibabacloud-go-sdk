@@ -14,7 +14,7 @@ type iGetDataQualityEvaluationTaskRequest interface {
 }
 
 type GetDataQualityEvaluationTaskRequest struct {
-	// The ID of the data quality monitor.
+	// Data quality monitoring ID.
 	//
 	// example:
 	//

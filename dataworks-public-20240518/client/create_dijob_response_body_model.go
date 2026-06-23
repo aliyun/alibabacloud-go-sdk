@@ -20,19 +20,19 @@ type iCreateDIJobResponseBody interface {
 type CreateDIJobResponseBody struct {
 	// Deprecated
 	//
-	// This parameter is deprecated and is replaced by the Id parameter.
+	// This field is deprecated. Use the `Id` field instead.
 	//
 	// example:
 	//
 	// 11792
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	// The ID of the synchronization task.
+	// The data integration job ID.
 	//
 	// example:
 	//
 	// 11792
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// The request ID. Use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

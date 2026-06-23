@@ -18,14 +18,20 @@ type iDissociateProjectFromImageResponseBody interface {
 }
 
 type DissociateProjectFromImageResponseBody struct {
+	// Whether the image was successfully disassociated from the workspace.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID. Use this ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request was successful.
+	//
 	// example:
 	//
 	// true

@@ -22,7 +22,7 @@ type ListDIJobEventsResponseBody struct {
 	//
 	// example:
 	//
-	// 645F6D68-9C29-5961-80B1-BDD4B794C22D
+	// 645F6D68-9C29-5961-80B1-BDD4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -164,7 +164,7 @@ type ListDIJobEventsResponseBodyPagingInfoDIJobEvent struct {
 	//
 	// example:
 	//
-	// aggregator:avg [**] for 5 minutes, service maybe abnormal
+	// Data integration sync task exception: Level: WARNING, DataWorks project name:*	- [Region: cn-shanghai], Task name:**, Alert rule: Business delay, aggregator:avg [**] for 5 minutes, service maybe abnormal.
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// The DDL statement of the destination table.
 	//
@@ -220,15 +220,15 @@ type ListDIJobEventsResponseBodyPagingInfoDIJobEvent struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the alert event.
 	//
-	// 	- Heartbeat
+	// - Heartbeat
 	//
-	// 	- Delay
+	// - Delay
 	//
-	// 	- FailoverCount
+	// - FailoverCount
 	//
-	// 	- DdlReport
+	// - DdlReport
 	//
-	// 	- ResourceUtilization
+	// - ResourceUtilization
 	//
 	// example:
 	//

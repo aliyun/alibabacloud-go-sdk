@@ -90,9 +90,9 @@ type GetWorkflowResponseBodyWorkflow struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod: production environment
+	// - Prod: production environment
 	//
-	// 	- Dev: development environment
+	// - Dev: development environment
 	//
 	// example:
 	//
@@ -355,13 +355,13 @@ func (s *GetWorkflowResponseBodyWorkflow) Validate() error {
 type GetWorkflowResponseBodyWorkflowDependencies struct {
 	// The scheduling dependency type. Valid values:
 	//
-	// 	- CrossCycleDependsOnChildren: cross-cycle dependency on the level-1 descendant nodes of a node
+	// - CrossCycleDependsOnChildren: cross-cycle dependency on the level-1 descendant nodes of a node
 	//
-	// 	- CrossCycleDependsOnSelf: cross-cycle dependency on the current node
+	// - CrossCycleDependsOnSelf: cross-cycle dependency on the current node
 	//
-	// 	- CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+	// - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
 	//
-	// 	- Normal: same-cycle scheduling dependency
+	// - Normal: same-cycle scheduling dependency
 	//
 	// example:
 	//
@@ -565,9 +565,9 @@ type GetWorkflowResponseBodyWorkflowTasks struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod
+	// - Prod
 	//
-	// 	- Dev
+	// - Dev
 	//
 	// example:
 	//
@@ -623,11 +623,11 @@ type GetWorkflowResponseBodyWorkflowTasks struct {
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
 	// The rerun mode. Valid values:
 	//
-	// 	- AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+	// - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
 	//
-	// 	- FailureAllowed: The task can be rerun only after it fails to run.
+	// - FailureAllowed: The task can be rerun only after it fails to run.
 	//
-	// 	- AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
+	// - AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
 	//
 	// example:
 	//
@@ -649,11 +649,11 @@ type GetWorkflowResponseBodyWorkflowTasks struct {
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// The running mode of the task after it is triggered. Valid values:
 	//
-	// 	- Pause
+	// - Pause
 	//
-	// 	- Skip
+	// - Skip
 	//
-	// 	- Normal
+	// - Normal
 	//
 	// example:
 	//
@@ -998,11 +998,11 @@ type GetWorkflowResponseBodyWorkflowTrigger struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The running mode of the workflow after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
 	//
-	// 	- Pause
+	// - Pause
 	//
-	// 	- Skip
+	// - Skip
 	//
-	// 	- Normal
+	// - Normal
 	//
 	// example:
 	//
@@ -1016,9 +1016,9 @@ type GetWorkflowResponseBodyWorkflowTrigger struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// 	- Scheduler: scheduling cycle-based trigger
+	// - Scheduler: scheduling cycle-based trigger
 	//
-	// 	- Manual: manual trigger
+	// - Manual: manual trigger
 	//
 	// example:
 	//

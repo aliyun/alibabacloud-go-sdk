@@ -62,17 +62,17 @@ type ListResourcesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Python
+	// - Python
 	//
-	// 	- Jar
+	// - Jar
 	//
-	// 	- Archive
+	// - Archive
 	//
-	// 	- File
+	// - File
 	//
 	// example:
 	//
-	// python
+	// Python
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

@@ -18,13 +18,16 @@ type iListCustomAttributesResponseBody interface {
 }
 
 type ListCustomAttributesResponseBody struct {
+	// The paging information.
 	PagingInfo *ListCustomAttributesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// RequestId
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 54594ACA-7976-5273-958B-02E15E9B867C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -76,15 +79,22 @@ func (s *ListCustomAttributesResponseBody) Validate() error {
 }
 
 type ListCustomAttributesResponseBodyPagingInfo struct {
+	// A list of custom attribute objects.
 	CustomAttributes []*CustomAttribute `json:"CustomAttributes,omitempty" xml:"CustomAttributes,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
