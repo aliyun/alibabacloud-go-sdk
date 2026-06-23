@@ -18,10 +18,14 @@ type iGetGatewayQuotaRuleRequest interface {
 }
 
 type GetGatewayQuotaRuleRequest struct {
+	// Deprecated
+	//
 	// example:
 	//
 	// 1
 	ConsumerPageNumber *string `json:"consumerPageNumber,omitempty" xml:"consumerPageNumber,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 10

@@ -99,7 +99,8 @@ type GetGatewayQuotaRuleResponseBodyData struct {
 	// example:
 	//
 	// 20
-	ConsumerCount *int64 `json:"consumerCount,omitempty" xml:"consumerCount,omitempty"`
+	ConsumerCount *int64                                          `json:"consumerCount,omitempty" xml:"consumerCount,omitempty"`
+	Consumers     []*GetGatewayQuotaRuleResponseBodyDataConsumers `json:"consumers,omitempty" xml:"consumers,omitempty" type:"Repeated"`
 	// example:
 	//
 	// day
@@ -150,6 +151,10 @@ func (s *GetGatewayQuotaRuleResponseBodyData) GetConsumerCount() *int64 {
 	return s.ConsumerCount
 }
 
+func (s *GetGatewayQuotaRuleResponseBodyData) GetConsumers() []*GetGatewayQuotaRuleResponseBodyDataConsumers {
+	return s.Consumers
+}
+
 func (s *GetGatewayQuotaRuleResponseBodyData) GetPeriodType() *string {
 	return s.PeriodType
 }
@@ -189,6 +194,11 @@ func (s *GetGatewayQuotaRuleResponseBodyData) SetBaseTimestamp(v int64) *GetGate
 
 func (s *GetGatewayQuotaRuleResponseBodyData) SetConsumerCount(v int64) *GetGatewayQuotaRuleResponseBodyData {
 	s.ConsumerCount = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyData) SetConsumers(v []*GetGatewayQuotaRuleResponseBodyDataConsumers) *GetGatewayQuotaRuleResponseBodyData {
+	s.Consumers = v
 	return s
 }
 
@@ -233,5 +243,49 @@ func (s *GetGatewayQuotaRuleResponseBodyData) SetWindowAlignment(v string) *GetG
 }
 
 func (s *GetGatewayQuotaRuleResponseBodyData) Validate() error {
+	if s.Consumers != nil {
+		for _, item := range s.Consumers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetGatewayQuotaRuleResponseBodyDataConsumers struct {
+	Id   *string `json:"id,omitempty" xml:"id,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetGatewayQuotaRuleResponseBodyDataConsumers) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetGatewayQuotaRuleResponseBodyDataConsumers) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyDataConsumers) GetId() *string {
+	return s.Id
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyDataConsumers) GetName() *string {
+	return s.Name
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyDataConsumers) SetId(v string) *GetGatewayQuotaRuleResponseBodyDataConsumers {
+	s.Id = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyDataConsumers) SetName(v string) *GetGatewayQuotaRuleResponseBodyDataConsumers {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyDataConsumers) Validate() error {
 	return dara.Validate(s)
 }

@@ -221,6 +221,8 @@ func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error 
 }
 
 type ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
+	ConflictPeriodType *string `json:"conflictPeriodType,omitempty" xml:"conflictPeriodType,omitempty"`
+	ConflictType       *string `json:"conflictType,omitempty" xml:"conflictType,omitempty"`
 	// example:
 	//
 	// cs-d82n1g6m1hkm3xxxxxxx
@@ -239,12 +241,30 @@ func (s ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GoString() st
 	return s.String()
 }
 
+func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetConflictPeriodType() *string {
+	return s.ConflictPeriodType
+}
+
+func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetConflictType() *string {
+	return s.ConflictType
+}
+
 func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetConsumerId() *string {
 	return s.ConsumerId
 }
 
 func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetConsumerName() *string {
 	return s.ConsumerName
+}
+
+func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetConflictPeriodType(v string) *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems {
+	s.ConflictPeriodType = &v
+	return s
+}
+
+func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetConflictType(v string) *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems {
+	s.ConflictType = &v
+	return s
 }
 
 func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetConsumerId(v string) *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems {

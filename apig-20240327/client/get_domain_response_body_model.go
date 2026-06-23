@@ -186,7 +186,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// Alibaba
 	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
-	// Indicates whether mutual TLS (mTLS) authentication is enabled.
+	// Indicates whether mTLS mutual authentication is enabled.
 	//
 	// example:
 	//
@@ -210,11 +210,13 @@ type GetDomainResponseBodyData struct {
 	//
 	// 1719386834548
 	NotBeforeTimestamp *int64 `json:"notBeforeTimestamp,omitempty" xml:"notBeforeTimestamp,omitempty"`
-	// The protocol type supported by the domain name. Valid values:
+	// The protocol type supported by the domain name.
 	//
-	// - HTTP: only HTTP is supported.
+	// Valid values:
 	//
-	// - HTTPS: only HTTPS is supported.
+	// - HTTP: Only the HTTP protocol is supported.
+	//
+	// - HTTPS: Only the HTTPS protocol is supported.
 	//
 	// example:
 	//

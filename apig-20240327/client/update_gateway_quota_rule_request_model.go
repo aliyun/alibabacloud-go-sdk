@@ -36,6 +36,8 @@ type UpdateGatewayQuotaRuleRequest struct {
 	//
 	// f8f44dc6cf369a017d56b7197eb4fb5ac4bbb6b09a92b9b41999541f50xxxxxx
 	ConflictHash *string `json:"conflictHash,omitempty" xml:"conflictHash,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// group1,group2
@@ -45,8 +47,6 @@ type UpdateGatewayQuotaRuleRequest struct {
 	// true
 	DryRun    *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 	Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1000
@@ -55,8 +55,6 @@ type UpdateGatewayQuotaRuleRequest struct {
 	//
 	// cs003,cs-004
 	RemoveIds []*string `json:"removeIds,omitempty" xml:"removeIds,omitempty" type:"Repeated"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// team-rule

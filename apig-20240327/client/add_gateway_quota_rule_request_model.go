@@ -19,6 +19,8 @@ type iAddGatewayQuotaRuleRequest interface {
 	GetDryRun() *bool
 	SetOverwrite(v bool) *AddGatewayQuotaRuleRequest
 	GetOverwrite() *bool
+	SetPeriodMultiplier(v int64) *AddGatewayQuotaRuleRequest
+	GetPeriodMultiplier() *int64
 	SetPeriodType(v string) *AddGatewayQuotaRuleRequest
 	GetPeriodType() *string
 	SetQuotaDimension(v string) *AddGatewayQuotaRuleRequest
@@ -38,6 +40,8 @@ type AddGatewayQuotaRuleRequest struct {
 	//
 	// f8f44dc6cf369a017d56b7197eb4fb5ac4bbb6b09a92b9b41999541fxxxxxxxx
 	ConflictHash *string `json:"conflictHash,omitempty" xml:"conflictHash,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// group1,group2
@@ -54,6 +58,10 @@ type AddGatewayQuotaRuleRequest struct {
 	//
 	// false
 	Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
+	// example:
+	//
+	// 10
+	PeriodMultiplier *int64 `json:"periodMultiplier,omitempty" xml:"periodMultiplier,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -116,6 +124,10 @@ func (s *AddGatewayQuotaRuleRequest) GetOverwrite() *bool {
 	return s.Overwrite
 }
 
+func (s *AddGatewayQuotaRuleRequest) GetPeriodMultiplier() *int64 {
+	return s.PeriodMultiplier
+}
+
 func (s *AddGatewayQuotaRuleRequest) GetPeriodType() *string {
 	return s.PeriodType
 }
@@ -162,6 +174,11 @@ func (s *AddGatewayQuotaRuleRequest) SetDryRun(v bool) *AddGatewayQuotaRuleReque
 
 func (s *AddGatewayQuotaRuleRequest) SetOverwrite(v bool) *AddGatewayQuotaRuleRequest {
 	s.Overwrite = &v
+	return s
+}
+
+func (s *AddGatewayQuotaRuleRequest) SetPeriodMultiplier(v int64) *AddGatewayQuotaRuleRequest {
+	s.PeriodMultiplier = &v
 	return s
 }
 

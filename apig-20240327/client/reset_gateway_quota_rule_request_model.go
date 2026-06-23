@@ -15,12 +15,16 @@ type iResetGatewayQuotaRuleRequest interface {
 	GetDryRun() *bool
 	SetOverwrite(v bool) *ResetGatewayQuotaRuleRequest
 	GetOverwrite() *bool
+	SetPeriodMultiplier(v int64) *ResetGatewayQuotaRuleRequest
+	GetPeriodMultiplier() *int64
 	SetPeriodType(v string) *ResetGatewayQuotaRuleRequest
 	GetPeriodType() *string
 	SetQuotaLimit(v int64) *ResetGatewayQuotaRuleRequest
 	GetQuotaLimit() *int64
 	SetTimezone(v string) *ResetGatewayQuotaRuleRequest
 	GetTimezone() *string
+	SetWindowAlignment(v string) *ResetGatewayQuotaRuleRequest
+	GetWindowAlignment() *string
 }
 
 type ResetGatewayQuotaRuleRequest struct {
@@ -31,14 +35,13 @@ type ResetGatewayQuotaRuleRequest struct {
 	// example:
 	//
 	// false
-	DryRun    *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
+	DryRun           *bool  `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	Overwrite        *bool  `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
+	PeriodMultiplier *int64 `json:"periodMultiplier,omitempty" xml:"periodMultiplier,omitempty"`
 	// example:
 	//
 	// week
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1000
@@ -46,7 +49,8 @@ type ResetGatewayQuotaRuleRequest struct {
 	// example:
 	//
 	// UTC+8
-	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	Timezone        *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	WindowAlignment *string `json:"windowAlignment,omitempty" xml:"windowAlignment,omitempty"`
 }
 
 func (s ResetGatewayQuotaRuleRequest) String() string {
@@ -69,6 +73,10 @@ func (s *ResetGatewayQuotaRuleRequest) GetOverwrite() *bool {
 	return s.Overwrite
 }
 
+func (s *ResetGatewayQuotaRuleRequest) GetPeriodMultiplier() *int64 {
+	return s.PeriodMultiplier
+}
+
 func (s *ResetGatewayQuotaRuleRequest) GetPeriodType() *string {
 	return s.PeriodType
 }
@@ -79,6 +87,10 @@ func (s *ResetGatewayQuotaRuleRequest) GetQuotaLimit() *int64 {
 
 func (s *ResetGatewayQuotaRuleRequest) GetTimezone() *string {
 	return s.Timezone
+}
+
+func (s *ResetGatewayQuotaRuleRequest) GetWindowAlignment() *string {
+	return s.WindowAlignment
 }
 
 func (s *ResetGatewayQuotaRuleRequest) SetConflictHash(v string) *ResetGatewayQuotaRuleRequest {
@@ -96,6 +108,11 @@ func (s *ResetGatewayQuotaRuleRequest) SetOverwrite(v bool) *ResetGatewayQuotaRu
 	return s
 }
 
+func (s *ResetGatewayQuotaRuleRequest) SetPeriodMultiplier(v int64) *ResetGatewayQuotaRuleRequest {
+	s.PeriodMultiplier = &v
+	return s
+}
+
 func (s *ResetGatewayQuotaRuleRequest) SetPeriodType(v string) *ResetGatewayQuotaRuleRequest {
 	s.PeriodType = &v
 	return s
@@ -108,6 +125,11 @@ func (s *ResetGatewayQuotaRuleRequest) SetQuotaLimit(v int64) *ResetGatewayQuota
 
 func (s *ResetGatewayQuotaRuleRequest) SetTimezone(v string) *ResetGatewayQuotaRuleRequest {
 	s.Timezone = &v
+	return s
+}
+
+func (s *ResetGatewayQuotaRuleRequest) SetWindowAlignment(v string) *ResetGatewayQuotaRuleRequest {
+	s.WindowAlignment = &v
 	return s
 }
 

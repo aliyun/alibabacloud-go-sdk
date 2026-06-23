@@ -142,6 +142,10 @@ func (client *Client) AddGatewayQuotaRuleWithOptions(gatewayId *string, request 
 		body["overwrite"] = request.Overwrite
 	}
 
+	if !dara.IsNil(request.PeriodMultiplier) {
+		body["periodMultiplier"] = request.PeriodMultiplier
+	}
+
 	if !dara.IsNil(request.PeriodType) {
 		body["periodType"] = request.PeriodType
 	}
@@ -6964,6 +6968,10 @@ func (client *Client) ResetGatewayQuotaRuleWithOptions(gatewayId *string, ruleId
 		body["overwrite"] = request.Overwrite
 	}
 
+	if !dara.IsNil(request.PeriodMultiplier) {
+		body["periodMultiplier"] = request.PeriodMultiplier
+	}
+
 	if !dara.IsNil(request.PeriodType) {
 		body["periodType"] = request.PeriodType
 	}
@@ -6974,6 +6982,10 @@ func (client *Client) ResetGatewayQuotaRuleWithOptions(gatewayId *string, ruleId
 
 	if !dara.IsNil(request.Timezone) {
 		body["timezone"] = request.Timezone
+	}
+
+	if !dara.IsNil(request.WindowAlignment) {
+		body["windowAlignment"] = request.WindowAlignment
 	}
 
 	req := &openapiutil.OpenApiRequest{

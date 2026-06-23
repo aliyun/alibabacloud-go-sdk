@@ -95,7 +95,7 @@ type AddGatewayQuotaRuleResponseBodyData struct {
 	// example:
 	//
 	// true
-	Accepted        *string                                             `json:"accepted,omitempty" xml:"accepted,omitempty"`
+	Accepted        *bool                                               `json:"accepted,omitempty" xml:"accepted,omitempty"`
 	ConflictPreview *AddGatewayQuotaRuleResponseBodyDataConflictPreview `json:"conflictPreview,omitempty" xml:"conflictPreview,omitempty" type:"Struct"`
 	// example:
 	//
@@ -115,7 +115,7 @@ func (s AddGatewayQuotaRuleResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *AddGatewayQuotaRuleResponseBodyData) GetAccepted() *string {
+func (s *AddGatewayQuotaRuleResponseBodyData) GetAccepted() *bool {
 	return s.Accepted
 }
 
@@ -131,7 +131,7 @@ func (s *AddGatewayQuotaRuleResponseBodyData) GetRuleId() *string {
 	return s.RuleId
 }
 
-func (s *AddGatewayQuotaRuleResponseBodyData) SetAccepted(v string) *AddGatewayQuotaRuleResponseBodyData {
+func (s *AddGatewayQuotaRuleResponseBodyData) SetAccepted(v bool) *AddGatewayQuotaRuleResponseBodyData {
 	s.Accepted = &v
 	return s
 }
@@ -221,6 +221,8 @@ func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error {
 }
 
 type AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
+	ConflictPeriodType *string `json:"conflictPeriodType,omitempty" xml:"conflictPeriodType,omitempty"`
+	ConflictType       *string `json:"conflictType,omitempty" xml:"conflictType,omitempty"`
 	// example:
 	//
 	// cs-xxxxxx
@@ -239,12 +241,30 @@ func (s AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GoString() stri
 	return s.String()
 }
 
+func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetConflictPeriodType() *string {
+	return s.ConflictPeriodType
+}
+
+func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetConflictType() *string {
+	return s.ConflictType
+}
+
 func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetConsumerId() *string {
 	return s.ConsumerId
 }
 
 func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetConsumerName() *string {
 	return s.ConsumerName
+}
+
+func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetConflictPeriodType(v string) *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems {
+	s.ConflictPeriodType = &v
+	return s
+}
+
+func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetConflictType(v string) *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems {
+	s.ConflictType = &v
+	return s
 }
 
 func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetConsumerId(v string) *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems {
