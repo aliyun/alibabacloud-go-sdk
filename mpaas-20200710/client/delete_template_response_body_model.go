@@ -20,24 +20,10 @@ type iDeleteTemplateResponseBody interface {
 }
 
 type DeleteTemplateResponseBody struct {
-	// example:
-	//
-	// 100
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// SUCCESS
-	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteTemplateResponseBody) String() string {

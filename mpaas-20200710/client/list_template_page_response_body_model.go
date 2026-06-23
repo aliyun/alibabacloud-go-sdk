@@ -28,37 +28,14 @@ type iListTemplatePageResponseBody interface {
 }
 
 type ListTemplatePageResponseBody struct {
-	// example:
-	//
-	// 100
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// 1
+	Code        *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	CurrentPage *int32                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Data        []*ListTemplatePageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// example:
-	//
-	// SUCCESS
-	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// example:
-	//
-	// 20
-	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	Msg         *string                             `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	PageSize    *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalSize   *int32                              `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s ListTemplatePageResponseBody) String() string {
@@ -155,50 +132,20 @@ func (s *ListTemplatePageResponseBody) Validate() error {
 }
 
 type ListTemplatePageResponseBodyData struct {
-	// example:
-	//
-	// 1
-	Action   *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	DescInfo *string `json:"DescInfo,omitempty" xml:"DescInfo,omitempty"`
-	// example:
-	//
-	// 1740479834
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// example:
-	//
-	// 1722564835000
+	Action      *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	DescInfo    *string `json:"DescInfo,omitempty" xml:"DescInfo,omitempty"`
+	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// example:
-	//
-	// /
-	IconUrls *string `json:"IconUrls,omitempty" xml:"IconUrls,omitempty"`
-	// example:
-	//
-	// 10029984
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// /
-	ImageUrls *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 0
-	PushStyle *string `json:"PushStyle,omitempty" xml:"PushStyle,omitempty"`
-	// example:
-	//
-	// 0
-	ShowStyle *string `json:"ShowStyle,omitempty" xml:"ShowStyle,omitempty"`
-	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// example:
-	//
-	// /
-	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	// example:
-	//
-	// title,content
-	Variables *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
+	IconUrls    *string `json:"IconUrls,omitempty" xml:"IconUrls,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ImageUrls   *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PushStyle   *string `json:"PushStyle,omitempty" xml:"PushStyle,omitempty"`
+	ShowStyle   *string `json:"ShowStyle,omitempty" xml:"ShowStyle,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Uri         *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	Variables   *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
 }
 
 func (s ListTemplatePageResponseBodyData) String() string {

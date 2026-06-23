@@ -22,23 +22,11 @@ type iListAnalysisCoreIndexResponseBody interface {
 }
 
 type ListAnalysisCoreIndexResponseBody struct {
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 100
+	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultCode    *string                                         `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	ResultContent *ListAnalysisCoreIndexResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ResultMessage *string                                         `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	Success       *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListAnalysisCoreIndexResponseBody) String() string {
@@ -104,15 +92,9 @@ func (s *ListAnalysisCoreIndexResponseBody) Validate() error {
 }
 
 type ListAnalysisCoreIndexResponseBodyResultContent struct {
-	Data *ListAnalysisCoreIndexResponseBodyResultContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// “”
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data      *ListAnalysisCoreIndexResponseBodyResultContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ResultMsg *string                                             `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	Success   *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListAnalysisCoreIndexResponseBodyResultContent) String() string {
@@ -160,37 +142,13 @@ func (s *ListAnalysisCoreIndexResponseBodyResultContent) Validate() error {
 }
 
 type ListAnalysisCoreIndexResponseBodyResultContentData struct {
-	// example:
-	//
-	// 0
-	ArrivalNum *string `json:"ArrivalNum,omitempty" xml:"ArrivalNum,omitempty"`
-	// example:
-	//
-	// 0
-	ArrivalRate *string `json:"ArrivalRate,omitempty" xml:"ArrivalRate,omitempty"`
-	// example:
-	//
-	// 0
-	IgnoreNum *string `json:"IgnoreNum,omitempty" xml:"IgnoreNum,omitempty"`
-	// example:
-	//
-	// 0
-	IgnoreRate *string `json:"IgnoreRate,omitempty" xml:"IgnoreRate,omitempty"`
-	// example:
-	//
-	// 0
-	OpenNum *string `json:"OpenNum,omitempty" xml:"OpenNum,omitempty"`
-	// example:
-	//
-	// 0
-	OpenRate *string `json:"OpenRate,omitempty" xml:"OpenRate,omitempty"`
-	// example:
-	//
-	// 0
-	PushNum *string `json:"PushNum,omitempty" xml:"PushNum,omitempty"`
-	// example:
-	//
-	// 0
+	ArrivalNum   *string `json:"ArrivalNum,omitempty" xml:"ArrivalNum,omitempty"`
+	ArrivalRate  *string `json:"ArrivalRate,omitempty" xml:"ArrivalRate,omitempty"`
+	IgnoreNum    *string `json:"IgnoreNum,omitempty" xml:"IgnoreNum,omitempty"`
+	IgnoreRate   *string `json:"IgnoreRate,omitempty" xml:"IgnoreRate,omitempty"`
+	OpenNum      *string `json:"OpenNum,omitempty" xml:"OpenNum,omitempty"`
+	OpenRate     *string `json:"OpenRate,omitempty" xml:"OpenRate,omitempty"`
+	PushNum      *string `json:"PushNum,omitempty" xml:"PushNum,omitempty"`
 	PushTotalNum *string `json:"PushTotalNum,omitempty" xml:"PushTotalNum,omitempty"`
 }
 

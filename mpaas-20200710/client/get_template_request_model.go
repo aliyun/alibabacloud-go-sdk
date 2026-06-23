@@ -22,23 +22,11 @@ type iGetTemplateRequest interface {
 }
 
 type GetTemplateRequest struct {
-	// example:
-	//
-	// ALIPUBE5C3F6D091419
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// 146552
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// example:
-	//
-	// CGAKLRCS
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// default
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	TenantId     *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetTemplateRequest) String() string {

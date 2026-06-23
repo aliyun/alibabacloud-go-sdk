@@ -22,25 +22,11 @@ type iPushQueryDeviceStateResponseBody interface {
 }
 
 type PushQueryDeviceStateResponseBody struct {
-	// example:
-	//
-	// 100
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *PushQueryDeviceStateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// SUCCESS
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *PushQueryDeviceStateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PushQueryDeviceStateResponseBody) String() string {
@@ -106,34 +92,13 @@ func (s *PushQueryDeviceStateResponseBody) Validate() error {
 }
 
 type PushQueryDeviceStateResponseBodyData struct {
-	// example:
-	//
-	// ad-000f18w8vmqtzhvbopge-854
 	DeliveryToken *string `json:"DeliveryToken,omitempty" xml:"DeliveryToken,omitempty"`
-	// example:
-	//
-	// ad-000f18w8vmqtzhvbopge-854
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// example:
-	//
-	// miui
-	Manufacturer *string `json:"Manufacturer,omitempty" xml:"Manufacturer,omitempty"`
-	// example:
-	//
-	// android
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// example:
-	//
-	// ONLINE
-	Statue *string `json:"Statue,omitempty" xml:"Statue,omitempty"`
-	// example:
-	//
-	// IQAAAACy0f7tAABYiMwLEENtr0TKYJEsv7wyu4Ubt9XXwTJAlknnCb1LAzB3wJvoZIcT_nJdaMhEoXJaqQrObAGHLGoU1GOexlTcLWzja-0HfGHKBw
-	ThirdToken *string `json:"ThirdToken,omitempty" xml:"ThirdToken,omitempty"`
-	// example:
-	//
-	// push_test
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	Manufacturer  *string `json:"Manufacturer,omitempty" xml:"Manufacturer,omitempty"`
+	Platform      *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	Statue        *string `json:"Statue,omitempty" xml:"Statue,omitempty"`
+	ThirdToken    *string `json:"ThirdToken,omitempty" xml:"ThirdToken,omitempty"`
+	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s PushQueryDeviceStateResponseBodyData) String() string {

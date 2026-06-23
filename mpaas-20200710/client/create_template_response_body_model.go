@@ -22,28 +22,11 @@ type iCreateTemplateResponseBody interface {
 }
 
 type CreateTemplateResponseBody struct {
-	// example:
-	//
-	// 100
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// null
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// example:
-	//
-	// SUCCESS
-	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 0CC8A9CB-9BA3-13FD-A404-6E2E7461881A
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateTemplateResponseBody) String() string {

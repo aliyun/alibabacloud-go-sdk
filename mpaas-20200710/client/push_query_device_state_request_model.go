@@ -22,25 +22,10 @@ type iPushQueryDeviceStateRequest interface {
 }
 
 type PushQueryDeviceStateRequest struct {
-	// example:
-	//
-	// ALIPUB9A63274111812
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// 8985d1b78d135e10dc26703379369879
-	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// example:
-	//
-	// 2
-	TargetType *int32 `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// example:
-	//
-	// BJUVXFNW
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// default
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Target      *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	TargetType  *int32  `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

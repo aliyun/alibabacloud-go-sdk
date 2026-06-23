@@ -22,25 +22,11 @@ type iGetTemplateResponseBody interface {
 }
 
 type GetTemplateResponseBody struct {
-	// example:
-	//
-	// 100
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *GetTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Msg       *string                      `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetTemplateResponseBody) String() string {
@@ -106,50 +92,20 @@ func (s *GetTemplateResponseBody) Validate() error {
 }
 
 type GetTemplateResponseBodyData struct {
-	// example:
-	//
-	// 1
-	Action   *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	DescInfo *string `json:"DescInfo,omitempty" xml:"DescInfo,omitempty"`
-	// example:
-	//
-	// 1740479834
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// example:
-	//
-	// 1745337419999
+	Action      *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	DescInfo    *string `json:"DescInfo,omitempty" xml:"DescInfo,omitempty"`
+	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// example:
-	//
-	// /
-	IconUrls *string `json:"IconUrls,omitempty" xml:"IconUrls,omitempty"`
-	// example:
-	//
-	// 123
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// /
-	ImageUrls *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 0
-	PushStyle *string `json:"PushStyle,omitempty" xml:"PushStyle,omitempty"`
-	// example:
-	//
-	// 0
-	ShowStyle *string `json:"ShowStyle,omitempty" xml:"ShowStyle,omitempty"`
-	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// example:
-	//
-	// /
-	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	// example:
-	//
-	// title,content
-	Variables *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
+	IconUrls    *string `json:"IconUrls,omitempty" xml:"IconUrls,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ImageUrls   *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PushStyle   *string `json:"PushStyle,omitempty" xml:"PushStyle,omitempty"`
+	ShowStyle   *string `json:"ShowStyle,omitempty" xml:"ShowStyle,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Uri         *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	Variables   *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
 }
 
 func (s GetTemplateResponseBodyData) String() string {

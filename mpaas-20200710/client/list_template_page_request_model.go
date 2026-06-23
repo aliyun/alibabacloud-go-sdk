@@ -22,25 +22,10 @@ type iListTemplatePageRequest interface {
 }
 
 type ListTemplatePageRequest struct {
-	// example:
-	//
-	// ALIPUBC6E8EC1271137
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// example:
-	//
-	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// CBIGWCFH
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// example:
-	//
-	// default
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
