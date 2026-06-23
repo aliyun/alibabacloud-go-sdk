@@ -20,7 +20,7 @@ type iCreateClusterInspectConfigRequest interface {
 type CreateClusterInspectConfigRequest struct {
 	// The list of disabled inspection items.
 	DisabledCheckItems []*string `json:"disabledCheckItems,omitempty" xml:"disabledCheckItems,omitempty" type:"Repeated"`
-	// Specifies whether to enable cluster inspection.
+	// Specifies whether to enable inspection.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type CreateClusterInspectConfigRequest struct {
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The inspection period defined using RFC5545 Recurrence Rule. You must specify BYHOUR and BYMINUTE. Only FREQ=DAILY is supported. COUNT or UNTIL is not supported.
+	// The inspection cycle defined using RFC 5545 Recurrence Rule syntax. You must specify BYHOUR and BYMINUTE. Only FREQ=DAILY is supported. COUNT and UNTIL are not supported.
 	//
 	// This parameter is required.
 	//

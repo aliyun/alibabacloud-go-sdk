@@ -14,13 +14,13 @@ type iDescribeNodePoolVulsRequest interface {
 }
 
 type DescribeNodePoolVulsRequest struct {
-	// The priority to fix the vulnerability. Separate multiple priorities with commas (,). Valid values:
+	// The vulnerability fix urgency levels to query. Separate multiple levels with commas (,). Valid values:
 	//
-	// 	- `asap`: high
+	// - `asap`: high
 	//
-	// 	- `later`: medium
+	// - `later`: medium
 	//
-	// 	- `nntf`: low
+	// - `nntf`: low.
 	//
 	// example:
 	//

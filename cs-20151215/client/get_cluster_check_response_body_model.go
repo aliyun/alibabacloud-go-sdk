@@ -26,39 +26,39 @@ type iGetClusterCheckResponseBody interface {
 }
 
 type GetClusterCheckResponseBody struct {
-	// The ID of the cluster check task.
+	// The check ID.
 	//
 	// example:
 	//
 	// 1697100584236600453-ce0da5a1d627e4e9e9f96cae8ad07****-clustercheck-lboto
 	CheckId *string `json:"check_id,omitempty" xml:"check_id,omitempty"`
-	// A list of check items.
+	// The check items.
 	CheckItems map[string][]map[string]interface{} `json:"check_items,omitempty" xml:"check_items,omitempty"`
-	// The time when the cluster check task was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2023-10-16T08:31:20.292030178Z
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// The time when the cluster check task was completed.
+	// The completion time.
 	//
 	// example:
 	//
 	// 2023-10-16T08:35:20.292030178Z
 	FinishedAt *string `json:"finished_at,omitempty" xml:"finished_at,omitempty"`
-	// The message that indicates the status of the cluster check task.
+	// The check status message.
 	//
 	// example:
 	//
 	// task succeed
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The status of the cluster check.
+	// The check status.
 	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The check method.
+	// The check type.
 	//
 	// example:
 	//

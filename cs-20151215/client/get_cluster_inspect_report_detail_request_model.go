@@ -28,31 +28,31 @@ type iGetClusterInspectReportDetailRequest interface {
 type GetClusterInspectReportDetailRequest struct {
 	// The category of the inspection item. Valid values:
 	//
-	// 	- security: Security compliance
+	// - security: security and compliance
 	//
-	// 	- performance: Performance efficiency
+	// - performance: performance and efficiency
 	//
-	// 	- stability: Business stability
+	// - stability: business stability
 	//
-	// 	- limitation: Service limits
+	// - limitation: service limits
 	//
-	// 	- cost: Cost optimization
+	// - cost: cost optimization.
 	//
 	// example:
 	//
 	// cost
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// Inspection results filtering. If this parameter is set to true, only abnormal inspection items are returned.
+	// Specifies whether to filter check items. If set to true, only abnormal check items with result=true are returned.
 	//
 	// example:
 	//
 	// true
 	EnableFilter *bool `json:"enableFilter,omitempty" xml:"enableFilter,omitempty"`
-	// The query language.
+	// The query language. Valid values:
 	//
-	// 	- zh_CN
+	// - zh_CN
 	//
-	// 	- en_US
+	// - en_US.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type GetClusterInspectReportDetailRequest struct {
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
 	// The level of the inspection item. Valid values:
 	//
-	// 	- advice: Suggestions
+	// - advice: suggestion
 	//
-	// 	- warning: Low severity
+	// - warning: low-risk
 	//
-	// 	- error: Medium severity
+	// - error: medium-risk
 	//
-	// 	- critical: High severity
+	// - critical: high-risk.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type GetClusterInspectReportDetailRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token that is used to display the returned tags on multiple pages.
+	// The pagination token.
 	//
 	// example:
 	//
 	// bb41e2bcb47b747389dce6c0d2
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The type of the inspection object. Only items that meet the targetType parameter are returned.
+	// The object type of the inspection target. Only check items that match the specified targetType are returned.
 	//
 	// example:
 	//

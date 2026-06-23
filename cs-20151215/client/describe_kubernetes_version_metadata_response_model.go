@@ -72,7 +72,7 @@ func (s *DescribeKubernetesVersionMetadataResponse) Validate() error {
 }
 
 type DescribeKubernetesVersionMetadataResponseBody struct {
-	// Features of the queried Kubernetes version.
+	// The feature capabilities of the Kubernetes version.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	//
 	// }
 	Capabilities map[string]interface{} `json:"capabilities,omitempty" xml:"capabilities,omitempty"`
-	// The OS images that are returned.
+	// The list of system images.
 	Images []*DescribeKubernetesVersionMetadataResponseBodyImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
 	// The metadata of the Kubernetes version.
 	//
@@ -102,7 +102,7 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	MetaData map[string]interface{} `json:"meta_data,omitempty" xml:"meta_data,omitempty"`
 	// The container runtime configurations.
 	Runtimes []*Runtime `json:"runtimes,omitempty" xml:"runtimes,omitempty" type:"Repeated"`
-	// The Kubernetes version supported by ACK. For more information, see [Release notes for Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
+	// The Kubernetes version released by ACK. For more information about versions, see [Kubernetes version release overview](https://help.aliyun.com/document_detail/185269.html).
 	//
 	// example:
 	//
@@ -120,13 +120,13 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	//
 	// 2026-01-30T00:00:00Z
 	ExpirationDate *string `json:"expiration_date,omitempty" xml:"expiration_date,omitempty"`
-	// Indicates whether you can create clusters that run the Kubernetes version.
+	// Indicates whether the Kubernetes version can be used to create clusters.
 	//
 	// example:
 	//
 	// true
 	Creatable *bool `json:"creatable,omitempty" xml:"creatable,omitempty"`
-	// The list of available Kubernetes versions for updates.
+	// The list of upgradable versions.
 	UpgradableVersions []*string `json:"upgradable_versions,omitempty" xml:"upgradable_versions,omitempty" type:"Repeated"`
 }
 
@@ -242,7 +242,7 @@ func (s *DescribeKubernetesVersionMetadataResponseBody) Validate() error {
 }
 
 type DescribeKubernetesVersionMetadataResponseBodyImages struct {
-	// The ID of the image.
+	// The image ID.
 	//
 	// example:
 	//
@@ -254,75 +254,75 @@ type DescribeKubernetesVersionMetadataResponseBodyImages struct {
 	//
 	// Alibaba Cloud Linux 3.2104
 	ImageName *string `json:"image_name,omitempty" xml:"image_name,omitempty"`
-	// The OS platform. You can obtain the terminal ID by calling one of the following operations:
+	// The operating system platform. Valid values:
 	//
-	// 	- `AliyunLinux`
+	// - `AliyunLinux`
 	//
-	// 	- `CentOS`
+	// - `CentOS`
 	//
-	// 	- `Windows`
+	// - `Windows`
 	//
-	// 	- `WindowsCore`
+	// - `WindowsCore`
 	//
 	// example:
 	//
 	// AliyunLinux
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
-	// The version of the image.
+	// The image version.
 	//
 	// example:
 	//
 	// 3.2104
 	OsVersion *string `json:"os_version,omitempty" xml:"os_version,omitempty"`
-	// The type of operating system distribution that you want to use. We recommend that you use this parameter to specify the node operating system. You can obtain the terminal ID by calling one of the following operations:
+	// The type of the operating system distribution. We recommend that you use this field to specify the node operating system. Valid values:
 	//
-	// 	- `CentOS`
+	// - `CentOS`
 	//
-	// 	- `AliyunLinux`
+	// - `AliyunLinux`
 	//
-	// 	- `AliyunLinux Qboot`
+	// - `AliyunLinux Qboot`
 	//
-	// 	- `AliyunLinuxUEFI`
+	// - `AliyunLinuxUEFI`
 	//
-	// 	- `AliyunLinux3`
+	// - `AliyunLinux3`
 	//
-	// 	- `Windows`
+	// - `Windows`
 	//
-	// 	- `WindowsCore`
+	// - `WindowsCore`
 	//
-	// 	- `AliyunLinux3Arm64`
+	// - `AliyunLinux3Arm64`
 	//
-	// 	- `ContainerOS`
+	// - `ContainerOS`
 	//
 	// example:
 	//
 	// AliyunLinux3
 	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
-	// The type of OS. Examples:
+	// The operating system type. Examples:
 	//
-	// 	- `Windows`
+	// - `Windows`
 	//
-	// 	- `Linux`
+	// - `Linux`
 	//
 	// example:
 	//
 	// Linux
 	OsType *string `json:"os_type,omitempty" xml:"os_type,omitempty"`
-	// The type of image. Valid values:
+	// The image category. Partial valid values:
 	//
-	// 	- `system`: public image
+	// - `system`: public image.
 	//
-	// 	- `self`: custom image
+	// - `self`: custom image.
 	//
-	// 	- `others`: shared image from other Alibaba Cloud accounts
+	// - `others`: shared image from other users.
 	//
-	// 	- `marketplace`: image from the marketplace
+	// - `marketplace`: Alibaba Cloud Marketplace image.
 	//
 	// example:
 	//
 	// system
 	ImageCategory *string `json:"image_category,omitempty" xml:"image_category,omitempty"`
-	// The architecture of the image.
+	// The image architecture.
 	//
 	// example:
 	//

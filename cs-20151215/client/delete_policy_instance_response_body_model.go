@@ -14,7 +14,7 @@ type iDeletePolicyInstanceResponseBody interface {
 }
 
 type DeletePolicyInstanceResponseBody struct {
-	// A list of policy instances.
+	// The list of policy instances.
 	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
 }
 

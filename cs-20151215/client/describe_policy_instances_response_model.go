@@ -72,69 +72,69 @@ func (s *DescribePolicyInstancesResponse) Validate() error {
 }
 
 type DescribePolicyInstancesResponseBody struct {
-	// The UID of the Alibaba Cloud account that is used to deploy the policy instance.
+	// 策略实例实施者UID。
 	//
 	// example:
 	//
 	// 16298168****
 	AliUid *string `json:"ali_uid,omitempty" xml:"ali_uid,omitempty"`
-	// The ID of the cluster.
+	// 目标集群ID。
 	//
 	// example:
 	//
 	// c8155823d057948c69a****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The name of the policy instance.
+	// 规则实例名称。
 	//
 	// example:
 	//
 	// no-env-var-secrets-****
 	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
-	// The name of the policy.
+	// 策略治理规则名称。
 	//
 	// example:
 	//
 	// ACKPSPCapabilities
 	PolicyName *string `json:"policy_name,omitempty" xml:"policy_name,omitempty"`
-	// The type of the policy.
+	// 策略类型名称。
 	//
 	// example:
 	//
 	// k8s-general
 	PolicyCategory *string `json:"policy_category,omitempty" xml:"policy_category,omitempty"`
-	// The description of the policy template.
+	// 规则模板描述。
 	//
 	// example:
 	//
 	// Restricts secrets used in pod envs
 	PolicyDescription *string `json:"policy_description,omitempty" xml:"policy_description,omitempty"`
-	// The parameters of the policy instance.
+	// 当前规则实例的配置参数。
 	//
 	// example:
 	//
 	// "restrictedNamespaces": [ "test" ]
 	PolicyParameters *string `json:"policy_parameters,omitempty" xml:"policy_parameters,omitempty"`
-	// The severity level of the policy instance.
+	// 规则实例治理等级。
 	//
 	// example:
 	//
 	// low
 	PolicySeverity *string `json:"policy_severity,omitempty" xml:"policy_severity,omitempty"`
-	// The applicable scope of the policy instance.
+	// 策略实例实施范围：
 	//
-	// A value of \\	- indicates all namespaces in the cluster. This is the default value.
+	// 默认"*"代表集群所有命名空间。
 	//
-	// Multiple namespaces are separated by commas (,).
+	// 否则返回作用Namespaces名称，多个Namespaces以逗号（,）分隔。
 	//
 	// example:
 	//
 	// *
 	PolicyScope *string `json:"policy_scope,omitempty" xml:"policy_scope,omitempty"`
-	// The action of the policy. Valid values:
+	// 规则治理动作，取值：
 	//
-	// 	- `deny`: Deployments that match the policy are denied.
+	// - `deny`：拦截违规部署。
 	//
-	// 	- `warn`: Alerts are generated for deployments that match the policy.
+	// - `warn`：告警。
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type DescribePolicyInstancesResponseBody struct {
 	PolicyAction *string `json:"policy_action,omitempty" xml:"policy_action,omitempty"`
 	// Deprecated
 	//
-	// The creation time of the instance. This parameter is deprecated.
+	// 创建时间（已废弃，请勿使用）。
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type DescribePolicyInstancesResponseBody struct {
 	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
 	// Deprecated
 	//
-	// The update time of the instance. This parameter is deprecated.
+	// 更新时间（已废弃，请勿使用）。
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type DescribePolicyInstancesResponseBody struct {
 	Updated *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
 	// Deprecated
 	//
-	// The ID of the resource. This parameter is deprecated.
+	// 资源ID（已废弃，请勿使用）。
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type DescribePolicyInstancesResponseBody struct {
 	ResourceId *string `json:"resource_id,omitempty" xml:"resource_id,omitempty"`
 	// Deprecated
 	//
-	// The number of violations processed in the cluster. This parameter is deprecated.
+	// 集群中处理违规计数（已废弃，请勿使用）。
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type DescribePolicyInstancesResponseBody struct {
 	TotalViolations *int64 `json:"total_violations,omitempty" xml:"total_violations,omitempty"`
 	// Deprecated
 	//
-	// The status of the deletion. This parameter is deprecated.
+	// 删除状态（已废弃，请勿使用）。
 	//
 	// example:
 	//

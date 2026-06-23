@@ -18,7 +18,7 @@ type iListUserKubeConfigStatesResponseBody interface {
 type ListUserKubeConfigStatesResponseBody struct {
 	// The pagination information.
 	Page *ListUserKubeConfigStatesResponseBodyPage `json:"page,omitempty" xml:"page,omitempty" type:"Struct"`
-	// The status of the kubeconfig files.
+	// The KubeConfig status details of the user.
 	States []*ListUserKubeConfigStatesResponseBodyStates `json:"states,omitempty" xml:"states,omitempty" type:"Repeated"`
 }
 
@@ -67,19 +67,19 @@ func (s *ListUserKubeConfigStatesResponseBody) Validate() error {
 }
 
 type ListUserKubeConfigStatesResponseBodyPage struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries per page.
+	// The number of records returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of entries returned.
+	// The total number of results.
 	//
 	// example:
 	//
@@ -127,23 +127,23 @@ func (s *ListUserKubeConfigStatesResponseBodyPage) Validate() error {
 }
 
 type ListUserKubeConfigStatesResponseBodyStates struct {
-	// The expiration date of the certificate used in a kubeconfig file. Format: the UTC time in the RFC3339 format.
+	// The expiration time of the KubeConfig certificate. Format: UTC time in RFC 3339 format.
 	//
 	// example:
 	//
 	// 2028-04-09T06:20:47Z
 	CertExpireTime *string `json:"cert_expire_time,omitempty" xml:"cert_expire_time,omitempty"`
-	// The current status of the certificate used in a kubeconfig file. Valid values:
+	// The current status of the KubeConfig certificate. Valid values:
 	//
-	// 	- Expired: The certificate is expired.
+	// - Expired: The certificate has expired.
 	//
-	// 	- Unexpired: The certificate is not expired.
+	// - Unexpired: The certificate has not expired.
 	//
-	// 	- Unissued: The certificate is not issued.
+	// - Unissued: The certificate has not been issued.
 	//
-	// 	- Unknown: The status of the certificate is unknown.
+	// - Unknown: The status is unknown.
 	//
-	// 	- Removed: The certificate is removed. An issue record is found for the certificate.
+	// - Removed: The certificate has been revoked. An issuance record exists for the certificate.
 	//
 	// example:
 	//
@@ -155,35 +155,33 @@ type ListUserKubeConfigStatesResponseBodyStates struct {
 	//
 	// c5b5e80b0b64a4bf6939d2d8fbbc5****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The name of the cluster.
-	//
-	// The name must be 1 to 63 characters in length, and can contain digits, underscores (_), and hyphens (-). The name must start with a letter or number.
+	// The cluster name.
 	//
 	// example:
 	//
 	// cluster-demo
 	ClusterName *string `json:"cluster_name,omitempty" xml:"cluster_name,omitempty"`
-	// The status of the cluster. Valid values:
+	// The cluster status. Valid values:
 	//
-	// 	- `initial`: The cluster is being created.
+	// - `initial`: The cluster is being created.
 	//
-	// 	- `failed`: The cluster failed to be created.
+	// - `failed`: The cluster failed to be created.
 	//
-	// 	- `running`: The cluster is running.
+	// - `running`: The cluster is running.
 	//
-	// 	- `updating`: The cluster is being upgraded.
+	// - `updating`: The cluster is being upgraded.
 	//
-	// 	- `updating_failed`: The cluster failed to be updated.
+	// - `updating_failed`: The cluster failed to be upgraded.
 	//
-	// 	- `scaling`: The cluster is being scaled.
+	// - `scaling`: The cluster is being scaled.
 	//
-	// 	- `stopped`: The cluster is stopped.
+	// - `stopped`: The cluster has stopped running.
 	//
-	// 	- `deleting`: The cluster is being deleted.
+	// - `deleting`: The cluster is being deleted.
 	//
-	// 	- `deleted`: The cluster is deleted.
+	// - `deleted`: The cluster has been deleted.
 	//
-	// 	- `delete_failed`: The cluster failed to be deleted.
+	// - `delete_failed`: The cluster failed to be deleted.
 	//
 	// example:
 	//

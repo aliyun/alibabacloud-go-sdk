@@ -36,11 +36,11 @@ type iNodepool interface {
 }
 
 type Nodepool struct {
-	// The auto-scaling configurations for the node pool.
+	// The auto scaling configuration of the node pool.
 	AutoScaling *NodepoolAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
 	// Deprecated
 	//
-	// This parameter is deprecated. Use desired_size instead.
+	// [This field is deprecated. Use desired_size instead.]
 	//
 	// The number of nodes in the node pool.
 	//
@@ -50,25 +50,25 @@ type Nodepool struct {
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated.
+	// [This field is deprecated.]
 	//
-	// The edge node pool configurations.
+	// The edge node pool configuration.
 	InterconnectConfig *NodepoolInterconnectConfig `json:"interconnect_config,omitempty" xml:"interconnect_config,omitempty" type:"Struct"`
-	// The network type of the edge node pool. This parameter is only meaningful for node pools of type `edge`. Valid values:
+	// The network type of the edge node pool. This value is valid only for node pools whose `type` is `edge`. Valid values:
 	//
-	// - `basic`: Basic.
+	// - `basic`: basic.
 	//
-	// - `private`: Private. Supported in versions 1.22 and later.
+	// - `private`: dedicated. Supported in version 1.22 and later.
 	//
 	// example:
 	//
 	// basic
 	InterconnectMode *string `json:"interconnect_mode,omitempty" xml:"interconnect_mode,omitempty"`
-	// The cluster configurations.
+	// The cluster-related configuration.
 	KubernetesConfig *NodepoolKubernetesConfig `json:"kubernetes_config,omitempty" xml:"kubernetes_config,omitempty" type:"Struct"`
-	// The managed node pool configurations.
+	// The managed node pool configuration.
 	Management *NodepoolManagement `json:"management,omitempty" xml:"management,omitempty" type:"Struct"`
-	// The maximum number of nodes that the edge node pool can contain. This parameter must be greater than or equal to 0. A value of 0 indicates no extra limit (limited only by the total number of nodes the cluster can accommodate, with no additional limit on the node pool itself). The value of this parameter for an edge node pool is often greater than 0. For ess type node pools and default edge type node pools, this parameter is 0.
+	// The maximum number of nodes allowed in the edge node pool. This parameter must be greater than or equal to 0. A value of 0 indicates no additional limit. The node pool is limited only by the maximum number of nodes that the cluster can contain. Edge node pools typically have a value greater than 0. ESS-type node pools and default edge-type node pools have a value of 0.
 	//
 	// example:
 	//
@@ -76,13 +76,13 @@ type Nodepool struct {
 	MaxNodes *int64 `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
 	// The list of node components.
 	NodeComponents []*NodepoolNodeComponents `json:"node_components,omitempty" xml:"node_components,omitempty" type:"Repeated"`
-	// The node configurations.
+	// The node configuration.
 	NodeConfig *NodepoolNodeConfig `json:"node_config,omitempty" xml:"node_config,omitempty" type:"Struct"`
-	// The node pool configurations.
+	// The node pool configuration.
 	NodepoolInfo *NodepoolNodepoolInfo `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
-	// The configurations of the scaling group for the node pool.
+	// The scaling group configuration of the node pool.
 	ScalingGroup *NodepoolScalingGroup `json:"scaling_group,omitempty" xml:"scaling_group,omitempty" type:"Struct"`
-	// The confidential computing node pool configurations.
+	// The confidential computing node pool configuration.
 	TeeConfig *NodepoolTeeConfig `json:"tee_config,omitempty" xml:"tee_config,omitempty" type:"Struct"`
 }
 
@@ -258,9 +258,9 @@ func (s *Nodepool) Validate() error {
 type NodepoolAutoScaling struct {
 	// Deprecated
 	//
-	// This parameter is deprecated.
+	// 【该字段已废弃】
 	//
-	// The peak bandwidth of the EIP. Unit: Mbit/s.
+	// EIP带宽峰值。单位：Mbps。
 	//
 	// example:
 	//
@@ -268,27 +268,27 @@ type NodepoolAutoScaling struct {
 	EipBandwidth *int64 `json:"eip_bandwidth,omitempty" xml:"eip_bandwidth,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated.
+	// 【该字段已废弃】
 	//
-	// The billing method of the EIP. Valid values:
+	// EIP计费类型，取值：
 	//
-	// - `PayByBandwidth`: Pay-by-bandwidth.
+	// - `PayByBandwidth`：按固定带宽计费。
 	//
-	// - `PayByTraffic`: Pay-by-traffic.
+	// - `PayByTraffic`：按使用流量计费。
 	//
-	// Default value: PayByBandwidth.
+	// 默认值：PayByBandwidth。
 	//
 	// example:
 	//
 	// PayByBandwidth
 	EipInternetChargeType *string `json:"eip_internet_charge_type,omitempty" xml:"eip_internet_charge_type,omitempty"`
-	// Specifies whether to enable auto-scaling.
+	// 是否启用自动伸缩。
 	//
-	// - `true`: Enables auto-scaling for the node pool.
+	// - `true`：开启节点池自动伸缩功能。
 	//
-	// - `false`: Disables auto-scaling. If you set this parameter to false, other parameters in the `auto_scaling` object do not take effect.
+	// - `false`：不开启自动伸缩，当取值为false时，`auto_scaling`内的其他配置参数将不生效。
 	//
-	// Default value: `false`.
+	// 默认值：`false`。
 	//
 	// This parameter is required.
 	//
@@ -298,21 +298,21 @@ type NodepoolAutoScaling struct {
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated.
+	// 【该字段已废弃】
 	//
-	// Specifies whether to associate an EIP. Valid values:
+	// 是否绑定EIP，取值：
 	//
-	// - `true`: Associates an EIP.
+	// - `true`：绑定EIP。
 	//
-	// - `false`: Does not associate an EIP.
+	// - `false`：不绑定EIP。
 	//
-	// Default value: `false`.
+	// 默认值：`false`。
 	//
 	// example:
 	//
 	// true
 	IsBondEip *bool `json:"is_bond_eip,omitempty" xml:"is_bond_eip,omitempty"`
-	// The maximum number of instances in the scaling group.
+	// 自动伸缩组最大实例数。
 	//
 	// This parameter is required.
 	//
@@ -320,7 +320,7 @@ type NodepoolAutoScaling struct {
 	//
 	// 10
 	MaxInstances *int64 `json:"max_instances,omitempty" xml:"max_instances,omitempty"`
-	// The minimum number of instances in the scaling group.
+	// 自动伸缩组最小实例数。
 	//
 	// This parameter is required.
 	//
@@ -328,17 +328,17 @@ type NodepoolAutoScaling struct {
 	//
 	// 0
 	MinInstances *int64 `json:"min_instances,omitempty" xml:"min_instances,omitempty"`
-	// The type of auto-scaling, which is determined by the instance type. Valid values:
+	// 自动伸缩类型，按照自动伸缩实例类型划分。取值：
 	//
-	// - `cpu`: Standard instances.
+	// - `cpu`：普通实例型。
 	//
-	// - `gpu`: GPU-accelerated instances.
+	// - `gpu`：GPU实例型。
 	//
-	// - `gpushare`: Shared GPU instances.
+	// - `gpushare`：GPU共享型。
 	//
-	// - `spot`: Spot instances.
+	// - `spot`：抢占式实例型。
 	//
-	// Default value: `cpu`.
+	// 默认值：`cpu`。
 	//
 	// example:
 	//
@@ -424,9 +424,9 @@ func (s *NodepoolAutoScaling) Validate() error {
 type NodepoolInterconnectConfig struct {
 	// Deprecated
 	//
-	// This parameter is deprecated.
+	// 【该字段已废弃】
 	//
-	// The network bandwidth of the enhanced edge node pool. Unit: Mbit/s.
+	// 边缘增强型节点池的网络带宽，单位：Mbps。
 	//
 	// example:
 	//
@@ -434,9 +434,9 @@ type NodepoolInterconnectConfig struct {
 	Bandwidth *int64 `json:"bandwidth,omitempty" xml:"bandwidth,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated.
+	// 【该字段已废弃】
 	//
-	// The CCN instance ID (CCNID) bound to the enhanced edge node pool.
+	// 边缘增强型节点池绑定的云连接网实例ID(CCNID)。
 	//
 	// example:
 	//
@@ -444,9 +444,9 @@ type NodepoolInterconnectConfig struct {
 	CcnId *string `json:"ccn_id,omitempty" xml:"ccn_id,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated.
+	// 【该字段已废弃】
 	//
-	// The region where the CCN instance bound to the enhanced edge node pool is located.
+	// 边缘增强型节点池绑定的云连接网实例所属的地域。
 	//
 	// example:
 	//
@@ -454,9 +454,9 @@ type NodepoolInterconnectConfig struct {
 	CcnRegionId *string `json:"ccn_region_id,omitempty" xml:"ccn_region_id,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated.
+	// 【该字段已废弃】
 	//
-	// The CEN instance ID (CENID) bound to the enhanced edge node pool.
+	// 边缘增强型节点池绑定的云企业网实例ID(CENID)。
 	//
 	// example:
 	//
@@ -464,9 +464,9 @@ type NodepoolInterconnectConfig struct {
 	CenId *string `json:"cen_id,omitempty" xml:"cen_id,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated.
+	// 【该字段已废弃】
 	//
-	// The subscription duration of the enhanced edge node pool. Unit: month.
+	// 边缘增强型节点池的购买时长，单位：月。
 	//
 	// example:
 	//
@@ -532,53 +532,53 @@ func (s *NodepoolInterconnectConfig) Validate() error {
 }
 
 type NodepoolKubernetesConfig struct {
-	// Specifies whether to install Cloud Monitor on ECS nodes. After installation, you can view monitoring information about the created ECS instances in the Cloud Monitor console. We recommend that you enable this feature. Valid values:
+	// 是否在ECS节点上安装云监控，安装后可以在云监控控制台查看所创建ECS实例的监控信息，推荐开启。取值：
 	//
-	// - `true`: Installs Cloud Monitor on ECS nodes.
+	// - `true`：在ECS节点上安装云监控。
 	//
-	// - `false`: Does not install Cloud Monitor on ECS nodes.
+	// - `false`：不在ECS节点上安装云监控。
 	//
-	// Default value: `false`.
+	// 默认值：`false`。
 	//
 	// example:
 	//
 	// true
 	CmsEnabled *bool `json:"cms_enabled,omitempty" xml:"cms_enabled,omitempty"`
-	// The CPU management policy for the node. The following policies are supported for clusters of Kubernetes v1.12.6 or later:
+	// 节点CPU管理策略。当集群版本在1.12.6及以上时支持以下两种策略：
 	//
-	// - `static`: Allows pods with specific resource characteristics on the node to be granted enhanced CPU affinity and exclusivity.
+	// - `static`：允许为节点上具有某些资源特征Pod增强其CPU亲和性和独占性。
 	//
-	// - `none`: Indicates that the existing default CPU affinity scheme is enabled.
+	// - `none`：表示启用现有的默认CPU亲和性方案。
 	//
-	// Default value: `none`.
+	// 默认值：`none`。
 	//
 	// example:
 	//
 	// none
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
-	// The node labels. Adds labels to the nodes of the Kubernetes cluster.
+	// 节点标签，为Kubernetes集群节点添加标签。
 	Labels []*Tag `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-	// The node name consists of three parts: a prefix, the node IP address, and a suffix.
+	// 节点名称由三部分组成：前缀 + 节点 IP + 后缀：
 	//
-	// - The prefix and suffix can each consist of one or more parts separated by periods (.). Each part can contain lowercase letters, digits, and hyphens (-). The node name must start and end with a lowercase letter or a digit.
+	// - 前缀和后缀均可由“.”分隔的一个或多个部分构成，每个部分可以使用小写字母、数字和“-”，节点名称首尾必须为小写字母和数字；
 	//
-	// - The node IP address is the complete private IP address of the node.
+	// - 节点 IP为完整的节点私网 IP 地址；
 	//
-	// The parameter consists of four parts separated by commas. For example, if you pass the string "customized,aliyun,ip,com", the node name is aliyun.192.168.xxx.xxx.com. In this example, "customized" and "ip" are fixed strings, "aliyun" is the prefix, and "com" is the suffix.
+	// 传参包含四个部分，由逗号分隔，例如：参数传入"customized,aliyun,ip,com"字符串（其中“customized”和"ip"为固定的字符串，aliyun为前缀，com为后缀），则节点的名称为：aliyun.192.168.xxx.xxx.com。
 	//
 	// example:
 	//
 	// customized,aliyun,ip,com
 	NodeNameMode *string `json:"node_name_mode,omitempty" xml:"node_name_mode,omitempty"`
-	// The container runtime. Valid values:
+	// 容器运行时。取值：
 	//
-	// - `containerd`: Recommended. This option is supported for all cluster versions.
+	// - `containerd`：推荐使用，支持所有集群版本。
 	//
-	// - `Sandboxed-Container.runv`: A sandboxed container that provides higher isolation. This option is supported for clusters of Kubernetes v1.24 or earlier.
+	// - `Sandboxed-Container.runv`：安全沙箱容器，提供更高的隔离性，支持1.24版本及以下集群。
 	//
-	// - `docker`: This option is supported for clusters of Kubernetes v1.22 or earlier.
+	// - `docker`：支持1.22版本及以下集群。
 	//
-	// Default value: `containerd`
+	// 默认值：`containerd`
 	//
 	// This parameter is required.
 	//
@@ -586,7 +586,7 @@ type NodepoolKubernetesConfig struct {
 	//
 	// containerd
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The container runtime version.
+	// 容器运行时版本。
 	//
 	// This parameter is required.
 	//
@@ -594,9 +594,9 @@ type NodepoolKubernetesConfig struct {
 	//
 	// 1.6.20
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
-	// The taint configurations.
+	// 污点配置。
 	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
-	// The custom data of the node.
+	// 节点自定义数据。
 	//
 	// example:
 	//
@@ -708,39 +708,39 @@ func (s *NodepoolKubernetesConfig) Validate() error {
 
 type NodepoolManagement struct {
 	AutoFaultDiagnosis *bool `json:"auto_fault_diagnosis,omitempty" xml:"auto_fault_diagnosis,omitempty"`
-	// Auto repair. This takes effect only when `enable=true`.
+	// 自动修复，仅当`enable=true`时生效。
 	//
-	// - `true`: Enables auto repair.
+	// - `true`：自动修复。
 	//
-	// - `false`: Disables auto repair.
+	// - `false`：不自动修复。
 	//
 	// example:
 	//
 	// false
 	AutoRepair *bool `json:"auto_repair,omitempty" xml:"auto_repair,omitempty"`
-	// The auto-repair policy for nodes.
+	// 自动修复节点策略。
 	AutoRepairPolicy *NodepoolManagementAutoRepairPolicy `json:"auto_repair_policy,omitempty" xml:"auto_repair_policy,omitempty" type:"Struct"`
-	// Specifies whether to enable auto-upgrade.
+	// 是否自动升级。
 	//
 	// example:
 	//
 	// true
 	AutoUpgrade *bool `json:"auto_upgrade,omitempty" xml:"auto_upgrade,omitempty"`
-	// The auto-upgrade policy.
+	// 自动升级策略。
 	AutoUpgradePolicy *NodepoolManagementAutoUpgradePolicy `json:"auto_upgrade_policy,omitempty" xml:"auto_upgrade_policy,omitempty" type:"Struct"`
-	// Specifies whether to automatically fix CVEs.
+	// 是否自动修复CVE。
 	//
 	// example:
 	//
 	// true
 	AutoVulFix *bool `json:"auto_vul_fix,omitempty" xml:"auto_vul_fix,omitempty"`
-	// The auto-fix policy for CVEs.
+	// 自动修复CVE策略。
 	AutoVulFixPolicy *NodepoolManagementAutoVulFixPolicy `json:"auto_vul_fix_policy,omitempty" xml:"auto_vul_fix_policy,omitempty" type:"Struct"`
-	// Specifies whether to enable the managed node pool. Valid values:
+	// 是否开启托管版节点池，取值：
 	//
-	// - `true`: Enables the managed node pool.
+	// - `true`：开启托管节点池。
 	//
-	// - `false`: Disables the managed node pool. Other related configurations take effect only when `enable=true`.
+	// - `false`：不开启托管节点池，只有当`enable=true`时，其他相关配置才生效。
 	//
 	// example:
 	//
@@ -748,7 +748,7 @@ type NodepoolManagement struct {
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// Deprecated
 	//
-	// The auto-upgrade configurations. This takes effect only when `enable=true`.
+	// 自动升级配置，仅当`enable=true`时生效。
 	UpgradeConfig *NodepoolManagementUpgradeConfig `json:"upgrade_config,omitempty" xml:"upgrade_config,omitempty" type:"Struct"`
 }
 
@@ -866,7 +866,7 @@ func (s *NodepoolManagement) Validate() error {
 }
 
 type NodepoolManagementAutoRepairPolicy struct {
-	// Specifies whether to allow restarting nodes.
+	// 是否允许重启节点。
 	//
 	// example:
 	//
@@ -896,7 +896,7 @@ func (s *NodepoolManagementAutoRepairPolicy) Validate() error {
 }
 
 type NodepoolManagementAutoUpgradePolicy struct {
-	// Specifies whether to allow auto-upgrading the kubelet.
+	// 是否允许自动升级kubelet。
 	//
 	// example:
 	//
@@ -926,13 +926,13 @@ func (s *NodepoolManagementAutoUpgradePolicy) Validate() error {
 }
 
 type NodepoolManagementAutoVulFixPolicy struct {
-	// Specifies whether to allow restarting nodes.
+	// 是否允许重启节点。
 	//
 	// example:
 	//
 	// true
 	RestartNode *bool `json:"restart_node,omitempty" xml:"restart_node,omitempty"`
-	// The vulnerability levels that are allowed to be automatically fixed, separated by commas.
+	// 允许自动修复的漏洞级别，以逗号分隔。
 	//
 	// example:
 	//
@@ -971,31 +971,31 @@ func (s *NodepoolManagementAutoVulFixPolicy) Validate() error {
 }
 
 type NodepoolManagementUpgradeConfig struct {
-	// Specifies whether to enable auto-upgrade. Valid values:
+	// 是否启用自动升级，取值：
 	//
-	// - `true`: Enables auto-upgrade.
+	// - `true`：启用自动升级。
 	//
-	// - `false`: Disables auto-upgrade.
+	// - `false`：不启用自动升级。
 	//
 	// example:
 	//
 	// false
 	AutoUpgrade *bool `json:"auto_upgrade,omitempty" xml:"auto_upgrade,omitempty"`
-	// The maximum number of unavailable nodes. Value range: [1, 1000].
+	// 最大不可用节点数量，取值范围：[1,1000\\]。
 	//
-	// Default value: 1.
+	// 默认值：1。
 	//
 	// example:
 	//
 	// 0
 	MaxUnavailable *int64 `json:"max_unavailable,omitempty" xml:"max_unavailable,omitempty"`
-	// The number of extra nodes.
+	// 额外节点数量。
 	//
 	// example:
 	//
 	// 0
 	Surge *int64 `json:"surge,omitempty" xml:"surge,omitempty"`
-	// The percentage of extra nodes. You must specify this parameter or `surge`.
+	// 额外节点比例，和`surge`二选一。
 	//
 	// example:
 	//
@@ -1052,15 +1052,15 @@ func (s *NodepoolManagementUpgradeConfig) Validate() error {
 }
 
 type NodepoolNodeComponents struct {
-	// The configuration of the node component.
+	// 节点组件配置。
 	Config *NodepoolNodeComponentsConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The name of the node component.
+	// 节点组件名称。
 	//
 	// example:
 	//
 	// kubelet
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The version of the node component.
+	// 节点组件版本
 	//
 	// example:
 	//
@@ -1113,7 +1113,7 @@ func (s *NodepoolNodeComponents) Validate() error {
 }
 
 type NodepoolNodeComponentsConfig struct {
-	// The custom configuration of the node component.
+	// 节点组件自定义配置。
 	CustomConfig map[string]*string `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
 }
 
@@ -1139,7 +1139,7 @@ func (s *NodepoolNodeComponentsConfig) Validate() error {
 }
 
 type NodepoolNodeConfig struct {
-	// The Kubelet parameter settings.
+	// Kubelet参数配置。
 	KubeletConfiguration *KubeletConfig `json:"kubelet_configuration,omitempty" xml:"kubelet_configuration,omitempty"`
 }
 
@@ -1170,7 +1170,7 @@ func (s *NodepoolNodeConfig) Validate() error {
 }
 
 type NodepoolNodepoolInfo struct {
-	// The name of the node pool.
+	// 节点池名称。
 	//
 	// This parameter is required.
 	//
@@ -1178,17 +1178,17 @@ type NodepoolNodepoolInfo struct {
 	//
 	// np-test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the resource group to which the node pool belongs.
+	// 节点池所在资源ID。
 	//
 	// example:
 	//
 	// rg-acfmyvw3wjm****
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
-	// The type of the node pool. Valid values:
+	// 节点池类型，取值范围：
 	//
-	// - `ess`: A regular node pool.
+	// - `ess`：节点池。
 	//
-	// - `edge`: An edge node pool.
+	// - `edge`：边缘节点池。
 	//
 	// example:
 	//
@@ -1236,89 +1236,89 @@ func (s *NodepoolNodepoolInfo) Validate() error {
 }
 
 type NodepoolScalingGroup struct {
-	// Specifies whether to enable auto-renewal for the node pool. This parameter takes effect only when `instance_charge_type` is set to `PrePaid`. Valid values:
+	// 节点池是否开启自动续费，当`instance_charge_type`取值为`PrePaid`时才生效，取值：
 	//
-	// - `true`: Enables auto-renewal.
+	// - `true`：自动续费。
 	//
-	// - `false`: Disables auto-renewal.
+	// - `false`：不自动续费。
 	//
-	// Default value: `true`.
+	// 默认值：`true`。
 	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
-	// The auto-renewal period for the node pool. This parameter is required and takes effect only when `instance_charge_type` is set to `PrePaid`.
+	// 节点池自动续费周期。当`instance_charge_type`取值为`PrePaid`时才生效，且为必选值。
 	//
-	// If `PeriodUnit=Month`, valid values are 1, 2, 3, 6, and 12.
+	// 当`PeriodUnit=Month`时，取值范围：{1, 2, 3, 6, 12}。
 	//
-	// Default value: 1.
+	// 默认值：1。
 	//
 	// example:
 	//
 	// 0
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
-	// When `multi_az_policy` is set to `COST_OPTIMIZED`, specifies whether to automatically attempt to create on-demand instances to meet the required number of ECS instances if enough spot instances cannot be created due to price or inventory reasons. Valid values:
+	// 当`multi_az_policy`取值为`COST_OPTIMIZED`时，如果因价格、库存等原因无法创建足够的抢占式实例，是否允许自动尝试创建按量实例满足ECS实例数量要求。取值：
 	//
-	// - `true`: Allows automatically attempting to create on-demand instances to meet the required number of ECS instances.
+	// - `true`：允许自动尝试创建按量实例满足ECS实例数量要求。
 	//
-	// - `false`: Does not allow automatically attempting to create on-demand instances to meet the required number of ECS instances.
+	// - `false`：不允许自动尝试创建按量实例满足ECS实例数量要求。
 	//
 	// example:
 	//
 	// true
 	CompensateWithOnDemand *bool `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
-	// The data disk configurations for the nodes in the node pool.
+	// 节点池节点数据盘配置。
 	DataDisks []*DataDisk `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
-	// The deployment set ID.
+	// 部署集ID。
 	//
 	// example:
 	//
 	// ds-bp1d19mmbsv3jf6xxxxx
 	DeploymentsetId *string `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
-	// The desired number of nodes in the node pool.
+	// 节点池期望节点数量。
 	//
 	// example:
 	//
 	// 2
 	DesiredSize *int64 `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
-	// The block device initialization configurations.
+	// 块设备初始化配置。
 	DiskInit []*DiskInit `json:"disk_init,omitempty" xml:"disk_init,omitempty" type:"Repeated"`
-	// The ID of the custom image. By default, the system-provided image is used.
+	// 自定义镜像ID，默认使用系统提供的镜像。
 	//
 	// example:
 	//
 	// aliyun_2_1903_x64_20G_alibase_20200904.vhd
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	// The type of OS image. You must specify this parameter or the platform parameter. Valid values:
+	// 操作系统镜像类型，和platform参数二选一，取值范围：
 	//
-	// - `AliyunLinux`: Alinux2 image.
+	// - `AliyunLinux`：Alinux2镜像。
 	//
-	// - `AliyunLinux3`: Alinux3 image.
+	// - `AliyunLinux3`：Alinux3镜像。
 	//
-	// - `AliyunLinux3Arm64`: Alinux3 image for ARM.
+	// - `AliyunLinux3Arm64`：Alinux3镜像ARM版。
 	//
-	// - `AliyunLinuxUEFI`: Alinux2 image for UEFI.
+	// - `AliyunLinuxUEFI`：Alinux2镜像UEFI版。
 	//
-	// - `CentOS`: CentOS image.
+	// - `CentOS`：CentOS镜像。
 	//
-	// - `Windows`: Windows image.
+	// - `Windows`：Windows镜像。
 	//
-	// - `WindowsCore`: Windows Core image.
+	// - `WindowsCore`：WindowsCore镜像。
 	//
-	// - `ContainerOS`: Container-optimized image.
+	// - `ContainerOS`：容器优化镜像。
 	//
 	// example:
 	//
 	// AliyunLinux
 	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
-	// The billing method of the nodes in the node pool. Valid values:
+	// 节点池节点付费类型，取值：
 	//
-	// - `PrePaid`: Subscription.
+	// - `PrePaid`：预付费。
 	//
-	// - `PostPaid`: Pay-as-you-go.
+	// - `PostPaid`：按量付费。
 	//
-	// Default value: `PostPaid`.
+	// 默认值：`PostPaid`。
 	//
 	// This parameter is required.
 	//
@@ -1326,85 +1326,85 @@ type NodepoolScalingGroup struct {
 	//
 	// PostPaid
 	InstanceChargeType *string `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
-	// The metadata access configuration for the ECS instance.
+	// ECS 实例的元数据访问配置。
 	//
-	// This feature is currently available only to whitelisted users. Submit a ticket to request access.
+	// 目前仅白名单开放，需提交工单申请。
 	InstanceMetadataOptions *InstanceMetadataOptions `json:"instance_metadata_options,omitempty" xml:"instance_metadata_options,omitempty"`
-	// The instance types.
+	// 实例规格。
 	//
 	// This parameter is required.
 	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
-	// The billing method for the public IP address. Valid values:
+	// 公网IP收费类型。取值：
 	//
-	// - `PayByBandwidth`: Pay-by-bandwidth.
+	// - `PayByBandwidth`：按固定带宽计费。
 	//
-	// - `PayByTraffic`: Pay-by-traffic.
+	// - `PayByTraffic`：按使用流量计费。
 	//
 	// example:
 	//
 	// PayByBandwidth
 	InternetChargeType *string `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
-	// The maximum outbound bandwidth of the public IP address for the node. Unit: Mbit/s. Value range: [1, 100].
+	// 节点公网IP出带宽最大值，单位为Mbps（Mega bit per second），取值范围：[1,100]
 	//
 	// example:
 	//
 	// 10
 	InternetMaxBandwidthOut *int64 `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
-	// The name of the key pair. You must specify this parameter or `login_password`.
+	// 密钥对名称，和`login_password`二选一。
 	//
-	// > If you create a managed node pool, you can only specify `key_pair`.
+	// > 如果创建托管节点池，则只支持`key_pair`。
 	//
 	// example:
 	//
 	// np-key
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// Specifies whether to log on to the created ECS instances as a non-root user.
+	// 弹出的ECS实例是否使用以非root用户登录。
 	LoginAsNonRoot *bool `json:"login_as_non_root,omitempty" xml:"login_as_non_root,omitempty"`
-	// The SSH logon password. You must specify this parameter or `key_pair`. The password must be 8 to 30 characters long and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// SSH登录密码，和`key_pair`二选一。密码规则为8~30个字符，且至少同时包含三项（大小写字母、数字和特殊符号）。
 	//
 	// example:
 	//
 	// Hello1234
 	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	// The scaling policy for ECS instances in a multi-zone scaling group. Valid values:
+	// 多可用区伸缩组ECS实例扩缩容策略。取值：
 	//
-	// - `PRIORITY`: Scales instances based on the virtual switches (VSwitchIds.N) you define. If an ECS instance cannot be created in the zone of the higher-priority virtual switch, the system automatically uses the next-priority virtual switch to create the instance.
+	// - `PRIORITY`：根据您定义的虚拟交换机（VSwitchIds.N）扩缩容。当优先级较高的虚拟交换机所在可用区无法创建ECS实例时，自动使用下一优先级的虚拟交换机创建ECS实例。
 	//
-	// - `COST_OPTIMIZED`: Attempts to create instances with the lowest vCPU unit price. When multiple instance types are specified for a spot instance in the scaling configuration, the system prioritizes creating the corresponding spot instance. You can use the `CompensateWithOnDemand` parameter to specify whether to automatically try creating on-demand instances if spot instances cannot be created due to inventory or other reasons.
+	// - `COST_OPTIMIZED`：按vCPU单价从低到高进行尝试创建。当伸缩配置设置了抢占式计费方式的多实例规格时，优先创建对应抢占式实例。您可以继续通过`CompensateWithOnDemand`参数指定当抢占式实例由于库存等原因无法创建时，是否自动尝试以按量付费的方式创建。
 	//
-	//   > `COST_OPTIMIZED` takes effect only when multiple instance types are set in the scaling configuration or when spot instances are selected.
+	//   >`COST_OPTIMIZED`仅在伸缩配置设置了多实例规格或者选用了抢占式实例的情况下生效。
 	//
-	// - `BALANCE`: Evenly distributes ECS instances across the specified multiple zones in the scaling group. If the zones become unbalanced due to inventory shortages or other reasons, you can use the RebalanceInstances API to balance the resources. For more information, see [RebalanceInstances](https://help.aliyun.com/document_detail/71516.html).
+	// - `BALANCE`：在伸缩组指定的多可用区之间均匀分配ECS实例。如果由于库存不足等原因可用区之间变得不平衡，您可以通过API RebalanceInstances平衡资源。更多信息，请参见[RebalanceInstances](https://help.aliyun.com/document_detail/71516.html)。
 	//
-	// Default value: `PRIORITY`.
+	// 默认值：`PRIORITY`。
 	//
 	// example:
 	//
 	// COST_OPTIMIZED
 	MultiAzPolicy *string `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
-	// The minimum number of on-demand instances required by the scaling group. Value range: [0, 1000]. When the number of on-demand instances is less than this value, on-demand instances will be created first.
+	// 伸缩组所需要按量实例个数的最小值，取值范围：[0,1000]。当按量实例个数少于该值时，将优先创建按量实例。
 	//
 	// example:
 	//
 	// 0
 	OnDemandBaseCapacity *int64 `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
-	// The percentage of on-demand instances among the instances that exceed the minimum on-demand instance count (`on_demand_base_capacity`). Value range: [0, 100].
+	// 伸缩组满足最小按量实例数（`on_demand_base_capacity`）要求后，超出的实例中按量实例应占的比例。取值范围：[0,100]。
 	//
 	// example:
 	//
 	// 20
 	OnDemandPercentageAboveBaseCapacity *int64 `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
-	// The subscription duration of the nodes in the node pool. This parameter is required and takes effect only when `instance_charge_type` is set to `PrePaid`. If `period_unit` is set to Month, valid values for `period` are 1, 2, 3, 6, and 12.
+	// 节点池节点包年包月时长，当`instance_charge_type`取值为`PrePaid`时才生效且为必选值，取值范围：`period_unit`取值为Month时，`period`取值范围：{ 1, 2, 3, 6, 12}。
 	//
-	// Default value: 1.
+	// 默认值：1。
 	//
 	// example:
 	//
 	// 0
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
-	// The billing cycle of the nodes in the node pool. You must specify this parameter when `instance_charge_type` is set to `PrePaid`.
+	// 节点池节点付费周期，当`instance_charge_type`取值为`PrePaid`时需要指定周期。
 	//
-	// `Month`: The billing cycle is measured in months.
+	// `Month`：目前只支持以月为单位。
 	//
 	// example:
 	//
@@ -1412,7 +1412,7 @@ type NodepoolScalingGroup struct {
 	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
 	// Deprecated
 	//
-	// The OS distribution. Valid values:
+	// 操作系统发行版。取值：
 	//
 	// - `CentOS`
 	//
@@ -1422,171 +1422,171 @@ type NodepoolScalingGroup struct {
 	//
 	// - `WindowsCore`
 	//
-	// Default value: `AliyunLinux`.
+	// 默认值：`AliyunLinux`。
 	//
 	// example:
 	//
 	// AliyunLinux
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
-	// The private node pool configurations.
+	// 私有节点池配置。
 	PrivatePoolOptions *NodepoolScalingGroupPrivatePoolOptions `json:"private_pool_options,omitempty" xml:"private_pool_options,omitempty" type:"Struct"`
-	// The name of the Worker RAM role.
+	// Worker RAM角色名称。
 	//
-	// 	Notice: This parameter is supported only for ACK managed clusters of v1.22 or later when creating a node pool.
+	// 	Notice: 仅1.22及以上版本的ACK托管集群支持在创建节点池时配置该参数
 	//
 	// example:
 	//
 	// example-role
 	RamRoleName *string `json:"ram_role_name,omitempty" xml:"ram_role_name,omitempty"`
-	// The list of RDS instances.
+	// RDS实例列表。
 	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	// The resource pool and resource pool policy used when creating an instance. Note the following when setting this parameter:
+	// 创建实例时使用的资源池及资源池策略。当您设置该参数后，需要注意：
 	//
-	// This parameter is effective only when creating pay-as-you-go instances.
+	// 该参数只在创建按量付费实例时生效。
 	//
-	// This parameter cannot be set at the same time as private_pool_options.match_criteria and private_pool_options.id.
+	// 该参数不能与private_pool_options.match_criteria、private_pool_options.id同时设置。
 	ResourcePoolOptions *NodepoolScalingGroupResourcePoolOptions `json:"resource_pool_options,omitempty" xml:"resource_pool_options,omitempty" type:"Struct"`
-	// The scaling group mode. Valid values:
+	// 伸缩组模式，取值：
 	//
-	// - `release`: Standard mode. Creates and releases ECS instances to meet resource demands.
+	// - `release`：标准模式，根据申请资源值的使用量，通过创建、释放ECS的方式进行伸缩。
 	//
-	// - `recycle`: Fast mode. Creates, stops, and starts ECS instances to accelerate scaling. When an instance is stopped, you are not charged for its compute resources, but you are still charged for storage fees. This does not apply to instance types with local disks.
+	// - `recycle`：极速模式，通过创建、停机、启动的方式进行伸缩，提高再次伸缩的速度（停机时计算资源不收费，只收取存储费用，本地盘机型除外）。
 	//
-	// Default value: `release`.
+	// 默认值：`release`。
 	//
 	// example:
 	//
 	// release
 	ScalingPolicy *string `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
-	// The ID of the security group for the node pool. You must specify this parameter or `security_group_ids`. We recommend using `security_group_ids`.
+	// 节点池安全组ID，与`security_group_ids`二选一，推荐使用`security_group_ids`。
 	//
 	// example:
 	//
 	// sg-2zeihch86ooz9io4****
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
-	// The list of security group IDs. You must specify this parameter or `security_group_id`. We recommend using `security_group_ids`. If both `security_group_id` and `security_group_ids` are specified, `security_group_ids` takes precedence.
+	// 安全组ID列表，与`security_group_id`二选一，推荐使用`security_group_ids`，当同时指定`security_group_id`和`security_group_ids`将优先使用`security_group_ids`。
 	SecurityGroupIds []*string `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
-	// Specifies the number of available instance types. The scaling group will create spot instances in a balanced manner across multiple types with the lowest cost. Value range: [1, 10].
+	// 指定可用实例规格的个数，伸缩组将按成本最低的多个规格均衡创建抢占式实例。取值范围：[1,10]。
 	//
 	// example:
 	//
 	// 5
 	SpotInstancePools *int64 `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
-	// Specifies whether to enable replenishment for spot instances. When enabled, the scaling group will attempt to create new instances to replace spot instances that are about to be reclaimed. Valid values:
+	// 是否开启补齐抢占式实例。开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。取值：
 	//
-	// - `true`: Enables replenishment for spot instances.
+	// - `true`：开启补齐抢占式实例。
 	//
-	// - `false`: Disables replenishment for spot instances.
+	// - `false`：不开启补齐抢占式实例。
 	//
 	// example:
 	//
 	// false
 	SpotInstanceRemedy *bool `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
-	// The market price range configuration for a single spot instance type.
+	// 当前单台抢占式实例规格市场价格区间配置。
 	SpotPriceLimit []*NodepoolScalingGroupSpotPriceLimit `json:"spot_price_limit,omitempty" xml:"spot_price_limit,omitempty" type:"Repeated"`
-	// The preemption policy for the spot instance. Valid values:
+	// 抢占式实例类型，取值：
 	//
-	// - NoSpot: A regular on-demand instance.
+	// - NoSpot：非抢占式实例。
 	//
-	// - SpotWithPriceLimit: Sets the maximum hourly price for the spot instance.
+	// - SpotWithPriceLimit：设置抢占实例价格上限。
 	//
-	// - SpotAsPriceGo: The system automatically bids, following the current market price.
+	// - SpotAsPriceGo：系统自动出价，跟随当前市场实际价格。
 	//
-	// For more information, see [Spot instances](https://help.aliyun.com/document_detail/157759.html).
+	// 更多信息，请参见[抢占式实例](https://help.aliyun.com/document_detail/157759.html)。
 	//
 	// example:
 	//
 	// NoSpot
 	SpotStrategy *string `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
-	// Specifies whether to enable performance burst for the system disk of the nodes. Valid values:
+	// 节点系统盘是否开启Burst（性能突发）。 取值：
 	//
-	// - true: Yes.
+	// - true：是。
 	//
-	// - false: No.
+	// - false：否。
 	//
-	// This parameter can be set only when `SystemDiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+	// 当`SystemDiskCategory`取值为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](https://help.aliyun.com/document_detail/368372.html)。
 	//
 	// example:
 	//
 	// true
 	SystemDiskBurstingEnabled *bool `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
-	// Multiple disk types for the system disk. When a disk type with a higher priority is unavailable, the system automatically tries the next lower-priority disk type to create the system disk. Valid values:
+	// 系统盘的多磁盘类型。当无法使用高优先级的磁盘类型时，自动尝试下一优先级的磁盘类型创建系统盘。取值范围：
 	//
-	// - cloud: Basic disk.
+	// - cloud：普通云盘。
 	//
-	// - cloud_efficiency: Ultra disk.
+	// - cloud_efficiency：高效云盘。
 	//
-	// - cloud_ssd: Standard SSD.
+	// - cloud_ssd：SSD云盘。
 	//
-	// - cloud_essd: ESSD.
+	// - cloud_essd：ESSD云盘。
 	SystemDiskCategories []*string `json:"system_disk_categories,omitempty" xml:"system_disk_categories,omitempty" type:"Repeated"`
-	// The type of the system disk for the nodes. Valid values:
+	// 节点系统盘类型，取值：
 	//
-	// - `cloud_efficiency`: Ultra disk.
+	// - `cloud_efficiency`：高效云盘。
 	//
-	// - `cloud_ssd`: Standard SSD.
+	// - `cloud_ssd`：SSD云盘。
 	//
-	// - `cloud_essd`: ESSD.
+	// - `cloud_essd`：ESSD云盘。
 	//
-	// - `cloud_auto`: ESSD AutoPL disk.
+	// - `cloud_auto`：ESSD AutoPL云盘。
 	//
-	// - `cloud_essd_entry`: ESSD Entry disk.
+	// - `cloud_essd_entry`：ESSD Entry云盘。
 	//
-	// Default value: `cloud_efficiency`.
+	// 默认值：`cloud_efficiency`。
 	//
 	// example:
 	//
 	// cloud_efficiency
 	SystemDiskCategory *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
-	// The encryption algorithm used by the system disk of the node. Valid value: aes-256.
+	// 节点系统盘采用的加密算法。取值范围：aes-256。
 	//
 	// example:
 	//
 	// aes-256
 	SystemDiskEncryptAlgorithm *string `json:"system_disk_encrypt_algorithm,omitempty" xml:"system_disk_encrypt_algorithm,omitempty"`
-	// Specifies whether to encrypt the system disk. Valid values: true: Encrypts the disk. false: Does not encrypt the disk.
+	// 是否加密系统盘。取值范围：true：加密。false：不加密。
 	SystemDiskEncrypted *bool `json:"system_disk_encrypted,omitempty" xml:"system_disk_encrypted,omitempty"`
-	// The KMS key ID used by the system disk of the node.
+	// 节点系统盘使用的KMS密钥ID。
 	//
 	// example:
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	SystemDiskKmsKeyId *string `json:"system_disk_kms_key_id,omitempty" xml:"system_disk_kms_key_id,omitempty"`
-	// The performance level of the system disk for the nodes. This parameter is only effective for ESSDs.
+	// 节点系统盘磁盘性能，只对ESSD磁盘生效。
 	//
-	// - PL0: Medium concurrent I/O performance, stable read and write latency.
+	// - PL0：并发极限I/O性能中等，读写时延较为稳定。
 	//
-	// - PL1: Medium concurrent I/O performance, stable read and write latency.
+	// - PL1：并发极限I/O性能中等，读写时延较为稳定。
 	//
-	// - PL2: High concurrent I/O performance, stable read and write latency.
+	// - PL2：并发极限I/O性能较高，读写时延稳定。
 	//
-	// - PL3: Extremely high concurrent I/O performance, extremely stable read and write latency.
+	// - PL3：并发极限I/O性能极高，读写时延极稳定。
 	//
 	// example:
 	//
 	// PL1
 	SystemDiskPerformanceLevel *string `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
-	// The pre-configured read and write IOPS of the system disk for the nodes. Possible values: 0 to min{50,000, 1000 × capacity - baseline performance}. Baseline performance = min{1,800 + 50 × capacity, 50,000}.
+	// 节点系统盘预配置的读写IOPS。可能值：0~min{50,000, 1000\\*容量-基准性能}。 基准性能=min{1,800+50\\*容量, 50000}。
 	//
-	// This parameter can be set only when `SystemDiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+	// 当`SystemDiskCategory`为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](https://help.aliyun.com/document_detail/368372.html)。
 	//
 	// example:
 	//
 	// 1000
 	SystemDiskProvisionedIops *int64 `json:"system_disk_provisioned_iops,omitempty" xml:"system_disk_provisioned_iops,omitempty"`
-	// The size of the system disk for the nodes. Unit: GiB.
+	// 节点系统盘大小，单位：GiB。
 	//
-	// Value range: [40, 500].
+	// 取值范围：[40,500]。
 	//
 	// example:
 	//
 	// 120
 	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
-	// Adds tags only to ECS instances.
+	// 仅为ECS实例添加标签。
 	//
-	// Tag keys cannot be repeated and can be up to 128 characters long. Tag keys and values cannot start with "aliyun" or "acs:", or contain "https\\://"" or "http\\://".
+	// 标签键不可以重复，最大长度为128个字符；标签键和标签值都不能以“aliyun”、“acs:”开头，或包含“https://”、“http://”。
 	Tags []*NodepoolScalingGroupTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The virtual switch ID.
+	// 虚拟交换机ID。
 	//
 	// This parameter is required.
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
@@ -2061,19 +2061,19 @@ func (s *NodepoolScalingGroup) Validate() error {
 }
 
 type NodepoolScalingGroupPrivatePoolOptions struct {
-	// The private node pool ID.
+	// 私有节点池ID。
 	//
 	// example:
 	//
 	// eap-bp67acfmxazb4****
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The private node pool type, which is the capacity option for the private pool where the instance is launched. An elastic assurance service or capacity reservation service generates a private pool capacity for instance startup. Valid values:
+	// 私有节点池类型，实例启动的私有池容量选项。弹性保障服务或容量预定服务在生效后会生成私有池容量，供实例启动时选择。取值：
 	//
-	// - `Open`: Open mode. Automatically matches open-type private pool capacity. If no eligible private pool capacity is available, it uses public pool resources to start.
+	// - `Open`：开放模式。将自动匹配开放类型的私有池容量。如果没有符合条件的私有池容量，则使用公共池资源启动。
 	//
-	// - `Target`: Specified mode. Uses the specified private pool capacity to start the instance. If the private pool capacity is unavailable, the instance fails to start.
+	// - `Target`：指定模式。使用指定的私有池容量启动实例，如果该私有池容量不可用，则实例会启动失败。
 	//
-	// - `None`: No mode used. The instance will not use private pool capacity to start.
+	// - `None`：不使用模式。实例启动将不使用私有池容量。
 	//
 	// example:
 	//
@@ -2112,17 +2112,17 @@ func (s *NodepoolScalingGroupPrivatePoolOptions) Validate() error {
 }
 
 type NodepoolScalingGroupResourcePoolOptions struct {
-	// The list of private pool IDs, which are the IDs of elastic assurance services or capacity reservation services. This parameter can only pass Target mode private pool IDs. The value of N ranges from 1 to 20.
+	// 私有池 ID列表。即弹性保障服务 ID 或容量预定服务 ID。该参数只能传入 Target 模式私有池 ID。N 的取值范围：1~20。
 	PrivatePoolIds []*string `json:"private_pool_ids,omitempty" xml:"private_pool_ids,omitempty" type:"Repeated"`
-	// The resource pool policy used when creating an instance. Resource pools include private pools generated by elastic assurance services or capacity reservation services, along with public pools, for instance startup. Valid values:
+	// 创建实例时使用的资源池策略。资源池包括弹性保障服务或容量预定服务生效后生成的私有池以及公共池，供实例启动时选择。取值范围：
 	//
-	// PrivatePoolFirst: Private pool first. When this policy is selected and resource_pool_options.private_pool_ids is specified, the specified private pool is used first. If no private pool is specified or the specified private pool has insufficient capacity, the system automatically matches an open-type private pool. If no eligible private pool is found, the instance is created from the public pool.
+	// PrivatePoolFirst：私有池优先。选择此种策略时， 当指定了 resource_pool_options.private_pool_ids，优先使用指定的私有池。如果未指定私有池或指定的私有池容量不足，将自动匹配开放类型的私有池。如果没有符合条件的私有池，则使用公共池创建实例。
 	//
-	// PrivatePoolOnly: Private pool only. When this policy is selected, you must specify resource_pool_options.private_pool_ids. If the specified private pool has insufficient capacity, the instance fails to start.
+	// PrivatePoolOnly：仅限私有池。选择此种策略时，必须指定 resource_pool_options.private_pool_ids。如果指定的私有池容量不足，则实例会启动失败。
 	//
-	// None: Do not use a resource pool policy.
+	// None：不使用资源池策略。
 	//
-	// Default value: None.
+	// 默认值：None。
 	//
 	// example:
 	//
@@ -2161,13 +2161,13 @@ func (s *NodepoolScalingGroupResourcePoolOptions) Validate() error {
 }
 
 type NodepoolScalingGroupSpotPriceLimit struct {
-	// The spot instance type.
+	// 抢占式实例规格。
 	//
 	// example:
 	//
 	// ecs.c6.large
 	InstanceType *string `json:"instance_type,omitempty" xml:"instance_type,omitempty"`
-	// The maximum price for a single instance.
+	// 单台实例上限价格。
 	//
 	// example:
 	//
@@ -2206,13 +2206,13 @@ func (s *NodepoolScalingGroupSpotPriceLimit) Validate() error {
 }
 
 type NodepoolScalingGroupTags struct {
-	// The name of the tag.
+	// 标签的名称。
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The tag value.
+	// 标签值。
 	//
 	// example:
 	//
@@ -2251,7 +2251,7 @@ func (s *NodepoolScalingGroupTags) Validate() error {
 }
 
 type NodepoolTeeConfig struct {
-	// Specifies whether it is a confidential computing node pool.
+	// 是否为加密计算节点池。
 	//
 	// This parameter is required.
 	//

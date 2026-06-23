@@ -24,13 +24,13 @@ type iModifyNodePoolNodeConfigRequest interface {
 type ModifyNodePoolNodeConfigRequest struct {
 	// The containerd runtime configuration.
 	ContainerdConfig *ContainerdConfig `json:"containerd_config,omitempty" xml:"containerd_config,omitempty"`
-	// The kubelet configurations.
+	// The kubelet parameter configuration.
 	KubeletConfig *KubeletConfig `json:"kubelet_config,omitempty" xml:"kubelet_config,omitempty"`
-	// List of nodes to upgrade.
+	// The list of specified nodes to upgrade.
 	NodeNames []*string `json:"node_names,omitempty" xml:"node_names,omitempty" type:"Repeated"`
-	// The OS configuration.
+	// The operating system parameter configuration.
 	OsConfig *ModifyNodePoolNodeConfigRequestOsConfig `json:"os_config,omitempty" xml:"os_config,omitempty" type:"Struct"`
-	// The rolling policy configuration.
+	// The rolling update configuration.
 	RollingPolicy *ModifyNodePoolNodeConfigRequestRollingPolicy `json:"rolling_policy,omitempty" xml:"rolling_policy,omitempty" type:"Struct"`
 }
 
@@ -112,9 +112,9 @@ func (s *ModifyNodePoolNodeConfigRequest) Validate() error {
 }
 
 type ModifyNodePoolNodeConfigRequestOsConfig struct {
-	// Hugepage configuration.
+	// The Hugepage configuration.
 	Hugepage *Hugepage `json:"hugepage,omitempty" xml:"hugepage,omitempty"`
-	// The sysctl configuration.
+	// The custom sysctl parameter configuration.
 	Sysctl map[string]interface{} `json:"sysctl,omitempty" xml:"sysctl,omitempty"`
 }
 
@@ -154,7 +154,11 @@ func (s *ModifyNodePoolNodeConfigRequestOsConfig) Validate() error {
 }
 
 type ModifyNodePoolNodeConfigRequestRollingPolicy struct {
-	// The maximum number of unavailable nodes.
+	// Node updates in the node pool are performed in batches. This parameter specifies the maximum number of nodes that can be updated in parallel per batch.
+	//
+	// Valid values: [1,10].
+	//
+	// Default value: 10.
 	//
 	// example:
 	//

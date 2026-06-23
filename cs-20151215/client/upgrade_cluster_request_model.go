@@ -24,23 +24,23 @@ type iUpgradeClusterRequest interface {
 type UpgradeClusterRequest struct {
 	// Deprecated
 	//
-	// This parameter is deprecated. No need to pass values.
+	// [This parameter is deprecated] No value is required.
 	//
 	// example:
 	//
 	// null
 	ComponentName *string `json:"component_name,omitempty" xml:"component_name,omitempty"`
-	// Specifies whether to upgrade only master nodes. Valid values:
+	// Specifies whether to upgrade only the control plane. Valid values:
 	//
-	// 	- true: upgrades master nodes only.
+	// - true: upgrades only the control plane.
 	//
-	// 	- false: upgrades both master and worker nodes.
+	// - false: upgrades both the control plane and worker nodes.
 	//
 	// example:
 	//
 	// true
 	MasterOnly *bool `json:"master_only,omitempty" xml:"master_only,omitempty"`
-	// The target Kubernetes version for cluster upgrade.
+	// The target version to which the cluster is upgraded.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type UpgradeClusterRequest struct {
 	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
 	// Deprecated
 	//
-	// The rolling update configuration.
+	// The rolling upgrade configuration.
 	RollingPolicy *UpgradeClusterRequestRollingPolicy `json:"rolling_policy,omitempty" xml:"rolling_policy,omitempty" type:"Struct"`
 	// Deprecated
 	//
-	// This parameter is deprecated. Use next_version to specify the upgrade target Kubernetes version.
+	// [This parameter is deprecated] Use the `next_version` parameter instead.
 	//
 	// example:
 	//
@@ -125,7 +125,9 @@ func (s *UpgradeClusterRequest) Validate() error {
 type UpgradeClusterRequestRollingPolicy struct {
 	// Deprecated
 	//
-	// The maximum number of nodes concurrently upgraded per batch.
+	// The maximum number of worker nodes that can be upgraded in parallel per batch.
+	//
+	// During the worker node upgrade, nodes are upgraded in batches based on the specified maximum parallelism. The number of nodes upgraded in each batch increases as follows: 1, 2, 4, 8, and so on until the maximum parallelism is reached. After the maximum parallelism is reached, each subsequent batch upgrades the maximum number of nodes.
 	//
 	// example:
 	//

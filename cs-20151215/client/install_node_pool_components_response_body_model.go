@@ -18,13 +18,13 @@ type iInstallNodePoolComponentsResponseBody interface {
 }
 
 type InstallNodePoolComponentsResponseBody struct {
-	// The ID of the asynchronous task. You can use this ID to track the installation progress.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c8155823d057948c69a****
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

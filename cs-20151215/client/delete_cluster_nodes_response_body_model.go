@@ -18,19 +18,19 @@ type iDeleteClusterNodesResponseBody interface {
 }
 
 type DeleteClusterNodesResponseBody struct {
-	// The cluster ID.
+	// Cluster ID.
 	//
 	// example:
 	//
 	// c104d5d5f301c4e2a8ee578c37******
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// A9891419-D125-4D89-AFCA-688466******
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The ID of the task.
+	// Task ID.
 	//
 	// example:
 	//

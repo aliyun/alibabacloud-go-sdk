@@ -16,13 +16,13 @@ type iMigrateClusterRequest interface {
 }
 
 type MigrateClusterRequest struct {
-	// The endpoint of the OSS bucket.
+	// The bucket endpoint.
 	//
 	// example:
 	//
 	// *******.oss-cn-hangzhou.aliyuncs.com
 	OssBucketEndpoint *string `json:"oss_bucket_endpoint,omitempty" xml:"oss_bucket_endpoint,omitempty"`
-	// The name of the Object Storage Service (OSS) bucket.
+	// The bucket name.
 	//
 	// example:
 	//

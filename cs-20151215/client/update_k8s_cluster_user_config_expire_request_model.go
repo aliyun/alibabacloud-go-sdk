@@ -16,9 +16,9 @@ type iUpdateK8sClusterUserConfigExpireRequest interface {
 }
 
 type UpdateK8sClusterUserConfigExpireRequest struct {
-	// Specifies the expiration time of the kubeconfig file. Unit: hours.
+	// The custom expiration time. Unit: hours.
 	//
-	// Valid values: [1, 1876000]. The maximum value is 100 years.
+	// Valid values: [1, 876000]. The maximum value is equivalent to 100 years.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type UpdateK8sClusterUserConfigExpireRequest struct {
 	//
 	// 720
 	ExpireHour *int64 `json:"expire_hour,omitempty" xml:"expire_hour,omitempty"`
-	// The RAM user ID.
+	// The Resource Access Management (RAM) user ID.
 	//
 	// This parameter is required.
 	//

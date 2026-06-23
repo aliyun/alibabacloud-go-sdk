@@ -22,7 +22,7 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token that determines the start point of the next query.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// The list of cluster IDs.
+	// The list of resource IDs to query.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,9 @@ type ListTagResourcesRequest struct {
 	//
 	// ["xxxxx","xxxxxx"]
 	ResourceIds []*string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty" type:"Repeated"`
-	// The resource type. Set the value to `CLUSTER`.
+	// The resource type.
+	//
+	// CLUSTER: cluster.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +54,7 @@ type ListTagResourcesRequest struct {
 	//
 	// CLUSTER
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The list of labels that you want to query. You can specify up to 20 labels.
+	// The list of tags to query. A maximum of 20 items can be specified.
 	//
 	// example:
 	//

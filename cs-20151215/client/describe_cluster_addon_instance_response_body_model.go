@@ -20,39 +20,39 @@ type iDescribeClusterAddonInstanceResponseBody interface {
 }
 
 type DescribeClusterAddonInstanceResponseBody struct {
-	// The configuration of the component.
+	// The component configuration.
 	//
 	// example:
 	//
 	// {"NetworkPolicy":"true"}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The name of the component.
+	// The component name.
 	//
 	// example:
 	//
 	// terway-eniip
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the component. Valid values:
+	// The component status. Valid values:
 	//
-	// 	- initial: The component is being installed.
+	// - initial: installing
 	//
-	// 	- active: The component has been installed.
+	// - active: installed
 	//
-	// 	- unhealthy: The component is in an abnormal state.
+	// - unhealthy: abnormal
 	//
-	// 	- upgrading: The component is undergoing an upgrade.
+	// - upgrading: upgrading
 	//
-	// 	- updating: Component configuration changes are being applied.
+	// - updating: updating
 	//
-	// 	- deleting: The component is being uninstalled.
+	// - deleting: uninstalling
 	//
-	// 	- deleted: The component has been deleted.
+	// - deleted: deleted.
 	//
 	// example:
 	//
 	// active
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The version of the component.
+	// The component version.
 	//
 	// example:
 	//

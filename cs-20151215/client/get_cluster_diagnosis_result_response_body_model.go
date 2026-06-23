@@ -30,81 +30,65 @@ type iGetClusterDiagnosisResultResponseBody interface {
 }
 
 type GetClusterDiagnosisResultResponseBody struct {
-	// The code that indicates the diagnostic result. Valid values:
+	// The diagnosis result code. Valid values:
 	//
-	// 	- 0: the diagnostic is completed.
+	// - 0: diagnosis completed.
 	//
-	// 	- 1: the diagnostic failed.
+	// - 1: diagnosis failed.
 	//
 	// example:
 	//
 	// 0
 	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
-	// The time when the diagnostic is initiated.
+	// The time when the diagnosis was initiated.
 	//
 	// example:
 	//
 	// 2024-05-28T11:29Z
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// The diagnostic ID.
+	// The diagnosis ID.
 	//
 	// example:
 	//
 	// 6cf6b62e334e4583bdfd26707516****
 	DiagnosisId *string `json:"diagnosis_id,omitempty" xml:"diagnosis_id,omitempty"`
-	// The time when the diagnostic is completed.
+	// The time when the diagnosis was completed.
 	//
 	// example:
 	//
 	// 2024-05-28T11:29Z
 	Finished *string `json:"finished,omitempty" xml:"finished,omitempty"`
-	// The diagnostic status information.
+	// The diagnosis status message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The diagnostic result.
+	// The diagnosis result.
 	//
 	// example:
 	//
 	// {"phase":5,"version":"20240101"}
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
-	// The status of the diagnostic. Valid values:
+	// The diagnosis status. Valid values:
 	//
-	// 	- 0: The diagnostic is created.
+	// - 0: diagnosis created.
 	//
-	// 	- 1: The diagnostic is running.
+	// - 1: diagnosis running.
 	//
-	// 	- 2: The diagnostic is completed.
+	// - 2: diagnosis completed.
 	//
 	// example:
 	//
 	// 2
 	Status *int64 `json:"status,omitempty" xml:"status,omitempty"`
-	// The diagnostic object.
+	// The diagnosis target.
 	//
 	// example:
 	//
 	// {"name":"cn-hongkong.10.0.0.246"}
 	Target *string `json:"target,omitempty" xml:"target,omitempty"`
-	// The type of the diagnostic.
-	//
-	// Valid values:
-	//
-	// 	- node
-	//
-	// 	- ingress
-	//
-	// 	- cluster
-	//
-	// 	- memory
-	//
-	// 	- pod
-	//
-	// 	- service
-	//
-	// 	- network
+	// The diagnosis type.
 	//
 	// example:
 	//

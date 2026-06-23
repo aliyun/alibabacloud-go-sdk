@@ -14,7 +14,7 @@ type iListClusterAddonInstancesResponseBody interface {
 }
 
 type ListClusterAddonInstancesResponseBody struct {
-	// A list of components that are installed in the cluster.
+	// The list of installed component instances.
 	Addons []*ListClusterAddonInstancesResponseBodyAddons `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
 }
 
@@ -55,21 +55,21 @@ type ListClusterAddonInstancesResponseBodyAddons struct {
 	//
 	// coredns
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the component. Valid values:
+	// The component status. Valid values:
 	//
-	// 	- active: The component is installed.
+	// - active: installed
 	//
-	// 	- updating: The component is being modified.
+	// - updating: being modified
 	//
-	// 	- upgrading: The component is being updated.
+	// - upgrading: being upgraded
 	//
-	// 	- deleting: The component is being uninstalled.
+	// - deleting: being uninstalled.
 	//
 	// example:
 	//
 	// active
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The version of the component.
+	// The component version.
 	//
 	// example:
 	//

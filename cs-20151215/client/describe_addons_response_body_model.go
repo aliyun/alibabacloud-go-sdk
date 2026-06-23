@@ -16,9 +16,9 @@ type iDescribeAddonsResponseBody interface {
 }
 
 type DescribeAddonsResponseBody struct {
-	// The list of the returned components.
+	// The list of component groups.
 	ComponentGroups []*DescribeAddonsResponseBodyComponentGroups `json:"ComponentGroups,omitempty" xml:"ComponentGroups,omitempty" type:"Repeated"`
-	// Standard components.
+	// The standard components.
 	StandardComponents map[string]*StandardComponentsValue `json:"StandardComponents,omitempty" xml:"StandardComponents,omitempty"`
 }
 
@@ -68,7 +68,7 @@ type DescribeAddonsResponseBodyComponentGroups struct {
 	//
 	// storage
 	GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
-	// The names of the components in the component group.
+	// The component names included in this group.
 	Items []*DescribeAddonsResponseBodyComponentGroupsItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
@@ -112,7 +112,7 @@ func (s *DescribeAddonsResponseBodyComponentGroups) Validate() error {
 }
 
 type DescribeAddonsResponseBodyComponentGroupsItems struct {
-	// The name of the component.
+	// The component name.
 	//
 	// example:
 	//

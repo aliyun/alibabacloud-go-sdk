@@ -22,7 +22,7 @@ type RepairClusterNodePoolResponseBody struct {
 	//
 	// db82195b-75a8-40e5-9be4-16f182******
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//

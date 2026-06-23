@@ -11,6 +11,12 @@ type iDescribeClusterNodesRequest interface {
 	GoString() string
 	SetInstanceIds(v string) *DescribeClusterNodesRequest
 	GetInstanceIds() *string
+	SetNodeIps(v string) *DescribeClusterNodesRequest
+	GetNodeIps() *string
+	SetNodeLabels(v string) *DescribeClusterNodesRequest
+	GetNodeLabels() *string
+	SetNodeNames(v string) *DescribeClusterNodesRequest
+	GetNodeNames() *string
 	SetNodepoolId(v string) *DescribeClusterNodesRequest
 	GetNodepoolId() *string
 	SetPageNumber(v string) *DescribeClusterNodesRequest
@@ -22,19 +28,31 @@ type iDescribeClusterNodesRequest interface {
 }
 
 type DescribeClusterNodesRequest struct {
-	// The IDs of the nodes that you want to query. Separate multiple node IDs with commas (,).
+	// The instance IDs of nodes. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// "i-bp11xjhwkj8k966u****,i-bp1dmhc2bu5igkyq****"
 	InstanceIds *string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty"`
+	// example:
+	//
+	// 192.168.0.1
+	NodeIps *string `json:"nodeIps,omitempty" xml:"nodeIps,omitempty"`
+	// example:
+	//
+	// nodeLabels=app=nginx,env=prod
+	NodeLabels *string `json:"nodeLabels,omitempty" xml:"nodeLabels,omitempty"`
+	// example:
+	//
+	// cn-hangzhou.192.168.0.1
+	NodeNames *string `json:"nodeNames,omitempty" xml:"nodeNames,omitempty"`
 	// The node pool ID.
 	//
 	// example:
 	//
 	// npe25633140a7d4fbea56cd0479c******
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
-	// The page number.
+	// The page number of the current query.
 	//
 	// Default value: 1.
 	//
@@ -42,7 +60,7 @@ type DescribeClusterNodesRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100.
+	// The maximum number of records that can be displayed on each page. Valid values: [1, 100].
 	//
 	// Default value: 10.
 	//
@@ -50,17 +68,17 @@ type DescribeClusterNodesRequest struct {
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The node state that you want to use to filter nodes. Valid values:
+	// The status of cluster nodes. Used to filter by node running status. Valid values:
 	//
-	// 	- `all`: query nodes in the following four states.
+	// - `all`: does not filter by running status. All nodes are returned.
 	//
-	// 	- `running`: query nodes in the running state.
+	// - `running`: running nodes.
 	//
-	// 	- `removing`: query nodes that are being removed.
+	// - `removing`: nodes that are being removed.
 	//
-	// 	- `initial`: query nodes that are being initialized.
+	// - `initial`: nodes that are being initialized.
 	//
-	// 	- `failed`: query nodes that fail to be created.
+	// - `failed`: nodes that failed to be created.
 	//
 	// Default value: `all`.
 	//
@@ -82,6 +100,18 @@ func (s *DescribeClusterNodesRequest) GetInstanceIds() *string {
 	return s.InstanceIds
 }
 
+func (s *DescribeClusterNodesRequest) GetNodeIps() *string {
+	return s.NodeIps
+}
+
+func (s *DescribeClusterNodesRequest) GetNodeLabels() *string {
+	return s.NodeLabels
+}
+
+func (s *DescribeClusterNodesRequest) GetNodeNames() *string {
+	return s.NodeNames
+}
+
 func (s *DescribeClusterNodesRequest) GetNodepoolId() *string {
 	return s.NodepoolId
 }
@@ -100,6 +130,21 @@ func (s *DescribeClusterNodesRequest) GetState() *string {
 
 func (s *DescribeClusterNodesRequest) SetInstanceIds(v string) *DescribeClusterNodesRequest {
 	s.InstanceIds = &v
+	return s
+}
+
+func (s *DescribeClusterNodesRequest) SetNodeIps(v string) *DescribeClusterNodesRequest {
+	s.NodeIps = &v
+	return s
+}
+
+func (s *DescribeClusterNodesRequest) SetNodeLabels(v string) *DescribeClusterNodesRequest {
+	s.NodeLabels = &v
+	return s
+}
+
+func (s *DescribeClusterNodesRequest) SetNodeNames(v string) *DescribeClusterNodesRequest {
+	s.NodeNames = &v
 	return s
 }
 

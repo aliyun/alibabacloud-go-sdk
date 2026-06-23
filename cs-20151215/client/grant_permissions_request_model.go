@@ -49,9 +49,9 @@ func (s *GrantPermissionsRequest) Validate() error {
 }
 
 type GrantPermissionsRequestBody struct {
-	// The ID of the target cluster.
+	// The ID of the cluster to be authorized.
 	//
-	// - If you set the `role_type` parameter to `all-clusters`, set this parameter to an empty string.
+	// - If the value of the `role_type` parameter is `all-clusters`, set this parameter to an empty string.
 	//
 	// This parameter is required.
 	//
@@ -59,43 +59,45 @@ type GrantPermissionsRequestBody struct {
 	//
 	// c796c60***
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// Set to true if `role_name` specifies a custom ClusterRole.
+	// Specifies whether the authorization is a custom authorization, which means `role_name` uses a custom ClusterRole name.
 	//
 	// example:
 	//
 	// false
 	IsCustom *bool `json:"is_custom,omitempty" xml:"is_custom,omitempty"`
-	// Set to true if you are granting permissions to a RAM role.
+	// Specifies whether the authorization is for a RAM role.
 	//
 	// example:
 	//
 	// false
 	IsRamRole *bool `json:"is_ram_role,omitempty" xml:"is_ram_role,omitempty"`
-	// The name of the namespace. This parameter is required only when `role_type` is set to `namespace`.
+	// The namespace name. This parameter is empty by default for cluster-level authorization.
 	//
 	// example:
 	//
 	// test
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The name of the role to grant. Valid values:
+	// The name of the preset role. Valid values:
 	//
-	// - `admin`: The administrator role.
+	// - `admin`: administrator.
 	//
-	// - `admin-view`: The read-only administrator role.
+	// - `admin-view`: read-only administrator.
 	//
-	// - `ops`: The operations role.
+	// - `ops`: O&M engineer.
 	//
-	// - `dev`: The developer role.
+	// - `dev`: developer.
 	//
-	// - `restricted`: The restricted role.
+	// - `restricted`: restricted user.
 	//
-	// - The name of a custom ClusterRole.
+	// - Custom ClusterRole name.
 	//
 	// 	Notice:
 	//
-	// - The `admin`, `admin-view`, and `ops` roles cannot be granted at the namespace scope.
+	// - `admin`, `admin-view`, `ops`: cannot be granted at the namespace level.
 	//
-	// - The `admin-view` role is not currently supported for the all-clusters scope.
+	// - `admin-view`: cannot be granted at the all-clusters level.
+	//
+	// .
 	//
 	// This parameter is required.
 	//
@@ -103,13 +105,13 @@ type GrantPermissionsRequestBody struct {
 	//
 	// ops
 	RoleName *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
-	// The authorization scope. Valid values:
+	// The authorization type. Valid values:
 	//
-	// - `cluster`: Grants permissions at the cluster scope.
+	// - `cluster`: cluster level.
 	//
-	// - `namespace`: Grants permissions at the namespace scope.
+	// - `namespace`: namespace level.
 	//
-	// - `all-clusters`: Grants permissions at the all-clusters scope.
+	// - `all-clusters`: all-clusters level.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iModifyClusterAddonRequest interface {
 }
 
 type ModifyClusterAddonRequest struct {
-	// The custom parameter settings that you want to use.
+	// The custom parameter settings.
 	//
 	// example:
 	//

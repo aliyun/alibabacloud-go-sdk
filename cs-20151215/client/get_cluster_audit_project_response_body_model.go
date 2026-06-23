@@ -16,17 +16,17 @@ type iGetClusterAuditProjectResponseBody interface {
 }
 
 type GetClusterAuditProjectResponseBody struct {
-	// Indicates whether the cluster auditing feature is enabled for the cluster.
+	// Indicates whether the API server audit feature is enabled for the cluster. Valid values:
 	//
-	// 	- `true`: The cluster auditing feature is enabled for the cluster.
+	// - `true`: Enabled.
 	//
-	// 	- `false`: The cluster auditing feature is disabled for the cluster.
+	// - `false`: Not enabled.
 	//
 	// example:
 	//
 	// true
 	AuditEnabled *bool `json:"audit_enabled,omitempty" xml:"audit_enabled,omitempty"`
-	// The SLS project in which the audit logs of the API server are stored.
+	// The SLS project that stores the API server audit logs of the cluster.
 	//
 	// example:
 	//

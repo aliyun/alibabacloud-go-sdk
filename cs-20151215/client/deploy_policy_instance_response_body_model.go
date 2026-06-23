@@ -14,7 +14,7 @@ type iDeployPolicyInstanceResponseBody interface {
 }
 
 type DeployPolicyInstanceResponseBody struct {
-	// The names of the deployed policy instances.
+	// The list of policy instances.
 	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
 }
 

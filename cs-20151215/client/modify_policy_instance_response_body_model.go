@@ -14,7 +14,7 @@ type iModifyPolicyInstanceResponseBody interface {
 }
 
 type ModifyPolicyInstanceResponseBody struct {
-	// The list of policy instances that are updated.
+	// The list of updated instances.
 	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
 }
 

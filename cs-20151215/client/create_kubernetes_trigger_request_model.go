@@ -20,9 +20,9 @@ type iCreateKubernetesTriggerRequest interface {
 }
 
 type CreateKubernetesTriggerRequest struct {
-	// The action that the trigger performs. Set the value to redeploy.
+	// The trigger action. Valid values:
 	//
-	// `redeploy`: redeploys the resources specified by `project_id`.
+	// `redeploy`: redeploys the resources defined in project_id.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type CreateKubernetesTriggerRequest struct {
 	//
 	// c5cdf7e3938bc4f8eb0e44b21a80f****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The name of the trigger project.
+	// The trigger project name.
 	//
-	// The name consists of the namespace where the application is deployed and the name of the application. The format is `${namespace}/${name}`.
+	// The value consists of the namespace and application name in the format of `${namespace}/${name}`.
 	//
 	// Example: `default/test-app`.
 	//
@@ -50,11 +50,11 @@ type CreateKubernetesTriggerRequest struct {
 	//
 	// default/test-app
 	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty"`
-	// The type of trigger. Valid values:
+	// The trigger type. Valid values:
 	//
-	// 	- `deployment`: performs actions on Deployments.
+	// - `deployment`: a trigger for stateless applications.
 	//
-	// 	- `application`: performs actions on applications that are deployed in Application Center.
+	// - `application`: a trigger for Application Center applications.
 	//
 	// Default value: `deployment`.
 	//

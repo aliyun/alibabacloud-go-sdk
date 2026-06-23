@@ -22,37 +22,37 @@ type iCreateKubernetesTriggerResponseBody interface {
 }
 
 type CreateKubernetesTriggerResponseBody struct {
-	// The action that the trigger performs. For example, a value of `redeploy` indicates that the trigger redeploys the application.
+	// The trigger action. For example, `redeploy`: redeploy.
 	//
 	// example:
 	//
 	// redeploy
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c5cdf7e3938bc4f8eb0e44b21a80f****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The ID of the trigger.
+	// The trigger ID.
 	//
 	// example:
 	//
 	// 111
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the trigger project.
+	// The trigger project name.
 	//
 	// example:
 	//
 	// default/test-app
 	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty"`
-	// The type of trigger.
+	// The trigger type.
 	//
 	// Valid values:
 	//
-	// 	- `deployment`: performs actions on Deployments.
+	// - `deployment`: a trigger for stateless applications.
 	//
-	// 	- `application`: performs actions on applications that are deployed in Application Center.
+	// - `application`: a trigger for Application Center applications.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iCheckServiceRoleResponseBody interface {
 }
 
 type CheckServiceRoleResponseBody struct {
-	// The check results.
+	// The service role check results.
 	Roles []*CheckServiceRoleResponseBodyRoles `json:"roles,omitempty" xml:"roles,omitempty" type:"Repeated"`
 }
 
@@ -49,25 +49,19 @@ func (s *CheckServiceRoleResponseBody) Validate() error {
 }
 
 type CheckServiceRoleResponseBodyRoles struct {
-	// Indicates whether the service role is assigned to ACK.
-	//
-	// Valid values:
-	//
-	// 	- true: The role is assigned to ACK.
-	//
-	// 	- false: The role is not assigned to ACK.
+	// Indicates whether the service role has been granted.
 	//
 	// example:
 	//
 	// true
 	Granted *bool `json:"granted,omitempty" xml:"granted,omitempty"`
-	// The message that is displayed for a role that is not assigned to ACK.
+	// The prompt message returned when the service role is not granted.
 	//
 	// example:
 	//
 	// The role does not exist: AliyunCSManagedAutoScalerRole
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The name of the service role.
+	// The service role name.
 	//
 	// example:
 	//

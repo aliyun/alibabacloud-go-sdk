@@ -19,9 +19,8 @@ type iDescribeClusterEventsResponseBody interface {
 
 type DescribeClusterEventsResponseBody struct {
 	// The list of events.
-	Events []*DescribeClusterEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	// The token used to retrieve the next page of results. If this parameter is empty, there are no more results to return.
-	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
+	Events    []*DescribeClusterEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	NextToken *string                                    `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// The pagination information.
 	PageInfo *DescribeClusterEventsResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 }
@@ -86,7 +85,7 @@ type DescribeClusterEventsResponseBodyEvents struct {
 	//
 	// c82e6987e2961451182edacd74faf****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The event data.
+	// The event description.
 	Data *DescribeClusterEventsResponseBodyEventsData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The event ID.
 	//
@@ -106,7 +105,7 @@ type DescribeClusterEventsResponseBodyEvents struct {
 	//
 	// npdd89dc2b76c04f14b06774883b******
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// The time the event occurred.
+	// The time when the event started.
 	//
 	// example:
 	//
@@ -114,37 +113,37 @@ type DescribeClusterEventsResponseBodyEvents struct {
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 	// The event type. Valid values:
 	//
-	// - `cluster_create`: Cluster creation.
+	// - cluster_create: creates a cluster.
 	//
-	// - `cluster_scaleout`: Cluster scale-out.
+	// - cluster_scaleout: scales out a cluster.
 	//
-	// - `cluster_attach`: Attaching existing nodes to a cluster.
+	// - cluster_attach: adds existing nodes.
 	//
-	// - `cluster_delete`: Cluster deletion.
+	// - cluster_delete: deletes a cluster.
 	//
-	// - `cluster_upgrade`: Cluster upgrade.
+	// - cluster_upgrade: upgrades a cluster.
 	//
-	// - `cluster_migrate`: Cluster migration.
+	// - cluster_migrate: migrates a cluster.
 	//
-	// - `cluster_node_delete`: Node removal.
+	// - cluster_node_delete: removes nodes.
 	//
-	// - `cluster_node_drain`: Node drain.
+	// - cluster_node_drain: drains nodes.
 	//
-	// - `cluster_modify`: Cluster modification.
+	// - cluster_modify: modifies a cluster.
 	//
-	// - `cluster_configuration_modify`: Control plane configuration modification.
+	// - cluster_configuration_modify: modifies cluster management configurations.
 	//
-	// - `cluster_addon_install`: Add-on installation.
+	// - cluster_addon_install: installs a component.
 	//
-	// - `cluster_addon_upgrade`: Add-on upgrade.
+	// - cluster_addon_upgrade: upgrades a component.
 	//
-	// - `cluster_addon_uninstall`: Add-on uninstallation.
+	// - cluster_addon_uninstall: uninstalls a component.
 	//
-	// - `runtime_upgrade`: Container runtime upgrade.
+	// - runtime_upgrade: upgrades the runtime.
 	//
-	// - `nodepool_upgrade`: Node pool upgrade.
+	// - nodepool_upgrade: upgrades a node pool.
 	//
-	// - `nodepool_update`: Node pool update.
+	// - nodepool_update: updates a node pool.
 	//
 	// example:
 	//
@@ -233,13 +232,13 @@ func (s *DescribeClusterEventsResponseBodyEvents) Validate() error {
 }
 
 type DescribeClusterEventsResponseBodyEventsData struct {
-	// The severity level of the event.
+	// The event level.
 	//
 	// example:
 	//
 	// info
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The event message.
+	// The event details.
 	//
 	// example:
 	//
@@ -299,13 +298,13 @@ type DescribeClusterEventsResponseBodyPageInfo struct {
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of results returned per page.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of entries that match the query.
+	// The total number of results.
 	//
 	// example:
 	//

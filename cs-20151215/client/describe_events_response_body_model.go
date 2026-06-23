@@ -18,9 +18,9 @@ type iDescribeEventsResponseBody interface {
 }
 
 type DescribeEventsResponseBody struct {
-	// A list of events.
+	// The event details.
 	Events []*DescribeEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	// The token to retrieve the next page of results. If this parameter is absent from the response, all results have been returned.
+	// The query token. This value is the next_token value returned by the previous API call.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribeEventsResponseBodyEvents struct {
 	//
 	// cf62854ac2130470897be7a27ed1f****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The event details.
+	// The event description.
 	Data *DescribeEventsResponseBodyEventsData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The event ID.
 	//
@@ -98,19 +98,19 @@ type DescribeEventsResponseBodyEvents struct {
 	//
 	// e-dba703c8-953b-40d8-82e8-cb713590****
 	EventId *string `json:"event_id,omitempty" xml:"event_id,omitempty"`
-	// The source of the event.
+	// The event source.
 	//
 	// example:
 	//
 	// task
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The object that the event is about.
+	// The event subject.
 	//
 	// example:
 	//
 	// np6a5c86f4ecae436f8f4a3dc034a7****
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// The event timestamp.
+	// The event start time.
 	//
 	// example:
 	//
@@ -118,37 +118,37 @@ type DescribeEventsResponseBodyEvents struct {
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 	// The event type. Valid values:
 	//
-	// - `cluster_create`: A cluster is created.
+	// - `cluster_create`: creates a cluster.
 	//
-	// - `cluster_scaleout`: A cluster is scaled out.
+	// - `cluster_scaleout`: scales out a cluster.
 	//
-	// - `cluster_attach`: An existing node is added.
+	// - `cluster_attach`: adds existing nodes.
 	//
-	// - `cluster_delete`: A cluster is deleted.
+	// - `cluster_delete`: deletes a cluster.
 	//
-	// - `cluster_upgrade`: A cluster is upgraded.
+	// - `cluster_upgrade`: upgrades a cluster.
 	//
-	// - `cluster_migrate`: A cluster is migrated.
+	// - `cluster_migrate`: migrates a cluster.
 	//
-	// - `cluster_node_delete`: A node is removed.
+	// - `cluster_node_delete`: removes nodes.
 	//
-	// - `cluster_node_drain`: A node is drained.
+	// - `cluster_node_drain`: drains nodes.
 	//
-	// - `cluster_modify`: A cluster is modified.
+	// - `cluster_modify`: modifies a cluster.
 	//
-	// - `cluster_configuration_modify`: The control plane configuration of a cluster is modified.
+	// - `cluster_configuration_modify`: modifies cluster management configurations.
 	//
-	// - `cluster_addon_install`: An add-on is installed.
+	// - `cluster_addon_install`: installs a component.
 	//
-	// - `cluster_addon_upgrade`: An add-on is upgraded.
+	// - `cluster_addon_upgrade`: upgrades a component.
 	//
-	// - `cluster_addon_uninstall`: An add-on is uninstalled.
+	// - `cluster_addon_uninstall`: uninstalls a component.
 	//
-	// - `runtime_upgrade`: The runtime is upgraded.
+	// - `runtime_upgrade`: upgrades the runtime.
 	//
-	// - `nodepool_upgrade`: A node pool is upgraded.
+	// - `nodepool_upgrade`: upgrades a node pool.
 	//
-	// - `nodepool_update`: A node pool is updated.
+	// - `nodepool_update`: updates a node pool.
 	//
 	// example:
 	//
@@ -237,25 +237,25 @@ func (s *DescribeEventsResponseBodyEvents) Validate() error {
 }
 
 type DescribeEventsResponseBodyEventsData struct {
-	// The severity level of the event. Valid values:
+	// The event level. Valid values:
 	//
-	// - info: An informational message.
+	// - info: informational.
 	//
-	// - warning: A warning.
+	// - warning: warning.
 	//
-	// - error: An error.
+	// - error: error.
 	//
 	// example:
 	//
 	// info
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// A human-readable description of the event.
+	// The event details.
 	//
 	// example:
 	//
 	// Start to upgrade NodePool nodePool/nodePool-A
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// A brief, machine-readable string that describes the reason for the event.
+	// The event status.
 	//
 	// example:
 	//
@@ -303,19 +303,19 @@ func (s *DescribeEventsResponseBodyEventsData) Validate() error {
 }
 
 type DescribeEventsResponseBodyPageInfo struct {
-	// The current page number.
+	// The page number for the paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of results per page.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of entries that match the query.
+	// The total number of results.
 	//
 	// example:
 	//

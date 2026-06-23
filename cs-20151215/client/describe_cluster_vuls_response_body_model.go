@@ -49,23 +49,21 @@ func (s *DescribeClusterVulsResponseBody) Validate() error {
 }
 
 type DescribeClusterVulsResponseBodyVulRecords struct {
-	// The CVE list.
+	// The list of CVEs.
 	CveList []*string `json:"cve_list,omitempty" xml:"cve_list,omitempty" type:"Repeated"`
-	// The severity level of the vulnerability.
+	// The severity level of the vulnerability. Valid values:
 	//
-	// Valid values:
+	// - nntf: low
 	//
-	// 	- nntf: low
+	// - later: medium
 	//
-	// 	- later: medium
-	//
-	// 	- asap: high
+	// - asap: high.
 	//
 	// example:
 	//
 	// asap
 	Necessity *string `json:"necessity,omitempty" xml:"necessity,omitempty"`
-	// The number of nodes that have the vulnerability.
+	// The number of nodes that have this vulnerability.
 	//
 	// example:
 	//
@@ -95,21 +93,19 @@ type DescribeClusterVulsResponseBodyVulRecords struct {
 	//
 	// oval:com.redhat.rhsa:def:xxxxxxx
 	VulName *string `json:"vul_name,omitempty" xml:"vul_name,omitempty"`
-	// The type of vulnerability.
+	// The type of the vulnerability. Valid values:
 	//
-	// Valid values:
+	// - app: application vulnerability
 	//
-	// 	- app: application vulnerabilities
+	// - sca: application vulnerability (Software Composition Analysis)
 	//
-	// 	- sca: application vulnerabilities (software component analysis)
+	// - cve: Linux vulnerability
 	//
-	// 	- cve: Linux vulnerabilities
+	// - cms: WebCMS vulnerability
 	//
-	// 	- cms: Web-CMS vulnerabilities
+	// - sys: Windows vulnerability
 	//
-	// 	- sys: Windows vulnerabilities
-	//
-	// 	- emg:  emergency vulnerabilities
+	// - emg: emergency vulnerability.
 	//
 	// example:
 	//

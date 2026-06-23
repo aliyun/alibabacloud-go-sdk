@@ -72,7 +72,7 @@ func (s *DescribeResourcesDeleteProtectionResponse) Validate() error {
 }
 
 type DescribeResourcesDeleteProtectionResponseBody struct {
-	// The resource name.
+	// The name of the queried resource.
 	//
 	// This parameter is required.
 	//
@@ -80,13 +80,13 @@ type DescribeResourcesDeleteProtectionResponseBody struct {
 	//
 	// arms-prom
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The namespace to which the resource belongs.
+	// The namespace of the queried resource.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The type of the resource.
+	// The type of the queried resource.
 	//
 	// example:
 	//
@@ -94,9 +94,9 @@ type DescribeResourcesDeleteProtectionResponseBody struct {
 	Resource *string `json:"resource,omitempty" xml:"resource,omitempty"`
 	// Indicates whether deletion protection is enabled.
 	//
-	// 	- true: deletion protection is enabled.
+	// - true: enabled.
 	//
-	// 	- false: deletion protection is disabled.
+	// - false: disabled.
 	//
 	// example:
 	//

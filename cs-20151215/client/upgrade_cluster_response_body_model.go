@@ -18,19 +18,19 @@ type iUpgradeClusterResponseBody interface {
 }
 
 type UpgradeClusterResponseBody struct {
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c82e6987e2961451182edacd74faf****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0527ac9a-c899-4341-a21a-****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//

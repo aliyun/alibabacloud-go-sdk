@@ -22,7 +22,7 @@ type ListOperationPlansRequest struct {
 	//
 	// c29ced64b3dfe4f33b57ca0aa9f68****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The operation plan type.
+	// The execution plan type.
 	//
 	// example:
 	//

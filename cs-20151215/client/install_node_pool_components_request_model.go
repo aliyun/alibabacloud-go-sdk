@@ -18,11 +18,11 @@ type iInstallNodePoolComponentsRequest interface {
 }
 
 type InstallNodePoolComponentsRequest struct {
-	// A list of node components to be installed.
+	// The list of node components.
 	Components []*InstallNodePoolComponentsRequestComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
-	// A list of specific node names where the component should be installed. If not specified, the component will be installed on all nodes in the node pool.
+	// The list of node names for the rolling update. By default, all nodes are included.
 	NodeNames []*string `json:"nodeNames,omitempty" xml:"nodeNames,omitempty" type:"Repeated"`
-	// Configuration for the rolling update process.
+	// The rolling update configuration.
 	RollingPolicy *InstallNodePoolComponentsRequestRollingPolicy `json:"rollingPolicy,omitempty" xml:"rollingPolicy,omitempty" type:"Struct"`
 }
 
@@ -80,9 +80,9 @@ func (s *InstallNodePoolComponentsRequest) Validate() error {
 }
 
 type InstallNodePoolComponentsRequestComponents struct {
-	// The configuration details for the component.
+	// The component configuration.
 	Config *InstallNodePoolComponentsRequestComponentsConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The name of the component.
+	// The component name.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type InstallNodePoolComponentsRequestComponents struct {
 	//
 	// kubelet
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The version of the component.
+	// The component version.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ func (s *InstallNodePoolComponentsRequestComponents) Validate() error {
 }
 
 type InstallNodePoolComponentsRequestComponentsConfig struct {
-	// Custom parameters for the component.
+	// The custom configuration of the component.
 	CustomConfig map[string]*string `json:"customConfig,omitempty" xml:"customConfig,omitempty"`
 }
 
@@ -169,19 +169,19 @@ func (s *InstallNodePoolComponentsRequestComponentsConfig) Validate() error {
 }
 
 type InstallNodePoolComponentsRequestRollingPolicy struct {
-	// The time interval between update batches, in seconds.
+	// The interval between batches during the upgrade. Unit: seconds.
 	//
 	// example:
 	//
 	// 0
 	BatchInterval *int64 `json:"batchInterval,omitempty" xml:"batchInterval,omitempty"`
-	// The maximum number of nodes that can be updated concurrently in each batch. Default: 1.
+	// The maximum number of nodes that can be processed in parallel per batch. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	MaxParallelism *int64 `json:"maxParallelism,omitempty" xml:"maxParallelism,omitempty"`
-	// The strategy for automatic pausing during the update process. Valid values: NotPause, FirstBatchPause, EveryBatchPause.
+	// The automatic pause policy during the node upgrade process.
 	//
 	// example:
 	//

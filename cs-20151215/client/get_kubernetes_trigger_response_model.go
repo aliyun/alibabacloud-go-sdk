@@ -72,39 +72,39 @@ func (s *GetKubernetesTriggerResponse) Validate() error {
 }
 
 type GetKubernetesTriggerResponseBody struct {
-	// The ID of the trigger.
+	// The trigger ID.
 	//
 	// example:
 	//
 	// 1234
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the trigger.
+	// The trigger name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the associated cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c259f563386444ebb8d7**
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The name of the project.
+	// The trigger project name.
 	//
-	// The name consists of the namespace where the application is deployed and the name of the application. The format is `${namespace}/${name}`. Example: default/test-app.
+	// The value consists of the namespace and application name in the format of `${namespace}/${name}`. Example: default/test-app.
 	//
 	// example:
 	//
 	// default/test-app
 	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty"`
-	// The type of trigger.
+	// The trigger type.
 	//
 	// Valid values:
 	//
-	// 	- `deployment`: performs actions on Deployments.
+	// - `deployment`: a trigger for a stateless application.
 	//
-	// 	- `application`: performs actions on applications that are deployed in Application Center.
+	// - `application`: a trigger for an application center application.
 	//
 	// Default value: `deployment`.
 	//
@@ -112,9 +112,9 @@ type GetKubernetesTriggerResponseBody struct {
 	//
 	// deployment
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The action that the trigger performs. The value is set to redeploy.
+	// The trigger action. Valid values:
 	//
-	// `redeploy`: redeploys the resource specified by project_id.
+	// `redeploy`: redeploys the resources defined in project_id.
 	//
 	// example:
 	//

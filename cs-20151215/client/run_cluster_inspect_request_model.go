@@ -14,7 +14,7 @@ type iRunClusterInspectRequest interface {
 }
 
 type RunClusterInspectRequest struct {
-	// The idempotency token that ensures an API request completes no more than one time.
+	// The idempotence token.
 	//
 	// example:
 	//

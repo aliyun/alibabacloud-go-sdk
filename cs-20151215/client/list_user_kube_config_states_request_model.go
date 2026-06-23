@@ -16,21 +16,21 @@ type iListUserKubeConfigStatesRequest interface {
 }
 
 type ListUserKubeConfigStatesRequest struct {
-	// The page number.
+	// The current page number.
 	//
-	// 	- Valid values: ≥ 1.
+	// - Valid values: greater than or equal to 1.
 	//
-	// 	- Default value: 1.
+	// - Default value: 1.
 	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries per page.
+	// The number of results returned per page.
 	//
-	// 	- Value values: 1 to 100.
+	// - Valid values: 1 to 100.
 	//
-	// 	- Default value: 50.
+	// - Default value: 50.
 	//
 	// example:
 	//

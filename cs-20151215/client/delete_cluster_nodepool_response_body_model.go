@@ -22,7 +22,7 @@ type DeleteClusterNodepoolResponseBody struct {
 	//
 	// 7263C978-3DBD-4E06-B319-793B38******
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// task IDs
+	// The task ID.
 	//
 	// example:
 	//

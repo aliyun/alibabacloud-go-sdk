@@ -14,7 +14,7 @@ type iDeleteAlertContactShrinkRequest interface {
 }
 
 type DeleteAlertContactShrinkRequest struct {
-	// The alert contact IDs to delete.
+	// The list of alert contact IDs.
 	//
 	// This parameter is required.
 	ContactIdsShrink *string `json:"contact_ids,omitempty" xml:"contact_ids,omitempty"`

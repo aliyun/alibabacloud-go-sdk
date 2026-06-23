@@ -16,13 +16,13 @@ type iDescribePolicyInstancesRequest interface {
 }
 
 type DescribePolicyInstancesRequest struct {
-	// The name of the policy instance that you want to query.
+	// The name of the policy instance.
 	//
 	// example:
 	//
 	// allowed-repos-cz4s2
 	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
-	// The name of the policy that you want to query.
+	// The name of the policy governance rule.
 	//
 	// example:
 	//

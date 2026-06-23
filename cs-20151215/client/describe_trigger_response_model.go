@@ -72,55 +72,53 @@ func (s *DescribeTriggerResponse) Validate() error {
 }
 
 type DescribeTriggerResponseBody struct {
-	// The ID of the trigger.
+	// 触发器ID。
 	//
 	// example:
 	//
 	// 75973497486******
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the trigger.
+	// 触发器名称。
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the associated cluster.
+	// 集群ID。
 	//
 	// example:
 	//
 	// c259f563386444ebb8d7****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The name of the project.
+	// 触发器项目名称。
 	//
-	// The name consists of the namespace where the application is deployed and the name of the application. The format is `${namespace}/${name}`. Example: default/test-app.
+	// 由应用所在命名空间及应用名称组成，格式为`${namespace}/${name}`，取值示例：default/test-app。
 	//
 	// example:
 	//
 	// default/test-app
 	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty"`
-	// The type of trigger.
+	// 触发器类型。
 	//
-	// Valid values:
+	// 取值：
 	//
-	// 	- `deployment`: performs actions on Deployments.
+	// - `deployment`：针对无状态应用的触发器。
 	//
-	// 	- `application`: performs actions on applications that are deployed in Application Center.
-	//
-	// Default value: `deployment`.
+	// - `application`：针对应用中心应用的触发器。
 	//
 	// example:
 	//
 	// deployment
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The action that the trigger performs. The value is set to redeploy.
+	// 触发器行为，取值：
 	//
-	// `redeploy`: redeploys the resource specified by project_id.
+	// `redeploy`: 重新部署应用。
 	//
 	// example:
 	//
 	// redeploy
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The token information.
+	// Token信息。
 	//
 	// example:
 	//

@@ -18,10 +18,9 @@ type iDescribeEventsForRegionResponseBody interface {
 }
 
 type DescribeEventsForRegionResponseBody struct {
-	// A list of events.
-	Events []*DescribeEventsForRegionResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If this parameter is empty, all results have been returned.
-	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
+	// The list of events.
+	Events    []*DescribeEventsForRegionResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	NextToken *string                                      `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// The pagination information.
 	PageInfo *DescribeEventsForRegionResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 }
@@ -86,7 +85,7 @@ type DescribeEventsForRegionResponseBodyEvents struct {
 	//
 	// c82e6987e2961451182edacd74faf****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The event data.
+	// The event description.
 	Data *DescribeEventsForRegionResponseBodyEventsData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The event ID.
 	//
@@ -100,7 +99,7 @@ type DescribeEventsForRegionResponseBodyEvents struct {
 	//
 	// task
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The event subject.
+	// The object associated with the event.
 	//
 	// example:
 	//
@@ -207,13 +206,13 @@ type DescribeEventsForRegionResponseBodyEventsData struct {
 	//
 	// info
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The event message.
+	// The event details.
 	//
 	// example:
 	//
 	// Start to upgrade NodePool nodePool/nodePool-A
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The reason for the event.
+	// The event status.
 	//
 	// example:
 	//
@@ -267,13 +266,13 @@ type DescribeEventsForRegionResponseBodyPageInfo struct {
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries returned on each page.
+	// The maximum number of results displayed on each page.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of entries.
+	// The total number of results.
 	//
 	// example:
 	//

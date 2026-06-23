@@ -16,7 +16,7 @@ type iDescribeClustersForRegionResponseBody interface {
 }
 
 type DescribeClustersForRegionResponseBody struct {
-	// A list of clusters.
+	// The list of cluster details.
 	Clusters []*DescribeClustersForRegionResponseBodyClusters `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeClustersForRegionResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
@@ -67,7 +67,7 @@ func (s *DescribeClustersForRegionResponseBody) Validate() error {
 }
 
 type DescribeClustersForRegionResponseBodyClusters struct {
-	// The cluster domain.
+	// The local domain name of the cluster.
 	//
 	// example:
 	//
@@ -81,43 +81,43 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	// The specification of the cluster. Valid values:
 	//
-	// - `ack.standard`: Basic Edition
+	// - `ack.standard`: Basic
 	//
-	// - `ack.pro.small`: Pro Edition
+	// - `ack.pro.small`: Pro
 	//
 	// - `ack.pro.xlarge`: Pro XL
 	//
 	// - `ack.pro.2xlarge`: Pro 2XL
 	//
-	// - `ack.pro.4xlarge`: Pro 4XL. This specification is available only to allowlisted users.
+	// - `ack.pro.4xlarge`: Pro 4XL (contact customer service to add your account to the whitelist)
 	//
-	// Pro XL, Pro 2XL, and Pro 4XL are three specifications available for the <props="china">[ACK Pro provisioned control plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro provisioned control plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). These specifications ensure a high and deterministic level of API concurrency and Pod scheduling capabilities by pre-allocating and dedicating control plane resources. They are suitable for AI training and inference, large-scale clusters, and mission-critical workloads.
+	// Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure that API concurrency and Pod scheduling capabilities remain at a consistently high level. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
 	//
-	// For information about the <props="china">[cluster management fee](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[cluster management fee](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) for Pro Edition and ACK Pro provisioned control plane specifications, see the linked topic.
+	// For information about cluster management fees for Pro and Provisioned Control Plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
 	//
 	// example:
 	//
 	// ack.standard
 	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
-	// The type of the cluster. Valid values:
+	// The cluster type. Valid values:
 	//
-	// - `Kubernetes`: an ACK dedicated cluster.
+	// - Kubernetes: ACK dedicated cluster.
 	//
-	// - `ManagedKubernetes`: an ACK managed cluster. This type includes ACK managed clusters (Pro and Basic editions), ACK Serverless clusters (Pro and Basic editions), ACK Edge clusters (Pro and Basic editions), and ACK Lingjun clusters (Pro edition).
+	// - ManagedKubernetes: ACK managed cluster types, including ACK managed clusters (ACK Pro and ACK Basic), ACK Serverless clusters (Pro and Basic), ACK Edge clusters (Pro and Basic), and ACK Lingjun clusters (Pro).
 	//
-	// - `ExternalKubernetes`: a registered cluster.
+	// - ExternalKubernetes: registered cluster.
 	//
 	// example:
 	//
 	// ManagedKubernetes
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	// The CIDR block for Pods in the cluster.
+	// The pod CIDR block of the cluster.
 	//
 	// example:
 	//
 	// 172.20.0.0/16
 	ContainerCidr *string `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
-	// The time the cluster was created.
+	// The time when the cluster was created.
 	//
 	// example:
 	//
@@ -129,11 +129,11 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// 1.16.6-aliyun.1
 	CurrentVersion *string `json:"current_version,omitempty" xml:"current_version,omitempty"`
-	// Specifies whether deletion protection is enabled for the cluster. If enabled, you cannot delete the cluster from the console or by an API call. Valid values:
+	// Indicates whether deletion protection is enabled for the cluster. Deletion protection prevents the cluster from being accidentally deleted in the console or by calling API operations. Valid values:
 	//
-	// - `true`: Deletion protection is enabled.
+	// - true: Deletion protection is enabled. The cluster cannot be deleted in the console or by calling API operations.
 	//
-	// - `false`: Deletion protection is disabled.
+	// - false: Deletion protection is not enabled. The cluster can be deleted in the console or by calling API operations.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// 1.16.6-aliyun.1
 	InitVersion *string `json:"init_version,omitempty" xml:"init_version,omitempty"`
-	// The IP stack of the cluster.
+	// The IP protocol stack of the cluster.
 	//
 	// example:
 	//
@@ -157,27 +157,27 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// test-cluster
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The available upgrade version.
+	// The version to which the cluster can be upgraded.
 	//
 	// example:
 	//
 	// 1.18.8-aliyun.1
 	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
-	// The subtype of the cluster. Valid values:
+	// The cluster subtype. Valid values:
 	//
-	// - `Default`: An ACK managed cluster (Pro and Basic editions).
+	// - Default: ACK managed cluster, including ACK Pro and ACK Basic.
 	//
-	// - `Edge`: An ACK Edge cluster (Pro and Basic editions).
+	// - Edge: ACK Edge cluster, including ACK Edge Pro and ACK Edge Basic.
 	//
-	// - `Serverless`: An ACK Serverless cluster (Pro and Basic editions).
+	// - Serverless: ACK Serverless cluster, including ACK Serverless Pro and ACK Serverless Basic.
 	//
-	// - `LingJun`: An ACK Lingjun cluster (Pro edition).
+	// - LingJun: ACK Lingjun cluster, available in Pro.
 	//
 	// example:
 	//
 	// Default
 	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
-	// The kube-proxy proxy mode of the cluster.
+	// The kube-proxy mode of the cluster.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// cn-beijing-a
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// The ID of the resource group to which the cluster belongs.
+	// The resource group ID of the cluster.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// sg-2zeihch86ooz9io4****
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
-	// The CIDR block for the service network.
+	// The service CIDR block.
 	//
 	// This parameter is required.
 	//
@@ -215,11 +215,11 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// 2
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
-	// The state of the cluster. Valid values:
+	// The running state of the cluster. Valid values:
 	//
 	// - `initial`: The cluster is being created.
 	//
-	// - `failed`: Cluster creation failed.
+	// - `failed`: The cluster failed to be created.
 	//
 	// - `running`: The cluster is running.
 	//
@@ -227,9 +227,9 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// - `upgrading`: The cluster is being upgraded.
 	//
-	// - `removing`: Nodes are being removed from the cluster.
+	// - `removing`: Nodes are being removed.
 	//
-	// - `draining`: Node draining is in progress.
+	// - `draining`: Nodes are being drained.
 	//
 	// - `scaling`: The cluster is being scaled.
 	//
@@ -239,11 +239,11 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// - `deleting`: The cluster is being deleted.
 	//
-	// - `deleted`: The cluster is deleted.
+	// - `deleted`: The cluster has been deleted.
 	//
-	// - `delete_failed`: Cluster deletion failed.
+	// - `delete_failed`: The cluster failed to be deleted.
 	//
-	// - `waiting`: The cluster is waiting for a connection.
+	// - `waiting`: The cluster is in the accessed state, waiting to be connected.
 	//
 	// - `disconnected`: The cluster is disconnected.
 	//
@@ -251,15 +251,15 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The tags attached to the cluster.
+	// The list of cluster tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The time zone of the cluster.
+	// The time zone.
 	//
 	// example:
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The time the cluster was last updated.
+	// The time when the cluster was last updated.
 	//
 	// example:
 	//
@@ -271,7 +271,7 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// vpc-2zeg8nf1ukc0fcmvq****
 	VpcId *string `json:"vpc_id,omitempty" xml:"vpc_id,omitempty"`
-	// The IDs of the vSwitches for the control plane.
+	// The list of vSwitches for the cluster control plane.
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 }
 
@@ -522,19 +522,19 @@ func (s *DescribeClustersForRegionResponseBodyClusters) Validate() error {
 }
 
 type DescribeClustersForRegionResponseBodyPageInfo struct {
-	// The returned page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries per page.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of entries that match the query.
+	// The total number of results.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iGetUpgradeStatusResponseBody interface {
 }
 
 type GetUpgradeStatusResponseBody struct {
-	// The error message returned during the update.
+	// The error message during the cluster upgrade.
 	//
 	// example:
 	//
@@ -34,37 +34,37 @@ type GetUpgradeStatusResponseBody struct {
 	//
 	// be4c8eb72de94d459ea7ace7c811d119
 	PrecheckReportId *string `json:"precheck_report_id,omitempty" xml:"precheck_report_id,omitempty"`
-	// The status of the update. Valid values:
+	// The current upgrade status of the cluster. Valid values:
 	//
-	// 	- `success`: The update is successful.
+	// - `success`: The upgrade is successful.
 	//
-	// 	- `fail`: The update failed.
+	// - `fail`: The upgrade has failed.
 	//
-	// 	- `pause`: The update is paused.
+	// - `pause`: The upgrade is paused.
 	//
-	// 	- `running`: The update is in progress.
+	// - `running`: The upgrade is in progress.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The current phase of the update. Valid values:
+	// The current upgrade phase of the cluster. Valid values:
 	//
-	// 	- `not_start`: The update is not started.
+	// - `not_start`: Not started.
 	//
-	// 	- `prechecking`: The precheck is in progress.
+	// - `prechecking`: Prechecking is in progress.
 	//
-	// 	- `upgrading`: The cluster is being updated.
+	// - `upgrading`: The upgrade is in progress.
 	//
-	// 	- `pause`: The update is paused.
+	// - `pause`: The upgrade is paused.
 	//
-	// 	- `success`: The update is successful.
+	// - `success`: The upgrade is successful.
 	//
 	// example:
 	//
 	// prechecking
 	UpgradeStep *string `json:"upgrade_step,omitempty" xml:"upgrade_step,omitempty"`
-	// The details of the update task.
+	// The upgrade task details.
 	UpgradeTask *GetUpgradeStatusResponseBodyUpgradeTask `json:"upgrade_task,omitempty" xml:"upgrade_task,omitempty" type:"Struct"`
 }
 
@@ -131,19 +131,19 @@ func (s *GetUpgradeStatusResponseBody) Validate() error {
 }
 
 type GetUpgradeStatusResponseBodyUpgradeTask struct {
-	// The description of the update task.
+	// The description of the upgrade task.
 	//
 	// example:
 	//
 	// subject to actual return
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The status of the update task. Valid values:
+	// The upgrade task status. Valid values:
 	//
-	// 	- `running`: The update task is being executed.
+	// - `running`: The task is running.
 	//
-	// 	- `Success`: The update task is successfully executed.
+	// - `Success`: The task is successful.
 	//
-	// 	- `Failed`: The update task failed.
+	// - `Failed`: The task has failed.
 	//
 	// example:
 	//

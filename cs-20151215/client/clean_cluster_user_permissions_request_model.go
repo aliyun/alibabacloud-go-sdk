@@ -14,11 +14,11 @@ type iCleanClusterUserPermissionsRequest interface {
 }
 
 type CleanClusterUserPermissionsRequest struct {
-	// Specifies whether to forcefully delete the specified kubeconfig files. Valid values:
+	// Specifies whether to force delete the specified KubeConfig. Valid values:
 	//
-	// 	- false (default): checks the cluster access records within the previous seven days before deleting the kubeconfig files. The kubeconfig files are not deleted if cluster access records are found or fail to be retrieved.
+	// - false (default): Before deleting the KubeConfig, the system checks whether cluster access records exist within the last seven days. If access records exist or cannot be retrieved, the deletion is not allowed.
 	//
-	// 	- true: forcefully deletes the kubeconfig files without checking the cluster access records.
+	// - true: Force deletes the KubeConfig without checking cluster access records.
 	//
 	// example:
 	//

@@ -22,35 +22,35 @@ type iGetClusterAddonInstanceResponseBody interface {
 }
 
 type GetClusterAddonInstanceResponseBody struct {
-	// The custom configurations of the component.
+	// The custom parameter settings of the component.
 	//
 	// example:
 	//
 	// {"sls_project_name":""}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The status of Simple Log Service.
+	// The logging feature status of the component.
 	Logging *GetClusterAddonInstanceResponseBodyLogging `json:"logging,omitempty" xml:"logging,omitempty" type:"Struct"`
-	// The name of the component instance.
+	// The component instance name.
 	//
 	// example:
 	//
 	// ack-node-problem-detector
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the component. Valid values:
+	// The component status. Valid values:
 	//
-	// 	- active: The component is installed.
+	// - active: installed.
 	//
-	// 	- updating: The component is being modified.
+	// - updating: being modified.
 	//
-	// 	- upgrading: The component is being updated.
+	// - upgrading: being upgraded.
 	//
-	// 	- deleting: The component is being uninstalled.
+	// - deleting: being uninstalled.
 	//
 	// example:
 	//
 	// active
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The version of the component instance.
+	// The component instance version.
 	//
 	// example:
 	//
@@ -121,25 +121,33 @@ func (s *GetClusterAddonInstanceResponseBody) Validate() error {
 }
 
 type GetClusterAddonInstanceResponseBodyLogging struct {
-	// Indicates whether Simple Log Service is supported by the component.
+	// Indicates whether the component supports the logging feature.
+	//
+	// - true: Supported.
+	//
+	// - false: Not supported.
 	//
 	// example:
 	//
 	// false
 	Capable *bool `json:"capable,omitempty" xml:"capable,omitempty"`
-	// Indicates whether Simple Log Service is enabled for the component.
+	// Indicates whether the logging feature is enabled for the component.
+	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The Simple Log Service project that is used to collect logs for the component.
+	// The Log Service project used by the logging feature of the component.
 	//
 	// example:
 	//
 	// k8s-log-c02b3e03be10643e8a644a843ffcb****
 	LogProject *string `json:"log_project,omitempty" xml:"log_project,omitempty"`
-	// The Simple Log Service Logstore that is used to collect logs for the component.
+	// The Log Service Logstore used by the logging feature of the component.
 	//
 	// example:
 	//

@@ -16,15 +16,15 @@ type iUpdateUserPermissionsRequest interface {
 }
 
 type UpdateUserPermissionsRequest struct {
-	// The request body.
+	// The request body parameters.
 	Body []*UpdateUserPermissionsRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
-	// The authorization method. Valid values:
+	// The authorization mode. Valid values:
 	//
-	// 	- `apply`: The global update mode. Overwrites all existing permissions of the RAM user or RAM role on the cluster. You must specify all the permissions you want to grant to the RAM user or RAM role in the request parameters when you call this operation.
+	// - `apply`: full update. A full update overwrites all existing cluster permissions of the target RAM user or RAM role. The request must include all permission configurations that you want to grant to the target RAM user or RAM role.
 	//
-	// 	- `delete`: The deletion mode. Revokes only the cluster permissions specified in the request, preserving other existing permissions of the RAM user or RAM role.
+	// - `delete`: delete permissions. Only the cluster authorization information included in the request is deleted. Other cluster Resource Access Management (RAM) user or RAM role are not affected.
 	//
-	// 	- `patch`: The incremental mode. Adds only the cluster permissions specified in the request, preserving other existing permissions of the RAM user or RAM role.
+	// - `patch`: add permissions. Only the cluster authorization information included in the request is added. Other cluster Resource Access Management (RAM) user or RAM role are not affected.
 	//
 	// Default value: `apply`.
 	//
@@ -74,51 +74,58 @@ func (s *UpdateUserPermissionsRequest) Validate() error {
 }
 
 type UpdateUserPermissionsRequestBody struct {
-	// The ID of the cluster on which you want to grant permissions to the RAM role or RAM role.
+	// The ID of the target cluster for authorization.
 	//
-	// 	- Set this parameter to an empty string if `role_type` is set to `all-clusters`.
+	// If the `role_type` parameter is set to `all-clusters`, you do not need to specify this parameter.
 	//
 	// example:
 	//
 	// c796c60***
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// Specifies whether to assign a custom role to the RAM user or RAM role. If you want to assign a custom role to the RAM user or RAM role, set `role_name` to the name of the custom role.
+	// Specifies whether the authorization is a custom authorization (the `role_name` uses a custom ClusterRole name).
+	//
+	// - true: The authorized role is a custom cluster role.
+	//
+	// - false: The authorized role is a cluster preset role.
 	//
 	// example:
 	//
 	// false
 	IsCustom *bool `json:"is_custom,omitempty" xml:"is_custom,omitempty"`
-	// Specifies whether to use a RAM role to grant permissions.
+	// Specifies whether the authorization is for a RAM role.
+	//
+	// - true: The authorization is for a RAM role.
+	//
+	// - false: The authorization is for a Resource Access Management (RAM) user.
 	//
 	// example:
 	//
 	// false
 	IsRamRole *bool `json:"is_ram_role,omitempty" xml:"is_ram_role,omitempty"`
-	// The namespace that you want to authorize the RAM user or RAM role to manage. This parameter is required only if you set role_type to namespace.
+	// The namespace name. This parameter is empty by default for cluster-level authorization.
 	//
 	// example:
 	//
 	// test
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The predefined role name. Valid values:
+	// The name of the preset role. Valid values:
 	//
-	// 	- `admin`: administrator
+	// - `admin`: administrator.
 	//
-	// 	- `admin-view`: read-only administrator
+	// - `admin-view`: read-only administrator.
 	//
-	// 	- `ops`: O\\&M engineer
+	// - `ops`: O&M engineer.
 	//
-	// 	- `dev`: developer
+	// - `dev`: developer.
 	//
-	// 	- `restricted`: restricted user
+	// - `restricted`: restricted user.
 	//
-	// 	- Custom role
+	// - A custom ClusterRole name.
 	//
-	// Note:
 	//
-	// 	- You cannot grant **namespace-level*	- permissions to the `admin`, `admin-view`, and `ops` roles.
+	// > - `admin`, `admin-view`, `ops`: These roles cannot be granted at the **namespace*	- level.
 	//
-	// 	- You cannot grant **all cluster-level*	- permissions to the `admin-view` role.
+	// > - `admin-view`: This role cannot be granted at the **all-clusters*	- level.
 	//
 	// example:
 	//
@@ -126,11 +133,11 @@ type UpdateUserPermissionsRequestBody struct {
 	RoleName *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
 	// The authorization type. Valid values:
 	//
-	// 	- `cluster`: authorizes the RAM user or RAM role to manage the specified clusters.
+	// - `cluster`: cluster level.
 	//
-	// 	- `namespace`: authorizes the RAM user or RAM role to manage the specified namespaces.
+	// - `namespace`: namespace level.
 	//
-	// 	- `all-clusters`: authorizes the RAM user or RAM role to manage all clusters.
+	// - `all-clusters`: all-clusters level.
 	//
 	// example:
 	//

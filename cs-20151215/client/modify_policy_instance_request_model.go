@@ -20,25 +20,25 @@ type iModifyPolicyInstanceRequest interface {
 }
 
 type ModifyPolicyInstanceRequest struct {
-	// The action of the policy. Valid values:
+	// The governance action of the rule. Valid values:
 	//
-	// 	- `deny`: Deployments that match the policy are denied.
+	// - `deny`: Blocks non-compliant deployments.
 	//
-	// 	- `warn`: Alerts are generated for deployments that match the policy.
+	// - `warn`: Generates an alert.
 	//
 	// example:
 	//
 	// deny
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The ID of the policy instance.
+	// The instance ID of the policy rule.
 	//
 	// example:
 	//
 	// allowed-repos-cbhhb
 	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
-	// The namespaces to which the policy is applied. The policy is applied to all namespaces if this parameter is left empty.
+	// The namespaces to which the policy applies. If this parameter is empty, the policy applies to all namespaces.
 	Namespaces []*string `json:"namespaces,omitempty" xml:"namespaces,omitempty" type:"Repeated"`
-	// The parameters of the policy instance. For more information, see [Predefined security policies of ACK](https://help.aliyun.com/document_detail/359819.html).
+	// The configuration parameters of the current rule instance. For more information about parameter settings rules, see [Container security policy rules](https://help.aliyun.com/document_detail/359819.html).
 	//
 	// example:
 	//

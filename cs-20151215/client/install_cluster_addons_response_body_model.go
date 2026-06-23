@@ -18,19 +18,19 @@ type iInstallClusterAddonsResponseBody interface {
 }
 
 type InstallClusterAddonsResponseBody struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c82e6987e2961451182edacd74faf****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// 687C5BAA-D103-4993-884B-C35E4314****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// 任务ID。
+	// The task ID.
 	//
 	// example:
 	//

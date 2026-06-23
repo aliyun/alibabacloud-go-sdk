@@ -16,17 +16,17 @@ type iStopAlertResponseBody interface {
 }
 
 type StopAlertResponseBody struct {
-	// The error message returned if the call fails.
+	// The message returned when the execution fails.
 	//
 	// example:
 	//
 	// Success
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// The operation result. Valid values:
+	// The execution result status. Valid values:
 	//
-	// 	- True: The operation is successful.
+	// - True: The execution is successful.
 	//
-	// 	- False: The operation failed.
+	// - False: The execution failed.
 	//
 	// example:
 	//

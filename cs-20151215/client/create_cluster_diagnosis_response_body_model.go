@@ -24,7 +24,7 @@ type CreateClusterDiagnosisResponseBody struct {
 	//
 	// c5cdf7e3938bc4f8eb0e44b21a80f****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The diagnostic ID.
+	// The diagnosis ID.
 	//
 	// example:
 	//

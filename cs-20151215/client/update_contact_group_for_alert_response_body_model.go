@@ -16,17 +16,17 @@ type iUpdateContactGroupForAlertResponseBody interface {
 }
 
 type UpdateContactGroupForAlertResponseBody struct {
-	// The error message returned if the call fails.
+	// The message returned when the operation failed.
 	//
 	// example:
 	//
 	// contact group illegal.
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// The update status.
+	// The status of the update result. Valid values:
 	//
-	// 	- true: The update is successful.
+	// - true: The operation is successful.
 	//
-	// 	- false: The update failed.
+	// - false: The operation failed.
 	//
 	// example:
 	//

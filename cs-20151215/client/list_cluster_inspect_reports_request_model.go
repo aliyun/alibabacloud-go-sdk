@@ -16,7 +16,7 @@ type iListClusterInspectReportsRequest interface {
 }
 
 type ListClusterInspectReportsRequest struct {
-	// The maximum number of returned results. Maximum value: 50.
+	// The maximum number of results to return. Maximum value: 50.
 	//
 	// example:
 	//

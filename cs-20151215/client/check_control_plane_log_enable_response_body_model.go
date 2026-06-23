@@ -20,17 +20,17 @@ type iCheckControlPlaneLogEnableResponseBody interface {
 }
 
 type CheckControlPlaneLogEnableResponseBody struct {
-	// The ID of the Alibaba Cloud account to which the resource belongs.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 162981*****
 	Aliuid *string `json:"aliuid,omitempty" xml:"aliuid,omitempty"`
-	// The control plane components for which log collection is enabled.
+	// The list of components for which control plane logging is enabled.
 	//
 	// This parameter is required.
 	Components []*string `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
-	// The name of the Simple Log Service project that you want to use to store the logs of control plane components.
+	// The name of the Simple Log Service (SLS) project that stores the control plane component logs.
 	//
 	// Default value: k8s-log-$Cluster ID.
 	//
@@ -38,9 +38,7 @@ type CheckControlPlaneLogEnableResponseBody struct {
 	//
 	// k8s-log-c5b5e80b0b64a4bf6939d2d8fbbc5****
 	LogProject *string `json:"log_project,omitempty" xml:"log_project,omitempty"`
-	// The retention period of the log data stored in the Logstore. Valid values: 1 to 3000. Unit: days.
-	//
-	// Default value: 30.
+	// The data retention period of logs in the SLS Logstore. Unit: days.
 	//
 	// example:
 	//

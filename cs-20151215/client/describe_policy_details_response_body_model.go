@@ -28,67 +28,67 @@ type iDescribePolicyDetailsResponseBody interface {
 }
 
 type DescribePolicyDetailsResponseBody struct {
-	// The action of the policy. Valid values:
+	// The governance action of the rule. Valid values:
 	//
-	// 	- `enforce`: blocks deployments that match the policy.
+	// - `enforce`: blocks non-compliant deployments.
 	//
-	// 	- `inform`: generates alerts for deployments that match the policy.
+	// - `inform`: generates alerts.
 	//
 	// example:
 	//
 	// enforce
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The type of the policy.
+	// The rule templatetype.
 	//
 	// example:
 	//
 	// k8s-general
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The description of the policy.
+	// The description of the rule template.
 	//
 	// example:
 	//
 	// Requires container images to begin with a repo string from a specified list
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the policy is deleted. Valid values:
+	// Indicates whether the rule is deleted. Valid values:
 	//
-	// 	- 0: The policy is not deleted.
+	// - 0: The rule is not deleted.
 	//
-	// 	- 1: The policy is deleted.
+	// - 1: The rule is deleted.
 	//
 	// example:
 	//
 	// 0
 	IsDeleted *int32 `json:"is_deleted,omitempty" xml:"is_deleted,omitempty"`
-	// The name of the policy.
+	// The name of the policy governance rule.
 	//
 	// example:
 	//
 	// ACKAllowedRepos
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Indicates whether parameters are required. Valid values:
+	// Indicates whether policy configuration is required. Valid values:
 	//
-	// 	- 0: Parameters are required.
+	// - 0: Parameter settings are required.
 	//
-	// 	- 1: Parameters are optional.
+	// - 1: No parameter settings are required.
 	//
 	// example:
 	//
 	// 0
 	NoConfig *int32 `json:"no_config,omitempty" xml:"no_config,omitempty"`
-	// The severity level of the policy. Valid values:
+	// The governance severity level of the rule. Valid values:
 	//
-	// 	- `high`
+	// 	- `high`: high risk.
 	//
-	// 	- `medium`
+	// 	- `medium`: medium risk.
 	//
-	// 	- `low`
+	// 	- `low`: low risk.
 	//
 	// example:
 	//
 	// high
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// The content of the policy.
+	// The details of the rule template.
 	//
 	// example:
 	//

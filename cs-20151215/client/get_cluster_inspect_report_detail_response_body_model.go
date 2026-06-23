@@ -28,7 +28,7 @@ type iGetClusterInspectReportDetailResponseBody interface {
 }
 
 type GetClusterInspectReportDetailResponseBody struct {
-	// The results.
+	// The list of results.
 	CheckItemResults []*GetClusterInspectReportDetailResponseBodyCheckItemResults `json:"checkItemResults,omitempty" xml:"checkItemResults,omitempty" type:"Repeated"`
 	// The completion time of the inspection report.
 	//
@@ -36,13 +36,13 @@ type GetClusterInspectReportDetailResponseBody struct {
 	//
 	// 2024-12-18T19:41:12.778433+08:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The token that is used to display the returned tags on multiple pages.
+	// The pagination token.
 	//
 	// example:
 	//
 	// AK8uQQrxgFK8sbARvnCj6w9R3kPme4I3
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The ID of the inspection report.
+	// The inspection report ID.
 	//
 	// example:
 	//
@@ -60,17 +60,17 @@ type GetClusterInspectReportDetailResponseBody struct {
 	//
 	// 2024-12-18T19:40:16.778333+08:00
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The status of the inspection report. Valid values:
+	// The generation status of the inspection report. Valid values:
 	//
-	// 	- completed: The inspection report is generated.
+	// - completed: Completed.
 	//
-	// 	- running: The inspection report is generating.
+	// - running: In progress.
 	//
 	// example:
 	//
 	// completed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Overview of inspection reports.
+	// The inspection report summary.
 	Summary *GetClusterInspectReportDetailResponseBodySummary `json:"summary,omitempty" xml:"summary,omitempty" type:"Struct"`
 }
 
@@ -175,15 +175,15 @@ func (s *GetClusterInspectReportDetailResponseBody) Validate() error {
 type GetClusterInspectReportDetailResponseBodyCheckItemResults struct {
 	// The category of the inspection item. Valid values:
 	//
-	// 	- security: Security compliance
+	// - security: security and compliance
 	//
-	// 	- performance: Performance efficiency
+	// - performance: performance and efficiency
 	//
-	// 	- stability: Business stability
+	// - stability: business stability
 	//
-	// 	- limitation: Service limits
+	// - limitation: service limits
 	//
-	// 	- cost: Cost optimization
+	// - cost: cost optimization.
 	//
 	// example:
 	//
@@ -195,13 +195,13 @@ type GetClusterInspectReportDetailResponseBodyCheckItemResults struct {
 	//
 	// APIServerClbInstanceStatus
 	CheckItemUid *string `json:"checkItemUid,omitempty" xml:"checkItemUid,omitempty"`
-	// The description of the inspection item.
+	// The description of the check item.
 	//
 	// example:
 	//
 	// 集群API Server负载均衡实例异常会影响集群可用性，请检查负载均衡实例状态是否正常。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The fixing suggestion.
+	// The fix suggestion.
 	//
 	// example:
 	//
@@ -209,43 +209,43 @@ type GetClusterInspectReportDetailResponseBodyCheckItemResults struct {
 	Fix *string `json:"fix,omitempty" xml:"fix,omitempty"`
 	// The level of the inspection item. Valid values:
 	//
-	// 	- advice: Suggestions
+	// - advice: suggestion
 	//
-	// 	- warning: Low severity
+	// - warning: low-risk
 	//
-	// 	- error: Medium severity
+	// - error: medium-risk
 	//
-	// 	- critical: High severity
+	// - critical: high-risk.
 	//
 	// example:
 	//
 	// critical
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The name of the inspection item.
+	// The name of the check item.
 	//
 	// example:
 	//
 	// API Server CLB 实例状态异常
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The inspection results. Valid values:
+	// The check result. Valid values:
 	//
-	// 	- true: The inspection item is abnormal.
+	// - true: The check item is abnormal.
 	//
-	// 	- false: The inspection item is normal.
+	// - false: The check item is normal.
 	//
-	// 	- disable: The inspection item is not enabled.
+	// - disable: The check item is not enabled.
 	//
 	// example:
 	//
 	// false
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
-	// The resource type of the inspection object.
+	// The resource type of the check target.
 	//
 	// example:
 	//
 	// CLB
 	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
-	// The inspection objects.
+	// The list of check targets.
 	Targets []*string `json:"targets,omitempty" xml:"targets,omitempty" type:"Repeated"`
 }
 
@@ -343,31 +343,31 @@ func (s *GetClusterInspectReportDetailResponseBodyCheckItemResults) Validate() e
 }
 
 type GetClusterInspectReportDetailResponseBodySummary struct {
-	// The number of check items whose inspection result is advice.
+	// The number of check items with a result of advice.
 	//
 	// example:
 	//
 	// 0
 	AdviceCount *int32 `json:"adviceCount,omitempty" xml:"adviceCount,omitempty"`
-	// Check the status code of the inspection task.
+	// The status code of the check task result.
 	//
 	// example:
 	//
 	// warning
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The number of check items whose inspection result is error.
+	// The number of check items with a result of error.
 	//
 	// example:
 	//
 	// 0
 	ErrorCount *int32 `json:"errorCount,omitempty" xml:"errorCount,omitempty"`
-	// The number of check items whose inspection result is normal.
+	// The number of check items with a result of normal.
 	//
 	// example:
 	//
 	// 10
 	NormalCount *int32 `json:"normalCount,omitempty" xml:"normalCount,omitempty"`
-	// The number of check items whose inspection result is warning.
+	// The number of check items with a result of warning.
 	//
 	// example:
 	//

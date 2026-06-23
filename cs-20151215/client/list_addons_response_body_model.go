@@ -49,31 +49,49 @@ func (s *ListAddonsResponseBody) Validate() error {
 }
 
 type ListAddonsResponseBodyAddons struct {
-	// Architectures supported by the component. Valid values:
-	//
-	// 	- amd64
-	//
-	// 	- arm64
+	// The CPU architectures supported by the component.
 	Architecture []*string `json:"architecture,omitempty" xml:"architecture,omitempty" type:"Repeated"`
-	// The category of the component.
+	// The component categorization. Valid values:
+	//
+	// - core: core component.
+	//
+	// - network: network type component.
+	//
+	// - security: security component.
+	//
+	// - storage: storage component.
+	//
+	// - monitor: logging and monitoring component.
+	//
+	// - application: application component.
+	//
+	// An empty value indicates that the component belongs to another category.
 	//
 	// example:
 	//
 	// monitor
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The schema of the custom parameters of the component.
+	// The schema of custom parameters for the component.
 	//
 	// example:
 	//
 	// {}
 	ConfigSchema *string `json:"config_schema,omitempty" xml:"config_schema,omitempty"`
-	// Indicates whether the component is automatically installed by default.
+	// Indicates whether the component is installed by default. Valid values:
+	//
+	// - true: The component is installed by default when a cluster is created.
+	//
+	// - false: The component is not installed by default.
 	//
 	// example:
 	//
 	// false
 	InstallByDefault *bool `json:"install_by_default,omitempty" xml:"install_by_default,omitempty"`
-	// Indicates whether the component is fully managed.
+	// Indicates whether the component is managed. Valid values:
+	//
+	// - true: The component is managed.
+	//
+	// - false: The component is not managed.
 	//
 	// example:
 	//
@@ -85,17 +103,9 @@ type ListAddonsResponseBodyAddons struct {
 	//
 	// arms-prometheus
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Operations supported by the component. Valid values:
-	//
-	// 	- Install
-	//
-	// 	- Upgrade
-	//
-	// 	- Modify
-	//
-	// 	- Uninstall
+	// The operations supported by the component.
 	SupportedActions []*string `json:"supported_actions,omitempty" xml:"supported_actions,omitempty" type:"Repeated"`
-	// The version number.
+	// The component version.
 	//
 	// example:
 	//

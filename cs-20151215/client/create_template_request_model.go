@@ -22,15 +22,15 @@ type iCreateTemplateRequest interface {
 }
 
 type CreateTemplateRequest struct {
-	// The description of the template.
+	// The description of the orchestration template.
 	//
 	// example:
 	//
 	// this is test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the orchestration template.
+	// The name of the template.
 	//
-	// The name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). It cannot start with a hyphen (-).
+	// Naming rules: The name must be 1 to 63 characters in length and can contain digits, Chinese characters, letters, and hyphens (-). It cannot start with a hyphen (-).
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type CreateTemplateRequest struct {
 	//
 	// service-account-template
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The label of the template.
+	// The tags of the orchestration template.
 	//
 	// example:
 	//
 	// test
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The template content in the YAML format.
+	// The template content in YAML format.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type CreateTemplateRequest struct {
 	//
 	// apiVersion: v1\\nkind: ServiceAccount\\nmetadata:\\n  name: test-sa
 	Template *string `json:"template,omitempty" xml:"template,omitempty"`
-	// The template type.
+	// The templatetype.
 	//
-	// 	- If the parameter is set to `kubernetes`, the template is displayed on the Templates page in the console.
+	// - If you set this parameter to `kubernetes`, the template is displayed on the Orchestration Templates page in the console.
 	//
-	// 	- If this parameter is not specified or the value is set to another value, the template is not displayed on the Orchestration Template page in the console.
+	// - If you leave this parameter empty or set it to other values, the template is not displayed on the Orchestration Templates page in the console.
 	//
-	// We recommend that you set the parameter to `kubernetes`.
+	// Settings this parameter to `kubernetes` is recommended.
 	//
 	// example:
 	//

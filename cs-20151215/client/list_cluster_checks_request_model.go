@@ -16,13 +16,21 @@ type iListClusterChecksRequest interface {
 }
 
 type ListClusterChecksRequest struct {
-	// The targets to check.
+	// The check target to filter.
 	//
 	// example:
 	//
 	// ngw-bp19ay6nnvd4cexxxx
 	Target *string `json:"target,omitempty" xml:"target,omitempty"`
-	// The check method.
+	// The check type. Valid values:
+	//
+	// - ClusterMigrate: cluster migration.
+	//
+	// - MasterUpgrade: cluster control plane upgrade.
+	//
+	// - NodePoolUpgrade: node pool upgrade.
+	//
+	// - ClusterUpgrade: cluster upgrade.
 	//
 	// example:
 	//

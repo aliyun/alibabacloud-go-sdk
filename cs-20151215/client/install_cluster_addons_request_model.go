@@ -14,7 +14,7 @@ type iInstallClusterAddonsRequest interface {
 }
 
 type InstallClusterAddonsRequest struct {
-	// 请求体参数。
+	// The request body parameters.
 	//
 	// example:
 	//
@@ -53,13 +53,13 @@ func (s *InstallClusterAddonsRequest) Validate() error {
 }
 
 type InstallClusterAddonsRequestBody struct {
-	// 组件自定义参数，使用JSON字符串编码。
+	// The custom parameters of the component, encoded as a JSON string.
 	//
 	// example:
 	//
 	// {\\"IngressDashboardEnabled\\":\\"true\\",\\"sls_project_name\\":\\"your_sls_project_name\\"}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// 组件名称。您可以通过[ListAddons](https://help.aliyun.com/document_detail/2667939.html)接口查询可用组件的信息，包括组件名称及版本等。
+	// The component name. You can call the [ListAddons](https://help.aliyun.com/document_detail/2667939.html) operation to query information about available components, including component names and versions.
 	//
 	// This parameter is required.
 	//
@@ -67,7 +67,7 @@ type InstallClusterAddonsRequestBody struct {
 	//
 	// storage-operato
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 组件版本。您可以通过[ListAddons](https://help.aliyun.com/document_detail/2667939.html)接口查询可用组件的信息，包括组件名称及版本等。
+	// The component version. You can call the [ListAddons](https://help.aliyun.com/document_detail/2667939.html) operation to query information about available components, including component names and versions.
 	//
 	// This parameter is required.
 	//

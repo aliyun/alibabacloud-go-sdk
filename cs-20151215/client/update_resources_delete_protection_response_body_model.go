@@ -22,31 +22,31 @@ type iUpdateResourcesDeleteProtectionResponseBody interface {
 }
 
 type UpdateResourcesDeleteProtectionResponseBody struct {
-	// The namespace to which the resource belongs.
+	// The namespace of the resource.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// Indicates the status of deletion protection. A value of true indicates that deletion protection is enabled and a value of false indicates that deletion protection is disabled.
+	// The deletion protection status of the resource.
 	//
 	// example:
 	//
 	// enable
 	Protection *string `json:"protection,omitempty" xml:"protection,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 0527ac9a-c899-4341-a21a-xxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The type of resource for which deletion protection is enabled or disabled.
+	// The resource type.
 	//
 	// example:
 	//
 	// namespaces
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The list of resources whose deletion protection status is updated.
+	// The list of resources for which the deletion protection status is updated.
 	Resources []*string `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
 }
 

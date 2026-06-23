@@ -16,9 +16,9 @@ type iListClusterAddonInstanceResourcesResponseBody interface {
 }
 
 type ListClusterAddonInstanceResourcesResponseBody struct {
-	// Information about the Helm release instance corresponding to the add-on.
+	// The Helm release instance information of the component.
 	HelmRelease *ListClusterAddonInstanceResourcesResponseBodyHelmRelease `json:"helm_release,omitempty" xml:"helm_release,omitempty" type:"Struct"`
-	// A list of Kubernetes objects associated with the add-on.
+	// The list of Kubernetes objects contained in the component.
 	KubernetesObjects []*ListClusterAddonInstanceResourcesResponseBodyKubernetesObjects `json:"kubernetes_objects,omitempty" xml:"kubernetes_objects,omitempty" type:"Repeated"`
 }
 
@@ -67,19 +67,19 @@ func (s *ListClusterAddonInstanceResourcesResponseBody) Validate() error {
 }
 
 type ListClusterAddonInstanceResourcesResponseBodyHelmRelease struct {
-	// The name of the Helm chart.
+	// The Helm chart name of the component.
 	//
 	// example:
 	//
 	// ack-node-problem-detector
 	ChartName *string `json:"chart_name,omitempty" xml:"chart_name,omitempty"`
-	// The version of the Helm chart.
+	// The Helm chart version of the component.
 	//
 	// example:
 	//
 	// 1.2.28
 	ChartVersion *string `json:"chart_version,omitempty" xml:"chart_version,omitempty"`
-	// The namespace where the Helm release is located.
+	// The namespace.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type ListClusterAddonInstanceResourcesResponseBodyKubernetesObjects struct {
 	//
 	// rbac.authorization.k8s.io
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
-	// The Kubernetes API type to which the object belongs.
+	// The Kubernetes API kind of the object.
 	//
 	// example:
 	//
 	// ClusterRole
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The name of the Kubernetes object.
+	// The name of the object.
 	//
 	// example:
 	//

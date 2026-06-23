@@ -24,31 +24,31 @@ type iDescribeAddonsRequest interface {
 type DescribeAddonsRequest struct {
 	// The cluster type. Valid values:
 	//
-	// 	- `Default`: ACK managed cluster
+	// - `Default`: managed cluster.
 	//
-	// 	- `Serverless`: ACK Serverless cluster
+	// - `Serverless`: serverless cluster.
 	//
-	// 	- `Edge`: ACK Edge cluster
+	// - `Edge`: edge cluster.
 	//
 	// example:
 	//
 	// Default
 	ClusterProfile *string `json:"cluster_profile,omitempty" xml:"cluster_profile,omitempty"`
-	// If you set `cluster_type` to `ManagedKubernetes` and specify `profile`, you can further specify the edition of the cluster. Valid values:
+	// After you set `cluster_type` to `ManagedKubernetes` and configure `profile`, you can further specify the cluster specification.
 	//
-	// 	- `ack.pro.small`: creates an ACK Pro cluster.
+	// - `ack.pro.small`: Pro cluster.
 	//
-	// 	- `ack.standard`: creates an ACK Basic cluster. If you leave the parameter empty, an ACK Basic cluster is created.
+	// - `ack.standard`: Basic cluster (selected by default if this parameter is left empty).
 	//
 	// example:
 	//
 	// ack.pro.small
 	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
-	// 	- `Kubernetes`: ACK dedicated cluster.
+	// - `Kubernetes`: ACK dedicated cluster.
 	//
-	// 	- `ManagedKubernetes`: ACK managed cluster. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
+	// - `ManagedKubernetes`: ACK managed cluster types, including ACK managed clusters (ACK Pro and ACK Basic), ACK Serverless clusters (Pro and Basic), ACK Edge clusters (Pro and Basic), and ACK Lingjun clusters (Pro).
 	//
-	// 	- `ExternalKubernetes`: registered cluster.
+	// - `ExternalKubernetes`: registered cluster.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeAddonsRequest struct {
 	//
 	// 1.24.6-aliyun.1
 	ClusterVersion *string `json:"cluster_version,omitempty" xml:"cluster_version,omitempty"`
-	// The region ID of the cluster.
+	// The ID of the region where the cluster resides.
 	//
 	// This parameter is required.
 	//

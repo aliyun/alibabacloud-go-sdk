@@ -14,7 +14,7 @@ type iDeletePolicyInstanceRequest interface {
 }
 
 type DeletePolicyInstanceRequest struct {
-	// The ID of the policy instance.
+	// The instance ID of the policy rule.
 	//
 	// example:
 	//

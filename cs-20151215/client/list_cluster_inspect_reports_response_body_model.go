@@ -24,7 +24,7 @@ type ListClusterInspectReportsResponseBody struct {
 	//
 	// 405b99e5411f9a4e7148506e45
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The list of inspection reports.
+	// The inspection reports.
 	Reports []*ListClusterInspectReportsResponseBodyReports `json:"reports,omitempty" xml:"reports,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,31 +83,31 @@ func (s *ListClusterInspectReportsResponseBody) Validate() error {
 }
 
 type ListClusterInspectReportsResponseBodyReports struct {
-	// The report completion time.
+	// The completion time of the inspection report.
 	//
 	// example:
 	//
 	// 2024-12-18T19:40:16.778333+08:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// An inspection report ID.
+	// The inspection report ID.
 	//
 	// example:
 	//
 	// 782df89346054a0000562063a6****
 	ReportId *string `json:"reportId,omitempty" xml:"reportId,omitempty"`
-	// The report start time.
+	// The start time of the inspection report.
 	//
 	// example:
 	//
 	// 2024-12-18T19:40:16.778333+08:00
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The inspection report status.
+	// The generation status of the inspection report.
 	//
 	// example:
 	//
 	// completed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The inspection summary.
+	// The inspection report summary.
 	Summary *ListClusterInspectReportsResponseBodyReportsSummary `json:"summary,omitempty" xml:"summary,omitempty" type:"Struct"`
 }
 
@@ -174,31 +174,31 @@ func (s *ListClusterInspectReportsResponseBodyReports) Validate() error {
 }
 
 type ListClusterInspectReportsResponseBodyReportsSummary struct {
-	// The number of items whose result is advice.
+	// The number of check items with a result of advice.
 	//
 	// example:
 	//
 	// 0
 	AdviceCount *int32 `json:"adviceCount,omitempty" xml:"adviceCount,omitempty"`
-	// Aggregated inspection task result code.
+	// The status code of the check task result.
 	//
 	// example:
 	//
 	// warning
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The number of items whose result is error.
+	// The number of check items with a result of error.
 	//
 	// example:
 	//
 	// 0
 	ErrorCount *int32 `json:"errorCount,omitempty" xml:"errorCount,omitempty"`
-	// The number of items whose result is normal.
+	// The number of check items with a result of normal.
 	//
 	// example:
 	//
 	// 1
 	NormalCount *int32 `json:"normalCount,omitempty" xml:"normalCount,omitempty"`
-	// The number of items whose result is warning.
+	// The number of check items with a result of warning.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iListClusterChecksResponseBody interface {
 }
 
 type ListClusterChecksResponseBody struct {
-	// The list of check items.
+	// The list of checks.
 	Checks []*ListClusterChecksResponseBodyChecks `json:"checks,omitempty" xml:"checks,omitempty" type:"Repeated"`
 }
 
@@ -49,37 +49,37 @@ func (s *ListClusterChecksResponseBody) Validate() error {
 }
 
 type ListClusterChecksResponseBodyChecks struct {
-	// The ID of the cluster check task.
+	// The check ID.
 	//
 	// example:
 	//
 	// 1697100584236600453-ce0da5a1d627e4e9e9f96cae8ad07****-clustercheck-lboto
 	CheckId *string `json:"check_id,omitempty" xml:"check_id,omitempty"`
-	// The time when the cluster check task was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-04-11T02:56:02.565982623Z
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// The time when the cluster check task was completed.
+	// The completion time.
 	//
 	// example:
 	//
 	// 2025-04-11T02:56:18.881054031Z
 	FinishedAt *string `json:"finished_at,omitempty" xml:"finished_at,omitempty"`
-	// The message that indicates the status of the cluster check task.
+	// The check status message.
 	//
 	// example:
 	//
 	// task succeed
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The status of the cluster check.
+	// The check status.
 	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The check method.
+	// The check type.
 	//
 	// example:
 	//

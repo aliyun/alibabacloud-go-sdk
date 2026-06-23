@@ -30,9 +30,9 @@ type DescribeClusterEventsRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries to return per page.
+	// The maximum number of results to return per page.
 	//
-	// Valid values: 1 to 100.
+	// Valid values: [1,100].
 	//
 	// Default value: 50.
 	//
@@ -40,7 +40,7 @@ type DescribeClusterEventsRequest struct {
 	//
 	// 50
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The task ID. If specified, only events associated with this task are returned.
+	// The ID of the task to query.
 	//
 	// example:
 	//

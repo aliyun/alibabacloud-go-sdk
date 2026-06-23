@@ -22,35 +22,37 @@ type iUpdateTemplateRequest interface {
 }
 
 type UpdateTemplateRequest struct {
-	// The description of the template.
+	// The description of the deployment template.
 	//
 	// example:
 	//
 	// web server cluster
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the template.
+	// The name of the deployment template.
 	//
 	// example:
 	//
 	// webserver01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The label of the template.
+	// The tags of the deployment template.
 	//
 	// example:
 	//
 	// web
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The YAML content of the template.
+	// The template content in YAML format.
 	//
 	// example:
 	//
 	// apiVersion: apps/v1\\\\nkind: Deployment\\\\nmetadata:\\\\n  name: nginx-deployment-basic\\\\n  labels:\\\\n    app: nginx\\\\nspec:\\\\n  replicas: 2\\\\n  selector:\\\\n    matchLabels:\\\\n      app: nginx\\\\n  template:\\\\n    metadata:\\\\n      labels:\\\\n        app: nginx\\\\n    spec:\\\\n      containers:\\\\n      - name: nginx\\\\n        image: busybox:latest\\\\n        ports:\\\\n        - containerPort: 8080
 	Template *string `json:"template,omitempty" xml:"template,omitempty"`
-	// The type of template. This parameter can be set to a custom value.
+	// The templatetype.
 	//
-	// 	- If the parameter is set to `kubernetes`, the template is displayed on the Templates page in the console.
+	// - If you set this parameter to `kubernetes`, the template is displayed on the Orchestration Templates page in the console.
 	//
-	// 	- If the parameter is set to `compose`, the template is displayed on the Container Service - Swarm page in the console. Container Service for Swarm is deprecated.
+	// - If you leave this parameter empty or set it to other values, the template is not displayed on the Orchestration Templates page in the console.
+	//
+	// Settings this parameter to `kubernetes` is recommended.
 	//
 	// example:
 	//

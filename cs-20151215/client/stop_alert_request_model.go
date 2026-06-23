@@ -16,13 +16,13 @@ type iStopAlertRequest interface {
 }
 
 type StopAlertRequest struct {
-	// The name of the alert rule group.
+	// The alert rule group name.
 	//
 	// example:
 	//
 	// sample
 	AlertRuleGroupName *string `json:"alert_rule_group_name,omitempty" xml:"alert_rule_group_name,omitempty"`
-	// The name of the alert rule.
+	// The alert rule name.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iDescribeClusterTasksRequest interface {
 type DescribeClusterTasksRequest struct {
 	MaxResults *int32  `json:"max_results,omitempty" xml:"max_results,omitempty"`
 	NextToken  *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//

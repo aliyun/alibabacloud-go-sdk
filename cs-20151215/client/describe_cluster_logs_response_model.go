@@ -72,31 +72,31 @@ func (s *DescribeClusterLogsResponse) Validate() error {
 }
 
 type DescribeClusterLogsResponseBody struct {
-	// The ID of the log entry.
+	// 日志ID。
 	//
 	// example:
 	//
 	// 73117232145******
 	ID *int64 `json:"ID,omitempty" xml:"ID,omitempty"`
-	// The cluster ID.
+	// 集群ID。
 	//
 	// example:
 	//
 	// c23421cfa74454bc8b37163fd19af***
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The log content.
+	// 日志内容。
 	//
 	// example:
 	//
 	// start to update cluster status to CREATE_COMPLETE
 	ClusterLog *string `json:"cluster_log,omitempty" xml:"cluster_log,omitempty"`
-	// The time when the log entry was generated.
+	// 日志产生时间。
 	//
 	// example:
 	//
 	// 2025-04-10T17:54:26+08:00
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// The time when the log entry was updated.
+	// 日志更新时间。
 	//
 	// example:
 	//

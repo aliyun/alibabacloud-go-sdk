@@ -22,7 +22,7 @@ type ScanClusterVulsResponseBody struct {
 	//
 	// 687C5BAA-D103-4993-884B-C35E4******
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//

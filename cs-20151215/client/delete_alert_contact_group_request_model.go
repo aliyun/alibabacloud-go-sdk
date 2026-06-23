@@ -14,7 +14,7 @@ type iDeleteAlertContactGroupRequest interface {
 }
 
 type DeleteAlertContactGroupRequest struct {
-	// The list of alert contact group IDs.
+	// List of alert contact group IDs.
 	//
 	// This parameter is required.
 	ContactGroupIds []*int64 `json:"contact_group_ids,omitempty" xml:"contact_group_ids,omitempty" type:"Repeated"`

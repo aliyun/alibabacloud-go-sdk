@@ -16,13 +16,13 @@ type iDescribePolicyInstancesStatusResponseBody interface {
 }
 
 type DescribePolicyInstancesStatusResponseBody struct {
-	// The number of policy instances that are deployed in the cluster at different severity levels.
+	// The number of policy instances deployed in the cluster at different governance levels.
 	//
 	// example:
 	//
 	// { "high": 11,     "medium": 1  }
 	InstancesSeverityCount map[string]interface{} `json:"instances_severity_count,omitempty" xml:"instances_severity_count,omitempty"`
-	// The number of policy instances of each policy type.
+	// The list of policy instance counts for different policy types.
 	PolicyInstances []*DescribePolicyInstancesStatusResponseBodyPolicyInstances `json:"policy_instances,omitempty" xml:"policy_instances,omitempty" type:"Repeated"`
 }
 
@@ -66,31 +66,31 @@ func (s *DescribePolicyInstancesStatusResponseBody) Validate() error {
 }
 
 type DescribePolicyInstancesStatusResponseBodyPolicyInstances struct {
-	// The type of the policy. For more information about different types of policies and their descriptions, see [Predefined security policies of ACK](https://help.aliyun.com/document_detail/359819.html).
+	// The policy type. For more information about supported policy types and their descriptions, see [Container security policy rule library](https://help.aliyun.com/document_detail/359819.html).
 	//
 	// example:
 	//
 	// compliance
 	PolicyCategory *string `json:"policy_category,omitempty" xml:"policy_category,omitempty"`
-	// The description of the policy.
+	// The policy description.
 	//
 	// example:
 	//
 	// Restricts use of the cluster-admin role.
 	PolicyDescription *string `json:"policy_description,omitempty" xml:"policy_description,omitempty"`
-	// The number of policy instances that are deployed. If this parameter is empty, no policy instance is deployed.
+	// The number of deployed policy instances. If this field is empty, no policy instances of this type are deployed.
 	//
 	// example:
 	//
 	// 1
 	PolicyInstancesCount *int64 `json:"policy_instances_count,omitempty" xml:"policy_instances_count,omitempty"`
-	// The name of the policy.
+	// The policy name.
 	//
 	// example:
 	//
 	// ACKRestrictRoleBindings
 	PolicyName *string `json:"policy_name,omitempty" xml:"policy_name,omitempty"`
-	// The severity level of the policy.
+	// The governance level of the policy.
 	//
 	// example:
 	//

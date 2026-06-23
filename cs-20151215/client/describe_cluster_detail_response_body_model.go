@@ -100,9 +100,9 @@ type iDescribeClusterDetailResponseBody interface {
 }
 
 type DescribeClusterDetailResponseBody struct {
-	// Smart managed mode configuration.
+	// Intelligent managed mode configuration.
 	AutoMode *DescribeClusterDetailResponseBodyAutoMode `json:"auto_mode,omitempty" xml:"auto_mode,omitempty" type:"Struct"`
-	// Local domain name of the cluster.
+	// Cluster local domain.
 	//
 	// example:
 	//
@@ -114,21 +114,21 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// c82e6987e2961451182edacd74faf****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// Cluster specification when `cluster_type` is set to `ManagedKubernetes` and `profile` is configured. Valid values:
+	// The cluster specifications when `cluster_type` is set to `ManagedKubernetes` and `profile` is configured. Valid values:
 	//
-	// - `ack.standard`: Basic Edition (default if left empty)
+	// - `ack.standard`: Basic edition (selected by default when the value is empty)
 	//
-	// - `ack.pro.small`: Pro Edition
+	// - `ack.pro.small`: Pro edition
 	//
 	// - `ack.pro.xlarge`: Pro XL
 	//
 	// - `ack.pro.2xlarge`: Pro 2XL
 	//
-	// - `ack.pro.4xlarge`: Pro 4XL (requires whitelist approval from customer service)
+	// - `ack.pro.4xlarge`: Pro 4XL (requires contacting customer service for allowlisting)
 	//
-	// Pro XL, Pro 2XL, and Pro 4XL are three tiers offered by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). These tiers pre-allocate and dedicate control plane resources to ensure consistent high performance for API concurrency and pod scheduling, making them suitable for AI training and inference, large-scale clusters, and mission-critical workloads.
+	// Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and pinning control plane resources, they ensure that API concurrency and Pod scheduling capabilities remain at a consistently high level, suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
 	//
-	// For cluster management fees of Pro Edition and provisioned control plane clusters, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
+	// For cluster management fees for Pro edition and Provisioned Control Plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
 	//
 	// example:
 	//
@@ -138,41 +138,45 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// - `Kubernetes`: ACK dedicated cluster.
 	//
-	// - `ManagedKubernetes`: ACK managed clusters, including ACK Pro Edition and Basic Edition clusters, ACK Serverless clusters (Pro and Basic), ACK Edge clusters (Pro and Basic), and ACK LINGJUN clusters (Pro).
 	//
-	// - `ExternalKubernetes`: registered cluster.
+	//
+	// - `ManagedKubernetes`: ACK managed clusters, including ACK managed clusters (ACK Pro and ACK Basic), ACK Serverless clusters (Pro and Basic), ACK Edge clusters (Pro and Basic), and ACK Lingjun clusters (Pro).
+	//
+	//
+	//
+	// - `ExternalKubernetes`: Registered cluster.
 	//
 	// example:
 	//
 	// Kubernetes
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	// CIDR block for pod networks, used with Flannel.
+	// Pod network CIDR block, configured for Flannel networking.
 	//
 	// example:
 	//
 	// 172.20.xx.xx/16
 	ContainerCidr *string `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
-	// Control plane configuration for dedicated clusters.
+	// Dedicated cluster control plane configuration.
 	ControlPlaneConfig *DescribeClusterDetailResponseBodyControlPlaneConfig `json:"control_plane_config,omitempty" xml:"control_plane_config,omitempty" type:"Struct"`
 	// Cluster connection configuration.
 	ControlPlaneEndpointsConfig *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig `json:"control_plane_endpoints_config,omitempty" xml:"control_plane_endpoints_config,omitempty" type:"Struct"`
-	// Time when the cluster was created.
+	// Cluster creation time.
 	//
 	// example:
 	//
 	// 2025-04-07T09:57:26+08:00
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// Current Kubernetes version of the cluster. For supported Kubernetes versions in ACK, see [Overview of Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
+	// The current version of the cluster. For Kubernetes versions supported by ACK, see [Kubernetes release overview](https://help.aliyun.com/document_detail/185269.html).
 	//
 	// example:
 	//
 	// 1.32.1-aliyun.1
 	CurrentVersion *string `json:"current_version,omitempty" xml:"current_version,omitempty"`
-	// Deletion protection for the cluster prevents accidental deletion through the console or API. Valid values:
+	// Cluster deletion protection, which prevents accidental deletion of the cluster through the console or API. Valid values:
 	//
-	// - `true`: Deletion protection is enabled. You cannot delete the cluster through the console or API.
+	// - `true`: Enable cluster deletion protection. The cluster cannot be deleted through the console or API.
 	//
-	// - `false`: Deletion protection is disabled. You can delete the cluster through the console or API.
+	// - `false`: Disable cluster deletion protection. The cluster can be deleted through the console or API.
 	//
 	// example:
 	//
@@ -180,7 +184,7 @@ type DescribeClusterDetailResponseBody struct {
 	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
 	// Deprecated
 	//
-	// Docker version used in the cluster.
+	// The Docker version in the cluster.
 	//
 	// example:
 	//
@@ -188,39 +192,39 @@ type DescribeClusterDetailResponseBody struct {
 	DockerVersion *string `json:"docker_version,omitempty" xml:"docker_version,omitempty"`
 	// Deprecated
 	//
-	// ID of the Server Load Balancer instance used for the cluster Ingress.
+	// Cluster Ingress SLB instance ID.
 	//
 	// example:
 	//
 	// lb-2zehc05z3b8dwiifh****
 	ExternalLoadbalancerId *string `json:"external_loadbalancer_id,omitempty" xml:"external_loadbalancer_id,omitempty"`
-	// Custom Subject Alternative Names (SANs) for the API server certificate.
+	// Custom API Server certificate SAN (Subject Alternative Name).
 	ExtraSans []*string `json:"extra_sans,omitempty" xml:"extra_sans,omitempty" type:"Repeated"`
-	// Initial Kubernetes version of the cluster.
+	// Cluster initial version.
 	//
 	// example:
 	//
 	// 1.32.1-aliyun.1
 	InitVersion *string `json:"init_version,omitempty" xml:"init_version,omitempty"`
-	// IP protocol stack of the cluster. Valid values:
+	// The IP protocol stack of the cluster. Valid values:
 	//
-	// - ipv4: Creates a cluster that supports IPv4 only.
+	// - ipv4: Creates a cluster that supports only the IPv4 protocol stack.
 	//
-	// - dual: Creates a cluster that supports both IPv4 and IPv6.
+	// - dual: Creates a cluster that supports the IPv4/IPv6 dual stack.
 	//
 	// example:
 	//
 	// ipv4
 	IpStack *string `json:"ip_stack,omitempty" xml:"ip_stack,omitempty"`
-	// Maintenance window configuration for the cluster. This setting applies only to managed clusters (ACK Pro clusters).
+	// Cluster maintenance window configuration. Only takes effect in managed editions (i.e., ACK Pro clusters).
 	MaintenanceWindow *MaintenanceWindow `json:"maintenance_window,omitempty" xml:"maintenance_window,omitempty"`
-	// Cluster endpoint, including internal and public endpoints.
+	// The access endpoint of the cluster, including the internal and public access endpoints.
 	//
 	// example:
 	//
 	// {\\"intranet_api_server_endpoint\\":\\"https://192.168.xx.xx:6443\\"***}
 	MasterUrl *string `json:"master_url,omitempty" xml:"master_url,omitempty"`
-	// Metadata of the cluster.
+	// Cluster metadata information.
 	//
 	// example:
 	//
@@ -234,39 +238,39 @@ type DescribeClusterDetailResponseBody struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// Deprecated
 	//
-	// Network type used by the cluster, such as VPC.
+	// The network type used by the cluster, for example: VPC network.
 	//
 	// example:
 	//
 	// vpc
 	NetworkMode *string `json:"network_mode,omitempty" xml:"network_mode,omitempty"`
-	// Next available Kubernetes version for upgrade.
+	// Cluster upgradeable version.
 	//
 	// example:
 	//
 	// 1.xx.x-aliyun.1
 	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
-	// Applies only to Flannel network plugin.
+	// Only applicable to the Flannel network plugin.
 	//
-	// Subnet mask size allocated to each node, which controls the number of IP addresses assignable to the node.
+	// The subnet mask size allocated to each node, which controls the number of IP addresses that can be allocated to the node.
 	//
 	// example:
 	//
 	// 26
 	NodeCidrMask *string `json:"node_cidr_mask,omitempty" xml:"node_cidr_mask,omitempty"`
-	// Automatic O\\&M policy for the cluster.
+	// Cluster automatic O&M policy.
 	OperationPolicy *DescribeClusterDetailResponseBodyOperationPolicy `json:"operation_policy,omitempty" xml:"operation_policy,omitempty" type:"Struct"`
 	// Deprecated
 	//
-	// Collection of ROS parameters for the cluster.
+	// Cluster ROS parameter collection.
 	Parameters map[string]*string `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// Deprecated
 	//
-	// Indicates whether PrivateZone is enabled for the cluster.
+	// Whether PrivateZone is enabled for the cluster.
 	//
 	// - `true`: Enabled.
 	//
-	// - `false`: Disabled.
+	// - `false`: Not enabled.
 	//
 	// Default value: false.
 	//
@@ -276,13 +280,19 @@ type DescribeClusterDetailResponseBody struct {
 	PrivateZone *bool `json:"private_zone,omitempty" xml:"private_zone,omitempty"`
 	// Cluster subtype.
 	//
-	// - `Default`: ACK managed cluster, including ACK Pro Edition and Basic Edition.
+	// - `Default`: ACK managed cluster, including ACK Pro and ACK Basic.
 	//
-	// - `Edge`: ACK Edge cluster, including ACK Edge Pro Edition and Basic Edition.
 	//
-	// - `Serverless`: ACK Serverless cluster, including ACK Serverless Pro Edition and Basic Edition.
 	//
-	// - `Lingjun`: ACK LINGJUN cluster, available in Pro Edition.
+	// - `Edge`: ACK Edge cluster, including ACK Edge Pro and ACK Edge Basic.
+	//
+	//
+	//
+	// - `Serverless`: ACK Serverless cluster, including ACK Serverless Pro and ACK Serverless Basic.
+	//
+	//
+	//
+	// - `Lingjun`: ACK Lingjun cluster, available in Pro edition.
 	//
 	// example:
 	//
@@ -290,21 +300,21 @@ type DescribeClusterDetailResponseBody struct {
 	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
 	// kube-proxy proxy mode.
 	//
-	// - `iptables`: A mature and stable kube-proxy mode that uses iptables rules for Kubernetes service discovery and load balancing. Performance is moderate and degrades at scale. Suitable for clusters with a small number of services.
+	// - `iptables`: A mature and stable kube-proxy proxy mode. Service discovery and load balancing for Kubernetes Services are configured using iptables rules. However, the performance is average and significantly affected by scale. This mode is suitable for clusters with a small number of Services.
 	//
-	// - `ipvs`: A high-performance kube-proxy mode that uses the Linux IPVS module for Kubernetes service discovery and load balancing. Suitable for clusters with many services and high load balancing demands.
+	// - `ipvs`: A high-performance kube-proxy proxy mode. Service discovery and load balancing for Kubernetes Services are configured using the Linux IPVS module. This mode is suitable for clusters with a large number of Services and scenarios that require high-performance load balancing.
 	//
 	// example:
 	//
 	// ipvs
 	ProxyMode *string `json:"proxy_mode,omitempty" xml:"proxy_mode,omitempty"`
-	// Region ID where the cluster is deployed.
+	// The region ID where the cluster is located.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// Resource group ID of the cluster.
+	// Cluster resource group ID.
 	//
 	// example:
 	//
@@ -312,13 +322,13 @@ type DescribeClusterDetailResponseBody struct {
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
 	// RRSA configuration.
 	RrsaConfig *DescribeClusterDetailResponseBodyRrsaConfig `json:"rrsa_config,omitempty" xml:"rrsa_config,omitempty" type:"Struct"`
-	// Security group ID of the cluster.
+	// Cluster security group ID.
 	//
 	// example:
 	//
 	// sg-25yq****
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
-	// CIDR block for service networks.
+	// Service network CIDR block.
 	//
 	// This parameter is required.
 	//
@@ -326,17 +336,17 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// 172.21.xx.xx/20
 	ServiceCidr *string `json:"service_cidr,omitempty" xml:"service_cidr,omitempty"`
-	// Total number of nodes in the cluster, including master and worker nodes.
+	// The number of nodes in the cluster, including both Master and Worker nodes.
 	//
 	// example:
 	//
 	// 5
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
-	// Cluster status. Valid values:
+	// Cluster running status. Valid values:
 	//
 	// - `initial`: The cluster is being created.
 	//
-	// - `failed`: Cluster creation failed.
+	// - `failed`: The cluster failed to be created.
 	//
 	// - `running`: The cluster is running.
 	//
@@ -348,7 +358,7 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// - `draining`: Nodes are being drained.
 	//
-	// - `scaling`: The cluster is scaling.
+	// - `scaling`: The cluster is being scaled.
 	//
 	// - `inactive`: The cluster is inactive.
 	//
@@ -358,9 +368,9 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// - `deleted`: The cluster has been deleted.
 	//
-	// - `delete_failed`: Cluster deletion failed.
+	// - `delete_failed`: The cluster failed to be deleted.
 	//
-	// - `waiting`: Waiting for access.
+	// - `waiting`: Waiting for connection.
 	//
 	// - `disconnected`: Disconnected.
 	//
@@ -370,27 +380,27 @@ type DescribeClusterDetailResponseBody struct {
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
 	// Deprecated
 	//
-	// CIDR block for pod networks.
+	// Pod network CIDR block.
 	//
 	// example:
 	//
 	// 172.20.xx.xx/16
 	SubnetCidr *string `json:"subnet_cidr,omitempty" xml:"subnet_cidr,omitempty"`
-	// Tags associated with the cluster.
+	// Cluster resource tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// Time zone.
+	// Timezone.
 	//
 	// example:
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// Last time the cluster was updated.
+	// Cluster update time.
 	//
 	// example:
 	//
 	// 2025-04-10T13:28:09+08:00
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
-	// VPC ID of the cluster. This parameter is required when creating a cluster.
+	// The VPC ID of the cluster. This is a required parameter when creating a cluster.
 	//
 	// example:
 	//
@@ -398,15 +408,15 @@ type DescribeClusterDetailResponseBody struct {
 	VpcId *string `json:"vpc_id,omitempty" xml:"vpc_id,omitempty"`
 	// Deprecated
 	//
-	// vSwitch ID. This field is deprecated. Use vswitch_ids to query control plane vSwitches and node pool vswitch_ids to query data plane vSwitches.
+	// vSwitch ID. This field is deprecated. For control plane vSwitches, use the vswitch_ids field. For data plane vSwitches, query through the vswitch_ids field in node pools.
 	//
 	// example:
 	//
 	// vsw-2zete8s4qocqg0mf6****,vsw-2zete8s4qocqg0mf6****
 	VswitchId *string `json:"vswitch_id,omitempty" xml:"vswitch_id,omitempty"`
-	// vSwitches for the cluster control plane.
+	// Cluster control plane vSwitches.
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
-	// Name of the RAM role assigned to ECS instances acting as worker nodes in the cluster.
+	// The name of the Worker RAM role, which authorizes ECS instances as Worker nodes of the cluster.
 	//
 	// example:
 	//
@@ -414,7 +424,7 @@ type DescribeClusterDetailResponseBody struct {
 	WorkerRamRoleName *string `json:"worker_ram_role_name,omitempty" xml:"worker_ram_role_name,omitempty"`
 	// Deprecated
 	//
-	// Zone ID within the region where the cluster is deployed.
+	// The availability zone ID within the region where the cluster is located.
 	//
 	// example:
 	//
@@ -870,7 +880,7 @@ func (s *DescribeClusterDetailResponseBody) Validate() error {
 }
 
 type DescribeClusterDetailResponseBodyAutoMode struct {
-	// Indicates whether smart managed mode is enabled.
+	// Whether to enable intelligent managed mode.
 	//
 	// example:
 	//
@@ -900,31 +910,31 @@ func (s *DescribeClusterDetailResponseBodyAutoMode) Validate() error {
 }
 
 type DescribeClusterDetailResponseBodyControlPlaneConfig struct {
-	// Indicates whether auto-renewal is enabled for nodes.
+	// Whether auto-renewal is enabled for the node.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
-	// Auto-renewal duration for nodes.
+	// Auto-renewal duration of the node.
 	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
-	// Billing method for control plane nodes.
+	// Billing type of control plane nodes.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"charge_type,omitempty" xml:"charge_type,omitempty"`
-	// Indicates whether Cloud Monitor is installed on nodes.
+	// Whether to install CloudMonitor on the node.
 	//
 	// example:
 	//
 	// true
 	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
-	// CPU management policy for nodes.
+	// Node CPU management policy.
 	//
 	// example:
 	//
@@ -942,7 +952,7 @@ type DescribeClusterDetailResponseBodyControlPlaneConfig struct {
 	//
 	// aliyun_3_x64_20G_alibase_20240819
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	// Operating system image type.
+	// OS image type.
 	//
 	// example:
 	//
@@ -950,39 +960,39 @@ type DescribeClusterDetailResponseBodyControlPlaneConfig struct {
 	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
 	// Metadata access configuration for ECS instances.
 	InstanceMetadataOptions *InstanceMetadataOptions `json:"instance_metadata_options,omitempty" xml:"instance_metadata_options,omitempty"`
-	// Instance types for control plane nodes.
+	// Node instance specification types.
 	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
-	// Key pair name. Specify either this parameter or login_password.
+	// Key pair name. You can specify either this parameter or login_password.
 	//
 	// example:
 	//
 	// ack
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// Port range for node services.
+	// Node service port range.
 	//
 	// example:
 	//
 	// 30000-32767
 	NodePortRange *string `json:"node_port_range,omitempty" xml:"node_port_range,omitempty"`
-	// Subscription duration for nodes.
+	// Subscription duration of the node.
 	//
 	// example:
 	//
 	// 1
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
-	// Time unit for node subscription.
+	// Unit of the subscription duration.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
-	// Runtime name.
+	// Container runtime name.
 	//
 	// example:
 	//
 	// containerd
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// Indicates whether Alibaba Cloud OS security hardening is enabled.
+	// Whether to enable Alibaba Cloud OS security hardening.
 	//
 	// example:
 	//
@@ -994,43 +1004,43 @@ type DescribeClusterDetailResponseBodyControlPlaneConfig struct {
 	//
 	// 3
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
-	// Indicates whether security hardening for compliance is enabled.
+	// Whether to enable classified protection security hardening.
 	//
 	// example:
 	//
 	// false
 	SocEnabled *bool `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
-	// Indicates whether burst performance is enabled for node system disks.
+	// Whether burst (performance burst) is enabled for the node system disk.
 	//
 	// example:
 	//
 	// true
 	SystemDiskBurstingEnabled *bool `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
-	// System disk category for nodes.
+	// Node system disk type.
 	//
 	// example:
 	//
 	// cloud_essd
 	SystemDiskCategory *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
-	// Disk performance level for node system disks. Applies only to ESSD disks.
+	// Performance level of the node system disk. Only applicable to ESSD disks.
 	//
 	// example:
 	//
 	// PL1
 	SystemDiskPerformanceLevel *string `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
-	// Provisioned IOPS for node system disks.
+	// Provisioned read/write IOPS for the node system disk.
 	//
 	// example:
 	//
 	// 1000
 	SystemDiskProvisionedIops *int64 `json:"system_disk_provisioned_iops,omitempty" xml:"system_disk_provisioned_iops,omitempty"`
-	// System disk size for nodes, in GB. Minimum value: 40.
+	// Node system disk size, minimum 40.
 	//
 	// example:
 	//
 	// 120
 	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
-	// Automatic snapshot backup policy for node system disks.
+	// Node automatic snapshot backup policy.
 	//
 	// example:
 	//
@@ -1272,7 +1282,7 @@ func (s *DescribeClusterDetailResponseBodyControlPlaneConfig) Validate() error {
 }
 
 type DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig struct {
-	// Internal domain name configuration for the cluster, applicable to ACK managed clusters. The internal domain name allows node-side system components such as kubelet and kube-proxy to access the API server. If internal domain name access is disabled, these components access the API server through the CLB IP address.
+	// Internal DNS configuration for the cluster, applicable to ACK managed clusters. The internal DNS is used by node-side system components such as kubelet and kube-proxy to access the API Server. When internal DNS access is not enabled, node-side system components access the API Server through the CLB IP.
 	InternalDnsConfig *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig `json:"internal_dns_config,omitempty" xml:"internal_dns_config,omitempty" type:"Struct"`
 }
 
@@ -1303,11 +1313,11 @@ func (s *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig) Validate(
 }
 
 type DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig struct {
-	// VPCs where the internal domain name resolution takes effect. By default, this includes the VPC where the cluster resides.
+	// The VPC scope within which the internal DNS record resolution takes effect. The VPC where the cluster is located is included by default.
 	BindVpcs []*string `json:"bind_vpcs,omitempty" xml:"bind_vpcs,omitempty" type:"Repeated"`
-	// Indicates whether internal domain name access is enabled.
+	// Whether to enable internal DNS access for the cluster.
 	//
-	// - true: Internal domain name access is enabled. Node-side components (kubelet, kube-proxy) access the API server through the internal domain name.
+	// - true: Enable internal DNS access. Node-side components (kubelet, kube-proxy) will access the API Server through the internal DNS.
 	//
 	// example:
 	//
@@ -1346,7 +1356,7 @@ func (s *DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDns
 }
 
 type DescribeClusterDetailResponseBodyOperationPolicy struct {
-	// Automatic cluster upgrade settings.
+	// Cluster auto-upgrade.
 	ClusterAutoUpgrade *DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade `json:"cluster_auto_upgrade,omitempty" xml:"cluster_auto_upgrade,omitempty" type:"Struct"`
 }
 
@@ -1377,7 +1387,7 @@ func (s *DescribeClusterDetailResponseBodyOperationPolicy) Validate() error {
 }
 
 type DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade struct {
-	// Frequency of automatic cluster upgrades. For more information, see [Upgrade frequency](https://help.aliyun.com/document_detail/2712866.html).
+	// Cluster auto-upgrade frequency. For more information, see [Upgrade frequency](https://help.aliyun.com/document_detail/2712866.html).
 	//
 	// Valid values:
 	//
@@ -1391,7 +1401,7 @@ type DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade struct {
 	//
 	// patch
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// Indicates whether automatic cluster upgrade is enabled.
+	// Whether cluster auto-upgrade is enabled.
 	//
 	// example:
 	//
@@ -1430,45 +1440,45 @@ func (s *DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade) Val
 }
 
 type DescribeClusterDetailResponseBodyRrsaConfig struct {
-	// Default audience for the OIDC token. Multiple values are separated by commas (,). These values appear as an array in the aud field of the OIDC token.
+	// The default audience information of the OIDC token. Multiple values are separated by commas (,). The values will be set as an array in the aud field of the OIDC token.
 	//
 	// example:
 	//
 	// https://kubernetes.default.svc,https://example.***.com
 	Audience *string `json:"audience,omitempty" xml:"audience,omitempty"`
-	// Indicates whether RRSA is enabled.
+	// Whether RRSA is enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// Issuer of the OIDC token. Multiple values are separated by commas (,). The first value appears in the iss field of the OIDC token and serves as the issuer URL for the OIDC identity provider.
+	// The issuer information of the OIDC token. Multiple values are separated by commas (,). The first value will be set as the iss field of the OIDC token and the issuer URL of the OIDC identity provider.
 	//
 	// example:
 	//
 	// https://oidc-ack-***,https://kubernetes.default.svc
 	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
-	// URL of the OIDC public key information.
+	// OIDC public key information URL.
 	JwksUrl *string `json:"jwks_url,omitempty" xml:"jwks_url,omitempty"`
-	// Maximum validity period configurable for the OIDC token.
+	// The maximum configurable validity period of an OIDC token.
 	//
 	// example:
 	//
 	// 12h
 	MaxOidcTokenExpiration *string `json:"max_oidc_token_expiration,omitempty" xml:"max_oidc_token_expiration,omitempty"`
-	// ARN of the OIDC identity provider.
+	// OIDC identity provider ARN.
 	//
 	// example:
 	//
 	// acs:ram::1138***:oidc-provider/ack-rrsa-***
 	OidcArn *string `json:"oidc_arn,omitempty" xml:"oidc_arn,omitempty"`
-	// Name of the OIDC identity provider.
+	// OIDC identity provider name.
 	//
 	// example:
 	//
 	// ack-rrsa-***
 	OidcName *string `json:"oidc_name,omitempty" xml:"oidc_name,omitempty"`
-	// URL of the OIDC configuration document.
+	// OIDC configuration document URL.
 	OpenApiConfigurationUrl *string `json:"open_api_configuration_url,omitempty" xml:"open_api_configuration_url,omitempty"`
 }
 

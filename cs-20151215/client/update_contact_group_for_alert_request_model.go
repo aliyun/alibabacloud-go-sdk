@@ -20,7 +20,7 @@ type iUpdateContactGroupForAlertRequest interface {
 }
 
 type UpdateContactGroupForAlertRequest struct {
-	// The name of the alert contact group.
+	// The name of the alert metric contact group.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type UpdateContactGroupForAlertRequest struct {
 	AlertRuleGroupName *string `json:"alert_rule_group_name,omitempty" xml:"alert_rule_group_name,omitempty"`
 	// The list of contact group IDs.
 	ContactGroupIds []*int64 `json:"contact_group_ids,omitempty" xml:"contact_group_ids,omitempty" type:"Repeated"`
-	// The name of the container registry instance.
+	// The name of the CR instance.
 	//
 	// example:
 	//

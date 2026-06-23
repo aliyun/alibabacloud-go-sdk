@@ -24,9 +24,9 @@ type iUpdateNodePoolComponentRequest interface {
 }
 
 type UpdateNodePoolComponentRequest struct {
-	// The configuration details for the component update.
+	// The node component configuration.
 	Config *UpdateNodePoolComponentRequestConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// Specifies whether to disable rolling updates. Default: false. If set to false, nodes will be rolled automatically to apply the new configuration.
+	// Specifies whether to disable rolling updates. Default value: false. When set to false, updating the baseline configuration triggers a rolling update of nodes.
 	DisableRolling *bool `json:"disableRolling,omitempty" xml:"disableRolling,omitempty"`
 	// The name of the node component.
 	//
@@ -34,11 +34,11 @@ type UpdateNodePoolComponentRequest struct {
 	//
 	// kubelet
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// A list of specific nodes to be rolled. If not specified, all nodes in the node pool will be updated.
+	// The list of nodes to be included in the rolling update. By default, all nodes are included.
 	NodeNames []*string `json:"nodeNames,omitempty" xml:"nodeNames,omitempty" type:"Repeated"`
 	// The rolling update configuration.
 	RollingPolicy *UpdateNodePoolComponentRequestRollingPolicy `json:"rollingPolicy,omitempty" xml:"rollingPolicy,omitempty" type:"Struct"`
-	// The version of the node component to be updated to.
+	// The version of the node component.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ func (s *UpdateNodePoolComponentRequest) Validate() error {
 }
 
 type UpdateNodePoolComponentRequestConfig struct {
-	// Custom configuration parameters for the component.
+	// The custom configuration of the component.
 	CustomConfig map[string]*string `json:"customConfig,omitempty" xml:"customConfig,omitempty"`
 }
 
@@ -149,19 +149,19 @@ func (s *UpdateNodePoolComponentRequestConfig) Validate() error {
 }
 
 type UpdateNodePoolComponentRequestRollingPolicy struct {
-	// The time interval between update batches, in seconds.
+	// The interval between batches during the upgrade. Unit: seconds.
 	//
 	// example:
 	//
 	// 0
 	BatchInterval *int64 `json:"batchInterval,omitempty" xml:"batchInterval,omitempty"`
-	// The maximum number of nodes that can be updated concurrently. Default: 1.
+	// The maximum number of nodes that can be updated in parallel per batch. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	MaxParallelism *int64 `json:"maxParallelism,omitempty" xml:"maxParallelism,omitempty"`
-	// The automatic pause strategy during the update process. Valid values: NotPause, FirstBatchPause, EveryBatchPause.
+	// The automatic pause policy during node upgrades.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iGetClusterDiagnosisCheckItemsResponseBody interface {
 }
 
 type GetClusterDiagnosisCheckItemsResponseBody struct {
-	// The check item.
+	// The check items.
 	CheckItems []*GetClusterDiagnosisCheckItemsResponseBodyCheckItems `json:"check_items,omitempty" xml:"check_items,omitempty" type:"Repeated"`
 	// The status code.
 	//
@@ -112,33 +112,25 @@ type GetClusterDiagnosisCheckItemsResponseBodyCheckItems struct {
 	//
 	// HostDNS
 	Display *string `json:"display,omitempty" xml:"display,omitempty"`
-	// The name of the group to which the check item belongs.
+	// The check item group.
 	//
 	// example:
 	//
 	// Node
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
-	// The severity level of the check result.
-	//
-	// Valid values:
-	//
-	// 	- normal
-	//
-	// 	- warning
-	//
-	// 	- error
+	// The assessment result of the check item.
 	//
 	// example:
 	//
 	// normal
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The check result.
+	// The check result message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The name of the check item.
+	// The check item name.
 	//
 	// example:
 	//
@@ -150,7 +142,7 @@ type GetClusterDiagnosisCheckItemsResponseBodyCheckItems struct {
 	//
 	// True
 	Refer *string `json:"refer,omitempty" xml:"refer,omitempty"`
-	// The value of the check item.
+	// The check item value.
 	//
 	// example:
 	//

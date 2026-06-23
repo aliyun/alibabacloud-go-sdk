@@ -36,9 +36,9 @@ type DescribeEventsForRegionRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of results to return on each page.
 	//
-	// Valid values: 1 to 100.
+	// Valid values: [1,100].
 	//
 	// Default value: 50.
 	//

@@ -72,69 +72,71 @@ func (s *DescribeTemplateAttributeResponse) Validate() error {
 }
 
 type DescribeTemplateAttributeResponseBody struct {
-	// The ID of the template. When you update a template, a new template ID is generated.
+	// 编排模板ID，每次变更都会有一个模板ID。
 	//
 	// example:
 	//
 	// 72d20cf8-a533-4ea9-a10d-e7630d3d****
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The access control policy of the template.
+	// 编排模板的访问权限，取值：
+	//
+	// - `private`：私有。
+	//
+	// - `public`：公共。
+	//
+	// - `shared`：可共享。
 	//
 	// example:
 	//
 	// private
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
-	// The name of the template.
+	// 编排模板名称。
 	//
 	// example:
 	//
 	// web
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The template content in the YAML format.
+	// 编排模板YAML内容。
 	//
 	// example:
 	//
 	// apiVersion: V1\\n***
 	Template *string `json:"template,omitempty" xml:"template,omitempty"`
-	// The type of template. The value can be a custom value.
+	// 模板类型。
 	//
-	// 	- If the parameter is set to `kubernetes`, the template is displayed on the Templates page in the console.
+	// - 当取值为kubernetes时将在控制台的编排模板页面展示该模板。
 	//
-	// 	- If the parameter is set to `compose`, the template is displayed on the Container Service - Swarm page in the console. Container Service for Swarm is deprecated.
-	//
-	// 	- If the value of the parameter is not `kubernetes`, the template is not displayed on the Templates page in the console. We recommend that you set the parameter to `kubernetes`.
-	//
-	// Default value: `kubernetes`.
+	// - 该参数不填写或者取值为其他值时，控制台的编排模板页面将不会展示该模板。
 	//
 	// example:
 	//
 	// kubernetes
 	TemplateType *string `json:"template_type,omitempty" xml:"template_type,omitempty"`
-	// The description of the template.
+	// 编排模板描述信息。
 	//
 	// example:
 	//
 	// test template
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The label of the template.
+	// 部署模板的标签。
 	//
 	// example:
 	//
 	// sa
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The unique ID of the template. The value remains unchanged after the template is updated.
+	// 编排模板唯一ID，不随模板更新而改变。
 	//
 	// example:
 	//
 	// 874ec485-e7e6-4373-8a3b-47bde8ae****
 	TemplateWithHistId *string `json:"template_with_hist_id,omitempty" xml:"template_with_hist_id,omitempty"`
-	// The time when the template was created.
+	// 编排模板创建时间。
 	//
 	// example:
 	//
 	// 2025-04-25T16:56:33+08:00
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// The time when the template was updated.
+	// 编排模板更新时间。
 	//
 	// example:
 	//

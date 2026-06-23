@@ -22,13 +22,13 @@ type iCreateTriggerResponseBody interface {
 }
 
 type CreateTriggerResponseBody struct {
-	// The actions performed by the trigger.
+	// The trigger action.
 	//
 	// example:
 	//
 	// redeploy
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type CreateTriggerResponseBody struct {
 	//
 	// 75973497486******
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the trigger project.
+	// The trigger project name.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iListAutoRepairPoliciesResponseBody interface {
 }
 
 type ListAutoRepairPoliciesResponseBody struct {
-	// A list of auto-repair rules.
+	// The auto-repair policies.
 	Items []*ListAutoRepairPoliciesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
@@ -49,33 +49,33 @@ func (s *ListAutoRepairPoliciesResponseBody) Validate() error {
 }
 
 type ListAutoRepairPoliciesResponseBodyItems struct {
-	// The ID of the auto-repair rule.
+	// The ID of the auto-repair policy.
 	//
 	// example:
 	//
 	// r-xxxxx
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the auto-repair rule.
+	// The name of the auto-repair policy.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The IDs of the resources that the auto-repair rule affects.
+	// The list of resources bound to the auto-repair policy.
 	ResourceIds []*string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty" type:"Repeated"`
-	// The resource sub-type that the auto-repair rule affects.
+	// The subtype of resource bound to the auto-repair policy.
 	//
 	// example:
 	//
 	// ess
 	ResourceSubType *string `json:"resource_sub_type,omitempty" xml:"resource_sub_type,omitempty"`
-	// The resource type that the auto-repair rule affects.
+	// The type of resource bound to the auto-repair policy.
 	//
 	// example:
 	//
 	// nodepool
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// A list of auto-repair sub-rules.
+	// The list of auto-repair sub-rules.
 	Rules []*ListAutoRepairPoliciesResponseBodyItemsRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
 }
 
@@ -155,7 +155,7 @@ func (s *ListAutoRepairPoliciesResponseBodyItems) Validate() error {
 }
 
 type ListAutoRepairPoliciesResponseBodyItemsRules struct {
-	// A list of identified incidents.
+	// The list of identified incidents.
 	Incidents []*ListAutoRepairPoliciesResponseBodyItemsRulesIncidents `json:"incidents,omitempty" xml:"incidents,omitempty" type:"Repeated"`
 	// The repair procedure.
 	RepairProcedure []*ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedure `json:"repair_procedure,omitempty" xml:"repair_procedure,omitempty" type:"Repeated"`
@@ -210,7 +210,7 @@ func (s *ListAutoRepairPoliciesResponseBodyItemsRules) Validate() error {
 }
 
 type ListAutoRepairPoliciesResponseBodyItemsRulesIncidents struct {
-	// The incident name.
+	// The name of the incident.
 	//
 	// example:
 	//
@@ -255,11 +255,11 @@ func (s *ListAutoRepairPoliciesResponseBodyItemsRulesIncidents) Validate() error
 }
 
 type ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedure struct {
-	// The configuration parameters for the procedure step.
+	// The configuration parameters of the procedure.
 	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
-	// The manual intervention settings for this procedure step.
+	// The configuration for manual intervention.
 	Intervention *ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureIntervention `json:"intervention,omitempty" xml:"intervention,omitempty" type:"Struct"`
-	// The name of the procedure step.
+	// The name of the procedure.
 	//
 	// example:
 	//
@@ -312,17 +312,17 @@ func (s *ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedure) Validate()
 }
 
 type ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureIntervention struct {
-	// The configuration for the approval label. Applying this label to the node authorizes Container Service for Kubernetes (ACK) to execute the action for this repair step. After the step is complete, ACK automatically removes both the inquiry and approval labels. If the approval label is not applied promptly, the repair process will not proceed, and the node may remain in an unhealthy state.
+	// The label configuration for confirming authorization. When you add the following label to a node, it indicates that you authorize ACK to execute the action of this phase. After completing the action of this phase, ACK automatically removes the authorization inquiry label and the confirmation label corresponding to this phase. If you do not add the following label to authorize the action in time, ACK will not execute the action of this phase or any subsequent actions, and the node may remain in a damaged state.
 	ApprovedLabel *ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionApprovedLabel `json:"approved_label,omitempty" xml:"approved_label,omitempty" type:"Struct"`
-	// Determines whether manual approval is required for the repair step.
+	// Specifies whether to enable manual approval.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The configuration for the authorization inquiry label. When this repair step starts, Container Service for Kubernetes (ACK) applies this label to the node and pauses, awaiting approval before executing the step\\"s action.
+	// The label configuration for authorization inquiry. When this phase is entered, ACK adds the following label to your node and waits for your authorization to execute the action of this phase.
 	InquiringLabel *ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionInquiringLabel `json:"inquiring_label,omitempty" xml:"inquiring_label,omitempty" type:"Struct"`
-	// The manual approval type.
+	// The type of manual approval.
 	//
 	// example:
 	//
@@ -389,13 +389,13 @@ func (s *ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureIntervention
 }
 
 type ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionApprovedLabel struct {
-	// The key of the label.
+	// The label `key`.
 	//
 	// example:
 	//
 	// k8s.aliyun.com/incident
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of the label.
+	// The label `value`.
 	//
 	// example:
 	//
@@ -434,13 +434,13 @@ func (s *ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureIntervention
 }
 
 type ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionInquiringLabel struct {
-	// The key of the label.
+	// The label `key`.
 	//
 	// example:
 	//
 	// k8s.aliyun.com/incident
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of the label.
+	// The taint `value`.
 	//
 	// example:
 	//

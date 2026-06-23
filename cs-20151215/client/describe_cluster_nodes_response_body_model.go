@@ -16,7 +16,7 @@ type iDescribeClusterNodesResponseBody interface {
 }
 
 type DescribeClusterNodesResponseBody struct {
-	// The details of the nodes in the cluster.
+	// The list of node details.
 	Nodes []*DescribeClusterNodesResponseBodyNodes `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 	// The pagination information.
 	Page *DescribeClusterNodesResponseBodyPage `json:"page,omitempty" xml:"page,omitempty" type:"Struct"`
@@ -79,19 +79,19 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	//
 	// error***
 	ErrorMessage *string `json:"error_message,omitempty" xml:"error_message,omitempty"`
-	// The expiration date of the node.
+	// The time when the node expires.
 	//
 	// example:
 	//
 	// 2099-12-31T15:59:00Z
 	ExpiredTime *string `json:"expired_time,omitempty" xml:"expired_time,omitempty"`
-	// The name of the host.
+	// The hostname of the node.
 	//
 	// example:
 	//
 	// iZ2vcckdmxp7u0urj2k****
 	HostName *string `json:"host_name,omitempty" xml:"host_name,omitempty"`
-	// The ID of the system image that is used by the node.
+	// The ID of the system image used by the node.
 	//
 	// example:
 	//
@@ -99,67 +99,77 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// The billing method of the node. Valid values:
 	//
-	// 	- `PrePaid`: the subscription billing method. If the value is PrePaid, make sure that you have a sufficient balance or credit in your account. Otherwise, an `InvalidPayMethod` error is returned.
+	// - `PrePaid`: subscription.
 	//
-	// 	- `PostPaid`: the pay-as-you-go billing method.
+	// - `PostPaid`: pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	InstanceChargeType *string `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
-	// The ID of the instance.
+	// The instance ID of the node.
 	//
 	// example:
 	//
 	// i-2vcckdmxp7u0urj2****
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
-	// The name of the instance on which the node is deployed.
+	// The name of the node in the cluster.
 	//
 	// example:
 	//
 	// worker-k8s-for-cs-c5cdf7e3938bc4f8eb0e44b21a80f****
 	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
-	// The role of the node. Valid values:
+	// The role type of the node. Valid values:
 	//
-	// 	- Master: master node
+	// - Master: a master node of the cluster.
 	//
-	// 	- Worker: worker node
+	// - Worker: a worker node of the cluster.
 	//
 	// example:
 	//
 	// Worker
 	InstanceRole *string `json:"instance_role,omitempty" xml:"instance_role,omitempty"`
-	// The status of the node.
+	// The ECS status of the node. Valid values:
+	//
+	// - `Pending`: being created.
+	//
+	// - `Running`: running.
+	//
+	// - `Starting`: being started.
+	//
+	// - `Stopping`: being stopped.
+	//
+	// - `Stopped`: stopped.
 	//
 	// example:
 	//
 	// Running
 	InstanceStatus *string `json:"instance_status,omitempty" xml:"instance_status,omitempty"`
-	// The type of the node.
+	// The node specifications.
 	//
 	// example:
 	//
 	// ecs.c5.xlarge
 	InstanceType *string `json:"instance_type,omitempty" xml:"instance_type,omitempty"`
-	// The ECS instance family of the node.
+	// The name of the ECS instance family to which the node belongs.
 	//
 	// example:
 	//
 	// ecs.c5
 	InstanceTypeFamily *string `json:"instance_type_family,omitempty" xml:"instance_type_family,omitempty"`
-	// The IP address of the node.
+	// The IP addresses of the node.
 	IpAddress []*string `json:"ip_address,omitempty" xml:"ip_address,omitempty" type:"Repeated"`
-	// Indicates whether the instance on which the node is deployed is provided by Alibaba Cloud. Valid values:
+	// Indicates whether the node is an Alibaba Cloud instance. Valid values:
 	//
-	// 	- `true`: The instance is provided by Alibaba Cloud.
+	// - `true`: The node is an Alibaba Cloud instance.
 	//
-	// 	- `false`: The instance is not provided by Alibaba Cloud.
+	// - `false`: The node is not an Alibaba Cloud instance.
 	//
 	// example:
 	//
 	// true
 	IsAliyunNode *bool `json:"is_aliyun_node,omitempty" xml:"is_aliyun_node,omitempty"`
-	// The name of the node. This name is the identifier of the node in the cluster.
+	// The node name, which is the identifier of the node in the cluster.
 	//
 	// example:
 	//
@@ -167,13 +177,13 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	NodeName *string `json:"node_name,omitempty" xml:"node_name,omitempty"`
 	// Indicates whether the node is ready. Valid values:
 	//
-	// 	- `Ready`: The node is ready.
+	// - `Ready`: The node is ready.
 	//
-	// 	- `NotReady`: The node is not ready.
+	// - `NotReady`: The node is not ready.
 	//
-	// 	- `Unknown`: The status of the node is unknown.
+	// - `Unknown`: The node status is unknown.
 	//
-	// 	- `Offline`: The node is offline.
+	// - `Offline`: The node is offline.
 	//
 	// example:
 	//
@@ -185,35 +195,35 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	//
 	// np0794239424a84eb7a95327369d56****
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
-	// Indicates how the node is initialized. A node can be manually created or created by using Resource Orchestration Service (ROS).
+	// The method used to initialize the node, such as manual creation or Resource Orchestration Service (ROS) creation.
 	//
 	// example:
 	//
 	// ess
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The type of preemptible instance. Valid values:
+	// The spot instance type. Valid values:
 	//
-	// 	- NoSpot: a non-preemptible instance.
+	// - NoSpot: a non-spot instance.
 	//
-	// 	- SpotWithPriceLimit: a preemptible instance that is configured with the highest bid price.
+	// - SpotWithPriceLimit: a spot instance with a price limit.
 	//
-	// 	- SpotAsPriceGo: a preemptible instance for which the system automatically bids based on the current market price.
+	// - SpotAsPriceGo: a spot instance priced at the market price at the time of purchase.
 	//
 	// example:
 	//
 	// NoSpot
 	SpotStrategy *string `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
-	// The status of the node. Valid values:
+	// The running status of the node. Valid values:
 	//
-	// 	- `pending`: The node is being created.
+	// - `pending`: being created.
 	//
-	// 	- `running`: The node is running.
+	// - `running`: running.
 	//
-	// 	- `starting`: The node is being started.
+	// - `starting`: being started.
 	//
-	// 	- `stopping`: The node is being stopped.
+	// - `stopping`: being stopped.
 	//
-	// 	- `stopped`: The node is stopped.
+	// - `stopped`: stopped.
 	//
 	// example:
 	//
@@ -414,19 +424,19 @@ func (s *DescribeClusterNodesResponseBodyNodes) Validate() error {
 }
 
 type DescribeClusterNodesResponseBodyPage struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries per page.
+	// The maximum number of records that can be displayed on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of entries returned.
+	// The total number of results.
 	//
 	// example:
 	//

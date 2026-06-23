@@ -14,7 +14,7 @@ type iModifyClusterTagsRequest interface {
 }
 
 type ModifyClusterTagsRequest struct {
-	// The data of the tags that you want to modify.
+	// The data to be modified.
 	Body []*Tag `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 

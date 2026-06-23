@@ -18,7 +18,7 @@ type iDescribeClusterAddonMetadataResponseBody interface {
 }
 
 type DescribeClusterAddonMetadataResponseBody struct {
-	// The component schema parameters.
+	// The component parameter schema.
 	//
 	// example:
 	//

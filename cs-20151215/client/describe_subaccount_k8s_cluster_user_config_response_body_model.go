@@ -16,7 +16,7 @@ type iDescribeSubaccountK8sClusterUserConfigResponseBody interface {
 }
 
 type DescribeSubaccountK8sClusterUserConfigResponseBody struct {
-	// The cluster kubeconfig file. For more information about how to view the kubeconfig file content, see [Configure cluster credentials](https://help.aliyun.com/document_detail/86494.html).
+	// The KubeConfig of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeSubaccountK8sClusterUserConfigResponseBody struct {
 	//
 	// apiVersion: v1\\nclusters:\\n- cluster:\\n    server: https://114.55.xx.xx:6443\\n    certificate-authority-data: LS0tLS****
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The expiration date of the kubeconfig file. The value is the UTC time displayed in RFC3339 format.
+	// The expiration time of the KubeConfig. Format: UTC time in RFC 3339 format.
 	//
 	// example:
 	//

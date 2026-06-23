@@ -20,33 +20,34 @@ type iAttachInstancesToNodePoolRequest interface {
 }
 
 type AttachInstancesToNodePoolRequest struct {
-	// Specifies whether to store container data and images on data disks. Valid values:
+	// Specifies whether to store container data and images on a data cloud disk. Valid values:
 	//
-	// 	- `true`: stores container data and images on data disks.
+	// - `true`: Stores container data and images on a data cloud disk.
 	//
-	// 	- `false`: does not store container data or images on data disks.
+	// - `false`: Does not store container data and images on a data cloud disk.
 	//
 	// Default value: `false`.
 	//
-	// How to mount a data disk:
 	//
-	// 	- If the ECS instances are already mounted with data disks and the file system of the last data disk is not initialized, the system automatically formats this data disk to ext4 and mounts it to /var/lib/docker and /var/lib/kubelet.
+	// Data cloud disk mounting rules:
 	//
-	// 	- If no data disk is attached to the ECS instances, the system does not purchase a new data disk.
+	// - If the ECS instance has data cloud disks attached and the file system of the last data cloud disk is not initialized, the system automatically formats the data cloud disk as EXT4 to store /var/lib/docker and /var/lib/kubelet.
 	//
-	// > If you choose to store container data and images on a data disk and the data disk is already mounted to the ECS instance, the existing data on the data disk will be cleared. You can back up the disk to avoid data loss.
+	// - If the ECS instance has no data cloud disks attached, no new data cloud disk is mounted.
+	//
+	// > If you choose to store data on a data cloud disk and the ECS instance already has data cloud disks attached, existing data on the data cloud disk is lost. Back up your data in advance.
 	//
 	// example:
 	//
 	// false
 	FormatDisk *bool `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
-	// The IDs of the instances to be added.
+	// The list of ECS instances to be added.
 	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	// Specifies whether to retain the instance name. Valid values:
+	// Specifies whether to retain the original instance name. Valid values:
 	//
-	// 	- `true`: retains the instance name.
+	// - `true`: Retains the instance name.
 	//
-	// 	- `false`: does not retain the instance name.
+	// - `false`: Does not retain the instance name.
 	//
 	// Default value: `true`.
 	//
@@ -54,7 +55,7 @@ type AttachInstancesToNodePoolRequest struct {
 	//
 	// true
 	KeepInstanceName *bool `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
-	// The SSH password that is used to log on to the instance.
+	// The SSH logon password of the instances to be added.
 	//
 	// example:
 	//

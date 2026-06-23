@@ -14,7 +14,7 @@ type iDescribeExternalAgentResponseBody interface {
 }
 
 type DescribeExternalAgentResponseBody struct {
-	// The agent configurations in the YAML format.
+	// The agent configuration in YAML format.
 	//
 	// example:
 	//

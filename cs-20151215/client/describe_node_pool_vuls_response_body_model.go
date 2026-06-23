@@ -16,13 +16,13 @@ type iDescribeNodePoolVulsResponseBody interface {
 }
 
 type DescribeNodePoolVulsResponseBody struct {
-	// The vulnerability list of all node pools.
+	// The list of node pool vulnerabilities.
 	VulRecords []*DescribeNodePoolVulsResponseBodyVulRecords `json:"vul_records,omitempty" xml:"vul_records,omitempty" type:"Repeated"`
-	// Indicates whether the CVE vulnerability patching service provided by Security Center is purchased.
+	// Indicates whether the Security Center CVE fix service has been purchased.
 	//
-	// 	- true: yes
+	// - true: Purchased.
 	//
-	// 	- false: no
+	// - false: Not purchased.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ func (s *DescribeNodePoolVulsResponseBody) Validate() error {
 }
 
 type DescribeNodePoolVulsResponseBodyVulRecords struct {
-	// The ID of the node.
+	// The node instance ID.
 	//
 	// example:
 	//
 	// i-t4n2qolb0wtzt0pz****
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
-	// The node name. This name is the identifier of the node in the cluster.
+	// The node name, which is the identifier of the node within the cluster.
 	//
 	// example:
 	//
@@ -135,29 +135,21 @@ func (s *DescribeNodePoolVulsResponseBodyVulRecords) Validate() error {
 }
 
 type DescribeNodePoolVulsResponseBodyVulRecordsVulList struct {
-	// The alias of the vulnerability.
+	// The vulnerability alias.
 	//
 	// example:
 	//
 	// RHSA-2019:3197-Important: sudo security update
 	AliasName *string `json:"alias_name,omitempty" xml:"alias_name,omitempty"`
-	// A list of CVE names corresponding to the vulnerabilities.
+	// The list of CVEs associated with the vulnerability.
 	CveList []*string `json:"cve_list,omitempty" xml:"cve_list,omitempty" type:"Repeated"`
-	// The name of the vulnerability.
+	// The vulnerability name.
 	//
 	// example:
 	//
 	// oval:com.redhat.rhsa:def:20193197
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The severity level of the vulnerability.
-	//
-	// Valid values:
-	//
-	// 	- nntf: You can ignore the vulnerability.
-	//
-	// 	- later: You can fix the vulnerability later.
-	//
-	// 	- asap: You need to fix the vulnerability at the earliest opportunity.
+	// The vulnerability severity level.
 	//
 	// example:
 	//
@@ -169,7 +161,7 @@ type DescribeNodePoolVulsResponseBodyVulRecordsVulList struct {
 	//
 	// false
 	NeedReboot *bool `json:"need_reboot,omitempty" xml:"need_reboot,omitempty"`
-	// List of packages affected by the vulnerability.
+	// The list of packages affected by the vulnerability.
 	PackageList []*DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList `json:"package_list,omitempty" xml:"package_list,omitempty" type:"Repeated"`
 }
 
@@ -249,7 +241,7 @@ func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulList) Validate() error {
 }
 
 type DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList struct {
-	// Package name.
+	// The package name.
 	//
 	// example:
 	//

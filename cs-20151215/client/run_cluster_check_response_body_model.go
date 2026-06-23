@@ -16,13 +16,13 @@ type iRunClusterCheckResponseBody interface {
 }
 
 type RunClusterCheckResponseBody struct {
-	// The ID of the cluster check task.
+	// The check ID.
 	//
 	// example:
 	//
 	// 1697100584236******-ce0da5a1d627e4e9e9f96cae8ad******-clustercheck-lboto
 	CheckId *string `json:"check_id,omitempty" xml:"check_id,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

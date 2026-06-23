@@ -16,7 +16,7 @@ type iAttachInstancesResponseBody interface {
 }
 
 type AttachInstancesResponseBody struct {
-	// The details of the added nodes.
+	// The list of node addition information.
 	List []*AttachInstancesResponseBodyList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
 	// The task ID.
 	//
@@ -66,19 +66,19 @@ func (s *AttachInstancesResponseBody) Validate() error {
 }
 
 type AttachInstancesResponseBodyList struct {
-	// The code that indicates the task result.
+	// The status code of the node addition result.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The ID of the ECS instance.
+	// The ECS instance ID.
 	//
 	// example:
 	//
 	// i-2ze0lgm3y6iylcbt****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Indicates whether the ECS instance is successfully added to the ACK cluster.
+	// The description of the node addition result.
 	//
 	// example:
 	//

@@ -30,43 +30,43 @@ type iDescribeAddonResponseBody interface {
 }
 
 type DescribeAddonResponseBody struct {
-	// The CPU architecture supported by the component.
+	// CPU architectures supported by the component.
 	Architecture []*string `json:"architecture,omitempty" xml:"architecture,omitempty" type:"Repeated"`
-	// The category of the component.
+	// Component category.
 	//
 	// example:
 	//
 	// network
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The custom parameter schema of the component.
+	// Custom parameter schema of the component.
 	//
 	// example:
 	//
 	// {}
 	ConfigSchema *string `json:"config_schema,omitempty" xml:"config_schema,omitempty"`
-	// Indicates whether the component is automatically installed by default.
+	// Whether it is installed by default.
 	//
 	// example:
 	//
 	// true
 	InstallByDefault *bool `json:"install_by_default,omitempty" xml:"install_by_default,omitempty"`
-	// Indicates whether the component is fully managed.
+	// Whether it is a managed component.
 	//
 	// example:
 	//
 	// false
 	Managed *bool `json:"managed,omitempty" xml:"managed,omitempty"`
-	// The name of the component.
+	// Component name.
 	//
 	// example:
 	//
 	// coredns
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The latest version information of the component.
+	// Information about the latest component versions.
 	NewerVersions []*DescribeAddonResponseBodyNewerVersions `json:"newer_versions,omitempty" xml:"newer_versions,omitempty" type:"Repeated"`
-	// The operations supported by the component.
+	// Operations supported by the component.
 	SupportedActions []*string `json:"supported_actions,omitempty" xml:"supported_actions,omitempty" type:"Repeated"`
-	// The version of the component.
+	// Component version.
 	//
 	// example:
 	//
@@ -177,17 +177,17 @@ func (s *DescribeAddonResponseBody) Validate() error {
 }
 
 type DescribeAddonResponseBodyNewerVersions struct {
-	// The minimum cluster version required by the component version.
+	// The minimum cluster version required by this component version.
 	//
 	// example:
 	//
 	// 1.20.4
 	MinimumClusterVersion *string `json:"minimum_cluster_version,omitempty" xml:"minimum_cluster_version,omitempty"`
-	// Indicates whether the component can be updated to the version.
+	// Whether the component can be upgraded to this version.
 	//
-	// 	- true: yes
+	// - true: Upgrade is supported.
 	//
-	// 	- false: no
+	// - false: Upgrade is not supported.
 	//
 	// example:
 	//

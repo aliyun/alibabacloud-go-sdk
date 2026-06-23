@@ -72,87 +72,87 @@ func (s *DescribeClusterResourcesResponse) Validate() error {
 }
 
 type DescribeClusterResourcesResponseBody struct {
-	// The cluster ID.
+	// 集群ID。
 	//
 	// example:
 	//
 	// cb95aa626a47740afbf6aa099b65****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The time when the resource was created.
+	// 资源创建时间。
 	//
 	// example:
 	//
 	// 2023-08-15T14:34:42+08:00
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// The resource ID.
+	// 资源ID。
 	//
 	// example:
 	//
 	// ngw-wz9sphwk42sdtjixo****
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
-	// Information about the resource. For more details about its source, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
+	// 资源信息。关于资源的源信息，请参见[ListStackResources](https://help.aliyun.com/document_detail/133836.html)。
 	//
 	// example:
 	//
 	// {\\"Id\\":\\"KubernetesWorkerRole\\",\\"Name\\":\\"KubernetesWorkerRole\\",\\"Type\\":\\"ALIYUN::RAM::Role\\",\\"Status\\":\\"CREATE_COMPLETE\\",\\"StatusReason\\":\\"state changed\\",\\"Updated\\":\\"2025-04-10T06:21:17\\",\\"PhysicalId\\":\\"KubernetesWorkerRole-7e611193-225f-40f6-bc3c-ea8633******\\"}
 	ResourceInfo *string `json:"resource_info,omitempty" xml:"resource_info,omitempty"`
-	// The resource type.
+	// 资源类型。
 	//
 	// example:
 	//
 	// ALIYUN::VPC::NatGateway
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The state of the resource. Valid values:
+	// 资源状态。可选值：
 	//
-	// - `CREATE_COMPLETE`: The resource is successfully created.
+	// - `CREATE_COMPLETE`：成功创建资源。
 	//
-	// - `CREATE_FAILED`: The resource fails to be created.
+	// - `CREATE_FAILED`：创建资源失败。
 	//
-	// - `CREATE_IN_PROGRESS`: The resource is being created.
+	// - `CREATE_IN_PROGRESS`：创建资源中。
 	//
-	// - `DELETE_FAILED`: The resource fails to be deleted.
+	// - `DELETE_FAILED`：删除资源失败。
 	//
-	// - `DELETE_IN_PROGRESS`: The resource is being deleted.
+	// - `DELETE_IN_PROGRESS`：删除资源中。
 	//
-	// - `ROLLBACK_COMPLETE`: The rollback is successful.
+	// - `ROLLBACK_COMPLETE`：成功回滚。
 	//
-	// - `ROLLBACK_FAILED`: The rollback fails.
+	// - `ROLLBACK_FAILED`：回滚失败。
 	//
-	// - `ROLLBACK_IN_PROGRESS`: The rollback is in progress.
+	// - `ROLLBACK_IN_PROGRESS`：回滚中。
 	//
 	// example:
 	//
 	// CREATE_COMPLETE
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// Indicates whether the resource is created by ACK. Valid values:
+	// 资源是否由ACK创建：
 	//
-	// - 1: The resource is created by ACK.
+	// - 1：表示由ACK创建。
 	//
-	// - 0: The resource is an existing resource.
+	// - 0：表示该资源为已有资源。
 	//
 	// example:
 	//
 	// 1
 	AutoCreate *int64 `json:"auto_create,omitempty" xml:"auto_create,omitempty"`
-	// The list of dependent resources.
+	// 依赖资源列表。
 	Dependencies []*DescribeClusterResourcesResponseBodyDependencies `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Repeated"`
-	// The Kubernetes object that is associated with the resource.
+	// 资源关联的k8s对象。
 	AssociatedObject *DescribeClusterResourcesResponseBodyAssociatedObject `json:"associated_object,omitempty" xml:"associated_object,omitempty" type:"Struct"`
-	// The deletion behavior of the resource when the cluster is deleted.
+	// 删除集群时该资源的删除行为。
 	DeleteBehavior *DescribeClusterResourcesResponseBodyDeleteBehavior `json:"delete_behavior,omitempty" xml:"delete_behavior,omitempty" type:"Struct"`
-	// The type of the creator of the resource. Valid values:
+	// 该资源创建者的类型。可能的取值：
 	//
-	// - user: The resource is created by a user.
+	// - user：由用户自行创建；
 	//
-	// - system: The resource is created by the ACK control plane.
+	// - system：由ACK管控系统创建；
 	//
-	// - addon: The resource is created by an add-on.
+	// - addon：由集群组件创建。
 	//
 	// example:
 	//
 	// addon
 	CreatorType *string `json:"creator_type,omitempty" xml:"creator_type,omitempty"`
-	// Extra information about the resource.
+	// 资源的其他信息。
 	//
 	// example:
 	//
@@ -300,19 +300,19 @@ func (s *DescribeClusterResourcesResponseBody) Validate() error {
 }
 
 type DescribeClusterResourcesResponseBodyDependencies struct {
-	// The cluster ID of the dependent resource.
+	// 依赖资源的集群ID。
 	//
 	// example:
 	//
 	// cc5ee03f63e43425cb6f71f1a1756****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The type of the dependent resource.
+	// 依赖资源类型。
 	//
 	// example:
 	//
 	// ALIYUN::VPC::NatGateway
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The instance ID of the dependent resource.
+	// 依赖资源实例ID。
 	//
 	// example:
 	//
@@ -360,19 +360,19 @@ func (s *DescribeClusterResourcesResponseBodyDependencies) Validate() error {
 }
 
 type DescribeClusterResourcesResponseBodyAssociatedObject struct {
-	// The type of the Kubernetes object.
+	// k8s对象类型。
 	//
 	// example:
 	//
 	// Service
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The namespace of the Kubernetes object.
+	// k8s对象命名空间。
 	//
 	// example:
 	//
 	// kube-system
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The name of the Kubernetes object.
+	// k8s对象名称。
 	//
 	// example:
 	//
@@ -420,21 +420,21 @@ func (s *DescribeClusterResourcesResponseBodyAssociatedObject) Validate() error 
 }
 
 type DescribeClusterResourcesResponseBodyDeleteBehavior struct {
-	// Indicates whether to delete the resource by default when the cluster is deleted. Valid values:
+	// 删除集群时是否默认删除该资源。
 	//
-	// - true: The resource is deleted by default.
+	// - true：默认删除该资源。
 	//
-	// - false: The resource is not deleted by default.
+	// - fasle：不删除该资源。
 	//
 	// example:
 	//
 	// false
 	DeleteByDefault *bool `json:"delete_by_default,omitempty" xml:"delete_by_default,omitempty"`
-	// Indicates whether the default behavior specified by the `delete_by_default` parameter can be changed. Valid values:
+	// `delete_by_default`的默认行为是否可以更改。
 	//
-	// - true: The default behavior can be changed.
+	// - true：可以更改。
 	//
-	// - false: The default behavior cannot be changed.
+	// - false：不支持更改。
 	//
 	// example:
 	//

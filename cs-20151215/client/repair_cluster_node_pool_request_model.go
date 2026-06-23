@@ -20,19 +20,15 @@ type iRepairClusterNodePoolRequest interface {
 type RepairClusterNodePoolRequest struct {
 	// Deprecated
 	//
-	// Specifies whether to enable automatic instance restart.
-	//
-	// **
-	//
-	// **Warning*	- This parameter is deprecated. Any configured values will be ignored.
+	// [This field is deprecated] Specifies whether to allow instance restart.
 	//
 	// example:
 	//
 	// null
 	AutoRestart *bool `json:"auto_restart,omitempty" xml:"auto_restart,omitempty"`
-	// The list of nodes. If not specified, all nodes in the node pool are selected.
+	// The list of nodes.
 	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
-	// The list of repair operations to execute. If not specified, all repair operations are executed. Typically, you do not need to specify this parameter.
+	// The repair operations to perform. If not specified, all repair operations are performed by default. In most scenarios, you do not need to specify this parameter.
 	Operations []*RepairClusterNodePoolRequestOperations `json:"operations,omitempty" xml:"operations,omitempty" type:"Repeated"`
 }
 
@@ -85,9 +81,25 @@ func (s *RepairClusterNodePoolRequest) Validate() error {
 }
 
 type RepairClusterNodePoolRequestOperations struct {
-	// The parameters of a repair operation.
+	// The list of repair operation parameters.
 	Args []*string `json:"args,omitempty" xml:"args,omitempty" type:"Repeated"`
-	// The ID of a repair operation.
+	// The repair operation ID. Valid values:
+	//
+	// - restart.kubelet: restart kubelet.
+	//
+	// - restart.docker: restart Docker.
+	//
+	// - restart.containerd: restart Containerd.
+	//
+	// - restart.ntp: restart ntpd or chronyd.
+	//
+	// - remove.containerdContainerInSandbox: delete a specified sandbox container under Containerd.
+	//
+	// - remove.dockerContainerInSandbox: delete a specified sandbox container under Docker.
+	//
+	// - remove.containerdContainer: delete a specified container under Containerd.
+	//
+	// - remove.dockerContainer: delete a specified container under Docker.
 	//
 	// example:
 	//

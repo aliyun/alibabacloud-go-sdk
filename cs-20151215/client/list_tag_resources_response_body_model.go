@@ -18,7 +18,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token that determines the start point of the next query.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListTagResourcesResponseBody struct {
 	//
 	// E368C761-F8F6-4A36-9B58-BD53D5******
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The details of the queried labels and resources.
+	// The collection of tag resources.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"tag_resources,omitempty" xml:"tag_resources,omitempty" type:"Struct"`
 }
 
@@ -79,7 +79,7 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// The resource and label.
+	// The tag resource.
 	TagResource []*ListTagResourcesResponseBodyTagResourcesTagResource `json:"tag_resource,omitempty" xml:"tag_resource,omitempty" type:"Repeated"`
 }
 
@@ -114,25 +114,25 @@ func (s *ListTagResourcesResponseBodyTagResources) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
 	// c2e39566adf23481fa1164ed510****
 	ResourceId *string `json:"resource_id,omitempty" xml:"resource_id,omitempty"`
-	// The type of the resource. For more information, see [Labels](https://help.aliyun.com/document_detail/110425.html).
+	// The resource type.
 	//
 	// example:
 	//
 	// ALIYUN::CS::CLUSTER
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The key of the label.
+	// The tag key.
 	//
 	// example:
 	//
 	// ack.aliyun.com
 	TagKey *string `json:"tag_key,omitempty" xml:"tag_key,omitempty"`
-	// The value of the label.
+	// The tag value.
 	//
 	// example:
 	//
