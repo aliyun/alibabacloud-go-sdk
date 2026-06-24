@@ -22,19 +22,28 @@ type iListModelTemplateResourceGroupResponseBody interface {
 }
 
 type ListModelTemplateResourceGroupResponseBody struct {
+	// The returned results.
 	Data []*ListModelTemplateResourceGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 15
@@ -108,6 +117,8 @@ func (s *ListModelTemplateResourceGroupResponseBody) Validate() error {
 }
 
 type ListModelTemplateResourceGroupResponseBodyData struct {
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxxx

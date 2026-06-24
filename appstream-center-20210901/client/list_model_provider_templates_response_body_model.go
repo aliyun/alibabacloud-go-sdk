@@ -22,19 +22,28 @@ type iListModelProviderTemplatesResponseBody interface {
 }
 
 type ListModelProviderTemplatesResponseBody struct {
+	// The list of returned data objects.
 	Data []*ListModelProviderTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The page number of the current query result.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page in the query result.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 30
@@ -108,6 +117,8 @@ func (s *ListModelProviderTemplatesResponseBody) Validate() error {
 }
 
 type ListModelProviderTemplatesResponseBodyData struct {
+	// The model provider configuration as a JSON object.
+	//
 	// example:
 	//
 	// {
@@ -119,21 +130,39 @@ type ListModelProviderTemplatesResponseBodyData struct {
 	// 	"baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1"
 	//
 	// }
-	Config      *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The description of the model provider template.
+	//
+	// example:
+	//
+	// 阿里云百炼服务商
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the WUYING secure gateway proxy is enabled.
+	//
 	// example:
 	//
 	// true
-	EnableWuyingProxy *bool   `json:"EnableWuyingProxy,omitempty" xml:"EnableWuyingProxy,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	EnableWuyingProxy *bool `json:"EnableWuyingProxy,omitempty" xml:"EnableWuyingProxy,omitempty"`
+	// The name of the model provider template.
+	//
+	// example:
+	//
+	// 阿里云百炼
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the model provider.
+	//
 	// example:
 	//
 	// bailian
 	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	// The model provider template ID.
+	//
 	// example:
 	//
 	// mpt-xxxx
 	ProviderTemplateId *string `json:"ProviderTemplateId,omitempty" xml:"ProviderTemplateId,omitempty"`
+	// The model provider type.
+	//
 	// example:
 	//
 	// WuyingCredit

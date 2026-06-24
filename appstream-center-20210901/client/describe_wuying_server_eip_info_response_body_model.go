@@ -16,7 +16,7 @@ type iDescribeWuyingServerEipInfoResponseBody interface {
 }
 
 type DescribeWuyingServerEipInfoResponseBody struct {
-	// The information about the associated EIP.
+	// The EIP information.
 	EipInfoModel *DescribeWuyingServerEipInfoResponseBodyEipInfoModel `json:"EipInfoModel,omitempty" xml:"EipInfoModel,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -69,7 +69,7 @@ type DescribeWuyingServerEipInfoResponseBodyEipInfoModel struct {
 	//
 	// 171.xxx.xxx.221
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The ID of the elastic network interface (ENI).
+	// The network interface controller (NIC) ID.
 	//
 	// example:
 	//

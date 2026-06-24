@@ -18,11 +18,16 @@ type iGetRuntimeChannelResponseBody interface {
 }
 
 type GetRuntimeChannelResponseBody struct {
+	// The returned object.
 	Data []*GetRuntimeChannelResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 6
@@ -78,12 +83,20 @@ func (s *GetRuntimeChannelResponseBody) Validate() error {
 }
 
 type GetRuntimeChannelResponseBodyData struct {
-	AvatarUrl   *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	// The channel avatar URL.
+	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	// The channel type. Valid values: System: a system-supported channel. Custom: a custom channel.
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The channel code.
+	//
 	// example:
 	//
 	// dingtalk-connector
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The channel configuration JSON string.
+	//
+	// Currently, only the simple configuration mode is supported. You must pass in AppKey and AppSecret.
+	//
 	// example:
 	//
 	// {
@@ -93,14 +106,21 @@ type GetRuntimeChannelResponseBodyData struct {
 	//     "appSecret": "efg"
 	//
 	// }
-	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	ConfigMode      *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The configuration mode. Valid values: Simple: simple configuration mode. Custom: custom configuration mode.
+	ConfigMode *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
+	// The QR code configuration notification page URL. This parameter is returned only for the ENTERPRISE or ENTERPRISE_JVS platform.
 	QrCodeNotifyUrl *string `json:"QrCodeNotifyUrl,omitempty" xml:"QrCodeNotifyUrl,omitempty"`
-	QrCodeStatus    *string `json:"QrCodeStatus,omitempty" xml:"QrCodeStatus,omitempty"`
+	// The QR code configuration status. This parameter is returned only when the status is not in a final state.
+	QrCodeStatus *string `json:"QrCodeStatus,omitempty" xml:"QrCodeStatus,omitempty"`
+	// The risk type. This parameter is returned only when **includeRiskInfo=true**.
+	//
 	// example:
 	//
 	// Normal
 	RiskType *string `json:"RiskType,omitempty" xml:"RiskType,omitempty"`
+	// The configuration status.
+	//
 	// example:
 	//
 	// Configured

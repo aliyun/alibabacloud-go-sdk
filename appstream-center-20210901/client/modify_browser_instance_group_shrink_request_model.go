@@ -28,9 +28,9 @@ type iModifyBrowserInstanceGroupShrinkRequest interface {
 }
 
 type ModifyBrowserInstanceGroupShrinkRequest struct {
-	// The browser settings.
+	// The browser configuration.
 	BrowserConfigShrink *string `json:"BrowserConfig,omitempty" xml:"BrowserConfig,omitempty"`
-	// The ID of the cloud browser to be modified.
+	// The ID of the cloud browser to modify.
 	//
 	// This parameter is required.
 	//
@@ -48,12 +48,12 @@ type ModifyBrowserInstanceGroupShrinkRequest struct {
 	//
 	// 5
 	MaxAmount *int32 `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
-	// The network configurations.
+	// The network configuration.
 	NetworkShrink *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The access policy.
 	PolicyShrink        *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	StoragePolicyShrink *string `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
-	// The timer.
+	// The timers.
 	TimersShrink *string `json:"Timers,omitempty" xml:"Timers,omitempty"`
 }
 

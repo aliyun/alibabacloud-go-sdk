@@ -16,7 +16,10 @@ type iCreateModelTemplateResponseBody interface {
 }
 
 type CreateModelTemplateResponseBody struct {
+	// The creation result.
 	Data *CreateModelTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -59,6 +62,8 @@ func (s *CreateModelTemplateResponseBody) Validate() error {
 }
 
 type CreateModelTemplateResponseBodyData struct {
+	// The model group ID.
+	//
 	// example:
 	//
 	// mt-xxxx

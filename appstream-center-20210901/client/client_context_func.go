@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Sets the execution time of an over-the-air (OTA) update task.
+// Sets the execution time for an over-the-air update.
 //
 // @param request - ApproveOtaTaskRequest
 //
@@ -117,7 +117,11 @@ func (client *Client) AssignWuyingServerPrivateAddressesWithContext(ctx context.
 
 // Summary:
 //
-// Adds assigned users to or removes assigned users from a delivery group. Only users added to the assigned user list can access App Streaming.
+// Add or remove assigned users for a delivery group. Only users added as assigned users can access cloud applications.
+//
+// Description:
+//
+// > After changing the assigned users, the selected users will receive corresponding notification emails. Generally, it takes about 2 minutes for the changes to take effect on the client.
 //
 // @param tmpReq - AuthorizeInstanceGroupRequest
 //
@@ -202,7 +206,13 @@ func (client *Client) AuthorizeInstanceGroupWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 批量创建LLM模板
+// Creates LLM templates in batches.
+//
+// Description:
+//
+// You can create model templates in batches under a model provider template in the Wuying Agent Management Center. You can add multiple models at a time and specify one of them as the default model. Existing models are automatically skipped and are not created again.
+//
+// Before you call this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - BatchCreateLlmTemplatesRequest
 //
@@ -254,7 +264,15 @@ func (client *Client) BatchCreateLlmTemplatesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 配置资源组模型模板
+// Configures the model group for a resource group.
+//
+// Description:
+//
+// You can assign a model group to resources associated with agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent in the WUYING Agent Management Center. The model group serves as the inference engine for tasks executed by agents within the resource group.
+//
+// When both an agent runtime and its resource group have model groups configured, the model group bound to the resource group takes effect. The resource group setting takes priority over the agent runtime setting.
+//
+// Before calling this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
 //
 // @param request - ConfigResourceGroupModelTemplateRequest
 //
@@ -302,7 +320,13 @@ func (client *Client) ConfigResourceGroupModelTemplateWithContext(ctx context.Co
 
 // Summary:
 //
-// 配置Runtime通道
+// Configures a third-party channel for Agent runtime.
+//
+// Description:
+//
+// You can configure third-party channels for Agent runtime resources such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. These channels serve as extended Agent communication methods beyond the AgentIM channel.
+//
+// Before using this operation, make sure you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - ConfigRuntimeChannelRequest
 //
@@ -374,7 +398,13 @@ func (client *Client) ConfigRuntimeChannelWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 通过RuntimeIds配置模型模板
+// Configures model groups for Agent runtime resources.
+//
+// Description:
+//
+// You can authorize model groups for Agent runtime resources such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. The model groups serve as inference engines for Agent task execution.
+//
+// Make sure that you are familiar with the operations and usage of the Wuying Agent Management Center before calling this operation.
 //
 // @param request - ConfigRuntimeModelTemplateRequest
 //
@@ -430,9 +460,9 @@ func (client *Client) ConfigRuntimeModelTemplateWithContext(ctx context.Context,
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
+// Make sure that you are familiar with the [billing and pricing](https://help.aliyun.com/document_detail/426039.html) of WUYING Cloud Application before you call this operation.
 //
-// A delivery group is a logical group that is used to deliver cloud applications to end users, including the images, resource management policies, and user groups on which the cloud applications rely. For more information, see [Publish delivery groups](https://help.aliyun.com/document_detail/426046.html).
+// A delivery group is a logical grouping for delivering cloud applications to end users. It includes the underlying cloud application resources, images that contain cloud applications, resource management policies, and user assignment settings. For details, see [Publish a delivery group](https://help.aliyun.com/document_detail/426046.html).
 //
 // @param tmpReq - CreateAppInstanceGroupRequest
 //
@@ -620,7 +650,7 @@ func (client *Client) CreateAppInstanceGroupWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Create a custom image from a deployed instance. This allows you to quickly create more instances with the same configurations and avoid repeatedly configuring the instance environment each time you create the instance.
+// Creates a custom image from a deployed WUYING instance. You can use the custom image to quickly create more WUYING instances with the same configurations, without having to repeatedly configure the instance environment each time.
 //
 // @param request - CreateImageByInstanceRequest
 //
@@ -702,7 +732,7 @@ func (client *Client) CreateImageByInstanceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a new image by debugging the delivery group.
+// Creates a new image from a debug delivery group.
 //
 // @param request - CreateImageFromAppInstanceGroupRequest
 //
@@ -754,7 +784,13 @@ func (client *Client) CreateImageFromAppInstanceGroupWithContext(ctx context.Con
 
 // Summary:
 //
-// 创建模型提供商模板
+// # Create Model Provider Template
+//
+// Description:
+//
+// You can create a model provider template under a model template in the Wuying Agent Management Center. This template is used to configure the connection information and keys for model services (such as Alibaba Cloud Bailian, Token Plan, and Moonshot) that Agents can call. After creation, the model provider template is automatically associated with the specified model template.
+//
+// Make sure you are fully familiar with the operations and usage of the Wuying Agent Management Center before calling this API.
 //
 // @param request - CreateModelProviderTemplateRequest
 //
@@ -834,7 +870,13 @@ func (client *Client) CreateModelProviderTemplateWithContext(ctx context.Context
 
 // Summary:
 //
-// 创建模型模板
+// Creates a model creation template.
+//
+// Description:
+//
+// You can create a model group in the WUYING Agent Management Center to manage the model providers and model scope that an Agent can invoke. After creation, you can attach the model group to a cloud computer as the inference engine configuration for Agent task execution.
+//
+// Make sure that you are familiar with the operations and usage of the WUYING Agent Management Center before calling this operation.
 //
 // @param request - CreateModelTemplateRequest
 //
@@ -894,21 +936,15 @@ func (client *Client) CreateModelTemplateWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Create one or more workstations.
+// Creates one or more workstations.
 //
 // Description:
 //
-// 1.  Project is equivalent to the Resource Configuration module of the Cloud Flow console
+// 1. A project corresponds to the resource configuration module in the CloudFlow console.
 //
-// 2.  If there are multiple versions behind the input parameter ContentId:
+// 2. If the ContentId specified in the request parameters has multiple versions, this API operation <notice>uses the default version</notice> for binding.
 //
-//	**
-//
-//	**Note*	- The default version is used.
-//
-//	Bind simultaneously
-//
-// 3.  You can call the current interface only if the default version of Content is available.
+// 3. This operation succeeds only when the default version of the content is in an available state.
 //
 // @param request - CreateWuyingServerRequest
 //
@@ -1059,11 +1095,11 @@ func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a delivery group that uses the By Resource - Pay-as-you-go billing method.
+// Deletes a pay-as-you-go resource-based delivery group.
 //
 // Description:
 //
-// >  You cannot call this operation to delete a subscription delivery group.
+// > This operation does not support deleting delivery groups that use subscription resources.
 //
 // @param request - DeleteAppInstanceGroupRequest
 //
@@ -1111,11 +1147,11 @@ func (client *Client) DeleteAppInstanceGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes an application instance.
+// Deletes a specified application instance.
 //
 // Description:
 //
-// Only application instances that are in the Initializing or Idle state can be deleted. The operation can be called only by specific customers.
+// Only instances in the init or idle state can be deleted. This operation is available only to specific customers.
 //
 // @param request - DeleteAppInstancesRequest
 //
@@ -1167,17 +1203,17 @@ func (client *Client) DeleteAppInstancesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Delete a custom RDS image
+// Deletes a custom AppStream image.
 //
 // Description:
 //
-//	  You can only delete custom images to which a user belongs.
+// - You can delete only custom images that belong to you.
 //
-//		- If the product line is an image of the RDS cloud computer pool, RDS cloud application, and RDS workstation, make sure that no RDS instances use the image before you delete it.
+// - For images associated with the AppStream Cloud Computer Pool, AppStream Cloud Application, or AppStream Workstation product lines, you must ensure that no AppStream instances are using the image before you can delete it.
 //
-//		- The RDS CloudDesktop template references an image. When you delete an image, the template is also deleted.
+// - If an AppStream Cloud Desktop template references an image, the template is also deleted when the image is deleted.
 //
-//		- If the image contains multiple regions, the images in all regions are deleted when the image is deleted.
+// - If an image is available in multiple regions, deleting the image removes it from all regions.
 //
 // @param request - DeleteImageRequest
 //
@@ -1221,7 +1257,13 @@ func (client *Client) DeleteImageWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// 删除LLM模板
+// Deletes an LLM template.
+//
+// Description:
+//
+// You can delete a model template that has been created under a model provider template in the Wuying Agent Management Center. Before deletion, ensure that the model is not the default model of an associated model group. Otherwise, the deletion fails. After deletion, the model configurations of associated cloud computers are automatically refreshed.
+//
+// Before using this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - DeleteLlmTemplateRequest
 //
@@ -1265,7 +1307,13 @@ func (client *Client) DeleteLlmTemplateWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除模型提供商模板
+// Deletes a model provider template.
+//
+// Description:
+//
+// You can delete a model provider template that has been created under model templates in the WUYING Agent Management Center. Before deletion, make sure that the model provider is not the provider of the default model and is not a system preset type provider (such as WUYING credits package). After deletion, the associated models and key configurations are also removed.
+//
+// Before using this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
 //
 // @param request - DeleteModelProviderTemplateRequest
 //
@@ -1309,7 +1357,13 @@ func (client *Client) DeleteModelProviderTemplateWithContext(ctx context.Context
 
 // Summary:
 //
-// 删除模型模板
+// Deletes a model template.
+//
+// Description:
+//
+// You can delete a model group that has been created in the WUYING Agent Management Center. Before deletion, ensure that the template has not been authorized to any resource. Otherwise, the deletion fails. After deletion, the model providers and models under the model group are also removed.
+//
+// Before using this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
 //
 // @param request - DeleteModelTemplateRequest
 //
@@ -1353,11 +1407,11 @@ func (client *Client) DeleteModelTemplateWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除工作站
+// Deletes a cloud graphics workstation.
 //
 // Description:
 //
-// Deletes a workstation.
+// Deletes a cloud graphics workstation.
 //
 // @param request - DeleteWuyingServerRequest
 //
@@ -1401,7 +1455,7 @@ func (client *Client) DeleteWuyingServerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 配置SLS日志投递
+// # Configure LogShipper for Simple Log Service
 //
 // @param request - DeliverToUserSlsRequest
 //
@@ -1512,7 +1566,7 @@ func (client *Client) DescribeWuyingServerWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the Elastic IP Addresses (EIPs) of workstations.
+// Queries the Elastic IP Address (EIP) information of a Wuying workspace.
 //
 // @param request - DescribeWuyingServerEipInfoRequest
 //
@@ -1560,7 +1614,7 @@ func (client *Client) DescribeWuyingServerEipInfoWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the details of a delivery group.
+// Queries the details of a specified delivery group.
 //
 // @param request - GetAppInstanceGroupRequest
 //
@@ -1608,15 +1662,15 @@ func (client *Client) GetAppInstanceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the credential that is used to connect to App Streaming.
+// Retrieves connection credentials for a cloud application.
 //
 // Description:
 //
-// You must call this operation at least twice to obtain a connection credential.
+// This operation requires multiple invokes (at least two) to obtain the connection credentials.
 //
-// The first time you call this operation, the system assigns an application instance to the specified convenience account and then starts the application. In this case, the ID of the started task, which is indicated by `TaskID`, is returned.
+// On the first invoke, an application instance is allocated to the specified convenience account and the application is started. A startup task ID (`TaskID`) is returned.
 //
-// In subsequent calls, you must configure `TaskID` to query whether the task is completed. If the value of `TaskStatus` in the response is `Finished`, the connection credential, which is indicated by `Ticket`, is returned.
+// On subsequent invokes, pass the `TaskID` request parameter to query whether the task is complete. When the returned task status (`TaskStatus`) is completed (`Finished`), the connection credentials (`Ticket`) are also returned.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -1708,7 +1762,7 @@ func (client *Client) GetConnectionTicketWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries information that is used to debug an application instance.
+// Retrieves the information about a debug application instance.
 //
 // @param request - GetDebugAppInstanceRequest
 //
@@ -1756,7 +1810,13 @@ func (client *Client) GetDebugAppInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询模型提供商模板详情
+// Queries the details of a model provider template.
+//
+// Description:
+//
+// You can query the details of a specified model provider template in the WUYING Agent Management Center, including the provider name, description, and connection configuration list.
+//
+// Before you call this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
 //
 // @param request - GetModelProviderTemplateRequest
 //
@@ -1800,7 +1860,7 @@ func (client *Client) GetModelProviderTemplateWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the details of an over-the-air (OTA) update task, including the available versions and version description.
+// Queries the details of an over-the-air update task, including the available version and version description.
 //
 // @param request - GetOtaTaskByTaskIdRequest
 //
@@ -1844,7 +1904,7 @@ func (client *Client) GetOtaTaskByTaskIdWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries resource prices.
+// Queries the price information of a resource.
 //
 // @param request - GetResourcePriceRequest
 //
@@ -1916,7 +1976,7 @@ func (client *Client) GetResourcePriceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the renewal prices of App Streaming resources.
+// Queries the renewal price of WUYING Cloud Application resources.
 //
 // @param request - GetResourceRenewPriceRequest
 //
@@ -1972,7 +2032,13 @@ func (client *Client) GetResourceRenewPriceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询Runtime通道配置
+// Queries the third-party channel configurations of an Agent runtime.
+//
+// Description:
+//
+// You can query the third-party channel configuration status of Agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center.
+//
+// Before using this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - GetRuntimeChannelRequest
 //
@@ -2032,7 +2098,11 @@ func (client *Client) GetRuntimeChannelWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询云电脑模型配置详情
+// Queries the model configuration details of a cloud computer.
+//
+// Description:
+//
+// You can query the model configuration details currently bound to a specified cloud computer in the Wuying Agent Management Center, including model groups, model provider lists, and associated model information. After you enable the risk information mode, you can also identify differences between the end user\\"s actual configuration and the configuration delivered by the administrator.
 //
 // @param request - GetRuntimeModelConfigRequest
 //
@@ -2092,7 +2162,7 @@ func (client *Client) GetRuntimeModelConfigWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the details of multiple delivery groups that meet the query conditions.
+// Queries the details of multiple delivery groups. This operation does not specify a particular delivery group but queries the details of all delivery groups that meet the specified conditions.
 //
 // @param request - ListAppInstanceGroupRequest
 //
@@ -2190,7 +2260,7 @@ func (client *Client) ListAppInstanceGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the details of application instances in a delivery group, including the IDs, status, creation time, update time, session status, and public IP addresses associated with the primary NICs of the instances.
+// Queries the details of session instances in a delivery group, including instance IDs, instance statuses, creation time, update time, session statuses, and public IP addresses of primary network interfaces.
 //
 // @param request - ListAppInstancesRequest
 //
@@ -2264,7 +2334,7 @@ func (client *Client) ListAppInstancesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the user groups authorized by a delivery group.
+// Queries the list of user groups authorized by a specified delivery group.
 //
 // @param request - ListAuthorizedUserGroupsRequest
 //
@@ -2328,7 +2398,7 @@ func (client *Client) ListAuthorizedUserGroupsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the bindings between users and resources.
+// Queries the binding information between users and resources.
 //
 // @param request - ListBindInfoRequest
 //
@@ -2396,7 +2466,7 @@ func (client *Client) ListBindInfoWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 查询桌面Agent运行时列表
+// Queries the list of desktop agent runtimes.
 //
 // @param request - ListDesktopAgentRuntimeRequest
 //
@@ -2467,6 +2537,10 @@ func (client *Client) ListDesktopAgentRuntimeWithContext(ctx context.Context, re
 		query["IncludeRiskInfo"] = request.IncludeRiskInfo
 	}
 
+	if !dara.IsNil(request.ManagementStatus) {
+		query["ManagementStatus"] = request.ManagementStatus
+	}
+
 	if !dara.IsNil(request.ModelConfigure) {
 		query["ModelConfigure"] = request.ModelConfigure
 	}
@@ -2516,7 +2590,7 @@ func (client *Client) ListDesktopAgentRuntimeWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the image information about an ECS instance.
+// Queries image information.
 //
 // @param request - ListImageRequest
 //
@@ -2646,7 +2720,13 @@ func (client *Client) ListImageWithContext(ctx context.Context, request *ListIma
 
 // Summary:
 //
-// 查询LLM模板列表
+// Queries a list of LLM templates.
+//
+// Description:
+//
+// You can use paging to retrieve the list of model templates under a model provider template in the Wuying Agent Management Center. You can filter results by model group ID, model provider template ID, model template ID, and model encoding. When you query by model group dimension, the default model is automatically pinned to the top.
+//
+// Before you call this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param tmpReq - ListLlmTemplatesRequest
 //
@@ -2772,7 +2852,13 @@ func (client *Client) ListModelProviderEndpointsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询模型提供商模板列表
+// Queries the list of model provider templates.
+//
+// Description:
+//
+// You can perform a paged query to retrieve the list of model provider templates under a specified model group in the WUYING Agent Management Center. You can filter results by provider name, model group ID, and provider template ID. Paging is supported.
+//
+// Before calling this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
 //
 // @param tmpReq - ListModelProviderTemplatesRequest
 //
@@ -2850,7 +2936,13 @@ func (client *Client) ListModelProviderTemplatesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询模型分组绑定的资源组列表
+// Queries the list of resource groups associated with a model group.
+//
+// Description:
+//
+// You can call this operation to query the list of resource groups authorized by a model group in the Wuying Agent Management Center.
+//
+// Before you call this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - ListModelTemplateResourceGroupRequest
 //
@@ -2906,7 +2998,13 @@ func (client *Client) ListModelTemplateResourceGroupWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询模型模板列表
+// Queries a list of model templates.
+//
+// Description:
+//
+// You can use paged query to retrieve model groups that have been created in the Wuying Agent Management Center, with paging support. You can filter results by Agent provider, Agent platform, template group ID, and whether models have been configured.
+//
+// Before calling this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param tmpReq - ListModelTemplatesRequest
 //
@@ -2980,7 +3078,7 @@ func (client *Client) ListModelTemplatesWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Queries the resource types that are available for purchase when you create a delivery group.
+// Queries the resource specifications available for selection when creating a delivery group.
 //
 // @param request - ListNodeInstanceTypeRequest
 //
@@ -3084,7 +3182,7 @@ func (client *Client) ListNodeInstanceTypeWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries resource nodes.
+// Queries the list of resource nodes.
 //
 // @param request - ListNodesRequest
 //
@@ -3140,7 +3238,7 @@ func (client *Client) ListNodesWithContext(ctx context.Context, request *ListNod
 
 // Summary:
 //
-// Queries the information about over-the-air (OTA) update tasks.
+// Queries the history of over-the-air updates.
 //
 // @param request - ListOtaTaskRequest
 //
@@ -3196,7 +3294,7 @@ func (client *Client) ListOtaTaskWithContext(ctx context.Context, request *ListO
 
 // Summary:
 //
-// Queries app instances of the persistent session type in a delivery group.
+// Queries the list of persistent session application instances in a delivery group.
 //
 // @param request - ListPersistentAppInstancesRequest
 //
@@ -3256,11 +3354,11 @@ func (client *Client) ListPersistentAppInstancesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the regions that are supported by App Streaming.
+// Queries the regions supported by WUYING Cloud Application.
 //
 // Description:
 //
-// >  All supported regions instead of available regions are returned by this operation. For more information, see [Supported regions](https://help.aliyun.com/document_detail/426036.html).
+// > The regions returned by this operation are not necessarily all available regions. For information about available regions, see [Supported regions](https://help.aliyun.com/document_detail/426036.html).
 //
 // @param request - ListRegionsRequest
 //
@@ -3308,7 +3406,7 @@ func (client *Client) ListRegionsWithContext(ctx context.Context, request *ListR
 
 // Summary:
 //
-// Queries the tags added to one or more cloud resources.
+// Queries the tag list of one or more specified cloud resources.
 //
 // @param request - ListTagCloudResourcesRequest
 //
@@ -3471,11 +3569,11 @@ func (client *Client) ListWuyingServerWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Closes all sessions in a pay-as-you-go delivery group for which a scheduled scaling policy is used.
+// Logs off all sessions in a pay-as-you-go delivery group that has scheduled auto scaling policies enabled.
 //
 // Description:
 //
-// >  This operation can be called only if you use a pay-as-you-go delivery group for which a scheduled scaling policy is used and if you call the operation at a time other than the scheduled time.
+// > This operation is applicable only to pay-as-you-go resource delivery groups that have scheduled auto scaling policies enabled, and can be called successfully only outside the scaling time periods configured in the scheduled auto scaling policies.
 //
 // @param request - LogOffAllSessionsInAppInstanceGroupRequest
 //
@@ -3523,7 +3621,7 @@ func (client *Client) LogOffAllSessionsInAppInstanceGroupWithContext(ctx context
 
 // Summary:
 //
-// Modifies the general policies of a delivery group, including the number of concurrent sessions and the retention period of disconnected sessions.
+// Modifies the General Policy of a delivery group, including the number of concurrent sessions and the session retention duration after disconnection.
 //
 // @param tmpReq - ModifyAppInstanceGroupAttributeRequest
 //
@@ -3627,7 +3725,7 @@ func (client *Client) ModifyAppInstanceGroupAttributeWithContext(ctx context.Con
 
 // Summary:
 //
-// Modify the delivery group display policy, including settings such as frame rate, resolution, and protocol type.
+// Modifies the display policy of a delivery group, including settings such as frame rate, resolution, and protocol type.
 //
 // @param tmpReq - ModifyAppPolicyRequest
 //
@@ -3685,11 +3783,11 @@ func (client *Client) ModifyAppPolicyWithContext(ctx context.Context, tmpReq *Mo
 
 // Summary:
 //
-// Modifies the properties of the cloud browser.
+// Modifies the attributes of a Wuying Cloud Browser.
 //
 // Description:
 //
-// Modifies the properties of the cloud browser.
+// Modifies the attributes of a Wuying Cloud Browser.
 //
 // @param tmpReq - ModifyBrowserInstanceGroupRequest
 //
@@ -3785,7 +3883,7 @@ func (client *Client) ModifyBrowserInstanceGroupWithContext(ctx context.Context,
 
 // Summary:
 //
-// Changes the number of nodes in a subscription delivery group.
+// Upgrades the number of nodes in a subscription delivery group.
 //
 // @param tmpReq - ModifyNodePoolAmountRequest
 //
@@ -3843,19 +3941,19 @@ func (client *Client) ModifyNodePoolAmountWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Changes the scaling policy of a delivery group. The following scaling policies are supported: fixed resource number, scheduled scaling, and auto scaling.
+// Modifies the scaling mode of a delivery group, including fixed quantity (no elastic scaling), scheduled scaling, and automatic scaling.
 //
 // Description:
 //
-// You can select one of the following scaling policies for cloud app resources:
+// You can configure the scaling pattern for WUYING Cloud Application resources in Settings:
 //
-//   - No scaling: Resources are not scaled.
+// - Fixed quantity: Elastic scaling is not used.
 //
-//   - Auto scaling: Resources are automatically scaled based on the number of connected sessions and the duration during which no session is connected.
+// - Automatic scaling: Automatically scales resources based on the number of connected sessions and the idle duration without session connections.
 //
-//   - Scheduled scaling: Resources are scaled during specific periods of time on specific dates.
+// - Scheduled scaling: Executes resource scaling during specified time periods on specified dates.
 //
-// Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
+// Before using this operation, make sure that you fully understand the [billing method and pricing](https://help.aliyun.com/document_detail/426039.html) of WUYING Cloud Application.
 //
 // @param tmpReq - ModifyNodePoolAttributeRequest
 //
@@ -3921,7 +4019,7 @@ func (client *Client) ModifyNodePoolAttributeWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Modifies the configurations of the administrator account, such as whether to enable the resource expiration reminder feature.
+// Modifies the configuration of an administrator account, such as whether to enable resource expiration reminders.
 //
 // @param request - ModifyTenantConfigRequest
 //
@@ -3965,7 +4063,7 @@ func (client *Client) ModifyTenantConfigWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modify workstation properties.
+// Modifies the properties of a cloud graphics workstation.
 //
 // @param request - ModifyWuyingServerAttributeRequest
 //
@@ -4021,7 +4119,7 @@ func (client *Client) ModifyWuyingServerAttributeWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the assigned users that are added to a delivery group by page.
+// Performs a paged query on allocated users added to a delivery group.
 //
 // @param request - PageListAppInstanceGroupUserRequest
 //
@@ -4077,7 +4175,17 @@ func (client *Client) PageListAppInstanceGroupUserWithContext(ctx context.Contex
 
 // Summary:
 //
-// 移除资源组模型模板配置
+// Removes model groups from a resource group.
+//
+// Description:
+//
+// You can authorize model groups for resources that belong to Agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent in the WUYING Agent Management Center. The model groups serve as inference engines for Agents to execute tasks within the resource group.
+//
+// When an Agent runtime has its own model group configured and the resource group it belongs to also has a model group configured, the model group bound to the resource group takes effect. The resource group setting takes priority over the Agent runtime setting.
+//
+// When you remove the model group from the resource group to which an Agent runtime belongs, the model group configured on the Agent runtime itself automatically takes effect.
+//
+// Before calling this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
 //
 // @param request - RemoveResourceGroupModelTemplateRequest
 //
@@ -4125,7 +4233,13 @@ func (client *Client) RemoveResourceGroupModelTemplateWithContext(ctx context.Co
 
 // Summary:
 //
-// 移除Runtime通道
+// Removes a third-party channel configuration from an agent runtime.
+//
+// Description:
+//
+// You can call this operation to remove a specific third-party channel configuration from agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. After the configuration is removed, the agent can no longer use the third-party channel for conversations.
+//
+// Before calling this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - RemoveRuntimeChannelRequest
 //
@@ -4185,7 +4299,13 @@ func (client *Client) RemoveRuntimeChannelWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 通过RuntimeIds移除模型模板配置
+// Removes a model group from an Agent runtime resource.
+//
+// Description:
+//
+// You can remove model groups from Agent runtime resources such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. When an Agent runtime resource needs to switch to a different model group, call this operation first to remove the authorization relationship between the Agent runtime resource and the existing model group.
+//
+// Make sure that you are familiar with the operations and usage of the Wuying Agent Management Center before calling this operation.
 //
 // @param request - RemoveRuntimeModelTemplateRequest
 //
@@ -4241,7 +4361,7 @@ func (client *Client) RemoveRuntimeModelTemplateWithContext(ctx context.Context,
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
+// Before you call this operation, make sure that you are familiar with the [Billable methods and pricing](https://help.aliyun.com/document_detail/426039.html) of WUYING Workspace.
 //
 // @param tmpReq - RenewAppInstanceGroupRequest
 //
@@ -4323,7 +4443,7 @@ func (client *Client) RenewAppInstanceGroupWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Renew one workstation.
+// Renews a workstation.
 //
 // @param request - RenewWuyingServerRequest
 //
@@ -4383,7 +4503,7 @@ func (client *Client) RenewWuyingServerWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Restarts the workstation.
+// Restarts a workstation.
 //
 // @param request - RestartWuyingServerRequest
 //
@@ -4434,7 +4554,7 @@ func (client *Client) RestartWuyingServerWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Initiates a task to replicate an image to another region.
+// Initiates a task to copy an image to other regions.
 //
 // @param request - StartTaskForDistributeImageRequest
 //
@@ -4498,7 +4618,7 @@ func (client *Client) StartTaskForDistributeImageWithContext(ctx context.Context
 
 // Summary:
 //
-// Start the workstation.
+// Starts a workstation.
 //
 // @param request - StartWuyingServerRequest
 //
@@ -4549,7 +4669,7 @@ func (client *Client) StartWuyingServerWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Stops the workstation.
+// Stops a workstation.
 //
 // @param request - StopWuyingServerRequest
 //
@@ -4604,7 +4724,7 @@ func (client *Client) StopWuyingServerWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates and adds tags to cloud resources and updates the values of existing cloud resource tags.
+// Creates and attaches tags to cloud resources. If a tag already exists on a resource, the tag value is updated.
 //
 // @param request - TagCloudResourcesRequest
 //
@@ -4704,7 +4824,7 @@ func (client *Client) UnassignWuyingServerPrivateAddressesWithContext(ctx contex
 
 // Summary:
 //
-// Unbinds a user and a session.
+// Unbinds a user from a session.
 //
 // @param request - UnbindRequest
 //
@@ -4764,7 +4884,7 @@ func (client *Client) UnbindWithContext(ctx context.Context, request *UnbindRequ
 
 // Summary:
 //
-// Removes tags from cloud resources.
+// Unbinds tags from cloud resources in a unified manner.
 //
 // @param request - UntagCloudResourcesRequest
 //
@@ -4820,11 +4940,9 @@ func (client *Client) UntagCloudResourcesWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// *
+//	Warning: After the image update starts, sessions of end users who are accessing cloud applications will be disconnected. Proceed with caution to avoid data loss for end users.
 //
-// **Warning*	- After the image is updated, the end user session accessing the cloud application will be disconnected. Exercise caution to avoid end user data loss.
-//
-// >  After the image of the delivery group is updated, the change takes effect on the terminal in approximately 2 minutes.
+// > After the update is published, changes typically take about 2 minutes to take effect on the end user side.
 //
 // @param request - UpdateAppInstanceGroupImageRequest
 //
@@ -4880,7 +4998,13 @@ func (client *Client) UpdateAppInstanceGroupImageWithContext(ctx context.Context
 
 // Summary:
 //
-// 更新模型提供商模板
+// Updates a model provider template.
+//
+// Description:
+//
+// You can update a model provider template that has been created in the Wuying Agent Management Center, including the template name, description, model service connection configuration, and Wuying security proxy switch. Partial field updates are supported. You only need to pass in the fields that you want to modify.
+//
+// Before you call this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param tmpReq - UpdateModelProviderTemplateRequest
 //
@@ -4948,7 +5072,13 @@ func (client *Client) UpdateModelProviderTemplateWithContext(ctx context.Context
 
 // Summary:
 //
-// 更新模型模板
+// Updates a model template.
+//
+// Description:
+//
+// You can update a model group that has been created in the Wuying Agent Management Center, including the group name, description, and model configuration information. The updated configuration automatically takes effect on associated cloud desktops.
+//
+// Before using this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - UpdateModelTemplateRequest
 //
@@ -5004,7 +5134,7 @@ func (client *Client) UpdateModelTemplateWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Updates the workstation image.
+// Updates a workstation image.
 //
 // @param request - UpdateWuyingServerImageRequest
 //

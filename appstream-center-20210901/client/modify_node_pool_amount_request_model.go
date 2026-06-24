@@ -18,7 +18,7 @@ type iModifyNodePoolAmountRequest interface {
 }
 
 type ModifyNodePoolAmountRequest struct {
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// This parameter is required.
 	//
@@ -26,15 +26,11 @@ type ModifyNodePoolAmountRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The parameters related to the configuration change of the node pool.
+	// The node pool specification change parameters.
 	//
 	// This parameter is required.
 	NodePool *ModifyNodePoolAmountRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
 	// The product type.
-	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
 	//
 	// This parameter is required.
 	//
@@ -89,7 +85,7 @@ func (s *ModifyNodePoolAmountRequest) Validate() error {
 }
 
 type ModifyNodePoolAmountRequestNodePool struct {
-	// The total number of subscription nodes after the change.
+	// The total number of subscription nodes after the upgrade.
 	//
 	// This parameter is required.
 	//
@@ -97,17 +93,13 @@ type ModifyNodePoolAmountRequestNodePool struct {
 	//
 	// 1
 	NodeAmount *int32 `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
-	// The change mode of subscription nodes.
-	//
-	// Valid value:
-	//
-	// 	- EXPAND_FROM_POST_PAID_EXPLICIT: changes from specified pay-as-you-go nodes
+	// The modification mode for subscription nodes.
 	//
 	// example:
 	//
 	// EXPAND_FROM_POST_PAID_EXPLICIT
 	PrePaidNodeAmountModifyMode *string `json:"PrePaidNodeAmountModifyMode,omitempty" xml:"PrePaidNodeAmountModifyMode,omitempty"`
-	// The nodes for which you want to change the billing method.
+	// The list of nodes whose billing type is to be changed.
 	PrePaidNodeAmountModifyNodeIds []*string `json:"PrePaidNodeAmountModifyNodeIds,omitempty" xml:"PrePaidNodeAmountModifyNodeIds,omitempty" type:"Repeated"`
 }
 

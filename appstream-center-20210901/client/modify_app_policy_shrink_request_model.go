@@ -28,17 +28,13 @@ type ModifyAppPolicyShrinkRequest struct {
 	AppPolicyId *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
 	// The product type.
 	//
-	// Enumerated values:
-	//
-	// 	- CloudApp: RDS Cloud App
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// Displays the policy.
+	// The display policy.
 	VideoPolicyShrink *string `json:"VideoPolicy,omitempty" xml:"VideoPolicy,omitempty"`
 }
 

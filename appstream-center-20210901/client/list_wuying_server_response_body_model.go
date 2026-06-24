@@ -28,7 +28,7 @@ type ListWuyingServerResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListWuyingServerResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,6 +117,8 @@ func (s *ListWuyingServerResponseBody) Validate() error {
 }
 
 type ListWuyingServerResponseBodyWuyingServerList struct {
+	// The status of joining a virtual node pool.
+	//
 	// example:
 	//
 	// Added
@@ -129,7 +131,7 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// 10
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// Region.
+	// The region.
 	//
 	// example:
 	//
@@ -141,19 +143,19 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the storage resource was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-08-02T16:52:11.000+00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The data disks.
+	// The list of data cloud disks.
 	DataDisk []*ListWuyingServerResponseBodyWuyingServerListDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 10
 	EniPrivateIpAddressQuantity *int32 `json:"EniPrivateIpAddressQuantity,omitempty" xml:"EniPrivateIpAddressQuantity,omitempty"`
-	// The time when the subscription instance expires.
+	// The expiration time.
 	//
 	// example:
 	//
@@ -163,7 +165,7 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// 2.0.0
 	FotaVersion *string `json:"FotaVersion,omitempty" xml:"FotaVersion,omitempty"`
-	// The ID of the custom image.
+	// The image ID.
 	//
 	// example:
 	//
@@ -173,21 +175,21 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// example:
 	//
-	// Ubuntu 22.04
+	// Alibaba Cloud Linux 3.2104 LTS 64位
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The list of information about the workstation instance.
+	// The list of workstation instance information.
 	InstanceInfoList []*ListWuyingServerResponseBodyWuyingServerListInstanceInfoList `json:"InstanceInfoList,omitempty" xml:"InstanceInfoList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 0.5
 	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
-	// The private IP address.
+	// The internal IP address.
 	//
 	// example:
 	//
 	// 10.80.21.149
 	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
-	// The ID of the office network.
+	// The office network ID.
 	//
 	// example:
 	//
@@ -199,13 +201,13 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// exampleOfficeSite
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The type of the office network.
+	// The office network type.
 	//
 	// example:
 	//
 	// SIMPLE
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
-	// The OS type.
+	// The operating system type.
 	//
 	// example:
 	//
@@ -216,12 +218,13 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	// example:
 	//
 	// Connected
-	ResourceSessionStatus *string   `json:"ResourceSessionStatus,omitempty" xml:"ResourceSessionStatus,omitempty"`
-	SecurityGroupIds      []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	// The specifications.
+	ResourceSessionStatus *string `json:"ResourceSessionStatus,omitempty" xml:"ResourceSessionStatus,omitempty"`
+	// The list of security group IDs.
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	// The instance type information.
 	ServerInstanceTypeInfo *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo `json:"ServerInstanceTypeInfo,omitempty" xml:"ServerInstanceTypeInfo,omitempty" type:"Struct"`
 	Sessions               []*ListWuyingServerResponseBodyWuyingServerListSessions             `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
-	// The status of the workstation.
+	// The workstation status.
 	//
 	// example:
 	//
@@ -231,7 +234,7 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// spot
 	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
-	// The type of the system disk.
+	// The system cloud disk type.
 	//
 	// example:
 	//
@@ -241,13 +244,13 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// d-bp1234567890abcde
 	SystemDiskId *string `json:"SystemDiskId,omitempty" xml:"SystemDiskId,omitempty"`
-	// The performance level (PL) of the system disk.
+	// The performance level of the system cloud disk.
 	//
 	// example:
 	//
 	// PL0
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
-	// The size of the system disk. Unit: GiB.
+	// The system cloud disk size. Unit: GB.
 	//
 	// example:
 	//
@@ -262,6 +265,8 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// 10.0.0.100
 	VirtualKubeletIp *string `json:"VirtualKubeletIp,omitempty" xml:"VirtualKubeletIp,omitempty"`
+	// The virtual node pool ID.
+	//
 	// example:
 	//
 	// vnp-bp1234567890abcde
@@ -271,13 +276,13 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// 1.0.0
 	VkVersion *string `json:"VkVersion,omitempty" xml:"VkVersion,omitempty"`
-	// The ID of the workstation.
+	// The workstation ID.
 	//
 	// example:
 	//
 	// ws-0byd****8wn2lwi
 	WuyingServerId *string `json:"WuyingServerId,omitempty" xml:"WuyingServerId,omitempty"`
-	// The name of the workstation.
+	// The workstation name.
 	//
 	// example:
 	//
@@ -690,7 +695,7 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) Validate() error {
 }
 
 type ListWuyingServerResponseBodyWuyingServerListDataDisk struct {
-	// The category of data disk.
+	// The data cloud disk type.
 	//
 	// example:
 	//
@@ -704,13 +709,13 @@ type ListWuyingServerResponseBodyWuyingServerListDataDisk struct {
 	//
 	// 1
 	DataDiskNo *string `json:"DataDiskNo,omitempty" xml:"DataDiskNo,omitempty"`
-	// The PL of the data disk.
+	// The performance level of the data cloud disk.
 	//
 	// example:
 	//
 	// PL0
 	DataDiskPerformanceLevel *string `json:"DataDiskPerformanceLevel,omitempty" xml:"DataDiskPerformanceLevel,omitempty"`
-	// The size of the data disk. Unit: GB.
+	// The data cloud disk size. Unit: GB.
 	//
 	// example:
 	//
@@ -776,13 +781,13 @@ func (s *ListWuyingServerResponseBodyWuyingServerListDataDisk) Validate() error 
 }
 
 type ListWuyingServerResponseBodyWuyingServerListInstanceInfoList struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// p-0ceitx****c5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the ENI.
+	// The network interface controller (NIC) ID.
 	//
 	// example:
 	//
@@ -874,7 +879,7 @@ type ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo struct {
 	//
 	// 4
 	Gpu *string `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// The memory size. Unit: MB.
+	// The GPU memory size. Unit: MB.
 	//
 	// example:
 	//
@@ -890,7 +895,7 @@ type ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo struct {
 	//
 	// 393,216
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// Workstation specifications.
+	// The workstation instance type.
 	//
 	// example:
 	//

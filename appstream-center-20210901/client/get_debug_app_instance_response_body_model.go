@@ -32,25 +32,25 @@ type GetDebugAppInstanceResponseBody struct {
 	//
 	// __DEBUG_APP
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The ID of the application instance.
+	// The application instance ID.
 	//
 	// example:
 	//
 	// ai-7ybdeiyoeh5e****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	// The ID of the application version.
+	// The application version ID.
 	//
 	// example:
 	//
 	// 1.1
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The authorization code. This authorization code is valid for 3 minutes and can be used only once, regardless of whether the authentication succeeds. If multiple authentication codes are generated for a user, only the latest authentication code takes effect.
+	// The authorization code. The authorization code is valid for 3 minutes and can be used only once regardless of whether the verification succeeds or fails. If multiple authorization codes are generated for a user, only the last generated code is valid.
 	//
 	// example:
 	//

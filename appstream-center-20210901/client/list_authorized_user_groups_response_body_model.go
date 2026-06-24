@@ -28,7 +28,7 @@ type ListAuthorizedUserGroupsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries returned on each page.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListAuthorizedUserGroupsResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 6
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The information about the user groups.
+	// The list of user group information.
 	UserGroups []*ListAuthorizedUserGroupsResponseBodyUserGroups `json:"UserGroups,omitempty" xml:"UserGroups,omitempty" type:"Repeated"`
 }
 
@@ -117,7 +117,7 @@ func (s *ListAuthorizedUserGroupsResponseBody) Validate() error {
 }
 
 type ListAuthorizedUserGroupsResponseBodyUserGroups struct {
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// example:
 	//
@@ -125,25 +125,21 @@ type ListAuthorizedUserGroupsResponseBodyUserGroups struct {
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	// The authorization mode.
 	//
-	// Valid values:
-	//
-	// 	- App: authorizes access to apps.
-	//
-	// 	- AppInstanceGroup: authorizes access to delivery groups.
-	//
-	// 	- Session: authorizes access to sessions.
-	//
 	// example:
 	//
 	// App
 	AuthMode *string `json:"AuthMode,omitempty" xml:"AuthMode,omitempty"`
-	// The ID of the user group.
+	// The user group ID.
 	//
 	// example:
 	//
 	// ug-00001
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the user group.
+	// The user group name.
+	//
+	// example:
+	//
+	// 用户组001
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 

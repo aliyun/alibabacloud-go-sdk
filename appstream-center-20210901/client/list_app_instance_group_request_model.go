@@ -40,27 +40,25 @@ type iListAppInstanceGroupRequest interface {
 }
 
 type ListAppInstanceGroupRequest struct {
-	// The image ID of the app. You can obtain the ID from the Images page in the App Streaming console.
+	// The application image ID. You can obtain this value from the Image Management page in the WUYING Cloud Application console.
 	//
 	// example:
 	//
 	// img-8z4nztpaqvay4****
 	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The name of the delivery groups to query. Fuzzy match is used for queries. For example, if you set this parameter to `Office App`, all delivery groups whose names contain `Office App` are queried, such as `My Office Apps` and `Office App A`.
+	// The delivery group name. Fuzzy match is used for the query. For example, if you set the delivery group name to `Office App`, all delivery groups whose names contain `Office App` are returned, such as `My Office App` and `Office App A`.
+	//
+	// example:
+	//
+	// 办公应用
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	// The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
-	//
-	// Valid values:
-	//
-	// 	- cn-shanghai: China (Shanghai)
-	//
-	// 	- cn-hangzhou: China (Hangzhou)
+	// The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
 	//
 	// example:
 	//
@@ -69,33 +67,31 @@ type ListAppInstanceGroupRequest struct {
 	// if can be null:
 	// true
 	ExcludedUserGroupIds []*string `json:"ExcludedUserGroupIds,omitempty" xml:"ExcludedUserGroupIds,omitempty" type:"Repeated"`
-	// The ID of the resource specification that you purchase. You can call the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation to obtain the ID.
+	// The specification type ID of the purchased resources. You can call the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation to obtain this value.
 	//
 	// example:
 	//
 	// appstreaming.vgpu.4c8g.2g
 	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	// The office network ID.
+	//
 	// example:
 	//
 	// cn-hongkong+dir-643067****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The page number.
+	// The page number of the query results to display.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The value cannot be greater than `100`.
+	// The number of query results per page. Maximum value: `100`.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The product type.
-	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
 	//
 	// This parameter is required.
 	//
@@ -105,14 +101,16 @@ type ListAppInstanceGroupRequest struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// Deprecated
 	//
-	// The region ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the delivery groups.
+	// The list of delivery group statuses.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	// The tags.
+	//
 	// if can be null:
 	// true
 	Tag []*ListAppInstanceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -269,7 +267,17 @@ func (s *ListAppInstanceGroupRequest) Validate() error {
 }
 
 type ListAppInstanceGroupRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// department
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// design
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -22,13 +22,28 @@ type iUpdateModelProviderTemplateShrinkRequest interface {
 }
 
 type UpdateModelProviderTemplateShrinkRequest struct {
+	// The model provider configuration.
 	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the model provider template.
+	//
+	// example:
+	//
+	// 阿里云百炼服务商
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the Wuying security gateway proxy.
+	//
 	// example:
 	//
 	// true
-	EnableWuyingProxy *bool   `json:"EnableWuyingProxy,omitempty" xml:"EnableWuyingProxy,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	EnableWuyingProxy *bool `json:"EnableWuyingProxy,omitempty" xml:"EnableWuyingProxy,omitempty"`
+	// The name of the model provider template.
+	//
+	// example:
+	//
+	// 阿里云百炼
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the model provider template.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,7 +22,7 @@ type PageListAppInstanceGroupUserResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The users.
+	// The queried users.
 	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 

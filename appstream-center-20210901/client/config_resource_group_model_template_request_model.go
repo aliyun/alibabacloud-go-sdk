@@ -16,12 +16,16 @@ type iConfigResourceGroupModelTemplateRequest interface {
 }
 
 type ConfigResourceGroupModelTemplateRequest struct {
+	// The model group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
+	// The resource group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

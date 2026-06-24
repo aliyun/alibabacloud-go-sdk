@@ -16,12 +16,16 @@ type iRemoveResourceGroupModelTemplateRequest interface {
 }
 
 type RemoveResourceGroupModelTemplateRequest struct {
+	// The model group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
+	// The list of resource group IDs.
+	//
 	// This parameter is required.
 	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
 }

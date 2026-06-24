@@ -22,7 +22,7 @@ type iRenewWuyingServerRequest interface {
 }
 
 type RenewWuyingServerRequest struct {
-	// Automatic payment.
+	// Specifies whether to enable automatic payment.
 	//
 	// example:
 	//
@@ -34,13 +34,7 @@ type RenewWuyingServerRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the renewal time.
-	//
-	// Valid values:
-	//
-	// 	- Month: month.
-	//
-	// 	- Year: year.
+	// The unit of the renewal duration.
 	//
 	// example:
 	//
@@ -52,7 +46,7 @@ type RenewWuyingServerRequest struct {
 	//
 	// 17440009****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The ID of the workstation.
+	// The workstation ID.
 	//
 	// example:
 	//

@@ -22,23 +22,36 @@ type iCreateModelTemplateRequest interface {
 }
 
 type CreateModelTemplateRequest struct {
+	// The Agent platform.
+	//
 	// example:
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
+	// The Agent provider name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OpenClaw
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
+	// The business type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	BizType     *int32  `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The template group description.
+	//
+	// example:
+	//
+	// 测试模型分组
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The template group name.
+	//
 	// This parameter is required.
 	//
 	// example:

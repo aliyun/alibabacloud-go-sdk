@@ -14,7 +14,7 @@ type iDeleteImageRequest interface {
 }
 
 type DeleteImageRequest struct {
-	// The ID of the RDS image.
+	// The AppStream image ID.
 	//
 	// example:
 	//

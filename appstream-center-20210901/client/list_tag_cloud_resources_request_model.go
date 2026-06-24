@@ -22,7 +22,9 @@ type iListTagCloudResourcesRequest interface {
 }
 
 type ListTagCloudResourcesRequest struct {
-	// The number of entries per page. Maximum value: 1000. Default value: 50.
+	// The number of entries per page.
+	//
+	// Maximum value: 1000. Default value: 50.
 	//
 	// if can be null:
 	// true
@@ -31,25 +33,15 @@ type ListTagCloudResourcesRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The pagination token for the next query.
 	//
 	// example:
 	//
 	// ptnJAAAAAAAxNzE5OTEwNQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The resource IDs. You can specify up to 50 resource IDs. You do not need to specify this parameter if you set ResourceType to AliUid.
+	// The list of resource IDs. A maximum of 50 resource IDs are supported. You do not need to specify this parameter when the resource type is tenant ID.
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	// The type of the cloud resource.
-	//
-	// Valid values:
-	//
-	// 	- AppId: app ID.
-	//
-	// 	- WyId: Alibaba Cloud Workspace user ID.
-	//
-	// 	- AppInstanceGroupId: delivery group ID.
-	//
-	// 	- AliUid: tenant ID.
+	// The cloud resource type.
 	//
 	// This parameter is required.
 	//
@@ -58,14 +50,6 @@ type ListTagCloudResourcesRequest struct {
 	// AppInstanceGroupId
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag type.
-	//
-	// Valid values:
-	//
-	// 	- All (default): all tags.
-	//
-	// 	- Custom: custom tag.
-	//
-	// 	- System: system tag.
 	//
 	// if can be null:
 	// true

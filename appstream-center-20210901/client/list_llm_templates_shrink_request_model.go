@@ -24,23 +24,34 @@ type iListLlmTemplatesShrinkRequest interface {
 }
 
 type ListLlmTemplatesShrinkRequest struct {
+	// The model code used for filtering. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// qwen3.6-plus
-	LlmCode              *string `json:"LlmCode,omitempty" xml:"LlmCode,omitempty"`
+	LlmCode *string `json:"LlmCode,omitempty" xml:"LlmCode,omitempty"`
+	// The model template IDs used for filtering.
 	LlmTemplateIdsShrink *string `json:"LlmTemplateIds,omitempty" xml:"LlmTemplateIds,omitempty"`
+	// The ID of the associated model group.
+	//
 	// example:
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
+	// The page number. Pages start from page 1. Values 0 and 1 return the same result.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the model provider template.
+	//
 	// example:
 	//
 	// mpt-xxxx

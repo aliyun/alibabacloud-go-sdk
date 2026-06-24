@@ -14,6 +14,8 @@ type iDeleteLlmTemplateRequest interface {
 }
 
 type DeleteLlmTemplateRequest struct {
+	// The ID of the model template.
+	//
 	// This parameter is required.
 	//
 	// example:

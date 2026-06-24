@@ -16,8 +16,10 @@ type iTagCloudResourcesResponseBody interface {
 }
 
 type TagCloudResourcesResponseBody struct {
-	// The cloud resources on which the operation failed and the corresponding tags.
+	// The list of failed resources and tag information.
 	FailedResources []*TagCloudResourcesResponseBodyFailedResources `json:"FailedResources,omitempty" xml:"FailedResources,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -64,37 +66,32 @@ func (s *TagCloudResourcesResponseBody) Validate() error {
 }
 
 type TagCloudResourcesResponseBodyFailedResources struct {
+	// The error code.
+	//
 	// example:
 	//
 	// TAG_KEY_DUPLICATED
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Duplicate tag keys exist.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// aig-001
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the cloud resource.
-	//
-	// Valid values:
-	//
-	// 	- CenterImageId: center image ID.
-	//
-	// 	- AppId: app ID.
-	//
-	// 	- WyId: Alibaba Cloud Workspace user ID.
-	//
-	// 	- AppInstanceGroupId: delivery group ID.
-	//
-	// 	- AliUid: tenant ID.
+	// The cloud resource type.
 	//
 	// example:
 	//
 	// AppInstanceGroupId
-	ResourceType *string                                             `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags         []*TagCloudResourcesResponseBodyFailedResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of failed tag information.
+	Tags []*TagCloudResourcesResponseBodyFailedResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s TagCloudResourcesResponseBodyFailedResources) String() string {
@@ -164,14 +161,20 @@ func (s *TagCloudResourcesResponseBodyFailedResources) Validate() error {
 }
 
 type TagCloudResourcesResponseBodyFailedResourcesTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// System/Scheduler/STOP_NEW_USER_CONNECTION
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag type.
+	//
 	// example:
 	//
 	// System
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// true

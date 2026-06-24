@@ -16,7 +16,7 @@ type iDeleteAppInstancesResponseBody interface {
 }
 
 type DeleteAppInstancesResponseBody struct {
-	// The data returned.
+	// The list of instance deletion results.
 	DeleteAppInstanceModels []*DeleteAppInstancesResponseBodyDeleteAppInstanceModels `json:"DeleteAppInstanceModels,omitempty" xml:"DeleteAppInstanceModels,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,31 +66,25 @@ func (s *DeleteAppInstancesResponseBody) Validate() error {
 }
 
 type DeleteAppInstancesResponseBodyDeleteAppInstanceModels struct {
-	// The ID of the application instance.
+	// The application instance ID.
 	//
 	// example:
 	//
 	// ai-gbuea*****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	// The error code.
+	// The error code returned when an error occurs.
 	//
 	// example:
 	//
 	// InvalidParameter.ProductType
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// The error message returned when an error occurs.
 	//
 	// example:
 	//
 	// The parameter ProductType is invalid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Specifies whether the application instance is deleted.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Indicates whether the deletion is triggered.
 	//
 	// example:
 	//

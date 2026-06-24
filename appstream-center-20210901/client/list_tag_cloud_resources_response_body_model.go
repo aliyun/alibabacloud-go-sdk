@@ -20,7 +20,7 @@ type iListTagCloudResourcesResponseBody interface {
 }
 
 type ListTagCloudResourcesResponseBody struct {
-	// Indicates whether the next query is required.
+	// The pagination token that indicates whether more results are available for the next query.
 	//
 	// example:
 	//
@@ -32,9 +32,9 @@ type ListTagCloudResourcesResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tags added to the cloud resources.
+	// The list of tags bound to the resources.
 	ResourceTags []*ListTagCloudResourcesResponseBodyResourceTags `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty" type:"Repeated"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -106,23 +106,13 @@ type ListTagCloudResourcesResponseBodyResourceTags struct {
 	//
 	// aig-0001
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the cloud resource.
-	//
-	// Valid values:
-	//
-	// 	- AppId: app ID.
-	//
-	// 	- WyId: Alibaba Cloud Workspace user ID.
-	//
-	// 	- AppInstanceGroupId: delivery group ID.
-	//
-	// 	- AliUid: tenant ID.
+	// The cloud resource type.
 	//
 	// example:
 	//
 	// AppInstanceGroupId
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tags []*ListTagCloudResourcesResponseBodyResourceTagsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -182,12 +172,6 @@ type ListTagCloudResourcesResponseBodyResourceTagsTags struct {
 	// Resolution
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag type.
-	//
-	// Valid values:
-	//
-	// 	- Custom: custom tag.
-	//
-	// 	- System: system tag.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type iGetOtaTaskByTaskIdResponseBody interface {
 }
 
 type GetOtaTaskByTaskIdResponseBody struct {
-	// The error code.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
 	// OtaTask.Running
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
@@ -42,7 +42,11 @@ type GetOtaTaskByTaskIdResponseBody struct {
 	//
 	// 0.0.1-R-20220708.110604
 	OtaVersion *string `json:"OtaVersion,omitempty" xml:"OtaVersion,omitempty"`
-	// The version description.
+	// The version description that describes the content of the over-the-air update.
+	//
+	// example:
+	//
+	// 测试升级
 	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
 	// The request ID.
 	//
@@ -50,7 +54,7 @@ type GetOtaTaskByTaskIdResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The execution time of the OTA update task. The time follows the ISO 8601 standard.
+	// The task execution time in ISO 8601 format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//

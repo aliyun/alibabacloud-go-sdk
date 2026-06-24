@@ -22,15 +22,15 @@ type iListNodeInstanceTypeResponseBody interface {
 }
 
 type ListNodeInstanceTypeResponseBody struct {
-	// The resource types.
+	// The list of resource specifications.
 	NodeInstanceTypeModels []*ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels `json:"NodeInstanceTypeModels,omitempty" xml:"NodeInstanceTypeModels,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number of the query results currently displayed.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on each page.
+	// The number of query results per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListNodeInstanceTypeResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -129,23 +129,45 @@ type ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels struct {
 	//
 	// 2
 	Gpu *string `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// The GPU size. Unit: MB.
+	// The GPU memory size. Unit: MB.
 	//
 	// example:
 	//
 	// 8192
 	GpuMemory *int64 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	// The maximum number of sessions to which a resource can connect at the same time. If a resource connects to a large number of sessions at the same time, user experience can be compromised. The value range varies based on the resource type. The following items describe the value ranges of different resource types:
+	// The maximum number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected simultaneously, the application experience may degrade. The valid values vary depending on the resource specification. The valid values for each resource specification are as follows:
 	//
-	// 	- appstreaming.general.4c8g: 1 to 2
+	// - appstreaming.general.2c4g: 1
 	//
-	// 	- appstreaming.general.8c16g: 1 to 4
+	// - appstreaming.general.4c8g: 1 to 2
 	//
-	// 	- appstreaming.vgpu.8c16g.4g: 1 to 4
+	// - appstreaming.general.8c16g: 1 to 4
 	//
-	// 	- appstreaming.vgpu.8c31g.16g: 1 to 4
+	// - appstreaming.vgpu.8c16g.4g: 1 to 4
 	//
-	// 	- appstreaming.vgpu.14c93g.12g: 1 to 6
+	// - appstreaming.vgpu.8c31g.16g: 1 to 4
+	//
+	// - appstreaming.vgpu.14c93g.12g: 1 to 7
+	//
+	// - appstreaming.vgpu.4c10g.2gt4: 1 to 2
+	//
+	// - appstreaming.vgpu.4c16g.2ga10: 1 to 2
+	//
+	// - appstreaming.vgpu.8c16g.4g: 1 to 4
+	//
+	// - appstreaming.vgpu.8c31g.16g: 1 to 4
+	//
+	// - appstreaming.vgpu.8c16g.4gt4: 1 to 4
+	//
+	// - appstreaming.vgpu.8c32g.4ga10: 1 to 4
+	//
+	// - appstreaming.vgpu.12c46g.11g28: 1 to 6
+	//
+	// - appstreaming.vgpu.14c93g.12g: 1 to 7
+	//
+	// - appstreaming.vgpu.16c32g.8g: 1 to 8
+	//
+	// - appstreaming.vgpu.16c62g.8ga10: 1 to 8.
 	//
 	// example:
 	//
@@ -157,29 +179,23 @@ type ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels struct {
 	//
 	// 8192
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The ID of the resource type.
+	// The ID of the resource specification type.
 	//
 	// example:
 	//
 	// appstreaming.vgpu.4c8g.2g
 	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
-	// The resource type family.
-	//
-	// Valid values:
-	//
-	// 	- appstreaming.general: WUYING - General
-	//
-	// 	- appstreaming.vgpu: WUYING - Graphics
+	// The resource specification family.
 	//
 	// example:
 	//
 	// appstreaming.vgpu
 	NodeInstanceTypeFamily *string `json:"NodeInstanceTypeFamily,omitempty" xml:"NodeInstanceTypeFamily,omitempty"`
-	// The name of the resource type.
+	// The name of the resource specification.
 	//
 	// example:
 	//
-	// WUYING - General - 4 vCPUs 8 GB Memory
+	// 无影-通用型_4核8G
 	NodeTypeName *string `json:"NodeTypeName,omitempty" xml:"NodeTypeName,omitempty"`
 }
 

@@ -42,6 +42,8 @@ type iListWuyingServerRequest interface {
 }
 
 type ListWuyingServerRequest struct {
+	// The list of statuses for joining a virtual node pool.
+	//
 	// example:
 	//
 	// Added
@@ -56,7 +58,7 @@ type ListWuyingServerRequest struct {
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The billing method of the Internet access package.
+	// The billing type.
 	//
 	// example:
 	//
@@ -68,7 +70,7 @@ type ListWuyingServerRequest struct {
 	//
 	// img-bp13mu****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The office network IDs.
+	// The office network ID.
 	//
 	// example:
 	//
@@ -80,7 +82,7 @@ type ListWuyingServerRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -90,13 +92,13 @@ type ListWuyingServerRequest struct {
 	//
 	// wuying_server
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// Workstation specifications.
+	// The workstation instance type.
 	//
 	// example:
 	//
 	// eds.proworkstation_flagship_elite.32c64g.48g1x
 	ServerInstanceType *string `json:"ServerInstanceType,omitempty" xml:"ServerInstanceType,omitempty"`
-	// The status of the workstation.
+	// The workstation status.
 	//
 	// example:
 	//
@@ -106,6 +108,8 @@ type ListWuyingServerRequest struct {
 	//
 	// user1
 	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	// The virtual node pool ID.
+	//
 	// example:
 	//
 	// vnp-bp1234567890abcde

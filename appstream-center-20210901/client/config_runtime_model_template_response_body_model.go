@@ -18,11 +18,16 @@ type iConfigRuntimeModelTemplateResponseBody interface {
 }
 
 type ConfigRuntimeModelTemplateResponseBody struct {
+	// The list of execution results.
 	Data []*ConfigRuntimeModelTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 6
@@ -78,22 +83,38 @@ func (s *ConfigRuntimeModelTemplateResponseBody) Validate() error {
 }
 
 type ConfigRuntimeModelTemplateResponseBodyData struct {
+	// The error code returned if the execution fails.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned if the execution fails.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned if the execution fails.
+	//
 	// example:
 	//
 	// The parameter callerUid may not be null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The Agent runtime ID. The ID mapping is as follows:
+	//
+	// JVS Computer: JVS Computer ID, in the format of jvs-xxxx.
+	//
+	// OpenClaw: cloud computer ID, in the format of ecd-xxxx.
+	//
+	// Hermes Agent: Hermes Agent ID, in the format of jvs-xxxx.
+	//
 	// example:
 	//
 	// jvs-xxxxxxxx
 	RuntimeId *string `json:"RuntimeId,omitempty" xml:"RuntimeId,omitempty"`
+	// Indicates whether the execution is successful.
+	//
 	// example:
 	//
 	// True

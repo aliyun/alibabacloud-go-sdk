@@ -26,37 +26,37 @@ type iListBindInfoRequest interface {
 }
 
 type ListBindInfoRequest struct {
-	// The app IDs. You can specify 1 to 100 IDs.
+	// The list of application IDs. You can specify 1 to 100 IDs.
 	//
-	// >  If you specify this parameter, only the bindings of the specified apps are returned.
+	// > If you specify this parameter, only the binding information of the specified applications is returned.
 	AppIdList []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
-	// The IDs of the delivery groups. You can specify 1 to 100 IDs.
+	// The list of delivery group IDs. You can specify 1 to 100 IDs.
 	//
-	// >  If you specify this parameter, only the bindings of the specified delivery groups are returned.
+	// > If you specify this parameter, only the binding information of the specified delivery groups is returned.
 	AppInstanceGroupIdList []*string `json:"AppInstanceGroupIdList,omitempty" xml:"AppInstanceGroupIdList,omitempty" type:"Repeated"`
-	// The IDs of app instances. You can specify 1 to 100 IDs.
+	// The list of application instance IDs. You can specify 1 to 100 IDs.
 	//
-	// >  If you specify this parameter, only the bindings of the specified app instances are returned.
+	// > If you specify this parameter, only the binding information of the specified application instances is returned.
 	AppInstanceIdList []*string `json:"AppInstanceIdList,omitempty" xml:"AppInstanceIdList,omitempty" type:"Repeated"`
-	// The page number. Default value: `1`. We recommend that you specify this parameter.
+	// The page number of the query results to display. Default value: `1`. Specify this parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The value cannot be greater than `100`. Default value: `20`. We recommend that you specify this parameter.
+	// The number of query results per page. Maximum value: `100`. Default value: `20`. Specify this parameter.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The user IDs. You can specify 1 to 100 IDs.
+	// The list of user IDs. You can specify 1 to 100 IDs.
 	//
-	// >  If you specify this parameter, only the bindings of the specified users are returned.
+	// > If you specify this parameter, only the binding information of the specified users is returned.
 	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
-	// The IDs of the Alibaba Cloud Workspace users. You can specify 1 to 100 IDs.
+	// The list of WUYING user IDs. You can specify 1 to 100 IDs.
 	//
-	// >  If you specify this parameter, only the bindings of the specified Alibaba Cloud Workspace users are returned.
+	// > If you specify this parameter, only the binding information of the specified WUYING users is returned.
 	WyIdList []*string `json:"WyIdList,omitempty" xml:"WyIdList,omitempty" type:"Repeated"`
 }
 

@@ -22,19 +22,28 @@ type iListDesktopAgentRuntimeResponseBody interface {
 }
 
 type ListDesktopAgentRuntimeResponseBody struct {
+	// The list of returned result objects.
 	Data []*ListDesktopAgentRuntimeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 30
@@ -108,49 +117,93 @@ func (s *ListDesktopAgentRuntimeResponseBody) Validate() error {
 }
 
 type ListDesktopAgentRuntimeResponseBodyData struct {
-	AgentImInfo           *ListDesktopAgentRuntimeResponseBodyDataAgentImInfo             `json:"AgentImInfo,omitempty" xml:"AgentImInfo,omitempty" type:"Struct"`
+	// The agent IM information.
+	AgentImInfo *ListDesktopAgentRuntimeResponseBodyDataAgentImInfo `json:"AgentImInfo,omitempty" xml:"AgentImInfo,omitempty" type:"Struct"`
+	// The list of agent instance information.
 	AgentInstanceInfoList []*ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList `json:"AgentInstanceInfoList,omitempty" xml:"AgentInstanceInfoList,omitempty" type:"Repeated"`
-	AuthUsers             []*string                                                       `json:"AuthUsers,omitempty" xml:"AuthUsers,omitempty" type:"Repeated"`
+	// The list of authorized users.
+	AuthUsers []*string `json:"AuthUsers,omitempty" xml:"AuthUsers,omitempty" type:"Repeated"`
+	// Indicates whether the agent runtime has a configured third-party channel.
+	//
 	// example:
 	//
 	// true
-	ChannelConfigure      *bool     `json:"ChannelConfigure,omitempty" xml:"ChannelConfigure,omitempty"`
+	ChannelConfigure *bool `json:"ChannelConfigure,omitempty" xml:"ChannelConfigure,omitempty"`
+	// The list of third-party channels configured for the agent runtime.
 	ChannelConfiguredList []*string `json:"ChannelConfiguredList,omitempty" xml:"ChannelConfiguredList,omitempty" type:"Repeated"`
+	// The agent runtime ID.
+	//
 	// example:
 	//
 	// ecd-xxxx
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The agent runtime name.
+	//
 	// example:
 	//
 	// Agent-001
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// The cloud computer status.
+	//
 	// example:
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
+	// Indicates whether authorized users exist.
+	//
 	// example:
 	//
 	// true
-	HasAuthUser *bool `json:"HasAuthUser,omitempty" xml:"HasAuthUser,omitempty"`
+	HasAuthUser        *bool     `json:"HasAuthUser,omitempty" xml:"HasAuthUser,omitempty"`
+	ManagementStatuses []*string `json:"ManagementStatuses,omitempty" xml:"ManagementStatuses,omitempty" type:"Repeated"`
+	// Indicates whether the agent runtime has a configured model.
+	//
 	// example:
 	//
 	// true
-	ModelConfigure        *bool     `json:"ModelConfigure,omitempty" xml:"ModelConfigure,omitempty"`
-	ModelTemplateId       *string   `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
-	ModelTemplateName     *string   `json:"ModelTemplateName,omitempty" xml:"ModelTemplateName,omitempty"`
-	OsType                *string   `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	ModelConfigure *bool `json:"ModelConfigure,omitempty" xml:"ModelConfigure,omitempty"`
+	// The effective model template ID (returned only when modelConfigure=true).
+	//
+	// example:
+	//
+	// mt-xxxx
+	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
+	// The effective model template name (returned only when modelConfigure=true).
+	//
+	// example:
+	//
+	// model-template-001
+	ModelTemplateName *string `json:"ModelTemplateName,omitempty" xml:"ModelTemplateName,omitempty"`
+	// The operating system type.
+	//
+	// example:
+	//
+	// Windows
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// The list of channels in QR code configuration.
 	QrCodeConfiguringList []*string `json:"QrCodeConfiguringList,omitempty" xml:"QrCodeConfiguringList,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId       *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionLocation *string                                               `json:"RegionLocation,omitempty" xml:"RegionLocation,omitempty"`
-	ResourceGroup  *ListDesktopAgentRuntimeResponseBodyDataResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Struct"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region location (domestic/overseas).
+	//
+	// example:
+	//
+	// Mainland
+	RegionLocation *string `json:"RegionLocation,omitempty" xml:"RegionLocation,omitempty"`
+	// The resource group information.
+	ResourceGroup *ListDesktopAgentRuntimeResponseBodyDataResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Struct"`
+	// The resource ID, which is the cloud computer ID.
+	//
 	// example:
 	//
 	// ecd-xxxx
-	ResourceId *string                                          `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	RiskInfo   *ListDesktopAgentRuntimeResponseBodyDataRiskInfo `json:"RiskInfo,omitempty" xml:"RiskInfo,omitempty" type:"Struct"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The risk information (returned only when the request parameter IncludeRiskInfo is set to true, otherwise null).
+	RiskInfo *ListDesktopAgentRuntimeResponseBodyDataRiskInfo `json:"RiskInfo,omitempty" xml:"RiskInfo,omitempty" type:"Struct"`
 }
 
 func (s ListDesktopAgentRuntimeResponseBodyData) String() string {
@@ -195,6 +248,10 @@ func (s *ListDesktopAgentRuntimeResponseBodyData) GetDesktopStatus() *string {
 
 func (s *ListDesktopAgentRuntimeResponseBodyData) GetHasAuthUser() *bool {
 	return s.HasAuthUser
+}
+
+func (s *ListDesktopAgentRuntimeResponseBodyData) GetManagementStatuses() []*string {
+	return s.ManagementStatuses
 }
 
 func (s *ListDesktopAgentRuntimeResponseBodyData) GetModelConfigure() *bool {
@@ -282,6 +339,11 @@ func (s *ListDesktopAgentRuntimeResponseBodyData) SetHasAuthUser(v bool) *ListDe
 	return s
 }
 
+func (s *ListDesktopAgentRuntimeResponseBodyData) SetManagementStatuses(v []*string) *ListDesktopAgentRuntimeResponseBodyData {
+	s.ManagementStatuses = v
+	return s
+}
+
 func (s *ListDesktopAgentRuntimeResponseBodyData) SetModelConfigure(v bool) *ListDesktopAgentRuntimeResponseBodyData {
 	s.ModelConfigure = &v
 	return s
@@ -361,10 +423,14 @@ func (s *ListDesktopAgentRuntimeResponseBodyData) Validate() error {
 }
 
 type ListDesktopAgentRuntimeResponseBodyDataAgentImInfo struct {
+	// The agent IM status.
+	//
 	// example:
 	//
 	// Enabled
 	AgentImStatus *string `json:"AgentImStatus,omitempty" xml:"AgentImStatus,omitempty"`
+	// The CloudSpace status.
+	//
 	// example:
 	//
 	// Enabled
@@ -402,27 +468,42 @@ func (s *ListDesktopAgentRuntimeResponseBodyDataAgentImInfo) Validate() error {
 }
 
 type ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList struct {
+	// The agent instance status.
+	//
 	// example:
 	//
 	// Running
 	AgentInstanceStatus *string `json:"AgentInstanceStatus,omitempty" xml:"AgentInstanceStatus,omitempty"`
+	// The agent instance version.
+	//
 	// example:
 	//
 	// 2026.3.13
 	AgentInstanceVersion *string `json:"AgentInstanceVersion,omitempty" xml:"AgentInstanceVersion,omitempty"`
+	AgentPlatform        *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
+	AgentProvider        *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
+	// Indicates whether the agent instance has a configured third-party channel.
+	//
 	// example:
 	//
 	// true
-	ChannelConfigure      *bool     `json:"ChannelConfigure,omitempty" xml:"ChannelConfigure,omitempty"`
+	ChannelConfigure *bool `json:"ChannelConfigure,omitempty" xml:"ChannelConfigure,omitempty"`
+	// The list of third-party channels configured for the agent instance.
 	ChannelConfiguredList []*string `json:"ChannelConfiguredList,omitempty" xml:"ChannelConfiguredList,omitempty" type:"Repeated"`
+	// The deployment source.
+	//
 	// example:
 	//
 	// Admin
 	DeploymentSource *string `json:"DeploymentSource,omitempty" xml:"DeploymentSource,omitempty"`
+	// Indicates whether the agent instance has a configured model.
+	//
 	// example:
 	//
 	// true
 	ModelConfigure *bool `json:"ModelConfigure,omitempty" xml:"ModelConfigure,omitempty"`
+	// The configured model group ID.
+	//
 	// example:
 	//
 	// mt-xxxx
@@ -443,6 +524,14 @@ func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) GetAgentI
 
 func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) GetAgentInstanceVersion() *string {
 	return s.AgentInstanceVersion
+}
+
+func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) GetAgentPlatform() *string {
+	return s.AgentPlatform
+}
+
+func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) GetAgentProvider() *string {
+	return s.AgentProvider
 }
 
 func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) GetChannelConfigure() *bool {
@@ -472,6 +561,16 @@ func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) SetAgentI
 
 func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) SetAgentInstanceVersion(v string) *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList {
 	s.AgentInstanceVersion = &v
+	return s
+}
+
+func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) SetAgentPlatform(v string) *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList {
+	s.AgentPlatform = &v
+	return s
+}
+
+func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) SetAgentProvider(v string) *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList {
+	s.AgentProvider = &v
 	return s
 }
 
@@ -505,10 +604,14 @@ func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) Validate(
 }
 
 type ListDesktopAgentRuntimeResponseBodyDataResourceGroup struct {
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource group name.
+	//
 	// example:
 	//
 	// resource-group-001
@@ -546,14 +649,20 @@ func (s *ListDesktopAgentRuntimeResponseBodyDataResourceGroup) Validate() error 
 }
 
 type ListDesktopAgentRuntimeResponseBodyDataRiskInfo struct {
+	// Indicates whether the agent is uninstalled.
+	//
 	// example:
 	//
 	// true
 	AgentUninstalled *bool `json:"AgentUninstalled,omitempty" xml:"AgentUninstalled,omitempty"`
+	// Indicates whether the third-party channel configuration is modified (inconsistent with the admin-distributed configuration).
+	//
 	// example:
 	//
 	// true
 	ChannelModified *bool `json:"ChannelModified,omitempty" xml:"ChannelModified,omitempty"`
+	// Indicates whether the model configuration is modified (inconsistent with the admin-distributed configuration).
+	//
 	// example:
 	//
 	// true

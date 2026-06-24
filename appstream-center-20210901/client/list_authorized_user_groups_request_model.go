@@ -24,7 +24,7 @@ type iListAuthorizedUserGroupsRequest interface {
 }
 
 type ListAuthorizedUserGroupsRequest struct {
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// This parameter is required.
 	//
@@ -32,15 +32,19 @@ type ListAuthorizedUserGroupsRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The ID of the user group (exact match).
+	// The user group ID. This parameter is used for exact match.
 	//
 	// example:
 	//
 	// ug-00001
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the user group (fuzzy match).
+	// The user group name. This parameter is used for fuzzy match.
+	//
+	// example:
+	//
+	// 用户组001
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number, starting from 1.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +52,7 @@ type ListAuthorizedUserGroupsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries returned per page.
+	// The maximum number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -57,10 +61,6 @@ type ListAuthorizedUserGroupsRequest struct {
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The product type.
-	//
-	// Valid values:
-	//
-	// 	- CloudApp: App Streaming
 	//
 	// This parameter is required.
 	//

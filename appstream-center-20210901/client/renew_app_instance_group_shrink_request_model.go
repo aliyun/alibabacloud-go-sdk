@@ -40,17 +40,11 @@ type RenewAppInstanceGroupShrinkRequest struct {
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	// Specifies whether to enable automatic payment.
 	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false: manual payment. This is the default value.
-	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The subscription duration of resources. This parameter must be configured together with `PeriodUnit`.
+	// The numeric part of the resource purchase duration. This parameter is used together with PeriodUnit to specify the complete purchase duration.
 	//
 	// This parameter is required.
 	//
@@ -58,25 +52,25 @@ type RenewAppInstanceGroupShrinkRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration. This parameter must be configured together with `Period`. The following items describe valid values for the combinations of `Period` and `PeriodUnit`:
+	// The unit part of the resource purchase duration. This parameter is used together with Period to specify the complete purchase duration. Valid combinations of Period and PeriodUnit:
 	//
-	// 	- 1 Week
+	// - 1 Week (1 week)
 	//
-	// 	- 1 Month
+	// - 1 Month (1 month)
 	//
-	// 	- 2 Month
+	// - 2 Month (2 months)
 	//
-	// 	- 3 Month
+	// - 3 Month (3 months)
 	//
-	// 	- 6 Month
+	// - 6 Month (6 months)
 	//
-	// 	- 1 Year
+	// - 1 Year (1 year)
 	//
-	// 	- 2 Year
+	// - 2 Year (2 years)
 	//
-	// 	- 3 Year
+	// - 3 Year (3 years)
 	//
-	// >  The value of this parameter is case-insensitive. For example, `Week` is valid and `week` is invalid. If you specify a value combination other than the preceding combinations, such as `2 Week`, the operation can still be called. However, an error occurs when you place the order.
+	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid. If the request parameters do not match the combinations listed above, such as `2 Week`, the call to this operation succeeds, but an error occurs during the order placement phase.
 	//
 	// This parameter is required.
 	//
@@ -86,17 +80,13 @@ type RenewAppInstanceGroupShrinkRequest struct {
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// The product type.
 	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The promotion ID. You can call the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation to obtain the ID.
+	// The promotion ID. You can obtain this value by calling the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation.
 	//
 	// example:
 	//

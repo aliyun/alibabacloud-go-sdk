@@ -34,7 +34,7 @@ type iModifyAppInstanceGroupAttributeShrinkRequest interface {
 }
 
 type ModifyAppInstanceGroupAttributeShrinkRequest struct {
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// This parameter is required.
 	//
@@ -42,29 +42,27 @@ type ModifyAppInstanceGroupAttributeShrinkRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The name of the delivery group.
+	// The delivery group name.
+	//
+	// example:
+	//
+	// 办公应用
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	// The network settings.
+	// The network configuration.
 	//
-	// >  If you want to use this parameter, submit a ticket.
+	// > To use this parameter, submit a ticket.
 	NetworkShrink *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	// The information about the resource group.
+	// The resource group object.
 	NodePoolShrink *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
-	// Specifies whether only one application can be opened in a session.
+	// Specifies whether to allow only one application per session.
 	//
-	// 	- After you enable this feature, the system assigns a session to each application if you open multiple applications in a delivery group. This consumes a larger number of sessions.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// - If enabled, opening multiple applications within a delivery group allocates a separate session for each application, consuming more sessions.
 	//
 	// example:
 	//
 	// false
 	PerSessionPerApp *bool `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
-	// The application ID of the pre-open application. If you set `PreOpenMode` to `SINGLE_APP`, you cannot leave this parameter empty.``
+	// The AppId of the pre-open application. If the PreOpenMode parameter is set to `SINGLE_APP`, PreOpenAppId cannot be an empty string.
 	//
 	// example:
 	//
@@ -72,21 +70,11 @@ type ModifyAppInstanceGroupAttributeShrinkRequest struct {
 	PreOpenAppId *string `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
 	// The pre-open mode.
 	//
-	// Valid values:
-	//
-	// 	- SINGLE_APP: enables the pre-open mode for a single application.
-	//
-	// 	- OFF: disables the pre-open mode. This is the default value.
-	//
 	// example:
 	//
 	// OFF
 	PreOpenMode *string `json:"PreOpenMode,omitempty" xml:"PreOpenMode,omitempty"`
 	// The product type.
-	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
 	//
 	// This parameter is required.
 	//
@@ -96,7 +84,7 @@ type ModifyAppInstanceGroupAttributeShrinkRequest struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The security policy.
 	SecurityPolicyShrink *string `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
-	// The duration for which sessions are retained after disconnection. Unit: minutes. After an end user disconnects from a session, the session is closed only after the specified duration elapses. If you want to permanently retain sessions, set this parameter to `-1`. Valid values:-1 and 3 to 300. Default value: `15`.
+	// The session retention duration after disconnection, in minutes. After an end user session is disconnected, the session is retained for the specified duration before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
 	//
 	// example:
 	//

@@ -18,13 +18,13 @@ type iModifyAppInstanceGroupAttributeResponseBody interface {
 }
 
 type ModifyAppInstanceGroupAttributeResponseBody struct {
-	// The error code.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
 	// InvalidParameter.ProductType
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//

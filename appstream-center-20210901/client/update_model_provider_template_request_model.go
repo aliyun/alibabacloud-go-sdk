@@ -22,13 +22,28 @@ type iUpdateModelProviderTemplateRequest interface {
 }
 
 type UpdateModelProviderTemplateRequest struct {
-	Config      *UpdateModelProviderTemplateRequestConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	Description *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The model provider configuration.
+	Config *UpdateModelProviderTemplateRequestConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The description of the model provider template.
+	//
+	// example:
+	//
+	// 阿里云百炼服务商
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the Wuying security gateway proxy.
+	//
 	// example:
 	//
 	// true
-	EnableWuyingProxy *bool   `json:"EnableWuyingProxy,omitempty" xml:"EnableWuyingProxy,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	EnableWuyingProxy *bool `json:"EnableWuyingProxy,omitempty" xml:"EnableWuyingProxy,omitempty"`
+	// The name of the model provider template.
+	//
+	// example:
+	//
+	// 阿里云百炼
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the model provider template.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -100,14 +115,20 @@ func (s *UpdateModelProviderTemplateRequest) Validate() error {
 }
 
 type UpdateModelProviderTemplateRequestConfig struct {
+	// The API key of the model service, which is used for authentication. The key is encrypted after it is created.
+	//
 	// example:
 	//
 	// sk-xxxxxxxxxxxxxxxxxxxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The API protocol type.
+	//
 	// example:
 	//
 	// openai-completions
 	ApiType *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
+	// The base URL of the model service API.
+	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1

@@ -16,7 +16,7 @@ type iLogOffAllSessionsInAppInstanceGroupRequest interface {
 }
 
 type LogOffAllSessionsInAppInstanceGroupRequest struct {
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// This parameter is required.
 	//
@@ -25,10 +25,6 @@ type LogOffAllSessionsInAppInstanceGroupRequest struct {
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	// The product type.
-	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
 	//
 	// This parameter is required.
 	//

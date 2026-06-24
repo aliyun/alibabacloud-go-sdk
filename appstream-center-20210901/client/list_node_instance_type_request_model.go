@@ -44,55 +44,69 @@ type iListNodeInstanceTypeRequest interface {
 }
 
 type ListNodeInstanceTypeRequest struct {
-	// The ID of the region where the resource resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
-	//
-	// Valid values:
-	//
-	// 	- cn-shanghai: China (Shanghai)
-	//
-	// 	- cn-hangzhou: China (Hangzhou)
+	// The region ID of the resource. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
-	BizRegionId           *string  `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	Cpu                   *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Gpu                   *float32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	GpuMemory             *int32   `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	InstanceTypeForModify *string  `json:"InstanceTypeForModify,omitempty" xml:"InstanceTypeForModify,omitempty"`
-	// The language that you want to use.
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The number of CPU cores.
 	//
-	// Valid values:
+	// example:
 	//
-	// 	- en-US: English (US)
+	// 2
+	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The number of GPUs.
 	//
-	// 	- zh-CN: Simplified Chinese
+	// example:
+	//
+	// 1
+	Gpu *float32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	// The GPU memory size. This parameter is meaningful only for GPU-accelerated cloud desktops. Unit: MB.
+	//
+	// example:
+	//
+	// 2048
+	GpuMemory             *int32  `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	InstanceTypeForModify *string `json:"InstanceTypeForModify,omitempty" xml:"InstanceTypeForModify,omitempty"`
+	// The language type.
 	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Memory   *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The resource type that you want to query. If you do not configure this parameter, all resource types are returned.
+	// The memory size. Unit: MB.
+	//
+	// example:
+	//
+	// 10240
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The resource specification type to query. If you leave this parameter empty, all specification types are returned.
 	//
 	// example:
 	//
 	// appstreaming.vgpu.4c8g.2g
-	NodeInstanceType       *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	// The instance family.
+	//
+	// example:
+	//
+	// appstreaming.vgpu
 	NodeInstanceTypeFamily *string `json:"NodeInstanceTypeFamily,omitempty" xml:"NodeInstanceTypeFamily,omitempty"`
-	OrderBy                *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	OrderType              *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The operating system that is supported.
+	// CPU/Memory.
 	//
-	// Valid value:
+	// example:
 	//
-	// 	- Windows: the Windows operating system
+	// CPU
+	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The supported operating system type.
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The number of the page to return.
+	// The page number of the query results to display.
 	//
 	// This parameter is required.
 	//
@@ -100,7 +114,7 @@ type ListNodeInstanceTypeRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 100.
+	// The number of query results per page. Valid values: 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -110,17 +124,18 @@ type ListNodeInstanceTypeRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The product type.
 	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SortType    *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	// DESC/ASC.
+	//
+	// example:
+	//
+	// ASC
+	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
 }
 
 func (s ListNodeInstanceTypeRequest) String() string {

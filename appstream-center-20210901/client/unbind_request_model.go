@@ -22,7 +22,7 @@ type iUnbindRequest interface {
 }
 
 type UnbindRequest struct {
-	// The ID of the delivery group. You can call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the ID.
+	// The delivery group ID. You can call the [GetConnectionTicket](https://help.aliyun.com/document_detail/609336.html) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type UnbindRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The session ID. You can call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the ID.
+	// The session ID. You can call the [GetConnectionTicket](https://help.aliyun.com/document_detail/609336.html) operation to obtain the ID.
 	//
 	// example:
 	//
 	// ai-d297eyf83g5ni****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	// The ID of the persistent session. You can call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the ID.
+	// The persistent session ID. You can call the [GetConnectionTicket](https://help.aliyun.com/document_detail/609336.html) operation to obtain the ID.
 	//
 	// example:
 	//
@@ -51,10 +51,6 @@ type UnbindRequest struct {
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The product type.
-	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
 	//
 	// This parameter is required.
 	//

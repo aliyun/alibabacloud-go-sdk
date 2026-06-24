@@ -22,15 +22,15 @@ type iListAppInstancesResponseBody interface {
 }
 
 type ListAppInstancesResponseBody struct {
-	// The app instances.
+	// The list of queried application instances.
 	AppInstanceModels []*ListAppInstancesResponseBodyAppInstanceModels `json:"AppInstanceModels,omitempty" xml:"AppInstanceModels,omitempty" type:"Repeated"`
-	// The page number of the returned page. We recommend that you configure this parameter.
+	// The page number of the query results to display. Specify this parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page. The value cannot be greater than `100`. We recommend that you configure this parameter.
+	// The number of query results per page. Maximum value: `100`. Specify this parameter.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListAppInstancesResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -117,45 +117,45 @@ func (s *ListAppInstancesResponseBody) Validate() error {
 }
 
 type ListAppInstancesResponseBodyAppInstanceModels struct {
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// example:
 	//
 	// aig-dk8p95irqfst9****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The ID of the application instance.
+	// The application instance ID.
 	//
 	// example:
 	//
 	// ai-8dl7dzchklmka****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	// The information about the binding between the application instance and end users.
+	// The binding information between the instance and the user.
 	BindInfo *ListAppInstancesResponseBodyAppInstanceModelsBindInfo `json:"BindInfo,omitempty" xml:"BindInfo,omitempty" type:"Struct"`
-	// The billing method of the app instance. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// 	- **PrePaid**: subscription.
+	// - **PrePaid**: subscription.
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// - **PostPaid**: pay-as-you-go.
 	//
-	// >  This parameter is returned only if the ChargeResourceMode parameter of the delivery group to which the app instance belongs is set to Node.
+	// > This parameter is returned only when the billing mode of the delivery group to which the instance belongs is set to resource-based billing (ChargeResourceMode=Node).
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the application instance was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2023-03-07T20:29:19.000+08:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the application instance was updated.
+	// The update time.
 	//
 	// example:
 	//
 	// 2023-03-07T20:29:19.000+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The public IP address associated with the primary NIC. This value is returned only if `StrategyType` is set to `Mixed`.
+	// The public IP address of the primary network interface controller (NIC). This value is returned only when the network policy (`StrategyType`) of the delivery group is set to mixed mode pattern (`Mixed`). Otherwise, this value is empty.
 	//
 	// example:
 	//
@@ -163,27 +163,21 @@ type ListAppInstancesResponseBodyAppInstanceModels struct {
 	MainEthPublicIp    *string `json:"MainEthPublicIp,omitempty" xml:"MainEthPublicIp,omitempty"`
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
-	// The ID of the node on which the app instance runs.
+	// The ID of the node on which the instance runs.
 	//
-	// >  This parameter is returned only if the ChargeResourceMode parameter of the delivery group to which the app instance belongs is set to Node.
+	// > This parameter is returned only when the billing mode of the delivery group to which the instance belongs is set to resource-based billing (ChargeResourceMode=Node).
 	//
 	// example:
 	//
 	// i-bp13********
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The session status. This parameter is returned only if the application instance is in the `RUNNING` state.
-	//
-	// Valid values:
-	//
-	// 	- disconnect: disconnected
-	//
-	// 	- connect: connected
+	// The session connection status. This value is returned only when the instance status is running (`RUNNING`). Otherwise, this value is empty.
 	//
 	// example:
 	//
 	// connect
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	// The status of the application instance.
+	// The application instance status.
 	//
 	// example:
 	//
@@ -317,13 +311,13 @@ func (s *ListAppInstancesResponseBodyAppInstanceModels) Validate() error {
 }
 
 type ListAppInstancesResponseBodyAppInstanceModelsBindInfo struct {
-	// The ID of the end user that is bound to the application instance.
+	// The ID of the end user bound to the instance.
 	//
 	// example:
 	//
 	// app.test
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The use duration of the application instance. Unit: seconds.
+	// The usage duration of the instance. Unit: seconds.
 	//
 	// example:
 	//

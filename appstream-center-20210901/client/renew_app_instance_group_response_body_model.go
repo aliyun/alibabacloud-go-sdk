@@ -20,13 +20,13 @@ type iRenewAppInstanceGroupResponseBody interface {
 }
 
 type RenewAppInstanceGroupResponseBody struct {
-	// The error code.
+	// The error code returned if the call failed.
 	//
 	// example:
 	//
 	// InvalidParameter.ProductType
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//

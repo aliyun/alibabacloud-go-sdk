@@ -66,31 +66,31 @@ type iCreateWuyingServerRequest interface {
 }
 
 type CreateWuyingServerRequest struct {
-	// Quantity.
+	// The number of workstations to create.
 	//
 	// example:
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// Auto payment.
+	// Specifies whether to enable automatic payment.
 	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Auto-renewal.
+	// Specifies whether to enable auto-renewal.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// bandwidth value, the NetworkStrategyType is valid for DirectIp. Unit: Mbps, range 2~100
+	// The bandwidth value. This parameter takes effect only when NetworkStrategyType is set to DirectIp. Unit: Mbit/s. Valid values: 2 to 100.
 	//
 	// example:
 	//
 	// 10
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// Region.
+	// The region ID.
 	//
 	// example:
 	//
@@ -98,76 +98,94 @@ type CreateWuyingServerRequest struct {
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	// The billing method.
 	//
-	// Valid values:
-	//
-	// 	- PrePaid: subscription
-	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The list of data disks.
+	// The list of data cloud disks.
 	DataDisk []*CreateWuyingServerRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	HostName *string                              `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// Idempotence token to ensure operation uniqueness
+	// The hostname. The following limits apply:
+	//
+	// - A period (.) or hyphen (-) cannot be used as the first or last character, and consecutive periods or hyphens are not allowed.
+	//
+	// - Windows workstations: The hostname must be 2 to 15 characters in length. It cannot contain periods (.), consecutive hyphens, or consist entirely of digits. It can contain uppercase and lowercase letters, digits, and hyphens (-).
+	//
+	// - Linux workstations:
+	//
+	//   - The hostname must be 2 to 64 characters in length and can contain multiple periods (.). Each segment separated by a period can contain uppercase and lowercase letters, digits, and hyphens (-).
+	//
+	//   - You can use the placeholder `${instance_id}` to include the instance ID in the HostName parameter. For example, if you set `HostName=k8s-${instance_id}` and the ECS instance ID is `i-123abc****`, the hostname is `k8s-i-123abc****`.
+	//
+	// - When you create multiple workstation instances at a time, you can use the `name_prefix[begin_number,bits]name_suffix` format to assign sequential hostnames. For example, if you set HostName to `ecd-[1,4]-test`, the hostname of the first workstation is `ecd-0001-test`, the hostname of the second workstation is `ecd-0002-test`, and so on.
+	//
+	//   - `name_prefix`: the prefix of the hostname.
+	//
+	//   - `[begin_number,bits]`: the sequential number in the hostname.
+	//
+	//     - `begin_number`: the starting number. Valid values: 0 to 999999. Default value: 0. If the value is invalid, 0 is used.
+	//
+	//     - `bits`: the number of digits. Valid values: 1 to 6. Default value: 6. If the value is invalid, 6 is used.
+	//
+	//   - `name_suffix`: the suffix of the hostname.
+	//
+	// example:
+	//
+	// testhost
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The idempotence token that ensures the uniqueness of the operation.
 	//
 	// example:
 	//
 	// 6a1b8c3d
 	IdempotenceToken *string `json:"IdempotenceToken,omitempty" xml:"IdempotenceToken,omitempty"`
-	// The ID of the image.
+	// The image ID.
 	//
 	// example:
 	//
 	// img-bp13mu****
 	ImageId  *string  `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
-	// The type of the network policy (in invitational preview).
+	// The network policy type (in invitational preview).
 	//
 	// example:
 	//
 	// DirectIp
 	NetworkStrategyType *string `json:"NetworkStrategyType,omitempty" xml:"NetworkStrategyType,omitempty"`
-	// The office network IDs.
+	// The office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-643067****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// Workstation login password.
+	// The logon password of the workstation.
 	//
 	// example:
 	//
 	// YourPassword123
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The subscription period.
+	// The subscription duration.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The time unit.
-	//
-	// Valid values:
-	//
-	// 	- Month
-	//
-	// 	- Year
+	// The unit of the subscription duration.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The ID of the discount.
+	// The promotion ID.
 	//
-	// >  If PromotionId is set, it will try to apply the corresponding discount.
+	//
+	// > If PromotionId is specified, the corresponding discount is applied.
 	//
 	// example:
 	//
 	// 17440009****
 	PromotionId  *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	SavingPlanId *string `json:"SavingPlanId,omitempty" xml:"SavingPlanId,omitempty"`
-	// Workstation specifications.
+	// The workstation instance type.
 	//
 	// example:
 	//
@@ -175,35 +193,31 @@ type CreateWuyingServerRequest struct {
 	ServerInstanceType *string `json:"ServerInstanceType,omitempty" xml:"ServerInstanceType,omitempty"`
 	ServerPortRange    *string `json:"ServerPortRange,omitempty" xml:"ServerPortRange,omitempty"`
 	SubPayType         *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
-	// The system disk category.
-	//
-	// Valid values:
-	//
-	// 	- cloud_auto.
+	// The type of the system cloud disk.
 	//
 	// example:
 	//
 	// cloud_auto
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// The performance level (PL) of the system disk.
+	// The performance level of the system cloud disk.
 	//
 	// example:
 	//
 	// PL0
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
-	// The size of the system disk. Unit: GB.
+	// The size of the system cloud disk. Unit: GB.
 	//
 	// example:
 	//
 	// 100
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	// The list of office network vSwitches.
+	// The list of vSwitches in the office network.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// vnp-0b************gyw
 	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
-	// The name of the workstation. The numeric suffix is automatically added when multiple workstations are created.
+	// The workstation name. When you create multiple workstations, a numeric suffix is automatically appended.
 	//
 	// example:
 	//
@@ -476,23 +490,19 @@ func (s *CreateWuyingServerRequest) Validate() error {
 }
 
 type CreateWuyingServerRequestDataDisk struct {
-	// The data disk category.
-	//
-	// Valid values:
-	//
-	// 	- cloud_auto.
+	// The type of the data cloud disk.
 	//
 	// example:
 	//
 	// cloud_auto
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
-	// The PL of the data disk.
+	// The performance level of the data cloud disk.
 	//
 	// example:
 	//
 	// PL0
 	DataDiskPerformanceLevel *string `json:"DataDiskPerformanceLevel,omitempty" xml:"DataDiskPerformanceLevel,omitempty"`
-	// The data disk size.
+	// The size of the data cloud disk.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iApproveOtaTaskRequest interface {
 }
 
 type ApproveOtaTaskRequest struct {
-	// The ID of the delivery group. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+	// The delivery group ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ApproveOtaTaskRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The ID of the region where the delivery group resides. You can call the [ListRegions](https://help.aliyun.com/document_detail/428500.html) operation to query the list of regions supported by App Streaming.
+	// The region ID of the delivery group. You can call [ListRegions](~~ListRegions~~) to query the list of regions supported by Wuying Cloud Application.
 	//
 	// This parameter is required.
 	//
@@ -38,15 +38,7 @@ type ApproveOtaTaskRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The type of the OTA update task.
-	//
-	// Valid values:
-	//
-	// 	- Fota: update of the system components of Alibaba Cloud Workspace
-	//
-	// 	- AppUpdate
-	//
-	// 	- ImageUpdate
+	// The over-the-air upgrade task type.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +46,7 @@ type ApproveOtaTaskRequest struct {
 	//
 	// Fota
 	OtaType *string `json:"OtaType,omitempty" xml:"OtaType,omitempty"`
-	// The start time of the OTA update task. The time follows the ISO 8601 standard.
+	// The start time of the over-the-air upgrade task. Specify the time in ISO 8601 format.
 	//
 	// This parameter is required.
 	//
@@ -64,9 +56,9 @@ type ApproveOtaTaskRequest struct {
 	//
 	// 2022-08-04T14:36:00+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the OTA update task. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+	// The over-the-air upgrade task ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the ID.
 	//
-	// >  Each successful call to the `ApproveOtaTask` operation causes a value change of this parameter.`` Before you call this operation, call the `ListAppInstanceGroup` operation again to obtain the latest value of this parameter.``
+	// > Each successful call of `ApproveOtaTask` causes the `TaskId` to change. Therefore, before calling this operation again, call `ListAppInstanceGroup` again to obtain the latest `TaskId`.
 	//
 	// This parameter is required.
 	//

@@ -22,13 +22,13 @@ type iListOtaTaskResponseBody interface {
 }
 
 type ListOtaTaskResponseBody struct {
-	// The page number of the returned page.
+	// The page number of the query results to display.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on each page.
+	// The number of query results per page.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListOtaTaskResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The OTA update tasks.
+	// The list of over-the-air update tasks.
 	TaskList []*ListOtaTaskResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
-	// The total number of OTA update tasks.
+	// The total number of over-the-air update tasks.
 	//
 	// example:
 	//
@@ -125,20 +125,6 @@ type ListOtaTaskResponseBodyTaskList struct {
 	OtaVersion *string `json:"OtaVersion,omitempty" xml:"OtaVersion,omitempty"`
 	// The task status.
 	//
-	// Valid values:
-	//
-	// 	- FAILED
-	//
-	// 	- RUNNING
-	//
-	// 	- TERMINATED
-	//
-	// 	- PART_FINISHED
-	//
-	// 	- STANDBY
-	//
-	// 	- FINISHED
-	//
 	// example:
 	//
 	// RUNNING
@@ -149,7 +135,7 @@ type ListOtaTaskResponseBodyTaskList struct {
 	//
 	// ota-be7jzm29wrrz5****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The start time of the OTA update task. The time follows the ISO 8601 standard.
+	// The task start time in ISO 8601 format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//

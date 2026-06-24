@@ -20,20 +20,20 @@ type iModifyWuyingServerAttributeRequest interface {
 }
 
 type ModifyWuyingServerAttributeRequest struct {
-	// Workstation login password.
+	// The logon password of the cloud graphics workstation.
 	//
 	// example:
 	//
 	// yourPassword
 	Password    *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The ID of the workstation.
+	// The ID of the cloud graphics workstation.
 	//
 	// example:
 	//
 	// ws-0bw2f11****dial
 	WuyingServerId *string `json:"WuyingServerId,omitempty" xml:"WuyingServerId,omitempty"`
-	// The name.
+	// The name of the cloud graphics workstation.
 	//
 	// example:
 	//

@@ -22,19 +22,28 @@ type iListModelTemplatesResponseBody interface {
 }
 
 type ListModelTemplatesResponseBody struct {
+	// The list of returned data objects.
 	Data []*ListModelTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The page number of the current query result.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page in the query result.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries in the query result.
+	//
 	// example:
 	//
 	// 30
@@ -108,10 +117,14 @@ func (s *ListModelTemplatesResponseBody) Validate() error {
 }
 
 type ListModelTemplatesResponseBodyData struct {
+	// The name of the Agent provider.
+	//
 	// example:
 	//
 	// OpenClaw
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
+	// The model group configuration JSON object.
+	//
 	// example:
 	//
 	// {
@@ -127,16 +140,27 @@ type ListModelTemplatesResponseBodyData struct {
 	// 	}
 	//
 	// }
-	Config      *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The template group description.
+	//
+	// example:
+	//
+	// 测试模型分组
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether models have been configured in the group.
+	//
 	// example:
 	//
 	// true
 	HasModel *bool `json:"HasModel,omitempty" xml:"HasModel,omitempty"`
+	// The model group ID.
+	//
 	// example:
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
+	// The template group name.
+	//
 	// example:
 	//
 	// model-template-001

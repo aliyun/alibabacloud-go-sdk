@@ -26,31 +26,44 @@ type iListModelTemplatesShrinkRequest interface {
 }
 
 type ListModelTemplatesShrinkRequest struct {
+	// The Agent platform.
+	//
 	// example:
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
+	// The name of the Agent provider.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OpenClaw
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
+	// The business type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// Specifies whether models have been configured in the group.
+	//
 	// example:
 	//
 	// true
-	HasModel                  *bool   `json:"HasModel,omitempty" xml:"HasModel,omitempty"`
+	HasModel *bool `json:"HasModel,omitempty" xml:"HasModel,omitempty"`
+	// The list of template group IDs used for filtering.
 	ModelTemplateIdListShrink *string `json:"ModelTemplateIdList,omitempty" xml:"ModelTemplateIdList,omitempty"`
+	// The page number, starting from 1. Values 0 and 1 return the same result.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20

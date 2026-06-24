@@ -16,17 +16,13 @@ type iListRegionsRequest interface {
 }
 
 type ListRegionsRequest struct {
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// null
 	BizSource *string `json:"BizSource,omitempty" xml:"BizSource,omitempty"`
 	// The product type.
-	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
 	//
 	// example:
 	//

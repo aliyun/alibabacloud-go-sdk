@@ -18,7 +18,7 @@ type iCreateImageFromAppInstanceGroupRequest interface {
 }
 
 type CreateImageFromAppInstanceGroupRequest struct {
-	// The image name.
+	// The name of the application image.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type CreateImageFromAppInstanceGroupRequest struct {
 	//
 	// test_name
 	AppCenterImageName *string `json:"AppCenterImageName,omitempty" xml:"AppCenterImageName,omitempty"`
-	// The ID of the delivery group. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+	// The delivery group ID. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the value.
 	//
 	// This parameter is required.
 	//
@@ -35,10 +35,6 @@ type CreateImageFromAppInstanceGroupRequest struct {
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	// The product type.
-	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
 	//
 	// This parameter is required.
 	//

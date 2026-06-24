@@ -68,7 +68,7 @@ type iCreateAppInstanceGroupShrinkRequest interface {
 }
 
 type CreateAppInstanceGroupShrinkRequest struct {
-	// The image ID of the application. To obtain the image ID, log on to the [App Streaming console](https://appstreaming.console.aliyun.com/). In the left-side navigation pane, choose **Maintenance*	- > **Custom Images*	- or Maintenance > **System Images**.
+	// The application image ID. You can obtain the ID from the **O&M*	- > **Custom Images*	- or **System Images*	- page in the [WUYING Cloud Application console](https://appstreaming.console.aliyun.com/).
 	//
 	// This parameter is required.
 	//
@@ -77,20 +77,24 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	// img-8z4nztpaqvay4****
 	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
 	// The name of the delivery group.
+	//
+	// example:
+	//
+	// 办公应用
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	// Package type.
+	// The package type.
 	//
 	// example:
 	//
 	// browser.package.5.250.appstreaming.general.basic
 	AppPackageType *string `json:"AppPackageType,omitempty" xml:"AppPackageType,omitempty"`
-	// Policy ID.
+	// The policy ID.
 	//
 	// example:
 	//
 	// pg-0clfzcy0adpcf****
 	AppPolicyId *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
-	// The authentication mode of the delivery group.
+	// The authorization mode of the delivery group.
 	//
 	// if can be null:
 	// true
@@ -101,35 +105,17 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	AuthMode *string `json:"AuthMode,omitempty" xml:"AuthMode,omitempty"`
 	// Specifies whether to enable automatic payment.
 	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false: manual payment. This is the default value.
-	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal.
 	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false: manual payment. This is the default value.
-	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
-	//
-	// Valid values:
-	//
-	// 	- cn-shanghai: China (Shanghai)
-	//
-	// 	- cn-hangzhou: China (Hangzhou)
+	// The region ID of the delivery group. For information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
 	//
 	// This parameter is required.
 	//
@@ -139,10 +125,6 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	// The sales mode.
 	//
-	// Valid value:
-	//
-	// 	- Node: by resource
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -151,55 +133,49 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	ChargeResourceMode *string `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
 	// The billing method.
 	//
-	// Valid values:
-	//
-	// 	- PostPaid: pay-as-you-go
-	//
-	// 	- PrePaid: subscription
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// cls-d39iq73l5c0a8****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The network settings.
+	// The network configuration.
 	//
-	// >  If you want to use this parameter, submit a ticket.
+	// > To use this parameter, submit a ticket.
 	NetworkShrink *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The node pool object.
 	NodePoolShrink *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
-	// The subscription duration of resources. This parameter is required if you set `ChargeType` to `PrePaid`. The unit of this parameter is specified by `PeriodUnit`.
+	// The subscription duration of the resource when `ChargeType` is set to `PrePaid`. This parameter is required. The unit is specified by `PeriodUnit`.
 	//
-	// 	- Valid value if you set `PeriodUnit` to `Week`:
+	// - If `PeriodUnit` is set to `Week`, valid values:
 	//
-	//     	- 1
+	//    - 1
 	//
-	// 	- Valid values if you set `PeriodUnit` to `Month`:
+	// - If `PeriodUnit` is set to `Month`, valid values:
 	//
-	//     	- 1
+	//    - 1
 	//
-	//     	- 2
+	//    - 2
 	//
-	//     	- 3
+	//    - 3
 	//
-	//     	- 6
+	//    - 6
 	//
-	// 	- Valid values if you set `PeriodUnit` to `Year`:
+	// - If `PeriodUnit` is set to `Year`, valid values:
 	//
-	//     	- 1
+	//    - 1
 	//
-	//     	- 2
+	//    - 2
 	//
-	//     	- 3
+	//    - 3
 	//
-	// >  If you set `ChargeType` to `PostPaid`, set this parameter to 1.
+	// > If `ChargeType` is set to `PostPaid`, set this parameter to 1.
 	//
 	// This parameter is required.
 	//
@@ -207,19 +183,13 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration. This parameter is available if you set `ChargeType` to `PrePaid`.
+	// The unit of the subscription duration when `ChargeType` is set to `PrePaid`.
 	//
-	// >  The value of this parameter is case-insensitive. For example, `Week` is valid and `week` is invalid. If you specify an invalid value combination for Period and PeriodUnit, such as `2 Week`, the operation can still be called. However, an error occurs when you place the order.
+	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid.
 	//
-	// >  If you set `ChargeType` to `PostPaid`, set this parameter to `Month`.
+	// If the request parameters do not match the valid combinations, such as `2 Week`, the API call succeeds but an error occurs during the order placement.
 	//
-	// Valid values:
-	//
-	// 	- Month
-	//
-	// 	- Year
-	//
-	// 	- Week
+	// > If `ChargeType` is set to `PostPaid`, set this parameter to `Month`.
 	//
 	// This parameter is required.
 	//
@@ -227,17 +197,13 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	//
 	// Week
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The ID of the pre-open application.
+	// The pre-opened application ID.
 	//
 	// example:
 	//
-	// cag-b2ron*******
+	// cag-b2ronxxd****
 	PreOpenAppId *string `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
 	// The product type.
-	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
 	//
 	// This parameter is required.
 	//
@@ -255,7 +221,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	RuntimePolicyShrink *string `json:"RuntimePolicy,omitempty" xml:"RuntimePolicy,omitempty"`
 	// The security policy.
 	SecurityPolicyShrink *string `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
-	// The period of time during which the application can be recycled. The recycling period is the period of time between the time when the end user disconnects from the application and the time when processes exit the application. If you do not want to recycle the application, set this parameter to `-1`. Valid values:-1 and 3 to 300. The value must be an integer. Default value: `15`. Unit: minutes.
+	// The application recycling timeout period, in minutes. After an end user disconnects from a cloud application for a period of time, the cloud application process exits. This period is the application recycling timeout. Set this parameter to `-1` if you do not want the application to be recycled. Valid values: -1 and 3 to 300 (integer). Default value: `15`.
 	//
 	// This parameter is required.
 	//
@@ -265,24 +231,24 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	SessionTimeout *int32 `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
 	// The storage policy.
 	StoragePolicyShrink *string `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
-	// Payment method subtype.
+	// The billing method subtype.
 	//
 	// example:
 	//
 	// postPaid
 	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
-	// The custom policy.
+	// The user-defined policy.
 	UserDefinePolicyShrink *string `json:"UserDefinePolicy,omitempty" xml:"UserDefinePolicy,omitempty"`
-	// List of authorized user group IDs.
+	// The list of authorized user group IDs.
 	//
 	// if can be null:
 	// true
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	// The information about the user that you want to add to the assigned user list of the delivery group. This parameter is required if you configure `Users`.
+	// The user information of the users to be added to the delivery group. This field is required if the `Users` parameter is specified.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
-	// The users that you want to add to the assigned user list of the delivery group.
+	// The list of usernames to be added to the delivery group as assigned users.
 	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
-	// Display policy.
+	// The display policy.
 	VideoPolicyShrink *string `json:"VideoPolicy,omitempty" xml:"VideoPolicy,omitempty"`
 }
 

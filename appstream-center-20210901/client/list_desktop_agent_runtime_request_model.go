@@ -37,6 +37,8 @@ type iListDesktopAgentRuntimeRequest interface {
 	GetHasRisk() *bool
 	SetIncludeRiskInfo(v bool) *ListDesktopAgentRuntimeRequest
 	GetIncludeRiskInfo() *bool
+	SetManagementStatus(v string) *ListDesktopAgentRuntimeRequest
+	GetManagementStatus() *string
 	SetModelConfigure(v bool) *ListDesktopAgentRuntimeRequest
 	GetModelConfigure() *bool
 	SetModelTemplateId(v string) *ListDesktopAgentRuntimeRequest
@@ -52,67 +54,132 @@ type iListDesktopAgentRuntimeRequest interface {
 }
 
 type ListDesktopAgentRuntimeRequest struct {
+	// The list of agent instance statuses.
+	//
+	// example:
+	//
+	// Running
 	AgentInstanceStatuses []*string `json:"AgentInstanceStatuses,omitempty" xml:"AgentInstanceStatuses,omitempty" type:"Repeated"`
+	// The list of agent instance versions.
+	//
+	// example:
+	//
+	// OpenClaw 2026.4.15
 	AgentInstanceVersions []*string `json:"AgentInstanceVersions,omitempty" xml:"AgentInstanceVersions,omitempty" type:"Repeated"`
+	// The agent platform.
+	//
 	// example:
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
-	// This parameter is required.
+	// The name of the agent provider.
 	//
 	// example:
 	//
 	// OpenClaw
-	AgentProvider *string   `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
-	AuthUsers     []*string `json:"AuthUsers,omitempty" xml:"AuthUsers,omitempty" type:"Repeated"`
+	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
+	// The list of authorized users.
+	//
+	// example:
+	//
+	// user001
+	AuthUsers []*string `json:"AuthUsers,omitempty" xml:"AuthUsers,omitempty" type:"Repeated"`
+	// The business type.
+	//
 	// example:
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// Specifies whether the third-party channel is configured.
+	//
 	// example:
 	//
 	// true
 	ChannelConfigure *bool `json:"ChannelConfigure,omitempty" xml:"ChannelConfigure,omitempty"`
+	// The deployment source.
+	//
 	// example:
 	//
 	// Admin
-	DeploymentSource *string   `json:"DeploymentSource,omitempty" xml:"DeploymentSource,omitempty"`
-	DesktopIds       []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
-	DesktopNames     []*string `json:"DesktopNames,omitempty" xml:"DesktopNames,omitempty" type:"Repeated"`
-	DesktopStatuses  []*string `json:"DesktopStatuses,omitempty" xml:"DesktopStatuses,omitempty" type:"Repeated"`
+	DeploymentSource *string `json:"DeploymentSource,omitempty" xml:"DeploymentSource,omitempty"`
+	// The list of agent runtime IDs.
+	//
+	// example:
+	//
+	// jvs-xxxxx
+	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
+	// The list of agent runtime names.
+	//
+	// example:
+	//
+	// Desktop001
+	DesktopNames []*string `json:"DesktopNames,omitempty" xml:"DesktopNames,omitempty" type:"Repeated"`
+	// The list of cloud computer statuses.
+	//
+	// example:
+	//
+	// Running
+	DesktopStatuses []*string `json:"DesktopStatuses,omitempty" xml:"DesktopStatuses,omitempty" type:"Repeated"`
+	// Specifies whether authorized users exist.
+	//
 	// example:
 	//
 	// true
 	HasAuthUser *bool `json:"HasAuthUser,omitempty" xml:"HasAuthUser,omitempty"`
+	// Specifies whether a risk exists. Used to filter cloud computers with or without risks. This parameter takes effect only when IncludeRiskInfo is set to true.
+	//
+	// Set to true to return only records with risks. Set to false to return only records without risks. If not specified, no filtering is applied.
+	//
 	// example:
 	//
 	// true
 	HasRisk *bool `json:"HasRisk,omitempty" xml:"HasRisk,omitempty"`
+	// Specifies whether to query and return risk information. Default value: false. When set to true, the response includes the RiskInfo field, and the HasRisk filter condition takes effect.
+	//
 	// example:
 	//
 	// true
 	IncludeRiskInfo *bool `json:"IncludeRiskInfo,omitempty" xml:"IncludeRiskInfo,omitempty"`
 	// example:
 	//
+	// Hibernated
+	ManagementStatus *string `json:"ManagementStatus,omitempty" xml:"ManagementStatus,omitempty"`
+	// Specifies whether the model is configured.
+	//
+	// example:
+	//
 	// true
 	ModelConfigure *bool `json:"ModelConfigure,omitempty" xml:"ModelConfigure,omitempty"`
+	// The model group ID.
+	//
 	// example:
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
+	// The page number, starting from 1. Values 0 and 1 return the same result.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxx
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceIds     []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The list of resource IDs (underlying real resource IDs).
+	//
+	// example:
+	//
+	// ecd-xxxxx
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 }
 
 func (s ListDesktopAgentRuntimeRequest) String() string {
@@ -177,6 +244,10 @@ func (s *ListDesktopAgentRuntimeRequest) GetHasRisk() *bool {
 
 func (s *ListDesktopAgentRuntimeRequest) GetIncludeRiskInfo() *bool {
 	return s.IncludeRiskInfo
+}
+
+func (s *ListDesktopAgentRuntimeRequest) GetManagementStatus() *string {
+	return s.ManagementStatus
 }
 
 func (s *ListDesktopAgentRuntimeRequest) GetModelConfigure() *bool {
@@ -270,6 +341,11 @@ func (s *ListDesktopAgentRuntimeRequest) SetHasRisk(v bool) *ListDesktopAgentRun
 
 func (s *ListDesktopAgentRuntimeRequest) SetIncludeRiskInfo(v bool) *ListDesktopAgentRuntimeRequest {
 	s.IncludeRiskInfo = &v
+	return s
+}
+
+func (s *ListDesktopAgentRuntimeRequest) SetManagementStatus(v string) *ListDesktopAgentRuntimeRequest {
+	s.ManagementStatus = &v
 	return s
 }
 

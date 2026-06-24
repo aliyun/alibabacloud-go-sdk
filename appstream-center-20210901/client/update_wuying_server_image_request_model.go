@@ -30,7 +30,7 @@ type UpdateWuyingServerImageRequest struct {
 	//
 	// WuyingServer
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The ID of the workstation.
+	// The workstation ID.
 	//
 	// example:
 	//

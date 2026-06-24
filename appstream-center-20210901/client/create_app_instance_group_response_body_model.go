@@ -62,13 +62,13 @@ func (s *CreateAppInstanceGroupResponseBody) Validate() error {
 }
 
 type CreateAppInstanceGroupResponseBodyAppInstanceGroupModel struct {
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The ID of the resource group. This parameter is returned if a resource group was created.
+	// The resource group ID. This parameter is returned if a resource group is created at the same time.
 	//
 	// example:
 	//

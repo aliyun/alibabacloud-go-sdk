@@ -20,7 +20,7 @@ type iListNodesRequest interface {
 }
 
 type ListNodesRequest struct {
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ListNodesRequest struct {
 	//
 	// aig-53fvrq1oanz6c****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number of the query results to display, starting from 1.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ListNodesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 200.
+	// The number of query results per page. Valid values: 1 to 200.
 	//
 	// This parameter is required.
 	//
@@ -45,10 +45,6 @@ type ListNodesRequest struct {
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The product type.
-	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
 	//
 	// This parameter is required.
 	//

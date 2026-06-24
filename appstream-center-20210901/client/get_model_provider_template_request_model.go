@@ -14,6 +14,8 @@ type iGetModelProviderTemplateRequest interface {
 }
 
 type GetModelProviderTemplateRequest struct {
+	// The ID of the model provider template.
+	//
 	// This parameter is required.
 	//
 	// example:

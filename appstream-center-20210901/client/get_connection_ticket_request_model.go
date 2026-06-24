@@ -38,6 +38,12 @@ type iGetConnectionTicketRequest interface {
 }
 
 type GetConnectionTicketRequest struct {
+	// The access type. If you do not specify this parameter, both types are displayed. Valid values:
+	//
+	// - INTERNET: Internet access.
+	//
+	// - VPC: Express Connect access.
+	//
 	// if can be null:
 	// true
 	//
@@ -47,42 +53,44 @@ type GetConnectionTicketRequest struct {
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The application ID.
 	//
-	// >  This parameter is required for the first call to this operation and optional for subsequent calls to the operation.
+	// > This parameter is required for the initial call and optional for subsequent calls.
 	//
 	// example:
 	//
 	// ca-e4s0puhmwi7v****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The delivery groups.
+	// The list of delivery groups.
 	//
-	// > 	- If you configure this parameter, the system assigns application instances only among the specified authorized delivery groups.
+	// > - If you specify this parameter, application instances are allocated only from the specified authorized delivery groups.
 	//
-	// > 	- This parameter is required if you configure `AppInstanceId` or `AppInstancePersistentId`.
+	// > - If you specify the `AppInstanceId` or `AppInstancePersistentId` parameter, this parameter is required.
 	AppInstanceGroupIdList []*string `json:"AppInstanceGroupIdList,omitempty" xml:"AppInstanceGroupIdList,omitempty" type:"Repeated"`
-	// The ID of the application instance.
+	// The application instance ID.
 	//
-	// > 	- If you configure this parameter, the system attempts to assign only the specified application instance.
+	// >
 	//
-	// > 	- If you configure this parameter, you must also configure `AppInstanceGroupIdList` and the number of delivery groups specified by `AppInstanceGroupIdList` must be 1.
+	// > - If you specify this parameter, only the specified application instance is allocated.
+	//
+	// > - If you specify this parameter, you must also specify the `AppInstanceGroupIdList` parameter, and the number of delivery group IDs in `AppInstanceGroupIdList` must be 1.
 	//
 	// example:
 	//
 	// ai-1rznfnrvsa99d****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	// The ID of the persistent session.
+	// The persistent session ID.
 	//
 	// example:
 	//
 	// p-0bxls9m3cl7s****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
 	AppPolicyId             *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
-	// The parameters that are configured to start the application. For information about how to obtain these parameters, see [Obtain parameters configured to install and start an application](https://help.aliyun.com/document_detail/426045.html).
+	// The application startup parameter. For information about how to obtain startup parameters, see [How to obtain application installation and startup parameters](https://help.aliyun.com/document_detail/426045.html).
 	//
 	// example:
 	//
 	// /q /n
 	AppStartParam *string `json:"AppStartParam,omitempty" xml:"AppStartParam,omitempty"`
-	// The application version. If you configure this parameter, only an application of the specified version is started. If you do not configure this parameter, an application of a random authorized version is started.
+	// The application version. If you specify this parameter, only the specified version of the application is opened. If you do not specify this parameter, any authorized version of the application is opened.
 	//
 	// example:
 	//
@@ -90,13 +98,13 @@ type GetConnectionTicketRequest struct {
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	// The region ID.
 	//
-	// >  If you configure this parameter, the system assigns application instances only among the delivery groups that reside in the specified region.
+	// > If you specify this parameter, application instances are allocated only from delivery groups in the specified region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The ID of the convenience account.
+	// The username.
 	//
 	// This parameter is required.
 	//
@@ -108,12 +116,6 @@ type GetConnectionTicketRequest struct {
 	EnvironmentConfig *string `json:"EnvironmentConfig,omitempty" xml:"EnvironmentConfig,omitempty"`
 	// The product type.
 	//
-	// Valid values:
-	//
-	// 	- CloudApp: App Streaming
-	//
-	// 	- AndroidCloud: Cloud Phone
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -122,7 +124,7 @@ type GetConnectionTicketRequest struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The task ID.
 	//
-	// >  This parameter is required for calls other than the first call to this operation. You can use this parameter to query the task status and connection credential.
+	// > This request parameter is required for non-initial invokes. Use this parameter to check the task status and connection credentials.
 	//
 	// example:
 	//

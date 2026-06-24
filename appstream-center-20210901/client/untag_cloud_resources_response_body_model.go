@@ -16,7 +16,7 @@ type iUntagCloudResourcesResponseBody interface {
 }
 
 type UntagCloudResourcesResponseBody struct {
-	// The cloud resources whose tags failed to be removed and the corresponding tags.
+	// The list of failed resources and tag information.
 	FailedResources []*UntagCloudResourcesResponseBodyFailedResources `json:"FailedResources,omitempty" xml:"FailedResources,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -78,29 +78,19 @@ type UntagCloudResourcesResponseBodyFailedResources struct {
 	//
 	// Failed to untag resource.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The resource IDs.
+	// The resource ID.
 	//
 	// example:
 	//
 	// aig-00000001
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the cloud resource.
-	//
-	// Valid values:
-	//
-	// 	- AppId: app ID.
-	//
-	// 	- WyId: Alibaba Cloud Workspace user ID.
-	//
-	// 	- AppInstanceGroupId: delivery group ID.
-	//
-	// 	- AliUid: tenant ID.
+	// The cloud resource type.
 	//
 	// example:
 	//
 	// AppInstanceGroupId
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags that failed to be removed from the cloud resources.
+	// The list of failed tag information.
 	Tags []*UntagCloudResourcesResponseBodyFailedResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -178,12 +168,6 @@ type UntagCloudResourcesResponseBodyFailedResourcesTags struct {
 	// Resolution
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag type.
-	//
-	// Valid values:
-	//
-	// 	- Custom: custom tag.
-	//
-	// 	- System: system tag.
 	//
 	// example:
 	//

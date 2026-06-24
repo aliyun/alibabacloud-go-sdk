@@ -18,13 +18,13 @@ type iApproveOtaTaskResponseBody interface {
 }
 
 type ApproveOtaTaskResponseBody struct {
-	// The execution result. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+	// The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
 	//
 	// example:
 	//
 	// OtaTask.Running
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message. If the value of `Code` is `success`, this parameter is not returned.
+	// The error message. This parameter is not returned when `Code` is `success`.
 	//
 	// example:
 	//

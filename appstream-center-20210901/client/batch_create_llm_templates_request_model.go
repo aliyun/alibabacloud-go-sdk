@@ -18,11 +18,16 @@ type iBatchCreateLlmTemplatesRequest interface {
 }
 
 type BatchCreateLlmTemplatesRequest struct {
+	// The list of model configurations to create.
 	LlmTemplateItems []*BatchCreateLlmTemplatesRequestLlmTemplateItems `json:"LlmTemplateItems,omitempty" xml:"LlmTemplateItems,omitempty" type:"Repeated"`
+	// The ID of the associated model group.
+	//
 	// example:
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
+	// The ID of the model provider template to which the models belong.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -80,6 +85,8 @@ func (s *BatchCreateLlmTemplatesRequest) Validate() error {
 }
 
 type BatchCreateLlmTemplatesRequestLlmTemplateItems struct {
+	// The model configuration JSON object.
+	//
 	// example:
 	//
 	// {
@@ -115,16 +122,27 @@ type BatchCreateLlmTemplatesRequestLlmTemplateItems struct {
 	// 	"contextWindow": 1000000
 	//
 	// }
-	Config      *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The model description.
+	//
+	// example:
+	//
+	// 千问Plus系列模型
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to set this model as the default model. Each model group can have at most one default model.
+	//
 	// example:
 	//
 	// false
 	IsDefaultModel *bool `json:"IsDefaultModel,omitempty" xml:"IsDefaultModel,omitempty"`
+	// The model code, which must be unique within the same provider.
+	//
 	// example:
 	//
 	// qwen3.6-plus
 	LlmCode *string `json:"LlmCode,omitempty" xml:"LlmCode,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// Qwen3.6-Plus

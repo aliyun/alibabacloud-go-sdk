@@ -34,19 +34,19 @@ type iGetConnectionTicketResponseBody interface {
 }
 
 type GetConnectionTicketResponseBody struct {
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// example:
 	//
 	// aig-53fvrq1oan****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The ID of the application instance.
+	// The application instance ID.
 	//
 	// example:
 	//
 	// ai-7ybdeiyoeh5e****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	// The ID of the persistent session.
+	// The persistent session ID.
 	//
 	// example:
 	//
@@ -60,11 +60,7 @@ type GetConnectionTicketResponseBody struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The operating system.
-	//
-	// Valid value:
-	//
-	// 	- Windows: the Windows operating system
+	// The operating system type.
 	//
 	// example:
 	//
@@ -84,27 +80,19 @@ type GetConnectionTicketResponseBody struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task status.
 	//
-	// Valid values:
-	//
-	// 	- Finished: The task is complete.
-	//
-	// 	- Failed: The task failed.
-	//
-	// 	- Running: The task is being executed.
-	//
 	// example:
 	//
 	// Running
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The tenant ID (Alibaba Cloud account UID).
 	//
 	// example:
 	//
 	// 148871678899****
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The credential that is used to connect to App Streaming.
+	// The credentials for connecting to the cloud application.
 	//
-	// >  This parameter is displayed for calls other than the first call to this operation.
+	// > This parameter is returned only on non-initial calls.
 	//
 	// example:
 	//

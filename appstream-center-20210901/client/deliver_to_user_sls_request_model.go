@@ -24,30 +24,42 @@ type iDeliverToUserSlsRequest interface {
 }
 
 type DeliverToUserSlsRequest struct {
+	// List of delivery scopes
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [{"productType":"China_China"}]
 	DeliveryScopes []*DeliverToUserSlsRequestDeliveryScopes `json:"DeliveryScopes,omitempty" xml:"DeliveryScopes,omitempty" type:"Repeated"`
+	// Existing Simple Log Service project name; either this or ProjectName is required
+	//
 	// example:
 	//
 	// elastic-desktop-xxx
 	ExistedProjectName *string `json:"ExistedProjectName,omitempty" xml:"ExistedProjectName,omitempty"`
+	// LogStore name
+	//
 	// example:
 	//
 	// elastic_desktop_xxx
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// Simple Log Service project name; either this or ExistedProjectName is required
+	//
 	// example:
 	//
 	// elastic-desktop-xxx
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Region ID of Simple Log Service
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	SlsRegionId *string `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
+	// Data retention period (Day), default 30
+	//
 	// example:
 	//
 	// 30
@@ -130,6 +142,8 @@ func (s *DeliverToUserSlsRequest) Validate() error {
 }
 
 type DeliverToUserSlsRequestDeliveryScopes struct {
+	// product type
+	//
 	// This parameter is required.
 	//
 	// example:

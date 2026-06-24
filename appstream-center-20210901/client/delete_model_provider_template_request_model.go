@@ -14,6 +14,8 @@ type iDeleteModelProviderTemplateRequest interface {
 }
 
 type DeleteModelProviderTemplateRequest struct {
+	// The ID of the model provider template.
+	//
 	// This parameter is required.
 	//
 	// example:

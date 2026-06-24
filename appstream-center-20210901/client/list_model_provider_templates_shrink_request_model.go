@@ -28,38 +28,53 @@ type iListModelProviderTemplatesShrinkRequest interface {
 }
 
 type ListModelProviderTemplatesShrinkRequest struct {
+	// The Agent platform.
+	//
 	// example:
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
+	// The name of the Agent provider.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OpenClaw
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
+	// The business type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The model group ID to filter by.
+	//
 	// example:
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
+	// The page number, starting from 1. Values 0 and 1 return the same result.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the model provider to filter by.
+	//
 	// example:
 	//
 	// bailian
-	ProviderName              *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	// The model provider template IDs to filter by.
 	ProviderTemplateIdsShrink *string `json:"ProviderTemplateIds,omitempty" xml:"ProviderTemplateIds,omitempty"`
 }
 

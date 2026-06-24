@@ -14,6 +14,8 @@ type iDeleteModelTemplateRequest interface {
 }
 
 type DeleteModelTemplateRequest struct {
+	// The model group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

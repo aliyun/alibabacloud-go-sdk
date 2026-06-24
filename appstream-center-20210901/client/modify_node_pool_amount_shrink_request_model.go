@@ -18,7 +18,7 @@ type iModifyNodePoolAmountShrinkRequest interface {
 }
 
 type ModifyNodePoolAmountShrinkRequest struct {
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// This parameter is required.
 	//
@@ -26,15 +26,11 @@ type ModifyNodePoolAmountShrinkRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The parameters related to the configuration change of the node pool.
+	// The node pool specification change parameters.
 	//
 	// This parameter is required.
 	NodePoolShrink *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
 	// The product type.
-	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
 	//
 	// This parameter is required.
 	//

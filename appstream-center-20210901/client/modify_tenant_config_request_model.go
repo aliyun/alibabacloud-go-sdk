@@ -14,13 +14,7 @@ type iModifyTenantConfigRequest interface {
 }
 
 type ModifyTenantConfigRequest struct {
-	// Specifies whether to enable the resource expiration reminder feature.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Specifies whether to enable resource expiration reminders.
 	//
 	// example:
 	//

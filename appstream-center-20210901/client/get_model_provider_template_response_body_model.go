@@ -16,7 +16,10 @@ type iGetModelProviderTemplateResponseBody interface {
 }
 
 type GetModelProviderTemplateResponseBody struct {
+	// The returned data object.
 	Data *GetModelProviderTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -59,6 +62,8 @@ func (s *GetModelProviderTemplateResponseBody) Validate() error {
 }
 
 type GetModelProviderTemplateResponseBodyData struct {
+	// The JSON configuration object of the model provider template.
+	//
 	// example:
 	//
 	// {
@@ -70,17 +75,33 @@ type GetModelProviderTemplateResponseBodyData struct {
 	// 	"baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1"
 	//
 	// }
-	Config      *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The description of the model provider template.
+	//
+	// example:
+	//
+	// 阿里云百炼服务商。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the WUYING secure gateway proxy is enabled.
+	//
 	// example:
 	//
 	// true
-	EnableWuyingProxy *bool   `json:"EnableWuyingProxy,omitempty" xml:"EnableWuyingProxy,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	EnableWuyingProxy *bool `json:"EnableWuyingProxy,omitempty" xml:"EnableWuyingProxy,omitempty"`
+	// The name of the model provider template.
+	//
+	// example:
+	//
+	// 阿里云百炼。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the model provider.
+	//
 	// example:
 	//
 	// bailian
 	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	// The ID of the model provider template.
+	//
 	// example:
 	//
 	// mpt-xxxx

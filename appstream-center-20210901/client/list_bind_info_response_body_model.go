@@ -22,15 +22,15 @@ type iListBindInfoResponseBody interface {
 }
 
 type ListBindInfoResponseBody struct {
-	// The bindings.
+	// The list of binding information returned.
 	BindInfoModels []*ListBindInfoResponseBodyBindInfoModels `json:"BindInfoModels,omitempty" xml:"BindInfoModels,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the query results currently displayed.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of query results per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListBindInfoResponseBody struct {
 	//
 	// AD2D0761-1FE5-549D-B169-D3F8D19C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -119,49 +119,35 @@ func (s *ListBindInfoResponseBody) Validate() error {
 type ListBindInfoResponseBodyBindInfoModels struct {
 	// The account type.
 	//
-	// Valid values:
-	//
-	// 	- ad: Active Directory (AD) account
-	//
-	// 	- simple: convenience account
-	//
 	// example:
 	//
 	// simple
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The app ID.
+	// The application ID.
 	//
 	// example:
 	//
 	// ca-fq738or6vd854****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// example:
 	//
 	// aig-0abxhr6ce35w8****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The ID of the app instance.
+	// The application instance ID.
 	//
 	// example:
 	//
 	// ai-83oe276fre4l3****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	// The app version.
+	// The application version number.
 	//
 	// example:
 	//
 	// 1.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	// The product type.
-	//
-	// Valid values:
-	//
-	// 	- CloudApp: App Streaming
-	//
-	// 	- CloudBrowser: Cloud-based Browser
-	//
-	// 	- AndroidCloud: Cloud Phone
 	//
 	// example:
 	//
@@ -179,7 +165,7 @@ type ListBindInfoResponseBodyBindInfoModels struct {
 	//
 	// Alice
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the Alibaba Cloud Workspace user.
+	// The WUYING user ID.
 	//
 	// example:
 	//

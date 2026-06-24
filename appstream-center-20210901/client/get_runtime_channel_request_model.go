@@ -22,26 +22,42 @@ type iGetRuntimeChannelRequest interface {
 }
 
 type GetRuntimeChannelRequest struct {
+	// The Agent platform.
+	//
 	// example:
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
+	// The Agent provider.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OpenClaw
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
+	// Specifies whether to include risk information.
+	//
 	// example:
 	//
 	// true
 	IncludeRiskInfo *bool `json:"IncludeRiskInfo,omitempty" xml:"IncludeRiskInfo,omitempty"`
+	// The Agent runtime ID. The ID mappings are as follows:
+	//
+	// - JVS Computer: JVS Computer ID, in the format of jvs-xxxx.
+	//
+	// - OpenClaw: cloud computer ID, in the format of ecd-xxxx.
+	//
+	// - Hermes Agent: Hermes Agent ID, in the format of jvs-xxxx.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// jvs-xxxx
 	RuntimeId *string `json:"RuntimeId,omitempty" xml:"RuntimeId,omitempty"`
+	// The type of the Agent runtime.
+	//
 	// This parameter is required.
 	//
 	// example:

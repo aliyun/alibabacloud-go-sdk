@@ -18,11 +18,16 @@ type iRemoveRuntimeModelTemplateResponseBody interface {
 }
 
 type RemoveRuntimeModelTemplateResponseBody struct {
+	// The list of removal results.
 	Data []*RemoveRuntimeModelTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of results.
+	//
 	// example:
 	//
 	// 3
@@ -78,22 +83,38 @@ func (s *RemoveRuntimeModelTemplateResponseBody) Validate() error {
 }
 
 type RemoveRuntimeModelTemplateResponseBodyData struct {
+	// The error code returned upon failure.
+	//
 	// example:
 	//
 	// Runtime.NotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned upon failure.
+	//
 	// example:
 	//
 	// 404
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned upon failure.
+	//
 	// example:
 	//
 	// The runtime is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The Agent runtime ID. The ID mapping is as follows:
+	//
+	// - JVS Computer: JVS Computer ID, in the format of jvs-xxxx.
+	//
+	// - OpenClaw: cloud computer ID, in the format of ecd-xxxx.
+	//
+	// - Hermes Agent: Hermes Agent ID, in the format of jvs-xxxx.
+	//
 	// example:
 	//
 	// jvs-xxxxx
 	RuntimeId *string `json:"RuntimeId,omitempty" xml:"RuntimeId,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true

@@ -18,14 +18,20 @@ type iModifyNodePoolAttributeResponseBody interface {
 }
 
 type ModifyNodePoolAttributeResponseBody struct {
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// InvalidParameter.PoolId
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned if the request failed.
+	//
 	// example:
 	//
 	// The parameter PoolId is invalid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****

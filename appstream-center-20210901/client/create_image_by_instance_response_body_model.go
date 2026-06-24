@@ -22,15 +22,15 @@ type iCreateImageByInstanceResponseBody interface {
 }
 
 type CreateImageByInstanceResponseBody struct {
-	// The error code.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned object.
 	Data *CreateImageByInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateImageByInstanceResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
 	//
 	// example:
 	//
@@ -113,19 +113,19 @@ func (s *CreateImageByInstanceResponseBody) Validate() error {
 }
 
 type CreateImageByInstanceResponseBodyData struct {
-	// The ID of the RDS image.
+	// The WUYING image ID.
 	//
 	// example:
 	//
 	// imgc-07hnjj5fp****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the image creation task.
+	// The task ID for creating the image.
 	//
 	// example:
 	//
 	// tid-0abxi0lbih******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The version of the image.
+	// The image version.
 	//
 	// example:
 	//

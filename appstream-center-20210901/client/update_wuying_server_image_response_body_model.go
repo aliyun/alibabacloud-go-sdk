@@ -22,7 +22,7 @@ type UpdateWuyingServerImageResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the update task.
+	// The update task ID.
 	//
 	// example:
 	//

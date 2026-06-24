@@ -20,6 +20,8 @@ type iUpdateModelTemplateRequest interface {
 }
 
 type UpdateModelTemplateRequest struct {
+	// The model group configuration JSON object.
+	//
 	// example:
 	//
 	// {
@@ -35,14 +37,23 @@ type UpdateModelTemplateRequest struct {
 	// 	}
 	//
 	// }
-	Config      *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The template group description.
+	//
+	// example:
+	//
+	// 测试模型分组
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The model group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
+	// The template group name.
+	//
 	// example:
 	//
 	// model-template-001

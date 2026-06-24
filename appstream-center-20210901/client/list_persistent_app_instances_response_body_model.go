@@ -22,19 +22,19 @@ type iListPersistentAppInstancesResponseBody interface {
 }
 
 type ListPersistentAppInstancesResponseBody struct {
-	// The page number.
+	// The page number of the query results currently displayed.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of query results per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The app instances of the persistent session type.
+	// The list of persistent session application instances.
 	PersistentAppInstanceModels []*ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels `json:"PersistentAppInstanceModels,omitempty" xml:"PersistentAppInstanceModels,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42,7 +42,7 @@ type ListPersistentAppInstancesResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -117,85 +117,45 @@ func (s *ListPersistentAppInstancesResponseBody) Validate() error {
 }
 
 type ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels struct {
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// example:
 	//
 	// aig-0bxls9m9arax6****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The ID of the app instance.
+	// The application instance ID.
 	//
 	// example:
 	//
 	// ai-azn3kmwruh1vl****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	// The ID of the app instance of the persistent session type.
+	// The persistent session ID.
 	//
 	// example:
 	//
 	// p-0cc7s3mw2fg4j****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
-	// The name of the app instance of the persistent session type.
+	// The name of the persistent session application instance.
 	//
 	// example:
 	//
 	// test-persistent-name
 	AppInstancePersistentName *string `json:"AppInstancePersistentName,omitempty" xml:"AppInstancePersistentName,omitempty"`
-	// The status of the app instance of the persistent session type.
-	//
-	// Valid values:
-	//
-	// 	- STARTING
-	//
-	// 	- RUNNING
-	//
-	// 	- STOPPED
-	//
-	// 	- UNAVAILABLE
-	//
-	// 	- DELETING
-	//
-	// 	- PENDING
-	//
-	// 	- STOPPING
-	//
-	// 	- DELETED
-	//
-	// 	- REBUILDING
+	// The instance status of the persistent session application.
 	//
 	// example:
 	//
 	// RUNNING
 	AppInstancePersistentStatus *string `json:"AppInstancePersistentStatus,omitempty" xml:"AppInstancePersistentStatus,omitempty"`
-	// The status of the app instance.
-	//
-	// Valid values:
-	//
-	// 	- INIT: The app instance is being initialized.
-	//
-	// 	- STARTING: The app instance is being started.
-	//
-	// 	- CLOSING: The app instance is being stopped.
-	//
-	// 	- CLOSED: The app instance is closed.
-	//
-	// 	- RUNNING: The app instance is running.
-	//
-	// 	- idle: The app instance is idle.
-	//
-	// 	- BOUND: The app instance is bound to an app instance group.
-	//
-	// 	- UNAVAILABLE: The app instance is unavailable.
-	//
-	// 	- DELETED: The app instance is deleted.
+	// The application instance status.
 	//
 	// example:
 	//
 	// RUNNING
 	AppInstanceStatus *string `json:"AppInstanceStatus,omitempty" xml:"AppInstanceStatus,omitempty"`
-	// The authorized users.
+	// The list of authorized usernames.
 	AuthorizedUsers []*string `json:"AuthorizedUsers,omitempty" xml:"AuthorizedUsers,omitempty" type:"Repeated"`
-	// The time when the app instance was created.
+	// The creation time.
 	//
 	// example:
 	//

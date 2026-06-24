@@ -22,19 +22,28 @@ type iListLlmTemplatesResponseBody interface {
 }
 
 type ListLlmTemplatesResponseBody struct {
+	// The list of returned data objects.
 	Data []*ListLlmTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The page number of the current page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 20
@@ -108,6 +117,8 @@ func (s *ListLlmTemplatesResponseBody) Validate() error {
 }
 
 type ListLlmTemplatesResponseBodyData struct {
+	// The model configuration JSON object.
+	//
 	// example:
 	//
 	// {
@@ -143,24 +154,39 @@ type ListLlmTemplatesResponseBodyData struct {
 	// 	"contextWindow": 1000000
 	//
 	// }
-	Config      *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The template description.
+	//
+	// example:
+	//
+	// 千问Plus系列模型
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether this is the default model in the associated model group.
+	//
 	// example:
 	//
 	// true
 	IsDefaultModel *bool `json:"IsDefaultModel,omitempty" xml:"IsDefaultModel,omitempty"`
+	// The model code.
+	//
 	// example:
 	//
 	// qwen3.6-plus
 	LlmCode *string `json:"LlmCode,omitempty" xml:"LlmCode,omitempty"`
+	// The model template ID.
+	//
 	// example:
 	//
 	// llmt-xxxx
 	LlmTemplateId *string `json:"LlmTemplateId,omitempty" xml:"LlmTemplateId,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// Qwen3.6-Plus
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the model provider template.
+	//
 	// example:
 	//
 	// mpt-xxxx

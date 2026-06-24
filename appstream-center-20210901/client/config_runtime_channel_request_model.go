@@ -28,22 +28,30 @@ type iConfigRuntimeChannelRequest interface {
 }
 
 type ConfigRuntimeChannelRequest struct {
+	// The Agent platform (such as ENTERPRISE or JVS).
+	//
 	// example:
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
+	// The Agent provider.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OpenClaw
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
+	// The third-party channel code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dingtalk-connector
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The channel configuration JSON string.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -56,16 +64,26 @@ type ConfigRuntimeChannelRequest struct {
 	//
 	// }
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The configuration mode.
+	//
 	// example:
 	//
 	// Simple
 	ConfigMode *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
+	// The channel name.
+	//
+	// If you leave this parameter empty, the system automatically uses the value of Code as the name.
+	//
 	// example:
 	//
 	// 钉钉
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of runtime IDs.
+	//
 	// This parameter is required.
 	RuntimeIds []*string `json:"RuntimeIds,omitempty" xml:"RuntimeIds,omitempty" type:"Repeated"`
+	// The Agent runtime type.
+	//
 	// This parameter is required.
 	//
 	// example:

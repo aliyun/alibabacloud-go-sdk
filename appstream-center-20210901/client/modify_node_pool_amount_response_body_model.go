@@ -16,7 +16,7 @@ type iModifyNodePoolAmountResponseBody interface {
 }
 
 type ModifyNodePoolAmountResponseBody struct {
-	// The returned data.
+	// The response data object.
 	Data *ModifyNodePoolAmountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//

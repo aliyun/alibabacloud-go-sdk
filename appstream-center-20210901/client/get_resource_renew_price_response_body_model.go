@@ -64,7 +64,7 @@ func (s *GetResourceRenewPriceResponseBody) Validate() error {
 type GetResourceRenewPriceResponseBodyData struct {
 	// The price details.
 	Price *GetResourceRenewPriceResponseBodyDataPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
-	// The price calculation rules.
+	// The pricing rules.
 	Rules []*GetResourceRenewPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -113,13 +113,13 @@ func (s *GetResourceRenewPriceResponseBodyData) Validate() error {
 }
 
 type GetResourceRenewPriceResponseBodyDataPrice struct {
-	// The currency type.
+	// The currency.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discount. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
+	// The discount amount. The actual price is calculated by subtracting the discount amount from the original price.
 	//
 	// example:
 	//
@@ -131,9 +131,9 @@ type GetResourceRenewPriceResponseBodyDataPrice struct {
 	//
 	// 11
 	OriginalPrice *string `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The coupon description.
+	// The coupon descriptions.
 	Promotions []*GetResourceRenewPriceResponseBodyDataPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
-	// The actual price. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
+	// The actual price. The actual price is calculated by subtracting the discount amount from the original price.
 	//
 	// example:
 	//
@@ -214,7 +214,11 @@ type GetResourceRenewPriceResponseBodyDataPricePromotions struct {
 	//
 	// coupon****
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
-	// The coupon description.
+	// The coupon descriptions.
+	//
+	// example:
+	//
+	// **活动
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
 	// The coupon ID.
 	//
@@ -223,14 +227,12 @@ type GetResourceRenewPriceResponseBodyDataPricePromotions struct {
 	// 139965*****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The coupon name.
+	//
+	// example:
+	//
+	// **活动
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
-	// Indicates whether the coupon was used.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Indicates whether the coupon is selected.
 	//
 	// example:
 	//
@@ -296,9 +298,13 @@ func (s *GetResourceRenewPriceResponseBodyDataPricePromotions) Validate() error 
 }
 
 type GetResourceRenewPriceResponseBodyDataRules struct {
-	// The description of the price calculation rule.
+	// The pricing rule description.
+	//
+	// example:
+	//
+	// **活动
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the price calculation rule.
+	// The pricing rule ID.
 	//
 	// example:
 	//

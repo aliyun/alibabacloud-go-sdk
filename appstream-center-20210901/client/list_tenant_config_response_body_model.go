@@ -22,7 +22,7 @@ type ListTenantConfigResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The user configurations.
+	// The user configuration information.
 	TenantConfigModel *ListTenantConfigResponseBodyTenantConfigModel `json:"TenantConfigModel,omitempty" xml:"TenantConfigModel,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,7 @@ func (s *ListTenantConfigResponseBody) Validate() error {
 }
 
 type ListTenantConfigResponseBodyTenantConfigModel struct {
-	// Indicates whether the resource expiration reminder feature is enabled.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Indicates whether resource expiration reminders are enabled.
 	//
 	// example:
 	//

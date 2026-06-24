@@ -18,14 +18,20 @@ type iRemoveRuntimeModelTemplateRequest interface {
 }
 
 type RemoveRuntimeModelTemplateRequest struct {
+	// The model group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mt-xxxxxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
+	// The list of Agent runtime IDs.
+	//
 	// This parameter is required.
 	RuntimeIds []*string `json:"RuntimeIds,omitempty" xml:"RuntimeIds,omitempty" type:"Repeated"`
+	// The Agent runtime type.
+	//
 	// This parameter is required.
 	//
 	// example:

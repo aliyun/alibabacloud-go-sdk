@@ -16,7 +16,10 @@ type iGetRuntimeModelConfigResponseBody interface {
 }
 
 type GetRuntimeModelConfigResponseBody struct {
+	// The returned result object.
 	Data *GetRuntimeModelConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -59,21 +62,38 @@ func (s *GetRuntimeModelConfigResponseBody) Validate() error {
 }
 
 type GetRuntimeModelConfigResponseBodyData struct {
+	// The default model (format: providerName/llmCode).
+	//
 	// example:
 	//
 	// bailian/qwen3.6-plus
-	DefaultModel      *string                                                   `json:"DefaultModel,omitempty" xml:"DefaultModel,omitempty"`
+	DefaultModel *string `json:"DefaultModel,omitempty" xml:"DefaultModel,omitempty"`
+	// The list of model providers.
 	ModelProviderList []*GetRuntimeModelConfigResponseBodyDataModelProviderList `json:"ModelProviderList,omitempty" xml:"ModelProviderList,omitempty" type:"Repeated"`
+	// The configured model group ID.
+	//
 	// example:
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
+	// The model group name.
+	//
 	// example:
 	//
 	// model-template-001
-	ModelTemplateName    *string `json:"ModelTemplateName,omitempty" xml:"ModelTemplateName,omitempty"`
+	ModelTemplateName *string `json:"ModelTemplateName,omitempty" xml:"ModelTemplateName,omitempty"`
+	// The model template association type (returned only when an association exists).
+	//
+	// example:
+	//
+	// Runtime
 	ModelTemplateRefType *string `json:"ModelTemplateRefType,omitempty" xml:"ModelTemplateRefType,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource group ID to which the runtime belongs. The value is null if the runtime is not associated with a resource group.
+	//
+	// example:
+	//
+	// rg-xxxxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s GetRuntimeModelConfigResponseBodyData) String() string {
@@ -152,12 +172,22 @@ func (s *GetRuntimeModelConfigResponseBodyData) Validate() error {
 }
 
 type GetRuntimeModelConfigResponseBodyDataModelProviderList struct {
+	// The list of model information.
 	LlmInfoList []*GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList `json:"LlmInfoList,omitempty" xml:"LlmInfoList,omitempty" type:"Repeated"`
+	// The model provider template ID.
+	//
 	// example:
 	//
 	// mpt-xxxx
 	ModelProviderTemplateId *string `json:"ModelProviderTemplateId,omitempty" xml:"ModelProviderTemplateId,omitempty"`
-	Name                    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The model provider template name.
+	//
+	// example:
+	//
+	// 百炼
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The model provider name.
+	//
 	// example:
 	//
 	// bailian
@@ -222,21 +252,36 @@ func (s *GetRuntimeModelConfigResponseBodyDataModelProviderList) Validate() erro
 }
 
 type GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList struct {
-	Description       *string                                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	Features          []*string                                                                           `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// The model description.
+	//
+	// example:
+	//
+	// Qwen3.6原生视觉语言系列Plus模型，展现出与当前顶尖前沿模型相媲美的卓越性能，模型效果相较3.5系列显著提升。模型在Agentic coding、前端编程、Vibe coding等代码能力、多模态万物识别、OCR、物体定位等能力上显著增强。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The list of model features, such as function-calling, web-search, and structured-outputs.
+	Features []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// The inference metadata, including request and response modalities.
 	InferenceMetadata *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListInferenceMetadata `json:"InferenceMetadata,omitempty" xml:"InferenceMetadata,omitempty" type:"Struct"`
+	// The model code.
+	//
 	// example:
 	//
 	// qwen3.6-plus
 	LlmCode *string `json:"LlmCode,omitempty" xml:"LlmCode,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// Qwen3.6-Plus
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The publish time in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2026-03-04T06:25:17.000+00:00
 	PublishedTime *string `json:"PublishedTime,omitempty" xml:"PublishedTime,omitempty"`
+	// The model risk type. This parameter is returned only when the request parameter IncludeRiskInfo is set to true.
+	//
 	// example:
 	//
 	// Normal
@@ -324,7 +369,9 @@ func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList) Vali
 }
 
 type GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListInferenceMetadata struct {
-	RequestModality  []*string `json:"RequestModality,omitempty" xml:"RequestModality,omitempty" type:"Repeated"`
+	// The list of request modalities, such as Text, Image, and Audio.
+	RequestModality []*string `json:"RequestModality,omitempty" xml:"RequestModality,omitempty" type:"Repeated"`
+	// The list of response modalities, such as Text, Image, and Audio.
 	ResponseModality []*string `json:"ResponseModality,omitempty" xml:"ResponseModality,omitempty" type:"Repeated"`
 }
 

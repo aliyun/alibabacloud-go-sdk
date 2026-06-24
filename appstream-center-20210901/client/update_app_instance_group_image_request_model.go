@@ -20,7 +20,7 @@ type iUpdateAppInstanceGroupImageRequest interface {
 }
 
 type UpdateAppInstanceGroupImageRequest struct {
-	// The image ID of the application. You can obtain the ID from the Images page in the App Streaming console.
+	// The application image ID. You can obtain this ID from the Image Management page in the WUYING Cloud Application console.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type UpdateAppInstanceGroupImageRequest struct {
 	//
 	// img-8z4nztpaqvay4****
 	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,7 @@ type UpdateAppInstanceGroupImageRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
-	//
-	// Valid values:
-	//
-	// 	- cn-shanghai: China (Shanghai).
-	//
-	// 	- cn-hangzhou: China (Hangzhou)
+	// The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
 	//
 	// This parameter is required.
 	//
@@ -51,10 +45,6 @@ type UpdateAppInstanceGroupImageRequest struct {
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	// The product type.
-	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
 	//
 	// This parameter is required.
 	//

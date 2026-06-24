@@ -18,7 +18,7 @@ type iDeleteAppInstancesRequest interface {
 }
 
 type DeleteAppInstancesRequest struct {
-	// The ID of the delivery group. You can call the [listAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+	// The delivery group ID. You can call [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteAppInstancesRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The IDs of application instances.
+	// The list of application instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -34,10 +34,6 @@ type DeleteAppInstancesRequest struct {
 	// false
 	AppInstanceIds []*string `json:"AppInstanceIds,omitempty" xml:"AppInstanceIds,omitempty" type:"Repeated"`
 	// The product type.
-	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
 	//
 	// This parameter is required.
 	//

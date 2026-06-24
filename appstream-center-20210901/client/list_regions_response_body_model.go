@@ -16,7 +16,7 @@ type iListRegionsResponseBody interface {
 }
 
 type ListRegionsResponseBody struct {
-	// The region IDs.
+	// The list of region IDs.
 	RegionModels []*ListRegionsResponseBodyRegionModels `json:"RegionModels,omitempty" xml:"RegionModels,omitempty" type:"Repeated"`
 	// The request ID.
 	//

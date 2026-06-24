@@ -30,37 +30,49 @@ type iAuthorizeInstanceGroupShrinkRequest interface {
 }
 
 type AuthorizeInstanceGroupShrinkRequest struct {
+	// The delivery group ID. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// 持久会话ID。
+	// The persistent session ID.
 	//
 	// example:
 	//
 	// p-0cc7s3mw2fg4j****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	// The list of user group IDs to be authorized.
+	//
 	// if can be null:
 	// true
 	AuthorizeUserGroupIds []*string `json:"AuthorizeUserGroupIds,omitempty" xml:"AuthorizeUserGroupIds,omitempty" type:"Repeated"`
-	// The IDs of the users that you want to add to the authorization list of the delivery group. You can specify 1 to 100 user IDs.
+	// The list of usernames to be authorized for the delivery group. You can specify 1 to 100 usernames.
 	AuthorizeUserIds []*string `json:"AuthorizeUserIds,omitempty" xml:"AuthorizeUserIds,omitempty" type:"Repeated"`
+	// The user avatar ID.
+	//
+	// > This parameter is not available for public use.
+	//
 	// example:
 	//
 	// default
 	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	// The product type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The list of user group IDs to be deauthorized.
+	//
 	// if can be null:
 	// true
 	UnAuthorizeUserGroupIds []*string `json:"UnAuthorizeUserGroupIds,omitempty" xml:"UnAuthorizeUserGroupIds,omitempty" type:"Repeated"`
-	// The IDs of the users that you want to remove from the authorization list of the delivery group. You can specify 1 to 100 user IDs.
+	// The list of usernames to be deauthorized from the delivery group. You can specify 1 to 100 usernames.
 	UnAuthorizeUserIds []*string `json:"UnAuthorizeUserIds,omitempty" xml:"UnAuthorizeUserIds,omitempty" type:"Repeated"`
 	// The user information.
 	UserMetaShrink *string `json:"UserMeta,omitempty" xml:"UserMeta,omitempty"`

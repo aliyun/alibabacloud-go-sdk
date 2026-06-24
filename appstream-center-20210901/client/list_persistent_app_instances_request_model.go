@@ -22,7 +22,7 @@ type iListPersistentAppInstancesRequest interface {
 }
 
 type ListPersistentAppInstancesRequest struct {
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// This parameter is required.
 	//
@@ -30,32 +30,24 @@ type ListPersistentAppInstancesRequest struct {
 	//
 	// aig-0bxls9m9arax6****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The IDs of the persistent sessions.
+	// The list of persistent session IDs.
 	//
 	// if can be null:
 	// false
 	AppInstancePersistentIds []*string `json:"AppInstancePersistentIds,omitempty" xml:"AppInstancePersistentIds,omitempty" type:"Repeated"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number of the query results to display. Minimum value: **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The value cannot be greater than **100**. Default value: **20**.
+	// The number of query results per page. Maximum value: **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The product type.
-	//
-	// Valid values:
-	//
-	// 	- CloudApp: App Streaming
-	//
-	// 	- CloudBrowser: Cloud-based Browser
-	//
-	// 	- AndroidCloud: Cloud Phone
 	//
 	// This parameter is required.
 	//

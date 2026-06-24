@@ -16,7 +16,7 @@ type iGetDebugAppInstanceRequest interface {
 }
 
 type GetDebugAppInstanceRequest struct {
-	// The ID of the delivery group. You can call the `listAppInstanceGroup` operation to obtain the ID.
+	// The delivery group ID. You can obtain this value by calling the listAppInstanceGroup operation.
 	//
 	// This parameter is required.
 	//
@@ -25,10 +25,6 @@ type GetDebugAppInstanceRequest struct {
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	// The product type.
-	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
 	//
 	// This parameter is required.
 	//

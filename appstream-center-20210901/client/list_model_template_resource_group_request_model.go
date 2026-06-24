@@ -20,20 +20,27 @@ type iListModelTemplateResourceGroupRequest interface {
 }
 
 type ListModelTemplateResourceGroupRequest struct {
+	// The ID of the model group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mt-xxxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
+	// The page number. Pages start from page 1. Both 0 and 1 return the same result.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
-	PageSize         *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of resource group IDs.
 	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
 }
 

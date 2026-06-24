@@ -34,7 +34,7 @@ type iModifyAppInstanceGroupAttributeRequest interface {
 }
 
 type ModifyAppInstanceGroupAttributeRequest struct {
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// This parameter is required.
 	//
@@ -42,29 +42,27 @@ type ModifyAppInstanceGroupAttributeRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The name of the delivery group.
+	// The delivery group name.
+	//
+	// example:
+	//
+	// 办公应用
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	// The network settings.
+	// The network configuration.
 	//
-	// >  If you want to use this parameter, submit a ticket.
+	// > To use this parameter, submit a ticket.
 	Network *ModifyAppInstanceGroupAttributeRequestNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	// The information about the resource group.
+	// The resource group object.
 	NodePool *ModifyAppInstanceGroupAttributeRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
-	// Specifies whether only one application can be opened in a session.
+	// Specifies whether to allow only one application per session.
 	//
-	// 	- After you enable this feature, the system assigns a session to each application if you open multiple applications in a delivery group. This consumes a larger number of sessions.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// - If enabled, opening multiple applications within a delivery group allocates a separate session for each application, consuming more sessions.
 	//
 	// example:
 	//
 	// false
 	PerSessionPerApp *bool `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
-	// The application ID of the pre-open application. If you set `PreOpenMode` to `SINGLE_APP`, you cannot leave this parameter empty.``
+	// The AppId of the pre-open application. If the PreOpenMode parameter is set to `SINGLE_APP`, PreOpenAppId cannot be an empty string.
 	//
 	// example:
 	//
@@ -72,21 +70,11 @@ type ModifyAppInstanceGroupAttributeRequest struct {
 	PreOpenAppId *string `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
 	// The pre-open mode.
 	//
-	// Valid values:
-	//
-	// 	- SINGLE_APP: enables the pre-open mode for a single application.
-	//
-	// 	- OFF: disables the pre-open mode. This is the default value.
-	//
 	// example:
 	//
 	// OFF
 	PreOpenMode *string `json:"PreOpenMode,omitempty" xml:"PreOpenMode,omitempty"`
 	// The product type.
-	//
-	// Valid value:
-	//
-	// 	- CloudApp: App Streaming
 	//
 	// This parameter is required.
 	//
@@ -96,7 +84,7 @@ type ModifyAppInstanceGroupAttributeRequest struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The security policy.
 	SecurityPolicy *ModifyAppInstanceGroupAttributeRequestSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
-	// The duration for which sessions are retained after disconnection. Unit: minutes. After an end user disconnects from a session, the session is closed only after the specified duration elapses. If you want to permanently retain sessions, set this parameter to `-1`. Valid values:-1 and 3 to 300. Default value: `15`.
+	// The session retention duration after disconnection, in minutes. After an end user session is disconnected, the session is retained for the specified duration before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
 	//
 	// example:
 	//
@@ -238,7 +226,7 @@ func (s *ModifyAppInstanceGroupAttributeRequest) Validate() error {
 }
 
 type ModifyAppInstanceGroupAttributeRequestNetwork struct {
-	// The domain name rules.
+	// The domain name rule configurations.
 	DomainRules []*ModifyAppInstanceGroupAttributeRequestNetworkDomainRules `json:"DomainRules,omitempty" xml:"DomainRules,omitempty" type:"Repeated"`
 }
 
@@ -279,13 +267,7 @@ type ModifyAppInstanceGroupAttributeRequestNetworkDomainRules struct {
 	//
 	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The policy used for the domain name.
-	//
-	// Valid values:
-	//
-	// 	- allow
-	//
-	// 	- block
+	// The policy value.
 	//
 	// example:
 	//
@@ -324,23 +306,13 @@ func (s *ModifyAppInstanceGroupAttributeRequestNetworkDomainRules) Validate() er
 }
 
 type ModifyAppInstanceGroupAttributeRequestNodePool struct {
-	// The maximum number of sessions to which a resource can connect at the same time. If a resource connects to a large number of sessions at the same time, user experience can be compromised. The value range varies based on the resource type. The following items describe the value ranges of different resource types:
-	//
-	// 	- appstreaming.general.4c8g: 1 to 2
-	//
-	// 	- appstreaming.general.8c16g: 1 to 4
-	//
-	// 	- appstreaming.vgpu.8c16g.4g: 1 to 4
-	//
-	// 	- appstreaming.vgpu.8c31g.16g: 1 to 4
-	//
-	// 	- appstreaming.vgpu.14c93g.12g: 1 to 6
+	// The number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. Too many simultaneous sessions may degrade the application experience. The valid value range varies by resource specification. You can call the ListNodeInstanceType operation to query the valid value range for each resource specification.
 	//
 	// example:
 	//
 	// 2
 	NodeCapacity *int32 `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -379,25 +351,13 @@ func (s *ModifyAppInstanceGroupAttributeRequestNodePool) Validate() error {
 }
 
 type ModifyAppInstanceGroupAttributeRequestSecurityPolicy struct {
-	// Specifies whether to reset after unbinding from a delivery group.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Specifies whether to reset after unbinding.
 	//
 	// example:
 	//
 	// true
 	ResetAfterUnbind *bool `json:"ResetAfterUnbind,omitempty" xml:"ResetAfterUnbind,omitempty"`
-	// Specifies whether to skip user permission verification.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false: This is the default value.
+	// Specifies whether to skip user authorization verification.
 	//
 	// example:
 	//
@@ -436,9 +396,9 @@ func (s *ModifyAppInstanceGroupAttributeRequestSecurityPolicy) Validate() error 
 }
 
 type ModifyAppInstanceGroupAttributeRequestStoragePolicy struct {
-	// The storage types.
+	// The list of storage types.
 	StorageTypeList []*string `json:"StorageTypeList,omitempty" xml:"StorageTypeList,omitempty" type:"Repeated"`
-	// The configurations of user data roaming.
+	// The user data roaming configuration.
 	UserProfile       *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile       `json:"UserProfile,omitempty" xml:"UserProfile,omitempty" type:"Struct"`
 	UserProfileFollow *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow `json:"UserProfileFollow,omitempty" xml:"UserProfileFollow,omitempty" type:"Struct"`
 }
@@ -493,19 +453,13 @@ func (s *ModifyAppInstanceGroupAttributeRequestStoragePolicy) Validate() error {
 }
 
 type ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile struct {
-	// The ID of the File Storage NAS (NAS) file system used to store user data.
+	// The ID of the user data storage system (NAS ID).
 	//
 	// example:
 	//
 	// 06ae94****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// Specifies whether user data roaming is enabled.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Specifies whether to enable user data roaming.
 	//
 	// example:
 	//
