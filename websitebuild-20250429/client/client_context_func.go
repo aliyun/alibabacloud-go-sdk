@@ -5276,6 +5276,94 @@ func (client *Client) NotifyAppNotificationForAdminWithContext(ctx context.Conte
 
 // Summary:
 //
+// Delists a website: switches the CDN back-to-origin configuration for all domain names under the site to an offline page.
+//
+// @param request - OfflineAppInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OfflineAppInstanceResponse
+func (client *Client) OfflineAppInstanceWithContext(ctx context.Context, request *OfflineAppInstanceRequest, runtime *dara.RuntimeOptions) (_result *OfflineAppInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OfflineAppInstance"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OfflineAppInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Resumes a website by restoring the CDN back-to-origin rewrite rules to the normal path for all domain names under the site.
+//
+// @param request - OnlineAppInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OnlineAppInstanceResponse
+func (client *Client) OnlineAppInstanceWithContext(ctx context.Context, request *OnlineAppInstanceRequest, runtime *dara.RuntimeOptions) (_result *OnlineAppInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OnlineAppInstance"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OnlineAppInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Operates an application by a partner.
 //
 // @param request - OperateAppInstanceForPartnerRequest
@@ -6865,11 +6953,11 @@ func (client *Client) RollbackAppInstancePublishWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Save requirements
+// # Save Requirement
 //
 // Description:
 //
-// # Obtain barcode generation plugin configuration information
+// # Get code generation plugin configuration information
 //
 // @param request - SaveAppRequirementRequest
 //
@@ -7531,11 +7619,11 @@ func (client *Client) UpdateAppCodeWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
-// # Update file
+// Updates a file.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - UpdateAppFileRequest
 //

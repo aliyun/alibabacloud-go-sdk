@@ -18,19 +18,19 @@ type iUpdateAppFileRequest interface {
 }
 
 type UpdateAppFileRequest struct {
-	// File content
+	// The file content.
 	//
 	// example:
 	//
 	// verify_46630893e2b5efde444c82b4e3707adb
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Session ID
+	// The session ID.
 	//
 	// example:
 	//
 	// 593fe1a2-d0b4-4fde-a2b0-78ad6a438d41
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// File Path
+	// The file path.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iSaveAppRequirementRequest interface {
 }
 
 type SaveAppRequirementRequest struct {
-	// Session ID
+	// Conversation ID
 	//
 	// example:
 	//

@@ -34,41 +34,41 @@ type iUpdateAppFileResponseBody interface {
 }
 
 type UpdateAppFileResponseBody struct {
-	// Detailed reason for access denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// Application name. It can contain digits, letters, and hyphens (-). It must start with a letter, must not end with a hyphen (-), and must not exceed 36 characters.
+	// The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and cannot exceed 36 characters in length.
 	//
 	// example:
 	//
 	// watermark
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic code. Not currently used. Ignore this field.
+	// The dynamic code. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage*	- parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// abc
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Invalid parameters.
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the shift succeeded
+	// Indicates whether the move operation is successful.
 	//
 	// example:
 	//
@@ -80,19 +80,19 @@ type UpdateAppFileResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Abnormal message
+	// The exception message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether processing is synchronous
+	// Indicates whether the request is synchronously processed.
 	//
 	// example:
 	//

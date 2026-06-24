@@ -40,7 +40,7 @@ type GetAppWorkspaceDirectoryResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type GetAppWorkspaceDirectoryResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response object.
 	Module *GetAppWorkspaceDirectoryResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
