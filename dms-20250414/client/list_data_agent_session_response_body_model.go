@@ -30,55 +30,55 @@ type iListDataAgentSessionResponseBody interface {
 }
 
 type ListDataAgentSessionResponseBody struct {
-	// Response data
+	// The response struct.
 	Data []*ListDataAgentSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Error code. Returned when the request fails.
+	// The error code returned if the request fails.
 	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Error message returned when the call fails.
+	// The error message returned if the request fails.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Current page number
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Current page size
+	// The current page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID
+	// Id of the request
 	//
 	// example:
 	//
 	// E0D21075-CD3E-4D98-8264-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request succeeded. Possible values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request succeeded.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total number of records
+	// The total number of records.
 	//
 	// example:
 	//
 	// 3
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// Total number of pages
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -189,63 +189,63 @@ func (s *ListDataAgentSessionResponseBody) Validate() error {
 }
 
 type ListDataAgentSessionResponseBodyData struct {
-	// Current Agent ID
+	// The current agent ID.
 	//
 	// example:
 	//
 	// cu0cs*******mf
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// Current Agent status
+	// The current agent status.
 	//
 	// example:
 	//
 	// RUNNING
 	AgentStatus *string `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
-	// Session creation time
+	// The session creation time.
 	//
 	// example:
 	//
 	// 1731645908000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Whether the session is saved by the current user in the workspace
+	// Indicates whether the session is favorited by the current logged-in user in the workspace.
 	//
 	// example:
 	//
 	// true
 	FavoriteInWorkspace *bool `json:"FavoriteInWorkspace,omitempty" xml:"FavoriteInWorkspace,omitempty"`
-	// File ID
+	// The file ID.
 	//
 	// example:
 	//
 	// f-8*******01m
 	File *string `json:"File,omitempty" xml:"File,omitempty"`
-	// Whether the session is saved by the current user
+	// Indicates whether the session is favorited by the current logged-in user.
 	//
 	// example:
 	//
 	// true
 	Saved *bool `json:"Saved,omitempty" xml:"Saved,omitempty"`
-	// Session configuration
+	// The session configuration item.
 	SessionConfig *ListDataAgentSessionResponseBodyDataSessionConfig `json:"SessionConfig,omitempty" xml:"SessionConfig,omitempty" type:"Struct"`
-	// Data Agent session ID
+	// The Data Agent session ID.
 	//
 	// example:
 	//
 	// h8r********4fch
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// Session status
+	// The session status.
 	//
 	// example:
 	//
 	// RUNNING
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	// Title
+	// The title.
 	//
 	// example:
 	//
 	// 分析一下这份文件，给出报告。
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// Session owner ID
+	// The ID of the session owner.
 	//
 	// example:
 	//
@@ -370,53 +370,53 @@ func (s *ListDataAgentSessionResponseBodyData) Validate() error {
 }
 
 type ListDataAgentSessionResponseBodyDataSessionConfig struct {
-	// Custom Agent ID
+	// The custom agent ID.
 	//
 	// example:
 	//
 	// ca-e*******ckd
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// Custom Agent usage stage:
+	// The usage stage of the custom agent. Valid values:
 	//
-	// - **debug*	- Debug stage
+	// - **debug**: Debug stage.
 	//
-	// - **prod*	- Production stage
+	// - **prod**: Production stage.
 	//
 	// example:
 	//
 	// prod
 	CustomAgentStage *string `json:"CustomAgentStage,omitempty" xml:"CustomAgentStage,omitempty"`
-	// Whether web search is enabled
+	// Specifies whether to enable web search.
 	//
 	// example:
 	//
 	// true
 	EnableSearch *bool `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
-	// Language
+	// The language. Valid values:
 	//
-	// - **CHINESE*	- Chinese
+	// - **CHINESE**: Chinese.
 	//
-	// - **ENGLISH*	- English
+	// - **ENGLISH**: English.
 	//
 	// example:
 	//
 	// CHINESE
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// Mode:
+	// The mode. Valid values:
 	//
-	// - **ASK_DATA*	- Quick Inquiry Mode
+	//  - **ASK_DATA**: Ask data mode.
 	//
-	// - **ANALYSIS*	- Analysis mode
+	//  - **ANALYSIS**: Analysis mode.
 	//
-	// - **INSIGHT*	- Insight mode
+	//  - **INSIGHT**: Insight mode.
 	//
 	// example:
 	//
 	// ANALYSIS
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// User OSS bucket name
+	// The name of the user OSS bucket.
 	//
-	// - Files and reports generated during analysis can be uploaded to the user-specified OSS bucket.
+	// - Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
 	//
 	// example:
 	//

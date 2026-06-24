@@ -124,7 +124,12 @@ type SendChatMessageResponseBodyData struct {
 	// example:
 	//
 	// success
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The message ID.
+	//
+	// example:
+	//
+	// 922d7fd2-77fb-4549-9091-d51da225d47f
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 	// SessionId
 	//

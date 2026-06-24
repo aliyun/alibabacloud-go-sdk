@@ -19,6 +19,8 @@ type iListDataAgentSessionRequest interface {
 	GetDMSUnit() *string
 	SetIsSaved(v bool) *ListDataAgentSessionRequest
 	GetIsSaved() *bool
+	SetMode(v string) *ListDataAgentSessionRequest
+	GetMode() *string
 	SetPageNumber(v int32) *ListDataAgentSessionRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListDataAgentSessionRequest
@@ -32,61 +34,62 @@ type iListDataAgentSessionRequest interface {
 }
 
 type ListDataAgentSessionRequest struct {
-	// Session creation end time
+	// The end time of the session creation period.
 	//
 	// example:
 	//
 	// 1770912000000
 	CreateEndTime *int64 `json:"CreateEndTime,omitempty" xml:"CreateEndTime,omitempty"`
-	// Session creation start time
+	// The start time of the session creation period.
 	//
 	// example:
 	//
 	// 1770825600000
 	CreateStartTime *int64 `json:"CreateStartTime,omitempty" xml:"CreateStartTime,omitempty"`
-	// Custom Agent ID
+	// The custom agent ID.
 	//
 	// example:
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// Current DMS unit
+	// The current DMS unit.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// Whether to return only saved sessions
+	// Specifies whether to retrieve only favorited sessions.
 	//
 	// example:
 	//
 	// true
-	IsSaved *bool `json:"IsSaved,omitempty" xml:"IsSaved,omitempty"`
-	// Page number for pagination
+	IsSaved *bool   `json:"IsSaved,omitempty" xml:"IsSaved,omitempty"`
+	Mode    *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of records per page
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Session type. Required when you specify a collaboration workspace.
+	// The session type. This parameter is required if a workspace is specified.
 	//
 	// example:
 	//
 	// myFavorite
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	// Data Agent title (supports fuzzy search)
+	// The Data Agent title. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// 帮我分析一下这份数据
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// Collaboration workspace ID
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -120,6 +123,10 @@ func (s *ListDataAgentSessionRequest) GetDMSUnit() *string {
 
 func (s *ListDataAgentSessionRequest) GetIsSaved() *bool {
 	return s.IsSaved
+}
+
+func (s *ListDataAgentSessionRequest) GetMode() *string {
+	return s.Mode
 }
 
 func (s *ListDataAgentSessionRequest) GetPageNumber() *int32 {
@@ -164,6 +171,11 @@ func (s *ListDataAgentSessionRequest) SetDMSUnit(v string) *ListDataAgentSession
 
 func (s *ListDataAgentSessionRequest) SetIsSaved(v bool) *ListDataAgentSessionRequest {
 	s.IsSaved = &v
+	return s
+}
+
+func (s *ListDataAgentSessionRequest) SetMode(v string) *ListDataAgentSessionRequest {
+	s.Mode = &v
 	return s
 }
 

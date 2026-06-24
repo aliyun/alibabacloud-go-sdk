@@ -2767,6 +2767,78 @@ func (client *Client) GetNotebookTaskStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// Queries the operation logs of the SQL window.
+//
+// @param request - GetSqlConsoleOperationLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSqlConsoleOperationLogResponse
+func (client *Client) GetSqlConsoleOperationLogWithContext(ctx context.Context, request *GetSqlConsoleOperationLogRequest, runtime *dara.RuntimeOptions) (_result *GetSqlConsoleOperationLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Schema) {
+		query["Schema"] = request.Schema
+	}
+
+	if !dara.IsNil(request.SqlType) {
+		query["SqlType"] = request.SqlType
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Username) {
+		query["Username"] = request.Username
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSqlConsoleOperationLog"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSqlConsoleOperationLogResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Reads the content of a code file in the workspace and returns the file content along with mtime (in the header).
 //
 // Description:
@@ -3091,7 +3163,7 @@ func (client *Client) ListCustomAgentWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Retrieve a list of Data Agent session descriptions.
+// Retrieves the list of historical session descriptions for a Data Agent.
 //
 // @param request - ListDataAgentSessionRequest
 //
@@ -3124,6 +3196,10 @@ func (client *Client) ListDataAgentSessionWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.IsSaved) {
 		query["IsSaved"] = request.IsSaved
+	}
+
+	if !dara.IsNil(request.Mode) {
+		query["Mode"] = request.Mode
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -4929,9 +5005,9 @@ func (client *Client) SaveWorkspaceCodeWithContext(ctx context.Context, request 
 //
 // - `agent_id` and `session_id` are required fields.
 //
-// - `message_type` defaults to `primary`. Set it to `additional` when appending information or `cancel` when canceling a session.
+// - `message_type` defaults to `primary`. To append information or cancel a session, set it to `additional` or `cancel`.
 //
-// - `reply_to` indicates which Agent message this message responds to. The default value is `0`.
+// - `reply_to` indicates which Agent message this message is responding to. The default value is `0`.
 //
 // - When `message_type` is `additional`, the `question` field is required.
 //
