@@ -11,6 +11,8 @@ type iRunEvaluationRequest interface {
 	GoString() string
 	SetAccountId(v int64) *RunEvaluationRequest
 	GetAccountId() *int64
+	SetEvaluationDomain(v string) *RunEvaluationRequest
+	GetEvaluationDomain() *string
 	SetMetricIds(v []*string) *RunEvaluationRequest
 	GetMetricIds() []*string
 	SetRegionId(v string) *RunEvaluationRequest
@@ -20,13 +22,14 @@ type iRunEvaluationRequest interface {
 }
 
 type RunEvaluationRequest struct {
-	// The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+	// The ID of the member account. This parameter is applicable only to the multi-account check pattern.
 	//
 	// example:
 	//
 	// 176618589410****
-	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The IDs of the check items to be checked.
+	AccountId        *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	EvaluationDomain *string `json:"EvaluationDomain,omitempty" xml:"EvaluationDomain,omitempty"`
+	// The list of check item IDs to check.
 	MetricIds []*string `json:"MetricIds,omitempty" xml:"MetricIds,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -34,11 +37,11 @@ type RunEvaluationRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The check range of the governance maturity check. Valid values:
+	// The scope of the governance maturity check. Valid values:
 	//
-	// 	- Account (default): A single-account governance maturity check is performed to check only the Alibaba Cloud account that you use to access Cloud Governance Center.
+	// - Account (default): runs a single-account governance maturity check that checks only the current account.
 	//
-	// 	- ResourceDirectory: A multi-account governance maturity check is performed to check all members within a resource directory. Before you perform a multi-account governance maturity check, you must enable the multi-account governance maturity check feature.
+	// - ResourceDirectory: runs a multi-account governance maturity check that checks all member accounts in the resource directory. Before you perform this operation, upgrade to the multi-account governance maturity check.
 	//
 	// example:
 	//
@@ -58,6 +61,10 @@ func (s *RunEvaluationRequest) GetAccountId() *int64 {
 	return s.AccountId
 }
 
+func (s *RunEvaluationRequest) GetEvaluationDomain() *string {
+	return s.EvaluationDomain
+}
+
 func (s *RunEvaluationRequest) GetMetricIds() []*string {
 	return s.MetricIds
 }
@@ -72,6 +79,11 @@ func (s *RunEvaluationRequest) GetScope() *string {
 
 func (s *RunEvaluationRequest) SetAccountId(v int64) *RunEvaluationRequest {
 	s.AccountId = &v
+	return s
+}
+
+func (s *RunEvaluationRequest) SetEvaluationDomain(v string) *RunEvaluationRequest {
+	s.EvaluationDomain = &v
 	return s
 }
 

@@ -26,9 +26,7 @@ type ListEnrolledAccountsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
-	//
-	// You do not need to specify this parameter for the first request.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
 	//
 	// example:
 	//

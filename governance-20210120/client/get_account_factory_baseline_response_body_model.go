@@ -28,7 +28,7 @@ type iGetAccountFactoryBaselineResponseBody interface {
 }
 
 type GetAccountFactoryBaselineResponseBody struct {
-	// The baseline ID.
+	// The ID of the baseline.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type GetAccountFactoryBaselineResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The type of the baseline. Valid values:
 	//
-	// 	- System: default baseline.
+	// - System: The baseline is a default baseline.
 	//
-	// 	- Custom: custom baseline.
+	// - Custom: The baseline is a custom baseline.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type GetAccountFactoryBaselineResponseBodyBaselineItems struct {
 	//
 	// example:
 	//
-	// 1097526274671790
+	// ACS-BP_ACCOUNT_FACTORY_VPC
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version of the baseline item.
 	//

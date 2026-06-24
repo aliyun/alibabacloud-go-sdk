@@ -13,9 +13,9 @@ import (
 //
 // Description:
 //
-// You can call this operation to apply an account baseline to existing resource accounts.
+// Applies an account baseline to multiple existing resource accounts at a time.
 //
-// Accounts are enrolled in the account factory in asynchronous mode. After a resource account is created, an account baseline is applied to the account. You can call the [GetEnrolledAccount](https://help.aliyun.com/document_detail/609062.html) operation to query the details of the account enrolled in the account factory and check whether the account baseline is applied to the account.
+// Account enrollment is an asynchronous process. After the accounts are enrolled, the account factory baseline is applied to each account. To query the enrollment details and check the baseline application result, call [GetEnrolledAccount](https://help.aliyun.com/document_detail/609062.html).
 //
 // @param request - BatchEnrollAccountsRequest
 //
@@ -175,13 +175,13 @@ func (client *Client) DeleteAccountFactoryBaselineWithContext(ctx context.Contex
 
 // Summary:
 //
-// Enrolls an account. You can create a new account or manage an existing account in the account factory.
+// Creates a new resource account or enrolls an existing resource account in Account Factory.
 //
 // Description:
 //
-// You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
+// Creates a new resource account or enrolls an existing resource account, and applies the account factory baseline to the account.
 //
-// Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
+// Account enrollment is an asynchronous process. After an account is created, the account factory baseline is applied to the account. To query the enrollment details and check the baseline application result, call [GetEnrolledAccount](~~GetEnrolledAccount~~).
 //
 // @param tmpReq - EnrollAccountRequest
 //
@@ -267,7 +267,15 @@ func (client *Client) EnrollAccountWithContext(ctx context.Context, tmpReq *Enro
 
 // Summary:
 //
-// 生成治理检测报告
+// # Generate Governance Evaluation Report
+//
+// Description:
+//
+// Generates a governance evaluation report.
+//
+// >
+//
+// > - This is an asynchronous API. You can check the `Finished` field in the response to determine the report generation status.
 //
 // @param tmpReq - GenerateEvaluationReportRequest
 //
@@ -294,6 +302,10 @@ func (client *Client) GenerateEvaluationReportWithContext(ctx context.Context, t
 
 	if !dara.IsNil(request.AccountIdsShrink) {
 		query["AccountIds"] = request.AccountIdsShrink
+	}
+
+	if !dara.IsNil(request.EvaluationDomain) {
+		query["EvaluationDomain"] = request.EvaluationDomain
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -593,7 +605,7 @@ func (client *Client) ListEnrolledAccountsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries all available information about check items in a governance maturity check, including the name, ID, description, stage, resource metadata, and fixing guide.
+// Retrieves information about all available governance evaluation items, including names, IDs, descriptions, stages, resource detail metadata, and remediation guidance.
 //
 // @param request - ListEvaluationMetadataRequest
 //
@@ -608,6 +620,10 @@ func (client *Client) ListEvaluationMetadataWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EvaluationDomain) {
+		query["EvaluationDomain"] = request.EvaluationDomain
+	}
+
 	if !dara.IsNil(request.Language) {
 		query["Language"] = request.Language
 	}
@@ -649,7 +665,7 @@ func (client *Client) ListEvaluationMetadataWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the non-compliant resource information of a check item, including the name, ID, category, type, region, and related metadata of non-compliant resources.
+// Retrieves non-compliant resource information for a specified check item, including the name, ID, category, type, region, and related metadata of non-compliant resources.
 //
 // @param request - ListEvaluationMetricDetailsRequest
 //
@@ -670,6 +686,10 @@ func (client *Client) ListEvaluationMetricDetailsWithContext(ctx context.Context
 
 	if !dara.IsNil(request.Date) {
 		query["Date"] = request.Date
+	}
+
+	if !dara.IsNil(request.EvaluationDomain) {
+		query["EvaluationDomain"] = request.EvaluationDomain
 	}
 
 	if !dara.IsNil(request.Id) {
@@ -721,7 +741,7 @@ func (client *Client) ListEvaluationMetricDetailsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the result and status of a governance check.
+// Get governance evaluation results and status.
 //
 // @param request - ListEvaluationResultsRequest
 //
@@ -738,6 +758,10 @@ func (client *Client) ListEvaluationResultsWithContext(ctx context.Context, requ
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
 		query["AccountId"] = request.AccountId
+	}
+
+	if !dara.IsNil(request.EvaluationDomain) {
+		query["EvaluationDomain"] = request.EvaluationDomain
 	}
 
 	if !dara.IsNil(request.Filters) {
@@ -789,7 +813,7 @@ func (client *Client) ListEvaluationResultsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the historical scores of a governance maturity check.
+// Retrieves the historical scores of governance detection.
 //
 // @param request - ListEvaluationScoreHistoryRequest
 //
@@ -810,6 +834,10 @@ func (client *Client) ListEvaluationScoreHistoryWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.EndDate) {
 		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.EvaluationDomain) {
+		query["EvaluationDomain"] = request.EvaluationDomain
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -845,7 +873,7 @@ func (client *Client) ListEvaluationScoreHistoryWithContext(ctx context.Context,
 
 // Summary:
 //
-// Performs a governance maturity check.
+// Runs a Cloud Governance Center governance check.
 //
 // @param tmpReq - RunEvaluationRequest
 //
@@ -868,6 +896,10 @@ func (client *Client) RunEvaluationWithContext(ctx context.Context, tmpReq *RunE
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
 		query["AccountId"] = request.AccountId
+	}
+
+	if !dara.IsNil(request.EvaluationDomain) {
+		query["EvaluationDomain"] = request.EvaluationDomain
 	}
 
 	if !dara.IsNil(request.MetricIdsShrink) {

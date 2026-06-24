@@ -42,19 +42,19 @@ type iGetEnrolledAccountResponseBody interface {
 }
 
 type GetEnrolledAccountResponseBody struct {
-	// The account ID.
+	// The ID of the account.
 	//
 	// example:
 	//
 	// 12868156179*****
 	AccountUid *int64 `json:"AccountUid,omitempty" xml:"AccountUid,omitempty"`
-	// The ID of the baseline that is implemented.
+	// The ID of the baseline that is applied.
 	//
 	// example:
 	//
 	// afb-bp1adadfadsf***
 	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The array that contains baseline items.
+	// The baseline items.
 	BaselineItems []*GetEnrolledAccountResponseBodyBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
 	// The time when the account was created.
 	//
@@ -70,7 +70,7 @@ type GetEnrolledAccountResponseBody struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The error message.
 	//
-	// >  This parameter is returned if the value of `Status` is `Failed` or `ScheduleFailed`.
+	// > This parameter is returned if the value of `Status` is `Failed` or `ScheduleFailed`.
 	ErrorInfo *GetEnrolledAccountResponseBodyErrorInfo `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty" type:"Struct"`
 	// The ID of the parent folder.
 	//
@@ -80,15 +80,15 @@ type GetEnrolledAccountResponseBody struct {
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	// Indicates whether the initialization is complete. Valid values:
 	//
-	// 	- false
+	// - false: The initialization is not complete.
 	//
-	// 	- true
+	// - true: The initialization is complete.
 	//
 	// example:
 	//
 	// true
 	Initialized *bool `json:"Initialized,omitempty" xml:"Initialized,omitempty"`
-	// Input parameters used to create an account.
+	// The input parameters that were specified when the account was enrolled.
 	Inputs *GetEnrolledAccountResponseBodyInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// The ID of the management account of the resource directory to which the account belongs.
 	//
@@ -96,13 +96,13 @@ type GetEnrolledAccountResponseBody struct {
 	//
 	// 19534534552*****
 	MasterAccountUid *int64 `json:"MasterAccountUid,omitempty" xml:"MasterAccountUid,omitempty"`
-	// The ID of the settlement account.
+	// The ID of the billing account.
 	//
 	// example:
 	//
 	// 19534534552*****
 	PayerAccountUid *int64 `json:"PayerAccountUid,omitempty" xml:"PayerAccountUid,omitempty"`
-	// The progress of the applying the baseline to the account.
+	// The progress of applying the baseline to the account.
 	Progress []*GetEnrolledAccountResponseBodyProgress `json:"Progress,omitempty" xml:"Progress,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -112,17 +112,17 @@ type GetEnrolledAccountResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the account. Valid values:
 	//
-	// 	- Pending: The account is pending to be created.
+	// - Pending: The account is waiting to be enrolled.
 	//
-	// 	- Running: The account is being created.
+	// - Running: The account is being enrolled.
 	//
-	// 	- Finished: The account is created.
+	// - Finished: The account is enrolled.
 	//
-	// 	- Failed: The account fails to be created.
+	// - Failed: The account failed to be enrolled.
 	//
-	// 	- Scheduling: The account is being scheduled.
+	// - Scheduling: The account is being scheduled.
 	//
-	// 	- ScheduleFailed: The account fails to be scheduled.
+	// - ScheduleFailed: The account failed to be scheduled.
 	//
 	// example:
 	//
@@ -324,11 +324,11 @@ type GetEnrolledAccountResponseBodyBaselineItems struct {
 	//
 	// ACS-BP_ACCOUNT_FACTORY_VPC
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether baseline item is skipped. Valid values:
+	// Indicates whether the baseline item is skipped. Valid values:
 	//
-	// 	- false
+	// - false: The baseline item is not skipped.
 	//
-	// 	- true
+	// - true: The baseline item is skipped.
 	//
 	// example:
 	//
@@ -395,19 +395,19 @@ type GetEnrolledAccountResponseBodyErrorInfo struct {
 	//
 	// example:
 	//
-	// CompliancePackExists
+	// EntityAlreadyExists.Role
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message.
 	//
 	// example:
 	//
-	// The compliance pack already exists.
+	// The role already exists.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The recommended solution.
 	//
 	// example:
 	//
-	// https://next.api.aliyun.com/troubleshoot?q=CompliancePackExists\\\\u0026product=Config
+	// https://next.api.aliyun.com/troubleshoot?q=EntityAlreadyExists.Role\\u0026product=Ram
 	Recommend *string `json:"Recommend,omitempty" xml:"Recommend,omitempty"`
 	// The request ID.
 	//
@@ -472,7 +472,7 @@ type GetEnrolledAccountResponseBodyInputs struct {
 	//
 	// test-account
 	AccountNamePrefix *string `json:"AccountNamePrefix,omitempty" xml:"AccountNamePrefix,omitempty"`
-	// The account ID.
+	// The ID of the account.
 	//
 	// example:
 	//
@@ -492,7 +492,7 @@ type GetEnrolledAccountResponseBodyInputs struct {
 	//
 	// fd-5ESoku****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The ID of the settlement account.
+	// The ID of the billing account.
 	//
 	// example:
 	//
@@ -600,7 +600,7 @@ type GetEnrolledAccountResponseBodyInputsBaselineItems struct {
 	//
 	// example:
 	//
-	// {\\"Contacts\\":[{\\"Name\\":\\"governance\\",\\"Email\\":\\"wibud****@gmail.com\\",\\"Mobile\\":\\"1234\\",\\"Position\\":\\"Other\\"}]}
+	// {\\"Contacts\\":[{\\"Name\\":\\"governance\\",\\"Email\\":\\"wibud5210+10@gmail.com\\",\\"Mobile\\":\\"1234\\",\\"Position\\":\\"Other\\"}]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The name of the baseline item.
 	//
@@ -608,11 +608,11 @@ type GetEnrolledAccountResponseBodyInputsBaselineItems struct {
 	//
 	// ACS-BP_ACCOUNT_FACTORY_VPC
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether baseline item is skipped. Valid values:
+	// Indicates whether the baseline item is skipped. Valid values:
 	//
-	// 	- false
+	// - false: The baseline item is not skipped.
 	//
-	// 	- true
+	// - true: The baseline item is skipped.
 	//
 	// example:
 	//
@@ -728,13 +728,13 @@ type GetEnrolledAccountResponseBodyProgress struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The status of applying the baseline to the account. Valid values:
 	//
-	// 	- Pending: The baseline is pending to be applied to the account.
+	// - Pending: The baseline is waiting to be applied to the account.
 	//
-	// 	- Running: The baseline is being applied to the account.
+	// - Running: The baseline is being applied to the account.
 	//
-	// 	- Finished: : The baseline is applied to the account.
+	// - Finished: The baseline is applied to the account.
 	//
-	// 	- Failed: : The baseline fails to be applied to the account.
+	// - Failed: The baseline failed to be applied to the account.
 	//
 	// example:
 	//

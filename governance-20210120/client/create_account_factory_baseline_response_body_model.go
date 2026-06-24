@@ -16,7 +16,7 @@ type iCreateAccountFactoryBaselineResponseBody interface {
 }
 
 type CreateAccountFactoryBaselineResponseBody struct {
-	// The baseline ID.
+	// The ID of the baseline.
 	//
 	// example:
 	//

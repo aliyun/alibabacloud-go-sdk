@@ -9,6 +9,8 @@ type iListEvaluationMetadataRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEvaluationDomain(v string) *ListEvaluationMetadataRequest
+	GetEvaluationDomain() *string
 	SetLanguage(v string) *ListEvaluationMetadataRequest
 	GetLanguage() *string
 	SetLensCode(v string) *ListEvaluationMetadataRequest
@@ -20,16 +22,30 @@ type iListEvaluationMetadataRequest interface {
 }
 
 type ListEvaluationMetadataRequest struct {
-	// The language. The information is returned in the specified language. Valid values:
+	EvaluationDomain *string `json:"EvaluationDomain,omitempty" xml:"EvaluationDomain,omitempty"`
+	// The language type. Governance evaluation definitions are returned in this language. Valid values:
 	//
-	// 	- en: English
+	// - en: English.
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
 	// example:
 	//
 	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The specialized evaluation code. Valid values:
+	//
+	// - basic (default): foundation model (governance maturity) evaluation.
+	//
+	// - ack: container building specialized evaluation.
+	//
+	// - ai: machine learning specialized evaluation.
+	//
+	// - nis: network service specialized evaluation.
+	//
+	// example:
+	//
+	// ack
 	LensCode *string `json:"LensCode,omitempty" xml:"LensCode,omitempty"`
 	// The region ID.
 	//
@@ -37,6 +53,8 @@ type ListEvaluationMetadataRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The governance topic code.
+	//
 	// example:
 	//
 	// ResourceUtilization
@@ -49,6 +67,10 @@ func (s ListEvaluationMetadataRequest) String() string {
 
 func (s ListEvaluationMetadataRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListEvaluationMetadataRequest) GetEvaluationDomain() *string {
+	return s.EvaluationDomain
 }
 
 func (s *ListEvaluationMetadataRequest) GetLanguage() *string {
@@ -65,6 +87,11 @@ func (s *ListEvaluationMetadataRequest) GetRegionId() *string {
 
 func (s *ListEvaluationMetadataRequest) GetTopicCode() *string {
 	return s.TopicCode
+}
+
+func (s *ListEvaluationMetadataRequest) SetEvaluationDomain(v string) *ListEvaluationMetadataRequest {
+	s.EvaluationDomain = &v
+	return s
 }
 
 func (s *ListEvaluationMetadataRequest) SetLanguage(v string) *ListEvaluationMetadataRequest {

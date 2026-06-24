@@ -20,7 +20,7 @@ type iListEnrolledAccountsResponseBody interface {
 type ListEnrolledAccountsResponseBody struct {
 	// The enrolled accounts.
 	EnrolledAccounts []*ListEnrolledAccountsResponseBodyEnrolledAccounts `json:"EnrolledAccounts,omitempty" xml:"EnrolledAccounts,omitempty" type:"Repeated"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *ListEnrolledAccountsResponseBody) Validate() error {
 }
 
 type ListEnrolledAccountsResponseBodyEnrolledAccounts struct {
-	// The account ID.
+	// The ID of the account.
 	//
 	// example:
 	//
 	// 19534534552*****
 	AccountUid *int64 `json:"AccountUid,omitempty" xml:"AccountUid,omitempty"`
-	// The ID of the baseline that is implemented.
+	// The ID of the baseline that is applied.
 	//
 	// example:
 	//
@@ -113,25 +113,25 @@ type ListEnrolledAccountsResponseBodyEnrolledAccounts struct {
 	//
 	// fd-5ESoku****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The ID of the settlement account.
+	// The ID of the billing account.
 	//
 	// example:
 	//
 	// 13161210500*****
 	PayerAccountUid *int64 `json:"PayerAccountUid,omitempty" xml:"PayerAccountUid,omitempty"`
-	// The creation status. Valid values:
+	// The enrollment status. Valid values:
 	//
-	// 	- Pending: The account is pending to be created.
+	// - Pending: The account is waiting to be enrolled.
 	//
-	// 	- Running: The account is being created.
+	// - Running: The account is being enrolled.
 	//
-	// 	- Finished: The account is created.
+	// - Finished: The account is enrolled.
 	//
-	// 	- Failed: The account fails to be created.
+	// - Failed: The account failed to be enrolled.
 	//
-	// 	- Scheduling: The account is being scheduled.
+	// - Scheduling: The account is being scheduled.
 	//
-	// 	- ScheduleFailed: The account fails to be scheduled.
+	// - ScheduleFailed: The account failed to be scheduled.
 	//
 	// example:
 	//

@@ -13,6 +13,8 @@ type iListEvaluationMetricDetailsRequest interface {
 	GetAccountId() *int64
 	SetDate(v string) *ListEvaluationMetricDetailsRequest
 	GetDate() *string
+	SetEvaluationDomain(v string) *ListEvaluationMetricDetailsRequest
+	GetEvaluationDomain() *string
 	SetId(v string) *ListEvaluationMetricDetailsRequest
 	GetId() *string
 	SetMaxResults(v int32) *ListEvaluationMetricDetailsRequest
@@ -28,28 +30,34 @@ type iListEvaluationMetricDetailsRequest interface {
 }
 
 type ListEvaluationMetricDetailsRequest struct {
-	// The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+	// The ID of the member account. This parameter is applicable only to the multi-account check pattern.
 	//
 	// example:
 	//
 	// 103144549568****
-	AccountId *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	Date      *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The ID of the check item.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The date to query.
 	//
-	// You can call the [ListEvaluationMetadata](https://help.aliyun.com/document_detail/2841889.html) operation to query the ID of the check item.
+	// example:
+	//
+	// 2026-01-01
+	Date             *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	EvaluationDomain *string `json:"EvaluationDomain,omitempty" xml:"EvaluationDomain,omitempty"`
+	// The ID of the check item for which you want to retrieve non-compliant resources.
+	//
+	// You can call the [ListEvaluationMetadata](https://help.aliyun.com/document_detail/2841889.html) operation to obtain the check item ID.
 	//
 	// example:
 	//
 	// xfyve5****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The maximum number of entries to return for a single request. Default value: 5.
+	// The maximum number of entries to return in a single request. Default value: 5.
 	//
 	// example:
 	//
 	// 5
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token for the next query.
 	//
 	// example:
 	//
@@ -60,8 +68,22 @@ type ListEvaluationMetricDetailsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Scope      *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The scope of the governance maturity check. Valid values:
+	//
+	// - Account (default): queries the check item details for the current account.
+	//
+	// - ResourceDirectory: queries the check item details for all member accounts in the resource directory. Before using this value, upgrade to multi-account governance maturity check.
+	//
+	// example:
+	//
+	// Account
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The check snapshot ID.
+	//
+	// example:
+	//
+	// es-bp1r**************
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -79,6 +101,10 @@ func (s *ListEvaluationMetricDetailsRequest) GetAccountId() *int64 {
 
 func (s *ListEvaluationMetricDetailsRequest) GetDate() *string {
 	return s.Date
+}
+
+func (s *ListEvaluationMetricDetailsRequest) GetEvaluationDomain() *string {
+	return s.EvaluationDomain
 }
 
 func (s *ListEvaluationMetricDetailsRequest) GetId() *string {
@@ -112,6 +138,11 @@ func (s *ListEvaluationMetricDetailsRequest) SetAccountId(v int64) *ListEvaluati
 
 func (s *ListEvaluationMetricDetailsRequest) SetDate(v string) *ListEvaluationMetricDetailsRequest {
 	s.Date = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsRequest) SetEvaluationDomain(v string) *ListEvaluationMetricDetailsRequest {
+	s.EvaluationDomain = &v
 	return s
 }
 

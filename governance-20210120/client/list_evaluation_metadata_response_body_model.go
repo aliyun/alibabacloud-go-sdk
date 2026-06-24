@@ -16,7 +16,7 @@ type iListEvaluationMetadataResponseBody interface {
 }
 
 type ListEvaluationMetadataResponseBody struct {
-	// The metadata of a governance maturity check.
+	// The governance evaluation definition metadata.
 	EvaluationMetadata []*ListEvaluationMetadataResponseBodyEvaluationMetadata `json:"EvaluationMetadata,omitempty" xml:"EvaluationMetadata,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,11 +66,11 @@ func (s *ListEvaluationMetadataResponseBody) Validate() error {
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadata struct {
-	// The metadata objects of a specific metadata type.
+	// The list of metadata objects under a specific metadata type.
 	Metadata []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Repeated"`
-	// The type of the metadata. Valid values:
+	// The metadata type. Valid values:
 	//
-	// 	- Metric: the check item
+	// - Metric: evaluation item.
 	//
 	// example:
 	//
@@ -118,60 +118,62 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadata) Validate() error 
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata struct {
-	// The category of the check item.
+	// The pillar to which the evaluation item belongs.
 	//
 	// example:
 	//
 	// Security
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The description of the check item.
+	// The description of the evaluation item.
 	//
 	// example:
 	//
-	// If you use an AccessKey pair of an Alibaba Cloud account, you have full permissions on the resources of the account. You cannot set limits on the account, such as setting limits on source IP addresses or access duration. If the AccessKey pair is leaked, resources within the account are exposed to high security risks. If your Alibaba Cloud account has an existing AccessKey pair, the check result is Non-compliant.
+	// If you use an AccessKey pair of an Alibaba Cloud account, you have full permissions that cannot be restricted by conditions such as source IP address or access time. Once leaked, the risk is extremely high. If an AccessKey pair exists for the Alibaba Cloud account, it is considered non-compliant.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the check item.
+	// The display name.
 	//
 	// example:
 	//
 	// An AccessKey pair is enabled for the Alibaba Cloud account.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the metadata.
+	// The random ID of the metadata.
 	//
 	// example:
 	//
 	// pxgtda****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The governance level of the check item.
+	// The recommended governance level of the evaluation item.
 	//
 	// example:
 	//
 	// High
 	RecommendationLevel *string `json:"RecommendationLevel,omitempty" xml:"RecommendationLevel,omitempty"`
-	// The metadata of the fixing task.
+	// The remediation metadata.
 	RemediationMetadata *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadata `json:"RemediationMetadata,omitempty" xml:"RemediationMetadata,omitempty" type:"Struct"`
-	// The metadata of the checked resources.
+	// The resource metadata of the evaluation item.
 	ResourceMetadata *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadata `json:"ResourceMetadata,omitempty" xml:"ResourceMetadata,omitempty" type:"Struct"`
-	// The scope of the check item. Valid values:
+	// The scope to which the evaluation item belongs. Valid values:
 	//
-	// 	- Account: the check item in a single-account governance maturity check
+	// - Account: single-account evaluation item.
 	//
-	// 	- ResourceDirectory: the check item in a multi-account governance maturity check
+	// - ResourceDirectory: multi-account evaluation item.
 	//
 	// example:
 	//
 	// Account
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The status of the check item. Valid values:
+	// The status of the evaluation item. Valid values:
 	//
-	// 	- Released: The check item is released.
+	// - Released: officially released.
 	//
-	// 	- Beta: The check item is pre-released.
+	// - Beta: pre-release.
 	//
 	// example:
 	//
 	// Released
 	Stage *string `json:"Stage,omitempty" xml:"Stage,omitempty"`
+	// The governance topic code to which the evaluation item belongs.
+	//
 	// example:
 	//
 	// ResourceUtilization
@@ -291,7 +293,7 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata) Validate(
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadata struct {
-	// The fixing items.
+	// The remediation item.
 	Remediation []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediation `json:"Remediation,omitempty" xml:"Remediation,omitempty" type:"Repeated"`
 }
 
@@ -326,15 +328,15 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediation
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediation struct {
-	// The fixing operations.
+	// The remediation actions.
 	Actions []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	// The type of the fixing method. Valid values:
+	// The remediation type. Valid values:
 	//
-	// 	- Manual: manual fixing
+	// - Manual: Manual remediation.
 	//
-	// 	- QuickFix: quick fixing
+	// - QuickFix: Quick fix.
 	//
-	// 	- Analysis: auxiliary decision-making
+	// - Analysis: Assisted decision-making.
 	//
 	// example:
 	//
@@ -382,39 +384,39 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediation
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions struct {
-	// The fixing method.
+	// The remediation method category.
 	//
-	// >  This parameter is returned only if the value of `RemediationType` is `Analysis`.
+	// > This parameter is returned only when `RemediationType` is set to `Analysis`.
 	//
 	// example:
 	//
 	// UnusedAccessKeyInRamUser
 	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	// The fixing cost.
+	// The remediation cost.
 	//
 	// example:
 	//
 	// You are not charged for this operation.
 	CostDescription *string `json:"CostDescription,omitempty" xml:"CostDescription,omitempty"`
-	// The description of the fixing item.
+	// The remediation description.
 	//
-	// >  This parameter is returned only if the value of `RemediationType` is `Analysis`.
+	// > This parameter is returned only when `RemediationType` is set to `Analysis`.
 	//
 	// example:
 	//
-	// Console logon is enabled for the RAM user. The RAM user owns an AccessKey pair that is never used.
+	// A RAM user has both console logon and an AccessKey pair enabled, but the AccessKey pair has never been used.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The content of the fixing items.
+	// The remediation guidance.
 	Guidance []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance `json:"Guidance,omitempty" xml:"Guidance,omitempty" type:"Repeated"`
-	// The usage notes of the fixing item.
+	// The remediation precautions.
 	//
 	// example:
 	//
-	// The BestPracticesForIdentityAndPermissions compliance package is enabled in Cloud Config to check the settings and usage of the AccessKey pair, Alibaba Cloud account, and RAM users.
+	// This governance item enables the Best Practices for AccessKey and Permission Governance compliance package in Cloud Config to check the settings and usage of AccessKey pairs, Alibaba Cloud accounts, and RAM users.
 	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// The fixing suggestion.
+	// The remediation suggestion.
 	//
-	// >  This parameter is returned only if the value of `RemediationType` is `Analysis`.
+	// > This parameter is returned only when `RemediationType` is set to `Analysis`.
 	//
 	// example:
 	//
@@ -498,25 +500,25 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediation
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance struct {
-	// The display name of the fixing button.
+	// The display name of the remediation step button.
 	//
 	// example:
 	//
-	// Manual fixing
+	// Manual fix
 	ButtonName *string `json:"ButtonName,omitempty" xml:"ButtonName,omitempty"`
-	// The navigation URL of the fixing button.
+	// The URL that the remediation step button links to.
 	//
 	// example:
 	//
 	// https://ram.console.aliyun.com/users
 	ButtonRef *string `json:"ButtonRef,omitempty" xml:"ButtonRef,omitempty"`
-	// The fixing procedure.
+	// The content of the remediation step.
 	//
 	// example:
 	//
 	// You must replace the AccessKey pair of your Alibaba Cloud account. To do so, perform the following steps:</br>1. Log on to the RAM console. In the left-side navigation pane, choose Identities > Users. On the Users page, click Create User.</br>2. On the Create User page, enter a logon name and select OpenAPI Access for the Access Mode parameter.</br>3. After the RAM user is created, save the AccessKey pair. Then, find the user that you created on the Users page and click Add Permissions in the Actions column. In the Grant Permission panel, find the AdministratorAccess policy and attach it to the RAM user.</br>4. In a program, replace the AccessKey pair of the Alibaba Cloud account with the AccessKey pair of the RAM user created in the previous step and check whether the program runs as expected in the test environment.</br>5. If the program runs as expected, publish the program to the production environment and disable the previous AccessKey pair of your Alibaba Cloud account. Then, check whether the program runs as expected.</br>6. If the program runs as expected, delete the disabled AccessKey pair after the specified period of time, such as 90 days.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The title of the fixing procedure.
+	// The title of the remediation step.
 	//
 	// example:
 	//
@@ -573,7 +575,7 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediation
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadata struct {
-	// The metadata of the resource properties.
+	// The resource property metadata.
 	ResourcePropertyMetadata []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata `json:"ResourcePropertyMetadata,omitempty" xml:"ResourcePropertyMetadata,omitempty" type:"Repeated"`
 }
 
@@ -608,19 +610,19 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMet
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata struct {
-	// The display name of the resource property.
+	// The display name of the property.
 	//
 	// example:
 	//
-	// AccessKey Pair Last Used At
+	// Last time the AccessKey pair was used
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The name of the resource property.
+	// The resource property name.
 	//
 	// example:
 	//
 	// AkLastUsedTime
 	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
-	// The type of the resource property.
+	// The resource property type.
 	//
 	// example:
 	//

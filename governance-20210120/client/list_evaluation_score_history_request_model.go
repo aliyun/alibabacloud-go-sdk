@@ -13,6 +13,8 @@ type iListEvaluationScoreHistoryRequest interface {
 	GetAccountId() *int64
 	SetEndDate(v string) *ListEvaluationScoreHistoryRequest
 	GetEndDate() *string
+	SetEvaluationDomain(v string) *ListEvaluationScoreHistoryRequest
+	GetEvaluationDomain() *string
 	SetRegionId(v string) *ListEvaluationScoreHistoryRequest
 	GetRegionId() *string
 	SetStartDate(v string) *ListEvaluationScoreHistoryRequest
@@ -20,29 +22,30 @@ type iListEvaluationScoreHistoryRequest interface {
 }
 
 type ListEvaluationScoreHistoryRequest struct {
-	// The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+	// The ID of the member accounts. This parameter is applicable only to the multi-account detection pattern.
 	//
 	// example:
 	//
 	// 176618589410****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The end of the time range to query. Specify the time in the YYYY-MM-DD format.
+	// The end date of the query. Format: YYYY-MM-DD.
 	//
-	// By default, the historical scores that were generated in the seven days before the current date are queried.
+	// By default, the historical scores from the last 7 days are returned.
 	//
 	// example:
 	//
 	// 2024-07-11
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	EndDate          *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	EvaluationDomain *string `json:"EvaluationDomain,omitempty" xml:"EvaluationDomain,omitempty"`
 	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the YYYY-MM-DD format.
+	// The start date of the query. Format: YYYY-MM-DD.
 	//
-	// You can query the historical scores within the previous 180 days.
+	// You can query records from the last 180 days.
 	//
 	// example:
 	//
@@ -66,6 +69,10 @@ func (s *ListEvaluationScoreHistoryRequest) GetEndDate() *string {
 	return s.EndDate
 }
 
+func (s *ListEvaluationScoreHistoryRequest) GetEvaluationDomain() *string {
+	return s.EvaluationDomain
+}
+
 func (s *ListEvaluationScoreHistoryRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -81,6 +88,11 @@ func (s *ListEvaluationScoreHistoryRequest) SetAccountId(v int64) *ListEvaluatio
 
 func (s *ListEvaluationScoreHistoryRequest) SetEndDate(v string) *ListEvaluationScoreHistoryRequest {
 	s.EndDate = &v
+	return s
+}
+
+func (s *ListEvaluationScoreHistoryRequest) SetEvaluationDomain(v string) *ListEvaluationScoreHistoryRequest {
+	s.EvaluationDomain = &v
 	return s
 }
 

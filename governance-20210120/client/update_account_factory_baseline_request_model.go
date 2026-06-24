@@ -33,8 +33,16 @@ type UpdateAccountFactoryBaselineRequest struct {
 	// You can call the [ListAccountFactoryBaselineItems](~~ListAccountFactoryBaselineItems~~) operation to query a list of baseline items supported by the account factory in Cloud Governance Center.
 	BaselineItems []*UpdateAccountFactoryBaselineRequestBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
 	// The name of the baseline.
+	//
+	// example:
+	//
+	// Custom baseline
 	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
 	// The description of the baseline.
+	//
+	// example:
+	//
+	// Default baseline
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The region ID.
 	//
@@ -115,7 +123,7 @@ type UpdateAccountFactoryBaselineRequestBaselineItems struct {
 	//
 	// example:
 	//
-	// {\\"EnabledServices\\":[\\"CEN_TR\\",\\"CDT\\",\\"CMS\\",\\"KMS\\"]}
+	// {"EnabledServices":["CEN_TR","CDT","CMS","KMS"]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The name of the baseline item.
 	//

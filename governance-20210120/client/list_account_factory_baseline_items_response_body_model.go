@@ -83,7 +83,7 @@ func (s *ListAccountFactoryBaselineItemsResponseBody) Validate() error {
 }
 
 type ListAccountFactoryBaselineItemsResponseBodyBaselineItems struct {
-	// The dependency of the baseline item.
+	// The dependencies of the baseline item.
 	DependsOn []*ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn `json:"DependsOn,omitempty" xml:"DependsOn,omitempty" type:"Repeated"`
 	// The description of the baseline item.
 	//

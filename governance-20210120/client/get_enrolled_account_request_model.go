@@ -16,7 +16,7 @@ type iGetEnrolledAccountRequest interface {
 }
 
 type GetEnrolledAccountRequest struct {
-	// The account ID.
+	// The ID of the account.
 	//
 	// This parameter is required.
 	//

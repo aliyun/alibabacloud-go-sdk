@@ -22,7 +22,7 @@ type ListEvaluationScoreHistoryResponseBody struct {
 	//
 	// AC9BD94C-D20C-4D27-88D4-89E8D75C051B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The historical scores.
+	// The historical detection scores.
 	ScoreHistory *ListEvaluationScoreHistoryResponseBodyScoreHistory `json:"ScoreHistory,omitempty" xml:"ScoreHistory,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *ListEvaluationScoreHistoryResponseBody) Validate() error {
 }
 
 type ListEvaluationScoreHistoryResponseBodyScoreHistory struct {
-	// The historical scores.
+	// The historical detection scores.
 	TotalScoreHistory []*ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory `json:"TotalScoreHistory,omitempty" xml:"TotalScoreHistory,omitempty" type:"Repeated"`
 }
 
@@ -97,7 +97,7 @@ func (s *ListEvaluationScoreHistoryResponseBodyScoreHistory) Validate() error {
 }
 
 type ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory struct {
-	// The time when the score was generated. The time is in UTC.
+	// The time when the score was generated, in UTC.
 	//
 	// example:
 	//

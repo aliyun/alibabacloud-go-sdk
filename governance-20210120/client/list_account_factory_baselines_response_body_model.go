@@ -83,7 +83,7 @@ func (s *ListAccountFactoryBaselinesResponseBody) Validate() error {
 }
 
 type ListAccountFactoryBaselinesResponseBodyBaselines struct {
-	// The baseline ID.
+	// The ID of the baseline.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type ListAccountFactoryBaselinesResponseBodyBaselines struct {
 	//
 	// Default
 	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
-	// The time at which the baseline was created.
+	// The time when the baseline was created.
 	//
 	// example:
 	//
@@ -109,9 +109,9 @@ type ListAccountFactoryBaselinesResponseBodyBaselines struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The type of the baseline. Valid values:
 	//
-	// 	- System: default baseline.
+	// - System: The baseline is a default baseline.
 	//
-	// 	- Custom: custom baseline.
+	// - Custom: The baseline is a custom baseline.
 	//
 	// example:
 	//

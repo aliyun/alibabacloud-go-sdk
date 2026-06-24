@@ -11,6 +11,8 @@ type iListEvaluationResultsRequest interface {
 	GoString() string
 	SetAccountId(v int64) *ListEvaluationResultsRequest
 	GetAccountId() *int64
+	SetEvaluationDomain(v string) *ListEvaluationResultsRequest
+	GetEvaluationDomain() *string
 	SetFilters(v []*ListEvaluationResultsRequestFilters) *ListEvaluationResultsRequest
 	GetFilters() []*ListEvaluationResultsRequestFilters
 	SetLensCode(v string) *ListEvaluationResultsRequest
@@ -26,32 +28,53 @@ type iListEvaluationResultsRequest interface {
 }
 
 type ListEvaluationResultsRequest struct {
-	// The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+	// Member account ID. This parameter is only applicable to multi-account evaluation mode.
 	//
 	// example:
 	//
 	// 176618589410****
-	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The filter conditions.
+	AccountId        *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	EvaluationDomain *string `json:"EvaluationDomain,omitempty" xml:"EvaluationDomain,omitempty"`
+	// Filter conditions.
 	Filters []*ListEvaluationResultsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// Special evaluation code. Valid values:
+	//
+	// - basic (default): Basic model (governance maturity) evaluation.
+	//
+	// - ack: Container construction special evaluation.
+	//
+	// - ai: Machine learning special evaluation.
+	//
+	// - nis: Network service special evaluation.
+	//
 	// example:
 	//
 	// basic
 	LensCode *string `json:"LensCode,omitempty" xml:"LensCode,omitempty"`
-	// The region ID.
+	// Region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Governance maturity evaluation scope. Valid values:
+	//
+	// - Account (default): Performs single-account governance maturity evaluation, evaluating only the current account.
+	//
+	// - ResourceDirectory: Performs multi-account governance maturity evaluation, evaluating all member accounts in the resource directory. Before performing this operation, you must first upgrade to multi-account governance maturity evaluation.
+	//
 	// example:
 	//
 	// ResourceDirectory
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// Evaluation snapshot ID.
+	//
 	// example:
 	//
 	// es-bp1r**************
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// Governance topic code.
+	//
 	// example:
 	//
 	// IdentityAndAccessManagement
@@ -68,6 +91,10 @@ func (s ListEvaluationResultsRequest) GoString() string {
 
 func (s *ListEvaluationResultsRequest) GetAccountId() *int64 {
 	return s.AccountId
+}
+
+func (s *ListEvaluationResultsRequest) GetEvaluationDomain() *string {
+	return s.EvaluationDomain
 }
 
 func (s *ListEvaluationResultsRequest) GetFilters() []*ListEvaluationResultsRequestFilters {
@@ -96,6 +123,11 @@ func (s *ListEvaluationResultsRequest) GetTopicCode() *string {
 
 func (s *ListEvaluationResultsRequest) SetAccountId(v int64) *ListEvaluationResultsRequest {
 	s.AccountId = &v
+	return s
+}
+
+func (s *ListEvaluationResultsRequest) SetEvaluationDomain(v string) *ListEvaluationResultsRequest {
+	s.EvaluationDomain = &v
 	return s
 }
 
@@ -143,19 +175,19 @@ func (s *ListEvaluationResultsRequest) Validate() error {
 }
 
 type ListEvaluationResultsRequestFilters struct {
-	// The key of the filter condition. Valid values:
+	// Filter condition key. Valid values:
 	//
-	// 	- ResourceId: the resource ID.
+	// - ResourceId: Resource ID.
 	//
-	// 	- ResourceName: the name of the resource.
+	// - ResourceName: Resource name.
 	//
-	// 	- ResourceType: the resource type.
+	// - ResourceType: Resource type.
 	//
 	// example:
 	//
 	// ResourceId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The list of filter condition values.
+	// List of filter condition values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

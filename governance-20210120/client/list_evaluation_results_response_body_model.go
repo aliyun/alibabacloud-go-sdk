@@ -18,19 +18,19 @@ type iListEvaluationResultsResponseBody interface {
 }
 
 type ListEvaluationResultsResponseBody struct {
-	// The Alibaba Cloud account ID of the member.
+	// Member account ID.
 	//
 	// example:
 	//
 	// 176618589410****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// BD57329E-131A-59F4-8746-E1CD8D7B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The check results, including the status of the overall check and the results of check items.
+	// Evaluation results, including overall evaluation status and sub-item evaluation results.
 	Results *ListEvaluationResultsResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
 }
 
@@ -79,27 +79,27 @@ func (s *ListEvaluationResultsResponseBody) Validate() error {
 }
 
 type ListEvaluationResultsResponseBodyResults struct {
-	// The end time of the overall check. The time is displayed in UTC.
+	// Overall evaluation end time (UTC).
 	//
 	// example:
 	//
 	// 2023-12-13T03:35:00Z
 	EvaluationTime *string `json:"EvaluationTime,omitempty" xml:"EvaluationTime,omitempty"`
-	// The check result.
+	// Evaluation results.
 	MetricResults []*ListEvaluationResultsResponseBodyResultsMetricResults `json:"MetricResults,omitempty" xml:"MetricResults,omitempty" type:"Repeated"`
-	// The status of the overall check. Valid values:
+	// Overall evaluation status. Valid values:
 	//
-	// 	- Running: The check is in progress.
+	// - Running: Evaluation in progress.
 	//
-	// 	- Finished: The check is complete.
+	// - Finished: Evaluation completed.
 	//
-	// 	- failed: The check fails.
+	// - Failed: Evaluation failed.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The overall score.
+	// Overall score.
 	//
 	// example:
 	//
@@ -165,55 +165,59 @@ func (s *ListEvaluationResultsResponseBodyResults) Validate() error {
 }
 
 type ListEvaluationResultsResponseBodyResultsMetricResults struct {
-	AccountSummary       *ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary         `json:"AccountSummary,omitempty" xml:"AccountSummary,omitempty" type:"Struct"`
+	// Evaluation item account assessment summary.
+	AccountSummary *ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary `json:"AccountSummary,omitempty" xml:"AccountSummary,omitempty" type:"Struct"`
+	// List of available remediations.
 	AvailableRemediation []*ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation `json:"AvailableRemediation,omitempty" xml:"AvailableRemediation,omitempty" type:"Repeated"`
-	// The error information.
+	// Error information.
 	//
-	// >  This parameter is returned only if the value of `Status` is `Failed`.
+	// > This error information is returned when `Status` is `Failed`.
 	ErrorInfo *ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty" type:"Struct"`
-	// The end time of the check item. The time is displayed in UTC.
+	// Individual evaluation item end time (UTC).
 	//
 	// example:
 	//
 	// 2023-12-13T03:34:02Z
 	EvaluationTime *string `json:"EvaluationTime,omitempty" xml:"EvaluationTime,omitempty"`
-	// The ID of the check item.
+	// Evaluation item ID.
 	//
 	// example:
 	//
 	// r7xdcu****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Potential score increase.
+	//
 	// example:
 	//
 	// 0.2
 	PotentialScoreIncrease *float64 `json:"PotentialScoreIncrease,omitempty" xml:"PotentialScoreIncrease,omitempty"`
-	// The checked resources.
+	// Evaluation item resource assessment summary.
 	ResourcesSummary *ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary `json:"ResourcesSummary,omitempty" xml:"ResourcesSummary,omitempty" type:"Struct"`
-	// The rate of the non-compliant resources.
+	// Evaluation item resource compliance rate.
 	//
 	// example:
 	//
 	// 0.67
 	Result *float64 `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The risk level. Valid values:
+	// Evaluation risk level. Valid values:
 	//
-	// 	- Error: high risk
+	// - Error: High risk.
 	//
-	// 	- Warning: medium risk
+	// - Warning: Medium risk.
 	//
-	// 	- None: no risk
+	// - None: No risk.
 	//
 	// example:
 	//
 	// Error
 	Risk *string `json:"Risk,omitempty" xml:"Risk,omitempty"`
-	// The status of the check item. Valid values:
+	// Individual evaluation item status. Valid values:
 	//
-	// 	- Running: The check is in progress.
+	// - Running: Evaluation in progress.
 	//
-	// 	- Finished: The check is complete.
+	// - Finished: Evaluation completed.
 	//
-	// 	- failed: The check fails.
+	// - Failed: Evaluation failed.
 	//
 	// example:
 	//
@@ -348,6 +352,8 @@ func (s *ListEvaluationResultsResponseBodyResultsMetricResults) Validate() error
 }
 
 type ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary struct {
+	// Number of non-compliant accounts.
+	//
 	// example:
 	//
 	// 1
@@ -376,6 +382,7 @@ func (s *ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary) Va
 }
 
 type ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation struct {
+	// Remediation template ID.
 	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
 }
 
@@ -401,13 +408,13 @@ func (s *ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediati
 }
 
 type ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo struct {
-	// The error code.
+	// Error code.
 	//
 	// example:
 	//
 	// EcsInsightEnableFailed
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// Error message.
 	//
 	// example:
 	//
@@ -446,7 +453,7 @@ func (s *ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo) Validat
 }
 
 type ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary struct {
-	// The number of non-compliant resources.
+	// Number of non-compliant resources.
 	//
 	// example:
 	//

@@ -20,8 +20,13 @@ type iListEvaluationMetricDetailsResponseBody interface {
 }
 
 type ListEvaluationMetricDetailsResponseBody struct {
+	// The date.
+	//
+	// example:
+	//
+	// 2026-01-01
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token used to retrieve the next page of data.
 	//
 	// example:
 	//
@@ -33,7 +38,7 @@ type ListEvaluationMetricDetailsResponseBody struct {
 	//
 	// AC9BD94C-D20C-4D27-88D4-89E8D75C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the non-compliant resources.
+	// The details of non-compliant resources.
 	Resources []*ListEvaluationMetricDetailsResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
@@ -95,15 +100,15 @@ func (s *ListEvaluationMetricDetailsResponseBody) Validate() error {
 }
 
 type ListEvaluationMetricDetailsResponseBodyResources struct {
-	// The compliance status of the resource. Valid values:
+	// The compliance status. Valid values:
 	//
-	// 	- NonCompliant: non-compliant.
+	// - NonCompliant: non-compliant.
 	//
-	// 	- Excluded: ignored.
+	// - Excluded: ignored.
 	//
-	// 	- PendingExclusion: to be ignored.
+	// - PendingExclusion: ignored but not yet effective.
 	//
-	// 	- PendingInclusion: to be unignored.
+	// - PendingInclusion: unignored but not yet effective.
 	//
 	// example:
 	//
@@ -115,35 +120,35 @@ type ListEvaluationMetricDetailsResponseBodyResources struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The check results further analyzed by auxiliary decision-making.
+	// The decision assistance classification.
 	//
-	// >  This parameter is returned only when the check item supports the auxiliary decision-making feature.
+	// > This parameter is returned only for check items that support decision assistance.
 	//
 	// example:
 	//
 	// RecentUnloginRamUser
 	ResourceClassification *string `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
 	// 26435103783237****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The name of the resource.
+	// The resource name.
 	//
 	// example:
 	//
 	// test
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the resource.
+	// The Alibaba Cloud account ID to which the resource belongs.
 	//
 	// example:
 	//
 	// 176618589410****
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The attributes of the resource.
+	// The list of additional resource properties.
 	ResourceProperties []*ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties `json:"ResourceProperties,omitempty" xml:"ResourceProperties,omitempty" type:"Repeated"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// example:
 	//
@@ -245,17 +250,17 @@ func (s *ListEvaluationMetricDetailsResponseBodyResources) Validate() error {
 }
 
 type ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties struct {
-	// The name of the resource attribute.
+	// The name of the resource property.
 	//
 	// example:
 	//
 	// DisplayName
 	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
-	// The value of the resource attribute.
+	// The value of the resource property.
 	//
 	// example:
 	//
-	// example
+	// TestAccount
 	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
 }
 

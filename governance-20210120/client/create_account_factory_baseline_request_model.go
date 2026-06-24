@@ -106,7 +106,7 @@ type CreateAccountFactoryBaselineRequestBaselineItems struct {
 	//
 	// example:
 	//
-	// {\\"EnabledServices\\":[\\"CEN_TR\\",\\"CDT\\",\\"CMS\\",\\"KMS\\"]}
+	// {"EnabledServices":["CEN_TR","CDT","CMS","KMS"]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The name of the baseline item.
 	//

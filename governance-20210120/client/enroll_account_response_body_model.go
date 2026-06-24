@@ -16,7 +16,11 @@ type iEnrollAccountResponseBody interface {
 }
 
 type EnrollAccountResponseBody struct {
-  // The account ID.
+  // The ID of the enrolled account.
+  // 
+  // colspan="1" rowspan="1">
+  // 
+  // 143165363236\\*\\*\\*\\*
   // 
   // example:
   // 

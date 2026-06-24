@@ -16,7 +16,7 @@ type iGetAccountFactoryBaselineRequest interface {
 }
 
 type GetAccountFactoryBaselineRequest struct {
-	// The baseline ID.
+	// The ID of the baseline.
 	//
 	// example:
 	//
