@@ -42,7 +42,7 @@ type UpdateInstanceServerlessSwitchResponseBody struct {
 	//
 	// CCBB1225-C392-480E-8C7F-D09AB2CD2***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request result.
+	// The result of the request.
 	//
 	// example:
 	//

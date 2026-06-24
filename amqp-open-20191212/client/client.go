@@ -614,6 +614,170 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
+// Creates an open-source username and password.
+//
+// @param request - CreateOpenSourceAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOpenSourceAccountResponse
+func (client *Client) CreateOpenSourceAccountWithOptions(request *CreateOpenSourceAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateOpenSourceAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateOpenSourceAccount"),
+		Version:     dara.String("2019-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateOpenSourceAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an open-source username and password.
+//
+// @param request - CreateOpenSourceAccountRequest
+//
+// @return CreateOpenSourceAccountResponse
+func (client *Client) CreateOpenSourceAccount(request *CreateOpenSourceAccountRequest) (_result *CreateOpenSourceAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateOpenSourceAccountResponse{}
+	_body, _err := client.CreateOpenSourceAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an open source permission.
+//
+// @param request - CreateOpenSourcePermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOpenSourcePermissionResponse
+func (client *Client) CreateOpenSourcePermissionWithOptions(request *CreateOpenSourcePermissionRequest, runtime *dara.RuntimeOptions) (_result *CreateOpenSourcePermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Configure) {
+		query["Configure"] = request.Configure
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Read) {
+		query["Read"] = request.Read
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	if !dara.IsNil(request.Vhost) {
+		query["Vhost"] = request.Vhost
+	}
+
+	if !dara.IsNil(request.Write) {
+		query["Write"] = request.Write
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateOpenSourcePermission"),
+		Version:     dara.String("2019-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateOpenSourcePermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an open source permission.
+//
+// @param request - CreateOpenSourcePermissionRequest
+//
+// @return CreateOpenSourcePermissionResponse
+func (client *Client) CreateOpenSourcePermission(request *CreateOpenSourcePermissionRequest) (_result *CreateOpenSourcePermissionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateOpenSourcePermissionResponse{}
+	_body, _err := client.CreateOpenSourcePermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // A queue is a buffer that stores messages. In ApsaraMQ for RabbitMQ, messages are sent to a specified exchange and then routed to a bound queue.
 //
 // @param request - CreateQueueRequest
@@ -1007,6 +1171,142 @@ func (client *Client) DeleteExchange(request *DeleteExchangeRequest) (_result *D
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteExchangeResponse{}
 	_body, _err := client.DeleteExchangeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the username and password of an open-source user.
+//
+// @param request - DeleteOpenSourceAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOpenSourceAccountResponse
+func (client *Client) DeleteOpenSourceAccountWithOptions(request *DeleteOpenSourceAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteOpenSourceAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteOpenSourceAccount"),
+		Version:     dara.String("2019-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteOpenSourceAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the username and password of an open-source user.
+//
+// @param request - DeleteOpenSourceAccountRequest
+//
+// @return DeleteOpenSourceAccountResponse
+func (client *Client) DeleteOpenSourceAccount(request *DeleteOpenSourceAccountRequest) (_result *DeleteOpenSourceAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteOpenSourceAccountResponse{}
+	_body, _err := client.DeleteOpenSourceAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an open source permission.
+//
+// @param request - DeleteOpenSourcePermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOpenSourcePermissionResponse
+func (client *Client) DeleteOpenSourcePermissionWithOptions(request *DeleteOpenSourcePermissionRequest, runtime *dara.RuntimeOptions) (_result *DeleteOpenSourcePermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	if !dara.IsNil(request.Vhost) {
+		query["Vhost"] = request.Vhost
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteOpenSourcePermission"),
+		Version:     dara.String("2019-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteOpenSourcePermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an open source permission.
+//
+// @param request - DeleteOpenSourcePermissionRequest
+//
+// @return DeleteOpenSourcePermissionResponse
+func (client *Client) DeleteOpenSourcePermission(request *DeleteOpenSourcePermissionRequest) (_result *DeleteOpenSourcePermissionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteOpenSourcePermissionResponse{}
+	_body, _err := client.DeleteOpenSourcePermissionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1694,6 +1994,150 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
+// Enumerates open-source usernames and passwords.
+//
+// @param request - ListOpenSourceAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOpenSourceAccountsResponse
+func (client *Client) ListOpenSourceAccountsWithOptions(request *ListOpenSourceAccountsRequest, runtime *dara.RuntimeOptions) (_result *ListOpenSourceAccountsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOpenSourceAccounts"),
+		Version:     dara.String("2019-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOpenSourceAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enumerates open-source usernames and passwords.
+//
+// @param request - ListOpenSourceAccountsRequest
+//
+// @return ListOpenSourceAccountsResponse
+func (client *Client) ListOpenSourceAccounts(request *ListOpenSourceAccountsRequest) (_result *ListOpenSourceAccountsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListOpenSourceAccountsResponse{}
+	_body, _err := client.ListOpenSourceAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists open source permissions.
+//
+// @param request - ListOpenSourcePermissionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOpenSourcePermissionsResponse
+func (client *Client) ListOpenSourcePermissionsWithOptions(request *ListOpenSourcePermissionsRequest, runtime *dara.RuntimeOptions) (_result *ListOpenSourcePermissionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOpenSourcePermissions"),
+		Version:     dara.String("2019-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOpenSourcePermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists open source permissions.
+//
+// @param request - ListOpenSourcePermissionsRequest
+//
+// @return ListOpenSourcePermissionsResponse
+func (client *Client) ListOpenSourcePermissions(request *ListOpenSourcePermissionsRequest) (_result *ListOpenSourcePermissionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListOpenSourcePermissionsResponse{}
+	_body, _err := client.ListOpenSourcePermissionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the online consumer clients of a specified queue.
 //
 // Description:
@@ -2196,7 +2640,7 @@ func (client *Client) UpdateInstanceName(request *UpdateInstanceNameRequest) (_r
 
 // Summary:
 //
-// Updates the elastic scaling switch of a serverless instance.
+// # Update serverless switch
 //
 // @param request - UpdateInstanceServerlessSwitchRequest
 //
@@ -2248,7 +2692,7 @@ func (client *Client) UpdateInstanceServerlessSwitchWithOptions(request *UpdateI
 
 // Summary:
 //
-// Updates the elastic scaling switch of a serverless instance.
+// # Update serverless switch
 //
 // @param request - UpdateInstanceServerlessSwitchRequest
 //
@@ -2257,6 +2701,170 @@ func (client *Client) UpdateInstanceServerlessSwitch(request *UpdateInstanceServ
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateInstanceServerlessSwitchResponse{}
 	_body, _err := client.UpdateInstanceServerlessSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the username and password for open-source access.
+//
+// @param request - UpdateOpenSourceAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOpenSourceAccountResponse
+func (client *Client) UpdateOpenSourceAccountWithOptions(request *UpdateOpenSourceAccountRequest, runtime *dara.RuntimeOptions) (_result *UpdateOpenSourceAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateOpenSourceAccount"),
+		Version:     dara.String("2019-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateOpenSourceAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the username and password for open-source access.
+//
+// @param request - UpdateOpenSourceAccountRequest
+//
+// @return UpdateOpenSourceAccountResponse
+func (client *Client) UpdateOpenSourceAccount(request *UpdateOpenSourceAccountRequest) (_result *UpdateOpenSourceAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateOpenSourceAccountResponse{}
+	_body, _err := client.UpdateOpenSourceAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates open source permissions.
+//
+// @param request - UpdateOpenSourcePermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOpenSourcePermissionResponse
+func (client *Client) UpdateOpenSourcePermissionWithOptions(request *UpdateOpenSourcePermissionRequest, runtime *dara.RuntimeOptions) (_result *UpdateOpenSourcePermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Configure) {
+		query["Configure"] = request.Configure
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Read) {
+		query["Read"] = request.Read
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	if !dara.IsNil(request.Vhost) {
+		query["Vhost"] = request.Vhost
+	}
+
+	if !dara.IsNil(request.Write) {
+		query["Write"] = request.Write
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateOpenSourcePermission"),
+		Version:     dara.String("2019-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateOpenSourcePermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates open source permissions.
+//
+// @param request - UpdateOpenSourcePermissionRequest
+//
+// @return UpdateOpenSourcePermissionResponse
+func (client *Client) UpdateOpenSourcePermission(request *UpdateOpenSourcePermissionRequest) (_result *UpdateOpenSourcePermissionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateOpenSourcePermissionResponse{}
+	_body, _err := client.UpdateOpenSourcePermissionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
