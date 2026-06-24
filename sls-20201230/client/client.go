@@ -7848,20 +7848,22 @@ type Project struct {
 	// example:
 	//
 	// Description of my-project
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	InternalEndpoint *string `json:"internalEndpoint,omitempty" xml:"internalEndpoint,omitempty"`
+	InternetEndpoint *string `json:"internetEndpoint,omitempty" xml:"internetEndpoint,omitempty"`
 	// The time when the project was last modified.
 	//
 	// example:
 	//
 	// 2022-04-18 13:30:19
 	LastModifyTime *string `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	// The Alibaba Cloud account that owns the project.
+	// The Alibaba Cloud account to which the project belongs.
 	//
 	// example:
 	//
 	// ""
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The name of the project. The name is a part of the endpoint. The project name must be unique in a region of Alibaba Cloud. After a project is created, its name cannot be changed.
+	// The name of the project, which is used as part of the host. The project name is globally unique within an Alibaba Cloud region and cannot be modified after creation.
 	//
 	// This parameter is required.
 	//
@@ -7869,7 +7871,7 @@ type Project struct {
 	//
 	// ali-test-project
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	// The quota of the project.
+	// The project quota.
 	Quota map[string]interface{} `json:"quota,omitempty" xml:"quota,omitempty"`
 	// Indicates whether the recycle bin is enabled.
 	//
@@ -7877,7 +7879,7 @@ type Project struct {
 	//
 	// false
 	RecycleBinEnabled *bool `json:"recycleBinEnabled,omitempty" xml:"recycleBinEnabled,omitempty"`
-	// The region where the project resides.
+	// The region to which the project belongs.
 	//
 	// example:
 	//
@@ -7889,11 +7891,11 @@ type Project struct {
 	//
 	// rg-acf******sq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The status of the project.
+	// The status of the project. Valid values:
 	//
-	// - Normal: The project is in the normal state.
+	// - Normal: Normal.
 	//
-	// - Disable: The project is disabled.
+	// - Disable: Disabled.
 	//
 	// example:
 	//
@@ -7921,6 +7923,16 @@ func (s *Project) SetDataRedundancyType(v string) *Project {
 
 func (s *Project) SetDescription(v string) *Project {
 	s.Description = &v
+	return s
+}
+
+func (s *Project) SetInternalEndpoint(v string) *Project {
+	s.InternalEndpoint = &v
+	return s
+}
+
+func (s *Project) SetInternetEndpoint(v string) *Project {
+	s.InternetEndpoint = &v
 	return s
 }
 
@@ -8179,7 +8191,7 @@ func (s *ApplyConfigToMachineGroupResponse) SetStatusCode(v int32) *ApplyConfigT
 }
 
 type CallAiToolsRequest struct {
-	// Tool parameters.
+	// The tool parameters.
 	Params map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
 	// The target region.
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
@@ -8624,7 +8636,7 @@ func (s *CreateAlertResponse) SetStatusCode(v int32) *CreateAlertResponse {
 }
 
 type CreateAnnotationDataSetRequest struct {
-	// The data structure of the request.
+	// The request struct for the dataset.
 	Body *MLDataSetParam `json:"body,omitempty" xml:"body,omitempty"`
 	// The unique identifier of the dataset.
 	//
@@ -11956,6 +11968,128 @@ func (s *DeleteLoggingResponse) SetStatusCode(v int32) *DeleteLoggingResponse {
 	return s
 }
 
+type DeleteLogsRequest struct {
+	// The start time of the query. This time refers to the log time specified when the log data was written.
+	//
+	// The time interval defined by the request parameters from and to follows the left-closed, right-open principle. That is, the interval includes the start time but does not include the end time. If the values of from and to are the same, the interval is invalid, and the function returns an error directly.
+	//
+	// Unix timestamp format, indicating the number of seconds elapsed since 1970-01-01 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1627268100
+	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
+	// Optional: The query statement used to filter the logs to be updated. For more information, see [Query overview](https://help.aliyun.com/document_detail/43772.html).
+	//
+	// Note: This parameter supports only query statements. Analysis statements such as SPL and SQL are not supported.
+	//
+	// example:
+	//
+	// status:400
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// Optional: The value of the built-in field __rowid__ that is automatically returned in the query results.
+	//
+	// One of rowId and query must be specified. If both are specified, rowId takes precedence.
+	//
+	// example:
+	//
+	// 0|1000001|638732499
+	RowId *string `json:"rowId,omitempty" xml:"rowId,omitempty"`
+	// The end time of the query. This time refers to the log time specified when the log data was written.
+	//
+	// The time interval defined by the request parameters from and to follows the left-closed, right-open principle. That is, the interval includes the start time but does not include the end time. If the values of from and to are the same, the interval is invalid, and the function returns an error directly.
+	//
+	// Unix timestamp format, indicating the number of seconds elapsed since 1970-01-01 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1627268200
+	To *int32 `json:"to,omitempty" xml:"to,omitempty"`
+}
+
+func (s DeleteLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLogsRequest) SetFrom(v int32) *DeleteLogsRequest {
+	s.From = &v
+	return s
+}
+
+func (s *DeleteLogsRequest) SetQuery(v string) *DeleteLogsRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *DeleteLogsRequest) SetRowId(v string) *DeleteLogsRequest {
+	s.RowId = &v
+	return s
+}
+
+func (s *DeleteLogsRequest) SetTo(v int32) *DeleteLogsRequest {
+	s.To = &v
+	return s
+}
+
+type DeleteLogsResponseBody struct {
+	// The number of log rows that were deleted.
+	//
+	// example:
+	//
+	// 10
+	AffectedRows *int32 `json:"affectedRows,omitempty" xml:"affectedRows,omitempty"`
+}
+
+func (s DeleteLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLogsResponseBody) SetAffectedRows(v int32) *DeleteLogsResponseBody {
+	s.AffectedRows = &v
+	return s
+}
+
+type DeleteLogsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLogsResponse) SetHeaders(v map[string]*string) *DeleteLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLogsResponse) SetStatusCode(v int32) *DeleteLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLogsResponse) SetBody(v *DeleteLogsResponseBody) *DeleteLogsResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteLogtailPipelineConfigResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -15005,11 +15139,11 @@ func (s *GetLogsResponse) SetBody(v []map[string]interface{}) *GetLogsResponse {
 
 type GetLogsV2Headers struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The compression method.
+	// The compression method for the response content. SDK users do not need to specify this parameter because the SDK automatically handles compression and decompression.
 	//
-	// - Java, Python, and Go support lz4 and gzip decompression.
+	// - Java, Python, and Go currently support lz4 and gzip decompression.
 	//
-	// - PHP, JavaScript, and C# support gzip decompression only.
+	// - php, JavaScript, and C# currently support only gzip decompression.
 	//
 	// example:
 	//
@@ -15036,15 +15170,17 @@ func (s *GetLogsV2Headers) SetAcceptEncoding(v string) *GetLogsV2Headers {
 }
 
 type GetLogsV2Request struct {
-	// For a scan or phrase query, specifies whether to page forward or backward.
+	// Specifies whether to page forward or backward for scan or phrase queries.
 	//
 	// example:
 	//
 	// false
 	Forward *bool `json:"forward,omitempty" xml:"forward,omitempty"`
-	// The start of the time range to query. The value is the log time that was specified when the log was written.
+	// The start time of the query. This time refers to the log time specified when log data is written.
 	//
-	// The time range is a left-closed right-open interval. This means the range includes the start time but not the end time. If the from and to values are the same, the interval is invalid and an error is returned. The value is a UNIX timestamp that represents the number of seconds since 00:00:00 UTC on January 1, 1970.
+	// The time range defined by the from and to request parameters follows the left-closed, right-open principle. The time range includes the start time but excludes the end time. If the values of from and to are the same, the time range is invalid and the function returns an error.
+	//
+	// The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// This parameter is required.
 	//
@@ -15052,31 +15188,31 @@ type GetLogsV2Request struct {
 	//
 	// 1627268185
 	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
-	// Specifies whether to highlight the results.
+	// Specifies whether to enable highlighting.
 	//
 	// example:
 	//
 	// false
 	Highlight *bool `json:"highlight,omitempty" xml:"highlight,omitempty"`
-	// Specifies whether to enable nanosecond-level sorting.
+	// Specifies whether to enable nanosecond-precision ordering.
 	//
 	// example:
 	//
 	// true
 	IsAccurate *bool `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
-	// The maximum number of logs to return. This parameter is valid only if the query parameter contains a query statement. The value must be an integer from 0 to 100. The default value is 100.
+	// The maximum number of logs to return in the request. This parameter is valid only when the query parameter is a query statement (not an analytic statement). Minimum value: 0. Maximum value: 100. Default value: 100.
 	//
 	// example:
 	//
 	// 100
 	Line *int64 `json:"line,omitempty" xml:"line,omitempty"`
-	// The line number from which to start the query. This parameter is valid only if the query parameter contains a query statement. The default value is 0.
+	// The start row of the query. This parameter is valid only when the query parameter is a query statement (not an analytic statement). The value starts from 0. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// Specifies whether to enable enhanced SQL. The default value is false.
+	// Specifies whether to enable Dedicated SQL. Disabled by default.
 	//
 	// example:
 	//
@@ -15084,17 +15220,21 @@ type GetLogsV2Request struct {
 	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
 	// The query statement or analytic statement. For more information, see [Query overview](https://help.aliyun.com/document_detail/43772.html) and [Analysis overview](https://help.aliyun.com/document_detail/53608.html).
 	//
-	// To use the Exclusive SQL feature, add set session parallel_sql=true; to the analytic statement in the query parameter. Example: \\	- | set session parallel_sql=true; select count(\\*) as pv.
+	// Add set session parallel_sql=true; to the analytic statement in the query parameter to use Dedicated SQL. Example: 	- | set session parallel_sql=true; select count(*) as pv.
 	//
-	// Note: If the query parameter contains an analytic statement (SQL statement), the line and offset parameters are invalid. Set them to 0. Use the LIMIT clause in the SQL statement for paging. For more information, see Paginate query and analysis results.
+	// Note: When the query parameter contains an analytic statement (SQL statement), the line and offset parameters of this API are invalid. Set them to 0. Use the LIMIT syntax in the SQL statement for pagination. For more information, see Display query and analysis results by page.
 	//
 	// example:
 	//
 	// status: 401 | SELECT remote_addr,COUNT(*) as pv GROUP by remote_addr ORDER by pv desc limit 5
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// Specifies whether to return logs in descending order of their timestamps. The precision is at the minute level.
+	// Specifies whether to return logs in descending order of log timestamps, accurate to the minute level. This parameter is valid only when the query parameter is a query statement (not an analytic statement).
 	//
-	// true: Returns logs in descending order of their timestamps. false (default): Returns logs in ascending order of their timestamps. Note: If the query parameter contains a query statement, the reverse parameter is valid and specifies the sorting order. If the query parameter contains a query and analysis statement, the reverse parameter is invalid. The sorting order is specified by the ORDER BY clause in the analytic statement. If ORDER BY is asc (default), logs are sorted in ascending order. If ORDER BY is desc, logs are sorted in descending order.
+	// - true: Returns logs in descending order of log timestamps.
+	//
+	// - false (default): Returns logs in ascending order of log timestamps.
+	//
+	// To sort results in an analytic statement, use the ORDER BY syntax. If ORDER BY is set to asc (default), the results are sorted in ascending order. If ORDER BY is set to desc, the results are sorted in descending order.
 	//
 	// example:
 	//
@@ -15106,9 +15246,11 @@ type GetLogsV2Request struct {
 	//
 	// mode=scan
 	Session *string `json:"session,omitempty" xml:"session,omitempty"`
-	// The end of the time range to query. The value is the log time that was specified when the log was written.
+	// The end time of the query. This time refers to the log time specified when log data is written.
 	//
-	// The time range is a left-closed right-open interval. This means the range includes the start time but not the end time. If the from and to values are the same, the interval is invalid and an error is returned. The value is a UNIX timestamp that represents the number of seconds since 00:00:00 UTC on January 1, 1970.
+	// The time range defined by the from and to request parameters follows the left-closed, right-open principle. The time range includes the start time but excludes the end time. If the values of from and to are the same, the time range is invalid and the function returns an error.
+	//
+	// The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// This parameter is required.
 	//
@@ -15116,7 +15258,7 @@ type GetLogsV2Request struct {
 	//
 	// 1627268185
 	To *int32 `json:"to,omitempty" xml:"to,omitempty"`
-	// The log topic. The default value is double quotation marks ("").
+	// The topic. Default value: empty string.
 	//
 	// example:
 	//
@@ -15193,9 +15335,9 @@ func (s *GetLogsV2Request) SetTopic(v string) *GetLogsV2Request {
 }
 
 type GetLogsV2ResponseBody struct {
-	// The query results.
+	// The returned results.
 	Data []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The metadata of the returned data.
+	// The metadata of the response.
 	Meta *GetLogsV2ResponseBodyMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
 }
 
@@ -15218,7 +15360,7 @@ func (s *GetLogsV2ResponseBody) SetMeta(v *GetLogsV2ResponseBodyMeta) *GetLogsV2
 }
 
 type GetLogsV2ResponseBodyMeta struct {
-	// The SQL part of the query statement that follows the pipe character (|).
+	// The SQL part after the pipe (|) in the query statement.
 	//
 	// example:
 	//
@@ -15226,7 +15368,7 @@ type GetLogsV2ResponseBodyMeta struct {
 	AggQuery *string `json:"aggQuery,omitempty" xml:"aggQuery,omitempty"`
 	// The column types.
 	ColumnTypes []*string `json:"columnTypes,omitempty" xml:"columnTypes,omitempty" type:"Repeated"`
-	// The number of log entries returned in this query.
+	// The number of log entries returned in this query request.
 	//
 	// example:
 	//
@@ -15238,13 +15380,13 @@ type GetLogsV2ResponseBodyMeta struct {
 	//
 	// 3
 	CpuCores *int32 `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
-	// The core-hours for the Exclusive SQL.
+	// The core-hour consumed by Dedicated SQL.
 	//
 	// example:
 	//
 	// 0.002
 	CpuSec *float64 `json:"cpuSec,omitempty" xml:"cpuSec,omitempty"`
-	// The time consumed by the query, in milliseconds.
+	// The time consumed by this query, in milliseconds.
 	//
 	// example:
 	//
@@ -15258,57 +15400,65 @@ type GetLogsV2ResponseBodyMeta struct {
 	HasSQL *bool `json:"hasSQL,omitempty" xml:"hasSQL,omitempty"`
 	// The highlighted content.
 	Highlights []map[string]interface{} `json:"highlights,omitempty" xml:"highlights,omitempty" type:"Repeated"`
-	// Indicates whether nanosecond-level sorting is enabled.
+	// Specifies whether to enable nanosecond-precision ordering.
 	//
 	// example:
 	//
 	// true
 	IsAccurate *bool `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
-	// All keys in the query result.
+	// All keys in the query results.
 	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
-	// The number of entries returned. This parameter is returned if the SQL statement does not contain a LIMIT clause.
+	// The limit on the number of rows. Returned when an SQL statement does not include a LIMIT clause.
 	//
 	// example:
 	//
 	// 100
 	Limited *int32 `json:"limited,omitempty" xml:"limited,omitempty"`
-	// The query mode. Valid values: 0: Normal query, which includes SQL queries. 1: Phrase query. 2: SCAN query. 3: SCAN SQL query.
+	// The query mode. Valid values:
+	//
+	// 0: standard query (including SQL)
+	//
+	// 1: phrase query
+	//
+	// 2: SCAN
+	//
+	// 3: SCAN SQL.
 	//
 	// example:
 	//
 	// 0
 	Mode *int32 `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The information about the phrase query.
+	// The phrase query information.
 	PhraseQueryInfo *GetLogsV2ResponseBodyMetaPhraseQueryInfo `json:"phraseQueryInfo,omitempty" xml:"phraseQueryInfo,omitempty" type:"Struct"`
-	// The volume of logs processed in the query, in bytes.
+	// The volume of logs processed by the query.
 	//
 	// example:
 	//
 	// 10000
 	ProcessedBytes *int64 `json:"processedBytes,omitempty" xml:"processedBytes,omitempty"`
-	// The number of rows processed in the query.
+	// The number of rows processed in this query.
 	//
 	// example:
 	//
 	// 10000
 	ProcessedRows *int64 `json:"processedRows,omitempty" xml:"processedRows,omitempty"`
-	// The progress of the query. Valid values:
+	// Indicates whether the query results are complete. Valid values:
 	//
-	// - Complete: The query is complete, and the returned result is complete.
+	// - Complete: The query is complete and the results are complete.
 	//
-	// - Incomplete: The query is complete, but the returned result is incomplete. You must send the request again to obtain the complete result.
+	// - Incomplete: The query is complete but the results are incomplete. Resend the request to obtain complete results.
 	//
 	// example:
 	//
 	// Complete
 	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
-	// The volume of data scanned in the scan query, in bytes.
+	// The amount of data scanned during the scan, in bytes.
 	//
 	// example:
 	//
 	// 1024
 	ScanBytes *int64 `json:"scanBytes,omitempty" xml:"scanBytes,omitempty"`
-	// The type of observable data.
+	// The observable data type.
 	//
 	// example:
 	//
@@ -15316,7 +15466,7 @@ type GetLogsV2ResponseBodyMeta struct {
 	TelementryType *string `json:"telementryType,omitempty" xml:"telementryType,omitempty"`
 	// All terms in the query statement.
 	Terms []map[string]interface{} `json:"terms,omitempty" xml:"terms,omitempty" type:"Repeated"`
-	// The part of the query statement that precedes the pipe character (|).
+	// The part before the pipe (|) in the query statement.
 	//
 	// example:
 	//
@@ -15433,25 +15583,25 @@ func (s *GetLogsV2ResponseBodyMeta) SetWhereQuery(v string) *GetLogsV2ResponseBo
 }
 
 type GetLogsV2ResponseBodyMetaPhraseQueryInfo struct {
-	// The starting offset of the scan result after index filtering.
+	// The start offset of the scan results after index filtering.
 	//
 	// example:
 	//
 	// 0
 	BeginOffset *int64 `json:"beginOffset,omitempty" xml:"beginOffset,omitempty"`
-	// The end offset of the scan result after index filtering.
+	// The end offset of the scan results after index filtering.
 	//
 	// example:
 	//
 	// 0
 	EndOffset *int64 `json:"endOffset,omitempty" xml:"endOffset,omitempty"`
-	// The end time of the scan result after index filtering.
+	// The end time of the scan results after index filtering.
 	//
 	// example:
 	//
 	// 1
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Indicates whether all logs are scanned.
+	// Indicates whether all logs have been scanned.
 	//
 	// example:
 	//
@@ -15672,8 +15822,7 @@ func (s *GetMachineGroupResponse) SetBody(v *MachineGroup) *GetMachineGroupRespo
 
 type GetMaterializedViewHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The content type of the request. The value must be `application/json`.
-	ContentType *string `json:"Content-Type,omitempty" xml:"Content-Type,omitempty"`
+	ContentType   *string            `json:"Content-Type,omitempty" xml:"Content-Type,omitempty"`
 }
 
 func (s GetMaterializedViewHeaders) String() string {
@@ -15714,20 +15863,14 @@ func (s *GetMaterializedViewRequest) SetReturnStatus(v bool) *GetMaterializedVie
 }
 
 type GetMaterializedViewResponseBody struct {
-	// The time interval for data aggregation, in minutes.
-	AggIntervalMins *int32 `json:"aggIntervalMins,omitempty" xml:"aggIntervalMins,omitempty"`
-	// Specifies whether the materialized view is active. Valid values are `true` and `false`.
-	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The destination logstore that stores the aggregated data.
-	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the materialized view.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The SQL query that defines the materialized view.
-	OriginalSql *string `json:"originalSql,omitempty" xml:"originalSql,omitempty"`
-	// The time when the materialized view was created. The value is a Unix timestamp.
-	StartTime *int32 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The time to live (ttl) of the data in the destination logstore, in days.
-	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	AggIntervalMins *int32                                 `json:"aggIntervalMins,omitempty" xml:"aggIntervalMins,omitempty"`
+	Enabled         *bool                                  `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Logstore        *string                                `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Name            *string                                `json:"name,omitempty" xml:"name,omitempty"`
+	OriginalSql     *string                                `json:"originalSql,omitempty" xml:"originalSql,omitempty"`
+	StartTime       *int32                                 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status          *GetMaterializedViewResponseBodyStatus `json:"status,omitempty" xml:"status,omitempty" type:"Struct"`
+	Ttl             *int32                                 `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s GetMaterializedViewResponseBody) String() string {
@@ -15768,8 +15911,42 @@ func (s *GetMaterializedViewResponseBody) SetStartTime(v int32) *GetMaterialized
 	return s
 }
 
+func (s *GetMaterializedViewResponseBody) SetStatus(v *GetMaterializedViewResponseBodyStatus) *GetMaterializedViewResponseBody {
+	s.Status = v
+	return s
+}
+
 func (s *GetMaterializedViewResponseBody) SetTtl(v int32) *GetMaterializedViewResponseBody {
 	s.Ttl = &v
+	return s
+}
+
+type GetMaterializedViewResponseBodyStatus struct {
+	LastRunError  *string `json:"lastRunError,omitempty" xml:"lastRunError,omitempty"`
+	LastRunTime   *int64  `json:"lastRunTime,omitempty" xml:"lastRunTime,omitempty"`
+	MaxCursorTime *int64  `json:"maxCursorTime,omitempty" xml:"maxCursorTime,omitempty"`
+}
+
+func (s GetMaterializedViewResponseBodyStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMaterializedViewResponseBodyStatus) GoString() string {
+	return s.String()
+}
+
+func (s *GetMaterializedViewResponseBodyStatus) SetLastRunError(v string) *GetMaterializedViewResponseBodyStatus {
+	s.LastRunError = &v
+	return s
+}
+
+func (s *GetMaterializedViewResponseBodyStatus) SetLastRunTime(v int64) *GetMaterializedViewResponseBodyStatus {
+	s.LastRunTime = &v
+	return s
+}
+
+func (s *GetMaterializedViewResponseBodyStatus) SetMaxCursorTime(v int64) *GetMaterializedViewResponseBodyStatus {
+	s.MaxCursorTime = &v
 	return s
 }
 
@@ -16152,6 +16329,23 @@ func (s *GetOSSIngestionResponse) SetStatusCode(v int32) *GetOSSIngestionRespons
 
 func (s *GetOSSIngestionResponse) SetBody(v *OSSIngestion) *GetOSSIngestionResponse {
 	s.Body = v
+	return s
+}
+
+type GetProjectRequest struct {
+	CrossRegion *bool `json:"crossRegion,omitempty" xml:"crossRegion,omitempty"`
+}
+
+func (s GetProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectRequest) SetCrossRegion(v bool) *GetProjectRequest {
+	s.CrossRegion = &v
 	return s
 }
 
@@ -20719,32 +20913,37 @@ func (s *ListOSSIngestionsResponse) SetBody(v *ListOSSIngestionsResponseBody) *L
 }
 
 type ListProjectRequest struct {
+	// The project description, used for filtering.
+	//
+	// example:
+	//
+	// abc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to retrieve the quota information for the project.
+	// Specifies whether to retrieve the project quota information.
 	//
 	// example:
 	//
 	// false
 	FetchQuota *bool `json:"fetchQuota,omitempty" xml:"fetchQuota,omitempty"`
-	// The line from which the query starts. The default value is 0.
+	// The line from which the query starts. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The name of the project. Fuzzy queries are supported.
+	// The name of the project. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// ali-test-project
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aekzf******sxby
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The number of rows to return on each page for a paged query. The default value is 100. A maximum of 500 projects can be returned.
+	// The number of entries per page in a paged query. Default value: 100. A maximum of 500 project entries can be returned.
 	//
 	// example:
 	//
@@ -20797,13 +20996,13 @@ type ListProjectResponseBody struct {
 	//
 	// 2
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// The list of projects that meet the query criteria.
+	// The list of projects that meet the query conditions.
 	//
 	// example:
 	//
 	// Not applicable
 	Projects []*Project `json:"projects,omitempty" xml:"projects,omitempty" type:"Repeated"`
-	// The total number of projects that meet the query criteria.
+	// The total number of projects that meet the query conditions.
 	//
 	// example:
 	//
@@ -24388,6 +24587,154 @@ func (s *UpdateLoggingResponse) SetStatusCode(v int32) *UpdateLoggingResponse {
 	return s
 }
 
+type UpdateLogsRequest struct {
+	// The data to be updated, in JSON format.
+	//
+	// example:
+	//
+	// {"status":"success"}
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The start time of the query. This time refers to the log time specified when the log data was written.
+	//
+	// The time range defined by the request parameters from and to follows the left-closed, right-open principle. That is, the time range includes the start time but does not include the end time. If the values of from and to are the same, the range is invalid and the function returns an error directly.
+	//
+	// Unix timestamp format, representing the number of seconds since 1970-01-01 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1627268185
+	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
+	// Optional: A query statement used to filter the logs to be updated. For more information, see [Query overview](https://help.aliyun.com/document_detail/43772.html).
+	//
+	// Note: This parameter only supports query statements and does not support analysis statements such as SPL or SQL.
+	//
+	// example:
+	//
+	// status: 401
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// Optional: The value of the built-in field __rowid__ that is automatically returned in the query results.
+	//
+	// One of the two fields, rowId and query, must be specified. If both are specified, rowId takes higher priority.
+	//
+	// example:
+	//
+	// 0|1000001|638732499
+	RowId *string `json:"rowId,omitempty" xml:"rowId,omitempty"`
+	// The end time of the query. This time refers to the log time specified when the log data was written.
+	//
+	// The time range defined by the request parameters from and to follows the left-closed, right-open principle. That is, the time range includes the start time but does not include the end time. If the values of from and to are the same, the range is invalid and the function returns an error directly.
+	//
+	// Unix timestamp format, representing the number of seconds since 1970-01-01 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1627268200
+	To *int32 `json:"to,omitempty" xml:"to,omitempty"`
+	// Optional: The value can be full or partial. The default value is partial.
+	//
+	//   - full —— The request body must contain all fields of the row. The server overwrites the entire old record with the new values.
+	//
+	//   - partial —— The request body only needs to contain the fields to be modified. Fields that are not provided retain their original values.
+	//
+	// example:
+	//
+	// partial
+	UpdateMode *string `json:"updateMode,omitempty" xml:"updateMode,omitempty"`
+}
+
+func (s UpdateLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLogsRequest) SetData(v string) *UpdateLogsRequest {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateLogsRequest) SetFrom(v int32) *UpdateLogsRequest {
+	s.From = &v
+	return s
+}
+
+func (s *UpdateLogsRequest) SetQuery(v string) *UpdateLogsRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *UpdateLogsRequest) SetRowId(v string) *UpdateLogsRequest {
+	s.RowId = &v
+	return s
+}
+
+func (s *UpdateLogsRequest) SetTo(v int32) *UpdateLogsRequest {
+	s.To = &v
+	return s
+}
+
+func (s *UpdateLogsRequest) SetUpdateMode(v string) *UpdateLogsRequest {
+	s.UpdateMode = &v
+	return s
+}
+
+type UpdateLogsResponseBody struct {
+	// The number of updated log rows.
+	//
+	// example:
+	//
+	// 10
+	AffectedRows *int32 `json:"affectedRows,omitempty" xml:"affectedRows,omitempty"`
+}
+
+func (s UpdateLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLogsResponseBody) SetAffectedRows(v int32) *UpdateLogsResponseBody {
+	s.AffectedRows = &v
+	return s
+}
+
+type UpdateLogsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLogsResponse) SetHeaders(v map[string]*string) *UpdateLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLogsResponse) SetStatusCode(v int32) *UpdateLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateLogsResponse) SetBody(v *UpdateLogsResponseBody) *UpdateLogsResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateLogtailPipelineConfigRequest struct {
 	// The list of aggregator plug-ins.
 	//
@@ -25926,7 +26273,44 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		client.HttpClient = defaultHttpClient
 	}
 
-	client.EndpointRule = tea.String("central")
+	client.EndpointRule = tea.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":             tea.String("us-west-1.log.aliyuncs.com"),
+		"us-southeast-1":        tea.String("us-southeast-1.log.aliyuncs.com"),
+		"us-east-1":             tea.String("us-east-1.log.aliyuncs.com"),
+		"me-east-1":             tea.String("me-east-1.log.aliyuncs.com"),
+		"me-central-1":          tea.String("me-central-1.log.aliyuncs.com"),
+		"eu-west-1":             tea.String("eu-west-1.log.aliyuncs.com"),
+		"eu-central-1":          tea.String("eu-central-1.log.aliyuncs.com"),
+		"cn-zhangjiakou":        tea.String("cn-zhangjiakou.log.aliyuncs.com"),
+		"cn-wulanchabu":         tea.String("cn-wulanchabu.log.aliyuncs.com"),
+		"cn-shenzhen-finance-1": tea.String("cn-shenzhen-finance-1.log.aliyuncs.com"),
+		"cn-shenzhen":           tea.String("cn-shenzhen.log.aliyuncs.com"),
+		"cn-shanghai-finance-1": tea.String("cn-shanghai-finance-1.log.aliyuncs.com"),
+		"cn-shanghai":           tea.String("cn-shanghai.log.aliyuncs.com"),
+		"cn-qingdao":            tea.String("cn-qingdao.log.aliyuncs.com"),
+		"cn-nanjing":            tea.String("cn-nanjing.log.aliyuncs.com"),
+		"cn-huhehaote":          tea.String("cn-huhehaote.log.aliyuncs.com"),
+		"cn-hongkong":           tea.String("cn-hongkong.log.aliyuncs.com"),
+		"cn-heyuan-acdr-1":      tea.String("cn-heyuan-acdr-1-intranet.log.aliyuncs.com"),
+		"cn-heyuan":             tea.String("cn-heyuan.log.aliyuncs.com"),
+		"cn-hangzhou-finance":   tea.String("cn-hangzhou-finance.log.aliyuncs.com"),
+		"cn-hangzhou":           tea.String("cn-hangzhou.log.aliyuncs.com"),
+		"cn-guangzhou":          tea.String("cn-guangzhou.log.aliyuncs.com"),
+		"cn-fuzhou":             tea.String("cn-fuzhou.log.aliyuncs.com"),
+		"cn-chengdu":            tea.String("cn-chengdu.log.aliyuncs.com"),
+		"cn-beijing-finance-1":  tea.String("cn-beijing-finance-1.log.aliyuncs.com"),
+		"cn-beijing":            tea.String("cn-beijing.log.aliyuncs.com"),
+		"ap-southeast-7":        tea.String("ap-southeast-7.log.aliyuncs.com"),
+		"ap-southeast-6":        tea.String("ap-southeast-6.log.aliyuncs.com"),
+		"ap-southeast-5":        tea.String("ap-southeast-5.log.aliyuncs.com"),
+		"ap-southeast-3":        tea.String("ap-southeast-3.log.aliyuncs.com"),
+		"ap-southeast-2":        tea.String("ap-southeast-2.log.aliyuncs.com"),
+		"ap-southeast-1":        tea.String("ap-southeast-1.log.aliyuncs.com"),
+		"ap-south-1":            tea.String("ap-south-1.log.aliyuncs.com"),
+		"ap-northeast-2":        tea.String("ap-northeast-2.log.aliyuncs.com"),
+		"ap-northeast-1":        tea.String("ap-northeast-1.log.aliyuncs.com"),
+	}
 	return nil
 }
 
@@ -26013,7 +26397,11 @@ func (client *Client) ApplyConfigToMachineGroup(project *string, machineGroup *s
 
 // Summary:
 //
-// Calls observable AI tools. The capabilities of these tools are continuously updated. You can call the tool list API to retrieve the currently supported capabilities.
+// Invokes an observability AI tool. Tool capabilities are continuously updated. You can call the tool list operation to retrieve the currently supported capabilities.
+//
+// Description:
+//
+// This operation is available only at the endpoints in the China (Shanghai) and Singapore regions.
 //
 // @param request - CallAiToolsRequest
 //
@@ -26066,7 +26454,11 @@ func (client *Client) CallAiToolsWithOptions(request *CallAiToolsRequest, header
 
 // Summary:
 //
-// Calls observable AI tools. The capabilities of these tools are continuously updated. You can call the tool list API to retrieve the currently supported capabilities.
+// Invokes an observability AI tool. Tool capabilities are continuously updated. You can call the tool list operation to retrieve the currently supported capabilities.
+//
+// Description:
+//
+// This operation is available only at the endpoints in the China (Shanghai) and Singapore regions.
 //
 // @param request - CallAiToolsRequest
 //
@@ -26546,6 +26938,10 @@ func (client *Client) CreateAlert(project *string, request *CreateAlertRequest) 
 //
 // Creates a dataset.
 //
+// Description:
+//
+// This operation is available only at the China (Shanghai) and Singapore endpoints.
+//
 // @param request - CreateAnnotationDataSetRequest
 //
 // @param headers - map
@@ -26591,6 +26987,10 @@ func (client *Client) CreateAnnotationDataSetWithOptions(request *CreateAnnotati
 // Summary:
 //
 // Creates a dataset.
+//
+// Description:
+//
+// This operation is available only at the China (Shanghai) and Singapore endpoints.
 //
 // @param request - CreateAnnotationDataSetRequest
 //
@@ -30398,6 +30798,93 @@ func (client *Client) DeleteLogging(project *string) (_result *DeleteLoggingResp
 
 // Summary:
 //
+// # Deletes log data from a Logstore under a specified project
+//
+// Description:
+//
+// The Host is composed of the project name and the Log Service endpoint. You need to specify the project in the Host.
+//
+// @param request - DeleteLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLogsResponse
+func (client *Client) DeleteLogsWithOptions(project *string, logstore *string, request *DeleteLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		body["from"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RowId)) {
+		body["rowId"] = request.RowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		body["to"] = request.To
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLogs"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/deletelogs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLogsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Deletes log data from a Logstore under a specified project
+//
+// Description:
+//
+// The Host is composed of the project name and the Log Service endpoint. You need to specify the project in the Host.
+//
+// @param request - DeleteLogsRequest
+//
+// @return DeleteLogsResponse
+func (client *Client) DeleteLogs(project *string, logstore *string, request *DeleteLogsRequest) (_result *DeleteLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteLogsResponse{}
+	_body, _err := client.DeleteLogsWithOptions(project, logstore, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a Logtail pipeline configuration.
 //
 // Description:
@@ -33772,25 +34259,23 @@ func (client *Client) GetLogs(project *string, logstore *string, request *GetLog
 
 // Summary:
 //
-// Queries raw logs from a specified Logstore in a project. The response contains raw logs within a specified time range and is compressed for transmission.
+// Queries raw log data from a Logstore in a specified Project and returns raw logs within a specified time range. The results are compressed before transmission.
 //
 // Description:
 //
-// - The Simple Log Service software development kit (SDK) is available for Go, Java, and Python. You can also call all OpenAPI operations directly.
-//
-// - Specify a compression method when you call this operation. Available compression algorithms depend on your programming language. For more information, see the Accept-Encoding request parameter.
+// - Specify the compression method during the procedure. Different programming languages implement different compression algorithms. For details, see the Accept-Encoding request parameter.
 //
 // - For more information, see [GetLogs](https://help.aliyun.com/document_detail/2771313.html).
 //
-// ### Permissions
+// ### Authentication
 //
-// The following table lists the permissions required to call this API operation. Add the action to a RAM policy statement to grant a RAM user or RAM role permission to call this operation.
+// The following table describes the authorization information required by this API. You can add the information to the Action element in a RAM access policy statement to grant a Resource Access Management (RAM) user or RAM role the permissions to invoke this API.
 //
-// | Action                | Resource in an authorization policy                       |
+// | Action | Resource |
 //
-// | :-------------------- | :-------------------------------------------------------- |
+// | :------------ | :------------ |
 //
-// | `log:GetLogStoreLogs` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}` |
+// | `log:GetLogStoreLogs`  | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`  |
 //
 // @param request - GetLogsV2Request
 //
@@ -33891,25 +34376,23 @@ func (client *Client) GetLogsV2WithOptions(project *string, logstore *string, re
 
 // Summary:
 //
-// Queries raw logs from a specified Logstore in a project. The response contains raw logs within a specified time range and is compressed for transmission.
+// Queries raw log data from a Logstore in a specified Project and returns raw logs within a specified time range. The results are compressed before transmission.
 //
 // Description:
 //
-// - The Simple Log Service software development kit (SDK) is available for Go, Java, and Python. You can also call all OpenAPI operations directly.
-//
-// - Specify a compression method when you call this operation. Available compression algorithms depend on your programming language. For more information, see the Accept-Encoding request parameter.
+// - Specify the compression method during the procedure. Different programming languages implement different compression algorithms. For details, see the Accept-Encoding request parameter.
 //
 // - For more information, see [GetLogs](https://help.aliyun.com/document_detail/2771313.html).
 //
-// ### Permissions
+// ### Authentication
 //
-// The following table lists the permissions required to call this API operation. Add the action to a RAM policy statement to grant a RAM user or RAM role permission to call this operation.
+// The following table describes the authorization information required by this API. You can add the information to the Action element in a RAM access policy statement to grant a Resource Access Management (RAM) user or RAM role the permissions to invoke this API.
 //
-// | Action                | Resource in an authorization policy                       |
+// | Action | Resource |
 //
-// | :-------------------- | :-------------------------------------------------------- |
+// | :------------ | :------------ |
 //
-// | `log:GetLogStoreLogs` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}` |
+// | `log:GetLogStoreLogs`  | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`  |
 //
 // @param request - GetLogsV2Request
 //
@@ -34191,7 +34674,7 @@ func (client *Client) GetMachineGroup(project *string, machineGroup *string) (_r
 
 // Summary:
 //
-// Retrieve a materialized view.
+// Retrieves a materialized view.
 //
 // @param request - GetMaterializedViewRequest
 //
@@ -34248,7 +34731,7 @@ func (client *Client) GetMaterializedViewWithOptions(project *string, name *stri
 
 // Summary:
 //
-// Retrieve a materialized view.
+// Retrieves a materialized view.
 //
 // @param request - GetMaterializedViewRequest
 //
@@ -34677,25 +35160,37 @@ func (client *Client) GetOSSIngestion(project *string, ossIngestionName *string)
 
 // Summary:
 //
-// Gets the details of a project.
+// Queries the details of a specified project.
 //
 // Description:
 //
-// ### Usage notes
+// ### Operation description
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// The Host in the request syntax consists of the project name and the Simple Log Service endpoint. You must specify the project in the Host.
+//
+// @param request - GetProjectRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetProjectResponse
-func (client *Client) GetProjectWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
+func (client *Client) GetProjectWithOptions(project *string, request *GetProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossRegion)) {
+		query["crossRegion"] = request.CrossRegion
+	}
+
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetProject"),
@@ -34719,20 +35214,22 @@ func (client *Client) GetProjectWithOptions(project *string, headers map[string]
 
 // Summary:
 //
-// Gets the details of a project.
+// Queries the details of a specified project.
 //
 // Description:
 //
-// ### Usage notes
+// ### Operation description
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// The Host in the request syntax consists of the project name and the Simple Log Service endpoint. You must specify the project in the Host.
+//
+// @param request - GetProjectRequest
 //
 // @return GetProjectResponse
-func (client *Client) GetProject(project *string) (_result *GetProjectResponse, _err error) {
+func (client *Client) GetProject(project *string, request *GetProjectRequest) (_result *GetProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetProjectResponse{}
-	_body, _err := client.GetProjectWithOptions(project, headers, runtime)
+	_body, _err := client.GetProjectWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37793,13 +38290,13 @@ func (client *Client) ListOSSIngestions(project *string, request *ListOSSIngesti
 
 // Summary:
 //
-// Lists projects that meet the specified criteria.
+// Lists project information that meets the specified conditions.
 //
 // Description:
 //
-// ### API description
+// ### Operation description
 //
-// The host consists of a project name and a Simple Log Service endpoint. Specify the project in the host.
+// The Host consists of the project name and the Simple Log Service endpoint. You must specify the project in the Host.
 //
 // @param request - ListProjectRequest
 //
@@ -37864,13 +38361,13 @@ func (client *Client) ListProjectWithOptions(request *ListProjectRequest, header
 
 // Summary:
 //
-// Lists projects that meet the specified criteria.
+// Lists project information that meets the specified conditions.
 //
 // Description:
 //
-// ### API description
+// ### Operation description
 //
-// The host consists of a project name and a Simple Log Service endpoint. Specify the project in the host.
+// The Host consists of the project name and the Simple Log Service endpoint. You must specify the project in the Host.
 //
 // @param request - ListProjectRequest
 //
@@ -42457,6 +42954,101 @@ func (client *Client) UpdateLogging(project *string, request *UpdateLoggingReque
 	headers := make(map[string]*string)
 	_result = &UpdateLoggingResponse{}
 	_body, _err := client.UpdateLoggingWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates log data in a specified Logstore under the specified Project.
+//
+// Description:
+//
+// The Host consists of the Project name and the Log Service endpoint. You need to specify the Project in the Host.
+//
+// @param request - UpdateLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLogsResponse
+func (client *Client) UpdateLogsWithOptions(project *string, logstore *string, request *UpdateLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		body["data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		body["from"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RowId)) {
+		body["rowId"] = request.RowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		body["to"] = request.To
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateMode)) {
+		body["updateMode"] = request.UpdateMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLogs"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/updatelogs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateLogsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates log data in a specified Logstore under the specified Project.
+//
+// Description:
+//
+// The Host consists of the Project name and the Log Service endpoint. You need to specify the Project in the Host.
+//
+// @param request - UpdateLogsRequest
+//
+// @return UpdateLogsResponse
+func (client *Client) UpdateLogs(project *string, logstore *string, request *UpdateLogsRequest) (_result *UpdateLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateLogsResponse{}
+	_body, _err := client.UpdateLogsWithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
