@@ -973,8 +973,8 @@ func (client *Client) MultiModalGuardWsWithContext(ctx context.Context, request 
 		return _result, _err
 	}
 	tmp := dara.ToMap(callApiTmp)
-	if !dara.IsNil(tmp["WebSocketClient"]) {
-		res.WebSocketClient = websocketutils.CreateWebSocketClient(tmp["WebSocketClient"])
+	if !dara.IsNil(tmp["webSocketClient"]) {
+		res.WebSocketClient = websocketutils.CreateWebSocketClient(tmp["webSocketClient"])
 	}
 
 	_result = res

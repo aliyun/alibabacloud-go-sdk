@@ -15,7 +15,7 @@ type iMultiModalGuardWsResponse interface {
 }
 
 type MultiModalGuardWsResponse struct {
-	WebSocketClient *websocketutils.WebSocketClient `json:"WebSocketClient,omitempty" xml:"WebSocketClient,omitempty"`
+	WebSocketClient *websocketutils.WebSocketClient `json:"webSocketClient,omitempty" xml:"webSocketClient,omitempty"`
 }
 
 func (s MultiModalGuardWsResponse) String() string {

@@ -45,6 +45,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-shenzhen-finance-1": dara.String("green.aliyuncs.com"),
 		"cn-shanghai-finance-1": dara.String("green.aliyuncs.com"),
 		"cn-north-2-gov-1":      dara.String("green.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("green-cip.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":           dara.String("green-cip.cn-shanghai.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("green-cip.cn-hangzhou.aliyuncs.com"),
+		"cn-beijing":            dara.String("green-cip.cn-beijing.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("green-cip.ap-southeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -1467,8 +1472,8 @@ func (client *Client) MultiModalGuardWsWithOptions(request *MultiModalGuardWsReq
 		return _result, _err
 	}
 	tmp := dara.ToMap(callApiTmp)
-	if !dara.IsNil(tmp["WebSocketClient"]) {
-		res.WebSocketClient = websocketutils.CreateWebSocketClient(tmp["WebSocketClient"])
+	if !dara.IsNil(tmp["webSocketClient"]) {
+		res.WebSocketClient = websocketutils.CreateWebSocketClient(tmp["webSocketClient"])
 	}
 
 	_result = res
