@@ -26,41 +26,51 @@ type DescribeEventTypesRequest struct {
 	//
 	// example:
 	//
-	// 2
+	// 1
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type of anomalous event for which you want to query the anomalous events of subtypes. Valid values:
+	// The ID of the parent anomalous activity type to which the child anomalous activity type belongs. Valid values:
 	//
-	// 	- **01**: anomalous permission usage
+	// - **01**: anomalous permission access.
 	//
-	// 	- **02**: anomalous data flow
+	// - **02**: anomalous data flow.
 	//
-	// 	- **03**: anomalous data operation
+	// - **03**: anomalous data operation.
 	//
 	// example:
 	//
 	// 01
 	ParentTypeId *int64 `json:"ParentTypeId,omitempty" xml:"ParentTypeId,omitempty"`
-	// The type of the resource. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	// The resource type of the product. Valid values:
+	//
+	// - **1**: MaxCompute.
+	//
+	// - **2**: Object Storage Service (OSS).
+	//
+	// - **3**: AnalyticDB for MySQL.
+	//
+	// - **4**: Tablestore.
+	//
+	// - **5**. ApsaraDB RDS.
 	//
 	// example:
 	//
 	// 5
 	ResourceId *int32 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The status of the anomalous event. Valid values:
+	// The status. Valid values:
 	//
-	// 	- **1**: enabled
+	// - **1**: active.
 	//
-	// 	- **2**: disabled
+	// - **2**: inactive.
 	//
 	// example:
 	//

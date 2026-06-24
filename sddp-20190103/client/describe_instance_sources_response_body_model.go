@@ -22,27 +22,27 @@ type iDescribeInstanceSourcesResponseBody interface {
 }
 
 type DescribeInstanceSourcesResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The assets.
+	// A list of assets.
 	Items []*DescribeInstanceSourcesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5A7E8FB9-5011-5A90-97D9-AE587047****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of assets.
 	//
 	// example:
 	//
@@ -117,89 +117,89 @@ func (s *DescribeInstanceSourcesResponseBody) Validate() error {
 }
 
 type DescribeInstanceSourcesResponseBodyItems struct {
-	// Indicates whether the security audit feature is enabled. Valid values:
+	// The audit authorization status. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: Authorized.
 	//
-	// 	- **0**: no
+	// - **0**: Unauthorized.
 	//
 	// example:
 	//
 	// 1
 	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// Indicates whether the automatic scan feature is enabled to detect sensitive data. Valid values:
+	// Indicates whether automatic scanning for sensitive data is enabled. Valid values:
 	//
-	// 	- **0**: no
+	// - **0**: Disabled.
 	//
-	// 	- **1**: yes
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 0
 	AutoScan *int32 `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
-	// Indicates whether the username and password can be changed. Valid values:
+	// Indicates whether the username and password can be modified. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: Yes.
 	//
-	// 	- **false**: no
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	CanModifyUserName *bool `json:"CanModifyUserName,omitempty" xml:"CanModifyUserName,omitempty"`
-	// The data detection status. Valid values:
+	// The data check status. Valid values:
 	//
-	// 	- **0**: The data detection is ready.
+	// - **0**: Ready.
 	//
-	// 	- **1**: The data detection is running.
+	// - **1**: Running.
 	//
-	// 	- **2**: The connectivity test is in progress.
+	// - **2**: Connectivity test in progress.
 	//
-	// 	- **3**: The connectivity test passed.
+	// - **3**: Connectivity test passed.
 	//
-	// 	- **4**: The connectivity test failed.
+	// - **4**: Connectivity test failed.
 	//
 	// example:
 	//
 	// 3
 	CheckStatus *int32 `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	// Indicates whether DSC has the data de-identification permissions on the data asset. Valid values:
+	// The status of data masking authorization. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: Enabled.
 	//
-	// 	- **0**: no
+	// - **0**: Disabled.
 	//
 	// example:
 	//
 	// 1
 	DatamaskStatus *int32 `json:"DatamaskStatus,omitempty" xml:"DatamaskStatus,omitempty"`
-	// The name of the database to which the data asset belongs.
+	// The name of the database to which the asset belongs.
 	//
 	// example:
 	//
 	// demo
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// Indicates whether sensitive data detection is enabled for the data asset. Valid values:
+	// Indicates whether sensitive data detection is enabled for the asset. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: Enabled.
 	//
-	// 	- **0**: no
+	// - **0**: Disabled.
 	//
 	// example:
 	//
 	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The engine type. Valid values:
+	// The database engine type. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **MariaDB**
+	// - **MariaDB**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **SQLServer**
+	// - **SQLServer**
 	//
 	// example:
 	//
@@ -209,15 +209,15 @@ type DescribeInstanceSourcesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// The password is invalid.
+	// password error
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The time when the data asset was created. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the asset was created. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1625587423000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The unique ID of the data asset.
+	// The unique ID of the asset.
 	//
 	// example:
 	//
@@ -227,67 +227,67 @@ type DescribeInstanceSourcesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// Test
+	// instance test
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The ID of the instance
+	// The instance ID.
 	//
 	// example:
 	//
 	// rm-****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The storage space size of the instance. This parameter is valid only if the value of the ProductId parameter is 2. Unit: bytes.
+	// The size of the instance. This parameter is valid only for OSS assets. Unit: bytes.
 	//
 	// example:
 	//
 	// 409600
 	InstanceSize *int64 `json:"InstanceSize,omitempty" xml:"InstanceSize,omitempty"`
-	// The time when the data asset was last modified. Unit: milliseconds.
+	// The timestamp when the asset was last modified. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1625587423000
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	// The ID of the account that is last used to modify the data asset.
+	// The ID of the account that last modified the asset.
 	//
 	// example:
 	//
 	// demo
 	LastModifyUserId *string `json:"LastModifyUserId,omitempty" xml:"LastModifyUserId,omitempty"`
-	// The retention period of raw logs. Unit: days.
+	// The storage duration of raw logs. Unit: days.
 	//
 	// example:
 	//
 	// 30
 	LogStoreDay *int32 `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
-	// Indicates whether the password is used. Valid values:
+	// The status of the password. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: In use.
 	//
-	// 	- **0**: no
+	// - **0**: Not in use.
 	//
 	// example:
 	//
 	// 1
 	PasswordStatus *int32 `json:"PasswordStatus,omitempty" xml:"PasswordStatus,omitempty"`
-	// The ID of the service to which the asset belongs. Valid values:
+	// The product type ID. Valid values:
 	//
-	// 	- **1**: MaxCompute
+	// - **1**: MaxCompute
 	//
-	// 	- **2**: OSS
+	// - **2**: OSS
 	//
-	// 	- **3**: AnalyticDB for MySQL
+	// - **3**: ADS
 	//
-	// 	- **4**: OTS
+	// - **4**: OTS
 	//
-	// 	- **5**: ApsaraDB RDS
+	// - **5**: RDS
 	//
-	// 	- **6**: self-managed databases
+	// - **6**: SELF_DB
 	//
 	// example:
 	//
 	// 2
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The ID of the region where the instance resides.
+	// The region ID.
 	//
 	// example:
 	//
@@ -297,15 +297,15 @@ type DescribeInstanceSourcesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// China (Hangzhou)
+	// cn-hangzhou
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The number of sensitive data samples. Valid values: **0**, **5**, and **10**. Unit: data entries.
+	// The sensitive data sampling size. Valid values: **0**, **5**, and **10**. Unit: number of entries.
 	//
 	// example:
 	//
 	// 10
 	SamplingSize *int32 `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
-	// The ID of the tenant.
+	// The tenant ID.
 	//
 	// example:
 	//

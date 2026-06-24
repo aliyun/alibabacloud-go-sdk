@@ -38,43 +38,43 @@ type iDescribeInstanceSourcesRequest interface {
 }
 
 type DescribeInstanceSourcesRequest struct {
-	// Specifies whether to enable the security audit feature. Valid values:
+	// The audit status. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: Auditing is enabled.
 	//
-	// 	- **0**: no
+	// - **0**: Auditing is disabled.
 	//
 	// example:
 	//
 	// 1
 	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// Specifies whether DSC is authorized to access the data asset.
+	// The authorization status of the data asset instance.
 	//
-	// 	- **0**: no
+	// - **0**: Unauthorized.
 	//
-	// 	- **1**: yes
+	// - **1**: Authorized.
 	//
 	// example:
 	//
 	// 0
 	AuthStatus *int32 `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The engine type. Valid values:
+	// The database engine type. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **MariaDB**
+	// - **MariaDB**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **SQLServer**
+	// - **SQLServer**
 	//
 	// example:
 	//
@@ -84,73 +84,73 @@ type DescribeInstanceSourcesRequest struct {
 	//
 	// example:
 	//
-	// 2
+	// 1
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// instance-demo-****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh_cn**: Simplified Chinese (default)
+	// - **zh_cn**: Simplified Chinese. This is the default value.
 	//
-	// 	- **en_us**: English
+	// - **en_us**: English.
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries per page in a paginated query. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the service to which the data asset to query belongs. Valid values: **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The name of the product to query. Valid values: MaxCompute, OSS, ADS, OTS, and RDS.
 	//
 	// example:
 	//
 	// MaxCompute
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the service to which the asset belongs. Valid values:
+	// The product type ID to query. Valid values:
 	//
-	// 	- **1**: MaxCompute
+	// - **1**: MaxCompute
 	//
-	// 	- **2**: Object Storage Service (OSS)
+	// - **2**: OSS
 	//
-	// 	- **3**: AnalyticDB for MySQL
+	// - **3**: ADS
 	//
-	// 	- **4**: Tablestore (OTS)
+	// - **4**: OTS
 	//
-	// 	- **5**: ApsaraDB RDS
+	// - **5**: RDS
 	//
-	// 	- **6**: self-managed databases
+	// - **6**: SELF_DB
 	//
 	// example:
 	//
 	// 1
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The content based on which a fuzzy search is performed.
+	// The keyword for the fuzzy search of data assets.
 	//
 	// example:
 	//
 	// 1
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	// The data asset type based on which a fuzzy search is performed.
+	// The type of the fuzzy search for data assets. Valid values:
 	//
-	// 	- **InstanceId**: the ID of the instance.
+	// - **InstanceId**: The instance ID.
 	//
-	// 	- **InstanceName**: the name of the instance.
+	// - **InstanceName**: The instance name.
 	//
-	// 	- **DatabaseName**: the name of the database.
+	// - **DatabaseName**: The database name.
 	//
 	// example:
 	//
 	// InstanceId
 	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
-	// The region in which the data asset resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/214257.html).
+	// The region where the asset is located. For more information, see [Supported regions](https://help.aliyun.com/document_detail/214257.html).
 	//
 	// example:
 	//

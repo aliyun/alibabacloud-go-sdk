@@ -22,7 +22,7 @@ type iDescribeCategoryTemplateListRequest interface {
 }
 
 type DescribeCategoryTemplateListRequest struct {
-	// Page number for paginated queries. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
@@ -34,33 +34,29 @@ type DescribeCategoryTemplateListRequest struct {
 	//
 	// 2
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// Set the language type for the request and response messages, default is **zh_cn**.
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
-	// Values:
+	// - **zh_cn**: Simplified Chinese
 	//
-	// - **zh_cn**: Chinese (Simplified)
-	//
-	// - **en_us**: English (United States)
+	// - **en_us**: U.S. English
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// When performing a paginated query, set the number of items per page. Default value is **10**.
+	// The number of entries per page. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// API call scenario, default is **null**.
+	// The scenario in which the operation is called. Default value: **null**. Valid values:
 	//
-	// Values:
+	// - **null**: an earlier version
 	//
-	// - **null**: Old version
+	// - **0**: an earlier version
 	//
-	// - **0**: Old version
-	//
-	// - **1**: New version
+	// - **1**: the latest version
 	//
 	// example:
 	//

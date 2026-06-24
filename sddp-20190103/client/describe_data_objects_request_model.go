@@ -72,25 +72,31 @@ type iDescribeDataObjectsRequest interface {
 }
 
 type DescribeDataObjectsRequest struct {
+	// The version of the API.
+	//
 	// example:
 	//
 	// 1
 	APIVersion *int32 `json:"APIVersion,omitempty" xml:"APIVersion,omitempty"`
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// bucketName
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// Page number for the paginated query. Default value: 1.
+	// The page number of the returned page. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// dataBaseName
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// ID of the data domain to which the data asset belongs.
+	// The ID of the data domain to which the data asset belongs.
 	//
 	// example:
 	//
@@ -102,27 +108,27 @@ type DescribeDataObjectsRequest struct {
 	//
 	// 2
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// File category code.
+	// The code of the file category.
 	//
 	// example:
 	//
 	// 1
 	FileCategoryCode *int64 `json:"FileCategoryCode,omitempty" xml:"FileCategoryCode,omitempty"`
-	// OSS file types that are supported for recognition.
+	// The type of the OSS file.
 	//
-	// > You can obtain the supported OSS file types by calling [DescribeDocTypes](https://help.aliyun.com/document_detail/2536492.html), using the Code field value from the response. This parameter is only valid for querying OSS-type assets.
+	// > This parameter is valid only for querying data assets of the OSS type. You can call the [DescribeDocTypes](https://help.aliyun.com/document_detail/2536492.html) operation to obtain the supported OSS file types. Use the value of the `Code` parameter in the response.
 	//
 	// example:
 	//
 	// 100001
 	FileType *int64 `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// Keyword for the asset instance ID.
+	// The keyword of the instance ID.
 	//
 	// example:
 	//
 	// 8vb54hn2g9j191ddz
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language type for request and response messages, default is **zh_cn**. Values:
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// - **zh_cn**: Chinese.
 	//
@@ -132,61 +138,69 @@ type DescribeDataObjectsRequest struct {
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The name of the Logstore.
+	//
 	// example:
 	//
 	// logstore
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	// Specifies whether to query data at the Logstore level. The Simple Log Service data catalog has two layers. Set this parameter to 1 to query data at the Logstore level.
+	//
 	// example:
 	//
 	// 1
 	LogStoreFlag *int32 `json:"LogStoreFlag,omitempty" xml:"LogStoreFlag,omitempty"`
-	// Member account ID.
+	// The ID of the member.
 	//
 	// example:
 	//
 	// **********8103
 	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
-	// Model IDs of the industry template, separated by commas.
+	// The model ID of the industry-specific rule template. You can specify multiple IDs. Separate them with commas (,).
 	//
-	// > You can obtain the industry template model identifier ID by calling [DescribeTemplateAllRules](https://help.aliyun.com/document_detail/2536491.html).
+	// > You can call the [DescribeTemplateAllRules](https://help.aliyun.com/document_detail/2536491.html) operation to obtain the model ID of the industry-specific rule template.
 	//
 	// example:
 	//
 	// 101
 	ModelIds *string `json:"ModelIds,omitempty" xml:"ModelIds,omitempty"`
-	// Data labels to be queried, separated by commas. Values:
+	// The data labels to be queried. You can specify multiple data labels. Separate them with commas (,). Valid values:
 	//
-	// - **101**: Personal Sensitive Information.
+	// - **101**: personal sensitive information
 	//
-	// - **102**: Personal Information.
+	// - **102**: personal information
 	//
-	// - **107**: General Information.
+	// - **107**: general information
 	//
 	// example:
 	//
 	// 101,102
 	ModelTagIds *string `json:"ModelTagIds,omitempty" xml:"ModelTagIds,omitempty"`
-	// When performing a paginated query, set the maximum number of data asset instances to display per page. Default value: **10**.
+	// The number of data assets to return on each page. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// List of parent category IDs for the template to be queried, separated by commas.
+	// The IDs of the parent asset categories to be queried. You can specify multiple IDs. Separate them with commas (,).
 	//
 	// example:
 	//
 	// 234,236,238
 	ParentCategoryIds *string `json:"ParentCategoryIds,omitempty" xml:"ParentCategoryIds,omitempty"`
+	// The path of the file.
+	//
 	// example:
 	//
 	// road
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The ID of the product.
+	//
 	// example:
 	//
 	// 5
 	ProductId *int32 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// It is recommended to fill in the list of product IDs to be queried, separated by commas. Values:
+	// The IDs of the products to which the data assets to be queried belong. You can specify multiple product IDs. Separate them with commas (,). We recommend that you specify this parameter. Valid values:
 	//
 	// - **1**: MaxCompute
 	//
@@ -212,79 +226,91 @@ type DescribeDataObjectsRequest struct {
 	//
 	// - **25**: Redis
 	//
-	// > OSS is mutually exclusive with other products, meaning if OSS is included in the query, no other products can be listed; by default, non-OSS products are queried.
+	// > If you want to query data assets that belong to OSS, you cannot query data assets of other products. By default, data assets of products other than OSS are queried.
 	//
 	// example:
 	//
 	// 1,5
 	ProductIds *string `json:"ProductIds,omitempty" xml:"ProductIds,omitempty"`
+	// The name of the Simple Log Service project.
+	//
 	// example:
 	//
 	// project
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// Keyword for the data object to be queried.
+	// The keyword of the data asset to be queried.
 	//
 	// example:
 	//
 	// t_sddp_selfmysql_pers0
 	QueryName *string `json:"QueryName,omitempty" xml:"QueryName,omitempty"`
+	// The region in which the data asset catalog resides.
+	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the sensitivity levels. You can specify multiple sensitivity level IDs. Separate them with commas (,).
+	//
 	// example:
 	//
 	// 1,2,3
 	RiskLevelIdList *string `json:"RiskLevelIdList,omitempty" xml:"RiskLevelIdList,omitempty"`
-	// Specify the risk levels of the data assets to be queried, separated by commas if multiple.
+	// The sensitivity level of the data asset. You can specify multiple sensitivity levels. Separate them with commas (,).
 	//
-	// - **2**: S1, low risk level.
+	// - **2**: S1, low sensitivity level
 	//
-	// - **3**: S2, medium risk level.
+	// - **3**: S2, medium sensitivity level
 	//
-	// - **4**: S3, high risk level.
+	// - **4**: S3, high sensitivity level
 	//
-	// - **5**: S4, highest risk level.
+	// - **5**: S4, highest sensitivity level
 	//
 	// example:
 	//
 	// 2
 	RiskLevels *string `json:"RiskLevels,omitempty" xml:"RiskLevels,omitempty"`
+	// The IDs of the rules. You can specify multiple rule IDs. Separate them with commas (,).
+	//
 	// example:
 	//
 	// 1,2,3
 	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
-	// Region where the asset is located. Values:
+	// The region where the data asset resides. Valid values:
 	//
-	// - **cn-beijing**: North China 2 (Beijing).
+	// - **cn-beijing**: China (Beijing)
 	//
-	// - **cn-zhangjiakou**: North China 3 (Zhangjiakou).
+	// - **cn-zhangjiakou**: China (Zhangjiakou)
 	//
-	// - **cn-huhehaote**: North China 5 (Hohhot).
+	// - **cn-huhehaote**: China (Hohhot)
 	//
-	// - **cn-hangzhou**: East China 1 (Hangzhou).
+	// - **cn-hangzhou**: China (Hangzhou)
 	//
-	// - **cn-shanghai**: East China 2 (Shanghai).
+	// - **cn-shanghai**: China (Shanghai)
 	//
-	// - **cn-shenzhen**: South China 1 (Shenzhen).
+	// - **cn-shenzhen**: China (Shenzhen)
 	//
-	// - **cn-hongkong**: Hong Kong, China.
+	// - **cn-hongkong**: China (Hong Kong)
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// TableName
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// 1
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Industry template ID.
+	// The ID of the industry-specific rule template.
 	//
-	// > You can obtain the industry template identifier ID by calling [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html).
+	// > You can call the [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html) operation to obtain the ID of the industry-specific rule template.
 	//
 	// This parameter is required.
 	//

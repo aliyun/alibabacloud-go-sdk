@@ -16,7 +16,7 @@ type iStopMaskingProcessRequest interface {
 }
 
 type StopMaskingProcessRequest struct {
-	// The unique ID of the de-identification task. You can query the task ID by calling the [DescribeDataMaskingTasks](~~DescribeDataMaskingTasks~~) operation.
+	// The unique ID of the data masking task. You can obtain the ID of a data masking task from the return value of the [DescribeDataMaskingTasks](~~DescribeDataMaskingTasks~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -24,11 +24,11 @@ type StopMaskingProcessRequest struct {
 	//
 	// 3
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh_cn**: Simplified Chinese (default)
+	// - **zh_cn**: Chinese (Simplified). This is the default value.
 	//
-	// 	- **en_us**: English
+	// - **en_us**: English (US).
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iDescribeOssObjectDetailRequest interface {
 }
 
 type DescribeOssObjectDetailRequest struct {
-	// The ID of the OSS object.
+	// The unique ID of the OSS object.
 	//
-	// >  You can call the [DescribeOssObjects](https://help.aliyun.com/document_detail/410152.html) operation to obtain the ID of the OSS object.
+	// > Call the [DescribeOssObjects](https://help.aliyun.com/document_detail/410152.html) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type DescribeOssObjectDetailRequest struct {
 	//
 	// 12345213
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	// The language of the request and response. The default value is **zh_cn**. Valid values:
 	//
-	// 	- **zh_cn**: Chinese
+	// - **zh_cn**: Chinese.
 	//
-	// 	- **en_us**: English
+	// - **en_us**: English.
 	//
 	// example:
 	//

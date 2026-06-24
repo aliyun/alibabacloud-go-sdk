@@ -16,9 +16,9 @@ type iDescribeEventTypesResponseBody interface {
 }
 
 type DescribeEventTypesResponseBody struct {
-	// An array that consists of the types of anomalous events.
+	// The list of anomalous activity types.
 	//
-	// > If you leave the ParentTypeId parameter empty, anomalous event types are returned. If you set the ParentTypeId parameter, anomalous event subtypes under the specified anomalous event type are returned.
+	// > If ParentTypeId is empty, the parent anomalous activity types are returned. If ParentTypeId is not empty, the child anomalous activity types are returned.
 	EventTypeList []*DescribeEventTypesResponseBodyEventTypeList `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -68,31 +68,31 @@ func (s *DescribeEventTypesResponseBody) Validate() error {
 }
 
 type DescribeEventTypesResponseBodyEventTypeList struct {
-	// The code of the anomalous event type.
+	// The code of the parent anomalous activity type.
 	//
 	// example:
 	//
 	// 01
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The description of the anomalous event type.
+	// The description of the parent anomalous activity type.
 	//
 	// example:
 	//
-	// Anomalous permission usage,\\*\\*\\*\\*
+	// Permission usage anomaly, ****
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the anomalous event type.
+	// The unique ID of the parent anomalous activity type.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the anomalous event type.
+	// The name of the parent anomalous activity type.
 	//
 	// example:
 	//
-	// Anomalous permission usage
+	// Permission usage anomaly
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// An array that consists of anomalous event subtypes.
+	// The list of child anomalous activity types.
 	SubTypeList []*DescribeEventTypesResponseBodyEventTypeListSubTypeList `json:"SubTypeList,omitempty" xml:"SubTypeList,omitempty" type:"Repeated"`
 }
 
@@ -163,75 +163,75 @@ func (s *DescribeEventTypesResponseBodyEventTypeList) Validate() error {
 }
 
 type DescribeEventTypesResponseBodyEventTypeListSubTypeList struct {
-	// The service to which the anomalous event detection rule applies. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The products to which the rule applies, including MaxCompute, OSS, AnalyticDB for MySQL, Tablestore, and ApsaraDB RDS.
 	//
 	// example:
 	//
 	// RDS
 	AdaptedProduct *string `json:"AdaptedProduct,omitempty" xml:"AdaptedProduct,omitempty"`
-	// The code of the anomalous event subtype.
+	// The code of the child anomalous activity type.
 	//
 	// example:
 	//
 	// 020008
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The code of the configuration.
+	// The configuration code.
 	//
 	// example:
 	//
 	// 0100**
 	ConfigCode *string `json:"ConfigCode,omitempty" xml:"ConfigCode,omitempty"`
-	// The content format of anomalous event detection rule. Valid values:
+	// The format of the rule item. Valid values:
 	//
-	// 	- **0**: numeric values such as thresholds
+	// - **0**: numeric (such as a threshold).
 	//
-	// 	- **1**: text such as IP addresses
+	// - **1**: text (such as an IP address).
 	//
 	// example:
 	//
 	// 1
 	ConfigContentType *int32 `json:"ConfigContentType,omitempty" xml:"ConfigContentType,omitempty"`
-	// The description of the configuration.
+	// The configuration description.
 	//
 	// example:
 	//
-	// The period of time for which the permission is not used exceeds the threshold. The specified threshold is ${value} calendar days.
+	// Permission idle period exceeds threshold: current threshold is defined as 7 natural days
 	ConfigDescription *string `json:"ConfigDescription,omitempty" xml:"ConfigDescription,omitempty"`
-	// The value of the configuration.
+	// The configuration value.
 	//
 	// example:
 	//
 	// 90
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	// The description of the anomalous event subtype.
+	// The description of the child anomalous activity type.
 	//
 	// example:
 	//
-	// Inappropriate configuration-No protection for the MaxCompute sensitive project, \\*\\*\\*\\*
+	// Configuration error - MaxCompute sensitive project not protected，****
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The number of times that the anomalous event hits the anomalous event detection rule.
+	// The number of times the rule is hit.
 	//
 	// example:
 	//
 	// 2
 	EventHitCount *int32 `json:"EventHitCount,omitempty" xml:"EventHitCount,omitempty"`
-	// The ID of the anomalous event subtype.
+	// The unique ID of the child anomalous activity type.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the anomalous event subtype.
+	// The name of the child anomalous activity type.
 	//
 	// example:
 	//
-	// Inappropriate configuration-No protection for the MaxCompute sensitive project
+	// Configuration error - MaxCompute sensitive project not protected
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether detection is enabled for the anomalous event subtype. Valid values:
+	// The detection feature of Data Security Center (DSC) for the child anomalous activity type. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: enabled.
 	//
-	// 	- **0**: no
+	// - **0**: disabled.
 	//
 	// example:
 	//

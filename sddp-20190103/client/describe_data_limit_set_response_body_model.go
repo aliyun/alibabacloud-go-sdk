@@ -16,7 +16,7 @@ type iDescribeDataLimitSetResponseBody interface {
 }
 
 type DescribeDataLimitSetResponseBody struct {
-	// The information about the data asset.
+	// Information about the authorized data assets.
 	DataLimitSet *DescribeDataLimitSetResponseBodyDataLimitSet `json:"DataLimitSet,omitempty" xml:"DataLimitSet,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -62,45 +62,49 @@ func (s *DescribeDataLimitSetResponseBody) Validate() error {
 }
 
 type DescribeDataLimitSetResponseBodyDataLimitSet struct {
-	// An array that consists of data assets that DSC is authorized to scan.
+	// A list of authorized data assets.
 	DataLimitList []*DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList `json:"DataLimitList,omitempty" xml:"DataLimitList,omitempty" type:"Repeated"`
-	// An array consisting of the OSS objects that DSC is authorized to scan.
+	// A list of authorized OSS buckets.
 	OssBucketList []*DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList `json:"OssBucketList,omitempty" xml:"OssBucketList,omitempty" type:"Repeated"`
-	// An array consisting of the regions in which the data assets can be scanned.
+	// A list of regions that support scanning.
 	RegionList []*DescribeDataLimitSetResponseBodyDataLimitSetRegionList `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
-	// The type of service to which the data asset belongs. Valid values:
+	// The type of the data asset. Valid values:
 	//
-	// 	- **1**: MaxCompute
+	// - **1**: MaxCompute.
 	//
-	// 	- **2**: OSS
+	// - **2**: OSS.
 	//
-	// 	- **3**: AnalyticDB for MySQL
+	// - **3**: ADS.
 	//
-	// 	- **4**: Tablestore
+	// - **4**: OTS.
 	//
-	// 	- **5**: ApsaraDB RDS
+	// - **5**: RDS.
+	//
+	// - **6**: SELF_DB.
 	//
 	// example:
 	//
 	// 2
 	ResourceType *int64 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The service to which the data asset belongs. Valid values:
+	// The code for the data asset type. Valid values:
 	//
-	// 	- **ODPS**
+	// - **MaxCompute**
 	//
-	// 	- **OSS**
+	// - **OSS**
 	//
-	// 	- **ADS**
+	// - **ADS**
 	//
-	// 	- **OTS**
+	// - **OTS**
 	//
-	// 	- **RDS**
+	// - **RDS**
+	//
+	// - **SELF_DB**
 	//
 	// example:
 	//
 	// OSS
 	ResourceTypeCode *string `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
-	// The total number of data objects in the data assets.
+	// The total number of assets found.
 	//
 	// example:
 	//
@@ -202,93 +206,97 @@ func (s *DescribeDataLimitSetResponseBodyDataLimitSet) Validate() error {
 }
 
 type DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList struct {
-	// Indicates whether the test of connectivity between DSC and the data asset is passed.
+	// The status of the connectivity test between Security Center and the authorized data asset.
 	//
-	// 	- **2**: The connectivity test is in progress.
+	// - **2**: The connectivity test is in progress.
 	//
-	// 	- **3**: The connectivity test is passed.
+	// - **3**: The connectivity test is passed.
 	//
-	// 	- **4**: The connectivity test failed.
+	// - **4**: The connectivity test has failed.
 	//
 	// example:
 	//
 	// 3
 	CheckStatus *int32 `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	// The name of the data detection status.
+	// The name of the connectivity test status.
 	//
 	// example:
 	//
-	// Connectivity test status
+	// Connected
 	CheckStatusName *string `json:"CheckStatusName,omitempty" xml:"CheckStatusName,omitempty"`
-	// The connection string that is used to access the data asset.
+	// The connection string for the data asset.
 	//
 	// example:
 	//
-	// Connection string
+	// jdbc:mysql://10.*.*.94:3306/test_demo
 	Connector *string `json:"Connector,omitempty" xml:"Connector,omitempty"`
-	// The time when the data asset was created. Unit: milliseconds.
+	// The time when the data asset was created. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1625587423000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The ID of the data asset.
+	// The unique ID of the data asset.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The region in which the data asset resides.
+	// The name of the region where the data asset is located.
 	//
 	// example:
 	//
-	// China (Hangzhou)
+	// cn-hangzhou
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The parent asset ID of the data asset.
+	// The ID of the parent asset.
 	//
 	// example:
 	//
 	// db
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The region in which the data asset resides.
+	// The ID of the region where the data asset is located.
 	//
 	// example:
 	//
 	// cn-****
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of service to which the data asset belongs. Valid values:
+	// The type of the data asset. Valid values:
 	//
-	// 	- **1**: MaxCompute
+	// - **1**: MaxCompute.
 	//
-	// 	- **2**: OSS
+	// - **2**: OSS.
 	//
-	// 	- **3**: AnalyticDB for MySQL
+	// - **3**: ADS.
 	//
-	// 	- **4**: Tablestore
+	// - **4**: OTS.
 	//
-	// 	- **5**: ApsaraDB RDS
+	// - **5**: RDS.
+	//
+	// - **6**: SELF_DB.
 	//
 	// example:
 	//
 	// 2
 	ResourceType *int64 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The code of the service to which the data asset belongs. Valid values:
+	// The code for the data asset type. Valid values:
 	//
-	// 	- **ODPS**
+	// - **MaxCompute**
 	//
-	// 	- **OSS**
+	// - **OSS**
 	//
-	// 	- **ADS**
+	// - **ADS**
 	//
-	// 	- **OTS**
+	// - **OTS**
 	//
-	// 	- **RDS**
+	// - **RDS**
+	//
+	// - **SELF_DB**
 	//
 	// example:
 	//
 	// OSS
 	ResourceTypeCode *string `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
-	// The username that is used to access the data asset.
+	// The username of the data owner.
 	//
 	// example:
 	//
@@ -408,13 +416,13 @@ func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) Validate() e
 }
 
 type DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList struct {
-	// The name of the OSS bucket to which the OSS object belongs.
+	// The name of the OSS bucket.
 	//
 	// example:
 	//
 	// oss-bucket
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The region ID of the OSS object.
+	// The ID of the region where the OSS bucket is located.
 	//
 	// example:
 	//
@@ -453,13 +461,13 @@ func (s *DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList) Validate() e
 }
 
 type DescribeDataLimitSetResponseBodyDataLimitSetRegionList struct {
-	// The name of the region.
+	// The region name.
 	//
 	// example:
 	//
-	// China (Hangzhou)
+	// cn-hangzhou
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

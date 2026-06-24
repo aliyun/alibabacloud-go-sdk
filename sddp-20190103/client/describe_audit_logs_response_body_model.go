@@ -24,23 +24,34 @@ type iDescribeAuditLogsResponseBody interface {
 }
 
 type DescribeAuditLogsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CE4681BA-8019-5BE1-9F4B-8973BEA9CF57
 	AsyncRequestId *string `json:"AsyncRequestId,omitempty" xml:"AsyncRequestId,omitempty"`
+	// The current page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeAuditLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// An array of alert logs.
+	Items []*DescribeAuditLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A7021857-AFD9-5AD6-979D-AA7DFC5AFADF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 12
@@ -123,136 +134,244 @@ func (s *DescribeAuditLogsResponseBody) Validate() error {
 }
 
 type DescribeAuditLogsResponseBodyItems struct {
+	// The client IP address.
+	//
 	// example:
 	//
 	// 139.*.*.57
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The client port.
+	//
 	// example:
 	//
 	// 35756
 	ClientPort *string `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
+	// The user agent of the client.
+	//
 	// example:
 	//
 	// mysql
 	ClientUa *string `json:"ClientUa,omitempty" xml:"ClientUa,omitempty"`
+	// The name of the column.
+	//
 	// example:
 	//
 	// hide14
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The time when the alert was generated. This value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1536751124000
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The SQL result set.
+	//
 	// example:
 	//
 	// plan_id ~ application_id ~ plan_type ~ plan_name ~ plan_value_id
 	DataSet *string `json:"DataSet,omitempty" xml:"DataSet,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// chngc_b2b_migration_sh
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The type of the database.
+	//
+	// example:
+	//
+	// MySQL
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The number of affected rows.
+	//
 	// example:
 	//
 	// 10
 	EffectRow *int64 `json:"EffectRow,omitempty" xml:"EffectRow,omitempty"`
+	// The execution status. Valid values: 0 (failed) and 1 (successful).
+	//
 	// example:
 	//
 	// 1
 	ExecuteStatus *int32 `json:"ExecuteStatus,omitempty" xml:"ExecuteStatus,omitempty"`
+	// The execution duration in milliseconds.
+	//
 	// example:
 	//
 	// 1751870592000
 	ExecuteTime *int64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// Indicates whether the operation is whitelisted.
+	//
 	// example:
 	//
 	// true
 	InWhiteList *bool `json:"InWhiteList,omitempty" xml:"InWhiteList,omitempty"`
+	// The audit status of the instance.
+	//
 	// example:
 	//
 	// 2
 	InstanceAuditStatus *string `json:"InstanceAuditStatus,omitempty" xml:"InstanceAuditStatus,omitempty"`
+	// The description of the data asset.
+	//
 	// example:
 	//
 	// instance dscription
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The name of the data asset.
+	//
 	// example:
 	//
 	// rm-1234
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The network type. Valid values:
+	//
+	// **default**: a non-Alibaba Cloud service. This is the default value.
+	//
+	// **aliyun**: an Alibaba Cloud service.
+	//
 	// example:
 	//
 	// aliyun
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// The data source.
+	//
 	// example:
 	//
 	// SLOW_SQL
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
+	// The time when the operation was logged. This value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1751870592000
 	LogTime *int64 `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	// The ID of the member.
+	//
 	// example:
 	//
 	// **********8103
 	MemberAccount *string `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
+	// The raw log content.
+	//
 	// example:
 	//
 	// success
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The sensitive data detection rule that was matched.
+	//
+	// example:
+	//
+	// Identity Card
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The operation type.
+	//
 	// example:
 	//
 	// Drop
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// The key of the OSS object.
+	//
 	// example:
 	//
 	// oss-key1
 	OssObjectKey *string `json:"OssObjectKey,omitempty" xml:"OssObjectKey,omitempty"`
+	// The name of the MaxCompute package.
+	//
 	// example:
 	//
-	// com.sinosoft.chinalife
+	// test01
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	// The code of the Alibaba Cloud service. Examples: **MaxCompute, OSS, ADS, OTS, and RDS**.
+	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the Alibaba Cloud service that contains the data asset. Valid values:
+	//
+	// - **1**: MaxCompute
+	//
+	// - **2**: OSS
+	//
+	// - **3**: ADS
+	//
+	// - **4**: OTS
+	//
+	// - **5**: RDS
+	//
+	// - **6**: SELF_DB
+	//
 	// example:
 	//
 	// 5
-	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	ProductId      *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	RamConsoleLink *string `json:"RamConsoleLink,omitempty" xml:"RamConsoleLink,omitempty"`
+	// The type of the rule.
+	//
 	// example:
 	//
 	// 10
 	RuleCategory *string `json:"RuleCategory,omitempty" xml:"RuleCategory,omitempty"`
+	// The ID of the audit rule.
+	//
 	// example:
 	//
 	// 9952275
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the audit rule.
+	//
 	// example:
 	//
 	// name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The SQL statement in the alert log.
+	//
 	// example:
 	//
-	// select schema_name, catalog_name, default_character_set_name as encoding from information_schema.schemata  order by 1
+	// select 	- from test03
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// it_table
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the user.
+	//
 	// example:
 	//
 	// 19********94
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The name of the user.
+	//
 	// example:
 	//
 	// admin
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The risk level. Valid values:
+	//
+	// - **1**: Low
+	//
+	// - **2**: Medium
+	//
+	// - **3**: High
+	//
 	// example:
 	//
 	// 2
-	WarnLevel     *string `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
+	WarnLevel *string `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
+	// The name of the risk level. Valid values:
+	//
+	// - Low
+	//
+	// - Medium
+	//
+	// - High
+	//
+	// example:
+	//
+	// High risk
 	WarnLevelName *string `json:"WarnLevelName,omitempty" xml:"WarnLevelName,omitempty"`
 }
 
@@ -366,6 +485,10 @@ func (s *DescribeAuditLogsResponseBodyItems) GetProductCode() *string {
 
 func (s *DescribeAuditLogsResponseBodyItems) GetProductId() *int64 {
 	return s.ProductId
+}
+
+func (s *DescribeAuditLogsResponseBodyItems) GetRamConsoleLink() *string {
+	return s.RamConsoleLink
 }
 
 func (s *DescribeAuditLogsResponseBodyItems) GetRuleCategory() *string {
@@ -531,6 +654,11 @@ func (s *DescribeAuditLogsResponseBodyItems) SetProductCode(v string) *DescribeA
 
 func (s *DescribeAuditLogsResponseBodyItems) SetProductId(v int64) *DescribeAuditLogsResponseBodyItems {
 	s.ProductId = &v
+	return s
+}
+
+func (s *DescribeAuditLogsResponseBodyItems) SetRamConsoleLink(v string) *DescribeAuditLogsResponseBodyItems {
+	s.RamConsoleLink = &v
 	return s
 }
 

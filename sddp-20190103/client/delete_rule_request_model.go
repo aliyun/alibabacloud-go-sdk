@@ -34,7 +34,7 @@ type DeleteRuleRequest struct {
 	//
 	// 122300
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the content within the request and response. Valid values: **zh*	- and **en**. The value zh indicates Chinese, and the value en indicates English.
+	// The language of the data asset. Valid values: -**zh**: Chinese -**en**: English
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DeleteRuleRequest struct {
 	//
 	// example:
 	//
-	// 39.170.XX.XX
+	// 106.11.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 

@@ -38,31 +38,31 @@ type iDescribeOssObjectsRequest interface {
 }
 
 type DescribeOssObjectsRequest struct {
-	// The page number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The code of the file type.
+	// The code of the file category.
 	//
 	// example:
 	//
 	// 1
 	FileCategoryCode *int64 `json:"FileCategoryCode,omitempty" xml:"FileCategoryCode,omitempty"`
-	// The ID of the instance to which the OSS object belongs.
+	// The ID of the asset instance to which the OSS object belongs.
 	//
-	// > You can call the **DescribeInstances*	- operation to query the instance ID.
+	// > To query the list of authorized OSS objects by the ID of the asset instance, call the **DescribeInstances*	- operation to obtain the instance ID.
 	//
 	// example:
 	//
 	// ins-2222
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeOssObjectsRequest struct {
 	//
 	// 1536751124000
 	LastScanTimeStart *int64 `json:"LastScanTimeStart,omitempty" xml:"LastScanTimeStart,omitempty"`
-	// When you query data by page, use the `Marker` parameter to query the data that follows the `Marker` value.
+	// The position where the query starts. To retrieve the next page of results, set this parameter to the value of `NextMarker` from the previous response.
 	//
 	// example:
 	//
@@ -92,43 +92,43 @@ type DescribeOssObjectsRequest struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries to return on each page.
 	//
 	// example:
 	//
 	// 12
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sensitivity level of the OSS object. Valid values:
+	// The risk level ID of the OSS object. Valid values:
 	//
-	// 	- **1**: N/A, which indicates that no sensitive data is detected.
+	// - **1**: N/A. No sensitive data is detected.
 	//
-	// 	- **2**: S1, which indicates the low sensitivity level.
+	// - **2**: S1. Level 1 sensitive data.
 	//
-	// 	- **3**: S2, which indicates the medium sensitivity level.
+	// - **3**: S2. Level 2 sensitive data.
 	//
-	// 	- **4**: S3, which indicates the high sensitivity level.
+	// - **4**: S3. Level 3 sensitive data.
 	//
-	// 	- **5**: S4, which indicates the highest sensitivity level.
+	// - **5**: S4. Level 4 sensitive data.
 	//
 	// example:
 	//
 	// 2
 	RiskLevelId *int32 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The ID of the sensitive data detection rule that the OSS object hits.
+	// The ID of the sensitive data detection rule that the OSS object matches.
 	//
-	// > You can call the **DescribeRules*	- operation to query the ID of the sensitive data detection rule.
+	// > To query the list of authorized OSS objects by the ID of a matched sensitive data detection rule, call the **DescribeRules*	- operation to obtain the rule ID.
 	//
 	// example:
 	//
 	// 1222
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The region in which the data asset resides.
+	// The region of the asset.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	// The ID of the industry-specific rule template.
+	// The ID of the industry-specific template.
 	//
 	// example:
 	//

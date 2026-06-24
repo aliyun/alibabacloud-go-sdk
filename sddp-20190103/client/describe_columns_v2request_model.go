@@ -40,107 +40,107 @@ type iDescribeColumnsV2Request interface {
 }
 
 type DescribeColumnsV2Request struct {
-	// When performing a paginated query, sets the current page number. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Engine type. Values:
+	// The type of the database engine. Valid values:
 	//
-	// - **MySQL**.
+	// - **MySQL**
 	//
-	// - **MariaDB**.
+	// - **MariaDB**
 	//
-	// - **Oracle**.
+	// - **Oracle**
 	//
-	// - **PostgreSQL**.
+	// - **PostgreSQL**
 	//
-	// - **SQLServer**.
+	// - **SQLServer**
 	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// ID of the asset instance to which the column data in the data asset table belongs.
+	// The ID of the data asset instance to which the data in the column belongs.
 	//
-	// > Query the data in the columns of the data assets authorized by the Data Security Center based on the ID of the asset instance to which the column data in the data asset table belongs. The asset instance ID can be obtained by calling the [DescribeInstances](https://help.aliyun.com/document_detail/141708.html) interface.
+	// > Query data in columns of a data asset table based on the ID of the data asset instance. The data asset table must be authorized in Data Security Center. To obtain the ID of the data asset instance, call the [DescribeInstances](https://help.aliyun.com/document_detail/141708.html) operation.
 	//
 	// example:
 	//
 	// 1
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Name of the asset instance to which the column data in the data asset table belongs.
+	// The name of the data asset instance to which the data in the column belongs.
 	//
 	// example:
 	//
 	// rm-bp17t1htja573l5i8****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Sets the language type for requests and received messages, default is **zh_cn**.
+	// The language of the request and response. Default value: **zh_cn**.
 	//
-	// Values:
+	// Valid values:
 	//
 	// - **zh_cn**: Simplified Chinese
 	//
-	// - **en_us**: English (United States)
+	// - **en_us**: English
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Search keyword, supports fuzzy matching.
+	// The keyword for the search. Fuzzy match is supported.
 	//
-	// For example, entering **test*	- will search for all data information containing **test*	- in the search items.
+	// For example, if you enter **test**, all data that contains **test*	- is returned.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// When performing a paginated query, sets the maximum number of data asset instances displayed per page. Default value: **10**.
+	// The maximum number of entries to return on each page. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Product name to which the column data in the data asset table belongs. Values: **MaxCompute, OSS, ADS, OTS, RDS**, etc.
+	// The name of the product to which the data in the column of the data asset table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
 	//
 	// example:
 	//
 	// MaxCompute
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Risk level ID of the sensitive data recognition rule. Values:
+	// The ID of the risk level for the sensitive data detection rule. Valid values:
 	//
-	// - **1**: N/A.
+	// - **1**: N/A
 	//
-	// - **2**: S1.
+	// - **2**: S1
 	//
-	// - **3**: S2.
+	// - **3**: S2
 	//
-	// - **4**: S3.
+	// - **4**: S3
 	//
-	// - **5**: S4.
+	// - **5**: S4
 	//
 	// example:
 	//
 	// 2
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// Unique identifier ID of the sensitive data recognition rule hit by the column data in the asset table.
+	// The unique ID of the sensitive data detection rule that is hit by the data in the column.
 	//
-	// > Query the data in the columns of the data assets authorized by the Data Security Center based on the ID of the sensitive data recognition rule hit by the column data in the asset table. The sensitive data recognition rule ID can be obtained by calling the [DescribeRules](https://help.aliyun.com/document_detail/141389.html) interface.
+	// > Query data in columns of a data asset table based on the ID of the sensitive data detection rule that is hit. The data asset table must be authorized in Data Security Center. To obtain the ID of the sensitive data detection rule, call the [DescribeRules](https://help.aliyun.com/document_detail/141389.html) operation.
 	//
 	// example:
 	//
 	// 11122200
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// Name of the sensitive data recognition rule hit by the column data in the data asset table.
+	// The name of the sensitive data detection rule that is hit by the data in the column.
 	//
 	// example:
 	//
 	// name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Sensitive level name. Values:
+	// The name of the sensitivity level. Valid values:
 	//
-	// - **N/A**: No sensitive data detected.
+	// - **N/A**: No sensitive data is detected.
 	//
 	// - **S1**: Level 1 sensitive data.
 	//
@@ -154,15 +154,15 @@ type DescribeColumnsV2Request struct {
 	//
 	// S2
 	SensLevelName *string `json:"SensLevelName,omitempty" xml:"SensLevelName,omitempty"`
-	// Unique identifier ID of the asset table to which the column in MaxCompute, RDS, etc., belongs.
+	// The unique ID of the data asset table that contains the column. The table can be in a data asset such as MaxCompute or RDS.
 	//
-	// > Query the data in the columns of the data assets authorized by the Data Security Center based on the ID of the asset table. The asset table ID can be obtained by calling the [DescribeTables](https://help.aliyun.com/document_detail/141709.html) interface.
+	// > Query data in columns of a data asset table by the table ID. The data asset table must be authorized in Data Security Center. To obtain the ID of the data asset table, call the [DescribeTables](https://help.aliyun.com/document_detail/141709.html) operation.
 	//
 	// example:
 	//
 	// 11132334
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	// Name of the data asset table.
+	// The name of the data asset table.
 	//
 	// example:
 	//

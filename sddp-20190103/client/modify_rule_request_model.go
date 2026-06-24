@@ -40,19 +40,19 @@ type iModifyRuleRequest interface {
 }
 
 type ModifyRuleRequest struct {
-	// The content type of the sensitive data detection rule. Valid values:
+	// The type of the content in the sensitive data detection rule. Valid values:
 	//
-	// 	- **2**: regular expression
+	// - **2**: regular expression.
 	//
-	// 	- **3**: algorithm
+	// - **3**: algorithm.
 	//
-	// 	- **5**: keyword
+	// - **5**: keyword.
 	//
 	// example:
 	//
 	// 2
 	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The content of the sensitive data detection rule. You can specify a regular expression, an algorithm, or keywords that are used to match sensitive fields or text.
+	// The content of the sensitive data detection rule. The rule can be a regular expression, an algorithm, or a keyword, and matches fields or text that contain sensitive data.
 	//
 	// This parameter is required.
 	//
@@ -60,9 +60,9 @@ type ModifyRuleRequest struct {
 	//
 	// (?:\\\\D|^)((?:(?:25[0-4]|2[0-4]\\\\d|1\\\\d{2}|[1-9]\\\\d{1})\\\\.)(?:(?:25[0-5]|2[0-4]\\\\d|[01]?\\\\d?\\\\d)\\\\.){2}(?:25[0-5]|2[0-4]\\\\d|1[0-9]\\\\d|[1-9]\\\\d|[1-9]))(?:\\\\D|$)
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the sensitive data detection rule.
+	// The unique ID of the sensitive data detection rule.
 	//
-	// You can call the [DescribeRules](~~DescribeRules~~) operation to obtain the rule ID.
+	// You can call the [DescribeRules](~~DescribeRules~~) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -70,11 +70,11 @@ type ModifyRuleRequest struct {
 	//
 	// 1****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	// The language of the request and response. The default value is **zh_cn**. Valid values:
 	//
-	// 	- **zh_cn**: Simplified Chinese
+	// - **zh_cn**: Simplified Chinese.
 	//
-	// 	- **en_us**: English
+	// - **en_us**: English.
 	//
 	// example:
 	//
@@ -82,15 +82,15 @@ type ModifyRuleRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The match type. Valid values:
 	//
-	// 	- **1**: rule-based match
+	// - **1**: rule-based match.
 	//
-	// 	- **2**: dictionary-based match
+	// - **2**: dictionary-based match.
 	//
 	// example:
 	//
 	// 1
 	MatchType *int32 `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	// The IDs of the models for sensitive data audit.
+	// A collection of model IDs for sensitive data auditing.
 	//
 	// example:
 	//
@@ -106,29 +106,53 @@ type ModifyRuleRequest struct {
 	//
 	// esw
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The service to which the sensitive data detection rule is applied. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The type of the product resource that contains the sensitive data detection rule. Valid values:
+	//
+	// - **MaxCompute**.
+	//
+	// - **OSS**.
+	//
+	// - **ADS**.
+	//
+	// - **OTS**.
+	//
+	// - **RDS**.
+	//
+	// - **SELF_DB**.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the service to which the sensitive data detection rule is applied. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	// The ID of the product that contains the sensitive data detection rule. Valid values:
+	//
+	// - **1**: MaxCompute.
+	//
+	// - **2**: OSS.
+	//
+	// - **3**: ADS.
+	//
+	// - **4**: OTS.
+	//
+	// - **5**: RDS.
+	//
+	// - **6**: SELF_DB.
 	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+	// The ID of the risk level for the sensitive data detection rule. Valid values:
 	//
-	// 	- **1**: N/A, which indicates that no sensitive data is detected.
+	// - **1**: N/A. No sensitive data is detected.
 	//
-	// 	- **2**: S1, which indicates the low sensitivity level.
+	// - **2**: S1. Level 1 sensitive data.
 	//
-	// 	- **3**: S2, which indicates the medium sensitivity level.
+	// - **3**: S2. Level 2 sensitive data.
 	//
-	// 	- **4**: S3, which indicates the high sensitivity level.
+	// - **4**: S3. Level 3 sensitive data.
 	//
-	// 	- **5**: S4, which indicates the highest sensitivity level.
+	// - **5**: S4. Level 4 sensitive data.
 	//
 	// example:
 	//
@@ -136,41 +160,41 @@ type ModifyRuleRequest struct {
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
 	// The type of the sensitive data detection rule. Valid values:
 	//
-	// 	- **1**: data detection rule
+	// - **1**: data detection rule.
 	//
-	// 	- **2**: audit rule
+	// - **2**: audit policy.
 	//
-	// 	- **3**: anomalous event detection rule
+	// - **3**: abnormal event rule.
 	//
 	// example:
 	//
 	// 1
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The data assets supported by the sensitive data detection rule. Valid values:
+	// The type of data asset that the rule supports. Valid values:
 	//
-	// 	- **0**: all data assets
+	// - **0**: all assets.
 	//
-	// 	- **1**: structured data assets
+	// - **1**: structured assets.
 	//
-	// 	- **2**: unstructured data assets
+	// - **2**: unstructured assets.
 	//
 	// example:
 	//
 	// 1
 	SupportForm *int32 `json:"SupportForm,omitempty" xml:"SupportForm,omitempty"`
-	// The IDs of the templates that are used to audit sensitive data.
+	// A collection of template IDs for sensitive data auditing.
 	//
 	// example:
 	//
 	// 1
 	TemplateRuleIds *string `json:"TemplateRuleIds,omitempty" xml:"TemplateRuleIds,omitempty"`
-	// The risk level of the alert that is triggered by the sensitive data detection rule. Valid values:
+	// The risk level of the sensitive data detection rule. Valid values:
 	//
-	// 	- **1**: low level
+	// - **1**: low.
 	//
-	// 	- **2**: medium level
+	// - **2**: medium.
 	//
-	// 	- **3**: high level
+	// - **3**: high.
 	//
 	// example:
 	//

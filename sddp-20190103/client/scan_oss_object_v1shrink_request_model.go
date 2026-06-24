@@ -30,21 +30,21 @@ type ScanOssObjectV1ShrinkRequest struct {
 	//
 	// sddp-api-demo-bucket
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The objects in the OSS bucket that you want to scan. You can specify up to 50 objects at a time.
+	// A list of objects to scan in the OSS bucket. You can specify up to 50 ObjectKeys.
 	//
 	// This parameter is required.
 	ObjectKeyListShrink *string `json:"ObjectKeyList,omitempty" xml:"ObjectKeyList,omitempty"`
-	// The ID of the region in which the OSS bucket is located.
+	// The ID of the region where the OSS bucket is located.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +52,9 @@ type ScanOssObjectV1ShrinkRequest struct {
 	//
 	// cn-hangzhou
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	// The ID of the industry-specific classification template.
+	// The ID of the industry-specific template.
 	//
-	// >  You can call the **DescribeCategoryTemplateList*	- operation to query industry-specific classification templates. If you do not specify this parameter, the system automatically uses the main template.
+	// > Call **DescribeCategoryTemplateList*	- to get a list of templates. If you do not specify this parameter, the default active template is used for the scan.
 	//
 	// example:
 	//

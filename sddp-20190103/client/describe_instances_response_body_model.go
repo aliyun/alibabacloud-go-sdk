@@ -22,15 +22,15 @@ type iDescribeInstancesResponseBody interface {
 }
 
 type DescribeInstancesResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The data assets.
+	// The details of the data asset instances.
 	Items []*DescribeInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The number of data asset instances returned on each page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeInstancesResponseBody struct {
 	//
 	// 71064826-726F-4ADA-B879-05D8055476FB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of data assets.
+	// The total number of data asset instances.
 	//
 	// example:
 	//
@@ -117,55 +117,55 @@ func (s *DescribeInstancesResponseBody) Validate() error {
 }
 
 type DescribeInstancesResponseBodyItems struct {
-	// The time when the data asset was created. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the data asset instance was created. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1637226782000
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The name of the department to which the data asset belongs.
+	// The name of the department to which the data asset instance belongs.
 	//
 	// example:
 	//
 	// ***DemoCenter
 	DepartName *string `json:"DepartName,omitempty" xml:"DepartName,omitempty"`
-	// The unique ID of the data asset in DSC.
+	// The unique ID of the data asset instance that is recorded in Data Security Center.
 	//
 	// example:
 	//
 	// 11111
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The description of the data asset.
+	// The description of the data asset instance.
 	//
 	// example:
 	//
-	// Data asset Information 1
+	// instance dscription
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The security status of the data asset. Valid values:
+	// The security status of the data asset instance. Valid values:
 	//
-	// 	- **true**: The data asset is secure.
+	// - **true**: secure
 	//
-	// 	- **false**: The data asset is insecure.
+	// - **false**: insecure
 	//
 	// example:
 	//
 	// true
 	Labelsec *bool `json:"Labelsec,omitempty" xml:"Labelsec,omitempty"`
-	// The time when the data asset was last scanned. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the last scan of the data asset instance was completed. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1637622793000
 	LastFinishTime *int64 `json:"LastFinishTime,omitempty" xml:"LastFinishTime,omitempty"`
-	// If the management account has opened multiple accounts and the asset belongs to other member accounts, this field displays the UID of the member accounts.
+	// If multi-account management is enabled and the asset belongs to a member account, this parameter indicates the UID of the member account.
 	//
 	// example:
 	//
 	// 12567890126
 	MemberAliUid *string `json:"MemberAliUid,omitempty" xml:"MemberAliUid,omitempty"`
-	// A list of tags.
+	// The list of data labels.
 	ModelTags []*DescribeInstancesResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
-	// The name of the data asset.
+	// The name of the data asset instance.
 	//
 	// example:
 	//
@@ -177,85 +177,85 @@ type DescribeInstancesResponseBodyItems struct {
 	//
 	// 1
 	OdpsRiskLevelName *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
-	// The Alibaba Cloud account to which the data asset belongs.
+	// The Alibaba Cloud account that owns the data asset instance.
 	//
 	// example:
 	//
 	// dtdep-239-******
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The name of the service to which the data asset belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets that DSC can scan to detect sensitive data, see [Supported data assets](https://help.aliyun.com/document_detail/212906.html).
+	// The name of the product to which the data asset instance belongs, such as MaxCompute, OSS, or RDS. For more information about the supported products, see [Data assets that can be scanned for sensitive data](https://help.aliyun.com/document_detail/212906.html).
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the service to which the data asset belongs.
+	// The ID of the product to which the data asset instance belongs.
 	//
 	// example:
 	//
 	// 5
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The protection status of the data asset. Valid values:
+	// The protection status of the data asset instance. Valid values:
 	//
-	// 	- **true**: The data asset is being protected.
+	// - **true**: The instance is protected.
 	//
-	// 	- **false**: The data asset is not protected.
+	// - **false**: The instance is not protected.
 	//
 	// example:
 	//
 	// false
 	Protection *bool `json:"Protection,omitempty" xml:"Protection,omitempty"`
-	// The ID of the sensitivity level for the data asset. A higher sensitivity level ID indicates that the identified data is more sensitive.
+	// The ID of the threat level for the data asset instance. The higher the threat level ID, the more sensitive the data.
 	//
-	// 	- **1**: No sensitive data is detected.
+	// - **1**: No sensitive data is detected. No threat.
 	//
-	// 	- **2**: sensitive data at level 1.
+	// - **2**: Threat level 1.
 	//
-	// 	- **3**: sensitive data at level 2.
+	// - **3**: Threat level 2.
 	//
-	// 	- **4**: sensitive data at level 3.
+	// - **4**: Threat level 3.
 	//
-	// 	- **5**: sensitive data at level 4.
+	// - **5**: Threat level 4.
 	//
-	// 	- **6**: sensitive data at level 5.
+	// - **6**: Threat level 5.
 	//
-	// 	- **7**: sensitive data at level 6.
+	// - **7**: Threat level 6.
 	//
-	// 	- **8**: sensitive data at level 7.
+	// - **8**: Threat level 7.
 	//
-	// 	- **9**: sensitive data at level 8.
+	// - **9**: Threat level 8.
 	//
-	// 	- **10**: sensitive data at level 9.
+	// - **10**: Threat level 9.
 	//
-	// 	- **11**: sensitive data at level 10.
+	// - **11**: Threat level 10.
 	//
 	// example:
 	//
 	// 2
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The name of the sensitivity level for the data asset.
+	// The name of the threat level for the data asset instance.
 	//
 	// example:
 	//
-	// Sensitive data at level 1
+	// S1
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	// The name of the sensitive data detection rule that the data asset hits.
+	// The name of the sensitive data detection rule that the data asset instance hits.
 	//
 	// example:
 	//
-	// \\*\\*\\	- rule
+	// **	- rule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Indicates whether the data asset contains sensitive data. Valid values:
+	// Indicates whether the data asset instance contains sensitive data. Valid values:
 	//
-	// 	- **true**
+	// - **true**: yes
 	//
-	// 	- **false**
+	// - **false**: no
 	//
 	// example:
 	//
 	// true
 	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	// The number of sensitive data objects in the data asset. For example, if the data asset is an ApsaraDB RDS instance, the value indicates the number of sensitive tables in all databases of the instance.
+	// The total amount of sensitive data in the data asset instance. For example, if the data asset is an RDS instance, this parameter indicates the total number of sensitive tables in the instance.
 	//
 	// example:
 	//
@@ -265,9 +265,9 @@ type DescribeInstancesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// Tenant 1
+	// tenant
 	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	// The total number of data objects in the data asset. For example, if the data asset is an ApsaraDB RDS instance, the value indicates the total number of tables in all databases of the instance.
+	// The total amount of data in the data asset instance. For example, if the data asset is an RDS instance, this parameter indicates the total number of tables in the instance.
 	//
 	// example:
 	//
@@ -486,25 +486,25 @@ func (s *DescribeInstancesResponseBodyItems) Validate() error {
 }
 
 type DescribeInstancesResponseBodyItemsModelTags struct {
-	// The ID of the tag. Valid values:
+	// The ID of the data label. Valid values:
 	//
-	// 	- **101**: personal sensitive information
+	// - **101**: Personal sensitive information
 	//
-	// 	- **102**: personal information
+	// - **102**: Personal information
 	//
-	// 	- **107**: general information
+	// - **107**: General information
 	//
 	// example:
 	//
 	// 101
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the tag. Valid values:
+	// The name of the data label. Valid values:
 	//
-	// 	- Personal sensitive information
+	// - Personal sensitive information
 	//
-	// 	- Personal information
+	// - Personal information
 	//
-	// 	- General information
+	// - General information
 	//
 	// example:
 	//

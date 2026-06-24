@@ -16,7 +16,7 @@ type iDescribeEventDetailResponseBody interface {
 }
 
 type DescribeEventDetailResponseBody struct {
-	// The details of the anomalous event.
+	// The details of the anomalous activity.
 	Event *DescribeEventDetailResponseBodyEvent `json:"Event,omitempty" xml:"Event,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -62,159 +62,159 @@ func (s *DescribeEventDetailResponseBody) Validate() error {
 }
 
 type DescribeEventDetailResponseBodyEvent struct {
-	// The time when the alert for the anomalous event was generated. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the alert for the anomalous activity was triggered. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1545829129000
 	AlertTime *int64 `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
-	// Indicates whether the handling result of the anomalous event is used to enhance the detection of anomalous events. Valid values:
+	// Indicates whether the detection of the anomalous activity is enhanced. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes.
 	//
-	// 	- **false**: no
+	// - **false**: no.
 	//
-	// > If you enhance the detection of anomalous events, the detection accuracy and the rate of triggering alerts for anomalous events are improved.
+	// > Enhancing the detection of anomalous activities improves detection accuracy and the alert reporting rate.
 	//
 	// example:
 	//
 	// false
 	Backed *bool `json:"Backed,omitempty" xml:"Backed,omitempty"`
-	// The instance name of the service in which the anomalous event was detected.
+	// The name of the asset instance in which the anomalous activity occurred.
 	//
 	// example:
 	//
 	// in-222***
 	DataInstance *string `json:"DataInstance,omitempty" xml:"DataInstance,omitempty"`
-	// The display name of the account that is used to handle the anomalous event.
+	// The display name of the account that handled the anomalous activity.
 	//
 	// example:
 	//
 	// yundunsr
 	DealDisplayName *string `json:"DealDisplayName,omitempty" xml:"DealDisplayName,omitempty"`
-	// The username of the account that is used to handle the anomalous event.
+	// The logon name of the account that handled the anomalous activity.
 	//
 	// example:
 	//
 	// det1111
 	DealLoginName *string `json:"DealLoginName,omitempty" xml:"DealLoginName,omitempty"`
-	// The reason why the anomalous event is handled.
+	// The reason for handling the anomalous activity.
 	//
 	// example:
 	//
 	// Anomaly confirmed
 	DealReason *string `json:"DealReason,omitempty" xml:"DealReason,omitempty"`
-	// The time when the anomalous event was handled. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the anomalous activity was handled. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
-	// 1230000
+	// 1611139155000
 	DealTime *int64 `json:"DealTime,omitempty" xml:"DealTime,omitempty"`
-	// The ID of the account that is used to handle the anomalous event.
+	// The ID of the account that handled the anomalous activity.
 	//
 	// example:
 	//
 	// 229157443385014***
 	DealUserId *int64 `json:"DealUserId,omitempty" xml:"DealUserId,omitempty"`
-	// The content in the details of the anomalous event.
+	// The specific content of the anomalous activity details.
 	Detail *DescribeEventDetailResponseBodyEventDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
-	// The display name of the account that triggered the anomalous event.
+	// The display name of the account that performed the operation.
 	//
 	// example:
 	//
 	// yundunsr
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The time when the anomalous event occurred. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the anomalous activity occurred. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1545829129000
 	EventTime *int64 `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
-	// An array that consists of the handling records of the anomalous event.
+	// The handling history.
 	HandleInfoList []*DescribeEventDetailResponseBodyEventHandleInfoList `json:"HandleInfoList,omitempty" xml:"HandleInfoList,omitempty" type:"Repeated"`
-	// The unique ID of the anomalous event.
+	// The unique ID of the anomalous activity that is recorded in Data Security Center.
 	//
 	// example:
 	//
 	// 52234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The details of the alert logs.
+	// The details of the alert log.
 	//
 	// example:
 	//
 	// {"client_ip": ["106.11.XX.XX", "106.11.XX.XX", "106.11.XX.XX", "106.11.XX.XX", "106.11.XX.XX", "106.11.XX.XX", "106.11.XX.XX", "106.11.XX.XX", "106.11.XX.XX"], "start_time": "2020-05-10 00:00:01", "instance": ["omniscience-data", "punish-beaver-data"], "end_time": "2020-05-10 00:21:22", "client_ua": ["Java/1.8.0_152", "Java/1.8.0_92", "aliyun-sdk-java/2.0.0", "aliyun-sdk-java/2.8.0(Linux/4.9.151-015.ali3000.alios7.x86_64/amd64;1.8.0_152)"], "user_name": 1512222261295262}
 	LogDetail *string `json:"LogDetail,omitempty" xml:"LogDetail,omitempty"`
-	// The username of the account that triggered the anomalous event.
+	// The name of the account that performed the operation.
 	//
 	// example:
 	//
 	// det1111
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
-	// Whether it is a new version of the alarm. Value:
+	// Indicates whether the alert is of the new version. Valid values:
 	//
-	// - **true**: Yes.
+	// - **true**: yes.
 	//
-	// - **false**: No.
+	// - **false**: no.
 	//
 	// example:
 	//
 	// true
 	NewAlarm *bool `json:"NewAlarm,omitempty" xml:"NewAlarm,omitempty"`
-	// The name of the service in which the anomalous event was detected. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The name of the product in which the anomalous activity is detected. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
 	//
 	// example:
 	//
 	// MaxCompute
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The handling status for the anomalous event. Valid values:
+	// The processing status of the anomalous activity. Valid values:
 	//
-	// 	- **0**: unhandled
+	// - **0**: unhandled.
 	//
-	// 	- **1**: confirmed
+	// - **1**: confirmed.
 	//
-	// 	- **2**: marked as false positive
+	// - **2**: dismissed.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the handling status for the anomalous event.
+	// The name of the processing status of the anomalous activity.
 	//
 	// example:
 	//
 	// Pending
 	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	// The code of the anomalous event subtype.
+	// The code of the anomalous activity subtype.
 	//
 	// example:
 	//
 	// 020008
 	SubTypeCode *string `json:"SubTypeCode,omitempty" xml:"SubTypeCode,omitempty"`
-	// The name of the anomalous event subtype.
+	// The name of the anomalous activity subtype.
 	//
 	// example:
 	//
 	// Anomalous volume of downloaded data
 	SubTypeName *string `json:"SubTypeName,omitempty" xml:"SubTypeName,omitempty"`
-	// The code of the anomalous event type.
+	// The code of the anomalous activity type.
 	//
 	// example:
 	//
 	// 02
 	TypeCode *string `json:"TypeCode,omitempty" xml:"TypeCode,omitempty"`
-	// The name of the anomalous event type. Valid values:
+	// The name of the anomalous activity type. Valid values:
 	//
-	// 	- **01**: anomalous permission usage
+	// - **01**: anomalous permission access.
 	//
-	// 	- **02**: anomalous data flow
+	// - **02**: anomalous data flow.
 	//
-	// 	- **03**: anomalous data operation
+	// - **03**: anomalous data operation.
 	//
 	// example:
 	//
 	// Anomalous data flow
 	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
-	// The ID of the account that triggered the anomalous event.
+	// The ID of the account that performed the operation.
 	//
 	// example:
 	//
@@ -465,11 +465,11 @@ func (s *DescribeEventDetailResponseBodyEvent) Validate() error {
 }
 
 type DescribeEventDetailResponseBodyEventDetail struct {
-	// The baseline behavior chart of the anomalous event.
+	// The baseline behavior profile for the anomalous activity.
 	Chart []*DescribeEventDetailResponseBodyEventDetailChart `json:"Chart,omitempty" xml:"Chart,omitempty" type:"Repeated"`
-	// The content in the anomalous event.
+	// The content of the anomalous activity.
 	Content []*DescribeEventDetailResponseBodyEventDetailContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	// An array that consists of the source from which the information of the anomalous event is recorded.
+	// The information about the source of the anomalous activity.
 	ResourceInfo []*DescribeEventDetailResponseBodyEventDetailResourceInfo `json:"ResourceInfo,omitempty" xml:"ResourceInfo,omitempty" type:"Repeated"`
 }
 
@@ -542,27 +542,27 @@ func (s *DescribeEventDetailResponseBodyEventDetail) Validate() error {
 type DescribeEventDetailResponseBodyEventDetailChart struct {
 	// The type of the chart. Valid values:
 	//
-	// 	- **1**: column chart
+	// - **1**: column chart.
 	//
-	// 	- **2**: line chart
+	// - **2**: line chart.
 	//
-	// >This field will be returned only when NewAlarm is true.
+	// > This parameter is returned only when NewAlarm is set to true.
 	//
 	// example:
 	//
 	// 1
 	ChatType *int32 `json:"ChatType,omitempty" xml:"ChatType,omitempty"`
-	// The data in the baseline behavior profile of the anomalous event.
+	// The data items of the baseline behavior profile for the anomalous activity.
 	Data *DescribeEventDetailResponseBodyEventDetailChartData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The name of the baseline behavior chart of the anomalous event.
+	// The name of the baseline behavior profile for the anomalous activity.
 	//
 	// example:
 	//
 	// Baseline behavior chart
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// Icon title.
+	// The title of the chart.
 	//
-	// >This field will be returned only when NewAlarm is true.
+	// > This parameter is returned only when NewAlarm is set to true.
 	//
 	// example:
 	//
@@ -570,29 +570,29 @@ type DescribeEventDetailResponseBodyEventDetailChart struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the chart. Valid values:
 	//
-	// 	- **1**: column chart
+	// - **1**: column chart.
 	//
-	// 	- **2**: line chart
+	// - **2**: line chart.
 	//
 	// example:
 	//
 	// 1
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The descriptive label of data items on the X axis.
+	// The label of the x-axis.
 	//
 	// example:
 	//
 	// Number of days
 	XLabel *string `json:"XLabel,omitempty" xml:"XLabel,omitempty"`
-	// The descriptive label of data items on the Y axis.
+	// The label of the y-axis.
 	//
 	// example:
 	//
 	// Value
 	YLabel *string `json:"YLabel,omitempty" xml:"YLabel,omitempty"`
-	// The descriptive label of data items on the Z axis.
+	// The label of the z-axis.
 	//
-	// >This field will be returned only when NewAlarm is true.
+	// > This parameter is returned only when NewAlarm is set to true.
 	//
 	// example:
 	//
@@ -690,19 +690,19 @@ func (s *DescribeEventDetailResponseBodyEventDetailChart) Validate() error {
 }
 
 type DescribeEventDetailResponseBodyEventDetailChartData struct {
-	// The value of the data item on the X axis.
+	// The values of the data items on the x-axis.
 	//
 	// example:
 	//
 	// [test1,test2,...]
 	X []*string `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
-	// The value of the data item on the Y axis.
+	// The values of the data items on the y-axis.
 	//
 	// example:
 	//
 	// [1,2,3,...]
 	Y []*string `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
-	// The value of the data item for the Z axis.
+	// The values of the data items on the z-axis.
 	Z []*string `json:"Z,omitempty" xml:"Z,omitempty" type:"Repeated"`
 }
 
@@ -746,19 +746,19 @@ func (s *DescribeEventDetailResponseBodyEventDetailChartData) Validate() error {
 }
 
 type DescribeEventDetailResponseBodyEventDetailContent struct {
-	// The title of the content in the anomalous event.
+	// The title of the anomalous activity content.
 	//
 	// example:
 	//
 	// Anomaly description
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// Exception event name.
+	// The name of the anomalous activity.
 	//
 	// example:
 	//
 	// daliaoyuncom
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description of the content in the anomalous event.
+	// The description of the anomalous activity content.
 	//
 	// example:
 	//
@@ -806,13 +806,13 @@ func (s *DescribeEventDetailResponseBodyEventDetailContent) Validate() error {
 }
 
 type DescribeEventDetailResponseBodyEventDetailResourceInfo struct {
-	// The source title.
+	// The title of the source of the anomalous activity.
 	//
 	// example:
 	//
 	// Risk
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The source description.
+	// The description of the source of the anomalous activity.
 	//
 	// example:
 	//
@@ -851,19 +851,19 @@ func (s *DescribeEventDetailResponseBodyEventDetailResourceInfo) Validate() erro
 }
 
 type DescribeEventDetailResponseBodyEventHandleInfoList struct {
-	// The account that is used to handle the anomalous event.
+	// Specifies the account that handled the event.
 	//
 	// example:
 	//
 	// sddp-test2
 	CurrentValue *string `json:"CurrentValue,omitempty" xml:"CurrentValue,omitempty"`
-	// The time when the account is disabled. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the handling action was disabled. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1611139155000
 	DisableTime *int64 `json:"DisableTime,omitempty" xml:"DisableTime,omitempty"`
-	// The time when the disabled account is enabled. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the handling action was enabled. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -875,33 +875,33 @@ type DescribeEventDetailResponseBodyEventHandleInfoList struct {
 	//
 	// Remove from the whitelist
 	HandlerName *string `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
-	// The type of the handling method.
+	// The handling type.
 	//
 	// example:
 	//
 	// rds_security_ip
 	HandlerType *string `json:"HandlerType,omitempty" xml:"HandlerType,omitempty"`
-	// The duration for which the handling operation takes effect. If you leave this parameter empty, the handling operation is permanently valid. Unit: minutes.
+	// The duration of the handling action. Unit: minutes. If this parameter is empty, the handling action is permanent.
 	//
 	// example:
 	//
 	// 10
 	HandlerValue *int32 `json:"HandlerValue,omitempty" xml:"HandlerValue,omitempty"`
-	// The ID of the handling rule.
+	// The handling ID.
 	//
 	// example:
 	//
 	// 11
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The status of the account that triggered the anomalous event. Valid values:
+	// The status of the handling action. Valid values:
 	//
-	// 	- **0**: disabled
+	// - **0**: disabled.
 	//
-	// 	- **1**: enabled
+	// - **1**: enabled.
 	//
-	// 	- **-1**: failed to disable the account
+	// - **-1**: disabling failed.
 	//
-	// 	- **-2**: failed to enable the account
+	// - **-2**: enabling failed.
 	//
 	// example:
 	//

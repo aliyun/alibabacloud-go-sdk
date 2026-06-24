@@ -26,29 +26,41 @@ type iDescribeDataMaskingTasksRequest interface {
 }
 
 type DescribeDataMaskingTasksRequest struct {
-	// The page number of the page to return.
+	// The page number to return.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The service to which the data to be de-identified belongs. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	// The product that the destination data source belongs to. Valid values:
+	//
+	// - **1**: MaxCompute.
+	//
+	// - **2**: OSS.
+	//
+	// - **3**: ADS.
+	//
+	// - **4**: OTS.
+	//
+	// - **5**: RDS.
+	//
+	// - **6**: SELF_DB.
 	//
 	// example:
 	//
 	// 2
 	DstType *int32 `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	// The end of the time range during which the de-identification tasks to be queried are created. The value is a UNIX timestamp. Unit: milliseconds.
+	// The end time for creating the data masking task. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1583856000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	// The language of the request and response. Default value: **zh_cn**. Valid values:
 	//
-	// 	- **zh_cn**: Chinese
+	// - **zh_cn**: Chinese.
 	//
-	// 	- **en_us**: English
+	// - **en_us**: English.
 	//
 	// example:
 	//
@@ -60,13 +72,13 @@ type DescribeDataMaskingTasksRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keyword used to query the de-identification tasks, which can be the task name or ID.
+	// A keyword to search for tasks. You can search by task name or task ID.
 	//
 	// example:
 	//
 	// test
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	// The beginning of the time range during which the de-identification tasks to be queried are created. The value is a UNIX timestamp. Unit: milliseconds.
+	// The start time for creating the task. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

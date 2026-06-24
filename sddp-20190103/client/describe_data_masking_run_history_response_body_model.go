@@ -28,7 +28,7 @@ type DescribeDataMaskingRunHistoryResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The execution information about the de-identification task.
+	// A list of data masking task details.
 	Items []*DescribeDataMaskingRunHistoryResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
 	//
@@ -117,47 +117,47 @@ func (s *DescribeDataMaskingRunHistoryResponseBody) Validate() error {
 }
 
 type DescribeDataMaskingRunHistoryResponseBodyItems struct {
-	// The number of rows that are in conflict with the data to be de-identified in the destination table to which the data to be de-identified is moved.
+	// The number of data conflicts. This is the number of rows to be inserted into the destination table that conflict with existing data.
 	//
 	// example:
 	//
 	// 0
 	ConflictCount *int64 `json:"ConflictCount,omitempty" xml:"ConflictCount,omitempty"`
-	// The type of the service to which the de-identified data belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	// The type of service to which the masked data is destined. Valid values: **1*	- for MaxCompute, **2*	- for OSS, **3*	- for ADS, **4*	- for OTS, and **5*	- for RDS.
 	//
 	// example:
 	//
 	// 2
 	DstType *int32 `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	// The service that stores the de-identified data. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The type of the destination service. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
 	//
 	// example:
 	//
 	// OSS
 	DstTypeCode *string `json:"DstTypeCode,omitempty" xml:"DstTypeCode,omitempty"`
-	// The end time of the de-identification task.
+	// The time when the execution ended. This is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1582251233000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The error code that is returned when the de-identification task fails.
+	// The error code returned when the task fails. This parameter has a value only if the task fails.
 	//
 	// example:
 	//
 	// masking_task_not_found
 	FailCode *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
-	// The reason why the de-identification task fails.
+	// The reason the task failed.
 	//
 	// example:
 	//
 	// error
 	FailMsg *string `json:"FailMsg,omitempty" xml:"FailMsg,omitempty"`
-	// Indicates whether a file is available for download.
+	// Indicates whether a download file is available.
 	//
-	// 	- **1**: yes
+	// - **1**: Yes.
 	//
-	// 	- **0**: no
+	// - **0**: No.
 	//
 	// example:
 	//
@@ -169,25 +169,25 @@ type DescribeDataMaskingRunHistoryResponseBodyItems struct {
 	//
 	// 4
 	HasSubProcess *int32 `json:"HasSubProcess,omitempty" xml:"HasSubProcess,omitempty"`
-	// The ID of the task execution record.
+	// The ID of the execution record.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The number of rows that are de-identified.
+	// The number of masked rows.
 	//
 	// example:
 	//
 	// 100
 	MaskingCount *int64 `json:"MaskingCount,omitempty" xml:"MaskingCount,omitempty"`
-	// The progress of the de-identification task.
+	// The execution progress.
 	//
 	// example:
 	//
 	// 100
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// The number of times that the de-identification task is executed.
+	// The number of times the task has been executed.
 	//
 	// example:
 	//
@@ -199,53 +199,53 @@ type DescribeDataMaskingRunHistoryResponseBodyItems struct {
 	//
 	// add
 	SrcTableName *string `json:"SrcTableName,omitempty" xml:"SrcTableName,omitempty"`
-	// The type of the service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	// The type of service to which the source data belongs. Valid values: **1*	- for MaxCompute, **2*	- for OSS, **3*	- for ADS, **4*	- for OTS, and **5*	- for RDS.
 	//
 	// example:
 	//
 	// 2
 	SrcType *int32 `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
-	// The service to which the data to be de-identified belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The type of the source service. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
 	//
 	// example:
 	//
 	// OSS
 	SrcTypeCode *string `json:"SrcTypeCode,omitempty" xml:"SrcTypeCode,omitempty"`
-	// The time when the de-identification task was executed. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the execution started. This is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1582251233000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the de-identification task. Valid values:
+	// The execution status of the task. Valid values:
 	//
-	// 	- **-1**: waiting
+	// - -**1**: pending.
 	//
-	// 	- **0**: being executed
+	// - **0**: running.
 	//
-	// 	- **1**: executed
+	// - **1**: successful.
 	//
-	// 	- **2**: failed to be executed
+	// - **2**: failed.
 	//
-	// 	- **3**: terminated
+	// - **3**: stopped by user.
 	//
-	// 	- **4**: partially failed
+	// - **4**: partially failed.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the identification task.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// mt4HBgtw1B******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The mode in which the de-identification task is executed. Valid values:
+	// The execution method. Valid values:
 	//
-	// 	- **1**: manual
+	// - **1**: manual.
 	//
-	// 	- **2**: scheduled
+	// - **2**: scheduled.
 	//
 	// example:
 	//

@@ -26,11 +26,11 @@ type CreateSlrRoleRequest struct {
 	//
 	// 2
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	// The language of the request and response messages. Default value: **zh_cn**. Valid values:
 	//
-	// 	- **zh_cn**: Simplified Chinese
+	// - **zh_cn**: Chinese (Simplified)
 	//
-	// 	- **en_us**: English
+	// - **en_us**: English (US)
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type CreateSlrRoleRequest struct {
 	//
 	// example:
 	//
-	// 39.170.XX.XX
+	// 106.11.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 

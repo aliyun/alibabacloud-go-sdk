@@ -22,25 +22,25 @@ type iModifyEventStatusRequest interface {
 }
 
 type ModifyEventStatusRequest struct {
-	// Specifies whether to enhance the detection of anomalous events. If you enhance the detection of anomalous events, the detection accuracy and the rate of triggering alerts for anomalous events are improved. Valid values:
+	// Specifies whether to enhance the detection of the anomalous activity. Enhancing detection improves accuracy and increases the alert rate for anomalous activities.
 	//
-	// 	- **true**: yes
+	// - **true**: Yes.
 	//
-	// 	- **false**: no
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	Backed *bool `json:"Backed,omitempty" xml:"Backed,omitempty"`
-	// The reason why the anomalous event is handled.
+	// The reason for handling the anomalous activity.
 	//
 	// example:
 	//
-	// Anomaly confirmed
+	// Confirmed as violation
 	DealReason *string `json:"DealReason,omitempty" xml:"DealReason,omitempty"`
-	// The ID of the anomalous event.
+	// The unique ID of the anomalous activity.
 	//
-	// > You can call the **DescribeEvents*	- operation to query the ID of the anomalous event.
+	// > To handle an anomalous activity, you must provide its unique ID. You can obtain this ID by calling the **DescribeEvents*	- operation.
 	//
 	// This parameter is required.
 	//
@@ -48,21 +48,21 @@ type ModifyEventStatusRequest struct {
 	//
 	// 12345
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	// The language of the request and response. The default value is **zh_cn**. Valid values:
 	//
-	// 	- **zh_cn**: Chinese
+	// - **zh_cn**: Chinese.
 	//
-	// 	- **en_us**: English
+	// - **en_us**: English.
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The method to handle the anomalous event. Valid values:
+	// The operation to perform on the anomalous activity.
 	//
-	// 	- **1**: marks the anomalous event as a false positive.
+	// - **1**: Mark as false positive.
 	//
-	// 	- **2**: confirms and handles the anomalous event.
+	// - **2**: Confirm and handle the anomalous activity.
 	//
 	// This parameter is required.
 	//

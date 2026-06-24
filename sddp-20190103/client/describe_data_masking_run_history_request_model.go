@@ -34,37 +34,37 @@ type iDescribeDataMaskingRunHistoryRequest interface {
 }
 
 type DescribeDataMaskingRunHistoryRequest struct {
-	// The number of the page to return.
+	// The page number to return.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The type of the service to which the de-identified data belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	// The type of service to which the masked data is destined. Valid values: **1*	- for MaxCompute, **2*	- for OSS, **3*	- for ADS, **4*	- for OTS, and **5*	- for RDS.
 	//
 	// example:
 	//
 	// 2
 	DstType *int32 `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+	// The end time to query for task executions. This is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1583856000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	// The language of the request and response. Default value: **zh_cn**. Valid values:
 	//
-	// 	- **zh_cn**: Chinese
+	// - **zh_cn**: Chinese.
 	//
-	// 	- **en_us**: English
+	// - **en_us**: English.
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the task.
+	// The ID of the main task.
 	//
-	// > If a task has one or more subtasks, the value of the parameter must be the ID of the task. Otherwise, leave this parameter empty.
+	// > If a task has subtasks, this parameter specifies the ID of the main task. Otherwise, this parameter is empty.
 	//
 	// example:
 	//
@@ -82,37 +82,37 @@ type DescribeDataMaskingRunHistoryRequest struct {
 	//
 	// add
 	SrcTableName *string `json:"SrcTableName,omitempty" xml:"SrcTableName,omitempty"`
-	// The type of the service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	// The type of service to which the source data belongs. Valid values: **1*	- for MaxCompute, **2*	- for OSS, **3*	- for ADS, **4*	- for OTS, and **5*	- for RDS.
 	//
 	// example:
 	//
 	// 2
 	SrcType *int32 `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+	// The start time to query for task executions. This is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1582992000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the de-identification task. Valid values:
+	// The execution status of the task. Valid values:
 	//
-	// 	- **-1**: waiting
+	// - **-1**: pending.
 	//
-	// 	- **0**: being executed
+	// - **0**: running.
 	//
-	// 	- **1**: executed
+	// - **1**: successful.
 	//
-	// 	- **2**: failed to be executed
+	// - **2**: failed.
 	//
-	// 	- **3**: terminated
+	// - **3**: stopped by user.
 	//
-	// 	- **4**: partially failed
+	// - **4**: partially failed.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the de-identification task.
+	// The ID of the data masking task.
 	//
 	// example:
 	//

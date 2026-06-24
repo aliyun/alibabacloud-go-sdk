@@ -16,7 +16,7 @@ type iCreateDataLimitResponseBody interface {
 }
 
 type CreateDataLimitResponseBody struct {
-	// The ID of the data asset.
+	// The ID of the authorized data asset.
 	//
 	// example:
 	//

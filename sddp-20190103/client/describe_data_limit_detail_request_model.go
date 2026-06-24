@@ -24,7 +24,7 @@ type DescribeDataLimitDetailRequest struct {
 	//
 	// example:
 	//
-	// 1
+	// 2
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The unique ID of the data asset that you want to query.
 	//
@@ -38,9 +38,9 @@ type DescribeDataLimitDetailRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
-	// 	- **zh**: Simplified Chinese.
+	// - **zh**: Simplified Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeDataLimitDetailRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The network type of the data asset that you want to query. Valid values:
 	//
-	// 	- **1**: virtual private cloud (VPC)
+	// - **1**: virtual private cloud (VPC)
 	//
-	// 	- **2**: classic network
+	// - **2**: classic network
 	//
 	// example:
 	//

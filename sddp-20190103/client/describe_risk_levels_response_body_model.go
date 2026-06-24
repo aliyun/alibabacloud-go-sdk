@@ -22,7 +22,7 @@ type DescribeRiskLevelsResponseBody struct {
 	//
 	// 136082B3-B21F-5E9D-B68E-991FFD205D24
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of sensitivity levels.
+	// A list of risk levels.
 	RiskLevelList []*DescribeRiskLevelsResponseBodyRiskLevelList `json:"RiskLevelList,omitempty" xml:"RiskLevelList,omitempty" type:"Repeated"`
 }
 
@@ -66,73 +66,75 @@ func (s *DescribeRiskLevelsResponseBody) Validate() error {
 }
 
 type DescribeRiskLevelsResponseBodyRiskLevelList struct {
-	// The description of the sensitivity level. You can enter a custom description.
+	// The description of the risk level. You can customize the description.
 	//
-	// The following list describes the sensitivity level names and the corresponding default description:
+	// The following list describes the mappings between risk level names and their default descriptions:
 	//
-	// 	- **NA**: which indicates that no sensitive data is detected.
+	// - **NA**: No sensitive data is detected
 	//
-	// 	- **S1**: which indicates the sensitive data at sensitivity level 1.
+	// - **S1**: Level-1 sensitive data
 	//
-	// 	- **S2**: which indicates the sensitive data at sensitivity level 2.
+	// - **S2**: Level-2 sensitive data
 	//
-	// 	- **S3**: which indicates the sensitive data at sensitivity level 3.
+	// - **S3**: Level-3 sensitive data
 	//
-	// 	- **S4**: which indicates the sensitive data at sensitivity level 4.
+	// - **S4**: Level-4 sensitive data
 	//
-	// 	- **S5**: which indicates the sensitive data at sensitivity level 5.
+	// - **S5**: Level-5 sensitive data
 	//
-	// 	- **S6**: which indicates the sensitive data at sensitivity level 6.
+	// - **S6**: Level-6 sensitive data
 	//
-	// 	- **S7**: which indicates the sensitive data at sensitivity level 7.
+	// - **S7**: Level-7 sensitive data
 	//
-	// 	- **S8**: which indicates the sensitive data at sensitivity level 8.
+	// - **S8**: Level-8 sensitive data
 	//
-	// 	- **S9**: which indicates the sensitive data at sensitivity level 9.
+	// - **S9**: Level-9 sensitive data
 	//
-	// 	- **S10**: which indicates the sensitive data at sensitivity level 10.
+	// - **S10**: Level-10 sensitive data
 	//
 	// example:
 	//
-	// Sensitive data at sensitivity level 1
+	// S3
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The unique ID of the sensitivity level. Valid values: 1 to 11. Each sensitivity level ID maps a sensitivity level. For example, the sensitivity level ID of 2 corresponds to the sensitivity level S1.
+	// The unique ID of the risk level. Valid values: 1 to 11. Each risk level ID corresponds to a risk level name. For example, the risk level ID 2 corresponds to the risk level S1.
 	//
-	// For more information, see the description of the Name parameter.
+	// For more information about the mappings, see the description of the Name parameter.
 	//
 	// example:
 	//
 	// 2
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the sensitivity level. The highest sensitivity level varies based on rule templates. The highest sensitivity level is S10. The highest sensitivity level of the **Built-in data security classification templates for Alibaba and Ant Group*	- is S4, and that of the **built-in classification templates for financial data*	- and **built-in classification templates for assets*	- is S5. For more information about the built-in classification templates for financial data, see Guidelines for Security Classification of Financial Data and Security Data - JRT 0197-2020. For a copied rule template, the highest sensitivity level is S10. The following list describes the sensitivity level names and the corresponding IDs:
+	// The name of the risk level for the sensitive data. The maximum risk level is S10 and varies based on the data classification template. The maximum risk level is S4 for the **built-in data security classification template for Alibaba and Ant Group**, and S5 for the **built-in data classification template for the finance industry (with reference to JR/T 0197-2020 Financial Data Security - Guidelines for Data Security Classification)*	- and the **built-in data classification standard for the energy industry**. If you use a copied template, the maximum risk level is S10.
 	//
-	// 	- **NA**: 1
+	// The following list describes the mappings between risk level names and IDs:
 	//
-	// 	- **S1**: 2
+	// - **NA**: 1
 	//
-	// 	- **S2**: 3
+	// - **S1**: 2
 	//
-	// 	- **S3**: 4
+	// - **S2**: 3
 	//
-	// 	- **S4**: 5
+	// - **S3**: 4
 	//
-	// 	- **S5**: 6
+	// - **S4**: 5
 	//
-	// 	- **S6**: 7
+	// - **S5**: 6
 	//
-	// 	- **S7**: 8
+	// - **S6**: 7
 	//
-	// 	- **S8**: 9
+	// - **S7**: 8
 	//
-	// 	- **S9**: 10
+	// - **S8**: 9
 	//
-	// 	- **S10**: 11
+	// - **S9**: 10
+	//
+	// - **S10**: 11
 	//
 	// example:
 	//
 	// S1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of times that each sensitivity level is referenced in the rule template. Default value: 0.
+	// The number of times the risk level is referenced in the template. The default value is 0.
 	//
 	// example:
 	//

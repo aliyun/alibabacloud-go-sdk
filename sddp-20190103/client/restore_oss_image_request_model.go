@@ -22,6 +22,8 @@ type iRestoreOssImageRequest interface {
 }
 
 type RestoreOssImageRequest struct {
+	// The OSS bucket.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29,18 +31,24 @@ type RestoreOssImageRequest struct {
 	// test-sddp
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The full path of the file stored in OSS.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aliyun_dsc_desensitization/dir1/test.png
 	ObjectKey *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
+	// The ID of the region where the bucket is located.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
+	// The storage path for the restored image.
+	//
 	// example:
 	//
 	// aliyun_dsc_original /dir1/test.png

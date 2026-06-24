@@ -26,11 +26,11 @@ type iCreateConfigRequest interface {
 type CreateConfigRequest struct {
 	// The code of the common configuration item. Valid values:
 	//
-	// 	- **access_failed_cnt**: the maximum number of access attempts allowed when Data Security Center (DSC) fails to access an unauthorized resource.
+	// - **access_failed_cnt**: the maximum number of access attempts allowed when Data Security Center (DSC) fails to access an unauthorized resource.
 	//
-	// 	- **access_permission_exprie_max_days**: the maximum idle period allowed for access permissions before an alert is triggered.
+	// - **access_permission_exprie_max_days**: the maximum idle period allowed for access permissions before an alert is triggered.
 	//
-	// 	- **log_datasize_avg_days**: the minimum percentage of the volume of logs of a specific type generated on the current day to the average volume of logs generated in the previous 10 days before an alert is triggered.
+	// - **log_datasize_avg_days**: the minimum percentage of the volume of logs of a specific type generated on the current day to the average volume of logs generated in the previous 10 days before an alert is triggered.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type CreateConfigRequest struct {
 	//
 	// example:
 	//
-	// Maximum number of access attempts allowed when DSC fails to access an unauthorized resource: 10
+	// Unauthorized resource multiple access attempts: current threshold is defined as 10 attempts
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is deprecated.
 	//
@@ -50,9 +50,9 @@ type CreateConfigRequest struct {
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
-	// 	- **zh_cn**: Chinese
+	// - **zh_cn**: Chinese
 	//
-	// 	- **en_us**: English
+	// - **en_us**: English
 	//
 	// example:
 	//
@@ -62,15 +62,15 @@ type CreateConfigRequest struct {
 	//
 	// example:
 	//
-	// 39.170.XX.XX
+	// 106.11.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The value of the common configuration item. The meaning of this parameter varies with the value of the Code parameter.
 	//
-	// 	- If you set the Code parameter to **access_failed_cnt**, the Value parameter specifies the maximum number of access attempts allowed when DSC fails to access an unauthorized resource.
+	// - If you set the Code parameter to **access_failed_cnt**, the Value parameter specifies the maximum number of access attempts allowed when DSC fails to access an unauthorized resource.
 	//
-	// 	- If you set the Code parameter to **access_permission_exprie_max_days**, the Value parameter specifies the maximum idle period allowed for access permissions before an alert is triggered.
+	// - If you set the Code parameter to **access_permission_exprie_max_days**, the Value parameter specifies the maximum idle period allowed for access permissions before an alert is triggered.
 	//
-	// 	- If you set the Code parameter to **log_datasize_avg_days**, the Value parameter specifies the minimum percentage of the volume of logs of a specific type generated on the current day to the average amount of logs generated in the previous 10 days before an alert is triggered.
+	// - If you set the Code parameter to **log_datasize_avg_days**, the Value parameter specifies the minimum percentage of the volume of logs of a specific type generated on the current day to the average amount of logs generated in the previous 10 days before an alert is triggered.
 	//
 	// example:
 	//

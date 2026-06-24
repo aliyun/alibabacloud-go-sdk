@@ -28,7 +28,7 @@ type DescribeEventsResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// An array that consists of the anomalous events.
+	// A list of anomalous activities.
 	Items []*DescribeEventsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
 	//
@@ -117,137 +117,137 @@ func (s *DescribeEventsResponseBody) Validate() error {
 }
 
 type DescribeEventsResponseBodyItems struct {
-	// The time when an alert was triggered for the anomalous event. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when an alert was generated for the anomalous activity. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 154529000
 	AlertTime *int64 `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
-	// Indicates whether the detection of anomalous events is enhanced. If the detection of anomalous events is enhanced, the detection accuracy and the rate of triggering alerts for anomalous events are improved. Valid values:
+	// Indicates whether enhanced detection is enabled for the anomalous activity. Enhanced detection improves detection accuracy and the alert reporting rate.
 	//
-	// 	- true: yes
+	// - true: Enhanced detection is enabled.
 	//
-	// 	- false: no
+	// - false: Enhanced detection is disabled.
 	//
 	// example:
 	//
 	// false
 	Backed *bool `json:"Backed,omitempty" xml:"Backed,omitempty"`
-	// The display name of the account that is used to handle the anomalous event.
+	// The display name of the account that handled the anomalous activity.
 	//
 	// example:
 	//
 	// yundunsr
 	DealDisplayName *string `json:"DealDisplayName,omitempty" xml:"DealDisplayName,omitempty"`
-	// The username of the account that is used to handle the anomalous event.
+	// The logon name of the account that handled the anomalous activity.
 	//
 	// example:
 	//
 	// det1111
 	DealLoginName *string `json:"DealLoginName,omitempty" xml:"DealLoginName,omitempty"`
-	// The time when the anomalous event was handled. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the anomalous activity was handled. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 12223300
 	DealTime *int64 `json:"DealTime,omitempty" xml:"DealTime,omitempty"`
-	// The ID of the account that is used to handle the anomalous event.
+	// The ID of the account that handled the anomalous activity.
 	//
 	// example:
 	//
 	// 229157443385014***
 	DealUserId *int64 `json:"DealUserId,omitempty" xml:"DealUserId,omitempty"`
-	// The display name of the account that triggered the anomalous event.
+	// The display name of the account that performed the operation.
 	//
 	// example:
 	//
 	// yundunsr
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The time when the anomalous event occurred. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the anomalous activity occurred. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1545829129000
 	EventTime *int64 `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
-	// The ID of the anomalous event.
+	// The unique ID of the anomalous activity that is recorded in Data Security Center (DSC).
 	//
 	// example:
 	//
 	// 42233335555
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The username of the account that triggered the anomalous event.
+	// The logon name of the account that performed the operation.
 	//
 	// example:
 	//
 	// det1111
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
-	// The name of the service in which the anomalous event was detected.
+	// The service to which the anomalous activity belongs.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The handling status for the anomalous event. Valid values:
+	// The processing status of the anomalous activity.
 	//
-	// 	- 0: unhandled
+	// - 0: Unhandled.
 	//
-	// 	- 1: confirmed
+	// - 1: Confirmed.
 	//
-	// 	- 2: marked as false positive
+	// - 2: Dismissed.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the handling status for the anomalous event.
+	// The name of the processing status.
 	//
 	// example:
 	//
 	// Pending
 	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	// The code of the anomalous event subtype.
+	// The code of the child type of the anomalous activity.
 	//
 	// example:
 	//
 	// 020008
 	SubTypeCode *string `json:"SubTypeCode,omitempty" xml:"SubTypeCode,omitempty"`
-	// The name of the anomalous event subtype.
+	// The name of the child type of the anomalous activity.
 	//
 	// example:
 	//
-	// Anomalous volume of downloaded data
+	// Abnormal data download volume
 	SubTypeName *string `json:"SubTypeName,omitempty" xml:"SubTypeName,omitempty"`
-	// The name of the destination service in an anomalous data flow.
+	// The destination service for the anomalous data flow event.
 	//
 	// example:
 	//
 	// RDS
 	TargetProductCode *string `json:"TargetProductCode,omitempty" xml:"TargetProductCode,omitempty"`
-	// The code of the anomalous event type.
+	// The code of the parent type of the anomalous activity.
 	//
 	// example:
 	//
 	// 02
 	TypeCode *string `json:"TypeCode,omitempty" xml:"TypeCode,omitempty"`
-	// The name of the anomalous event type.
+	// The name of the parent type of the anomalous activity.
 	//
 	// example:
 	//
-	// Anomalous data flow
+	// Abnormal data flow
 	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
-	// The ID of the account that triggered the anomalous event.
+	// The ID of the account that performed the operation.
 	//
 	// example:
 	//
 	// 1978132506596***
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The severity of the anomalous event.
+	// The risk level of the anomalous activity.
 	//
-	// 	- **1**: low
+	// - **1**: Low.
 	//
-	// 	- **2**: medium
+	// - **2**: Medium.
 	//
-	// 	- **3**: high
+	// - **3**: High.
 	//
 	// example:
 	//

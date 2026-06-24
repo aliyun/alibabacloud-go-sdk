@@ -14,6 +14,8 @@ type iMaskOssImageResponseBody interface {
 }
 
 type MaskOssImageResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 136082B3-B21F-5E9D-B68E-991FFD205D24

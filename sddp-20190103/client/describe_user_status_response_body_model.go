@@ -22,7 +22,7 @@ type DescribeUserStatusResponseBody struct {
 	//
 	// 769FB3C1-F4C9-42DF-9B72-7077A8989C13
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the current account.
+	// The details of the current account.
 	UserStatus *DescribeUserStatusResponseBodyUserStatus `json:"UserStatus,omitempty" xml:"UserStatus,omitempty" type:"Struct"`
 }
 
@@ -62,48 +62,57 @@ func (s *DescribeUserStatusResponseBody) Validate() error {
 }
 
 type DescribeUserStatusResponseBodyUserStatus struct {
-	// The AccessKey ID of the current account.
+	// The authorized AccessKey ID of the user.
 	//
 	// example:
 	//
 	// yourAccessKeyID
-	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	AssetRoleAuthed *bool   `json:"AssetRoleAuthed,omitempty" xml:"AssetRoleAuthed,omitempty"`
-	// Indicates whether the SQL Explorer feature can be disabled. Valid values:
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// Indicates whether the currently logged-in account has been granted the service role permissions for DSC asset synchronization. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: authorized.
 	//
-	// 	- **false**: no
+	// - **false**: unauthorized.
+	//
+	// example:
+	//
+	// true
+	AssetRoleAuthed *bool `json:"AssetRoleAuthed,omitempty" xml:"AssetRoleAuthed,omitempty"`
+	// Indicates whether SQL Insights can be disabled. Valid values:
+	//
+	// - **true**: yes.
+	//
+	// - **false**: no.
 	//
 	// example:
 	//
 	// true
 	AuditClosable *bool `json:"AuditClosable,omitempty" xml:"AuditClosable,omitempty"`
-	// Indicates whether the audit resources can be released.
+	// Indicates whether SQL Insights can be released.
 	//
-	// 	- **true**: yes
+	// - **true**: yes.
 	//
-	// 	- **false**: no
+	// - **false**: no.
 	//
 	// example:
 	//
 	// true
 	AuditReleasable *bool `json:"AuditReleasable,omitempty" xml:"AuditReleasable,omitempty"`
-	// Indicates whether DSC has permission to access user resources within the current account. Valid values:
+	// Indicates whether the current account is granted Resource Access Management (RAM) permissions on DSC. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: The account is granted the permissions.
 	//
-	// 	- **false**: no
+	// - **false**: The account is not granted the permissions.
 	//
 	// example:
 	//
 	// true
 	Authed *bool `json:"Authed,omitempty" xml:"Authed,omitempty"`
-	// The billing method of DCS that is purchased by using the current account. Valid values:
+	// The billing method of the DSC service for the current account. Valid values:
 	//
-	// 	- **PREPAY**: subscription
+	// - **PREPAY**: subscription.
 	//
-	// 	- **POSTPAY**: pay-as-you-go
+	// - **POSTPAY**: pay-as-you-go.
 	//
 	// example:
 	//
@@ -111,21 +120,21 @@ type DescribeUserStatusResponseBodyUserStatus struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The permissions that the current account has. Valid values:
 	//
-	// 	- **0**: The current account has the administrative permissions or read-only permissions on Data Security Center.
+	// - **0**: The account has the management or read-only permissions on Data Security Center.
 	//
-	// 	- **1**: The current account has the permissions to manage data domains.
+	// - **1**: The account has the management permissions on data domains.
 	//
 	// example:
 	//
 	// 1
 	DataManagerRole *int32 `json:"DataManagerRole,omitempty" xml:"DataManagerRole,omitempty"`
-	// The ID of the data security center instance purchased by the main account.
+	// The ID of the Data Security Center instance purchased by the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// sddp-cn-****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of instances within the current account.
+	// The number of instances in the current account.
 	//
 	// example:
 	//
@@ -137,83 +146,83 @@ type DescribeUserStatusResponseBodyUserStatus struct {
 	//
 	// 10
 	InstanceTotalCount *int64 `json:"InstanceTotalCount,omitempty" xml:"InstanceTotalCount,omitempty"`
-	// Indicates whether the data security lab feature is enabled. Valid values:
+	// Indicates whether the Asset Lab feature is enabled. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: enabled.
 	//
-	// 	- **0**: no
+	// - **0**: disabled.
 	//
 	// example:
 	//
 	// 1
 	LabStatus *int32 `json:"LabStatus,omitempty" xml:"LabStatus,omitempty"`
-	// OSS total storage capacity. Unit: Bytes.
+	// The total OSS storage. Unit: bytes.
 	//
 	// example:
 	//
 	// 2048
 	OssTotalSize *int64 `json:"OssTotalSize,omitempty" xml:"OssTotalSize,omitempty"`
-	// Accumulate the number of days to protect user assets.
+	// The total number of days that assets have been protected.
 	//
 	// example:
 	//
-	// 2
+	// 22
 	ProtectionDays *int32 `json:"ProtectionDays,omitempty" xml:"ProtectionDays,omitempty"`
-	// Indicates whether DSC is purchased. Valid values:
+	// Indicates whether the DSC service is purchased. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes.
 	//
-	// 	- **false**: no
+	// - **false**: no.
 	//
 	// example:
 	//
 	// true
 	Purchased *bool `json:"Purchased,omitempty" xml:"Purchased,omitempty"`
-	// The grace period between when DSC is expired and when DSC is released. Unit: days.
+	// The number of days from service expiration to service release. Unit: days.
 	//
 	// example:
 	//
 	// 15
 	ReleaseDays *int32 `json:"ReleaseDays,omitempty" xml:"ReleaseDays,omitempty"`
-	// The time when the audit resources are released. Unit: milliseconds.
+	// The release time. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 15000
 	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The remaining period for which the data assets within the current account can be protected by DSC.
+	// The number of remaining days in the protection period for the assets of the current account.
 	//
 	// example:
 	//
 	// 131
 	RemainDays *int32 `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
-	// Indicates whether the current account uses a free trial of DSC. Valid values:
+	// Indicates whether the current account uses the trial version of the DSC service. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes.
 	//
-	// 	- **false**: no
+	// - **false**: no.
 	//
 	// example:
 	//
 	// true
 	Trail *bool `json:"Trail,omitempty" xml:"Trail,omitempty"`
-	// Indicates whether the agent audit feature is used. Valid values:
+	// Indicates whether the agent-based audit feature has been used. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: yes.
 	//
-	// 	- **0**: no
+	// - **0**: no.
 	//
 	// example:
 	//
 	// 1
 	UseAgentAudit *bool `json:"UseAgentAudit,omitempty" xml:"UseAgentAudit,omitempty"`
-	// The number of instances that are used.
+	// The number of used instances.
 	//
 	// example:
 	//
 	// 125
 	UseInstanceNum *int32 `json:"UseInstanceNum,omitempty" xml:"UseInstanceNum,omitempty"`
-	// The occupied space of the Object Storage Service (OSS) bucket. Unit: bytes.
+	// The used Object Storage Service (OSS) storage. Unit: bytes.
 	//
 	// example:
 	//

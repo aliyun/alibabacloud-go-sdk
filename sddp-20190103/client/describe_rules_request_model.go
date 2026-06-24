@@ -52,33 +52,43 @@ type iDescribeRulesRequest interface {
 }
 
 type DescribeRulesRequest struct {
-	// The content type of the sensitive data detection rule. Valid values:
+	// The type of content in the sensitive data detection rule. Valid values:
 	//
-	// 	- **0**: keyword
+	// - **0**: keyword
 	//
-	// 	- **2**: regular expression
+	// - **2**: regular expression
 	//
 	// example:
 	//
 	// 2
 	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The type of the content in the sensitive data detection rule. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates attempts to exploit SQL injections. The value 2 indicates bypass by using SQL injections. The value 3 indicates abuse of stored procedures. The value 4 indicates buffer overflow. The value 5 indicates SQL injections based on errors.
+	// The content type. Valid values:
+	//
+	// - **1**: SQL injection exploits
+	//
+	// - **2**: SQL injection bypass attempts
+	//
+	// - **3**: stored procedure abuse
+	//
+	// - **4**: buffer overflows
+	//
+	// - **5**: error-based SQL injections
 	//
 	// example:
 	//
 	// 1
 	ContentCategory *int32 `json:"ContentCategory,omitempty" xml:"ContentCategory,omitempty"`
-	// The external cooperation channel. Valid values:
+	// The source of the external cooperation request. Valid values:
 	//
-	// 	- DAS
+	// - DAS
 	//
-	// 	- YAOCHI
+	// - YAOCHI
 	//
 	// example:
 	//
 	// DAS
 	CooperationChannel *string `json:"CooperationChannel,omitempty" xml:"CooperationChannel,omitempty"`
-	// The page number of the page to return.
+	// The page number of the paged query.
 	//
 	// example:
 	//
@@ -86,9 +96,9 @@ type DescribeRulesRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The type of the sensitive data detection rule. Valid values:
 	//
-	// 	- **0**: built-in rule
+	// - **0**: built-in
 	//
-	// 	- **1**: custom rule
+	// - **1**: custom
 	//
 	// example:
 	//
@@ -100,29 +110,29 @@ type DescribeRulesRequest struct {
 	//
 	// 2
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The parent group type of the rule.
+	// The parent group of the rule.
 	//
 	// example:
 	//
 	// 4_1
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Specifies whether to allow earlier versions of request parameters to support keywords that are supported in later versions of request parameters. Valid values:
+	// Specifies whether the keyword is compatible with earlier versions. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**
 	//
-	// 	- **false**: no
+	// - **false**
 	//
-	// > To specify keywords as the content type of the sensitive data detection rule, you can set the Category parameter to 0 for earlier versions of request parameters and set the Category parameter to 5 for later versions of request parameters. You can specify the KeywordCompatible parameter based on your business requirements.
+	// > In earlier versions, the Category parameter for keywords had a value of 0. In the current version, it has a value of 5. Enable this parameter based on your business needs.
 	//
 	// example:
 	//
 	// true
 	KeywordCompatible *bool `json:"KeywordCompatible,omitempty" xml:"KeywordCompatible,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response messages. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -130,9 +140,9 @@ type DescribeRulesRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The match type. Valid values:
 	//
-	// 	- 1: rule-based match
+	// - 1: rule-based match
 	//
-	// 	- 2: dictionary-based match
+	// - 2: dictionary-based match
 	//
 	// example:
 	//
@@ -142,7 +152,7 @@ type DescribeRulesRequest struct {
 	//
 	// example:
 	//
-	// \\*\\*\\	- rule
+	// ***Rule
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of entries to return on each page.
 	//
@@ -150,29 +160,53 @@ type DescribeRulesRequest struct {
 	//
 	// 12
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The name of the service to which the data asset belongs. Valid values:
+	//
+	// - **MaxCompute**
+	//
+	// - **OSS**
+	//
+	// - **ADS**
+	//
+	// - **OTS**
+	//
+	// - **RDS**
+	//
+	// - **SELF_DB**
 	//
 	// example:
 	//
 	// MaxCompute
 	ProductCode *int32 `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the service to which the sensitive data detection rule is applied. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	// The ID of the service to which the data asset belongs. Valid values:
+	//
+	// - **1**: MaxCompute
+	//
+	// - **2**: OSS
+	//
+	// - **3**: ADS
+	//
+	// - **4**: OTS
+	//
+	// - **5**: RDS
+	//
+	// - **6**: SELF_DB
 	//
 	// example:
 	//
 	// 1
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+	// The sensitivity level ID of the sensitive data detection rule. Valid values:
 	//
-	// 	- **1**: N/A, which indicates that no sensitive data is detected.
+	// - **1**: N/A. No sensitive data is detected.
 	//
-	// 	- **2**: S1, which indicates the low sensitivity level.
+	// - **2**: S1. Level 1 sensitive data.
 	//
-	// 	- **3**: S2, which indicates the medium sensitivity level.
+	// - **3**: S2. Level 2 sensitive data.
 	//
-	// 	- **4**: S3, which indicates the high sensitivity level.
+	// - **4**: S3. Level 3 sensitive data.
 	//
-	// 	- **5**: S4, which indicates the highest sensitivity level.
+	// - **5**: S4. Level 4 sensitive data.
 	//
 	// example:
 	//
@@ -180,59 +214,59 @@ type DescribeRulesRequest struct {
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
 	// The type of the sensitive data detection rule. Valid values:
 	//
-	// 	- **1**: sensitive data detection rule
+	// - **1**: data detection rule
 	//
-	// 	- **2**: audit rule
+	// - **2**: audit policy
 	//
-	// 	- **3**: anomalous event detection rule
+	// - **3**: anomaly detection rule
 	//
-	// 	- **99**: custom rule
+	// - **99**: custom rule
 	//
 	// example:
 	//
 	// 1
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// Specifies whether to query a simplified rule. The simplified rule contains only the rule name. Valid values:
+	// Specifies whether to return a simplified version of the rule that contains only the rule name. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// false
 	Simplify *bool `json:"Simplify,omitempty" xml:"Simplify,omitempty"`
-	// The status of the sensitive data detection rule. Valid values:
+	// The status. Valid values:
 	//
-	// 	- **1**: enabled
+	// - **1**: Normal
 	//
-	// 	- **0**: disabled
+	// - **0**: Disabled
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the data asset. Valid values:
+	// The type of data asset that the rule supports. Valid values:
 	//
-	// 	- **0**: all data assets
+	// - **0**: all assets
 	//
-	// 	- **1**: structured data asset
+	// - **1**: structured assets
 	//
-	// 	- **2**: unstructured data asset
+	// - **2**: unstructured assets
 	//
-	// > If you set the parameter to 1 or 2, rules that support all data assets and rules that support the queried data asset type are returned.
+	// > When you query for rules that support structured or unstructured assets, the response also includes rules that support all asset types.
 	//
 	// example:
 	//
 	// 1
 	SupportForm *int32 `json:"SupportForm,omitempty" xml:"SupportForm,omitempty"`
-	// The severity level of the alert. Valid values:
+	// The risk level.
 	//
-	// 	- **1**: low
+	// - **1**: Low
 	//
-	// 	- **2**: medium
+	// - **2**: Medium
 	//
-	// 	- **3**: high
+	// - **3**: High
 	//
 	// example:
 	//

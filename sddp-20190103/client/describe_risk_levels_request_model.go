@@ -24,17 +24,19 @@ type DescribeRiskLevelsRequest struct {
 	//
 	// 2
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- zh_cn: Chinese (default)
+	// - zh_cn: Chinese. This is the default value.
 	//
-	// 	- en_us: English
+	// - en_us: English.
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the industry-specific rule template.
+	// The ID of the industry-specific template.
+	//
+	// > Call [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html) to get the ID of the industry-specific template.
 	//
 	// example:
 	//

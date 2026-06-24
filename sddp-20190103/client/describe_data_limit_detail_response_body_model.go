@@ -64,11 +64,11 @@ func (s *DescribeDataLimitDetailResponseBody) Validate() error {
 type DescribeDataLimitDetailResponseBodyDataLimit struct {
 	// The status of the connectivity test between the data asset and DSC. Valid values:
 	//
-	// 	- **2**: indicates that the data asset was being connected.
+	// - **2**: indicates that the data asset was being connected.
 	//
-	// 	- **3**: indicates that the data asset was connected to DSC.
+	// - **3**: indicates that the data asset was connected to DSC.
 	//
-	// 	- **4**: indicates that the data asset failed to be connected.
+	// - **4**: indicates that the data asset failed to be connected.
 	//
 	// example:
 	//
@@ -76,15 +76,15 @@ type DescribeDataLimitDetailResponseBodyDataLimit struct {
 	CheckStatus *int32 `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
 	// The result that indicates the status of the connectivity test between the data asset and DSC. Valid values:
 	//
-	// 	- **Passed**
+	// - **Passed**
 	//
-	// 	- **Failed**
+	// - **Failed**
 	//
-	// 	- **Testing**
+	// - **Testing**
 	//
 	// example:
 	//
-	// Passed
+	// Pending
 	CheckStatusName *string `json:"CheckStatusName,omitempty" xml:"CheckStatusName,omitempty"`
 	// The time when the data asset was connected to DSC. The value is a UNIX timestamp. Unit: milliseconds.
 	//
@@ -102,7 +102,7 @@ type DescribeDataLimitDetailResponseBodyDataLimit struct {
 	//
 	// example:
 	//
-	// China (Qingdao)
+	// cn-hangzhou
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The ID and name of the data asset in the service to which the data asset belongs.
 	//
@@ -124,15 +124,15 @@ type DescribeDataLimitDetailResponseBodyDataLimit struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the service to which the data asset belongs. Valid values:
 	//
-	// 	- **1**: MaxCompute
+	// - **1**: MaxCompute
 	//
-	// 	- **2**: OSS
+	// - **2**: OSS
 	//
-	// 	- **3**: AnalyticDB for MySQL
+	// - **3**: AnalyticDB for MySQL
 	//
-	// 	- **4**: Tablestore
+	// - **4**: Tablestore
 	//
-	// 	- **5**: ApsaraDB RDS
+	// - **5**: ApsaraDB RDS
 	//
 	// example:
 	//
@@ -140,15 +140,15 @@ type DescribeDataLimitDetailResponseBodyDataLimit struct {
 	ResourceType *int64 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The service to which the data asset belongs. Valid values:
 	//
-	// 	- **MaxCompute**
+	// - **MaxCompute**
 	//
-	// 	- **OSS**
+	// - **OSS**
 	//
-	// 	- **ADS**
+	// - **ADS**
 	//
-	// 	- **OTS**
+	// - **OTS**
 	//
-	// 	- **RDS**
+	// - **RDS**
 	//
 	// example:
 	//

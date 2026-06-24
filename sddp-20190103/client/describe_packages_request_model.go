@@ -28,69 +28,69 @@ type iDescribePackagesRequest interface {
 }
 
 type DescribePackagesRequest struct {
-	// The page number of the page to return.
+	// The page number to return.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the instance to which the package belongs.
+	// The ID of the asset instance to which the data asset package belongs.
 	//
-	// > You can call the **DescribeInstances*	- operation to query the ID of the instance.
+	// > To query the list of MaxCompute data asset packages that are authorized for an SDPP connection by instance ID, call the **DescribeInstances*	- operation to obtain the instance ID.
 	//
 	// example:
 	//
 	// 12321
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	// The language of the request and response. The default value is **zh_cn**. Valid values:
 	//
-	// 	- **zh_cn**: Chinese
+	// - **zh_cn**: Chinese.
 	//
-	// 	- **en_us**: English
+	// - **en_us**: English.
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The search keyword. Fuzzy match is supported.
+	// The keyword for the search. Fuzzy matching is supported.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries to return on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the service to which the package belongs.
+	// The ID of the product to which the data asset package belongs.
 	//
-	// > You can call the **DescribeDataAssets*	- operation to query the ID of the service.
+	// > To query the list of MaxCompute data asset packages that are authorized for an SDPP connection by product ID, call the **DescribeDataAssets*	- operation to obtain the product ID.
 	//
 	// example:
 	//
 	// 2566600
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The sensitivity level of the package. Valid values:
+	// The ID of the risk level for the data asset package.
 	//
-	// 	- **1**: N/A, which indicates that no sensitive data is detected.
+	// - **1**: N/A: No sensitive data is detected.
 	//
-	// 	- **2**: S1, which indicates the low sensitivity level.
+	// - **2**: S1: Level 1 sensitive data.
 	//
-	// 	- **3**: S2, which indicates the medium sensitivity level.
+	// - **3**: S2: Level 2 sensitive data.
 	//
-	// 	- **4**: S3, which indicates the high sensitivity level.
+	// - **4**: S3: Level 3 sensitive data.
 	//
-	// 	- **5**: S4, which indicates the highest sensitivity level.
+	// - **5**: S4: Level 4 sensitive data.
 	//
 	// example:
 	//
 	// 2
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The ID of the sensitive data detection rule that the package hits.
+	// The ID of the sensitive data detection rule that the data asset package matches.
 	//
-	// > You can call the **DescribeRules*	- operation to query the ID of the sensitive data detection rule.
+	// > To query the list of MaxCompute data asset packages that are authorized for an SDPP connection by the ID of a matching sensitive data detection rule, call the **DescribeRules*	- operation to obtain the rule ID.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeConfigsResponseBody interface {
 }
 
 type DescribeConfigsResponseBody struct {
-	// An array that consists of common configuration items for alerts.
+	// A list of common configuration items for anomaly alerts.
 	ConfigList []*DescribeConfigsResponseBodyConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -66,35 +66,35 @@ func (s *DescribeConfigsResponseBody) Validate() error {
 }
 
 type DescribeConfigsResponseBodyConfigList struct {
-	// The code of the common configuration item.
+	// The code of the configuration item.
 	//
 	// example:
 	//
-	// 1
+	// abnormal_download_file
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The description of the default value for the common configuration item.
+	// The default value of the configuration item.
 	//
 	// example:
 	//
-	// The volume of logs of a specific type that are generated on the current day is less than 30% of the average volume of logs generated in the previous 10 days.
+	// 10000
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The description of the common configuration item.
+	// The description of the configuration item.
 	//
 	// example:
 	//
-	// Anomalous log output
+	// Unauthorized resource multiple access attempts: current threshold is defined as 10 attempts
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The unique ID of the common configuration item.
+	// The unique ID of the configuration item.
 	//
 	// example:
 	//
-	// 2133
+	// 50
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The value of the common configuration item.
+	// The value of the configuration item.
 	//
 	// example:
 	//
-	// 30
+	// 10000
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

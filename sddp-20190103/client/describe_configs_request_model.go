@@ -14,15 +14,15 @@ type iDescribeConfigsRequest interface {
 }
 
 type DescribeConfigsRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh_cn**: Chinese (Simplified). Default value.
 	//
-	// 	- **en**: English
+	// - **en_us**: English (United States).
 	//
 	// example:
 	//
-	// zh
+	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 

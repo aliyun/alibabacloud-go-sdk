@@ -22,25 +22,27 @@ type ModifyReportTaskStatusRequest struct {
 	//
 	// example:
 	//
-	// 1
+	// 2
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	// The language of the request and response. Default value: **zh_cn**. Valid values:
 	//
-	// 	- **zh_cn**: Simplified Chinese
+	// - **zh_cn**: Chinese
 	//
-	// 	- **en_us**: English
+	// - **en_us**: English
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies the status of the report task. Valid values:
+	// The status to set for the report task. Valid values:
 	//
-	// 	- **0**: disabled
+	// - **0**: Disable
 	//
-	// 	- **1**: enabled
+	// - **1**: Enable
 	//
-	// > This parameter is required.
+	// 	Notice:
+	//
+	// This parameter is required.
 	//
 	// example:
 	//

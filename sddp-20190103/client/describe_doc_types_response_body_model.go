@@ -16,7 +16,7 @@ type iDescribeDocTypesResponseBody interface {
 }
 
 type DescribeDocTypesResponseBody struct {
-	// A list of OSS object types.
+	// A list of OSS file types.
 	DocTypeList []*DescribeDocTypesResponseBodyDocTypeList `json:"DocTypeList,omitempty" xml:"DocTypeList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -66,19 +66,19 @@ func (s *DescribeDocTypesResponseBody) Validate() error {
 }
 
 type DescribeDocTypesResponseBodyDocTypeList struct {
-	// The code of the object type.
+	// The code of the file type.
 	//
 	// example:
 	//
 	// 100001
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the object type.
+	// The unique ID of the file type.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the object type.
+	// The name of the file type.
 	//
 	// example:
 	//

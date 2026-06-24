@@ -28,7 +28,7 @@ type DescribeDataMaskingTasksResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// A list of de-identification tasks.
+	// A list of data masking tasks.
 	Items []*DescribeDataMaskingTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
 	//
@@ -117,7 +117,7 @@ func (s *DescribeDataMaskingTasksResponseBody) Validate() error {
 }
 
 type DescribeDataMaskingTasksResponseBodyItems struct {
-	// The member account to which the desensitization target belongs.
+	// The member account that the data masking destination belongs to.
 	//
 	// example:
 	//
@@ -125,55 +125,79 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	DstMemberAccount *int64 `json:"DstMemberAccount,omitempty" xml:"DstMemberAccount,omitempty"`
 	// The destination path.
 	DstPath *string `json:"DstPath,omitempty" xml:"DstPath,omitempty"`
-	// The service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	// The product that the destination data source belongs to. Valid values:
+	//
+	// - **1**: MaxCompute.
+	//
+	// - **2**: OSS.
+	//
+	// - **3**: ADS.
+	//
+	// - **4**: OTS.
+	//
+	// - **5**: RDS.
+	//
+	// - **6**: SELF_DB.
 	//
 	// example:
 	//
 	// 5
 	DstType *int32 `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	// The type of the service to which the de-identified data belongs. Valid values: **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The type of the destination product. Valid values:
+	//
+	// - **MaxCompute**.
+	//
+	// - **OSS**.
+	//
+	// - **ADS**.
+	//
+	// - **OTS**.
+	//
+	// - **RDS**.
+	//
+	// - **SELF_DB**.
 	//
 	// example:
 	//
 	// RDS
 	DstTypeCode *string `json:"DstTypeCode,omitempty" xml:"DstTypeCode,omitempty"`
-	// The time when the de-identification task is created. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the task was created. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1582992000000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Indicates whether the de-identification task is running.
+	// Indicates whether the task is running.
 	//
 	// example:
 	//
 	// false
 	HasUnfinishProcess *bool `json:"HasUnfinishProcess,omitempty" xml:"HasUnfinishProcess,omitempty"`
-	// The task ID.
+	// The numerical ID of the task.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the source table is de-identified.
+	// Indicates whether the source table is masked.
 	//
 	// example:
 	//
 	// false
 	OriginalTable *bool `json:"OriginalTable,omitempty" xml:"OriginalTable,omitempty"`
-	// The user who created the de-identification task.
+	// The creator of the task.
 	//
 	// example:
 	//
 	// owner
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The number of times that the de-identification task is run.
+	// The number of executions.
 	//
 	// example:
 	//
 	// 1
 	RunCount *int32 `json:"RunCount,omitempty" xml:"RunCount,omitempty"`
-	// The member account to which the desensitization source belongs.
+	// The member account that the data masking source belongs to.
 	//
 	// example:
 	//
@@ -181,13 +205,37 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	SrcMemberAccount *int64 `json:"SrcMemberAccount,omitempty" xml:"SrcMemberAccount,omitempty"`
 	// The source path.
 	SrcPath *string `json:"SrcPath,omitempty" xml:"SrcPath,omitempty"`
-	// The type of the service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	// The type of the source product. Valid values:
+	//
+	// - **1**: MaxCompute.
+	//
+	// - **2**: OSS.
+	//
+	// - **3**: ADS.
+	//
+	// - **4**: OTS.
+	//
+	// - **5**: RDS.
+	//
+	// - **6**: SELF_DB.
 	//
 	// example:
 	//
 	// 5
 	SrcType *int32 `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
-	// The type of the service to which the data to be de-identified belongs. Valid values: **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The type of the source product. Valid values:
+	//
+	// - **MaxCompute**.
+	//
+	// - **OSS**.
+	//
+	// - **ADS**.
+	//
+	// - **OTS**.
+	//
+	// - **RDS**.
+	//
+	// - **SELF_DB**.
 	//
 	// example:
 	//
@@ -195,15 +243,15 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	SrcTypeCode *string `json:"SrcTypeCode,omitempty" xml:"SrcTypeCode,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// 	- **0**: disabled
+	// - **0**: Disabled.
 	//
-	// 	- **1**: enabled
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the task.
+	// The string ID of the task.
 	//
 	// example:
 	//
@@ -215,13 +263,13 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	//
 	// Task name
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The mode in which the de-identification task is run. Valid values:
+	// The execution method of the task. Valid values:
 	//
-	// 	- **1**: manual
+	// - **1**: Manual.
 	//
-	// 	- **2**: scheduled
+	// - **2**: Scheduled.
 	//
-	// 	- **3**: manual and scheduled
+	// - **3**: Manual and scheduled.
 	//
 	// example:
 	//

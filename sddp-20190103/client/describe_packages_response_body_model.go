@@ -28,9 +28,9 @@ type DescribePackagesResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// An array that consists of the information about the packages.
+	// The information about the data asset packages.
 	Items []*DescribePackagesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
@@ -117,75 +117,75 @@ func (s *DescribePackagesResponseBody) Validate() error {
 }
 
 type DescribePackagesResponseBodyItems struct {
-	// The point in time when the MaxCompute package was created. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the data asset package was created. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1536751124000
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the package.
+	// The unique ID of the data asset package.
 	//
 	// example:
 	//
 	// 111111
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the instance to which the package belongs.
+	// The ID of the asset instance to which the data asset package belongs.
 	//
 	// example:
 	//
 	// 223453332
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the package.
+	// The name of the data asset package.
 	//
 	// example:
 	//
 	// gxdata
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The account of the user that owns the package.
+	// The account of the data asset package owner.
 	//
 	// example:
 	//
 	// cou-2221
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The sensitivity level of the package. Valid values:
+	// The ID of the risk level for the data asset package.
 	//
-	// 	- **1**: N/A, which indicates that no sensitive data is detected.
+	// - **1**: N/A: No sensitive data is detected.
 	//
-	// 	- **2**: S1, which indicates the low sensitivity level.
+	// - **2**: S1: Level 1 sensitive data.
 	//
-	// 	- **3**: S2, which indicates the medium sensitivity level.
+	// - **3**: S2: Level 2 sensitive data.
 	//
-	// 	- **4**: S3, which indicates the high sensitivity level.
+	// - **4**: S3: Level 3 sensitive data.
 	//
-	// 	- **5**: S4, which indicates the highest sensitivity level.
+	// - **5**: S4: Level 4 sensitive data.
 	//
 	// example:
 	//
 	// 4
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The name of the sensitivity level for the package.
+	// The name of the risk level for the package.
 	//
 	// example:
 	//
-	// Highest sensitivity level
+	// S3
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	// Indicates whether the package contains sensitive data. Valid values:
+	// Indicates whether the data asset package contains sensitive data.
 	//
-	// 	- true: yes
+	// - true: Yes.
 	//
-	// 	- false: no
+	// - false: No.
 	//
 	// example:
 	//
 	// true
 	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	// The total volume of sensitive data in the package. For example, the value can be the total number of sensitive tables in the MaxCompute package.
+	// The total number of sensitive data entries in the data asset package. For example, the total number of sensitive tables in MaxCompute.
 	//
 	// example:
 	//
 	// 123
 	SensitiveCount *int32 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	// The total volume of data in the package. For example, the value can be the total number of tables in the MaxCompute package.
+	// The total number of data entries in the data asset package. For example, the total number of tables in MaxCompute.
 	//
 	// example:
 	//

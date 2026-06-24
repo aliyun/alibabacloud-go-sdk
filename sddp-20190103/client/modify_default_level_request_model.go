@@ -18,43 +18,43 @@ type iModifyDefaultLevelRequest interface {
 }
 
 type ModifyDefaultLevelRequest struct {
-	// The default sensitivity level of data that Data Security Center (DSC) cannot classify as sensitive or insensitive. Valid values:
+	// The ID of the default threat level for unidentified data. Valid values:
 	//
-	// 	- **1**: N/A
+	// - **1**: N/A.
 	//
-	// 	- **2**: S1
+	// - **2**: S1.
 	//
-	// 	- **3**: S2
+	// - **3**: S2.
 	//
-	// 	- **4**: S3
+	// - **4**: S3.
 	//
-	// 	- **5**: S4
+	// - **5**: S4.
 	//
 	// example:
 	//
 	// 4
 	DefaultId *int64 `json:"DefaultId,omitempty" xml:"DefaultId,omitempty"`
-	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	// The language of the request and response. Default value: **zh_cn**. Valid values:
 	//
-	// 	- **zh_cn**: Chinese
+	// - **zh_cn**: Chinese.
 	//
-	// 	- **en_us**: English
+	// - **en_us**: English.
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The sensitivity level ID of data that DSC classifies as sensitive. Separate multiple IDs with commas (,). Valid values:
+	// The IDs of the threat levels for data classified as sensitive. If you specify multiple IDs, separate them with commas. Valid values:
 	//
-	// 	- **1**: N/A
+	// - **1**: N/A.
 	//
-	// 	- **2**: S1
+	// - **2**: S1.
 	//
-	// 	- **3**: S2
+	// - **3**: S2.
 	//
-	// 	- **4**: S3
+	// - **4**: S3.
 	//
-	// 	- **5**: S4
+	// - **5**: S4.
 	//
 	// example:
 	//

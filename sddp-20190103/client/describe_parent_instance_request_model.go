@@ -36,103 +36,103 @@ type iDescribeParentInstanceRequest interface {
 }
 
 type DescribeParentInstanceRequest struct {
-	// Authorization status of the data asset instance.
+	// The authorization status of the data asset instance.
 	//
-	// - **0**: Unauthorized
+	// - **0**: Unauthorized.
 	//
-	// - **1**: Authorized
+	// - **1**: Authorized.
 	//
 	// example:
 	//
 	// 0
 	AuthStatus *int32 `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
-	// Connection status of the instance or the database under the instance. Values:
+	// The connection status of the instance or a database in the instance. Valid values:
 	//
-	// - **-3**: Database not created
+	// - **-3**: The database is not created.
 	//
-	// - **-2**: Released
+	// - **-2**: Released.
 	//
-	// - **-1**: Not connected
+	// - **-1**: Not connected.
 	//
-	// - **2**: Connectivity test in progress
+	// - **2**: Testing connectivity.
 	//
-	// - **3**: Connected
+	// - **3**: Connected.
 	//
-	// - **4**: Connection failed
+	// - **4**: Connection failed.
 	//
 	// example:
 	//
 	// 3
 	CheckStatus *int32 `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	// Instance status.
+	// The instance status.
 	//
-	// - **Running**: Running
+	// - **Running**: Running.
 	//
-	// - **Released**: Released
+	// - **Released**: Released.
 	//
-	// - **DatabaseNotCreated**: Database not created
+	// - **DatabaseNotCreated**: Database not created.
 	//
 	// example:
 	//
 	// Running
 	ClusterStatus *string `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	// When performing a paginated query, set the current page number. Default value: **1**.
+	// The number of the page to return for a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Database name.
+	// The name of the database.
 	//
 	// example:
 	//
 	// db_**t
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// Engine type. Values:
+	// The type of the database engine. Valid values:
 	//
-	// - **MySQL**
+	// - **MySQL**.
 	//
-	// - **MariaDB**
+	// - **MariaDB**.
 	//
-	// - **Oracle**
+	// - **Oracle**.
 	//
-	// - **PostgreSQL**
+	// - **PostgreSQL**.
 	//
-	// - **SQLServer**
+	// - **SQLServer**.
 	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The instance ID to which the data in the data asset table belongs.
+	// The ID of the data asset instance.
 	//
 	// example:
 	//
 	// rm-*******xx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Language type for request and response messages. Values:
+	// The language of the content within the request and response. Valid values:
 	//
-	// - **zh_cn**: Default, Simplified Chinese
+	// - **zh_cn**: Simplified Chinese. This is the default value.
 	//
-	// - **en_us**: English (US)
+	// - **en_us**: U.S. English.
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Member account ID.
+	// The ID of the member account.
 	//
 	// example:
 	//
 	// **********8103
 	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
-	// When performing a paginated query, set the number of rows per page. Default value: 10.
+	// The number of entries to return on each page for a paged query. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The product type. Valid values:
+	// This parameter is required. The type of the product. Valid values:
 	//
 	// - **1**: MaxCompute
 	//
@@ -144,7 +144,7 @@ type DescribeParentInstanceRequest struct {
 	//
 	// - **5**: RDS
 	//
-	// - **6**: SelfDB
+	// - **6**: Self-managed database
 	//
 	// - **7**: PolarDB-X
 	//
@@ -162,21 +162,21 @@ type DescribeParentInstanceRequest struct {
 	//
 	// 5
 	ResourceType *int64 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The region where the asset is located. Values:
+	// The region where the asset resides. Valid values:
 	//
-	// - **cn-beijing**: China (Beijing)
+	// - **cn-beijing**: China (Beijing).
 	//
-	// - **cn-zhangjiakou**: China (Zhangjiakou)
+	// - **cn-zhangjiakou**: China (Zhangjiakou).
 	//
-	// - **cn-huhehaote**: China (Hohhot)
+	// - **cn-huhehaote**: China (Hohhot).
 	//
-	// - **cn-hangzhou**: China (Hangzhou)
+	// - **cn-hangzhou**: China (Hangzhou).
 	//
-	// - **cn-shanghai**: China (Shanghai)
+	// - **cn-shanghai**: China (Shanghai).
 	//
-	// - **cn-shenzhen**: China (Shenzhen)
+	// - **cn-shenzhen**: China (Shenzhen).
 	//
-	// - **cn-hongkong**:  China (Hong Kong)
+	// - **cn-hongkong**: China (Hong Kong).
 	//
 	// example:
 	//

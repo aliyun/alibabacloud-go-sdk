@@ -16,7 +16,7 @@ type iModifyRuleStatusResponseBody interface {
 }
 
 type ModifyRuleStatusResponseBody struct {
-	// The IDs of sensitive data detection rules whose status failed to be changed. Multiple IDs are separated with commas (,).
+	// The IDs of the rules whose status failed to be changed. Multiple IDs are separated by commas.
 	//
 	// example:
 	//

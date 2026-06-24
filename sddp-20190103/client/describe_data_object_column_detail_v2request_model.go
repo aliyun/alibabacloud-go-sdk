@@ -26,7 +26,7 @@ type iDescribeDataObjectColumnDetailV2Request interface {
 }
 
 type DescribeDataObjectColumnDetailV2Request struct {
-	// When performing a paginated query, set the current page number. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
@@ -38,9 +38,9 @@ type DescribeDataObjectColumnDetailV2Request struct {
 	//
 	// 2
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// Set the unique identifier ID of the data object to be queried.
+	// The unique ID of the data object to query.
 	//
-	// > You can obtain the identifier ID by calling [DescribeDataObjects](https://help.aliyun.com/document_detail/2399253.html).
+	// > You can call the [DescribeDataObjects](https://help.aliyun.com/document_detail/2399253.html) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type DescribeDataObjectColumnDetailV2Request struct {
 	//
 	// 13456723343
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language type for the request and response messages, default is **zh_cn**. Values:
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// - **zh_cn**: Chinese.
 	//
@@ -58,13 +58,13 @@ type DescribeDataObjectColumnDetailV2Request struct {
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// When performing a paginated query, set the maximum number of data asset instances to display per page. Default value: **10**.
+	// The number of entries to return on each page. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID corresponding to the product name of the data object. Values:
+	// The ID of the product to which the data object belongs. Valid values:
 	//
 	// - **1**: MaxCompute
 	//
@@ -72,7 +72,7 @@ type DescribeDataObjectColumnDetailV2Request struct {
 	//
 	// - **3**: ADB-MYSQL
 	//
-	// - **4**: TableStore
+	// - **4**: Tablestore
 	//
 	// - **5**: RDS
 	//
@@ -94,9 +94,9 @@ type DescribeDataObjectColumnDetailV2Request struct {
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// Industry template ID.
+	// The ID of the industry-specific template.
 	//
-	// > You can obtain the industry template identifier ID by calling [DescribeDataObjects](https://help.aliyun.com/document_detail/2399253.html).
+	// > You can call the [DescribeDataObjects](https://help.aliyun.com/document_detail/2399253.html) operation to obtain the ID of the industry-specific template.
 	//
 	// This parameter is required.
 	//

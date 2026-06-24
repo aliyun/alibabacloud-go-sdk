@@ -62,17 +62,17 @@ func (s *DescribeOssObjectDetailResponseBody) Validate() error {
 }
 
 type DescribeOssObjectDetailResponseBodyOssObjectDetail struct {
-	// The name of the OSS bucket to which the OSS object belongs.
+	// The name of the bucket to which the OSS object belongs.
 	//
 	// example:
 	//
 	// bucke***
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The type of the OSS object.
+	// The name of the OSS object type.
 	//
 	// example:
 	//
-	// Excel file
+	// Excel
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	// The name of the OSS object.
 	//
@@ -80,19 +80,19 @@ type DescribeOssObjectDetailResponseBodyOssObjectDetail struct {
 	//
 	// obj_id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The region ID of the OSS object.
+	// The ID of the region where the OSS object is stored.
 	//
 	// example:
 	//
 	// cn-***
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the sensitivity level for the OSS object.
+	// The name of the risk level for the OSS object.
 	//
 	// example:
 	//
-	// Medium sensitivity level
+	// S2
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	// A list of the sensitive data detection rules that the OSS object hits.
+	// A list of sensitive data detection rules that the OSS object hits.
 	RuleList []*DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 }
 
@@ -172,47 +172,47 @@ func (s *DescribeOssObjectDetailResponseBodyOssObjectDetail) Validate() error {
 }
 
 type DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList struct {
-	// The type of the OSS object.
+	// The name of the OSS object type.
 	//
 	// example:
 	//
-	// Excel file
+	// Excel
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The number of times that the OSS object hits the sensitive data detection rule.
+	// The number of times the sensitive data detection rule was hit.
 	//
 	// example:
 	//
 	// 2
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// A list of tags for data that hits the recognition model.
+	// A list of data tags that are hit by the detection model.
 	ModelTags []*DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
-	// The ID of the sensitivity level of the OSS object.
+	// The ID of the risk level for the OSS object.
 	//
-	// 	- **1**: No sensitive data is detected.
+	// - **1**: No sensitive data is detected.
 	//
-	// 	- **2**: indicates the low sensitivity level.
+	// - **2**: Level 1 sensitive data.
 	//
-	// 	- **3**: indicates the medium sensitivity level.
+	// - **3**: Level 2 sensitive data.
 	//
-	// 	- **4**: indicates the high sensitivity level.
+	// - **4**: Level 3 sensitive data.
 	//
-	// 	- **5**: indicates the highest sensitivity level.
+	// - **5**: Level 4 sensitive data.
 	//
 	// example:
 	//
 	// 2
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The name of the sensitivity level for the OSS object.
+	// The name of the risk level for the OSS object.
 	//
 	// example:
 	//
-	// Medium sensitivity level
+	// S2
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	// The name of the sensitive data detection rule.
+	// The name of the sensitive data detection rule that was hit.
 	//
 	// example:
 	//
-	// \\*\\*\\	- rule
+	// name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -292,25 +292,25 @@ func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) Validate() 
 }
 
 type DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags struct {
-	// The tag ID.
+	// The ID of the data tag for the detection model.
 	//
-	// 	- **101**: sensitive personal information
+	// - **101**: Personal sensitive information.
 	//
-	// 	- **102**: personal information
+	// - **102**: Personal information.
 	//
-	// 	- **103**: important information
+	// - **103**: Important data.
 	//
 	// example:
 	//
 	// 101
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The tag name.
+	// The name of the data tag for the detection model.
 	//
-	// 	- Sensitive personal information
+	// - Personal sensitive information.
 	//
-	// 	- Personal information
+	// - Personal information.
 	//
-	// 	- Important information
+	// - Important data.
 	//
 	// example:
 	//

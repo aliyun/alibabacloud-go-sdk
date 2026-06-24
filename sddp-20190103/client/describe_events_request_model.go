@@ -13,8 +13,8 @@ type iDescribeEventsRequest interface {
 	GetCurrentPage() *int32
 	SetDealUserId(v string) *DescribeEventsRequest
 	GetDealUserId() *string
-	SetEndTime(v string) *DescribeEventsRequest
-	GetEndTime() *string
+	SetEndTime(v int64) *DescribeEventsRequest
+	GetEndTime() *int64
 	SetId(v int64) *DescribeEventsRequest
 	GetId() *int64
 	SetInstanceName(v string) *DescribeEventsRequest
@@ -25,8 +25,8 @@ type iDescribeEventsRequest interface {
 	GetPageSize() *int32
 	SetProductCode(v string) *DescribeEventsRequest
 	GetProductCode() *string
-	SetStartTime(v string) *DescribeEventsRequest
-	GetStartTime() *string
+	SetStartTime(v int64) *DescribeEventsRequest
+	GetStartTime() *int64
 	SetStatus(v string) *DescribeEventsRequest
 	GetStatus() *string
 	SetSubTypeCode(v string) *DescribeEventsRequest
@@ -50,35 +50,35 @@ type DescribeEventsRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the account that handles the anomalous event.
+	// The ID of the account that handled the anomalous activity.
 	//
 	// example:
 	//
 	// yundun-***
 	DealUserId *string `json:"DealUserId,omitempty" xml:"DealUserId,omitempty"`
-	// The end of the time range during which the anomalous events are detected. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the detection of the anomalous activity ended. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1698700000
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The unique ID of the anomalous event.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The unique ID of the anomalous activity.
 	//
 	// example:
 	//
 	// 789026
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the data asset.
+	// The name of the data asset instance.
 	//
 	// example:
 	//
 	// rm-uf6yzvbc2tg90iuxk.l****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	// The language of the request and response. The default value is **zh_cn**. Valid values:
 	//
-	// 	- **zh_cn**: Chinese
+	// - **zh_cn**: Chinese.
 	//
-	// 	- **en_us**: English
+	// - **en_us**: English.
 	//
 	// example:
 	//
@@ -90,57 +90,57 @@ type DescribeEventsRequest struct {
 	//
 	// 12
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the service to which the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The service to which the data asset belongs. Valid values include MaxCompute, OSS, ADS, OTS, and **RDS**.
 	//
 	// example:
 	//
 	// OSS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The beginning of the time range during which the anomalous events are detected. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the anomalous activity occurred. This is the start time of the detection. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1657900000
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The handling status of the anomalous event. Valid values:
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The processing status of the anomalous activity.
 	//
-	// 	- 0: unhandled
+	// - 0: Unhandled.
 	//
-	// 	- 1: confirmed
+	// - 1: Confirmed.
 	//
-	// 	- 2: marked as false positive
+	// - 2: Dismissed.
 	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the anomalous event subtype.
+	// The name of the child type of the anomalous activity.
 	//
-	// > You can call the **DescribeEventTypes*	- operation to query the name of the anomalous event subtype.
+	// > To query anomalous activities by the child type name, call the **DescribeEventTypes*	- operation to get the name.
 	//
 	// example:
 	//
-	// Anomalous volume of downloaded data
+	// Abnormal data download volume
 	SubTypeCode *string `json:"SubTypeCode,omitempty" xml:"SubTypeCode,omitempty"`
-	// The name of the destination service in an anomalous data flow. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**
+	// The destination service for an anomalous data flow event. Valid values include MaxCompute, OSS, ADS, OTS, and **RDS**.
 	//
 	// example:
 	//
 	// RDS
 	TargetProductCode *string `json:"TargetProductCode,omitempty" xml:"TargetProductCode,omitempty"`
-	// The name of the anomalous event type. Valid values:
+	// The code of the parent type of the anomalous activity.
 	//
-	// 	- 01: anomalous permission usage
+	// - 01: Anomalous permission access.
 	//
-	// 	- 02: anomalous data flow
+	// - 02: Anomalous data flow.
 	//
-	// 	- 03: anomalous data operation
+	// - 03: Anomalous data operation.
 	//
 	// example:
 	//
 	// 02
 	TypeCode *string `json:"TypeCode,omitempty" xml:"TypeCode,omitempty"`
-	// The ID of the account that triggered the anomalous event.
+	// The ID of the account that performed the operation that triggered the anomalous activity.
 	//
 	// example:
 	//
@@ -152,13 +152,13 @@ type DescribeEventsRequest struct {
 	//
 	// name
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The risk level of the alert that is triggered. Valid values:
+	// The risk level of the anomalous activity.
 	//
-	// 	- **1**: low
+	// - **1**: Low.
 	//
-	// 	- **2**: medium
+	// - **2**: Medium.
 	//
-	// 	- **3**: high
+	// - **3**: High.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ func (s *DescribeEventsRequest) GetDealUserId() *string {
 	return s.DealUserId
 }
 
-func (s *DescribeEventsRequest) GetEndTime() *string {
+func (s *DescribeEventsRequest) GetEndTime() *int64 {
 	return s.EndTime
 }
 
@@ -206,7 +206,7 @@ func (s *DescribeEventsRequest) GetProductCode() *string {
 	return s.ProductCode
 }
 
-func (s *DescribeEventsRequest) GetStartTime() *string {
+func (s *DescribeEventsRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
 
@@ -248,7 +248,7 @@ func (s *DescribeEventsRequest) SetDealUserId(v string) *DescribeEventsRequest {
 	return s
 }
 
-func (s *DescribeEventsRequest) SetEndTime(v string) *DescribeEventsRequest {
+func (s *DescribeEventsRequest) SetEndTime(v int64) *DescribeEventsRequest {
 	s.EndTime = &v
 	return s
 }
@@ -278,7 +278,7 @@ func (s *DescribeEventsRequest) SetProductCode(v string) *DescribeEventsRequest 
 	return s
 }
 
-func (s *DescribeEventsRequest) SetStartTime(v string) *DescribeEventsRequest {
+func (s *DescribeEventsRequest) SetStartTime(v int64) *DescribeEventsRequest {
 	s.StartTime = &v
 	return s
 }

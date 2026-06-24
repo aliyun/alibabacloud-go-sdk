@@ -22,27 +22,27 @@ type iDescribeParentInstanceResponseBody interface {
 }
 
 type DescribeParentInstanceResponseBody struct {
-	// When performing a paginated query, set the current page number. Default value: **1**.
+	// The page number of the returned page. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The assets.
+	// The list of queried data assets.
 	Items []*DescribeParentInstanceResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// When performing a paginated query, set the maximum number of data asset instances displayed per page. Default value: **10**.
+	// The maximum number of data asset instances returned on each page. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID of the result.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ACEF9334-BB50-525D-8CF3-6CF504E4D1B3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of data items in the result.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -117,85 +117,85 @@ func (s *DescribeParentInstanceResponseBody) Validate() error {
 }
 
 type DescribeParentInstanceResponseBodyItems struct {
-	// Audit authorization status. The values are as follows:
+	// The audit authorization status. Valid values:
 	//
-	// - **1**: Authorized
+	// - **1**: Authorized.
 	//
-	// - **0**: Unauthorized
+	// - **0**: Unauthorized.
 	//
 	// example:
 	//
 	// 1
 	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// Authorization status of the data asset instance.
+	// The authorization status of the data asset instance.
 	//
-	// - **0**: Unauthorized
+	// - **0**: Unauthorized.
 	//
-	// - **1**: Authorized
+	// - **1**: Authorized.
 	//
 	// example:
 	//
 	// 1
 	AuthStatus *int32 `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
-	// Instance authorization time, in milliseconds.
+	// The time when the instance was authorized. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1719882941000
 	AuthTime *int64 `json:"AuthTime,omitempty" xml:"AuthTime,omitempty"`
-	// Instance status.
+	// The instance status.
 	//
 	// example:
 	//
 	// Running
 	ClusterStatus *string `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	// Connection node type, valid only for MongoDB assets.
+	// The type of the connection node. This parameter is valid only for MongoDB assets.
 	//
 	// example:
 	//
 	// Primary
 	ConnectNode *string `json:"ConnectNode,omitempty" xml:"ConnectNode,omitempty"`
-	// Number of databases under the instance.
+	// The number of databases in the instance.
 	//
 	// example:
 	//
 	// 3
 	DbNum *string `json:"DbNum,omitempty" xml:"DbNum,omitempty"`
-	// The engine type. Valid values:
+	// The type of the database engine. Valid values:
 	//
-	// - **MySQL**
+	// - **MySQL**.
 	//
-	// - **MariaDB**
+	// - **MariaDB**.
 	//
-	// - **Oracle**
+	// - **Oracle**.
 	//
-	// - **PostgreSQL**
+	// - **PostgreSQL**.
 	//
-	// - **SQLServer**
+	// - **SQLServer**.
 	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// Description of the instance.
+	// The description of the instance.
 	//
 	// example:
 	//
 	// instance description
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// rm-*******t2vz
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Instance space size, valid only for OSS assets. Unit: bytes.
+	// The storage space of the instance. This parameter is valid only for OSS assets. Unit: bytes.
 	//
 	// example:
 	//
 	// 409600
 	InstanceSize *int64 `json:"InstanceSize,omitempty" xml:"InstanceSize,omitempty"`
-	// Region name. The values are as follows:
+	// The name of the region. The following list describes the valid values:
 	//
 	// - **China (Hangzhou)**
 	//
@@ -217,27 +217,27 @@ type DescribeParentInstanceResponseBodyItems struct {
 	//
 	// example:
 	//
-	// China (Hangzhou)
+	// cn-hangzhou
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// Member account ID.
+	// The ID of the member account.
 	//
 	// example:
 	//
 	// **********8103
 	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
-	// Identifier for the authorized asset. For structured data, it is identified by `instanceID.databaseName`.
+	// The identifier of the authorized asset. If the asset is structured data, the identifier is in the format of \\`Instance ID.Database name\\`.
 	//
 	// example:
 	//
 	// rm-******xxx.**st
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The region in which the asset resides.
+	// The region where the asset resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Asset type name. The values are as follows:
+	// The name of the asset type. Valid values:
 	//
 	// - **MaxCompute**
 	//
@@ -267,31 +267,31 @@ type DescribeParentInstanceResponseBodyItems struct {
 	//
 	// RDS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Supported connection nodes, separated by commas.
+	// The supported connection nodes. Multiple nodes are separated by commas.
 	//
 	// example:
 	//
 	// Primary,Secondary
 	SupportConnectNodes *string `json:"SupportConnectNodes,omitempty" xml:"SupportConnectNodes,omitempty"`
-	// Tenant ID, valid only for OceanBase assets.
+	// The tenant ID. This parameter is valid only for OceanBase assets.
 	//
 	// example:
 	//
 	// HB***-zh_CN
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// Tenant name, valid only for OceanBase assets.
+	// The tenant name. This parameter is valid only for OceanBase assets.
 	//
 	// example:
 	//
 	// user1
 	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	// Number of unconnected databases under the instance.
+	// The number of unconnected databases in the instance.
 	//
 	// example:
 	//
 	// 1
 	UnConnectDbCount *string `json:"UnConnectDbCount,omitempty" xml:"UnConnectDbCount,omitempty"`
-	// Reason for not supporting one-click authorization.
+	// The reason why one-click authorization is not supported.
 	//
 	// example:
 	//

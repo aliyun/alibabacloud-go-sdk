@@ -34,7 +34,7 @@ type DescribeOssObjectsResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The OSS objects.
+	// A list of OSS objects.
 	Items []*DescribeOssObjectsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// This parameter is deprecated.
 	//
@@ -42,15 +42,15 @@ type DescribeOssObjectsResponseBody struct {
 	//
 	// -1
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The ID value from which the next page of results starts.
+	// The token that marks the start of the next page of results.
 	//
-	// >  This parameter is returned only when the `Truncated` parameter is set to `true`.
+	// > This parameter is returned only when `Truncated` is `true`.
 	//
 	// example:
 	//
 	// 1754786235714378752
 	NextMarker *string `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
@@ -68,11 +68,11 @@ type DescribeOssObjectsResponseBody struct {
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Indicates whether the queried entries are truncated. Valid values:
+	// Indicates whether the results are truncated. The default value is false. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The results are truncated.
 	//
-	// 	- **false**
+	// - **false**: The results are not truncated.
 	//
 	// example:
 	//
@@ -174,13 +174,13 @@ func (s *DescribeOssObjectsResponseBody) Validate() error {
 }
 
 type DescribeOssObjectsResponseBodyItems struct {
-	// The name of the bucket.
+	// The bucket name.
 	//
 	// example:
 	//
 	// oss-duplicate-***
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The type of the OSS object. Valid values include **900001**, **800015**, or **800005**, which indicates the MP4 file, PDF file, or OSS configuration file, respectively.
+	// The type of the OSS object, such as **900001*	- (MP4 video file), **800015*	- (PDF document), and **800005*	- (OSS configuration file).
 	//
 	// example:
 	//
@@ -190,33 +190,33 @@ type DescribeOssObjectsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// MP4 file
+	// MP4
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The code of the file type.
+	// The code of the file category.
 	//
 	// example:
 	//
 	// 1
 	FileCategoryCode *int64 `json:"FileCategoryCode,omitempty" xml:"FileCategoryCode,omitempty"`
-	// The name of the file type.
+	// The name of the file category.
 	//
 	// example:
 	//
 	// text file
 	FileCategoryName *string `json:"FileCategoryName,omitempty" xml:"FileCategoryName,omitempty"`
-	// The file ID of the OSS object.
+	// The ID of the OSS file.
 	//
 	// example:
 	//
 	// file-22***
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the OSS object.
+	// The unique ID of the OSS object.
 	//
 	// example:
 	//
 	// 17383
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the instance to which the OSS object belongs.
+	// The ID of the asset instance to which the OSS object belongs.
 	//
 	// example:
 	//
@@ -234,49 +234,49 @@ type DescribeOssObjectsResponseBodyItems struct {
 	//
 	// obj_id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The region ID of the OSS object.
+	// The region ID of the OSS object owner.
 	//
 	// example:
 	//
 	// cn-***
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the sensitivity level of the OSS object. Valid values:
+	// The risk level ID of the OSS object. Valid values:
 	//
-	// 	- **1**: N/A, which indicates that no sensitive data is detected.
+	// - **1**: N/A. No sensitive data is detected.
 	//
-	// 	- **2**: S1, which indicates the low sensitivity level.
+	// - **2**: S1. Level 1 sensitive data.
 	//
-	// 	- **3**: S2, which indicates the medium sensitivity level.
+	// - **3**: S2. Level 2 sensitive data.
 	//
-	// 	- **4**: S3, which indicates the high sensitivity level.
+	// - **4**: S3. Level 3 sensitive data.
 	//
-	// 	- **5**: S4, which indicates the highest sensitivity level.
+	// - **5**: S4. Level 4 sensitive data.
 	//
 	// example:
 	//
 	// 2
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The name of the sensitivity level for the OSS object.
+	// The name of the risk level for the OSS object.
 	//
 	// example:
 	//
-	// Medium sensitivity level
+	// High risk
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	// The number of rules that are hit.
+	// The number of matched rules.
 	//
 	// example:
 	//
 	// 100
 	RuleCount *int32 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
-	// The rules.
+	// A list of rules.
 	RuleList []*DescribeOssObjectsResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
-	// The number of fields that are hit.
+	// The number of matched fields.
 	//
 	// example:
 	//
 	// 50
 	SensitiveCount *int32 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	// The size of the file. Unit: bytes.
+	// The file size. Unit: bytes.
 	//
 	// example:
 	//
@@ -459,29 +459,29 @@ func (s *DescribeOssObjectsResponseBodyItems) Validate() error {
 }
 
 type DescribeOssObjectsResponseBodyItemsRuleList struct {
-	// The number of times that the rule is hit.
+	// The number of times the rule is matched.
 	//
 	// example:
 	//
 	// 100
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The search keyword. Fuzzy match is supported.
+	// The name of the rule.
 	//
 	// example:
 	//
 	// ID card
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the sensitivity level of the OSS object. Valid values:
+	// The risk level ID of the rule. Valid values:
 	//
-	// 	- **1**: N/A, which indicates that no sensitive data is detected.
+	// - **1**: N/A. No sensitive data is detected.
 	//
-	// 	- **2**: S1, which indicates the low sensitivity level.
+	// - **2**: S1. Level 1 sensitive data.
 	//
-	// 	- **3**: S2, which indicates the medium sensitivity level.
+	// - **3**: S2. Level 2 sensitive data.
 	//
-	// 	- **4**: S3, which indicates the high sensitivity level.
+	// - **4**: S3. Level 3 sensitive data.
 	//
-	// 	- **5**: S4, which indicates the highest sensitivity level.
+	// - **5**: S4. Level 4 sensitive data.
 	//
 	// example:
 	//

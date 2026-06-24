@@ -50,153 +50,153 @@ type iDescribeColumnsRequest interface {
 }
 
 type DescribeColumnsRequest struct {
-	// The page number of the page to return.
+	// The page number for paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The engine type. Valid values:
+	// Engine type. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**.
 	//
-	// 	- **MariaDB**
+	// - **MariaDB**.
 	//
-	// 	- **Oracle**
+	// - **Oracle**.
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**.
 	//
-	// 	- **SQLServer**
+	// - **SQLServer**.
 	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The ID of the instance to which data in the column of the table belongs.
+	// The ID of the asset instance to which the column data in the data asset table belongs.
 	//
-	// > You can call the [DescribeInstances](~~DescribeRules~~) operation to query the IDs of instances.
+	// > Query column data in data asset tables authorized to connect to Data Security Center using the ID of the asset instance to which the column data in the data asset table belongs. Obtain the asset instance ID by calling the [DescribeInstances](~~DescribeRules~~) API.
 	//
 	// example:
 	//
 	// 1
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the instance to which data in the column of the table belongs.
+	// The name of the asset instance to which the column data in the data asset table belongs.
 	//
 	// example:
 	//
 	// rm-bp17t1htja573l5i8****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	// The language type for requests and responses. The default value is **zh_cn**. Valid values:
 	//
-	// 	- **zh_cn**: Chinese
+	// - **zh_cn**: Chinese.
 	//
-	// 	- **en_us**: English
+	// - **en_us**: English.
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The data tag.
+	// Data tag.
 	//
-	// 	- 101: personal sensitive information
+	// - 101: Personal sensitive information
 	//
-	// 	- 102: personal information
+	// - 102: Personal information
 	//
 	// example:
 	//
 	// 101
 	ModelTagId *string `json:"ModelTagId,omitempty" xml:"ModelTagId,omitempty"`
-	// The search keyword. Fuzzy match is supported.
+	// The keyword for search. Supports fuzzy match.
 	//
-	// For example, if you enter **test**, all columns whose names contain **test*	- are retrieved.
+	// For example, entering **test*	- returns all data containing **test**.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of data entries displayed per page in the list.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the service to which data in the column of the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The product name to which the column data in the data asset table belongs. Valid values: **MaxCompute, OSS, ADS, OTS, RDS**, and others.
 	//
 	// example:
 	//
 	// MaxCompute
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the service to which the data object belongs. Valid values:
+	// The ID corresponding to the product name to which the data object belongs. Valid values:
 	//
-	// 	- **1**: MaxCompute
+	// - **1**: MaxCompute
 	//
-	// 	- **2**: Object Storage Service (OSS)
+	// - **2**: OSS
 	//
-	// 	- **3**: AnalyticDB for MySQL
+	// - **3**: ADB-MYSQL
 	//
-	// 	- **4**: Tablestore (OTS)
+	// - **4**: TableStore
 	//
-	// 	- **5**: ApsaraDB RDS
+	// - **5**: RDS
 	//
-	// 	- **6**: self-managed database
+	// - **6**: SELF_DB
 	//
-	// 	- **7**: PolarDB for Xscale (PolarDB-X)
+	// - **7**: PolarDB-X
 	//
-	// 	- **8**: PolarDB
+	// - **8**: PolarDB
 	//
-	// 	- **9**: AnalyticDB for PostgreSQL
+	// - **9**: ADB-PG
 	//
-	// 	- **10**: ApsaraDB for OceanBase
+	// - **10**: OceanBase
 	//
-	// 	- **11**: ApsaraDB for MongoDB
+	// - **11**: MongoDB
 	//
-	// 	- **25**: ApsaraDB for Redis
+	// - **25**: Redis
 	//
 	// example:
 	//
 	// 5
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+	// The risk level ID of the sensitive data detection rule. Valid values:
 	//
-	// 	- **1**: N/A
+	// - **1**: N/A.
 	//
-	// 	- **2**: S1
+	// - **2**: S1.
 	//
-	// 	- **3**: S2
+	// - **3**: S2.
 	//
-	// 	- **4**: S3
+	// - **4**: S3.
 	//
-	// 	- **5**: S4
+	// - **5**: S4.
 	//
 	// example:
 	//
 	// 2
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The ID of the sensitive data detection rule that data in the column of the table hits.
+	// The unique ID of the sensitive data detection rule hit by the column data in the asset table.
 	//
-	// > You can call the [DescribeRules](~~DescribeRules~~) operation to query the IDs of sensitive data detection rules.
+	// > Query column data in data asset tables authorized to connect to Data Security Center using the ID of the sensitive data detection rule hit by the column data in the asset table. Obtain the sensitive data detection rule ID by calling the [DescribeRules](~~DescribeRules~~) API.
 	//
 	// example:
 	//
 	// 11111
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the sensitive data detection rule that data in the column of the table hits.
+	// The name of the sensitive data detection rule hit by the column data in the data asset table.
 	//
 	// example:
 	//
-	// ID card number (the Chinese mainland)
+	// name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The name of the sensitivity level of the data that hits the sensitive data detection rule. Valid values:
+	// Sensitivity level name. Valid values:
 	//
-	// 	- **N/A**: No sensitive data is detected.
+	// - **N/A**: No sensitive data detected.
 	//
-	// 	- **S1**: indicates the low sensitivity level.
+	// - **S1**: Level 1 sensitive data.
 	//
-	// 	- **S2**: indicates the medium sensitivity level.
+	// - **S2**: Level 2 sensitive data.
 	//
-	// 	- **S3**: indicates the high sensitivity level.
+	// - **S3**: Level 3 sensitive data.
 	//
-	// 	- **S4**: indicates the highest sensitivity level.
+	// - **S4**: Level 4 sensitive data.
 	//
 	// example:
 	//
@@ -206,31 +206,31 @@ type DescribeColumnsRequest struct {
 	//
 	// cn-zhangjiakou
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	// The ID of the table to which the column belongs.
+	// The unique ID of the asset table that contains the columns in data asset tables such as MaxCompute and RDS.
 	//
-	// > You can call the [DescribeTables](~~DescribeTables~~) operation to query the IDs of tables.
+	// > Query column data in data asset tables authorized to connect to Data Security Center using the asset table ID. Obtain the asset table ID by calling the [DescribeTables](~~DescribeTables~~) API.
 	//
 	// example:
 	//
 	// 11132334
 	TableId *int64 `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	// The name of the table.
+	// The name of the data asset table.
 	//
 	// example:
 	//
 	// it_table
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the industry-specific classification template.
+	// Industry template ID.
 	//
-	// >  You can call the [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html) operation to obtain the IDs of industry-specific classification templates.
+	// > Obtain the industry template ID by calling [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html).
 	//
 	// example:
 	//
 	// 5
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The ID of the template rule that is hit.
+	// The ID of the hit template rule.
 	//
-	// >  You can call the [DescribeCategoryTemplateRuleList](https://help.aliyun.com/document_detail/410143.html) operation to obtain the IDs of hit template rules.
+	// > Obtain the hit template rule ID by calling [DescribeCategoryTemplateRuleList](https://help.aliyun.com/document_detail/410143.html).
 	//
 	// example:
 	//

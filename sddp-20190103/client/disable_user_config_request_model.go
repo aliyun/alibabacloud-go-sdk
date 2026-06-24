@@ -18,7 +18,7 @@ type iDisableUserConfigRequest interface {
 }
 
 type DisableUserConfigRequest struct {
-	// The code of the configuration item. You can call the [DescribeConfigs](~~DescribeConfigs~~) operation to obtain the code of the configuration item.
+	// The code of the configuration item in the general anomaly alert configuration module. Call the [DescribeConfigs](~~DescribeConfigs~~) operation to obtain the code.
 	//
 	// example:
 	//
@@ -28,13 +28,13 @@ type DisableUserConfigRequest struct {
 	//
 	// example:
 	//
-	// 1
+	// 2
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh_cn**: Chinese (default)
+	// - **zh_cn**: Chinese. This is the default value.
 	//
-	// 	- **en_us**: English
+	// - **en_us**: English.
 	//
 	// example:
 	//

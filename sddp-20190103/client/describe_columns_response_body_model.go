@@ -22,27 +22,27 @@ type iDescribeColumnsResponseBody interface {
 }
 
 type DescribeColumnsResponseBody struct {
-	// The page number of the returned page.
+	// The page number of the current page displayed in the results.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The data in the columns of the table.
+	// Column data in the data asset table.
 	Items []*DescribeColumnsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The number of data entries displayed per page in the results.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID of the result.
 	//
 	// example:
 	//
 	// 769FB3C1-F4C9-4******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of data entries in the results.
 	//
 	// example:
 	//
@@ -117,229 +117,229 @@ func (s *DescribeColumnsResponseBody) Validate() error {
 }
 
 type DescribeColumnsResponseBodyItems struct {
-	// The time when the data in the column of the table is created. Unit: milliseconds.
+	// The creation time of the column data in the data asset table, in milliseconds.
 	//
 	// example:
 	//
 	// 1536751124000
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The type of data in the column of the table.
+	// The data type of the column data in the data asset table.
 	//
 	// example:
 	//
 	// String
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The type of the database engine.
+	// Database engine type.
 	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The ID of the column of the table.
+	// The unique ID of the column in the data asset table.
 	//
 	// example:
 	//
 	// 268
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the instance to which data in the column of the table belongs.
+	// The ID of the asset instance to which the column data in the data asset table belongs.
 	//
 	// example:
 	//
 	// 1
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the instance to which data in the column of the table belongs.
+	// The name of the asset instance to which the column data in the data asset table belongs.
 	//
 	// example:
 	//
 	// rm-bp17t1htja573l5i8****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The column encryption status. Valid values:
+	// Column encryption status. Valid values:
 	//
-	// 	- **-1**: unencrypted
+	// - **-1**: Not encrypted
 	//
-	// 	- **1**: encrypted
+	// - **1**: Encryption successful
 	//
-	// 	- **2**: encryption failed
+	// - **2**: Encryption failed
 	//
 	// example:
 	//
 	// -1
 	MaskingStatus *int32 `json:"MaskingStatus,omitempty" xml:"MaskingStatus,omitempty"`
-	// A list of tags for data that hits the recognition model.
+	// The list of data tags hit by the detection model.
 	ModelTags []*DescribeColumnsResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
-	// The name of the column of the table.
+	// The name of the column in the data asset table.
 	//
 	// example:
 	//
 	// gxdata
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the sensitivity level for asset. Valid values:
+	// The risk level name of the asset. Valid values:
 	//
-	// 	- **N/A**: indicates that no sensitive data is detected.
+	// - **N/A**: No sensitive data detected.
 	//
-	// 	- **S1**: indicates the low sensitivity level.
+	// - **S1**: Level 1 sensitive data.
 	//
-	// 	- **S2**: indicates the medium sensitivity level.
+	// - **S2**: Level 2 sensitive data.
 	//
-	// 	- **S3**: indicates the high sensitivity level.
+	// - **S3**: Level 3 sensitive data.
 	//
-	// 	- **S4**: indicates the highest sensitivity level.
+	// - **S4**: Level 4 sensitive data.
 	//
 	// example:
 	//
 	// S3
 	OdpsRiskLevelName *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
-	// The ID of the sensitivity level of the asset. Valid values:
+	// The risk level code of the asset. Valid values:
 	//
-	// 	- **1**: N/A
+	// - **1**: N/A.
 	//
-	// 	- **2**: S1
+	// - **2**: S1.
 	//
-	// 	- **3**: S2
+	// - **3**: S2.
 	//
-	// 	- **4**: S3
+	// - **4**: S3.
 	//
-	// 	- **5**: S4
+	// - **5**: S4.
 	//
 	// example:
 	//
 	// 3
 	OdpsRiskLevelValue *int32 `json:"OdpsRiskLevelValue,omitempty" xml:"OdpsRiskLevelValue,omitempty"`
-	// The name of the service to which data in the column of the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The product name to which the column data in the data asset table belongs. Valid values: **MaxCompute, OSS, ADS, OTS, RDS**, and others.
 	//
 	// example:
 	//
 	// MaxCompute
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the service to which the data object belongs. Valid values:
+	// The ID corresponding to the product name to which the data object belongs. Valid values:
 	//
-	// 	- **1**: MaxCompute
+	// - **1**: MaxCompute
 	//
-	// 	- **2**: Object Storage Service (OSS)
+	// - **2**: OSS
 	//
-	// 	- **3**: AnalyticDB for MySQL
+	// - **3**: ADB-MYSQL
 	//
-	// 	- **4**: Tablestore (OTS)
+	// - **4**: TableStore
 	//
-	// 	- **5**: ApsaraDB RDS
+	// - **5**: RDS
 	//
-	// 	- **6**: self-managed database
+	// - **6**: SELF_DB
 	//
-	// 	- **7**: PolarDB for Xscale (PolarDB-X)
+	// - **7**: PolarDB-X
 	//
-	// 	- **8**: PolarDB
+	// - **8**: PolarDB
 	//
-	// 	- **9**: AnalyticDB for PostgreSQL
+	// - **9**: ADB-PG
 	//
-	// 	- **10**: ApsaraDB for OceanBase
+	// - **10**: OceanBase
 	//
-	// 	- **11**: ApsaraDB for MongoDB
+	// - **11**: MongoDB
 	//
-	// 	- **25**: ApsaraDB for Redis
+	// - **25**: Redis
 	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region in which the asset resides.
+	// The region where the asset is located.
 	//
 	// example:
 	//
 	// cn-***
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the revision record.
+	// Correction record ID.
 	//
 	// example:
 	//
 	// 12
 	RevisionId *int64 `json:"RevisionId,omitempty" xml:"RevisionId,omitempty"`
-	// Indicates whether the column is revised. Valid values:
+	// Correction status. Valid values:
 	//
-	// 	- 1: yes
+	// - 1: Corrected.
 	//
-	// 	- 0: no
+	// - 0: Not corrected.
 	//
 	// example:
 	//
 	// 1
 	RevisionStatus *int64 `json:"RevisionStatus,omitempty" xml:"RevisionStatus,omitempty"`
-	// The ID of the sensitivity level of data in the column of the table. Valid values:
+	// The risk level ID of the column data in the data asset table. Valid values:
 	//
-	// 	- **1**: N/A
+	// - **1**: N/A.
 	//
-	// 	- **2**: S1
+	// - **2**: S1.
 	//
-	// 	- **3**: S2
+	// - **3**: S2.
 	//
-	// 	- **4**: S3
+	// - **4**: S3.
 	//
-	// 	- **5**: S4
+	// - **5**: S4.
 	//
 	// example:
 	//
 	// 2
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The name of the sensitivity level for data in the column of the table. Valid values:
+	// The risk level name of the column data in the data asset table. Valid values:
 	//
-	// 	- **N/A**: indicates that no sensitive data is detected.
+	// - **N/A**: No sensitive data detected.
 	//
-	// 	- **S1**: indicates the low sensitivity level.
+	// - **S1**: Level 1 sensitive data.
 	//
-	// 	- **S2**: indicates the medium sensitivity level.
+	// - **S2**: Level 2 sensitive data.
 	//
-	// 	- **S3**: indicates the high sensitivity level.
+	// - **S3**: Level 3 sensitive data.
 	//
-	// 	- **S4**: indicates the highest sensitivity level.
+	// - **S4**: Level 4 sensitive data.
 	//
 	// example:
 	//
 	// S2
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	// The ID of the sensitive data detection rule that data in the column of the table hits.
+	// The ID of the sensitive data detection rule hit by the column data in the data asset table.
 	//
 	// example:
 	//
 	// 1
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the sensitive data detection rule that data in the column of the table hits.
+	// The name of the sensitive data detection rule hit by the column data in the data asset table.
 	//
 	// example:
 	//
-	// \\*\\	- rule
+	// name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The name of the sensitivity level. Valid values:
+	// Sensitivity level name. Valid values:
 	//
-	// 	- **N/A**: indicates that no sensitive data is detected.
+	// - **N/A**: No sensitive data detected.
 	//
-	// 	- **S1**: indicates the low sensitivity level.
+	// - **S1**: Level 1 sensitive data.
 	//
-	// 	- **S2**: indicates the medium sensitivity level.
+	// - **S2**: Level 2 sensitive data.
 	//
-	// 	- **S3**: indicates the high sensitivity level.
+	// - **S3**: Level 3 sensitive data.
 	//
-	// 	- **S4**: indicates the highest sensitivity level.
+	// - **S4**: Level 4 sensitive data.
 	//
 	// example:
 	//
 	// S2
 	SensLevelName *string `json:"SensLevelName,omitempty" xml:"SensLevelName,omitempty"`
-	// Indicates whether the column contains sensitive data. Valid values:
+	// Indicates whether the column data in the data asset table contains sensitive data. Valid values:
 	//
-	// 	- true
+	// - true: The column data in the data asset table contains sensitive data.
 	//
-	// 	- false
+	// - false: The column data in the data asset table does not contain sensitive data.
 	//
 	// example:
 	//
 	// false
 	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	// The ID of the table.
+	// The ID of the asset table to which the column data in the data asset table belongs.
 	//
 	// example:
 	//
 	// 123
 	TableId *int64 `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	// The name of the table to which the revised column belongs.
+	// The name of the table to which the target column for correction belongs.
 	//
 	// example:
 	//
@@ -585,25 +585,25 @@ func (s *DescribeColumnsResponseBodyItems) Validate() error {
 }
 
 type DescribeColumnsResponseBodyItemsModelTags struct {
-	// The tag ID.
+	// The data tag ID of the detection model.
 	//
-	// 	- **101**: sensitive personal information
+	// - **101**: Personal sensitive information.
 	//
-	// 	- **102**: personal information
+	// - **102**: Personal information.
 	//
-	// 	- **103**: important information
+	// - **103**: Important data.
 	//
 	// example:
 	//
 	// 101
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The tag name.
+	// The data tag name of the detection model.
 	//
-	// 	- Sensitive personal information
+	// - Personal sensitive information.
 	//
-	// 	- Personal information
+	// - Personal information.
 	//
-	// 	- Important information
+	// - Important data.
 	//
 	// example:
 	//

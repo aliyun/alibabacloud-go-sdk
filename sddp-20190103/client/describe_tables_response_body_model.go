@@ -28,7 +28,7 @@ type DescribeTablesResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// An array that consists of tables.
+	// A list of data asset tables.
 	Items []*DescribeTablesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
 	//
@@ -117,111 +117,111 @@ func (s *DescribeTablesResponseBody) Validate() error {
 }
 
 type DescribeTablesResponseBodyItems struct {
-	// The point in time when the table was created. Unit: milliseconds.
+	// The time when the data asset table was created. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1536751124000
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the table.
+	// The unique ID of the data asset table.
 	//
 	// example:
 	//
 	// 222
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The description of the data asset.
+	// The description of the instance.
 	//
 	// example:
 	//
-	// Description 1
+	// instance description
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The ID of the data asset to which the table belongs.
+	// The ID of the instance to which the data asset table belongs.
 	//
 	// example:
 	//
 	// 1
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the data asset to which the table belongs.
+	// The name of the instance.
 	//
 	// example:
 	//
-	// Data Asset 1
+	// rm-****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The name of the table.
+	// The name of the data asset table.
 	//
 	// example:
 	//
 	// gxdata
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The Alibaba Cloud account to which the table belongs.
+	// The Alibaba Cloud account that owns the data asset table.
 	//
 	// example:
 	//
 	// dtdep-239-******
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The name of the service to which the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**. For more information about the types of data assets from which DSC can scan for sensitive data, see [Supported data assets](https://help.aliyun.com/document_detail/212906.html).
+	// The name of the product to which the data asset table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**. For more information about the supported products, see [Data asset types that support sensitive data detection](https://help.aliyun.com/document_detail/212906.html).
 	//
 	// example:
 	//
 	// MaxCompute
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the service to which the table belongs.
+	// The ID of the product to which the data asset table belongs.
 	//
 	// example:
 	//
 	// 1
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The sensitivity level of the table. Each sensitivity level ID corresponds to a sensitivity level name. Valid values:
+	// The ID of the risk level for the data asset table. Each risk level ID corresponds to a risk level name. Valid values:
 	//
-	// 	- **1**: N/A, which indicates that no sensitive data is detected.
+	// - **1**: N/A. No sensitive data is detected.
 	//
-	// 	- **2**: S1, which indicates the low sensitivity level.
+	// - **2**: S1. Level 1 sensitive data.
 	//
-	// 	- **3**: S2, which indicates the medium sensitivity level.
+	// - **3**: S2. Level 2 sensitive data.
 	//
-	// 	- **4**: S3, which indicates the high sensitivity level.
+	// - **4**: S3. Level 3 sensitive data.
 	//
-	// 	- **5**: S4, which indicates the highest sensitivity level.
+	// - **5**: S4. Level 4 sensitive data.
 	//
 	// example:
 	//
 	// 2
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The name of the sensitivity level for the table. Valid values:
+	// The name of the risk level for the data asset table. Valid values:
 	//
-	// 	- **N/A**: indicates that no sensitive data is detected.
+	// - **N/A**: No sensitive data is detected.
 	//
-	// 	- **S1**: indicates the low sensitivity level.
+	// - **S1**: Level 1 sensitive data.
 	//
-	// 	- **S2**: indicates the medium sensitivity level.
+	// - **S2**: Level 2 sensitive data.
 	//
-	// 	- **S3**: indicates the high sensitivity level.
+	// - **S3**: Level 3 sensitive data.
 	//
-	// 	- **S4**: indicates the highest sensitivity level.
+	// - **S4**: Level 4 sensitive data.
 	//
 	// example:
 	//
 	// S2
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	// The information about the sensitive data detection rules that are hit.
+	// The information about the sensitive data detection rules that the data asset table hits.
 	RuleList []*DescribeTablesResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
-	// Indicates whether the table contains sensitive fields. Valid values:
+	// Indicates whether the data asset table contains sensitive fields.
 	//
-	// 	- **true**: yes
+	// - **true**: yes.
 	//
-	// 	- **false**: no
+	// - **false**: no.
 	//
 	// example:
 	//
 	// true
 	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	// The total number of sensitive fields in the table.
+	// The total number of sensitive fields in the data asset table.
 	//
 	// example:
 	//
 	// 32
 	SensitiveCount *int32 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	// The percentage of sensitive fields in the table.
+	// The percentage of sensitive fields in the data asset table.
 	//
 	// example:
 	//
@@ -231,9 +231,9 @@ type DescribeTablesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// Tenant 1
+	// Tenate001
 	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	// The total number of fields in the table.
+	// The total number of fields in the data asset table.
 	//
 	// example:
 	//
@@ -426,19 +426,19 @@ type DescribeTablesResponseBodyItemsRuleList struct {
 	//
 	// example:
 	//
-	// Rule name
+	// Rule Name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+	// The ID of the risk level for the sensitive data detection rule. Valid values:
 	//
-	// 	- **1**: N/A, which indicates that no sensitive data is detected.
+	// - **1**: N/A. No sensitive data is detected.
 	//
-	// 	- **2**: S1, which indicates the low sensitivity level.
+	// - **2**: S1. Level 1 sensitive data.
 	//
-	// 	- **3**: S2, which indicates the medium sensitivity level.
+	// - **3**: S2. Level 2 sensitive data.
 	//
-	// 	- **4**: S3, which indicates the high sensitivity level.
+	// - **4**: S3. Level 3 sensitive data.
 	//
-	// 	- **5**: S4, which indicates the highest sensitivity level.
+	// - **5**: S4. Level 4 sensitive data.
 	//
 	// example:
 	//

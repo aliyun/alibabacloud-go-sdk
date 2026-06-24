@@ -46,33 +46,33 @@ type iModifyDataLimitRequest interface {
 }
 
 type ModifyDataLimitRequest struct {
-	// Specifies whether to enable the security audit feature. Valid values:
+	// Specifies whether to enable auditing. Valid values:
 	//
-	// 	- **0**: no
+	// - **0**: Disable auditing.
 	//
-	// 	- **1**: yes
+	// - **1**: Enable auditing.
 	//
 	// example:
 	//
 	// 1
 	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// Specifies whether to automatically trigger a re-scan after a rule is modified. Valid values:
+	// Specifies whether to automatically trigger a rescan when a rule is changed. Valid values:
 	//
-	// 	- **0**: no
+	// - **0**: Do not automatically trigger a rescan.
 	//
-	// 	- **1**: yes
+	// - **1**: Automatically trigger a rescan.
 	//
-	// > When a re-scan is triggered, DSC scans all data in your data asset.
+	// > If a rescan is automatically triggered, a full scan is performed on the data asset.
 	//
 	// example:
 	//
 	// 1
 	AutoScan *int32 `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
-	// The database engine that is run by the instance. Valid values:
+	// The type of the database. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **SQLServer**
+	// - **SQLServer**
 	//
 	// example:
 	//
@@ -82,11 +82,11 @@ type ModifyDataLimitRequest struct {
 	//
 	// example:
 	//
-	// 2
+	// 1
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The unique ID of the data asset for which you want to modify configuration items.
+	// The unique ID of the data asset.
 	//
-	// > You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
+	// > Call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
 	//
 	// This parameter is required.
 	//
@@ -96,61 +96,61 @@ type ModifyDataLimitRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh**: Chinese (default)
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The retention period of raw logs after you enable the security audit feature. Unit: days. Valid values:
+	// The retention period of raw logs after auditing is enabled. Unit: days. Valid values:
 	//
-	// 	- **30**
+	// - **30**
 	//
-	// 	- **90**
+	// - **90**
 	//
-	// 	- **180**
+	// - **180**
 	//
-	// 	- **365**
+	// - **365**
 	//
 	// example:
 	//
 	// 30
 	LogStoreDay *int32 `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
-	// Specifies whether to change the username and password that are used to log on to the ApsaraDB RDS database. Valid values:
+	// Specifies whether to modify the username and password that are used to connect to the database. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: Modify the username and password.
 	//
-	// 	- **false**: no
+	// - **false**: Do not modify the username and password.
 	//
 	// example:
 	//
 	// true
 	ModifyPassword *bool `json:"ModifyPassword,omitempty" xml:"ModifyPassword,omitempty"`
-	// The password used to log on to the ApsaraDB RDS database that you authorize DSC to access.
+	// The password for the ApsaraDB RDS database.
 	//
 	// example:
 	//
 	// ********
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The port that is used to connect to the database.
+	// The port used to connect to the database.
 	//
 	// example:
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The name of the service to which the data asset belongs. Valid values:
+	// The service to which the data asset belongs. Valid values:
 	//
-	// 	- **1**: MaxCompute
+	// - **1**: MaxCompute
 	//
-	// 	- **2**: Object Storage Service (OSS)
+	// - **2**: OSS
 	//
-	// 	- **3**: AnalyticDB for MySQL
+	// - **3**: ADS
 	//
-	// 	- **4**: Tablestore
+	// - **4**: OTS
 	//
-	// 	- **5**: ApsaraDB RDS
+	// - **5**: RDS
 	//
 	// This parameter is required.
 	//
@@ -158,47 +158,47 @@ type ModifyDataLimitRequest struct {
 	//
 	// 5
 	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The number of sensitive data samples tht are collected after sensitive data detection is enabled. Valid values:
+	// The number of sensitive data samples to return. This parameter takes effect only after data detection is enabled. Valid values:
 	//
-	// 	- **0**
+	// - **0**
 	//
-	// 	- **5**
+	// - **5**
 	//
-	// 	- **10**
+	// - **10**
 	//
 	// example:
 	//
 	// 0
 	SamplingSize *int32 `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
-	// The security group that is used by PrivateLink when you install the DSC agent.
+	// The security groups for agent-based auditing that uses PrivateLink.
 	SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitempty" xml:"SecurityGroupIdList,omitempty" type:"Repeated"`
-	// The region in which the data asset resides. Valid values:
+	// The ID of the region in which the data asset is located. Valid values:
 	//
-	// 	- **cn-beijing**: China (Beijing)
+	// - **cn-beijing**: China (Beijing)
 	//
-	// 	- **cn-zhangjiakou**: China (Zhangjiakou)
+	// - **cn-zhangjiakou**: China (Zhangjiakou)
 	//
-	// 	- **cn-huhehaote**: China (Hohhot)
+	// - **cn-huhehaote**: China (Hohhot)
 	//
-	// 	- **cn-hangzhou**: China (Hangzhou)
+	// - **cn-hangzhou**: China (Hangzhou)
 	//
-	// 	- **cn-shanghai**: China (Shanghai)
+	// - **cn-shanghai**: China (Shanghai)
 	//
-	// 	- **cn-shenzhen**: China (Shenzhen)
+	// - **cn-shenzhen**: China (Shenzhen)
 	//
-	// 	- **cn-hongkong**: China (Hong Kong)
+	// - **cn-hongkong**: China (Hong Kong)
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	// The username used to log on to the ApsaraDB RDS database that you authorize DSC to access.
+	// The username for the ApsaraDB RDS database.
 	//
 	// example:
 	//
 	// User01
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The vSwitch that is used by PrivateLink when you install the DSC agent.
+	// The vSwitches for agent-based auditing that uses PrivateLink.
 	VSwitchIdList []*string `json:"VSwitchIdList,omitempty" xml:"VSwitchIdList,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) to which the data asset belongs.
 	//

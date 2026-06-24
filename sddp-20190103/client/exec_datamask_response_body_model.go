@@ -16,19 +16,19 @@ type iExecDatamaskResponseBody interface {
 }
 
 type ExecDatamaskResponseBody struct {
-  // The de-identified data, which is described in a JSON string. The JSON string contains the following parameters:
+  // The data after it is masked. The data is a string in JSON format and includes the following fields:
   // 
-  // 	- **dataHeaderList**: the names of columns that contain the de-identified data.
+  // - **dataHeaderList**: The column names of the masked data.
   // 
-  // 	- **dataList**: the de-identified data. The column order of the de-identified data is the same as that indicated by the dataHeaderList parameter.
+  // - **dataList**: The masked data. The order of the fields corresponds to the order of the column names.
   // 
-  // 	- **ruleList**: the IDs of sensitive data detection rules.
+  // - **ruleList**: The sensitive data type IDs. Each ID corresponds to the unique ID of a sensitive data type that is returned by the [DescribeRules](https://help.aliyun.com/document_detail/410141.html) operation.
   // 
   // example:
   // 
   // {"dataHeaderList":["name","age"],"dataList":[["l***",18],["l***",17]],"ruleList":[1002,null]}
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-  // The ID of the request, which is used to locate and troubleshoot issues.
+  // The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
   // 
   // example:
   // 

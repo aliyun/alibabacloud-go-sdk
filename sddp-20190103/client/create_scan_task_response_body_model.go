@@ -16,7 +16,7 @@ type iCreateScanTaskResponseBody interface {
 }
 
 type CreateScanTaskResponseBody struct {
-	// The ID of the custom scan task.
+	// The resource ID of the custom scan task.
 	//
 	// example:
 	//

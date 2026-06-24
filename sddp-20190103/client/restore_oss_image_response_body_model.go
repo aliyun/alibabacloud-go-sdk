@@ -16,10 +16,14 @@ type iRestoreOssImageResponseBody interface {
 }
 
 type RestoreOssImageResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 208B016D-4CB9-4A85-96A5-0B8ED1EBF271
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The storage path of the restored image in the bucket.
+	//
 	// example:
 	//
 	// aliyun_dsc_original /dir1/test.png

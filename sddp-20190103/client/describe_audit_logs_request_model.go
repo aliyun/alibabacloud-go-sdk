@@ -70,109 +70,208 @@ type iDescribeAuditLogsRequest interface {
 }
 
 type DescribeAuditLogsRequest struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CE4681BA-8019-5BE1-9F4B-8973BEA9CF57
 	AsyncRequestId *string `json:"AsyncRequestId,omitempty" xml:"AsyncRequestId,omitempty"`
+	// The client IP address.
+	//
 	// example:
 	//
 	// 10.*.*.94
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The client type.
+	//
 	// example:
 	//
 	// mysql
 	ClientUa *string `json:"ClientUa,omitempty" xml:"ClientUa,omitempty"`
+	// The page number to return. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// bose_o2o_data
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The range of affected rows.
+	//
 	// example:
 	//
 	// in[1 33]
 	EffectRowRange *string `json:"EffectRowRange,omitempty" xml:"EffectRowRange,omitempty"`
+	// The end time for querying alert logs, provided as a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1583856000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The execution time range.
+	//
 	// example:
 	//
 	// in[1000 2000]
 	ExecuteTimeRange *string `json:"ExecuteTimeRange,omitempty" xml:"ExecuteTimeRange,omitempty"`
+	// The name of the data asset instance.
+	//
 	// example:
 	//
 	// i-2zeftaaq4gqcqb9kfkzg
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The network type. Valid values:
+	//
+	// - **default**: The IP address is from outside of Alibaba Cloud. This is the default value.
+	//
+	// - **aliyun**: The IP address is from within Alibaba Cloud.
+	//
 	// example:
 	//
 	// aliyun
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// Specifies the language of the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// - **zh_cn**: Chinese.
+	//
+	// - **en_us**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether to retrieve the whitelist status.
+	//
 	// example:
 	//
 	// false
 	LoadWhiteList *bool `json:"LoadWhiteList,omitempty" xml:"LoadWhiteList,omitempty"`
+	// A JSON string that specifies which query conditions to include or exclude.
+	//
 	// example:
 	//
 	// [ {   "isContain" : false,   "queryKey" : "effectRowRange" }, {   "isContain" : false,   "queryKey" : "remoteClientIp" } ]
 	LogQueryOpJson *string `json:"LogQueryOpJson,omitempty" xml:"LogQueryOpJson,omitempty"`
+	// The data source.
+	//
 	// example:
 	//
 	// SLOW_SQL
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
+	// The UID of the member account.
+	//
 	// example:
 	//
 	// **********8103
 	MemberAccount *string `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
+	// The message content.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The operation type.
+	//
 	// example:
 	//
 	// Insert
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// The key of the OSS object.
+	//
 	// example:
 	//
 	// oss-key
 	OssObjectKey *string `json:"OssObjectKey,omitempty" xml:"OssObjectKey,omitempty"`
+	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The service to which the data asset belongs. Valid values include **MaxCompute, OSS, AnalyticDB for MySQL, TableStore, and RDS**.
+	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the service to which the data object belongs. Valid values:
+	//
+	// - **1**: MaxCompute
+	//
+	// - **2**: OSS
+	//
+	// - **3**: AnalyticDB for MySQL
+	//
+	// - **4**: TableStore
+	//
+	// - **5**: RDS
+	//
+	// - **6**: SELF_DB
+	//
+	// - **7**: PolarDB-X
+	//
+	// - **8**: PolarDB
+	//
+	// - **9**: AnalyticDB for PostgreSQL
+	//
+	// - **10**: OceanBase
+	//
+	// - **11**: MongoDB
+	//
+	// - **25**: Redis
+	//
 	// example:
 	//
 	// 5
-	ProductId    *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RuleAggQuery *bool  `json:"RuleAggQuery,omitempty" xml:"RuleAggQuery,omitempty"`
+	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// Specifies whether to perform an aggregate query.
+	//
+	// example:
+	//
+	// true
+	RuleAggQuery *bool `json:"RuleAggQuery,omitempty" xml:"RuleAggQuery,omitempty"`
+	// The rule type.
+	//
 	// example:
 	//
 	// 10
 	RuleCategory *string `json:"RuleCategory,omitempty" xml:"RuleCategory,omitempty"`
+	// The ID of the audit rule.
+	//
 	// example:
 	//
 	// 994007
-	RuleID   *string `json:"RuleID,omitempty" xml:"RuleID,omitempty"`
-	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleID *string `json:"RuleID,omitempty" xml:"RuleID,omitempty"`
+	// The ID of the audit rule.
+	//
+	// example:
+	//
+	// 867028
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the audit rule.
+	//
+	// example:
+	//
+	// test_rule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The SQL statement.
+	//
 	// example:
 	//
 	// select 	- from test03
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	// The start time for querying alert logs, provided as a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1616068534877
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// admin

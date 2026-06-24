@@ -24,7 +24,7 @@ type iDescribeCategoryTemplateRuleListRequest interface {
 }
 
 type DescribeCategoryTemplateRuleListRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number. The default value is **1**.
 	//
 	// example:
 	//
@@ -36,59 +36,59 @@ type DescribeCategoryTemplateRuleListRequest struct {
 	//
 	// 1
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	// The language of the request and response. The default value is **zh_cn**. Valid values:
 	//
-	// 	- **zh_cn**: Simplified Chinese
+	// - **zh_cn**: Simplified Chinese.
 	//
-	// 	- **en_us**: English
+	// - **en_us**: US English.
 	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of template rules to return on each page. The default value is **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sensitivity level of the data that is not compliant with the rule. Valid values: **1*	- to **11**. Default value: **null**.
+	// The risk level of the template rule. The value ranges from **1*	- to **11**. The default value is **null**. Valid values:
 	//
-	// 	- **1**: No sensitive data is detected.
+	// - **1**: No risk.
 	//
-	// 	- **2**: specifies the S1 sensitivity level.
+	// - **2**: S1.
 	//
-	// 	- **3**: specifies the S2 sensitivity level.
+	// - **3**: S2.
 	//
-	// 	- **4**: specifies the S3 sensitivity level.
+	// - **4**: S3.
 	//
-	// 	- **5**: specifies the S4 sensitivity level.
+	// - **5**: S4.
 	//
-	// 	- **6**: specifies the S5 sensitivity level.
+	// - **6**: S5.
 	//
-	// 	- **7**: specifies the S6 sensitivity level.
+	// - **7**: S6.
 	//
-	// 	- **8**: specifies the S7 sensitivity level.
+	// - **8**: S7.
 	//
-	// 	- **9**: specifies the S8 sensitivity level.
+	// - **9**: S8.
 	//
-	// 	- **10**: specifies the S9 sensitivity level.
+	// - **10**: S9.
 	//
-	// 	- **11**: specifies the S10 sensitivity level.
+	// - **11**: S10.
 	//
-	// 	- **null**: specifies all preceding sensitivity levels.
+	// - **null**: All risk levels, including No risk, S1, S2, S3, S4, S5, S6, S7, S8, S9, and S10.
 	//
 	// example:
 	//
 	// 2
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The status of the rule. Default value: **null**. Valid values:
+	// The status of the template rule. The default value is **null**. Valid values:
 	//
-	// 	- **0**: disabled
+	// - **0**: The rule is disabled.
 	//
-	// 	- **1**: enabled
+	// - **1**: The rule is enabled.
 	//
-	// 	- **null**: all states
+	// - **null**: All rules are returned, regardless of their status.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeIdentifyTaskStatusRequest interface {
 }
 
 type DescribeIdentifyTaskStatusRequest struct {
-	// Task ID, obtained from the ID field in the response after calling CreateScanTask or ScanOssObjectV1.
+	// The ID of the task. Obtain this ID from the Id field in the response from calling the CreateScanTask or ScanOssObjectV1 operation.
 	//
 	// This parameter is required.
 	//
@@ -24,11 +24,11 @@ type DescribeIdentifyTaskStatusRequest struct {
 	//
 	// 268
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Language type for request and response messages, default is **zh_cn**. Values:
+	// The language of the request and response. Default value: **zh_cn**. Valid values:
 	//
-	// - **zh_cn**: Chinese (Simplified)
+	// - **zh_cn**: Simplified Chinese
 	//
-	// - **en_us**: English (United States)
+	// - **en_us**: U.S. English
 	//
 	// example:
 	//
