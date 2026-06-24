@@ -16,10 +16,18 @@ type iShrinkNodeResponseBody interface {
 }
 
 type ShrinkNodeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the operation. Valid values:
+	//
+	// - true: The scale-in operation succeeded.
+	//
+	// - false: The scale-in operation failed.
+	//
 	// example:
 	//
 	// true

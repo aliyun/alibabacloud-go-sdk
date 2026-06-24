@@ -16,14 +16,13 @@ type iUninstallPluginResponseBody interface {
 }
 
 type UninstallPluginResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of plug-ins to be unloaded. If the unloading fails, an exception is returned.
-	Result []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s UninstallPluginResponseBody) String() string {

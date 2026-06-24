@@ -16,17 +16,17 @@ type iCancelTaskResponseBody interface {
 }
 
 type CancelTaskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return results:
+	// The result of the operation. Valid values:
 	//
-	// 	- true: the task was cancelled successfully
+	// - true: The task was canceled.
 	//
-	// 	- false: the task was cancelled successfully failed
+	// - false: The task failed to be canceled.
 	//
 	// example:
 	//

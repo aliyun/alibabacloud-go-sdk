@@ -16,17 +16,17 @@ type iCreateSnapshotResponseBody interface {
 }
 
 type CreateSnapshotResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return results:
+	// The returned result. Valid values:
 	//
-	// 	- true: manual snapshot backup successfully
+	// - true: The manual snapshot backup is successful.
 	//
-	// 	- false: manual snapshot backup failed
+	// - false: The manual snapshot backup failed.
 	//
 	// example:
 	//

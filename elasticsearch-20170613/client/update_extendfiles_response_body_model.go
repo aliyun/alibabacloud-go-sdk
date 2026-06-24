@@ -16,7 +16,7 @@ type iUpdateExtendfilesResponseBody interface {
 }
 
 type UpdateExtendfilesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ func (s *UpdateExtendfilesResponseBody) Validate() error {
 }
 
 type UpdateExtendfilesResponseBodyResult struct {
-	// The size of the driver file. Unit: byte.
+	// The size of the extension file. Unit: bytes.
 	//
 	// example:
 	//
 	// 1853083
 	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	// The name of the driver file.
+	// The name of the extension file.
 	//
 	// example:
 	//
 	// mysql-connector-java-6.0.2.jar
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The source of the driver file. This parameter is fixed as ORIGIN, which indicates that the driver file is retained.
+	// The source of the extension file. Only ORIGIN (retained original extension file) is supported.
 	//
 	// example:
 	//

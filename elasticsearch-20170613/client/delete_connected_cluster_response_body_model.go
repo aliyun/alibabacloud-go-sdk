@@ -16,17 +16,17 @@ type iDeleteConnectedClusterResponseBody interface {
 }
 
 type DeleteConnectedClusterResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return results:
+	// The result of the operation. Valid values:
 	//
-	// 	- true: remove the interworking instance successfully
+	// - true: The connected instance is removed.
 	//
-	// 	- false: remove the interworking instance failed
+	// - false: The connected instance failed to be removed.
 	//
 	// example:
 	//

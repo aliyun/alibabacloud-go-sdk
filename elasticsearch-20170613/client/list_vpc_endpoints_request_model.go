@@ -16,15 +16,15 @@ type iListVpcEndpointsRequest interface {
 }
 
 type ListVpcEndpointsRequest struct {
-	// The number of the page to return.
+	// The page number of the list.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
+	// The number of entries per page for a paged query. Default value: 20.
 	//
 	// example:
 	//

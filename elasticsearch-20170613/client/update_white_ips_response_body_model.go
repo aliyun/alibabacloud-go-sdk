@@ -16,13 +16,13 @@ type iUpdateWhiteIpsResponseBody interface {
 }
 
 type UpdateWhiteIpsResponseBody struct {
-	// The updated whitelist.
+	// The request ID.
 	//
 	// example:
 	//
 	// 8D58B014-BBD7-4D80-B219-00B9D5C6860C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The network configurations.
+	// The returned result.
 	Result *UpdateWhiteIpsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,9 +62,9 @@ func (s *UpdateWhiteIpsResponseBody) Validate() error {
 }
 
 type UpdateWhiteIpsResponseBodyResult struct {
-	// The list of whitelists.
+	// The private network internal-facing access whitelist (deprecated).
 	EsIPWhitelist []*string `json:"esIPWhitelist,omitempty" xml:"esIPWhitelist,omitempty" type:"Repeated"`
-	// The name of the whitelist. By default, the default whitelist is included.
+	// The network configuration.
 	NetworkConfig *UpdateWhiteIpsResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
 }
 
@@ -104,7 +104,7 @@ func (s *UpdateWhiteIpsResponseBodyResult) Validate() error {
 }
 
 type UpdateWhiteIpsResponseBodyResultNetworkConfig struct {
-	// The IP addresses in the whitelist.
+	// The list of whitelist groups.
 	WhiteIpGroupList []*UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList `json:"whiteIpGroupList,omitempty" xml:"whiteIpGroupList,omitempty" type:"Repeated"`
 }
 
@@ -139,13 +139,16 @@ func (s *UpdateWhiteIpsResponseBodyResultNetworkConfig) Validate() error {
 }
 
 type UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList struct {
-	// The type of the whitelist. The value of this parameter is fixed as PRIVATE_ES, which indicates a private IP address whitelist.
+	// The name of the whitelist group. The default group is included by default.
 	//
 	// example:
 	//
 	// test_group
-	GroupName *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	Ips       []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The IP address information in the whitelist group.
+	Ips []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+	// The whitelist type. The value is fixed as PRIVATE_ES, which indicates the private network internal-facing access whitelist.
+	//
 	// example:
 	//
 	// PRIVATE_ES

@@ -16,17 +16,17 @@ type iUpdateAdvancedSettingResponseBody interface {
 }
 
 type UpdateAdvancedSettingResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return results:
+	// The returned result. Valid values:
 	//
-	// 	- true: garbage collector configuration changed successfully
+	// - true: The garbage collector configuration is changed.
 	//
-	// 	- false: garbage collector configuration changed successfully failed
+	// - false: The garbage collector configuration failed to be changed.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeXpackMonitorConfigResponseBody interface {
 }
 
 type DescribeXpackMonitorConfigResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,25 +62,25 @@ func (s *DescribeXpackMonitorConfigResponseBody) Validate() error {
 }
 
 type DescribeXpackMonitorConfigResponseBodyResult struct {
-	// Indicates whether the X-Pack Monitoring feature is enabled. Valid values:
+	// Indicates whether X-Pack monitoring is enabled. Valid values:
 	//
-	// 	- true: enabled
+	// - true: enabled.
 	//
-	// 	- false: disabled
+	// - false: not enabled.
 	//
 	// example:
 	//
 	// true
 	Enable    *bool     `json:"enable,omitempty" xml:"enable,omitempty"`
 	Endpoints []*string `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
-	// The ID of the associated Elasticsearch cluster.
+	// The instance ID of the Elasticsearch instance associated with X-Pack monitoring.
 	//
 	// example:
 	//
 	// es-cn-n6w1o1x0w001c****
 	EsInstanceId *string   `json:"esInstanceId,omitempty" xml:"esInstanceId,omitempty"`
 	PipelineIds  []*string `json:"pipelineIds,omitempty" xml:"pipelineIds,omitempty" type:"Repeated"`
-	// The username that is used to access the associated Elasticsearch cluster.
+	// The username used to access the Elasticsearch instance associated with X-Pack monitoring.
 	//
 	// example:
 	//

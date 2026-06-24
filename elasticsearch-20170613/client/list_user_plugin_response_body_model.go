@@ -18,15 +18,20 @@ type iListUserPluginResponseBody interface {
 }
 
 type ListUserPluginResponseBody struct {
+	// Response header information.
+	//
 	// example:
 	//
 	// {\\"totalCount\\": 1, \\"X-Total-Count\\": 1}
 	Headers map[string]interface{} `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 5EEF8FAE-EEDD***
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListUserPluginResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result array
+	Result []*ListUserPluginResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListUserPluginResponseBody) String() string {
@@ -78,19 +83,28 @@ func (s *ListUserPluginResponseBody) Validate() error {
 }
 
 type ListUserPluginResponseBodyResult struct {
+	// List of plugins with the same name
 	BingoPlugins []*ListUserPluginResponseBodyResultBingoPlugins `json:"bingoPlugins,omitempty" xml:"bingoPlugins,omitempty" type:"Repeated"`
+	// Plugin Name.
+	//
 	// example:
 	//
 	// ct-test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Plugin Source.
+	//
 	// example:
 	//
 	// USER
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// Plugin Status.
+	//
 	// example:
 	//
 	// UNINSTALLED
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// Plugin Version.
+	//
 	// example:
 	//
 	// 8.17.0
@@ -164,30 +178,64 @@ func (s *ListUserPluginResponseBodyResult) Validate() error {
 }
 
 type ListUserPluginResponseBodyResultBingoPlugins struct {
+	// Plugin Description.
+	//
 	// example:
 	//
 	// The plugin***
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Elasticsearch version of the plugin.
+	//
 	// example:
 	//
 	// 8.17.0
 	ElasticsearchVersion *string `json:"elasticsearchVersion,omitempty" xml:"elasticsearchVersion,omitempty"`
+	// Plugin UUID
+	//
 	// example:
 	//
 	// CAEQaRiBgIDI2tie6hkiIGIwM2I3MjZmNjk3YzR***
 	FileVersion *string `json:"fileVersion,omitempty" xml:"fileVersion,omitempty"`
+	// Plugin Name.
+	//
 	// example:
 	//
 	// dynamic-name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Plugin Source. Valid values:
+	//
+	// - USER: Custom plugin
+	//
+	// - SYSTEM: Preset system plugin
+	//
 	// example:
 	//
 	// USER
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// Plugin Status
+	//
+	// - INSTALLED,
+	//
+	// - UNINSTALLED,
+	//
+	// - INSTALLING,
+	//
+	// - UNINSTALLING,
+	//
+	// - UPGRADING,
+	//
+	// - FAILED,
+	//
+	// - UNKNOWN,
+	//
+	// - UPLOADING,
+	//
 	// example:
 	//
 	// UNINSTALLED
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// Plugin Version.
+	//
 	// example:
 	//
 	// 8.17.0

@@ -16,13 +16,14 @@ type iListTagsResponseBody interface {
 }
 
 type ListTagsResponseBody struct {
-	// The key of the tag.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D***
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListTagsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*ListTagsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListTagsResponseBody) String() string {
@@ -65,10 +66,14 @@ func (s *ListTagsResponseBody) Validate() error {
 }
 
 type ListTagsResponseBodyResult struct {
+	// The label key.
+	//
 	// example:
 	//
 	// env
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The label value.
+	//
 	// example:
 	//
 	// dev

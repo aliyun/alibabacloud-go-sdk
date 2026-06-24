@@ -18,15 +18,15 @@ type iListDictsResponseBody interface {
 }
 
 type ListDictsResponseBody struct {
-	// The header of the response.
+	// The response headers.
 	Headers *ListDictsResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2937F832-F39E-41EF-89BA-B528342A2A3A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The request result.
 	Result []*ListDictsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -84,7 +84,7 @@ func (s *ListDictsResponseBody) Validate() error {
 }
 
 type ListDictsResponseBodyHeaders struct {
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -114,25 +114,25 @@ func (s *ListDictsResponseBodyHeaders) Validate() error {
 }
 
 type ListDictsResponseBodyResult struct {
-	// The link that is used to download the dictionary over the Internet. The link is valid for 90s.
+	// The publicly accessible download URL. The URL is valid for 90 seconds.
 	//
 	// example:
 	//
 	// http://test_bucket.oss-cn-hangzhou.aliyuncs.com/AliyunEs/test.dic?Expires=162573****&OSSAccessKeyId=LTAI*****V9&Signature=PNPO********BBGsJDO4V3VfU4sE%3D
 	DownloadUrl *string `json:"downloadUrl,omitempty" xml:"downloadUrl,omitempty"`
-	// The size of the dictionary file. Unit: byte.
+	// The size of the dictionary file, in bytes.
 	//
 	// example:
 	//
 	// 2782602
 	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	// The name of the dictionary file.
+	// The file name of the dictionary file.
 	//
 	// example:
 	//
 	// SYSTEM_MAIN.dic
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The source type.
+	// A fixed value.
 	//
 	// example:
 	//
@@ -140,9 +140,9 @@ type ListDictsResponseBodyResult struct {
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The type of the IK dictionary. Valid values:
 	//
-	// 	- MAIN: main dictionary
+	// - MAIN: main tokenization dictionary.
 	//
-	// 	- STOP: stopword list
+	// - STOP: stopword dictionary.
 	//
 	// example:
 	//

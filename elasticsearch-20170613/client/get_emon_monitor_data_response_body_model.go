@@ -22,19 +22,32 @@ type iGetEmonMonitorDataResponseBody interface {
 }
 
 type GetEmonMonitorDataResponseBody struct {
+	// The request status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request result.
+	//
 	// example:
 	//
 	// ""
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2D184B55-FA51-43F7-A1EF-E68A0545****
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*GetEmonMonitorDataResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*GetEmonMonitorDataResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -108,26 +121,38 @@ func (s *GetEmonMonitorDataResponseBody) Validate() error {
 }
 
 type GetEmonMonitorDataResponseBodyResult struct {
+	// The real-time metric monitoring data, in the format of `{timestamp:data}`.
+	//
 	// example:
 	//
 	// { "1586249280": 465.1980465119913, "1586249300": 213.45243650423305 }
 	Dps map[string]interface{} `json:"dps,omitempty" xml:"dps,omitempty"`
+	// The completeness of time series data points in the metric query result. A value of 1.0 indicates 100% completeness.
+	//
 	// example:
 	//
 	// 1.0
 	Integrity *float32 `json:"integrity,omitempty" xml:"integrity,omitempty"`
+	// The timestamp when the request reaches the server. This parameter is used for troubleshooting.
+	//
 	// example:
 	//
 	// 1522127381471
 	MessageWatermark *int64 `json:"messageWatermark,omitempty" xml:"messageWatermark,omitempty"`
+	// The metric name.
+	//
 	// example:
 	//
 	// elasticbuild.elasticsearch.source.total_doc_count
 	Metric *string `json:"metric,omitempty" xml:"metric,omitempty"`
+	// If the queries contain wildcards, the result includes multiple matched time series datasets. The summary aggregates the values of these time series at each time point based on the aggregator type specified in the query. Currently, only avg is supported as the aggregation method.
+	//
 	// example:
 	//
 	// 10
 	Summary *float32 `json:"summary,omitempty" xml:"summary,omitempty"`
+	// The query tags.
+	//
 	// example:
 	//
 	// {"taskName":"et-xxx","userId":"123456"}

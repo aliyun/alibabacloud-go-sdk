@@ -16,11 +16,14 @@ type iListDiagnosisItemsResponseBody interface {
 }
 
 type ListDiagnosisItemsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D****
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListDiagnosisItemsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*ListDiagnosisItemsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListDiagnosisItemsResponseBody) String() string {
@@ -63,14 +66,21 @@ func (s *ListDiagnosisItemsResponseBody) Validate() error {
 }
 
 type ListDiagnosisItemsResponseBodyResult struct {
+	// The diagnostic item description.
+	//
 	// example:
 	//
 	// 诊断集群写数据是否有堆积当集群的数据写入存在堆积时，会造成BulkReject异常，可能会导致数据丢失，且会造成系统资源消耗严重
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
+	EsApiRequired *bool   `json:"esApiRequired,omitempty" xml:"esApiRequired,omitempty"`
+	// The diagnostic item identifier.
+	//
 	// example:
 	//
 	// ClusterBulkRejectDiagnostic
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The diagnostic item name.
+	//
 	// example:
 	//
 	// 索引写入BulkReject诊断
@@ -89,6 +99,10 @@ func (s *ListDiagnosisItemsResponseBodyResult) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ListDiagnosisItemsResponseBodyResult) GetEsApiRequired() *bool {
+	return s.EsApiRequired
+}
+
 func (s *ListDiagnosisItemsResponseBodyResult) GetKey() *string {
 	return s.Key
 }
@@ -99,6 +113,11 @@ func (s *ListDiagnosisItemsResponseBodyResult) GetName() *string {
 
 func (s *ListDiagnosisItemsResponseBodyResult) SetDescription(v string) *ListDiagnosisItemsResponseBodyResult {
 	s.Description = &v
+	return s
+}
+
+func (s *ListDiagnosisItemsResponseBodyResult) SetEsApiRequired(v bool) *ListDiagnosisItemsResponseBodyResult {
+	s.EsApiRequired = &v
 	return s
 }
 

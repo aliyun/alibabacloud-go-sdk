@@ -16,17 +16,17 @@ type iOpenHttpsResponseBody interface {
 }
 
 type OpenHttpsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return results:
+	// The returned result. Valid values:
 	//
-	// 	- true: open the HTTPS protocol successfully
+	// - true: The HTTPS protocol is enabled.
 	//
-	// 	- false: open the HTTPS protocol failed
+	// - false: The HTTPS protocol failed to be enabled.
 	//
 	// example:
 	//

@@ -16,11 +16,14 @@ type iListDictInformationResponseBody interface {
 }
 
 type ListDictInformationResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 7C4334EA-D22B-48BD-AE28-08EE68******
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *ListDictInformationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *ListDictInformationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListDictInformationResponseBody) String() string {
@@ -59,11 +62,20 @@ func (s *ListDictInformationResponseBody) Validate() error {
 }
 
 type ListDictInformationResponseBodyResult struct {
+	// The size of the dictionary file. Unit: bytes.
+	//
 	// example:
 	//
 	// 2202301
-	FileSize  *int64                                          `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// The details of the OSS file.
 	OssObject *ListDictInformationResponseBodyResultOssObject `json:"ossObject,omitempty" xml:"ossObject,omitempty" type:"Struct"`
+	// The dictionary type. Valid values:
+	//
+	// - MAIN: primary tokenization dictionary
+	//
+	// - STOP: stopword dictionary.
+	//
 	// example:
 	//
 	// STOP
@@ -115,14 +127,20 @@ func (s *ListDictInformationResponseBodyResult) Validate() error {
 }
 
 type ListDictInformationResponseBodyResultOssObject struct {
+	// The name of the OSS bucket where the file is stored.
+	//
 	// example:
 	//
 	// es-osstest*
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The MD5 checksum (ETag) of the OSS file, in uppercase.
+	//
 	// example:
 	//
 	// 2ABAB5E70BBF631145647F6BE533****
 	Etag *string `json:"etag,omitempty" xml:"etag,omitempty"`
+	// The storage path of the dictionary file in the OSS bucket.
+	//
 	// example:
 	//
 	// oss/dict_0*.dic

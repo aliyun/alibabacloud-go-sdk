@@ -16,11 +16,14 @@ type iListPipelineIdsResponseBody interface {
 }
 
 type ListPipelineIdsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D***
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListPipelineIdsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of results.
+	Result []*ListPipelineIdsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListPipelineIdsResponseBody) String() string {
@@ -63,18 +66,30 @@ func (s *ListPipelineIdsResponseBody) Validate() error {
 }
 
 type ListPipelineIdsResponseBodyResult struct {
+	// Indicates whether the pipeline is available. Valid values:
+	//
+	// - true: Available.
+	//
+	// - false: Not available.
+	//
 	// example:
 	//
 	// true
 	Available *bool `json:"available,omitempty" xml:"available,omitempty"`
+	// The error code returned when the pipeline is unavailable.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The error message returned when the pipeline is unavailable.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pipeline ID created in Kibana.
+	//
 	// example:
 	//
 	// testKibanaManagement

@@ -16,17 +16,17 @@ type iAddConnectableClusterResponseBody interface {
 }
 
 type AddConnectableClusterResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5A5D8E74-565C-43DC-B031-29289FA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The following information is returned:
+	// The result. Valid values:
 	//
-	// 	- true: The configuration is successful.
+	// - true: The configuration succeeded.
 	//
-	// 	- false: The configuration failed.
+	// - false: The configuration failed.
 	//
 	// example:
 	//

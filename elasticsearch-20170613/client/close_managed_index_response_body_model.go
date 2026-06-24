@@ -16,17 +16,17 @@ type iCloseManagedIndexResponseBody interface {
 }
 
 type CloseManagedIndexResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the index\\"s cloud management has been successfully closed:
+	// Indicates whether the cloud managed feature for the index is disabled. Valid values:
 	//
-	// - true: Success
+	// - true: The feature is disabled.
 	//
-	// - false: Failure
+	// - false: The feature failed to be disabled.
 	//
 	// example:
 	//

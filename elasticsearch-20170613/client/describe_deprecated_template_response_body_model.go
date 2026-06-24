@@ -16,11 +16,14 @@ type iDescribeDeprecatedTemplateResponseBody interface {
 }
 
 type DescribeDeprecatedTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC47D9
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DescribeDeprecatedTemplateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result information.
+	Result *DescribeDeprecatedTemplateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DescribeDeprecatedTemplateResponseBody) String() string {
@@ -59,20 +62,34 @@ func (s *DescribeDeprecatedTemplateResponseBody) Validate() error {
 }
 
 type DescribeDeprecatedTemplateResponseBodyResult struct {
+	// Indicates whether automatic creation of a data stream is enabled. Valid values:
+	//
+	// - true: Automatic creation of a data stream is enabled.
+	//
+	// - false: Automatic creation of a data stream is not enabled.
+	//
 	// example:
 	//
 	// false
-	DataStream    *bool     `json:"dataStream,omitempty" xml:"dataStream,omitempty"`
+	DataStream *bool `json:"dataStream,omitempty" xml:"dataStream,omitempty"`
+	// The index pattern information.
 	IndexPatterns []*string `json:"indexPatterns,omitempty" xml:"indexPatterns,omitempty" type:"Repeated"`
+	// The index template name.
+	//
 	// example:
 	//
 	// openstore-index-template
 	IndexTemplate *string `json:"indexTemplate,omitempty" xml:"indexTemplate,omitempty"`
+	// The priority.
+	//
 	// example:
 	//
 	// 100
-	Order    *int64                                                `json:"order,omitempty" xml:"order,omitempty"`
+	Order *int64 `json:"order,omitempty" xml:"order,omitempty"`
+	// The index template configuration information.
 	Template *DescribeDeprecatedTemplateResponseBodyResultTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
+	// The version of the index template.
+	//
 	// example:
 	//
 	// 70000
@@ -151,14 +168,20 @@ func (s *DescribeDeprecatedTemplateResponseBodyResult) Validate() error {
 }
 
 type DescribeDeprecatedTemplateResponseBodyResultTemplate struct {
+	// The alias configuration.
+	//
 	// example:
 	//
 	// "{}"
 	Aliases *string `json:"aliases,omitempty" xml:"aliases,omitempty"`
+	// The mappings configuration of the index template.
+	//
 	// example:
 	//
 	// "{\\"properties\\":{\\"created_at\\":{\\"format\\":\\"EEE MMM dd HH:mm:ss Z yyyy\\",\\"type\\":\\"date\\"},\\"host_name\\":{\\"type\\":\\"keyword\\"}}}"
 	Mappings *string `json:"mappings,omitempty" xml:"mappings,omitempty"`
+	// The settings configuration of the index template.
+	//
 	// example:
 	//
 	// "{\\"index.number_of_shards\\":\\"1\\"}"

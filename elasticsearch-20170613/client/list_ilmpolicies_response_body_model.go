@@ -16,11 +16,14 @@ type iListILMPoliciesResponseBody interface {
 }
 
 type ListILMPoliciesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListILMPoliciesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of index lifecycle policies returned by the request.
+	Result []*ListILMPoliciesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListILMPoliciesResponseBody) String() string {
@@ -63,10 +66,14 @@ func (s *ListILMPoliciesResponseBody) Validate() error {
 }
 
 type ListILMPoliciesResponseBodyResult struct {
+	// The name of the index lifecycle policy.
+	//
 	// example:
 	//
 	// policy-1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The index lifecycle content.
+	//
 	// example:
 	//
 	// {"hot":{"minAge":"0ms","actions":{"rollover":{"maxSize":"50gb","maxAge":"30d"},"setPriority":{"priority":100}}},"delete":{"minAge":"3d","actions":{"delete":{}}}}

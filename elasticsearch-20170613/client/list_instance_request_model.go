@@ -36,72 +36,80 @@ type iListInstanceRequest interface {
 }
 
 type ListInstanceRequest struct {
-	// cn-hangzhou-i
+	// The instance name. Fuzzy search is supported. For example, if you search for all instances matching **abc**, all instances named **abc**, **abcde**, **xyabc**, and **xabcy*	- may be returned.
 	//
 	// example:
 	//
 	// aliyunes_test1
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// advanced
+	// The instance version.
 	//
 	// example:
 	//
 	// 6.7_with_X-Pack
 	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
-	// The number of data nodes.
+	// The edition type of the instance. Valid values:
+	//
+	// - x-pack: Commercial Edition
+	//
+	// - advanced/IS: Enhanced Edition
+	//
+	// - community: Basic Edition
 	//
 	// example:
 	//
 	// advanced
 	InstanceCategory *string `json:"instanceCategory,omitempty" xml:"instanceCategory,omitempty"`
-	// postpaid
+	// The instance ID.
 	//
 	// example:
 	//
 	// es-cn-v641a0ta3000g****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// [{"tagKey":"key1","tagValue":"value1"}]
+	// The page number of the instance list.
+	//
+	// Start value: **1**, default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// Specifies whether to include dedicated master nodes. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// 	- true: The files contain data that is dumped to the IA storage medium.
+	// - postpaid: pay-as-you-go
 	//
-	// 	- false: The files do not contain data that is dumped to the IA storage medium.
+	// - prepaid: subscription
 	//
 	// example:
 	//
 	// postpaid
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The ID of the request.
+	// The ID of the resource group to which the instance belongs.
 	//
 	// example:
 	//
 	// rg-aekzvowej3i****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// vpc-bp16k1dvzxtmagcva\\*\\*\\*\\*
+	// The number of entries per page for paginated queries. Maximum value: **100**, default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	Size   *int32  `json:"size,omitempty" xml:"size,omitempty"`
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The header of the response.
+	// The instance tags.
 	//
 	// example:
 	//
 	// [{"tagKey":"key1","tagValue":"value1"}]
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The number of entries returned per page.
+	// The ID of the virtual private cloud (VPC) where the instance is deployed.
 	//
 	// example:
 	//
 	// vpc-bp16k1dvzxtmagcva****
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The returned data.
+	// The zone ID of the instance.
 	//
 	// example:
 	//

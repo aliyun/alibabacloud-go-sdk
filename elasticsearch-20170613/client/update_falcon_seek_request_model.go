@@ -14,6 +14,8 @@ type iUpdateFalconSeekRequest interface {
 }
 
 type UpdateFalconSeekRequest struct {
+	// true: Enabled, false: shutdown
+	//
 	// This parameter is required.
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 }

@@ -16,13 +16,13 @@ type iGetClusterDataInformationResponseBody interface {
 }
 
 type GetClusterDataInformationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The return results.
+	// The returned result.
 	Result *GetClusterDataInformationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *GetClusterDataInformationResponseBody) Validate() error {
 }
 
 type GetClusterDataInformationResponseBodyResult struct {
-	// Whether it is connectable.
+	// Indicates whether the cluster is connectable.
 	//
 	// example:
 	//
 	// true
 	Connectable *bool `json:"connectable,omitempty" xml:"connectable,omitempty"`
-	// The metadata of the cluster.
+	// The metadata information of the cluster.
 	MetaInfo *GetClusterDataInformationResponseBodyResultMetaInfo `json:"metaInfo,omitempty" xml:"metaInfo,omitempty" type:"Struct"`
 }
 
@@ -108,23 +108,20 @@ func (s *GetClusterDataInformationResponseBodyResult) Validate() error {
 }
 
 type GetClusterDataInformationResponseBodyResultMetaInfo struct {
-	// The fields in the Mapping for the index.
-	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// The index list of the cluster.
+	Fields  []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	Indices []*string `json:"indices,omitempty" xml:"indices,omitempty" type:"Repeated"`
-	// The Mapping configuration of the cluster.
+	// The mapping configuration of the cluster.
 	//
 	// example:
 	//
 	// {\\"_doc\\":{\\"properties\\":{\\"user\\":{\\"properties\\":{\\"last\\":{\\"type\\":\\"text\\",...}}}}}}
 	Mapping *string `json:"mapping,omitempty" xml:"mapping,omitempty"`
-	// The Settings of the cluster.
+	// The settings configuration of the cluster.
 	//
 	// example:
 	//
 	// {\\n  \\"index\\": {\\n    \\"replication\\": {\\n}.....}}
-	Settings *string `json:"settings,omitempty" xml:"settings,omitempty"`
-	// Specifies the type of the index.
+	Settings *string   `json:"settings,omitempty" xml:"settings,omitempty"`
 	TypeName []*string `json:"typeName,omitempty" xml:"typeName,omitempty" type:"Repeated"`
 }
 

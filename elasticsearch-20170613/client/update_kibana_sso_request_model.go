@@ -16,6 +16,8 @@ type iUpdateKibanaSsoRequest interface {
 }
 
 type UpdateKibanaSsoRequest struct {
+	// true: Enabled; false: shutdown
+	//
 	// This parameter is required.
 	//
 	// example:

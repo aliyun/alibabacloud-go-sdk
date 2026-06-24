@@ -26,21 +26,35 @@ type iUpdatePipelineManagementConfigRequest interface {
 }
 
 type UpdatePipelineManagementConfigRequest struct {
+	// The list of access addresses of the Elasticsearch instance where Kibana resides after Kibana pipeline management is enabled.
 	Endpoints    []*string `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
 	EsInstanceId *string   `json:"esInstanceId,omitempty" xml:"esInstanceId,omitempty"`
+	// The password used to log on to Kibana.
+	//
 	// example:
 	//
 	// ******
-	Password    *string   `json:"password,omitempty" xml:"password,omitempty"`
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The list of pipelines managed by Kibana.
 	PipelineIds []*string `json:"pipelineIds,omitempty" xml:"pipelineIds,omitempty" type:"Repeated"`
+	// The pipeline management method. Valid values:
+	//
+	// - ES: Kibana pipeline management.
+	//
+	// - MULTIPLE_PIPELINE: configuration file management.
+	//
 	// example:
 	//
 	// ES
 	PipelineManagementType *string `json:"pipelineManagementType,omitempty" xml:"pipelineManagementType,omitempty"`
+	// The username used to log on to Kibana.
+	//
 	// example:
 	//
 	// elastic
 	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	// A unique token used to ensure idempotence of the request. The client generates this value. The value must be unique across different requests and can contain up to 64 ASCII characters.
+	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****

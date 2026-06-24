@@ -22,19 +22,37 @@ type iDiagnoseInstanceRequest interface {
 }
 
 type DiagnoseInstanceRequest struct {
-	// The timestamp when the diagnostic report was generated.
+	// A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****
-	ClientToken   *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The diagnostic items.
 	DiagnoseItems []*string `json:"diagnoseItems,omitempty" xml:"diagnoseItems,omitempty" type:"Repeated"`
-	Indices       []*string `json:"indices,omitempty" xml:"indices,omitempty" type:"Repeated"`
+	// The list of indexes to diagnose.
+	Indices []*string `json:"indices,omitempty" xml:"indices,omitempty" type:"Repeated"`
+	// The type of the diagnostic task. Valid values:
+	//
+	// - ALL: Diagnoses all indexes.
+	//
+	// - SELECT: Diagnoses selected indexes.
+	//
 	// example:
 	//
 	// ALL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The returned data.
+	// The language of the report. Default value: browser language. Valid values:
+	//
+	// - en: English
+	//
+	// - zh: Simplified Chinese
+	//
+	// - zt: Traditional Chinese
+	//
+	// - es: Spanish
+	//
+	// - fr: French.
 	//
 	// example:
 	//

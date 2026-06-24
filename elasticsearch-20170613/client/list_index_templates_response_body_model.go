@@ -16,11 +16,14 @@ type iListIndexTemplatesResponseBody interface {
 }
 
 type ListIndexTemplatesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListIndexTemplatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The index template list information.
+	Result []*ListIndexTemplatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListIndexTemplatesResponseBody) String() string {
@@ -63,23 +66,37 @@ func (s *ListIndexTemplatesResponseBody) Validate() error {
 }
 
 type ListIndexTemplatesResponseBodyResult struct {
+	// Indicates whether the data stream is enabled. Valid values:
+	//
+	// - true: enabled.
+	//
+	// - false (default): not enabled.
+	//
 	// example:
 	//
 	// true
 	DataStream *bool `json:"dataStream,omitempty" xml:"dataStream,omitempty"`
+	// The index lifecycle policy name.
+	//
 	// example:
 	//
 	// my_ilm_policy
-	IlmPolicy     *string   `json:"ilmPolicy,omitempty" xml:"ilmPolicy,omitempty"`
+	IlmPolicy *string `json:"ilmPolicy,omitempty" xml:"ilmPolicy,omitempty"`
+	// The index pattern information.
 	IndexPatterns []*string `json:"indexPatterns,omitempty" xml:"indexPatterns,omitempty" type:"Repeated"`
+	// The index template name.
+	//
 	// example:
 	//
 	// my-template
 	IndexTemplate *string `json:"indexTemplate,omitempty" xml:"indexTemplate,omitempty"`
+	// The index template priority.
+	//
 	// example:
 	//
 	// 100
-	Priority *int32                                        `json:"priority,omitempty" xml:"priority,omitempty"`
+	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
+	// The component template.
 	Template *ListIndexTemplatesResponseBodyResultTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
 }
 
@@ -155,14 +172,20 @@ func (s *ListIndexTemplatesResponseBodyResult) Validate() error {
 }
 
 type ListIndexTemplatesResponseBodyResultTemplate struct {
+	// The aliases configuration.
+	//
 	// example:
 	//
 	// {\\"index.number_of_shards\\":\\"1\\"}
 	Aliases *string `json:"aliases,omitempty" xml:"aliases,omitempty"`
+	// The mappings configuration.
+	//
 	// example:
 	//
 	// {\\"properties\\":{\\"created_at\\":{\\"format\\":\\"EEE MMM dd HH:mm:ss Z yyyy\\",\\"type\\":\\"date\\"},\\"host_name\\":{\\"type\\":\\"keyword\\"}}}
 	Mappings *string `json:"mappings,omitempty" xml:"mappings,omitempty"`
+	// The settings configuration.
+	//
 	// example:
 	//
 	// {\\"mydata\\":{}}

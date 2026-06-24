@@ -16,11 +16,14 @@ type iDescribeILMPolicyResponseBody interface {
 }
 
 type DescribeILMPolicyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// FF44681E-FD41-4FDE-B8DF-295DCDD6****
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DescribeILMPolicyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the specified index lifecycle policy.
+	Result *DescribeILMPolicyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DescribeILMPolicyResponseBody) String() string {
@@ -59,10 +62,14 @@ func (s *DescribeILMPolicyResponseBody) Validate() error {
 }
 
 type DescribeILMPolicyResponseBodyResult struct {
+	// The name of the index lifecycle policy.
+	//
 	// example:
 	//
 	// ilm-history-ilm-policy
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The content of the index lifecycle policy.
+	//
 	// example:
 	//
 	// {"cold":{"minAge":"30d","actions":{"allocate":{"numberOfReplicas":1,"require":{"boxType":"warm"}},"setPriority":{"priority":100}}},"hot":{"minAge":"0s","actions":{"rollover":{"maxAge":"30d","maxDocs":10000,"maxSize":"50gb"},"setPriority":{"priority":1000}}},"delete":{"minAge":"30d","actions":{"delete":{}}}}

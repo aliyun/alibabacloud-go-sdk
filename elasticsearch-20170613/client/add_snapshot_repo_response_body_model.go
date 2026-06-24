@@ -16,17 +16,17 @@ type iAddSnapshotRepoResponseBody interface {
 }
 
 type AddSnapshotRepoResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return results:
+	// The result. Valid values:
 	//
-	// 	- true: Reference warehouse created successfully
+	// - true: The reference repository is created.
 	//
-	// 	- false: Reference warehouse created failed
+	// - false: The reference repository failed to be created.
 	//
 	// example:
 	//

@@ -16,27 +16,13 @@ type iListLogstashPluginsResponseBody interface {
 }
 
 type ListLogstashPluginsResponseBody struct {
-	// The address of the documentation for the plug-in.
+	// The request ID.
 	//
 	// example:
 	//
 	// 99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the plug-in. Valid values:
-	//
-	// 	- INSTALLED: Installed
-	//
-	// 	- UNINSTALLED: Not installed
-	//
-	// 	- INSTALLING: The instance is being installed.
-	//
-	// 	- UNINSTALLING: The instance is being uninstalled.
-	//
-	// 	- UPGRADING: The backup gateway is being upgraded.
-	//
-	// 	- FAILED: Installation failed
-	//
-	// 	- UNKNOWN: The cluster is lost and cannot be created.
+	// The returned results.
 	Result []*ListLogstashPluginsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -80,26 +66,46 @@ func (s *ListLogstashPluginsResponseBody) Validate() error {
 }
 
 type ListLogstashPluginsResponseBodyResult struct {
-	// The source of the plug-in.
+	// The plugin description.
 	//
 	// example:
 	//
 	// The clone filter is for duplicating events.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The plugin name.
+	//
 	// example:
 	//
 	// logstash-filter-clone
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The plugin source.
+	//
 	// example:
 	//
 	// SYSTEM
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The name of the plug-in.
+	// The URL of the plugin documentation.
 	//
 	// example:
 	//
 	// https://xxx.html
 	SpecificationUrl *string `json:"specificationUrl,omitempty" xml:"specificationUrl,omitempty"`
+	// The plugin status. Valid values:
+	//
+	// - INSTALLED: installed
+	//
+	// - UNINSTALLED: not installed
+	//
+	// - INSTALLING: being installed
+	//
+	// - UNINSTALLING: being uninstalled
+	//
+	// - UPGRADING: being upgraded
+	//
+	// - FAILED: installation failed
+	//
+	// - UNKNOWN: the cluster is disconnected and the creation status cannot be retrieved.
+	//
 	// example:
 	//
 	// INSTALLED

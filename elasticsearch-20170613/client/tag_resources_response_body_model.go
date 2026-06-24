@@ -16,10 +16,18 @@ type iTagResourcesResponseBody interface {
 }
 
 type TagResourcesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 3D8795D9-8FF5-46B2-86E6-E3B407*******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result. Valid values:
+	//
+	// - true: The tag-resource relationships are created.
+	//
+	// - false: The tag-resource relationships failed to be created.
+	//
 	// example:
 	//
 	// true

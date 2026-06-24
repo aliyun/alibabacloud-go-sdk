@@ -16,10 +16,18 @@ type iValidateShrinkNodesResponseBody interface {
 }
 
 type ValidateShrinkNodesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	//
+	// - true: The nodes can be scaled in.
+	//
+	// - false: The nodes cannot be scaled in.
+	//
 	// example:
 	//
 	// true

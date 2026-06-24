@@ -16,17 +16,13 @@ type iDescribePipelineResponseBody interface {
 }
 
 type DescribePipelineResponseBody struct {
-	// The time when the pipeline was updated.
+	// The request ID.
 	//
 	// example:
 	//
 	// 829F38F6-E2D6-4109-90A6-888160BD1***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of the queue. Valid values:
-	//
-	// 	- MEMORY: a traditional memory-based queue.
-	//
-	// 	- PERSISTED: disk-based ACKed queue (persistent queue).
+	// The returned pipeline information. For more information, see [logstash.yml](https://www.elastic.co/guide/en/logstash/6.7/logstash-settings-file.html).
 	Result *DescribePipelineResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -66,73 +62,83 @@ func (s *DescribePipelineResponseBody) Validate() error {
 }
 
 type DescribePipelineResponseBodyResult struct {
-	// The time when the pipeline was created.
+	// The batch delay of the pipeline. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 50
 	BatchDelay *int32 `json:"batchDelay,omitempty" xml:"batchDelay,omitempty"`
+	// The batch size of the pipeline.
+	//
 	// example:
 	//
 	// 125
 	BatchSize *int32 `json:"batchSize,omitempty" xml:"batchSize,omitempty"`
-	// The description of the pipeline.
+	// The specific configuration of the pipeline.
 	//
 	// example:
 	//
 	// input {  }  filter {  }  output {  }
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The state of the MPS queue. Valid values:
-	//
-	// 	- NOT_DEPLOYED: The node is not deployed.
-	//
-	// 	- RUNNING
-	//
-	// 	- DELETED: Deleted. The console does not display this status.
+	// The pipeline description.
 	//
 	// example:
 	//
 	// this is a test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The time when the pipeline was created.
+	//
 	// example:
 	//
 	// 2020-06-20T07:26:47.000+0000
 	GmtCreatedTime *string `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
-	// The total capacity of the queue in bytes. Unit: MB.
+	// The time when the pipeline was last updated.
 	//
 	// example:
 	//
 	// 2020-06-20T07:26:47.000+0000
 	GmtUpdateTime *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
-	// Number of queue checkpoint writes.
+	// The pipeline ID.
 	//
 	// example:
 	//
 	// pipeline_test
 	PipelineId *string `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
+	// The pipeline status. Valid values:
+	//
+	// - NOT_DEPLOYED: not deployed.
+	//
+	// - RUNNING: running.
+	//
+	// - DELETED: deleted. This status is not displayed in the console.
+	//
 	// example:
 	//
 	// RUNNING
 	PipelineStatus *string `json:"pipelineStatus,omitempty" xml:"pipelineStatus,omitempty"`
-	// Pipeline batch delay. Unit: milliseconds.
+	// The number of queue checkpoint writes.
 	//
 	// example:
 	//
 	// 1024
 	QueueCheckPointWrites *int32 `json:"queueCheckPointWrites,omitempty" xml:"queueCheckPointWrites,omitempty"`
-	// The number of pipeline workers.
+	// The total capacity of the queue, in bytes. Unit: MB.
 	//
 	// example:
 	//
 	// 1024
 	QueueMaxBytes *int32 `json:"queueMaxBytes,omitempty" xml:"queueMaxBytes,omitempty"`
-	// The specific configuration of the pipeline.
+	// The queue type. Valid values:
+	//
+	// - MEMORY: a traditional memory-based queue.
+	//
+	// - PERSISTED: a disk-based ACKed queue (persistent queue).
 	//
 	// example:
 	//
 	// MEMORY
 	QueueType *string `json:"queueType,omitempty" xml:"queueType,omitempty"`
-	// The size of the pipeline batch.
+	// The number of pipeline worker threads.
 	//
 	// example:
 	//

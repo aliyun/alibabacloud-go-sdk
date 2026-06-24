@@ -18,14 +18,20 @@ type iListStatsEventRecordsRequest interface {
 }
 
 type ListStatsEventRecordsRequest struct {
+	// Event type
+	//
 	// example:
 	//
 	// UserOperator
 	EventType *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
+	// Event level
+	//
 	// example:
 	//
 	// Info
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// Status of the management event
+	//
 	// example:
 	//
 	// Executed

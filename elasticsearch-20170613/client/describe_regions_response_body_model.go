@@ -16,13 +16,13 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The available status of the region.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1ADFG
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The endpoint of the region.
+	// The list of returned results.
 	Result []*DescribeRegionsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -66,25 +66,31 @@ func (s *DescribeRegionsResponseBody) Validate() error {
 }
 
 type DescribeRegionsResponseBodyResult struct {
+	// The endpoint of the region exposed in the console.
+	//
 	// example:
 	//
 	// https://elasticsearch-cn-hangzhou.console.aliyun.com
 	ConsoleEndpoint *string `json:"consoleEndpoint,omitempty" xml:"consoleEndpoint,omitempty"`
+	// The name of the region.
+	//
 	// example:
 	//
 	// China (Hangzhou)
 	LocalName *string `json:"localName,omitempty" xml:"localName,omitempty"`
+	// The endpoint of the region.
+	//
 	// example:
 	//
 	// elasticsearch.cn-hangzhou.aliyuncs.com
 	RegionEndpoint *string `json:"regionEndpoint,omitempty" xml:"regionEndpoint,omitempty"`
-	// The name of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The endpoint of the region that is exposed in the console.
+	// The availability status of the region.
 	//
 	// example:
 	//

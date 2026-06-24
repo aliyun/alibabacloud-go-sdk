@@ -20,25 +20,25 @@ type iListPluginsRequest interface {
 }
 
 type ListPluginsRequest struct {
-	// SYSTEM
+	// The plugin name.
 	//
 	// example:
 	//
 	// analysis-ik
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the request.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	Page *string `json:"page,omitempty" xml:"page,omitempty"`
-	// The header of the response.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// The total number of entries returned.
+	// The plugin source type. Only SYSTEM (system plugin) is supported.
 	//
 	// example:
 	//

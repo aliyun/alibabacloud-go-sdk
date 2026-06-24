@@ -16,10 +16,14 @@ type iCreateILMPolicyResponseBody interface {
 }
 
 type CreateILMPolicyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the lifecycle policy that is created.
+	//
 	// example:
 	//
 	// my-policy

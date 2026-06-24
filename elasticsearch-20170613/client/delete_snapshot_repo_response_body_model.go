@@ -16,17 +16,17 @@ type iDeleteSnapshotRepoResponseBody interface {
 }
 
 type DeleteSnapshotRepoResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return results:
+	// The returned result. Valid values:
 	//
-	// 	- true: reference warehouse deleted successfully
+	// - true: The reference repository is deleted.
 	//
-	// 	- false: reference warehouse deleted successfully failed
+	// - false: The reference repository failed to be deleted.
 	//
 	// example:
 	//

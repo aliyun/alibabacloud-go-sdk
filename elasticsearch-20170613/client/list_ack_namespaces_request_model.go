@@ -16,13 +16,13 @@ type iListAckNamespacesRequest interface {
 }
 
 type ListAckNamespacesRequest struct {
-	// The number of the page to return.
+	// The page number. (Deprecated).
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries to return on each page.
+	// The number of records per page. (Deprecated).
 	//
 	// example:
 	//

@@ -16,13 +16,14 @@ type iListKibanaPvlNetworkResponseBody interface {
 }
 
 type ListKibanaPvlNetworkResponseBody struct {
-	// request id
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D***
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListKibanaPvlNetworkResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of result objects.
+	Result []*ListKibanaPvlNetworkResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListKibanaPvlNetworkResponseBody) String() string {
@@ -65,28 +66,46 @@ func (s *ListKibanaPvlNetworkResponseBody) Validate() error {
 }
 
 type ListKibanaPvlNetworkResponseBodyResult struct {
+	// The time when the Kibana private network connection was created.
+	//
 	// example:
 	//
 	// 2024-03-07T06:26:28Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The endpoint ID.
+	//
 	// example:
 	//
 	// ep-bp1tah7zbrwmkjef****
 	EndpointId *string `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
+	// The endpoint name.
+	//
 	// example:
 	//
 	// es-cn-xxdjfia****-kibana
 	EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
+	// The endpoint status. Valid values:
+	//
+	// - Disconnected: not connected.
+	//
+	// - Connected: connected.
+	//
 	// example:
 	//
 	// Connected
 	EndpointStatus *string `json:"endpointStatus,omitempty" xml:"endpointStatus,omitempty"`
+	// The Kibana private network connection ID.
+	//
 	// example:
 	//
 	// es-cn-27a3mul6l***-kibana-internal
-	PvlId          *string                                                 `json:"pvlId,omitempty" xml:"pvlId,omitempty"`
-	SecurityGroups []*string                                               `json:"securityGroups,omitempty" xml:"securityGroups,omitempty" type:"Repeated"`
+	PvlId *string `json:"pvlId,omitempty" xml:"pvlId,omitempty"`
+	// The list of security groups.
+	SecurityGroups []*string `json:"securityGroups,omitempty" xml:"securityGroups,omitempty" type:"Repeated"`
+	// The vSwitch and zone information.
 	VSwitchIdsZone []*ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone `json:"vSwitchIdsZone,omitempty" xml:"vSwitchIdsZone,omitempty" type:"Repeated"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-bp16k1dvzxtma*****
@@ -187,10 +206,14 @@ func (s *ListKibanaPvlNetworkResponseBodyResult) Validate() error {
 }
 
 type ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone struct {
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-xdefafns***
 	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-e

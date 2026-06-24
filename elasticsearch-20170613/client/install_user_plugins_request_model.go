@@ -16,6 +16,11 @@ type iInstallUserPluginsRequest interface {
 }
 
 type InstallUserPluginsRequest struct {
+	// The list of custom plugins to install.
+	//
+	// example:
+	//
+	// [     {"name": "pluginName1.zip"},     {"name": "pluginName2.zip"} ]
 	Body  *string `json:"body,omitempty" xml:"body,omitempty"`
 	Force *bool   `json:"force,omitempty" xml:"force,omitempty"`
 }

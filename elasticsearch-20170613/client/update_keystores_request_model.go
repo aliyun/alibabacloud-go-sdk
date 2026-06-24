@@ -18,8 +18,12 @@ type iUpdateKeystoresRequest interface {
 }
 
 type UpdateKeystoresRequest struct {
-	Remove []*string          `json:"remove,omitempty" xml:"remove,omitempty" type:"Repeated"`
+	// Delete keystore configuration
+	Remove []*string `json:"remove,omitempty" xml:"remove,omitempty" type:"Repeated"`
+	// Add or update keystore
 	Update map[string]*string `json:"update,omitempty" xml:"update,omitempty"`
+	// Whether to force the change. false: non-forced, true: forced
+	//
 	// example:
 	//
 	// false

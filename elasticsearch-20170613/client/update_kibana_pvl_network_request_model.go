@@ -20,18 +20,25 @@ type iUpdateKibanaPvlNetworkRequest interface {
 }
 
 type UpdateKibanaPvlNetworkRequest struct {
+	// The endpoint name.
+	//
 	// example:
 	//
-	// es-cn-27a3mul6l00***-kibana
-	EndpointName   *string   `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
+	// es-cn-text-kibana
+	EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
+	// The list of security groups.
 	SecurityGroups []*string `json:"securityGroups,omitempty" xml:"securityGroups,omitempty" type:"Repeated"`
+	// Used to ensure the idempotency of the request.
+	//
 	// example:
 	//
 	// xxxx
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The Kibana private network connection ID.
+	//
 	// example:
 	//
-	// es-cn-27a3mul6l0***-kibana-internal
+	// es-cn-vo93ngti8000a****-kibana-internal-internal
 	PvlId *string `json:"pvlId,omitempty" xml:"pvlId,omitempty"`
 }
 

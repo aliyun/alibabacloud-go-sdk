@@ -16,6 +16,8 @@ type iUpdateIndexTemplateRequest interface {
 }
 
 type UpdateIndexTemplateRequest struct {
+	// A unique token used to ensure idempotence of the request. The client generates this value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
+	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****

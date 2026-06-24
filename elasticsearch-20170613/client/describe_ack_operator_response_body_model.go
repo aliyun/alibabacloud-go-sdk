@@ -16,7 +16,7 @@ type iDescribeAckOperatorResponseBody interface {
 }
 
 type DescribeAckOperatorResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *DescribeAckOperatorResponseBody) Validate() error {
 }
 
 type DescribeAckOperatorResponseBodyResult struct {
-	// The installation status of ES-operator. Valid values:
+	// The Operator installation status. Valid values:
 	//
-	// 	- deployed: ES-operator is installed.
+	// - deployed: installed
 	//
-	// 	- not-deploy: ES-operator is not installed.
+	// - not-deploy: not installed
 	//
-	// 	- failed: ES-operator fails to be installed.
+	// - failed: installation failed
 	//
-	// 	- unknown: The installation status of ES-operator is unknown.
+	// - unknown: unknown status.
 	//
 	// example:
 	//
 	// deployed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The version of ES-operator.
+	// The Operator version.
 	//
 	// example:
 	//

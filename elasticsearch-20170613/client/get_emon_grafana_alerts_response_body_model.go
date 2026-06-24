@@ -20,18 +20,30 @@ type iGetEmonGrafanaAlertsResponseBody interface {
 }
 
 type GetEmonGrafanaAlertsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// ""
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 08FA74C7-5654-4309-9729-D555AF587B7F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the Grafana alert list is retrieved. Valid values:
+	//
+	// - true: The alert list is retrieved.
+	//
+	// - false: The alert list failed to be retrieved.
+	//
 	// example:
 	//
 	// true

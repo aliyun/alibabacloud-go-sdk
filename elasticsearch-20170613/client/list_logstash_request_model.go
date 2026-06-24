@@ -26,43 +26,43 @@ type iListLogstashRequest interface {
 }
 
 type ListLogstashRequest struct {
-	// rg-acfm2h5vbzd\\*\\*\\*\\*
+	// The instance name. Fuzzy match is supported. For example, if you search for an instance named abc, instances named abc, abcde, xyabc, and xabcy may all be returned.
 	//
 	// example:
 	//
 	// ls-cn-abc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// [{"tagKey":"key1","tagValue":"value1"}]
+	// The instance ID.
 	//
 	// example:
 	//
 	// ls-cn-n6w1o5jq****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// ls-cn-n6w1o5jq\\*\\*\\*\\*
+	// The page number of the instance list. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// Details of the request header.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm2h5vbzd****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// 5.5.3_with_X-Pack
+	// The number of entries per page for paging. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// The number of entries returned per page.
+	// The instance tags.
 	//
 	// example:
 	//
 	// [{"tagKey":"key1","tagValue":"value1"}]
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The ID of the request.
+	// The instance version.
 	//
 	// example:
 	//

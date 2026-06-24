@@ -16,17 +16,17 @@ type iRestartCollectorResponseBody interface {
 }
 
 type RestartCollectorResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 84B4038A-AF38-4BF4-9FAD-EA92A4FFF00A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the shipper is restarted. Valid values:
+	// The returned result. Valid values:
 	//
-	// 	- true: The shipper is restarted.
+	// - true: The restart was successful.
 	//
-	// 	- false: The shipper fails to be restarted.
+	// - false: The restart failed.
 	//
 	// example:
 	//

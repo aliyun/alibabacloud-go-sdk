@@ -16,8 +16,10 @@ type iUpdateDynamicSettingsResponseBody interface {
 }
 
 type UpdateDynamicSettingsResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the dynamic settings were successfully updated.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateDynamicSettingsResponseBody) String() string {

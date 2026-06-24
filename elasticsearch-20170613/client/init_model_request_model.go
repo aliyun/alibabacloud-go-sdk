@@ -22,25 +22,34 @@ type iInitModelRequest interface {
 }
 
 type InitModelRequest struct {
+	// API key for the AI Search Open Platform
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// os-xfdddf*
 	ApiKey *string `json:"api_key,omitempty" xml:"api_key,omitempty"`
+	// Service registration endpoint of the AI Search Open Platform
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****.platform-cn-hangzhou-vpc.opensearch.aliyuncs.com
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// HTTP protocol type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https
-	HttpSchema *string                   `json:"http_schema,omitempty" xml:"http_schema,omitempty"`
-	Models     []*InitModelRequestModels `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
+	HttpSchema *string `json:"http_schema,omitempty" xml:"http_schema,omitempty"`
+	// Specify the models to initialize. If empty, all built-in models will be initialized.
+	Models []*InitModelRequestModels `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
+	// Workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -116,10 +125,28 @@ func (s *InitModelRequest) Validate() error {
 }
 
 type InitModelRequestModels struct {
+	// Model category
+	//
+	// - a. Text embedding: text_embedding
+	//
+	// - b. Reranking: rerank
+	//
+	// - c. Document segmentation: doc_split
+	//
+	// - d. Large Language Model (LLM) service: completion
+	//
+	// - e. Query analysis: query_analyze
+	//
+	// - f. Document content parsing: doc_analyze
+	//
+	// - g. Image content parsing: img_analyze
+	//
 	// example:
 	//
 	// text_embedding
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// Service ID of the Search Open Platform
+	//
 	// example:
 	//
 	// ops-text-embedding-**

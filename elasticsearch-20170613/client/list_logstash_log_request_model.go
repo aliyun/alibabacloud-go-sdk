@@ -24,25 +24,25 @@ type iListLogstashLogRequest interface {
 }
 
 type ListLogstashLogRequest struct {
-	// 20
+	// The beginning of the time range to query logs. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1531910852074
 	BeginTime *int64 `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	// The ID of the request.
+	// The end of the time range to query logs. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1531910852074
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The returned data.
+	// The page number of the instance list. Default value: 1. Minimum value: 1. Maximum value: 200.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// 1
+	// The keyword to query.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,23 @@ type ListLogstashLogRequest struct {
 	//
 	// host:10.7.xx.xx AND level:info AND content:opening
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The severity level of the log entry. Including trace, debug, info, warn, error, etc. (GC logs have no level).
+	// The number of entries per page for a paged query. Default value: 20. Minimum value: 1. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// 1531910852074
+	// The log type. Valid values:
+	//
+	// - LOGSTASH_INSTANCE_LOG: main log.
+	//
+	// - SEARCHSLOW: searching slow log.
+	//
+	// - INDEXINGSLOW: indexing slow log.
+	//
+	// - JVMLOG: GC log.
+	//
+	// - LOGSTASH_DEBUG_LOG: debug log.
 	//
 	// This parameter is required.
 	//

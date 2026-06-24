@@ -18,15 +18,16 @@ type iListDiagnoseReportIdsResponseBody interface {
 }
 
 type ListDiagnoseReportIdsResponseBody struct {
-	// The header of the response.
+	// The response headers.
 	Headers *ListDiagnoseReportIdsResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned results.
+	Result []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListDiagnoseReportIdsResponseBody) String() string {
@@ -74,7 +75,7 @@ func (s *ListDiagnoseReportIdsResponseBody) Validate() error {
 }
 
 type ListDiagnoseReportIdsResponseBodyHeaders struct {
-	// The total number of entries returned.
+	// The total number of records returned.
 	//
 	// example:
 	//

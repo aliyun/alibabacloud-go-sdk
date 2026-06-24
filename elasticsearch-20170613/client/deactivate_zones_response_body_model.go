@@ -16,17 +16,17 @@ type iDeactivateZonesResponseBody interface {
 }
 
 type DeactivateZonesResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result:
+	// The returned result. Valid values:
 	//
-	// - true: Zone offline successful
+	// - true: The zones are taken offline.
 	//
-	// - false: Zone offline failed
+	// - false: The zones failed to be taken offline.
 	//
 	// example:
 	//

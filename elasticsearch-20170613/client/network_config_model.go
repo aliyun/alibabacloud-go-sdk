@@ -30,26 +30,37 @@ type iNetworkConfig interface {
 type NetworkConfig struct {
 	LbReplica         *int32                            `json:"lbReplica,omitempty" xml:"lbReplica,omitempty"`
 	LoadBalanceConfig []*NetworkConfigLoadBalanceConfig `json:"loadBalanceConfig,omitempty" xml:"loadBalanceConfig,omitempty" type:"Repeated"`
+	// The load balancing type. Default value: DEFAULT.
+	//
 	// example:
 	//
 	// DEFAULT
 	LoadBalanceType *string `json:"loadBalanceType,omitempty" xml:"loadBalanceType,omitempty"`
+	// The network type. Only Virtual Private Cloud (VPC) is supported.
+	//
 	// example:
 	//
 	// vpc
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-bp1xk0naij7jx4ph1****
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The zone ID of the network.
+	//
 	// example:
 	//
 	// cn-hangzhou-e
 	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-bp1ogpdintii5qvyx****
-	VswitchId        *string         `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
+	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
+	// The IP whitelist group configuration. You do not need to set this parameter when you call the createInstance operation to create an instance because the setting does not take effect during instance creation. Use a separate API operation to configure whitelists for different roles.
 	WhiteIpGroupList []*WhiteIpGroup `json:"whiteIpGroupList,omitempty" xml:"whiteIpGroupList,omitempty" type:"Repeated"`
 }
 
@@ -156,7 +167,10 @@ func (s *NetworkConfig) Validate() error {
 }
 
 type NetworkConfigLoadBalanceConfig struct {
+	// 可用区信息，如: cn-hangzhou-i
 	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	// vswitchId
+	//
 	// example:
 	//
 	// vsw-xxxx

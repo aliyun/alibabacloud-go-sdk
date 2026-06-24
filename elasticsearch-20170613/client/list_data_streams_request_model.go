@@ -16,10 +16,18 @@ type iListDataStreamsRequest interface {
 }
 
 type ListDataStreamsRequest struct {
+	// Specifies whether to display only managed indexes. Valid values:
+	//
+	// - true: displays only managed indexes.
+	//
+	// - false (default): displays all indexes.
+	//
 	// example:
 	//
 	// false
 	IsManaged *bool `json:"isManaged,omitempty" xml:"isManaged,omitempty"`
+	// The data stream name.
+	//
 	// example:
 	//
 	// Log1

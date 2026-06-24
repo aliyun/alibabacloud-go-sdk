@@ -16,13 +16,13 @@ type iListAlternativeSnapshotReposResponseBody interface {
 }
 
 type ListAlternativeSnapshotReposResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The return results.
+	// The returned result.
 	Result []*ListAlternativeSnapshotReposResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *ListAlternativeSnapshotReposResponseBody) Validate() error {
 }
 
 type ListAlternativeSnapshotReposResponseBodyResult struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// es-cn-6ja1ro4jt000c****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The address of the repository.
+	// The repository address.
 	//
 	// example:
 	//

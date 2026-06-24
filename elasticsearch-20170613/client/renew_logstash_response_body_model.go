@@ -16,7 +16,7 @@ type iRenewLogstashResponseBody interface {
 }
 
 type RenewLogstashResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -24,9 +24,9 @@ type RenewLogstashResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned result. Valid values:
 	//
-	// 	- true: The cluster is renewed.
+	// - true: The renewal was successful.
 	//
-	// 	- false: The cluster fails to be renewed.
+	// - false: The renewal failed.
 	//
 	// example:
 	//

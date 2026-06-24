@@ -14,6 +14,8 @@ type iGetRegionConfigurationRequest interface {
 }
 
 type GetRegionConfigurationRequest struct {
+	// The current zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-f

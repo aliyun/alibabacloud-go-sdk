@@ -22,11 +22,11 @@ type InstallAckOperatorResponseBody struct {
 	//
 	// EFA88951-7A6F-4A8E-AB8F-2BB7132BA751
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether ES-operator is installed. Valid values:
+	// The returned result. Valid values:
 	//
-	// 	- true
+	// - true: The installation was successful.
 	//
-	// 	- false
+	// - false: The installation failed.
 	//
 	// example:
 	//

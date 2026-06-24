@@ -16,11 +16,14 @@ type iDescribeConnectableClustersResponseBody interface {
 }
 
 type DescribeConnectableClustersResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D***
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*DescribeConnectableClustersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*DescribeConnectableClustersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s DescribeConnectableClustersResponseBody) String() string {
@@ -63,10 +66,14 @@ func (s *DescribeConnectableClustersResponseBody) Validate() error {
 }
 
 type DescribeConnectableClustersResponseBodyResult struct {
+	// The instance ID of instances that can establish private network peering.
+	//
 	// example:
 	//
 	// es-cn-xxx
 	Instances *string `json:"instances,omitempty" xml:"instances,omitempty"`
+	// The network type of the instance.
+	//
 	// example:
 	//
 	// vpc

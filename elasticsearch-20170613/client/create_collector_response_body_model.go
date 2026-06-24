@@ -16,11 +16,14 @@ type iCreateCollectorResponseBody interface {
 }
 
 type CreateCollectorResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8466BDFB-C513-4B8D-B4E3-5AB256AB****
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *CreateCollectorResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *CreateCollectorResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CreateCollectorResponseBody) String() string {
@@ -59,6 +62,8 @@ func (s *CreateCollectorResponseBody) Validate() error {
 }
 
 type CreateCollectorResponseBodyResult struct {
+	// The ID of the collector that is created.
+	//
 	// example:
 	//
 	// ct-cn-4135is2tj194p****

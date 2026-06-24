@@ -16,17 +16,17 @@ type iRenewInstanceResponseBody interface {
 }
 
 type RenewInstanceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return results:
+	// The returned result. Valid values:
 	//
-	// 	- true: renewal successfully
+	// - true: The renewal was successful.
 	//
-	// 	- false: renewal failed
+	// - false: The renewal failed.
 	//
 	// example:
 	//

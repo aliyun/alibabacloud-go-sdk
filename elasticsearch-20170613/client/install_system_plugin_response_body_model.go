@@ -16,14 +16,13 @@ type iInstallSystemPluginResponseBody interface {
 }
 
 type InstallSystemPluginResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of plug-ins to be installed.
-	Result []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s InstallSystemPluginResponseBody) String() string {

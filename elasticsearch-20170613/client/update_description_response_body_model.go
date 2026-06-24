@@ -16,11 +16,14 @@ type iUpdateDescriptionResponseBody interface {
 }
 
 type UpdateDescriptionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// FDF34727-1664-44C1-A8DA-3EB72D60****
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *UpdateDescriptionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *UpdateDescriptionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s UpdateDescriptionResponseBody) String() string {
@@ -59,6 +62,8 @@ func (s *UpdateDescriptionResponseBody) Validate() error {
 }
 
 type UpdateDescriptionResponseBodyResult struct {
+	// The updated instance name.
+	//
 	// example:
 	//
 	// aliyunes_test_name

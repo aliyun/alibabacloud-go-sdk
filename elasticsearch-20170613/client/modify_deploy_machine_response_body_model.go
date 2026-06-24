@@ -22,11 +22,11 @@ type ModifyDeployMachineResponseBody struct {
 	//
 	// C37CE536-6C0F-4778-9B59-6D94C7F7EB63
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the ECS instances are changed. Valid values:
+	// Indicates whether the update is successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//

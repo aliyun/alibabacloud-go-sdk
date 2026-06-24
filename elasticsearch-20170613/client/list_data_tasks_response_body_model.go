@@ -16,13 +16,13 @@ type iListDataTasksResponseBody interface {
 }
 
 type ListDataTasksResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The return results.
+	// The returned results.
 	Result []*ListDataTasksResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -66,23 +66,23 @@ func (s *ListDataTasksResponseBody) Validate() error {
 }
 
 type ListDataTasksResponseBodyResult struct {
-	// The time when the site monitoring task was created.
+	// The time when the task was created.
 	//
 	// example:
 	//
 	// 2020-07-30 06:32:18
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The information of the target cluster.
+	// The destination cluster information.
 	SinkCluster *ListDataTasksResponseBodyResultSinkCluster `json:"sinkCluster,omitempty" xml:"sinkCluster,omitempty" type:"Struct"`
-	// The information about the source cluster.
+	// The source cluster information.
 	SourceCluster *ListDataTasksResponseBodyResultSourceCluster `json:"sourceCluster,omitempty" xml:"sourceCluster,omitempty" type:"Struct"`
-	// The status of the task.
+	// The task status.
 	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
@@ -158,43 +158,43 @@ func (s *ListDataTasksResponseBodyResult) Validate() error {
 }
 
 type ListDataTasksResponseBodyResultSinkCluster struct {
-	// The type of the target cluster. Default value: elasticsearch.
+	// The destination cluster type. Default value: elasticsearch.
 	//
 	// example:
 	//
 	// 1
 	DataSourceType *string `json:"dataSourceType,omitempty" xml:"dataSourceType,omitempty"`
-	// The public network access address of the target cluster.
+	// The public network access address of the destination cluster.
 	//
 	// example:
 	//
 	// http://192.168.xx.xx:4101
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The target index.
+	// The destination index.
 	//
 	// example:
 	//
 	// product_info
 	Index *string `json:"index,omitempty" xml:"index,omitempty"`
-	// The type of the destination index.
+	// The index type.
 	//
 	// example:
 	//
 	// _doc
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The ID of the VPC to which the cluster belongs.
+	// The ID of the virtual private cloud (VPC) where the cluster resides.
 	//
 	// example:
 	//
 	// vpc-2ze55voww95g82gak****
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The instance ID or Server Load Balancer (SLB) ID of the current cluster.
+	// The instance ID of the current cluster or the load balancing SLB (Server Load Balancer) instance ID.
 	//
 	// example:
 	//
 	// es-cn-09k1rnu3g0002****-worker
 	VpcInstanceId *string `json:"vpcInstanceId,omitempty" xml:"vpcInstanceId,omitempty"`
-	// The access port number of the cluster.
+	// The port number used to access the cluster.
 	//
 	// example:
 	//
@@ -278,13 +278,13 @@ func (s *ListDataTasksResponseBodyResultSinkCluster) Validate() error {
 }
 
 type ListDataTasksResponseBodyResultSourceCluster struct {
-	// The type of the source cluster. Default value: elasticsearch.
+	// The source cluster type. Default value: elasticsearch.
 	//
 	// example:
 	//
 	// 1
 	DataSourceType *string `json:"dataSourceType,omitempty" xml:"dataSourceType,omitempty"`
-	// The index whose data you want to migrate.
+	// The index to be migrated.
 	//
 	// example:
 	//
@@ -296,19 +296,19 @@ type ListDataTasksResponseBodyResultSourceCluster struct {
 	//
 	// {\\"_doc\\":{\\"properties\\":{\\"user\\":{\\"properties\\":{\\"last\\":{\\"type\\":\\"text\\",...}}}}}}
 	Mapping *string `json:"mapping,omitempty" xml:"mapping,omitempty"`
-	// The routing field to index the table. It is set to the primary key by default.
+	// The routing field of the index. The primary key field is used by default.
 	//
 	// example:
 	//
 	// _id
 	Routing *string `json:"routing,omitempty" xml:"routing,omitempty"`
-	// The Settings of the cluster.
+	// The Settings configuration of the cluster.
 	//
 	// example:
 	//
 	// {\\n  \\"index\\": {\\n    \\"replication\\": {\\n}.....}}
 	Settings *string `json:"settings,omitempty" xml:"settings,omitempty"`
-	// The type of the destination index.
+	// The index type.
 	//
 	// example:
 	//

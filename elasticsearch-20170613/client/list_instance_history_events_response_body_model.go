@@ -18,12 +18,16 @@ type iListInstanceHistoryEventsResponseBody interface {
 }
 
 type ListInstanceHistoryEventsResponseBody struct {
+	// The response headers.
 	Headers *ListInstanceHistoryEventsResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D1A6830A-F59B-4E05-BFAC-9496C21DBBA7
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListInstanceHistoryEventsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned results.
+	Result []*ListInstanceHistoryEventsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListInstanceHistoryEventsResponseBody) String() string {
@@ -80,14 +84,20 @@ func (s *ListInstanceHistoryEventsResponseBody) Validate() error {
 }
 
 type ListInstanceHistoryEventsResponseBodyHeaders struct {
+	// The total number of records.
+	//
 	// example:
 	//
 	// 15
 	XTotalCount *int64 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
+	// The total number of failures.
+	//
 	// example:
 	//
 	// 2
 	XTotalFailed *int64 `json:"X-Total-Failed,omitempty" xml:"X-Total-Failed,omitempty"`
+	// The total number of successes.
+	//
 	// example:
 	//
 	// 13
@@ -134,42 +144,86 @@ func (s *ListInstanceHistoryEventsResponseBodyHeaders) Validate() error {
 }
 
 type ListInstanceHistoryEventsResponseBodyResult struct {
+	// The ECS instance ID.
+	//
 	// example:
 	//
 	// i-2ze8s9cjdf2cv969****
 	EcsId *string `json:"ecsId,omitempty" xml:"ecsId,omitempty"`
+	// The event creation time.
+	//
 	// example:
 	//
 	// 2017-12-07T00:00:00Z
 	EventCreateTime *string `json:"eventCreateTime,omitempty" xml:"eventCreateTime,omitempty"`
+	// The event status. Valid values:
+	//
+	// - FAILED: failed
+	//
+	// - EXECUTED: executed
+	//
+	// - EXECUTING: executing.
+	//
 	// example:
 	//
 	// EXECUTED
 	EventCycleStatus *string `json:"eventCycleStatus,omitempty" xml:"eventCycleStatus,omitempty"`
+	// The event execution time.
+	//
 	// example:
 	//
 	// 2017-12-07T00:00:00Z
 	EventExecuteTime *string `json:"eventExecuteTime,omitempty" xml:"eventExecuteTime,omitempty"`
+	// The event completion time.
+	//
 	// example:
 	//
 	// 2017-12-07T00:00:00Z
 	EventFinashTime *string `json:"eventFinashTime,omitempty" xml:"eventFinashTime,omitempty"`
+	// The event level. Valid values:
+	//
+	// - INFO: information
+	//
+	// - WARN: warning
+	//
+	// - CRITICAL: critical.
+	//
 	// example:
 	//
 	// INFO
 	EventLevel *string `json:"eventLevel,omitempty" xml:"eventLevel,omitempty"`
+	// The event type. Valid values:
+	//
+	// - ECS:AUTO_RESTART: Automatic restart of an ECS node.
+	//
+	// - Instance:InstanceFailure.Reboot:Executed: ECS instance reboot completed (instance error).
+	//
+	// - Instance:InstanceFailure.Reboot:Executing: ECS instance reboot started (instance error).
+	//
+	// - Instance:SystemFailure.Reboot:Executed: ECS instance reboot completed (system error).
+	//
+	// - Instance:SystemFailure.Reboot:Executing: ECS instance reboot started (system error).
+	//
+	// - Instance:SystemFailure.Reboot:Failed: ECS instance reboot failed (system error).
+	//
 	// example:
 	//
 	// ECS:AUTO_RESTART
 	EventType *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// es-cn-2r42l7a740005****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The IP address of the node that generated the event.
+	//
 	// example:
 	//
 	// 10.1.xx.xx
 	NodeIP *string `json:"nodeIP,omitempty" xml:"nodeIP,omitempty"`
+	// The region ID where the event occurred.
+	//
 	// example:
 	//
 	// cn-hangzhou

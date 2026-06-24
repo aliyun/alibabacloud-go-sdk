@@ -16,13 +16,13 @@ type iDescribeDiagnosisSettingsResponseBody interface {
 }
 
 type DescribeDiagnosisSettingsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5E82B8A8-EED7-4557-A6E9-D1AD3E58****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The return results.
+	// The returned result.
 	Result *DescribeDiagnosisSettingsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,18 @@ func (s *DescribeDiagnosisSettingsResponseBody) Validate() error {
 }
 
 type DescribeDiagnosisSettingsResponseBodyResult struct {
-	// Scenarios of intelligent maintenance.
+	AuthorizationStatus  *bool   `json:"authorizationStatus,omitempty" xml:"authorizationStatus,omitempty"`
+	DailyLimit           *int32  `json:"dailyLimit,omitempty" xml:"dailyLimit,omitempty"`
+	DailyScheduleEnabled *bool   `json:"dailyScheduleEnabled,omitempty" xml:"dailyScheduleEnabled,omitempty"`
+	DiagnosisMode        *string `json:"diagnosisMode,omitempty" xml:"diagnosisMode,omitempty"`
+	// The scenario of intelligent O&M.
 	//
 	// example:
 	//
 	// Business Search
-	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The timestamp of the last update for Intelligent Maintenance scenarios.
+	Scene         *string   `json:"scene,omitempty" xml:"scene,omitempty"`
+	SelectedItems []*string `json:"selectedItems,omitempty" xml:"selectedItems,omitempty" type:"Repeated"`
+	// The timestamp when the intelligent O&M scenario was last updated.
 	//
 	// example:
 	//
@@ -84,16 +89,61 @@ func (s DescribeDiagnosisSettingsResponseBodyResult) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDiagnosisSettingsResponseBodyResult) GetAuthorizationStatus() *bool {
+	return s.AuthorizationStatus
+}
+
+func (s *DescribeDiagnosisSettingsResponseBodyResult) GetDailyLimit() *int32 {
+	return s.DailyLimit
+}
+
+func (s *DescribeDiagnosisSettingsResponseBodyResult) GetDailyScheduleEnabled() *bool {
+	return s.DailyScheduleEnabled
+}
+
+func (s *DescribeDiagnosisSettingsResponseBodyResult) GetDiagnosisMode() *string {
+	return s.DiagnosisMode
+}
+
 func (s *DescribeDiagnosisSettingsResponseBodyResult) GetScene() *string {
 	return s.Scene
+}
+
+func (s *DescribeDiagnosisSettingsResponseBodyResult) GetSelectedItems() []*string {
+	return s.SelectedItems
 }
 
 func (s *DescribeDiagnosisSettingsResponseBodyResult) GetUpdateTime() *int64 {
 	return s.UpdateTime
 }
 
+func (s *DescribeDiagnosisSettingsResponseBodyResult) SetAuthorizationStatus(v bool) *DescribeDiagnosisSettingsResponseBodyResult {
+	s.AuthorizationStatus = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSettingsResponseBodyResult) SetDailyLimit(v int32) *DescribeDiagnosisSettingsResponseBodyResult {
+	s.DailyLimit = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSettingsResponseBodyResult) SetDailyScheduleEnabled(v bool) *DescribeDiagnosisSettingsResponseBodyResult {
+	s.DailyScheduleEnabled = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSettingsResponseBodyResult) SetDiagnosisMode(v string) *DescribeDiagnosisSettingsResponseBodyResult {
+	s.DiagnosisMode = &v
+	return s
+}
+
 func (s *DescribeDiagnosisSettingsResponseBodyResult) SetScene(v string) *DescribeDiagnosisSettingsResponseBodyResult {
 	s.Scene = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSettingsResponseBodyResult) SetSelectedItems(v []*string) *DescribeDiagnosisSettingsResponseBodyResult {
+	s.SelectedItems = v
 	return s
 }
 

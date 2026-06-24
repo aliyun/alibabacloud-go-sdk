@@ -18,11 +18,11 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
-	// A tag.
+	// The resource IDs.
 	//
 	// This parameter is required.
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	// The request ID.
+	// The resource type. Set this parameter to INSTANCE.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type TagResourcesRequest struct {
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The value of the tag.
+	// The tag information.
 	//
 	// This parameter is required.
 	Tags []*TagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -85,7 +85,7 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTags struct {
-	// The returned object.
+	// The tag key.
 	//
 	// This parameter is required.
 	//
@@ -93,11 +93,7 @@ type TagResourcesRequestTags struct {
 	//
 	// env
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Indicates whether tags are added to the clusters. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// The tag value.
 	//
 	// This parameter is required.
 	//

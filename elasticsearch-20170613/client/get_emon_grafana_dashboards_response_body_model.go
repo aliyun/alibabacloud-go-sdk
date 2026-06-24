@@ -20,18 +20,30 @@ type iGetEmonGrafanaDashboardsResponseBody interface {
 }
 
 type GetEmonGrafanaDashboardsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// ""
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1E9D9827-2092-4385-9DA1-FC5A8D1DB3F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the Grafana dashboard list is retrieved. Valid values:
+	//
+	// - true: succeeded.
+	//
+	// - false: failed.
+	//
 	// example:
 	//
 	// true

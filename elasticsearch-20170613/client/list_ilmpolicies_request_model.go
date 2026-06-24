@@ -14,6 +14,8 @@ type iListILMPoliciesRequest interface {
 }
 
 type ListILMPoliciesRequest struct {
+	// The name of the index lifecycle policy.
+	//
 	// example:
 	//
 	// policy-1

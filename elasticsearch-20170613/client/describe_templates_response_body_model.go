@@ -16,11 +16,14 @@ type iDescribeTemplatesResponseBody interface {
 }
 
 type DescribeTemplatesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*DescribeTemplatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*DescribeTemplatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s DescribeTemplatesResponseBody) String() string {
@@ -63,10 +66,22 @@ func (s *DescribeTemplatesResponseBody) Validate() error {
 }
 
 type DescribeTemplatesResponseBodyResult struct {
+	// The template content.
+	//
 	// example:
 	//
 	// {\\n\\t\\"persistent\\":{\\n\\t\\t\\"search\\":{\\n\\t\\t\\t\\"max_buckets\\":\\"10000\\"\\n\\t\\t}\\n\\t}\\n}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The template name. Valid values:
+	//
+	// - staticSettings: elasticsearch.yml configuration
+	//
+	// - ilmPolicy: index lifecycle configuration
+	//
+	// - indexTemplate: index template configuration
+	//
+	// - dynamicSettings: cluster dynamic configuration.
+	//
 	// example:
 	//
 	// dynamicSettings

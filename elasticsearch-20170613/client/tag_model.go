@@ -16,10 +16,14 @@ type iTag interface {
 }
 
 type Tag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// env
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// dev

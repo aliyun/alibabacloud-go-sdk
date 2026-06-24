@@ -16,10 +16,18 @@ type iValidateSlrPermissionResponseBody interface {
 }
 
 type ValidateSlrPermissionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// BC4ED7DD-8C84-49B5-8A95-456F82E44D13
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the service-linked role has been created. Valid values:
+	//
+	// - true: The role has been created.
+	//
+	// - false: The role has not been created.
+	//
 	// example:
 	//
 	// true

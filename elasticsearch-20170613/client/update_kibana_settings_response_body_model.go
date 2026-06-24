@@ -16,17 +16,17 @@ type iUpdateKibanaSettingsResponseBody interface {
 }
 
 type UpdateKibanaSettingsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DC*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return results:
+	// The returned result. Valid values:
 	//
-	// 	- true: The Kibana language modified successfully
+	// - true: The Kibana language was modified.
 	//
-	// 	- false: The Kibana language modified failed
+	// - false: The Kibana language failed to be modified.
 	//
 	// example:
 	//

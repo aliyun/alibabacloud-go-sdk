@@ -17,7 +17,7 @@ type iEstimatedLogstashRestartTimeRequest interface {
 
 type EstimatedLogstashRestartTimeRequest struct {
   Body *string `json:"body,omitempty" xml:"body,omitempty"`
-  // Specifies whether to forcibly restart the cluster. Default value: false.
+  // Specifies whether to forcibly restart the instance. Default value: false.
   // 
   // example:
   // 

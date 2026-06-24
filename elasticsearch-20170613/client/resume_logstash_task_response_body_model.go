@@ -20,29 +20,29 @@ type iResumeLogstashTaskResponseBody interface {
 }
 
 type ResumeLogstashTaskResponseBody struct {
-	// The error code returned. If the API operation is successfully called, this parameter is not returned.
+	// The error code. This parameter is not returned if the call is successful.
 	//
 	// example:
 	//
 	// InstanceNotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned. If the API operation is successfully called, this parameter is not returned.
+	// The error message. This parameter is not returned if the call is successful.
 	//
 	// example:
 	//
 	// The specified cluster does not exist. Check the cluster status and try again.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0FA05123-745C-42FD-A69B-AFF48EF9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the change task is resumed. Valid values:
+	// The returned result. Valid values:
 	//
-	// 	- true: The change task is resumed.
+	// - true: The task is resumed.
 	//
-	// 	- false: The change task fails to be resumed.
+	// - false: The task failed to be resumed.
 	//
 	// example:
 	//

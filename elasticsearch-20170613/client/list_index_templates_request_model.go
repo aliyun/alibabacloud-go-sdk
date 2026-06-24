@@ -18,14 +18,20 @@ type iListIndexTemplatesRequest interface {
 }
 
 type ListIndexTemplatesRequest struct {
+	// The index template name.
+	//
 	// example:
 	//
 	// my-template
 	IndexTemplate *string `json:"indexTemplate,omitempty" xml:"indexTemplate,omitempty"`
+	// The page number of the instance list. Minimum value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 5
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries per page for a paged query. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 50

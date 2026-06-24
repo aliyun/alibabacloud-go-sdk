@@ -16,13 +16,13 @@ type iUpdateKibanaWhiteIpsResponseBody interface {
 }
 
 type UpdateKibanaWhiteIpsResponseBody struct {
-	// The details of the Elasticsearch cluster.
+	// The request ID.
 	//
 	// example:
 	//
 	// E5EF11F1-DBAE-4020-AC24-DFA6C4345CAE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The private IP address whitelists for access to the Kibana console of the cluster.
+	// The details of the Elasticsearch instance.
 	Result *UpdateKibanaWhiteIpsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,11 +62,11 @@ func (s *UpdateKibanaWhiteIpsResponseBody) Validate() error {
 }
 
 type UpdateKibanaWhiteIpsResponseBodyResult struct {
-	// The public IP address whitelists for access to the Kibana console of the cluster.
+	// The Kibana access whitelist.
 	KibanaIPWhitelist []*string `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
-	// The private IP address whitelists for access to the Kibana console of the cluster.
+	// The Kibana internal-facing whitelist.
 	KibanaPrivateIPWhitelist []*string `json:"kibanaPrivateIPWhitelist,omitempty" xml:"kibanaPrivateIPWhitelist,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC).
+	// The network configuration.
 	NetworkConfig *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
 }
 
@@ -115,31 +115,31 @@ func (s *UpdateKibanaWhiteIpsResponseBodyResult) Validate() error {
 }
 
 type UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig struct {
-	// The IP address whitelists.
+	// The network type.
 	//
 	// example:
 	//
 	// vpc
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The ID of the vSwitch.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-bp1jy348ibzulk6hn****
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The network type.
+	// The region where the instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou-h
 	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
-	// The region ID.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp1a0mifpletdd1da****
 	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
-	// The IP address whitelists.
+	// The whitelist group list.
 	WhiteIpGroupList []*UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList `json:"whiteIpGroupList,omitempty" xml:"whiteIpGroupList,omitempty" type:"Repeated"`
 }
 
@@ -210,14 +210,16 @@ func (s *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig) Validate() error {
 }
 
 type UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList struct {
-	// The IP addresses in the whitelist.
+	// The name of the whitelist group.
 	//
 	// example:
 	//
 	// test_group_name
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The IP addresses in the whitelist.
+	// The list of IP addresses in the whitelist group.
 	Ips []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+	// The whitelist type.
+	//
 	// example:
 	//
 	// PUBLIC_KIBANA

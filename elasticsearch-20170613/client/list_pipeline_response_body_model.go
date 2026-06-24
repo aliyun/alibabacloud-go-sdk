@@ -18,15 +18,15 @@ type iListPipelineResponseBody interface {
 }
 
 type ListPipelineResponseBody struct {
-	// The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
+	// The response headers.
 	Headers *ListPipelineResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The response.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time when the pipeline was created.
+	// The returned results.
 	Result []*ListPipelineResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -84,7 +84,7 @@ func (s *ListPipelineResponseBody) Validate() error {
 }
 
 type ListPipelineResponseBodyHeaders struct {
-	// The time when the pipeline was updated.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -114,26 +114,32 @@ func (s *ListPipelineResponseBodyHeaders) Validate() error {
 }
 
 type ListPipelineResponseBodyResult struct {
+	// The time when the pipeline was created.
+	//
 	// example:
 	//
 	// 2020-08-05T03:10:38.188Z
 	GmtCreatedTime *string `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
+	// The time when the pipeline was last updated.
+	//
 	// example:
 	//
 	// 2020-08-05T08:43:31.757Z
 	GmtUpdateTime *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
-	// The status of the pipeline. Supported:
-	//
-	// 	- NOT_DEPLOYED: The node is not deployed.
-	//
-	// 	- RUNNING
-	//
-	// 	- DELETED: Deleted. The console does not display this status.
+	// The pipeline ID.
 	//
 	// example:
 	//
 	// pipeline_test
 	PipelineId *string `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
+	// The pipeline status. Valid values:
+	//
+	// - NOT_DEPLOYED: not deployed.
+	//
+	// - RUNNING: running.
+	//
+	// - DELETED: deleted. This status is not displayed in the console.
+	//
 	// example:
 	//
 	// NOT_DEPLOYED

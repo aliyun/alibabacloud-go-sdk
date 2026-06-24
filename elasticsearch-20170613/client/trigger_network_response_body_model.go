@@ -16,10 +16,18 @@ type iTriggerNetworkResponseBody interface {
 }
 
 type TriggerNetworkResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A5D8E74-565C-43DC-B031-29289FA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result. Valid values:
+	//
+	// - true: The operation was successful.
+	//
+	// - false: The operation failed.
+	//
 	// example:
 	//
 	// true

@@ -16,13 +16,14 @@ type iPluginAnalysisResponseBody interface {
 }
 
 type PluginAnalysisResponseBody struct {
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*PluginAnalysisResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return Result.
+	Result []*PluginAnalysisResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s PluginAnalysisResponseBody) String() string {
@@ -65,22 +66,32 @@ func (s *PluginAnalysisResponseBody) Validate() error {
 }
 
 type PluginAnalysisResponseBodyResult struct {
+	// Plugin Description.
+	//
 	// example:
 	//
 	// plugin description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Plugin version.
+	//
 	// example:
 	//
 	// 8.17.0
 	ElasticsearchVersion *string `json:"elasticsearchVersion,omitempty" xml:"elasticsearchVersion,omitempty"`
+	// Plugin Name.
+	//
 	// example:
 	//
 	// plugin_name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Plugin security policy.
+	//
 	// example:
 	//
 	// null
 	SecurityPolicy *string `json:"securityPolicy,omitempty" xml:"securityPolicy,omitempty"`
+	// Plugin Version.
+	//
 	// example:
 	//
 	// 8.17.0

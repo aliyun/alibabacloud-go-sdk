@@ -16,10 +16,18 @@ type iValidateTransferableNodesResponseBody interface {
 }
 
 type ValidateTransferableNodesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result. Valid values:
+	//
+	// - true: The data can be migrated.
+	//
+	// - false: The data cannot be migrated.
+	//
 	// example:
 	//
 	// true

@@ -20,21 +20,23 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The labels of the resource.
+	// The response header information. This parameter is empty and is for reference only. Do not create a dependency on this parameter in your program.
+	//
+	// > This parameter is not included in the response example.
 	Headers *ListTagResourcesResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The number of resources to query.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of resources that have tags.
+	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6D******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of the resource. Fixed to `ALIYUN::ELASTICSEARCH::INSTANCE`.
+	// The tag resource group.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -97,7 +99,7 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyHeaders struct {
-	// The value of the tag.
+	// The resource count of TagResource resources found.
 	//
 	// example:
 	//
@@ -127,7 +129,7 @@ func (s *ListTagResourcesResponseBodyHeaders) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// Indicates the ID of a resource.
+	// The tag resource.
 	TagResource []*ListTagResourcesResponseBodyTagResourcesTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
 }
 
@@ -162,19 +164,25 @@ func (s *ListTagResourcesResponseBodyTagResources) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
+	// The resource ID.
+	//
 	// example:
 	//
 	// es-cn-oew1q8bev0002****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. The value is fixed as `ALIYUN::ELASTICSEARCH::INSTANCE`.
+	//
 	// example:
 	//
 	// ALIYUN::ELASTICSEARCH::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag key.
+	//
 	// example:
 	//
 	// env
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag key.
+	// The tag value.
 	//
 	// example:
 	//

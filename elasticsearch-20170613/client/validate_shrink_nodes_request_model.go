@@ -20,22 +20,29 @@ type iValidateShrinkNodesRequest interface {
 }
 
 type ValidateShrinkNodesRequest struct {
+	// The request body.
 	Body []*ValidateShrinkNodesRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	// The number of nodes.
+	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The ID of the request.
+	// Specifies whether to ignore the cluster health status.
+	//
+	// - true: ignores the cluster health status.
+	//
+	// - false (default): does not ignore the cluster health status.
 	//
 	// example:
 	//
 	// false
 	IgnoreStatus *bool `json:"ignoreStatus,omitempty" xml:"ignoreStatus,omitempty"`
-	// Returned results:
+	// The type of nodes to scale in. Valid values:
 	//
-	// 	- true: can be scaled in
+	// - WORKER: hot node
 	//
-	// 	- false: cannot be scaled in.
+	// - WORKER_WARM: warm node
 	//
 	// This parameter is required.
 	//
@@ -103,22 +110,36 @@ func (s *ValidateShrinkNodesRequest) Validate() error {
 }
 
 type ValidateShrinkNodesRequestBody struct {
+	// The IP address of the node.
+	//
 	// example:
 	//
 	// 192.168.xx.xx
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The node name of the cloud-native ACK-based cluster. You can call the [ListAllNode](https://help.aliyun.com/document_detail/183958.html) operation to obtain the node name.
+	//
 	// example:
 	//
 	// es-cn-pl32xxxxxxx-data-f-1
 	HostName *string `json:"hostName,omitempty" xml:"hostName,omitempty"`
+	// The node type. Valid values:
+	//
+	// - WORKER: hot node
+	//
+	// - WORKER_WARM: warm node
+	//
 	// example:
 	//
 	// WORKER
 	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
+	// The access port number of the node.
+	//
 	// example:
 	//
 	// 9200
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The zone ID of the node in the instance. For example, the zone ID of China (Shanghai) Zone C is cn-shanghai-c.
+	//
 	// example:
 	//
 	// cn-shanghai-c

@@ -16,10 +16,18 @@ type iCloseHttpsResponseBody interface {
 }
 
 type CloseHttpsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result. Valid values:
+	//
+	// - true: The HTTPS protocol is disabled.
+	//
+	// - false: The HTTPS protocol failed to be disabled.
+	//
 	// example:
 	//
 	// true

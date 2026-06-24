@@ -24,37 +24,41 @@ type iListEcsInstancesRequest interface {
 }
 
 type ListEcsInstancesRequest struct {
-	// test
+	// The list of ECS instance IDs. The value can be a JSON array that consists of up to 100 instance IDs. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// ["i-bp13y63575oypr9d****","i-bp1gyhphjaj73jsr****"]
 	EcsInstanceIds *string `json:"ecsInstanceIds,omitempty" xml:"ecsInstanceIds,omitempty"`
-	// [{ "tagKey":"a","tagValue":"b"}]
+	// The name of the ECS instance.
 	//
 	// example:
 	//
 	// test
 	EcsInstanceName *string `json:"ecsInstanceName,omitempty" xml:"ecsInstanceName,omitempty"`
-	// 10
+	// The page number of the returned results. Maximum value: 500.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// ["i-bp13y63575oypr9d\\*\\*\\*\\*","i-bp1gyhphjaj73jsr\\*\\*\\*\\*"]
+	// The number of results per page. Default value: 10. Maximum value: 500.
 	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// vpc-bp16k1dvzxtmagcva\\*\\*\\*\\*
+	// Instance tags of the ECS instance. The following fields must be included:
+	//
+	// - tagKey: instance tag key.
+	//
+	// - tagValue: instance tag value.
 	//
 	// example:
 	//
 	// [{ "tagKey":"a","tagValue":"b"}]
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The ID of the request.
+	// The ID of the VPC where the ECS instance resides.
 	//
 	// example:
 	//

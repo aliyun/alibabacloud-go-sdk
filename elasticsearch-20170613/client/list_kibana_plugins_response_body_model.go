@@ -18,7 +18,7 @@ type iListKibanaPluginsResponseBody interface {
 }
 
 type ListKibanaPluginsResponseBody struct {
-	// The request header.
+	// The request headers.
 	Headers *ListKibanaPluginsResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListKibanaPluginsResponseBody struct {
 	//
 	// 11234B4A-34CE-473B-8E61-AD95702E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the plug-ins.
+	// The plugin information returned by the current request.
 	Result []*ListKibanaPluginsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -114,31 +114,31 @@ func (s *ListKibanaPluginsResponseBodyHeaders) Validate() error {
 }
 
 type ListKibanaPluginsResponseBodyResult struct {
-	// The description of the plug-in.
+	// The plugin description.
 	//
 	// example:
 	//
 	// Customize DSL statements to query data.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the plug-in.
+	// The plugin name.
 	//
 	// example:
 	//
 	// bsearch_querybuilder
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The source of the plug-in.
+	// The source of the plugin.
 	//
 	// example:
 	//
 	// SYSTEM
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The URL of the introduction to the plug-in. The value null is supported.
+	// The URL of the plugin introduction. The value can be null.
 	//
 	// example:
 	//
 	// https://xxxx
 	SpecificationUrl *string `json:"specificationUrl,omitempty" xml:"specificationUrl,omitempty"`
-	// The installation status of the plug-in.
+	// The installation status of the plugin.
 	//
 	// example:
 	//

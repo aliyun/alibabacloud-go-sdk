@@ -18,10 +18,14 @@ type iListComponentIndicesRequest interface {
 }
 
 type ListComponentIndicesRequest struct {
+	// The name of the composable template.
+	//
 	// example:
 	//
 	// template
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The page number for paging. Default value: 1.
+	//
 	// if can be null:
 	// true
 	//
@@ -29,6 +33,8 @@ type ListComponentIndicesRequest struct {
 	//
 	// 5
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries per page for paging. Default value: 10.
+	//
 	// if can be null:
 	// true
 	//

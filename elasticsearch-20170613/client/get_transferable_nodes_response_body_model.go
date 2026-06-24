@@ -16,13 +16,13 @@ type iGetTransferableNodesResponseBody interface {
 }
 
 type GetTransferableNodesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The return results.
+	// The returned results.
 	Result []*GetTransferableNodesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 

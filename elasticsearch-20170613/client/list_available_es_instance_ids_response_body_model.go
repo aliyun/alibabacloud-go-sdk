@@ -16,13 +16,13 @@ type iListAvailableEsInstanceIdsResponseBody interface {
 }
 
 type ListAvailableEsInstanceIdsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The returned results.
 	Result []*ListAvailableEsInstanceIdsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -66,25 +66,25 @@ func (s *ListAvailableEsInstanceIdsResponseBody) Validate() error {
 }
 
 type ListAvailableEsInstanceIdsResponseBodyResult struct {
-	// The name of the Elasticsearch cluster.
+	// The name of the Elasticsearch instance.
 	//
 	// example:
 	//
 	// instanceName
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The address that is used to access the Elasticsearch cluster over the Internet.
+	// The public network access address of the Elasticsearch instance.
 	//
 	// example:
 	//
 	// http://es-cn-n6w1o1x0w001c****.elasticsearch.aliyuncs.com:9200
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The ID of the Elasticsearch cluster.
+	// The Elasticsearch instance ID.
 	//
 	// example:
 	//
 	// es-cn-n6w1o1x0w001c****
 	EsInstanceId *string `json:"esInstanceId,omitempty" xml:"esInstanceId,omitempty"`
-	// The address that is used to access the Kibana console of the Elasticsearch cluster over the Internet.
+	// The public network access address of Kibana.
 	//
 	// example:
 	//

@@ -20,18 +20,26 @@ type iNodeInfo interface {
 }
 
 type NodeInfo struct {
+	// The IP address of the node.
+	//
 	// example:
 	//
 	// 172.16.xx.xx
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The node name. This parameter is supported only for instances of version 7.16 deployed on ACK.
+	//
 	// example:
 	//
 	// es-cn-tl32vdghe0005cd99-data-b-2
 	HostName *string `json:"hostName,omitempty" xml:"hostName,omitempty"`
+	// The port number of the node.
+	//
 	// example:
 	//
 	// 9200
 	Port *int64 `json:"port,omitempty" xml:"port,omitempty"`
+	// The zone ID of the node.
+	//
 	// example:
 	//
 	// cn-hangzhou-b

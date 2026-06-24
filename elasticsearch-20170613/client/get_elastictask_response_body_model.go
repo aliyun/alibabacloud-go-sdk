@@ -16,11 +16,14 @@ type iGetElastictaskResponseBody interface {
 }
 
 type GetElastictaskResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D***
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetElastictaskResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *GetElastictaskResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetElastictaskResponseBody) String() string {
@@ -59,8 +62,10 @@ func (s *GetElastictaskResponseBody) Validate() error {
 }
 
 type GetElastictaskResponseBodyResult struct {
+	// The elastic scale-out rule.
 	ElasticExpansionTask *GetElastictaskResponseBodyResultElasticExpansionTask `json:"elasticExpansionTask,omitempty" xml:"elasticExpansionTask,omitempty" type:"Struct"`
-	ElasticShrinkTask    *GetElastictaskResponseBodyResultElasticShrinkTask    `json:"elasticShrinkTask,omitempty" xml:"elasticShrinkTask,omitempty" type:"Struct"`
+	// The elastic scale-in rule.
+	ElasticShrinkTask *GetElastictaskResponseBodyResultElasticShrinkTask `json:"elasticShrinkTask,omitempty" xml:"elasticShrinkTask,omitempty" type:"Struct"`
 }
 
 func (s GetElastictaskResponseBodyResult) String() string {
@@ -104,19 +109,27 @@ func (s *GetElastictaskResponseBodyResult) Validate() error {
 }
 
 type GetElastictaskResponseBodyResultElasticExpansionTask struct {
+	// The trigger cycle, specified as a Quartz Cron expression.
+	//
 	// example:
 	//
 	// 0 0 0 ? 	- MON
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
+	// The number of elastic data nodes during peak hours.
+	//
 	// example:
 	//
 	// 2
 	ElasticNodeCount *int32 `json:"elasticNodeCount,omitempty" xml:"elasticNodeCount,omitempty"`
+	// The number of replicas for the target index.
+	//
 	// example:
 	//
 	// 2
 	ReplicaCount  *int32    `json:"replicaCount,omitempty" xml:"replicaCount,omitempty"`
 	TargetIndices []*string `json:"targetIndices,omitempty" xml:"targetIndices,omitempty" type:"Repeated"`
+	// The cause. Currently, only **crontab*	- is supported, which indicates scheduled triggering.
+	//
 	// example:
 	//
 	// crontab
@@ -181,19 +194,27 @@ func (s *GetElastictaskResponseBodyResultElasticExpansionTask) Validate() error 
 }
 
 type GetElastictaskResponseBodyResultElasticShrinkTask struct {
+	// The trigger cycle, specified as a Quartz Cron expression.
+	//
 	// example:
 	//
 	// 4 4 4 ? 	- WED
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
+	// The number of elastic data nodes during off-peak hours.
+	//
 	// example:
 	//
 	// 2
 	ElasticNodeCount *int32 `json:"elasticNodeCount,omitempty" xml:"elasticNodeCount,omitempty"`
+	// The number of replicas for the target index.
+	//
 	// example:
 	//
 	// 2
 	ReplicaCount  *int32    `json:"replicaCount,omitempty" xml:"replicaCount,omitempty"`
 	TargetIndices []*string `json:"targetIndices,omitempty" xml:"targetIndices,omitempty" type:"Repeated"`
+	// The cause. Currently, only crontab is supported, which indicates scheduled triggering.
+	//
 	// example:
 	//
 	// crontab

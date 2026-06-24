@@ -16,13 +16,13 @@ type iCreateVpcEndpointResponseBody interface {
 }
 
 type CreateVpcEndpointResponseBody struct {
-	// The endpoint domain name, which is used to configure the connection.
+	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC47D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the endpoint on the service VPC side.
+	// The returned result.
 	Result *CreateVpcEndpointResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,25 @@ func (s *CreateVpcEndpointResponseBody) Validate() error {
 }
 
 type CreateVpcEndpointResponseBodyResult struct {
+	// The endpoint domain name, which is used for connection configuration.
+	//
 	// example:
 	//
 	// ep-bp1tah7zbrwmkjef****.epsrv-bp1w0p3jdirbfmt6****.cn-hangzhou.privatelink.aliyuncs.com
 	EndpointDomain *string `json:"endpointDomain,omitempty" xml:"endpointDomain,omitempty"`
+	// The ID of the service VPC endpoint.
+	//
 	// example:
 	//
 	// ep-bp1tah7zbrwmkjef****
 	EndpointId *string `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
+	// The name of the service VPC endpoint.
+	//
 	// example:
 	//
 	// vpcElasticSearchABC
 	EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
-	// The name of the service VPC-side endpoint.
+	// The ID of the user endpoint service associated with the endpoint.
 	//
 	// example:
 	//

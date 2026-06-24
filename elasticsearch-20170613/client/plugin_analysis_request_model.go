@@ -16,6 +16,10 @@ type iPluginAnalysisRequest interface {
 }
 
 type PluginAnalysisRequest struct {
+	// Request body parameters
+	//
+	// ```json
+	//
 	// example:
 	//
 	// {
@@ -32,6 +36,12 @@ type PluginAnalysisRequest struct {
 	//
 	//   }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// Whether to perform pre-upgrade validation:
+	//
+	// - true: Validate only
+	//
+	// - false: Upload directly
+	//
 	// example:
 	//
 	// false

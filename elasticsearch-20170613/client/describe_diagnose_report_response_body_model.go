@@ -16,11 +16,14 @@ type iDescribeDiagnoseReportResponseBody interface {
 }
 
 type DescribeDiagnoseReportResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DescribeDiagnoseReportResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *DescribeDiagnoseReportResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DescribeDiagnoseReportResponseBody) String() string {
@@ -59,27 +62,42 @@ func (s *DescribeDiagnoseReportResponseBody) Validate() error {
 }
 
 type DescribeDiagnoseReportResponseBodyResult struct {
+	// The timestamp when the report was created. Unit: ms.
+	//
 	// example:
 	//
 	// 1535745731000
-	CreateTime    *int64                                                   `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The list of diagnostic items in the report.
 	DiagnoseItems []*DescribeDiagnoseReportResponseBodyResultDiagnoseItems `json:"diagnoseItems,omitempty" xml:"diagnoseItems,omitempty" type:"Repeated"`
+	DiagnosisMode *string                                                  `json:"diagnosisMode,omitempty" xml:"diagnosisMode,omitempty"`
+	// The overall health status of the cluster in the report. Valid values: GREEN, YELLOW, RED, and UNKNOWN.
+	//
 	// example:
 	//
 	// YELLOW
 	Health *string `json:"health,omitempty" xml:"health,omitempty"`
+	// The ID of the diagnosed instance.
+	//
 	// example:
 	//
 	// es-cn-abc
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceId *string                                          `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Items      []*DescribeDiagnoseReportResponseBodyResultItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The report ID.
+	//
 	// example:
 	//
 	// trigger__2020-08-17T17:09:02
 	ReportId *string `json:"reportId,omitempty" xml:"reportId,omitempty"`
+	// The diagnostic status. Valid values: SUCCESS, FAILED, and RUNNING.
+	//
 	// example:
 	//
 	// SUCCESS
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The method used to trigger the health diagnosis. Valid values: SYSTEM (automatically triggered by the system), INNER (internally triggered), and USER (manually triggered by the user).
+	//
 	// example:
 	//
 	// SYSTEM
@@ -102,12 +120,20 @@ func (s *DescribeDiagnoseReportResponseBodyResult) GetDiagnoseItems() []*Describ
 	return s.DiagnoseItems
 }
 
+func (s *DescribeDiagnoseReportResponseBodyResult) GetDiagnosisMode() *string {
+	return s.DiagnosisMode
+}
+
 func (s *DescribeDiagnoseReportResponseBodyResult) GetHealth() *string {
 	return s.Health
 }
 
 func (s *DescribeDiagnoseReportResponseBodyResult) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *DescribeDiagnoseReportResponseBodyResult) GetItems() []*DescribeDiagnoseReportResponseBodyResultItems {
+	return s.Items
 }
 
 func (s *DescribeDiagnoseReportResponseBodyResult) GetReportId() *string {
@@ -132,6 +158,11 @@ func (s *DescribeDiagnoseReportResponseBodyResult) SetDiagnoseItems(v []*Describ
 	return s
 }
 
+func (s *DescribeDiagnoseReportResponseBodyResult) SetDiagnosisMode(v string) *DescribeDiagnoseReportResponseBodyResult {
+	s.DiagnosisMode = &v
+	return s
+}
+
 func (s *DescribeDiagnoseReportResponseBodyResult) SetHealth(v string) *DescribeDiagnoseReportResponseBodyResult {
 	s.Health = &v
 	return s
@@ -139,6 +170,11 @@ func (s *DescribeDiagnoseReportResponseBodyResult) SetHealth(v string) *Describe
 
 func (s *DescribeDiagnoseReportResponseBodyResult) SetInstanceId(v string) *DescribeDiagnoseReportResponseBodyResult {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportResponseBodyResult) SetItems(v []*DescribeDiagnoseReportResponseBodyResultItems) *DescribeDiagnoseReportResponseBodyResult {
+	s.Items = v
 	return s
 }
 
@@ -167,15 +203,29 @@ func (s *DescribeDiagnoseReportResponseBodyResult) Validate() error {
 			}
 		}
 	}
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
 type DescribeDiagnoseReportResponseBodyResultDiagnoseItems struct {
+	// The details of the diagnostic item.
 	Detail *DescribeDiagnoseReportResponseBodyResultDiagnoseItemsDetail `json:"detail,omitempty" xml:"detail,omitempty" type:"Struct"`
+	// The health status of the diagnostic item. Valid values: GREEN, YELLOW, RED, and UNKNOWN.
+	//
 	// example:
 	//
 	// YELLOW
 	Health *string `json:"health,omitempty" xml:"health,omitempty"`
+	// The name of the diagnostic item.
+	//
 	// example:
 	//
 	// IndexAliasUseDiagnostic
@@ -227,22 +277,32 @@ func (s *DescribeDiagnoseReportResponseBodyResultDiagnoseItems) Validate() error
 }
 
 type DescribeDiagnoseReportResponseBodyResultDiagnoseItemsDetail struct {
+	// The description of the diagnostic item.
+	//
 	// example:
 	//
 	// Check whether the number of replica shards is optimal and easy to maintain
 	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The full name of the diagnostic item.
+	//
 	// example:
 	//
 	// Number of Replica Shards
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The diagnostic result.
+	//
 	// example:
 	//
 	// You may need to adjust the numbers of replica shards of some indices as follows: [geoname08 : 0 -&gt; 1][geoname09 : 0 -&gt; 1][geonametest01 : 0 -&gt; 1]
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+	// The diagnostic suggestion.
+	//
 	// example:
 	//
 	// You can call the following function in the Elasticsearch API....
 	Suggest *string `json:"suggest,omitempty" xml:"suggest,omitempty"`
+	// The type of the diagnostic result. Valid values: TEXT (text description), CONSOLE_API (console-triggered), and ES_API (API-triggered).
+	//
 	// example:
 	//
 	// ES_API
@@ -303,5 +363,80 @@ func (s *DescribeDiagnoseReportResponseBodyResultDiagnoseItemsDetail) SetType(v 
 }
 
 func (s *DescribeDiagnoseReportResponseBodyResultDiagnoseItemsDetail) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeDiagnoseReportResponseBodyResultItems struct {
+	Desc    *string                `json:"desc,omitempty" xml:"desc,omitempty"`
+	Detail  map[string]interface{} `json:"detail,omitempty" xml:"detail,omitempty"`
+	Item    *string                `json:"item,omitempty" xml:"item,omitempty"`
+	Name    *string                `json:"name,omitempty" xml:"name,omitempty"`
+	State   *string                `json:"state,omitempty" xml:"state,omitempty"`
+	Suggest *string                `json:"suggest,omitempty" xml:"suggest,omitempty"`
+}
+
+func (s DescribeDiagnoseReportResponseBodyResultItems) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDiagnoseReportResponseBodyResultItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnoseReportResponseBodyResultItems) GetDesc() *string {
+	return s.Desc
+}
+
+func (s *DescribeDiagnoseReportResponseBodyResultItems) GetDetail() map[string]interface{} {
+	return s.Detail
+}
+
+func (s *DescribeDiagnoseReportResponseBodyResultItems) GetItem() *string {
+	return s.Item
+}
+
+func (s *DescribeDiagnoseReportResponseBodyResultItems) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeDiagnoseReportResponseBodyResultItems) GetState() *string {
+	return s.State
+}
+
+func (s *DescribeDiagnoseReportResponseBodyResultItems) GetSuggest() *string {
+	return s.Suggest
+}
+
+func (s *DescribeDiagnoseReportResponseBodyResultItems) SetDesc(v string) *DescribeDiagnoseReportResponseBodyResultItems {
+	s.Desc = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportResponseBodyResultItems) SetDetail(v map[string]interface{}) *DescribeDiagnoseReportResponseBodyResultItems {
+	s.Detail = v
+	return s
+}
+
+func (s *DescribeDiagnoseReportResponseBodyResultItems) SetItem(v string) *DescribeDiagnoseReportResponseBodyResultItems {
+	s.Item = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportResponseBodyResultItems) SetName(v string) *DescribeDiagnoseReportResponseBodyResultItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportResponseBodyResultItems) SetState(v string) *DescribeDiagnoseReportResponseBodyResultItems {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportResponseBodyResultItems) SetSuggest(v string) *DescribeDiagnoseReportResponseBodyResultItems {
+	s.Suggest = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportResponseBodyResultItems) Validate() error {
 	return dara.Validate(s)
 }

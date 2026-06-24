@@ -22,15 +22,26 @@ type iUpdateXpackMonitorConfigRequest interface {
 }
 
 type UpdateXpackMonitorConfigRequest struct {
+	// A unique token used to ensure the idempotence of the request. The client generates this value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
+	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to enable X-Pack monitoring. Valid values:
+	//
+	// - true: Enable X-Pack monitoring.
+	//
+	// - false: Disable X-Pack monitoring.
+	//
 	// example:
 	//
 	// true
-	Enable    *bool     `json:"enable,omitempty" xml:"enable,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The access endpoint of the Elasticsearch instance.
 	Endpoints []*string `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
+	// The password of the Elasticsearch instance.
+	//
 	// if can be null:
 	// true
 	//
@@ -38,6 +49,8 @@ type UpdateXpackMonitorConfigRequest struct {
 	//
 	// ******
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The username of the Elasticsearch instance.
+	//
 	// if can be null:
 	// true
 	//

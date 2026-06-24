@@ -16,10 +16,18 @@ type iModifyWhiteIpsResponseBody interface {
 }
 
 type ModifyWhiteIpsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1DERFG
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result. Valid values:
+	//
+	// - true: The whitelist is updated.
+	//
+	// - false: The whitelist failed to be updated.
+	//
 	// example:
 	//
 	// true

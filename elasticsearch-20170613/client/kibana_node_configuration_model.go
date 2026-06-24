@@ -18,14 +18,20 @@ type iKibanaNodeConfiguration interface {
 }
 
 type KibanaNodeConfiguration struct {
+	// The number of Kibana nodes.
+	//
 	// example:
 	//
 	// 2
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The storage space of the Kibana node. Unit: GB.
+	//
 	// example:
 	//
 	// 20
 	Disk *int64 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The Kibana node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+	//
 	// This parameter is required.
 	//
 	// example:

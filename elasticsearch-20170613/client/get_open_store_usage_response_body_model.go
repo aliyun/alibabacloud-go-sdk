@@ -16,13 +16,13 @@ type iGetOpenStoreUsageResponseBody interface {
 }
 
 type GetOpenStoreUsageResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// E1DE2491-804F-4C86-BAB4-548DD70B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The current request result.
+	// The result of the current request.
 	Result *GetOpenStoreUsageResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *GetOpenStoreUsageResponseBody) Validate() error {
 }
 
 type GetOpenStoreUsageResponseBodyResult struct {
-	// The current OpenStore storage capacity (estimated value based on actual indexes). Unit: Byte.
+	// The current OpenStore storage usage, which is an estimated value based on actual indexes. Unit: bytes.
 	//
 	// example:
 	//
 	// 204800
 	CurrentUsage *int64 `json:"currentUsage,omitempty" xml:"currentUsage,omitempty"`
-	// The storage capacity of OpenStore yesterday. Unit: bytes.
+	// The OpenStore storage usage on the previous day. Unit: bytes.
 	//
 	// example:
 	//

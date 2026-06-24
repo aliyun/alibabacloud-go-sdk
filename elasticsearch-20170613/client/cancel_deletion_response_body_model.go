@@ -16,17 +16,17 @@ type iCancelDeletionResponseBody interface {
 }
 
 type CancelDeletionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D682B6B3-B425-46DA-A5FC-5F5C60553622
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the cluster is restored. Valid values:
+	// Indicates whether the instance is recovered. Valid values:
 	//
-	// 	- true: The cluster is restored.
+	// - true: The instance is recovered.
 	//
-	// 	- false: The cluster fails to be restored.
+	// - false: The instance failed to be recovered.
 	//
 	// example:
 	//

@@ -16,10 +16,18 @@ type iUpdateReadWritePolicyResponseBody interface {
 }
 
 type UpdateReadWritePolicyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result. Valid values:
+	//
+	// - true: The write high availability feature is enabled or disabled.
+	//
+	// - false: Failed to enable or disable the write high availability feature.
+	//
 	// example:
 	//
 	// true

@@ -22,11 +22,11 @@ type ActivateZonesResponseBody struct {
 	//
 	// 5A5D8E74-565C-43DC-B031-29289FA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the nodes in disabled zones are restored. Valid values:
+	// The result of the operation. Valid values:
 	//
-	// 	- true
+	// - true: The zone is resumed.
 	//
-	// 	- false
+	// - false: The zone failed to be resumed.
 	//
 	// example:
 	//

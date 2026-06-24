@@ -16,13 +16,13 @@ type iDeleteDataTaskResponseBody interface {
 }
 
 type DeleteDataTaskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// The returned result.
 	//
 	// example:
 	//

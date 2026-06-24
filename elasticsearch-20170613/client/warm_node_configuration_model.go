@@ -24,26 +24,42 @@ type iWarmNodeConfiguration interface {
 }
 
 type WarmNodeConfiguration struct {
+	// The number of cold data nodes.
+	//
 	// example:
 	//
 	// 3
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The storage space size of cold data nodes, in GB.
+	//
 	// example:
 	//
 	// 500
 	Disk *int64 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// Specifies whether to enable cloud disk encryption for cold data nodes. Valid values:
+	//
+	// - true: enabled.
+	//
+	// - false: not enabled.
+	//
 	// example:
 	//
 	// false
 	DiskEncryption *bool `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	// The storage type of cold data nodes. Only cloud_efficiency (ultra cloud disk) is supported.
+	//
 	// example:
 	//
 	// cloud_efficiency
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	// The performance level (PL) of the ESSD cloud disk. This parameter is required when the disk type of cold data nodes is a standard SSD. Valid values: PL1, PL2, and PL3.
+	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
+	// The node specifications of cold data nodes. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+	//
 	// This parameter is required.
 	//
 	// example:

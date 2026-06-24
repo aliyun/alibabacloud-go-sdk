@@ -122,159 +122,303 @@ type iElasticsearch interface {
 }
 
 type Elasticsearch struct {
+  // Indicates whether the new dedicated master node is enabled. Valid values:
+  // 
+  // - true: Enabled.
+  // 
+  // - false: Disabled.
+  // 
   // example:
   // 
   // true
   AdvancedDedicateMaster *bool `json:"advancedDedicateMaster,omitempty" xml:"advancedDedicateMaster,omitempty"`
+  // The advanced settings.
   AdvancedSetting *ElasticsearchAdvancedSetting `json:"advancedSetting,omitempty" xml:"advancedSetting,omitempty" type:"Struct"`
+  // The Aliws dictionary configuration.
   AliwsDicts []*DictInfo `json:"aliwsDicts,omitempty" xml:"aliwsDicts,omitempty" type:"Repeated"`
+  // The client node configuration.
   ClientNodeConfiguration *ClientNodeConfiguration `json:"clientNodeConfiguration,omitempty" xml:"clientNodeConfiguration,omitempty"`
+  // The time when the instance was created.
+  // 
   // example:
   // 
   // 2018-07-13T03:58:07.253Z
   CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+  // Indicates whether the instance contains data nodes. Valid values:
+  // 
+  // - true: The instance contains data nodes.
+  // 
+  // - false: The instance does not contain data nodes.
+  // 
   // example:
   // 
   // true
   DataNode *bool `json:"dataNode,omitempty" xml:"dataNode,omitempty"`
+  // Indicates whether the instance contains legacy dedicated master nodes (deprecated).
+  // 
   // example:
   // 
   // false
   DedicateMaster *bool `json:"dedicateMaster,omitempty" xml:"dedicateMaster,omitempty"`
+  // The instance name.
+  // 
   // example:
   // 
   // es-cn-abc
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // The IK dictionary configuration.
   DictList []*DictInfo `json:"dictList,omitempty" xml:"dictList,omitempty" type:"Repeated"`
+  // The private network access address of the Elasticsearch instance.
+  // 
   // example:
   // 
   // es-cn-3h4k3axh33th9****.elasticsearch.aliyuncs.com
   Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+  // The elastic data node configuration.
   ElasticDataNodeConfiguration *ElasticDataNodeConfiguration `json:"elasticDataNodeConfiguration,omitempty" xml:"elasticDataNodeConfiguration,omitempty"`
+  // Indicates whether private network access to Kibana is enabled. Valid values:
+  // 
+  // - true: Enabled.
+  // 
+  // - false: Disabled.
+  // 
   // example:
   // 
   // false
   EnableKibanaPrivateNetwork *bool `json:"enableKibanaPrivateNetwork,omitempty" xml:"enableKibanaPrivateNetwork,omitempty"`
+  // Indicates whether public network access to Kibana is enabled. Valid values:
+  // 
+  // - true: Enabled.
+  // 
+  // - false: Disabled.
+  // 
   // example:
   // 
   // true
   EnableKibanaPublicNetwork *bool `json:"enableKibanaPublicNetwork,omitempty" xml:"enableKibanaPublicNetwork,omitempty"`
+  // Indicates whether the public network address of the instance is enabled. Valid values:
+  // 
+  // - true: Enabled.
+  // 
+  // - false: Disabled.
+  // 
   // example:
   // 
   // true
   EnablePublic *bool `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
+  // The time when the instance expires. For pay-as-you-go instances, the default value is 100 years.
+  // 
   // example:
   // 
   // 5
   EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+  // The YML file configuration of the instance.
   EsConfig map[string]*string `json:"esConfig,omitempty" xml:"esConfig,omitempty"`
+  // The private network access whitelist configuration of the instance (deprecated).
   EsIPWhitelist []*string `json:"esIPWhitelist,omitempty" xml:"esIPWhitelist,omitempty" type:"Repeated"`
+  // The instance version.
+  // 
   // example:
   // 
   // 6.3.2_with_X-Pack
   EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
+  // The extension parameter settings of the instance.
   ExtendConfigs []map[string]interface{} `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
+  // Indicates whether client nodes are enabled. Valid values:
+  // 
+  // - true: Enabled.
+  // 
+  // - false: Disabled.
+  // 
   // example:
   // 
   // false
   HaveClientNode *bool `json:"haveClientNode,omitempty" xml:"haveClientNode,omitempty"`
+  // Indicates whether elastic data nodes are enabled. Valid values:
+  // 
+  // - true: Enabled.
+  // 
+  // - false: Disabled.
+  // 
   // example:
   // 
   // false
   HaveElasticDataNode *bool `json:"haveElasticDataNode,omitempty" xml:"haveElasticDataNode,omitempty"`
+  // Indicates whether the instance contains Kibana nodes. Valid values:
+  // 
+  // - true: The instance contains Kibana nodes.
+  // 
+  // - false: The instance does not contain Kibana nodes.
+  // 
   // example:
   // 
   // true
   HaveKibana *bool `json:"haveKibana,omitempty" xml:"haveKibana,omitempty"`
+  // The IK hot dictionary configuration.
   IkHotDicts []*DictInfo `json:"ikHotDicts,omitempty" xml:"ikHotDicts,omitempty" type:"Repeated"`
+  // The instance ID.
+  // 
   // example:
   // 
   // es-cn-3h4k3axh33th9****
   InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+  // The Kibana node configuration.
   KibanaConfiguration *KibanaNodeConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty"`
+  // The public network access address of Kibana.
+  // 
   // example:
   // 
   // es-cn-3h4k3axh33th9****.kibana.elasticsearch.aliyuncs.com
   KibanaDomain *string `json:"kibanaDomain,omitempty" xml:"kibanaDomain,omitempty"`
+  // The public network access whitelist configuration of Kibana.
   KibanaIPWhitelist []*string `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
+  // The public network access port of Kibana.
+  // 
   // example:
   // 
   // 5601
   KibanaPort *int64 `json:"kibanaPort,omitempty" xml:"kibanaPort,omitempty"`
+  // The private network access address of Kibana.
+  // 
   // example:
   // 
   // es-cn-tl329rbpc0001****-kibana.internal.elasticsearch.aliyuncs.com
   KibanaPrivateDomain *string `json:"kibanaPrivateDomain,omitempty" xml:"kibanaPrivateDomain,omitempty"`
+  // The IP whitelist configuration for private network access to Kibana.
   KibanaPrivateIPWhitelist []*string `json:"kibanaPrivateIPWhitelist,omitempty" xml:"kibanaPrivateIPWhitelist,omitempty" type:"Repeated"`
+  // The private network access port of Kibana.
+  // 
   // example:
   // 
   // 5601
   KibanaPrivatePort *int64 `json:"kibanaPrivatePort,omitempty" xml:"kibanaPrivatePort,omitempty"`
+  // The access protocol for Kibana. Valid values: HTTP and HTTPS.
+  // 
   // example:
   // 
   // HTTPS
   KibanaProtocol *string `json:"kibanaProtocol,omitempty" xml:"kibanaProtocol,omitempty"`
+  // The dedicated master node configuration.
   MasterConfiguration *MasterNodeConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty"`
+  // The network configuration of the instance.
   NetworkConfig *NetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty"`
+  // The number of data nodes in the instance.
+  // 
   // example:
   // 
   // 2
   NodeAmount *int64 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+  // The data node configuration.
   NodeSpec *NodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty"`
+  // The billing method of the instance. Valid values:
+  // 
+  // - prepaid: subscription.
+  // 
+  // - postpaid: pay-as-you-go.
+  // 
   // example:
   // 
   // prepaid
   PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+  // The private network access port of the instance.
+  // 
   // example:
   // 
   // 9200
   Port *int64 `json:"port,omitempty" xml:"port,omitempty"`
+  // The private network address access whitelist configuration of the instance.
   PrivateNetworkIpWhiteList []*string `json:"privateNetworkIpWhiteList,omitempty" xml:"privateNetworkIpWhiteList,omitempty" type:"Repeated"`
+  // The instance edition. Valid values:
+  // 
+  // - logEnhancement: Advanced Edition.
+  // 
+  // - generalBusiness: general commercial edition.
+  // 
   // example:
   // 
   // generalBusiness
   ProductType *string `json:"productType,omitempty" xml:"productType,omitempty"`
+  // The access protocol of the instance. Valid values: HTTP and HTTPS.
+  // 
   // example:
   // 
   // HTTP
   Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+  // The public network access address of the Elasticsearch instance.
+  // 
   // example:
   // 
   // es-cn-3h4k3axh33th9****.elasticsearch.aliyuncs.com
   PublicDomain *string `json:"publicDomain,omitempty" xml:"publicDomain,omitempty"`
+  // The public network access whitelist configuration of the instance.
   PublicIpWhitelist []*string `json:"publicIpWhitelist,omitempty" xml:"publicIpWhitelist,omitempty" type:"Repeated"`
+  // The public network access port of the Elasticsearch instance.
+  // 
   // example:
   // 
   // 9200
   PublicPort *int64 `json:"publicPort,omitempty" xml:"publicPort,omitempty"`
+  // The high availability configuration of the instance.
   ReadWritePolicy *ReadWritePolicy `json:"readWritePolicy,omitempty" xml:"readWritePolicy,omitempty"`
+  // The ID of the resource group to which the instance belongs.
+  // 
   // example:
   // 
   // rg-aekzvowej3i****
   ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+  // Indicates whether the instance is in the Elasticsearch service VPC. Valid values:
+  // 
+  // - true: The instance is in the service VPC.
+  // 
+  // - false: The instance is not in the service VPC.
+  // 
   // example:
   // 
   // true
   ServiceVpc *bool `json:"serviceVpc,omitempty" xml:"serviceVpc,omitempty"`
+  // The status of the instance. Valid values:
+  // 
+  // - active: Normal.
+  // 
+  // - activating: Taking effect.
+  // 
+  // - inactive: Frozen.
+  // 
+  // - invalid: Expired.
+  // 
   // example:
   // 
   // active
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // The synonym dictionary configuration of the instance.
   SynonymsDicts []*DictInfo `json:"synonymsDicts,omitempty" xml:"synonymsDicts,omitempty" type:"Repeated"`
+  // The instance tags.
   Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+  // The time when the instance was last updated.
+  // 
   // example:
   // 
   // 2018-07-13T03:58:07.253Z
   UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+  // Indicates whether warm data nodes are enabled. Valid values:
+  // 
+  // - true: Enabled.
+  // 
+  // - false: Disabled.
+  // 
   // example:
   // 
   // false
   WarmNode *bool `json:"warmNode,omitempty" xml:"warmNode,omitempty"`
+  // The warm data node configuration.
   WarmNodeConfiguration *WarmNodeConfiguration `json:"warmNodeConfiguration,omitempty" xml:"warmNodeConfiguration,omitempty"`
+  // The number of zones for the instance.
+  // 
   // example:
   // 
   // 1
   ZoneCount *int64 `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
+  // The zone information of the instance.
   ZoneInfos []*ZoneInfo `json:"zoneInfos,omitempty" xml:"zoneInfos,omitempty" type:"Repeated"`
 }
 
@@ -885,6 +1029,8 @@ func (s *Elasticsearch) Validate() error {
 }
 
 type ElasticsearchAdvancedSetting struct {
+  // GC垃圾回收器名称。支持CMS和G1。
+  // 
   // example:
   // 
   // CMS

@@ -16,11 +16,14 @@ type iInstallLogstashSystemPluginResponseBody interface {
 }
 
 type InstallLogstashSystemPluginResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC4****
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s InstallLogstashSystemPluginResponseBody) String() string {

@@ -30,42 +30,65 @@ type iCreateCollectorRequest interface {
 }
 
 type CreateCollectorRequest struct {
+	// The collection paths of fileBeat. This parameter is required only when the collector is deployed on ECS instances.
 	CollectorPaths []*string `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
+	// The configuration file information of the collector.
+	//
 	// This parameter is required.
 	Configs []*CreateCollectorRequestConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	// Specifies whether to perform only a dry run without performing the actual request. This parameter is used only when you create or update a collector. Valid values:
+	//
+	// - true: performs only a dry run without creating or updating the collector.
+	//
+	// - false: performs a dry run and sends the request.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The extended configurations of the collector.
+	//
 	// This parameter is required.
 	ExtendConfigs []map[string]interface{} `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
+	// The name of the collector. The name must be 1 to 30 characters in length, start with an uppercase or lowercase letter, and can contain letters, digits, underscores (_), or hyphens (-).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ct-test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of the collector. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// fileBeat
 	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
+	// The version of the collector. Valid values:
+	//
+	// - ECS-based deployment: 6.8.5_with_community
+	//
+	// - ACK-based deployment: 6.8.13_with_community.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6.8.5_with_community
 	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
+	// The ID of the virtual private cloud (VPC) where the collector resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vpc-bp12nu14urf0upaf*****
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The ID of the created crawer.
+	// A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -176,12 +199,16 @@ func (s *CreateCollectorRequest) Validate() error {
 }
 
 type CreateCollectorRequestConfigs struct {
+	// The file content.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// "filebeat.inputs:xxx"
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The file name.
+	//
 	// This parameter is required.
 	//
 	// example:

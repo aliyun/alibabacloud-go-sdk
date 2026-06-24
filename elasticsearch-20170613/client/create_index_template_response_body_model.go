@@ -16,10 +16,14 @@ type iCreateIndexTemplateResponseBody interface {
 }
 
 type CreateIndexTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the created cluster index template.
+	//
 	// example:
 	//
 	// index-template

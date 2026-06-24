@@ -22,21 +22,13 @@ type iUpdateInstanceResponseBody interface {
 type UpdateInstanceResponseBody struct {
 	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The time when the instance was created.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The state of the instance. Valid values:
-	//
-	// 	- active: normal
-	//
-	// 	- activating: taking effect
-	//
-	// 	- inactive: frozen
-	//
-	// 	- invalid: invalid
+	// The returned result.
 	Result *UpdateInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -94,63 +86,67 @@ func (s *UpdateInstanceResponseBody) Validate() error {
 }
 
 type UpdateInstanceResponseBodyResult struct {
-	// The private domain name of the instance.
+	// The time when the instance was created.
 	//
 	// example:
 	//
 	// 2018-07-13T03:58:07.253Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The configuration of data nodes.
+	// The instance name.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The ID of the instance.
+	// 实例的私网访问域名。
 	//
 	// example:
 	//
 	// es-cn-abc.elasticsearch.aliyuncs.com
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The node specifications.
+	// The instance version.
 	//
 	// example:
 	//
 	// 5.5.3_with_X-Pack
 	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
-	// The storage space of the node. Unit: GB.
+	// The instance ID.
 	//
 	// example:
 	//
 	// es-cn-abc
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The size of the node storage space.
+	// The Kibana node configuration.
 	KibanaConfiguration *UpdateInstanceResponseBodyResultKibanaConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty" type:"Struct"`
-	// The storage space of the node. Unit: GB.
+	// The master node configuration.
 	MasterConfiguration *UpdateInstanceResponseBodyResultMasterConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty" type:"Struct"`
-	// The billing method of the instance. Valid values:
-	//
-	// 	- prepaid: subscription
-	//
-	// 	- postpaid: pay-as-you-go
+	// The number of data nodes.
 	//
 	// example:
 	//
 	// 2
 	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	// The storage type of the node. Valid values:
-	//
-	// 	- cloud_ssd: standard SSD
-	//
-	// 	- cloud_efficiency: ultra disk
+	// The data node configuration.
 	NodeSpec *UpdateInstanceResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
-	// The edition of the dedicated KMS instance.
+	// The billing method of the instance. Valid values:
+	//
+	// - prepaid: subscription
+	//
+	// - postpaid: pay-as-you-go.
 	//
 	// example:
 	//
 	// postpaid
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The name of the instance.
+	// The status of the instance. Valid values:
+	//
+	// - active: Normal
+	//
+	// - activating: Taking effect
+	//
+	// - inactive: Frozen
+	//
+	// - invalid: Invalid.
 	//
 	// example:
 	//
@@ -285,25 +281,25 @@ func (s *UpdateInstanceResponseBodyResult) Validate() error {
 }
 
 type UpdateInstanceResponseBodyResultKibanaConfiguration struct {
-	// The configuration of dedicated master nodes.
+	// The number of nodes.
 	//
 	// example:
 	//
 	// 1
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The node specifications.
+	// The storage size of the node.
 	//
 	// example:
 	//
 	// 20
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// The number of nodes.
+	// The storage type of the node. You can ignore this parameter.
 	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The storage type of the node. This parameter can be ignored.
+	// 节点规格。
 	//
 	// example:
 	//
@@ -360,19 +356,25 @@ func (s *UpdateInstanceResponseBodyResultKibanaConfiguration) Validate() error {
 }
 
 type UpdateInstanceResponseBodyResultMasterConfiguration struct {
+	// The number of nodes.
+	//
 	// example:
 	//
 	// 3
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The storage size of the node. Unit: GB.
+	//
 	// example:
 	//
 	// 20
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The storage type of the node. Only cloud_ssd (standard SSD) is supported.
+	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The storage type of the node. Only cloud_ssd(SSD cloud disk) is supported.
+	// 节点规格。
 	//
 	// example:
 	//
@@ -429,19 +431,23 @@ func (s *UpdateInstanceResponseBodyResultMasterConfiguration) Validate() error {
 }
 
 type UpdateInstanceResponseBodyResultNodeSpec struct {
-	// The node specifications.
+	// The storage size of the node. Unit: GB.
 	//
 	// example:
 	//
 	// 40
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// The number of nodes.
+	// The storage type of the node. Valid values:
+	//
+	// - cloud_ssd: standard SSD
+	//
+	// - cloud_efficiency: ultra disk.
 	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The configuration of Kibana nodes.
+	// 节点规格。
 	//
 	// example:
 	//

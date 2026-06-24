@@ -66,15 +66,15 @@ func (s *ListExtendfilesResponseBody) Validate() error {
 }
 
 type ListExtendfilesResponseBodyResult struct {
-	// The path of the driver file.
+	// The extension file path.
 	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
-	// The size of the driver file.
+	// The extension file size.
 	//
 	// example:
 	//
 	// 968668
 	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	// The name of the driver file.
+	// The extension file name.
 	//
 	// example:
 	//

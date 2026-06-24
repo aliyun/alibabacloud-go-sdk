@@ -17,7 +17,8 @@ type iDescribeDynamicSettingsResponseBody interface {
 
 type DescribeDynamicSettingsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Id of the request
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DescribeDynamicSettingsResponseBody) String() string {

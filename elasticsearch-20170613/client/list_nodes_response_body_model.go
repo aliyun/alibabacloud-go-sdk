@@ -18,15 +18,15 @@ type iListNodesResponseBody interface {
 }
 
 type ListNodesResponseBody struct {
-	// The header of the response.
+	// The response headers.
 	Headers *ListNodesResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// E1FD7642-7C40-4FF2-9C0F-21F1A1746F70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The returned results.
 	Result []*ListNodesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -84,7 +84,7 @@ func (s *ListNodesResponseBody) Validate() error {
 }
 
 type ListNodesResponseBodyHeaders struct {
-	// The number of entries returned.
+	// The total number of returned records.
 	//
 	// example:
 	//
@@ -114,49 +114,49 @@ func (s *ListNodesResponseBodyHeaders) Validate() error {
 }
 
 type ListNodesResponseBodyResult struct {
-	// The status of the shipper on the ECS instance. Valid values:
+	// The status of each collector on the ECS instance. Valid values:
 	//
-	// 	- heartOk: The heartbeat is normal.
+	// - heartOk: normal heartbeat.
 	//
-	// 	- heartLost: The heartbeat is abnormal.
+	// - heartLost: abnormal heartbeat.
 	//
-	// 	- uninstalled: The shipper is not installed.
+	// - uninstalled: not installed.
 	//
-	// 	- failed: The shipper fails to be installed.
+	// - failed: installation failed.
 	//
 	// example:
 	//
 	// heartOk
 	AgentStatus *string `json:"agentStatus,omitempty" xml:"agentStatus,omitempty"`
-	// Indicates whether the Cloud Assistant client is installed. Valid values:
+	// Indicates whether Cloud Assistant is enabled. Valid values:
 	//
-	// 	- true: installed
+	// - true: enabled.
 	//
-	// 	- false: not installed
+	// - false: not enabled.
 	//
 	// example:
 	//
 	// true
 	CloudAssistantStatus *string `json:"cloudAssistantStatus,omitempty" xml:"cloudAssistantStatus,omitempty"`
-	// The ID of the ECS instance.
+	// The ECS instance ID.
 	//
 	// example:
 	//
 	// i-bp13y63575oypr****
 	EcsInstanceId *string `json:"ecsInstanceId,omitempty" xml:"ecsInstanceId,omitempty"`
-	// The name of the ECS instance.
+	// The ECS instance name.
 	//
 	// example:
 	//
 	// ECS_beat
 	EcsInstanceName *string `json:"ecsInstanceName,omitempty" xml:"ecsInstanceName,omitempty"`
-	// The IP addresses of the ECS instance.
+	// The list of IP address information of the ECS instance.
 	IpAddress []*ListNodesResponseBodyResultIpAddress `json:"ipAddress,omitempty" xml:"ipAddress,omitempty" type:"Repeated"`
 	// The operating system type of the ECS instance. Valid values:
 	//
-	// 	- windows: Windows Server
+	// - windows: Windows Server.
 	//
-	// 	- linux: Linux
+	// - linux: Linux.
 	//
 	// example:
 	//
@@ -164,19 +164,19 @@ type ListNodesResponseBodyResult struct {
 	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
 	// The status of the ECS instance. Valid values:
 	//
-	// 	- running: The instance is running.
+	// - running: running.
 	//
-	// 	- starting: The instance is being started.
+	// - starting: starting.
 	//
-	// 	- stopping: The instance is being stopped.
+	// - stopping: stopping.
 	//
-	// 	- stopped: The instance is stopped.
+	// - stopped: stopped.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tags of the ECS instance.
+	// The tag information of the ECS instance.
 	Tags []*ListNodesResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -291,9 +291,9 @@ type ListNodesResponseBodyResultIpAddress struct {
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
 	// The type of the IP address. Valid values:
 	//
-	// 	- public: public IP address
+	// - public: public IP address.
 	//
-	// 	- private: private IP address
+	// - private: private IP address.
 	//
 	// example:
 	//
@@ -332,13 +332,13 @@ func (s *ListNodesResponseBodyResultIpAddress) Validate() error {
 }
 
 type ListNodesResponseBodyResultTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// abc
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

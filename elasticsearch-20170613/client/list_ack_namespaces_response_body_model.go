@@ -16,7 +16,7 @@ type iListAckNamespacesResponseBody interface {
 }
 
 type ListAckNamespacesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ListAckNamespacesResponseBodyResult struct {
 	//
 	// logging
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The status of the namespace.
+	// The namespace status.
 	//
 	// example:
 	//

@@ -22,17 +22,26 @@ type iEnableKibanaPvlNetworkRequest interface {
 }
 
 type EnableKibanaPvlNetworkRequest struct {
+  // The endpoint name.
+  // 
   // example:
   // 
   // es-cn-27a3mul6l000xxx-kibana-endpoint
   EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
+  // The security groups.
+  // 
   // This parameter is required.
   SecurityGroups []*string `json:"securityGroups,omitempty" xml:"securityGroups,omitempty" type:"Repeated"`
+  // The vSwitch and zone information.
   VSwitchIdsZone []*EnableKibanaPvlNetworkRequestVSwitchIdsZone `json:"vSwitchIdsZone,omitempty" xml:"vSwitchIdsZone,omitempty" type:"Repeated"`
+  // The VPC-connected instance ID.
+  // 
   // example:
   // 
-  // vpc-xxx
+  // vpc-bp19ip2ocyv24w0e2****
   VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+  // The client token that is used to ensure the idempotence of the request.
+  // 
   // example:
   // 
   // xxxxx
@@ -106,10 +115,14 @@ func (s *EnableKibanaPvlNetworkRequest) Validate() error {
 }
 
 type EnableKibanaPvlNetworkRequestVSwitchIdsZone struct {
+  // The vSwitch ID.
+  // 
   // example:
   // 
-  // vsw-xxxx
+  // vsw-bp194pz9iezj6h1n5****
   VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
+  // The zone ID.
+  // 
   // example:
   // 
   // cn-hangzhou-h

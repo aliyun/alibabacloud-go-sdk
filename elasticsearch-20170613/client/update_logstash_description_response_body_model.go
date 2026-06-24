@@ -16,13 +16,13 @@ type iUpdateLogstashDescriptionResponseBody interface {
 }
 
 type UpdateLogstashDescriptionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result returned.
+	// The returned result.
 	Result *UpdateLogstashDescriptionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *UpdateLogstashDescriptionResponseBody) Validate() error {
 }
 
 type UpdateLogstashDescriptionResponseBodyResult struct {
-	// The name of the cluster.
+	// The instance name.
 	//
 	// example:
 	//

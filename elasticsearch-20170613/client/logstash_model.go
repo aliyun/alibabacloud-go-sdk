@@ -50,63 +50,107 @@ type iLogstash interface {
 }
 
 type Logstash struct {
+	// The instance configuration.
 	Config map[string]*string `json:"config,omitempty" xml:"config,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2018-07-13T03:58:07.253Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// Specifies whether to enable data nodes. This parameter must be set to true.
+	//
 	// example:
 	//
 	// true
 	DataNode *bool `json:"dataNode,omitempty" xml:"dataNode,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// ls-cn-abc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The expiration time of the subscription instance.
+	//
 	// example:
 	//
 	// 4749897600000
-	EndTime      *int64                  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The node information.
 	EndpointList []*LogstashEndpointList `json:"endpointList,omitempty" xml:"endpointList,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ls-cn-n6w1o5jq****
-	InstanceId    *string                `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The network configuration.
 	NetworkConfig *LogstashNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
+	// The number of nodes in the instance.
+	//
 	// example:
 	//
 	// 2
-	NodeAmount *int64            `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	NodeSpec   *LogstashNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
+	NodeAmount *int64 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	// The data node configuration.
+	NodeSpec *LogstashNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
+	// The billing method of the instance. Valid values:
+	//
+	// - prepaid: subscription
+	//
+	// - postpaid: pay-as-you-go.
+	//
 	// example:
 	//
 	// postpaid
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The access protocol of the instance.
+	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
 	// example:
 	//
 	// rg-acfm2h5vbzd****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The zone status. Valid values:
+	//
+	// - ISOLATION: offline
+	//
+	// - NORMAL: Normal.
+	//
 	// example:
 	//
 	// NORMAL
-	Status *string         `json:"status,omitempty" xml:"status,omitempty"`
-	Tags   []*LogstashTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The instance tags.
+	Tags []*LogstashTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The time when the instance was last updated.
+	//
 	// example:
 	//
 	// 2018-07-18T10:10:04.484Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The instance version. Valid values:
+	//
+	// - 6.7.0_with_X-Pack
+	//
+	// - 7.4.0_with_X-Pack.
+	//
 	// example:
 	//
 	// 6.7.0_with_X-Pack
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The number of zones for the instance.
+	//
 	// example:
 	//
 	// 1
-	ZoneCount *int64               `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
+	ZoneCount *int64 `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
+	// The zone information.
 	ZoneInfos []*LogstashZoneInfos `json:"zoneInfos,omitempty" xml:"zoneInfos,omitempty" type:"Repeated"`
 }
 
@@ -331,14 +375,20 @@ func (s *Logstash) Validate() error {
 }
 
 type LogstashEndpointList struct {
+	// The IP address of the node.
+	//
 	// example:
 	//
 	// 172.16.xx.xx
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The access port number of the node.
+	//
 	// example:
 	//
 	// 9200
 	Port *int64 `json:"port,omitempty" xml:"port,omitempty"`
+	// The zone ID of the node.
+	//
 	// example:
 	//
 	// cn-hangzhou-i
@@ -385,18 +435,26 @@ func (s *LogstashEndpointList) Validate() error {
 }
 
 type LogstashNetworkConfig struct {
+	// The network type. Currently, only Virtual Private Cloud (VPC) is supported.
+	//
 	// example:
 	//
 	// vpc
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-abc
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The zone in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou-*
 	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-def
@@ -452,14 +510,20 @@ func (s *LogstashNetworkConfig) Validate() error {
 }
 
 type LogstashNodeSpec struct {
+	// The disk size of the node.
+	//
 	// example:
 	//
 	// 50
 	Disk *int64 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The disk type of the node.
+	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	// The node specifications.
+	//
 	// example:
 	//
 	// logstash.n4.small
@@ -506,10 +570,14 @@ func (s *LogstashNodeSpec) Validate() error {
 }
 
 type LogstashTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// env
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// dev
@@ -547,10 +615,18 @@ func (s *LogstashTags) Validate() error {
 }
 
 type LogstashZoneInfos struct {
+	// The zone status. Valid values:
+	//
+	// - ISOLATION: offline
+	//
+	// - NORMAL: Normal.
+	//
 	// example:
 	//
 	// NORMAL
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-i

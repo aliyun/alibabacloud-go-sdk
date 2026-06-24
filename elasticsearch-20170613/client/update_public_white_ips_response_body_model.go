@@ -16,11 +16,14 @@ type iUpdatePublicWhiteIpsResponseBody interface {
 }
 
 type UpdatePublicWhiteIpsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C82758DD-282F-4D48-934F-92170A33****
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *UpdatePublicWhiteIpsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *UpdatePublicWhiteIpsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s UpdatePublicWhiteIpsResponseBody) String() string {

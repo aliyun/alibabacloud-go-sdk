@@ -18,12 +18,16 @@ type iListDataStreamsResponseBody interface {
 }
 
 type ListDataStreamsResponseBody struct {
+	// The response headers.
 	Headers *ListDataStreamsResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListDataStreamsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the returned data streams.
+	Result []*ListDataStreamsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListDataStreamsResponseBody) String() string {
@@ -80,10 +84,14 @@ func (s *ListDataStreamsResponseBody) Validate() error {
 }
 
 type ListDataStreamsResponseBodyHeaders struct {
+	// The total number of data streams.
+	//
 	// example:
 	//
 	// 100
 	XManagedCount *int32 `json:"X-Managed-Count,omitempty" xml:"X-Managed-Count,omitempty"`
+	// The total storage size of indexes. Unit: bytes.
+	//
 	// example:
 	//
 	// 143993923932990
@@ -121,27 +129,46 @@ func (s *ListDataStreamsResponseBodyHeaders) Validate() error {
 }
 
 type ListDataStreamsResponseBodyResult struct {
+	// The data stream status. Valid values:
+	//
+	// - Green: healthy.
+	//
+	// - Yellow: warning.
+	//
+	// - Red: abnormal.
+	//
 	// example:
 	//
 	// Green
 	Health *string `json:"health,omitempty" xml:"health,omitempty"`
+	// The index lifecycle policy name.
+	//
 	// example:
 	//
 	// rollver1
 	IlmPolicyName *string `json:"ilmPolicyName,omitempty" xml:"ilmPolicyName,omitempty"`
+	// The index template name.
+	//
 	// example:
 	//
 	// template1
-	IndexTemplateName *string                                     `json:"indexTemplateName,omitempty" xml:"indexTemplateName,omitempty"`
-	Indices           []*ListDataStreamsResponseBodyResultIndices `json:"indices,omitempty" xml:"indices,omitempty" type:"Repeated"`
+	IndexTemplateName *string `json:"indexTemplateName,omitempty" xml:"indexTemplateName,omitempty"`
+	// The index information under the current data stream.
+	Indices []*ListDataStreamsResponseBodyResultIndices `json:"indices,omitempty" xml:"indices,omitempty" type:"Repeated"`
+	// The total storage space occupied by managed indexes under the current data stream. Unit: bytes.
+	//
 	// example:
 	//
 	// 1788239393298
 	ManagedStorageSize *int64 `json:"managedStorageSize,omitempty" xml:"managedStorageSize,omitempty"`
+	// The index name.
+	//
 	// example:
 	//
 	// my-index-0001
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The total storage space occupied by all indexes under the current data stream. Unit: bytes.
+	//
 	// example:
 	//
 	// 1788239393298
@@ -233,26 +260,50 @@ func (s *ListDataStreamsResponseBodyResult) Validate() error {
 }
 
 type ListDataStreamsResponseBodyResultIndices struct {
+	// The time when the data stream list was queried.
+	//
 	// example:
 	//
 	// 2018-07-13T03:58:07.253Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The index status. Valid values:
+	//
+	// - Green: healthy.
+	//
+	// - Yellow: warning.
+	//
+	// - Red: abnormal.
+	//
 	// example:
 	//
 	// Green
 	Health *string `json:"health,omitempty" xml:"health,omitempty"`
+	// This field is deprecated and can be ignored.
+	//
 	// example:
 	//
 	// false
 	IsManaged *bool `json:"isManaged,omitempty" xml:"isManaged,omitempty"`
+	// The managed status of the index. Valid values:
+	//
+	// - following: managed.
+	//
+	// - closing: being unmanaged.
+	//
+	// - closed: not managed.
+	//
 	// example:
 	//
 	// following
 	ManagedStatus *string `json:"managedStatus,omitempty" xml:"managedStatus,omitempty"`
+	// The data stream name.
+	//
 	// example:
 	//
 	// Log1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The total storage space occupied by the current index. Unit: bytes.
+	//
 	// example:
 	//
 	// 15393899

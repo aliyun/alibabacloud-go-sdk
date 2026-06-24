@@ -18,15 +18,15 @@ type iListDefaultCollectorConfigurationsRequest interface {
 }
 
 type ListDefaultCollectorConfigurationsRequest struct {
-	// The shipper type. Valid values:
+	// The type of the collector. Valid values:
 	//
-	// 	- fileBeat
+	// - fileBeat
 	//
-	// 	- metricBeat
+	// - metricBeat
 	//
-	// 	- heartBeat
+	// - heartBeat
 	//
-	// 	- auditBeat
+	// - auditBeat.
 	//
 	// This parameter is required.
 	//
@@ -34,11 +34,11 @@ type ListDefaultCollectorConfigurationsRequest struct {
 	//
 	// fileBeat
 	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
-	// The shipper version. The shipper version varies based on the type of the machine on which the shipper is deployed. Valid values:
+	// The version of the collector. The available versions vary based on the type of machine on which the collector is deployed. Valid values:
 	//
-	// 	- ECS: 6.8.5_with_community
+	// - ECS: 6.8.5_with_community
 	//
-	// 	- ACK: 6.8.13_with_community
+	// - ACK: 6.8.13_with_community.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +46,11 @@ type ListDefaultCollectorConfigurationsRequest struct {
 	//
 	// 6.8.5_with_community
 	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
-	// The type of the machine on which the shipper is deployed. If you do not configure this parameter, the default configuration files of shippers deployed on all types of machines are returned. Valid values:
+	// The type of machine on which the collector is deployed. If you do not specify this parameter, all types are returned. Valid values:
 	//
-	// 	- ECS: ECS instance
+	// - ECS: Elastic Compute Service (ECS) instance
 	//
-	// 	- ACK: ACK cluster
+	// - ACK: Container Service for Kubernetes (ACK) cluster.
 	//
 	// example:
 	//

@@ -16,23 +16,13 @@ type iUpgradeEngineVersionResponseBody interface {
 }
 
 type UpgradeEngineVersionResponseBody struct {
-	// The verification information.
+	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DC*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of the error. Valid values:
-	//
-	// 	- clusterStatus: the health status of the cluster.
-	//
-	// 	- clusterConfigYml: Cluster YML File
-	//
-	// 	- clusterConfigPlugins: Cluster Configuration File
-	//
-	// 	- clusterResource: cluster resources
-	//
-	// 	- clusterSnapshot: cluster snapshot
+	// The returned result.
 	Result []*UpgradeEngineVersionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -76,13 +66,27 @@ func (s *UpgradeEngineVersionResponseBody) Validate() error {
 }
 
 type UpgradeEngineVersionResponseBodyResult struct {
+	// Indicates whether the check is passed. Valid values:
+	//
+	// - success: passed.
+	//
+	// - failed: not passed.
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The error message returned.
+	// The check information.
 	ValidateResult []*UpgradeEngineVersionResponseBodyResultValidateResult `json:"validateResult,omitempty" xml:"validateResult,omitempty" type:"Repeated"`
-	// The error code returned if the request failed.
+	// The check type. Valid values:
+	//
+	// - checkClusterHealth: cluster health status.
+	//
+	// - checkConfigCompatible: configuration compatibility status.
+	//
+	// - checkClusterResource: resource space status.
+	//
+	// - checkClusterSnapshot: whether a snapshot exists.
 	//
 	// example:
 	//
@@ -139,19 +143,29 @@ func (s *UpgradeEngineVersionResponseBodyResult) Validate() error {
 }
 
 type UpgradeEngineVersionResponseBodyResultValidateResult struct {
+	// The error code.
+	//
 	// example:
 	//
 	// ClusterStatusNotHealth
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The cluster status is not health
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// The verification is passed. Valid values:
+	// The error type. Valid values:
 	//
-	// 	- success: through
+	// - clusterStatus: cluster health status.
 	//
-	// 	- failed: failed
+	// - clusterConfigYml: cluster YML file.
+	//
+	// - clusterConfigPlugins: cluster configuration file.
+	//
+	// - clusterResource: cluster resources.
+	//
+	// - clusterSnapshot: cluster snapshot.
 	//
 	// example:
 	//

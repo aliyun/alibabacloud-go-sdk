@@ -16,7 +16,7 @@ type iGetTransferableNodesRequest interface {
 }
 
 type GetTransferableNodesRequest struct {
-	// The number of nodes to be migrated.
+	// The expected number of nodes to retrieve for data migration.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetTransferableNodesRequest struct {
 	//
 	// 1
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The type of nodes.**WORKER**represents a hot node,**WORKER_WARM*	- represents a warm node.
+	// The type of node for data migration. **WORKER*	- indicates a hot node. **WORKER_WARM*	- indicates a warm node.
 	//
 	// This parameter is required.
 	//

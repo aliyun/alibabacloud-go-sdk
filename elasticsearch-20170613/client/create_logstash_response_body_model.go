@@ -16,11 +16,14 @@ type iCreateLogstashResponseBody interface {
 }
 
 type CreateLogstashResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE*****
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *Logstash `json:"Result,omitempty" xml:"Result,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *Logstash `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s CreateLogstashResponseBody) String() string {

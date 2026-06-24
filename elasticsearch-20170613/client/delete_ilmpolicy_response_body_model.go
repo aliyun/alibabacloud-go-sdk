@@ -16,10 +16,18 @@ type iDeleteILMPolicyResponseBody interface {
 }
 
 type DeleteILMPolicyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 694FDC20-0FDD-47C4-B921-BFF902FA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result. Valid values:
+	//
+	// - true: The specified lifecycle policy definition is deleted.
+	//
+	// - false: The specified lifecycle policy definition failed to be deleted.
+	//
 	// example:
 	//
 	// true

@@ -16,10 +16,18 @@ type iRolloverDataStreamResponseBody interface {
 }
 
 type RolloverDataStreamResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result. Valid values:
+	//
+	// - true: The rollover succeeded.
+	//
+	// - false: The rollover failed.
+	//
 	// example:
 	//
 	// true

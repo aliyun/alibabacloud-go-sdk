@@ -18,15 +18,28 @@ type iWhiteIpGroup interface {
 }
 
 type WhiteIpGroup struct {
+	// The type of the IP address whitelist. Valid values:
+	//
+	// - PRIVATE_ES: Elasticsearch private network access whitelist
+	//
+	// - PUBLIC_ES: Elasticsearch public network access whitelist
+	//
+	// - PRIVATE_KIBANA: Kibana private network access whitelist
+	//
+	// - PUBLIC_KIBANA: Kibana public network access whitelist.
+	//
 	// example:
 	//
 	// PRIVATE_ES
 	WhiteIpType *string `json:"WhiteIpType,omitempty" xml:"WhiteIpType,omitempty"`
+	// The name of the IP address whitelist group.
+	//
 	// example:
 	//
 	// test_group
-	GroupName *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	Ips       []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The list of IP addresses in the whitelist group.
+	Ips []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
 }
 
 func (s WhiteIpGroup) String() string {

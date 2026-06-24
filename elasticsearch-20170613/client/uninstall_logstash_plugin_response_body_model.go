@@ -19,6 +19,8 @@ type iUninstallLogstashPluginResponseBody interface {
 
 type UninstallLogstashPluginResponseBody struct {
 	Headers map[string]interface{} `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****

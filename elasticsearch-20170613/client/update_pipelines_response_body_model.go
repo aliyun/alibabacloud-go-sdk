@@ -16,17 +16,17 @@ type iUpdatePipelinesResponseBody interface {
 }
 
 type UpdatePipelinesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the pipeline is updated. Valid values:
+	// The returned result. Valid values:
 	//
-	// 	- true: The pipeline is updated.
+	// - true: The update was successful.
 	//
-	// 	- false: The pipeline fails to be updated.
+	// - false: The update failed.
 	//
 	// example:
 	//

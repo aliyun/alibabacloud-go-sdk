@@ -20,25 +20,29 @@ type iListLogstashPluginsRequest interface {
 }
 
 type ListLogstashPluginsRequest struct {
-	// USER
+	// The plugin name.
 	//
 	// example:
 	//
 	// logstash-filter-clone
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the request.
+	// The page number of the plugin list. Default value: 1. Minimum value: 1. Maximum value: 200.
 	//
 	// example:
 	//
 	// 10
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The returned results.
+	// The number of entries per page in paging settings. Minimum value: 1. Maximum value: 200.
 	//
 	// example:
 	//
 	// 3
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// The description of the plug-in.
+	// The plugin source. Valid values:
+	//
+	// - USER: custom plugin
+	//
+	// - SYSTEM: system preset plugin.
 	//
 	// example:
 	//

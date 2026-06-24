@@ -16,17 +16,17 @@ type iUpdateLogstashChargeTypeResponseBody interface {
 }
 
 type UpdateLogstashChargeTypeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the billing method of the cluster is switched. Valid values:
+	// The returned result. Valid values:
 	//
-	// 	- true: The billing method is switched.
+	// - true: The conversion succeeded.
 	//
-	// 	- false: The billing method fails to be switched.
+	// - false: The conversion failed.
 	//
 	// example:
 	//

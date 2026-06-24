@@ -16,11 +16,14 @@ type iDescribeComponentIndexResponseBody interface {
 }
 
 type DescribeComponentIndexResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC47D9
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DescribeComponentIndexResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *DescribeComponentIndexResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DescribeComponentIndexResponseBody) String() string {
@@ -59,10 +62,13 @@ func (s *DescribeComponentIndexResponseBody) Validate() error {
 }
 
 type DescribeComponentIndexResponseBodyResult struct {
+	// The metadata, which is used to store information such as remarks.
+	//
 	// example:
 	//
 	// { "description": "set number of shards to one" }
-	Meta     map[string]interface{}                            `json:"_meta,omitempty" xml:"_meta,omitempty"`
+	Meta map[string]interface{} `json:"_meta,omitempty" xml:"_meta,omitempty"`
+	// The template information.
 	Template *DescribeComponentIndexResponseBodyResultTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
 }
 
@@ -102,14 +108,20 @@ func (s *DescribeComponentIndexResponseBodyResult) Validate() error {
 }
 
 type DescribeComponentIndexResponseBodyResultTemplate struct {
+	// The alias configuration of the template.
+	//
 	// example:
 	//
 	// {}
 	Aliases map[string]interface{} `json:"aliases,omitempty" xml:"aliases,omitempty"`
+	// The mappings configuration of the template.
+	//
 	// example:
 	//
 	// { "properties": { "@timestamp": { "type": "date" } } }
 	Mappings map[string]interface{} `json:"mappings,omitempty" xml:"mappings,omitempty"`
+	// The settings configuration of the template.
+	//
 	// example:
 	//
 	// { "index.number_of_replicas": 0 }

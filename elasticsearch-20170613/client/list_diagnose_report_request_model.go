@@ -26,13 +26,17 @@ type iListDiagnoseReportRequest interface {
 }
 
 type ListDiagnoseReportRequest struct {
-	// SYSTEM
+	// Specifies whether to display the details of diagnostic items.
 	//
 	// example:
 	//
 	// true
 	Detail *bool `json:"detail,omitempty" xml:"detail,omitempty"`
-	// 1
+	// The end timestamp of the query. Unit: milliseconds.
+	//
+	// - Minimum value: 1000000000000
+	//
+	// - Maximum value: 2000000000000.
 	//
 	// This parameter is required.
 	//
@@ -40,25 +44,39 @@ type ListDiagnoseReportRequest struct {
 	//
 	// 1595174399999
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 1594569600000
+	// The language of the reports to retrieve. Default value: the browser language. Valid values:
+	//
+	// - en: English
+	//
+	// - zh: Simplified Chinese
+	//
+	// - zt: Traditional Chinese
+	//
+	// - es: Spanish
+	//
+	// - fr: French.
 	//
 	// example:
 	//
-	// spanish
+	// es
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// 20
+	// The page number. Default value: 1. Minimum value: 1. Maximum value: 200.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// true
+	// The number of reports per page. Default value: 10. Minimum value: 1. Maximum value: 500.
 	//
 	// example:
 	//
 	// 20
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// 1595174399999
+	// The start timestamp of the query. Unit: milliseconds.
+	//
+	// - Minimum value: 1000000000000
+	//
+	// - Maximum value: 2000000000000.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +84,13 @@ type ListDiagnoseReportRequest struct {
 	//
 	// 1594569600000
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The ID of the request.
+	// The trigger method of the health diagnostics. Valid values:
+	//
+	// - SYSTEM (default): automatically triggered by the system
+	//
+	// - INNER: internally triggered
+	//
+	// - USER: manually triggered by the user.
 	//
 	// example:
 	//

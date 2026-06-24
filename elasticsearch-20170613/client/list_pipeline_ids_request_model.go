@@ -14,6 +14,8 @@ type iListPipelineIdsRequest interface {
 }
 
 type ListPipelineIdsRequest struct {
+	// The request body parameters. For more information, see the RequestBody section below.
+	//
 	// example:
 	//
 	// {     "userName":"elastic",     "password":"xxxxxx" }

@@ -14,7 +14,17 @@ type iListDiagnoseIndicesRequest interface {
 }
 
 type ListDiagnoseIndicesRequest struct {
-	// The language. Multiple languages are supported.
+	// The language. Default value: the browser language. Valid values:
+	//
+	// - en: English
+	//
+	// - zh: Simplified Chinese
+	//
+	// - zt: Traditional Chinese
+	//
+	// - es: Spanish
+	//
+	// - fr: French.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iStartCollectorResponseBody interface {
 }
 
 type StartCollectorResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

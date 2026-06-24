@@ -20,29 +20,29 @@ type iInterruptElasticsearchTaskResponseBody interface {
 }
 
 type InterruptElasticsearchTaskResponseBody struct {
-	// The error code. Only displayed if an exception is returned.
+	// The error code. This parameter is returned only when an exception occurs.
 	//
 	// example:
 	//
 	// InstanceStatusNotSupportCurrentAction
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message. Only displayed if an exception is returned.
+	// The error message. This parameter is returned only when an exception occurs.
 	//
 	// example:
 	//
 	// The cluster is running tasks or in an error status. Try again later.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return results:
+	// The returned result. Valid values:
 	//
-	// 	- true: interrupted change successfully
+	// - true: The change is interrupted.
 	//
-	// 	- false: interrupted change failed
+	// - false: The change failed to be interrupted.
 	//
 	// example:
 	//

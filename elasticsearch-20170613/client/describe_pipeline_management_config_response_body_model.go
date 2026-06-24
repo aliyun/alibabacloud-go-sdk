@@ -16,7 +16,7 @@ type iDescribePipelineManagementConfigResponseBody interface {
 }
 
 type DescribePipelineManagementConfigResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *DescribePipelineManagementConfigResponseBody) Validate() error {
 }
 
 type DescribePipelineManagementConfigResponseBodyResult struct {
-	// The access addresses of the Elasticsearch cluster. Specify each address in the `http://Endpoint of the Elasticsearch cluster:Port number` format.
+	// The list of access endpoints for the Elasticsearch instance, in the format of `domain name:port number`.
 	//
 	// example:
 	//
 	// ["http://es-cn-n6w1o1x0w001c****.elasticsearch.aliyuncs.com:9200"]
 	Endpoints *string `json:"endpoints,omitempty" xml:"endpoints,omitempty"`
-	// The ID of the Elasticsearch cluster.
+	// The Elasticsearch instance ID.
 	//
 	// example:
 	//
@@ -81,7 +81,7 @@ type DescribePipelineManagementConfigResponseBodyResult struct {
 	//
 	// MULTIPLE_PIPELINE
 	PipelineManagementType *string `json:"pipelineManagementType,omitempty" xml:"pipelineManagementType,omitempty"`
-	// The username that is used to access the Elasticsearch cluster.
+	// The username used to access the instance.
 	//
 	// example:
 	//

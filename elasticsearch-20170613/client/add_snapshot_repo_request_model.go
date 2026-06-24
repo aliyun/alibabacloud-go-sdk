@@ -14,6 +14,15 @@ type iAddSnapshotRepoRequest interface {
 }
 
 type AddSnapshotRepoRequest struct {
+	// The cross-cluster backup information, which specifies the reference instance.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "repoPath" :"es-cn-4591jumei000u****"
+	//
+	// }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

@@ -17,6 +17,8 @@ type iTurnOnZoneRequest interface {
 
 type TurnOnZoneRequest struct {
 	HpAlbZoneDrained *bool `json:"hpAlbZoneDrained,omitempty" xml:"hpAlbZoneDrained,omitempty"`
+	// The zone of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou-i

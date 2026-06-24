@@ -22,7 +22,7 @@ type ListAckClustersResponseBody struct {
 	//
 	// F93EAA49-284F-4FCE-9E67-FA23FB4BB512
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The list of ACK clusters returned by the current request.
 	Result []*ListAckClustersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -66,25 +66,25 @@ func (s *ListAckClustersResponseBody) Validate() error {
 }
 
 type ListAckClustersResponseBodyResult struct {
-	// The ID of cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c5ea2c2d9a3cf499481292f60425d****
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// The type of the cluster. The value is fixed as ManagedKubernetes.
+	// The cluster type. Only ManagedKubernetes is supported, which indicates a managed Kubernetes cluster.
 	//
 	// example:
 	//
 	// ManagedKubernetes
 	ClusterType *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the VPC to which the cluster belongs.
+	// The ID of the VPC where the cluster resides.
 	//
 	// example:
 	//

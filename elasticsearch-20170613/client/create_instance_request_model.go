@@ -48,54 +48,116 @@ type iCreateInstanceRequest interface {
 }
 
 type CreateInstanceRequest struct {
+	// Coordinating node configuration.
 	ClientNodeConfiguration *ClientNodeConfiguration `json:"clientNodeConfiguration,omitempty" xml:"clientNodeConfiguration,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// es
-	Description                  *string                       `json:"description,omitempty" xml:"description,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Elastic node configuration.
 	ElasticDataNodeConfiguration *ElasticDataNodeConfiguration `json:"elasticDataNodeConfiguration,omitempty" xml:"elasticDataNodeConfiguration,omitempty"`
+	// The access password of the instance. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=). The password must be 8 to 32 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// es_password
+	// Es_password
 	EsAdminPassword *string `json:"esAdminPassword,omitempty" xml:"esAdminPassword,omitempty"`
+	// The instance version. Valid values:
+	//
+	// - 8.5.1_with_X-Pack
+	//
+	// - 7.10_with_X-Pack
+	//
+	// - 6.7_with_X-Pack
+	//
+	// - 7.7_with_X-Pack
+	//
+	// - 6.8_with_X-Pack
+	//
+	// - 6.3_with_X-Pack
+	//
+	// - 5.6_with_X-Pack
+	//
+	// - 5.5.3_with_X-Pack
+	//
+	// > The versions listed above may not include all versions supported by Elasticsearch instances. You can call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actually supported versions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5.5.3_with_X-Pack
 	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
+	// The edition type:
+	//
+	// - x-pack: creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+	//
+	// - IS: creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
+	//
 	// example:
 	//
 	// advanced
-	InstanceCategory    *string                  `json:"instanceCategory,omitempty" xml:"instanceCategory,omitempty"`
+	InstanceCategory *string `json:"instanceCategory,omitempty" xml:"instanceCategory,omitempty"`
+	// Kibana node configuration.
+	//
+	// > We strongly recommend that you enable the Kibana node.
 	KibanaConfiguration *KibanaNodeConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty"`
+	// Dedicated master node configuration.
+	//
+	// > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you use createInstance to create an instance with next-generation cloud disk dedicated master nodes, you must specify the instance family with the `.new` suffix, for example, elasticsearch.sn1ne.large.new.
 	MasterConfiguration *MasterNodeConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty"`
+	// Network configuration.
+	//
+	// > Specifying IP whitelists is not supported when creating an instance.
+	//
 	// This parameter is required.
 	NetworkConfig *NetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty"`
+	// The number of data nodes. Valid values: 2 to 50.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
-	NodeAmount  *int32       `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	NodeSpec    *NodeSpec    `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty"`
+	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	// Data node configuration.
+	//
+	// > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you use createInstance to create an instance with next-generation cloud disk data nodes, you must specify the instance family with the `.new` suffix, for example, elasticsearch.sn1ne.large.new.
+	NodeSpec *NodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty"`
+	// The billing details of the subscription instance. This parameter is required when you create a subscription instance.
 	PaymentInfo *PaymentInfo `json:"paymentInfo,omitempty" xml:"paymentInfo,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - postpaid: pay-as-you-go.
+	//
+	// - prepaid: subscription.
+	//
 	// example:
 	//
 	// postpaid
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
 	// example:
 	//
-	// rg-aekzu7tsu4nem4q
-	ResourceGroupId       *string                      `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Tags                  []*CreateInstanceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	WarmNodeConfiguration *WarmNodeConfiguration       `json:"warmNodeConfiguration,omitempty" xml:"warmNodeConfiguration,omitempty"`
+	// rg-aekzu7tsu4n****
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Instance tags.
+	Tags []*CreateInstanceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// Cold data node configuration.
+	WarmNodeConfiguration *WarmNodeConfiguration `json:"warmNodeConfiguration,omitempty" xml:"warmNodeConfiguration,omitempty"`
+	// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
+	//
 	// example:
 	//
 	// 2
 	ZoneCount *int32 `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
+	// Used to ensure the idempotency of the request. The parameter value is generated by the client and must be unique across different requests. The value cannot exceed 64 ASCII characters.
+	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****
@@ -326,7 +388,17 @@ func (s *CreateInstanceRequest) Validate() error {
 }
 
 type CreateInstanceRequestTags struct {
-	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag key of the instance.
+	//
+	// example:
+	//
+	// KeyTest
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag value of the instance.
+	//
+	// example:
+	//
+	// KeyValue
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 

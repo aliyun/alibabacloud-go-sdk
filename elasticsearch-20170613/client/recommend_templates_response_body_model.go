@@ -16,11 +16,14 @@ type iRecommendTemplatesResponseBody interface {
 }
 
 type RecommendTemplatesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 66B060CF-7381-49C7-9B89-7757927FDA16
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*RecommendTemplatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned results.
+	Result []*RecommendTemplatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s RecommendTemplatesResponseBody) String() string {
@@ -63,21 +66,23 @@ func (s *RecommendTemplatesResponseBody) Validate() error {
 }
 
 type RecommendTemplatesResponseBodyResult struct {
+	// The template configuration content.
+	//
 	// example:
 	//
 	// {\\n\\t\\"persistent\\": {\\n\\t\\t\\"search\\": {\\n\\t\\t\\t\\"max_buckets\\": \\"10000\\"\\n\\t\\t}\\n\\t}\\n}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// *
+	// The template name. Valid values:
 	//
-	// *
+	// - staticSettings: cluster static configuration
 	//
-	// *
+	// - dynamicSettings: cluster dynamic configuration
 	//
-	// *
+	// - indexTemplate: index template configuration
 	//
-	// **
+	// - ilmPolicy: index lifecycle configuration
 	//
-	// ****
+	// > Advanced Edition instances of version 6.7.0 or later support enabling the index lifecycle template.
 	//
 	// example:
 	//

@@ -18,12 +18,16 @@ type iListComponentIndicesResponseBody interface {
 }
 
 type ListComponentIndicesResponseBody struct {
+	// The response headers.
 	Headers *ListComponentIndicesResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC47D9
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListComponentIndicesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the returned results.
+	Result []*ListComponentIndicesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListComponentIndicesResponseBody) String() string {
@@ -80,6 +84,8 @@ func (s *ListComponentIndicesResponseBody) Validate() error {
 }
 
 type ListComponentIndicesResponseBodyHeaders struct {
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -108,8 +114,12 @@ func (s *ListComponentIndicesResponseBodyHeaders) Validate() error {
 }
 
 type ListComponentIndicesResponseBodyResult struct {
-	Composed []*string                                      `json:"composed,omitempty" xml:"composed,omitempty" type:"Repeated"`
-	Content  *ListComponentIndicesResponseBodyResultContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	// The information about the index templates that reference this composable template.
+	Composed []*string `json:"composed,omitempty" xml:"composed,omitempty" type:"Repeated"`
+	// The content of the composable template.
+	Content *ListComponentIndicesResponseBodyResultContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	// The name of the composable template.
+	//
 	// example:
 	//
 	// synthetics-settings
@@ -161,11 +171,16 @@ func (s *ListComponentIndicesResponseBodyResult) Validate() error {
 }
 
 type ListComponentIndicesResponseBodyResultContent struct {
+	// The metadata, which is used to store information such as remarks.
+	//
 	// example:
 	//
 	// { "description": "set number of shards to one" }
-	Meta     map[string]interface{}                                 `json:"_meta,omitempty" xml:"_meta,omitempty"`
+	Meta map[string]interface{} `json:"_meta,omitempty" xml:"_meta,omitempty"`
+	// The composable template object.
 	Template *ListComponentIndicesResponseBodyResultContentTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
+	// The version of the composable template.
+	//
 	// example:
 	//
 	// 0
@@ -217,6 +232,7 @@ func (s *ListComponentIndicesResponseBodyResultContent) Validate() error {
 }
 
 type ListComponentIndicesResponseBodyResultContentTemplate struct {
+	// The settings configuration of the template.
 	Settings *ListComponentIndicesResponseBodyResultContentTemplateSettings `json:"settings,omitempty" xml:"settings,omitempty" type:"Struct"`
 }
 
@@ -247,6 +263,7 @@ func (s *ListComponentIndicesResponseBodyResultContentTemplate) Validate() error
 }
 
 type ListComponentIndicesResponseBodyResultContentTemplateSettings struct {
+	// The index information.
 	Index *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex `json:"index,omitempty" xml:"index,omitempty" type:"Struct"`
 }
 
@@ -277,10 +294,17 @@ func (s *ListComponentIndicesResponseBodyResultContentTemplateSettings) Validate
 }
 
 type ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex struct {
+	// The index compression method. Valid values:
+	//
+	// - LZ4: the default compression algorithm of Elasticsearch. It provides fast compression and decompression but a relatively lower compression ratio.
+	//
+	// - best_compression: uses the best_compression algorithm for compression, which provides a higher compression ratio.
+	//
 	// example:
 	//
 	// best_compression
-	Codec     *string                                                                      `json:"codec,omitempty" xml:"codec,omitempty"`
+	Codec *string `json:"codec,omitempty" xml:"codec,omitempty"`
+	// The index lifecycle configuration.
 	Lifecycle *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycle `json:"lifecycle,omitempty" xml:"lifecycle,omitempty" type:"Struct"`
 }
 
@@ -320,6 +344,8 @@ func (s *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex) Val
 }
 
 type ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycle struct {
+	// The name of the lifecycle policy.
+	//
 	// example:
 	//
 	// synthetics

@@ -16,17 +16,17 @@ type iUpdateInstanceChargeTypeResponseBody interface {
 }
 
 type UpdateInstanceChargeTypeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return results:
+	// The returned result. Valid values:
 	//
-	// 	- true: conversion successful
+	// - true: The conversion was successful.
 	//
-	// 	- false: conversion failed
+	// - false: The conversion failed.
 	//
 	// example:
 	//

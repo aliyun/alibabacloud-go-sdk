@@ -16,10 +16,18 @@ type iUpdateTemplateResponseBody interface {
 }
 
 type UpdateTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the scenario-specific template configuration is modified. Valid values:
+	//
+	// - true: The modification is successful.
+	//
+	// - false: The modification failed.
+	//
 	// example:
 	//
 	// true

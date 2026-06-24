@@ -16,7 +16,7 @@ type iMoveResourceGroupResponseBody interface {
 }
 
 type MoveResourceGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,103 +62,103 @@ func (s *MoveResourceGroupResponseBody) Validate() error {
 }
 
 type MoveResourceGroupResponseBodyResult struct {
-	// The time when the cluster was created.
+	// The time when the instance was created.
 	//
 	// example:
 	//
 	// 2020-07-06T10:18:48.662Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The name of the cluster.
+	// The instance name.
 	//
 	// example:
 	//
 	// es-cn-abc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The configurations of IK dictionaries.
+	// The IK dictionary configuration.
 	DictList []*MoveResourceGroupResponseBodyResultDictList `json:"dictList,omitempty" xml:"dictList,omitempty" type:"Repeated"`
-	// The internal endpoint of the cluster.
+	// The internal endpoint of the instance.
 	//
 	// example:
 	//
 	// es-cn-nif1q8auz0003****.elasticsearch.aliyuncs.com
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The version of the cluster.
+	// The instance version.
 	//
 	// example:
 	//
 	// 6.7.0_with_X-Pack
 	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
-	// The ID of the cluster.
+	// The instance ID.
 	//
 	// example:
 	//
 	// es-cn-n6w1o1x0w001c****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The configurations of Kibana nodes.
+	// The configuration of Kibana nodes.
 	KibanaConfiguration *MoveResourceGroupResponseBodyResultKibanaConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty" type:"Struct"`
-	// The public endpoint of the Kibana console of the cluster.
+	// The public network access address for Kibana.
 	//
 	// example:
 	//
 	// es-cn-nif1q8auz0003****.kibana.elasticsearch.aliyuncs.com
 	KibanaDomain *string `json:"kibanaDomain,omitempty" xml:"kibanaDomain,omitempty"`
-	// The port number that is used to access the Kibana console of the cluster over the Internet.
+	// The public port for Kibana.
 	//
 	// example:
 	//
 	// 5601
 	KibanaPort *int32 `json:"kibanaPort,omitempty" xml:"kibanaPort,omitempty"`
-	// The configurations of dedicated master nodes.
+	// The configuration of master nodes.
 	MasterConfiguration *MoveResourceGroupResponseBodyResultMasterConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty" type:"Struct"`
-	// The network configurations.
+	// The network configuration.
 	NetworkConfig *MoveResourceGroupResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
-	// The number of data nodes in the cluster.
+	// The number of data nodes of the instance.
 	//
 	// example:
 	//
 	// 2
 	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	// The configurations of data nodes.
+	// The configuration of data nodes.
 	NodeSpec *MoveResourceGroupResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
-	// The billing method of the cluster. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// 	- prepaid: subscription
+	// - prepaid: subscription.
 	//
-	// 	- postpaid: pay-as-you-go
+	// - postpaid: pay-as-you-go.
 	//
 	// example:
 	//
 	// postpaid
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The public endpoint of the cluster.
+	// The public network access address.
 	//
 	// example:
 	//
 	// es-cn-n6w1o1x0w001c****.public.elasticsearch.aliyuncs.com
 	PublicDomain *string `json:"publicDomain,omitempty" xml:"publicDomain,omitempty"`
-	// The port number that is used to access the cluster over the Internet.
+	// The public port.
 	//
 	// example:
 	//
 	// 9200
 	PublicPort *int32 `json:"publicPort,omitempty" xml:"publicPort,omitempty"`
-	// The status of the cluster. Valid values:
+	// The status of the instance. Valid values:
 	//
-	// 	- active: The cluster is normal.
+	// - active: Normal.
 	//
-	// 	- activating: The cluster is being activated.
+	// - activating: Taking effect.
 	//
-	// 	- Inactive: The cluster is frozen.
+	// - inactive: Frozen.
 	//
-	// 	- invalid: The cluster is valid.
+	// - invalid: Expired.
 	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The configurations of synonym dictionaries.
+	// The synonym dictionary configuration.
 	SynonymsDicts []*MoveResourceGroupResponseBodyResultSynonymsDicts `json:"synonymsDicts,omitempty" xml:"synonymsDicts,omitempty" type:"Repeated"`
-	// The time when the cluster was last updated.
+	// The time when the instance was last updated.
 	//
 	// example:
 	//
@@ -400,25 +400,25 @@ type MoveResourceGroupResponseBodyResultDictList struct {
 	//
 	// SYSTEM_MAIN.dic
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of the source of the dictionary file. Valid values:
+	// The source type. Valid values:
 	//
-	// 	- OSS: Object Storage Service (OSS). You must make sure that the access control list (ACL) of the related OSS bucket is public read.
+	// - OSS: OSS open storage. Make sure that the OSS bucket has public-read permission.
 	//
-	// 	- ORIGIN: previously uploaded dictionary.
+	// - ORIGIN: retains the previously uploaded dictionary.
 	//
 	// example:
 	//
 	// ORIGIN
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The type of the dictionary. Valid values:
+	// The dictionary type. Valid values:
 	//
-	// 	- STOP: stopword list
+	// - STOP: stopword.
 	//
-	// 	- MAIN: main dictionary
+	// - MAIN: main dictionary.
 	//
-	// 	- SYNONYMS: synonym dictionary
+	// - SYNONYMS: synonym dictionary.
 	//
-	// 	- ALI_WS: Alibaba Cloud dictionary
+	// - ALI_WS: Alibaba dictionary.
 	//
 	// example:
 	//
@@ -481,19 +481,19 @@ type MoveResourceGroupResponseBodyResultKibanaConfiguration struct {
 	//
 	// 1
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage capacity. Unit: GB.
+	// The storage size of the node. Unit: GB.
 	//
 	// example:
 	//
 	// 20
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// The storage type.
+	// The storage type of the node.
 	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The specification category.
+	// The node specifications.
 	//
 	// example:
 	//
@@ -556,19 +556,19 @@ type MoveResourceGroupResponseBodyResultMasterConfiguration struct {
 	//
 	// 3
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage capacity. Unit: GB.
+	// The storage size of the node. Unit: GB.
 	//
 	// example:
 	//
 	// 20
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// The storage type.
+	// The storage type of the node.
 	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The specification category.
+	// The node specifications.
 	//
 	// example:
 	//
@@ -625,25 +625,25 @@ func (s *MoveResourceGroupResponseBodyResultMasterConfiguration) Validate() erro
 }
 
 type MoveResourceGroupResponseBodyResultNetworkConfig struct {
-	// The network type. Only the VPC is supported.
+	// The network type. Only VPC is supported.
 	//
 	// example:
 	//
 	// vpc
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The virtual private cloud (VPC) ID.
 	//
 	// example:
 	//
 	// vpc-bp16k1dvzxtmagcva****
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone where the cluster resides.
+	// The zone where the instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou-i
 	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -700,19 +700,19 @@ func (s *MoveResourceGroupResponseBodyResultNetworkConfig) Validate() error {
 }
 
 type MoveResourceGroupResponseBodyResultNodeSpec struct {
-	// The storage capacity. Unit: GB.
+	// The storage size of the node. Unit: GB.
 	//
 	// example:
 	//
 	// 50
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// The storage type.
+	// The storage type of the node.
 	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The specification category.
+	// The node specifications.
 	//
 	// example:
 	//
@@ -772,25 +772,25 @@ type MoveResourceGroupResponseBodyResultSynonymsDicts struct {
 	//
 	// SYSTEM_MAIN.dic
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of the source of the dictionary file. Valid values:
+	// The source type. Valid values:
 	//
-	// 	- OSS: Object Storage Service (OSS). You must make sure that the ACL of the related OSS bucket is public read.
+	// - OSS: OSS open storage. Make sure that the OSS bucket has public-read permission.
 	//
-	// 	- ORIGIN: previously uploaded dictionary.
+	// - ORIGIN: retains the previously uploaded dictionary.
 	//
 	// example:
 	//
 	// ORIGIN
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The type of the dictionary. Valid values:
+	// The dictionary type. Valid values:
 	//
-	// 	- STOP: stopword list
+	// - STOP: stopword.
 	//
-	// 	- MAIN: main dictionary
+	// - MAIN: main dictionary.
 	//
-	// 	- SYNONYMS: synonym dictionary
+	// - SYNONYMS: synonym dictionary.
 	//
-	// 	- ALI_WS: Alibaba Cloud dictionary
+	// - ALI_WS: Alibaba dictionary.
 	//
 	// example:
 	//

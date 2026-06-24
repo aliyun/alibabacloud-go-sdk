@@ -14,6 +14,8 @@ type iCloseHttpsRequest interface {
 }
 
 type CloseHttpsRequest struct {
+	// A unique token used to ensure idempotence of the request. The client generates this value. The value must be unique across different requests and can contain a maximum of 64 ASCII characters.
+	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B350****

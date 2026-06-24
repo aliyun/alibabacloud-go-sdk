@@ -16,13 +16,13 @@ type iUpdatePublicNetworkResponseBody interface {
 }
 
 type UpdatePublicNetworkResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2A88ECA1-D827-4581-AD39-05149586****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The return results.
+	// The returned result.
 	Result *UpdatePublicNetworkResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *UpdatePublicNetworkResponseBody) Validate() error {
 }
 
 type UpdatePublicNetworkResponseBodyResult struct {
-	// The status of the public network access switch.
+	// The status of the public network address switch.
 	//
 	// example:
 	//

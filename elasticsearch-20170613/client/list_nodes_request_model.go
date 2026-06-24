@@ -22,31 +22,31 @@ type iListNodesRequest interface {
 }
 
 type ListNodesRequest struct {
-	// The IDs of the ECS instances.
+	// The list of ECS instance IDs.
 	//
 	// example:
 	//
 	// i-bp1ei8ysh7orb6eq****
 	EcsInstanceIds *string `json:"ecsInstanceIds,omitempty" xml:"ecsInstanceIds,omitempty"`
-	// The name of the ECS instance.
+	// The ECS instance name.
 	//
 	// example:
 	//
 	// test
 	EcsInstanceName *string `json:"ecsInstanceName,omitempty" xml:"ecsInstanceName,omitempty"`
-	// The number of the page to return.
+	// The page number of the returned results.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries to return on each page.
+	// The number of results per page.
 	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// The tags of the ECS instance. You must configure tagKey and tagValue.
+	// The tag information of the ECS instance. The tag key (tagKey) and tag value (tagValue) must be included.
 	//
 	// example:
 	//

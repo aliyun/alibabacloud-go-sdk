@@ -16,17 +16,17 @@ type iInitializeOperationRoleResponseBody interface {
 }
 
 type InitializeOperationRoleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 29101430-4797-4D1D-96C3-9FCBCCA8F845
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the service-linked role is created. Valid values:
+	// The returned result. Valid values:
 	//
-	// 	- true: The service-linked role is created.
+	// - true: The service-linked role is created.
 	//
-	// 	- false: The service-linked role fails to be created.
+	// - false: The service-linked role failed to be created.
 	//
 	// example:
 	//

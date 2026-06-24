@@ -20,25 +20,25 @@ type iDescribeElasticsearchHealthResponseBody interface {
 }
 
 type DescribeElasticsearchHealthResponseBody struct {
-	// The response code returned.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message returned.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0731F217-2C8A-4D42-8BCD-5C352866E3B7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The color that indicates the health status of the cluster.
+	// The health status of the instance.
 	//
 	// example:
 	//

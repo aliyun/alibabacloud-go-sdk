@@ -14,6 +14,8 @@ type iGrayPublishRequest interface {
 }
 
 type GrayPublishRequest struct {
+	// Change ID
+	//
 	// example:
 	//
 	// ea8d33aa4371c3499d0***

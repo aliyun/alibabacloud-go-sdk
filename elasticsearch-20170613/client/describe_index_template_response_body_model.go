@@ -16,11 +16,14 @@ type iDescribeIndexTemplateResponseBody interface {
 }
 
 type DescribeIndexTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 25DB38F8-82E4-4D16-82BB-FF077C7F****
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DescribeIndexTemplateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the index template.
+	Result *DescribeIndexTemplateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DescribeIndexTemplateResponseBody) String() string {
@@ -59,23 +62,38 @@ func (s *DescribeIndexTemplateResponseBody) Validate() error {
 }
 
 type DescribeIndexTemplateResponseBodyResult struct {
+	// Indicates whether the data stream is enabled. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// true
 	DataStream *bool `json:"dataStream,omitempty" xml:"dataStream,omitempty"`
+	// The Policy Name of the lifecycle epoch.
+	//
 	// example:
 	//
 	// cube_default_ilm_policy
 	IlmPolicy     *string   `json:"ilmPolicy,omitempty" xml:"ilmPolicy,omitempty"`
 	IndexPatterns []*string `json:"indexPatterns,omitempty" xml:"indexPatterns,omitempty" type:"Repeated"`
+	// The name of the index template.
+	//
 	// example:
 	//
 	// data-stream-default
 	IndexTemplate *string `json:"indexTemplate,omitempty" xml:"indexTemplate,omitempty"`
+	// The priority.
+	//
 	// example:
 	//
 	// 0
-	Priority *int32                                           `json:"priority,omitempty" xml:"priority,omitempty"`
+	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
+	// The component template.
 	Template *DescribeIndexTemplateResponseBodyResultTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
 }
 
@@ -151,14 +169,20 @@ func (s *DescribeIndexTemplateResponseBodyResult) Validate() error {
 }
 
 type DescribeIndexTemplateResponseBodyResultTemplate struct {
+	// The aliases configuration.
+	//
 	// example:
 	//
 	// {\\"mydata\\":{}}
 	Aliases *string `json:"aliases,omitempty" xml:"aliases,omitempty"`
+	// The mappings configuration.
+	//
 	// example:
 	//
 	// {\\"properties\\":{\\"created_at\\":{\\"format\\":\\"EEE MMM dd HH:mm:ss Z yyyy\\",\\"type\\":\\"date\\"},\\"host_name\\":{\\"type\\":\\"keyword\\"}}}
 	Mappings *string `json:"mappings,omitempty" xml:"mappings,omitempty"`
+	// The settings configuration.
+	//
 	// example:
 	//
 	// {\\"index.refresh_interval\\":\\"1s\\"}

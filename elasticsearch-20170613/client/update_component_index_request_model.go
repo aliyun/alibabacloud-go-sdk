@@ -16,10 +16,13 @@ type iUpdateComponentIndexRequest interface {
 }
 
 type UpdateComponentIndexRequest struct {
+	// The metadata, which is used to store information such as remarks.
+	//
 	// example:
 	//
 	// { "description": "set number of shards to one" }
-	Meta     map[string]interface{}               `json:"_meta,omitempty" xml:"_meta,omitempty"`
+	Meta map[string]interface{} `json:"_meta,omitempty" xml:"_meta,omitempty"`
+	// The composable template information.
 	Template *UpdateComponentIndexRequestTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
 }
 
@@ -59,14 +62,20 @@ func (s *UpdateComponentIndexRequest) Validate() error {
 }
 
 type UpdateComponentIndexRequestTemplate struct {
+	// The aliases configuration of the template.
+	//
 	// example:
 	//
 	// {}
 	Aliases map[string]interface{} `json:"aliases,omitempty" xml:"aliases,omitempty"`
+	// The mappings configuration of the template.
+	//
 	// example:
 	//
 	// { "properties": { "@timestamp": { "type": "date" } } }
 	Mappings map[string]interface{} `json:"mappings,omitempty" xml:"mappings,omitempty"`
+	// The settings configuration of the template.
+	//
 	// example:
 	//
 	// { "index.number_of_replicas": 0 }

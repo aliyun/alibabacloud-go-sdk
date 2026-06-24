@@ -40,46 +40,70 @@ type iListInstanceHistoryEventsShrinkRequest interface {
 }
 
 type ListInstanceHistoryEventsShrinkRequest struct {
+	// The request body parameters.
 	Body []*ListInstanceHistoryEventsShrinkRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	// The end time for querying by event creation time. Specify a timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1645596516000
 	EventCreateEndTime *string `json:"eventCreateEndTime,omitempty" xml:"eventCreateEndTime,omitempty"`
+	// The start time for querying by event creation time. Specify a timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1645596516000
-	EventCreateStartTime   *string `json:"eventCreateStartTime,omitempty" xml:"eventCreateStartTime,omitempty"`
+	EventCreateStartTime *string `json:"eventCreateStartTime,omitempty" xml:"eventCreateStartTime,omitempty"`
+	// The lifecycle status of the event.
 	EventCycleStatusShrink *string `json:"eventCycleStatus,omitempty" xml:"eventCycleStatus,omitempty"`
+	// The end time for querying by event execution time. Specify a timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1645596516000
 	EventExecuteEndTime *string `json:"eventExecuteEndTime,omitempty" xml:"eventExecuteEndTime,omitempty"`
+	// The start time for querying by event execution time. Specify a timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1645596516000
 	EventExecuteStartTime *string `json:"eventExecuteStartTime,omitempty" xml:"eventExecuteStartTime,omitempty"`
+	// The end time for querying by event completion time. Specify a timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1645596516000
 	EventFinashEndTime *string `json:"eventFinashEndTime,omitempty" xml:"eventFinashEndTime,omitempty"`
+	// The start time for querying by event completion time. Specify a timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1645596516000
 	EventFinashStartTime *string `json:"eventFinashStartTime,omitempty" xml:"eventFinashStartTime,omitempty"`
-	EventLevelShrink     *string `json:"eventLevel,omitempty" xml:"eventLevel,omitempty"`
-	EventTypeShrink      *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
+	// The event level.
+	EventLevelShrink *string `json:"eventLevel,omitempty" xml:"eventLevel,omitempty"`
+	// The event type.
+	EventTypeShrink *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// es-cn-2r42l7a740005****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The IP address of the node that triggered the event.
+	//
 	// example:
 	//
 	// 10.1.xx.xx
 	NodeIP *string `json:"nodeIP,omitempty" xml:"nodeIP,omitempty"`
+	// The starting document offset. The value must be a non-negative integer. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of events to return. The value must be a non-negative integer. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -234,10 +258,24 @@ func (s *ListInstanceHistoryEventsShrinkRequest) Validate() error {
 }
 
 type ListInstanceHistoryEventsShrinkRequestBody struct {
+	// Specifies whether to sort in descending order. Valid values:
+	//
+	// - true (default): Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// true
 	Desc *bool `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The field by which the results are sorted. Valid values:
+	//
+	// - event_time: event creation time
+	//
+	// - event_execute_start_time: event execution time
+	//
+	// - event_execute_finish_time: event completion time.
+	//
 	// example:
 	//
 	// event_time

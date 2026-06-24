@@ -18,7 +18,7 @@ type iGetSuggestShrinkableNodesRequest interface {
 }
 
 type GetSuggestShrinkableNodesRequest struct {
-	// The number of nodes that you want to remove.
+	// The expected number of removable nodes to retrieve.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type GetSuggestShrinkableNodesRequest struct {
 	//
 	// false
 	IgnoreStatus *bool `json:"ignoreStatus,omitempty" xml:"ignoreStatus,omitempty"`
-	// The type of removing nodes. WORKER indicates hot node and WORKER_WARM indicates warm node.
+	// The type of nodes to scale in. **WORKER*	- indicates hot nodes. **WORKER_WARM*	- indicates warm nodes.
 	//
 	// This parameter is required.
 	//

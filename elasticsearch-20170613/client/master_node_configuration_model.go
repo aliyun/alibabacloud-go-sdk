@@ -20,24 +20,36 @@ type iMasterNodeConfiguration interface {
 }
 
 type MasterNodeConfiguration struct {
+	// The number of dedicated master nodes.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The storage space of dedicated master nodes. Unit: GB.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	Disk *int64 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The storage type of dedicated master nodes. Valid values:
+	//
+	// - cloud_ssd: standard SSD
+	//
+	// - cloud_essd (default): Enterprise SSD (ESSD).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cloud_essd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	// The node specifications of dedicated master nodes. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+	//
 	// This parameter is required.
 	//
 	// example:

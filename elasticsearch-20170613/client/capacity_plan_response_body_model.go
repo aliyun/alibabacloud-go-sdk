@@ -16,13 +16,13 @@ type iCapacityPlanResponseBody interface {
 }
 
 type CapacityPlanResponseBody struct {
-	// ID of the current request.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// E91B7129-A669-4D9D-A743-F90A0FF1F5EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result of the request.
+	// The result of the request.
 	Result *CapacityPlanResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,27 +62,27 @@ func (s *CapacityPlanResponseBody) Validate() error {
 }
 
 type CapacityPlanResponseBodyResult struct {
-	// Extended configuration information.
+	// The extended configuration information.
 	ExtendConfigs []*CapacityPlanResponseBodyResultExtendConfigs `json:"ExtendConfigs,omitempty" xml:"ExtendConfigs,omitempty" type:"Repeated"`
-	// Edition type, with values meaning as follows:
+	// The edition type. Valid values:
 	//
-	// - advanced: Enhanced Edition
+	// - advanced: Advanced Edition
 	//
 	// - x-pack: Commercial Edition
 	//
-	// - community: Community Edition
+	// - community: Community Edition.
 	//
 	// example:
 	//
 	// advanced
 	InstanceCategory *string `json:"InstanceCategory,omitempty" xml:"InstanceCategory,omitempty"`
-	// Node information.
+	// The node information.
 	NodeConfigurations []*CapacityPlanResponseBodyResultNodeConfigurations `json:"NodeConfigurations,omitempty" xml:"NodeConfigurations,omitempty" type:"Repeated"`
-	// Based on the capacity planning calculation, there is no default value. The meanings of the values are as follows:
+	// The result calculated based on capacity planning. No default value is available. Valid values:
 	//
-	// - true: Represents an oversized cluster, indicating that the number of data nodes calculated by the capacity planning exceeds the threshold of 50.
+	// - true: The cluster is oversized. The number of data nodes calculated by capacity planning exceeds the threshold of 50.
 	//
-	// - false: The number of data nodes calculated by the capacity planning is within 50.
+	// - false: The number of data nodes calculated by capacity planning is within 50.
 	//
 	// example:
 	//
@@ -157,23 +157,23 @@ func (s *CapacityPlanResponseBodyResult) Validate() error {
 }
 
 type CapacityPlanResponseBodyResultExtendConfigs struct {
-	// Configuration type, with a single value: sharedDisk.
+	// The configuration type. The only valid value is sharedDisk.
 	//
-	// > This extendConfigs attribute may appear when the planned instance type is Advanced.
+	// > This extendConfigs property may appear when the planned instance type is Advanced Edition (advanced).
 	//
 	// example:
 	//
 	// sharedDisk
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Disk size, in GiB.
+	// The disk size, in GiB.
 	//
 	// example:
 	//
 	// 2048
 	Disk *int64 `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	// Disk type, with a single value: CPFS_PREMIUM.
+	// The disk type. The only valid value is CPFS_PREMIUM.
 	//
-	// > This extendConfigs attribute may appear when the planned instance type is Advanced.
+	// > This extendConfigs property may appear when the planned instance type is Advanced Edition (advanced).
 	//
 	// example:
 	//
@@ -221,59 +221,59 @@ func (s *CapacityPlanResponseBodyResultExtendConfigs) Validate() error {
 }
 
 type CapacityPlanResponseBodyResultNodeConfigurations struct {
-	// Number of nodes.
+	// The number of nodes.
 	//
 	// example:
 	//
 	// 10
 	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// Number of CPUs.
+	// The number of CPUs.
 	//
 	// example:
 	//
 	// 1
 	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// Disk size, in GiB.
+	// The disk size, in GiB.
 	//
 	// example:
 	//
 	// 20
 	Disk *int64 `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	// Disk type, with meanings as follows:
+	// The disk type. Valid values:
 	//
-	// - cloud_essd: ESSD Cloud Disk
+	// - cloud_essd: ESSD
 	//
-	// - cloud_ssd: SSD Cloud Disk
+	// - cloud_ssd: standard SSD
 	//
-	// - cloud_efficiency: Efficient Cloud Disk
+	// - cloud_efficiency: ultra cloud disk
 	//
-	// - local_ssd: Local SSD Disk
+	// - local_ssd: local SSD
 	//
-	// - local_efficiency: Local Efficient Disk
+	// - local_efficiency: local ultra disk.
 	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// Specified memory size for the current node role.
+	// The memory size of the specifications for the current node role.
 	//
 	// example:
 	//
 	// 2
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// Node type, with supported types as follows:
+	// The node type. Valid values:
 	//
-	// - WORKER: Data Node
+	// - WORKER: data node
 	//
-	// - WORKER_WARM: Cold Data Node
+	// - WORKER_WARM: warm node
 	//
-	// - MASTER: Dedicated Master Node
+	// - MASTER: dedicated master node
 	//
-	// - KIBANA: Kibana Node
+	// - KIBANA: Kibana node
 	//
-	// - COORDINATING: Coordinator Node
+	// - COORDINATING: client node
 	//
-	// - ELASTIC_WORKER: Elastic Node
+	// - ELASTIC_WORKER: elastic node.
 	//
 	// example:
 	//

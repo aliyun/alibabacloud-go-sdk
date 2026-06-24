@@ -30,32 +30,60 @@ type iCreateLogstashRequest interface {
 }
 
 type CreateLogstashRequest struct {
+	// The name of the instance.
+	//
 	// example:
 	//
 	// ls-cn-abc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The network configuration.
+	//
 	// This parameter is required.
 	NetworkConfig *CreateLogstashRequestNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
+	// The number of nodes in the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	// The configuration of data nodes.
+	//
 	// This parameter is required.
-	NodeSpec    *CreateLogstashRequestNodeSpec    `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
+	NodeSpec *CreateLogstashRequestNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
+	// The billing details of the subscription instance. This parameter is required when you create a subscription instance.
 	PaymentInfo *CreateLogstashRequestPaymentInfo `json:"paymentInfo,omitempty" xml:"paymentInfo,omitempty" type:"Struct"`
+	// The billing method of the instance. Valid values:
+	//
+	// - prepaid: subscription.
+	//
+	// - postpaid: pay-as-you-go.
+	//
 	// example:
 	//
 	// prepaid
-	PaymentType     *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-acfmxxkk2p7****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The instance version. Valid values:
+	//
+	// - 6.7_with_X-Pack
+	//
+	// - 7.4_with_X-Pack.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6.7_with_X-Pack
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// A unique token that is used to ensure the idempotence of the request. The client generates this value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
+	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****
@@ -171,22 +199,30 @@ func (s *CreateLogstashRequest) Validate() error {
 }
 
 type CreateLogstashRequestNetworkConfig struct {
+	// The network type. Currently, only VPC is supported.
+	//
 	// example:
 	//
 	// vpc
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The VPC ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vpc-bp16k1dvzxtmagcva****
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The zone where the instance is deployed.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou-i
 	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	// The vSwitch ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -244,19 +280,29 @@ func (s *CreateLogstashRequestNetworkConfig) Validate() error {
 }
 
 type CreateLogstashRequestNodeSpec struct {
+	// The disk size of the node. Unit: GB.
+	//
 	// example:
 	//
 	// 50
 	Disk *int64 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The disk type of the node. Valid values:
+	//
+	// - cloud_ssd
+	//
+	// - cloud_efficiency.
+	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	// The node specifications. For more information about specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// logstash.n4.small
+	// elasticsearch.ic5.2xlarge
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -300,18 +346,34 @@ func (s *CreateLogstashRequestNodeSpec) Validate() error {
 }
 
 type CreateLogstashRequestPaymentInfo struct {
+	// The auto-renewal epoch. Unit: months. This parameter is required when **isAutoRenew*	- is set to **true**. The valid values are the same as those on the buy page.
+	//
 	// example:
 	//
 	// 3
 	AutoRenewDuration *int64 `json:"autoRenewDuration,omitempty" xml:"autoRenewDuration,omitempty"`
+	// The subscription duration. You can purchase the instance on a monthly or yearly basis. Unit: 1 to 9 months, or 1 to 3 years.
+	//
 	// example:
 	//
 	// 1
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// Specifies whether to enable auto-renewal. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
+	//
 	// example:
 	//
 	// false
 	IsAutoRenew *bool `json:"isAutoRenew,omitempty" xml:"isAutoRenew,omitempty"`
+	// The unit of the subscription duration. Valid values:
+	//
+	// - Year: year.
+	//
+	// - Month: month.
+	//
 	// example:
 	//
 	// Month

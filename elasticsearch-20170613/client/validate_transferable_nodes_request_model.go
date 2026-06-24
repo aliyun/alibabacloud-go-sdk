@@ -16,7 +16,16 @@ type iValidateTransferableNodesRequest interface {
 }
 
 type ValidateTransferableNodesRequest struct {
+	// The request body.
 	Body []*ValidateTransferableNodesRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	// The node type. Valid values:
+	//
+	// - WORKER: hot node
+	//
+	// - WORKER_WARM: warm node
+	//
+	// > COORDINATING (client node) and KIBANA (Kibana node) are not supported.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -65,14 +74,20 @@ func (s *ValidateTransferableNodesRequest) Validate() error {
 }
 
 type ValidateTransferableNodesRequestBody struct {
+	// The IP address of the node.
+	//
 	// example:
 	//
 	// 172.16.xx.xx
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The access port number of the node.
+	//
 	// example:
 	//
 	// 9200
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The zone ID of the instance node. For example, the ID of Zone C in the China (Shanghai) region is cn-shanghai-c.
+	//
 	// example:
 	//
 	// cn-shanghai-c

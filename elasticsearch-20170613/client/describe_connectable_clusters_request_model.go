@@ -14,7 +14,11 @@ type iDescribeConnectableClustersRequest interface {
 }
 
 type DescribeConnectableClustersRequest struct {
-	// The ID of the instance that can communicate with each other.
+	// Specifies whether to return instances that are already connected. Valid values:
+	//
+	// - true (default): The returned instance list includes instances that are already connected.
+	//
+	// - false: The returned instance list does not include instances that are already connected.
 	//
 	// example:
 	//

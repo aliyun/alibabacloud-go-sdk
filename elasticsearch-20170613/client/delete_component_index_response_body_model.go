@@ -16,10 +16,18 @@ type iDeleteComponentIndexResponseBody interface {
 }
 
 type DeleteComponentIndexResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC47D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result. Valid values:
+	//
+	// - true: The deletion was successful.
+	//
+	// - false: The deletion failed.
+	//
 	// example:
 	//
 	// true

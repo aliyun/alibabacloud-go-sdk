@@ -16,13 +16,13 @@ type iDescribeSnapshotSettingResponseBody interface {
 }
 
 type DescribeSnapshotSettingResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The return results.
+	// The returned result.
 	Result *DescribeSnapshotSettingResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *DescribeSnapshotSettingResponseBody) Validate() error {
 }
 
 type DescribeSnapshotSettingResponseBodyResult struct {
-	// Whether to enable automatic backup.
+	// Indicates whether automatic backup is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Automatic backup time configuration, using Quartz Cron expression.
+	// The automatic backup time configuration, specified as a Quartz Cron expression.
 	//
 	// example:
 	//

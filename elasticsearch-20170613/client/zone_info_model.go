@@ -16,10 +16,18 @@ type iZoneInfo interface {
 }
 
 type ZoneInfo struct {
+	// The zone status. Valid values:
+	//
+	// - ISOLATION: offline
+	//
+	// - NORMAL: Normal.
+	//
 	// example:
 	//
 	// NORMAL
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The zone ID, which uniquely identifies the zone.
+	//
 	// example:
 	//
 	// cn-hangzhou-b

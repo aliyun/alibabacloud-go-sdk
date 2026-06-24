@@ -24,23 +24,44 @@ type iNodeSpec interface {
 }
 
 type NodeSpec struct {
+	// Storage space size of data nodes, in GB.
+	//
 	// example:
 	//
 	// 20
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// Whether to enable cloud disk encryption for data nodes:
+	//
+	// - true: Enabled
+	//
+	// - false: Disabled
+	//
 	// example:
 	//
 	// false
-	DiskEncryption *bool   `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	DiskEncryption *bool `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	// Storage preference.
 	DiskPreference *string `json:"diskPreference,omitempty" xml:"diskPreference,omitempty"`
+	// Storage type of data nodes. Supported values:
+	//
+	// - cloud_ssd: SSD cloud disk
+	//
+	// - cloud_essd: ESSD cloud disk
+	//
+	// - cloud_efficiency: Ultra cloud disk
+	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	// Performance level of ESSD cloud disks. Required when the disk type of data nodes is ESSD cloud disk. Supported values: PL1, PL2, PL3.
+	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
+	// Data node specification. Specification details can be viewed in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+	//
 	// This parameter is required.
 	//
 	// example:

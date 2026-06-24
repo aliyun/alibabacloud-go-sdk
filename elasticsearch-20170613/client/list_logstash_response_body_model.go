@@ -18,15 +18,15 @@ type iListLogstashResponseBody interface {
 }
 
 type ListLogstashResponseBody struct {
-	// The billing method of the instance. Supported: prepaid (subscription) and postpaid (pay-as-you-go).
+	// The request header information.
 	Headers *ListLogstashResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// Detailed information about the matching instances.
+	// The request ID.
 	//
 	// example:
 	//
 	// AC442F2F-5068-4434-AA21-E78947A9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the VPC.
+	// The list of instances returned by the current request.
 	Result []*ListLogstashResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -84,7 +84,7 @@ func (s *ListLogstashResponseBody) Validate() error {
 }
 
 type ListLogstashResponseBodyHeaders struct {
-	// The number of data nodes.
+	// The total number of instances.
 	//
 	// example:
 	//
@@ -114,15 +114,15 @@ func (s *ListLogstashResponseBodyHeaders) Validate() error {
 }
 
 type ListLogstashResponseBodyResult struct {
-	// The configuration information of the data node.
+	// The instance tags.
 	Tags []*ListLogstashResponseBodyResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the instance.
+	// The time when the instance was created.
 	//
 	// example:
 	//
 	// 2018-07-13T03:58:07.253Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The time when the instance was last updated.
+	// The instance name.
 	//
 	// example:
 	//
@@ -132,46 +132,42 @@ type ListLogstashResponseBodyResult struct {
 	//
 	// 4928745600000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The tag value of the cloud disk.
+	// The instance ID.
 	//
 	// example:
 	//
 	// ls-cn-n6w1o5jq****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The network type. Currently, only Virtual Private Cloud (VPC) is supported.
+	// The network configuration.
 	NetworkConfig *ListLogstashResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
-	// The state of the instance. Valid values: Normal, Active, Inactive, and Invalid.
+	// The number of nodes in the instance.
 	//
 	// example:
 	//
 	// 2
 	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	// Specifies whether to use disk encryption. Valid values:
-	//
-	// 	- true: Enables the concurrent query feature for queries other than aggregate queries.
-	//
-	// 	- false: Disables the concurrent query feature for queries other than aggregate queries.
+	// The configuration information of data nodes.
 	NodeSpec *ListLogstashResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
-	// The time when the instance was created.
+	// The billing method of the instance. Valid values: prepaid (subscription) and postpaid (pay-as-you-go).
 	//
 	// example:
 	//
 	// postpaid
 	PaymentType     *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The version of the instance. Currently, only 6.7.0_with_X-Pack and 7.4.0_with_X-Pack are supported.
+	// The status of the instance. Valid values: active (Normal), activating (Taking Effect), inactive (Frozen), and invalid (Expired).
 	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tag of the instance. Valid values:
+	// The time when the instance was last updated.
 	//
 	// example:
 	//
 	// 2018-07-18T10:10:04.484Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The tag key of the cloud disk.
+	// The instance version. Currently, only 6.7.0_with_X-Pack and 7.4.0_with_X-Pack are supported.
 	//
 	// example:
 	//
@@ -328,13 +324,13 @@ func (s *ListLogstashResponseBodyResult) Validate() error {
 }
 
 type ListLogstashResponseBodyResultTags struct {
-	// The disk size of the node.
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The instance type of the ECS instance.
+	// The tag value.
 	//
 	// example:
 	//
@@ -373,20 +369,26 @@ func (s *ListLogstashResponseBodyResultTags) Validate() error {
 }
 
 type ListLogstashResponseBodyResultNetworkConfig struct {
+	// The network type. Currently, only Virtual Private Cloud (VPC) is supported.
+	//
 	// example:
 	//
 	// vpc
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The ID of the vSwitch.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-abc
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The zone where the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou-*
 	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-def
@@ -442,25 +444,29 @@ func (s *ListLogstashResponseBodyResultNetworkConfig) Validate() error {
 }
 
 type ListLogstashResponseBodyResultNodeSpec struct {
-	// The network configurations.
+	// The disk size of the node.
 	//
 	// example:
 	//
 	// 50
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// The ID of the VPC.
+	// Indicates whether disk encryption is enabled. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// false
 	DiskEncryption *bool `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
-	// The zone where the cluster resides.
+	// The disk type.
 	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The type of the disk.
+	// The instance specification.
 	//
 	// example:
 	//

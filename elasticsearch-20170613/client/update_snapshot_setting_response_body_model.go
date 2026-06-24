@@ -16,13 +16,13 @@ type iUpdateSnapshotSettingResponseBody interface {
 }
 
 type UpdateSnapshotSettingResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The return results.
+	// The returned result.
 	Result *UpdateSnapshotSettingResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *UpdateSnapshotSettingResponseBody) Validate() error {
 }
 
 type UpdateSnapshotSettingResponseBodyResult struct {
-	// Specifies whether to enable automatic backup.
+	// Indicates whether automatic backup is enabled.
 	//
 	// example:
 	//

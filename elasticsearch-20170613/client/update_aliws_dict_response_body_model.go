@@ -66,13 +66,13 @@ func (s *UpdateAliwsDictResponseBody) Validate() error {
 }
 
 type UpdateAliwsDictResponseBodyResult struct {
-	// The size of the dictionary file. Unit: bytes.
+	// The file size. Unit: bytes.
 	//
 	// example:
 	//
 	// 6226
 	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	// The name of the uploaded dictionary file.
+	// The name of the uploaded file.
 	//
 	// example:
 	//
@@ -80,15 +80,15 @@ type UpdateAliwsDictResponseBodyResult struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type of the dictionary file. Valid values:
 	//
-	// 	- OSS
+	// - OSS: uses OSS open storage.
 	//
-	// 	- ORIGIN
+	// - ORIGIN: retains the previously uploaded dictionary.
 	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The dictionary type. The value is fixed as ALI_WS.
+	// The dictionary type. Valid values: ALI_WS (AliNLP tokenizer).
 	//
 	// example:
 	//

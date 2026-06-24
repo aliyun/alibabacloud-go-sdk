@@ -16,7 +16,7 @@ type iListDefaultCollectorConfigurationsResponseBody interface {
 }
 
 type ListDefaultCollectorConfigurationsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

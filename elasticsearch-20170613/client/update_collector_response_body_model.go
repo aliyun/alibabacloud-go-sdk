@@ -63,33 +63,33 @@ func (s *UpdateCollectorResponseBody) Validate() error {
 
 type UpdateCollectorResponseBodyResult struct {
 	CollectorPaths []*string `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
-	// The information about the configuration file for the shipper.
+	// The configuration file information of the collector.
 	Configs []*UpdateCollectorResponseBodyResultConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// Indicates whether the shipper is checked and updated. Valid values:
+	// Indicates whether the collector is validated and created. Valid values:
 	//
-	// 	- true: The shipper is only checked.
+	// - true: Only validated, not created.
 	//
-	// 	- false: The shipper is checked and updated.
+	// - false: Validated and created.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// The extended parameters that are configured for the shipper.
+	// The extended parameter information.
 	ExtendConfigs []*UpdateCollectorResponseBodyResultExtendConfigs `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
-	// The time when the shipper was created.
+	// The time when the collector was created.
 	//
 	// example:
 	//
 	// 2020-06-20T07:26:47.000+0000
 	GmtCreatedTime *string `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
-	// The time when the shipper was updated.
+	// The time when the collector was last updated.
 	//
 	// example:
 	//
 	// 2020-06-20T07:26:47.000+0000
 	GmtUpdateTime *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
-	// The name of the shipper.
+	// The collector name.
 	//
 	// example:
 	//
@@ -101,35 +101,35 @@ type UpdateCollectorResponseBodyResult struct {
 	//
 	// 16852099488*****
 	OwnerId *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
-	// The shipper ID.
+	// The collector instance ID.
 	//
 	// example:
 	//
 	// ct-cn-0v3xj86085dvq****
 	ResId *string `json:"resId,omitempty" xml:"resId,omitempty"`
-	// The type of the shipper. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
+	// The collector type. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
 	//
 	// example:
 	//
 	// fileBeat
 	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
-	// The version of the shipper.
+	// The collector version.
 	//
 	// example:
 	//
 	// 6.8.5_with_community
 	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
-	// The status of the shipper. Valid values:
+	// The collector status. Valid values:
 	//
-	// 	- activing: The shipper is being initialized.
+	// - activing: Taking effect.
 	//
-	// 	- active: The shipper is in effect.
+	// - active: Active.
 	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The ID of the VPC in which the shipper resides.
+	// The ID of the virtual private cloud (VPC) where the collector resides.
 	//
 	// example:
 	//
@@ -285,13 +285,13 @@ func (s *UpdateCollectorResponseBodyResult) Validate() error {
 }
 
 type UpdateCollectorResponseBodyResultConfigs struct {
-	// The content of the configuration file.
+	// The file content.
 	//
 	// example:
 	//
 	// filebeat.inputs:xxx
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The name of the configuration file.
+	// The file name.
 	//
 	// example:
 	//
@@ -330,88 +330,88 @@ func (s *UpdateCollectorResponseBodyResultConfigs) Validate() error {
 }
 
 type UpdateCollectorResponseBodyResultExtendConfigs struct {
-	// The type of the configuration items. Valid values:
+	// The configuration type. Valid values:
 	//
-	// 	- collectorTargetInstance: indicates the information about the output of the shipper.
+	// - collectorTargetInstance: the collector Output.
 	//
-	// 	- collectorDeployMachine: indicates the information about the machine on which the shipper is installed.
+	// - collectorDeployMachine: the machine on which the collector is deployed.
 	//
-	// 	- collectorElasticsearchForKibana: indicates the information about the Elasticsearch cluster for which Kibana Dashboard is enabled.
+	// - collectorElasticsearchForKibana: the Elasticsearch instance information that supports Kibana Dashboard.
 	//
 	// example:
 	//
 	// collectorDeployMachine
 	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
-	// Indicates whether Kibana Monitoring is enabled. This parameter is returned only when **configType*	- is set to **collectorTargetInstance*	- and **instanceType*	- is set to **elasticsearch**. Valid values: true and false.
+	// Indicates whether Monitoring is enabled. This parameter is displayed when **configType*	- is set to **collectorTargetInstance*	- and **instanceType*	- is set to **elasticsearch**. Valid values: true (enabled) and false (disabled).
 	//
 	// example:
 	//
 	// true
 	EnableMonitoring *bool `json:"enableMonitoring,omitempty" xml:"enableMonitoring,omitempty"`
-	// The machine group ID. This parameter is returned only when **configType*	- is set to **collectorDeployMachine**.
+	// The machine group ID. This parameter is displayed when **configType*	- is set to **collectorDeployMachine**.
 	//
 	// example:
 	//
 	// default_ct-cn-5i2l75bz4776****
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The address that is used to access Kibana over an internal network after you enable Kibana Dashboard. This parameter is returned only when **configType*	- is set to **collectorElasticsearchForKibana**.
+	// The internal-facing access address of Kibana on the private network after Kibana Dashboard is enabled. This parameter is displayed when **configType*	- is set to **collectorElasticsearchForKibana**.
 	//
 	// example:
 	//
 	// es-cn-n6w1o1x0w001c****-kibana.internal.elasticsearch.aliyuncs.com:5601
 	Host  *string   `json:"host,omitempty" xml:"host,omitempty"`
 	Hosts []*string `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
-	// The ID of the object that is associated with the shipper. If **configType*	- is set to **collectorTargetInstance**, the value of this parameter is the ID of the output of the shipper. If **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ACKCluster**, the value of this parameter is the ID of an ACK cluster.
+	// The ID of the instance associated with the collector. When **configType*	- is set to **collectorTargetInstance**, this parameter indicates the instance ID of the collector Output. When **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ACKCluster**, this parameter indicates the ACK (Container Kubernetes) cluster ID.
 	//
 	// example:
 	//
 	// es-cn-nif1z89fz003i****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The type of the output of the shipper. Valid values: elasticsearch and logstash. This parameter is returned only when **configType*	- is set to **collectorTargetInstance**.
+	// The type of instance specified by the collector Output. Valid values: elasticsearch and logstash. This parameter is displayed when **configType*	- is set to **collectorTargetInstance**.
 	//
 	// example:
 	//
 	// elasticsearch
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The address that is used to access Kibana over the Internet after you enable Kibana Dashboard. This parameter is returned only when **configType*	- is set to **collectorElasticsearchForKibana**.
+	// The public network access address of Kibana after Kibana Dashboard is enabled. This parameter is displayed when **configType*	- is set to **collectorElasticsearchForKibana**.
 	//
 	// example:
 	//
 	// https://es-cn-nif1z89fz003i****.kibana.elasticsearch.aliyuncs.com:5601
 	KibanaHost *string `json:"kibanaHost,omitempty" xml:"kibanaHost,omitempty"`
-	// This parameter is returned only when configType is set to collectorDeployMachine.
+	// Specific to the collectorDeployMachine type:
 	//
-	// This parameter indicates the information about the ECS instances or ACK clusters on which the shipper is installed.
+	// The information about the ECS instances or ACK clusters on which the collector is deployed.
 	Machines []*UpdateCollectorResponseBodyResultExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
-	// The transfer protocol that is used. It is the same as the protocol over which you can access the output of the shipper. Valid values: HTTP and HTTPS. This parameter is returned only when **configType*	- is set to **collectorTargetInstance**.
+	// The transport protocol, which must be consistent with the access protocol of the instance specified by the collector Output. Valid values: HTTP and HTTPS. This parameter is displayed when **configType*	- is set to **collectorTargetInstance**.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The number of pods from which logs are successfully collected in the ACK cluster. This parameter is returned only when **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ACKCluster**.
+	// The number of pods that are successfully collected in the ACK cluster. This parameter is displayed when **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ACKCluster**.
 	//
 	// example:
 	//
 	// 8
 	SuccessPodsCount *string `json:"successPodsCount,omitempty" xml:"successPodsCount,omitempty"`
-	// The number of pods from which logs needed to be collected in the ACK cluster. This parameter is returned only when **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ACKCluster**.
+	// The total number of pods collected in the ACK cluster. This parameter is displayed when **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ACKCluster**.
 	//
 	// example:
 	//
 	// 10
 	TotalPodsCount *string `json:"totalPodsCount,omitempty" xml:"totalPodsCount,omitempty"`
-	// The type of the machine on which the shipper is installed. This parameter is returned only when **configType*	- is set to **collectorDeployMachine**. Valid values:
+	// The type of machine on which the collector is deployed. This parameter is displayed when **configType*	- is set to **collectorDeployMachine**. Valid values:
 	//
-	// 	- ECSInstanceId
+	// - ECSInstanceId: ECS.
 	//
-	// 	- ACKCluster
+	// - ACKCluster: Container Kubernetes.
 	//
 	// example:
 	//
 	// ECSInstanceId
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The username that is used to access the output of the shipper. Default value: elastic. This parameter is returned only when **configType*	- is set to **collectorTargetInstance*	- or **collectorElasticsearchForKibana**.
+	// The username used to access the instance specified by the collector Output. Default value: elastic. This parameter is displayed when **configType*	- is set to **collectorTargetInstance*	- or **collectorElasticsearchForKibana**.
 	//
 	// example:
 	//
@@ -567,21 +567,21 @@ func (s *UpdateCollectorResponseBodyResultExtendConfigs) Validate() error {
 }
 
 type UpdateCollectorResponseBodyResultExtendConfigsMachines struct {
-	// The installation status of the shipper on an ECS instance. Valid values:
+	// The status of each collector on the ECS instance. Valid values:
 	//
-	// 	- heartOk
+	// - heartOk: The heartbeat is normal.
 	//
-	// 	- heartLost
+	// - heartLost: The heartbeat is abnormal.
 	//
-	// 	- uninstalled
+	// - uninstalled: Not installed.
 	//
-	// 	- failed
+	// - failed: Installation failed.
 	//
 	// example:
 	//
 	// heartOk
 	AgentStatus *string `json:"agentStatus,omitempty" xml:"agentStatus,omitempty"`
-	// The ID of the ECS instance on which the shipper is installed.
+	// The list of ECS instance IDs.
 	//
 	// example:
 	//

@@ -20,24 +20,32 @@ type iClientNodeConfiguration interface {
 }
 
 type ClientNodeConfiguration struct {
+	// The number of client nodes.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The storage size of the client node. Unit: GB.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	Disk *int64 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The storage type of the client node. Only cloud_efficiency (ultra cloud disk) is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	// The node specifications of the client node. For more information, see [Specifications](https://help.aliyun.com/document_detail/271718.html).
+	//
 	// This parameter is required.
 	//
 	// example:

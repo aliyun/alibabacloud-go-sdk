@@ -14,6 +14,8 @@ type iRemovePluginRequest interface {
 }
 
 type RemovePluginRequest struct {
+	// Request body.
+	//
 	// example:
 	//
 	// [

@@ -25,6 +25,31 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":             dara.String("elasticsearch.us-west-1.aliyuncs.com"),
+		"us-east-1":             dara.String("elasticsearch.us-east-1.aliyuncs.com"),
+		"eu-west-1":             dara.String("elasticsearch.eu-west-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("elasticsearch.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("elasticsearch.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("elasticsearch.cn-wulanchabu.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("elasticsearch.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("elasticsearch.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shanghai":           dara.String("elasticsearch.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":            dara.String("elasticsearch.cn-qingdao.aliyuncs.com"),
+		"cn-north-2-gov-1":      dara.String("elasticsearch.cn-north-2-gov-1.aliyuncs.com"),
+		"cn-hongkong":           dara.String("elasticsearch.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou-finance":   dara.String("elasticsearch.cn-hangzhou-finance.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("elasticsearch.cn-hangzhou.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("elasticsearch.cn-guangzhou.aliyuncs.com"),
+		"cn-chengdu":            dara.String("elasticsearch.cn-chengdu.aliyuncs.com"),
+		"cn-beijing":            dara.String("elasticsearch.cn-beijing.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("elasticsearch.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("elasticsearch.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-2":        dara.String("elasticsearch.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("elasticsearch.ap-southeast-1.aliyuncs.com"),
+		"ap-south-1":            dara.String("elasticsearch.ap-south-1.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("elasticsearch.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +83,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Restores nodes in disabled zones. This operation is available only for multi-zone Elasticsearch clusters.
+// Resumes an offline zone. This operation is valid only for multi-zone instances.
 //
 // @param request - ActivateZonesRequest
 //
@@ -106,7 +131,7 @@ func (client *Client) ActivateZonesWithOptions(InstanceId *string, request *Acti
 
 // Summary:
 //
-// Restores nodes in disabled zones. This operation is available only for multi-zone Elasticsearch clusters.
+// Resumes an offline zone. This operation is valid only for multi-zone instances.
 //
 // @param request - ActivateZonesRequest
 //
@@ -125,7 +150,7 @@ func (client *Client) ActivateZones(InstanceId *string, request *ActivateZonesRe
 
 // Summary:
 //
-// Connects Elasticsearch clusters.
+// Configures network connectivity to establish a connection between different instances.
 //
 // @param request - AddConnectableClusterRequest
 //
@@ -173,7 +198,7 @@ func (client *Client) AddConnectableClusterWithOptions(InstanceId *string, reque
 
 // Summary:
 //
-// Connects Elasticsearch clusters.
+// Configures network connectivity to establish a connection between different instances.
 //
 // @param request - AddConnectableClusterRequest
 //
@@ -192,7 +217,7 @@ func (client *Client) AddConnectableCluster(InstanceId *string, request *AddConn
 
 // Summary:
 //
-// Call the AddSnapshotRepo to create a reference repository when configuring a cross-cluster OSS repository.
+// Creates a reference repository when setting up a cross-cluster OSS repository.
 //
 // @param request - AddSnapshotRepoRequest
 //
@@ -234,7 +259,7 @@ func (client *Client) AddSnapshotRepoWithOptions(InstanceId *string, request *Ad
 
 // Summary:
 //
-// Call the AddSnapshotRepo to create a reference repository when configuring a cross-cluster OSS repository.
+// Creates a reference repository when setting up a cross-cluster OSS repository.
 //
 // @param request - AddSnapshotRepoRequest
 //
@@ -253,7 +278,7 @@ func (client *Client) AddSnapshotRepo(InstanceId *string, request *AddSnapshotRe
 
 // Summary:
 //
-// Restores an Elasticsearch cluster that is frozen after it is released.
+// Recovers a frozen Elasticsearch instance that was released.
 //
 // @param request - CancelDeletionRequest
 //
@@ -300,7 +325,7 @@ func (client *Client) CancelDeletionWithOptions(InstanceId *string, request *Can
 
 // Summary:
 //
-// Restores an Elasticsearch cluster that is frozen after it is released.
+// Recovers a frozen Elasticsearch instance that was released.
 //
 // @param request - CancelDeletionRequest
 //
@@ -319,7 +344,7 @@ func (client *Client) CancelDeletion(InstanceId *string, request *CancelDeletion
 
 // Summary:
 //
-// Restores a Logstash cluster that is frozen after it is released.
+// Resumes a frozen Logstash instance that was frozen after release.
 //
 // @param request - CancelLogstashDeletionRequest
 //
@@ -366,7 +391,7 @@ func (client *Client) CancelLogstashDeletionWithOptions(InstanceId *string, requ
 
 // Summary:
 //
-// Restores a Logstash cluster that is frozen after it is released.
+// Resumes a frozen Logstash instance that was frozen after release.
 //
 // @param request - CancelLogstashDeletionRequest
 //
@@ -385,7 +410,7 @@ func (client *Client) CancelLogstashDeletion(InstanceId *string, request *Cancel
 
 // Summary:
 //
-// Call CancelTask to cancel a data migration task.
+// Cancels a running data migration task.
 //
 // @param request - CancelTaskRequest
 //
@@ -436,7 +461,7 @@ func (client *Client) CancelTaskWithOptions(InstanceId *string, request *CancelT
 
 // Summary:
 //
-// Call CancelTask to cancel a data migration task.
+// Cancels a running data migration task.
 //
 // @param request - CancelTaskRequest
 //
@@ -455,7 +480,7 @@ func (client *Client) CancelTask(InstanceId *string, request *CancelTaskRequest)
 
 // Summary:
 //
-// # Capacity Planning
+// Recommends optimal cluster capacity planning configurations based on business scenarios, QPS, and log generation volume.
 //
 // @param request - CapacityPlanRequest
 //
@@ -514,7 +539,7 @@ func (client *Client) CapacityPlanWithOptions(request *CapacityPlanRequest, head
 
 // Summary:
 //
-// # Capacity Planning
+// Recommends optimal cluster capacity planning configurations based on business scenarios, QPS, and log generation volume.
 //
 // @param request - CapacityPlanRequest
 //
@@ -533,7 +558,7 @@ func (client *Client) CapacityPlan(request *CapacityPlanRequest) (_result *Capac
 
 // Summary:
 //
-// Disables the intelligent O\\&M feature for an Elasticsearch cluster.
+// Disables the intelligent O&M feature for an instance.
 //
 // @param request - CloseDiagnosisRequest
 //
@@ -584,7 +609,7 @@ func (client *Client) CloseDiagnosisWithOptions(InstanceId *string, request *Clo
 
 // Summary:
 //
-// Disables the intelligent O\\&M feature for an Elasticsearch cluster.
+// Disables the intelligent O&M feature for an instance.
 //
 // @param request - CloseDiagnosisRequest
 //
@@ -603,7 +628,7 @@ func (client *Client) CloseDiagnosis(InstanceId *string, request *CloseDiagnosis
 
 // Summary:
 //
-// Call CloseHttps to close the HTTPS protocol.
+// Disables the HTTPS protocol for a cluster.
 //
 // @param request - CloseHttpsRequest
 //
@@ -650,7 +675,7 @@ func (client *Client) CloseHttpsWithOptions(InstanceId *string, request *CloseHt
 
 // Summary:
 //
-// Call CloseHttps to close the HTTPS protocol.
+// Disables the HTTPS protocol for a cluster.
 //
 // @param request - CloseHttpsRequest
 //
@@ -669,7 +694,7 @@ func (client *Client) CloseHttps(InstanceId *string, request *CloseHttpsRequest)
 
 // Summary:
 //
-// # Disable Managed Index
+// Disables the cloud managed feature for a specified index in an Indexing Service cluster. This operation is irreversible. After the feature is disabled, it cannot be enabled again.
 //
 // @param request - CloseManagedIndexRequest
 //
@@ -716,7 +741,7 @@ func (client *Client) CloseManagedIndexWithOptions(InstanceId *string, Index *st
 
 // Summary:
 //
-// # Disable Managed Index
+// Disables the cloud managed feature for a specified index in an Indexing Service cluster. This operation is irreversible. After the feature is disabled, it cannot be enabled again.
 //
 // @param request - CloseManagedIndexRequest
 //
@@ -735,7 +760,7 @@ func (client *Client) CloseManagedIndex(InstanceId *string, Index *string, reque
 
 // Summary:
 //
-// 创建收集器
+// Creates a collector to collect data from a specified service.
 //
 // @param request - CreateCollectorRequest
 //
@@ -816,7 +841,7 @@ func (client *Client) CreateCollectorWithOptions(request *CreateCollectorRequest
 
 // Summary:
 //
-// 创建收集器
+// Creates a collector to collect data from a specified service.
 //
 // @param request - CreateCollectorRequest
 //
@@ -835,7 +860,11 @@ func (client *Client) CreateCollector(request *CreateCollectorRequest) (_result 
 
 // Summary:
 //
-// 创建Elasticsearch组合模板
+// Creates an Elasticsearch composable template.
+//
+// Description:
+//
+// For more information, see [Store large volumes of data by using OpenStore](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param request - CreateComponentIndexRequest
 //
@@ -886,7 +915,11 @@ func (client *Client) CreateComponentIndexWithOptions(InstanceId *string, name *
 
 // Summary:
 //
-// 创建Elasticsearch组合模板
+// Creates an Elasticsearch composable template.
+//
+// Description:
+//
+// For more information, see [Store large volumes of data by using OpenStore](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param request - CreateComponentIndexRequest
 //
@@ -905,7 +938,11 @@ func (client *Client) CreateComponentIndex(InstanceId *string, name *string, req
 
 // Summary:
 //
-// 创建数据流
+// Creates a data stream to manage a set of indexes.
+//
+// Description:
+//
+// > The data stream name you create must have a one-to-one correspondence with the index pattern in the index template, and the index template must have the data stream feature enabled. For example, if the index pattern in the index template is ds-\\*, the corresponding data stream name should be ds-.
 //
 // @param request - CreateDataStreamRequest
 //
@@ -953,7 +990,11 @@ func (client *Client) CreateDataStreamWithOptions(InstanceId *string, request *C
 
 // Summary:
 //
-// 创建数据流
+// Creates a data stream to manage a set of indexes.
+//
+// Description:
+//
+// > The data stream name you create must have a one-to-one correspondence with the index pattern in the index template, and the index template must have the data stream feature enabled. For example, if the index pattern in the index template is ds-\\*, the corresponding data stream name should be ds-.
 //
 // @param request - CreateDataStreamRequest
 //
@@ -972,7 +1013,7 @@ func (client *Client) CreateDataStream(InstanceId *string, request *CreateDataSt
 
 // Summary:
 //
-// 创建索引生命周期策略
+// Creates an index lifecycle policy. If a policy with the specified name already exists, the existing policy is replaced and its version is incremented.
 //
 // @param request - CreateILMPolicyRequest
 //
@@ -1020,7 +1061,7 @@ func (client *Client) CreateILMPolicyWithOptions(InstanceId *string, request *Cr
 
 // Summary:
 //
-// 创建索引生命周期策略
+// Creates an index lifecycle policy. If a policy with the specified name already exists, the existing policy is replaced and its version is incremented.
 //
 // @param request - CreateILMPolicyRequest
 //
@@ -1039,7 +1080,7 @@ func (client *Client) CreateILMPolicy(InstanceId *string, request *CreateILMPoli
 
 // Summary:
 //
-// 创建索引模版
+// Creates a cluster index template that can be used for component-based index template settings.
 //
 // @param request - CreateIndexTemplateRequest
 //
@@ -1112,7 +1153,7 @@ func (client *Client) CreateIndexTemplateWithOptions(InstanceId *string, request
 
 // Summary:
 //
-// 创建索引模版
+// Creates a cluster index template that can be used for component-based index template settings.
 //
 // @param request - CreateIndexTemplateRequest
 //
@@ -1131,7 +1172,15 @@ func (client *Client) CreateIndexTemplate(InstanceId *string, request *CreateInd
 
 // Summary:
 //
-// Creates a Logstash cluster.
+// Creates a Logstash instance by calling CreateLogstash.
+//
+// Description:
+//
+// Before calling this operation, note the following:
+//
+// - Make sure that you are familiar with the billing method and pricing of Logstash. <props="china"><ph>For more information, see [Billing](https://help.aliyun.com/document_detail/260882.html).</ph>
+//
+// - To create an instance, complete real-name verification. <props="china"><ph>For more information, see [Real-name verification](https://help.aliyun.com/document_detail/37175.html).</ph>.
 //
 // @param request - CreateLogstashRequest
 //
@@ -1212,7 +1261,15 @@ func (client *Client) CreateLogstashWithOptions(request *CreateLogstashRequest, 
 
 // Summary:
 //
-// Creates a Logstash cluster.
+// Creates a Logstash instance by calling CreateLogstash.
+//
+// Description:
+//
+// Before calling this operation, note the following:
+//
+// - Make sure that you are familiar with the billing method and pricing of Logstash. <props="china"><ph>For more information, see [Billing](https://help.aliyun.com/document_detail/260882.html).</ph>
+//
+// - To create an instance, complete real-name verification. <props="china"><ph>For more information, see [Real-name verification](https://help.aliyun.com/document_detail/37175.html).</ph>.
 //
 // @param request - CreateLogstashRequest
 //
@@ -1231,7 +1288,7 @@ func (client *Client) CreateLogstash(request *CreateLogstashRequest) (_result *C
 
 // Summary:
 //
-// Creates a pipeline in a Logstash cluster.
+// Creates a Logstash pipeline to collect data.
 //
 // @param request - CreatePipelinesRequest
 //
@@ -1283,7 +1340,7 @@ func (client *Client) CreatePipelinesWithOptions(InstanceId *string, request *Cr
 
 // Summary:
 //
-// Creates a pipeline in a Logstash cluster.
+// Creates a Logstash pipeline to collect data.
 //
 // @param request - CreatePipelinesRequest
 //
@@ -1302,7 +1359,7 @@ func (client *Client) CreatePipelines(InstanceId *string, request *CreatePipelin
 
 // Summary:
 //
-// Call CreateSnapshot to manually back up a cluster snapshot.
+// Calls CreateSnapshot to manually create a snapshot backup of a cluster.
 //
 // @param request - CreateSnapshotRequest
 //
@@ -1350,7 +1407,7 @@ func (client *Client) CreateSnapshotWithOptions(InstanceId *string, request *Cre
 
 // Summary:
 //
-// Call CreateSnapshot to manually back up a cluster snapshot.
+// Calls CreateSnapshot to manually create a snapshot backup of a cluster.
 //
 // @param request - CreateSnapshotRequest
 //
@@ -1369,11 +1426,11 @@ func (client *Client) CreateSnapshot(InstanceId *string, request *CreateSnapshot
 
 // Summary:
 //
-// 创建私网链接VPC终端节点
+// Creates a PrivateLink VPC endpoint to connect to an endpoint service created in a user VPC.
 //
 // Description:
 //
-// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D\\*\\*\\*
+// For more information about this API operation, see [Configure private connectivity for an instance](https://help.aliyun.com/document_detail/279559.html).
 //
 // @param request - CreateVpcEndpointRequest
 //
@@ -1434,11 +1491,11 @@ func (client *Client) CreateVpcEndpointWithOptions(InstanceId *string, request *
 
 // Summary:
 //
-// 创建私网链接VPC终端节点
+// Creates a PrivateLink VPC endpoint to connect to an endpoint service created in a user VPC.
 //
 // Description:
 //
-// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D\\*\\*\\*
+// For more information about this API operation, see [Configure private connectivity for an instance](https://help.aliyun.com/document_detail/279559.html).
 //
 // @param request - CreateVpcEndpointRequest
 //
@@ -1457,7 +1514,7 @@ func (client *Client) CreateVpcEndpoint(InstanceId *string, request *CreateVpcEn
 
 // Summary:
 //
-// Disables one or more zones where a multi-zone Elasticsearch cluster resides and migrates the nodes in the disabled zones to other zones.
+// Takes part of the zones offline when multiple zones are available, and migrates the nodes in the offline zones to other zones.
 //
 // @param request - DeactivateZonesRequest
 //
@@ -1505,7 +1562,7 @@ func (client *Client) DeactivateZonesWithOptions(InstanceId *string, request *De
 
 // Summary:
 //
-// Disables one or more zones where a multi-zone Elasticsearch cluster resides and migrates the nodes in the disabled zones to other zones.
+// Takes part of the zones offline when multiple zones are available, and migrates the nodes in the offline zones to other zones.
 //
 // @param request - DeactivateZonesRequest
 //
@@ -1524,7 +1581,7 @@ func (client *Client) DeactivateZones(InstanceId *string, request *DeactivateZon
 
 // Summary:
 //
-// Deletes a shipper.
+// Deletes a specified collector.
 //
 // @param request - DeleteCollectorRequest
 //
@@ -1571,7 +1628,7 @@ func (client *Client) DeleteCollectorWithOptions(ResId *string, request *DeleteC
 
 // Summary:
 //
-// Deletes a shipper.
+// Deletes a specified collector.
 //
 // @param request - DeleteCollectorRequest
 //
@@ -1590,7 +1647,11 @@ func (client *Client) DeleteCollector(ResId *string, request *DeleteCollectorReq
 
 // Summary:
 //
-// 删除组合索引模板
+// Deletes a component index template of Elasticsearch.
+//
+// Description:
+//
+// For more information, see [Store massive amounts of data by using OpenStore](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param headers - map
 //
@@ -1623,7 +1684,11 @@ func (client *Client) DeleteComponentIndexWithOptions(InstanceId *string, name *
 
 // Summary:
 //
-// 删除组合索引模板
+// Deletes a component index template of Elasticsearch.
+//
+// Description:
+//
+// For more information, see [Store massive amounts of data by using OpenStore](https://help.aliyun.com/document_detail/317694.html).
 //
 // @return DeleteComponentIndexResponse
 func (client *Client) DeleteComponentIndex(InstanceId *string, name *string) (_result *DeleteComponentIndexResponse, _err error) {
@@ -1640,7 +1705,7 @@ func (client *Client) DeleteComponentIndex(InstanceId *string, name *string) (_r
 
 // Summary:
 //
-// Call DeleteConnectedCluster to remove the interconnected instance.
+// Deletes the network connectivity between two instances.
 //
 // @param request - DeleteConnectedClusterRequest
 //
@@ -1691,7 +1756,7 @@ func (client *Client) DeleteConnectedClusterWithOptions(InstanceId *string, requ
 
 // Summary:
 //
-// Call DeleteConnectedCluster to remove the interconnected instance.
+// Deletes the network connectivity between two instances.
 //
 // @param request - DeleteConnectedClusterRequest
 //
@@ -1710,7 +1775,11 @@ func (client *Client) DeleteConnectedCluster(InstanceId *string, request *Delete
 
 // Summary:
 //
-// 删除数据流
+// Deletes a specified cluster data stream.
+//
+// Description:
+//
+// > - Deleting a data stream also deletes its backing indexes. Proceed with caution.- When an index template has associated data streams, you must delete the data streams associated with the index template before you can delete the index template. On the data stream list page, view the data stream details to find the index template that matches the data stream.
 //
 // @param request - DeleteDataStreamRequest
 //
@@ -1757,7 +1826,11 @@ func (client *Client) DeleteDataStreamWithOptions(InstanceId *string, DataStream
 
 // Summary:
 //
-// 删除数据流
+// Deletes a specified cluster data stream.
+//
+// Description:
+//
+// > - Deleting a data stream also deletes its backing indexes. Proceed with caution.- When an index template has associated data streams, you must delete the data streams associated with the index template before you can delete the index template. On the data stream list page, view the data stream details to find the index template that matches the data stream.
 //
 // @param request - DeleteDataStreamRequest
 //
@@ -1776,7 +1849,7 @@ func (client *Client) DeleteDataStream(InstanceId *string, DataStream *string, r
 
 // Summary:
 //
-// You can call this operation to delete an index migration task.
+// Deletes an Elasticsearch index migration task.
 //
 // @param request - DeleteDataTaskRequest
 //
@@ -1827,7 +1900,7 @@ func (client *Client) DeleteDataTaskWithOptions(InstanceId *string, request *Del
 
 // Summary:
 //
-// You can call this operation to delete an index migration task.
+// Deletes an Elasticsearch index migration task.
 //
 // @param request - DeleteDataTaskRequest
 //
@@ -1846,7 +1919,11 @@ func (client *Client) DeleteDataTask(InstanceId *string, request *DeleteDataTask
 
 // Summary:
 //
-// 删除历史索引模板
+// Deletes a historical index template.
+//
+// Description:
+//
+// For more information, see [Store massive amounts of data through OpenStore](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param headers - map
 //
@@ -1879,7 +1956,11 @@ func (client *Client) DeleteDeprecatedTemplateWithOptions(InstanceId *string, na
 
 // Summary:
 //
-// 删除历史索引模板
+// Deletes a historical index template.
+//
+// Description:
+//
+// For more information, see [Store massive amounts of data through OpenStore](https://help.aliyun.com/document_detail/317694.html).
 //
 // @return DeleteDeprecatedTemplateResponse
 func (client *Client) DeleteDeprecatedTemplate(InstanceId *string, name *string) (_result *DeleteDeprecatedTemplateResponse, _err error) {
@@ -1894,6 +1975,14 @@ func (client *Client) DeleteDeprecatedTemplate(InstanceId *string, name *string)
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified index lifecycle policy.
+//
+// Description:
+//
+// > You cannot delete a policy that is currently in use. If the policy is being used to manage any index, the request fails and returns an error.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1923,6 +2012,14 @@ func (client *Client) DeleteILMPolicyWithOptions(InstanceId *string, PolicyName 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified index lifecycle policy.
+//
+// Description:
+//
+// > You cannot delete a policy that is currently in use. If the policy is being used to manage any index, the request fails and returns an error.
+//
 // @return DeleteILMPolicyResponse
 func (client *Client) DeleteILMPolicy(InstanceId *string, PolicyName *string) (_result *DeleteILMPolicyResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -1938,7 +2035,11 @@ func (client *Client) DeleteILMPolicy(InstanceId *string, PolicyName *string) (_
 
 // Summary:
 //
-// Deletes a top index template.
+// Deletes a specified index template.
+//
+// Description:
+//
+// > Before deleting an index template, delete the data streams associated with the index template. Otherwise, the index template cannot be deleted.
 //
 // @param headers - map
 //
@@ -1971,7 +2072,11 @@ func (client *Client) DeleteIndexTemplateWithOptions(InstanceId *string, IndexTe
 
 // Summary:
 //
-// Deletes a top index template.
+// Deletes a specified index template.
+//
+// Description:
+//
+// > Before deleting an index template, delete the data streams associated with the index template. Otherwise, the index template cannot be deleted.
 //
 // @return DeleteIndexTemplateResponse
 func (client *Client) DeleteIndexTemplate(InstanceId *string, IndexTemplate *string) (_result *DeleteIndexTemplateResponse, _err error) {
@@ -1988,7 +2093,13 @@ func (client *Client) DeleteIndexTemplate(InstanceId *string, IndexTemplate *str
 
 // Summary:
 //
-// You can call this operation to release a pay-as-you-go Elasticsearch instance. After the instance is released, the physical resources of the instance is reclaimed. The data of the instance is deleted and cannot be recovered. The disks mounted to the instance nodes and the snapshots are released.
+// All physical resources used by the instance are reclaimed, all related data is permanently lost and cannot be recovered, and the cloud disks mounted to the instance nodes along with their corresponding snapshots are released.
+//
+// Description:
+//
+// Before you invoke this operation, note the following:
+//
+// Data cannot be recovered after the instance is released. Back up your data before releasing the instance. For more information, see [Snapshot backup and recovery commands](https://help.aliyun.com/document_detail/65675.html).
 //
 // @param request - DeleteInstanceRequest
 //
@@ -2039,7 +2150,13 @@ func (client *Client) DeleteInstanceWithOptions(InstanceId *string, request *Del
 
 // Summary:
 //
-// You can call this operation to release a pay-as-you-go Elasticsearch instance. After the instance is released, the physical resources of the instance is reclaimed. The data of the instance is deleted and cannot be recovered. The disks mounted to the instance nodes and the snapshots are released.
+// All physical resources used by the instance are reclaimed, all related data is permanently lost and cannot be recovered, and the cloud disks mounted to the instance nodes along with their corresponding snapshots are released.
+//
+// Description:
+//
+// Before you invoke this operation, note the following:
+//
+// Data cannot be recovered after the instance is released. Back up your data before releasing the instance. For more information, see [Snapshot backup and recovery commands](https://help.aliyun.com/document_detail/65675.html).
 //
 // @param request - DeleteInstanceRequest
 //
@@ -2058,11 +2175,13 @@ func (client *Client) DeleteInstance(InstanceId *string, request *DeleteInstance
 
 // Summary:
 //
-// Releases a Logstash cluster.
+// Proactively releases a Logstash instance.
 //
 // Description:
 //
-// Before you call this operation, take note of the following information: After the cluster is released, the physical resources used by the cluster are reclaimed. The data stored in the cluster is deleted and cannot be recovered. The disks attached to the nodes in the cluster and the snapshots created for the cluster are released.
+// Before calling this operation, note the following:
+//
+// After the instance is released, all physical resources used by the instance are reclaimed, all related data is permanently lost and cannot be recovered, cloud disks mounted to the instance nodes are also released, and the corresponding snapshots are deleted.
 //
 // @param request - DeleteLogstashRequest
 //
@@ -2113,11 +2232,13 @@ func (client *Client) DeleteLogstashWithOptions(InstanceId *string, request *Del
 
 // Summary:
 //
-// Releases a Logstash cluster.
+// Proactively releases a Logstash instance.
 //
 // Description:
 //
-// Before you call this operation, take note of the following information: After the cluster is released, the physical resources used by the cluster are reclaimed. The data stored in the cluster is deleted and cannot be recovered. The disks attached to the nodes in the cluster and the snapshots created for the cluster are released.
+// Before calling this operation, note the following:
+//
+// After the instance is released, all physical resources used by the instance are reclaimed, all related data is permanently lost and cannot be recovered, cloud disks mounted to the instance nodes are also released, and the corresponding snapshots are deleted.
 //
 // @param request - DeleteLogstashRequest
 //
@@ -2136,7 +2257,7 @@ func (client *Client) DeleteLogstash(InstanceId *string, request *DeleteLogstash
 
 // Summary:
 //
-// Deletes a pipeline that is configured for a Logstash cluster.
+// Deletes pipelines configured for a Logstash instance.
 //
 // @param request - DeletePipelinesRequest
 //
@@ -2187,7 +2308,7 @@ func (client *Client) DeletePipelinesWithOptions(InstanceId *string, request *De
 
 // Summary:
 //
-// Deletes a pipeline that is configured for a Logstash cluster.
+// Deletes pipelines configured for a Logstash instance.
 //
 // @param request - DeletePipelinesRequest
 //
@@ -2206,7 +2327,7 @@ func (client *Client) DeletePipelines(InstanceId *string, request *DeletePipelin
 
 // Summary:
 //
-// Call DeleteSnapshotRepo to delete a cross-cluster OSS repository.
+// Deletes a cross-cluster OSS reference repository from an instance.
 //
 // @param request - DeleteSnapshotRepoRequest
 //
@@ -2257,7 +2378,7 @@ func (client *Client) DeleteSnapshotRepoWithOptions(InstanceId *string, request 
 
 // Summary:
 //
-// Call DeleteSnapshotRepo to delete a cross-cluster OSS repository.
+// Deletes a cross-cluster OSS reference repository from an instance.
 //
 // @param request - DeleteSnapshotRepoRequest
 //
@@ -2276,7 +2397,7 @@ func (client *Client) DeleteSnapshotRepo(InstanceId *string, request *DeleteSnap
 
 // Summary:
 //
-// Deletes an endpoint in the VPC within the Elasticsearch service account.
+// Calls DeleteVpcEndpoint to delete a VPC endpoint under a service account.
 //
 // @param request - DeleteVpcEndpointRequest
 //
@@ -2323,7 +2444,7 @@ func (client *Client) DeleteVpcEndpointWithOptions(InstanceId *string, EndpointI
 
 // Summary:
 //
-// Deletes an endpoint in the VPC within the Elasticsearch service account.
+// Calls DeleteVpcEndpoint to delete a VPC endpoint under a service account.
 //
 // @param request - DeleteVpcEndpointRequest
 //
@@ -2342,11 +2463,11 @@ func (client *Client) DeleteVpcEndpoint(InstanceId *string, EndpointId *string, 
 
 // Summary:
 //
-// Queries the information of ES-operator that is installed for a specified Container Service for Kubernetes (ACK) cluster.
+// Calls the DescribeAckOperator operation to query the Elasticsearch Operator information installed on a specified Container Service for Kubernetes (ACK) cluster.
 //
 // Description:
 //
-// > Before you install a shipper on an ACK cluster, you can call this operation to query the installation status of ES-operator for the ACK cluster.
+// > Before installing a collector on an ACK cluster, you can call this operation to check the installation status of the Elasticsearch Operator on the target cluster.
 //
 // @param headers - map
 //
@@ -2379,11 +2500,11 @@ func (client *Client) DescribeAckOperatorWithOptions(ClusterId *string, headers 
 
 // Summary:
 //
-// Queries the information of ES-operator that is installed for a specified Container Service for Kubernetes (ACK) cluster.
+// Calls the DescribeAckOperator operation to query the Elasticsearch Operator information installed on a specified Container Service for Kubernetes (ACK) cluster.
 //
 // Description:
 //
-// > Before you install a shipper on an ACK cluster, you can call this operation to query the installation status of ES-operator for the ACK cluster.
+// > Before installing a collector on an ACK cluster, you can call this operation to check the installation status of the Elasticsearch Operator on the target cluster.
 //
 // @return DescribeAckOperatorResponse
 func (client *Client) DescribeAckOperator(ClusterId *string) (_result *DescribeAckOperatorResponse, _err error) {
@@ -2400,7 +2521,7 @@ func (client *Client) DescribeAckOperator(ClusterId *string) (_result *DescribeA
 
 // Summary:
 //
-// Queries the detailed information of a shipper.
+// Retrieves the details of a collector instance.
 //
 // @param headers - map
 //
@@ -2433,7 +2554,7 @@ func (client *Client) DescribeCollectorWithOptions(ResId *string, headers map[st
 
 // Summary:
 //
-// Queries the detailed information of a shipper.
+// Retrieves the details of a collector instance.
 //
 // @return DescribeCollectorResponse
 func (client *Client) DescribeCollector(ResId *string) (_result *DescribeCollectorResponse, _err error) {
@@ -2450,7 +2571,11 @@ func (client *Client) DescribeCollector(ResId *string) (_result *DescribeCollect
 
 // Summary:
 //
-// 查看组合索引模板详情
+// Queries the details of a composable index template in Elasticsearch.
+//
+// Description:
+//
+// For more information, see [Use OpenStore to store massive amounts of data](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param headers - map
 //
@@ -2483,7 +2608,11 @@ func (client *Client) DescribeComponentIndexWithOptions(InstanceId *string, name
 
 // Summary:
 //
-// 查看组合索引模板详情
+// Queries the details of a composable index template in Elasticsearch.
+//
+// Description:
+//
+// For more information, see [Use OpenStore to store massive amounts of data](https://help.aliyun.com/document_detail/317694.html).
 //
 // @return DescribeComponentIndexResponse
 func (client *Client) DescribeComponentIndex(InstanceId *string, name *string) (_result *DescribeComponentIndexResponse, _err error) {
@@ -2500,7 +2629,7 @@ func (client *Client) DescribeComponentIndex(InstanceId *string, name *string) (
 
 // Summary:
 //
-// Queries the Elasticsearch clusters that can be connected to a specified Elasticsearch cluster.
+// Retrieves a list of instances that can establish private network peering with the current instance. Instances that are already connected are not included.
 //
 // @param request - DescribeConnectableClustersRequest
 //
@@ -2547,7 +2676,7 @@ func (client *Client) DescribeConnectableClustersWithOptions(InstanceId *string,
 
 // Summary:
 //
-// Queries the Elasticsearch clusters that can be connected to a specified Elasticsearch cluster.
+// Retrieves a list of instances that can establish private network peering with the current instance. Instances that are already connected are not included.
 //
 // @param request - DescribeConnectableClustersRequest
 //
@@ -2566,7 +2695,7 @@ func (client *Client) DescribeConnectableClusters(InstanceId *string, request *D
 
 // Summary:
 //
-// # DescribeDeprecatedTemplate
+// Queries the details of a historical index template.
 //
 // @param headers - map
 //
@@ -2599,7 +2728,7 @@ func (client *Client) DescribeDeprecatedTemplateWithOptions(InstanceId *string, 
 
 // Summary:
 //
-// # DescribeDeprecatedTemplate
+// Queries the details of a historical index template.
 //
 // @return DescribeDeprecatedTemplateResponse
 func (client *Client) DescribeDeprecatedTemplate(InstanceId *string, name *string) (_result *DescribeDeprecatedTemplateResponse, _err error) {
@@ -2616,7 +2745,7 @@ func (client *Client) DescribeDeprecatedTemplate(InstanceId *string, name *strin
 
 // Summary:
 //
-// Queries a historical intelligent O\\&M report.
+// Calls the DescribeDiagnoseReport operation to view historical reports of intelligent O&M.
 //
 // @param request - DescribeDiagnoseReportRequest
 //
@@ -2663,7 +2792,7 @@ func (client *Client) DescribeDiagnoseReportWithOptions(InstanceId *string, Repo
 
 // Summary:
 //
-// Queries a historical intelligent O\\&M report.
+// Calls the DescribeDiagnoseReport operation to view historical reports of intelligent O&M.
 //
 // @param request - DescribeDiagnoseReportRequest
 //
@@ -2682,7 +2811,7 @@ func (client *Client) DescribeDiagnoseReport(InstanceId *string, ReportId *strin
 
 // Summary:
 //
-// Call DescribeDiagnosisSettings to obtain the scenario settings of intelligent maintenance.
+// Calls the DescribeDiagnosisSettings operation to obtain the scenario settings of intelligent O&M.
 //
 // @param request - DescribeDiagnosisSettingsRequest
 //
@@ -2729,7 +2858,7 @@ func (client *Client) DescribeDiagnosisSettingsWithOptions(InstanceId *string, r
 
 // Summary:
 //
-// Call DescribeDiagnosisSettings to obtain the scenario settings of intelligent maintenance.
+// Calls the DescribeDiagnosisSettings operation to obtain the scenario settings of intelligent O&M.
 //
 // @param request - DescribeDiagnosisSettingsRequest
 //
@@ -2748,7 +2877,7 @@ func (client *Client) DescribeDiagnosisSettings(InstanceId *string, request *Des
 
 // Summary:
 //
-// 获取集群动态指标
+// Retrieves dynamic metrics of a cluster.
 //
 // @param headers - map
 //
@@ -2781,7 +2910,7 @@ func (client *Client) DescribeDynamicSettingsWithOptions(InstanceId *string, hea
 
 // Summary:
 //
-// 获取集群动态指标
+// Retrieves dynamic metrics of a cluster.
 //
 // @return DescribeDynamicSettingsResponse
 func (client *Client) DescribeDynamicSettings(InstanceId *string) (_result *DescribeDynamicSettingsResponse, _err error) {
@@ -2798,17 +2927,17 @@ func (client *Client) DescribeDynamicSettings(InstanceId *string) (_result *Desc
 
 // Summary:
 //
-// Check the health status of the cluster and whether it is running normally.
+// Queries the health status of a cluster to check whether it is running properly.
 //
 // Description:
 //
-// An Elasticsearch cluster can be in a health state indicated by one of the following colors:
+// The instance health status. The following three states are supported:
 //
-//   - GREEN: Primary shards and replica shards for the primary shards are normally allocated.
+// - GREEN: Primary and replica shards are allocated properly.
 //
-//   - YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
+// - YELLOW: Primary shards are allocated properly, but replica shards are not allocated properly.
 //
-//   - RED: Primary shards are not normally allocated.
+// - RED: Primary shards are not allocated properly.
 //
 // @param headers - map
 //
@@ -2841,17 +2970,17 @@ func (client *Client) DescribeElasticsearchHealthWithOptions(InstanceId *string,
 
 // Summary:
 //
-// Check the health status of the cluster and whether it is running normally.
+// Queries the health status of a cluster to check whether it is running properly.
 //
 // Description:
 //
-// An Elasticsearch cluster can be in a health state indicated by one of the following colors:
+// The instance health status. The following three states are supported:
 //
-//   - GREEN: Primary shards and replica shards for the primary shards are normally allocated.
+// - GREEN: Primary and replica shards are allocated properly.
 //
-//   - YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
+// - YELLOW: Primary shards are allocated properly, but replica shards are not allocated properly.
 //
-//   - RED: Primary shards are not normally allocated.
+// - RED: Primary shards are not allocated properly.
 //
 // @return DescribeElasticsearchHealthResponse
 func (client *Client) DescribeElasticsearchHealth(InstanceId *string) (_result *DescribeElasticsearchHealthResponse, _err error) {
@@ -2866,6 +2995,10 @@ func (client *Client) DescribeElasticsearchHealth(InstanceId *string) (_result *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a specified index lifecycle policy.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2895,6 +3028,10 @@ func (client *Client) DescribeILMPolicyWithOptions(InstanceId *string, PolicyNam
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a specified index lifecycle policy.
+//
 // @return DescribeILMPolicyResponse
 func (client *Client) DescribeILMPolicy(InstanceId *string, PolicyName *string) (_result *DescribeILMPolicyResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -2908,6 +3045,10 @@ func (client *Client) DescribeILMPolicy(InstanceId *string, PolicyName *string) 
 	return _result, _err
 }
 
+// Summary:
+//
+// Returns information about an index template.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2937,6 +3078,10 @@ func (client *Client) DescribeIndexTemplateWithOptions(InstanceId *string, Index
 	return _result, _err
 }
 
+// Summary:
+//
+// Returns information about an index template.
+//
 // @return DescribeIndexTemplateResponse
 func (client *Client) DescribeIndexTemplate(InstanceId *string, IndexTemplate *string) (_result *DescribeIndexTemplateResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -2952,7 +3097,7 @@ func (client *Client) DescribeIndexTemplate(InstanceId *string, IndexTemplate *s
 
 // Summary:
 //
-// The name of the dictionary file.
+// Queries the details of a specified instance.
 //
 // @param headers - map
 //
@@ -2985,7 +3130,7 @@ func (client *Client) DescribeInstanceWithOptions(InstanceId *string, headers ma
 
 // Summary:
 //
-// The name of the dictionary file.
+// Queries the details of a specified instance.
 //
 // @return DescribeInstanceResponse
 func (client *Client) DescribeInstance(InstanceId *string) (_result *DescribeInstanceResponse, _err error) {
@@ -3002,7 +3147,7 @@ func (client *Client) DescribeInstance(InstanceId *string) (_result *DescribeIns
 
 // Summary:
 //
-// Get the configuration of the Kibana node for the Elasticsearch cluster.
+// Retrieves the Kibana node configuration of an Elasticsearch instance.
 //
 // @param headers - map
 //
@@ -3035,7 +3180,7 @@ func (client *Client) DescribeKibanaSettingsWithOptions(InstanceId *string, head
 
 // Summary:
 //
-// Get the configuration of the Kibana node for the Elasticsearch cluster.
+// Retrieves the Kibana node configuration of an Elasticsearch instance.
 //
 // @return DescribeKibanaSettingsResponse
 func (client *Client) DescribeKibanaSettings(InstanceId *string) (_result *DescribeKibanaSettingsResponse, _err error) {
@@ -3052,7 +3197,7 @@ func (client *Client) DescribeKibanaSettings(InstanceId *string) (_result *Descr
 
 // Summary:
 //
-// Queries the information about a Logstash cluster.
+// Queries the details of a Logstash instance.
 //
 // @param headers - map
 //
@@ -3085,7 +3230,7 @@ func (client *Client) DescribeLogstashWithOptions(InstanceId *string, headers ma
 
 // Summary:
 //
-// Queries the information about a Logstash cluster.
+// Queries the details of a Logstash instance.
 //
 // @return DescribeLogstashResponse
 func (client *Client) DescribeLogstash(InstanceId *string) (_result *DescribeLogstashResponse, _err error) {
@@ -3102,7 +3247,7 @@ func (client *Client) DescribeLogstash(InstanceId *string) (_result *DescribeLog
 
 // Summary:
 //
-// Queries the information about a pipeline in a Logstash cluster.
+// Retrieves the pipeline information of a Logstash instance.
 //
 // @param headers - map
 //
@@ -3135,7 +3280,7 @@ func (client *Client) DescribePipelineWithOptions(InstanceId *string, PipelineId
 
 // Summary:
 //
-// Queries the information about a pipeline in a Logstash cluster.
+// Retrieves the pipeline information of a Logstash instance.
 //
 // @return DescribePipelineResponse
 func (client *Client) DescribePipeline(InstanceId *string, PipelineId *string) (_result *DescribePipelineResponse, _err error) {
@@ -3152,7 +3297,7 @@ func (client *Client) DescribePipeline(InstanceId *string, PipelineId *string) (
 
 // Summary:
 //
-// Queries the management configurations of pipelines in a Logstash cluster.
+// Calls DescribePipelineManagementConfig to retrieve the pipeline management configuration of a Logstash instance.
 //
 // @param request - DescribePipelineManagementConfigRequest
 //
@@ -3199,7 +3344,7 @@ func (client *Client) DescribePipelineManagementConfigWithOptions(InstanceId *st
 
 // Summary:
 //
-// Queries the management configurations of pipelines in a Logstash cluster.
+// Calls DescribePipelineManagementConfig to retrieve the pipeline management configuration of a Logstash instance.
 //
 // @param request - DescribePipelineManagementConfigRequest
 //
@@ -3218,7 +3363,7 @@ func (client *Client) DescribePipelineManagementConfig(InstanceId *string, reque
 
 // Summary:
 //
-// Get the region information of Alibaba Cloud Elasticsearch.
+// Retrieves the region information of Alibaba Cloud Elasticsearch.
 //
 // @param headers - map
 //
@@ -3251,7 +3396,7 @@ func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, run
 
 // Summary:
 //
-// Get the region information of Alibaba Cloud Elasticsearch.
+// Retrieves the region information of Alibaba Cloud Elasticsearch.
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
@@ -3268,7 +3413,7 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 
 // Summary:
 //
-// Get the snapshot backup settings of the cluster, backup cycle.
+// Retrieves the snapshot backup settings and backup cycle of a cluster.
 //
 // @param headers - map
 //
@@ -3301,7 +3446,7 @@ func (client *Client) DescribeSnapshotSettingWithOptions(InstanceId *string, hea
 
 // Summary:
 //
-// Get the snapshot backup settings of the cluster, backup cycle.
+// Retrieves the snapshot backup settings and backup cycle of a cluster.
 //
 // @return DescribeSnapshotSettingResponse
 func (client *Client) DescribeSnapshotSetting(InstanceId *string) (_result *DescribeSnapshotSettingResponse, _err error) {
@@ -3316,6 +3461,10 @@ func (client *Client) DescribeSnapshotSetting(InstanceId *string) (_result *Desc
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the scenario-specific template configuration and cluster settings of an instance.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3345,6 +3494,10 @@ func (client *Client) DescribeTemplatesWithOptions(InstanceId *string, headers m
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the scenario-specific template configuration and cluster settings of an instance.
+//
 // @return DescribeTemplatesResponse
 func (client *Client) DescribeTemplates(InstanceId *string) (_result *DescribeTemplatesResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -3360,7 +3513,7 @@ func (client *Client) DescribeTemplates(InstanceId *string) (_result *DescribeTe
 
 // Summary:
 //
-// Queries the X-Pack Monitoring configurations of a Logstash cluster.
+// Retrieves the X-Pack monitoring configuration of a Logstash instance.
 //
 // @param headers - map
 //
@@ -3393,7 +3546,7 @@ func (client *Client) DescribeXpackMonitorConfigWithOptions(InstanceId *string, 
 
 // Summary:
 //
-// Queries the X-Pack Monitoring configurations of a Logstash cluster.
+// Retrieves the X-Pack monitoring configuration of a Logstash instance.
 //
 // @return DescribeXpackMonitorConfigResponse
 func (client *Client) DescribeXpackMonitorConfig(InstanceId *string) (_result *DescribeXpackMonitorConfigResponse, _err error) {
@@ -3410,7 +3563,7 @@ func (client *Client) DescribeXpackMonitorConfig(InstanceId *string) (_result *D
 
 // Summary:
 //
-// Diagnoses an Elasticsearch cluster.
+// Calls DiagnoseInstance to immediately diagnose an instance.
 //
 // @param request - DiagnoseInstanceRequest
 //
@@ -3475,7 +3628,7 @@ func (client *Client) DiagnoseInstanceWithOptions(InstanceId *string, request *D
 
 // Summary:
 //
-// Diagnoses an Elasticsearch cluster.
+// Calls DiagnoseInstance to immediately diagnose an instance.
 //
 // @param request - DiagnoseInstanceRequest
 //
@@ -3494,7 +3647,11 @@ func (client *Client) DiagnoseInstance(InstanceId *string, request *DiagnoseInst
 
 // Summary:
 //
-// # Disable Private Network Access of Kibana
+// Disables Kibana private network access.
+//
+// Description:
+//
+// This API operation supports only cloud-native instances. For legacy architecture instances, use the TriggerNetwork method.
 //
 // @param headers - map
 //
@@ -3527,7 +3684,11 @@ func (client *Client) DisableKibanaPvlNetworkWithOptions(InstanceId *string, hea
 
 // Summary:
 //
-// # Disable Private Network Access of Kibana
+// Disables Kibana private network access.
+//
+// Description:
+//
+// This API operation supports only cloud-native instances. For legacy architecture instances, use the TriggerNetwork method.
 //
 // @return DisableKibanaPvlNetworkResponse
 func (client *Client) DisableKibanaPvlNetwork(InstanceId *string) (_result *DisableKibanaPvlNetworkResponse, _err error) {
@@ -3544,7 +3705,13 @@ func (client *Client) DisableKibanaPvlNetwork(InstanceId *string) (_result *Disa
 
 // Summary:
 //
-// 开启v3 kibana私网
+// Invokes the EnableKibanaPvlNetwork operation to enable private network access for Kibana.
+//
+// Description:
+//
+// 1. This API operation is supported only for cloud-native instances. For legacy architecture instances, use the TriggerNetwork method.
+//
+// 2. The Kibana specification must be greater than 1 vCPU and 2 GB of memory.
 //
 // @param request - EnableKibanaPvlNetworkRequest
 //
@@ -3609,7 +3776,13 @@ func (client *Client) EnableKibanaPvlNetworkWithOptions(InstanceId *string, requ
 
 // Summary:
 //
-// 开启v3 kibana私网
+// Invokes the EnableKibanaPvlNetwork operation to enable private network access for Kibana.
+//
+// Description:
+//
+// 1. This API operation is supported only for cloud-native instances. For legacy architecture instances, use the TriggerNetwork method.
+//
+// 2. The Kibana specification must be greater than 1 vCPU and 2 GB of memory.
 //
 // @param request - EnableKibanaPvlNetworkRequest
 //
@@ -3628,7 +3801,7 @@ func (client *Client) EnableKibanaPvlNetwork(InstanceId *string, request *Enable
 
 // Summary:
 //
-// Queries the estimated time that is required to restart a Logstash cluster.
+// Retrieves the estimated restart time of a Logstash instance.
 //
 // @param request - EstimatedLogstashRestartTimeRequest
 //
@@ -3676,7 +3849,7 @@ func (client *Client) EstimatedLogstashRestartTimeWithOptions(InstanceId *string
 
 // Summary:
 //
-// Queries the estimated time that is required to restart a Logstash cluster.
+// Retrieves the estimated restart time of a Logstash instance.
 //
 // @param request - EstimatedLogstashRestartTimeRequest
 //
@@ -3695,7 +3868,7 @@ func (client *Client) EstimatedLogstashRestartTime(InstanceId *string, request *
 
 // Summary:
 //
-// Queries the estimated time that is required to restart an Elasticsearch cluster.
+// Retrieves the estimated restart time for an instance.
 //
 // @param request - EstimatedRestartTimeRequest
 //
@@ -3743,7 +3916,7 @@ func (client *Client) EstimatedRestartTimeWithOptions(InstanceId *string, reques
 
 // Summary:
 //
-// Queries the estimated time that is required to restart an Elasticsearch cluster.
+// Retrieves the estimated restart time for an instance.
 //
 // @param request - EstimatedRestartTimeRequest
 //
@@ -3762,7 +3935,7 @@ func (client *Client) EstimatedRestartTime(InstanceId *string, request *Estimate
 
 // Summary:
 //
-// Call GetClusterDataInformation to obtain the data information about the cluster.
+// Retrieves index migration data information.
 //
 // @param request - GetClusterDataInformationRequest
 //
@@ -3804,7 +3977,7 @@ func (client *Client) GetClusterDataInformationWithOptions(request *GetClusterDa
 
 // Summary:
 //
-// Call GetClusterDataInformation to obtain the data information about the cluster.
+// Retrieves index migration data information.
 //
 // @param request - GetClusterDataInformationRequest
 //
@@ -3821,6 +3994,10 @@ func (client *Client) GetClusterDataInformation(request *GetClusterDataInformati
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the elastic scaling rules of a cluster. Elastic nodes must be purchased when the instance is created.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3850,6 +4027,10 @@ func (client *Client) GetElastictaskWithOptions(InstanceId *string, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the elastic scaling rules of a cluster. Elastic nodes must be purchased when the instance is created.
+//
 // @return GetElastictaskResponse
 func (client *Client) GetElastictask(InstanceId *string) (_result *GetElastictaskResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -3943,7 +4124,7 @@ func (client *Client) GetEmonAlarmRecordStatisticsDistribute(request *GetEmonAla
 
 // Summary:
 //
-// 获取高级监控报警自定义Grafana监控报警项
+// Calls GetEmonGrafanaAlerts to retrieve the Grafana alert list.
 //
 // @param request - GetEmonGrafanaAlertsRequest
 //
@@ -3990,7 +4171,7 @@ func (client *Client) GetEmonGrafanaAlertsWithOptions(ProjectId *string, request
 
 // Summary:
 //
-// 获取高级监控报警自定义Grafana监控报警项
+// Calls GetEmonGrafanaAlerts to retrieve the Grafana alert list.
 //
 // @param request - GetEmonGrafanaAlertsRequest
 //
@@ -4009,7 +4190,7 @@ func (client *Client) GetEmonGrafanaAlerts(ProjectId *string, request *GetEmonGr
 
 // Summary:
 //
-// 获取高级监控报警自定义Grafana监控大盘列表
+// Calls GetEmonGrafanaDashboards to retrieve the list of Grafana dashboards.
 //
 // @param request - GetEmonGrafanaDashboardsRequest
 //
@@ -4056,7 +4237,7 @@ func (client *Client) GetEmonGrafanaDashboardsWithOptions(ProjectId *string, req
 
 // Summary:
 //
-// 获取高级监控报警自定义Grafana监控大盘列表
+// Calls GetEmonGrafanaDashboards to retrieve the list of Grafana dashboards.
 //
 // @param request - GetEmonGrafanaDashboardsRequest
 //
@@ -4075,7 +4256,7 @@ func (client *Client) GetEmonGrafanaDashboards(ProjectId *string, request *GetEm
 
 // Summary:
 //
-// # GetEmonMonitorData
+// Queries the Grafana metric monitoring data of an Elasticsearch instance.
 //
 // @param request - GetEmonMonitorDataRequest
 //
@@ -4122,7 +4303,7 @@ func (client *Client) GetEmonMonitorDataWithOptions(ProjectId *string, request *
 
 // Summary:
 //
-// # GetEmonMonitorData
+// Queries the Grafana metric monitoring data of an Elasticsearch instance.
 //
 // @param request - GetEmonMonitorDataRequest
 //
@@ -4141,7 +4322,7 @@ func (client *Client) GetEmonMonitorData(ProjectId *string, request *GetEmonMoni
 
 // Summary:
 //
-// 获取keystore信息
+// # Retrieve keystore information
 //
 // @param headers - map
 //
@@ -4174,7 +4355,7 @@ func (client *Client) GetKeystoresWithOptions(InstanceId *string, headers map[st
 
 // Summary:
 //
-// 获取keystore信息
+// # Retrieve keystore information
 //
 // @return GetKeystoresResponse
 func (client *Client) GetKeystores(InstanceId *string) (_result *GetKeystoresResponse, _err error) {
@@ -4191,7 +4372,7 @@ func (client *Client) GetKeystores(InstanceId *string) (_result *GetKeystoresRes
 
 // Summary:
 //
-// View the storage capacity and usage of the OpensStore instance.
+// Queries the storage capacity and usage of an OpenStore instance.
 //
 // @param headers - map
 //
@@ -4224,7 +4405,7 @@ func (client *Client) GetOpenStoreUsageWithOptions(InstanceId *string, headers m
 
 // Summary:
 //
-// View the storage capacity and usage of the OpensStore instance.
+// Queries the storage capacity and usage of an OpenStore instance.
 //
 // @return GetOpenStoreUsageResponse
 func (client *Client) GetOpenStoreUsage(InstanceId *string) (_result *GetOpenStoreUsageResponse, _err error) {
@@ -4241,7 +4422,7 @@ func (client *Client) GetOpenStoreUsage(InstanceId *string) (_result *GetOpenSto
 
 // Summary:
 //
-// Queries the configuration information about the current region.
+// Retrieves the current region information.
 //
 // @param request - GetRegionConfigurationRequest
 //
@@ -4288,7 +4469,7 @@ func (client *Client) GetRegionConfigurationWithOptions(request *GetRegionConfig
 
 // Summary:
 //
-// Queries the configuration information about the current region.
+// Retrieves the current region information.
 //
 // @param request - GetRegionConfigurationRequest
 //
@@ -4357,7 +4538,7 @@ func (client *Client) GetRegionalInstanceConfig() (_result *GetRegionalInstanceC
 
 // Summary:
 //
-// Call GetSuggestShrinkableNodes to specify the type and number of nodes to obtain the nodes that can be removed.
+// Retrieves the nodes that can be removed based on the specified node type and quantity.
 //
 // @param request - GetSuggestShrinkableNodesRequest
 //
@@ -4412,7 +4593,7 @@ func (client *Client) GetSuggestShrinkableNodesWithOptions(InstanceId *string, r
 
 // Summary:
 //
-// Call GetSuggestShrinkableNodes to specify the type and number of nodes to obtain the nodes that can be removed.
+// Retrieves the nodes that can be removed based on the specified node type and quantity.
 //
 // @param request - GetSuggestShrinkableNodesRequest
 //
@@ -4431,7 +4612,7 @@ func (client *Client) GetSuggestShrinkableNodes(InstanceId *string, request *Get
 
 // Summary:
 //
-// Call GetTransferableNodes to specify the type and number of nodes to obtain the nodes that can be migrated.
+// Retrieves the nodes available for data migration based on the specified node type and count.
 //
 // @param request - GetTransferableNodesRequest
 //
@@ -4482,7 +4663,7 @@ func (client *Client) GetTransferableNodesWithOptions(InstanceId *string, reques
 
 // Summary:
 //
-// Call GetTransferableNodes to specify the type and number of nodes to obtain the nodes that can be migrated.
+// Retrieves the nodes available for data migration based on the specified node type and count.
 //
 // @param request - GetTransferableNodesRequest
 //
@@ -4501,7 +4682,7 @@ func (client *Client) GetTransferableNodes(InstanceId *string, request *GetTrans
 
 // Summary:
 //
-// 灰度完成继续变更
+// Continue restarting the remaining edge zones of the Elasticsearch instance after the phased release is completed.
 //
 // @param request - GrayPublishRequest
 //
@@ -4548,7 +4729,7 @@ func (client *Client) GrayPublishWithOptions(InstanceId *string, request *GrayPu
 
 // Summary:
 //
-// 灰度完成继续变更
+// Continue restarting the remaining edge zones of the Elasticsearch instance after the phased release is completed.
 //
 // @param request - GrayPublishRequest
 //
@@ -4567,7 +4748,7 @@ func (client *Client) GrayPublish(InstanceId *string, request *GrayPublishReques
 
 // Summary:
 //
-// 初始化ai模型
+// # Initialize AI model
 //
 // @param request - InitModelRequest
 //
@@ -4630,7 +4811,7 @@ func (client *Client) InitModelWithOptions(InstanceId *string, request *InitMode
 
 // Summary:
 //
-// 初始化ai模型
+// # Initialize AI model
 //
 // @param request - InitModelRequest
 //
@@ -4649,11 +4830,11 @@ func (client *Client) InitModel(InstanceId *string, request *InitModelRequest) (
 
 // Summary:
 //
-// Creates a service-linked role.
+// Calls the InitializeOperationRole operation to create a service-linked role.
 //
 // Description:
 //
-// > Before you perform auto scaling for a cluster at the China site (aliyun.com) or you use shippers to collect logs, you must create a service-linked role.
+// > Before you use a collector to collect logs from different data sources or perform elastic scaling tasks for a cluster (applicable only to the China site), you must create a service-linked role.
 //
 // @param request - InitializeOperationRoleRequest
 //
@@ -4701,11 +4882,11 @@ func (client *Client) InitializeOperationRoleWithOptions(request *InitializeOper
 
 // Summary:
 //
-// Creates a service-linked role.
+// Calls the InitializeOperationRole operation to create a service-linked role.
 //
 // Description:
 //
-// > Before you perform auto scaling for a cluster at the China site (aliyun.com) or you use shippers to collect logs, you must create a service-linked role.
+// > Before you use a collector to collect logs from different data sources or perform elastic scaling tasks for a cluster (applicable only to the China site), you must create a service-linked role.
 //
 // @param request - InitializeOperationRoleRequest
 //
@@ -4724,11 +4905,11 @@ func (client *Client) InitializeOperationRole(request *InitializeOperationRoleRe
 
 // Summary:
 //
-// Installs ES-operator for a Container Service for Kubernetes (ACK) cluster.
+// Installs the ACK Operator on a specified Container Service cluster.
 //
 // Description:
 //
-// > Before you install a shipper for an ACK cluster, you must call this operation to install ES-operator for the cluster.
+// > Before installing a collector on an ACK cluster, call this operation to install the Elasticsearch Operator on the target cluster.
 //
 // @param request - InstallAckOperatorRequest
 //
@@ -4776,11 +4957,11 @@ func (client *Client) InstallAckOperatorWithOptions(ClusterId *string, request *
 
 // Summary:
 //
-// Installs ES-operator for a Container Service for Kubernetes (ACK) cluster.
+// Installs the ACK Operator on a specified Container Service cluster.
 //
 // Description:
 //
-// > Before you install a shipper for an ACK cluster, you must call this operation to install ES-operator for the cluster.
+// > Before installing a collector on an ACK cluster, call this operation to install the Elasticsearch Operator on the target cluster.
 //
 // @param request - InstallAckOperatorRequest
 //
@@ -4799,7 +4980,7 @@ func (client *Client) InstallAckOperator(ClusterId *string, request *InstallAckO
 
 // Summary:
 //
-// Call InstallKibanaSystemPlugin to install the Kibana plug-in. The Kibana specification must be 2-Core 4 GB or higher.
+// Installs preset plug-ins for Kibana. The Kibana instance must have specifications of 2 vCPUs and 4 GB of memory or higher.
 //
 // @param request - InstallKibanaSystemPluginRequest
 //
@@ -4847,7 +5028,7 @@ func (client *Client) InstallKibanaSystemPluginWithOptions(InstanceId *string, r
 
 // Summary:
 //
-// Call InstallKibanaSystemPlugin to install the Kibana plug-in. The Kibana specification must be 2-Core 4 GB or higher.
+// Installs preset plug-ins for Kibana. The Kibana instance must have specifications of 2 vCPUs and 4 GB of memory or higher.
 //
 // @param request - InstallKibanaSystemPluginRequest
 //
@@ -4866,11 +5047,13 @@ func (client *Client) InstallKibanaSystemPlugin(InstanceId *string, request *Ins
 
 // Summary:
 //
-// Installs a plug-in.
+// Installs system plugins for a specified Logstash instance.
 //
 // Description:
 //
-// ls-cn-oew1qbgl\\*\\*\\*\\*
+// Before calling this operation, note the following:
+//
+// The plugins to be installed must be included in the Alibaba Cloud Logstash [default system plugin list](https://help.aliyun.com/document_detail/139626.html). External open source plugins are not supported.
 //
 // @param request - InstallLogstashSystemPluginRequest
 //
@@ -4918,11 +5101,13 @@ func (client *Client) InstallLogstashSystemPluginWithOptions(InstanceId *string,
 
 // Summary:
 //
-// Installs a plug-in.
+// Installs system plugins for a specified Logstash instance.
 //
 // Description:
 //
-// ls-cn-oew1qbgl\\*\\*\\*\\*
+// Before calling this operation, note the following:
+//
+// The plugins to be installed must be included in the Alibaba Cloud Logstash [default system plugin list](https://help.aliyun.com/document_detail/139626.html). External open source plugins are not supported.
 //
 // @param request - InstallLogstashSystemPluginRequest
 //
@@ -4941,7 +5126,7 @@ func (client *Client) InstallLogstashSystemPlugin(InstanceId *string, request *I
 
 // Summary:
 //
-// Call InstallSystemPlugin to install a system preset plug-in.
+// Installs system plug-ins on an Elasticsearch instance.
 //
 // @param request - InstallSystemPluginRequest
 //
@@ -4989,7 +5174,7 @@ func (client *Client) InstallSystemPluginWithOptions(InstanceId *string, request
 
 // Summary:
 //
-// Call InstallSystemPlugin to install a system preset plug-in.
+// Installs system plug-ins on an Elasticsearch instance.
 //
 // @param request - InstallSystemPluginRequest
 //
@@ -5008,7 +5193,11 @@ func (client *Client) InstallSystemPlugin(InstanceId *string, request *InstallSy
 
 // Summary:
 //
-// Installs custom plug-ins that are uploaded to the Elasticsearch console.
+// Installs custom plugins that have been uploaded to the Elasticsearch console.
+//
+// Description:
+//
+// > The custom plugin installation feature is being upgraded internally and is temporarily unavailable. If you urgently need this feature, submit a ticket to contact us.
 //
 // @param request - InstallUserPluginsRequest
 //
@@ -5056,7 +5245,11 @@ func (client *Client) InstallUserPluginsWithOptions(InstanceId *string, request 
 
 // Summary:
 //
-// Installs custom plug-ins that are uploaded to the Elasticsearch console.
+// Installs custom plugins that have been uploaded to the Elasticsearch console.
+//
+// Description:
+//
+// > The custom plugin installation feature is being upgraded internally and is temporarily unavailable. If you urgently need this feature, submit a ticket to contact us.
 //
 // @param request - InstallUserPluginsRequest
 //
@@ -5075,7 +5268,7 @@ func (client *Client) InstallUserPlugins(InstanceId *string, request *InstallUse
 
 // Summary:
 //
-// Call InterruptElasticsearchTask to interrupt the Alibaba cloud elasticsearch instance in the change. This parameter is valid only for instances in the initializing state. When the instance is interrupted, it enters the suspended state.
+// Interrupts an instance change task. This operation is valid only for instances in the Effecting state. After the interruption, the instance enters the suspended state.
 //
 // @param request - InterruptElasticsearchTaskRequest
 //
@@ -5122,7 +5315,7 @@ func (client *Client) InterruptElasticsearchTaskWithOptions(InstanceId *string, 
 
 // Summary:
 //
-// Call InterruptElasticsearchTask to interrupt the Alibaba cloud elasticsearch instance in the change. This parameter is valid only for instances in the initializing state. When the instance is interrupted, it enters the suspended state.
+// Interrupts an instance change task. This operation is valid only for instances in the Effecting state. After the interruption, the instance enters the suspended state.
 //
 // @param request - InterruptElasticsearchTaskRequest
 //
@@ -5141,7 +5334,7 @@ func (client *Client) InterruptElasticsearchTask(InstanceId *string, request *In
 
 // Summary:
 //
-// After the task is suspended, the Logstash cluster is in the suspended state.
+// After the interruption, the instance enters the suspended state.
 //
 // @param request - InterruptLogstashTaskRequest
 //
@@ -5188,7 +5381,7 @@ func (client *Client) InterruptLogstashTaskWithOptions(InstanceId *string, reque
 
 // Summary:
 //
-// After the task is suspended, the Logstash cluster is in the suspended state.
+// After the interruption, the instance enters the suspended state.
 //
 // @param request - InterruptLogstashTaskRequest
 //
@@ -5207,7 +5400,7 @@ func (client *Client) InterruptLogstashTask(InstanceId *string, request *Interru
 
 // Summary:
 //
-// Queries a list of Container Service for Kubernetes (ACK) clusters.
+// Retrieves the list of Container Service for Kubernetes (ACK) clusters.
 //
 // @param request - ListAckClustersRequest
 //
@@ -5262,7 +5455,7 @@ func (client *Client) ListAckClustersWithOptions(request *ListAckClustersRequest
 
 // Summary:
 //
-// Queries a list of Container Service for Kubernetes (ACK) clusters.
+// Retrieves the list of Container Service for Kubernetes (ACK) clusters.
 //
 // @param request - ListAckClustersRequest
 //
@@ -5281,11 +5474,11 @@ func (client *Client) ListAckClusters(request *ListAckClustersRequest) (_result 
 
 // Summary:
 //
-// View all namespaces of the specified Container Service for Kubernetes (ACK) cluster.
+// Queries all namespaces in a specified Container Service for Kubernetes (ACK) cluster.
 //
 // Description:
 //
-// > When you install a shipper on an ACK cluster, you must specify a namespace. You can call this operation to query all namespaces in the ACK cluster, and select a namespace based on your business requirements.
+// This operation is deprecated and will be taken offline soon.
 //
 // @param request - ListAckNamespacesRequest
 //
@@ -5336,11 +5529,11 @@ func (client *Client) ListAckNamespacesWithOptions(ClusterId *string, request *L
 
 // Summary:
 //
-// View all namespaces of the specified Container Service for Kubernetes (ACK) cluster.
+// Queries all namespaces in a specified Container Service for Kubernetes (ACK) cluster.
 //
 // Description:
 //
-// > When you install a shipper on an ACK cluster, you must specify a namespace. You can call this operation to query all namespaces in the ACK cluster, and select a namespace based on your business requirements.
+// This operation is deprecated and will be taken offline soon.
 //
 // @param request - ListAckNamespacesRequest
 //
@@ -5359,7 +5552,7 @@ func (client *Client) ListAckNamespaces(ClusterId *string, request *ListAckNames
 
 // Summary:
 //
-// 变更记录 变更详情
+// Release notes Release notes details.
 //
 // @param request - ListActionRecordsRequest
 //
@@ -5434,7 +5627,7 @@ func (client *Client) ListActionRecordsWithOptions(InstanceId *string, request *
 
 // Summary:
 //
-// 变更记录 变更详情
+// Release notes Release notes details.
 //
 // @param request - ListActionRecordsRequest
 //
@@ -5453,7 +5646,7 @@ func (client *Client) ListActionRecords(InstanceId *string, request *ListActionR
 
 // Summary:
 //
-// Queries the information of all the nodes in an Elasticsearch cluster.
+// Retrieves information about all nodes in an Elasticsearch cluster.
 //
 // @param request - ListAllNodeRequest
 //
@@ -5500,7 +5693,7 @@ func (client *Client) ListAllNodeWithOptions(InstanceId *string, request *ListAl
 
 // Summary:
 //
-// Queries the information of all the nodes in an Elasticsearch cluster.
+// Retrieves information about all nodes in an Elasticsearch cluster.
 //
 // @param request - ListAllNodeRequest
 //
@@ -5519,7 +5712,7 @@ func (client *Client) ListAllNode(InstanceId *string, request *ListAllNodeReques
 
 // Summary:
 //
-// Call ListAlternativeSnapshotRepos to get the OSS reference warehouses that can be added to the current instance.
+// Retrieves the OSS reference repositories that can be added to the current instance.
 //
 // @param request - ListAlternativeSnapshotReposRequest
 //
@@ -5566,7 +5759,7 @@ func (client *Client) ListAlternativeSnapshotReposWithOptions(InstanceId *string
 
 // Summary:
 //
-// Call ListAlternativeSnapshotRepos to get the OSS reference warehouses that can be added to the current instance.
+// Retrieves the OSS reference repositories that can be added to the current instance.
 //
 // @param request - ListAlternativeSnapshotReposRequest
 //
@@ -5585,7 +5778,7 @@ func (client *Client) ListAlternativeSnapshotRepos(InstanceId *string, request *
 
 // Summary:
 //
-// Queries the Elasticsearch clusters that can be associated with a Logstash cluster when you configure the X-Pack Monitoring feature for the Logstash cluster.
+// Retrieves a list of available Elasticsearch instances when configuring X-Pack monitoring for a Logstash instance.
 //
 // @param headers - map
 //
@@ -5618,7 +5811,7 @@ func (client *Client) ListAvailableEsInstanceIdsWithOptions(InstanceId *string, 
 
 // Summary:
 //
-// Queries the Elasticsearch clusters that can be associated with a Logstash cluster when you configure the X-Pack Monitoring feature for the Logstash cluster.
+// Retrieves a list of available Elasticsearch instances when configuring X-Pack monitoring for a Logstash instance.
 //
 // @return ListAvailableEsInstanceIdsResponse
 func (client *Client) ListAvailableEsInstanceIds(InstanceId *string) (_result *ListAvailableEsInstanceIdsResponse, _err error) {
@@ -5635,7 +5828,7 @@ func (client *Client) ListAvailableEsInstanceIds(InstanceId *string) (_result *L
 
 // Summary:
 //
-// Queries a list of shippers.
+// Retrieves a list of collectors.
 //
 // @param request - ListCollectorsRequest
 //
@@ -5702,7 +5895,7 @@ func (client *Client) ListCollectorsWithOptions(request *ListCollectorsRequest, 
 
 // Summary:
 //
-// Queries a list of shippers.
+// Retrieves a list of collectors.
 //
 // @param request - ListCollectorsRequest
 //
@@ -5721,7 +5914,11 @@ func (client *Client) ListCollectors(request *ListCollectorsRequest) (_result *L
 
 // Summary:
 //
-// # ES集群组合索引列表
+// Retrieves the list of composable templates for an Elasticsearch instance.
+//
+// Description:
+//
+// For more information, see [Store massive amounts of data through OpenStore](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param request - ListComponentIndicesRequest
 //
@@ -5776,7 +5973,11 @@ func (client *Client) ListComponentIndicesWithOptions(InstanceId *string, reques
 
 // Summary:
 //
-// # ES集群组合索引列表
+// Retrieves the list of composable templates for an Elasticsearch instance.
+//
+// Description:
+//
+// For more information, see [Store massive amounts of data through OpenStore](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param request - ListComponentIndicesRequest
 //
@@ -5795,7 +5996,7 @@ func (client *Client) ListComponentIndices(InstanceId *string, request *ListComp
 
 // Summary:
 //
-// Call ListConnectedClusters to query the instances that are interconnected with the current instance.
+// Retrieves a list of instances that have established private network peering with the current instance.
 //
 // @param headers - map
 //
@@ -5828,7 +6029,7 @@ func (client *Client) ListConnectedClustersWithOptions(InstanceId *string, heade
 
 // Summary:
 //
-// Call ListConnectedClusters to query the instances that are interconnected with the current instance.
+// Retrieves a list of instances that have established private network peering with the current instance.
 //
 // @return ListConnectedClustersResponse
 func (client *Client) ListConnectedClusters(InstanceId *string) (_result *ListConnectedClustersResponse, _err error) {
@@ -5845,7 +6046,7 @@ func (client *Client) ListConnectedClusters(InstanceId *string) (_result *ListCo
 
 // Summary:
 //
-// 查询数据流
+// Retrieves the list of index data streams in an Elasticsearch cluster.
 //
 // @param request - ListDataStreamsRequest
 //
@@ -5896,7 +6097,7 @@ func (client *Client) ListDataStreamsWithOptions(InstanceId *string, request *Li
 
 // Summary:
 //
-// 查询数据流
+// Retrieves the list of index data streams in an Elasticsearch cluster.
 //
 // @param request - ListDataStreamsRequest
 //
@@ -5915,7 +6116,7 @@ func (client *Client) ListDataStreams(InstanceId *string, request *ListDataStrea
 
 // Summary:
 //
-// Call ListDataTasks to obtain the information of a data migration task.
+// Retrieves a list of data migration tasks between different Elasticsearch clusters.
 //
 // @param headers - map
 //
@@ -5948,7 +6149,7 @@ func (client *Client) ListDataTasksWithOptions(InstanceId *string, headers map[s
 
 // Summary:
 //
-// Call ListDataTasks to obtain the information of a data migration task.
+// Retrieves a list of data migration tasks between different Elasticsearch clusters.
 //
 // @return ListDataTasksResponse
 func (client *Client) ListDataTasks(InstanceId *string) (_result *ListDataTasksResponse, _err error) {
@@ -5965,7 +6166,7 @@ func (client *Client) ListDataTasks(InstanceId *string) (_result *ListDataTasksR
 
 // Summary:
 //
-// Queries the default configuration files of shippers.
+// Invokes the ListDefaultCollectorConfigurations operation to retrieve the default configuration file of a collector.
 //
 // @param request - ListDefaultCollectorConfigurationsRequest
 //
@@ -6020,7 +6221,7 @@ func (client *Client) ListDefaultCollectorConfigurationsWithOptions(request *Lis
 
 // Summary:
 //
-// Queries the default configuration files of shippers.
+// Invokes the ListDefaultCollectorConfigurations operation to retrieve the default configuration file of a collector.
 //
 // @param request - ListDefaultCollectorConfigurationsRequest
 //
@@ -6039,7 +6240,11 @@ func (client *Client) ListDefaultCollectorConfigurations(request *ListDefaultCol
 
 // Summary:
 //
-// # ListDeprecatedTemplates
+// Queries the list of historical index templates.
+//
+// Description:
+//
+// For more information, see [Use OpenStore to store large volumes of data](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param request - ListDeprecatedTemplatesRequest
 //
@@ -6094,7 +6299,11 @@ func (client *Client) ListDeprecatedTemplatesWithOptions(InstanceId *string, req
 
 // Summary:
 //
-// # ListDeprecatedTemplates
+// Queries the list of historical index templates.
+//
+// Description:
+//
+// For more information, see [Use OpenStore to store large volumes of data](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param request - ListDeprecatedTemplatesRequest
 //
@@ -6113,7 +6322,7 @@ func (client *Client) ListDeprecatedTemplates(InstanceId *string, request *ListD
 
 // Summary:
 //
-// Queries the indexes for health diagnosis performed on an Elasticsearch cluster.
+// Retrieves the diagnostic indexes from the intelligent O&M module for a specified instance.
 //
 // @param request - ListDiagnoseIndicesRequest
 //
@@ -6160,7 +6369,7 @@ func (client *Client) ListDiagnoseIndicesWithOptions(InstanceId *string, request
 
 // Summary:
 //
-// Queries the indexes for health diagnosis performed on an Elasticsearch cluster.
+// Retrieves the diagnostic indexes from the intelligent O&M module for a specified instance.
 //
 // @param request - ListDiagnoseIndicesRequest
 //
@@ -6179,7 +6388,7 @@ func (client *Client) ListDiagnoseIndices(InstanceId *string, request *ListDiagn
 
 // Summary:
 //
-// Queries the historical intelligent O\\&M reports of an Elasticsearch cluster.
+// Calls ListDiagnoseReport to retrieve historical reports of intelligent O&M.
 //
 // @param request - ListDiagnoseReportRequest
 //
@@ -6250,7 +6459,7 @@ func (client *Client) ListDiagnoseReportWithOptions(InstanceId *string, request 
 
 // Summary:
 //
-// Queries the historical intelligent O\\&M reports of an Elasticsearch cluster.
+// Calls ListDiagnoseReport to retrieve historical reports of intelligent O&M.
 //
 // @param request - ListDiagnoseReportRequest
 //
@@ -6269,7 +6478,7 @@ func (client *Client) ListDiagnoseReport(InstanceId *string, request *ListDiagno
 
 // Summary:
 //
-// Queries the IDs of the historical intelligent O\\\\\\&M reports of an Elasticsearch cluster.
+// Retrieves all IDs of Intelligent O&M Center historical reports.
 //
 // @param request - ListDiagnoseReportIdsRequest
 //
@@ -6336,7 +6545,7 @@ func (client *Client) ListDiagnoseReportIdsWithOptions(InstanceId *string, reque
 
 // Summary:
 //
-// Queries the IDs of the historical intelligent O\\\\\\&M reports of an Elasticsearch cluster.
+// Retrieves all IDs of Intelligent O&M Center historical reports.
 //
 // @param request - ListDiagnoseReportIdsRequest
 //
@@ -6355,7 +6564,7 @@ func (client *Client) ListDiagnoseReportIds(InstanceId *string, request *ListDia
 
 // Summary:
 //
-// Queries the intelligent diagnostic items of an Elasticsearch cluster.
+// Lists the intelligent diagnostic items for an Elasticsearch instance.
 //
 // @param request - ListDiagnosisItemsRequest
 //
@@ -6372,6 +6581,10 @@ func (client *Client) ListDiagnosisItemsWithOptions(request *ListDiagnosisItemsR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["instanceId"] = request.InstanceId
+	}
+
 	if !dara.IsNil(request.Lang) {
 		query["lang"] = request.Lang
 	}
@@ -6402,7 +6615,7 @@ func (client *Client) ListDiagnosisItemsWithOptions(request *ListDiagnosisItemsR
 
 // Summary:
 //
-// Queries the intelligent diagnostic items of an Elasticsearch cluster.
+// Lists the intelligent diagnostic items for an Elasticsearch instance.
 //
 // @param request - ListDiagnosisItemsRequest
 //
@@ -6421,7 +6634,7 @@ func (client *Client) ListDiagnosisItems(request *ListDiagnosisItemsRequest) (_r
 
 // Summary:
 //
-// Queries information about a dictionary.
+// Queries the information of a specified dictionary.
 //
 // @param request - ListDictInformationRequest
 //
@@ -6476,7 +6689,7 @@ func (client *Client) ListDictInformationWithOptions(InstanceId *string, request
 
 // Summary:
 //
-// Queries information about a dictionary.
+// Queries the information of a specified dictionary.
 //
 // @param request - ListDictInformationRequest
 //
@@ -6495,7 +6708,7 @@ func (client *Client) ListDictInformation(InstanceId *string, request *ListDictI
 
 // Summary:
 //
-// Queries the details of a specified type of dictionary.
+// Queries the details of the dictionary list for a specified type.
 //
 // @param request - ListDictsRequest
 //
@@ -6546,7 +6759,7 @@ func (client *Client) ListDictsWithOptions(InstanceId *string, request *ListDict
 
 // Summary:
 //
-// Queries the details of a specified type of dictionary.
+// Queries the details of the dictionary list for a specified type.
 //
 // @param request - ListDictsRequest
 //
@@ -6565,11 +6778,13 @@ func (client *Client) ListDicts(InstanceId *string, request *ListDictsRequest) (
 
 // Summary:
 //
-// When you create a Beats collector, call the ListEcsInstances to obtain the list of ECS instances.
+// Retrieves the list of ECS instances under the current user\\"s VPC and vSwitch.
 //
 // Description:
 //
-// *Important*	- To call this operation, you must create the Aliyun Elasticsearch AccessingOOSRole and the system service role AliyunOOSAccessingECS 4ESRole to Elasticsearch the service account to obtain the ECS access permissions of the primary account. For more information, see [Collect ECS service logs](https://help.aliyun.com/document_detail/146446.html).
+//	Notice:  Before calling this operation, create the AliyunElasticsearchAccessingOOSRole and AliyunOOSAccessingECS4ESRole service-linked roles. These roles allow the Elasticsearch service account to obtain ECS access permissions of the Alibaba Cloud account. For more information, see [Collect ECS service logs](https://help.aliyun.com/document_detail/146446.html).
+//
+// .
 //
 // @param request - ListEcsInstancesRequest
 //
@@ -6636,11 +6851,13 @@ func (client *Client) ListEcsInstancesWithOptions(request *ListEcsInstancesReque
 
 // Summary:
 //
-// When you create a Beats collector, call the ListEcsInstances to obtain the list of ECS instances.
+// Retrieves the list of ECS instances under the current user\\"s VPC and vSwitch.
 //
 // Description:
 //
-// *Important*	- To call this operation, you must create the Aliyun Elasticsearch AccessingOOSRole and the system service role AliyunOOSAccessingECS 4ESRole to Elasticsearch the service account to obtain the ECS access permissions of the primary account. For more information, see [Collect ECS service logs](https://help.aliyun.com/document_detail/146446.html).
+//	Notice:  Before calling this operation, create the AliyunElasticsearchAccessingOOSRole and AliyunOOSAccessingECS4ESRole service-linked roles. These roles allow the Elasticsearch service account to obtain ECS access permissions of the Alibaba Cloud account. For more information, see [Collect ECS service logs](https://help.aliyun.com/document_detail/146446.html).
+//
+// .
 //
 // @param request - ListEcsInstancesRequest
 //
@@ -6659,7 +6876,7 @@ func (client *Client) ListEcsInstances(request *ListEcsInstancesRequest) (_resul
 
 // Summary:
 //
-// 获取事件列表
+// # Obtain Event List
 //
 // @param request - ListEventRecordsRequest
 //
@@ -6726,7 +6943,7 @@ func (client *Client) ListEventRecordsWithOptions(eventType *string, request *Li
 
 // Summary:
 //
-// 获取事件列表
+// # Obtain Event List
 //
 // @param request - ListEventRecordsRequest
 //
@@ -6745,7 +6962,7 @@ func (client *Client) ListEventRecords(eventType *string, request *ListEventReco
 
 // Summary:
 //
-// Queries the extended file configuration of a Logstash instance.
+// Retrieves the extension file configuration of a Logstash instance.
 //
 // @param headers - map
 //
@@ -6778,7 +6995,7 @@ func (client *Client) ListExtendfilesWithOptions(InstanceId *string, headers map
 
 // Summary:
 //
-// Queries the extended file configuration of a Logstash instance.
+// Retrieves the extension file configuration of a Logstash instance.
 //
 // @return ListExtendfilesResponse
 func (client *Client) ListExtendfiles(InstanceId *string) (_result *ListExtendfilesResponse, _err error) {
@@ -6793,6 +7010,10 @@ func (client *Client) ListExtendfiles(InstanceId *string) (_result *ListExtendfi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of index lifecycle policies that have been created for a cluster.
+//
 // @param request - ListILMPoliciesRequest
 //
 // @param headers - map
@@ -6836,6 +7057,10 @@ func (client *Client) ListILMPoliciesWithOptions(InstanceId *string, request *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of index lifecycle policies that have been created for a cluster.
+//
 // @param request - ListILMPoliciesRequest
 //
 // @return ListILMPoliciesResponse
@@ -6851,6 +7076,10 @@ func (client *Client) ListILMPolicies(InstanceId *string, request *ListILMPolici
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of index templates.
+//
 // @param request - ListIndexTemplatesRequest
 //
 // @param headers - map
@@ -6902,6 +7131,10 @@ func (client *Client) ListIndexTemplatesWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of index templates.
+//
 // @param request - ListIndexTemplatesRequest
 //
 // @return ListIndexTemplatesResponse
@@ -6919,7 +7152,7 @@ func (client *Client) ListIndexTemplates(InstanceId *string, request *ListIndexT
 
 // Summary:
 //
-// Queries a list of Elasticsearch clusters.
+// Queries the information about Elasticsearch instances.
 //
 // @param request - ListInstanceRequest
 //
@@ -7010,7 +7243,7 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, head
 
 // Summary:
 //
-// Queries a list of Elasticsearch clusters.
+// Queries the information about Elasticsearch instances.
 //
 // @param request - ListInstanceRequest
 //
@@ -7029,7 +7262,7 @@ func (client *Client) ListInstance(request *ListInstanceRequest) (_result *ListI
 
 // Summary:
 //
-// 集群触发的硬件运维事件列表
+// Queries the list of hardware O&M events triggered by an Elasticsearch cluster.
 //
 // @param tmpReq - ListInstanceHistoryEventsRequest
 //
@@ -7139,7 +7372,7 @@ func (client *Client) ListInstanceHistoryEventsWithOptions(tmpReq *ListInstanceH
 
 // Summary:
 //
-// 集群触发的硬件运维事件列表
+// Queries the list of hardware O&M events triggered by an Elasticsearch cluster.
 //
 // @param request - ListInstanceHistoryEventsRequest
 //
@@ -7158,7 +7391,13 @@ func (client *Client) ListInstanceHistoryEvents(request *ListInstanceHistoryEven
 
 // Summary:
 //
-// Queries the indexes stored on an Elasticsearch cluster.
+// Filters system indexes from the index list of a cluster.
+//
+// Description:
+//
+// The ListInstanceIndices operation is applicable only to Elasticsearch instances that have the indexing service enabled. Query index information by using the Elasticsearch API. For more information, see [cat indices API
+//
+// ](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html).
 //
 // @param request - ListInstanceIndicesRequest
 //
@@ -7225,7 +7464,13 @@ func (client *Client) ListInstanceIndicesWithOptions(InstanceId *string, request
 
 // Summary:
 //
-// Queries the indexes stored on an Elasticsearch cluster.
+// Filters system indexes from the index list of a cluster.
+//
+// Description:
+//
+// The ListInstanceIndices operation is applicable only to Elasticsearch instances that have the indexing service enabled. Query index information by using the Elasticsearch API. For more information, see [cat indices API
+//
+// ](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html).
 //
 // @param request - ListInstanceIndicesRequest
 //
@@ -7244,7 +7489,7 @@ func (client *Client) ListInstanceIndices(InstanceId *string, request *ListInsta
 
 // Summary:
 //
-// Queries a list of Kibana plug-ins.
+// Retrieves the list of plugins installed on the Kibana node of an Elasticsearch instance.
 //
 // @param request - ListKibanaPluginsRequest
 //
@@ -7295,7 +7540,7 @@ func (client *Client) ListKibanaPluginsWithOptions(InstanceId *string, request *
 
 // Summary:
 //
-// Queries a list of Kibana plug-ins.
+// Retrieves the list of plugins installed on the Kibana node of an Elasticsearch instance.
 //
 // @param request - ListKibanaPluginsRequest
 //
@@ -7314,7 +7559,11 @@ func (client *Client) ListKibanaPlugins(InstanceId *string, request *ListKibanaP
 
 // Summary:
 //
-// 查询kibana私网连接信息
+// Queries the details of the Kibana private network connection.
+//
+// Description:
+//
+// This API operation supports only cloud-native instances.
 //
 // @param headers - map
 //
@@ -7347,7 +7596,11 @@ func (client *Client) ListKibanaPvlNetworkWithOptions(InstanceId *string, header
 
 // Summary:
 //
-// 查询kibana私网连接信息
+// Queries the details of the Kibana private network connection.
+//
+// Description:
+//
+// This API operation supports only cloud-native instances.
 //
 // @return ListKibanaPvlNetworkResponse
 func (client *Client) ListKibanaPvlNetwork(InstanceId *string) (_result *ListKibanaPvlNetworkResponse, _err error) {
@@ -7364,7 +7617,7 @@ func (client *Client) ListKibanaPvlNetwork(InstanceId *string) (_result *ListKib
 
 // Summary:
 //
-// Queries the information about a Logstash cluster or all Logstash clusters.
+// Displays the details of all or specified Logstash instances in a list.
 //
 // @param request - ListLogstashRequest
 //
@@ -7435,7 +7688,7 @@ func (client *Client) ListLogstashWithOptions(request *ListLogstashRequest, head
 
 // Summary:
 //
-// Queries the information about a Logstash cluster or all Logstash clusters.
+// Displays the details of all or specified Logstash instances in a list.
 //
 // @param request - ListLogstashRequest
 //
@@ -7454,7 +7707,7 @@ func (client *Client) ListLogstash(request *ListLogstashRequest) (_result *ListL
 
 // Summary:
 //
-// Queries the logs of a Logstash cluster.
+// Queries the logs of a Logstash instance.
 //
 // @param request - ListLogstashLogRequest
 //
@@ -7521,7 +7774,7 @@ func (client *Client) ListLogstashLogWithOptions(InstanceId *string, request *Li
 
 // Summary:
 //
-// Queries the logs of a Logstash cluster.
+// Queries the logs of a Logstash instance.
 //
 // @param request - ListLogstashLogRequest
 //
@@ -7540,7 +7793,7 @@ func (client *Client) ListLogstashLog(InstanceId *string, request *ListLogstashL
 
 // Summary:
 //
-// Queries the information about a plug-in or all plug-ins.
+// Calls ListLogstashPlugins to retrieve detailed information about all or specified plugins.
 //
 // @param request - ListLogstashPluginsRequest
 //
@@ -7599,7 +7852,7 @@ func (client *Client) ListLogstashPluginsWithOptions(InstanceId *string, request
 
 // Summary:
 //
-// Queries the information about a plug-in or all plug-ins.
+// Calls ListLogstashPlugins to retrieve detailed information about all or specified plugins.
 //
 // @param request - ListLogstashPluginsRequest
 //
@@ -7618,7 +7871,7 @@ func (client *Client) ListLogstashPlugins(InstanceId *string, request *ListLogst
 
 // Summary:
 //
-// The list of historical reports of Intelligent Maintenance.
+// Historical report list of intelligent O&M.
 //
 // @param request - ListNodesRequest
 //
@@ -7681,7 +7934,7 @@ func (client *Client) ListNodesWithOptions(ResId *string, request *ListNodesRequ
 
 // Summary:
 //
-// The list of historical reports of Intelligent Maintenance.
+// Historical report list of intelligent O&M.
 //
 // @param request - ListNodesRequest
 //
@@ -7700,7 +7953,7 @@ func (client *Client) ListNodes(ResId *string, request *ListNodesRequest) (_resu
 
 // Summary:
 //
-// Queries a list of pipelines.
+// Retrieves the pipeline list of a Logstash instance.
 //
 // @param request - ListPipelineRequest
 //
@@ -7755,7 +8008,7 @@ func (client *Client) ListPipelineWithOptions(InstanceId *string, request *ListP
 
 // Summary:
 //
-// Queries a list of pipelines.
+// Retrieves the pipeline list of a Logstash instance.
 //
 // @param request - ListPipelineRequest
 //
@@ -7774,7 +8027,11 @@ func (client *Client) ListPipeline(InstanceId *string, request *ListPipelineRequ
 
 // Summary:
 //
-// Queries the IDs of pipelines for a Logstash cluster.
+// Retrieves the list of pipeline IDs for a Logstash instance.
+//
+// Description:
+//
+// > Pipeline management is divided into configuration file management and Kibana pipeline management. Kibana pipeline management is not available in the console for some regions.
 //
 // @param request - ListPipelineIdsRequest
 //
@@ -7816,7 +8073,11 @@ func (client *Client) ListPipelineIdsWithOptions(InstanceId *string, request *Li
 
 // Summary:
 //
-// Queries the IDs of pipelines for a Logstash cluster.
+// Retrieves the list of pipeline IDs for a Logstash instance.
+//
+// Description:
+//
+// > Pipeline management is divided into configuration file management and Kibana pipeline management. Kibana pipeline management is not available in the console for some regions.
 //
 // @param request - ListPipelineIdsRequest
 //
@@ -7835,7 +8096,7 @@ func (client *Client) ListPipelineIds(InstanceId *string, request *ListPipelineI
 
 // Summary:
 //
-// Queries the plug-ins that are installed on a specified Elasticsearch cluster.
+// Retrieves the plugin list of a specified Alibaba Cloud Elasticsearch instance.
 //
 // @param request - ListPluginsRequest
 //
@@ -7894,7 +8155,7 @@ func (client *Client) ListPluginsWithOptions(InstanceId *string, request *ListPl
 
 // Summary:
 //
-// Queries the plug-ins that are installed on a specified Elasticsearch cluster.
+// Retrieves the plugin list of a specified Alibaba Cloud Elasticsearch instance.
 //
 // @param request - ListPluginsRequest
 //
@@ -7913,7 +8174,7 @@ func (client *Client) ListPlugins(InstanceId *string, request *ListPluginsReques
 
 // Summary:
 //
-// Queries the logs of an Elasticsearch cluster.
+// Queries logs of different types for an Elasticsearch instance.
 //
 // @param request - ListSearchLogRequest
 //
@@ -7980,7 +8241,7 @@ func (client *Client) ListSearchLogWithOptions(InstanceId *string, request *List
 
 // Summary:
 //
-// Queries the logs of an Elasticsearch cluster.
+// Queries logs of different types for an Elasticsearch instance.
 //
 // @param request - ListSearchLogRequest
 //
@@ -7999,11 +8260,11 @@ func (client *Client) ListSearchLog(InstanceId *string, request *ListSearchLogRe
 
 // Summary:
 //
-// Queries the information about shards that are being restored or shards that are restored. By default, this operation returns only the information about shards that are being restored after you call this operation.
+// Queries the data progress list of ongoing and completed shard recoveries. By default, only ongoing shard recovery information is returned.
 //
 // Description:
 //
-// > The restoration of a shard is a process of synchronizing data from a primary shard to a replica shard. After the restoration is complete, the replica shard is available for data searches.
+// > Shard recovery is the process of synchronizing data from a primary shard to a replica shard. After recovery is complete, the replica shard becomes available for search.
 //
 // @param request - ListShardRecoveriesRequest
 //
@@ -8050,11 +8311,11 @@ func (client *Client) ListShardRecoveriesWithOptions(InstanceId *string, request
 
 // Summary:
 //
-// Queries the information about shards that are being restored or shards that are restored. By default, this operation returns only the information about shards that are being restored after you call this operation.
+// Queries the data progress list of ongoing and completed shard recoveries. By default, only ongoing shard recovery information is returned.
 //
 // Description:
 //
-// > The restoration of a shard is a process of synchronizing data from a primary shard to a replica shard. After the restoration is complete, the replica shard is available for data searches.
+// > Shard recovery is the process of synchronizing data from a primary shard to a replica shard. After recovery is complete, the replica shard becomes available for search.
 //
 // @param request - ListShardRecoveriesRequest
 //
@@ -8073,7 +8334,7 @@ func (client *Client) ListShardRecoveries(InstanceId *string, request *ListShard
 
 // Summary:
 //
-// Call the ListSnapshotReposByInstanceId to get the cross-cluster OSS repositories of the current instance.
+// Retrieves the list of cross-cluster OSS repository settings for the current instance.
 //
 // @param headers - map
 //
@@ -8106,7 +8367,7 @@ func (client *Client) ListSnapshotReposByInstanceIdWithOptions(InstanceId *strin
 
 // Summary:
 //
-// Call the ListSnapshotReposByInstanceId to get the cross-cluster OSS repositories of the current instance.
+// Retrieves the list of cross-cluster OSS repository settings for the current instance.
 //
 // @return ListSnapshotReposByInstanceIdResponse
 func (client *Client) ListSnapshotReposByInstanceId(InstanceId *string) (_result *ListSnapshotReposByInstanceIdResponse, _err error) {
@@ -8123,7 +8384,7 @@ func (client *Client) ListSnapshotReposByInstanceId(InstanceId *string) (_result
 
 // Summary:
 //
-// 统计事件记录
+// # Statistics of management event records
 //
 // @param request - ListStatsEventRecordsRequest
 //
@@ -8178,7 +8439,7 @@ func (client *Client) ListStatsEventRecordsWithOptions(request *ListStatsEventRe
 
 // Summary:
 //
-// 统计事件记录
+// # Statistics of management event records
 //
 // @param request - ListStatsEventRecordsRequest
 //
@@ -8197,7 +8458,7 @@ func (client *Client) ListStatsEventRecords(request *ListStatsEventRecordsReques
 
 // Summary:
 //
-// Queries the tags that are added to one or more resources.
+// Retrieves the relationships between all instances and tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -8264,7 +8525,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Queries the tags that are added to one or more resources.
+// Retrieves the relationships between all instances and tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -8283,7 +8544,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// All tags created by the user in the current region.
+// Queries all labels created by the user in the current region.
 //
 // @param request - ListTagsRequest
 //
@@ -8334,7 +8595,7 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, headers map[
 
 // Summary:
 //
-// All tags created by the user in the current region.
+// Queries all labels created by the user in the current region.
 //
 // @param request - ListTagsRequest
 //
@@ -8353,7 +8614,7 @@ func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsRespo
 
 // Summary:
 //
-// 用户自定义插件列表
+// # Custom plugin list
 //
 // @param request - ListUserPluginRequest
 //
@@ -8408,7 +8669,7 @@ func (client *Client) ListUserPluginWithOptions(instanceId *string, request *Lis
 
 // Summary:
 //
-// 用户自定义插件列表
+// # Custom plugin list
 //
 // @param request - ListUserPluginRequest
 //
@@ -8427,7 +8688,7 @@ func (client *Client) ListUserPlugin(instanceId *string, request *ListUserPlugin
 
 // Summary:
 //
-// Queries the statuses of endpoints in the virtual private cloud (VPC) within the Elasticsearch service account.
+// Queries the status of endpoints in the VPC of a service account.
 //
 // @param request - ListVpcEndpointsRequest
 //
@@ -8478,7 +8739,7 @@ func (client *Client) ListVpcEndpointsWithOptions(InstanceId *string, request *L
 
 // Summary:
 //
-// Queries the statuses of endpoints in the virtual private cloud (VPC) within the Elasticsearch service account.
+// Queries the status of endpoints in the VPC of a service account.
 //
 // @param request - ListVpcEndpointsRequest
 //
@@ -8497,19 +8758,19 @@ func (client *Client) ListVpcEndpoints(InstanceId *string, request *ListVpcEndpo
 
 // Summary:
 //
-// Call the MigrateToOtherZone to migrate the nodes in the specified zone to the destination zone.
+// Migrates nodes in a specified zone to a destination zone.
 //
 // Description:
 //
-// If the specifications in your zone are insufficient, you can upgrade your instance to nodes in another zone. Before calling this interface, you must ensure that:
+// When you upgrade the specifications of an instance and encounter insufficient inventory in the current zone, you can resolve this issue by migrating zone nodes. Before calling this operation, make sure that:
 //
-//   - The error message returned because the current account is in a zone that has sufficient resources.
+// - Your account has a zone with sufficient resources.
 //
-//     After migrating nodes with current specifications to another zone, you need to manually [upgrade cluster](https://help.aliyun.com/document_detail/96650.html) because the cluster will not be upgraded during the migration process. Therefore, select a zone with sufficient resources to avoid cluster upgrade failure. We recommend that you choose new zones that are in lower alphabetical order. For example, for cn-hangzhou-e and cn-hangzhou-h zones, choose cn-hangzhou-h first.
+//	After migrating nodes of the current specifications to another zone, you must manually [upgrade the cluster](https://help.aliyun.com/document_detail/96650.html). The cluster is not upgraded during the migration. Therefore, select a zone with sufficient resources to avoid cluster upgrade failures. Select a zone with a later alphabetical order first. For example, between ap-southeast-1e and ap-southeast-1h, select ap-southeast-1h first.
 //
-//   - The cluster is in the healthy state.
+// - The cluster is in a healthy state.
 //
-//     Can be passed`  GET _cat/health?v  `command to view the health status of the cluster.
+//	You can run the `GET _cat/health?v` command to check the cluster health status.
 //
 // @param request - MigrateToOtherZoneRequest
 //
@@ -8557,19 +8818,19 @@ func (client *Client) MigrateToOtherZoneWithOptions(InstanceId *string, request 
 
 // Summary:
 //
-// Call the MigrateToOtherZone to migrate the nodes in the specified zone to the destination zone.
+// Migrates nodes in a specified zone to a destination zone.
 //
 // Description:
 //
-// If the specifications in your zone are insufficient, you can upgrade your instance to nodes in another zone. Before calling this interface, you must ensure that:
+// When you upgrade the specifications of an instance and encounter insufficient inventory in the current zone, you can resolve this issue by migrating zone nodes. Before calling this operation, make sure that:
 //
-//   - The error message returned because the current account is in a zone that has sufficient resources.
+// - Your account has a zone with sufficient resources.
 //
-//     After migrating nodes with current specifications to another zone, you need to manually [upgrade cluster](https://help.aliyun.com/document_detail/96650.html) because the cluster will not be upgraded during the migration process. Therefore, select a zone with sufficient resources to avoid cluster upgrade failure. We recommend that you choose new zones that are in lower alphabetical order. For example, for cn-hangzhou-e and cn-hangzhou-h zones, choose cn-hangzhou-h first.
+//	After migrating nodes of the current specifications to another zone, you must manually [upgrade the cluster](https://help.aliyun.com/document_detail/96650.html). The cluster is not upgraded during the migration. Therefore, select a zone with sufficient resources to avoid cluster upgrade failures. Select a zone with a later alphabetical order first. For example, between ap-southeast-1e and ap-southeast-1h, select ap-southeast-1h first.
 //
-//   - The cluster is in the healthy state.
+// - The cluster is in a healthy state.
 //
-//     Can be passed`  GET _cat/health?v  `command to view the health status of the cluster.
+//	You can run the `GET _cat/health?v` command to check the cluster health status.
 //
 // @param request - MigrateToOtherZoneRequest
 //
@@ -8588,7 +8849,7 @@ func (client *Client) MigrateToOtherZone(InstanceId *string, request *MigrateToO
 
 // Summary:
 //
-// Changes the Elastic Compute Service (ECS) instances on which a shipper is installed.
+// Updates the ECS instances on which a collector is installed.
 //
 // @param request - ModifyDeployMachineRequest
 //
@@ -8636,7 +8897,7 @@ func (client *Client) ModifyDeployMachineWithOptions(ResId *string, request *Mod
 
 // Summary:
 //
-// Changes the Elastic Compute Service (ECS) instances on which a shipper is installed.
+// Updates the ECS instances on which a collector is installed.
 //
 // @param request - ModifyDeployMachineRequest
 //
@@ -8653,6 +8914,10 @@ func (client *Client) ModifyDeployMachine(ResId *string, request *ModifyDeployMa
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the elastic scaling rules of a cluster.
+//
 // @param request - ModifyElastictaskRequest
 //
 // @param headers - map
@@ -8691,6 +8956,10 @@ func (client *Client) ModifyElastictaskWithOptions(InstanceId *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the elastic scaling rules of a cluster.
+//
 // @param request - ModifyElastictaskRequest
 //
 // @return ModifyElastictaskResponse
@@ -8708,11 +8977,17 @@ func (client *Client) ModifyElastictask(InstanceId *string, request *ModifyElast
 
 // Summary:
 //
-// Enables and modifies the maintenance window of an Elasticsearch cluster.
+// Modifies and enables the maintenance window for an instance.
 //
 // Description:
 //
-// es-cn-n6w1o1x0w001c\\*\\*\\*\\*
+// Before calling this operation, note the following:
+//
+// - Before the scheduled maintenance, Alibaba Cloud sends SMS messages and emails to the contacts configured in your Alibaba Cloud account. Check your messages promptly.
+//
+// - On the day of instance maintenance, to ensure stability throughout the maintenance process, the instance enters the Effective state before the maintenance window begins. While the instance is in this state, access to the cluster and query operations such as performance monitoring are not affected. However, cluster change operations such as cluster upgrades and restarts are temporarily unavailable.
+//
+// - During the maintenance window, transient disconnections may occur. Ensure that your application has a reconnection mechanism.
 //
 // @param request - ModifyInstanceMaintainTimeRequest
 //
@@ -8760,11 +9035,17 @@ func (client *Client) ModifyInstanceMaintainTimeWithOptions(InstanceId *string, 
 
 // Summary:
 //
-// Enables and modifies the maintenance window of an Elasticsearch cluster.
+// Modifies and enables the maintenance window for an instance.
 //
 // Description:
 //
-// es-cn-n6w1o1x0w001c\\*\\*\\*\\*
+// Before calling this operation, note the following:
+//
+// - Before the scheduled maintenance, Alibaba Cloud sends SMS messages and emails to the contacts configured in your Alibaba Cloud account. Check your messages promptly.
+//
+// - On the day of instance maintenance, to ensure stability throughout the maintenance process, the instance enters the Effective state before the maintenance window begins. While the instance is in this state, access to the cluster and query operations such as performance monitoring are not affected. However, cluster change operations such as cluster upgrades and restarts are temporarily unavailable.
+//
+// - During the maintenance window, transient disconnections may occur. Ensure that your application has a reconnection mechanism.
 //
 // @param request - ModifyInstanceMaintainTimeRequest
 //
@@ -8783,7 +9064,7 @@ func (client *Client) ModifyInstanceMaintainTime(InstanceId *string, request *Mo
 
 // Summary:
 //
-// 修改计划执行时间
+// For O&M events in the Event Center, you can specify a restart event, and the system will restart the specified edge zone of the relevant instance at the scheduled time.
 //
 // @param request - ModifyScheduleExecuteTimeRequest
 //
@@ -8834,7 +9115,7 @@ func (client *Client) ModifyScheduleExecuteTimeWithOptions(instanceId *string, r
 
 // Summary:
 //
-// 修改计划执行时间
+// For O&M events in the Event Center, you can specify a restart event, and the system will restart the specified edge zone of the relevant instance at the scheduled time.
 //
 // @param request - ModifyScheduleExecuteTimeRequest
 //
@@ -8853,11 +9134,21 @@ func (client *Client) ModifyScheduleExecuteTime(instanceId *string, request *Mod
 
 // Summary:
 //
-// Updates an IP address whitelist of an Elasticsearch cluster.
+// Calls ModifyWhiteIps to update the access whitelist of a specified instance.
 //
 // Description:
 //
-// The ID of the cluster.
+// ## Before you begin
+//
+// - You cannot update information for an instance whose instance status is activating, invalid, or freeze (inactive).
+//
+// - You can update the whitelist in two ways: IP whitelist list and IP whitelist group. The two methods cannot be used at the same time. In addition to InstanceId and clientToken, the two methods support different parameters:
+//
+//   - IP whitelist list: whiteIpList, nodeType, networkType
+//
+//   - IP whitelist group: modifyMode, whiteIpGroup
+//
+// - The public network access whitelist does not support private network IP addresses, and the internal-facing whitelist does not support public IP addresses.
 //
 // @param request - ModifyWhiteIpsRequest
 //
@@ -8926,11 +9217,21 @@ func (client *Client) ModifyWhiteIpsWithOptions(InstanceId *string, request *Mod
 
 // Summary:
 //
-// Updates an IP address whitelist of an Elasticsearch cluster.
+// Calls ModifyWhiteIps to update the access whitelist of a specified instance.
 //
 // Description:
 //
-// The ID of the cluster.
+// ## Before you begin
+//
+// - You cannot update information for an instance whose instance status is activating, invalid, or freeze (inactive).
+//
+// - You can update the whitelist in two ways: IP whitelist list and IP whitelist group. The two methods cannot be used at the same time. In addition to InstanceId and clientToken, the two methods support different parameters:
+//
+//   - IP whitelist list: whiteIpList, nodeType, networkType
+//
+//   - IP whitelist group: modifyMode, whiteIpGroup
+//
+// - The public network access whitelist does not support private network IP addresses, and the internal-facing whitelist does not support public IP addresses.
 //
 // @param request - ModifyWhiteIpsRequest
 //
@@ -8949,7 +9250,7 @@ func (client *Client) ModifyWhiteIps(InstanceId *string, request *ModifyWhiteIps
 
 // Summary:
 //
-// Migrates an Elasticsearch cluster to a specified resource group.
+// Modifies the resource group to which an instance belongs.
 //
 // @param request - MoveResourceGroupRequest
 //
@@ -8997,7 +9298,7 @@ func (client *Client) MoveResourceGroupWithOptions(InstanceId *string, request *
 
 // Summary:
 //
-// Migrates an Elasticsearch cluster to a specified resource group.
+// Modifies the resource group to which an instance belongs.
 //
 // @param request - MoveResourceGroupRequest
 //
@@ -9016,7 +9317,7 @@ func (client *Client) MoveResourceGroup(InstanceId *string, request *MoveResourc
 
 // Summary:
 //
-// Enables the intelligent O\\\\\\&M feature for an instance.
+// Enables the intelligent O&M feature for an instance.
 //
 // @param request - OpenDiagnosisRequest
 //
@@ -9067,7 +9368,7 @@ func (client *Client) OpenDiagnosisWithOptions(InstanceId *string, request *Open
 
 // Summary:
 //
-// Enables the intelligent O\\\\\\&M feature for an instance.
+// Enables the intelligent O&M feature for an instance.
 //
 // @param request - OpenDiagnosisRequest
 //
@@ -9086,11 +9387,13 @@ func (client *Client) OpenDiagnosis(InstanceId *string, request *OpenDiagnosisRe
 
 // Summary:
 //
-// Call OpenHttps to enable the HTTPS protocol. Make sure that you have purchased a client node before enabling this feature.
+// Enables the HTTPS protocol. Before enabling HTTPS, make sure that you have purchased client nodes.
 //
 // Description:
 //
-// >  To ensure data security, we recommend that you enable HTTPS.
+// > - To ensure data security, enable the HTTPS protocol.
+//
+// - Except for versions 8.5 and 7.16<props="china"><ph> and version 7.10 in some regions</ph>, make sure that you have purchased client nodes before enabling HTTPS.
 //
 // @param request - OpenHttpsRequest
 //
@@ -9137,11 +9440,13 @@ func (client *Client) OpenHttpsWithOptions(InstanceId *string, request *OpenHttp
 
 // Summary:
 //
-// Call OpenHttps to enable the HTTPS protocol. Make sure that you have purchased a client node before enabling this feature.
+// Enables the HTTPS protocol. Before enabling HTTPS, make sure that you have purchased client nodes.
 //
 // Description:
 //
-// >  To ensure data security, we recommend that you enable HTTPS.
+// > - To ensure data security, enable the HTTPS protocol.
+//
+// - Except for versions 8.5 and 7.16<props="china"><ph> and version 7.10 in some regions</ph>, make sure that you have purchased client nodes before enabling HTTPS.
 //
 // @param request - OpenHttpsRequest
 //
@@ -9160,7 +9465,7 @@ func (client *Client) OpenHttps(InstanceId *string, request *OpenHttpsRequest) (
 
 // Summary:
 //
-// 自定义插件解析&上传接口
+// Upload a custom plugin to the plugin repository. After uploading, the plugin is in the pending installation status.
 //
 // @param request - PluginAnalysisRequest
 //
@@ -9208,7 +9513,7 @@ func (client *Client) PluginAnalysisWithOptions(instanceId *string, request *Plu
 
 // Summary:
 //
-// 自定义插件解析&上传接口
+// Upload a custom plugin to the plugin repository. After uploading, the plugin is in the pending installation status.
 //
 // @param request - PluginAnalysisRequest
 //
@@ -9227,7 +9532,11 @@ func (client *Client) PluginAnalysis(instanceId *string, request *PluginAnalysis
 
 // Summary:
 //
-// # PostEmonTryAlarmRule
+// Sends a test alert message by calling PostEmonTryAlarmRule.
+//
+// Description:
+//
+// > This API operation can be called up to 10 times per hour.
 //
 // @param request - PostEmonTryAlarmRuleRequest
 //
@@ -9274,7 +9583,11 @@ func (client *Client) PostEmonTryAlarmRuleWithOptions(ProjectId *string, AlarmGr
 
 // Summary:
 //
-// # PostEmonTryAlarmRule
+// Sends a test alert message by calling PostEmonTryAlarmRule.
+//
+// Description:
+//
+// > This API operation can be called up to 10 times per hour.
 //
 // @param request - PostEmonTryAlarmRuleRequest
 //
@@ -9291,6 +9604,10 @@ func (client *Client) PostEmonTryAlarmRule(ProjectId *string, AlarmGroupId *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls RecommendTemplates to retrieve recommended cluster configurations.
+//
 // @param request - RecommendTemplatesRequest
 //
 // @param headers - map
@@ -9334,6 +9651,10 @@ func (client *Client) RecommendTemplatesWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls RecommendTemplates to retrieve recommended cluster configurations.
+//
 // @param request - RecommendTemplatesRequest
 //
 // @return RecommendTemplatesResponse
@@ -9351,7 +9672,7 @@ func (client *Client) RecommendTemplates(InstanceId *string, request *RecommendT
 
 // Summary:
 //
-// Installs a shipper that failed to be installed when you create the shipper.
+// Retries the installation of a collector that failed to install during creation.
 //
 // @param request - ReinstallCollectorRequest
 //
@@ -9399,7 +9720,7 @@ func (client *Client) ReinstallCollectorWithOptions(ResId *string, request *Rein
 
 // Summary:
 //
-// Installs a shipper that failed to be installed when you create the shipper.
+// Retries the installation of a collector that failed to install during creation.
 //
 // @param request - ReinstallCollectorRequest
 //
@@ -9418,7 +9739,7 @@ func (client *Client) ReinstallCollector(ResId *string, request *ReinstallCollec
 
 // Summary:
 //
-// 从插件库中删除插件，区别于卸载插件
+// You can delete uploaded but uninstalled plugins from the plugin library.
 //
 // @param request - RemovePluginRequest
 //
@@ -9460,7 +9781,7 @@ func (client *Client) RemovePluginWithOptions(instanceId *string, request *Remov
 
 // Summary:
 //
-// 从插件库中删除插件，区别于卸载插件
+// You can delete uploaded but uninstalled plugins from the plugin library.
 //
 // @param request - RemovePluginRequest
 //
@@ -9479,7 +9800,7 @@ func (client *Client) RemovePlugin(instanceId *string, request *RemovePluginRequ
 
 // Summary:
 //
-// Call RenewInstance to renew a subscription instance.
+// Renews a subscription Elasticsearch instance.
 //
 // @param request - RenewInstanceRequest
 //
@@ -9527,7 +9848,7 @@ func (client *Client) RenewInstanceWithOptions(InstanceId *string, request *Rene
 
 // Summary:
 //
-// Call RenewInstance to renew a subscription instance.
+// Renews a subscription Elasticsearch instance.
 //
 // @param request - RenewInstanceRequest
 //
@@ -9546,7 +9867,7 @@ func (client *Client) RenewInstance(InstanceId *string, request *RenewInstanceRe
 
 // Summary:
 //
-// Renews a Logstash cluster.
+// Renews a specified Logstash instance.
 //
 // @param request - RenewLogstashRequest
 //
@@ -9594,7 +9915,7 @@ func (client *Client) RenewLogstashWithOptions(InstanceId *string, request *Rene
 
 // Summary:
 //
-// Renews a Logstash cluster.
+// Renews a specified Logstash instance.
 //
 // @param request - RenewLogstashRequest
 //
@@ -9613,7 +9934,7 @@ func (client *Client) RenewLogstash(InstanceId *string, request *RenewLogstashRe
 
 // Summary:
 //
-// Restarts a shipper.
+// Restarts a collector to perform data collection.
 //
 // @param request - RestartCollectorRequest
 //
@@ -9660,7 +9981,7 @@ func (client *Client) RestartCollectorWithOptions(ResId *string, request *Restar
 
 // Summary:
 //
-// Restarts a shipper.
+// Restarts a collector to perform data collection.
 //
 // @param request - RestartCollectorRequest
 //
@@ -9679,11 +10000,11 @@ func (client *Client) RestartCollector(ResId *string, request *RestartCollectorR
 
 // Summary:
 //
-// You can call this operation to restart a specified Elasticsearch instance.
+// Restarts an Elasticsearch cluster.
 //
 // Description:
 //
-// >  After the instance is restarted, the instance enters the activating state. After the instance is restarted, its status changes to active. Alibaba Cloud Elasticsearch supports restarting a single node. Restarting a node can be divided into normal restart and blue-green restart.
+// > After the restart, the instance enters the activating state. After the restart is complete, the instance status changes to active. Alibaba Cloud Elasticsearch supports single-node restarts. Node restarts are classified into normal restarts and blue-green restarts.
 //
 // @param request - RestartInstanceRequest
 //
@@ -9735,11 +10056,11 @@ func (client *Client) RestartInstanceWithOptions(InstanceId *string, request *Re
 
 // Summary:
 //
-// You can call this operation to restart a specified Elasticsearch instance.
+// Restarts an Elasticsearch cluster.
 //
 // Description:
 //
-// >  After the instance is restarted, the instance enters the activating state. After the instance is restarted, its status changes to active. Alibaba Cloud Elasticsearch supports restarting a single node. Restarting a node can be divided into normal restart and blue-green restart.
+// > After the restart, the instance enters the activating state. After the restart is complete, the instance status changes to active. Alibaba Cloud Elasticsearch supports single-node restarts. Node restarts are classified into normal restarts and blue-green restarts.
 //
 // @param request - RestartInstanceRequest
 //
@@ -9758,7 +10079,7 @@ func (client *Client) RestartInstance(InstanceId *string, request *RestartInstan
 
 // Summary:
 //
-// Restarts a specified Logstash cluster. After the cluster is restarted, it is in the activating state.
+// Restarts a specified instance. After the restart, the instance enters the activating (activing) state.
 //
 // @param request - RestartLogstashRequest
 //
@@ -9831,7 +10152,7 @@ func (client *Client) RestartLogstashWithOptions(InstanceId *string, request *Re
 
 // Summary:
 //
-// Restarts a specified Logstash cluster. After the cluster is restarted, it is in the activating state.
+// Restarts a specified instance. After the restart, the instance enters the activating (activing) state.
 //
 // @param request - RestartLogstashRequest
 //
@@ -9850,7 +10171,7 @@ func (client *Client) RestartLogstash(InstanceId *string, request *RestartLogsta
 
 // Summary:
 //
-// Call ResumeElasticsearchTask to resume interrupted change of Elasticsearch instance. After you resume or interrupt a change, the instance enters the activating state.
+// Resumes an interrupted change task for an instance.
 //
 // @param request - ResumeElasticsearchTaskRequest
 //
@@ -9897,7 +10218,7 @@ func (client *Client) ResumeElasticsearchTaskWithOptions(InstanceId *string, req
 
 // Summary:
 //
-// Call ResumeElasticsearchTask to resume interrupted change of Elasticsearch instance. After you resume or interrupt a change, the instance enters the activating state.
+// Resumes an interrupted change task for an instance.
 //
 // @param request - ResumeElasticsearchTaskRequest
 //
@@ -9916,7 +10237,7 @@ func (client *Client) ResumeElasticsearchTask(InstanceId *string, request *Resum
 
 // Summary:
 //
-// Resumes a change task of a Logstash cluster. After the task is resumed, the Logstash cluster is in the activating state.
+// Resumes an interrupted instance change task. After the task is resumed, the instance enters the activating state.
 //
 // @param request - ResumeLogstashTaskRequest
 //
@@ -9963,7 +10284,7 @@ func (client *Client) ResumeLogstashTaskWithOptions(InstanceId *string, request 
 
 // Summary:
 //
-// Resumes a change task of a Logstash cluster. After the task is resumed, the Logstash cluster is in the activating state.
+// Resumes an interrupted instance change task. After the task is resumed, the instance enters the activating state.
 //
 // @param request - ResumeLogstashTaskRequest
 //
@@ -9982,7 +10303,7 @@ func (client *Client) ResumeLogstashTask(InstanceId *string, request *ResumeLogs
 
 // Summary:
 //
-// 滚动数据流，生成新索引
+// Creates a new index for a data stream or index alias.
 //
 // @param request - RolloverDataStreamRequest
 //
@@ -10029,7 +10350,7 @@ func (client *Client) RolloverDataStreamWithOptions(InstanceId *string, DataStre
 
 // Summary:
 //
-// 滚动数据流，生成新索引
+// Creates a new index for a data stream or index alias.
 //
 // @param request - RolloverDataStreamRequest
 //
@@ -10048,7 +10369,7 @@ func (client *Client) RolloverDataStream(InstanceId *string, DataStream *string,
 
 // Summary:
 //
-// Runs pipelines in a Logstash cluster.
+// Deploys Logstash pipelines immediately.
 //
 // @param request - RunPipelinesRequest
 //
@@ -10096,7 +10417,7 @@ func (client *Client) RunPipelinesWithOptions(InstanceId *string, request *RunPi
 
 // Summary:
 //
-// Runs pipelines in a Logstash cluster.
+// Deploys Logstash pipelines immediately.
 //
 // @param request - RunPipelinesRequest
 //
@@ -10115,7 +10436,13 @@ func (client *Client) RunPipelines(InstanceId *string, request *RunPipelinesRequ
 
 // Summary:
 //
-// Removes nodes from an Elasticsearch cluster.
+// Scales in nodes of a specified role in an Elasticsearch cluster.
+//
+// Description:
+//
+// Note the following when you invoke this operation:
+//
+// Before scaling in data nodes of a cluster, perform data migration from the nodes to be removed to other nodes. After you confirm that the nodes to be removed contain no data, proceed with the scale-in operation.
 //
 // @param request - ShrinkNodeRequest
 //
@@ -10175,7 +10502,13 @@ func (client *Client) ShrinkNodeWithOptions(InstanceId *string, request *ShrinkN
 
 // Summary:
 //
-// Removes nodes from an Elasticsearch cluster.
+// Scales in nodes of a specified role in an Elasticsearch cluster.
+//
+// Description:
+//
+// Note the following when you invoke this operation:
+//
+// Before scaling in data nodes of a cluster, perform data migration from the nodes to be removed to other nodes. After you confirm that the nodes to be removed contain no data, proceed with the scale-in operation.
 //
 // @param request - ShrinkNodeRequest
 //
@@ -10260,7 +10593,7 @@ func (client *Client) StartCollector(ResId *string, request *StartCollectorReque
 
 // Summary:
 //
-// Stops a shipper.
+// Calls StopCollector to stop a running collector.
 //
 // @param request - StopCollectorRequest
 //
@@ -10307,7 +10640,7 @@ func (client *Client) StopCollectorWithOptions(ResId *string, request *StopColle
 
 // Summary:
 //
-// Stops a shipper.
+// Calls StopCollector to stop a running collector.
 //
 // @param request - StopCollectorRequest
 //
@@ -10326,7 +10659,7 @@ func (client *Client) StopCollector(ResId *string, request *StopCollectorRequest
 
 // Summary:
 //
-// Stops pipelines in a Logstash cluster.
+// Stops Logstash pipelines by calling StopPipelines.
 //
 // @param request - StopPipelinesRequest
 //
@@ -10374,7 +10707,7 @@ func (client *Client) StopPipelinesWithOptions(InstanceId *string, request *Stop
 
 // Summary:
 //
-// Stops pipelines in a Logstash cluster.
+// Stops Logstash pipelines by calling StopPipelines.
 //
 // @param request - StopPipelinesRequest
 //
@@ -10393,7 +10726,7 @@ func (client *Client) StopPipelines(InstanceId *string, request *StopPipelinesRe
 
 // Summary:
 //
-// Adds tags to clusters.
+// Creates tag-resource relationships for a specified instance.
 //
 // @param request - TagResourcesRequest
 //
@@ -10448,7 +10781,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 
 // Summary:
 //
-// Adds tags to clusters.
+// Creates tag-resource relationships for a specified instance.
 //
 // @param request - TagResourcesRequest
 //
@@ -10467,7 +10800,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Runs a data migration task for node scaling operations.
+// Performs data migration on a node to facilitate node scale-in operations.
 //
 // @param request - TransferNodeRequest
 //
@@ -10519,7 +10852,7 @@ func (client *Client) TransferNodeWithOptions(InstanceId *string, request *Trans
 
 // Summary:
 //
-// Runs a data migration task for node scaling operations.
+// Performs data migration on a node to facilitate node scale-in operations.
 //
 // @param request - TransferNodeRequest
 //
@@ -10538,7 +10871,7 @@ func (client *Client) TransferNode(InstanceId *string, request *TransferNodeRequ
 
 // Summary:
 //
-// You can call this operation to enable or disable public or private network access for a Elasticsearch or Kibana cluster.
+// Enables or shuts down public or private network access for an Elasticsearch or Kibana cluster.
 //
 // @param request - TriggerNetworkRequest
 //
@@ -10599,7 +10932,7 @@ func (client *Client) TriggerNetworkWithOptions(InstanceId *string, request *Tri
 
 // Summary:
 //
-// You can call this operation to enable or disable public or private network access for a Elasticsearch or Kibana cluster.
+// Enables or shuts down public or private network access for an Elasticsearch or Kibana cluster.
 //
 // @param request - TriggerNetworkRequest
 //
@@ -10618,7 +10951,11 @@ func (client *Client) TriggerNetwork(InstanceId *string, request *TriggerNetwork
 
 // Summary:
 //
-// Multi-zone Instance: Shutting down an existing availability zone is only for disaster recovery drills. Proceed with caution!
+// Disables an existing zone for a multi-zone instance. This operation is intended only for disaster recovery drills. Proceed with caution.
+//
+// Description:
+//
+// Disables an existing zone for a multi-zone instance. This operation is intended only for disaster recovery drills. Proceed with caution.
 //
 // @param request - TurnOffZoneRequest
 //
@@ -10669,7 +11006,11 @@ func (client *Client) TurnOffZoneWithOptions(instanceId *string, request *TurnOf
 
 // Summary:
 //
-// Multi-zone Instance: Shutting down an existing availability zone is only for disaster recovery drills. Proceed with caution!
+// Disables an existing zone for a multi-zone instance. This operation is intended only for disaster recovery drills. Proceed with caution.
+//
+// Description:
+//
+// Disables an existing zone for a multi-zone instance. This operation is intended only for disaster recovery drills. Proceed with caution.
 //
 // @param request - TurnOffZoneRequest
 //
@@ -10688,7 +11029,11 @@ func (client *Client) TurnOffZone(instanceId *string, request *TurnOffZoneReques
 
 // Summary:
 //
-// Multi-zone Instance, reopening a zone that has been taken offline is only for disaster recovery drills. Please proceed with caution!
+// Reopens an offline zone for a multi-zone instance. This operation is intended only for disaster recovery drills. Proceed with caution.
+//
+// Description:
+//
+// Reopens an offline zone for a multi-zone instance. This operation is intended only for disaster recovery drills. Proceed with caution.
 //
 // @param request - TurnOnZoneRequest
 //
@@ -10739,7 +11084,11 @@ func (client *Client) TurnOnZoneWithOptions(instanceId *string, request *TurnOnZ
 
 // Summary:
 //
-// Multi-zone Instance, reopening a zone that has been taken offline is only for disaster recovery drills. Please proceed with caution!
+// Reopens an offline zone for a multi-zone instance. This operation is intended only for disaster recovery drills. Proceed with caution.
+//
+// Description:
+//
+// Reopens an offline zone for a multi-zone instance. This operation is intended only for disaster recovery drills. Proceed with caution.
 //
 // @param request - TurnOnZoneRequest
 //
@@ -10758,7 +11107,7 @@ func (client *Client) TurnOnZone(instanceId *string, request *TurnOnZoneRequest)
 
 // Summary:
 //
-// Call the UninstallKibanaPlugin to uninstall the Kibana plug-in.
+// Uninstalls plug-ins from the Kibana node of an Elasticsearch instance.
 //
 // @param request - UninstallKibanaPluginRequest
 //
@@ -10806,7 +11155,7 @@ func (client *Client) UninstallKibanaPluginWithOptions(InstanceId *string, reque
 
 // Summary:
 //
-// Call the UninstallKibanaPlugin to uninstall the Kibana plug-in.
+// Uninstalls plug-ins from the Kibana node of an Elasticsearch instance.
 //
 // @param request - UninstallKibanaPluginRequest
 //
@@ -10825,7 +11174,7 @@ func (client *Client) UninstallKibanaPlugin(InstanceId *string, request *Uninsta
 
 // Summary:
 //
-// Removes one or more Logstash plug-ins.
+// Uninstalls installed plug-ins from a Logstash instance.
 //
 // @param request - UninstallLogstashPluginRequest
 //
@@ -10873,7 +11222,7 @@ func (client *Client) UninstallLogstashPluginWithOptions(InstanceId *string, req
 
 // Summary:
 //
-// Removes one or more Logstash plug-ins.
+// Uninstalls installed plug-ins from a Logstash instance.
 //
 // @param request - UninstallLogstashPluginRequest
 //
@@ -10892,7 +11241,7 @@ func (client *Client) UninstallLogstashPlugin(InstanceId *string, request *Unins
 
 // Summary:
 //
-// Call UninstallPlugin to uninstall the preset plug-in.
+// Uninstalls system plug-ins from an Elasticsearch instance.
 //
 // @param request - UninstallPluginRequest
 //
@@ -10944,7 +11293,7 @@ func (client *Client) UninstallPluginWithOptions(InstanceId *string, request *Un
 
 // Summary:
 //
-// Call UninstallPlugin to uninstall the preset plug-in.
+// Uninstalls system plug-ins from an Elasticsearch instance.
 //
 // @param request - UninstallPluginRequest
 //
@@ -10963,17 +11312,17 @@ func (client *Client) UninstallPlugin(InstanceId *string, request *UninstallPlug
 
 // Summary:
 //
-// Deletes a user resource tag relationship.
+// Deletes user resource tag associations for a specified instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// When calling this operation, note the following:
 //
-//   - You can only delete user tags.
+// - Only user tags can be deleted.
 //
-// > User labels are manually added to instances by users. A system Tag is a tag that Alibaba Cloud services add to instances. System labels are divided into visible labels and invisible labels.
+//	> User tags are tags that users manually add to instances. System tags are tags that Alibaba Cloud services add to user instances. System tags are classified into visible tags and invisible tags.
 //
-//   - If you delete a resource tag relationship that is not associated with any resources, you must delete the tags.
+// - If a tag is not associated with any resource, the tag is also deleted when the resource tag association is deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -11036,17 +11385,17 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Deletes a user resource tag relationship.
+// Deletes user resource tag associations for a specified instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// When calling this operation, note the following:
 //
-//   - You can only delete user tags.
+// - Only user tags can be deleted.
 //
-// > User labels are manually added to instances by users. A system Tag is a tag that Alibaba Cloud services add to instances. System labels are divided into visible labels and invisible labels.
+//	> User tags are tags that users manually add to instances. System tags are tags that Alibaba Cloud services add to user instances. System tags are classified into visible tags and invisible tags.
 //
-//   - If you delete a resource tag relationship that is not associated with any resources, you must delete the tags.
+// - If a tag is not associated with any resource, the tag is also deleted when the resource tag association is deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -11065,11 +11414,13 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// You can call this operation to UpdateAdminPassword the password of the elastic account of the specified Elasticsearch instance.
+// Updates the password of the elastic account for a specified Elasticsearch instance.
 //
 // Description:
 //
-// 5A2CFF0E-5718-45B5-9D4D-70B3FF\\*\\*\\*\\*
+// When you invoke this operation, note the following:
+//
+// You cannot update information when the instance status is activating, invalid, or freeze (inactive).
 //
 // @param request - UpdateAdminPasswordRequest
 //
@@ -11122,11 +11473,13 @@ func (client *Client) UpdateAdminPasswordWithOptions(InstanceId *string, request
 
 // Summary:
 //
-// You can call this operation to UpdateAdminPassword the password of the elastic account of the specified Elasticsearch instance.
+// Updates the password of the elastic account for a specified Elasticsearch instance.
 //
 // Description:
 //
-// 5A2CFF0E-5718-45B5-9D4D-70B3FF\\*\\*\\*\\*
+// When you invoke this operation, note the following:
+//
+// You cannot update information when the instance status is activating, invalid, or freeze (inactive).
 //
 // @param request - UpdateAdminPasswordRequest
 //
@@ -11145,7 +11498,7 @@ func (client *Client) UpdateAdminPassword(InstanceId *string, request *UpdateAdm
 
 // Summary:
 //
-// Call UpdateAdvancedSetting to change the garbage collector configuration for the specified instance.
+// Changes the garbage collector configuration of a specified Elasticsearch instance.
 //
 // @param request - UpdateAdvancedSettingRequest
 //
@@ -11193,7 +11546,7 @@ func (client *Client) UpdateAdvancedSettingWithOptions(InstanceId *string, reque
 
 // Summary:
 //
-// Call UpdateAdvancedSetting to change the garbage collector configuration for the specified instance.
+// Changes the garbage collector configuration of a specified Elasticsearch instance.
 //
 // @param request - UpdateAdvancedSettingRequest
 //
@@ -11212,17 +11565,17 @@ func (client *Client) UpdateAdvancedSetting(InstanceId *string, request *UpdateA
 
 // Summary:
 //
-// Updates the dictionary file of the analysis-aliws plug-in.
+// Updates the dictionary of the AliNLP tokenizer plugin (analysis-aliws).
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// When calling this operation, note the following:
 //
-//   - Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
+// - Instances of version 5.x do not support the AliNLP tokenizer plugin.
 //
-//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+// - If the dictionary file is sourced from OSS, ensure that the OSS bucket has public-read permission.
 //
-//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+// - If a previously uploaded dictionary is not configured with ORIGIN, calling this operation will delete the dictionary file.
 //
 // @param request - UpdateAliwsDictRequest
 //
@@ -11270,17 +11623,17 @@ func (client *Client) UpdateAliwsDictWithOptions(InstanceId *string, request *Up
 
 // Summary:
 //
-// Updates the dictionary file of the analysis-aliws plug-in.
+// Updates the dictionary of the AliNLP tokenizer plugin (analysis-aliws).
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// When calling this operation, note the following:
 //
-//   - Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
+// - Instances of version 5.x do not support the AliNLP tokenizer plugin.
 //
-//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+// - If the dictionary file is sourced from OSS, ensure that the OSS bucket has public-read permission.
 //
-//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+// - If a previously uploaded dictionary is not configured with ORIGIN, calling this operation will delete the dictionary file.
 //
 // @param request - UpdateAliwsDictRequest
 //
@@ -11301,7 +11654,7 @@ func (client *Client) UpdateAliwsDict(InstanceId *string, request *UpdateAliwsDi
 //
 // Summary:
 //
-// 修改ES实例访问黑名单，已废弃
+// Modifies the access blacklist of an Elasticsearch instance. This operation is deprecated.
 //
 // @param request - UpdateBlackIpsRequest
 //
@@ -11350,7 +11703,7 @@ func (client *Client) UpdateBlackIpsWithOptions(InstanceId *string, request *Upd
 //
 // Summary:
 //
-// 修改ES实例访问黑名单，已废弃
+// Modifies the access blacklist of an Elasticsearch instance. This operation is deprecated.
 //
 // @param request - UpdateBlackIpsRequest
 //
@@ -11370,7 +11723,7 @@ func (client *Client) UpdateBlackIps(InstanceId *string, request *UpdateBlackIps
 
 // Summary:
 //
-// Updates the configurations of a shipper.
+// Modifies the configuration of a collector.
 //
 // @param request - UpdateCollectorRequest
 //
@@ -11418,7 +11771,7 @@ func (client *Client) UpdateCollectorWithOptions(ResId *string, request *UpdateC
 
 // Summary:
 //
-// Updates the configurations of a shipper.
+// Modifies the configuration of a collector.
 //
 // @param request - UpdateCollectorRequest
 //
@@ -11437,7 +11790,7 @@ func (client *Client) UpdateCollector(ResId *string, request *UpdateCollectorReq
 
 // Summary:
 //
-// Changes the name of a shipper.
+// Calls UpdateCollectorName to modify the name of a collector.
 //
 // @param request - UpdateCollectorNameRequest
 //
@@ -11485,7 +11838,7 @@ func (client *Client) UpdateCollectorNameWithOptions(ResId *string, request *Upd
 
 // Summary:
 //
-// Changes the name of a shipper.
+// Calls UpdateCollectorName to modify the name of a collector.
 //
 // @param request - UpdateCollectorNameRequest
 //
@@ -11504,7 +11857,11 @@ func (client *Client) UpdateCollectorName(ResId *string, request *UpdateCollecto
 
 // Summary:
 //
-// 修改ES集群动态索引
+// Updates a composable index template for an Elasticsearch instance.
+//
+// Description:
+//
+// For more information, see [Use OpenStore to store massive amounts of data](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param request - UpdateComponentIndexRequest
 //
@@ -11555,7 +11912,11 @@ func (client *Client) UpdateComponentIndexWithOptions(InstanceId *string, name *
 
 // Summary:
 //
-// 修改ES集群动态索引
+// Updates a composable index template for an Elasticsearch instance.
+//
+// Description:
+//
+// For more information, see [Use OpenStore to store massive amounts of data](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param request - UpdateComponentIndexRequest
 //
@@ -11574,7 +11935,7 @@ func (client *Client) UpdateComponentIndex(InstanceId *string, name *string, req
 
 // Summary:
 //
-// Changes the name of a specified Elasticsearch cluster.
+// Changes the name of an Elasticsearch instance.
 //
 // @param request - UpdateDescriptionRequest
 //
@@ -11627,7 +11988,7 @@ func (client *Client) UpdateDescriptionWithOptions(InstanceId *string, request *
 
 // Summary:
 //
-// Changes the name of a specified Elasticsearch cluster.
+// Changes the name of an Elasticsearch instance.
 //
 // @param request - UpdateDescriptionRequest
 //
@@ -11646,7 +12007,7 @@ func (client *Client) UpdateDescription(InstanceId *string, request *UpdateDescr
 
 // Summary:
 //
-// Call UpdateDiagnosisSettings to update the instance of intelligent operation\\&maintenance (O\\&M) scene settings.
+// Modifies the intelligent O&M scenario settings of a specified Elasticsearch instance.
 //
 // @param request - UpdateDiagnosisSettingsRequest
 //
@@ -11698,7 +12059,7 @@ func (client *Client) UpdateDiagnosisSettingsWithOptions(InstanceId *string, req
 
 // Summary:
 //
-// Call UpdateDiagnosisSettings to update the instance of intelligent operation\\&maintenance (O\\&M) scene settings.
+// Modifies the intelligent O&M scenario settings of a specified Elasticsearch instance.
 //
 // @param request - UpdateDiagnosisSettingsRequest
 //
@@ -11717,15 +12078,15 @@ func (client *Client) UpdateDiagnosisSettings(InstanceId *string, request *Updat
 
 // Summary:
 //
-// Updates a dictionary of an Elasticsearch cluster.
+// Updates the user dictionary of an Elasticsearch instance.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// When calling this operation, note the following:
 //
-//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+// - If the dictionary file originates from OSS, ensure that the OSS storage space is publicly readable.
 //
-//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+// - If previously uploaded dictionaries are not configured with ORIGIN, the dictionary files will be deleted after this operation is called.
 //
 // @param request - UpdateDictRequest
 //
@@ -11773,15 +12134,15 @@ func (client *Client) UpdateDictWithOptions(InstanceId *string, request *UpdateD
 
 // Summary:
 //
-// Updates a dictionary of an Elasticsearch cluster.
+// Updates the user dictionary of an Elasticsearch instance.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// When calling this operation, note the following:
 //
-//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+// - If the dictionary file originates from OSS, ensure that the OSS storage space is publicly readable.
 //
-//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+// - If previously uploaded dictionaries are not configured with ORIGIN, the dictionary files will be deleted after this operation is called.
 //
 // @param request - UpdateDictRequest
 //
@@ -11800,7 +12161,7 @@ func (client *Client) UpdateDict(InstanceId *string, request *UpdateDictRequest)
 
 // Summary:
 //
-// 修改集群动态配置
+// # Modify Cluster Dynamic Configuration
 //
 // @param request - UpdateDynamicSettingsRequest
 //
@@ -11856,7 +12217,7 @@ func (client *Client) UpdateDynamicSettingsWithOptions(InstanceId *string, reque
 
 // Summary:
 //
-// 修改集群动态配置
+// # Modify Cluster Dynamic Configuration
 //
 // @param request - UpdateDynamicSettingsRequest
 //
@@ -11873,6 +12234,10 @@ func (client *Client) UpdateDynamicSettings(InstanceId *string, request *UpdateD
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the scenario-based configuration template of an Elasticsearch instance.
+//
 // @param request - UpdateExtendConfigRequest
 //
 // @param headers - map
@@ -11917,6 +12282,10 @@ func (client *Client) UpdateExtendConfigWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the scenario-based configuration template of an Elasticsearch instance.
+//
 // @param request - UpdateExtendConfigRequest
 //
 // @return UpdateExtendConfigResponse
@@ -11934,11 +12303,11 @@ func (client *Client) UpdateExtendConfig(InstanceId *string, request *UpdateExte
 
 // Summary:
 //
-// Updates the driver files of a Logstash cluster.
+// Updates the extension file configuration of a Logstash instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items: You can call this operation only to delete the driver files that are uploaded to a Logstash cluster in the Alibaba Cloud Management Console. You can add or modify driver files only in the Alibaba Cloud Management Console.
+// When calling this operation, note the following: Currently, this operation only supports deleting extension files that have been uploaded through the console. To add or modify extension files, perform the operations in the console.
 //
 // @param request - UpdateExtendfilesRequest
 //
@@ -11986,11 +12355,11 @@ func (client *Client) UpdateExtendfilesWithOptions(InstanceId *string, request *
 
 // Summary:
 //
-// Updates the driver files of a Logstash cluster.
+// Updates the extension file configuration of a Logstash instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items: You can call this operation only to delete the driver files that are uploaded to a Logstash cluster in the Alibaba Cloud Management Console. You can add or modify driver files only in the Alibaba Cloud Management Console.
+// When calling this operation, note the following: Currently, this operation only supports deleting extension files that have been uploaded through the console. To add or modify extension files, perform the operations in the console.
 //
 // @param request - UpdateExtendfilesRequest
 //
@@ -12009,7 +12378,7 @@ func (client *Client) UpdateExtendfiles(InstanceId *string, request *UpdateExten
 
 // Summary:
 //
-// 修改FalconSeek配置
+// Toggle the FalconSeek cloud-native kernel attribute for instances of Version 8.17.
 //
 // @param request - UpdateFalconSeekRequest
 //
@@ -12056,7 +12425,7 @@ func (client *Client) UpdateFalconSeekWithOptions(InstanceId *string, request *U
 
 // Summary:
 //
-// 修改FalconSeek配置
+// Toggle the FalconSeek cloud-native kernel attribute for instances of Version 8.17.
 //
 // @param request - UpdateFalconSeekRequest
 //
@@ -12075,15 +12444,15 @@ func (client *Client) UpdateFalconSeek(InstanceId *string, request *UpdateFalcon
 
 // Summary:
 //
-// null
+// Updates the IK hot-word dictionary of an Alibaba Cloud Elasticsearch instance.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// When calling this operation, note the following:
 //
-//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+// - If the dictionary file is sourced from OSS, make sure the OSS bucket has public-read permission.
 //
-//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+// - If a previously uploaded dictionary is not configured with ORIGIN, the dictionary file will be deleted after this operation is called.
 //
 // @param request - UpdateHotIkDictsRequest
 //
@@ -12131,15 +12500,15 @@ func (client *Client) UpdateHotIkDictsWithOptions(InstanceId *string, request *U
 
 // Summary:
 //
-// null
+// Updates the IK hot-word dictionary of an Alibaba Cloud Elasticsearch instance.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// When calling this operation, note the following:
 //
-//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+// - If the dictionary file is sourced from OSS, make sure the OSS bucket has public-read permission.
 //
-//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+// - If a previously uploaded dictionary is not configured with ORIGIN, the dictionary file will be deleted after this operation is called.
 //
 // @param request - UpdateHotIkDictsRequest
 //
@@ -12158,7 +12527,7 @@ func (client *Client) UpdateHotIkDicts(InstanceId *string, request *UpdateHotIkD
 
 // Summary:
 //
-// 修改ES集群索引生命周期策略
+// Modifies the lifecycle policy of an Elasticsearch index.
 //
 // @param request - UpdateILMPolicyRequest
 //
@@ -12206,7 +12575,7 @@ func (client *Client) UpdateILMPolicyWithOptions(InstanceId *string, PolicyName 
 
 // Summary:
 //
-// 修改ES集群索引生命周期策略
+// Modifies the lifecycle policy of an Elasticsearch index.
 //
 // @param request - UpdateILMPolicyRequest
 //
@@ -12225,7 +12594,7 @@ func (client *Client) UpdateILMPolicy(InstanceId *string, PolicyName *string, re
 
 // Summary:
 //
-// 修改ES集群索引模版配置
+// Modifies the template configuration of an Elasticsearch instance.
 //
 // @param request - UpdateIndexTemplateRequest
 //
@@ -12273,7 +12642,7 @@ func (client *Client) UpdateIndexTemplateWithOptions(InstanceId *string, IndexTe
 
 // Summary:
 //
-// 修改ES集群索引模版配置
+// Modifies the template configuration of an Elasticsearch instance.
 //
 // @param request - UpdateIndexTemplateRequest
 //
@@ -12292,11 +12661,13 @@ func (client *Client) UpdateIndexTemplate(InstanceId *string, IndexTemplate *str
 
 // Summary:
 //
-// Updates the configurations of a cluster, such as the number of nodes, the number of roles, specifications, and disk configurations.
+// Upgrades the configuration of an Elasticsearch cluster, including the number of nodes, roles, specifications, and disk configurations.
 //
 // Description:
 //
-// es-cn-n6w1ptcb30009\\*\\*\\*\\*
+// When you call this operation, note the following items:
+//
+// For more precautions, see [Upgrade cluster configuration](https://help.aliyun.com/document_detail/96650.html) and [Downgrade cluster configuration](https://help.aliyun.com/document_detail/198887.html).
 //
 // @param request - UpdateInstanceRequest
 //
@@ -12389,11 +12760,13 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 
 // Summary:
 //
-// Updates the configurations of a cluster, such as the number of nodes, the number of roles, specifications, and disk configurations.
+// Upgrades the configuration of an Elasticsearch cluster, including the number of nodes, roles, specifications, and disk configurations.
 //
 // Description:
 //
-// es-cn-n6w1ptcb30009\\*\\*\\*\\*
+// When you call this operation, note the following items:
+//
+// For more precautions, see [Upgrade cluster configuration](https://help.aliyun.com/document_detail/96650.html) and [Downgrade cluster configuration](https://help.aliyun.com/document_detail/198887.html).
 //
 // @param request - UpdateInstanceRequest
 //
@@ -12412,7 +12785,7 @@ func (client *Client) UpdateInstance(InstanceId *string, request *UpdateInstance
 
 // Summary:
 //
-// null
+// Transforms the billing method of an Elasticsearch instance from pay-as-you-go to a subscription instance.
 //
 // @param request - UpdateInstanceChargeTypeRequest
 //
@@ -12469,7 +12842,7 @@ func (client *Client) UpdateInstanceChargeTypeWithOptions(InstanceId *string, re
 
 // Summary:
 //
-// null
+// Transforms the billing method of an Elasticsearch instance from pay-as-you-go to a subscription instance.
 //
 // @param request - UpdateInstanceChargeTypeRequest
 //
@@ -12488,13 +12861,13 @@ func (client *Client) UpdateInstanceChargeType(InstanceId *string, request *Upda
 
 // Summary:
 //
-// Call UpdateInstanceSettings to update the YML configuration of a specified instance.
+// Modifies the YML parameter settings of a specified Elasticsearch instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// When you invoke this operation, note the following:
 //
-// When the instance is in the activating, invalid, or inactive state, you cannot update the configuration.
+// You cannot update the configuration when the instance status is activating, invalid, or inactive (freeze).
 //
 // @param request - UpdateInstanceSettingsRequest
 //
@@ -12555,13 +12928,13 @@ func (client *Client) UpdateInstanceSettingsWithOptions(InstanceId *string, requ
 
 // Summary:
 //
-// Call UpdateInstanceSettings to update the YML configuration of a specified instance.
+// Modifies the YML parameter settings of a specified Elasticsearch instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// When you invoke this operation, note the following:
 //
-// When the instance is in the activating, invalid, or inactive state, you cannot update the configuration.
+// You cannot update the configuration when the instance status is activating, invalid, or inactive (freeze).
 //
 // @param request - UpdateInstanceSettingsRequest
 //
@@ -12580,7 +12953,7 @@ func (client *Client) UpdateInstanceSettings(InstanceId *string, request *Update
 
 // Summary:
 //
-// 更新keystore
+// # Update keystore
 //
 // @param request - UpdateKeystoresRequest
 //
@@ -12637,7 +13010,7 @@ func (client *Client) UpdateKeystoresWithOptions(InstanceId *string, request *Up
 
 // Summary:
 //
-// 更新keystore
+// # Update keystore
 //
 // @param request - UpdateKeystoresRequest
 //
@@ -12656,7 +13029,13 @@ func (client *Client) UpdateKeystores(InstanceId *string, request *UpdateKeystor
 
 // Summary:
 //
-// 更新kibana私网链接
+// # Update Kibana private network access
+//
+// Description:
+//
+// 1. This API operation supports only cloud-native instances. For instances of the legacy architecture, use the TriggerNetwork operation.
+//
+// 2. The Kibana specifications must be greater than 1 vCPU and 2 GB of memory.
 //
 // @param request - UpdateKibanaPvlNetworkRequest
 //
@@ -12717,7 +13096,13 @@ func (client *Client) UpdateKibanaPvlNetworkWithOptions(InstanceId *string, requ
 
 // Summary:
 //
-// 更新kibana私网链接
+// # Update Kibana private network access
+//
+// Description:
+//
+// 1. This API operation supports only cloud-native instances. For instances of the legacy architecture, use the TriggerNetwork operation.
+//
+// 2. The Kibana specifications must be greater than 1 vCPU and 2 GB of memory.
 //
 // @param request - UpdateKibanaPvlNetworkRequest
 //
@@ -12736,7 +13121,7 @@ func (client *Client) UpdateKibanaPvlNetwork(InstanceId *string, request *Update
 
 // Summary:
 //
-// Call UpdateKibanaSettings to modify the Kibana configuration. Currently, you can only modify the Kibana language configuration.
+// Modifies the Kibana configuration. Currently, only the Kibana language configuration can be modified.
 //
 // @param request - UpdateKibanaSettingsRequest
 //
@@ -12784,7 +13169,7 @@ func (client *Client) UpdateKibanaSettingsWithOptions(InstanceId *string, reques
 
 // Summary:
 //
-// Call UpdateKibanaSettings to modify the Kibana configuration. Currently, you can only modify the Kibana language configuration.
+// Modifies the Kibana configuration. Currently, only the Kibana language configuration can be modified.
 //
 // @param request - UpdateKibanaSettingsRequest
 //
@@ -12803,7 +13188,7 @@ func (client *Client) UpdateKibanaSettings(InstanceId *string, request *UpdateKi
 
 // Summary:
 //
-// # UpdateKibanaSso
+// Enable or disable Alibaba Cloud account authentication for Kibana. After Alibaba Cloud account authentication is enabled, you must log on with your Alibaba Cloud account before you can use Kibana features.
 //
 // @param request - UpdateKibanaSsoRequest
 //
@@ -12854,7 +13239,7 @@ func (client *Client) UpdateKibanaSsoWithOptions(InstanceId *string, request *Up
 
 // Summary:
 //
-// # UpdateKibanaSso
+// Enable or disable Alibaba Cloud account authentication for Kibana. After Alibaba Cloud account authentication is enabled, you must log on with your Alibaba Cloud account before you can use Kibana features.
 //
 // @param request - UpdateKibanaSsoRequest
 //
@@ -12873,19 +13258,21 @@ func (client *Client) UpdateKibanaSso(InstanceId *string, request *UpdateKibanaS
 
 // Summary:
 //
-// Updates an IP address whitelist for access to the Kibana console of a specified Elasticsearch cluster.
+// Updates the Kibana access whitelist of a specified Alibaba Cloud Elasticsearch instance.
 //
 // Description:
 //
-//	  Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
+// ## Before you begin
 //
-//		- You can update an IP address whitelist by using the following parameters:
+// - When you invoke this operation, you cannot update information if the instance status is activating, invalid, or freeze (inactive).
 //
-//	    	- kibanaIPWhitelist
+// - You can update the whitelist in two ways: IP whitelist list and IP whitelist group. The two methods cannot be used at the same time. In addition to InstanceId and clientToken, the two methods support different parameters, as follows:
 //
-//	    	- modifyMode and whiteIpGroup
+//   - IP whitelist list: kibanaIPWhitelist
 //
-//		- You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
+//   - IP whitelist group: modifyMode, whiteIpGroup
+//
+// - The public network access whitelist does not support private IP addresses, and the internal-facing whitelist does not support public IP addresses.
 //
 // @param request - UpdateKibanaWhiteIpsRequest
 //
@@ -12946,19 +13333,21 @@ func (client *Client) UpdateKibanaWhiteIpsWithOptions(InstanceId *string, reques
 
 // Summary:
 //
-// Updates an IP address whitelist for access to the Kibana console of a specified Elasticsearch cluster.
+// Updates the Kibana access whitelist of a specified Alibaba Cloud Elasticsearch instance.
 //
 // Description:
 //
-//	  Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
+// ## Before you begin
 //
-//		- You can update an IP address whitelist by using the following parameters:
+// - When you invoke this operation, you cannot update information if the instance status is activating, invalid, or freeze (inactive).
 //
-//	    	- kibanaIPWhitelist
+// - You can update the whitelist in two ways: IP whitelist list and IP whitelist group. The two methods cannot be used at the same time. In addition to InstanceId and clientToken, the two methods support different parameters, as follows:
 //
-//	    	- modifyMode and whiteIpGroup
+//   - IP whitelist list: kibanaIPWhitelist
 //
-//		- You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
+//   - IP whitelist group: modifyMode, whiteIpGroup
+//
+// - The public network access whitelist does not support private IP addresses, and the internal-facing whitelist does not support public IP addresses.
 //
 // @param request - UpdateKibanaWhiteIpsRequest
 //
@@ -12977,7 +13366,13 @@ func (client *Client) UpdateKibanaWhiteIps(InstanceId *string, request *UpdateKi
 
 // Summary:
 //
-// Modifies the configuration of a specified Logstash cluster, such as the name, quota, disk size, and number of nodes.
+// Modifies some information about a specified instance, such as the number of nodes, quota, name, and disk size.
+//
+// Description:
+//
+// ### Before you begin
+//
+// You cannot modify instance information when the instance status is activating, invalid, or freeze (inactive).
 //
 // @param request - UpdateLogstashRequest
 //
@@ -13034,7 +13429,13 @@ func (client *Client) UpdateLogstashWithOptions(InstanceId *string, request *Upd
 
 // Summary:
 //
-// Modifies the configuration of a specified Logstash cluster, such as the name, quota, disk size, and number of nodes.
+// Modifies some information about a specified instance, such as the number of nodes, quota, name, and disk size.
+//
+// Description:
+//
+// ### Before you begin
+//
+// You cannot modify instance information when the instance status is activating, invalid, or freeze (inactive).
 //
 // @param request - UpdateLogstashRequest
 //
@@ -13053,7 +13454,7 @@ func (client *Client) UpdateLogstash(InstanceId *string, request *UpdateLogstash
 
 // Summary:
 //
-// Switches the billing method of a Logstash cluster from pay-as-you-go to subscription.
+// Converts a pay-as-you-go Alibaba Cloud Logstash instance to a subscription instance.
 //
 // @param request - UpdateLogstashChargeTypeRequest
 //
@@ -13101,7 +13502,7 @@ func (client *Client) UpdateLogstashChargeTypeWithOptions(InstanceId *string, re
 
 // Summary:
 //
-// Switches the billing method of a Logstash cluster from pay-as-you-go to subscription.
+// Converts a pay-as-you-go Alibaba Cloud Logstash instance to a subscription instance.
 //
 // @param request - UpdateLogstashChargeTypeRequest
 //
@@ -13120,11 +13521,13 @@ func (client *Client) UpdateLogstashChargeType(InstanceId *string, request *Upda
 
 // Summary:
 //
-// Changes the name of a specified Logstash cluster.
+// Modifies the name of a specified Logstash instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items: You cannot change the name of a cluster that is in the activating, invalid, or inactive state.
+// When you call this operation, take note of the following items:
+//
+// You cannot modify the instance name when the instance status is activating, invalid, or freeze (inactive).
 //
 // @param request - UpdateLogstashDescriptionRequest
 //
@@ -13177,11 +13580,13 @@ func (client *Client) UpdateLogstashDescriptionWithOptions(InstanceId *string, r
 
 // Summary:
 //
-// Changes the name of a specified Logstash cluster.
+// Modifies the name of a specified Logstash instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items: You cannot change the name of a cluster that is in the activating, invalid, or inactive state.
+// When you call this operation, take note of the following items:
+//
+// You cannot modify the instance name when the instance status is activating, invalid, or freeze (inactive).
 //
 // @param request - UpdateLogstashDescriptionRequest
 //
@@ -13200,13 +13605,11 @@ func (client *Client) UpdateLogstashDescription(InstanceId *string, request *Upd
 
 // Summary:
 //
-// Updates the configuration of the specified Logstash instance.
+// Updates the configuration of a specified Logstash instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
-//
-// If the instance is in the Active (activating), Invalid (invalid), and Inactive (inactive) state, the information cannot be updated.
+// When you invoke this operation, note the following: The instance configuration cannot be updated when the instance status is activating, invalid, or freeze (inactive).
 //
 // @param request - UpdateLogstashSettingsRequest
 //
@@ -13254,13 +13657,11 @@ func (client *Client) UpdateLogstashSettingsWithOptions(InstanceId *string, requ
 
 // Summary:
 //
-// Updates the configuration of the specified Logstash instance.
+// Updates the configuration of a specified Logstash instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
-//
-// If the instance is in the Active (activating), Invalid (invalid), and Inactive (inactive) state, the information cannot be updated.
+// When you invoke this operation, note the following: The instance configuration cannot be updated when the instance status is activating, invalid, or freeze (inactive).
 //
 // @param request - UpdateLogstashSettingsRequest
 //
@@ -13279,7 +13680,11 @@ func (client *Client) UpdateLogstashSettings(InstanceId *string, request *Update
 
 // Summary:
 //
-// Modifies the pipeline management method of the specified Logstash cluster.
+// Modifies the pipeline management method for a specified Logstash instance.
+//
+// Description:
+//
+// > Pipeline management methods include configuration file management and Kibana pipeline management. The console no longer supports Kibana pipeline management. You can use this feature only through the API.
 //
 // @param request - UpdatePipelineManagementConfigRequest
 //
@@ -13352,7 +13757,11 @@ func (client *Client) UpdatePipelineManagementConfigWithOptions(InstanceId *stri
 
 // Summary:
 //
-// Modifies the pipeline management method of the specified Logstash cluster.
+// Modifies the pipeline management method for a specified Logstash instance.
+//
+// Description:
+//
+// > Pipeline management methods include configuration file management and Kibana pipeline management. The console no longer supports Kibana pipeline management. You can use this feature only through the API.
 //
 // @param request - UpdatePipelineManagementConfigRequest
 //
@@ -13371,7 +13780,7 @@ func (client *Client) UpdatePipelineManagementConfig(InstanceId *string, request
 
 // Summary:
 //
-// Updates a pipeline of a Logstash cluster.
+// Calls UpdatePipelines to update Logstash pipeline information.
 //
 // @param request - UpdatePipelinesRequest
 //
@@ -13423,7 +13832,7 @@ func (client *Client) UpdatePipelinesWithOptions(InstanceId *string, request *Up
 
 // Summary:
 //
-// Updates a pipeline of a Logstash cluster.
+// Calls UpdatePipelines to update Logstash pipeline information.
 //
 // @param request - UpdatePipelinesRequest
 //
@@ -13442,11 +13851,21 @@ func (client *Client) UpdatePipelines(InstanceId *string, request *UpdatePipelin
 
 // Summary:
 //
-// You can call this operation to update the VPC private network access whitelist of a specified Elasticsearch instance UpdatePrivateNetworkWhiteIps.
+// Updates the VPC private network access whitelist of a specified instance.
 //
 // Description:
 //
-// >  In the following returned example, only the parameters in the returned data list are guaranteed to be included, and the parameters not mentioned are for reference only. For more information about the parameters, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force a dependency in a program to get these parameters.
+// ## Before you begin
+//
+// - You cannot update the VPC private network access whitelist of an instance when the instance status is Activating (activating), Invalid (invalid), or Freeze (inactive).
+//
+// - You can update the whitelist in two ways: by using an IP whitelist list or by using an IP whitelist group. The two methods cannot be used at the same time. In addition to InstanceId and clientToken, the two methods support different parameters:
+//
+//   - IP whitelist list: privateNetworkIpWhiteList
+//
+//   - IP whitelist group: modifyMode, whiteIpGroup
+//
+// - The public network access whitelist does not support private IP addresses, and the private network access whitelist does not support public IP addresses.
 //
 // @param request - UpdatePrivateNetworkWhiteIpsRequest
 //
@@ -13498,11 +13917,21 @@ func (client *Client) UpdatePrivateNetworkWhiteIpsWithOptions(InstanceId *string
 
 // Summary:
 //
-// You can call this operation to update the VPC private network access whitelist of a specified Elasticsearch instance UpdatePrivateNetworkWhiteIps.
+// Updates the VPC private network access whitelist of a specified instance.
 //
 // Description:
 //
-// >  In the following returned example, only the parameters in the returned data list are guaranteed to be included, and the parameters not mentioned are for reference only. For more information about the parameters, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force a dependency in a program to get these parameters.
+// ## Before you begin
+//
+// - You cannot update the VPC private network access whitelist of an instance when the instance status is Activating (activating), Invalid (invalid), or Freeze (inactive).
+//
+// - You can update the whitelist in two ways: by using an IP whitelist list or by using an IP whitelist group. The two methods cannot be used at the same time. In addition to InstanceId and clientToken, the two methods support different parameters:
+//
+//   - IP whitelist list: privateNetworkIpWhiteList
+//
+//   - IP whitelist group: modifyMode, whiteIpGroup
+//
+// - The public network access whitelist does not support private IP addresses, and the private network access whitelist does not support public IP addresses.
 //
 // @param request - UpdatePrivateNetworkWhiteIpsRequest
 //
@@ -13521,13 +13950,13 @@ func (client *Client) UpdatePrivateNetworkWhiteIps(InstanceId *string, request *
 
 // Summary:
 //
-// null
+// Enables or disables the public network address for a specified Elasticsearch instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// When you call this operation, note the following:
 //
-// When the instance is in the activating, invalid, or inactive state, its configuration cannot be updated.
+// You cannot update information when the instance status is activating, invalid, or freeze (inactive).
 //
 // @param request - UpdatePublicNetworkRequest
 //
@@ -13575,13 +14004,13 @@ func (client *Client) UpdatePublicNetworkWithOptions(InstanceId *string, request
 
 // Summary:
 //
-// null
+// Enables or disables the public network address for a specified Elasticsearch instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// When you call this operation, note the following:
 //
-// When the instance is in the activating, invalid, or inactive state, its configuration cannot be updated.
+// You cannot update information when the instance status is activating, invalid, or freeze (inactive).
 //
 // @param request - UpdatePublicNetworkRequest
 //
@@ -13600,11 +14029,21 @@ func (client *Client) UpdatePublicNetwork(InstanceId *string, request *UpdatePub
 
 // Summary:
 //
-// null
+// Updates the public endpoint access whitelist of a specified Elasticsearch instance.
 //
 // Description:
 //
-// >  In the following example, only the parameters in the returned data list are guaranteed to be included. The parameters that are not mentioned are for reference only. For more information about the parameters, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force a dependency in a program to get these parameters.
+// ## Before you begin
+//
+// - You cannot update the public endpoint access whitelist of an instance when the instance status is activating, invalid, or inactive (freeze).
+//
+// - You can update the whitelist in two ways: IP whitelist list and IP whitelist group. The two methods cannot be used at the same time. In addition to InstanceId and clientToken, the two methods support different parameters:
+//
+//   - IP whitelist list: publicIpWhitelist
+//
+//   - IP whitelist group: modifyMode, whiteIpGroup
+//
+// - The public network access whitelist does not support private network IP addresses, and the private network access whitelist does not support public network IP addresses.
 //
 // @param request - UpdatePublicWhiteIpsRequest
 //
@@ -13656,11 +14095,21 @@ func (client *Client) UpdatePublicWhiteIpsWithOptions(InstanceId *string, reques
 
 // Summary:
 //
-// null
+// Updates the public endpoint access whitelist of a specified Elasticsearch instance.
 //
 // Description:
 //
-// >  In the following example, only the parameters in the returned data list are guaranteed to be included. The parameters that are not mentioned are for reference only. For more information about the parameters, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force a dependency in a program to get these parameters.
+// ## Before you begin
+//
+// - You cannot update the public endpoint access whitelist of an instance when the instance status is activating, invalid, or inactive (freeze).
+//
+// - You can update the whitelist in two ways: IP whitelist list and IP whitelist group. The two methods cannot be used at the same time. In addition to InstanceId and clientToken, the two methods support different parameters:
+//
+//   - IP whitelist list: publicIpWhitelist
+//
+//   - IP whitelist group: modifyMode, whiteIpGroup
+//
+// - The public network access whitelist does not support private network IP addresses, and the private network access whitelist does not support public network IP addresses.
 //
 // @param request - UpdatePublicWhiteIpsRequest
 //
@@ -13679,7 +14128,7 @@ func (client *Client) UpdatePublicWhiteIps(InstanceId *string, request *UpdatePu
 
 // Summary:
 //
-// 更改ES集群高可用策略
+// Enables or disables the write high availability feature for a cluster. Currently, only instances in the China (Beijing) region are supported.
 //
 // @param request - UpdateReadWritePolicyRequest
 //
@@ -13727,7 +14176,7 @@ func (client *Client) UpdateReadWritePolicyWithOptions(InstanceId *string, reque
 
 // Summary:
 //
-// 更改ES集群高可用策略
+// Enables or disables the write high availability feature for a cluster. Currently, only instances in the China (Beijing) region are supported.
 //
 // @param request - UpdateReadWritePolicyRequest
 //
@@ -13746,7 +14195,7 @@ func (client *Client) UpdateReadWritePolicy(InstanceId *string, request *UpdateR
 
 // Summary:
 //
-// Call UpdateSnapshotSetting to update the data backup configuration of the specified instance.
+// Updates the data backup configuration of a specified instance.
 //
 // @param request - UpdateSnapshotSettingRequest
 //
@@ -13788,7 +14237,7 @@ func (client *Client) UpdateSnapshotSettingWithOptions(InstanceId *string, reque
 
 // Summary:
 //
-// Call UpdateSnapshotSetting to update the data backup configuration of the specified instance.
+// Updates the data backup configuration of a specified instance.
 //
 // @param request - UpdateSnapshotSettingRequest
 //
@@ -13807,15 +14256,15 @@ func (client *Client) UpdateSnapshotSetting(InstanceId *string, request *UpdateS
 
 // Summary:
 //
-// Updates the synonym dictionaries of an Elasticsearch cluster.
+// Updates the synonym dictionary of an Alibaba Cloud Elasticsearch instance.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// When calling this operation, note the following:
 //
-//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+// - If the dictionary file is sourced from OSS, make sure the OSS bucket has public-read permission.
 //
-//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+// - If a previously uploaded dictionary is not configured with ORIGIN, the dictionary file will be deleted after this operation is called.
 //
 // @param request - UpdateSynonymsDictsRequest
 //
@@ -13863,15 +14312,15 @@ func (client *Client) UpdateSynonymsDictsWithOptions(InstanceId *string, request
 
 // Summary:
 //
-// Updates the synonym dictionaries of an Elasticsearch cluster.
+// Updates the synonym dictionary of an Alibaba Cloud Elasticsearch instance.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// When calling this operation, note the following:
 //
-//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+// - If the dictionary file is sourced from OSS, make sure the OSS bucket has public-read permission.
 //
-//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+// - If a previously uploaded dictionary is not configured with ORIGIN, the dictionary file will be deleted after this operation is called.
 //
 // @param request - UpdateSynonymsDictsRequest
 //
@@ -13888,6 +14337,10 @@ func (client *Client) UpdateSynonymsDicts(InstanceId *string, request *UpdateSyn
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the scenario-specific template configuration of a cluster.
+//
 // @param request - UpdateTemplateRequest
 //
 // @param headers - map
@@ -13932,6 +14385,10 @@ func (client *Client) UpdateTemplateWithOptions(InstanceId *string, TemplateName
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the scenario-specific template configuration of a cluster.
+//
 // @param request - UpdateTemplateRequest
 //
 // @return UpdateTemplateResponse
@@ -13949,11 +14406,21 @@ func (client *Client) UpdateTemplate(InstanceId *string, TemplateName *string, r
 
 // Summary:
 //
-// Updates a private IP address whitelist of an Elasticsearch cluster.
+// Modifies the VPC internal-facing access whitelist of an Elasticsearch instance.
 //
 // Description:
 //
-// > For more information about the parameters displayed in the following sample code but not provided in the preceding tables, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force your program to obtain these parameters.
+// ## Before you begin
+//
+// - You cannot update information when the instance status is activating, invalid, or freeze (inactive).
+//
+// - You can update the whitelist in two ways: IP whitelist list and IP whitelist group. The two methods cannot be used at the same time, and they support different parameters besides InstanceId and clientToken. The details are as follows:
+//
+//   - IP whitelist list: esIPWhitelist
+//
+//   - IP whitelist group: modifyMode, whiteIpGroup
+//
+// - The public access whitelist does not support private network IP addresses, and the internal-facing access whitelist does not support public IP addresses.
 //
 // @param request - UpdateWhiteIpsRequest
 //
@@ -14014,11 +14481,21 @@ func (client *Client) UpdateWhiteIpsWithOptions(InstanceId *string, request *Upd
 
 // Summary:
 //
-// Updates a private IP address whitelist of an Elasticsearch cluster.
+// Modifies the VPC internal-facing access whitelist of an Elasticsearch instance.
 //
 // Description:
 //
-// > For more information about the parameters displayed in the following sample code but not provided in the preceding tables, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force your program to obtain these parameters.
+// ## Before you begin
+//
+// - You cannot update information when the instance status is activating, invalid, or freeze (inactive).
+//
+// - You can update the whitelist in two ways: IP whitelist list and IP whitelist group. The two methods cannot be used at the same time, and they support different parameters besides InstanceId and clientToken. The details are as follows:
+//
+//   - IP whitelist list: esIPWhitelist
+//
+//   - IP whitelist group: modifyMode, whiteIpGroup
+//
+// - The public access whitelist does not support private network IP addresses, and the internal-facing access whitelist does not support public IP addresses.
 //
 // @param request - UpdateWhiteIpsRequest
 //
@@ -14037,7 +14514,7 @@ func (client *Client) UpdateWhiteIps(InstanceId *string, request *UpdateWhiteIps
 
 // Summary:
 //
-// Updates the X-Pack monitoring and alert configuration of a Logstash cluster.
+// Updates the X-Pack monitoring and alerting configuration of a Logstash instance.
 //
 // @param request - UpdateXpackMonitorConfigRequest
 //
@@ -14102,7 +14579,7 @@ func (client *Client) UpdateXpackMonitorConfigWithOptions(InstanceId *string, re
 
 // Summary:
 //
-// Updates the X-Pack monitoring and alert configuration of a Logstash cluster.
+// Updates the X-Pack monitoring and alerting configuration of a Logstash instance.
 //
 // @param request - UpdateXpackMonitorConfigRequest
 //
@@ -14121,11 +14598,11 @@ func (client *Client) UpdateXpackMonitorConfig(InstanceId *string, request *Upda
 
 // Summary:
 //
-// Upgrades the version or kernel of an Elasticsearch cluster.
+// Upgrades the version of an Elasticsearch instance. Both major version upgrades and kernel version upgrades are supported.
 //
 // Description:
 //
-// 5A2CFF0E-5718-45B5-9D4D-70B3FF\\*\\*\\*\\*
+// > The version upgrade feature currently supports only the following upgrade paths: 5.5.3 to 5.6.16, 5.6.16 to 6.3.2, and 6.3.2 to 6.7.0. Upgrades between other versions are not supported. For more information, see [Upgrade version](https://help.aliyun.com/document_detail/148786.html).
 //
 // @param request - UpgradeEngineVersionRequest
 //
@@ -14194,11 +14671,11 @@ func (client *Client) UpgradeEngineVersionWithOptions(InstanceId *string, reques
 
 // Summary:
 //
-// Upgrades the version or kernel of an Elasticsearch cluster.
+// Upgrades the version of an Elasticsearch instance. Both major version upgrades and kernel version upgrades are supported.
 //
 // Description:
 //
-// 5A2CFF0E-5718-45B5-9D4D-70B3FF\\*\\*\\*\\*
+// > The version upgrade feature currently supports only the following upgrade paths: 5.5.3 to 5.6.16, 5.6.16 to 6.3.2, and 6.3.2 to 6.7.0. Upgrades between other versions are not supported. For more information, see [Upgrade version](https://help.aliyun.com/document_detail/148786.html).
 //
 // @param request - UpgradeEngineVersionRequest
 //
@@ -14217,7 +14694,7 @@ func (client *Client) UpgradeEngineVersion(InstanceId *string, request *UpgradeE
 
 // Summary:
 //
-// 查询是否有可升级的小版本
+// Query whether a minor version is available for upgrade.
 //
 // @param headers - map
 //
@@ -14250,7 +14727,7 @@ func (client *Client) UpgradeInfoWithOptions(instanceId *string, headers map[str
 
 // Summary:
 //
-// 查询是否有可升级的小版本
+// Query whether a minor version is available for upgrade.
 //
 // @return UpgradeInfoResponse
 func (client *Client) UpgradeInfo(instanceId *string) (_result *UpgradeInfoResponse, _err error) {
@@ -14267,11 +14744,11 @@ func (client *Client) UpgradeInfo(instanceId *string) (_result *UpgradeInfoRespo
 
 // Summary:
 //
-// Tests the connectivity between a Logstash cluster and its associated Elasticsearch cluster when you configure the X-Pack Monitoring feature for the Logstash cluster.
+// Validates the connectivity of an Elasticsearch instance that provides X-Pack monitoring.
 //
 // Description:
 //
-// > Before you enable the X-Pack Monitoring feature for a Logstash cluster, you must associate the Logstash cluster with an Elasticsearch cluster. This way, you can view the monitoring data of the Logstash cluster in the Kibana console of the Elasticsearch cluster.
+// > To enable X-Pack monitoring for Logstash, configure an Elasticsearch instance. After the configuration, you can monitor the Logstash instance in the Kibana console of the corresponding Elasticsearch instance.
 //
 // @param request - ValidateConnectionRequest
 //
@@ -14319,11 +14796,11 @@ func (client *Client) ValidateConnectionWithOptions(InstanceId *string, request 
 
 // Summary:
 //
-// Tests the connectivity between a Logstash cluster and its associated Elasticsearch cluster when you configure the X-Pack Monitoring feature for the Logstash cluster.
+// Validates the connectivity of an Elasticsearch instance that provides X-Pack monitoring.
 //
 // Description:
 //
-// > Before you enable the X-Pack Monitoring feature for a Logstash cluster, you must associate the Logstash cluster with an Elasticsearch cluster. This way, you can view the monitoring data of the Logstash cluster in the Kibana console of the Elasticsearch cluster.
+// > To enable X-Pack monitoring for Logstash, configure an Elasticsearch instance. After the configuration, you can monitor the Logstash instance in the Kibana console of the corresponding Elasticsearch instance.
 //
 // @param request - ValidateConnectionRequest
 //
@@ -14342,7 +14819,7 @@ func (client *Client) ValidateConnection(InstanceId *string, request *ValidateCo
 
 // Summary:
 //
-// Checks whether specific nodes can be removed from a specified Elasticsearch cluster.
+// Checks whether specific nodes in a specified instance can be scaled in.
 //
 // @param request - ValidateShrinkNodesRequest
 //
@@ -14398,7 +14875,7 @@ func (client *Client) ValidateShrinkNodesWithOptions(InstanceId *string, request
 
 // Summary:
 //
-// Checks whether specific nodes can be removed from a specified Elasticsearch cluster.
+// Checks whether specific nodes in a specified instance can be scaled in.
 //
 // @param request - ValidateShrinkNodesRequest
 //
@@ -14417,7 +14894,11 @@ func (client *Client) ValidateShrinkNodes(InstanceId *string, request *ValidateS
 
 // Summary:
 //
-// Verify the SLR permissions of the current account.
+// Verifies the service-linked role (SLR) permission of the current account.
+//
+// Description:
+//
+// > When you use a collector to collect logs from different data sources, you must first authorize the creation of a service-linked role. You can call this operation to check whether the service-linked role has been created.
 //
 // @param request - ValidateSlrPermissionRequest
 //
@@ -14468,7 +14949,11 @@ func (client *Client) ValidateSlrPermissionWithOptions(request *ValidateSlrPermi
 
 // Summary:
 //
-// Verify the SLR permissions of the current account.
+// Verifies the service-linked role (SLR) permission of the current account.
+//
+// Description:
+//
+// > When you use a collector to collect logs from different data sources, you must first authorize the creation of a service-linked role. You can call this operation to check whether the service-linked role has been created.
 //
 // @param request - ValidateSlrPermissionRequest
 //
@@ -14487,7 +14972,7 @@ func (client *Client) ValidateSlrPermission(request *ValidateSlrPermissionReques
 
 // Summary:
 //
-// Checks whether the data on specific nodes in a specified Elasticsearch cluster can be migrated.
+// Validates whether data on specific nodes in a specified instance can be migrated.
 //
 // @param request - ValidateTransferableNodesRequest
 //
@@ -14535,7 +15020,7 @@ func (client *Client) ValidateTransferableNodesWithOptions(InstanceId *string, r
 
 // Summary:
 //
-// Checks whether the data on specific nodes in a specified Elasticsearch cluster can be migrated.
+// Validates whether data on specific nodes in a specified instance can be migrated.
 //
 // @param request - ValidateTransferableNodesRequest
 //
@@ -14554,11 +15039,17 @@ func (client *Client) ValidateTransferableNodes(InstanceId *string, request *Val
 
 // Summary:
 //
-// Creates an Elasticsearch cluster.
+// Creates an Elasticsearch instance.
 //
 // Description:
 //
-// The configurations of warm nodes.
+// ### Precautions
+//
+// - Before using this operation, make sure that you fully understand the billing methods and pricing of Elasticsearch. For more information, see [Alibaba Cloud Elasticsearch pricing](https://www.aliyun.com/price/product?spm=a2c4g.11186623.2.7.657d2cbeRoSPCd#/elasticsearch/detail).
+//
+// - Real-name verification is required to create instances.<props="china"><ph> For more information, see [Real-name verification](https://help.aliyun.com/document_detail/37175.html).</ph>
+//
+// - You do not need to specify a zone when creating an instance. By default, the instance is in the same zone as the selected VPC.
 //
 // @param request - CreateInstanceRequest
 //
@@ -14675,11 +15166,17 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 // Summary:
 //
-// Creates an Elasticsearch cluster.
+// Creates an Elasticsearch instance.
 //
 // Description:
 //
-// The configurations of warm nodes.
+// ### Precautions
+//
+// - Before using this operation, make sure that you fully understand the billing methods and pricing of Elasticsearch. For more information, see [Alibaba Cloud Elasticsearch pricing](https://www.aliyun.com/price/product?spm=a2c4g.11186623.2.7.657d2cbeRoSPCd#/elasticsearch/detail).
+//
+// - Real-name verification is required to create instances.<props="china"><ph> For more information, see [Real-name verification](https://help.aliyun.com/document_detail/37175.html).</ph>
+//
+// - You do not need to specify a zone when creating an instance. By default, the instance is in the same zone as the selected VPC.
 //
 // @param request - CreateInstanceRequest
 //

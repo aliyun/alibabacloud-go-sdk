@@ -16,11 +16,14 @@ type iCreateDataStreamResponseBody interface {
 }
 
 type CreateDataStreamResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *CreateDataStreamResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the created data stream.
+	Result *CreateDataStreamResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CreateDataStreamResponseBody) String() string {
@@ -59,6 +62,8 @@ func (s *CreateDataStreamResponseBody) Validate() error {
 }
 
 type CreateDataStreamResponseBodyResult struct {
+	// The data stream name.
+	//
 	// example:
 	//
 	// ds-

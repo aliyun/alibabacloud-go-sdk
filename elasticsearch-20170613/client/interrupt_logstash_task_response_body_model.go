@@ -20,13 +20,13 @@ type iInterruptLogstashTaskResponseBody interface {
 }
 
 type InterruptLogstashTaskResponseBody struct {
-	// The error code returned. If the API operation is successfully called, this parameter is not returned.
+	// The error code. This parameter is not returned if the call is successful.
 	//
 	// example:
 	//
 	// .
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned. If the API operation is successfully called, this parameter is not returned.
+	// The error message. This parameter is not returned if the call is successful.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type InterruptLogstashTaskResponseBody struct {
 	//
 	// 0FA05123-745C-42FD-A69B-AFF48EF9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the task is suspended. Valid values:
+	// The returned result. Valid values:
 	//
-	// 	- true
+	// - true: The task is suspended.
 	//
-	// 	- false
+	// - false: The task failed to be suspended.
 	//
 	// example:
 	//

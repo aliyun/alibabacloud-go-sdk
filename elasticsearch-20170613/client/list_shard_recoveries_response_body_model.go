@@ -16,13 +16,13 @@ type iListShardRecoveriesResponseBody interface {
 }
 
 type ListShardRecoveriesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC47D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The returned results.
 	Result []*ListShardRecoveriesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,19 @@ func (s *ListShardRecoveriesResponseBody) Validate() error {
 }
 
 type ListShardRecoveriesResponseBodyResult struct {
-	// The data restoration progress.
+	// The data recovery progress.
 	//
 	// example:
 	//
 	// 80%
 	BytesPercent *string `json:"bytesPercent,omitempty" xml:"bytesPercent,omitempty"`
-	// The total amount of data that is restored.
+	// The total amount of data to be recovered.
 	//
 	// example:
 	//
 	// 12086
 	BytesTotal *int64 `json:"bytesTotal,omitempty" xml:"bytesTotal,omitempty"`
-	// The file execution progress.
+	// The file recovery progress.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type ListShardRecoveriesResponseBodyResult struct {
 	//
 	// 79
 	FilesTotal *int64 `json:"filesTotal,omitempty" xml:"filesTotal,omitempty"`
-	// The name of the index.
+	// The index name.
 	//
 	// example:
 	//
@@ -102,49 +102,49 @@ type ListShardRecoveriesResponseBodyResult struct {
 	//
 	// 192.168.XX.XX
 	SourceHost *string `json:"sourceHost,omitempty" xml:"sourceHost,omitempty"`
-	// The name of the source node.
+	// The source node.
 	//
 	// example:
 	//
 	// 2Kni3dJ
 	SourceNode *string `json:"sourceNode,omitempty" xml:"sourceNode,omitempty"`
-	// The data restoration status. Valid values:
+	// The stage of the data recovery process. Valid values:
 	//
-	// 	- done: Data restoration is complete.
+	// - done: Recovery is complete.
 	//
-	// 	- finalize: Data is being cleared.
+	// - finalize: Cleanup operations are in progress.
 	//
-	// 	- index: Index metadata is being read, and bytes are being copied from source to destination.
+	// - index: Reading index metadata and copying bytes from the source to the target.
 	//
-	// 	- init: Data restoration is not started.
+	// - init: Recovery has not started.
 	//
-	// 	- start: Data restoration is started.
+	// - start: Recovery is starting.
 	//
-	// 	- translog: Translogs are being redone.
+	// - translog: Replaying the transaction log.
 	//
 	// example:
 	//
 	// done
 	Stage *string `json:"stage,omitempty" xml:"stage,omitempty"`
-	// The IP address of the destination node.
+	// The IP address of the target node.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	TargetHost *string `json:"targetHost,omitempty" xml:"targetHost,omitempty"`
-	// The name of the destination node.
+	// The target node.
 	//
 	// example:
 	//
 	// YVVKLmW
 	TargetNode *string `json:"targetNode,omitempty" xml:"targetNode,omitempty"`
-	// The number of translog operations to be restored.
+	// The number of translog operations to be recovered.
 	//
 	// example:
 	//
 	// 12086
 	TranslogOps *int64 `json:"translogOps,omitempty" xml:"translogOps,omitempty"`
-	// The restoration progress of translog operations.
+	// The progress of translog operation recovery.
 	//
 	// example:
 	//

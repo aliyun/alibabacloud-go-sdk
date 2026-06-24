@@ -16,14 +16,13 @@ type iUninstallKibanaPluginResponseBody interface {
 }
 
 type UninstallKibanaPluginResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result shows a list of uninstalled plug-ins.
-	Result []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s UninstallKibanaPluginResponseBody) String() string {

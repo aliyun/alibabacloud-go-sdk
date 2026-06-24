@@ -16,17 +16,17 @@ type iResumeElasticsearchTaskResponseBody interface {
 }
 
 type ResumeElasticsearchTaskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return results:
+	// The return result:
 	//
-	// 	- true: resume the interrupted change successfully
+	// - true: The interrupted change was resumed successfully.
 	//
-	// 	- false: resume the interrupted change successfully failed
+	// - false: The interrupted change failed to be resumed.
 	//
 	// example:
 	//

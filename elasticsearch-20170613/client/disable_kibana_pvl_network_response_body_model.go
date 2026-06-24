@@ -16,12 +16,18 @@ type iDisableKibanaPvlNetworkResponseBody interface {
 }
 
 type DisableKibanaPvlNetworkResponseBody struct {
-	// request id
+	// The request ID.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1DERFG
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result. Valid values:
+	//
+	// - true: The operation is successful.
+	//
+	// - false: The operation failed.
+	//
 	// example:
 	//
 	// true

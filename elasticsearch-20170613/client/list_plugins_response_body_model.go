@@ -18,15 +18,15 @@ type iListPluginsResponseBody interface {
 }
 
 type ListPluginsResponseBody struct {
-	// The description of the plug-in.
+	// The response headers.
 	Headers *ListPluginsResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The return results.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5A5D8E74-565C-43DC-B031-29289FA9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the plug-in.
+	// The returned results.
 	Result []*ListPluginsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -84,7 +84,7 @@ func (s *ListPluginsResponseBody) Validate() error {
 }
 
 type ListPluginsResponseBodyHeaders struct {
-	// The address of the plug-in description document.
+	// The total number of records returned.
 	//
 	// example:
 	//
@@ -114,26 +114,32 @@ func (s *ListPluginsResponseBodyHeaders) Validate() error {
 }
 
 type ListPluginsResponseBodyResult struct {
-	// The source type of the plug-in.
+	// The plugin description.
 	//
 	// example:
 	//
 	// IK analysis plug-in for Elasticsearch.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The plugin name.
+	//
 	// example:
 	//
 	// analysis-ik
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The plugin source type.
+	//
 	// example:
 	//
 	// SYSTEM
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The name of the plug-in.
+	// The URL of the plugin documentation.
 	//
 	// example:
 	//
 	// https://xxxx.html
 	SpecificationUrl *string `json:"specificationUrl,omitempty" xml:"specificationUrl,omitempty"`
+	// The plugin status.
+	//
 	// example:
 	//
 	// INSTALLED

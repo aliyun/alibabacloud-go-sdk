@@ -16,10 +16,18 @@ type iUpdateAdminPasswordResponseBody interface {
 }
 
 type UpdateAdminPasswordResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0FA05123-745C-42FD-A69B-AFF48EF9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the password is updated. Valid values:
+	//
+	// - true: The password is updated.
+	//
+	// - false: The password failed to be updated.
+	//
 	// example:
 	//
 	// true

@@ -16,13 +16,13 @@ type iListLogstashLogResponseBody interface {
 }
 
 type ListLogstashLogResponseBody struct {
-	// The details of the log.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7F40EAA1-6F1D-4DD9-8DB8-C5F00C4E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The timestamp of log generation. Unit: ms.
+	// The returned result.
 	Result []*ListLogstashLogResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -66,22 +66,28 @@ func (s *ListLogstashLogResponseBody) Validate() error {
 }
 
 type ListLogstashLogResponseBodyResult struct {
-	// The IP address of the node that generates the log.
+	// The detailed content of the log.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The IP address of the node that generated the log.
+	//
 	// example:
 	//
 	// 192.168.xx.xx
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ls-cn-v0h1kzca****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The ID of the instance.
+	// The log level. Valid values: trace, debug, info, warn, and error. GC logs do not have a level.
 	//
 	// example:
 	//
 	// info
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// The timestamp when the log was generated. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1531985112420

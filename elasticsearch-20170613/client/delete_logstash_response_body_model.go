@@ -14,7 +14,7 @@ type iDeleteLogstashResponseBody interface {
 }
 
 type DeleteLogstashResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

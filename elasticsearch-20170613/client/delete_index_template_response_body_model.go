@@ -16,10 +16,18 @@ type iDeleteIndexTemplateResponseBody interface {
 }
 
 type DeleteIndexTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// A0761F7E-0B50-46B9-8CAA-EBB3A420****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result. Valid values:
+	//
+	// - true: The index template was deleted.
+	//
+	// - false: The index template failed to be deleted.
+	//
 	// example:
 	//
 	// true

@@ -80,19 +80,19 @@ type UpdateHotIkDictsResponseBodyResult struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type of the dictionary file. Valid values:
 	//
-	// 	- OSS
+	// - OSS: uses OSS open storage.
 	//
-	// 	- ORIGIN
+	// - ORIGIN: retains a previously uploaded dictionary.
 	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The type of the dictionaries. Valid values:
+	// The dictionary type. Valid values:
 	//
-	// 	- MAIN: IK main dictionary
+	// - MAIN: IK main tokenizer dictionary.
 	//
-	// 	- STOP: IK stopword list
+	// - STOP: IK stopword dictionary.
 	//
 	// example:
 	//

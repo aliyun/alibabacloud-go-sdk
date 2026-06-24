@@ -24,37 +24,49 @@ type iListInstanceIndicesRequest interface {
 }
 
 type ListInstanceIndicesRequest struct {
-	// false
+	// Specifies whether to retrieve all indexes. Valid values:
+	//
+	// - true: Returns the index list that includes system indexes.
+	//
+	// - false (default): Returns the index list that excludes system indexes.
 	//
 	// example:
 	//
 	// false
 	All *bool `json:"all,omitempty" xml:"all,omitempty"`
-	// 15
+	// Specifies whether to display only managed indexes. Valid values:
+	//
+	// - true: Displays only managed indexes.
+	//
+	// - false (default): Displays all indexes.
 	//
 	// example:
 	//
 	// false
 	IsManaged *bool `json:"isManaged,omitempty" xml:"isManaged,omitempty"`
-	// The ID of the request.
+	// Specifies whether to display only OpenStore cold-phase indexes. Valid values:
+	//
+	// - true: Displays only OpenStore cold-phase indexes.
+	//
+	// - false (default): Displays all indexes.
 	//
 	// example:
 	//
 	// false
 	IsOpenstore *bool `json:"isOpenstore,omitempty" xml:"isOpenstore,omitempty"`
-	// 1
+	// The index name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// log-0001
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The header of the response.
+	// The page number of the instance list. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The total size of the index in Cloud Hosting. Unit: bytes.
+	// The number of entries per page for paging. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//

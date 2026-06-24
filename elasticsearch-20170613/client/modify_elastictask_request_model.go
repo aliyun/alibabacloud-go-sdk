@@ -14,6 +14,11 @@ type iModifyElastictaskRequest interface {
 }
 
 type ModifyElastictaskRequest struct {
+	// The scaling information.
+	//
+	// example:
+	//
+	// {     "elasticExpansionTask":     {         "triggerType":"crontab",         "cronExpression":"0 0 0 ? 	- MON",         "elasticNodeCount":"2",         "targetIndices":["*"],         "replicaCount":"2"     } }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

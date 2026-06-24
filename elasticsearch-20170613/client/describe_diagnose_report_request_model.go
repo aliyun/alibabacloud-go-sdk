@@ -14,6 +14,18 @@ type iDescribeDiagnoseReportRequest interface {
 }
 
 type DescribeDiagnoseReportRequest struct {
+	// The language of the intelligent diagnostic report. Default value: the browser language. Valid values:
+	//
+	// - en: English
+	//
+	// - zh: Simplified Chinese
+	//
+	// - zt: Traditional Chinese
+	//
+	// - es: Spanish
+	//
+	// - fr: French
+	//
 	// example:
 	//
 	// en
