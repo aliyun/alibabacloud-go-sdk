@@ -25,47 +25,43 @@ type iDescribeInstanceHistoryEventsResponseBody interface {
 
 type DescribeInstanceHistoryEventsResponseBody struct {
 	InstanceSystemEventSet *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSet `json:"InstanceSystemEventSet,omitempty" xml:"InstanceSystemEventSet,omitempty" type:"Struct"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The query token returned in this invocation.
 	//
-	// > If the NextToken parameter is not returned when you use the MaxResults and NextToken parameters to perform a paged query, no more data is returned.
+	// > When you use MaxResults and NextToken for paging and no NextToken is returned, no more data is available.
 	//
 	// example:
 	//
 	// f1c9fa9de5752***
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The page number of the instance event list.
 	//
-	// >
+	// > 	- When you use MaxResults and NextToken for paging, the returned PageNumber parameter value is meaningless.
 	//
-	// - If MaxResults and NextToken are used to query results by page, ignore this parameter.
-	//
-	// - This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
+	// > 	- This parameter will be deprecated. Use NextToken and MaxResults for paging instead.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page as specified in the request.
 	//
-	// >
+	// > 	- When you use MaxResults and NextToken for paging, the returned PageSize parameter value is meaningless.
 	//
-	// - If MaxResults and NextToken are used to query results by page, ignore this parameter.
-	//
-	// - This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
+	// > 	- This parameter will be deprecated. Use NextToken and MaxResults for paging instead.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of instances.
+	// The total number of instance events.
 	//
-	// > If you specify the MaxResults and NextToken request parameters to perform a paged query, the value of the TotalCount response parameter is invalid.
+	// > When you use MaxResults and NextToken for paging, the returned TotalCount parameter value is meaningless.
 	//
 	// example:
 	//
@@ -399,13 +395,17 @@ func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstance
 }
 
 type DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute struct {
-	CanAccept          *string                                                                                                                  `json:"CanAccept,omitempty" xml:"CanAccept,omitempty"`
-	Code               *string                                                                                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Device             *string                                                                                                                  `json:"Device,omitempty" xml:"Device,omitempty"`
-	DiskId             *string                                                                                                                  `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	HostId             *string                                                                                                                  `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	HostType           *string                                                                                                                  `json:"HostType,omitempty" xml:"HostType,omitempty"`
-	InactiveDisks      *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeInactiveDisks    `json:"InactiveDisks,omitempty" xml:"InactiveDisks,omitempty" type:"Struct"`
+	CanAccept     *string                                                                                                               `json:"CanAccept,omitempty" xml:"CanAccept,omitempty"`
+	Code          *string                                                                                                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Device        *string                                                                                                               `json:"Device,omitempty" xml:"Device,omitempty"`
+	DiskId        *string                                                                                                               `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	HostId        *string                                                                                                               `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	HostType      *string                                                                                                               `json:"HostType,omitempty" xml:"HostType,omitempty"`
+	InactiveDisks *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeInactiveDisks `json:"InactiveDisks,omitempty" xml:"InactiveDisks,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2026-06-22T00:00:00Z
+	InitialNotBefore   *string                                                                                                                  `json:"InitialNotBefore,omitempty" xml:"InitialNotBefore,omitempty"`
 	MetricName         *string                                                                                                                  `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	MetricValue        *string                                                                                                                  `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
 	MigrationOptions   *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeMigrationOptions `json:"MigrationOptions,omitempty" xml:"MigrationOptions,omitempty" type:"Struct"`
@@ -451,6 +451,10 @@ func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstance
 
 func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute) GetInactiveDisks() *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeInactiveDisks {
 	return s.InactiveDisks
+}
+
+func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute) GetInitialNotBefore() *string {
+	return s.InitialNotBefore
 }
 
 func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute) GetMetricName() *string {
@@ -521,6 +525,11 @@ func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstance
 
 func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute) SetInactiveDisks(v *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeInactiveDisks) *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute {
 	s.InactiveDisks = v
+	return s
+}
+
+func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute) SetInitialNotBefore(v string) *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute {
+	s.InitialNotBefore = &v
 	return s
 }
 

@@ -26,7 +26,7 @@ type StartTerminalSessionResponseBody struct {
 	//
 	// EB5173B0-8E80-564E-AAD1-3135412*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The security token included in the WebSocket request header. The system uses this token to authenticate the request.
+	// The security token that is appended to the WebSocket request header for system verification of the request.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type StartTerminalSessionResponseBody struct {
 	//
 	// s-hz023od0x9****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The URL of the WebSocket session that is used to connect to the instance. The URL includes the session ID (`SessionId`) and the authentication token (`SecurityToken`).
+	// The URL of the WebSocket session for the remote connection to the ECS instance. The URL contains the session ID (SessionId) and the SecurityToken used for system verification.
 	//
 	// example:
 	//

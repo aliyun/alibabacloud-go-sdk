@@ -2933,15 +2933,15 @@ func (client *Client) CopySnapshotWithContext(ctx context.Context, request *Copy
 
 // Summary:
 //
-// This API is used to create an activation code, which is used to register non-Alibaba Cloud servers as Alibaba Cloud managed instances.
+// This API is used to create an activation code. The activation code is used to register non-Alibaba Cloud servers as Alibaba Cloud managed instances.
 //
 // Description:
 //
-// ## API Guide
+// ## API description
 //
-// After you register a non-Alibaba Cloud server as an Alibaba Cloud managed instance by using an activation code, you can use various online services provided by Alibaba Cloud on the managed instance (such as Cloud Assistant, CloudOps Orchestration Service, and Alibaba Cloud DevOps).
+// After you use an activation code to register non-Alibaba Cloud servers as Alibaba Cloud managed instances, you can use various online services provided by Alibaba Cloud on the managed instances, such as Cloud Assistant, Operation Orchestration Service (OOS), and Alibaba Cloud DevOps.
 //
-// The operating system of the non-Alibaba Cloud server must meet one of the following versions, and the server must be able to access the Internet to be registered as an Alibaba Cloud managed instance.
+// The operating systems of non-Alibaba Cloud servers must meet the following version requirements, and the servers must have access to the Internet before they can be registered as Alibaba Cloud managed instances.
 //
 // - Alibaba Cloud Linux 2/3 and later
 //
@@ -2961,9 +2961,9 @@ func (client *Client) CopySnapshotWithContext(ctx context.Context, request *Copy
 //
 // - Windows Server 2012/2016/2019 and later
 //
-// In each Alibaba Cloud Region, you can have up to 5,000 activation codes for managed instances. When the number of activation codes exceeds 1,000, you must maintain an activation code usage rate greater than 50% to continue creating new activation codes.
+// In an Alibaba Cloud region, you can have up to 10 managed instance activation codes. Each activation code can be used to activate up to 10 instances. The maximum validity period of a single activation code is 4 hours.
 //
-// > You can click **Register New Instance*	- on the **Managed Instances*	- tab of the **ECS Cloud Assistant*	- page to view activation code usage data.
+// > You can go to the **Managed Instances*	- tab of the **ECS Cloud Assistant*	- page and click **Register New Instance*	- to obtain activation code usage data.
 //
 // @param request - CreateActivationRequest
 //
@@ -15359,15 +15359,15 @@ func (client *Client) DescribeInstanceAutoRenewAttributeWithContext(ctx context.
 
 // Summary:
 //
-// Invoke the DescribeInstanceHistoryEvents API and specify parameters such as InstanceId and EventType to query system event information for a specified instance. By default, this operation queries historical system events that are in a non-active state.
+// Queries system event information for a specified instance by calling the DescribeInstanceHistoryEvents operation. You can specify parameters such as InstanceId and EventType. By default, this operation queries historical system events in inactive states.
 //
 // Description:
 //
-// - You can query completed historical system events from up to the last 30 days. There is no time limit for querying incomplete system events.
+// - You can query completed historical system events from the last 30 days. There is no time limit for querying uncompleted system events.
 //
-// - When neither the EventCycleStatus nor the InstanceEventCycleStatus parameter is specified, the query results include only system events in the Avoided (event avoided), Executed (event execution completed), Canceled (event canceled), or Failed (event execution failed) status by default.
+// - If neither EventCycleStatus nor InstanceEventCycleStatus is specified, the query results include only system events in the Avoided, Executed, Canceled, and Failed states by default.
 //
-// - By specifying the InstanceEventCycleStatus parameter, you can also query system events in the Scheduled (awaiting execution), Executing (execution in progress), or Inquiring (inquiry in progress) status.
+// - By specifying the InstanceEventCycleStatus parameter, you can also query system events in the Scheduled, Executing, and Inquiring states.
 //
 // @param request - DescribeInstanceHistoryEventsRequest
 //
@@ -16435,19 +16435,19 @@ func (client *Client) DescribeInstanceVncUrlWithContext(ctx context.Context, req
 
 // Summary:
 //
-// This operation queries a list of instances based on specified conditions and returns detailed information about the instances.
+// Supports conditional query of instance lists based on different request conditions and retrieves the detailed information of the instances.
 //
 // Description:
 //
+// ### Before you begin
+//
+// - When you invoke API operations by using Cloud Assistant CLI, make sure that request parameters of different data types are in the required formats. For more information, see [CLI parameter format](https://help.aliyun.com/document_detail/110340.html).
+//
 // ### Usage notes
 //
-// - When you call this operation using Alibaba Cloud CLI, request parameter values of different data types must be in specific formats. For more information, see [CLI parameter format](https://help.aliyun.com/document_detail/110340.html).
+// - Send a dry run request by specifying the DryRun request parameter to check parameter validity and authorization.
 //
-// ### Recommendations
-//
-// - We recommend that you perform a dry run by setting the DryRun parameter to check parameter validity and authorization status.
-//
-// - To query the first page of results, set the `MaxResults` parameter to limit the number of entries returned. Use the `NextToken` value in the response to retrieve subsequent pages. For subsequent page queries, set the `NextToken` parameter to the value from the previous response and set `MaxResults` to limit the number of entries returned.
+// - When performing a paging query for the first page, set only `MaxResults` to limit the number of entries to return. The `NextToken` value returned in the result serves as the token for querying subsequent pages. When performing a paging query for subsequent pages, set NextToken to the `NextToken` value obtained from the previous response as the query token, and set `MaxResults` to limit the number of entries to return.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -16767,33 +16767,33 @@ func (client *Client) DescribeInstancesFullStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// $.parameters[11].schema.items.properties.Value.example
+// Queries the execution results of one or more Cloud Assistant commands, that is, the actual execution results on ECS instances.
 //
 // Description:
 //
-// ## API Guide
+// ## Operation description
 //
-// - After you execute a command, it does not necessarily mean that the command was successfully executed or produced the expected effect. You must use this API to check the actual execution results, and the actual output takes precedence.
+// - After you execute a command, the command is not guaranteed to succeed or produce the expected results. Call this operation to view the actual execution results, which are based on the actual output.
 //
-// - You can query execution information from the last four weeks, with a maximum retention limit of 100,000 records.
+// - You can query execution information from the last 30 days. A maximum of 10,000 records of execution information can be retained.
 //
-// - You can obtain job results through [management event subscription for Cloud Assistant task status](https://help.aliyun.com/document_detail/2669130.html), which avoids frequent polling and improves efficiency.
+// - You can subscribe to [Cloud Assistant task status events](https://help.aliyun.com/document_detail/2669130.html) to obtain task results through events, avoiding frequent polling and improving efficiency.
 //
-// - When performing a paged query on the home page, you only need to set `MaxResults` to limit the number of returned entries. The `NextToken` in the return result serves as the credential for querying subsequent pages. When querying subsequent pages, set the `NextToken` parameter to the `NextToken` value obtained from the previous response as the query credential, and set `MaxResults` to limit the number of returned entries.
+// - When querying the first page of a paging query, set only `MaxResults` to limit the number of entries returned. The `NextToken` value returned in the result serves as the credential for querying subsequent pages. When querying subsequent pages, set `NextToken` to the value obtained from the previous response and set `MaxResults` to limit the number of entries returned.
 //
 // - Differences between `DescribeInvocations` and `DescribeInvocationResults`:
 //
-//   - When a single `RunCommand`/`InvokeCommand` invocation targets multiple instances:
+//   - When a single `RunCommand`/`InvokeCommand` call specifies multiple instances:
 //
-//   - `DescribeInvocations` provides the execution status on each instance and an aggregation status across all instances.
+//   - `DescribeInvocations` returns the execution status on each instance and the aggregation status across multiple instances.
 //
-//   - `DescribeInvocationResults` only provides individual execution statuses per instance, without aggregated multi-instance status.
+//   - `DescribeInvocationResults` returns only the individual execution status on each instance, without the aggregation status across multiple instances.
 //
-//   - When a single `RunCommand`/`InvokeCommand` invocation targets one instance:
+//   - When a single `RunCommand`/`InvokeCommand` call specifies one instance:
 //
-//   - There is little difference between `DescribeInvocations` and `DescribeInvocationResults`, and they can fully replace each other.
+//   - `DescribeInvocations` and `DescribeInvocationResults` are largely interchangeable. You can replace one with the other.
 //
-//   - When you need to view the execution history of scheduled (periodic) tasks or automatic startup tasks (`RepeatMode=Period, EveryReboot`), only `DescribeInvocationResults` can retrieve historical execution records (by specifying `IncludeHistory=true`). In contrast, `DescribeInvocations` only returns the latest task status.
+//   - When you need to view the execution details of scheduled (periodic) tasks or tasks that execute at each system startup (`RepeatMode=Period, EveryReboot`), only `DescribeInvocationResults` can return the history of past execution records (you must specify `IncludeHistory=true`). `DescribeInvocations` returns only the latest task status.
 //
 //   - When you need to view the command content or parameters, only `DescribeInvocations` returns `CommandContent`.
 //
@@ -16907,33 +16907,33 @@ func (client *Client) DescribeInvocationResultsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Invoke the DescribeInvocations API to query the execution list and status of Cloud Assistant commands.
+// Queries the execution list and status of Cloud Assistant commands.
 //
 // Description:
 //
-// - After you execute a command, it does not necessarily mean that the command has run successfully or produced the expected effect. You must check the actual execution result through the API return value, and the actual output result takes precedence.
+// - After you run a command, it does not necessarily run successfully or produce the expected results. You must check the actual execution results based on the return values of this operation.
 //
-// - You can query execution information from the past four weeks, with a maximum retention limit of 100,000 records.
+// - You can query execution information from the last 30 days. A maximum of 10,000 execution records are retained.
 //
-// - You can subscribe to [Cloud Assistant task status event notifications](https://help.aliyun.com/document_detail/2669130.html) to obtain task results via events, avoiding frequent polling and thereby improving efficiency.
+// - You can subscribe to [Cloud Assistant task status events](https://help.aliyun.com/document_detail/2669130.html) to obtain task results through events, which avoids frequent polling and improves efficiency.
 //
-// - When performing a paged query on the home page, you only need to set `MaxResults` to limit the number of returned entries. The `NextToken` in the return result serves as the credential for querying subsequent pages. When querying subsequent pages, set the `NextToken` parameter to the `NextToken` obtained from the previous response as the query credential, and also set `MaxResults` to limit the number of returned entries.
+// - When paged query the first page of results, set only `MaxResults` to limit the number of entries returned. The `NextToken` value in the response serves as the token for querying subsequent pages. When paged query subsequent pages, set `NextToken` to the value obtained from the previous response and set `MaxResults` to limit the number of entries returned.
 //
 // - Differences between `DescribeInvocations` and `DescribeInvocationResults`:
 //
 //   - When a single `RunCommand`/`InvokeCommand` call specifies multiple instances:
 //
-//   - `DescribeInvocations` provides the execution status on each instance as well as the aggregated status across all instances.
+//   - `DescribeInvocations` returns the execution status on each instance and the aggregated status across multiple instances.
 //
-//   - `DescribeInvocationResults` only provides the individual execution status per instance, without the aggregated multi-instance status.
+//   - `DescribeInvocationResults` returns only the individual execution status on each instance, without the aggregated status across multiple instances.
 //
-//   - When a single `RunCommand`/`InvokeCommand` call specifies only one instance:
+//   - When a single `RunCommand`/`InvokeCommand` call specifies one instance:
 //
-//   - There is little difference between `DescribeInvocations` and `DescribeInvocationResults`, and they can be used interchangeably.
+//   - `DescribeInvocations` and `DescribeInvocationResults` are largely interchangeable.
 //
-//   - When you need to view the execution history of scheduled (periodic) tasks or tasks that automatically run at system startup (`RepeatMode=Period, EveryReboot`), only `DescribeInvocationResults` can retrieve historical execution records (by specifying `IncludeHistory=true`). In contrast, `DescribeInvocations` only returns the latest task status.
+//   - When you want to view the execution history of scheduled (periodic) tasks or tasks that run automatically at instance startup (`RepeatMode=Period, EveryReboot`), only `DescribeInvocationResults` can return historical execution records (you must specify `IncludeHistory=true`). `DescribeInvocations` returns only the latest task status.
 //
-//   - When you need to view the command content and parameters, only `DescribeInvocations` returns `CommandContent`.
+//   - When you want to view the command content and parameters, only `DescribeInvocations` returns `CommandContent`.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -20219,17 +20219,17 @@ func (client *Client) DescribeSecurityGroupsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the files sent by Cloud Assistant and their status.
+// Queries the list and status of files sent by Cloud Assistant by calling DescribeSendFileResults.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Operation description:
 //
-// - When you send a file, the file may fail to be sent to specific Elastic Compute Service (ECS) instances. You can call this operation to check the file sending results.
+// - After you send a file, the file is not necessarily sent successfully. You must check the actual delivery result based on the return value of this operation. The actual output prevails.
 //
-// - You can call this operation to query the file sending records within the last six weeks.
+// - You can query execution information from the last 30 days. A maximum of 10,000 entries of execution information can be retained.
 //
-// - During a paged query, when you call the DescribeSendFileResults operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeSendFileResults operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
+// - When you perform a paging query for the first page, set only `MaxResults` to limit the number of entries returned. The `NextToken` value in the response serves as the token for querying subsequent pages. When querying subsequent pages, set the `NextToken` parameter to the `NextToken` value obtained from the previous response and set `MaxResults` to limit the number of entries returned.
 //
 // @param request - DescribeSendFileResultsRequest
 //
@@ -21699,11 +21699,11 @@ func (client *Client) DescribeTasksWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// Queries the session records of Elastic Compute Service (ECS) Session Manager.
+// Queries the session history of Session Manager.
 //
 // Description:
 //
-// You can query the session records of Session Manager that were generated in the last four weeks.
+// You can query Session Manager session records created within the last 30 days. A maximum of 1,000 successful records are retained.
 //
 // @param request - DescribeTerminalSessionsRequest
 //
@@ -28261,19 +28261,17 @@ func (client *Client) ModifyInstanceNetworkOptionsWithContext(ctx context.Contex
 //
 // Description:
 //
-// -  When modifying the bandwidth configuration of a subscription (PrePaid) instance, a public IP address is automatically allocated when the maximum outbound public bandwidth (InternetMaxBandwidthOut) is upgraded from 0 Mbit/s to a non-zero value.
+// -  When you modify the bandwidth configuration of a subscription (PrePaid) instance, a public IP address is automatically allocated if the outbound public bandwidth (InternetMaxBandwidthOut) is upgraded from 0 Mbit/s to a non-zero value.
 //
-// -  When modifying the bandwidth configuration of a pay-as-you-go (PostPaid) instance, a public IP address is not automatically allocated when the maximum outbound public bandwidth (InternetMaxBandwidthOut) is upgraded from 0 Mbit/s to a non-zero value. You need to set the `AllocatePublicIp` parameter to `true` to allocate a public IP address.
+// -  When you modify the bandwidth configuration of a pay-as-you-go (PostPaid) instance, a public IP address is not automatically allocated if the outbound public bandwidth (InternetMaxBandwidthOut) is upgraded from 0 Mbit/s to a non-zero value. You need to set the `AllocatePublicIp` parameter to `true` to allocate a public IP address.
 //
-// -  For classic network (Classic) instances, when the maximum outbound public bandwidth (InternetMaxBandwidthOut) is upgraded from 0 Mbit/s to a non-zero value, the instance must be in the Stopped state.
-//
-// > Within a single region, there is a limit on the total peak pay-by-bandwidth public bandwidth for a single Alibaba Cloud account. For more information, see [Public bandwidth limits](~~25412#BandwidthQuota~~).
+// > In a single region, the total peak pay-by-bandwidth public bandwidth of a single Alibaba Cloud account is subject to a limit. For more information, see [Public bandwidth limits](~~25412#BandwidthQuota~~).
 //
 // - Fees:
 //
-//   - After upgrading bandwidth, the payment is automatically deducted by default. Make sure your payment method has sufficient balance. Otherwise, an abnormal order will be generated and can only be voided. If your account balance is insufficient, you can set the AutoPay parameter to false. In this case, an unpaid order is generated, and you can log on to the ECS console to pay for the order.
+//   - After the bandwidth is upgraded, the payment is automatically deducted by default. Make sure that your payment method has sufficient balance. Otherwise, an abnormal order is generated, and you can only cancel the order. If your account balance is insufficient, you can set the AutoPay parameter to false. In this case, a normal unpaid order is generated. You can log on to the ECS console to pay for the order.
 //
-//   - After downgrading bandwidth, the price difference is refunded through the original payment method. Coupons that have already been used are not refunded.
+//   - After the bandwidth is downgraded, the price difference is refunded to the original payment method. Vouchers that have been used are not refundable.
 //
 // @param request - ModifyInstanceNetworkSpecRequest
 //
@@ -35355,35 +35353,35 @@ func (client *Client) StartInstancesWithContext(ctx context.Context, request *St
 
 // Summary:
 //
-// Invoke StartTerminalSession to create a session based on the Session Manager feature. You can establish a WebSocket session with an ECS instance by specifying its instance ID. Use the WebSocketUrl returned by the API to remotely connect to the ECS instance.
+// Invokes StartTerminalSession to create a session based on the session management feature. You can establish a WebSocket session with an ECS instance by specifying the instance ID. The WebSocketUrl returned by this operation allows you to establish a remote connection to the ECS instance.
 //
 // Description:
 //
-// ## API Guide
+// ## Operation description
 //
-// When you customize a remote connection client through code, you can invoke this API to obtain the WebSocketUrl for remotely connecting to an ECS instance. Note the following when invoking this API:
+// When you customize a remote connection client by using code, you can invoke this operation to obtain the WebSocketUrl for establishing a remote connection to an ECS instance. Take note of the following items:
 //
 // - The specified ECS instance must be in the running state.
 //
-// - The specified ECS instance must have the Cloud Assistant Agent installed. You can invoke [DescribeCloudAssistantStatus](https://help.aliyun.com/document_detail/87346.html) to check whether the Cloud Assistant Agent is installed on the ECS instance and to query its version number.
+// - The specified ECS instance must have Cloud Assistant Agent installed. You can invoke [DescribeCloudAssistantStatus](https://help.aliyun.com/document_detail/87346.html) to check whether Cloud Assistant Agent is installed on the ECS instance and query the version number of Cloud Assistant Agent.
 //
-//   - If the Cloud Assistant Agent is not installed on your ECS instance, invoke [InstallCloudAssistant](https://help.aliyun.com/document_detail/85916.html) to install it.
+//   - If Cloud Assistant Agent is not installed on the ECS instance, invoke [InstallCloudAssistant](https://help.aliyun.com/document_detail/85916.html) to install it.
 //
-//   - The Cloud Assistant Agent version must be higher than the following versions to support the Session Manager feature. To upgrade the Cloud Assistant Agent version, see [Upgrade or disable automatic upgrade of Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
+//   - Cloud Assistant Agent must be later than the following versions to support the session management feature. To upgrade Cloud Assistant Agent, see [Upgrade or disable upgrades for Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
 //
 //   - Linux operating system: 2.2.3.256
 //
 //   - Windows operating system: 2.1.3.256
 //
-// - After successful invocation of this API, the WebSocketUrl remains valid for 10 minutes.
+// - After this operation is invoked, the WebSocketUrl is valid for 10 minutes.
 //
-// - If no data transmission occurs within 3 minutes after the session is established, Cloud Assistant shuts down the connection.
+// - After a session is established, Cloud Assistant performs a shutdown of the connection if no data is transmitted for 3 minutes.
 //
-// - Within the same Region, the number of created and active sessions cannot exceed 1,000. The number of sessions in Connection Status per ECS instance cannot exceed 20. The bandwidth limit for a single session is 200 kb/s.
+// - In a single region, up to 100 sessions can be created and available. A single ECS instance can have up to 20 active sessions. The bandwidth limit for a single session is 200 KB/s.
 //
-// - The port forwarding feature currently supports TCP port forwarding only and does not support UDP.
+// - The port forwarding feature supports only TCP port forwarding. UDP is not supported.
 //
-// - To permanently close a session and invalidate the WebSocketUrl, invoke the EndTerminalSession API.
+// - To permanently shutdown a session and invalidate the WebSocketUrl, invoke the EndTerminalSession operation.
 //
 // @param tmpReq - StartTerminalSessionRequest
 //

@@ -18,19 +18,19 @@ type iCreateActivationResponseBody interface {
 }
 
 type CreateActivationResponseBody struct {
-	// The value of the activation code. The value is returned only once after the CreateActivation operation is called and cannot be queried afterward. Properly save the return value.
+	// The value of the activation code. The value is returned only once when you call this operation and cannot be queried afterwards. Make sure that you properly save the returned value.
 	//
 	// example:
 	//
 	// a-hz0ch3SwhOlE1234+Xo32lAZC****
 	ActivationCode *string `json:"ActivationCode,omitempty" xml:"ActivationCode,omitempty"`
-	// The ID of the activation code.
+	// The activation code ID.
 	//
 	// example:
 	//
 	// 4ECEEE12-56F1-4FBC-9AB1-890F1234****
 	ActivationId *string `json:"ActivationId,omitempty" xml:"ActivationId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

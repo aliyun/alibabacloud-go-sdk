@@ -16,43 +16,9 @@ type iDescribeInvocationResultsResponseBody interface {
 }
 
 type DescribeInvocationResultsResponseBody struct {
-	// The execution status of the command task. Valid values:
-	//
-	// - Running:
-	//
-	//   - Scheduled task: Before you stop the scheduled execution of the command, the execution state is always Running.
-	//
-	//   - One-time task: If the command is being run on instances, the execution state is Running.
-	//
-	// - Finished:
-	//
-	//   - Scheduled task: The execution state can never be Finished.
-	//
-	//   - One-time task: The execution is complete on all instances, or the execution is stopped on some instances and is complete on the other instances.
-	//
-	// - Success:
-	//
-	//   - One-time task: The execution is complete, and the exit code is 0.
-	//
-	//   - Scheduled task: The last execution is complete, the exit code is 0, and the specified period ends.
-	//
-	// - Failed:
-	//
-	//   - Scheduled task: The execution state can never be Failed.
-	//
-	//   - One-time task: The execution fails on all instances.
-	//
-	// - PartialFailed:
-	//
-	//   - Scheduled task: The execution state can never be PartialFailed.
-	//
-	//   - One-time task: The execution fails on some instances.
-	//
-	// - Stopped: The task is stopped.
-	//
-	// - Stopping: The task is being stopped.
+	// The collection of command execution results.
 	Invocation *DescribeInvocationResultsResponseBodyInvocation `json:"Invocation,omitempty" xml:"Invocation,omitempty" type:"Struct"`
-	// The ID of the command.
+	// The request ID.
 	//
 	// example:
 	//
@@ -97,37 +63,25 @@ func (s *DescribeInvocationResultsResponseBody) Validate() error {
 
 type DescribeInvocationResultsResponseBodyInvocation struct {
 	InvocationResults *DescribeInvocationResultsResponseBodyInvocationInvocationResults `json:"InvocationResults,omitempty" xml:"InvocationResults,omitempty" type:"Struct"`
-	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The encoding mode of the `CommandContent` and `Output` values in the response. Valid values:
-	//
-	// - PlainText: returns the original command content and command output.
-	//
-	// - Base64: returns the Base64-encoded command content and command output.
-	//
-	// Default value: Base64.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Specifies whether to return the results of historical scheduled executions. Valid values:
-	//
-	// - true: returns the results of historical scheduled executions. If you set this parameter to true, you must set InvokeId to the ID of a task that is run on a schedule (RepeatMode set to Period) or on each system startup (RepeatMode set to EveryReboot).
-	//
-	// - false: does not return the results of historical scheduled executions.
-	//
-	// Default value: false.
+	// The number of entries per page in the paging query.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+	// The total number of commands.
 	//
 	// example:
 	//

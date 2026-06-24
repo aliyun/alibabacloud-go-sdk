@@ -90,8 +90,9 @@ func (s *DescribeInstanceTopologyResponseBodyTopologys) Validate() error {
 }
 
 type DescribeInstanceTopologyResponseBodyTopologysTopology struct {
-	HostId     *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	HostId       *string                                                            `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	InstanceId   *string                                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkNodes *DescribeInstanceTopologyResponseBodyTopologysTopologyNetworkNodes `json:"NetworkNodes,omitempty" xml:"NetworkNodes,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstanceTopologyResponseBodyTopologysTopology) String() string {
@@ -110,6 +111,10 @@ func (s *DescribeInstanceTopologyResponseBodyTopologysTopology) GetInstanceId() 
 	return s.InstanceId
 }
 
+func (s *DescribeInstanceTopologyResponseBodyTopologysTopology) GetNetworkNodes() *DescribeInstanceTopologyResponseBodyTopologysTopologyNetworkNodes {
+	return s.NetworkNodes
+}
+
 func (s *DescribeInstanceTopologyResponseBodyTopologysTopology) SetHostId(v string) *DescribeInstanceTopologyResponseBodyTopologysTopology {
 	s.HostId = &v
 	return s
@@ -120,6 +125,41 @@ func (s *DescribeInstanceTopologyResponseBodyTopologysTopology) SetInstanceId(v 
 	return s
 }
 
+func (s *DescribeInstanceTopologyResponseBodyTopologysTopology) SetNetworkNodes(v *DescribeInstanceTopologyResponseBodyTopologysTopologyNetworkNodes) *DescribeInstanceTopologyResponseBodyTopologysTopology {
+	s.NetworkNodes = v
+	return s
+}
+
 func (s *DescribeInstanceTopologyResponseBodyTopologysTopology) Validate() error {
+	if s.NetworkNodes != nil {
+		if err := s.NetworkNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeInstanceTopologyResponseBodyTopologysTopologyNetworkNodes struct {
+	NetworkNodes []*string `json:"NetworkNodes,omitempty" xml:"NetworkNodes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceTopologyResponseBodyTopologysTopologyNetworkNodes) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceTopologyResponseBodyTopologysTopologyNetworkNodes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTopologyResponseBodyTopologysTopologyNetworkNodes) GetNetworkNodes() []*string {
+	return s.NetworkNodes
+}
+
+func (s *DescribeInstanceTopologyResponseBodyTopologysTopologyNetworkNodes) SetNetworkNodes(v []*string) *DescribeInstanceTopologyResponseBodyTopologysTopologyNetworkNodes {
+	s.NetworkNodes = v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyTopologysTopologyNetworkNodes) Validate() error {
 	return dara.Validate(s)
 }

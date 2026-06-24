@@ -38,7 +38,7 @@ type iCreateActivationRequest interface {
 }
 
 type CreateActivationRequest struct {
-	// Ensures the idempotence of the request. Generate a unique value for this parameter from your client to guarantee that the value differs across requests. **ClientToken*	- supports only ASCII characters and cannot exceed 64 characters. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateActivationRequest struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum number of times that you can use the activation code to register managed instances. Valid values: 1 to 1000.
+	// The maximum number of times that the activation code can be used to register managed instances. Valid values: 1 to 1000.
 	//
 	// Default value: 10.
 	//
@@ -58,17 +58,17 @@ type CreateActivationRequest struct {
 	//
 	// 10
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The default instance name prefix. The prefix must be 2 to 50 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). The prefix must start with a letter and cannot start with a digit, a special character, `http://`, or `https://`.
+	// The default prefix of instance names. The prefix must be 2 to 50 characters in length. It must start with a letter and cannot start with a special character or digit. It can contain only periods (.), underscores (_), hyphens (-), and colons (:) as special characters. It cannot start with `http://` or `https://`.
 	//
-	// If you use the activation code that is created by calling the CreateActivation operation to register managed instances, the instances are assigned sequential names that include the value of this parameter as a prefix. You can also specify a new instance name to replace the assigned sequential name when you register a managed instance.
+	// Instances registered with the activation code created by calling this operation use this name as a prefix to generate sequential instance names. You can also specify a new instance name to override this default value when you register a managed instance.
 	//
-	// If you specify InstanceName when you register a managed instance, an instance name in the `<InstanceName>-<Number>` format is generated. The number of digits in the \\<Number> value varies based on the number of digits in the `InstanceCount` value. Example: `001`. If you do not specify InstanceName, the hostname (Hostname) is used as the instance name.
+	// When you register a managed instance, if the InstanceName value is specified, instance names in the format of `<InstanceName>-001` are generated. The number of digits in the sequential number `001` depends on the number of digits in the InstanceCount value. If the InstanceName value is not specified, the hostname of the host is used as the instance name.
 	//
 	// example:
 	//
 	// test-InstanceName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The IP addresses of hosts that can use the activation code. The value can be IPv4 addresses, IPv6 addresses, or CIDR blocks.
+	// The IP addresses of hosts that are allowed to use the activation code. The value can be IPv4 addresses, IPv6 addresses, or CIDR blocks.
 	//
 	// example:
 	//
@@ -76,7 +76,9 @@ type CreateActivationRequest struct {
 	IpAddressRange *string `json:"IpAddressRange,omitempty" xml:"IpAddressRange,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. Supported regions: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), China (Hong Kong), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia). You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. Currently supported regions: China North 1 (Qingdao), China North 2 (Beijing), China North 3 (Zhangjiakou), China North 5 (Hohhot), China North 6 (Ulanqab), China East 1 (Hangzhou), China East 2 (Shanghai), China South 1 (Shenzhen), China South 2 (Heyuan), China South 3 (Guangzhou), China Southwest 1 (Chengdu), China (Hong Kong), Singapore, Japan (Tokyo), US (Silicon Valley), US (Virginia).
+	//
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view region IDs and other information.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +86,7 @@ type CreateActivationRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which to assign the activation code.
+	// The ID of the resource group to which the activation code belongs.
 	//
 	// example:
 	//
@@ -92,9 +94,9 @@ type CreateActivationRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags to add to the activation code.
+	// The tags.
 	Tag []*CreateActivationRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The validity period of the activation code. After the validity period ends, you can no longer use the activation code to register managed instances. Unit: hours.
+	// The validity period of the activation code. After the validity period expires, the activation code cannot be used to register new instances. Unit: hours. Valid values: 1 to 4.
 	//
 	// Default value: 4.
 	//
@@ -243,19 +245,19 @@ func (s *CreateActivationRequest) Validate() error {
 }
 
 type CreateActivationRequestTag struct {
-	// The key of tag N to add to the activation code. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+	// The key of the tag for the managed instance activation code. Valid values of N: 1 to 20. The tag key cannot be an empty string.
 	//
-	// If a single tag is specified to query resources, up to 1,000 resources that have this tag added can be displayed in the response. If multiple tags are specified to query resources, up to 1,000 resources that have all these tags added can be displayed in the response. To query more than 1,000 resources that have specified tags, call [ListTagResources](https://help.aliyun.com/document_detail/110425.html).
+	// If you use a single tag to filter resources, the number of resources that are returned under that tag cannot exceed 1,000. If you use multiple tags to filter resources, the number of resources that are bound with all specified tags cannot exceed 1,000. If the number of resources exceeds 1,000, you must call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
-	// The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the activation code. Valid values of N: 1 to 20. The tag value can be an empty string.
+	// The value of the tag for the managed instance activation code. Valid values of N: 1 to 20. The tag value can be an empty string.
 	//
-	// It can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
