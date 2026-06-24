@@ -18,9 +18,9 @@ type iModifyMem0SecurityIpsResponseBody interface {
 }
 
 type ModifyMem0SecurityIpsResponseBody struct {
-	// The details of the access denial.
+	// The details about the access denial.
 	AccessDeniedDetail *ModifyMem0SecurityIpsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The data struct.
+	// The data structure.
 	Data *ModifyMem0SecurityIpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -80,29 +80,29 @@ func (s *ModifyMem0SecurityIpsResponseBody) Validate() error {
 }
 
 type ModifyMem0SecurityIpsResponseBodyAccessDeniedDetail struct {
-	// The operation name.
+	// The API operation name.
 	//
 	// example:
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the identity used for authentication in the request.
+	// The identity used for authentication in the request.
 	//
 	// example:
 	//
 	// xxx
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The ID of the Alibaba Cloud account to which the authenticated principal belongs.
+	// The ID of the Alibaba Cloud account to which the identity used for authentication belongs.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The type of the identity used for authentication in the request. Valid values:
+	// The type of identity used for authentication in the request. Valid values:
 	//
-	// - SubUser: RAM user
+	// - SubUser: RAM user.
 	//
-	// - AssumedRoleUser: RAM role
+	// - AssumedRoleUser: RAM role.
 	//
 	// - Federated: SSO federated identity.
 	//
@@ -110,15 +110,15 @@ type ModifyMem0SecurityIpsResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encrypted complete diagnostic message.
+	// The encrypted complete diagnostic information.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of denial by the access policy. Valid values:
+	// The type of the permission denial. Valid values:
 	//
-	// - **ImplicitDeny**: The resource owner has not configured a relevant permission policy for the current user. Unauthorized operations are denied by default.
+	// - **ImplicitDeny**: The resource owner has not granted the required permissions to the current user. Unauthorized operations are denied by default.
 	//
 	// - **ExplicitDeny**: The RAM policy configured by the resource owner explicitly denies the current user access to the corresponding resource.
 	//
@@ -126,7 +126,7 @@ type ModifyMem0SecurityIpsResponseBodyAccessDeniedDetail struct {
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// PolicyType
+	// The policy type.
 	//
 	// example:
 	//

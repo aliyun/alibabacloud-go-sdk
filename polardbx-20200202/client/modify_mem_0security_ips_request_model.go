@@ -30,7 +30,7 @@ type ModifyMem0SecurityIpsRequest struct {
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The name of the whitelist group for the instance.
+	// The name of the whitelist group of the instance.
 	//
 	// example:
 	//

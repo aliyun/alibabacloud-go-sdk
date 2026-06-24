@@ -347,6 +347,88 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 
 // Summary:
 //
+// Enables a public domain name for a Mem0 instance.
+//
+// Description:
+//
+// This operation is used to confirm that no active connections exist before a rollback task, to ensure operation safety.
+//
+// @param request - AllocateMem0PublicConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AllocateMem0PublicConnectionResponse
+func (client *Client) AllocateMem0PublicConnectionWithOptions(request *AllocateMem0PublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *AllocateMem0PublicConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectionStringPrefix) {
+		query["ConnectionStringPrefix"] = request.ConnectionStringPrefix
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AllocateMem0PublicConnection"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AllocateMem0PublicConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables a public domain name for a Mem0 instance.
+//
+// Description:
+//
+// This operation is used to confirm that no active connections exist before a rollback task, to ensure operation safety.
+//
+// @param request - AllocateMem0PublicConnectionRequest
+//
+// @return AllocateMem0PublicConnectionResponse
+func (client *Client) AllocateMem0PublicConnection(request *AllocateMem0PublicConnectionRequest) (_result *AllocateMem0PublicConnectionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AllocateMem0PublicConnectionResponse{}
+	_body, _err := client.AllocateMem0PublicConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Mounts a columnar instance to a specified primary database instance.
 //
 // @param request - AttachColumnarInstanceRequest
@@ -9380,11 +9462,11 @@ func (client *Client) ModifyEngineMigration(request *ModifyEngineMigrationReques
 
 // Summary:
 //
-// Modifies the whitelist of a memory engine instance.
+// Modifies the whitelist of a memory engine.
 //
 // Description:
 //
-// ***.
+// ***
 //
 // @param request - ModifyMem0SecurityIpsRequest
 //
@@ -9444,11 +9526,11 @@ func (client *Client) ModifyMem0SecurityIpsWithOptions(request *ModifyMem0Securi
 
 // Summary:
 //
-// Modifies the whitelist of a memory engine instance.
+// Modifies the whitelist of a memory engine.
 //
 // Description:
 //
-// ***.
+// ***
 //
 // @param request - ModifyMem0SecurityIpsRequest
 //
@@ -9901,6 +9983,84 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 	runtime := &dara.RuntimeOptions{}
 	_result = &ReleaseInstancePublicConnectionResponse{}
 	_body, _err := client.ReleaseInstancePublicConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Releases the public domain name for a Mem0 instance.
+//
+// Description:
+//
+// This operation is used to verify that no active connections exist before a rollback task to ensure operational safety.
+//
+// @param request - ReleaseMem0PublicConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseMem0PublicConnectionResponse
+func (client *Client) ReleaseMem0PublicConnectionWithOptions(request *ReleaseMem0PublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *ReleaseMem0PublicConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentConnectionString) {
+		query["CurrentConnectionString"] = request.CurrentConnectionString
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReleaseMem0PublicConnection"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReleaseMem0PublicConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Releases the public domain name for a Mem0 instance.
+//
+// Description:
+//
+// This operation is used to verify that no active connections exist before a rollback task to ensure operational safety.
+//
+// @param request - ReleaseMem0PublicConnectionRequest
+//
+// @return ReleaseMem0PublicConnectionResponse
+func (client *Client) ReleaseMem0PublicConnection(request *ReleaseMem0PublicConnectionRequest) (_result *ReleaseMem0PublicConnectionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ReleaseMem0PublicConnectionResponse{}
+	_body, _err := client.ReleaseMem0PublicConnectionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
