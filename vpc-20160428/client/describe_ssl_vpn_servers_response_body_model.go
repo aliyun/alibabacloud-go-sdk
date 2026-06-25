@@ -22,13 +22,13 @@ type iDescribeSslVpnServersResponseBody interface {
 }
 
 type DescribeSslVpnServersResponseBody struct {
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in paging query.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeSslVpnServersResponseBody struct {
 	// D350187B-EA41-4577-950B-95434C8302E1
 	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SslVpnServers *DescribeSslVpnServersResponseBodySslVpnServers `json:"SslVpnServers,omitempty" xml:"SslVpnServers,omitempty" type:"Struct"`
-	// The number of entries returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -151,6 +151,7 @@ type DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer struct {
 	Compress              *bool   `json:"Compress,omitempty" xml:"Compress,omitempty"`
 	Connections           *int32  `json:"Connections,omitempty" xml:"Connections,omitempty"`
 	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DnsServers            *string `json:"DnsServers,omitempty" xml:"DnsServers,omitempty"`
 	EnableMultiFactorAuth *bool   `json:"EnableMultiFactorAuth,omitempty" xml:"EnableMultiFactorAuth,omitempty"`
 	IDaaSApplicationId    *string `json:"IDaaSApplicationId,omitempty" xml:"IDaaSApplicationId,omitempty"`
 	IDaaSInstanceId       *string `json:"IDaaSInstanceId,omitempty" xml:"IDaaSInstanceId,omitempty"`
@@ -194,6 +195,10 @@ func (s *DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer) GetConnecti
 
 func (s *DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer) GetCreateTime() *int64 {
 	return s.CreateTime
+}
+
+func (s *DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer) GetDnsServers() *string {
+	return s.DnsServers
 }
 
 func (s *DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer) GetEnableMultiFactorAuth() *bool {
@@ -278,6 +283,11 @@ func (s *DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer) SetConnecti
 
 func (s *DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer) SetCreateTime(v int64) *DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer) SetDnsServers(v string) *DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer {
+	s.DnsServers = &v
 	return s
 }
 

@@ -7719,19 +7719,19 @@ func (client *Client) CreateSslVpnClientCertWithContext(ctx context.Context, req
 //
 // Description:
 //
-//	  **CreateSslVpnServer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
+// - **CreateSslVpnServer*	- is an asynchronous operation. After you send a request, the system returns an instance ID but the SSL server has not been created yet. The creation task is still running in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the VPN gateway instance to determine the creation status of the SSL server:
 //
-//	    	- If the VPN gateway is in the **updating*	- state, the SSL server is being created.
+//   - If the VPN gateway instance is in the **updating*	- state, the SSL server is being created.
 //
-//	    	- If the VPN gateway is in the **active*	- state, the SSL server is created.
+//   - If the VPN gateway instance is in the **active*	- state, the SSL server is created.
 //
-//		- You cannot repeatedly call the **CreateSslVpnServer*	- operation within the specified period of time.
+// - **CreateSslVpnServer*	- does not support concurrent creation of SSL servers under the same VPN gateway.
 //
-// ### [](#)Prerequisite
+// ### Before you begin
 //
-//   - A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html).
+// - You have created a VPN gateway with the SSL-VPN feature enabled. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html).
 //
-//   - If you want to enable two-factor authentication for the SSL server, make sure that the VPN gateway supports two-factor authentication. You may need to upgrade the VPN gateway. For more information, see [Two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
+// - If you want to enable two-factor authentication for the SSL server, make sure that the VPN gateway instance supports this feature. You may need to upgrade the VPN gateway instance. For more information, see [SSL-VPN two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
 //
 // @param request - CreateSslVpnServerRequest
 //
@@ -7760,6 +7760,10 @@ func (client *Client) CreateSslVpnServerWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.Compress) {
 		query["Compress"] = request.Compress
+	}
+
+	if !dara.IsNil(request.DnsServers) {
+		query["DnsServers"] = request.DnsServers
 	}
 
 	if !dara.IsNil(request.DryRun) {
@@ -18935,7 +18939,7 @@ func (client *Client) DescribeSslVpnClientsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries one or more SSL-VPN servers.
+// Queries the SSL servers that have been created by calling the DescribeSslVpnServers operation.
 //
 // @param request - DescribeSslVpnServersRequest
 //
@@ -28621,21 +28625,21 @@ func (client *Client) ModifySslVpnClientCertWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies the configurations of an SSL server.
+// Calls the ModifySslVpnServer operation to modify the configuration of an SSL-VPN server.
 //
 // Description:
 //
-//	  To enable two-factor authentication for an SSL server, make sure that the VPN gateway supports two-factor authentication. You may need to upgrade the VPN gateway. For more information, see [Two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
+// - If you want to enable two-factor authentication for the SSL server, first make sure the VPN gateway instance supports this feature. You may need to upgrade the VPN gateway instance. For more information, see [SSL-VPN two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
 //
-//		- If you modify only **Name**, this operation is synchronous. If you modify other parameters besides **Name**, this operation is asynchronous.
+// - When only the **Name*	- of the SSL-VPN server is modified, this operation is synchronous. If configurations other than **Name*	- are also modified, this operation is asynchronous.
 //
-//		- **ModifySslVpnServer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
+// - When the **ModifySslVpnServer*	- operation is asynchronous, the system first returns a request ID, but the configuration of the SSL-VPN server has not been modified yet, and the modification task is still in progress in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the VPN gateway instance associated with the SSL-VPN server to confirm the modification status of the SSL-VPN server configuration:
 //
-//	    	- If the VPN gateway is in the **updating*	- state, the SSL server is being modified.
+//   - When the VPN gateway instance is in the **updating*	- state, the configuration of the SSL-VPN server is being modified.
 //
-//	    	- If the VPN gateway is in the **active*	- state, the SSL server is modified.
+//   - When the VPN gateway instance is in the **active*	- state, the configuration of the SSL-VPN server has been modified successfully.
 //
-//		- You cannot repeatedly call **ModifySslVpnServer*	- within the specified period of time.
+// - The **ModifySslVpnServer*	- operation does not support concurrent modification of SSL-VPN server configurations under the same VPN gateway.
 //
 // @param request - ModifySslVpnServerRequest
 //
@@ -28664,6 +28668,10 @@ func (client *Client) ModifySslVpnServerWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.Compress) {
 		query["Compress"] = request.Compress
+	}
+
+	if !dara.IsNil(request.DnsServers) {
+		query["DnsServers"] = request.DnsServers
 	}
 
 	if !dara.IsNil(request.DryRun) {

@@ -52,7 +52,7 @@ type iModifySslVpnServerResponseBody interface {
 }
 
 type ModifySslVpnServerResponseBody struct {
-	// The encryption algorithm.
+	// The encryption algorithm used.
 	//
 	// example:
 	//
@@ -64,19 +64,19 @@ type ModifySslVpnServerResponseBody struct {
 	//
 	// 10.30.30.0/24
 	ClientIpPool *string `json:"ClientIpPool,omitempty" xml:"ClientIpPool,omitempty"`
-	// Indicates whether data compression is enabled.
+	// Indicates whether communication is compressed.
 	//
 	// example:
 	//
 	// false
 	Compress *bool `json:"Compress,omitempty" xml:"Compress,omitempty"`
-	// The total number of current connections.
+	// The current number of connections.
 	//
 	// example:
 	//
 	// 0
 	Connections *int32 `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	// The time when the SSL server was created.
+	// The creation time of the SSL-VPN server.
 	//
 	// example:
 	//
@@ -84,9 +84,9 @@ type ModifySslVpnServerResponseBody struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indicates whether two-factor authentication is enabled.
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): Not enabled.
 	//
 	// example:
 	//
@@ -106,9 +106,9 @@ type ModifySslVpnServerResponseBody struct {
 	IDaaSInstanceId *string `json:"IDaaSInstanceId,omitempty" xml:"IDaaSInstanceId,omitempty"`
 	// The version of the IDaaS EIAM instance.
 	//
-	// 	- This parameter is returned only if the SSL server is associated with an IDaaS EIAM 2.0 instance. Only **EIAM 2.0*	- is returned.
+	// - This parameter is returned only when the SSL server is bound to an IDaaS EIAM 2.0 instance. The only valid value is **EIAM 2.0**.
 	//
-	// 	- If the SSL server is associated with an IDaaS EIAM 1.0 instance, no value is returned.
+	// - If the SSL server is bound to an IDaaS EIAM 1.0 instance, this parameter is not returned.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type ModifySslVpnServerResponseBody struct {
 	//
 	// 47.98.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The local CIDR block.
+	// The local subnet.
 	//
 	// example:
 	//
@@ -132,25 +132,25 @@ type ModifySslVpnServerResponseBody struct {
 	//
 	// 5
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The name of the SSL server.
+	// The name of the SSL-VPN server.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The port that is used by the SSL server.
+	// The port of the SSL-VPN server.
 	//
 	// example:
 	//
 	// 1194
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol that is used by the SSL server.
+	// The protocol used by the SSL-VPN server.
 	//
 	// example:
 	//
 	// UDP
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// The ID of the region where the SSL server is created.
+	// The region ID of the SSL-VPN server.
 	//
 	// example:
 	//
@@ -162,21 +162,21 @@ type ModifySslVpnServerResponseBody struct {
 	//
 	// DF11D6F6-E35A-41C3-9B20-6FC8A901FE65
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the SSL server belongs.
+	// The ID of the resource group to which the SSL-VPN server belongs.
 	//
-	// The SSL server and the VPN gateway associated with the SSL server belong to the same resource group. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
+	// The resource group of the SSL-VPN server is the same as that of the associated VPN gateway instance. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
 	//
 	// example:
 	//
 	// rg-acfmzs372yg****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the SSL server.
+	// The ID of the SSL-VPN server.
 	//
 	// example:
 	//
 	// vss-bp18q7hzj6largv4v****
 	SslVpnServerId *string `json:"SslVpnServerId,omitempty" xml:"SslVpnServerId,omitempty"`
-	// The ID of the VPN gateway.
+	// The ID of the VPN gateway instance.
 	//
 	// example:
 	//

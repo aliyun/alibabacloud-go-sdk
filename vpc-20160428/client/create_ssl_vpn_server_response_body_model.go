@@ -18,7 +18,7 @@ type iCreateSslVpnServerResponseBody interface {
 }
 
 type CreateSslVpnServerResponseBody struct {
-	// The SSL server name.
+	// The name of the SSL server.
 	//
 	// example:
 	//
