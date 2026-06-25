@@ -9,6 +9,8 @@ type iUpgradeClusterNodepoolRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetIgnoreWarningCheck(v bool) *UpgradeClusterNodepoolRequest
+	GetIgnoreWarningCheck() *bool
 	SetImageId(v string) *UpgradeClusterNodepoolRequest
 	GetImageId() *string
 	SetKubernetesVersion(v string) *UpgradeClusterNodepoolRequest
@@ -26,6 +28,7 @@ type iUpgradeClusterNodepoolRequest interface {
 }
 
 type UpgradeClusterNodepoolRequest struct {
+	IgnoreWarningCheck *bool `json:"ignore_warning_check,omitempty" xml:"ignore_warning_check,omitempty"`
 	// The system image ID of the node.
 	//
 	// example:
@@ -76,6 +79,10 @@ func (s UpgradeClusterNodepoolRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpgradeClusterNodepoolRequest) GetIgnoreWarningCheck() *bool {
+	return s.IgnoreWarningCheck
+}
+
 func (s *UpgradeClusterNodepoolRequest) GetImageId() *string {
 	return s.ImageId
 }
@@ -102,6 +109,11 @@ func (s *UpgradeClusterNodepoolRequest) GetRuntimeVersion() *string {
 
 func (s *UpgradeClusterNodepoolRequest) GetUseReplace() *bool {
 	return s.UseReplace
+}
+
+func (s *UpgradeClusterNodepoolRequest) SetIgnoreWarningCheck(v bool) *UpgradeClusterNodepoolRequest {
+	s.IgnoreWarningCheck = &v
+	return s
 }
 
 func (s *UpgradeClusterNodepoolRequest) SetImageId(v string) *UpgradeClusterNodepoolRequest {
@@ -159,7 +171,7 @@ type UpgradeClusterNodepoolRequestRollingPolicy struct {
 	//
 	// 5
 	BatchInterval *int32 `json:"batch_interval,omitempty" xml:"batch_interval,omitempty"`
-	// The maximum number of nodes that can be upgraded in parallel per batch. Nodes in the node pool are upgraded in batches.
+	// The maximum number of nodes that can be updated in parallel per batch. Nodes in the node pool are updated in batches.
 	//
 	// Valid values: [1,10].
 	//
@@ -171,9 +183,9 @@ type UpgradeClusterNodepoolRequestRollingPolicy struct {
 	MaxParallelism *int32 `json:"max_parallelism,omitempty" xml:"max_parallelism,omitempty"`
 	// The automatic pause policy during node upgrades. Valid values:
 	//
-	// - FirstBatch: pauses after the first batch is completed.
+	// - FirstBatch: pauses after the first batch is complete.
 	//
-	// - EveryBatch: pauses after each batch is completed.
+	// - EveryBatch: pauses after each batch is complete.
 	//
 	// - NotPause: does not pause.
 	//

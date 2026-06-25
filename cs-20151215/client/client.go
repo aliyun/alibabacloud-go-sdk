@@ -10850,7 +10850,7 @@ func (client *Client) UpgradeClusterAddons(ClusterId *string, request *UpgradeCl
 
 // Summary:
 //
-// Upgrades the kubelet version (recommended to match the control plane version), operating system version, or container runtime version of a specified cluster node pool.
+// Upgrades the kubelet version (which should match the control plane version), operating system version, or container runtime version of a specified cluster node pool.
 //
 // Description:
 //
@@ -10879,6 +10879,10 @@ func (client *Client) UpgradeClusterNodepoolWithOptions(ClusterId *string, Nodep
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.IgnoreWarningCheck) {
+		body["ignore_warning_check"] = request.IgnoreWarningCheck
+	}
+
 	if !dara.IsNil(request.ImageId) {
 		body["image_id"] = request.ImageId
 	}
@@ -10933,7 +10937,7 @@ func (client *Client) UpgradeClusterNodepoolWithOptions(ClusterId *string, Nodep
 
 // Summary:
 //
-// Upgrades the kubelet version (recommended to match the control plane version), operating system version, or container runtime version of a specified cluster node pool.
+// Upgrades the kubelet version (which should match the control plane version), operating system version, or container runtime version of a specified cluster node pool.
 //
 // Description:
 //
