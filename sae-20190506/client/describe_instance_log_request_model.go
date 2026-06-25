@@ -18,7 +18,7 @@ type iDescribeInstanceLogRequest interface {
 }
 
 type DescribeInstanceLogRequest struct {
-	// The ID of the sidecar container. You can call the [DescribeApplicationInstances](https://help.aliyun.com/document_detail/2834847.html) to obtain the ID.
+	// The ID of the sidecar container. Call the [ListApplicationInstances](https://help.aliyun.com/document_detail/2834847.html) operation to obtain this ID.
 	//
 	// example:
 	//
@@ -32,7 +32,12 @@ type DescribeInstanceLogRequest struct {
 	//
 	// ******-d700e680-aa4d-4ec1-afc2-6566b5ff4d7a-85d44d4bfc-*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Previous   *string `json:"Previous,omitempty" xml:"Previous,omitempty"`
+	// Specifies whether to view the log of the instance from before its last restart. Note: This parameter is active only if the instance was restarted.
+	//
+	// example:
+	//
+	// false
+	Previous *string `json:"Previous,omitempty" xml:"Previous,omitempty"`
 }
 
 func (s DescribeInstanceLogRequest) String() string {

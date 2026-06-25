@@ -47,10 +47,6 @@ type BatchStopApplicationsResponseBody struct {
 	// - The ErrorCode parameter is not returned if the request succeeds.
 	//
 	// - If the call fails, the ErrorCode parameter is returned. For more information, see the "Error codes" section of this topic.
-	//
-	// example:
-	//
-	// Null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The ID of the trace. It can be used to query the details of a request.
 	//
@@ -60,9 +56,9 @@ type BatchStopApplicationsResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned message.
 	//
-	// 	- **success*	- is returned when the request succeeds.
+	// - **success*	- is returned when the request succeeds.
 	//
-	// 	- An error code is returned when the request fails.
+	// - An error code is returned when the request fails.
 	//
 	// example:
 	//
@@ -169,9 +165,9 @@ func (s *BatchStopApplicationsResponseBody) Validate() error {
 type BatchStopApplicationsResponseBodyData struct {
 	// The error code.
 	//
-	// 	- If the request is successful, this parameter is not returned.****
+	// - If the request is successful, this parameter is not returned.\\*\\*\\*\\*
 	//
-	// 	- This parameter is returned only if the request failed.***	- For more information, see the "**Error codes**" section in this topic.
+	// - This parameter is returned only if the request failed.\\*\\*\\*\\	- For more information, see the "**Error codes**" section in this topic.
 	//
 	// example:
 	//

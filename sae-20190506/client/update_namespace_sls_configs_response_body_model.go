@@ -24,35 +24,31 @@ type iUpdateNamespaceSlsConfigsResponseBody interface {
 }
 
 type UpdateNamespaceSlsConfigsResponseBody struct {
-	// The status code or error code. Valid values: 2xx: The request was successful. 3xx: The request was redirected. 4xx: The request was invalid. 5xx: A server error occurred.
+	// The API status code or POP error code. Valid values: 2xx (success), 3xx (redirect), 4xx (client error), 5xx (server error).
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error code. Value description:
+	// The error code. Valid values:
 	//
-	// 	- If the request was successful, this field is not returned.
+	// - If the request is successful, the response does not include the `ErrorCode` parameter.
 	//
-	// 	- For more information, see the **Error codes*	- section of this topic.
-	//
-	// example:
-	//
-	// InvalidNamespaceId.NotFound
+	// - If the request fails, the response includes the `ErrorCode` parameter. For more information, see the **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The additional information.
+	// Additional information.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the Simple Log Service configuration for the namespace was updated. Valid values: true and false.
+	// Indicates whether the namespace\\"s SLS configuration was successfully updated. A value of `true` indicates success, while `false` indicates failure.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace, which is used to query the exact call information.
+	// The trace ID for the request. You can use this ID to query the details of the request.
 	//
 	// example:
 	//

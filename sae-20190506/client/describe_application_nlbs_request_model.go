@@ -14,7 +14,7 @@ type iDescribeApplicationNlbsRequest interface {
 }
 
 type DescribeApplicationNlbsRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//

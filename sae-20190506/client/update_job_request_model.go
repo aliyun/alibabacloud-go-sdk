@@ -106,19 +106,19 @@ type iUpdateJobRequest interface {
 }
 
 type UpdateJobRequest struct {
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role that is used to pull images across accounts. For more information, see [Grant permissions across Alibaba Cloud accounts by using a RAM role](https://help.aliyun.com/document_detail/223585.html).
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role that is required to pull images across accounts. For more information, see [Grant permissions across Alibaba Cloud accounts by using a RAM role](https://help.aliyun.com/document_detail/223585.html).
 	//
 	// example:
 	//
 	// acs:ram::123456789012****:role/adminrole
 	AcrAssumeRoleArn *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
-	// The ID of Container Registry Enterprise Edition instance N. This parameter is required when the **ImageUrl*	- parameter is set to the URL of an image in an ACR Enterprise Edition instance.
+	// The ID of the Container Registry Enterprise Edition instance. This parameter is required if **ImageUrl*	- is set to an image in a Container Registry Enterprise Edition instance.
 	//
 	// example:
 	//
 	// cri-xxxxxx
 	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	// The ID of the application.
+	// The ID of the job template to update.
 	//
 	// This parameter is required.
 	//
@@ -126,164 +126,171 @@ type UpdateJobRequest struct {
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The number of times the job is retried.
+	// The number of retries for the job.
 	//
 	// example:
 	//
 	// 3
-	BackoffLimit   *int64  `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	BackoffLimit *int64 `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	// The BestEffort policy.
 	BestEffortType *string `json:"BestEffortType,omitempty" xml:"BestEffortType,omitempty"`
-	// The command that is used to start the image. The command must be an existing executable object in the container. Example:
+	// The startup command of the image. The command must be an executable object that exists in the container. Example:
 	//
-	//     command:
+	// ```
 	//
-	//           - echo
+	// command:
 	//
-	//           - abc
+	//       - echo
 	//
-	//           - >
+	//       - abc
 	//
-	//           - file0
+	//       - >
 	//
-	// In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
+	//       - file0
+	//
+	// ```
+	//
+	// In this example, `Command="echo" and CommandArgs=["abc", ">", "file0"]`.
 	//
 	// example:
 	//
 	// echo
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The parameters of the image startup command. The CommandArgs parameter specifies the parameters that are required for the **Command*	- parameter. The name must meet the following format requirements:
+	// The arguments of the image startup **Command**. The value must be a JSON array that is converted to a string. Format:
 	//
 	// `["a","b"]`
 	//
-	// In the preceding example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. This parameter is optional.
+	// In the preceding example, `CommandArgs=["abc", ">", "file0"]`. The `["abc", ">", "file0"]` array is converted to a string. This parameter is optional.
 	//
 	// example:
 	//
 	// ["a","b"]
 	CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	// The concurrency policy of the job. Valid values:
+	// The policy of running concurrent jobs. Valid values:
 	//
-	// 	- **Forbid**: Prohibits concurrent running. If the previous job is not completed, no new job is created.
+	// - **Forbid**: A new job is not created if the previous job is not completed.
 	//
-	// 	- **Allow**: Allows concurrent running.
+	// - **Allow**: Concurrent jobs are allowed.
 	//
-	// 	- **Replace**: If the previous job is not completed when the time to create a new job is reached, the new job replaces the previous job.
+	// - **Replace**: When the time to create a new job is reached, the new job replaces the previous job if the previous job is not completed.
 	//
 	// example:
 	//
 	// Allow
 	ConcurrencyPolicy *string `json:"ConcurrencyPolicy,omitempty" xml:"ConcurrencyPolicy,omitempty"`
-	// The description of the **ConfigMap*	- instance mounted to the application. Use configurations created on the Configuration Items page to configure containers. The following parameters are involved:
+	// The description of the **ConfigMap*	- instance that is mounted to the container. You can use the ConfigMap instance created on the Namespace Configurations page to inject configurations into the container. The value is a JSON string. The following fields are supported:
 	//
-	// 	- **congfigMapId**: the ID of the ConfigMap instance. You can call the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation to obtain the ID.
+	// - **configMapId**: The ID of the ConfigMap instance. You can call the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation to obtain the ID.
 	//
-	// 	- **key**: the key.
+	// - **key**: The key of the key-value pair.
 	//
-	// > You can use the `sae-sys-configmap-all` key to mount all keys.
+	// > You can pass the `sae-sys-configmap-all` parameter to mount all key-value pairs.
 	//
-	// 	- **mountPath**: the mount path.
+	// - **mountPath**: The mount path.
 	//
 	// example:
 	//
 	// [{"configMapId":16,"key":"test","mountPath":"/tmp"}]
 	ConfigMapMountDesc *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
-	// The custom mappings between hostnames and IP addresses in the container. Valid values:
+	// The custom mapping between a hostname and an IP address in the container. The value is a JSON string. The following fields are supported:
 	//
-	// 	- **hostName**: the domain name or hostname.
+	// - **hostName**: the domain name or hostname.
 	//
-	// 	- **ip**: the IP address.
+	// - **ip**: the IP address.
 	//
 	// example:
 	//
 	// [{"hostName":"samplehost","ip":"127.0.0.1"}]
 	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
-	// The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
+	// The version of the application runtime environment in High-speed Service Framework (HSF), such as an Ali-Tomcat container.
 	//
 	// example:
 	//
 	// 3.5.3
 	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	EnableImageAccl      *bool   `json:"EnableImageAccl,omitempty" xml:"EnableImageAccl,omitempty"`
-	// The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
+	// Specifies whether to enable image acceleration.
+	EnableImageAccl *bool `json:"EnableImageAccl,omitempty" xml:"EnableImageAccl,omitempty"`
+	// The environment variables of the container. You can customize environment variables or reference variables from a ConfigMap. To reference a ConfigMap, you must create a ConfigMap instance first. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). The value is a JSON string. The following fields are supported:
 	//
-	// 	- Configure custom environment variables
+	// - Custom variables
 	//
-	//     	- **name**: the name of the environment variable.
+	//   - **name**: the name of the environment variable.
 	//
-	//     	- **value**: the value of the environment variable.
+	//   - **value**: the value of the environment variable.
 	//
-	// 	- Reference ConfigMap
+	// - Reference variables from a ConfigMap
 	//
-	//     	- **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+	//   - **name**: The name of the environment variable. You can reference a single key-value pair or all key-value pairs. To reference all key-value pairs, set the value to `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
 	//
-	//     	- **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
+	//   - **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
 	//
-	//     	- **configMapId**: the ConfigMap ID.
+	//   - **configMapId**: the ID of the ConfigMap.
 	//
-	//     	- **key**: the key. If you want to reference all keys, do not configure this parameter.
+	//   - **key**: The key of the key-value pair. If you want to reference all key-value pairs, do not configure this field.
 	//
 	// example:
 	//
 	// [{"name":"envtmp","value":"0"}]
 	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	// The ID of the corresponding Secret.
+	// The ID of the secret.
 	//
 	// example:
 	//
 	// 10
 	ImagePullSecrets *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
-	// The URL of the image. This parameter is returned only if the **PackageType*	- parameter is set to **Image**.
+	// The URL of the image. This parameter is required if **Package Type*	- is set to **Image**.
 	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+	// The arguments of the JAR package to start the application. The default startup command of the application is: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
 	//
 	// example:
 	//
 	// -Xms4G -Xmx4G
 	JarStartArgs *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	// The option settings in the JAR package. The settings are used to start the application container. The default startup command for application deployment is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+	// The options of the JAR package to start the application. The default startup command of the application is: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
 	//
 	// example:
 	//
 	// custom-option
 	JarStartOptions *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	// The version of the Java development kit (JDK) on which the deployment package of the application depends. The following versions are supported:
+	// The Java Development Kit (JDK) version that the deployment package depends on. The following versions are supported:
 	//
-	// 	- **Open JDK 8**
+	// - **Open JDK 8**
 	//
-	// 	- **Open JDK 7**
+	// - **Open JDK 7**
 	//
-	// 	- **Dragonwell 11**
+	// - **Dragonwell 11**
 	//
-	// 	- **Dragonwell 8**
+	// - **Dragonwell 8**
 	//
-	// 	- **openjdk-8u191-jdk-alpine3.9**
+	// - **openjdk-8u191-jdk-alpine3.9**
 	//
-	// 	- **openjdk-7u201-jdk-alpine3.9**
+	// - **openjdk-7u201-jdk-alpine3.9**
 	//
-	// This parameter is not returned if the **PackageType*	- parameter is set to **Image**.
+	// This parameter is not supported when **Package Type*	- is set to **Image**.
 	//
 	// example:
 	//
 	// Open JDK 8
 	Jdk *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	// The configurations for mounting the NAS file system. If you do not need to modify the NAS configurations when you deploy the application, configure **MountDesc*	- only in the first request. If you no longer need to use NAS, leave **MountDesc*	- empty in the request.
+	// The description of the NAS mount. If the configurations are not changed during a deployment, you do not need to configure this parameter. To clear the NAS configurations, set the value of this parameter to an empty string (`""`) in the request.
 	//
 	// example:
 	//
 	// [{mountPath: "/tmp", nasPath: "/"}]
 	MountDesc *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
-	// The mount target of the NAS file system in the VPC where the application is deployed. If you do not need to modify this configuration during the deployment, configure the **MountHost*	- parameter only in the first request. You do not need to include this parameter in subsequent requests. If you need to remove this configuration, leave the **MountHost*	- parameter empty in the request.
+	// The mount target of the NAS file system in the virtual private cloud (VPC) where the job template is located. If the configurations are not changed during a deployment, you do not need to configure this parameter. To clear the NAS configurations, set the value of this parameter to an empty string (`""`).
 	//
 	// example:
 	//
 	// 10d3b4bc9****.com
-	MountHost  *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	MountHost *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	// The configurations of mounting a NAS file system.
 	NasConfigs *string `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
-	// The ID of the Apsara File Storage NAS file system. If you do not need to modify the NAS configurations when you deploy the application, configure **NasId*	- only in the first request. If you no longer need to use NAS, leave **NasId*	- empty in the request.
+	// The ID of the Apsara File Storage NAS file system. If the configurations are not changed during a deployment, you do not need to configure this parameter. To clear the NAS configurations, set the value of this parameter to an empty string (`""`).
 	//
 	// example:
 	//
@@ -301,141 +308,141 @@ type UpdateJobRequest struct {
 	//
 	// xxxxxx
 	OssAkSecret *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
-	// The information about the mounted Object Storage Service (OSS) bucket. The following parameters are involved:
+	// The description of the OSS mount. The value is a JSON string. The following parameters are supported:
 	//
-	// 	- **bucketName**: the name of the OSS bucket.
+	// - **bucketName**: the name of the bucket.
 	//
-	// 	- **bucketPath**: the directory or object in OSS. If the specified directory or object does not exist, an error is returned.
+	// - **bucketPath**: the directory or object that you created in OSS. An exception occurs if the specified OSS mount directory does not exist.
 	//
-	// 	- **mountPath**: the directory of the container in SAE. If the path already exists, the newly specified path overwrites the previous one. If the path does not exist, it is created.
+	// - **mountPath**: The path in the SAE container. If the path exists, the new path overwrites the existing one. If the path does not exist, a new path is created.
 	//
-	// 	- **readOnly**: specifies whether to only allow the container path to read data from the OSS directory. Valid values:
+	// - **readOnly**: specifies whether a container has the read-only permission on the resources in the mount directory.
 	//
-	//     	- **true**: The container path only has read permission on the OSS directory.
+	//   - **true**: The container has the read-only permission.
 	//
-	//     	- **false**: The application has read and write permissions.
+	//   - **false**: The container has the read and write permissions.
 	//
 	// example:
 	//
 	// [{"bucketName": "oss-bucket", "bucketPath": "data/user.data", "mountPath": "/usr/data/user.data", "readOnly": true}]
 	OssMountDescs *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
-	// The address of the deployment package. This parameter is required if you set **PackageType*	- to **FatJar**, **War**, or **PythonZip**.
+	// The URL of the deployment package. This parameter is required if **Package Type*	- is set to **FatJar**, **War**, or **PythonZip**.
 	//
 	// example:
 	//
 	// http://myoss.oss-cn-hangzhou.aliyuncs.com/my-buc/2019-06-30/****.jar
 	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	// The version of the deployment package. This parameter is required if you set **PackageType*	- to **FatJar**, **War**, or **PythonZip**.
+	// The version of the deployment package. This parameter is required if **Package Type*	- is set to **FatJar**, **War**, or **PythonZip**.
 	//
 	// example:
 	//
 	// 1.0.1
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	// The ID of Container Registry Enterprise Edition instance N.
+	// The ID of the Container Registry Enterprise Edition instance.
 	//
 	// example:
 	//
 	// cri-xxxxxx
 	Php *string `json:"Php,omitempty" xml:"Php,omitempty"`
-	// The details of the PHP configuration file.
+	// The content of the PHP configuration file.
 	//
 	// example:
 	//
 	// k1=v1
 	PhpConfig *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
-	// The path on which the PHP configuration file for application startup is mounted. Make sure that the PHP server uses this configuration file during the startup.
+	// The path on which the PHP application startup configuration file is mounted. Make sure that the PHP server uses this configuration file to start the application.
 	//
 	// example:
 	//
 	// /usr/local/etc/php/php.ini
 	PhpConfigLocation *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
-	// The script to be run after the container is started. Example: `{"exec":{"command":["sh","-c","echo hello"\\]}}`
+	// The script that is executed after the container is started. Example: `{"exec":{"command":["sh","-c","echo hello"]}}`
 	//
 	// example:
 	//
 	// {"exec":{"command":["sh","-c","echo hello"]}}
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	// The script that is run before the container is stopped. Example: `{"exec":{"command":["sh","-c","echo hello"\\]}}`
+	// The script that is executed before the container is stopped. Example: `{"exec":{"command":["sh","-c","echo hello"]}}`
 	//
 	// example:
 	//
 	// {"exec":{"command":["sh","-c","echo hello"]}}
 	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	// The programming language. Valid values: **java**, **php**, **python**, and **shell**.
+	// The programming language. Supported values: **java**, **php**, **python**, and **shell**.
 	//
 	// example:
 	//
 	// java
 	ProgrammingLanguage *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
-	// The Python environment. Set the value to **PYTHON 3.9.15**.
+	// The Python environment. **PYTHON 3.9.15*	- is supported.
 	//
 	// example:
 	//
 	// PYTHON 3.9.15
 	Python *string `json:"Python,omitempty" xml:"Python,omitempty"`
-	// The configurations for installing custom module dependencies. By default, the dependencies defined by the requirements.txt file in the root directory are installed. If the package does not contain this file and you do not configure custom dependencies in the package, specify the dependencies that you want to install in the text box.
+	// The custom module dependencies. By default, the dependencies that are defined in the requirements.txt file in the root directory of the package are installed. If you do not configure this parameter or the package does not have a requirements.txt file, you can specify the dependencies that you want to install.
 	//
 	// example:
 	//
 	// Flask==2.0
 	PythonModules *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
-	// The ID of the job that you reference.
+	// The ID of the referenced application.
 	//
 	// example:
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	RefAppId *string `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
-	// The number of concurrent instances.
+	// The number of concurrent instances for the job.
 	//
 	// example:
 	//
 	// 3
 	Replicas *string `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	// Specifies whether to enable job sharding.
+	// Enables job sharding.
 	//
 	// example:
 	//
 	// true
 	Slice *bool `json:"Slice,omitempty" xml:"Slice,omitempty"`
-	// The parameters of job sharding.
+	// The parameters for job sharding.
 	//
 	// example:
 	//
 	// [0,1,2]
 	SliceEnvs *string `json:"SliceEnvs,omitempty" xml:"SliceEnvs,omitempty"`
-	// The configurations of Log Service.
+	// The configurations of collecting logs to Log Service.
 	//
-	// 	- To use Log Service resources that are automatically created by SAE, set this parameter to `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+	// - Use the Log Service resources that are automatically created by SAE: `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
 	//
-	// 	- To use custom Log Service resources, set this parameter to `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+	// - Use a custom Log Service resource: `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
 	//
-	// The following parameters are involved:
+	// The following fields are supported:
 	//
-	// 	- **projectName**: the name of the Log Service project.
+	// - **projectName**: The name of the Log Service project.
 	//
-	// 	- **logDir**: the path in which logs are stored.
+	// - **logDir**: The log path.
 	//
-	// 	- **logType**: the log type. **stdout**: the standard output log of the container. You can specify only one stdout value for this parameter. If you leave this parameter empty, file logs are collected.
+	// - **logType**: The log type. **stdout*	- indicates the standard output log of the container. You can specify only one standard output. If you do not configure this field, file logs are collected.
 	//
-	// 	- **logstoreName**: the name of the Logstore in Log Service.
+	// - **logstoreName**: The name of the Logstore in Log Service.
 	//
-	// 	- **logtailName**: the name of the Logtail configuration in Log Service. If you do not configure this parameter, a new Logtail configuration is created.
+	// - **logtailName**: The name of the Logtail. If you do not specify this parameter, a new Logtail is created.
 	//
-	// If you do not need to modify the logging configurations when you deploy the application, configure the **SlsConfigs*	- parameter only in the first request. You do not need to include this parameter in subsequent requests. If you no longer need to use Log Service, leave the **SlsConfigs*	- parameter empty in the request.
+	// If the SLS configuration is not changed during a deployment, you do not need to configure this parameter. To stop using the log collection feature, set the value of this parameter to an empty string (`""`).
 	//
-	// > A Log Service project that is automatically created by SAE when you create an application is deleted when the application is deleted. Therefore, when you create an application, you cannot select a Log Service project that is automatically created by SAE for log collection.
+	// > Projects that are automatically created with a job template are deleted when the job template is deleted. Therefore, when you select an existing project, do not select a project that is automatically created by SAE.
 	//
 	// example:
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
 	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	// The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
+	// The graceful timeout period. Default value: 30. Unit: seconds. Valid values: 1 to 300.
 	//
 	// example:
 	//
 	// 10
 	TerminationGracePeriodSeconds *int32 `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	// The timeout period. Unit: seconds.
+	// The timeout period for the job. Unit: seconds.
 	//
 	// example:
 	//
@@ -447,36 +454,36 @@ type UpdateJobRequest struct {
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// The Tomcat configuration. If you want to delete the configuration, set this parameter to {} or leave this parameter empty. Valid values:
+	// The configurations of the Tomcat file. If you set this parameter to "" or "{}", the configurations are deleted. The value is a JSON string. The following fields are supported:
 	//
-	// 	- **port**: the port number. The port number ranges from 1024 to 65535. Though the admin permissions are configured for the container, the root permissions are required to perform operations on ports whose number is smaller than 1024. Enter a value that ranges from 1025 to 65535 because the container has only the admin permissions. If you do not specify this parameter, the default port number 8080 is used.
+	// - **port**: The port number. Valid values: 1024 to 65535. The root permission is required to perform operations on ports whose number is smaller than 1024. The container is configured with the administrator permission. Therefore, specify a port whose number is greater than 1024. If you do not configure this field, the default port 8080 is used.
 	//
-	// 	- **contextPath**: the path. Default value: /. This value indicates the root directory.
+	// - **contextPath**: The context path. Default value: /.
 	//
-	// 	- **maxThreads**: the maximum number of connections in the connection pool. Default value: 400.
+	// - **maxThreads**: The maximum number of connections in the connection pool. Default value: 400.
 	//
-	// 	- **uriEncoding**: the URI encoding scheme in the Tomcat container. Valid values: **UTF-8**, **ISO-8859-1**, **GBK**, and GB2312. If you do not specify this parameter, the default value **ISO-8859-1*	- is used.
+	// - **uriEncoding**: The URI encoding scheme in Tomcat. Supported values: **UTF-8**, **ISO-8859-1**, **GBK**, and **GB2312**. If you do not set this parameter, the default value **ISO-8859-1*	- is used.
 	//
-	// 	- **useBodyEncoding**: specifies whether to use the encoding scheme that is specified by **BodyEncoding for URL**. Default value: **true**.
+	// - **useBodyEncodingForUri**: Specifies whether to use **BodyEncoding for URL**. Default value: **true**.
 	//
 	// example:
 	//
 	// {"port":8080,"contextPath":"/","maxThreads":400,"uriEncoding":"ISO-8859-1","useBodyEncodingForUri":true}
 	TomcatConfig  *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
 	TriggerConfig *string `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
-	// The startup command of the WAR package. For information about how to configure the startup command, see [Configure startup commands](https://help.aliyun.com/document_detail/96677.html).
+	// The startup command for the application that is deployed in a WAR package. The procedure is the same as that for configuring the startup command for an image. For more information, see [Set a startup command](https://help.aliyun.com/document_detail/96677.html).
 	//
 	// example:
 	//
 	// CATALINA_OPTS=\\"$CATALINA_OPTS $Options\\" catalina.sh run
 	WarStartOptions *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
-	// The version of the Tomcat container on which the deployment package depends. The following versions are supported:
+	// The Tomcat version that the deployment package depends on. The following versions are supported:
 	//
-	// 	- **apache-tomcat-7.0.91**
+	// - **apache-tomcat-7.0.91**
 	//
-	// 	- **apache-tomcat-8.5.42**
+	// - **apache-tomcat-8.5.42**
 	//
-	// This parameter is not returned if the **PackageType*	- parameter is set to **Image**.
+	// This parameter is not supported when **Package Type*	- is set to **Image**.
 	//
 	// example:
 	//

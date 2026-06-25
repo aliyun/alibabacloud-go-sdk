@@ -14,7 +14,7 @@ type iListAllSwimmingLaneGroupsRequest interface {
 }
 
 type ListAllSwimmingLaneGroupsRequest struct {
-	// The ID of a namespace.
+	// The namespace ID.
 	//
 	// example:
 	//

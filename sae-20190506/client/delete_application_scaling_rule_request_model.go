@@ -16,7 +16,7 @@ type iDeleteApplicationScalingRuleRequest interface {
 }
 
 type DeleteApplicationScalingRuleRequest struct {
-	// The ID of the request.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteApplicationScalingRuleRequest struct {
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The name of the Auto Scaling policy.
 	//
 	// This parameter is required.
 	//

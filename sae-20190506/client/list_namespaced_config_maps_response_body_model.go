@@ -28,53 +28,53 @@ type iListNamespacedConfigMapsResponseBody interface {
 type ListNamespacedConfigMapsResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the call was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: indicates that the call was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: indicates that the call failed.
+	// - **4xx**: A client error occurred.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The data returned by the request.
 	Data *ListNamespacedConfigMapsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error code. Valid values:
+	// The error code.
 	//
-	// - If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// -
 	//
-	// - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// - This parameter is returned only if the request fails. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned information. Valid values:
+	// The response message. Valid values:
 	//
-	// 	- If the call is successful, **success*	- is returned.
+	// - Returns **success*	- if the request is successful.
 	//
-	// 	- If the call fails, an error code is returned.
+	// - Returns an error message if the request fails.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the ConfigMap instances were obtained. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The instances were obtained.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The instances failed to be obtained.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The trace ID. You can use this ID to trace the request.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ func (s *ListNamespacedConfigMapsResponseBody) Validate() error {
 }
 
 type ListNamespacedConfigMapsResponseBodyData struct {
-	// The ConfigMap instances.
+	// The list of ConfigMap instances.
 	ConfigMaps []*ListNamespacedConfigMapsResponseBodyDataConfigMaps `json:"ConfigMaps,omitempty" xml:"ConfigMaps,omitempty" type:"Repeated"`
 }
 
@@ -204,17 +204,15 @@ type ListNamespacedConfigMapsResponseBodyDataConfigMaps struct {
 	//
 	// 1
 	ConfigMapId *int64 `json:"ConfigMapId,omitempty" xml:"ConfigMapId,omitempty"`
-	// The time when the instance was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1593760185111
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The data of ConfigMap key-value pairs. Format:
+	// The key-value pairs of the ConfigMap instance.
 	//
-	// {"k1":"v1", "k2":"v2"}
-	//
-	// k specifies a key and v specifies a value. For more information, see [Manage and use configurations](https://help.aliyun.com/document_detail/171326.html).
+	// For more information about the ConfigMap, see [Manage and use configuration items](https://help.aliyun.com/document_detail/171326.html).
 	//
 	// example:
 	//
@@ -226,21 +224,21 @@ type ListNamespacedConfigMapsResponseBodyDataConfigMaps struct {
 	//
 	// test-desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the ConfigMap instance.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// test-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The application that is associated with the instance.
+	// The associated applications.
 	RelateApps []*ListNamespacedConfigMapsResponseBodyDataConfigMapsRelateApps `json:"RelateApps,omitempty" xml:"RelateApps,omitempty" type:"Repeated"`
-	// The time when the instance was last modified.
+	// The last update time.
 	//
 	// example:
 	//
@@ -342,13 +340,13 @@ func (s *ListNamespacedConfigMapsResponseBodyDataConfigMaps) Validate() error {
 }
 
 type ListNamespacedConfigMapsResponseBodyDataConfigMapsRelateApps struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// f16b4000-9058-4c22-a49d-49a28f0b****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//

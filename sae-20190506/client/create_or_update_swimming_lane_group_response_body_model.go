@@ -26,33 +26,33 @@ type iCreateOrUpdateSwimmingLaneGroupResponseBody interface {
 }
 
 type CreateOrUpdateSwimmingLaneGroupResponseBody struct {
-	// The HTTP status code or the error code. Valid values:
+	// The HTTP status code:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: Redirection.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: A client error occurred.
 	//
-	// 	- **5xx**: Server error.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The application information.
+	// The data object returned by the operation.
 	Data *CreateOrUpdateSwimmingLaneGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The status code. Value values:
+	// The error code.
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - This parameter is not returned if the request is successful.
 	//
-	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Additional information. Valid values:
+	// The response message:
 	//
-	// 	- The error message returned because the request is normal and **success*	- is returned.
+	// - **success**: The request was successful.
 	//
-	// 	- If the request is abnormal, the specific exception error code is returned.
+	// - An error code is returned if the request fails.
 	//
 	// example:
 	//
@@ -64,17 +64,17 @@ type CreateOrUpdateSwimmingLaneGroupResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the lane group is created. Valid values:
+	// Indicates whether the request was successful:
 	//
-	// 	- **true**: Created successfully.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The ConfigMap failed to be created.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. This parameter is used to query the exact call information.
+	// The trace ID, which you can use to query the details of the request.
 	//
 	// example:
 	//
@@ -163,11 +163,11 @@ func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneGroupResponseBodyData struct {
-	// The ID of the lane group.
+	// The ID of the swimming lane group.
 	//
 	// example:
 	//
-	// 2074
+	// 110272
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 

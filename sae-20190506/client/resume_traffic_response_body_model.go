@@ -26,15 +26,15 @@ type iResumeTrafficResponseBody interface {
 }
 
 type ResumeTrafficResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: A client-side error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server-side error occurred.
 	//
 	// example:
 	//
@@ -42,13 +42,17 @@ type ResumeTrafficResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned results.
 	Data *ResumeTrafficResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
+	// The error code.
+	//
+	// - This parameter is empty if the request is successful.
+	//
+	// - If the request fails, this parameter contains an error code. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned for the operation. Valid values:
+	// The returned message.
 	//
-	// 	- If the request is successful, **success*	- is returned.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// 	- If the request fails, a specific error code is returned.
+	// - If the request fails, an error message is returned.
 	//
 	// example:
 	//
@@ -60,17 +64,13 @@ type ResumeTrafficResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- **True**: The traffic was resumed.
-	//
-	// 	- **False**: The traffic failed to be resumed.
+	// Indicates whether the traffic was resumed. **True*	- indicates that the traffic was resumed, and **False*	- indicates that the traffic was not resumed.
 	//
 	// example:
 	//
 	// True
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID.
+	// The trace ID of the request. You can use this ID to troubleshoot the request.
 	//
 	// example:
 	//
@@ -159,21 +159,21 @@ func (s *ResumeTrafficResponseBody) Validate() error {
 }
 
 type ResumeTrafficResponseBodyData struct {
-	// The description of the returned code.
+	// Details about the operation\\"s result.
 	//
 	// example:
 	//
 	// succeed in handling request
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// Indicates whether the traffic was removed. Valid values:
+	// Indicates whether the traffic was resumed.
 	//
-	// 	- **true**: The traffic was removed.
+	// - **True**: The traffic was resumed.
 	//
-	// 	- **false**: The traffic failed to be removed.
+	// - **False**: The traffic was not resumed.
 	//
 	// example:
 	//
-	// true
+	// True
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 

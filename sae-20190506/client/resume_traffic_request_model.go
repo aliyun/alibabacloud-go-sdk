@@ -22,7 +22,7 @@ type ResumeTrafficRequest struct {
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The instance ID.
+	// The instance ID. To specify multiple instances, separate their IDs with commas.
 	//
 	// example:
 	//

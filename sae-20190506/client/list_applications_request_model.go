@@ -42,7 +42,7 @@ type ListApplicationsRequest struct {
 	//
 	// demo-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The SAE application type. Valid values:
+	// The type of the SAE application.
 	//
 	// - **micro_service**
 	//
@@ -60,69 +60,99 @@ type ListApplicationsRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Set the filtering criteria for applications. The value options are as follows:
+	// The field to filter applications by. Valid values:
 	//
-	// - appName: Application name.
+	// - **appName**: The application name.
 	//
-	// - appIds: Application IDs.
+	// - **appIds**: The application ID.
 	//
-	// - slbIps: SLB IP addresses.
+	// - **slbIps**: The SLB IP address.
 	//
-	// - instanceIps: Instance IP addresses.
+	// - **instanceIps**: The instance IP address.
 	//
 	// example:
 	//
 	// appName
 	FieldType *string `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
-	// The name, ID, SLB IP, or instance IP of the target application.
+	// The value for the field specified by `FieldType`. This can be an application name, application ID, SLB IP address, or instance IP address.
 	//
 	// example:
 	//
 	// demo-app
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+	// Filters applications by whether they are stateful. Set this parameter to `true` to return only stateful applications, or to `false` to return only stateless applications.
 	IsStateful *string `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
 	// The namespace ID.
 	//
 	// example:
 	//
 	// cn-beijing:demo
-	NamespaceId   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The edition of the application:
+	//
+	// - `lite`: Lite
+	//
+	// - `std`: Standard
+	//
+	// - `pro`: Pro
 	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
-	// Specifies how applications are sorted. Valid values:
+	// The field to sort the applications by. Valid values:
 	//
-	// 	- **running**: The applications are sorted based on the number of running instances.
+	// - **runnings**: Sorts the applications by the current instance count.
 	//
-	// 	- **instances**: The applications are sorted based on the number of destination instances.
+	// - **instances**: Sorts the applications by the target instance count.
 	//
 	// example:
 	//
-	// running
+	// runnings
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The number of records in each page. Value range: [0,10000]
+	// The number of entries to return per page. Valid values: 0 to 10000.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Sort by the running status of application instances. If the statuses are the same, sort by instance ID. The value options are as follows:
+	// The sort order. Valid values:
 	//
-	// - true: Sort in ascending order. Instances are arranged according to the startup process, for example: to ultimately reach the running state, an instance must first go through steps such as starting containers, pulling images, and initializing the instance.
+	// - **true**: Sorts the results in ascending order.
 	//
-	// - false: Sort in descending order.
+	// - **false**: Sorts the results in descending order.
+	//
+	// 1. ****
+	//
+	// 2. ****
+	//
+	// 3. ****
+	//
+	// 4. ****
+	//
+	// 5. ****
+	//
+	// 6. ****
+	//
+	// 7. ****
+	//
+	// 8. ****
+	//
+	// 9. ****
+	//
+	// 10. ****
+	//
+	// 11. ****
 	//
 	// example:
 	//
 	// true
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	// The tag in the format of a key-value pair.
+	// Filters applications by tags. The tags are specified as a JSON string that contains an array of key-value pairs.
 	//
-	// 	- **key**: the tag key. It cannot exceed 128 characters in length.
+	// - **key**: The tag key, which can be 1 to 128 characters in length.
 	//
-	// 	- **value**: the tag value. It cannot exceed 128 characters in length.
+	// - **value**: The tag value, which can be 1 to 128 characters in length.
 	//
-	// Tag keys and tag values are case-sensitive. If you specify multiple tags, the system adds all the tags to the specified resources. Each tag key on a resource can have only one tag value. If you create a tag that has the same key as an existing tag, the value of the existing tag is overwritten.
+	// This parameter is case-sensitive. An application is returned only if it matches all specified tags. On a resource, a tag key can have only one tag value.
 	//
-	// Tag keys and tag values cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key and tag value cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

@@ -24,53 +24,53 @@ type iDeleteSwimmingLaneGroupResponseBody interface {
 }
 
 type DeleteSwimmingLaneGroupResponseBody struct {
-	// The HTTP status code or the error code. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: A request error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The status code. Value values:
+	// The error code. This parameter is returned only if the request fails. For more information, see the **Error codes*	- section of this topic.
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - If the request is successful, the **ErrorCode*	- field is not returned.
 	//
-	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	// - A failed request returns the **ErrorCode*	- field. For more information, see the **error code*	- list in this article.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// null null
+	// The returned message.
 	//
-	// 	- null****
+	// - **success*	- is returned for a successful request.
 	//
-	// 	- null
+	// - An error code is returned for a failed request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// null
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The policy was deleted.
+	// - **true**: The swimming lane group was successfully deleted.
 	//
-	// 	- **false**: Delete failed.
+	// - **false**: The swimming lane group was not deleted.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// null
+	// The trace ID. Use this ID to query the details of a call.
 	//
 	// example:
 	//

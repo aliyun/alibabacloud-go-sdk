@@ -28,31 +28,31 @@ type iDescribeApplicationImageResponseBody interface {
 type DescribeApplicationImageResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: A client-side error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server-side error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the image of the application.
+	// The application image information.
 	Data *DescribeApplicationImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. Valid values:
+	// The error code.
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - This parameter is left empty if the request is successful.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	// - This parameter returns an error code if the request fails. For more information, see the **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message. Valid values:
+	// The returned message.
 	//
-	// 	- success: If the call is successful, **success*	- is returned.
+	// - **success*	- is returned if the request is successful.
 	//
-	// 	- An error code: If the call fails, an error code is returned.
+	// - An error code is returned if the request fails.
 	//
 	// example:
 	//
@@ -64,17 +64,17 @@ type DescribeApplicationImageResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the information about the image was obtained. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The information was obtained.
+	// - **true**
 	//
-	// 	- **false**: The information failed to be obtained.
+	// - **false**
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID that is used to query the details of a request.
 	//
 	// example:
 	//
@@ -173,31 +173,31 @@ type DescribeApplicationImageResponseBodyData struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the repository.
+	// The image repository name.
 	//
 	// example:
 	//
 	// demo
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace to which the image repository belongs.
+	// The image namespace.
 	//
 	// example:
 	//
 	// demo
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	// The type of the repository. Only Container Registry is supported.
+	// The image repository type. Currently, only Container Registry is supported.
 	//
 	// example:
 	//
 	// ALI_HUB
 	RepoOriginType *string `json:"RepoOriginType,omitempty" xml:"RepoOriginType,omitempty"`
-	// The tag of the image.
+	// The image tag.
 	//
 	// example:
 	//
 	// latest
 	RepoTag *string `json:"RepoTag,omitempty" xml:"RepoTag,omitempty"`
-	// This parameter is reserved.
+	// A reserved field.
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
 }
 

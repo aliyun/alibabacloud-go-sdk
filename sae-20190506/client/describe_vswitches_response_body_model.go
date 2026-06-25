@@ -26,28 +26,13 @@ type iDescribeVSwitchesResponseBody interface {
 }
 
 type DescribeVSwitchesResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data []*DescribeVSwitchesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// example:
-	//
-	// success
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 2D7E6B28-27C9-5EEA-B0A3-FC0D2F5B2263
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	// example:
-	//
-	// 0a001a0817594572118465681d2341
-	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*DescribeVSwitchesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                              `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s DescribeVSwitchesResponseBody) String() string {
@@ -135,32 +120,12 @@ func (s *DescribeVSwitchesResponseBody) Validate() error {
 }
 
 type DescribeVSwitchesResponseBodyData struct {
-	// example:
-	//
-	// 246
 	AvailableIpAddressCount *string `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
-	// example:
-	//
-	// SUCCESS
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// vsw-2vc18rvxe1hk5dcsyy650
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// example:
-	//
-	// test
-	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	// vpcid。
-	//
-	// example:
-	//
-	// vpc-2ze7b7cfxmxypkodyg5io
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// example:
-	//
-	// cn-beijing-l
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchId               *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchName             *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	VpcId                   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId                  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeVSwitchesResponseBodyData) String() string {

@@ -14,7 +14,7 @@ type iListNamespacedConfigMapsRequest interface {
 }
 
 type ListNamespacedConfigMapsRequest struct {
-	// cn-hangzhou
+	// The ID of the namespace.
 	//
 	// This parameter is required.
 	//

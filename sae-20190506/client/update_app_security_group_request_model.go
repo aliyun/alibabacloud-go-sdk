@@ -16,7 +16,7 @@ type iUpdateAppSecurityGroupRequest interface {
 }
 
 type UpdateAppSecurityGroupRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type UpdateAppSecurityGroupRequest struct {
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// This parameter is required.
 	//

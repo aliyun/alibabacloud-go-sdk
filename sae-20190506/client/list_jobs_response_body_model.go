@@ -30,45 +30,41 @@ type iListJobsResponseBody interface {
 }
 
 type ListJobsResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The status of the interface or the POP error code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: Redirection.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: A request error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The job templates.
+	// The list of job templates.
 	Data *ListJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned. Take note of the following rules:
+	// The error code.
 	//
-	// 	- If the call is successful, **ErrorCode*	- is not returned.
+	// - If the request is successful, this parameter is not returned.
 	//
-	// 	- If the call fails, **ErrorCode*	- is returned. For more information, see the "**Error codes**" section in this topic.
-	//
-	// example:
-	//
-	// Null
+	// - If the request fails, this parameter is returned. For more information, see the **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// Additional information about the call.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -80,11 +76,11 @@ type ListJobsResponseBody struct {
 	//
 	// B4D805CA-926D-41B1-8E63-7AD0C1ED****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the applications were obtained. Valid values:
+	// Indicates whether the list of job templates was obtained. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The list was obtained.
 	//
-	// 	- **false**
+	// - **false**: The list failed to be obtained.
 	//
 	// example:
 	//
@@ -197,15 +193,15 @@ func (s *ListJobsResponseBody) Validate() error {
 }
 
 type ListJobsResponseBodyData struct {
-	// The job templates.
+	// The list of job templates.
 	Applications []*ListJobsResponseBodyDataApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -301,102 +297,103 @@ type ListJobsResponseBodyDataApplications struct {
 	//
 	// demo-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The time when the job was last completed.
+	// The time when the last job was completed.
 	//
 	// example:
 	//
 	// 1657522839
 	CompletionTime *int64 `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
-	// The CPU specifications that are required for each instance. Unit: millicores. This parameter cannot be set to 0. Valid values:
+	// The CPU required for each instance, in millicores. The value cannot be 0. Only the following defined specifications are supported:
 	//
-	// 	- **500**
+	// - **500**
 	//
-	// 	- **1000**
+	// - **1000**
 	//
-	// 	- **2000**
+	// - **2000**
 	//
-	// 	- **4000**
+	// - **4000**
 	//
-	// 	- **8000**
+	// - **8000**
 	//
-	// 	- **16000**
+	// - **16000**
 	//
-	// 	- **32000**
+	// - **32000**
 	//
 	// example:
 	//
 	// 500
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The number of instances that failed to run.
+	// The number of failed instances.
 	//
 	// example:
 	//
 	// 0
-	Failed   *int64  `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// The image URL.
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Indicates whether the latest change order was executed. Valid values:
+	// Indicates whether the last release order was successfully executed. Valid values:
 	//
-	// 	- **0**: The latest change order failed to be executed.
+	// - **0**: The release order failed to be executed.
 	//
-	// 	- **1**: The latest change order was executed.
+	// - **1**: The release order was successfully executed.
 	//
 	// example:
 	//
 	// 1
 	LastChangeorderState *string `json:"LastChangeorderState,omitempty" xml:"LastChangeorderState,omitempty"`
-	// The status of the latest job. Valid values:
+	// The state of the last job. Valid values:
 	//
-	// 	- **0**: The job is not executed.
+	// - **0**: Not executed.
 	//
-	// 	- **1**: The job was executed.
+	// - **1**: Successful.
 	//
-	// 	- **2**: The job failed to be executed.
+	// - **2**: Failed.
 	//
-	// 	- **3**: The job is being executed.
+	// - **3**: Running.
 	//
 	// example:
 	//
 	// 0
 	LastJobState *string `json:"LastJobState,omitempty" xml:"LastJobState,omitempty"`
-	// The time when the job was last started.
+	// The time when the last job was started.
 	//
 	// example:
 	//
 	// 1657522800
 	LastStartTime *int64 `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
-	// The size of memory that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
+	// The memory required for each instance, in MB. The value cannot be 0. This parameter corresponds to the CPU parameter. Only the following defined specifications are supported:
 	//
-	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
+	// - **1024**: corresponds to 500 and 1,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **2048*	- if the Cpu parameter is set to 500, 1000, or 2000.
+	// - **2048**: corresponds to 500, 1,000, and 2,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **4096*	- if the Cpu parameter is set to 1000, 2000, or 4000.
+	// - **4096**: corresponds to 1,000, 2,000, and 4,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **8192*	- if the Cpu parameter is set to 2000, 4000, or 8000.
+	// - **8192**: corresponds to 2,000, 4,000, and 8,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **12288*	- if the Cpu parameter is set to 12000.
+	// - **12288**: corresponds to 12,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **16384*	- if the Cpu parameter is set to 4000, 8000, or 16000.
+	// - **16384**: corresponds to 4,000, 8,000, and 16,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **24576*	- if the Cpu parameter is set to 12000.
+	// - **24576**: corresponds to 12,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **32768*	- if the Cpu parameter is set to 16000.
+	// - **32768**: corresponds to 16,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **65536*	- if the Cpu parameter is set to 8000, 16000, or 32000.
+	// - **65536**: corresponds to 8,000, 16,000, and 32,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **131072*	- if the Cpu parameter is set to 32000.
+	// - **131072**: corresponds to 32,000 millicores of CPU.
 	//
 	// example:
 	//
 	// 1024
 	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// The returned message.
+	// Additional information about the call.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
@@ -408,13 +405,13 @@ type ListJobsResponseBodyDataApplications struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of instances that were successfully run.
+	// The number of successful instances.
 	//
 	// example:
 	//
 	// 3
 	Succeeded *int64 `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
-	// Indicates whether the job template is suspended.
+	// Indicates whether the job template is paused.
 	//
 	// example:
 	//
@@ -618,13 +615,13 @@ func (s *ListJobsResponseBodyDataApplications) Validate() error {
 }
 
 type ListJobsResponseBodyDataApplicationsTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

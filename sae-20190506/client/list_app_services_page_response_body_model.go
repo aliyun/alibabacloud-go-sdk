@@ -26,51 +26,51 @@ type iListAppServicesPageResponseBody interface {
 }
 
 type ListAppServicesPageResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: Redirect.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: client error.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of services.
+	// The service list.
 	Data []*ListAppServicesPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code. Valid values:
+	// The error code.
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - This parameter is not returned if the request is successful.
 	//
-	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- section of this topic.
+	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// A message that describes the outcome of the request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2583E089-99C2-562E-8B7E-73512136****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the microservice list was obtained. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The list was obtained.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The list failed to be obtained.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The trace ID used to query the details of a request.
 	//
 	// example:
 	//
@@ -163,27 +163,27 @@ func (s *ListAppServicesPageResponseBody) Validate() error {
 }
 
 type ListAppServicesPageResponseBodyData struct {
-	// The page number of the current page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page. Valid values: 0 to 9999.
+	// The number of entries per page. The value must be in the range of 0 to 9999.
 	//
 	// example:
 	//
 	// 9999
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The result returned.
+	// The returned results.
 	Result []*ListAppServicesPageResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The total number of returned pages.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -258,19 +258,19 @@ func (s *ListAppServicesPageResponseBodyData) Validate() error {
 }
 
 type ListAppServicesPageResponseBodyDataResult struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// hc4fs1****@98314c8790b****
 	EdasAppId *string `json:"EdasAppId,omitempty" xml:"EdasAppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// cn-zhangjiakou-micro-service-******
 	EdasAppName *string `json:"EdasAppName,omitempty" xml:"EdasAppName,omitempty"`
-	// The group to which the service belongs. You can create a custom group.
+	// The service group. This value is user-defined.
 	//
 	// example:
 	//
@@ -288,7 +288,7 @@ type ListAppServicesPageResponseBodyDataResult struct {
 	//
 	// edas.service.provider
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The version of a service. You can create a custom version.
+	// The service version. This value is user-defined.
 	//
 	// example:
 	//

@@ -39,10 +39,6 @@ type BatchRestartApplicationsResponseBody struct {
 	// The error code. Value description:
 	//
 	// If the request succeeds, this field is not returned. It is returned only if the request fails. For more information, see the "Error codes" section in this topic.
-	//
-	// example:
-	//
-	// System.Upgrading
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The additional information. Value description:
 	//

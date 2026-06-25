@@ -52,7 +52,7 @@ type GetAvailabilityMetricResponseBody struct {
 	//
 	// example:
 	//
-	// 3A92C4EA-4C53-5A1C-8AEB-F2DB11982D5F
+	// 3A92C4EA-4C53-5A1C-8AEB-F2DB1198****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the list of applications was obtained. The following limits are imposed on the ID:
 	//

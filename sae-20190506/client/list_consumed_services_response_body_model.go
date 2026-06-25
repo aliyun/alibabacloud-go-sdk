@@ -26,33 +26,33 @@ type iListConsumedServicesResponseBody interface {
 }
 
 type ListConsumedServicesResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code.
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: A request error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the microservices.
+	// The information about the microservices.
 	Data []*ListConsumedServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code. Valid values:
+	// The error code.
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - This parameter is not returned if the request is successful.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message. Valid values:
+	// The returned message.
 	//
-	// 	- success: If the call is successful, **success*	- is returned.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// 	- An error code: If the call fails, an error code is returned.
+	// - If the request fails, an error code is returned.
 	//
 	// example:
 	//
@@ -64,17 +64,17 @@ type ListConsumedServicesResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the list of microservices was queried. Valid values:
+	// Indicates whether the list of subscribed microservices was retrieved.
 	//
-	// 	- **true**: The list was queried.
+	// - **true**: The list was retrieved.
 	//
-	// 	- **false**: The list failed to be queried.
+	// - **false**: The list failed to be retrieved.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The ID of the request trace. Use this ID to query the details of a request.
 	//
 	// example:
 	//
@@ -167,21 +167,21 @@ func (s *ListConsumedServicesResponseBody) Validate() error {
 }
 
 type ListConsumedServicesResponseBodyData struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// b2a8a925-477a-4ed7-b825-d5e22500****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// This parameter is reserved.
+	// A reserved field.
 	//
 	// example:
 	//
 	// {}
 	Group2Ip *string `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
-	// The service groups that corresponds to the consumed services.
+	// The groups to which the consumed services belong.
 	Groups []*string `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The addresses where the services can be subscribed to.
+	// The service subscription addresses.
 	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
 	// The name of the published service.
 	//

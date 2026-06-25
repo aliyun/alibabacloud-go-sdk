@@ -26,45 +26,51 @@ type iUpdateConfigMapResponseBody interface {
 }
 
 type UpdateConfigMapResponseBody struct {
-	// Indicates whether the ConfigMap instance was updated. Valid values:
+	// The HTTP status code or the POP error code.
 	//
-	// 	- **true**: The instance was updated.
+	// - **2xx**: The request is successful.
 	//
-	// 	- **false**: The instance failed to be updated.
+	// - **3xx**: The request is redirected.
+	//
+	// - **4xx**: A request error occurred.
+	//
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the ConfigMap instance.
+	// The returned result.
 	Data *UpdateConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code. Valid values:
+	// The error code.
 	//
-	// 	- **2xx:**: indicates that the call was successful.
+	// - This parameter is not returned if the request is successful.
 	//
-	// 	- **3xx**: indicates that the call was redirected.
-	//
-	// 	- **4xx**: indicates that the call failed.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// Additional information about the call.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned information.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the ConfigMap instance was updated.
+	//
+	// - **true**: The instance was updated.
+	//
+	// - **false**: The instance failed to be updated.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The returned result.
+	// The trace ID that is used to query the details of the call.
 	//
 	// example:
 	//
@@ -153,11 +159,7 @@ func (s *UpdateConfigMapResponseBody) Validate() error {
 }
 
 type UpdateConfigMapResponseBodyData struct {
-	// The returned error code. Valid values:
-	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
-	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// The ID of the ConfigMap instance.
 	//
 	// example:
 	//

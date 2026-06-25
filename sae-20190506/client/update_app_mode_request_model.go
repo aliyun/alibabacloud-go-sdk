@@ -22,26 +22,22 @@ type iUpdateAppModeRequest interface {
 }
 
 type UpdateAppModeRequest struct {
-	// The app ID.
+	// The application ID.
 	//
 	// example:
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
-	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application IDs.
 	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	// Enable Idle Mode?
-	//
-	// Enumeration value:
-	//
-	// 	- true: enables.
-	//
-	// 	- false: disables.
+	// Specifies whether to enable the idle mode.
 	//
 	// example:
 	//
 	// true
-	EnableIdle  *bool   `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
-	IdleHour    *string `json:"IdleHour,omitempty" xml:"IdleHour,omitempty"`
+	EnableIdle *bool   `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
+	IdleHour   *string `json:"IdleHour,omitempty" xml:"IdleHour,omitempty"`
+	// The namespace ID.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 

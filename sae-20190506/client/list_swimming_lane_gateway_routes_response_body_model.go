@@ -26,55 +26,55 @@ type iListSwimmingLaneGatewayRoutesResponseBody interface {
 }
 
 type ListSwimmingLaneGatewayRoutesResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code.
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: Indicates a client error.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: Indicates a server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Responses.
+	// The list of gateway routes.
 	Data []*ListSwimmingLaneGatewayRoutesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The status code. Value values:
+	// The error code.
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - This parameter is returned only if the request fails.
 	//
-	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	// - For more information, see the **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Additional information. Valid values:
+	// The message returned for the request.
 	//
-	// 	- The error message returned because the request is normal and **success*	- is returned.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// 	- If the request is abnormal, the specific exception error code is returned.
+	// - If the request fails, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- **true**: The configurations were obtained.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The configurations failed to be queried.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. This parameter is used to query the exact call information.
+	// The trace ID of the request.
 	//
 	// example:
 	//
@@ -167,13 +167,13 @@ func (s *ListSwimmingLaneGatewayRoutesResponseBody) Validate() error {
 }
 
 type ListSwimmingLaneGatewayRoutesResponseBodyData struct {
-	// The ID of the route.
+	// The route ID.
 	//
 	// example:
 	//
 	// 16933
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
-	// The name of the route.
+	// The route name.
 	//
 	// example:
 	//
@@ -259,13 +259,13 @@ func (s *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate) Validate()
 }
 
 type ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate struct {
-	// The route URL.
+	// The route path.
 	//
 	// example:
 	//
 	// /Path
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The type of the protection rule.
+	// The type of the rule.
 	//
 	// example:
 	//

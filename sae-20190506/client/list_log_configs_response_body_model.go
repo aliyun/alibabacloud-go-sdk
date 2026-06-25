@@ -26,49 +26,55 @@ type iListLogConfigsResponseBody interface {
 }
 
 type ListLogConfigsResponseBody struct {
-	// Indicates whether the logging configurations of an application were obtained. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **true**: indicates that the configurations were obtained.
+	// - **2xx**: The request is successful.
 	//
-	// 	- **false**: indicates that the configurations could not be obtained.
+	// - **3xx**: The request is redirected.
+	//
+	// - **4xx**: A request error occurred.
+	//
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The logging configurations.
+	// The information about the file logs.
 	Data *ListLogConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code. Valid values:
+	// The error code.
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// - This parameter is not returned if the request is successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
-	//
-	// 	- **4xx**: indicates that the request was invalid.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- list in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	// The returned message.
+	//
+	// - If the request is successful, **success*	- is returned.
+	//
+	// - If the request fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned message.
-	//
-	// 	- **success*	- is returned when the request succeeds.
-	//
-	// 	- An error code is returned when the request fails.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the list of application logs was obtained. Valid values:
+	//
+	// - **true**: The list was obtained.
+	//
+	// - **false**: The list failed to be obtained.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The logging configurations.
+	// The trace ID of the request. You can use the trace ID to query the details of the request.
 	//
 	// example:
 	//
@@ -157,25 +163,21 @@ func (s *ListLogConfigsResponseBody) Validate() error {
 }
 
 type ListLogConfigsResponseBodyData struct {
-	// The total number of returned entries.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The details of the logging configuration.
+	// The log configurations.
 	LogConfigs []*ListLogConfigsResponseBodyDataLogConfigs `json:"LogConfigs,omitempty" xml:"LogConfigs,omitempty" type:"Repeated"`
-	// The error code.
-	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
-	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of entries returned on each page.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -241,49 +243,49 @@ func (s *ListLogConfigsResponseBodyData) Validate() error {
 }
 
 type ListLogConfigsResponseBodyDataLogConfigs struct {
-	// The path of logs.
+	// The name of the Simple Log Service configuration.
 	//
 	// example:
 	//
 	// sae-1f240907a6faf58c653f09e81b7e****
 	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
-	// The storage type of logs.
+	// The time when the log configuration was created.
 	//
 	// example:
 	//
 	// 2019-08-29 17:18:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The path of the log file (log source).
+	// The path of the log file. This is the log source.
 	//
 	// example:
 	//
 	// /root/logs/hsf/hsf.log
 	LogDir *string `json:"LogDir,omitempty" xml:"LogDir,omitempty"`
-	// The ID of the region.
+	// The log type. Only **file_log*	- is supported.
 	//
 	// example:
 	//
 	// file_log
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The number of the returned page.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The time when the configuration was created.
+	// The name of the Logstore in Simple Log Service.
 	//
 	// example:
 	//
 	// sae-1f240907a6faf58c653f09e81b7e****
 	SlsLogStore *string `json:"SlsLogStore,omitempty" xml:"SlsLogStore,omitempty"`
-	// The type of the log. Set this value to **file_log**.
+	// The ID of the Simple Log Service project.
 	//
 	// example:
 	//
 	// sae-56f77b65-788d-442a-9885-7f20d91f****
 	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
-	// The ID of the Log Service project.
+	// The storage class for Simple Log Service.
 	//
 	// example:
 	//

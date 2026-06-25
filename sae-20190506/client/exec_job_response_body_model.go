@@ -26,15 +26,15 @@ type iExecJobResponseBody interface {
 }
 
 type ExecJobResponseBody struct {
-  // The HTTP status code. Valid values: 
+  // The HTTP status code or a POP error code.
   // 
-  // 	- **2xx**: The call was successful.
+  // - **2xx**: Success.
   // 
-  // 	- **3xx**: The call was redirected.
+  // - **3xx**: Redirection.
   // 
-  // 	- **4xx**: The call failed.
+  // - **4xx**: Request error.
   // 
-  // 	- **5xx**: A server error occurred.
+  // - **5xx**: Server error.
   // 
   // example:
   // 
@@ -42,17 +42,17 @@ type ExecJobResponseBody struct {
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
   // The returned data.
   Data *ExecJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-  // The error code. Valid values:
+  // The error code.
   // 
-  // 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+  // - This parameter is omitted for successful requests.
   // 
-  // 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+  // - This parameter is included for failed requests. For more information, see the **Error codes*	- section of this topic.
   ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-  // The returned message. Valid values:
+  // The returned message.
   // 
-  // 	- success: If the call is successful, **success*	- is returned.
+  // - If the request is successful, **success*	- is returned.
   // 
-  // 	- An error code: If the call fails, an error code is returned.
+  // - If the request fails, an error code is returned.
   // 
   // example:
   // 
@@ -64,17 +64,17 @@ type ExecJobResponseBody struct {
   // 
   // 67DD9A98-9CCC-5BE8-8C9E-B45E72F4****
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the request was successful. Valid values:
+  // Indicates whether the request was successful.
   // 
-  // 	- **true**
+  // - **true**: The request was successful.
   // 
-  // 	- **false**
+  // - **false**: The request failed.
   // 
   // example:
   // 
   // true
   Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-  // The ID of the trace. This parameter is used to query the exact call information.
+  // The trace ID for retrieving detailed information about the call.
   // 
   // example:
   // 
@@ -163,15 +163,15 @@ func (s *ExecJobResponseBody) Validate() error {
 }
 
 type ExecJobResponseBodyData struct {
-  // The HTTP status code. Valid values: 
+  // The HTTP status code or a POP error code.
   // 
-  // 	- **2xx**: The call was successful.
+  // - **2xx**: Success.
   // 
-  // 	- **3xx**: The call was redirected.
+  // - **3xx**: Redirection.
   // 
-  // 	- **4xx**: The call failed.
+  // - **4xx**: Request error.
   // 
-  // 	- **5xx**: A server error occurred.
+  // - **5xx**: Server error.
   // 
   // example:
   // 
@@ -183,21 +183,21 @@ type ExecJobResponseBodyData struct {
   // 
   // manual-3db7a8fa-5d40-4edc-92e4-49d50eab****
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-  // The returned message. Valid values:
+  // The returned message.
   // 
-  // - success: If the call is successful, **success*	- is returned.
+  // - If the request is successful, **success*	- is returned.
   // 
-  // - An error code: If the call fails, an error code is returned.
+  // - If the request fails, an error code is returned.
   // 
   // example:
   // 
   // success
   Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-  // Indicates whether the request was successful. Valid values:
+  // Whether the job was successfully executed.
   // 
-  // 	- **true**
+  // - **true**: The execution was successful.
   // 
-  // 	- **false**
+  // - **false**: The execution failed.
   // 
   // example:
   // 

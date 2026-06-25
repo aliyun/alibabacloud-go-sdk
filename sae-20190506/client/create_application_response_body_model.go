@@ -26,55 +26,59 @@ type iCreateApplicationResponseBody interface {
 }
 
 type CreateApplicationResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status or POP error code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// - **2xx**: Success.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// 	- **4xx**: indicates that the request was invalid.
+	// - **4xx**: Request error.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned result.
 	Data *CreateApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code. Valid values:
 	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
+	// - If the request is successful, the **ErrorCode*	- field is not returned.
 	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// - If the request fails, the **ErrorCode*	- field is returned. For more information, see the error code list in this topic.
+	//
+	// example:
+	//
+	// 空
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message. Valid values:
+	// Additional information. Valid values:
 	//
-	// 	- If the request was successful, a success message is returned.
+	// - If the request is normal, **success*	- is returned.
 	//
-	// 	- If the request failed, an error code is returned.
+	// - If the request is abnormal, a specific error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application is created. Valid values:
+	// Whether the application is created successfully. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Created successfully.
 	//
-	// 	- **false**
+	// - **false**: Failed to create.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The trace ID, used for term query of call information.
 	//
 	// example:
 	//
@@ -163,13 +167,13 @@ func (s *CreateApplicationResponseBody) Validate() error {
 }
 
 type CreateApplicationResponseBodyData struct {
-	// The ID of the application that is created.
+	// The ID of the successfully created application.
 	//
 	// example:
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the change order. It can be used to query the task status.
+	// The returned release order ID, used to query the task execution status.
 	//
 	// example:
 	//

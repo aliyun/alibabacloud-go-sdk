@@ -26,55 +26,55 @@ type iDescribeConfigurationPriceResponseBody interface {
 }
 
 type DescribeConfigurationPriceResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code or POP error code. Valid values:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: A request error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The price.
+	// The pricing information.
 	Data *DescribeConfigurationPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. Valid values:
+	// The error code.
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - This parameter is not returned if the request is successful.
 	//
-	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned. Valid values:
+	// The returned message.
 	//
-	// 	- If the request was successful, **success*	- is returned.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// 	- If the request failed, an error code is returned.
+	// - If the request fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ADCEC067-86AD-19E2-BD43-E83F3841****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the configuration price was obtained.
+	// Indicates whether the price of the configuration was obtained.
 	//
-	// 	- **true**: The price was obtained.
+	// - **true**: The price was obtained.
 	//
-	// 	- **false**: The price failed to be queried.
+	// - **false**: The price failed to be obtained.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace.
+	// The trace ID.
 	//
 	// example:
 	//
@@ -163,17 +163,17 @@ func (s *DescribeConfigurationPriceResponseBody) Validate() error {
 }
 
 type DescribeConfigurationPriceResponseBodyData struct {
-	// The remaining capacity of the resource plan.
+	// The remaining quota of the resource plan.
 	BagUsage *DescribeConfigurationPriceResponseBodyDataBagUsage `json:"BagUsage,omitempty" xml:"BagUsage,omitempty" type:"Struct"`
 	// The price of CPU and memory.
 	CpuMemPrice *DescribeConfigurationPriceResponseBodyDataCpuMemPrice `json:"CpuMemPrice,omitempty" xml:"CpuMemPrice,omitempty" type:"Struct"`
-	// The information about pricing.
+	// The pricing information.
 	Order *DescribeConfigurationPriceResponseBodyDataOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// The price based on the number of requests.
+	// The price per request.
 	RequestPrice *DescribeConfigurationPriceResponseBodyDataRequestPrice `json:"RequestPrice,omitempty" xml:"RequestPrice,omitempty" type:"Struct"`
 	// The promotion rules.
 	Rules []*DescribeConfigurationPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The traffic price.
+	// The price of traffic.
 	TrafficPrice *DescribeConfigurationPriceResponseBodyDataTrafficPrice `json:"TrafficPrice,omitempty" xml:"TrafficPrice,omitempty" type:"Struct"`
 }
 
@@ -278,14 +278,19 @@ func (s *DescribeConfigurationPriceResponseBodyData) Validate() error {
 }
 
 type DescribeConfigurationPriceResponseBodyDataBagUsage struct {
-	// The available CPU capacity. Unit: cores \\*.
+	// The remaining CPU quota. Unit: core-hours.
 	//
 	// example:
 	//
 	// 497570.450009
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Cu  *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The available memory size. Unit: GiB ×.
+	// The remaining computing units (CUs) of the resource plan.
+	//
+	// example:
+	//
+	// 10000
+	Cu *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The remaining memory quota. Unit: GiB-hours.
 	//
 	// example:
 	//
@@ -333,9 +338,9 @@ func (s *DescribeConfigurationPriceResponseBodyDataBagUsage) Validate() error {
 }
 
 type DescribeConfigurationPriceResponseBodyDataCpuMemPrice struct {
-	// The information about pricing.
+	// The pricing information.
 	Order *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// The discount rules.
+	// The promotion rules.
 	Rules []*DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -384,7 +389,7 @@ func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPrice) Validate() error
 }
 
 type DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder struct {
-	// The discount amount.
+	// The discount amount of the order.
 	//
 	// example:
 	//
@@ -396,9 +401,9 @@ type DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder struct {
 	//
 	// 0.0046296
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	// The ID of the discount rule.
+	// The rule ID.
 	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
-	// The final price of the order.
+	// The actual transaction price of the order.
 	//
 	// example:
 	//
@@ -455,9 +460,13 @@ func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder) Validate() 
 }
 
 type DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules struct {
-	// The name of discount rule.
+	// The name of the rule.
+	//
+	// example:
+	//
+	// 20% discount on pay-as-you-go
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the discount rule.
+	// The rule ID.
 	//
 	// example:
 	//
@@ -496,7 +505,7 @@ func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules) Validate() 
 }
 
 type DescribeConfigurationPriceResponseBodyDataOrder struct {
-	// The discount amount.
+	// The discount amount of the order.
 	//
 	// example:
 	//
@@ -508,9 +517,9 @@ type DescribeConfigurationPriceResponseBodyDataOrder struct {
 	//
 	// 0.0092592
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	// The ID of the promotion rule.
+	// The promotion ID.
 	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
-	// The transaction price.
+	// The final price of the order.
 	//
 	// example:
 	//
@@ -567,9 +576,9 @@ func (s *DescribeConfigurationPriceResponseBodyDataOrder) Validate() error {
 }
 
 type DescribeConfigurationPriceResponseBodyDataRequestPrice struct {
-	// The information about pricing.
+	// The pricing information.
 	Order *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// The discount rule.
+	// The promotion rules.
 	Rules []*DescribeConfigurationPriceResponseBodyDataRequestPriceRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -618,7 +627,7 @@ func (s *DescribeConfigurationPriceResponseBodyDataRequestPrice) Validate() erro
 }
 
 type DescribeConfigurationPriceResponseBodyDataRequestPriceOrder struct {
-	// The discount amount.
+	// The discount amount of the order.
 	//
 	// example:
 	//
@@ -630,9 +639,9 @@ type DescribeConfigurationPriceResponseBodyDataRequestPriceOrder struct {
 	//
 	// 0.0046296
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	// The ID of the discount rule.
+	// The rule ID.
 	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
-	// The actual price of the order.
+	// The actual transaction price of the order.
 	//
 	// example:
 	//
@@ -689,9 +698,13 @@ func (s *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder) Validate()
 }
 
 type DescribeConfigurationPriceResponseBodyDataRequestPriceRules struct {
-	// The name of the discount rule.
+	// The name of the rule.
+	//
+	// example:
+	//
+	// 20% discount on pay-as-you-go
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the discount policy.
+	// The policy ID.
 	//
 	// example:
 	//
@@ -730,9 +743,13 @@ func (s *DescribeConfigurationPriceResponseBodyDataRequestPriceRules) Validate()
 }
 
 type DescribeConfigurationPriceResponseBodyDataRules struct {
-	// The name of the promotion rule.
+	// The name of the rule.
+	//
+	// example:
+	//
+	// 20% discount on pay-as-you-go
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the promotion rule.
+	// The rule ID.
 	//
 	// example:
 	//
@@ -771,9 +788,9 @@ func (s *DescribeConfigurationPriceResponseBodyDataRules) Validate() error {
 }
 
 type DescribeConfigurationPriceResponseBodyDataTrafficPrice struct {
-	// The information about pricing.
+	// The pricing information.
 	Order *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// The discount rule.
+	// The promotion rules.
 	Rules []*DescribeConfigurationPriceResponseBodyDataTrafficPriceRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -822,7 +839,7 @@ func (s *DescribeConfigurationPriceResponseBodyDataTrafficPrice) Validate() erro
 }
 
 type DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder struct {
-	// The discount amount.
+	// The discount amount of the order.
 	//
 	// example:
 	//
@@ -834,9 +851,9 @@ type DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder struct {
 	//
 	// 0.0046296
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	// The ID of the discount rule.
+	// The promotion ID.
 	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
-	// The final price of the order.
+	// The actual transaction price of the order.
 	//
 	// example:
 	//
@@ -893,9 +910,13 @@ func (s *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder) Validate()
 }
 
 type DescribeConfigurationPriceResponseBodyDataTrafficPriceRules struct {
-	// The name of the discount rule.
+	// The name of the rule.
+	//
+	// example:
+	//
+	// 20% discount on pay-as-you-go
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the discount rule.
+	// The rule ID.
 	//
 	// example:
 	//

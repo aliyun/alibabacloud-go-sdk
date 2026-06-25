@@ -26,51 +26,51 @@ type iDescribeAppServiceDetailResponseBody interface {
 }
 
 type DescribeAppServiceDetailResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The status of the API call or a POP error code. Valid values:
 	//
-	// - **2xx**: indicates that the call was successful.
+	// - **2xx**: success.
 	//
-	// - **3xx**: indicates that the call was redirected.
+	// - **3xx**: redirection.
 	//
-	// - **4xx**: indicates that the call failed.
+	// - **4xx**: client error.
 	//
-	// - **5xx**: indicates that a server error occurred.
+	// - **5xx**: server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data that is returned.
+	// The returned data.
 	Data *DescribeAppServiceDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error code. Valid values:
+	// The error code.
 	//
-	// - If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - If the request is successful, the **ErrorCode*	- field is not returned.
 	//
-	// - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// - If the request fails, the **ErrorCode*	- field is returned. For more information, see the list of **error codes*	- in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned information.
+	// The additional information returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B2C7874F-F109-5B34-8618-2C10BBA2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the meta data was obtained. Valid values:
+	// Indicates whether the metadata was obtained. Valid values:
 	//
-	// 	- **true**: The metadata was obtained.
+	// - **true**: The metadata was obtained.
 	//
-	// 	- **false**: The metadata failed to be obtained.
+	// - **false**: The metadata failed to be obtained.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The call chain ID. Use this ID for a term query of call details.
 	//
 	// example:
 	//
@@ -165,33 +165,33 @@ type DescribeAppServiceDetailResponseBodyData struct {
 	//
 	// service-consumer
 	DubboApplicationName *string `json:"DubboApplicationName,omitempty" xml:"DubboApplicationName,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// cn-zhangjiakou-micro-service-******
 	EdasAppName *string `json:"EdasAppName,omitempty" xml:"EdasAppName,omitempty"`
-	// The group to which the service belongs. You can create a custom group.
+	// The service group. This is a custom parameter.
 	//
 	// example:
 	//
 	// springCloud
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The metadata. Example: `{side: "provider", port: "18081", preserved: {register: {source: "SPRING_CLOUD"}},…}`.
+	// The metadata. Example: `{side: "provider", port: "18081", preserved: {register: {source: "SPRING_CLOUD"}},…}`
 	//
 	// example:
 	//
 	// {side: "provider", port: "18081", preserved: {register: {source: "SPRING_CLOUD"}},…}
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The methods.
+	// The list of methods.
 	Methods []*DescribeAppServiceDetailResponseBodyDataMethods `json:"Methods,omitempty" xml:"Methods,omitempty" type:"Repeated"`
-	// The name of the service.
+	// The service name.
 	//
 	// example:
 	//
 	// service-provider
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The port used by the service.
+	// The ports used by the service.
 	ServicePorts []*int64 `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty" type:"Repeated"`
 	// The protocol used by the service.
 	//
@@ -199,13 +199,13 @@ type DescribeAppServiceDetailResponseBodyData struct {
 	//
 	// HTTP
 	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
-	// The tag of the service.
+	// The tags of the service.
 	ServiceTags []*string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty" type:"Repeated"`
-	// The type of the service. Valid values:
+	// The service type. Valid values:
 	//
-	// 	- **dubbo**
+	// - **dubbo**
 	//
-	// 	- **springCloud**
+	// - **springCloud**
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type DescribeAppServiceDetailResponseBodyData struct {
 	//
 	// service-provider
 	SpringApplicationName *string `json:"SpringApplicationName,omitempty" xml:"SpringApplicationName,omitempty"`
-	// The version of the service. You can create a custom version.
+	// The service version. This is a custom parameter.
 	//
 	// example:
 	//
@@ -361,7 +361,7 @@ type DescribeAppServiceDetailResponseBodyDataMethods struct {
 	//
 	// com.serverless.sae.controller.EchoController
 	MethodController *string `json:"MethodController,omitempty" xml:"MethodController,omitempty"`
-	// The name of the method.
+	// The method name.
 	//
 	// example:
 	//
@@ -373,29 +373,23 @@ type DescribeAppServiceDetailResponseBodyDataMethods struct {
 	//
 	// description
 	NameDetail *string `json:"NameDetail,omitempty" xml:"NameDetail,omitempty"`
-	// The definition of the parameter.
+	// The parameter definitions.
 	ParameterDefinitions []*DescribeAppServiceDetailResponseBodyDataMethodsParameterDefinitions `json:"ParameterDefinitions,omitempty" xml:"ParameterDefinitions,omitempty" type:"Repeated"`
 	// The details of the parameters.
 	ParameterDetails []*string `json:"ParameterDetails,omitempty" xml:"ParameterDetails,omitempty" type:"Repeated"`
-	// The types of the parameters.
+	// The parameter types.
 	ParameterTypes []*string `json:"ParameterTypes,omitempty" xml:"ParameterTypes,omitempty" type:"Repeated"`
-	// The request paths. Format:
-	//
-	// `/path`
+	// The request paths.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	// The request methods. Valid values:
-	//
-	// 	- **GET**
-	//
-	// 	- **ALL**
+	// The request methods.
 	RequestMethods []*string `json:"RequestMethods,omitempty" xml:"RequestMethods,omitempty" type:"Repeated"`
-	// The details of the response.
+	// The details of the returned data.
 	//
 	// example:
 	//
 	// test
 	ReturnDetails *string `json:"ReturnDetails,omitempty" xml:"ReturnDetails,omitempty"`
-	// The data format of the response.
+	// The return type.
 	//
 	// example:
 	//
@@ -521,13 +515,13 @@ type DescribeAppServiceDetailResponseBodyDataMethodsParameterDefinitions struct 
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the parameter.
+	// The parameter name.
 	//
 	// example:
 	//
 	// arg0
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the parameter.
+	// The parameter type.
 	//
 	// example:
 	//

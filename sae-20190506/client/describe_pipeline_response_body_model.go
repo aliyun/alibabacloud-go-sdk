@@ -28,13 +28,13 @@ type iDescribePipelineResponseBody interface {
 type DescribePipelineResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The call was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: The call failed.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -44,13 +44,9 @@ type DescribePipelineResponseBody struct {
 	Data *DescribePipelineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned if the request failed. Take note of the following rules:
 	//
-	// 	- The **ErrorCode*	- parameter is not returned if the request succeeds.
+	// - The **ErrorCode*	- parameter is not returned if the request succeeds.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
-	//
-	// example:
-	//
-	// Null
+	// - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The message returned for the operation.
 	//
@@ -66,9 +62,9 @@ type DescribePipelineResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the batch information was obtained. Valid values:
 	//
-	// 	- **true**: The information was queried.
+	// - **true**: The information was queried.
 	//
-	// 	- **false**: The image failed to be found.
+	// - **false**: The image failed to be found.
 	//
 	// example:
 	//
@@ -167,7 +163,7 @@ type DescribePipelineResponseBodyData struct {
 	//
 	// example:
 	//
-	// Successful
+	// Execution succeeded
 	CoStatus *string `json:"CoStatus,omitempty" xml:"CoStatus,omitempty"`
 	// The ID of the batch processing stage.
 	//
@@ -191,21 +187,21 @@ type DescribePipelineResponseBodyData struct {
 	//
 	// example:
 	//
-	// First batch
+	// Batch 1 change
 	PipelineName *string `json:"PipelineName,omitempty" xml:"PipelineName,omitempty"`
 	// The batch status. Valid values:
 	//
-	// 	- **0**: The batch is prepared for processing.
+	// - **0**: The batch is prepared for processing.
 	//
-	// 	- **1**: The task is being executed.
+	// - **1**: The task is being executed.
 	//
-	// 	- **2**: successful
+	// - **2**: successful
 	//
-	// 	- **3**: The processing failed in this stage.
+	// - **3**: The processing failed in this stage.
 	//
-	// 	- **6**: The batch processing was terminated.
+	// - **6**: The batch processing was terminated.
 	//
-	// 	- **10**: The batch could not be processed due to a system exception.
+	// - **10**: The batch could not be processed due to a system exception.
 	//
 	// example:
 	//
@@ -213,9 +209,9 @@ type DescribePipelineResponseBodyData struct {
 	PipelineStatus *int32 `json:"PipelineStatus,omitempty" xml:"PipelineStatus,omitempty"`
 	// Indicates whether to start processing the next batch. Valid values:
 	//
-	// 	- **false**: indicates that the next batch cannot be processed yet.
+	// - **false**: indicates that the next batch cannot be processed yet.
 	//
-	// 	- **true**: indicates that the next batch can be processed now.
+	// - **true**: indicates that the next batch can be processed now.
 	//
 	// example:
 	//
@@ -321,9 +317,9 @@ func (s *DescribePipelineResponseBodyData) Validate() error {
 type DescribePipelineResponseBodyDataStageList struct {
 	// The execution type of the stage. Valid values:
 	//
-	// 	- **0**: in sequence.
+	// - **0**: in sequence.
 	//
-	// 	- **1**: in parallel.
+	// - **1**: in parallel.
 	//
 	// example:
 	//
@@ -339,19 +335,19 @@ type DescribePipelineResponseBodyDataStageList struct {
 	//
 	// example:
 	//
-	// Deploy an application
+	// Deployment application
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	// The status of the batch processing stage. Valid values:
 	//
-	// 	- **0**: The batch is prepared for this processing stage.
+	// - **0**: The batch is prepared for this processing stage.
 	//
-	// 	- **1**: The task is being executed.
+	// - **1**: The task is being executed.
 	//
-	// 	- **2**: successful
+	// - **2**: successful
 	//
-	// 	- **3**: The processing failed in this stage.
+	// - **3**: The processing failed in this stage.
 	//
-	// 	- **6**: The processing stage was terminated.
+	// - **6**: The processing stage was terminated.
 	//
 	// example:
 	//
@@ -436,9 +432,9 @@ type DescribePipelineResponseBodyDataStageListTaskList struct {
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// Indicates whether to execute the subsequent tasks when the task failed. Valid values:
 	//
-	// 	- **0**: The subsequent tasks cannot be executed.
+	// - **0**: The subsequent tasks cannot be executed.
 	//
-	// 	- **1**: The subsequent tasks can be executed.
+	// - **1**: The subsequent tasks can be executed.
 	//
 	// example:
 	//
@@ -458,9 +454,9 @@ type DescribePipelineResponseBodyDataStageListTaskList struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Indicates whether a running task can be manually skipped. Valid values:
 	//
-	// 	- **true**: The running task can be skipped.
+	// - **true**: The running task can be skipped.
 	//
-	// 	- **false**: The zone does not allow you to change the network type of an ApsaraDB for Redis instance from classic network to VPC.
+	// - **false**: The zone does not allow you to change the network type of an ApsaraDB for Redis instance from classic network to VPC.
 	//
 	// example:
 	//
@@ -474,17 +470,17 @@ type DescribePipelineResponseBodyDataStageListTaskList struct {
 	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
 	// The task status. Valid values:
 	//
-	// 	- **0**: The task is prepared for execution.
+	// - **0**: The task is prepared for execution.
 	//
-	// 	- **1**: The task is being executed.
+	// - **1**: The task is being executed.
 	//
-	// 	- **2**: successful
+	// - **2**: successful
 	//
-	// 	- **3**: The task could not be executed.
+	// - **3**: The task could not be executed.
 	//
-	// 	- **5**: The task is pending retry.
+	// - **5**: The task is pending retry.
 	//
-	// 	- **6**: The task was terminated.
+	// - **6**: The task was terminated.
 	//
 	// example:
 	//
@@ -500,7 +496,7 @@ type DescribePipelineResponseBodyDataStageListTaskList struct {
 	//
 	// example:
 	//
-	// Environment initialization
+	// Initialize environment
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

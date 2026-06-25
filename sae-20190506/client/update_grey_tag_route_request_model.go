@@ -22,25 +22,25 @@ type iUpdateGreyTagRouteRequest interface {
 }
 
 type UpdateGreyTagRouteRequest struct {
-	// The canary release rule of the application for which ALB gateway routing is configured.
+	// The grey tag route for an ALB gateway route.
 	//
 	// example:
 	//
 	// [{"condition":"AND","items":[{"cond":"==","name":"grey","operator":"rawvalue","type":"sourceIp","value":"127.0.0.1"},{"cond":"==","name":"grey","operator":"rawvalue","type":"cookie","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"header","value":"true"}],"path":"/post-echo/hi"}]
 	AlbRules *string `json:"AlbRules,omitempty" xml:"AlbRules,omitempty"`
-	// The description of the canary release rule.
+	// The description of the rule.
 	//
 	// example:
 	//
-	// 灰度发布-地域灰度
+	// Canary release - region-based
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The canary release rule of the Dubbo application.
+	// The grey tag route for a Dubbo application.
 	//
 	// example:
 	//
 	// [{"condition":"OR","group":"DUBBO","items":[{"cond":"==","expr":".key1","index":0,"operator":"rawvalue","value":"value1"},{"cond":"==","expr":".key2","index":0,"operator":"rawvalue","value":"value2"}],"methodName":"echo","serviceName":"com.alibaba.edas.boot.EchoService","version":"1.0.0"}]
 	DubboRules *string `json:"DubboRules,omitempty" xml:"DubboRules,omitempty"`
-	// The ID of the canary release rule.
+	// The grey tag route ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type UpdateGreyTagRouteRequest struct {
 	//
 	// 1
 	GreyTagRouteId *int64 `json:"GreyTagRouteId,omitempty" xml:"GreyTagRouteId,omitempty"`
-	// The canary release rule of the Spring Cloud application.
+	// The grey tag route for a Spring Cloud application.
 	//
 	// example:
 	//

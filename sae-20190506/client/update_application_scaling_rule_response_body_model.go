@@ -26,37 +26,33 @@ type iUpdateApplicationScalingRuleResponseBody interface {
 }
 
 type UpdateApplicationScalingRuleResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code or a POP error code.
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: A client-side error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server-side error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The response data.
 	Data *UpdateApplicationScalingRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned. Take note of the following rules:
+	// The error code.
 	//
-	// 	- If the call is successful, **ErrorCode*	- is not returned.
+	// - This parameter is returned only if the request fails.
 	//
-	// 	- If the call fails, **ErrorCode*	- is returned. For more information, see the "**Error codes**" section in this topic.
-	//
-	// example:
-	//
-	// Null
+	// - For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message. Take note of the following rules:
+	// The response message.
 	//
-	// 	- If the call is successful, **success*	- is returned.
+	// - **success*	- is returned if the request is successful.
 	//
-	// 	- If the call fails, an error code is returned.
+	// - An error message is returned if the request fails.
 	//
 	// example:
 	//
@@ -68,17 +64,17 @@ type UpdateApplicationScalingRuleResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Specifies whether the instances are successfully restarted. Valid values:
+	// Specifies whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID used to query call details.
 	//
 	// example:
 	//
@@ -173,52 +169,53 @@ type UpdateApplicationScalingRuleResponseBodyData struct {
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the auto scaling policy was created. Unit: milliseconds.
+	// The time when the scaling policy was created, in milliseconds.
 	//
 	// example:
 	//
 	// 1616642248938
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnableIdle *bool  `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
-	// The time when the auto scaling policy was last disabled.
+	// Specifies whether to enable idle mode.
+	EnableIdle *bool `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
+	// The time when the scaling policy was last disabled, in milliseconds.
 	//
 	// example:
 	//
 	// 1641882854484
 	LastDisableTime *int64 `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
-	// The details of the metric-based auto scaling policy.
+	// The configuration for metric-based scaling.
 	Metric *UpdateApplicationScalingRuleResponseBodyDataMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
-	// Specifies whether to enable the auto scaling policy. Valid values:
+	// Specifies whether the scaling policy is enabled. Valid values:
 	//
-	// 	- **true**: The auto scaling policy is enabled.
+	// - **true**: Enabled.
 	//
-	// 	- **false**: The auto scaling policy is disabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	ScaleRuleEnabled *bool `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
-	// The name of the auto scaling policy.
+	// The name of the scaling policy.
 	//
 	// example:
 	//
 	// test
 	ScaleRuleName *string `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
-	// The type of the auto scaling policy. Valid values:
+	// The type of the scaling policy. Valid values:
 	//
-	// 	- **timing**: a scheduled auto scaling policy
+	// - **timing**: scheduled scaling
 	//
-	// 	- **metric**: a metric-based auto scaling policy
+	// - **metric**: metric-based scaling
 	//
-	// 	- **mix**: a hybrid auto scaling policy
+	// - **mix**: hybrid scaling
 	//
 	// example:
 	//
 	// timing
 	ScaleRuleType *string `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
-	// The details of the scheduled auto scaling policy.
+	// The configuration for scheduled scaling.
 	Timer *UpdateApplicationScalingRuleResponseBodyDataTimer `json:"Timer,omitempty" xml:"Timer,omitempty" type:"Struct"`
-	// The time when the auto scaling policy was updated. Unit: milliseconds.
+	// The time when the scaling policy was updated, in milliseconds.
 	//
 	// example:
 	//
@@ -345,7 +342,7 @@ type UpdateApplicationScalingRuleResponseBodyDataMetric struct {
 	//
 	// 3
 	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	// The metrics that are used to trigger the auto scaling policy.
+	// The metrics that trigger scaling actions.
 	Metrics []*UpdateApplicationScalingRuleResponseBodyDataMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
 	// The minimum number of instances.
 	//
@@ -404,50 +401,74 @@ func (s *UpdateApplicationScalingRuleResponseBodyDataMetric) Validate() error {
 }
 
 type UpdateApplicationScalingRuleResponseBodyDataMetricMetrics struct {
-	// The limit on the metric.
+	// The target value for the specified metric. The unit varies based on the metric type.
 	//
-	// 	- The limit on the CPU utilization. Unit: percentage.
+	// - Target CPU utilization, in percentage.
 	//
-	// 	- The limit on the memory usage. Unit: percentage.
+	// - Target memory usage, in percentage.
 	//
-	// 	- The limit on the average number of active TCP connections per second.
+	// - Target queries per second (QPS).
 	//
-	// 	- The limit on the QPS of the Internet-facing SLB instance.
+	// - Target response time, in milliseconds.
 	//
-	// 	- The limit on the response time of the Internet-facing SLB instance. Unit: milliseconds.
+	// - The target number of active TCP connections.
+	//
+	// - Target QPS for the public-facing SLB instance.
+	//
+	// - Target response time of the public-facing SLB instance, in milliseconds.
+	//
+	// - Target QPS for the internal SLB instance.
+	//
+	// - Target response time of the internal SLB instance, in milliseconds.
 	//
 	// example:
 	//
 	// 20
 	MetricTargetAverageUtilization *int32 `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
-	// The metric that is used to trigger the auto scaling policy. Valid values:
+	// The metric that triggers the scaling policy. Valid values:
 	//
-	// 	- **CPU**: the CPU utilization.
+	// - **CPU**: CPU utilization.
 	//
-	// 	- **MEMORY**: the memory usage.
+	// - **MEMORY**: memory usage.
 	//
-	// 	- **tcpActiveConn**: the average number of active TCP connections of an application instance within 30 seconds.
+	// - **QPS**: The average queries per second (QPS) per instance over the last minute. This applies only to Java applications.
 	//
-	// 	- **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance within 15 seconds.
+	// - **RT**: The average response time (RT) of all service interfaces in the application over the last minute. This applies only to Java applications.
 	//
-	// 	- **SLB_RT**: the average response time of the Internet-facing SLB instance within 15 seconds.
+	// - **tcpActiveConn**: The average number of active TCP connections per instance over the last 30 seconds.
+	//
+	// - **SLB_QPS**: The average QPS from the public-facing SLB, per instance, over the last 15 seconds.
+	//
+	// - **SLB_RT**: The average response time of a public-facing SLB instance over the last 15 seconds.
+	//
+	// - **INTRANET_SLB_QPS**: The average QPS from the internal SLB, per instance, over the last 15 seconds.
+	//
+	// - **INTRANET_SLB_RT**: The average response time of an internal SLB instance over the last 15 seconds.
 	//
 	// example:
 	//
 	// CPU
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The SLB instance ID.
+	//
 	// example:
 	//
 	// lb-xxx
 	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// The name of the Logstore for SLB access logs.
+	//
 	// example:
 	//
 	// test
 	SlbLogstore *string `json:"SlbLogstore,omitempty" xml:"SlbLogstore,omitempty"`
+	// The name of the Log Service Project for SLB access logs.
+	//
 	// example:
 	//
 	// test
 	SlbProject *string `json:"SlbProject,omitempty" xml:"SlbProject,omitempty"`
+	// The SLB port.
+	//
 	// example:
 	//
 	// 80
@@ -521,53 +542,53 @@ func (s *UpdateApplicationScalingRuleResponseBodyDataMetricMetrics) Validate() e
 }
 
 type UpdateApplicationScalingRuleResponseBodyDataTimer struct {
-	// The start date of the validity period of the scheduled auto scaling policy. Parameter description:
+	// The start date of the short-term scheduled scaling policy.
 	//
-	// 	- If **BeginDate*	- and **EndDate*	- are set to **null**, the auto scaling policy is a long-term policy. Default values of the beginDate and endDate parameters: null.
+	// - If **BeginDate*	- and **EndDate*	- are both set to **null**, the policy is long-term by default.
 	//
-	// 	- If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate*	- is set to 2021-03-25 and **EndDate*	- is set to 2021-04-25, the auto scaling policy is valid for one month.
+	// - If you specify a date range, for example, **BeginDate*	- is set to 2021-03-25 and **EndDate*	- is set to 2021-04-25, the policy is effective for one month.
 	//
 	// example:
 	//
 	// 2021-03-25
 	BeginDate *string `json:"BeginDate,omitempty" xml:"BeginDate,omitempty"`
-	// The end date of the validity period of the scheduled auto scaling policy. Take note of the following rules:
+	// The end date of the short-term scheduled scaling policy.
 	//
-	// 	- If **BeginDate*	- and **EndDate*	- are set to **null**, the auto scaling policy is a long-term policy. Default values of the beginDate and endDate parameters: null.
+	// - If **BeginDate*	- and **EndDate*	- are both set to **null**, the policy is long-term by default.
 	//
-	// 	- If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate*	- is set to 2021-03-25 and **EndDate*	- is set to 2021-04-25, the auto scaling policy is valid for one month.
+	// - If you specify a date range, for example, **BeginDate*	- is set to 2021-03-25 and **EndDate*	- is set to 2021-04-25, the policy is effective for one month.
 	//
 	// example:
 	//
 	// 2021-04-25
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The frequency at which the scheduled auto scaling policy is executed. Valid values:
+	// The recurrence schedule for the scaling policy.
 	//
-	// 	- **\\	- \\	- \\***: The scheduled auto scaling policy is executed at a specified point in time every day.
+	// - **\\	- \\	- \\***: The policy runs at a specified time every day.
 	//
-	// 	- **\\	- \\	- Fri,Mon**: The scheduled auto scaling policy is executed at a specified point in time on one or more days of each week. GMT+8 is used. Valid values:
+	// - **\\	- \\	- Fri,Mon**: The policy runs at a specified time on specific days of a week. You can select multiple days. The time is in the GMT+8 time zone. Valid values:
 	//
-	//     	- **Sun**
+	//   - **Sun**: Sunday
 	//
-	//     	- **Mon**
+	//   - **Mon**: Monday
 	//
-	//     	- **Tue**
+	//   - **Tue**: Tuesday
 	//
-	//     	- **Wed**
+	//   - **Wed**: Wednesday
 	//
-	//     	- **Thu**
+	//   - **Thu**: Thursday
 	//
-	//     	- **Fri**
+	//   - **Fri**: Friday
 	//
-	//     	- **Sat**
+	//   - **Sat**: Saturday
 	//
-	// 	- **1,2,3,28,31 \\	- \\***: The scheduled auto scaling policy is executed at a specified point in time on one or more days of each month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy is executed on the specified days other than the 31st day.
+	// - **1,2,3,28,31 \\	- \\***: The policy runs at a specified time on specific days of a month. You can select multiple days. If a month does not have a specific day, such as the 31st, the policy skips that day.
 	//
 	// example:
 	//
 	// 	- 	- *
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The points in time at which the auto scaling policy is triggered within one day.
+	// The schedules for the scaling policy.
 	Schedules []*UpdateApplicationScalingRuleResponseBodyDataTimerSchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Repeated"`
 }
 
@@ -629,21 +650,25 @@ func (s *UpdateApplicationScalingRuleResponseBodyDataTimer) Validate() error {
 }
 
 type UpdateApplicationScalingRuleResponseBodyDataTimerSchedules struct {
-	// The point in time. Format: **Hour:Minute**.
+	// The time at which the scaling action is triggered. Format: **HH:mm**.
 	//
 	// example:
 	//
 	// 08:00
 	AtTime *string `json:"AtTime,omitempty" xml:"AtTime,omitempty"`
+	// The maximum number of instances.
+	//
 	// example:
 	//
 	// 10
 	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// The minimum number of instances.
+	//
 	// example:
 	//
 	// 1
 	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	// The expected number of instances.
+	// The target number of instances.
 	//
 	// example:
 	//

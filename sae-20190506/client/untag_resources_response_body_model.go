@@ -26,15 +26,15 @@ type iUntagResourcesResponseBody interface {
 }
 
 type UntagResourcesResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code.
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: A client error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -46,17 +46,17 @@ type UntagResourcesResponseBody struct {
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code. Valid values:
+	// The error code.
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - This parameter is not returned on a successful request.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	// - This parameter is returned on a failed request. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message. Valid values:
+	// The response message.
 	//
-	// 	- success: If the call is successful, **success*	- is returned.
+	// - A successful request returns **success**.
 	//
-	// 	- An error code: If the call fails, an error code is returned.
+	// - A failed request returns an error code.
 	//
 	// example:
 	//
@@ -68,17 +68,17 @@ type UntagResourcesResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the tags were removed. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**: The tags were removed.
+	// - **true**
 	//
-	// 	- **false**: The tags failed to be removed.
+	// - **false**
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID for querying the details of a call.
 	//
 	// example:
 	//

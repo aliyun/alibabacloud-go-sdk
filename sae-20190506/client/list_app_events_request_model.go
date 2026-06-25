@@ -34,23 +34,23 @@ type ListAppEventsRequest struct {
 	//
 	// f7730764-d88f-4b9a-8d8e-cd8efbfe****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The page number of the page to return.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The type of the event. Valid values:
+	// The event type. Valid values:
 	//
-	// 	- **Warning**: an alert.
+	// - **Warning**: An event that indicates a potential problem.
 	//
-	// 	- **Normal**: a normal event.
+	// - **Normal**: An event that indicates a routine operation.
 	//
 	// example:
 	//
 	// Warning
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The namespace ID.
+	// The ID of the region where the namespace is located.
 	//
 	// This parameter is required.
 	//
@@ -58,35 +58,35 @@ type ListAppEventsRequest struct {
 	//
 	// cn-beijing
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The type of the object. Valid values:
+	// The object kind. Valid values:
 	//
-	// 	- **Deployment**: an application.
+	// - **Deployment**: The application.
 	//
-	// 	- **Pod**: an application instance.
+	// - **Pod**: The application instance.
 	//
-	// 	- **Service**: a Server Load Balancer (SLB) instance.
+	// - **Service**: The Server Load Balancer (SLB) instance.
 	//
-	// 	- **HorizontalPodAutoscaler**: an auto scaling policy.
+	// - **HorizontalPodAutoscaler**: The auto scaling policy.
 	//
-	// 	- **CloneSet**: an application.
+	// - **CloneSet**: The application.
 	//
 	// example:
 	//
 	// Pod
 	ObjectKind *string `json:"ObjectKind,omitempty" xml:"ObjectKind,omitempty"`
-	// The name of the object. Fuzzy search by prefix is supported.
+	// The name of the object. Prefix matching is supported.
 	//
 	// example:
 	//
 	// errew-b86bf540-b4dc-47d8-a42f-b4997c14bd8f-5595cbddd6-x****
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
-	// The number of entries to return on each page. Valid values: 0 to 10000.
+	// The number of entries to return per page. The value must be an integer from 0 to 10,000.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The cause of the event. Fuzzy search by prefix is supported.
+	// The reason for the event. Prefix matching is supported.
 	//
 	// example:
 	//

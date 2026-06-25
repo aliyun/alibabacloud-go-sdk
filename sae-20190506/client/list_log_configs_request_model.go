@@ -18,7 +18,7 @@ type iListLogConfigsRequest interface {
 }
 
 type ListLogConfigsRequest struct {
-	// 10
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ListLogConfigsRequest struct {
 	//
 	// 56f77b65-788d-442a-9885-7f20d91f****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the request.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ListLogConfigsRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// 1
+	// The number of entries to return on each page. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//

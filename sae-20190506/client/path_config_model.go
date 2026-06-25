@@ -16,13 +16,13 @@ type iPathConfig interface {
 }
 
 type PathConfig struct {
-	// applicationName
+	// The name of the application.
 	//
 	// example:
 	//
 	// applicationName
 	ApplicationName *string `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
-	// path
+	// The path.
 	//
 	// example:
 	//

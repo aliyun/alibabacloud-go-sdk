@@ -16,11 +16,13 @@ type iDeleteNamespaceRequest interface {
 }
 
 type DeleteNamespaceRequest struct {
+	// The short-format ID of the namespace. You do not need to specify the region. We recommend that you use this parameter.
+	//
 	// example:
 	//
 	// test
 	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
-	// cn-beijing:test
+	// The long-format ID of the namespace. If you specify this parameter, NameSpaceShortId is ignored. This parameter is for backward compatibility. We recommend that you use the short-format namespace ID.
 	//
 	// example:
 	//

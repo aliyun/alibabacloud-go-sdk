@@ -28,25 +28,25 @@ type iDeleteIngressResponseBody interface {
 type DeleteIngressResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The request is successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The request is redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: A client-side error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server-side error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The response data.
 	Data *DeleteIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. Valid values:
+	// The error code that is returned if the request fails.
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - This parameter is not returned if the request succeeds.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	// - For a list of error codes, see the **Error codes*	- section.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message.
 	//
@@ -60,17 +60,17 @@ type DeleteIngressResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the routing rule was deleted. Valid values:
+	// Indicates whether the ingress instance was deleted successfully. Valid values:
 	//
-	// 	- **true**: The routing rule was deleted.
+	// - **true**: The deletion was successful.
 	//
-	// 	- **false**: The routing rule failed to be deleted.
+	// - **false**: The deletion failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID for the request.
 	//
 	// example:
 	//

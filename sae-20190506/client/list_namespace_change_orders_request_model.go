@@ -24,31 +24,47 @@ type iListNamespaceChangeOrdersRequest interface {
 }
 
 type ListNamespaceChangeOrdersRequest struct {
-	// 2
+	// The change order status. Valid values:
+	//
+	// - **0**: Preparing.
+	//
+	// - **1**: Executing.
+	//
+	// - **2**: Succeeded.
+	//
+	// - **3**: Failed.
+	//
+	// - **6**: Terminated.
+	//
+	// - **10**: System Error.
 	//
 	// example:
 	//
 	// 2
 	CoStatus *string `json:"CoStatus,omitempty" xml:"CoStatus,omitempty"`
-	// CoBatchStartApplication
+	// The change order type. Valid values:
+	//
+	// - **CoBatchStartApplication**: Batch Start Application.
+	//
+	// - **CoBatchStopApplication**: Batch Stop Application.
 	//
 	// example:
 	//
 	// CoBatchStartApplication
 	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
-	// 1
+	// The current page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// test
+	// A keyword for a fuzzy search of change order descriptions. Change orders whose descriptions contain this **key*	- are returned.
 	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// cn-shanghai:test
+	// The namespace ID.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +72,7 @@ type ListNamespaceChangeOrdersRequest struct {
 	//
 	// cn-shanghai:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// 20
+	// The page size.
 	//
 	// example:
 	//

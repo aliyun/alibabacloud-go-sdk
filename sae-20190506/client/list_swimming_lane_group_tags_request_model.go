@@ -16,13 +16,13 @@ type iListSwimmingLaneGroupTagsRequest interface {
 }
 
 type ListSwimmingLaneGroupTagsRequest struct {
-	// The ID of the lane group.
+	// The swimming lane group ID.
 	//
 	// example:
 	//
 	// 2074
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of a namespace.
+	// The namespace ID.
 	//
 	// example:
 	//

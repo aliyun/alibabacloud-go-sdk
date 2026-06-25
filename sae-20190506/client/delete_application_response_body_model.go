@@ -28,53 +28,53 @@ type iDeleteApplicationResponseBody interface {
 type DeleteApplicationResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: The request is successful.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: The request is redirected.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: A request error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result returned.
+	// The returned data.
 	Data *DeleteApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. Valid values:
+	// The error code.
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - This parameter is not returned if the request is successful.
 	//
-	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- section of this topic.
+	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned. Valid values:
+	// The response message. If the request is successful, **success*	- is returned. If the request fails, an error code is returned.
 	//
-	// 	- If the request was successful, **success*	- is returned.
+	// - A successful request returns **success**.
 	//
-	// 	- If the request failed, an error code is returned.
+	// - A failed request returns a specific error code.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application is deleted. Valid values:
+	// Indicates whether the application was deleted. Valid values:
 	//
-	// 	- **true**: The applications were deleted
+	// - **true**
 	//
-	// 	- **false**: The applications failed to be deleted.
+	// - **false**
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ func (s *DeleteApplicationResponseBody) Validate() error {
 }
 
 type DeleteApplicationResponseBodyData struct {
-	// The ID of the change order. The ID can be used to query the status of the change task.
+	// The ID of the change order. You can call the DescribeChangeOrder operation to query the execution status of a task.
 	//
 	// example:
 	//

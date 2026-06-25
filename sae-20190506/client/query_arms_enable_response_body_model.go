@@ -36,19 +36,15 @@ type QueryArmsEnableResponseBody struct {
 	Data *QueryArmsEnableResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code. Value description:
 	//
-	// 	- If the request was successful, this field is not returned.
+	// - If the request was successful, this field is not returned.
 	//
-	// 	- For more information, see the **Error codes*	- section of this topic.
-	//
-	// example:
-	//
-	// InvalidApplication.NotFound
+	// - For more information, see the **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The additional information. Value description:
 	//
-	// 	- If the request was successful, **success*	- is returned.
+	// - If the request was successful, **success*	- is returned.
 	//
-	// 	- If the request failed, an error code is returned.
+	// - If the request failed, an error code is returned.
 	//
 	// example:
 	//
@@ -62,9 +58,9 @@ type QueryArmsEnableResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

@@ -26,45 +26,51 @@ type iListChangeOrdersResponseBody interface {
 }
 
 type ListChangeOrdersResponseBody struct {
-	// Indicates whether the list of change orders was obtained. Valid values:
+	// The HTTP status code or the POP error code. Valid values:
 	//
-	// 	- **true**: indicates that the list was obtained.
+	// - **2xx**: Success.
 	//
-	// 	- **false**: indicates that the list could not be obtained.
+	// - **3xx**: Redirect.
+	//
+	// - **4xx**: Request error.
+	//
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about change orders.
+	// The information about the change orders.
 	Data *ListChangeOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code. Valid values:
+	// The error code.
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// - This parameter is not returned on successful requests.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
-	//
-	// 	- **4xx**: indicates that the request was invalid.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// - Returned if the request fails. For more information, see the **error code*	- list in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// Additional information about the response.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned message.
+	// The request ID.
 	//
 	// example:
 	//
 	// 65E1F-43BA-4D0C-8E61-E4D1337F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the list of change orders was retrieved. Valid values:
+	//
+	// - **true**: The list was retrieved.
+	//
+	// - **false**: The list could not be retrieved.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The information about change orders.
+	// The trace ID used to query request details.
 	//
 	// example:
 	//
@@ -153,25 +159,21 @@ func (s *ListChangeOrdersResponseBody) Validate() error {
 }
 
 type ListChangeOrdersResponseBodyData struct {
-	// The change orders.
+	// The list of change orders.
 	ChangeOrderList []*ListChangeOrdersResponseBodyDataChangeOrderList `json:"ChangeOrderList,omitempty" xml:"ChangeOrderList,omitempty" type:"Repeated"`
-	// The total number of change orders.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The error code.
-	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
-	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of change orders.
+	// The total number of change orders.
 	//
 	// example:
 	//
@@ -237,161 +239,149 @@ func (s *ListChangeOrdersResponseBodyData) Validate() error {
 }
 
 type ListChangeOrdersResponseBodyDataChangeOrderList struct {
-	// The number of entries returned on each page.
+	// The application ID.
 	//
 	// example:
 	//
 	// 164341c-9708-4967-b3ec-24933767****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the user who created the change order.
+	// The number of batches.
 	//
 	// example:
 	//
 	// 1
 	BatchCount *int32 `json:"BatchCount,omitempty" xml:"BatchCount,omitempty"`
-	// The ID of the group.
+	// The batch type. Valid values:
+	//
+	// - **auto**: Automatic.
+	//
+	// - **manual**: Manual.
 	//
 	// example:
 	//
 	// auto
 	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	// The mode in which the release batches are determined. Valid values:
-	//
-	// 	- **auto**: SAE automatically determines the release batches.
-	//
-	// 	- **manual**: You must manually determine the release batches.
+	// The change order ID.
 	//
 	// example:
 	//
 	// 7fa5c0-9ebb-4bb4-b383-1f885447****
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The ID of the application.
+	// The description of the change type code (**CoTypeCode**).
+	//
+	// example:
+	//
+	// Create application
 	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
-	// The code of the change order. Valid values:
+	// The code of the change type. Valid values:
 	//
-	// 	- **CoBindSlb**: associates the Server Load Balancer (SLB) instance with the application.
+	// - **CoBindSlb**: Bind an SLB instance.
 	//
-	// 	- **CoUnbindSlb**: disassociates an SLB instance from the application.
+	// - **CoUnbindSlb**: Unbind an SLB instance.
 	//
-	// 	- **CoCreateApp**: creates the application.
+	// - **CoCreateApp**: Create an application.
 	//
-	// 	- **CoDeleteApp**: deletes the application.
+	// - **CoDeleteApp**: Delete an application.
 	//
-	// 	- **CoDeploy**: deploys the application.
+	// - **CoDeploy**: Deploy an application.
 	//
-	// 	- **CoRestartApplication**: restarts the application.
+	// - **CoRestartApplication**: Restart an application.
 	//
-	// 	- **CoRollback**: rolls back the application.
+	// - **CoRollback**: Roll back an application.
 	//
-	// 	- **CoScaleIn**: scales in the application.
+	// - **CoScaleIn**: Scale in an application.
 	//
-	// 	- **CoScaleOut**: scales out the application.
+	// - **CoScaleOut**: Scale out an application.
 	//
-	// 	- **CoStartApplication**: starts the application.
+	// - **CoStartApplication**: Start an application.
 	//
-	// 	- **CoStopApplication**: stops the application.
+	// - **CoStopApplication**: Stop an application.
 	//
-	// 	- **CoRescaleApplicationVertically**: modifies the instance type.
+	// - **CoRescaleApplicationVertically**: Change the instance type.
 	//
-	// 	- **CoDeployHistroy**: rolls back the application to an earlier version.
+	// - **CoDeployHistroy**: Roll back to a previous version.
 	//
-	// 	- **CoBindNas**: associates a network-attached storage (NAS) file system with the application.
+	// - **CoBindNas**: Bind a NAS file system.
 	//
-	// 	- **CoUnbindNas**: disassociates a NAS file system from the application.
+	// - **CoUnbindNas**: Unbind a NAS file system.
 	//
-	// 	- **CoBatchStartApplication**: starts multiple applications concurrently.
+	// - **CoBatchStartApplication**: Start multiple applications.
 	//
-	// 	- **CoBatchStopApplication**: stops multiple applications concurrently.
+	// - **CoBatchStopApplication**: Stop multiple applications.
 	//
-	// 	- **CoRestartInstances**: restarts the instance.
+	// - **CoRestartInstances**: Restart instances.
 	//
-	// 	- **CoDeleteInstances**: deletes the instance.
+	// - **CoDeleteInstances**: Delete instances.
 	//
-	// 	- **CoScaleInAppWithInstances**: reduces the specified number of application instances.
+	// - **CoScaleInAppWithInstances**: Scale in an application by specifying instances.
 	//
 	// example:
 	//
 	// CoCreateApp
 	CoTypeCode *string `json:"CoTypeCode,omitempty" xml:"CoTypeCode,omitempty"`
-	// The ID of the user.
+	// The time the change order was created.
 	//
 	// example:
 	//
 	// 2019-07-11 15:54:49
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The code of the change type. Valid values:
-	//
-	// 	- **CoBindSlb**: associates an SLB instance with the application.
-	//
-	// 	- **CoUnbindSlb**: disassociates the SLB instance from the application.
-	//
-	// 	- **CoCreateApp**: creates the application.
-	//
-	// 	- **CoDeleteApp**: deletes the application.
-	//
-	// 	- **CoDeploy**: deploys the application.
-	//
-	// 	- **CoRestartApplication**: restarts the application.
-	//
-	// 	- **CoRollback**: rolls back the application.
-	//
-	// 	- **CoScaleIn**: scales in the application.
-	//
-	// 	- **CoScaleOut**: scales out the application.
-	//
-	// 	- **CoStart**: starts the application.
-	//
-	// 	- **CoStop**: stops the application.
-	//
-	// 	- **CoRescaleApplicationVertically**: modifies the instance specifications.
-	//
-	// 	- **CoDeployHistroy**: rolls back the application to a historical version.
-	//
-	// 	- **CoBindNas**: associates a NAS file system with the application.
-	//
-	// 	- **CoUnbindNas**: disassociates the NAS file system from the application.
-	//
-	// 	- **CoBatchStartApplication**: starts multiple applications concurrently.
-	//
-	// 	- **CoBatchStopApplication**: stops multiple applications concurrently.
-	//
-	// 	- **CoRestartInstances**: restarts the instances.
-	//
-	// 	- **CoDeleteInstances**: deletes the instances.
-	//
-	// 	- **CoScaleInAppWithInstances**: reduces the number of the specified application instances.
+	// The ID of the user who created the change order.
 	//
 	// example:
 	//
 	// sae-beta-test
 	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// The change type, which corresponds to the **CoTypeCode*	- parameter.
+	// The description.
+	//
+	// example:
+	//
+	// Version: 1.0 | image name: nginx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the change order was created.
+	// The time the change order was completed.
 	//
 	// example:
 	//
 	// 2019-07-11 20:12:58
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The description about the application.
+	// The group ID.
 	//
 	// example:
 	//
 	// c9ecd2-cf6c-46c3-9f20-525de202****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The number of release batches.
+	// The source of the change order.
 	//
 	// example:
 	//
 	// console
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The time when the change order was completed.
+	// The status of the change order. Valid values:
+	//
+	// - **0**: Preparing.
+	//
+	// - **1**: In progress.
+	//
+	// - **2**: Succeeded.
+	//
+	// - **3**: Failed.
+	//
+	// - **6**: Aborted.
+	//
+	// - **8**: Paused for manual confirmation.
+	//
+	// - **9**: Paused for automatic confirmation.
+	//
+	// - **10**: Failed due to a system exception.
+	//
+	// - **11**: Pending approval.
+	//
+	// - **12**: Approved and pending execution.
 	//
 	// example:
 	//
 	// 2
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The source of the change order.
+	// The user ID.
 	//
 	// example:
 	//

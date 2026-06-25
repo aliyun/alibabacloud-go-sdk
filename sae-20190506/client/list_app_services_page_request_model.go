@@ -28,13 +28,13 @@ type ListAppServicesPageRequest struct {
 	//
 	// 6dcc8c9e-d3da-478a-a066-86dcf820****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page. Valid values: 0 to 9999.
+	// The page size. The value must be an integer from 0 to 9,999.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type ListAppServicesPageRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The service type. Valid values:
 	//
-	// 	- **dubbo**
+	// - **Dubbo**
 	//
-	// 	- **springCloud**
+	// - **Spring Cloud**
 	//
 	// This parameter is required.
 	//

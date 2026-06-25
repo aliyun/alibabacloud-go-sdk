@@ -14,7 +14,7 @@ type iDescribeConfigMapRequest interface {
 }
 
 type DescribeConfigMapRequest struct {
-	// The ID of the ConfigMap whose details you want to query. You can call the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation to obtain the ID of a ConfigMap.
+	// The ID of the ConfigMap. You can call the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//

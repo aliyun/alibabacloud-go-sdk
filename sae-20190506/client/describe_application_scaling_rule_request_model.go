@@ -16,7 +16,7 @@ type iDescribeApplicationScalingRuleRequest interface {
 }
 
 type DescribeApplicationScalingRuleRequest struct {
-	// a0d2e04c-159d-40a8-b240-d2f2c263\\*\\*\\*\\*
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeApplicationScalingRuleRequest struct {
 	//
 	// a0d2e04c-159d-40a8-b240-d2f2c263****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// test
+	// The name of the auto scaling policy.
 	//
 	// This parameter is required.
 	//

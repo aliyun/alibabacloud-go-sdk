@@ -26,9 +26,9 @@ type SuspendJobRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// Start or suspend a job template.
 	//
-	// 	- true: Start a job template.
+	// - true: Start a job template.
 	//
-	// 	- false: Suspend a job template.
+	// - false: Suspend a job template.
 	//
 	// This parameter is required.
 	//

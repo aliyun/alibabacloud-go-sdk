@@ -14,7 +14,7 @@ type iDescribeApplicationScalingRulesRequest interface {
 }
 
 type DescribeApplicationScalingRulesRequest struct {
-	// 7171a6ca-d1cd-4928-8642-7d5cfe69\\*\\*\\*\\*
+	// The application ID.
 	//
 	// This parameter is required.
 	//

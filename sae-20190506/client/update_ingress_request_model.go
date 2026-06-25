@@ -50,60 +50,95 @@ type iUpdateIngressRequest interface {
 }
 
 type UpdateIngressRequest struct {
-	// The ID of the **CLB*	- certificate. Valid values:
+	// **CLB*	- certificate ID. Details are as follows:
 	//
-	// 	- If the **LoadBalanceType*	- is **clb**, use this field to configure the HTTPS listener certificate.
+	// - If **LoadBalanceType*	- is **clb**, use this field to configure the HTTPS listener certificate.
 	//
-	// For more information about how to use SSL certificate IDs for CLB, see [Manage certificates (CLB)](https://help.aliyun.com/document_detail/90792.html).
+	// For more information about using SSL certificate IDs with CLB, see [Manage Certificates (CLB)]().
 	//
 	// example:
 	//
 	// 188077086902****_176993d****_181437****_108724****
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The ID of the multi-certificate **ALB**. Valid values:
+	// **ALB*	- multiple certificate IDs. Details are as follows:
 	//
-	// 	- If the **LoadBalanceType*	- is **alb**, use this field to configure multiple certificates for HTTPS listeners. Separate multiple certificate IDs with commas (,).
+	// - If **LoadBalanceType*	- is **alb**, use this field to configure multiple HTTPS listener certificates. Separate multiple certificate IDs with commas.
 	//
-	// 	- The ID of the SSL certificate used by ALB must be obtained from the digital certificate product. For example, in the configuration `756***-cn-hangzhou`, the `756***` is the certificate ID obtained from the product page, and the `-cn-hangzhou` is a fixed suffix. For more information, see [Manage certificates](https://help.aliyun.com/document_detail/209076.html).
+	// - Obtain the SSL certificate ID used by ALB from the digital certificate product. For example, configure `756***-cn-hangzhou`, where `756***` is the certificate ID obtained from the product page, and `-cn-hangzhou` is a fixed suffix. For more information, see [Manage Certificates (ALB)]().
 	//
 	// example:
 	//
 	// 87***35-cn-hangzhou,812***3-cn-hangzhou
-	CertIds    *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	CertIds *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	// Cross-domain configuration.
+	//
+	// example:
+	//
+	// {\\"Enable\\":\\"true\\"}
 	CorsConfig *string `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty"`
-	// The default forwarding rule. Forwards traffic to a specified application through a specified port based on the IP address. The following table describes the parameters.
+	// Default forwarding rule. Forward traffic to the specified application by IP address through the specified port. Parameter description:
 	//
-	// 	- **appId**: the ID of the application.
+	// - **appId**: Application ID.
 	//
-	// 	- **containerPort**: the container port of the application.
+	// - **containerPort**: Application instance port.
 	//
-	// >  All requests that do not match the forwarding rules specified for Rules are forwarded over the port to the application.
+	// > All requests that do not match or satisfy the **Rules*	- forwarding rule are forwarded to this specified application.
 	//
 	// example:
 	//
 	// {"appId":"395b60e4-0550-458d-9c54-a265d036****","containerPort":8080}
 	DefaultRule *string `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
-	// The name of the routing rule.
+	// Routing rule name.
 	//
 	// example:
 	//
 	// ingress-sae-test
-	Description                      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableGzip                       *bool   `json:"EnableGzip,omitempty" xml:"EnableGzip,omitempty"`
-	EnableXForwardedFor              *bool   `json:"EnableXForwardedFor,omitempty" xml:"EnableXForwardedFor,omitempty"`
-	EnableXForwardedForClientSrcPort *bool   `json:"EnableXForwardedForClientSrcPort,omitempty" xml:"EnableXForwardedForClientSrcPort,omitempty"`
-	EnableXForwardedForProto         *bool   `json:"EnableXForwardedForProto,omitempty" xml:"EnableXForwardedForProto,omitempty"`
-	EnableXForwardedForSlbId         *bool   `json:"EnableXForwardedForSlbId,omitempty" xml:"EnableXForwardedForSlbId,omitempty"`
-	EnableXForwardedForSlbPort       *bool   `json:"EnableXForwardedForSlbPort,omitempty" xml:"EnableXForwardedForSlbPort,omitempty"`
-	// The timeout period of idle connections. Unit: seconds.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Enable or disable data compression.
 	//
-	// >  A value of 0 indicates that the default value is used.
+	// example:
+	//
+	// true
+	EnableGzip *bool `json:"EnableGzip,omitempty" xml:"EnableGzip,omitempty"`
+	// Enable or disable obtaining the client IP address of the visitor through the X-Forwarded-For header field.
+	//
+	// example:
+	//
+	// true
+	EnableXForwardedFor *bool `json:"EnableXForwardedFor,omitempty" xml:"EnableXForwardedFor,omitempty"`
+	// Obtain the listening port of the SLB instance through the X-Forwarded-Port header field.
+	//
+	// example:
+	//
+	// true
+	EnableXForwardedForClientSrcPort *bool `json:"EnableXForwardedForClientSrcPort,omitempty" xml:"EnableXForwardedForClientSrcPort,omitempty"`
+	// Specifies whether to determine the listener protocol of the SLB instance from the X-Forwarded-Proto header field.
+	//
+	// example:
+	//
+	// true
+	EnableXForwardedForProto *bool `json:"EnableXForwardedForProto,omitempty" xml:"EnableXForwardedForProto,omitempty"`
+	// Obtain the SLB instance ID through the SLB-ID header field.
+	//
+	// example:
+	//
+	// true
+	EnableXForwardedForSlbId *bool `json:"EnableXForwardedForSlbId,omitempty" xml:"EnableXForwardedForSlbId,omitempty"`
+	// Whether to obtain the listening port of the Server Load Balancer instance from the X-Forwarded-Port header field.
+	//
+	// example:
+	//
+	// true
+	EnableXForwardedForSlbPort *bool `json:"EnableXForwardedForSlbPort,omitempty" xml:"EnableXForwardedForSlbPort,omitempty"`
+	// Idle connection timeout, in seconds (s).
+	//
+	// > A value of 0 indicates that the default idle timeout is used.
 	//
 	// example:
 	//
 	// 15
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// The ID of the routing rule.
+	// Routing rule ID.
 	//
 	// This parameter is required.
 	//
@@ -111,49 +146,49 @@ type UpdateIngressRequest struct {
 	//
 	// 87
 	IngressId *int64 `json:"IngressId,omitempty" xml:"IngressId,omitempty"`
-	// The SLB listening port. This port cannot be occupied.
+	// SLB listening port. This port must not be occupied.
 	//
 	// example:
 	//
 	// 443
 	ListenerPort *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The protocol that is used to forward requests. Valid values:
+	// Forwarding Protocol. Details are as follows:
 	//
-	// 	- **HTTP**: HTTP is suitable for applications that need to identify transmitted data.
+	// - **HTTP**: Applies to applications that need to identify data content.
 	//
-	// 	- **HTTPS**: HTTPS is suitable for applications that require encrypted data transmission.
+	// - **HTTPS**: Applies to applications that need encrypted transmission.
 	//
 	// example:
 	//
 	// HTTP
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// The parameter is deprecated and cannot be updated.
+	// Deprecated parameter. Updates are no longer supported.
 	//
 	// example:
 	//
 	// clb
 	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
-	// The request timed out. Unit: seconds.
+	// Request timeout, in seconds (s).
 	//
 	// example:
 	//
 	// 60
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// The forwarding rule. Forwards traffic to a specified application through a specified port based on the domain name and request path. The following table describes the parameters.
+	// Forwarding rules. Forward traffic to the specified application by domain name and URI of the request through the specified port. Parameter description:
 	//
-	// 	- **appId**: the ID of the application.
+	// - **appId**: Application ID.
 	//
-	// 	- **containerPort**: The port of the application instance.
+	// - **containerPort**: Application instance port.
 	//
-	// 	- **domain**: the domain name.
+	// - **domain**: Domain name.
 	//
-	// 	- **path**: the request path.
+	// - **path**: URI of the request.
 	//
 	// example:
 	//
 	// [{"appId":"395b60e4-0550-458d-9c54-a265d036****","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2****","containerPort":8080,"domain":"sae.site","path":"/path2"}]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The ID of a security policy.
+	// Security policy instance ID.
 	//
 	// example:
 	//

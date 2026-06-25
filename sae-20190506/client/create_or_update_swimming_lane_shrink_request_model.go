@@ -30,59 +30,59 @@ type iCreateOrUpdateSwimmingLaneShrinkRequest interface {
 }
 
 type CreateOrUpdateSwimmingLaneShrinkRequest struct {
-	// The route configuration of the gateway.
+	// The configuration of the gateway route.
 	//
-	// >  This parameter is required if the gateway entry of the lane group is Java.
+	// > This parameter is required if the gateway entry application for the swimlane group is a Java application.
 	AppEntryRuleShrink *string `json:"AppEntryRule,omitempty" xml:"AppEntryRule,omitempty"`
-	// Full-link Grayscale Mode:
+	// The end-to-end canary release mode.
 	//
-	// 	- 0: The request is routed based on the content of the request.
+	// - `0`: content-based routing
 	//
-	// 	- 1: routing based on percentages
+	// - `1`: percentage-based routing
 	//
 	// example:
 	//
 	// 0
 	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
-	// Lane Status
+	// The status of the swimlane.
 	//
-	// 	- true: enabled
+	// - `true`: enabled
 	//
-	// 	- false: disabled
+	// - `false`: disabled
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The ID of the lane group to which the lane belongs.
+	// The ID of the swimlane group.
 	//
 	// example:
 	//
 	// b2a8a925-477a-eswa-b823-d5e22500****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the lane.
+	// The ID of the swimlane.
 	//
 	// example:
 	//
 	// 13857
 	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
-	// The name of the lane.
+	// The name of the swimlane.
 	//
 	// example:
 	//
 	// test
 	LaneName *string `json:"LaneName,omitempty" xml:"LaneName,omitempty"`
-	// The tag of the lane.
+	// The tag of the swimlane.
 	//
 	// example:
 	//
-	// {"alicloud.service.tag":"g1"}
+	// g1
 	LaneTag *string `json:"LaneTag,omitempty" xml:"LaneTag,omitempty"`
-	// The route configuration of the MSE gateway.
+	// Configuration for the MSE gateway route.
 	//
-	// >  If the **EntryAppType*	- is set to **apig*	- or **mse-gw**, it is required.
+	// > This parameter is required if the **EntryAppType*	- parameter is set to **apig*	- or **mse-gw**.
 	MseGatewayEntryRuleShrink *string `json:"MseGatewayEntryRule,omitempty" xml:"MseGatewayEntryRule,omitempty"`
-	// The namespace ID.
+	// The ID of the namespace.
 	//
 	// example:
 	//

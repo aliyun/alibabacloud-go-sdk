@@ -28,31 +28,31 @@ type iDescribeConfigMapResponseBody interface {
 type DescribeConfigMapResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: success
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: redirection
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: client error
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: server error
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The returned data.
 	Data *DescribeConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. Valid values:
+	// The error code returned if the request fails.
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - This parameter is empty if the request succeeds.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	// - This parameter contains an error code if the request fails. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message. Valid values:
+	// The returned message.
 	//
-	// 	- success: If the call is successful, **success*	- is returned.
+	// - The value is **success*	- if the request succeeds.
 	//
-	// 	- An error code: If the call fails, an error code is returned.
+	// - The value is an error code if the request fails.
 	//
 	// example:
 	//
@@ -64,17 +64,17 @@ type DescribeConfigMapResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the details of the ConfigMap were queried. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The details were queried.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The details failed to be queried.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID. You can use it to locate the call details.
 	//
 	// example:
 	//
@@ -163,49 +163,49 @@ func (s *DescribeConfigMapResponseBody) Validate() error {
 }
 
 type DescribeConfigMapResponseBodyData struct {
-	// The ID of the ConfigMap.
+	// The ID of the ConfigMap instance.
 	//
 	// example:
 	//
 	// 1
 	ConfigMapId *int64 `json:"ConfigMapId,omitempty" xml:"ConfigMapId,omitempty"`
-	// The time when the ConfigMap was created.
+	// The time when the instance was created.
 	//
 	// example:
 	//
 	// 1593746835111
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The key-value pairs of the ConfigMap. Format:
+	// The key-value pairs of the ConfigMap. The data is in the following format:
 	//
 	// {"k1":"v1", "k2":"v2"}
 	//
-	// k specifies a key and v specifies a value. For more information, see [Manage a Kubernetes ConfigMap](https://help.aliyun.com/document_detail/171326.html).
+	// For more information about configuration items, see [Manage and use configuration items](https://help.aliyun.com/document_detail/171326.html).
 	//
 	// example:
 	//
 	// {"k1":"v1","k2":"v2"}
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The description of the ConfigMap.
+	// The description of the ConfigMap instance.
 	//
 	// example:
 	//
 	// test-desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the ConfigMap.
+	// The name of the ConfigMap instance.
 	//
 	// example:
 	//
 	// test-configmap
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The application that is associated with the ConfigMap.
+	// The associated applications.
 	RelateApps []*DescribeConfigMapResponseBodyDataRelateApps `json:"RelateApps,omitempty" xml:"RelateApps,omitempty" type:"Repeated"`
-	// The time when the ConfigMap was updated.
+	// The time when the instance was last updated.
 	//
 	// example:
 	//
@@ -307,13 +307,13 @@ func (s *DescribeConfigMapResponseBodyData) Validate() error {
 }
 
 type DescribeConfigMapResponseBodyDataRelateApps struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// f16b4000-9058-4c22-a49d-49a28f0b****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//

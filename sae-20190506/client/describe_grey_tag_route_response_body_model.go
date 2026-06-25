@@ -26,29 +26,29 @@ type iDescribeGreyTagRouteResponseBody interface {
 }
 
 type DescribeGreyTagRouteResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The status code of the API call or a POP error code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The request is successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The request is redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: A client-side error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server-side error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the canary release rule.
+	// The details of the canary rule.
 	Data *DescribeGreyTagRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code. Valid values:
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - This parameter is not returned if the request is successful.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The message that indicates the result of the call.
 	//
 	// example:
 	//
@@ -60,17 +60,17 @@ type DescribeGreyTagRouteResponseBody struct {
 	//
 	// 9D29CBD0-45D3-410B-9826-52F86F90****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the information of the change order was queried. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The information was queried.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The information failed to be queried.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID for querying the details of a call.
 	//
 	// example:
 	//
@@ -159,42 +159,43 @@ func (s *DescribeGreyTagRouteResponseBody) Validate() error {
 }
 
 type DescribeGreyTagRouteResponseBodyData struct {
+	// The canary rules for the Application Load Balancer (ALB) instance.
 	AlbRules []*DescribeGreyTagRouteResponseBodyDataAlbRules `json:"AlbRules,omitempty" xml:"AlbRules,omitempty" type:"Repeated"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// 3faaf993-7aed-4bcd-b189-625e6a5a****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The timestamp when the canary release rule was created. Unit: milliseconds.
+	// The creation timestamp of the rule, in milliseconds.
 	//
 	// example:
 	//
 	// 1619007592013
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the canary release rule.
+	// The description of the canary rule.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The canary release rule of the Dubbo service.
+	// The canary rules for the Dubbo service.
 	DubboRules []*DescribeGreyTagRouteResponseBodyDataDubboRules `json:"DubboRules,omitempty" xml:"DubboRules,omitempty" type:"Repeated"`
-	// The ID of the canary release rule. The ID is globally unique.
+	// The globally unique ID of the canary rule.
 	//
 	// example:
 	//
 	// 16
 	GreyTagRouteId *int64 `json:"GreyTagRouteId,omitempty" xml:"GreyTagRouteId,omitempty"`
-	// The name of the canary release rule.
+	// The name of the canary rule.
 	//
 	// example:
 	//
 	// rule-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The canary release rule of the Spring Cloud application.
+	// The canary rules for the Spring Cloud application.
 	ScRules []*DescribeGreyTagRouteResponseBodyDataScRules `json:"ScRules,omitempty" xml:"ScRules,omitempty" type:"Repeated"`
-	// The timestamp when the canary release rule was updated. Unit: milliseconds.
+	// The timestamp of the rule\\"s last update, in milliseconds.
 	//
 	// example:
 	//
@@ -323,20 +324,21 @@ func (s *DescribeGreyTagRouteResponseBodyData) Validate() error {
 }
 
 type DescribeGreyTagRouteResponseBodyDataAlbRules struct {
-	// The condition mode of the canary release rule. Valid value: AND. This value indicates that that all conditions must be met.
+	// The relationship between the conditions in the canary rule. Only **AND*	- is supported, which indicates that all conditions must be met.
 	//
 	// example:
 	//
 	// AND
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// The ID of the gateway routing rule.
+	// The ID of the Ingress.
 	//
 	// example:
 	//
 	// 23
-	IngressId *string                                              `json:"ingressId,omitempty" xml:"ingressId,omitempty"`
-	Items     []*DescribeGreyTagRouteResponseBodyDataAlbRulesItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The service ID.
+	IngressId *string `json:"ingressId,omitempty" xml:"ingressId,omitempty"`
+	// The list of conditions.
+	Items []*DescribeGreyTagRouteResponseBodyDataAlbRulesItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The routing service ID.
 	//
 	// example:
 	//
@@ -402,49 +404,49 @@ func (s *DescribeGreyTagRouteResponseBodyDataAlbRules) Validate() error {
 }
 
 type DescribeGreyTagRouteResponseBodyDataAlbRulesItems struct {
-	// Valid value: ==.
+	// Currently supports ==.
 	//
 	// example:
 	//
 	// ==
 	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
-	// This parameter is not returned for applications that are associated with ALB instances.
+	// Not required for ALB applications.
 	//
 	// example:
 	//
 	// N/A
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	// This parameter is not returned for applications that are associated with Application Load Balancer (ALB) instances.
+	// Not required for ALB applications.
 	//
 	// example:
 	//
 	// N/A
 	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
-	// The name of the parameter.
+	// The name of the element to match, such as a header or cookie name. This parameter is not used if type is set to sourceIp.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The operator. Valid value: **rawvalue**. This value indicates direct comparison.
+	// The matching operator. Only **rawvalue*	- is supported, which indicates a direct comparison.
 	//
 	// example:
 	//
 	// rawvalue
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// The type of the comparison. Valid values:
+	// The type of request element to match against. Valid values:
 	//
-	// 	- **sourceIp**: SourceIp
+	// - **sourceIp**: The source IP address.
 	//
-	// 	- **cookie**: cookie
+	// - **cookie**: A cookie.
 	//
-	// 	- **header**: header
+	// - **header**: A request header.
 	//
 	// example:
 	//
 	// cookie
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value of the parameter. This value is compared with the value that is obtained based on the type and name parameters.
+	// The value to match. This value is compared with the actual value of the element specified by **type*	- and **name**.
 	//
 	// example:
 	//
@@ -528,23 +530,23 @@ func (s *DescribeGreyTagRouteResponseBodyDataAlbRulesItems) Validate() error {
 }
 
 type DescribeGreyTagRouteResponseBodyDataDubboRules struct {
-	// The relationship between the conditions in the canary release rule. Valid values:
+	// The relationship between the conditions in the rule. Valid values:
 	//
-	// 	- **AND**: The conditions are in the logical AND relation. All conditions must be met at the same time.
+	// - **AND**: All conditions must be met.
 	//
-	// 	- **OR**: The conditions are in the logical OR relation. At least one of the conditions must be met.
+	// - **OR**: At least one condition must be met.
 	//
 	// example:
 	//
 	// OR
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// The group of the Dubbo service that corresponds to the canary release rule.
+	// The service group to which the canary rule applies.
 	//
 	// example:
 	//
 	// DUBBO
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
-	// The conditions.
+	// The list of conditions.
 	Items []*DescribeGreyTagRouteResponseBodyDataDubboRulesItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The method name of the Dubbo service.
 	//
@@ -552,13 +554,13 @@ type DescribeGreyTagRouteResponseBodyDataDubboRules struct {
 	//
 	// echo
 	MethodName *string `json:"methodName,omitempty" xml:"methodName,omitempty"`
-	// The name of the Dubbo service.
+	// The Dubbo service name.
 	//
 	// example:
 	//
 	// com.alibaba.edas.boot.EchoService
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The version of the Dubbo service.
+	// The Dubbo service version.
 	//
 	// example:
 	//
@@ -642,63 +644,63 @@ func (s *DescribeGreyTagRouteResponseBodyDataDubboRules) Validate() error {
 }
 
 type DescribeGreyTagRouteResponseBodyDataDubboRulesItems struct {
-	// The comparison operator. Valid values: **>**, **<**, **>=**, **<=**, **==**, and **! =**.
+	// The comparison operator. Valid values are **>**, **<**, **>=**, **<=**, **==**, and **!=**.
 	//
 	// example:
 	//
 	// ==
 	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
-	// The expression that is used to obtain the value of the parameter. Valid values:
+	// The expression that is used to obtain the parameter value. Valid values:
 	//
-	// 	- **Empty**: obtains the value of the parameter.
+	// - **Leave empty**: If left empty, the value of the parameter itself is used.
 	//
-	// 	- **.name**: obtains the name property of the parameter. This expression works the same way as args0.getName().
+	// - **.name**: Obtains the value of the `name` attribute of the parameter. This is equivalent to `args0.getName()`.
 	//
-	// 	- **.isEnabled()**: obtains the enabled property of the parameter. This expression works the same way as args0.isEnabled().
+	// - **.isEnabled()**: Obtains the value of the `enabled` attribute of the parameter. This is equivalent to `args0.isEnabled()`.
 	//
-	// 	- **[0]**: indicates that the value of the parameter is an array and obtains the first value of the array. This expression works the same way as args0[0]. This expression does not start with a period (.).
+	// - **[0]**: The parameter must be an array. This expression obtains the first value of the array, which is equivalent to `args0[0]`. Note that the expression does not start with a period (.).
 	//
-	// 	- **.get(0)**: indicates that the value of the parameter is a list and obtains the first value of the list. This expression works the same way as args0.get(0).
+	// - **.get(0)**: The parameter must be a list. This expression obtains the first value of the list, which is equivalent to `args0.get(0)`.
 	//
-	// 	- **.get("key")**: indicates that the value of the parameter is a map and obtains the value of the key in the map. This expression works the same way as args0.get("key").
+	// - **.get("key")**: The parameter must be a map. This expression obtains the value that corresponds to a key. This is equivalent to `args0.get("key")`.
 	//
 	// example:
 	//
 	// .name
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	// The index of the parameter. The value 0 indicates the first parameter.
+	// The parameter index. `0` indicates the first parameter.
 	//
 	// example:
 	//
 	// 0
 	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
-	// This parameter is not returned for Dubbo services.
+	// Not used in Dubbo services.
 	//
 	// example:
 	//
 	// N/A
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The operator. Valid values:
+	// The matching operator. Valid values:
 	//
-	// 	- **rawvalue**: direct comparison.
+	// - **rawvalue**: Performs a direct comparison.
 	//
-	// 	- **list**: whitelist.
+	// - **list**: Matches against an allowlist of values.
 	//
-	// 	- **mod**: mods 100.
+	// - **mod**: Calculates the remainder of a division by 100.
 	//
-	// 	- **deterministic_proportional_steaming_division**: percentage.
+	// - **deterministic_proportional_steaming_division**: Performs a percentage-based match.
 	//
 	// example:
 	//
 	// rawvalue
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// This parameter is not returned for Dubbo services.
+	// Not used in Dubbo services.
 	//
 	// example:
 	//
 	// N/A
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value of the parameter. This value is compared with the value that is obtained based on the **expr*	- and **index*	- parameters.
+	// The value to match. This value is compared with the actual value retrieved by using the specified **expr*	- and **index**.
 	//
 	// example:
 	//
@@ -782,19 +784,19 @@ func (s *DescribeGreyTagRouteResponseBodyDataDubboRulesItems) Validate() error {
 }
 
 type DescribeGreyTagRouteResponseBodyDataScRules struct {
-	// The relationship between the conditions in the canary release rule. Valid values:
+	// The relationship between the conditions in the rule. Valid values:
 	//
-	// 	- **AND**: The conditions are in the logical AND relation. All conditions must be met at the same time.
+	// - **AND**: All conditions must be met.
 	//
-	// 	- **OR**: The conditions are in the logical OR relation. At least one of the conditions must be met.
+	// - **OR**: At least one condition must be met.
 	//
 	// example:
 	//
 	// OR
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// The conditions.
+	// The list of conditions.
 	Items []*DescribeGreyTagRouteResponseBodyDataScRulesItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The path of the canary release rule of the Spring Cloud application.
+	// The path to which the rule applies.
 	//
 	// example:
 	//
@@ -851,57 +853,57 @@ func (s *DescribeGreyTagRouteResponseBodyDataScRules) Validate() error {
 }
 
 type DescribeGreyTagRouteResponseBodyDataScRulesItems struct {
-	// The comparison operator. Valid values: **>**, **<**, **>=**, **<=**, **==**, and **! =**.
+	// The comparison operator. Valid values are **>**, **<**, **>=**, **<=**, **==**, and **!=**.
 	//
 	// example:
 	//
 	// ==
 	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
-	// This parameter is not returned for Spring Cloud applications.
+	// Not used in Spring Cloud applications.
 	//
 	// example:
 	//
 	// N/A
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	// This parameter is not returned for Spring Cloud applications.
+	// Not used in Spring Cloud applications.
 	//
 	// example:
 	//
 	// N/A
 	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
-	// The name of the parameter.
+	// The name of the element to match, as specified by the type parameter. For example, a header name or cookie name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The operator. Valid values:
+	// The matching operator. Valid values:
 	//
-	// 	- **rawvalue**: direct comparison.
+	// - **rawvalue**: Performs a direct comparison.
 	//
-	// 	- **list**: whitelist.
+	// - **list**: Matches against an allowlist of values.
 	//
-	// 	- **mod**: mods 100.
+	// - **mod**: Calculates the remainder of a division by 100.
 	//
-	// 	- **deterministic_proportional_steaming_division**: percentage.
+	// - **deterministic_proportional_steaming_division**: Performs a percentage-based match.
 	//
 	// example:
 	//
 	// rawvalue
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// The type of the comparison. Valid values:
+	// The type of request element to match against. Valid values:
 	//
-	// 	- **param**: parameter
+	// - **param**: A request parameter.
 	//
-	// 	- **cookie**: cookie
+	// - **cookie**: A cookie.
 	//
-	// 	- **header**: header
+	// - **header**: A request header.
 	//
 	// example:
 	//
 	// cookie
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value of the parameter. This value is compared with the value that is obtained based on the **type*	- and **name*	- parameters.
+	// The value to match. This value is compared with the actual value of the element specified by **type*	- and **name**.
 	//
 	// example:
 	//

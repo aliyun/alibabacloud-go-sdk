@@ -26,21 +26,21 @@ type UnbindSlbRequest struct {
 	//
 	// 0099b7be-5f5b-4512-a7fc-56049ef1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Specifies whether to disassociate the Internet-facing SLB instance. Valid values:
+	// Specifies whether to unbind the public network SLB. Valid values:
 	//
-	// 	- **true**: dissociates the Internet-facing SLB instance.
+	// - **true**: unbinds the public network SLB.
 	//
-	// 	- **false**: does not dissociate the Internet-facing SLB instance.
+	// - **false**: does not unbind the public network SLB.
 	//
 	// example:
 	//
 	// true
 	Internet *bool `json:"Internet,omitempty" xml:"Internet,omitempty"`
-	// Specifies whether to disassociate the internal-facing SLB instance. Valid values:
+	// Specifies whether to unbind the private network SLB. Valid values:
 	//
-	// 	- **true**: dissociates the internal-facing SLB instance.
+	// - **true**: unbinds the private network SLB.
 	//
-	// 	- **false**: does not dissociate the internal-facing SLB instance.
+	// - **false**: does not unbind the private network SLB.
 	//
 	// example:
 	//

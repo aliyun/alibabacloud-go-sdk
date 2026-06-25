@@ -24,49 +24,49 @@ type iListApplicationsForSwimmingLaneResponseBody interface {
 }
 
 type ListApplicationsForSwimmingLaneResponseBody struct {
-	// The HTTP status code or the error code. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: Client error.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of applications.
+	// The application list.
 	Data []*ListApplicationsForSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The status code. Value values:
+	// The error code.
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - The parameter is an empty string if the request is successful.
 	//
-	// 	- If the request failed, the **ErrorCode*	- parameter is returned. For more information, see **Error codes*	- section in this topic.
+	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned. The following limits are imposed on the ID:
+	// The response message. Valid values:
 	//
-	// 	- If the request was successful, **success*	- is returned.
+	// - **success*	- is returned if the request is successful.
 	//
-	// 	- An error code is returned when a request failed.
+	// - A specific error code is returned if the request fails.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The trace ID used to query the details of a request.
 	//
 	// example:
 	//
 	// 0a98a02315955564772843261e****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the list of application instances was queried. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The instance groups were obtained.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The instance groups failed to be obtained.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -150,13 +150,13 @@ func (s *ListApplicationsForSwimmingLaneResponseBody) Validate() error {
 }
 
 type ListApplicationsForSwimmingLaneResponseBodyData struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// 0099b7be-5f5b-4512-a7fc-56049ef1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
@@ -180,19 +180,19 @@ type ListApplicationsForSwimmingLaneResponseBodyData struct {
 	//
 	// mse-cn-hvm47******
 	MseAppId *string `json:"MseAppId,omitempty" xml:"MseAppId,omitempty"`
-	// MSE Instance Name
+	// The name of the MSE instance.
 	//
 	// example:
 	//
 	// test
 	MseAppName *string `json:"MseAppName,omitempty" xml:"MseAppName,omitempty"`
-	// The ID of the namespace to which the MSE instance belongs.
+	// The ID of the namespace in which the MSE instance resides.
 	//
 	// example:
 	//
 	// sae-test
 	MseNamespaceId *string `json:"MseNamespaceId,omitempty" xml:"MseNamespaceId,omitempty"`
-	// The canary tag configured for the application.
+	// The canary tags configured for the application.
 	ServiceTags map[string]*string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
 }
 

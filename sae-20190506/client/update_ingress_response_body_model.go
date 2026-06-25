@@ -26,55 +26,55 @@ type iUpdateIngressResponseBody interface {
 }
 
 type UpdateIngressResponseBody struct {
-	// The HTTP status code or the error code. Valid values:
+	// API status or POP error code. Details are as follows:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: Request error.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Responses.
+	// Returned result.
 	Data *UpdateIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The status code. Value values:
+	// Error code. Details are as follows:
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - If the request is successful, the **ErrorCode*	- field is not returned.
 	//
-	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see the **Error codes*	- section of this topic.
+	// - If the request failed, the **ErrorCode*	- field is returned. For more information, see the **Error Codes*	- list in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Additional information. Valid values:
+	// Additional information. Details are as follows:
 	//
-	// 	- The error message returned because the request is normal and **success*	- is returned.
+	// - If the request is normal, **success*	- is returned.
 	//
-	// 	- If the request is abnormal, the specific exception error code is returned.
+	// - If the request is abnormal, a specific abnormal error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the configuration of the Ingress instance is updated. Valid values:
+	// Indicates whether the Ingress instance configuration was successfully updated. Details are as follows:
 	//
-	// 	- **true**: The update was successful.
+	// - **true**: The update was successful.
 	//
-	// 	- **false**: Update failed.
+	// - **false**: The update failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace.
+	// Call chain ID.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ func (s *UpdateIngressResponseBody) Validate() error {
 }
 
 type UpdateIngressResponseBodyData struct {
-	// The ID of the routing rule.
+	// Routing rule ID.
 	//
 	// example:
 	//

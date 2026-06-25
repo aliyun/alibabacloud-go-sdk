@@ -28,31 +28,31 @@ type iUnbindSlbResponseBody interface {
 type UnbindSlbResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: success
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: redirection
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: request error
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: server error
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The response data.
 	Data *UnbindSlbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. Valid values:
+	// The returned error code.
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - This parameter is left empty if the request is successful.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	// - If the request fails, this parameter contains an error code. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message. Valid values:
 	//
-	// 	- success: If the call is successful, **success*	- is returned.
+	// - If the request succeeds, **success*	- is returned.
 	//
-	// 	- An error code: If the call fails, an error code is returned.
+	// - If the request fails, an error message is returned.
 	//
 	// example:
 	//
@@ -64,17 +64,17 @@ type UnbindSlbResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the internal-facing or Internet-facing SLB instance was disassociated. Valid values:
+	// Indicates whether the operation was successful.
 	//
-	// 	- **true**: The SLB instance was disassociated.
+	// - **true**: The operation was successful.
 	//
-	// 	- **false**: The SLB instance failed to be disassociated.
+	// - **false**: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID of the request. You can use this ID to query call details.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ func (s *UnbindSlbResponseBody) Validate() error {
 }
 
 type UnbindSlbResponseBodyData struct {
-	// The ID of the change order. The ID can be used to query the status of the change task.
+	// The change order ID. You can use this ID to query the status of the task.
 	//
 	// example:
 	//

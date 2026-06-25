@@ -26,15 +26,15 @@ type iDescribeChangeOrderResponseBody interface {
 }
 
 type DescribeChangeOrderResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code or POP error code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: A client-side error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server-side error occurred.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type DescribeChangeOrderResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the change order.
 	Data *DescribeChangeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. Valid values:
+	// The error code.
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - If the request is successful, this parameter is not returned.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	// - If the request fails, this parameter is returned. For more information, see the **error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -60,17 +60,17 @@ type DescribeChangeOrderResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the information of the change order was queried. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The information was queried.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The information failed to be queried.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID of the request. This ID is used for troubleshooting.
 	//
 	// example:
 	//
@@ -159,107 +159,113 @@ func (s *DescribeChangeOrderResponseBody) Validate() error {
 }
 
 type DescribeChangeOrderResponseBodyData struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// bbbbb-3fd370b2-3646-4ba6-91f9-9423e19ab0cd-*****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// app-test
-	AppName                       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ApplicationEnableGreyTagRoute *bool   `json:"ApplicationEnableGreyTagRoute,omitempty" xml:"ApplicationEnableGreyTagRoute,omitempty"`
-	ApplicationUpdateStrategy     *string `json:"ApplicationUpdateStrategy,omitempty" xml:"ApplicationUpdateStrategy,omitempty"`
-	// The approval ID of the change order.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Indicates whether gray tag routing is enabled.
+	ApplicationEnableGreyTagRoute *bool `json:"ApplicationEnableGreyTagRoute,omitempty" xml:"ApplicationEnableGreyTagRoute,omitempty"`
+	// The update strategy for the application.
+	ApplicationUpdateStrategy *string `json:"ApplicationUpdateStrategy,omitempty" xml:"ApplicationUpdateStrategy,omitempty"`
+	// The approval ID for the operation.
 	//
 	// example:
 	//
 	// 67de0b39-a9d4-4c09-a170-cf438208****
 	ApprovalId *string `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
-	// Indicates whether SAE automatically releases the batches. Valid values:
+	// Indicates whether to automatically release the change in batches. Valid values:
 	//
-	// 	- **true**: SAE automatically releases the batches.
+	// - **true**: The change is automatically released.
 	//
-	// 	- **false**: SAE does not automatically release the batches.
+	// - **false**: The change is not automatically released.
 	//
 	// example:
 	//
 	// true
 	Auto *bool `json:"Auto,omitempty" xml:"Auto,omitempty"`
-	// The number of release batches.
+	// The number of batches.
 	//
 	// example:
 	//
 	// 1
 	BatchCount *int32 `json:"BatchCount,omitempty" xml:"BatchCount,omitempty"`
-	// The processing method for the batches. Valid values:
+	// The release mode for batches. Valid values:
 	//
-	// 	- **auto**: SAE automatically releases the batches.
+	// - **auto**: Automatic release.
 	//
-	// 	- **Manual**: You must manually release the batches.
+	// - **manual**: Manual release.
 	//
 	// example:
 	//
 	// auto
 	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	// The interval between batches in a phased release. SAE automatically releases batches at the specified interval. Unit: minutes.
+	// The wait time, in minutes, between batches in an automatic release.
 	//
 	// example:
 	//
 	// 0
 	BatchWaitTime *int32 `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
-	// The ID of the change order.
+	// The change order ID.
 	//
 	// example:
 	//
 	// 765fa5c0-9ebb-4bb4-b383-1f885447**
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The change type, which corresponds to the **CoTypeCode*	- parameter.
+	// The change type. This parameter is a description of `CoTypeCode`.
+	//
+	// example:
+	//
+	// Batch Restart Instances
 	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
-	// The code of the change type. Valid values:
+	// The change type code. Valid values:
 	//
-	// 	- **CoBindSlb**: associates a Sever Load Balancer (SLB) instance with the application.
+	// - **CoBindSlb**: Binds an SLB instance.
 	//
-	// 	- **CoUnbindSlb**: disassociates the SLB instance from the application.
+	// - **CoUnbindSlb**: Unbinds an SLB instance.
 	//
-	// 	- **CoCreateApp**: creates the application.
+	// - **CoCreateApp**: Creates an application.
 	//
-	// 	- **CoDeleteApp**: deletes the application.
+	// - **CoDeleteApp**: Deletes an application.
 	//
-	// 	- **CoDeploy**: deploys the application.
+	// - **CoDeploy**: Deploys an application.
 	//
-	// 	- **CoRestartApplication**: restarts the application.
+	// - **CoRestartApplication**: Restarts an application.
 	//
-	// 	- **CoRollback**: rolls back the application.
+	// - **CoRollback**: Rolls back an application.
 	//
-	// 	- **CoScaleIn**: scales in the application.
+	// - **CoScaleIn**: Scales in an application.
 	//
-	// 	- **CoScaleOut**: scales out the application.
+	// - **CoScaleOut**: Scales out an application.
 	//
-	// 	- **CoStart**: starts the application.
+	// - **CoStart**: Starts an application.
 	//
-	// 	- **CoStop**: stops the application.
+	// - **CoStop**: Stops an application.
 	//
-	// 	- **CoRescaleApplicationVertically**: modifies the instance type.
+	// - **CoRescaleApplicationVertically**: Modifies instance specifications.
 	//
-	// 	- **CoDeployHistroy**: rolls back the application to a historical version.
+	// - **CoDeployHistroy**: Rolls back to a historical version.
 	//
-	// 	- **CoBindNas**: associates a NAS file system with the application.
+	// - **CoBindNas**: Binds a NAS file system.
 	//
-	// 	- **CoUnbindNas**: disassociates the NAS file system from the application.
+	// - **CoUnbindNas**: Unbinds a NAS file system.
 	//
-	// 	- **CoBatchStartApplication**: starts multiple applications concurrently.
+	// - **CoBatchStartApplication**: Starts applications in batches.
 	//
-	// 	- **CoBatchStopApplication**: stops multiple applications concurrently.
+	// - **CoBatchStopApplication**: Stops applications in batches.
 	//
-	// 	- **CoRestartInstances**: restarts the instances.
+	// - **CoRestartInstances**: Restarts instances.
 	//
-	// 	- **CoDeleteInstances**: deletes the instances.
+	// - **CoDeleteInstances**: Deletes instances.
 	//
-	// 	- **CoScaleInAppWithInstances**: reduces the specified number of application instances.
+	// - **CoScaleInAppWithInstances**: Scales in an application by specifying instances.
 	//
 	// example:
 	//
@@ -293,45 +299,45 @@ type DescribeChangeOrderResponseBodyData struct {
 	Pipelines []*DescribeChangeOrderResponseBodyDataPipelines `json:"Pipelines,omitempty" xml:"Pipelines,omitempty" type:"Repeated"`
 	// The status of the change order. Valid values:
 	//
-	// 	- **0**: The change order is being prepared.
+	// - **0**: Preparing
 	//
-	// 	- **1**: The change order is being executed.
+	// - **1**: In progress
 	//
-	// 	- **2**: The change order was executed.
+	// - **2**: Succeeded
 	//
-	// 	- **3**: The change order failed to be executed.
+	// - **3**: Failed
 	//
-	// 	- **6**: The change order was terminated.
+	// - **6**: Terminated
 	//
-	// 	- **8**: The execution process is pending. You must manually release the batches.
+	// - **8**: Awaiting manual confirmation
 	//
-	// 	- **9**: The execution process is pending. SAE will automatically release the batches.
+	// - **9**: Awaiting automatic confirmation
 	//
-	// 	- **10**: The execution failed due to a system exception.
+	// - **10**: Failed due to a system error
 	//
-	// 	- **11**: The change order is pending approval.
+	// - **11**: Pending approval
 	//
-	// 	- **12**: The change order is approved and is pending execution.
+	// - **12**: Approved and pending execution
 	//
 	// example:
 	//
 	// 2
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The substatus of the change order. This parameter indicates whether an exception occurred while the change order was being executed. Valid values:
+	// The substatus of the release order. This parameter indicates whether an exception occurred during the release. Valid values:
 	//
-	// 	- **0**: No exception occurred.
+	// - **0**: Normal.
 	//
-	// 	- **1**: An exception occurred. For example, if an error occurs during a phased release, you must manually roll back the application. In this case, the change order cannot be completed, so the Status parameter is still displayed as "1", which indicates that the change order is being executed. You can check the value of this parameter to determine whether an exception occurs.
+	// - **1**: Abnormal. For example, if a batch release fails, you must manually perform a rollback, leaving the release order in the In Progress state.
 	//
 	// example:
 	//
 	// 0
 	SubStatus *int32 `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	// Indicates whether the application can be rolled back. Valid values:
+	// Indicates whether rollback is supported. Valid values:
 	//
-	// 	- **true**: The application can be rolled back.
+	// - **true**: Rollback is supported.
 	//
-	// 	- **false**: The application cannot be rolled back.
+	// - **false**: Rollback is not supported.
 	//
 	// example:
 	//
@@ -553,19 +559,19 @@ type DescribeChangeOrderResponseBodyDataPipelines struct {
 	//
 	// 0
 	ParallelCount *int32 `json:"ParallelCount,omitempty" xml:"ParallelCount,omitempty"`
-	// The ID of the batch.
+	// The batch ID.
 	//
 	// example:
 	//
 	// 0e4acf82-c9b1-4c1e-ac28-55776338****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The name of the batch.
+	// The batch name.
 	//
 	// example:
 	//
 	// Batch 1 Change
 	PipelineName *string `json:"PipelineName,omitempty" xml:"PipelineName,omitempty"`
-	// The time when the batch processing started.
+	// The start time of the batch.
 	//
 	// example:
 	//
@@ -573,31 +579,31 @@ type DescribeChangeOrderResponseBodyDataPipelines struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the batch. Valid values:
 	//
-	// 	- **0**: The batch is being prepared.
+	// - **0**: Preparing
 	//
-	// 	- **1**: The batch is being processed.
+	// - **1**: In progress
 	//
-	// 	- **2**: The batch was processed.
+	// - **2**: Succeeded
 	//
-	// 	- **3**: The batch failed to be processed.
+	// - **3**: Failed
 	//
-	// 	- **6**: The batch processing was terminated.
+	// - **6**: Terminated
 	//
-	// 	- **8**: The execution process is pending. You must manually release the batch.
+	// - **8**: Awaiting manual confirmation
 	//
-	// 	- **9**: The execution process is pending. SAE will automatically release the batch.
+	// - **9**: Awaiting automatic confirmation
 	//
-	// 	- **10**: The batch failed to be processed due to a system exception.
+	// - **10**: Failed due to a system error
 	//
-	// 	- **11**: The batch is pending approval.
+	// - **11**: Pending approval
 	//
-	// 	- **12**: The batch is approved and is pending execution.
+	// - **12**: Approved and pending execution
 	//
 	// example:
 	//
 	// 2
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the batch information was last modified.
+	// The time when the batch was last updated.
 	//
 	// example:
 	//

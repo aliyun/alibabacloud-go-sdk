@@ -14,7 +14,7 @@ type iDeleteIngressRequest interface {
 }
 
 type DeleteIngressRequest struct {
-	// The ID of the routing rule that you want to delete. You can call the [ListIngresses](https://help.aliyun.com/document_detail/153934.html) operation to obtain the ID of a routing rule.
+	// The ID of the routing rule to delete. You can obtain the ID by calling the [ListIngresses](https://help.aliyun.com/document_detail/153934.html) operation.
 	//
 	// This parameter is required.
 	//

@@ -26,51 +26,51 @@ type iDescribeComponentsResponseBody interface {
 }
 
 type DescribeComponentsResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code.
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: success
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: redirect
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: request error
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: server error
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the supported components.
+	// An array of supported application components.
 	Data []*DescribeComponentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The status code. Valid values:
+	// The error code.
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - If the request is successful, the **ErrorCode*	- parameter is empty.
 	//
-	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- section of this topic.
+	// - If the request fails, the **ErrorCode*	- parameter indicates an error code. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned.
+	// The additional information.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the component version was obtained. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The applications were obtained.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The applications failed to be queried.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The trace ID used to query call details.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ func (s *DescribeComponentsResponseBody) Validate() error {
 }
 
 type DescribeComponentsResponseBodyData struct {
-	// The description of the component.
+	// The component description.
 	//
 	// example:
 	//
@@ -177,15 +177,15 @@ type DescribeComponentsResponseBodyData struct {
 	ComponentKey *string `json:"ComponentKey,omitempty" xml:"ComponentKey,omitempty"`
 	// Indicates whether the component is expired. Valid values:
 	//
-	// 	- **true**: The component is expired.
+	// - **true**: The component is expired.
 	//
-	// 	- **false**: The component is not expired.
+	// - **false**: The component is not expired.
 	//
 	// example:
 	//
 	// false
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The type of the component.
+	// The component type.
 	//
 	// example:
 	//

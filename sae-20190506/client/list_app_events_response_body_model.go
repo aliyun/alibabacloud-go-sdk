@@ -24,29 +24,29 @@ type iListAppEventsResponseBody interface {
 }
 
 type ListAppEventsResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code returned for the request. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: Success.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: Redirection.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: Client error.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The events.
+	// The event list.
 	Data *ListAppEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the call failed. Take note of the following rules:
+	// The error code.
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section in this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error Codes*	- section.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// Additional information about the request result.
 	//
 	// example:
 	//
@@ -58,11 +58,11 @@ type ListAppEventsResponseBody struct {
 	//
 	// B4D805CA-926D-41B1-8E63-7AD0C1ED****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the events that occurred in the application were queried. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The events were queried.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The events failed to be queried.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -142,9 +142,9 @@ func (s *ListAppEventsResponseBody) Validate() error {
 }
 
 type ListAppEventsResponseBodyData struct {
-	// The events.
+	// An array of application events.
 	AppEventEntity []*ListAppEventsResponseBodyDataAppEventEntity `json:"AppEventEntity,omitempty" xml:"AppEventEntity,omitempty" type:"Repeated"`
-	// The number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type ListAppEventsResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of events that occurred in an application.
+	// The total count of application events.
 	//
 	// example:
 	//
@@ -222,44 +222,45 @@ func (s *ListAppEventsResponseBodyData) Validate() error {
 }
 
 type ListAppEventsResponseBodyDataAppEventEntity struct {
+	// The cause analysis.
 	CauseAnalysis *string `json:"CauseAnalysis,omitempty" xml:"CauseAnalysis,omitempty"`
-	// The type of the event. Valid values:
+	// The event type.
 	//
 	// example:
 	//
 	// Normal
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The timestamp of the first occurrence of the event.
+	// The timestamp of the event\\"s first occurrence.
 	//
 	// example:
 	//
 	// 2020-02-19T05:01:28Z
 	FirstTimestamp *string `json:"FirstTimestamp,omitempty" xml:"FirstTimestamp,omitempty"`
-	// The timestamp of the last occurrence of the event.
+	// The timestamp of the event\\"s last occurrence.
 	//
 	// example:
 	//
 	// 2020-02-19T05:01:28Z
 	LastTimestamp *string `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	// The information about the event.
+	// The event message.
 	//
 	// example:
 	//
 	// Created container
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The type of the object.
+	// The object kind.
 	//
 	// example:
 	//
 	// Pod
 	ObjectKind *string `json:"ObjectKind,omitempty" xml:"ObjectKind,omitempty"`
-	// The name of the object.
+	// The object name.
 	//
 	// example:
 	//
 	// errew-b86bf540-b4dc-47d8-a42f-b4997c14bd8f-5595cbddd6-2****
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
-	// The cause of the event.
+	// The reason for the event.
 	//
 	// example:
 	//

@@ -26,24 +26,52 @@ type iUpdateSecretResponseBody interface {
 }
 
 type UpdateSecretResponseBody struct {
+	// The status of the API call or a POP error code. Valid values:
+	//
+	// - **2xx**: The request was successful.
+	//
+	// - **3xx**: The request was redirected.
+	//
+	// - **4xx**: A request error occurred.
+	//
+	// - **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *UpdateSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
+	Data *UpdateSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code. The following list describes the values:
+	//
+	// - If the request is successful, this parameter is not returned.
+	//
+	// - If the request fails, this parameter is returned. For more information, see the **Error codes*	- section of this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Additional information about the call result.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the Secret instance was updated. Valid values:
+	//
+	// - **true**: The instance was updated.
+	//
+	// - **false**: The update failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the call chain. You can use this ID to query the details of a call.
+	//
 	// example:
 	//
 	// 0a98a02315955564772843261e****
@@ -131,6 +159,8 @@ func (s *UpdateSecretResponseBody) Validate() error {
 }
 
 type UpdateSecretResponseBodyData struct {
+	// The ID of the Secret instance.
+	//
 	// example:
 	//
 	// 16

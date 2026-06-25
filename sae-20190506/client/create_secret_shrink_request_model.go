@@ -42,15 +42,15 @@ type CreateSecretShrinkRequest struct {
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	// The supported Secret type. Valid values:
 	//
-	// 	- **kubernetes.io/dockerconfigjson**: the Secret for the username and password of the image repository. The Secret is used for authentication when images are pulled during application deployment.
+	// - **kubernetes.io/dockerconfigjson**: the Secret for the username and password of the image repository. The Secret is used for authentication when images are pulled during application deployment.
 	//
 	// Valid values:
 	//
-	// 	- Opaque
+	// - Opaque
 	//
-	// 	- kubernetes.io/dockerconfigjson
+	// - kubernetes.io/dockerconfigjson
 	//
-	// 	- kubernetes.io/tls
+	// - kubernetes.io/tls
 	//
 	// This parameter is required.
 	//

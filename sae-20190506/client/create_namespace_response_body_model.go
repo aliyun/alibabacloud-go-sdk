@@ -26,39 +26,51 @@ type iCreateNamespaceResponseBody interface {
 }
 
 type CreateNamespaceResponseBody struct {
-	// bucketPath
+	// The HTTP status code or a POP error code. Valid values:
+	//
+	// - **2xx**: The request was successful.
+	//
+	// - **3xx**: The request was redirected.
+	//
+	// - **4xx**: A request error occurred.
+	//
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about a namespace.
+	// The information about the namespace.
 	Data *CreateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// http://sae_pop_pre/#vpc
+	// The error code.
 	//
-	// example:
+	// - If the request is successful, this parameter is not returned.
 	//
-	// bucketName
+	// - If the request fails, this parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the namespace.
+	// The additional information returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The description of the custom namespace.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// mountDir
+	// Indicates whether the namespace was successfully created. Valid values:
+	//
+	// - **true**: The namespace was created.
+	//
+	// - **false**: The namespace failed to be created.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The name of the namespace.
+	// The trace ID. You can use the trace ID to query the details of a request.
 	//
 	// example:
 	//
@@ -147,57 +159,41 @@ func (s *CreateNamespaceResponseBody) Validate() error {
 }
 
 type CreateNamespaceResponseBodyData struct {
-	// Indicates whether the SAE built-in registry is enabled:
+	// Indicates whether the built-in service registry of SAE is enabled.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
 	// true
 	EnableMicroRegistration *bool `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
-	// Indicates whether the namespace was created. Valid values:
-	//
-	// 	- **true**: The instance was created.
-	//
-	// 	- **false**: The call failed to be created.
+	// The short-format namespace ID.
 	//
 	// example:
 	//
 	// test
 	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
-	// The short ID of the namespace.
+	// The description of the namespace.
 	//
 	// example:
 	//
 	// desc
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
-	// The error code returned. Take note of the following rules:
-	//
-	// 	- The **ErrorCode*	- parameter is not returned if the request succeeds.
-	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// The ID of the namespace.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// Null
+	// The name of the namespace.
 	//
 	// example:
 	//
 	// name
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The HTTP status code. Valid values:
-	//
-	// 	- **2xx**: The call was successful.
-	//
-	// 	- **3xx**: The call was redirected.
-	//
-	// 	- **4xx**: The call failed.
-	//
-	// 	- **5xx**: A server error occurred.
+	// The region where the namespace resides.
 	//
 	// example:
 	//

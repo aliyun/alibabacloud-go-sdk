@@ -28,35 +28,31 @@ type iListSecretsResponseBody interface {
 type ListSecretsResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: A client error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The response object.
 	Data *ListSecretsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned. Take note of the following rules:
+	// The error code.
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - This parameter is not returned if the request is successful.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section in this topic.
-	//
-	// example:
-	//
-	// Null
+	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message. Take note of the following rules:
+	// The returned message.
 	//
-	// 	- If the call is successful, **success*	- is returned.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// 	- If the call fails, an error code is returned.
+	// - If the request fails, an error message is returned.
 	//
 	// example:
 	//
@@ -68,17 +64,17 @@ type ListSecretsResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID. You can use this ID to query the details of a call.
 	//
 	// example:
 	//
@@ -167,7 +163,7 @@ func (s *ListSecretsResponseBody) Validate() error {
 }
 
 type ListSecretsResponseBodyData struct {
-	// The Secrets.
+	// A list of Secret instances.
 	Secrets []*ListSecretsResponseBodyDataSecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
 }
 
@@ -202,7 +198,7 @@ func (s *ListSecretsResponseBodyData) Validate() error {
 }
 
 type ListSecretsResponseBodyDataSecrets struct {
-	// The time when the Secret was created.
+	// The time when the Secret instance was created.
 	//
 	// example:
 	//
@@ -216,27 +212,27 @@ type ListSecretsResponseBodyDataSecrets struct {
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// The associated applications.
 	RelateApps []*ListSecretsResponseBodyDataSecretsRelateApps `json:"RelateApps,omitempty" xml:"RelateApps,omitempty" type:"Repeated"`
-	// The Secret ID.
+	// The Secret instance ID.
 	//
 	// example:
 	//
 	// 16
 	SecretId *int64 `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
-	// The Secret name.
+	// The Secret instance name.
 	//
 	// example:
 	//
 	// registry-auth
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The Secret type.
+	// The type of the Secret instance. The only valid value is:
 	//
-	// Set the value to **kubernetes.io/dockerconfigjson**. The value indicates the secret for the username and password of the image repository and is used for authentication when images are pulled during application deployment.
+	// **kubernetes.io/dockerconfigjson**: a Secret that stores credentials for a container image registry and is used to authenticate image pulls during deployment.
 	//
 	// example:
 	//
 	// kubernetes.io/dockerconfigjson
 	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	// The time when the Secret was updated.
+	// The time when the Secret instance was last updated.
 	//
 	// example:
 	//

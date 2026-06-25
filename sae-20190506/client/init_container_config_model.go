@@ -28,14 +28,49 @@ type iInitContainerConfig interface {
 }
 
 type InitContainerConfig struct {
-	Command            *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	CommandArgs        *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	// Start command for the image.
+	//
+	// example:
+	//
+	// echo
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// Arguments for the image start command.
+	//
+	// example:
+	//
+	// [\\"-c\\",\\"/bin/bash /home/admin/bin/start.sh\\"]
+	CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	// ConfigMap mount description.
+	//
+	// example:
+	//
+	// [{"configMapId":16,"key":"test","mountPath":"/tmp"}]
 	ConfigMapMountDesc *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
-	EmptyDirDesc       *string `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty"`
-	Envs               *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImageUrl           *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SecretMountDesc    *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
+	// EmptyDir mount description.
+	//
+	// example:
+	//
+	// [{\\"name\\":\\"workdir\\",\\"mountPath\\":\\"/usr/local/tomcat/webapps\\"}]
+	EmptyDirDesc *string `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty"`
+	// Environment variable parameters for the container.
+	//
+	// example:
+	//
+	// [{"name":"TEST_ENV_KEY","value":"TEST_ENV_VAR"}]
+	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The address of the image registry.
+	//
+	// example:
+	//
+	// registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// Container name.
+	//
+	// example:
+	//
+	// name
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SecretMountDesc *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
 }
 
 func (s InitContainerConfig) String() string {

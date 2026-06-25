@@ -22,19 +22,19 @@ type iDescribeRegionsResponseBody interface {
 type DescribeRegionsResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: Success.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: Redirection.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: Client error.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// Additional information about the response.
 	//
 	// example:
 	//

@@ -18,19 +18,19 @@ type iDataInstancesValue interface {
 }
 
 type DataInstancesValue struct {
-	// The domain name.
+	// The DNS name.
 	//
 	// example:
 	//
 	// nlb-wb7r6dlwetvt5j****.cn-hangzhou.nlb.aliyuncs.com
 	DnsName *string `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
-	// The listeners.
+	// A collection of listener details.
 	Listeners map[string]*DataInstancesValueListenersValue `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
-	// Indicates whether the instance is created by SAE.
+	// Indicates whether SAE created the instance. Valid values:
 	//
-	// 	- **true**: The instance is created by SAE.
+	// - **true**: SAE created the instance.
 	//
-	// 	- **false**: The existing instance is reused.
+	// - **false**: SAE reused an existing instance.
 	//
 	// example:
 	//

@@ -28,13 +28,13 @@ type iDescribeNamespaceListResponseBody interface {
 type DescribeNamespaceListResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The call was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: The call failed.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -44,19 +44,15 @@ type DescribeNamespaceListResponseBody struct {
 	Data []*DescribeNamespaceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code. Valid values:
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
-	//
-	// example:
-	//
-	// NULL
+	// - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message. Valid values:
 	//
-	// 	- success: If the call is successful, **success*	- is returned.
+	// - success: If the call is successful, **success*	- is returned.
 	//
-	// 	- An error code: If the call fails, an error code is returned.
+	// - An error code: If the call fails, an error code is returned.
 	//
 	// example:
 	//
@@ -70,9 +66,9 @@ type DescribeNamespaceListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the list of namespaces was queried. Valid values:
 	//
-	// 	- **true**: The list was queried.
+	// - **true**: The list was queried.
 	//
-	// 	- **false**: The list failed to be queried.
+	// - **false**: The list failed to be queried.
 	//
 	// example:
 	//
@@ -185,9 +181,9 @@ type DescribeNamespaceListResponseBodyData struct {
 	Current *bool `json:"Current,omitempty" xml:"Current,omitempty"`
 	// Indicates whether custom namespaces are returned. Valid values:
 	//
-	// 	- **true**: Custom namespaces are returned.
+	// - **true**: Custom namespaces are returned.
 	//
-	// 	- **false**: Custom namespaces are not returned.
+	// - **false**: Custom namespaces are not returned.
 	//
 	// example:
 	//
@@ -195,9 +191,9 @@ type DescribeNamespaceListResponseBodyData struct {
 	Custom *bool `json:"Custom,omitempty" xml:"Custom,omitempty"`
 	// Indicates whether hybrid cloud namespaces are excluded. Valid values:
 	//
-	// 	- **true**: Hybrid cloud namespaces are excluded.
+	// - **true**: Hybrid cloud namespaces are excluded.
 	//
-	// 	- **false**: Hybrid cloud namespaces are included.
+	// - **false**: Hybrid cloud namespaces are included.
 	//
 	// example:
 	//

@@ -24,7 +24,12 @@ type AbortChangeOrderRequest struct {
 	//
 	// be2e1c76-682b-4897-98d3-1d8d6478****
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Rollback      *bool   `json:"Rollback,omitempty" xml:"Rollback,omitempty"`
+	// Specifies whether to roll back the change order.
+	//
+	// example:
+	//
+	// true
+	Rollback *bool `json:"Rollback,omitempty" xml:"Rollback,omitempty"`
 }
 
 func (s AbortChangeOrderRequest) String() string {

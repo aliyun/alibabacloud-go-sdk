@@ -28,13 +28,13 @@ type iReduceApplicationCapacityByInstanceIdsResponseBody interface {
 type ReduceApplicationCapacityByInstanceIdsResponseBody struct {
 	// The HTTP status code.
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The call was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: The call failed.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -44,19 +44,15 @@ type ReduceApplicationCapacityByInstanceIdsResponseBody struct {
 	Data *ReduceApplicationCapacityByInstanceIdsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned if the request failed. Take note of the following rules:
 	//
-	// 	- The **ErrorCode*	- parameter is not returned if the request succeeds.
+	// - The **ErrorCode*	- parameter is not returned if the request succeeds.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
-	//
-	// example:
-	//
-	// Null
+	// - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The additional information that is returned. Take note of the following rules:
 	//
-	// 	- success: If the call is successful, **success*	- is returned.
+	// - success: If the call is successful, **success*	- is returned.
 	//
-	// 	- An error code: If the call fails, an error code is returned.
+	// - An error code: If the call fails, an error code is returned.
 	//
 	// example:
 	//
@@ -70,9 +66,9 @@ type ReduceApplicationCapacityByInstanceIdsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the information of the change order was queried. Take note of the following rules:
 	//
-	// 	- **true**: The information was queried.
+	// - **true**: The information was queried.
 	//
-	// 	- **false**: The image failed to be found.
+	// - **false**: The image failed to be found.
 	//
 	// example:
 	//

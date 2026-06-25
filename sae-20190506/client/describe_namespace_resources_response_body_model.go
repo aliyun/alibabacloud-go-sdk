@@ -28,53 +28,53 @@ type iDescribeNamespaceResourcesResponseBody interface {
 type DescribeNamespaceResourcesResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: indicates that the request failed.
+	// - **4xx**: The request was invalid.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *DescribeNamespaceResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. This parameter is returned only if the request fails. For more information, see the **Error codes*	- section of this topic.
 	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
+	// - A successful request does not return the **ErrorCode*	- field.
 	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// - A failed request returns the **ErrorCode*	- field. For more information, see the list of **error codes*	- in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The returned message. Valid values:
 	//
-	// 	- **success*	- is returned when the request succeeds.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// 	- An error code is returned when the request fails.
+	// - If the request fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the information about resources in the namespace was queried successfully. Valid values:
+	// Indicates whether the namespace resources were queried successfully.
 	//
-	// 	- **true**: indicates that the query was successful.
+	// - **true**: The query was successful.
 	//
-	// 	- **false**: indicates that the query failed.
+	// - **false**: The query failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	// The trace ID. You can use this ID to query the details of the call.
 	//
 	// example:
 	//
@@ -163,6 +163,7 @@ func (s *DescribeNamespaceResourcesResponseBody) Validate() error {
 }
 
 type DescribeNamespaceResourcesResponseBodyData struct {
+	// The version of the APM Java agent.
 	ApmJavaAgentVersion *string `json:"ApmJavaAgentVersion,omitempty" xml:"ApmJavaAgentVersion,omitempty"`
 	// The number of applications.
 	//
@@ -170,7 +171,7 @@ type DescribeNamespaceResourcesResponseBodyData struct {
 	//
 	// 1
 	AppCount *int64 `json:"AppCount,omitempty" xml:"AppCount,omitempty"`
-	// The region to which the namespace belongs.
+	// The region of the namespace.
 	//
 	// example:
 	//
@@ -194,112 +195,133 @@ type DescribeNamespaceResourcesResponseBodyData struct {
 	//
 	// 120.78.XXX.XX
 	JumpServerIp *string `json:"JumpServerIp,omitempty" xml:"JumpServerIp,omitempty"`
-	// The ID of the change order.
+	// The release order ID.
 	//
 	// example:
 	//
 	// afedb3c4-63f8-4a3d-aaa3-2c30363f****
 	LastChangeOrderId *string `json:"LastChangeOrderId,omitempty" xml:"LastChangeOrderId,omitempty"`
-	// Indicates whether a change order is being executed in the namespace. Valid values:
+	// Indicates whether a release order is running in the namespace. Valid values:
 	//
-	// 	- **true**: indicates that a change order is being executed in the namespace.
+	// - **true**: A release order is running.
 	//
-	// 	- **false**: indicates that no change orders are being executed in the namespace.
+	// - **false**: No release order is running.
 	//
 	// example:
 	//
 	// true
 	LastChangeOrderRunning *bool `json:"LastChangeOrderRunning,omitempty" xml:"LastChangeOrderRunning,omitempty"`
-	// The status of the latest change order. Valid values:
+	// The status of the last release order. Valid values:
 	//
-	// 	- **READY**: The change order is ready.
+	// - **READY**: The release order is ready.
 	//
-	// 	- **RUNNING**: The change order is being executed.
+	// - **RUNNING**: The release order is running.
 	//
-	// 	- **SUCCESS**: The change order was executed.
+	// - **SUCCESS**: The release order was successful.
 	//
-	// 	- **FAIL**: The change order could not be executed.
+	// - **FAIL**: The release order failed.
 	//
-	// 	- **ABORT**: The change order was terminated.
+	// - **ABORT**: The release order was aborted.
 	//
-	// 	- **WAIT_BATCH_CONFIRM**: The change order is pending execution. You must manually confirm the release batch.
+	// - **WAIT_BATCH_CONFIRM**: The release order is waiting for manual batch confirmation.
 	//
-	// 	- **AUTO_BATCH_WAIT**: The change order is pending execution. SAE will automatically confirm the release batch.
+	// - **AUTO_BATCH_WAIT**: The release order is in an automatic batch-wait state.
 	//
-	// 	- **SYSTEM_FAIL**: A system exception occurred.
+	// - **SYSTEM_FAIL**: A system error occurred.
 	//
-	// 	- **WAIT_APPROVAL**: The change order is pending approval.
+	// - **WAIT_APPROVAL**: The release order is pending approval.
 	//
-	// 	- **APPROVED**: The change order is approved and is pending execution.
+	// - **APPROVED**: The release order is approved and pending execution.
 	//
 	// example:
 	//
 	// SUCCESS
 	LastChangeOrderStatus *string `json:"LastChangeOrderStatus,omitempty" xml:"LastChangeOrderStatus,omitempty"`
+	// The short-format namespace ID.
+	//
 	// example:
 	//
 	// test
 	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
 	// cn-shangha:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// example:
 	//
 	// test
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// Indicates whether the notification of a change order is expired. Valid values:
+	// Indicates whether the notification for the release order has expired. Valid values:
 	//
-	// 	- **true**: indicates that the notification is expired.
+	// - **true**: The notification has expired.
 	//
-	// 	- **false**: indicates that the notification is not expired.
+	// - **false**: The notification has not expired.
 	//
 	// example:
 	//
 	// true
 	NotificationExpired *bool `json:"NotificationExpired,omitempty" xml:"NotificationExpired,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// example:
 	//
 	// sg-wz969ngg2e49q5i4****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SlsConfigs      *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	// The ID of the tenant in the SAE namespace.
+	// The configuration for collecting logs to Simple Log Service (SLS).
+	//
+	// - To use SLS resources that are automatically created by SAE: `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+	//
+	// - To use custom SLS resources: `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+	//
+	// The configuration includes the following parameters:
+	//
+	// - **projectName**: The project name in SLS.
+	//
+	// - **logDir**: The log path.
+	//
+	// - **logType**: The log type. **stdout*	- indicates the standard output of the container. Only one stdout entry is allowed. If you omit this parameter, file logs are collected.
+	//
+	// - **logstoreName**: The Logstore name in SLS.
+	//
+	// - **logtailName**: The Logtail name in SLS. If you omit this parameter, SAE creates a Logtail.
+	//
+	// You do not need to set this parameter if the SLS log collection configuration is unchanged for subsequent deployments. To disable log collection, set this parameter to an empty string ("").
+	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	// The tenant ID of the SAE namespace.
 	//
 	// example:
 	//
 	// 838cad95-973f-48fe-830b-2a8546d7****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//
 	// test@aliyun.com
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-2ze559r1z1bpwqxwp****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The name of the vSwitch.
+	// The vSwitch name.
 	//
 	// example:
 	//
 	// test
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-2ze0i263cnn311nvj****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the VPC.
+	// The VPC name.
 	//
 	// example:
 	//

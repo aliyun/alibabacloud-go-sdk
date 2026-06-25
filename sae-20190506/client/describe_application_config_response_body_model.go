@@ -28,13 +28,13 @@ type iDescribeApplicationConfigResponseBody interface {
 type DescribeApplicationConfigResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The request is successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The request is redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: The request is invalid.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurs.
 	//
 	// example:
 	//
@@ -42,33 +42,29 @@ type DescribeApplicationConfigResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information about the application.
 	Data *DescribeApplicationConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error code. Valid values:
+	// The error code.
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - This parameter is not returned if the request is successful.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
-	//
-	// example:
-	//
-	// Null
+	// - If the request fails, this parameter is returned. For more information, see the "Error codes" section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned information.
+	// The additional information that is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 01CF26C7-00A3-4AA6-BA76-7E95F2A3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the configurations of an application were obtained. Valid values:
+	// Indicates whether the application configuration was retrieved. Valid values:
 	//
-	// 	- **true**: The configurations were obtained.
+	// - **true**: The configuration was retrieved.
 	//
-	// 	- **false**: The configurations failed to be obtained.
+	// - **false**: The configuration failed to be retrieved.
 	//
 	// example:
 	//
@@ -163,7 +159,7 @@ func (s *DescribeApplicationConfigResponseBody) Validate() error {
 }
 
 type DescribeApplicationConfigResponseBodyData struct {
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role that is used to pull images across accounts. For more information, see [Pull images across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/190675.html) and [Grant permissions across Alibaba Cloud accounts by using a RAM role](https://help.aliyun.com/document_detail/223585.html).
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role that is required to pull images across accounts. For more information, see [Pull images across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/190675.html) and [Use a RAM role to grant permissions across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/223585.html).
 	//
 	// example:
 	//
@@ -174,50 +170,52 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// cri-xxxxxx
-	AcrInstanceId           *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	AgentVersion            *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
+	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	// The agent version.
+	AgentVersion *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
+	// The configuration of the Application Load Balancer (ALB) gateway readiness gate.
 	AlbIngressReadinessGate *string `json:"AlbIngressReadinessGate,omitempty" xml:"AlbIngressReadinessGate,omitempty"`
-	// The description of the application.
+	// The application description.
 	//
 	// example:
 	//
-	// The application description.
+	// Sample application
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// demo-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The SAE application type.
+	// The type of the SAE application.
 	//
-	// 	- micro_service
+	// - micro_service
 	//
-	// 	- web
+	// - web
 	//
-	// 	- job
+	// - job
 	//
 	// example:
 	//
 	// micro_service
 	AppSource *string `json:"AppSource,omitempty" xml:"AppSource,omitempty"`
-	// Indicates whether an elastic IP address (EIP) is associated with the application instance. Valid values:
+	// Specifies whether to bind an elastic IP address (EIP). Valid values:
 	//
-	// 	- **true**: The EIP is associated with the application instance.
+	// - **true**: Bind an EIP.
 	//
-	// 	- **false**: The EIP is not associated with the application instance.
+	// - **false**: Do not bind an EIP.
 	//
 	// example:
 	//
 	// true
 	AssociateEip *bool `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
-	// The base app ID.
+	// The ID of the baseline application.
 	//
 	// example:
 	//
@@ -234,9 +232,10 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// 495fc79c-ae61-4600-866d-a09d68******
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The Cloud Monitor service ID.
 	CmsServiceId *string `json:"CmsServiceId,omitempty" xml:"CmsServiceId,omitempty"`
-	// The command that is used to start the image. The command must be an existing executable object in the container. Example:
+	// The startup command of the image. The command must be an executable object that exists in the container. Example:
 	//
 	// ```
 	//
@@ -252,72 +251,77 @@ type DescribeApplicationConfigResponseBodyData struct {
 	//
 	// ```
 	//
-	// In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
+	// Based on the preceding example, `Command="echo", CommandArgs=["abc", ">", "file0"]`.
 	//
 	// example:
 	//
 	// echo
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The parameters of the image startup command. The CommandArgs parameter contains the parameters that are required for the **Command*	- parameter. Format:
+	// The arguments of the image startup command. The arguments are required by the **Command*	- parameter. Format:
 	//
 	// `["a","b"]`
 	//
-	// In the preceding **Command*	- example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. You do not need to configure this parameter if it does not exist in the Command parameter.
+	// In the example of the **Command*	- parameter, `CommandArgs=["abc", ">", "file0"]`. The value `["abc", ">", "file0"]` must be converted into a string in the JSON array format. If this parameter is not required, you do not need to specify it.
 	//
 	// example:
 	//
 	// ["a","b"]
 	CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	// The details of the ConfigMap.
+	// The configurations of the ConfigMap.
 	ConfigMapMountDesc []*DescribeApplicationConfigResponseBodyDataConfigMapMountDesc `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty" type:"Repeated"`
-	// The CPU specifications that are required for each instance. Unit: millicores. You cannot set this parameter to 0. Valid values:
+	// The CPU required by each instance. Unit: millicores. The value cannot be 0. The following specifications are supported:
 	//
-	// 	- **500**
+	// - **500**
 	//
-	// 	- **1000**
+	// - **1000**
 	//
-	// 	- **2000**
+	// - **2000**
 	//
-	// 	- **4000**
+	// - **4000**
 	//
-	// 	- **8000**
+	// - **8000**
 	//
-	// 	- **16000**
+	// - **16000**
 	//
-	// 	- **32000**
+	// - **32000**
 	//
 	// example:
 	//
 	// 1000
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The custom mappings between hostnames and IP addresses in the container. Valid values:
+	// The custom mapping between a domain name and an IP address in the container. Valid values:
 	//
-	// 	- **hostName**: the domain name or hostname.
+	// - **hostName**: The domain name or hostname.
 	//
-	// 	- **ip**: the IP address.
+	// - **ip**: The IP address.
 	//
 	// example:
 	//
 	// [{"hostName":"test.host.name","ip":"0.0.0.0"}]
 	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
-	// The type of custom image. Set to empty string if using pre-built image.
+	// The type of the custom image. If you do not use a custom image, set this parameter to an empty string. Valid values:
 	//
-	// - internet: public network image.
+	// - internet: a public image
 	//
-	// - intranet: private network image.
+	// - intranet: a private image
 	//
 	// example:
 	//
 	// internet
 	CustomImageNetworkType *string `json:"CustomImageNetworkType,omitempty" xml:"CustomImageNetworkType,omitempty"`
-	DeploymentName         *string `json:"DeploymentName,omitempty" xml:"DeploymentName,omitempty"`
-	// The disk size. Unit: GB.
+	// The instance name of the application in the ASI cluster.
+	//
+	// example:
+	//
+	// demo-b0cdce9b-3d1f-4168-b206-b59f348f1a8a
+	DeploymentName *string `json:"DeploymentName,omitempty" xml:"DeploymentName,omitempty"`
+	// The disk storage size. Unit: GB.
 	//
 	// example:
 	//
 	// 20
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The version of .NET.
+	// The version of the .NET framework:
 	//
 	// - .NET 3.1
 	//
@@ -333,208 +337,220 @@ type DescribeApplicationConfigResponseBodyData struct {
 	//
 	// .NET 8.0
 	Dotnet *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
-	// The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
+	// The version of the application runtime environment in the High-Speed Service Framework (HSF), such as an Ali-Tomcat container.
 	//
 	// example:
 	//
 	// 3.5.3
-	EdasContainerVersion *string                                                  `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	EmptyDirDesc         []*DescribeApplicationConfigResponseBodyDataEmptyDirDesc `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty" type:"Repeated"`
-	// Indicates whether access to Application High Availability Service (AHAS) is enabled. Valid values:
+	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	// The shared temporary storage.
+	EmptyDirDesc []*DescribeApplicationConfigResponseBodyDataEmptyDirDesc `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty" type:"Repeated"`
+	// Specifies whether to enable Application High Availability Service (AHAS). Valid values:
 	//
-	// 	- **true**: Access to AHAS is enabled.
+	// - **true**: Enable AHAS.
 	//
-	// 	- **false**: Access to AHAS is disabled.
+	// - **false**: Disable AHAS.
 	//
 	// example:
 	//
 	// true
 	EnableAhas *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
-	// Enable CPU Burst.
+	// Specifies whether to enable the CPU burst feature:
 	//
-	// - true: enable
+	// - true: Enable
 	//
-	// - false: disable
+	// - false: Disable
 	//
 	// example:
 	//
 	// true
 	EnableCpuBurst *string `json:"EnableCpuBurst,omitempty" xml:"EnableCpuBurst,omitempty"`
-	// Indicates whether canary release rules are enabled. Canary release rules apply only to applications in Spring Cloud and Dubbo frameworks. Valid values:
+	// Specifies whether to enable the canary release rule. This rule is applicable only to applications that use the Spring Cloud and Dubbo frameworks. Valid values:
 	//
-	// 	- **true**: The canary release rules are enabled.
+	// - **true**: Enable the canary release rule.
 	//
-	// 	- **false**: The canary release rules are disabled.
+	// - **false**: Disable the canary release rule.
 	//
 	// example:
 	//
 	// false
 	EnableGreyTagRoute *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
-	// Enable idle mode.
+	// Specifies whether to enable the idle mode:
 	//
-	// - true: enable
+	// - true: Enable
 	//
-	// - false: disable
+	// - false: Disable
 	//
 	// example:
 	//
 	// false
-	EnableIdle                  *bool `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
+	EnableIdle *bool `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
+	// Specifies whether to reuse the agent version configuration of the namespace.
 	EnableNamespaceAgentVersion *bool `json:"EnableNamespaceAgentVersion,omitempty" xml:"EnableNamespaceAgentVersion,omitempty"`
-	// Enable new ARMS feature.
+	// Specifies whether to enable the new ARMS feature:
 	//
-	// - true: enable
+	// - true: Enable
 	//
-	// - false: disable
+	// - false: Disable
 	//
 	// example:
 	//
 	// false
-	EnableNewArms    *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
+	EnableNewArms *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
+	// Specifies whether to enable custom metric collection for Prometheus.
 	EnablePrometheus *bool `json:"EnablePrometheus,omitempty" xml:"EnablePrometheus,omitempty"`
-	// The environment variables. Variable description:
+	// The environment variables for the container. You can customize environment variables or reference a ConfigMap. To reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
 	//
-	// 	- **name**: the name of the environment variable.
+	// - Custom configuration
 	//
-	// 	- **value**: the value or reference of the environment variable.
+	//   - **name**: The name of the environment variable.
+	//
+	//   - **value**: The value of the environment variable.
+	//
+	// - Reference a configuration item
+	//
+	//   - **name**: The name of the environment variable. You can reference a single key or all keys. To reference all keys, enter `sae-sys-configmap-all-<ConfigMap name>`, for example, `sae-sys-configmap-all-test1`.
+	//
+	//   - **valueFrom**: The reference of the environment variable. Set the value to `configMapRef`.
+	//
+	//   - **configMapId**: The ID of the ConfigMap.
+	//
+	//   - **key**: The key. If you want to reference all keys, do not specify this parameter.
 	//
 	// example:
 	//
 	// [{"name":"TEST_ENV_KEY","value":"TEST_ENV_VAR"}]
-	Envs                  *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	GpuCount              *string `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The number of GPUs.
+	GpuCount *string `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	// The GPU card type.
 	GpuType               *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
 	HeadlessPvtzDiscovery *string `json:"HeadlessPvtzDiscovery,omitempty" xml:"HeadlessPvtzDiscovery,omitempty"`
 	Html                  *string `json:"Html,omitempty" xml:"Html,omitempty"`
 	IdleHour              *string `json:"IdleHour,omitempty" xml:"IdleHour,omitempty"`
-	// The ID of the corresponding secret dictionary.
+	// The ID of the secret.
 	//
 	// example:
 	//
 	// 10
 	ImagePullSecrets *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
-	// The URL of the image. This parameter is returned only if the **PackageType*	- parameter is set to **Image**.
+	// The URL of the image. This parameter is required when **Package Type*	- is set to **Image**.
 	//
 	// example:
 	//
 	// docker.io/library/nginx:1.14.2
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Initialize container configuration.
+	// The configurations of the init container.
 	InitContainersConfig []*DescribeApplicationConfigResponseBodyDataInitContainersConfig `json:"InitContainersConfig,omitempty" xml:"InitContainersConfig,omitempty" type:"Repeated"`
-	IsStateful           *bool                                                            `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
-	// The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+	// Specifies whether the application is a stateful application.
+	IsStateful *bool `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
+	// The arguments for starting the JAR package. The default startup command is: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
 	//
 	// example:
 	//
 	// start
 	JarStartArgs *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	// The option settings in the JAR package. The settings are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+	// The options for starting the JAR package. The default startup command is: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
 	//
 	// example:
 	//
 	// -Dtest=true
 	JarStartOptions *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	// The version of the Java development kit (JDK) on which the deployment package of the application depends. The following versions are supported:
+	// The version of the Java Development Kit (JDK) that the deployment package requires. The following versions are supported:
 	//
-	// 	- **Open JDK 8**
+	// - **Open JDK 8**
 	//
-	// 	- **Open JDK 7**
+	// - **Open JDK 7**
 	//
-	// 	- **Dragonwell 11**
+	// - **Dragonwell 11**
 	//
-	// 	- **Dragonwell 8**
+	// - **Dragonwell 8**
 	//
-	// 	- **openjdk-8u191-jdk-alpine3.9**
+	// - **openjdk-8u191-jdk-alpine3.9**
 	//
-	// 	- **openjdk-7u201-jdk-alpine3.9**
+	// - **openjdk-7u201-jdk-alpine3.9**
 	//
-	// This parameter is not returned if the **PackageType*	- parameter is set to **Image**.
+	// This parameter is not supported when **Package Type*	- is set to **Image**.
 	//
 	// example:
 	//
 	// Open JDK 8
 	Jdk *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	// The logging configurations of Message Queue for Apache Kafka. The following parameters are involved:
+	// The configurations for collecting logs to Kafka. Valid values:
 	//
-	// 	- **KafkaConfigs**: the configurations of Message Queue for Apache Kafka.
+	// - **kafkaEndpoint**: The endpoint of the Kafka API.
 	//
-	// 	- **createTime**: the time when the Message Queue for Apache Kafka instance was created.
+	// - **kafkaInstanceId**: The ID of the Kafka instance.
 	//
-	// 	- **kafkaTopic**: the message topic that is used to classify messages.
+	// - **kafkaConfigs**: The configurations of one or more logs. For more information about the example and parameters, see the **kafkaConfigs*	- request parameter in this topic.
 	//
-	// 	- **logDir**: the path in which logs are stored.
+	// example:
 	//
-	// 	- **logType**: the type of collected logs. Valid values:
+	// {"kafkaEndpoint":"10.0.X.XXX:XXXX,10.0.X.XXX:XXXX,10.0.X.XXX:XXXX","kafkaInstanceId":"alikafka_pre-cn-7pp2l8kr****","kafkaConfigs":[{"logType":"file_log","logDir":"/tmp/a.log","kafkaTopic":"test2"},{"logType":"stdout","logDir":"","kafkaTopic":"test"}]}
+	KafkaConfigs *string `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
+	// The labels.
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The liveness probe of the container. A container that fails the health check is shut down and restored. The following methods are supported:
 	//
-	//     	- **file_log**: the file log that is stored in the container. The path of the file logs in the container is returned.
+	// - **exec**: example: `{"exec":{"command":["sh","-c","cat/home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}`
 	//
-	//     	- **stdout**: the standard output log of the container. You can specify only one stdout value.
+	// - **httpGet**: example:`{"httpGet":{"path":"/","port":18091,"scheme":"HTTP","isContainKeyWord":true,"keyWord":"SAE"},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
 	//
-	// 	- **kafkaEndpoint**: the endpoint of the Message Queue for Apache Kafka service.
+	// - **tcpSocket**: example:`{"tcpSocket":{"port":18091},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
 	//
-	// 	- **kafkaInstanceId**: the ID of the Message Queue for Apache Kafka instance.
+	// > You can use only one method for a health check.
 	//
-	// 	- **region**: the region where the Message Queue for Apache Kafka instance resides.
-	KafkaConfigs *string            `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
-	Labels       map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The details of the availability check that was performed on the container. If the container fails this health check multiple times, the system disables and restarts the container. You can use one of the following methods to perform the health check:
+	// The parameters are described as follows:
 	//
-	// 	- Sample code of the **exec*	- method: `{"exec":{"command":["sh","-c","cat/home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}`
+	// - **exec.command**: The command that is used for the health check.
 	//
-	// 	- Sample code of the **httpGet*	- method: `{"httpGet":{"path":"/","port":18091,"scheme":"HTTP","isContainKeyWord":true,"keyWord":"SAE"},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
+	// - **httpGet.path**: The request path.
 	//
-	// 	- Sample code of the **tcpSocket*	- method: `{"tcpSocket":{"port":18091},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
+	// - **httpGet.scheme**: **HTTP*	- or **HTTPS**.
 	//
-	// >  You can use only one method to perform the health check.
+	// - **httpGet.isContainKeyWord**: Specifies whether the response must contain a keyword. A value of **true*	- indicates that the response must contain the keyword. A value of **false*	- indicates that the response does not need to contain the keyword. If you do not specify this parameter, this advanced feature is not used.
 	//
-	// The following parameters are involved:
+	// - **httpGet.keyWord**: The custom keyword. This parameter is required if you set the **isContainKeyWord*	- parameter.
 	//
-	// 	- **exec.command**: the health check command.
+	// - **tcpSocket.port**: The port that is used for the TCP connection check.
 	//
-	// 	- **httpGet.path**: the request path.
+	// - **initialDelaySeconds**: The delay for the health check. Default value: 10. Unit: seconds.
 	//
-	// 	- **httpGet.scheme**: the protocol that is used to perform the health check. Valid values: **HTTP*	- and **HTTPS**.
+	// - **periodSeconds**: The interval for the health check. Default value: 30. Unit: seconds.
 	//
-	// 	- **httpGet.isContainKeyWord**: indicates whether the response contains keywords. Valid values: **true*	- and **false**. If this field is not returned, the advanced settings are not used.
-	//
-	// 	- **httpGet.keyWord**: the custom keyword. This parameter is available only if the **isContainKeyWord*	- field is returned.
-	//
-	// 	- **tcpSocket.port**: the port that is used to check the status of TCP connections.
-	//
-	// 	- **initialDelaySeconds**: the delay of the health check. Default value: 10. Unit: seconds.
-	//
-	// 	- **periodSeconds**: the interval at which health checks are performed. Default value: 30. Unit: seconds.
-	//
-	// 	- **timeoutSeconds**: the timeout period of the health check. Default value: 1. Unit: seconds. If you set this parameter to 0 or leave this parameter empty, the timeout period is automatically set to 1 second.
+	// - **timeoutSeconds**: The timeout period for the health check. Default value: 1. Unit: seconds. If you set this parameter to 0 or do not specify this parameter, the default value is used.
 	//
 	// example:
 	//
 	// {"exec":{"command":["curl http://localhost:8080"]},"initialDelaySeconds":20,"timeoutSeconds":3}
-	Liveness              *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	LokiConfigs           *string `json:"LokiConfigs,omitempty" xml:"LokiConfigs,omitempty"`
-	MaxSurgeInstanceRatio *int32  `json:"MaxSurgeInstanceRatio,omitempty" xml:"MaxSurgeInstanceRatio,omitempty"`
-	MaxSurgeInstances     *int32  `json:"MaxSurgeInstances,omitempty" xml:"MaxSurgeInstances,omitempty"`
-	// The size of memory required by each instance. Unit: MB. You cannot set this parameter to 0. The values of this parameter correspond to the values of the Cpu parameter:
+	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	// The Loki configurations.
+	LokiConfigs *string `json:"LokiConfigs,omitempty" xml:"LokiConfigs,omitempty"`
+	// The maximum surge instance ratio.
+	MaxSurgeInstanceRatio *int32 `json:"MaxSurgeInstanceRatio,omitempty" xml:"MaxSurgeInstanceRatio,omitempty"`
+	// The maximum number of surge instances.
+	MaxSurgeInstances *int32 `json:"MaxSurgeInstances,omitempty" xml:"MaxSurgeInstances,omitempty"`
+	// The memory required by each instance. Unit: MB. The value cannot be 0. This parameter corresponds to the \\`Cpu\\` parameter. The following specifications are supported:
 	//
-	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
+	// - **1024**: corresponds to 500 millicores and 1,000 millicores.
 	//
-	// 	- This parameter is set to **2048*	- if the Cpu parameter is set to 500, 1000, or 1000.
+	// - **2048**: corresponds to 500, 1,000, and 2,000 millicores.
 	//
-	// 	- This parameter is set to **4096*	- if the Cpu parameter is set to 1000, 2000, or 4000.
+	// - **4096**: corresponds to 1,000, 2,000, and 4,000 millicores.
 	//
-	// 	- This parameter is set to **8192*	- if the Cpu parameter is set to 2000, 4000, or 8000.
+	// - **8192**: corresponds to 2,000, 4,000, and 8,000 millicores.
 	//
-	// 	- This parameter is set to **12288*	- if the Cpu parameter is set to 12000.
+	// - **12288**: corresponds to 12,000 millicores.
 	//
-	// 	- This parameter is set to **16384*	- if the Cpu parameter is set to 4000, 8000, or 16000.
+	// - **16384**: corresponds to 4,000, 8,000, and 16,000 millicores.
 	//
-	// 	- This parameter is set to **24567*	- if the Cpu parameter is set to 12000.
+	// - **24576**: corresponds to 12,000 millicores.
 	//
-	// 	- This parameter is set to **32768*	- if the Cpu parameter is set to 16000.
+	// - **32768**: corresponds to 16,000 millicores.
 	//
-	// 	- This parameter is set to **65536*	- if the Cpu parameter is set to 8000, 16000, or 32000.
+	// - **65536**: corresponds to 8,000, 16,000, and 32,000 millicores.
 	//
-	// 	- This parameter is set to **131072*	- if the Cpu parameter is set to 32000.
+	// - **131072**: corresponds to 32,000 millicores.
 	//
 	// example:
 	//
@@ -542,95 +558,95 @@ type DescribeApplicationConfigResponseBodyData struct {
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The Nacos registry. Valid values:
 	//
-	// 	- **0**: SAE built-in Nacos registry
+	// - **0**: SAE built-in Nacos.
 	//
-	// 	- **1**: self-managed Nacos registry
+	// - **1**: User-created Nacos.
 	//
-	// 	- **2*	- : MSE Nacos registry
+	// - **2**: MSE Nacos.
 	//
 	// example:
 	//
 	// "0"
 	MicroRegistration *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
-	// The configuration of registration center. Takes effect only the type of registration center is MSE enterprise Nacos.
+	// The configuration of the registry. This parameter takes effect only when the registry is MSE Nacos Enterprise Edition.
 	//
 	// example:
 	//
 	// {\\"instanceId\\":\\"mse-cn-1ls43******\\",\\"namespace\\":\\"62ee12fb-c279-4da4-be96-21**********\\"}
 	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
-	// Configure microservices governance
+	// The configurations of microservice governance.
 	//
-	// enable: Whether to enable microservices governance
+	// - Specifies whether to enable microservice governance (enable):
 	//
-	// - true: Enable
+	//   - true: Enable
 	//
-	// - false: Disable
+	//   - false: Disable
 	//
-	// mseLosslessRule: Configure lossless online/offline deployment
+	// - The configuration of graceful start and shutdown (mseLosslessRule):
 	//
-	// - delayTime: Delay duration (unit: seconds)
+	//   - delayTime: The delay time.
 	//
-	// - enable: Whether to enable lossless deployment. Set to "true" to enable; set to "false" to disable.
+	//   - enable: Specifies whether to enable graceful start. true indicates that graceful start is enabled. false indicates that graceful start is not enabled.
 	//
-	// - notice: Whether to enable notifications. Set to "true" to enable; set to "false" to disable.
+	//   - notice: Specifies whether to enable notifications. true indicates that notifications are enabled. false indicates that notifications are not enabled.
 	//
-	// - warmupTime: Small-traffic warm-up duration (unit: seconds)
+	//   - warmupTime: The warm-up duration for a small amount of traffic. Unit: seconds.
 	//
 	// example:
 	//
 	// {\\"Enable\\":true,\\"MseLosslessRule\\":{\\"enable\\":true,\\"notice\\":true,\\"delayTime\\":10,\\"warmupTime\\":120,\\"funcType\\":2,\\"aligned\\":false,\\"related\\":false,\\"lossLessDetail\\":false}}
 	MicroserviceEngineConfig *string `json:"MicroserviceEngineConfig,omitempty" xml:"MicroserviceEngineConfig,omitempty"`
-	// The percentage of the minimum number of available instances. Valid values:
+	// The percentage of the minimum number of ready instances. Valid values:
 	//
-	// 	- **-1**: the default value. This value indicates that the minimum number of available instances is not measured by percentage. If you do not configure this parameter, the default value **-1*	- is used.
+	// - -1: The default value. This value indicates that the percentage is not used. If you do not specify this parameter, the system uses the default value **-1**.
 	//
-	// 	- **0 to 100**: indicates that the minimum number of available instances is calculated by using the following formula: Current number of instances × (Value of MinReadyInstanceRatio × 100%). If the calculated result is not an integer, the result is rounded up to the nearest integer. For example, if the percentage is set to **50**% and five instances are available, the minimum number of available instances is 3.
+	// - **0 to 100**: The percentage of the minimum number of ready instances. The value is rounded up. For example, if you set this parameter to **50**%, and you have five instances, the minimum number of ready instances is 3.
 	//
-	// >  If the **MinReadyInstance*	- and **MinReadyInstanceRatio*	- parameters are returned and the value of the **MinReadyInstanceRatio*	- parameter is not **-1**, the value of the **MinReadyInstanceRatio*	- parameter takes effect. If the **MinReadyInstances*	- parameter is set to **5*	- and the **MinReadyInstanceRatio*	- parameter is set to **50**, the value of the **MinReadyInstanceRatio*	- parameter determines the minimum number of available instances.
+	// > If you specify both \\`MinReadyInstances\\` and **MinReadyInstanceRatio**, and the value of **MinReadyInstanceRatio*	- is not **-1**, the value of **MinReadyInstanceRatio*	- takes precedence. For example, if **MinReadyInstances*	- is set to **5*	- and **MinReadyInstanceRatio*	- is set to **50**, the minimum number of ready instances is calculated based on the value of **MinReadyInstanceRatio**.
 	//
 	// example:
 	//
 	// -1
 	MinReadyInstanceRatio *int32 `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
-	// The minimum number of available instances. Valid values:
+	// The minimum number of ready instances. Valid values:
 	//
-	// 	- If you set the value to **0**, business interruptions occur when the application is updated.
+	// - If you set this parameter to **0**, the application may be interrupted during an upgrade.
 	//
-	// 	- If you set the value to **-1**, the minimum number of available instances is automatically set to a system-recommended value. The value is the nearest integer to which the calculated result of the following formula is rounded up: Current number of instances × 25%. For example, if five instances are available, the minimum number of available instances is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+	// - If you set this parameter to -1, the system uses a recommended value, which is 25% of the total number of instances. For example, if you have five instances, the minimum number of ready instances is 2 after the value is rounded up.
 	//
-	// >  Make sure that at least one instance is available during application deployment and rollback to prevent business interruptions.
+	// > We recommend that you set the minimum number of ready instances to a value of 1 or greater to ensure that the application is not interrupted during a rolling update.
 	//
 	// example:
 	//
 	// 1
 	MinReadyInstances *int32 `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
-	// The details of the mounted NAS file system.
+	// The mount description.
 	MountDesc []*DescribeApplicationConfigResponseBodyDataMountDesc `json:"MountDesc,omitempty" xml:"MountDesc,omitempty" type:"Repeated"`
-	// The mount target of the NAS file system in the VPC where the application is deployed. If you do not need to modify this configuration during the deployment, configure the **MountHost*	- parameter only in the first request. You do not need to include this parameter in subsequent requests. If you need to remove this configuration, leave the **MountHost*	- parameter empty in the request.
+	// The mount target of the Apsara File Storage NAS file system in the application VPC. If you do not change the NAS configuration during a deployment, you do not need to specify this parameter. If you want to clear the NAS configuration, set this parameter to an empty string ("").
 	//
 	// example:
 	//
 	// example.com
 	MountHost *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
-	// The ID of the microservice application.
+	// The ID of the application in Microservices Engine (MSE).
 	//
 	// example:
 	//
 	// xxxxxxx@xxxxx
 	MseApplicationId *string `json:"MseApplicationId,omitempty" xml:"MseApplicationId,omitempty"`
-	// The application name of SAE service registered in MSE.
+	// The name of the application after the SAE service is registered with MSE.
 	//
 	// example:
 	//
 	// cn-shenzhen-alb-demo-5c****
 	MseApplicationName *string `json:"MseApplicationName,omitempty" xml:"MseApplicationName,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The configurations for mounting the NAS file system.
+	// The configurations for mounting a NAS file system.
 	//
 	// example:
 	//
@@ -640,145 +656,149 @@ type DescribeApplicationConfigResponseBodyData struct {
 	//
 	// example:
 	//
-	// AKSN89**
+	// AKSN****
 	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	// The SAE application edition.
+	// The application version.
 	//
-	// - lite: The lightweight edition.
+	// - lite: Lightweight Edition
 	//
-	// - std: The standard edition.
+	// - std: Standard Edition
 	//
-	// - pro: The professional edition.
+	// - pro: Professional Edition
 	//
 	// example:
 	//
 	// pro
 	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
-	// The name of the RAM role used to authenticate the user identity.
+	// The RAM role for identity authentication.
 	//
-	// >  You need to create an OpenID Connect (OIDC) identity provider (IdP) and an identity provider (IdP) for role-based single sign-on (SSO) in advance. For more information, see [Creates an OpenID Connect (OIDC) identity provider (IdP)](https://help.aliyun.com/document_detail/2331022.html) and [Creates an identity provider (IdP) for role-based single sign-on (SSO)](https://help.aliyun.com/document_detail/2331016.html).
+	// > You must create an OpenID Connect (OIDC) identity provider (IdP) and a RAM role for the IdP in the same region beforehand. For more information, see [Create an OIDC IdP](https://help.aliyun.com/document_detail/2331022.html) and [Create a RAM role for a trusted IdP](https://help.aliyun.com/document_detail/2331016.html).
 	//
 	// example:
 	//
 	// sae-test
 	OidcRoleName *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
-	// The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
+	// The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS).
 	//
 	// example:
 	//
 	// xxxxxx
 	OssAkId *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
-	// The AccessKey secret that is used to read data from and write data to OSS buckets.
+	// The AccessKey secret that is used to read data from and write data to OSS.
 	//
 	// example:
 	//
 	// xxxxxx
 	OssAkSecret *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
-	// The description of the mounted OSS bucket.
+	// The description of the OSS mount.
 	OssMountDescs []*DescribeApplicationConfigResponseBodyDataOssMountDescs `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty" type:"Repeated"`
-	// The type of the deployment package. Valid values:
+	// The type of the application package. Valid values:
 	//
-	// 	- If you deploy the application by using a Java Archive (JAR) package, you can set this parameter to **FatJar**, **War**, or **Image**.
+	// - If you deploy the application using Java, valid values are **FatJar**, **War**, and **Image**.
 	//
-	// 	- If you deploy the application by using a PHP package, you can set this parameter to one of the following values:
+	// - If you deploy the application using PHP, the following values are supported:
 	//
-	//     	- **PhpZip**
+	//   - **PhpZip**
 	//
-	//     	- **IMAGE_PHP_5_4**
+	//   - **IMAGE_PHP_5_4**
 	//
-	//     	- **IMAGE_PHP_5_4_ALPINE**
+	//   - **IMAGE_PHP_5_4_ALPINE**
 	//
-	//     	- **IMAGE_PHP_5_5**
+	//   - **IMAGE_PHP_5_5**
 	//
-	//     	- **IMAGE_PHP_5_5_ALPINE**
+	//   - **IMAGE_PHP_5_5_ALPINE**
 	//
-	//     	- **IMAGE_PHP_5_6**
+	//   - **IMAGE_PHP_5_6**
 	//
-	//     	- **IMAGE_PHP_5_6_ALPINE**
+	//   - **IMAGE_PHP_5_6_ALPINE**
 	//
-	//     	- **IMAGE_PHP_7_0**
+	//   - **IMAGE_PHP_7_0**
 	//
-	//     	- **IMAGE_PHP_7_0_ALPINE**
+	//   - **IMAGE_PHP_7_0_ALPINE**
 	//
-	//     	- **IMAGE_PHP_7_1**
+	//   - **IMAGE_PHP_7_1**
 	//
-	//     	- **IMAGE_PHP_7_1_ALPINE**
+	//   - **IMAGE_PHP_7_1_ALPINE**
 	//
-	//     	- **IMAGE_PHP_7_2**
+	//   - **IMAGE_PHP_7_2**
 	//
-	//     	- **IMAGE_PHP_7_2_ALPINE**
+	//   - **IMAGE_PHP_7_2_ALPINE**
 	//
-	//     	- **IMAGE_PHP_7_3**
+	//   - **IMAGE_PHP_7_3**
 	//
-	//     	- **IMAGE_PHP_7_3_ALPINE**
+	//   - **IMAGE_PHP_7_3_ALPINE**
 	//
 	// example:
 	//
 	// War
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The URL of the deployment package. This parameter is returned only if the **PackageType*	- parameter is set to **FatJar*	- or **War**.
+	// The URL of the deployment package. If you upload the deployment package using SAE, note the following:
+	//
+	// - You cannot download the package from this URL. Call the \\`GetPackageVersionAccessableUrl\\` operation to obtain a download URL that is valid for 10 minutes.
+	//
+	// - SAE stores the package for a maximum of 90 days. After 90 days, the URL is not returned and you cannot download the package.
 	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	// The version of the deployment package. This parameter is returned only if the **PackageType*	- parameter is set to **FatJar*	- or **War**.
+	// The version of the deployment package. This parameter is required when **Package Type*	- is set to **FatJar*	- or **War**.
 	//
 	// example:
 	//
 	// 1.0
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	// The version of PHP supporting PHP deployment packages. Image is not supported.
+	// The PHP version required for the deployment package. This parameter is not supported for images.
 	//
 	// example:
 	//
 	// PHP-FPM 7.0
 	Php *string `json:"Php,omitempty" xml:"Php,omitempty"`
-	// The path on which the PHP configuration file for application monitoring is mounted. Make sure that the PHP server loads the configuration file.
+	// The mount path of the Application Real-Time Monitoring Service (ARMS) configuration file for a PHP application. Make sure that the PHP server loads the configuration file from this path.
 	//
-	// SAE automatically generates the corresponding configuration file. No manual operations are required.
+	// SAE automatically renders the correct configuration file. You do not need to manage the content of the configuration file.
 	//
 	// example:
 	//
 	// /usr/local/etc/php/conf.d/arms.ini
 	PhpArmsConfigLocation *string `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
-	// The details of the PHP configuration file.
+	// The content of the PHP configuration file.
 	//
 	// example:
 	//
 	// k1=v1
 	PhpConfig *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
-	// The path on which the PHP configuration file for application startup is mounted. Make sure that the PHP server uses this configuration file during the startup.
+	// The mount path of the PHP application startup configuration file. Make sure that the PHP server uses this configuration file to start.
 	//
 	// example:
 	//
 	// /usr/local/etc/php/php.ini
 	PhpConfigLocation *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
-	// The script that is run immediately after the container is started. Example: `{"exec":{"command":["cat","/etc/group"]}}`
+	// The script that runs after the container starts. The script runs immediately after the container is created. Example: `{"exec":{"command":["cat","/etc/group"]}}`
 	//
 	// example:
 	//
 	// {"exec":{"command":["cat","/etc/group"]}}
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	// The script that is run before the container is stopped. Example: `{"exec":{"command":["cat","/etc/group"]}}`
+	// The script that runs before the container is stopped. The script runs before the container is deleted. Example: `{"exec":{"command":["cat","/etc/group"]}}`
 	//
 	// example:
 	//
 	// {"exec":{"command":["cat","/etc/group"]}}
 	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	// The programming language that is used to create the application. Valid values:
+	// The programming language of the application. Valid values:
 	//
-	// 	- **java**: Java
+	// - **java**: Java
 	//
-	// 	- **php**: PHP
+	// - **php**: PHP
 	//
-	// 	- **other**: Other programming languages, such as Python, C++, Go, .NET, and Node.js.
+	// - **other**: other languages, such as Python, C++, Go, .NET, and Node.js.
 	//
 	// example:
 	//
 	// java
 	ProgrammingLanguage *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
-	// Enable K8s Service discovery and registration.
+	// Enables service registration and discovery for a Kubernetes Service.
 	//
 	// example:
 	//
-	// {"serviceName":"bwm-poc-sc-gateway-cn-beijing-front","namespaceId":"cn-beijing:front","portAndProtocol":{"18012":"TCP"},"enable":true}
+	// {     "serviceName": "bwm-poc-sc-gateway-cn-beijing-front",     "namespaceId": "cn-beijing:front",     "portAndProtocol": {         "18012": "TCP"     },     "portProtocols": [         {             "port": "18012",             "protocol": "TCP"         }     ],     "enable": true }
 	PvtzDiscovery *string `json:"PvtzDiscovery,omitempty" xml:"PvtzDiscovery,omitempty"`
 	// The Python environment. PYTHON 3.9.15 is supported.
 	//
@@ -786,21 +806,21 @@ type DescribeApplicationConfigResponseBodyData struct {
 	//
 	// PYTHON 3.9.15
 	Python *string `json:"Python,omitempty" xml:"Python,omitempty"`
-	// The configurations for installing custom module dependencies. By default, the dependencies defined by the requirements.txt file in the root directory are installed. If no software package is configured, you can specify dependencies based on your business requirements.
+	// The dependencies for custom installation modules. By default, the dependencies that are defined in the requirements.txt file in the root directory are installed. If no software package is configured or a custom software package is used, you can specify the dependencies to be installed.
 	//
 	// example:
 	//
 	// Flask==2.0
 	PythonModules *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
-	// The details of the health check that was performed on the container. If the container fails this health check multiple times, the system disables and restarts the container. Containers that fail health checks cannot receive traffic from Server Load Balancer (SLB) instances. You can use the **exec**, **httpGet**, or **tcpSocket*	- method to perform health checks. For more information, see the description of the **Liveness*	- parameter.
+	// The readiness probe of the application. A container that fails the health check multiple times is shut down and restarted. A container that fails the health check does not receive traffic from a Server Load Balancer (SLB) instance. You can perform the health check using the **exec**, **httpGet**, or **tcpSocket*	- method. For more information, see the **Liveness*	- parameter.
 	//
-	// >  You can use only one method to perform the health check.
+	// > You can use only one method for a health check.
 	//
 	// example:
 	//
 	// {"exec":{"command":["curl http://localhost:8080"]},"initialDelaySeconds":20,"timeoutSeconds":5}
 	Readiness *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
@@ -812,13 +832,13 @@ type DescribeApplicationConfigResponseBodyData struct {
 	//
 	// 2
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	// The type of the resource. Set the value to `application`.
+	// The resource type. Only `application` is supported.
 	//
 	// example:
 	//
 	// application
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Secret mount description.
+	// The description of the secret that you want to mount.
 	SecretMountDesc []*DescribeApplicationConfigResponseBodyDataSecretMountDesc `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty" type:"Repeated"`
 	// The ID of the security group.
 	//
@@ -826,50 +846,51 @@ type DescribeApplicationConfigResponseBodyData struct {
 	//
 	// sg-wz969ngg2e49q5i4****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The canary tag configured for the application.
+	// The canary release tags of the application configuration.
 	ServiceTags map[string]*string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
-	// The configuration of the Sidecar container.
+	// The configurations of the sidecar container.
 	SidecarContainersConfig []*DescribeApplicationConfigResponseBodyDataSidecarContainersConfig `json:"SidecarContainersConfig,omitempty" xml:"SidecarContainersConfig,omitempty" type:"Repeated"`
-	// The logging configurations of Log Service.
+	// The configurations for collecting logs to Simple Log Service (SLS).
 	//
-	// 	- To use Log Service resources that are automatically created by SAE, set this parameter to `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+	// - To use an SLS resource that is automatically created by SAE: `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
 	//
-	// 	- To use custom Log Service resources, set this parameter to `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+	// - To use a custom SLS resource: `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
 	//
-	// The following parameters are involved:
+	// The parameters are described as follows:
 	//
-	// 	- **projectName**: the name of the Log Service project.
+	// - **projectName**: The name of the SLS project.
 	//
-	// 	- **logDir**: the path in which logs are stored.
+	// - **logDir**: The log path.
 	//
-	// 	- **logType**: the log type. **stdout**: the standard output log of the container. You can specify only one stdout value for this parameter. If you leave this parameter empty, file logs are collected.
+	// - **logType**: The log type. **stdout*	- indicates the standard output log of the container. You can specify only one log of this type. If you do not specify this parameter, file logs are collected.
 	//
-	// 	- **logstoreName**: the name of the Logstore in Log Service.
+	// - **logstoreName**: The name of the Logstore in SLS.
 	//
-	// 	- **logtailName**: the name of the Logtail configuration in Log Service. If you do not configure this parameter, a new Logtail configuration is created.
+	// - **logtailName**: The name of the Logtail configuration in SLS. If you do not specify this parameter, a new Logtail configuration is created.
 	//
-	// If you do not need to modify the logging configurations when you deploy the application, configure the **SlsConfigs*	- parameter only in the first request. You do not need to include this parameter in subsequent requests. If you no longer need to use Log Service, leave the **SlsConfigs*	- parameter empty in the request.
+	// If you do not change the log collection configuration during a deployment, you do not need to specify this parameter. If you no longer need to use the log collection feature, set this parameter to an empty string ("") in the request.
 	//
 	// example:
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
-	SlsConfigs    *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	// The environment tags for SLS logs.
 	SlsLogEnvTags *string `json:"SlsLogEnvTags,omitempty" xml:"SlsLogEnvTags,omitempty"`
-	// Enable startup probe.
+	// The startup probe of the application.
 	//
 	// example:
 	//
 	// {\\"exec\\":{\\"command\\":[\\"/bin/sh\\",\\"-c\\",\\"#!Note: If microservice config is enabled, the application will be automatically injected with the prestop configuration for lossless offline. If you delete this prestop configuration, lossless offline will not be effective.\\\\n echo stop > /tmp/prestop; /home/admin/.tools/curl http://127.0.0.1:54199/offline; sleep 30\\"]}}
 	StartupProbe *string `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
-	// Configuration of K8s Service discovery and registration, and full-chain gray-release feature.
+	// The configuration for service registration and discovery based on a Kubernetes Service and for end-to-end canary release.
 	//
 	// example:
 	//
 	// {\\"enable\\":\\"false\\",\\"namespaceId\\":\\"cn-beijing:test\\",\\"portAndProtocol\\":{\\"2000:TCP\\":\\"18081\\"},\\"portProtocols\\":[{\\"port\\":2000,\\"protocol\\":\\"TCP\\",\\"targetPort\\":18081}],\\"pvtzDiscoveryName\\":\\"cn-beijing-1421801774382676\\",\\"serviceId\\":\\"3513\\",\\"serviceName\\":\\"demo-gray.test\\"}
 	SwimlanePvtzDiscovery *string `json:"SwimlanePvtzDiscovery,omitempty" xml:"SwimlanePvtzDiscovery,omitempty"`
-	// The details of the tags.
+	// The tags.
 	Tags []*DescribeApplicationConfigResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
+	// The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. The value can range from 1 to 300.
 	//
 	// example:
 	//
@@ -881,49 +902,49 @@ type DescribeApplicationConfigResponseBodyData struct {
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// The Tomcat configuration. If you want to delete the configuration, set this parameter to {} or leave this parameter empty. The following parameters are involved:
+	// The Tomcat configuration. To delete the configuration, set this parameter to "" or "{}".
 	//
-	// 	- **port**: the port number. Valid values: 1024 to 65535. The root permissions are required to perform operations on ports whose number is smaller than 1024. Enter a value that ranges from 1025 to 65535 because the container has only the admin permissions. If you do not configure this parameter, the default port number 8080 is used.
+	// - **port**: The port number. The port number can range from 1024 to 65535. A port number smaller than 1024 requires the root permission to be operated. Because the container is configured with the administrator permission, specify a port number that is greater than 1024. If you do not configure this parameter, the default port 8080 is used.
 	//
-	// 	- **contextPath**: the path. Default value: /. This value indicates the root directory.
+	// - **contextPath**: The access path. The default value is the root directory "/".
 	//
-	// 	- **maxThreads**: the maximum number of connections in the connection pool. Default value: 400.
+	// - **maxThreads**: The maximum number of connections in the connection pool. Default value: 400.
 	//
-	// 	- **uriEncoding**: the URI encoding scheme in the Tomcat container. Valid values: **UTF-8**, **ISO-8859-1**, **GBK**, and **GB2312**. If you do not configure this parameter, the default value **ISO-8859-1*	- is used.
+	// - **uriEncoding**: The URI encoding scheme of Tomcat. Valid values: **UTF-8**, **ISO-8859-1**, **GBK**, and **GB2312**. If you do not set this parameter, the default value **ISO-8859-1*	- is used.
 	//
-	// 	- **useBodyEncoding**: indicates whether to use the encoding scheme that is specified by **BodyEncoding for URL**. Default value: **true**.
+	// - **useBodyEncoding**: Specifies whether to use **BodyEncoding for URL**. Default value: **true**.
 	//
 	// example:
 	//
 	// {"port":8080,"contextPath":"/","maxThreads":400,"uriEncoding":"ISO-8859-1","useBodyEncodingForUri":true}
 	TomcatConfig *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
-	// The deployment policy. If the minimum number of available instances is 1, the value of the **UpdateStrategy*	- parameter is an empty string (""). If the minimum number of available instances is greater than 1, the following strategies can be configured:
+	// The deployment policy. If the minimum number of ready instances is 1, the value of the **UpdateStrategy*	- parameter is "". If the minimum number of ready instances is greater than 1, see the following examples:
 	//
-	// 	- The application is deployed on an instance. The remaining instances are automatically classified into two release batches whose interval is set to 1. In this case, the parameter is set to `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}`.
+	// - Canary release of one instance, phased release in two batches, automatic batching, and a 1-minute interval between batches: `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}`
 	//
-	// 	- The application is deployed on an instance. The remaining instances are manually classified into two release batches. In this case, the parameter is set to `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"manual"},"grayUpdate":{"gray":1}}`.
+	// - Canary release of one instance and phased release in two batches with manual batching: `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"manual"},"grayUpdate":{"gray":1}}`
 	//
-	// 	- All instances are automatically classified into two release batches. The application is deployed on the instances of the two batches in parallel. In this case, the parameter is set to `{"type":"BatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":0}}`
+	// - Phased release in two batches, automatic batching, and a 0-minute interval between batches: `{"type":"BatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":0}}`
 	//
-	// The following parameters are involved:
+	// The parameters are described as follows:
 	//
-	// 	- **type**: the type of the release policy. Valid values: **GrayBatchUpdate*	- and **BatchUpdate**.
+	// - **type**: The type of the release policy. Valid values: **GrayBatchUpdate*	- (canary release) and **BatchUpdate*	- (phased release).
 	//
-	// 	- **batchUpdate**: the phased release policy.
+	// - **batchUpdate**: The phased release policy.
 	//
-	//     	- **batch**: the number of release batches.
+	//   - **batch**: The number of release batches.
 	//
-	//     	- **releaseType**: the processing method for the batches. Valid values: **auto*	- and **manual**.
+	//   - **releaseType**: The processing method for batches. Valid values: **auto*	- and **manual**.
 	//
-	//     	- **batchWaitTime**: the interval between release batches. Unit: seconds.
+	//   - **batchWaitTime**: The interval between batches. Unit: seconds.
 	//
-	// 	- **grayUpdate**: the number of release batches in the phased release after a canary release. This parameter is returned only if the **type*	- parameter is set to **GrayBatchUpdate**.
+	// - **grayUpdate**: The number of batches for the remaining instances after the canary release. This parameter is required when **type*	- is set to **GrayBatchUpdate**.
 	//
 	// example:
 	//
 	// {"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}
 	UpdateStrategy *string `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -935,19 +956,19 @@ type DescribeApplicationConfigResponseBodyData struct {
 	//
 	// vpc-2ze0i263cnn311nvj****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The option settings in the WAR package. The settings are used to start the application container. The default startup command is `java $JAVA_OPTS $CATALINA_OPTS -Options org.apache.catalina.startup.Bootstrap "$@" start`.
+	// The options for starting the WAR package. The default startup command is: `java $JAVA_OPTS $CATALINA_OPTS -Options org.apache.catalina.startup.Bootstrap "$@" start`.
 	//
 	// example:
 	//
 	// custom-option
 	WarStartOptions *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
-	// The version of the Tomcat container on which the deployment package depends. Valid values:
+	// The Tomcat version that the deployment package requires. The following versions are supported:
 	//
-	// 	- **apache-tomcat-7.0.91**
+	// - **apache-tomcat-7.0.91**
 	//
-	// 	- **apache-tomcat-8.5.42**
+	// - **apache-tomcat-8.5.42**
 	//
-	// This parameter is not returned if the **PackageType*	- parameter is set to **Image**.
+	// This parameter is not supported when **Package Type*	- is set to **Image**.
 	//
 	// example:
 	//
@@ -1970,13 +1991,13 @@ type DescribeApplicationConfigResponseBodyDataConfigMapMountDesc struct {
 	//
 	// test
 	ConfigMapName *string `json:"ConfigMapName,omitempty" xml:"ConfigMapName,omitempty"`
-	// The key-value pair that is stored in the ConfigMap.
+	// The key of the key-value pair.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The path on which the ConfigMap is mounted.
+	// The mount path of the container.
 	//
 	// example:
 	//
@@ -2033,8 +2054,10 @@ func (s *DescribeApplicationConfigResponseBodyDataConfigMapMountDesc) Validate()
 }
 
 type DescribeApplicationConfigResponseBodyDataEmptyDirDesc struct {
+	// The mount path.
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the temporary storage.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeApplicationConfigResponseBodyDataEmptyDirDesc) String() string {
@@ -2068,71 +2091,87 @@ func (s *DescribeApplicationConfigResponseBodyDataEmptyDirDesc) Validate() error
 }
 
 type DescribeApplicationConfigResponseBodyDataInitContainersConfig struct {
-	// The command that is used to start the image. The command must be an existing executable object in the container. Sample statements:
+	// The startup command of the image. The command must be an executable object that exists in the container. Example:
 	//
-	//     command:
+	// ```
 	//
-	//           - echo
+	// command:
 	//
-	//           - abc
+	//       - echo
 	//
-	//           - >
+	//       - abc
 	//
-	//           - file0
+	//       - >
 	//
-	// In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
+	//       - file0
+	//
+	// ```
+	//
+	// Based on the preceding example, `Command="echo", CommandArgs=["abc", ">", "file0"]`.
 	//
 	// example:
 	//
 	// /bin/sh
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The parameters of the image startup command. The CommandArgs parameter specifies the parameters that are required for the **Command*	- parameter. You can specify the name in one of the following formats:
+	// The arguments of the image startup command. The arguments are required by the preceding startup command **Command**. Format:
 	//
 	// `["a","b"]`
 	//
-	// In the preceding example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. This parameter is optional.
+	// In the preceding example, `CommandArgs=["abc", ">", "file0"]`. The value `["abc", ">", "file0"]` must be converted into a string in the JSON array format. If this parameter is not required, you do not need to specify it.
 	//
 	// example:
 	//
 	// ["a","b"]
 	CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	// The information of ConfigMap.
+	// The configurations of the ConfigMap.
 	ConfigMapMountDesc []*DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty" type:"Repeated"`
-	EmptyDirDesc       []*DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc       `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty" type:"Repeated"`
-	// The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Take note of the following rules:
+	// The shared temporary storage.
+	EmptyDirDesc []*DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty" type:"Repeated"`
+	// The environment variables of the container. You can customize environment variables or reference a ConfigMap. To reference a ConfigMap, you must first create a ConfigMap instance. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
 	//
-	// 	- Customize
+	// - Custom configuration
 	//
-	//     	- **name**: the name of the environment variable.
+	//   - **name**: The name of the environment variable.
 	//
-	//     	- **value**: the value of the environment variable.
+	//   - **value**: The value of the environment variable. This parameter takes precedence over valueFrom.
 	//
-	// 	- Reference ConfigMap
+	// - Reference a configuration item (valueFrom)
 	//
-	//     	- **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+	//   - **name**: The name of the environment variable. You can reference a single key or all keys. To reference all keys, enter `sae-sys-configmap-all-<ConfigMap name>`, for example, `sae-sys-configmap-all-test1`.
 	//
-	//     	- **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
+	//   - **valueFrom**: The reference of the environment variable. Set the value to `configMapRef`.
 	//
-	//     	- **configMapId**: the ConfigMap ID.
+	//   - **configMapId**: The ID of the ConfigMap.
 	//
-	//     	- **key**: the key. If you want to reference all keys, do not configure this parameter.
+	//   - **key**: The key. If you want to reference all keys, do not specify this parameter.
+	//
+	// - Reference a secret (valueFrom)
+	//
+	//   - **name**: The name of the environment variable. You can reference a single key or all keys. To reference all keys, enter `sae-sys-secret-all-<Secret name>`, for example, `sae-sys-secret-all-test1`.
+	//
+	//   - **valueFrom**: The reference of the environment variable. Set the value to `secretRef`.
+	//
+	//   - **secretId**: The ID of the secret.
+	//
+	//   - **key**: The key. If you want to reference all keys, do not specify this parameter.
 	//
 	// example:
 	//
 	// [{"name":"TEST_ENV_KEY","value":"TEST_ENV_VAR"}]
 	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	// The image URL of the initialized container.
+	// The URL of the image that is used by the init container.
 	//
 	// example:
 	//
 	// registry.cn-shenzhen.aliyuncs.com/sae-serverless-demo/sae-demo:microservice-java-provider-v1.0
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The name of the initialized container.
+	// The name of the init container.
 	//
 	// example:
 	//
 	// init-container
-	Name            *string                                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the secret that you want to mount.
 	SecretMountDesc []*DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty" type:"Repeated"`
 }
 
@@ -2248,7 +2287,7 @@ func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) Validate
 }
 
 type DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc struct {
-	// ConfigMap ID。
+	// The ID of the ConfigMap.
 	//
 	// example:
 	//
@@ -2260,13 +2299,13 @@ type DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMount
 	//
 	// test
 	ConfigMapName *string `json:"ConfigMapName,omitempty" xml:"ConfigMapName,omitempty"`
-	// The key.
+	// The key of the key-value pair.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The mount path.
+	// The mount path of the container.
 	//
 	// example:
 	//
@@ -2323,8 +2362,10 @@ func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapM
 }
 
 type DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc struct {
+	// The path on which the volume is mounted in the container.
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the temporary storage.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc) String() string {
@@ -2358,9 +2399,13 @@ func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDe
 }
 
 type DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc struct {
-	Key        *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	MountPath  *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	SecretId   *int64  `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	// The key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The mount path.
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The ID of the secret instance.
+	SecretId *int64 `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	// The name of the secret instance.
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
@@ -2413,13 +2458,13 @@ func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMoun
 }
 
 type DescribeApplicationConfigResponseBodyDataMountDesc struct {
-	// The path on which the NAS file system is mounted.
+	// The mount path of the container.
 	//
 	// example:
 	//
 	// /tmp
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The directory in the NAS file system.
+	// The path of the NAS file system.
 	//
 	// example:
 	//
@@ -2458,29 +2503,29 @@ func (s *DescribeApplicationConfigResponseBodyDataMountDesc) Validate() error {
 }
 
 type DescribeApplicationConfigResponseBodyDataOssMountDescs struct {
-	// The name of the OSS bucket.
+	// The bucket name.
 	//
 	// example:
 	//
 	// oss-bucket
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The directory or object in OSS. If the specified directory or object does not exist, an error is returned.
+	// The directory or object that you created in OSS. An error occurs if the mount directory does not exist.
 	//
 	// example:
 	//
 	// data/user.data
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
-	// The path of the container in SAE. The parameter value that you specified overwrites the original value. If the specified path does not exist, SAE automatically creates the path.
+	// The path of the container in SAE. If the path exists, the path is overwritten. If the path does not exist, a new path is created.
 	//
 	// example:
 	//
 	// /usr/data/user.data
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// Indicates whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+	// Specifies whether the container has the read-only permission on the mount directory resources. Valid values:
 	//
-	// 	- **true**: The application has the read-only permissions.
+	// - **true**: The read-only permission.
 	//
-	// 	- **false**: The application has the read and write permissions.
+	// - **false**: The read and write permissions.
 	//
 	// example:
 	//
@@ -2537,7 +2582,7 @@ func (s *DescribeApplicationConfigResponseBodyDataOssMountDescs) Validate() erro
 }
 
 type DescribeApplicationConfigResponseBodyDataSecretMountDesc struct {
-	// The key to Base64 encode values.
+	// The key of the data value that is encoded in Base64.
 	//
 	// example:
 	//
@@ -2549,13 +2594,13 @@ type DescribeApplicationConfigResponseBodyDataSecretMountDesc struct {
 	//
 	// /opt/www/runtime/logs
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The secret ID of the instance.
+	// The ID of the queried secret instance.
 	//
 	// example:
 	//
 	// 520
 	SecretId *int64 `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
-	// The name of the secret.
+	// The name of the secret instance.
 	//
 	// example:
 	//
@@ -2612,88 +2657,95 @@ func (s *DescribeApplicationConfigResponseBodyDataSecretMountDesc) Validate() er
 }
 
 type DescribeApplicationConfigResponseBodyDataSidecarContainersConfig struct {
-	// The ID of Container Registry Enterprise Edition instance. This parameter is required when the **ImageUrl*	- parameter is set to the URL of an image in an ACR Enterprise Edition instance.
+	// The ID of the Container Registry Enterprise Edition instance. This parameter is required if **ImageUrl*	- is set to an image in Container Registry Enterprise Edition.
 	//
 	// example:
 	//
 	// cri-fhzlneorxala66ip
 	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	// The command that is used to start the image. The command must be an existing executable object in the container. Sample statements:
+	// The startup command of the image. The command must be an executable object that exists in the container. Example:
 	//
-	//     command:
+	// ```
 	//
-	//           - echo
+	// command:
 	//
-	//           - abc
+	//       - echo
 	//
-	//           - >
+	//       - abc
 	//
-	//           - file0
+	//       - >
 	//
-	// In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
+	//       - file0
+	//
+	// ```
+	//
+	// Based on the preceding example, `Command="echo", CommandArgs=["abc", ">", "file0"]`.
 	//
 	// example:
 	//
 	// /bin/sh
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The parameters of the image startup command. The CommandArgs parameter specifies the parameters that are required for the **Command*	- parameter. You can specify the name in one of the following formats:
+	// The arguments of the image startup command. The arguments are required by the preceding startup command **Command**. Format:
 	//
 	// `["a","b"]`
 	//
-	// In the preceding example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. This parameter is optional.
+	// In the preceding example, `CommandArgs=["abc", ">", "file0"]`. The value `["abc", ">", "file0"]` must be converted into a string in the JSON array format. If this parameter is not required, you do not need to specify it.
 	//
 	// example:
 	//
 	// [\\"-c\\",\\"echo \\\\\\"test\\\\\\" > /home/nas/test.log && sleep 10000000s\\"]
 	CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	// The description of the **ConfigMap*	- instance mounted to the application. Use configurations created on the Configuration Items page to configure containers. The following table describes the parameters that are used in the preceding statements.
+	// The description of the ConfigMap that you want to mount. Use the configuration item that you created on the Namespace Configuration Items page to inject configuration information into the container. The parameters are described as follows:
 	//
-	// 	- **congfigMapId**: the ID of the ConfigMap instance. You can call the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation to obtain the ID.
+	// - **configMapId**: The ID of the ConfigMap instance. You can call the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation to obtain the ID.
 	//
-	// 	- **key**: the key.
+	// - **key**: The key.
 	//
-	// > You can use the `sae-sys-configmap-all` key to mount all keys.
+	// > You can pass the `sae-sys-configmap-all` parameter to mount all keys.
 	//
-	// 	- **mountPath**: the mount path in the container.
+	// - **mountPath**: The mount path.
+	//
+	// - **ConfigMapName**: The name of the ConfigMap.
 	ConfigMapMountDesc []*DescribeApplicationConfigResponseBodyDataSidecarContainersConfigConfigMapMountDesc `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty" type:"Repeated"`
-	// Set the CPU resource limit of the primary container that can be used by Sidecar container.
+	// The maximum CPU resources that the sidecar container can use from the main container.
 	//
 	// example:
 	//
 	// 500
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// Shared temporary storage mounted to the primary container and the Sidecar container.
+	// The shared temporary storage. Set a temporary storage directory and mount it to the main container and the sidecar container.
 	EmptyDirDesc []*DescribeApplicationConfigResponseBodyDataSidecarContainersConfigEmptyDirDesc `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty" type:"Repeated"`
-	// The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Take note of the following rules:
+	// The environment variables of the container. You can customize environment variables or reference a ConfigMap. To reference a ConfigMap, you must first create a ConfigMap instance. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
 	//
-	// 	- Customize
+	// - Custom configuration
 	//
-	//     	- **name**: the name of the environment variable.
+	//   - **name**: The name of the environment variable.
 	//
-	//     	- **value**: the value of the environment variable.
+	//   - **value**: The value of the environment variable. This parameter takes precedence over valueFrom.
 	//
-	// 	- Reference ConfigMap
+	// - Reference a configuration item (valueFrom)
 	//
-	//     	- **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+	//   - **name**: The name of the environment variable. You can reference a single key or all keys. To reference all keys, enter `sae-sys-configmap-all-<ConfigMap name>`, for example, `sae-sys-configmap-all-test1`.
 	//
-	//     	- **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
+	//   - **valueFrom**: The reference of the environment variable. Set the value to `configMapRef`.
 	//
-	//     	- **configMapId**: the ConfigMap ID.
+	//     - **configMapId**: The ID of the ConfigMap.
 	//
-	//     	- **key**: the key. If you want to reference all keys, do not configure this parameter.
+	//     - **key**: The key. If you want to reference all keys, do not specify this parameter.
 	//
 	// example:
 	//
 	// [{\\"name\\":\\"k1\\",\\"value\\":\\"c8e3a815-e5d3-4adf-abb3-98b106a607c4\\"}]
 	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	// The URL of the image.
+	// The image URL.
 	//
 	// example:
 	//
 	// registry.cn-beijing.aliyuncs.com/sae-dev-test/nginx:stable
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The health check on the container.
 	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	// Set the memory limit of the primary container that can be used by Sidecar container.
+	// The maximum memory resources that the sidecar container can use from the main container.
 	//
 	// example:
 	//
@@ -2704,10 +2756,12 @@ type DescribeApplicationConfigResponseBodyDataSidecarContainersConfig struct {
 	// example:
 	//
 	// test
-	Name            *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	PostStart       *string                                                                            `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	PreStop         *string                                                                            `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	Readiness       *string                                                                            `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	PreStop   *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	// The check on the application startup status.
+	Readiness *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	// The description of the secret that you want to mount.
 	SecretMountDesc []*DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty" type:"Repeated"`
 }
 
@@ -2886,25 +2940,25 @@ func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) Valid
 }
 
 type DescribeApplicationConfigResponseBodyDataSidecarContainersConfigConfigMapMountDesc struct {
-	// The ConfigMap ID.
+	// The ID of the ConfigMap instance.
 	//
 	// example:
 	//
 	// 7361
 	ConfigMapId *int64 `json:"ConfigMapId,omitempty" xml:"ConfigMapId,omitempty"`
-	// The ConfigMap name.
+	// The name of the ConfigMap.
 	//
 	// example:
 	//
 	// ConfigMap-test
 	ConfigMapName *string `json:"ConfigMapName,omitempty" xml:"ConfigMapName,omitempty"`
-	// The ConfigMap key
+	// The key of the ConfigMap.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The mount path.
+	// The mount path of the container.
 	//
 	// example:
 	//
@@ -2961,13 +3015,13 @@ func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigConfigM
 }
 
 type DescribeApplicationConfigResponseBodyDataSidecarContainersConfigEmptyDirDesc struct {
-	// Mount path of the data volume within the container.
+	// The path on which the volume is mounted in the container.
 	//
 	// example:
 	//
 	// /mnt/cache
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The name of the shared temporary storage.
+	// The name of the temporary storage.
 	//
 	// example:
 	//
@@ -3006,9 +3060,13 @@ func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigEmptyDi
 }
 
 type DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc struct {
-	Key        *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	MountPath  *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	SecretId   *int64  `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	// The key of the data value that is encoded in Base64.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The mount path.
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The ID of the secret instance.
+	SecretId *int64 `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	// The name of the secret instance.
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
@@ -3061,13 +3119,13 @@ func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretM
 }
 
 type DescribeApplicationConfigResponseBodyDataTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

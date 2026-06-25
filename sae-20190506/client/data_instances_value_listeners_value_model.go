@@ -28,35 +28,35 @@ type DataInstancesValueListenersValue struct {
 	//
 	// TCPSSL
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The listener port of the NLB instance.
+	// The listener port.
 	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The status of the NLB listener.
+	// The state of the NLB listener. Valid values:
 	//
-	// 	- **Creating**: The listener is being created.
+	// - **Creating**: The listener is being created.
 	//
-	// 	- **Configuring**: The listener is being configured.
+	// - **Configuring**: The listener is being configured.
 	//
-	// 	- **Bounded**: The listener runs as expected.
+	// - **Bounded**: The listener is running as expected.
 	//
-	// 	- **Unbinding**: The listener is being deleted.
+	// - **Unbinding**: The listener is being deleted.
 	//
-	// 	- **Failed**: The listener is unavailable.
+	// - **Failed**: The listener is unavailable.
 	//
 	// example:
 	//
 	// Bounded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The open ports of the NLB instance.
+	// The target port.
 	//
 	// example:
 	//
 	// 8080
 	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
-	// The server certificates.
+	// The server certificate ID.
 	//
 	// example:
 	//

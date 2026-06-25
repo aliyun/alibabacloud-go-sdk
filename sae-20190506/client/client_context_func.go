@@ -56,7 +56,7 @@ func (client *Client) AbortAndRollbackChangeOrderWithContext(ctx context.Context
 
 // Summary:
 //
-// Terminate a change order.
+// This operation stops a change order.
 //
 // @param request - AbortChangeOrderRequest
 //
@@ -268,7 +268,7 @@ func (client *Client) BatchStopApplicationsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Associates a Network Load Balancer (NLB) instance with an application.
+// Binds a Network Load Balancer (NLB) instance to an application.
 //
 // @param request - BindNlbRequest
 //
@@ -453,7 +453,7 @@ func (client *Client) ConfirmPipelineBatchWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates an application.
+// Create an application.
 //
 // @param tmpReq - CreateApplicationRequest
 //
@@ -860,21 +860,21 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Creates an auto scaling policy for an application.
+// Create an application auto scaling policy.
 //
 // Description:
 //
-// ## [](#)Precautions
+// ## Usage notes
 //
-//   - You can create up to five auto scaling policies for one application.
+// - You can create up to five elasticity policies per application.
 //
-//   - You can create up to 20 trigger points within one day in a scheduled auto scaling policy.
+// - For each scheduled elasticity policy, you can create up to 20 trigger points per day.
 //
-//   - If an auto scaling policy is enabled for an application, you cannot manually manage the lifecycle of the application. For example, you cannot scale, deploy (including single-batch release, phased release, and canary release), stop, or restart the application, or change the instance type. If you want to perform the preceding operations on the application, disable the auto scaling policy and then manually perform the operations.
+// - While an elasticity policy is enabled, do not manually perform operations on the application, such as scaling, deployment, changing specifications, restarting, or stopping. To perform these operations, disable the policy first.
 //
-//   - If an application is in the process of scale-out, scale-in, deployment (including single-batch release, phased release, and canary release), instance type change, restart, or stop, you cannot add or enable an auto scaling policy for the application.
+// - You cannot add or enable an elasticity policy for an application that is undergoing a scale-out, scale-in, deployment (single-batch, phased, or canary), specification change, restart, or stop.
 //
-//   - If you want to configure more than 50 instances for an application, you must contact SAE technical support to add your account to the whitelist. For more information, see [Contact us](https://help.aliyun.com/document_detail/146530.html).
+// - To scale out an application to more than 50 instances, contact SAE technical support to be added to the whitelist. For more information, see [Contact us](https://help.aliyun.com/document_detail/146530.html).
 //
 // @param request - CreateApplicationScalingRuleRequest
 //
@@ -1014,11 +1014,11 @@ func (client *Client) CreateConfigMapWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Creates a canary release rule for a Spring Cloud or Dubbo application.
+// Create a canary release rule for a Spring Cloud or Dubbo application.
 //
 // Description:
 //
-// >  You can configure only one canary release rule for each application.
+// > You can currently configure only one canary rule per application.
 //
 // @param request - CreateGreyTagRouteRequest
 //
@@ -1085,7 +1085,7 @@ func (client *Client) CreateGreyTagRouteWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a routing rule.
+// Create a routing rule.
 //
 // @param request - CreateIngressRequest
 //
@@ -1222,7 +1222,7 @@ func (client *Client) CreateIngressWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Create a job template.
+// This operation creates a job template.
 //
 // @param request - CreateJobRequest
 //
@@ -1491,7 +1491,7 @@ func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJ
 
 // Summary:
 //
-// Create a namespace.
+// Creates a namespace.
 //
 // @param request - CreateNamespaceRequest
 //
@@ -1554,7 +1554,7 @@ func (client *Client) CreateNamespaceWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Creates or updates a lane.
+// Create or update a swimlane.
 //
 // @param tmpReq - CreateOrUpdateSwimmingLaneRequest
 //
@@ -1643,7 +1643,7 @@ func (client *Client) CreateOrUpdateSwimmingLaneWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates or updates a lane group.
+// Creates or updates a swimming lane group.
 //
 // @param tmpReq - CreateOrUpdateSwimmingLaneGroupRequest
 //
@@ -1936,7 +1936,7 @@ func (client *Client) DeleteApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\\\*\\\\*\\\\*
+// Deletes an Auto Scaling policy for an application.
 //
 // @param request - DeleteApplicationScalingRuleRequest
 //
@@ -1987,7 +1987,7 @@ func (client *Client) DeleteApplicationScalingRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// Deletes a ConfigMap.
+// Deletes a ConfigMap instance.
 //
 // @param request - DeleteConfigMapRequest
 //
@@ -2034,7 +2034,7 @@ func (client *Client) DeleteConfigMapWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Deletes a canary release rule based on the specified rule ID.
+// Deletes a grey tag route by the specified rule ID.
 //
 // @param request - DeleteGreyTagRouteRequest
 //
@@ -2132,7 +2132,7 @@ func (client *Client) DeleteHistoryJobWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Deletes a routing rule.
+// Deletes an ingress instance.
 //
 // @param request - DeleteIngressRequest
 //
@@ -2179,7 +2179,7 @@ func (client *Client) DeleteIngressWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes an application instance.
+// Deletes one or more application instances.
 //
 // @param request - DeleteInstancesRequest
 //
@@ -2277,7 +2277,7 @@ func (client *Client) DeleteJobWithContext(ctx context.Context, request *DeleteJ
 
 // Summary:
 //
-// Delete a namespace.
+// Deletes a namespace.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -2328,7 +2328,7 @@ func (client *Client) DeleteNamespaceWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Deletes a Secret.
+// Deletes a secret.
 //
 // @param request - DeleteSecretRequest
 //
@@ -2379,7 +2379,7 @@ func (client *Client) DeleteSecretWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes a lane group.
+// Deletes a swimming lane group.
 //
 // @param request - DeleteSwimmingLaneGroupRequest
 //
@@ -2583,7 +2583,7 @@ func (client *Client) DeleteWebCustomDomainWithContext(ctx context.Context, Doma
 
 // Summary:
 //
-// Deploys an application.
+// Deploy an application.
 //
 // @param tmpReq - DeployApplicationRequest
 //
@@ -2982,7 +2982,7 @@ func (client *Client) DeployApplicationWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Queries the metadata details of the service of an application.
+// Describes the metadata details of an application service.
 //
 // @param request - DescribeAppServiceDetailRequest
 //
@@ -3053,7 +3053,7 @@ func (client *Client) DescribeAppServiceDetailWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the configurations of an application.
+// Retrieves the configuration of an application.
 //
 // @param request - DescribeApplicationConfigRequest
 //
@@ -3104,7 +3104,7 @@ func (client *Client) DescribeApplicationConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the instance groups of an application.
+// Use `DescribeApplicationGroups` to retrieve application instance groups.
 //
 // @param request - DescribeApplicationGroupsRequest
 //
@@ -3159,7 +3159,7 @@ func (client *Client) DescribeApplicationGroupsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the information about the image of an application.
+// Retrieves information about an application image.
 //
 // @param request - DescribeApplicationImageRequest
 //
@@ -3210,7 +3210,7 @@ func (client *Client) DescribeApplicationImageWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries a list of application instances.
+// Retrieves a list of application instances.
 //
 // @param request - DescribeApplicationInstancesRequest
 //
@@ -3332,7 +3332,7 @@ func (client *Client) DescribeApplicationMseServiceWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the Network Load Balancer (NLB) instances bound to an application and their listeners.
+// View the NLB configuration for the application.
 //
 // @param request - DescribeApplicationNlbsRequest
 //
@@ -3379,7 +3379,7 @@ func (client *Client) DescribeApplicationNlbsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries an Auto Scaling policy of an application.
+// Describes a single auto scaling policy for an application.
 //
 // @param request - DescribeApplicationScalingRuleRequest
 //
@@ -3430,7 +3430,7 @@ func (client *Client) DescribeApplicationScalingRuleWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the auto scaling policies of an application.
+// Describes the Auto Scaling policies for an application.
 //
 // @param request - DescribeApplicationScalingRulesRequest
 //
@@ -3477,7 +3477,7 @@ func (client *Client) DescribeApplicationScalingRulesWithContext(ctx context.Con
 
 // Summary:
 //
-// Obtain the SLB configuration of an application.
+// Queries the configurations of Server Load Balancer (SLB) instances for an application.
 //
 // @param request - DescribeApplicationSlbsRequest
 //
@@ -3524,7 +3524,7 @@ func (client *Client) DescribeApplicationSlbsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the status of an application.
+// Call the DescribeApplicationStatus API to get an application\\"s status.
 //
 // @param request - DescribeApplicationStatusRequest
 //
@@ -3571,7 +3571,7 @@ func (client *Client) DescribeApplicationStatusWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the information of a change order.
+// Call DescribeChangeOrder to get information about a change order.
 //
 // @param request - DescribeChangeOrderRequest
 //
@@ -3618,7 +3618,7 @@ func (client *Client) DescribeChangeOrderWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the version of the component that is required when you create and deploy an application.
+// Call the DescribeComponents API to retrieve the component versions required to create an application deployment.
 //
 // @param request - DescribeComponentsRequest
 //
@@ -3669,7 +3669,7 @@ func (client *Client) DescribeComponentsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the details of a ConfigMap.
+// Queries the details of a ConfigMap instance.
 //
 // @param request - DescribeConfigMapRequest
 //
@@ -3716,7 +3716,7 @@ func (client *Client) DescribeConfigMapWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Query configuration price.
+// Queries the price of a configuration.
 //
 // @param request - DescribeConfigurationPriceRequest
 //
@@ -3791,7 +3791,7 @@ func (client *Client) DescribeConfigurationPriceWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the container components of a microservices application.
+// Retrieves the microservice container components for an application.
 //
 // @param headers - map
 //
@@ -3824,7 +3824,7 @@ func (client *Client) DescribeEdasContainersWithContext(ctx context.Context, hea
 
 // Summary:
 //
-// Queries the details of a canary release rule based on the specified rule ID.
+// Gets a canary release rule by rule ID.
 //
 // @param request - DescribeGreyTagRouteRequest
 //
@@ -3871,7 +3871,7 @@ func (client *Client) DescribeGreyTagRouteWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Call the DescribeIngress operation to query the details of an Ingress.
+// Queries the details of an Ingress.
 //
 // @param request - DescribeIngressRequest
 //
@@ -3918,7 +3918,7 @@ func (client *Client) DescribeIngressWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the logs of a sidecar container instance.
+// Retrieves the log of an instance.
 //
 // @param request - DescribeInstanceLogRequest
 //
@@ -3973,7 +3973,7 @@ func (client *Client) DescribeInstanceLogWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries all instance types.
+// Retrieves a list of available application instance specifications.
 //
 // @param headers - map
 //
@@ -4006,7 +4006,7 @@ func (client *Client) DescribeInstanceSpecificationsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the configurations of a job template.
+// Calls the `DescribeJob` API to retrieve job template configuration.
 //
 // @param request - DescribeJobRequest
 //
@@ -4269,7 +4269,7 @@ func (client *Client) DescribeNamespaceListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Query the information about resources in a namespace.
+// Queries the resources in a namespace.
 //
 // @param request - DescribeNamespaceResourcesRequest
 //
@@ -4418,7 +4418,7 @@ func (client *Client) DescribePipelineWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries available regions.
+// Queries the available regions.
 //
 // @param headers - map
 //
@@ -4502,7 +4502,7 @@ func (client *Client) DescribeSecretWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Queries details about swimlanes.
+// Retrieves the details of a swimlane.
 //
 // @param request - DescribeSwimmingLaneRequest
 //
@@ -4977,7 +4977,7 @@ func (client *Client) DescribeWebInstanceLogsWithContext(ctx context.Context, Ap
 
 // Summary:
 //
-// Disables an auto scaling policy for an application.
+// Disables an Auto Scaling policy for an application.
 //
 // @param request - DisableApplicationScalingRuleRequest
 //
@@ -5173,7 +5173,7 @@ func (client *Client) EnableApplicationScalingRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// Executes a job.
+// Call ExecJob to run a job.
 //
 // @param request - ExecJobRequest
 //
@@ -5256,7 +5256,7 @@ func (client *Client) ExecJobWithContext(ctx context.Context, request *ExecJobRe
 
 // Summary:
 //
-// Queries the basic information of an application.
+// Retrieves basic information about an application.
 //
 // @param request - GetApplicationRequest
 //
@@ -5441,7 +5441,7 @@ func (client *Client) GetAvailabilityMetricWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries top N applications in abnormal change orders.
+// To retrieve the top N applications with abnormal change orders, call the `GetChangeOrderMetric` API.
 //
 // @param request - GetChangeOrderMetricRequest
 //
@@ -5697,7 +5697,7 @@ func (client *Client) GetWebshellTokenWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries all lane groups.
+// Returns a list of all swimlane groups.
 //
 // @param request - ListAllSwimmingLaneGroupsRequest
 //
@@ -5744,7 +5744,7 @@ func (client *Client) ListAllSwimmingLaneGroupsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries all swimlanes.
+// Lists all swimlanes.
 //
 // @param request - ListAllSwimmingLanesRequest
 //
@@ -5795,7 +5795,7 @@ func (client *Client) ListAllSwimmingLanesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the events that occurred in an application.
+// To list application events, call the `ListAppEvents` API.
 //
 // @param request - ListAppEventsRequest
 //
@@ -5870,7 +5870,7 @@ func (client *Client) ListAppEventsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries the list of microservices.
+// Lists microservices.
 //
 // @param request - ListAppServicesRequest
 //
@@ -5949,7 +5949,7 @@ func (client *Client) ListAppServicesWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Queries the services of an application.
+// Call `ListAppServicesPage` to get a list of application services.
 //
 // @param request - ListAppServicesPageRequest
 //
@@ -6008,7 +6008,7 @@ func (client *Client) ListAppServicesPageWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the deployment versions of an application.
+// Lists the historical versions of an application.
 //
 // @param request - ListAppVersionsRequest
 //
@@ -6106,7 +6106,7 @@ func (client *Client) ListApplicationCenterServiceInstancesWithContext(ctx conte
 
 // Summary:
 //
-// Query a list of applications.
+// Get a list of applications.
 //
 // @param request - ListApplicationsRequest
 //
@@ -6197,7 +6197,7 @@ func (client *Client) ListApplicationsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Obtains the application list for the end-to-end grayscale pull application list.
+// Retrieves a list of applications for full-link canary releases.
 //
 // @param request - ListApplicationsForSwimmingLaneRequest
 //
@@ -6252,7 +6252,7 @@ func (client *Client) ListApplicationsForSwimmingLaneWithContext(ctx context.Con
 
 // Summary:
 //
-// Query a list of change orders.
+// Lists change orders.
 //
 // @param request - ListChangeOrdersRequest
 //
@@ -6327,7 +6327,7 @@ func (client *Client) ListChangeOrdersWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries a list of microservices that are subscribed.
+// You can call the ListConsumedServices operation to retrieve a list of subscribed microservices.
 //
 // @param request - ListConsumedServicesRequest
 //
@@ -6374,11 +6374,11 @@ func (client *Client) ListConsumedServicesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the details of a canary release rule based on an application ID.
+// Queries the details of a grayscale rule based on an application ID.
 //
 // Description:
 //
-// >  You can configure only one canary release rule for each application.
+// > You can configure only one grayscale rule for each application.
 //
 // @param request - ListGreyTagRouteRequest
 //
@@ -6425,7 +6425,7 @@ func (client *Client) ListGreyTagRouteWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Use ListIngress API call to query Ingress list
+// Retrieves a list of Ingresses.
 //
 // @param request - ListIngressesRequest
 //
@@ -6484,7 +6484,7 @@ func (client *Client) ListIngressesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries the information about job templates.
+// Retrieves a list of job templates.
 //
 // @param request - ListJobsRequest
 //
@@ -6567,7 +6567,7 @@ func (client *Client) ListJobsWithContext(ctx context.Context, request *ListJobs
 
 // Summary:
 //
-// Queries a list of application logs.
+// Returns a list of application logs.
 //
 // @param request - ListLogConfigsRequest
 //
@@ -6622,7 +6622,7 @@ func (client *Client) ListLogConfigsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Queries a list of change orders in a namespace.
+// Lists deployment orders in a namespace.
 //
 // @param request - ListNamespaceChangeOrdersRequest
 //
@@ -6689,7 +6689,7 @@ func (client *Client) ListNamespaceChangeOrdersWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the ConfigMap instances in a namespace.
+// Lists ConfigMap instances in a namespace.
 //
 // @param request - ListNamespacedConfigMapsRequest
 //
@@ -6736,7 +6736,7 @@ func (client *Client) ListNamespacedConfigMapsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries a list of microservices that are published.
+// Queries a list of published microservices.
 //
 // @param request - ListPublishedServicesRequest
 //
@@ -6783,7 +6783,7 @@ func (client *Client) ListPublishedServicesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the information about Secrets in a namespace.
+// Call ListSecrets to list Secrets in a namespace.
 //
 // @param request - ListSecretsRequest
 //
@@ -6830,7 +6830,7 @@ func (client *Client) ListSecretsWithContext(ctx context.Context, request *ListS
 
 // Summary:
 //
-// # Query the gateway routes that are available for a lane
+// Lists the gateway routes that can be associated with a swimming lane.
 //
 // @param request - ListSwimmingLaneGatewayRoutesRequest
 //
@@ -6881,7 +6881,7 @@ func (client *Client) ListSwimmingLaneGatewayRoutesWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries all lane tags.
+// Lists all swimming lane tags.
 //
 // @param request - ListSwimmingLaneGroupTagsRequest
 //
@@ -6932,7 +6932,7 @@ func (client *Client) ListSwimmingLaneGroupTagsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the mapping relationships between applications and tags.
+// Call the `ListTagResources` API to list the tags associated with your applications.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -7409,7 +7409,7 @@ func (client *Client) QueryArmsEnableWithContext(ctx context.Context, request *Q
 
 // Summary:
 //
-// Queries the resource usage of an application.
+// Gets the resource usage for an application.
 //
 // @param request - QueryResourceStaticsRequest
 //
@@ -7570,7 +7570,7 @@ func (client *Client) RescaleApplicationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Changes the instance specifications of an application.
+// Changes the instance type of an application.
 //
 // @param request - RescaleApplicationVerticallyRequest
 //
@@ -7763,7 +7763,7 @@ func (client *Client) RestartInstancesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Resumes traffic from Classic Load Balancer (CLB) application access, Network Load Balancer (NLB) application access, CLB gateway routing, Application Load Balancer (ALB) gateway routing, and Kubernetes Services on an instance.
+// Resumes traffic on an instance from Classic Load Balancer (CLB), Network Load Balancer (NLB), CLB gateway routing, Application Load Balancer (ALB) gateway routing, and Kubernetes Service.
 //
 // @param request - ResumeTrafficRequest
 //
@@ -8132,7 +8132,7 @@ func (client *Client) SuspendJobWithContext(ctx context.Context, request *Suspen
 
 // Summary:
 //
-// Removes traffic routed from Classic Load Balancer (CLB) application access, Network Load Balancer (NLB) application access, CLB gateway routes, Application Load Balancer (ALB) gateway routes, or Kubernetes (K8s) services.
+// Stops routing traffic from Classic Load Balancer (CLB) application access, Network Load Balancer (NLB) application access, CLB gateway routes, Application Load Balancer (ALB) gateway routes, or Kubernetes (K8s) services to the specified instances.
 //
 // @param request - SuspendTrafficRequest
 //
@@ -8183,7 +8183,7 @@ func (client *Client) SuspendTrafficWithContext(ctx context.Context, request *Su
 
 // Summary:
 //
-// Adds tags to resources.
+// Adds one or more tags to specified resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -8242,7 +8242,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// # Calls the UnbindNlb operation to delete an NLB listener bound for application access
+// Unbinds an NLB listener from an application.
 //
 // @param request - UnbindNlbRequest
 //
@@ -8301,7 +8301,7 @@ func (client *Client) UnbindNlbWithContext(ctx context.Context, request *UnbindN
 
 // Summary:
 //
-// Disassociates an internal-facing or Internet-facing SLB instance from an application.
+// Unbinds a public or private SLB instance from an application.
 //
 // @param request - UnbindSlbRequest
 //
@@ -8356,7 +8356,7 @@ func (client *Client) UnbindSlbWithContext(ctx context.Context, request *UnbindS
 
 // Summary:
 //
-// Removes tags from resources.
+// Removes one or more tags from specified resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -8419,7 +8419,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// # Application Idle Mode Update
+// Updates the idle mode for an application.
 //
 // @param request - UpdateAppModeRequest
 //
@@ -8482,7 +8482,7 @@ func (client *Client) UpdateAppModeWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
-// Updates the security group of an application.
+// Updates an application security group.
 //
 // @param request - UpdateAppSecurityGroupRequest
 //
@@ -8584,13 +8584,13 @@ func (client *Client) UpdateApplicationDescriptionWithContext(ctx context.Contex
 
 // Summary:
 //
-// Updates the auto scaling policy of an application.
+// # Updating the application auto-scaling policy
 //
 // Description:
 //
-// ##
+// ## Usage notes
 //
-// If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the whitelist.
+// To scale an application beyond 50 instances, contact SAE technical support to be added to the allowlist. For details, see [Contact us](https://help.aliyun.com/document_detail/146530.html).
 //
 // @param request - UpdateApplicationScalingRuleRequest
 //
@@ -8665,7 +8665,7 @@ func (client *Client) UpdateApplicationScalingRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// Update the configuration of a vSwitch.
+// Updates the vSwitch configuration for an application.
 //
 // @param request - UpdateApplicationVswitchesRequest
 //
@@ -8728,7 +8728,7 @@ func (client *Client) UpdateApplicationVswitchesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Update a ConfigMap.
+// Updates a ConfigMap instance.
 //
 // @param request - UpdateConfigMapRequest
 //
@@ -8785,7 +8785,7 @@ func (client *Client) UpdateConfigMapWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Updates a canary release rule.
+// Updates a grey tag route.
 //
 // @param request - UpdateGreyTagRouteRequest
 //
@@ -8848,7 +8848,7 @@ func (client *Client) UpdateGreyTagRouteWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Update the configurations of an Ingress instance.
+// Update the configuration of an Ingress instance.
 //
 // @param request - UpdateIngressRequest
 //
@@ -8969,7 +8969,7 @@ func (client *Client) UpdateIngressWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
-// Updates a job template.
+// Call the UpdateJob API to update a job template.
 //
 // @param request - UpdateJobRequest
 //
@@ -9265,7 +9265,7 @@ func (client *Client) UpdateNamespaceWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Updates the Simple Log Service configuration for a namespace.
+// Updates the namespace-level SLS configuration.
 //
 // @param request - UpdateNamespaceSlsConfigsRequest
 //
@@ -9324,7 +9324,7 @@ func (client *Client) UpdateNamespaceSlsConfigsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// cn-beijing:test
+// Updates the VPC that is attached to a namespace.
 //
 // @param request - UpdateNamespaceVpcRequest
 //
@@ -9379,15 +9379,7 @@ func (client *Client) UpdateNamespaceVpcWithContext(ctx context.Context, request
 
 // Summary:
 //
-// The HTTP status code. Valid values:
-//
-// \\	- \\*\\*2xx\\*\\*: The call was successful.
-//
-// \\	- \\*\\*3xx\\*\\*: The call was redirected.
-//
-// \\	- \\*\\*4xx\\*\\*: The call failed.
-//
-// \\	- \\*\\*5xx\\*\\*: A server error occurred.
+// Updates a Secret instance.
 //
 // @param tmpReq - UpdateSecretRequest
 //
@@ -9448,7 +9440,7 @@ func (client *Client) UpdateSecretWithContext(ctx context.Context, tmpReq *Updat
 
 // Summary:
 //
-// Update the enabled property of the swimlane.
+// Updates the enabled status of a swimming lane.
 //
 // @param request - UpdateSwimmingLaneEnableAttributeRequest
 //

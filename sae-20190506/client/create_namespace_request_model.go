@@ -22,37 +22,37 @@ type iCreateNamespaceRequest interface {
 }
 
 type CreateNamespaceRequest struct {
-	// Indicates whether to enable SAE built-in registry:
+	// Specifies whether to enable the built-in service registry of SAE.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
-	// Default value: true. If you do not use the built-in registry, you can set this parameter to false to accelerate the creation of a namespace.
+	// The default value is true. If you do not use the built-in service registry, set this parameter to false to speed up namespace creation.
 	//
 	// example:
 	//
 	// true
 	EnableMicroRegistration *bool `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The short-format namespace ID. You do not need to specify a region ID. This parameter is recommended. The ID cannot exceed 20 characters in length and can contain only lowercase letters and digits.
 	//
 	// example:
 	//
 	// test
 	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
-	// The message returned for the operation.
+	// The description of the namespace. The description cannot exceed 100 characters in length.
 	//
 	// example:
 	//
 	// desc
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
-	// The data returned.
+	// The long-format namespace ID. If you specify this parameter, NameSpaceShortId is ignored. This parameter is retained for compatibility. Use the short-format namespace ID instead. The format is `<RegionId>:<NamespaceId>`. The `NamespaceId` can contain only lowercase letters and digits and cannot exceed 32 characters in length. Example: `cn-beijing:test`. For information about the regions that SAE supports, see [DescribeRegions](https://help.aliyun.com/document_detail/126213.html).
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The ID of the request.
+	// The name of the namespace. The name cannot exceed 64 characters in length.
 	//
 	// This parameter is required.
 	//

@@ -17,6 +17,10 @@ type iWebVersionStatus interface {
 
 type WebVersionStatus struct {
 	// The error message of the application execution. If the execution is successful, a null value is returned.
+	//
+	// example:
+	//
+	// 空
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The state of the application execution. Valid values:
 	//

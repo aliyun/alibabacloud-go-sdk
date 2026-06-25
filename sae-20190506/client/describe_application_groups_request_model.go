@@ -18,7 +18,7 @@ type iDescribeApplicationGroupsRequest interface {
 }
 
 type DescribeApplicationGroupsRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeApplicationGroupsRequest struct {
 	//
 	// d700e680-aa4d-4ec1-afc2-6566b5ff****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The page number.
+	// The page number to return.
 	//
 	// example:
 	//

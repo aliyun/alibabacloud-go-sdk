@@ -28,13 +28,13 @@ type iUpdateNamespaceResponseBody interface {
 type UpdateNamespaceResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The call was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: The call failed.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -44,13 +44,9 @@ type UpdateNamespaceResponseBody struct {
 	Data *UpdateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned. Take note of the following rules:
 	//
-	// 	- The **ErrorCode*	- parameter is not returned if the request succeeds.
+	// - The **ErrorCode*	- parameter is not returned if the request succeeds.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
-	//
-	// example:
-	//
-	// Null
+	// - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The message returned for the operation.
 	//
@@ -66,9 +62,9 @@ type UpdateNamespaceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the information about the namespace was updated. Valid values:
 	//
-	// 	- **true**: The instance was updated.
+	// - **true**: The instance was updated.
 	//
-	// 	- **false**: The instance failed to be updated.
+	// - **false**: The instance failed to be updated.
 	//
 	// example:
 	//
@@ -165,9 +161,9 @@ func (s *UpdateNamespaceResponseBody) Validate() error {
 type UpdateNamespaceResponseBodyData struct {
 	// Indicates whether to enable SAE built-in registry:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

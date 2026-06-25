@@ -26,33 +26,33 @@ type iDeleteConfigMapResponseBody interface {
 }
 
 type DeleteConfigMapResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code returned for the request.
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: success
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: redirection
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: client error
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: server error
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The operation result.
 	Data *DeleteConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. Valid values:
+	// The error code.
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - Not returned if the request is successful.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	// - Returned if the request fails. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message. Valid values:
+	// The response message.
 	//
-	// 	- success: If the call is successful, **success*	- is returned.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// 	- An error code: If the call fails, an error code is returned.
+	// - If the request fails, an error message is returned.
 	//
 	// example:
 	//
@@ -64,17 +64,17 @@ type DeleteConfigMapResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the ConfigMap was deleted. Valid values:
+	// Indicates whether the deletion succeeded. Valid values:
 	//
-	// 	- **true**: The ConfigMap was deleted.
+	// - **true**: The deletion was successful.
 	//
-	// 	- **false**: The ConfigMap failed to be deleted.
+	// - **false**: The deletion failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID for querying request details.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ func (s *DeleteConfigMapResponseBody) Validate() error {
 }
 
 type DeleteConfigMapResponseBodyData struct {
-	// The ID of the deleted ConfigMap.
+	// The ID of the deleted ConfigMap instance.
 	//
 	// example:
 	//

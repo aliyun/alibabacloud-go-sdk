@@ -16,7 +16,7 @@ type iDescribeJobRequest interface {
 }
 
 type DescribeJobRequest struct {
-	// The ID of the job template.
+	// The job template ID.
 	//
 	// This parameter is required.
 	//

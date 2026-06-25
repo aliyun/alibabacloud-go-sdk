@@ -19,6 +19,10 @@ type iListWebInstancesOutput interface {
 
 type ListWebInstancesOutput struct {
 	// The error message of instance creation. If the instance creation was successful, this parameter is not returned.
+	//
+	// example:
+	//
+	// 无
 	CurrentError *string `json:"CurrentError,omitempty" xml:"CurrentError,omitempty"`
 	// The application instance.
 	WebInstances []*WebInstanceInfo `json:"WebInstances,omitempty" xml:"WebInstances,omitempty" type:"Repeated"`

@@ -24,7 +24,7 @@ type ListApplicationsForSwimmingLaneRequest struct {
 	//
 	// b2a8a925-477a-eswa-b823-d5e22500****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of a namespace.
+	// The namespace ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type ListApplicationsForSwimmingLaneRequest struct {
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The canary tag
+	// The canary tag.
 	//
 	// example:
 	//

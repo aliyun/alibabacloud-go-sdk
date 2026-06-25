@@ -28,31 +28,31 @@ type iListPublishedServicesResponseBody interface {
 type ListPublishedServicesResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The request is successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The request is redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: A client error occurs.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurs.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the microservices.
+	// The list of published microservices.
 	Data []*ListPublishedServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code. Valid values:
+	// The error code.
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - This parameter is not returned if the request is successful.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	// - For more information about error codes, see the **Error codes*	- section.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message. Valid values:
+	// The returned message.
 	//
-	// 	- success: If the call is successful, **success*	- is returned.
+	// - Returns **success*	- if the request is successful.
 	//
-	// 	- An error code: If the call fails, an error code is returned.
+	// - Returns an error code if the request fails.
 	//
 	// example:
 	//
@@ -64,17 +64,17 @@ type ListPublishedServicesResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the list of microservices was queried. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The list was queried.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The list failed to be queried.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID for querying call details.
 	//
 	// example:
 	//
@@ -167,35 +167,35 @@ func (s *ListPublishedServicesResponseBody) Validate() error {
 }
 
 type ListPublishedServicesResponseBodyData struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// b2a8a925-477a-4ed7-b825-d5e22500****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The reserved parameter. This parameter does not take effect.
+	// A reserved field.
 	//
 	// example:
 	//
 	// {}
 	Group2Ip *string `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
-	// The service group that corresponds to the consumed service.
+	// The groups to which the service belongs.
 	Groups []*string `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The addresses where services can be subscribed to.
+	// The service subscription addresses.
 	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
-	// The name of the published service.
+	// The published service name.
 	//
 	// example:
 	//
 	// com.alibaba.nodejs.ItemService
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the published service.
+	// The published service type.
 	//
 	// example:
 	//
 	// RPC
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The version of the published services.
+	// The published service version.
 	//
 	// example:
 	//

@@ -26,55 +26,55 @@ type iListAllSwimmingLaneGroupsResponseBody interface {
 }
 
 type ListAllSwimmingLaneGroupsResponseBody struct {
-	// The HTTP status code or the error code. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: The request was invalid.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Responses.
+	// The returned data.
 	Data []*ListAllSwimmingLaneGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The status code. Value values:
+	// The error code.
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - This parameter is not returned if the request is successful.
 	//
-	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	// - For a list of error codes, see the "**Error codes**" section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Additional information. Valid values:
+	// The response message.
 	//
-	// 	- The error message returned because the request is normal and **success*	- is returned.
+	// - **success*	- is returned if the request is successful.
 	//
-	// 	- If the request is abnormal, the specific exception error code is returned.
+	// - An error message is returned if the request fails.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 30375C38-F4ED-4135-A0AE-5C75DC7F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The information was queried.
+	// - **true**
 	//
-	// 	- **false**: The information failed to be queried.
+	// - **false**
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. This parameter is used to query the exact call information.
+	// The trace ID that is used to query the details of a request.
 	//
 	// example:
 	//
@@ -167,47 +167,47 @@ func (s *ListAllSwimmingLaneGroupsResponseBody) Validate() error {
 }
 
 type ListAllSwimmingLaneGroupsResponseBodyData struct {
-	// The IDs of the applications associated with the lane group.
+	// The IDs of the applications that are associated with the swimming lane group.
 	AppIds []*string `json:"AppIds,omitempty" xml:"AppIds,omitempty" type:"Repeated"`
-	// The application information.
+	// The information about the applications.
 	Apps []*ListAllSwimmingLaneGroupsResponseBodyDataApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
-	// Full-link Grayscale Mode:
+	// The canary release mode.
 	//
-	// 	- 0: The request is routed based on the content of the request.
+	// - 0: content-based routing
 	//
-	// 	- 1: Proportional routing
+	// - 1: percentage-based routing
 	//
 	// example:
 	//
 	// 0
 	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
-	// The entry application.
+	// The ingress application.
 	EntryApp *ListAllSwimmingLaneGroupsResponseBodyDataEntryApp `json:"EntryApp,omitempty" xml:"EntryApp,omitempty" type:"Struct"`
 	// The ID of the gateway.
 	//
 	// example:
 	//
-	// mse_ingresspost-cn-axc49******
+	// bq4g5bumop@e05bd4328******
 	EntryAppId *string `json:"EntryAppId,omitempty" xml:"EntryAppId,omitempty"`
-	// The application entry type (gateway type).
+	// The type of the ingress application. This parameter is equivalent to the gateway type.
 	//
-	// 	- **apig:*	- cloud-native API Gateway
+	// - **apig:*	- API Gateway
 	//
-	// 	- **mse-gw:*	- an MSE cloud original gateway
+	// - **mse-gw:*	- cloud-native gateway
 	//
-	// 	- **mse:*	- Java Services Gateway
+	// - **mse:*	- Java service gateway
 	//
 	// example:
 	//
 	// mse-gw
 	EntryAppType *string `json:"EntryAppType,omitempty" xml:"EntryAppType,omitempty"`
-	// The ID of the lane group.
+	// The ID of the swimming lane group.
 	//
 	// example:
 	//
-	// 2074
+	// 110283
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of a lane group.
+	// The name of the swimming lane group.
 	//
 	// example:
 	//
@@ -217,15 +217,15 @@ type ListAllSwimmingLaneGroupsResponseBodyData struct {
 	//
 	// example:
 	//
-	// sae-test
+	// sae-ent
 	MseNamespaceId *string `json:"MseNamespaceId,omitempty" xml:"MseNamespaceId,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The end-to-end grayscale version. Valid values: 0 and 2 (recommended).
+	// The version of the canary release. Valid values: 0 and 2. We recommend that you use 2.
 	//
 	// example:
 	//
@@ -359,13 +359,13 @@ func (s *ListAllSwimmingLaneGroupsResponseBodyData) Validate() error {
 }
 
 type ListAllSwimmingLaneGroupsResponseBodyDataApps struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// f5aad0d0-3e56-44cd-8199-9887a0******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
@@ -387,7 +387,7 @@ type ListAllSwimmingLaneGroupsResponseBodyDataApps struct {
 	//
 	// example:
 	//
-	// 6733e538-d52f-48e6-91a4-192f91******
+	// sae-ent
 	MseNamespaceId *string `json:"MseNamespaceId,omitempty" xml:"MseNamespaceId,omitempty"`
 }
 
@@ -449,19 +449,19 @@ func (s *ListAllSwimmingLaneGroupsResponseBodyDataApps) Validate() error {
 }
 
 type ListAllSwimmingLaneGroupsResponseBodyDataEntryApp struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// 09805e5d-9b8d-42cd-9442-03c498******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The type of the application.
+	// The application type.
 	//
 	// example:
 	//
@@ -473,7 +473,7 @@ type ListAllSwimmingLaneGroupsResponseBodyDataEntryApp struct {
 	//
 	// mse-cn-53y49******
 	MseAppId *string `json:"MseAppId,omitempty" xml:"MseAppId,omitempty"`
-	// MSE Instance Name
+	// The name of the MSE instance.
 	//
 	// example:
 	//
@@ -483,7 +483,7 @@ type ListAllSwimmingLaneGroupsResponseBodyDataEntryApp struct {
 	//
 	// example:
 	//
-	// demo
+	// sae-ent
 	MseNamespaceId *string `json:"MseNamespaceId,omitempty" xml:"MseNamespaceId,omitempty"`
 }
 

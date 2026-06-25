@@ -28,13 +28,13 @@ type iCreateSecretResponseBody interface {
 type CreateSecretResponseBody struct {
 	// The HTTP status code or the error code. Valid values:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: The request failed.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -44,13 +44,9 @@ type CreateSecretResponseBody struct {
 	Data *CreateSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The status code. Value values:
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - If the request was successful, **ErrorCode*	- is not returned.
 	//
-	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
-	//
-	// example:
-	//
-	// 400
+	// - If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The message returned for the operation.
 	//
@@ -66,9 +62,9 @@ type CreateSecretResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the Secret was created. Valid values:
 	//
-	// 	- **true**: The ConfigMap was created.
+	// - **true**: The ConfigMap was created.
 	//
-	// 	- **false**: The ConfigMap failed to be created.
+	// - **false**: The ConfigMap failed to be created.
 	//
 	// example:
 	//

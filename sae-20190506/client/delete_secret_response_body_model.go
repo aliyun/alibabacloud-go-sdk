@@ -28,57 +28,53 @@ type iDeleteSecretResponseBody interface {
 type DeleteSecretResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: A request error.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response.
+	// The returned data.
 	Data *DeleteSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned. Valid values:
+	// The error code.
 	//
-	// 	- The **ErrorCode*	- parameter is not returned if the request succeeds.
+	// - The **ErrorCode*	- parameter is not returned if the request is successful.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
-	//
-	// example:
-	//
-	// Null
+	// - The **ErrorCode*	- parameter is returned if the request fails. For a list of error codes, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The additional information that is returned. Valid values:
+	// The response message.
 	//
-	// 	- success: If the call is successful, **success*	- is returned.
+	// - **success**: The request was successful.
 	//
-	// 	- An error code: If the call fails, an error code is returned.
+	// - If the request fails, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the Secret is successfully deleted. Valid values:
+	// Indicates whether the secret was successfully deleted. Valid values:
 	//
-	// 	- **true**: The instance was deleted.
+	// - **true**: The secret was deleted.
 	//
-	// 	- **false**: The instance failed to be deleted.
+	// - **false**: The secret was not deleted.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The ID used to trace the request.
 	//
 	// example:
 	//
@@ -167,7 +163,7 @@ func (s *DeleteSecretResponseBody) Validate() error {
 }
 
 type DeleteSecretResponseBodyData struct {
-	// The ID of the deleted Secret.
+	// The ID of the deleted secret.
 	//
 	// example:
 	//

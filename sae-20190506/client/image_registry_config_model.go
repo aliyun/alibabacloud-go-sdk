@@ -16,8 +16,10 @@ type iImageRegistryConfig interface {
 }
 
 type ImageRegistryConfig struct {
+	// The authentication configuration for the image repository.
 	AuthConfig *RegistryAuthenticationConfig `json:"AuthConfig,omitempty" xml:"AuthConfig,omitempty"`
-	CertConfig *RegistryCertificateConfig    `json:"CertConfig,omitempty" xml:"CertConfig,omitempty"`
+	// The certificate configuration for the image repository.
+	CertConfig *RegistryCertificateConfig `json:"CertConfig,omitempty" xml:"CertConfig,omitempty"`
 }
 
 func (s ImageRegistryConfig) String() string {

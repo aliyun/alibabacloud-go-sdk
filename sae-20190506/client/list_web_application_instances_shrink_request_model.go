@@ -59,6 +59,10 @@ type ListWebApplicationInstancesShrinkRequest struct {
 	// 1562831689704
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the application instance.
+	//
+	// example:
+	//
+	// Running
 	StatusesShrink *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
 	// The ID of the application version.
 	//

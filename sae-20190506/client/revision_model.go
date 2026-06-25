@@ -40,13 +40,13 @@ type Revision struct {
 	//
 	// example:
 	//
-	// 001
+	// 1
 	RevisionId *string `json:"RevisionId,omitempty" xml:"RevisionId,omitempty"`
 	// The traffic weight of the version.
 	//
 	// example:
 	//
-	// 100
+	// 0.5
 	Weight *float32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 

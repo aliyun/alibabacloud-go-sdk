@@ -14,7 +14,7 @@ type iListAppVersionsRequest interface {
 }
 
 type ListAppVersionsRequest struct {
-	// The returned message.
+	// The application ID.
 	//
 	// This parameter is required.
 	//

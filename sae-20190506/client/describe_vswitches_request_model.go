@@ -18,19 +18,9 @@ type iDescribeVSwitchesRequest interface {
 }
 
 type DescribeVSwitchesRequest struct {
-	// example:
-	//
-	// vsw-bp165bn1eu4fyztdvbfvo,vsw-bp1iof8x4ypzrwfwg1h08
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// example:
-	//
-	// KKKK
+	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// vpc-wz97dyzl4m3dtuacb36ox
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 

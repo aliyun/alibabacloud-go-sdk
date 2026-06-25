@@ -52,7 +52,7 @@ type GetScaleAppMetricResponseBody struct {
 	//
 	// example:
 	//
-	// 3B763F98-0BA2-5C23-B6B8-558568D2C1C2
+	// 3B763F98-0BA2-5C23-B6B8-558568D2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the microservice list was obtained. The following limits are imposed on the ID:
 	//

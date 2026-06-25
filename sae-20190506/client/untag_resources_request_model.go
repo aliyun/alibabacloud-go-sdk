@@ -22,11 +22,11 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all the specified tags. This parameter takes effect only if the TagKeys parameter is specified. Valid values:
+	// Specifies whether to remove all tags. This parameter applies only when TagKeys is not specified. Valid values:
 	//
-	// 	- **true**
+	// - **true**: All tags are removed.
 	//
-	// 	- **false**
+	// - **false**: Only the tags specified in the TagKeys parameter are removed.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type UntagResourcesRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of resources. Separate multiple resource IDs with comma (,).
+	// The resource IDs. To specify multiple resource IDs, separate them with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type UntagResourcesRequest struct {
 	//
 	// ["d42921c4-5433-4abd-8075-0e536f8b****"]
 	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	// The type of the resource. Set the value to `application`.
+	// The resource type. Only `application` is supported.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type UntagResourcesRequest struct {
 	//
 	// application
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag keys. Separate multiple tag keys with commas (,).
+	// The tag keys. To specify multiple tag keys, separate them with commas (,).
 	//
 	// example:
 	//

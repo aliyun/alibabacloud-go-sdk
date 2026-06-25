@@ -16,7 +16,7 @@ type iDisableApplicationScalingRuleRequest interface {
 }
 
 type DisableApplicationScalingRuleRequest struct {
-	// timer-0800-2100
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DisableApplicationScalingRuleRequest struct {
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the request.
+	// The name of the Auto Scaling policy.
 	//
 	// This parameter is required.
 	//

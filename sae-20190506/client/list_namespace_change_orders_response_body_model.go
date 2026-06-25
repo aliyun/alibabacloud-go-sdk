@@ -26,51 +26,51 @@ type iListNamespaceChangeOrdersResponseBody interface {
 }
 
 type ListNamespaceChangeOrdersResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code or POP error code.
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: indicates that the request was invalid.
+	// - **4xx**: A client error occurred.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned results.
 	Data *ListNamespaceChangeOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
+	// - This parameter is returned only when a request fails.
 	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// - For more information, see the **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0bc3915638507554994370d****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the list of change orders was obtained. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: indicates that the list was obtained.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: indicates that the list could not be obtained.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The trace ID, which is used to query the details of the request.
 	//
 	// example:
 	//
@@ -161,13 +161,13 @@ func (s *ListNamespaceChangeOrdersResponseBody) Validate() error {
 type ListNamespaceChangeOrdersResponseBodyData struct {
 	// The list of change orders.
 	ChangeOrderList []*ListNamespaceChangeOrdersResponseBodyDataChangeOrderList `json:"ChangeOrderList,omitempty" xml:"ChangeOrderList,omitempty" type:"Repeated"`
-	// The number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -239,41 +239,41 @@ func (s *ListNamespaceChangeOrdersResponseBodyData) Validate() error {
 }
 
 type ListNamespaceChangeOrdersResponseBodyDataChangeOrderList struct {
-	// The number of release batches.
+	// The batch count.
 	//
 	// example:
 	//
 	// 1
 	BatchCount *int32 `json:"BatchCount,omitempty" xml:"BatchCount,omitempty"`
-	// The mode in which the release batches are determined. Valid values:
+	// The batch type.
 	//
-	// 	- **auto**: SAE automatically determines the release batches.
+	// example:
 	//
-	// 	- **manual**: You must manually determine the release batches.
+	// Automatic
 	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	// The ID of the change order.
+	// The change order ID.
 	//
 	// example:
 	//
 	// 7fa5c0-9ebb-4bb4-b383-1f885447****
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The type of the change order, which corresponds the **CoTypeCode*	- parameter.
+	// The type of the change order, which corresponds to the `CoTypeCode`.
 	//
 	// example:
 	//
 	// msg.docker.app.actions.CoBatchStartApplication
 	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
-	// The code of the change order type. Valid values:
+	// The type code of the change order. Valid values:
 	//
-	// 	- **CoBatchStartApplication**: starts multiple applications concurrently.
+	// - **CoBatchStartApplication**: Starts applications in batches.
 	//
-	// 	- **CoBatchStopApplication**: stops multiple applications concurrently.
+	// - **CoBatchStopApplication**: Stops applications in batches.
 	//
 	// example:
 	//
 	// CoBatchStartApplication
 	CoTypeCode *string `json:"CoTypeCode,omitempty" xml:"CoTypeCode,omitempty"`
-	// The time when the change order was created.
+	// The creation time of the change order.
 	//
 	// example:
 	//
@@ -286,32 +286,36 @@ type ListNamespaceChangeOrdersResponseBodyDataChangeOrderList struct {
 	// test@aliyun.com
 	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
 	// The description of the change order.
+	//
+	// example:
+	//
+	// Batch Start Applications
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the change order was completed.
+	// The completion time of the change order.
 	//
 	// example:
 	//
 	// 2019-07-11 20:12:58
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the group.
+	// The group ID.
 	//
 	// example:
 	//
 	// c9ecd2-cf6c-46c3-9f20-525de202****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
 	// cn-shanghai:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The information about release batches.
+	// The pipeline.
 	//
 	// example:
 	//
 	// xxxx
 	Pipelines *string `json:"Pipelines,omitempty" xml:"Pipelines,omitempty"`
-	// The source of the change order.
+	// The initiation source for the change order.
 	//
 	// example:
 	//
@@ -319,23 +323,23 @@ type ListNamespaceChangeOrdersResponseBodyDataChangeOrderList struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status of the change order. Valid values:
 	//
-	// 	- **0**: The change order is being prepared.
+	// - **0**: Preparing
 	//
-	// 	- **1**: The change order is being executed.
+	// - **1**: In progress
 	//
-	// 	- **2**: The change order was executed.
+	// - **2**: Succeeded
 	//
-	// 	- **3**: The change order could not be executed.
+	// - **3**: Failed
 	//
-	// 	- **6**: The change order was terminated.
+	// - **6**: Terminated
 	//
-	// 	- **10**: The change order could not be executed due to a system exception.
+	// - **10**: Failed due to a system exception
 	//
 	// example:
 	//
 	// 2
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//

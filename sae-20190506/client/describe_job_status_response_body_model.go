@@ -28,13 +28,13 @@ type iDescribeJobStatusResponseBody interface {
 type DescribeJobStatusResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The call was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: The call failed.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -44,19 +44,15 @@ type DescribeJobStatusResponseBody struct {
 	Data *DescribeJobStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned. Take note of the following rules:
 	//
-	// 	- **ErrorCode*	- is not returned if the request succeeds.
+	// - **ErrorCode*	- is not returned if the request succeeds.
 	//
-	// 	- **ErrorCode*	- is returned if the request fails. For more information, see the "**Error codes**" section in this topic.
-	//
-	// example:
-	//
-	// Null
+	// - **ErrorCode*	- is returned if the request fails. For more information, see the "**Error codes**" section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message. Take note of the following rules:
 	//
-	// 	- If the call is successful, **success*	- is returned.
+	// - If the call is successful, **success*	- is returned.
 	//
-	// 	- If the call fails, an error code is returned.
+	// - If the call fails, an error code is returned.
 	//
 	// example:
 	//
@@ -70,9 +66,9 @@ type DescribeJobStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -193,9 +189,9 @@ type DescribeJobStatusResponseBodyData struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The returned message. Take note of the following rules:
 	//
-	// 	- If the call is successful, **success*	- is returned.
+	// - If the call is successful, **success*	- is returned.
 	//
-	// 	- If the call fails, an error code is returned.
+	// - If the call fails, an error code is returned.
 	//
 	// example:
 	//
@@ -209,13 +205,13 @@ type DescribeJobStatusResponseBodyData struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the job. Valid values:
 	//
-	// 	- **0**: The job is not executed.
+	// - **0**: The job is not executed.
 	//
-	// 	- **1**: The job was executed.
+	// - **1**: The job was executed.
 	//
-	// 	- **2**: The job failed to be executed.
+	// - **2**: The job failed to be executed.
 	//
-	// 	- **3**: The job is being executed.
+	// - **3**: The job is being executed.
 	//
 	// example:
 	//

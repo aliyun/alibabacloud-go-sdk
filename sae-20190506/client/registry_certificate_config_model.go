@@ -16,10 +16,14 @@ type iRegistryCertificateConfig interface {
 }
 
 type RegistryCertificateConfig struct {
+	// The Base64-encoded certificate of the image repository.
+	//
 	// example:
 	//
 	// LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCmZha2VDZXJ0aWZpY2F0ZQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0t
 	CertBase64 *string `json:"CertBase64,omitempty" xml:"CertBase64,omitempty"`
+	// Specifies whether to access the image repository in an insecure manner.
+	//
 	// example:
 	//
 	// true

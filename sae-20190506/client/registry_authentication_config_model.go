@@ -16,10 +16,14 @@ type iRegistryAuthenticationConfig interface {
 }
 
 type RegistryAuthenticationConfig struct {
+	// The password for the image repository.
+	//
 	// example:
 	//
 	// abc***
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The username for the image repository.
+	//
 	// example:
 	//
 	// admin

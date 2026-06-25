@@ -36,7 +36,7 @@ type ContainerResources struct {
 	//
 	// example:
 	//
-	// 2
+	// 1000
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The memory size that is required for each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the CPU parameter:
 	//

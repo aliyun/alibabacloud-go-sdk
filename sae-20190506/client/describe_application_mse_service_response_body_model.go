@@ -36,19 +36,15 @@ type DescribeApplicationMseServiceResponseBody struct {
 	Data *DescribeApplicationMseServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code. Value description:
 	//
-	// 	- If the request succeeds, this field is not returned.
+	// - If the request succeeds, this field is not returned.
 	//
-	// 	- For more information, see the **Error codes*	- section of this topic.
-	//
-	// example:
-	//
-	// System.Upgrading
+	// - For more information, see the **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The additional information. Value description:
 	//
-	// 	- If the request was successful, **success*	- is returned.
+	// - If the request was successful, **success*	- is returned.
 	//
-	// 	- If the request failed, an error code is returned.
+	// - If the request failed, an error code is returned.
 	//
 	// example:
 	//
@@ -62,9 +58,9 @@ type DescribeApplicationMseServiceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the application instance groups were obtained successfully. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -179,15 +175,15 @@ type DescribeApplicationMseServiceResponseBodyData struct {
 	MseAppNameSpace *string `json:"MseAppNameSpace,omitempty" xml:"MseAppNameSpace,omitempty"`
 	// The application status. Valid values:
 	//
-	// 	- EXPIRED
+	// - EXPIRED
 	//
-	// 	- REBOOTING
+	// - REBOOTING
 	//
-	// 	- WAITING
+	// - WAITING
 	//
-	// 	- FAIL
+	// - FAIL
 	//
-	// 	- NULL/SUCCESS
+	// - NULL/SUCCESS
 	//
 	// example:
 	//

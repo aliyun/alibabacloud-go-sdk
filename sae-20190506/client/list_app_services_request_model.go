@@ -30,31 +30,31 @@ type iListAppServicesRequest interface {
 }
 
 type ListAppServicesRequest struct {
-	// The ID of the application. You must specify only one of the following parameters: vpcId, namespace ID, and application ID.
+	// The application ID. Specify exactly one of the following parameters: `VpcId`, `NamespaceId`, or `AppId`.
 	//
 	// example:
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the MSE Nacos instance. This parameter is required when the registry type is set to MSE Nacos.
+	// The instance ID of MSE Nacos. This parameter is required if the service registry is MSE Nacos.
 	//
 	// example:
 	//
 	// mse-cn-sco3r0u****
 	NacosInstanceId *string `json:"NacosInstanceId,omitempty" xml:"NacosInstanceId,omitempty"`
-	// The ID of the MSE Nacos namespace. This parameter is required when the registry type is set to MSE Nacos.
+	// The namespace ID of MSE Nacos. This parameter is required if the service registry is MSE Nacos.
 	//
 	// example:
 	//
 	// mse-test
 	NacosNamespaceId *string `json:"NacosNamespaceId,omitempty" xml:"NacosNamespaceId,omitempty"`
-	// The ID of the namespace. You must specify only one of the following parameters: VPC ID, namespace ID, and application ID.
+	// The namespace ID. Specify exactly one of the following parameters: `VpcId`, `NamespaceId`, or `AppId`.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -66,15 +66,15 @@ type ListAppServicesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The registry type. Valid values:
+	// The service registry type. Valid values:
 	//
-	// 	- **0**: SAE Nacos
+	// - **0**: SAE Nacos
 	//
-	// 	- **1**: SAE built-in Nacos
+	// - **1**: self-managed service registry
 	//
-	// 	- **2*	- :MSE Nacos
+	// - **2**: MSE Nacos
 	//
-	// 	- **9**: SAE Kubernetes service
+	// - **9**: SAE K8s Service
 	//
 	// example:
 	//
@@ -82,19 +82,19 @@ type ListAppServicesRequest struct {
 	RegistryType *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
 	// The service type. Valid values:
 	//
-	// 	- **dubbo**
+	// - **dubbo**
 	//
-	// 	- **springCloud**
+	// - **springCloud**
 	//
-	// 	- **hsf**
+	// - **hsf**
 	//
-	// 	- **k8sService**
+	// - **k8sService**
 	//
 	// example:
 	//
 	// springCloud
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The unique identifier of the VPC. You must specify only one of the following parameters: VPC ID, namespace ID, and application ID.
+	// The ID of the VPC. Specify exactly one of the following parameters: `VpcId`, `NamespaceId`, or `AppId`.
 	//
 	// example:
 	//

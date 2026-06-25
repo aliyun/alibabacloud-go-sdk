@@ -26,15 +26,15 @@ type iUnbindNlbResponseBody interface {
 }
 
 type UnbindNlbResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code.
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: Client error.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
@@ -42,39 +42,39 @@ type UnbindNlbResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *UnbindNlbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The status code. Valid values:
+	// The error code.
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - The **ErrorCode*	- parameter is not returned if the request is successful.
 	//
-	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- section of this topic.
+	// - The **ErrorCode*	- parameter is returned if the request fails. For more information, see the **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned. Valid values:
+	// The returned message.
 	//
-	// 	- If the request was successful, **success*	- is returned.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// 	- If the request failed, an error code is returned.
+	// - If the request fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the internal-facing or Internet-facing NLB instance was disassociated. Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- **true**: The NLB instance was disassociated.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The NLB instance failed to be disassociated.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The trace ID for the request. Use this ID to query request details.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ func (s *UnbindNlbResponseBody) Validate() error {
 }
 
 type UnbindNlbResponseBodyData struct {
-	// The ID of the change order. The ID can be used to query the status of the change task.
+	// The change order ID. Use this ID to check the task\\"s execution status.
 	//
 	// example:
 	//

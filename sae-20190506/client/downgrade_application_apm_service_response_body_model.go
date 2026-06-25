@@ -28,13 +28,13 @@ type iDowngradeApplicationApmServiceResponseBody interface {
 type DowngradeApplicationApmServiceResponseBody struct {
 	// The HTTP status code or the error code. Valid values:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: The request failed.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -43,10 +43,6 @@ type DowngradeApplicationApmServiceResponseBody struct {
 	// The returned result.
 	Data *DowngradeApplicationApmServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The status code.
-	//
-	// example:
-	//
-	// 400
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The message that is returned.
 	//
@@ -62,9 +58,9 @@ type DowngradeApplicationApmServiceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether ARMS advanced monitoring is disabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the trace. The ID is used to query the details of a request.
 	//
@@ -157,9 +153,9 @@ func (s *DowngradeApplicationApmServiceResponseBody) Validate() error {
 type DowngradeApplicationApmServiceResponseBodyData struct {
 	// Indicates whether ARMS advanced monitoring is disabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

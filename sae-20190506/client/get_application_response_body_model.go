@@ -22,23 +22,23 @@ type iGetApplicationResponseBody interface {
 type GetApplicationResponseBody struct {
 	// The details of the application.
 	Application *GetApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
-	// The additional information returned. Valid values:
+	// The response message.
 	//
-	// 	- When a request is successful, **success**is returned.
+	// - If the request is successful, the value is **success**.
 	//
-	// 	- An error code is returned when a request failed.
+	// - If the request fails, the value is a specific error code.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 01CF26C7-00A3-4AA6-BA76-7E95F2A3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The trace ID used to query the details of the request.
 	//
 	// example:
 	//
@@ -100,7 +100,11 @@ func (s *GetApplicationResponseBody) Validate() error {
 }
 
 type GetApplicationResponseBodyApplication struct {
-	// The description of the application.
+	// The application description.
+	//
+	// example:
+	//
+	// Test
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
 	// The application ID.
 	//
@@ -114,78 +118,79 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the basic application.
+	// The base application ID.
 	//
 	// example:
 	//
 	// ee99cce6-1c8e-4bfa-96c3-3e2fa9******
 	BaseAppId *string `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
-	// The CPU specifications that are required for each instance. Unit: millicores. This parameter cannot be set to 0. Valid values:
+	// The CPU required for each instance, in millicores. This value cannot be 0. Valid values:
 	//
-	// 	- **500**
+	// - **500**
 	//
-	// 	- **1000**
+	// - **1000**
 	//
-	// 	- **2000**
+	// - **2000**
 	//
-	// 	- **4000**
+	// - **4000**
 	//
-	// 	- **8000**
+	// - **8000**
 	//
-	// 	- **12000**
+	// - **12000**
 	//
-	// 	- **16000**
+	// - **16000**
 	//
-	// 	- **32000**
+	// - **32000**
 	//
 	// example:
 	//
 	// 2000
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The number of application instances.
+	// The total number of application instances.
 	//
 	// example:
 	//
-	// i-8ps2o182102o1jv05bys
-	Instances  *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	IsStateful *bool  `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
-	// The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
+	// 6
+	Instances *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	// Indicates whether the application is stateful.
+	IsStateful *bool `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
+	// The memory required for each instance, in MB. This value cannot be 0. The memory specification is coupled with the CPU specification. The following configurations are supported:
 	//
-	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
+	// - **1024**: corresponds to 500 or 1,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **2048*	- if the Cpu parameter is set to 500, 1000, or 2000.
+	// - **2048**: corresponds to 500, 1,000, or 2,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **4096*	- if the Cpu parameter is set to 1000, 2000, or 4000.
+	// - **4096**: corresponds to 1,000, 2,000, or 4,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **8192*	- if the Cpu parameter is set to 2000, 4000, or 8000.
+	// - **8192**: corresponds to 2,000, 4,000, or 8,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **12288*	- if the Cpu parameter is set to 12000.
+	// - **12288**: corresponds to 12,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **16384*	- if the Cpu parameter is set to 4000, 8000, or 16000.
+	// - **16384**: corresponds to 4,000, 8,000, or 16,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **24576*	- if the Cpu parameter is set to 12000.
+	// - **24576**: corresponds to 12,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **32768*	- if the Cpu parameter is set to 16000.
+	// - **32768**: corresponds to 16,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **65536*	- if the Cpu parameter is set to 8000, 16000, or 32000.
+	// - **65536**: corresponds to 8,000, 16,000, or 32,000 millicores of CPU.
 	//
-	// 	- This parameter is set to **131072*	- if the Cpu parameter is set to 32000.
+	// - **131072**: corresponds to 32,000 millicores of CPU.
 	//
 	// example:
 	//
 	// 4096
 	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// Specifies whether to enable WebAssembly Filter. Valid values:
+	// Indicates whether WebAssemblyFilter is enabled. Valid values:
 	//
-	// 	- true: enables this parameter.
+	// - **true**: enabled.
 	//
-	// 	- false: disables this parameter.
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// true
 	MseEnabled *bool `json:"MseEnabled,omitempty" xml:"MseEnabled,omitempty"`
-	// The ID of the namespace to which the MSE instance belongs.
+	// The namespace ID of the MSE instance.
 	//
 	// example:
 	//
@@ -197,29 +202,29 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// cn-shenzhen
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The programming language that is used to create the application. Valid values:
+	// The programming language of the application. Valid values:
 	//
-	// 	- **java*	- :Java.
+	// - **java**: Java.
 	//
-	// 	- **php**: PHP.
+	// - **php**: PHP.
 	//
-	// 	- **other**: other programming languages, such as Python, C++, Go, .NET, and Node.js
+	// - **other**: other languages, such as Python, C++, Go, .NET, and Node.js.
 	//
 	// example:
 	//
 	// java
 	ProgrammingLanguage *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
-	// The number of application instances that are running.
+	// The number of running instances.
 	//
 	// example:
 	//
-	// 1
+	// 6
 	RunningInstances *int32 `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
 	// Indicates whether the auto scaling policy is enabled. Valid values:
 	//
-	// 	- **true**: The auto scaling policy is enabled.
+	// - **true**: The policy is enabled.
 	//
-	// 	- **false**: The auto scaling policy is disabled.
+	// - **false**: The policy is disabled.
 	//
 	// example:
 	//
@@ -227,11 +232,11 @@ type GetApplicationResponseBodyApplication struct {
 	ScaleRuleEnabled *string `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
 	// The type of the auto scaling policy. Valid values:
 	//
-	// 	- **timing**: a scheduled auto scaling policy.
+	// - **timing**: scheduled auto scaling.
 	//
-	// 	- **metric**: a metric-based auto scaling policy.
+	// - **metric**: metric-based auto scaling.
 	//
-	// 	- **mix**: a hybrid auto scaling policy.
+	// - **mix**: hybrid auto scaling.
 	//
 	// example:
 	//

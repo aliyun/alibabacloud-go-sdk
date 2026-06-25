@@ -56,7 +56,7 @@ type WebApplication struct {
 	//
 	// example:
 	//
-	// 2019-07-11 15:54:49
+	// 2024-07-17T06:12:17Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// The application description.
 	//
@@ -80,7 +80,7 @@ type WebApplication struct {
 	//
 	// example:
 	//
-	// 2019-07-11 20:12:58
+	// 2024-07-17T06:12:18Z
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
 	// The ID of the namespace to which the application belongs.
 	//

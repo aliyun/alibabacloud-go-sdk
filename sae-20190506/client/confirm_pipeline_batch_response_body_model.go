@@ -26,27 +26,27 @@ type iConfirmPipelineBatchResponseBody interface {
 }
 
 type ConfirmPipelineBatchResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code for the request.
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: indicates that the request was invalid.
+	// - **4xx**: A request error occurred.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The batch information.
+	// The pipeline information.
 	Data *ConfirmPipelineBatchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
+	// - The **ErrorCode*	- field is not returned if the request is successful.
 	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// - The **ErrorCode*	- field is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message.
 	//
@@ -54,23 +54,23 @@ type ConfirmPipelineBatchResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the processing of the next batch started as required. Valid values:
+	// Indicates whether the batch confirmation was successful.
 	//
-	// 	- **true**: The processing started.
+	// - **true**: The confirmation was successful.
 	//
-	// 	- **false**: The processing could not start.
+	// - **false**: The confirmation failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The trace ID. You can use this ID to look up the details of the call.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ func (s *ConfirmPipelineBatchResponseBody) Validate() error {
 }
 
 type ConfirmPipelineBatchResponseBodyData struct {
-	// The ID of the batch.
+	// The pipeline ID.
 	//
 	// example:
 	//

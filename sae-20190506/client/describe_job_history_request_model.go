@@ -42,13 +42,13 @@ type DescribeJobHistoryRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The status of the job. Valid values:
 	//
-	// 	- **0**: The job is not executed.
+	// - **0**: The job is not executed.
 	//
-	// 	- **1**: The job is executed.
+	// - **1**: The job is executed.
 	//
-	// 	- **2**: The job fails to be executed.
+	// - **2**: The job fails to be executed.
 	//
-	// 	- **3**: The job is being executed.
+	// - **3**: The job is being executed.
 	//
 	// example:
 	//

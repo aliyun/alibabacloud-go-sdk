@@ -14,7 +14,7 @@ type iListPublishedServicesRequest interface {
 }
 
 type ListPublishedServicesRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//

@@ -26,13 +26,13 @@ type iEnableApplicationScalingRuleResponseBody interface {
 type EnableApplicationScalingRuleResponseBody struct {
   // The HTTP status code. Take note of the following rules:
   // 
-  // 	- **2xx**: The call was successful.
+  // - **2xx**: The call was successful.
   // 
-  // 	- **3xx**: The call was redirected.
+  // - **3xx**: The call was redirected.
   // 
-  // 	- **4xx**: The call failed.
+  // - **4xx**: The call failed.
   // 
-  // 	- **5xx**: A server error occurred.
+  // - **5xx**: A server error occurred.
   // 
   // example:
   // 
@@ -40,19 +40,15 @@ type EnableApplicationScalingRuleResponseBody struct {
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
   // The error code returned if the request failed. Take note of the following rules:
   // 
-  // 	- The **ErrorCode*	- parameter is not returned if the request succeeds.
+  // - The **ErrorCode*	- parameter is not returned if the request succeeds.
   // 
-  // 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
-  // 
-  // example:
-  // 
-  // Null
+  // - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
   ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
   // The additional information that is returned. Take note of the following rules:
   // 
-  // 	- success: If the call is successful, **success*	- is returned.
+  // - success: If the call is successful, **success*	- is returned.
   // 
-  // 	- An error code: If the call fails, an error code is returned.
+  // - An error code: If the call fails, an error code is returned.
   // 
   // example:
   // 
@@ -66,9 +62,9 @@ type EnableApplicationScalingRuleResponseBody struct {
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
   // Specifies whether the instances are successfully restarted. Take note of the following rules:
   // 
-  // 	- **true**
+  // - **true**
   // 
-  // 	- **false**: The restart failed.
+  // - **false**: The restart failed.
   // 
   // example:
   // 

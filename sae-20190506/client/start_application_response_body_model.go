@@ -28,13 +28,13 @@ type iStartApplicationResponseBody interface {
 type StartApplicationResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The call was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: The call failed.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -44,19 +44,15 @@ type StartApplicationResponseBody struct {
 	Data *StartApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned. Take note of the following rules:
 	//
-	// 	- If the call is successful, **ErrorCode*	- is not returned.
+	// - If the call is successful, **ErrorCode*	- is not returned.
 	//
-	// 	- If the call fails, **ErrorCode*	- is returned. For more information, see the "**Error codes**" section in this topic.
-	//
-	// example:
-	//
-	// Null
+	// - If the call fails, **ErrorCode*	- is returned. For more information, see the "**Error codes**" section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message. Take note of the following rules:
 	//
-	// 	- If the call is successful, **success*	- is returned.
+	// - If the call is successful, **success*	- is returned.
 	//
-	// 	- If the call fails, an error code is returned.
+	// - If the call fails, an error code is returned.
 	//
 	// example:
 	//
@@ -70,9 +66,9 @@ type StartApplicationResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the application is started. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

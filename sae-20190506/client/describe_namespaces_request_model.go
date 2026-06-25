@@ -16,7 +16,7 @@ type iDescribeNamespacesRequest interface {
 }
 
 type DescribeNamespacesRequest struct {
-	// The page number.
+	// The current page number.
 	//
 	// This parameter is required.
 	//

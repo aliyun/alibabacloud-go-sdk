@@ -16,7 +16,7 @@ type iDescribeApplicationConfigRequest interface {
 }
 
 type DescribeApplicationConfigRequest struct {
-	// The app id.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeApplicationConfigRequest struct {
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The version id.
+	// The version ID.
 	//
 	// example:
 	//

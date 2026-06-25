@@ -16,7 +16,7 @@ type iDeleteSecretRequest interface {
 }
 
 type DeleteSecretRequest struct {
-	// The ID of the namespace in which the Secret resides. By default, the namespace ID is the same as the region ID.
+	// The ID of the namespace. If the secret is in the default namespace, you need to specify only the region ID, for example, `cn-beijing`.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteSecretRequest struct {
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The ID of the Secret to be deleted. You can call the [ListSecrets](https://help.aliyun.com/document_detail/466929.html) operation to view the Secret IDs.
+	// The ID of the secret to delete. You can obtain the ID by calling the [ListSecrets](https://help.aliyun.com/document_detail/466929.html) operation.
 	//
 	// This parameter is required.
 	//

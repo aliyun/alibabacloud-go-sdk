@@ -26,55 +26,55 @@ type iBindNlbResponseBody interface {
 }
 
 type BindNlbResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code.
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: Successful.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: Client error.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *BindNlbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The status code. Value values:
+	// The error code.
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - This parameter is not returned if the request is successful.
 	//
-	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned. Valid values:
+	// The response message.
 	//
-	// 	- If the request was successful, **success*	- is returned.
+	// - A value of **success*	- is returned if the request is successful.
 	//
-	// 	- If the request failed, an error code is returned.
+	// - If the request fails, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the applications were stopped. Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- **true**: The applications were stopped.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The applications failed to be stopped.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The request\\"s trace ID, used for troubleshooting.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ func (s *BindNlbResponseBody) Validate() error {
 }
 
 type BindNlbResponseBodyData struct {
-	// The ID of the change order. The ID can be used to query the status of the change task.
+	// The ID of the change order. You can use this ID to query the task status.
 	//
 	// example:
 	//

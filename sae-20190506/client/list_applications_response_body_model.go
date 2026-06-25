@@ -30,13 +30,13 @@ type iListApplicationsResponseBody interface {
 }
 
 type ListApplicationsResponseBody struct {
-	// The HTTP status code. Take note of the following rules:
+	// The HTTP status code. Valid values:
 	//
-	// - **2xx**: The call was successful.
+	// - **2xx**: The request was successful.
 	//
-	// - **3xx**: The call was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// - **4xx**: The call failed.
+	// - **4xx**: The request was invalid.
 	//
 	// - **5xx**: A server error occurred.
 	//
@@ -44,37 +44,33 @@ type ListApplicationsResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The current page number.
+	// Current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The queried applications.
+	// The object that contains pagination details and the array of applications.
 	Data *ListApplicationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error code. Valid values:
+	// The error code. This parameter is returned only if the request fails. For more information, see the **Error codes*	- section of this topic.
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - A successful request does not return the **ErrorCode*	- field.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
-	//
-	// example:
-	//
-	// The ID of the request.
+	// - A failed request returns the **ErrorCode*	- field. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Additional message.
+	// Additional information about the call result.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page size.
+	// Page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -82,15 +78,15 @@ type ListApplicationsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The number of applications.
+	// Total number of applications.
 	//
 	// example:
 	//
@@ -197,7 +193,7 @@ func (s *ListApplicationsResponseBody) Validate() error {
 }
 
 type ListApplicationsResponseBodyData struct {
-	// The queried applications.
+	// An array of application objects.
 	Applications []*ListApplicationsResponseBodyDataApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -205,13 +201,13 @@ type ListApplicationsResponseBodyData struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of records in each page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of applications.
+	// The total number of applications.
 	//
 	// example:
 	//
@@ -279,9 +275,9 @@ func (s *ListApplicationsResponseBodyData) Validate() error {
 type ListApplicationsResponseBodyDataApplications struct {
 	// Indicates whether the application is being deleted. Valid values:
 	//
-	// 	- **true**: The application is being deleted.
+	// - **true**: The application is being deleted.
 	//
-	// 	- **false**: The application is not being deleted.
+	// - **false**: The application is not being deleted.
 	//
 	// example:
 	//
@@ -293,7 +289,7 @@ type ListApplicationsResponseBodyDataApplications struct {
 	//
 	// description
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	// The application ID.
+	// The ID of the application.
 	//
 	// example:
 	//
@@ -305,111 +301,113 @@ type ListApplicationsResponseBodyDataApplications struct {
 	//
 	// demo-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The application type.
+	// The application\\"s deployment method.
 	//
 	// example:
 	//
 	// Image
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The base app ID. Only gray-release applications have this property.
+	// The ID of the base application. This parameter is returned only for canary release applications.
 	//
 	// example:
 	//
 	// xxx-xxx-xx-xxx
 	BaseAppId *string `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
-	// The gray-release application list of this application.
+	// An array of canary release applications associated with this application.
 	Children []*ListApplicationsResponseBodyDataApplicationsChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	// The CPU specifications that are required for each instance. Unit: millicores. This parameter cannot be set to 0. Valid values:
+	// The CPU allocated to each instance, measured in millicores. This value cannot be 0. Valid values:
 	//
-	// 	- **500**
+	// - **500**
 	//
-	// 	- **1000**
+	// - **1000**
 	//
-	// 	- **2000**
+	// - **2000**
 	//
-	// 	- **4000**
+	// - **4000**
 	//
-	// 	- **8000**
+	// - **8000**
 	//
-	// 	- **16000**
+	// - **16000**
 	//
-	// 	- **32000**
+	// - **32000**
 	//
 	// example:
 	//
 	// 1000
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The disk size. Unit: GB.
+	// The disk size in GB.
 	//
 	// example:
 	//
 	// 20
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// If the idle mode is enabled.
+	// Indicates if the application is configured to stop automatically when idle.
 	//
 	// example:
 	//
 	// false
 	EnableIdle *string `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
-	// The image URL.
+	// The URL of the container image.
 	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/sae-serverless-demo/sae-demo:microservice-java-provider-v1.0
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The number of application instances.
+	// The configured number of application instances.
 	//
 	// example:
 	//
 	// 2
-	Instances  *int32             `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	IsStateful *bool              `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
-	Labels     map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
+	Instances *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	// Indicates whether the application is stateful.
+	IsStateful *bool `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
+	// The labels of the application.
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The memory allocated to each instance, measured in megabytes (MB). This value cannot be 0 and must be compatible with the CPU allocation. The following options are available:
 	//
-	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
+	// - **1024**: For a CPU allocation of 500 or 1,000 millicores.
 	//
-	// 	- This parameter is set to **2048*	- if the Cpu parameter is set to 500, 1000, or 2000.
+	// - **2048**: For a CPU allocation of 500, 1,000, or 2,000 millicores.
 	//
-	// 	- This parameter is set to **4096*	- if the Cpu parameter is set to 1000, 2000, or 4000.
+	// - **4096**: For a CPU allocation of 1,000, 2,000, or 4,000 millicores.
 	//
-	// 	- This parameter is set to **8192*	- if the Cpu parameter is set to 2000, 4000, or 8000.
+	// - **8192**: For a CPU allocation of 2,000, 4,000, or 8,000 millicores.
 	//
-	// 	- This parameter is set to **12288*	- if the Cpu parameter is set to 12000.
+	// - **12288**: For a CPU allocation of 12,000 millicores.
 	//
-	// 	- This parameter is set to **16384*	- if the Cpu parameter is set to 4000, 8000, or 16000.
+	// - **16384**: For a CPU allocation of 4,000, 8,000, or 16,000 millicores.
 	//
-	// 	- This parameter is set to **24576*	- if the Cpu parameter is set to 12000.
+	// - **24576**: For a CPU allocation of 12,000 millicores.
 	//
-	// 	- This parameter is set to **32768*	- if the Cpu parameter is set to 16000.
+	// - **32768**: For a CPU allocation of 16,000 millicores.
 	//
-	// 	- This parameter is set to **65536*	- if the Cpu parameter is set to 8000, 16000, or 32000.
+	// - **65536**: For a CPU allocation of 8,000, 16,000, or 32,000 millicores.
 	//
-	// 	- This parameter is set to **131072*	- if the Cpu parameter is set to 32000.
+	// - **131072**: For a CPU allocation of 32,000 millicores.
 	//
 	// example:
 	//
 	// 1024
 	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// The application has enabled MSE or not.
+	// Indicates whether Microservices Engine (MSE) is enabled for the application.
 	//
 	// example:
 	//
 	// true
 	MseEnabled *bool `json:"MseEnabled,omitempty" xml:"MseEnabled,omitempty"`
-	// The name space of MSE:
+	// The ID of the MSE namespace. This value determines the service edition.
 	//
-	// - default: the free edition.
+	// - default: Free edition
 	//
-	// - sae-pro: the professional edition.
+	// - sae-pro: Professional edition
 	//
-	// - sae-ent: the enterprise eiditon.
+	// - sae-ent: Enterprise edition
 	//
 	// example:
 	//
 	// sae-ent
 	MseNamespaceId *string `json:"MseNamespaceId,omitempty" xml:"MseNamespaceId,omitempty"`
-	// The namespace ID.
+	// The ID of the namespace.
 	//
 	// example:
 	//
@@ -421,19 +419,19 @@ type ListApplicationsResponseBodyDataApplications struct {
 	//
 	// demo
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The application edition.
+	// The edition of the application:
 	//
-	// - lite: the lightweight edition.
+	// - lite: Lite
 	//
-	// - std: the standard edition.
+	// - std: Standard
 	//
-	// - pro: the professional edition.
+	// - pro: Pro
 	//
 	// example:
 	//
 	// pro
 	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
-	// The package URL.
+	// The URL of the application\\"s deployment package.
 	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
 	// The programming language of the application.
 	//
@@ -441,12 +439,13 @@ type ListApplicationsResponseBodyDataApplications struct {
 	//
 	// java
 	ProgrammingLanguage *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
-	// The region ID.
+	// The ID of the region where the application is deployed.
 	//
 	// example:
 	//
 	// cn-beijing
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The number of running instances.
 	//
@@ -454,9 +453,9 @@ type ListApplicationsResponseBodyDataApplications struct {
 	//
 	// 2
 	RunningInstances *int32 `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
-	// The tags of the application.
+	// An array of tags assigned to the application.
 	Tags []*ListApplicationsResponseBodyDataApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// VPC ID.
+	// The ID of the VPC.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -734,7 +733,7 @@ func (s *ListApplicationsResponseBodyDataApplications) Validate() error {
 }
 
 type ListApplicationsResponseBodyDataApplicationsChildren struct {
-	// If is deleting this application.
+	// Indicates whether the canary release application is being deleted.
 	//
 	// example:
 	//
@@ -744,53 +743,55 @@ type ListApplicationsResponseBodyDataApplicationsChildren struct {
 	//
 	// example:
 	//
-	// Test
+	// Test application
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	// The application ID.
+	// The ID of the canary release application.
 	//
 	// example:
 	//
 	// xxx-xxx-xxx-xxx
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The name of the canary release application.
 	//
 	// example:
 	//
 	// app1
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The way to deploy applications.
+	// The application\\"s deployment method.
 	//
 	// example:
 	//
 	// Image
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The base application ID.
+	// The ID of the base application.
 	//
 	// example:
 	//
 	// ee99cce6-1c8e-4bfa-96c3-3e2fa9******
 	BaseAppId *string `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
-	// The CPU sepcification.
+	// The CPU specification.
 	//
 	// example:
 	//
 	// 2000
-	Cpu        *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// Indicates if the application is configured to stop automatically when idle.
 	EnableIdle *string `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
-	// The number of instances.
+	// The configured number of instances for the canary release application.
 	//
 	// example:
 	//
 	// 2
-	Instances  *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	IsStateful *bool  `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
+	Instances *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	// Indicates whether the canary release application is stateful.
+	IsStateful *bool `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
 	// The memory specification.
 	//
 	// example:
 	//
 	// 2048
 	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// If this application has enabled MSE.
+	// Indicates whether Microservices Engine (MSE) is enabled for the application.
 	//
 	// example:
 	//
@@ -808,19 +809,19 @@ type ListApplicationsResponseBodyDataApplicationsChildren struct {
 	//
 	// demo
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The application edition.
+	// The edition of the application:
 	//
-	// - lite: the lightweight edition.
+	// - lite: Lite
 	//
-	// - std: the standard edition.
+	// - std: Standard
 	//
-	// - pro: the professional edition.
+	// - pro: Pro
 	//
 	// example:
 	//
 	// pro
 	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
-	// The programming language of this application.
+	// The programming language of the application.
 	//
 	// example:
 	//
@@ -831,27 +832,28 @@ type ListApplicationsResponseBodyDataApplicationsChildren struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The number of instances in running state.
+	// The number of running instances.
 	//
 	// example:
 	//
 	// 2
 	RunningInstances *int32 `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
-	// If the scale rule is enabled.
+	// Indicates whether an auto scaling policy is enabled.
 	//
 	// example:
 	//
 	// false
 	ScaleRuleEnabled *bool `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
-	// The type of the scale rule.
+	// The type of the auto scaling policy.
 	//
 	// example:
 	//
 	// timing
 	ScaleRuleType *string `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
-	// The application tag.
+	// An array of tags assigned to the canary release application.
 	Tags []*ListApplicationsResponseBodyDataApplicationsChildrenTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -1120,13 +1122,13 @@ func (s *ListApplicationsResponseBodyDataApplicationsChildrenTags) Validate() er
 }
 
 type ListApplicationsResponseBodyDataApplicationsTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

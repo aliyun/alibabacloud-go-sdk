@@ -40,21 +40,21 @@ type iContainer interface {
 }
 
 type Container struct {
-	// The startup parameters of the container.
+	// Container startup arguments.
 	//
 	// example:
 	//
 	// ["abc", ">", "file0"]
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
-	// The startup command of the container.
+	// Container start command.
 	//
 	// example:
 	//
 	// ["/bin/sh"]
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The container environment variables.
+	// Container environment variables.
 	EnvironmentVariables map[string]*string `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
-	// The container image.
+	// Container image.
 	//
 	// This parameter is required.
 	//
@@ -62,39 +62,39 @@ type Container struct {
 	//
 	// registry.cn-shanghai.aliyuncs.com/serverless_devsxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The configuration of the image repository.
+	// Image repository configuration.
 	ImageRegistryConfig *ImageRegistryConfig `json:"ImageRegistryConfig,omitempty" xml:"ImageRegistryConfig,omitempty"`
-	// The configuration for collecting monitoring records.
+	// Monitoring collection configuration.
 	MetricsCollectConfig *MetricsCollectConfig `json:"MetricsCollectConfig,omitempty" xml:"MetricsCollectConfig,omitempty"`
-	// The port of the container.
+	// Container port.
 	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The number of concurrent requests on a single instance.
+	// Maximum concurrent requests per instance.
 	//
 	// example:
 	//
 	// 100
 	RequestConcurrency *int32 `json:"RequestConcurrency,omitempty" xml:"RequestConcurrency,omitempty"`
-	// The timeout period of the container request.
+	// Container request timeout, in seconds.
 	//
 	// example:
 	//
 	// 60
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// The configurations of the container resources.
+	// Container resource configuration.
 	//
 	// This parameter is required.
 	Resources *ContainerResources `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// The configuration of container log collection.
+	// Container log collection configuration.
 	SLSCollectConfigs *SLSCollectConfigs `json:"SLSCollectConfigs,omitempty" xml:"SLSCollectConfigs,omitempty"`
-	// The container startup check configuration.
+	// Container startup probe configuration.
 	StartupProbe *StartupProbe `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
-	// The container NAS configuration.
+	// Container NAS configuration.
 	WebNASConfig *WebNASConfig `json:"WebNASConfig,omitempty" xml:"WebNASConfig,omitempty"`
-	// The container OSS mount configuration.
+	// Container OSS mount configuration.
 	WebOSSConfig *WebOSSConfig `json:"WebOSSConfig,omitempty" xml:"WebOSSConfig,omitempty"`
 }
 

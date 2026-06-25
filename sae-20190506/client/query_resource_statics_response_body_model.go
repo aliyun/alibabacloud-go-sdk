@@ -28,57 +28,53 @@ type iQueryResourceStaticsResponseBody interface {
 type QueryResourceStaticsResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: indicates that the request was invalid.
+	// - **4xx**: A client error occurred.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The resource usage.
+	// The resource usage information.
 	Data *QueryResourceStaticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
-	// - The **ErrorCode*	- parameter is not returned when the request succeeds.
+	// - This parameter is not returned if the request is successful.
 	//
-	// - The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
-	//
-	// example:
-	//
-	// Null
+	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The response message.
 	//
-	// 	- **success*	- is returned when the request succeeds.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// 	- An error code is returned when the request fails.
+	// - If the request fails, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7CCF7092-72CA-4431-90D6-C7D98752****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the resource usage of an application was obtained. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: indicates that the resource usage was obtained.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: indicates that the resource usage could not be obtained.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	// The trace ID used to query the details of a request.
 	//
 	// example:
 	//
@@ -169,7 +165,7 @@ func (s *QueryResourceStaticsResponseBody) Validate() error {
 type QueryResourceStaticsResponseBodyData struct {
 	// The real-time resource usage.
 	RealTimeRes *QueryResourceStaticsResponseBodyDataRealTimeRes `json:"RealTimeRes,omitempty" xml:"RealTimeRes,omitempty" type:"Struct"`
-	// The resource usage of the current month.
+	// The resource usage in the current month.
 	Summary *QueryResourceStaticsResponseBodyDataSummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Struct"`
 }
 
@@ -214,19 +210,19 @@ func (s *QueryResourceStaticsResponseBodyData) Validate() error {
 }
 
 type QueryResourceStaticsResponseBodyDataRealTimeRes struct {
-	// The CPU usage. Unit: core per minute.
+	// The CPU usage, in Core·min.
 	//
 	// example:
 	//
 	// 13
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The storage size of the temporary storage space. Unit: GiB.
+	// The ephemeral storage usage, in GiB·min.
 	//
 	// example:
 	//
 	// 0
 	EphemeralStorage *float32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
-	// The memory usage. Unit: GiB per minute.
+	// The memory usage, in GiB·min.
 	//
 	// example:
 	//
@@ -274,42 +270,41 @@ func (s *QueryResourceStaticsResponseBodyDataRealTimeRes) Validate() error {
 }
 
 type QueryResourceStaticsResponseBodyDataSummary struct {
-	// The usage of active vCPU. Unit: Core*min.
+	// The active vCPU usage, in Core·min.
 	//
 	// example:
 	//
 	// 10
 	ActiveCpu *float32 `json:"ActiveCpu,omitempty" xml:"ActiveCpu,omitempty"`
-	// The CPU usage. Unit: core per minute.
+	// The CPU usage, in Core·min.
 	//
 	// example:
 	//
 	// 3354
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The CU usage.
+	// The number of CUs used.
 	//
 	// example:
 	//
 	// 2312145
 	Cu *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The storage size of the temporary storage space. Unit: GiB.
+	// The ephemeral storage usage, in GiB·min.
 	//
 	// example:
 	//
 	// 20
 	EphemeralStorage *float32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
-	// example:
-	//
-	// c8g1
-	GpuA10     *float32 `json:"GpuA10,omitempty" xml:"GpuA10,omitempty"`
+	// The GpuA10 usage.
+	GpuA10 *float32 `json:"GpuA10,omitempty" xml:"GpuA10,omitempty"`
+	// The GpuPpu810e usage.
 	GpuPpu810e *float32 `json:"GpuPpu810e,omitempty" xml:"GpuPpu810e,omitempty"`
-	// The usage of idle CPU. Unit: Core*min.
+	// The idle vCPU usage, in Core·min.
 	//
 	// example:
 	//
 	// 10
 	IdleCpu *float32 `json:"IdleCpu,omitempty" xml:"IdleCpu,omitempty"`
-	// The memory usage. Unit: GiB per minute.
+	// The memory usage, in GiB·min.
 	//
 	// example:
 	//

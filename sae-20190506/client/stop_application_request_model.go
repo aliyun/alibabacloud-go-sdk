@@ -14,11 +14,7 @@ type iStopApplicationRequest interface {
 }
 
 type StopApplicationRequest struct {
-	// The returned message.
-	//
-	// 	- **success*	- is returned when the request succeeds.
-	//
-	// 	- An error code is returned when the request fails.
+	// The ID of the application.
 	//
 	// This parameter is required.
 	//

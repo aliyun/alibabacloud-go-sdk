@@ -26,13 +26,13 @@ type iUpdateApplicationDescriptionResponseBody interface {
 type UpdateApplicationDescriptionResponseBody struct {
 	// The HTTP status code or the error code. Valid values:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: The request failed.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -40,19 +40,15 @@ type UpdateApplicationDescriptionResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error code returned if the call failed. Value values:
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - If the request was successful, **ErrorCode*	- is not returned.
 	//
-	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
-	//
-	// example:
-	//
-	// 400
+	// - If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The message returned. The following limits are imposed on the ID:
 	//
-	// 	- If the request was successful, **success*	- is returned.
+	// - If the request was successful, **success*	- is returned.
 	//
-	// 	- An error code is returned when a request failed.
+	// - An error code is returned when a request failed.
 	//
 	// example:
 	//
@@ -66,9 +62,9 @@ type UpdateApplicationDescriptionResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the application was deployed. Valid values:
 	//
-	// 	- **true**: The application was deployed.
+	// - **true**: The application was deployed.
 	//
-	// 	- **false**: The application failed to be deployed.
+	// - **false**: The application failed to be deployed.
 	//
 	// example:
 	//

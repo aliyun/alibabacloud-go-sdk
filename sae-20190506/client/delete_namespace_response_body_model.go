@@ -26,13 +26,13 @@ type iDeleteNamespaceResponseBody interface {
 type DeleteNamespaceResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: indicates that the request was invalid.
+	// - **4xx**: A request error occurred.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -40,17 +40,17 @@ type DeleteNamespaceResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error code.
 	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
+	// - If the request is successful, this parameter is not returned.
 	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// - If the request fails, this parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The additional information that is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type DeleteNamespaceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the namespace was deleted. Valid values:
 	//
-	// 	- **true**: indicates that the namespace was deleted.
+	// - **true**: The namespace was deleted.
 	//
-	// 	- **false**: indicates that the namespace could not be deleted.
+	// - **false**: The namespace failed to be deleted.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	// The trace ID. You can use this ID to query the details of a request.
 	//
 	// example:
 	//

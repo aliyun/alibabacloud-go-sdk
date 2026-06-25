@@ -16,11 +16,13 @@ type iDescribeNamespaceResourcesRequest interface {
 }
 
 type DescribeNamespaceResourcesRequest struct {
+	// The ID of the namespace. The region ID is not included. We recommend that you use this parameter.
+	//
 	// example:
 	//
 	// test
 	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
-	// cn-shanghai:test
+	// The ID of the namespace. The format is `Region ID:Namespace name`. This parameter is retained for backward compatibility. If you specify this parameter, `NameSpaceShortId` is ignored. We recommend that you use `NameSpaceShortId` to simplify the request.
 	//
 	// example:
 	//

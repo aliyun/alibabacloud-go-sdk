@@ -32,7 +32,7 @@ type iRescaleApplicationVerticallyRequest interface {
 }
 
 type RescaleApplicationVerticallyRequest struct {
-	// The app ID.
+	// The ID of the application.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type RescaleApplicationVerticallyRequest struct {
 	//
 	// 0099b7be-5f5b-4512-a7fc-56049ef1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Target CPU specification. Unit: millicore.
+	// The CPU specifications, in millicores.
 	//
 	// This parameter is required.
 	//
@@ -49,13 +49,13 @@ type RescaleApplicationVerticallyRequest struct {
 	// 1000
 	Cpu    *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	Deploy *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
-	// The disk size. Unit: GB.
+	// The disk size for each node, in GB.
 	//
 	// example:
 	//
 	// 20
 	DiskSize *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// Target memory specification. Unit: MB.
+	// The memory size, in MB.
 	//
 	// This parameter is required.
 	//
@@ -65,19 +65,19 @@ type RescaleApplicationVerticallyRequest struct {
 	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Enable application scale rules automatically.
+	// Specifies whether to automatically enable the auto scaling rule.
 	//
 	// example:
 	//
 	// true
 	AutoEnableApplicationScalingRule *bool `json:"autoEnableApplicationScalingRule,omitempty" xml:"autoEnableApplicationScalingRule,omitempty"`
-	// The ratio of minimum ready instances.
+	// The minimum percentage of ready instances.
 	//
 	// example:
 	//
 	// 50
 	MinReadyInstanceRatio *int32 `json:"minReadyInstanceRatio,omitempty" xml:"minReadyInstanceRatio,omitempty"`
-	// Minimum ready instances.
+	// The minimum number of ready instances.
 	//
 	// example:
 	//

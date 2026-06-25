@@ -28,25 +28,27 @@ type iGetChangeOrderMetricRequest interface {
 }
 
 type GetChangeOrderMetricRequest struct {
+	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The SAE application type. Valid values:
+	// The type of the SAE application.
 	//
-	// 	- **micro_service**
+	// - **micro_service**
 	//
-	// 	- **web**
+	// - **web**
 	//
-	// 	- **job**
+	// - **job**
 	//
 	// example:
 	//
 	// micro_service
 	AppSource *string `json:"AppSource,omitempty" xml:"AppSource,omitempty"`
-	CoType    *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
-	// The CPU allocation policy. Valid values:
+	// The type of the change order.
+	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
+	// The CPU allocation policy.
 	//
-	// 	- **request**: CPU cores are allocated only when a request is initiated.
+	// - **request**: CPU is allocated only when a request is received.
 	//
-	// 	- **always**: Fixed CPU cores are always allocated.
+	// - **always**: A fixed amount of CPU is always allocated.
 	//
 	// example:
 	//
@@ -68,7 +70,7 @@ type GetChangeOrderMetricRequest struct {
 	//
 	// 10
 	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The field based on which you want to sort the returned entries.
+	// The field by which to sort the query results. The value of this parameter must be a field in the response parameters.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +78,7 @@ type GetChangeOrderMetricRequest struct {
 	//
 	// errorPercent
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iDescribeAppServiceDetailRequest interface {
 }
 
 type DescribeAppServiceDetailRequest struct {
-	// 6dcc8c9e-d3da-478a-a066-86dcf820\\*\\*\\*\\*
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -40,31 +40,35 @@ type DescribeAppServiceDetailRequest struct {
 	//
 	// mse-cn-sco3r0u****
 	NacosInstanceId *string `json:"NacosInstanceId,omitempty" xml:"NacosInstanceId,omitempty"`
-	// The ID of the namespace for the MSE Nacos instance.
+	// The ID of the MSE Nacos namespace.
 	//
 	// example:
 	//
 	// public
 	NacosNamespaceId *string `json:"NacosNamespaceId,omitempty" xml:"NacosNamespaceId,omitempty"`
-	// springCloud
+	// The service group. This is a custom parameter.
 	//
 	// example:
 	//
 	// springCloud
 	ServiceGroup *string `json:"ServiceGroup,omitempty" xml:"ServiceGroup,omitempty"`
-	// edas.service.provider
+	// The service name.
 	//
 	// example:
 	//
 	// edas.service.provider
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// springCloud
+	// The service type. Valid values:
+	//
+	// - **dubbo**
+	//
+	// - **springCloud**
 	//
 	// example:
 	//
 	// springCloud
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// 1.0.0
+	// The service version. This is a custom parameter.
 	//
 	// example:
 	//

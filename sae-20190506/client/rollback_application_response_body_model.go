@@ -28,13 +28,13 @@ type iRollbackApplicationResponseBody interface {
 type RollbackApplicationResponseBody struct {
 	// The HTTP status code. Take note of the following rules:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The call was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: The call failed.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -44,13 +44,9 @@ type RollbackApplicationResponseBody struct {
 	Data *RollbackApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned if the request failed. Take note of the following rules:
 	//
-	// 	- The **ErrorCode*	- parameter is not returned if the request succeeds.
+	// - The **ErrorCode*	- parameter is not returned if the request succeeds.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
-	//
-	// example:
-	//
-	// Null
+	// - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The message returned for the operation.
 	//
@@ -66,9 +62,9 @@ type RollbackApplicationResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the application is successfully rolled back. Take note of the following rules:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -171,9 +167,9 @@ type RollbackApplicationResponseBodyData struct {
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 	// Specifies whether approval is required when a RAM user performs release. Take note of the following rules:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

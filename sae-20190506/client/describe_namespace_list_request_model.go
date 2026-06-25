@@ -18,9 +18,9 @@ type iDescribeNamespaceListRequest interface {
 type DescribeNamespaceListRequest struct {
 	// Specifies whether to return custom namespaces. Valid values:
 	//
-	// 	- **true**: The system returns custom namespaces.
+	// - **true**: The system returns custom namespaces.
 	//
-	// 	- **false**: The system does not return custom namespaces.
+	// - **false**: The system does not return custom namespaces.
 	//
 	// example:
 	//
@@ -28,9 +28,9 @@ type DescribeNamespaceListRequest struct {
 	ContainCustom *bool `json:"ContainCustom,omitempty" xml:"ContainCustom,omitempty"`
 	// Indicates whether hybrid cloud namespaces are excluded. Valid values:
 	//
-	// 	- **true**: Hybrid cloud namespaces are excluded.
+	// - **true**: Hybrid cloud namespaces are excluded.
 	//
-	// 	- **false**: Hybrid cloud namespaces are included.
+	// - **false**: Hybrid cloud namespaces are included.
 	//
 	// example:
 	//

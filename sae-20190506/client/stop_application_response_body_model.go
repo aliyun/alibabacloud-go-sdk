@@ -26,39 +26,55 @@ type iStopApplicationResponseBody interface {
 }
 
 type StopApplicationResponseBody struct {
+	// The status of the API call or a POP error code. Valid values:
+	//
+	// - **2xx**: The request was successful.
+	//
+	// - **3xx**: The request was redirected.
+	//
+	// - **4xx**: A request error occurred.
+	//
+	// - **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error code.
-	//
-	// 	- If the request is successful, this parameter is not returned.****
-	//
-	// 	- This parameter is returned only if the request failed.***	- For more information, see **Error codes*	- in this topic.
-	Data *StopApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Indicates whether the specified application is stopped. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned data.
+	Data *StopApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code. Valid values:
+	//
+	// - This parameter is not returned if the request is successful.
+	//
+	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// - If the request is successful, **success*	- is returned.
+	//
+	// - If the request fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the application was stopped. Valid values:
+	//
+	// - **true**: The application was stopped.
+	//
+	// - **false**: The application failed to be stopped.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the change order.
+	// The ID of the call chain. Use this ID to query detailed information about the call.
 	//
 	// example:
 	//
@@ -147,15 +163,7 @@ func (s *StopApplicationResponseBody) Validate() error {
 }
 
 type StopApplicationResponseBodyData struct {
-	// The HTTP status code. Valid values:
-	//
-	// 	- **2xx**: indicates that the request was successful.
-	//
-	// 	- **3xx**: indicates that the request was redirected.
-	//
-	// 	- **4xx**: indicates that the request was invalid.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// The ID of the change order.
 	//
 	// example:
 	//

@@ -26,45 +26,45 @@ type iCreateOrUpdateSwimmingLaneGroupShrinkRequest interface {
 }
 
 type CreateOrUpdateSwimmingLaneGroupShrinkRequest struct {
-	// The ID of the baseline application.
+	// The IDs of the baseline applications.
 	AppIdsShrink *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	// The unique ID of the corresponding gateway.
+	// The unique ID of the gateway.
 	//
 	// example:
 	//
-	// mse_ingresspost-cn-axc49******
+	// gw-ea43f648ac46485aa8c894ba1b******
 	EntryAppId *string `json:"EntryAppId,omitempty" xml:"EntryAppId,omitempty"`
-	// The application entry type (gateway type).
+	// The type of the gateway that acts as the application\\"s entry point.
 	//
-	// 	- **apig:*	- cloud-native API Gateway
+	// - **apig:*	- cloud-native API gateway
 	//
-	// 	- **mse:*	- Java Services Gateway
+	// - **mse:*	- java service gateway
 	//
-	// 	- **mse-gw:*	- MSE cloud-native Gateway
+	// - **mse-gw:*	- MSE Cloud Native Gateway
 	//
 	// example:
 	//
 	// mse-gw
 	EntryAppType *string `json:"EntryAppType,omitempty" xml:"EntryAppType,omitempty"`
-	// The ID of the lane group. This is required when you update a lane group.
+	// The ID of the swimming lane group. This parameter is required when you update a swimming lane group.
 	//
 	// example:
 	//
-	// 2047
+	// 110272
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the lane group.
+	// The name of the swimming lane group.
 	//
 	// example:
 	//
 	// mse-test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of a namespace.
+	// The ID of the namespace.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The end-to-end grayscale version. Valid values: 0 and 2 (recommended).
+	// The version of the end-to-end canary release. Valid values: 0 and 2. The value 2 is recommended.
 	//
 	// example:
 	//

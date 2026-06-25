@@ -59,6 +59,10 @@ type ListWebApplicationInstancesRequest struct {
 	// 1562831689704
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the application instance.
+	//
+	// example:
+	//
+	// Running
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 	// The ID of the application version.
 	//

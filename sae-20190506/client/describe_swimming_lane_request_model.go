@@ -18,19 +18,19 @@ type iDescribeSwimmingLaneRequest interface {
 }
 
 type DescribeSwimmingLaneRequest struct {
-	// The ID of the lane group.
+	// The lane group ID.
 	//
 	// example:
 	//
 	// 2074
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the lane.
+	// The swimming lane ID.
 	//
 	// example:
 	//
 	// 9637
 	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
-	// The ID of a namespace.
+	// The namespace ID.
 	//
 	// example:
 	//

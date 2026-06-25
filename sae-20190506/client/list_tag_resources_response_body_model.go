@@ -26,33 +26,33 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code.
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx*	- indicates that the request was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx*	- indicates that the request was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx*	- indicates that a client-side error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx*	- indicates that a server-side error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data *ListTagResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. Valid values:
+	// The error code.
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - This parameter is returned only if the request fails.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	// - For more information, see the **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message. Valid values:
+	// The message returned for the request.
 	//
-	// 	- success: If the call is successful, **success*	- is returned.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// 	- An error code: If the call fails, an error code is returned.
+	// - If the request fails, an error message is returned.
 	//
 	// example:
 	//
@@ -64,17 +64,17 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 7414187F-4F59-4585-9BCF-5F0804E4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the mapping relationships between applications and tags were queried. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The mapping relationships were queried.
+	// - **true**
 	//
-	// 	- **false**: The mapping relationships failed to be queried.
+	// - **false**
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID that is used to query the details of a request.
 	//
 	// example:
 	//
@@ -163,13 +163,13 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyData struct {
-	// A maximum of 50 entries can be returned for a query. If a query generates more than 50 entries, the NextToken parameter is returned with the first 50 entries. You can use the NextToken parameter value to retrieve the subsequent entries that are not returned in the current query result.
+	// The token that is used to retrieve the next page of results. A query returns a maximum of 50 results. If the results are truncated, you can use this token in a subsequent request to retrieve the next page of results.
 	//
 	// example:
 	//
 	// ""
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The mapping relationships between applications and tags.
+	// The list of tags and their associated resources.
 	TagResources []*ListTagResourcesResponseBodyDataTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -219,7 +219,7 @@ type ListTagResourcesResponseBodyDataTagResources struct {
 	//
 	// d42921c4-5433-4abd-8075-0e536f8b****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. Valid value: `application`.
+	// The type of the resource. The value is fixed as `application`.
 	//
 	// example:
 	//

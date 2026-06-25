@@ -14,13 +14,13 @@ type iDescribeIngressRequest interface {
 }
 
 type DescribeIngressRequest struct {
-	// The ID of the routing rule to be queried.
+	// The ID of the routing rule. Call the [ListIngresses](https://help.aliyun.com/document_detail/2834910.html) operation to obtain this ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 87
+	// 16263
 	IngressId *int64 `json:"IngressId,omitempty" xml:"IngressId,omitempty"`
 }
 

@@ -28,13 +28,13 @@ type iGetWebshellTokenResponseBody interface {
 type GetWebshellTokenResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: The request failed.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -44,19 +44,15 @@ type GetWebshellTokenResponseBody struct {
 	Data *GetWebshellTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned if the call failed. Value values:
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - If the request was successful, **ErrorCode*	- is not returned.
 	//
-	// 	- If the request failed, the **ErrorCode*	- parameter is returned. For more information, see **Error codes*	- section in this topic.
-	//
-	// example:
-	//
-	// 400
+	// - If the request failed, the **ErrorCode*	- parameter is returned. For more information, see **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message. Value description:
 	//
-	// 	- If the request was successful, a success message is returned.
+	// - If the request was successful, a success message is returned.
 	//
-	// 	- An error code is returned if the request failed.
+	// - An error code is returned if the request failed.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type BatchStartApplicationsRequest struct {
 	//
 	// example:
 	//
-	// ebf491f0-c1a5-45e2-b2c4-710dbe2a****
+	// 00893b3a-0e24-45ed-be0c-1f20e07b****
 	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
 	// The ID of the request.
 	//

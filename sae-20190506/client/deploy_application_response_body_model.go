@@ -26,59 +26,59 @@ type iDeployApplicationResponseBody interface {
 }
 
 type DeployApplicationResponseBody struct {
-	// The HTTP status code. Take note of the following rules:
+	// The API status or POP error code. Values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: Success.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: Redirection.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: Request error.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response.
+	// The response data.
 	Data *DeployApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed. Take note of the following rules:
+	// The error code. Values:
 	//
-	// 	- The **ErrorCode*	- parameter is not returned if the request succeeds.
+	// - On success: This field is not returned.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// - On failure: This field is returned. For details, see the **Error codes*	- section in this topic.
 	//
 	// example:
 	//
-	// Null
+	// 空
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The additional information that is returned. Take note of the following rules:
+	// Additional information. Values:
 	//
-	// 	- success: If the call is successful, **success*	- is returned.
+	// - On success, returns **success**.
 	//
-	// 	- An error code: If the call fails, an error code is returned.
+	// - On failure, returns a specific error code.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 01CF26C7-00A3-4AA6-BA76-7E95F2A3***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application deployment is successful. Take note of the following rules:
+	// Whether the deployment succeeded. Values:
 	//
-	// 	- **true**
+	// - **true**: Deployment succeeded.
 	//
-	// 	- **false**
+	// - **false**: Deployment failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID for precise query of call information.
 	//
 	// example:
 	//
@@ -173,17 +173,17 @@ type DeployApplicationResponseBodyData struct {
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the change order. It can be used to query the task status.
+	// The returned change order ID. Use it to query task execution status.
 	//
 	// example:
 	//
 	// 01db03d3-3ee9-48b3-b3d0-dfce2d88****
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// Specifies whether approval is required when a RAM user performs release. Take note of the following rules:
+	// Whether RAM users need approval to deploy changes. Values:
 	//
-	// 	- **true**
+	// - **true**: Approval required.
 	//
-	// 	- **false**
+	// - **false**: No approval required.
 	//
 	// example:
 	//

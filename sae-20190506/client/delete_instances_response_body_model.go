@@ -26,33 +26,33 @@ type iDeleteInstancesResponseBody interface {
 }
 
 type DeleteInstancesResponseBody struct {
-	// The HTTP status code or the error code. Valid values:
+	// The HTTP status code or a Platform as a Service (PaaS) error code. Valid values:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: A request error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Responses.
+	// The returned data.
 	Data *DeleteInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error code. Valid values:
+	// The error code.
 	//
-	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	// - The **ErrorCode*	- parameter is not returned if the request is successful.
 	//
-	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	// - The **ErrorCode*	- parameter is returned if the request fails. For more information, see the **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Additional information about the call result. Valid values:
+	// The returned message.
 	//
-	// 	- If the request is normal, success is returned.
+	// - If the request is successful, `success` is returned.
 	//
-	// 	- If the request is abnormal, the specific exception error code is returned.
+	// - If the request fails, an error code is returned.
 	//
 	// example:
 	//
@@ -64,17 +64,17 @@ type DeleteInstancesResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the instance is deleted successfully. Valid values:
+	// Indicates whether the application instances were deleted. Valid values:
 	//
-	// 	- **true**: The namespace was deleted.
+	// - **true**: The application instances were deleted.
 	//
-	// 	- **false**: The namespace failed to be deleted.
+	// - **false**: The application instances failed to be deleted.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. This parameter is used to query the exact call information.
+	// The trace ID of the request. You can use this ID to query the details of a request.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ func (s *DeleteInstancesResponseBody) Validate() error {
 }
 
 type DeleteInstancesResponseBodyData struct {
-	// The ID of the release order.
+	// The ID of the change order.
 	//
 	// example:
 	//

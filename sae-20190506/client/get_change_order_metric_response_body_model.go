@@ -22,27 +22,27 @@ type iGetChangeOrderMetricResponseBody interface {
 }
 
 type GetChangeOrderMetricResponseBody struct {
-	// The HTTP status code. The following limits are imposed on the ID:
+	// The HTTP status code.
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: A client-side error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server-side error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of applications.
+	// The list of application information.
 	Data []*GetChangeOrderMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The additional information that is returned. The following limits are imposed on the ID:
+	// The response message.
 	//
-	// 	- success: If the call is successful, **success*	- is returned.
+	// - Returns **success*	- if the request is successful.
 	//
-	// 	- An error code: If the call fails, an error code is returned.
+	// - Returns an error code if the request fails.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type GetChangeOrderMetricResponseBody struct {
 	//
 	// example:
 	//
-	// 3B763F98-0BA2-5C23-B6B8-558568D2C1C2
+	// 3B763F98-0BA2-5C23-B6B8-558568D2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the microservice list was obtained. The following limits are imposed on the ID:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The namespaces were obtained.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: no
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -138,34 +138,38 @@ type GetChangeOrderMetricResponseBodyData struct {
 	// example:
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
-	AppId         *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The average duration of a change order, in milliseconds.
 	AvgTimeCostMs *float32 `json:"AvgTimeCostMs,omitempty" xml:"AvgTimeCostMs,omitempty"`
-	// The number of abnormal change orders.
+	// The number of failed change orders.
 	//
 	// example:
 	//
 	// 1
 	Error *int64 `json:"Error,omitempty" xml:"Error,omitempty"`
-	// The percentage of change failures.
+	// The percentage of failed change orders.
 	//
 	// example:
 	//
 	// 0.25
-	ErrorPercent  *float32 `json:"ErrorPercent,omitempty" xml:"ErrorPercent,omitempty"`
+	ErrorPercent *float32 `json:"ErrorPercent,omitempty" xml:"ErrorPercent,omitempty"`
+	// The maximum duration, in milliseconds.
 	MaxTimeCostMs *float32 `json:"MaxTimeCostMs,omitempty" xml:"MaxTimeCostMs,omitempty"`
 	// The application name.
 	//
 	// example:
 	//
 	// test
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The optimization suggestions.
 	OptimizeSuggestions *string `json:"OptimizeSuggestions,omitempty" xml:"OptimizeSuggestions,omitempty"`
 	// The namespace ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The average task duration, in milliseconds.
 	TaskTimeCostMsAvg *string `json:"TaskTimeCostMsAvg,omitempty" xml:"TaskTimeCostMsAvg,omitempty"`
 	// The total number of change orders.
 	//

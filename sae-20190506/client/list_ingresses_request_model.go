@@ -20,14 +20,15 @@ type iListIngressesRequest interface {
 }
 
 type ListIngressesRequest struct {
-	// The ID of an application.
+	// The application ID.
 	//
 	// example:
 	//
 	// bbf3a590-6d13-46fe-8ca9-c947a20b****
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of a namespace.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The current page number.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The namespace ID.
 	//
 	// This parameter is required.
 	//
@@ -35,7 +36,8 @@ type ListIngressesRequest struct {
 	//
 	// cn-beijing
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page size.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListIngressesRequest) String() string {

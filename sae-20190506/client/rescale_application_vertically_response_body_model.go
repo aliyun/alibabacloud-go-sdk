@@ -26,55 +26,55 @@ type iRescaleApplicationVerticallyResponseBody interface {
 }
 
 type RescaleApplicationVerticallyResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The HTTP status code.
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: A request error occurred.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Data returned.
+	// The returned data.
 	Data *RescaleApplicationVerticallyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. Valid values:
+	// The error code.
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - If the request is successful, this parameter is not returned.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	// - If the request fails, this parameter is returned. For more information, see the **Error codes*	- section of this topic.
 	//
 	// example:
 	//
-	// Null
+	// 空
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Messages returned for additional information.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AB521DBB-FA78-42E6-803F-A862EA4F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the update of instance specifications was successful. Valid values:
+	// Indicates whether the instance type was successfully changed.
 	//
-	// 	- **true**: Updated.
+	// - **true**: The change was successful.
 	//
-	// 	- **false**: Failed to update.
+	// - **false**: The change failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Trace ID for request information.
+	// The trace ID of the request. You can use this ID to query the details of the request.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ func (s *RescaleApplicationVerticallyResponseBody) Validate() error {
 }
 
 type RescaleApplicationVerticallyResponseBodyData struct {
-	// The ticked ID of updates.
+	// The ID of the change order.
 	//
 	// example:
 	//

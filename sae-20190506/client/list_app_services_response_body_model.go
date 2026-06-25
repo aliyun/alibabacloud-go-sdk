@@ -26,33 +26,33 @@ type iListAppServicesResponseBody interface {
 }
 
 type ListAppServicesResponseBody struct {
-	// The HTTP status code that is returned. Valid values:
+	// The HTTP status code or a POP error code. Valid values:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: The request is successful.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: The request is redirected.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: The request is invalid.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the microservice.
+	// The list of services.
 	Data []*ListAppServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The status code. Valid values:
+	// The error code. This parameter is returned only if the request fails. For more information, see the **Error codes*	- section.
 	//
-	// 	- If the request was successful, the **ErrorCode*	- parameter is not returned.
+	// - Successful requests do not return the **ErrorCode*	- field.
 	//
-	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	// - Failed requests return the **ErrorCode*	- field. For more information, see the **error code*	- list in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned. Valid values:
+	// The response message.
 	//
-	// 	- If the request was successful, **success*	- is returned.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - If the request fails, an error message is returned.
 	//
 	// example:
 	//
@@ -64,17 +64,17 @@ type ListAppServicesResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The call was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The trace ID. You can use this ID to query the details of a call.
 	//
 	// example:
 	//
@@ -167,89 +167,93 @@ func (s *ListAppServicesResponseBody) Validate() error {
 }
 
 type ListAppServicesResponseBodyData struct {
-	// The application ID.
+	// The app ID.
 	//
 	// example:
 	//
 	// 0099b7be-5f5b-4512-a7fc-56049ef1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The name of the app.
 	//
 	// example:
 	//
 	// demo-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The number of instances of the microservice.
+	// The number of instances of the service.
 	//
 	// example:
 	//
 	// 1
 	InstanceCount *string `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The ID of the namespace to which the application belongs.
+	// The ID of the namespace that contains the app.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// Test namespace
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The registry type. Valid values:
+	// The type of the service registry. Valid values:
 	//
-	// 	- **0**：SAE Nacos
+	// - **0**: SAE Nacos
 	//
-	// 	- **1**: SAE built-in Nacos
+	// - **1**: self-managed registry
 	//
-	// 	- **2**: MSE Nacos
+	// - **2**: MSE Nacos
 	//
-	// 	- **9**: SAE Kubernets service
+	// - **9**: SAE K8s Service
 	//
 	// example:
 	//
 	// 0
 	RegistryType *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
-	// The IDs of the security groups.
+	// The security group ID.
 	//
 	// example:
 	//
 	// sg-wz969ngg2e49q5i4****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The group to which the microservice belongs.
+	// The service group.
 	//
 	// example:
 	//
 	// DEFAULT_GROUP
 	ServiceGroup *string `json:"ServiceGroup,omitempty" xml:"ServiceGroup,omitempty"`
-	// The name of the microservice.
+	// The name of the service.
 	//
 	// example:
 	//
 	// frontend
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The ports and protocols.
+	// A map of ports and protocols.
 	ServicePortAndProtocol map[string]*string `json:"ServicePortAndProtocol,omitempty" xml:"ServicePortAndProtocol,omitempty"`
-	// The list of ports.
+	// A list of ports.
 	ServicePorts []*int32 `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty" type:"Repeated"`
-	// The protocol used by the microservice.
+	// The protocol used by the service.
 	//
 	// example:
 	//
 	// HTTP
 	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
-	// The type of the microservice. Valid values:
+	// The type of the service. Valid values:
 	//
-	// 	- **dubbo**
+	// - **dubbo**
 	//
-	// 	- **springCloud**
+	// - **springCloud**
 	//
-	// 	- **hsf**
+	// - **hsf**
 	//
-	// 	- **k8sService**
+	// - **k8sService**
 	//
 	// example:
 	//
 	// springCloud
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The version of the microservice.
+	// The version of the service.
 	//
 	// example:
 	//

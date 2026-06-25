@@ -22,7 +22,7 @@ type SuspendTrafficRequest struct {
 	//
 	// d700e680-aa4d-4ec1-afc2-6566b5ff****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The instance ID.
+	// The IDs of the instances.
 	//
 	// example:
 	//

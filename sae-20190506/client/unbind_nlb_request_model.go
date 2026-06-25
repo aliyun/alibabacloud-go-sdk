@@ -20,31 +20,31 @@ type iUnbindNlbRequest interface {
 }
 
 type UnbindNlbRequest struct {
-	// A short description of struct
+	// The application ID.
 	//
 	// example:
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of NLB instance.
+	// The NLB instance ID.
 	//
 	// example:
 	//
 	// nlb-7z7jjbzz44d82c9***
 	NlbId *string `json:"NlbId,omitempty" xml:"NlbId,omitempty"`
-	// The listener port of the instance. Valid values: 0 to 65535.
+	// The listener port, which must be between 0 and 65535.
 	//
 	// example:
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The type of the protocol. Valid values:
+	// The protocol. Valid values:
 	//
-	// 	- **TCP**.
+	// - **TCP**
 	//
-	// 	- **UDP**.
+	// - **UDP**
 	//
-	// 	- **TCPSSL**.
+	// - **TCPSSL**
 	//
 	// example:
 	//

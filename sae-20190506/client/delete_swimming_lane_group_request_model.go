@@ -16,13 +16,13 @@ type iDeleteSwimmingLaneGroupRequest interface {
 }
 
 type DeleteSwimmingLaneGroupRequest struct {
-	// The ID of the lane group.
+	// The ID of the swimming lane group.
 	//
 	// example:
 	//
 	// 2074
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of a namespace.
+	// The namespace ID.
 	//
 	// example:
 	//

@@ -22,11 +22,11 @@ type DescribeComponentsRequest struct {
 	//
 	// d700e680-aa4d-4ec1-afc2-6566b5ff****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The type of the supported components. Valid values:
+	// The supported component type. Valid values:
 	//
-	// 	- **TOMCAT**
+	// - **TOMCAT**
 	//
-	// 	- **JDK**
+	// - **JDK**
 	//
 	// This parameter is required.
 	//

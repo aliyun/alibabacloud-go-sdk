@@ -14,7 +14,7 @@ type iDescribeGreyTagRouteRequest interface {
 }
 
 type DescribeGreyTagRouteRequest struct {
-	// The ID of the canary release rule.
+	// The ID of the rule.
 	//
 	// This parameter is required.
 	//

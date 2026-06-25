@@ -58,45 +58,49 @@ type iCreateIngressRequest interface {
 }
 
 type CreateIngressRequest struct {
-	// -
+	// The address type. Valid values:
+	//
+	// - `Internet`: A public address.
+	//
+	// - `Intranet`: A private address.
 	//
 	// example:
 	//
-	// -
+	// Internet
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The ID of the **CLB*	- certificate. Valid values:
+	// The ID of the **CLB*	- certificate.
 	//
-	// 	- If you set **LoadBalanceType*	- to **clb**, you can use CertId to configure a certificate for the HTTPS listener.
+	// - If `LoadBalanceType` is set to `clb`, use this parameter to configure the HTTPS listener certificate.
 	//
-	// For more information about how to use SSL certificate IDs for CLB, see [Manage certificates (CLB)](https://help.aliyun.com/document_detail/90792.html).
+	// For more information about how to use SSL certificate IDs for CLB, see [Manage Certificates (CLB)](https://help.aliyun.com/document_detail/90792.html).
 	//
 	// example:
 	//
 	// 188077086902****_176993d****_181437****_108724****
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The ID of the multi-certificate **ALB**. Valid values:
+	// The IDs of the **ALB*	- certificates.
 	//
-	// 	- If the **LoadBalanceType*	- is **alb**, use this field to configure multiple certificates for HTTPS listeners. Separate multiple certificate IDs with commas (,).
+	// - If `LoadBalanceType` is set to `alb`, use this parameter to configure multiple certificates for the HTTPS listener. Separate multiple certificate IDs with a comma (,).
 	//
-	// 	- The ID of the SSL certificate used by ALB must be obtained from the digital certificate product. For example, in the configuration `756***-cn-hangzhou`, the `756***` is the certificate ID obtained from the product page, and the `-cn-hangzhou` is a fixed suffix. For more information, see [Manage certificates](https://help.aliyun.com/document_detail/209076.html).
+	// - Obtain the SSL certificate ID for an ALB instance from the digital certificate service. For example, if you configure `756***-cn-hangzhou`, `756***` is the certificate ID obtained from the product page and `-cn-hangzhou` is a fixed suffix. For more information, see [Manage Certificates (ALB)](https://help.aliyun.com/document_detail/209076.html).
 	//
 	// example:
 	//
 	// 87***35-cn-hangzhou,812***3-cn-hangzhou
 	CertIds *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
-	// -
+	// Specifies the Cross-Origin Resource Sharing (CORS) configuration.
 	//
 	// example:
 	//
-	// -
+	// {"Enable":"true"}
 	CorsConfig *string `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty"`
-	// The default forwarding rule. Forwards traffic to a specified application through a specified port based on the IP address. The following table describes the parameters.
+	// The default forwarding rule. Requests that do not match any forwarding rule in the `Rules` parameter are forwarded to the application specified in this rule. The value is a JSON string with the following parameters:
 	//
-	// 	- **appId**: the ID of the application.
+	// - `appId`: The ID of the application.
 	//
-	// 	- **containerPort**: The port of the application instance.
+	// - `containerPort`: The port of the application instance.
 	//
-	// >  All requests that do not match or satisfy **Rules*	- forwarding rules are forwarded to the specified application.
+	// > This rule serves as a catch-all for traffic that is not handled by other specific forwarding rules.
 	//
 	// This parameter is required.
 	//
@@ -110,49 +114,49 @@ type CreateIngressRequest struct {
 	//
 	// ingress-for-sae-test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// -
+	// Specifies whether to enable Gzip for data compression.
 	//
 	// example:
 	//
-	// -
+	// true
 	EnableGzip *bool `json:"EnableGzip,omitempty" xml:"EnableGzip,omitempty"`
-	// -
+	// Specifies whether to use the `X-Forwarded-For` header to retrieve the IP address of the client.
 	//
 	// example:
 	//
-	// -
+	// true
 	EnableXForwardedFor *bool `json:"EnableXForwardedFor,omitempty" xml:"EnableXForwardedFor,omitempty"`
-	// -
+	// Specifies whether to use the `X-Forwarded-Port` header to retrieve the source port of the client.
 	//
 	// example:
 	//
-	// -
+	// true
 	EnableXForwardedForClientSrcPort *bool `json:"EnableXForwardedForClientSrcPort,omitempty" xml:"EnableXForwardedForClientSrcPort,omitempty"`
-	// -
+	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol of the load balancer instance.
 	//
 	// example:
 	//
-	// -
+	// true
 	EnableXForwardedForProto *bool `json:"EnableXForwardedForProto,omitempty" xml:"EnableXForwardedForProto,omitempty"`
-	// -
+	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the load balancer instance.
 	//
 	// example:
 	//
-	// -
+	// true
 	EnableXForwardedForSlbId *bool `json:"EnableXForwardedForSlbId,omitempty" xml:"EnableXForwardedForSlbId,omitempty"`
-	// -
+	// Specifies whether to use the `X-Forwarded-Port` header to retrieve the listener port of the load balancer instance.
 	//
 	// example:
 	//
-	// -
+	// true
 	EnableXForwardedForSlbPort *bool `json:"EnableXForwardedForSlbPort,omitempty" xml:"EnableXForwardedForSlbPort,omitempty"`
-	// Specifies the connection idle timeout period. Unit: seconds. Valid values: 1 to 60. If there is no access request within the timeout period, the SLB will temporarily interrupt the current connection until the next request comes to re-establish a new connection.
+	// The connection idle timeout, in seconds. Valid values: 1 to 60. If no request is received within the timeout period, the load balancer temporarily closes the connection. The connection is re-established when the next request is received.
 	//
 	// example:
 	//
 	// 15
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// The SLB listening port. This port cannot be occupied.
+	// The listener port for the SLB instance. This port must be available.
 	//
 	// This parameter is required.
 	//
@@ -162,31 +166,35 @@ type CreateIngressRequest struct {
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The request forwarding protocol. Valid values:
 	//
-	// 	- **HTTP**: suitable for applications that need to identify data content.
+	// - `HTTP`: for applications that do not require encryption.
 	//
-	// 	- **HTTPS**: suitable for applications that require encrypted transmission.
+	// - `HTTPS`: suitable for applications that require encrypted data transmission.
 	//
 	// example:
 	//
 	// HTTP
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// SLB the type of the SLB instance. It depends on the type that you entered when you created the routing rule and cannot be changed when you update it. Valid values:
+	// The type of the Server Load Balancer (SLB) instance. This parameter cannot be changed after the routing rule is created. Valid values:
 	//
-	// 	- **clb**: traditional SLB CLB (formerly SLB).
+	// - `clb`: Classic Load Balancer (CLB), formerly known as SLB.
 	//
-	// 	- **alb**: Applied SLB ALB.
+	// - `alb`: Application Load Balancer (ALB).
 	//
 	// example:
 	//
 	// clb
 	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
-	// -
+	// The edition of the Application Load Balancer (ALB) instance. Different editions have different features and billing policies. Valid values:
+	//
+	// - `Standard`: Standard edition.
+	//
+	// - `StandardWithWaf`: WAF-enhanced edition.
 	//
 	// example:
 	//
-	// -
+	// Standard
 	LoadBalancerEdition *string `json:"LoadBalancerEdition,omitempty" xml:"LoadBalancerEdition,omitempty"`
-	// The ID of the namespace where the application resides. Currently, cross-namespace applications are not supported.
+	// The ID of the namespace where the application is located. Cross-namespace applications are not supported.
 	//
 	// This parameter is required.
 	//
@@ -194,33 +202,33 @@ type CreateIngressRequest struct {
 	//
 	// cn-beijing:sae-test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// Specifies the request timeout period. Unit: seconds. Valid values: 1 to 180. If the backend server does not respond within the timeout period, the SLB abandons the wait and returns an HTTP 504 error code to the client.
+	// The request timeout, in seconds. Valid values: 1 to 180. If a backend server does not respond within the timeout period, the load balancer stops waiting and returns an HTTP 504 error to the client.
 	//
 	// example:
 	//
 	// 3
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// The forwarding rule. Forwards traffic to a specified application through a specified port based on the domain name and request path. The following table describes the parameters.
+	// The forwarding rules. These rules route traffic to a specified application based on the domain name and path. The value is a JSON string. Each rule contains the following parameters:
 	//
-	// 	- **appId**: the ID of the application.
+	// - `appId`: The ID of the application.
 	//
-	// 	- **containerPort**: The port of the application instance.
+	// - `containerPort`: The port of the application instance.
 	//
-	// 	- **domain**: the domain name.
+	// - `domain`: The domain name.
 	//
-	// 	- **path**: the request path.
+	// - `path`: The request path.
 	//
-	// 	- **backendProtocol**: The backend service protocol. Valid values: http, https, and grpc. Default value: http.
+	// - `backendProtocol`: The protocol used by backend servers. Valid values: `http`, `https`, and `grpc`. Default value: `http`.
 	//
-	// 	- **rewritePath**: Rewrite the path.
+	// - `rewritePath`: The rewritten path.
 	//
-	// >  Only ALB allows you to set the RewritePath feature. CLB does not support this feature.
+	// > Only ALB supports path rewriting (`RewritePath`). CLB does not support this feature.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// [{"appId":"395b60e4-0550-458d-9c54-a265d036****","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2****","containerPort":8080,"domain":"sae.site","path":"/path2"}]
+	// [{"appId":"395b60e4-0550-458d-9c54-a265d036****","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2****","containerPort":8080,"domain":"sae.site","path":"/sys/(.*)/(.*)/aaa","backendProtocol":"http"}]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 	// The ID of the security policy instance.
 	//
@@ -228,19 +236,23 @@ type CreateIngressRequest struct {
 	//
 	// sp-bp1bpn0kn9****
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// The Server Load Balancer (SLB) instance that is used by the routing rule.
+	// The ID of the Server Load Balancer (SLB) instance associated with the routing rule.
 	//
-	// >  SLB SLB instances include CLB instances and ALB instances.
+	// > Server Load Balancer (SLB) includes Classic Load Balancer (CLB) and Application Load Balancer (ALB) instances.
 	//
 	// example:
 	//
 	// lb-uf6hucc7inlqrtcq5****
 	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	// -
+	// A JSON string that contains the mappings between availability zones and VSwitches. If the current region supports two or more availability zones, you must specify at least two. A ZoneMapping consists of the following parameters:
+	//
+	// - `VSwitchId`: a string that specifies the ID of the VSwitch that corresponds to the availability zone. Each availability zone can have only one VSwitch and one subnet.
+	//
+	// - `ZoneId`: a string that specifies the ID of the availability zone for the load balancer instance.
 	//
 	// example:
 	//
-	// -
+	// [{"VSwitchId":"vsw-wz9klui6icc08p6******","ZoneId":"cn-shenzhen-c"},{"VSwitchId":"vsw-wz9frrmoeuki2wp******","ZoneId":"cn-shenzhen-e"}]
 	ZoneMappings *string `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty"`
 }
 

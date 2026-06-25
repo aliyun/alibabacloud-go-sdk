@@ -18,13 +18,13 @@ type iGetApplicationRequest interface {
 }
 
 type GetApplicationRequest struct {
-	// The application ID.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//

@@ -26,37 +26,33 @@ type iCreateIngressResponseBody interface {
 }
 
 type CreateIngressResponseBody struct {
-	// The HTTP status code or the error code. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The request was successful.
+	// - **2xx**: The request is successful.
 	//
-	// 	- **3xx**: The request was redirected.
+	// - **3xx**: The request is redirected.
 	//
-	// 	- **4xx**: The request failed.
+	// - **4xx**: A request error occurs.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurs.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Responses.
+	// The returned results.
 	Data *CreateIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error code. Valid values:
+	// The error code.
 	//
-	// 	- If the request is successful, no **ErrorCode*	- fields are returned.
+	// - This parameter is not returned if the request is successful.
 	//
-	// 	- Request failed: **ErrorCode*	- fields are returned. For more information, see **Error codes**.
-	//
-	// example:
-	//
-	// success
+	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Additional information. Valid values:
+	// The returned message.
 	//
-	// 	- The error message returned because the request is normal and **success*	- is returned.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// 	- If the request is abnormal, the specific exception error code is returned.
+	// - If the request fails, an error code is returned.
 	//
 	// example:
 	//
@@ -70,15 +66,15 @@ type CreateIngressResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the routing rule was created. Valid values:
 	//
-	// 	- **true**: The ConfigMap was created.
+	// - **true**: The routing rule was created.
 	//
-	// 	- **false**: The ConfigMap failed to be created.
+	// - **false**: The routing rule failed to be created.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. This parameter is used to query the exact call information.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//

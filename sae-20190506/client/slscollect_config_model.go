@@ -38,7 +38,7 @@ type SLSCollectConfig struct {
 	//
 	// example:
 	//
-	// file_log
+	// 文件采集日志
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	// The name of the Logstore. The name must meet the following requirements:
 	//
@@ -52,7 +52,7 @@ type SLSCollectConfig struct {
 	//
 	// example:
 	//
-	// sag-shanghai
+	// my-logstore
 	LogstoreName *string `json:"LogstoreName,omitempty" xml:"LogstoreName,omitempty"`
 	// The name for the Logtail configuration.
 	//
@@ -70,7 +70,7 @@ type SLSCollectConfig struct {
 	//
 	// example:
 	//
-	// test
+	// log-service-1199085698835****-cn-neijing
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 

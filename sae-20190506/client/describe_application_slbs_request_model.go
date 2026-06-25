@@ -14,7 +14,7 @@ type iDescribeApplicationSlbsRequest interface {
 }
 
 type DescribeApplicationSlbsRequest struct {
-	// The ID of the request.
+	// The ID of the application.
 	//
 	// This parameter is required.
 	//

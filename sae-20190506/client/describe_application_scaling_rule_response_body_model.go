@@ -26,28 +26,55 @@ type iDescribeApplicationScalingRuleResponseBody interface {
 }
 
 type DescribeApplicationScalingRuleResponseBody struct {
+	// The HTTP status code or a POP error code. Valid values:
+	//
+	// - **2xx**: The operation is successful.
+	//
+	// - **3xx**: A redirection is required.
+	//
+	// - **4xx**: A request error occurred.
+	//
+	// - **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
-	Data      *DescribeApplicationScalingRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The returned data.
+	Data *DescribeApplicationScalingRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code. Valid values:
+	//
+	// - If the request is successful, the **ErrorCode*	- field is not returned.
+	//
+	// - If the request fails, the **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The additional information. Valid values:
+	//
+	// - If the request is successful, **success*	- is returned.
+	//
+	// - If the request fails, a specific error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 73404D3D-EE4F-4CB2-B197-5C46F6A1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the application instance was successfully restarted.
+	//
+	// - **true**: The restart succeeded.
+	//
+	// - **false**: The restart failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The trace ID. Use this ID to query the details of a request.
 	//
 	// example:
 	//
@@ -136,7 +163,7 @@ func (s *DescribeApplicationScalingRuleResponseBody) Validate() error {
 }
 
 type DescribeApplicationScalingRuleResponseBodyData struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
@@ -154,27 +181,27 @@ type DescribeApplicationScalingRuleResponseBodyData struct {
 	//
 	// 1641882854484
 	LastDisableTime *int64 `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
-	// The details of the metric-based auto scaling policy.
+	// The metric-based scaling policy.
 	Metric *DescribeApplicationScalingRuleResponseBodyDataMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
-	// The ratio of the minimum number of available instances to the current number of instances. Valid values:
+	// The percentage of the minimum number of ready instances. Valid values:
 	//
-	// 	- **-1*	- (default value): The minimum number of available instances is not determined based on this parameter.
+	// - **-1**: an initial value, which indicates that a percentage is not used.
 	//
-	// 	- **0 to 100**: The minimum number of available instances is calculated by using the following formula: Number of existing instances × Value of MinReadyInstanceRatio × 100%. The calculation result is rounded up to the nearest integer. For example, if the number of existing instances is 5 and MinReadyInstanceRatio is set to 50, the minimum number of available instances is 3.
+	// - **0 to 100**: a percentage that is rounded up. For example, if you set this parameter to 50% and the current number of instances is 5, the minimum number of ready instances is 3.
 	//
-	// >  If the **MinReadyInstanceRatio*	- and **MinReadyInstanceRatio*	- parameters are configured and the **MinReadyInstanceRatio*	- parameter is set to a number from 0 to 100, the value of the MinReadyInstanceRatio parameter takes precedence. For example, if the **MinReadyInstances*	- parameter is set to **5**, and the **MinReadyInstanceRatio*	- parameter is set to **50**, the minimum number of available instances is set to the nearest integer rounded up from the calculated result of the following formula: Nmber of existing instances × **50**.
+	// > If you specify both MinReadyInstances and MinReadyInstanceRatio, and the value of **MinReadyInstanceRatio*	- is not **-1**, the value of **MinReadyInstanceRatio*	- prevails. For example, if **MinReadyInstances*	- is set to **5*	- and **MinReadyInstanceRatio*	- is set to **50**, the value **50*	- is used to calculate the minimum number of ready instances.
 	//
 	// example:
 	//
 	// -1
 	MinReadyInstanceRatio *int32 `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
-	// The minimum number of available instances. Valid values:
+	// The minimum number of ready instances. Valid values:
 	//
-	// 	- If you set the value to **0**, business is interrupted when the application is updated.
+	// - If you set this parameter to **0**, the application is interrupted during an upgrade.
 	//
-	// 	- If you set this property to -1, the system calculates a recommended value as the minimum number of available instances by using the following formula: Recommended value = Number of existing instances × 25%. The calculation result is rounded up to the nearest integer. For example, if the number of existing instances is 5, the recommended value is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+	// - If you set this parameter to -1, the system uses a recommended value for the minimum number of ready instances. The value is 25% of the current number of instances. For example, if the current number of instances is 5, the minimum number of ready instances is 2 after 5 × 25% = 1.25 is rounded up.
 	//
-	// >  To ensure business continuity, make sure that at least one instance is available during application deployment and rollback.
+	// > Set the minimum number of ready instances to a value greater than or equal to 1 for each rolling deployment to ensure business continuity.
 	//
 	// example:
 	//
@@ -182,9 +209,9 @@ type DescribeApplicationScalingRuleResponseBodyData struct {
 	MinReadyInstances *int32 `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
 	// Indicates whether the auto scaling policy is enabled. Valid values:
 	//
-	// 	- **true**: enabled
+	// - **true**: The policy is enabled.
 	//
-	// 	- **false**: disabled
+	// - **false**: The policy is disabled.
 	//
 	// example:
 	//
@@ -198,17 +225,17 @@ type DescribeApplicationScalingRuleResponseBodyData struct {
 	ScaleRuleName *string `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
 	// The type of the auto scaling policy. Valid values:
 	//
-	// 	- **timing**: the scheduled auto scaling policy.
+	// - **timing**: scheduled scaling.
 	//
-	// 	- **metric**: the metric-based auto scaling policy.
+	// - **metric**: metric-based scaling.
 	//
-	// 	- **mix**: the hybrid auto scaling policy.
+	// - **mix**: hybrid scaling.
 	//
 	// example:
 	//
 	// timing
 	ScaleRuleType *string `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
-	// The details of the scheduled auto scaling policy.
+	// The scheduled scaling policy.
 	Timer *DescribeApplicationScalingRuleResponseBodyDataTimer `json:"Timer,omitempty" xml:"Timer,omitempty" type:"Struct"`
 	// The time when the auto scaling policy was updated. Unit: milliseconds.
 	//
@@ -346,9 +373,9 @@ type DescribeApplicationScalingRuleResponseBodyDataMetric struct {
 	//
 	// 3
 	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	// The list of metrics that are used to trigger the auto scaling policy.
+	// The list of metric-based scaling policies.
 	Metrics []*DescribeApplicationScalingRuleResponseBodyDataMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	// The execution status of the metric-based auto scaling policy.
+	// The status of the metric-based scaling policy.
 	MetricsStatus *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus `json:"MetricsStatus,omitempty" xml:"MetricsStatus,omitempty" type:"Struct"`
 	// The minimum number of instances.
 	//
@@ -356,9 +383,9 @@ type DescribeApplicationScalingRuleResponseBodyDataMetric struct {
 	//
 	// 1
 	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	// Rules that determine the application scale-in.
+	// The scale-in rules.
 	ScaleDownRules *DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules `json:"ScaleDownRules,omitempty" xml:"ScaleDownRules,omitempty" type:"Struct"`
-	// Rules that determine the application scale-out.
+	// The scale-out rules.
 	ScaleUpRules *DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules `json:"ScaleUpRules,omitempty" xml:"ScaleUpRules,omitempty" type:"Struct"`
 }
 
@@ -453,17 +480,25 @@ func (s *DescribeApplicationScalingRuleResponseBodyDataMetric) Validate() error 
 }
 
 type DescribeApplicationScalingRuleResponseBodyDataMetricMetrics struct {
-	// The limit on the metric.
+	// The target value of the metric.
 	//
-	// 	- The limit on the CPU utilization. Unit: percentage.
+	// - The target CPU utilization. Unit: percent.
 	//
-	// 	- The limit on the memory usage. Unit: percentage.
+	// - The target memory usage. Unit: percent.
 	//
-	// 	- The limit on the average number of active TCP connections per second.
+	// - The number of queries per second (QPS).
 	//
-	// 	- The limit on the QPS of the Internet-facing SLB instance.
+	// - The response time. Unit: milliseconds.
 	//
-	// 	- The limit on the response time of the Internet-facing SLB instance. Unit: milliseconds.
+	// - The average number of active TCP connections per second.
+	//
+	// - The QPS of a public-facing SLB instance.
+	//
+	// - The response time of a public-facing SLB instance. Unit: milliseconds.
+	//
+	// - The QPS of a private SLB instance.
+	//
+	// - The response time of a private SLB instance. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -471,32 +506,48 @@ type DescribeApplicationScalingRuleResponseBodyDataMetricMetrics struct {
 	MetricTargetAverageUtilization *int32 `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
 	// The metric that is used to trigger the auto scaling policy. Valid values:
 	//
-	// 	- **CPU**: the CPU utilization.
+	// - **CPU**: CPU utilization.
 	//
-	// 	- **MEMORY**: the memory usage.
+	// - **MEMORY**: memory usage.
 	//
-	// 	- **tcpActiveConn**: the average number of active TCP connections for an instance in 30 seconds.
+	// - **QPS**: the average QPS of a single instance of a Java application in one minute.
 	//
-	// 	- **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance in 15 seconds.
+	// - **RT**: the average response time (RT) of all service interfaces of a Java application in one minute.
 	//
-	// 	- **SLB_RT**: the average response time of the Internet-facing SLB instance in 15 seconds.
+	// - **tcpActiveConn**: the average number of active TCP connections of a single instance in 30 seconds.
+	//
+	// - **SLB_QPS**: the average QPS of a single instance for a public-facing SLB instance in 15 seconds.
+	//
+	// - **SLB_RT**: the average RT of a public-facing SLB instance in 15 seconds.
+	//
+	// - **INTRANET_SLB_QPS**: the average QPS of a single instance for a private SLB instance in 15 seconds.
+	//
+	// - **INTRANET_SLB_RT**: the average RT of a private SLB instance in 15 seconds.
 	//
 	// example:
 	//
 	// CPU
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The ID of the SLB instance.
+	//
 	// example:
 	//
 	// lb-xxx
 	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// The SLB access log Logstore.
+	//
 	// example:
 	//
 	// test
 	SlbLogstore *string `json:"SlbLogstore,omitempty" xml:"SlbLogstore,omitempty"`
+	// The SLB access log Project.
+	//
 	// example:
 	//
 	// test
 	SlbProject *string `json:"SlbProject,omitempty" xml:"SlbProject,omitempty"`
+	// The port of the SLB instance.
+	//
 	// example:
 	//
 	// 80
@@ -570,7 +621,7 @@ func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics) Validate()
 }
 
 type DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus struct {
-	// The metrics that is used to trigger the current auto scaling policy.
+	// The data of the current metric-based scaling.
 	CurrentMetrics []*DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics `json:"CurrentMetrics,omitempty" xml:"CurrentMetrics,omitempty" type:"Repeated"`
 	// The current number of instances.
 	//
@@ -578,21 +629,21 @@ type DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus struct {
 	//
 	// 2
 	CurrentReplicas *int64 `json:"CurrentReplicas,omitempty" xml:"CurrentReplicas,omitempty"`
-	// The expected number of instances.
+	// The target number of instances.
 	//
 	// example:
 	//
 	// 2
 	DesiredReplicas *int64 `json:"DesiredReplicas,omitempty" xml:"DesiredReplicas,omitempty"`
-	// The time when the auto scaling policy was last triggered.
+	// The time of the last scaling activity.
 	//
 	// example:
 	//
 	// 2022-01-11T08:14:32Z
 	LastScaleTime *string `json:"LastScaleTime,omitempty" xml:"LastScaleTime,omitempty"`
-	// The metrics that are used to trigger the auto scaling policy next time.
+	// The list of metrics for the next scaling activity.
 	NextScaleMetrics []*DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics `json:"NextScaleMetrics,omitempty" xml:"NextScaleMetrics,omitempty" type:"Repeated"`
-	// The duration for which the metric-based auto scaling policy takes effect next time.
+	// The period of the next metric-based scaling.
 	//
 	// example:
 	//
@@ -685,7 +736,7 @@ func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus) Vali
 }
 
 type DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics struct {
-	// The current value of the metric.
+	// The current value.
 	//
 	// example:
 	//
@@ -693,27 +744,35 @@ type DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMet
 	CurrentValue *int64 `json:"CurrentValue,omitempty" xml:"CurrentValue,omitempty"`
 	// The name of the metric.
 	//
-	// 	- **cpu**: the CPU utilization.
+	// - **cpu**: CPU utilization.
 	//
-	// 	- **memory**: the memory usage.
+	// - **memory**: memory usage.
 	//
-	// 	- **tcpActiveConn**: the number of active TCP connections.
+	// - **arms_incall_qps**: the average QPS of a single instance of a Java application in one minute.
 	//
-	// 	- **slb_incall_qps**: the QPS of the Internet-facing SLB instance.
+	// - **arms_incall_rt**: the average RT of all service interfaces of a Java application in one minute.
 	//
-	// 	- **slb_incall_rt**: the response time of the Internet-facing SLB instance.
+	// - **tcpActiveConn**: the number of active TCP connections.
+	//
+	// - **slb_incall_qps**: the QPS of a public-facing SLB instance.
+	//
+	// - **slb_incall_rt**: the RT of a public-facing SLB instance.
+	//
+	// - **intranet_slb_incall_qps**: the QPS of a private SLB instance.
+	//
+	// - **intranet_slb_incall_rt**: the RT of a private SLB instance.
 	//
 	// example:
 	//
 	// cpu
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the data. This parameter corresponds to the metric.
+	// The type of the metric. This parameter is associated with the monitoring metric.
 	//
-	// 	- **Resource**: used when the metric is the **CPU utilization*	- or **memory usage**.
+	// - **Resource**: the metric value of **cpu*	- or **memory**.
 	//
-	// 	- **Pods**: used when the metric is the **number of active TCP connections**.
+	// - **Pods**: the metric value of **tcpActiveConn**.
 	//
-	// 	- **External**: used when the metric is about the **SLB*	- instance or from **Application Real-Time Monitoring Service (ARMS)**.
+	// - **External**: the metric value of **arms*	- or **slb**.
 	//
 	// example:
 	//
@@ -763,27 +822,35 @@ func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurren
 type DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics struct {
 	// The name of the metric.
 	//
-	// 	- **cpu**: the CPU utilization.
+	// - **cpu**: CPU utilization.
 	//
-	// 	- **memory**: the memory usage.
+	// - **memory**: memory usage.
 	//
-	// 	- **tcpActiveConn**: the number of active TCP connections.
+	// - **arms_incall_qps**: the average QPS of a single instance of a Java application in one minute.
 	//
-	// 	- **slb_incall_qps**: the QPS of the Internet-facing SLB instance.
+	// - **arms_incall_rt**: the average RT of all service interfaces of a Java application in one minute.
 	//
-	// 	- **slb_incall_rt**: the response time of the Internet-facing SLB instance.
+	// - **tcpActiveConn**: the number of active TCP connections.
+	//
+	// - **slb_incall_qps**: the QPS of a public-facing SLB instance.
+	//
+	// - **slb_incall_rt**: the RT of a public-facing SLB instance.
+	//
+	// - **intranet_slb_incall_qps**: the QPS of a private SLB instance.
+	//
+	// - **intranet_slb_incall_rt**: the RT of a private SLB instance.
 	//
 	// example:
 	//
 	// cpu
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The metric value as a percentage that triggers the application scale-in next time.
+	// The metric threshold for the next scale-in. The value is a percentage.
 	//
 	// example:
 	//
 	// 10
 	NextScaleInAverageUtilization *int32 `json:"NextScaleInAverageUtilization,omitempty" xml:"NextScaleInAverageUtilization,omitempty"`
-	// The metric value as a percentage that triggers the application scale-out next time.
+	// The metric threshold for the next scale-out. The value is a percentage.
 	//
 	// example:
 	//
@@ -831,25 +898,25 @@ func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextSc
 }
 
 type DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules struct {
-	// Indicates whether the application scale-in is disabled. Valid values:
+	// Indicates whether scale-in is disabled. Valid values:
 	//
-	// 	- **true**: disabled.
+	// - **true**: enabled.
 	//
-	// 	- **false**: enabled.
+	// - **false**: disabled.
 	//
-	// >  When this parameter is set to true, the application instances are never reduced. This prevents risks to your business in peak hours. By default, this parameter is set to false.
+	// > If you enable this feature, the application is never scaled in. This prevents business risks that are caused by scale-ins during peak hours. By default, this feature is disabled.
 	//
 	// example:
 	//
 	// false
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// The cooldown time of the scale-in. Valid values: 0 to 3600. Unit: seconds. Default value: 0.
+	// The cooldown period for scale-ins. The value can be an integer from 0 to 3600. Unit: seconds. Default value: 0.
 	//
 	// example:
 	//
 	// 300
 	StabilizationWindowSeconds *int64 `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
-	// The step size for the scale-in. The maximum number of instances that can be reduced within a specific period of time.
+	// The scaling step size for scale-ins. The maximum number of instances that can be removed at a time.
 	//
 	// example:
 	//
@@ -897,25 +964,25 @@ func (s *DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules) Val
 }
 
 type DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules struct {
-	// Indicates whether the application scale-in is disabled. Valid values:
+	// Indicates whether scale-in is disabled. Valid values:
 	//
-	// 	- **true**: The application scale-in is disabled.
+	// - **true**: enabled.
 	//
-	// 	- **false**: The application scale-in is enabled.
+	// - **false**: disabled.
 	//
-	// >  When this parameter is set to true, the application instances are never reduced. This prevents risks to your business in peak hours. By default, this parameter is set to false.
+	// > If you enable this feature, the application is never scaled in. This prevents business risks that are caused by scale-ins during peak hours. By default, this feature is disabled.
 	//
 	// example:
 	//
 	// false
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// The cooldown time of the scale-out. Valid values: 0 to 3600. Unit: seconds. Default value: 0.
+	// The cooldown period for scale-outs. The value can be an integer from 0 to 3600. Unit: seconds. Default value: 0.
 	//
 	// example:
 	//
 	// 300
 	StabilizationWindowSeconds *int64 `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
-	// The step size for the scale-out. The maximum number of instances that can be added within a specific period of time.
+	// The scaling step size for scale-outs. The maximum number of instances that can be added at a time.
 	//
 	// example:
 	//
@@ -963,53 +1030,53 @@ func (s *DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules) Valid
 }
 
 type DescribeApplicationScalingRuleResponseBodyDataTimer struct {
-	// The start date of the validity period of the scheduled auto scaling policy. Valid values:
+	// The start date of a short-term scheduled scaling policy. The following list describes the valid values:
 	//
-	// 	- If both the **BeginDate*	- and **EndDate*	- parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
+	// - If you leave both **BeginDate*	- and **EndDate*	- empty, the policy is a long-term policy. This is the default value.
 	//
-	// 	- If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate*	- is **2021-03-25*	- and **EndDate*	- is **2021-04-25**, the auto scaling policy is valid for one month.
+	// - If you specify a date, for example, you set **BeginDate*	- to **2021-03-25*	- and **EndDate*	- to **2021-04-25**, the policy is effective for one month.
 	//
 	// example:
 	//
 	// 2021-03-25
 	BeginDate *string `json:"BeginDate,omitempty" xml:"BeginDate,omitempty"`
-	// The end date of the validity period of the scheduled auto scaling policy. Valid values:
+	// The end date of a short-term scheduled scaling policy. The following list describes the valid values:
 	//
-	// 	- If both the **BeginDate*	- and **EndDate*	- parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
+	// - If you leave both **BeginDate*	- and **EndDate*	- empty, the policy is a long-term policy. This is the default value.
 	//
-	// 	- If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate*	- is **2021-03-25*	- and **EndDate*	- is **2021-04-25**, the auto scaling policy is valid for one month.
+	// - If you specify a date, for example, you set **BeginDate*	- to **2021-03-25*	- and **EndDate*	- to **2021-04-25**, the policy is effective for one month.
 	//
 	// example:
 	//
 	// 2021-04-25
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The days on which the scheduled auto scaling policy takes effect. Valid values:
+	// The period in which the scheduled scaling policy is executed. Valid values:
 	//
-	// 	- **\\	- \\	- \\***: The scheduled auto scaling policy takes effect at a specified time every day.
+	// - **\\	- \\	- \\***: The policy is executed at a specified time every day.
 	//
-	// 	- **\\	- \\	- Fri,Mon**: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a week. The specified time is in the GMT+8 time zone. Valid values:
+	// - **\\	- \\	- Fri,Mon**: The policy is executed at a specified time on one or more days of a week. You can select multiple days. The time is in GMT+8. Valid values:
 	//
-	//     	- **Sun**: Sunday
+	//   - **Sun**: Sunday
 	//
-	//     	- **Mon**: Monday
+	//   - **Mon**: Monday
 	//
-	//     	- **Tue**: Tuesday
+	//   - **Tue**: Tuesday
 	//
-	//     	- **Wed**: Wednesday
+	//   - **Wed**: Wednesday
 	//
-	//     	- **Thu**: Thursday
+	//   - **Thu**: Thursday
 	//
-	//     	- **Fri**: Friday
+	//   - **Fri**: Friday
 	//
-	//     	- **Sat**: Saturday
+	//   - **Sat**: Saturday
 	//
-	// 	- **1,2,3,28,31 \\	- \\***: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy takes effect on the specified days other than the 31st day.
+	// - **1,2,3,28,31 \\	- \\***: The policy is executed at a specified time on one or more days of a month. You can select multiple days. The value can be an integer from 1 to 31. If a month does not have a 31st day, the policy is not executed on that day.
 	//
 	// example:
 	//
 	// 	- 	- *
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The points in time when the auto scaling policy is triggered within one day.
+	// The points in time when the auto scaling policy is triggered within a day.
 	Schedules []*DescribeApplicationScalingRuleResponseBodyDataTimerSchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Repeated"`
 }
 
@@ -1071,21 +1138,25 @@ func (s *DescribeApplicationScalingRuleResponseBodyDataTimer) Validate() error {
 }
 
 type DescribeApplicationScalingRuleResponseBodyDataTimerSchedules struct {
-	// The point in time. Format: **Hour:Minute**.
+	// The point in time. Format: **HH:mm**.
 	//
 	// example:
 	//
 	// 08:00
 	AtTime *string `json:"AtTime,omitempty" xml:"AtTime,omitempty"`
+	// The maximum number of instances.
+	//
 	// example:
 	//
 	// 10
 	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// The minimum number of instances.
+	//
 	// example:
 	//
 	// 1
 	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	// The expected number of instances.
+	// The target number of instances.
 	//
 	// example:
 	//

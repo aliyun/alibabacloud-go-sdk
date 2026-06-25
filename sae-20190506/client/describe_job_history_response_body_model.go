@@ -28,13 +28,13 @@ type iDescribeJobHistoryResponseBody interface {
 type DescribeJobHistoryResponseBody struct {
 	// The HTTP status code returned. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The call was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: The call failed.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -44,19 +44,15 @@ type DescribeJobHistoryResponseBody struct {
 	Data *DescribeJobHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned. Take note of the following rules:
 	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section in this topic.
-	//
-	// example:
-	//
-	// Null
+	// - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The message returned. Take note of the following rules:
 	//
-	// 	- If the call is successful, **success*	- is returned.
+	// - If the call is successful, **success*	- is returned.
 	//
-	// 	- If the call fails, an error code is returned.
+	// - If the call fails, an error code is returned.
 	//
 	// example:
 	//
@@ -70,9 +66,9 @@ type DescribeJobHistoryResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -272,10 +268,6 @@ type DescribeJobHistoryResponseBodyDataJobs struct {
 	// manual-3db7a8fa-5d40-4edc-92e4-49d50eab****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The message returned if exceptions occur during job running.
-	//
-	// example:
-	//
-	// Null
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The time when the job was created.
 	//
@@ -285,13 +277,13 @@ type DescribeJobHistoryResponseBodyDataJobs struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the job. Valid values:
 	//
-	// 	- **0**: The job was not executed.
+	// - **0**: The job was not executed.
 	//
-	// 	- **1**: The job was executed.
+	// - **1**: The job was executed.
 	//
-	// 	- **2**: The job failed to be executed.
+	// - **2**: The job failed to be executed.
 	//
-	// 	- **3**: The job is being executed.
+	// - **3**: The job is being executed.
 	//
 	// example:
 	//

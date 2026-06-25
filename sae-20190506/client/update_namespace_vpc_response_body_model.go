@@ -24,51 +24,53 @@ type iUpdateNamespaceVpcResponseBody interface {
 }
 
 type UpdateNamespaceVpcResponseBody struct {
-	// Indicates whether the VPC information was updated. Valid values:
+	// The HTTP status code. The value can be a POP error code. Valid values:
 	//
-	// 	- **true**: indicates that the information was updated.
+	// - **2xx**: The request was successful.
 	//
-	// 	- **false**: indicates that the information could not be updated.
+	// - **3xx**: The request was redirected.
+	//
+	// - **4xx**: The request was invalid.
+	//
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code. Valid values:
+	// The error code.
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// - This parameter is not returned if the request is successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
-	//
-	// 	- **4xx**: indicates that the request was invalid.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	// The returned message.
+	//
+	// - If the request is successful, **success*	- is returned.
+	//
+	// - If the request fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned message.
-	//
-	// 	- **success*	- is returned when the request succeeds.
-	//
-	// 	- An error code is returned when the request fails.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the VPC was updated. Valid values:
+	//
+	// - **true**: The VPC was updated.
+	//
+	// - **false**: The VPC failed to be updated.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The error code.
-	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
-	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// The trace ID. You can use it to query the details of a call.
 	//
 	// example:
 	//

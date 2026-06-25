@@ -35,14 +35,6 @@ type CreateConfigMapResponseBody struct {
 	// The trace ID that is used to query the details of the request.
 	Data *CreateConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the ConfigMap that was created.
-	//
-	// example:
-	//
-	// The error code. Valid values:
-	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
-	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The request ID.
 	//
@@ -58,13 +50,13 @@ type CreateConfigMapResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// - **2xx**: The call was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// - **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// - **4xx**: The call failed.
 	//
-	// 	- **5xx**: A server error occurred.
+	// - **5xx**: A server error occurred.
 	//
 	// example:
 	//

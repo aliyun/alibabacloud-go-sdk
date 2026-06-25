@@ -42,19 +42,15 @@ type BatchStartApplicationsResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error code.
 	//
-	// 	- If the request is successful, this parameter is not returned.****
+	// - If the request is successful, this parameter is not returned.\\*\\*\\*\\*
 	//
-	// 	- This parameter is returned only if the request failed.***	- For more information, see **Error codes*	- in this topic.
+	// - This parameter is returned only if the request failed.\\*\\*\\*\\	- For more information, see **Error codes*	- in this topic.
 	Data *BatchStartApplicationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned if the request failed. Take note of the following rules:
 	//
 	// - The ErrorCode parameter is not returned if the request succeeds.
 	//
 	// - If the call fails, the ErrorCode parameter is returned. For more information, see the "Error codes" section of this topic.
-	//
-	// example:
-	//
-	// NULL
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned data.
 	//
@@ -169,13 +165,13 @@ func (s *BatchStartApplicationsResponseBody) Validate() error {
 type BatchStartApplicationsResponseBodyData struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// - **2xx**: indicates that the request was successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// - **3xx**: indicates that the request was redirected.
 	//
-	// 	- **4xx**: indicates that the request was invalid.
+	// - **4xx**: indicates that the request was invalid.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// - **5xx**: indicates that a server error occurred.
 	//
 	// example:
 	//
