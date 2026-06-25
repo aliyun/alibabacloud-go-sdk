@@ -18,15 +18,15 @@ type iDetailResponseBody interface {
 }
 
 type DetailResponseBody struct {
-	// The details about the instance.
+	// The instance information.
 	Instance *DetailResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 36C43E96-8F68-44AA-B1AF-B1F7AB94A6C1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -79,25 +79,25 @@ func (s *DetailResponseBody) Validate() error {
 }
 
 type DetailResponseBodyInstance struct {
-	// The capacity of the plan. Unit: × 10,000 images.
+	// The maximum image capacity of the plan. Unit: 10,000.
 	//
 	// example:
 	//
 	// 10
 	Capacity *int32 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// imagesearchName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of queries per second supported by the plan.
+	// The QPS of the plan.
 	//
 	// example:
 	//
 	// 1
 	Qps *int32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The information about the region.
+	// The region information.
 	//
 	// example:
 	//
@@ -105,7 +105,9 @@ type DetailResponseBodyInstance struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The Image Search model.
 	//
-	// 0: commodity search. 1: generic image search.
+	// <props="intl">Valid values: 0: product image search. 1: generic image search.
+	//
+	// <props="china">Valid values: 0: product image search. 1: generic image search. 2: fabric search. 3 and 7: trademark search. 4: copyright search. 5: furniture search. 6: hardware search..
 	//
 	// example:
 	//
@@ -117,7 +119,7 @@ type DetailResponseBodyInstance struct {
 	//
 	// 10063
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The time when the instance was created. Unit: milliseconds.
+	// The creation time of the instance. Unit: milliseconds.
 	//
 	// example:
 	//

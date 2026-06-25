@@ -18,9 +18,9 @@ type iDumpMetaResponseBody interface {
 }
 
 type DumpMetaResponseBody struct {
-	// The information about the export task.
+	// The returned result of the task execution.
 	Data *DumpMetaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -79,19 +79,19 @@ func (s *DumpMetaResponseBody) Validate() error {
 }
 
 type DumpMetaResponseBodyData struct {
-	// The status of the export task.
+	// The status of the metadata export task. Valid values:
 	//
-	// 	- PROCESSING: in progress
+	// - PROCESSING: The task is being processed.
 	//
-	// 	- FAIL: failed
+	// - FAIL: The task failed.
 	//
-	// 	- SUCCESS: successful
+	// - SUCCESS: The task is completed.
 	//
 	// example:
 	//
 	// PROCESSING
 	DumpMetaStatus *string `json:"DumpMetaStatus,omitempty" xml:"DumpMetaStatus,omitempty"`
-	// The ID of the export task.
+	// The task ID.
 	//
 	// example:
 	//

@@ -30,26 +30,41 @@ type iSearchImageByNameRequest interface {
 }
 
 type SearchImageByNameRequest struct {
-	// The category of the product. For more information, see [Category references](https://help.aliyun.com/document_detail/179184.html).
+	// The product category. For more information, see [Category reference](https://help.aliyun.com/document_detail/179184.html).
 	//
-	// 	- For product search: If a category is specified, the specified category prevails. If no category is specified, the system estimates and selects a category. The category selected by the system is included in the response.
+	//  - For product image search, if you specify a category, the specified category is used. If you do not specify a category, the system predicts the category. You can obtain the predicted category from the response.
 	//
-	// 	- For generic search: The parameter value is set to 88888888 regardless of whether a category is specified.
+	// <props="china">
+	//
+	//  - For fabric, trademark, generic, home furnishing, and industrial hardware searches, the system sets the category to 88888888 regardless of whether you specify a category.
+	//
+	// <props="intl">
+	//
+	// - For generic image search, the system sets the category to 88888888 regardless of whether you specify a category..
 	//
 	// example:
 	//
 	// 88888888
-	CategoryId        *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	DistinctProductId *bool  `json:"DistinctProductId,omitempty" xml:"DistinctProductId,omitempty"`
-	// The filter conditions. int_attr supports the following operators: >, >=, <, <=, and =. str_attr supports the following operators: = and !=. You can set the logical operator between conditions to AND or OR.
+	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Specifies whether to deduplicate results based on ProductId.
+	//
+	// > Set this parameter to true to enable deduplication.
+	//
+	// example:
+	//
+	// false
+	DistinctProductId *bool `json:"DistinctProductId,omitempty" xml:"DistinctProductId,omitempty"`
+	// The filter condition. The int_attr field supports the following operators: in, not in, greater than (>), greater than or equal to (>=), less than (<), less than or equal to (<=), and equal to (=). The str_attr field supports the following operators: in, not in, equal to (=), and not equal to (!=). Multiple conditions can be connected by using AND and OR.
 	//
 	// Examples:
 	//
-	// 	- int_attr>=100
+	// - int_attr>=100.
 	//
-	// 	- str_attr!="value1"
+	// - str_attr!="value1".
 	//
-	// 	- int_attr=1000 AND str_attr="value1"
+	// - int_attr=1000 AND str_attr="value1".
+	//
+	// >The maximum length is 4,096 characters.
 	//
 	// example:
 	//
@@ -57,19 +72,25 @@ type SearchImageByNameRequest struct {
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The name of the Image Search instance. The name can be up to 20 characters in length.
 	//
+	// If you have purchased an Image Search instance, log on to the [Image Search console](https://imagesearch.console.aliyun.com/) to view the instance name.
+	//
+	// If you have not purchased an Image Search instance, refer to [Activate the service](https://help.aliyun.com/document_detail/179178.html) and [Create an instance](https://help.aliyun.com/document_detail/66569.html).
+	//
+	// >The instance name is not the instance ID. Make sure you distinguish between them.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// demoinstance1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The number of images to return on each page. Valid values: 1 to 100. Default value: 10.
+	// The number of results to return. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	Num *int32 `json:"Num,omitempty" xml:"Num,omitempty"`
-	// The name of the image.
+	// The image name.
 	//
 	// This parameter is required.
 	//
@@ -77,16 +98,21 @@ type SearchImageByNameRequest struct {
 	//
 	// 2092061_1.jpg
 	PicName *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
-	// The ID of the product.
+	// The product ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2092061_1
-	ProductId      *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The similarity score threshold. If you specify this parameter, only images with a similarity score greater than or equal to the threshold are returned. Valid values: 0.00 to 1.00. Up to two decimal places are supported. Default value: 0.00.
+	//
+	// example:
+	//
+	// 0.50
 	ScoreThreshold *string `json:"ScoreThreshold,omitempty" xml:"ScoreThreshold,omitempty"`
-	// The number of the image to return. Valid values: 0 to 499. Default value: 0.
+	// The start position of the results to return. Valid values: 0 to 499. Default value: 0.
 	//
 	// example:
 	//

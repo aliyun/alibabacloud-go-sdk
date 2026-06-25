@@ -20,33 +20,17 @@ type iUpdateImageResponseBody interface {
 }
 
 type UpdateImageResponseBody struct {
-	// The error code returned.
+	// The error code.
 	//
-	// 	- A value of 0 indicates that the operation is successful.
+	// - 0: The request was successful.
 	//
-	// 	- Values other than 0 indicate errors.
-	//
-	// example:
-	//
-	// 0
+	// - Non-zero: The request failed.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// success
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// E0845DE6-52AF-4B50-9F15-51ED4044E6AB
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
-	//
-	// example:
-	//
-	// true
+	// Indicates whether the request was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

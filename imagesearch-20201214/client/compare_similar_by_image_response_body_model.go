@@ -24,23 +24,38 @@ type iCompareSimilarByImageResponseBody interface {
 }
 
 type CompareSimilarByImageResponseBody struct {
+	// The authentication response details.
 	AccessDeniedDetail *CompareSimilarByImageResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
+	// The error code. Valid values:
+	//
+	// - 0: success.
+	//
+	// - Non-zero: failure.
+	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B3137727-7D6E-488C-BA21-0E034C38A879
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The image similarity score. Valid values: 0 to 1.
+	//
 	// example:
 	//
 	// 0.85
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -119,13 +134,52 @@ func (s *CompareSimilarByImageResponseBody) Validate() error {
 }
 
 type CompareSimilarByImageResponseBodyAccessDeniedDetail struct {
-	AuthAction               *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The action for the authentication request.
+	//
+	// example:
+	//
+	// xxx
+	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The authentication principal information.
+	//
+	// example:
+	//
+	// 111
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	AuthPrincipalOwnerId     *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	AuthPrincipalType        *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The Alibaba Cloud account ID of the authentication principal.
+	//
+	// example:
+	//
+	// 222
+	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The type of the authentication principal.
+	//
+	// example:
+	//
+	// SubUser
+	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The encrypted diagnostic message.
+	//
+	// example:
+	//
+	// xxxxxx
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	NoPermissionType         *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	PolicyType               *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// Valid values:
+	//
+	// - ImplicitDeny: no policy is matched.
+	//
+	// - ExplicitDeny: an explicit Deny policy is matched.
+	//
+	// example:
+	//
+	// ImplicitDeny
+	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The type of the policy that caused the access denial.
+	//
+	// example:
+	//
+	// AccountLevelIdentityBasedPolicy
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s CompareSimilarByImageResponseBodyAccessDeniedDetail) String() string {

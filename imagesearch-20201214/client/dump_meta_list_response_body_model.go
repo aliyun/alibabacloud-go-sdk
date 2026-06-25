@@ -16,9 +16,9 @@ type iDumpMetaListResponseBody interface {
 }
 
 type DumpMetaListResponseBody struct {
-	// The information about the task that is used to export metadata.
+	// The metadata export information.
 	Data *DumpMetaListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,15 +62,15 @@ func (s *DumpMetaListResponseBody) Validate() error {
 }
 
 type DumpMetaListResponseBodyData struct {
-	// A list of tasks that are used to export metadata.
+	// The collection of metadata export tasks.
 	DumpMetaList []*DumpMetaListResponseBodyDataDumpMetaList `json:"DumpMetaList,omitempty" xml:"DumpMetaList,omitempty" type:"Repeated"`
-	// The number of the page to return.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries returned.
 	//
 	// example:
 	//
@@ -142,41 +142,41 @@ func (s *DumpMetaListResponseBodyData) Validate() error {
 }
 
 type DumpMetaListResponseBodyDataDumpMetaList struct {
-	// The error code returned.
+	// The error code. Valid values:
 	//
-	// 	- A value of 0 indicates that the operation is successful.
+	// - 0: Succeeded.
 	//
-	// 	- Values other than 0 indicate errors.
+	// - Non-zero: Failed.
 	//
 	// example:
 	//
 	// 0
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 500
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The address where you can download the metadata. The address is valid for 2 hours.
+	// The URL for downloading the result. The URL is valid for two hours.
 	//
 	// example:
 	//
 	// https://imagesearchname.oss-cn-shanghai.aliyuncs.com/xxx
 	MetaUrl *string `json:"MetaUrl,omitempty" xml:"MetaUrl,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The status of the export task.
+	// The task status. Valid values:
 	//
-	// 	- PROCESSING: in progress
+	// - PROCESSING: The task is being processed.
 	//
-	// 	- FAIL: failed
+	// - FAIL: The task failed.
 	//
-	// 	- SUCCESS: successful
+	// - SUCCESS: The task is completed.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type DumpMetaListResponseBodyDataDumpMetaList struct {
 	//
 	// 1629095713000
 	UtcCreate *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
-	// The time when the task was updated. Unit: milliseconds.
+	// The time when the task was last updated. Unit: milliseconds.
 	//
 	// example:
 	//

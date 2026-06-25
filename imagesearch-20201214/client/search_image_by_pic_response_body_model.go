@@ -26,29 +26,29 @@ type iSearchImageByPicResponseBody interface {
 }
 
 type SearchImageByPicResponseBody struct {
-	// The product descriptions returned.
+	// The descriptions of all returned products.
 	Auctions []*SearchImageByPicResponseBodyAuctions `json:"Auctions,omitempty" xml:"Auctions,omitempty" type:"Repeated"`
-	// The error code returned.
+	// The error code.
 	//
-	// 	- A value of 0 indicates that the operation is successful.
+	// - 0: successful.
 	//
-	// 	- Values other than 0 indicate errors.
+	// - Non-zero: failed.
 	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The summary of the search result.
+	// The overview of the search results.
 	Head *SearchImageByPicResponseBodyHead `json:"Head,omitempty" xml:"Head,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The information such as the system-selected category and result of subject recognition.
+	// The information such as category prediction and subject identification results.
 	PicInfo *SearchImageByPicResponseBodyPicInfo `json:"PicInfo,omitempty" xml:"PicInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ func (s *SearchImageByPicResponseBody) Validate() error {
 }
 
 type SearchImageByPicResponseBodyAuctions struct {
-	// The category of the image.
+	// The image category.
 	//
 	// example:
 	//
@@ -169,63 +169,87 @@ type SearchImageByPicResponseBodyAuctions struct {
 	//
 	// zidingyi
 	CustomContent *string `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
-	// The attribute, which is an integer.
+	// The integer type attribute.
 	//
 	// example:
 	//
 	// 2
 	IntAttr *int32 `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	// The integer type attribute.
+	//
 	// example:
 	//
 	// 20
 	IntAttr2 *int32 `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
+	// The integer type attribute.
+	//
+	// example:
+	//
+	// 2
 	IntAttr3 *int32 `json:"IntAttr3,omitempty" xml:"IntAttr3,omitempty"`
+	// The integer type attribute.
+	//
+	// example:
+	//
+	// 2
 	IntAttr4 *int32 `json:"IntAttr4,omitempty" xml:"IntAttr4,omitempty"`
-	// The name of the image.
+	// The image name.
 	//
 	// example:
 	//
 	// 2092061_1.jpg
 	PicName *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
-	// The ID of the product.
+	// The product ID.
 	//
 	// example:
 	//
 	// 2092061_1
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The similarity score of the searched image. Valid values: 0 to 1.
+	// The image similarity score. Valid values: 0 to 1.
 	//
-	// >  To use this feature, you must upgrade the SDK to version 3.1.1.
+	// > You must upgrade to V3.1.1 to use this feature.
 	//
 	// example:
 	//
 	// 1
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The score information about the image.
+	// The system scoring information.
 	//
-	// > 	- This parameter is not supported. We recommend that you use the Score parameter.
+	// > - This field is deprecated. Use Score instead.
 	//
-	// >	- The SortExprValues parameter indicates a 2-tuple in which values are separated by a semicolon (;). The first value indicates the correlation score of the returned image. A greater value indicates a higher correlation with the sample image. Different algorithms are used.
+	// - SortExprValues is a semicolon-separated tuple. The first value indicates the relevance score of the image. A higher value indicates higher relevance to the query image. The scoring varies depending on the algorithm model.
 	//
-	// >	- If the value of CategoryId is within the value range from 0 to 2, the value range of SortExprValues is from 0 to 7.33136443711219e+24.
+	// - When the category is 0 to 2, the value range of SortExprValues is 0 to 7.33136443711219e+24.
 	//
-	// >	- If the value of CategoryId is not within the value range from 0 to 2, the value range of SortExprValues is from 0 to 5.37633353624177e+24. If the returned image is identical with the sample image, the highest correlation score is generated.
+	// - For other category values, the value range of SortExprValues is 0 to 5.37633353624177e+24. This score reaches its maximum when two images are identical.
 	//
 	// example:
 	//
 	// 5.37633353624177e+24;0
 	SortExprValues *string `json:"SortExprValues,omitempty" xml:"SortExprValues,omitempty"`
-	// The attribute, which is a string.
+	// The string type attribute.
 	//
 	// example:
 	//
-	// 2
+	// test
 	StrAttr *string `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
+	// The string type attribute.
+	//
 	// example:
 	//
 	// test
 	StrAttr2 *string `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
+	// The string type attribute.
+	//
+	// example:
+	//
+	// test
 	StrAttr3 *string `json:"StrAttr3,omitempty" xml:"StrAttr3,omitempty"`
+	// The string type attribute.
+	//
+	// example:
+	//
+	// test
 	StrAttr4 *string `json:"StrAttr4,omitempty" xml:"StrAttr4,omitempty"`
 }
 
@@ -368,19 +392,19 @@ func (s *SearchImageByPicResponseBodyAuctions) Validate() error {
 }
 
 type SearchImageByPicResponseBodyHead struct {
-	// The number of images returned.
+	// The number of results returned.
 	//
 	// example:
 	//
 	// 10
 	DocsFound *int32 `json:"DocsFound,omitempty" xml:"DocsFound,omitempty"`
-	// The number of images that match the search conditions on the Image Search instance.
+	// The number of results matched in the instance.
 	//
 	// example:
 	//
 	// 10000
 	DocsReturn *int32 `json:"DocsReturn,omitempty" xml:"DocsReturn,omitempty"`
-	// The time it takes to complete the search process. Unit: milliseconds.
+	// The search duration, in milliseconds.
 	//
 	// example:
 	//
@@ -428,19 +452,19 @@ func (s *SearchImageByPicResponseBodyHead) Validate() error {
 }
 
 type SearchImageByPicResponseBodyPicInfo struct {
-	// The categories that are supported by the system.
+	// The information about all categories supported by the system.
 	AllCategories []*SearchImageByPicResponseBodyPicInfoAllCategories `json:"AllCategories,omitempty" xml:"AllCategories,omitempty" type:"Repeated"`
-	// The category selected by the system. If a category is specified in the request, the specified category prevails.
+	// The category prediction result. If the category is specified in the request, the value specified in the request is used.
 	//
 	// example:
 	//
 	// 88888888
 	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The recognized subjects.
+	// The collection of subject identification results.
 	//
-	// >  To use this feature, you must upgrade the SDK to version 3.1.1.
+	// > You must upgrade to V3.1.1 to use this feature.
 	MultiRegion []*SearchImageByPicResponseBodyPicInfoMultiRegion `json:"MultiRegion,omitempty" xml:"MultiRegion,omitempty" type:"Repeated"`
-	// The result of subject recognition. The subject area of the image, in the format of x1,x2,y1,y2. Specifically, x1 and y1 specify the upper-left pixel, and x2 and y2 specify the lower-right pixel. If a subject area is specified in the request, the specified subject area prevails.
+	// The subject identification result. The subject region of the image, in the format of x1,x2,y1,y2, where x1,y1 is the upper-left point and x2,y2 is the lower-right point. If the subject region is specified in the request, the value specified in the request is used.
 	//
 	// example:
 	//
@@ -515,13 +539,13 @@ func (s *SearchImageByPicResponseBodyPicInfo) Validate() error {
 }
 
 type SearchImageByPicResponseBodyPicInfoAllCategories struct {
-	// The ID of the category.
+	// The category ID.
 	//
 	// example:
 	//
 	// 88888888
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the category.
+	// The category name.
 	//
 	// example:
 	//
@@ -560,7 +584,7 @@ func (s *SearchImageByPicResponseBodyPicInfoAllCategories) Validate() error {
 }
 
 type SearchImageByPicResponseBodyPicInfoMultiRegion struct {
-	// The result of subject recognition. The subject area of the image, in the format of x1,x2,y1,y2. Specifically, x1 and y1 specify the upper-left pixel, and x2 and y2 specify the lower-right pixel. If a subject area is specified in the request, the specified subject area prevails.
+	// The subject identification result. The subject region of the image, in the format of x1,x2,y1,y2, where x1,y1 is the upper-left point and x2,y2 is the lower-right point. If the subject region is specified in the request, the value specified in the request is used.
 	//
 	// example:
 	//

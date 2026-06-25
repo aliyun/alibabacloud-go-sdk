@@ -16,9 +16,9 @@ type iIncreaseListResponseBody interface {
 }
 
 type IncreaseListResponseBody struct {
-	// The information about the batch task.
+	// The batch task information.
 	Data *IncreaseListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -63,13 +63,13 @@ func (s *IncreaseListResponseBody) Validate() error {
 
 type IncreaseListResponseBodyData struct {
 	Increments *IncreaseListResponseBodyDataIncrements `json:"Increments,omitempty" xml:"Increments,omitempty" type:"Struct"`
-	// The number of the page to return.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries returned.
 	//
 	// example:
 	//

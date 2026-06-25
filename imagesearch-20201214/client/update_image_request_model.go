@@ -36,67 +36,47 @@ type iUpdateImageRequest interface {
 }
 
 type UpdateImageRequest struct {
-	// The user-defined content. The value can be up to 4,096 characters in length.
+	// The custom content. The content can be up to 4,096 characters in length.
 	//
-	// >  If you set this parameter, the response includes this parameter and its value. You can add text such as an image description.
-	//
-	// example:
-	//
-	// zidingyi
+	// >This field is returned when you call the "<props="china">[SearchImageByPic](https://help.aliyun.com/document_detail/202282.html)<props="intl">[SearchImageByPic](https://www.alibabacloud.com/help/zh/image-search/latest/updateimage)" operation. For example, you can add text such as image descriptions.
 	CustomContent *string `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
 	// The name of the Image Search instance. The name can be up to 20 characters in length.
 	//
+	// If you have purchased an Image Search instance, go to the [Image Search console](https://imagesearch.console.aliyun.com/) to view the instance name.
+	//
+	// If you have not purchased an Image Search instance, see [Activate the service](https://help.aliyun.com/document_detail/179178.html) and [Create an instance](https://help.aliyun.com/document_detail/66569.html).
+	//
+	// >The instance name is not the instance ID. Make sure to distinguish between them.
+	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// demoinstance1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The attribute, which is an integer. The attribute can be used to filter images when you search for images. If you set this parameter, the response includes this parameter and its value.
-	//
-	// example:
-	//
-	// 2
+	// The integer attribute. This attribute can be used to filter query results. This field is returned in query results.
 	IntAttr *int32 `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
-	// example:
-	//
-	// 20
+	// The integer attribute. This attribute can be used to filter query results. This field is returned in query results.
 	IntAttr2 *int32 `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
+	// The integer attribute. This attribute can be used to filter query results. This field is returned in query results.
 	IntAttr3 *int32 `json:"IntAttr3,omitempty" xml:"IntAttr3,omitempty"`
+	// The integer attribute. This attribute can be used to filter query results. This field is returned in query results.
 	IntAttr4 *int32 `json:"IntAttr4,omitempty" xml:"IntAttr4,omitempty"`
-	// The name of the image. The name can be up to 512 characters in length.
+	// The image name. The name can be up to 256 characters in length.
 	//
-	// > 	- An image is uniquely identified by the values of the ProductId and PicName parameters.
+	// > - The combination of ProductId and PicName uniquely identifies an image.
 	//
-	// >	- If you add an image whose product ID (ProductId) and image name (PicName) are the same as those of an existing image, the newly added image overwrites the existing image.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// namexxx.jpg
+	// - If you add an image multiple times with the same ProductId and PicName, the most recently added image takes effect and the previously added images are replaced.
 	PicName *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
-	// The ID of the product. The ID can be up to 512 characters in length.
+	// The product ID. The ID can be up to 256 characters in length.
 	//
-	// >  A product may have multiple images.
+	// >A product can have multiple images. You can customize the value of this parameter based on your business requirements. For example: top001, pants002.
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2092061_1
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The attribute, which is a string. The value can be up to 128 characters in length. The attribute can be used to filter images. If you set this parameter, the response includes this parameter and its value.
-	//
-	// example:
-	//
-	// ss
+	// The string attribute. The attribute can be up to 128 characters in length. It can be used to filter query results. This field is returned in query results.
 	StrAttr *string `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
-	// example:
-	//
-	// test
+	// The string attribute. The attribute can be up to 128 characters in length. It can be used to filter query results. This field is returned in query results.
 	StrAttr2 *string `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
+	// The string attribute. The attribute can be up to 128 characters in length. It can be used to filter query results. This field is returned in query results.
 	StrAttr3 *string `json:"StrAttr3,omitempty" xml:"StrAttr3,omitempty"`
+	// The string attribute. The attribute can be up to 128 characters in length. It can be used to filter query results. This field is returned in query results.
 	StrAttr4 *string `json:"StrAttr4,omitempty" xml:"StrAttr4,omitempty"`
 }
 

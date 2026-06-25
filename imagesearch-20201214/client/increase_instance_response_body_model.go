@@ -18,15 +18,15 @@ type iIncreaseInstanceResponseBody interface {
 }
 
 type IncreaseInstanceResponseBody struct {
-	// The information about the task.
+	// The returned result of the task.
 	Data *IncreaseInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 36C43E96-8F68-44AA-B1AF-B1F7AB94A6C1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -79,19 +79,19 @@ func (s *IncreaseInstanceResponseBody) Validate() error {
 }
 
 type IncreaseInstanceResponseBodyData struct {
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 500
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The status of the task.
+	// The status of the batch task. Valid values:
 	//
-	// 	- PROCESSING: in progress
+	// - PROCESSING: The task is being processed.
 	//
-	// 	- FAIL: failed
+	// - FAIL: The task failed.
 	//
-	// 	- SUCCESS: successful
+	// - SUCCESS: The task is complete.
 	//
 	// example:
 	//

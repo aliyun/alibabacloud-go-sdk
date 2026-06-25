@@ -22,25 +22,25 @@ type iAddImageResponseBody interface {
 }
 
 type AddImageResponseBody struct {
-	// The code returned.
+	// The error code.
 	//
-	// 	- A value of 0 indicates that the request was successful.
+	// - 0: success.
 	//
-	// 	- Values other than 0 indicate that the request failed.
+	// - Non-zero: failure.
 	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
-	// > No value is returned if the request was successful, and an error message is returned if the request failed.
+	// > No data is returned for successful requests. Error messages are returned for failed requests.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The results of category prediction and subject identification.
+	// The category prediction and subject identification results.
 	PicInfo *AddImageResponseBodyPicInfo `json:"PicInfo,omitempty" xml:"PicInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -48,7 +48,7 @@ type AddImageResponseBody struct {
 	//
 	// E0845DE6-52AF-4B50-9F15-51ED4044E6AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -119,15 +119,19 @@ func (s *AddImageResponseBody) Validate() error {
 }
 
 type AddImageResponseBodyPicInfo struct {
+	// The information about all categories supported by the system.
 	AllCategories []*AddImageResponseBodyPicInfoAllCategories `json:"AllCategories,omitempty" xml:"AllCategories,omitempty" type:"Repeated"`
-	// The result of category prediction. If a category is specified in the request, the specified category prevails.
+	// The category prediction result. If the user specifies a category in the request, the specified category is used.
 	//
 	// example:
 	//
 	// 88888888
-	CategoryId  *int32                                    `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The collection of subject identification results.
+	//
+	// > Upgrade to V3.1.1 or later to use this feature.
 	MultiRegion []*AddImageResponseBodyPicInfoMultiRegion `json:"MultiRegion,omitempty" xml:"MultiRegion,omitempty" type:"Repeated"`
-	// The result of subject identification. The subject area of the image is in the format of `x1,x2,y1,y2`. `x1 and y1` represent the position in the upper-left corner, in pixels. `x2 and y2` represent the position in the lower-right corner, in pixels. If a subject area is specified in the request, the specified subject area prevails.
+	// The subject identification result. The subject region of the image, in the format of `x1,x2,y1,y2`, where `x1,y1` is the upper-left point and `x2,y2` is the lower-right point. If the user specifies a subject region in the request, the specified region is used.
 	//
 	// example:
 	//
@@ -202,7 +206,17 @@ func (s *AddImageResponseBodyPicInfo) Validate() error {
 }
 
 type AddImageResponseBodyPicInfoAllCategories struct {
-	Id   *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The category ID.
+	//
+	// example:
+	//
+	// 88888888
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The category name.
+	//
+	// example:
+	//
+	// Other
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -237,6 +251,11 @@ func (s *AddImageResponseBodyPicInfoAllCategories) Validate() error {
 }
 
 type AddImageResponseBodyPicInfoMultiRegion struct {
+	// The subject identification result. The subject region of the image, in the format of x1,x2,y1,y2, where x1,y1 is the upper-left point and x2,y2 is the lower-right point. If the user specifies a subject region in the request, the specified region is used.
+	//
+	// example:
+	//
+	// 94,691,206,650
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 

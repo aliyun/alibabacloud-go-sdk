@@ -22,31 +22,31 @@ type iDeleteImageResponseBody interface {
 }
 
 type DeleteImageResponseBody struct {
-	// The error code returned.
+	// The error code. Valid values:
 	//
-	// 	- A value of 0 indicates that the operation is successful.
+	// - 0: success.
 	//
-	// 	- Values other than 0 indicate errors.
+	// - Non-zero value: failure.
 	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the deleted images.
+	// The deletion result.
 	Data *DeleteImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0703956F-9BCC-48FA-99F7-96C0BF449C69
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DeleteImageResponseBody) Validate() error {
 }
 
 type DeleteImageResponseBodyData struct {
-	// The name (PicName) of the deleted image.
+	// The deleted PicName.
 	//
 	// example:
 	//

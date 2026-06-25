@@ -28,22 +28,38 @@ type iSearchImageByTextResponseBody interface {
 }
 
 type SearchImageByTextResponseBody struct {
+	// The authentication details.
 	AccessDeniedDetail *SearchImageByTextResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	Auctions           []*SearchImageByTextResponseBodyAuctions         `json:"Auctions,omitempty" xml:"Auctions,omitempty" type:"Repeated"`
+	// The description information of all returned products.
+	Auctions []*SearchImageByTextResponseBodyAuctions `json:"Auctions,omitempty" xml:"Auctions,omitempty" type:"Repeated"`
+	// The error code. Valid values:
+	//
+	// - 0: successful.
+	//
+	// - Non-zero value: failed.
+	//
 	// example:
 	//
 	// 0
-	Code *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The overview of the search results.
 	Head *SearchImageByTextResponseBodyHead `json:"Head,omitempty" xml:"Head,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
-	Msg     *string                               `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The category information.
 	PicInfo *SearchImageByTextResponseBodyPicInfo `json:"PicInfo,omitempty" xml:"PicInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B3137727-7D6E-488C-BA21-0E034C38A879
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -159,30 +175,48 @@ func (s *SearchImageByTextResponseBody) Validate() error {
 }
 
 type SearchImageByTextResponseBodyAccessDeniedDetail struct {
+	// The action for the authentication request.
+	//
 	// example:
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The authentication principal information.
+	//
 	// example:
 	//
 	// 111
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// The Alibaba Cloud account ID of the authentication principal.
+	//
 	// example:
 	//
 	// 222
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The type of the authentication principal.
+	//
 	// example:
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The encrypted complete diagnostic message.
+	//
 	// example:
 	//
 	// xxxxxx
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// Valid values:
+	//
+	// - ImplicitDeny: no policy is matched.
+	//
+	// - ExplicitDeny: an explicit Deny policy is matched.
+	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The type of the policy that caused the access denial.
+	//
 	// example:
 	//
 	// PauseNotify
@@ -265,54 +299,82 @@ func (s *SearchImageByTextResponseBodyAccessDeniedDetail) Validate() error {
 }
 
 type SearchImageByTextResponseBodyAuctions struct {
+	// The image category.
+	//
 	// example:
 	//
 	// 8888888
 	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The custom content defined by the user.
+	//
 	// example:
 	//
 	// zidingyi
 	CustomContent *string `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
+	// The integer type attribute.
+	//
 	// example:
 	//
 	// 2
 	IntAttr *int32 `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	// The integer type attribute.
+	//
 	// example:
 	//
 	// 2
 	IntAttr2 *int32 `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
+	// The integer type attribute.
+	//
 	// example:
 	//
 	// 2
 	IntAttr3 *int32 `json:"IntAttr3,omitempty" xml:"IntAttr3,omitempty"`
+	// The integer type attribute.
+	//
 	// example:
 	//
 	// 2
 	IntAttr4 *int32 `json:"IntAttr4,omitempty" xml:"IntAttr4,omitempty"`
+	// The image name.
+	//
 	// example:
 	//
 	// 2092061_1.jpg
 	PicName *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
+	// The product ID.
+	//
 	// example:
 	//
 	// 2092061_1
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The image similarity score. Valid values: 0 to 1.
+	//
+	// > You must upgrade the SDK to V3.1.1 to use this feature.
+	//
 	// example:
 	//
 	// 1
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The string type attribute.
+	//
 	// example:
 	//
 	// xxxx
 	StrAttr *string `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
+	// The string type attribute.
+	//
 	// example:
 	//
 	// xxxx
 	StrAttr2 *string `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
+	// The string type attribute.
+	//
 	// example:
 	//
 	// xxxx
 	StrAttr3 *string `json:"StrAttr3,omitempty" xml:"StrAttr3,omitempty"`
+	// The string type attribute.
+	//
 	// example:
 	//
 	// xxxx
@@ -449,14 +511,20 @@ func (s *SearchImageByTextResponseBodyAuctions) Validate() error {
 }
 
 type SearchImageByTextResponseBodyHead struct {
+	// The number of results returned.
+	//
 	// example:
 	//
 	// 10
 	DocsFound *int32 `json:"DocsFound,omitempty" xml:"DocsFound,omitempty"`
+	// The number of matched results in the instance.
+	//
 	// example:
 	//
 	// 10000
 	DocsReturn *int32 `json:"DocsReturn,omitempty" xml:"DocsReturn,omitempty"`
+	// The time consumed by the search, in milliseconds.
+	//
 	// example:
 	//
 	// 95
@@ -503,6 +571,7 @@ func (s *SearchImageByTextResponseBodyHead) Validate() error {
 }
 
 type SearchImageByTextResponseBodyPicInfo struct {
+	// All categories supported by the system.
 	AllCategories []*SearchImageByTextResponseBodyPicInfoAllCategories `json:"AllCategories,omitempty" xml:"AllCategories,omitempty" type:"Repeated"`
 }
 
@@ -537,10 +606,14 @@ func (s *SearchImageByTextResponseBodyPicInfo) Validate() error {
 }
 
 type SearchImageByTextResponseBodyPicInfoAllCategories struct {
+	// The category ID.
+	//
 	// example:
 	//
 	// 88888888
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The category name.
+	//
 	// example:
 	//
 	// other

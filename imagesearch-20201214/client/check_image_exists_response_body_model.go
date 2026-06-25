@@ -24,23 +24,38 @@ type iCheckImageExistsResponseBody interface {
 }
 
 type CheckImageExistsResponseBody struct {
+	// Description information of all returned products.
 	Auctions *CheckImageExistsResponseBodyAuctions `json:"Auctions,omitempty" xml:"Auctions,omitempty" type:"Struct"`
+	// Error code.
+	//
+	// - 0: Succeeded.
+	//
+	// - Non-zero: Failed.
+	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the image exists.
+	//
 	// example:
 	//
 	// true
 	Exists *bool `json:"Exists,omitempty" xml:"Exists,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// B3137727-7D6E-488C-BA21-0E034C38A879
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -119,50 +134,74 @@ func (s *CheckImageExistsResponseBody) Validate() error {
 }
 
 type CheckImageExistsResponseBodyAuctions struct {
+	// Image category.
+	//
 	// example:
 	//
 	// 88888888
 	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// User-defined content.
+	//
 	// example:
 	//
 	// zidingyi
 	CustomContent *string `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
+	// Integer-type property.
+	//
 	// example:
 	//
 	// 2
 	IntAttr *int32 `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	// Integer-type property.
+	//
 	// example:
 	//
 	// 2
 	IntAttr2 *int32 `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
+	// Integer-type property.
+	//
 	// example:
 	//
 	// 2
 	IntAttr3 *int32 `json:"IntAttr3,omitempty" xml:"IntAttr3,omitempty"`
+	// Integer-type property.
+	//
 	// example:
 	//
 	// 2
 	IntAttr4 *int32 `json:"IntAttr4,omitempty" xml:"IntAttr4,omitempty"`
+	// Image name.
+	//
 	// example:
 	//
 	// 2092061_1.jpg
 	PicName *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
+	// Product ID.
+	//
 	// example:
 	//
 	// 2092061_1
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// String-type property.
+	//
 	// example:
 	//
 	// test
 	StrAttr *string `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
+	// String-type property.
+	//
 	// example:
 	//
 	// test
 	StrAttr2 *string `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
+	// String-type property.
+	//
 	// example:
 	//
 	// test
 	StrAttr3 *string `json:"StrAttr3,omitempty" xml:"StrAttr3,omitempty"`
+	// String-type property.
+	//
 	// example:
 	//
 	// test

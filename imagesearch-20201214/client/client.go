@@ -24,7 +24,19 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"eu-central-1":   dara.String("imagesearch.eu-central-1.aliyuncs.com"),
+		"cn-shenzhen":    dara.String("imagesearch.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":    dara.String("imagesearch.cn-shanghai.aliyuncs.com"),
+		"cn-hongkong":    dara.String("imagesearch.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("imagesearch.cn-hangzhou.aliyuncs.com"),
+		"cn-beijing":     dara.String("imagesearch.cn-beijing.aliyuncs.com"),
+		"ap-southeast-2": dara.String("imagesearch.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-1": dara.String("imagesearch.ap-southeast-1.aliyuncs.com"),
+		"ap-south-1":     dara.String("imagesearch.ap-south-1.aliyuncs.com"),
+		"ap-northeast-1": dara.String("imagesearch.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -72,11 +84,13 @@ func (client *Client) _postOSSObject(bucketName *string, form map[string]interfa
 
 		request_ = dara.NewRequest()
 		boundary := dara.GetBoundary()
+		tmp := dara.ToString(form["host"])
+		host := dara.StringValue(bucketName) + "." + tmp
 		request_.Protocol = dara.String("HTTPS")
 		request_.Method = dara.String("POST")
 		request_.Pathname = dara.String("/")
 		request_.Headers = map[string]*string{
-			"host":       dara.String(dara.ToString(form["host"])),
+			"host":       dara.String(host),
 			"date":       openapiutil.GetDateUTCString(),
 			"user-agent": openapiutil.GetUserAgent(dara.String("")),
 		}
@@ -137,17 +151,19 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds an image to an Image Search instance.
+// Describes the syntax and provides examples of the AddImage operation, which adds image information to an Image Search instance.
 //
 // Description:
 //
-// You can call this operation to add an image to an Image Search instance.
+// ## Description
 //
-// > If you want to obtain more information about the service and technical support, click [Online Consulting](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or join the DingTalk group (ID 35035130).
+// This operation adds image information to an Image Search instance.
 //
-// ## QPS limits
+// ## QPS limit
 //
-// By default, the concurrency limit for adding an image to instances whose image capacity specifications are 0.1 million images is 1. This means that the system can process up to one request of adding an image every second. By default, the concurrency limit for adding an image to instances of other image capacity specifications is 5. This means that the system can process up to five requests of adding an image every second.
+// An instance with a maximum image capacity of 100,000 has a default concurrency of 1, which means that a maximum of 1 image addition request can be processed per second.
+//
+// Instances with other image capacities have a default concurrency of 5, which means that a maximum of 5 image addition requests can be processed per second.
 //
 // @param request - AddImageRequest
 //
@@ -251,17 +267,19 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, runtime *dar
 
 // Summary:
 //
-// Adds an image to an Image Search instance.
+// Describes the syntax and provides examples of the AddImage operation, which adds image information to an Image Search instance.
 //
 // Description:
 //
-// You can call this operation to add an image to an Image Search instance.
+// ## Description
 //
-// > If you want to obtain more information about the service and technical support, click [Online Consulting](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or join the DingTalk group (ID 35035130).
+// This operation adds image information to an Image Search instance.
 //
-// ## QPS limits
+// ## QPS limit
 //
-// By default, the concurrency limit for adding an image to instances whose image capacity specifications are 0.1 million images is 1. This means that the system can process up to one request of adding an image every second. By default, the concurrency limit for adding an image to instances of other image capacity specifications is 5. This means that the system can process up to five requests of adding an image every second.
+// An instance with a maximum image capacity of 100,000 has a default concurrency of 1, which means that a maximum of 1 image addition request can be processed per second.
+//
+// Instances with other image capacities have a default concurrency of 5, which means that a maximum of 5 image addition requests can be processed per second.
 //
 // @param request - AddImageRequest
 //
@@ -360,7 +378,7 @@ func (client *Client) AddImageAdvance(request *AddImageAdvanceRequest, runtime *
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -387,6 +405,20 @@ func (client *Client) AddImageAdvance(request *AddImageAdvanceRequest, runtime *
 // Summary:
 //
 // # CheckImageExists
+//
+// Description:
+//
+// ## How-To
+//
+// This API is used to query image information in an Image Search instance based on an image.
+//
+// ## QPS Limit
+//
+// The default maximum queries per second (QPS) for query operations can be viewed in the console. It corresponds to the Visit Frequency (QPS) you selected when purchasing the instance. Supported QPS values are 1, 5, and 10.
+//
+// ### SDK Version Guide
+//
+// Upgrade the Image SDK to version V3.1.1 to use the "subject identification" and "similarity score" features. For more information, see [Java SDK](https://help.aliyun.com/document_detail/179188.html).
 //
 // @param request - CheckImageExistsRequest
 //
@@ -440,6 +472,20 @@ func (client *Client) CheckImageExistsWithOptions(request *CheckImageExistsReque
 //
 // # CheckImageExists
 //
+// Description:
+//
+// ## How-To
+//
+// This API is used to query image information in an Image Search instance based on an image.
+//
+// ## QPS Limit
+//
+// The default maximum queries per second (QPS) for query operations can be viewed in the console. It corresponds to the Visit Frequency (QPS) you selected when purchasing the instance. Supported QPS values are 1, 5, and 10.
+//
+// ### SDK Version Guide
+//
+// Upgrade the Image SDK to version V3.1.1 to use the "subject identification" and "similarity score" features. For more information, see [Java SDK](https://help.aliyun.com/document_detail/179188.html).
+//
 // @param request - CheckImageExistsRequest
 //
 // @return CheckImageExistsResponse
@@ -456,7 +502,7 @@ func (client *Client) CheckImageExists(request *CheckImageExistsRequest) (_resul
 
 // Summary:
 //
-// 对比图片相似值
+// Compares two images and returns a similarity score.
 //
 // @param request - CompareSimilarByImageRequest
 //
@@ -508,7 +554,7 @@ func (client *Client) CompareSimilarByImageWithOptions(request *CompareSimilarBy
 
 // Summary:
 //
-// 对比图片相似值
+// Compares two images and returns a similarity score.
 //
 // @param request - CompareSimilarByImageRequest
 //
@@ -607,7 +653,7 @@ func (client *Client) CompareSimilarByImageAdvance(request *CompareSimilarByImag
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -637,7 +683,7 @@ func (client *Client) CompareSimilarByImageAdvance(request *CompareSimilarByImag
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -663,17 +709,19 @@ func (client *Client) CompareSimilarByImageAdvance(request *CompareSimilarByImag
 
 // Summary:
 //
-// This topic describes the syntax of the DeleteImage operation and provides examples of this operation. You can call this operation to delete images from an Image Search instance.
+// This topic describes the syntax and examples of the DeleteImage operation, which is used to delete image information from an Image Search instance.
 //
 // Description:
 //
-// This operation deletes images from an Image Search instance.
+// ## Operation description
 //
-// >  A success response is returned even if the specified image does not exist on the instance. Therefore, you cannot determine whether the image exists on the instance based on the response.
+// This operation is used to delete image information from an Image Search instance.
 //
-// ## QPS limits
+// >- If the specified image does not exist in the Image Search instance, this operation still returns a success response. Do not use the response to determine whether the image exists.
 //
-// By default, the maximum number of queries supported by this operation is 20. In this case, the system can process at most 20 requests every second.
+// ## QPS limit
+//
+// The default concurrency for delete operations is 20, which means a maximum of 20 delete requests can be processed per second.
 //
 // @param request - DeleteImageRequest
 //
@@ -733,17 +781,19 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 
 // Summary:
 //
-// This topic describes the syntax of the DeleteImage operation and provides examples of this operation. You can call this operation to delete images from an Image Search instance.
+// This topic describes the syntax and examples of the DeleteImage operation, which is used to delete image information from an Image Search instance.
 //
 // Description:
 //
-// This operation deletes images from an Image Search instance.
+// ## Operation description
 //
-// >  A success response is returned even if the specified image does not exist on the instance. Therefore, you cannot determine whether the image exists on the instance based on the response.
+// This operation is used to delete image information from an Image Search instance.
 //
-// ## QPS limits
+// >- If the specified image does not exist in the Image Search instance, this operation still returns a success response. Do not use the response to determine whether the image exists.
 //
-// By default, the maximum number of queries supported by this operation is 20. In this case, the system can process at most 20 requests every second.
+// ## QPS limit
+//
+// The default concurrency for delete operations is 20, which means a maximum of 20 delete requests can be processed per second.
 //
 // @param request - DeleteImageRequest
 //
@@ -761,15 +811,19 @@ func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteI
 
 // Summary:
 //
-// This topic describes the syntax of the Detail operation and provides examples of this operation. You can call this operation to query instance details.
+// This topic describes the syntax and examples of the Detail operation, which queries information about an Image Search instance by name.
 //
 // Description:
 //
-// This operation queries instance details.
+// ## Operation description
 //
-// ## QPS limits
+// This operation queries instance information from an Image Search instance.
 //
-// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process only 1 request every second.
+// > For more product details or technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through DingTalk group (35035130).
+//
+// ## QPS limit
+//
+// The default concurrency for query operations is 1, which means a maximum of 1 request is processed per second.
 //
 // @param request - DetailRequest
 //
@@ -813,15 +867,19 @@ func (client *Client) DetailWithOptions(request *DetailRequest, runtime *dara.Ru
 
 // Summary:
 //
-// This topic describes the syntax of the Detail operation and provides examples of this operation. You can call this operation to query instance details.
+// This topic describes the syntax and examples of the Detail operation, which queries information about an Image Search instance by name.
 //
 // Description:
 //
-// This operation queries instance details.
+// ## Operation description
 //
-// ## QPS limits
+// This operation queries instance information from an Image Search instance.
 //
-// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process only 1 request every second.
+// > For more product details or technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through DingTalk group (35035130).
+//
+// ## QPS limit
+//
+// The default concurrency for query operations is 1, which means a maximum of 1 request is processed per second.
 //
 // @param request - DetailRequest
 //
@@ -839,15 +897,21 @@ func (client *Client) Detail(request *DetailRequest) (_result *DetailResponse, _
 
 // Summary:
 //
-// This topic describes the syntax of the DumpMeta operation and provides examples of this operation. You can call this operation to create a task for exporting metadata from an Image Search instance.
+// This topic describes the syntax and examples of the DumpMeta operation, which creates a metadata export task for Image Search by name.
 //
 // Description:
 //
-// This operation creates a task for exporting metadata from an Image Search instance.
+// ## Operation description
 //
-// ## QPS limits
+// This operation submits a metadata export task to an Image Search instance.
 //
-// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+// > For more product details and technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through DingTalk group (35035130).
+//
+// ## QPS limit
+//
+// The default concurrency for submit operations is 1, which means a maximum of 1 request is processed per second.
+//
+// > You cannot submit a new metadata export task while the previous metadata export task is still in progress.
 //
 // @param request - DumpMetaRequest
 //
@@ -891,15 +955,21 @@ func (client *Client) DumpMetaWithOptions(request *DumpMetaRequest, runtime *dar
 
 // Summary:
 //
-// This topic describes the syntax of the DumpMeta operation and provides examples of this operation. You can call this operation to create a task for exporting metadata from an Image Search instance.
+// This topic describes the syntax and examples of the DumpMeta operation, which creates a metadata export task for Image Search by name.
 //
 // Description:
 //
-// This operation creates a task for exporting metadata from an Image Search instance.
+// ## Operation description
 //
-// ## QPS limits
+// This operation submits a metadata export task to an Image Search instance.
 //
-// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+// > For more product details and technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through DingTalk group (35035130).
+//
+// ## QPS limit
+//
+// The default concurrency for submit operations is 1, which means a maximum of 1 request is processed per second.
+//
+// > You cannot submit a new metadata export task while the previous metadata export task is still in progress.
 //
 // @param request - DumpMetaRequest
 //
@@ -917,15 +987,19 @@ func (client *Client) DumpMeta(request *DumpMetaRequest) (_result *DumpMetaRespo
 
 // Summary:
 //
-// This topic describes the syntax of the DumpMetaList operation and provides examples of this operation. You can call this operation to query tasks that are used for exporting metadata from an Image Search instance.
+// Describes the syntax and provides examples of the DumpMetaList operation, which queries the list of metadata export tasks in an Image Search instance.
 //
 // Description:
 //
-// This operation queries tasks that are used for exporting metadata from an Image Search instance.
+// ## Operation description
 //
-// ## QPS limits
+// This operation queries metadata export tasks in an Image Search instance.
 //
-// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+// > For more product details and technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through DingTalk group (35035130).
+//
+// ## QPS limit
+//
+// The default concurrency for query operations is 1, which means a maximum of 1 request is processed per second.
 //
 // @param request - DumpMetaListRequest
 //
@@ -981,15 +1055,19 @@ func (client *Client) DumpMetaListWithOptions(request *DumpMetaListRequest, runt
 
 // Summary:
 //
-// This topic describes the syntax of the DumpMetaList operation and provides examples of this operation. You can call this operation to query tasks that are used for exporting metadata from an Image Search instance.
+// Describes the syntax and provides examples of the DumpMetaList operation, which queries the list of metadata export tasks in an Image Search instance.
 //
 // Description:
 //
-// This operation queries tasks that are used for exporting metadata from an Image Search instance.
+// ## Operation description
 //
-// ## QPS limits
+// This operation queries metadata export tasks in an Image Search instance.
 //
-// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+// > For more product details and technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through DingTalk group (35035130).
+//
+// ## QPS limit
+//
+// The default concurrency for query operations is 1, which means a maximum of 1 request is processed per second.
 //
 // @param request - DumpMetaListRequest
 //
@@ -1007,15 +1085,21 @@ func (client *Client) DumpMetaList(request *DumpMetaListRequest) (_result *DumpM
 
 // Summary:
 //
-// This topic describes the syntax of the IncreaseInstance operation and provides examples of this operation. You can call this operation to create a batch task on an Image Search instance.
+// Describes the syntax and provides examples of the IncreaseInstance operation, which is used to create a batch task for an Image Search instance by name.
 //
 // Description:
 //
-// This operation creates a batch task on an Image Search instance.
+// ## Operation description
 //
-// ## QPS limits
+// This operation is used to submit a batch task to an Image Search instance.
 //
-// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+// > <props="china">For more information about the product or technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us by using DingTalk group 35035130.
+//
+// ## QPS limit
+//
+// Only one batch task can run at a time.
+//
+// > You cannot submit a new batch task until the previous batch task is complete.
 //
 // @param request - IncreaseInstanceRequest
 //
@@ -1071,15 +1155,21 @@ func (client *Client) IncreaseInstanceWithOptions(request *IncreaseInstanceReque
 
 // Summary:
 //
-// This topic describes the syntax of the IncreaseInstance operation and provides examples of this operation. You can call this operation to create a batch task on an Image Search instance.
+// Describes the syntax and provides examples of the IncreaseInstance operation, which is used to create a batch task for an Image Search instance by name.
 //
 // Description:
 //
-// This operation creates a batch task on an Image Search instance.
+// ## Operation description
 //
-// ## QPS limits
+// This operation is used to submit a batch task to an Image Search instance.
 //
-// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+// > <props="china">For more information about the product or technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us by using DingTalk group 35035130.
+//
+// ## QPS limit
+//
+// Only one batch task can run at a time.
+//
+// > You cannot submit a new batch task until the previous batch task is complete.
 //
 // @param request - IncreaseInstanceRequest
 //
@@ -1097,15 +1187,19 @@ func (client *Client) IncreaseInstance(request *IncreaseInstanceRequest) (_resul
 
 // Summary:
 //
-// This topic describes the syntax of the IncreaseList operation and provides examples of this operation. You can call this operation to query batch tasks on an Image Search instance.
+// Queries the list of batch tasks in an Image Search instance by calling the IncreaseList operation. This topic describes the syntax and provides examples.
 //
 // Description:
 //
-// This operation queries batch tasks on an Image Search instance.
+// ## Operation description
 //
-// ## QPS limits
+// This operation is used to query batch tasks in an Image Search instance.
 //
-// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+// > For more product details or technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through DingTalk group (35035130).
+//
+// ## QPS limit
+//
+// The default concurrency for query operations is 1, which means a maximum of 1 request is processed per second.
 //
 // @param request - IncreaseListRequest
 //
@@ -1169,15 +1263,19 @@ func (client *Client) IncreaseListWithOptions(request *IncreaseListRequest, runt
 
 // Summary:
 //
-// This topic describes the syntax of the IncreaseList operation and provides examples of this operation. You can call this operation to query batch tasks on an Image Search instance.
+// Queries the list of batch tasks in an Image Search instance by calling the IncreaseList operation. This topic describes the syntax and provides examples.
 //
 // Description:
 //
-// This operation queries batch tasks on an Image Search instance.
+// ## Operation description
 //
-// ## QPS limits
+// This operation is used to query batch tasks in an Image Search instance.
 //
-// By default, the maximum number of queries supported by this operation is 1. In this case, the system can process at most 1 request every second.
+// > For more product details or technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through DingTalk group (35035130).
+//
+// ## QPS limit
+//
+// The default concurrency for query operations is 1, which means a maximum of 1 request is processed per second.
 //
 // @param request - IncreaseListRequest
 //
@@ -1195,15 +1293,93 @@ func (client *Client) IncreaseList(request *IncreaseListRequest) (_result *Incre
 
 // Summary:
 //
-// This topic describes the syntax of the SearchByName operation and provides examples of this operation. You can call this operation to search for images by image name on an Image Search instance.
+// This topic describes the syntax and examples of SearchImageByFilter, which is used to query image information in an Image Search instance based on filter conditions.
+//
+// @param request - SearchImageByFilterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchImageByFilterResponse
+func (client *Client) SearchImageByFilterWithOptions(request *SearchImageByFilterRequest, runtime *dara.RuntimeOptions) (_result *SearchImageByFilterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Filter) {
+		body["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.Num) {
+		body["Num"] = request.Num
+	}
+
+	if !dara.IsNil(request.Start) {
+		body["Start"] = request.Start
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchImageByFilter"),
+		Version:     dara.String("2020-12-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchImageByFilterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// This topic describes the syntax and examples of SearchImageByFilter, which is used to query image information in an Image Search instance based on filter conditions.
+//
+// @param request - SearchImageByFilterRequest
+//
+// @return SearchImageByFilterResponse
+func (client *Client) SearchImageByFilter(request *SearchImageByFilterRequest) (_result *SearchImageByFilterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SearchImageByFilterResponse{}
+	_body, _err := client.SearchImageByFilterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// This topic describes the syntax and examples of the SearchByName operation, which is used to query image information in an Image Search instance by name.
 //
 // Description:
 //
-// This operation searches for images by image name on an Image Search instance.
+// ### Operation description
 //
-// ## QPS limits
+// This operation queries image information in an Image Search instance by name (ProductId and PicName).
 //
-// The maximum number of queries per second is displayed in the Image Search console. The upper limit is specified when you purchase the instance. You can set the upper limit to 5 QPS or 10 QPS.
+// > For more product details and technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through DingTalk group (35035130).
+//
+// ### QPS limit
+//
+// The default maximum query rate can be viewed in the console. It is the QPS value you selected at the time of purchase. Currently supported values are 1 QPS, 5 QPS, and 10 QPS.
 //
 // @param request - SearchImageByNameRequest
 //
@@ -1281,15 +1457,19 @@ func (client *Client) SearchImageByNameWithOptions(request *SearchImageByNameReq
 
 // Summary:
 //
-// This topic describes the syntax of the SearchByName operation and provides examples of this operation. You can call this operation to search for images by image name on an Image Search instance.
+// This topic describes the syntax and examples of the SearchByName operation, which is used to query image information in an Image Search instance by name.
 //
 // Description:
 //
-// This operation searches for images by image name on an Image Search instance.
+// ### Operation description
 //
-// ## QPS limits
+// This operation queries image information in an Image Search instance by name (ProductId and PicName).
 //
-// The maximum number of queries per second is displayed in the Image Search console. The upper limit is specified when you purchase the instance. You can set the upper limit to 5 QPS or 10 QPS.
+// > For more product details and technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through DingTalk group (35035130).
+//
+// ### QPS limit
+//
+// The default maximum query rate can be viewed in the console. It is the QPS value you selected at the time of purchase. Currently supported values are 1 QPS, 5 QPS, and 10 QPS.
 //
 // @param request - SearchImageByNameRequest
 //
@@ -1307,19 +1487,23 @@ func (client *Client) SearchImageByName(request *SearchImageByNameRequest) (_res
 
 // Summary:
 //
-// This topic describes the syntax of the SearchByPic operation and provides examples of this operation. You can call this operation to search for images by image on an Image Search Instance.
+// This topic describes the syntax and examples of SearchByPic, which is used to search for image information in an Image Search instance by image.
 //
 // Description:
 //
-// This operation searches for images by image name on an Image Search instance.
+// ## Operation description
 //
-// ## QPS limits
+// This operation is used to search for image information in an Image Search instance by image.
 //
-// The maximum number of queries per second is displayed in the Image Search console. The upper limit is specified when you purchase the instance. You can set the upper limit to 5 QPS or 10 QPS.
+// > <props="china">For more product details and technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through DingTalk group (35035130).
 //
-// ## SDK release notes
+// ## QPS limit
 //
-// The Image Search SDK has been upgraded to version 3.1.1, which supports multi-subject recognition and similarity scores. For more information, see [Image Search SDK for Java](/help/en/image-search/latest/version-v3-java-sdk).
+// You can view the default maximum access frequency for query operations in the console. The frequency is the QPS value that you selected when you made the purchase. The supported values are 1 QPS, 5 QPS, and 10 QPS.
+//
+// ### SDK version description
+//
+// Upgrade the Image Search SDK to V3.1.1 to use the multi-subject identification and similarity score features. For more information, see [Java SDK](https://help.aliyun.com/document_detail/179188.html).
 //
 // @param request - SearchImageByPicRequest
 //
@@ -1401,19 +1585,23 @@ func (client *Client) SearchImageByPicWithOptions(request *SearchImageByPicReque
 
 // Summary:
 //
-// This topic describes the syntax of the SearchByPic operation and provides examples of this operation. You can call this operation to search for images by image on an Image Search Instance.
+// This topic describes the syntax and examples of SearchByPic, which is used to search for image information in an Image Search instance by image.
 //
 // Description:
 //
-// This operation searches for images by image name on an Image Search instance.
+// ## Operation description
 //
-// ## QPS limits
+// This operation is used to search for image information in an Image Search instance by image.
 //
-// The maximum number of queries per second is displayed in the Image Search console. The upper limit is specified when you purchase the instance. You can set the upper limit to 5 QPS or 10 QPS.
+// > <props="china">For more product details and technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through DingTalk group (35035130).
 //
-// ## SDK release notes
+// ## QPS limit
 //
-// The Image Search SDK has been upgraded to version 3.1.1, which supports multi-subject recognition and similarity scores. For more information, see [Image Search SDK for Java](/help/en/image-search/latest/version-v3-java-sdk).
+// You can view the default maximum access frequency for query operations in the console. The frequency is the QPS value that you selected when you made the purchase. The supported values are 1 QPS, 5 QPS, and 10 QPS.
+//
+// ### SDK version description
+//
+// Upgrade the Image Search SDK to V3.1.1 to use the multi-subject identification and similarity score features. For more information, see [Java SDK](https://help.aliyun.com/document_detail/179188.html).
 //
 // @param request - SearchImageByPicRequest
 //
@@ -1512,7 +1700,7 @@ func (client *Client) SearchImageByPicAdvance(request *SearchImageByPicAdvanceRe
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -1538,7 +1726,23 @@ func (client *Client) SearchImageByPicAdvance(request *SearchImageByPicAdvanceRe
 
 // Summary:
 //
-// # SearchImageByText
+// This topic describes the syntax and examples of SearchImageByText, which is used to search for image information in an Image Search instance based on text.
+//
+// Description:
+//
+// ## Operation description
+//
+// This operation is used to search for image information in an Image Search instance based on text. This operation is available only for instances whose service type is product multimodal search.
+//
+// > <props="china">For more product details and technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through the DingTalk group (35035130).
+//
+// ## QPS limit
+//
+// You can view the default maximum access frequency for query operations in the console. The frequency is the QPS value you selected at the time of purchase. Currently supported values are 1 QPS, 5 QPS, and 10 QPS.
+//
+// ### SDK version description
+//
+// Upgrade the Image Search SDK to V3.1.1 to use the multi-subject identification and similarity score features. For more information, see [Java SDK](https://help.aliyun.com/document_detail/179188.html).
 //
 // @param request - SearchImageByTextRequest
 //
@@ -1608,7 +1812,23 @@ func (client *Client) SearchImageByTextWithOptions(request *SearchImageByTextReq
 
 // Summary:
 //
-// # SearchImageByText
+// This topic describes the syntax and examples of SearchImageByText, which is used to search for image information in an Image Search instance based on text.
+//
+// Description:
+//
+// ## Operation description
+//
+// This operation is used to search for image information in an Image Search instance based on text. This operation is available only for instances whose service type is product multimodal search.
+//
+// > <props="china">For more product details and technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through the DingTalk group (35035130).
+//
+// ## QPS limit
+//
+// You can view the default maximum access frequency for query operations in the console. The frequency is the QPS value you selected at the time of purchase. Currently supported values are 1 QPS, 5 QPS, and 10 QPS.
+//
+// ### SDK version description
+//
+// Upgrade the Image Search SDK to V3.1.1 to use the multi-subject identification and similarity score features. For more information, see [Java SDK](https://help.aliyun.com/document_detail/179188.html).
 //
 // @param request - SearchImageByTextRequest
 //
@@ -1626,19 +1846,29 @@ func (client *Client) SearchImageByText(request *SearchImageByTextRequest) (_res
 
 // Summary:
 //
-// This topic describes the syntax of the UpdateImage operation and provides examples of this operation. You can call this operation to update image information on an Image Search instance.
+// Updates the image information in an Image Search instance.
 //
 // Description:
 //
-// This operation updates image information on an Image Search instance.
+// ## Usage notes
 //
-// > 	- Limits are imposed on the instance creation time.
+// This operation updates the image information in an Image Search instance based on the product ID and image name.
 //
-// >	- This operation is supported by instances that are created in the Singapore (Singapore) region after December 2021. This operation is not supported in other regions.
+// > - The instance must meet the creation date requirements.
 //
-// ## QPS limits
+// <props="china">
 //
-// By default, the maximum number of queries supported by this operation is 20. In this case, the system can process at most 20 requests every second.
+// - Instances created after June 2021 in the Shanghai and Hangzhou regions are supported. Instances in other regions can be used normally.
+//
+// <props="intl">
+//
+// - Instances created after December 2021 in the Singapore region are supported. Instances in other regions are currently unavailable.
+//
+// - For more information about the product and technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through the DingTalk group (35035130).
+//
+// ## QPS limit
+//
+// The default concurrency for update operations is 20, which means that a maximum of 20 requests can be processed per second.
 //
 // @param request - UpdateImageRequest
 //
@@ -1728,19 +1958,29 @@ func (client *Client) UpdateImageWithOptions(request *UpdateImageRequest, runtim
 
 // Summary:
 //
-// This topic describes the syntax of the UpdateImage operation and provides examples of this operation. You can call this operation to update image information on an Image Search instance.
+// Updates the image information in an Image Search instance.
 //
 // Description:
 //
-// This operation updates image information on an Image Search instance.
+// ## Usage notes
 //
-// > 	- Limits are imposed on the instance creation time.
+// This operation updates the image information in an Image Search instance based on the product ID and image name.
 //
-// >	- This operation is supported by instances that are created in the Singapore (Singapore) region after December 2021. This operation is not supported in other regions.
+// > - The instance must meet the creation date requirements.
 //
-// ## QPS limits
+// <props="china">
 //
-// By default, the maximum number of queries supported by this operation is 20. In this case, the system can process at most 20 requests every second.
+// - Instances created after June 2021 in the Shanghai and Hangzhou regions are supported. Instances in other regions can be used normally.
+//
+// <props="intl">
+//
+// - Instances created after December 2021 in the Singapore region are supported. Instances in other regions are currently unavailable.
+//
+// - For more information about the product and technical support, click [Online Consultation](https://www.aliyun.com/core/online-consult?from=aZgW6LJHr2) or contact us through the DingTalk group (35035130).
+//
+// ## QPS limit
+//
+// The default concurrency for update operations is 20, which means that a maximum of 20 requests can be processed per second.
 //
 // @param request - UpdateImageRequest
 //
