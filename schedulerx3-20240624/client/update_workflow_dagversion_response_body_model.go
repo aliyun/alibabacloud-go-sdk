@@ -20,18 +20,30 @@ type iUpdateWorkflowDAGVersionResponseBody interface {
 }
 
 type UpdateWorkflowDAGVersionResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID for the request. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// C78E2AD2-5985-515B-BAD2-31A248AFC263
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - `true`: The call succeeded.
+	//
+	// - `false`: The call failed.
+	//
 	// example:
 	//
 	// true

@@ -22,26 +22,36 @@ type iSyncJobsRequest interface {
 }
 
 type SyncJobsRequest struct {
+	// A list of job IDs.
+	//
 	// This parameter is required.
 	JobIds []*int64 `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
+	// The name of the source application that contains the jobs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-source
 	OriginalAppName *string `json:"OriginalAppName,omitempty" xml:"OriginalAppName,omitempty"`
+	// The ID of the source cluster that contains the jobs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-00ed7f0d742b1
 	OriginalClusterId *string `json:"OriginalClusterId,omitempty" xml:"OriginalClusterId,omitempty"`
+	// The name of the destination application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-target
 	TargetAppName *string `json:"TargetAppName,omitempty" xml:"TargetAppName,omitempty"`
+	// The ID of the destination cluster.
+	//
 	// This parameter is required.
 	//
 	// example:

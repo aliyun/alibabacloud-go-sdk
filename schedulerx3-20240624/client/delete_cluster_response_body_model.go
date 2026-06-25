@@ -20,18 +20,30 @@ type iDeleteClusterResponseBody interface {
 }
 
 type DeleteClusterResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID generated for the request. If you encounter an issue, provide this ID for troubleshooting.
+	//
 	// example:
 	//
 	// F131C3E0-3FAA-5FA4-A6F3-E974D69EF3C5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

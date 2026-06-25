@@ -20,22 +20,30 @@ type iDeleteWorkflowsShrinkRequest interface {
 }
 
 type DeleteWorkflowsShrinkRequest struct {
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-a1804a3226d
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// If set to `true`, all jobs within the specified workflows are also deleted.
+	//
 	// example:
 	//
 	// false
 	DeleteJobs *bool `json:"DeleteJobs,omitempty" xml:"DeleteJobs,omitempty"`
+	// A list of workflow IDs to delete.
+	//
 	// This parameter is required.
 	WorkflowIdsShrink *string `json:"WorkflowIds,omitempty" xml:"WorkflowIds,omitempty"`
 }

@@ -22,22 +22,32 @@ type iGetJobExecutionResponseBody interface {
 }
 
 type GetJobExecutionResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// -
 	Data *GetJobExecutionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 39938688-0BAB-5AD8-BF02-F4910FAC7589
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -107,69 +117,170 @@ func (s *GetJobExecutionResponseBody) Validate() error {
 }
 
 type GetJobExecutionResponseBodyData struct {
+	// The name of the application.
+	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The number of execution attempts.
+	//
 	// example:
 	//
 	// 1
-	Attempt  *int32  `json:"Attempt,omitempty" xml:"Attempt,omitempty"`
+	Attempt *int32 `json:"Attempt,omitempty" xml:"Attempt,omitempty"`
+	// The data timestamp for the job instance.
+	//
+	// example:
+	//
+	// 2025-03-11 00:06:10
 	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	// The duration of the job execution.
+	//
 	// example:
 	//
 	// 1
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The time when the job execution ended.
+	//
 	// example:
 	//
 	// 2024-10-29 15:56:36
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Details of the executor that ran the job. The value is a JSON string.
+	//
 	// example:
 	//
 	// {\\"Status\\": \\"NORMAL\\", \\"ActiveCount\\": 4, \\"UnavailableCount\\": 0, \\"ExpectedCount\\": 4, \\"RiskCount\\": 0}
 	Executor *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	// The ID of the job execution.
+	//
 	// example:
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
+	// The ID of the job.
+	//
 	// example:
 	//
 	// 74
-	JobId   *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The name of the job.
+	//
+	// example:
+	//
+	// 天猫-自动审单
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The type of the job.
+	//
 	// example:
 	//
 	// xxljob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The parameters of the job.
+	//
 	// example:
 	//
 	// /home/avatar/system/services/biz/payment/crontab/monitorpayment.php
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The result of the job execution. The value is a JSON string.
+	//
 	// example:
 	//
 	// []
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The routing strategy. Valid values:
+	//
+	// - `1`: `Round Robin`
+	//
+	// - `2`: `Random`
+	//
+	// - `3`: `First`
+	//
+	// - `4`: `Last`
+	//
+	// - `5`: `Least Frequently Used`
+	//
+	// - `6`: `Least Recently Used`
+	//
+	// - `7`: `Consistent Hashing`
+	//
+	// - `8`: `Shard Broadcasting`
+	//
 	// example:
 	//
 	// 1
-	RouteStrategy *int32  `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
-	ScheduleTime  *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	// The scheduled time for the job execution.
+	//
+	// example:
+	//
+	// 2025-03-11 00:06:10
+	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	// The IP address of the scheduling server.
+	//
 	// example:
 	//
 	// 172.3.27.76
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	// The time when the job execution started.
+	//
 	// example:
 	//
-	// 2025-03-11T00:06:10Z
+	// 2025-03-11 00:06:10
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The job execution status. Valid values:
+	//
+	// - `0`: `UNKNOWN`
+	//
+	// - `1`: `WAITING`
+	//
+	// - `2`: `READY`
+	//
+	// - `3`: `RUNNING`
+	//
+	// - `4`: `SUCCESS`
+	//
+	// - `5`: `FAILED`
+	//
 	// example:
 	//
 	// 4
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The scheduling type of the job. Valid values:
+	//
+	// - `-1`: `none`
+	//
+	// - `1`: `cron`
+	//
+	// - `2`: `fixed_delay`
+	//
+	// - `3`: `fixed_rate`
+	//
+	// - `5`: `one_time`
+	//
+	// - `100`: `api`
+	//
 	// example:
 	//
 	// 1
 	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	// Indicates how the job was triggered. Valid values:
+	//
+	// - `0`: `unknown`
+	//
+	// - `1`: `timer_schedule`
+	//
+	// - `2`: `rerun`
+	//
+	// - `3`: `api_run`
+	//
+	// - `4`: `user_retry`
+	//
+	// - `5`: `system_retry`
+	//
+	// - `6`: `manual`
+	//
 	// example:
 	//
 	// timer_schedule

@@ -22,22 +22,30 @@ type iCreateCalendarRequest interface {
 }
 
 type CreateCalendarRequest struct {
+	// The name of the calendar.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// workday
 	CalendarName *string `json:"CalendarName,omitempty" xml:"CalendarName,omitempty"`
+	// A client token to ensure request idempotence. Generate a unique value for this parameter on your client. The token can contain only ASCII characters. Note: If you do not specify this parameter, the system automatically uses the Request ID as the client token. The Request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123456789
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The Cluster ID. You can call the [ListClusters](https://help.aliyun.com/document_detail/28147.html) operation to query Cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The days of each month, specified in a JSON array.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -70,6 +78,8 @@ type CreateCalendarRequest struct {
 	//
 	// ]
 	Months *string `json:"Months,omitempty" xml:"Months,omitempty"`
+	// The year.
+	//
 	// This parameter is required.
 	//
 	// example:

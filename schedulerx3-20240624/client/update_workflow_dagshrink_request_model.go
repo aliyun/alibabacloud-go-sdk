@@ -22,24 +22,34 @@ type iUpdateWorkflowDAGShrinkRequest interface {
 }
 
 type UpdateWorkflowDAGShrinkRequest struct {
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-a1804a3226d
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The directed acyclic graph (DAG) of the workflow.
+	//
 	// This parameter is required.
 	DagShrink *string `json:"Dag,omitempty" xml:"Dag,omitempty"`
+	// The version of the DAG. To obtain this value, call the [ListDAGVersions](https://help.aliyun.com/document_detail/465989.html) operation.
+	//
 	// example:
 	//
 	// 1137005
 	DagVersion *string `json:"DagVersion,omitempty" xml:"DagVersion,omitempty"`
+	// The workflow ID.
+	//
 	// This parameter is required.
 	//
 	// example:

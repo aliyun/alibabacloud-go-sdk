@@ -20,16 +20,22 @@ type iImportJobsRequest interface {
 }
 
 type ImportJobsRequest struct {
+	// Determines whether to automatically create the Application if it does not exist.
+	//
 	// example:
 	//
 	// true
 	AutoCreateApp *bool `json:"AutoCreateApp,omitempty" xml:"AutoCreateApp,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The jobs to import, formatted as a JSON string.
+	//
 	// example:
 	//
 	// {
@@ -142,6 +148,12 @@ type ImportJobsRequest struct {
 	//
 	// }
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Determines whether to overwrite jobs if they already exist. The default is **true**.
+	//
+	// - **true**: Overwrites existing jobs.
+	//
+	// - **false**: Does not overwrite existing jobs.
+	//
 	// example:
 	//
 	// true

@@ -22,22 +22,32 @@ type iListCalendarsResponseBody interface {
 }
 
 type ListCalendarsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// -
+	// - The returned data.
 	Data *ListCalendarsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 3835AA29-2298-5434-BC53-9CC377CDFD2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - **true**: The request succeeded.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -107,15 +117,22 @@ func (s *ListCalendarsResponseBody) Validate() error {
 }
 
 type ListCalendarsResponseBodyData struct {
+	// The maximum number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page of results. If this parameter is not returned, all results have been retrieved.
+	//
 	// example:
 	//
 	// eCKqVlS5FKF5EWGGOo8EgQ==
-	NextToken *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Records   []*ListCalendarsResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// A list of calendars.
+	Records []*ListCalendarsResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -180,10 +197,14 @@ func (s *ListCalendarsResponseBodyData) Validate() error {
 }
 
 type ListCalendarsResponseBodyDataRecords struct {
+	// The name of the calendar.
+	//
 	// example:
 	//
 	// workday
 	CalendarName *string `json:"CalendarName,omitempty" xml:"CalendarName,omitempty"`
+	// A JSON string that represents an array of months and their corresponding days.
+	//
 	// example:
 	//
 	// [
@@ -214,6 +235,8 @@ type ListCalendarsResponseBodyDataRecords struct {
 	//
 	// ]
 	Months *string `json:"Months,omitempty" xml:"Months,omitempty"`
+	// The year.
+	//
 	// example:
 	//
 	// 2025

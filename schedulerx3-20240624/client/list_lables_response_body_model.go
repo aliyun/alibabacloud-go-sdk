@@ -22,20 +22,32 @@ type iListLablesResponseBody interface {
 }
 
 type ListLablesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// -
+	// The returned list of labels.
 	Data []*ListLablesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The response message.
+	//
 	// example:
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A unique identifier for the request. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 9079A828-9138-50F1-801E-F2BC3D222A06
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -109,18 +121,26 @@ func (s *ListLablesResponseBody) Validate() error {
 }
 
 type ListLablesResponseBodyData struct {
+	// Indicates whether the label is designated.
+	//
 	// example:
 	//
 	// true
 	IsDesignated *bool `json:"IsDesignated,omitempty" xml:"IsDesignated,omitempty"`
+	// The label.
+	//
 	// example:
 	//
 	// gray
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// Indicates whether the Executor is online.
+	//
 	// example:
 	//
 	// true
 	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// The number of machines with this label.
+	//
 	// example:
 	//
 	// 2

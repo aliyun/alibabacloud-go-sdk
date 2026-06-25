@@ -20,18 +20,26 @@ type iGetJobExecutionThreadDumpRequest interface {
 }
 
 type GetJobExecutionThreadDumpRequest struct {
+	// The application name.
+	//
 	// example:
 	//
 	// xxl-job-executor-sample
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The executor address.
+	//
 	// example:
 	//
 	// http://192.168.0.215:9966/
 	ExecutorAddr *string `json:"ExecutorAddr,omitempty" xml:"ExecutorAddr,omitempty"`
+	// The job execution ID.
+	//
 	// example:
 	//
 	// 1310630367761285120

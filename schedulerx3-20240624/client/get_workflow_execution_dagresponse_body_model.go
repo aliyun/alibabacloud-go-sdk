@@ -22,21 +22,32 @@ type iGetWorkflowExecutionDAGResponseBody interface {
 }
 
 type GetWorkflowExecutionDAGResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned for the request.
 	Data *GetWorkflowExecutionDAGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter format error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 3835AA29-2298-5434-BC53-9CC377CDFD2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
+	// - `true`: The call succeeded.
+	//
+	// - `false`: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -106,7 +117,9 @@ func (s *GetWorkflowExecutionDAGResponseBody) Validate() error {
 }
 
 type GetWorkflowExecutionDAGResponseBodyData struct {
+	// A list of edges in the workflow DAG.
 	Edges []*GetWorkflowExecutionDAGResponseBodyDataEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Repeated"`
+	// A list of nodes in the workflow DAG.
 	Nodes []*GetWorkflowExecutionDAGResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -159,10 +172,14 @@ func (s *GetWorkflowExecutionDAGResponseBodyData) Validate() error {
 }
 
 type GetWorkflowExecutionDAGResponseBodyDataEdges struct {
+	// The ID of the source node.
+	//
 	// example:
 	//
 	// 1000
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The ID of the target node.
+	//
 	// example:
 	//
 	// 1001
@@ -200,29 +217,60 @@ func (s *GetWorkflowExecutionDAGResponseBodyDataEdges) Validate() error {
 }
 
 type GetWorkflowExecutionDAGResponseBodyDataNodes struct {
+	// The application name.
+	//
 	// example:
 	//
 	// cua-xxl-job-executor
-	AppName    *string                                                 `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The coordinates of the node.
 	Coordinate *GetWorkflowExecutionDAGResponseBodyDataNodesCoordinate `json:"Coordinate,omitempty" xml:"Coordinate,omitempty" type:"Struct"`
-	// ID。
+	// The unique ID for the job execution (node).
 	//
 	// example:
 	//
 	// 7491777526619542799
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// 9
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job type.
+	//
 	// example:
 	//
 	// script_shell
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// job1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The execution status of the job. Valid values:
+	//
+	// - 0: Unknown
+	//
+	// - 1: Waiting
+	//
+	// - 2: Queued
+	//
+	// - 3: Running
+	//
+	// - 4: Succeeded
+	//
+	// - 5: Failed
+	//
+	// - 6: Killed
+	//
+	// - 7: Held
+	//
+	// - 8: Marked as successful
+	//
+	// - 9: Skipped
+	//
 	// example:
 	//
 	// 4
@@ -310,18 +358,26 @@ func (s *GetWorkflowExecutionDAGResponseBodyDataNodes) Validate() error {
 }
 
 type GetWorkflowExecutionDAGResponseBodyDataNodesCoordinate struct {
+	// The height of the node. This parameter is optional.
+	//
 	// example:
 	//
 	// 20
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The width of the node. This parameter is optional.
+	//
 	// example:
 	//
 	// 100
 	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The x-coordinate of the node.
+	//
 	// example:
 	//
 	// 50
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate of the node.
+	//
 	// example:
 	//
 	// 50

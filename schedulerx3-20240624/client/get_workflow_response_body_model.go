@@ -22,20 +22,32 @@ type iGetWorkflowResponseBody interface {
 }
 
 type GetWorkflowResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// -
 	Data *GetWorkflowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request. This ID is unique to each request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 27B1345D-5F71-5972-8E4C-AABA6C6232F0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -105,54 +117,100 @@ func (s *GetWorkflowResponseBody) Validate() error {
 }
 
 type GetWorkflowResponseBodyData struct {
+	// The application name.
+	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The custom calendar.
+	//
 	// example:
 	//
 	// workday
 	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
+	// The user who created the workflow.
+	//
 	// example:
 	//
 	// 18582193685027xx
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The workflow description.
+	//
 	// example:
 	//
 	// my first workflow
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The maximum concurrency.
+	//
 	// example:
 	//
 	// 100
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// The workflow name.
+	//
 	// example:
 	//
 	// myWorkflow
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The workflow status.
+	//
+	// - 0: disabled
+	//
+	// - 1: enabled
+	//
 	// example:
 	//
 	// 2
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time expression. The value of this parameter depends on the schedule type.
+	//
+	// - **None**: No expression is required.
+	//
+	// - **cron**: A standard cron expression.
+	//
+	// - **API**: No expression is required.
+	//
 	// example:
 	//
 	// 0 0 12 	- 	- ?
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
+	// The schedule type.
+	//
+	// - -1: None
+	//
+	// - 1: cron
+	//
+	// - 100: API
+	//
 	// example:
 	//
 	// 1
 	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	// The time zone.
+	//
+	// > If this parameter is omitted, the time zone of the server in the current region is used.
+	//
 	// example:
 	//
 	// GMT+8
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	// The user who last updated the workflow.
+	//
 	// example:
 	//
 	// 18582193685027xx
 	Updater *string `json:"Updater,omitempty" xml:"Updater,omitempty"`
+	// The workflow ID.
+	//
 	// example:
 	//
 	// 10
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The extended attributes.
+	//
+	// > This parameter is not supported.
+	//
 	// example:
 	//
 	// null

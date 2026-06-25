@@ -24,26 +24,40 @@ type iListJobScriptHistoryResponseBody interface {
 }
 
 type ListJobScriptHistoryResponseBody struct {
+	// The response code. A value of `200` indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// -
+	// - The response data.
 	Data *ListJobScriptHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The maximum number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The response message.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// not support query script history, please upgrade engine version to 2.2.2+
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A unique ID for the request. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 5EF879D0-3B43-5AD1-9BF7-52418F9C5E73
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -122,12 +136,16 @@ func (s *ListJobScriptHistoryResponseBody) Validate() error {
 }
 
 type ListJobScriptHistoryResponseBodyData struct {
+	// The token to retrieve the next page of results. If this parameter is empty, no more data is available.
+	//
 	// example:
 	//
 	// eCKqVlS5FKF5EWGGOo8EgQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// -
+	// - A list of script history records.
 	Records []*ListJobScriptHistoryResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The total count of entries.
+	//
 	// example:
 	//
 	// 21
@@ -183,15 +201,40 @@ func (s *ListJobScriptHistoryResponseBodyData) Validate() error {
 }
 
 type ListJobScriptHistoryResponseBodyDataRecords struct {
+	// The timestamp when the script version was created.
+	//
 	// example:
 	//
 	// 2025-06-29 15:56:36
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the script version.
+	//
 	// example:
 	//
 	// 1963096506470832
-	Creator       *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The content of the script.
+	//
+	// example:
+	//
+	// #!/bin/bash
+	//
+	// echo "xxl-job: hello shell"
+	//
+	// echo "脚本位置: $0"
+	//
+	// echo "任务参数: $1"
+	//
+	// echo "分片序号 = $2"
+	//
+	// echo "分片总数 = $3"
+	//
+	// echo "Good bye!"
+	//
+	// exit 0
 	ScriptContent *string `json:"ScriptContent,omitempty" xml:"ScriptContent,omitempty"`
+	// The script version description.
+	//
 	// example:
 	//
 	// init version

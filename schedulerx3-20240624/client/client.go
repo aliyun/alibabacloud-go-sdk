@@ -24,7 +24,21 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"eu-central-1":          dara.String("schedulerx3.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("schedulerx3.cn-zhangjiakou.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("schedulerx3.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("schedulerx3.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shanghai":           dara.String("schedulerx3.cn-shanghai.aliyuncs.com"),
+		"cn-hongkong":           dara.String("schedulerx3.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("schedulerx3.cn-hangzhou.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("schedulerx3.cn-guangzhou.aliyuncs.com"),
+		"cn-chengdu":            dara.String("schedulerx3.cn-chengdu.aliyuncs.com"),
+		"cn-beijing":            dara.String("schedulerx3.cn-beijing.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("schedulerx3.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("schedulerx3.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +72,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Creates an application.
+// Creates an app.
 //
 // @param request - CreateAppRequest
 //
@@ -130,7 +144,7 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *d
 
 // Summary:
 //
-// Creates an application.
+// Creates an app.
 //
 // @param request - CreateAppRequest
 //
@@ -148,7 +162,11 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 
 // Summary:
 //
-// 创建日历
+// Creates a custom calendar.
+//
+// Description:
+//
+// Creates a custom calendar for SchedulerX.
 //
 // @param request - CreateCalendarRequest
 //
@@ -208,7 +226,11 @@ func (client *Client) CreateCalendarWithOptions(request *CreateCalendarRequest, 
 
 // Summary:
 //
-// 创建日历
+// Creates a custom calendar.
+//
+// Description:
+//
+// Creates a custom calendar for SchedulerX.
 //
 // @param request - CreateCalendarRequest
 //
@@ -280,6 +302,10 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 		body["PricingCycle"] = request.PricingCycle
 	}
 
+	if !dara.IsNil(request.Source) {
+		body["Source"] = request.Source
+	}
+
 	if !dara.IsNil(request.VSwitchesShrink) {
 		body["VSwitches"] = request.VSwitchesShrink
 	}
@@ -332,7 +358,7 @@ func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *Cre
 
 // Summary:
 //
-// 创建数据源
+// # Create a data source
 //
 // @param request - CreateDatasourceRequest
 //
@@ -396,7 +422,7 @@ func (client *Client) CreateDatasourceWithOptions(request *CreateDatasourceReque
 
 // Summary:
 //
-// 创建数据源
+// # Create a data source
 //
 // @param request - CreateDatasourceRequest
 //
@@ -415,6 +441,10 @@ func (client *Client) CreateDatasource(request *CreateDatasourceRequest) (_resul
 // Summary:
 //
 // 添加执行器组
+//
+// Description:
+//
+// 手动导入执行器
 //
 // @param request - CreateExecutorGroupRequest
 //
@@ -508,6 +538,10 @@ func (client *Client) CreateExecutorGroupWithOptions(request *CreateExecutorGrou
 //
 // 添加执行器组
 //
+// Description:
+//
+// 手动导入执行器
+//
 // @param request - CreateExecutorGroupRequest
 //
 // @return CreateExecutorGroupResponse
@@ -524,7 +558,11 @@ func (client *Client) CreateExecutorGroup(request *CreateExecutorGroupRequest) (
 
 // Summary:
 //
-// 添加执行器
+// Imports one or more executors.
+//
+// Description:
+//
+// Imports one or more executors.
 //
 // @param request - CreateExecutorsRequest
 //
@@ -580,7 +618,11 @@ func (client *Client) CreateExecutorsWithOptions(request *CreateExecutorsRequest
 
 // Summary:
 //
-// 添加执行器
+// Imports one or more executors.
+//
+// Description:
+//
+// Imports one or more executors.
 //
 // @param request - CreateExecutorsRequest
 //
@@ -598,7 +640,7 @@ func (client *Client) CreateExecutors(request *CreateExecutorsRequest) (_result 
 
 // Summary:
 //
-// Creates a job.
+// Creates a node.
 //
 // @param tmpReq - CreateJobRequest
 //
@@ -764,7 +806,7 @@ func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *da
 
 // Summary:
 //
-// Creates a job.
+// Creates a node.
 //
 // @param request - CreateJobRequest
 //
@@ -782,7 +824,7 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 
 // Summary:
 //
-// 创建应用
+// Creates a workflow.
 //
 // @param request - CreateWorkflowRequest
 //
@@ -866,7 +908,7 @@ func (client *Client) CreateWorkflowWithOptions(request *CreateWorkflowRequest, 
 
 // Summary:
 //
-// 创建应用
+// Creates a workflow.
 //
 // @param request - CreateWorkflowRequest
 //
@@ -884,7 +926,7 @@ func (client *Client) CreateWorkflow(request *CreateWorkflowRequest) (_result *C
 
 // Summary:
 //
-// Deletes an application group.
+// Deletes an App Group.
 //
 // @param request - DeleteAppRequest
 //
@@ -932,7 +974,7 @@ func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *d
 
 // Summary:
 //
-// Deletes an application group.
+// Deletes an App Group.
 //
 // @param request - DeleteAppRequest
 //
@@ -950,7 +992,7 @@ func (client *Client) DeleteApp(request *DeleteAppRequest) (_result *DeleteAppRe
 
 // Summary:
 //
-// 删除日历
+// Deletes the specified calendar.
 //
 // @param request - DeleteCalendarRequest
 //
@@ -1002,7 +1044,7 @@ func (client *Client) DeleteCalendarWithOptions(request *DeleteCalendarRequest, 
 
 // Summary:
 //
-// 删除日历
+// Deletes the specified calendar.
 //
 // @param request - DeleteCalendarRequest
 //
@@ -1082,7 +1124,7 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 
 // Summary:
 //
-// 删除数据源
+// # Delete data source
 //
 // @param request - DeleteDatasourceRequest
 //
@@ -1130,7 +1172,7 @@ func (client *Client) DeleteDatasourceWithOptions(request *DeleteDatasourceReque
 
 // Summary:
 //
-// 删除数据源
+// # Delete data source
 //
 // @param request - DeleteDatasourceRequest
 //
@@ -1218,7 +1260,7 @@ func (client *Client) DeleteExecutorGroup(request *DeleteExecutorGroupRequest) (
 
 // Summary:
 //
-// Deletes multiple jobs at a time.
+// Deletes multiple jobs in a batch.
 //
 // @param tmpReq - DeleteJobsRequest
 //
@@ -1276,7 +1318,7 @@ func (client *Client) DeleteJobsWithOptions(tmpReq *DeleteJobsRequest, runtime *
 
 // Summary:
 //
-// Deletes multiple jobs at a time.
+// Deletes multiple jobs in a batch.
 //
 // @param request - DeleteJobsRequest
 //
@@ -1294,7 +1336,7 @@ func (client *Client) DeleteJobs(request *DeleteJobsRequest) (_result *DeleteJob
 
 // Summary:
 //
-// 删除工作流
+// Deletes a Workflow.
 //
 // @param request - DeleteWorkflowRequest
 //
@@ -1350,7 +1392,7 @@ func (client *Client) DeleteWorkflowWithOptions(request *DeleteWorkflowRequest, 
 
 // Summary:
 //
-// 删除工作流
+// Deletes a Workflow.
 //
 // @param request - DeleteWorkflowRequest
 //
@@ -1368,7 +1410,7 @@ func (client *Client) DeleteWorkflow(request *DeleteWorkflowRequest) (_result *D
 
 // Summary:
 //
-// 批量删除工作流
+// Deletes one or more workflows.
 //
 // @param tmpReq - DeleteWorkflowsRequest
 //
@@ -1430,7 +1472,7 @@ func (client *Client) DeleteWorkflowsWithOptions(tmpReq *DeleteWorkflowsRequest,
 
 // Summary:
 //
-// 批量删除工作流
+// Deletes one or more workflows.
 //
 // @param request - DeleteWorkflowsRequest
 //
@@ -1448,7 +1490,7 @@ func (client *Client) DeleteWorkflows(request *DeleteWorkflowsRequest) (_result 
 
 // Summary:
 //
-// Exports the information about jobs at a time.
+// Exports job information in bulk.
 //
 // @param tmpReq - ExportJobsRequest
 //
@@ -1510,7 +1552,7 @@ func (client *Client) ExportJobsWithOptions(tmpReq *ExportJobsRequest, runtime *
 
 // Summary:
 //
-// Exports the information about jobs at a time.
+// Exports job information in bulk.
 //
 // @param request - ExportJobsRequest
 //
@@ -1528,7 +1570,7 @@ func (client *Client) ExportJobs(request *ExportJobsRequest) (_result *ExportJob
 
 // Summary:
 //
-// 批量导出工作流信息
+// Exports the definitions of one or more Workflows in JSON format. The exported data includes the basic information, all Nodes, and the Directed Acyclic Graph (DAG) dependencies for each Workflow.
 //
 // @param tmpReq - ExportWorkflowsRequest
 //
@@ -1586,7 +1628,7 @@ func (client *Client) ExportWorkflowsWithOptions(tmpReq *ExportWorkflowsRequest,
 
 // Summary:
 //
-// 批量导出工作流信息
+// Exports the definitions of one or more Workflows in JSON format. The exported data includes the basic information, all Nodes, and the Directed Acyclic Graph (DAG) dependencies for each Workflow.
 //
 // @param request - ExportWorkflowsRequest
 //
@@ -1604,7 +1646,7 @@ func (client *Client) ExportWorkflows(request *ExportWorkflowsRequest) (_result 
 
 // Summary:
 //
-// 获取指定应用
+// Retrieves the details of a specified application.
 //
 // @param request - GetAppRequest
 //
@@ -1652,7 +1694,7 @@ func (client *Client) GetAppWithOptions(request *GetAppRequest, runtime *dara.Ru
 
 // Summary:
 //
-// 获取指定应用
+// Retrieves the details of a specified application.
 //
 // @param request - GetAppRequest
 //
@@ -1670,7 +1712,7 @@ func (client *Client) GetApp(request *GetAppRequest) (_result *GetAppResponse, _
 
 // Summary:
 //
-// 获取日历信息
+// Retrieves the details of a specified calendar.
 //
 // @param request - GetCalendarRequest
 //
@@ -1722,7 +1764,7 @@ func (client *Client) GetCalendarWithOptions(request *GetCalendarRequest, runtim
 
 // Summary:
 //
-// 获取日历信息
+// Retrieves the details of a specified calendar.
 //
 // @param request - GetCalendarRequest
 //
@@ -1740,7 +1782,7 @@ func (client *Client) GetCalendar(request *GetCalendarRequest) (_result *GetCale
 
 // Summary:
 //
-// Queries the details of a cluster.
+// Obtains the details of a cluster.
 //
 // @param request - GetClusterRequest
 //
@@ -1780,7 +1822,7 @@ func (client *Client) GetClusterWithOptions(request *GetClusterRequest, runtime 
 
 // Summary:
 //
-// Queries the details of a cluster.
+// Obtains the details of a cluster.
 //
 // @param request - GetClusterRequest
 //
@@ -1798,7 +1840,7 @@ func (client *Client) GetCluster(request *GetClusterRequest) (_result *GetCluste
 
 // Summary:
 //
-// Queries a specified machine.
+// Retrieves the designation information for a job.
 //
 // @param request - GetDesigateInfoRequest
 //
@@ -1838,7 +1880,7 @@ func (client *Client) GetDesigateInfoWithOptions(request *GetDesigateInfoRequest
 
 // Summary:
 //
-// Queries a specified machine.
+// Retrieves the designation information for a job.
 //
 // @param request - GetDesigateInfoRequest
 //
@@ -1856,7 +1898,17 @@ func (client *Client) GetDesigateInfo(request *GetDesigateInfoRequest) (_result 
 
 // Summary:
 //
-// 查询执行器配置信息
+// Retrieves the configuration for a specified Executor.
+//
+// Description:
+//
+// # Add the enhancement plugin
+//
+// Add the Enhancement Plugin to your `pom.xml` file to extend the Executor\\"s capabilities.
+//
+// **Note**: Place this plugin **before*	- the `xxl-job-core` dependency in the `pom.xml` file.
+//
+// **For more information, see**: [Plugin Version Documentation](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - GetExecutorConfigRequest
 //
@@ -1904,7 +1956,17 @@ func (client *Client) GetExecutorConfigWithOptions(request *GetExecutorConfigReq
 
 // Summary:
 //
-// 查询执行器配置信息
+// Retrieves the configuration for a specified Executor.
+//
+// Description:
+//
+// # Add the enhancement plugin
+//
+// Add the Enhancement Plugin to your `pom.xml` file to extend the Executor\\"s capabilities.
+//
+// **Note**: Place this plugin **before*	- the `xxl-job-core` dependency in the `pom.xml` file.
+//
+// **For more information, see**: [Plugin Version Documentation](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - GetExecutorConfigRequest
 //
@@ -1922,7 +1984,7 @@ func (client *Client) GetExecutorConfig(request *GetExecutorConfigRequest) (_res
 
 // Summary:
 //
-// 获取任务执行的详细信息
+// Returns the details of a Task Execution.
 //
 // @param request - GetJobExecutionRequest
 //
@@ -1978,7 +2040,7 @@ func (client *Client) GetJobExecutionWithOptions(request *GetJobExecutionRequest
 
 // Summary:
 //
-// 获取任务执行的详细信息
+// Returns the details of a Task Execution.
 //
 // @param request - GetJobExecutionRequest
 //
@@ -1996,7 +2058,17 @@ func (client *Client) GetJobExecution(request *GetJobExecutionRequest) (_result 
 
 // Summary:
 //
-// Obtains the execution details of a job.
+// Gets the details of a sharding task execution.
+//
+// Description:
+//
+// # Add the enhancement plugin
+//
+// Add the Enhancement Plugin to your `pom.xml` file to enhance the capabilities of the Executor.
+//
+// **Note**: Place this plugin **above*	- the `xxl-job-core` dependency in your pom.xml.
+//
+// **See also**: [Plugin Release Notes](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - GetJobExecutionProgressRequest
 //
@@ -2036,7 +2108,17 @@ func (client *Client) GetJobExecutionProgressWithOptions(request *GetJobExecutio
 
 // Summary:
 //
-// Obtains the execution details of a job.
+// Gets the details of a sharding task execution.
+//
+// Description:
+//
+// # Add the enhancement plugin
+//
+// Add the Enhancement Plugin to your `pom.xml` file to enhance the capabilities of the Executor.
+//
+// **Note**: Place this plugin **above*	- the `xxl-job-core` dependency in your pom.xml.
+//
+// **See also**: [Plugin Release Notes](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - GetJobExecutionProgressRequest
 //
@@ -2054,7 +2136,17 @@ func (client *Client) GetJobExecutionProgress(request *GetJobExecutionProgressRe
 
 // Summary:
 //
-// 查询任务的线程堆栈
+// Retrieves the thread dump for a specific job execution.
+//
+// Description:
+//
+// # Add the enhancement plugin
+//
+// Add the Enhancement Plugin to your `pom.xml` file to extend the executor\\"s capabilities.
+//
+// **Note**: Place this plugin **above*	- the `xxl-job-core` dependency.
+//
+// **For more information, see**: [Plugin versioning documentation](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - GetJobExecutionThreadDumpRequest
 //
@@ -2094,7 +2186,17 @@ func (client *Client) GetJobExecutionThreadDumpWithOptions(request *GetJobExecut
 
 // Summary:
 //
-// 查询任务的线程堆栈
+// Retrieves the thread dump for a specific job execution.
+//
+// Description:
+//
+// # Add the enhancement plugin
+//
+// Add the Enhancement Plugin to your `pom.xml` file to extend the executor\\"s capabilities.
+//
+// **Note**: Place this plugin **above*	- the `xxl-job-core` dependency.
+//
+// **For more information, see**: [Plugin versioning documentation](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - GetJobExecutionThreadDumpRequest
 //
@@ -2112,7 +2214,7 @@ func (client *Client) GetJobExecutionThreadDump(request *GetJobExecutionThreadDu
 
 // Summary:
 //
-// Queries logs.
+// Retrieves log entries.
 //
 // @param request - GetLogRequest
 //
@@ -2152,7 +2254,7 @@ func (client *Client) GetLogWithOptions(request *GetLogRequest, runtime *dara.Ru
 
 // Summary:
 //
-// Queries logs.
+// Retrieves log entries.
 //
 // @param request - GetLogRequest
 //
@@ -2170,7 +2272,7 @@ func (client *Client) GetLog(request *GetLogRequest) (_result *GetLogResponse, _
 
 // Summary:
 //
-// 查询事件
+// Query Events.
 //
 // @param request - GetLogEventRequest
 //
@@ -2210,7 +2312,7 @@ func (client *Client) GetLogEventWithOptions(request *GetLogEventRequest, runtim
 
 // Summary:
 //
-// 查询事件
+// Query Events.
 //
 // @param request - GetLogEventRequest
 //
@@ -2229,6 +2331,16 @@ func (client *Client) GetLogEvent(request *GetLogEventRequest) (_result *GetLogE
 // Summary:
 //
 // 获取分页日志
+//
+// Description:
+//
+// # 引入增强插件
+//
+// 在`pom.xml`文件中添加增强插件以提升Executor的能力。
+//
+// **注意**：请确保该插件在pom中放置在`xxl-job-core` 依赖的**上方**。
+//
+// **详细信息请参考**：[插件版本说明文档](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - GetPageLogRequest
 //
@@ -2314,6 +2426,16 @@ func (client *Client) GetPageLogWithOptions(request *GetPageLogRequest, runtime 
 //
 // 获取分页日志
 //
+// Description:
+//
+// # 引入增强插件
+//
+// 在`pom.xml`文件中添加增强插件以提升Executor的能力。
+//
+// **注意**：请确保该插件在pom中放置在`xxl-job-core` 依赖的**上方**。
+//
+// **详细信息请参考**：[插件版本说明文档](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
+//
 // @param request - GetPageLogRequest
 //
 // @return GetPageLogResponse
@@ -2330,7 +2452,7 @@ func (client *Client) GetPageLog(request *GetPageLogRequest) (_result *GetPageLo
 
 // Summary:
 //
-// 获取工作流
+// Retrieves the basic information for a specified workflow.
 //
 // @param request - GetWorkflowRequest
 //
@@ -2382,7 +2504,7 @@ func (client *Client) GetWorkflowWithOptions(request *GetWorkflowRequest, runtim
 
 // Summary:
 //
-// 获取工作流
+// Retrieves the basic information for a specified workflow.
 //
 // @param request - GetWorkflowRequest
 //
@@ -2400,7 +2522,7 @@ func (client *Client) GetWorkflow(request *GetWorkflowRequest) (_result *GetWork
 
 // Summary:
 //
-// 获取工作流的DAG信息
+// Gets the Directed Acyclic Graph (DAG) of a workflow.
 //
 // @param request - GetWorkflowDAGRequest
 //
@@ -2452,7 +2574,7 @@ func (client *Client) GetWorkflowDAGWithOptions(request *GetWorkflowDAGRequest, 
 
 // Summary:
 //
-// 获取工作流的DAG信息
+// Gets the Directed Acyclic Graph (DAG) of a workflow.
 //
 // @param request - GetWorkflowDAGRequest
 //
@@ -2470,7 +2592,7 @@ func (client *Client) GetWorkflowDAG(request *GetWorkflowDAGRequest) (_result *G
 
 // Summary:
 //
-// 获取工作流的DAG信息
+// Gets the DAG for a previous workflow version.
 //
 // @param request - GetWorkflowDAGPreviewRequest
 //
@@ -2526,7 +2648,7 @@ func (client *Client) GetWorkflowDAGPreviewWithOptions(request *GetWorkflowDAGPr
 
 // Summary:
 //
-// 获取工作流的DAG信息
+// Gets the DAG for a previous workflow version.
 //
 // @param request - GetWorkflowDAGPreviewRequest
 //
@@ -2544,7 +2666,7 @@ func (client *Client) GetWorkflowDAGPreview(request *GetWorkflowDAGPreviewReques
 
 // Summary:
 //
-// 获取工作流实例DAG信息
+// Retrieve the DAG information for a workflow instance.
 //
 // @param request - GetWorkflowExecutionDAGRequest
 //
@@ -2596,7 +2718,7 @@ func (client *Client) GetWorkflowExecutionDAGWithOptions(request *GetWorkflowExe
 
 // Summary:
 //
-// 获取工作流实例DAG信息
+// Retrieve the DAG information for a workflow instance.
 //
 // @param request - GetWorkflowExecutionDAGRequest
 //
@@ -2688,7 +2810,7 @@ func (client *Client) ImportCalendar(request *ImportCalendarRequest) (_result *I
 
 // Summary:
 //
-// Imports jobs at a time.
+// Imports jobs in bulk.
 //
 // @param request - ImportJobsRequest
 //
@@ -2744,7 +2866,7 @@ func (client *Client) ImportJobsWithOptions(request *ImportJobsRequest, runtime 
 
 // Summary:
 //
-// Imports jobs at a time.
+// Imports jobs in bulk.
 //
 // @param request - ImportJobsRequest
 //
@@ -2762,7 +2884,7 @@ func (client *Client) ImportJobs(request *ImportJobsRequest) (_result *ImportJob
 
 // Summary:
 //
-// 批量导入工作流
+// Imports one or more workflows.
 //
 // @param request - ImportWorkflowsRequest
 //
@@ -2818,7 +2940,7 @@ func (client *Client) ImportWorkflowsWithOptions(request *ImportWorkflowsRequest
 
 // Summary:
 //
-// 批量导入工作流
+// Imports one or more workflows.
 //
 // @param request - ImportWorkflowsRequest
 //
@@ -2836,7 +2958,7 @@ func (client *Client) ImportWorkflows(request *ImportWorkflowsRequest) (_result 
 
 // Summary:
 //
-// Obtains a list of alert events.
+// Retrieves alert events.
 //
 // @param request - ListAlarmEventRequest
 //
@@ -2876,7 +2998,7 @@ func (client *Client) ListAlarmEventWithOptions(request *ListAlarmEventRequest, 
 
 // Summary:
 //
-// Obtains a list of alert events.
+// Retrieves alert events.
 //
 // @param request - ListAlarmEventRequest
 //
@@ -2894,7 +3016,7 @@ func (client *Client) ListAlarmEvent(request *ListAlarmEventRequest) (_result *L
 
 // Summary:
 //
-// Obtains a list of application names.
+// Returns a list of application names.
 //
 // @param request - ListAppNamesRequest
 //
@@ -2934,7 +3056,7 @@ func (client *Client) ListAppNamesWithOptions(request *ListAppNamesRequest, runt
 
 // Summary:
 //
-// Obtains a list of application names.
+// Returns a list of application names.
 //
 // @param request - ListAppNamesRequest
 //
@@ -2952,7 +3074,7 @@ func (client *Client) ListAppNames(request *ListAppNamesRequest) (_result *ListA
 
 // Summary:
 //
-// Queries a list of applications.
+// Get the list of applications.
 //
 // @param request - ListAppsRequest
 //
@@ -2992,7 +3114,7 @@ func (client *Client) ListAppsWithOptions(request *ListAppsRequest, runtime *dar
 
 // Summary:
 //
-// Queries a list of applications.
+// Get the list of applications.
 //
 // @param request - ListAppsRequest
 //
@@ -3010,7 +3132,7 @@ func (client *Client) ListApps(request *ListAppsRequest) (_result *ListAppsRespo
 
 // Summary:
 //
-// Obtains a list of calendar names.
+// Lists all Calendar names.
 //
 // @param request - ListCalendarNamesRequest
 //
@@ -3050,7 +3172,7 @@ func (client *Client) ListCalendarNamesWithOptions(request *ListCalendarNamesReq
 
 // Summary:
 //
-// Obtains a list of calendar names.
+// Lists all Calendar names.
 //
 // @param request - ListCalendarNamesRequest
 //
@@ -3068,7 +3190,7 @@ func (client *Client) ListCalendarNames(request *ListCalendarNamesRequest) (_res
 
 // Summary:
 //
-// 查询日历
+// Retrieves a list of calendars.
 //
 // @param request - ListCalendarsRequest
 //
@@ -3132,7 +3254,7 @@ func (client *Client) ListCalendarsWithOptions(request *ListCalendarsRequest, ru
 
 // Summary:
 //
-// 查询日历
+// Retrieves a list of calendars.
 //
 // @param request - ListCalendarsRequest
 //
@@ -3150,7 +3272,7 @@ func (client *Client) ListCalendars(request *ListCalendarsRequest) (_result *Lis
 
 // Summary:
 //
-// Queries a list of instances.
+// Query the list of instances.
 //
 // @param request - ListClustersRequest
 //
@@ -3190,7 +3312,7 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 
 // Summary:
 //
-// Queries a list of instances.
+// Query the list of instances.
 //
 // @param request - ListClustersRequest
 //
@@ -3208,7 +3330,7 @@ func (client *Client) ListClusters(request *ListClustersRequest) (_result *ListC
 
 // Summary:
 //
-// 获取数据源列表
+// # Retrieve the data source list
 //
 // @param request - ListDatasourcesRequest
 //
@@ -3276,7 +3398,7 @@ func (client *Client) ListDatasourcesWithOptions(request *ListDatasourcesRequest
 
 // Summary:
 //
-// 获取数据源列表
+// # Retrieve the data source list
 //
 // @param request - ListDatasourcesRequest
 //
@@ -3295,6 +3417,16 @@ func (client *Client) ListDatasources(request *ListDatasourcesRequest) (_result 
 // Summary:
 //
 // 获取执行器组列表
+//
+// Description:
+//
+// # 引入增强插件
+//
+// 在`pom.xml`文件中添加增强插件以提升Executor的能力。
+//
+// **注意**：请确保该插件在pom中放置在`xxl-job-core` 依赖的**上方**。
+//
+// **详细信息请参考**：[插件版本说明文档](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - ListExecutorGroupRequest
 //
@@ -3364,6 +3496,16 @@ func (client *Client) ListExecutorGroupWithOptions(request *ListExecutorGroupReq
 //
 // 获取执行器组列表
 //
+// Description:
+//
+// # 引入增强插件
+//
+// 在`pom.xml`文件中添加增强插件以提升Executor的能力。
+//
+// **注意**：请确保该插件在pom中放置在`xxl-job-core` 依赖的**上方**。
+//
+// **详细信息请参考**：[插件版本说明文档](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
+//
 // @param request - ListExecutorGroupRequest
 //
 // @return ListExecutorGroupResponse
@@ -3380,7 +3522,7 @@ func (client *Client) ListExecutorGroup(request *ListExecutorGroupRequest) (_res
 
 // Summary:
 //
-// Queries a list of executors.
+// Lists executors.
 //
 // @param request - ListExecutorsRequest
 //
@@ -3420,7 +3562,7 @@ func (client *Client) ListExecutorsWithOptions(request *ListExecutorsRequest, ru
 
 // Summary:
 //
-// Queries a list of executors.
+// Lists executors.
 //
 // @param request - ListExecutorsRequest
 //
@@ -3438,7 +3580,7 @@ func (client *Client) ListExecutors(request *ListExecutorsRequest) (_result *Lis
 
 // Summary:
 //
-// Obtains a list of job instances.
+// Returns a list of task instances.
 //
 // @param request - ListJobExecutionsRequest
 //
@@ -3522,7 +3664,7 @@ func (client *Client) ListJobExecutionsWithOptions(request *ListJobExecutionsReq
 
 // Summary:
 //
-// Obtains a list of job instances.
+// Returns a list of task instances.
 //
 // @param request - ListJobExecutionsRequest
 //
@@ -3540,7 +3682,7 @@ func (client *Client) ListJobExecutions(request *ListJobExecutionsRequest) (_res
 
 // Summary:
 //
-// 获取任务脚本历史列表
+// Lists the script history for a job.
 //
 // @param request - ListJobScriptHistoryRequest
 //
@@ -3600,7 +3742,7 @@ func (client *Client) ListJobScriptHistoryWithOptions(request *ListJobScriptHist
 
 // Summary:
 //
-// 获取任务脚本历史列表
+// Lists the script history for a job.
 //
 // @param request - ListJobScriptHistoryRequest
 //
@@ -3618,7 +3760,7 @@ func (client *Client) ListJobScriptHistory(request *ListJobScriptHistoryRequest)
 
 // Summary:
 //
-// Queries a list of jobs.
+// Returns a task list.
 //
 // @param request - ListJobsRequest
 //
@@ -3698,7 +3840,7 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *dar
 
 // Summary:
 //
-// Queries a list of jobs.
+// Returns a task list.
 //
 // @param request - ListJobsRequest
 //
@@ -3716,7 +3858,17 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 
 // Summary:
 //
-// 获取k8s资源列表
+// Lists k8s resources.
+//
+// Description:
+//
+// # Add the enhancement plugin
+//
+// Add the enhancement plugin to your `pom.xml` file to extend the Executor\\"s capabilities.
+//
+// **Note**: Place this plugin **above*	- the `xxl-job-core` dependency in your pom.xml file.
+//
+// **For more information:*	- [Plugin version release notes](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - ListK8sResourceRequest
 //
@@ -3776,7 +3928,17 @@ func (client *Client) ListK8sResourceWithOptions(request *ListK8sResourceRequest
 
 // Summary:
 //
-// 获取k8s资源列表
+// Lists k8s resources.
+//
+// Description:
+//
+// # Add the enhancement plugin
+//
+// Add the enhancement plugin to your `pom.xml` file to extend the Executor\\"s capabilities.
+//
+// **Note**: Place this plugin **above*	- the `xxl-job-core` dependency in your pom.xml file.
+//
+// **For more information:*	- [Plugin version release notes](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - ListK8sResourceRequest
 //
@@ -3794,7 +3956,7 @@ func (client *Client) ListK8sResource(request *ListK8sResourceRequest) (_result 
 
 // Summary:
 //
-// Obtains a list of tags of an executor.
+// Retrieves a list of labels for an Executor.
 //
 // @param request - ListLablesRequest
 //
@@ -3834,7 +3996,7 @@ func (client *Client) ListLablesWithOptions(request *ListLablesRequest, runtime 
 
 // Summary:
 //
-// Obtains a list of tags of an executor.
+// Retrieves a list of labels for an Executor.
 //
 // @param request - ListLablesRequest
 //
@@ -3852,7 +4014,7 @@ func (client *Client) ListLables(request *ListLablesRequest) (_result *ListLable
 
 // Summary:
 //
-// Obtains a list of zones.
+// Obtain the zone list.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3881,7 +4043,7 @@ func (client *Client) ListRegionZoneWithOptions(runtime *dara.RuntimeOptions) (_
 
 // Summary:
 //
-// Obtains a list of zones.
+// Obtain the zone list.
 //
 // @return ListRegionZoneResponse
 func (client *Client) ListRegionZone() (_result *ListRegionZoneResponse, _err error) {
@@ -3897,7 +4059,7 @@ func (client *Client) ListRegionZone() (_result *ListRegionZoneResponse, _err er
 
 // Summary:
 //
-// Obtains a list of all regions.
+// Obtain the List of all Regions.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3926,7 +4088,7 @@ func (client *Client) ListRegionsWithOptions(runtime *dara.RuntimeOptions) (_res
 
 // Summary:
 //
-// Obtains a list of all regions.
+// Obtain the List of all Regions.
 //
 // @return ListRegionsResponse
 func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
@@ -3942,7 +4104,7 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 
 // Summary:
 //
-// Queries scheduling events.
+// Lists scheduled events.
 //
 // @param request - ListScheduleEventRequest
 //
@@ -3982,7 +4144,7 @@ func (client *Client) ListScheduleEventWithOptions(request *ListScheduleEventReq
 
 // Summary:
 //
-// Queries scheduling events.
+// Lists scheduled events.
 //
 // @param request - ListScheduleEventRequest
 //
@@ -4000,7 +4162,7 @@ func (client *Client) ListScheduleEvent(request *ListScheduleEventRequest) (_res
 
 // Summary:
 //
-// Obtains the scheduling time points of the next five jobs. The scheduling time points are specified by time types or expressions.
+// Retrieves the next five scheduled times based on the specified time type and time expression.
 //
 // @param request - ListScheduleTimesRequest
 //
@@ -4040,7 +4202,7 @@ func (client *Client) ListScheduleTimesWithOptions(request *ListScheduleTimesReq
 
 // Summary:
 //
-// Obtains the scheduling time points of the next five jobs. The scheduling time points are specified by time types or expressions.
+// Retrieves the next five scheduled times based on the specified time type and time expression.
 //
 // @param request - ListScheduleTimesRequest
 //
@@ -4058,7 +4220,7 @@ func (client *Client) ListScheduleTimes(request *ListScheduleTimesRequest) (_res
 
 // Summary:
 //
-// 获取流程实例列表
+// Retrieves a list of workflow instances.
 //
 // @param request - ListWorkflowExecutionsRequest
 //
@@ -4146,7 +4308,7 @@ func (client *Client) ListWorkflowExecutionsWithOptions(request *ListWorkflowExe
 
 // Summary:
 //
-// 获取流程实例列表
+// Retrieves a list of workflow instances.
 //
 // @param request - ListWorkflowExecutionsRequest
 //
@@ -4164,7 +4326,7 @@ func (client *Client) ListWorkflowExecutions(request *ListWorkflowExecutionsRequ
 
 // Summary:
 //
-// 获取当前工作流版本列表
+// Lists the versions for a specified workflow.
 //
 // @param request - ListWorkflowVersionsRequest
 //
@@ -4224,7 +4386,7 @@ func (client *Client) ListWorkflowVersionsWithOptions(request *ListWorkflowVersi
 
 // Summary:
 //
-// 获取当前工作流版本列表
+// Lists the versions for a specified workflow.
 //
 // @param request - ListWorkflowVersionsRequest
 //
@@ -4242,7 +4404,7 @@ func (client *Client) ListWorkflowVersions(request *ListWorkflowVersionsRequest)
 
 // Summary:
 //
-// 获取工作流列表
+// Lists your workflows.
 //
 // @param request - ListWorkflowsRequest
 //
@@ -4322,7 +4484,7 @@ func (client *Client) ListWorkflowsWithOptions(request *ListWorkflowsRequest, ru
 
 // Summary:
 //
-// 获取工作流列表
+// Lists your workflows.
 //
 // @param request - ListWorkflowsRequest
 //
@@ -4340,7 +4502,7 @@ func (client *Client) ListWorkflows(request *ListWorkflowsRequest) (_result *Lis
 
 // Summary:
 //
-// 补数工作流
+// Backfills historical data for a specified workflow.
 //
 // @param request - OperateBackfillWorkflowRequest
 //
@@ -4400,7 +4562,7 @@ func (client *Client) OperateBackfillWorkflowWithOptions(request *OperateBackfil
 
 // Summary:
 //
-// 补数工作流
+// Backfills historical data for a specified workflow.
 //
 // @param request - OperateBackfillWorkflowRequest
 //
@@ -4418,7 +4580,7 @@ func (client *Client) OperateBackfillWorkflow(request *OperateBackfillWorkflowRe
 
 // Summary:
 //
-// 连接数据源
+// # Connect to a data source
 //
 // @param request - OperateConnectDatasourceRequest
 //
@@ -4474,7 +4636,7 @@ func (client *Client) OperateConnectDatasourceWithOptions(request *OperateConnec
 
 // Summary:
 //
-// 连接数据源
+// # Connect to a data source
 //
 // @param request - OperateConnectDatasourceRequest
 //
@@ -4492,7 +4654,7 @@ func (client *Client) OperateConnectDatasource(request *OperateConnectDatasource
 
 // Summary:
 //
-// Designates executors.
+// Designates one or more executors for a job.
 //
 // @param tmpReq - OperateDesignateExecutorsRequest
 //
@@ -4562,7 +4724,7 @@ func (client *Client) OperateDesignateExecutorsWithOptions(tmpReq *OperateDesign
 
 // Summary:
 //
-// Designates executors.
+// Designates one or more executors for a job.
 //
 // @param request - OperateDesignateExecutorsRequest
 //
@@ -4580,7 +4742,7 @@ func (client *Client) OperateDesignateExecutors(request *OperateDesignateExecuto
 
 // Summary:
 //
-// Disables multiple jobs at a time.
+// Disables multiple jobs.
 //
 // @param tmpReq - OperateDisableJobsRequest
 //
@@ -4638,7 +4800,7 @@ func (client *Client) OperateDisableJobsWithOptions(tmpReq *OperateDisableJobsRe
 
 // Summary:
 //
-// Disables multiple jobs at a time.
+// Disables multiple jobs.
 //
 // @param request - OperateDisableJobsRequest
 //
@@ -4656,7 +4818,11 @@ func (client *Client) OperateDisableJobs(request *OperateDisableJobsRequest) (_r
 
 // Summary:
 //
-// 批量禁用工作流
+// Disables one or more workflows.
+//
+// Description:
+//
+// Disables one or more specified workflows.
 //
 // @param tmpReq - OperateDisableWorkflowsRequest
 //
@@ -4714,7 +4880,11 @@ func (client *Client) OperateDisableWorkflowsWithOptions(tmpReq *OperateDisableW
 
 // Summary:
 //
-// 批量禁用工作流
+// Disables one or more workflows.
+//
+// Description:
+//
+// Disables one or more specified workflows.
 //
 // @param request - OperateDisableWorkflowsRequest
 //
@@ -4732,7 +4902,7 @@ func (client *Client) OperateDisableWorkflows(request *OperateDisableWorkflowsRe
 
 // Summary:
 //
-// Enables multiple jobs at a time.
+// Enables multiple jobs in a batch.
 //
 // @param tmpReq - OperateEnableJobsRequest
 //
@@ -4790,7 +4960,7 @@ func (client *Client) OperateEnableJobsWithOptions(tmpReq *OperateEnableJobsRequ
 
 // Summary:
 //
-// Enables multiple jobs at a time.
+// Enables multiple jobs in a batch.
 //
 // @param request - OperateEnableJobsRequest
 //
@@ -4808,7 +4978,7 @@ func (client *Client) OperateEnableJobs(request *OperateEnableJobsRequest) (_res
 
 // Summary:
 //
-// 批量启用工作流
+// Enables one or more workflows.
 //
 // @param tmpReq - OperateEnableWorkflowsRequest
 //
@@ -4866,7 +5036,7 @@ func (client *Client) OperateEnableWorkflowsWithOptions(tmpReq *OperateEnableWor
 
 // Summary:
 //
-// 批量启用工作流
+// Enables one or more workflows.
 //
 // @param request - OperateEnableWorkflowsRequest
 //
@@ -4884,7 +5054,7 @@ func (client *Client) OperateEnableWorkflows(request *OperateEnableWorkflowsRequ
 
 // Summary:
 //
-// Runs a job once.
+// Executes a job on demand.
 //
 // @param request - OperateExecuteJobRequest
 //
@@ -4948,7 +5118,7 @@ func (client *Client) OperateExecuteJobWithOptions(request *OperateExecuteJobReq
 
 // Summary:
 //
-// Runs a job once.
+// Executes a job on demand.
 //
 // @param request - OperateExecuteJobRequest
 //
@@ -4966,7 +5136,11 @@ func (client *Client) OperateExecuteJob(request *OperateExecuteJobRequest) (_res
 
 // Summary:
 //
-// 运行一次工作流
+// Executes a workflow.
+//
+// Description:
+//
+// This operation starts a new workflow instance.
 //
 // @param request - OperateExecuteWorkflowRequest
 //
@@ -5018,7 +5192,11 @@ func (client *Client) OperateExecuteWorkflowWithOptions(request *OperateExecuteW
 
 // Summary:
 //
-// 运行一次工作流
+// Executes a workflow.
+//
+// Description:
+//
+// This operation starts a new workflow instance.
 //
 // @param request - OperateExecuteWorkflowRequest
 //
@@ -5036,7 +5214,7 @@ func (client *Client) OperateExecuteWorkflow(request *OperateExecuteWorkflowRequ
 
 // Summary:
 //
-// # Hold住任务实例
+// Holds a pending job execution.
 //
 // @param request - OperateHoldJobExecutionRequest
 //
@@ -5088,7 +5266,7 @@ func (client *Client) OperateHoldJobExecutionWithOptions(request *OperateHoldJob
 
 // Summary:
 //
-// # Hold住任务实例
+// Holds a pending job execution.
 //
 // @param request - OperateHoldJobExecutionRequest
 //
@@ -5106,7 +5284,7 @@ func (client *Client) OperateHoldJobExecution(request *OperateHoldJobExecutionRe
 
 // Summary:
 //
-// 将工作流中未开始的节点置为Held状态
+// Puts a Workflow Execution on hold, suspending all its unexecuted nodes.
 //
 // @param request - OperateHoldWorkflowExecutionRequest
 //
@@ -5158,7 +5336,7 @@ func (client *Client) OperateHoldWorkflowExecutionWithOptions(request *OperateHo
 
 // Summary:
 //
-// 将工作流中未开始的节点置为Held状态
+// Puts a Workflow Execution on hold, suspending all its unexecuted nodes.
 //
 // @param request - OperateHoldWorkflowExecutionRequest
 //
@@ -5176,7 +5354,7 @@ func (client *Client) OperateHoldWorkflowExecution(request *OperateHoldWorkflowE
 
 // Summary:
 //
-// 标记任务实例为成功状态
+// Marks a job execution as successful.
 //
 // @param request - OperateMarkSuccessJobExecutionRequest
 //
@@ -5228,7 +5406,7 @@ func (client *Client) OperateMarkSuccessJobExecutionWithOptions(request *Operate
 
 // Summary:
 //
-// 标记任务实例为成功状态
+// Marks a job execution as successful.
 //
 // @param request - OperateMarkSuccessJobExecutionRequest
 //
@@ -5246,7 +5424,7 @@ func (client *Client) OperateMarkSuccessJobExecution(request *OperateMarkSuccess
 
 // Summary:
 //
-// 将工作流实例标记为成功
+// Marks a workflow execution as successful.
 //
 // @param request - OperateMarkSuccessWorkflowExecutionRequest
 //
@@ -5298,7 +5476,7 @@ func (client *Client) OperateMarkSuccessWorkflowExecutionWithOptions(request *Op
 
 // Summary:
 //
-// 将工作流实例标记为成功
+// Marks a workflow execution as successful.
 //
 // @param request - OperateMarkSuccessWorkflowExecutionRequest
 //
@@ -5316,7 +5494,7 @@ func (client *Client) OperateMarkSuccessWorkflowExecution(request *OperateMarkSu
 
 // Summary:
 //
-// Reprocesses the historical data of a job.
+// Reruns historical data for a job within a specified time range.
 //
 // @param request - OperateRerunJobRequest
 //
@@ -5380,7 +5558,7 @@ func (client *Client) OperateRerunJobWithOptions(request *OperateRerunJobRequest
 
 // Summary:
 //
-// Reprocesses the historical data of a job.
+// Reruns historical data for a job within a specified time range.
 //
 // @param request - OperateRerunJobRequest
 //
@@ -5398,7 +5576,7 @@ func (client *Client) OperateRerunJob(request *OperateRerunJobRequest) (_result 
 
 // Summary:
 //
-// Reruns failed job instances.
+// Retries a failed Job Instance.
 //
 // @param tmpReq - OperateRetryJobExecutionRequest
 //
@@ -5464,7 +5642,7 @@ func (client *Client) OperateRetryJobExecutionWithOptions(tmpReq *OperateRetryJo
 
 // Summary:
 //
-// Reruns failed job instances.
+// Retries a failed Job Instance.
 //
 // @param request - OperateRetryJobExecutionRequest
 //
@@ -5482,7 +5660,7 @@ func (client *Client) OperateRetryJobExecution(request *OperateRetryJobExecution
 
 // Summary:
 //
-// 重跑工作流实例
+// Retries a workflow execution.
 //
 // @param request - OperateRetryWorkflowExecutionRequest
 //
@@ -5538,7 +5716,7 @@ func (client *Client) OperateRetryWorkflowExecutionWithOptions(request *OperateR
 
 // Summary:
 //
-// 重跑工作流实例
+// Retries a workflow execution.
 //
 // @param request - OperateRetryWorkflowExecutionRequest
 //
@@ -5556,7 +5734,7 @@ func (client *Client) OperateRetryWorkflowExecution(request *OperateRetryWorkflo
 
 // Summary:
 //
-// 跳过任务实例
+// Skips a job execution.
 //
 // @param request - OperateSkipJobExecutionRequest
 //
@@ -5608,7 +5786,7 @@ func (client *Client) OperateSkipJobExecutionWithOptions(request *OperateSkipJob
 
 // Summary:
 //
-// 跳过任务实例
+// Skips a job execution.
 //
 // @param request - OperateSkipJobExecutionRequest
 //
@@ -5626,7 +5804,7 @@ func (client *Client) OperateSkipJobExecution(request *OperateSkipJobExecutionRe
 
 // Summary:
 //
-// Stops running instances.
+// Stops a running Job Execution.
 //
 // @param tmpReq - OperateStopJobExecutionRequest
 //
@@ -5688,7 +5866,7 @@ func (client *Client) OperateStopJobExecutionWithOptions(tmpReq *OperateStopJobE
 
 // Summary:
 //
-// Stops running instances.
+// Stops a running Job Execution.
 //
 // @param request - OperateStopJobExecutionRequest
 //
@@ -5706,7 +5884,7 @@ func (client *Client) OperateStopJobExecution(request *OperateStopJobExecutionRe
 
 // Summary:
 //
-// 停止正在运行的工作流实例
+// Stops a running workflow execution.
 //
 // @param request - OperateStopWorkflowExecutionRequest
 //
@@ -5758,7 +5936,7 @@ func (client *Client) OperateStopWorkflowExecutionWithOptions(request *OperateSt
 
 // Summary:
 //
-// 停止正在运行的工作流实例
+// Stops a running workflow execution.
 //
 // @param request - OperateStopWorkflowExecutionRequest
 //
@@ -5776,7 +5954,7 @@ func (client *Client) OperateStopWorkflowExecution(request *OperateStopWorkflowE
 
 // Summary:
 //
-// 将held状态的任务恢复
+// Resumes a Job Execution that is in the Hold state.
 //
 // @param request - OperateUnholdJobExecutionRequest
 //
@@ -5828,7 +6006,7 @@ func (client *Client) OperateUnholdJobExecutionWithOptions(request *OperateUnhol
 
 // Summary:
 //
-// 将held状态的任务恢复
+// Resumes a Job Execution that is in the Hold state.
 //
 // @param request - OperateUnholdJobExecutionRequest
 //
@@ -5846,7 +6024,7 @@ func (client *Client) OperateUnholdJobExecution(request *OperateUnholdJobExecuti
 
 // Summary:
 //
-// 将工作流中held状态的节点恢复
+// Resumes a workflow execution that is on hold.
 //
 // @param request - OperateUnholdWorkflowExecutionRequest
 //
@@ -5898,7 +6076,7 @@ func (client *Client) OperateUnholdWorkflowExecutionWithOptions(request *Operate
 
 // Summary:
 //
-// 将工作流中held状态的节点恢复
+// Resumes a workflow execution that is on hold.
 //
 // @param request - OperateUnholdWorkflowExecutionRequest
 //
@@ -5916,7 +6094,7 @@ func (client *Client) OperateUnholdWorkflowExecution(request *OperateUnholdWorkf
 
 // Summary:
 //
-// 将skipped状态的任务恢复
+// Resumes a skipped job execution.
 //
 // @param request - OperateUnskipJobExecutionRequest
 //
@@ -5968,7 +6146,7 @@ func (client *Client) OperateUnskipJobExecutionWithOptions(request *OperateUnski
 
 // Summary:
 //
-// 将skipped状态的任务恢复
+// Resumes a skipped job execution.
 //
 // @param request - OperateUnskipJobExecutionRequest
 //
@@ -5986,7 +6164,7 @@ func (client *Client) OperateUnskipJobExecution(request *OperateUnskipJobExecuti
 
 // Summary:
 //
-// 同步任务
+// Synchronizes jobs.
 //
 // @param tmpReq - SyncJobsRequest
 //
@@ -6052,7 +6230,7 @@ func (client *Client) SyncJobsWithOptions(tmpReq *SyncJobsRequest, runtime *dara
 
 // Summary:
 //
-// 同步任务
+// Synchronizes jobs.
 //
 // @param request - SyncJobsRequest
 //
@@ -6160,7 +6338,7 @@ func (client *Client) UpdateApp(request *UpdateAppRequest) (_result *UpdateAppRe
 
 // Summary:
 //
-// 更新日历
+// Updates a calendar.
 //
 // @param request - UpdateCalendarRequest
 //
@@ -6224,7 +6402,7 @@ func (client *Client) UpdateCalendarWithOptions(request *UpdateCalendarRequest, 
 
 // Summary:
 //
-// 更新日历
+// Updates a calendar.
 //
 // @param request - UpdateCalendarRequest
 //
@@ -6312,7 +6490,7 @@ func (client *Client) UpdateCluster(request *UpdateClusterRequest) (_result *Upd
 
 // Summary:
 //
-// 更新数据源
+// # Update data source
 //
 // @param request - UpdateDatasourceRequest
 //
@@ -6376,7 +6554,7 @@ func (client *Client) UpdateDatasourceWithOptions(request *UpdateDatasourceReque
 
 // Summary:
 //
-// 更新数据源
+// # Update data source
 //
 // @param request - UpdateDatasourceRequest
 //
@@ -6395,6 +6573,16 @@ func (client *Client) UpdateDatasource(request *UpdateDatasourceRequest) (_resul
 // Summary:
 //
 // 更新执行器组
+//
+// Description:
+//
+// # 引入增强插件
+//
+// 在`pom.xml`文件中添加增强插件以提升Executor的能力。
+//
+// **注意**：请确保该插件在pom中放置在`xxl-job-core` 依赖的**上方**。
+//
+// **详细信息请参考**：[插件版本说明文档](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - UpdateExecutorGroupRequest
 //
@@ -6488,6 +6676,16 @@ func (client *Client) UpdateExecutorGroupWithOptions(request *UpdateExecutorGrou
 //
 // 更新执行器组
 //
+// Description:
+//
+// # 引入增强插件
+//
+// 在`pom.xml`文件中添加增强插件以提升Executor的能力。
+//
+// **注意**：请确保该插件在pom中放置在`xxl-job-core` 依赖的**上方**。
+//
+// **详细信息请参考**：[插件版本说明文档](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
+//
 // @param request - UpdateExecutorGroupRequest
 //
 // @return UpdateExecutorGroupResponse
@@ -6504,7 +6702,17 @@ func (client *Client) UpdateExecutorGroup(request *UpdateExecutorGroupRequest) (
 
 // Summary:
 //
-// 更新执行器
+// Updates the configuration of one or more Executors.
+//
+// Description:
+//
+// # Add the enhancement plugin
+//
+// Add the enhancement plugin to the `pom.xml` file to extend the capabilities of the Executor.
+//
+// **Note**: Place this plugin **above*	- the `xxl-job-core` dependency in the pom.xml file.
+//
+// **For more information, see the*	- [Plugin Version Description Document](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description).
 //
 // @param request - UpdateExecutorsRequest
 //
@@ -6560,7 +6768,17 @@ func (client *Client) UpdateExecutorsWithOptions(request *UpdateExecutorsRequest
 
 // Summary:
 //
-// 更新执行器
+// Updates the configuration of one or more Executors.
+//
+// Description:
+//
+// # Add the enhancement plugin
+//
+// Add the enhancement plugin to the `pom.xml` file to extend the capabilities of the Executor.
+//
+// **Note**: Place this plugin **above*	- the `xxl-job-core` dependency in the pom.xml file.
+//
+// **For more information, see the*	- [Plugin Version Description Document](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description).
 //
 // @param request - UpdateExecutorsRequest
 //
@@ -6578,7 +6796,7 @@ func (client *Client) UpdateExecutors(request *UpdateExecutorsRequest) (_result 
 
 // Summary:
 //
-// Updates the job information.
+// Update task details.
 //
 // @param tmpReq - UpdateJobRequest
 //
@@ -6732,7 +6950,7 @@ func (client *Client) UpdateJobWithOptions(tmpReq *UpdateJobRequest, runtime *da
 
 // Summary:
 //
-// Updates the job information.
+// Update task details.
 //
 // @param request - UpdateJobRequest
 //
@@ -6750,7 +6968,7 @@ func (client *Client) UpdateJob(request *UpdateJobRequest) (_result *UpdateJobRe
 
 // Summary:
 //
-// 更新任务实例
+// # Update task instance
 //
 // @param request - UpdateJobExecutionRequest
 //
@@ -6806,7 +7024,7 @@ func (client *Client) UpdateJobExecutionWithOptions(request *UpdateJobExecutionR
 
 // Summary:
 //
-// 更新任务实例
+// # Update task instance
 //
 // @param request - UpdateJobExecutionRequest
 //
@@ -6824,7 +7042,7 @@ func (client *Client) UpdateJobExecution(request *UpdateJobExecutionRequest) (_r
 
 // Summary:
 //
-// 更新任务脚本内容
+// Updates a job script.
 //
 // @param request - UpdateJobScriptRequest
 //
@@ -6884,7 +7102,7 @@ func (client *Client) UpdateJobScriptWithOptions(request *UpdateJobScriptRequest
 
 // Summary:
 //
-// 更新任务脚本内容
+// Updates a job script.
 //
 // @param request - UpdateJobScriptRequest
 //
@@ -6902,7 +7120,7 @@ func (client *Client) UpdateJobScript(request *UpdateJobScriptRequest) (_result 
 
 // Summary:
 //
-// 更新工作流
+// Updates an existing workflow.
 //
 // @param request - UpdateWorkflowRequest
 //
@@ -6986,7 +7204,7 @@ func (client *Client) UpdateWorkflowWithOptions(request *UpdateWorkflowRequest, 
 
 // Summary:
 //
-// 更新工作流
+// Updates an existing workflow.
 //
 // @param request - UpdateWorkflowRequest
 //
@@ -7004,7 +7222,7 @@ func (client *Client) UpdateWorkflow(request *UpdateWorkflowRequest) (_result *U
 
 // Summary:
 //
-// 更新工作流DAG
+// Updates a workflow\\"s Directed Acyclic Graph (DAG), including node coordinates and edges.
 //
 // @param tmpReq - UpdateWorkflowDAGRequest
 //
@@ -7070,7 +7288,7 @@ func (client *Client) UpdateWorkflowDAGWithOptions(tmpReq *UpdateWorkflowDAGRequ
 
 // Summary:
 //
-// 更新工作流DAG
+// Updates a workflow\\"s Directed Acyclic Graph (DAG), including node coordinates and edges.
 //
 // @param request - UpdateWorkflowDAGRequest
 //
@@ -7088,7 +7306,7 @@ func (client *Client) UpdateWorkflowDAG(request *UpdateWorkflowDAGRequest) (_res
 
 // Summary:
 //
-// 切换工作流DAG版本
+// Updates the Directed Acyclic Graph (DAG) version for a Workflow.
 //
 // @param request - UpdateWorkflowDAGVersionRequest
 //
@@ -7144,7 +7362,7 @@ func (client *Client) UpdateWorkflowDAGVersionWithOptions(request *UpdateWorkflo
 
 // Summary:
 //
-// 切换工作流DAG版本
+// Updates the Directed Acyclic Graph (DAG) version for a Workflow.
 //
 // @param request - UpdateWorkflowDAGVersionRequest
 //

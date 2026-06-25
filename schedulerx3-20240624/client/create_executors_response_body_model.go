@@ -22,21 +22,32 @@ type iCreateExecutorsResponseBody interface {
 }
 
 type CreateExecutorsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *CreateExecutorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// F131C3E0-3FAA-5FA4-A6F3-E974D69EF3C5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
+	// - true: The request succeeded.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -106,26 +117,38 @@ func (s *CreateExecutorsResponseBody) Validate() error {
 }
 
 type CreateExecutorsResponseBodyData struct {
+	// The App Group ID.
+	//
 	// example:
 	//
 	// test-app
 	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
+	// The application type.
+	//
 	// example:
 	//
 	// 1
 	AppType *int32 `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// A list of Kubernetes Services that failed to import.
+	//
 	// example:
 	//
 	// [{"cluster":"xxxxx","namespace":"xxxxx","service":"xxxxx"}]
 	FailedService *string `json:"FailedService,omitempty" xml:"FailedService,omitempty"`
+	// The ID of the worker. You can obtain this ID by calling the [ListWorkerResource](https://help.aliyun.com/document_detail/2712224.html) operation.
+	//
 	// example:
 	//
 	// ins-95mfvqrtg6fkijt1uko000
 	WorkerId *int64 `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
+	// The worker type.
+	//
 	// example:
 	//
 	// k8s_service
 	WorkerType *string `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
+	// A JSON string that represents the list of imported workers.
+	//
 	// example:
 	//
 	// [{"cluster":"xxxxx","namespace":"xxxxx","service":"xxxxx"}]

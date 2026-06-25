@@ -28,8 +28,6 @@ type DeleteExecutorGroupResponseBody struct {
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
 	// example:
 	//
 	// 3835AA29-2298-5434-BC53-9CC377CDFD2C

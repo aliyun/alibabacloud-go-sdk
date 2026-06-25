@@ -24,10 +24,14 @@ type iListClustersRequest interface {
 }
 
 type ListClustersRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// xxljob-d6a5243b6fa
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// cluster-test
@@ -36,10 +40,14 @@ type ListClustersRequest struct {
 	//
 	// 1
 	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 5
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page for paginated queries.
+	//
 	// example:
 	//
 	// 10

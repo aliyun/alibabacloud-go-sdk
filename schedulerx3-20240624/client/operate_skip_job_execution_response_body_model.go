@@ -20,20 +20,30 @@ type iOperateSkipJobExecutionResponseBody interface {
 }
 
 type OperateSkipJobExecutionResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// C78E2AD2-5985-515B-BAD2-31A248AFC263
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - true: The request succeeded.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true

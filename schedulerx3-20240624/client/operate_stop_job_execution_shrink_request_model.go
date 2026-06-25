@@ -20,24 +20,31 @@ type iOperateStopJobExecutionShrinkRequest interface {
 }
 
 type OperateStopJobExecutionShrinkRequest struct {
+	// The name of the Application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the Cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the Job Execution.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
+	// A list of Task IDs.
 	TaskListShrink *string `json:"TaskList,omitempty" xml:"TaskList,omitempty"`
 }
 

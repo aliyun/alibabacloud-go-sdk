@@ -25,15 +25,12 @@ type UpdateExecutorGroupResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// -
+	Code *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *UpdateExecutorGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// example:
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
 	// example:
 	//
 	// C78E2AD2-5985-515B-BAD2-31A248AFC263

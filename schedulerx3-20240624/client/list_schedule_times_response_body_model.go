@@ -22,19 +22,32 @@ type iListScheduleTimesResponseBody interface {
 }
 
 type ListScheduleTimesResponseBody struct {
+	// The response code. `200` indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code *int32    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// A list of the scheduled times.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The response message. The value is `success` if the request succeeds, or an error message if it fails.
+	//
 	// example:
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request. Use this ID for troubleshooting.
+	//
 	// example:
 	//
 	// 9A48E22F-F30A-5CE5-AC7A-E0FED1B6942E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

@@ -20,18 +20,30 @@ type iDeleteJobsResponseBody interface {
 }
 
 type DeleteJobsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message. An error message is returned if the request is unsuccessful.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request. This ID is unique to each request and can be used for troubleshooting.
+	//
 	// example:
 	//
 	// 91143E1D-E235-5BE0-9364-C2EE28FFB5A6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true

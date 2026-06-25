@@ -20,20 +20,30 @@ type iCreateCalendarResponseBody interface {
 }
 
 type CreateCalendarResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// CalendarName is already existed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// B880122A-B0E4-52E8-8F54-87DB7779EB74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
+	// - `true`: The call was successful.
+	//
+	// - `false`: The call failed.
+	//
 	// example:
 	//
 	// true

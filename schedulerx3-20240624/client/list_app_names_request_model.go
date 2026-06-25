@@ -16,10 +16,14 @@ type iListAppNamesRequest interface {
 }
 
 type ListAppNamesRequest struct {
+	// The application name.
+	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

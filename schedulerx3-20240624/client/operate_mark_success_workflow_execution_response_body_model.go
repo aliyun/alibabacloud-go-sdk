@@ -20,20 +20,30 @@ type iOperateMarkSuccessWorkflowExecutionResponseBody interface {
 }
 
 type OperateMarkSuccessWorkflowExecutionResponseBody struct {
+	// The response code. A value of `200` indicates a successful request.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Additional details about the result.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The unique ID of the request, used for troubleshooting.
 	//
 	// example:
 	//
 	// 1DF6732E-15D8-5E1F-95E3-C10077F556B5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates if the operation succeeded.
+	//
+	// - `true`: The operation succeeded.
+	//
+	// - `false`: The operation failed.
+	//
 	// example:
 	//
 	// true

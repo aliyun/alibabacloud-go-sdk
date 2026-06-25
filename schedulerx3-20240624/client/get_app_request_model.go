@@ -16,12 +16,16 @@ type iGetAppRequest interface {
 }
 
 type GetAppRequest struct {
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

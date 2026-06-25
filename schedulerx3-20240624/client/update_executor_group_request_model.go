@@ -60,8 +60,6 @@ type UpdateExecutorGroupRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Deprecated
 	//
-	// ID。
-	//
 	// This parameter is required.
 	//
 	// example:

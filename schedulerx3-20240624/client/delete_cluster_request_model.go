@@ -14,6 +14,8 @@ type iDeleteClusterRequest interface {
 }
 
 type DeleteClusterRequest struct {
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:

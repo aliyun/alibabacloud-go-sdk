@@ -38,58 +38,86 @@ type iGetLogRequest interface {
 }
 
 type GetLogRequest struct {
+	// The application name.
+	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end time. This value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1721636220
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The job execution ID.
+	//
 	// example:
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
+	// The keyword to search for.
+	//
 	// example:
 	//
 	// hello word
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The log level.
+	//
 	// example:
 	//
 	// INFO
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// LineNum
+	// The number of log entries to return.
 	//
 	// example:
 	//
 	// 2
 	LineNum *int32 `json:"LineNum,omitempty" xml:"LineNum,omitempty"`
+	// The log ID.
+	//
 	// example:
 	//
 	// 344008
 	LogId *int64 `json:"LogId,omitempty" xml:"LogId,omitempty"`
+	// The offset.
+	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// Specifies whether to sort the results in descending order.
+	//
+	// - **true**: sorts the results in descending order.
+	//
+	// - **false**: sorts the results in ascending order.
+	//
 	// example:
 	//
 	// true
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	// The time when the job was scheduled. This value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 2023-10-01 12:00:00
 	ScheduleTime *int64 `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	// The start time. This value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1721636220
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The worker address.
+	//
 	// example:
 	//
 	// 192.168.1.100

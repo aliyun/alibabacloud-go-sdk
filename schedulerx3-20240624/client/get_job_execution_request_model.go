@@ -20,18 +20,24 @@ type iGetJobExecutionRequest interface {
 }
 
 type GetJobExecutionRequest struct {
+	// The name of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the job execution.
+	//
 	// This parameter is required.
 	//
 	// example:

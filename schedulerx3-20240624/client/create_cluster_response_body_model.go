@@ -24,27 +24,22 @@ type iCreateClusterResponseBody interface {
 }
 
 type CreateClusterResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// -
+	// The response code.
+	Code *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *CreateClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// INVALID_PARAMETER
+	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// example:
-	//
-	// Parameter error: content is null.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
+	// The request ID. Alibaba Cloud generates a unique ID for each request.
 	//
-	// B8733786-C045-59F1-8D79-99A52863F62D
+	// You can use this ID for troubleshooting.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
+	// The status of the request. Valid values:
 	//
-	// true
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -120,13 +115,9 @@ func (s *CreateClusterResponseBody) Validate() error {
 }
 
 type CreateClusterResponseBodyData struct {
-	// example:
-	//
-	// xxljob-b21969c2309
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// example:
-	//
-	// 229317760970086
+	// The order ID.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 

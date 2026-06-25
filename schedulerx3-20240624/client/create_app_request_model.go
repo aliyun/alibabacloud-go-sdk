@@ -28,36 +28,57 @@ type iCreateAppRequest interface {
 }
 
 type CreateAppRequest struct {
+	// The access token.
+	//
 	// example:
 	//
 	// ltk1ZXHv6LvibZypFkPHzRA
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The app name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The app type.
+	//
 	// example:
 	//
 	// 1
 	AppType *int32 `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Indicates whether to enable logging.
+	//
 	// example:
 	//
 	// true
-	EnableLog          *bool  `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	// The label routing strategy.
 	LabelRouteStrategy *int32 `json:"LabelRouteStrategy,omitempty" xml:"LabelRouteStrategy,omitempty"`
+	// The maximum concurrency.
+	//
+	// > This parameter specifies the maximum number of task instances that can run concurrently for the app. Task instances that exceed this limit are not discarded. They are queued for execution.
+	//
 	// example:
 	//
 	// 10
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// The title of the app.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

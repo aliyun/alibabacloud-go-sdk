@@ -32,41 +32,64 @@ type iListJobsRequest interface {
 }
 
 type ListJobsRequest struct {
+	// The name of the application.
+	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The description of the job.
+	//
+	// example:
+	//
+	// job01单机任务
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the job handler.
+	//
 	// example:
 	//
 	// jobDemoHandler
 	JobHandler *string `json:"JobHandler,omitempty" xml:"JobHandler,omitempty"`
+	// The ID of the job.
+	//
 	// example:
 	//
 	// 10
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// job01
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status of the job.
+	//
 	// example:
 	//
 	// 0
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the workflow.
+	//
 	// example:
 	//
 	// 1

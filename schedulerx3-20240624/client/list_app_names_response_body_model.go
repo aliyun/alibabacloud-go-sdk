@@ -22,20 +22,32 @@ type iListAppNamesResponseBody interface {
 }
 
 type ListAppNamesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// .
 	Data []*ListAppNamesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request ID. Use this ID for troubleshooting.
+	//
 	// example:
 	//
 	// 3881C59F-59F1-5B2E-8110-7D689CA9B207
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates if the request succeeded.
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -109,23 +121,38 @@ func (s *ListAppNamesResponseBody) Validate() error {
 }
 
 type ListAppNamesResponseBodyData struct {
+	// The ID of the application group.
+	//
 	// example:
 	//
 	// test-app
 	AppGroupId *string `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The app type.
+	//
 	// example:
 	//
 	// 1
 	AppType *int32 `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The unique identifier.
+	//
 	// example:
 	//
 	// 15
-	Id    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The application title.
+	//
+	// example:
+	//
+	// 测试应用
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The registry type for manually registered workers.
+	//
 	// example:
 	//
 	// k8s_service

@@ -20,24 +20,32 @@ type iOperateConnectDatasourceRequest interface {
 }
 
 type OperateConnectDatasourceRequest struct {
+	// Cluster ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Connection parameters of the data source
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"host":"rm-bp1f03mxxxxx.mysql.rds.aliyuncs.com","port":3306,"userName":"test01","database":"test01","other":{"useSSL":"false"}}
 	ConnectionParams *string `json:"ConnectionParams,omitempty" xml:"ConnectionParams,omitempty"`
+	// Password of the database user.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ***
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Type of the data source.
+	//
 	// This parameter is required.
 	//
 	// example:

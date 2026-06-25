@@ -20,18 +20,30 @@ type iOperateDisableJobsResponseBody interface {
 }
 
 type OperateDisableJobsResponseBody struct {
+	// The HTTP status code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message. Contains error details if the request fails.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A unique ID generated for this request. If you encounter an issue, provide this ID for troubleshooting.
+	//
 	// example:
 	//
 	// 29ED6209-5DE6-5E1D-89B0-B7B1D823A1BF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates if the request succeeded.
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true

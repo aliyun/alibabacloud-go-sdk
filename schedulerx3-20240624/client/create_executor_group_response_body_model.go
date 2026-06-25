@@ -31,8 +31,6 @@ type CreateExecutorGroupResponseBody struct {
 	//
 	// Parameter format error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
 	// example:
 	//
 	// 5EF879D0-3B43-5AD1-9BF7-52418F9C5E73

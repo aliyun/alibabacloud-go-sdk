@@ -20,18 +20,30 @@ type iOperateDesignateExecutorsResponseBody interface {
 }
 
 type OperateDesignateExecutorsResponseBody struct {
+	// The response code. A value of `200` indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message that is returned if the request fails.
+	//
 	// example:
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID generated for the request. Use this ID for troubleshooting.
+	//
 	// example:
 	//
 	// AFD5B166-4A7D-50DF-91BF-EFAFD41F7335
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true

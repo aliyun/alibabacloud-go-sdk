@@ -20,18 +20,30 @@ type iSyncJobsResponseBody interface {
 }
 
 type SyncJobsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Not found: appName not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request. This ID is used for troubleshooting.
+	//
 	// example:
 	//
 	// 6BCE89B3-E882-511D-9A75-D452A56EC4B1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true

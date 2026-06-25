@@ -25,15 +25,12 @@ type GetPageLogResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// -
+	Code *int32                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *GetPageLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// example:
 	//
 	// CalendarName is already existed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
 	// example:
 	//
 	// 5EF879D0-3B43-5AD1-9BF7-52418F9C5E73
@@ -114,9 +111,8 @@ type GetPageLogResponseBodyData struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// -
-	Records []*GetPageLogResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	PageSize *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Records  []*GetPageLogResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 65

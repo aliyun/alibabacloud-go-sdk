@@ -16,12 +16,16 @@ type iGetExecutorConfigRequest interface {
 }
 
 type GetExecutorConfigRequest struct {
+	// The name of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:

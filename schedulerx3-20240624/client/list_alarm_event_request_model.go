@@ -34,48 +34,94 @@ type iListAlarmEventRequest interface {
 }
 
 type ListAlarmEventRequest struct {
+	// The channel for sending alarm notifications. Valid values:
+	//
+	// - `sms`: SMS
+	//
+	// - `mail`: Email
+	//
+	// - `phone`: Phone call
+	//
+	// - `webhook`: Webhook
+	//
 	// example:
 	//
 	// webhook
 	AlarmChannel *string `json:"AlarmChannel,omitempty" xml:"AlarmChannel,omitempty"`
+	// The delivery status of the alarm notification. Valid values:
+	//
+	// - `true`: The notification delivery succeeded.
+	//
+	// - `false`: The notification delivery failed.
+	//
 	// example:
 	//
 	// true
 	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	// The type of the alarm. Valid values:
+	//
+	// - **`schedulerx3_no_designate_machine_alarm`**: The Designated Machine is unavailable.
+	//
+	// - **`schedulerx3_all_busy_alarm`**: All available machines are busy.
+	//
+	// - **`schedulerx3_no_machine_alarm`**: No machines are available to run the job.
+	//
+	// - **`schedulerx3_timeout_alarm`**: The job timed out.
+	//
+	// - **`schedulerx3_fail_alarm`**: The job failed to run.
+	//
+	// - **`schedulerx3_job_success_notice`**: The job ran successfully.
+	//
 	// example:
 	//
 	// schedulerx3_fail_alarm
 	AlarmType *string `json:"AlarmType,omitempty" xml:"AlarmType,omitempty"`
+	// The name of the application.
+	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range for querying events. This value is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1731636011558
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// test-job
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Set to true to return results in descending order.
+	//
 	// example:
 	//
 	// true
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	// The start of the time range for querying events. This value is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1690419316000

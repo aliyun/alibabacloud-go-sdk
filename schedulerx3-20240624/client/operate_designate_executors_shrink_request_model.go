@@ -24,32 +24,48 @@ type iOperateDesignateExecutorsShrinkRequest interface {
 }
 
 type OperateDesignateExecutorsShrinkRequest struct {
+	// A list of machine addresses to designate.
+	//
 	// This parameter is required.
 	AddressListShrink *string `json:"AddressList,omitempty" xml:"AddressList,omitempty"`
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The designation type. Valid values:
+	//
+	// - **1**: By worker.
+	//
+	// - **2**: By label.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	DesignateType *int32 `json:"DesignateType,omitempty" xml:"DesignateType,omitempty"`
+	// The job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 74
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Specifies whether to enable failover.
+	//
 	// example:
 	//
 	// true

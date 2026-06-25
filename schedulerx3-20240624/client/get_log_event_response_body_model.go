@@ -22,20 +22,32 @@ type iGetLogEventResponseBody interface {
 }
 
 type GetLogEventResponseBody struct {
+	// The HTTP status code. A value of `200` indicates a successful request.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// -
 	Data *GetLogEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message that is returned if the request fails.
+	//
 	// example:
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique, server-generated ID for the request. This ID is used for troubleshooting purposes.
+	//
 	// example:
 	//
 	// BAC1ADB5-EEB5-5834-93D8-522E067AF8D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**
+	//
+	// - **false**
+	//
 	// example:
 	//
 	// true
@@ -105,16 +117,22 @@ func (s *GetLogEventResponseBody) Validate() error {
 }
 
 type GetLogEventResponseBodyData struct {
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// -
 	Records []*GetLogEventResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 33
@@ -179,42 +197,62 @@ func (s *GetLogEventResponseBodyData) Validate() error {
 }
 
 type GetLogEventResponseBodyDataRecords struct {
+	// The name of the application.
+	//
 	// example:
 	//
 	// portal-dev
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The log content.
+	//
 	// example:
 	//
 	// hello word
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The severity level of the event.
+	//
 	// example:
 	//
 	// info
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The type of the event.
+	//
 	// example:
 	//
 	// JOB
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The job execution ID.
+	//
 	// example:
 	//
 	// 101
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// test
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The time when the log was recorded. The time is in the `yyyy-MM-dd HH:mm:ss` format.
+	//
 	// example:
 	//
 	// 2024-10-31 16:43:51
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The address of the worker that runs the job.
+	//
 	// example:
 	//
 	// 030225016025_9357_60125@127.0.0.1:51363
 	WorkerAddr *string `json:"WorkerAddr,omitempty" xml:"WorkerAddr,omitempty"`
+	// The workflow execution ID.
+	//
 	// example:
 	//
 	// 1450568762586578000
 	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitempty" xml:"WorkflowExecutionId,omitempty"`
+	// The name of the workflow.
+	//
 	// example:
 	//
 	// 工作流0001

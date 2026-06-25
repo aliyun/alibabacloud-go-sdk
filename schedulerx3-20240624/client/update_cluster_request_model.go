@@ -18,12 +18,16 @@ type iUpdateClusterRequest interface {
 }
 
 type UpdateClusterRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-c20f7ec9a78
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// xx-test-1107

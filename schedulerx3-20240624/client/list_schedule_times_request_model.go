@@ -24,34 +24,48 @@ type iListScheduleTimesRequest interface {
 }
 
 type ListScheduleTimesRequest struct {
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The name of the calendar to use for scheduling, such as a business day calendar.
+	//
 	// example:
 	//
 	// workday
 	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The time expression, such as a cron expression.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0 0/10 	- 	- 	- ?
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
+	// The time type. The only supported type is cron.
+	//
+	// - 1: cron
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	// The time zone used to evaluate the time expression.
+	//
 	// example:
 	//
 	// Asia/Beijing

@@ -22,20 +22,32 @@ type iListScheduleEventResponseBody interface {
 }
 
 type ListScheduleEventResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// -
+	// The returned data.
 	Data *ListScheduleEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned error message.
+	//
 	// example:
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique identifier for the request, which is used to troubleshoot issues.
+	//
 	// example:
 	//
 	// B880122A-B0E4-52E8-8F54-87DB7779EB74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: The call succeeded.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -105,15 +117,22 @@ func (s *ListScheduleEventResponseBody) Validate() error {
 }
 
 type ListScheduleEventResponseBodyData struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records  []*ListScheduleEventResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The array of event records.
+	Records []*ListScheduleEventResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -178,44 +197,62 @@ func (s *ListScheduleEventResponseBodyData) Validate() error {
 }
 
 type ListScheduleEventResponseBodyDataRecords struct {
+	// The application name.
+	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The event content.
+	//
 	// example:
 	//
 	// hello word
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The event status.
+	//
 	// example:
 	//
-	// INFO
+	// Failed
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The event type.
+	//
 	// example:
 	//
 	// JOB
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// 130
+	// The job execution ID.
 	//
 	// example:
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// test-job
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The timestamp of the event. The time is in the `yyyy-MM-dd HH:mm:ss` format.
+	//
 	// example:
 	//
 	// 2024-10-31 16:43:51
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The worker address.
+	//
 	// example:
 	//
 	// http://192.168.1.5:9999/
 	WorkerAddr *string `json:"WorkerAddr,omitempty" xml:"WorkerAddr,omitempty"`
+	// The workflow execution ID.
+	//
 	// example:
 	//
 	// 1450568762586578000
 	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitempty" xml:"WorkflowExecutionId,omitempty"`
+	// The workflow name.
+	//
 	// example:
 	//
 	// 工作流0001

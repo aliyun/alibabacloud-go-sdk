@@ -18,11 +18,13 @@ type iExportWorkflowsShrinkRequest interface {
 }
 
 type ExportWorkflowsShrinkRequest struct {
+  // The name of the application.
+  // 
   // example:
   // 
   // test-app
   AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-  // A short description of struct
+  // The ID of the cluster where the Workflow is located.
   // 
   // This parameter is required.
   // 
@@ -30,6 +32,7 @@ type ExportWorkflowsShrinkRequest struct {
   // 
   // xxljob-b6ec1xxxx
   ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+  // An array of Workflow IDs to export.
   WorkflowIdShrink *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 

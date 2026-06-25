@@ -20,22 +20,30 @@ type iOperateRetryWorkflowExecutionRequest interface {
 }
 
 type OperateRetryWorkflowExecutionRequest struct {
+	// The name of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Set to `true` to rerun only failed nodes.
+	//
 	// example:
 	//
 	// true
 	OnlyFailed *bool `json:"OnlyFailed,omitempty" xml:"OnlyFailed,omitempty"`
+	// The workflow execution ID.
+	//
 	// This parameter is required.
 	//
 	// example:

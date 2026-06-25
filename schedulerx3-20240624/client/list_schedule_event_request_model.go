@@ -40,60 +40,102 @@ type iListScheduleEventRequest interface {
 }
 
 type ListScheduleEventRequest struct {
+	// The application name.
+	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The Cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query events. This is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1728872796295
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The event status to filter by. Valid values:
+	//
+	// - Scheduled
+	//
+	// - Running
+	//
+	// - Succeeded
+	//
+	// - Failed
+	//
+	// - Failing_Auto_Retry
+	//
+	// - Skip_Schedule
+	//
+	// - Execute_Log
+	//
 	// example:
 	//
-	// INFO
+	// Failed
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The event type.
+	//
 	// example:
 	//
 	// JOB | WORKFLOW
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The job execution ID.
+	//
 	// example:
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// test-job
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The search keyword.
+	//
 	// example:
 	//
 	// hello word
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of events to return per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether to sort the results in descending order. Set to `true` for descending order or `false` for ascending order. Default is `false`.
+	//
 	// example:
 	//
 	// true
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	// The start of the time range to query events. This is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1581317873000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The workflow execution ID.
+	//
 	// example:
 	//
 	// 1450568762586578000
 	WorkflowExecutionId *int64 `json:"WorkflowExecutionId,omitempty" xml:"WorkflowExecutionId,omitempty"`
+	// The workflow name.
+	//
 	// example:
 	//
 	// 流程001

@@ -28,22 +28,34 @@ type iUpdateAppRequest interface {
 }
 
 type UpdateAppRequest struct {
+	// The access token.
+	//
 	// example:
 	//
 	// f312159702f4469585586ed5a6904163v3
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to enable logging.
+	//
+	// - `true`: Enables logging.
+	//
+	// - `false`: Disables logging.
+	//
 	// example:
 	//
 	// true
@@ -52,11 +64,21 @@ type UpdateAppRequest struct {
 	//
 	// 1
 	LabelRouteStrategy *int32 `json:"LabelRouteStrategy,omitempty" xml:"LabelRouteStrategy,omitempty"`
+	// The task execution queue size.
+	//
+	// > Sets the maximum number of concurrent task instances in the application group. Additional task instances are queued for execution and not discarded.
+	//
 	// example:
 	//
 	// 10
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// The title.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试应用
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// example:
 	//

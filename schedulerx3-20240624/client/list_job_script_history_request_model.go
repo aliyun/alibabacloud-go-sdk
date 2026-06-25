@@ -22,28 +22,38 @@ type iListJobScriptHistoryRequest interface {
 }
 
 type ListJobScriptHistoryRequest struct {
+	// The name of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 74
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The maximum number of entries to return per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results. You do not need to set this parameter for the first request.
+	//
 	// example:
 	//
 	// eCKqVlS5FKF5EWGGOo8EgQ==

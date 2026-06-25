@@ -16,12 +16,16 @@ type iDeleteAppRequest interface {
 }
 
 type DeleteAppRequest struct {
+	// The name of the App Group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

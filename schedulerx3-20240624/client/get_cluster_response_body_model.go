@@ -22,20 +22,31 @@ type iGetClusterResponseBody interface {
 }
 
 type GetClusterResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// -
+	Code *int32                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *GetClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. The value is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
+	//
 	// example:
 	//
 	// D0DE9C33-992A-580B-89C4-B609A292748D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -105,18 +116,40 @@ func (s *GetClusterResponseBody) Validate() error {
 }
 
 type GetClusterResponseBodyData struct {
+	// The billing method. Valid values:
+	//
+	// - PREPAY: subscription.
+	//
+	// - POSTPAY: pay-as-you-go.
+	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// xxljob-e0d018c6df8
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// xxl-job-test-1730427575152
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The cluster specification. Valid values:
+	//
+	// - scx.dev.x1.
+	//
+	// - scx.small.x1.
+	//
+	// - scx.small.x2.
+	//
+	// - scx.medium.x1.
+	//
+	// - scx.medium.x2.
+	//
 	// example:
 	//
 	// scx.small.x2
@@ -125,23 +158,40 @@ type GetClusterResponseBodyData struct {
 	//
 	// 1
 	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The time when the cluster was created.
+	//
 	// example:
 	//
 	// 2024-10-29 15:56:36
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 2024-10-29 15:56:36
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The engine type. Valid value: xxljob.
+	//
 	// example:
 	//
 	// xxljob
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The engine version.
+	//
 	// example:
 	//
 	// 2.0.0
-	EngineVersion  *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The public endpoint.
+	//
+	// > Currently not supported.
+	//
+	// example:
+	//
+	// 暂无
 	InternetDomain *string `json:"InternetDomain,omitempty" xml:"InternetDomain,omitempty"`
+	// The internal endpoint.
+	//
 	// example:
 	//
 	// http://xxljob-xxxxxx.schedulerx.mse.aliyuncs.com
@@ -150,10 +200,14 @@ type GetClusterResponseBodyData struct {
 	//
 	// 192.168.1.0/24
 	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+	// The maximum number of jobs for the current specification.
+	//
 	// example:
 	//
 	// 100
 	JobNum *int32 `json:"JobNum,omitempty" xml:"JobNum,omitempty"`
+	// The configuration of the Kubernetes server.
+	//
 	// example:
 	//
 	// {
@@ -204,44 +258,81 @@ type GetClusterResponseBodyData struct {
 	//
 	// }
 	KubeConfig *string `json:"KubeConfig,omitempty" xml:"KubeConfig,omitempty"`
+	// The maximum number of jobs for the current specification.
+	//
 	// example:
 	//
 	// 1000
 	MaxJobNum *int32 `json:"MaxJobNum,omitempty" xml:"MaxJobNum,omitempty"`
+	// The maximum number of workflows supported.
+	//
 	// example:
 	//
 	// 100
 	MaxWorkflowNum *int32 `json:"MaxWorkflowNum,omitempty" xml:"MaxWorkflowNum,omitempty"`
+	// The product edition.
+	//
+	// - 1: Developer Edition.
+	//
+	// - 2: Professional Edition.
+	//
+	// - 3: Enterprise Edition.
+	//
 	// example:
 	//
 	// 2
-	ProductType *int32 `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ProductType *int32  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The peak number of scheduling operations per minute.
+	//
 	// example:
 	//
 	// 10
 	Spm *int32 `json:"Spm,omitempty" xml:"Spm,omitempty"`
+	// The cluster status.
+	//
+	// - 1: Being created.
+	//
+	// - 2: Running.
+	//
+	// - 3: Restarting.
+	//
+	// - 4: Being released.
+	//
+	// - 5: Creation failed.
+	//
+	// - 6: Stopped.
+	//
+	// - 99: Deleted.
+	//
 	// example:
 	//
 	// 2
-	Status           *int32                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags             map[string]interface{}                 `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Status *int32                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The vSwitch information of zones.
 	VSwitches        []*GetClusterResponseBodyDataVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	VersionLifecycle *string                                `json:"VersionLifecycle,omitempty" xml:"VersionLifecycle,omitempty"`
-	// VPC ID
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-bp1fiz967u39lt8yuxcs0
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The number of workers.
+	//
 	// example:
 	//
 	// 10
 	WorkerNum *int32 `json:"WorkerNum,omitempty" xml:"WorkerNum,omitempty"`
+	// The current number of workflows.
+	//
 	// example:
 	//
 	// 20
-	WorkflowNum *int32    `json:"WorkflowNum,omitempty" xml:"WorkflowNum,omitempty"`
-	Zones       []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	WorkflowNum *int32 `json:"WorkflowNum,omitempty" xml:"WorkflowNum,omitempty"`
+	// The list of zones.
+	Zones []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s GetClusterResponseBodyData) String() string {
@@ -318,6 +409,10 @@ func (s *GetClusterResponseBodyData) GetMaxWorkflowNum() *int32 {
 
 func (s *GetClusterResponseBodyData) GetProductType() *int32 {
 	return s.ProductType
+}
+
+func (s *GetClusterResponseBodyData) GetSource() *string {
+	return s.Source
 }
 
 func (s *GetClusterResponseBodyData) GetSpm() *int32 {
@@ -441,6 +536,11 @@ func (s *GetClusterResponseBodyData) SetProductType(v int32) *GetClusterResponse
 	return s
 }
 
+func (s *GetClusterResponseBodyData) SetSource(v string) *GetClusterResponseBodyData {
+	s.Source = &v
+	return s
+}
+
 func (s *GetClusterResponseBodyData) SetSpm(v int32) *GetClusterResponseBodyData {
 	s.Spm = &v
 	return s
@@ -500,10 +600,14 @@ func (s *GetClusterResponseBodyData) Validate() error {
 }
 
 type GetClusterResponseBodyDataVSwitches struct {
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-8vbf1n216nshvfjdyff8a
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-k

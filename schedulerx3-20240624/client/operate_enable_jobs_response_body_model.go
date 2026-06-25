@@ -20,18 +20,30 @@ type iOperateEnableJobsResponseBody interface {
 }
 
 type OperateEnableJobsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID generated for the request. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 4CC4132F-B798-5D6E-9F06-D44B33E417E9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
+	// - `true`: The call was successful.
+	//
+	// - `false`: The call failed.
+	//
 	// example:
 	//
 	// true

@@ -20,18 +20,30 @@ type iUpdateWorkflowResponseBody interface {
 }
 
 type UpdateWorkflowResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID generated for the request. If you encounter an issue, provide this ID for troubleshooting.
+	//
 	// example:
 	//
 	// AA3538A0-FBE6-5E31-AD88-A02C6FF0DACC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true

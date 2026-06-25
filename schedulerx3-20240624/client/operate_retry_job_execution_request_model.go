@@ -22,26 +22,36 @@ type iOperateRetryJobExecutionRequest interface {
 }
 
 type OperateRetryJobExecutionRequest struct {
+	// The Application Name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The Cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The Job Execution ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1310630367761285120
-	JobExecutionId *string   `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
-	TaskList       []*string `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
-	TriggerChild   *bool     `json:"TriggerChild,omitempty" xml:"TriggerChild,omitempty"`
+	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
+	// A list of Sub-task execution IDs for a Broadcast Sharding Job.
+	//
+	// > To retry a specific Sub-task of a Broadcast Sharding Job, set this parameter to the execution ID of that Sub-task.
+	TaskList []*string `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
+	// Specifies whether to trigger downstream jobs.
+	TriggerChild *bool `json:"TriggerChild,omitempty" xml:"TriggerChild,omitempty"`
 }
 
 func (s OperateRetryJobExecutionRequest) String() string {

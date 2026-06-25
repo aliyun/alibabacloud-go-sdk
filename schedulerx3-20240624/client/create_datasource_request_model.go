@@ -24,34 +24,50 @@ type iCreateDatasourceRequest interface {
 }
 
 type CreateDatasourceRequest struct {
+	// Cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Connection parameters of the data source, in JSON format
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"host":"rm-bp1f03mxxxxx.mysql.rds.aliyuncs.com","port":3306,"userName":"test01","database":"test01","other":{"useSSL":"false"}}
 	ConnectionParams *string `json:"ConnectionParams,omitempty" xml:"ConnectionParams,omitempty"`
+	// Datasource Name
+	//
 	// example:
 	//
 	// my first datasource
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Datasource Name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// myDatasouce
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Database password
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ***
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Data Source Type
+	//
+	// - 0: MySQL
+	//
+	// - 1: PostgreSQL
+	//
 	// This parameter is required.
 	//
 	// example:

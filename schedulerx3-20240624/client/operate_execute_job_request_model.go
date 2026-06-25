@@ -24,35 +24,47 @@ type iOperateExecuteJobRequest interface {
 }
 
 type OperateExecuteJobRequest struct {
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The custom parameters for the job instance.
+	//
 	// example:
 	//
 	// name=zhangsan
 	InstanceParameters *string `json:"InstanceParameters,omitempty" xml:"InstanceParameters,omitempty"`
+	// The job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 74
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The label used to select a specific worker.
+	//
 	// example:
 	//
 	// gray
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The address (`workerAddr`) of a specific worker.
+	//
 	// example:
 	//
-	// http://192.168.1.5:9999/
+	// http://192.168.***.5:9999/
 	Worker *string `json:"Worker,omitempty" xml:"Worker,omitempty"`
 }
 

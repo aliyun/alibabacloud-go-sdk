@@ -45,8 +45,6 @@ type ListExecutorGroupResponseBody struct {
 	//
 	// eCKqVlS5FKF5EWGGOo8EgQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	//
 	// example:
 	//
 	// 5EF879D0-3B43-5AD1-9BF7-52418F9C5E73
@@ -145,9 +143,8 @@ type ListExecutorGroupResponseBodyData struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// -
-	Records []*ListExecutorGroupResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	PageSize *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Records  []*ListExecutorGroupResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 10

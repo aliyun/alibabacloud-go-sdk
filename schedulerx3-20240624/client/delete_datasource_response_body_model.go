@@ -20,20 +20,30 @@ type iDeleteDatasourceResponseBody interface {
 }
 
 type DeleteDatasourceResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// CF99C381-C8F6-5A8D-8C24-57F46B706D2D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the invocation succeeded.
+	//
+	// - true: The invocation succeeded.
+	//
+	// - false: The invocation failed.
+	//
 	// example:
 	//
 	// true

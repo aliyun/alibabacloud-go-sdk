@@ -22,22 +22,32 @@ type iListK8sResourceResponseBody interface {
 }
 
 type ListK8sResourceResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// -
+	// - An array of k8s resources.
 	Data []*ListK8sResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The Request ID.
 	//
 	// example:
 	//
 	// 2ECA6FC9-7557-5576-AF5F-FC3E7BCC9C21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -111,10 +121,14 @@ func (s *ListK8sResourceResponseBody) Validate() error {
 }
 
 type ListK8sResourceResponseBodyData struct {
+	// The ID of the k8s resource.
+	//
 	// example:
 	//
 	// xxljob-01632622cda2f
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the k8s resource.
+	//
 	// example:
 	//
 	// q_ecs_enterprise_spot_c

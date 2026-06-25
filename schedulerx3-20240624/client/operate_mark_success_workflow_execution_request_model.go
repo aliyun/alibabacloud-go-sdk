@@ -18,18 +18,24 @@ type iOperateMarkSuccessWorkflowExecutionRequest interface {
 }
 
 type OperateMarkSuccessWorkflowExecutionRequest struct {
+	// The name of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxl-job-executor-sample
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-d6a5243b6fa
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the workflow execution.
+	//
 	// This parameter is required.
 	//
 	// example:

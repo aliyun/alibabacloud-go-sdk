@@ -20,18 +20,30 @@ type iUpdateJobResponseBody interface {
 }
 
 type UpdateJobResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique identifier for the request. Alibaba Cloud generates this ID to help you troubleshoot issues.
+	//
 	// example:
 	//
 	// 3808cf26-dde2-4286-8503-b0a2cd4065a7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request was successful. Valid values:
+	//
+	// - `true`: The request succeeded.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true

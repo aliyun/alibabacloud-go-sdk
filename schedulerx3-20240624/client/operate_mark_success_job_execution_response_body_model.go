@@ -20,20 +20,30 @@ type iOperateMarkSuccessJobExecutionResponseBody interface {
 }
 
 type OperateMarkSuccessJobExecutionResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// AA3538A0-FBE6-5E31-AD88-A02C6FF0DACC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call was successful.
+	//
+	// - `true`: The call was successful.
+	//
+	// - `false`: The call failed.
+	//
 	// example:
 	//
 	// true

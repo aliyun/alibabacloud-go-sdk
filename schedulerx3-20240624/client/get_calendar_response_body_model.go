@@ -22,22 +22,32 @@ type iGetCalendarResponseBody interface {
 }
 
 type GetCalendarResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// -
+	// - The data returned.
 	Data *GetCalendarResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 2C3E52FF-CBE9-5C0E-8252-37ACFF1F5EFF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - **true**
+	//
+	// - **false**
+	//
 	// example:
 	//
 	// true
@@ -107,10 +117,14 @@ func (s *GetCalendarResponseBody) Validate() error {
 }
 
 type GetCalendarResponseBodyData struct {
+	// The name of the calendar.
+	//
 	// example:
 	//
 	// workday
 	CalendarName *string `json:"CalendarName,omitempty" xml:"CalendarName,omitempty"`
+	// A JSON string that represents an array of objects. Each object specifies the days for a particular month.
+	//
 	// example:
 	//
 	// [
@@ -141,6 +155,8 @@ type GetCalendarResponseBodyData struct {
 	//
 	// ]
 	Months *string `json:"Months,omitempty" xml:"Months,omitempty"`
+	// The year.
+	//
 	// example:
 	//
 	// 2030

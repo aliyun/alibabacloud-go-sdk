@@ -24,28 +24,44 @@ type iListCalendarsRequest interface {
 }
 
 type ListCalendarsRequest struct {
+	// The name of the calendar.
+	//
 	// example:
 	//
 	// workday
 	CalendarName *string `json:"CalendarName,omitempty" xml:"CalendarName,omitempty"`
+	// The ID of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to return calendar details. The default value is `false`.
+	//
+	// - `false`: Does not return the detailed list of days for each month. Only basic information is returned.
+	//
+	// - `true`: Returns the detailed list of days for each month.
+	//
 	// example:
 	//
 	// false
 	FetchCalendarDetail *bool `json:"FetchCalendarDetail,omitempty" xml:"FetchCalendarDetail,omitempty"`
+	// The maximum number of entries returned per page. The default value is 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results. Set this parameter to the `NextToken` value from the previous response. Omit this parameter for the first request.
+	//
 	// example:
 	//
 	// eCKqVlS5FKF5EWGGOo8EgQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The year.
+	//
 	// example:
 	//
 	// 2024

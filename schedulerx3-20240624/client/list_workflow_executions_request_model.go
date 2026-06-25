@@ -36,52 +36,96 @@ type iListWorkflowExecutionsRequest interface {
 }
 
 type ListWorkflowExecutionsRequest struct {
+	// The application name.
+	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range for filtering executions. The time must be in `YYYY-MM-DD HH:mm:ss` format.
+	//
 	// example:
 	//
 	// 2025-10-13 16:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The maximum number of results to return. Defaults to 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results. For the first request, do not specify this parameter. If the response does not include a `NextToken`, no more results are available.
+	//
 	// example:
 	//
 	// eCKqVlS5FKF5EWGGOo8EgQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start of the time range for filtering executions. The time must be in `YYYY-MM-DD HH:mm:ss` format.
+	//
 	// example:
 	//
 	// 2025-10-27 02:15:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The workflow execution status. Use this parameter to filter executions by status. Valid values:
+	//
+	// - 0: unknown
+	//
+	// - 1: waiting
+	//
+	// - 2: queued
+	//
+	// - 3: running
+	//
+	// - 4: success
+	//
+	// - 5: failed
+	//
+	// - 6: killed
+	//
+	// - 7: held
+	//
+	// - 8: mark_success
+	//
+	// - 9: skipped
+	//
 	// example:
 	//
 	// 4
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The workflow execution ID.
+	//
 	// example:
 	//
 	// 100
 	WorkflowExecutionId *int64 `json:"WorkflowExecutionId,omitempty" xml:"WorkflowExecutionId,omitempty"`
+	// The workflow ID.
+	//
 	// example:
 	//
 	// 20
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The workflow name.
+	//
 	// example:
 	//
 	// myWorkflow

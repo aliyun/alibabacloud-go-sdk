@@ -24,36 +24,48 @@ type iOperateRerunJobRequest interface {
 }
 
 type OperateRerunJobRequest struct {
+	// The name of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The unique identifier of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The specific time of day for which to rerun the data. The format is `HH:mm:ss`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 14:11:10
 	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	// The end of the time range to rerun, specified as a Unix timestamp in milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1698458024000
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The unique identifier of the job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 74
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The start of the time range to rerun, specified as a Unix timestamp in milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:

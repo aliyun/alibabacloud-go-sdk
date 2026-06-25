@@ -18,18 +18,24 @@ type iOperateDisableWorkflowsRequest interface {
 }
 
 type OperateDisableWorkflowsRequest struct {
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// A list of workflow IDs.
+	//
 	// This parameter is required.
 	WorkflowIds []*int64 `json:"WorkflowIds,omitempty" xml:"WorkflowIds,omitempty" type:"Repeated"`
 }

@@ -20,10 +20,14 @@ type iUpdateJobExecutionResponseBody interface {
 }
 
 type UpdateJobExecutionResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// error message
+	//
 	// example:
 	//
 	// Parameter error: content is null.
@@ -34,6 +38,12 @@ type UpdateJobExecutionResponseBody struct {
 	//
 	// 27B1345D-5F71-5972-8E4C-AABA6C6232F0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the invocation succeeded.
+	//
+	// - true: The invocation succeeded.
+	//
+	// - false: Failed to Invocate.
+	//
 	// example:
 	//
 	// true

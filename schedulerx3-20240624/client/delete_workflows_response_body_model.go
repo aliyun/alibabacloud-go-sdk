@@ -20,18 +20,30 @@ type iDeleteWorkflowsResponseBody interface {
 }
 
 type DeleteWorkflowsResponseBody struct {
+	// The status code of the request. A value of `200` indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID for the request. Use it to troubleshoot issues.
+	//
 	// example:
 	//
 	// 27B1345D-5F71-5972-8E4C-AABA6C6232F0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

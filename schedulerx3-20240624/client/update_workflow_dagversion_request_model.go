@@ -20,24 +20,32 @@ type iUpdateWorkflowDAGVersionRequest interface {
 }
 
 type UpdateWorkflowDAGVersionRequest struct {
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The Workflow DAG version.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v1
 	DagVersion *string `json:"DagVersion,omitempty" xml:"DagVersion,omitempty"`
+	// The Workflow ID.
+	//
 	// This parameter is required.
 	//
 	// example:

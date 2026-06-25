@@ -68,118 +68,233 @@ type iCreateJobRequest interface {
 }
 
 type CreateJobRequest struct {
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The retry interval on failure. Unit: seconds. Default value: 30.
+	//
 	// example:
 	//
 	// 3
 	AttemptInterval *int32 `json:"AttemptInterval,omitempty" xml:"AttemptInterval,omitempty"`
+	// The custom calendar. This parameter is optional for the cron time type.
+	//
 	// example:
 	//
 	// workday
 	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
+	// The child node IDs, separated by commas.
+	//
 	// example:
 	//
 	// 1,2
 	ChildJobId *string `json:"ChildJobId,omitempty" xml:"ChildJobId,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
-	ClusterId  *string                     `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The node coordinate in the workflow.
 	Coordinate *CreateJobRequestCoordinate `json:"Coordinate,omitempty" xml:"Coordinate,omitempty" type:"Struct"`
+	// The dependency strategy.
+	//
 	// example:
 	//
 	// 1
 	DependentStrategy *int32 `json:"DependentStrategy,omitempty" xml:"DependentStrategy,omitempty"`
+	// The node description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The client blocking strategy. Valid values:
+	//
+	// - 1: serial execution on a single machine
+	//
+	// - 2: ignore subsequent schedules
+	//
+	// - 3: override previous schedules.
+	//
 	// example:
 	//
 	// 1
 	ExecutorBlockStrategy *int32 `json:"ExecutorBlockStrategy,omitempty" xml:"ExecutorBlockStrategy,omitempty"`
+	// The JobHandler name.
+	//
 	// example:
 	//
 	// testJobVoidHandler
 	JobHandler *string `json:"JobHandler,omitempty" xml:"JobHandler,omitempty"`
+	// The node type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The maximum number of retries on failure. Set this parameter based on your business requirements.
+	//
 	// example:
 	//
 	// 3
 	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
+	// The maximum number of concurrent instances.
+	//
 	// example:
 	//
 	// 1
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// The node name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-job
-	Name           *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
-	NoticeConfig   *CreateJobRequestNoticeConfig     `json:"NoticeConfig,omitempty" xml:"NoticeConfig,omitempty" type:"Struct"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The notification configuration.
+	//
+	// example:
+	//
+	// 1
+	NoticeConfig *CreateJobRequestNoticeConfig `json:"NoticeConfig,omitempty" xml:"NoticeConfig,omitempty" type:"Struct"`
+	// The notification contact configuration.
 	NoticeContacts []*CreateJobRequestNoticeContacts `json:"NoticeContacts,omitempty" xml:"NoticeContacts,omitempty" type:"Repeated"`
+	// The node parameters.
+	//
 	// example:
 	//
 	// test
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The priority. Valid values:
+	//
+	// - 1: low
+	//
+	// - 5: medium
+	//
+	// - 10: high
+	//
+	// - 15: very high.
+	//
 	// example:
 	//
 	// 5
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The routing strategy. Valid values:
+	//
+	// - 1: round robin
+	//
+	// - 2: random
+	//
+	// - 3: first
+	//
+	// - 4: last
+	//
+	// - 5: least frequently used
+	//
+	// - 6: least recently used
+	//
+	// - 7: consistent hashing
+	//
+	// - 8: shard broadcast.
+	//
 	// example:
 	//
 	// 1
 	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	// The script content for non-BEAN node types. Use this field to pass the script content.
+	//
 	// example:
 	//
 	// echo "hello world"
 	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 1701310327000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start time type.
+	//
 	// example:
 	//
 	// 1
 	StartTimeType *int32 `json:"StartTimeType,omitempty" xml:"StartTimeType,omitempty"`
+	// The node status. Default value: enabled. Valid values:
+	//
+	// - 0: disabled
+	//
+	// - 1: enabled.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time expression. Set this parameter based on the selected time type.
+	//
+	// - **none**: No value is required.
+	//
+	// - **cron**: Specify a standard cron expression. Online validation is supported.
+	//
+	// - **api**: No value is required.
+	//
+	// - **fixed_rate**: Specify a fixed frequency value in seconds. For example, 200 indicates that the node is triggered every 200 seconds.
+	//
+	// - **one_time**: Specify a scheduling time in the yyyy-MM-dd HH:mm:ss format or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+	//
 	// example:
 	//
 	// 0 0 4 ? 	- Mon/1
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
+	// The time type. Valid values:
+	//
+	// - -1: none<br/>
+	//
+	// - 1: cron<br/>
+	//
+	// - 3: fix_rate<br/>
+	//
+	// - 5: one_time<br/>
+	//
+	// - 100: api.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// -1
 	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	// The time zone.
+	//
 	// example:
 	//
 	// GMT+8
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	// The node weight.
+	//
 	// example:
 	//
 	// 1
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The extended attributes. This parameter is required for K8s node types.
+	//
+	// Job node: {"resource":"job"}
+	//
+	// Shell node: {"image":"busybox","resource":"shell"}.
+	//
 	// example:
 	//
-	// {"responseMode":"streaming"}
+	// {"resource":"job"}
 	XAttrs *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
@@ -467,18 +582,26 @@ func (s *CreateJobRequest) Validate() error {
 }
 
 type CreateJobRequestCoordinate struct {
+	// The height.
+	//
 	// example:
 	//
 	// 50.0
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The width.
+	//
 	// example:
 	//
 	// 100.0
 	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The X coordinate.
+	//
 	// example:
 	//
 	// 100.0
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The Y coordinate.
+	//
 	// example:
 	//
 	// 100.0
@@ -539,34 +662,82 @@ type CreateJobRequestNoticeConfig struct {
 	// 30
 	EndEarly       *int32 `json:"EndEarly,omitempty" xml:"EndEarly,omitempty"`
 	EndEarlyEnable *bool  `json:"EndEarlyEnable,omitempty" xml:"EndEarlyEnable,omitempty"`
+	// Specifies whether to enable failure alerting. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
+	//
 	// example:
 	//
 	// true
 	FailEnable *bool `json:"FailEnable,omitempty" xml:"FailEnable,omitempty"`
+	// The number of consecutive failures.
+	//
+	// > An alert is sent only when the number of consecutive failures exceeds the configured value.
+	//
 	// example:
 	//
 	// 1
 	FailLimitTimes *int32 `json:"FailLimitTimes,omitempty" xml:"FailLimitTimes,omitempty"`
+	// Specifies whether to enable alerting when no workers are available. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
+	//
 	// example:
 	//
 	// true
 	MissWorkerEnable *bool `json:"MissWorkerEnable,omitempty" xml:"MissWorkerEnable,omitempty"`
+	// The notification channel. Valid values:
+	//
+	// - sms: SMS
+	//
+	// - phone: phone call
+	//
+	// - mail: email
+	//
+	// - webhook: webhook
+	//
+	// > Separate multiple notification channels with commas.
+	//
 	// example:
 	//
 	// mail
 	SendChannel *string `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
+	// Specifies whether to enable success notification. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
+	//
 	// example:
 	//
 	// true
 	SuccessNotice *bool `json:"SuccessNotice,omitempty" xml:"SuccessNotice,omitempty"`
+	// The timeout period. Unit: seconds.
+	//
 	// example:
 	//
 	// 30
 	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Specifies whether to enable timeout alerting. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
+	//
 	// example:
 	//
 	// true
 	TimeoutEnable *bool `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
+	// Specifies whether to enable timeout termination. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
+	//
 	// example:
 	//
 	// true
@@ -676,10 +847,18 @@ func (s *CreateJobRequestNoticeConfig) Validate() error {
 }
 
 type CreateJobRequestNoticeContacts struct {
+	// The object type of the notification recipient. Valid values:
+	//
+	// - 1: alert contact
+	//
+	// - 2: alert contact group.
+	//
 	// example:
 	//
 	// 1
 	ContactType *int32 `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// The name of the alert contact or alert contact group.
+	//
 	// example:
 	//
 	// xiaoming

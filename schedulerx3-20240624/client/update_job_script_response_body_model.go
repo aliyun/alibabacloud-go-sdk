@@ -20,18 +20,26 @@ type iUpdateJobScriptResponseBody interface {
 }
 
 type UpdateJobScriptResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// not support update script, please upgrade engine version to 2.2.2+
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The Request ID. Alibaba Cloud generates this unique identifier for each request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 29ED6209-5DE6-5E1D-89B0-B7B1D823A1BF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. `true` indicates success, and `false` indicates failure.
+	//
 	// example:
 	//
 	// true

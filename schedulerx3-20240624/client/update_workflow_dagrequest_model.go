@@ -22,24 +22,34 @@ type iUpdateWorkflowDAGRequest interface {
 }
 
 type UpdateWorkflowDAGRequest struct {
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-a1804a3226d
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The directed acyclic graph (DAG) of the workflow.
+	//
 	// This parameter is required.
 	Dag *UpdateWorkflowDAGRequestDag `json:"Dag,omitempty" xml:"Dag,omitempty" type:"Struct"`
+	// The version of the DAG. To obtain this value, call the [ListDAGVersions](https://help.aliyun.com/document_detail/465989.html) operation.
+	//
 	// example:
 	//
 	// 1137005
 	DagVersion *string `json:"DagVersion,omitempty" xml:"DagVersion,omitempty"`
+	// The workflow ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -111,7 +121,9 @@ func (s *UpdateWorkflowDAGRequest) Validate() error {
 }
 
 type UpdateWorkflowDAGRequestDag struct {
+	// A list of edges in the workflow.
 	Edges []*UpdateWorkflowDAGRequestDagEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Repeated"`
+	// A list of nodes in the workflow.
 	Nodes []*UpdateWorkflowDAGRequestDagNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -164,10 +176,14 @@ func (s *UpdateWorkflowDAGRequestDag) Validate() error {
 }
 
 type UpdateWorkflowDAGRequestDagEdges struct {
+	// The job ID of the source node.
+	//
 	// example:
 	//
 	// 3
 	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The job ID of the target node.
+	//
 	// example:
 	//
 	// 4
@@ -205,6 +221,8 @@ func (s *UpdateWorkflowDAGRequestDagEdges) Validate() error {
 }
 
 type UpdateWorkflowDAGRequestDagNodes struct {
+	// The logical expression of the node.
+	//
 	// example:
 	//
 	// {
@@ -312,8 +330,11 @@ type UpdateWorkflowDAGRequestDagNodes struct {
 	//     }
 	//
 	// }
-	Content    *string                                     `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The coordinates of the node.
 	Coordinate *UpdateWorkflowDAGRequestDagNodesCoordinate `json:"Coordinate,omitempty" xml:"Coordinate,omitempty" type:"Struct"`
+	// The job ID.
+	//
 	// example:
 	//
 	// 1
@@ -365,18 +386,26 @@ func (s *UpdateWorkflowDAGRequestDagNodes) Validate() error {
 }
 
 type UpdateWorkflowDAGRequestDagNodesCoordinate struct {
+	// Optional. The height of the node.
+	//
 	// example:
 	//
 	// 20
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Optional. The width of the node.
+	//
 	// example:
 	//
 	// 100
 	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The x-coordinate.
+	//
 	// example:
 	//
 	// 50
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// example:
 	//
 	// 50

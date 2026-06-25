@@ -23,6 +23,8 @@ type iCreateClusterRequest interface {
 	GetEngineType() *string
 	SetPricingCycle(v string) *CreateClusterRequest
 	GetPricingCycle() *string
+	SetSource(v string) *CreateClusterRequest
+	GetSource() *string
 	SetTag(v []*CreateClusterRequestTag) *CreateClusterRequest
 	GetTag() []*CreateClusterRequestTag
 	SetVSwitches(v []*CreateClusterRequestVSwitches) *CreateClusterRequest
@@ -32,43 +34,59 @@ type iCreateClusterRequest interface {
 }
 
 type CreateClusterRequest struct {
+	// The billing type.
+	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The name of the cluster.
+	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// qianxi-test-0812
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// example:
+	// The cluster specification. Valid values:
 	//
-	// scx.dev.x1
+	// - scx.dev.x1
+	//
+	// - scx.small.x1
+	//
+	// - scx.small.x2
+	//
+	// - scx.medium.x1
+	//
+	// - scx.medium.x2.
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	// The cluster type.
+	//
 	// example:
 	//
 	// 1
 	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 3
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// example:
-	//
-	// xxljob
+	// The engine type. Valid values: xxljob.
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The pricing cycle.
+	//
 	// example:
 	//
 	// Year
-	PricingCycle *string                          `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Tag          []*CreateClusterRequestTag       `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VSwitches    []*CreateClusterRequestVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-	// VPC id
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The source.
 	//
 	// example:
 	//
-	// vpc-aa1a18236n90rqhuhhnhh
+	// schedulerx
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The list of tags. A maximum of 20 tags are supported.
+	Tag []*CreateClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The information about the vSwitches.
+	VSwitches []*CreateClusterRequestVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	// The ID of the VPC.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -106,6 +124,10 @@ func (s *CreateClusterRequest) GetEngineType() *string {
 
 func (s *CreateClusterRequest) GetPricingCycle() *string {
 	return s.PricingCycle
+}
+
+func (s *CreateClusterRequest) GetSource() *string {
+	return s.Source
 }
 
 func (s *CreateClusterRequest) GetTag() []*CreateClusterRequestTag {
@@ -155,6 +177,11 @@ func (s *CreateClusterRequest) SetPricingCycle(v string) *CreateClusterRequest {
 	return s
 }
 
+func (s *CreateClusterRequest) SetSource(v string) *CreateClusterRequest {
+	s.Source = &v
+	return s
+}
+
 func (s *CreateClusterRequest) SetTag(v []*CreateClusterRequestTag) *CreateClusterRequest {
 	s.Tag = v
 	return s
@@ -193,7 +220,9 @@ func (s *CreateClusterRequest) Validate() error {
 }
 
 type CreateClusterRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -228,13 +257,9 @@ func (s *CreateClusterRequestTag) Validate() error {
 }
 
 type CreateClusterRequestVSwitches struct {
-	// example:
-	//
-	// vsw-2ze745n3r2sfqtahhubpl
+	// The ID of the vSwitch.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// example:
-	//
-	// cn-hangzhou-j
+	// The zone ID of the vSwitch.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 

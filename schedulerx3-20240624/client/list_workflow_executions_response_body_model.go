@@ -26,32 +26,46 @@ type iListWorkflowExecutionsResponseBody interface {
 }
 
 type ListWorkflowExecutionsResponseBody struct {
+	// The response code. A value of `200` indicates a successful request.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// -
 	Data *ListWorkflowExecutionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The maximum number of entries to return per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The response message. If the request fails, this parameter provides details about the error.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token to retrieve the next page of results. If this parameter is not returned, all results have been returned.
+	//
 	// example:
 	//
 	// eCKqVlS5FKF5EWGGOo8EgQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The unique request ID. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// BAC1ADB5-EEB5-5834-93D8-522E067AF8D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -139,16 +153,22 @@ func (s *ListWorkflowExecutionsResponseBody) Validate() error {
 }
 
 type ListWorkflowExecutionsResponseBodyData struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// -
 	Records []*ListWorkflowExecutionsResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The total number of matching workflow executions.
+	//
 	// example:
 	//
 	// 65
@@ -213,42 +233,88 @@ func (s *ListWorkflowExecutionsResponseBodyData) Validate() error {
 }
 
 type ListWorkflowExecutionsResponseBodyDataRecords struct {
+	// The application name.
+	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The data time of the workflow execution.
+	//
 	// example:
 	//
 	// 2024-11-12 14:52:42
 	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	// The end time of the workflow execution.
+	//
 	// example:
 	//
 	// 2024-11-12 14:52:42
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The executor ID.
+	//
 	// example:
 	//
 	// 1827811800526000
 	Executor *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	// The schedule time of the workflow execution.
+	//
 	// example:
 	//
 	// 2024-11-12 14:52:42
 	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	// The start time of the workflow execution.
+	//
 	// example:
 	//
 	// 2025-11-04 01:09:27
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the workflow execution. Valid values:
+	//
+	// - 0: UNKNOWN
+	//
+	// - 1: WAITING
+	//
+	// - 2: READY
+	//
+	// - 3: RUNNING
+	//
+	// - 4: SUCCESS
+	//
+	// - 5: FAILED
+	//
+	// - 6: PAUSED
+	//
+	// - 7: SUBMITTED
+	//
+	// - 8: REJECTED
+	//
+	// - 9: ACCEPTED
+	//
+	// - 10: PARTIAL_FAILED
+	//
+	// - 11: SKIPPED
+	//
+	// - 12: REMOVED
+	//
 	// example:
 	//
 	// 4
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The workflow execution ID.
+	//
 	// example:
 	//
 	// 100
 	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitempty" xml:"WorkflowExecutionId,omitempty"`
+	// The workflow ID.
+	//
 	// example:
 	//
 	// 10
 	WorkflowId *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The workflow name.
+	//
 	// example:
 	//
 	// myWorkflow

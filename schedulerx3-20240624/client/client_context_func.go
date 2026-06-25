@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Creates an application.
+// Creates an app.
 //
 // @param request - CreateAppRequest
 //
@@ -81,7 +81,11 @@ func (client *Client) CreateAppWithContext(ctx context.Context, request *CreateA
 
 // Summary:
 //
-// 创建日历
+// Creates a custom calendar.
+//
+// Description:
+//
+// Creates a custom calendar for SchedulerX.
 //
 // @param request - CreateCalendarRequest
 //
@@ -195,6 +199,10 @@ func (client *Client) CreateClusterWithContext(ctx context.Context, tmpReq *Crea
 		body["PricingCycle"] = request.PricingCycle
 	}
 
+	if !dara.IsNil(request.Source) {
+		body["Source"] = request.Source
+	}
+
 	if !dara.IsNil(request.VSwitchesShrink) {
 		body["VSwitches"] = request.VSwitchesShrink
 	}
@@ -229,7 +237,7 @@ func (client *Client) CreateClusterWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
-// 创建数据源
+// # Create a data source
 //
 // @param request - CreateDatasourceRequest
 //
@@ -294,6 +302,10 @@ func (client *Client) CreateDatasourceWithContext(ctx context.Context, request *
 // Summary:
 //
 // 添加执行器组
+//
+// Description:
+//
+// 手动导入执行器
 //
 // @param request - CreateExecutorGroupRequest
 //
@@ -385,7 +397,11 @@ func (client *Client) CreateExecutorGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 添加执行器
+// Imports one or more executors.
+//
+// Description:
+//
+// Imports one or more executors.
 //
 // @param request - CreateExecutorsRequest
 //
@@ -441,7 +457,7 @@ func (client *Client) CreateExecutorsWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Creates a job.
+// Creates a node.
 //
 // @param tmpReq - CreateJobRequest
 //
@@ -607,7 +623,7 @@ func (client *Client) CreateJobWithContext(ctx context.Context, tmpReq *CreateJo
 
 // Summary:
 //
-// 创建应用
+// Creates a workflow.
 //
 // @param request - CreateWorkflowRequest
 //
@@ -691,7 +707,7 @@ func (client *Client) CreateWorkflowWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Deletes an application group.
+// Deletes an App Group.
 //
 // @param request - DeleteAppRequest
 //
@@ -739,7 +755,7 @@ func (client *Client) DeleteAppWithContext(ctx context.Context, request *DeleteA
 
 // Summary:
 //
-// 删除日历
+// Deletes the specified calendar.
 //
 // @param request - DeleteCalendarRequest
 //
@@ -835,7 +851,7 @@ func (client *Client) DeleteClusterWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 删除数据源
+// # Delete data source
 //
 // @param request - DeleteDatasourceRequest
 //
@@ -935,7 +951,7 @@ func (client *Client) DeleteExecutorGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes multiple jobs at a time.
+// Deletes multiple jobs in a batch.
 //
 // @param tmpReq - DeleteJobsRequest
 //
@@ -993,7 +1009,7 @@ func (client *Client) DeleteJobsWithContext(ctx context.Context, tmpReq *DeleteJ
 
 // Summary:
 //
-// 删除工作流
+// Deletes a Workflow.
 //
 // @param request - DeleteWorkflowRequest
 //
@@ -1049,7 +1065,7 @@ func (client *Client) DeleteWorkflowWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 批量删除工作流
+// Deletes one or more workflows.
 //
 // @param tmpReq - DeleteWorkflowsRequest
 //
@@ -1111,7 +1127,7 @@ func (client *Client) DeleteWorkflowsWithContext(ctx context.Context, tmpReq *De
 
 // Summary:
 //
-// Exports the information about jobs at a time.
+// Exports job information in bulk.
 //
 // @param tmpReq - ExportJobsRequest
 //
@@ -1173,7 +1189,7 @@ func (client *Client) ExportJobsWithContext(ctx context.Context, tmpReq *ExportJ
 
 // Summary:
 //
-// 批量导出工作流信息
+// Exports the definitions of one or more Workflows in JSON format. The exported data includes the basic information, all Nodes, and the Directed Acyclic Graph (DAG) dependencies for each Workflow.
 //
 // @param tmpReq - ExportWorkflowsRequest
 //
@@ -1231,7 +1247,7 @@ func (client *Client) ExportWorkflowsWithContext(ctx context.Context, tmpReq *Ex
 
 // Summary:
 //
-// 获取指定应用
+// Retrieves the details of a specified application.
 //
 // @param request - GetAppRequest
 //
@@ -1279,7 +1295,7 @@ func (client *Client) GetAppWithContext(ctx context.Context, request *GetAppRequ
 
 // Summary:
 //
-// 获取日历信息
+// Retrieves the details of a specified calendar.
 //
 // @param request - GetCalendarRequest
 //
@@ -1331,7 +1347,7 @@ func (client *Client) GetCalendarWithContext(ctx context.Context, request *GetCa
 
 // Summary:
 //
-// Queries the details of a cluster.
+// Obtains the details of a cluster.
 //
 // @param request - GetClusterRequest
 //
@@ -1371,7 +1387,7 @@ func (client *Client) GetClusterWithContext(ctx context.Context, request *GetClu
 
 // Summary:
 //
-// Queries a specified machine.
+// Retrieves the designation information for a job.
 //
 // @param request - GetDesigateInfoRequest
 //
@@ -1411,7 +1427,17 @@ func (client *Client) GetDesigateInfoWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 查询执行器配置信息
+// Retrieves the configuration for a specified Executor.
+//
+// Description:
+//
+// # Add the enhancement plugin
+//
+// Add the Enhancement Plugin to your `pom.xml` file to extend the Executor\\"s capabilities.
+//
+// **Note**: Place this plugin **before*	- the `xxl-job-core` dependency in the `pom.xml` file.
+//
+// **For more information, see**: [Plugin Version Documentation](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - GetExecutorConfigRequest
 //
@@ -1459,7 +1485,7 @@ func (client *Client) GetExecutorConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取任务执行的详细信息
+// Returns the details of a Task Execution.
 //
 // @param request - GetJobExecutionRequest
 //
@@ -1515,7 +1541,17 @@ func (client *Client) GetJobExecutionWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Obtains the execution details of a job.
+// Gets the details of a sharding task execution.
+//
+// Description:
+//
+// # Add the enhancement plugin
+//
+// Add the Enhancement Plugin to your `pom.xml` file to enhance the capabilities of the Executor.
+//
+// **Note**: Place this plugin **above*	- the `xxl-job-core` dependency in your pom.xml.
+//
+// **See also**: [Plugin Release Notes](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - GetJobExecutionProgressRequest
 //
@@ -1555,7 +1591,17 @@ func (client *Client) GetJobExecutionProgressWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询任务的线程堆栈
+// Retrieves the thread dump for a specific job execution.
+//
+// Description:
+//
+// # Add the enhancement plugin
+//
+// Add the Enhancement Plugin to your `pom.xml` file to extend the executor\\"s capabilities.
+//
+// **Note**: Place this plugin **above*	- the `xxl-job-core` dependency.
+//
+// **For more information, see**: [Plugin versioning documentation](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - GetJobExecutionThreadDumpRequest
 //
@@ -1595,7 +1641,7 @@ func (client *Client) GetJobExecutionThreadDumpWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries logs.
+// Retrieves log entries.
 //
 // @param request - GetLogRequest
 //
@@ -1635,7 +1681,7 @@ func (client *Client) GetLogWithContext(ctx context.Context, request *GetLogRequ
 
 // Summary:
 //
-// 查询事件
+// Query Events.
 //
 // @param request - GetLogEventRequest
 //
@@ -1676,6 +1722,16 @@ func (client *Client) GetLogEventWithContext(ctx context.Context, request *GetLo
 // Summary:
 //
 // 获取分页日志
+//
+// Description:
+//
+// # 引入增强插件
+//
+// 在`pom.xml`文件中添加增强插件以提升Executor的能力。
+//
+// **注意**：请确保该插件在pom中放置在`xxl-job-core` 依赖的**上方**。
+//
+// **详细信息请参考**：[插件版本说明文档](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - GetPageLogRequest
 //
@@ -1759,7 +1815,7 @@ func (client *Client) GetPageLogWithContext(ctx context.Context, request *GetPag
 
 // Summary:
 //
-// 获取工作流
+// Retrieves the basic information for a specified workflow.
 //
 // @param request - GetWorkflowRequest
 //
@@ -1811,7 +1867,7 @@ func (client *Client) GetWorkflowWithContext(ctx context.Context, request *GetWo
 
 // Summary:
 //
-// 获取工作流的DAG信息
+// Gets the Directed Acyclic Graph (DAG) of a workflow.
 //
 // @param request - GetWorkflowDAGRequest
 //
@@ -1863,7 +1919,7 @@ func (client *Client) GetWorkflowDAGWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 获取工作流的DAG信息
+// Gets the DAG for a previous workflow version.
 //
 // @param request - GetWorkflowDAGPreviewRequest
 //
@@ -1919,7 +1975,7 @@ func (client *Client) GetWorkflowDAGPreviewWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取工作流实例DAG信息
+// Retrieve the DAG information for a workflow instance.
 //
 // @param request - GetWorkflowExecutionDAGRequest
 //
@@ -2027,7 +2083,7 @@ func (client *Client) ImportCalendarWithContext(ctx context.Context, request *Im
 
 // Summary:
 //
-// Imports jobs at a time.
+// Imports jobs in bulk.
 //
 // @param request - ImportJobsRequest
 //
@@ -2083,7 +2139,7 @@ func (client *Client) ImportJobsWithContext(ctx context.Context, request *Import
 
 // Summary:
 //
-// 批量导入工作流
+// Imports one or more workflows.
 //
 // @param request - ImportWorkflowsRequest
 //
@@ -2139,7 +2195,7 @@ func (client *Client) ImportWorkflowsWithContext(ctx context.Context, request *I
 
 // Summary:
 //
-// Obtains a list of alert events.
+// Retrieves alert events.
 //
 // @param request - ListAlarmEventRequest
 //
@@ -2179,7 +2235,7 @@ func (client *Client) ListAlarmEventWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Obtains a list of application names.
+// Returns a list of application names.
 //
 // @param request - ListAppNamesRequest
 //
@@ -2219,7 +2275,7 @@ func (client *Client) ListAppNamesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries a list of applications.
+// Get the list of applications.
 //
 // @param request - ListAppsRequest
 //
@@ -2259,7 +2315,7 @@ func (client *Client) ListAppsWithContext(ctx context.Context, request *ListApps
 
 // Summary:
 //
-// Obtains a list of calendar names.
+// Lists all Calendar names.
 //
 // @param request - ListCalendarNamesRequest
 //
@@ -2299,7 +2355,7 @@ func (client *Client) ListCalendarNamesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询日历
+// Retrieves a list of calendars.
 //
 // @param request - ListCalendarsRequest
 //
@@ -2363,7 +2419,7 @@ func (client *Client) ListCalendarsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries a list of instances.
+// Query the list of instances.
 //
 // @param request - ListClustersRequest
 //
@@ -2403,7 +2459,7 @@ func (client *Client) ListClustersWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 获取数据源列表
+// # Retrieve the data source list
 //
 // @param request - ListDatasourcesRequest
 //
@@ -2473,6 +2529,16 @@ func (client *Client) ListDatasourcesWithContext(ctx context.Context, request *L
 //
 // 获取执行器组列表
 //
+// Description:
+//
+// # 引入增强插件
+//
+// 在`pom.xml`文件中添加增强插件以提升Executor的能力。
+//
+// **注意**：请确保该插件在pom中放置在`xxl-job-core` 依赖的**上方**。
+//
+// **详细信息请参考**：[插件版本说明文档](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
+//
 // @param request - ListExecutorGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2539,7 +2605,7 @@ func (client *Client) ListExecutorGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries a list of executors.
+// Lists executors.
 //
 // @param request - ListExecutorsRequest
 //
@@ -2579,7 +2645,7 @@ func (client *Client) ListExecutorsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Obtains a list of job instances.
+// Returns a list of task instances.
 //
 // @param request - ListJobExecutionsRequest
 //
@@ -2663,7 +2729,7 @@ func (client *Client) ListJobExecutionsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取任务脚本历史列表
+// Lists the script history for a job.
 //
 // @param request - ListJobScriptHistoryRequest
 //
@@ -2723,7 +2789,7 @@ func (client *Client) ListJobScriptHistoryWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries a list of jobs.
+// Returns a task list.
 //
 // @param request - ListJobsRequest
 //
@@ -2803,7 +2869,17 @@ func (client *Client) ListJobsWithContext(ctx context.Context, request *ListJobs
 
 // Summary:
 //
-// 获取k8s资源列表
+// Lists k8s resources.
+//
+// Description:
+//
+// # Add the enhancement plugin
+//
+// Add the enhancement plugin to your `pom.xml` file to extend the Executor\\"s capabilities.
+//
+// **Note**: Place this plugin **above*	- the `xxl-job-core` dependency in your pom.xml file.
+//
+// **For more information:*	- [Plugin version release notes](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - ListK8sResourceRequest
 //
@@ -2863,7 +2939,7 @@ func (client *Client) ListK8sResourceWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Obtains a list of tags of an executor.
+// Retrieves a list of labels for an Executor.
 //
 // @param request - ListLablesRequest
 //
@@ -2903,7 +2979,7 @@ func (client *Client) ListLablesWithContext(ctx context.Context, request *ListLa
 
 // Summary:
 //
-// Queries scheduling events.
+// Lists scheduled events.
 //
 // @param request - ListScheduleEventRequest
 //
@@ -2943,7 +3019,7 @@ func (client *Client) ListScheduleEventWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Obtains the scheduling time points of the next five jobs. The scheduling time points are specified by time types or expressions.
+// Retrieves the next five scheduled times based on the specified time type and time expression.
 //
 // @param request - ListScheduleTimesRequest
 //
@@ -2983,7 +3059,7 @@ func (client *Client) ListScheduleTimesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取流程实例列表
+// Retrieves a list of workflow instances.
 //
 // @param request - ListWorkflowExecutionsRequest
 //
@@ -3071,7 +3147,7 @@ func (client *Client) ListWorkflowExecutionsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取当前工作流版本列表
+// Lists the versions for a specified workflow.
 //
 // @param request - ListWorkflowVersionsRequest
 //
@@ -3131,7 +3207,7 @@ func (client *Client) ListWorkflowVersionsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取工作流列表
+// Lists your workflows.
 //
 // @param request - ListWorkflowsRequest
 //
@@ -3211,7 +3287,7 @@ func (client *Client) ListWorkflowsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 补数工作流
+// Backfills historical data for a specified workflow.
 //
 // @param request - OperateBackfillWorkflowRequest
 //
@@ -3271,7 +3347,7 @@ func (client *Client) OperateBackfillWorkflowWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 连接数据源
+// # Connect to a data source
 //
 // @param request - OperateConnectDatasourceRequest
 //
@@ -3327,7 +3403,7 @@ func (client *Client) OperateConnectDatasourceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Designates executors.
+// Designates one or more executors for a job.
 //
 // @param tmpReq - OperateDesignateExecutorsRequest
 //
@@ -3397,7 +3473,7 @@ func (client *Client) OperateDesignateExecutorsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Disables multiple jobs at a time.
+// Disables multiple jobs.
 //
 // @param tmpReq - OperateDisableJobsRequest
 //
@@ -3455,7 +3531,11 @@ func (client *Client) OperateDisableJobsWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 批量禁用工作流
+// Disables one or more workflows.
+//
+// Description:
+//
+// Disables one or more specified workflows.
 //
 // @param tmpReq - OperateDisableWorkflowsRequest
 //
@@ -3513,7 +3593,7 @@ func (client *Client) OperateDisableWorkflowsWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Enables multiple jobs at a time.
+// Enables multiple jobs in a batch.
 //
 // @param tmpReq - OperateEnableJobsRequest
 //
@@ -3571,7 +3651,7 @@ func (client *Client) OperateEnableJobsWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 批量启用工作流
+// Enables one or more workflows.
 //
 // @param tmpReq - OperateEnableWorkflowsRequest
 //
@@ -3629,7 +3709,7 @@ func (client *Client) OperateEnableWorkflowsWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Runs a job once.
+// Executes a job on demand.
 //
 // @param request - OperateExecuteJobRequest
 //
@@ -3693,7 +3773,11 @@ func (client *Client) OperateExecuteJobWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 运行一次工作流
+// Executes a workflow.
+//
+// Description:
+//
+// This operation starts a new workflow instance.
 //
 // @param request - OperateExecuteWorkflowRequest
 //
@@ -3745,7 +3829,7 @@ func (client *Client) OperateExecuteWorkflowWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Hold住任务实例
+// Holds a pending job execution.
 //
 // @param request - OperateHoldJobExecutionRequest
 //
@@ -3797,7 +3881,7 @@ func (client *Client) OperateHoldJobExecutionWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 将工作流中未开始的节点置为Held状态
+// Puts a Workflow Execution on hold, suspending all its unexecuted nodes.
 //
 // @param request - OperateHoldWorkflowExecutionRequest
 //
@@ -3849,7 +3933,7 @@ func (client *Client) OperateHoldWorkflowExecutionWithContext(ctx context.Contex
 
 // Summary:
 //
-// 标记任务实例为成功状态
+// Marks a job execution as successful.
 //
 // @param request - OperateMarkSuccessJobExecutionRequest
 //
@@ -3901,7 +3985,7 @@ func (client *Client) OperateMarkSuccessJobExecutionWithContext(ctx context.Cont
 
 // Summary:
 //
-// 将工作流实例标记为成功
+// Marks a workflow execution as successful.
 //
 // @param request - OperateMarkSuccessWorkflowExecutionRequest
 //
@@ -3953,7 +4037,7 @@ func (client *Client) OperateMarkSuccessWorkflowExecutionWithContext(ctx context
 
 // Summary:
 //
-// Reprocesses the historical data of a job.
+// Reruns historical data for a job within a specified time range.
 //
 // @param request - OperateRerunJobRequest
 //
@@ -4017,7 +4101,7 @@ func (client *Client) OperateRerunJobWithContext(ctx context.Context, request *O
 
 // Summary:
 //
-// Reruns failed job instances.
+// Retries a failed Job Instance.
 //
 // @param tmpReq - OperateRetryJobExecutionRequest
 //
@@ -4083,7 +4167,7 @@ func (client *Client) OperateRetryJobExecutionWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 重跑工作流实例
+// Retries a workflow execution.
 //
 // @param request - OperateRetryWorkflowExecutionRequest
 //
@@ -4139,7 +4223,7 @@ func (client *Client) OperateRetryWorkflowExecutionWithContext(ctx context.Conte
 
 // Summary:
 //
-// 跳过任务实例
+// Skips a job execution.
 //
 // @param request - OperateSkipJobExecutionRequest
 //
@@ -4191,7 +4275,7 @@ func (client *Client) OperateSkipJobExecutionWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Stops running instances.
+// Stops a running Job Execution.
 //
 // @param tmpReq - OperateStopJobExecutionRequest
 //
@@ -4253,7 +4337,7 @@ func (client *Client) OperateStopJobExecutionWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 停止正在运行的工作流实例
+// Stops a running workflow execution.
 //
 // @param request - OperateStopWorkflowExecutionRequest
 //
@@ -4305,7 +4389,7 @@ func (client *Client) OperateStopWorkflowExecutionWithContext(ctx context.Contex
 
 // Summary:
 //
-// 将held状态的任务恢复
+// Resumes a Job Execution that is in the Hold state.
 //
 // @param request - OperateUnholdJobExecutionRequest
 //
@@ -4357,7 +4441,7 @@ func (client *Client) OperateUnholdJobExecutionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 将工作流中held状态的节点恢复
+// Resumes a workflow execution that is on hold.
 //
 // @param request - OperateUnholdWorkflowExecutionRequest
 //
@@ -4409,7 +4493,7 @@ func (client *Client) OperateUnholdWorkflowExecutionWithContext(ctx context.Cont
 
 // Summary:
 //
-// 将skipped状态的任务恢复
+// Resumes a skipped job execution.
 //
 // @param request - OperateUnskipJobExecutionRequest
 //
@@ -4461,7 +4545,7 @@ func (client *Client) OperateUnskipJobExecutionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 同步任务
+// Synchronizes jobs.
 //
 // @param tmpReq - SyncJobsRequest
 //
@@ -4599,7 +4683,7 @@ func (client *Client) UpdateAppWithContext(ctx context.Context, request *UpdateA
 
 // Summary:
 //
-// 更新日历
+// Updates a calendar.
 //
 // @param request - UpdateCalendarRequest
 //
@@ -4715,7 +4799,7 @@ func (client *Client) UpdateClusterWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
-// 更新数据源
+// # Update data source
 //
 // @param request - UpdateDatasourceRequest
 //
@@ -4780,6 +4864,16 @@ func (client *Client) UpdateDatasourceWithContext(ctx context.Context, request *
 // Summary:
 //
 // 更新执行器组
+//
+// Description:
+//
+// # 引入增强插件
+//
+// 在`pom.xml`文件中添加增强插件以提升Executor的能力。
+//
+// **注意**：请确保该插件在pom中放置在`xxl-job-core` 依赖的**上方**。
+//
+// **详细信息请参考**：[插件版本说明文档](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - UpdateExecutorGroupRequest
 //
@@ -4871,7 +4965,17 @@ func (client *Client) UpdateExecutorGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 更新执行器
+// Updates the configuration of one or more Executors.
+//
+// Description:
+//
+// # Add the enhancement plugin
+//
+// Add the enhancement plugin to the `pom.xml` file to extend the capabilities of the Executor.
+//
+// **Note**: Place this plugin **above*	- the `xxl-job-core` dependency in the pom.xml file.
+//
+// **For more information, see the*	- [Plugin Version Description Document](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description).
 //
 // @param request - UpdateExecutorsRequest
 //
@@ -4927,7 +5031,7 @@ func (client *Client) UpdateExecutorsWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Updates the job information.
+// Update task details.
 //
 // @param tmpReq - UpdateJobRequest
 //
@@ -5081,7 +5185,7 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, tmpReq *UpdateJo
 
 // Summary:
 //
-// 更新任务实例
+// # Update task instance
 //
 // @param request - UpdateJobExecutionRequest
 //
@@ -5137,7 +5241,7 @@ func (client *Client) UpdateJobExecutionWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 更新任务脚本内容
+// Updates a job script.
 //
 // @param request - UpdateJobScriptRequest
 //
@@ -5197,7 +5301,7 @@ func (client *Client) UpdateJobScriptWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// 更新工作流
+// Updates an existing workflow.
 //
 // @param request - UpdateWorkflowRequest
 //
@@ -5281,7 +5385,7 @@ func (client *Client) UpdateWorkflowWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 更新工作流DAG
+// Updates a workflow\\"s Directed Acyclic Graph (DAG), including node coordinates and edges.
 //
 // @param tmpReq - UpdateWorkflowDAGRequest
 //
@@ -5347,7 +5451,7 @@ func (client *Client) UpdateWorkflowDAGWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 切换工作流DAG版本
+// Updates the Directed Acyclic Graph (DAG) version for a Workflow.
 //
 // @param request - UpdateWorkflowDAGVersionRequest
 //

@@ -22,25 +22,26 @@ type iListAppsRequest interface {
 }
 
 type ListAppsRequest struct {
-	// example:
-	//
-	// test-app
+	// The application name.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
-	// 10
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The title.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListAppsRequest) String() string {

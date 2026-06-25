@@ -34,48 +34,96 @@ type iListJobExecutionsRequest interface {
 }
 
 type ListJobExecutionsRequest struct {
+	// The application name.
+	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
 	// 2024-11-12 20:50:56
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The job execution ID.
+	//
 	// example:
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// 74
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// test-job
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2024-11-12 20:50:55
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The job execution status. Valid values:
+	//
+	// - 0: **UNKNOWN**.
+	//
+	// - 1: **WAITING**.
+	//
+	// - 2: **READY**.
+	//
+	// - 3: **RUNNING**.
+	//
+	// - 4: **SUCCESS**.
+	//
+	// - 5: **FAILED**.
+	//
+	// - 6: **PAUSED**.
+	//
+	// - 7: **SUBMITTED**.
+	//
+	// - 8: **REJECTED**.
+	//
+	// - 9: **ACCEPTED**.
+	//
+	// - 10: **PARTIAL_FAILED**.
+	//
+	// - 11: **SKIPPED**.
+	//
+	// - 12: **REMOVED**.
+	//
 	// example:
 	//
 	// 4
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The workflow execution ID.
+	//
 	// example:
 	//
 	// 100

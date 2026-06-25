@@ -20,22 +20,30 @@ type iUpdateExecutorsRequest interface {
 }
 
 type UpdateExecutorsRequest struct {
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The Cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-a1804a3226d
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The Worker type.
+	//
 	// example:
 	//
 	// k8s_service
 	WorkerType *string `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
+	// A JSON-formatted string that contains a list of Workers.
+	//
 	// example:
 	//
 	// [{"cluster":"xxxxx","namespace":"xxxxx","service":"xxxxx"}]

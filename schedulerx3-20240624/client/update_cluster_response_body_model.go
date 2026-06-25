@@ -20,18 +20,30 @@ type iUpdateClusterResponseBody interface {
 }
 
 type UpdateClusterResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request identifier, used for troubleshooting.
+	//
 	// example:
 	//
 	// EEF9AF15-AEEF-5E59-BF7B-BCBB119DC53F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call succeeded.
+	//
+	// - **true**: The call succeeded.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true

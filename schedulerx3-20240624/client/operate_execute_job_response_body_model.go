@@ -22,20 +22,32 @@ type iOperateExecuteJobResponseBody interface {
 }
 
 type OperateExecuteJobResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// -
+	// The returned data.
 	Data *OperateExecuteJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 6305893D-517D-5131-A767-644EDA81CEC3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -105,6 +117,8 @@ func (s *OperateExecuteJobResponseBody) Validate() error {
 }
 
 type OperateExecuteJobResponseBodyData struct {
+	// The job execution ID.
+	//
 	// example:
 	//
 	// 1310630367761285120

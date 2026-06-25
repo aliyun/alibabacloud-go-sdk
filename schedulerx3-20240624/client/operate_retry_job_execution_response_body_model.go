@@ -20,18 +20,30 @@ type iOperateRetryJobExecutionResponseBody interface {
 }
 
 type OperateRetryJobExecutionResponseBody struct {
+	// The Response Code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returns `success` for successful requests, and an error message for failed requests.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique Request ID. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 438737AC-760A-57D9-B646-B7EF79426243
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
