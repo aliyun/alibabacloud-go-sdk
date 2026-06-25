@@ -14,11 +14,13 @@ type iGetImageRequest interface {
 }
 
 type GetImageRequest struct {
-	// Specifies whether to display non-essential information, which contains tags. Valid values:
+	// Specifies whether to display non-essential information. Non-essential information currently includes labels.
 	//
-	// 	- false (default)
+	// Valid values:
 	//
-	// 	- true
+	// - false (default): Does not display non-essential information.
+	//
+	// - true: Displays non-essential information.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type CreateModelVersionResponseBody struct {
 	//
 	// 21645FCD-BAB9-5742-89AE-AEB27****B2E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The version of the model.
+	// The model version.
 	//
 	// example:
 	//

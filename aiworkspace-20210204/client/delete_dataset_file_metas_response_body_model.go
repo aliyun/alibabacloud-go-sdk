@@ -18,7 +18,7 @@ type iDeleteDatasetFileMetasResponseBody interface {
 }
 
 type DeleteDatasetFileMetasResponseBody struct {
-	// The metadata records that fail to be deleted for the dataset files.
+	// A list of file metadata records that failed to be deleted.
 	FailedDetails []*DatasetFileMetaResponse `json:"FailedDetails,omitempty" xml:"FailedDetails,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type DeleteDatasetFileMetasResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the metadata records of all dataset files were deleted. The value true indicates that the metadata records of all dataset files are deleted. If the value is false, view the failure details specified by FailedDetails.
+	// The status of the batch deletion. A value of \\`true\\` indicates that all metadata records were deleted. If the value is \\`false\\`, check the \\`FailedDetails\\` parameter for more information.
 	//
 	// example:
 	//

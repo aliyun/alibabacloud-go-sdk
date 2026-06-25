@@ -22,19 +22,25 @@ type iListImageLabelsRequest interface {
 }
 
 type ListImageLabelsRequest struct {
-	// The image ID. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image ID.
+	// The image ID. For more information about how to obtain an image ID, see [ListImages](https://help.aliyun.com/document_detail/449118.html).
 	//
 	// example:
 	//
 	// image-4c62******53uor
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The tag filter conditions, separated with commas (,). The format of a single condition filter is `key=value`. Takes effect independently from LabelKeys.
+	// The filter conditions for labels. Separate multiple conditions with commas.
+	//
+	// The format for a single condition is `key=value`.
+	//
+	// This parameter works independently of the LabelKeys parameter.
 	//
 	// example:
 	//
 	// system.framework=XGBoost 1.6.0,system.official=true
 	LabelFilter *string `json:"LabelFilter,omitempty" xml:"LabelFilter,omitempty"`
-	// The tag keys, separated with commas (,). System tags start with system and take effect independently from LabelFilter.
+	// The list of tag keys. Separate multiple keys with commas (,).
+	//
+	// System tags start with "system". This parameter works independently of the LabelFilter parameter.
 	//
 	// example:
 	//
@@ -46,7 +52,7 @@ type ListImageLabelsRequest struct {
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The workspace ID. For more information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

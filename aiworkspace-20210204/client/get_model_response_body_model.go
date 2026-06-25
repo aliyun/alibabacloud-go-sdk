@@ -56,17 +56,17 @@ type iGetModelResponseBody interface {
 }
 
 type GetModelResponseBody struct {
-	// The visibility of the workspace.
+	// The visibility of the workspace. Valid values:
 	//
-	// 	- PRIVATE: The workspace is visible only to you and the administrator of the workspace.
+	// - PRIVATE: The model is visible only to you and administrators in the workspace.
 	//
-	// 	- PUBLIC: The workspace is visible to all users.
+	// - PUBLIC: The model is visible to everyone in the workspace.
 	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The domain. This parameter specifies the domain for which the model is developed. Valid values: nlp and cv. nlp indicates natural language processing and cv indicates computer vision.
+	// The domain. This indicates the domain of the problem that the model is designed to solve, such as natural language processing (NLP) and computer vision (CV).
 	//
 	// example:
 	//
@@ -94,26 +94,35 @@ type GetModelResponseBody struct {
 	//
 	// }
 	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	// The time when the model is created, in UTC. The time follows the ISO 8601 standard.
+	// The UTC time when the model was created. The time is in the ISO 8601 format.
 	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
-	GmtCreateTime                *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the latest version was updated.
+	//
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
 	GmtLatestVersionModifiedTime *string `json:"GmtLatestVersionModifiedTime,omitempty" xml:"GmtLatestVersionModifiedTime,omitempty"`
-	// The time when the model is last modified, in UTC. The time follows the ISO 8601 standard.
+	// The UTC time when the model was last updated. The time is in the ISO 8601 format.
 	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The model tags.
+	// The list of labels for the model.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The latest version of the model.
 	LatestVersion *ModelVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	// The model description.
+	//
+	// example:
+	//
+	// General sentiment analysis.
 	ModelDescription *string `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
-	// The documentation of the model.
+	// The model document.
 	//
 	// example:
 	//
@@ -126,6 +135,10 @@ type GetModelResponseBody struct {
 	// model-rbvg5wzljz****ks92
 	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	// The model name.
+	//
+	// example:
+	//
+	// Sentiment analysis
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// The model type.
 	//
@@ -133,13 +146,13 @@ type GetModelResponseBody struct {
 	//
 	// Checkpoint
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	// The sequence number of the model.
+	// The ordinal number.
 	//
 	// example:
 	//
 	// 1
 	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	// The source of the model. The community or organization to which the model belongs, such as ModelScope or HuggingFace.
+	// The source of the model. This indicates the community or organization to which the source model belongs, such as ModelScope and HuggingFace.
 	//
 	// example:
 	//
@@ -150,8 +163,13 @@ type GetModelResponseBody struct {
 	// example:
 	//
 	// 1234567890******
-	OwnerId       *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ParameterSize *int64  `json:"ParameterSize,omitempty" xml:"ParameterSize,omitempty"`
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of parameters, in millions.
+	//
+	// example:
+	//
+	// 3000
+	ParameterSize *int64 `json:"ParameterSize,omitempty" xml:"ParameterSize,omitempty"`
 	// The provider.
 	//
 	// example:
@@ -164,7 +182,7 @@ type GetModelResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task of the model. This parameter describes specific issues that the model solves, such as text-classification.
+	// The task. This indicates the specific problem that the model is designed to solve, such as text classification.
 	//
 	// example:
 	//

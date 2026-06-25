@@ -24,7 +24,7 @@ type CreateWorkspaceResourceResponseBody struct {
 	//
 	// 1e195c5116124202371861018d5bde
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources.
+	// A list of resources.
 	Resources []*CreateWorkspaceResourceResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The total number of resources.
 	//

@@ -46,19 +46,19 @@ type iDatasetFileMeta interface {
 }
 
 type DatasetFileMeta struct {
-	// The MIME Type of the file.
+	// The MIME type of the file. It includes a type and a subtype.
 	//
 	// example:
 	//
 	// image/jpeg
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The file size. Unit: bytes.
+	// The size of the file in bytes.
 	//
 	// example:
 	//
 	// 120000
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The metadata ID of the dataset file.
+	// The ID of the dataset file metadata.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type DatasetFileMeta struct {
 	//
 	// example:
 	//
-	// https://test-bucket.oss-cn-shanghai.aliyuncs.com/dataset/cat.png?Expires=1712801702&OSSAccessKeyId=****************&Signature=x4oSjZcXOn7FHMCT1D****NuNjs%3D
+	// https://test-bucket.oss-cn-shanghai.aliyuncs.com/dataset/cat.png?Expires=171280****&OSSAccessKeyId=LTAI************&Signature=****jZcXOn7FHMCT1DLE22NuNjs%3D
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The time when the file was created. A UTC timestamp in the ISO 8601 format.
+	// The time when the file was created. The time is in UTC and in ISO 8601 format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -78,25 +78,25 @@ type DatasetFileMeta struct {
 	//
 	// 2021-01-12T14:36:01.000Z
 	FileCreateTime *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
-	// The file fingerprint, used to determine the uniqueness of the file content. This value changes after the file content is modified. OSS files use ETags, and NAS files use MD5 values.
+	// The file fingerprint. This value ensures the uniqueness of the file content and changes if the content is modified. The ETag is used for OSS files, and the MD5 value is used for NAS files.
 	//
 	// example:
 	//
 	// D41D8CD98F*****E9800998ECF8
 	FileFingerPrint *string `json:"FileFingerPrint,omitempty" xml:"FileFingerPrint,omitempty"`
-	// The file name.
+	// The name of the file.
 	//
 	// example:
 	//
 	// cat.png
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The file type.
+	// The type of the file. This corresponds to the main type of a Multipurpose Internet Mail Extensions (MIME) type.
 	//
 	// example:
 	//
 	// image
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The last modified time of the file. A UTC timestamp in the ISO 8601 format.
+	// The time when the file was last modified. The time is in Coordinated Universal Time (UTC) and in ISO 8601 format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -104,7 +104,7 @@ type DatasetFileMeta struct {
 	//
 	// 2025-01-12T14:36:01Z
 	FileUpdateTime *string `json:"FileUpdateTime,omitempty" xml:"FileUpdateTime,omitempty"`
-	// The specific metadata of the file. For example, the width and height of an image file, or the bitrate and resolution of a video file. This parameter cannot be used for retrieval. In JSON String format.
+	// Specific metadata for the file, such as the width and height of an image or the bitrate and resolution of a video. Currently, this metadata cannot be used for retrieval. The format is a JSON string.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ type DatasetFileMeta struct {
 	//
 	// 0.6
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The ID of the last semantic indexing job.
+	// The ID of the job that last built the semantic index.
 	//
 	// example:
 	//
 	// dsjob-klfwtjto****scvt3
 	SemanticIndexJobId *string `json:"SemanticIndexJobId,omitempty" xml:"SemanticIndexJobId,omitempty"`
-	// The last update time of the semantic index. A UTC timestamp in the ISO 8601 format.
+	// The time when the semantic index was last updated. The time is in UTC and in ISO 8601 format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -130,18 +130,27 @@ type DatasetFileMeta struct {
 	//
 	// 2021-01-12T14:36:01.000Z
 	SemanticIndexUpdateTime *string `json:"SemanticIndexUpdateTime,omitempty" xml:"SemanticIndexUpdateTime,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the metadata, in JSON string format. Including:
+	// The current status of the metadata:
 	//
-	// 	- Algorithm tag group:
+	// \\- ACTIVE: Active.
 	//
-	//     	- ai: tags from all algorithm tagging tasks on this metadata.
+	// \\- DELETED: Deleted.
 	//
-	// 	- User-defined tag group:
+	// example:
 	//
-	//     	- user: tags added by the user to this metadata.
+	// ACTIVE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A collection of tags for the metadata, in JSON string format. The collection includes the following groups:
 	//
-	//     	- user-delete-ai-tags: tags from the algorithm tag group that the user needs to delete.
+	// - Algorithm tag group:
+	//
+	//   - ai: A list of tag names aggregated from all algorithm-based tagging tasks for a single metadata record.
+	//
+	// - User-defined tag group:
+	//
+	//   - user: A list of tag names that a user adds to a single metadata record.
+	//
+	//   - user-delete-ai-tags: A list of tag names from the algorithm tag group that the user deletes from a single metadata record.
 	//
 	// example:
 	//
@@ -151,9 +160,11 @@ type DatasetFileMeta struct {
 	//
 	//     [
 	//
-	//         "Felis catus",
+	//         "Lane line",
 	//
-	//         "Shorthair"
+	//         "Water horse",
+	//
+	//         "Sunny day"
 	//
 	//     ],
 	//
@@ -161,9 +172,19 @@ type DatasetFileMeta struct {
 	//
 	//     [
 	//
-	//         "cat",
+	//         "Everett",
 	//
-	//         "White"
+	//         "Intelligent driving Dataset 1",
+	//
+	//         "Cloudy day"
+	//
+	//     ],
+	//
+	//     "user-delete-ai-tags":
+	//
+	//     [
+	//
+	//         "Sunny day"
 	//
 	//     ]
 	//
@@ -175,15 +196,31 @@ type DatasetFileMeta struct {
 	//
 	// https://test-bucket.oss-cn-shanghai.aliyuncs.com/dataset/cat.png?Expires=171280****&OSSAccessKeyId=LTAI************&Signature=****jZcXOn7FHMCT1DLE22NuNjs%3D
 	ThumbnailUrl *string `json:"ThumbnailUrl,omitempty" xml:"ThumbnailUrl,omitempty"`
-	// The URI of the file. Used to record the unique path of the file. File paths in Object Storage Service (OSS) and File Storage NAS (NAS) are supported.
+	// The unique URI of the file. It records the unique path of the file. Paths for files in OSS and NAS are supported.
 	//
-	// **OSS**
+	// <details>
 	//
-	// oss://${bucket}/${path}
+	// <summary>
 	//
-	// **NAS**
+	// OSS
 	//
-	// nas://${fileSystemId}/${path}
+	// </summary>
+	//
+	// oss\\://${bucket}/${path}
+	//
+	// </details>
+	//
+	// <details>
+	//
+	// <summary>
+	//
+	// NAS
+	//
+	// </summary>
+	//
+	// nas\\://${fileSystemId}/${path}
+	//
+	// </details>
 	//
 	// example:
 	//

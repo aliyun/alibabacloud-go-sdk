@@ -32,25 +32,31 @@ type iAddImageRequest interface {
 }
 
 type AddImageRequest struct {
-	// The accessibility of the image. Valid values:
+	// The visibility of the image. Valid values:
 	//
-	// 	- PUBLIC: The image is accessible to all members in the workspace.
+	// - PUBLIC: All members of the workspace can perform operations on the image.
 	//
-	// 	- PRIVATE: The image is accessible only to the image creator.
+	// - PRIVATE: Only the creator can perform operations on the image.
 	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The image description.
+	// The description of the image.
+	//
+	// example:
+	//
+	// NLP model compression training image
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The image ID. If you do not specify this parameter, the system automatically generates an image ID. The image ID must start with image- followed by 18 characters in letters or digits.
+	// The ID of the image. If you leave this parameter empty, the system automatically generates an ID.
+	//
+	// The format is \\`image-\\` followed by 18 uppercase letters, lowercase letters, or digits.
 	//
 	// example:
 	//
 	// image-k83*****cv
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The URL of the image, which can be repeated. You can call [ListImage](https://help.aliyun.com/document_detail/449118.html) to view the image URL.
+	// The URI of the image. The URI can be reused. For more information, see [ListImage](https://help.aliyun.com/document_detail/449118.html).
 	//
 	// This parameter is required.
 	//
@@ -58,51 +64,55 @@ type AddImageRequest struct {
 	//
 	// registry.cn-hangzhou.aliyuncs.com/pai-compression/nlp:gpu
 	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	// The image tag, which is an array. Each element in the array contains a key-value pair. Alibaba Cloud images have the system.official=true tag. You can add the following keys to an image:
+	// The labels of the image. This is an array where each item contains a key and a value.
 	//
-	// 	- system.chipType
+	// Official images have the following label: system.official=true
 	//
-	// 	- system.dsw.cudaVersion
+	// The following keys are supported:
 	//
-	// 	- system.dsw.fromImageId
+	// - system.chipType
 	//
-	// 	- system.dsw.fromInstanceId
+	// - system.dsw\\.cudaVersion
 	//
-	// 	- system.dsw.id
+	// - system.dsw\\.fromImageId
 	//
-	// 	- system.dsw.os
+	// - system.dsw\\.fromInstanceId
 	//
-	// 	- system.dsw.osVersion
+	// - system.dsw\\.id
 	//
-	// 	- system.dsw.resourceType
+	// - system.dsw\\.os
 	//
-	// 	- system.dsw.rootImageId
+	// - system.dsw\\.osVersion
 	//
-	// 	- system.dsw.stage
+	// - system.dsw\\.resourceType
 	//
-	// 	- system.dsw.tag
+	// - system.dsw\\.rootImageId
 	//
-	// 	- system.dsw.type
+	// - system.dsw\\.stage
 	//
-	// 	- system.framework
+	// - system.dsw\\.tag
 	//
-	// 	- system.origin
+	// - system.dsw\\.type
 	//
-	// 	- system.pythonVersion
+	// - system.framework
 	//
-	// 	- system.source
+	// - system.origin
 	//
-	// 	- system.supported.dlc
+	// - system.pythonVersion
 	//
-	// 	- system.supported.dsw
+	// - system.source
+	//
+	// - system.supported.dlc
+	//
+	// - system.supported.dsw
 	Labels []*AddImageRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The image name. The name must meet the following requirements:
+	// The image name. The naming convention is as follows:
 	//
-	// 	- The name must be 1 to 50 characters in length.
+	// - The name must be 1 to 50 characters long.
 	//
-	// 	- The name can contain lowercase letters, digits, and hyphens (-). The name must start with a lowercase letter.
+	// - The name can contain lowercase letters, digits, and hyphens (-). It must start with a letter.
 	//
-	// 	- The name must be unique in a workspace.
+	// - The name must be unique within the workspace.
 	//
 	// This parameter is required.
 	//
@@ -110,15 +120,21 @@ type AddImageRequest struct {
 	//
 	// nlp-compression
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The size of the image. Unit: GB.
+	// The size of the image, in GB.
 	//
 	// example:
 	//
 	// 2
-	Size       *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
-	SourceId   *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The source ID of the image. If the source type is Build, this ID corresponds to the image build ID.
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The source type of the image. Valid values:
+	//
+	// Import
+	//
+	// Build
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The ID of the workspace to which the image belongs. For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//
@@ -238,13 +254,13 @@ func (s *AddImageRequest) Validate() error {
 }
 
 type AddImageRequestLabels struct {
-	// The tag key.
+	// The key of the label.
 	//
 	// example:
 	//
 	// system.chipType
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the label.
 	//
 	// example:
 	//

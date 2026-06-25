@@ -36,43 +36,43 @@ type iListExperimentRequest interface {
 }
 
 type ListExperimentRequest struct {
-	// The tag filter conditions. Multiple conditions are separated by commas (,). The format of a single condition filter is `key=value`.
+	// The filter conditions for labels. Separate multiple conditions with commas (,). A single filter condition must be in the `Key=Value` format.
 	//
 	// example:
 	//
 	// is_evaluation:true
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The maximum number of entries in the request. Default value: 10.
+	// The maximum number of results to return. The default is 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The experiment name.
+	// The name of the experiment.
 	//
 	// example:
 	//
 	// exp-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The optional parameters.
+	// Optional parameters.
 	Options *ListExperimentRequestOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
-	// The order of specific fields of results in a paged query (ascending or descending).
+	// The order in which to sort the results of a paged query. Valid values:
 	//
-	// 	- ASC: ascending order
+	// - ASC: ascending order.
 	//
-	// 	- DESC: descending order. This is the default value.
+	// - DESC (default): descending order.
 	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The strings used for sorting. The following fields can be used for sorting: GmtCreateTime, Name, GmtModifiedTime, and ExperimentId. The sorting order can be ASC (default) and DESC.
+	// A list of sorting methods as strings. You can sort by the following fields: GmtCreateTime, Name, GmtModifiedTime, or ExperimentId. The sorting methods are DESC and ASC. The default is ASC.
 	//
 	// example:
 	//
 	// GmtCreateTime DESC,Name ASC
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number. The value starts from 1.
+	// The page number. Pages start from 1.
 	//
 	// example:
 	//
@@ -84,31 +84,31 @@ type ListExperimentRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The pagination token, which starts from 0. Default value: 0.
+	// The paging token. It starts from 0. The default is 0.
 	//
 	// example:
 	//
 	// 0
 	PageToken *int64 `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
-	// The field used for sorting. The GmtCreateTime field is used.
+	// The field to use for sorting in a paged query. Currently, only the GmtCreateTime field is supported for sorting.
 	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// Specifies whether to obtain the LatestRun value that is related to the experiment.
+	// Specifies whether to retrieve the LatestRun information related to the experiment.
 	//
 	// example:
 	//
 	// false
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	// The ID of the workspace to which the experiment belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The ID of the workspace where the experiment resides. For more information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
-	// >  If you do not specify a workspace ID, the system returns the experiments in the default workspace.
+	// > If you do not specify a workspace ID, the system returns the list of experiments in the default workspace.
 	//
 	// example:
 	//
-	// 151739
+	// 1517**
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -238,7 +238,7 @@ func (s *ListExperimentRequest) Validate() error {
 }
 
 type ListExperimentRequestOptions struct {
-	// Specifies whether to exactly match the experiment by name. Valid values: true and false.
+	// Specifies whether to perform an exact match for the name. Valid values are "true" and "false".
 	//
 	// example:
 	//

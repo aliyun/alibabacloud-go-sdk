@@ -18,7 +18,7 @@ type iListImageLabelsResponseBody interface {
 }
 
 type ListImageLabelsResponseBody struct {
-	// The image tags.
+	// The list of image labels.
 	Labels []*ListImageLabelsResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListImageLabelsResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of the images that meet the filter conditions.
+	// The total number of image labels that meet the filter conditions.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *ListImageLabelsResponseBody) Validate() error {
 }
 
 type ListImageLabelsResponseBodyLabels struct {
-	// The tag key.
+	// The key of the label.
 	//
 	// example:
 	//
 	// system.chipType
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the label.
 	//
 	// example:
 	//

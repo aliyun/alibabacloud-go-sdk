@@ -26,29 +26,41 @@ type iGetDatasetJobConfigResponseBody interface {
 }
 
 type GetDatasetJobConfigResponseBody struct {
-	// The configuration content. Configuration format for MultimodalIntelligentTag:
+	// The configuration content. The format depends on the ConfigType value.
 	//
-	// { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
+	// If ConfigType is MultimodalIntelligentTag, the format is as follows:
 	//
-	// MultimodalSemanticIndex
+	// {
 	//
-	// { "defaultModelId": "xxx" "defaultModelVersion":"1.0.0" }
+	// "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx"
+	//
+	// }
+	//
+	// If ConfigType is MultimodalSemanticIndex, the format is as follows:
+	//
+	// {
+	//
+	// "defaultModelId": "xxx",
+	//
+	// "defaultModelVersion":"1.0.0"
+	//
+	// }
 	//
 	// example:
 	//
 	// { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The configuration type. Valid values:
+	// The configuration type.
 	//
-	// 	- MultimodalIntelligentTag
+	// - MultimodalIntelligentTag
 	//
-	// 	- MultimodalSemanticIndex
+	// - MultimodalSemanticIndex
 	//
 	// example:
 	//
 	// MultimodalIntelligentTag
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The time when the configuration is created.
+	// The time when the configuration was created.
 	//
 	// example:
 	//
@@ -60,7 +72,7 @@ type GetDatasetJobConfigResponseBody struct {
 	//
 	// d-lfd60v0p****ujtsdx
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The time when the configuration is modified.
+	// The time when the configuration was last modified.
 	//
 	// example:
 	//

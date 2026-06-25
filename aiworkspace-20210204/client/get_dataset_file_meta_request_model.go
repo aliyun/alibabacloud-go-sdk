@@ -16,13 +16,13 @@ type iGetDatasetFileMetaRequest interface {
 }
 
 type GetDatasetFileMetaRequest struct {
-	// The dataset version.
+	// The name of the dataset version.
 	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The workspace ID. For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

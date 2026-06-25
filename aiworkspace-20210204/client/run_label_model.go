@@ -22,17 +22,17 @@ type iRunLabel interface {
 }
 
 type RunLabel struct {
-	// The creation time.
+	// Time when the label was created
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modified time.
+	// Time when the label was last modified
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The label key.
+	// Key of the label
 	//
 	// This parameter is required.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the run.
+	// ID of the Run that owns this label
 	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	// The label value.
+	// Value of the label
 	//
 	// This parameter is required.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`

@@ -44,36 +44,37 @@ type iCodeSourceItem interface {
 type CodeSourceItem struct {
 	// The visibility of the code source. Valid values:
 	//
-	// 	- PRIVATE: Visible only to you and the administrator in the workspace.
+	// - `PRIVATE`: Visible only to you and workspace administrators.
 	//
-	// 	- PUBLIC: Visible to all users in the workspace.
+	// - `PUBLIC`: Visible to all workspace members.
 	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	CloneType     *int32  `json:"CloneType,omitempty" xml:"CloneType,omitempty"`
+	// The clone type.
+	CloneType *int32 `json:"CloneType,omitempty" xml:"CloneType,omitempty"`
 	// The code branch.
 	//
 	// example:
 	//
 	// master
 	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
-	// The code commit ID
+	// The commit ID.
 	//
 	// example:
 	//
 	// 44da10**********
 	CodeCommit *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
-	// The address of the code repository.
+	// The code repository URL.
 	//
 	// example:
 	//
 	// https://code.aliyun.com/****
 	CodeRepo *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
-	// The token used to access the code repository.
+	// The access token for the code repository.
 	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
-	// The username of the code repository.
+	// The username for the code repository.
 	//
 	// example:
 	//
@@ -85,31 +86,31 @@ type CodeSourceItem struct {
 	//
 	// code-202**********
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	// The code source description.
+	// The description of the code source.
 	//
 	// example:
 	//
 	// code source of dlc examples
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The code source name.
+	// The display name of the code source.
 	//
 	// example:
 	//
 	// MyCodeSourceName1
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The creation time.
+	// The time when the code source was created.
 	//
 	// example:
 	//
 	// 2021-01-18T12:52:15Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modified time.
+	// The time when the code source was last modified.
 	//
 	// example:
 	//
 	// 2021-01-18T12:52:15Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// The local mount path of the code.
+	// The local mount path for the code repository.
 	//
 	// example:
 	//

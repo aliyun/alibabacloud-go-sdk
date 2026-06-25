@@ -20,13 +20,17 @@ type iUpdateConnectionRequest interface {
 }
 
 type UpdateConnectionRequest struct {
-	// The connection configuration. The connection configuration is in the key-value format. The keys configured for different connection types are different. For more information, see the supplementary description of the request parameters in CreateConnection.
+	// The configuration of the connection, specified as key-value pairs. The keys in the Configs parameter vary based on the connection type. For more information, see the request parameters in the CreateConnection topic.
 	Configs map[string]*string `json:"Configs,omitempty" xml:"Configs,omitempty"`
-	// The connection description.
+	// The description of the connection.
+	//
+	// example:
+	//
+	// Connection for data labeling.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The models.
+	// A list of model information.
 	Models []*UpdateConnectionRequestModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
-	// The key-value configuration to be encrypted, such as the database logon password and the key for model connection.
+	// Key-value pairs that require encryption, such as database logon passwords and keys for model connections.
 	Secrets map[string]*string `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
 }
 
@@ -102,11 +106,11 @@ type UpdateConnectionRequestModels struct {
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	// The model type. Valid values:
 	//
-	// 	- LLM
+	// - LLM
 	//
-	// 	- Embedding
+	// - Embedding
 	//
-	// 	- ReRank
+	// - ReRank
 	//
 	// example:
 	//
@@ -114,9 +118,9 @@ type UpdateConnectionRequestModels struct {
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// Indicates whether tool calling is supported. Valid values:
 	//
-	// 	- true
+	// - true: Tool calling is supported.
 	//
-	// 	- false
+	// - false: Tool calling is not supported.
 	//
 	// example:
 	//

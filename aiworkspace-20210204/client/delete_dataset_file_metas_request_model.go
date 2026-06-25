@@ -18,7 +18,7 @@ type iDeleteDatasetFileMetasRequest interface {
 }
 
 type DeleteDatasetFileMetasRequest struct {
-	// The metadata ID of the dataset file.
+	// The ID of the dataset file metadata.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type DeleteDatasetFileMetasRequest struct {
 	//
 	// 07914c9534586e4e7aa6e9dbca5009082df******fd8a0d857b33296c59bf6
 	DatasetFileMetaIds *string `json:"DatasetFileMetaIds,omitempty" xml:"DatasetFileMetaIds,omitempty"`
-	// The dataset version.
+	// The name of the dataset version.
 	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	// The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The ID of the workspace where the dataset is located. For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

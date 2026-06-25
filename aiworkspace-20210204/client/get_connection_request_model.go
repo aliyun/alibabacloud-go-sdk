@@ -14,11 +14,11 @@ type iGetConnectionRequest interface {
 }
 
 type GetConnectionRequest struct {
-	// The encryption settings. Valid values:
+	// The encryption setting. Valid values:
 	//
-	// 	- PlainText
+	// - PlainText: The value is in plaintext.
 	//
-	// 	- Secret
+	// - Secret: The value is in ciphertext.
 	//
 	// example:
 	//

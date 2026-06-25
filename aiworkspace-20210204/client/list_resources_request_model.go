@@ -36,31 +36,31 @@ type iListResourcesRequest interface {
 }
 
 type ListResourcesRequest struct {
-	// The name of the resource group. You can call [ListResources](https://help.aliyun.com/document_detail/449143.html) to obtain the name of the resource group.
+	// The name of the resource group. To get the resource group name, see [ListResources](https://help.aliyun.com/document_detail/449143.html).
 	//
 	// example:
 	//
 	// group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Tag-based filter conditions. Multiple conditions are separated by commas (,). Only resources that meet all the specified tag-based filter conditions are returned.
+	// A comma-separated list of labels. This operation returns only the resources that have all the specified labels.
 	//
-	// This parameter is available only for resources whose ProductType is ACS.
+	// This parameter is available only for resources whose `ResourceTypes` is set to `ACS`.
 	//
 	// example:
 	//
 	// system.supported.dsw=true,system.supported.dlc=true
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The operation to perform. Valid values:
+	// The option to query resources. Valid values:
 	//
-	// 	- ListResourceByWorkspace: obtains the resources in the workspace. This is the default value.
+	// - `ListResourceByWorkspace` (Default): lists the resources in a workspace.
 	//
-	// 	- ListResource: obtains the resources of the user.
+	// - `ListResource`: lists the resources of the current user.
 	//
 	// example:
 	//
 	// ListResourceByWorkspace
 	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// The page number. The pages start from page 1. Default value: 1.
+	// The page number. The value must be greater than or equal to 1. Default value: 1.
 	//
 	// example:
 	//
@@ -72,25 +72,25 @@ type ListResourcesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// **This field is no longer used and will be removed. Use the ResourceType field instead.
+	// **Deprecated.*	- This parameter is deprecated. Use the `ResourceType` parameter instead.
 	//
 	// example:
 	//
 	// MaxCompute
 	ProductTypes *string `json:"ProductTypes,omitempty" xml:"ProductTypes,omitempty"`
-	// The quota IDs, which are separated by commas (,). Only resources that contain all the specified quotas are returned.
+	// A comma-separated list of quota IDs. This operation returns only the resources that are associated with all the specified quota IDs.
 	//
-	// >  This parameter is available only for resources whose ResourceTypes is ACS.
+	// > This parameter is available only for resources whose `ResourceTypes` is set to `ACS`.
 	//
 	// example:
 	//
 	// quota-k******da,quota-cd******w
 	QuotaIds *string `json:"QuotaIds,omitempty" xml:"QuotaIds,omitempty"`
-	// The resource name. The value must meet the following requirements:
+	// The resource name. The name must meet the following requirements:
 	//
-	// 	- The name must be 3 to 28 characters in length.
+	// - The name must be 3 to 28 characters in length.
 	//
-	// 	- The name is unique in the region.
+	// - The name must be unique within a region.
 	//
 	// example:
 	//
@@ -98,47 +98,53 @@ type ListResourcesRequest struct {
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The resource types. Valid values:
 	//
-	// 	- MaxCompute
+	// - `MaxCompute`: MaxCompute resources.
 	//
-	// 	- ECS
+	// - `ECS`: ECS resources.
 	//
-	// 	- Lingjun
+	// - `Lingjun`: Lingjun computing resources.
 	//
-	// 	- ACS
+	// - `ACS`: ACS computing resources.
 	//
-	// 	- FLINK
+	// - `Flink`: Flink resources.
+	//
+	// - `SelfManagedAckPro`: self-managed AckPro cluster resources.
+	//
+	// - `SelfManagedAckLingjun`: self-managed AckLingjun cluster resources.
+	//
+	// - `SelfManagedASI`: self-managed ASI cluster resources from a third-party cloud.
 	//
 	// example:
 	//
 	// MaxCompute
 	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
-	// Specifies whether to show detailed information, which includes the Quotas field. Valid values:
+	// Specifies whether to return detailed information. The detailed information includes the `Quotas` field. Valid values:
 	//
-	// 	- true (default)
+	// - `true` (Default): returns detailed information.
 	//
-	// 	- false
+	// - `false`: does not return detailed information.
 	//
 	// example:
 	//
 	// true
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	// The fields to return. Multiple fields are separated by commas (,). Valid values:
+	// A comma-separated list of fields that you want to return. Valid values:
 	//
-	// 	- Quota
+	// - `Quota`
 	//
-	// 	- Label
+	// - `Label`
 	//
-	// 	- IsDefault
+	// - `IsDefault`
 	//
 	// example:
 	//
 	// Quota,IsDefault
 	VerboseFields *string `json:"VerboseFields,omitempty" xml:"VerboseFields,omitempty"`
-	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The ID of the workspace. To get the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
-	// 	- This parameter is required when the Option parameter is set to ListResourceByWorkspace.
+	// - This parameter is required if `Option` is set to `ListResourceByWorkspace`.
 	//
-	// 	- You do not need to configure this parameter when the Option parameter is set to ListResource.
+	// - This parameter is not required if `Option` is set to `ListResource`.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iListDatasetJobsResponseBody interface {
 }
 
 type ListDatasetJobsResponseBody struct {
-	// The jobs in the dataset.
+	// A list of dataset jobs.
 	DatasetJobs []*DatasetJob `json:"DatasetJobs,omitempty" xml:"DatasetJobs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -27,6 +27,10 @@ type ListDatasetJobsResponseBody struct {
 	// 8D7B2E70-F770-505B-A672-09F1D8F2EC1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of jobs.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 

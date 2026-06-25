@@ -40,17 +40,17 @@ type iGetConnectionResponseBody interface {
 }
 
 type GetConnectionResponseBody struct {
-	// The resource accessibility. Valid values:
+	// The visibility of the resource. Valid values:
 	//
-	// 	- PUBLIC: All members in the workspace can access the workspace.
+	// - PUBLIC: All members in the current workspace can access the resource.
 	//
-	// 	- PRIVATE: Only the creator can access the workspace.
+	// - PRIVATE: Only the creator can access the resource.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The connection configuration.
+	// The configuration information of the connection.
 	Configs map[string]*string `json:"Configs,omitempty" xml:"Configs,omitempty"`
 	// The connection ID.
 	//
@@ -58,27 +58,31 @@ type GetConnectionResponseBody struct {
 	//
 	// conn-pai9m***mi47
 	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	// The connection name.
+	// The name of the connection.
+	//
+	// example:
+	//
+	// Database connection
 	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
 	// The type of the connection. Valid values:
 	//
-	// 	- DashScopeConnection: Alibaba Cloud Model Studio connection.
+	// - DashScopeConnection: A connection to a Model Studio service.
 	//
-	// 	- OpenLLMConnection: Open source model connection.
+	// - OpenLLMConnection: A connection to an open-source model.
 	//
-	// 	- MilvusConnection: Milvus connection.
+	// - MilvusConnection: A connection to Milvus.
 	//
-	// 	- OpenSearchConnection: OpenSearch connection.
+	// - OpenSearchConnection: A connection to OpenSearch.
 	//
-	// 	- LindormConnection: Lindorm connection.
+	// - LindormConnection: A connection to Lindorm.
 	//
-	// 	- ElasticsearchConnection: Elasticsearch connection.
+	// - ElasticsearchConnection: A connection to Elasticsearch.
 	//
-	// 	- HologresConnection: Hologres connection.
+	// - HologresConnection: A connection to Hologres.
 	//
-	// 	- RDSConnection: RDS connection.
+	// - RDSConnection: A connection to RDS.
 	//
-	// 	- CustomConnection: Custom connection.
+	// - CustomConnection: A custom connection.
 	//
 	// example:
 	//
@@ -90,31 +94,35 @@ type GetConnectionResponseBody struct {
 	//
 	// 28632***898231
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The connection description.
+	// The description of the connection.
+	//
+	// example:
+	//
+	// 用于数据集检索。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the connection is created, in UTC. The time follows the ISO 8601 standard.
+	// The UTC time when the connection was created. The time is in the ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-03-07T07:54:56Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the connection is modified, in UTC. The time follows the ISO 8601 standard.
+	// The UTC time when the connection was last modified. The time is in the ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-03-07T07:54:56Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The models, which apply to model service connections.
+	// The list of models. This parameter is applicable to connections of the model service type.
 	Models []*GetConnectionResponseBodyModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The instance resource information of the connection, which applies to database connections.
+	// The instance resource information of the connection. This parameter is typically used for database connections.
 	ResourceMeta *GetConnectionResponseBodyResourceMeta `json:"ResourceMeta,omitempty" xml:"ResourceMeta,omitempty" type:"Struct"`
-	// The encrypted configuration, in key-value pairs. Examples: the database logon password and the key of the model connection.
+	// The key-value pairs that need to be encrypted. Examples include the logon password for a database and the key for a model connection.
 	Secrets map[string]*string `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
 	// The workspace ID.
 	//
@@ -278,6 +286,10 @@ func (s *GetConnectionResponseBody) Validate() error {
 
 type GetConnectionResponseBodyModels struct {
 	// The display name of the model.
+	//
+	// example:
+	//
+	// 测试语言模型。
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The model identifier.
 	//
@@ -287,21 +299,21 @@ type GetConnectionResponseBodyModels struct {
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	// The model type. Valid values:
 	//
-	// 	- LLM
+	// - LLM: A large language model (LLM).
 	//
-	// 	- Embedding
+	// - Embedding: An embedding model.
 	//
-	// 	- ReRank
+	// - ReRank: A reranking model.
 	//
 	// example:
 	//
 	// LLM
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	// Indicates whether a tool can be called by using ToolCall. Valid values:
+	// Indicates whether tool calling is supported. Valid values:
 	//
-	// 	- true
+	// - true: Tool calling is supported.
 	//
-	// 	- false
+	// - false: Tool calling is not supported.
 	//
 	// example:
 	//
@@ -358,6 +370,11 @@ func (s *GetConnectionResponseBodyModels) Validate() error {
 }
 
 type GetConnectionResponseBodyResourceMeta struct {
+	// Additional configuration information.
+	//
+	// example:
+	//
+	// {"vpcId":"vpc-xxxx"}
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The instance ID.
 	//
@@ -366,6 +383,10 @@ type GetConnectionResponseBodyResourceMeta struct {
 	// ld-2vc1***v1zaqgzol
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance name.
+	//
+	// example:
+	//
+	// Test instance.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 

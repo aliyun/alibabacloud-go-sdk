@@ -36,15 +36,15 @@ type iGetDefaultWorkspaceResponseBody interface {
 }
 
 type GetDefaultWorkspaceResponseBody struct {
-	// The conditions of the default workspace in the creation process.
+	// The details about the creation stages of the default workspace.
 	Conditions []*GetDefaultWorkspaceResponseBodyConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// The UID of the Alibaba Cloud account.
+	// The Alibaba Cloud account that created the workspace.
 	//
 	// example:
 	//
 	// 17915******4216
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The workspace description.
+	// The description of the workspace.
 	//
 	// example:
 	//
@@ -56,25 +56,25 @@ type GetDefaultWorkspaceResponseBody struct {
 	//
 	// workspace-example
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The environments of the workspace. Valid values:
+	// The environments in the workspace.
 	//
-	// 	- Workspaces in basic mode can run only in the production environment.
+	// - A workspace in basic mode contains only the production (prod) environment.
 	//
-	// 	- Workspaces in standard mode can run in both the development and production environments.
+	// - A workspace in standard mode contains the development (dev) and production (prod) environments.
 	EnvTypes []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
-	// The time when the workspace was created, in UTC. The time follows the ISO 8601 standard.
+	// The time when the workspace was created. The time is in Coordinated Universal Time (UTC) and is formatted in ISO 8601.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the workspace was modified, in UTC. The time follows the ISO 8601 standard.
+	// The time when the workspace was last modified. The time is in UTC and is formatted in ISO 8601.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The UID of the Alibaba Cloud account.
+	// The Alibaba Cloud account that created the workspace.
 	Owner *GetDefaultWorkspaceResponseBodyOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -82,19 +82,19 @@ type GetDefaultWorkspaceResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The workspace status. Valid values:
+	// The status of the workspace. Valid values:
 	//
-	// 	- ENABLED
+	// - ENABLED: Normal.
 	//
-	// 	- INITIALIZING
+	// - INITIALIZING: Initializing.
 	//
-	// 	- FAILURE
+	// - FAILURE: Failed.
 	//
-	// 	- DISABLED
+	// - DISABLED: Disabled.
 	//
-	// 	- FROZEN
+	// - FROZEN: Frozen due to an overdue payment.
 	//
-	// 	- UPDATING
+	// - UPDATING: The workspace is being updated.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type GetDefaultWorkspaceResponseBody struct {
 	//
 	// 1234
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The workspace name, which is unique in a region.
+	// The name of the workspace. The name must be unique within the same region.
 	//
 	// example:
 	//
@@ -249,13 +249,13 @@ func (s *GetDefaultWorkspaceResponseBody) Validate() error {
 }
 
 type GetDefaultWorkspaceResponseBodyConditions struct {
-	// The returned status code. HTTP status code 200 indicates that the request was successful. Other HTTP status codes indicate that the request failed.
+	// The status code. A value of 200 indicates that the request was successful. Other values indicate that the request failed.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message. If the returned status code is 200, this parameter is empty.
+	// The error message. This parameter is empty if the status code is 200.
 	//
 	// example:
 	//
@@ -263,13 +263,13 @@ type GetDefaultWorkspaceResponseBodyConditions struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The task type. Valid values:
 	//
-	// 	- CREATING: The workspace is being created.
+	// - CREATING: Creating.
 	//
-	// 	- WORKSPACE_CREATED: The workspace is created.
+	// - WORKSPACE_CREATED: The workspace is created.
 	//
-	// 	- MEMBERS_ADDED: The member is added.
+	// - MEMBERS_ADDED: Members are added.
 	//
-	// 	- ENABLED: The workspace is created and the member is added.
+	// - ENABLED: The process is complete.
 	//
 	// example:
 	//
@@ -317,13 +317,13 @@ func (s *GetDefaultWorkspaceResponseBodyConditions) Validate() error {
 }
 
 type GetDefaultWorkspaceResponseBodyOwner struct {
-	// The user ID.
+	// The UID of the user.
 	//
 	// example:
 	//
 	// 17915******4216
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The user ID.
+	// The UID of the user.
 	//
 	// example:
 	//

@@ -22,13 +22,13 @@ type iListExperimentResponseBody interface {
 type ListExperimentResponseBody struct {
 	// The list of experiments.
 	Experiments []*Experiment `json:"Experiments,omitempty" xml:"Experiments,omitempty" type:"Repeated"`
-	// The pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token for the next page. Save this token and include it in the next request to retrieve the next page of results.
 	//
 	// example:
 	//
 	// 0
 	NextPageToken *int64 `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//

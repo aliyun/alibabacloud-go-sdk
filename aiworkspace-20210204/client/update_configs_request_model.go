@@ -14,7 +14,7 @@ type iUpdateConfigsRequest interface {
 }
 
 type UpdateConfigsRequest struct {
-	// The list of workspace configurations to update or add.
+	// A list of workspace configurations to update or add.
 	Configs []*UpdateConfigsRequestConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
 }
 
@@ -49,35 +49,35 @@ func (s *UpdateConfigsRequest) Validate() error {
 }
 
 type UpdateConfigsRequestConfigs struct {
-	// The category of the configuration item. Supported categories:
+	// The category of the configuration item. The following categories are supported:
 	//
-	// 	- CommonResourceConfig
+	// - CommonResourceConfig: General resource configuration.
 	//
-	// 	- DLCAutoRecycle
+	// - DLCAutoRecycle: DLC automatic recycling.
 	//
-	// 	- DLCPriorityConfig
+	// - DLCPriorityConfig: DLC priority settings.
 	//
-	// 	- DSWPriorityConfig
+	// - DSWPriorityConfig: DSW priority settings.
 	//
-	// 	- QuotaMaximumDuration
+	// - QuotaMaximumDuration: Configuration for the maximum runtime of a DLC job within a quota.
 	//
-	// 	- CommonTagConfig
+	// - CommonTagConfig: Tag settings.
 	//
 	// example:
 	//
 	// CommonResourceConfig
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The key of the configuration item. Supported keys:
+	// The key of the configuration item. The following keys are supported:
 	//
-	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+	// - tempStoragePath: The path for temporary storage. This key is valid only when CategoryName is set to CommonResourceConfig.
 	//
-	// 	- isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
+	// - isAutoRecycle: The configuration for automatic resource recycling. This key is valid only when CategoryName is set to DLCAutoRecycle.
 	//
-	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+	// - priorityConfig: The priority configuration. This key is valid only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
 	//
-	// 	- quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	// - quotaMaximumDuration: The maximum runtime configuration for a DLC job within a quota. This key is valid only when CategoryName is set to QuotaMaximumDuration.
 	//
-	// 	- predefinedTags: The predefined tags of the workspace. All created resources must have tags.
+	// - predefinedTags: The predefined tags for the workspace. Created resources must have these tags.
 	//
 	// example:
 	//
@@ -85,13 +85,13 @@ type UpdateConfigsRequestConfigs struct {
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
 	// The value of the configuration item.
 	//
-	// 	- When ConfigKey is predefinedTags, the ConfigValue follows this format: [{"Type":"Tag","Key":"Key1","Value":"{"Products":"DLC,DSW,EAS","Values":"value1,value2,value3"}"}]. "Products" indicates the products that use the predefined tags.
+	// - If ConfigKey is set to predefinedTags, the format of ConfigValue is [{"Type":"Tag","Key":"Key1","Value":"{\\\\"Products\\\\":\\\\"DLC,DSW,EAS\\\\",\\\\"Values\\\\":\\\\"value1,value2,value3\\\\"}"}]. The Products field specifies which products use the predefined tags.
 	//
 	// example:
 	//
 	// oss://test/s/
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	// The tags of the configuration item.
+	// A list of tags for the configuration item.
 	Labels []*UpdateConfigsRequestConfigsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 
@@ -153,7 +153,7 @@ func (s *UpdateConfigsRequestConfigs) Validate() error {
 }
 
 type UpdateConfigsRequestConfigsLabels struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//

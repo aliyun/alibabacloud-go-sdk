@@ -72,80 +72,131 @@ type iDataset interface {
 }
 
 type Dataset struct {
-	// The workspace accessibility. Valid values:
+	// The visibility of the dataset in the workspace. Valid values:
 	//
-	// 	- PRIVATE (default): The dataset is accessible only to you and the administrator of the workspace.
+	// - `PRIVATE`: Visible only to the dataset\\"s owner and administrators.
 	//
-	// 	- PUBLIC: The dataset is accessible to all members in the workspace.
+	// - `PUBLIC`: The dataset is visible to all users in the workspace.
+	//
+	// - `ROLE_PUBLIC`: Visible to specified workspace roles (see `AccessibleRoleIdList`). The owner and administrators also have visibility.
 	//
 	// example:
 	//
 	// PRIVATE
-	Accessibility        *string   `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// If `Accessibility` is `ROLE_PUBLIC`, this parameter lists the IDs of workspace roles that can view the dataset. Role IDs that start with `PAI` are built-in roles, and those that start with `role-` are custom roles.
 	AccessibleRoleIdList []*string `json:"AccessibleRoleIdList,omitempty" xml:"AccessibleRoleIdList,omitempty" type:"Repeated"`
-	// The data source type.
-	//
-	// Valid values:
-	//
-	// 	- NAS
-	//
-	// 	- OSS
+	// The type of the data source.
 	//
 	// example:
 	//
 	// NAS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The data type. Valid values:
+	// The data type of the dataset. Valid values:
 	//
-	// 	- COMMON (default)
+	// - `COMMON`: (Default) Common data.
 	//
-	// 	- PIC
+	// - `PIC`: Images.
 	//
-	// 	- TEXT
+	// - `TEXT`: Text.
 	//
-	// 	- Video
+	// - `VIDEO`: Videos.
 	//
-	// 	- AUDIO
+	// - `AUDIO`: Audio.
 	//
 	// example:
 	//
 	// COMMON
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The dataset ID.
+	// The ID of the dataset.
 	//
 	// example:
 	//
 	// d-c0h44g3****j8o4348
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The dataset description.
+	// The description of the dataset.
+	//
+	// example:
+	//
+	// This is a description of a dataset.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The edition of the dataset. Valid values:
+	//
+	// `BASIC`: The basic edition. This edition does not support file metadata management.
+	//
+	// `ADVANCED`: The advanced edition. This edition is supported only for OSS datasets and allows metadata management for up to 1 million files per version.
+	//
 	// example:
 	//
 	// BASIC
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// The time when the dataset was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the dataset was modified.
+	// The update time.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The dataset import information, such as OSS, NAS, and CPFS.
+	// The configuration for importing data from a storage source. Supported sources include OSS, NAS, and CPFS.
 	//
-	// **OSS**
+	// <details>
 	//
-	// { "region": "${region}",//The region ID. "bucket": "${bucket}",//The bucket name. "path": "${path}" //The file path. }
+	// <summary>
 	//
-	// **NAS**
+	// OSS
 	//
-	// **CPFS**
+	// </summary>
 	//
-	// **CPFS for Lingjun**
+	// {
+	//
+	// "region": "${region}",// The region ID.
+	//
+	// "bucket": "${bucket}",// The bucket name.
+	//
+	// "path": "${path}" // The file path.
+	//
+	// }
+	//
+	// </details>
+	//
+	// <details>
+	//
+	// <summary>
+	//
+	// NAS
+	//
+	// </summary>
+	//
+	// </details>
+	//
+	// <details>
+	//
+	// <summary>
+	//
+	// CPFS
+	//
+	// </summary>
+	//
+	// Content
+	//
+	// </details>
+	//
+	// <details>
+	//
+	// <summary>
+	//
+	// Intelligent Computing CPFS
+	//
+	// </summary>
+	//
+	// Content
+	//
+	// </details>
 	//
 	// example:
 	//
@@ -163,26 +214,31 @@ type Dataset struct {
 	//
 	// }
 	ImportInfo *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	IsShared   *bool   `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
-	// The labels.
+	// Indicates whether the dataset is shared.
+	//
+	// example:
+	//
+	// false
+	IsShared *bool `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
+	// A list of labels.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The latest dataset version.
+	// Details of the latest dataset version.
 	LatestVersion *DatasetVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	// MountAccess
+	// The mount access permissions.
 	//
 	// example:
 	//
 	// RO RW
 	MountAccess *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
-	// The IDs of the roles that have read and write permissions on the dataset in the workspace. The IDs starting with PAI is the IDs of the basic roles, and the IDs starting with role- is the IDs of the custom roles. If the list contains "\\*", all roles have read and write permissions.
+	// A list of IDs for workspace roles with read and write permissions on the dataset. Role IDs that start with `PAI` are built-in roles, and role IDs that start with `role-` are custom roles. An asterisk (`*`) indicates that all roles have read and write permissions.
 	MountAccessReadWriteRoleIdList []*string `json:"MountAccessReadWriteRoleIdList,omitempty" xml:"MountAccessReadWriteRoleIdList,omitempty" type:"Repeated"`
-	// The dataset name.
+	// The name of the dataset.
 	//
 	// example:
 	//
 	// myName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The extended field that can be used as an option. The value is a JSON string. When you use the dataset in Deep Learning Containers (DLC), you can use the mountPath field to specify the default mount path of the dataset.
+	// A JSON string of extended options. When you use the dataset in a Data Lake Compute job, you can configure the `mountPath` field to specify the default mount path for the dataset.
 	//
 	// example:
 	//
@@ -198,35 +254,37 @@ type Dataset struct {
 	//
 	// 1631044****3440
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The dataset property. Valid values:
+	// Indicates whether the dataset corresponds to a single file or a directory. Valid values:
 	//
-	// 	- FILE
+	// - `FILE`: The dataset is a file.
 	//
-	// 	- DIRECTORY
+	// - `DIRECTORY`: The dataset is a directory.
 	//
 	// example:
 	//
 	// DIRECTORY
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
-	// The provider type of the dataset. Valid values:
+	// The type of the data source provider. Valid values:
 	//
-	// 	- Ecs (default)
+	// - `ECS` (Default)
 	//
-	// 	- Lingjun
+	// - `Lingjun`
 	//
 	// example:
 	//
 	// Ecs
-	ProviderType  *string                   `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	SharedFrom    *DatasetShareRelationship `json:"SharedFrom,omitempty" xml:"SharedFrom,omitempty"`
-	SharingConfig *DatasetSharingConfig     `json:"SharingConfig,omitempty" xml:"SharingConfig,omitempty" type:"Struct"`
-	// The ID of the source dataset for the labeled dataset.
+	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	// The source of the shared dataset. This parameter is valid only when `IsShared` is `true`.
+	SharedFrom *DatasetShareRelationship `json:"SharedFrom,omitempty" xml:"SharedFrom,omitempty"`
+	// The sharing configuration for the dataset.
+	SharingConfig *DatasetSharingConfig `json:"SharingConfig,omitempty" xml:"SharingConfig,omitempty" type:"Struct"`
+	// The ID of the source dataset for the annotated dataset.
 	//
 	// example:
 	//
 	// d-bvfasdfxxxxj8o411
 	SourceDatasetId *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
-	// The version of the source dataset for the labeled dataset.
+	// The version of the source dataset for the annotated dataset.
 	//
 	// example:
 	//
@@ -240,19 +298,11 @@ type Dataset struct {
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// The source type.
 	//
-	// Valid values:
-	//
-	// 	- PAI_PUBLIC_DATASET
-	//
-	// 	- ITAG
-	//
-	// 	- USER
-	//
 	// example:
 	//
 	// USER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The labeling template of the iTAG labeled dataset.
+	// The annotation template for the iTAG annotated dataset.
 	//
 	// example:
 	//
@@ -260,15 +310,23 @@ type Dataset struct {
 	TagTemplateType *string `json:"TagTemplateType,omitempty" xml:"TagTemplateType,omitempty"`
 	// URI examples:
 	//
-	// 	- Object Storage Service (OSS) data source: `oss://bucket.endpoint/object`
+	// - OSS data source:
 	//
-	// 	- File Storage NAS (NAS) data source: `nas://<nasfisid>.region/subpath/to/dir/`
+	//   `oss://bucket.endpoint/object`
 	//
-	// 	- Cloud Parallel File Storage (CPFS) 1.0 data source: `nas://<cpfs-fsid>.region/subpath/to/dir/`
+	// - General-purpose NAS data source:
 	//
-	// 	- CPFS 2.0 data source: `nas://<cpfs-fsid>.region/<protocolserviceid>/`
+	//   `nas://<nasfisid>.region/subpath/to/dir/`
 	//
-	// >  You can distinguish CPFS 1.0 and CPFS 2.0 file systems based on the format of the file system ID: The ID of the CPFS 1.0 file system is in the cpfs-<8-bit ASCII characters> format. The ID of the CPFS 2.0 file system is in the cpfs-<16-bit ASCII characters> format.
+	// - CPFS 1.0 data source:
+	//
+	//   `nas://<cpfs-fsid>.region/subpath/to/dir/`
+	//
+	// - CPFS 2.0 data source:
+	//
+	//   `nas://<cpfs-fsid>.region/<protocolserviceid>/`
+	//
+	// > The format of the `fsid` distinguishes CPFS 1.0 from CPFS 2.0. A CPFS 1.0 `fsid` has the format `cpfs-<8-character ASCII string>`, and a CPFS 2.0 `fsid` has the format `cpfs-<16-character ASCII string>`.
 	//
 	// example:
 	//
@@ -280,7 +338,7 @@ type Dataset struct {
 	//
 	// 2485765****023475
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the workspace to which the dataset belongs.
+	// The ID of the workspace where the dataset is located.
 	//
 	// example:
 	//
@@ -595,6 +653,7 @@ func (s *Dataset) Validate() error {
 }
 
 type DatasetSharingConfig struct {
+	// A list of sharing relationships.
 	SharedTo []*DatasetShareRelationship `json:"SharedTo,omitempty" xml:"SharedTo,omitempty" type:"Repeated"`
 }
 

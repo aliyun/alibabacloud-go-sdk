@@ -30,20 +30,29 @@ type iListDatasetJobsRequest interface {
 }
 
 type ListDatasetJobsRequest struct {
-	// The dataset version name.
+	// The name of the dataset version.
 	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	// The action to be performed on the job.
+	// The job action.
 	//
 	// example:
 	//
 	// SemanticIndex
 	JobAction *string `json:"JobAction,omitempty" xml:"JobAction,omitempty"`
-	Order     *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The order in which to sort the results. This parameter is used with `SortBy`. Default: DESC.
+	//
+	// - ASC: ascending order.
+	//
+	// - DESC: descending order.
+	//
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages are 1-indexed. Default: 1.
 	//
 	// example:
 	//
@@ -54,11 +63,21 @@ type ListDatasetJobsRequest struct {
 	// example:
 	//
 	// 50
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy   *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field by which to sort the results. By default, the results are sorted by `CreateTime` in descending order.
+	//
+	// example:
+	//
+	// CreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The job status.
+	//
+	// example:
+	//
+	// Running
 	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	WithLogs *bool   `json:"WithLogs,omitempty" xml:"WithLogs,omitempty"`
-	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The ID of the workspace. To obtain this ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

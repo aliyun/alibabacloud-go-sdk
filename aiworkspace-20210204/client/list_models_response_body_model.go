@@ -18,7 +18,7 @@ type iListModelsResponseBody interface {
 }
 
 type ListModelsResponseBody struct {
-	// The models.
+	// The list of models.
 	Models []*Model `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
 	// The request ID.
 	//

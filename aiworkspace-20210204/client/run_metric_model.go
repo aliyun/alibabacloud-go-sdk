@@ -24,9 +24,9 @@ type RunMetric struct {
 	//
 	// This parameter is required.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The step number that generated the metric.
+	// The step when the metric was recorded.
 	Step *int64 `json:"Step,omitempty" xml:"Step,omitempty"`
-	// The timestamp when the metric was generated.
+	// The timestamp when the metric was recorded.
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	// The metric value.
 	//

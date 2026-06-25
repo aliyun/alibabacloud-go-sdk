@@ -18,15 +18,27 @@ type iUpdateDatasetJobConfigRequest interface {
 }
 
 type UpdateDatasetJobConfigRequest struct {
-	// The configuration content. Formats:
+	// The configuration content.
 	//
-	// 	- MultimodalIntelligentTag
+	// The format is as follows:
 	//
-	// { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
+	// - MultimodalIntelligentTag
 	//
-	// 	- MultimodalSemanticIndex
+	// {
 	//
-	// { "defaultModelId": "xxx" "defaultModelVersion":"1.0.0" }
+	// "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx"
+	//
+	// }
+	//
+	// - MultimodalSemanticIndex
+	//
+	// {
+	//
+	// "defaultModelId": "xxx",
+	//
+	// "defaultModelVersion":"1.0.0"
+	//
+	// }
 	//
 	// example:
 	//
@@ -34,15 +46,15 @@ type UpdateDatasetJobConfigRequest struct {
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The configuration type.
 	//
-	// 	- MultimodalIntelligentTag
+	// - MultimodalIntelligentTag
 	//
-	// 	- MultimodalSemanticIndex
+	// - MultimodalSemanticIndex
 	//
 	// example:
 	//
 	// MultimodalSemanticIndex
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//

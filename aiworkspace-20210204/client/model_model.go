@@ -100,6 +100,8 @@ type Model struct {
 	//
 	// 2021-01-21T17:12:35Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 最后版本更新时间。
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35Z
@@ -115,6 +117,10 @@ type Model struct {
 	// The latest version of the model.
 	LatestVersion *ModelVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	// The model description.
+	//
+	// example:
+	//
+	// 情感分析。
 	ModelDescription *string `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
 	// The model document.
 	//
@@ -129,6 +135,10 @@ type Model struct {
 	// model-1123*****
 	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	// The model name.
+	//
+	// example:
+	//
+	// 情感分析
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// The model type, such as checkpoint and LoRA.
 	//
@@ -154,6 +164,8 @@ type Model struct {
 	//
 	// 1557702098******
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 参数量，单位M。
+	//
 	// example:
 	//
 	// 1024
@@ -163,8 +175,9 @@ type Model struct {
 	// example:
 	//
 	// pai
-	Provider *string  `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	Tags     []*Label `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// 标签列表
+	Tags []*Label `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The task. The specific issue that the model resolves, such as text-classification.
 	//
 	// example:

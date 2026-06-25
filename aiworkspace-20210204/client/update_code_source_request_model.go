@@ -37,33 +37,37 @@ type UpdateCodeSourceRequest struct {
 	//
 	// dev
 	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
-	// The code commit ID.
+	// The commit ID.
 	//
 	// example:
 	//
 	// 3a6*****
 	CodeCommit *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
-	// The address of the code repository.
+	// The URL of the code repository.
 	//
 	// example:
 	//
 	// https://code.aliyun.com/******
 	CodeRepo *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
-	// The access token corresponding to the username.
+	// The access token for the username.
 	//
 	// example:
 	//
 	// ***
 	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
-	// The username used to access the code repository.
+	// The username for the code repository.
 	//
 	// example:
 	//
 	// demo-user
 	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
-	// The description of the code build.
+	// The description of the code source.
+	//
+	// example:
+	//
+	// Training code for XX
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the code build.
+	// The name of the code source.
 	//
 	// example:
 	//

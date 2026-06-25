@@ -18,7 +18,7 @@ type iListMembersResponseBody interface {
 }
 
 type ListMembersResponseBody struct {
-	// The members.
+	// The list of workspace members.
 	Members []*ListMembersResponseBodyMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListMembersResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of members that meet the filter conditions.
+	// Total number of members that match the filter criteria.
 	//
 	// example:
 	//
@@ -83,41 +83,51 @@ func (s *ListMembersResponseBody) Validate() error {
 }
 
 type ListMembersResponseBodyMembers struct {
+	// Account name of the member.
+	//
 	// example:
 	//
 	// testAccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Account type. Valid values:
+	//
+	// - 1: Alibaba Cloud account
+	//
+	// - 5: RAM user
+	//
+	// - 6: RAM role
+	//
 	// example:
 	//
 	// 5
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The display name of the member.
+	// Display name of the member.
 	//
 	// example:
 	//
 	// myDisplayName
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The time when the user is created, in UTC. The time follows the ISO 8601 standard.
+	// Time when the member was added, in UTC. Format: ISO 8601.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The member ID.
+	// Member ID.
 	//
 	// example:
 	//
 	// 14588*****51688039
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// The username.
+	// Username of the member.
 	//
 	// example:
 	//
 	// user1
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	// The list of roles.
+	// Roles assigned to the member.
 	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// The user ID.
+	// Alibaba Cloud account ID of the member.
 	//
 	// example:
 	//

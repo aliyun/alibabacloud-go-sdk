@@ -18,7 +18,7 @@ type iListDatasetsResponseBody interface {
 }
 
 type ListDatasetsResponseBody struct {
-	// The datasets.
+	// The list of datasets.
 	Datasets []*Dataset `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListDatasetsResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total count of datasets.
 	//
 	// example:
 	//

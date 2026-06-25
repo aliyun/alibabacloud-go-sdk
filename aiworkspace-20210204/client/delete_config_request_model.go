@@ -16,23 +16,23 @@ type iDeleteConfigRequest interface {
 }
 
 type DeleteConfigRequest struct {
-	// The category of the configuration item. Valid values:
+	// The classification of the configuration item. The following classifications are supported:
 	//
-	// 	- CommonResourceConfig
+	// - DLCAutoRecycle: The DLC automatic release configuration.
 	//
-	// 	- DLCAutoRecycle - DLCPriorityConfig
+	// - DLCPriorityConfig: The DLC priority settings.
 	//
-	// 	- DSWPriorityConfig
+	// - DSWPriorityConfig: The DSW priority settings.
 	//
-	// 	- QuotaMaximumDuration
+	// - QuotaMaximumDuration: The maximum runtime configuration of a DLC task for a quota.
 	//
-	// 	- CommonTagConfig
+	// - CommonTagConfig: The tag settings.
 	//
 	// example:
 	//
 	// CommonResourceConfig
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The filter conditions. Separate multiple conditions with commas (,). The conditions have an AND relationship.
+	// The filter conditions. Separate multiple conditions with commas. The conditions are combined with a logical AND.
 	//
 	// example:
 	//

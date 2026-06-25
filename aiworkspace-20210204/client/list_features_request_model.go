@@ -14,6 +14,8 @@ type iListFeaturesRequest interface {
 }
 
 type ListFeaturesRequest struct {
+	// Feature names, separated by commas.
+	//
 	// example:
 	//
 	// PaiConsole:IntegrateWithWorkspace

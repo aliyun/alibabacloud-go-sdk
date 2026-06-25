@@ -16,12 +16,14 @@ type iCreateImageBuildResponseBody interface {
 }
 
 type CreateImageBuildResponseBody struct {
-	// 代表资源一级ID的资源属性字段
+	// The image build ID.
 	//
 	// example:
 	//
 	// build-****ks92
 	ImageBuildId *string `json:"ImageBuildId,omitempty" xml:"ImageBuildId,omitempty"`
+	// The build task ID.
+	//
 	// example:
 	//
 	// dlc-****ks92

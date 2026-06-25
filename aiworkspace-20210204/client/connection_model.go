@@ -38,17 +38,17 @@ type iConnection interface {
 }
 
 type Connection struct {
-	// The workspace accessibility. Valid values:
+	// The workspace visibility. Valid values:
 	//
-	// 	- PRIVATE (default): accessible only to you and the administrator of the workspace.
+	// - PRIVATE (default): The connection is visible only to you and administrators in the workspace.
 	//
-	// 	- PUBLIC: accessible to all members in the workspace.
+	// - PUBLIC: The connection is visible to all users in the workspace.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The connection configuration.
+	// The connection configurations.
 	Configs map[string]*string `json:"Configs,omitempty" xml:"Configs,omitempty"`
 	// The connection ID.
 	//
@@ -56,57 +56,65 @@ type Connection struct {
 	//
 	// conn-pai9m***mi47
 	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	// The connection name.
+	// The name of the connection.
+	//
+	// example:
+	//
+	// lindorm-connection
 	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
 	// The connection type. Valid values:
 	//
-	// 	- DashScopeConnection
+	// - DashScopeConnection: A service connection to Alibaba Cloud Model Studio.
 	//
-	// 	- OpenLLMConnection
+	// - OpenLLMConnection: An open source model connection.
 	//
-	// 	- MilvusConnection
+	// - MilvusConnection: A Milvus connection.
 	//
-	// 	- OpenSearchConnection
+	// - OpenSearchConnection: An OpenSearch connection.
 	//
-	// 	- LindormConnection
+	// - LindormConnection: A Lindorm connection.
 	//
-	// 	- ElasticsearchConnection
+	// - ElasticsearchConnection: An Elasticsearch connection.
 	//
-	// 	- HologresConnection
+	// - HologresConnection: A Hologres connection.
 	//
-	// 	- RDSConnection
+	// - RDSConnection: An RDS connection.
 	//
-	// 	- CustomConnection
+	// - CustomConnection: A custom connection.
 	//
 	// example:
 	//
 	// ElasticsearchConnection
 	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	// The connection creator.
+	// The creator of the connection.
 	//
 	// example:
 	//
 	// 20925961****557803
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	// The connection description.
+	//
+	// example:
+	//
+	// This is a description of a database connection.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the connection was modified, in UTC. The time follows the ISO 8601 standard.
+	// The time when the connection was created. The time is in UTC and follows the ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-03-07T07:54:56Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the connection was modified, in UTC. The time follows the ISO 8601 standard.
+	// The time when the connection was last modified. The time is in UTC and follows the ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-03-07T07:54:56Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The models.
+	// The model list.
 	Models []*ConnectionModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
-	// The connection resource. This parameter is used for the connection configuration of the database type.
+	// The resource information for the connection. This usually applies to database connection configurations.
 	ResourceMeta *ConnectionResourceMeta `json:"ResourceMeta,omitempty" xml:"ResourceMeta,omitempty" type:"Struct"`
-	// The key-value configuration to be encrypted, such as the database logon password and the key for model connection.
+	// The key-value configurations to encrypt, such as database logon passwords and model connection keys.
 	Secrets map[string]*string `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
 	// The workspace ID.
 	//
@@ -260,7 +268,11 @@ func (s *Connection) Validate() error {
 }
 
 type ConnectionModels struct {
-	// The display name of the model.
+	// The model\\"s display name.
+	//
+	// example:
+	//
+	// BGE model deploy.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The model identifier.
 	//
@@ -270,21 +282,21 @@ type ConnectionModels struct {
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	// The model type. Valid values:
 	//
-	// 	- LLM
+	// - LLM (large language model)
 	//
-	// 	- Embedding
+	// - Embedding (Embedding model)
 	//
-	// 	- ReRank
+	// - ReRank (ReRank model)
 	//
 	// example:
 	//
 	// LLM
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	// Indicates whether tool calling was supported. Valid values:
+	// Indicates whether tool calling is supported. Valid values:
 	//
-	// 	- true
+	// - true: Supported
 	//
-	// 	- false
+	// - false: Not supported
 	//
 	// example:
 	//
@@ -341,6 +353,11 @@ func (s *ConnectionModels) Validate() error {
 }
 
 type ConnectionResourceMeta struct {
+	// Extra configuration information.
+	//
+	// example:
+	//
+	// {"vpcId":"vpc-xxxx"}
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The instance ID.
 	//
@@ -349,6 +366,10 @@ type ConnectionResourceMeta struct {
 	// ld-2vc1***v1zaqgzol
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance name.
+	//
+	// example:
+	//
+	// lindorm-xxxxxxx
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 

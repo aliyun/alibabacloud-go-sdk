@@ -18,7 +18,7 @@ type iListRunMetricsRequest interface {
 }
 
 type ListRunMetricsRequest struct {
-	// The metric key of the run.
+	// The key of the metric for the run.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type ListRunMetricsRequest struct {
 	//
 	// loss
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The maximum number of entries in the request. Default value: 10.
+	// The maximum number of results to return. The default value is 10.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token, which starts from 0. Default value: 0.
+	// The paging token. The token starts from 0. The default value is 0.
 	//
 	// example:
 	//

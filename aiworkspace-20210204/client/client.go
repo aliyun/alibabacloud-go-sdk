@@ -66,6 +66,27 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"eu-west-1-oxs":               dara.String("aiworkspace.aliyuncs.com"),
 		"me-east-1":                   dara.String("aiworkspace.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("aiworkspace.aliyuncs.com"),
+		"us-west-1":                   dara.String("aiworkspace.us-west-1.aliyuncs.com"),
+		"us-southeast-1":              dara.String("aiworkspace.us-southeast-1.aliyuncs.com"),
+		"us-east-1":                   dara.String("aiworkspace.us-east-1.aliyuncs.com"),
+		"na-south-1":                  dara.String("aiworkspace.na-south-1.aliyuncs.com"),
+		"eu-central-1":                dara.String("aiworkspace.eu-central-1.aliyuncs.com"),
+		"cn-wulanchabu":               dara.String("aiworkspace.cn-wulanchabu.aliyuncs.com"),
+		"cn-shenzhen":                 dara.String("aiworkspace.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai-finance-1":       dara.String("aiworkspace.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shanghai":                 dara.String("aiworkspace.cn-shanghai.aliyuncs.com"),
+		"cn-hongkong":                 dara.String("aiworkspace.cn-hongkong.aliyuncs.com"),
+		"cn-heyuan":                   dara.String("aiworkspace.cn-heyuan.aliyuncs.com"),
+		"cn-hangzhou":                 dara.String("aiworkspace.cn-hangzhou.aliyuncs.com"),
+		"cn-guangzhou":                dara.String("aiworkspace.cn-guangzhou.aliyuncs.com	"),
+		"cn-beijing":                  dara.String("aiworkspace.cn-beijing.aliyuncs.com"),
+		"ap-southeast-8":              dara.String("aiworkspace.ap-southeast-8.aliyuncs.com"),
+		"ap-southeast-7":              dara.String("aiworkspace.ap-southeast-7.aliyuncs.com"),
+		"ap-southeast-3":              dara.String("aiworkspace.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-1":              dara.String("aiworkspace.ap-southeast-1.aliyuncs.com"),
+		"ap-south-1":                  dara.String("aiworkspace.ap-south-1.aliyuncs.com"),
+		"ap-northeast-2":              dara.String("aiworkspace.ap-northeast-2.aliyuncs.com"),
+		"ap-northeast-1":              dara.String("aiworkspace.ap-northeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -100,11 +121,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Receives and processes system event messages sent by DataWorks.
+// PAI accepts and processes system event messages from DataWorks.
 //
 // Description:
 //
-// This operation can be called only by the internal system and cannot be called by external users.
+// This API is for internal system calls only.
 //
 // @param request - AcceptDataworksEventRequest
 //
@@ -155,11 +176,11 @@ func (client *Client) AcceptDataworksEventWithOptions(request *AcceptDataworksEv
 
 // Summary:
 //
-// Receives and processes system event messages sent by DataWorks.
+// PAI accepts and processes system event messages from DataWorks.
 //
 // Description:
 //
-// This operation can be called only by the internal system and cannot be called by external users.
+// This API is for internal system calls only.
 //
 // @param request - AcceptDataworksEventRequest
 //
@@ -280,7 +301,7 @@ func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageRespo
 
 // Summary:
 //
-// Adds tags to an image.
+// Adds labels to a specified image.
 //
 // @param request - AddImageLabelsRequest
 //
@@ -327,7 +348,7 @@ func (client *Client) AddImageLabelsWithOptions(ImageId *string, request *AddIma
 
 // Summary:
 //
-// Adds tags to an image.
+// Adds labels to a specified image.
 //
 // @param request - AddImageLabelsRequest
 //
@@ -346,7 +367,7 @@ func (client *Client) AddImageLabels(ImageId *string, request *AddImageLabelsReq
 
 // Summary:
 //
-// Adds a role to a member in a workspace. After you add a role to a member, the member is granted the permissions of the role.
+// Assigns a role to a member in a workspace, granting that member the role\\"s permissions.
 //
 // @param request - AddMemberRoleRequest
 //
@@ -387,7 +408,7 @@ func (client *Client) AddMemberRoleWithOptions(WorkspaceId *string, MemberId *st
 
 // Summary:
 //
-// Adds a role to a member in a workspace. After you add a role to a member, the member is granted the permissions of the role.
+// Assigns a role to a member in a workspace, granting that member the role\\"s permissions.
 //
 // @param request - AddMemberRoleRequest
 //
@@ -406,7 +427,7 @@ func (client *Client) AddMemberRole(WorkspaceId *string, MemberId *string, RoleN
 
 // Summary:
 //
-// Changes the resource group to which a resource belongs based on the ID.
+// Changes the resource group of a specified resource.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -461,7 +482,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// Changes the resource group to which a resource belongs based on the ID.
+// Changes the resource group of a specified resource.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -480,7 +501,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Creates a code build in Platform for AI (PAI). You can configure Git branches and commit IDs. After the code build is created, you can reference the code build in a Deep Learning Containers (DLC) job.
+// Creates a code configuration in PAI using a code branch and commit ID from a Git repository. This configuration can then be referenced in DLC jobs.
 //
 // @param request - CreateCodeSourceRequest
 //
@@ -567,7 +588,7 @@ func (client *Client) CreateCodeSourceWithOptions(request *CreateCodeSourceReque
 
 // Summary:
 //
-// Creates a code build in Platform for AI (PAI). You can configure Git branches and commit IDs. After the code build is created, you can reference the code build in a Deep Learning Containers (DLC) job.
+// Creates a code configuration in PAI using a code branch and commit ID from a Git repository. This configuration can then be referenced in DLC jobs.
 //
 // @param request - CreateCodeSourceRequest
 //
@@ -586,7 +607,7 @@ func (client *Client) CreateCodeSource(request *CreateCodeSourceRequest) (_resul
 
 // Summary:
 //
-// Creates a connection. This API is used to connect Platform for AI (PAI) to customer models and databases in LangStudio and multimodal dataset search scenarios.
+// Creates a connection to link PAI cloud services with your models, databases, and other services. This is useful for scenarios such as LangStudio and multimodal dataset retrieval.
 //
 // @param request - CreateConnectionRequest
 //
@@ -665,7 +686,7 @@ func (client *Client) CreateConnectionWithOptions(request *CreateConnectionReque
 
 // Summary:
 //
-// Creates a connection. This API is used to connect Platform for AI (PAI) to customer models and databases in LangStudio and multimodal dataset search scenarios.
+// Creates a connection to link PAI cloud services with your models, databases, and other services. This is useful for scenarios such as LangStudio and multimodal dataset retrieval.
 //
 // @param request - CreateConnectionRequest
 //
@@ -846,7 +867,7 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 
 // Summary:
 //
-// Creates the metadata records of multiple files in a dataset at a time.
+// Creates file metadata records for a dataset in a batch.
 //
 // @param request - CreateDatasetFileMetasRequest
 //
@@ -901,7 +922,7 @@ func (client *Client) CreateDatasetFileMetasWithOptions(DatasetId *string, reque
 
 // Summary:
 //
-// Creates the metadata records of multiple files in a dataset at a time.
+// Creates file metadata records for a dataset in a batch.
 //
 // @param request - CreateDatasetFileMetasRequest
 //
@@ -1006,7 +1027,7 @@ func (client *Client) CreateDatasetJob(DatasetId *string, request *CreateDataset
 
 // Summary:
 //
-// Creates a job configuration for a dataset.
+// Creates a dataset Job configuration.
 //
 // @param request - CreateDatasetJobConfigRequest
 //
@@ -1065,7 +1086,7 @@ func (client *Client) CreateDatasetJobConfigWithOptions(DatasetId *string, reque
 
 // Summary:
 //
-// Creates a job configuration for a dataset.
+// Creates a dataset Job configuration.
 //
 // @param request - CreateDatasetJobConfigRequest
 //
@@ -1084,15 +1105,15 @@ func (client *Client) CreateDatasetJobConfig(DatasetId *string, request *CreateD
 
 // Summary:
 //
-// Creates tags for a dataset.
+// Adds labels to a dataset.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// When you call this operation, note the following:
 //
-//   - The tag key and value are not empty strings and cannot exceed 128 characters in length.
+// - The key and value of a label must be a non-empty string with a maximum length of 128 characters.
 //
-//   - The tag key cannot start with any of the following strings: "aliyun", "acs", "http://", and "https://".
+// - A label key cannot start with aliyun, acs, http\\://, or https\\://.
 //
 // @param request - CreateDatasetLabelsRequest
 //
@@ -1139,15 +1160,15 @@ func (client *Client) CreateDatasetLabelsWithOptions(DatasetId *string, request 
 
 // Summary:
 //
-// Creates tags for a dataset.
+// Adds labels to a dataset.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// When you call this operation, note the following:
 //
-//   - The tag key and value are not empty strings and cannot exceed 128 characters in length.
+// - The key and value of a label must be a non-empty string with a maximum length of 128 characters.
 //
-//   - The tag key cannot start with any of the following strings: "aliyun", "acs", "http://", and "https://".
+// - A label key cannot start with aliyun, acs, http\\://, or https\\://.
 //
 // @param request - CreateDatasetLabelsRequest
 //
@@ -1272,7 +1293,7 @@ func (client *Client) CreateDatasetVersion(DatasetId *string, request *CreateDat
 
 // Summary:
 //
-// Creates tags for a dataset version.
+// Creates labels for a dataset version.
 //
 // @param request - CreateDatasetVersionLabelsRequest
 //
@@ -1319,7 +1340,7 @@ func (client *Client) CreateDatasetVersionLabelsWithOptions(DatasetId *string, V
 
 // Summary:
 //
-// Creates tags for a dataset version.
+// Creates labels for a dataset version.
 //
 // @param request - CreateDatasetVersionLabelsRequest
 //
@@ -1420,7 +1441,11 @@ func (client *Client) CreateExperiment(request *CreateExperimentRequest) (_resul
 
 // Summary:
 //
-// 创建镜像构建任务
+// Builds a custom image based on the specified configuration. After the image is successfully built, it is added to the list of custom images in the current workspace.
+//
+// Description:
+//
+// ## Description
 //
 // @param request - CreateImageBuildRequest
 //
@@ -1509,7 +1534,11 @@ func (client *Client) CreateImageBuildWithOptions(request *CreateImageBuildReque
 
 // Summary:
 //
-// 创建镜像构建任务
+// Builds a custom image based on the specified configuration. After the image is successfully built, it is added to the list of custom images in the current workspace.
+//
+// Description:
+//
+// ## Description
 //
 // @param request - CreateImageBuildRequest
 //
@@ -1528,7 +1557,7 @@ func (client *Client) CreateImageBuild(request *CreateImageBuildRequest) (_resul
 
 // Summary:
 //
-// Adds a user to a workspace as a member. You can add multiple users as members.
+// Adds one or more users to a workspace.
 //
 // @param request - CreateMemberRequest
 //
@@ -1575,7 +1604,7 @@ func (client *Client) CreateMemberWithOptions(WorkspaceId *string, request *Crea
 
 // Summary:
 //
-// Adds a user to a workspace as a member. You can add multiple users as members.
+// Adds one or more users to a workspace.
 //
 // @param request - CreateMemberRequest
 //
@@ -1594,7 +1623,7 @@ func (client *Client) CreateMember(WorkspaceId *string, request *CreateMemberReq
 
 // Summary:
 //
-// Creates a model. A model is a collection of model versions. When you create a model, you must specify the model name and description.
+// Creates a model, which is a collection of model versions. You must specify information such as the model name and description.
 //
 // @param request - CreateModelRequest
 //
@@ -1693,7 +1722,7 @@ func (client *Client) CreateModelWithOptions(request *CreateModelRequest, header
 
 // Summary:
 //
-// Creates a model. A model is a collection of model versions. When you create a model, you must specify the model name and description.
+// Creates a model, which is a collection of model versions. You must specify information such as the model name and description.
 //
 // @param request - CreateModelRequest
 //
@@ -1712,7 +1741,7 @@ func (client *Client) CreateModel(request *CreateModelRequest) (_result *CreateM
 
 // Summary:
 //
-// Creates a tag for a model.
+// Creates labels for a model.
 //
 // @param request - CreateModelLabelsRequest
 //
@@ -1759,7 +1788,7 @@ func (client *Client) CreateModelLabelsWithOptions(ModelId *string, request *Cre
 
 // Summary:
 //
-// Creates a tag for a model.
+// Creates labels for a model.
 //
 // @param request - CreateModelLabelsRequest
 //
@@ -1778,7 +1807,7 @@ func (client *Client) CreateModelLabels(ModelId *string, request *CreateModelLab
 
 // Summary:
 //
-// Creates a new version for the specified model.
+// Adds a new version to a specified model.
 //
 // @param request - CreateModelVersionRequest
 //
@@ -1889,7 +1918,7 @@ func (client *Client) CreateModelVersionWithOptions(ModelId *string, request *Cr
 
 // Summary:
 //
-// Creates a new version for the specified model.
+// Adds a new version to a specified model.
 //
 // @param request - CreateModelVersionRequest
 //
@@ -1908,7 +1937,7 @@ func (client *Client) CreateModelVersion(ModelId *string, request *CreateModelVe
 
 // Summary:
 //
-// Creates a tag for a model version.
+// Creates labels for a model version.
 //
 // @param request - CreateModelVersionLabelsRequest
 //
@@ -1955,7 +1984,7 @@ func (client *Client) CreateModelVersionLabelsWithOptions(ModelId *string, Versi
 
 // Summary:
 //
-// Creates a tag for a model version.
+// Creates labels for a model version.
 //
 // @param request - CreateModelVersionLabelsRequest
 //
@@ -1974,7 +2003,7 @@ func (client *Client) CreateModelVersionLabels(ModelId *string, VersionName *str
 
 // Summary:
 //
-// Creates a pay-as-you-go order for DataWorks, OSS, PAI, or MaxCompute.
+// Purchases products. This operation supports pay-as-you-go purchases of DataWorks, OSS, PAI, and MaxCompute.
 //
 // @param request - CreateProductOrdersRequest
 //
@@ -2025,7 +2054,7 @@ func (client *Client) CreateProductOrdersWithOptions(request *CreateProductOrder
 
 // Summary:
 //
-// Creates a pay-as-you-go order for DataWorks, OSS, PAI, or MaxCompute.
+// Purchases products. This operation supports pay-as-you-go purchases of DataWorks, OSS, PAI, and MaxCompute.
 //
 // @param request - CreateProductOrdersRequest
 //
@@ -2044,7 +2073,7 @@ func (client *Client) CreateProductOrders(request *CreateProductOrdersRequest) (
 
 // Summary:
 //
-// Creates a run. A run is an experiment that can be associated with a specific workload or simply a code execution.
+// Creates a run for an experiment. The run can be associated with a specific workload or be a standalone code execution.
 //
 // @param request - CreateRunRequest
 //
@@ -2111,7 +2140,7 @@ func (client *Client) CreateRunWithOptions(request *CreateRunRequest, headers ma
 
 // Summary:
 //
-// Creates a run. A run is an experiment that can be associated with a specific workload or simply a code execution.
+// Creates a run for an experiment. The run can be associated with a specific workload or be a standalone code execution.
 //
 // @param request - CreateRunRequest
 //
@@ -2212,7 +2241,7 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 
 // Summary:
 //
-// Associates resources with a workspace.
+// Add a resource reference to a workspace.
 //
 // @param request - CreateWorkspaceResourceRequest
 //
@@ -2263,7 +2292,7 @@ func (client *Client) CreateWorkspaceResourceWithOptions(WorkspaceId *string, re
 
 // Summary:
 //
-// Associates resources with a workspace.
+// Add a resource reference to a workspace.
 //
 // @param request - CreateWorkspaceResourceRequest
 //
@@ -2282,7 +2311,81 @@ func (client *Client) CreateWorkspaceResource(WorkspaceId *string, request *Crea
 
 // Summary:
 //
-// Deletes a code source based on the provided ID.
+// Creates a workspace role.
+//
+// @param request - CreateWorkspaceRoleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkspaceRoleResponse
+func (client *Client) CreateWorkspaceRoleWithOptions(WorkspaceId *string, request *CreateWorkspaceRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWorkspaceRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ModulePermissions) {
+		body["ModulePermissions"] = request.ModulePermissions
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		body["RoleName"] = request.RoleName
+	}
+
+	if !dara.IsNil(request.RoleType) {
+		body["RoleType"] = request.RoleType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWorkspaceRole"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/roles"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWorkspaceRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a workspace role.
+//
+// @param request - CreateWorkspaceRoleRequest
+//
+// @return CreateWorkspaceRoleResponse
+func (client *Client) CreateWorkspaceRole(WorkspaceId *string, request *CreateWorkspaceRoleRequest) (_result *CreateWorkspaceRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateWorkspaceRoleResponse{}
+	_body, _err := client.CreateWorkspaceRoleWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a code source configuration by its ID.
 //
 // @param request - DeleteCodeSourceRequest
 //
@@ -2323,7 +2426,7 @@ func (client *Client) DeleteCodeSourceWithOptions(CodeSourceId *string, request 
 
 // Summary:
 //
-// Deletes a code source based on the provided ID.
+// Deletes a code source configuration by its ID.
 //
 // @param request - DeleteCodeSourceRequest
 //
@@ -2342,7 +2445,7 @@ func (client *Client) DeleteCodeSource(CodeSourceId *string, request *DeleteCode
 
 // Summary:
 //
-// Deletes workspace configurations.
+// Deletes a workspace configuration.
 //
 // @param request - DeleteConfigRequest
 //
@@ -2393,7 +2496,7 @@ func (client *Client) DeleteConfigWithOptions(WorkspaceId *string, ConfigKey *st
 
 // Summary:
 //
-// Deletes workspace configurations.
+// Deletes a workspace configuration.
 //
 // @param request - DeleteConfigRequest
 //
@@ -2532,7 +2635,7 @@ func (client *Client) DeleteDataset(DatasetId *string, request *DeleteDatasetReq
 
 // Summary:
 //
-// Deletes the metadata records of multiple files in a dataset at a time.
+// Deletes file metadata records from a dataset in batches.
 //
 // @param request - DeleteDatasetFileMetasRequest
 //
@@ -2587,7 +2690,7 @@ func (client *Client) DeleteDatasetFileMetasWithOptions(DatasetId *string, reque
 
 // Summary:
 //
-// Deletes the metadata records of multiple files in a dataset at a time.
+// Deletes file metadata records from a dataset in batches.
 //
 // @param request - DeleteDatasetFileMetasRequest
 //
@@ -2606,7 +2709,7 @@ func (client *Client) DeleteDatasetFileMetas(DatasetId *string, request *DeleteD
 
 // Summary:
 //
-// Deletes a dataset job.
+// Deletes a dataset Job.
 //
 // @param request - DeleteDatasetJobRequest
 //
@@ -2647,7 +2750,7 @@ func (client *Client) DeleteDatasetJobWithOptions(DatasetId *string, DatasetJobI
 
 // Summary:
 //
-// Deletes a dataset job.
+// Deletes a dataset Job.
 //
 // @param request - DeleteDatasetJobRequest
 //
@@ -2666,7 +2769,7 @@ func (client *Client) DeleteDatasetJob(DatasetId *string, DatasetJobId *string, 
 
 // Summary:
 //
-// Deletes a job configuration for a dataset.
+// Deletes a dataset job configuration.
 //
 // @param request - DeleteDatasetJobConfigRequest
 //
@@ -2713,7 +2816,7 @@ func (client *Client) DeleteDatasetJobConfigWithOptions(DatasetId *string, Datas
 
 // Summary:
 //
-// Deletes a job configuration for a dataset.
+// Deletes a dataset job configuration.
 //
 // @param request - DeleteDatasetJobConfigRequest
 //
@@ -2732,7 +2835,7 @@ func (client *Client) DeleteDatasetJobConfig(DatasetId *string, DatasetJobConfig
 
 // Summary:
 //
-// Deletes a dataset tag.
+// Deletes labels from a dataset.
 //
 // @param request - DeleteDatasetLabelsRequest
 //
@@ -2779,7 +2882,7 @@ func (client *Client) DeleteDatasetLabelsWithOptions(DatasetId *string, request 
 
 // Summary:
 //
-// Deletes a dataset tag.
+// Deletes labels from a dataset.
 //
 // @param request - DeleteDatasetLabelsRequest
 //
@@ -2798,7 +2901,7 @@ func (client *Client) DeleteDatasetLabels(DatasetId *string, request *DeleteData
 
 // Summary:
 //
-// Deletes the information about a specified version of a dataset. Version v1 cannot be deleted by using this operation. When you call the DeleteDataset operation to delete a dataset, it can be deleted at the same time.
+// Deletes a specified version of a dataset. This operation cannot be used to delete version v1. Version v1 is deleted with the dataset when you call the DeleteDataset operation.
 //
 // @param request - DeleteDatasetVersionRequest
 //
@@ -2839,7 +2942,7 @@ func (client *Client) DeleteDatasetVersionWithOptions(DatasetId *string, Version
 
 // Summary:
 //
-// Deletes the information about a specified version of a dataset. Version v1 cannot be deleted by using this operation. When you call the DeleteDataset operation to delete a dataset, it can be deleted at the same time.
+// Deletes a specified version of a dataset. This operation cannot be used to delete version v1. Version v1 is deleted with the dataset when you call the DeleteDataset operation.
 //
 // @param request - DeleteDatasetVersionRequest
 //
@@ -2858,7 +2961,7 @@ func (client *Client) DeleteDatasetVersion(DatasetId *string, VersionName *strin
 
 // Summary:
 //
-// Deletes tags for a dataset version.
+// Deletes labels from a dataset version.
 //
 // @param request - DeleteDatasetVersionLabelsRequest
 //
@@ -2905,7 +3008,7 @@ func (client *Client) DeleteDatasetVersionLabelsWithOptions(DatasetId *string, V
 
 // Summary:
 //
-// Deletes tags for a dataset version.
+// Deletes labels from a dataset version.
 //
 // @param request - DeleteDatasetVersionLabelsRequest
 //
@@ -2984,7 +3087,7 @@ func (client *Client) DeleteExperiment(ExperimentId *string, request *DeleteExpe
 
 // Summary:
 //
-// Deletes an experiment tag.
+// Deletes a label from an experiment.
 //
 // @param request - DeleteExperimentLabelRequest
 //
@@ -3025,7 +3128,7 @@ func (client *Client) DeleteExperimentLabelWithOptions(ExperimentId *string, Key
 
 // Summary:
 //
-// Deletes an experiment tag.
+// Deletes a label from an experiment.
 //
 // @param request - DeleteExperimentLabelRequest
 //
@@ -3044,7 +3147,7 @@ func (client *Client) DeleteExperimentLabel(ExperimentId *string, Key *string, r
 
 // Summary:
 //
-// Deletes a member from a workspace.
+// Deletes members from a workspace.
 //
 // @param request - DeleteMembersRequest
 //
@@ -3091,7 +3194,7 @@ func (client *Client) DeleteMembersWithOptions(WorkspaceId *string, request *Del
 
 // Summary:
 //
-// Deletes a member from a workspace.
+// Deletes members from a workspace.
 //
 // @param request - DeleteMembersRequest
 //
@@ -3170,7 +3273,7 @@ func (client *Client) DeleteModel(ModelId *string, request *DeleteModelRequest) 
 
 // Summary:
 //
-// Deletes the labels of a model.
+// Deletes model labels.
 //
 // @param request - DeleteModelLabelsRequest
 //
@@ -3217,7 +3320,7 @@ func (client *Client) DeleteModelLabelsWithOptions(ModelId *string, request *Del
 
 // Summary:
 //
-// Deletes the labels of a model.
+// Deletes model labels.
 //
 // @param request - DeleteModelLabelsRequest
 //
@@ -3296,7 +3399,7 @@ func (client *Client) DeleteModelVersion(ModelId *string, VersionName *string, r
 
 // Summary:
 //
-// Delete a model version tag.
+// Deletes labels from a model version.
 //
 // @param request - DeleteModelVersionLabelsRequest
 //
@@ -3343,7 +3446,7 @@ func (client *Client) DeleteModelVersionLabelsWithOptions(ModelId *string, Versi
 
 // Summary:
 //
-// Delete a model version tag.
+// Deletes labels from a model version.
 //
 // @param request - DeleteModelVersionLabelsRequest
 //
@@ -3422,7 +3525,7 @@ func (client *Client) DeleteRun(RunId *string, request *DeleteRunRequest) (_resu
 
 // Summary:
 //
-// Deletes a tag that is added to a run.
+// Deletes a label from a run.
 //
 // @param request - DeleteRunLabelRequest
 //
@@ -3463,7 +3566,7 @@ func (client *Client) DeleteRunLabelWithOptions(RunId *string, Key *string, requ
 
 // Summary:
 //
-// Deletes a tag that is added to a run.
+// Deletes a label from a run.
 //
 // @param request - DeleteRunLabelRequest
 //
@@ -3482,7 +3585,7 @@ func (client *Client) DeleteRunLabel(RunId *string, Key *string, request *Delete
 
 // Summary:
 //
-// Deletes user configurations.
+// Deletes a user configuration.
 //
 // @param request - DeleteUserConfigRequest
 //
@@ -3533,7 +3636,7 @@ func (client *Client) DeleteUserConfigWithOptions(CategoryName *string, request 
 
 // Summary:
 //
-// Deletes user configurations.
+// Deletes a user configuration.
 //
 // @param request - DeleteUserConfigRequest
 //
@@ -3552,7 +3655,7 @@ func (client *Client) DeleteUserConfig(CategoryName *string, request *DeleteUser
 
 // Summary:
 //
-// Deletes a workspace. After you delete a workspace, the associated resources are not automatically released. You must manually release the resources.
+// Deletes a workspace. This operation does not release associated resources. You must release them manually.
 //
 // @param request - DeleteWorkspaceRequest
 //
@@ -3593,7 +3696,7 @@ func (client *Client) DeleteWorkspaceWithOptions(WorkspaceId *string, request *D
 
 // Summary:
 //
-// Deletes a workspace. After you delete a workspace, the associated resources are not automatically released. You must manually release the resources.
+// Deletes a workspace. This operation does not release associated resources. You must release them manually.
 //
 // @param request - DeleteWorkspaceRequest
 //
@@ -3612,7 +3715,7 @@ func (client *Client) DeleteWorkspace(WorkspaceId *string, request *DeleteWorksp
 
 // Summary:
 //
-// Deletes a resource from a workspace. The resource is not deleted at the underlying layer.
+// Detaches a resource from a workspace. This operation does not delete the underlying resource.
 //
 // @param request - DeleteWorkspaceResourceRequest
 //
@@ -3679,7 +3782,7 @@ func (client *Client) DeleteWorkspaceResourceWithOptions(WorkspaceId *string, re
 
 // Summary:
 //
-// Deletes a resource from a workspace. The resource is not deleted at the underlying layer.
+// Detaches a resource from a workspace. This operation does not delete the underlying resource.
 //
 // @param request - DeleteWorkspaceResourceRequest
 //
@@ -3698,7 +3801,73 @@ func (client *Client) DeleteWorkspaceResource(WorkspaceId *string, request *Dele
 
 // Summary:
 //
-// Obtains the details of a code source.
+// Deletes one or more roles from a workspace.
+//
+// @param request - DeleteWorkspaceRolesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkspaceRolesResponse
+func (client *Client) DeleteWorkspaceRolesWithOptions(WorkspaceId *string, request *DeleteWorkspaceRolesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceRolesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.RoleIds) {
+		body["RoleIds"] = request.RoleIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWorkspaceRoles"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/roles/action/delete"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWorkspaceRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes one or more roles from a workspace.
+//
+// @param request - DeleteWorkspaceRolesRequest
+//
+// @return DeleteWorkspaceRolesResponse
+func (client *Client) DeleteWorkspaceRoles(WorkspaceId *string, request *DeleteWorkspaceRolesRequest) (_result *DeleteWorkspaceRolesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteWorkspaceRolesResponse{}
+	_body, _err := client.DeleteWorkspaceRolesWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Gets the details of a specified code source configuration.
 //
 // @param request - GetCodeSourceRequest
 //
@@ -3739,7 +3908,7 @@ func (client *Client) GetCodeSourceWithOptions(CodeSourceId *string, request *Ge
 
 // Summary:
 //
-// Obtains the details of a code source.
+// Gets the details of a specified code source configuration.
 //
 // @param request - GetCodeSourceRequest
 //
@@ -3758,7 +3927,7 @@ func (client *Client) GetCodeSource(CodeSourceId *string, request *GetCodeSource
 
 // Summary:
 //
-// Obtains a workspace configuration item.
+// Retrieves the configurations of a workspace.
 //
 // @param request - GetConfigRequest
 //
@@ -3813,7 +3982,7 @@ func (client *Client) GetConfigWithOptions(WorkspaceId *string, request *GetConf
 
 // Summary:
 //
-// Obtains a workspace configuration item.
+// Retrieves the configurations of a workspace.
 //
 // @param request - GetConfigRequest
 //
@@ -3832,7 +4001,7 @@ func (client *Client) GetConfig(WorkspaceId *string, request *GetConfigRequest) 
 
 // Summary:
 //
-// Obtains the connection details.
+// Retrieves the details of a connection.
 //
 // @param request - GetConnectionRequest
 //
@@ -3879,7 +4048,7 @@ func (client *Client) GetConnectionWithOptions(ConnectionId *string, request *Ge
 
 // Summary:
 //
-// Obtains the connection details.
+// Retrieves the details of a connection.
 //
 // @param request - GetConnectionRequest
 //
@@ -3898,7 +4067,7 @@ func (client *Client) GetConnection(ConnectionId *string, request *GetConnection
 
 // Summary:
 //
-// Obtains a dataset.
+// Retrieves a dataset.
 //
 // @param request - GetDatasetRequest
 //
@@ -3939,7 +4108,7 @@ func (client *Client) GetDatasetWithOptions(DatasetId *string, request *GetDatas
 
 // Summary:
 //
-// Obtains a dataset.
+// Retrieves a dataset.
 //
 // @param request - GetDatasetRequest
 //
@@ -3958,7 +4127,7 @@ func (client *Client) GetDataset(DatasetId *string, request *GetDatasetRequest) 
 
 // Summary:
 //
-// Queries the metadata records of specific files in a dataset.
+// Retrieves the metadata record of a specified file in a dataset.
 //
 // @param request - GetDatasetFileMetaRequest
 //
@@ -4009,7 +4178,7 @@ func (client *Client) GetDatasetFileMetaWithOptions(DatasetId *string, DatasetFi
 
 // Summary:
 //
-// Queries the metadata records of specific files in a dataset.
+// Retrieves the metadata record of a specified file in a dataset.
 //
 // @param request - GetDatasetFileMetaRequest
 //
@@ -4028,7 +4197,7 @@ func (client *Client) GetDatasetFileMeta(DatasetId *string, DatasetFileMetaId *s
 
 // Summary:
 //
-// Obtains metadata statistics of a dataset.
+// Retrieves statistics for metadata in a dataset.
 //
 // @param request - GetDatasetFileMetasStatisticsRequest
 //
@@ -4087,7 +4256,7 @@ func (client *Client) GetDatasetFileMetasStatisticsWithOptions(DatasetId *string
 
 // Summary:
 //
-// Obtains metadata statistics of a dataset.
+// Retrieves statistics for metadata in a dataset.
 //
 // @param request - GetDatasetFileMetasStatisticsRequest
 //
@@ -4106,7 +4275,7 @@ func (client *Client) GetDatasetFileMetasStatistics(DatasetId *string, request *
 
 // Summary:
 //
-// Obtains a dataset job.
+// Retrieves a dataset job.
 //
 // @param request - GetDatasetJobRequest
 //
@@ -4157,7 +4326,7 @@ func (client *Client) GetDatasetJobWithOptions(DatasetId *string, DatasetJobId *
 
 // Summary:
 //
-// Obtains a dataset job.
+// Retrieves a dataset job.
 //
 // @param request - GetDatasetJobRequest
 //
@@ -4176,7 +4345,7 @@ func (client *Client) GetDatasetJob(DatasetId *string, DatasetJobId *string, req
 
 // Summary:
 //
-// Obtains a job configuration for a dataset.
+// Retrieves the configuration of a dataset job.
 //
 // @param request - GetDatasetJobConfigRequest
 //
@@ -4223,7 +4392,7 @@ func (client *Client) GetDatasetJobConfigWithOptions(DatasetId *string, DatasetJ
 
 // Summary:
 //
-// Obtains a job configuration for a dataset.
+// Retrieves the configuration of a dataset job.
 //
 // @param request - GetDatasetJobConfigRequest
 //
@@ -4242,7 +4411,7 @@ func (client *Client) GetDatasetJobConfig(DatasetId *string, DatasetJobConfigId 
 
 // Summary:
 //
-// Obtains the information about a specified version of a dataset.
+// Retrieves information about a specific dataset version.
 //
 // @param request - GetDatasetVersionRequest
 //
@@ -4283,7 +4452,7 @@ func (client *Client) GetDatasetVersionWithOptions(DatasetId *string, VersionNam
 
 // Summary:
 //
-// Obtains the information about a specified version of a dataset.
+// Retrieves information about a specific dataset version.
 //
 // @param request - GetDatasetVersionRequest
 //
@@ -4302,7 +4471,7 @@ func (client *Client) GetDatasetVersion(DatasetId *string, VersionName *string, 
 
 // Summary:
 //
-// Queries information about the default workspace.
+// Retrieves the details of the default workspace.
 //
 // @param request - GetDefaultWorkspaceRequest
 //
@@ -4349,7 +4518,7 @@ func (client *Client) GetDefaultWorkspaceWithOptions(request *GetDefaultWorkspac
 
 // Summary:
 //
-// Queries information about the default workspace.
+// Retrieves the details of the default workspace.
 //
 // @param request - GetDefaultWorkspaceRequest
 //
@@ -4368,7 +4537,7 @@ func (client *Client) GetDefaultWorkspace(request *GetDefaultWorkspaceRequest) (
 
 // Summary:
 //
-// Obtains an experiment.
+// Retrieves an experiment.
 //
 // @param request - GetExperimentRequest
 //
@@ -4415,7 +4584,7 @@ func (client *Client) GetExperimentWithOptions(ExperimentId *string, request *Ge
 
 // Summary:
 //
-// Obtains an experiment.
+// Retrieves an experiment.
 //
 // @param request - GetExperimentRequest
 //
@@ -4434,7 +4603,7 @@ func (client *Client) GetExperiment(ExperimentId *string, request *GetExperiment
 
 // Summary:
 //
-// Obtains the information about an image.
+// Retrieves the details of an image.
 //
 // @param request - GetImageRequest
 //
@@ -4481,7 +4650,7 @@ func (client *Client) GetImageWithOptions(ImageId *string, request *GetImageRequ
 
 // Summary:
 //
-// Obtains the information about an image.
+// Retrieves the details of an image.
 //
 // @param request - GetImageRequest
 //
@@ -4500,7 +4669,67 @@ func (client *Client) GetImage(ImageId *string, request *GetImageRequest) (_resu
 
 // Summary:
 //
-// Obtains a member in a workspace.
+// Gets the details of a job.
+//
+// @param request - GetInstanceJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceJobResponse
+func (client *Client) GetInstanceJobWithOptions(InstanceJobId *string, request *GetInstanceJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceJob"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instancejobs/" + dara.PercentEncode(dara.StringValue(InstanceJobId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Gets the details of a job.
+//
+// @param request - GetInstanceJobRequest
+//
+// @return GetInstanceJobResponse
+func (client *Client) GetInstanceJob(InstanceJobId *string, request *GetInstanceJobRequest) (_result *GetInstanceJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetInstanceJobResponse{}
+	_body, _err := client.GetInstanceJobWithOptions(InstanceJobId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a member of a workspace.
 //
 // @param request - GetMemberRequest
 //
@@ -4551,7 +4780,7 @@ func (client *Client) GetMemberWithOptions(WorkspaceId *string, request *GetMemb
 
 // Summary:
 //
-// Obtains a member in a workspace.
+// Retrieves a member of a workspace.
 //
 // @param request - GetMemberRequest
 //
@@ -4570,7 +4799,7 @@ func (client *Client) GetMember(WorkspaceId *string, request *GetMemberRequest) 
 
 // Summary:
 //
-// Obtains the details of a specified model.
+// Gets the details of a specified model.
 //
 // @param request - GetModelRequest
 //
@@ -4611,7 +4840,7 @@ func (client *Client) GetModelWithOptions(ModelId *string, request *GetModelRequ
 
 // Summary:
 //
-// Obtains the details of a specified model.
+// Gets the details of a specified model.
 //
 // @param request - GetModelRequest
 //
@@ -4630,7 +4859,7 @@ func (client *Client) GetModel(ModelId *string, request *GetModelRequest) (_resu
 
 // Summary:
 //
-// Queries a model version.
+// Retrieves a model version.
 //
 // @param request - GetModelVersionRequest
 //
@@ -4671,7 +4900,7 @@ func (client *Client) GetModelVersionWithOptions(ModelId *string, VersionName *s
 
 // Summary:
 //
-// Queries a model version.
+// Retrieves a model version.
 //
 // @param request - GetModelVersionRequest
 //
@@ -4690,7 +4919,7 @@ func (client *Client) GetModelVersion(ModelId *string, VersionName *string, requ
 
 // Summary:
 //
-// Obtains permissions on a workspace.
+// Retrieves the permissions of a workspace.
 //
 // @param tmpReq - GetPermissionRequest
 //
@@ -4771,7 +5000,7 @@ func (client *Client) GetPermissionWithOptions(WorkspaceId *string, PermissionCo
 
 // Summary:
 //
-// Obtains permissions on a workspace.
+// Retrieves the permissions of a workspace.
 //
 // @param request - GetPermissionRequest
 //
@@ -4790,7 +5019,7 @@ func (client *Client) GetPermission(WorkspaceId *string, PermissionCode *string,
 
 // Summary:
 //
-// Queries the run information.
+// Retrieves run details.
 //
 // @param request - GetRunRequest
 //
@@ -4837,7 +5066,7 @@ func (client *Client) GetRunWithOptions(RunId *string, request *GetRunRequest, h
 
 // Summary:
 //
-// Queries the run information.
+// Retrieves run details.
 //
 // @param request - GetRunRequest
 //
@@ -4856,7 +5085,7 @@ func (client *Client) GetRun(RunId *string, request *GetRunRequest) (_result *Ge
 
 // Summary:
 //
-// Queries the details about a workspace.
+// Retrieves the details of a workspace.
 //
 // @param request - GetWorkspaceRequest
 //
@@ -4903,7 +5132,7 @@ func (client *Client) GetWorkspaceWithOptions(WorkspaceId *string, request *GetW
 
 // Summary:
 //
-// Queries the details about a workspace.
+// Retrieves the details of a workspace.
 //
 // @param request - GetWorkspaceRequest
 //
@@ -4922,7 +5151,67 @@ func (client *Client) GetWorkspace(WorkspaceId *string, request *GetWorkspaceReq
 
 // Summary:
 //
-// Lists code sources. Pagination, sorting, and filtering by condition are supported.
+// Gets information about a specific role within a workspace.
+//
+// @param request - GetWorkspaceRoleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkspaceRoleResponse
+func (client *Client) GetWorkspaceRoleWithOptions(WorkspaceId *string, RoleId *string, request *GetWorkspaceRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkspaceRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkspaceRole"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/roles/" + dara.PercentEncode(dara.StringValue(RoleId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkspaceRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Gets information about a specific role within a workspace.
+//
+// @param request - GetWorkspaceRoleRequest
+//
+// @return GetWorkspaceRoleResponse
+func (client *Client) GetWorkspaceRole(WorkspaceId *string, RoleId *string, request *GetWorkspaceRoleRequest) (_result *GetWorkspaceRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkspaceRoleResponse{}
+	_body, _err := client.GetWorkspaceRoleWithOptions(WorkspaceId, RoleId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of code source configurations with support for paging, sorting, and filtering.
 //
 // @param request - ListCodeSourcesRequest
 //
@@ -4989,7 +5278,7 @@ func (client *Client) ListCodeSourcesWithOptions(request *ListCodeSourcesRequest
 
 // Summary:
 //
-// Lists code sources. Pagination, sorting, and filtering by condition are supported.
+// Queries a list of code source configurations with support for paging, sorting, and filtering.
 //
 // @param request - ListCodeSourcesRequest
 //
@@ -5008,7 +5297,7 @@ func (client *Client) ListCodeSources(request *ListCodeSourcesRequest) (_result 
 
 // Summary:
 //
-// Obtains a list of workspace configurations.
+// Lists the configurations for a workspace.
 //
 // @param request - ListConfigsRequest
 //
@@ -5067,7 +5356,7 @@ func (client *Client) ListConfigsWithOptions(WorkspaceId *string, request *ListC
 
 // Summary:
 //
-// Obtains a list of workspace configurations.
+// Lists the configurations for a workspace.
 //
 // @param request - ListConfigsRequest
 //
@@ -5086,7 +5375,7 @@ func (client *Client) ListConfigs(WorkspaceId *string, request *ListConfigsReque
 
 // Summary:
 //
-// Lists connections.
+// Queries a list of connections.
 //
 // @param tmpReq - ListConnectionsRequest
 //
@@ -5199,7 +5488,7 @@ func (client *Client) ListConnectionsWithOptions(tmpReq *ListConnectionsRequest,
 
 // Summary:
 //
-// Lists connections.
+// Queries a list of connections.
 //
 // @param request - ListConnectionsRequest
 //
@@ -5218,7 +5507,7 @@ func (client *Client) ListConnections(request *ListConnectionsRequest) (_result 
 
 // Summary:
 //
-// Queries a list of dataset files.
+// Queries the files in a dataset.
 //
 // @param tmpReq - ListDatasetFileMetasRequest
 //
@@ -5399,7 +5688,7 @@ func (client *Client) ListDatasetFileMetasWithOptions(DatasetId *string, tmpReq 
 
 // Summary:
 //
-// Queries a list of dataset files.
+// Queries the files in a dataset.
 //
 // @param request - ListDatasetFileMetasRequest
 //
@@ -5418,7 +5707,7 @@ func (client *Client) ListDatasetFileMetas(DatasetId *string, request *ListDatas
 
 // Summary:
 //
-// Queries the dataset job configurations at a time.
+// Lists dataset job configurations in batches.
 //
 // @param request - ListDatasetJobConfigsRequest
 //
@@ -5481,7 +5770,7 @@ func (client *Client) ListDatasetJobConfigsWithOptions(DatasetId *string, reques
 
 // Summary:
 //
-// Queries the dataset job configurations at a time.
+// Lists dataset job configurations in batches.
 //
 // @param request - ListDatasetJobConfigsRequest
 //
@@ -5500,7 +5789,7 @@ func (client *Client) ListDatasetJobConfigs(DatasetId *string, request *ListData
 
 // Summary:
 //
-// Lists jobs in a dataset.
+// Lists dataset jobs.
 //
 // @param request - ListDatasetJobsRequest
 //
@@ -5579,7 +5868,7 @@ func (client *Client) ListDatasetJobsWithOptions(DatasetId *string, request *Lis
 
 // Summary:
 //
-// Lists jobs in a dataset.
+// Lists dataset jobs.
 //
 // @param request - ListDatasetJobsRequest
 //
@@ -5598,7 +5887,7 @@ func (client *Client) ListDatasetJobs(DatasetId *string, request *ListDatasetJob
 
 // Summary:
 //
-// Lists dataset versions.
+// Retrieves a list of dataset versions.
 //
 // @param request - ListDatasetVersionsRequest
 //
@@ -5677,7 +5966,7 @@ func (client *Client) ListDatasetVersionsWithOptions(DatasetId *string, request 
 
 // Summary:
 //
-// Lists dataset versions.
+// Retrieves a list of dataset versions.
 //
 // @param request - ListDatasetVersionsRequest
 //
@@ -5830,7 +6119,7 @@ func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListD
 
 // Summary:
 //
-// Lists experiments.
+// Retrieves a list of experiments.
 //
 // @param tmpReq - ListExperimentRequest
 //
@@ -5927,7 +6216,7 @@ func (client *Client) ListExperimentWithOptions(tmpReq *ListExperimentRequest, h
 
 // Summary:
 //
-// Lists experiments.
+// Retrieves a list of experiments.
 //
 // @param request - ListExperimentRequest
 //
@@ -5946,7 +6235,7 @@ func (client *Client) ListExperiment(request *ListExperimentRequest) (_result *L
 
 // Summary:
 //
-// Queries a list of features.
+// Retrieves a list of features.
 //
 // @param request - ListFeaturesRequest
 //
@@ -5993,7 +6282,7 @@ func (client *Client) ListFeaturesWithOptions(request *ListFeaturesRequest, head
 
 // Summary:
 //
-// Queries a list of features.
+// Retrieves a list of features.
 //
 // @param request - ListFeaturesRequest
 //
@@ -6012,7 +6301,7 @@ func (client *Client) ListFeatures(request *ListFeaturesRequest) (_result *ListF
 
 // Summary:
 //
-// Lists all tags of an image.
+// Queries a list of image labels.
 //
 // @param request - ListImageLabelsRequest
 //
@@ -6075,7 +6364,7 @@ func (client *Client) ListImageLabelsWithOptions(request *ListImageLabelsRequest
 
 // Summary:
 //
-// Lists all tags of an image.
+// Queries a list of image labels.
 //
 // @param request - ListImageLabelsRequest
 //
@@ -6200,7 +6489,7 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 
 // Summary:
 //
-// Obtains the members in a workspace.
+// Lists members in a workspace.
 //
 // @param request - ListMembersRequest
 //
@@ -6263,7 +6552,7 @@ func (client *Client) ListMembersWithOptions(WorkspaceId *string, request *ListM
 
 // Summary:
 //
-// Obtains the members in a workspace.
+// Lists members in a workspace.
 //
 // @param request - ListMembersRequest
 //
@@ -6282,7 +6571,7 @@ func (client *Client) ListMembers(WorkspaceId *string, request *ListMembersReque
 
 // Summary:
 //
-// Queries a list of model versions.
+// Retrieves a list of model versions.
 //
 // @param request - ListModelVersionsRequest
 //
@@ -6369,7 +6658,7 @@ func (client *Client) ListModelVersionsWithOptions(ModelId *string, request *Lis
 
 // Summary:
 //
-// Queries a list of model versions.
+// Retrieves a list of model versions.
 //
 // @param request - ListModelVersionsRequest
 //
@@ -6388,7 +6677,7 @@ func (client *Client) ListModelVersions(ModelId *string, request *ListModelVersi
 
 // Summary:
 //
-// Queries a list of models.
+// Retrieves a list of models.
 //
 // @param tmpReq - ListModelsRequest
 //
@@ -6505,7 +6794,7 @@ func (client *Client) ListModelsWithOptions(tmpReq *ListModelsRequest, headers m
 
 // Summary:
 //
-// Queries a list of models.
+// Retrieves a list of models.
 //
 // @param request - ListModelsRequest
 //
@@ -6524,7 +6813,7 @@ func (client *Client) ListModels(request *ListModelsRequest) (_result *ListModel
 
 // Summary:
 //
-// Lists the permissions that a user has in a workspace.
+// Retrieves a list of user permissions in a workspace.
 //
 // @param request - ListPermissionsRequest
 //
@@ -6565,7 +6854,7 @@ func (client *Client) ListPermissionsWithOptions(WorkspaceId *string, request *L
 
 // Summary:
 //
-// Lists the permissions that a user has in a workspace.
+// Retrieves a list of user permissions in a workspace.
 //
 // @param request - ListPermissionsRequest
 //
@@ -6584,7 +6873,7 @@ func (client *Client) ListPermissions(WorkspaceId *string, request *ListPermissi
 
 // Summary:
 //
-// 列举产品
+// Lists products.
 //
 // @param request - ListProductsRequest
 //
@@ -6639,7 +6928,7 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, head
 
 // Summary:
 //
-// 列举产品
+// Lists products.
 //
 // @param request - ListProductsRequest
 //
@@ -6658,7 +6947,7 @@ func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListP
 
 // Summary:
 //
-// Obtains the list of quotas.
+// Retrieves a list of resource quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -6705,7 +6994,7 @@ func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers 
 
 // Summary:
 //
-// Obtains the list of quotas.
+// Retrieves a list of resource quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -6724,7 +7013,7 @@ func (client *Client) ListQuotas(request *ListQuotasRequest) (_result *ListQuota
 
 // Summary:
 //
-// Queries the resources that are associated with a workspace.
+// Lists resources associated with a workspace.
 //
 // @param request - ListResourcesRequest
 //
@@ -6815,7 +7104,7 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, he
 
 // Summary:
 //
-// Queries the resources that are associated with a workspace.
+// Lists resources associated with a workspace.
 //
 // @param request - ListResourcesRequest
 //
@@ -6834,7 +7123,7 @@ func (client *Client) ListResources(request *ListResourcesRequest) (_result *Lis
 
 // Summary:
 //
-// Lists the metrics for a run.
+// Retrieves a list of metric records for a run.
 //
 // @param request - ListRunMetricsRequest
 //
@@ -6889,7 +7178,7 @@ func (client *Client) ListRunMetricsWithOptions(RunId *string, request *ListRunM
 
 // Summary:
 //
-// Lists the metrics for a run.
+// Retrieves a list of metric records for a run.
 //
 // @param request - ListRunMetricsRequest
 //
@@ -6908,7 +7197,7 @@ func (client *Client) ListRunMetrics(RunId *string, request *ListRunMetricsReque
 
 // Summary:
 //
-// Queries a list of runs.
+// Retrieves a list of runs.
 //
 // @param request - ListRunsRequest
 //
@@ -7011,7 +7300,7 @@ func (client *Client) ListRunsWithOptions(request *ListRunsRequest, headers map[
 
 // Summary:
 //
-// Queries a list of runs.
+// Retrieves a list of runs.
 //
 // @param request - ListRunsRequest
 //
@@ -7030,7 +7319,7 @@ func (client *Client) ListRuns(request *ListRunsRequest) (_result *ListRunsRespo
 
 // Summary:
 //
-// Queries user information.
+// Retrieves user configurations.
 //
 // @param request - ListUserConfigsRequest
 //
@@ -7081,7 +7370,7 @@ func (client *Client) ListUserConfigsWithOptions(request *ListUserConfigsRequest
 
 // Summary:
 //
-// Queries user information.
+// Retrieves user configurations.
 //
 // @param request - ListUserConfigsRequest
 //
@@ -7100,7 +7389,105 @@ func (client *Client) ListUserConfigs(request *ListUserConfigsRequest) (_result 
 
 // Summary:
 //
-// Lists the users who do not belong to a workspace. These users can be added to the workspace as members.
+// Lists the roles in a specified workspace.
+//
+// @param request - ListWorkspaceRolesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkspaceRolesResponse
+func (client *Client) ListWorkspaceRolesWithOptions(WorkspaceId *string, request *ListWorkspaceRolesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkspaceRolesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RoleIds) {
+		query["RoleIds"] = request.RoleIds
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		query["RoleName"] = request.RoleName
+	}
+
+	if !dara.IsNil(request.RoleType) {
+		query["RoleType"] = request.RoleType
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.VerboseFields) {
+		query["VerboseFields"] = request.VerboseFields
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkspaceRoles"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/roles"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkspaceRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the roles in a specified workspace.
+//
+// @param request - ListWorkspaceRolesRequest
+//
+// @return ListWorkspaceRolesResponse
+func (client *Client) ListWorkspaceRoles(WorkspaceId *string, request *ListWorkspaceRolesRequest) (_result *ListWorkspaceRolesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkspaceRolesResponse{}
+	_body, _err := client.ListWorkspaceRolesWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists users that can be added as members to a workspace.
 //
 // @param request - ListWorkspaceUsersRequest
 //
@@ -7151,7 +7538,7 @@ func (client *Client) ListWorkspaceUsersWithOptions(WorkspaceId *string, request
 
 // Summary:
 //
-// Lists the users who do not belong to a workspace. These users can be added to the workspace as members.
+// Lists users that can be added as members to a workspace.
 //
 // @param request - ListWorkspaceUsersRequest
 //
@@ -7170,11 +7557,11 @@ func (client *Client) ListWorkspaceUsers(WorkspaceId *string, request *ListWorks
 
 // Summary:
 //
-// Lists all workspaces in a region.
+// Retrieves the list of workspaces in a specified region.
 //
 // Description:
 //
-// You can use the option parameter to specify query options, so as to obtain different information about the workspaces.
+// You can specify different query options by using the option parameter to retrieve different workspace-related information.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -7269,11 +7656,11 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 
 // Summary:
 //
-// Lists all workspaces in a region.
+// Retrieves the list of workspaces in a specified region.
 //
 // Description:
 //
-// You can use the option parameter to specify query options, so as to obtain different information about the workspaces.
+// You can specify different query options by using the option parameter to retrieve different workspace-related information.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -7292,7 +7679,7 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 
 // Summary:
 //
-// Logs multiple metrics for a run at a time.
+// Records the metrics of a run in a batch.
 //
 // @param request - LogRunMetricsRequest
 //
@@ -7339,7 +7726,7 @@ func (client *Client) LogRunMetricsWithOptions(RunId *string, request *LogRunMet
 
 // Summary:
 //
-// Logs multiple metrics for a run at a time.
+// Records the metrics of a run in a batch.
 //
 // @param request - LogRunMetricsRequest
 //
@@ -7358,7 +7745,7 @@ func (client *Client) LogRunMetrics(RunId *string, request *LogRunMetricsRequest
 
 // Summary:
 //
-// Publishes a private code source to a workspace to make the code source publicly accessible.
+// Publishes a private code source, making it public in a workspace.
 //
 // @param request - PublishCodeSourceRequest
 //
@@ -7399,7 +7786,7 @@ func (client *Client) PublishCodeSourceWithOptions(CodeSourceId *string, request
 
 // Summary:
 //
-// Publishes a private code source to a workspace to make the code source publicly accessible.
+// Publishes a private code source, making it public in a workspace.
 //
 // @param request - PublishCodeSourceRequest
 //
@@ -7478,7 +7865,7 @@ func (client *Client) PublishDataset(DatasetId *string, request *PublishDatasetR
 
 // Summary:
 //
-// Publishes an image. After the image is published, the visibility of the image is changed from PRIVATE to PUBLIC.
+// Publishes an image and changes its visibility from PRIVATE to PUBLIC.
 //
 // @param request - PublishImageRequest
 //
@@ -7519,7 +7906,7 @@ func (client *Client) PublishImageWithOptions(ImageId *string, request *PublishI
 
 // Summary:
 //
-// Publishes an image. After the image is published, the visibility of the image is changed from PRIVATE to PUBLIC.
+// Publishes an image and changes its visibility from PRIVATE to PUBLIC.
 //
 // @param request - PublishImageRequest
 //
@@ -7538,7 +7925,7 @@ func (client *Client) PublishImage(ImageId *string, request *PublishImageRequest
 
 // Summary:
 //
-// Removes an image.
+// Deletes an image.
 //
 // @param request - RemoveImageRequest
 //
@@ -7579,7 +7966,7 @@ func (client *Client) RemoveImageWithOptions(ImageId *string, request *RemoveIma
 
 // Summary:
 //
-// Removes an image.
+// Deletes an image.
 //
 // @param request - RemoveImageRequest
 //
@@ -7598,7 +7985,7 @@ func (client *Client) RemoveImage(ImageId *string, request *RemoveImageRequest) 
 
 // Summary:
 //
-// Removes an image tag.
+// Removes a label from an image.
 //
 // @param request - RemoveImageLabelsRequest
 //
@@ -7639,7 +8026,7 @@ func (client *Client) RemoveImageLabelsWithOptions(ImageId *string, LabelKey *st
 
 // Summary:
 //
-// Removes an image tag.
+// Removes a label from an image.
 //
 // @param request - RemoveImageLabelsRequest
 //
@@ -7658,7 +8045,7 @@ func (client *Client) RemoveImageLabels(ImageId *string, LabelKey *string, reque
 
 // Summary:
 //
-// Removes a member role.
+// Removes a role from a member.
 //
 // @param request - RemoveMemberRoleRequest
 //
@@ -7699,7 +8086,7 @@ func (client *Client) RemoveMemberRoleWithOptions(WorkspaceId *string, MemberId 
 
 // Summary:
 //
-// Removes a member role.
+// Removes a role from a member.
 //
 // @param request - RemoveMemberRoleRequest
 //
@@ -7718,7 +8105,7 @@ func (client *Client) RemoveMemberRole(WorkspaceId *string, MemberId *string, Ro
 
 // Summary:
 //
-// Updates a experiment tag.
+// Updates the labels of an experiment.
 //
 // @param request - SetExperimentLabelsRequest
 //
@@ -7765,7 +8152,7 @@ func (client *Client) SetExperimentLabelsWithOptions(ExperimentId *string, reque
 
 // Summary:
 //
-// Updates a experiment tag.
+// Updates the labels of an experiment.
 //
 // @param request - SetExperimentLabelsRequest
 //
@@ -7784,7 +8171,7 @@ func (client *Client) SetExperimentLabels(ExperimentId *string, request *SetExpe
 
 // Summary:
 //
-// Updates the user configurations.
+// Updates user configurations.
 //
 // @param request - SetUserConfigsRequest
 //
@@ -7831,7 +8218,7 @@ func (client *Client) SetUserConfigsWithOptions(request *SetUserConfigsRequest, 
 
 // Summary:
 //
-// Updates the user configurations.
+// Updates user configurations.
 //
 // @param request - SetUserConfigsRequest
 //
@@ -7850,7 +8237,7 @@ func (client *Client) SetUserConfigs(request *SetUserConfigsRequest) (_result *S
 
 // Summary:
 //
-// Stops a dataset job.
+// Stops a dataset Job.
 //
 // @param request - StopDatasetJobRequest
 //
@@ -7901,7 +8288,7 @@ func (client *Client) StopDatasetJobWithOptions(DatasetId *string, DatasetJobId 
 
 // Summary:
 //
-// Stops a dataset job.
+// Stops a dataset Job.
 //
 // @param request - StopDatasetJobRequest
 //
@@ -7920,7 +8307,7 @@ func (client *Client) StopDatasetJob(DatasetId *string, DatasetJobId *string, re
 
 // Summary:
 //
-// Updates a code build.
+// Updates a code source.
 //
 // @param request - UpdateCodeSourceRequest
 //
@@ -7999,7 +8386,7 @@ func (client *Client) UpdateCodeSourceWithOptions(CodeSourceId *string, request 
 
 // Summary:
 //
-// Updates a code build.
+// Updates a code source.
 //
 // @param request - UpdateCodeSourceRequest
 //
@@ -8018,7 +8405,7 @@ func (client *Client) UpdateCodeSource(CodeSourceId *string, request *UpdateCode
 
 // Summary:
 //
-// Updates or adds a workspace configuration item.
+// Updates or creates workspace configurations.
 //
 // @param request - UpdateConfigRequest
 //
@@ -8077,7 +8464,7 @@ func (client *Client) UpdateConfigWithOptions(WorkspaceId *string, request *Upda
 
 // Summary:
 //
-// Updates or adds a workspace configuration item.
+// Updates or creates workspace configurations.
 //
 // @param request - UpdateConfigRequest
 //
@@ -8096,7 +8483,7 @@ func (client *Client) UpdateConfig(WorkspaceId *string, request *UpdateConfigReq
 
 // Summary:
 //
-// Updates or adds workspace configurations in batches.
+// Updates or creates workspace configurations in batches.
 //
 // @param request - UpdateConfigsRequest
 //
@@ -8143,7 +8530,7 @@ func (client *Client) UpdateConfigsWithOptions(WorkspaceId *string, request *Upd
 
 // Summary:
 //
-// Updates or adds workspace configurations in batches.
+// Updates or creates workspace configurations in batches.
 //
 // @param request - UpdateConfigsRequest
 //
@@ -8162,7 +8549,7 @@ func (client *Client) UpdateConfigs(WorkspaceId *string, request *UpdateConfigsR
 
 // Summary:
 //
-// Updates a connection.
+// Updates a connection configuration.
 //
 // @param request - UpdateConnectionRequest
 //
@@ -8221,7 +8608,7 @@ func (client *Client) UpdateConnectionWithOptions(ConnectionId *string, request 
 
 // Summary:
 //
-// Updates a connection.
+// Updates a connection configuration.
 //
 // @param request - UpdateConnectionRequest
 //
@@ -8240,7 +8627,7 @@ func (client *Client) UpdateConnection(ConnectionId *string, request *UpdateConn
 
 // Summary:
 //
-// Updates the name, description, and other information about a dataset.
+// Updates the properties of a dataset, such as its name and description.
 //
 // @param request - UpdateDatasetRequest
 //
@@ -8315,7 +8702,7 @@ func (client *Client) UpdateDatasetWithOptions(DatasetId *string, request *Updat
 
 // Summary:
 //
-// Updates the name, description, and other information about a dataset.
+// Updates the properties of a dataset, such as its name and description.
 //
 // @param request - UpdateDatasetRequest
 //
@@ -8334,7 +8721,7 @@ func (client *Client) UpdateDataset(DatasetId *string, request *UpdateDatasetReq
 
 // Summary:
 //
-// Updates the metadata records of multiple files in a dataset at a time.
+// Updates multiple file metadata records in a dataset.
 //
 // @param request - UpdateDatasetFileMetasRequest
 //
@@ -8393,7 +8780,7 @@ func (client *Client) UpdateDatasetFileMetasWithOptions(DatasetId *string, reque
 
 // Summary:
 //
-// Updates the metadata records of multiple files in a dataset at a time.
+// Updates multiple file metadata records in a dataset.
 //
 // @param request - UpdateDatasetFileMetasRequest
 //
@@ -8486,7 +8873,7 @@ func (client *Client) UpdateDatasetJob(DatasetId *string, DatasetJobId *string, 
 
 // Summary:
 //
-// Updates a job configuration for a dataset.
+// Updates a dataset job configuration.
 //
 // @param request - UpdateDatasetJobConfigRequest
 //
@@ -8541,7 +8928,7 @@ func (client *Client) UpdateDatasetJobConfigWithOptions(DatasetId *string, Datas
 
 // Summary:
 //
-// Updates a job configuration for a dataset.
+// Updates a dataset job configuration.
 //
 // @param request - UpdateDatasetJobConfigRequest
 //
@@ -8560,7 +8947,7 @@ func (client *Client) UpdateDatasetJobConfig(DatasetId *string, DatasetJobConfig
 
 // Summary:
 //
-// Updates the information about a specified version of a dataset.
+// Updates the information for a specific version of a dataset.
 //
 // @param request - UpdateDatasetVersionRequest
 //
@@ -8619,7 +9006,7 @@ func (client *Client) UpdateDatasetVersionWithOptions(DatasetId *string, Version
 
 // Summary:
 //
-// Updates the information about a specified version of a dataset.
+// Updates the information for a specific version of a dataset.
 //
 // @param request - UpdateDatasetVersionRequest
 //
@@ -8638,7 +9025,7 @@ func (client *Client) UpdateDatasetVersion(DatasetId *string, VersionName *strin
 
 // Summary:
 //
-// Specifies a workspace as the default workspace.
+// Sets a workspace as the default.
 //
 // @param request - UpdateDefaultWorkspaceRequest
 //
@@ -8685,7 +9072,7 @@ func (client *Client) UpdateDefaultWorkspaceWithOptions(request *UpdateDefaultWo
 
 // Summary:
 //
-// Specifies a workspace as the default workspace.
+// Sets a workspace as the default.
 //
 // @param request - UpdateDefaultWorkspaceRequest
 //
@@ -8774,7 +9161,7 @@ func (client *Client) UpdateExperiment(ExperimentId *string, request *UpdateExpe
 
 // Summary:
 //
-// Updates the basic configuration information about a model.
+// Updates the basic configuration of a model.
 //
 // @param request - UpdateModelRequest
 //
@@ -8861,7 +9248,7 @@ func (client *Client) UpdateModelWithOptions(ModelId *string, request *UpdateMod
 
 // Summary:
 //
-// Updates the basic configuration information about a model.
+// Updates the basic configuration of a model.
 //
 // @param request - UpdateModelRequest
 //
@@ -8990,7 +9377,7 @@ func (client *Client) UpdateModelVersion(ModelId *string, VersionName *string, r
 
 // Summary:
 //
-// Updates the run information.
+// Updates the details of a run.
 //
 // @param request - UpdateRunRequest
 //
@@ -9045,7 +9432,7 @@ func (client *Client) UpdateRunWithOptions(RunId *string, request *UpdateRunRequ
 
 // Summary:
 //
-// Updates the run information.
+// Updates the details of a run.
 //
 // @param request - UpdateRunRequest
 //
@@ -9134,7 +9521,7 @@ func (client *Client) UpdateWorkspace(WorkspaceId *string, request *UpdateWorksp
 
 // Summary:
 //
-// Updates the resources of a workspace.
+// Updates resources in a workspace.
 //
 // @param request - UpdateWorkspaceResourceRequest
 //
@@ -9205,7 +9592,7 @@ func (client *Client) UpdateWorkspaceResourceWithOptions(WorkspaceId *string, re
 
 // Summary:
 //
-// Updates the resources of a workspace.
+// Updates resources in a workspace.
 //
 // @param request - UpdateWorkspaceResourceRequest
 //
@@ -9224,7 +9611,77 @@ func (client *Client) UpdateWorkspaceResource(WorkspaceId *string, request *Upda
 
 // Summary:
 //
-// 验证连接
+// Updates a role in a workspace.
+//
+// @param request - UpdateWorkspaceRoleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkspaceRoleResponse
+func (client *Client) UpdateWorkspaceRoleWithOptions(WorkspaceId *string, RoleId *string, request *UpdateWorkspaceRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateWorkspaceRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ModulePermissions) {
+		body["ModulePermissions"] = request.ModulePermissions
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		body["RoleName"] = request.RoleName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWorkspaceRole"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/roles/" + dara.PercentEncode(dara.StringValue(RoleId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWorkspaceRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a role in a workspace.
+//
+// @param request - UpdateWorkspaceRoleRequest
+//
+// @return UpdateWorkspaceRoleResponse
+func (client *Client) UpdateWorkspaceRole(WorkspaceId *string, RoleId *string, request *UpdateWorkspaceRoleRequest) (_result *UpdateWorkspaceRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateWorkspaceRoleResponse{}
+	_body, _err := client.UpdateWorkspaceRoleWithOptions(WorkspaceId, RoleId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Validates a connection.
 //
 // @param request - ValidateConnectionRequest
 //
@@ -9291,7 +9748,7 @@ func (client *Client) ValidateConnectionWithOptions(request *ValidateConnectionR
 
 // Summary:
 //
-// 验证连接
+// Validates a connection.
 //
 // @param request - ValidateConnectionRequest
 //

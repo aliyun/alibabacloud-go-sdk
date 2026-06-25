@@ -48,30 +48,35 @@ type iCreateModelVersionRequest interface {
 type CreateModelVersionRequest struct {
 	// The approval status. Valid values:
 	//
-	// 	- Pending
+	// - Pending: The version is pending approval.
 	//
-	// 	- Approved
+	// - Approved: The version is approved for deployment.
 	//
-	// 	- Rejected
+	// - Rejected: The version is rejected for deployment.
 	//
 	// example:
 	//
 	// Approved
 	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
-	// The compression configuration.
+	// The compression configurations.
 	//
 	// example:
 	//
 	// {}
-	CompressionSpec  map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
+	CompressionSpec map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
+	// The distillation configurations.
+	//
+	// example:
+	//
+	// {}
 	DistillationSpec map[string]interface{} `json:"DistillationSpec,omitempty" xml:"DistillationSpec,omitempty"`
-	// The evaluation configuration.
+	// The evaluation configurations.
 	//
 	// example:
 	//
 	// {}
 	EvaluationSpec map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
-	// The additional information.
+	// Other information.
 	//
 	// example:
 	//
@@ -83,53 +88,55 @@ type CreateModelVersionRequest struct {
 	//
 	// }
 	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	// The model format. Valid values:
+	// The format of the model. Valid values:
 	//
-	// 	- OfflineModel
+	// - OfflineModel
 	//
-	// 	- SavedModel
+	// - SavedModel
 	//
-	// 	- Keras H5
+	// - Keras H5
 	//
-	// 	- Frozen Pb
+	// - Frozen Pb
 	//
-	// 	- Caffe Prototxt
+	// - Caffe Prototxt
 	//
-	// 	- TorchScript
+	// - TorchScript
 	//
-	// 	- XGBoost
+	// - XGBoost
 	//
-	// 	- PMML
+	// - PMML
 	//
-	// 	- AlinkModel
+	// - AlinkModel
 	//
-	// 	- ONNX
+	// - ONNX
 	//
 	// example:
 	//
 	// SavedModel
 	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	// The model framework. Valid values:
+	// The framework of the model. Valid values:
 	//
-	// 	- Pytorch
+	// - Pytorch
 	//
-	// 	- XGBoost
+	// - XGBoost
 	//
-	// 	- Keras
+	// - Keras
 	//
-	// 	- Caffe
+	// - Caffe
 	//
-	// 	- Alink
+	// - Alink
 	//
-	// 	- Xflow
+	// - Xflow
 	//
-	// 	- TensorFlow
+	// - TensorFlow
 	//
 	// example:
 	//
 	// TensorFlow
 	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
-	// Describes how to apply to downstream inference services. For example, describe the processor and container of EAS. Example: `{ "processor": "tensorflow_gpu_1.12" }`
+	// The configurations for downstream inference services, such as the processor and container for Elastic Algorithm Service (EAS). Example:
+	//
+	// `{ "processor": "tensorflow_gpu_1.12" }`
 	//
 	// example:
 	//
@@ -139,9 +146,11 @@ type CreateModelVersionRequest struct {
 	//
 	// }
 	InferenceSpec map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
-	// The labels.
+	// The list of labels.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The metrics for the model. The length after serialization is limited to 8,192.
+	// The model metrics.
+	//
+	// The serialized data cannot exceed 8,192 bytes in length.
 	//
 	// example:
 	//
@@ -179,59 +188,61 @@ type CreateModelVersionRequest struct {
 	//
 	// }
 	Metrics map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The extended field. This is a JSON string.
+	// The extended fields. This parameter is a JSON string.
 	//
 	// example:
 	//
 	// {}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The ID of the model source.
+	// The source ID.
 	//
-	// 	- If SourceType is set to Custom, this parameter is not limited.
+	// - If SourceType is set to Custom, this parameter has no format restrictions.
 	//
-	// 	- If SourceType is set to PAIFlow or TrainingService, the ID of the model source is in the following format:
+	// - If SourceType is PAIFlow or TrainingService, the value must be in the following format:
 	//
-	// <!---->
+	// ```
 	//
-	//     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+	// region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
 	//
-	// Take note of the following parameters:
+	// ```
 	//
-	// 	- region indicates the region ID.
+	// The fields are described as follows:
 	//
-	// 	- workspaceId indicates the workspace ID.
+	// - region: The ID of the Alibaba Cloud region.
 	//
-	// 	- kind indicates the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
+	// - workspaceId: The ID of the workspace.
 	//
-	// 	- id indicates the unique identifier.
+	// - kind: The type. Valid values: PipelineRun (PAI pipeline) and ServiceJob (training service).
+	//
+	// - id: The unique identifier.
 	//
 	// example:
 	//
 	// region=cn-shanghai,workspaceId=13**,kind=PipelineRun,id=run-sakdb****jdf
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The type of the model source. Valid values:
+	// The source type of the model. Valid values:
 	//
-	// 	- Custom (default)
+	// - Custom (default): The model is custom.
 	//
-	// 	- PAIFlow
+	// - PAIFlow: The model is from a PAI pipeline.
 	//
-	// 	- TrainingService: the Platform for AI (PAI) training service.
+	// - TrainingService: The model is from a PAI training service.
 	//
 	// example:
 	//
 	// PAIFlow
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The training configurations, which is used for fine-tuning and incremental training.
+	// The training configurations. These configurations are used for fine-tuning and incremental training.
 	//
 	// example:
 	//
 	// {}
 	TrainingSpec map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
-	// The URI of the model version, which is the location where the model is stored. Valid values:
+	// The URI of the model version, which is the storage location of the model. The following types of model URIs are supported:
 	//
-	// 	- The HTTP(S) address of the model. Example: `https://myweb.com/mymodel.tar.gz`.
+	// - An HTTP or HTTPS URL of the model. Example: `https://myweb.com/mymodel.tar.gz`.
 	//
-	// 	- The OSS path of the model, in the format of `oss://<bucket>.<endpoint>/object`. For information about endpoints, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
+	// - If the model is stored in Object Storage Service (OSS), the URI must be in the `oss://<bucket>.<endpoint>/object` format. For more information about endpoints, see [Endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
 	//
 	// This parameter is required.
 	//
@@ -239,9 +250,15 @@ type CreateModelVersionRequest struct {
 	//
 	// oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	// The version description.
+	// The description of the model version.
+	//
+	// example:
+	//
+	// Sentiment analysis.
 	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
-	// The model version, which is unique for each model. If you leave this parameter empty, the first version is **0.1.0*	- by default. After that, the minor version number is increased by 1 in sequence. For example, the second version number is **0.2.0**. A version number consists of a major version number, a minor version number, and a stage version number, separated by periods (.). The major version number and minor version number are numeric. The stage version number begins with a digit and can include numbers, underscores, and letters. For example, the version number is 1.1.0 or 2.3.4_beta.
+	// The model version. The version must be unique within the model. If you do not specify this parameter, the first version defaults to **0.1.0**. The minor version number is then incremented by 1 for each subsequent version. For example, the second version defaults to **0.2.0**.
+	//
+	// A version number consists of a major version, a minor version, and a patch version, separated by periods (.). The major and minor versions are numbers. The patch version can start with a number and contain underscores (_) and letters. Examples: 1.1.0 and 2.3.4_beta.
 	//
 	// example:
 	//

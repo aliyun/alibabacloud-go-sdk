@@ -18,15 +18,15 @@ type iListConfigsResponseBody interface {
 }
 
 type ListConfigsResponseBody struct {
-	// The configuration items.
+	// The list of configuration items.
 	Configs []*ListConfigsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A******C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of items returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -83,17 +83,17 @@ func (s *ListConfigsResponseBody) Validate() error {
 }
 
 type ListConfigsResponseBodyConfigs struct {
-	// The key of the configuration item. Supported keys:
+	// The key of the configuration item. The following keys are supported:
 	//
-	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+	// - tempStoragePath: The path for temporary storage. This key is valid only when CategoryName is set to CommonResourceConfig.
 	//
-	// 	- isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
+	// - isAutoRecycle: The automatic recycling configuration. This key is valid only when CategoryName is set to DLCAutoRecycle.
 	//
-	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+	// - priorityConfig: The priority configuration. This key is valid only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
 	//
-	// 	- quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	// - quotaMaximumDuration: The configuration for the maximum runtime of a DLC task in a quota. This key is valid only when CategoryName is set to QuotaMaximumDuration.
 	//
-	// 	- predefinedTags: The predefined tags of the workspace. All created resources must have tags
+	// - predefinedTags: The predefined labels for the workspace. Resources that you create must have these labels.
 	//
 	// example:
 	//
@@ -107,7 +107,7 @@ type ListConfigsResponseBodyConfigs struct {
 	ConfigValue     *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
 	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The tags of the configuration item.
+	// The list of labels for the configuration item.
 	Labels []*ListConfigsResponseBodyConfigsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 
@@ -178,13 +178,13 @@ func (s *ListConfigsResponseBodyConfigs) Validate() error {
 }
 
 type ListConfigsResponseBodyConfigsLabels struct {
-	// The tag key.
+	// The key of the label.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the label.
 	//
 	// example:
 	//

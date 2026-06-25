@@ -30,29 +30,29 @@ type iListDatasetVersionsRequest interface {
 }
 
 type ListDatasetVersionsRequest struct {
-	// The dataset tag keys, which are used to filter datasets. Datasets whose tag keys or tag values contain a specified string are filtered.
+	// The label keys used to filter the dataset list. Datasets are returned if their label keys contain the specified strings.
 	//
 	// example:
 	//
 	// key1,key2
 	LabelKeys *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
-	// The dataset tag values, which are used to filter datasets. Datasets whose tag keys or tag values contain a specified string are filtered.
+	// The label values used to filter the dataset list. Datasets are returned if their label values contain the specified strings.
 	//
 	// example:
 	//
 	// value1,value2
 	LabelValues *string `json:"LabelValues,omitempty" xml:"LabelValues,omitempty"`
-	// The order in which the entries are sorted by the specific field on the returned page. Default value: ASC. Valid values:
+	// The sort order for the paged query. The default value is ASC. Valid values:
 	//
-	// 	- ASC: ascending order
+	// - ASC: Ascending order.
 	//
-	// 	- DESC: descending order.
+	// - DESC: Descending order.
 	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value starts from 1. The default is 1.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type ListDatasetVersionsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of entries to return on each page. The default value is 10.
 	//
 	// This parameter is required.
 	//
@@ -70,45 +70,41 @@ type ListDatasetVersionsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The dataset properties. Valid values:
 	//
-	// 	- DIRECTORY
+	// - DIRECTORY: Folder.
 	//
-	// 	- FILE
+	// - FILE: File.
 	//
 	// example:
 	//
 	// DIRECTORY
 	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// The field used to sort the results in queries by page. Default value: GmtCreateTime.
+	// The field to use for sorting in a paged query. The default value is GmtCreateTime. Valid values:
 	//
-	// Valid values:
+	// - GmtCreateTime (default): Creation time.
 	//
-	// 	- SourceType
+	// - GmtModifiedTime: Modification time.
 	//
-	// 	- DataSourceType
+	// - SourceType
 	//
-	// 	- DataSize
+	// - DataSourceType
 	//
-	// 	- DataCount
+	// - Property
 	//
-	// 	- Property
+	// - DataSize
 	//
-	// 	- GmtCreateTime: The results are sorted by creation time. This is the default value.
-	//
-	// 	- GmtModifiedTime: The results are sorted by modification time.
-	//
-	// 	- DatasetId
+	// - DataCount
 	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The data source ID.
+	// The ID of the data source.
 	//
-	// 	- If SourceType is set to USER, the value of SourceId is a custom string.
+	// - If SourceTypes is USER, you can specify a custom ID.
 	//
-	// 	- If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
+	// - If SourceTypes is ITAG, this is the ID of the iTAG annotation task.
 	//
-	// 	- If SourceType is set to PAI_PUBLIC_DATASET, SourceId is empty by default.
+	// - If SourceTypes is PAI_PUBLIC_DATASET, this parameter is empty by default.
 	//
 	// example:
 	//
@@ -116,11 +112,11 @@ type ListDatasetVersionsRequest struct {
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// The source type. Valid values:
 	//
-	// 	- PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
+	// - PAI-PUBLIC-DATASET: A public dataset from PAI.
 	//
-	// 	- ITAG: a dataset generated from a labeling job of iTAG.
+	// - ITAG: A dataset generated from the annotation results of the iTAG module.
 	//
-	// 	- USER: a dataset registered by a user.
+	// - USER: A dataset registered by a user.
 	//
 	// example:
 	//

@@ -46,7 +46,7 @@ type iGetDatasetVersionResponseBody interface {
 }
 
 type GetDatasetVersionResponseBody struct {
-	// The number of data records.
+	// The number of data entries.
 	//
 	// example:
 	//
@@ -61,38 +61,90 @@ type GetDatasetVersionResponseBody struct {
 	// The type of the data source.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// OSS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The request ID.
+	// The ID of the dataset.
 	//
 	// example:
 	//
 	// d-dkdbnnap0g7b6su4yg
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The version description.
+	// The description of the version.
+	//
+	// example:
+	//
+	// This is a description of the dataset version.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The creation time.
+	// The time when the dataset version was created.
 	//
 	// example:
 	//
 	// 2023-12-13T10:22:05.694Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modification time.
+	// The time when the dataset version was last modified.
 	//
 	// example:
 	//
 	// 2023-12-13T10:22:05.694Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The dataset configurations to be imported to a storage, such as Object Storage Service (OSS), File Storage NAS (NAS), or Cloud Parallel File Storage (CPFS).
+	// The storage import configuration of the dataset. Supported storage services include OSS, NAS, and CPFS.
 	//
-	// **OSS**
+	// <details>
 	//
-	// { "region": "${region}",// The region ID. $bucket = $options["bucket"]; // The bucket name. "path": "${path}" // The file path. }
+	// <summary>
 	//
-	// **NAS**
+	// OSS
 	//
-	// **CPFS**
+	// </summary>
 	//
-	// **CPFS for Lingjun**
+	// {
+	//
+	// "region": "${region}",// Region ID
+	//
+	// "bucket": "${bucket}",// Bucket name
+	//
+	// "path": "${path}" // File path
+	//
+	// }
+	//
+	// </details>
+	//
+	// <details>
+	//
+	// <summary>
+	//
+	// NAS
+	//
+	// </summary>
+	//
+	// </details>
+	//
+	// <details>
+	//
+	// <summary>
+	//
+	// CPFS
+	//
+	// </summary>
+	//
+	// Block content
+	//
+	// </details>
+	//
+	// <details>
+	//
+	// <summary>
+	//
+	// AI Computing CPFS
+	//
+	// </summary>
+	//
+	// Block content
+	//
+	// </details>
 	//
 	// example:
 	//
@@ -110,19 +162,19 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// }
 	ImportInfo *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	// The resource tags.
+	// The tags of the resource.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The access permission on the dataset when the dataset is mounted. Valid values:
+	// The access permissions when the dataset is mounted.
 	//
-	// 	- RO: read-only permissions
+	// - RO: Read-only mount
 	//
-	// 	- RW: read and write permissions
+	// - RW: Read-write mount
 	//
 	// example:
 	//
 	// RO
 	MountAccess *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
-	// The extended fields.
+	// Additional options.
 	//
 	// example:
 	//
@@ -140,25 +192,25 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// DIRECTORY
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// C55DF3DA-F120-5E37-A374-F49365531701
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the source dataset.
+	// The ID of the dataset source.
 	//
 	// example:
 	//
 	// d-rbvg5wzljzjhc9ks92
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The type of the data source.
+	// The source type.
 	//
 	// example:
 	//
 	// USER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The sample URI of the dataset.
+	// The URI of the dataset version.
 	//
 	// This parameter is required.
 	//
@@ -166,7 +218,7 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// oss://ai4d-br7hx9ngzelo2o6uip.oss-cn-shanghai.aliyuncs.com/365349/data-1157703270994901/datasets/aka108o/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	// The version name of the dataset.
+	// The name of the dataset version.
 	//
 	// example:
 	//

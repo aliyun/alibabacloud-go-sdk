@@ -22,27 +22,27 @@ type iListDatasetVersionsResponseBody interface {
 }
 
 type ListDatasetVersionsResponseBody struct {
-	// The dataset versions.
+	// The list of dataset versions.
 	DatasetVersions []*DatasetVersion `json:"DatasetVersions,omitempty" xml:"DatasetVersions,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 0648C5BB-68D0-54D2-92A5-607135B8806B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of dataset versions that meet the filter conditions.
+	// The number of resources that match the filter conditions.
 	//
 	// example:
 	//

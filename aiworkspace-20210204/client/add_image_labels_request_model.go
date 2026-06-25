@@ -14,7 +14,7 @@ type iAddImageLabelsRequest interface {
 }
 
 type AddImageLabelsRequest struct {
-	// The list of image tags.
+	// A list of image labels.
 	//
 	// This parameter is required.
 	Labels []*AddImageLabelsRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
@@ -51,49 +51,49 @@ func (s *AddImageLabelsRequest) Validate() error {
 }
 
 type AddImageLabelsRequestLabels struct {
-	// The tag key. The following keys can be added:
+	// The key of the label. The following keys are supported:
 	//
-	// 	- system.chipType
+	// - system.chipType
 	//
-	// 	- system.dsw.cudaVersion
+	// - system.dsw\\.cudaVersion
 	//
-	// 	- system.dsw.fromImageId
+	// - system.dsw\\.fromImageId
 	//
-	// 	- system.dsw.fromInstanceId
+	// - system.dsw\\.fromInstanceId
 	//
-	// 	- system.dsw.id
+	// - system.dsw\\.id
 	//
-	// 	- system.dsw.os
+	// - system.dsw\\.os
 	//
-	// 	- system.dsw.osVersion
+	// - system.dsw\\.osVersion
 	//
-	// 	- system.dsw.resourceType
+	// - system.dsw\\.resourceType
 	//
-	// 	- system.dsw.rootImageId
+	// - system.dsw\\.rootImageId
 	//
-	// 	- system.dsw.stage
+	// - system.dsw\\.stage
 	//
-	// 	- system.dsw.tag
+	// - system.dsw\\.tag
 	//
-	// 	- system.dsw.type
+	// - system.dsw\\.type
 	//
-	// 	- system.framework
+	// - system.framework
 	//
-	// 	- system.origin
+	// - system.origin
 	//
-	// 	- system.pythonVersion
+	// - system.pythonVersion
 	//
-	// 	- system.source
+	// - system.source
 	//
-	// 	- system.supported.dlc
+	// - system.supported.dlc
 	//
-	// 	- system.supported.dsw
+	// - system.supported.dsw
 	//
 	// example:
 	//
 	// system.chipType
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the label.
 	//
 	// example:
 	//

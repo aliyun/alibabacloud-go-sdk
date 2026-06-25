@@ -14,11 +14,11 @@ type iGetWorkspaceRequest interface {
 }
 
 type GetWorkspaceRequest struct {
-	// Specifies whether to display supplementary information such as the workspace owner. Valid values:
+	// Specifies whether to return additional information, such as the workspace owner. Valid values:
 	//
-	// 	- false (default)
+	// - false (default): Does not return additional information.
 	//
-	// 	- true
+	// - true: Returns additional information.
 	//
 	// example:
 	//

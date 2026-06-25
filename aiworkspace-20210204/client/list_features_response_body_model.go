@@ -18,11 +18,16 @@ type iListFeaturesResponseBody interface {
 }
 
 type ListFeaturesResponseBody struct {
+	// The list of features.
 	Features []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of features.
+	//
 	// example:
 	//
 	// 2

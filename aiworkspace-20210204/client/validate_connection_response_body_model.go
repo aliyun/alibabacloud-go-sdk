@@ -22,19 +22,32 @@ type iValidateConnectionResponseBody interface {
 }
 
 type ValidateConnectionResponseBody struct {
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// 403
-	Code    *string            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the validation result.
 	Details map[string]*string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// A description of the validation result.
+	//
 	// example:
 	//
 	// The connection is reachable.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The validation status.
+	//
+	// - success: The validation is successful.
+	//
+	// - failed: The validation failed.
+	//
 	// example:
 	//
 	// success

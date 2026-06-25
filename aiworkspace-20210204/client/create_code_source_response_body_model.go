@@ -16,7 +16,7 @@ type iCreateCodeSourceResponseBody interface {
 }
 
 type CreateCodeSourceResponseBody struct {
-	// The ID of the created code build.
+	// The ID of the created code configuration.
 	//
 	// example:
 	//

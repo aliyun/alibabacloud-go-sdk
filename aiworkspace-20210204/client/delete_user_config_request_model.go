@@ -16,7 +16,7 @@ type iDeleteUserConfigRequest interface {
 }
 
 type DeleteUserConfigRequest struct {
-	// The configuration item keys. Currently, only customizePAIAssumedRole.
+	// The configuration key. Only customizePAIAssumedRole is supported.
 	//
 	// example:
 	//

@@ -18,21 +18,21 @@ type iUpdateRunRequest interface {
 }
 
 type UpdateRunRequest struct {
-	// The labels.
+	// A list of labels.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The run name. The name must meet the following requirements:
+	// The name of the run. The naming conventions are as follows:
 	//
-	// 	- The name must start with a letter.
+	// - Must start with a lowercase or uppercase letter.
 	//
-	// 	- The name can contain letters, digits, underscores (_), and hyphens (-).
+	// - Can contain lowercase letters, uppercase letters, digits, underscores (_), and hyphens (-).
 	//
-	// 	- The name must be 1 to 63 characters in length.
+	// - The length must be 1 to 63 characters.
 	//
 	// example:
 	//
 	// myName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parameters.
+	// A list of parameters.
 	Params []*RunParam `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 }
 

@@ -24,9 +24,9 @@ type ListResourcesResponseBody struct {
 	//
 	// 1e195c5116124202371861018d5bde
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources.
+	// The list of resources.
 	Resources []*ListResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// The number of resources that meet the filter conditions.
+	// The total number of entries that match the filter criteria.
 	//
 	// example:
 	//
@@ -83,27 +83,27 @@ func (s *ListResourcesResponseBody) Validate() error {
 }
 
 type ListResourcesResponseBodyResources struct {
-	// The encryption information, which is valid only for MaxCompute resources.
+	// The encryption details. This parameter is valid only for MaxCompute resources.
 	Encryption *ListResourcesResponseBodyResourcesEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
 	// The environment type. Valid values:
 	//
-	// 	- dev: development environment
+	// - `dev`: development environment
 	//
-	// 	- prod: production environment
+	// - `prod`: production environment
 	//
 	// example:
 	//
 	// prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// This parameter is invalid and deprecated.
+	// **Deprecated.*	- This parameter is no longer used.
 	Executor *ListResourcesResponseBodyResourcesExecutor `json:"Executor,omitempty" xml:"Executor,omitempty" type:"Struct"`
-	// The time when the resource group is created, in UTC. The time follows the ISO 8601 standard.
+	// The time when the resource was created. The time is displayed in UTC and is formatted in ISO 8601.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The name of the resource group, which is unique within the Alibaba Cloud account.
+	// The name of the resource group. The name must be unique within an Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -115,17 +115,17 @@ type ListResourcesResponseBodyResources struct {
 	//
 	// 123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the resource is the default resource. Each type of resources has a default resource. Valid values:
+	// Indicates whether the resource is the default resource of its type. Each resource type has only one default resource. Valid values:
 	//
-	// 	- true
+	// - `true`: The resource is the default resource.
 	//
-	// 	- false
+	// - `false`: The resource is not the default resource.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The tags.
+	// The list of labels.
 	Labels []*ListResourcesResponseBodyResourcesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The resource name.
 	//
@@ -133,33 +133,43 @@ type ListResourcesResponseBodyResources struct {
 	//
 	// ResourceName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// **This field is no longer used and will be removed. Use the ResourceType field.
+	// **Deprecated.*	- This parameter is deprecated and will be removed in a future release. Use the `ResourceType` parameter instead.
 	//
 	// example:
 	//
 	// MaxCompute
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The quotas.
+	// The list of quotas.
 	Quotas []*ListResourcesResponseBodyResourcesQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	// The resource type. Valid values:
+	// The type of the resource. Valid values:
 	//
-	// 	- MaxCompute
+	// - `MaxCompute`: MaxCompute resources
 	//
-	// 	- DLC
+	// - `ECS`: ECS resources
 	//
-	// 	- FLINK
+	// - `Lingjun`: Lingjun intelligent computing resources
+	//
+	// - `ACS`: ACS computing resources
+	//
+	// - `Flink`: Flink resources
+	//
+	// - `SelfManagedAckPro`: self-managed cluster resources for AckPro
+	//
+	// - `SelfManagedAckLingjun`: self-managed cluster resources for AckLingjun
+	//
+	// - `SelfManagedASI`: self-managed cluster resources for ASI (third-party cloud)
 	//
 	// example:
 	//
 	// MaxCompute
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The resource specification.
+	// The resource specifications.
 	//
 	// example:
 	//
 	// 对于MaxCompute {"Endpoint": "odps.alibaba-inc.com", "Project": "mignshi"}
 	Spec map[string]interface{} `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace to which the resource belongs.
 	//
 	// example:
 	//
@@ -340,13 +350,13 @@ type ListResourcesResponseBodyResourcesEncryption struct {
 	//
 	// AESCTR
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// Indicates whether the resources are encrypted.
+	// Indicates whether encryption is enabled.
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The primary key for the encryption.
+	// The encryption key.
 	//
 	// example:
 	//
@@ -394,7 +404,7 @@ func (s *ListResourcesResponseBodyResourcesEncryption) Validate() error {
 }
 
 type ListResourcesResponseBodyResourcesExecutor struct {
-	// This parameter is invalid and deprecated.
+	// **Deprecated.*	- This parameter is no longer used.
 	//
 	// example:
 	//
@@ -424,13 +434,13 @@ func (s *ListResourcesResponseBodyResourcesExecutor) Validate() error {
 }
 
 type ListResourcesResponseBodyResourcesLabels struct {
-	// The tag key.
+	// The key of the label.
 	//
 	// example:
 	//
 	// system.supported.dsw
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the label.
 	//
 	// example:
 	//
@@ -469,17 +479,21 @@ func (s *ListResourcesResponseBodyResourcesLabels) Validate() error {
 }
 
 type ListResourcesResponseBodyResourcesQuotas struct {
-	// The resource group type. Valid values:
+	// The card type. Valid values:
 	//
-	// 	- CPU
+	// - `CPU`
 	//
-	// 	- GPU
+	// - `GPU`
 	//
 	// example:
 	//
-	// cpu
+	// CPU
 	CardType *string `json:"CardType,omitempty" xml:"CardType,omitempty"`
-	// The alias of the quota.
+	// The display name of the quota.
+	//
+	// example:
+	//
+	// 默认后付费Quota
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The quota ID.
 	//
@@ -489,13 +503,13 @@ type ListResourcesResponseBodyResourcesQuotas struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- isolate: subscription
+	// - `isolate`: subscription
 	//
-	// 	- share: pay-as-you-go
+	// - `share`: pay-as-you-go
 	//
 	// example:
 	//
-	// develop
+	// isolate
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The quota name.
 	//
@@ -505,19 +519,19 @@ type ListResourcesResponseBodyResourcesQuotas struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The product code. Valid values:
 	//
-	// 	- PAI_isolate: CPU subscription resource groups of PAI
+	// - `PAI_isolate`: PAI subscription resource group (PAI CPU)
 	//
-	// 	- PAI_share: GPU pay-as-you-go resource groups of PAI
+	// - `PAI_share`: PAI pay-as-you-go resource group (PAI GPU)
 	//
-	// 	- MaxCompute_share: pay-as-you-go resource groups of MaxCompute
+	// - `MaxCompute_share`: MaxCompute pay-as-you-go resource group
 	//
-	// 	- MaxCompute_isolate: subscription resource groups of MaxCompute
+	// - `MaxCompute_isolate`: MaxCompute subscription resource group
 	//
-	// 	- DataWorks_isolate: subscription resource groups of DataWorks
+	// - `DataWorks_isolate`: DataWorks subscription resource group
 	//
-	// 	- DataWorks_share: pay-as-you-go resource groups of DataWorks
+	// - `DataWorks_share`: DataWorks pay-as-you-go resource group
 	//
-	// 	- DLC_share: pay-as-you-go resource groups of Deep Learning Containers (DLC)
+	// - `DLC_share`: DLC pay-as-you-go resource group
 	//
 	// example:
 	//
@@ -525,17 +539,17 @@ type ListResourcesResponseBodyResourcesQuotas struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The quota type. Valid values:
 	//
-	// 	- PAI
+	// - `PAI`
 	//
-	// 	- MaxCompute
+	// - `MaxCompute`
 	//
-	// 	- DLC
+	// - `DLC`
 	//
 	// example:
 	//
 	// MaxCompute
 	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
-	// The quota specifications.
+	// The list of specifications.
 	//
 	// example:
 	//
@@ -643,7 +657,7 @@ type ListResourcesResponseBodyResourcesQuotasSpecs struct {
 	//
 	// cu
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The specification description.
+	// The specification value.
 	//
 	// example:
 	//

@@ -17,8 +17,12 @@ type iCreateDatasetVersionResponseBody interface {
 
 type CreateDatasetVersionResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 41A847C8-3D12-5F24-8CE9-7F9EB2DA9ECD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The dataset version name.
+	// The name of the dataset version.
 	//
 	// example:
 	//

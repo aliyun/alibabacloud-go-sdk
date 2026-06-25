@@ -36,108 +36,112 @@ type iListImagesRequest interface {
 type ListImagesRequest struct {
 	// The visibility of the image. This parameter is valid only for custom images.
 	//
-	// 	- PUBLIC: The image is visible to all users.
+	// - PUBLIC: The image is public.
 	//
-	// 	- PRIVATE: The image is visible only to you and the administrator of the workspace.
+	// - PRIVATE: The image is private.
 	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	ImageUri      *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	// The tag filter conditions. Multiple conditions are separated by commas (,). The format of a single condition filter is `key=value`. The following keys are supported:
+	// The filter conditions for labels. Separate multiple conditions with commas (,).
 	//
-	// 	- system.chipType
+	// The format for a single filter condition is `Key=Value`.
 	//
-	// 	- system.dsw.cudaVersion
+	// The supported values for Key are:
 	//
-	// 	- system.dsw.fromImageId
+	// - system.chipType
 	//
-	// 	- system.dsw.fromInstanceId
+	// - system.dsw\\.cudaVersion
 	//
-	// 	- system.dsw.id
+	// - system.dsw\\.fromImageId
 	//
-	// 	- system.dsw.os
+	// - system.dsw\\.fromInstanceId
 	//
-	// 	- system.dsw.osVersion
+	// - system.dsw\\.id
 	//
-	// 	- system.dsw.resourceType
+	// - system.dsw\\.os
 	//
-	// 	- system.dsw.rootImageId
+	// - system.dsw\\.osVersion
 	//
-	// 	- system.dsw.stage
+	// - system.dsw\\.resourceType
 	//
-	// 	- system.dsw.tag
+	// - system.dsw\\.rootImageId
 	//
-	// 	- system.dsw.type
+	// - system.dsw\\.stage
 	//
-	// 	- system.framework
+	// - system.dsw\\.tag
 	//
-	// 	- system.origin
+	// - system.dsw\\.type
 	//
-	// 	- system.pythonVersion
+	// - system.framework
 	//
-	// 	- system.source
+	// - system.origin
 	//
-	// 	- system.supported.dlc
+	// - system.pythonVersion
 	//
-	// 	- system.supported.dsw
+	// - system.source
+	//
+	// - system.supported.dlc
+	//
+	// - system.supported.dsw
 	//
 	// example:
 	//
 	// system.framework=XGBoost 1.6.0,system.official=true
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The image name. Fuzzy match is supported.
+	// The name of the image. Fuzzy search is supported.
 	//
 	// example:
 	//
 	// tensorflow_2.9
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The order in which the entries are sorted by the specific field on the returned page. This parameter must be used together with SortBy. Default value: ASC. Valid values:
+	// The order in which to sort the results of a paged query. This parameter is used with SortBy. The default value is ASC.
 	//
-	// 	- ASC: ascending order
+	// - ASC: ascending order.
 	//
-	// 	- DESC: descending order.
+	// - DESC: descending order.
 	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number of the image list. The value starts from 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 20.
+	// The number of entries to return on each page for a paged query. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The image name and description that are used for fuzzy search.
+	// Performs a fuzzy search by image name and description.
 	//
 	// example:
 	//
 	// name
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The field used for sorting. The GmtCreateTime field is used.
+	// The field to use for sorting in a paged query. Currently, only the GmtCreateTime field is used for sorting.
 	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// Specifies whether to display non-essential information, which contains tags. Valid values:
+	// Specifies whether to display non-essential information. Non-essential information currently includes Labels. Valid values:
 	//
-	// 	- true
+	// - true: Includes non-essential information.
 	//
-	// 	- false
+	// - false: Does not include non-essential information.
 	//
 	// example:
 	//
 	// true
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The workspace ID. For more information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

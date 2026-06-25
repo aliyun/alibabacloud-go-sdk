@@ -16,19 +16,19 @@ type iCreateWorkspaceResourceRequest interface {
 }
 
 type CreateWorkspaceResourceRequest struct {
-	// The operation to perform. Valid values:
+	// The creation behavior. Valid values:
 	//
-	// 	- CreateAndAttach: creates resources and associates the resources with a workspace.
+	// - `CreateAndAttach`: Creates a resource and attaches it to the workspace.
 	//
-	// 	- Attach: associates resources with a workspace.
+	// - `Attach`: Attaches an existing resource to the workspace. This option requires you to specify the `Name`, `ResourceType`, `GroupName`, and `EnvType` parameters.
 	//
-	// >  MaxCompute supports only the Attach operation.
+	// > MaxCompute resources only support the `Attach` option.
 	//
 	// example:
 	//
 	// CreateAndAttach
 	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// The resources.
+	// The list of resources.
 	//
 	// This parameter is required.
 	Resources []*CreateWorkspaceResourceRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
@@ -76,9 +76,9 @@ func (s *CreateWorkspaceResourceRequest) Validate() error {
 type CreateWorkspaceResourceRequestResources struct {
 	// The environment type. Valid values:
 	//
-	// 	- dev: development environment
+	// - `dev`: development environment
 	//
-	// 	- prod: production environment
+	// - `prod`: production environment
 	//
 	// This parameter is required.
 	//
@@ -86,29 +86,31 @@ type CreateWorkspaceResourceRequestResources struct {
 	//
 	// prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The name of the resource group, which is unique within your Alibaba Cloud account. This parameter is required for MaxCompute, Elastic Compute Service (ECS), Lingjun, Alibaba Cloud Container Compute Service (ACS), and Realtime Compute for Apache Flink resources.
+	// The name of the resource group. The name must be unique within an Alibaba Cloud account. This parameter is required for MaxCompute, ECS, Lingjun, ACS, and Flink resources.
 	//
 	// example:
 	//
 	// groupName
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Specifies whether the resource is the default resource. Each type of resources has a default resource. Valid values:
+	// Indicates whether this is the default resource for its type. Each resource type can have only one default resource.
 	//
-	// 	- false (default)
+	// - `false` (default): The resource is not the default resource.
 	//
-	// 	- true
+	// - `true`: The resource is the default resource.
 	//
 	// example:
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The labels added to the resource.
+	// An array of resource tags.
 	Labels []*CreateWorkspaceResourceRequestResourcesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The resource name. The name must meet the following requirements:
 	//
-	// 	- The name must be 3 to 28 characters in length, and can contain only letters, digits, and underscores (_). The name must start with a letter.
+	// - Must be 3 to 28 characters long, start with a letter, and can contain only letters, digits, and underscores (_).
 	//
-	// 	- The name must be unique in the region.
+	// - Must be unique within the same region.
+	//
+	// - If `Option` is set to `Attach` and `ResourceType` is set to `MaxCompute`, this parameter specifies the project name.
 	//
 	// This parameter is required.
 	//
@@ -116,33 +118,69 @@ type CreateWorkspaceResourceRequestResources struct {
 	//
 	// ResourceName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// **This parameter is no longer used and will be removed. Use the ResourceType parameter instead.
+	// **[Deprecated]*	- This parameter is deprecated and will be removed in a future version. Use the `ResourceType` parameter instead.
 	//
 	// example:
 	//
 	// MaxCompute
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The quotas. Only MaxCompute quotas are available.
+	// The resource quotas. Currently, only MaxCompute resources have resource quotas.
 	Quotas []*CreateWorkspaceResourceRequestResourcesQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	// The resource types. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- MaxCompute
+	// - `MaxCompute`: MaxCompute resources
 	//
-	// 	- ECS
+	// - `ECS`: general-purpose computing resources
 	//
-	// 	- Lingjun
+	// - `Lingjun`: Lingjun intelligent computing resources
 	//
-	// 	- ACS
+	// - `ACS`: ACS computing resources
 	//
-	// 	- FLINK
+	// - `Flink`: Flink resources
+	//
+	// - `SelfManagedAckPro`: unified managed cluster resource (AckPro)
+	//
+	// - `SelfManagedAckLingjun`: unified managed cluster resource (AckLingjun)
+	//
+	// - `SelfManagedASI`: unified managed cluster resource for third-party clouds (ASI)
 	//
 	// example:
 	//
 	// MaxCompute
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The resource specifications in the JSON format.
+	// The resource specification in JSON format. For ECS and Lingjun resources, the format is as follows:
+	//
+	// {<br>
+	//
+	// "clusterType": "The type of the cluster",
+	//
+	// "resourceId": "The ID of the quota",
+	//
+	// "resourceName": "The name of the quota"
+	//
+	// }
+	//
+	// The `clusterType` parameter can have the following values:<br>
+	//
+	// - `share`: shared resource group
+	//
+	// - `private`: dedicated resource group
+	//
+	// - `FullyManaged`: fully managed ACS resource
+	//
+	// example:
+	//
+	// {
+	//
+	//         "clusterType": "private",
+	//
+	//         "resourceId": "quota1c******b4",
+	//
+	//         "resourceName": "unif******90"
+	//
+	//       }
 	Spec map[string]interface{} `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The ID of the workspace to which the resource belongs. To obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// This parameter is required.
 	//
@@ -273,13 +311,13 @@ func (s *CreateWorkspaceResourceRequestResources) Validate() error {
 }
 
 type CreateWorkspaceResourceRequestResourcesLabels struct {
-	// The label key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// system.support.eas
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The label value.
+	// The value of the tag.
 	//
 	// example:
 	//
@@ -318,7 +356,9 @@ func (s *CreateWorkspaceResourceRequestResourcesLabels) Validate() error {
 }
 
 type CreateWorkspaceResourceRequestResourcesQuotas struct {
-	// The quota ID. You can call [ListQuotas](https://help.aliyun.com/document_detail/449144.html) to obtain the quota ID.
+	// The ID of the resource quota. To obtain the resource quota ID, see [ListQuotas](https://help.aliyun.com/document_detail/449144.html). This parameter is required only for subscription MaxCompute resources.
+	//
+	// For ECS, Lingjun, and ACS resources, you do not need to specify this parameter. Their quota information is configured in the `Spec` parameter.
 	//
 	// example:
 	//

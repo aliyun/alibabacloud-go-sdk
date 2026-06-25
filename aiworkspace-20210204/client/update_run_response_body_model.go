@@ -14,7 +14,7 @@ type iUpdateRunResponseBody interface {
 }
 
 type UpdateRunResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

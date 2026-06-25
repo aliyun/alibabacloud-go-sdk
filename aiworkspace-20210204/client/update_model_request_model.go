@@ -36,15 +36,15 @@ type iUpdateModelRequest interface {
 type UpdateModelRequest struct {
 	// The visibility of the model in the workspace. Valid values:
 	//
-	// 	- PRIVATE: The model is visible only to you and the administrator of the workspace.
+	// - PRIVATE: The model is visible only to you and administrators in the workspace.
 	//
-	// 	- PUBLIC: The model is visible to all users in the workspace.
+	// - PUBLIC: The model is visible to everyone in the workspace.
 	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The domain. This parameter describes the domain in which the model is applied. Valid values: nlp (natural language processing) and cv (computer vision).
+	// The domain of the model. This parameter specifies the field where the model is applied. Examples: nlp (natural language processing) and cv (computer vision).
 	//
 	// example:
 	//
@@ -73,35 +73,48 @@ type UpdateModelRequest struct {
 	// }
 	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	// The model description.
+	//
+	// example:
+	//
+	// News classification.
 	ModelDescription *string `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
-	// The documentation of the model.
+	// The model document.
 	//
 	// example:
 	//
 	// https://*.md
 	ModelDoc *string `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
-	// The model name, which must be 1 to 127 characters in length.
+	// The name of the model. The name must be 1 to 127 characters in length.
+	//
+	// example:
+	//
+	// News classification
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The model type. Valid values: Checkpoint and LoRA.
+	// The model type, such as Checkpoint or LoRA.
 	//
 	// example:
 	//
 	// Checkpoint
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	// The sequence number of the model. This parameter can be used for custom sorting.
+	// The ordinal number of the model. You can use this parameter for custom sorting.
 	//
 	// example:
 	//
 	// 0
 	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	// The source of the model. This parameter describes the community or organization to which the source model belongs. Valid values: ModelScope and HuggingFace.
+	// The source of the model. This parameter describes the community or organization to which the source model belongs, such as ModelScope and HuggingFace.
 	//
 	// example:
 	//
 	// ModelScope
-	Origin        *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	ParameterSize *int64  `json:"ParameterSize,omitempty" xml:"ParameterSize,omitempty"`
-	// The task. This parameter specifies the specific issue that the model resolves. Example: text-classification.
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The number of parameters, in millions.
+	//
+	// example:
+	//
+	// 3000
+	ParameterSize *int64 `json:"ParameterSize,omitempty" xml:"ParameterSize,omitempty"`
+	// The task of the model. This parameter describes the specific problem that the model solves. For example, text-classification.
 	//
 	// example:
 	//

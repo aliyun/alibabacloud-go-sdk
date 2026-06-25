@@ -16,13 +16,13 @@ type iDeleteCodeSourceResponseBody interface {
 }
 
 type DeleteCodeSourceResponseBody struct {
-	// The ID of the deleted code source.
+	// The ID of the deleted code source configuration.
 	//
 	// example:
 	//
 	// code-20210111103721-85qz78ia96lu
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

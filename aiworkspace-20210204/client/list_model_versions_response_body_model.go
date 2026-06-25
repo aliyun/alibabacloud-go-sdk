@@ -30,7 +30,7 @@ type ListModelVersionsResponseBody struct {
 	//
 	// 15
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The model versions.
+	// The list of model versions.
 	Versions []*ModelVersion `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 

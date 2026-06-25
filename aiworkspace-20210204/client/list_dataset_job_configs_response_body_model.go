@@ -18,7 +18,7 @@ type iListDatasetJobConfigsResponseBody interface {
 }
 
 type ListDatasetJobConfigsResponseBody struct {
-	// The dataset job configurations.
+	// A list of dataset job configurations.
 	DatasetJobConfigs []*DatasetJobConfig `json:"DatasetJobConfigs,omitempty" xml:"DatasetJobConfigs,omitempty" type:"Repeated"`
 	// The request ID.
 	//

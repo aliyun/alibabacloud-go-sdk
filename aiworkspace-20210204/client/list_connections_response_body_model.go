@@ -22,27 +22,27 @@ type iListConnectionsResponseBody interface {
 }
 
 type ListConnectionsResponseBody struct {
-	// The connection list.
+	// List of connections.
 	Connections []*Connection `json:"Connections,omitempty" xml:"Connections,omitempty" type:"Repeated"`
-	// The maximum number of entries per page.
+	// Maximum number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that indicates the start position from which to retrieve data on the next page.
+	// Token for retrieving the next page of results.
 	//
 	// example:
 	//
 	// 15
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// Request ID. Used for troubleshooting.
 	//
 	// example:
 	//
 	// B2C51F93-1C07-5477-9705-5FDB****F19F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of connections that meet the filter conditions.
+	// Total number of connections that match the query conditions.
 	//
 	// example:
 	//

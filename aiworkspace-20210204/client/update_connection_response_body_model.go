@@ -14,7 +14,7 @@ type iUpdateConnectionResponseBody interface {
 }
 
 type UpdateConnectionResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

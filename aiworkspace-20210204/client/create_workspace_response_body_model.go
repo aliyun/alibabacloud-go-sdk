@@ -26,7 +26,7 @@ type CreateWorkspaceResponseBody struct {
 	//
 	// example:
 	//
-	// 1234
+	// 12**
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

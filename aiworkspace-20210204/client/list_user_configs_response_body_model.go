@@ -18,7 +18,7 @@ type iListUserConfigsResponseBody interface {
 }
 
 type ListUserConfigsResponseBody struct {
-	// The configurations list.
+	// The list of configurations.
 	Configs []*ListUserConfigsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListUserConfigsResponseBody struct {
 	//
 	// sdjksdk-******-dsfds
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of items returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,25 +83,25 @@ func (s *ListUserConfigsResponseBody) Validate() error {
 }
 
 type ListUserConfigsResponseBodyConfigs struct {
-	// The category. Currently, only DataPrivacyConfig is supported.
+	// The category. Only DataPrivacyConfig is supported.
 	//
 	// example:
 	//
 	// DataPrivacyConfig
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The key of the configuration item.
+	// The configuration key.
 	//
 	// example:
 	//
 	// customizePAIAssumedRole
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
-	// The value of the configuration item.
+	// The configuration value.
 	//
 	// example:
 	//
 	// role
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	// The scope. Currently, subUser and owner are supported.
+	// The scope. Supported values are subUser and owner.
 	//
 	// example:
 	//

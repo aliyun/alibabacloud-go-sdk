@@ -24,49 +24,49 @@ type iListCodeSourcesRequest interface {
 }
 
 type ListCodeSourcesRequest struct {
-	// The display name of the code source. Fuzzy match is supported.
+	// The display name of the code source configuration. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// MyDataSource
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The order in which the entries are sorted by the specific field on the returned page. Valid values:
+	// The sort order. Valid values:
 	//
-	// 	- ASC (default)
+	// - ASC (default): Ascending order.
 	//
-	// 	- DESC
+	// - DESC: Descending order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value starts from 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 20.
+	// The number of entries to return on each page. The default value is 20.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field used for sorting. Valid values:
+	// The field to use for sorting. Valid values:
 	//
-	// 	- GmtModifyTime: the time when the code source was modified.
+	// - GmtModifyTime: The time when the code source was last modified.
 	//
-	// 	- DisplayName: the display name.
+	// - DisplayName: The display name.
 	//
-	// 	- CodeSourceId: the code source ID.
+	// - CodeSourceId: The code source ID.
 	//
-	// 	- GmtCreateTime: the time when the code source was created. This is the default value.
+	// - GmtCreateTime (default): The time when the code source was created.
 	//
 	// example:
 	//
 	// GmtModifyTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The workspace ID. For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

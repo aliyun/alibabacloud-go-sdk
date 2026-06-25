@@ -18,7 +18,7 @@ type iListCodeSourcesResponseBody interface {
 }
 
 type ListCodeSourcesResponseBody struct {
-	// The code sources.
+	// A list of code source configurations.
 	CodeSources []*CodeSourceItem `json:"CodeSources,omitempty" xml:"CodeSources,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListCodeSourcesResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of code sources that meet the filter conditions.
+	// The total number of code source configurations that meet the filter conditions.
 	//
 	// example:
 	//

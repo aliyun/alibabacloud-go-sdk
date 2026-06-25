@@ -34,11 +34,11 @@ type iCreateCodeSourceRequest interface {
 }
 
 type CreateCodeSourceRequest struct {
-	// The visibility of the code build. Valid values:
+	// The visibility of the code configuration. Valid values:
 	//
-	// 	- PUBLIC: The code build is visible to all members in the workspace.
+	// - PUBLIC: The configuration is visible to everyone in the workspace.
 	//
-	// 	- PRIVATE: The code build is visible only to you and the administrator of the workspace.
+	// - PRIVATE: The configuration is visible only to you and workspace administrators.
 	//
 	// example:
 	//
@@ -51,6 +51,7 @@ type CreateCodeSourceRequest struct {
 	//
 	// master
 	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
+	// The commit ID of the code. \\`CodeCommit\\` takes precedence over \\`CodeBranch\\`. If you specify \\`CodeCommit\\`, \\`CodeBranch\\` is ignored.
 	CodeCommit *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
 	// The URL of the code repository.
 	//
@@ -58,25 +59,25 @@ type CreateCodeSourceRequest struct {
 	//
 	// https://code.aliyun.com/******
 	CodeRepo *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
-	// The token used to access the code repository.
+	// The access token for the code repository.
 	//
 	// example:
 	//
 	// ***
 	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
-	// The username of the code repository.
+	// The username for the code repository.
 	//
 	// example:
 	//
 	// use***
 	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
-	// The description of the code build, which helps you distinguish between code builds.
+	// The description of the code configuration, which helps distinguish it from other configurations.
 	//
 	// example:
 	//
 	// code source of dlc examples
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the code build.
+	// The name of the code configuration.
 	//
 	// This parameter is required.
 	//
@@ -84,13 +85,13 @@ type CreateCodeSourceRequest struct {
 	//
 	// MyCodeSource1
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The local mount path of the code. By default, the code is mounted to the /root/code/ path.
+	// The local mount path for the code. The default is `/root/code/`.
 	//
 	// example:
 	//
 	// /root/code/code-source-1
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The workspace ID. For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// This parameter is required.
 	//

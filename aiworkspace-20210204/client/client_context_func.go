@@ -9,11 +9,11 @@ import (
 
 // Summary:
 //
-// Receives and processes system event messages sent by DataWorks.
+// PAI accepts and processes system event messages from DataWorks.
 //
 // Description:
 //
-// This operation can be called only by the internal system and cannot be called by external users.
+// This API is for internal system calls only.
 //
 // @param request - AcceptDataworksEventRequest
 //
@@ -147,7 +147,7 @@ func (client *Client) AddImageWithContext(ctx context.Context, request *AddImage
 
 // Summary:
 //
-// Adds tags to an image.
+// Adds labels to a specified image.
 //
 // @param request - AddImageLabelsRequest
 //
@@ -194,7 +194,7 @@ func (client *Client) AddImageLabelsWithContext(ctx context.Context, ImageId *st
 
 // Summary:
 //
-// Adds a role to a member in a workspace. After you add a role to a member, the member is granted the permissions of the role.
+// Assigns a role to a member in a workspace, granting that member the role\\"s permissions.
 //
 // @param request - AddMemberRoleRequest
 //
@@ -235,7 +235,7 @@ func (client *Client) AddMemberRoleWithContext(ctx context.Context, WorkspaceId 
 
 // Summary:
 //
-// Changes the resource group to which a resource belongs based on the ID.
+// Changes the resource group of a specified resource.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -290,7 +290,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a code build in Platform for AI (PAI). You can configure Git branches and commit IDs. After the code build is created, you can reference the code build in a Deep Learning Containers (DLC) job.
+// Creates a code configuration in PAI using a code branch and commit ID from a Git repository. This configuration can then be referenced in DLC jobs.
 //
 // @param request - CreateCodeSourceRequest
 //
@@ -377,7 +377,7 @@ func (client *Client) CreateCodeSourceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates a connection. This API is used to connect Platform for AI (PAI) to customer models and databases in LangStudio and multimodal dataset search scenarios.
+// Creates a connection to link PAI cloud services with your models, databases, and other services. This is useful for scenarios such as LangStudio and multimodal dataset retrieval.
 //
 // @param request - CreateConnectionRequest
 //
@@ -599,7 +599,7 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates the metadata records of multiple files in a dataset at a time.
+// Creates file metadata records for a dataset in a batch.
 //
 // @param request - CreateDatasetFileMetasRequest
 //
@@ -721,7 +721,7 @@ func (client *Client) CreateDatasetJobWithContext(ctx context.Context, DatasetId
 
 // Summary:
 //
-// Creates a job configuration for a dataset.
+// Creates a dataset Job configuration.
 //
 // @param request - CreateDatasetJobConfigRequest
 //
@@ -780,15 +780,15 @@ func (client *Client) CreateDatasetJobConfigWithContext(ctx context.Context, Dat
 
 // Summary:
 //
-// Creates tags for a dataset.
+// Adds labels to a dataset.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// When you call this operation, note the following:
 //
-//   - The tag key and value are not empty strings and cannot exceed 128 characters in length.
+// - The key and value of a label must be a non-empty string with a maximum length of 128 characters.
 //
-//   - The tag key cannot start with any of the following strings: "aliyun", "acs", "http://", and "https://".
+// - A label key cannot start with aliyun, acs, http\\://, or https\\://.
 //
 // @param request - CreateDatasetLabelsRequest
 //
@@ -922,7 +922,7 @@ func (client *Client) CreateDatasetVersionWithContext(ctx context.Context, Datas
 
 // Summary:
 //
-// Creates tags for a dataset version.
+// Creates labels for a dataset version.
 //
 // @param request - CreateDatasetVersionLabelsRequest
 //
@@ -1032,7 +1032,11 @@ func (client *Client) CreateExperimentWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 创建镜像构建任务
+// Builds a custom image based on the specified configuration. After the image is successfully built, it is added to the list of custom images in the current workspace.
+//
+// Description:
+//
+// ## Description
 //
 // @param request - CreateImageBuildRequest
 //
@@ -1121,7 +1125,7 @@ func (client *Client) CreateImageBuildWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Adds a user to a workspace as a member. You can add multiple users as members.
+// Adds one or more users to a workspace.
 //
 // @param request - CreateMemberRequest
 //
@@ -1168,7 +1172,7 @@ func (client *Client) CreateMemberWithContext(ctx context.Context, WorkspaceId *
 
 // Summary:
 //
-// Creates a model. A model is a collection of model versions. When you create a model, you must specify the model name and description.
+// Creates a model, which is a collection of model versions. You must specify information such as the model name and description.
 //
 // @param request - CreateModelRequest
 //
@@ -1267,7 +1271,7 @@ func (client *Client) CreateModelWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// Creates a tag for a model.
+// Creates labels for a model.
 //
 // @param request - CreateModelLabelsRequest
 //
@@ -1314,7 +1318,7 @@ func (client *Client) CreateModelLabelsWithContext(ctx context.Context, ModelId 
 
 // Summary:
 //
-// Creates a new version for the specified model.
+// Adds a new version to a specified model.
 //
 // @param request - CreateModelVersionRequest
 //
@@ -1425,7 +1429,7 @@ func (client *Client) CreateModelVersionWithContext(ctx context.Context, ModelId
 
 // Summary:
 //
-// Creates a tag for a model version.
+// Creates labels for a model version.
 //
 // @param request - CreateModelVersionLabelsRequest
 //
@@ -1472,7 +1476,7 @@ func (client *Client) CreateModelVersionLabelsWithContext(ctx context.Context, M
 
 // Summary:
 //
-// Creates a pay-as-you-go order for DataWorks, OSS, PAI, or MaxCompute.
+// Purchases products. This operation supports pay-as-you-go purchases of DataWorks, OSS, PAI, and MaxCompute.
 //
 // @param request - CreateProductOrdersRequest
 //
@@ -1523,7 +1527,7 @@ func (client *Client) CreateProductOrdersWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a run. A run is an experiment that can be associated with a specific workload or simply a code execution.
+// Creates a run for an experiment. The run can be associated with a specific workload or be a standalone code execution.
 //
 // @param request - CreateRunRequest
 //
@@ -1653,7 +1657,7 @@ func (client *Client) CreateWorkspaceWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Associates resources with a workspace.
+// Add a resource reference to a workspace.
 //
 // @param request - CreateWorkspaceResourceRequest
 //
@@ -1704,7 +1708,62 @@ func (client *Client) CreateWorkspaceResourceWithContext(ctx context.Context, Wo
 
 // Summary:
 //
-// Deletes a code source based on the provided ID.
+// Creates a workspace role.
+//
+// @param request - CreateWorkspaceRoleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkspaceRoleResponse
+func (client *Client) CreateWorkspaceRoleWithContext(ctx context.Context, WorkspaceId *string, request *CreateWorkspaceRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWorkspaceRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ModulePermissions) {
+		body["ModulePermissions"] = request.ModulePermissions
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		body["RoleName"] = request.RoleName
+	}
+
+	if !dara.IsNil(request.RoleType) {
+		body["RoleType"] = request.RoleType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWorkspaceRole"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/roles"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWorkspaceRoleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a code source configuration by its ID.
 //
 // @param request - DeleteCodeSourceRequest
 //
@@ -1745,7 +1804,7 @@ func (client *Client) DeleteCodeSourceWithContext(ctx context.Context, CodeSourc
 
 // Summary:
 //
-// Deletes workspace configurations.
+// Deletes a workspace configuration.
 //
 // @param request - DeleteConfigRequest
 //
@@ -1878,7 +1937,7 @@ func (client *Client) DeleteDatasetWithContext(ctx context.Context, DatasetId *s
 
 // Summary:
 //
-// Deletes the metadata records of multiple files in a dataset at a time.
+// Deletes file metadata records from a dataset in batches.
 //
 // @param request - DeleteDatasetFileMetasRequest
 //
@@ -1933,7 +1992,7 @@ func (client *Client) DeleteDatasetFileMetasWithContext(ctx context.Context, Dat
 
 // Summary:
 //
-// Deletes a dataset job.
+// Deletes a dataset Job.
 //
 // @param request - DeleteDatasetJobRequest
 //
@@ -1974,7 +2033,7 @@ func (client *Client) DeleteDatasetJobWithContext(ctx context.Context, DatasetId
 
 // Summary:
 //
-// Deletes a job configuration for a dataset.
+// Deletes a dataset job configuration.
 //
 // @param request - DeleteDatasetJobConfigRequest
 //
@@ -2021,7 +2080,7 @@ func (client *Client) DeleteDatasetJobConfigWithContext(ctx context.Context, Dat
 
 // Summary:
 //
-// Deletes a dataset tag.
+// Deletes labels from a dataset.
 //
 // @param request - DeleteDatasetLabelsRequest
 //
@@ -2068,7 +2127,7 @@ func (client *Client) DeleteDatasetLabelsWithContext(ctx context.Context, Datase
 
 // Summary:
 //
-// Deletes the information about a specified version of a dataset. Version v1 cannot be deleted by using this operation. When you call the DeleteDataset operation to delete a dataset, it can be deleted at the same time.
+// Deletes a specified version of a dataset. This operation cannot be used to delete version v1. Version v1 is deleted with the dataset when you call the DeleteDataset operation.
 //
 // @param request - DeleteDatasetVersionRequest
 //
@@ -2109,7 +2168,7 @@ func (client *Client) DeleteDatasetVersionWithContext(ctx context.Context, Datas
 
 // Summary:
 //
-// Deletes tags for a dataset version.
+// Deletes labels from a dataset version.
 //
 // @param request - DeleteDatasetVersionLabelsRequest
 //
@@ -2197,7 +2256,7 @@ func (client *Client) DeleteExperimentWithContext(ctx context.Context, Experimen
 
 // Summary:
 //
-// Deletes an experiment tag.
+// Deletes a label from an experiment.
 //
 // @param request - DeleteExperimentLabelRequest
 //
@@ -2238,7 +2297,7 @@ func (client *Client) DeleteExperimentLabelWithContext(ctx context.Context, Expe
 
 // Summary:
 //
-// Deletes a member from a workspace.
+// Deletes members from a workspace.
 //
 // @param request - DeleteMembersRequest
 //
@@ -2326,7 +2385,7 @@ func (client *Client) DeleteModelWithContext(ctx context.Context, ModelId *strin
 
 // Summary:
 //
-// Deletes the labels of a model.
+// Deletes model labels.
 //
 // @param request - DeleteModelLabelsRequest
 //
@@ -2414,7 +2473,7 @@ func (client *Client) DeleteModelVersionWithContext(ctx context.Context, ModelId
 
 // Summary:
 //
-// Delete a model version tag.
+// Deletes labels from a model version.
 //
 // @param request - DeleteModelVersionLabelsRequest
 //
@@ -2502,7 +2561,7 @@ func (client *Client) DeleteRunWithContext(ctx context.Context, RunId *string, r
 
 // Summary:
 //
-// Deletes a tag that is added to a run.
+// Deletes a label from a run.
 //
 // @param request - DeleteRunLabelRequest
 //
@@ -2543,7 +2602,7 @@ func (client *Client) DeleteRunLabelWithContext(ctx context.Context, RunId *stri
 
 // Summary:
 //
-// Deletes user configurations.
+// Deletes a user configuration.
 //
 // @param request - DeleteUserConfigRequest
 //
@@ -2594,7 +2653,7 @@ func (client *Client) DeleteUserConfigWithContext(ctx context.Context, CategoryN
 
 // Summary:
 //
-// Deletes a workspace. After you delete a workspace, the associated resources are not automatically released. You must manually release the resources.
+// Deletes a workspace. This operation does not release associated resources. You must release them manually.
 //
 // @param request - DeleteWorkspaceRequest
 //
@@ -2635,7 +2694,7 @@ func (client *Client) DeleteWorkspaceWithContext(ctx context.Context, WorkspaceI
 
 // Summary:
 //
-// Deletes a resource from a workspace. The resource is not deleted at the underlying layer.
+// Detaches a resource from a workspace. This operation does not delete the underlying resource.
 //
 // @param request - DeleteWorkspaceResourceRequest
 //
@@ -2702,7 +2761,54 @@ func (client *Client) DeleteWorkspaceResourceWithContext(ctx context.Context, Wo
 
 // Summary:
 //
-// Obtains the details of a code source.
+// Deletes one or more roles from a workspace.
+//
+// @param request - DeleteWorkspaceRolesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkspaceRolesResponse
+func (client *Client) DeleteWorkspaceRolesWithContext(ctx context.Context, WorkspaceId *string, request *DeleteWorkspaceRolesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceRolesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.RoleIds) {
+		body["RoleIds"] = request.RoleIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWorkspaceRoles"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/roles/action/delete"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWorkspaceRolesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Gets the details of a specified code source configuration.
 //
 // @param request - GetCodeSourceRequest
 //
@@ -2743,7 +2849,7 @@ func (client *Client) GetCodeSourceWithContext(ctx context.Context, CodeSourceId
 
 // Summary:
 //
-// Obtains a workspace configuration item.
+// Retrieves the configurations of a workspace.
 //
 // @param request - GetConfigRequest
 //
@@ -2798,7 +2904,7 @@ func (client *Client) GetConfigWithContext(ctx context.Context, WorkspaceId *str
 
 // Summary:
 //
-// Obtains the connection details.
+// Retrieves the details of a connection.
 //
 // @param request - GetConnectionRequest
 //
@@ -2845,7 +2951,7 @@ func (client *Client) GetConnectionWithContext(ctx context.Context, ConnectionId
 
 // Summary:
 //
-// Obtains a dataset.
+// Retrieves a dataset.
 //
 // @param request - GetDatasetRequest
 //
@@ -2886,7 +2992,7 @@ func (client *Client) GetDatasetWithContext(ctx context.Context, DatasetId *stri
 
 // Summary:
 //
-// Queries the metadata records of specific files in a dataset.
+// Retrieves the metadata record of a specified file in a dataset.
 //
 // @param request - GetDatasetFileMetaRequest
 //
@@ -2937,7 +3043,7 @@ func (client *Client) GetDatasetFileMetaWithContext(ctx context.Context, Dataset
 
 // Summary:
 //
-// Obtains metadata statistics of a dataset.
+// Retrieves statistics for metadata in a dataset.
 //
 // @param request - GetDatasetFileMetasStatisticsRequest
 //
@@ -2996,7 +3102,7 @@ func (client *Client) GetDatasetFileMetasStatisticsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Obtains a dataset job.
+// Retrieves a dataset job.
 //
 // @param request - GetDatasetJobRequest
 //
@@ -3047,7 +3153,7 @@ func (client *Client) GetDatasetJobWithContext(ctx context.Context, DatasetId *s
 
 // Summary:
 //
-// Obtains a job configuration for a dataset.
+// Retrieves the configuration of a dataset job.
 //
 // @param request - GetDatasetJobConfigRequest
 //
@@ -3094,7 +3200,7 @@ func (client *Client) GetDatasetJobConfigWithContext(ctx context.Context, Datase
 
 // Summary:
 //
-// Obtains the information about a specified version of a dataset.
+// Retrieves information about a specific dataset version.
 //
 // @param request - GetDatasetVersionRequest
 //
@@ -3135,7 +3241,7 @@ func (client *Client) GetDatasetVersionWithContext(ctx context.Context, DatasetI
 
 // Summary:
 //
-// Queries information about the default workspace.
+// Retrieves the details of the default workspace.
 //
 // @param request - GetDefaultWorkspaceRequest
 //
@@ -3182,7 +3288,7 @@ func (client *Client) GetDefaultWorkspaceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Obtains an experiment.
+// Retrieves an experiment.
 //
 // @param request - GetExperimentRequest
 //
@@ -3229,7 +3335,7 @@ func (client *Client) GetExperimentWithContext(ctx context.Context, ExperimentId
 
 // Summary:
 //
-// Obtains the information about an image.
+// Retrieves the details of an image.
 //
 // @param request - GetImageRequest
 //
@@ -3276,7 +3382,48 @@ func (client *Client) GetImageWithContext(ctx context.Context, ImageId *string, 
 
 // Summary:
 //
-// Obtains a member in a workspace.
+// Gets the details of a job.
+//
+// @param request - GetInstanceJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceJobResponse
+func (client *Client) GetInstanceJobWithContext(ctx context.Context, InstanceJobId *string, request *GetInstanceJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceJob"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instancejobs/" + dara.PercentEncode(dara.StringValue(InstanceJobId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a member of a workspace.
 //
 // @param request - GetMemberRequest
 //
@@ -3327,7 +3474,7 @@ func (client *Client) GetMemberWithContext(ctx context.Context, WorkspaceId *str
 
 // Summary:
 //
-// Obtains the details of a specified model.
+// Gets the details of a specified model.
 //
 // @param request - GetModelRequest
 //
@@ -3368,7 +3515,7 @@ func (client *Client) GetModelWithContext(ctx context.Context, ModelId *string, 
 
 // Summary:
 //
-// Queries a model version.
+// Retrieves a model version.
 //
 // @param request - GetModelVersionRequest
 //
@@ -3409,7 +3556,7 @@ func (client *Client) GetModelVersionWithContext(ctx context.Context, ModelId *s
 
 // Summary:
 //
-// Obtains permissions on a workspace.
+// Retrieves the permissions of a workspace.
 //
 // @param tmpReq - GetPermissionRequest
 //
@@ -3490,7 +3637,7 @@ func (client *Client) GetPermissionWithContext(ctx context.Context, WorkspaceId 
 
 // Summary:
 //
-// Queries the run information.
+// Retrieves run details.
 //
 // @param request - GetRunRequest
 //
@@ -3537,7 +3684,7 @@ func (client *Client) GetRunWithContext(ctx context.Context, RunId *string, requ
 
 // Summary:
 //
-// Queries the details about a workspace.
+// Retrieves the details of a workspace.
 //
 // @param request - GetWorkspaceRequest
 //
@@ -3584,7 +3731,48 @@ func (client *Client) GetWorkspaceWithContext(ctx context.Context, WorkspaceId *
 
 // Summary:
 //
-// Lists code sources. Pagination, sorting, and filtering by condition are supported.
+// Gets information about a specific role within a workspace.
+//
+// @param request - GetWorkspaceRoleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkspaceRoleResponse
+func (client *Client) GetWorkspaceRoleWithContext(ctx context.Context, WorkspaceId *string, RoleId *string, request *GetWorkspaceRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkspaceRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkspaceRole"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/roles/" + dara.PercentEncode(dara.StringValue(RoleId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkspaceRoleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of code source configurations with support for paging, sorting, and filtering.
 //
 // @param request - ListCodeSourcesRequest
 //
@@ -3651,7 +3839,7 @@ func (client *Client) ListCodeSourcesWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Obtains a list of workspace configurations.
+// Lists the configurations for a workspace.
 //
 // @param request - ListConfigsRequest
 //
@@ -3710,7 +3898,7 @@ func (client *Client) ListConfigsWithContext(ctx context.Context, WorkspaceId *s
 
 // Summary:
 //
-// Lists connections.
+// Queries a list of connections.
 //
 // @param tmpReq - ListConnectionsRequest
 //
@@ -3823,7 +4011,7 @@ func (client *Client) ListConnectionsWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// Queries a list of dataset files.
+// Queries the files in a dataset.
 //
 // @param tmpReq - ListDatasetFileMetasRequest
 //
@@ -4004,7 +4192,7 @@ func (client *Client) ListDatasetFileMetasWithContext(ctx context.Context, Datas
 
 // Summary:
 //
-// Queries the dataset job configurations at a time.
+// Lists dataset job configurations in batches.
 //
 // @param request - ListDatasetJobConfigsRequest
 //
@@ -4067,7 +4255,7 @@ func (client *Client) ListDatasetJobConfigsWithContext(ctx context.Context, Data
 
 // Summary:
 //
-// Lists jobs in a dataset.
+// Lists dataset jobs.
 //
 // @param request - ListDatasetJobsRequest
 //
@@ -4146,7 +4334,7 @@ func (client *Client) ListDatasetJobsWithContext(ctx context.Context, DatasetId 
 
 // Summary:
 //
-// Lists dataset versions.
+// Retrieves a list of dataset versions.
 //
 // @param request - ListDatasetVersionsRequest
 //
@@ -4340,7 +4528,7 @@ func (client *Client) ListDatasetsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Lists experiments.
+// Retrieves a list of experiments.
 //
 // @param tmpReq - ListExperimentRequest
 //
@@ -4437,7 +4625,7 @@ func (client *Client) ListExperimentWithContext(ctx context.Context, tmpReq *Lis
 
 // Summary:
 //
-// Queries a list of features.
+// Retrieves a list of features.
 //
 // @param request - ListFeaturesRequest
 //
@@ -4484,7 +4672,7 @@ func (client *Client) ListFeaturesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Lists all tags of an image.
+// Queries a list of image labels.
 //
 // @param request - ListImageLabelsRequest
 //
@@ -4634,7 +4822,7 @@ func (client *Client) ListImagesWithContext(ctx context.Context, request *ListIm
 
 // Summary:
 //
-// Obtains the members in a workspace.
+// Lists members in a workspace.
 //
 // @param request - ListMembersRequest
 //
@@ -4697,7 +4885,7 @@ func (client *Client) ListMembersWithContext(ctx context.Context, WorkspaceId *s
 
 // Summary:
 //
-// Queries a list of model versions.
+// Retrieves a list of model versions.
 //
 // @param request - ListModelVersionsRequest
 //
@@ -4784,7 +4972,7 @@ func (client *Client) ListModelVersionsWithContext(ctx context.Context, ModelId 
 
 // Summary:
 //
-// Queries a list of models.
+// Retrieves a list of models.
 //
 // @param tmpReq - ListModelsRequest
 //
@@ -4901,7 +5089,7 @@ func (client *Client) ListModelsWithContext(ctx context.Context, tmpReq *ListMod
 
 // Summary:
 //
-// Lists the permissions that a user has in a workspace.
+// Retrieves a list of user permissions in a workspace.
 //
 // @param request - ListPermissionsRequest
 //
@@ -4942,7 +5130,7 @@ func (client *Client) ListPermissionsWithContext(ctx context.Context, WorkspaceI
 
 // Summary:
 //
-// 列举产品
+// Lists products.
 //
 // @param request - ListProductsRequest
 //
@@ -4997,7 +5185,7 @@ func (client *Client) ListProductsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Obtains the list of quotas.
+// Retrieves a list of resource quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -5044,7 +5232,7 @@ func (client *Client) ListQuotasWithContext(ctx context.Context, request *ListQu
 
 // Summary:
 //
-// Queries the resources that are associated with a workspace.
+// Lists resources associated with a workspace.
 //
 // @param request - ListResourcesRequest
 //
@@ -5135,7 +5323,7 @@ func (client *Client) ListResourcesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Lists the metrics for a run.
+// Retrieves a list of metric records for a run.
 //
 // @param request - ListRunMetricsRequest
 //
@@ -5190,7 +5378,7 @@ func (client *Client) ListRunMetricsWithContext(ctx context.Context, RunId *stri
 
 // Summary:
 //
-// Queries a list of runs.
+// Retrieves a list of runs.
 //
 // @param request - ListRunsRequest
 //
@@ -5293,7 +5481,7 @@ func (client *Client) ListRunsWithContext(ctx context.Context, request *ListRuns
 
 // Summary:
 //
-// Queries user information.
+// Retrieves user configurations.
 //
 // @param request - ListUserConfigsRequest
 //
@@ -5344,7 +5532,86 @@ func (client *Client) ListUserConfigsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Lists the users who do not belong to a workspace. These users can be added to the workspace as members.
+// Lists the roles in a specified workspace.
+//
+// @param request - ListWorkspaceRolesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkspaceRolesResponse
+func (client *Client) ListWorkspaceRolesWithContext(ctx context.Context, WorkspaceId *string, request *ListWorkspaceRolesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkspaceRolesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RoleIds) {
+		query["RoleIds"] = request.RoleIds
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		query["RoleName"] = request.RoleName
+	}
+
+	if !dara.IsNil(request.RoleType) {
+		query["RoleType"] = request.RoleType
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.VerboseFields) {
+		query["VerboseFields"] = request.VerboseFields
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkspaceRoles"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/roles"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkspaceRolesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists users that can be added as members to a workspace.
 //
 // @param request - ListWorkspaceUsersRequest
 //
@@ -5395,11 +5662,11 @@ func (client *Client) ListWorkspaceUsersWithContext(ctx context.Context, Workspa
 
 // Summary:
 //
-// Lists all workspaces in a region.
+// Retrieves the list of workspaces in a specified region.
 //
 // Description:
 //
-// You can use the option parameter to specify query options, so as to obtain different information about the workspaces.
+// You can specify different query options by using the option parameter to retrieve different workspace-related information.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -5494,7 +5761,7 @@ func (client *Client) ListWorkspacesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Logs multiple metrics for a run at a time.
+// Records the metrics of a run in a batch.
 //
 // @param request - LogRunMetricsRequest
 //
@@ -5541,7 +5808,7 @@ func (client *Client) LogRunMetricsWithContext(ctx context.Context, RunId *strin
 
 // Summary:
 //
-// Publishes a private code source to a workspace to make the code source publicly accessible.
+// Publishes a private code source, making it public in a workspace.
 //
 // @param request - PublishCodeSourceRequest
 //
@@ -5623,7 +5890,7 @@ func (client *Client) PublishDatasetWithContext(ctx context.Context, DatasetId *
 
 // Summary:
 //
-// Publishes an image. After the image is published, the visibility of the image is changed from PRIVATE to PUBLIC.
+// Publishes an image and changes its visibility from PRIVATE to PUBLIC.
 //
 // @param request - PublishImageRequest
 //
@@ -5664,7 +5931,7 @@ func (client *Client) PublishImageWithContext(ctx context.Context, ImageId *stri
 
 // Summary:
 //
-// Removes an image.
+// Deletes an image.
 //
 // @param request - RemoveImageRequest
 //
@@ -5705,7 +5972,7 @@ func (client *Client) RemoveImageWithContext(ctx context.Context, ImageId *strin
 
 // Summary:
 //
-// Removes an image tag.
+// Removes a label from an image.
 //
 // @param request - RemoveImageLabelsRequest
 //
@@ -5746,7 +6013,7 @@ func (client *Client) RemoveImageLabelsWithContext(ctx context.Context, ImageId 
 
 // Summary:
 //
-// Removes a member role.
+// Removes a role from a member.
 //
 // @param request - RemoveMemberRoleRequest
 //
@@ -5787,7 +6054,7 @@ func (client *Client) RemoveMemberRoleWithContext(ctx context.Context, Workspace
 
 // Summary:
 //
-// Updates a experiment tag.
+// Updates the labels of an experiment.
 //
 // @param request - SetExperimentLabelsRequest
 //
@@ -5834,7 +6101,7 @@ func (client *Client) SetExperimentLabelsWithContext(ctx context.Context, Experi
 
 // Summary:
 //
-// Updates the user configurations.
+// Updates user configurations.
 //
 // @param request - SetUserConfigsRequest
 //
@@ -5881,7 +6148,7 @@ func (client *Client) SetUserConfigsWithContext(ctx context.Context, request *Se
 
 // Summary:
 //
-// Stops a dataset job.
+// Stops a dataset Job.
 //
 // @param request - StopDatasetJobRequest
 //
@@ -5932,7 +6199,7 @@ func (client *Client) StopDatasetJobWithContext(ctx context.Context, DatasetId *
 
 // Summary:
 //
-// Updates a code build.
+// Updates a code source.
 //
 // @param request - UpdateCodeSourceRequest
 //
@@ -6011,7 +6278,7 @@ func (client *Client) UpdateCodeSourceWithContext(ctx context.Context, CodeSourc
 
 // Summary:
 //
-// Updates or adds a workspace configuration item.
+// Updates or creates workspace configurations.
 //
 // @param request - UpdateConfigRequest
 //
@@ -6070,7 +6337,7 @@ func (client *Client) UpdateConfigWithContext(ctx context.Context, WorkspaceId *
 
 // Summary:
 //
-// Updates or adds workspace configurations in batches.
+// Updates or creates workspace configurations in batches.
 //
 // @param request - UpdateConfigsRequest
 //
@@ -6117,7 +6384,7 @@ func (client *Client) UpdateConfigsWithContext(ctx context.Context, WorkspaceId 
 
 // Summary:
 //
-// Updates a connection.
+// Updates a connection configuration.
 //
 // @param request - UpdateConnectionRequest
 //
@@ -6176,7 +6443,7 @@ func (client *Client) UpdateConnectionWithContext(ctx context.Context, Connectio
 
 // Summary:
 //
-// Updates the name, description, and other information about a dataset.
+// Updates the properties of a dataset, such as its name and description.
 //
 // @param request - UpdateDatasetRequest
 //
@@ -6251,7 +6518,7 @@ func (client *Client) UpdateDatasetWithContext(ctx context.Context, DatasetId *s
 
 // Summary:
 //
-// Updates the metadata records of multiple files in a dataset at a time.
+// Updates multiple file metadata records in a dataset.
 //
 // @param request - UpdateDatasetFileMetasRequest
 //
@@ -6365,7 +6632,7 @@ func (client *Client) UpdateDatasetJobWithContext(ctx context.Context, DatasetId
 
 // Summary:
 //
-// Updates a job configuration for a dataset.
+// Updates a dataset job configuration.
 //
 // @param request - UpdateDatasetJobConfigRequest
 //
@@ -6420,7 +6687,7 @@ func (client *Client) UpdateDatasetJobConfigWithContext(ctx context.Context, Dat
 
 // Summary:
 //
-// Updates the information about a specified version of a dataset.
+// Updates the information for a specific version of a dataset.
 //
 // @param request - UpdateDatasetVersionRequest
 //
@@ -6479,7 +6746,7 @@ func (client *Client) UpdateDatasetVersionWithContext(ctx context.Context, Datas
 
 // Summary:
 //
-// Specifies a workspace as the default workspace.
+// Sets a workspace as the default.
 //
 // @param request - UpdateDefaultWorkspaceRequest
 //
@@ -6577,7 +6844,7 @@ func (client *Client) UpdateExperimentWithContext(ctx context.Context, Experimen
 
 // Summary:
 //
-// Updates the basic configuration information about a model.
+// Updates the basic configuration of a model.
 //
 // @param request - UpdateModelRequest
 //
@@ -6755,7 +7022,7 @@ func (client *Client) UpdateModelVersionWithContext(ctx context.Context, ModelId
 
 // Summary:
 //
-// Updates the run information.
+// Updates the details of a run.
 //
 // @param request - UpdateRunRequest
 //
@@ -6861,7 +7128,7 @@ func (client *Client) UpdateWorkspaceWithContext(ctx context.Context, WorkspaceI
 
 // Summary:
 //
-// Updates the resources of a workspace.
+// Updates resources in a workspace.
 //
 // @param request - UpdateWorkspaceResourceRequest
 //
@@ -6932,7 +7199,58 @@ func (client *Client) UpdateWorkspaceResourceWithContext(ctx context.Context, Wo
 
 // Summary:
 //
-// 验证连接
+// Updates a role in a workspace.
+//
+// @param request - UpdateWorkspaceRoleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkspaceRoleResponse
+func (client *Client) UpdateWorkspaceRoleWithContext(ctx context.Context, WorkspaceId *string, RoleId *string, request *UpdateWorkspaceRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateWorkspaceRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ModulePermissions) {
+		body["ModulePermissions"] = request.ModulePermissions
+	}
+
+	if !dara.IsNil(request.RoleName) {
+		body["RoleName"] = request.RoleName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWorkspaceRole"),
+		Version:     dara.String("2021-02-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/roles/" + dara.PercentEncode(dara.StringValue(RoleId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWorkspaceRoleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Validates a connection.
 //
 // @param request - ValidateConnectionRequest
 //

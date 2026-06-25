@@ -34,36 +34,55 @@ type iCreateImageBuildRequest interface {
 }
 
 type CreateImageBuildRequest struct {
+	// An idempotence token.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 镜像构建的可见性，可能值： - PUBLIC：当前工作空间所有成员都可以操作。 - PRIVATE：只有创建者可以操作。
+	// The visibility of the image.
+	//
+	// - **PUBLIC**: The image is public.
+	//
+	// - **PRIVATE**: The image is private.
 	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// 构建配置，指定待构建的 Dockerfile 文件内容。
+	// **The build configuration. Specify the content of the Dockerfile to be built.**
 	//
 	// This parameter is required.
 	BuildConfig *CreateImageBuildRequestBuildConfig `json:"BuildConfig,omitempty" xml:"BuildConfig,omitempty" type:"Struct"`
+	// The metadata of the image.
+	//
 	// This parameter is required.
 	Image *CreateImageBuildRequestImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
+	// The name of the image build task.
+	//
 	// example:
 	//
 	// build-my-image
 	ImageBuildJobName *string `json:"ImageBuildJobName,omitempty" xml:"ImageBuildJobName,omitempty"`
-	// 是否覆盖更新 ACR 镜像仓库中已存在的镜像 tag。
+	// Specifies whether to overwrite an existing image version in the image repository.
 	OverwriteImageTag *bool `json:"OverwriteImageTag,omitempty" xml:"OverwriteImageTag,omitempty"`
-	// 代表region的资源属性字段
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 构建任务运行资源
+	// The resources used to run the task.
 	//
 	// This parameter is required.
 	Resource *CreateImageBuildRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	// **The configuration of the target image repository.**
+	//
 	// This parameter is required.
 	TargetRegistry *CreateImageBuildRequestTargetRegistry `json:"TargetRegistry,omitempty" xml:"TargetRegistry,omitempty" type:"Struct"`
-	// 用户专有网络信息。使用企业版 ACR 实例时，此参数必填，指定在用户 ACR 实例的访问控制里已添加的专有网络。
+	// The information about the user\\"s virtual private cloud (VPC). This parameter is required when you use the public resource group.
 	UserVpc *CreateImageBuildRequestUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
-	// 镜像构建所属的工作空间ID。
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -210,13 +229,19 @@ func (s *CreateImageBuildRequest) Validate() error {
 }
 
 type CreateImageBuildRequestBuildConfig struct {
+	// The build type. The following types are supported:
+	//
+	// - **PackageInstallation**: Installs software packages based on a specified image.
+	//
+	// - **CustomDockerfile**: Builds an image based on a custom Dockerfile.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PackageInstallation
 	BuildType *string `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
-	// Dockerfile文件内容
+	// The content of the Dockerfile to be built.
 	//
 	// This parameter is required.
 	//
@@ -226,6 +251,8 @@ type CreateImageBuildRequestBuildConfig struct {
 	//
 	// RUN pip3 install numpy==1.19.5
 	Dockerfile *string `json:"Dockerfile,omitempty" xml:"Dockerfile,omitempty"`
+	// The authentication information for the private image repository. You can specify the authentication information for an ACR image repository that does not belong to you. The format is \\`{"user_registry_domain":{"Auth":"base64 encoded auth"}}\\`.
+	//
 	// example:
 	//
 	// {
@@ -280,14 +307,30 @@ func (s *CreateImageBuildRequestBuildConfig) Validate() error {
 }
 
 type CreateImageBuildRequestImage struct {
-	Description *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	Labels      []*CreateImageBuildRequestImageLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The description of the image.
+	//
+	// example:
+	//
+	// Build test image
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The image labels.
+	Labels []*CreateImageBuildRequestImageLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The name of the image. The name must meet the following requirements:
+	//
+	// - The name must be 1 to 50 characters in length.
+	//
+	// - The name can contain lowercase letters, digits, and hyphens (-). It must start with a letter.
+	//
+	// - The name must be unique within the same workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-v1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The image URL.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -354,10 +397,14 @@ func (s *CreateImageBuildRequestImage) Validate() error {
 }
 
 type CreateImageBuildRequestImageLabels struct {
+	// The key of the image label.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the image label.
+	//
 	// example:
 	//
 	// value1
@@ -395,17 +442,22 @@ func (s *CreateImageBuildRequestImageLabels) Validate() error {
 }
 
 type CreateImageBuildRequestResource struct {
-	// 后付费资源规格
+	// The instance type of the pay-as-you-go resource. This parameter is required when you use the public resource group.
 	//
 	// example:
 	//
 	// ecs.c6.large
-	EcsSpec        *string                                        `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// The resource configuration. Specify this parameter when you use subscription resources. Leave it empty when you use the public resource group.
 	ResourceConfig *CreateImageBuildRequestResourceResourceConfig `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty" type:"Struct"`
+	// The resource quota ID. This parameter applies only to subscription resources. Do not set this parameter for pay-as-you-go resources.
+	//
 	// example:
 	//
 	// quotaadzoqup693z
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the subscription resource. Currently, only Lingjun resources are supported. Specify this parameter when you use subscription resources.
+	//
 	// example:
 	//
 	// Lingjun
@@ -466,10 +518,14 @@ func (s *CreateImageBuildRequestResource) Validate() error {
 }
 
 type CreateImageBuildRequestResourceResourceConfig struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 4
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The memory size.
+	//
 	// example:
 	//
 	// 8Gi
@@ -507,10 +563,14 @@ func (s *CreateImageBuildRequestResourceResourceConfig) Validate() error {
 }
 
 type CreateImageBuildRequestTargetRegistry struct {
+	// The ID of the image repository instance. This parameter is required when you use ACR as the image repository.
+	//
 	// example:
 	//
 	// cri-**abcd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the target image repository. Only ACR Enterprise Edition is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -550,27 +610,33 @@ func (s *CreateImageBuildRequestTargetRegistry) Validate() error {
 }
 
 type CreateImageBuildRequestUserVpc struct {
-	// 默认路由网卡出口
+	// The default route.
+	//
+	// - eth1: Indicates that the user\\"s elastic network interface (ENI) is used to access the external network through a private gateway. For more information, see [Configure a Distribution Switch (DSW) instance to access the Internet through a private NAT gateway](https://help.aliyun.com/zh/pai/user-guide/configure-a-dsw-instance-to-access-the-internet-through-a-private-nat-gateway?spm=a2c4g.11186623.0.0.3b3965f6SZWm85).
 	//
 	// example:
 	//
 	// eth1
 	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
-	// 扩展网段
+	// The extended CIDR blocks.
+	//
+	// - If you do not specify a vSwitch ID, you can leave this parameter empty. The system automatically obtains all CIDR blocks of the VPC.
+	//
+	// - If you specify a vSwitch ID, you must specify this parameter. For best results, include all CIDR blocks of the VPC.
 	ExtendedCidrs []*string `json:"ExtendedCidrs,omitempty" xml:"ExtendedCidrs,omitempty" type:"Repeated"`
-	// 安全组 ID
+	// The security group ID. This parameter is required when you configure a VPC.
 	//
 	// example:
 	//
 	// sg-abcdef**
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// 交换机 ID
+	// The vSwitch ID. This parameter is optional.
 	//
 	// example:
 	//
 	// vs-abcdef**
 	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
-	// 专有网络 ID
+	// The VPC ID. If the build task needs to access your ACR Enterprise Edition instance, specify a VPC that is in the access control list of the instance.
 	//
 	// example:
 	//

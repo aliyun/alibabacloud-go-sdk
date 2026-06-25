@@ -42,13 +42,17 @@ type GetDatasetJobResponseBody struct {
 	//
 	// 990
 	CompletedFileCount *int64 `json:"CompletedFileCount,omitempty" xml:"CompletedFileCount,omitempty"`
-	// The time when the job is started.
+	// The time when the task was started.
 	//
 	// example:
 	//
 	// 2024-11-15T07:06:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The job description.
+	// The task description.
+	//
+	// example:
+	//
+	// This is a task description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The total number of failed files.
 	//
@@ -56,43 +60,31 @@ type GetDatasetJobResponseBody struct {
 	//
 	// 10
 	FailedFileCount *int64 `json:"FailedFileCount,omitempty" xml:"FailedFileCount,omitempty"`
-	// The time when the job ends.
+	// The time when the task was finished.
 	//
 	// example:
 	//
 	// 2024-07-16T02:03:23Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The action that is performed on the job.
-	//
-	// Valid values:
-	//
-	// 	- SemanticIndex: semantic indexing
-	//
-	// 	- IntelligentTag: smart labeling
-	//
-	// 	- FileMetaExport: metadata export
+	// The task operation.
 	//
 	// example:
 	//
 	// SemanticIndex
 	JobAction *string `json:"JobAction,omitempty" xml:"JobAction,omitempty"`
-	// The job mode.
-	//
-	// Valid value:
-	//
-	// 	- Full: full data mode.
+	// The task pattern.
 	//
 	// example:
 	//
 	// Full
 	JobMode *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
-	// The job details.
+	// The task details.
 	//
 	// example:
 	//
 	// {\\"modelId\\":\\"xxx\\"}
 	JobSpec *string `json:"JobSpec,omitempty" xml:"JobSpec,omitempty"`
-	// The job logs.
+	// The list of task logs.
 	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -100,29 +92,13 @@ type GetDatasetJobResponseBody struct {
 	//
 	// 64B50C1D-D4C2-560C-86A3-A6ED****16D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The job state.
-	//
-	// Valid values:
-	//
-	// 	- Succeeded
-	//
-	// 	- Failed
-	//
-	// 	- Running
-	//
-	// 	- Pending
-	//
-	// 	- PartialFailed
-	//
-	// 	- Deleting
-	//
-	// 	- ManuallyStop
+	// The task status.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of job files.
+	// The total number of files for the task.
 	//
 	// example:
 	//

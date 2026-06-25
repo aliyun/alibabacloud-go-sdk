@@ -40,73 +40,91 @@ type iListConnectionsShrinkRequest interface {
 }
 
 type ListConnectionsShrinkRequest struct {
+	// Visibility of the connection. Valid values:
+	//
+	// - PUBLIC: visible to all workspace members.
+	//
+	// - PRIVATE: visible only to the creator.
+	//
+	// example:
+	//
+	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The list of connection IDs.
+	// List of connection IDs to filter by.
 	ConnectionIdsShrink *string `json:"ConnectionIds,omitempty" xml:"ConnectionIds,omitempty"`
-	// The connection name.
+	// Connection name. Supports fuzzy matching.
+	//
+	// example:
+	//
+	// Database connection
 	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
-	// The list of connection types.
+	// List of connection types to filter by.
 	ConnectionTypesShrink *string `json:"ConnectionTypes,omitempty" xml:"ConnectionTypes,omitempty"`
-	Creator               *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The encryption settings. Valid values:
+	// Alibaba Cloud account ID of the creator.
 	//
-	// 	- PlainText
+	// example:
 	//
-	// 	- Secret
+	// 12908*******3242
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Encryption option for sensitive fields in the response. Valid values:
+	//
+	// - PlainText: returns values in plaintext.
+	//
+	// - Secret: returns values in ciphertext.
 	//
 	// example:
 	//
 	// PlainText
 	EncryptOption *string `json:"EncryptOption,omitempty" xml:"EncryptOption,omitempty"`
-	// The maximum number of entries per page.
+	// Maximum number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The model identifier.
+	// Model identifier. Filters connections associated with this model.
 	//
 	// example:
 	//
 	// model_001
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The list of model types.
+	// List of model types to filter by.
 	ModelTypesShrink *string `json:"ModelTypes,omitempty" xml:"ModelTypes,omitempty"`
-	// The pagination token that indicates the start position from which to retrieve data on the next page.
+	// The token that marks the starting position for the next page of results.
 	//
 	// example:
 	//
 	// 15
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The order in which the entries are sorted by the specific field on the returned page. This parameter must be used together with SortBy.
+	// Sort order. Use with the SortBy parameter. Valid values:
 	//
-	// 	- ASC: ascending order.
+	// - ASC: ascending order.
 	//
-	// 	- DESC: descending order. This is the default value.
+	// - DESC (default): descending order.
 	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The field used to sort the results in queries by page. Default value: GmtCreateTime. Valid value:
+	// Field by which to sort results. Default value: GmtCreateTime. Valid values:
 	//
-	// 	- GmtCreateTime: The results are sorted by creation time. This is the default value.
+	// - GmtCreateTime (default): sorts by creation time.
 	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// Specifies whether a tool can be called by using ToolCall. Valid values:
+	// Whether tool calling is supported. Valid values:
 	//
-	// 	- true
+	// - true: supported.
 	//
-	// 	- false
+	// - false: not supported.
 	//
 	// example:
 	//
 	// true
 	ToolCall *bool `json:"ToolCall,omitempty" xml:"ToolCall,omitempty"`
-	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// Workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
 	//
 	// example:
 	//

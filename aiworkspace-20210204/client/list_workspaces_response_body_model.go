@@ -26,21 +26,23 @@ type ListWorkspacesResponseBody struct {
 	//
 	// 8D7B2E70-F770-505B-A672-09F1D8F2EC1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type and quantity of resources that can be activated in a workspace. This list is returned when the Option is set to GetResourceLimits. Valid values:
+	// The resource types and quantity limits that a user can activate within a workspace. This list is returned when Option is set to GetResourceLimits.
 	//
-	// 	- MaxCompute_share: pay-as-you-go MaxCompute
+	// Currently supported resource types include:
 	//
-	// 	- MaxCompute_isolate: subscription MaxCompute
+	// 	- MaxCompute_share: MaxCompute pay-as-you-go.
 	//
-	// 	- DLC_share: pay-as-you-go DLC
+	// 	- MaxCompute_isolate: MaxCompute subscription.
 	//
-	// 	- PAI_Isolate: subscription PAI
+	// 	- DLC_share: DLC pay-as-you-go.
 	//
-	// 	- PAI_share: pay-as-you-go PAI
+	// 	- PAI_isolate: PAI subscription.
 	//
-	// 	- DataWorks_isolate: subscription DataWorks
+	// 	- PAI_share: PAI pay-as-you-go.
 	//
-	// 	- DataWorks_share: pay-as-you-go DataWorks
+	// 	- DataWorks_isolate: DataWorks subscription.
+	//
+	// 	- DataWorks_share: DataWorks pay-as-you-go.
 	//
 	// example:
 	//
@@ -54,7 +56,7 @@ type ListWorkspacesResponseBody struct {
 	//
 	// }
 	ResourceLimits map[string]interface{} `json:"ResourceLimits,omitempty" xml:"ResourceLimits,omitempty"`
-	// The number of workspaces that meet the query conditions.
+	// The total number of workspaces that match the query conditions.
 	//
 	// example:
 	//
@@ -122,7 +124,7 @@ func (s *ListWorkspacesResponseBody) Validate() error {
 }
 
 type ListWorkspacesResponseBodyWorkspaces struct {
-	// The names of the administrator accounts.
+	// The list of administrator account names.
 	AdminNames []*string `json:"AdminNames,omitempty" xml:"AdminNames,omitempty" type:"Repeated"`
 	// The user ID of the creator.
 	//
@@ -130,27 +132,28 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// 122424353535
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The description of the workspace.
+	// The workspace description.
 	//
 	// example:
 	//
 	// workspace description example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment types of the workspace.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The list of environments in the workspace.
 	EnvTypes []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
-	// the additional information. Only contains TenantId.
+	// The extended information. Currently, this includes TenantId, which represents the tenant ID.
 	//
 	// example:
 	//
 	// {"TenantId": "4286******98"}
 	ExtraInfos map[string]interface{} `json:"ExtraInfos,omitempty" xml:"ExtraInfos,omitempty"`
-	// The time when the workspace was created. The time (UTC+0) follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ss.SSSZ format.
+	// The time when the workspace was created. The time follows the ISO 8601 standard in UTC+0. Format: yyyy-MM-ddTHH:mm:ss.SSSZ.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the workspace was modified. The time (UTC+0) follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ss.SSSZ format.
+	// The time when the workspace was last modified. The time follows the ISO 8601 standard in UTC+0. Format: yyyy-MM-ddTHH:mmZ.
 	//
 	// example:
 	//
@@ -162,7 +165,7 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The status of the workspace.
+	// The workspace status.
 	//
 	// example:
 	//
@@ -174,7 +177,7 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// 123
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The name of the workspace.
+	// The workspace name.
 	//
 	// example:
 	//
@@ -206,6 +209,10 @@ func (s *ListWorkspacesResponseBodyWorkspaces) GetCreator() *string {
 
 func (s *ListWorkspacesResponseBodyWorkspaces) GetDescription() *string {
 	return s.Description
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) GetDisplayName() *string {
+	return s.DisplayName
 }
 
 func (s *ListWorkspacesResponseBodyWorkspaces) GetEnvTypes() []*string {
@@ -256,6 +263,11 @@ func (s *ListWorkspacesResponseBodyWorkspaces) SetCreator(v string) *ListWorkspa
 
 func (s *ListWorkspacesResponseBodyWorkspaces) SetDescription(v string) *ListWorkspacesResponseBodyWorkspaces {
 	s.Description = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetDisplayName(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.DisplayName = &v
 	return s
 }
 

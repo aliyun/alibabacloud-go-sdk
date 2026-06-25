@@ -24,22 +24,27 @@ type iListDatasetJobConfigsRequest interface {
 type ListDatasetJobConfigsRequest struct {
 	// The configuration type.
 	//
-	// 	- MultimodalIntelligentTag
+	// - MultimodalIntelligentTag
 	//
-	// 	- MultimodalSemanticIndex
+	// - MultimodalSemanticIndex
 	//
 	// example:
 	//
 	// MultimodalIntelligentTag
-	ConfigType     *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The name of the dataset version.
+	//
+	// example:
+	//
+	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value starts from 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of entries per page. The default value is 10.
 	//
 	// example:
 	//

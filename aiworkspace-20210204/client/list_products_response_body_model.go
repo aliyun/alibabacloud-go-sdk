@@ -18,12 +18,16 @@ type iListProductsResponseBody interface {
 }
 
 type ListProductsResponseBody struct {
+	// The list of products.
 	Products []*ListProductsResponseBodyProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1e195c5116124202371861018d5bde
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Services  []*ListProductsResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of services.
+	Services []*ListProductsResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 }
 
 func (s ListProductsResponseBody) String() string {
@@ -84,16 +88,23 @@ func (s *ListProductsResponseBody) Validate() error {
 }
 
 type ListProductsResponseBodyProducts struct {
+	// Indicates whether the user has permission to purchase the product.
 	HasPermissionToPurchase *bool `json:"HasPermissionToPurchase,omitempty" xml:"HasPermissionToPurchase,omitempty"`
+	// Indicates whether the product is purchased.
+	//
 	// example:
 	//
 	// true
 	IsPurchased *bool `json:"IsPurchased,omitempty" xml:"IsPurchased,omitempty"`
+	// The product code.
+	//
 	// example:
 	//
 	// DataWorks_isolate
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductId   *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The purchase URL.
+	//
 	// example:
 	//
 	// https://common-buy.aliy
@@ -158,11 +169,16 @@ func (s *ListProductsResponseBodyProducts) Validate() error {
 }
 
 type ListProductsResponseBodyServices struct {
+	// Indicates whether the service is activated.
+	//
 	// example:
 	//
 	// true
-	IsOpen  *bool   `json:"IsOpen,omitempty" xml:"IsOpen,omitempty"`
+	IsOpen *bool `json:"IsOpen,omitempty" xml:"IsOpen,omitempty"`
+	// The activation URL.
 	OpenUrl *string `json:"OpenUrl,omitempty" xml:"OpenUrl,omitempty"`
+	// The service code.
+	//
 	// example:
 	//
 	// oss

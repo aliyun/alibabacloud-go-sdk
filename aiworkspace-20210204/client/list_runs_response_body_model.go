@@ -20,15 +20,15 @@ type iListRunsResponseBody interface {
 }
 
 type ListRunsResponseBody struct {
-	// The pagination token that is used to retrieve the next page. You do not need to specify this parameter for the first request. You must specify the pagination token in the result of the previous query. If the pagination token is 0, no next page exists. You can obtain the pagination token that is used to retrieve the next page in the value of the **NextPageToken*	- field.
+	// The paging token. For the first query, leave this parameter empty. The token for the next page is returned in the response. If the returned token is 0, all results have been returned. You can obtain the token for the next page from the **NextPageToken*	- field in the response.
 	//
 	// example:
 	//
 	// 0
 	NextPageToken *int64 `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// The runs.
+	// The list of runs.
 	Runs []*Run `json:"Runs,omitempty" xml:"Runs,omitempty" type:"Repeated"`
-	// The total number of entries returned. By default, this parameter is not returned.
+	// The total number of entries that meet the filter criteria. This parameter is optional and may not be returned.
 	//
 	// example:
 	//

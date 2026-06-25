@@ -34,91 +34,93 @@ type iListModelVersionsRequest interface {
 }
 
 type ListModelVersionsRequest struct {
-	// The approval status based on which the model versions are queried. Valid values:
+	// The approval status. This parameter is used to filter the model version list. Valid values:
 	//
-	// 	- Pending
+	// - Pending: The model version is pending approval.
 	//
-	// 	- Approved
+	// - Approved: The model version is approved for publishing.
 	//
-	// 	- Rejected
+	// - Rejected: The model version is rejected for publishing.
 	//
 	// example:
 	//
 	// Approved
 	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
-	// The model format used to filter model versions. Valid values:
+	// The model format. This parameter is used to filter the model version list. Valid values:
 	//
-	// 	- OfflineModel
+	// - OfflineModel
 	//
-	// 	- SavedModel
+	// - SavedModel
 	//
-	// 	- Keras H5
+	// - Keras H5
 	//
-	// 	- Frozen Pb
+	// - Frozen Pb
 	//
-	// 	- Caffe Prototxt
+	// - Caffe Prototxt
 	//
-	// 	- TorchScript
+	// - TorchScript
 	//
-	// 	- XGBoost
+	// - XGBoost
 	//
-	// 	- PMML
+	// - PMML
 	//
-	// 	- AlinkModel
+	// - AlinkModel
 	//
-	// 	- ONNX
+	// - ONNX
 	//
 	// example:
 	//
 	// SavedModel
 	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	// The framework used to filter model versions.
+	// The model framework. This parameter is used to filter the model version list. Valid values:
 	//
-	// 	- Pytorch -XGBoost
+	// - Pytorch
 	//
-	// 	- Keras
+	//   -XGBoost
 	//
-	// 	- Caffe
+	// - Keras
 	//
-	// 	- Alink
+	// - Caffe
 	//
-	// 	- Xflow
+	// - Alink
 	//
-	// 	- TensorFlow
+	// - Xflow
+	//
+	// - TensorFlow
 	//
 	// example:
 	//
 	// TensorFlow
 	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
-	// The label. Model versions whose label key or label value contains a specific label are filtered.
+	// The label string. This parameter is used to filter the list. Model versions that have the specified string in the key or value of their labels are returned.
 	//
 	// example:
 	//
 	// key1
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The order in which the entries are sorted by the specific field on the returned page. Default value: ASC.
+	// The order in which to sort the entries in the paged query. The default value is ASC.
 	//
-	// 	- ASC
+	// - ASC: ascending order.
 	//
-	// 	- DESC
+	// - DESC: descending order.
 	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number of the model version list. The value starts from 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of entries to return on each page for a paged query. The default value is 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field used to sort the results. The GmtCreateTime field is used for sorting.
+	// The field to use for sorting in the paged query. Currently, the GmtCreateTime field is used for sorting.
 	//
 	// example:
 	//
@@ -126,41 +128,43 @@ type ListModelVersionsRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The source ID.
 	//
-	// 	- If the source type is Custom, this field is not limited.
+	// - If the source type is Custom, this parameter is not restricted.
 	//
-	// 	- If the source type is PAIFlow or TrainingService, the format is:
+	// - If the source is PAIFlow or TrainingService, the format is as follows:
 	//
-	// <!---->
+	// ```
 	//
-	//     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+	// region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
 	//
-	// Take note of the following parameters:
+	// ```
 	//
-	// 	- region is the region ID.
+	// where:
 	//
-	// 	- workspaceId is the ID of the workspace.
+	// - region is the Alibaba Cloud region ID.
 	//
-	// 	- kind is the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
+	// - workspaceId is the workspace ID.
 	//
-	// 	- id is a unique identifier.
+	// - kind: the type. Valid values: PipelineRun (PAIFlow pipeline) and ServiceJob (training service).
+	//
+	// - id: the unique identifier.
 	//
 	// example:
 	//
 	// region=cn-shanghai,workspaceId=13**,kind=PipelineRun,id=run-sakdb****jdf
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The source type used to filter model versions. Valid values:
+	// The source type of the model. This parameter is used to filter the model version list. Valid values:
 	//
-	// 	- Custom (default)
+	// - Custom (default): a custom model.
 	//
-	// 	- PAIFlow
+	// - PAIFlow: a model from a PAI pipeline.
 	//
-	// 	- TrainingService
+	// - TrainingService: a model from a PAI training service.
 	//
 	// example:
 	//
 	// PAIFlow
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The model version used to filter model versions.
+	// The model version name. This parameter is used to filter the model version list.
 	//
 	// example:
 	//

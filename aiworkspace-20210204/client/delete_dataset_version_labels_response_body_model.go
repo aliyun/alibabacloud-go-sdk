@@ -14,7 +14,11 @@ type iDeleteDatasetVersionLabelsResponseBody interface {
 }
 
 type DeleteDatasetVersionLabelsResponseBody struct {
-	// Id of the request
+	// The ID of the request.
+	//
+	// example:
+	//
+	// B2E89D7E-74F8-5656-A5D6-81D83403F9A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

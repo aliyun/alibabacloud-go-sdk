@@ -16,13 +16,13 @@ type iPublishCodeSourceResponseBody interface {
 }
 
 type PublishCodeSourceResponseBody struct {
-	// The ID of the code source that is successfully published.
+	// The ID of the code source that was published.
 	//
 	// example:
 	//
 	// code-a797*******
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	// The ID of the request. This is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

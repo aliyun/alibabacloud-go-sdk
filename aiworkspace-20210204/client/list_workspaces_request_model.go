@@ -38,31 +38,33 @@ type iListWorkspacesRequest interface {
 }
 
 type ListWorkspacesRequest struct {
-	// The list of returned fields of workspace details. Used to limit the fields in the returned results. Separate multiple fields with commas (,). Currently, only Id is supported, which is the workspace ID.
+	// The list of return fields for workspace details. This parameter limits the workspace properties returned in the result.
+	//
+	// Separate multiple properties with commas (,). Currently, only Id is supported, which represents the workspace ID.
 	//
 	// example:
 	//
 	// Id
 	Fields *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
-	// The modules, separated by commas (,). Default value: PAI.
+	// The comma-separated list of modules. Default value: PAI.
 	//
 	// example:
 	//
 	// PAI
 	ModuleList *string `json:"ModuleList,omitempty" xml:"ModuleList,omitempty"`
-	// The query options. Valid values:
+	// The query option. Valid values:
 	//
-	// 	- GetWorkspaces (default): Obtains a list of Workspaces.
+	// 	- GetWorkspaces (default): retrieves the workspace list. The Workspaces parameter is returned.
 	//
-	// 	- GetResourceLimits: Obtains a list of ResourceLimits.
+	// 	- GetResourceLimits: retrieves resource limits. The ResourceLimits parameter is returned.
 	//
 	// example:
 	//
 	// GetWorkspaces
 	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// The order of results (ascending or descending). Valid values:
+	// The sort order for the specified sort field in a paged query. Valid values:
 	//
-	// 	- ASC: ascending order. This is the default value.
+	// 	- ASC (default): ascending order.
 	//
 	// 	- DESC: descending order.
 	//
@@ -70,29 +72,29 @@ type ListWorkspacesRequest struct {
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number of the workspace list. Pages start from page 1. Default value: 1.
+	// The page number of the workspace list. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
+	// The number of entries per page in a paged query. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource group ID. To obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// The resource group ID. For information about how to view the resource group ID, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
 	// rg-acfmwp7rky****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Specifies how to sort the results. Default value: GmtCreateTime. Valid values:
+	// The field used for sorting in a paged query. Default value: GmtCreateTime. Valid values:
 	//
-	// 	- GmtCreateTime: Sort by the time when created.
+	// 	- GmtCreateTime (default): sorts by creation time.
 	//
-	// 	- GmtModifiedTime: Sort by the time when modified.
+	// 	- GmtModifiedTime: sorts by modification time.
 	//
 	// example:
 	//
@@ -100,40 +102,40 @@ type ListWorkspacesRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The workspace status. Valid values:
 	//
-	// 	- ENABLED
+	// - ENABLED: Normal.
 	//
-	// 	- INITIALIZING
+	// - INITIALIZING: Being initialized.
 	//
-	// 	- FAILURE
+	// - FAILURE: Failed.
 	//
-	// 	- DISABLED
+	// - DISABLED: Manually disabled.
 	//
-	// 	- FROZEN
+	// - FROZEN: Frozen due to overdue payment.
 	//
-	// 	- UPDATING
+	// - UPDATING: Being updated.
 	//
 	// example:
 	//
 	// ENABLED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// Specifies whether to display workspace details. Valid values:
+	// Specifies whether to display detailed workspace information. Valid values:
 	//
-	// 	- false (default)
+	// - false (default): does not display detailed information.
 	//
-	// 	- true
+	// - true: displays detailed information.
 	//
 	// example:
 	//
 	// true
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	// The workspace IDs. Separate multiple IDs by commas (,).
+	// The list of workspace IDs. Separate multiple workspace IDs with commas (,).
 	//
 	// example:
 	//
 	// 123,234
 	WorkspaceIds *string `json:"WorkspaceIds,omitempty" xml:"WorkspaceIds,omitempty"`
-	// The name of the workspace.
+	// The workspace name.
 	//
 	// example:
 	//

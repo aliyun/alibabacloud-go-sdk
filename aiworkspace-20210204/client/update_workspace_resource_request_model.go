@@ -32,41 +32,47 @@ type UpdateWorkspaceResourceRequest struct {
 	//
 	// group-kjds******sd
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Specifies whether the resource is the default resource. This parameter can only be set to true and cannot be set to false.
+	// Specifies whether to set the resource as the default resource for the workspace. Currently, only `true` is a valid value.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The resource tags. If you specify multiple tags, only resources that meet all the specified tag-based filter conditions are returned.
+	// An array of tags. The update affects only resources that have all of the specified tags.
 	Labels []*UpdateWorkspaceResourceRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// **This field is no longer used and will be removed. Use the ResourceType field.
+	// **This parameter is deprecated. Use `ResourceType` instead.**
 	//
 	// example:
 	//
 	// MaxCompute
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The resource IDs.
+	// An array of resource IDs.
 	//
-	// You cannot leave both GroupName and ResourceIds empty. If you specify both the parameters, the value of GroupName of each resource ID in the dataset must be the same.
+	// You cannot leave both `GroupName` and `ResourceIds` empty. If you specify both parameters, the group name must be the same for all specified resource IDs.
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	// The resource type. Valid values:
+	// The resource type. Valid values are:
 	//
-	// 	- MaxCompute
+	// - MaxCompute: MaxCompute resources.
 	//
-	// 	- ECS
+	// - ECS: General-purpose computing resources.
 	//
-	// 	- Lingjun
+	// - Lingjun: Lingjun intelligent computing resources.
 	//
-	// 	- ACS
+	// - ACS: ACS computing resources.
 	//
-	// 	- FLINK
+	// - Flink: Flink resources.
+	//
+	// - SelfManagedAckPro: Resources for self-managed ACK Pro clusters.
+	//
+	// - SelfManagedAckLingjun: Resources for self-managed ACK Lingjun clusters.
+	//
+	// - SelfManagedASI: Resources for self-managed clusters on third-party clouds.
 	//
 	// example:
 	//
 	// MaxCompute
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The specification of the resource.
+	// The specifications of the resource.
 	//
 	// example:
 	//
@@ -163,13 +169,13 @@ func (s *UpdateWorkspaceResourceRequest) Validate() error {
 }
 
 type UpdateWorkspaceResourceRequestLabels struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// system.******
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

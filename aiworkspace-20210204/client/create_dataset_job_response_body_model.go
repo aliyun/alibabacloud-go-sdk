@@ -16,7 +16,7 @@ type iCreateDatasetJobResponseBody interface {
 }
 
 type CreateDatasetJobResponseBody struct {
-	// The ID of the dataset job.
+	// The dataset task ID.
 	//
 	// example:
 	//

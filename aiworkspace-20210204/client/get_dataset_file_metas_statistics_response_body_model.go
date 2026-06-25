@@ -18,9 +18,9 @@ type iGetDatasetFileMetasStatisticsResponseBody interface {
 }
 
 type GetDatasetFileMetasStatisticsResponseBody struct {
-	// The details of the returned aggregation list, including the number of each aggregate item. The list is by default sorted in descending order based on the count number.
+	// The details of the returned aggregation list. You can get the count for each aggregated item. The list is sorted by Count in descending order by default.
 	DatasetFileMetasStats []*DatasetFileMetasStat `json:"DatasetFileMetasStats,omitempty" xml:"DatasetFileMetasStats,omitempty" type:"Repeated"`
-	// The returned number. Example: the number of metadata records or the number of user-defined tags.
+	// The number of statistical results returned. For example, the number of metadata entries or the number of user tags.
 	//
 	// example:
 	//

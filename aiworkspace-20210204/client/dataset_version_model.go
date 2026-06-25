@@ -42,43 +42,43 @@ type iDatasetVersion interface {
 }
 
 type DatasetVersion struct {
-	// DataCount
+	// The total number of data items in the version.
 	//
 	// example:
 	//
 	// 10000
 	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	// DataSize
+	// The total size of the data in the version, in bytes.
 	//
 	// example:
 	//
 	// 10000
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// DataSourceType
+	// The data source type. For example, the value `OSS` indicates Object Storage Service.
 	//
 	// example:
 	//
 	// OSS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// Description
+	// A custom description for the dataset version.
 	//
 	// example:
 	//
 	// base model v1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// create time
+	// The creation time of the dataset version, in UTC.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// modify time
+	// The time the dataset version was last modified, in UTC.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// ImportInfo
+	// Information about the import source, in JSON format.
 	//
 	// example:
 	//
@@ -96,15 +96,15 @@ type DatasetVersion struct {
 	//
 	// }
 	ImportInfo *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	// Labels
+	// A list of labels applied to the dataset version.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// MountAccess
+	// The access permission for the mounted dataset. For example, `RO` means read-only.
 	//
 	// example:
 	//
 	// RO
 	MountAccess *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
-	// Options
+	// Additional configurations for the dataset version, in JSON format.
 	//
 	// example:
 	//
@@ -114,31 +114,31 @@ type DatasetVersion struct {
 	//
 	// }
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// property
+	// The data format of the dataset.
 	//
 	// example:
 	//
 	// FILE
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
-	// SourceId
+	// The ID of the source from which the version was created.
 	//
 	// example:
 	//
 	// d-65mrsr5fub4u74lej3
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// SourceType
+	// The method used to create the dataset version.
 	//
 	// example:
 	//
 	// USER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// Uri
+	// The URI of the data source.
 	//
 	// example:
 	//
 	// OSS://xxx
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	// version name
+	// The name of the dataset version.
 	//
 	// example:
 	//

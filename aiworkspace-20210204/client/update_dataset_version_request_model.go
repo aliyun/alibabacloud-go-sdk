@@ -20,15 +20,28 @@ type iUpdateDatasetVersionRequest interface {
 }
 
 type UpdateDatasetVersionRequest struct {
+	// The number of files in the dataset.
+	//
 	// example:
 	//
 	// 100
 	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
+	// The size of the dataset files, in bytes.
+	//
 	// example:
 	//
 	// 100000
-	DataSize    *int64  `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// A custom description of the dataset to distinguish it from other datasets.
+	//
+	// example:
+	//
+	// This is a description of a dataset version.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// An extension field in the JSON String format.
+	//
+	// When DLC uses the dataset, you can configure the mountPath field to specify the default mount path.
+	//
 	// example:
 	//
 	// {

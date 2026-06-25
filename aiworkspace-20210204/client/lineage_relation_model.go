@@ -18,11 +18,11 @@ type iLineageRelation interface {
 }
 
 type LineageRelation struct {
-	// DestEntityQualifiedName
+	// The fully qualified name of the target entity in the relationship.
 	DestEntityQualifiedName *string `json:"DestEntityQualifiedName,omitempty" xml:"DestEntityQualifiedName,omitempty"`
-	// RelationshipGuid
+	// The system-assigned unique identifier (GUID) for the relationship.
 	RelationshipGuid *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
-	// SrcEntityQualifiedName
+	// The fully qualified name of the source entity in the relationship.
 	SrcEntityQualifiedName *string `json:"SrcEntityQualifiedName,omitempty" xml:"SrcEntityQualifiedName,omitempty"`
 }
 

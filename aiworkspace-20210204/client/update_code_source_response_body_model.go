@@ -16,7 +16,7 @@ type iUpdateCodeSourceResponseBody interface {
 }
 
 type UpdateCodeSourceResponseBody struct {
-	// The ID of the code build.
+	// The ID of the code source.
 	//
 	// example:
 	//

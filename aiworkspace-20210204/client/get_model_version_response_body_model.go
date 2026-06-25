@@ -58,11 +58,11 @@ type iGetModelVersionResponseBody interface {
 type GetModelVersionResponseBody struct {
 	// The approval status. Valid values:
 	//
-	// 	- Pending
+	// - Pending: The model is pending approval.
 	//
-	// 	- Approved
+	// - Approved: The model is approved for publishing.
 	//
-	// 	- Rejected
+	// - Rejected: The model is rejected for publishing.
 	//
 	// example:
 	//
@@ -73,7 +73,12 @@ type GetModelVersionResponseBody struct {
 	// example:
 	//
 	// {}
-	CompressionSpec  map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
+	CompressionSpec map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
+	// The distillation configuration.
+	//
+	// example:
+	//
+	// {}
 	DistillationSpec map[string]interface{} `json:"DistillationSpec,omitempty" xml:"DistillationSpec,omitempty"`
 	// The evaluation configuration.
 	//
@@ -81,7 +86,7 @@ type GetModelVersionResponseBody struct {
 	//
 	// {}
 	EvaluationSpec map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
-	// The additional information.
+	// Other information.
 	//
 	// example:
 	//
@@ -95,25 +100,25 @@ type GetModelVersionResponseBody struct {
 	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	// The model format. Valid values:
 	//
-	// 	- OfflineModel
+	// - OfflineModel
 	//
-	// 	- SavedModel
+	// - SavedModel
 	//
-	// 	- Keras H5
+	// - Keras H5
 	//
-	// 	- Frozen Pb
+	// - Frozen Pb
 	//
-	// 	- Caffe Prototxt
+	// - Caffe Prototxt
 	//
-	// 	- TorchScript
+	// - TorchScript
 	//
-	// 	- XGBoost
+	// - XGBoost
 	//
-	// 	- PMML
+	// - PMML
 	//
-	// 	- AlinkModel
+	// - AlinkModel
 	//
-	// 	- ONNX
+	// - ONNX
 	//
 	// example:
 	//
@@ -121,35 +126,37 @@ type GetModelVersionResponseBody struct {
 	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
 	// The model framework. Valid values:
 	//
-	// 	- Pytorch -XGBoost
+	// - Pytorch
 	//
-	// 	- Keras
+	//   -XGBoost
 	//
-	// 	- Caffe
+	// - Keras
 	//
-	// 	- Alink
+	// - Caffe
 	//
-	// 	- Xflow
+	// - Alink
 	//
-	// 	- TensorFlow
+	// - Xflow
+	//
+	// - TensorFlow
 	//
 	// example:
 	//
 	// TensorFlow
 	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
-	// The time when the model was created, in UTC. The time follows the ISO 8601 standard.
+	// The UTC time when the model was created. The time is in the ISO 8601 format.
 	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the model was last modified, in UTC. The time follows the ISO 8601 standard.
+	// The UTC time when the model was last updated. The time is in the ISO 8601 format.
 	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// Describes how to apply to downstream inference services. For example, describes the processor and container of Elastic Algorithm Service (EAS).
+	// Describes how to apply the model to a downstream inference service. For example, this can describe the processor and container for Elastic Algorithm Service (EAS).
 	//
 	// example:
 	//
@@ -159,7 +166,7 @@ type GetModelVersionResponseBody struct {
 	//
 	// }
 	InferenceSpec map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
-	// The labels.
+	// The list of labels for the model version.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The metrics.
 	//
@@ -167,7 +174,7 @@ type GetModelVersionResponseBody struct {
 	//
 	// {}
 	Metrics map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The extended field. The value of this parameter is a JSON string.
+	// The extended field. This field is a JSON string.
 	//
 	// example:
 	//
@@ -187,23 +194,25 @@ type GetModelVersionResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The source ID.
 	//
-	// 	- If the source type is Custom, this field is not limited.
+	// - If the source type is Custom, this field has no limits.
 	//
-	// 	- If the source type is PAIFlow or TrainingService, the format is:
+	// - If the source is PAIFlow or TrainingService, the format is:
 	//
-	// <!---->
+	// ```
 	//
-	//     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+	// region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
 	//
-	// Take note of the following parameters:
+	// ```
 	//
-	// 	- region is the region ID.
+	// The parameters are:
 	//
-	// 	- workspaceId is the ID of the workspace.
+	// - region: The ID of the Alibaba Cloud region.
 	//
-	// 	- kind is the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
+	// - workspaceId: The workspace ID.
 	//
-	// 	- id is a unique identifier.
+	// - kind: The type. Valid values: PipelineRun (PAI pipeline) and ServiceJob (training service).
+	//
+	// - id: The unique identifier.
 	//
 	// example:
 	//
@@ -211,27 +220,27 @@ type GetModelVersionResponseBody struct {
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// The source type of the model. Valid values:
 	//
-	// 	- Custom
+	// - Custom: The model is a custom model.
 	//
-	// 	- PAIFlow
+	// - PAIFlow: The model is from a PAI pipeline.
 	//
-	// 	- TrainingService
+	// - TrainingService: The model is from a PAI training service.
 	//
 	// example:
 	//
 	// PAIFlow
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The training configurations used for fine-tuning and incremental training.
+	// The training configuration. This is the configuration for fine-tuning and incremental training.
 	//
 	// example:
 	//
 	// {}
 	TrainingSpec map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
-	// The URI of the model version, which is the location where the model is stored. Valid values:
+	// The URI of the model version. This is the storage location of the model. Valid values:
 	//
-	// 	- The HTTP(S) address of the model. Example: `https://myweb.com/mymodel.tar.gz`.
+	// - The HTTP or HTTPS URL of the model. Example: `https://myweb.com/mymodel.tar.gz`.
 	//
-	// 	- The Object Storage Service (OSS) path of the model, in the format of `oss://<bucket>.<endpoint>/object`. For endpoint, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
+	// - If the model is stored in Object Storage Service (OSS), the format is `oss://<bucket>.<endpoint>/object`. For more information about how to configure the endpoint, see [Endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 	// The user ID.
 	//
@@ -239,7 +248,11 @@ type GetModelVersionResponseBody struct {
 	//
 	// 1234567890******
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The version description.
+	// The description of the model version.
+	//
+	// example:
+	//
+	// General sentiment analysis.
 	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
 	// The model version.
 	//

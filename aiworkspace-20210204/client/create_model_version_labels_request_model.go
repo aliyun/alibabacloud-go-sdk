@@ -14,7 +14,7 @@ type iCreateModelVersionLabelsRequest interface {
 }
 
 type CreateModelVersionLabelsRequest struct {
-	// The tags.
+	// A list of labels.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 

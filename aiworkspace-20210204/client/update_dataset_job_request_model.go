@@ -18,15 +18,19 @@ type iUpdateDatasetJobRequest interface {
 }
 
 type UpdateDatasetJobRequest struct {
-	// The dataset version name.
+	// The name of the dataset version.
 	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	// The dataset job description.
+	// The description of the dataset job.
+	//
+	// example:
+	//
+	// This is a job description of a dataset.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The ID of the workspace. For more information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iListPermissionsResponseBody interface {
 }
 
 type ListPermissionsResponseBody struct {
-	// The permissions.
+	// The list of permissions.
 	Permissions []*ListPermissionsResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListPermissionsResponseBody struct {
 	//
 	// 2AE63638-5420-56DC-B******8174039A0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of permissions that meet the filter conditions.
+	// The number of entries that meet the filter conditions.
 	//
 	// example:
 	//
@@ -83,13 +83,15 @@ func (s *ListPermissionsResponseBody) Validate() error {
 }
 
 type ListPermissionsResponseBodyPermissions struct {
-	// The permission name, which is unique in a region. For more information about permissions, see [Appendix: Roles and permissions](https://help.aliyun.com/document_detail/2840449.html). The example value PaiDLC:GetTensorboard indicates the permission to view details about a TensorBoard job on the Deep Learning Containers (DLC) page.
+	// The name of the permission point. The name is unique within the same region. For more information about permission points, see [Appendix: Roles and permissions](https://help.aliyun.com/document_detail/2840449.html).
+	//
+	// For example, the value PaiDLC:GetTensorboard grants the permission to view Tensorboard details for the DLC feature.
 	//
 	// example:
 	//
 	// PaiDLC:GetTensorboard
 	PermissionCode *string `json:"PermissionCode,omitempty" xml:"PermissionCode,omitempty"`
-	// The permission rules.
+	// The list of permission rules.
 	PermissionRules []*ListPermissionsResponseBodyPermissionsPermissionRules `json:"PermissionRules,omitempty" xml:"PermissionRules,omitempty" type:"Repeated"`
 }
 
@@ -133,23 +135,27 @@ func (s *ListPermissionsResponseBodyPermissions) Validate() error {
 }
 
 type ListPermissionsResponseBodyPermissionsPermissionRules struct {
-	// The accessibility of the permission rule. Valid values:
+	// The access type. Valid values:
 	//
-	// 	- PUBLIC: All members in the workspace can access the permission rule.
+	// - PUBLIC: All members in the current workspace can perform the operation.
 	//
-	// 	- PRIVATE: Only the creator can access the permission rule.
+	// - PRIVATE: Only the creator can perform the operation.
 	//
-	// 	- ANY: All users can access the permission rule.
+	// - ANY: Both the creator and non-creators can perform the operation.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The type of access. If you set Accessibility to PUBLIC, all users can access the workspace. This parameter is invalid. If you set Accessibility to PRIVATE, the permissions are determined based on the value of EntityAccessType. The value of EntityAccessType can be:
+	// The entity access type.
 	//
-	// 	- CREATOR: Only the creator can access the workspace.
+	// This parameter is invalid if Accessibility is set to PUBLIC. In this case, all users can perform the operation.
 	//
-	// 	- ANY: All users can access the workspace.
+	// If Accessibility is set to PRIVATE, the permission is determined by the value of EntityAccessType. Valid values:
+	//
+	// - CREATOR: Only the creator can perform the operation.
+	//
+	// - ANY: Both the creator and non-creators can perform the operation.
 	//
 	// example:
 	//

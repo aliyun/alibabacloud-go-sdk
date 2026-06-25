@@ -14,7 +14,7 @@ type iDeleteModelVersionLabelsRequest interface {
 }
 
 type DeleteModelVersionLabelsRequest struct {
-	// The key of the tag to be deleted. Separate multiple tag keys with commas (,).
+	// The keys of the labels that you want to delete. Separate multiple keys with commas (,).
 	//
 	// example:
 	//

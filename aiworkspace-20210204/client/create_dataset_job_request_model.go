@@ -24,23 +24,31 @@ type iCreateDatasetJobRequest interface {
 }
 
 type CreateDatasetJobRequest struct {
-	// The dataset version.
+	// The name of the dataset version.
 	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	// The job description.
+	// The description.
+	//
+	// example:
+	//
+	// This is a job description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The job action.
+	// The task operation.
 	//
-	// Valid values:
+	// - SemanticIndex: semantic index
 	//
-	// 	- SemanticIndex
+	// - IntelligentTag: intelligent tagging
 	//
-	// 	- IntelligentTag
+	// - FileMetaExport: metadata export
 	//
-	// 	- FileMetaExport
+	// - FileMetaBuild: build and update metadata
+	//
+	// - IntelligentTagRevert: revoke intelligent tagging
+	//
+	// - FileMetaImport: metadata import
 	//
 	// This parameter is required.
 	//
@@ -48,17 +56,17 @@ type CreateDatasetJobRequest struct {
 	//
 	// SemanticIndex
 	JobAction *string `json:"JobAction,omitempty" xml:"JobAction,omitempty"`
-	// The job mode.
+	// The task type.
 	//
-	// Valid values:
+	// - Full (default): forces the processing of all metadata. This task takes a long time to execute.
 	//
-	// 	- Full: full mode.
+	// - Increment: processes only changed or unsuccessfully processed metadata. The SemanticIndex and IntelligentTag tasks support Increment and Full. Other tasks support only Full.
 	//
 	// example:
 	//
 	// Full
 	JobMode *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
-	// The job configuration.
+	// The task details.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +74,7 @@ type CreateDatasetJobRequest struct {
 	//
 	// {\\"modelId\\":\\"xxx\\"}
 	JobSpec *string `json:"JobSpec,omitempty" xml:"JobSpec,omitempty"`
-	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The workspace ID. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// This parameter is required.
 	//

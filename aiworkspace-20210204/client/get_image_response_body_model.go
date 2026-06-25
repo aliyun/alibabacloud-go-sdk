@@ -40,39 +40,45 @@ type iGetImageResponseBody interface {
 }
 
 type GetImageResponseBody struct {
-	// The accessibility of the image. Valid values:
+	// The visibility of the image. Valid values:
 	//
-	// 	- PUBLIC: All members can access the workspace.
+	// - PUBLIC: All members in the current workspace can perform operations on the image.
 	//
-	// 	- PRIVATE: Only the creator can access the workspace.
+	// - PRIVATE: Only the creator can perform operations on the image.
 	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The image description.
+	// The description of the image.
+	//
+	// example:
+	//
+	// NLP model compression training image
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the image is created, in UTC. The time follows the ISO 8601 standard.
+	// The time when the image was created. The time is in UTC and the format is ISO 8601.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the image is modified, in UTC. The time follows the ISO 8601 standard.
+	// The time when the image was last modified. The time is in UTC and the format is ISO 8601.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The image address, which contains the version number.
+	// The URL of the image, including the version number.
 	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.******ession/nlp:gpu
 	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	// The image tags, which are of the array data type. Each element in the array contains a key-value pair. The key of official tags is system.official and the tag value is true.
+	// A list of image labels. This is an array. Each item in the array contains a Key and a Value field.
+	//
+	// Official images have the following label: the key is system.official and the value is true.
 	Labels []*GetImageResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The image name.
+	// The name of the image.
 	//
 	// example:
 	//
@@ -90,23 +96,23 @@ type GetImageResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The size of the image. Unit: GB.
+	// The size of the image in bytes.
 	//
 	// example:
 	//
 	// 10
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// 镜像来源 ID
+	// The ID of the image source.
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// 镜像来源类型
+	// The type of the image source.
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The user ID of the image.
+	// The UID of the user who created the image.
 	//
 	// example:
 	//
 	// 15577******8921
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace to which the image belongs.
 	//
 	// example:
 	//
@@ -262,13 +268,13 @@ func (s *GetImageResponseBody) Validate() error {
 }
 
 type GetImageResponseBodyLabels struct {
-	// The tag key.
+	// The key of the label.
 	//
 	// example:
 	//
 	// system.chipType
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the label.
 	//
 	// example:
 	//

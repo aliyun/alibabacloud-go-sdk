@@ -28,11 +28,11 @@ type iGetPermissionShrinkRequest interface {
 }
 
 type GetPermissionShrinkRequest struct {
-	// The accessibility. Valid values:
+	// The access type. Valid values:
 	//
-	// 	- PUBLIC: All members in the workspace can access the workspace.
+	// - PUBLIC: All members in the workspace can perform the operation.
 	//
-	// 	- PRIVATE: Only the creator can access the workspace.
+	// - PRIVATE: Only the creator can perform the operation.
 	//
 	// example:
 	//
@@ -40,18 +40,18 @@ type GetPermissionShrinkRequest struct {
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	CallerType    *string `json:"CallerType,omitempty" xml:"CallerType,omitempty"`
 	CallerUid     *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	// The UID of the Alibaba Cloud account that is used to create the workspace.
+	// The UID of the Alibaba Cloud account that created the workspace permission.
 	//
 	// example:
 	//
 	// 17915******4216
 	Creator      *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The configuration. Separate multiple configurations with commas (,). Valid values:
+	// Optional configurations. Separate multiple configurations with commas (,). Valid values:
 	//
-	// 	- ResourceEmpty: The Resource parameter is not configured.
+	// - ResourceEmpty: The resource is empty. This value is used if you do not set the Resource parameter.
 	//
-	// 	- DisableRam: The RAM check is not performed.
+	// - DisableRam: RAM verification is disabled.
 	//
 	// example:
 	//

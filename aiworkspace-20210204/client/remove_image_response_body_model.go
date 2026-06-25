@@ -14,7 +14,7 @@ type iRemoveImageResponseBody interface {
 }
 
 type RemoveImageResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

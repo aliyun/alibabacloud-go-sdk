@@ -14,7 +14,7 @@ type iCreateDatasetVersionLabelsRequest interface {
 }
 
 type CreateDatasetVersionLabelsRequest struct {
-	// The tags.
+	// The list of labels.
 	//
 	// This parameter is required.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`

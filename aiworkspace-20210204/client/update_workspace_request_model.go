@@ -16,19 +16,19 @@ type iUpdateWorkspaceRequest interface {
 }
 
 type UpdateWorkspaceRequest struct {
-	// The workspace description.
+	// The description of the workspace.
 	//
 	// example:
 	//
-	// Description
+	// This is an example workspace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the workspace.
+	// The display name of the workspace. The name must meet the following requirements:
 	//
-	// 	- The name must be 3 to 23 characters in length, and can contain letters, underscores (_), and digits.
+	// - The name must be 3 to 23 characters in length and can contain letters, underscores (_), and digits.
 	//
-	// 	- The name must start with a letter.
+	// - The name must start with a letter.
 	//
-	// 	- The name must be unique in the current region.
+	// - The name must be unique within the current region.
 	//
 	// example:
 	//

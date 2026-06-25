@@ -18,13 +18,13 @@ type iDeleteMembersResponseBody interface {
 }
 
 type DeleteMembersResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
 	// 100600017
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//

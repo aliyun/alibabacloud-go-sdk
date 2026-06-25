@@ -35,7 +35,7 @@ type GetMemberResponseBody struct {
 	//
 	// myDisplayName
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The time when the workspace is created, in UTC. The time follows the ISO 8601 standard.
+	// The time when the member was created. The time is in Coordinated Universal Time (UTC) and the format is ISO 8601.
 	//
 	// example:
 	//

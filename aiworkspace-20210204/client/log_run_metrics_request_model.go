@@ -14,7 +14,7 @@ type iLogRunMetricsRequest interface {
 }
 
 type LogRunMetricsRequest struct {
-	// The metrics.
+	// The list of metrics.
 	Metrics []*RunMetric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
 }
 

@@ -16,13 +16,13 @@ type iListUserConfigsRequest interface {
 }
 
 type ListUserConfigsRequest struct {
-	// The category. Currently, only DataPrivacyConfig is supported.
+	// The category. Only DataPrivacyConfig is supported.
 	//
 	// example:
 	//
 	// DataPrivacyConfig
 	CategoryNames *string `json:"CategoryNames,omitempty" xml:"CategoryNames,omitempty"`
-	// The configuration item keys. Currently, only customizePAIAssumedRole is supported.
+	// A collection of configuration keys. Only customizePAIAssumedRole is supported.
 	//
 	// example:
 	//

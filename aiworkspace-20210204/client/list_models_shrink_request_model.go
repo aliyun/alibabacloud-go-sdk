@@ -44,26 +44,31 @@ type iListModelsShrinkRequest interface {
 }
 
 type ListModelsShrinkRequest struct {
-	// The collection where the model is located. You can specify multiple collections and separate them with commas (,).
+	// The collections to which the model belongs. You can specify multiple collections. Separate them with commas (,).
 	//
 	// example:
 	//
 	// AI4D,QuickStart
-	Collections      *string `json:"Collections,omitempty" xml:"Collections,omitempty"`
+	Collections *string `json:"Collections,omitempty" xml:"Collections,omitempty"`
+	// The conditions.
 	ConditionsShrink *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
-	// The domain. Only models in the domain are returned. Valid values: nlp (Natural Language Processing) and cv (Computer Vision).
+	// The domain. This parameter is used to filter the model list by domain. Examples: nlp (natural language processing) and cv (computer vision).
 	//
 	// example:
 	//
 	// nlp
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The label. Models whose label key or label value contains a specific label are filtered.
+	// The label string. This parameter is used to filter the list. Models are returned if their label keys or values contain the specified string.
 	//
 	// example:
 	//
 	// key1
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The model name used to filter the returned models.
+	// The model name. This parameter is used to filter the model list.
+	//
+	// example:
+	//
+	// Sentiment analysis
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// The model type.
 	//
@@ -71,61 +76,65 @@ type ListModelsShrinkRequest struct {
 	//
 	// Endpoint
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	// The order in which the entries are sorted by the specific field on the returned page. Default value: ASC.
+	// The order in which to sort the results of a paged query. The default value is ASC.
 	//
-	// 	- ASC
+	// - ASC: ascending order.
 	//
-	// 	- DESC
+	// - DESC: descending order.
 	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The model source used to filter the models that belong to a community or organization, such as ModelScope and Hugging Face.
+	// The model source. This parameter is used to filter the model list by community or organization. Examples: ModelScope and HuggingFace.
 	//
 	// example:
 	//
 	// ModelScope
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number of the model list. The value starts from 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of models to display on each page in a paged query. The default value is 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The provider. If you configure this parameter, only the models exposed by the provider are returned. If you leave this parameter empty, only models owned by the user are returned.
+	// The provider. If you specify a provider, only the public models from that provider are returned. If you leave this parameter empty, your own models are returned.
 	//
 	// example:
 	//
 	// pai
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// The query condition. For example, if you set the value to nlp, all models that match ModelName, Domain, Task, LabelKey, and LabelValue are returned.
+	// The query condition. This parameter performs a fuzzy match on ModelName, Domain, Task, LabelKey, and LabelValue. For example, if you enter nlp, models that match in any of these fields are returned.
 	//
 	// example:
 	//
 	// nlp
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The field used to sort the results. The GmtCreateTime field is used for sorting.
+	// The field to use for sorting in a paged query. Currently, only the GmtCreateTime field is supported.
 	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The tags of the model.
+	// The list of tags.
+	//
+	// example:
+	//
+	// Endpoint
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The task used to filter the models that belong to the task type. Example: text-classification.
+	// The task. This parameter is used to filter the model list by task type. Example: text-classification.
 	//
 	// example:
 	//
 	// text-classification
 	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
-	// The workspace ID. Only models in this workspace are queried. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The workspace ID. The returned list contains only the models in the specified workspace. For more information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

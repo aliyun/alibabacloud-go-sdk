@@ -34,27 +34,27 @@ type iCreateDatasetVersionRequest interface {
 }
 
 type CreateDatasetVersionRequest struct {
-	// The number of dataset files.
+	// The number of files in the dataset.
 	//
 	// example:
 	//
 	// 300
 	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	// The size of the dataset file. Unit: bytes.
+	// The size of the space occupied by the dataset files. Unit: bytes.
 	//
 	// example:
 	//
 	// 19000
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The type of the data source. Separate multiple types with commas (,). Valid values:
+	// The type of the data source. If you specify multiple types, separate them with commas (,). Valid values:
 	//
-	// 	- NAS: File Storage NAS (NAS).
+	// - NAS: The data is stored in Alibaba Cloud File Storage (NAS).
 	//
-	// 	- OSS: Object Storage Service (OSS).
+	// - OSS: The data is stored in Alibaba Cloud Object Storage Service (OSS).
 	//
-	// 	- CPFS
+	// - CPFS
 	//
-	// Note: The DataSourceType value of a dataset version must be the same as that of the dataset. When you create a dataset version, the system checks whether the values are the same.
+	// Note: The DataSourceType of the version must be the same as the DataSourceType of the dataset. The system verifies this consistency when you create the version.
 	//
 	// This parameter is required.
 	//
@@ -62,70 +62,103 @@ type CreateDatasetVersionRequest struct {
 	//
 	// OSS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The description of the dataset. Descriptions are used to differentiate datasets.
+	// A custom description for the dataset version. This helps distinguish different dataset versions.
+	//
+	// example:
+	//
+	// This is a description of the dataset version.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The dataset storage import configurations, such as OSS, NAS, and CPFS.
+	// The storage import configuration of the dataset. Supported storage types include OSS, NAS, and CPFS.
 	//
-	// **OSS**
+	// <details>
 	//
-	// {\\
+	// <summary>
 	//
-	// "region": "${region}",// The region ID\\
+	// OSS
 	//
-	// "bucket": "${bucket}",//The bucket name\\
+	// </summary>
 	//
-	// "path": "${path}" // The file path\\
+	// {<br>
 	//
-	// }\\
+	// "region": "${region}",// The region ID.<br>
 	//
+	// "bucket": "${bucket}",// The bucket name.<br>
 	//
-	// **NAS**
+	// "path": "${path}" // The file path.<br>
 	//
-	// {\\
+	// }
 	//
-	// "region": "${region}",// The region ID\\
+	// </details>
 	//
-	// "fileSystemId": "${file_system_id}", // The file system ID\\
+	// <details>
 	//
-	// "path": "${path}", // The file system path\\
+	// <summary>
 	//
-	// "mountTarget": "${mount_target}" // The mount point of the file system\\
+	// NAS
 	//
-	// }\\
+	// </summary>
 	//
+	// {<br>
 	//
-	// **CPFS**
+	// "region": "${region}",// The region ID.<br>
 	//
-	// {\\
+	// "fileSystemId": "${file_system_id}", // The file system ID.<br>
 	//
-	// "region": "${region}",// The region ID\\
+	// "path": "${path}", // The file system path.<br>
 	//
-	// "fileSystemId": "${file_system_id}", // The file system ID\\
+	// "mountTarget": "${mount_target}" // The mount target of the file system.<br>
 	//
-	// "protocolServiceId":"${protocol_service_id}", // The file system protocol service\\
+	// }
 	//
-	// "exportId": "${export_id}", // The file system export directory\\
+	// </details>
 	//
-	// "path": "${path}", // The file system path\\
+	// <details>
 	//
-	// }\\
+	// <summary>
 	//
+	// CPFS
 	//
-	// **CPFS for Lingjun**
+	// </summary>
 	//
-	// {\\
+	// {<br>
 	//
-	// "region": "${region}",// The region ID\\
+	// "region": "${region}",// The region ID.<br>
 	//
-	// "fileSystemId": "${file_system_id}", // The file system ID\\
+	// "fileSystemId": "${file_system_id}", // The file system ID.<br>
 	//
-	// "path": "${path}", // The ile system path\\
+	// "protocolServiceId":"${protocol_service_id}", // The protocol service of the file system.<br>
 	//
-	// "mountTarget": "${mount_target}" // The mount point of the file system, CPFS for Lingjun only\\
+	// "exportId": "${export_id}", // The exported directory of the file system.<br>
 	//
-	// "isVpcMount": boolean, // Whether the mount point is a VPC mount point, CPFS for Lingjun only\\
+	// "path": "${path}", // The file system path.<br>
 	//
-	// }\\
+	// }
+	//
+	// </details>
+	//
+	// <details>
+	//
+	// <summary>
+	//
+	// Intelligent Computing CPFS
+	//
+	// </summary>
+	//
+	// {<br>
+	//
+	// "region": "${region}",// The region ID.<br>
+	//
+	// "fileSystemId": "${file_system_id}", // The file system ID.<br>
+	//
+	// "path": "${path}", // The file system path.<br>
+	//
+	// "mountTarget": "${mount_target}", // The mount target of the file system. This parameter is specific to the Intelligent Computing edition.<br>
+	//
+	// "isVpcMount": boolean, // Specifies whether the mount target is in a VPC. This parameter is specific to the Intelligent Computing edition.<br>
+	//
+	// }
+	//
+	// </details>
 	//
 	// example:
 	//
@@ -143,9 +176,11 @@ type CreateDatasetVersionRequest struct {
 	//
 	// }
 	ImportInfo *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	// The tags of the dataset version.
+	// A list of tags for the dataset version.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The extended field, which is of the JsonString type. When you use the dataset in Deep Learning Containers (DLC), you can use the mountPath field to specify the default mount path of the dataset.
+	// The extended field, which is a JSON string.
+	//
+	// When DLC uses the dataset, you can configure the mountPath field to specify the default mount path for the dataset.
 	//
 	// example:
 	//
@@ -157,9 +192,9 @@ type CreateDatasetVersionRequest struct {
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The property of the dataset. Valid values:
 	//
-	// 	- FILE
+	// - FILE: A file.
 	//
-	// 	- DIRECTORY
+	// - DIRECTORY: A folder.
 	//
 	// This parameter is required.
 	//
@@ -169,41 +204,41 @@ type CreateDatasetVersionRequest struct {
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
 	// The ID of the data source.
 	//
-	// 	- If SourceType is set to USER, the value of SourceId can be a custom string.
+	// - If SourceType is set to USER, you can customize the SourceId.
 	//
-	// 	- If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
+	// - If SourceType is set to ITAG, which indicates a dataset generated from the annotation results of the iTAG module, SourceId is the task ID from iTAG.
 	//
-	// 	- If SourceType is set to PAI_PUBLIC_DATASET, SourceId is empty by default.
+	// - If SourceType is set to PAI_PUBLIC_DATASET, which indicates a dataset created from a public PAI dataset, SourceId is empty by default.
 	//
 	// example:
 	//
 	// d-a0xbe5n03bhqof46ce
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The type of the data source. Default value: USER. Valid values:
+	// The type of the data source. The default value is USER. Valid values:
 	//
-	// 	- PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
+	// - PAI-PUBLIC-DATASET: a public dataset from PAI.
 	//
-	// 	- ITAG: a dataset generated from a labeling job of iTAG.
+	// - ITAG: a dataset generated from the annotation results of the iTAG module.
 	//
-	// 	- USER: a dataset registered by a user.
-	//
-	// For each job type:
-	//
-	// 	- PAI_PUBLIC_DATASET: PAI_PUBLIC_DATASET.
-	//
-	// 	- ITAG: ITAG.
-	//
-	// 	- USER: USER.
+	// - USER: a dataset registered by a user.
 	//
 	// example:
 	//
 	// USER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// Example format:
+	// The following examples show how to configure the URI:
 	//
-	// 	- Value format when DataSourceType is set to OSS: `oss://bucket.endpoint/object`.
+	// - If the data source type is OSS: `oss://bucket.endpoint/object`
 	//
-	// 	- Value formats when DataSourceType is set to NAS: General-purpose NAS: `nas://<nasfisid>.region/subpath/to/dir/`. CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`. CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`. You can distinguish CPFS 1.0 and CPFS 2.0 file systems based on the format of the file system ID: The ID for CPFS 1.0 is in the cpfs-<8-bit ASCII characters> format. The ID for CPFS 2.0 is in the cpfs-<16-bit ASCII characters> format.
+	// - If the data source type is NAS:
+	//
+	//   The format for a general-purpose NAS file system is `nas://<nasfisid>.region/subpath/to/dir/`.
+	//
+	//   CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`.
+	//
+	//   CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`.
+	//
+	//   CPFS 1.0 and CPFS 2.0 are distinguished by the format of the fsid. The format for CPFS 1.0 is cpfs-<8 ASCII characters>. The format for CPFS 2.0 is cpfs-<16 ASCII characters>.
 	//
 	// This parameter is required.
 	//

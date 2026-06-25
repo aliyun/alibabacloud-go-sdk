@@ -18,10 +18,14 @@ type iListProductsRequest interface {
 }
 
 type ListProductsRequest struct {
+	// The product codes, separated by commas.
+	//
 	// example:
 	//
 	// PAI_isolate
 	ProductCodes *string `json:"ProductCodes,omitempty" xml:"ProductCodes,omitempty"`
+	// The service codes, separated by commas.
+	//
 	// example:
 	//
 	// oss

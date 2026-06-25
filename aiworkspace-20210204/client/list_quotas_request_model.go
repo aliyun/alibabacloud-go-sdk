@@ -14,7 +14,7 @@ type iListQuotasRequest interface {
 }
 
 type ListQuotasRequest struct {
-	// The quota name. Fuzzy search is supported.
+	// The name of the resource quota. Fuzzy search is supported.
 	//
 	// example:
 	//

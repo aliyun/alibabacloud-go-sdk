@@ -20,15 +20,27 @@ type iCreateDatasetJobConfigRequest interface {
 }
 
 type CreateDatasetJobConfigRequest struct {
-	// The configuration content. Format:
+	// The configuration content.
 	//
-	// 	- MultimodalIntelligentTag
+	// The format is as follows:
 	//
-	// { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
+	// - MultimodalIntelligentTag
 	//
-	// 	- MultimodalSemanticIndex
+	// {
 	//
-	// { "defaultModelId": "xxx" "defaultModelVersion":"1.0.0" }
+	// "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx"
+	//
+	// }
+	//
+	// - MultimodalSemanticIndex
+	//
+	// {
+	//
+	// "defaultModelId": "xxx",
+	//
+	// "defaultModelVersion":"1.0.0"
+	//
+	// }
 	//
 	// This parameter is required.
 	//
@@ -38,18 +50,17 @@ type CreateDatasetJobConfigRequest struct {
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The configuration type.
 	//
-	// Valid values:
-	//
-	// 	- MultimodalIntelligentTag
-	//
-	// 	- MultimodalSemanticIndex
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MultimodalIntelligentTag
-	ConfigType     *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The name of the dataset version.
+	//
+	// example:
+	//
+	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
 	// The workspace ID.
 	//

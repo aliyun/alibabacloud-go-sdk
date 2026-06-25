@@ -48,123 +48,155 @@ type iListDatasetsRequest interface {
 }
 
 type ListDatasetsRequest struct {
+	// Specifies the dataset\\"s visibility.
+	//
+	// - `PUBLIC`: The dataset is publicly accessible.
+	//
+	// - `PRIVATE`: The dataset is privately accessible.
+	//
+	// example:
+	//
+	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The storage types of the data source. Multiple data source types are separated by commas (,). Valid values:
+	// The data source type. To specify multiple types, separate them with commas (,). Valid values:
 	//
-	// 	- NAS: File Storage NAS (NAS).
+	// - `NAS`: The data source is NAS.
 	//
-	// 	- OSS: Object Storage Service (OSS).
+	// - `OSS`: The data source is OSS.
 	//
 	// example:
 	//
 	// OSS
 	DataSourceTypes *string `json:"DataSourceTypes,omitempty" xml:"DataSourceTypes,omitempty"`
-	// The dataset types. Multiple dataset types are separated by commas (,). Valid values:
+	// The data type of the dataset. To specify multiple data types, separate them with commas (,). Valid values:
 	//
-	// 	- Video: video
+	// - `VIDEO`: video.
 	//
-	// 	- COMMON: common
+	// - `COMMON`: general.
 	//
-	// 	- TEXT: text
+	// - `TEXT`: text.
 	//
-	// 	- PIC: picture
+	// - `PIC`: image.
 	//
-	// 	- AUDIO: audio
+	// - `AUDIO`: audio.
 	//
 	// example:
 	//
 	// COMMON,TEXT
-	DataTypes  *string `json:"DataTypes,omitempty" xml:"DataTypes,omitempty"`
+	DataTypes *string `json:"DataTypes,omitempty" xml:"DataTypes,omitempty"`
+	// A comma-separated list of dataset IDs.
+	//
+	// example:
+	//
+	// d-rcdg3wxxxxxhc5jk87
 	DatasetIds *string `json:"DatasetIds,omitempty" xml:"DatasetIds,omitempty"`
-	Edition    *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// The dataset tag, which is used to filter datasets. Datasets whose tag key or tag value contains a specified string are filtered.
+	// The dataset edition. Valid values:
+	//
+	// - `BASIC`: Basic edition. Does not support file metadata management.
+	//
+	// - `ADVANCED`: Advanced edition. This edition is supported only for OSS datasets. Each version can manage metadata for up to 1 million files.
+	//
+	// - `LOGICAL`: Logical edition. This edition is supported only for OSS datasets and is suitable for most use cases. Each version can manage metadata for up to 1 million files. You must use an SDK with this edition.
+	//
+	// example:
+	//
+	// BASIC
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// A label used to filter datasets. The operation returns datasets whose label key or value contains the specified string.
 	//
 	// example:
 	//
 	// test
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The dataset name. Fuzzy search based on the dataset name is supported.
+	// The dataset name. Fuzzy search is supported.
 	//
 	// example:
 	//
 	// myName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The order of specific fields of the entries on the returned page. Valid values: ASC and DESC. Default value: ASC.
+	// The sort order for the results, based on the `SortBy` parameter. The default is `ASC`.
 	//
-	// 	- ASC: The entries are sorted in ascending order.
+	// - `ASC`: ascending order.
 	//
-	// 	- DESC: The entries are sorted in descending order.
+	// - `DESC`: descending order.
 	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number for the paged query. Starts at 1. The default is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of datasets to return per page. The default is 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The dataset properties. Multiple properties are separated by commas (,). Valid values:
+	// The dataset properties. To specify multiple properties, separate them with commas (,). Valid values:
 	//
-	// 	- DIRECTORY
+	// - `DIRECTORY`: A folder.
 	//
-	// 	- FILE
+	// - `FILE`: A file.
 	//
 	// example:
 	//
 	// FILE
 	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// The dataset provider. If the value pai is returned, the dataset is a public dataset provided by PAI.
+	// The dataset provider. Set this parameter to `pai` to query public datasets on the PAI platform.
 	//
 	// example:
 	//
 	// pai
-	Provider   *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// A filter for shared datasets.
+	//
+	// - `TO_ME`: Returns only datasets shared with you.
+	//
+	// - `BY_ME`: Returns only datasets that you have shared with others and displays details of the sharing configuration.
+	//
+	// - If this parameter is omitted or empty, the operation returns all datasets in the current workspace, including those shared with you.
+	//
+	// example:
+	//
+	// BY_ME
 	ShareScope *string `json:"ShareScope,omitempty" xml:"ShareScope,omitempty"`
-	// The field used for sorting.
+	// The sort field.
 	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The ID of the iTAG labeled dataset that is used as the source dataset.
+	// The source dataset ID for an iTAG annotation set.
 	//
 	// example:
 	//
 	// d-rcdg3wxxxxxhc5jk87
 	SourceDatasetId *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
-	// The data source ID.
+	// The source ID. The value of this parameter varies based on the `SourceTypes` value:
 	//
-	// 	- If SourceType is set to USER, the value of SourceId is a custom string.
+	// - If `SourceTypes` is `USER`, you can specify a custom value for `SourceId`.
 	//
-	// 	- If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
+	// - If `SourceTypes` is `ITAG`, `SourceId` is the ID of the iTAG task.
 	//
-	// 	- If SourceType is set to PAI_PUBLIC_DATASET, SourceId is empty by default.
+	// - If `SourceTypes` is `PAI_PUBLIC_DATASET`, this parameter is empty by default.
 	//
 	// example:
 	//
 	// d-rbvg5wzljzjhc9ks92
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The source types. Multiple source types are separated by commas (,). Valid values:
-	//
-	// 	- PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
-	//
-	// 	- ITAG: a dataset generated from a labeling job of iTAG.
-	//
-	// 	- USER: a dataset registered by a user.
+	// The source type. To specify multiple types, separate them with commas (,).
 	//
 	// example:
 	//
 	// USER,ITAG
 	SourceTypes *string `json:"SourceTypes,omitempty" xml:"SourceTypes,omitempty"`
-	// The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID. If you do not specify this parameter, the default workspace is used. If the default workspace does not exist, an error is reported.
+	// The ID of the workspace that contains the dataset. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	//
+	// If this parameter is not specified, the default workspace is used. An error is returned if the default workspace does not exist.
 	//
 	// example:
 	//

@@ -18,11 +18,11 @@ type iCreateDatasetFileMetasRequest interface {
 }
 
 type CreateDatasetFileMetasRequest struct {
-	// The metadata of the file.
+	// A list of file metadata content.
 	//
 	// This parameter is required.
 	DatasetFileMetas []*DatasetFileMetaContentCreate `json:"DatasetFileMetas,omitempty" xml:"DatasetFileMetas,omitempty" type:"Repeated"`
-	// The dataset version name.
+	// The name of the dataset version.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type CreateDatasetFileMetasRequest struct {
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	// The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The ID of the workspace where the dataset is located. For more information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// This parameter is required.
 	//

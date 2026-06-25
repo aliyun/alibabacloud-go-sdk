@@ -14,7 +14,7 @@ type iSetUserConfigsRequest interface {
 }
 
 type SetUserConfigsRequest struct {
-	// The configurations list.
+	// The list of configurations.
 	Configs []*SetUserConfigsRequestConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
 }
 
@@ -49,7 +49,7 @@ func (s *SetUserConfigsRequest) Validate() error {
 }
 
 type SetUserConfigsRequestConfigs struct {
-	// The category. Only DataPrivacyConfig is supported.
+	// The classification. Only DataPrivacyConfig is supported.
 	//
 	// This parameter is required.
 	//
@@ -57,7 +57,7 @@ type SetUserConfigsRequestConfigs struct {
 	//
 	// DataPrivacyConfig
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The key of the configuration item.
+	// The configuration key.
 	//
 	// This parameter is required.
 	//
@@ -65,7 +65,7 @@ type SetUserConfigsRequestConfigs struct {
 	//
 	// customizePAIAssumedRole
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
-	// The value of the configuration item.
+	// The configuration value.
 	//
 	// This parameter is required.
 	//

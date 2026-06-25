@@ -18,7 +18,7 @@ type iListQuotasResponseBody interface {
 }
 
 type ListQuotasResponseBody struct {
-	// The returned quotas.
+	// The list of resource quotas.
 	Quotas []*ListQuotasResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListQuotasResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of quotas that meet the filter conditions.
+	// The number of resource quotas that meet the filter condition.
 	//
 	// example:
 	//
@@ -83,7 +83,11 @@ func (s *ListQuotasResponseBody) Validate() error {
 }
 
 type ListQuotasResponseBodyQuotas struct {
-	// The alias of the quota.
+	// The alias of the resource quota.
+	//
+	// example:
+	//
+	// 默认Quota。
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The quota ID.
 	//
@@ -93,9 +97,9 @@ type ListQuotasResponseBodyQuotas struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- isolate: subscription
+	// - isolate: subscription.
 	//
-	// 	- share: pay-as-you-go
+	// - share: pay-as-you-go.
 	//
 	// example:
 	//
@@ -107,25 +111,25 @@ type ListQuotasResponseBodyQuotas struct {
 	//
 	// quota-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The product code. Valid values:
+	// The product name. Valid values:
 	//
-	// 	- PAI_isolate: CPU subscription resource groups of PAI
+	// - PAI_isolate: a subscription PAI resource group (PAI CPU).
 	//
-	// 	- PAI_share: GPU pay-as-you-go resource groups of PAI
+	// - PAI_share: a pay-as-you-go PAI resource group (PAI GPU).
 	//
 	// example:
 	//
-	// MaxCompute_share
+	// PAI_share
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The quota type. Valid value:
+	// The type of the resource quota. Valid value:
 	//
-	// PAI: indicates GPU resource groups of MaxCompute.
+	// PAI: a GPU resource group cluster of MaxCompute.
 	//
 	// example:
 	//
-	// MaxCompute
+	// PAI
 	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
-	// The quota specifications.
+	// The list of specification descriptions.
 	//
 	// example:
 	//
@@ -224,7 +228,7 @@ type ListQuotasResponseBodyQuotasSpecs struct {
 	//
 	// cu
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The specification type. The parameter can be left empty.
+	// The type. This parameter can be empty.
 	//
 	// example:
 	//

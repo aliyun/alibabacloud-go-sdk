@@ -30,21 +30,17 @@ type iCreateConnectionRequest interface {
 }
 
 type CreateConnectionRequest struct {
-	// The accessibility of the workspace. Valid values:
-	//
-	// 	- PRIVATE: The workspace is accessible only to you and the administrator of the workspace. This is the default value.
-	//
-	// 	- PUBLIC: The workspace is accessible to all users in the workspace.
+	// The visibility of the workspace. The default value is `PRIVATE`.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The connection configurations, in key-value pairs. The key varies based on the connection type. For more information, see the supplementary notes below the request parameters.
+	// Configuration properties for the connection, provided as key-value pairs. The required keys depend on the connection type. For details, see the supplementary parameter information.
 	//
 	// This parameter is required.
 	Configs map[string]*string `json:"Configs,omitempty" xml:"Configs,omitempty"`
-	// The connection name.
+	// The name of the connection.
 	//
 	// This parameter is required.
 	//
@@ -52,39 +48,25 @@ type CreateConnectionRequest struct {
 	//
 	// llm-connection
 	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
-	// The connection type. Valid values:
-	//
-	// 	- DashScopeConnection: Alibaba Cloud Model Studio connection
-	//
-	// 	- OpenLLMConnection: open source model connection
-	//
-	// 	- MilvusConnection: Milvus connection
-	//
-	// 	- OpenSearchConnection: OpenSearch connection
-	//
-	// 	- LindormConnection: Lindorm connection
-	//
-	// 	- ElasticsearchConnection: Elasticsearch connection
-	//
-	// 	- HologresConnection: Hologres connection
-	//
-	// 	- RDSConnection: RDS connection
-	//
-	// 	- CustomConnection: custom connection
+	// The type of the connection.
 	//
 	// example:
 	//
 	// DashScopeConnection
 	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	// The connection description.
+	// The description of the connection.
+	//
+	// example:
+	//
+	// Open-source LLM service connection.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The models, which apply to model service connections.
+	// A list of models. This parameter applies to model service connections.
 	Models []*CreateConnectionRequestModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
-	// The instance resource information of the connection, which applies to database connections.
+	// Resource metadata for the connection. This parameter is typically used for database connection types.
 	ResourceMeta *CreateConnectionRequestResourceMeta `json:"ResourceMeta,omitempty" xml:"ResourceMeta,omitempty" type:"Struct"`
-	// The configuration to be encrypted. Examples: the database logon account and password and the key of the model service.
+	// Sensitive connection properties that require encryption, such as database credentials or an API key for a model service.
 	Secrets map[string]*string `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
-	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The ID of the workspace. To get this ID, call the [`ListWorkspaces`](https://help.aliyun.com/document_detail/449124.html) operation.
 	//
 	// example:
 	//
@@ -201,30 +183,48 @@ func (s *CreateConnectionRequest) Validate() error {
 
 type CreateConnectionRequestModels struct {
 	// The display name of the model.
+	//
+	// example:
+	//
+	// Language model
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The model identifier.
+	// The context length.
+	//
+	// example:
+	//
+	// 4096
+	MaxModelLength *int64 `json:"MaxModelLength,omitempty" xml:"MaxModelLength,omitempty"`
+	// The model identifier. This value corresponds to the `model` parameter in an OpenAI API request.
 	//
 	// example:
 	//
 	// model_001
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The model type. Valid values:
-	//
-	// 	- LLM
-	//
-	// 	- Embedding
-	//
-	// 	- ReRank
+	// The model type.
 	//
 	// example:
 	//
 	// LLM
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	// Specifies whether a tool can be called by using ToolCall. Valid values:
+	// Specifies whether the model supports deep reasoning and can output the reasoning process as `reasoning_content`.
 	//
-	// 	- true
+	// example:
 	//
-	// 	- false
+	// true
+	SupportReasoning *bool `json:"SupportReasoning,omitempty" xml:"SupportReasoning,omitempty"`
+	// Specifies whether the model supports structured output in the OpenAI API\\"s JSON Schema format.
+	//
+	// example:
+	//
+	// true
+	SupportResponseSchema *bool `json:"SupportResponseSchema,omitempty" xml:"SupportResponseSchema,omitempty"`
+	// Specifies whether the model supports visual understanding.
+	//
+	// example:
+	//
+	// false
+	SupportVision *bool `json:"SupportVision,omitempty" xml:"SupportVision,omitempty"`
+	// Specifies whether the model supports tool calling.
 	//
 	// example:
 	//
@@ -244,6 +244,10 @@ func (s *CreateConnectionRequestModels) GetDisplayName() *string {
 	return s.DisplayName
 }
 
+func (s *CreateConnectionRequestModels) GetMaxModelLength() *int64 {
+	return s.MaxModelLength
+}
+
 func (s *CreateConnectionRequestModels) GetModel() *string {
 	return s.Model
 }
@@ -252,12 +256,29 @@ func (s *CreateConnectionRequestModels) GetModelType() *string {
 	return s.ModelType
 }
 
+func (s *CreateConnectionRequestModels) GetSupportReasoning() *bool {
+	return s.SupportReasoning
+}
+
+func (s *CreateConnectionRequestModels) GetSupportResponseSchema() *bool {
+	return s.SupportResponseSchema
+}
+
+func (s *CreateConnectionRequestModels) GetSupportVision() *bool {
+	return s.SupportVision
+}
+
 func (s *CreateConnectionRequestModels) GetToolCall() *bool {
 	return s.ToolCall
 }
 
 func (s *CreateConnectionRequestModels) SetDisplayName(v string) *CreateConnectionRequestModels {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateConnectionRequestModels) SetMaxModelLength(v int64) *CreateConnectionRequestModels {
+	s.MaxModelLength = &v
 	return s
 }
 
@@ -271,6 +292,21 @@ func (s *CreateConnectionRequestModels) SetModelType(v string) *CreateConnection
 	return s
 }
 
+func (s *CreateConnectionRequestModels) SetSupportReasoning(v bool) *CreateConnectionRequestModels {
+	s.SupportReasoning = &v
+	return s
+}
+
+func (s *CreateConnectionRequestModels) SetSupportResponseSchema(v bool) *CreateConnectionRequestModels {
+	s.SupportResponseSchema = &v
+	return s
+}
+
+func (s *CreateConnectionRequestModels) SetSupportVision(v bool) *CreateConnectionRequestModels {
+	s.SupportVision = &v
+	return s
+}
+
 func (s *CreateConnectionRequestModels) SetToolCall(v bool) *CreateConnectionRequestModels {
 	s.ToolCall = &v
 	return s
@@ -281,6 +317,11 @@ func (s *CreateConnectionRequestModels) Validate() error {
 }
 
 type CreateConnectionRequestResourceMeta struct {
+	// Additional configuration information.
+	//
+	// example:
+	//
+	// {"vpcId":"vpc-xxxx"}
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The instance ID.
 	//
@@ -289,6 +330,10 @@ type CreateConnectionRequestResourceMeta struct {
 	// ld-uf69****9nqjjes
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance name.
+	//
+	// example:
+	//
+	// Test instance.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 

@@ -42,35 +42,79 @@ type iRun interface {
 }
 
 type Run struct {
-	// The visibility.
+	// The visibility of the run.
+	//
+	// example:
+	//
+	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The ID of the experiment that corresponds to the run.
+	// The ID of the experiment associated with the run.
+	//
+	// example:
+	//
+	// exp-1zpfthdx******
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	// The creation time.
+	// The time when the run was created.
+	//
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modified time.
+	// The time when the run was last modified.
+	//
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The labels added to the run.
+	// The list of labels for the run.
 	Labels []*RunLabel `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The metrics of the run.
+	// The list of metrics for the run.
 	Metrics []*RunMetric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	// Parameter
+	// Name
+	//
+	// example:
+	//
+	// testrun
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the owner account.
+	// The ID of the owner\\"s root account.
+	//
+	// example:
+	//
+	// 163104*****3440
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The hyperparameters of the run.
+	// The list of hyperparameters for the run.
 	Params []*RunParam `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The run ID.
+	// The unique ID of the run.
+	//
+	// example:
+	//
+	// run-1qJhzJ2YXgX****
 	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
 	// The ID of the source PAI workload.
+	//
+	// example:
+	//
+	// train9s0afvjkf
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// The type of the source PAI workload.
+	//
+	// example:
+	//
+	// TrainingService
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The owner ID.
+	// The ID of the owner.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The ID of the workspace to which the run belongs.
+	//
+	// example:
+	//
+	// 145883
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

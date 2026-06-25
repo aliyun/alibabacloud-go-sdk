@@ -71,7 +71,12 @@ type ModelVersion struct {
 	// example:
 	//
 	// {}
-	CompressionSpec  map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
+	CompressionSpec map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
+	// 蒸馏配置。
+	//
+	// example:
+	//
+	// {}
 	DistillationSpec map[string]interface{} `json:"DistillationSpec,omitempty" xml:"DistillationSpec,omitempty"`
 	// The evaluation configuration.
 	//
@@ -258,6 +263,10 @@ type ModelVersion struct {
 	// 155770209******
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The model version description.
+	//
+	// example:
+	//
+	// 情感分析。
 	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
 	// The model version, which is unique for the model. If you leave this parameter empty, `0.1.0` is the first version by default. Then, the minor version number incremented by 1 is used as the second version `0.2.0`.
 	//
@@ -482,7 +491,17 @@ func (s *ModelVersion) Validate() error {
 }
 
 type ModelVersionLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 标签的key
+	//
+	// example:
+	//
+	// k1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 标签的value
+	//
+	// example:
+	//
+	// v1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

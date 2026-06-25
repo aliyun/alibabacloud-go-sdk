@@ -28,7 +28,7 @@ type iListDatasetFileMetasResponseBody interface {
 }
 
 type ListDatasetFileMetasResponseBody struct {
-	// The metadata records of the dataset files.
+	// The detailed metadata of the dataset files.
 	DatasetFileMetas []*DatasetFileMeta `json:"DatasetFileMetas,omitempty" xml:"DatasetFileMetas,omitempty" type:"Repeated"`
 	// The dataset ID.
 	//
@@ -36,17 +36,19 @@ type ListDatasetFileMetasResponseBody struct {
 	//
 	// d-rbvg5*****jhc9ks92
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The dataset version.
+	// The version name of the dataset.
 	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// The maximum number of results returned per page when you use the \\`NextToken\\` parameter.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. If the number of results exceeds the maximum number of entries allowed per page, a pagination token is returned. This token can be used as an input parameter to obtain the next page of results. If all results are obtained, no token is returned.
+	// The pagination token. If the number of results that match the query exceeds the page size, this token is returned. To retrieve the next page of data, use the returned token in your next request. Repeat this process until no token is returned, which indicates that all data has been retrieved.
 	//
 	// example:
 	//
@@ -54,7 +56,7 @@ type ListDatasetFileMetasResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// Deprecated
 	//
-	// The number of entries per page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//

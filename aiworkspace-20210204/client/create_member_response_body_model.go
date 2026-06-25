@@ -16,7 +16,7 @@ type iCreateMemberResponseBody interface {
 }
 
 type CreateMemberResponseBody struct {
-	// The returned members.
+	// The list of members.
 	Members []*CreateMemberResponseBodyMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 	// The request ID.
 	//

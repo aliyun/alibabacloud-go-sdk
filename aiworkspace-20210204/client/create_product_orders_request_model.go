@@ -16,17 +16,17 @@ type iCreateProductOrdersRequest interface {
 }
 
 type CreateProductOrdersRequest struct {
-	// Specifies whether to automatically pay for the provided products.
+	// Specifies whether to automatically pay for all products listed in the Products parameter.
 	//
-	// 	- true
+	// - true: Enables automatic payment.
 	//
-	// 	- false
+	// - false: Disables automatic payment.
 	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The list of products to be purchased. Separate them with commas (,).
+	// The list of products to purchase.
 	Products []*CreateProductOrdersRequestProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
 }
 
@@ -70,65 +70,145 @@ func (s *CreateProductOrdersRequest) Validate() error {
 }
 
 type CreateProductOrdersRequestProducts struct {
-	// Specifies whether to automatically renew the product.
+	// Specifies whether to enable auto-renewal.
 	//
-	// 	- true
+	// - true: Enables auto-renewal.
 	//
-	// 	- false
+	// - false: Disables auto-renewal.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The billing method. Only POSTPAY is supported.
+	// The billing method. Currently, only POSTPAY is supported.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The purchase duration. You can use this parameter together with pricingCycle. Only 1 is supported.
+	// The subscription duration. This parameter is used with PricingCycle. Currently, only a value of 1 is supported.
 	//
 	// example:
 	//
 	// 1
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The properties of the instance.
+	// The list of instance properties.
 	//
-	// 	- DataWorks_share: [ { "Code": "region", "Value": "cn-shanghai" } ]
+	// - DataWorks_share:
 	//
-	// 	- OSS_share: [ { "Code": "commodity_type", "Value": "oss", "Name": "Object Storage Service" }, { "Code": "ord_time", "Value": "1:Hour", "Name": "1 Hour" } ]
+	//   [ {
 	//
-	// 	- PAI_share: None
+	//   "Code": "region",
 	//
-	// 	- China bid MaxCompute_share: [ { "Code": "region", "Value": "cn-hangzhou" }, { "Code": "odps_specification_type", "Value": "OdpsStandard" }, { "Code": "ord_time", "Value": "1:Hour" } ]
+	//   "Value": "cn-shanghai"
 	//
-	// 	- International bid MaxCompute_share: [ { "Code": "region", "Value": "cn-hangzhou" }, { "Code": "ord_time", "Value": "1:Hour" } ]
+	//   }
+	//
+	//   ]
+	//
+	// - OSS_share:
+	//
+	//   [ {
+	//
+	//   "Code": "commodity_type",
+	//
+	//   "Value": "oss",
+	//
+	//   "Name": "Object Storage Service"
+	//
+	//   },
+	//
+	//   {
+	//
+	//   "Code": "ord_time",
+	//
+	//   "Value": "1:Hour",
+	//
+	//   "Name": "1 Hour"
+	//
+	//   }
+	//
+	//   ]
+	//
+	// - PAI_share: None
+	//
+	// - MaxCompute_share for accounts in mainland China:
+	//
+	//   [
+	//
+	//   {
+	//
+	//   "Code": "region",
+	//
+	//   "Value": "cn-hangzhou"
+	//
+	//   },
+	//
+	//   {
+	//
+	//   "Code": "odps_specification_type",
+	//
+	//   "Value": "OdpsStandard"
+	//
+	//   },
+	//
+	//   {
+	//
+	//   "Code": "ord_time",
+	//
+	//   "Value": "1:Hour"
+	//
+	//   }
+	//
+	//   ]
+	//
+	// - MaxCompute_share for accounts outside mainland China:
+	//
+	//   [
+	//
+	//   {
+	//
+	//   "Code": "region",
+	//
+	//   "Value": "cn-hangzhou"
+	//
+	//   },
+	//
+	//   {
+	//
+	//   "Code": "ord_time",
+	//
+	//   "Value": "1:Hour"
+	//
+	//   }
+	//
+	//   ]
 	InstanceProperties []*CreateProductOrdersRequestProductsInstanceProperties `json:"InstanceProperties,omitempty" xml:"InstanceProperties,omitempty" type:"Repeated"`
-	// The type of the order. Only BUY is supported.
+	// The order type. Currently, only BUY is supported.
 	//
 	// example:
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The billing cycle. Valid values:
+	// The billing cycle. The following values are supported:
 	//
-	// 	- Month: The price is calculated every month. DataWorks_share only supports Month.
+	// - Month: Monthly billing. Only DataWorks_share supports this value.
 	//
-	// 	- Hour: The price is calculated every hour. OSS_share and MaxCompute_share only support Hour.
+	// - Hour: Hourly billing. Only OSS_share and MaxCompute_share support this value.
 	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// The product code. Valid values:
+	// The product code. The following codes are supported:
 	//
-	// 	- DataWorks_share: pay-as-you-go DataWorks
+	// - DataWorks_share: The pay-as-you-go DataWorks product.
 	//
-	// 	- MaxCompute_share: pay-as-you-go MaxCompute
+	// - MaxCompute_share: The pay-as-you-go MaxCompute product.
 	//
-	// 	- PAI_share: pay-as-you-go PAI.
+	// - PAI_share: The pay-as-you-go PAI product.
 	//
-	// 	- OSS_share: pay-as-you-go OSS
+	// - OSS_share: The pay-as-you-go OSS product.
 	//
 	// example:
 	//
@@ -221,15 +301,19 @@ func (s *CreateProductOrdersRequestProducts) Validate() error {
 }
 
 type CreateProductOrdersRequestProductsInstanceProperties struct {
-	// The property code.
+	// The code of the instance property.
 	//
 	// example:
 	//
 	// commodity_type
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The property name.
+	// The name of the instance property.
+	//
+	// example:
+	//
+	// Object Storage Service
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The property value.
+	// The value of the instance property.
 	//
 	// example:
 	//

@@ -28,9 +28,13 @@ type CreateProductOrdersResponseBody struct {
 	//
 	// 3ed6a882-0d85-4dd8-ad36-cd8d74ab9fdb
 	BuyProductRequestId *string `json:"BuyProductRequestId,omitempty" xml:"BuyProductRequestId,omitempty"`
-	// The returned message.
+	// The message returned for the purchase.
+	//
+	// example:
+	//
+	// Normal
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The purchase order ID.
+	// The ID of the purchase order.
 	//
 	// example:
 	//

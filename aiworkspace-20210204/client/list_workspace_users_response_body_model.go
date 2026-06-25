@@ -24,13 +24,13 @@ type ListWorkspaceUsersResponseBody struct {
 	//
 	// 1e195c5116124202371861018d5bde
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of users who meet the filter conditions.
+	// The number of users that meet the filter condition.
 	//
 	// example:
 	//
 	// 2
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The users.
+	// The list of users.
 	Users []*ListWorkspaceUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 

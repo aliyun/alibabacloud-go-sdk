@@ -14,7 +14,7 @@ type iSetExperimentLabelsRequest interface {
 }
 
 type SetExperimentLabelsRequest struct {
-	// The tags.
+	// A list of labels.
 	Labels []*LabelInfo `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 
