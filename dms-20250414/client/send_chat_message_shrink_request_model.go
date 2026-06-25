@@ -35,10 +35,12 @@ type iSendChatMessageShrinkRequest interface {
 	GetSessionId() *string
 	SetTaskConfigShrink(v string) *SendChatMessageShrinkRequest
 	GetTaskConfigShrink() *string
+	SetWorkspaceId(v string) *SendChatMessageShrinkRequest
+	GetWorkspaceId() *string
 }
 
 type SendChatMessageShrinkRequest struct {
-	// The agent ID. This is a required field. You can obtain the current AgentId from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentId you need to specify may change with each request.
+	// The agent ID. This is a required field. You can obtain the current AgentId from the return value of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentId you need to pass in each request may change.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +48,13 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// agent_***
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The Data Management unit you are currently in. If you choose to analyze a database, this information is used to correctly connect to your Data Management instance. You can check your current Data Management unit in the Data Management console. If you are a user of Alibaba Cloud China Website (www.aliyun.com), set this parameter to ap-southeast-1.
+	// The DMS unit you are currently in. If you choose to analyze a database, this information will be used to correctly connect to your DMS instance through DMS. You can go to the DMS console to check your current DMS unit. If you are a China site user of Alibaba Cloud, you can directly enter cn-hangzhou.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The data source information. This parameter can be left empty. This parameter supports only a single data source. Use the DataSources parameter instead.
+	// The data source information. This parameter can be left empty. Only one data source can be passed in through this parameter. We recommend that you use the DataSources parameter instead.
 	//
 	// example:
 	//
@@ -60,7 +62,7 @@ type SendChatMessageShrinkRequest struct {
 	DataSourceShrink *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
 	// The detailed data source information. This parameter can be left empty.
 	DataSourcesShrink *string `json:"DataSources,omitempty" xml:"DataSources,omitempty"`
-	// The message content to send to the Agent in this request.
+	// The content of the message to be sent to the Agent.
 	//
 	// This parameter is required.
 	//
@@ -70,13 +72,13 @@ type SendChatMessageShrinkRequest struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The message type. Default value: `[primary]`.
 	//
-	// - For regular interactions with the Agent, set the message type to `[primary]`.
+	// - In normal cases, when interacting with the Agent, the message type is `[primary]`.
 	//
-	// - When the message is a response to the Agent\\"s Human-in-Loop question, set the type to `[additional]`.
+	// - When the message is a response to the Agent\\"s Human-in-Loop question, the type should be `[additional]`.
 	//
-	// - When the message is intended to trigger report generation, set the type to `[report]`.
+	// - When the message is intended to trigger a report generation, the type should be `[report]`.
 	//
-	// - When the message is intended to cancel the current session, set the type to `[cancel]`.
+	// - When the message is intended to cancel the current session, the type should be `[cancel]`.
 	//
 	// example:
 	//
@@ -88,13 +90,13 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// 20qrliuoo7p2vlsfg*****
 	ParentSessionId *string `json:"ParentSessionId,omitempty" xml:"ParentSessionId,omitempty"`
-	// This field is required when the message type is `additional`. Specify the specific question that the Agent asks the user through Human-in-Loop.
+	// This field is required when the message type is `additional`. Pass in the specific question that the Agent asked the user through Human-in-Loop.
 	//
 	// example:
 	//
 	// 请提供计算GMV的口径。
 	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
-	// The quoted content to pass in. This is typically used during interactions with the Agent.
+	// Pass in the current quoted content, typically used when interacting with the Agent.
 	//
 	// example:
 	//
@@ -102,7 +104,7 @@ type SendChatMessageShrinkRequest struct {
 	QuotedMessage *string `json:"QuotedMessage,omitempty" xml:"QuotedMessage,omitempty"`
 	// **Important**
 	//
-	// When this message is a reply to an Agent message (for example, the Agent asks a clarifying question through ASK_HUMAN), set reply_to to the exact Checkpoint sequence number carried by that Agent message. If this message is not a targeted reply, such as requesting further in-depth analysis after analysis is complete, leave reply_to empty or set it to "0".
+	// When this message is a reply to an Agent message (for example, when the Agent asks for clarification through ASK_HUMAN), reply_to must be set to the exact Checkpoint number carried in that Agent message. If this message is not a specific reply, such as requesting the Agent for further in-depth analysis after analysis is completed, reply_to can be left empty or set to "0".
 	//
 	// This field affects how the Agent decides to process the message. Passing an incorrect value may lead to analysis results that do not meet expectations.
 	//
@@ -110,12 +112,12 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// 0
 	ReplyTo *string `json:"ReplyTo,omitempty" xml:"ReplyTo,omitempty"`
-	// The special configuration for this session. For the same session, only the configuration passed with the first SendMessage call takes effect.
+	// The special configuration for this session. For the same session, only the configuration passed in the first SendMessage call takes effect.
 	//
 	// if can be null:
 	// true
 	SessionConfigShrink *string `json:"SessionConfig,omitempty" xml:"SessionConfig,omitempty"`
-	// The session ID. This is a required field. You can obtain the SessionId by calling the CreateAgentSession operation.
+	// The session ID. This is a required field. You can obtain the SessionId by calling CreateAgentSession.
 	//
 	// This parameter is required.
 	//
@@ -123,8 +125,9 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// sess_***
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The configuration items that affect only the current task.
+	// The configuration items that only affect the current task.
 	TaskConfigShrink *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
+	WorkspaceId      *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s SendChatMessageShrinkRequest) String() string {
@@ -185,6 +188,10 @@ func (s *SendChatMessageShrinkRequest) GetSessionId() *string {
 
 func (s *SendChatMessageShrinkRequest) GetTaskConfigShrink() *string {
 	return s.TaskConfigShrink
+}
+
+func (s *SendChatMessageShrinkRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *SendChatMessageShrinkRequest) SetAgentId(v string) *SendChatMessageShrinkRequest {
@@ -249,6 +256,11 @@ func (s *SendChatMessageShrinkRequest) SetSessionId(v string) *SendChatMessageSh
 
 func (s *SendChatMessageShrinkRequest) SetTaskConfigShrink(v string) *SendChatMessageShrinkRequest {
 	s.TaskConfigShrink = &v
+	return s
+}
+
+func (s *SendChatMessageShrinkRequest) SetWorkspaceId(v string) *SendChatMessageShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

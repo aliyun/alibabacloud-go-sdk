@@ -2872,15 +2872,15 @@ func (client *Client) GetAirflow(request *GetAirflowRequest) (_result *GetAirflo
 
 // Summary:
 //
-// Retrieves chat content from a specific checkpoint by specifying a session ID and an agent ID.
+// Retrieves chat content from a specific checkpoint by specifying the session ID and AgentId.
 //
 // Description:
 //
-// ## Request
+// ## Request Description
 //
-// - The response is an SSE stream. Each event follows the`SSEEvent` schema and includes metadata, such as the message level.
+// - The response is returned as an SSE stream, where each event follows the `SSEEvent` schema and contains meta-information such as the message level.
 //
-// - The `content` field contains either message text or a JSON object, as determined by the `content_type` field.
+// - The `content` field in each SSE event may carry actual message text or a JSON object, depending on the value of `content_type`.
 //
 // @param request - GetChatContentRequest
 //
@@ -2895,15 +2895,15 @@ func (client *Client) GetChatContentWithSSE(request *GetChatContentRequest, runt
 
 // Summary:
 //
-// Retrieves chat content from a specific checkpoint by specifying a session ID and an agent ID.
+// Retrieves chat content from a specific checkpoint by specifying the session ID and AgentId.
 //
 // Description:
 //
-// ## Request
+// ## Request Description
 //
-// - The response is an SSE stream. Each event follows the`SSEEvent` schema and includes metadata, such as the message level.
+// - The response is returned as an SSE stream, where each event follows the `SSEEvent` schema and contains meta-information such as the message level.
 //
-// - The `content` field contains either message text or a JSON object, as determined by the `content_type` field.
+// - The `content` field in each SSE event may carry actual message text or a JSON object, depending on the value of `content_type`.
 //
 // @param request - GetChatContentRequest
 //
@@ -2959,15 +2959,15 @@ func (client *Client) GetChatContentWithOptions(request *GetChatContentRequest, 
 
 // Summary:
 //
-// Retrieves chat content from a specific checkpoint by specifying a session ID and an agent ID.
+// Retrieves chat content from a specific checkpoint by specifying the session ID and AgentId.
 //
 // Description:
 //
-// ## Request
+// ## Request Description
 //
-// - The response is an SSE stream. Each event follows the`SSEEvent` schema and includes metadata, such as the message level.
+// - The response is returned as an SSE stream, where each event follows the `SSEEvent` schema and contains meta-information such as the message level.
 //
-// - The `content` field contains either message text or a JSON object, as determined by the `content_type` field.
+// - The `content` field in each SSE event may carry actual message text or a JSON object, depending on the value of `content_type`.
 //
 // @param request - GetChatContentRequest
 //
@@ -6507,7 +6507,7 @@ func (client *Client) SaveWorkspaceCode(request *SaveWorkspaceCodeRequest) (_res
 
 // Summary:
 //
-// Sends a user message to a specified session or cancels a session.
+// Send a user message to a specified session or cancel the session.
 //
 // Description:
 //
@@ -6515,15 +6515,15 @@ func (client *Client) SaveWorkspaceCode(request *SaveWorkspaceCodeRequest) (_res
 //
 // - `agent_id` and `session_id` are required fields.
 //
-// - `message_type` defaults to `primary`. To append information or cancel a session, set it to `additional` or `cancel`.
+// - `message_type` defaults to `primary`. When you need to append information or cancel a session, set it to `additional` or `cancel`.
 //
-// - `reply_to` indicates which Agent message this message is responding to. The default value is `0`.
+// - The `reply_to` field indicates which Agent message this message is responding to. The default value is `0`.
 //
 // - When `message_type` is `additional`, the `question` field is required.
 //
-// - `quoted_message` can be used to quote the content of a previous user message.
+// - `quoted_message` can be used to quote the content of the user\\"s previous message.
 //
-// - `data_source`, `dms_user`, `db_metadata`, `session_config`, and other fields are optional but provide more detailed context information.
+// - Fields such as `data_source`, `dms_user`, `db_metadata`, and `session_config` are all optional, but provide more detailed context information.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -6608,6 +6608,10 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 		query["TaskConfig"] = request.TaskConfigShrink
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6633,7 +6637,7 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 
 // Summary:
 //
-// Sends a user message to a specified session or cancels a session.
+// Send a user message to a specified session or cancel the session.
 //
 // Description:
 //
@@ -6641,15 +6645,15 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 //
 // - `agent_id` and `session_id` are required fields.
 //
-// - `message_type` defaults to `primary`. To append information or cancel a session, set it to `additional` or `cancel`.
+// - `message_type` defaults to `primary`. When you need to append information or cancel a session, set it to `additional` or `cancel`.
 //
-// - `reply_to` indicates which Agent message this message is responding to. The default value is `0`.
+// - The `reply_to` field indicates which Agent message this message is responding to. The default value is `0`.
 //
 // - When `message_type` is `additional`, the `question` field is required.
 //
-// - `quoted_message` can be used to quote the content of a previous user message.
+// - `quoted_message` can be used to quote the content of the user\\"s previous message.
 //
-// - `data_source`, `dms_user`, `db_metadata`, `session_config`, and other fields are optional but provide more detailed context information.
+// - Fields such as `data_source`, `dms_user`, `db_metadata`, and `session_config` are all optional, but provide more detailed context information.
 //
 // @param request - SendChatMessageRequest
 //

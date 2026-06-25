@@ -26,13 +26,13 @@ type GetChatContentRequest struct {
 	//
 	// xxxx-xxxx-xxxx
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The service returns output starting from this checkpoint.
+	// The backend will return output starting from this checkpoint.
 	//
 	// example:
 	//
 	// 0
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	// The DMS unit. For users on the Alibaba Cloud China site, the default value is cn-hangzhou.
+	// The current DMS unit. Chinese mainland users of Alibaba Cloud should use cn-hangzhou by default.
 	//
 	// example:
 	//

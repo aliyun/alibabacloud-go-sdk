@@ -35,10 +35,12 @@ type iSendChatMessageRequest interface {
 	GetSessionId() *string
 	SetTaskConfig(v *SendChatMessageRequestTaskConfig) *SendChatMessageRequest
 	GetTaskConfig() *SendChatMessageRequestTaskConfig
+	SetWorkspaceId(v string) *SendChatMessageRequest
+	GetWorkspaceId() *string
 }
 
 type SendChatMessageRequest struct {
-	// The agent ID. This is a required field. You can obtain the current AgentId from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentId you need to specify may change with each request.
+	// The agent ID. This is a required field. You can obtain the current AgentId from the return value of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentId you need to pass in each request may change.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +48,13 @@ type SendChatMessageRequest struct {
 	//
 	// agent_***
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The Data Management unit you are currently in. If you choose to analyze a database, this information is used to correctly connect to your Data Management instance. You can check your current Data Management unit in the Data Management console. If you are a user of Alibaba Cloud China Website (www.aliyun.com), set this parameter to ap-southeast-1.
+	// The DMS unit you are currently in. If you choose to analyze a database, this information will be used to correctly connect to your DMS instance through DMS. You can go to the DMS console to check your current DMS unit. If you are a China site user of Alibaba Cloud, you can directly enter cn-hangzhou.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The data source information. This parameter can be left empty. This parameter supports only a single data source. Use the DataSources parameter instead.
+	// The data source information. This parameter can be left empty. Only one data source can be passed in through this parameter. We recommend that you use the DataSources parameter instead.
 	//
 	// example:
 	//
@@ -60,7 +62,7 @@ type SendChatMessageRequest struct {
 	DataSource *SendChatMessageRequestDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The detailed data source information. This parameter can be left empty.
 	DataSources []*SendChatMessageRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	// The message content to send to the Agent in this request.
+	// The content of the message to be sent to the Agent.
 	//
 	// This parameter is required.
 	//
@@ -70,13 +72,13 @@ type SendChatMessageRequest struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The message type. Default value: `[primary]`.
 	//
-	// - For regular interactions with the Agent, set the message type to `[primary]`.
+	// - In normal cases, when interacting with the Agent, the message type is `[primary]`.
 	//
-	// - When the message is a response to the Agent\\"s Human-in-Loop question, set the type to `[additional]`.
+	// - When the message is a response to the Agent\\"s Human-in-Loop question, the type should be `[additional]`.
 	//
-	// - When the message is intended to trigger report generation, set the type to `[report]`.
+	// - When the message is intended to trigger a report generation, the type should be `[report]`.
 	//
-	// - When the message is intended to cancel the current session, set the type to `[cancel]`.
+	// - When the message is intended to cancel the current session, the type should be `[cancel]`.
 	//
 	// example:
 	//
@@ -88,13 +90,13 @@ type SendChatMessageRequest struct {
 	//
 	// 20qrliuoo7p2vlsfg*****
 	ParentSessionId *string `json:"ParentSessionId,omitempty" xml:"ParentSessionId,omitempty"`
-	// This field is required when the message type is `additional`. Specify the specific question that the Agent asks the user through Human-in-Loop.
+	// This field is required when the message type is `additional`. Pass in the specific question that the Agent asked the user through Human-in-Loop.
 	//
 	// example:
 	//
 	// 请提供计算GMV的口径。
 	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
-	// The quoted content to pass in. This is typically used during interactions with the Agent.
+	// Pass in the current quoted content, typically used when interacting with the Agent.
 	//
 	// example:
 	//
@@ -102,7 +104,7 @@ type SendChatMessageRequest struct {
 	QuotedMessage *string `json:"QuotedMessage,omitempty" xml:"QuotedMessage,omitempty"`
 	// **Important**
 	//
-	// When this message is a reply to an Agent message (for example, the Agent asks a clarifying question through ASK_HUMAN), set reply_to to the exact Checkpoint sequence number carried by that Agent message. If this message is not a targeted reply, such as requesting further in-depth analysis after analysis is complete, leave reply_to empty or set it to "0".
+	// When this message is a reply to an Agent message (for example, when the Agent asks for clarification through ASK_HUMAN), reply_to must be set to the exact Checkpoint number carried in that Agent message. If this message is not a specific reply, such as requesting the Agent for further in-depth analysis after analysis is completed, reply_to can be left empty or set to "0".
 	//
 	// This field affects how the Agent decides to process the message. Passing an incorrect value may lead to analysis results that do not meet expectations.
 	//
@@ -110,12 +112,12 @@ type SendChatMessageRequest struct {
 	//
 	// 0
 	ReplyTo *string `json:"ReplyTo,omitempty" xml:"ReplyTo,omitempty"`
-	// The special configuration for this session. For the same session, only the configuration passed with the first SendMessage call takes effect.
+	// The special configuration for this session. For the same session, only the configuration passed in the first SendMessage call takes effect.
 	//
 	// if can be null:
 	// true
 	SessionConfig *SendChatMessageRequestSessionConfig `json:"SessionConfig,omitempty" xml:"SessionConfig,omitempty" type:"Struct"`
-	// The session ID. This is a required field. You can obtain the SessionId by calling the CreateAgentSession operation.
+	// The session ID. This is a required field. You can obtain the SessionId by calling CreateAgentSession.
 	//
 	// This parameter is required.
 	//
@@ -123,8 +125,9 @@ type SendChatMessageRequest struct {
 	//
 	// sess_***
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The configuration items that affect only the current task.
-	TaskConfig *SendChatMessageRequestTaskConfig `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty" type:"Struct"`
+	// The configuration items that only affect the current task.
+	TaskConfig  *SendChatMessageRequestTaskConfig `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty" type:"Struct"`
+	WorkspaceId *string                           `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s SendChatMessageRequest) String() string {
@@ -185,6 +188,10 @@ func (s *SendChatMessageRequest) GetSessionId() *string {
 
 func (s *SendChatMessageRequest) GetTaskConfig() *SendChatMessageRequestTaskConfig {
 	return s.TaskConfig
+}
+
+func (s *SendChatMessageRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *SendChatMessageRequest) SetAgentId(v string) *SendChatMessageRequest {
@@ -252,6 +259,11 @@ func (s *SendChatMessageRequest) SetTaskConfig(v *SendChatMessageRequestTaskConf
 	return s
 }
 
+func (s *SendChatMessageRequest) SetWorkspaceId(v string) *SendChatMessageRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 func (s *SendChatMessageRequest) Validate() error {
 	if s.DataSource != nil {
 		if err := s.DataSource.Validate(); err != nil {
@@ -287,11 +299,7 @@ type SendChatMessageRequestDataSource struct {
 	//
 	// 123
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The data source type. Valid values:
-	//
-	// - remote_data_center: file
-	//
-	// - database: database.
+	// The data source type. Valid values: `[remote_data_center, database]`, which indicate whether the current analysis is for a file or a database respectively.
 	//
 	// example:
 	//
@@ -309,13 +317,13 @@ type SendChatMessageRequestDataSource struct {
 	//
 	// ******
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The ID of the database in Data Management.
+	// The ID of the database in DMS.
 	//
 	// example:
 	//
 	// 23******
 	DmsDatabaseId *string `json:"DmsDatabaseId,omitempty" xml:"DmsDatabaseId,omitempty"`
-	// The ID of the instance in Data Management.
+	// The ID of the instance in DMS.
 	//
 	// example:
 	//
@@ -467,11 +475,7 @@ type SendChatMessageRequestDataSources struct {
 	//
 	// 123
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The data source type. Valid values:
-	//
-	// - remote_data_center: file
-	//
-	// - database: database.
+	// The data source type. Valid values: [remote_data_center, database], which indicate whether the current analysis is for a file or a database respectively.
 	//
 	// example:
 	//
@@ -489,13 +493,13 @@ type SendChatMessageRequestDataSources struct {
 	//
 	// mydatabase
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The ID of the database in Data Management.
+	// The ID of the database in DMS.
 	//
 	// example:
 	//
 	// 123****
 	DmsDatabaseId *string `json:"DmsDatabaseId,omitempty" xml:"DmsDatabaseId,omitempty"`
-	// The ID of the instance in Data Management.
+	// The ID of the instance in DMS.
 	//
 	// example:
 	//
@@ -641,37 +645,37 @@ func (s *SendChatMessageRequestDataSources) Validate() error {
 }
 
 type SendChatMessageRequestSessionConfig struct {
-	// Deprecated. Use the input parameter of CreateAgentSession instead.
+	// Deprecated. The value specified in CreateAgentSession takes precedence.
 	//
 	// example:
 	//
 	// null
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// Deprecated. Use the input parameter of CreateAgentSession instead.
+	// Deprecated. The value specified in CreateAgentSession takes precedence.
 	//
 	// example:
 	//
 	// null
 	CustomAgentStage *string `json:"CustomAgentStage,omitempty" xml:"CustomAgentStage,omitempty"`
-	// Currently only Chinese and English are supported. The default value is Chinese. Only uppercase values are supported.
+	// Currently only Chinese and English are supported. The default is Chinese. Only uppercase values are supported.
 	//
 	// example:
 	//
 	// ENGLISH
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The mode. Valid values:
+	// The mode:
 	//
-	//  - **ASK_DATA**: data query mode.
+	//  - **ASK_DATA**: Ask Data mode
 	//
-	//  - **ANALYSIS**: analysis mode.
+	//  - **ANALYSIS**: Analysis mode
 	//
-	//  - **INSIGHT**: insight mode.
+	//  - **INSIGHT**: Insight mode
 	//
 	// example:
 	//
 	// ANALYSIS
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The text of up to 64 characters that is used as a watermark in the generated PDF report.
+	// You can enter text of up to 64 characters, which will be used as a watermark in the generated PDF report.
 	//
 	// example:
 	//
@@ -797,7 +801,7 @@ func (s *SendChatMessageRequestSessionConfig) Validate() error {
 }
 
 type SendChatMessageRequestTaskConfig struct {
-	// The report rule configuration. Only when MessageType is REPORT, a report task is executed based on this configuration.
+	// The report rule configuration. Only when MessageType is REPORT, a report task will be executed based on this configuration.
 	ReportConfig *SendChatMessageRequestTaskConfigReportConfig `json:"ReportConfig,omitempty" xml:"ReportConfig,omitempty" type:"Struct"`
 }
 
@@ -828,25 +832,19 @@ func (s *SendChatMessageRequestTaskConfig) Validate() error {
 }
 
 type SendChatMessageRequestTaskConfigReportConfig struct {
-	// The prompt that the report must follow.
+	// The prompt that this report should follow.
 	//
 	// example:
 	//
 	// generate a report
 	ReportPrompt *string `json:"ReportPrompt,omitempty" xml:"ReportPrompt,omitempty"`
-	// The report theme. Valid values: default, journal, legacy, and neobrutalism.
+	// The report theme. Currently supported values: [default, journal, legacy, neobrutalism].
 	//
 	// example:
 	//
 	// default
 	ReportTheme *string `json:"ReportTheme,omitempty" xml:"ReportTheme,omitempty"`
-	// The service type. Valid values:
-	//
-	// - TextReport: generates a text report.
-	//
-	// - WebReport: generates a web report.
-	//
-	// Currently only WebReport is supported.
+	// The service type. Valid values: TextReport and WebReport, which indicate whether this task generates a text report or a web report. Currently, only the WebReport type is supported.
 	//
 	// example:
 	//
