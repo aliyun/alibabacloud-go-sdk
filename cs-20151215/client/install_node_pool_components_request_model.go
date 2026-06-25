@@ -144,7 +144,11 @@ func (s *InstallNodePoolComponentsRequestComponents) Validate() error {
 
 type InstallNodePoolComponentsRequestComponentsConfig struct {
 	// The custom configuration of the component.
-	CustomConfig map[string]*string `json:"customConfig,omitempty" xml:"customConfig,omitempty"`
+	//
+	// example:
+	//
+	// {"cpuManagerPolicy":"static"}
+	CustomConfig map[string]interface{} `json:"customConfig,omitempty" xml:"customConfig,omitempty"`
 }
 
 func (s InstallNodePoolComponentsRequestComponentsConfig) String() string {
@@ -155,11 +159,11 @@ func (s InstallNodePoolComponentsRequestComponentsConfig) GoString() string {
 	return s.String()
 }
 
-func (s *InstallNodePoolComponentsRequestComponentsConfig) GetCustomConfig() map[string]*string {
+func (s *InstallNodePoolComponentsRequestComponentsConfig) GetCustomConfig() map[string]interface{} {
 	return s.CustomConfig
 }
 
-func (s *InstallNodePoolComponentsRequestComponentsConfig) SetCustomConfig(v map[string]*string) *InstallNodePoolComponentsRequestComponentsConfig {
+func (s *InstallNodePoolComponentsRequestComponentsConfig) SetCustomConfig(v map[string]interface{}) *InstallNodePoolComponentsRequestComponentsConfig {
 	s.CustomConfig = v
 	return s
 }

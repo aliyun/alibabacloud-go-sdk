@@ -124,7 +124,11 @@ func (s *UpdateNodePoolComponentRequest) Validate() error {
 
 type UpdateNodePoolComponentRequestConfig struct {
 	// The custom configuration of the component.
-	CustomConfig map[string]*string `json:"customConfig,omitempty" xml:"customConfig,omitempty"`
+	//
+	// example:
+	//
+	// {"cpuManagerPolicy":"static"}
+	CustomConfig map[string]interface{} `json:"customConfig,omitempty" xml:"customConfig,omitempty"`
 }
 
 func (s UpdateNodePoolComponentRequestConfig) String() string {
@@ -135,11 +139,11 @@ func (s UpdateNodePoolComponentRequestConfig) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateNodePoolComponentRequestConfig) GetCustomConfig() map[string]*string {
+func (s *UpdateNodePoolComponentRequestConfig) GetCustomConfig() map[string]interface{} {
 	return s.CustomConfig
 }
 
-func (s *UpdateNodePoolComponentRequestConfig) SetCustomConfig(v map[string]*string) *UpdateNodePoolComponentRequestConfig {
+func (s *UpdateNodePoolComponentRequestConfig) SetCustomConfig(v map[string]interface{}) *UpdateNodePoolComponentRequestConfig {
 	s.CustomConfig = v
 	return s
 }
@@ -149,7 +153,7 @@ func (s *UpdateNodePoolComponentRequestConfig) Validate() error {
 }
 
 type UpdateNodePoolComponentRequestRollingPolicy struct {
-	// The interval between batches during the upgrade. Unit: seconds.
+	// The interval between batches during the upgrade, in seconds.
 	//
 	// example:
 	//
@@ -161,7 +165,7 @@ type UpdateNodePoolComponentRequestRollingPolicy struct {
 	//
 	// 1
 	MaxParallelism *int64 `json:"maxParallelism,omitempty" xml:"maxParallelism,omitempty"`
-	// The automatic pause policy during node upgrades.
+	// The automatic pause policy during the node upgrade process.
 	//
 	// example:
 	//

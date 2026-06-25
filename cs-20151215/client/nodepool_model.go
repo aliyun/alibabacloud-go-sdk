@@ -40,7 +40,7 @@ type Nodepool struct {
 	AutoScaling *NodepoolAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
 	// Deprecated
 	//
-	// [This field is deprecated. Use desired_size instead.]
+	// This parameter is deprecated. Use desired_size instead.
 	//
 	// The number of nodes in the node pool.
 	//
@@ -50,11 +50,11 @@ type Nodepool struct {
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
 	// Deprecated
 	//
-	// [This field is deprecated.]
+	// This parameter is deprecated.
 	//
 	// The edge node pool configuration.
 	InterconnectConfig *NodepoolInterconnectConfig `json:"interconnect_config,omitempty" xml:"interconnect_config,omitempty" type:"Struct"`
-	// The network type of the edge node pool. This value is valid only for node pools whose `type` is `edge`. Valid values:
+	// The network type of the edge node pool. This parameter is valid only for node pools whose `type` is `edge`. Valid values:
 	//
 	// - `basic`: basic.
 	//
@@ -82,7 +82,7 @@ type Nodepool struct {
 	NodepoolInfo *NodepoolNodepoolInfo `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
 	// The scaling group configuration of the node pool.
 	ScalingGroup *NodepoolScalingGroup `json:"scaling_group,omitempty" xml:"scaling_group,omitempty" type:"Struct"`
-	// The confidential computing node pool configuration.
+	// The confidential computing configuration of the node pool.
 	TeeConfig *NodepoolTeeConfig `json:"tee_config,omitempty" xml:"tee_config,omitempty" type:"Struct"`
 }
 
@@ -1114,7 +1114,11 @@ func (s *NodepoolNodeComponents) Validate() error {
 
 type NodepoolNodeComponentsConfig struct {
 	// 节点组件自定义配置。
-	CustomConfig map[string]*string `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
+	//
+	// example:
+	//
+	// {"cpuManagerPolicy":"static"}
+	CustomConfig map[string]interface{} `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
 }
 
 func (s NodepoolNodeComponentsConfig) String() string {
@@ -1125,11 +1129,11 @@ func (s NodepoolNodeComponentsConfig) GoString() string {
 	return s.String()
 }
 
-func (s *NodepoolNodeComponentsConfig) GetCustomConfig() map[string]*string {
+func (s *NodepoolNodeComponentsConfig) GetCustomConfig() map[string]interface{} {
 	return s.CustomConfig
 }
 
-func (s *NodepoolNodeComponentsConfig) SetCustomConfig(v map[string]*string) *NodepoolNodeComponentsConfig {
+func (s *NodepoolNodeComponentsConfig) SetCustomConfig(v map[string]interface{}) *NodepoolNodeComponentsConfig {
 	s.CustomConfig = v
 	return s
 }

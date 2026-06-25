@@ -18,19 +18,19 @@ type iCreateClusterNodePoolResponseBody interface {
 }
 
 type CreateClusterNodePoolResponseBody struct {
-	// The node pool ID.
+	// Node pool ID.
 	//
 	// example:
 	//
 	// np31da1b38983f4511b490fc62108a****
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 0527ac9a-c899-4341-a21a-****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The task ID.
+	// Task ID.
 	//
 	// example:
 	//
