@@ -2790,6 +2790,84 @@ func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagRe
 
 // Summary:
 //
+// Queries template information.
+//
+// @param request - DeleteTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTemplateResponse
+func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FromType) {
+		query["FromType"] = request.FromType
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteTemplate"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries template information.
+//
+// @param request - DeleteTemplateRequest
+//
+// @return DeleteTemplateResponse
+func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *DeleteTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteTemplateResponse{}
+	_body, _err := client.DeleteTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes the verification file after the verification process is complete.
 //
 // @param request - DeleteValidateFileRequest
@@ -3000,11 +3078,11 @@ func (client *Client) DescDomain(request *DescDomainRequest) (_result *DescDomai
 
 // Summary:
 //
-// Retrieves the information about an email template.
+// Queries template information.
 //
 // Description:
 //
-// Retrieves information about a specific email template, including its name, creation time, and content.
+// Queries template information.
 //
 // @param request - DescTemplateRequest
 //
@@ -3064,11 +3142,11 @@ func (client *Client) DescTemplateWithOptions(request *DescTemplateRequest, runt
 
 // Summary:
 //
-// Retrieves the information about an email template.
+// Queries template information.
 //
 // Description:
 //
-// Retrieves information about a specific email template, including its name, creation time, and content.
+// Queries template information.
 //
 // @param request - DescTemplateRequest
 //
@@ -4504,6 +4582,112 @@ func (client *Client) ModifyTag(request *ModifyTagRequest) (_result *ModifyTagRe
 
 // Summary:
 //
+// Modifies an email template.
+//
+// @param request - ModifyTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTemplateResponse
+func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, runtime *dara.RuntimeOptions) (_result *ModifyTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FromType) {
+		query["FromType"] = request.FromType
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SmsContent) {
+		query["SmsContent"] = request.SmsContent
+	}
+
+	if !dara.IsNil(request.SmsType) {
+		query["SmsType"] = request.SmsType
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !dara.IsNil(request.TemplateNickName) {
+		query["TemplateNickName"] = request.TemplateNickName
+	}
+
+	if !dara.IsNil(request.TemplateSubject) {
+		query["TemplateSubject"] = request.TemplateSubject
+	}
+
+	if !dara.IsNil(request.TemplateText) {
+		query["TemplateText"] = request.TemplateText
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyTemplate"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies an email template.
+//
+// @param request - ModifyTemplateRequest
+//
+// @return ModifyTemplateResponse
+func (client *Client) ModifyTemplate(request *ModifyTemplateRequest) (_result *ModifyTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyTemplateResponse{}
+	_body, _err := client.ModifyTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 免费试用Sendify
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5159,11 +5343,11 @@ func (client *Client) QueryTaskByParam(request *QueryTaskByParamRequest) (_resul
 
 // Summary:
 //
-// Performs a paged query to retrieve a list of templates.
+// Queries template list information by paging.
 //
 // Description:
 //
-// Performs a paged query to retrieve a list of templates.
+// Queries template list information by paging.
 //
 // @param request - QueryTemplateByParamRequest
 //
@@ -5235,11 +5419,11 @@ func (client *Client) QueryTemplateByParamWithOptions(request *QueryTemplateByPa
 
 // Summary:
 //
-// Performs a paged query to retrieve a list of templates.
+// Queries template list information by paging.
 //
 // Description:
 //
-// Performs a paged query to retrieve a list of templates.
+// Queries template list information by paging.
 //
 // @param request - QueryTemplateByParamRequest
 //

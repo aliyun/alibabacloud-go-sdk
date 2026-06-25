@@ -22,7 +22,7 @@ type iQueryTemplateByParamResponseBody interface {
 }
 
 type QueryTemplateByParamResponseBody struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//

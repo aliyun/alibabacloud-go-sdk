@@ -22,7 +22,7 @@ type iDescTemplateRequest interface {
 }
 
 type DescTemplateRequest struct {
-	// This parameter is deprecated. It is retained for historical compatibility.
+	// Deprecated. Retained for backward compatibility.
 	//
 	// example:
 	//

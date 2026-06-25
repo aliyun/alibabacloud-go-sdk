@@ -40,7 +40,7 @@ type DescTemplateResponseBody struct {
 	//
 	// 2025-11-14T13:28Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// This parameter is deprecated. It is retained for historical compatibility.
+	// Deprecated. Retained for backward compatibility.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type DescTemplateResponseBody struct {
 	//
 	// 95xxx5F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// This parameter is deprecated. It is retained for historical compatibility.
+	// Deprecated. Retained for backward compatibility.
 	//
 	// example:
 	//
 	// Abandoned, historical reasons for compatibility
 	SmsContent *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
-	// This parameter is deprecated. It is retained for historical compatibility.
+	// Deprecated. Retained for backward compatibility.
 	//
 	// example:
 	//
@@ -70,27 +70,27 @@ type DescTemplateResponseBody struct {
 	//
 	// test1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// This parameter is deprecated. It is retained for historical compatibility.
+	// Deprecated. Retained for backward compatibility.
 	//
 	// example:
 	//
 	// Abandoned, historical reasons for compatibility
 	TemplateNickName *string `json:"TemplateNickName,omitempty" xml:"TemplateNickName,omitempty"`
-	// The status of the template. Valid values:
+	// The template status. Valid values:
 	//
-	// - 0: The template is a draft.
+	// - 0: draft.
 	//
-	// - 1: The template is pending approval.
+	// - 1: pending review.
 	//
-	// - 2: The template is approved.
+	// - 2: approved.
 	//
-	// - 3: The template is rejected.
+	// - 3: rejected.
 	//
 	// example:
 	//
 	// 2
 	TemplateStatus *string `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
-	// The template subject, which is used to create the email subject.
+	// The template subject, which is used to compose the email subject.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type DescTemplateResponseBody struct {
 	//
 	// <p>1</p>
 	TemplateText *string `json:"TemplateText,omitempty" xml:"TemplateText,omitempty"`
-	// This parameter is deprecated. It is retained for historical compatibility.
+	// Deprecated. Retained for backward compatibility.
 	//
 	// example:
 	//
