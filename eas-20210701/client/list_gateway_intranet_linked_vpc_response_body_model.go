@@ -18,13 +18,13 @@ type iListGatewayIntranetLinkedVpcResponseBody interface {
 }
 
 type ListGatewayIntranetLinkedVpcResponseBody struct {
-	// The private gateway ID.
+	// The ID of the private gateway.
 	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The internal endpoints.
+	// The list of internal access endpoints.
 	IntranetLinkedVpcList []*ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList `json:"IntranetLinkedVpcList,omitempty" xml:"IntranetLinkedVpcList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,59 +83,47 @@ func (s *ListGatewayIntranetLinkedVpcResponseBody) Validate() error {
 }
 
 type ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList struct {
-	AccountId               *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AuthoritativeDnsEnabled *bool   `json:"AuthoritativeDnsEnabled,omitempty" xml:"AuthoritativeDnsEnabled,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the VPC.
+	//
+	// example:
+	//
+	// 161*******66
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Indicates whether authoritative DNS resolution is enabled. Default value: false.
+	//
+	// example:
+	//
+	// true
+	AuthoritativeDnsEnabled *bool `json:"AuthoritativeDnsEnabled,omitempty" xml:"AuthoritativeDnsEnabled,omitempty"`
 	// The IP address.
 	//
 	// example:
 	//
 	// 192.168.10.11
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// example:
 	//
 	// sg-2ze4pgstgszvgq******
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The state of the private gateway.
+	// The status. Valid values:
 	//
-	// Valid values:
+	// - Creating: The endpoint is being created.
 	//
-	// 	- Creating
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The private gateway is being created.
-	//
-	//     <!-- -->
-	//
-	// 	- Running
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The private gateway is running.
-	//
-	//     <!-- -->
+	// - Running: The endpoint is running.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The vSwitch ID.
+	// The ID of the virtual switch.
 	//
 	// example:
 	//
 	// vsw-8vb2qjoiio6m9pg******
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The ID of the virtual private cloud (VPC).
 	//
 	// example:
 	//

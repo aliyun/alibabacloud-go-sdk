@@ -30,17 +30,17 @@ type iListResourcesRequest interface {
 }
 
 type ListResourcesRequest struct {
-	// The sorting order. Valid values:
+	// The sort order. Valid values:
 	//
-	// 	- Desc
+	// - `Desc`: descending order
 	//
-	// 	- Asc
+	// - `Asc`: ascending order
 	//
 	// example:
 	//
 	// Desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type ListResourcesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group. You can call the [CreateResource](https://help.aliyun.com/document_detail/412111.html) operation to query the ID of the resource group.
+	// The resource group ID. The [CreateResource](https://help.aliyun.com/document_detail/412111.html) operation returns this ID.
 	//
 	// example:
 	//
 	// eas-r-h7lcw24dyqztwxxxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The name of the resource group. You can call the [CreateResource](https://help.aliyun.com/document_detail/412111.html) operation to query the name of the resource group.
+	// The resource group name. The [CreateResource](https://help.aliyun.com/document_detail/412111.html) operation returns this name.
 	//
 	// example:
 	//
@@ -70,44 +70,27 @@ type ListResourcesRequest struct {
 	//
 	// ResourceReady
 	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	// The type of the resource group. Valid values:
+	// The resource group type. Valid values:
 	//
-	// 	- Dedicated: the dedicated resource group.
+	// - `Dedicated`: dedicated resource group
 	//
-	// 	- SelfManaged: the self-managed resource group.
+	// - `SelfManaged`: self-managed resource group
 	//
 	// example:
 	//
 	// Dedicated
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The condition by which the results are sorted. By default, the query results are sorted by the timestamp type in descending order.
-	//
-	// Valid values:
-	//
-	// 	- PrePaidInstanceCount
-	//
-	// 	- CpuCount
-	//
-	// 	- Memory
-	//
-	// 	- CreateTime
-	//
-	// 	- PostPaidInstanceCount
-	//
-	// 	- MemoryUsed
-	//
-	// 	- GpuCount
-	//
-	// 	- GpuUsed
-	//
-	// 	- CpuUsed
-	//
-	// 	- ServiceCount
+	// The sort field. Timestamp fields are sorted in descending order by default.
 	//
 	// example:
 	//
 	// CreateTime
-	Sort      *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The usage mode of the resource group. The default value is `inference`.
+	//
+	// example:
+	//
+	// inference
 	UsageMode *string `json:"UsageMode,omitempty" xml:"UsageMode,omitempty"`
 }
 

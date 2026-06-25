@@ -16,12 +16,16 @@ type iScaleServiceRequest interface {
 }
 
 type ScaleServiceRequest struct {
+	// The target number of instances.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	Instance *int64 `json:"Instance,omitempty" xml:"Instance,omitempty"`
+	// A list of instance names to prioritize for removal during a scale-in operation.
+	//
 	// if can be null:
 	// true
 	InstancesToDelete []*string `json:"InstancesToDelete,omitempty" xml:"InstancesToDelete,omitempty" type:"Repeated"`

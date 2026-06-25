@@ -5,22 +5,22 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iUpdateGroupResponseBody interface {
+type iCreateGroupResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetMessage(v string) *UpdateGroupResponseBody
+	SetMessage(v string) *CreateGroupResponseBody
 	GetMessage() *string
-	SetRequestId(v string) *UpdateGroupResponseBody
+	SetRequestId(v string) *CreateGroupResponseBody
 	GetRequestId() *string
 }
 
-type UpdateGroupResponseBody struct {
+type CreateGroupResponseBody struct {
 	// The response message.
 	//
 	// example:
 	//
-	// Update service group foo successfully
+	// Create service group foo successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -30,32 +30,32 @@ type UpdateGroupResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s UpdateGroupResponseBody) String() string {
+func (s CreateGroupResponseBody) String() string {
 	return dara.Prettify(s)
 }
 
-func (s UpdateGroupResponseBody) GoString() string {
+func (s CreateGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateGroupResponseBody) GetMessage() *string {
+func (s *CreateGroupResponseBody) GetMessage() *string {
 	return s.Message
 }
 
-func (s *UpdateGroupResponseBody) GetRequestId() *string {
+func (s *CreateGroupResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *UpdateGroupResponseBody) SetMessage(v string) *UpdateGroupResponseBody {
+func (s *CreateGroupResponseBody) SetMessage(v string) *CreateGroupResponseBody {
 	s.Message = &v
 	return s
 }
 
-func (s *UpdateGroupResponseBody) SetRequestId(v string) *UpdateGroupResponseBody {
+func (s *CreateGroupResponseBody) SetRequestId(v string) *CreateGroupResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *UpdateGroupResponseBody) Validate() error {
+func (s *CreateGroupResponseBody) Validate() error {
 	return dara.Validate(s)
 }

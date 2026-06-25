@@ -20,7 +20,7 @@ type DeleteResourceInstancesResponseBody struct {
 	//
 	// example:
 	//
-	// Instances eas-i-011227132046,eas-i-011227132046 are deleting
+	// Instances eas-i-01122713****,eas-i-01122713***	- are deleting
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

@@ -5,29 +5,29 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iListGroupsRequest interface {
+type iListGroupsShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetFilter(v string) *ListGroupsRequest
+	SetFilter(v string) *ListGroupsShrinkRequest
 	GetFilter() *string
-	SetLabels(v map[string]*string) *ListGroupsRequest
-	GetLabels() map[string]*string
-	SetOrder(v string) *ListGroupsRequest
+	SetLabelsShrink(v string) *ListGroupsShrinkRequest
+	GetLabelsShrink() *string
+	SetOrder(v string) *ListGroupsShrinkRequest
 	GetOrder() *string
-	SetPageNumber(v string) *ListGroupsRequest
+	SetPageNumber(v string) *ListGroupsShrinkRequest
 	GetPageNumber() *string
-	SetPageSize(v string) *ListGroupsRequest
+	SetPageSize(v string) *ListGroupsShrinkRequest
 	GetPageSize() *string
-	SetSort(v string) *ListGroupsRequest
+	SetSort(v string) *ListGroupsShrinkRequest
 	GetSort() *string
-	SetTrafficMode(v string) *ListGroupsRequest
+	SetTrafficMode(v string) *ListGroupsShrinkRequest
 	GetTrafficMode() *string
-	SetWorkspaceId(v string) *ListGroupsRequest
+	SetWorkspaceId(v string) *ListGroupsShrinkRequest
 	GetWorkspaceId() *string
 }
 
-type ListGroupsRequest struct {
+type ListGroupsShrinkRequest struct {
 	// The filter name. Fuzzy match is supported.
 	//
 	// example:
@@ -35,7 +35,7 @@ type ListGroupsRequest struct {
 	// foo
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The user-defined labels.
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The sort order of the results.
 	//
 	// example:
@@ -74,86 +74,86 @@ type ListGroupsRequest struct {
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
-func (s ListGroupsRequest) String() string {
+func (s ListGroupsShrinkRequest) String() string {
 	return dara.Prettify(s)
 }
 
-func (s ListGroupsRequest) GoString() string {
+func (s ListGroupsShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListGroupsRequest) GetFilter() *string {
+func (s *ListGroupsShrinkRequest) GetFilter() *string {
 	return s.Filter
 }
 
-func (s *ListGroupsRequest) GetLabels() map[string]*string {
-	return s.Labels
+func (s *ListGroupsShrinkRequest) GetLabelsShrink() *string {
+	return s.LabelsShrink
 }
 
-func (s *ListGroupsRequest) GetOrder() *string {
+func (s *ListGroupsShrinkRequest) GetOrder() *string {
 	return s.Order
 }
 
-func (s *ListGroupsRequest) GetPageNumber() *string {
+func (s *ListGroupsShrinkRequest) GetPageNumber() *string {
 	return s.PageNumber
 }
 
-func (s *ListGroupsRequest) GetPageSize() *string {
+func (s *ListGroupsShrinkRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
-func (s *ListGroupsRequest) GetSort() *string {
+func (s *ListGroupsShrinkRequest) GetSort() *string {
 	return s.Sort
 }
 
-func (s *ListGroupsRequest) GetTrafficMode() *string {
+func (s *ListGroupsShrinkRequest) GetTrafficMode() *string {
 	return s.TrafficMode
 }
 
-func (s *ListGroupsRequest) GetWorkspaceId() *string {
+func (s *ListGroupsShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
 
-func (s *ListGroupsRequest) SetFilter(v string) *ListGroupsRequest {
+func (s *ListGroupsShrinkRequest) SetFilter(v string) *ListGroupsShrinkRequest {
 	s.Filter = &v
 	return s
 }
 
-func (s *ListGroupsRequest) SetLabels(v map[string]*string) *ListGroupsRequest {
-	s.Labels = v
+func (s *ListGroupsShrinkRequest) SetLabelsShrink(v string) *ListGroupsShrinkRequest {
+	s.LabelsShrink = &v
 	return s
 }
 
-func (s *ListGroupsRequest) SetOrder(v string) *ListGroupsRequest {
+func (s *ListGroupsShrinkRequest) SetOrder(v string) *ListGroupsShrinkRequest {
 	s.Order = &v
 	return s
 }
 
-func (s *ListGroupsRequest) SetPageNumber(v string) *ListGroupsRequest {
+func (s *ListGroupsShrinkRequest) SetPageNumber(v string) *ListGroupsShrinkRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListGroupsRequest) SetPageSize(v string) *ListGroupsRequest {
+func (s *ListGroupsShrinkRequest) SetPageSize(v string) *ListGroupsShrinkRequest {
 	s.PageSize = &v
 	return s
 }
 
-func (s *ListGroupsRequest) SetSort(v string) *ListGroupsRequest {
+func (s *ListGroupsShrinkRequest) SetSort(v string) *ListGroupsShrinkRequest {
 	s.Sort = &v
 	return s
 }
 
-func (s *ListGroupsRequest) SetTrafficMode(v string) *ListGroupsRequest {
+func (s *ListGroupsShrinkRequest) SetTrafficMode(v string) *ListGroupsShrinkRequest {
 	s.TrafficMode = &v
 	return s
 }
 
-func (s *ListGroupsRequest) SetWorkspaceId(v string) *ListGroupsRequest {
+func (s *ListGroupsShrinkRequest) SetWorkspaceId(v string) *ListGroupsShrinkRequest {
 	s.WorkspaceId = &v
 	return s
 }
 
-func (s *ListGroupsRequest) Validate() error {
+func (s *ListGroupsShrinkRequest) Validate() error {
 	return dara.Validate(s)
 }

@@ -24,20 +24,34 @@ type iListVirtualResourceRequest interface {
 }
 
 type ListVirtualResourceRequest struct {
+	// The sorting order. Valid values:
+	//
+	// - Desc: Descending order.
+	//
+	// - Asc: Ascending order.
+	//
+	// example:
+	//
+	// Desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number for the list of virtual resource groups. The value starts from 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 100.
+	// The number of virtual resource groups to display on each page. The default value is 100.
 	//
 	// example:
 	//
 	// 20
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Sort     *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field that is used to sort the results. By default, the results are sorted by timestamp in descending order.
+	//
+	// example:
+	//
+	// CreateTime
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	// The ID of the virtual resource group.
 	//
 	// example:

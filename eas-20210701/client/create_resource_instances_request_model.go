@@ -30,19 +30,19 @@ type iCreateResourceInstancesRequest interface {
 type CreateResourceInstancesRequest struct {
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- false (default)
+	// - false (default): Auto-renewal is disabled.
 	//
-	// 	- true
+	// - true: Auto-renewal is enabled.
 	//
 	// example:
 	//
 	// false
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// The billing method of the instance. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- PrePaid: subscription.
+	// - PrePaid: subscription.
 	//
-	// 	- PostPaid: pay-as-you-go.
+	// - PostPaid: pay-as-you-go.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type CreateResourceInstancesRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The number of instances that you want to create. Valid values: 1 to 100.
+	// The number of new instances to create. The value must be between 1 and 100.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type CreateResourceInstancesRequest struct {
 	//
 	// 5
 	EcsInstanceCount *int32 `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
-	// The type of the Elastic Compute Service (ECS) instance.
+	// The instance type. This corresponds to an ECS instance type.
 	//
 	// This parameter is required.
 	//
@@ -66,9 +66,9 @@ type CreateResourceInstancesRequest struct {
 	//
 	// ecs.s6-c1m2.xlarge
 	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	// The custom service tag.
+	// The user-defined tags.
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The size of the system disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
+	// The size of the system disk, in GiB. The value must be between 200 and 2,000. If you do not configure this parameter, the default value is 200 GiB.
 	//
 	// example:
 	//
@@ -76,13 +76,13 @@ type CreateResourceInstancesRequest struct {
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	// Deprecated
 	//
-	// The user-defined information. This parameter is not in use.
+	// The custom user data. This parameter is not currently used.
 	//
 	// example:
 	//
 	// x112223333
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The zone to which the instance belongs.
+	// The zone where the instance belongs.
 	//
 	// example:
 	//

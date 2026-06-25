@@ -26,43 +26,43 @@ type iListConfigsResponseBody interface {
 }
 
 type ListConfigsResponseBody struct {
-	// 配置项列表
+	// The list of dynamic parameters.
 	//
 	// example:
 	//
 	// [{"Key": "rate_limit", "Value": "{\\"limit\\": 100}", "CreatedAt": "2024-01-15T10:30:00Z", "UpdatedAt": "2024-01-15T10:30:00Z"}]
 	Configs []*ListConfigsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// 是否有更多数据
+	// Indicates if more entries are available. `true` if more entries exist; otherwise, `false`.
 	//
 	// example:
 	//
 	// true
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// 服务名称
+	// The service name.
 	//
 	// example:
 	//
 	// my-service
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 当前页码
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 每页数量
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 总数量
+	// The total number of entries found.
 	//
 	// example:
 	//
 	// 150
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// 配置类型
+	// The configuration type.
 	//
 	// example:
 	//
@@ -155,25 +155,25 @@ func (s *ListConfigsResponseBody) Validate() error {
 }
 
 type ListConfigsResponseBodyConfigs struct {
-	// 创建时间
+	// The time when the dynamic parameter was created, in UTC and ISO 8601 format.
 	//
 	// example:
 	//
 	// 2024-01-01T10:00:00Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// 配置项键名
+	// The name of the dynamic parameter.
 	//
 	// example:
 	//
 	// rate_limit
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 更新时间
+	// The time when the dynamic parameter was last updated, in UTC and ISO 8601 format.
 	//
 	// example:
 	//
 	// 2024-01-01T10:00:00Z
 	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
-	// 配置值
+	// The value of the dynamic parameter.
 	//
 	// example:
 	//

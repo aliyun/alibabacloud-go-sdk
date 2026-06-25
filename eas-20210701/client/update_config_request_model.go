@@ -14,7 +14,7 @@ type iUpdateConfigRequest interface {
 }
 
 type UpdateConfigRequest struct {
-	// 新的配置值
+	// The new dynamic parameter value. This parameter is required.
 	//
 	// example:
 	//

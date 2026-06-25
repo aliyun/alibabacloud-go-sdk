@@ -22,22 +22,31 @@ type iCreateServiceInstanceTokenResponseBody interface {
 }
 
 type CreateServiceInstanceTokenResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// This parameter is not used.
+	//
 	// example:
 	//
 	// ***
 	StreamlogUrl *string `json:"StreamlogUrl,omitempty" xml:"StreamlogUrl,omitempty"`
+	// This parameter is not used.
+	//
 	// example:
 	//
 	// ***
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// This parameter is not used.
+	//
 	// example:
 	//
 	// ***
-	Url          *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// URL for logging on to the container using Workbench.
 	WorkbenchUrl *string `json:"WorkbenchUrl,omitempty" xml:"WorkbenchUrl,omitempty"`
 }
 

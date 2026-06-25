@@ -18,15 +18,15 @@ type iMigrateResourceInstanceResponseBody interface {
 }
 
 type MigrateResourceInstanceResponseBody struct {
-	// The instance ID.
+	// The IDs of the instances.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

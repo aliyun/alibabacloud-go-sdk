@@ -28,7 +28,7 @@ type DeleteGatewayResponseBody struct {
 	//
 	// example:
 	//
-	// Gateway is deleted.
+	// Gateway gw-1uhcqmsc7x22*****	- is deleted
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

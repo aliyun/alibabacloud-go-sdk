@@ -16,11 +16,13 @@ type iCreateFaultInjectionResponseBody interface {
 }
 
 type CreateFaultInjectionResponseBody struct {
+	// The message returned for the request.
+	//
 	// example:
 	//
 	// Addon prometheus_discovery is successfully reinstalled
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

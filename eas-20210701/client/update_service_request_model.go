@@ -33,7 +33,25 @@ type UpdateServiceRequest struct {
 	//
 	// example:
 	//
-	// {   "name": "foo",   "model_path": "http://path/to/model.tar.gz",   "processor": "tensorflow_cpu",   "metadata": {     "instance": 2,     "memory": 7000,     "cpu": 4   } }
+	// {
+	//
+	//       "name": "foo",
+	//
+	//       "model_path": "http://path/to/model.tar.gz",
+	//
+	//       "processor": "tensorflow_cpu",
+	//
+	//       "metadata": {
+	//
+	//             "instance": 2,
+	//
+	//             "memory": 7000,
+	//
+	//             "cpu": 4
+	//
+	//       }
+	//
+	// }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

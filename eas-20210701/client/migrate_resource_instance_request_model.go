@@ -26,11 +26,16 @@ type MigrateResourceInstanceRequest struct {
 	//
 	// eas-r-asdasdasd****
 	DestResourceId *string `json:"DestResourceId,omitempty" xml:"DestResourceId,omitempty"`
-	// The instance ID.
+	// The IDs of the instances.
 	//
 	// This parameter is required.
-	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	MigrateToHybrid *bool     `json:"MigrateToHybrid,omitempty" xml:"MigrateToHybrid,omitempty"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// Specifies whether to migrate the instances to a general computing resource group. If set to true, specify the ID of the general computing resource group.
+	//
+	// example:
+	//
+	// false
+	MigrateToHybrid *bool `json:"MigrateToHybrid,omitempty" xml:"MigrateToHybrid,omitempty"`
 }
 
 func (s MigrateResourceInstanceRequest) String() string {

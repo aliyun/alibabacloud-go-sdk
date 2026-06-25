@@ -48,31 +48,31 @@ type iListServiceInstancesRequest interface {
 }
 
 type ListServiceInstancesRequest struct {
-	// The keyword used to query instances. Instances can be queried based on instance name, instance IP address, IP address of the server where the instance resides, and instance type.
+	// A keyword for the search. You can search by instance name, instance IP address, host IP address, or instance type.
 	//
 	// example:
 	//
 	// 10.118.xx.xx
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The IP address of the server where the instance resides.
+	// The IP address of the host where the service instance is deployed.
 	//
 	// example:
 	//
 	// 10.224.xx.xx
 	HostIP *string `json:"HostIP,omitempty" xml:"HostIP,omitempty"`
-	// The IP address of the instance.
+	// The IP address of the service instance.
 	//
 	// example:
 	//
 	// 10.224.xx.xx
 	InstanceIP *string `json:"InstanceIP,omitempty" xml:"InstanceIP,omitempty"`
-	// The instance name.
+	// The name of the service instance.
 	//
 	// example:
 	//
 	// foo-bdc5xxxx-8l7rk
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The instance state.
+	// The status of the service instance.
 	//
 	// example:
 	//
@@ -84,162 +84,73 @@ type ListServiceInstancesRequest struct {
 	//
 	// ecs.c7.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Specifies whether the instance is a preemptible instance.
+	// Specifies whether the instance is a spot instance.
 	//
 	// example:
 	//
 	// false
-	IsSpot      *bool   `json:"IsSpot,omitempty" xml:"IsSpot,omitempty"`
-	ListReplica *bool   `json:"ListReplica,omitempty" xml:"ListReplica,omitempty"`
-	MemberType  *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
-	// The sorting order.
+	IsSpot *bool `json:"IsSpot,omitempty" xml:"IsSpot,omitempty"`
+	// Specifies whether to query the list of instance replicas.
 	//
-	// Valid values:
+	// example:
 	//
-	// 	- asc
+	// true
+	ListReplica *bool `json:"ListReplica,omitempty" xml:"ListReplica,omitempty"`
+	// The type of the sub-service. This parameter is valid only for aggregation services.
 	//
-	//     <!-- -->
+	// example:
 	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     The instances are sorted in ascending order.
-	//
-	// 	- desc
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     The instances are sorted in descending order.
+	// LLMDecode
+	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
+	// The sort order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 100.
+	// The number of entries to return on each page. The default value is 100.
 	//
 	// example:
 	//
 	// 20
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QuotaId     *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The quota ID.
+	//
+	// example:
+	//
+	// quota1****
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The name of the instance replica.
+	//
+	// example:
+	//
+	// cbh-qwen3-a1bc-prefill-ep1tp4dp
 	ReplicaName *string `json:"ReplicaName,omitempty" xml:"ReplicaName,omitempty"`
-	Resource    *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The type of the resource group to which the instance belongs.
+	// The resource group to which the instance belongs.
 	//
-	// Valid values:
+	// example:
 	//
-	// 	- PublicResource
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DedicatedResource
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// eas-r-xxxxxxx
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The type of the resource group to which the service instance belongs.
 	//
 	// example:
 	//
 	// PublicResource
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The service role.
-	//
-	// Valid values:
-	//
-	// 	- DataSet
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     dataset service
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- SDProxy
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     Stable-Diffusion proxy service
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- Standard
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     standard service
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- Queue
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     queue service
-	//
-	//     <!-- -->
-	//
-	//     .
+	// The role of the service.
 	//
 	// example:
 	//
 	// Queue
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The field that you use to sort the query results.
-	//
-	// 	- Set the value to StartTime.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     The value specifies that the query results are sorted based on the time when the instances were created
-	//
-	//     <!-- -->
-	//
-	//     .
+	// The field to use for sorting.
 	//
 	// example:
 	//

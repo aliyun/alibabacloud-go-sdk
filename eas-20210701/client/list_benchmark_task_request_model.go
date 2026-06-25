@@ -30,7 +30,7 @@ type iListBenchmarkTaskRequest interface {
 }
 
 type ListBenchmarkTaskRequest struct {
-	// The keyword used to query required stress testing tasks. If this parameter is specified, the system returns stress testing tasks based on the names of the stress testing tasks in the matched Elastic Algorithm Service (EAS).
+	// The filter used to query tasks. If you specify this parameter, the system returns tasks whose names or associated service names match the filter value.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListBenchmarkTaskRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 100.
+	// The name of the Elastic Algorithm Service (EAS) service that corresponds to the stress testing task. For more information about how to query the service name, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
 	//
 	// example:
 	//

@@ -18,13 +18,13 @@ type iCreateGatewayIntranetLinkedVpcResponseBody interface {
 }
 
 type CreateGatewayIntranetLinkedVpcResponseBody struct {
-	// The private gateway ID.
+	// The ID of the private gateway.
 	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//

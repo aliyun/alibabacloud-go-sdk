@@ -28,7 +28,7 @@ type UpdateResourceResponseBody struct {
 	//
 	// example:
 	//
-	// eas-r-asdasdasd
+	// eas-r-asdasdasd****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The name of the resource group.
 	//

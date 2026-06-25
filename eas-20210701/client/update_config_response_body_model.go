@@ -20,25 +20,25 @@ type iUpdateConfigResponseBody interface {
 }
 
 type UpdateConfigResponseBody struct {
-	// 创建时间
+	// The time the configuration was created.
 	//
 	// example:
 	//
 	// 2024-01-15T10:30:00Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// 配置键名
+	// The dynamic parameter name.
 	//
 	// example:
 	//
 	// llm_gateway.route_policy
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 更新时间
+	// The time the configuration was last updated.
 	//
 	// example:
 	//
 	// 2024-01-15T11:00:00Z
 	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
-	// 配置值
+	// The dynamic parameter value.
 	//
 	// example:
 	//

@@ -14,6 +14,8 @@ type iDeleteGatewayLabelShrinkRequest interface {
 }
 
 type DeleteGatewayLabelShrinkRequest struct {
+	// The keys of the labels that you want to delete.
+	//
 	// This parameter is required.
 	LabelKeysShrink *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
 }

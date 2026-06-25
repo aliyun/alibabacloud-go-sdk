@@ -74,6 +74,11 @@ type iInstance interface {
 }
 
 type Instance struct {
+	// The creation time of the instance.
+	//
+	// example:
+	//
+	// 2021-05-27T09:46:05Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The current hourly price of the spot instance.
 	//
@@ -81,26 +86,31 @@ type Instance struct {
 	//
 	// 0.444
 	CurrentAmount *float32 `json:"CurrentAmount,omitempty" xml:"CurrentAmount,omitempty"`
-	Detached      *bool    `json:"Detached,omitempty" xml:"Detached,omitempty"`
-	// The IP address of the instance in the user-created VPC.
+	// Indicates whether the instance is removed from active service rotation.
+	//
+	// example:
+	//
+	// false
+	Detached *bool `json:"Detached,omitempty" xml:"Detached,omitempty"`
+	// The IP address of the instance in your VPC.
 	//
 	// example:
 	//
 	// 192.168.1.100
 	ExternalIP *string `json:"ExternalIP,omitempty" xml:"ExternalIP,omitempty"`
-	// The port number of the instance in the user-created VPC.
+	// The port number of the instance in your VPC.
 	//
 	// example:
 	//
 	// 8080
 	ExternalInstancePort *int32 `json:"ExternalInstancePort,omitempty" xml:"ExternalInstancePort,omitempty"`
-	// The IP address of the host where the instance resides.
+	// The IP address of the instance\\"s host.
 	//
 	// example:
 	//
 	// 11.0.XX.XX
 	HostIP *string `json:"HostIP,omitempty" xml:"HostIP,omitempty"`
-	// The name of the host where the instance resides.
+	// The name of the instance\\"s host.
 	//
 	// example:
 	//
@@ -112,7 +122,7 @@ type Instance struct {
 	//
 	// 172.17.0.17
 	InnerIP *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
@@ -124,27 +134,37 @@ type Instance struct {
 	//
 	// 8080
 	InstancePort *int32 `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
-	// The instance specification.
+	// The instance type.
 	//
 	// example:
 	//
 	// ecs.c7.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	IsLatest     *bool   `json:"IsLatest,omitempty" xml:"IsLatest,omitempty"`
-	IsReplica    *bool   `json:"IsReplica,omitempty" xml:"IsReplica,omitempty"`
+	// Indicates whether the instance is running the latest version.
+	//
+	// example:
+	//
+	// true
+	IsLatest *bool `json:"IsLatest,omitempty" xml:"IsLatest,omitempty"`
+	// Indicates whether the instance is a replica.
+	//
+	// example:
+	//
+	// false
+	IsReplica *bool `json:"IsReplica,omitempty" xml:"IsReplica,omitempty"`
 	// Indicates whether the instance is a spot instance.
 	//
 	// example:
 	//
 	// false
 	IsSpot *bool `json:"IsSpot,omitempty" xml:"IsSpot,omitempty"`
-	// Indicates whether the instance is isolated.
+	// Indicates whether the instance accepts traffic.
 	//
 	// example:
 	//
 	// false
 	Isolated *bool `json:"Isolated,omitempty" xml:"Isolated,omitempty"`
-	// The last state of the instance.
+	// The status of the instance when it last exited.
 	LastState []map[string]interface{} `json:"LastState,omitempty" xml:"LastState,omitempty" type:"Repeated"`
 	// The namespace of the instance.
 	//
@@ -152,38 +172,43 @@ type Instance struct {
 	//
 	// foo
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The original hourly price of the spot instance before a discount is used.
+	// The original price of the spot instance before discounts.
 	//
 	// example:
 	//
 	// 2.2
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	// The number of processes that have started for the instance.
+	// The number of processes that have started in the instance.
 	//
 	// example:
 	//
 	// 1
 	ReadyProcesses *int32 `json:"ReadyProcesses,omitempty" xml:"ReadyProcesses,omitempty"`
-	// The reason for which the instance is in the current state.
+	// The identifier for the current status of the instance.
 	//
 	// example:
 	//
 	// RUNNING
-	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The name of the replica.
+	//
+	// example:
+	//
+	// xwq-sglang-dist-7dff0
 	ReplicaName *string `json:"ReplicaName,omitempty" xml:"ReplicaName,omitempty"`
-	// The type of the resource group to which the instance belongs. Valid values: PublicResource and PrivateResource.
+	// The type of the resource group to which the instance belongs. Valid values include PublicResource and PrivateResource.
 	//
 	// example:
 	//
 	// PublicResource
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The number of times for which the instance is restarted.
+	// The number of times the instance has been restarted.
 	//
 	// example:
 	//
 	// 1
 	RestartCount *int32 `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
-	// The service role of the instance. Valid values: Queue, DataLoader, and Standard.
+	// The server role of the instance. Valid values include Queue, DataLoader, and Standard.
 	//
 	// example:
 	//
@@ -191,57 +216,43 @@ type Instance struct {
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// Deprecated
 	//
-	// The time when the instance was started. This parameter is deprecated. StartTime is used instead.
+	// The start time of the instance. (Deprecated. Use StartTime instead.)
 	//
 	// example:
 	//
 	// 2021-05-27T09:46:05Z
 	StartAt *string `json:"StartAt,omitempty" xml:"StartAt,omitempty"`
-	// The time when the instance was started.
+	// The start time of the instance.
 	//
 	// example:
 	//
 	// 2021-05-27T09:46:05Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The current state of the instance.
-	//
-	// Valid values:
-	//
-	// 	- Terminating
-	//
-	// 	- Succeeded
-	//
-	// 	- Unknown
-	//
-	// 	- Failed
-	//
-	// 	- Running
-	//
-	// 	- Pending
+	// The status of the instance.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The IP address of the host in the VPC.
+	// The IP address of the host in the dedicated network.
 	//
 	// example:
 	//
 	// 192.168.xx.xx
 	TenantHostIP *string `json:"TenantHostIP,omitempty" xml:"TenantHostIP,omitempty"`
-	// The IP address of the instance in the VPC.
+	// The IP address of the instance in the dedicated network.
 	//
 	// example:
 	//
 	// 192.168.xx.xx
 	TenantInstanceIP *string `json:"TenantInstanceIP,omitempty" xml:"TenantInstanceIP,omitempty"`
-	// The total number of processes that the instance contains.
+	// The total number of processes for the instance.
 	//
 	// example:
 	//
 	// 1
 	TotalProcesses *int32 `json:"TotalProcesses,omitempty" xml:"TotalProcesses,omitempty"`
-	// The zone to which the instance belongs.
+	// The zone where the instance is located.
 	//
 	// example:
 	//

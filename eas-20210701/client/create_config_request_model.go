@@ -14,7 +14,7 @@ type iCreateConfigRequest interface {
 }
 
 type CreateConfigRequest struct {
-	// 配置值
+	// The dynamic parameter value.
 	//
 	// example:
 	//

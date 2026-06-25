@@ -78,7 +78,7 @@ type ResourceInstance struct {
 	//
 	// false
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// The billing method of the instance.
+	// The billing method for the instance.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type ResourceInstance struct {
 	//
 	// 2020-08-05T22:51:32Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The number of CPU cores for the instance.
+	// The number of CPUs for the instance.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type ResourceInstance struct {
 	//
 	// 0
 	InstanceGpuCount *int32 `json:"InstanceGpuCount,omitempty" xml:"InstanceGpuCount,omitempty"`
-	// The GPU memory size of the instance.
+	// The VRAM size of the instance.
 	//
 	// example:
 	//
@@ -137,17 +137,14 @@ type ResourceInstance struct {
 	// example:
 	//
 	// eas01122713204*****
-	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The lifecycle phase of the instance.
+	//
+	// example:
+	//
+	// succeeded
 	InstancePhase *string `json:"InstancePhase,omitempty" xml:"InstancePhase,omitempty"`
-	// The instance status.
-	//
-	// Valid values:
-	//
-	// 	- Ready-SchedulingDisabled
-	//
-	// 	- Ready
-	//
-	// 	- NotReady
+	// The status of the instance.
 	//
 	// example:
 	//
@@ -159,11 +156,11 @@ type ResourceInstance struct {
 	//
 	// 200
 	InstanceSystemDiskSize *int32 `json:"InstanceSystemDiskSize,omitempty" xml:"InstanceSystemDiskSize,omitempty"`
-	// The IP address of the instance in the VPC.
+	// The IP address of the instance in a dedicated network.
 	//
 	// example:
 	//
-	// 192.168.xx.xx
+	// 192.168.XX.XX
 	InstanceTenantIp *string `json:"InstanceTenantIp,omitempty" xml:"InstanceTenantIp,omitempty"`
 	// The instance type.
 	//
@@ -171,35 +168,45 @@ type ResourceInstance struct {
 	//
 	// ecs.s6-c1m2.xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The number of CPU cores used by the instance.
+	// The number of CPUs in use.
 	//
 	// example:
 	//
 	// 2.4
 	InstanceUsedCpu *float32 `json:"InstanceUsedCpu,omitempty" xml:"InstanceUsedCpu,omitempty"`
-	// The number of GPUs used by the instance.
+	// The number of GPUs in use.
 	//
 	// example:
 	//
 	// 0
 	InstanceUsedGpu *float32 `json:"InstanceUsedGpu,omitempty" xml:"InstanceUsedGpu,omitempty"`
-	// The size of the GPU memory used by the instance.
+	// The amount of VRAM in use.
 	//
 	// example:
 	//
 	// 470M
 	InstanceUsedGpuMemory *string `json:"InstanceUsedGpuMemory,omitempty" xml:"InstanceUsedGpuMemory,omitempty"`
-	// The size of the memory used by the instance.
+	// The amount of memory in use.
 	//
 	// example:
 	//
 	// 1000M
 	InstanceUsedMemory *string `json:"InstanceUsedMemory,omitempty" xml:"InstanceUsedMemory,omitempty"`
-	// The instance tags.
-	Labels             []*ResourceInstanceLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LastCordonOperator *string                   `json:"LastCordonOperator,omitempty" xml:"LastCordonOperator,omitempty"`
-	LastCordonReason   *string                   `json:"LastCordonReason,omitempty" xml:"LastCordonReason,omitempty"`
-	// The region ID of the instance.
+	// The labels of the instance.
+	Labels []*ResourceInstanceLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The operator who performed the last cordon.
+	//
+	// example:
+	//
+	// 24340xxxxxxxx
+	LastCordonOperator *string `json:"LastCordonOperator,omitempty" xml:"LastCordonOperator,omitempty"`
+	// The reason for the last cordon.
+	//
+	// example:
+	//
+	// operating
+	LastCordonReason *string `json:"LastCordonReason,omitempty" xml:"LastCordonReason,omitempty"`
+	// The region of the instance.
 	//
 	// example:
 	//
@@ -211,7 +218,7 @@ type ResourceInstance struct {
 	//
 	// eas-r-xxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The ID of the zone to which the instance belongs.
+	// The zone of the instance.
 	//
 	// example:
 	//
@@ -484,13 +491,13 @@ func (s *ResourceInstance) Validate() error {
 }
 
 type ResourceInstanceLabels struct {
-	// The tag key of the instance.
+	// The label key.
 	//
 	// example:
 	//
 	// key
 	LabelKey *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
-	// The tag value of the instance.
+	// The label value.
 	//
 	// example:
 	//

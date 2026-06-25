@@ -16,10 +16,14 @@ type iScaleServiceResponseBody interface {
 }
 
 type ScaleServiceResponseBody struct {
+	// A message indicating the result of the operation.
+	//
 	// example:
 	//
 	// Service [foo] in region [cn-shanghai] is scaling
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****

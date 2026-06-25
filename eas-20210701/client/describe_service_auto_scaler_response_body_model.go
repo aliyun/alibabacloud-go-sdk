@@ -170,13 +170,13 @@ func (s *DescribeServiceAutoScalerResponseBody) Validate() error {
 type DescribeServiceAutoScalerResponseBodyCurrentMetrics struct {
 	// The metric name. Valid values:
 	//
-	// 	- QPS
+	// - QPS
 	//
-	// 	- CPU
+	// - CPU
 	//
 	// example:
 	//
-	// qps
+	// QPS
 	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
 	// The service for which the metric is specified.
 	//
@@ -234,9 +234,9 @@ func (s *DescribeServiceAutoScalerResponseBodyCurrentMetrics) Validate() error {
 type DescribeServiceAutoScalerResponseBodyScaleStrategies struct {
 	// The metric name. Valid values:
 	//
-	// 	- QPS: the queries per second (QPS) for an individual instance.
+	// - QPS: the queries per second (QPS) for an individual instance.
 	//
-	// 	- CPU: the CPU utilization.
+	// - CPU: the CPU utilization.
 	//
 	// example:
 	//
@@ -250,9 +250,9 @@ type DescribeServiceAutoScalerResponseBodyScaleStrategies struct {
 	Service *string `json:"service,omitempty" xml:"service,omitempty"`
 	// The threshold of the metric that triggers auto scaling.
 	//
-	// 	- If you set metricName to QPS, scale-out is triggered when the average QPS for a single instance is greater than this threshold.
+	// - If you set metricName to QPS, scale-out is triggered when the average QPS for a single instance is greater than this threshold.
 	//
-	// 	- If you set metricName to CPU, scale-out is triggered when the average CPU utilization for a single instance is greater than this threshold.
+	// - If you set metricName to CPU, scale-out is triggered when the average CPU utilization for a single instance is greater than this threshold.
 	//
 	// example:
 	//

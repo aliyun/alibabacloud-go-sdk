@@ -22,15 +22,15 @@ type iListResourceInstancesResponseBody interface {
 }
 
 type ListResourceInstancesResponseBody struct {
-	// The instances.
+	// The list of instances.
 	Instances []*ResourceInstance `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the returned list of instances.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of instances returned on each page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListResourceInstancesResponseBody struct {
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of instances.
 	//
 	// example:
 	//

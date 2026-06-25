@@ -30,7 +30,7 @@ type iCreateGatewayRequest interface {
 }
 
 type CreateGatewayRequest struct {
-	// The resource group ID. To obtain a resource group ID, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
+	// The name of the resource group. For more information, see the ResourceName field that is returned by the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation when ResourceType is SelfManaged.
 	//
 	// example:
 	//
@@ -38,58 +38,46 @@ type CreateGatewayRequest struct {
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- false (default)
+	// - false (default): Auto-renewal is disabled.
 	//
-	// 	- true
+	// - true: Auto-renewal is enabled.
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- PrePaid: subscription.
+	// - PrePaid: subscription.
 	//
-	// 	- PostPaid: pay-as-you-go.
+	// - PostPaid: pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Specifies whether to enable Internet access. Default value: false.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Specifies whether to enable public network access. The default value is false.
 	//
 	// example:
 	//
 	// false
 	EnableInternet *bool `json:"EnableInternet,omitempty" xml:"EnableInternet,omitempty"`
-	// Specifies whether to enable private access. Default value: true.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Specifies whether to enable internal network access. The default value is true.
 	//
 	// example:
 	//
 	// true
 	EnableIntranet *bool   `json:"EnableIntranet,omitempty" xml:"EnableIntranet,omitempty"`
 	GatewayType    *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	// The instance type used by the private gateway. Valid values:
+	// The instance type of the private gateway. Valid values:
 	//
-	// 	- 2c4g
+	// - 2c4g
 	//
-	// 	- 4c8g
+	// - 4c8g
 	//
-	// 	- 8c16g
+	// - 8c16g
 	//
-	// 	- 16c32g
+	// - 16c32g
 	//
 	// example:
 	//
-	// ecs.c6.4xlarge
+	// 2c4g
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The alias of the private gateway.
 	//
@@ -97,7 +85,7 @@ type CreateGatewayRequest struct {
 	//
 	// mygateway1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of nodes in the private gateway.
+	// The number of nodes for the private gateway.
 	//
 	// example:
 	//

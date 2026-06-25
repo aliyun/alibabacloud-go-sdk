@@ -73,6 +73,10 @@ type DescribeRegionsResponseBodyRegions struct {
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The region name.
+	//
+	// example:
+	//
+	// 华东 2（上海）
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 

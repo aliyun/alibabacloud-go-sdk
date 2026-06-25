@@ -36,14 +36,15 @@ type DescribeVirtualResourceResponseBody struct {
 	//
 	// 2024-10-16T17:52:49Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the retention period of preemptible instances was disabled.
+	// Indicates whether the protection period for spot instances is disabled.
 	//
 	// example:
 	//
 	// true
-	DisableSpotProtectionPeriod *bool     `json:"DisableSpotProtectionPeriod,omitempty" xml:"DisableSpotProtectionPeriod,omitempty"`
-	Features                    []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	// The ID of the request.
+	DisableSpotProtectionPeriod *bool `json:"DisableSpotProtectionPeriod,omitempty" xml:"DisableSpotProtectionPeriod,omitempty"`
+	// The collection of features for the virtual resource group. This identifies the attributes that the resource group supports.
+	Features []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// The request ID.
 	//
 	// example:
 	//
@@ -186,19 +187,19 @@ type DescribeVirtualResourceResponseBodyResources struct {
 	//
 	// ecs.s6-c1m2.xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The priority of resource scheduling. A greater number specifies a higher priority.
+	// The scheduling priority of the resource. A larger value indicates a higher priority.
 	//
 	// example:
 	//
 	// 3
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The instance type of the public resource group.
+	// The ID of the Lingjun resource quota.
 	//
 	// example:
 	//
 	// quota185lqxxxxxx
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// The region where the resource resides.
+	// The region where the resource is located.
 	//
 	// example:
 	//
@@ -210,7 +211,7 @@ type DescribeVirtualResourceResponseBodyResources struct {
 	//
 	// eas-r-g55ieatgg3buxxxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The maximum price of preemptible instances in a public resource group.
+	// The maximum price for a spot instance in the public resource group.
 	//
 	// example:
 	//

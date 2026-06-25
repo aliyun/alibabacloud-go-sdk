@@ -18,8 +18,12 @@ type iCreateServiceRolloutRequest interface {
 }
 
 type CreateServiceRolloutRequest struct {
-	Batch     *CreateServiceRolloutRequestBatch     `json:"Batch,omitempty" xml:"Batch,omitempty" type:"Struct"`
+	// The configuration for the Batch strategy.
+	Batch *CreateServiceRolloutRequestBatch `json:"Batch,omitempty" xml:"Batch,omitempty" type:"Struct"`
+	// The configuration for the Partition strategy.
 	Partition *CreateServiceRolloutRequestPartition `json:"Partition,omitempty" xml:"Partition,omitempty" type:"Struct"`
+	// Specifies whether to pause the rollout.
+	//
 	// example:
 	//
 	// False
@@ -76,10 +80,14 @@ func (s *CreateServiceRolloutRequest) Validate() error {
 }
 
 type CreateServiceRolloutRequestBatch struct {
+	// The number of instances to update in each batch.
+	//
 	// example:
 	//
 	// 1
 	BatchSize *string `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// The wait interval after each batch completes.
+	//
 	// example:
 	//
 	// 5m
@@ -117,6 +125,8 @@ func (s *CreateServiceRolloutRequestBatch) Validate() error {
 }
 
 type CreateServiceRolloutRequestPartition struct {
+	// The number of instances to update to the new version.
+	//
 	// example:
 	//
 	// 1

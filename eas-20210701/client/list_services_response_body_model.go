@@ -22,13 +22,13 @@ type iListServicesResponseBody interface {
 }
 
 type ListServicesResponseBody struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of services per page.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListServicesResponseBody struct {
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The services.
+	// The list of services.
 	Services []*Service `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of services.
 	//
 	// example:
 	//

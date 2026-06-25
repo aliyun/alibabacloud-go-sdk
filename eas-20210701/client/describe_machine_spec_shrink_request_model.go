@@ -18,12 +18,26 @@ type iDescribeMachineSpecShrinkRequest interface {
 }
 
 type DescribeMachineSpecShrinkRequest struct {
+	// The billing method. The default value is \\`PostPaid\\`.
+	//
+	// example:
+	//
+	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// Deprecated
 	//
 	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// No input required
 	InstanceTypesShrink *string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty"`
-	ResourceType        *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The resource type. The default value is \\`Public\\`.
+	//
+	// example:
+	//
+	// Public
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s DescribeMachineSpecShrinkRequest) String() string {

@@ -18,15 +18,15 @@ type iListGatewayDomainsResponseBody interface {
 }
 
 type ListGatewayDomainsResponseBody struct {
-	// The custom domain names.
+	// The list of custom domain names.
 	CustomDomains []*ListGatewayDomainsResponseBodyCustomDomains `json:"CustomDomains,omitempty" xml:"CustomDomains,omitempty" type:"Repeated"`
-	// The message that is returned.
+	// The message returned for the request.
 	//
 	// example:
 	//
 	// Successfully get custom domains
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,35 +83,59 @@ func (s *ListGatewayDomainsResponseBody) Validate() error {
 }
 
 type ListGatewayDomainsResponseBodyCustomDomains struct {
+	// The expiration date of the certificate.
+	//
+	// example:
+	//
+	// 2023-10-25
 	CertificateEndDate *string `json:"CertificateEndDate,omitempty" xml:"CertificateEndDate,omitempty"`
-	// The ID of the SSL certificate bound to the domain name. Obtain the certificate ID after you upload or purchase a certificate in the [Certificate Management Service](https://yundunnext.console.aliyun.com/?spm=5176.2020520163.console-base_help.2.4b3baJixaJixOc\\&p=cas) console.
+	// The ID of the SSL certificate attached to the domain name. To obtain the certificate ID, upload or purchase a certificate in the [Digital Certificate Management Service](https://yundunnext.console.aliyun.com/?spm=5176.2020520163.console-base_help.2.4b3baJixaJixOc\\&p=cas) console.
 	//
 	// example:
 	//
 	// 1473**25
-	CertificateId        *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	CertificateName      *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// The name of the SSL certificate.
+	//
+	// example:
+	//
+	// cert-9955038
+	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+	// The issuance date of the certificate.
+	//
+	// example:
+	//
+	// 2018-07-13
 	CertificateStartDate *string `json:"CertificateStartDate,omitempty" xml:"CertificateStartDate,omitempty"`
-	CertificateStatus    *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The status of the domain name.
+	//
+	// example:
+	//
+	// Succeeded
+	CertificateStatus *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
+	// The time when the domain name was created.
+	//
+	// example:
+	//
+	// 2020-05-19T14:19:42Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The custom domain name.
 	//
 	// example:
 	//
 	// test.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The domain name type.
-	//
-	// Valid value:
-	//
-	// 	- intranet: internal network.
-	//
-	// 	- internet: public network.
+	// The type of the domain name.
 	//
 	// example:
 	//
 	// intranet
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the domain name was last updated.
+	//
+	// example:
+	//
+	// 2021-05-19T14:19:42Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 

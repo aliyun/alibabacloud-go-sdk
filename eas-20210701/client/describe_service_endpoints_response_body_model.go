@@ -26,13 +26,13 @@ type DescribeServiceEndpointsResponseBody struct {
 	//
 	// Nzc5N2FhN****TQ0YzBmYTIyN2MxZTUxN2NkYjg4MTJmMWQxZmY1****
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// The service endpoints.
+	// The list of service endpoints.
 	Endpoints []*DescribeServiceEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message returned.
 	//
 	// example:
 	//
-	// Execution successful.
+	// Execution succeeded.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -100,20 +100,50 @@ func (s *DescribeServiceEndpointsResponseBody) Validate() error {
 }
 
 type DescribeServiceEndpointsResponseBodyEndpoints struct {
+	// The ID of the backend service. The value of this parameter varies based on the value of EndpointType:
+	//
+	// - If EndpointType is DefaultGateway, this parameter is set to default.
+	//
+	// - If EndpointType is PrivateGateway, this parameter is the ID of the dedicated gateway.
+	//
+	// - If EndpointType is Nlb, this parameter is the ID of the NLB instance.
+	//
+	// - If EndpointType is Nacos, this parameter is the ID of the Nacos instance.
+	//
 	// example:
 	//
 	// nlb-5q4sp7u6oorkha****
 	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	// The connection type of the service endpoint. Valid values:
+	//
+	// - DefaultGateway: The service is connected using a shared gateway.
+	//
+	// - PrivateGateway: The service is connected using a dedicated gateway.
+	//
+	// - Nlb: The service is attached to a Network Load Balancer (NLB) instance.
+	//
+	// - Nacos: The service is attached to a Nacos instance.
+	//
 	// example:
 	//
 	// Nlb
-	EndpointType      *string   `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The list of internet-facing endpoints.
 	InternetEndpoints []*string `json:"InternetEndpoints,omitempty" xml:"InternetEndpoints,omitempty" type:"Repeated"`
+	// The list of internal endpoints.
 	IntranetEndpoints []*string `json:"IntranetEndpoints,omitempty" xml:"IntranetEndpoints,omitempty" type:"Repeated"`
+	// The type of the endpoint. Valid values:
+	//
+	// - Group: The endpoint of an audience group.
+	//
+	// - Service: The endpoint of a service.
+	//
 	// example:
 	//
 	// Service
 	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
+	// The port number. This parameter is returned only when the service is attached to an NLB or Nacos instance.
+	//
 	// example:
 	//
 	// 9090

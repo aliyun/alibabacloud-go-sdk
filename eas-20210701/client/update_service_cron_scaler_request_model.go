@@ -16,9 +16,9 @@ type iUpdateServiceCronScalerRequest interface {
 }
 
 type UpdateServiceCronScalerRequest struct {
-	// The points in time that are excluded when you schedule a CronHPA job. The points in time must be specified by using a cron expression.
+	// The cron expressions for the dates to exclude from the schedule.
 	ExcludeDates []*string `json:"ExcludeDates,omitempty" xml:"ExcludeDates,omitempty" type:"Repeated"`
-	// The description of the CronHPA job.
+	// The scheduled scaling tasks.
 	//
 	// This parameter is required.
 	ScaleJobs []*UpdateServiceCronScalerRequestScaleJobs `json:"ScaleJobs,omitempty" xml:"ScaleJobs,omitempty" type:"Repeated"`
@@ -64,13 +64,13 @@ func (s *UpdateServiceCronScalerRequest) Validate() error {
 }
 
 type UpdateServiceCronScalerRequestScaleJobs struct {
-	// The name of the CronHPA job.
+	// The name of the scheduled auto scaling task.
 	//
 	// example:
 	//
 	// scale-job-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The cron expression that is used to configure the execution time of the CronHPA job. For more information about how to configure cron expressions, see **Description of special characters*	- in this topic.
+	// The cron expression that specifies when to run the scaling task. For more information about cron expressions, see the **Cron expressions*	- section in this topic.
 	//
 	// This parameter is required.
 	//
@@ -78,15 +78,20 @@ type UpdateServiceCronScalerRequestScaleJobs struct {
 	//
 	// 0 18 	- 	- 	- *
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// The number of instances that you want to configure for the CronHPA job.
+	// The target number of instances for the scaling task.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
-	TargetSize *int32  `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
-	TimeZone   *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	TargetSize *int32 `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
+	// The time zone for the cron expression.
+	//
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s UpdateServiceCronScalerRequestScaleJobs) String() string {

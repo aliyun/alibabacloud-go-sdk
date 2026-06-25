@@ -36,37 +36,37 @@ type iResourceInstanceWorker interface {
 }
 
 type ResourceInstanceWorker struct {
-	// The maximum number of CPU cores.
+	// The CPU core limit.
 	//
 	// example:
 	//
 	// 2
 	CpuLimit *int32 `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
-	// The number of CPU cores that you applied for.
+	// The number of CPU cores requested.
 	//
 	// example:
 	//
 	// 1
 	CpuRequest *int32 `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
-	// The maximum number of GPUs.
+	// The GPU limit.
 	//
 	// example:
 	//
 	// 0
 	GpuLimit *int32 `json:"GpuLimit,omitempty" xml:"GpuLimit,omitempty"`
-	// The number of GPUs that you applied for.
+	// The number of GPUs requested.
 	//
 	// example:
 	//
 	// 0
 	GpuRequest *int32 `json:"GpuRequest,omitempty" xml:"GpuRequest,omitempty"`
-	// The maximum memory size.
+	// The memory limit.
 	//
 	// example:
 	//
 	// 400
 	MemoryLimit *int64 `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	// The memory size that you applied for.
+	// The requested memory.
 	//
 	// example:
 	//
@@ -78,81 +78,31 @@ type ResourceInstanceWorker struct {
 	//
 	// test-india-5bbbfdbc98-****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the instance worker is ready.
+	// Indicates whether the instance is ready.
 	//
 	// example:
 	//
 	// true
 	Ready *bool `json:"Ready,omitempty" xml:"Ready,omitempty"`
-	// The number of times the instance worker restarted.
+	// The number of times the instance has been restarted.
 	//
 	// example:
 	//
 	// 3
 	RestartCount *int64 `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
-	// The service name.
+	// The name of the service.
 	//
 	// example:
 	//
 	// test-in****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The time when the instance worker started.
+	// The start time of the instance, in UTC (ISO 8601 format).
 	//
 	// example:
 	//
 	// 2021-05-09T09:56:19Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The instance state.
-	//
-	// Valid values:
-	//
-	// 	- Terminating
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Succeeded
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Unknown
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Failed
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Running
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Pending
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The status of the instance.
 	//
 	// example:
 	//

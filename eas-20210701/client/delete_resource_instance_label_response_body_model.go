@@ -16,7 +16,7 @@ type iDeleteResourceInstanceLabelResponseBody interface {
 }
 
 type DeleteResourceInstanceLabelResponseBody struct {
-	// The message.
+	// The response message.
 	//
 	// example:
 	//

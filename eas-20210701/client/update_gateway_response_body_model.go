@@ -18,7 +18,7 @@ type iUpdateGatewayResponseBody interface {
 }
 
 type UpdateGatewayResponseBody struct {
-	// The ID of the gateway.
+	// The ID of the private gateway.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type UpdateGatewayResponseBody struct {
 	//
 	// Gateway is updated
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

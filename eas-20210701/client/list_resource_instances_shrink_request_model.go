@@ -36,17 +36,17 @@ type iListResourceInstancesShrinkRequest interface {
 }
 
 type ListResourceInstancesShrinkRequest struct {
-	// The billing method of the instance. Valid values:
+	// Filters instances by billing method. Valid values:
 	//
-	// 	- PrePaid: subscription.
+	// - PrePaid: subscription.
 	//
-	// 	- PostPaid: pay-as-you-go.
+	// - PostPaid: pay-as-you-go.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The keyword used to query instances. Instances can be queried by instance ID or instance IP address.
+	// A keyword for the search. You can search by instance ID or IP address.
 	//
 	// example:
 	//
@@ -58,224 +58,55 @@ type ListResourceInstancesShrinkRequest struct {
 	//
 	// 10.224.xx.xx
 	InstanceIP *string `json:"InstanceIP,omitempty" xml:"InstanceIP,omitempty"`
-	// The instance ID. For more information about how to query the instance ID, see [ListResourceInstances](https://help.aliyun.com/document_detail/412129.html).
+	// Filter by instance ID. For more information, see [ListResourceInstances](https://help.aliyun.com/document_detail/412129.html).
 	//
 	// example:
 	//
-	// i-bp1jd6x3uotsv****
+	// i-bp1jd6x3uots****a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
+	// Filter by instance name.
 	//
 	// example:
 	//
 	// e-xxxx***
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The instance state.
-	//
-	// Valid values:
-	//
-	// 	- Ready-SchedulingDisabled
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The instance is available but unschedulable
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- Ready
-	//
-	//     <!-- -->
-	//
-	//     : The instance
-	//
-	//     <!-- -->
-	//
-	//     is running
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- NotReady
-	//
-	//     <!-- -->
-	//
-	//     : The instance is unready.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Stopped
-	//
-	//     <!-- -->
-	//
-	//     : The instance has stopped.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- NotReady-SchedulingDisabled
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The instance is unavailable and unschedulable
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- Attaching
-	//
-	//     <!-- -->
-	//
-	//     : The instance
-	//
-	//     <!-- -->
-	//
-	//     is starting
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- Deleting
-	//
-	//     <!-- -->
-	//
-	//     : The instance is being deleted.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- CreateFailed: The instance failed to be created.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The status of the instance.
 	//
 	// example:
 	//
 	// Ready
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The tag.
+	// Filter by label.
 	LabelShrink *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The sorting order.
-	//
-	// Valid values:
-	//
-	// 	- asc: The instances are sorted in ascending order.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- desc
-	//
-	//     <!-- -->
-	//
-	//     : The instances are sorted in descending order.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The sort order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value starts from 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 100.
+	// The number of instances to return on each page. Default value: 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field that you use to sort the query results.
-	//
-	// Valid values:
-	//
-	// 	- CreateTime
-	//
-	//     <!-- -->
-	//
-	//     : The instances are sorted based on the time when the instances were created.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- MemoryUsed
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The instances are sorted based on the memory usage of the instances
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- GpuUsed
-	//
-	//     <!-- -->
-	//
-	//     : The instances are sorted based on the
-	//
-	//     <!-- -->
-	//
-	//     GPU usage of the instances.
-	//
-	//     <!-- -->
-	//
-	// 	- ExpireTime: The instances are sorted based on the time when the instances expired.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- CpuUsed
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The instances are sorted based on the CPU utilization of the instances.
-	//
-	//     <!-- -->
+	// The sort field.
 	//
 	// example:
 	//
 	// CreateTime
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The zone of the instance.
+	//
+	// example:
+	//
+	// J
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 

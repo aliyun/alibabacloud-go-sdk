@@ -30,7 +30,7 @@ type DescribeResourceDLinkResponseBody struct {
 	//
 	// example:
 	//
-	// 72.16.0.0/16
+	// 172.16.0.0/16
 	DestinationCIDRs *string `json:"DestinationCIDRs,omitempty" xml:"DestinationCIDRs,omitempty"`
 	// The request ID.
 	//
@@ -54,7 +54,7 @@ type DescribeResourceDLinkResponseBody struct {
 	//
 	// example:
 	//
-	// vpc-uf66uio7md****
+	// vpc-uf66uio7m****1
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 

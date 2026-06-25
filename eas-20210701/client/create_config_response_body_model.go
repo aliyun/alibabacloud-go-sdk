@@ -20,18 +20,26 @@ type iCreateConfigResponseBody interface {
 }
 
 type CreateConfigResponseBody struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The dynamic parameter name.
+	//
 	// example:
 	//
 	// model-config
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+	// The dynamic parameter value.
+	//
 	// example:
 	//
 	// {"model": "gpt-4"}

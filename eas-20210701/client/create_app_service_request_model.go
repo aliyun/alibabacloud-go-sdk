@@ -38,7 +38,7 @@ type CreateAppServiceRequest struct {
 	//
 	// example:
 	//
-	// 123456
+	// 12****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// The application service type.
 	//

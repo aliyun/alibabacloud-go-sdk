@@ -22,7 +22,7 @@ type DeleteServiceLabelResponseBody struct {
 	//
 	// Succeed to delete service [service_from_zxxx] labels.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

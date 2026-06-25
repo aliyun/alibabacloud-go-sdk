@@ -24,7 +24,7 @@ type iDescribeServiceEventRequest interface {
 }
 
 type DescribeServiceEventRequest struct {
-	// The end of the time range to query. By default, the current point in time is the end of the time range to query.
+	// The end time of the query range, in UTC. The default value is the current time.
 	//
 	// example:
 	//
@@ -32,33 +32,33 @@ type DescribeServiceEventRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The event type. Valid values:
 	//
-	// 	- Normal
+	// - Normal: a normal event.
 	//
-	// 	- Warning
+	// - Warning: a warning event.
 	//
 	// example:
 	//
 	// Normal
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The instance name. For more information about how to obtain the instance name, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
+	// The name of the service instance. To obtain this name, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
 	//
 	// example:
 	//
 	// echo-test-784xxxx85d-hhnd8
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The page number. Default value: 1.
+	// The page number to return. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page. Default value: 100.
+	// The number of events to return per page. Default value: 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query. The time must be in UTC. The default value is seven days ago.
+	// The start time of the query range, in UTC. The default value is 7 days ago.
 	//
 	// example:
 	//

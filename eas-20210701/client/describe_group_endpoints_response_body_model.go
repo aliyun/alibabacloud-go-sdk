@@ -32,7 +32,7 @@ type DescribeGroupEndpointsResponseBody struct {
 	//
 	// example:
 	//
-	// Execution successful.
+	// Execution succeeded.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -102,13 +102,13 @@ func (s *DescribeGroupEndpointsResponseBody) Validate() error {
 type DescribeGroupEndpointsResponseBodyEndpoints struct {
 	// The backend access ID, which varies based on the value of the EndpointType parameter.
 	//
-	// 	- If you set EndpointType to DefaultGateway, the value of this parameter is default.
+	// - If you set EndpointType to DefaultGateway, the value of this parameter is default.
 	//
-	// 	- If you set EndpointType to PrivateGateway, the value of this parameter is the ID of the dedicated gateway.
+	// - If you set EndpointType to PrivateGateway, the value of this parameter is the ID of the dedicated gateway.
 	//
-	// 	- If you set EndpointType to Nlb, the value of this parameter is the ID of the NLB instance.
+	// - If you set EndpointType to Nlb, the value of this parameter is the ID of the NLB instance.
 	//
-	// 	- If you set EndpointType to Nacos, the value of this parameter is the ID of the Nacos instance.
+	// - If you set EndpointType to Nacos, the value of this parameter is the ID of the Nacos instance.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ type DescribeGroupEndpointsResponseBodyEndpoints struct {
 	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
 	// The service endpoint type. Valid values:
 	//
-	// 	- DefaultGateway: the shared gateway.
+	// - DefaultGateway: the shared gateway.
 	//
-	// 	- PrivateGateway: the dedicated gateway.
+	// - PrivateGateway: the dedicated gateway.
 	//
-	// 	- Nlb: Associate the service with the Network Load Balancer (NLB) instance.
+	// - Nlb: Associate the service with the Network Load Balancer (NLB) instance.
 	//
-	// 	- Nacos: Associate the service with the Nacos instance.
+	// - Nacos: Associate the service with the Nacos instance.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type DescribeGroupEndpointsResponseBodyEndpoints struct {
 	IntranetEndpoints []*string `json:"IntranetEndpoints,omitempty" xml:"IntranetEndpoints,omitempty" type:"Repeated"`
 	// The path type. Valid values:
 	//
-	// 	- Group: the path of the service group.
+	// - Group: the path of the service group.
 	//
 	// example:
 	//

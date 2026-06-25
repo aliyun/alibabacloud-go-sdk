@@ -20,15 +20,25 @@ type iCreateGatewayIntranetLinkedVpcRequest interface {
 }
 
 type CreateGatewayIntranetLinkedVpcRequest struct {
-	AccountId              *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	EnableAuthoritativeDns *bool   `json:"EnableAuthoritativeDns,omitempty" xml:"EnableAuthoritativeDns,omitempty"`
-	// The vSwitch ID.
+	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	//
+	// example:
+	//
+	// 19*****10
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Specifies whether to enable authoritative DNS parsing. The default value is false.
+	//
+	// example:
+	//
+	// true
+	EnableAuthoritativeDns *bool `json:"EnableAuthoritativeDns,omitempty" xml:"EnableAuthoritativeDns,omitempty"`
+	// The ID of the virtual switch. For more information, see [DescribeVpcs](https://help.aliyun.com/document_detail/448581.html).
 	//
 	// example:
 	//
 	// vsw-8vbqn2at0kljjxxxx****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The ID of the virtual private cloud (VPC). For more information, see [DescribeVpcs](https://help.aliyun.com/document_detail/448581.html).
 	//
 	// example:
 	//

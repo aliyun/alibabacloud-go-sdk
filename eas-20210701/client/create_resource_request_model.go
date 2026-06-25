@@ -36,9 +36,9 @@ type iCreateResourceRequest interface {
 type CreateResourceRequest struct {
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- false (default)
+	// - `false` (default): Auto-renewal is disabled.
 	//
-	// 	- true
+	// - `true`: Auto-renewal is enabled.
 	//
 	// example:
 	//
@@ -46,60 +46,62 @@ type CreateResourceRequest struct {
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- PrePaid: the subscription billing method.
+	// - `PrePaid`: subscription.
 	//
-	// 	- PostPaid: the pay-as-you-go billing method.
+	// - `PostPaid`: pay-as-you-go.
 	//
-	// >  This parameter is required when the ResourceType parameter is set to Dedicated.
+	// > This parameter is required when `ResourceType` is set to `Dedicated`.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The number of ECS instances.
+	// The number of instances.
 	//
-	// >  This parameter is required when the ResourceType parameter is set to Dedicated.
+	// > This parameter is required when `ResourceType` is set to `Dedicated`.
 	//
 	// example:
 	//
 	// 5
 	EcsInstanceCount *int32 `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
-	// The type of the Elastic Compute Service (ECS) instance.
+	// The ECS instance type.
 	//
-	// >  This parameter is required when the ResourceType parameter is set to Dedicated.
+	// > This parameter is required when `ResourceType` is set to `Dedicated`.
 	//
 	// example:
 	//
 	// ecs.c6.8xlarge
 	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	// The labels.
+	// The user-defined labels.
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The name of the resource group.
+	//
 	// example:
 	//
 	// MyResource
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The type of the resource group. Valid values:
 	//
-	// 	- Dedicated: the dedicated resource group.
+	// - `Dedicated`: a dedicated resource group.
 	//
-	// 	- SelfManaged: the self-managed resource group.
+	// - `SelfManaged`: a self-managed resource group.
 	//
-	// >  If you use a self-managed resource group, you must configure a whitelist.
+	// > You must be whitelisted to use self-managed resource groups.
 	//
 	// example:
 	//
 	// Dedicated
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The configurations of the self-managed resource group.
+	// The configuration options for the self-managed resource group.
 	SelfManagedResourceOptions *CreateResourceRequestSelfManagedResourceOptions `json:"SelfManagedResourceOptions,omitempty" xml:"SelfManagedResourceOptions,omitempty" type:"Struct"`
-	// The size of the system disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
+	// The size of the system disk, in GiB. The value must be between 200 and 2,000. If unspecified, the default is 200 GiB.
 	//
 	// example:
 	//
 	// 200
 	SystemDiskSize *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	UsageMode      *string `json:"UsageMode,omitempty" xml:"UsageMode,omitempty"`
-	// The ID of the zone in which the instance resides.
+	// The zone in which to create the instance.
 	//
 	// example:
 	//
@@ -230,11 +232,11 @@ type CreateResourceRequestSelfManagedResourceOptions struct {
 	//
 	// cf0386f250f2545689ca7fdd1cd******
 	ExternalClusterId *string `json:"ExternalClusterId,omitempty" xml:"ExternalClusterId,omitempty"`
-	// The tag key-value pairs of the node.
+	// The node labels to match, specified as key-value pairs.
 	NodeMatchLabels map[string]*string `json:"NodeMatchLabels,omitempty" xml:"NodeMatchLabels,omitempty"`
-	// The tolerations for the node taint.
+	// A list of tolerations for node taints.
 	NodeTolerations []*CreateResourceRequestSelfManagedResourceOptionsNodeTolerations `json:"NodeTolerations,omitempty" xml:"NodeTolerations,omitempty" type:"Repeated"`
-	// The name of the RAM user to which the permissions on Elastic Algorithm Service (EAS) of Platform for AI (PAI) are granted.
+	// The name of the RAM role that grants PAI-EAS the required permissions.
 	//
 	// example:
 	//
@@ -300,39 +302,25 @@ func (s *CreateResourceRequestSelfManagedResourceOptions) Validate() error {
 }
 
 type CreateResourceRequestSelfManagedResourceOptionsNodeTolerations struct {
-	// The effect.
-	//
-	// Valid values:
-	//
-	// 	- PreferNoSchedule
-	//
-	// 	- NoSchedule
-	//
-	// 	- NoExecute
+	// The effect of the toleration.
 	//
 	// example:
 	//
 	// NoSchedule
 	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// The key name.
+	// The key of the toleration.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The relationship between key names and key values.
-	//
-	// Valid values:
-	//
-	// 	- Equal
-	//
-	// 	- Exists
+	// The toleration operator, which defines the relationship between the key and value.
 	//
 	// example:
 	//
 	// Equal
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// The key value.
+	// The toleration value.
 	//
 	// example:
 	//

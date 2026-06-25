@@ -16,10 +16,20 @@ type iUpdateServiceRolloutResponseBody interface {
 }
 
 type UpdateServiceRolloutResponseBody struct {
+	// A message that indicates the result of the request. Possible values include:
+	//
+	// - "Rollout updated successfully"
+	//
+	// - "Rollout paused successfully"
+	//
+	// - "Rollout resumed successfully"
+	//
 	// example:
 	//
 	// Rollout updated successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A unique identifier for the request. You can use this request ID for troubleshooting and tracking.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****

@@ -16,7 +16,7 @@ type iCreateServiceCronScalerResponseBody interface {
 }
 
 type CreateServiceCronScalerResponseBody struct {
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

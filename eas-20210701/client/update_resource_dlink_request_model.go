@@ -24,7 +24,7 @@ type UpdateResourceDLinkRequest struct {
 	//
 	// example:
 	//
-	// 72.16.0.0/16
+	// 172.16.0.0/16
 	DestinationCIDRs *string `json:"DestinationCIDRs,omitempty" xml:"DestinationCIDRs,omitempty"`
 	// The ID of the security group to which the Elastic Compute Service (ECS) instance belongs.
 	//
@@ -32,7 +32,7 @@ type UpdateResourceDLinkRequest struct {
 	//
 	// example:
 	//
-	// sg-bp149cedsfx2rfspd2d
+	// sg-bp149cedsfx2rfs****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The ID of the peer primary vSwitch. After this parameter is specified, an elastic network interface (ENI) is created in the VSwitch.
 	//

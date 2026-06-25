@@ -18,8 +18,9 @@ type iDeleteServiceLabelShrinkRequest interface {
 type DeleteServiceLabelShrinkRequest struct {
 	// Deprecated
 	//
-	// The service tags that you want to delete.
-	KeysShrink      *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+	// The keys of the service labels that you want to delete. This parameter is deprecated. Use the LabelKeys parameter instead.
+	KeysShrink *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+	// The keys of the service labels that you want to delete.
 	LabelKeysShrink *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
 }
 

@@ -22,9 +22,9 @@ type iDescribeServiceEventResponseBody interface {
 }
 
 type DescribeServiceEventResponseBody struct {
-	// The events.
+	// The list of events.
 	Events []*DescribeServiceEventResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type DescribeServiceEventResponseBody struct {
 	//
 	// 3D491C94-6239-5318-B4B4-799D859***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total count of events.
 	//
 	// example:
 	//
 	// 29
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -117,20 +117,29 @@ func (s *DescribeServiceEventResponseBody) Validate() error {
 }
 
 type DescribeServiceEventResponseBodyEvents struct {
-	// The returned message. The message is formatted and returned in the JSON format.
+	// The event message, which is a JSON-formatted string.
 	//
 	// example:
 	//
 	// {\\"versionId\\":1,\\"message\\":\\"Stage scale complete\\",\\"availableInstance\\":1,\\"unavailableInstance\\":0}
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The cause of the event. The information about the change in the service status is returned.
+	// The reason for the event, which indicates a change in the service status.
 	//
 	// example:
 	//
 	// Updating
-	Reason   *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The resource type. Valid values:
+	//
+	// - Service: a service.
+	//
+	// - Pod: a service instance.
+	//
+	// example:
+	//
+	// Service
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The time when the event occurred. The time must be in UTC.
+	// The time when the event occurred, in UTC.
 	//
 	// example:
 	//
@@ -138,9 +147,9 @@ type DescribeServiceEventResponseBodyEvents struct {
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 	// The event type. Valid values:
 	//
-	// 	- Normal
+	// - Normal: a normal event.
 	//
-	// 	- Warning
+	// - Warning: a warning event.
 	//
 	// example:
 	//

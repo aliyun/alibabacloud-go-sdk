@@ -18,8 +18,9 @@ type iDeleteServiceLabelRequest interface {
 type DeleteServiceLabelRequest struct {
 	// Deprecated
 	//
-	// The service tags that you want to delete.
-	Keys      []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// The keys of the service labels that you want to delete. This parameter is deprecated. Use the LabelKeys parameter instead.
+	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// The keys of the service labels that you want to delete.
 	LabelKeys []*string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty" type:"Repeated"`
 }
 

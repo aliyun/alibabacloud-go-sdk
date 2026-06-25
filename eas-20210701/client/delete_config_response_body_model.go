@@ -16,13 +16,13 @@ type iDeleteConfigResponseBody interface {
 }
 
 type DeleteConfigResponseBody struct {
-	// 删除的配置数量
+	// The number of configurations deleted.
 	//
 	// example:
 	//
 	// 1
 	Deleted *int32 `json:"deleted,omitempty" xml:"deleted,omitempty"`
-	// 操作结果消息
+	// A message indicating the operation result.
 	//
 	// example:
 	//

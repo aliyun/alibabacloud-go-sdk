@@ -22,7 +22,7 @@ type iListResourcesResponseBody interface {
 }
 
 type ListResourcesResponseBody struct {
-	// The page number.
+	// The returned page number.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListResourcesResponseBody struct {
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource groups.
+	// A list of resource groups.
 	Resources []*Resource `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of resource groups.
 	//
 	// example:
 	//

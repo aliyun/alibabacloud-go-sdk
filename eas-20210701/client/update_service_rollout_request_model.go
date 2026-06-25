@@ -18,8 +18,24 @@ type iUpdateServiceRolloutRequest interface {
 }
 
 type UpdateServiceRolloutRequest struct {
-	Batch     *UpdateServiceRolloutRequestBatch     `json:"Batch,omitempty" xml:"Batch,omitempty" type:"Struct"`
+	// The batch rollout configuration. This parameter is mutually exclusive with `Partition`.
+	//
+	// - Type: object
+	//
+	// - Required: No
+	//
+	// - Description: The batch rollout configuration for adjusting batch policy parameters. This parameter is mutually exclusive with Partition.
+	Batch *UpdateServiceRolloutRequestBatch `json:"Batch,omitempty" xml:"Batch,omitempty" type:"Struct"`
+	// The partition rollout configuration. This parameter is mutually exclusive with `Batch`.
+	//
+	// - Type: object
+	//
+	// - Required: No
+	//
+	// - Description: The partition rollout configuration. This parameter adjusts the parameters for the partition strategy. It is mutually exclusive with `Batch`.
 	Partition *UpdateServiceRolloutRequestPartition `json:"Partition,omitempty" xml:"Partition,omitempty" type:"Struct"`
+	// Set to `true` to pause the rollout or `false` to resume it.
+	//
 	// example:
 	//
 	// true
@@ -76,10 +92,14 @@ func (s *UpdateServiceRolloutRequest) Validate() error {
 }
 
 type UpdateServiceRolloutRequestBatch struct {
+	// The number of replicas to update in each batch. This can be an integer or a percentage. The default is `"25%"`.
+	//
 	// example:
 	//
 	// 25%
 	BatchSize *string `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// The interval to wait between batches. Supported units include `s` (seconds), `m` (minutes), and `h` (hours).
+	//
 	// example:
 	//
 	// 60s
@@ -117,6 +137,28 @@ func (s *UpdateServiceRolloutRequestBatch) Validate() error {
 }
 
 type UpdateServiceRolloutRequestPartition struct {
+	// **Partition value**
+	//
+	// - Type: string
+	//
+	// - Required: Yes
+	//
+	// - Description: The partition value. This parameter specifies the number or percentage of old-version replicas to retain. It supports two formats:
+	//
+	//   1. An integer, such as "5", for the number of replicas.
+	//
+	//   2. A percentage, such as "50%", for the proportion of replicas.
+	//
+	//   Adjustment strategy:
+	//
+	//   - Increasing the value rolls back to the previous version by increasing the number of old-version replicas.
+	//
+	//   - Decreasing the value continues the rollout by reducing the number of old-version replicas.
+	//
+	//   - Setting the value to "0" or "0%" completes the rollout, replacing all old-version replicas.
+	//
+	// - Example: 30%
+	//
 	// example:
 	//
 	// 30%

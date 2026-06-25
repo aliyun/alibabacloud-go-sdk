@@ -20,14 +20,15 @@ type iDeleteResourceInstanceLabelShrinkRequest interface {
 }
 
 type DeleteResourceInstanceLabelShrinkRequest struct {
-	// Specifies whether the delete operation takes effect on all instances in the resource group. If you set this parameter to true, the InstanceIds parameter does not take effect.
+	// Specifies whether the operation takes effect on all instances in the resource group. If this parameter is set to true, the InstanceIds parameter does not take effect.
 	AllInstances *bool `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
-	// The instance IDs.
+	// The machine instance IDs.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// Deprecated
 	//
-	// The keys of the tags that you want to delete.
-	KeysShrink      *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+	// The tags to delete. (Deprecated. Use LabelKeys instead.).
+	KeysShrink *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+	// The tags to delete.
 	LabelKeysShrink *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
 }
 

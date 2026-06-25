@@ -16,10 +16,14 @@ type iDeleteGatewayLabelResponseBody interface {
 }
 
 type DeleteGatewayLabelResponseBody struct {
+	// The returned message.
+	//
 	// example:
 	//
 	// Succeed to delete gateway labels.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****

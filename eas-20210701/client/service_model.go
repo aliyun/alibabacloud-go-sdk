@@ -118,102 +118,123 @@ type iService interface {
 }
 
 type Service struct {
-	// The token that is used to access the service.
+	// The access token for the service.
 	//
 	// example:
 	//
 	// MzJiMDI5MDliODc0MTlkYmI0ZDhlYmExYjczYTIyZTE3Zm********
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// The application service configuration.
+	// The application configuration for the service.
 	//
 	// example:
 	//
 	// {"ModelStorage":"oss"}
 	AppConfig *string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
-	// The name of the application service specification.
+	// The application specification name for the service.
 	//
 	// example:
 	//
 	// llama_7b_fp16
 	AppSpecName *string `json:"AppSpecName,omitempty" xml:"AppSpecName,omitempty"`
-	// The application service type.
+	// The application type of the service.
 	//
 	// example:
 	//
 	// LLM
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The application service version.
+	// The application version of the service.
 	//
 	// example:
 	//
 	// v1
-	AppVersion        *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	AutoscalerEnabled *bool   `json:"AutoscalerEnabled,omitempty" xml:"AutoscalerEnabled,omitempty"`
-	// The user ID (UID) of the Alibaba Cloud account that is used to create the service.
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// Indicates whether auto scaling is enabled for the service.
+	//
+	// example:
+	//
+	// true
+	AutoscalerEnabled *bool `json:"AutoscalerEnabled,omitempty" xml:"AutoscalerEnabled,omitempty"`
+	// The UID of the account that created the service.
 	//
 	// example:
 	//
 	// 20123*******
 	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	// The number of CPU cores that you applied for each instance.
+	// The number of CPU cores requested for each instance.
 	//
 	// example:
 	//
 	// 1
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The time when the service was created. The time is displayed in the UTC RFC3339 format.
+	// The time when the service was created, in RFC 3339 format (UTC).
 	//
 	// example:
 	//
 	// 2021-01-29T11:13:20Z
-	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CronscalerEnabled *bool   `json:"CronscalerEnabled,omitempty" xml:"CronscalerEnabled,omitempty"`
-	// The version of the model that is running.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether scheduled scaling is enabled for the service.
+	//
+	// example:
+	//
+	// true
+	CronscalerEnabled *bool `json:"CronscalerEnabled,omitempty" xml:"CronscalerEnabled,omitempty"`
+	// The current version of the running model.
 	//
 	// example:
 	//
 	// 1
 	CurrentVersion *int32 `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	// The additional information about the service.
+	// Additional information about the service.
 	//
 	// example:
 	//
-	// {\\"blue_green_services\\":[\\"test\\",\\"testxxxx\\"]}
-	ExtraData         *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	GPUCorePercentage *int32  `json:"GPUCorePercentage,omitempty" xml:"GPUCorePercentage,omitempty"`
-	GPUMemory         *int32  `json:"GPUMemory,omitempty" xml:"GPUMemory,omitempty"`
-	// The ID of the dedicated gateway for the service. This parameter is available only for services that are associated with dedicated gateways.
+	// {"blue_green_services":["test","testxxxx"]}
+	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	// The percentage of GPU computing power requested for each instance when GPU sharing is enabled.
+	//
+	// example:
+	//
+	// 50
+	GPUCorePercentage *int32 `json:"GPUCorePercentage,omitempty" xml:"GPUCorePercentage,omitempty"`
+	// The amount of GPU memory requested for each instance when GPU sharing is enabled.
+	//
+	// example:
+	//
+	// 20
+	GPUMemory *int32 `json:"GPUMemory,omitempty" xml:"GPUMemory,omitempty"`
+	// The ID of the dedicated gateway for the service. This field is returned only for services that are bound to a dedicated gateway.
 	//
 	// example:
 	//
 	// gw-xxxxxx
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
-	// The number of GPUs that you applied for each instance.
+	// The number of GPUs requested for each instance.
 	//
 	// example:
 	//
 	// 0
 	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// The data image of the service.
+	// The image used by the service.
 	//
 	// example:
 	//
 	// registry.cn-shanghai.aliyuncs.com/eas/echo_cn-shanghai:v0.0.1-20210129111320
-	Image                   *string                         `json:"Image,omitempty" xml:"Image,omitempty"`
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// A breakdown of the instance count by resource type.
 	InstanceCountInResource *ServiceInstanceCountInResource `json:"InstanceCountInResource,omitempty" xml:"InstanceCountInResource,omitempty" type:"Struct"`
-	// The public endpoint of the service. This parameter is returned only in the DescribeService API operation.
+	// The internet endpoint of the service. This field is returned only by the `DescribeService` operation.
 	//
 	// example:
 	//
 	// http://10123*****.cn-shanghai.aliyuncs.com/api/predict/echo
 	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
-	// The internal endpoint of the service. This parameter is returned only in the DescribeService API operation.
+	// The intranet endpoint of the service. This field is returned only by the `DescribeService` operation.
 	//
 	// example:
 	//
 	// http://10123*****.vpc.cn-shanghai.aliyuncs.com/api/predict/echo
 	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	// The labels.
+	// The labels of the service.
 	Labels []*ServiceLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The latest version of the service.
 	//
@@ -221,49 +242,49 @@ type Service struct {
 	//
 	// 1
 	LatestVersion *int32 `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	// The memory size that you applied for each instance. Unit: MB.
+	// The amount of memory requested for each instance, in MB.
 	//
 	// example:
 	//
 	// 1024
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The service summary.
+	// A message that provides information about the service status.
 	//
 	// example:
 	//
 	// Service start successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The namespace in which the service resides.
+	// The namespace where the service is located.
 	//
 	// example:
 	//
 	// echo
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The UID of the Alibaba Cloud account that is used to create the service.
+	// The UID of the primary account used to create the service.
 	//
 	// example:
 	//
 	// 11234*******
 	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	// The number of instances for the pending service.
+	// The number of pending instances for the service.
 	//
 	// example:
 	//
 	// 0
 	PendingInstance *int32 `json:"PendingInstance,omitempty" xml:"PendingInstance,omitempty"`
-	// The quota ID for the service. This parameter is available only for services deployed by using Lingjun resource quotas.
+	// The quota ID of the service. This field is returned only for services that are deployed on a Lingjun resource quota.
 	//
 	// example:
 	//
 	// quotaxxxxx
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// The reason for which the service is in the current state.
+	// The reason for the service status.
 	//
 	// example:
 	//
 	// RUNNING
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The region in which the service resides.
+	// The region where the service is deployed.
 	//
 	// example:
 	//
@@ -286,57 +307,54 @@ type Service struct {
 	// example:
 	//
 	// my_resource
-	ResourceAlias     *string `json:"ResourceAlias,omitempty" xml:"ResourceAlias,omitempty"`
-	ResourceBurstable *bool   `json:"ResourceBurstable,omitempty" xml:"ResourceBurstable,omitempty"`
-	// The service role.
+	ResourceAlias *string `json:"ResourceAlias,omitempty" xml:"ResourceAlias,omitempty"`
+	// Indicates whether a burstable resource pool is enabled for the service.
+	//
+	// example:
+	//
+	// true
+	ResourceBurstable *bool `json:"ResourceBurstable,omitempty" xml:"ResourceBurstable,omitempty"`
+	// The role of the service.
 	//
 	// example:
 	//
 	// Queue
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The additional attributes of the service role. This parameter is returned only in the DescribeService API operation.
+	// Additional attributes of the service role. This field is returned only by the `DescribeService` operation.
 	//
 	// example:
 	//
-	// "{\\"ApproxMaxLength\\":null,\\"Length\\":null,\\"MaxPayloadBytes\\":null}"
+	// {"ApproxMaxLength":null,"Length":null,"MaxPayloadBytes":null}
 	RoleAttrs *string `json:"RoleAttrs,omitempty" xml:"RoleAttrs,omitempty"`
-	// The number of instances for the running service.
+	// The number of running instances of the service.
 	//
 	// example:
 	//
 	// 1
 	RunningInstance *int32 `json:"RunningInstance,omitempty" xml:"RunningInstance,omitempty"`
-	// The security lock of the service.
-	//
-	// Valid values:
-	//
-	// 	- all: forbids all operations.
-	//
-	// 	- dangerous: forbids the operation of deleting or stopping the service.
-	//
-	// 	- none: forbids no operations.
+	// The safety lock status of the service.
 	//
 	// example:
 	//
 	// dangerous
 	SafetyLock *string `json:"SafetyLock,omitempty" xml:"SafetyLock,omitempty"`
-	// The public endpoint that is used in the asynchronization request of the service. This parameter is returned only in the DescribeService API operation.
+	// The internet endpoint for synchronous requests to an asynchronous service. This field is returned only by the `DescribeService` operation.
 	//
 	// example:
 	//
 	// http://10123*****.cn-shanghai.aliyuncs.com/api/predict/async_path.echo
 	SecondaryInternetEndpoint *string `json:"SecondaryInternetEndpoint,omitempty" xml:"SecondaryInternetEndpoint,omitempty"`
-	// The internal endpoint that is used in the asynchronization request of the service. This parameter is returned only in the DescribeService API operation.
+	// The intranet endpoint for synchronous requests to an asynchronous service. This field is returned only by the `DescribeService` operation.
 	//
 	// example:
 	//
 	// http://10123*****.vpc.cn-shanghai.aliyuncs.com/api/predict/async_path.echo
 	SecondaryIntranetEndpoint *string `json:"SecondaryIntranetEndpoint,omitempty" xml:"SecondaryIntranetEndpoint,omitempty"`
-	// The service configurations.
+	// The configuration of the service.
 	//
 	// example:
 	//
-	// {        "metadata": {             "cpu":1,             "instance":1,             "memory":1024           },         "name":"echo",         "processor_entry":"libecho.so",         "processor_path":"http://oss-cn-hangzhou-zmf.aliyuncs.com/059247/echo_processor_release.tar.gz",         "processor_type":"cpp"     }
+	// {"metadata":{"cpu":1,"instance":1,"memory":1024},"name":"echo","processor_entry":"libecho.so","processor_path":"http://oss-cn-hangzhou-zmf.aliyuncs.com/059247/echo_processor_release.tar.gz","processor_type":"cpp"}
 	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
 	// The group to which the service belongs.
 	//
@@ -350,55 +368,25 @@ type Service struct {
 	//
 	// eas-m-xxasdat
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The service name.
+	// The name of the service.
 	//
 	// example:
 	//
 	// echo
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The service ID. ServiceUid has the same meaning as ServiceId, and the values of the two parameters are the same.
+	// The service ID. This value is the same as `ServiceId`.
 	//
 	// example:
 	//
 	// eas-m-xxasdat
 	ServiceUid *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
-	// The source from which the service deployment request is initiated.
+	// The deployment source of the service.
 	//
 	// example:
 	//
 	// dsw
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The service status.
-	//
-	// Valid values:
-	//
-	// 	- Creating
-	//
-	// 	- Deploying
-	//
-	// 	- Stopped
-	//
-	// 	- Failed
-	//
-	// 	- Updating
-	//
-	// 	- Stopping
-	//
-	// 	- Waiting
-	//
-	// 	- HotUpdate
-	//
-	// 	- Starting
-	//
-	// 	- DeleteFailed
-	//
-	// 	- Running
-	//
-	// 	- Scaling
-	//
-	// 	- Pending
-	//
-	// 	- Deleting
+	// The status of the service.
 	//
 	// example:
 	//
@@ -410,25 +398,19 @@ type Service struct {
 	//
 	// 1
 	TotalInstance *int32 `json:"TotalInstance,omitempty" xml:"TotalInstance,omitempty"`
-	// The traffic state.
-	//
-	// Valid values:
-	//
-	// 	- standalone: independent traffic.
-	//
-	// 	- grouping: grouped traffic.
+	// The traffic state of the service.
 	//
 	// example:
 	//
 	// standalone
 	TrafficState *string `json:"TrafficState,omitempty" xml:"TrafficState,omitempty"`
-	// The time when the service was updated. The time is displayed in the UTC RFC3339 format.
+	// The time when the service was last updated, in RFC 3339 format (UTC).
 	//
 	// example:
 	//
 	// 2021-01-29T11:13:20Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The weight of the service in canary release.
+	// The traffic weight for the canary release of the service.
 	//
 	// example:
 	//
@@ -947,9 +929,24 @@ func (s *Service) Validate() error {
 }
 
 type ServiceInstanceCountInResource struct {
+	// The number of instances that use dedicated or self-managed resource groups.
+	//
+	// example:
+	//
+	// 10
 	Dedicated *int32 `json:"Dedicated,omitempty" xml:"Dedicated,omitempty"`
-	Public    *int32 `json:"Public,omitempty" xml:"Public,omitempty"`
-	Quota     *int32 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// The number of instances that use public resource groups.
+	//
+	// example:
+	//
+	// 10
+	Public *int32 `json:"Public,omitempty" xml:"Public,omitempty"`
+	// The number of instances that use a Lingjun quota.
+	//
+	// example:
+	//
+	// 10
+	Quota *int32 `json:"Quota,omitempty" xml:"Quota,omitempty"`
 }
 
 func (s ServiceInstanceCountInResource) String() string {
@@ -992,13 +989,13 @@ func (s *ServiceInstanceCountInResource) Validate() error {
 }
 
 type ServiceLabels struct {
-	// The label key.
+	// The key of the service label.
 	//
 	// example:
 	//
 	// key1
 	LabelKey *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
-	// The label value.
+	// The value of the service label.
 	//
 	// example:
 	//

@@ -277,11 +277,11 @@ func (s *CreateServiceAutoScalerRequestBehaviorScaleUp) Validate() error {
 type CreateServiceAutoScalerRequestScaleStrategies struct {
 	// The name of the metric for triggering auto scaling. Valid values:
 	//
-	// 	- qps: the queries per second (qps) for an individual instance.
+	// - qps: the queries per second (qps) for an individual instance.
 	//
-	// 	- cpu: the cpu utilization.
+	// - cpu: the cpu utilization.
 	//
-	// 	- gpu[util]: gpu utilization.
+	// - gpu[util]: gpu utilization.
 	//
 	// This parameter is required.
 	//
@@ -297,11 +297,11 @@ type CreateServiceAutoScalerRequestScaleStrategies struct {
 	Service *string `json:"service,omitempty" xml:"service,omitempty"`
 	// The threshold of the metric that triggers auto scaling.
 	//
-	// 	- If you set metricName to qps, scale-out is triggered when the average qps for a single instance is greater than this threshold.
+	// - If you set metricName to qps, scale-out is triggered when the average qps for a single instance is greater than this threshold.
 	//
-	// 	- If you set metricName to cpu, scale-out is triggered when the average cpu utilization for a single instance is greater than this threshold.
+	// - If you set metricName to cpu, scale-out is triggered when the average cpu utilization for a single instance is greater than this threshold.
 	//
-	// 	- If you set metricName to gpu, scale-out is triggered when the average gpu utilization for a single instance is greater than this threshold.
+	// - If you set metricName to gpu, scale-out is triggered when the average gpu utilization for a single instance is greater than this threshold.
 	//
 	// This parameter is required.
 	//

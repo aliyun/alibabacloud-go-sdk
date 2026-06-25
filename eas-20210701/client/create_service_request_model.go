@@ -56,145 +56,145 @@ type CreateServiceRequest struct {
 	//
 	// example:
 	//
-	// Service deployment by using an image:
+	// Image deployment service:
 	//
 	// {
 	//
-	//   "name": "foo",
+	//   "name": "foo",
 	//
-	//   "metadata": {
+	//   "metadata": {
 	//
-	//     "instance": 2,
+	//     "instance": 2,
 	//
-	//     "memory": 7000,
+	//     "memory": 7000,
 	//
-	//     "cpu": 4
+	//     "cpu": 4
 	//
-	//     },
+	//     },
 	//
-	//   "containers": [
+	//   "containers": [
 	//
-	//     {
+	//     {
 	//
-	//       "image": "****",
+	//       "image": "****",
 	//
-	//       "script": "***	- --listen=0.0.0.0 --server_port=8000 --headless",
+	//       "script": "***	- --listen=0.0.0.0 --server_port=8000 --headless",
 	//
-	//       "port": 8000
+	//       "port": 8000
 	//
-	//     }
+	//     }
 	//
-	//   ],
+	//   ],
 	//
-	//   "storage": [
+	//   "storage": [
 	//
-	//     {
+	//     {
 	//
-	//       "oss": {
+	//       "oss": {
 	//
-	//         "path": "oss://examplebuket/data111/",
+	//         "path": "oss://examplebuket/data111/",
 	//
-	//         "readOnly": false
+	//         "readOnly": false
 	//
-	//       },
+	//       },
 	//
-	//       "properties": {
+	//       "properties": {
 	//
-	//         "resource_type": "model"
+	//         "resource_type": "model"
 	//
-	//       },
+	//       },
 	//
-	//       "mount_path": "/data"
+	//       "mount_path": "/data"
 	//
-	//     }
+	//     }
 	//
-	//   ]
+	//   ]
 	//
 	// }
 	//
-	// AI-Web application deployment by using an image:
+	// image deploymentAI-Web application:
 	//
 	// {
 	//
-	//   "name": "foo",
+	//   "name": "foo",
 	//
-	//   "metadata": {
+	//   "metadata": {
 	//
-	//     "instance": 1,
+	//     "instance": 1,
 	//
-	//     "memory": 7000,
+	//     "memory": 7000,
 	//
-	//     "cpu": 4,
+	//     "cpu": 4,
 	//
-	//     "enable_webservice": true
+	//     "enable_webservice": true
 	//
-	//   },
+	//   },
 	//
-	//   "containers": [
+	//   "containers": [
 	//
-	//     {
+	//     {
 	//
-	//       "image": "****",
+	//       "image": "****",
 	//
-	//       "script": "***	- --listen=0.0.0.0 --server_port=8000 --headless",
+	//       "script": "***	- --listen=0.0.0.0 --server_port=8000 --headless",
 	//
-	//       "port": 8000
+	//       "port": 8000
 	//
-	//     }
+	//     }
 	//
-	//   ],
+	//   ],
 	//
-	//   "storage": [
+	//   "storage": [
 	//
-	//     {
+	//     {
 	//
-	//       "oss": {
+	//       "oss": {
 	//
-	//         "path": "oss://examplebucket/data111/",
+	//         "path": "oss://examplebucket/data111/",
 	//
-	//         "readOnly": false
+	//         "readOnly": false
 	//
-	//       },
+	//       },
 	//
-	//       "properties": {
+	//       "properties": {
 	//
-	//       "resource_type": "model"
+	//       "resource_type": "model"
 	//
-	//       },
+	//       },
 	//
-	//       "mount_path": "/data"
+	//       "mount_path": "/data"
 	//
-	//     }
+	//     }
 	//
-	//   ]
+	//   ]
 	//
 	// }
 	//
-	// Service deployment by using models and processors:
+	// model+processor deployment service:
 	//
 	// {
 	//
-	//   "metadata": {
+	//   "metadata": {
 	//
-	//     "instance": 1,
+	//     "instance": 1,
 	//
-	//     "memory": 7000,
+	//     "memory": 7000,
 	//
-	//     "cpu": 4
+	//     "cpu": 4
 	//
-	//   },
+	//   },
 	//
-	//   "name": "foo",
+	//   "name": "foo",
 	//
-	//   "model_config": {},
+	//   "model_config": {},
 	//
-	//   "processor_type": "python",
+	//   "processor_type": "python",
 	//
-	//   "processor_path": "oss://****",
+	//   "processor_path": "oss://****",
 	//
-	//   "processor_entry": "a.py",
+	//   "processor_entry": "a.py",
 	//
-	//   "model_path": "oss://****"
+	//   "model_path": "oss://****"
 	//
 	// }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`

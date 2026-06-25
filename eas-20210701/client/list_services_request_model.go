@@ -69,14 +69,26 @@ type ListServicesRequest struct {
 	// example:
 	//
 	// PUBLIC
-	Accessibility     *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	AutoscalerEnabled *bool   `json:"AutoscalerEnabled,omitempty" xml:"AutoscalerEnabled,omitempty"`
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// Specifies whether to enable Auto Scaling for the service.
+	//
+	// example:
+	//
+	// true
+	AutoscalerEnabled *bool `json:"AutoscalerEnabled,omitempty" xml:"AutoscalerEnabled,omitempty"`
+	// The UID of the account that created the service.
+	//
 	// example:
 	//
 	// 19989224166xxxxxxx
-	CallerUid         *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	CronscalerEnabled *bool   `json:"CronscalerEnabled,omitempty" xml:"CronscalerEnabled,omitempty"`
-	// The field that is used for fuzzy matches. The system performs fuzzy matches only by service name.
+	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	// Specifies whether to enable scheduled auto scaling for the service.
+	//
+	// example:
+	//
+	// true
+	CronscalerEnabled *bool `json:"CronscalerEnabled,omitempty" xml:"CronscalerEnabled,omitempty"`
+	// The keyword for a fuzzy search. This parameter supports fuzzy searches by service name only.
 	//
 	// example:
 	//
@@ -88,38 +100,43 @@ type ListServicesRequest struct {
 	//
 	// gw-1uhcqmsc7x22******
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
-	// The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
+	// The name of the service group. To learn how to obtain this name, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
 	//
 	// example:
 	//
 	// foo
-	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IncludeNoWorkspace *bool   `json:"IncludeNoWorkspace,omitempty" xml:"IncludeNoWorkspace,omitempty"`
-	// The tag that is used to filter services.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Specifies whether to include services that do not belong to any workspace. The default value is true.
+	//
+	// example:
+	//
+	// true
+	IncludeNoWorkspace *bool `json:"IncludeNoWorkspace,omitempty" xml:"IncludeNoWorkspace,omitempty"`
+	// Filters services by label.
 	Label map[string]*string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The sorting order. Valid values:
+	// The sort order. Valid values:
 	//
-	// 	- desc (default): The query results are sorted in descending order.
+	// - `desc` (default): descending.
 	//
-	// 	- asc: The query results are sorted in ascending order.
+	// - `asc`: ascending.
 	//
 	// example:
 	//
 	// asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Default value: 1.
+	// The page number of the results to return. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 100.
+	// The number of services to return per page. The default value is 100.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the primary service that corresponds to the Band member service.
+	// The UID of the primary service. This parameter applies to member services in a service group.
 	//
 	// example:
 	//
@@ -129,41 +146,49 @@ type ListServicesRequest struct {
 	//
 	// example:
 	//
-	// quota12345
-	QuotaId           *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// quota1****
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The custom name of the resource group.
+	//
+	// example:
+	//
+	// example
 	ResourceAliasName *string `json:"ResourceAliasName,omitempty" xml:"ResourceAliasName,omitempty"`
-	ResourceBurstable *bool   `json:"ResourceBurstable,omitempty" xml:"ResourceBurstable,omitempty"`
-	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Specifies whether to enable a burstable resource pool for the service.
+	//
+	// example:
+	//
+	// true
+	ResourceBurstable *bool `json:"ResourceBurstable,omitempty" xml:"ResourceBurstable,omitempty"`
+	// The ID of the resource group. To learn how to query for this ID, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
+	//
+	// example:
+	//
+	// eas-r-asdas****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// Deprecated
 	//
-	// The name or ID of the resource group to which the service belongs.
+	// The name or ID of the service\\"s resource group.
 	//
 	// example:
 	//
 	// eas-r-hd0qwy8cxxxx
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of resource the service uses. Valid values:
+	//
+	// - PublicResource
+	//
+	// - DedicatedResource
+	//
+	// - Lingjun
+	//
+	// - SelfManagedLingjun
+	//
+	// example:
+	//
+	// PublicResource
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The server role.
-	//
-	// Valid values:
-	//
-	// 	- DataLoader
-	//
-	// 	- FrontEnd
-	//
-	// 	- DataSet
-	//
-	// 	- SDProxy
-	//
-	// 	- LLMSscheduler
-	//
-	// 	- ScalableJob
-	//
-	// 	- LLMGateway
-	//
-	// 	- Job
-	//
-	// 	- Queue
+	// The service role.
 	//
 	// example:
 	//
@@ -175,153 +200,7 @@ type ListServicesRequest struct {
 	//
 	// echo_test
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The service state.
-	//
-	// Valid values:
-	//
-	// 	- Creating
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Stopped
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Failed
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Complete
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Cloning
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Stopping
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Updating
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Waiting
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- HotUpdate
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Committing
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Starting
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DeleteFailed
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Running
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Developing
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Scaling
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Deleted
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Pending
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Deleting
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The status of the service.
 	//
 	// example:
 	//
@@ -329,70 +208,57 @@ type ListServicesRequest struct {
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 	// The service type. Valid values:
 	//
-	// 	- Async
+	// - Async
 	//
-	// 	- Standard
+	// - Standard
 	//
-	// 	- Offline Task
+	// - Queue
 	//
-	// 	- Proxima
+	// - LLM
 	//
-	// Valid values:
+	// - RAG
 	//
-	// 	- Async
+	// - Serverless
 	//
-	//     <!-- -->
+	// - LLMGatewayService
 	//
-	//     <!-- -->
+	// - OfflineTask
 	//
-	//     <!-- -->
+	// - SDCluster
 	//
-	// 	- Standard
+	// - ScalableJob
 	//
-	//     <!-- -->
+	// - ScalableJobService
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- OfflineTask
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Proxima
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// - AssistantJob
 	//
 	// example:
 	//
 	// Standard
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The user ID (UID) of the service.
+	// The service UID.
 	//
 	// example:
 	//
 	// eas-m-c9iw3yitxxxx
 	ServiceUid *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
-	// The sort field. By default, the query results are sorted by the timestamp type in descending order.
+	// The sort field. By default, results are sorted by timestamp in descending order.
 	//
 	// example:
 	//
 	// CreateTime
-	Sort         *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// Specifies whether the service accepts group traffic. This parameter applies only to services within a service group.
+	//
+	// example:
+	//
+	// grouping
 	TrafficState *string `json:"TrafficState,omitempty" xml:"TrafficState,omitempty"`
 	// The workspace ID.
 	//
 	// example:
 	//
-	// 123456
+	// 1234**
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

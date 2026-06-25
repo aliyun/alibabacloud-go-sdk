@@ -16,10 +16,14 @@ type iUpdateGatewayLabelResponseBody interface {
 }
 
 type UpdateGatewayLabelResponseBody struct {
+	// The returned message.
+	//
 	// example:
 	//
 	// Succeed to update gateway gw-1uhcqmsc7x22*****	- labels.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****

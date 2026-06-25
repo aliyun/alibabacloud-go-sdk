@@ -20,20 +20,25 @@ type iDeleteServiceInstancesRequest interface {
 }
 
 type DeleteServiceInstancesRequest struct {
-	// The name of the container whose process needs to be restarted. This parameter takes effect only if the SoftRestart parameter is set to true.
+	// The name of the container in which to restart the process. This parameter is valid only when \\`SoftRestart\\` is set to \\`true\\`.
 	//
 	// example:
 	//
 	// worker0
 	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
-	// The instances that you want to restart. Separate multiple instance names with commas (,). For more information about how to query the instance name, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
+	// The instances to restart. Separate multiple instance names with a comma (,). For more information, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
 	//
 	// example:
 	//
 	// foo-rdsbxxxx,foo-rdsaxxxx
 	InstanceList *string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty"`
-	IsReplica    *bool   `json:"IsReplica,omitempty" xml:"IsReplica,omitempty"`
-	// Specifies whether to restart only the container process without recreating the instance. Default value: false. Valid values: true and false.
+	// Specifies whether the instance is a replica.
+	//
+	// example:
+	//
+	// false
+	IsReplica *bool `json:"IsReplica,omitempty" xml:"IsReplica,omitempty"`
+	// Specifies whether to restart only the container process without rebuilding the instance. The default value is false.
 	//
 	// example:
 	//

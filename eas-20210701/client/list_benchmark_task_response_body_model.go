@@ -22,13 +22,13 @@ type iListBenchmarkTaskResponseBody interface {
 }
 
 type ListBenchmarkTaskResponseBody struct {
-	// The page number.
+	// The page number of the returned list of tasks.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of tasks to return on each page.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListBenchmarkTaskResponseBody struct {
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The stress testing tasks.
+	// The list of tasks.
 	Tasks []*ListBenchmarkTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of tasks.
 	//
 	// example:
 	//
-	// 2
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -117,7 +117,7 @@ func (s *ListBenchmarkTaskResponseBody) Validate() error {
 }
 
 type ListBenchmarkTaskResponseBodyTasks struct {
-	// The number of instances that are available for stress testing.
+	// The number of available stress testing instances.
 	//
 	// example:
 	//
@@ -127,101 +127,27 @@ type ListBenchmarkTaskResponseBodyTasks struct {
 	//
 	// example:
 	//
-	// 2020-12-04T02:43:15Z
+	// 2020-02-04T02:43:15Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The returned message.
+	// A summary of the task.
 	//
 	// example:
 	//
 	// Benchmark task [benchmark-larec-test-1076] is Running
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The region ID of the stress testing task.
+	// The region where the stress testing task is located.
 	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The name of the service on which you want to perform a stress testing.
+	// The name of the service to be stress tested.
 	//
 	// example:
 	//
 	// test_quota
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The state of the stress testing task.
-	//
-	// Valid values:
-	//
-	// 	- Creating
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Starting
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DeleteFailed
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Running
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Stopping
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Error
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Updating
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Deleting
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- CreateFailed
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The status of the stress testing task.
 	//
 	// example:
 	//
@@ -239,7 +165,7 @@ type ListBenchmarkTaskResponseBodyTasks struct {
 	//
 	// benchmark-larec-test-1076
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The time when the stress testing task was updated.
+	// The time when the stress testing task was last updated.
 	//
 	// example:
 	//

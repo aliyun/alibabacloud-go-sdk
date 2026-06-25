@@ -18,7 +18,7 @@ type iDescribeMachineSpecResponseBody interface {
 }
 
 type DescribeMachineSpecResponseBody struct {
-	// The instance types when the resources are specified.
+	// A list of available instance types for deployment.
 	InstanceMetas []*DescribeMachineSpecResponseBodyInstanceMetas `json:"InstanceMetas,omitempty" xml:"InstanceMetas,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type DescribeMachineSpecResponseBody struct {
 	//
 	// 40325405-579C-4D82***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The values that can be supported when the number of CPUs and memory size are specified for deployment.
+	// The supported combinations of CPU and memory values for deployment.
 	Types []*DescribeMachineSpecResponseBodyTypes `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
@@ -88,13 +88,13 @@ func (s *DescribeMachineSpecResponseBody) Validate() error {
 }
 
 type DescribeMachineSpecResponseBodyInstanceMetas struct {
-	// The number of CPU cores in the instance type.
+	// The number of CPU cores of the instance type.
 	//
 	// example:
 	//
 	// 32
 	CPU *int32 `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	// The GPU type in the instance type. If the instance type is not a GPU-based instance type, this parameter does not exist.
+	// The GPU model of the instance type. This field is not returned for non-GPU instance types.
 	//
 	// example:
 	//
@@ -106,37 +106,37 @@ type DescribeMachineSpecResponseBodyInstanceMetas struct {
 	//
 	// 1
 	GPUAmount *int32 `json:"GPUAmount,omitempty" xml:"GPUAmount,omitempty"`
-	// The GPU memory in the instance type. Unit: GB.
+	// The GPU memory size of the instance type, in GB.
 	//
 	// example:
 	//
 	// 24
 	GPUMemory *float32 `json:"GPUMemory,omitempty" xml:"GPUMemory,omitempty"`
-	// The name of the instance type.
+	// The instance type name.
 	//
 	// example:
 	//
 	// ml.gu7i.c32m188.1-gu30
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Indicates whether the instance type is available.
+	// Indicates whether the instance type is currently available.
 	//
 	// example:
 	//
 	// true
 	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
-	// The memory size in the instance type. Unit: GB.
+	// The memory size of the instance type, in GB.
 	//
 	// example:
 	//
 	// 188
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The minimum discount that can be accepted when the preemptible instance type does not include a usage duration. 0.1 indicates one fold. If this parameter is not returned, the bidding feature is not supported.
+	// The minimum discount currently offered for a spot instance in no-protection mode. A value of 0.1 indicates a 90% discount. If this field is not returned, the instance type does not support spot instances.
 	//
 	// example:
 	//
 	// 0.1
 	NonProtectSpotDiscount *float32 `json:"NonProtectSpotDiscount,omitempty" xml:"NonProtectSpotDiscount,omitempty"`
-	// The minimum discount that can be accepted when the preemptible instance type has the 1-hour protection duration. 0.1 indicates one fold. If this parameter is not returned, the bidding feature is not supported.
+	// The current lowest discount for a spot instance with a 1-hour protection period. A value of 0.1 indicates a 90% discount. If this field is not returned, the instance type does not support spot instances.
 	//
 	// example:
 	//
@@ -144,27 +144,11 @@ type DescribeMachineSpecResponseBodyInstanceMetas struct {
 	SpotDiscount *float32 `json:"SpotDiscount,omitempty" xml:"SpotDiscount,omitempty"`
 	// The inventory status of the instance type.
 	//
-	// Valid values:
-	//
-	// 	- WithStock
-	//
-	// 	- ClosedWithStock
-	//
-	// 	- NoStock
-	//
 	// example:
 	//
 	// WithStock
 	StockStatus *string `json:"StockStatus,omitempty" xml:"StockStatus,omitempty"`
 	// The source of the instance type.
-	//
-	// Valid values:
-	//
-	// 	- ECS
-	//
-	// 	- BareMetal
-	//
-	// 	- Lingjun
 	//
 	// example:
 	//
@@ -284,13 +268,13 @@ func (s *DescribeMachineSpecResponseBodyInstanceMetas) Validate() error {
 }
 
 type DescribeMachineSpecResponseBodyTypes struct {
-	// Valid values:
+	// The valid values for the number of CPU cores.
 	//
 	// example:
 	//
 	// 1
 	CPU *int32 `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	// The optional values for memory when CPU is set to a specific value as above.
+	// The valid memory values for the specified number of CPU cores.
 	Memory []*int32 `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Repeated"`
 }
 

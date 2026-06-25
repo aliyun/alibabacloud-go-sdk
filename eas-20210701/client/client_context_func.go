@@ -333,7 +333,19 @@ func (client *Client) CreateBenchmarkTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建单个配置
+// Creates a single dynamic parameter in a specified service.
+//
+// Description:
+//
+// ## Description
+//
+// - This API creates a new dynamic parameter by sending a POST request to a specified path.
+//
+// - The dynamic parameter name (`ConfigKey`) can contain letters, digits, periods (.), underscores (_), hyphens (-), and forward slashes (/). The maximum length is 100 characters.
+//
+// - The request body must include the dynamic parameter value (`Value`).
+//
+// - If successful, the API returns the new dynamic parameter\\"s name (`Key`), value (`Value`), creation time, and update time.
 //
 // @param request - CreateConfigRequest
 //
@@ -380,7 +392,11 @@ func (client *Client) CreateConfigWithContext(ctx context.Context, ClusterId *st
 
 // Summary:
 //
-// 创建故障注入任务
+// Creates a fault injection task.
+//
+// Description:
+//
+// *Before you use this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
 //
 // @param request - CreateFaultInjectionRequest
 //
@@ -512,7 +528,11 @@ func (client *Client) CreateGatewayWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates an internal endpoint of a private gateway.
+// Creates an internal endpoint for a private gateway.
+//
+// Description:
+//
+// *Make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS) before you use this operation.**
 //
 // @param request - CreateGatewayIntranetLinkedVpcRequest
 //
@@ -628,11 +648,74 @@ func (client *Client) CreateGatewayIntranetLinkedVpcPeerWithContext(ctx context.
 
 // Summary:
 //
-// Creates a resource group.
+// Creates a service group.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).
+// *Before you use this operation, make sure that you fully understand the billing of Elastic Algorithm Service (EAS) and its [pricing](https://help.aliyun.com/document_detail/144261.html).**.
+//
+// @param request - CreateGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupResponse
+func (client *Client) CreateGroupWithContext(ctx context.Context, request *CreateGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Labels) {
+		body["Labels"] = request.Labels
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Network) {
+		body["Network"] = request.Network
+	}
+
+	if !dara.IsNil(request.WorkSpaceId) {
+		body["WorkSpaceId"] = request.WorkSpaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGroup"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/groups"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Create a new resource group.
+//
+// Description:
+//
+// *Before calling this API, make sure you understand the billing method and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
 //
 // @param request - CreateResourceRequest
 //
@@ -719,7 +802,11 @@ func (client *Client) CreateResourceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates instances in a dedicated resource group.
+// Creates machine instances in a dedicated resource group.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you understand the billing methods and&#x20;**[**pricing**](https://help.aliyun.com/document_detail/144261.html)**&#x20;of Elastic Algorithm Service (EAS).**
 //
 // @param request - CreateResourceInstancesRequest
 //
@@ -970,7 +1057,7 @@ func (client *Client) CreateServiceAutoScalerWithContext(ctx context.Context, Cl
 
 // Summary:
 //
-// Enables the Cron Horizontal Pod Autoscaler (CronHPA) feature for a service.
+// Creates a scheduled auto scaling rule for a service.
 //
 // @param request - CreateServiceCronScalerRequest
 //
@@ -1021,7 +1108,7 @@ func (client *Client) CreateServiceCronScalerWithContext(ctx context.Context, Cl
 
 // Summary:
 //
-// 创建连接服务的token
+// Call this operation to obtain a token and a WebSocket URL for logging on to a container.
 //
 // @param request - CreateServiceInstanceTokenRequest
 //
@@ -1123,23 +1210,23 @@ func (client *Client) CreateServiceMirrorWithContext(ctx context.Context, Cluste
 
 // Summary:
 //
-// 创建服务更新计划
+// Creates a service rollout.
 //
 // Description:
 //
-// ## 请求说明
+// ## Usage notes
 //
-// - **策略互斥**：`Partition`（分区发布）和`Batch`（批量发布）两种策略只能选择其中一种，不能同时使用。
+// - **Mutually exclusive strategies**: You can use either the `Partition` or the `Batch` strategy, but not both.
 //
-// - **请求速率限制**：每秒最多100次请求。
+// - **Request rate limit**: Up to 100 requests per second.
 //
-// - **授权信息**：需要具备`eas:CreateServiceRollout`权限才能调用此接口。
+// - **Authorization**: This operation requires the `eas:CreateServiceRollout` permission.
 //
-// - **资源ARN**：`acs:eas:{#regionId}:{#accountId}:service/{#ServiceName}`。
+// - **ARN**: `acs:eas:{#regionId}:{#accountId}:service/{#ServiceName}`.
 //
-// - **暂停发布**：通过设置`Paused`参数为`true`可以暂停发布流程，之后可通过`UpdateServiceRollout`接口恢复或取消发布。
+// - **Pause a rollout**: To pause the service rollout, set the `Paused` parameter to `true`. You can then resume or cancel the rollout by calling the `UpdateServiceRollout` operation.
 //
-// - **监控与回滚**：在发布过程中建议持续监控服务指标，以便及时发现并处理问题；如需回滚，可以通过调整`Partition`值或删除发布策略来实现。
+// - **Monitoring and rollback**: Monitor service metrics during the service rollout to promptly identify and resolve issues. To perform a rollback, you can adjust the `Partition` value or delete the rollout strategy.
 //
 // @param request - CreateServiceRolloutRequest
 //
@@ -1347,7 +1434,13 @@ func (client *Client) DeleteBenchmarkTaskWithContext(ctx context.Context, Cluste
 
 // Summary:
 //
-// 删除单个配置项
+// Deletes a single dynamic parameter for a specified service.
+//
+// Description:
+//
+// ## Request
+//
+// This API deletes a specific configuration by its region ID, configuration type, service name, and configuration key. Ensure all parameter values are accurate to avoid accidentally deleting critical configurations.
 //
 // @param request - DeleteConfigRequest
 //
@@ -1388,7 +1481,11 @@ func (client *Client) DeleteConfigWithContext(ctx context.Context, ClusterId *st
 
 // Summary:
 //
-// 删除故障注入任务
+// Deletes a fault injection task.
+//
+// Description:
+//
+// *Before you use this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
 //
 // @param request - DeleteFaultInjectionRequest
 //
@@ -1578,7 +1675,11 @@ func (client *Client) DeleteGatewayIntranetLinkedVpcPeerWithContext(ctx context.
 
 // Summary:
 //
-// 删除网关标签
+// Deletes gateway labels.
+//
+// Description:
+//
+// *Before you call this operation, ensure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) for Elastic Algorithm Service (EAS).**
 //
 // @param tmpReq - DeleteGatewayLabelRequest
 //
@@ -1621,6 +1722,53 @@ func (client *Client) DeleteGatewayLabelWithContext(ctx context.Context, Cluster
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteGatewayLabelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a service group.
+//
+// @param request - DeleteGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGroupResponse
+func (client *Client) DeleteGroupWithContext(ctx context.Context, ClusterId *string, GroupName *string, request *DeleteGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CascadeDelete) {
+		query["CascadeDelete"] = request.CascadeDelete
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteGroup"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/groups/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(GroupName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteGroupResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1713,7 +1861,7 @@ func (client *Client) DeleteResourceDLinkWithContext(ctx context.Context, Cluste
 
 // Summary:
 //
-// Deletes the tags of an instance in a resource group.
+// Deletes instance tags from a resource group.
 //
 // @param tmpReq - DeleteResourceInstanceLabelRequest
 //
@@ -2001,7 +2149,11 @@ func (client *Client) DeleteServiceCronScalerWithContext(ctx context.Context, Cl
 
 // Summary:
 //
-// Restarts the instances of a service.
+// Restarts specified instances of a service.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you understand the billing methods and&#x20;**[**pricing**](https://help.aliyun.com/document_detail/144261.html)**&#x20;of Elastic Algorithm Service (EAS).**
 //
 // @param request - DeleteServiceInstancesRequest
 //
@@ -2060,7 +2212,7 @@ func (client *Client) DeleteServiceInstancesWithContext(ctx context.Context, Clu
 
 // Summary:
 //
-// Deletes existing service tags.
+// Deletes a service label.
 //
 // @param tmpReq - DeleteServiceLabelRequest
 //
@@ -2162,7 +2314,7 @@ func (client *Client) DeleteServiceMirrorWithContext(ctx context.Context, Cluste
 
 // Summary:
 //
-// 删除服务更新计划
+// Deletes a service rollout.
 //
 // Description:
 //
@@ -2473,7 +2625,7 @@ func (client *Client) DescribeGroupEndpointsWithContext(ctx context.Context, Clu
 
 // Summary:
 //
-// Queries a list of instance types for an available instance in a shared resource group.
+// Returns a list of available machine specifications.
 //
 // @param tmpReq - DescribeMachineSpecRequest
 //
@@ -2567,7 +2719,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, headers ma
 
 // Summary:
 //
-// Queries the information about a resource group.
+// Retrieves the details of a resource group.
 //
 // @param request - DescribeResourceRequest
 //
@@ -2854,7 +3006,7 @@ func (client *Client) DescribeServiceDiagnosisWithContext(ctx context.Context, C
 
 // Summary:
 //
-// Obtains a list of service endpoints.
+// Retrieves a list of service endpoints.
 //
 // @param request - DescribeServiceEndpointsRequest
 //
@@ -2895,7 +3047,7 @@ func (client *Client) DescribeServiceEndpointsWithContext(ctx context.Context, C
 
 // Summary:
 //
-// Queries information about recent service deployment events.
+// Queries recent deployment events for a specified service.
 //
 // @param request - DescribeServiceEventRequest
 //
@@ -3123,7 +3275,7 @@ func (client *Client) DescribeServiceMirrorWithContext(ctx context.Context, Clus
 
 // Summary:
 //
-// 查看服务更新计划
+// Retrieves the details of a service rollout.
 //
 // Description:
 //
@@ -3286,7 +3438,7 @@ func (client *Client) DescribeSpotDiscountHistoryWithContext(ctx context.Context
 
 // Summary:
 //
-// Views the details of a virtual resource group.
+// Queries the details of a virtual resource group.
 //
 // @param request - DescribeVirtualResourceRequest
 //
@@ -3474,7 +3626,7 @@ func (client *Client) ListAclPolicyWithContext(ctx context.Context, ClusterId *s
 
 // Summary:
 //
-// Queries a list of stress testing tasks that are created by the current user.
+// Lists all deployed stress testing tasks.
 //
 // @param request - ListBenchmarkTaskRequest
 //
@@ -3553,7 +3705,21 @@ func (client *Client) ListBenchmarkTaskWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询服务的所有配置项（支持分页）
+// Retrieves a list of dynamic parameters for a specified service.
+//
+// Description:
+//
+// ## Description
+//
+// - `ClusterId` specifies the service\\"s region.
+//
+// - `ConfigType` specifies the configuration type. Only `service` is supported.
+//
+// - `Name` specifies the service name.
+//
+// - Use the `Page` and `PageSize` parameters to paginate the results.
+//
+// - The response contains the details of the dynamic parameters and pagination information.
 //
 // @param request - ListConfigsRequest
 //
@@ -3604,7 +3770,7 @@ func (client *Client) ListConfigsWithContext(ctx context.Context, ClusterId *str
 
 // Summary:
 //
-// Queries a list of private gateways.
+// Lists private gateways.
 //
 // @param tmpReq - ListGatewayRequest
 //
@@ -3701,7 +3867,7 @@ func (client *Client) ListGatewayWithContext(ctx context.Context, tmpReq *ListGa
 
 // Summary:
 //
-// Queries a list of custom domain names of a private gateway.
+// Lists the custom domain names for a private gateway.
 //
 // @param request - ListGatewayDomainsRequest
 //
@@ -3742,7 +3908,11 @@ func (client *Client) ListGatewayDomainsWithContext(ctx context.Context, Cluster
 
 // Summary:
 //
-// Queries a list of the internal endpoints of a private gateway.
+// Lists the internal access endpoints of a private gateway.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
 //
 // @param request - ListGatewayIntranetLinkedVpcRequest
 //
@@ -3783,7 +3953,7 @@ func (client *Client) ListGatewayIntranetLinkedVpcWithContext(ctx context.Contex
 
 // Summary:
 //
-// Obtains a list of all VPC peering connections on internal endpoint of a gateway.
+// Lists the VPC peering connections for a gateway\\"s private network endpoint.
 //
 // @param request - ListGatewayIntranetLinkedVpcPeerRequest
 //
@@ -3871,25 +4041,35 @@ func (client *Client) ListGatewayIntranetSupportedZoneWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries created service groups.
+// Lists created service groups.
 //
-// @param request - ListGroupsRequest
+// @param tmpReq - ListGroupsRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListGroupsResponse
-func (client *Client) ListGroupsWithContext(ctx context.Context, request *ListGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
+func (client *Client) ListGroupsWithContext(ctx context.Context, tmpReq *ListGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListGroupsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Labels) {
+		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, dara.String("Labels"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Filter) {
 		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.LabelsShrink) {
+		query["Labels"] = request.LabelsShrink
 	}
 
 	if !dara.IsNil(request.Order) {
@@ -3942,7 +4122,7 @@ func (client *Client) ListGroupsWithContext(ctx context.Context, request *ListGr
 
 // Summary:
 //
-// Queries a list of workers in a resource group.
+// Lists the service workers of a resource instance.
 //
 // @param request - ListResourceInstanceWorkerRequest
 //
@@ -4017,7 +4197,7 @@ func (client *Client) ListResourceInstanceWorkerWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries a list of instances in a dedicated resource group.
+// Lists the instances in a specified dedicated resource group.
 //
 // @param tmpReq - ListResourceInstancesRequest
 //
@@ -4167,7 +4347,7 @@ func (client *Client) ListResourceServicesWithContext(ctx context.Context, Clust
 
 // Summary:
 //
-// Queries a list of dedicated resource groups for the current user.
+// Lists the resource groups for the current user.
 //
 // @param request - ListResourcesRequest
 //
@@ -4287,7 +4467,11 @@ func (client *Client) ListServiceContainersWithContext(ctx context.Context, Clus
 
 // Summary:
 //
-// 获取故障注入信息
+// Retrieves fault injection information.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
 //
 // @param request - ListServiceInstanceFaultInjectionInfoRequest
 //
@@ -4328,7 +4512,11 @@ func (client *Client) ListServiceInstanceFaultInjectionInfoWithContext(ctx conte
 
 // Summary:
 //
-// Queries instances of a service.
+// Lists the instances of a specified service.
+//
+// Description:
+//
+// *Ensure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS) before you call this operation.**
 //
 // @param request - ListServiceInstancesRequest
 //
@@ -4684,7 +4872,7 @@ func (client *Client) ListTenantAddonsWithContext(ctx context.Context, headers m
 
 // Summary:
 //
-// Queries a list of virtual resource groups for the current user.
+// Queries the virtual resource groups for the current user.
 //
 // @param request - ListVirtualResourceRequest
 //
@@ -4751,7 +4939,7 @@ func (client *Client) ListVirtualResourceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Migrates resource group instances.
+// Migrates instances to a specified resource group.
 //
 // @param request - MigrateResourceInstanceRequest
 //
@@ -4939,7 +5127,7 @@ func (client *Client) RestartServiceWithContext(ctx context.Context, ClusterId *
 
 // Summary:
 //
-// 伸缩服务
+// Scales a service.
 //
 // @param request - ScaleServiceRequest
 //
@@ -5269,7 +5457,13 @@ func (client *Client) UpdateBenchmarkTaskWithContext(ctx context.Context, Cluste
 
 // Summary:
 //
-// 更新单个配置项
+// Updates a dynamic parameter for a specific cluster and service.
+//
+// Description:
+//
+// ## Request
+//
+// Use this API to update a dynamic parameter by providing its `ClusterId`, `ConfigType`, `Name`, and `ConfigKey`. The request body must contain the new parameter value in the `Value` field. Ensure you provide the correct path parameters to avoid errors.
 //
 // @param request - UpdateConfigRequest
 //
@@ -5316,7 +5510,7 @@ func (client *Client) UpdateConfigWithContext(ctx context.Context, ClusterId *st
 
 // Summary:
 //
-// Update a private gateway.
+// Updates a private gateway.
 //
 // @param request - UpdateGatewayRequest
 //
@@ -5395,7 +5589,11 @@ func (client *Client) UpdateGatewayWithContext(ctx context.Context, GatewayId *s
 
 // Summary:
 //
-// 修改网关标签
+// Adds a gateway label or updates an existing one.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
 //
 // @param request - UpdateGatewayLabelRequest
 //
@@ -5442,7 +5640,7 @@ func (client *Client) UpdateGatewayLabelWithContext(ctx context.Context, Cluster
 
 // Summary:
 //
-// Updates the specific fields of a service group.
+// Updates specific fields of a service group.
 //
 // @param request - UpdateGroupRequest
 //
@@ -5459,6 +5657,14 @@ func (client *Client) UpdateGroupWithContext(ctx context.Context, ClusterId *str
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Labels) {
+		body["Labels"] = request.Labels
+	}
+
+	if !dara.IsNil(request.Network) {
+		body["Network"] = request.Network
+	}
+
 	if !dara.IsNil(request.TrafficMode) {
 		body["TrafficMode"] = request.TrafficMode
 	}
@@ -5599,7 +5805,7 @@ func (client *Client) UpdateResourceDLinkWithContext(ctx context.Context, Cluste
 
 // Summary:
 //
-// Updates the service scheduling status of an instance in a dedicated resource group.
+// Updates the scheduling status of an instance in a dedicated resource group.
 //
 // @param request - UpdateResourceInstanceRequest
 //
@@ -5828,7 +6034,7 @@ func (client *Client) UpdateServiceAutoScalerWithContext(ctx context.Context, Cl
 
 // Summary:
 //
-// Updates the Cron Horizontal Pod Autoscaler (CronHPA) settings of a service.
+// Updates the scheduled auto scaling configuration for a service.
 //
 // @param request - UpdateServiceCronScalerRequest
 //
@@ -5879,7 +6085,11 @@ func (client *Client) UpdateServiceCronScalerWithContext(ctx context.Context, Cl
 
 // Summary:
 //
-// Updates attributes of service instances. Only isolation can be performed for service instances.
+// Updates the properties of a service instance. This operation applies only to fencing service instances.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
 //
 // @param request - UpdateServiceInstanceRequest
 //
@@ -6038,21 +6248,21 @@ func (client *Client) UpdateServiceMirrorWithContext(ctx context.Context, Cluste
 
 // Summary:
 //
-// 更新服务发布计划
+// Updates a service rollout.
 //
 // Description:
 //
-// ## 请求说明
+// ## Usage notes
 //
-// - **至少提供一个参数**：必须在请求中指定`Partition`、`Batch`或`Paused`中的至少一个参数。
+// - **Provide at least one parameter**: Specify at least one of the `Partition`, `Batch`, or `Paused` parameters.
 //
-// - **互斥策略**：不能同时提供`Partition`和`Batch`配置。
+// - **Mutually exclusive strategies**: You cannot specify both the `Partition` and `Batch` parameters in the same request.
 //
-// - **实时生效**：更新将立即生效，影响正在进行的服务发布过程。
+// - **Immediate effect**: Updates take effect immediately and affect ongoing service rollouts.
 //
-// - **回退操作**：通过增加`Partition`值可以实现版本回退，但不会自动触发，需要手动更新服务镜像。
+// - **Rollback**: You can perform a rollback by increasing the `Partition` value. However, this is not an automatic process, and you must manually update the service image.
 //
-// - **暂停不影响参数**：暂停发布不会改变已设置的`Partition`或`Batch`参数，仅暂停执行当前策略。
+// - **Pause does not affect parameters**: Pausing a rollout does not change the configured `Partition` or `Batch` parameters. It only suspends the current rollout strategy.
 //
 // @param request - UpdateServiceRolloutRequest
 //

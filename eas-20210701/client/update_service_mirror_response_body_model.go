@@ -20,7 +20,7 @@ type UpdateServiceMirrorResponseBody struct {
 	//
 	// example:
 	//
-	// Traffic mirroring is updating for service [foo] in region [cn-shanghia], ratio [70%]
+	// Traffic mirroring is updating for service [foo] in region [cn-shanghai], ratio [70%]
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

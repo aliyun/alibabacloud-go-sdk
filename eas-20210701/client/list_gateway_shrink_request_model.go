@@ -36,43 +36,74 @@ type iListGatewayShrinkRequest interface {
 }
 
 type ListGatewayShrinkRequest struct {
+	// The billing method.
+	//
+	// example:
+	//
+	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The private gateway ID. To obtain the private gateway ID, see the private_gateway_id parameter in the response parameters of the ListResources operation.
+	// The ID of the private gateway. You can obtain the ID from the private_gateway_id field in the response of the ListResources operation.
 	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The private gateway alias.
+	// The alias of the private gateway.
 	//
 	// example:
 	//
 	// mygateway1
-	GatewayName     *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
-	GatewayType     *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	InternetEnabled *bool   `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
-	LabelShrink     *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Order           *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Default value: 1.
+	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	// The type of the gateway.
+	//
+	// example:
+	//
+	// Application
+	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// Specifies whether to enable access over the public network.
+	//
+	// example:
+	//
+	// true
+	InternetEnabled *bool `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
+	// Filter by tag.
+	LabelShrink *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The sort order.
+	//
+	// example:
+	//
+	// asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number of the gateway list to return. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 100.
+	// The number of gateways to return on each page. The default value is 100.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group. To obtain a resource group ID, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
+	// The ID of the resource group. You can obtain the ID from the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
 	//
 	// example:
 	//
 	// eas-r-4gt8twzwllfo******
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	Sort         *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The field to sort by.
+	//
+	// example:
+	//
+	// CreateTime
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The status of the gateway.
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListGatewayShrinkRequest) String() string {

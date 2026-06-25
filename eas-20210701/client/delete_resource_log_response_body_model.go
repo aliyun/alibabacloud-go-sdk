@@ -20,7 +20,7 @@ type DeleteResourceLogResponseBody struct {
 	//
 	// example:
 	//
-	// Log service for resource [eas-r-asdasdasd] is deleting
+	// Log service for resource [eas-r-asdas****] is deleting
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

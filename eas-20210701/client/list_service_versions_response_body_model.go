@@ -125,11 +125,11 @@ type ListServiceVersionsResponseBodyVersions struct {
 	BuildTime *string `json:"BuildTime,omitempty" xml:"BuildTime,omitempty"`
 	// Indicates whether the image is available. Valid values:
 	//
-	// 	- true: The image is available.
+	// - true: The image is available.
 	//
-	// 	- false: The image is unavailable.
+	// - false: The image is unavailable.
 	//
-	// 	- unknown: The availability of the image is unknown.
+	// - unknown: The availability of the image is unknown.
 	//
 	// example:
 	//
@@ -169,11 +169,11 @@ type ListServiceVersionsResponseBodyVersions struct {
 	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
 	// Indicates whether Elastic Algorithm service (EAS) is activated. Valid values:
 	//
-	// 	- true: EAS is activated.
+	// - true: EAS is activated.
 	//
-	// 	- false: EAS is not activated.
+	// - false: EAS is not activated.
 	//
-	// 	- unknown: The activation of EAS is unknown.
+	// - unknown: The activation of EAS is unknown.
 	//
 	// example:
 	//

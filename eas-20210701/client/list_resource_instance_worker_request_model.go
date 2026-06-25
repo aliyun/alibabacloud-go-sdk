@@ -28,24 +28,53 @@ type iListResourceInstanceWorkerRequest interface {
 }
 
 type ListResourceInstanceWorkerRequest struct {
+	// The sort order.
+	//
+	// - Asc: ascending order.
+	//
+	// - Desc: descending order.
+	//
+	// example:
+	//
+	// Desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value starts from 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 100.
+	// The number of entries to return on each page. The default value is 100.
 	//
 	// example:
 	//
 	// 20
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Ready       *bool   `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether the health check passed.
+	//
+	// example:
+	//
+	// true
+	Ready *bool `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// echo
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The worker name.
+	// The field to sort by.
+	//
+	// example:
+	//
+	// CreateTime
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The status of the worker instance.
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the worker instance.
 	//
 	// example:
 	//

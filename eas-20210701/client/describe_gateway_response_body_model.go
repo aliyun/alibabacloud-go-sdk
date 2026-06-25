@@ -48,8 +48,13 @@ type iDescribeGatewayResponseBody interface {
 }
 
 type DescribeGatewayResponseBody struct {
+	// The billing method.
+	//
+	// example:
+	//
+	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the private gateway was created. The time is displayed in UTC.
+	// The time when the private gateway was created. The time is in Coordinated Universal Time (UTC).
 	//
 	// example:
 	//
@@ -73,67 +78,45 @@ type DescribeGatewayResponseBody struct {
 	//
 	// mygateway1
 	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
-	// The instance type used by the private gateway.
-	//
-	// Valid values:
-	//
-	// 	- 8c16g
-	//
-	// 	- 4c8g
-	//
-	// 	- 2c4g
-	//
-	// 	- 16c32g
+	// The instance type of the private gateway.
 	//
 	// example:
 	//
-	// ecs.c6.4xlarge
+	// 2c4g
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The public endpoint.
 	//
 	// example:
 	//
-	// gw-1uhcqmsc7x22******-1801786532******.cn-hangzhou.pai-eas.aliyuncs.com
+	// gw-1uhcqmsc7x22******-1801786532******.cn-wulanchabu.pai-eas.aliyuncs.com
 	InternetDomain *string `json:"InternetDomain,omitempty" xml:"InternetDomain,omitempty"`
-	// Indicates whether Internet access is enabled.
+	// Indicates whether public network access is enabled.
 	//
 	// example:
 	//
 	// true
 	InternetEnabled *bool `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
-	// Indicates whether Internet access is enabled.
-	//
-	// Valid values:
-	//
-	// 	- Creating: Internet access is being enabled.
-	//
-	// 	- Failed: Internet access failed to be enabled or deleted.
-	//
-	// 	- Running: Internet access is running.
-	//
-	// 	- Deleted: Internet access is deleted.
-	//
-	// 	- Deleting: Internet access is being deleted.
+	// The status of public network access.
 	//
 	// example:
 	//
 	// Running
 	InternetStatus *string `json:"InternetStatus,omitempty" xml:"InternetStatus,omitempty"`
-	// The internal endpoint.
+	// The private endpoint.
 	//
 	// example:
 	//
-	// gw-1uhcqmsc7x22******-1801786532******-vpc.cn-hangzhou.pai-eas.aliyuncs.com
+	// gw-1uhcqmsc7x22******-1801786532******-vpc.cn-wulanchabu.pai-eas.aliyuncs.com
 	IntranetDomain  *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
 	IntranetEnabled *bool   `json:"IntranetEnabled,omitempty" xml:"IntranetEnabled,omitempty"`
-	// Indicates whether it is the default private gateway.
+	// Indicates whether the gateway is the default private gateway.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool                                `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	Labels    []*DescribeGatewayResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The number of nodes in the private gateway.
+	// The number of private gateway nodes.
 	//
 	// example:
 	//
@@ -145,7 +128,7 @@ type DescribeGatewayResponseBody struct {
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the HTTP to HTTPS redirection is enabled.
+	// Indicates whether HTTP to HTTPS redirection is enabled.
 	//
 	// example:
 	//
@@ -153,27 +136,11 @@ type DescribeGatewayResponseBody struct {
 	SSLRedirectionEnabled *bool `json:"SSLRedirectionEnabled,omitempty" xml:"SSLRedirectionEnabled,omitempty"`
 	// The status of the private gateway.
 	//
-	// Valid values:
-	//
-	// 	- Creating
-	//
-	// 	- Stopped
-	//
-	// 	- Failed
-	//
-	// 	- Running
-	//
-	// 	- Deleted
-	//
-	// 	- Deleting
-	//
-	// 	- Waiting
-	//
 	// example:
 	//
-	// PrivateGatewayRunning
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the private gateway was updated. The time is displayed in UTC.
+	// The time when the private gateway was last updated. The time is in UTC.
 	//
 	// example:
 	//

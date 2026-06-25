@@ -34,25 +34,25 @@ type iContainerInfo interface {
 }
 
 type ContainerInfo struct {
-	// The reason why the container is in the current state.
+	// The reason for the current status.
 	//
 	// example:
 	//
 	// PodInitializing
 	CurrentReaon *string `json:"CurrentReaon,omitempty" xml:"CurrentReaon,omitempty"`
-	// The current state of the container. Valid values:
+	// The current status. Valid values:
 	//
-	// 	- Waiting
+	// - Waiting: waiting
 	//
-	// 	- Running
+	// - Running: running
 	//
-	// 	- Terminated
+	// - Terminated: terminated.
 	//
 	// example:
 	//
 	// Waiting
 	CurrentStatus *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
-	// The time when the container entered the current state.
+	// The time when the current status occurred.
 	//
 	// example:
 	//
@@ -64,25 +64,25 @@ type ContainerInfo struct {
 	//
 	// registry.cn-shanghai.aliyuncs.com/eas/echo_cn-shanghai:v0.0.1-20210129111320
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The reason why the container is in the last state.
+	// The reason for the previous status.
 	//
 	// example:
 	//
 	// Error
 	LastReason *string `json:"LastReason,omitempty" xml:"LastReason,omitempty"`
-	// The last state of the container. Valid values:
+	// The previous status. Valid values:
 	//
-	// 	- Waiting
+	// - Waiting: waiting
 	//
-	// 	- Running
+	// - Running: running
 	//
-	// 	- Terminated
+	// - Terminated: terminated.
 	//
 	// example:
 	//
 	// Terminated
 	LastStatus *string `json:"LastStatus,omitempty" xml:"LastStatus,omitempty"`
-	// The time when the container entered the last state.
+	// The time when the previous status occurred.
 	//
 	// example:
 	//
@@ -94,37 +94,19 @@ type ContainerInfo struct {
 	//
 	// worker0
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The port number.
+	// The port.
 	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Indicates whether the container passed the health check.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Indicates whether the health check is passed.
 	//
 	// example:
 	//
 	// true
 	Ready *bool `json:"Ready,omitempty" xml:"Ready,omitempty"`
-	// The number of times the container restarted.
+	// The number of restarts.
 	//
 	// example:
 	//

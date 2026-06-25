@@ -20,7 +20,7 @@ type CreateResourceLogResponseBody struct {
 	//
 	// example:
 	//
-	// Resource [eas-r-asdasdasd] is deleted.
+	// Resource [eas-r-asdasdasd****] is deleted.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

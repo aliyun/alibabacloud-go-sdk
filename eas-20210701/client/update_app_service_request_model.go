@@ -36,7 +36,7 @@ type UpdateAppServiceRequest struct {
 	//
 	// example:
 	//
-	// 123456
+	// 1234**
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// The application type.
 	//

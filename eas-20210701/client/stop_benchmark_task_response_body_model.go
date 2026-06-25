@@ -20,7 +20,7 @@ type StopBenchmarkTaskResponseBody struct {
 	//
 	// example:
 	//
-	// Benchmark task [benchmark-larec-test-1076] is Stopping
+	// Benchmark task [benchmark-larec-test-dbe5] is Stopping
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

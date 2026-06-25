@@ -20,23 +20,23 @@ type iCreateGatewayResponseBody interface {
 }
 
 type CreateGatewayResponseBody struct {
-	// The region ID of the private gateway.
+	// The region where the private gateway resides.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-wulanchabu
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The private gateway ID.
+	// The ID of the private gateway.
 	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
-	// Successfully create gateway.
+	// Successfully create gateway for user-managed resource
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

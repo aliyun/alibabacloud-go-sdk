@@ -62,69 +62,105 @@ type iResource interface {
 }
 
 type Resource struct {
-	// The information about the clusters.
+	// The ID of the cluster where the resource group is located.
 	//
 	// example:
 	//
 	// cn-shanghai
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The total number of CPU cores.
+	// The total number of CPU cores in the resource group.
 	//
 	// example:
 	//
 	// 64
 	CpuCount *int32 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
-	CpuUsed  *int32 `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
-	// The time when the instance was created.
+	// The number of used CPU cores in the resource group.
+	//
+	// example:
+	//
+	// 8
+	CpuUsed *int32 `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
+	// The time the resource group was created, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2019-02-26T17:52:49Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The additional information.
+	// Additional information.
 	//
 	// example:
 	//
 	// {}
 	ExtraData map[string]interface{} `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	Features  []*string              `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	// The total number of GPUs.
+	// The features supported by the resource group.
+	Features []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// The total number of GPUs in the resource group.
 	//
 	// example:
 	//
 	// 1
-	GpuCount *int32   `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
-	GpuUsed  *float32 `json:"GpuUsed,omitempty" xml:"GpuUsed,omitempty"`
-	// The total number of instances. It is equal to the number of subscription instances plus the number of pay-as-you-go instances.
+	GpuCount *int32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	// The number of used GPUs in the resource group.
+	//
+	// example:
+	//
+	// 1
+	GpuUsed *float32 `json:"GpuUsed,omitempty" xml:"GpuUsed,omitempty"`
+	// The total number of instances (prepaid and postpaid) in the resource group.
 	//
 	// example:
 	//
 	// 4
-	InstanceCount                *int32   `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	InstanceMaxAllocatableCPU    *int32   `json:"InstanceMaxAllocatableCPU,omitempty" xml:"InstanceMaxAllocatableCPU,omitempty"`
-	InstanceMaxAllocatableGPU    *float32 `json:"InstanceMaxAllocatableGPU,omitempty" xml:"InstanceMaxAllocatableGPU,omitempty"`
-	InstanceMaxAllocatableMemory *int32   `json:"InstanceMaxAllocatableMemory,omitempty" xml:"InstanceMaxAllocatableMemory,omitempty"`
-	Memory                       *int32   `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	MemoryUsed                   *int32   `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
-	// The latest message about the resource group.
+	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The maximum number of allocatable CPU cores per node.
+	//
+	// example:
+	//
+	// 16
+	InstanceMaxAllocatableCPU *int32 `json:"InstanceMaxAllocatableCPU,omitempty" xml:"InstanceMaxAllocatableCPU,omitempty"`
+	// The maximum number of allocatable GPUs per node.
+	//
+	// example:
+	//
+	// 2
+	InstanceMaxAllocatableGPU *float32 `json:"InstanceMaxAllocatableGPU,omitempty" xml:"InstanceMaxAllocatableGPU,omitempty"`
+	// The maximum allocatable memory per node in the resource group.
+	//
+	// example:
+	//
+	// 2048
+	InstanceMaxAllocatableMemory *int32 `json:"InstanceMaxAllocatableMemory,omitempty" xml:"InstanceMaxAllocatableMemory,omitempty"`
+	// The total memory of the resource group, in MB.
+	//
+	// example:
+	//
+	// 8192
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The amount of used memory in the resource group, in MB.
+	//
+	// example:
+	//
+	// 2048
+	MemoryUsed *int32 `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
+	// The latest status message for the resource group.
 	//
 	// example:
 	//
 	// Resource is ready
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of pay-as-you-go instances.
+	// The number of postpaid instances.
 	//
 	// example:
 	//
 	// 2
 	PostPaidInstanceCount *int32 `json:"PostPaidInstanceCount,omitempty" xml:"PostPaidInstanceCount,omitempty"`
-	// The number of subscription instances.
+	// The number of prepaid instances.
 	//
 	// example:
 	//
 	// 2
 	PrePaidInstanceCount *int32 `json:"PrePaidInstanceCount,omitempty" xml:"PrePaidInstanceCount,omitempty"`
-	// The resource group ID.
+	// The unique identifier of the resource group.
 	//
 	// example:
 	//
@@ -138,35 +174,39 @@ type Resource struct {
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The type of the resource group. Valid values:
 	//
-	// 	- Dedicated: the dedicated resource group.
+	// - `Dedicated`: A dedicated resource group.
 	//
-	// 	- SelfManaged: the self-managed resource group.
+	// - `SelfManaged`: A self-managed resource group.
 	//
 	// example:
 	//
 	// Dedicated
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ServiceCount *int32  `json:"ServiceCount,omitempty" xml:"ServiceCount,omitempty"`
+	// The number of services deployed in the resource group.
+	//
+	// example:
+	//
+	// 1
+	ServiceCount *int32 `json:"ServiceCount,omitempty" xml:"ServiceCount,omitempty"`
 	// The status of the resource group.
 	//
 	// example:
 	//
-	// ResouceReady
+	// ResourceReady
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the instance was last updated.
+	// The time the resource group was last updated, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2019-02-26T19:52:49Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UsageMode  *string `json:"UsageMode,omitempty" xml:"UsageMode,omitempty"`
-	// The vendor of the resource group instances.
+	// The usage mode of the resource group.
 	//
-	// Valid values:
+	// example:
 	//
-	// 	- ECS
-	//
-	// 	- BareMetal
+	// inference
+	UsageMode *string `json:"UsageMode,omitempty" xml:"UsageMode,omitempty"`
+	// The provider of the compute instances in the resource group, such as ECS.
 	//
 	// example:
 	//

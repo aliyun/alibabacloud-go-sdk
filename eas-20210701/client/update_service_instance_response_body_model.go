@@ -16,11 +16,11 @@ type iUpdateServiceInstanceResponseBody interface {
 }
 
 type UpdateServiceInstanceResponseBody struct {
-	// The returned message.
+	// A message that indicates a successful operation.
 	//
 	// example:
 	//
-	// Success
+	// instance xxxx isolation updated to true。
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
