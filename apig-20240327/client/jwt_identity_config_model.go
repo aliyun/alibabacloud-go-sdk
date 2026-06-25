@@ -9,12 +9,16 @@ type iJwtIdentityConfig interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClaimsToHeadersConfigs(v []*JwtIdentityConfigClaimsToHeadersConfigs) *JwtIdentityConfig
+	GetClaimsToHeadersConfigs() []*JwtIdentityConfigClaimsToHeadersConfigs
 	SetJwks(v string) *JwtIdentityConfig
 	GetJwks() *string
 	SetJwtPayloadConfig(v *JwtIdentityConfigJwtPayloadConfig) *JwtIdentityConfig
 	GetJwtPayloadConfig() *JwtIdentityConfigJwtPayloadConfig
 	SetJwtTokenConfig(v *JwtIdentityConfigJwtTokenConfig) *JwtIdentityConfig
 	GetJwtTokenConfig() *JwtIdentityConfigJwtTokenConfig
+	SetRemoteJwks(v string) *JwtIdentityConfig
+	GetRemoteJwks() *string
 	SetSecretType(v string) *JwtIdentityConfig
 	GetSecretType() *string
 	SetType(v string) *JwtIdentityConfig
@@ -22,6 +26,8 @@ type iJwtIdentityConfig interface {
 }
 
 type JwtIdentityConfig struct {
+	// The claims-to-headers configurations.
+	ClaimsToHeadersConfigs []*JwtIdentityConfigClaimsToHeadersConfigs `json:"claimsToHeadersConfigs,omitempty" xml:"claimsToHeadersConfigs,omitempty" type:"Repeated"`
 	// The JWKS configuration.
 	//
 	// example:
@@ -32,19 +38,15 @@ type JwtIdentityConfig struct {
 	JwtPayloadConfig *JwtIdentityConfigJwtPayloadConfig `json:"jwtPayloadConfig,omitempty" xml:"jwtPayloadConfig,omitempty" type:"Struct"`
 	// The JWT token configuration.
 	JwtTokenConfig *JwtIdentityConfigJwtTokenConfig `json:"jwtTokenConfig,omitempty" xml:"jwtTokenConfig,omitempty" type:"Struct"`
-	// The type of the secret used.
-	//
-	// Valid values:
-	//
-	// 	- Asymmetry: asymmetric encryption.
-	//
-	// 	- Symmetry: symmetric encryption.
+	// The remote JWKS.
+	RemoteJwks *string `json:"remoteJwks,omitempty" xml:"remoteJwks,omitempty"`
+	// The secret type.
 	//
 	// example:
 	//
 	// Symmetry
 	SecretType *string `json:"secretType,omitempty" xml:"secretType,omitempty"`
-	// The authentication configuration type.
+	// The type of authentication configuration.
 	//
 	// example:
 	//
@@ -60,6 +62,10 @@ func (s JwtIdentityConfig) GoString() string {
 	return s.String()
 }
 
+func (s *JwtIdentityConfig) GetClaimsToHeadersConfigs() []*JwtIdentityConfigClaimsToHeadersConfigs {
+	return s.ClaimsToHeadersConfigs
+}
+
 func (s *JwtIdentityConfig) GetJwks() *string {
 	return s.Jwks
 }
@@ -72,12 +78,21 @@ func (s *JwtIdentityConfig) GetJwtTokenConfig() *JwtIdentityConfigJwtTokenConfig
 	return s.JwtTokenConfig
 }
 
+func (s *JwtIdentityConfig) GetRemoteJwks() *string {
+	return s.RemoteJwks
+}
+
 func (s *JwtIdentityConfig) GetSecretType() *string {
 	return s.SecretType
 }
 
 func (s *JwtIdentityConfig) GetType() *string {
 	return s.Type
+}
+
+func (s *JwtIdentityConfig) SetClaimsToHeadersConfigs(v []*JwtIdentityConfigClaimsToHeadersConfigs) *JwtIdentityConfig {
+	s.ClaimsToHeadersConfigs = v
+	return s
 }
 
 func (s *JwtIdentityConfig) SetJwks(v string) *JwtIdentityConfig {
@@ -95,6 +110,11 @@ func (s *JwtIdentityConfig) SetJwtTokenConfig(v *JwtIdentityConfigJwtTokenConfig
 	return s
 }
 
+func (s *JwtIdentityConfig) SetRemoteJwks(v string) *JwtIdentityConfig {
+	s.RemoteJwks = &v
+	return s
+}
+
 func (s *JwtIdentityConfig) SetSecretType(v string) *JwtIdentityConfig {
 	s.SecretType = &v
 	return s
@@ -106,6 +126,15 @@ func (s *JwtIdentityConfig) SetType(v string) *JwtIdentityConfig {
 }
 
 func (s *JwtIdentityConfig) Validate() error {
+	if s.ClaimsToHeadersConfigs != nil {
+		for _, item := range s.ClaimsToHeadersConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.JwtPayloadConfig != nil {
 		if err := s.JwtPayloadConfig.Validate(); err != nil {
 			return err
@@ -119,14 +148,62 @@ func (s *JwtIdentityConfig) Validate() error {
 	return nil
 }
 
+type JwtIdentityConfigClaimsToHeadersConfigs struct {
+	// The claim.
+	Claim *string `json:"claim,omitempty" xml:"claim,omitempty"`
+	// The header.
+	Header *string `json:"header,omitempty" xml:"header,omitempty"`
+	// The override.
+	Override *bool `json:"override,omitempty" xml:"override,omitempty"`
+}
+
+func (s JwtIdentityConfigClaimsToHeadersConfigs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s JwtIdentityConfigClaimsToHeadersConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *JwtIdentityConfigClaimsToHeadersConfigs) GetClaim() *string {
+	return s.Claim
+}
+
+func (s *JwtIdentityConfigClaimsToHeadersConfigs) GetHeader() *string {
+	return s.Header
+}
+
+func (s *JwtIdentityConfigClaimsToHeadersConfigs) GetOverride() *bool {
+	return s.Override
+}
+
+func (s *JwtIdentityConfigClaimsToHeadersConfigs) SetClaim(v string) *JwtIdentityConfigClaimsToHeadersConfigs {
+	s.Claim = &v
+	return s
+}
+
+func (s *JwtIdentityConfigClaimsToHeadersConfigs) SetHeader(v string) *JwtIdentityConfigClaimsToHeadersConfigs {
+	s.Header = &v
+	return s
+}
+
+func (s *JwtIdentityConfigClaimsToHeadersConfigs) SetOverride(v bool) *JwtIdentityConfigClaimsToHeadersConfigs {
+	s.Override = &v
+	return s
+}
+
+func (s *JwtIdentityConfigClaimsToHeadersConfigs) Validate() error {
+	return dara.Validate(s)
+}
+
 type JwtIdentityConfigJwtPayloadConfig struct {
-	// The key in the JWT payload.
+	// The JWT payload key configuration.
 	//
 	// example:
 	//
 	// uid
 	PayloadKeyName *string `json:"payloadKeyName,omitempty" xml:"payloadKeyName,omitempty"`
-	// The value for the JWT payload key.
+	// The JWT payload value configuration.
 	//
 	// example:
 	//
@@ -165,25 +242,25 @@ func (s *JwtIdentityConfigJwtPayloadConfig) Validate() error {
 }
 
 type JwtIdentityConfigJwtTokenConfig struct {
-	// The key used for the JWT.
+	// The JWT key configuration.
 	//
 	// example:
 	//
 	// Authorization
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Indicates whether acceptance is granted.
+	// Specifies whether to pass through.
 	//
 	// example:
 	//
 	// true
 	Pass *bool `json:"pass,omitempty" xml:"pass,omitempty"`
-	// The location where the JWT is stored.
+	// The storage location of the JWT.
 	//
 	// example:
 	//
 	// HEADER
 	Position *string `json:"position,omitempty" xml:"position,omitempty"`
-	// The token prefix configuration.
+	// The prefix configuration.
 	//
 	// example:
 	//

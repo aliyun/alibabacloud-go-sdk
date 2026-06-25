@@ -3307,7 +3307,7 @@ func (client *Client) ExportHttpApi(httpApiId *string, request *ExportHttpApiReq
 
 // Summary:
 //
-// Obtains the information of a consumer.
+// Retrieves an API consumer.
 //
 // @param headers - map
 //
@@ -3340,7 +3340,7 @@ func (client *Client) GetConsumerWithOptions(consumerId *string, headers map[str
 
 // Summary:
 //
-// Obtains the information of a consumer.
+// Retrieves an API consumer.
 //
 // @return GetConsumerResponse
 func (client *Client) GetConsumer(consumerId *string) (_result *GetConsumerResponse, _err error) {
@@ -4012,11 +4012,11 @@ func (client *Client) GetHttpApiRoute(httpApiId *string, routeId *string) (_resu
 
 // Summary:
 //
-// Get the MCP server.
+// Get MCP Server.
 //
 // Description:
 //
-// This API supports creating multiple services.
+// The API supports creating multiple services.
 //
 // @param headers - map
 //
@@ -4049,11 +4049,11 @@ func (client *Client) GetMcpServerWithOptions(mcpServerId *string, headers map[s
 
 // Summary:
 //
-// Get the MCP server.
+// Get MCP Server.
 //
 // Description:
 //
-// This API supports creating multiple services.
+// The API supports creating multiple services.
 //
 // @return GetMcpServerResponse
 func (client *Client) GetMcpServer(mcpServerId *string) (_result *GetMcpServerResponse, _err error) {
@@ -4821,6 +4821,84 @@ func (client *Client) ListConsumerAuthorizationRules(consumerId *string, request
 	headers := make(map[string]*string)
 	_result = &ListConsumerAuthorizationRulesResponse{}
 	_body, _err := client.ListConsumerAuthorizationRulesWithOptions(consumerId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者配额限流规则列表
+//
+// @param request - ListConsumerQuotaRulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConsumerQuotaRulesResponse
+func (client *Client) ListConsumerQuotaRulesWithOptions(consumerId *string, request *ListConsumerQuotaRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumerQuotaRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListConsumerQuotaRules"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumers/" + dara.PercentEncode(dara.StringValue(consumerId)) + "/quota-rules"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListConsumerQuotaRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者配额限流规则列表
+//
+// @param request - ListConsumerQuotaRulesRequest
+//
+// @return ListConsumerQuotaRulesResponse
+func (client *Client) ListConsumerQuotaRules(consumerId *string, request *ListConsumerQuotaRulesRequest) (_result *ListConsumerQuotaRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConsumerQuotaRulesResponse{}
+	_body, _err := client.ListConsumerQuotaRulesWithOptions(consumerId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -2391,7 +2391,7 @@ func (client *Client) ExportHttpApiWithContext(ctx context.Context, httpApiId *s
 
 // Summary:
 //
-// Obtains the information of a consumer.
+// Retrieves an API consumer.
 //
 // @param headers - map
 //
@@ -2888,11 +2888,11 @@ func (client *Client) GetHttpApiRouteWithContext(ctx context.Context, httpApiId 
 
 // Summary:
 //
-// Get the MCP server.
+// Get MCP Server.
 //
 // Description:
 //
-// This API supports creating multiple services.
+// The API supports creating multiple services.
 //
 // @param headers - map
 //
@@ -3453,6 +3453,65 @@ func (client *Client) ListConsumerAuthorizationRulesWithContext(ctx context.Cont
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListConsumerAuthorizationRulesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者配额限流规则列表
+//
+// @param request - ListConsumerQuotaRulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConsumerQuotaRulesResponse
+func (client *Client) ListConsumerQuotaRulesWithContext(ctx context.Context, consumerId *string, request *ListConsumerQuotaRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumerQuotaRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListConsumerQuotaRules"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumers/" + dara.PercentEncode(dara.StringValue(consumerId)) + "/quota-rules"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListConsumerQuotaRulesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

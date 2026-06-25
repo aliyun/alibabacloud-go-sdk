@@ -20,25 +20,13 @@ type iGetConsumerResponseBody interface {
 }
 
 type GetConsumerResponseBody struct {
-	// The status code.
-	//
-	// example:
-	//
-	// Ok
+	// O código de resposta.
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response payload.
+	// Os dados de resposta.
 	Data *GetConsumerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The status message.
-	//
-	// example:
-	//
-	// success
+	// A mensagem de resposta.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 880C61B3-7B90-5570-A3F7-D6D92C0E2D36
+	// O ID da solicitação.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -96,53 +84,25 @@ func (s *GetConsumerResponseBody) Validate() error {
 }
 
 type GetConsumerResponseBodyData struct {
-	// The AK/SK authentication configurations.
+	// As configurações de autenticação por par de AccessKey.
 	AkSkIdentityConfigs []*AkSkIdentityConfig `json:"akSkIdentityConfigs,omitempty" xml:"akSkIdentityConfigs,omitempty" type:"Repeated"`
-	// The API key authentication configurations.
+	// A configuração de autenticação de chave de API.
 	ApiKeyIdentityConfig *ApiKeyIdentityConfig `json:"apiKeyIdentityConfig,omitempty" xml:"apiKeyIdentityConfig,omitempty"`
-	// The consumer ID.
-	//
-	// example:
-	//
-	// cs-cvgbtk6m1hkji5sb8dr0
+	// O ID do consumidor de API.
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The creation timestamp.
-	//
-	// example:
-	//
-	// 1719386834548
+	// O carimbo de data/hora de criação.
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The publishing status of the API in the current environment.
-	//
-	// example:
-	//
-	// ""
+	// O status de publicação da API no ambiente atual.
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
-	// The description.
-	//
-	// example:
-	//
-	// 测试专用消费者
+	// A descrição.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates if enabled.
-	//
-	// example:
-	//
-	// true
+	// Indica se o consumidor de API está habilitado.
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The JWT authentication configurations.
+	// A configuração de autenticação JWT.
 	JwtIdentityConfig *JwtIdentityConfig `json:"jwtIdentityConfig,omitempty" xml:"jwtIdentityConfig,omitempty"`
-	// The consumer name.
-	//
-	// example:
-	//
-	// consumer-1
+	// O nome do consumidor de API.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The last update timestamp.
-	//
-	// example:
-	//
-	// 1719386834548
+	// O carimbo de data/hora de atualização.
 	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
 }
 
