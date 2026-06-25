@@ -16,9 +16,9 @@ type iDetachKeyPairResponseBody interface {
 }
 
 type DetachKeyPairResponseBody struct {
-	// The object that is returned.
+	// The result object.
 	Data *DetachKeyPairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ func (s *DetachKeyPairResponseBody) Validate() error {
 }
 
 type DetachKeyPairResponseBodyData struct {
-	// The IDs of the cloud phone instances from which the ADB key pair is successfully detached.
+	// A list of IDs of the instances from which the key pair was successfully detached.
 	DetachedInstanceIds []*string `json:"DetachedInstanceIds,omitempty" xml:"DetachedInstanceIds,omitempty" type:"Repeated"`
-	// The number of the cloud phone instances from which the ADB key pair failed to be detached.
+	// The number of instances from which the key pair failed to detach.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type DetachKeyPairResponseBodyData struct {
 	//
 	// kp-6v2q33ae4tw3a****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The total number of the cloud phone instances.
+	// The total number of instances for which the detach operation was attempted.
 	//
 	// example:
 	//

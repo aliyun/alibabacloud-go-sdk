@@ -22,19 +22,28 @@ type iDescribeMobileAgentPackageResponseBody interface {
 }
 
 type DescribeMobileAgentPackageResponseBody struct {
+	// The status code. A value of 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Success.
-	Message     *string                                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of packages.
 	PackageList []*DescribeMobileAgentPackageResponseBodyPackageList `json:"PackageList,omitempty" xml:"PackageList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 30
@@ -108,28 +117,41 @@ func (s *DescribeMobileAgentPackageResponseBody) Validate() error {
 }
 
 type DescribeMobileAgentPackageResponseBodyPackageList struct {
+	// The expiration time.
+	//
 	// example:
 	//
 	// 2026-10-30 00:00:00
-	ExpiredAt   *string   `json:"ExpiredAt,omitempty" xml:"ExpiredAt,omitempty"`
+	ExpiredAt *string `json:"ExpiredAt,omitempty" xml:"ExpiredAt,omitempty"`
+	// The list of node instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The total package credit.
+	//
 	// example:
 	//
 	// 8000
 	PackageCredit *string `json:"PackageCredit,omitempty" xml:"PackageCredit,omitempty"`
+	// The package ID.
+	//
 	// example:
 	//
 	// cmag-bp19i1yxu60r7twy****
 	PackageId *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	// The package specification.
+	//
 	// example:
 	//
 	// advanced
 	PackageSpec     *string `json:"PackageSpec,omitempty" xml:"PackageSpec,omitempty"`
 	PackageSpecName *string `json:"PackageSpecName,omitempty" xml:"PackageSpecName,omitempty"`
+	// The package status.
+	//
 	// example:
 	//
 	// ACTIVE
 	PackageStatus *string `json:"PackageStatus,omitempty" xml:"PackageStatus,omitempty"`
+	// The amount of credit used.
+	//
 	// example:
 	//
 	// 1000

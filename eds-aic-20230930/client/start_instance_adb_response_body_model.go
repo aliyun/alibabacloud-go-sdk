@@ -14,6 +14,8 @@ type iStartInstanceAdbResponseBody interface {
 }
 
 type StartInstanceAdbResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 69BCBBE4-FCF2-59B8-AD9D-531EB422****

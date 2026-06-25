@@ -32,7 +32,7 @@ type RecoveryFileRequest struct {
 	//
 	// example:
 	//
-	// true
+	// false
 	BackupAll *bool `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
 	// The ID of the backup file.
 	//
@@ -42,7 +42,7 @@ type RecoveryFileRequest struct {
 	BackupFileId *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
 	// The OSS path to which the backup file is uploaded.
 	//
-	// >  When calling the describeBuckets operation to retrieve a bucket name, you must also call the ossObjectList operation to obtain the object key. Combine these to form the full path: oss://${bucketName}/${key}.
+	// > When calling the describeBuckets operation to retrieve a bucket name, you must also call the ossObjectList operation to obtain the object key. Combine these to form the full path: oss\\://${bucketName}/${key}.
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
 	// The endpoint of the OSS bucket that stores the backup file.
 	//
@@ -53,10 +53,6 @@ type RecoveryFileRequest struct {
 	// oss-cn-hangzhou-internal.aliyuncs.com
 	UploadEndpoint *string `json:"UploadEndpoint,omitempty" xml:"UploadEndpoint,omitempty"`
 	// The type of the backup.
-	//
-	// Valid values:
-	//
-	// 	- OSS: backup files are stored in OSS buckets.
 	//
 	// example:
 	//

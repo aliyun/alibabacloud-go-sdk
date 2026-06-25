@@ -28,26 +28,48 @@ type iDescribeMetricTopRequest interface {
 }
 
 type DescribeMetricTopRequest struct {
+	// For instance-level monitoring, specify a list of cloud phone instance IDs.
+	//
+	// <props="china">
+	//
+	// For matrix-level monitoring, specify a list of matrix IDs.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+	// The end time of the query.
+	//
 	// example:
 	//
 	// 2019-01-31 11:00:00
-	EndTime     *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The number of entries to return on each page. This parameter is used for paged queries.
+	//
+	// > The maximum value is 100 when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
+	//
 	// example:
 	//
 	// 100
 	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The list of metrics.
+	//
 	// This parameter is required.
 	MetricNames []*string `json:"MetricNames,omitempty" xml:"MetricNames,omitempty" type:"Repeated"`
+	// The token that marks the start of the next page of results. If you leave this parameter empty, the query starts from the beginning.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The statistical period of the monitoring data.
+	//
+	// Unit: seconds.
+	//
 	// example:
 	//
 	// 60
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The start time of the query.
+	//
 	// example:
 	//
 	// 2019-01-31 10:00:00

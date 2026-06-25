@@ -18,11 +18,16 @@ type iRunSyncCommandResponseBody interface {
 }
 
 type RunSyncCommandResponseBody struct {
+	// An array of objects, where each object contains the execution result for a single instance.
 	Data []*RunSyncCommandResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5C5CEF0A-D6E1-58D3-8750-67DB4F82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 31
@@ -78,26 +83,38 @@ func (s *RunSyncCommandResponseBody) Validate() error {
 }
 
 type RunSyncCommandResponseBodyData struct {
+	// The time when command execution finished.
+	//
 	// example:
 	//
 	// 2022-08-11 17:45:03
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The ID of the instance on which the command was executed.
+	//
 	// example:
 	//
 	// acp-uto81vfd8t8z****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The invocation ID.
+	//
 	// example:
 	//
 	// t-15775dc8****
 	InvocationId *string `json:"InvocationId,omitempty" xml:"InvocationId,omitempty"`
+	// The command execution status.
+	//
 	// example:
 	//
 	// RUNNING
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	// The command output.
+	//
 	// example:
 	//
 	// success
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The time when command execution began.
+	//
 	// example:
 	//
 	// 2022-10-11T08:53:32Z

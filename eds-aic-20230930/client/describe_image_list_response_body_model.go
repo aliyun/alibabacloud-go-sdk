@@ -20,21 +20,21 @@ type iDescribeImageListResponseBody interface {
 }
 
 type DescribeImageListResponseBody struct {
-	// The images.
+	// The returned data.
 	Data []*DescribeImageListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token that is used to start the next query. An empty value indicates that all data has been returned.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 620740FF-492F-5956-B1BA-361E966C0269
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type DescribeImageListResponseBodyData struct {
 	//
 	// 117819727354****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The description of the image.
+	// The description.
 	//
 	// example:
 	//
@@ -123,38 +123,38 @@ type DescribeImageListResponseBodyData struct {
 	// example:
 	//
 	// 2024-02-01 10:56:36
-	GmtModified  *string                                          `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// An array of tag objects.
 	ImageBizTags []*DescribeImageListResponseBodyDataImageBizTags `json:"ImageBizTags,omitempty" xml:"ImageBizTags,omitempty" type:"Repeated"`
-	// The ID of the image.
+	// The image ID.
 	//
 	// example:
 	//
 	// imgc-075cllfeuazh****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the image.
+	// The image name.
 	//
 	// example:
 	//
 	// IMAGE
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The region where the image is distributed. The key is the region and the value is the distribution information.
+	// The image distribution information by region. The key is the region and the value is the distribution information.
 	ImageRegionDistributeMap map[string]*DataImageRegionDistributeMapValue `json:"ImageRegionDistributeMap,omitempty" xml:"ImageRegionDistributeMap,omitempty"`
-	// The list of regions.
+	// The list of available regions.
 	ImageRegionList []*string `json:"ImageRegionList,omitempty" xml:"ImageRegionList,omitempty" type:"Repeated"`
-	// The type of the image.
-	//
-	// Valid values:
-	//
-	// 	- User: custom images.
-	//
-	// 	- System: system images.
+	// The image type.
 	//
 	// example:
 	//
 	// System
-	ImageType    *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// The image version.
+	//
+	// example:
+	//
+	// 20241204102337
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	// The language of the image.
+	// The language.
 	//
 	// example:
 	//
@@ -168,37 +168,17 @@ type DescribeImageListResponseBodyData struct {
 	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
 	// The rendering type.
 	//
-	// Valid values:
-	//
-	// 	- GPURemote
-	//
-	// 	- CPU
-	//
-	// 	- GPULocal
-	//
 	// example:
 	//
 	// CPU
 	RenderingType *string `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
-	// The state of the image.
-	//
-	// Valid values:
-	//
-	// 	- AVAILABLE: The image is available.
-	//
-	// 	- DELETE: The image is deleted.
-	//
-	// 	- INIT: The image is being initialized.
-	//
-	// 	- CREATE_FAILED: The image failed to be created.
-	//
-	// 	- CREATING: The image is being created.
+	// The image status.
 	//
 	// example:
 	//
 	// AVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The OS type of the image.
+	// The operating system type.
 	//
 	// example:
 	//
@@ -372,7 +352,17 @@ func (s *DescribeImageListResponseBodyData) Validate() error {
 }
 
 type DescribeImageListResponseBodyDataImageBizTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -16,10 +16,14 @@ type iExpandPhoneDataVolumeResponseBody interface {
 }
 
 type ExpandPhoneDataVolumeResponseBody struct {
+  // The order ID.
+  // 
   // example:
   // 
   // 223684716098****
   OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // DB070C80-45AC-52CA-8101-937C25DA****

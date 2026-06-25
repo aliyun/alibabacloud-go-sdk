@@ -22,19 +22,33 @@ type iModifySystemPropertyTemplateShrinkRequest interface {
 }
 
 type ModifySystemPropertyTemplateShrinkRequest struct {
+	// Specifies whether to automatically generate preset system properties.
+	//
 	// example:
 	//
 	// true
 	EnableAuto *bool `json:"EnableAuto,omitempty" xml:"EnableAuto,omitempty"`
+	// The URL of the property template file. The system synchronously parses the file. If the file format is invalid, a parsing error is returned.
+	//
+	// > File template format: `{ "properties":{"key1":"value1", "key2":"value2"}}`.
+	//
 	// example:
 	//
 	// https://filepath****.com
-	FilePath                 *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The information about the system property template.
 	SystemPropertyInfoShrink *string `json:"SystemPropertyInfo,omitempty" xml:"SystemPropertyInfo,omitempty"`
+	// The ID of the property template.
+	//
 	// example:
 	//
 	// ap-angyvganxlf****
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the template.
+	//
+	// example:
+	//
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

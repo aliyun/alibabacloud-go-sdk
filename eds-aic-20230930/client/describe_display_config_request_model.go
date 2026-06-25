@@ -14,6 +14,7 @@ type iDescribeDisplayConfigRequest interface {
 }
 
 type DescribeDisplayConfigRequest struct {
+	// A list of instance IDs.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
 }
 

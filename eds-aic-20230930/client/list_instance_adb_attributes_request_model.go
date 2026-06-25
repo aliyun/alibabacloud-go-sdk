@@ -26,27 +26,40 @@ type iListInstanceAdbAttributesRequest interface {
 }
 
 type ListInstanceAdbAttributesRequest struct {
+	// The public IP address.
+	//
 	// example:
 	//
 	// 106.38.188.223
-	ExternalIp  *string   `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	// The list of cloud phone instance IDs. You can specify from 1 to 100 IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 10.0.3.23
 	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	// The ADB port number.
+	//
 	// example:
 	//
 	// 5555
 	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	// The network protocol type.
+	//
 	// example:
 	//
 	// TCP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The maximum number of records to return on each page for a paged query. Valid values: 1 to 100. Default value: 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that indicates the position from which the query starts. If you leave this parameter empty, the query starts from the beginning.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****

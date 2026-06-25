@@ -22,24 +22,27 @@ type iDescribeJVSInstanceResponseBody interface {
 }
 
 type DescribeJVSInstanceResponseBody struct {
+	// A list of JVS instances.
 	Data []*DescribeJVSInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 当前页实际返回条数
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 下一页游标，末页不返回
+	// The token to retrieve the next page of results. If this field is empty, there are no more results.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 符合条件的总记录数
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -114,31 +117,45 @@ func (s *DescribeJVSInstanceResponseBody) Validate() error {
 }
 
 type DescribeJVSInstanceResponseBodyData struct {
+	// The time the instance was created.
+	//
 	// example:
 	//
 	// 2026-04-10T01:31:32Z
-	CreateTime   *string                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The Credit limit configuration. If you apply multiple configurations, the latest one overwrites the others.
 	CreditConfig []*DescribeJVSInstanceResponseBodyDataCreditConfig `json:"CreditConfig,omitempty" xml:"CreditConfig,omitempty" type:"Repeated"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 2026-04-10T01:31:32Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// acp-uto81vfd8t8z****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is not supported.
+	//
 	// example:
 	//
 	// null
 	JvsPackageId *string `json:"JvsPackageId,omitempty" xml:"JvsPackageId,omitempty"`
+	// The time the instance was last modified.
+	//
 	// example:
 	//
 	// 2026-04-10T01:31:32Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The instance status.
+	//
 	// example:
 	//
 	// RUNNNING
-	Status     *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The amount of used Credit.
 	UsedCredit []*DescribeJVSInstanceResponseBodyDataUsedCredit `json:"UsedCredit,omitempty" xml:"UsedCredit,omitempty" type:"Repeated"`
 }
 
@@ -245,10 +262,14 @@ func (s *DescribeJVSInstanceResponseBodyData) Validate() error {
 }
 
 type DescribeJVSInstanceResponseBodyDataCreditConfig struct {
+	// The Credit limit.
+	//
 	// example:
 	//
 	// -1
 	CreditLimit *int64 `json:"CreditLimit,omitempty" xml:"CreditLimit,omitempty"`
+	// The limit period.
+	//
 	// example:
 	//
 	// day
@@ -286,10 +307,14 @@ func (s *DescribeJVSInstanceResponseBodyDataCreditConfig) Validate() error {
 }
 
 type DescribeJVSInstanceResponseBodyDataUsedCredit struct {
+	// The amount of Credit.
+	//
 	// example:
 	//
 	// 5
 	Credit *int64 `json:"Credit,omitempty" xml:"Credit,omitempty"`
+	// The calculation period for used Credit.
+	//
 	// example:
 	//
 	// day

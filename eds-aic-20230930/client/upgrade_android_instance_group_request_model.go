@@ -22,23 +22,17 @@ type iUpgradeAndroidInstanceGroupRequest interface {
 }
 
 type UpgradeAndroidInstanceGroupRequest struct {
-	// Specifies whether to enable the auto-payment feature.
-	//
-	// Valid values:
-	//
-	// 	- true: enables the auto-payment feature. Make sure that your Alibaba Cloud account has sufficient balance.
-	//
-	// 	- false: disables the auto-payment feature. You need to manually complete the payment process.
+	// Specifies whether to enable automatic payment.
 	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The number of instances that you want to increase.
+	// The number of instances to add to the instance group.
 	//
 	// example:
 	//
-	// 10
+	// 2
 	IncreaseNumberOfInstance *int32 `json:"IncreaseNumberOfInstance,omitempty" xml:"IncreaseNumberOfInstance,omitempty"`
 	// The ID of the instance group.
 	//
@@ -47,7 +41,8 @@ type UpgradeAndroidInstanceGroupRequest struct {
 	// ag-asguicdjh****
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
 	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
-	PromotionId     *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The promotion ID.
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 }
 
 func (s UpgradeAndroidInstanceGroupRequest) String() string {

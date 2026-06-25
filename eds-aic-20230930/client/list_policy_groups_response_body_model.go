@@ -102,25 +102,11 @@ func (s *ListPolicyGroupsResponseBody) Validate() error {
 type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
 	// Specifies whether to enable the webcam redirection feature.
 	//
-	// Valid values:
-	//
-	// 	- off
-	//
-	// 	- on
-	//
 	// example:
 	//
 	// on
 	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
 	// The read/write permissions on the clipboard.
-	//
-	// Valid values:
-	//
-	// 	- read: read-only.
-	//
-	// 	- readwrite: read and write.
-	//
-	// 	- off: read/write disabled.
 	//
 	// example:
 	//
@@ -134,41 +120,17 @@ type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The file transfer policy of the HTML5 client.
 	//
-	// Valid values:
-	//
-	// 	- all: File upload and download are supported.
-	//
-	// 	- download: Only file download is supported.
-	//
-	// 	- upload: Only file upload is supported.
-	//
-	// 	- off: File upload or download is forbidden.
-	//
 	// example:
 	//
 	// download
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
 	// The read/write permissions on the on-premises drive.
 	//
-	// Valid values:
-	//
-	// 	- read: read-only.
-	//
-	// 	- readwrite: ready and write.
-	//
-	// 	- off: read/write denied.
-	//
 	// example:
 	//
 	// off
 	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
 	// Identifies whether the resolution is locked.
-	//
-	// Valid values:
-	//
-	// 	- off
-	//
-	// 	- on
 	//
 	// example:
 	//
@@ -186,8 +148,9 @@ type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
 	//
 	// example:
 	//
-	// Default Policy
-	PolicyGroupName        *string                                                             `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	// Default policy.
+	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	// The resources associated with the policy.
 	PolicyRelatedResources *ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources `json:"PolicyRelatedResources,omitempty" xml:"PolicyRelatedResources,omitempty" type:"Struct"`
 	// The height of the resolution.
 	//
@@ -200,8 +163,9 @@ type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
 	// example:
 	//
 	// 1920
-	SessionResolutionWidth *int32                                                 `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
-	Watermark              *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty" type:"Struct"`
+	SessionResolutionWidth *int32 `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
+	// The screen watermark.
+	Watermark *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty" type:"Struct"`
 }
 
 func (s ListPolicyGroupsResponseBodyPolicyGroupModel) String() string {
@@ -349,13 +313,7 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) Validate() error {
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
-	// Indicates whether a custom proxy is manually configured.
-	//
-	// Valid values:
-	//
-	// 	- off
-	//
-	// 	- on
+	// Indicates whether to manually configure a custom proxy.
 	//
 	// example:
 	//
@@ -368,12 +326,6 @@ type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
 	// 47.100.XX.XX
 	HostAddr *string `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
 	// Indicates whether the network redirection feature is enabled. When this feature is enabled, network traffic is automatically redirected to the on-premises network by default.
-	//
-	// Valid values:
-	//
-	// 	- off
-	//
-	// 	- on
 	//
 	// example:
 	//
@@ -392,10 +344,6 @@ type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
 	// password
 	ProxyPassword *string `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
 	// The type of the proxy protocol.
-	//
-	// Valid values:
-	//
-	// 	- socks5.
 	//
 	// example:
 	//
@@ -507,12 +455,6 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) Validate
 type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules struct {
 	// The type of the rule.
 	//
-	// Valid values:
-	//
-	// 	- prc: an application package name.
-	//
-	// 	- domain: a domain name.
-	//
 	// example:
 	//
 	// domain
@@ -521,7 +463,7 @@ type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules struct {
 	//
 	// example:
 	//
-	// *.example.com
+	// *.baidu.com
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 
@@ -556,8 +498,10 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules) Val
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources struct {
+	// The instance group IDs.
 	AndroidInstanceGroupIds []*string `json:"AndroidInstanceGroupIds,omitempty" xml:"AndroidInstanceGroupIds,omitempty" type:"Repeated"`
-	CloudPhoneMatrixIds     []*string `json:"CloudPhoneMatrixIds,omitempty" xml:"CloudPhoneMatrixIds,omitempty" type:"Repeated"`
+	// The matrix IDs.
+	CloudPhoneMatrixIds []*string `json:"CloudPhoneMatrixIds,omitempty" xml:"CloudPhoneMatrixIds,omitempty" type:"Repeated"`
 }
 
 func (s ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources) String() string {
@@ -591,12 +535,38 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources) Val
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelWatermark struct {
-	WatermarkColor             *int32    `json:"WatermarkColor,omitempty" xml:"WatermarkColor,omitempty"`
-	WatermarkCustomText        *string   `json:"WatermarkCustomText,omitempty" xml:"WatermarkCustomText,omitempty"`
-	WatermarkFontSize          *int32    `json:"WatermarkFontSize,omitempty" xml:"WatermarkFontSize,omitempty"`
-	WatermarkSwitch            *string   `json:"WatermarkSwitch,omitempty" xml:"WatermarkSwitch,omitempty"`
-	WatermarkTransparencyValue *int32    `json:"WatermarkTransparencyValue,omitempty" xml:"WatermarkTransparencyValue,omitempty"`
-	WatermarkTypes             []*string `json:"WatermarkTypes,omitempty" xml:"WatermarkTypes,omitempty" type:"Repeated"`
+	// The font color of the watermark. Valid values: 0 to 16777215.
+	//
+	// example:
+	//
+	// 0
+	WatermarkColor *int32 `json:"WatermarkColor,omitempty" xml:"WatermarkColor,omitempty"`
+	// The custom text for the watermark. The text can be up to 10 characters in length and cannot contain emoji characters.
+	//
+	// example:
+	//
+	// custom text
+	WatermarkCustomText *string `json:"WatermarkCustomText,omitempty" xml:"WatermarkCustomText,omitempty"`
+	// The font size of the watermark. Valid values: 10 to 20.
+	//
+	// example:
+	//
+	// 12
+	WatermarkFontSize *int32 `json:"WatermarkFontSize,omitempty" xml:"WatermarkFontSize,omitempty"`
+	// Specifies whether to enable the screen watermark.
+	//
+	// example:
+	//
+	// off
+	WatermarkSwitch *string `json:"WatermarkSwitch,omitempty" xml:"WatermarkSwitch,omitempty"`
+	// The opacity of the watermark. A larger value makes the watermark more opaque. Valid values: 10 to 100.
+	//
+	// example:
+	//
+	// 25
+	WatermarkTransparencyValue *int32 `json:"WatermarkTransparencyValue,omitempty" xml:"WatermarkTransparencyValue,omitempty"`
+	// The content of the screen watermark.
+	WatermarkTypes []*string `json:"WatermarkTypes,omitempty" xml:"WatermarkTypes,omitempty" type:"Repeated"`
 }
 
 func (s ListPolicyGroupsResponseBodyPolicyGroupModelWatermark) String() string {

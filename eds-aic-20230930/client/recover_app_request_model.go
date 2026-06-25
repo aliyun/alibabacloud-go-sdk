@@ -22,20 +22,30 @@ type iRecoverAppRequest interface {
 }
 
 type RecoverAppRequest struct {
+	// The list of instance IDs.
+	//
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
+	// The ID of the backup file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bf-azhps4rdyi2th****
 	BackupFileId *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
+	// The OSS URL where the backup file is uploaded.
+	//
 	// This parameter is required.
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
+	// The backup region.
+	//
 	// example:
 	//
 	// oss-cn-shanghai-internal.aliyuncs.com
 	UploadEndpoint *string `json:"UploadEndpoint,omitempty" xml:"UploadEndpoint,omitempty"`
+	// The backup type.
+	//
 	// This parameter is required.
 	//
 	// example:

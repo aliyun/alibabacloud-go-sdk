@@ -16,7 +16,10 @@ type iDescribeDisplayConfigResponseBody interface {
 }
 
 type DescribeDisplayConfigResponseBody struct {
+	// A list of display settings.
 	DisplayConfigModel []*DescribeDisplayConfigResponseBodyDisplayConfigModel `json:"DisplayConfigModel,omitempty" xml:"DisplayConfigModel,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FFEF7EFE-1E36-56D1-B5BF-5BACE43B****
@@ -63,26 +66,38 @@ func (s *DescribeDisplayConfigResponseBody) Validate() error {
 }
 
 type DescribeDisplayConfigResponseBodyDisplayConfigModel struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// cpn-jewjt8xryuituz4qn-****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	// The dots per inch (DPI). The value ranges from 72 to 600.
+	//
 	// example:
 	//
 	// 240
 	Dpi *int32 `json:"Dpi,omitempty" xml:"Dpi,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	Fps *int32 `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// Indicates whether the resolution is locked.
+	//
 	// example:
 	//
 	// off
 	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
+	// The height of the resolution. Unit: pixels.
+	//
 	// example:
 	//
 	// 1280
 	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// The width of the resolution. Unit: pixels.
+	//
 	// example:
 	//
 	// 720

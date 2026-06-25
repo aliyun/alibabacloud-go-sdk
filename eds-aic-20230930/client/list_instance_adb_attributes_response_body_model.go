@@ -22,19 +22,28 @@ type iListInstanceAdbAttributesResponseBody interface {
 }
 
 type ListInstanceAdbAttributesResponseBody struct {
+	// The ADB connection information for the instances.
 	Data []*ListInstanceAdbAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The maximum number of records returned in this query.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to start the next query. If a query does not return all results, NextToken is not empty. Use the returned NextToken value to query the next page.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CB95E410-FD1D-53C5-9F7D-93CC44D7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 10
@@ -108,34 +117,50 @@ func (s *ListInstanceAdbAttributesResponseBody) Validate() error {
 }
 
 type ListInstanceAdbAttributesResponseBodyData struct {
+	// The public IP address.
+	//
 	// example:
 	//
 	// 183.201.219.157
 	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	// The public network port number.
+	//
 	// example:
 	//
 	// 14840/14849
 	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
+	// The time when the connection was created.
+	//
 	// example:
 	//
 	// 2024-05-15 17:33:59
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The time when the connection was last modified.
+	//
 	// example:
 	//
 	// 2024-05-15 17:33:59
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the cloud phone instance.
+	//
 	// example:
 	//
 	// acp-uto81vfd8t8z****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The private IP address.
+	//
 	// example:
 	//
 	// 10.0.0.239
 	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	// The private network port number.
+	//
 	// example:
 	//
 	// 5555/5555
 	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	// The network protocol type.
+	//
 	// example:
 	//
 	// TCP

@@ -26,27 +26,52 @@ type iRenewMobileAgentPackageRequest interface {
 }
 
 type RenewMobileAgentPackageRequest struct {
+	// Specifies whether to enable automatic payment. Valid values:
+	//
+	// - **true**: Enables automatic payment. Make sure that your account balance is sufficient.
+	//
+	// - **false*	- (default): Generates an unpaid order.
+	//
+	// > If your account balance is insufficient, set this parameter to `false` to generate an unpaid order. You can then pay for the order in the Wuying Mobile Cloud Phone management console.
+	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to enable auto-renewal. The default value is `false`.
+	//
 	// example:
 	//
 	// false
-	AutoRenew             *bool     `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// A list of mobile agent package IDs.
 	MobileAgentPackageIds []*string `json:"MobileAgentPackageIds,omitempty" xml:"MobileAgentPackageIds,omitempty" type:"Repeated"`
+	// The URL to which a user is redirected after a successful payment.
+	//
 	// example:
 	//
 	// https://aim.wuying.aliyun.com/nodes
 	PaidCallbackUrl *string `json:"PaidCallbackUrl,omitempty" xml:"PaidCallbackUrl,omitempty"`
+	// The renewal period. The `PeriodUnit` parameter specifies the time unit.
+	//
 	// example:
 	//
 	// 6
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the renewal period.
+	//
+	// Valid values:
+	//
+	// - **Month**: month.
+	//
+	// - **Year**: year.
+	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The promotion ID.
+	//
 	// example:
 	//
 	// 50003308011****

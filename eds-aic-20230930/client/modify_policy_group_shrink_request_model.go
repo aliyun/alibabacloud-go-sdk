@@ -34,57 +34,25 @@ type iModifyPolicyGroupShrinkRequest interface {
 }
 
 type ModifyPolicyGroupShrinkRequest struct {
-	// Specifies whether to enable the webcam redirection feature.
-	//
-	// Valid values:
-	//
-	// 	- off
-	//
-	// 	- on
+	// Specifies whether to enable local camera redirection.
 	//
 	// example:
 	//
 	// off
 	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
-	// The read/write permissions on the clipboard.
-	//
-	// Valid values:
-	//
-	// 	- read: read-only.
-	//
-	// 	- readwrite: ready and write.
-	//
-	// 	- off: read/write disabled.
+	// The clipboard permission.
 	//
 	// example:
 	//
 	// readwrite
 	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
-	// The file transfer policy of the Alibaba Cloud Workspace web client.
-	//
-	// Valid values:
-	//
-	// 	- all: File upload and download are supported.
-	//
-	// 	- download: Only file download is supported.
-	//
-	// 	- upload: Only file upload is supported.
-	//
-	// 	- off: File upload or download is forbidden.
+	// The file transfer policy for the Wuying web client.
 	//
 	// example:
 	//
 	// off
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
-	// The read/write permissions on the on-premises drive.
-	//
-	// Valid values:
-	//
-	// 	- read: read-only.
-	//
-	// 	- readwrite: ready and write.
-	//
-	// 	- off: read/write disabled.
+	// The local disk mapping permission.
 	//
 	// example:
 	//
@@ -92,29 +60,23 @@ type ModifyPolicyGroupShrinkRequest struct {
 	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
 	// Specifies whether to lock the resolution.
 	//
-	// Valid values:
-	//
-	// 	- off
-	//
-	// 	- on
-	//
 	// example:
 	//
 	// off
 	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
-	// The network redirection policy.
+	// Network redirection.
 	NetRedirectPolicyShrink *string `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty"`
-	// The ID of the policy.
+	// The policy ID.
 	//
 	// example:
 	//
 	// pg-4bi18ebi9tfjh****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The name of the policy.
+	// The policy name.
 	//
 	// example:
 	//
-	// defaultPolicyGroup
+	// Default policy
 	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
 	// The height of the resolution. Unit: pixels.
 	//
@@ -127,7 +89,8 @@ type ModifyPolicyGroupShrinkRequest struct {
 	// example:
 	//
 	// 720
-	ResolutionWidth *int32  `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	// The screen watermark.
 	WatermarkShrink *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
 }
 

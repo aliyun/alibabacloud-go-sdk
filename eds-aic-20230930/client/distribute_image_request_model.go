@@ -16,11 +16,11 @@ type iDistributeImageRequest interface {
 }
 
 type DistributeImageRequest struct {
-	// The regions to which you want to distribute an image.
+	// The list of destination regions.
 	//
 	// This parameter is required.
 	DistributeRegionList []*string `json:"DistributeRegionList,omitempty" xml:"DistributeRegionList,omitempty" type:"Repeated"`
-	// The ID of the image that you want to distribute.
+	// The ID of the image.
 	//
 	// This parameter is required.
 	//

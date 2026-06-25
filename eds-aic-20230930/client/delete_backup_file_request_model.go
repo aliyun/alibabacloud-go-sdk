@@ -14,6 +14,8 @@ type iDeleteBackupFileRequest interface {
 }
 
 type DeleteBackupFileRequest struct {
+	// A list of backup file IDs.
+	//
 	// This parameter is required.
 	BackupFileIdList []*string `json:"BackupFileIdList,omitempty" xml:"BackupFileIdList,omitempty" type:"Repeated"`
 }

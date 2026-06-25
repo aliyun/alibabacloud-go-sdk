@@ -16,10 +16,14 @@ type iDescribeCreditPackageRequest interface {
 }
 
 type DescribeCreditPackageRequest struct {
+	// The ID of the credit package.
+	//
 	// example:
 	//
 	// crp-xagydbhfkah****
 	CreditPackageId *string `json:"CreditPackageId,omitempty" xml:"CreditPackageId,omitempty"`
+	// The status of the credit package.
+	//
 	// example:
 	//
 	// ACTIVE

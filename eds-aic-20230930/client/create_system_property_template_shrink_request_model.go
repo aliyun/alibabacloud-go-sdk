@@ -20,16 +20,34 @@ type iCreateSystemPropertyTemplateShrinkRequest interface {
 }
 
 type CreateSystemPropertyTemplateShrinkRequest struct {
+	// Specifies whether to automatically generate preset system properties.
+	//
 	// example:
 	//
 	// true
 	EnableAuto *bool `json:"EnableAuto,omitempty" xml:"EnableAuto,omitempty"`
+	// The URL of the property template file. The API parses the file synchronously. An error is returned if the file format is invalid.
+	//
+	// > The file must be in the following format: `{ "properties":{"key1":"value1"}}`.
+	//
 	// example:
 	//
 	// https://filepath****.com
-	FilePath                 *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The information about the system property template.
 	SystemPropertyInfoShrink *string `json:"SystemPropertyInfo,omitempty" xml:"SystemPropertyInfo,omitempty"`
-	TemplateName             *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The name of the template. The name must meet the following requirements:
+	//
+	// - Be 2 to 32 characters in length.
+	//
+	// - Start with an uppercase or lowercase letter or a Chinese character. It cannot start with `http://` or `https://`.
+	//
+	// - Contain letters, digits, colons (:), underscores (_), and hyphens (-). Periods (.) are not supported.
+	//
+	// example:
+	//
+	// Template1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s CreateSystemPropertyTemplateShrinkRequest) String() string {

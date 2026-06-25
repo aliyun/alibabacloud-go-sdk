@@ -34,26 +34,57 @@ type iChangeCloudPhoneNodeRequest interface {
 }
 
 type ChangeCloudPhoneNodeRequest struct {
-	AutoPay            *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	DisplayConfig      *string `json:"DisplayConfig,omitempty" xml:"DisplayConfig,omitempty"`
-	DownBandwidthLimit *int32  `json:"DownBandwidthLimit,omitempty" xml:"DownBandwidthLimit,omitempty"`
+	// Indicates if automatic payment is enabled. Default: false.
+	//
+	// example:
+	//
+	// false
+	AutoPay       *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	DisplayConfig *string `json:"DisplayConfig,omitempty" xml:"DisplayConfig,omitempty"`
+	// The downstream bandwidth limit, in Mbps.
+	//
+	// example:
+	//
+	// 50
+	DownBandwidthLimit *int32 `json:"DownBandwidthLimit,omitempty" xml:"DownBandwidthLimit,omitempty"`
+	// The instance type.
+	//
 	// example:
 	//
 	// ac.max
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The ID of the cloud phone matrix.
+	//
 	// example:
 	//
 	// cpn-0ugbptfu473fy****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The number of cloud phone instances. Call the [](t2729804.xdita#)operation to query the minimum and maximum number of allowed instances.
+	//
 	// example:
 	//
 	// 20
-	PhoneCount       *int32  `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
-	PhoneDataVolume  *int32  `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
-	PromotionId      *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	ShareDataVolume  *int32  `json:"ShareDataVolume,omitempty" xml:"ShareDataVolume,omitempty"`
-	SwapSize         *int32  `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
-	UpBandwidthLimit *int32  `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
+	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	// The capacity of the internal storage, in GiB. Valid values: 10 to 4000. If you do not specify this parameter, the current capacity is retained.
+	//
+	// example:
+	//
+	// 10
+	PhoneDataVolume *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
+	// The promotion ID.
+	//
+	// example:
+	//
+	// 50003308011****
+	PromotionId     *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	ShareDataVolume *int32  `json:"ShareDataVolume,omitempty" xml:"ShareDataVolume,omitempty"`
+	SwapSize        *int32  `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
+	// The upstream bandwidth limit, in Mbps.
+	//
+	// example:
+	//
+	// 50
+	UpBandwidthLimit *int32 `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
 }
 
 func (s ChangeCloudPhoneNodeRequest) String() string {

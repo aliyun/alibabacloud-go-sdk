@@ -76,31 +76,29 @@ type iCreateCloudPhoneNodeShrinkRequest interface {
 }
 
 type CreateCloudPhoneNodeShrinkRequest struct {
-	// Specifies whether to enable the auto-payment feature.
-	//
-	// Valid values:
-	//
-	// 	- False (default): You must manually complete the payment in the Alibaba Cloud Expenses and Costs console.
-	//
-	// 	- true: enables the auto-payment feature.
+	// Specifies whether to enable automatic payment.
 	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable the auto-renewal feature.
-	//
-	// Valid values:
-	//
-	// 	- true: enables the auto-renewal feature. In this case, the system automatically renews instances upon expiration.
-	//
-	// 	- false (default): disables the auto-renewal feature. In this case, you need to manually renew instances upon expiration.
+	// Specifies whether to enable auto-renewal.
 	//
 	// example:
 	//
 	// true
-	AutoRenew            *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	BandwidthPackageId   *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The ID of the Shared Bandwidth instance.
+	//
+	// example:
+	//
+	// cbwp-uf6g3hgg*******8s3lxiob3
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	// The bandwidth type.
+	//
+	// example:
+	//
+	// cbwp_ecd
 	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
 	// The region ID.
 	//
@@ -116,27 +114,29 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The number of cloud phone matrixes you want to purchase.
+	// The number of Cloud Phone matrices to purchase.
 	//
 	// example:
 	//
 	// 1
-	Count               *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The display settings.
 	DisplayConfigShrink *string `json:"DisplayConfig,omitempty" xml:"DisplayConfig,omitempty"`
-	DownBandwidthLimit  *int32  `json:"DownBandwidthLimit,omitempty" xml:"DownBandwidthLimit,omitempty"`
+	// The downstream bandwidth limit, in Mbit/s.
+	//
+	// example:
+	//
+	// 50
+	DownBandwidthLimit *int32 `json:"DownBandwidthLimit,omitempty" xml:"DownBandwidthLimit,omitempty"`
 	// The image ID.
 	//
 	// example:
 	//
 	// imgc-075cllfeuazh0****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The instance specification.
+	// The instance type.
 	//
-	// Valid values:
-	//
-	// 	- ac.max: By default, this specification allows up to 25 instances. You can adjust this number by using PhoneCount (Value range: 4 to 40).
-	//
-	// 	- ac.plus: By default, this specification allows up to 40 instances. You can adjust this number by using PhoneCount (Value range: 4 to 40).
+	// > To purchase more instance types, [contact pre-sales support](https://smartservice.console.aliyun.com/service/pre-sales-chat?spm=5176.6d6ecb63.0.0.729adda2VqVQx7).
 	//
 	// example:
 	//
@@ -148,21 +148,27 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou+dir-5mwr9azebliva****
-	NetworkId         *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The network settings for the instance.
 	NetworkInfoShrink *string `json:"NetworkInfo,omitempty" xml:"NetworkInfo,omitempty"`
-	NetworkType       *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The name of the cloud phone matrix.
+	// The network type of the instance.
+	//
+	// example:
+	//
+	// network_pro_ecd
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The name of the Cloud Phone matrix.
 	//
 	// example:
 	//
 	// node_name
 	NodeName        *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
-	// The subscription duration. The unit is specified by `PeriodUnit`. Valid values:
+	// The subscription duration. The unit is specified by the `PeriodUnit` parameter.
 	//
-	// 	- When `PeriodUnit` is set to **year**: 1.
+	// - If `PeriodUnit` is set to **Year**, this parameter can only be set to 1.
 	//
-	// 	- When `PeriodUnit` is set to **month**: 1, 2, 3, and 6.
+	// - If `PeriodUnit` is set to **Month**, valid values are 1, 2, 3, and 6.
 	//
 	// example:
 	//
@@ -170,61 +176,73 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The unit of the subscription duration.
 	//
-	// Valid values:
-	//
-	// 	- Month (default)
-	//
-	// 	- Year
-	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The number of instances per cloud phone matrix.
+	// The number of Cloud Phone instances to create in a single Cloud Phone matrix.
 	//
 	// example:
 	//
 	// 25
-	PhoneCount      *int32  `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	// The size of the independent internal storage, in GiB.
+	//
+	// example:
+	//
+	// 10
 	PhoneDataVolume *int32  `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
 	PromotionId     *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The resolution height. Unit: pixel.
+	// The vertical resolution, in pixels.
 	//
 	// example:
 	//
 	// 1280
 	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
-	// The resolution width. Unit: pixel.
+	// The horizontal resolution, in pixels.
 	//
 	// example:
 	//
 	// 720
 	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
-	// The shared storage size Unit: GiB.
+	// The size of the shared internal storage, in GiB.
+	//
+	// > The size must exceed 10 GiB per instance in the matrix.
 	//
 	// example:
 	//
 	// 200
 	ServerShareDataVolume *int32 `json:"ServerShareDataVolume,omitempty" xml:"ServerShareDataVolume,omitempty"`
-	// The matrix specification.
-	//
-	// Valid values:
-	//
-	// 	- cpm.gn6.gx1
+	// The server type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// cpm.gn6.gx1
+	// cpm.gx7.10xlarge
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	StreamMode *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
-	SwapSize   *int32  `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
+	// The streaming mode for instances in the Cloud Phone matrix. Defaults to preemption mode.
+	//
+	// example:
+	//
+	// 1
+	StreamMode *int32 `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
+	SwapSize   *int32 `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
 	// The resource tags.
-	Tag              []*CreateCloudPhoneNodeShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	UpBandwidthLimit *int32                                  `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
-	UseTemplate      *string                                 `json:"UseTemplate,omitempty" xml:"UseTemplate,omitempty"`
-	// The vSwitch ID.
+	Tag []*CreateCloudPhoneNodeShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The upstream bandwidth limit, in Mbit/s.
+	//
+	// example:
+	//
+	// 50
+	UpBandwidthLimit *int32 `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
+	// The template for instance creation. Set this parameter to `Random` to use a random template, or specify a template ID to use a specific template.
+	//
+	// example:
+	//
+	// Random
+	UseTemplate *string `json:"UseTemplate,omitempty" xml:"UseTemplate,omitempty"`
+	// The VSwitch ID.
 	//
 	// example:
 	//

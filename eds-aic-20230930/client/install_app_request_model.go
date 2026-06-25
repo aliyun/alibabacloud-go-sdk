@@ -18,11 +18,11 @@ type iInstallAppRequest interface {
 }
 
 type InstallAppRequest struct {
-	// The IDs of the apps that you want to install.
+	// The application IDs.
 	AppIdList []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
-	// The IDs of the instance groups.
+	// The instance group IDs.
 	InstanceGroupIdList []*string `json:"InstanceGroupIdList,omitempty" xml:"InstanceGroupIdList,omitempty" type:"Repeated"`
-	// The IDs of the cloud phone instances.
+	// The instance IDs.
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
 }
 

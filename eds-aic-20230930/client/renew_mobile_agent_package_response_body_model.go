@@ -16,10 +16,14 @@ type iRenewMobileAgentPackageResponseBody interface {
 }
 
 type RenewMobileAgentPackageResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 223684716098****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7B9EFA4F-4305-5968-BAEE-BD8B8DE5****

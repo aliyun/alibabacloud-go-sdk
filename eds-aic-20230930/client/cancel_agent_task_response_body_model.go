@@ -20,19 +20,26 @@ type iCancelAgentTaskResponseBody interface {
 }
 
 type CancelAgentTaskResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4B886792-2051-5DB4-8AE6-C8E45D3B4****
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*CancelAgentTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of task objects.
+	Tasks []*CancelAgentTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s CancelAgentTaskResponseBody) String() string {
@@ -93,26 +100,46 @@ func (s *CancelAgentTaskResponseBody) Validate() error {
 }
 
 type CancelAgentTaskResponseBodyTasks struct {
+	// The task\\"s cancellation time, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2026-04-13T17:42:19Z
 	CancelAt *string `json:"CancelAt,omitempty" xml:"CancelAt,omitempty"`
+	// The task status after the cancellation request. Possible values include:
+	//
+	// `CANCELLING` or `CANCELED`: The task is being or has been canceled.
+	//
+	// `COMPLETED`: The task was already complete and could not be canceled.
+	//
 	// example:
 	//
 	// COMPLETED
 	CurrentStatus *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
+	// The failure reason.
+	//
 	// example:
 	//
 	// Task status [COMPLETED] does not support cancellation, only PENDING/RUNNING/CANCELLING tasks can be canceled.
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
+	// The mobile node ID.
+	//
 	// example:
 	//
 	// acp-ek65k51zoxia3x8xz
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The task status before cancellation. Valid values include:
+	//
+	// PENDING: The task is being created.
+	//
+	// RUNNING: The task is running.
+	//
 	// example:
 	//
 	// RUNNING
 	PreviousStatus *string `json:"PreviousStatus,omitempty" xml:"PreviousStatus,omitempty"`
+	// The globally unique task ID.
+	//
 	// example:
 	//
 	// t-imr0fufqd7cle****

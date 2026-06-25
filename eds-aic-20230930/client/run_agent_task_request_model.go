@@ -22,15 +22,35 @@ type iRunAgentTaskRequest interface {
 }
 
 type RunAgentTaskRequest struct {
+	// The region ID of the mobile node.
+	//
 	// example:
 	//
 	// cn-shanghai
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// An array of mobile node IDs. Specify a maximum of 100 IDs per request.
+	//
 	// This parameter is required.
-	InstanceIds    []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	MaxSteps       *int32    `json:"MaxSteps,omitempty" xml:"MaxSteps,omitempty"`
-	TimeoutSeconds *int32    `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The maximum number of steps the task can execute. This limit prevents infinite loops. Valid values: 30–1000. Default: 1000.
+	//
+	// example:
+	//
+	// 30
+	MaxSteps *int32 `json:"MaxSteps,omitempty" xml:"MaxSteps,omitempty"`
+	// The task timeout in seconds. Valid values: 300–3600. Default: 3600.
+	//
+	// example:
+	//
+	// 3600
+	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	// The user prompt in natural language. The Agent completes the task based on this prompt.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Download DingTalk from App Store
 	UserPrompt *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
 }
 

@@ -14,6 +14,8 @@ type iPauseAgentTaskRequest interface {
 }
 
 type PauseAgentTaskRequest struct {
+	// A list of task IDs.
+	//
 	// This parameter is required.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }

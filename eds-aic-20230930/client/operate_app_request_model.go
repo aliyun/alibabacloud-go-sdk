@@ -28,14 +28,6 @@ type OperateAppRequest struct {
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
 	// The type of the operation.
 	//
-	// Valid values:
-	//
-	// 	- stop: closes the app.
-	//
-	// 	- restart: reopens the app.
-	//
-	// 	- start: open the app.
-	//
 	// example:
 	//
 	// start

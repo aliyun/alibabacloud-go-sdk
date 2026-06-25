@@ -24,23 +24,34 @@ type iDescribeCreditPackageResponseBody interface {
 }
 
 type DescribeCreditPackageResponseBody struct {
+	// An array of credit package details.
 	CreditsPackageInfos []*DescribeCreditPackageResponseBodyCreditsPackageInfos `json:"CreditsPackageInfos,omitempty" xml:"CreditsPackageInfos,omitempty" type:"Repeated"`
+	// Indicates whether this is your first purchase.
+	//
 	// example:
 	//
 	// true
 	IsFirstPurchase *bool `json:"IsFirstPurchase,omitempty" xml:"IsFirstPurchase,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of available credits.
+	//
 	// example:
 	//
 	// 1000
 	TotalAvailableCredits *string `json:"TotalAvailableCredits,omitempty" xml:"TotalAvailableCredits,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of exhausted credits.
+	//
 	// example:
 	//
 	// 30
@@ -123,30 +134,44 @@ func (s *DescribeCreditPackageResponseBody) Validate() error {
 }
 
 type DescribeCreditPackageResponseBodyCreditsPackageInfos struct {
+	// The number of available credits in the credit package.
+	//
 	// example:
 	//
 	// 70
 	AvailableCredits *string `json:"AvailableCredits,omitempty" xml:"AvailableCredits,omitempty"`
+	// The ID of the credit package.
+	//
 	// example:
 	//
 	// crp-xagydbhfkah****
 	CreditPackageId *string `json:"CreditPackageId,omitempty" xml:"CreditPackageId,omitempty"`
+	// The status of the credit package.
+	//
 	// example:
 	//
 	// ACTIVE
 	CreditPackageStatus *string `json:"CreditPackageStatus,omitempty" xml:"CreditPackageStatus,omitempty"`
+	// The time when the credit package becomes effective.
+	//
 	// example:
 	//
 	// 2026-04-30 00:00:00
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	// The number of exhausted credits in the credit package.
+	//
 	// example:
 	//
 	// 30
 	ExhaustedCredits *string `json:"ExhaustedCredits,omitempty" xml:"ExhaustedCredits,omitempty"`
+	// The time when the credit package expires.
+	//
 	// example:
 	//
 	// 2026-10-30 00:00:00
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The total number of credits in the credit package.
+	//
 	// example:
 	//
 	// 100

@@ -18,12 +18,18 @@ type iInstanceHealerRequest interface {
 }
 
 type InstanceHealerRequest struct {
+	// The list of instances.
+	//
 	// This parameter is required.
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+	// The policy type. The only supported value is Clean.
+	//
 	// example:
 	//
 	// Clean
 	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// The timeout period in seconds. If you do not specify this parameter, the default value is 30.
+	//
 	// example:
 	//
 	// 30

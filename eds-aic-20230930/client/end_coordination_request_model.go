@@ -18,14 +18,20 @@ type iEndCoordinationRequest interface {
 }
 
 type EndCoordinationRequest struct {
+  // The user ID of the coordination participant.
+  // 
   // example:
   // 
   // lina
   CoordinatorUserId *string `json:"CoordinatorUserId,omitempty" xml:"CoordinatorUserId,omitempty"`
+  // The ID of the instance that is in a coordination session.
+  // 
   // example:
   // 
   // acp-2zecay9ponatdc4m****
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+  // The user ID of the coordination initiator.
+  // 
   // example:
   // 
   // xiaoming

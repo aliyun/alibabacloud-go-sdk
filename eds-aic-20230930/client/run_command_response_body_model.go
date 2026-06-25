@@ -20,13 +20,13 @@ type iRunCommandResponseBody interface {
 }
 
 type RunCommandResponseBody struct {
-	// The ID of the command execution. You can use the command execution ID to query the output of a command.
+	// The command execution ID. Use this ID to query the execution result.
 	//
 	// example:
 	//
 	// t-gov2ujrk32v4****
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

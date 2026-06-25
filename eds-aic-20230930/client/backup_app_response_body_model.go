@@ -20,15 +20,22 @@ type iBackupAppResponseBody interface {
 }
 
 type BackupAppResponseBody struct {
+	// The number of instances that are backed up.
+	//
 	// example:
 	//
 	// 1
-	Count *int64                       `json:"Count,omitempty" xml:"Count,omitempty"`
-	Data  []*BackupAppResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The response elements.
+	Data []*BackupAppResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the batch task.
+	//
 	// example:
 	//
 	// t-14xwibw7pyrjd****
@@ -93,18 +100,26 @@ func (s *BackupAppResponseBody) Validate() error {
 }
 
 type BackupAppResponseBodyData struct {
+	// The ID of the cloud phone instance.
+	//
 	// example:
 	//
 	// acp-34pqe4r0kd9kn****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	// The ID of the backup file.
+	//
 	// example:
 	//
 	// bf-b0qbg3pbpjkn7****
 	BackupFileId *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
+	// The name of the backup file.
+	//
 	// example:
 	//
 	// MyBackup
 	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// t-4ks224ujixw****

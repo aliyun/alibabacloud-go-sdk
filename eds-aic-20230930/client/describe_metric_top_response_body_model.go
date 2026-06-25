@@ -20,15 +20,22 @@ type iDescribeMetricTopResponseBody interface {
 }
 
 type DescribeMetricTopResponseBody struct {
+	// The number of entries returned.
+	//
 	// example:
 	//
 	// 1
-	Count            *int32                                           `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The instance monitoring data.
 	MetricTotalModel []*DescribeMetricTopResponseBodyMetricTotalModel `json:"MetricTotalModel,omitempty" xml:"MetricTotalModel,omitempty" type:"Repeated"`
+	// The token to retrieve the next page of results. If the results are not fully returned in a single query, this parameter is not empty. You can use this token in a subsequent query to retrieve the next page of results.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4610632D-D661-5982-B3D7-5D3FD183F****
@@ -93,14 +100,21 @@ func (s *DescribeMetricTopResponseBody) Validate() error {
 }
 
 type DescribeMetricTopResponseBodyMetricTotalModel struct {
+	// For instance-level monitoring, this is the cloud phone instance ID.
+	//
+	// <props="china">For matrix-level monitoring, this is the matrix ID.
+	//
 	// example:
 	//
 	// acp-fkuit0cmyru4p****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// np-5hh4a31emkt6u****
-	InstanceId      *string                                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The monitoring data of metrics.
 	MetricModelList []*DescribeMetricTopResponseBodyMetricTotalModelMetricModelList `json:"MetricModelList,omitempty" xml:"MetricModelList,omitempty" type:"Repeated"`
 }
 
@@ -153,7 +167,10 @@ func (s *DescribeMetricTopResponseBodyMetricTotalModel) Validate() error {
 }
 
 type DescribeMetricTopResponseBodyMetricTotalModelMetricModelList struct {
+	// The monitoring data points.
 	DataPoints []*DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Repeated"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// instance_in_traffic
@@ -200,24 +217,52 @@ func (s *DescribeMetricTopResponseBodyMetricTotalModelMetricModelList) Validate(
 }
 
 type DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints struct {
+	// The average value. Unit: %.
+	//
+	// > The unit is bps when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
+	//
 	// example:
 	//
 	// 99.52
 	Average *float64 `json:"Average,omitempty" xml:"Average,omitempty"`
+	// The ID.
+	//
 	// example:
 	//
 	// acp-fkuit0cmyru4p****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The maximum value. Unit: %.
+	//
+	// > The unit is bps when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
+	//
 	// example:
 	//
 	// 100
 	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// The minimum value.
+	//
+	// > The unit is bps when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
+	//
 	// example:
 	//
 	// 93.1
-	Minimum    *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
-	Name       *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Properties *string  `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// cloudPhone-****
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The properties.
+	//
+	// > A JSON string that contains the extension properties.
+	//
+	// example:
+	//
+	// {"IP":"192.168.*.***"}
+	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// The timestamp of the data point. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1548777660000

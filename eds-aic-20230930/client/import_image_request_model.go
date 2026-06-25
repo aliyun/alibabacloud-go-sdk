@@ -18,14 +18,20 @@ type iImportImageRequest interface {
 }
 
 type ImportImageRequest struct {
+	// The description of the image.
+	//
 	// example:
 	//
 	// android 12 custom image
 	ImageDescription *string `json:"ImageDescription,omitempty" xml:"ImageDescription,omitempty"`
+	// The URL of the image. This must be an Alibaba Cloud OSS address.
+	//
 	// example:
 	//
 	// https://xxx.oss-xxx/xxxx.tgz
 	ImageFileURL *string `json:"ImageFileURL,omitempty" xml:"ImageFileURL,omitempty"`
+	// The name of the image.
+	//
 	// example:
 	//
 	// import custom image

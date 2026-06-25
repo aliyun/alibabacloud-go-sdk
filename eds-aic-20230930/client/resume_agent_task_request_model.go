@@ -16,7 +16,14 @@ type iResumeAgentTaskRequest interface {
 }
 
 type ResumeAgentTaskRequest struct {
+	// An additional prompt to guide the task. This parameter applies only when a task is in the `PAUSED` state, for example, while waiting for user input.
+	//
+	// example:
+	//
+	// 验证码为***。
 	AdditionalPrompt *string `json:"AdditionalPrompt,omitempty" xml:"AdditionalPrompt,omitempty"`
+	// A list of task IDs.
+	//
 	// This parameter is required.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }

@@ -36,8 +36,13 @@ type DescribeAppsRequest struct {
 	//
 	// example:
 	//
-	// defaultAppName
+	// Application name
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// > This parameter is for internal use now.
+	//
+	// example:
+	//
+	// -
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// Region id.
 	//
@@ -49,17 +54,17 @@ type DescribeAppsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- INSTALLFAILED: The application failed to be installed.
+	// - INSTALLFAILED: The application failed to be installed.
 	//
-	// 	- UNINSTALLING: The application is being uninstalled.
+	// - UNINSTALLING: The application is being uninstalled.
 	//
-	// 	- INSTALLING: The application is being installed.
+	// - INSTALLING: The application is being installed.
 	//
-	// 	- UNINSTALLED: The application is uninstalled.
+	// - UNINSTALLED: The application is uninstalled.
 	//
-	// 	- INSTALLED: The application is installed.
+	// - INSTALLED: The application is installed.
 	//
-	// 	- UNINSTALLFAILED: The application failed to be uninstalled.
+	// - UNINSTALLFAILED: The application failed to be uninstalled.
 	//
 	// example:
 	//
@@ -69,7 +74,7 @@ type DescribeAppsRequest struct {
 	//
 	// example:
 	//
-	// THCIEH73KEK3334
+	// 009ee07fe13a29fa0c180ed0b6bc****
 	MD5 *string `json:"MD5,omitempty" xml:"MD5,omitempty"`
 	// The maximum number of entries per page. Valid values: 1 to 100. Default value: 10.
 	//
@@ -84,14 +89,6 @@ type DescribeAppsRequest struct {
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The status of the application.
-	//
-	// Valid values:
-	//
-	// 	- FAILED: The application failed to be created.
-	//
-	// 	- NORMAL: The application is available.
-	//
-	// 	- CREATING: The application is being created.
 	//
 	// example:
 	//

@@ -22,23 +22,23 @@ type iDescribeCloudPhoneNodesResponseBody interface {
 }
 
 type DescribeCloudPhoneNodesResponseBody struct {
-	// The maximum number of entries per page.
+	// The maximum number of entries returned on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The token used to start the next query. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, there are no more results.
 	//
-	// 	- ****
+	// - If **NextToken*	- has a value, it indicates the token for the next query.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The matrixes.
+	// The details of the Cloud Phone matrices.
 	NodeModel []*DescribeCloudPhoneNodesResponseBodyNodeModel `json:"NodeModel,omitempty" xml:"NodeModel,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -46,7 +46,7 @@ type DescribeCloudPhoneNodesResponseBody struct {
 	//
 	// F07A1DA1-E1EB-5CCA-8EED-12F85D32****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of cloud phone instances.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -121,10 +121,26 @@ func (s *DescribeCloudPhoneNodesResponseBody) Validate() error {
 }
 
 type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
-	BandwidthPackageId     *string                                                `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	BandwidthPackageStatus *string                                                `json:"BandwidthPackageStatus,omitempty" xml:"BandwidthPackageStatus,omitempty"`
-	BandwidthPackageType   *string                                                `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
-	BizTags                []*DescribeCloudPhoneNodesResponseBodyNodeModelBizTags `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
+	// The ID of the bandwidth plan.
+	//
+	// example:
+	//
+	// cbwp-7xvrl7axet2qg6yia******
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	// The status of the bandwidth plan: 0 indicates initializing, 1 indicates normal, and 2 indicates deleted.
+	//
+	// example:
+	//
+	// 1
+	BandwidthPackageStatus *string `json:"BandwidthPackageStatus,omitempty" xml:"BandwidthPackageStatus,omitempty"`
+	// The bandwidth type.
+	//
+	// example:
+	//
+	// cbwp_ecd
+	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
+	// An array of tag information.
+	BizTags []*DescribeCloudPhoneNodesResponseBodyNodeModelBizTags `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
 	// The billing method.
 	//
 	// example:
@@ -143,7 +159,7 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	//
 	// 2024-11-13 02:03:14
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The expiration time of the subscription matrix.
+	// The expiration time of the subscription-based matrix.
 	//
 	// example:
 	//
@@ -154,7 +170,12 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	// example:
 	//
 	// 2025-02-13 02:03:14
-	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The instance type.
+	//
+	// example:
+	//
+	// ac.max
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The memory size. Unit: GB.
 	//
@@ -167,27 +188,34 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	// example:
 	//
 	// cn-hangzhou+dir-5mwr9azebliva****
-	NetworkId    *string                                                     `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The network information.
 	NetworkInfos []*DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos `json:"NetworkInfos,omitempty" xml:"NetworkInfos,omitempty" type:"Repeated"`
-	NetworkType  *string                                                     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The matrix ID.
+	// The network type of the instance.
+	//
+	// example:
+	//
+	// network_pro_ecd
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The Cloud Phone matrix ID.
 	//
 	// example:
 	//
 	// cpn-ehs0yoedq8ntm****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The matrix name.
+	// The name of the Cloud Phone matrix.
 	//
 	// example:
 	//
 	// node_name
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The number of cloud phone instances per matrix.
+	// The number of instances in the Cloud Phone matrix.
 	//
 	// example:
 	//
 	// 25
-	PhoneCount    *int32                                                     `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	// The information about the independent phone storage.
 	PhoneDataInfo *DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo `json:"PhoneDataInfo,omitempty" xml:"PhoneDataInfo,omitempty" type:"Struct"`
 	// The region ID.
 	//
@@ -195,31 +223,31 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The height of the resolution. Unit: pixel.
+	// The height of the resolution. Unit: pixels.
 	//
 	// example:
 	//
 	// 1280
 	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
-	// The width of the resolution. Unit: pixel.
+	// The width of the resolution. Unit: pixels.
 	//
 	// example:
 	//
 	// 720
 	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
-	// The matrix specification.
+	// The instance type of the Cloud Phone matrix.
 	//
 	// example:
 	//
-	// cpm.gn6.gx1
+	// cpm.gx7.10xlarge
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The size of the shared storage. Unit: GiB.
+	// The size of the shared phone storage. Unit: GiB.
 	//
 	// example:
 	//
 	// 100
 	ShareDataVolume *int32 `json:"ShareDataVolume,omitempty" xml:"ShareDataVolume,omitempty"`
-	// The matrix status.
+	// The status of the Cloud Phone matrix.
 	//
 	// example:
 	//
@@ -523,7 +551,17 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) Validate() error {
 }
 
 type DescribeCloudPhoneNodesResponseBodyNodeModelBizTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// keyname
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// valuename
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -558,11 +596,36 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModelBizTags) Validate() error {
 }
 
 type DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos struct {
-	BandwidthPackageId   *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	// The ID of the bandwidth plan instance.
+	//
+	// example:
+	//
+	// cbwp-hn3tj409amvamz8mf****
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	// The bandwidth type.
+	//
+	// example:
+	//
+	// cbwp_ecd
 	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
-	NetworkId            *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	NetworkType          *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The network ID.
+	//
+	// example:
+	//
+	// cn-hangzhou+dir-avcuocx9805oq****
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The network type of the instance.
+	//
+	// example:
+	//
+	// network_pro_ecd
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The ID of the vSwitch in the virtual private cloud (VPC).
+	//
+	// example:
+	//
+	// vsw-j6cjgev6fv3ftw4f0****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos) String() string {
@@ -623,8 +686,18 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos) Validate() er
 }
 
 type DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo struct {
-	PhoneDataId     *string `json:"PhoneDataId,omitempty" xml:"PhoneDataId,omitempty"`
-	PhoneDataVolume *int32  `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
+	// The ID of the independent phone storage.
+	//
+	// example:
+	//
+	// pd-dhusabisshj****
+	PhoneDataId *string `json:"PhoneDataId,omitempty" xml:"PhoneDataId,omitempty"`
+	// The size of the independent phone storage. Unit: GiB.
+	//
+	// example:
+	//
+	// 20
+	PhoneDataVolume *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
 }
 
 func (s DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo) String() string {

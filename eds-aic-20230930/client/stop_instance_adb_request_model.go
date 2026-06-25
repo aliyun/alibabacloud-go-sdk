@@ -14,6 +14,8 @@ type iStopInstanceAdbRequest interface {
 }
 
 type StopInstanceAdbRequest struct {
+	// The list of Android instance IDs. You can specify 1 to 100 IDs.
+	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }

@@ -20,7 +20,7 @@ type iCreateCustomImageRequest interface {
 }
 
 type CreateCustomImageRequest struct {
-	// The client token that is used to ensure the idempotence of the request. By default, this parameter is left empty. The token cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. By default, this parameter is left empty. The token cannot exceed 100 characters in length. Requests with the same ClientToken triggers only one creation.
 	//
 	// example:
 	//

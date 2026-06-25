@@ -22,23 +22,34 @@ type iModifyAndroidInstanceRequest interface {
 }
 
 type ModifyAndroidInstanceRequest struct {
-	// The ID of the cloud phone instance.
+	// The ID of a single instance. If you specify this parameter, InstanceIds is ignored.
 	//
 	// example:
 	//
 	// acp-8v5bjld0r7tkl****
-	AndroidInstanceId  *string   `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
-	DownBandwidthLimit *int32    `json:"DownBandwidthLimit,omitempty" xml:"DownBandwidthLimit,omitempty"`
-	InstanceIds        []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The new name of the cloud phone instance.
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	// The limit for downstream bandwidth. Unit: Mbps.
 	//
-	// >  The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with http:// or https://.
+	// example:
+	//
+	// 50
+	DownBandwidthLimit *int32 `json:"DownBandwidthLimit,omitempty" xml:"DownBandwidthLimit,omitempty"`
+	// The list of Android instance IDs. You can specify from 1 to 100 IDs.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The new name for the instance.
+	//
+	// > - The name can be up to 30 characters long. It must start with a letter or a Chinese character and cannot start with http\\:// or https\\://. The name can contain only letters, digits, Chinese characters, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
 	// new_name
 	NewAndroidInstanceName *string `json:"NewAndroidInstanceName,omitempty" xml:"NewAndroidInstanceName,omitempty"`
-	UpBandwidthLimit       *int32  `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
+	// The limit for upstream bandwidth. Unit: Mbps.
+	//
+	// example:
+	//
+	// 50
+	UpBandwidthLimit *int32 `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
 }
 
 func (s ModifyAndroidInstanceRequest) String() string {

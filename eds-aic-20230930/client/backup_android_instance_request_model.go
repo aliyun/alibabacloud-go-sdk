@@ -22,18 +22,28 @@ type iBackupAndroidInstanceRequest interface {
 }
 
 type BackupAndroidInstanceRequest struct {
+	// A list of instance IDs.
+	//
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
+	// The name of the backup file.
+	//
 	// example:
 	//
 	// abc
 	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
+	// The upload URL for the backup file.
+	//
 	// This parameter is required.
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
+	// The description of the full instance backup.
+	//
 	// example:
 	//
 	// this is a backup android instance
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The region where the backup is stored.
+	//
 	// This parameter is required.
 	//
 	// example:

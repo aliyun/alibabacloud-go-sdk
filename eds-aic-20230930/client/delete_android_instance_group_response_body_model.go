@@ -14,7 +14,7 @@ type iDeleteAndroidInstanceGroupResponseBody interface {
 }
 
 type DeleteAndroidInstanceGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -34,6 +34,11 @@ type iDescribeCloudPhoneNodesRequest interface {
 }
 
 type DescribeCloudPhoneNodesRequest struct {
+	// The ID of the bandwidth plan instance.
+	//
+	// example:
+	//
+	// cbwp-bp17psa7fhxqmm*****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The region ID.
 	//
@@ -47,52 +52,34 @@ type DescribeCloudPhoneNodesRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The maximum number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The maximum number of entries to return on each page for a paged query. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If a query doesn\\"t return all results, the response includes a NextToken value for pagination. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token for the next query. If a query does not return all results, NextToken is not empty. Use the returned NextToken in your next query to continue.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The matrix IDs.
+	// A list of Cloud Phone matrix IDs.
 	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
-	// The matrix name.
+	// The name of the Cloud Phone matrix.
 	//
 	// example:
 	//
 	// node_name
 	NodeName     *string   `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	NodeNameList []*string `json:"NodeNameList,omitempty" xml:"NodeNameList,omitempty" type:"Repeated"`
-	// The matrix specification.
-	//
-	// Valid values:
-	//
-	// 	- cpm.gn6.gx1
+	// The instance type of the Cloud Phone matrix.
 	//
 	// example:
 	//
-	// cpm.gn6.gx1
+	// cpm.gx7.10xlarge
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The matrix status.
-	//
-	// Valid values:
-	//
-	// 	- FAILED: The matrix failed to be created.
-	//
-	// 	- RUNNING: The matrix is available.
-	//
-	// 	- DELETING: The matrix is being deleted.
-	//
-	// 	- NODE_READY: The matrix is ready, and cloud phone instances are being created.
-	//
-	// 	- DELETED: The matrix is deleted.
-	//
-	// 	- CREATING: The matrix is being created.
+	// The status of the Cloud Phone matrix.
 	//
 	// example:
 	//

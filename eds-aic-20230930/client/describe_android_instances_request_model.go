@@ -58,43 +58,49 @@ type iDescribeAndroidInstancesRequest interface {
 }
 
 type DescribeAndroidInstancesRequest struct {
-	// The IDs of the instances.
+	// The list of instance IDs.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// name
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
-	AppManagePolicyId   *string `json:"AppManagePolicyId,omitempty" xml:"AppManagePolicyId,omitempty"`
-	AuthorizedUserId    *string `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) operation to query the regions where Cloud Phone is supported.
+	// The application management policy ID.
+	//
+	// example:
+	//
+	// amp-shigvudbyeuib****
+	AppManagePolicyId *string `json:"AppManagePolicyId,omitempty" xml:"AppManagePolicyId,omitempty"`
+	// The user ID assigned to the instance, which is the China Wuying convenience account ID.
+	//
+	// example:
+	//
+	// user
+	AuthorizedUserId *string `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
+	// <props="china">The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) to query the list of regions that support purchasing cloud phones of different editions (Instance Edition/Matrix Edition).
+	//
+	// <props="intl">The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) to query the list of regions that support purchasing cloud phones..
 	//
 	// example:
 	//
 	// cn-shanghai
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The billing method.
-	//
-	// Valid values:
-	//
-	// 	- PostPaid: pay-as-you-go.
-	//
-	// 	- PrePaid: subscription.
+	// The billing type.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The ID of the instance group.
+	// The instance group ID.
 	//
 	// example:
 	//
 	// ag-25nt4kk9whjh****
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	// The IDs of the instance groups.
+	// The list of instance group IDs.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
-	// The name of the instance group.
+	// The instance group name.
 	//
 	// example:
 	//
@@ -107,40 +113,45 @@ type DescribeAndroidInstancesRequest struct {
 	//
 	// kp-5hh431emkpuoi****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The maximum number of entries per page. Valid values: 1 to 100. Default value: 100.
+	// The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
+	// The pagination token that indicates the position from which to start reading. Leave this parameter empty to start reading from the beginning.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kw9dGL5jves2FS9RLq****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the node.
+	// <props="china">The matrix ID.
+	//
+	// <props="intl">This parameter is not publicly available..
 	//
 	// example:
 	//
 	// node_id
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node.
+	// <props="china">The name of the matrix.
+	//
+	// <props="intl">This parameter is not publicly available..
 	//
 	// example:
 	//
 	// node_name
-	NodeName         *string   `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	OfficeSiteIds    []*string `json:"OfficeSiteIds,omitempty" xml:"OfficeSiteIds,omitempty" type:"Repeated"`
-	PrivateIpAddress *string   `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	QosRuleIds       []*string `json:"QosRuleIds,omitempty" xml:"QosRuleIds,omitempty" type:"Repeated"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The cloud phone network ID.
+	OfficeSiteIds []*string `json:"OfficeSiteIds,omitempty" xml:"OfficeSiteIds,omitempty" type:"Repeated"`
+	// The private IP address of the instance.
+	//
+	// example:
+	//
+	// 10.0.162.136
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// The public network rate limiting rule group ID. The rate limiting rule for instances in the basic shared network.
+	QosRuleIds []*string `json:"QosRuleIds,omitempty" xml:"QosRuleIds,omitempty" type:"Repeated"`
 	// The sales mode.
-	//
-	// Valid values:
-	//
-	// 	- Instance: the standard mode.
-	//
-	// 	- Node: the node mode.
 	//
 	// example:
 	//
@@ -148,45 +159,13 @@ type DescribeAndroidInstancesRequest struct {
 	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 	SortKey  *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	// The state of the instance.
-	//
-	// Valid values:
-	//
-	// 	- BACKUPING: The instance is being backed up.
-	//
-	// 	- STARTING: The instance is being started.
-	//
-	// 	- RUNNING: The instance group is available.
-	//
-	// 	- DELETING: The instance is being deleted.
-	//
-	// 	- BACKUP_FAILED: The backup operation failed.
-	//
-	// 	- DELETED: The instance is deleted.
-	//
-	// 	- FAILED: The instance failed to be created.
-	//
-	// 	- STOPPED: The instance is stopped.
-	//
-	// 	- RECOVERING: The instance has an ongoing file recovery task.
-	//
-	// 	- UNAVAILABLE: The instance has an exception.
-	//
-	// 	- REBOOTING: The instance is being restarted.
-	//
-	// 	- RESETTING: The instance is being reset.
-	//
-	// 	- STOPPING: The instance is being stopped.
-	//
-	// 	- RECOVER_FAILED: The file recovery task failed.
-	//
-	// 	- CREATING: The instance is being created.
+	// The instance status.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the resources.
+	// The tags of the resource.
 	Tag []*DescribeAndroidInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -419,13 +398,13 @@ func (s *DescribeAndroidInstancesRequest) Validate() error {
 }
 
 type DescribeAndroidInstancesRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

@@ -20,15 +20,22 @@ type iRunSyncCommandRequest interface {
 }
 
 type RunSyncCommandRequest struct {
+	// The content of the command to execute.
+	//
 	// example:
 	//
 	// ls
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// The encoding of the command content. If you provide a value that is not a valid option, the system uses the default value, `PlainText`.
+	//
 	// example:
 	//
 	// PlainText
-	ContentEncoding *string   `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	// An array of Cloud Phone instance IDs. You can specify up to 50 instances in a single request.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The timeout for command execution, in milliseconds. Valid range: 500 to 3000. Default: 1000.
+	//
 	// example:
 	//
 	// 1000

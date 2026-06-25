@@ -36,31 +36,27 @@ type iDescribeAndroidInstanceGroupsRequest interface {
 }
 
 type DescribeAndroidInstanceGroupsRequest struct {
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The billing method.
+	// The billing type.
 	//
-	// Valid values:
-	//
-	// 	- PrePaid: subscription
-	//
-	// 	- PostPaid: pay-as-you-go
+	// [_single.params.ChargeType.enum. PrePaid]Subscription.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The IDs of the instance groups.
+	// The list of instance group IDs.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
-	// The name of the instance group. Instance groups support fuzzy search by name.
+	// The instance group name. Fuzzy match is supported.
 	//
 	// example:
 	//
-	// defaultInstanceGroup
+	// Cloud phone
 	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
 	InstanceVersion   *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
 	// The ID of the key pair.
@@ -69,61 +65,38 @@ type DescribeAndroidInstanceGroupsRequest struct {
 	//
 	// kp-5htf0ymsrnb7q****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The maximum number of entries per page. Value range: 0 to 100. Default value: 100.
+	// The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The pagination token that indicates the position from which the current read operation starts. Leave this parameter empty to read from the beginning.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the policy.
+	// The policy ID.
 	//
 	// example:
 	//
 	// pg-1b77w6xrqfubi****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The purchase mode of cloud phone instances.
-	//
-	// Valid values:
-	//
-	// 	- Instance (default): the instance group mode.
-	//
-	// 	- Node: the matrix mode [whitelisted].
+	// The purchase mode of the cloud phone.
 	//
 	// example:
 	//
 	// standard
 	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
-	// The status of the instance group.
-	//
-	// Valid values:
-	//
-	// 	- UPDATING_FAILED: The image update for the instance group failed.
-	//
-	// 	- FAILED: The instance group failed to be created.
-	//
-	// 	- RUNNING: The instance group is available.
-	//
-	// 	- EXPIRED: The instance group expired.
-	//
-	// 	- DELETING: The instance group is being deleted.
-	//
-	// 	- DELETED: The instance group is deleted.
-	//
-	// 	- UPDATING: The instance group is undergoing an image update.
-	//
-	// 	- CREATING: The instance group is being created.
+	// The instance group status.
 	//
 	// example:
 	//
 	// CREATING
-	Status *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*DescribeAndroidInstanceGroupsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags of the instance group. You can bind up to 20 tags to each instance.
+	Tags []*DescribeAndroidInstanceGroupsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAndroidInstanceGroupsRequest) String() string {
@@ -256,7 +229,21 @@ func (s *DescribeAndroidInstanceGroupsRequest) Validate() error {
 }
 
 type DescribeAndroidInstanceGroupsRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. You can specify 1 to 20 tag keys.
+	//
+	// 	Notice: The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://..
+	//
+	// example:
+	//
+	// phone
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// 	Notice: The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`..
+	//
+	// example:
+	//
+	// 2025
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

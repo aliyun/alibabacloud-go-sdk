@@ -18,11 +18,16 @@ type iCreateMobileAgentPackageResponseBody interface {
 }
 
 type CreateMobileAgentPackageResponseBody struct {
+	// A list of package IDs.
 	MobileAgentPackageIds []*string `json:"MobileAgentPackageIds,omitempty" xml:"MobileAgentPackageIds,omitempty" type:"Repeated"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 22326560487****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 69BCBBE4-FCF2-59B8-AD9D-531EB422****

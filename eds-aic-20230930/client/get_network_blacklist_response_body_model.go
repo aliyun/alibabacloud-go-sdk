@@ -16,7 +16,10 @@ type iGetNetworkBlacklistResponseBody interface {
 }
 
 type GetNetworkBlacklistResponseBody struct {
+	// The network blacklist.
 	NetworkBlacklistModel *GetNetworkBlacklistResponseBodyNetworkBlacklistModel `json:"NetworkBlacklistModel,omitempty" xml:"NetworkBlacklistModel,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A578AD3A-8E7C-54FE-A09F-B060941*****
@@ -59,8 +62,10 @@ func (s *GetNetworkBlacklistResponseBody) Validate() error {
 }
 
 type GetNetworkBlacklistResponseBodyNetworkBlacklistModel struct {
+	// The list of blacklisted domain names.
 	DomainBlacklist []*string `json:"DomainBlacklist,omitempty" xml:"DomainBlacklist,omitempty" type:"Repeated"`
-	IpBlacklist     []*string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty" type:"Repeated"`
+	// The list of blacklisted IP addresses.
+	IpBlacklist []*string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty" type:"Repeated"`
 }
 
 func (s GetNetworkBlacklistResponseBodyNetworkBlacklistModel) String() string {

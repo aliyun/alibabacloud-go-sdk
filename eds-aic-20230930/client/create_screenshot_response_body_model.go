@@ -16,13 +16,13 @@ type iCreateScreenshotResponseBody interface {
 }
 
 type CreateScreenshotResponseBody struct {
-	// The ID of the request. If the request fails, share this ID with technical support to help diagnose the issue.
+	// The unique ID of the request. If you encounter an issue, provide this request ID for troubleshooting.
 	//
 	// example:
 	//
 	// 3AF82CE1-2801-52CE-BF64-B491DD7C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tasks.
+	// The list of tasks.
 	Tasks []*CreateScreenshotResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
@@ -66,14 +66,19 @@ func (s *CreateScreenshotResponseBody) Validate() error {
 }
 
 type CreateScreenshotResponseBodyTasks struct {
-	// The ID of the cloud phone instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// acp-bwhtebzah2fse****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
-	ScreenshotId      *string `json:"ScreenshotId,omitempty" xml:"ScreenshotId,omitempty"`
-	// The ID of the task. You can use the task ID with the DescribeTasks operation to get the download link for the screenshot.
+	// The screenshot ID. The generated screenshot is named "ScreenshotId_AndroidInstanceId.png."
+	//
+	// example:
+	//
+	// image
+	ScreenshotId *string `json:"ScreenshotId,omitempty" xml:"ScreenshotId,omitempty"`
+	// The task ID. You can use this ID to call the DescribeTasks operation and query the screenshot task. When the task is complete, you can get the download link for the screenshot.
 	//
 	// example:
 	//

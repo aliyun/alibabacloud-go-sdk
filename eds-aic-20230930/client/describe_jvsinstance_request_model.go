@@ -18,14 +18,15 @@ type iDescribeJVSInstanceRequest interface {
 }
 
 type DescribeJVSInstanceRequest struct {
+	// A list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// 分页大小，最大值100，默认值10
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 分页游标，首次查询无需传入
+	// The pagination token from a previous request to retrieve the next page of results. Omit this parameter for the first request.
 	//
 	// example:
 	//

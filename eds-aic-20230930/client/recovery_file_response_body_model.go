@@ -24,7 +24,7 @@ type RecoveryFileResponseBody struct {
 	//
 	// example:
 	//
-	// 97
+	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The backup file that is restored.
 	//
@@ -42,7 +42,7 @@ type RecoveryFileResponseBody struct {
 	//
 	// example:
 	//
-	// t-5prhfo7wv1gjx****
+	// t-3eourrxaoliqq****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -114,7 +114,7 @@ type RecoveryFileResponseBodyData struct {
 	//
 	// example:
 	//
-	// t-5prhfo7wv1gjx****
+	// t-ehs0yoedsskom****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

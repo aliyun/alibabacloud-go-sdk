@@ -14,7 +14,7 @@ type iStartAndroidInstanceResponseBody interface {
 }
 
 type StartAndroidInstanceResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

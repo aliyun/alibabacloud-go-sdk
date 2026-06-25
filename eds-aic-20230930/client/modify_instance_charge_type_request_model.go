@@ -26,21 +26,21 @@ type iModifyInstanceChargeTypeRequest interface {
 }
 
 type ModifyInstanceChargeTypeRequest struct {
-	// Specifies whether to enable the auto-payment feature. Default value: false.
+	// Specifies whether to enable auto-payment. The default value is `false`.
 	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable the auto-renewal feature. Default value: false.
+	// Specifies whether to enable auto-renewal. The default value is `false`.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The billing method. Valid values:
+	// The new billing method for the instance groups.
 	//
-	// >  Currently, this operation only allows you to change the billing method from **pay-as-you-go to subscription**.
+	// > You can only change the billing method from pay-as-you-go to subscription.
 	//
 	// This parameter is required.
 	//
@@ -48,26 +48,27 @@ type ModifyInstanceChargeTypeRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The IDs of the instance groups.
+	// The instance group IDs.
 	//
 	// This parameter is required.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
-	// The subscription duration. The unit is specified by PeriodUnit. Valid values: 1 Month, 2 Months, 3 Months, 6 Months, and 1 Year.
+	// The subscription duration. The PeriodUnit parameter specifies the unit. Valid subscription durations are 1, 2, 3, and 6 months, and 1 year.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration. Valid values:
+	// The unit for the subscription duration. Valid values:
 	//
-	// 	- **Month**
+	// - **Month**
 	//
-	// 	- **Year**
+	// - **Year**
 	//
 	// example:
 	//
 	// Month
-	PeriodUnit  *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The promotion or coupon ID.
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 }
 

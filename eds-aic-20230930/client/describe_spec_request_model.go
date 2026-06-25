@@ -30,58 +30,50 @@ type iDescribeSpecRequest interface {
 }
 
 type DescribeSpecRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	ChargeType  *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The matrix specification.
-	//
-	// Valid values:
-	//
-	// 	- cpm.gn6.gx1
+	// The cloud phone matrix specification.
 	//
 	// example:
 	//
-	// cpm.gn6.gx1
+	// cpm.gx7.10xlarge
 	MatrixSpec *string `json:"MatrixSpec,omitempty" xml:"MatrixSpec,omitempty"`
-	// The maximum number of items to return per page in a paginated query. The value range is 1 to 100, with a default value of 100.
+	// The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Indicates the starting position for reading. If left empty, it starts from the beginning.
+	// The position from which to start the query. Leave this parameter empty to query from the beginning.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The purchase mode of cloud mobile phones.
-	//
-	// Valid values:
-	//
-	// 	- Instance (default): the instance group mode.
-	//
-	// 	- Node: the matrix mode [whitelisted].
+	// The purchase mode of the cloud phone.
 	//
 	// example:
 	//
 	// Instance
 	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
-	// List of specification IDs.
+	// A list of specification IDs.
 	SpecIds []*string `json:"SpecIds,omitempty" xml:"SpecIds,omitempty" type:"Repeated"`
-	// Specification status.
+	// The specification status.
 	//
 	// example:
 	//
 	// Available
 	SpecStatus *string `json:"SpecStatus,omitempty" xml:"SpecStatus,omitempty"`
-	// Specification type.
+	// The specification type.
 	//
 	// example:
 	//
-	// ARM
+	// CPU
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 }
 

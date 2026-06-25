@@ -16,7 +16,7 @@ type iCreateKeyPairResponseBody interface {
 }
 
 type CreateKeyPairResponseBody struct {
-	// The objects that are returned.
+	// The returned data.
 	Data *CreateKeyPairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -80,7 +80,7 @@ type CreateKeyPairResponseBodyData struct {
 	//
 	// testKeyPairName
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The private key of the key pair. The PEM-encoded private key that is in PKCS#8 format and adheres to the ADB connection specification.
+	// The private key of the key pair. The private key is PEM-encoded in PKCS#8 format and is compatible with ADB.
 	//
 	// example:
 	//

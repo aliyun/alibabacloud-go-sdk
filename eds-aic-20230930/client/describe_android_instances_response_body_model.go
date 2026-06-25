@@ -20,21 +20,21 @@ type iDescribeAndroidInstancesResponseBody interface {
 }
 
 type DescribeAndroidInstancesResponseBody struct {
-	// The cloud phone instances.
+	// The instance information.
 	InstanceModel []*DescribeAndroidInstancesResponseBodyInstanceModel `json:"InstanceModel,omitempty" xml:"InstanceModel,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The pagination token that indicates the position to which the current call has read. An empty value indicates that all data has been read.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kmma/xxE9WtwL/ADvZ****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F07A1DA1-E1EB-5CCA-8EED-12F85D32****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -100,120 +100,144 @@ func (s *DescribeAndroidInstancesResponseBody) Validate() error {
 }
 
 type DescribeAndroidInstancesResponseBodyInstanceModel struct {
-	// The ID of the instance group.
+	// The ID of the instance group to which the instance belongs.
 	//
 	// example:
 	//
 	// ag-ayyhomlal7po****
 	AndroidInstanceGroupId *string `json:"AndroidInstanceGroupId,omitempty" xml:"AndroidInstanceGroupId,omitempty"`
-	// The name of the instance group.
+	// The instance group name.
 	//
 	// example:
 	//
 	// AndroidInstanceGroupName
 	AndroidInstanceGroupName *string `json:"AndroidInstanceGroupName,omitempty" xml:"AndroidInstanceGroupName,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// acp-8at8h6ejkadjh****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// name
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
-	// The state of the instance.
+	// The instance status.
 	//
 	// example:
 	//
 	// RUNNING
 	AndroidInstanceStatus *string `json:"AndroidInstanceStatus,omitempty" xml:"AndroidInstanceStatus,omitempty"`
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// example:
 	//
 	// aig-i7yv6tkn7kh8dv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The ID of the physical instance.
+	// The physical instance ID.
 	//
 	// example:
 	//
 	// ai-9ey6io0q58rcd****
-	AppInstanceId   *string                                                           `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// The application management policy information. This corresponds to the blacklists and whitelists management of application management policies in the console.
 	AppManagePolicy *DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy `json:"AppManagePolicy,omitempty" xml:"AppManagePolicy,omitempty" type:"Struct"`
-	// The ID of the user to whom the instance is assigned.
+	// The assigned user.
 	//
 	// example:
 	//
 	// test
-	AuthorizedUserId     *string `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
-	BandwidthPackageId   *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	AuthorizedUserId *string `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
+	// The bandwidth package ID.
+	//
+	// example:
+	//
+	// np-0q6ixs7vpxcizp***
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	// The bandwidth type.
+	//
+	// example:
+	//
+	// cbwp_ecd
 	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
-	// The ID of the bound user.
+	// The bound user.
 	//
 	// example:
 	//
 	// test
-	BindUserId   *string                                                     `json:"BindUserId,omitempty" xml:"BindUserId,omitempty"`
-	BizImageType *string                                                     `json:"BizImageType,omitempty" xml:"BizImageType,omitempty"`
-	BizTags      []*DescribeAndroidInstancesResponseBodyInstanceModelBizTags `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
-	// The billing method of the instance.
+	BindUserId   *string `json:"BindUserId,omitempty" xml:"BindUserId,omitempty"`
+	BizImageType *string `json:"BizImageType,omitempty" xml:"BizImageType,omitempty"`
+	// The tag array.
+	BizTags []*DescribeAndroidInstancesResponseBodyInstanceModelBizTags `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
+	Channel *string                                                     `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The billing type of the instance.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The number of vCPUs.
+	// The number of CPU cores.
 	//
 	// example:
 	//
 	// 4
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The disks.
-	Disks              []*DescribeAndroidInstancesResponseBodyInstanceModelDisks       `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	DisplayConfig      *DescribeAndroidInstancesResponseBodyInstanceModelDisplayConfig `json:"DisplayConfig,omitempty" xml:"DisplayConfig,omitempty" type:"Struct"`
-	DownBandwidthLimit *int32                                                          `json:"DownBandwidthLimit,omitempty" xml:"DownBandwidthLimit,omitempty"`
-	// The cause of the instance data backup failure or restoration failure.
+	// The disk information.
+	Disks []*DescribeAndroidInstancesResponseBodyInstanceModelDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	// The display settings.
+	DisplayConfig *DescribeAndroidInstancesResponseBodyInstanceModelDisplayConfig `json:"DisplayConfig,omitempty" xml:"DisplayConfig,omitempty" type:"Struct"`
+	// The downstream bandwidth throttling. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 30
+	DownBandwidthLimit *int32 `json:"DownBandwidthLimit,omitempty" xml:"DownBandwidthLimit,omitempty"`
+	// The error reason for instance data backup failure or recovery failure.
 	//
 	// example:
 	//
 	// FilePathNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The time when the instance was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2023-05-06 10:42:10
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the subscription instance group expires.
+	// The expiration time of the subscription instance group.
 	//
 	// example:
 	//
 	// 2024-07-15T02:03:33Z
 	GmtExpired *string `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
-	// The time when the instance was modified.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2023-05-06 10:42:10
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The version of the image.
+	// The image ID.
+	//
+	// example:
+	//
+	// imgc-075cllfeuazh0****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image version.
 	//
 	// example:
 	//
 	// 3.5.3.867
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	// The type of the instance.
+	// The instance type.
 	//
 	// example:
 	//
 	// acp.basic.small
 	InstanceType   *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	InternetStatus *string `json:"InternetStatus,omitempty" xml:"InternetStatus,omitempty"`
-	// The ID of the key pair.
+	// The key pair ID.
 	//
 	// example:
 	//
@@ -225,33 +249,42 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	//
 	// 1024
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The IP address of the ENI.
+	// The IP address of the network interface.
 	//
 	// example:
 	//
 	// 192.168.22.48
 	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// null
 	NetworkInterfaceIpv6Address *string `json:"NetworkInterfaceIpv6Address,omitempty" xml:"NetworkInterfaceIpv6Address,omitempty"`
-	NetworkType                 *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The office network ID.
+	// The network type of the instance.
+	//
+	// example:
+	//
+	// network_pro_ecd
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The network ID. This corresponds to the network selected during creation in the console (basic shared network or advanced shared network).
 	//
 	// example:
 	//
 	// cn-shenzhen+dir-211620****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The ID of the persistent session.
+	PackageId    *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	// The persistent session ID.
 	//
 	// example:
 	//
 	// p-0btrd5zj8epo****
-	PersistentAppInstanceId *string                                                         `json:"PersistentAppInstanceId,omitempty" xml:"PersistentAppInstanceId,omitempty"`
-	PhoneDataInfo           *DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo `json:"PhoneDataInfo,omitempty" xml:"PhoneDataInfo,omitempty" type:"Struct"`
-	// The ID of the policy.
+	PersistentAppInstanceId *string `json:"PersistentAppInstanceId,omitempty" xml:"PersistentAppInstanceId,omitempty"`
+	// <props="china">The independent device storage information of the cloud phone matrix edition instance.
+	//
+	// <props="intl">This parameter is not publicly available..
+	PhoneDataInfo *DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo `json:"PhoneDataInfo,omitempty" xml:"PhoneDataInfo,omitempty" type:"Struct"`
+	// The policy group ID.
 	//
 	// example:
 	//
@@ -263,20 +296,25 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	//
 	// 10.32.1.41
 	PublicIpAddress *string `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty"`
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// null
 	PublicIpv6Address *string `json:"PublicIpv6Address,omitempty" xml:"PublicIpv6Address,omitempty"`
-	QosRuleId         *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
-	// The progress of instance data backup or restoration.
+	// The public network rate limiting rule ID (applies only to premium bandwidth).
+	//
+	// example:
+	//
+	// qos-5605u0gelk200****
+	QosRuleId *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
+	// The progress of instance data backup or recovery.
 	//
 	// example:
 	//
 	// 100
 	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// example:
 	//
@@ -288,27 +326,62 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	//
 	// local
 	RenderingType *string `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
-	ServerStatus  *string `json:"ServerStatus,omitempty" xml:"ServerStatus,omitempty"`
-	ServerType    *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The session status.
+	// <props="china">The matrix status.
 	//
-	// Valid values:
+	// <props="intl">This parameter is not publicly available..
 	//
-	// 	- disConnect: The session is disconnected.
+	// example:
 	//
-	// 	- connect: The session is connected.
+	// RUNNING
+	ServerStatus *string `json:"ServerStatus,omitempty" xml:"ServerStatus,omitempty"`
+	// <props="china">The cloud phone matrix specification.
+	//
+	// <props="intl">This parameter is not publicly available..
+	//
+	// example:
+	//
+	// cpm.gx7.10xlarge
+	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	// The session connection status.
 	//
 	// example:
 	//
 	// connect
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	StreamMode    *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
+	// <props="china">The streaming mode of instances in the cloud phone matrix.
+	//
+	// <props="intl">This parameter is not publicly available..
+	//
+	// example:
+	//
+	// 1
+	StreamMode *int32 `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
+	// The Android system version.
+	//
+	// example:
+	//
+	// Android 11
 	SystemVersion *string `json:"SystemVersion,omitempty" xml:"SystemVersion,omitempty"`
-	// The tags.
-	Tags             []*DescribeAndroidInstancesResponseBodyInstanceModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	UpBandwidthLimit *int32                                                   `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
-	VSwitchId        *string                                                  `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId           *string                                                  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The list of tags.
+	Tags []*DescribeAndroidInstancesResponseBodyInstanceModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The upstream bandwidth throttling. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 5
+	UpBandwidthLimit *int32 `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
+	// The vSwitch ID in the VPC.
+	//
+	// example:
+	//
+	// vsw-2zepmau2hsbhos42****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone ID to which the instance belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeAndroidInstancesResponseBodyInstanceModel) String() string {
@@ -373,6 +446,10 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetBizImageType() *s
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetBizTags() []*DescribeAndroidInstancesResponseBodyInstanceModelBizTags {
 	return s.BizTags
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetChannel() *string {
+	return s.Channel
 }
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetChargeType() *string {
@@ -449,6 +526,10 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetNetworkType() *st
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetOfficeSiteId() *string {
 	return s.OfficeSiteId
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetPackageId() *string {
+	return s.PackageId
 }
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetPersistentAppInstanceId() *string {
@@ -593,6 +674,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetBizTags(v []*Desc
 	return s
 }
 
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetChannel(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.Channel = &v
+	return s
+}
+
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetChargeType(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.ChargeType = &v
 	return s
@@ -685,6 +771,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetNetworkType(v str
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetOfficeSiteId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetPackageId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.PackageId = &v
 	return s
 }
 
@@ -825,7 +916,17 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) Validate() error {
 }
 
 type DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy struct {
-	AppManagePolicyId   *string `json:"AppManagePolicyId,omitempty" xml:"AppManagePolicyId,omitempty"`
+	// The application management policy ID.
+	//
+	// example:
+	//
+	// amp-dgiavcvibfdds****
+	AppManagePolicyId *string `json:"AppManagePolicyId,omitempty" xml:"AppManagePolicyId,omitempty"`
+	// The name of the application management policy.
+	//
+	// example:
+	//
+	// Application group 1
 	AppManagePolicyName *string `json:"AppManagePolicyName,omitempty" xml:"AppManagePolicyName,omitempty"`
 }
 
@@ -860,7 +961,17 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy) Valid
 }
 
 type DescribeAndroidInstancesResponseBodyInstanceModelBizTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// releaseFlag
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// on
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -901,7 +1012,7 @@ type DescribeAndroidInstancesResponseBodyInstanceModelDisks struct {
 	//
 	// 32
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The type of the disk.
+	// The disk type.
 	//
 	// example:
 	//
@@ -940,11 +1051,36 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModelDisks) Validate() erro
 }
 
 type DescribeAndroidInstancesResponseBodyInstanceModelDisplayConfig struct {
-	Dpi              *int32  `json:"Dpi,omitempty" xml:"Dpi,omitempty"`
-	Fps              *int32  `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	LockResolution   *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
-	ResolutionHeight *int32  `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
-	ResolutionWidth  *int32  `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	// DPI。
+	//
+	// example:
+	//
+	// 240
+	Dpi *int32 `json:"Dpi,omitempty" xml:"Dpi,omitempty"`
+	// The frame rate.
+	//
+	// example:
+	//
+	// 30
+	Fps *int32 `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// Indicates whether the resolution is locked.
+	//
+	// example:
+	//
+	// off
+	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
+	// The height of the resolution. Unit: pixels.
+	//
+	// example:
+	//
+	// 1280
+	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// The width of the resolution. Unit: pixels.
+	//
+	// example:
+	//
+	// 720
+	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
 }
 
 func (s DescribeAndroidInstancesResponseBodyInstanceModelDisplayConfig) String() string {
@@ -1005,8 +1141,18 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModelDisplayConfig) Validat
 }
 
 type DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo struct {
-	PhoneDataId     *string `json:"PhoneDataId,omitempty" xml:"PhoneDataId,omitempty"`
-	PhoneDataVolume *int32  `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
+	// The independent device storage ID.
+	//
+	// example:
+	//
+	// pd-sbcudgidbhb****
+	PhoneDataId *string `json:"PhoneDataId,omitempty" xml:"PhoneDataId,omitempty"`
+	// The capacity of the independent device storage. Unit: GiB.
+	//
+	// example:
+	//
+	// 20
+	PhoneDataVolume *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
 }
 
 func (s DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo) String() string {
@@ -1040,13 +1186,13 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo) Validat
 }
 
 type DescribeAndroidInstancesResponseBodyInstanceModelTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

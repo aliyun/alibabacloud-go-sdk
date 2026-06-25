@@ -14,6 +14,7 @@ type iDeleteSystemPropertyTemplatesRequest interface {
 }
 
 type DeleteSystemPropertyTemplatesRequest struct {
+	// The IDs of the property templates.
 	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
 }
 

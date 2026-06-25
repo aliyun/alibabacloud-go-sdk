@@ -72,23 +72,37 @@ type BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels struct {
 	//
 	// aig-1uzb6heg797z3****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceId      *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	ErrorCode          *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// ai-0caoetkqi8kj****
+	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// example:
+	//
+	// InvalidResourceId.NotFound
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The ID of the cloud phone instance.
 	//
 	// example:
 	//
 	// acp-ajxvwo1u0hqvd****
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// p-abdywvcksdb****
 	PersistentAppInstanceId *string `json:"PersistentAppInstanceId,omitempty" xml:"PersistentAppInstanceId,omitempty"`
-	Port                    *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The port used for establishing a connection.
+	//
+	// example:
+	//
+	// 10000
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The ID of the task.
 	//
 	// example:
 	//
 	// cn-hangzhou@c9f5c2e8-f5c4-4b01-8602-000cae94****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The state of the task.
+	// The state of the task. If FINISHED is returned, it indicates that a value can be retrieved from the Ticket field. If the returned value is not FINISHED, you still need to use this operation to query the Ticket generation result by using TaskId.
 	//
 	// example:
 	//

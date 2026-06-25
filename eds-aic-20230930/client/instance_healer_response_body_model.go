@@ -16,7 +16,10 @@ type iInstanceHealerResponseBody interface {
 }
 
 type InstanceHealerResponseBody struct {
+	// The diagnosis result object.
 	InstanceHealerModel *InstanceHealerResponseBodyInstanceHealerModel `json:"InstanceHealerModel,omitempty" xml:"InstanceHealerModel,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 7B9EFA4F-4305-5968-BAEE-BD8B8DE5****
@@ -59,6 +62,8 @@ func (s *InstanceHealerResponseBody) Validate() error {
 }
 
 type InstanceHealerResponseBodyInstanceHealerModel struct {
+	// The result of the task execution.
+	//
 	// example:
 	//
 	// True

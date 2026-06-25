@@ -34,57 +34,25 @@ type iModifyPolicyGroupRequest interface {
 }
 
 type ModifyPolicyGroupRequest struct {
-	// Specifies whether to enable the webcam redirection feature.
-	//
-	// Valid values:
-	//
-	// 	- off
-	//
-	// 	- on
+	// Specifies whether to enable local camera redirection.
 	//
 	// example:
 	//
 	// off
 	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
-	// The read/write permissions on the clipboard.
-	//
-	// Valid values:
-	//
-	// 	- read: read-only.
-	//
-	// 	- readwrite: ready and write.
-	//
-	// 	- off: read/write disabled.
+	// The clipboard permission.
 	//
 	// example:
 	//
 	// readwrite
 	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
-	// The file transfer policy of the Alibaba Cloud Workspace web client.
-	//
-	// Valid values:
-	//
-	// 	- all: File upload and download are supported.
-	//
-	// 	- download: Only file download is supported.
-	//
-	// 	- upload: Only file upload is supported.
-	//
-	// 	- off: File upload or download is forbidden.
+	// The file transfer policy for the Wuying web client.
 	//
 	// example:
 	//
 	// off
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
-	// The read/write permissions on the on-premises drive.
-	//
-	// Valid values:
-	//
-	// 	- read: read-only.
-	//
-	// 	- readwrite: ready and write.
-	//
-	// 	- off: read/write disabled.
+	// The local disk mapping permission.
 	//
 	// example:
 	//
@@ -92,29 +60,23 @@ type ModifyPolicyGroupRequest struct {
 	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
 	// Specifies whether to lock the resolution.
 	//
-	// Valid values:
-	//
-	// 	- off
-	//
-	// 	- on
-	//
 	// example:
 	//
 	// off
 	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
-	// The network redirection policy.
+	// Network redirection.
 	NetRedirectPolicy *ModifyPolicyGroupRequestNetRedirectPolicy `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty" type:"Struct"`
-	// The ID of the policy.
+	// The policy ID.
 	//
 	// example:
 	//
 	// pg-4bi18ebi9tfjh****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The name of the policy.
+	// The policy name.
 	//
 	// example:
 	//
-	// defaultPolicyGroup
+	// Default policy
 	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
 	// The height of the resolution. Unit: pixels.
 	//
@@ -127,8 +89,9 @@ type ModifyPolicyGroupRequest struct {
 	// example:
 	//
 	// 720
-	ResolutionWidth *int32                             `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
-	Watermark       *ModifyPolicyGroupRequestWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty" type:"Struct"`
+	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	// The screen watermark.
+	Watermark *ModifyPolicyGroupRequestWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty" type:"Struct"`
 }
 
 func (s ModifyPolicyGroupRequest) String() string {
@@ -253,19 +216,13 @@ func (s *ModifyPolicyGroupRequest) Validate() error {
 }
 
 type ModifyPolicyGroupRequestNetRedirectPolicy struct {
-	// Specifies whether to manually configure a custom proxy.
-	//
-	// Valid values:
-	//
-	// 	- off
-	//
-	// 	- on
+	// Specifies whether to manually configure a transparent proxy.
 	//
 	// example:
 	//
 	// off
 	CustomProxy *string `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
-	// The IPv4 address of the custom proxy.
+	// The IP address of the transparent proxy. The value must be an IPv4 address.
 	//
 	// example:
 	//
@@ -273,45 +230,36 @@ type ModifyPolicyGroupRequestNetRedirectPolicy struct {
 	HostAddr *string `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
 	// Specifies whether to enable network redirection.
 	//
-	// Valid values:
-	//
-	// 	- off
-	//
-	// 	- on
-	//
 	// example:
 	//
 	// off
 	NetRedirect *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
-	// The port of the custom proxy. Valid values: 1 to 65535.
+	// The port for the transparent proxy. The port number must be an integer from 1 to 65535.
 	//
 	// example:
 	//
 	// 1145
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The password of the proxy. The password must be 1 to 256 in length and cannot contain Chinese character or space characters.
+	// The password for the proxy. The password must be 1 to 256 characters in length and cannot contain Chinese characters or spaces.
 	//
 	// example:
 	//
 	// password
 	ProxyPassword *string `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
-	// The type of the proxy protocol.
-	//
-	// Valid values:
-	//
-	// 	- socks5.
+	// The proxy protocol type.
 	//
 	// example:
 	//
 	// socks5
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
-	// The username of the proxy. The name must be 1 to 256 in length and cannot contain Chinese character or space characters.
+	// The username for the proxy. The username must be 1 to 256 characters in length and cannot contain Chinese characters or spaces.
 	//
 	// example:
 	//
 	// username
-	ProxyUserName *string                                           `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
-	Rules         []*ModifyPolicyGroupRequestNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
+	// The proxy rules.
+	Rules []*ModifyPolicyGroupRequestNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s ModifyPolicyGroupRequestNetRedirectPolicy) String() string {
@@ -408,8 +356,18 @@ func (s *ModifyPolicyGroupRequestNetRedirectPolicy) Validate() error {
 }
 
 type ModifyPolicyGroupRequestNetRedirectPolicyRules struct {
+	// The rule type.
+	//
+	// example:
+	//
+	// domain
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The application package name or domain name.
+	//
+	// example:
+	//
+	// example.com
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 
 func (s ModifyPolicyGroupRequestNetRedirectPolicyRules) String() string {
@@ -443,12 +401,38 @@ func (s *ModifyPolicyGroupRequestNetRedirectPolicyRules) Validate() error {
 }
 
 type ModifyPolicyGroupRequestWatermark struct {
-	WatermarkColor             *int32    `json:"WatermarkColor,omitempty" xml:"WatermarkColor,omitempty"`
-	WatermarkCustomText        *string   `json:"WatermarkCustomText,omitempty" xml:"WatermarkCustomText,omitempty"`
-	WatermarkFontSize          *int32    `json:"WatermarkFontSize,omitempty" xml:"WatermarkFontSize,omitempty"`
-	WatermarkSwitch            *string   `json:"WatermarkSwitch,omitempty" xml:"WatermarkSwitch,omitempty"`
-	WatermarkTransparencyValue *int32    `json:"WatermarkTransparencyValue,omitempty" xml:"WatermarkTransparencyValue,omitempty"`
-	WatermarkTypes             []*string `json:"WatermarkTypes,omitempty" xml:"WatermarkTypes,omitempty" type:"Repeated"`
+	// The font color of the watermark. Valid values: 0 to 16777215.
+	//
+	// example:
+	//
+	// 0
+	WatermarkColor *int32 `json:"WatermarkColor,omitempty" xml:"WatermarkColor,omitempty"`
+	// The custom text for the watermark. The text can be up to 10 characters in length and cannot contain emoji characters.
+	//
+	// example:
+	//
+	// custom text
+	WatermarkCustomText *string `json:"WatermarkCustomText,omitempty" xml:"WatermarkCustomText,omitempty"`
+	// The font size of the watermark. Valid values: 10 to 20.
+	//
+	// example:
+	//
+	// 12
+	WatermarkFontSize *int32 `json:"WatermarkFontSize,omitempty" xml:"WatermarkFontSize,omitempty"`
+	// Specifies whether to enable the screen watermark.
+	//
+	// example:
+	//
+	// off
+	WatermarkSwitch *string `json:"WatermarkSwitch,omitempty" xml:"WatermarkSwitch,omitempty"`
+	// The opacity of the watermark. A larger value makes the watermark more opaque. Valid values: 10 to 100.
+	//
+	// example:
+	//
+	// 25
+	WatermarkTransparencyValue *int32 `json:"WatermarkTransparencyValue,omitempty" xml:"WatermarkTransparencyValue,omitempty"`
+	// The content of the screen watermark.
+	WatermarkTypes []*string `json:"WatermarkTypes,omitempty" xml:"WatermarkTypes,omitempty" type:"Repeated"`
 }
 
 func (s ModifyPolicyGroupRequestWatermark) String() string {

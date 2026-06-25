@@ -18,15 +18,20 @@ type iStopAndroidInstanceRequest interface {
 }
 
 type StopAndroidInstanceRequest struct {
-	// The IDs of the cloud phone instances.
+	// A list of instance IDs.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	// Specifies whether to enforce a stop operation. If a cloud phone instance fails to stop due to system or network issues, a forced stop can be triggered, though it may result in data loss.
+	// Specifies whether to forcibly shut down the instance. If an instance cannot shut down because of a system or network exception, you can force it to shut down. This may cause data loss.
 	//
 	// example:
 	//
 	// false
-	ForceStop *bool   `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
-	SaleMode  *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	ForceStop *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	// The sale pattern. This parameter is deprecated.
+	//
+	// example:
+	//
+	// Instance
+	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 }
 
 func (s StopAndroidInstanceRequest) String() string {

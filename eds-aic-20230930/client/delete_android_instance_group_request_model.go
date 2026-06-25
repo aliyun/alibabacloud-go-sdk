@@ -14,7 +14,7 @@ type iDeleteAndroidInstanceGroupRequest interface {
 }
 
 type DeleteAndroidInstanceGroupRequest struct {
-	// The IDs of the instance groups.
+	// A list of instance group IDs.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
 }
 

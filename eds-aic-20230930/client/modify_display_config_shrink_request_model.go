@@ -16,8 +16,10 @@ type iModifyDisplayConfigShrinkRequest interface {
 }
 
 type ModifyDisplayConfigShrinkRequest struct {
-	AndroidInstanceIds  []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	DisplayConfigShrink *string   `json:"DisplayConfig,omitempty" xml:"DisplayConfig,omitempty"`
+	// A list of instance IDs.
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+	// The display settings.
+	DisplayConfigShrink *string `json:"DisplayConfig,omitempty" xml:"DisplayConfig,omitempty"`
 }
 
 func (s ModifyDisplayConfigShrinkRequest) String() string {

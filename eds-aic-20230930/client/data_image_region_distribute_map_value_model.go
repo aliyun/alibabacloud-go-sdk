@@ -16,25 +16,13 @@ type iDataImageRegionDistributeMapValue interface {
 }
 
 type DataImageRegionDistributeMapValue struct {
-	// The status of the image distribution task.
-	//
-	// Valid values:
-	//
-	// 	- AVAILABLE: The task is ready.
-	//
-	// 	- DELETE: The task is deleted.
-	//
-	// 	- INIT: The task is being initialized.
-	//
-	// 	- CREATE_FAILED: The task failed to be created.
-	//
-	// 	- CREATING: The task is being created.
+	// The distribution status.
 	//
 	// example:
 	//
 	// AVAILABLE
 	DistributeStatus *string `json:"DistributeStatus,omitempty" xml:"DistributeStatus,omitempty"`
-	// The distribution progress of the image.
+	// The distribution progress.
 	//
 	// example:
 	//

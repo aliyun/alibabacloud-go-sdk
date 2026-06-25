@@ -30,13 +30,13 @@ type ModifyAppRequest struct {
 	//
 	// example:
 	//
-	// defaultAppName
+	// Application name
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The description of the application.
 	//
 	// example:
 	//
-	// default description.
+	// Application description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The URL of the icon.
 	//

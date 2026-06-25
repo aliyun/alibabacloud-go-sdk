@@ -22,22 +22,32 @@ type iCreateCreditPackageResponseBody interface {
 }
 
 type CreateCreditPackageResponseBody struct {
+	// The credit package ID.
+	//
 	// example:
 	//
 	// crp-bt7e2t4anbq50****
 	CreditPackageId *string `json:"CreditPackageId,omitempty" xml:"CreditPackageId,omitempty"`
+	// The time when the credit package takes effect.
+	//
 	// example:
 	//
 	// 2026-04-30 00:00:00
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	// The time when the credit package expires.
+	//
 	// example:
 	//
 	// 2026-10-30 00:00:00
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 223684716098****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F07A1DA1-E1EB-5CCA-8EED-12F85D32****

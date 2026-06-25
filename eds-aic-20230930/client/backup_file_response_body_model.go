@@ -24,25 +24,25 @@ type BackupFileResponseBody struct {
 	//
 	// example:
 	//
-	// 100
+	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The object that is returned.
+	// The result object.
 	//
 	// example:
 	//
 	// 6C8439B9-7DBF-57F4-92AE-55A9B9D3****
 	Data []*BackupFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6C8439B9-7DBF-57F4-92AE-55A9B9D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the batch task.
+	// The batch task ID.
 	//
 	// example:
 	//
-	// t-22ex666a5mco5****
+	// t-14xwibw7pyrjd****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -120,13 +120,13 @@ type BackupFileResponseBodyData struct {
 	//
 	// example:
 	//
-	// a-58ftsoo90p0qa****.ab
+	// MyBackup
 	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
 	// The task ID.
 	//
 	// example:
 	//
-	// t-22ex666a5mco5****
+	// t-22ex666a653gq****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

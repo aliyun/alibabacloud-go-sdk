@@ -20,11 +20,21 @@ type iResetAndroidInstancesInGroupRequest interface {
 }
 
 type ResetAndroidInstancesInGroupRequest struct {
-	// The IDs of the cloud phone instances.
+	// A list of instance IDs.
 	AndroidInstanceIds    []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
 	IgnoreParamValidation *bool     `json:"IgnoreParamValidation,omitempty" xml:"IgnoreParamValidation,omitempty"`
-	SaleMode              *string   `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
-	SettingResetType      *int32    `json:"SettingResetType,omitempty" xml:"SettingResetType,omitempty"`
+	// The sale mode. This parameter is deprecated.
+	//
+	// example:
+	//
+	// Instance
+	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	// <props="china">Specifies whether to retain the property settings when you reset the instances. By default, the property settings are not retained. This parameter applies only to cloud phone matrix instances. Run the wya dump config command to view the details of the retained properties.<props="intl">This parameter is not supported on the international site (alibabacloud.com).
+	//
+	// example:
+	//
+	// 1
+	SettingResetType *int32 `json:"SettingResetType,omitempty" xml:"SettingResetType,omitempty"`
 }
 
 func (s ResetAndroidInstancesInGroupRequest) String() string {

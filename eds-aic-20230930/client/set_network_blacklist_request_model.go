@@ -16,8 +16,14 @@ type iSetNetworkBlacklistRequest interface {
 }
 
 type SetNetworkBlacklistRequest struct {
+	// Domain name blacklist.
+	//
+	// > Supports a maximum of 200 domain names.
 	DomainBlacklist []*string `json:"DomainBlacklist,omitempty" xml:"DomainBlacklist,omitempty" type:"Repeated"`
-	IpBlacklist     []*string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty" type:"Repeated"`
+	// IP address blacklist.
+	//
+	// > Supports a maximum of 200 IP addresses or IP address segments.
+	IpBlacklist []*string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty" type:"Repeated"`
 }
 
 func (s SetNetworkBlacklistRequest) String() string {

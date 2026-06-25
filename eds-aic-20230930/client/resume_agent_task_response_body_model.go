@@ -20,19 +20,26 @@ type iResumeAgentTaskResponseBody interface {
 }
 
 type ResumeAgentTaskResponseBody struct {
+	// The API status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1A923337-44D9-5CAD-9A53-95084BD4****
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*ResumeAgentTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of tasks.
+	Tasks []*ResumeAgentTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s ResumeAgentTaskResponseBody) String() string {
@@ -93,22 +100,46 @@ func (s *ResumeAgentTaskResponseBody) Validate() error {
 }
 
 type ResumeAgentTaskResponseBodyTasks struct {
+	// The current status of the task. Valid values:
+	//
+	// `PENDING`: The task is being created.
+	//
+	// `RUNNING`: The task is running.
+	//
+	// `COMPLETED`: The task has completed.
+	//
+	// `FAILED`: The task has failed.
+	//
+	// `TIMEOUT`: The task has timed out.
+	//
+	// `PAUSING`: The task is pausing.
+	//
+	// `PAUSED`: The task is paused.
+	//
 	// example:
 	//
 	// RUNNING
 	CurrentStatus *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
+	// The reason why the task failed to resume.
+	//
 	// example:
 	//
 	// Task status [COMPLETED] does not support resume, only PAUSED tasks can be resumed.
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
+	// The ID of the mobile instance.
+	//
 	// example:
 	//
 	// acp-ek65k51zoxia3x8xz
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time when the task was resumed, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2026-04-13T17:42:19Z
 	ResumingAt *string `json:"ResumingAt,omitempty" xml:"ResumingAt,omitempty"`
+	// The globally unique ID of the task.
+	//
 	// example:
 	//
 	// t-imr0fufqd7cle****

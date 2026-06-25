@@ -18,21 +18,21 @@ type iDescribeRegionsRequest interface {
 type DescribeRegionsRequest struct {
 	// The display language of the console. Valid values:
 	//
-	// 	- cn: Simplified Chinese
+	// - cn: Simplified Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
-	// en
+	// cn
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The sales mode.
 	//
 	// Valid values:
 	//
-	// 	- Instance: the instance group mode. [Default]
+	// - Instance: the instance group mode. [Default]
 	//
-	// 	- Node: the matrix mode. [Whitelist required]
+	// - Node: the matrix mode. [Whitelist required]
 	//
 	// example:
 	//

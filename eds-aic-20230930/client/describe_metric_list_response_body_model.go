@@ -20,15 +20,22 @@ type iDescribeMetricListResponseBody interface {
 }
 
 type DescribeMetricListResponseBody struct {
+	// The number of records.
+	//
 	// example:
 	//
 	// 1
-	Count            *int32                                            `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The instance monitoring data.
 	MetricTotalModel []*DescribeMetricListResponseBodyMetricTotalModel `json:"MetricTotalModel,omitempty" xml:"MetricTotalModel,omitempty" type:"Repeated"`
+	// The token for the next query. If not all results are returned, this parameter is not empty. Use the returned token to query the next page.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
@@ -93,14 +100,21 @@ func (s *DescribeMetricListResponseBody) Validate() error {
 }
 
 type DescribeMetricListResponseBodyMetricTotalModel struct {
+	// For instance-level monitoring, the Cloud Phone instance ID is returned.
+	//
+	// <props="china">For matrix-level monitoring, the matrix ID is returned.
+	//
 	// example:
 	//
 	// acp-fkuit0cmyru4p****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// np-5hh4a31emkt6u****
-	InstanceId      *string                                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The monitoring data for metrics.
 	MetricModelList []*DescribeMetricListResponseBodyMetricTotalModelMetricModelList `json:"MetricModelList,omitempty" xml:"MetricModelList,omitempty" type:"Repeated"`
 }
 
@@ -153,11 +167,19 @@ func (s *DescribeMetricListResponseBodyMetricTotalModel) Validate() error {
 }
 
 type DescribeMetricListResponseBodyMetricTotalModelMetricModelList struct {
+	// A list of monitoring data points.
 	DataPoints []*DescribeMetricListResponseBodyMetricTotalModelMetricModelListDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Repeated"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// cpu_utilization
-	MetricName  *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The process name.
+	//
+	// example:
+	//
+	// Required
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 }
 
@@ -210,26 +232,46 @@ func (s *DescribeMetricListResponseBodyMetricTotalModelMetricModelList) Validate
 }
 
 type DescribeMetricListResponseBodyMetricTotalModelMetricModelListDataPoints struct {
+	// The average value. Unit: %.
+	//
+	// > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
+	//
 	// example:
 	//
 	// 99.52
 	Average *float64 `json:"Average,omitempty" xml:"Average,omitempty"`
+	// The GPU ID.
+	//
 	// example:
 	//
 	// cpn-1t1bxvp9az2pk****-gpu-0
 	GpuId *string `json:"GpuId,omitempty" xml:"GpuId,omitempty"`
+	// The maximum value. Unit: %.
+	//
+	// > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
+	//
 	// example:
 	//
 	// 100
 	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// The minimum value. Unit: %.
+	//
+	// > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
+	//
 	// example:
 	//
 	// 93.1
 	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// The timestamp of the statistics. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1548777660000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The data value. Unit: %.
+	//
+	// > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
+	//
 	// example:
 	//
 	// tf-testacc-oos-parameter

@@ -22,19 +22,33 @@ type iModifySystemPropertyTemplateRequest interface {
 }
 
 type ModifySystemPropertyTemplateRequest struct {
+	// Specifies whether to automatically generate preset system properties.
+	//
 	// example:
 	//
 	// true
 	EnableAuto *bool `json:"EnableAuto,omitempty" xml:"EnableAuto,omitempty"`
+	// The URL of the property template file. The system synchronously parses the file. If the file format is invalid, a parsing error is returned.
+	//
+	// > File template format: `{ "properties":{"key1":"value1", "key2":"value2"}}`.
+	//
 	// example:
 	//
 	// https://filepath****.com
-	FilePath           *string                                                `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The information about the system property template.
 	SystemPropertyInfo *ModifySystemPropertyTemplateRequestSystemPropertyInfo `json:"SystemPropertyInfo,omitempty" xml:"SystemPropertyInfo,omitempty" type:"Struct"`
+	// The ID of the property template.
+	//
 	// example:
 	//
 	// ap-angyvganxlf****
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the template.
+	//
+	// example:
+	//
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -101,63 +115,94 @@ func (s *ModifySystemPropertyTemplateRequest) Validate() error {
 }
 
 type ModifySystemPropertyTemplateRequestSystemPropertyInfo struct {
+	// The information about custom properties.
 	CustomPropertyInfos []*ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos `json:"CustomPropertyInfos,omitempty" xml:"CustomPropertyInfos,omitempty" type:"Repeated"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	RoBootloader *string `json:"RoBootloader,omitempty" xml:"RoBootloader,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	RoBuildDisplayId *string `json:"RoBuildDisplayId,omitempty" xml:"RoBuildDisplayId,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	RoBuildFingerprint *string `json:"RoBuildFingerprint,omitempty" xml:"RoBuildFingerprint,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	RoBuildHost *string `json:"RoBuildHost,omitempty" xml:"RoBuildHost,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	RoBuildId *string `json:"RoBuildId,omitempty" xml:"RoBuildId,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	RoBuildProduct *string `json:"RoBuildProduct,omitempty" xml:"RoBuildProduct,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	RoBuildTags *string `json:"RoBuildTags,omitempty" xml:"RoBuildTags,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	RoBuildType *string `json:"RoBuildType,omitempty" xml:"RoBuildType,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	RoBuildUser *string `json:"RoBuildUser,omitempty" xml:"RoBuildUser,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	RoProductBoard *string `json:"RoProductBoard,omitempty" xml:"RoProductBoard,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	RoProductBrand *string `json:"RoProductBrand,omitempty" xml:"RoProductBrand,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	RoProductDevice *string `json:"RoProductDevice,omitempty" xml:"RoProductDevice,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	RoProductManufacturer *string `json:"RoProductManufacturer,omitempty" xml:"RoProductManufacturer,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	RoProductModel *string `json:"RoProductModel,omitempty" xml:"RoProductModel,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
@@ -330,10 +375,14 @@ func (s *ModifySystemPropertyTemplateRequestSystemPropertyInfo) Validate() error
 }
 
 type ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos struct {
+	// The key of the custom property.
+	//
 	// example:
 	//
 	// propKey
 	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	// The value of the custom property.
+	//
 	// example:
 	//
 	// propValue

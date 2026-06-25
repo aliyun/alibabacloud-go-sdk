@@ -110,7 +110,7 @@ type DescribeAppsResponseBodyData struct {
 	//
 	// example:
 	//
-	// 10244893
+	// 2.7
 	ApkSize *string `json:"ApkSize,omitempty" xml:"ApkSize,omitempty"`
 	// The ID of the application.
 	//
@@ -124,6 +124,11 @@ type DescribeAppsResponseBodyData struct {
 	//
 	// testapp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The application type.
+	//
+	// example:
+	//
+	// Normal
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// Region id.
 	//
@@ -135,7 +140,7 @@ type DescribeAppsResponseBodyData struct {
 	//
 	// example:
 	//
-	// default description.
+	// CustomApp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time when the application was created.
 	//
@@ -159,17 +164,17 @@ type DescribeAppsResponseBodyData struct {
 	//
 	// Valid values:
 	//
-	// 	- INSTALLFAILED: The application failed to be installed.
+	// - INSTALLFAILED: The application failed to be installed.
 	//
-	// 	- UNINSTALLING: The application is being uninstalled.
+	// - UNINSTALLING: The application is being uninstalled.
 	//
-	// 	- INSTALLING: The application is being installed.
+	// - INSTALLING: The application is being installed.
 	//
-	// 	- UNINSTALLED: The application is uninstalled.
+	// - UNINSTALLED: The application is uninstalled.
 	//
-	// 	- INSTALLED: The application is installed.
+	// - INSTALLED: The application is installed.
 	//
-	// 	- UNINSTALLFAILED: The application failed to be uninstalled.
+	// - UNINSTALLFAILED: The application failed to be uninstalled.
 	//
 	// example:
 	//
@@ -181,23 +186,23 @@ type DescribeAppsResponseBodyData struct {
 	//
 	// example:
 	//
-	// THCIEH73KEK3334
+	// 009ee07fe13a29fa0c180ed0b6bc****
 	MD5 *string `json:"MD5,omitempty" xml:"MD5,omitempty"`
 	// The name of the application package.
 	//
 	// example:
 	//
-	// cn.rdstar.rdstarandroid
+	// com.example.chinalife
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
 	// The status of the application.
 	//
 	// Valid values:
 	//
-	// 	- FAILED: The application failed to be created.
+	// - FAILED: The application failed to be created.
 	//
-	// 	- NORMAL: The application is available.
+	// - NORMAL: The application is available.
 	//
-	// 	- CREATING: The application is being created.
+	// - CREATING: The application is being created.
 	//
 	// example:
 	//

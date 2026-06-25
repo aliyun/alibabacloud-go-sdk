@@ -20,17 +20,22 @@ type iDescribeSystemPropertyTemplatesResponseBody interface {
 }
 
 type DescribeSystemPropertyTemplatesResponseBody struct {
+	// The token used to start the next query. An empty value indicates that all results have been returned.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 5C5CEF0A-D6E1-58D3-8750-67DB4F82****
-	RequestId                   *string                                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of property template objects.
 	SystemPropertyTemplateModel []*DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModel `json:"SystemPropertyTemplateModel,omitempty" xml:"SystemPropertyTemplateModel,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -95,23 +100,37 @@ func (s *DescribeSystemPropertyTemplatesResponseBody) Validate() error {
 }
 
 type DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModel struct {
+	// Indicates whether preset system properties can be automatically generated.
+	//
 	// example:
 	//
 	// true
 	EnableAuto *bool `json:"EnableAuto,omitempty" xml:"EnableAuto,omitempty"`
+	// The URL path of the property template file.
+	//
 	// example:
 	//
 	// https://filepath****.com
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The template status.
+	//
 	// example:
 	//
 	// init
-	Status             *string                                                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The system property template information.
 	SystemPropertyInfo *DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfo `json:"SystemPropertyInfo,omitempty" xml:"SystemPropertyInfo,omitempty" type:"Struct"`
+	// The property template ID.
+	//
 	// example:
 	//
 	// ap-0caoenwutkkx****
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -187,7 +206,10 @@ func (s *DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModel)
 }
 
 type DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfo struct {
+	// The custom property information.
 	CustomPropertyInfos []*DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos `json:"CustomPropertyInfos,omitempty" xml:"CustomPropertyInfos,omitempty" type:"Repeated"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
@@ -234,10 +256,14 @@ func (s *DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelS
 }
 
 type DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos struct {
+	// The property name.
+	//
 	// example:
 	//
 	// propKey
 	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	// The property value.
+	//
 	// example:
 	//
 	// propValue

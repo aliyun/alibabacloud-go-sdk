@@ -24,7 +24,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-shanghai":    dara.String("eds-aic.cn-shanghai.aliyuncs.com"),
+		"ap-southeast-1": dara.String("eds-aic.ap-southeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -62,9 +66,9 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Description:
 //
-//	  You can attach to an ADB key pair only to cloud phone instances in the Running state.
+// - You can attach to an ADB key pair only to cloud phone instances in the Running state.
 //
-//		- After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the ~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
+// - After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the \\~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
 //
 // @param request - AttachKeyPairRequest
 //
@@ -116,9 +120,9 @@ func (client *Client) AttachKeyPairWithOptions(request *AttachKeyPairRequest, ru
 //
 // Description:
 //
-//	  You can attach to an ADB key pair only to cloud phone instances in the Running state.
+// - You can attach to an ADB key pair only to cloud phone instances in the Running state.
 //
-//		- After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the ~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
+// - After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the \\~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
 //
 // @param request - AttachKeyPairRequest
 //
@@ -218,7 +222,15 @@ func (client *Client) AuthorizeAndroidInstance(request *AuthorizeAndroidInstance
 
 // Summary:
 //
-// 整机备份
+// Creates a full backup of a Cloud Phone instance. The backup includes installed applications and properties.
+//
+// Description:
+//
+// 1. To ensure that the backup is successful, shut down the instance before you start the data backup. The operation may fail if the cloud phone instance is used during the backup process.
+//
+// 2. You should test the backup file to ensure that you can restore the instance from it. After the restoration is complete, verify that your data is complete and that all features function correctly. Do not delete the original backup file or reset the source instance until this verification is complete. Otherwise, you may lose your data.
+//
+// 3. You cannot back up and restore data between different image versions, between custom images and public images, or across different architectures, such as cpm.gx7.10xlarge and cpm.gx8.16xlarge.
 //
 // @param request - BackupAndroidInstanceRequest
 //
@@ -278,7 +290,15 @@ func (client *Client) BackupAndroidInstanceWithOptions(request *BackupAndroidIns
 
 // Summary:
 //
-// 整机备份
+// Creates a full backup of a Cloud Phone instance. The backup includes installed applications and properties.
+//
+// Description:
+//
+// 1. To ensure that the backup is successful, shut down the instance before you start the data backup. The operation may fail if the cloud phone instance is used during the backup process.
+//
+// 2. You should test the backup file to ensure that you can restore the instance from it. After the restoration is complete, verify that your data is complete and that all features function correctly. Do not delete the original backup file or reset the source instance until this verification is complete. Otherwise, you may lose your data.
+//
+// 3. You cannot back up and restore data between different image versions, between custom images and public images, or across different architectures, such as cpm.gx7.10xlarge and cpm.gx8.16xlarge.
 //
 // @param request - BackupAndroidInstanceRequest
 //
@@ -296,7 +316,15 @@ func (client *Client) BackupAndroidInstance(request *BackupAndroidInstanceReques
 
 // Summary:
 //
-// 应用备份
+// Backs up specified applications on a cloud phone instance. The backup includes the application and its cache.
+//
+// Description:
+//
+// 1. Shut down the cloud phone instance before you back up data to ensure that the operation succeeds. Using the cloud phone during a backup may cause the operation to fail.
+//
+// 2. Ensure that the backup file can be used to restore the instance successfully. After you restore from a backup, verify that your data is complete and that all features are working correctly. Do not delete the original backup file or reset the source instance until you complete this verification. Failure to do so may result in data loss.
+//
+// 3. Backup and restore operations are not suppported across different image versions, between custom images and public images, or across different architectures, such as cpm.gx7.10xlarge and cpm.gx8.16xlarge.
 //
 // @param request - BackupAppRequest
 //
@@ -360,7 +388,15 @@ func (client *Client) BackupAppWithOptions(request *BackupAppRequest, runtime *d
 
 // Summary:
 //
-// 应用备份
+// Backs up specified applications on a cloud phone instance. The backup includes the application and its cache.
+//
+// Description:
+//
+// 1. Shut down the cloud phone instance before you back up data to ensure that the operation succeeds. Using the cloud phone during a backup may cause the operation to fail.
+//
+// 2. Ensure that the backup file can be used to restore the instance successfully. After you restore from a backup, verify that your data is complete and that all features are working correctly. Do not delete the original backup file or reset the source instance until you complete this verification. Failure to do so may result in data loss.
+//
+// 3. Backup and restore operations are not suppported across different image versions, between custom images and public images, or across different architectures, such as cpm.gx7.10xlarge and cpm.gx8.16xlarge.
 //
 // @param request - BackupAppRequest
 //
@@ -378,11 +414,11 @@ func (client *Client) BackupApp(request *BackupAppRequest) (_result *BackupAppRe
 
 // Summary:
 //
-// Generates and uploads backup files.
+// Generates a backup file and uploads it to remote storage. You can use this operation for regular data backups. You can also back up files from one instance and restore them to multiple instances, a process similar to data replication or migration.
 //
 // Description:
 //
-// Currently, this operation allows you to upload only backup files generated by cloud phones to Object Storage Service (OSS) buckets.
+// You can save backup files generated by cloud phones only to Object Storage Service (OSS).
 //
 // @param request - BackupFileRequest
 //
@@ -462,11 +498,11 @@ func (client *Client) BackupFileWithOptions(request *BackupFileRequest, runtime 
 
 // Summary:
 //
-// Generates and uploads backup files.
+// Generates a backup file and uploads it to remote storage. You can use this operation for regular data backups. You can also back up files from one instance and restore them to multiple instances, a process similar to data replication or migration.
 //
 // Description:
 //
-// Currently, this operation allows you to upload only backup files generated by cloud phones to Object Storage Service (OSS) buckets.
+// You can save backup files generated by cloud phones only to Object Storage Service (OSS).
 //
 // @param request - BackupFileRequest
 //
@@ -484,7 +520,19 @@ func (client *Client) BackupFile(request *BackupFileRequest) (_result *BackupFil
 
 // Summary:
 //
-// Retrieves connection tickets in batch.
+// Retrieves connection tickets in batch. This operation generates connection tickets asynchronously. In most cases, the tickets are returned directly in the response of the first call. However, in some situations, the initial response will contain a `TaskId`. You must then poll this endpoint with the `TaskId` until the generation is complete and the tickets are returned.
+//
+// Description:
+//
+// <props="china">
+//
+// 本接口的作用因云手机产品版本和实例串流模式而异：
+//
+// - 云手机实例版或云手机矩阵版（抢占模式）：只能通过同一个`EnduserId`获取`Ticket`。
+//
+// - 云手机矩阵版（协同模式）：可通过传入不同的`EnduserId`来为不同的用户（至多 5 个）同时获取`Ticket`并串流。每次只能传入 1 个`EnduserId`。
+//
+// > 实例串流模式可通过 [ModifyCloudPhoneNode](https://help.aliyun.com/document_detail/2878539.html) 接口的`StreamMode`参数来定义。
 //
 // @param request - BatchGetAcpConnectionTicketRequest
 //
@@ -548,7 +596,19 @@ func (client *Client) BatchGetAcpConnectionTicketWithOptions(request *BatchGetAc
 
 // Summary:
 //
-// Retrieves connection tickets in batch.
+// Retrieves connection tickets in batch. This operation generates connection tickets asynchronously. In most cases, the tickets are returned directly in the response of the first call. However, in some situations, the initial response will contain a `TaskId`. You must then poll this endpoint with the `TaskId` until the generation is complete and the tickets are returned.
+//
+// Description:
+//
+// <props="china">
+//
+// 本接口的作用因云手机产品版本和实例串流模式而异：
+//
+// - 云手机实例版或云手机矩阵版（抢占模式）：只能通过同一个`EnduserId`获取`Ticket`。
+//
+// - 云手机矩阵版（协同模式）：可通过传入不同的`EnduserId`来为不同的用户（至多 5 个）同时获取`Ticket`并串流。每次只能传入 1 个`EnduserId`。
+//
+// > 实例串流模式可通过 [ModifyCloudPhoneNode](https://help.aliyun.com/document_detail/2878539.html) 接口的`StreamMode`参数来定义。
 //
 // @param request - BatchGetAcpConnectionTicketRequest
 //
@@ -566,7 +626,7 @@ func (client *Client) BatchGetAcpConnectionTicket(request *BatchGetAcpConnection
 
 // Summary:
 //
-// 取消云手机实例上正在运行的Agent任务。
+// Cancels running agent tasks on a mobile node.
 //
 // @param request - CancelAgentTaskRequest
 //
@@ -610,7 +670,7 @@ func (client *Client) CancelAgentTaskWithOptions(request *CancelAgentTaskRequest
 
 // Summary:
 //
-// 取消云手机实例上正在运行的Agent任务。
+// Cancels running agent tasks on a mobile node.
 //
 // @param request - CancelAgentTaskRequest
 //
@@ -628,7 +688,7 @@ func (client *Client) CancelAgentTask(request *CancelAgentTaskRequest) (_result 
 
 // Summary:
 //
-// 修改云手机矩阵的配置
+// Modifies the configuration of a cloud phone matrix, including the instance type and the number of cloud phone instances.
 //
 // @param request - ChangeCloudPhoneNodeRequest
 //
@@ -712,7 +772,7 @@ func (client *Client) ChangeCloudPhoneNodeWithOptions(request *ChangeCloudPhoneN
 
 // Summary:
 //
-// 修改云手机矩阵的配置
+// Modifies the configuration of a cloud phone matrix, including the instance type and the number of cloud phone instances.
 //
 // @param request - ChangeCloudPhoneNodeRequest
 //
@@ -730,7 +790,7 @@ func (client *Client) ChangeCloudPhoneNode(request *ChangeCloudPhoneNodeRequest)
 
 // Summary:
 //
-// Check the resource inventory.
+// Checks the inventory of Cloud Phone resources. Before you create an instance, call this operation to check whether resources are available in the target region. Create the instance only after you confirm that resources are available.
 //
 // @param request - CheckResourceStockRequest
 //
@@ -790,7 +850,7 @@ func (client *Client) CheckResourceStockWithOptions(request *CheckResourceStockR
 
 // Summary:
 //
-// Check the resource inventory.
+// Checks the inventory of Cloud Phone resources. Before you create an instance, call this operation to check whether resources are available in the target region. Create the instance only after you confirm that resources are available.
 //
 // @param request - CheckResourceStockRequest
 //
@@ -808,15 +868,19 @@ func (client *Client) CheckResourceStock(request *CheckResourceStockRequest) (_r
 
 // Summary:
 //
-// Creates pay-as-you-go or subscription instance groups.
+// Create pay-as-you-go or subscription cloud phone instance groups. An instance group can manage multiple instances. You can group instances with similar functions into an instance group to manage them as a single unit.
 //
 // Description:
 //
-// Before creating an instance group, ensure you understand the [billing methods](https://help.aliyun.com/document_detail/2807121.html) supported by Cloud Phone.
+// <props="china">
 //
-//   - If the billing method of an instance group is PrePaid, AutoPay is set to false by default. In this case, you need to go to [Expenses and Costs](https://usercenter2-intl.aliyun.com/order/list) to manually complete the payment.
+// Before you create a cloud phone instance group, you must complete identity verification. For more information, see [Individual identity verification](https://help.aliyun.com/document_detail/48263.html).
 //
-//   - You can also set AutoPay to true based on your business requirements.
+// Note that creating a cloud phone instance group incurs charges. Before you proceed, make sure that you understand the [billing method](https://help.aliyun.com/document_detail/2807121.html).
+//
+// - If the billing method for the instance group is subscription (PrePaid), AutoPay is set to false by default. After you call the API, go to <props="china">[Alibaba Cloud Expenses and Costs](https://usercenter2.aliyun.com/order/list)<props="intl">[Alibaba Cloud Expenses and Costs](https://usercenter2-intl.aliyun.com/order/list) to manually pay for the order.
+//
+// - To enable automatic payments, set AutoPay to true.
 //
 // @param tmpReq - CreateAndroidInstanceGroupRequest
 //
@@ -978,15 +1042,19 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(tmpReq *CreateAndroi
 
 // Summary:
 //
-// Creates pay-as-you-go or subscription instance groups.
+// Create pay-as-you-go or subscription cloud phone instance groups. An instance group can manage multiple instances. You can group instances with similar functions into an instance group to manage them as a single unit.
 //
 // Description:
 //
-// Before creating an instance group, ensure you understand the [billing methods](https://help.aliyun.com/document_detail/2807121.html) supported by Cloud Phone.
+// <props="china">
 //
-//   - If the billing method of an instance group is PrePaid, AutoPay is set to false by default. In this case, you need to go to [Expenses and Costs](https://usercenter2-intl.aliyun.com/order/list) to manually complete the payment.
+// Before you create a cloud phone instance group, you must complete identity verification. For more information, see [Individual identity verification](https://help.aliyun.com/document_detail/48263.html).
 //
-//   - You can also set AutoPay to true based on your business requirements.
+// Note that creating a cloud phone instance group incurs charges. Before you proceed, make sure that you understand the [billing method](https://help.aliyun.com/document_detail/2807121.html).
+//
+// - If the billing method for the instance group is subscription (PrePaid), AutoPay is set to false by default. After you call the API, go to <props="china">[Alibaba Cloud Expenses and Costs](https://usercenter2.aliyun.com/order/list)<props="intl">[Alibaba Cloud Expenses and Costs](https://usercenter2-intl.aliyun.com/order/list) to manually pay for the order.
+//
+// - To enable automatic payments, set AutoPay to true.
 //
 // @param request - CreateAndroidInstanceGroupRequest
 //
@@ -1004,31 +1072,31 @@ func (client *Client) CreateAndroidInstanceGroup(request *CreateAndroidInstanceG
 
 // Summary:
 //
-// Creates an Android application.
+// Creates an Android application. Before you can install an application, you must use this API operation to create it. The application is not downloaded when it is created. It is downloaded only during installation. Ensure that the cloud phone can access the download URL.
 //
 // Description:
 //
-// When creating an app, you can provide app information to the system in one of the following ways:
+// When you create an application, you can pass the application information in one of the following two ways:
 //
-//   - Way 1: Apps from the Application Center
+// - Method 1: Pass an application from the WUYING Workspace app center.
 //
-//   - You can use one of the following methods:
+//   - Supported methods:
 //
-//   - Method 1: Pass in the `FileName` and `FilePath` parameters at the same time.
+//   - Method 1: Pass `FileName` and `FilePath`. Both parameters are required.
 //
-//   - Method 2: Pass in the `OssAppUrl` parameter
+//   - Method 2: Pass `OssAppUrl`.
 //
-//   - Rule: If your app is from the Alibaba Cloud Workspace Application Center, you must use either Method 1 or Method 2. If both are used, Method 1 takes priority.
+//   - Rule: If you pass an application from the WUYING Workspace app center, you must use at least one of the two methods. If you use both, Method 1 takes precedence.
 //
-//   - Condition: Before you proceed, log on to the [Elastic Desktop Service (EDS) Enterprise console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the app file to the Application Center to obtain the values of the `FileName`, `FilePath`, and `OssAppUrl` parameters.
+//   - Prerequisite: Log on to the [Elastic Desktop Service Enterprise console](https://eds.console.aliyun.com/osshelp). Follow the on-screen instructions to upload your application file to the WUYING Workspace app center. You can then obtain the required request parameters for this operation: `FileName` and `FilePath`, or `OssAppUrl`.
 //
-//   - Way 2: Custom apps
+// - Method 2: Pass a custom application.
 //
-//   - Pass in the `CustomAppInfo` parameter.
+//   - Supported method: Pass `CustomAppInfo`.
 //
-//   - Rule: If you pass in the `CustomAppInfo` parameter, all six fields within it are required.
+//   - Rule: If you pass `CustomAppInfo`, all six fields in this object parameter are required.
 //
-// >  If Way 1 and Way 2 are adopted simultaneously, the information from Way 2 takes priority.
+// > If you use both Method 1 and Method 2, the information passed in Method 2 takes precedence.
 //
 // @param tmpReq - CreateAppRequest
 //
@@ -1114,31 +1182,31 @@ func (client *Client) CreateAppWithOptions(tmpReq *CreateAppRequest, runtime *da
 
 // Summary:
 //
-// Creates an Android application.
+// Creates an Android application. Before you can install an application, you must use this API operation to create it. The application is not downloaded when it is created. It is downloaded only during installation. Ensure that the cloud phone can access the download URL.
 //
 // Description:
 //
-// When creating an app, you can provide app information to the system in one of the following ways:
+// When you create an application, you can pass the application information in one of the following two ways:
 //
-//   - Way 1: Apps from the Application Center
+// - Method 1: Pass an application from the WUYING Workspace app center.
 //
-//   - You can use one of the following methods:
+//   - Supported methods:
 //
-//   - Method 1: Pass in the `FileName` and `FilePath` parameters at the same time.
+//   - Method 1: Pass `FileName` and `FilePath`. Both parameters are required.
 //
-//   - Method 2: Pass in the `OssAppUrl` parameter
+//   - Method 2: Pass `OssAppUrl`.
 //
-//   - Rule: If your app is from the Alibaba Cloud Workspace Application Center, you must use either Method 1 or Method 2. If both are used, Method 1 takes priority.
+//   - Rule: If you pass an application from the WUYING Workspace app center, you must use at least one of the two methods. If you use both, Method 1 takes precedence.
 //
-//   - Condition: Before you proceed, log on to the [Elastic Desktop Service (EDS) Enterprise console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the app file to the Application Center to obtain the values of the `FileName`, `FilePath`, and `OssAppUrl` parameters.
+//   - Prerequisite: Log on to the [Elastic Desktop Service Enterprise console](https://eds.console.aliyun.com/osshelp). Follow the on-screen instructions to upload your application file to the WUYING Workspace app center. You can then obtain the required request parameters for this operation: `FileName` and `FilePath`, or `OssAppUrl`.
 //
-//   - Way 2: Custom apps
+// - Method 2: Pass a custom application.
 //
-//   - Pass in the `CustomAppInfo` parameter.
+//   - Supported method: Pass `CustomAppInfo`.
 //
-//   - Rule: If you pass in the `CustomAppInfo` parameter, all six fields within it are required.
+//   - Rule: If you pass `CustomAppInfo`, all six fields in this object parameter are required.
 //
-// >  If Way 1 and Way 2 are adopted simultaneously, the information from Way 2 takes priority.
+// > If you use both Method 1 and Method 2, the information passed in Method 2 takes precedence.
 //
 // @param request - CreateAppRequest
 //
@@ -1156,7 +1224,7 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 
 // Summary:
 //
-// Creates a cloud phone matrix.
+// In Cloud Phone, a matrix is a logical resource management unit that represents a physical server instance. Creating a matrix provisions a physical server, which you can then partition into multiple independent Cloud Phone instances. These instances share the compute, storage, and network resources of the matrix. The matrix configuration determines how many instances you can create.
 //
 // @param tmpReq - CreateCloudPhoneNodeRequest
 //
@@ -1336,7 +1404,7 @@ func (client *Client) CreateCloudPhoneNodeWithOptions(tmpReq *CreateCloudPhoneNo
 
 // Summary:
 //
-// Creates a cloud phone matrix.
+// In Cloud Phone, a matrix is a logical resource management unit that represents a physical server instance. Creating a matrix provisions a physical server, which you can then partition into multiple independent Cloud Phone instances. These instances share the compute, storage, and network resources of the matrix. The matrix configuration determines how many instances you can create.
 //
 // @param request - CreateCloudPhoneNodeRequest
 //
@@ -1354,7 +1422,11 @@ func (client *Client) CreateCloudPhoneNode(request *CreateCloudPhoneNodeRequest)
 
 // Summary:
 //
-// 创建积分包
+// Creates an order for a credit package.
+//
+// Description:
+//
+// This is a billable operation. Before calling this operation, ensure that you understand the [billing methods and pricing](https://help.aliyun.com/zh/ecp/jvs-mobile-billing-instructions?spm=a2c4g.11186623.help-menu-254658.d_0_1_1.78bc5732j49PWP) of Wuying Cloud Phone.
 //
 // @param request - CreateCreditPackageRequest
 //
@@ -1414,7 +1486,11 @@ func (client *Client) CreateCreditPackageWithOptions(request *CreateCreditPackag
 
 // Summary:
 //
-// 创建积分包
+// Creates an order for a credit package.
+//
+// Description:
+//
+// This is a billable operation. Before calling this operation, ensure that you understand the [billing methods and pricing](https://help.aliyun.com/zh/ecp/jvs-mobile-billing-instructions?spm=a2c4g.11186623.help-menu-254658.d_0_1_1.78bc5732j49PWP) of Wuying Cloud Phone.
 //
 // @param request - CreateCreditPackageRequest
 //
@@ -1432,7 +1508,7 @@ func (client *Client) CreateCreditPackage(request *CreateCreditPackageRequest) (
 
 // Summary:
 //
-// Creates a custom image from a cloud phone instance.
+// Creates a custom image from a cloud phone instance. Then, you can use the image to create more cloud phones with the same configuration.
 //
 // @param request - CreateCustomImageRequest
 //
@@ -1488,7 +1564,7 @@ func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageReq
 
 // Summary:
 //
-// Creates a custom image from a cloud phone instance.
+// Creates a custom image from a cloud phone instance. Then, you can use the image to create more cloud phones with the same configuration.
 //
 // @param request - CreateCustomImageRequest
 //
@@ -1506,13 +1582,13 @@ func (client *Client) CreateCustomImage(request *CreateCustomImageRequest) (_res
 
 // Summary:
 //
-// Creates an Android Debug Bridge (ADB) key pair. The system retains the public key and provides a PEM-encoded private key in PKCS#8 format, adhering to the ADB connection specification. You must securely store the private key.
+// You can connect to Cloud Phones using the Android Debug Bridge (ADB). ADB lets you manage devices and applications, and transfer files. These operations require high permissions. Because Cloud Phones do not have physical interfaces, you cannot use a USB connection to trigger an authorization dialog box on the device. Therefore, you must configure a key pair before you connect to a Cloud Phone with ADB over a network. This key pair ensures that the device trusts the client and that all operations are secure. You can call the CreateKeyPair operation to create an ADB key pair. The system stores the public key and returns the private key. The private key is in PEM-encoded PKCS#8 format and complies with ADB connection standards. You must securely store the private key.
 //
 // Description:
 //
-// In addition to using the CreateKeyPair operation to generate a key pair, you can also create one by using the ADB tool and upload it to the Cloud Phone console. The usage of this key pair is identical to that of a system-generated key pair.
+// You can also use the Android Debug Bridge (ADB) tool to create a key pair and then upload it to the Cloud Phone console by calling the [](t2729840.xdita#)operation. This key pair can be used in the same way as a key pair created by the system.
 //
-// Each tenant can create up to 500 key pairs.
+// Each tenant can have a maximum of 500 key pairs.
 //
 // @param request - CreateKeyPairRequest
 //
@@ -1556,13 +1632,13 @@ func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, ru
 
 // Summary:
 //
-// Creates an Android Debug Bridge (ADB) key pair. The system retains the public key and provides a PEM-encoded private key in PKCS#8 format, adhering to the ADB connection specification. You must securely store the private key.
+// You can connect to Cloud Phones using the Android Debug Bridge (ADB). ADB lets you manage devices and applications, and transfer files. These operations require high permissions. Because Cloud Phones do not have physical interfaces, you cannot use a USB connection to trigger an authorization dialog box on the device. Therefore, you must configure a key pair before you connect to a Cloud Phone with ADB over a network. This key pair ensures that the device trusts the client and that all operations are secure. You can call the CreateKeyPair operation to create an ADB key pair. The system stores the public key and returns the private key. The private key is in PEM-encoded PKCS#8 format and complies with ADB connection standards. You must securely store the private key.
 //
 // Description:
 //
-// In addition to using the CreateKeyPair operation to generate a key pair, you can also create one by using the ADB tool and upload it to the Cloud Phone console. The usage of this key pair is identical to that of a system-generated key pair.
+// You can also use the Android Debug Bridge (ADB) tool to create a key pair and then upload it to the Cloud Phone console by calling the [](t2729840.xdita#)operation. This key pair can be used in the same way as a key pair created by the system.
 //
-// Each tenant can create up to 500 key pairs.
+// Each tenant can have a maximum of 500 key pairs.
 //
 // @param request - CreateKeyPairRequest
 //
@@ -1580,7 +1656,11 @@ func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *Cre
 
 // Summary:
 //
-// 创建套餐包
+// Places an order for a package.
+//
+// Description:
+//
+// This is a billable operation. Before you call this operation, review the [billing methods and pricing](https://help.aliyun.com/zh/ecp/jvs-mobile-billing-instructions?spm=a2c4g.11174283.help-menu-254658.d_0_1_1.23695732Cpmwbs) of Wuying Cloud Phone.
 //
 // @param request - CreateMobileAgentPackageRequest
 //
@@ -1676,7 +1756,11 @@ func (client *Client) CreateMobileAgentPackageWithOptions(request *CreateMobileA
 
 // Summary:
 //
-// 创建套餐包
+// Places an order for a package.
+//
+// Description:
+//
+// This is a billable operation. Before you call this operation, review the [billing methods and pricing](https://help.aliyun.com/zh/ecp/jvs-mobile-billing-instructions?spm=a2c4g.11174283.help-menu-254658.d_0_1_1.23695732Cpmwbs) of Wuying Cloud Phone.
 //
 // @param request - CreateMobileAgentPackageRequest
 //
@@ -1694,7 +1778,7 @@ func (client *Client) CreateMobileAgentPackage(request *CreateMobileAgentPackage
 
 // Summary:
 //
-// Creates a policy.
+// Creates a policy that applies unified settings to cloud phones. These settings include features such as network redirection, watermarks, resolution, and the clipboard.
 //
 // @param tmpReq - CreatePolicyGroupRequest
 //
@@ -1788,7 +1872,7 @@ func (client *Client) CreatePolicyGroupWithOptions(tmpReq *CreatePolicyGroupRequ
 
 // Summary:
 //
-// Creates a policy.
+// Creates a policy that applies unified settings to cloud phones. These settings include features such as network redirection, watermarks, resolution, and the clipboard.
 //
 // @param request - CreatePolicyGroupRequest
 //
@@ -1806,11 +1890,11 @@ func (client *Client) CreatePolicyGroup(request *CreatePolicyGroupRequest) (_res
 
 // Summary:
 //
-// Creates a screenshot of a cloud phone instance.
+// This asynchronous API operation generates a screenshot of a cloud phone.
 //
 // Description:
 //
-// You can call this operation to create a screenshot of a cloud phone instance and upload it to the default Object Storage Service (OSS) bucket. The operation returns a task ID, which you can use with the DescribeTasks operation to get the download link for the screenshot.
+// This operation creates a screenshot of a cloud phone and uploads it to the default Object Storage Service (OSS) bucket. The operation returns a task ID. You can then call the DescribeTasks operation to retrieve the download link for the screenshot.
 //
 // @param request - CreateScreenshotRequest
 //
@@ -1866,11 +1950,11 @@ func (client *Client) CreateScreenshotWithOptions(request *CreateScreenshotReque
 
 // Summary:
 //
-// Creates a screenshot of a cloud phone instance.
+// This asynchronous API operation generates a screenshot of a cloud phone.
 //
 // Description:
 //
-// You can call this operation to create a screenshot of a cloud phone instance and upload it to the default Object Storage Service (OSS) bucket. The operation returns a task ID, which you can use with the DescribeTasks operation to get the download link for the screenshot.
+// This operation creates a screenshot of a cloud phone and uploads it to the default Object Storage Service (OSS) bucket. The operation returns a task ID. You can then call the DescribeTasks operation to retrieve the download link for the screenshot.
 //
 // @param request - CreateScreenshotRequest
 //
@@ -1888,7 +1972,7 @@ func (client *Client) CreateScreenshot(request *CreateScreenshotRequest) (_resul
 
 // Summary:
 //
-// 创建系统属性模板
+// Creates a system property template. The key-value pairs defined in the template are sent to cloud phones and set as properties in their Android systems using the setprop command. APKs or related programs can then read these property values.
 //
 // @param tmpReq - CreateSystemPropertyTemplateRequest
 //
@@ -1950,7 +2034,7 @@ func (client *Client) CreateSystemPropertyTemplateWithOptions(tmpReq *CreateSyst
 
 // Summary:
 //
-// 创建系统属性模板
+// Creates a system property template. The key-value pairs defined in the template are sent to cloud phones and set as properties in their Android systems using the setprop command. APKs or related programs can then read these property values.
 //
 // @param request - CreateSystemPropertyTemplateRequest
 //
@@ -1968,13 +2052,13 @@ func (client *Client) CreateSystemPropertyTemplate(request *CreateSystemProperty
 
 // Summary:
 //
-// Delete an instance group.
+// Deletes an Android instance group. All instances in the group are also deleted. This operation cannot be undone. Proceed with caution.
 //
 // Description:
 //
-// You can delete only pay-as-you-go instance groups.
+// Pay-as-you-go instance groups can be deleted at any time.
 //
-// You can delete subscription instance groups only after they expire.
+// Subscription instance groups can be deleted only after they expire.
 //
 // @param request - DeleteAndroidInstanceGroupRequest
 //
@@ -2018,13 +2102,13 @@ func (client *Client) DeleteAndroidInstanceGroupWithOptions(request *DeleteAndro
 
 // Summary:
 //
-// Delete an instance group.
+// Deletes an Android instance group. All instances in the group are also deleted. This operation cannot be undone. Proceed with caution.
 //
 // Description:
 //
-// You can delete only pay-as-you-go instance groups.
+// Pay-as-you-go instance groups can be deleted at any time.
 //
-// You can delete subscription instance groups only after they expire.
+// Subscription instance groups can be deleted only after they expire.
 //
 // @param request - DeleteAndroidInstanceGroupRequest
 //
@@ -2104,7 +2188,7 @@ func (client *Client) DeleteApps(request *DeleteAppsRequest) (_result *DeleteApp
 
 // Summary:
 //
-// 删除备份文件
+// Deletes a batch of backup files.
 //
 // @param request - DeleteBackupFileRequest
 //
@@ -2148,7 +2232,7 @@ func (client *Client) DeleteBackupFileWithOptions(request *DeleteBackupFileReque
 
 // Summary:
 //
-// 删除备份文件
+// Deletes a batch of backup files.
 //
 // @param request - DeleteBackupFileRequest
 //
@@ -2386,7 +2470,73 @@ func (client *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (_result *D
 
 // Summary:
 //
-// Deletes a policy.
+// Deletes a node package.
+//
+// @param request - DeleteMobileAgentPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMobileAgentPackageResponse
+func (client *Client) DeleteMobileAgentPackageWithOptions(request *DeleteMobileAgentPackageRequest, runtime *dara.RuntimeOptions) (_result *DeleteMobileAgentPackageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PackageIds) {
+		query["PackageIds"] = request.PackageIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMobileAgentPackage"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMobileAgentPackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a node package.
+//
+// @param request - DeleteMobileAgentPackageRequest
+//
+// @return DeleteMobileAgentPackageResponse
+func (client *Client) DeleteMobileAgentPackage(request *DeleteMobileAgentPackageRequest) (_result *DeleteMobileAgentPackageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteMobileAgentPackageResponse{}
+	_body, _err := client.DeleteMobileAgentPackageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes one or more policy groups.
+//
+// Description:
+//
+// A policy group cannot be deleted if it is associated with an instance group.
 //
 // @param request - DeletePolicyGroupRequest
 //
@@ -2430,7 +2580,11 @@ func (client *Client) DeletePolicyGroupWithOptions(request *DeletePolicyGroupReq
 
 // Summary:
 //
-// Deletes a policy.
+// Deletes one or more policy groups.
+//
+// Description:
+//
+// A policy group cannot be deleted if it is associated with an instance group.
 //
 // @param request - DeletePolicyGroupRequest
 //
@@ -2448,7 +2602,11 @@ func (client *Client) DeletePolicyGroup(request *DeletePolicyGroupRequest) (_res
 
 // Summary:
 //
-// 删除系统属性模板
+// Deletes system property templates.
+//
+// Description:
+//
+// Deleting property templates does not affect instances for which you have already called the [](t3010125.xdita#)operation to send templates.
 //
 // @param request - DeleteSystemPropertyTemplatesRequest
 //
@@ -2492,7 +2650,11 @@ func (client *Client) DeleteSystemPropertyTemplatesWithOptions(request *DeleteSy
 
 // Summary:
 //
-// 删除系统属性模板
+// Deletes system property templates.
+//
+// Description:
+//
+// Deleting property templates does not affect instances for which you have already called the [](t3010125.xdita#)operation to send templates.
 //
 // @param request - DeleteSystemPropertyTemplatesRequest
 //
@@ -2510,7 +2672,7 @@ func (client *Client) DeleteSystemPropertyTemplates(request *DeleteSystemPropert
 
 // Summary:
 //
-// 查询具体Task的相关信息
+// Retrieves details of specified Agent Tasks.
 //
 // @param request - DescribeAgentTaskRequest
 //
@@ -2554,7 +2716,7 @@ func (client *Client) DescribeAgentTaskWithOptions(request *DescribeAgentTaskReq
 
 // Summary:
 //
-// 查询具体Task的相关信息
+// Retrieves details of specified Agent Tasks.
 //
 // @param request - DescribeAgentTaskRequest
 //
@@ -2572,7 +2734,7 @@ func (client *Client) DescribeAgentTask(request *DescribeAgentTaskRequest) (_res
 
 // Summary:
 //
-// Queries the details of an instance group.
+// Queries the details of a cloud phone instance group.
 //
 // @param request - DescribeAndroidInstanceGroupsRequest
 //
@@ -2660,7 +2822,7 @@ func (client *Client) DescribeAndroidInstanceGroupsWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the details of an instance group.
+// Queries the details of a cloud phone instance group.
 //
 // @param request - DescribeAndroidInstanceGroupsRequest
 //
@@ -2678,7 +2840,7 @@ func (client *Client) DescribeAndroidInstanceGroups(request *DescribeAndroidInst
 
 // Summary:
 //
-// Queries cloud phone instances.
+// Queries the details of cloud phone instances.
 //
 // @param request - DescribeAndroidInstancesRequest
 //
@@ -2810,7 +2972,7 @@ func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndro
 
 // Summary:
 //
-// Queries cloud phone instances.
+// Queries the details of cloud phone instances.
 //
 // @param request - DescribeAndroidInstancesRequest
 //
@@ -2922,11 +3084,11 @@ func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *Descr
 
 // Summary:
 //
-// Queries backup files.
+// Queries a list of backup files.
 //
 // Description:
 //
-// Currently, this operation allows you to query only backup files generated by cloud phones that are stored in Object Storage Service (OSS) buckets.
+// Currently, only backup files generated by cloud phones can be stored in Object Storage Service (OSS).
 //
 // @param request - DescribeBackupFilesRequest
 //
@@ -3022,11 +3184,11 @@ func (client *Client) DescribeBackupFilesWithOptions(request *DescribeBackupFile
 
 // Summary:
 //
-// Queries backup files.
+// Queries a list of backup files.
 //
 // Description:
 //
-// Currently, this operation allows you to query only backup files generated by cloud phones that are stored in Object Storage Service (OSS) buckets.
+// Currently, only backup files generated by cloud phones can be stored in Object Storage Service (OSS).
 //
 // @param request - DescribeBackupFilesRequest
 //
@@ -3044,7 +3206,11 @@ func (client *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (
 
 // Summary:
 //
-// 查询bucket信息
+// Queries information about buckets. This operation returns only the buckets whose names start with `cloudphone-saved-bucket-`.
+//
+// Description:
+//
+// Currently, you can save backup files generated by Cloud Phone only to Object Storage Service (OSS).
 //
 // @param request - DescribeBucketsRequest
 //
@@ -3088,7 +3254,11 @@ func (client *Client) DescribeBucketsWithOptions(request *DescribeBucketsRequest
 
 // Summary:
 //
-// 查询bucket信息
+// Queries information about buckets. This operation returns only the buckets whose names start with `cloudphone-saved-bucket-`.
+//
+// Description:
+//
+// Currently, you can save backup files generated by Cloud Phone only to Object Storage Service (OSS).
 //
 // @param request - DescribeBucketsRequest
 //
@@ -3106,7 +3276,9 @@ func (client *Client) DescribeBuckets(request *DescribeBucketsRequest) (_result 
 
 // Summary:
 //
-// Queries the details of a cloud phone matrix.
+// Queries the details of Cloud Phone matrices.
+//
+// In the Cloud Phone service, a matrix (Cloud Phone Server) is a logical resource management unit that represents a physical server instance. This physical server can be partitioned into multiple independent Cloud Phone instances that share the underlying computing, storage, and network resources of the matrix. Creating a matrix is equivalent to provisioning a physical server on which you can create Cloud Phone instances. The number of instances that you can create varies depending on the configuration.
 //
 // @param request - DescribeCloudPhoneNodesRequest
 //
@@ -3190,7 +3362,9 @@ func (client *Client) DescribeCloudPhoneNodesWithOptions(request *DescribeCloudP
 
 // Summary:
 //
-// Queries the details of a cloud phone matrix.
+// Queries the details of Cloud Phone matrices.
+//
+// In the Cloud Phone service, a matrix (Cloud Phone Server) is a logical resource management unit that represents a physical server instance. This physical server can be partitioned into multiple independent Cloud Phone instances that share the underlying computing, storage, and network resources of the matrix. Creating a matrix is equivalent to provisioning a physical server on which you can create Cloud Phone instances. The number of instances that you can create varies depending on the configuration.
 //
 // @param request - DescribeCloudPhoneNodesRequest
 //
@@ -3208,7 +3382,7 @@ func (client *Client) DescribeCloudPhoneNodes(request *DescribeCloudPhoneNodesRe
 
 // Summary:
 //
-// 查询积分包
+// Retrieves the details of one or more credit packages.
 //
 // @param request - DescribeCreditPackageRequest
 //
@@ -3256,7 +3430,7 @@ func (client *Client) DescribeCreditPackageWithOptions(request *DescribeCreditPa
 
 // Summary:
 //
-// 查询积分包
+// Retrieves the details of one or more credit packages.
 //
 // @param request - DescribeCreditPackageRequest
 //
@@ -3274,7 +3448,7 @@ func (client *Client) DescribeCreditPackage(request *DescribeCreditPackageReques
 
 // Summary:
 //
-// 查询显示设置
+// Queries the display settings.
 //
 // @param request - DescribeDisplayConfigRequest
 //
@@ -3318,7 +3492,7 @@ func (client *Client) DescribeDisplayConfigWithOptions(request *DescribeDisplayC
 
 // Summary:
 //
-// 查询显示设置
+// Queries the display settings.
 //
 // @param request - DescribeDisplayConfigRequest
 //
@@ -3336,7 +3510,7 @@ func (client *Client) DescribeDisplayConfig(request *DescribeDisplayConfigReques
 
 // Summary:
 //
-// Queries images.
+// Queries a list of available images.
 //
 // @param request - DescribeImageListRequest
 //
@@ -3418,7 +3592,7 @@ func (client *Client) DescribeImageListWithOptions(request *DescribeImageListReq
 
 // Summary:
 //
-// Queries images.
+// Queries a list of available images.
 //
 // @param request - DescribeImageListRequest
 //
@@ -3436,7 +3610,11 @@ func (client *Client) DescribeImageList(request *DescribeImageListRequest) (_res
 
 // Summary:
 //
-// Queries the execution results of commands.
+// Queries the execution results of a command run by calling the RunCommand operation.
+//
+// Description:
+//
+// This operation is being deprecated. Use the [](t2740507.xdita#)operation to query the progress and results of a command execution.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -3484,7 +3662,11 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 
 // Summary:
 //
-// Queries the execution results of commands.
+// Queries the execution results of a command run by calling the RunCommand operation.
+//
+// Description:
+//
+// This operation is being deprecated. Use the [](t2740507.xdita#)operation to query the progress and results of a command execution.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -3502,7 +3684,7 @@ func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (
 
 // Summary:
 //
-// 查询JVS实例信息
+// Retrieves details of JVS instances.
 //
 // @param request - DescribeJVSInstanceRequest
 //
@@ -3554,7 +3736,7 @@ func (client *Client) DescribeJVSInstanceWithOptions(request *DescribeJVSInstanc
 
 // Summary:
 //
-// 查询JVS实例信息
+// Retrieves details of JVS instances.
 //
 // @param request - DescribeJVSInstanceRequest
 //
@@ -3646,7 +3828,7 @@ func (client *Client) DescribeKeyPairs(request *DescribeKeyPairsRequest) (_resul
 
 // Summary:
 //
-// 查询指定监控项的最新监控数据
+// Queries the latest monitoring data for an instance or a matrix. You can query metrics such as CPU, memory, disk, and network.
 //
 // @param request - DescribeMetricLastRequest
 //
@@ -3720,7 +3902,7 @@ func (client *Client) DescribeMetricLastWithOptions(request *DescribeMetricLastR
 
 // Summary:
 //
-// 查询指定监控项的最新监控数据
+// Queries the latest monitoring data for an instance or a matrix. You can query metrics such as CPU, memory, disk, and network.
 //
 // @param request - DescribeMetricLastRequest
 //
@@ -3738,7 +3920,7 @@ func (client *Client) DescribeMetricLast(request *DescribeMetricLastRequest) (_r
 
 // Summary:
 //
-// 查询指定监控项的监控数据
+// Queries monitoring data for specified metrics, such as network bandwidth.
 //
 // @param request - DescribeMetricListRequest
 //
@@ -3814,7 +3996,7 @@ func (client *Client) DescribeMetricListWithOptions(request *DescribeMetricListR
 
 // Summary:
 //
-// 查询指定监控项的监控数据
+// Queries monitoring data for specified metrics, such as network bandwidth.
 //
 // @param request - DescribeMetricListRequest
 //
@@ -3832,7 +4014,7 @@ func (client *Client) DescribeMetricList(request *DescribeMetricListRequest) (_r
 
 // Summary:
 //
-// 查询指定监控项的最新监控数据
+// Queries the latest monitoring data for metrics such as instance network bandwidth and returns the results in a sorted list.
 //
 // @param request - DescribeMetricTopRequest
 //
@@ -3904,7 +4086,7 @@ func (client *Client) DescribeMetricTopWithOptions(request *DescribeMetricTopReq
 
 // Summary:
 //
-// 查询指定监控项的最新监控数据
+// Queries the latest monitoring data for metrics such as instance network bandwidth and returns the results in a sorted list.
 //
 // @param request - DescribeMetricTopRequest
 //
@@ -3922,7 +4104,7 @@ func (client *Client) DescribeMetricTop(request *DescribeMetricTopRequest) (_res
 
 // Summary:
 //
-// 查询节点套餐详细信息
+// Retrieves the details of one or more node packages.
 //
 // @param request - DescribeMobileAgentPackageRequest
 //
@@ -3986,7 +4168,7 @@ func (client *Client) DescribeMobileAgentPackageWithOptions(request *DescribeMob
 
 // Summary:
 //
-// 查询节点套餐详细信息
+// Retrieves the details of one or more node packages.
 //
 // @param request - DescribeMobileAgentPackageRequest
 //
@@ -4070,7 +4252,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Query available specifications.
+// Queries the available specifications for cloud phones. This information is required to create an instance. For the cloud phone matrix mode, this operation also returns the minimum and maximum number of instances allowed per matrix.
 //
 // @param request - DescribeSpecRequest
 //
@@ -4146,7 +4328,7 @@ func (client *Client) DescribeSpecWithOptions(request *DescribeSpecRequest, runt
 
 // Summary:
 //
-// Query available specifications.
+// Queries the available specifications for cloud phones. This information is required to create an instance. For the cloud phone matrix mode, this operation also returns the minimum and maximum number of instances allowed per matrix.
 //
 // @param request - DescribeSpecRequest
 //
@@ -4164,7 +4346,7 @@ func (client *Client) DescribeSpec(request *DescribeSpecRequest) (_result *Descr
 
 // Summary:
 //
-// 查询系统属性模板
+// Describes system property templates.
 //
 // @param request - DescribeSystemPropertyTemplatesRequest
 //
@@ -4220,7 +4402,7 @@ func (client *Client) DescribeSystemPropertyTemplatesWithOptions(request *Descri
 
 // Summary:
 //
-// 查询系统属性模板
+// Describes system property templates.
 //
 // @param request - DescribeSystemPropertyTemplatesRequest
 //
@@ -4238,15 +4420,15 @@ func (client *Client) DescribeSystemPropertyTemplates(request *DescribeSystemPro
 
 // Summary:
 //
-// Queries tasks created for a cloud phone instance.
+// Queries tasks created for a cloud phone instance. Many operations on cloud phones—such as creating, starting, or stopping them—are asynchronous. When you initiate an operation, the system returns a `Task ID` that you can use to track its progress and final result. You can call this API to retrieve a list of all tasks and their execution statuses.
 //
 // Description:
 //
-//	  You can call the DescribeTasks operation to query the tasks created for one or more cloud phone instances.
+// - You can call the DescribeTasks operation to query the tasks created for one or more cloud phone instances.
 //
-//		- The system currently supports various tasks, including starting, stopping, restarting, and resetting cloud phone instances; backing up and restoring data; installing apps; and executing remote commands.
+// - The system currently supports various tasks, including starting, stopping, restarting, and resetting cloud phone instances; backing up and restoring data; installing apps; and executing remote commands.
 //
-//		- You can use the Level field to specify the type of task. If Level is set to 1, it represents a batch task. If Level is set to 2, it represents an instance-level task.
+// - You can use the Level field to specify the type of task. If Level is set to 1, it represents a batch task. If Level is set to 2, it represents an instance-level task.
 //
 // **Example**
 //
@@ -4346,15 +4528,15 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 
 // Summary:
 //
-// Queries tasks created for a cloud phone instance.
+// Queries tasks created for a cloud phone instance. Many operations on cloud phones—such as creating, starting, or stopping them—are asynchronous. When you initiate an operation, the system returns a `Task ID` that you can use to track its progress and final result. You can call this API to retrieve a list of all tasks and their execution statuses.
 //
 // Description:
 //
-//	  You can call the DescribeTasks operation to query the tasks created for one or more cloud phone instances.
+// - You can call the DescribeTasks operation to query the tasks created for one or more cloud phone instances.
 //
-//		- The system currently supports various tasks, including starting, stopping, restarting, and resetting cloud phone instances; backing up and restoring data; installing apps; and executing remote commands.
+// - The system currently supports various tasks, including starting, stopping, restarting, and resetting cloud phone instances; backing up and restoring data; installing apps; and executing remote commands.
 //
-//		- You can use the Level field to specify the type of task. If Level is set to 1, it represents a batch task. If Level is set to 2, it represents an instance-level task.
+// - You can use the Level field to specify the type of task. If Level is set to 1, it represents a batch task. If Level is set to 2, it represents an instance-level task.
 //
 // **Example**
 //
@@ -4380,7 +4562,7 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 //
 // Description:
 //
-//	After you detach an ADB key pair from a cloud phone instance, the ADB connection will fail. This occurs because the system can no longer authenticate using a valid ADB public key, leading to authentication errors.
+// - After a key pair is detached, the cloud phone no longer stores a valid ADB public key. As a result, ADB connections may fail to authenticate.
 //
 // @param request - DetachKeyPairRequest
 //
@@ -4432,7 +4614,7 @@ func (client *Client) DetachKeyPairWithOptions(request *DetachKeyPairRequest, ru
 //
 // Description:
 //
-//	After you detach an ADB key pair from a cloud phone instance, the ADB connection will fail. This occurs because the system can no longer authenticate using a valid ADB public key, leading to authentication errors.
+// - After a key pair is detached, the cloud phone no longer stores a valid ADB public key. As a result, ADB connections may fail to authenticate.
 //
 // @param request - DetachKeyPairRequest
 //
@@ -4450,7 +4632,13 @@ func (client *Client) DetachKeyPair(request *DetachKeyPairRequest) (_result *Det
 
 // Summary:
 //
-// 实例断开连接
+// Disconnects a connected instance or disassociates an instance that is associated with another user.
+//
+// Description:
+//
+// Connections to instances are established using the [](t2848888.xdita#). After a connection is closed with `session.stop()`, the system maintains the user-instance association for 5 minutes. During this time, other users cannot connect. The `DisconnectAndroidInstance` operation lets you disassociate the instance immediately.
+//
+// <props="china">If you use the Cloud Phone Matrix Edition and the instance stream pattern is collaborative mode, you can specify `EndUserId` to disconnect a specific user and invalidate the corresponding ticket.
 //
 // @param request - DisconnectAndroidInstanceRequest
 //
@@ -4498,7 +4686,13 @@ func (client *Client) DisconnectAndroidInstanceWithOptions(request *DisconnectAn
 
 // Summary:
 //
-// 实例断开连接
+// Disconnects a connected instance or disassociates an instance that is associated with another user.
+//
+// Description:
+//
+// Connections to instances are established using the [](t2848888.xdita#). After a connection is closed with `session.stop()`, the system maintains the user-instance association for 5 minutes. During this time, other users cannot connect. The `DisconnectAndroidInstance` operation lets you disassociate the instance immediately.
+//
+// <props="china">If you use the Cloud Phone Matrix Edition and the instance stream pattern is collaborative mode, you can specify `EndUserId` to disconnect a specific user and invalidate the corresponding ticket.
 //
 // @param request - DisconnectAndroidInstanceRequest
 //
@@ -4516,11 +4710,11 @@ func (client *Client) DisconnectAndroidInstance(request *DisconnectAndroidInstan
 
 // Summary:
 //
-// Distributes an image.
+// Distributes an image to one or more regions. This lets you use the image to create cloud phones in regions other than its source region.
 //
 // Description:
 //
-// After you distribute an image in supported regions, the distribution cannot be canceled.
+// You cannot cancel the distribution of an image to a region after the image is distributed.
 //
 // @param request - DistributeImageRequest
 //
@@ -4568,11 +4762,11 @@ func (client *Client) DistributeImageWithOptions(request *DistributeImageRequest
 
 // Summary:
 //
-// Distributes an image.
+// Distributes an image to one or more regions. This lets you use the image to create cloud phones in regions other than its source region.
 //
 // Description:
 //
-// After you distribute an image in supported regions, the distribution cannot be canceled.
+// You cannot cancel the distribution of an image to a region after the image is distributed.
 //
 // @param request - DistributeImageRequest
 //
@@ -4668,7 +4862,7 @@ func (client *Client) DowngradeAndroidInstanceGroup(request *DowngradeAndroidIns
 
 // Summary:
 //
-// 结束协同
+// Ends all coordination tasks for a cloud phone instance and invalidates the coordination code.
 //
 // @param request - EndCoordinationRequest
 //
@@ -4720,7 +4914,7 @@ func (client *Client) EndCoordinationWithOptions(request *EndCoordinationRequest
 
 // Summary:
 //
-// 结束协同
+// Ends all coordination tasks for a cloud phone instance and invalidates the coordination code.
 //
 // @param request - EndCoordinationRequest
 //
@@ -4738,7 +4932,11 @@ func (client *Client) EndCoordination(request *EndCoordinationRequest) (_result 
 
 // Summary:
 //
-// 存储扩容
+// Expands the storage of a cloud phone matrix. You can expand shared storage for matrix-level files such as images, and instance storage. Expanding the storage incurs new fees, and the API response returns an order ID.
+//
+// Description:
+//
+// This operation is only available on the china site (aliyun.com).
 //
 // @param request - ExpandDataVolumeRequest
 //
@@ -4806,7 +5004,11 @@ func (client *Client) ExpandDataVolumeWithOptions(request *ExpandDataVolumeReque
 
 // Summary:
 //
-// 存储扩容
+// Expands the storage of a cloud phone matrix. You can expand shared storage for matrix-level files such as images, and instance storage. Expanding the storage incurs new fees, and the API response returns an order ID.
+//
+// Description:
+//
+// This operation is only available on the china site (aliyun.com).
 //
 // @param request - ExpandDataVolumeRequest
 //
@@ -4824,7 +5026,7 @@ func (client *Client) ExpandDataVolume(request *ExpandDataVolumeRequest) (_resul
 
 // Summary:
 //
-// 扩容实例的独立机身存储
+// Expands the phone storage for one or more matrix instances.
 //
 // @param request - ExpandPhoneDataVolumeRequest
 //
@@ -4888,7 +5090,7 @@ func (client *Client) ExpandPhoneDataVolumeWithOptions(request *ExpandPhoneDataV
 
 // Summary:
 //
-// 扩容实例的独立机身存储
+// Expands the phone storage for one or more matrix instances.
 //
 // @param request - ExpandPhoneDataVolumeRequest
 //
@@ -4906,11 +5108,11 @@ func (client *Client) ExpandPhoneDataVolume(request *ExpandPhoneDataVolumeReques
 
 // Summary:
 //
-// Pulls a file from a cloud phone instance and stores it in Object Storage Service (OSS).
+// Fetches files from a cloud phone to Object Storage Service (OSS).
 //
 // Description:
 //
-// Currently, this operation allows you to retrieve files or folders from cloud phone instances and save them directly to OSS.
+// This operation fetches only files or folders from a cloud phone to Object Storage Service.
 //
 // @param request - FetchFileRequest
 //
@@ -4974,11 +5176,11 @@ func (client *Client) FetchFileWithOptions(request *FetchFileRequest, runtime *d
 
 // Summary:
 //
-// Pulls a file from a cloud phone instance and stores it in Object Storage Service (OSS).
+// Fetches files from a cloud phone to Object Storage Service (OSS).
 //
 // Description:
 //
-// Currently, this operation allows you to retrieve files or folders from cloud phone instances and save them directly to OSS.
+// This operation fetches only files or folders from a cloud phone to Object Storage Service.
 //
 // @param request - FetchFileRequest
 //
@@ -4996,7 +5198,7 @@ func (client *Client) FetchFile(request *FetchFileRequest) (_result *FetchFileRe
 
 // Summary:
 //
-// Generates a collaboration code for the cloud phone being accessed by using the current convenience account, and shares this code with other convenience accounts to allow them to access the same cloud phone.
+// By default, you can only use the BatchGetAcpConnectionTicket operation to get the ticket for a connection to a cloud phone, and a cloud phone supports only one connected user at a time. To allow multiple users to connect to a cloud phone at the same time, connect to the cloud phone with a convenience account, use this operation to generate a collaboration code by using the current account, and share this code with other convenience accounts to allow them to access the same cloud phone.
 //
 // Description:
 //
@@ -5048,7 +5250,7 @@ func (client *Client) GenerateCoordinationCodeWithOptions(request *GenerateCoord
 
 // Summary:
 //
-// Generates a collaboration code for the cloud phone being accessed by using the current convenience account, and shares this code with other convenience accounts to allow them to access the same cloud phone.
+// By default, you can only use the BatchGetAcpConnectionTicket operation to get the ticket for a connection to a cloud phone, and a cloud phone supports only one connected user at a time. To allow multiple users to connect to a cloud phone at the same time, connect to the cloud phone with a convenience account, use this operation to generate a collaboration code by using the current account, and share this code with other convenience accounts to allow them to access the same cloud phone.
 //
 // Description:
 //
@@ -5070,7 +5272,7 @@ func (client *Client) GenerateCoordinationCode(request *GenerateCoordinationCode
 
 // Summary:
 //
-// 获取属性模板信息
+// Retrieves the properties of an instance. This operation runs the android getprop command to retrieve all properties of the cloud phone.
 //
 // @param request - GetInstancePropertiesRequest
 //
@@ -5114,7 +5316,7 @@ func (client *Client) GetInstancePropertiesWithOptions(request *GetInstancePrope
 
 // Summary:
 //
-// 获取属性模板信息
+// Retrieves the properties of an instance. This operation runs the android getprop command to retrieve all properties of the cloud phone.
 //
 // @param request - GetInstancePropertiesRequest
 //
@@ -5132,7 +5334,13 @@ func (client *Client) GetInstanceProperties(request *GetInstancePropertiesReques
 
 // Summary:
 //
-// 网络黑名单列表查询
+// Queries the network access blacklist for IP addresses and domain names.
+//
+// Description:
+//
+// - This operation requires image version 26.01 or later.
+//
+// - This operation queries the network access blacklist for your account. The blacklist includes IP addresses and domain names.
 //
 // @param request - GetNetworkBlacklistRequest
 //
@@ -5176,7 +5384,13 @@ func (client *Client) GetNetworkBlacklistWithOptions(request *GetNetworkBlacklis
 
 // Summary:
 //
-// 网络黑名单列表查询
+// Queries the network access blacklist for IP addresses and domain names.
+//
+// Description:
+//
+// - This operation requires image version 26.01 or later.
+//
+// - This operation queries the network access blacklist for your account. The blacklist includes IP addresses and domain names.
 //
 // @param request - GetNetworkBlacklistRequest
 //
@@ -5194,7 +5408,17 @@ func (client *Client) GetNetworkBlacklist(request *GetNetworkBlacklistRequest) (
 
 // Summary:
 //
-// 导入自定义镜像
+// Imports a custom image.
+//
+// Description:
+//
+// 1. You can import a custom image to develop custom features or services.
+//
+// 2. First, obtain the required Android Open Source Project (AOSP) image baseline from the platform. Then, create a custom build. After the build is complete, import the image to the platform. For detailed instructions, contact Wuying technical support.
+//
+// 3. Ensure the image tar package is smaller than 2 GB. Otherwise, image parsing may fail.
+//
+// 4. Ensure the Object Storage Service (OSS) address is in mainland China. If the address is outside mainland China or in the Hong Kong region, the image file download may time out.
 //
 // @param request - ImportImageRequest
 //
@@ -5246,7 +5470,17 @@ func (client *Client) ImportImageWithOptions(request *ImportImageRequest, runtim
 
 // Summary:
 //
-// 导入自定义镜像
+// Imports a custom image.
+//
+// Description:
+//
+// 1. You can import a custom image to develop custom features or services.
+//
+// 2. First, obtain the required Android Open Source Project (AOSP) image baseline from the platform. Then, create a custom build. After the build is complete, import the image to the platform. For detailed instructions, contact Wuying technical support.
+//
+// 3. Ensure the image tar package is smaller than 2 GB. Otherwise, image parsing may fail.
+//
+// 4. Ensure the Object Storage Service (OSS) address is in mainland China. If the address is outside mainland China or in the Hong Kong region, the image file download may time out.
 //
 // @param request - ImportImageRequest
 //
@@ -5338,11 +5572,11 @@ func (client *Client) ImportKeyPair(request *ImportKeyPairRequest) (_result *Imp
 
 // Summary:
 //
-// Installs an app on multiple cloud phone instances at the same time.
+// Installs applications in batches on Cloud Phone instances.
 //
 // Description:
 //
-// This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
+// Before you can install an application, you must create it by calling the [CreateApp](https://help.aliyun.com/document_detail/2807330.html) operation. This is an asynchronous operation. You can call the [DescribeTasks](~~DescribeTasks~~) operation to query the task status.
 //
 // @param request - InstallAppRequest
 //
@@ -5394,11 +5628,11 @@ func (client *Client) InstallAppWithOptions(request *InstallAppRequest, runtime 
 
 // Summary:
 //
-// Installs an app on multiple cloud phone instances at the same time.
+// Installs applications in batches on Cloud Phone instances.
 //
 // Description:
 //
-// This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
+// Before you can install an application, you must create it by calling the [CreateApp](https://help.aliyun.com/document_detail/2807330.html) operation. This is an asynchronous operation. You can call the [DescribeTasks](~~DescribeTasks~~) operation to query the task status.
 //
 // @param request - InstallAppRequest
 //
@@ -5416,7 +5650,7 @@ func (client *Client) InstallApp(request *InstallAppRequest) (_result *InstallAp
 
 // Summary:
 //
-// 安装监控插件
+// Installs the monitoring plugin in a single step. An instance can generate monitoring data only after the plugin is installed.
 //
 // @param request - InstallMonitorAgentRequest
 //
@@ -5464,7 +5698,7 @@ func (client *Client) InstallMonitorAgentWithOptions(request *InstallMonitorAgen
 
 // Summary:
 //
-// 安装监控插件
+// Installs the monitoring plugin in a single step. An instance can generate monitoring data only after the plugin is installed.
 //
 // @param request - InstallMonitorAgentRequest
 //
@@ -5482,7 +5716,7 @@ func (client *Client) InstallMonitorAgent(request *InstallMonitorAgentRequest) (
 
 // Summary:
 //
-// 实例诊断
+// Diagnoses and recovers cloud phone matrix instances. This operation clears the system log files of an instance to prevent the instance from becoming unrecoverable due to a full disk.
 //
 // @param request - InstanceHealerRequest
 //
@@ -5534,7 +5768,7 @@ func (client *Client) InstanceHealerWithOptions(request *InstanceHealerRequest, 
 
 // Summary:
 //
-// 实例诊断
+// Diagnoses and recovers cloud phone matrix instances. This operation clears the system log files of an instance to prevent the instance from becoming unrecoverable due to a full disk.
 //
 // @param request - InstanceHealerRequest
 //
@@ -5552,7 +5786,7 @@ func (client *Client) InstanceHealer(request *InstanceHealerRequest) (_result *I
 
 // Summary:
 //
-// 查询ADB端口连接信息
+// Queries the Android Debug Bridge (ADB) connection information for instances. This operation is available only to standard networks.
 //
 // @param request - ListInstanceAdbAttributesRequest
 //
@@ -5620,7 +5854,7 @@ func (client *Client) ListInstanceAdbAttributesWithOptions(request *ListInstance
 
 // Summary:
 //
-// 查询ADB端口连接信息
+// Queries the Android Debug Bridge (ADB) connection information for instances. This operation is available only to standard networks.
 //
 // @param request - ListInstanceAdbAttributesRequest
 //
@@ -5716,7 +5950,11 @@ func (client *Client) ListPolicyGroups(request *ListPolicyGroupsRequest) (_resul
 
 // Summary:
 //
-// 查询资源标签
+// Queries the tags that are associated with Cloud Phone instances.
+//
+// Description:
+//
+// Specify at least one of the following parameters in the request to determine the queried object: `ResourceId.N`, `Tag.N.Key`, or `Tag.N.Value`.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -5780,7 +6018,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// 查询资源标签
+// Queries the tags that are associated with Cloud Phone instances.
+//
+// Description:
+//
+// Specify at least one of the following parameters in the request to determine the queried object: `ResourceId.N`, `Tag.N.Key`, or `Tag.N.Value`.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -5798,7 +6040,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Modifies attributes of a cloud phone instance. Currently, this operation allows you to modify only the name of a cloud phone instance.
+// Modifies the information of an Android instance. Currently, this operation can be used to modify only the instance name and the upstream and downstream bandwidth limits.
 //
 // @param request - ModifyAndroidInstanceRequest
 //
@@ -5858,7 +6100,7 @@ func (client *Client) ModifyAndroidInstanceWithOptions(request *ModifyAndroidIns
 
 // Summary:
 //
-// Modifies attributes of a cloud phone instance. Currently, this operation allows you to modify only the name of a cloud phone instance.
+// Modifies the information of an Android instance. Currently, this operation can be used to modify only the instance name and the upstream and downstream bandwidth limits.
 //
 // @param request - ModifyAndroidInstanceRequest
 //
@@ -6024,7 +6266,11 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 
 // Summary:
 //
-// Modifies a cloud phone matrix. Currently, you can only modify the name of a cloud phone matrix.
+// Modifies a cloud phone matrix. Currently, you can only modify the name of a cloud phone matrix. Note: In the Cloud Phone system, a Matrix (Cloud Phone Server) is a logical resource management unit that represents a single physical server instance. This physical server can be partitioned into multiple, independently running cloud phone instances. These instances share the Matrix\\"s underlying compute, storage, and network resources. Creating a Matrix is equivalent to leasing a dedicated physical server. On this server, you can then create your cloud phone instances. The number of instances you can create depends on their configuration.
+//
+// Description:
+//
+// Changing the streaming mode is an asynchronous operation. Please do not perform this action frequently.
 //
 // @param request - ModifyCloudPhoneNodeRequest
 //
@@ -6076,7 +6322,11 @@ func (client *Client) ModifyCloudPhoneNodeWithOptions(request *ModifyCloudPhoneN
 
 // Summary:
 //
-// Modifies a cloud phone matrix. Currently, you can only modify the name of a cloud phone matrix.
+// Modifies a cloud phone matrix. Currently, you can only modify the name of a cloud phone matrix. Note: In the Cloud Phone system, a Matrix (Cloud Phone Server) is a logical resource management unit that represents a single physical server instance. This physical server can be partitioned into multiple, independently running cloud phone instances. These instances share the Matrix\\"s underlying compute, storage, and network resources. Creating a Matrix is equivalent to leasing a dedicated physical server. On this server, you can then create your cloud phone instances. The number of instances you can create depends on their configuration.
+//
+// Description:
+//
+// Changing the streaming mode is an asynchronous operation. Please do not perform this action frequently.
 //
 // @param request - ModifyCloudPhoneNodeRequest
 //
@@ -6094,7 +6344,7 @@ func (client *Client) ModifyCloudPhoneNode(request *ModifyCloudPhoneNodeRequest)
 
 // Summary:
 //
-// 修改显示设置
+// Modifies display settings.
 //
 // @param tmpReq - ModifyDisplayConfigRequest
 //
@@ -6148,7 +6398,7 @@ func (client *Client) ModifyDisplayConfigWithOptions(tmpReq *ModifyDisplayConfig
 
 // Summary:
 //
-// 修改显示设置
+// Modifies display settings.
 //
 // @param request - ModifyDisplayConfigRequest
 //
@@ -6252,7 +6502,7 @@ func (client *Client) ModifyInstanceChargeType(request *ModifyInstanceChargeType
 
 // Summary:
 //
-// 修改JVS信息
+// Modifies the configuration of a JVS instance.
 //
 // @param request - ModifyJVSInstanceRequest
 //
@@ -6308,7 +6558,7 @@ func (client *Client) ModifyJVSInstanceWithOptions(request *ModifyJVSInstanceReq
 
 // Summary:
 //
-// 修改JVS信息
+// Modifies the configuration of a JVS instance.
 //
 // @param request - ModifyJVSInstanceRequest
 //
@@ -6392,7 +6642,7 @@ func (client *Client) ModifyKeyPairName(request *ModifyKeyPairNameRequest) (_res
 
 // Summary:
 //
-// Modifies a policy.
+// Modifies the information of a policy group.
 //
 // @param tmpReq - ModifyPolicyGroupRequest
 //
@@ -6486,7 +6736,7 @@ func (client *Client) ModifyPolicyGroupWithOptions(tmpReq *ModifyPolicyGroupRequ
 
 // Summary:
 //
-// Modifies a policy.
+// Modifies the information of a policy group.
 //
 // @param request - ModifyPolicyGroupRequest
 //
@@ -6504,7 +6754,11 @@ func (client *Client) ModifyPolicyGroup(request *ModifyPolicyGroupRequest) (_res
 
 // Summary:
 //
-// 修改属性模板
+// Modifies a property template.
+//
+// Description:
+//
+// When you modify a property template, the [](t3010125.xdita#)operation is not triggered. To apply the changes to cloud phones, you must call the [](t3010125.xdita#)operation separately.
 //
 // @param tmpReq - ModifySystemPropertyTemplateRequest
 //
@@ -6570,7 +6824,11 @@ func (client *Client) ModifySystemPropertyTemplateWithOptions(tmpReq *ModifySyst
 
 // Summary:
 //
-// 修改属性模板
+// Modifies a property template.
+//
+// Description:
+//
+// When you modify a property template, the [](t3010125.xdita#)operation is not triggered. To apply the changes to cloud phones, you must call the [](t3010125.xdita#)operation separately.
 //
 // @param request - ModifySystemPropertyTemplateRequest
 //
@@ -6592,7 +6850,7 @@ func (client *Client) ModifySystemPropertyTemplate(request *ModifySystemProperty
 //
 // Description:
 //
-// This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
+// This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [](t2740507.xdita#)operation.
 //
 // @param request - OperateAppRequest
 //
@@ -6648,7 +6906,7 @@ func (client *Client) OperateAppWithOptions(request *OperateAppRequest, runtime 
 //
 // Description:
 //
-// This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
+// This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [](t2740507.xdita#)operation.
 //
 // @param request - OperateAppRequest
 //
@@ -6666,7 +6924,7 @@ func (client *Client) OperateApp(request *OperateAppRequest) (_result *OperateAp
 
 // Summary:
 //
-// 暂停云手机实例上正在运行的 Agent 任务。
+// Pauses running agent tasks on Mobile nodes.
 //
 // @param request - PauseAgentTaskRequest
 //
@@ -6710,7 +6968,7 @@ func (client *Client) PauseAgentTaskWithOptions(request *PauseAgentTaskRequest, 
 
 // Summary:
 //
-// 暂停云手机实例上正在运行的 Agent 任务。
+// Pauses running agent tasks on Mobile nodes.
 //
 // @param request - PauseAgentTaskRequest
 //
@@ -6728,11 +6986,11 @@ func (client *Client) PauseAgentTask(request *PauseAgentTaskRequest) (_result *P
 
 // Summary:
 //
-// Restarts one or more cloud phone instances.
+// Reboots (shuts down and then starts) Cloud Phone instances.
 //
 // Description:
 //
-// Before you restart a cloud phone instance, make sure it is in one of the following states: **Available, Abnormal, Backup failure, and Restoration failure**.
+// You can reboot an instance only if its status is Active, Abnormal, Backup failed, or **Recover failed**.
 //
 // @param request - RebootAndroidInstancesInGroupRequest
 //
@@ -6788,11 +7046,11 @@ func (client *Client) RebootAndroidInstancesInGroupWithOptions(request *RebootAn
 
 // Summary:
 //
-// Restarts one or more cloud phone instances.
+// Reboots (shuts down and then starts) Cloud Phone instances.
 //
 // Description:
 //
-// Before you restart a cloud phone instance, make sure it is in one of the following states: **Available, Abnormal, Backup failure, and Restoration failure**.
+// You can reboot an instance only if its status is Active, Abnormal, Backup failed, or **Recover failed**.
 //
 // @param request - RebootAndroidInstancesInGroupRequest
 //
@@ -6810,7 +7068,13 @@ func (client *Client) RebootAndroidInstancesInGroup(request *RebootAndroidInstan
 
 // Summary:
 //
-// 整机恢复
+// Restores a full instance backup to another cloud phone instance.
+//
+// Description:
+//
+// 1. When you restore a full instance, the system restarts the instance to ensure a successful restoration. A restart is not required if you restore only applications and data. Make sure the instance is in an active state. Do not perform any operations on the instance during the restoration process. Otherwise, the restoration may fail.
+//
+// 2. Ensure that the backup file can be used to restore the instance properly. After a restoration is complete, check that all your data is complete and all features are working properly. Do not delete the original backup file or reset the source instance until you have verified the restored data. Otherwise, you may lose your data.
 //
 // @param request - RecoverAndroidInstanceRequest
 //
@@ -6870,7 +7134,13 @@ func (client *Client) RecoverAndroidInstanceWithOptions(request *RecoverAndroidI
 
 // Summary:
 //
-// 整机恢复
+// Restores a full instance backup to another cloud phone instance.
+//
+// Description:
+//
+// 1. When you restore a full instance, the system restarts the instance to ensure a successful restoration. A restart is not required if you restore only applications and data. Make sure the instance is in an active state. Do not perform any operations on the instance during the restoration process. Otherwise, the restoration may fail.
+//
+// 2. Ensure that the backup file can be used to restore the instance properly. After a restoration is complete, check that all your data is complete and all features are working properly. Do not delete the original backup file or reset the source instance until you have verified the restored data. Otherwise, you may lose your data.
 //
 // @param request - RecoverAndroidInstanceRequest
 //
@@ -6888,7 +7158,15 @@ func (client *Client) RecoverAndroidInstance(request *RecoverAndroidInstanceRequ
 
 // Summary:
 //
-// 恢复应用
+// Recovers an application from a backup file to another cloud phone instance.
+//
+// Description:
+//
+// 1. A full instance recovery restarts the cloud phone. An application and data recovery does not require a restart. To ensure a successful recovery, make sure your cloud phone is in the active state. Do not perform any operations on the cloud phone during the recovery process. Otherwise, the recovery operation may fail.
+//
+// 2. If the application being recovered already exists on the target cloud phone, the existing application is uninstalled before the backup version is installed. This prevents version conflicts.
+//
+// 3. Ensure that your backup file can be used to recover the instance or application properly. After a recovery is complete, verify that your data is complete and all features work correctly. Do not delete the original backup file or reset the source instance until you have verified that the recovery was successful. Otherwise, there is risks that you lose some data.
 //
 // @param request - RecoverAppRequest
 //
@@ -6948,7 +7226,15 @@ func (client *Client) RecoverAppWithOptions(request *RecoverAppRequest, runtime 
 
 // Summary:
 //
-// 恢复应用
+// Recovers an application from a backup file to another cloud phone instance.
+//
+// Description:
+//
+// 1. A full instance recovery restarts the cloud phone. An application and data recovery does not require a restart. To ensure a successful recovery, make sure your cloud phone is in the active state. Do not perform any operations on the cloud phone during the recovery process. Otherwise, the recovery operation may fail.
+//
+// 2. If the application being recovered already exists on the target cloud phone, the existing application is uninstalled before the backup version is installed. This prevents version conflicts.
+//
+// 3. Ensure that your backup file can be used to recover the instance or application properly. After a recovery is complete, verify that your data is complete and all features work correctly. Do not delete the original backup file or reset the source instance until you have verified that the recovery was successful. Otherwise, there is risks that you lose some data.
 //
 // @param request - RecoverAppRequest
 //
@@ -7056,7 +7342,7 @@ func (client *Client) RecoveryFile(request *RecoveryFileRequest) (_result *Recov
 
 // Summary:
 //
-// Renews instance groups.
+// Renews subscription Cloud Phone instance groups. If a subscription instance group expires, the system automatically deletes the instance group and its instances after 15 days. You cannot recover deleted resources. Renew your instance groups promptly to prevent resource loss.
 //
 // @param request - RenewAndroidInstanceGroupsRequest
 //
@@ -7120,7 +7406,7 @@ func (client *Client) RenewAndroidInstanceGroupsWithOptions(request *RenewAndroi
 
 // Summary:
 //
-// Renews instance groups.
+// Renews subscription Cloud Phone instance groups. If a subscription instance group expires, the system automatically deletes the instance group and its instances after 15 days. You cannot recover deleted resources. Renew your instance groups promptly to prevent resource loss.
 //
 // @param request - RenewAndroidInstanceGroupsRequest
 //
@@ -7138,7 +7424,7 @@ func (client *Client) RenewAndroidInstanceGroups(request *RenewAndroidInstanceGr
 
 // Summary:
 //
-// Renews a cloud mobile matrix.
+// Renews the specified cloud phone matrices.
 //
 // @param request - RenewCloudPhoneNodesRequest
 //
@@ -7208,7 +7494,7 @@ func (client *Client) RenewCloudPhoneNodesWithOptions(request *RenewCloudPhoneNo
 
 // Summary:
 //
-// Renews a cloud mobile matrix.
+// Renews the specified cloud phone matrices.
 //
 // @param request - RenewCloudPhoneNodesRequest
 //
@@ -7226,7 +7512,7 @@ func (client *Client) RenewCloudPhoneNodes(request *RenewCloudPhoneNodesRequest)
 
 // Summary:
 //
-// 续费MobileAgent套餐包
+// Renews a mobile agent package.
 //
 // @param request - RenewMobileAgentPackageRequest
 //
@@ -7294,7 +7580,7 @@ func (client *Client) RenewMobileAgentPackageWithOptions(request *RenewMobileAge
 
 // Summary:
 //
-// 续费MobileAgent套餐包
+// Renews a mobile agent package.
 //
 // @param request - RenewMobileAgentPackageRequest
 //
@@ -7312,11 +7598,11 @@ func (client *Client) RenewMobileAgentPackage(request *RenewMobileAgentPackageRe
 
 // Summary:
 //
-// Resets one or more cloud phone instances.
+// Resets the instance by reinstalling the operating system using its original image. Note: The reset operation will fail if the image that was used to create the Cloud Phone has since been deleted.
 //
 // Description:
 //
-// Before you reset a cloud phone instance, make sure it is in one of the following states: **Available, Stopped, Abnormal, Backup failure, and Restoration failure**.
+// You can reset an instance (initialize its system) only when the instance is Active, Stopped, Abnormal, Backup Failed, or **Recover Failed**.
 //
 // @param request - ResetAndroidInstancesInGroupRequest
 //
@@ -7372,11 +7658,11 @@ func (client *Client) ResetAndroidInstancesInGroupWithOptions(request *ResetAndr
 
 // Summary:
 //
-// Resets one or more cloud phone instances.
+// Resets the instance by reinstalling the operating system using its original image. Note: The reset operation will fail if the image that was used to create the Cloud Phone has since been deleted.
 //
 // Description:
 //
-// Before you reset a cloud phone instance, make sure it is in one of the following states: **Available, Stopped, Abnormal, Backup failure, and Restoration failure**.
+// You can reset an instance (initialize its system) only when the instance is Active, Stopped, Abnormal, Backup Failed, or **Recover Failed**.
 //
 // @param request - ResetAndroidInstancesInGroupRequest
 //
@@ -7394,7 +7680,7 @@ func (client *Client) ResetAndroidInstancesInGroup(request *ResetAndroidInstance
 
 // Summary:
 //
-// 继续云手机实例上正在运行的 Agent 任务。
+// Resumes paused agent automation tasks on a mobile instance.
 //
 // @param request - ResumeAgentTaskRequest
 //
@@ -7442,7 +7728,7 @@ func (client *Client) ResumeAgentTaskWithOptions(request *ResumeAgentTaskRequest
 
 // Summary:
 //
-// 继续云手机实例上正在运行的 Agent 任务。
+// Resumes paused agent automation tasks on a mobile instance.
 //
 // @param request - ResumeAgentTaskRequest
 //
@@ -7460,7 +7746,7 @@ func (client *Client) ResumeAgentTask(request *ResumeAgentTaskRequest) (_result 
 
 // Summary:
 //
-// 触发云手机内的 Agent 执行 AI 自动化任务。
+// Triggers an Agent on a mobile node to run an AI-powered automation task.
 //
 // @param request - RunAgentTaskRequest
 //
@@ -7520,7 +7806,7 @@ func (client *Client) RunAgentTaskWithOptions(request *RunAgentTaskRequest, runt
 
 // Summary:
 //
-// 触发云手机内的 Agent 执行 AI 自动化任务。
+// Triggers an Agent on a mobile node to run an AI-powered automation task.
 //
 // @param request - RunAgentTaskRequest
 //
@@ -7538,7 +7824,7 @@ func (client *Client) RunAgentTask(request *RunAgentTaskRequest) (_result *RunAg
 
 // Summary:
 //
-// Executes a command on a cloud phone instance.
+// Runs a command on one or more cloud phone instances.
 //
 // @param request - RunCommandRequest
 //
@@ -7598,7 +7884,7 @@ func (client *Client) RunCommandWithOptions(request *RunCommandRequest, runtime 
 
 // Summary:
 //
-// Executes a command on a cloud phone instance.
+// Runs a command on one or more cloud phone instances.
 //
 // @param request - RunCommandRequest
 //
@@ -7616,7 +7902,11 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 
 // Summary:
 //
-// 通过eds agent通道下发命令
+// Runs a synchronous command on one or more Cloud Phone instances and returns the execution result.
+//
+// Description:
+//
+// The `RunSyncCommand` operation is designed for commands that return a result quickly, typically within milliseconds. For longer-running commands that may take several seconds, we recommend using the asynchronous [](t2729835.xdita#)operation.
 //
 // @param request - RunSyncCommandRequest
 //
@@ -7672,7 +7962,11 @@ func (client *Client) RunSyncCommandWithOptions(request *RunSyncCommandRequest, 
 
 // Summary:
 //
-// 通过eds agent通道下发命令
+// Runs a synchronous command on one or more Cloud Phone instances and returns the execution result.
+//
+// Description:
+//
+// The `RunSyncCommand` operation is designed for commands that return a result quickly, typically within milliseconds. For longer-running commands that may take several seconds, we recommend using the asynchronous [](t2729835.xdita#)operation.
 //
 // @param request - RunSyncCommandRequest
 //
@@ -7690,11 +7984,11 @@ func (client *Client) RunSyncCommand(request *RunSyncCommandRequest) (_result *R
 
 // Summary:
 //
-// Pushes files from Object Storage Service (OSS) buckets to cloud phone instances.
+// Pushes files from Object Storage Service (OSS) or a public download link to one or more cloud phones.
 //
 // Description:
 //
-// Currently, this operation allows you to only push files or folders from OSS buckets to cloud phone instances.
+// Use this operation to send files or folders from Object Storage Service (OSS) to cloud phones.
 //
 // @param request - SendFileRequest
 //
@@ -7770,11 +8064,11 @@ func (client *Client) SendFileWithOptions(request *SendFileRequest, runtime *dar
 
 // Summary:
 //
-// Pushes files from Object Storage Service (OSS) buckets to cloud phone instances.
+// Pushes files from Object Storage Service (OSS) or a public download link to one or more cloud phones.
 //
 // Description:
 //
-// Currently, this operation allows you to only push files or folders from OSS buckets to cloud phone instances.
+// Use this operation to send files or folders from Object Storage Service (OSS) to cloud phones.
 //
 // @param request - SendFileRequest
 //
@@ -7792,7 +8086,7 @@ func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileRespo
 
 // Summary:
 //
-// 发送属性模板
+// Sends a property template to cloud phone instances and, based on the template, sets properties in the Android system using the setprop command. An APK or a related program can read these property values. If you specify multiple template IDs, the property templates are randomly sent to the cloud phone instances.
 //
 // @param request - SendSystemPropertyTemplateRequest
 //
@@ -7846,7 +8140,7 @@ func (client *Client) SendSystemPropertyTemplateWithOptions(request *SendSystemP
 
 // Summary:
 //
-// 发送属性模板
+// Sends a property template to cloud phone instances and, based on the template, sets properties in the Android system using the setprop command. An APK or a related program can read these property values. If you specify multiple template IDs, the property templates are randomly sent to the cloud phone instances.
 //
 // @param request - SendSystemPropertyTemplateRequest
 //
@@ -7938,7 +8232,19 @@ func (client *Client) SetAdbSecure(request *SetAdbSecureRequest) (_result *SetAd
 
 // Summary:
 //
-// 设置网络黑名单
+// Adds or purges IP addresses and domain names from the network access blacklist.
+//
+// Description:
+//
+// - This operation requires image version 26.01 or later.
+//
+// - This API call synchronously updates the IP address blacklist and the domain name blacklist.
+//
+// - The IP address blacklist supports individual IP addresses and IP address segments. The update overwrites the existing configuration. If you pass an empty string (""), all configured IP blacklist entries are purged.
+//
+// - The domain name blacklist supports only exact matches and does not support regular expressions. If you pass an empty string (""), all configured domain name blacklist entries are purged.
+//
+// - After you change the configuration, restart the cloud phone to apply the new blacklist rules. Note that these rules may not take effect if you use an agent.
 //
 // @param request - SetNetworkBlacklistRequest
 //
@@ -7986,7 +8292,19 @@ func (client *Client) SetNetworkBlacklistWithOptions(request *SetNetworkBlacklis
 
 // Summary:
 //
-// 设置网络黑名单
+// Adds or purges IP addresses and domain names from the network access blacklist.
+//
+// Description:
+//
+// - This operation requires image version 26.01 or later.
+//
+// - This API call synchronously updates the IP address blacklist and the domain name blacklist.
+//
+// - The IP address blacklist supports individual IP addresses and IP address segments. The update overwrites the existing configuration. If you pass an empty string (""), all configured IP blacklist entries are purged.
+//
+// - The domain name blacklist supports only exact matches and does not support regular expressions. If you pass an empty string (""), all configured domain name blacklist entries are purged.
+//
+// - After you change the configuration, restart the cloud phone to apply the new blacklist rules. Note that these rules may not take effect if you use an agent.
 //
 // @param request - SetNetworkBlacklistRequest
 //
@@ -8004,7 +8322,7 @@ func (client *Client) SetNetworkBlacklist(request *SetNetworkBlacklistRequest) (
 
 // Summary:
 //
-// Start instances.
+// Start cloud phone instances.
 //
 // Description:
 //
@@ -8056,7 +8374,7 @@ func (client *Client) StartAndroidInstanceWithOptions(request *StartAndroidInsta
 
 // Summary:
 //
-// Start instances.
+// Start cloud phone instances.
 //
 // Description:
 //
@@ -8078,7 +8396,11 @@ func (client *Client) StartAndroidInstance(request *StartAndroidInstanceRequest)
 
 // Summary:
 //
-// 开启实例ADB端口并创建端口转发条目
+// Enables the Android Debug Bridge (ADB) connection for an instance and creates an Internet mapping rule for its ADB port. This feature is available only for standard networks.
+//
+// Description:
+//
+// This feature can be enabled when the instance is not in the **UNAVAILABLE*	- state and has a **private IP address*	- assigned.
 //
 // @param request - StartInstanceAdbRequest
 //
@@ -8122,7 +8444,11 @@ func (client *Client) StartInstanceAdbWithOptions(request *StartInstanceAdbReque
 
 // Summary:
 //
-// 开启实例ADB端口并创建端口转发条目
+// Enables the Android Debug Bridge (ADB) connection for an instance and creates an Internet mapping rule for its ADB port. This feature is available only for standard networks.
+//
+// Description:
+//
+// This feature can be enabled when the instance is not in the **UNAVAILABLE*	- state and has a **private IP address*	- assigned.
 //
 // @param request - StartInstanceAdbRequest
 //
@@ -8140,11 +8466,11 @@ func (client *Client) StartInstanceAdb(request *StartInstanceAdbRequest) (_resul
 
 // Summary:
 //
-// Stops a cloud phone instance.
+// Stops (shuts down) an Android instance.
 //
 // Description:
 //
-// Before you stop a cloud phone instance, make sure it is in one of the following states: **Available, Backup failure, and Restoration failure**.
+// An instance can be stopped only if it is in the Active, Backup Failed, or **Recover Failed*	- status.
 //
 // @param request - StopAndroidInstanceRequest
 //
@@ -8196,11 +8522,11 @@ func (client *Client) StopAndroidInstanceWithOptions(request *StopAndroidInstanc
 
 // Summary:
 //
-// Stops a cloud phone instance.
+// Stops (shuts down) an Android instance.
 //
 // Description:
 //
-// Before you stop a cloud phone instance, make sure it is in one of the following states: **Available, Backup failure, and Restoration failure**.
+// An instance can be stopped only if it is in the Active, Backup Failed, or **Recover Failed*	- status.
 //
 // @param request - StopAndroidInstanceRequest
 //
@@ -8218,7 +8544,7 @@ func (client *Client) StopAndroidInstance(request *StopAndroidInstanceRequest) (
 
 // Summary:
 //
-// 停止实例ADB端口并删除端口转发条目
+// Disables the ADB connection for an Android instance and deletes its ADB port forwarding rules. This operation applies only to standard networks.
 //
 // @param request - StopInstanceAdbRequest
 //
@@ -8262,7 +8588,7 @@ func (client *Client) StopInstanceAdbWithOptions(request *StopInstanceAdbRequest
 
 // Summary:
 //
-// 停止实例ADB端口并删除端口转发条目
+// Disables the ADB connection for an Android instance and deletes its ADB port forwarding rules. This operation applies only to standard networks.
 //
 // @param request - StopInstanceAdbRequest
 //
@@ -8280,7 +8606,7 @@ func (client *Client) StopInstanceAdb(request *StopInstanceAdbRequest) (_result 
 
 // Summary:
 //
-// 给资源打标签
+// Adds tags to one or more cloud phones.
 //
 // @param request - TagResourcesRequest
 //
@@ -8332,7 +8658,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// 给资源打标签
+// Adds tags to one or more cloud phones.
 //
 // @param request - TagResourcesRequest
 //
@@ -8350,11 +8676,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Uninstalls an app from multiple cloud phone instances.
+// Uninstalls applications from one or more Cloud Phone instances.
 //
 // Description:
 //
-// This operation runs asynchronously. To check the operation result, you can visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
+// This is an asynchronous operation. You can query the task status in the Task Hub by calling [DescribeTasks](~~DescribeTasks~~).
 //
 // @param request - UninstallAppRequest
 //
@@ -8406,11 +8732,11 @@ func (client *Client) UninstallAppWithOptions(request *UninstallAppRequest, runt
 
 // Summary:
 //
-// Uninstalls an app from multiple cloud phone instances.
+// Uninstalls applications from one or more Cloud Phone instances.
 //
 // Description:
 //
-// This operation runs asynchronously. To check the operation result, you can visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
+// This is an asynchronous operation. You can query the task status in the Task Hub by calling [DescribeTasks](~~DescribeTasks~~).
 //
 // @param request - UninstallAppRequest
 //
@@ -8428,7 +8754,7 @@ func (client *Client) UninstallApp(request *UninstallAppRequest) (_result *Unins
 
 // Summary:
 //
-// 卸载监控插件
+// Uninstalls the monitoring plugin.
 //
 // @param request - UninstallMonitorAgentRequest
 //
@@ -8476,7 +8802,7 @@ func (client *Client) UninstallMonitorAgentWithOptions(request *UninstallMonitor
 
 // Summary:
 //
-// 卸载监控插件
+// Uninstalls the monitoring plugin.
 //
 // @param request - UninstallMonitorAgentRequest
 //
@@ -8494,7 +8820,7 @@ func (client *Client) UninstallMonitorAgent(request *UninstallMonitorAgentReques
 
 // Summary:
 //
-// 删除资源标签
+// Removes tags from cloud phones. If a tag is no longer associated with any cloud phone after it is removed, the tag is automatically deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -8550,7 +8876,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// 删除资源标签
+// Removes tags from cloud phones. If a tag is no longer associated with any cloud phone after it is removed, the tag is automatically deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -8634,11 +8960,11 @@ func (client *Client) UpdateCustomImageName(request *UpdateCustomImageNameReques
 
 // Summary:
 //
-// Changes the image of an instance group.
+// Updates the image of an instance group. This update affects all instances in the group.
 //
 // Description:
 //
-// Before you call this operation, make sure the image is in the Available state and the region of the image is included in the region list of the desired instance group. In addition, the instance group itself is available.
+// The image and the instance group must be in the active state. The image must be available in the same region as the instance group.
 //
 // @param request - UpdateInstanceGroupImageRequest
 //
@@ -8686,11 +9012,11 @@ func (client *Client) UpdateInstanceGroupImageWithOptions(request *UpdateInstanc
 
 // Summary:
 //
-// Changes the image of an instance group.
+// Updates the image of an instance group. This update affects all instances in the group.
 //
 // Description:
 //
-// Before you call this operation, make sure the image is in the Available state and the region of the image is included in the region list of the desired instance group. In addition, the instance group itself is available.
+// The image and the instance group must be in the active state. The image must be available in the same region as the instance group.
 //
 // @param request - UpdateInstanceGroupImageRequest
 //
@@ -8708,7 +9034,11 @@ func (client *Client) UpdateInstanceGroupImage(request *UpdateInstanceGroupImage
 
 // Summary:
 //
-// 更新实例镜像
+// Changes the image of an instance in a cloud phone matrix. You can change the image for an instance only when the instance is in the Running, Stopped, or Failed to change the image state. The GPU vendor of the target image must match the GPU vendor of the server where the instance runs. If you change the image across major versions, such as from Android 10 to Android 12, the system clears all data. This operation is equivalent to changing the image and then resetting the instance.
+//
+// Description:
+//
+// <props="china">You can change images only for cloud phone matrix instances. Other instance types are not supported.<props="intl">This feature is not available on the Alibaba Cloud international site (www\\.alibabacloud.com).
 //
 // @param request - UpdateInstanceImageRequest
 //
@@ -8764,7 +9094,11 @@ func (client *Client) UpdateInstanceImageWithOptions(request *UpdateInstanceImag
 
 // Summary:
 //
-// 更新实例镜像
+// Changes the image of an instance in a cloud phone matrix. You can change the image for an instance only when the instance is in the Running, Stopped, or Failed to change the image state. The GPU vendor of the target image must match the GPU vendor of the server where the instance runs. If you change the image across major versions, such as from Android 10 to Android 12, the system clears all data. This operation is equivalent to changing the image and then resetting the instance.
+//
+// Description:
+//
+// <props="china">You can change images only for cloud phone matrix instances. Other instance types are not supported.<props="intl">This feature is not available on the Alibaba Cloud international site (www\\.alibabacloud.com).
 //
 // @param request - UpdateInstanceImageRequest
 //
@@ -8782,11 +9116,7 @@ func (client *Client) UpdateInstanceImage(request *UpdateInstanceImageRequest) (
 
 // Summary:
 //
-// Upgrades an instance group. Currently, this operation allows you to only increase the number of instances in an instance group.
-//
-// Description:
-//
-// Currently, this operation allows you to only increase the size of an instance group.
+// Upgrades an instance group. This operation only supports scaling out an instance group, which increases the number of instances.
 //
 // @param request - UpgradeAndroidInstanceGroupRequest
 //
@@ -8846,11 +9176,7 @@ func (client *Client) UpgradeAndroidInstanceGroupWithOptions(request *UpgradeAnd
 
 // Summary:
 //
-// Upgrades an instance group. Currently, this operation allows you to only increase the number of instances in an instance group.
-//
-// Description:
-//
-// Currently, this operation allows you to only increase the size of an instance group.
+// Upgrades an instance group. This operation only supports scaling out an instance group, which increases the number of instances.
 //
 // @param request - UpgradeAndroidInstanceGroupRequest
 //

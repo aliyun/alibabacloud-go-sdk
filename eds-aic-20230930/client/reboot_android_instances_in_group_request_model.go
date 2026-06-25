@@ -20,22 +20,21 @@ type iRebootAndroidInstancesInGroupRequest interface {
 }
 
 type RebootAndroidInstancesInGroupRequest struct {
-	// The IDs of the cloud phone instances.
+	// A list of instance IDs.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	// Specifies whether to enforce a restart operation. If a cloud phone instance fails to stop due to system or network issues, a forced restart can be triggered, though it may result in data loss.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Specifies whether to forcefully reboot the instances. If a Cloud Phone instance cannot be shut down because of system or network errors, you can force a reboot. This operation may cause data loss.
 	//
 	// example:
 	//
 	// false
-	ForceStop             *bool   `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
-	IgnoreParamValidation *bool   `json:"IgnoreParamValidation,omitempty" xml:"IgnoreParamValidation,omitempty"`
-	SaleMode              *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	ForceStop             *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	IgnoreParamValidation *bool `json:"IgnoreParamValidation,omitempty" xml:"IgnoreParamValidation,omitempty"`
+	// The sales mode. This parameter is deprecated.
+	//
+	// example:
+	//
+	// Instance
+	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 }
 
 func (s RebootAndroidInstancesInGroupRequest) String() string {

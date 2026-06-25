@@ -20,15 +20,22 @@ type iDescribeMetricLastResponseBody interface {
 }
 
 type DescribeMetricLastResponseBody struct {
+	// The number of records.
+	//
 	// example:
 	//
 	// 100
-	Count            *int32                                            `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The instance monitoring data.
 	MetricTotalModel []*DescribeMetricLastResponseBodyMetricTotalModel `json:"MetricTotalModel,omitempty" xml:"MetricTotalModel,omitempty" type:"Repeated"`
+	// The token for the next query. If not all results are returned in a single query, the returned NextToken is not empty. You can use the returned NextToken in the next query to query the next page.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2B9E6946-0E2A-5D2B-B275-361DF81F****
@@ -93,11 +100,16 @@ func (s *DescribeMetricLastResponseBody) Validate() error {
 }
 
 type DescribeMetricLastResponseBodyMetricTotalModel struct {
+	// For instance-level monitoring, the Cloud Phone instance ID is returned.
+	//
+	// <props="china">For matrix-level monitoring, the matrix ID is returned.
+	//
 	// example:
 	//
 	// acp-fkuit0cmyru4p****
-	AndroidInstanceId *string                                                          `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
-	MetricModelList   []*DescribeMetricLastResponseBodyMetricTotalModelMetricModelList `json:"MetricModelList,omitempty" xml:"MetricModelList,omitempty" type:"Repeated"`
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	// The monitoring data for metrics.
+	MetricModelList []*DescribeMetricLastResponseBodyMetricTotalModelMetricModelList `json:"MetricModelList,omitempty" xml:"MetricModelList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMetricLastResponseBodyMetricTotalModel) String() string {
@@ -140,11 +152,17 @@ func (s *DescribeMetricLastResponseBodyMetricTotalModel) Validate() error {
 }
 
 type DescribeMetricLastResponseBodyMetricTotalModelMetricModelList struct {
+	// The monitoring data points.
 	DataPoints []*DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Repeated"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// cpu_utilization
-	MetricName       *string                                                                          `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The process monitoring metrics.
+	//
+	// > This parameter is returned when the metric is \\`process_cpu\\` or \\`process_memory\\`.
 	ProcessLastInfos []*DescribeMetricLastResponseBodyMetricTotalModelMetricModelListProcessLastInfos `json:"ProcessLastInfos,omitempty" xml:"ProcessLastInfos,omitempty" type:"Repeated"`
 }
 
@@ -206,19 +224,38 @@ func (s *DescribeMetricLastResponseBodyMetricTotalModelMetricModelList) Validate
 }
 
 type DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints struct {
+	// The average value. Unit: %.
+	//
+	// > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
+	//
 	// example:
 	//
 	// 99.52
 	Average *float64 `json:"Average,omitempty" xml:"Average,omitempty"`
-	GpuId   *string  `json:"GpuId,omitempty" xml:"GpuId,omitempty"`
+	// The GPU ID.
+	//
+	// example:
+	//
+	// cpn-1t1bxvp9az2pk****-gpu-0
+	GpuId *string `json:"GpuId,omitempty" xml:"GpuId,omitempty"`
+	// The maximum value. Unit: %.
+	//
+	// > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
+	//
 	// example:
 	//
 	// 100
 	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// The minimum value. Unit: %.
+	//
+	// > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
+	//
 	// example:
 	//
 	// 93.1
 	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// The timestamp of the statistics. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1548777660000
@@ -283,19 +320,28 @@ func (s *DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints
 }
 
 type DescribeMetricLastResponseBodyMetricTotalModelMetricModelListProcessLastInfos struct {
+	// The CPU utilization. Unit: %.
+	//
 	// example:
 	//
 	// 50
 	CpuUsage *float64 `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
+	// The memory usage. Unit: %.
+	//
 	// example:
 	//
 	// 50
 	MemoryUsage *float64 `json:"MemoryUsage,omitempty" xml:"MemoryUsage,omitempty"`
+	// The process name.
+	//
 	// example:
 	//
 	// com.offerup
-	Name       *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of process IDs.
 	ProcessIds []*int32 `json:"ProcessIds,omitempty" xml:"ProcessIds,omitempty" type:"Repeated"`
+	// The timestamp of the statistics. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1548777660000

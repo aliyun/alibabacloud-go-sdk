@@ -18,7 +18,12 @@ type iStartAndroidInstanceRequest interface {
 type StartAndroidInstanceRequest struct {
 	// List of instances.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	SaleMode           *string   `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	// The billing mode. This parameter is deprecated.
+	//
+	// example:
+	//
+	// Instance
+	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 }
 
 func (s StartAndroidInstanceRequest) String() string {

@@ -16,8 +16,10 @@ type iModifyDisplayConfigRequest interface {
 }
 
 type ModifyDisplayConfigRequest struct {
-	AndroidInstanceIds []*string                                `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	DisplayConfig      *ModifyDisplayConfigRequestDisplayConfig `json:"DisplayConfig,omitempty" xml:"DisplayConfig,omitempty" type:"Struct"`
+	// A list of instance IDs.
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+	// The display settings.
+	DisplayConfig *ModifyDisplayConfigRequestDisplayConfig `json:"DisplayConfig,omitempty" xml:"DisplayConfig,omitempty" type:"Struct"`
 }
 
 func (s ModifyDisplayConfigRequest) String() string {
@@ -56,22 +58,32 @@ func (s *ModifyDisplayConfigRequest) Validate() error {
 }
 
 type ModifyDisplayConfigRequestDisplayConfig struct {
+	// The dots per inch (DPI). Valid values: 72 to 600.
+	//
 	// example:
 	//
 	// 240
 	Dpi *int32 `json:"Dpi,omitempty" xml:"Dpi,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// null
 	Fps *int32 `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// Specifies whether to lock the resolution.
+	//
 	// example:
 	//
 	// off
 	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
+	// The resolution height, in pixels.
+	//
 	// example:
 	//
 	// 1920
 	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// The resolution width, in pixels.
+	//
 	// example:
 	//
 	// 720

@@ -14,6 +14,8 @@ type iInstallMonitorAgentResponseBody interface {
 }
 
 type InstallMonitorAgentResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DB070C80-45AC-52CA-8101-937C25DA****

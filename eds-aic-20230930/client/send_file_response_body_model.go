@@ -18,19 +18,19 @@ type iSendFileResponseBody interface {
 }
 
 type SendFileResponseBody struct {
-	// The objects that are returned.
+	// The details of the created tasks.
 	//
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
 	Data []*SendFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the request. If the request fails, share this ID with technical support to help diagnose the issue.
+	// A unique identifier for the request. If you encounter an issue, provide this request ID to technical support for troubleshooting.
 	//
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the batch task.
+	// The batch task ID.
 	//
 	// example:
 	//
@@ -87,13 +87,13 @@ func (s *SendFileResponseBody) Validate() error {
 }
 
 type SendFileResponseBodyData struct {
-	// The ID of the cloud phone instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// acp-34pqe4r0kd9kn****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
-	// The ID of the task.
+	// The ID of the individual task for a specific cloud phone.
 	//
 	// example:
 	//

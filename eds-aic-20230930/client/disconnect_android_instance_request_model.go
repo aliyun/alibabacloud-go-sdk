@@ -16,7 +16,21 @@ type iDisconnectAndroidInstanceRequest interface {
 }
 
 type DisconnectAndroidInstanceRequest struct {
-	EndUserId   *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// <props="china">
+	//
+	// If you use the Cloud Phone Matrix Edition and the instance stream pattern is collaborative mode, you can specify `EndUserId` to disconnect a specific user and invalidate the corresponding ticket.
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// This parameter is not publicly available.
+	//
+	// example:
+	//
+	// user1
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// A list of instance IDs. You can specify 1 to 100 IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 

@@ -20,12 +20,18 @@ type iModifyJVSInstanceRequest interface {
 }
 
 type ModifyJVSInstanceRequest struct {
+	// Specifies whether to apply the configuration to all instances.
+	//
 	// example:
 	//
 	// true
-	ApplyToAll   *bool                                   `json:"ApplyToAll,omitempty" xml:"ApplyToAll,omitempty"`
+	ApplyToAll *bool `json:"ApplyToAll,omitempty" xml:"ApplyToAll,omitempty"`
+	// The credit limit configuration. New configurations overwrite existing ones.
 	CreditConfig []*ModifyJVSInstanceRequestCreditConfig `json:"CreditConfig,omitempty" xml:"CreditConfig,omitempty" type:"Repeated"`
-	InstanceIds  []*string                               `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// A list of instance IDs.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The new instance name.
+	//
 	// example:
 	//
 	// defaultInstanceName
@@ -90,10 +96,14 @@ func (s *ModifyJVSInstanceRequest) Validate() error {
 }
 
 type ModifyJVSInstanceRequestCreditConfig struct {
+	// The credit limit.
+	//
 	// example:
 	//
 	// 10
 	CreditLimit *int64 `json:"CreditLimit,omitempty" xml:"CreditLimit,omitempty"`
+	// The credit limit period.
+	//
 	// example:
 	//
 	// day

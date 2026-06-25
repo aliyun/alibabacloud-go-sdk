@@ -22,20 +22,32 @@ type iRunAgentTaskResponseBody interface {
 }
 
 type RunAgentTaskResponseBody struct {
+	// The response status code. A value of `200` indicates that the request was successful.
+	//
+	// example:
+	//
+	// For example, "200" indicates success.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The number of tasks.
+	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 6C8439B9-7DBF-57F4-92AE-55A9B9D3****
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*RunAgentTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of tasks.
+	Tasks []*RunAgentTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s RunAgentTaskResponseBody) String() string {
@@ -105,16 +117,45 @@ func (s *RunAgentTaskResponseBody) Validate() error {
 }
 
 type RunAgentTaskResponseBodyTasks struct {
+	// The current status of the task. Valid values:
+	//
+	// `PENDING`: The task is being created.
+	//
+	// `RUNNING`: The task is running.
+	//
+	// `COMPLETED`: The task completed successfully.
+	//
+	// `FAILED`: The task failed.
+	//
+	// `TIMEOUT`: The task timed out.
+	//
+	// example:
+	//
+	// COMPLETED
 	CurrentStatus *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
+	// The mobile node ID.
+	//
 	// example:
 	//
 	// acp-ek65k51zoxia3x8xz
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RunningAt  *string `json:"RunningAt,omitempty" xml:"RunningAt,omitempty"`
+	// The time when the task started running, in ISO 8601 format.
+	//
+	// example:
+	//
+	// 2026-04-13T17:42:19Z
+	RunningAt *string `json:"RunningAt,omitempty" xml:"RunningAt,omitempty"`
+	// The globally unique task ID.
+	//
 	// example:
 	//
 	// t-imr0fufqd7cle****
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The user prompt that the Agent used to perform the task.
+	//
+	// example:
+	//
+	// Download DingTalk from App Store
 	UserPrompt *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
 }
 

@@ -22,20 +22,32 @@ type iDescribeAgentTaskResponseBody interface {
 }
 
 type DescribeAgentTaskResponseBody struct {
+	// The status code.
+	//
+	// example:
+	//
+	// For example, "200" indicates success.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The task count.
+	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 310A783E-CC46-5452-A8A3-71AE5DB5****
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*DescribeAgentTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of tasks.
+	Tasks []*DescribeAgentTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAgentTaskResponseBody) String() string {
@@ -105,22 +117,63 @@ func (s *DescribeAgentTaskResponseBody) Validate() error {
 }
 
 type DescribeAgentTaskResponseBodyTasks struct {
+	// The task\\"s current status. Valid values:
+	//
+	// `PENDING`: The task is being created.
+	//
+	// `RUNNING`: The task is running.
+	//
+	// `COMPLETED`: The task has completed.
+	//
+	// `FAILED`: The task failed.
+	//
+	// `TIMEOUT`: The task timed out.
+	//
+	// example:
+	//
+	// COMPLETED
 	CurrentStatus *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
+	// The mobile node ID.
+	//
 	// example:
 	//
 	// acp-anzzuho371azi44xr
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RunningAt  *string `json:"RunningAt,omitempty" xml:"RunningAt,omitempty"`
+	// The task\\"s creation time, in ISO 8601 format.
+	//
+	// example:
+	//
+	// 2026-04-13T17:42:19Z
+	RunningAt *string `json:"RunningAt,omitempty" xml:"RunningAt,omitempty"`
+	// The number of steps executed.
+	//
 	// example:
 	//
 	// 30
-	Steps        *string `json:"Steps,omitempty" xml:"Steps,omitempty"`
+	Steps *string `json:"Steps,omitempty" xml:"Steps,omitempty"`
+	// The task duration. This field is returned only when `CurrentStatus` is `FAILED` or `COMPLETED`.
+	//
+	// example:
+	//
+	// 50
 	TaskDuration *string `json:"TaskDuration,omitempty" xml:"TaskDuration,omitempty"`
+	// The globally unique task ID.
+	//
 	// example:
 	//
 	// t-imr0fufqd7cle****
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task result. This field is returned only when `CurrentStatus` is `COMPLETED` or `FAILED`.
+	//
+	// example:
+	//
+	// Download DingTalk succeeded.
 	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
+	// The user prompt that the Agent uses to perform the task.
+	//
+	// example:
+	//
+	// Download DingTalk from App Store
 	UserPrompt *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
 }
 

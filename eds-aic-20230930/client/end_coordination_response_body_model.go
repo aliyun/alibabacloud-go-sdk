@@ -14,6 +14,8 @@ type iEndCoordinationResponseBody interface {
 }
 
 type EndCoordinationResponseBody struct {
+  // The request ID.
+  // 
   // example:
   // 
   // 5C5CEF0A-D6E1-58D3-8750-67DB4F82****

@@ -18,15 +18,15 @@ type iDescribeInvocationsResponseBody interface {
 }
 
 type DescribeInvocationsResponseBody struct {
-	// The objects that are returned.
+	// The list of returned results.
 	Data []*DescribeInvocationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 440D7342-5E7C-B2DB-D0B4EAC2BDF1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,41 +83,29 @@ func (s *DescribeInvocationsResponseBody) Validate() error {
 }
 
 type DescribeInvocationsResponseBodyData struct {
-	// The end time of the command execution.
+	// The time when the command finished running.
 	//
 	// example:
 	//
 	// 2022-08-11 17:45:03
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the cloud phone instance on which the command is executed.
+	// The ID of the instance where the command was run.
 	//
 	// example:
 	//
 	// acp-uto81vfd8t8z****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the execution.
+	// The ID of the command execution.
 	//
 	// example:
 	//
 	// t-15775dc8****
 	InvocationId *string `json:"InvocationId,omitempty" xml:"InvocationId,omitempty"`
-	// The execution state of the command.
-	//
-	// Valid values:
-	//
-	// 	- Failed: The execution of the command failed.
-	//
-	// 	- Timeout: The execution of the command timed out.
-	//
-	// 	- Running: The command is being executed.
-	//
-	// 	- Success: The execution of the command is successful.
-	//
-	// 	- Pending: The command is waiting to be executed.
+	// The status of the command execution.
 	//
 	// example:
 	//
-	// RUNNING
+	// Running
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
 	// The output of the command execution.
 	//
@@ -125,7 +113,7 @@ type DescribeInvocationsResponseBodyData struct {
 	//
 	// success
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The start time of the command execution.
+	// The time when the command started to run.
 	//
 	// example:
 	//

@@ -14,6 +14,7 @@ type iDescribeAgentTaskRequest interface {
 }
 
 type DescribeAgentTaskRequest struct {
+	// A list of task IDs.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }
 

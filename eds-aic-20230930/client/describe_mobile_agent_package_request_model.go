@@ -24,20 +24,30 @@ type iDescribeMobileAgentPackageRequest interface {
 }
 
 type DescribeMobileAgentPackageRequest struct {
+	// An array of node instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	PackageIds  []*string `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
+	// An array of package IDs.
+	PackageIds []*string `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
+	// The package specification.
+	//
 	// example:
 	//
 	// advanced
 	PackageSpec *string `json:"PackageSpec,omitempty" xml:"PackageSpec,omitempty"`
+	// The package status.
+	//
 	// example:
 	//
 	// ACTIVE
 	PackageStatus *string `json:"PackageStatus,omitempty" xml:"PackageStatus,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100

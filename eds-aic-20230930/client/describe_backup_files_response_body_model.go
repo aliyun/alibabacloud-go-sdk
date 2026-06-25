@@ -22,27 +22,27 @@ type iDescribeBackupFilesResponseBody interface {
 }
 
 type DescribeBackupFilesResponseBody struct {
-	// The backup files that are returned.
+	// The list of returned result objects.
 	Data []*DescribeBackupFilesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The maximum number of entries returned in this call.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The pagination token that indicates the position up to which data has been read in the current call. An empty value indicates that all data has been read.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request. If the request fails, provide this ID to technical support to assist in diagnosing the issue.
+	// The request ID. If you encounter an issue, provide this request ID for troubleshooting.
 	//
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,47 +117,48 @@ func (s *DescribeBackupFilesResponseBody) Validate() error {
 }
 
 type DescribeBackupFilesResponseBodyData struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// acp-34pqe4r0kd9kn****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
-	// defaultInstanceName
+	// Test cloud phone
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
-	// Indicates whether the whole instance is backed up.
+	// Specifies whether to perform a full device backup.
 	//
 	// example:
 	//
-	// true
+	// false
 	BackupAll *bool `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
-	// The ID of the backup file.
+	// The backup file ID.
 	//
 	// example:
 	//
 	// bf-b0qbg3pbpjkn7****
 	BackupFileId *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
-	// The name of the backup file.
+	// The backup file name.
 	//
 	// example:
 	//
 	// a-58ftsoo90p0qa****.ab
 	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
-	// The directory in which the backup file is stored.
+	// The directory where the backup file is stored.
 	//
 	// example:
 	//
 	// oss://cloudphone-saved-bucket-cn-shanghai/backup/aic-58ftsoo90p0qa****.ab
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
+	Channel        *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	// The description of the backup file.
 	//
 	// example:
 	//
-	// This is default description.
+	// Backup file for /data/media directory.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The owner of the backup file.
 	//
@@ -165,25 +166,25 @@ type DescribeBackupFilesResponseBodyData struct {
 	//
 	// test
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The total size of the source files.
+	// The total size of the source backup files.
 	//
 	// example:
 	//
 	// 10227168
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The time when the backup file was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-05-15 17:33:59
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the backup file was last updated.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2024-05-15 17:33:59
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the instance group.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -195,17 +196,11 @@ type DescribeBackupFilesResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The names of the application packages that are backed up.
+	// The list of backed-up application package names.
 	SourceAppInfoList []*string `json:"SourceAppInfoList,omitempty" xml:"SourceAppInfoList,omitempty" type:"Repeated"`
-	// The directories of the source files.
+	// The list of source backup file directories.
 	SourceFilePathList []*string `json:"SourceFilePathList,omitempty" xml:"SourceFilePathList,omitempty" type:"Repeated"`
-	// The status of the backup file.
-	//
-	// Valid values:
-	//
-	// 	- AVAILABLE
-	//
-	// 	- RECOVERING
+	// The backup file status.
 	//
 	// example:
 	//
@@ -218,17 +213,13 @@ type DescribeBackupFilesResponseBodyData struct {
 	//
 	// t-bp67acfmxazb4p****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The endpoint of the OSS bucket that stores the backup file.
+	// The domain name of the upload endpoint.
 	//
 	// example:
 	//
 	// oss-cn-hangzhou.aliyuncs.com
 	UploadEndpoint *string `json:"UploadEndpoint,omitempty" xml:"UploadEndpoint,omitempty"`
-	// The type of the backup.
-	//
-	// Valid values:
-	//
-	// 	- OSS: backup files are stored in OSS buckets. .
+	// The backup type.
 	//
 	// example:
 	//
@@ -266,6 +257,10 @@ func (s *DescribeBackupFilesResponseBodyData) GetBackupFileName() *string {
 
 func (s *DescribeBackupFilesResponseBodyData) GetBackupFilePath() *string {
 	return s.BackupFilePath
+}
+
+func (s *DescribeBackupFilesResponseBodyData) GetChannel() *string {
+	return s.Channel
 }
 
 func (s *DescribeBackupFilesResponseBodyData) GetDescription() *string {
@@ -351,6 +346,11 @@ func (s *DescribeBackupFilesResponseBodyData) SetBackupFileName(v string) *Descr
 
 func (s *DescribeBackupFilesResponseBodyData) SetBackupFilePath(v string) *DescribeBackupFilesResponseBodyData {
 	s.BackupFilePath = &v
+	return s
+}
+
+func (s *DescribeBackupFilesResponseBodyData) SetChannel(v string) *DescribeBackupFilesResponseBodyData {
+	s.Channel = &v
 	return s
 }
 

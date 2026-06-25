@@ -26,18 +26,35 @@ type iExpandDataVolumeRequest interface {
 }
 
 type ExpandDataVolumeRequest struct {
+  // Specifies whether to enable automatic payment. The default value is false.
+  // 
   // example:
   // 
   // true
   AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+  // The region ID.
+  // 
   // example:
   // 
   // cn-hangzhou
   BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+  // The IDs of the cloud phone matrices.
   NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
   PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
+  // The size of the instance storage. Unit: GiB.
+  // 
+  // example:
+  // 
+  // 100
   PhoneDataVolume *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
+  // The promotion ID.
+  // 
+  // example:
+  // 
+  // 50003308011****
   PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+  // The size of the shared storage for the matrix. Unit: GiB.
+  // 
   // example:
   // 
   // 100

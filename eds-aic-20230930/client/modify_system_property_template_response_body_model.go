@@ -16,12 +16,14 @@ type iModifySystemPropertyTemplateResponseBody interface {
 }
 
 type ModifySystemPropertyTemplateResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 5C5CEF0A-D6E1-58D3-8750-67DB4F82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the property template.
+	//
 	// example:
 	//
 	// ap-angyvganxlf****

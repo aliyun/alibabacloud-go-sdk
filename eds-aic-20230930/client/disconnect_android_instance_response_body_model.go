@@ -14,6 +14,8 @@ type iDisconnectAndroidInstanceResponseBody interface {
 }
 
 type DisconnectAndroidInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E5138F7E-46B5-526A-8C99-82DEAE6B****

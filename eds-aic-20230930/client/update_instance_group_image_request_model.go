@@ -16,7 +16,7 @@ type iUpdateInstanceGroupImageRequest interface {
 }
 
 type UpdateInstanceGroupImageRequest struct {
-	// The ID of the image.
+	// The image ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type UpdateInstanceGroupImageRequest struct {
 	//
 	// imgc-075cllfeuazh****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The IDs of the instance groups.
+	// A list of instance group IDs.
 	//
 	// This parameter is required.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`

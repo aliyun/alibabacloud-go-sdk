@@ -16,13 +16,13 @@ type iCheckResourceStockResponseBody interface {
 }
 
 type CheckResourceStockResponseBody struct {
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 805D8FB6-512A-531C-9E4D-2A807D3C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of resource inventory.
+	// The resource inventory details.
 	ResourceStockModels []*CheckResourceStockResponseBodyResourceStockModels `json:"ResourceStockModels,omitempty" xml:"ResourceStockModels,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,19 @@ func (s *CheckResourceStockResponseBody) Validate() error {
 }
 
 type CheckResourceStockResponseBodyResourceStockModels struct {
-	// Region ID.
+	// The ID of the region.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Inventory status of the instance group.
+	// The inventory status of the instance group.
 	//
 	// example:
 	//
 	// Available
 	StockStatus *string `json:"StockStatus,omitempty" xml:"StockStatus,omitempty"`
-	// Zone ID.
+	// The ID of the zone.
 	//
 	// example:
 	//

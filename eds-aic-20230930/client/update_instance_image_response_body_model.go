@@ -18,10 +18,14 @@ type iUpdateInstanceImageResponseBody interface {
 }
 
 type UpdateInstanceImageResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1A923337-44D9-5CAD-9A53-95084BD4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// t-1ljew7on6ay0j****

@@ -40,52 +40,92 @@ type iCreateMobileAgentPackageRequest interface {
 }
 
 type CreateMobileAgentPackageRequest struct {
+	// The number of packages.
+	//
 	// example:
 	//
 	// 1
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Specifies whether to enable auto-payment. Valid values:
+	//
+	// - **true**: Enables auto-payment. You must ensure that your account balance is sufficient.
+	//
+	// - **false*	- (default): An unpaid order is generated. Your account is not charged.
+	//
+	// > If your account balance is insufficient, you can set this parameter to `false` to generate an unpaid order. Then, you can log in to the Wuying Cloud Phone management console to pay for the order.
+	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to enable auto-renewal for the instance. Valid values:
+	//
+	// - **true**: Enables auto-renewal.
+	//
+	// - **false*	- (default): Disables auto-renewal.
+	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The region where the instance is located. Currently, only `cn-hangzhou` is supported.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The credit amount.
+	//
 	// example:
 	//
 	// 10000.0
 	CreditAmount *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
+	// The credit limit configuration.
+	//
 	// example:
 	//
 	// 1
 	CreditConfig *string `json:"CreditConfig,omitempty" xml:"CreditConfig,omitempty"`
 	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// CloudPhone
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The package specification.
+	//
 	// example:
 	//
 	// advanced
 	MobileAgentPackageSpec *string `json:"MobileAgentPackageSpec,omitempty" xml:"MobileAgentPackageSpec,omitempty"`
 	PackageSpecId          *int64  `json:"PackageSpecId,omitempty" xml:"PackageSpecId,omitempty"`
+	// The callback URL to which the user is redirected after a successful payment.
+	//
 	// example:
 	//
 	// https://aim.wuying.aliyun.com/nodes
 	PaidCallbackUrl *string `json:"PaidCallbackUrl,omitempty" xml:"PaidCallbackUrl,omitempty"`
+	// The subscription period. The unit of the period is specified by the `PeriodUnit` parameter.
+	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription period.
+	//
+	// Valid values:
+	//
+	// - **Month**
+	//
+	// - **Year**
+	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The promotion ID.
+	//
 	// example:
 	//
 	// 50003308011****

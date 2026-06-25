@@ -18,8 +18,16 @@ type iChangeCloudPhoneNodeResponseBody interface {
 }
 
 type ChangeCloudPhoneNodeResponseBody struct {
+	// Information about the modified cloud phone matrix.
 	NodeInfos []*ChangeCloudPhoneNodeResponseBodyNodeInfos `json:"NodeInfos,omitempty" xml:"NodeInfos,omitempty" type:"Repeated"`
-	OrderId   *string                                      `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the order for this change.
+	//
+	// example:
+	//
+	// 223684716098****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4610632D-D661-5982-B3D7-5D3FD183F****
@@ -75,12 +83,20 @@ func (s *ChangeCloudPhoneNodeResponseBody) Validate() error {
 }
 
 type ChangeCloudPhoneNodeResponseBodyNodeInfos struct {
+	// Information about the cloud phone instances.
 	InstanceInfos []*ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos `json:"InstanceInfos,omitempty" xml:"InstanceInfos,omitempty" type:"Repeated"`
+	// The ID of the cloud phone matrix.
+	//
 	// example:
 	//
 	// cpn-e5kxgjyt8s1mb****
-	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	ShareDataVolume *int32  `json:"ShareDataVolume,omitempty" xml:"ShareDataVolume,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The size of the shared storage, in GiB. If the matrix uses independent internal storage, this defaults to a fixed 64 GiB for global files, such as images. If the matrix was configured with shared storage at purchase, this indicates the size of that storage.
+	//
+	// example:
+	//
+	// 100
+	ShareDataVolume *int32 `json:"ShareDataVolume,omitempty" xml:"ShareDataVolume,omitempty"`
 }
 
 func (s ChangeCloudPhoneNodeResponseBodyNodeInfos) String() string {
@@ -132,11 +148,18 @@ func (s *ChangeCloudPhoneNodeResponseBodyNodeInfos) Validate() error {
 }
 
 type ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// cpn-jewjt8xryuitu****
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PhoneDataVolume *int32  `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The internal storage capacity, in GiB.
+	//
+	// example:
+	//
+	// 200
+	PhoneDataVolume *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
 }
 
 func (s ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos) String() string {

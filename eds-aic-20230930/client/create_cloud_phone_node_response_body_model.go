@@ -20,8 +20,9 @@ type iCreateCloudPhoneNodeResponseBody interface {
 }
 
 type CreateCloudPhoneNodeResponseBody struct {
+	// Details of the bandwidth package order.
 	NetworkPackageOrderModel *CreateCloudPhoneNodeResponseBodyNetworkPackageOrderModel `json:"NetworkPackageOrderModel,omitempty" xml:"NetworkPackageOrderModel,omitempty" type:"Struct"`
-	// The cloud phone matrixes.
+	// A list of Cloud Phone matrices.
 	NodeInfos []*CreateCloudPhoneNodeResponseBodyNodeInfos `json:"NodeInfos,omitempty" xml:"NodeInfos,omitempty" type:"Repeated"`
 	// The order ID.
 	//
@@ -100,7 +101,17 @@ func (s *CreateCloudPhoneNodeResponseBody) Validate() error {
 }
 
 type CreateCloudPhoneNodeResponseBodyNetworkPackageOrderModel struct {
-	BandwidthPackageId      *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	// The ID of the Internet Shared Bandwidth instance.
+	//
+	// example:
+	//
+	// cbwp-uf63gsv8j0ir53*****
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	// The order ID of the bandwidth package.
+	//
+	// example:
+	//
+	// 25954415983*****
 	BandwidthPackageOrderId *string `json:"BandwidthPackageOrderId,omitempty" xml:"BandwidthPackageOrderId,omitempty"`
 }
 
@@ -135,9 +146,9 @@ func (s *CreateCloudPhoneNodeResponseBodyNetworkPackageOrderModel) Validate() er
 }
 
 type CreateCloudPhoneNodeResponseBodyNodeInfos struct {
-	// The IDs of the cloud phone instances.
+	// A list of Cloud Phone instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The ID of the cloud phone matrix.
+	// The ID of the Cloud Phone matrix.
 	//
 	// example:
 	//

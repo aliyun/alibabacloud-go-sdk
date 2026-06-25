@@ -16,10 +16,14 @@ type iExpandDataVolumeResponseBody interface {
 }
 
 type ExpandDataVolumeResponseBody struct {
+  // The order ID.
+  // 
   // example:
   // 
   // 22326560487****
   OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // 5C5CEF0A-D6E1-58D3-8750-67DB4F82****

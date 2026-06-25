@@ -21,12 +21,20 @@ type iUpdateInstanceImageRequest interface {
 
 type UpdateInstanceImageRequest struct {
 	IgnoreParamValidation *bool `json:"IgnoreParamValidation,omitempty" xml:"IgnoreParamValidation,omitempty"`
+	// The ID of the image. Call [](t2730769.xdita#)to query the list of images for cloud phones.
+	//
 	// example:
 	//
 	// imgc-075cllfeuazh0****
-	ImageId        *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The list of instances.
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
-	Reset          *bool     `json:"Reset,omitempty" xml:"Reset,omitempty"`
+	// Specifies whether to reset the instance. If you reset the instance, all user data on the instance is cleared.
+	//
+	// example:
+	//
+	// false
+	Reset *bool `json:"Reset,omitempty" xml:"Reset,omitempty"`
 }
 
 func (s UpdateInstanceImageRequest) String() string {

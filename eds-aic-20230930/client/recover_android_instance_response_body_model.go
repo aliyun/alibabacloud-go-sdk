@@ -20,15 +20,22 @@ type iRecoverAndroidInstanceResponseBody interface {
 }
 
 type RecoverAndroidInstanceResponseBody struct {
+	// The number of restored instances.
+	//
 	// example:
 	//
 	// 1
-	Count *int64                                    `json:"Count,omitempty" xml:"Count,omitempty"`
-	Data  []*RecoverAndroidInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The returned result objects.
+	Data []*RecoverAndroidInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The batch task ID.
+	//
 	// example:
 	//
 	// t-1ljew7on6ay0j****
@@ -93,10 +100,14 @@ func (s *RecoverAndroidInstanceResponseBody) Validate() error {
 }
 
 type RecoverAndroidInstanceResponseBodyData struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// acp-34pqe4r0kd9kn****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// t-bp67acfmxazb4p****

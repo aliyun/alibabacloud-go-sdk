@@ -20,21 +20,21 @@ type iDescribeSpecResponseBody interface {
 }
 
 type DescribeSpecResponseBody struct {
-	// Indicates the current read position returned by this call. An empty value means that all data has been read.
+	// The token to use for the next request to retrieve a new page of results. If this parameter is empty, all results have been returned.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kw9dGL5jves2FS9RLq****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// D9888DAD-331E-5FBC-B5A0-F2445115****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The specifications.
+	// The specification information.
 	SpecInfoModel []*DescribeSpecResponseBodySpecInfoModel `json:"SpecInfoModel,omitempty" xml:"SpecInfoModel,omitempty" type:"Repeated"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -100,57 +100,61 @@ func (s *DescribeSpecResponseBody) Validate() error {
 }
 
 type DescribeSpecResponseBodySpecInfoModel struct {
-	// Number of CPU cores.
+	// The number of CPU cores.
 	//
 	// example:
 	//
 	// 8
 	Core *int32 `json:"Core,omitempty" xml:"Core,omitempty"`
-	// The maximum number of cloud phone instances.
+	// The maximum number of instances.
 	//
 	// example:
 	//
 	// 40
 	MaxPhoneCount *string `json:"MaxPhoneCount,omitempty" xml:"MaxPhoneCount,omitempty"`
-	// Memory size.
+	// The memory size in GB.
 	//
 	// example:
 	//
 	// 16
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The minimum number of cloud phone instances.
+	// The minimum number of instances.
 	//
 	// example:
 	//
 	// 4
 	MinPhoneCount *string `json:"MinPhoneCount,omitempty" xml:"MinPhoneCount,omitempty"`
+	// The number of instances.
+	//
 	// example:
 	//
 	// 2
 	PhoneCount *string `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	// The resolution of the cloud phone instance.
+	//
 	// example:
 	//
 	// 1920*1080
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// Specification ID.
+	// The specification ID.
 	//
 	// example:
 	//
 	// acp.basic.small
 	SpecId *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
-	// Specification status.
+	// The specification status.
 	//
 	// example:
 	//
 	// Available
 	SpecStatus *string `json:"SpecStatus,omitempty" xml:"SpecStatus,omitempty"`
-	// Specification type.
+	// The specification type.
 	//
 	// example:
 	//
 	// ARM
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	// System disk size, in GB.
+	// The size of the system disk, in GB.
 	//
 	// example:
 	//

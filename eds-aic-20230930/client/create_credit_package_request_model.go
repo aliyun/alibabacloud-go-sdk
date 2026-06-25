@@ -22,22 +22,44 @@ type iCreateCreditPackageRequest interface {
 }
 
 type CreateCreditPackageRequest struct {
+	// Whether to enable auto-payment. Valid values:
+	//
+	// - **true**: Enables auto-payment. Make sure that your account has a sufficient balance.
+	//
+	// - **false*	- (Default): Creates an unpaid order.
+	//
+	// > If your account has an insufficient balance, you can set this parameter to false. This generates an unpaid order. You can then pay for the order in the Wuying Cloud Phone management console.
+	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The number of credits.
+	//
 	// example:
 	//
 	// 1000
 	CreditAmount *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
+	// The subscription duration. The PeriodUnit parameter specifies the unit for the duration.
+	//
 	// example:
 	//
 	// 6
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration.
+	//
+	// Valid values:
+	//
+	// - **Month**: The period is measured in months.
+	//
+	// - **Year**: The period is measured in years.
+	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The promotion ID.
+	//
 	// example:
 	//
 	// 50003308011****

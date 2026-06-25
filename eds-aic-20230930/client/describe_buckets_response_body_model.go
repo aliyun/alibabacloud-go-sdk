@@ -24,23 +24,36 @@ type iDescribeBucketsResponseBody interface {
 }
 
 type DescribeBucketsResponseBody struct {
+	// The error code.
+	//
+	// > This parameter is returned only when the call fails.
+	//
 	// example:
 	//
 	// 200
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result object.
 	Data []*DescribeBucketsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The return status code of the request.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the request.
+	//
 	// example:
 	//
 	// True
@@ -123,27 +136,40 @@ func (s *DescribeBucketsResponseBody) Validate() error {
 }
 
 type DescribeBucketsResponseBodyData struct {
+	// The name of the bucket.
+	//
 	// example:
 	//
 	// zydctest
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The public endpoint that is used to access the bucket.
+	//
 	// example:
 	//
 	// oss-cn-hangzhou.aliyuncs.com
 	ExtranetEndpoint *string `json:"ExtranetEndpoint,omitempty" xml:"ExtranetEndpoint,omitempty"`
+	// The time when the bucket was created.
+	//
 	// example:
 	//
 	// 2024-05-15 17:33:59
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The internal endpoint that is used by a same-region ECS instance to access the bucket.
+	//
 	// example:
 	//
 	// oss-cn-hangzhou-internal.aliyuncs.com
 	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
+	// The storage path, such as a path in Hadoop Distributed File System (HDFS) or OSS.
+	//
 	// example:
 	//
 	// center
-	Location      *string                                         `json:"Location,omitempty" xml:"Location,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The information about the objects in the bucket.
 	OssObjectList []*DescribeBucketsResponseBodyDataOssObjectList `json:"OssObjectList,omitempty" xml:"OssObjectList,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -235,35 +261,72 @@ func (s *DescribeBucketsResponseBodyData) Validate() error {
 }
 
 type DescribeBucketsResponseBodyDataOssObjectList struct {
+	// The name of the bucket.
+	//
 	// example:
 	//
 	// tf-testacceu-central-1ensbucketlifecycle44222
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The Entity Tag (ETag) is created when an object is generated. It is used to identify the content of an object.
+	//
+	// - For an object created by a PutObject request, the ETag value is the MD5 hash of the object content.
+	//
+	// - For an object created by other methods, the ETag value is a unique value generated based on specific calculation rules. It is not the MD5 hash of the object content.
+	//
+	// - The ETag value can be used to check if the object content has changed. Do not use the ETag value as the MD5 hash to verify the data integrity of the object.
+	//
 	// example:
 	//
 	// 5B3C1A2E053D763E1B002CC607C5A0FE1****
 	ETag *string `json:"ETag,omitempty" xml:"ETag,omitempty"`
+	// The tag key.
+	//
 	// example:
 	//
 	// con
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The time when the object was last modified.
+	//
 	// example:
 	//
 	// 2012-02-24T08:42:32.000Z
-	LastModified *string                                            `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	Owner        *DescribeBucketsResponseBodyDataOssObjectListOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
+	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// The information about the bucket owner.
+	Owner *DescribeBucketsResponseBodyDataOssObjectListOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
+	// The information about database recovery if the database type is MSSQL. The value is a JSON string that contains the following parameters:
+	//
+	// - **name**: The name of the database.
+	//
+	// - **files**: The path of the database file.
+	//
 	// example:
 	//
 	// ongoing-request="true"
 	RestoreInfo *string `json:"RestoreInfo,omitempty" xml:"RestoreInfo,omitempty"`
+	// The size of the file. Unit: KB.
+	//
 	// example:
 	//
 	// 9
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The storage class of the bucket. Valid values:
+	//
+	// - Standard (default): Standard
+	//
+	// - IA: Infrequent Access
+	//
+	// - Archive: Archive Storage
+	//
+	// - ColdArchive: Cold Archive
+	//
+	// - DeepColdArchive: Deep Cold Archive
+	//
 	// example:
 	//
 	// ARCHIVE
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	// The type of the trigger method.
+	//
 	// example:
 	//
 	// InstanceGroup
@@ -369,7 +432,14 @@ func (s *DescribeBucketsResponseBodyDataOssObjectList) Validate() error {
 }
 
 type DescribeBucketsResponseBodyDataOssObjectListOwner struct {
+	// The name of the bucket owner.
+	//
+	// example:
+	//
+	// 佳钰
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The unique identifier of the bucket owner.
+	//
 	// example:
 	//
 	// 395

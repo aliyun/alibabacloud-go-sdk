@@ -16,13 +16,13 @@ type iCreatePolicyGroupResponseBody interface {
 }
 
 type CreatePolicyGroupResponseBody struct {
-	// The ID of the policy.
+	// The policy ID.
 	//
 	// example:
 	//
 	// pg-exbuu6yrpvb******
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

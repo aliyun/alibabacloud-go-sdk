@@ -18,15 +18,21 @@ type iDeleteSystemPropertyTemplatesResponseBody interface {
 }
 
 type DeleteSystemPropertyTemplatesResponseBody struct {
+	// The error code.
+	//
+	// > This parameter is returned only when the API call fails.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

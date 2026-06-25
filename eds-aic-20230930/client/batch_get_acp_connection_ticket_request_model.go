@@ -24,6 +24,11 @@ type iBatchGetAcpConnectionTicketRequest interface {
 }
 
 type BatchGetAcpConnectionTicketRequest struct {
+	// The connection mode.
+	//
+	// example:
+	//
+	// custom
 	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
 	// The ID of the user to whom the cloud phone instance is assigned.
 	//
@@ -39,7 +44,7 @@ type BatchGetAcpConnectionTicketRequest struct {
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
 	// The IDs of the cloud phone instances. You can specify 1 to 100 IDs of cloud phone instances.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The instance connection tasks.
+	// The instance connection task, which is used to query whether the ticket retrieval task is completed.
 	InstanceTasks []*BatchGetAcpConnectionTicketRequestInstanceTasks `json:"InstanceTasks,omitempty" xml:"InstanceTasks,omitempty" type:"Repeated"`
 	Ports         []*string                                          `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
 }

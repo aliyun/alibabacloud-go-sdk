@@ -28,9 +28,7 @@ type ModifyAndroidInstanceGroupRequest struct {
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
 	// The new name of the instance group.
 	//
-	// >
-	//
-	// 	- The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with http:// or https://.
+	// > The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
@@ -42,7 +40,12 @@ type ModifyAndroidInstanceGroupRequest struct {
 	//
 	// pg-2w97kp89gnsif****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	StreamMode    *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
+	// Specifies the streaming mode for instances within the instance group. If this parameter is omitted, the mode defaults to 1 (Preemptive).
+	//
+	// example:
+	//
+	// 1
+	StreamMode *int32 `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
 }
 
 func (s ModifyAndroidInstanceGroupRequest) String() string {

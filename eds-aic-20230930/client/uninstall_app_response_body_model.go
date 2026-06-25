@@ -18,14 +18,15 @@ type iUninstallAppResponseBody interface {
 }
 
 type UninstallAppResponseBody struct {
+	// A list of subtasks.
 	ChildTaskInfo []*UninstallAppResponseBodyChildTaskInfo `json:"ChildTaskInfo,omitempty" xml:"ChildTaskInfo,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// E5138F7E-46B5-526A-8C99-82DEAE6B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
@@ -82,11 +83,16 @@ func (s *UninstallAppResponseBody) Validate() error {
 }
 
 type UninstallAppResponseBodyChildTaskInfo struct {
+	// The application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The subtask ID.
+	//
 	// example:
 	//
 	// t-ybde48cevxxxx
 	ChildTaskId *string `json:"ChildTaskId,omitempty" xml:"ChildTaskId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// acp-ty3bnd7b9xxxx

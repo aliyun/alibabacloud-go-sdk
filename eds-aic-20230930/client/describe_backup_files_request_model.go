@@ -40,49 +40,43 @@ type iDescribeBackupFilesRequest interface {
 }
 
 type DescribeBackupFilesRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// acp-34pqe4r0kd9kn****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
-	// The name of the instance. Fuzzy match is supported.
+	// The instance name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// acp-34pqe4r0kd9kn****
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
-	// Specifies whether the whole instance is backed up.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Specifies whether to perform a full device backup.
 	//
 	// example:
 	//
-	// true
+	// false
 	BackupAll *bool `json:"BackupAll,omitempty" xml:"BackupAll,omitempty"`
-	// The ID of the backup file.
+	// The backup file ID.
 	//
 	// example:
 	//
 	// bf-dxrh5jrv0zpb8****
 	BackupFileId *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
-	// The name of the backup file. Fuzzy match is supported.
+	// The backup file name. Fuzzy match is supported.
 	//
 	// example:
 	//
-	// defaulBackupFile
+	// abc
 	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
-	// The description of the backup file. Fuzzy match is supported.
+	// The description. Fuzzy match is supported.
 	//
 	// example:
 	//
-	// default description.
+	// desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The end of the period for querying generated backup files.
+	// Queries backup files created before the specified time.
 	//
 	// example:
 	//
@@ -94,32 +88,32 @@ type DescribeBackupFilesRequest struct {
 	//
 	// test1
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The ID of the instance group.
+	// The instance group ID.
 	//
 	// example:
 	//
 	// ag-fxdx91jsfyiy3****
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The pagination token that indicates the position from which to start reading. Leave this parameter empty to start reading from the beginning.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	SaleMode  *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
-	// The beginning of the period for querying generated backup files.
+	// Queries backup files created after the specified time.
 	//
 	// example:
 	//
 	// 2024-05-23 10:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the backup files.
+	// The list of backup file statuses.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 

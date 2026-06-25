@@ -16,7 +16,7 @@ type iDetachKeyPairRequest interface {
 }
 
 type DetachKeyPairRequest struct {
-	// The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
+	// The IDs of the cloud phone instances. You can specify up to 50 instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the ADB key pair.
 	//

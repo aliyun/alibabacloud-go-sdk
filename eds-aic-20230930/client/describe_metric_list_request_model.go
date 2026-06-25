@@ -30,27 +30,52 @@ type iDescribeMetricListRequest interface {
 }
 
 type DescribeMetricListRequest struct {
+	// For instance-level monitoring, enter a list of Cloud Phone instance IDs.
+	//
+	// <props="china">
+	//
+	// For matrix-level monitoring, enter a list of matrix IDs.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+	// The end time for the query.
+	//
 	// example:
 	//
 	// 2019-01-31 11:00:00
-	EndTime     *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// A list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The number of entries to return on each page for a paged query.
+	//
+	// Default value: 1000. This means that 1000 monitoring data records are returned per page.
+	//
 	// example:
 	//
 	// 1000
 	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The monitoring metrics.
+	//
 	// This parameter is required.
 	MetricNames []*string `json:"MetricNames,omitempty" xml:"MetricNames,omitempty" type:"Repeated"`
+	// A token that marks the position from which the query starts. Leave it empty to start from the beginning.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kw9dGL5jves2FS9RLq****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The statistic period of the monitoring data.
+	//
+	// Valid values: 60, 900, and 3600.
+	//
+	// Unit: seconds.
+	//
 	// example:
 	//
 	// 60
-	Period       *int32                                   `json:"Period,omitempty" xml:"Period,omitempty"`
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// A list of process monitoring metrics.
 	ProcessInfos []*DescribeMetricListRequestProcessInfos `json:"ProcessInfos,omitempty" xml:"ProcessInfos,omitempty" type:"Repeated"`
+	// The start time for the query.
+	//
 	// example:
 	//
 	// 2019-01-31 10:00:00
@@ -160,7 +185,10 @@ func (s *DescribeMetricListRequest) Validate() error {
 }
 
 type DescribeMetricListRequestProcessInfos struct {
+	// A list of process IDs.
 	ProcessIds []*int32 `json:"ProcessIds,omitempty" xml:"ProcessIds,omitempty" type:"Repeated"`
+	// The process name.
+	//
 	// example:
 	//
 	// php-fpm

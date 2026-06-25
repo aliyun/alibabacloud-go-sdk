@@ -14,7 +14,7 @@ type iDeletePolicyGroupRequest interface {
 }
 
 type DeletePolicyGroupRequest struct {
-	// The IDs of the policies.
+	// A list of policy group IDs. If any specified policy group is associated with an existing instance group, the entire operation fails.
 	//
 	// This parameter is required.
 	PolicyGroupIds []*string `json:"PolicyGroupIds,omitempty" xml:"PolicyGroupIds,omitempty" type:"Repeated"`

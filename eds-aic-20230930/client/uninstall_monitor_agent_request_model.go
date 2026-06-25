@@ -16,7 +16,10 @@ type iUninstallMonitorAgentRequest interface {
 }
 
 type UninstallMonitorAgentRequest struct {
+	// A list of instance IDs.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+	// The monitoring type.
+	//
 	// example:
 	//
 	// Node

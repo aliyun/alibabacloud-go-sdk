@@ -22,6 +22,11 @@ type iRunCommandRequest interface {
 }
 
 type RunCommandRequest struct {
+	// The channel type for running the command.
+	//
+	// example:
+	//
+	// EdsAgent
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
 	// The content of the command.
 	//
@@ -29,23 +34,17 @@ type RunCommandRequest struct {
 	//
 	// ls
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	// The encoding method of the command content (`CommandContent`). The value is not case-sensitive.
+	// The encoding method for the command content (`CommandContent`). This value is not case-sensitive.
 	//
-	// >  If you set the value to an invalid encoding method, the system will process the command content as `PlainText`.
-	//
-	// Valid values:
-	//
-	// 	- Base64: encodes the command content in Base64.
-	//
-	// 	- PlainText (default): does not encode the command content. The command content is input as plain text.
+	// > An invalid value defaults to `PlainText`.
 	//
 	// example:
 	//
 	// PlainText
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	// The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
+	// A list of instance IDs. You can specify up to 50 instances per request.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The timeout period of the command execution. If the command execution exceeds the timeout period, it will be considered timed out. If you leave this parameter empty, it defaults to 60.
+	// The execution timeout in seconds. The command times out if it does not complete within this period. Defaults to 60 seconds.
 	//
 	// example:
 	//

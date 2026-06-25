@@ -40,9 +40,14 @@ type ListPolicyGroupsRequest struct {
 	//
 	// example:
 	//
-	// defaultPolicyGroup
+	// Default policy
 	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
-	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The policy type.
+	//
+	// example:
+	//
+	// Instance
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s ListPolicyGroupsRequest) String() string {

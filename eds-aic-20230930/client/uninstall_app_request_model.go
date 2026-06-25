@@ -18,11 +18,11 @@ type iUninstallAppRequest interface {
 }
 
 type UninstallAppRequest struct {
-	// The IDs of the apps.
+	// A list of application IDs.
 	AppIdList []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
-	// The ID of the instance groups. If you specify this parameter, you cannot specify InstanceIdList.
+	// A list of instance group IDs. You must specify either this parameter or `InstanceIdList`. If you specify both, only `InstanceGroupIdList` takes precedence.
 	InstanceGroupIdList []*string `json:"InstanceGroupIdList,omitempty" xml:"InstanceGroupIdList,omitempty" type:"Repeated"`
-	// The IDs of the cloud phone instances. If you specify this parameter, you cannot specify InstanceGroupIdList.
+	// A list of instance IDs. You must specify either this parameter or `InstanceGroupIdList`. If you specify both, only `InstanceGroupIdList` takes precedence.
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
 }
 

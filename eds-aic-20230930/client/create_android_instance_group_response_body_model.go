@@ -22,18 +22,18 @@ type iCreateAndroidInstanceGroupResponseBody interface {
 }
 
 type CreateAndroidInstanceGroupResponseBody struct {
-	// The IDs of the instance groups.
+	// The instance group IDs.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
-	// The instance groups.
+	// The created instance groups.
 	InstanceGroupInfos       []*CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos     `json:"InstanceGroupInfos,omitempty" xml:"InstanceGroupInfos,omitempty" type:"Repeated"`
 	NetworkPackageOrderModel *CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel `json:"NetworkPackageOrderModel,omitempty" xml:"NetworkPackageOrderModel,omitempty" type:"Struct"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 22365781890****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ func (s *CreateAndroidInstanceGroupResponseBody) Validate() error {
 }
 
 type CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos struct {
-	// The ID of the instance group.
+	// The instance group ID.
 	//
 	// example:
 	//
 	// ag-cuv4scs4obxch****
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	// The IDs of the instances.
+	// The instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 

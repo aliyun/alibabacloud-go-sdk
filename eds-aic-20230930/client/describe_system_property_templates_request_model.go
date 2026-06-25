@@ -20,16 +20,26 @@ type iDescribeSystemPropertyTemplatesRequest interface {
 }
 
 type DescribeSystemPropertyTemplatesRequest struct {
+	// The maximum number of entries to return for a single request.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The starting position for reading. If this parameter is empty, reading starts from the beginning.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6k****
-	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	TemplateIds  []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
-	TemplateName *string   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The property template ID.
+	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
+	// The template name.
+	//
+	// example:
+	//
+	// Template 1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s DescribeSystemPropertyTemplatesRequest) String() string {

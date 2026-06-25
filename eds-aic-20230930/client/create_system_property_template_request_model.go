@@ -20,16 +20,34 @@ type iCreateSystemPropertyTemplateRequest interface {
 }
 
 type CreateSystemPropertyTemplateRequest struct {
+	// Specifies whether to automatically generate preset system properties.
+	//
 	// example:
 	//
 	// true
 	EnableAuto *bool `json:"EnableAuto,omitempty" xml:"EnableAuto,omitempty"`
+	// The URL of the property template file. The API parses the file synchronously. An error is returned if the file format is invalid.
+	//
+	// > The file must be in the following format: `{ "properties":{"key1":"value1"}}`.
+	//
 	// example:
 	//
 	// https://filepath****.com
-	FilePath           *string                                                `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The information about the system property template.
 	SystemPropertyInfo *CreateSystemPropertyTemplateRequestSystemPropertyInfo `json:"SystemPropertyInfo,omitempty" xml:"SystemPropertyInfo,omitempty" type:"Struct"`
-	TemplateName       *string                                                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The name of the template. The name must meet the following requirements:
+	//
+	// - Be 2 to 32 characters in length.
+	//
+	// - Start with an uppercase or lowercase letter or a Chinese character. It cannot start with `http://` or `https://`.
+	//
+	// - Contain letters, digits, colons (:), underscores (_), and hyphens (-). Periods (.) are not supported.
+	//
+	// example:
+	//
+	// Template1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s CreateSystemPropertyTemplateRequest) String() string {
@@ -86,63 +104,94 @@ func (s *CreateSystemPropertyTemplateRequest) Validate() error {
 }
 
 type CreateSystemPropertyTemplateRequestSystemPropertyInfo struct {
+	// A list of custom properties.
 	CustomPropertyInfos []*CreateSystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos `json:"CustomPropertyInfos,omitempty" xml:"CustomPropertyInfos,omitempty" type:"Repeated"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
 	RoBootloader *string `json:"RoBootloader,omitempty" xml:"RoBootloader,omitempty"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
 	RoBuildDisplayId *string `json:"RoBuildDisplayId,omitempty" xml:"RoBuildDisplayId,omitempty"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
 	RoBuildFingerprint *string `json:"RoBuildFingerprint,omitempty" xml:"RoBuildFingerprint,omitempty"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
 	RoBuildHost *string `json:"RoBuildHost,omitempty" xml:"RoBuildHost,omitempty"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
 	RoBuildId *string `json:"RoBuildId,omitempty" xml:"RoBuildId,omitempty"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
 	RoBuildProduct *string `json:"RoBuildProduct,omitempty" xml:"RoBuildProduct,omitempty"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
 	RoBuildTags *string `json:"RoBuildTags,omitempty" xml:"RoBuildTags,omitempty"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
 	RoBuildType *string `json:"RoBuildType,omitempty" xml:"RoBuildType,omitempty"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
 	RoBuildUser *string `json:"RoBuildUser,omitempty" xml:"RoBuildUser,omitempty"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
 	RoProductBoard *string `json:"RoProductBoard,omitempty" xml:"RoProductBoard,omitempty"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
 	RoProductBrand *string `json:"RoProductBrand,omitempty" xml:"RoProductBrand,omitempty"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
 	RoProductDevice *string `json:"RoProductDevice,omitempty" xml:"RoProductDevice,omitempty"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
 	RoProductManufacturer *string `json:"RoProductManufacturer,omitempty" xml:"RoProductManufacturer,omitempty"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
 	RoProductModel *string `json:"RoProductModel,omitempty" xml:"RoProductModel,omitempty"`
+	// > This parameter is not yet available for use.
+	//
 	// example:
 	//
 	// null
@@ -315,10 +364,14 @@ func (s *CreateSystemPropertyTemplateRequestSystemPropertyInfo) Validate() error
 }
 
 type CreateSystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos struct {
+	// The key of the custom property.
+	//
 	// example:
 	//
 	// propKey
 	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	// The value of the custom property.
+	//
 	// example:
 	//
 	// propValue

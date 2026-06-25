@@ -29,8 +29,13 @@ type ModifyCloudPhoneNodeRequest struct {
 	// example:
 	//
 	// cpn-0ugbptfu473fy****
-	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	StreamMode *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Specifies the streaming mode for instances in the cloud phone matrix. If this parameter is left empty, the exclusive mode is used.
+	//
+	// example:
+	//
+	// 1
+	StreamMode *int32 `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
 }
 
 func (s ModifyCloudPhoneNodeRequest) String() string {

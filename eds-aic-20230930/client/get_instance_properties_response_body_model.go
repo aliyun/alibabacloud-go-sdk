@@ -16,8 +16,9 @@ type iGetInstancePropertiesResponseBody interface {
 }
 
 type GetInstancePropertiesResponseBody struct {
+	// The instance properties.
 	PropertyTemplateModel *GetInstancePropertiesResponseBodyPropertyTemplateModel `json:"PropertyTemplateModel,omitempty" xml:"PropertyTemplateModel,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,6 +62,10 @@ func (s *GetInstancePropertiesResponseBody) Validate() error {
 }
 
 type GetInstancePropertiesResponseBodyPropertyTemplateModel struct {
+	// The instance properties.
+	//
+	// > Format: `{ "propties":{"key1":"value1"}}`.
+	//
 	// example:
 	//
 	// { "propties":{"key1":"value1"}}

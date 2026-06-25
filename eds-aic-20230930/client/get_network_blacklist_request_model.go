@@ -14,6 +14,8 @@ type iGetNetworkBlacklistRequest interface {
 }
 
 type GetNetworkBlacklistRequest struct {
+	// The query type. Valid values: IP and Domain. If you do not specify this parameter, information for both types is returned.
+	//
 	// if can be null:
 	// true
 	//

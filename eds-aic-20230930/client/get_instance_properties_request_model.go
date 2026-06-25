@@ -14,6 +14,8 @@ type iGetInstancePropertiesRequest interface {
 }
 
 type GetInstancePropertiesRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// cpn-2ofr9kf41apy3****-014

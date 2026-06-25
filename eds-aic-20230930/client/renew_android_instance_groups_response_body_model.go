@@ -16,13 +16,13 @@ type iRenewAndroidInstanceGroupsResponseBody interface {
 }
 
 type RenewAndroidInstanceGroupsResponseBody struct {
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 22326560487****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

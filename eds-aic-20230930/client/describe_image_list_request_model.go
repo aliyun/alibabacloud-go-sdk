@@ -32,41 +32,41 @@ type iDescribeImageListRequest interface {
 }
 
 type DescribeImageListRequest struct {
+	// An array of tag objects.
 	ImageBizTags []*DescribeImageListRequestImageBizTags `json:"ImageBizTags,omitempty" xml:"ImageBizTags,omitempty" type:"Repeated"`
-	// The ID of the image.
+	// The image ID.
 	//
 	// example:
 	//
 	// imgc-075cllfeuazh0****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the image.
+	// The image name.
 	//
 	// example:
 	//
-	// Android 12 image
+	// Android 12 system image
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// Image package type.
+	// > This parameter is not yet available.
 	//
 	// example:
 	//
-	// VM
+	// null
 	ImagePackageType *string `json:"ImagePackageType,omitempty" xml:"ImagePackageType,omitempty"`
-	// The type of the image.
-	//
-	// Valid values:
-	//
-	// 	- User: custom images.
-	//
-	// 	- System: system images.
+	// The image type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// System
-	ImageType    *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// The instance type.
+	//
+	// example:
+	//
+	// cpm.gx7.10xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The maximum number of entries to return on each page for a paged query. Valid values: 1 to 100. Default value: 20.
 	//
 	// if can be null:
 	// true
@@ -75,25 +75,13 @@ type DescribeImageListRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
+	// The token that specifies the position from which to start the query. If you leave this parameter empty, the query starts from the beginning.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kw9dGL5jves2FS9RLq****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The state of the image.
-	//
-	// Valid values:
-	//
-	// 	- AVAILABLE: The image is available.
-	//
-	// 	- DELETE: The image is deleted.
-	//
-	// 	- INIT: The image is being initialized.
-	//
-	// 	- CREATE_FAILED: The image failed to be created.
-	//
-	// 	- CREATING: The image is being created.
+	// The status of the image.
 	//
 	// example:
 	//
@@ -214,7 +202,17 @@ func (s *DescribeImageListRequest) Validate() error {
 }
 
 type DescribeImageListRequestImageBizTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
