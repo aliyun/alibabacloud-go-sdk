@@ -24,13 +24,13 @@ type iGetPublicKeyResponseBody interface {
 }
 
 type GetPublicKeyResponseBody struct {
-	// The status code.
+	// The status code of the API.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The public key in PEM format.
+	// The public key.
 	//
 	// example:
 	//

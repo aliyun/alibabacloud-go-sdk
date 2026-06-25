@@ -25,6 +25,9 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-shanghai": dara.String("outboundbot.cn-shanghai.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -4290,7 +4293,7 @@ func (client *Client) DescribeTTSConfig(request *DescribeTTSConfigRequest) (_res
 
 // Summary:
 //
-// Preview text-to-speech (TTS) audio.
+// TTS preview.
 //
 // @param request - DescribeTTSDemoRequest
 //
@@ -4319,6 +4322,10 @@ func (client *Client) DescribeTTSDemoWithOptions(request *DescribeTTSDemoRequest
 
 	if !dara.IsNil(request.Engine) {
 		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.ExtParams) {
+		query["ExtParams"] = request.ExtParams
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -4382,7 +4389,7 @@ func (client *Client) DescribeTTSDemoWithOptions(request *DescribeTTSDemoRequest
 
 // Summary:
 //
-// Preview text-to-speech (TTS) audio.
+// TTS preview.
 //
 // @param request - DescribeTTSDemoRequest
 //
@@ -6006,7 +6013,7 @@ func (client *Client) GetNumberDistrictInfoTemplateDownloadUrl() (_result *GetNu
 
 // Summary:
 //
-// Retrieves the public key for an asymmetric encryption algorithm.
+// Obtains the public key of the asymmetric encryption algorithm.
 //
 // @param request - GetPublicKeyRequest
 //
@@ -6043,7 +6050,7 @@ func (client *Client) GetPublicKeyWithOptions(request *GetPublicKeyRequest, runt
 
 // Summary:
 //
-// Retrieves the public key for an asymmetric encryption algorithm.
+// Obtains the public key of the asymmetric encryption algorithm.
 //
 // @param request - GetPublicKeyRequest
 //
@@ -7357,7 +7364,7 @@ func (client *Client) ListGlobalQuestions(request *ListGlobalQuestionsRequest) (
 
 // Summary:
 //
-// Lists Outbound Calling Bot service instances.
+// Queries the list of Outbound Bot service instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -7417,7 +7424,7 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 
 // Summary:
 //
-// Lists Outbound Calling Bot service instances.
+// Queries the list of Outbound Bot service instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -8211,7 +8218,7 @@ func (client *Client) ListScriptRecording(request *ListScriptRecordingRequest) (
 
 // Summary:
 //
-// Queries the variables used in a script.
+// Queries the variables that are currently used in a scenario.
 //
 // @param request - ListScriptVariablesRequest
 //
@@ -8263,7 +8270,7 @@ func (client *Client) ListScriptVariablesWithOptions(request *ListScriptVariable
 
 // Summary:
 //
-// Queries the variables used in a script.
+// Queries the variables that are currently used in a scenario.
 //
 // @param request - ListScriptVariablesRequest
 //

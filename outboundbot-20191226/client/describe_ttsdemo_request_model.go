@@ -17,6 +17,8 @@ type iDescribeTTSDemoRequest interface {
 	GetAppKey() *string
 	SetEngine(v string) *DescribeTTSDemoRequest
 	GetEngine() *string
+	SetExtParams(v string) *DescribeTTSDemoRequest
+	GetExtParams() *string
 	SetInstanceId(v string) *DescribeTTSDemoRequest
 	GetInstanceId() *string
 	SetNlsServiceType(v string) *DescribeTTSDemoRequest
@@ -40,41 +42,42 @@ type iDescribeTTSDemoRequest interface {
 type DescribeTTSDemoRequest struct {
 	// The AccessKey (AK) for this namespace.
 	//
-	// > Enter the AK when the engine is xunfei.
+	// > When the engine is set to xunfei, you must enter the AK.
 	//
 	// example:
 	//
 	// 5d0f37**********ef56db601****
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	// Alibaba Cloud custom voice ID
+	// Alibaba Cloud customized voice, which is the voice call ID.
 	//
 	// example:
 	//
 	// voice-e1be3a6
 	AliCustomizedVoice *string `json:"AliCustomizedVoice,omitempty" xml:"AliCustomizedVoice,omitempty"`
-	// Speech service type
+	// Voice service type.
 	//
-	// - When using **ali*	- as a custom service, enter the appKey of your Intelligent Speech Interaction project.
+	// - When using **ali*	- as the custom service, this field stores the appKey of the Intelligent Speech Interaction product project.
 	//
-	// - When using **xunfei*	- as a custom service, enter its appKey.
+	// - When using **xunfei*	- as the custom service provider, this field stores the corresponding appKey.
 	//
 	// example:
 	//
 	// xusi*******RnP7
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// Storage engine. Choose from ali, volc, or xunfei.
+	// Storage engine. Valid values: ali, volc, and xunfei.
 	//
-	// - Enter **ali*	- when using the default service or Alibaba Cloud as a custom service.
+	// - When using the default service or selecting Alibaba Cloud as the custom service, set this parameter to **ali**.
 	//
-	// - Enter **volc*	- when using the doubao service.
+	// - When using the Doubao service, set this parameter to **volc**.
 	//
-	// - Enter **xunfei*	- when using iFLYTEK as a service provider. This option is only available for small-model scenarios.
+	// - When using xunfei as the service provider, set this parameter to **xunfei**. This value can only be used in small model scenarios.
 	//
 	// example:
 	//
 	// ali
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// Instance ID
+	Engine    *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ExtParams *string `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -82,53 +85,57 @@ type DescribeTTSDemoRequest struct {
 	//
 	// a8eccb3c-2b26-4b6d-a54f-696b953e33a6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Service type
+	// Service type.
 	//
-	// Managed: The default Intelligent Speech Interaction service for Intelligent Outbound Calling (public service).
+	// Managed: The default Intelligent Speech Interaction product service of the Outbound Bot product (public service).
 	//
-	// Authorized: An Intelligent Speech Interaction service you purchased on Alibaba Cloud public cloud (your private service). You can grant authorization by going to Scenario Management > Edit > Call Service > Custom Service.
+	// Authorized: The Intelligent Speech Interaction product service purchased by the public cloud customer (customer\\"s private service), authorized through Script Management > Edit > Call Service > Custom Service.
 	//
-	// > Set this parameter to Authorized when using Alibaba Cloud\\"s Intelligent Speech Interaction as your custom service provider.
+	// > When using Alibaba Cloud Intelligent Speech Interaction, that is, when using Alibaba Cloud as the custom service provider, set this parameter to Authorized.
 	//
 	// example:
 	//
 	// Authorized
 	NlsServiceType *string `json:"NlsServiceType,omitempty" xml:"NlsServiceType,omitempty"`
-	// Pitch. An integer between -500 and 500. Default is 0.
+	// Pitch.
 	//
-	// A value greater than 0 raises pitch.
+	// An integer between [-500, 500]. Default value: 0.
 	//
-	// A value less than 0 lowers pitch.
+	// A value greater than 0 indicates a higher pitch.
+	//
+	// A value less than 0 indicates a lower pitch.
 	//
 	// example:
 	//
 	// 0
 	PitchRate *int32 `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
-	// Scenario ID
+	// Script ID.
 	//
 	// example:
 	//
 	// 5ab2d935-306c-478a-88bf-d08e4e25c1b7
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// The AccessKey secret (SK) for this namespace.
+	// The AccessKey Secret (SK) for this namespace.
 	//
-	// > Enter the SK when the engine is xunfei.
+	// > When the engine is set to xunfei, you must enter the SK.
 	//
 	// example:
 	//
 	// OTdhNDE3Z********zQ****
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	// Speech rate. An integer between -500 and 500. Default is 0.
+	// Speech rate.
 	//
-	// A value greater than 0 increases speech speed.
+	// An integer between [-500, 500]. Default value: 0.
 	//
-	// A value less than 0 decreases speech speed.
+	// A value greater than 0 indicates a faster speech rate.
+	//
+	// A value less than 0 indicates a slower speech rate.
 	//
 	// example:
 	//
 	// 0
 	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	// Text to convert to speech
+	// Text content.
 	//
 	// This parameter is required.
 	//
@@ -136,19 +143,21 @@ type DescribeTTSDemoRequest struct {
 	//
 	// 测试
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// Voice ID. Examples include aixia, siyue, and xiaoyun. For the full list of available voices, see the voice list below.
+	// Voice information, such as aixia, siyue, or xiaoyun. For the complete list of available voices, refer to the voice list below.
 	//
-	// > Cloned voices use dynamic Voice IDs that are generated during voice cloning. Therefore, specific Voice IDs for cloned voices are not listed here. To get a cloned voice’s Voice ID, call ListVoiceClone from the voice cloning page.
+	// > Because the Voice value of a cloned voice is a unique, non-fixed value generated during voice cloning, the specific Voice value cannot be provided at this stage. You must obtain the specific VoiceID from the voice cloning page by calling the ListVoiceClone API.
 	//
 	// example:
 	//
 	// aixia
 	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
-	// Volume. An integer between 0 and 100. Default is 50.
+	// Volume.
 	//
-	// A value greater than 50 increases volume.
+	// An integer between [0, 100]. Default value: 50.
 	//
-	// A value less than 50 decreases volume.
+	// A value greater than 50 indicates a higher volume.
+	//
+	// A value less than 50 indicates a lower volume.
 	//
 	// example:
 	//
@@ -178,6 +187,10 @@ func (s *DescribeTTSDemoRequest) GetAppKey() *string {
 
 func (s *DescribeTTSDemoRequest) GetEngine() *string {
 	return s.Engine
+}
+
+func (s *DescribeTTSDemoRequest) GetExtParams() *string {
+	return s.ExtParams
 }
 
 func (s *DescribeTTSDemoRequest) GetInstanceId() *string {
@@ -233,6 +246,11 @@ func (s *DescribeTTSDemoRequest) SetAppKey(v string) *DescribeTTSDemoRequest {
 
 func (s *DescribeTTSDemoRequest) SetEngine(v string) *DescribeTTSDemoRequest {
 	s.Engine = &v
+	return s
+}
+
+func (s *DescribeTTSDemoRequest) SetExtParams(v string) *DescribeTTSDemoRequest {
+	s.ExtParams = &v
 	return s
 }
 

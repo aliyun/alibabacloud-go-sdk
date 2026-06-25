@@ -42,7 +42,7 @@ type ListInstancesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// A list of service instances.
+	// The list of service instances.
 	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The response message.
 	//
@@ -62,7 +62,7 @@ type ListInstancesResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -191,43 +191,43 @@ type ListInstancesResponseBodyInstances struct {
 	//
 	// 1578469042851
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the user who created the instance.
+	// The ID of the creator.
 	//
 	// example:
 	//
 	// 34234
 	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The name of the user who created the instance.
+	// The name of the creator.
 	//
 	// example:
 	//
 	// xxx
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The description of the Outbound Calling Bot service instance.
+	// The description of the Outbound Bot service instance.
 	//
 	// example:
 	//
 	// 这是一个实例
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The ID of the service instance.
+	// The service instance ID.
 	//
 	// example:
 	//
 	// 90515b5-6115-4ccf-83e2-52d5bfaf2ddf
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the Outbound Calling Bot service instance.
+	// The name of the Outbound Bot service instance.
 	//
 	// example:
 	//
 	// 回访
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Indicates whether the instance is a system-predefined instance.
+	// Indicates whether the instance is a system preset instance.
 	//
 	// example:
 	//
 	// false
 	IsPreset *bool `json:"IsPreset,omitempty" xml:"IsPreset,omitempty"`
-	// The maximum number of concurrent outbound calls.
+	// The maximum number of concurrent outbound calls allowed.
 	//
 	// example:
 	//
@@ -239,13 +239,13 @@ type ListInstancesResponseBodyInstances struct {
 	//
 	// xxx
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// 90515b5-6115-4ccf-83e2-52d5bfaf2ddf
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags.
+	// The tag information.
 	//
 	// example:
 	//
@@ -374,13 +374,13 @@ func (s *ListInstancesResponseBodyInstances) Validate() error {
 }
 
 type ListInstancesResponseBodyInstancesResourceTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// age
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

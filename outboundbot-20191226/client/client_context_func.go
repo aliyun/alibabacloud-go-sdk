@@ -3194,7 +3194,7 @@ func (client *Client) DescribeTTSConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Preview text-to-speech (TTS) audio.
+// TTS preview.
 //
 // @param request - DescribeTTSDemoRequest
 //
@@ -3223,6 +3223,10 @@ func (client *Client) DescribeTTSDemoWithContext(ctx context.Context, request *D
 
 	if !dara.IsNil(request.Engine) {
 		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.ExtParams) {
+		query["ExtParams"] = request.ExtParams
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -4410,7 +4414,7 @@ func (client *Client) GetMaxAttemptsPerDayWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves the public key for an asymmetric encryption algorithm.
+// Obtains the public key of the asymmetric encryption algorithm.
 //
 // @param request - GetPublicKeyRequest
 //
@@ -5347,7 +5351,7 @@ func (client *Client) ListGlobalQuestionsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Lists Outbound Calling Bot service instances.
+// Queries the list of Outbound Bot service instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -6003,7 +6007,7 @@ func (client *Client) ListScriptRecordingWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the variables used in a script.
+// Queries the variables that are currently used in a scenario.
 //
 // @param request - ListScriptVariablesRequest
 //

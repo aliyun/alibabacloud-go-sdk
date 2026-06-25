@@ -1,3 +1,7 @@
+2026-06-25 Version: v2.0.2
+- Update API DescribeTTSDemo: add request parameters ExtParams.
+
+
 2026-06-11 Version: v2.0.1
 - Generated golang 2019-12-26 for OutboundBot.
 

@@ -36,7 +36,7 @@ type ListScriptVariablesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The API message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type ListScriptVariablesResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The script variables.
+	// The list of variables.
 	Variables []*ListScriptVariablesResponseBodyVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -134,19 +134,19 @@ func (s *ListScriptVariablesResponseBody) Validate() error {
 }
 
 type ListScriptVariablesResponseBodyVariables struct {
-	// The variable description.
+	// The description.
 	//
 	// example:
 	//
 	// 表示客户的真实姓名
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The variable display name.
+	// The display name of the variable.
 	//
 	// example:
 	//
 	// 姓名
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The variable name.
+	// The name of the variable.
 	//
 	// example:
 	//

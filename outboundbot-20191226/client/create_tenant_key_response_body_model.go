@@ -22,7 +22,7 @@ type iCreateTenantKeyResponseBody interface {
 }
 
 type CreateTenantKeyResponseBody struct {
-	// The status code of the request.
+	// The status code returned.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type CreateTenantKeyResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message.
+	// The message returned.
 	//
 	// example:
 	//
