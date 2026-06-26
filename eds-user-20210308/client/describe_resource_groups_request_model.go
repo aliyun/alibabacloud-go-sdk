@@ -9,6 +9,8 @@ type iDescribeResourceGroupsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentType(v string) *DescribeResourceGroupsRequest
+	GetAgentType() *string
 	SetAliyunResourceGroupIds(v []*string) *DescribeResourceGroupsRequest
 	GetAliyunResourceGroupIds() []*string
 	SetBusinessChannel(v string) *DescribeResourceGroupsRequest
@@ -30,9 +32,10 @@ type iDescribeResourceGroupsRequest interface {
 }
 
 type DescribeResourceGroupsRequest struct {
-	// A list of Aliyun resource group IDs.
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The cloud platform resource group ID.
 	AliyunResourceGroupIds []*string `json:"AliyunResourceGroupIds,omitempty" xml:"AliyunResourceGroupIds,omitempty" type:"Repeated"`
-	// The business channel.
+	// The channel tag.
 	//
 	// example:
 	//
@@ -50,24 +53,22 @@ type DescribeResourceGroupsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// > The cloud platform.
+	// > Fixed value: AliyunConsole.
 	//
-	// >
-	//
-	// > - For Elastic Desktop Service (EDS) Enterprise Edition, this parameter must be set to AliyunConsole.
+	// > - For Elastic Desktop Service Enterprise Edition, set this parameter to AliyunConsole. Other platforms are not publicly available.
 	//
 	// example:
 	//
 	// AliyunConsole
 	Platform               *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	ResourceClassification *string `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
-	// A list of resource group IDs.
+	// The list of resource group IDs.
 	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
 	// The name of the resource group.
 	//
@@ -83,6 +84,10 @@ func (s DescribeResourceGroupsRequest) String() string {
 
 func (s DescribeResourceGroupsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeResourceGroupsRequest) GetAgentType() *string {
+	return s.AgentType
 }
 
 func (s *DescribeResourceGroupsRequest) GetAliyunResourceGroupIds() []*string {
@@ -119,6 +124,11 @@ func (s *DescribeResourceGroupsRequest) GetResourceGroupIds() []*string {
 
 func (s *DescribeResourceGroupsRequest) GetResourceGroupName() *string {
 	return s.ResourceGroupName
+}
+
+func (s *DescribeResourceGroupsRequest) SetAgentType(v string) *DescribeResourceGroupsRequest {
+	s.AgentType = &v
+	return s
 }
 
 func (s *DescribeResourceGroupsRequest) SetAliyunResourceGroupIds(v []*string) *DescribeResourceGroupsRequest {

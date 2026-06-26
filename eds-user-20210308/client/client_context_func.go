@@ -406,6 +406,10 @@ func (client *Client) CreateResourceGroupWithContext(ctx context.Context, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentType) {
+		query["AgentType"] = request.AgentType
+	}
+
 	if !dara.IsNil(request.BusinessChannel) {
 		query["BusinessChannel"] = request.BusinessChannel
 	}
@@ -989,7 +993,7 @@ func (client *Client) DescribeOrgsWithContext(ctx context.Context, tmpReq *Descr
 
 // Summary:
 //
-// View resource groups.
+// Queries resource groups.
 //
 // @param request - DescribeResourceGroupsRequest
 //
@@ -1004,6 +1008,10 @@ func (client *Client) DescribeResourceGroupsWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentType) {
+		query["AgentType"] = request.AgentType
+	}
+
 	if !dara.IsNil(request.AliyunResourceGroupIds) {
 		query["AliyunResourceGroupIds"] = request.AliyunResourceGroupIds
 	}

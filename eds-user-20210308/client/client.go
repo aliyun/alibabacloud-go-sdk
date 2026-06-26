@@ -595,6 +595,10 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentType) {
+		query["AgentType"] = request.AgentType
+	}
+
 	if !dara.IsNil(request.BusinessChannel) {
 		query["BusinessChannel"] = request.BusinessChannel
 	}
@@ -1354,7 +1358,7 @@ func (client *Client) DescribeOrgs(request *DescribeOrgsRequest) (_result *Descr
 
 // Summary:
 //
-// View resource groups.
+// Queries resource groups.
 //
 // @param request - DescribeResourceGroupsRequest
 //
@@ -1369,6 +1373,10 @@ func (client *Client) DescribeResourceGroupsWithOptions(request *DescribeResourc
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentType) {
+		query["AgentType"] = request.AgentType
+	}
+
 	if !dara.IsNil(request.AliyunResourceGroupIds) {
 		query["AliyunResourceGroupIds"] = request.AliyunResourceGroupIds
 	}
@@ -1430,7 +1438,7 @@ func (client *Client) DescribeResourceGroupsWithOptions(request *DescribeResourc
 
 // Summary:
 //
-// View resource groups.
+// Queries resource groups.
 //
 // @param request - DescribeResourceGroupsRequest
 //

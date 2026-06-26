@@ -24,7 +24,7 @@ type DescribeResourceGroupsResponseBody struct {
 	//
 	// 68BA1DF7-8814-5AED-B844-F8F7F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of resource groups.
+	// The list of resource groups.
 	ResourceGroup []*DescribeResourceGroupsResponseBodyResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Repeated"`
 	// The total number of resource groups.
 	//
@@ -83,6 +83,7 @@ func (s *DescribeResourceGroupsResponseBody) Validate() error {
 }
 
 type DescribeResourceGroupsResponseBodyResourceGroup struct {
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
 	// The Alibaba Cloud resource group ID.
 	//
 	// example:
@@ -96,7 +97,7 @@ type DescribeResourceGroupsResponseBodyResourceGroup struct {
 	//
 	// 3
 	AuthCount *string `json:"AuthCount,omitempty" xml:"AuthCount,omitempty"`
-	// The time the resource group was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -104,15 +105,11 @@ type DescribeResourceGroupsResponseBodyResourceGroup struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// > The policies associated with the resource group.
 	//
-	// >
+	// > - Associated policies take effect on cloud desktops in the resource group. If multiple policies are associated, they take effect based on policy priority.
 	//
-	// > - These policies apply to the cloud computers in the resource group. If multiple policies are associated, they are applied in order of priority.
-	//
-	// >
-	//
-	// > - Policies associated with the resource group take precedence over policies assigned to individual cloud computers.
+	// > - If a cloud desktop in the resource group already has other policies specified, the policies associated with the resource group take precedence.
 	Policies []*DescribeResourceGroupsResponseBodyResourceGroupPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	// The number of resources in the resource group.
+	// The resource count in the resource group.
 	//
 	// example:
 	//
@@ -130,11 +127,9 @@ type DescribeResourceGroupsResponseBodyResourceGroup struct {
 	//
 	// 测试资源组
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	// > The scheduled tasks associated with the resource group.
+	// > The associated scheduled tasks.
 	//
-	// >
-	//
-	// > - These scheduled tasks apply to cloud computers in the resource group and take precedence over any tasks associated with individual cloud computers.
+	// > - Associated scheduled tasks take effect on cloud desktops in the resource group. If a cloud desktop in the resource group already has other scheduled tasks associated, the tasks associated with the resource group take precedence.
 	Timers []*DescribeResourceGroupsResponseBodyResourceGroupTimers `json:"Timers,omitempty" xml:"Timers,omitempty" type:"Repeated"`
 }
 
@@ -144,6 +139,10 @@ func (s DescribeResourceGroupsResponseBodyResourceGroup) String() string {
 
 func (s DescribeResourceGroupsResponseBodyResourceGroup) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroup) GetAgentType() *string {
+	return s.AgentType
 }
 
 func (s *DescribeResourceGroupsResponseBodyResourceGroup) GetAliyunResourceGroupId() *string {
@@ -180,6 +179,11 @@ func (s *DescribeResourceGroupsResponseBodyResourceGroup) GetResourceGroupName()
 
 func (s *DescribeResourceGroupsResponseBodyResourceGroup) GetTimers() []*DescribeResourceGroupsResponseBodyResourceGroupTimers {
 	return s.Timers
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetAgentType(v string) *DescribeResourceGroupsResponseBodyResourceGroup {
+	s.AgentType = &v
+	return s
 }
 
 func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetAliyunResourceGroupId(v string) *DescribeResourceGroupsResponseBodyResourceGroup {
@@ -310,7 +314,7 @@ type DescribeResourceGroupsResponseBodyResourceGroupPolicies struct {
 	//
 	// pl-a8jnatl8kjasb***
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Specifies whether this is the default policy.
+	// Indicates whether the policy is the default policy.
 	//
 	// example:
 	//

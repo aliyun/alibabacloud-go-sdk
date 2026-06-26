@@ -22,7 +22,7 @@ type CreateResourceGroupResponseBody struct {
 	//
 	// 868B8926-2E7A-5BE7-9897-E811E994****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the newly created resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

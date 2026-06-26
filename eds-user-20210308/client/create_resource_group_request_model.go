@@ -9,6 +9,8 @@ type iCreateResourceGroupRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentType(v string) *CreateResourceGroupRequest
+	GetAgentType() *string
 	SetBusinessChannel(v string) *CreateResourceGroupRequest
 	GetBusinessChannel() *string
 	SetEnableAliyunResourceGroup(v bool) *CreateResourceGroupRequest
@@ -24,20 +26,21 @@ type iCreateResourceGroupRequest interface {
 }
 
 type CreateResourceGroupRequest struct {
-	// The business channel.
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel           *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	EnableAliyunResourceGroup *bool   `json:"EnableAliyunResourceGroup,omitempty" xml:"EnableAliyunResourceGroup,omitempty"`
-	// > This parameter is for internal use only.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// 0
 	IsResourceGroupWithOfficeSite *int64 `json:"IsResourceGroupWithOfficeSite,omitempty" xml:"IsResourceGroupWithOfficeSite,omitempty"`
-	// Set this parameter to `AliyunConsole` for Wuying Workspace Enterprise Edition.
+	// For WUYING Workspace Enterprise Edition, set this parameter to `AliyunConsole`. Other platforms are not supported.
 	//
 	// example:
 	//
@@ -58,6 +61,10 @@ func (s CreateResourceGroupRequest) String() string {
 
 func (s CreateResourceGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateResourceGroupRequest) GetAgentType() *string {
+	return s.AgentType
 }
 
 func (s *CreateResourceGroupRequest) GetBusinessChannel() *string {
@@ -82,6 +89,11 @@ func (s *CreateResourceGroupRequest) GetResourceClassification() *string {
 
 func (s *CreateResourceGroupRequest) GetResourceGroupName() *string {
 	return s.ResourceGroupName
+}
+
+func (s *CreateResourceGroupRequest) SetAgentType(v string) *CreateResourceGroupRequest {
+	s.AgentType = &v
+	return s
 }
 
 func (s *CreateResourceGroupRequest) SetBusinessChannel(v string) *CreateResourceGroupRequest {
