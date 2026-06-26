@@ -28,7 +28,7 @@ type iChatWithKnowledgeBaseRequest interface {
 type ChatWithKnowledgeBaseRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to view the details of all instances in a target region, including their instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the target region, including the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,20 +36,20 @@ type ChatWithKnowledgeBaseRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Whether to include the raw retrieval results from the knowledge base in the response. Default: `false`.
+	// Specifies whether to return the recall results. Default value: false.
 	//
 	// example:
 	//
 	// false
 	IncludeKnowledgeBaseResults *bool `json:"IncludeKnowledgeBaseResults,omitempty" xml:"IncludeKnowledgeBaseResults,omitempty"`
-	// Parameters for knowledge retrieval. If omitted, the operation performs a standard chat without retrieving from a knowledge base.
+	// The knowledge retrieval parameter object. If not specified, only chat is performed.
 	KnowledgeParams *ChatWithKnowledgeBaseRequestKnowledgeParams `json:"KnowledgeParams,omitempty" xml:"KnowledgeParams,omitempty" type:"Struct"`
-	// The parameters for calling the large language model (LLM).
+	// The large language model (LLM) invocation parameter object.
 	//
 	// This parameter is required.
 	ModelParams *ChatWithKnowledgeBaseRequestModelParams `json:"ModelParams,omitempty" xml:"ModelParams,omitempty" type:"Struct"`
 	OwnerId     *int64                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// A custom system prompt template. If specified, it overrides the default prompt. The template must include the {{ text_chunks }}, {{ user_system_prompt }}, {{ graph_entities }}, and {{ graph_relations }} placeholders.
+	// The system prompt template, which must include {{ text_chunks }}, {{ user_system_prompt }}, {{ graph_entities }}, and {{ graph_relations }}. If not specified, this part does not take effect.
 	//
 	// example:
 	//
@@ -151,37 +151,34 @@ func (s *ChatWithKnowledgeBaseRequest) Validate() error {
 }
 
 type ChatWithKnowledgeBaseRequestKnowledgeParams struct {
-	// The method for merging results from multiple knowledge bases. Default: `RRF`. Valid values:
+	// The method for merging multiple knowledge bases. Default is RRF. Valid values:
 	//
-	// - `RRF`
+	// - RRF
 	//
-	// - `Weight`
+	// - Weight
 	//
 	// example:
 	//
 	// "RRF"
 	MergeMethod *string `json:"MergeMethod,omitempty" xml:"MergeMethod,omitempty"`
-	// The parameters for the merge method.
+	// The parameters for multi-knowledge base fusion.
 	MergeMethodArgs *ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgs `json:"MergeMethodArgs,omitempty" xml:"MergeMethodArgs,omitempty" type:"Struct"`
-	// The reranking factor. Specify this to rerank the initial vector retrieval results for improved relevance. Valid range: (1, 5].
+	// The reranking factor. When this value is not empty, the vector retrieval results are reranked. Value range: 1 < RerankFactor <= 5.
 	//
-	// > - Reranking may be less efficient if document chunks are sparse.
+	// > - Reranking is slow when document segmentation is sparse.
 	//
-	// >
-	//
-	// > - We recommend that the number of items to rerank, calculated as `Ceiling(TopK 	- RerankFactor)`, does not exceed 50.
+	// > - It is recommended that the number of items to rerank (TopK 	- Factor, rounded up) does not exceed 50.
 	//
 	// example:
 	//
 	// 1.0001
-	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
-	// The model to use for reranking.
-	RerankModel *ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel `json:"RerankModel,omitempty" xml:"RerankModel,omitempty" type:"Struct"`
-	// An array of knowledge base collections to query.
+	RerankFactor *float64                                                `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankModel  *ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel `json:"RerankModel,omitempty" xml:"RerankModel,omitempty" type:"Struct"`
+	// The list of knowledge bases.
 	//
 	// This parameter is required.
 	SourceCollection []*ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollection `json:"SourceCollection,omitempty" xml:"SourceCollection,omitempty" type:"Repeated"`
-	// The number of top results to return after the results from multiple vector collection recalls are merged.
+	// The number of top results to return after merging the recall results from multiple vector collections.
 	//
 	// example:
 	//
@@ -275,9 +272,9 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParams) Validate() error {
 }
 
 type ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgs struct {
-	// Parameters to use when `MergeMethod` is set to `RRF`.
+	// The configurable parameters when MergeMethod is set to RRF.
 	Rrf *ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsRrf `json:"Rrf,omitempty" xml:"Rrf,omitempty" type:"Struct"`
-	// Parameters to use when `MergeMethod` is set to `Weight`.
+	// The configurable parameters when MergeMethod is set to Weight.
 	Weight *ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsWeight `json:"Weight,omitempty" xml:"Weight,omitempty" type:"Struct"`
 }
 
@@ -322,7 +319,7 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgs) Validate() 
 }
 
 type ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsRrf struct {
-	// The constant `k` in the reciprocal rank fusion formula `1/(k + rank_i)`. The value must be a positive integer greater than 1.
+	// The k constant in the scoring algorithm 1/(k+rank_i). The value must be a positive integer greater than 1.
 	//
 	// example:
 	//
@@ -352,7 +349,7 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsRrf) Validate
 }
 
 type ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsWeight struct {
-	// An array of weights corresponding to each collection specified in `SourceCollection`.
+	// The weight array for each SourceCollection.
 	Weights []*float64 `json:"Weights,omitempty" xml:"Weights,omitempty" type:"Repeated"`
 }
 
@@ -378,14 +375,10 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsWeight) Valid
 }
 
 type ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel struct {
-	// The instruction or prompt for the reranking model.
-	//
 	// example:
 	//
 	// Given a web search query, retrieve relevant passages that answer the query
 	Instruct *string `json:"Instruct,omitempty" xml:"Instruct,omitempty"`
-	// The name of the reranking model.
-	//
 	// example:
 	//
 	// qwen3-rerank
@@ -423,7 +416,7 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel) Validate() erro
 }
 
 type ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollection struct {
-	// The name of the collection to query.
+	// The name of the collection to recall.
 	//
 	// This parameter is required.
 	//
@@ -431,17 +424,17 @@ type ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollection struct {
 	//
 	// adbpg_document_collection
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The namespace where the collection resides. Default: `public`.
+	// The namespace. Default value: public.
 	//
-	// > You can create a namespace by calling the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation and view existing namespaces by calling the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation.
+	// > You can create a namespace by calling the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation, and view the list by calling the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation.
 	//
 	// example:
 	//
 	// dukang
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The password for the specified namespace.
+	// The password corresponding to the namespace.
 	//
-	// > This password is set when you call the `CreateNamespace` operation.
+	// > This value is specified in the CreateNamespace operation.
 	//
 	// This parameter is required.
 	//
@@ -449,7 +442,7 @@ type ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollection struct {
 	//
 	// namespacePasswd
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	// Retrieval parameters for this knowledge base collection.
+	// The parameters related to knowledge base retrieval.
 	QueryParams *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams `json:"QueryParams,omitempty" xml:"QueryParams,omitempty" type:"Struct"`
 }
 
@@ -507,37 +500,37 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollection) Validate()
 }
 
 type ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams struct {
-	// A filter to apply to the search, specified as a SQL `WHERE` clause.
+	// The filter condition for the data to be updated, in SQL WHERE clause format.
 	//
 	// example:
 	//
 	// id = \\"llm-t87l87fxuhn56woc_8anu8j2d3f_file_e74635e2cc314e838543e724f6b3b1f2_10658020\\"
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// Whether to enhance the search with a knowledge graph. Default: `false`.
+	// Specifies whether to enable knowledge graph enhancement. Default value: false.
 	//
 	// example:
 	//
 	// false
 	GraphEnhance *bool `json:"GraphEnhance,omitempty" xml:"GraphEnhance,omitempty"`
-	// Parameters for the knowledge graph search, used when `GraphEnhance` is `true`.
+	// The number of top entities and relationship edges to return. Default value: 60.
 	GraphSearchArgs *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsGraphSearchArgs `json:"GraphSearchArgs,omitempty" xml:"GraphSearchArgs,omitempty" type:"Struct"`
-	// The multi-channel recall algorithm. If omitted, the system directly compares and sorts scores from dense vector retrieval and full-text search.
+	// The multi-path recall algorithm. Default is empty (i.e., directly compares and sorts the dense vector and full-text scores).
 	//
 	// Valid values:
 	//
-	// - `RRF`: Uses reciprocal rank fusion. The fusion effect is controlled by the `k` parameter in `HybridSearchArgs`.
+	// - RRF: Reciprocal Rank Fusion. Has a parameter k to control the fusion effect. See HybridSearchArgs configuration for details.
 	//
-	// - `Weight`: Uses weighted sorting. The weights for vector retrieval and full-text search scores are controlled by parameters in `HybridSearchArgs`.
+	// - Weight: Weight-based sorting. Uses parameters to control the score weights of vector and full-text retrieval, then sorts. See HybridSearchArgs configuration for details.
 	//
-	// - `Cascaded`: Performs a full-text search first, followed by a vector retrieval on the results.
+	// - Cascaded: First performs full-text retrieval, then performs vector retrieval on top of it.
 	//
 	// example:
 	//
 	// RRF
 	HybridSearch *string `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
-	// Parameters for the multi-channel recall algorithm. `RRF` and `Weight` are supported. The `HybridPathsSetting` parameter can specify the recall channels: `dense` (dense vector), `sparse` (sparse vector), and `fulltext` (full-text search). If this parameter is empty, `dense` and `fulltext` are used by default.
+	// The algorithm parameters for multi-path recall. Currently supports RRF and Weight. HybridPathsSetting can specify recall of dense vectors (dense), sparse vectors (sparse), and full-text retrieval (fulltext). If the value is empty, dense vectors (dense) and full-text retrieval (fulltext) are recalled by default.
 	//
-	// - `RRF`: Specifies the constant `k` in the formula `1/(k+rank_i)`. The value must be a positive integer greater than 1. Format:
+	// - RRF: Specifies the k constant in the scoring algorithm `1/(k+rank_i)`. The value must be a positive integer greater than 1. Format:
 	//
 	// ```
 	//
@@ -559,11 +552,11 @@ type ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams stru
 	//
 	// ```
 	//
-	// - `Weight`:
+	// - Weight:
 	//
-	//   - Two-channel recall (if `HybridPathsSetting` is not specified, only `alpha` is required):
+	//    - Dual-path recall (without specifying HybridPathsSetting, only specifying alpha):
 	//
-	//     - Formula: `alpha 	- dense_score + (1-alpha) 	- fulltext_score`. The `alpha` parameter represents the weight of the dense vector score relative to the full-text search score. The value must be in the range [0, 1]. A value of 0 uses only full-text search. A value of 1 uses only dense vector retrieval.
+	//       - Formula: alpha 	- dense_score + (1-alpha) 	- fulltext_score. The parameter alpha represents the score weight between dense vector and full-text retrieval, ranging from 0 to 1, where 0 means full-text only and 1 means dense vector only:
 	//
 	// ```
 	//
@@ -579,9 +572,9 @@ type ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams stru
 	//
 	// ```
 	//
-	// - Three-channel recall:
+	//   - Three-path recall mode:
 	//
-	//   - Formula: `normalized_dense 	- dense_score + normalized_sparse 	- sparse_score + normalized_fulltext 	- fulltext_score`. The `dense`, `sparse`, and `fulltext` parameters represent the weights for each channel and must be greater than or equal to 0. The system automatically normalizes these weights (for example, `normalized_x = x / (dense + sparse + fulltext)`).
+	//      - Formula: normalized_dense 	- dense_score + normalized_sparse 	- sparse_score + normalized_fulltext 	- fulltext_score. Where dense, sparse, and fulltext represent the weights for dense vector, sparse vector, and full-text retrieval respectively, with values greater than or equal to 0. The system automatically normalizes the weights to the range 0-1 (i.e., normalized_x = x / (dense + sparse + fulltext)).
 	//
 	// ```
 	//
@@ -607,47 +600,42 @@ type ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams stru
 	//
 	// ```
 	HybridSearchArgs map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
-	// The distance metric used for vector indexing. Valid values:
+	// The method used when building the vector index. Valid values:
 	//
-	// - `l2`: euclidean distance.
+	// - l2: Euclidean distance.
 	//
-	// - `ip`: Inner product (dot product) distance.
+	// - ip: Inner product distance.
 	//
-	// - `cosine`: cosine similarity.
+	// - cosine: Cosine similarity.
 	//
 	// example:
 	//
 	// cosine
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The recall window. If specified, expands the context around retrieved text chunks. Must be an array of two integers, `[A, B]`, where `A` is the number of preceding chunks to include (from -10 to 0) and `B` is the number of following chunks (from 0 to 10).
+	// The recall window. When this value is not empty, additional context of the retrieval results is returned. The format is a 2-element array: List<A, B>, where -10 <= A <= 0 and 0 <= B <= 10.
 	//
-	// > - We recommend that you use this parameter when document chunks are highly fragmented and retrieval might result in a loss of context.
+	// > - It is recommended to use this parameter when document segmentation is too granular and retrieval may lose contextual information.
 	//
-	// >
-	//
-	// > - Reranking is performed before windowing is applied.
+	// > - Reranking takes priority over windowing, meaning reranking is performed first, then windowing is applied.
 	RecallWindow []*int64 `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty" type:"Repeated"`
-	// The reranking factor for this collection, which overrides the top-level `RerankFactor`. If specified, it reranks the initial retrieval results to improve relevance. Valid range: (1, 5].
+	// The reranking factor. When this value is not empty, the vector retrieval results are reranked. Value range: 1 < RerankFactor <= 5.
 	//
-	// > - Reranking may be less efficient if document chunks are sparse.
+	// > - Reranking is slow when document segmentation is sparse.
 	//
-	// >
-	//
-	// > - We recommend that the number of items to rerank, calculated as `Ceiling(TopK 	- RerankFactor)`, does not exceed 50.
+	// > - It is recommended that the number of items to rerank (TopK 	- Factor, rounded up) does not exceed 50.
 	//
 	// example:
 	//
 	// 1.5
-	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
-	// The model to use for reranking.
-	RerankModel *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel `json:"RerankModel,omitempty" xml:"RerankModel,omitempty" type:"Struct"`
-	// The number of top results to return from this collection before merging.
+	RerankFactor *float64                                                                           `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankModel  *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel `json:"RerankModel,omitempty" xml:"RerankModel,omitempty" type:"Struct"`
+	// The number of top results to return.
 	//
 	// example:
 	//
 	// 10
 	TopK *int64 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// Whether to enable full-text search in addition to vector retrieval. Default: `false` (uses only vector retrieval).
+	// Specifies whether to use full-text retrieval (dual-path recall). Default value: false, which means only vector retrieval is used.
 	//
 	// example:
 	//
@@ -777,7 +765,7 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams)
 }
 
 type ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsGraphSearchArgs struct {
-	// The maximum number of entities and relationship edges to return from the knowledge graph search. Default: 60.
+	// The number of top entities and relationship edges to return. Default value: 60.
 	//
 	// example:
 	//
@@ -807,18 +795,15 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsG
 }
 
 type ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel struct {
-	// The instruction or prompt for the reranking model.
-	//
 	// example:
 	//
 	// Given a web search query, retrieve relevant passages that answer the query
 	Instruct *string `json:"Instruct,omitempty" xml:"Instruct,omitempty"`
-	// The name of the reranking model.
-	//
 	// example:
 	//
 	// qwen3-rerank
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RerankMetadataFields *string `json:"RerankMetadataFields,omitempty" xml:"RerankMetadataFields,omitempty"`
 }
 
 func (s ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) String() string {
@@ -837,6 +822,10 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsR
 	return s.Name
 }
 
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) GetRerankMetadataFields() *string {
+	return s.RerankMetadataFields
+}
+
 func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) SetInstruct(v string) *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel {
 	s.Instruct = &v
 	return s
@@ -844,6 +833,11 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsR
 
 func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) SetName(v string) *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel {
 	s.Name = &v
+	return s
+}
+
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) SetRerankMetadataFields(v string) *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel {
+	s.RerankMetadataFields = &v
 	return s
 }
 
@@ -858,11 +852,11 @@ type ChatWithKnowledgeBaseRequestModelParams struct {
 	//
 	// 8192
 	MaxTokens *int64 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
-	// The list of messages that form the conversation history.
+	// The message list.
 	//
 	// This parameter is required.
 	Messages []*ChatWithKnowledgeBaseRequestModelParamsMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	// The name of the large language model to use. For a list of available models, see the [Model Studio documentation](https://help.aliyun.com/zh/model-studio/compatibility-of-openai-with-dashscope?spm=a2c4g.11186623.help-menu-2400256.d_2_10_0.45b5516eZIciC8\\&scm=20140722.H_2833609._.OR_help-T_cn~zh-V_1#eadfc13038jd5).
+	// The name of the large model to use. For valid values, see: [Bailian Help Documentation](https://help.aliyun.com/zh/model-studio/compatibility-of-openai-with-dashscope?spm=a2c4g.11186623.help-menu-2400256.d_2_10_0.45b5516eZIciC8&scm=20140722.H_2833609._.OR_help-T_cn~zh-V_1#eadfc13038jd5)
 	//
 	// This parameter is required.
 	//
@@ -870,13 +864,13 @@ type ChatWithKnowledgeBaseRequestModelParams struct {
 	//
 	// qwen-plus
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The number of candidate responses to generate.
+	// The number of candidate replies to generate.
 	//
 	// example:
 	//
 	// 1
 	N *int64 `json:"N,omitempty" xml:"N,omitempty"`
-	// The presence penalty. Valid range: [-2.0, 2.0].
+	// The presence penalty coefficient (-2.0 to 2.0).
 	//
 	// example:
 	//
@@ -888,17 +882,17 @@ type ChatWithKnowledgeBaseRequestModelParams struct {
 	//
 	// 42
 	Seed *int64 `json:"Seed,omitempty" xml:"Seed,omitempty"`
-	// A list of stop words.
+	// The stop word list.
 	Stop []*string `json:"Stop,omitempty" xml:"Stop,omitempty" type:"Repeated"`
-	// The sampling temperature. Valid range: (0, 2.0].
+	// The sampling temperature (0 to 2).
 	//
 	// example:
 	//
 	// 0.6
 	Temperature *float64 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
-	// The list of tools.
+	// The tool list.
 	Tools []*ChatWithKnowledgeBaseRequestModelParamsTools `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
-	// The probability threshold for nucleus sampling. Valid range: (0, 1.0).
+	// The nucleus sampling probability threshold (0 to 1).
 	//
 	// example:
 	//
@@ -1027,7 +1021,7 @@ func (s *ChatWithKnowledgeBaseRequestModelParams) Validate() error {
 }
 
 type ChatWithKnowledgeBaseRequestModelParamsMessages struct {
-	// The content of the message.
+	// The message content.
 	//
 	// This parameter is required.
 	//
@@ -1035,13 +1029,13 @@ type ChatWithKnowledgeBaseRequestModelParamsMessages struct {
 	//
 	// You are a helpful assistant.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The role of the message author. Valid values:
+	// The message role. Valid values:
 	//
-	// - `system`
+	// - system
 	//
-	// - `user`
+	// - user
 	//
-	// - `assistant`
+	// - assistant
 	//
 	// This parameter is required.
 	//
@@ -1113,19 +1107,19 @@ func (s *ChatWithKnowledgeBaseRequestModelParamsTools) Validate() error {
 }
 
 type ChatWithKnowledgeBaseRequestModelParamsToolsFunction struct {
-	// The description of the function tool.
+	// The function tool description.
 	//
 	// example:
 	//
 	// 获取天气。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the function tool.
+	// The function tool name.
 	//
 	// example:
 	//
 	// get_weather
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The JSON schema of the function parameters.
+	// The function parameters in JSON Schema format.
 	//
 	// example:
 	//

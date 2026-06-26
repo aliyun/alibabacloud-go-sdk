@@ -28,7 +28,7 @@ type iChatWithKnowledgeBaseStreamShrinkRequest interface {
 type ChatWithKnowledgeBaseStreamShrinkRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specified region.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
 	//
 	// This parameter is required.
 	//
@@ -36,26 +36,26 @@ type ChatWithKnowledgeBaseStreamShrinkRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Specifies whether to include the retrieved knowledge base results in the response. Default value: `false`.
+	// Specifies whether to return recall results. Default value: false.
 	//
 	// example:
 	//
 	// false
 	IncludeKnowledgeBaseResults *bool `json:"IncludeKnowledgeBaseResults,omitempty" xml:"IncludeKnowledgeBaseResults,omitempty"`
-	// Parameters for knowledge retrieval. If omitted, the API performs a chat-only operation.
+	// The knowledge retrieval parameter object. If this parameter is not specified, only chat is performed.
 	KnowledgeParamsShrink *string `json:"KnowledgeParams,omitempty" xml:"KnowledgeParams,omitempty"`
-	// An object that contains parameters for the Large Language Model (LLM) call.
+	// The large language model (LLM) invocation parameter object.
 	//
 	// This parameter is required.
 	ModelParamsShrink *string `json:"ModelParams,omitempty" xml:"ModelParams,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// A template for the system prompt. It must include placeholders such as `{{text_chunks}}`, `{{user_system_prompt}}`, `{{graph_entities}}`, and `{{graph_relations}}`. If omitted, no custom prompt template is applied.
+	// The system prompt template. The template must include {{ text_chunks }}, {{ user_system_prompt }}, {{ graph_entities }}, and {{ graph_relations }}. If not specified, this part does not take effect.
 	//
 	// example:
 	//
 	// "参考以下知识回答问题:{{ text_chunks }}"
 	PromptParams *string `json:"PromptParams,omitempty" xml:"PromptParams,omitempty"`
-	// The instance\\"s region ID.
+	// The ID of the region where the instance resides.
 	//
 	// This parameter is required.
 	//

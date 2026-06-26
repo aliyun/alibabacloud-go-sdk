@@ -28,25 +28,22 @@ type iQueryKnowledgeBasesContentResponseBody interface {
 }
 
 type QueryKnowledgeBasesContentResponseBody struct {
-	// The number of tokens used for vectorization.
+	// The number of tokens used during vectorization.
 	//
-	// > A token is the smallest unit of processed text, such as a word, phrase, punctuation mark, or character.
+	// > A token is the smallest unit into which the input text is split. A token can be a word, a phrase, a punctuation mark, or a character.
 	//
 	// example:
 	//
 	// 100
-	EmbeddingTokens *string `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
-	// The extracted entities.
-	Entities *QueryKnowledgeBasesContentResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Struct"`
-	// The matched data.
-	Matches *QueryKnowledgeBasesContentResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
-	// The response message.
+	EmbeddingTokens *string                                         `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+	Entities        *QueryKnowledgeBasesContentResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Struct"`
+	Matches         *QueryKnowledgeBasesContentResponseBodyMatches  `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
+	// The returned message.
 	//
 	// example:
 	//
 	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The extracted relationships.
+	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	Relations *QueryKnowledgeBasesContentResponseBodyRelations `json:"Relations,omitempty" xml:"Relations,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -54,17 +51,17 @@ type QueryKnowledgeBasesContentResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the request. Valid values:
+	// The API execution status. Valid values:
 	//
-	// - **success**: The request succeeded.
+	// - **success**: The execution is successful.
 	//
-	// - **fail**: The request failed.
+	// - **fail**: The execution failed.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The resource usage for the query.
+	// The resource usage of this query.
 	Usage *QueryKnowledgeBasesContentResponseBodyUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
@@ -510,17 +507,17 @@ func (s *QueryKnowledgeBasesContentResponseBodyRelationsRelations) Validate() er
 }
 
 type QueryKnowledgeBasesContentResponseBodyUsage struct {
-	// The number of entries used for vectorization.
+	// The number of entries used during vectorization.
 	//
-	// > An entry is a unit of processing for vectorization. For example, vectorizing a piece of text counts as one entry, and vectorizing an image counts as two entries.
+	// > An entry refers to the number of items processed during vectorization of text or images. For example, processing text once counts as 1 entry, and processing an image once counts as 2 entries.
 	//
 	// example:
 	//
 	// 10
 	EmbeddingEntries *string `json:"EmbeddingEntries,omitempty" xml:"EmbeddingEntries,omitempty"`
-	// The number of tokens used for vectorization.
+	// The number of tokens used during vectorization.
 	//
-	// > A token is the smallest unit of processed text, such as a word, phrase, punctuation mark, or character.
+	// > A token is the smallest unit into which the input text is split. A token can be a word, a phrase, a punctuation mark, or a character.
 	//
 	// example:
 	//

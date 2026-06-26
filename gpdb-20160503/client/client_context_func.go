@@ -438,19 +438,19 @@ func (client *Client) CancelUpsertCollectionDataJobWithContext(ctx context.Conte
 
 // Summary:
 //
-// Combines a knowledge base with a large language model for intelligent Q&A.
+// Provides intelligent Q&A services by combining knowledge bases with large models.
 //
 // Description:
 //
-// This API lets you interact with a large language model using specific knowledge base collections to ensure responses are grounded in their content. You can customize requests by configuring parameters, including the database instance ID, knowledge retrieval parameters, and model inference parameters. The API provides a default system prompt template and supports custom system prompts.
+// This API allows users to interact with a large model through specified knowledge base collections to obtain answers based on knowledge base content. It supports configuring various parameters to customize requests, including but not limited to database instance ID, knowledge retrieval parameters, model inference parameters, etc. Additionally, it provides a default system prompt template and allows users to customize system prompts.
 //
-// - **DBInstanceId**: Required. Specifies the ID of the database instance.
+// - **DBInstanceId**: Required. Specifies the database instance ID.
 //
-// - **KnowledgeParams**: Optional. Contains parameters for knowledge retrieval, such as retrieval content and merge policies.
+// - **KnowledgeParams**: Optional. Contains parameters related to knowledge retrieval, such as retrieval content, merge strategies, etc.
 //
-// - **ModelParams**: Required. Contains parameters for model inference, such as the message list and the model name.
+// - **ModelParams**: Required. Contains parameters related to model inference, such as message list, model name, etc.
 //
-// - **PromptTemplate**: Optional. Specifies a custom system prompt template.
+// - **PromptTemplate**: Optional. Used to customize the system prompt template.
 //
 // @param tmpReq - ChatWithKnowledgeBaseRequest
 //
@@ -528,19 +528,19 @@ func (client *Client) ChatWithKnowledgeBaseWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// This service combines a knowledge base with a large model to provide intelligent Q&A. You can access the streaming interface using Server-Sent Events (SSE) or the Java asynchronous SDK.
+// Provides AI chat services by combining knowledge bases with large language models. This is a streaming API called through SSE or the Java asynchronous SDK.
 //
 // Description:
 //
-// Use this API to retrieve answers from a large language model based on content from a specified knowledge base. You can customize the request by configuring various parameters, including the database instance ID, knowledge retrieval parameters, and model inference parameters. The API includes a default system prompt template, and you can also specify a custom one.
+// This API allows you to interact with a large language model by using specified knowledge base collections to obtain answers based on knowledge base content. You can configure various parameters to customize requests, including but not limited to the database instance ID, knowledge retrieval parameters, and model inference parameters. A default system prompt template is provided, and you can also customize the system prompt.
 //
-// - DBInstanceId: Required. The ID of the database instance.
+// - DBInstanceId: Required. Specifies the database instance ID.
 //
-// - KnowledgeParams: Optional. Parameters for knowledge retrieval, such as retrieval content and the merge policy.
+// - KnowledgeParams: Optional. Contains knowledge retrieval parameters such as retrieval content and merge strategy.
 //
-// - ModelParams: Required. Parameters for model inference, such as the message list and the model name.
+// - ModelParams: Required. Contains model inference parameters such as the message list and model name.
 //
-// - PromptTemplate: Optional. A custom system prompt template.
+// - PromptTemplate: Optional. Specifies a custom system prompt template.
 //
 // @param tmpReq - ChatWithKnowledgeBaseStreamRequest
 //
@@ -555,19 +555,19 @@ func (client *Client) ChatWithKnowledgeBaseStreamWithSSECtx(ctx context.Context,
 
 // Summary:
 //
-// This service combines a knowledge base with a large model to provide intelligent Q&A. You can access the streaming interface using Server-Sent Events (SSE) or the Java asynchronous SDK.
+// Provides AI chat services by combining knowledge bases with large language models. This is a streaming API called through SSE or the Java asynchronous SDK.
 //
 // Description:
 //
-// Use this API to retrieve answers from a large language model based on content from a specified knowledge base. You can customize the request by configuring various parameters, including the database instance ID, knowledge retrieval parameters, and model inference parameters. The API includes a default system prompt template, and you can also specify a custom one.
+// This API allows you to interact with a large language model by using specified knowledge base collections to obtain answers based on knowledge base content. You can configure various parameters to customize requests, including but not limited to the database instance ID, knowledge retrieval parameters, and model inference parameters. A default system prompt template is provided, and you can also customize the system prompt.
 //
-// - DBInstanceId: Required. The ID of the database instance.
+// - DBInstanceId: Required. Specifies the database instance ID.
 //
-// - KnowledgeParams: Optional. Parameters for knowledge retrieval, such as retrieval content and the merge policy.
+// - KnowledgeParams: Optional. Contains knowledge retrieval parameters such as retrieval content and merge strategy.
 //
-// - ModelParams: Required. Parameters for model inference, such as the message list and the model name.
+// - ModelParams: Required. Contains model inference parameters such as the message list and model name.
 //
-// - PromptTemplate: Optional. A custom system prompt template.
+// - PromptTemplate: Optional. Specifies a custom system prompt template.
 //
 // @param tmpReq - ChatWithKnowledgeBaseStreamRequest
 //
@@ -15473,6 +15473,58 @@ func (client *Client) PauseInstanceWithContext(ctx context.Context, request *Pau
 
 // Summary:
 //
+// 暂停SaaS服务
+//
+// Description:
+//
+// 删除模型服务。
+//
+// @param request - PauseSaasServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PauseSaasServiceResponse
+func (client *Client) PauseSaasServiceWithContext(ctx context.Context, request *PauseSaasServiceRequest, runtime *dara.RuntimeOptions) (_result *PauseSaasServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PauseSaasService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PauseSaasServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Pauses a Supabase instance.
 //
 // Description:
@@ -15669,7 +15721,7 @@ func (client *Client) QueryCollectionDataWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Query a document collection with natural language to retrieve vectors and metadata.
+// Retrieves vectors and metadata from a specified document collection using natural language queries.
 //
 // @param tmpReq - QueryContentRequest
 //
@@ -15833,7 +15885,7 @@ func (client *Client) QueryContentWithContext(ctx context.Context, tmpReq *Query
 
 // Summary:
 //
-// Retrieve vectors and metadata from specified knowledge bases using a natural-language query, returning the merged results from a multi-channel recall.
+// Retrieves vectors and metadata from multiple specified document collections by using natural language statements, merges multi-channel recall results, and returns the combined results.
 //
 // @param tmpReq - QueryKnowledgeBasesContentRequest
 //
@@ -16549,6 +16601,58 @@ func (client *Client) ResumeInstanceWithContext(ctx context.Context, request *Re
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResumeInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复SaaS服务
+//
+// Description:
+//
+// 删除模型服务。
+//
+// @param request - ResumeSaasServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeSaasServiceResponse
+func (client *Client) ResumeSaasServiceWithContext(ctx context.Context, request *ResumeSaasServiceRequest, runtime *dara.RuntimeOptions) (_result *ResumeSaasServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResumeSaasService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResumeSaasServiceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
