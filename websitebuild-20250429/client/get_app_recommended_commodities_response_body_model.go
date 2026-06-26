@@ -254,12 +254,14 @@ func (s *GetAppRecommendedCommoditiesResponseBodyModule) Validate() error {
 }
 
 type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
+	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
 	// The commodity code. This code applies to both resource plans and promotional commodities.
 	//
 	// example:
 	//
 	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The extension field, such as unsupportedReason.
 	Extend map[string]*string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The order type. Valid values:
@@ -284,6 +286,7 @@ type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
 	//
 	// 12345
 	PromotionCommodityId *string `json:"PromotionCommodityId,omitempty" xml:"PromotionCommodityId,omitempty"`
+	RecommendType        *string `json:"RecommendType,omitempty" xml:"RecommendType,omitempty"`
 	// The redirect URL. This parameter is returned when a redirect is required, such as during an upgrade.
 	//
 	// example:
@@ -296,6 +299,7 @@ type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetAppRecommendedCommoditiesResponseBodyModuleCommodities) String() string {
@@ -306,8 +310,16 @@ func (s GetAppRecommendedCommoditiesResponseBodyModuleCommodities) GoString() st
 	return s.String()
 }
 
+func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) GetActionType() *string {
+	return s.ActionType
+}
+
 func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) GetCommodityCode() *string {
 	return s.CommodityCode
+}
+
+func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) GetDescription() *string {
+	return s.Description
 }
 
 func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) GetExtend() map[string]*string {
@@ -326,6 +338,10 @@ func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) GetPromotion
 	return s.PromotionCommodityId
 }
 
+func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) GetRecommendType() *string {
+	return s.RecommendType
+}
+
 func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) GetRedirectUrl() *string {
 	return s.RedirectUrl
 }
@@ -334,8 +350,22 @@ func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) GetStatus() 
 	return s.Status
 }
 
+func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) GetTitle() *string {
+	return s.Title
+}
+
+func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) SetActionType(v string) *GetAppRecommendedCommoditiesResponseBodyModuleCommodities {
+	s.ActionType = &v
+	return s
+}
+
 func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) SetCommodityCode(v string) *GetAppRecommendedCommoditiesResponseBodyModuleCommodities {
 	s.CommodityCode = &v
+	return s
+}
+
+func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) SetDescription(v string) *GetAppRecommendedCommoditiesResponseBodyModuleCommodities {
+	s.Description = &v
 	return s
 }
 
@@ -359,6 +389,11 @@ func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) SetPromotion
 	return s
 }
 
+func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) SetRecommendType(v string) *GetAppRecommendedCommoditiesResponseBodyModuleCommodities {
+	s.RecommendType = &v
+	return s
+}
+
 func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) SetRedirectUrl(v string) *GetAppRecommendedCommoditiesResponseBodyModuleCommodities {
 	s.RedirectUrl = &v
 	return s
@@ -366,6 +401,11 @@ func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) SetRedirectU
 
 func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) SetStatus(v string) *GetAppRecommendedCommoditiesResponseBodyModuleCommodities {
 	s.Status = &v
+	return s
+}
+
+func (s *GetAppRecommendedCommoditiesResponseBodyModuleCommodities) SetTitle(v string) *GetAppRecommendedCommoditiesResponseBodyModuleCommodities {
+	s.Title = &v
 	return s
 }
 
