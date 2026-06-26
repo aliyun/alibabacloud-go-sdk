@@ -13,17 +13,20 @@ type iRerunTaskInstancesShrinkRequest interface {
 	GetComment() *string
 	SetIdsShrink(v string) *RerunTaskInstancesShrinkRequest
 	GetIdsShrink() *string
+	SetUseLatestConfig(v bool) *RerunTaskInstancesShrinkRequest
+	GetUseLatestConfig() *bool
 }
 
 type RerunTaskInstancesShrinkRequest struct {
-	// Remarks.
+	// The remarks.
 	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID list of the task instance.
-	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The list of node instance IDs.
+	IdsShrink       *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	UseLatestConfig *bool   `json:"UseLatestConfig,omitempty" xml:"UseLatestConfig,omitempty"`
 }
 
 func (s RerunTaskInstancesShrinkRequest) String() string {
@@ -42,6 +45,10 @@ func (s *RerunTaskInstancesShrinkRequest) GetIdsShrink() *string {
 	return s.IdsShrink
 }
 
+func (s *RerunTaskInstancesShrinkRequest) GetUseLatestConfig() *bool {
+	return s.UseLatestConfig
+}
+
 func (s *RerunTaskInstancesShrinkRequest) SetComment(v string) *RerunTaskInstancesShrinkRequest {
 	s.Comment = &v
 	return s
@@ -49,6 +56,11 @@ func (s *RerunTaskInstancesShrinkRequest) SetComment(v string) *RerunTaskInstanc
 
 func (s *RerunTaskInstancesShrinkRequest) SetIdsShrink(v string) *RerunTaskInstancesShrinkRequest {
 	s.IdsShrink = &v
+	return s
+}
+
+func (s *RerunTaskInstancesShrinkRequest) SetUseLatestConfig(v bool) *RerunTaskInstancesShrinkRequest {
+	s.UseLatestConfig = &v
 	return s
 }
 

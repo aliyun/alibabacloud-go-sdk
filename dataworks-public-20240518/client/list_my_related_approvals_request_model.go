@@ -32,9 +32,17 @@ type iListMyRelatedApprovalsRequest interface {
 }
 
 type ListMyRelatedApprovalsRequest struct {
-	// The permissions.
+	// Filter by requested permissions.
+	//
+	// Note: Different resource levels support different application permission types, all constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).isValidLeaf, accessTypeRestrictions, and authMethodAccessTypes.
+	//
+	// Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	AccessTypes []*string `json:"AccessTypes,omitempty" xml:"AccessTypes,omitempty" type:"Repeated"`
-	// The resource type.
+	// Filter by resource type.
+	//
+	// Note: The resource types supported by the system for applications are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+	//
+	// Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// This parameter is required.
 	//
@@ -42,29 +50,39 @@ type ListMyRelatedApprovalsRequest struct {
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
-	// The end of the application time range, specified as a millisecond timestamp.
+	// Application time end (millisecond timestamp)
 	//
 	// example:
 	//
 	// 1779724799999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Filters approvals by the specified principal.
+	// Filter by authorization principal.
+	//
+	// Note: The authorization principal types supported by the system are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).authPrincipal.
+	//
+	// Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	Grantee *ListMyRelatedApprovalsRequestGrantee `json:"Grantee,omitempty" xml:"Grantee,omitempty" type:"Struct"`
-	// The pagination token that acts as a cursor to retrieve the next page of results.
+	// Pagination cursor
 	//
 	// example:
 	//
 	// eyJpZCI6MTIzfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 200.
+	// Page size (default 10, maximum 200)
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource declaration.
+	// Filter by resource with exact/generalized matching. The resource description is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).
+	//
+	// Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	Resource *ListMyRelatedApprovalsRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	// The resource type, specified as a leaf node name. Multiple values are supported because a single business semantic can be mapped to multiple leaf node names.
+	// Filter by minimum permission resource type.
+	//
+	// Note: The minimum permission resource type is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources[*].isValidLeaf being true.
+	//
+	// Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// This parameter is required.
 	//
@@ -72,27 +90,27 @@ type ListMyRelatedApprovalsRequest struct {
 	//
 	// ["table", "column"]
 	ResourceType []*string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" type:"Repeated"`
-	// The start of the application time range, specified as a millisecond timestamp.
+	// Application time start (millisecond timestamp)
 	//
 	// example:
 	//
 	// 1771948800000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Filters the results by approval status. Valid values:
+	// Filter by approval status. Enum values:
 	//
-	// - `WaitApproval`: Pending approval
+	// - WaitApproval: Pending approval
 	//
-	// - `Confirmed`: Pending authorization
+	// - Confirmed: Pending authorization
 	//
-	// - `RejectApproval`: Approval rejected
+	// - RejectApproval: Approval rejected
 	//
-	// - `AuthorizeSucceed`: Authorization succeeded
+	// - AuthorizeSucceed: Authorization succeeded
 	//
-	// - `AuthorizeFailed`: Authorization failed
+	// - AuthorizeFailed: Authorization failed
 	//
-	// - `Deleted`: Deleted
+	// - Deleted: Deleted
 	//
-	// - `Canceled`: Withdrawn
+	// - Canceled: Withdrawn
 	//
 	// example:
 	//
@@ -213,27 +231,27 @@ func (s *ListMyRelatedApprovalsRequest) Validate() error {
 }
 
 type ListMyRelatedApprovalsRequestGrantee struct {
-	// The ID of the principal. The format varies based on the value of `PrincipalType`.
+	// Authorization principal ID:
 	//
-	// - If `PrincipalType` is `RamUser`, this parameter is the Dataworks user ID.
+	// - `RamUser`: Dataworks UserId
 	//
-	// - If `PrincipalType` is `RamRole`, this parameter is a Dataworks user ID that starts with `ROLE_`.
+	// - `RamRole`: Dataworks UserId prefixed with "ROLE_"
 	//
-	// - If `PrincipalType` is `DataworksTenantMember`, this parameter is the Dataworks user ID.
+	// - `DataworksTenantMember`: Dataworks UserId
 	//
-	// - If `PrincipalType` is `DataworksTenantRole`, this parameter is the Dataworks tenant `roleCode`.
+	// - `DataworksTenantRole`: Dataworks tenant roleCode
 	//
-	// - If `PrincipalType` is `DataworksProjectRole`, this parameter is the Dataworks workspace `roleCode`.
+	// - `DataworksProjectRole`: Dataworks workspace roleCode
 	//
-	// - If `PrincipalType` is `DataworksProjectMember`, this parameter is the Dataworks user ID.
+	// - `DataworksProjectMember`: Dataworks UserId
 	//
-	// - If `PrincipalType` is `DlfRole`, this parameter is the DlfNext role name.
+	// - `DlfRole`: DlfNext role name
 	//
 	// example:
 	//
 	// ROLE_3133343434
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// The type of the principal. Valid values:
+	// Authorization principal type:
 	//
 	// - `RamRole`
 	//
@@ -286,19 +304,29 @@ func (s *ListMyRelatedApprovalsRequestGrantee) Validate() error {
 }
 
 type ListMyRelatedApprovalsRequestResource struct {
-	// The `name` of the `ResourceSchema` used to parse the resource.
+	// Resource type.
+	//
+	// Note: The resource types supported by the system for applications are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+	//
+	// Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
-	// The `version` of the `ResourceSchema` used to parse the resource.
+	// The resource parsing version is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).version.
+	//
+	// [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// example:
 	//
 	// v1.0.0
 	DefVersion *string `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
-	// The resource metadata. The `ResourceSchema` defines its content.
+	// Resource metadata.
+	//
+	// Note: The metadata is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources. A valid resource declaration must include the full-path metadata declaration from level 0 to validLeaf layer.
+	//
+	// Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	MetaData map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 }
 

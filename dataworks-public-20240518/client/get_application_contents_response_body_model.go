@@ -16,9 +16,9 @@ type iGetApplicationContentsResponseBody interface {
 }
 
 type GetApplicationContentsResponseBody struct {
-	// The process instance and its associated application contents.
+	// The process instance and associated application content.
 	Data *GetApplicationContentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID. Use this ID to locate logs and troubleshoot issues.
+	// The request ID, which is used for locating logs and troubleshooting.
 	//
 	// example:
 	//
@@ -62,15 +62,19 @@ func (s *GetApplicationContentsResponseBody) Validate() error {
 }
 
 type GetApplicationContentsResponseBodyData struct {
-	// The time when the application was submitted. This value is a millisecond-precision timestamp.
+	// The time when the application was submitted, as a millisecond timestamp.
 	//
 	// example:
 	//
 	// 1779675618000
 	ApplicationTime *int64 `json:"ApplicationTime,omitempty" xml:"ApplicationTime,omitempty"`
-	// A list of the application contents.
+	// The list of application contents.
 	Contents []*GetApplicationContentsResponseBodyDataContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
 	// The resource type.
+	//
+	// Note: The resource types supported for applications are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+	//
+	// See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// example:
 	//
@@ -82,7 +86,7 @@ type GetApplicationContentsResponseBodyData struct {
 	//
 	// 332066440109224007
 	ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
-	// The reason for the application.
+	// The application reason.
 	//
 	// example:
 	//
@@ -90,19 +94,19 @@ type GetApplicationContentsResponseBodyData struct {
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The approval status. Valid values:
 	//
-	// - `WaitApproval`: The application is pending approval.
+	// - WaitApproval: Pending approval.
 	//
-	// - `Confirmed`: The application is pending authorization.
+	// - Confirmed: Pending authorization.
 	//
-	// - `RejectApproval`: The application was rejected.
+	// - RejectApproval: Approval rejected.
 	//
-	// - `AuthorizeSucceed`: Authorization was successful.
+	// - AuthorizeSucceed: Authorization succeeded.
 	//
-	// - `AuthorizeFailed`: Authorization failed.
+	// - AuthorizeFailed: Authorization failed.
 	//
-	// - `Deleted`: The application was deleted.
+	// - Deleted: Deleted.
 	//
-	// - `Canceled`: The application was canceled.
+	// - Canceled: Canceled.
 	//
 	// example:
 	//
@@ -186,15 +190,23 @@ func (s *GetApplicationContentsResponseBodyData) Validate() error {
 }
 
 type GetApplicationContentsResponseBodyDataContents struct {
-	// A list of the permissions requested for the resource.
+	// The list of requested permissions.
+	//
+	// Note: Different levels of resources support different permission application types, all constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).isValidLeaf, accessTypeRestrictions, and authMethodAccessTypes.
+	//
+	// See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	AccessTypes []*string `json:"AccessTypes,omitempty" xml:"AccessTypes,omitempty" type:"Repeated"`
-	// The authorization method.
+	// The authorization method. Currently, only SEVERLESS_STARROCKS supports specifying the authorization method: ranger or starrocksManager.
+	//
+	// Note: Different resources support different authorization methods, all constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).authMethods.
+	//
+	// See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// example:
 	//
 	// ranger
 	AuthMethod *string `json:"AuthMethod,omitempty" xml:"AuthMethod,omitempty"`
-	// The time when the content item was created. This value is a millisecond-precision timestamp.
+	// The creation time.
 	//
 	// example:
 	//
@@ -202,35 +214,49 @@ type GetApplicationContentsResponseBodyDataContents struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The resource type.
 	//
+	// Note: The resource types supported for applications are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+	//
+	// See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
-	// The time when the permissions expire. This value is a millisecond-precision timestamp.
+	// The permission expiration date, as a millisecond timestamp.
 	//
 	// example:
 	//
 	// 1785835708000
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// A list of the permissions granted in the final approval.
+	// The list of resource operation permissions that are finally approved.
 	FinalAccessTypes []*string `json:"FinalAccessTypes,omitempty" xml:"FinalAccessTypes,omitempty" type:"Repeated"`
-	// The grantee.
+	// The grantee description.
+	//
+	// Note: The grantee principal types supported by the system are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).authPrincipal.
+	//
+	// See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	Grantee *GetApplicationContentsResponseBodyDataContentsGrantee `json:"Grantee,omitempty" xml:"Grantee,omitempty" type:"Struct"`
-	// The unique ID of the application content item.
+	// The unique identifier of the application content.
 	//
 	// example:
 	//
 	// Y9H7AKFmjhWzLYdZNDZA5
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the approval process instance for the application.
+	// The approval process instance ID of the submitted application.
 	//
 	// example:
 	//
 	// 777799223
 	ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
-	// The resource declaration.
+	// The resource declaration. The resource description is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).
+	//
+	// See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	Resource *GetApplicationContentsResponseBodyDataContentsResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	// The specific type of the resource, such as a table.
+	// The minimum-permission resource type.
+	//
+	// Note: The minimum-permission resource type is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources[*].isValidLeaf being true.
+	//
+	// See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// example:
 	//
@@ -238,19 +264,19 @@ type GetApplicationContentsResponseBodyDataContents struct {
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The approval status. Valid values:
 	//
-	// - `WaitApproval`: The item is pending approval.
+	// - WaitApproval: Pending approval.
 	//
-	// - `Confirmed`: The item is pending authorization.
+	// - Confirmed: Pending authorization.
 	//
-	// - `RejectApproval`: The item was rejected.
+	// - RejectApproval: Approval rejected.
 	//
-	// - `AuthorizeSucceed`: Authorization was successful.
+	// - AuthorizeSucceed: Authorization succeeded.
 	//
-	// - `AuthorizeFailed`: Authorization failed.
+	// - AuthorizeFailed: Authorization failed.
 	//
-	// - `Deleted`: The item was deleted during the approval process.
+	// - Deleted: Deleted.
 	//
-	// - `Canceled`: The item was canceled.
+	// - Canceled: Canceled.
 	//
 	// example:
 	//
@@ -262,7 +288,7 @@ type GetApplicationContentsResponseBodyDataContents struct {
 	//
 	// 69973837489
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The time when the content item was last updated. This value is a millisecond-precision timestamp.
+	// The update time.
 	//
 	// example:
 	//
@@ -419,25 +445,25 @@ func (s *GetApplicationContentsResponseBodyDataContents) Validate() error {
 }
 
 type GetApplicationContentsResponseBodyDataContentsGrantee struct {
-	// The ID of the principal. The format of the ID varies based on the `PrincipalType` value:
+	// The grantee principal ID. The ID has different meanings depending on the principal type:
 	//
-	// - If `PrincipalType` is `RamUser`, this parameter specifies the ID of a DataWorks user.
+	// - RamUser: DataWorks UserId.
 	//
-	// - If `PrincipalType` is `RamRole`, this parameter specifies the ID of a role in DataWorks. The ID must be prefixed with `ROLE_`.
+	// - RamRole: DataWorks UserId prefixed with "ROLE_".
 	//
-	// - If `PrincipalType` is `DlfRole`, this parameter specifies the name of a DlfNext role.
+	// - DlfRole: DlfNext role name.
 	//
 	// example:
 	//
 	// ROLE_3133343434
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// The principal type. Valid values:
+	// The grantee principal type. Valid values:
 	//
-	// - `RamUser`
+	// - RamUser
 	//
-	// - `RamRole`
+	// - RamRole
 	//
-	// - `DlfRole`
+	// - DlfRole
 	//
 	// example:
 	//
@@ -476,19 +502,29 @@ func (s *GetApplicationContentsResponseBodyDataContentsGrantee) Validate() error
 }
 
 type GetApplicationContentsResponseBodyDataContentsResource struct {
-	// The name of the `ResourceSchema` that defines how to parse this resource.
+	// The resource type.
+	//
+	// Note: The resource types supported for applications are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+	//
+	// See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
-	// The version of the `ResourceSchema` that defines how to parse this resource.
+	// The resource parsing version, which is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).version.
+	//
+	// See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// example:
 	//
 	// v1.0.0
 	DefVersion *string `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
-	// The resource metadata. The structure of the metadata is defined by the `ResourceSchema`.
+	// The resource metadata declaration.
+	//
+	// Note: The metadata is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources. A valid resource declaration must include the full-path metadata declaration from level 0 to the validLeaf level.
+	//
+	// See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// example:
 	//

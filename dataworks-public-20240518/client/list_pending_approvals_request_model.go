@@ -30,9 +30,17 @@ type iListPendingApprovalsRequest interface {
 }
 
 type ListPendingApprovalsRequest struct {
-	// The access types.
+	// Filters by requested permissions.
+	//
+	// Note: Different resource levels support different permission types. All are uniformly constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).isValidLeaf, accessTypeRestrictions, and authMethodAccessTypes.
+	//
+	// Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	AccessTypes []*string `json:"AccessTypes,omitempty" xml:"AccessTypes,omitempty" type:"Repeated"`
-	// The resource schema type.
+	// Filters by resource type.
+	//
+	// Note: The supported resource types for requests are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+	//
+	// Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// This parameter is required.
 	//
@@ -40,29 +48,39 @@ type ListPendingApprovalsRequest struct {
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
-	// The end time of the query range, specified as a Unix timestamp in milliseconds.
+	// End time of the application period (millisecond timestamp).
 	//
 	// example:
 	//
 	// 1779724799999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The grantee object used to filter results.
+	// Filters by authorization principal.
+	//
+	// Note: The supported authorization principal types are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).authPrincipal.
+	//
+	// Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	Grantee *ListPendingApprovalsRequestGrantee `json:"Grantee,omitempty" xml:"Grantee,omitempty" type:"Struct"`
-	// The token used to retrieve the next page of results.
+	// Cursor.
 	//
 	// example:
 	//
 	// eyJpZCI6MTIzfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries to return per page. Default: 10. Maximum: 200.
+	// Page size (default: 10, maximum: 200).
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The criteria to filter resources.
+	// Filters by resource with exact or fuzzy matching. Resource descriptions are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).
+	//
+	// Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	Resource *ListPendingApprovalsRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	// The resource type, which corresponds to a leaf node name. You can specify multiple values. A business context can map to multiple leaf node names.
+	// Filters by minimum permission resource type.
+	//
+	// Note: The minimum permission resource type is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources[*].isValidLeaf being true.
+	//
+	// Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// This parameter is required.
 	//
@@ -70,7 +88,7 @@ type ListPendingApprovalsRequest struct {
 	//
 	// ["table", "column"]
 	ResourceType []*string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" type:"Repeated"`
-	// The start time of the query range, specified as a Unix timestamp in milliseconds.
+	// Start time of the application period (millisecond timestamp).
 	//
 	// example:
 	//
@@ -182,13 +200,13 @@ func (s *ListPendingApprovalsRequest) Validate() error {
 }
 
 type ListPendingApprovalsRequestGrantee struct {
-	// The ID of the principal.
+	// Authorization principal ID.
 	//
 	// example:
 	//
 	// ROLE_3133343434
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// The type of principal.
+	// Authorization principal type.
 	//
 	// example:
 	//
@@ -227,19 +245,29 @@ func (s *ListPendingApprovalsRequestGrantee) Validate() error {
 }
 
 type ListPendingApprovalsRequestResource struct {
-	// The `name` of the `ResourceSchema` used to parse the resource.
+	// Resource type.
+	//
+	// Note: The supported resource types for requests are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+	//
+	// Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
-	// The `version` of the `ResourceSchema` used to parse the resource.
+	// Resource parsing version is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).version.
+	//
+	// Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// example:
 	//
 	// v1.0.0
 	DefVersion *string `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
-	// The resource metadata. Its content is constrained by the `ResourceSchema`.
+	// Resource metadata.
+	//
+	// Note: Metadata is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources. A valid resource declaration must include the full path metadata declaration from level 0 to the validLeaf level.
+	//
+	// Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	MetaData map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 }
 

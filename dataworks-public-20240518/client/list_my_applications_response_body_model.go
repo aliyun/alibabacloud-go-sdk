@@ -16,9 +16,9 @@ type iListMyApplicationsResponseBody interface {
 }
 
 type ListMyApplicationsResponseBody struct {
-	// The paginated results.
+	// The data part of the paginated result.
 	Data *ListMyApplicationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// A unique identifier (UUID) generated for the request.
+	// The request ID, which is a UUID.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *ListMyApplicationsResponseBody) Validate() error {
 }
 
 type ListMyApplicationsResponseBodyData struct {
-	// The list of application details.
+	// The list of application order details.
 	Data []*ListMyApplicationsResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Indicates whether more results are available.
+	// Indicates whether more data is available.
 	//
 	// example:
 	//
 	// false
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The cursor to retrieve the next page of results. If this parameter is empty, all results have been returned.
+	// The pagination cursor.
 	//
 	// example:
 	//
 	// eyJpZCI6NDU2fQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page size. Default value: 10. Maximum value: 200.
+	// The number of entries per page. Default value: 10. Maximum value: 200.
 	//
 	// example:
 	//
@@ -142,13 +142,13 @@ func (s *ListMyApplicationsResponseBodyData) Validate() error {
 }
 
 type ListMyApplicationsResponseBodyDataData struct {
-	// The time the application was submitted, in Unix timestamp format (milliseconds).
+	// The time when the application was initiated.
 	//
 	// example:
 	//
 	// 1779695088000
 	ApplicationTime *int64 `json:"ApplicationTime,omitempty" xml:"ApplicationTime,omitempty"`
-	// The content of the application.
+	// The application content.
 	Contents []*ListMyApplicationsResponseBodyDataDataContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
 	// The resource type.
 	//
@@ -170,19 +170,19 @@ type ListMyApplicationsResponseBodyDataData struct {
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The approval status. Valid values:
 	//
-	// - `WaitApproval`: Pending approval
+	// - WaitApproval: pending approval.
 	//
-	// - `Confirmed`: Pending authorization
+	// - Confirmed: pending authorization.
 	//
-	// - `RejectApproval`: Rejected
+	// - RejectApproval: approval rejected.
 	//
-	// - `AuthorizeSucceed`: Authorization succeeded
+	// - AuthorizeSucceed: authorization succeeded.
 	//
-	// - `AuthorizeFailed`: Authorization failed
+	// - AuthorizeFailed: authorization failed.
 	//
-	// - `Deleted`: Deleted
+	// - Deleted: deleted.
 	//
-	// - `Canceled`: Canceled
+	// - Canceled: withdrawn.
 	//
 	// example:
 	//
@@ -266,7 +266,7 @@ func (s *ListMyApplicationsResponseBodyDataData) Validate() error {
 }
 
 type ListMyApplicationsResponseBodyDataDataContents struct {
-	// The permissions requested for the resource.
+	// The resource operation permissions requested in the application.
 	AccessTypes []*string `json:"AccessTypes,omitempty" xml:"AccessTypes,omitempty" type:"Repeated"`
 	// The authorization method.
 	//
@@ -274,7 +274,7 @@ type ListMyApplicationsResponseBodyDataDataContents struct {
 	//
 	// default
 	AuthMethod *string `json:"AuthMethod,omitempty" xml:"AuthMethod,omitempty"`
-	// The time when the item was created, in Unix timestamp format (milliseconds).
+	// The creation time.
 	//
 	// example:
 	//
@@ -286,31 +286,31 @@ type ListMyApplicationsResponseBodyDataDataContents struct {
 	//
 	// MAXCOMPUTE
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
-	// When the permission expires, in Unix timestamp format (milliseconds).
+	// The permission expiration date (millisecond timestamp).
 	//
 	// example:
 	//
 	// 1782354014507
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// The granted permissions.
+	// The resource operation permissions that were finally approved.
 	FinalAccessTypes []*string `json:"FinalAccessTypes,omitempty" xml:"FinalAccessTypes,omitempty" type:"Repeated"`
-	// **The principal to be granted the permission.**
+	// **The authorization target.**
 	Grantee *ListMyApplicationsResponseBodyDataDataContentsGrantee `json:"Grantee,omitempty" xml:"Grantee,omitempty" type:"Struct"`
-	// The unique ID of the application item.
+	// The primary key of the application content.
 	//
 	// example:
 	//
 	// a8aa620037bb410ea13837f9b4d053d8
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the approval process instance for the application.
+	// The approval process instance ID of the initiated application.
 	//
 	// example:
 	//
 	// 777799223
 	ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
-	// **The requested resource.**
+	// **The resource declaration.**
 	Resource *ListMyApplicationsResponseBodyDataDataContentsResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	// The category of the resource. For example, `table`.
+	// The minimum permission resource type.
 	//
 	// example:
 	//
@@ -318,19 +318,19 @@ type ListMyApplicationsResponseBodyDataDataContents struct {
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The approval status. Valid values:
 	//
-	// - `WaitApproval`: Pending approval
+	// - WaitApproval: pending approval.
 	//
-	// - `Confirmed`: Pending authorization
+	// - Confirmed: pending authorization.
 	//
-	// - `RejectApproval`: Rejected
+	// - RejectApproval: approval rejected.
 	//
-	// - `AuthorizeSucceed`: Authorization succeeded
+	// - AuthorizeSucceed: authorization succeeded.
 	//
-	// - `AuthorizeFailed`: Authorization failed
+	// - AuthorizeFailed: authorization failed.
 	//
-	// - `Deleted`: Deleted
+	// - Deleted: deleted.
 	//
-	// - `Canceled`: Canceled
+	// - Canceled: withdrawn.
 	//
 	// example:
 	//
@@ -342,7 +342,7 @@ type ListMyApplicationsResponseBodyDataDataContents struct {
 	//
 	// 69973837489
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The time when the item was last updated, in Unix timestamp format (milliseconds).
+	// The update time.
 	//
 	// example:
 	//
@@ -499,41 +499,41 @@ func (s *ListMyApplicationsResponseBodyDataDataContents) Validate() error {
 }
 
 type ListMyApplicationsResponseBodyDataDataContentsGrantee struct {
-	// The ID of the principal. The value of this parameter varies based on the value of `PrincipalType`:
+	// The principal ID for authorization:
 	//
-	// - `RamUser`: The DataWorks user ID.
+	// - RamUser: DataWorks UserId.
 	//
-	// - `RamRole`: The DataWorks user ID, prefixed with `ROLE_`.
+	// - RamRole: DataWorks UserId prefixed with "ROLE_".
 	//
-	// - `DataworksTenantMember`: The DataWorks user ID.
+	// - DataworksTenantMember: DataWorks UserId.
 	//
-	// - `DataworksTenantRole`: The DataWorks tenant role code.
+	// - DataworksTenantRole: DataWorks tenant roleCode.
 	//
-	// - `DataworksProjectRole`: The DataWorks workspace role code.
+	// - DataworksProjectRole: DataWorks workspace roleCode.
 	//
-	// - `DataworksProjectMember`: The DataWorks user ID.
+	// - DataworksProjectMember: DataWorks UserId.
 	//
-	// - `DlfRole`: The DlfNext role name.
+	// - DlfRole: DlfNext role name.
 	//
 	// example:
 	//
 	// ROLE_3133343434
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// The type of the principal. Valid values:
+	// The principal type for authorization:
 	//
-	// - `RamRole`
+	// - RamRole
 	//
-	// - `RamUser`
+	// - RamUser
 	//
-	// - `DataworksTenantMember`
+	// - DataworksTenantMember
 	//
-	// - `DataworksTenantRole`
+	// - DataworksTenantRole
 	//
-	// - `DataworksProjectMember`
+	// - DataworksProjectMember
 	//
-	// - `DataworksProjectRole`
+	// - DataworksProjectRole
 	//
-	// - `DlfRole`
+	// - DlfRole
 	//
 	// example:
 	//
@@ -572,19 +572,19 @@ func (s *ListMyApplicationsResponseBodyDataDataContentsGrantee) Validate() error
 }
 
 type ListMyApplicationsResponseBodyDataDataContentsResource struct {
-	// **The name of the `ResourceSchema` used to parse the resource.**
+	// **The ResourceSchema.name on which the resource parsing depends.**
 	//
 	// example:
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
-	// **The version of the `ResourceSchema` used to parse the resource.**
+	// **The ResourceSchema.version on which the resource parsing depends.**
 	//
 	// example:
 	//
 	// v1.0.0
 	DefVersion *string `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
-	// **The resource metadata. Its format is defined by the `ResourceSchema`.**
+	// **The resource metadata, whose content is constrained by ResourceSchema.**
 	MetaData map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 }
 

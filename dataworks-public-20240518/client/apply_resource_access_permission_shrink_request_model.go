@@ -18,17 +18,17 @@ type iApplyResourceAccessPermissionShrinkRequest interface {
 }
 
 type ApplyResourceAccessPermissionShrinkRequest struct {
-	// A list of permission requests.
+	// The list of resource permission application contents.
 	//
 	// This parameter is required.
 	ApplyContentsShrink *string `json:"ApplyContents,omitempty" xml:"ApplyContents,omitempty"`
-	// The idempotency parameter, which prevents duplicate operations from repeated calls.
+	// The idempotency parameter. Used to prevent duplicate operations caused by multiple calls.
 	//
 	// example:
 	//
 	// ABFUOEUOTRTRJKE
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The reason for the request.
+	// The reason for the application.
 	//
 	// This parameter is required.
 	//

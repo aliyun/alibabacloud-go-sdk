@@ -28,7 +28,11 @@ type iListMyApplicationsShrinkRequest interface {
 }
 
 type ListMyApplicationsShrinkRequest struct {
-	// The resource type.
+	// Filters by resource type.
+	//
+	// Note: The resource types supported by the system for applications are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+	//
+	// See also: [ResourceSchema documentation for International site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// This parameter is required.
 	//
@@ -36,7 +40,7 @@ type ListMyApplicationsShrinkRequest struct {
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
-	// The end time of the application, specified as a Unix timestamp in milliseconds.
+	// The end time of the application period (millisecond timestamp).
 	//
 	// This parameter is required.
 	//
@@ -44,25 +48,31 @@ type ListMyApplicationsShrinkRequest struct {
 	//
 	// 1779724799999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// A token that you can use in a subsequent request to retrieve the next page of results.
+	// The pagination cursor.
 	//
 	// example:
 	//
 	// eyJpZCI6MTIzfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 200.
+	// The number of entries per page. Default value: 10. Maximum value: 200.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The search criteria for the resource.
+	// Filters by resource with exact or wildcard matching. The resource description is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).
+	//
+	// See also: [ResourceSchema documentation for International site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	ResourceShrink *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The name of the leaf node that specifies the resource type. You can specify multiple resource types. Note that different leaf node names can map to the same business logic.
+	// Filters by minimum permission resource type.
+	//
+	// Note: The minimum permission resource type is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources[*].isValidLeaf being true.
+	//
+	// See also: [ResourceSchema documentation for International site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// This parameter is required.
 	ResourceTypeShrink *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The start time of the application, specified as a Unix timestamp in milliseconds.
+	// The start time of the application period (millisecond timestamp).
 	//
 	// This parameter is required.
 	//
@@ -70,21 +80,25 @@ type ListMyApplicationsShrinkRequest struct {
 	//
 	// 1771948800000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The approval statuses for filtering. Valid values:
+	// Filters by approval status. Valid values:
 	//
-	// - `WaitApproval`: Pending approval
+	// - WaitApproval: pending approval.
 	//
-	// - `Confirmed`: Pending authorization
+	// - Confirmed: pending authorization.
 	//
-	// - `RejectApproval`: Approval rejected
+	// - RejectApproval: approval rejected.
 	//
-	// - `AuthorizeSucceed`: Authorization succeeded
+	// - AuthorizeSucceed: authorization succeeded.
 	//
-	// - `AuthorizeFailed`: Authorization failed
+	// - AuthorizeFailed: authorization failed.
 	//
-	// - `Deleted`: The application was deleted.
+	// - Deleted: deleted.
 	//
-	// - `Canceled`: The application was canceled.
+	// - Canceled: withdrawn.
+	//
+	// example:
+	//
+	// Deleted
 	StatusesShrink *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
 }
 
