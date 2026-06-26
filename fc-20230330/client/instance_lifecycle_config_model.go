@@ -16,9 +16,9 @@ type iInstanceLifecycleConfig interface {
 }
 
 type InstanceLifecycleConfig struct {
-	// The configurations of the Initializer hook.
+	// Initializer method configuration
 	Initializer *LifecycleHook `json:"initializer,omitempty" xml:"initializer,omitempty"`
-	// The configurations of the PreStop hook.
+	// PreStop method configuration
 	PreStop *LifecycleHook `json:"preStop,omitempty" xml:"preStop,omitempty"`
 }
 

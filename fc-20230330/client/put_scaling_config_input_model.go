@@ -26,27 +26,39 @@ type iPutScalingConfigInput interface {
 }
 
 type PutScalingConfigInput struct {
+	// Specifies whether to enable the mix mode.
+	//
 	// example:
 	//
 	// False
 	EnableMixMode *bool `json:"enableMixMode,omitempty" xml:"enableMixMode,omitempty"`
+	// Specifies whether to enable on-demand scaling.
+	//
 	// example:
 	//
 	// True
-	EnableOnDemandScaling     *bool            `json:"enableOnDemandScaling,omitempty" xml:"enableOnDemandScaling,omitempty"`
+	EnableOnDemandScaling *bool `json:"enableOnDemandScaling,omitempty" xml:"enableOnDemandScaling,omitempty"`
+	// The horizontal scaling policies.
 	HorizontalScalingPolicies []*ScalingPolicy `json:"horizontalScalingPolicies" xml:"horizontalScalingPolicies" type:"Repeated"`
+	// The minimum number of instances.
+	//
 	// example:
 	//
 	// 1
 	MinInstances *int64 `json:"minInstances,omitempty" xml:"minInstances,omitempty"`
+	// The request dispatch policy.
+	//
 	// example:
 	//
 	// Balanced
 	RequestDispatchPolicy *string `json:"requestDispatchPolicy,omitempty" xml:"requestDispatchPolicy,omitempty"`
+	// The ID of the resident resource pool.
+	//
 	// example:
 	//
 	// fc-pool-a2b664c1f87171j4******
-	ResidentPoolId    *string            `json:"residentPoolId,omitempty" xml:"residentPoolId,omitempty"`
+	ResidentPoolId *string `json:"residentPoolId,omitempty" xml:"residentPoolId,omitempty"`
+	// The scheduled elastic policies.
 	ScheduledPolicies []*ScheduledPolicy `json:"scheduledPolicies" xml:"scheduledPolicies" type:"Repeated"`
 }
 

@@ -16,7 +16,7 @@ type iTagResourceInput interface {
 }
 
 type TagResourceInput struct {
-	// The resource descriptor.
+	// Resource descriptor.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type TagResourceInput struct {
 	//
 	// acs:fc:cn-shanghai:xxx:functions/f1
 	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
-	// The tag dictionary.
+	// Tag dictionary.
 	//
 	// This parameter is required.
 	Tags map[string]*string `json:"tags" xml:"tags"`

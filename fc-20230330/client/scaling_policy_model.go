@@ -28,34 +28,50 @@ type iScalingPolicy interface {
 }
 
 type ScalingPolicy struct {
+	// The time when the policy expires.
+	//
 	// example:
 	//
 	// 2024-03-10T10:10:10Z
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The maximum number of instances.
+	//
 	// example:
 	//
 	// 10
 	MaxInstances *int64 `json:"maxInstances,omitempty" xml:"maxInstances,omitempty"`
+	// The target value for the metric.
+	//
 	// example:
 	//
 	// 0.6
 	MetricTarget *float32 `json:"metricTarget,omitempty" xml:"metricTarget,omitempty"`
+	// The type of metric to track. ProvisionedConcurrencyUtilization is the concurrency utilization of provisioned instances. CPUUtilization is the CPU utilization. GPUMemUtilization is the GPU memory utilization.
+	//
 	// example:
 	//
 	// CPUUtilization
 	MetricType *string `json:"metricType,omitempty" xml:"metricType,omitempty"`
+	// The minimum number of instances.
+	//
 	// example:
 	//
 	// 1
 	MinInstances *int64 `json:"minInstances,omitempty" xml:"minInstances,omitempty"`
+	// The name of the policy.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The time when the policy takes effect.
+	//
 	// example:
 	//
 	// 2023-03-10T10:10:10Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The time zone. If this parameter is empty, the times for startTime, endTime, and scheduleExpression must be in Coordinated Universal Time (UTC).
+	//
 	// example:
 	//
 	// Asia/Shanghai

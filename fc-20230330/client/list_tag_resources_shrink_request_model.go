@@ -28,25 +28,25 @@ type ListTagResourcesShrinkRequest struct {
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// MTIzNCNhYmM=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The resource IDs.
+	// The list of resource IDs.
 	ResourceIdShrink *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ALIYUN::FC:FUNCTION
+	// ALIYUN::FC::FUNCTION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The list of tags.
 	//
-	// You can query up to 20 tags at a time.
+	// You can specify up to 20 tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

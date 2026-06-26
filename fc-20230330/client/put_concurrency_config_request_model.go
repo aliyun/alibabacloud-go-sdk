@@ -14,7 +14,7 @@ type iPutConcurrencyConfigRequest interface {
 }
 
 type PutConcurrencyConfigRequest struct {
-	// The concurrency configurations.
+	// The concurrency configuration of the function.
 	//
 	// This parameter is required.
 	Body *PutConcurrencyInput `json:"body,omitempty" xml:"body,omitempty"`

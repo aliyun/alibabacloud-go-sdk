@@ -18,19 +18,19 @@ type iListCustomDomainsRequest interface {
 }
 
 type ListCustomDomainsRequest struct {
-	// The number of custom domain names returned.
+	// The number of custom domain names to return.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token that is used to start paging.
 	//
 	// example:
 	//
 	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The domain name prefix.
+	// The prefix of the domain name.
 	//
 	// example:
 	//

@@ -26,15 +26,28 @@ type iUpdateSessionInput interface {
 }
 
 type UpdateSessionInput struct {
-	DisableSessionIdReuse *bool           `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
-	JuiceFsConfig         *JuiceFsConfig  `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
-	NasConfig             *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	OssMountConfig        *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	PolarFsConfig         *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
+	// Defaults to `false`. If set to `false`, you can reuse a `SessionID` to start a new session on a new instance after the original session expires. If set to `true`, you cannot reuse a `SessionID` after its session expires.
+	//
+	// example:
+	//
+	// false
+	DisableSessionIdReuse *bool `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
+	// The JuiceFS configuration.
+	JuiceFsConfig *JuiceFsConfig `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
+	// The NAS configuration.
+	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	// The OSS mount configuration.
+	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	// The PolarFS configuration.
+	PolarFsConfig *PolarFsConfig `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
+	// The session idle timeout, in seconds.
+	//
 	// example:
 	//
 	// 1800
 	SessionIdleTimeoutInSeconds *int64 `json:"sessionIdleTimeoutInSeconds,omitempty" xml:"sessionIdleTimeoutInSeconds,omitempty"`
+	// The session duration, in seconds.
+	//
 	// example:
 	//
 	// 21600

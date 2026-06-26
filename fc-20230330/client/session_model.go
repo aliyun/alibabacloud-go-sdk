@@ -53,14 +53,20 @@ type Session struct {
 	// example:
 	//
 	// 2025-04-01T08:15:27Z
-	CreatedTime           *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	DisableSessionIdReuse *bool   `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
-	// The name of the function to which the session belongs.
+	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// Specifies whether an expired session ID can be reused. If `true`, an expired session ID cannot be reused. If `false` (the default), sending a request with an expired session ID creates a new session bound to a new instance.
+	//
+	// example:
+	//
+	// false
+	DisableSessionIdReuse *bool `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
+	// The name of the function associated with the session.
 	//
 	// example:
 	//
 	// functionName1
-	FunctionName  *string        `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	// The JuiceFS mount configuration, enabling the associated function instance to access specified JuiceFS resources.
 	JuiceFsConfig *JuiceFsConfig `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
 	// The time when the session was last updated.
 	//
@@ -68,41 +74,43 @@ type Session struct {
 	//
 	// 2025-04-01T18:15:27Z
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The File Storage NAS (NAS) configuration. Once configured, the instance associated with the session can access designated NAS resources.
-	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	// The NAS configuration, enabling the associated function instance to access specified NAS resources.
+	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	// The OSS mount configuration, enabling the associated function instance to access specified OSS resources.
 	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	PolarFsConfig  *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
-	// The qualifier specified when creating a session. If not provided, the default value is LATEST.
+	// The PolarFS mount configuration, enabling the associated function instance to access specified PolarFS resources.
+	PolarFsConfig *PolarFsConfig `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
+	// The qualifier, which specifies a function version or alias. Defaults to `LATEST` if unspecified.
 	//
 	// example:
 	//
 	// AliasName1
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// The session affinity type.
+	// The type of session affinity.
 	//
 	// example:
 	//
 	// HEADER_FIELD
 	SessionAffinityType *string `json:"sessionAffinityType,omitempty" xml:"sessionAffinityType,omitempty"`
-	// The unique identifier of the function session.
+	// The unique identifier for the function session.
 	//
 	// example:
 	//
 	// 81f70ae156904eb9b7d43e12f511fe58
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The timeout period for idle sessions.
+	// The maximum duration, in seconds, that the session can be idle before it expires.
 	//
 	// example:
 	//
 	// 1800
 	SessionIdleTimeoutInSeconds *int64 `json:"sessionIdleTimeoutInSeconds,omitempty" xml:"sessionIdleTimeoutInSeconds,omitempty"`
-	// The session status, which can be either Active (session is valid) or Expired (session has expired).
+	// The status of the session. `Active` indicates the session is valid, and `Expired` indicates it is no longer valid.
 	//
 	// example:
 	//
 	// Active
 	SessionStatus *string `json:"sessionStatus,omitempty" xml:"sessionStatus,omitempty"`
-	// The maximum session lifecycle.
+	// The maximum lifespan of the session, in seconds.
 	//
 	// example:
 	//

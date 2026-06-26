@@ -14,7 +14,7 @@ type iUpdateFunctionRequest interface {
 }
 
 type UpdateFunctionRequest struct {
-	// The function information
+	// The function\\"s configuration.
 	//
 	// This parameter is required.
 	Body *UpdateFunctionInput `json:"body,omitempty" xml:"body,omitempty"`

@@ -16,7 +16,9 @@ type iJuiceFsConfig interface {
 }
 
 type JuiceFsConfig struct {
-	Envs        map[string]*string    `json:"envs" xml:"envs"`
+	// A map of environment variables (key-value pairs) to set for the JuiceFS client.
+	Envs map[string]*string `json:"envs" xml:"envs"`
+	// An array of JuiceFsMountConfig objects, each specifying the configuration for a mount point.
 	MountPoints []*JuiceFsMountConfig `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
 }
 

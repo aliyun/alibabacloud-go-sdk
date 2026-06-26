@@ -28,7 +28,7 @@ type iInstanceInfo interface {
 type InstanceInfo struct {
 	CreatedTimeMs   *int64 `json:"createdTimeMs,omitempty" xml:"createdTimeMs,omitempty"`
 	DestroyedTimeMs *int64 `json:"destroyedTimeMs,omitempty" xml:"destroyedTimeMs,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// example:
 	//
@@ -37,7 +37,7 @@ type InstanceInfo struct {
 	Qualifier    *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	Status       *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The version of the function to which the instance belongs. If the instance belongs to the LATEST alias, 0 is returned as the version.
+	// The version of the function to which the instance belongs. If the instance is under the LATEST alias of the function, the returned version number is 0.
 	//
 	// example:
 	//

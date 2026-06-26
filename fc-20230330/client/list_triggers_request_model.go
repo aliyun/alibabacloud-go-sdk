@@ -18,13 +18,13 @@ type iListTriggersRequest interface {
 }
 
 type ListTriggersRequest struct {
-	// The number of triggers returned.
+	// The number of triggers to return.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token for the next page.
+	// The token that marks the start of the next page of results.
 	//
 	// example:
 	//

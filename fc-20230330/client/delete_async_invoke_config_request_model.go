@@ -14,7 +14,7 @@ type iDeleteAsyncInvokeConfigRequest interface {
 }
 
 type DeleteAsyncInvokeConfigRequest struct {
-	// The version or alias of the function.
+	// The function version or alias.
 	//
 	// example:
 	//

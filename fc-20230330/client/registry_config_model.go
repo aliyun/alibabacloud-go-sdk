@@ -18,11 +18,11 @@ type iRegistryConfig interface {
 }
 
 type RegistryConfig struct {
-	// The permission authentication configurations.
+	// The authentication configuration.
 	AuthConfig *RegistryAuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The certificate configurations.
+	// The certificate configuration.
 	CertConfig *RegistryCertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
-	// The network settings.
+	// The network configuration.
 	NetworkConfig *RegistryNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty"`
 }
 

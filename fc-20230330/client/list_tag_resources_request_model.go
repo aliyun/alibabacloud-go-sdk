@@ -28,25 +28,25 @@ type ListTagResourcesRequest struct {
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// MTIzNCNhYmM=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The resource IDs.
+	// The list of resource IDs.
 	ResourceId []*string `json:"ResourceId" xml:"ResourceId" type:"Repeated"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ALIYUN::FC:FUNCTION
+	// ALIYUN::FC::FUNCTION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The list of tags.
 	//
-	// You can query up to 20 tags at a time.
+	// You can specify up to 20 tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag" xml:"Tag" type:"Repeated"`
 }
 
@@ -119,7 +119,7 @@ func (s *ListTagResourcesRequest) Validate() error {
 type ListTagResourcesRequestTag struct {
 	// The tag key.
 	//
-	// The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ type ListTagResourcesRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// The tag value can be up to 128 characters in length and can be an empty string.
+	// The tag value can be up to 128 characters in length. It can be an empty string.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iGetAsyncTaskRequest interface {
 }
 
 type GetAsyncTaskRequest struct {
-	// The version or alias of the function.
+	// The function version or alias.
 	//
 	// example:
 	//

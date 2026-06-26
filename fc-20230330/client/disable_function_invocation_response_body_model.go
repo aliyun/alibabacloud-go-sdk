@@ -14,7 +14,7 @@ type iDisableFunctionInvocationResponseBody interface {
 }
 
 type DisableFunctionInvocationResponseBody struct {
-	// Indicates whether the request is successful.
+	// Indicates whether the function invocation was successfully disabled.
 	//
 	// example:
 	//

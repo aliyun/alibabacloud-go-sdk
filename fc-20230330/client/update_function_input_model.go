@@ -53,6 +53,8 @@ type iUpdateFunctionInput interface {
 	GetLogConfig() *LogConfig
 	SetMemorySize(v int32) *UpdateFunctionInput
 	GetMemorySize() *int32
+	SetMicroSandboxConfig(v *MicroSandboxConfig) *UpdateFunctionInput
+	GetMicroSandboxConfig() *MicroSandboxConfig
 	SetNasConfig(v *NASConfig) *UpdateFunctionInput
 	GetNasConfig() *NASConfig
 	SetOssMountConfig(v *OSSMountConfig) *UpdateFunctionInput
@@ -76,108 +78,137 @@ type iUpdateFunctionInput interface {
 }
 
 type UpdateFunctionInput struct {
-	// The code package of the function. Configure either code or customContainerConfig.
+	// The ZIP package of the function code. Specify either code or customContainerConfig.
 	Code *InputCodeLocation `json:"code,omitempty" xml:"code,omitempty"`
-	// The CPU power allocated to the function. Unit: vCPUs. The value must be a multiple of 0.05.
+	// The CPU specification of the function. Unit: vCPU. The value must be a multiple of 0.05 vCPU.
 	//
 	// example:
 	//
 	// 1
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The configurations of the Custom Container runtime. After you configure a Custom Container runtime for your function, Function Compute can execute the function in a custom container image. Configure either code or customContainerConfig.
+	// The configuration of the custom container runtime. After this parameter is configured, the function can use a custom container image for execution. Specify either code or customContainerConfig.
 	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	// The custom DNS settings of the function.
+	// The custom DNS configuration.
 	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	// The configurations of the custom runtime.
+	// The custom runtime configuration.
 	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
 	// The description of the function.
 	//
 	// example:
 	//
 	// my function
-	Description              *string `json:"description,omitempty" xml:"description,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Specifies whether to disable STS token injection. Valid values:
+	//
+	// - None: STS tokens are injected in all methods.
+	//
+	// - Env: STS tokens are not injected through environment variables.
+	//
+	// - Request: STS tokens are not injected through requests, including context and headers.
+	//
+	// - All: STS tokens are not injected in any method.
+	//
+	// example:
+	//
+	// Env
 	DisableInjectCredentials *string `json:"disableInjectCredentials,omitempty" xml:"disableInjectCredentials,omitempty"`
 	// Deprecated
+	//
+	// Specifies whether to disable the creation of on-demand instances. If this feature is enabled, on-demand instances are not created, and only provisioned instances can be used.
 	DisableOndemand *bool `json:"disableOndemand,omitempty" xml:"disableOndemand,omitempty"`
-	// The disk size of the function. Unit: MB. Valid values: 512 and 10240.
+	// The disk specification of the function. Unit: MB. Valid values: 512 and 10240.
 	//
 	// example:
 	//
 	// 512
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	// Deprecated
+	//
+	// Specifies whether to allow provisioned instances of GPU functions to be long-running. When this feature is enabled, function instances that are created are not injected with STS tokens.
 	EnableLongLiving *bool `json:"enableLongLiving,omitempty" xml:"enableLongLiving,omitempty"`
-	// The environment variables of the function. You can access the specified environment variables in the runtime.
+	// The environment variables of the function. You can access the configured environment variables in the runtime environment.
 	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
-	// The GPU configurations of the function.
+	// The GPU configuration of the function.
 	GpuConfig *GPUConfig `json:"gpuConfig,omitempty" xml:"gpuConfig,omitempty"`
-	// The handler of the function. The format of the handler is related to the runtime you use.
+	// The function entry point. The specific format depends on the runtime.
 	//
 	// example:
 	//
 	// index.handler
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
+	// The deferred release time of the instance.
+	//
 	// example:
 	//
 	// 100
 	IdleTimeout *int32 `json:"idleTimeout,omitempty" xml:"idleTimeout,omitempty"`
-	// The maximum number of requests that a function instance can process at a time.
+	// The maximum concurrency of an instance.
 	//
 	// example:
 	//
 	// 1
-	InstanceConcurrency   *int32  `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
+	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
+	// The instance isolation mode.
 	InstanceIsolationMode *string `json:"instanceIsolationMode,omitempty" xml:"instanceIsolationMode,omitempty"`
-	// The configurations of instance lifecycle hooks.
+	// The instance lifecycle hook configuration.
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	// Specifies whether to allow the function to access the Internet.
+	// Specifies whether to allow access to the Internet.
 	//
 	// example:
 	//
 	// true
 	InternetAccess *bool          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
 	JuiceFsConfig  *JuiceFsConfig `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
-	// The layers. Multiple layers are merged based on the order of array subscripts. If two layers have the same file name, the content of the layer with the smaller subscript will overwrite the content of the layer with the larger subscript.
+	// The list of layers. Multiple layers are merged in descending order of array index. Files in a layer with a smaller index overwrite files with the same name in a layer with a larger index.
 	Layers []*string `json:"layers" xml:"layers" type:"Repeated"`
-	// The logging configurations. Logs generated by the function are written to the specified Logstore.
+	// The log configuration. Logs generated by the function are written to the configured Logstore.
 	LogConfig *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	// The memory capacity for the function. Unit: MB. The value must be a multiple of 64. The capacity varies based on the type of the function instance.
+	// The memory specification of the function. Unit: MB. The value must be a multiple of 64 MB. The memory specification varies based on the function instance type.
 	//
 	// example:
 	//
 	// 512
-	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// The File Storage NAS (NAS) configurations. The configurations allow the function to access the specified NAS file system.
+	MemorySize         *int32              `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	MicroSandboxConfig *MicroSandboxConfig `json:"microSandboxConfig,omitempty" xml:"microSandboxConfig,omitempty"`
+	// The NAS configuration. After this parameter is configured, the function can access the specified NAS resources.
 	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	// The Object Storage Service (OSS) mounting configurations.
+	// The OSS mount configuration.
 	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	PolarFsConfig  *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
-	// The Resource Access Management (RAM) role that grants the necessary permissions to Function Compute. The role can be used in the following scenarios: 1. When Function Compute sends logs generated by the function to your Logstore. 2. When Function Compute obtains a Security Token Service (STS) token, which serves as a temporary key for your function to access other Alibaba Cloud services.
+	// The PolarFs configuration. After this parameter is configured, the function can access the specified PolarFs resources.
+	PolarFsConfig *PolarFsConfig `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
+	// The Alibaba Cloud Resource Access Management (RAM) role that grants Function Compute the required permissions. Scenarios include: 1. Sending logs generated by the function to your Logstore. 2. Generating temporary access tokens for the function to access other cloud resources during the execute procedure.
 	//
 	// example:
 	//
 	// acs:ram::188077086902****:role/fc-test
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// The runtime of the function.
+	// The runtime environment of the function.
 	//
 	// example:
 	//
 	// nodejs14
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// The affinity policy for Function Compute invocation requests. To implement request affinity for the MCP SSE protocol, set this parameter to MCP_SSE. To use cookie-based affinity, set this parameter to GENERATED_COOKIE. To use header-based affinity, set this parameter to HEADER_FIELD. If this parameter is not set or is set to NONE, no affinity is applied, and requests are routed based on the default scheduling policy of Function Compute.
+	//
 	// example:
 	//
 	// MCP_SSE
-	SessionAffinity       *string `json:"sessionAffinity,omitempty" xml:"sessionAffinity,omitempty"`
+	SessionAffinity *string `json:"sessionAffinity,omitempty" xml:"sessionAffinity,omitempty"`
+	// The affinity configuration that corresponds to the sessionAffinity type. For MCP_SSE affinity, configure MCPSSESessionAffinityConfig. For cookie-based affinity, configure CookieSessionAffinityConfig. For header field affinity, configure HeaderFieldSessionAffinityConfig.
+	//
+	// example:
+	//
+	// {\\"sseEndpointPath\\":\\"/sse\\", \\"sessionConcurrencyPerInstance\\":20}
 	SessionAffinityConfig *string `json:"sessionAffinityConfig,omitempty" xml:"sessionAffinityConfig,omitempty"`
-	// The timeout period for function execution. Unit: seconds. Minimum value: 1. Default value: 3. The execution of the function is terminated when the timeout period expires.
+	// The timeout period for function execution. Unit: seconds. Minimum value: 1. Default value: 3. The function is terminated if it exceeds this time limit.
 	//
 	// example:
 	//
 	// 60
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// The configurations of Managed Service for OpenTelemetry. After Function Compute is integrated with Managed Service for OpenTelemetry, you can record the invocation duration of a request, view the cold start duration of a function, and track the execution duration of the function.
+	// The Tracing Analysis configuration. After Function Compute is integrated with Tracing Analysis, you can record the time consumed by requests in Function Compute, view the cold start time of functions, and record the time consumed by internal function operations.
 	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	// The Virtual Private Cloud (VPC) configurations. The configurations allow the function to access the specified VPC resources.
+	// The VPC configuration. After this parameter is configured, the function can access the specified VPC resources.
 	VpcConfig *VPCConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
@@ -275,6 +306,10 @@ func (s *UpdateFunctionInput) GetLogConfig() *LogConfig {
 
 func (s *UpdateFunctionInput) GetMemorySize() *int32 {
 	return s.MemorySize
+}
+
+func (s *UpdateFunctionInput) GetMicroSandboxConfig() *MicroSandboxConfig {
+	return s.MicroSandboxConfig
 }
 
 func (s *UpdateFunctionInput) GetNasConfig() *NASConfig {
@@ -427,6 +462,11 @@ func (s *UpdateFunctionInput) SetMemorySize(v int32) *UpdateFunctionInput {
 	return s
 }
 
+func (s *UpdateFunctionInput) SetMicroSandboxConfig(v *MicroSandboxConfig) *UpdateFunctionInput {
+	s.MicroSandboxConfig = v
+	return s
+}
+
 func (s *UpdateFunctionInput) SetNasConfig(v *NASConfig) *UpdateFunctionInput {
 	s.NasConfig = v
 	return s
@@ -515,6 +555,11 @@ func (s *UpdateFunctionInput) Validate() error {
 	}
 	if s.LogConfig != nil {
 		if err := s.LogConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MicroSandboxConfig != nil {
+		if err := s.MicroSandboxConfig.Validate(); err != nil {
 			return err
 		}
 	}

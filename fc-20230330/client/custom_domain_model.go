@@ -40,24 +40,25 @@ type iCustomDomain interface {
 }
 
 type CustomDomain struct {
-	// The ID of your Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account (primary account).
 	//
 	// example:
 	//
 	// 186851234023****
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// The version of the Function Compute API.
+	// The API version of Function Compute.
 	//
 	// example:
 	//
 	// 2023-03-30
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// The configuration of permission authentication.
+	// The authentication configuration.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The configuration of the HTTPS certificate.
+	// The HTTPS certificate configuration.
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	// The cross-origin resource sharing (CORS) configuration.
 	CorsConfig *CORSConfig `json:"corsConfig,omitempty" xml:"corsConfig,omitempty"`
-	// The time when the custom domain name was created.
+	// The time when the custom domain was created.
 	//
 	// example:
 	//
@@ -70,29 +71,29 @@ type CustomDomain struct {
 	// example.com
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	IsE2B      *bool   `json:"isE2B,omitempty" xml:"isE2B,omitempty"`
-	// The time when the custom domain name was last updated.
+	// The time when the custom domain was last modified.
 	//
 	// example:
 	//
 	// 2023-03-30T08:02:19Z
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The protocol type that is supported by the custom domain name. Valid values: HTTP HTTPS HTTP,HTTPS
+	// The protocols that are supported by the domain name. Valid values: HTTP (HTTP only), HTTPS (HTTPS only), and HTTP,HTTPS (both HTTP and HTTPS).
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The route table that maps paths to functions when the function is invoked by using the custom domain name.
+	// The route table that maps paths to functions.
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
-	// The number of added subdomains.
+	// The number of subdomains.
 	//
 	// example:
 	//
 	// 1
 	SubdomainCount *string `json:"subdomainCount,omitempty" xml:"subdomainCount,omitempty"`
-	// The Transport Layer Security (TLS) configuration.
+	// The TLS configuration.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
-	// The Web Application Firewall (WAF) configuration.
+	// The Web Application Firewall (WAF) aconfiguration.
 	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 

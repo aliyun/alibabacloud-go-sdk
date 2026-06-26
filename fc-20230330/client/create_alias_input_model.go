@@ -22,7 +22,7 @@ type iCreateAliasInput interface {
 type CreateAliasInput struct {
 	// The weight of the canary release version.
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight" xml:"additionalVersionWeight"`
-	// The alias.
+	// The name of the alias.
 	//
 	// This parameter is required.
 	//

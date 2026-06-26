@@ -14,7 +14,7 @@ type iCreateVpcBindingRequest interface {
 }
 
 type CreateVpcBindingRequest struct {
-	// The VPC binding configurations.
+	// The VPC binding configuration.
 	//
 	// This parameter is required.
 	Body *CreateVpcBindingInput `json:"body,omitempty" xml:"body,omitempty"`

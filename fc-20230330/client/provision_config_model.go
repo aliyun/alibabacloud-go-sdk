@@ -44,6 +44,8 @@ type ProvisionConfig struct {
 	//
 	// true
 	AlwaysAllocateCPU *bool `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
+	// 是否始终分配GPU给函数实例。
+	//
 	// example:
 	//
 	// true
@@ -66,16 +68,30 @@ type ProvisionConfig struct {
 	//
 	// 5
 	DefaultTarget *int64 `json:"defaultTarget,omitempty" xml:"defaultTarget,omitempty"`
+	// 函数的资源描述
+	//
 	// example:
 	//
 	// acs:fc:cn-shanghai:124:functions/myFunction/prod
 	FunctionArn *string `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
 	// public
 	ScheduledActions []*ScheduledAction `json:"scheduledActions" xml:"scheduledActions" type:"Repeated"`
+	// 当前目标资源个数，如果存在指标追踪伸缩策略或定时策略，为策略计算的资源个数，否则为默认预留实例数。
+	//
+	//
+	// > 与 defaultTarget 有什么区别？\\
+	//
+	// > 假设配置预留实例数为1后，新增了定时伸缩策略，设置某个时间段内的预留实例数为5。
+	//
+	// > - 在定时伸缩策略**生效期间**，target 与 defaultTarget 分别为 5 和 1。
+	//
+	// >-  在定时伸缩策略**失效期间**，target 与 defaultTarget 都为 1。
+	//
 	// example:
 	//
 	// 5
-	Target                 *int64                  `json:"target,omitempty" xml:"target,omitempty"`
+	Target *int64 `json:"target,omitempty" xml:"target,omitempty"`
+	// 指标追踪伸缩策略配置。
 	TargetTrackingPolicies []*TargetTrackingPolicy `json:"targetTrackingPolicies" xml:"targetTrackingPolicies" type:"Repeated"`
 }
 

@@ -28,19 +28,25 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
-	EndTimeMs      *int64    `json:"endTimeMs,omitempty" xml:"endTimeMs,omitempty"`
-	InstanceIds    []*string `json:"instanceIds" xml:"instanceIds" type:"Repeated"`
+	// The end time of the query range, specified as a UNIX timestamp in milliseconds.
+	EndTimeMs *int64 `json:"endTimeMs,omitempty" xml:"endTimeMs,omitempty"`
+	// A list of instance IDs to return.
+	InstanceIds []*string `json:"instanceIds" xml:"instanceIds" type:"Repeated"`
+	// An array of instance statuses. The operation returns only instances whose status is in this array.
 	InstanceStatus []*string `json:"instanceStatus" xml:"instanceStatus" type:"Repeated"`
-	Limit          *string   `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The maximum number of instances to return.
+	Limit *string `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The function version or alias.
 	//
 	// example:
 	//
 	// LATEST
-	Qualifier   *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	StartKey    *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
-	StartTimeMs *int64  `json:"startTimeMs,omitempty" xml:"startTimeMs,omitempty"`
-	// Specifies whether to list all instances. Valid values: true and false.
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// The token that specifies where to start the query. It is returned in a truncated response and can be used to retrieve the next page of results.
+	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
+	// The start time of the query range, specified as a UNIX timestamp in milliseconds.
+	StartTimeMs *int64 `json:"startTimeMs,omitempty" xml:"startTimeMs,omitempty"`
+	// Specifies whether to list all active instances.
 	//
 	// example:
 	//

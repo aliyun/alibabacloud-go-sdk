@@ -18,19 +18,19 @@ type iListAliasesRequest interface {
 }
 
 type ListAliasesRequest struct {
-	// The number of aliases returned.
+	// The number of aliases to return.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token that marks the start of the next page of results.
 	//
 	// example:
 	//
 	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The alias prefix.
+	// The prefix of the alias name.
 	//
 	// example:
 	//

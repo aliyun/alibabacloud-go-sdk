@@ -18,19 +18,19 @@ type iListConcurrencyConfigsRequest interface {
 }
 
 type ListConcurrencyConfigsRequest struct {
-	// The function name. If you leave this parameter empty, the concurrency configurations of all functions are returned.
+	// The function name. If you do not specify this parameter, the concurrency configurations of all functions are listed.
 	//
 	// example:
 	//
 	// my-func
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// The maximum number of entries returned.
+	// The maximum number of results to return.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token for paging.
 	//
 	// example:
 	//

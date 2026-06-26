@@ -32,32 +32,33 @@ type iListFunctionsRequest interface {
 }
 
 type ListFunctionsRequest struct {
-	// The description of the functions to retrieve.
+	// The function description to filter by.
 	//
 	// example:
 	//
 	// test_description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The version of Function Compute to which the functions belong.
+	// The version to which the function belongs. Valid values:
 	//
-	// 	- v3: Only lists functions of Function Compute 3.0.
+	// - v3: lists only FC 3.0 functions.
 	//
-	// 	- v2: Only lists functions of Function Compute 2.0.
+	// - v2: lists only FC 2.0 functions.
 	//
-	// By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
+	// If not specified, both FC 3.0 and FC 2.0 functions are listed.
 	//
 	// example:
 	//
 	// v3
-	FcVersion    *string `json:"fcVersion,omitempty" xml:"fcVersion,omitempty"`
+	FcVersion *string `json:"fcVersion,omitempty" xml:"fcVersion,omitempty"`
+	// The function name.
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// The GPU type of the functions to retrieve.
+	// The function GPU type to filter by.
 	//
 	// example:
 	//
 	// fc.gpu.tesla.1
 	GpuType *string `json:"gpuType,omitempty" xml:"gpuType,omitempty"`
-	// The number of functions to return. The minimum value is 1 and the maximum value is 100.
+	// The number of functions to return. Minimum value: 1. Maximum value: 100.
 	//
 	// example:
 	//
@@ -69,20 +70,21 @@ type ListFunctionsRequest struct {
 	//
 	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The prefix of the function name.
+	// The function name prefix.
 	//
 	// example:
 	//
 	// my-func
-	Prefix          *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// The resource group ID.
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The runtime of the functions to retrieve.
+	// The function runtime to filter by.
 	//
 	// example:
 	//
 	// python3.10
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The tag of the functions to retrieve.
+	// The function tags to filter by.
 	Tags []*Tag `json:"tags" xml:"tags" type:"Repeated"`
 }
 

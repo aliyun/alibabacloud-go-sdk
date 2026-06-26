@@ -14,7 +14,7 @@ type iUpdateAliasRequest interface {
 }
 
 type UpdateAliasRequest struct {
-	// The alias information to be updated.
+	// The alias information to update.
 	//
 	// This parameter is required.
 	Body *UpdateAliasInput `json:"body,omitempty" xml:"body,omitempty"`

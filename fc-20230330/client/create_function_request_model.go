@@ -14,7 +14,7 @@ type iCreateFunctionRequest interface {
 }
 
 type CreateFunctionRequest struct {
-	// The information about function configurations.
+	// The function configuration information.
 	//
 	// This parameter is required.
 	Body *CreateFunctionInput `json:"body,omitempty" xml:"body,omitempty"`

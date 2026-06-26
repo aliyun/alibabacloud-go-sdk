@@ -22,11 +22,16 @@ type iJuiceFsMountConfig interface {
 }
 
 type JuiceFsMountConfig struct {
-	Args       []*string `json:"args" xml:"args" type:"Repeated"`
-	MountDir   *string   `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
-	RemoteDir  *string   `json:"remoteDir,omitempty" xml:"remoteDir,omitempty"`
-	Token      *string   `json:"token,omitempty" xml:"token,omitempty"`
-	VolumeName *string   `json:"volumeName,omitempty" xml:"volumeName,omitempty"`
+	// An array of strings containing additional command-line arguments for the mount command. For example, use these arguments to set cache sizes or other performance-tuning options.
+	Args []*string `json:"args" xml:"args" type:"Repeated"`
+	// The path within the function\\"s local filesystem to mount the volume. For example, /mnt/data. This parameter is required.
+	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// The subdirectory within the JuiceFS volume to mount. If not specified, the root of the volume is mounted.
+	RemoteDir *string `json:"remoteDir,omitempty" xml:"remoteDir,omitempty"`
+	// The authentication token to access the JuiceFS volume.
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// The name of the JuiceFS volume to mount. This parameter is required.
+	VolumeName *string `json:"volumeName,omitempty" xml:"volumeName,omitempty"`
 }
 
 func (s JuiceFsMountConfig) String() string {

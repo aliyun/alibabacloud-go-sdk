@@ -14,7 +14,7 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
-	// The configuration of the resource tag.
+	// The resource tag configuration.
 	//
 	// This parameter is required.
 	Body *TagResourcesInput `json:"body,omitempty" xml:"body,omitempty"`

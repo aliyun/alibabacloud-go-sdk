@@ -17,6 +17,8 @@ type iResumeSessionRequest interface {
 
 type ResumeSessionRequest struct {
 	FileSystemOnly *bool `json:"fileSystemOnly,omitempty" xml:"fileSystemOnly,omitempty"`
+	// Alias or version of the function associated with the session ID
+	//
 	// example:
 	//
 	// aliasName1

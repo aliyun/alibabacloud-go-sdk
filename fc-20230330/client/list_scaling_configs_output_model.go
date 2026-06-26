@@ -16,10 +16,13 @@ type iListScalingConfigsOutput interface {
 }
 
 type ListScalingConfigsOutput struct {
+	// Paging token for the next request.
+	//
 	// example:
 	//
 	// next_token
-	NextToken      *string                `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Function scaling configuration information
 	ScalingConfigs []*ScalingConfigStatus `json:"scalingConfigs" xml:"scalingConfigs" type:"Repeated"`
 }
 

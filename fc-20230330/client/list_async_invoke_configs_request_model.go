@@ -18,19 +18,19 @@ type iListAsyncInvokeConfigsRequest interface {
 }
 
 type ListAsyncInvokeConfigsRequest struct {
-	// The function name. If you do not configure this parameter, the asynchronous invocation configurations of all functions are displayed.
+	// The name of the function. If you do not specify this parameter, the asynchronous invocation configurations of all functions are returned.
 	//
 	// example:
 	//
 	// my-func
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// The maximum number of entries to be returned.
+	// The maximum number of results to return.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The paging information. This parameter specifies the start point of the query.
+	// The token that is used for paging.
 	//
 	// example:
 	//

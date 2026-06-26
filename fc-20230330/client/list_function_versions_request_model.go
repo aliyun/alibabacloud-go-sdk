@@ -18,19 +18,19 @@ type iListFunctionVersionsRequest interface {
 }
 
 type ListFunctionVersionsRequest struct {
-	// The sorting mode of function versions. Valid values: BACKWARD and FORWARD.
+	// The order in which to sort the versions. Valid values: BACKWARD and FORWARD.
 	//
 	// example:
 	//
 	// BACKWARD
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
-	// The number of function versions that are returned.
+	// The number of versions to return.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token that marks the start of the next page of results.
 	//
 	// example:
 	//

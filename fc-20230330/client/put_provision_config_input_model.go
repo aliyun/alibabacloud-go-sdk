@@ -24,10 +24,14 @@ type iPutProvisionConfigInput interface {
 }
 
 type PutProvisionConfigInput struct {
+	// 是否始终分配CPU，默认为true。
+	//
 	// example:
 	//
 	// true
 	AlwaysAllocateCPU *bool `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
+	// 是否始终分配GPU，默认为true。
+	//
 	// example:
 	//
 	// true
@@ -45,6 +49,10 @@ type PutProvisionConfigInput struct {
 	ScheduledActions []*ScheduledAction `json:"scheduledActions" xml:"scheduledActions" type:"Repeated"`
 	// Deprecated
 	//
+	// 	Notice: 建议不再使用该参数，请使用 defaultTarget 参数。 </notice>
+	//
+	// 预留的目标资源个数。取值范围为[0,10000]。
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -53,7 +61,8 @@ type PutProvisionConfigInput struct {
 	// example:
 	//
 	// 1
-	Target                 *int64                  `json:"target,omitempty" xml:"target,omitempty"`
+	Target *int64 `json:"target,omitempty" xml:"target,omitempty"`
+	// 指标追踪伸缩策略配置。
 	TargetTrackingPolicies []*TargetTrackingPolicy `json:"targetTrackingPolicies" xml:"targetTrackingPolicies" type:"Repeated"`
 }
 

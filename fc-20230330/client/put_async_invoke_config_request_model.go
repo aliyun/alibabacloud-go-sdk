@@ -16,11 +16,11 @@ type iPutAsyncInvokeConfigRequest interface {
 }
 
 type PutAsyncInvokeConfigRequest struct {
-	// The configurations of asynchronous function invocations.
+	// The asynchronous invocation configuration of the function.
 	//
 	// This parameter is required.
 	Body *PutAsyncInvokeConfigInput `json:"body,omitempty" xml:"body,omitempty"`
-	// The version or alias of the function.
+	// The function version or alias.
 	//
 	// example:
 	//

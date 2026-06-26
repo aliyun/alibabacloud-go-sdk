@@ -20,13 +20,13 @@ type iUntagResourcesShrinkRequest interface {
 }
 
 type UntagResourcesShrinkRequest struct {
-	// Specifies whether to delete all tags.
+	// Specifies whether to remove all tags.
 	//
 	// example:
 	//
 	// true
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The resource identifiers.
+	// A list of resource IDs.
 	//
 	// This parameter is required.
 	ResourceIdShrink *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
@@ -38,7 +38,7 @@ type UntagResourcesShrinkRequest struct {
 	//
 	// function
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag to remove. You can specify a maximum of 50 tags.
+	// The keys of the tags to remove. You can specify up to 50 tag keys.
 	TagKeyShrink *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 

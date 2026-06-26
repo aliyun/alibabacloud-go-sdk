@@ -18,6 +18,7 @@ type iLifecycleHook interface {
 }
 
 type LifecycleHook struct {
+	// 函数生命周期初始化阶段回调指令，生命周期回调方法的执行入口 handler 和 command 不允许同时配置，只能有一个生效，同时配置会产生错误提示
 	Command []*string `json:"command" xml:"command" type:"Repeated"`
 	// The handler of the hook. The definition is similar to that of a request handler.
 	//

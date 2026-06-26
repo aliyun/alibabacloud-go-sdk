@@ -16,13 +16,17 @@ type iDisableFunctionInvocationRequest interface {
 }
 
 type DisableFunctionInvocationRequest struct {
-	// Specifies whether to immediately terminate all ongoing requests.
+	// Specifies whether to immediately stop all ongoing requests.
 	//
 	// example:
 	//
 	// false
 	AbortOngoingRequest *bool `json:"abortOngoingRequest,omitempty" xml:"abortOngoingRequest,omitempty"`
-	// The reason for disabling the function\\"s invocation.
+	// The reason for disabling the function invocation.
+	//
+	// example:
+	//
+	// Service decommission
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
 }
 

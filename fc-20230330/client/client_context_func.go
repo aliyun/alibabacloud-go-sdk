@@ -9,11 +9,11 @@ import (
 
 // Summary:
 //
-// Updates the resource group of a Function Compute resource.
+// Changes the resource group of a Function Compute resource.
 //
 // Description:
 //
-// To update the resource group of a Function Compute resource, you must grant the user the ChangeResourceGroup permission on both the current resource group and the target resource group.
+// To change the resource group of a Function Compute resource, you must have the ChangeResourceGroup permission for both the current and target resource groups.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -101,7 +101,7 @@ func (client *Client) CreateAliasWithContext(ctx context.Context, functionName *
 //
 // Description:
 //
-// If you want to use a fixed domain name to access an application or function in a production environment of Function Compute, or to resolve the issue of forced downloads when accessing an HTTP trigger, you can bind a custom domain name to the application or function.
+// You can attach a custom domain name to an application or function in Function Compute to access it through a fixed domain name in a production environment, or to resolve the forced download behavior when you access an HTTP trigger.
 //
 // @param request - CreateCustomDomainRequest
 //
@@ -143,11 +143,11 @@ func (client *Client) CreateCustomDomainWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a function.
+// Creates a function by calling the CreateFunction operation.
 //
 // Description:
 //
-// Resources of Function Compute are scheduled and run based on functions. A function usually refers to a code snippet that is written by a user and can be independently executed to respond to events and requests.
+// When you create a function by using an OSS code package, if the error "unable to access object xxx in bucket xxx" is reported, grant the current user access permissions on the OSS bucket. For example, you can use the system access policy AliyunOSSReadOnlyAccess or a custom policy with finer granularity of authorization such as oss:GetObject. For details about the policy content, see [Grant a Resource Access Management (RAM) user permissions to read all resources in a bucket](https://help.aliyun.com/document_detail/199058.html).
 //
 // @param request - CreateFunctionRequest
 //
@@ -189,7 +189,7 @@ func (client *Client) CreateFunctionWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Releases a layer version.
+// This operation publishes a layer version.
 //
 // @param request - CreateLayerVersionRequest
 //
@@ -231,7 +231,7 @@ func (client *Client) CreateLayerVersionWithContext(ctx context.Context, layerNa
 
 // Summary:
 //
-// The CreateSession operation creates an explicit session resource. The system automatically generates a unique session ID, pre-allocates a function instance, and associates it with the session. You can specify values for TTL and idle timeout. This method applies to the HEADER_FIELD and GENERATED_COOKIE affinity types. It handles session preload and configuration initialization. After you call the InvokeFunction API, the session information can be included in the InvokeFunction request to enable request routing.
+// Creates an explicit session resource by automatically generating a unique session ID, pre-allocating a function instance, and attaching the session. This operation supports custom Time to Live (TTL) and idle timeout values, applies to HEADER_FIELD or GENERATED_COOKIE affinity types, and is used for session prefetching and configuration initialization. After the session is created, include the session ID in InvokeFunction requests for request routing.
 //
 // @param request - CreateSessionRequest
 //
@@ -749,7 +749,7 @@ func (client *Client) DeleteSessionWithContext(ctx context.Context, functionName
 
 // Summary:
 //
-// Deletes a trigger.
+// Deletes the specified trigger.
 //
 // @param headers - map
 //
@@ -782,7 +782,7 @@ func (client *Client) DeleteTriggerWithContext(ctx context.Context, functionName
 
 // Summary:
 //
-// Deletes an access control policy from a specified policy group for a VPC firewall.
+// Deletes an access control policy from a specified VPC firewall policy group.
 //
 // @param headers - map
 //
@@ -862,11 +862,11 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// The DisableFunctionInvocation operation prevents a function from being invoked and optionally terminates all requests that are being processed. Once a function\\"s invocation is disabled, no new instances can be created, and the existing provisioned instances are destroyed. This operation is currently in private preview.
+// Disables function invocations. You can also stop all ongoing requests. When a function is disabled, new instances cannot be created and provisioned instances are destroyed. This OpenAPI is in beta.
 //
 // Description:
 //
-// Exercise caution when you call this operation on a function in a production environment, as improper deactivation may lead to business disruptions.
+// Use caution when calling this API for functions in a production environment because disabling function invocations can disrupt your services.
 //
 // @param request - DisableFunctionInvocationRequest
 //
@@ -950,7 +950,7 @@ func (client *Client) EnableFunctionInvocationWithContext(ctx context.Context, f
 
 // Summary:
 //
-// Queries information about an alias.
+// Retrieves information about an alias.
 //
 // @param headers - map
 //
@@ -983,7 +983,7 @@ func (client *Client) GetAliasWithContext(ctx context.Context, functionName *str
 
 // Summary:
 //
-// Gets asynchronous invocation configurations of a function.
+// Retrieves the asynchronous invocation configuration of a specified function.
 //
 // @param request - GetAsyncInvokeConfigRequest
 //
@@ -1030,7 +1030,7 @@ func (client *Client) GetAsyncInvokeConfigWithContext(ctx context.Context, funct
 
 // Summary:
 //
-// Queries the information about an asynchronous task.
+// Retrieves the details of a specified asynchronous task.
 //
 // @param request - GetAsyncTaskRequest
 //
@@ -1077,7 +1077,7 @@ func (client *Client) GetAsyncTaskWithContext(ctx context.Context, functionName 
 
 // Summary:
 //
-// Obtains a concurrency configuration.
+// Retrieves the concurrency configuration.
 //
 // @param headers - map
 //
@@ -1110,7 +1110,7 @@ func (client *Client) GetConcurrencyConfigWithContext(ctx context.Context, funct
 
 // Summary:
 //
-// Queries information about a custom domain name.
+// Retrieves the configuration of a custom domain name.
 //
 // @param headers - map
 //
@@ -1143,7 +1143,7 @@ func (client *Client) GetCustomDomainWithContext(ctx context.Context, domainName
 
 // Summary:
 //
-// http://pre.hhht/#vpc
+// Retrieves information about a function.
 //
 // @param request - GetFunctionRequest
 //
@@ -1190,7 +1190,7 @@ func (client *Client) GetFunctionWithContext(ctx context.Context, functionName *
 
 // Summary:
 //
-// Queries a code package of a function.
+// Retrieves the details of a function code package.
 //
 // @param request - GetFunctionCodeRequest
 //
@@ -1237,7 +1237,7 @@ func (client *Client) GetFunctionCodeWithContext(ctx context.Context, functionNa
 
 // Summary:
 //
-// Queries versions of a layer.
+// Retrieves information about a layer version.
 //
 // @param headers - map
 //
@@ -1270,7 +1270,7 @@ func (client *Client) GetLayerVersionWithContext(ctx context.Context, layerName 
 
 // Summary:
 //
-// Obtain version information of a layer by using ARNs.
+// Retrieves the version information of a layer by its Alibaba Cloud Resource Name (ARN).
 //
 // @param headers - map
 //
@@ -1303,7 +1303,7 @@ func (client *Client) GetLayerVersionByArnWithContext(ctx context.Context, arn *
 
 // Summary:
 //
-// Queries provisioned configurations.
+// Retrieves the provisioned configuration.
 //
 // @param request - GetProvisionConfigRequest
 //
@@ -1350,7 +1350,7 @@ func (client *Client) GetProvisionConfigWithContext(ctx context.Context, functio
 
 // Summary:
 //
-// Gets the scaling settings of a function.
+// Retrieves the scaling configuration for a function.
 //
 // @param request - GetScalingConfigRequest
 //
@@ -1444,7 +1444,7 @@ func (client *Client) GetSessionWithContext(ctx context.Context, functionName *s
 
 // Summary:
 //
-// Queries information about a trigger.
+// Retrieves the details of a specified trigger.
 //
 // @param headers - map
 //
@@ -1560,7 +1560,7 @@ func (client *Client) InvokeFunctionWithContext(ctx context.Context, functionNam
 
 // Summary:
 //
-// Queries aliases.
+// Lists aliases.
 //
 // @param request - ListAliasesRequest
 //
@@ -1615,7 +1615,7 @@ func (client *Client) ListAliasesWithContext(ctx context.Context, functionName *
 
 // Summary:
 //
-// Queries all asynchronous configurations of a function.
+// Lists the asynchronous invocation configurations for one or more functions.
 //
 // @param request - ListAsyncInvokeConfigsRequest
 //
@@ -1670,7 +1670,7 @@ func (client *Client) ListAsyncInvokeConfigsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Lists asynchronous tasks.
+// Lists the details of asynchronous tasks.
 //
 // @param request - ListAsyncTasksRequest
 //
@@ -1749,7 +1749,7 @@ func (client *Client) ListAsyncTasksWithContext(ctx context.Context, functionNam
 
 // Summary:
 //
-// Queries a list of concurrency configurations.
+// Lists the concurrency configurations.
 //
 // @param request - ListConcurrencyConfigsRequest
 //
@@ -1804,7 +1804,7 @@ func (client *Client) ListConcurrencyConfigsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries custom domain names.
+// Retrieves a list of custom domain names.
 //
 // @param request - ListCustomDomainsRequest
 //
@@ -1859,7 +1859,7 @@ func (client *Client) ListCustomDomainsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries versions of a function.
+// Lists the versions of a specified function.
 //
 // @param request - ListFunctionVersionsRequest
 //
@@ -1914,11 +1914,11 @@ func (client *Client) ListFunctionVersionsWithContext(ctx context.Context, funct
 
 // Summary:
 //
-// Queries a list of functions.
+// Retrieves a list of functions.
 //
 // Description:
 //
-// ListFunctions returns only a subset of a function\\"s attribute fields. To obtain the additional fields, which include state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
+// ListFunctions returns only a subset of fields for function properties. To retrieve additional property fields for a specific function, including state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
 //
 // @param tmpReq - ListFunctionsRequest
 //
@@ -2007,7 +2007,7 @@ func (client *Client) ListFunctionsWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// Queries a list of function instances.
+// Lists function instances.
 //
 // @param tmpReq - ListInstancesRequest
 //
@@ -2092,7 +2092,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, functionName
 
 // Summary:
 //
-// Gets a list of layer versions.
+// Retrieves a list of layer versions.
 //
 // @param request - ListLayerVersionsRequest
 //
@@ -2143,7 +2143,7 @@ func (client *Client) ListLayerVersionsWithContext(ctx context.Context, layerNam
 
 // Summary:
 //
-// Gets a list of layers.
+// Lists layers.
 //
 // @param request - ListLayersRequest
 //
@@ -2206,7 +2206,7 @@ func (client *Client) ListLayersWithContext(ctx context.Context, request *ListLa
 
 // Summary:
 //
-// Queries a list of provisioned configurations.
+// Retrieves a list of provisioned configurations.
 //
 // @param request - ListProvisionConfigsRequest
 //
@@ -2261,7 +2261,7 @@ func (client *Client) ListProvisionConfigsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Lists the scaling settings of a function.
+// Lists the auto scaling configurations for a function.
 //
 // @param request - ListScalingConfigsRequest
 //
@@ -2452,7 +2452,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// Queries the triggers of a function.
+// Lists the triggers for a specified function.
 //
 // @param request - ListTriggersRequest
 //
@@ -2507,7 +2507,7 @@ func (client *Client) ListTriggersWithContext(ctx context.Context, functionName 
 
 // Summary:
 //
-// Queries a list of existing VPC connections.
+// Queries existing VPC attachments.
 //
 // @param headers - map
 //
@@ -2540,7 +2540,11 @@ func (client *Client) ListVpcBindingsWithContext(ctx context.Context, functionNa
 
 // Summary:
 //
-// 暂停/保存会话
+// Pauses and saves a session.
+//
+// Description:
+//
+// Pauses an active session. This operation saves the state of the associated execution environment and then releases the compute resources. After you call this operation, the session state changes to Paused. A paused session does not accept function invocation requests. The operation retains the session configuration, such as the SessionTTL and SessionID. Use this operation to interrupt long-running tasks or save snapshots of a development environment. This helps optimize costs and manage state. This operation applies to custom image functions that use HEADER_FIELD or GENERATED_COOKIE affinity types and session isolation.
 //
 // @param request - PauseSessionRequest
 //
@@ -2629,7 +2633,7 @@ func (client *Client) PublishFunctionVersionWithContext(ctx context.Context, fun
 
 // Summary:
 //
-// Creates or modifies an asynchronous invocation configuration for a function.
+// Creates or updates the asynchronous invocation configuration for a function.
 //
 // @param request - PutAsyncInvokeConfigRequest
 //
@@ -2677,7 +2681,7 @@ func (client *Client) PutAsyncInvokeConfigWithContext(ctx context.Context, funct
 
 // Summary:
 //
-// Configures concurrency of a function.
+// Sets the concurrency for a function.
 //
 // @param request - PutConcurrencyConfigRequest
 //
@@ -2719,7 +2723,7 @@ func (client *Client) PutConcurrencyConfigWithContext(ctx context.Context, funct
 
 // Summary:
 //
-// Modifies permissions of a layer.
+// Modifies the permissions of a layer.
 //
 // @param request - PutLayerACLRequest
 //
@@ -2770,7 +2774,7 @@ func (client *Client) PutLayerACLWithContext(ctx context.Context, layerName *str
 
 // Summary:
 //
-// Creates provisioned configurations.
+// Creates a provisioned configuration.
 //
 // @param request - PutProvisionConfigRequest
 //
@@ -2818,7 +2822,7 @@ func (client *Client) PutProvisionConfigWithContext(ctx context.Context, functio
 
 // Summary:
 //
-// # Scaling settings
+// Set the elastic scaling configuration for a function.
 //
 // @param request - PutScalingConfigRequest
 //
@@ -2866,7 +2870,11 @@ func (client *Client) PutScalingConfigWithContext(ctx context.Context, functionN
 
 // Summary:
 //
-// 恢复会话
+// # Resume a session
+//
+// Description:
+//
+// Resumes a session that is in the Paused state. The system quickly resumes the session in a new execution environment using its previously persisted state. After a successful resume, the session status changes to Active, and the session begins accepting function invocation requests and routing them to the resumed instance. Use this operation with custom image functions that use HEADER_FIELD or GENERATED_COOKIE session affinity and session isolation.
 //
 // @param request - ResumeSessionRequest
 //
@@ -2964,11 +2972,7 @@ func (client *Client) StopAsyncTaskWithContext(ctx context.Context, functionName
 
 // Summary:
 //
-// Adds tags to a resource.
-//
-// Description:
-//
-// Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](https://help.aliyun.com/document_detail/156983.html).
+// Adds tags to specified resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -3010,7 +3014,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Removes tags from a resource.
+// Removes tags from resources.
 //
 // @param tmpReq - UntagResourcesRequest
 //
@@ -3121,7 +3125,7 @@ func (client *Client) UpdateAliasWithContext(ctx context.Context, functionName *
 
 // Summary:
 //
-// Update a custom domain name.
+// Updates a custom domain name.
 //
 // @param request - UpdateCustomDomainRequest
 //
@@ -3163,7 +3167,7 @@ func (client *Client) UpdateCustomDomainWithContext(ctx context.Context, domainN
 
 // Summary:
 //
-// Updates the information about a function.
+// Updates a function\\"s configuration.
 //
 // @param request - UpdateFunctionRequest
 //
@@ -3253,7 +3257,7 @@ func (client *Client) UpdateSessionWithContext(ctx context.Context, functionName
 
 // Summary:
 //
-// Modifies a trigger.
+// Updates the information of a trigger.
 //
 // @param request - UpdateTriggerRequest
 //

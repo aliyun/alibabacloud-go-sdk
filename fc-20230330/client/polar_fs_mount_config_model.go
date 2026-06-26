@@ -20,10 +20,14 @@ type iPolarFsMountConfig interface {
 }
 
 type PolarFsMountConfig struct {
+	// The ID of the PolarFS file system instance to mount.
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	MountDir   *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
-	ReadOnly   *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
-	RemoteDir  *string `json:"remoteDir,omitempty" xml:"remoteDir,omitempty"`
+	// The local mount directory in the function\\"s runtime environment.
+	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// Specifies whether the file system is mounted as read-only. If `true`, write operations are prohibited.
+	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+	// The directory within the PolarFS file system to mount.
+	RemoteDir *string `json:"remoteDir,omitempty" xml:"remoteDir,omitempty"`
 }
 
 func (s PolarFsMountConfig) String() string {

@@ -18,19 +18,19 @@ type iListProvisionConfigsRequest interface {
 }
 
 type ListProvisionConfigsRequest struct {
-	// The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
+	// The name of the function. If you do not specify this parameter, the provisioned configurations for all functions are returned.
 	//
 	// example:
 	//
 	// my-func
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// Number of provisioned configurations to return.
+	// The number of provisioned configurations to return.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// A pagination token.
+	// The token to start the next page of results.
 	//
 	// example:
 	//

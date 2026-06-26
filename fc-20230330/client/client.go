@@ -24,7 +24,35 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":             dara.String("fcv3.us-west-1.aliyuncs.com"),
+		"us-east-1":             dara.String("fcv3.us-east-1.aliyuncs.com"),
+		"me-central-1":          dara.String("me-central-1.fc.aliyuncs.com"),
+		"eu-west-1":             dara.String("fcv3.eu-west-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("fcv3.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("fcv3.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("fcv3.cn-wulanchabu.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("fcv3.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("cn-shanghai-finance-1.fc.aliyuncs.com"),
+		"cn-shanghai":           dara.String("fcv3.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":            dara.String("fcv3.cn-qingdao.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("fcv3.cn-huhehaote.aliyuncs.com"),
+		"cn-hongkong":           dara.String("fcv3.cn-hongkong.aliyuncs.com"),
+		"cn-heyuan-acdr-1":      dara.String("cn-heyuan-acdr-1.fc.aliyuncs.com"),
+		"cn-hangzhou-finance":   dara.String("cn-hangzhou-finance.fc.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("fcv3.cn-hangzhou.aliyuncs.com"),
+		"cn-chengdu":            dara.String("fcv3.cn-chengdu.aliyuncs.com"),
+		"cn-beijing":            dara.String("fcv3.cn-beijing.aliyuncs.com"),
+		"ap-southeast-7":        dara.String("fcv3.ap-southeast-7.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("fcv3.ap-southeast-5.aliyuncs.com	"),
+		"ap-southeast-3":        dara.String("fcv3.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-2":        dara.String("fcv3.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("fcv3.ap-southeast-1.aliyuncs.com"),
+		"ap-south-1":            dara.String("fcv3.ap-south-1.aliyuncs.com"),
+		"ap-northeast-2":        dara.String("fcv3.ap-northeast-2.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("fcv3.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,11 +86,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Updates the resource group of a Function Compute resource.
+// Changes the resource group of a Function Compute resource.
 //
 // Description:
 //
-// To update the resource group of a Function Compute resource, you must grant the user the ChangeResourceGroup permission on both the current resource group and the target resource group.
+// To change the resource group of a Function Compute resource, you must have the ChangeResourceGroup permission for both the current and target resource groups.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -104,11 +132,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// Updates the resource group of a Function Compute resource.
+// Changes the resource group of a Function Compute resource.
 //
 // Description:
 //
-// To update the resource group of a Function Compute resource, you must grant the user the ChangeResourceGroup permission on both the current resource group and the target resource group.
+// To change the resource group of a Function Compute resource, you must have the ChangeResourceGroup permission for both the current and target resource groups.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -192,7 +220,7 @@ func (client *Client) CreateAlias(functionName *string, request *CreateAliasRequ
 //
 // Description:
 //
-// If you want to use a fixed domain name to access an application or function in a production environment of Function Compute, or to resolve the issue of forced downloads when accessing an HTTP trigger, you can bind a custom domain name to the application or function.
+// You can attach a custom domain name to an application or function in Function Compute to access it through a fixed domain name in a production environment, or to resolve the forced download behavior when you access an HTTP trigger.
 //
 // @param request - CreateCustomDomainRequest
 //
@@ -238,7 +266,7 @@ func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainR
 //
 // Description:
 //
-// If you want to use a fixed domain name to access an application or function in a production environment of Function Compute, or to resolve the issue of forced downloads when accessing an HTTP trigger, you can bind a custom domain name to the application or function.
+// You can attach a custom domain name to an application or function in Function Compute to access it through a fixed domain name in a production environment, or to resolve the forced download behavior when you access an HTTP trigger.
 //
 // @param request - CreateCustomDomainRequest
 //
@@ -257,11 +285,11 @@ func (client *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (_r
 
 // Summary:
 //
-// Creates a function.
+// Creates a function by calling the CreateFunction operation.
 //
 // Description:
 //
-// Resources of Function Compute are scheduled and run based on functions. A function usually refers to a code snippet that is written by a user and can be independently executed to respond to events and requests.
+// When you create a function by using an OSS code package, if the error "unable to access object xxx in bucket xxx" is reported, grant the current user access permissions on the OSS bucket. For example, you can use the system access policy AliyunOSSReadOnlyAccess or a custom policy with finer granularity of authorization such as oss:GetObject. For details about the policy content, see [Grant a Resource Access Management (RAM) user permissions to read all resources in a bucket](https://help.aliyun.com/document_detail/199058.html).
 //
 // @param request - CreateFunctionRequest
 //
@@ -303,11 +331,11 @@ func (client *Client) CreateFunctionWithOptions(request *CreateFunctionRequest, 
 
 // Summary:
 //
-// Creates a function.
+// Creates a function by calling the CreateFunction operation.
 //
 // Description:
 //
-// Resources of Function Compute are scheduled and run based on functions. A function usually refers to a code snippet that is written by a user and can be independently executed to respond to events and requests.
+// When you create a function by using an OSS code package, if the error "unable to access object xxx in bucket xxx" is reported, grant the current user access permissions on the OSS bucket. For example, you can use the system access policy AliyunOSSReadOnlyAccess or a custom policy with finer granularity of authorization such as oss:GetObject. For details about the policy content, see [Grant a Resource Access Management (RAM) user permissions to read all resources in a bucket](https://help.aliyun.com/document_detail/199058.html).
 //
 // @param request - CreateFunctionRequest
 //
@@ -326,7 +354,7 @@ func (client *Client) CreateFunction(request *CreateFunctionRequest) (_result *C
 
 // Summary:
 //
-// Releases a layer version.
+// This operation publishes a layer version.
 //
 // @param request - CreateLayerVersionRequest
 //
@@ -368,7 +396,7 @@ func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *
 
 // Summary:
 //
-// Releases a layer version.
+// This operation publishes a layer version.
 //
 // @param request - CreateLayerVersionRequest
 //
@@ -387,7 +415,7 @@ func (client *Client) CreateLayerVersion(layerName *string, request *CreateLayer
 
 // Summary:
 //
-// The CreateSession operation creates an explicit session resource. The system automatically generates a unique session ID, pre-allocates a function instance, and associates it with the session. You can specify values for TTL and idle timeout. This method applies to the HEADER_FIELD and GENERATED_COOKIE affinity types. It handles session preload and configuration initialization. After you call the InvokeFunction API, the session information can be included in the InvokeFunction request to enable request routing.
+// Creates an explicit session resource by automatically generating a unique session ID, pre-allocating a function instance, and attaching the session. This operation supports custom Time to Live (TTL) and idle timeout values, applies to HEADER_FIELD or GENERATED_COOKIE affinity types, and is used for session prefetching and configuration initialization. After the session is created, include the session ID in InvokeFunction requests for request routing.
 //
 // @param request - CreateSessionRequest
 //
@@ -435,7 +463,7 @@ func (client *Client) CreateSessionWithOptions(functionName *string, request *Cr
 
 // Summary:
 //
-// The CreateSession operation creates an explicit session resource. The system automatically generates a unique session ID, pre-allocates a function instance, and associates it with the session. You can specify values for TTL and idle timeout. This method applies to the HEADER_FIELD and GENERATED_COOKIE affinity types. It handles session preload and configuration initialization. After you call the InvokeFunction API, the session information can be included in the InvokeFunction request to enable request routing.
+// Creates an explicit session resource by automatically generating a unique session ID, pre-allocating a function instance, and attaching the session. This operation supports custom Time to Live (TTL) and idle timeout values, applies to HEADER_FIELD or GENERATED_COOKIE affinity types, and is used for session prefetching and configuration initialization. After the session is created, include the session ID in InvokeFunction requests for request routing.
 //
 // @param request - CreateSessionRequest
 //
@@ -1140,7 +1168,7 @@ func (client *Client) DeleteSession(functionName *string, sessionId *string, req
 
 // Summary:
 //
-// Deletes a trigger.
+// Deletes the specified trigger.
 //
 // @param headers - map
 //
@@ -1173,7 +1201,7 @@ func (client *Client) DeleteTriggerWithOptions(functionName *string, triggerName
 
 // Summary:
 //
-// Deletes a trigger.
+// Deletes the specified trigger.
 //
 // @return DeleteTriggerResponse
 func (client *Client) DeleteTrigger(functionName *string, triggerName *string) (_result *DeleteTriggerResponse, _err error) {
@@ -1190,7 +1218,7 @@ func (client *Client) DeleteTrigger(functionName *string, triggerName *string) (
 
 // Summary:
 //
-// Deletes an access control policy from a specified policy group for a VPC firewall.
+// Deletes an access control policy from a specified VPC firewall policy group.
 //
 // @param headers - map
 //
@@ -1223,7 +1251,7 @@ func (client *Client) DeleteVpcBindingWithOptions(functionName *string, vpcId *s
 
 // Summary:
 //
-// Deletes an access control policy from a specified policy group for a VPC firewall.
+// Deletes an access control policy from a specified VPC firewall policy group.
 //
 // @return DeleteVpcBindingResponse
 func (client *Client) DeleteVpcBinding(functionName *string, vpcId *string) (_result *DeleteVpcBindingResponse, _err error) {
@@ -1306,11 +1334,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// The DisableFunctionInvocation operation prevents a function from being invoked and optionally terminates all requests that are being processed. Once a function\\"s invocation is disabled, no new instances can be created, and the existing provisioned instances are destroyed. This operation is currently in private preview.
+// Disables function invocations. You can also stop all ongoing requests. When a function is disabled, new instances cannot be created and provisioned instances are destroyed. This OpenAPI is in beta.
 //
 // Description:
 //
-// Exercise caution when you call this operation on a function in a production environment, as improper deactivation may lead to business disruptions.
+// Use caution when calling this API for functions in a production environment because disabling function invocations can disrupt your services.
 //
 // @param request - DisableFunctionInvocationRequest
 //
@@ -1361,11 +1389,11 @@ func (client *Client) DisableFunctionInvocationWithOptions(functionName *string,
 
 // Summary:
 //
-// The DisableFunctionInvocation operation prevents a function from being invoked and optionally terminates all requests that are being processed. Once a function\\"s invocation is disabled, no new instances can be created, and the existing provisioned instances are destroyed. This operation is currently in private preview.
+// Disables function invocations. You can also stop all ongoing requests. When a function is disabled, new instances cannot be created and provisioned instances are destroyed. This OpenAPI is in beta.
 //
 // Description:
 //
-// Exercise caution when you call this operation on a function in a production environment, as improper deactivation may lead to business disruptions.
+// Use caution when calling this API for functions in a production environment because disabling function invocations can disrupt your services.
 //
 // @param request - DisableFunctionInvocationRequest
 //
@@ -1434,7 +1462,7 @@ func (client *Client) EnableFunctionInvocation(functionName *string) (_result *E
 
 // Summary:
 //
-// Queries information about an alias.
+// Retrieves information about an alias.
 //
 // @param headers - map
 //
@@ -1467,7 +1495,7 @@ func (client *Client) GetAliasWithOptions(functionName *string, aliasName *strin
 
 // Summary:
 //
-// Queries information about an alias.
+// Retrieves information about an alias.
 //
 // @return GetAliasResponse
 func (client *Client) GetAlias(functionName *string, aliasName *string) (_result *GetAliasResponse, _err error) {
@@ -1484,7 +1512,7 @@ func (client *Client) GetAlias(functionName *string, aliasName *string) (_result
 
 // Summary:
 //
-// Gets asynchronous invocation configurations of a function.
+// Retrieves the asynchronous invocation configuration of a specified function.
 //
 // @param request - GetAsyncInvokeConfigRequest
 //
@@ -1531,7 +1559,7 @@ func (client *Client) GetAsyncInvokeConfigWithOptions(functionName *string, requ
 
 // Summary:
 //
-// Gets asynchronous invocation configurations of a function.
+// Retrieves the asynchronous invocation configuration of a specified function.
 //
 // @param request - GetAsyncInvokeConfigRequest
 //
@@ -1550,7 +1578,7 @@ func (client *Client) GetAsyncInvokeConfig(functionName *string, request *GetAsy
 
 // Summary:
 //
-// Queries the information about an asynchronous task.
+// Retrieves the details of a specified asynchronous task.
 //
 // @param request - GetAsyncTaskRequest
 //
@@ -1597,7 +1625,7 @@ func (client *Client) GetAsyncTaskWithOptions(functionName *string, taskId *stri
 
 // Summary:
 //
-// Queries the information about an asynchronous task.
+// Retrieves the details of a specified asynchronous task.
 //
 // @param request - GetAsyncTaskRequest
 //
@@ -1616,7 +1644,7 @@ func (client *Client) GetAsyncTask(functionName *string, taskId *string, request
 
 // Summary:
 //
-// Obtains a concurrency configuration.
+// Retrieves the concurrency configuration.
 //
 // @param headers - map
 //
@@ -1649,7 +1677,7 @@ func (client *Client) GetConcurrencyConfigWithOptions(functionName *string, head
 
 // Summary:
 //
-// Obtains a concurrency configuration.
+// Retrieves the concurrency configuration.
 //
 // @return GetConcurrencyConfigResponse
 func (client *Client) GetConcurrencyConfig(functionName *string) (_result *GetConcurrencyConfigResponse, _err error) {
@@ -1666,7 +1694,7 @@ func (client *Client) GetConcurrencyConfig(functionName *string) (_result *GetCo
 
 // Summary:
 //
-// Queries information about a custom domain name.
+// Retrieves the configuration of a custom domain name.
 //
 // @param headers - map
 //
@@ -1699,7 +1727,7 @@ func (client *Client) GetCustomDomainWithOptions(domainName *string, headers map
 
 // Summary:
 //
-// Queries information about a custom domain name.
+// Retrieves the configuration of a custom domain name.
 //
 // @return GetCustomDomainResponse
 func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDomainResponse, _err error) {
@@ -1716,7 +1744,7 @@ func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDom
 
 // Summary:
 //
-// http://pre.hhht/#vpc
+// Retrieves information about a function.
 //
 // @param request - GetFunctionRequest
 //
@@ -1763,7 +1791,7 @@ func (client *Client) GetFunctionWithOptions(functionName *string, request *GetF
 
 // Summary:
 //
-// http://pre.hhht/#vpc
+// Retrieves information about a function.
 //
 // @param request - GetFunctionRequest
 //
@@ -1782,7 +1810,7 @@ func (client *Client) GetFunction(functionName *string, request *GetFunctionRequ
 
 // Summary:
 //
-// Queries a code package of a function.
+// Retrieves the details of a function code package.
 //
 // @param request - GetFunctionCodeRequest
 //
@@ -1829,7 +1857,7 @@ func (client *Client) GetFunctionCodeWithOptions(functionName *string, request *
 
 // Summary:
 //
-// Queries a code package of a function.
+// Retrieves the details of a function code package.
 //
 // @param request - GetFunctionCodeRequest
 //
@@ -1848,7 +1876,7 @@ func (client *Client) GetFunctionCode(functionName *string, request *GetFunction
 
 // Summary:
 //
-// Queries versions of a layer.
+// Retrieves information about a layer version.
 //
 // @param headers - map
 //
@@ -1881,7 +1909,7 @@ func (client *Client) GetLayerVersionWithOptions(layerName *string, version *str
 
 // Summary:
 //
-// Queries versions of a layer.
+// Retrieves information about a layer version.
 //
 // @return GetLayerVersionResponse
 func (client *Client) GetLayerVersion(layerName *string, version *string) (_result *GetLayerVersionResponse, _err error) {
@@ -1898,7 +1926,7 @@ func (client *Client) GetLayerVersion(layerName *string, version *string) (_resu
 
 // Summary:
 //
-// Obtain version information of a layer by using ARNs.
+// Retrieves the version information of a layer by its Alibaba Cloud Resource Name (ARN).
 //
 // @param headers - map
 //
@@ -1931,7 +1959,7 @@ func (client *Client) GetLayerVersionByArnWithOptions(arn *string, headers map[s
 
 // Summary:
 //
-// Obtain version information of a layer by using ARNs.
+// Retrieves the version information of a layer by its Alibaba Cloud Resource Name (ARN).
 //
 // @return GetLayerVersionByArnResponse
 func (client *Client) GetLayerVersionByArn(arn *string) (_result *GetLayerVersionByArnResponse, _err error) {
@@ -1948,7 +1976,7 @@ func (client *Client) GetLayerVersionByArn(arn *string) (_result *GetLayerVersio
 
 // Summary:
 //
-// Queries provisioned configurations.
+// Retrieves the provisioned configuration.
 //
 // @param request - GetProvisionConfigRequest
 //
@@ -1995,7 +2023,7 @@ func (client *Client) GetProvisionConfigWithOptions(functionName *string, reques
 
 // Summary:
 //
-// Queries provisioned configurations.
+// Retrieves the provisioned configuration.
 //
 // @param request - GetProvisionConfigRequest
 //
@@ -2014,7 +2042,7 @@ func (client *Client) GetProvisionConfig(functionName *string, request *GetProvi
 
 // Summary:
 //
-// Gets the scaling settings of a function.
+// Retrieves the scaling configuration for a function.
 //
 // @param request - GetScalingConfigRequest
 //
@@ -2061,7 +2089,7 @@ func (client *Client) GetScalingConfigWithOptions(functionName *string, request 
 
 // Summary:
 //
-// Gets the scaling settings of a function.
+// Retrieves the scaling configuration for a function.
 //
 // @param request - GetScalingConfigRequest
 //
@@ -2146,7 +2174,7 @@ func (client *Client) GetSession(functionName *string, sessionId *string, reques
 
 // Summary:
 //
-// Queries information about a trigger.
+// Retrieves the details of a specified trigger.
 //
 // @param headers - map
 //
@@ -2179,7 +2207,7 @@ func (client *Client) GetTriggerWithOptions(functionName *string, triggerName *s
 
 // Summary:
 //
-// Queries information about a trigger.
+// Retrieves the details of a specified trigger.
 //
 // @return GetTriggerResponse
 func (client *Client) GetTrigger(functionName *string, triggerName *string) (_result *GetTriggerResponse, _err error) {
@@ -2298,7 +2326,7 @@ func (client *Client) InvokeFunction(functionName *string, request *InvokeFuncti
 
 // Summary:
 //
-// Queries aliases.
+// Lists aliases.
 //
 // @param request - ListAliasesRequest
 //
@@ -2353,7 +2381,7 @@ func (client *Client) ListAliasesWithOptions(functionName *string, request *List
 
 // Summary:
 //
-// Queries aliases.
+// Lists aliases.
 //
 // @param request - ListAliasesRequest
 //
@@ -2372,7 +2400,7 @@ func (client *Client) ListAliases(functionName *string, request *ListAliasesRequ
 
 // Summary:
 //
-// Queries all asynchronous configurations of a function.
+// Lists the asynchronous invocation configurations for one or more functions.
 //
 // @param request - ListAsyncInvokeConfigsRequest
 //
@@ -2427,7 +2455,7 @@ func (client *Client) ListAsyncInvokeConfigsWithOptions(request *ListAsyncInvoke
 
 // Summary:
 //
-// Queries all asynchronous configurations of a function.
+// Lists the asynchronous invocation configurations for one or more functions.
 //
 // @param request - ListAsyncInvokeConfigsRequest
 //
@@ -2446,7 +2474,7 @@ func (client *Client) ListAsyncInvokeConfigs(request *ListAsyncInvokeConfigsRequ
 
 // Summary:
 //
-// Lists asynchronous tasks.
+// Lists the details of asynchronous tasks.
 //
 // @param request - ListAsyncTasksRequest
 //
@@ -2525,7 +2553,7 @@ func (client *Client) ListAsyncTasksWithOptions(functionName *string, request *L
 
 // Summary:
 //
-// Lists asynchronous tasks.
+// Lists the details of asynchronous tasks.
 //
 // @param request - ListAsyncTasksRequest
 //
@@ -2544,7 +2572,7 @@ func (client *Client) ListAsyncTasks(functionName *string, request *ListAsyncTas
 
 // Summary:
 //
-// Queries a list of concurrency configurations.
+// Lists the concurrency configurations.
 //
 // @param request - ListConcurrencyConfigsRequest
 //
@@ -2599,7 +2627,7 @@ func (client *Client) ListConcurrencyConfigsWithOptions(request *ListConcurrency
 
 // Summary:
 //
-// Queries a list of concurrency configurations.
+// Lists the concurrency configurations.
 //
 // @param request - ListConcurrencyConfigsRequest
 //
@@ -2618,7 +2646,7 @@ func (client *Client) ListConcurrencyConfigs(request *ListConcurrencyConfigsRequ
 
 // Summary:
 //
-// Queries custom domain names.
+// Retrieves a list of custom domain names.
 //
 // @param request - ListCustomDomainsRequest
 //
@@ -2673,7 +2701,7 @@ func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsReq
 
 // Summary:
 //
-// Queries custom domain names.
+// Retrieves a list of custom domain names.
 //
 // @param request - ListCustomDomainsRequest
 //
@@ -2692,7 +2720,7 @@ func (client *Client) ListCustomDomains(request *ListCustomDomainsRequest) (_res
 
 // Summary:
 //
-// Queries versions of a function.
+// Lists the versions of a specified function.
 //
 // @param request - ListFunctionVersionsRequest
 //
@@ -2747,7 +2775,7 @@ func (client *Client) ListFunctionVersionsWithOptions(functionName *string, requ
 
 // Summary:
 //
-// Queries versions of a function.
+// Lists the versions of a specified function.
 //
 // @param request - ListFunctionVersionsRequest
 //
@@ -2766,11 +2794,11 @@ func (client *Client) ListFunctionVersions(functionName *string, request *ListFu
 
 // Summary:
 //
-// Queries a list of functions.
+// Retrieves a list of functions.
 //
 // Description:
 //
-// ListFunctions returns only a subset of a function\\"s attribute fields. To obtain the additional fields, which include state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
+// ListFunctions returns only a subset of fields for function properties. To retrieve additional property fields for a specific function, including state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
 //
 // @param tmpReq - ListFunctionsRequest
 //
@@ -2859,11 +2887,11 @@ func (client *Client) ListFunctionsWithOptions(tmpReq *ListFunctionsRequest, hea
 
 // Summary:
 //
-// Queries a list of functions.
+// Retrieves a list of functions.
 //
 // Description:
 //
-// ListFunctions returns only a subset of a function\\"s attribute fields. To obtain the additional fields, which include state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
+// ListFunctions returns only a subset of fields for function properties. To retrieve additional property fields for a specific function, including state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
 //
 // @param request - ListFunctionsRequest
 //
@@ -2882,7 +2910,7 @@ func (client *Client) ListFunctions(request *ListFunctionsRequest) (_result *Lis
 
 // Summary:
 //
-// Queries a list of function instances.
+// Lists function instances.
 //
 // @param tmpReq - ListInstancesRequest
 //
@@ -2967,7 +2995,7 @@ func (client *Client) ListInstancesWithOptions(functionName *string, tmpReq *Lis
 
 // Summary:
 //
-// Queries a list of function instances.
+// Lists function instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -2986,7 +3014,7 @@ func (client *Client) ListInstances(functionName *string, request *ListInstances
 
 // Summary:
 //
-// Gets a list of layer versions.
+// Retrieves a list of layer versions.
 //
 // @param request - ListLayerVersionsRequest
 //
@@ -3037,7 +3065,7 @@ func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *L
 
 // Summary:
 //
-// Gets a list of layer versions.
+// Retrieves a list of layer versions.
 //
 // @param request - ListLayerVersionsRequest
 //
@@ -3056,7 +3084,7 @@ func (client *Client) ListLayerVersions(layerName *string, request *ListLayerVer
 
 // Summary:
 //
-// Gets a list of layers.
+// Lists layers.
 //
 // @param request - ListLayersRequest
 //
@@ -3119,7 +3147,7 @@ func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers 
 
 // Summary:
 //
-// Gets a list of layers.
+// Lists layers.
 //
 // @param request - ListLayersRequest
 //
@@ -3138,7 +3166,7 @@ func (client *Client) ListLayers(request *ListLayersRequest) (_result *ListLayer
 
 // Summary:
 //
-// Queries a list of provisioned configurations.
+// Retrieves a list of provisioned configurations.
 //
 // @param request - ListProvisionConfigsRequest
 //
@@ -3193,7 +3221,7 @@ func (client *Client) ListProvisionConfigsWithOptions(request *ListProvisionConf
 
 // Summary:
 //
-// Queries a list of provisioned configurations.
+// Retrieves a list of provisioned configurations.
 //
 // @param request - ListProvisionConfigsRequest
 //
@@ -3212,7 +3240,7 @@ func (client *Client) ListProvisionConfigs(request *ListProvisionConfigsRequest)
 
 // Summary:
 //
-// Lists the scaling settings of a function.
+// Lists the auto scaling configurations for a function.
 //
 // @param request - ListScalingConfigsRequest
 //
@@ -3267,7 +3295,7 @@ func (client *Client) ListScalingConfigsWithOptions(request *ListScalingConfigsR
 
 // Summary:
 //
-// Lists the scaling settings of a function.
+// Lists the auto scaling configurations for a function.
 //
 // @param request - ListScalingConfigsRequest
 //
@@ -3460,7 +3488,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Queries the triggers of a function.
+// Lists the triggers for a specified function.
 //
 // @param request - ListTriggersRequest
 //
@@ -3515,7 +3543,7 @@ func (client *Client) ListTriggersWithOptions(functionName *string, request *Lis
 
 // Summary:
 //
-// Queries the triggers of a function.
+// Lists the triggers for a specified function.
 //
 // @param request - ListTriggersRequest
 //
@@ -3534,7 +3562,7 @@ func (client *Client) ListTriggers(functionName *string, request *ListTriggersRe
 
 // Summary:
 //
-// Queries a list of existing VPC connections.
+// Queries existing VPC attachments.
 //
 // @param headers - map
 //
@@ -3567,7 +3595,7 @@ func (client *Client) ListVpcBindingsWithOptions(functionName *string, headers m
 
 // Summary:
 //
-// Queries a list of existing VPC connections.
+// Queries existing VPC attachments.
 //
 // @return ListVpcBindingsResponse
 func (client *Client) ListVpcBindings(functionName *string) (_result *ListVpcBindingsResponse, _err error) {
@@ -3584,7 +3612,11 @@ func (client *Client) ListVpcBindings(functionName *string) (_result *ListVpcBin
 
 // Summary:
 //
-// 暂停/保存会话
+// Pauses and saves a session.
+//
+// Description:
+//
+// Pauses an active session. This operation saves the state of the associated execution environment and then releases the compute resources. After you call this operation, the session state changes to Paused. A paused session does not accept function invocation requests. The operation retains the session configuration, such as the SessionTTL and SessionID. Use this operation to interrupt long-running tasks or save snapshots of a development environment. This helps optimize costs and manage state. This operation applies to custom image functions that use HEADER_FIELD or GENERATED_COOKIE affinity types and session isolation.
 //
 // @param request - PauseSessionRequest
 //
@@ -3631,7 +3663,11 @@ func (client *Client) PauseSessionWithOptions(functionName *string, sessionId *s
 
 // Summary:
 //
-// 暂停/保存会话
+// Pauses and saves a session.
+//
+// Description:
+//
+// Pauses an active session. This operation saves the state of the associated execution environment and then releases the compute resources. After you call this operation, the session state changes to Paused. A paused session does not accept function invocation requests. The operation retains the session configuration, such as the SessionTTL and SessionID. Use this operation to interrupt long-running tasks or save snapshots of a development environment. This helps optimize costs and manage state. This operation applies to custom image functions that use HEADER_FIELD or GENERATED_COOKIE affinity types and session isolation.
 //
 // @param request - PauseSessionRequest
 //
@@ -3711,7 +3747,7 @@ func (client *Client) PublishFunctionVersion(functionName *string, request *Publ
 
 // Summary:
 //
-// Creates or modifies an asynchronous invocation configuration for a function.
+// Creates or updates the asynchronous invocation configuration for a function.
 //
 // @param request - PutAsyncInvokeConfigRequest
 //
@@ -3759,7 +3795,7 @@ func (client *Client) PutAsyncInvokeConfigWithOptions(functionName *string, requ
 
 // Summary:
 //
-// Creates or modifies an asynchronous invocation configuration for a function.
+// Creates or updates the asynchronous invocation configuration for a function.
 //
 // @param request - PutAsyncInvokeConfigRequest
 //
@@ -3778,7 +3814,7 @@ func (client *Client) PutAsyncInvokeConfig(functionName *string, request *PutAsy
 
 // Summary:
 //
-// Configures concurrency of a function.
+// Sets the concurrency for a function.
 //
 // @param request - PutConcurrencyConfigRequest
 //
@@ -3820,7 +3856,7 @@ func (client *Client) PutConcurrencyConfigWithOptions(functionName *string, requ
 
 // Summary:
 //
-// Configures concurrency of a function.
+// Sets the concurrency for a function.
 //
 // @param request - PutConcurrencyConfigRequest
 //
@@ -3839,7 +3875,7 @@ func (client *Client) PutConcurrencyConfig(functionName *string, request *PutCon
 
 // Summary:
 //
-// Modifies permissions of a layer.
+// Modifies the permissions of a layer.
 //
 // @param request - PutLayerACLRequest
 //
@@ -3890,7 +3926,7 @@ func (client *Client) PutLayerACLWithOptions(layerName *string, request *PutLaye
 
 // Summary:
 //
-// Modifies permissions of a layer.
+// Modifies the permissions of a layer.
 //
 // @param request - PutLayerACLRequest
 //
@@ -3909,7 +3945,7 @@ func (client *Client) PutLayerACL(layerName *string, request *PutLayerACLRequest
 
 // Summary:
 //
-// Creates provisioned configurations.
+// Creates a provisioned configuration.
 //
 // @param request - PutProvisionConfigRequest
 //
@@ -3957,7 +3993,7 @@ func (client *Client) PutProvisionConfigWithOptions(functionName *string, reques
 
 // Summary:
 //
-// Creates provisioned configurations.
+// Creates a provisioned configuration.
 //
 // @param request - PutProvisionConfigRequest
 //
@@ -3976,7 +4012,7 @@ func (client *Client) PutProvisionConfig(functionName *string, request *PutProvi
 
 // Summary:
 //
-// # Scaling settings
+// Set the elastic scaling configuration for a function.
 //
 // @param request - PutScalingConfigRequest
 //
@@ -4024,7 +4060,7 @@ func (client *Client) PutScalingConfigWithOptions(functionName *string, request 
 
 // Summary:
 //
-// # Scaling settings
+// Set the elastic scaling configuration for a function.
 //
 // @param request - PutScalingConfigRequest
 //
@@ -4043,7 +4079,11 @@ func (client *Client) PutScalingConfig(functionName *string, request *PutScaling
 
 // Summary:
 //
-// 恢复会话
+// # Resume a session
+//
+// Description:
+//
+// Resumes a session that is in the Paused state. The system quickly resumes the session in a new execution environment using its previously persisted state. After a successful resume, the session status changes to Active, and the session begins accepting function invocation requests and routing them to the resumed instance. Use this operation with custom image functions that use HEADER_FIELD or GENERATED_COOKIE session affinity and session isolation.
 //
 // @param request - ResumeSessionRequest
 //
@@ -4094,7 +4134,11 @@ func (client *Client) ResumeSessionWithOptions(functionName *string, sessionId *
 
 // Summary:
 //
-// 恢复会话
+// # Resume a session
+//
+// Description:
+//
+// Resumes a session that is in the Paused state. The system quickly resumes the session in a new execution environment using its previously persisted state. After a successful resume, the session status changes to Active, and the session begins accepting function invocation requests and routing them to the resumed instance. Use this operation with custom image functions that use HEADER_FIELD or GENERATED_COOKIE session affinity and session isolation.
 //
 // @param request - ResumeSessionRequest
 //
@@ -4179,11 +4223,7 @@ func (client *Client) StopAsyncTask(functionName *string, taskId *string, reques
 
 // Summary:
 //
-// Adds tags to a resource.
-//
-// Description:
-//
-// Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](https://help.aliyun.com/document_detail/156983.html).
+// Adds tags to specified resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -4225,11 +4265,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 
 // Summary:
 //
-// Adds tags to a resource.
-//
-// Description:
-//
-// Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](https://help.aliyun.com/document_detail/156983.html).
+// Adds tags to specified resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -4248,7 +4284,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Removes tags from a resource.
+// Removes tags from resources.
 //
 // @param tmpReq - UntagResourcesRequest
 //
@@ -4317,7 +4353,7 @@ func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, h
 
 // Summary:
 //
-// Removes tags from a resource.
+// Removes tags from resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -4397,7 +4433,7 @@ func (client *Client) UpdateAlias(functionName *string, aliasName *string, reque
 
 // Summary:
 //
-// Update a custom domain name.
+// Updates a custom domain name.
 //
 // @param request - UpdateCustomDomainRequest
 //
@@ -4439,7 +4475,7 @@ func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request 
 
 // Summary:
 //
-// Update a custom domain name.
+// Updates a custom domain name.
 //
 // @param request - UpdateCustomDomainRequest
 //
@@ -4458,7 +4494,7 @@ func (client *Client) UpdateCustomDomain(domainName *string, request *UpdateCust
 
 // Summary:
 //
-// Updates the information about a function.
+// Updates a function\\"s configuration.
 //
 // @param request - UpdateFunctionRequest
 //
@@ -4500,7 +4536,7 @@ func (client *Client) UpdateFunctionWithOptions(functionName *string, request *U
 
 // Summary:
 //
-// Updates the information about a function.
+// Updates a function\\"s configuration.
 //
 // @param request - UpdateFunctionRequest
 //
@@ -4586,7 +4622,7 @@ func (client *Client) UpdateSession(functionName *string, sessionId *string, req
 
 // Summary:
 //
-// Modifies a trigger.
+// Updates the information of a trigger.
 //
 // @param request - UpdateTriggerRequest
 //
@@ -4628,7 +4664,7 @@ func (client *Client) UpdateTriggerWithOptions(functionName *string, triggerName
 
 // Summary:
 //
-// Modifies a trigger.
+// Updates the information of a trigger.
 //
 // @param request - UpdateTriggerRequest
 //

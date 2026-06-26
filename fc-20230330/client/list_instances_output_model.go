@@ -16,7 +16,7 @@ type iListInstancesOutput interface {
 }
 
 type ListInstancesOutput struct {
-	// public
+	// List of instance information.
 	Instances []*InstanceInfo `json:"instances" xml:"instances" type:"Repeated"`
 	RequestId *string         `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }

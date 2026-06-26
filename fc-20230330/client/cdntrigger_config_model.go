@@ -35,6 +35,10 @@ type CDNTriggerConfig struct {
 	// The details of the event filtering rules.
 	Filter map[string][]*string `json:"filter" xml:"filter"`
 	// The description of the trigger.
+	//
+	// example:
+	//
+	// 缓存事件触发器
 	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
 }
 

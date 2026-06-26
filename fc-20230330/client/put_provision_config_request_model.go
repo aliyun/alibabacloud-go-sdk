@@ -16,7 +16,7 @@ type iPutProvisionConfigRequest interface {
 }
 
 type PutProvisionConfigRequest struct {
-	// The provisioned configuration information.
+	// The provisioned configuration.
 	//
 	// This parameter is required.
 	Body *PutProvisionConfigInput `json:"body,omitempty" xml:"body,omitempty"`
@@ -24,7 +24,7 @@ type PutProvisionConfigRequest struct {
 	//
 	// example:
 	//
-	// LATEST
+	// prod
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 

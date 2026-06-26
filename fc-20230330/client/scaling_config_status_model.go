@@ -34,40 +34,60 @@ type iScalingConfigStatus interface {
 }
 
 type ScalingConfigStatus struct {
+	// The error message that is returned when an instance fails to be created.
+	//
 	// example:
 	//
 	// image not found
 	CurrentError *string `json:"currentError,omitempty" xml:"currentError,omitempty"`
+	// The current number of instances.
+	//
 	// example:
 	//
 	// 1
 	CurrentInstances *int64 `json:"currentInstances,omitempty" xml:"currentInstances,omitempty"`
+	// Specifies whether mix mode is enabled.
+	//
 	// example:
 	//
 	// False
 	EnableMixMode *bool `json:"enableMixMode,omitempty" xml:"enableMixMode,omitempty"`
+	// Specifies whether on-demand scaling is enabled.
+	//
 	// example:
 	//
 	// True
 	EnableOnDemandScaling *bool `json:"enableOnDemandScaling,omitempty" xml:"enableOnDemandScaling,omitempty"`
+	// The resource identifier of the function.
+	//
 	// example:
 	//
 	// acs:fc:cn-shanghai:124:functions/myFunction/prod
-	FunctionArn               *string          `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
+	FunctionArn *string `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
+	// The horizontal scaling policies.
 	HorizontalScalingPolicies []*ScalingPolicy `json:"horizontalScalingPolicies" xml:"horizontalScalingPolicies" type:"Repeated"`
+	// The minimum number of instances.
+	//
 	// example:
 	//
 	// 1
 	MinInstances *int64 `json:"minInstances,omitempty" xml:"minInstances,omitempty"`
+	// The request dispatch policy.
+	//
 	// example:
 	//
 	// Balanced
 	RequestDispatchPolicy *string `json:"requestDispatchPolicy,omitempty" xml:"requestDispatchPolicy,omitempty"`
+	// The ID of the resident resource pool.
+	//
 	// example:
 	//
 	// fc-pool-a2b664c1f87171j4******
-	ResidentPoolId    *string            `json:"residentPoolId,omitempty" xml:"residentPoolId,omitempty"`
+	ResidentPoolId *string `json:"residentPoolId,omitempty" xml:"residentPoolId,omitempty"`
+	// The scheduled scaling policies.
 	ScheduledPolicies []*ScheduledPolicy `json:"scheduledPolicies" xml:"scheduledPolicies" type:"Repeated"`
+	// The target number of instances.
+	//
 	// example:
 	//
 	// 10

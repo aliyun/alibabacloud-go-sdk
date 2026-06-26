@@ -18,7 +18,7 @@ type DeleteProvisionConfigRequest struct {
 	//
 	// example:
 	//
-	// LATEST
+	// prod
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 

@@ -21,21 +21,21 @@ type iInvokeFunctionHeaders interface {
 
 type InvokeFunctionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders" xml:"commonHeaders"`
-	// The ID of the asynchronous task. You must enable the asynchronous task feature in advance.
+	// Asynchronous task ID. Enable asynchronous tasks beforehand.
 	//
-	// >  If you use an SDK to invoke a function, we recommend that you specify a business-related ID to facilitate subsequent operations. For example, a video processing function can use video file names as invocation IDs. This way, you can easily check whether a video is successfully processed or terminated before it is processed. The ID can start only with letters or underscores. An ID can contain *letters, digits (0 - 9), underscores*, and hyphens (-). It can be up to 128 characters in length. If you do not specify the ID of the asynchronous invocation, the system automatically generates an ID.
+	// > When using the SDK for invocation, set a business-related ID. This helps with subsequent operations on the execution. For example, a video processing function can use the video filename as the invocation ID. Use this ID to check if the video processing is complete or to stop it. The ID naming convention must start with an English letter (uppercase or lowercase) or an underscore (_). It can contain English letters (uppercase or lowercase), digits (0-9), underscores (_), and hyphens (-). The ID cannot exceed 128 characters. If you do not set an ID for asynchronous invocation, the system automatically generates one.
 	//
 	// example:
 	//
 	// test-id
 	XFcAsyncTaskId *string `json:"x-fc-async-task-id,omitempty" xml:"x-fc-async-task-id,omitempty"`
-	// The type of function invocation. Valid values: Sync and Async.
+	// Function invocation type. Sync or Async.
 	//
 	// example:
 	//
 	// Sync
 	XFcInvocationType *string `json:"x-fc-invocation-type,omitempty" xml:"x-fc-invocation-type,omitempty"`
-	// The log type of function invocation. Valid values: None and Tail.
+	// Log type returned by function invocation. None or Tail.
 	//
 	// example:
 	//

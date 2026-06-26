@@ -18,15 +18,15 @@ type iUpdateAliasInput interface {
 }
 
 type UpdateAliasInput struct {
-	// The weight of the canary release version.
+	// Weight of the canary release version
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight" xml:"additionalVersionWeight"`
-	// The alias description.
+	// Description of the alias
 	//
 	// example:
 	//
 	// my alias
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The version to which the alias points.
+	// Version that the alias points to
 	//
 	// example:
 	//

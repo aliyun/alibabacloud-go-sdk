@@ -22,25 +22,25 @@ type iListLayersRequest interface {
 }
 
 type ListLayersRequest struct {
-	// The number of layers that are returned
+	// The number of layers to return.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token that marks the start of the next page of results.
 	//
 	// example:
 	//
 	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Specifies whether the layer is official. Valid values: true and false.
+	// Specifies whether the layer is an official layer. Valid values: true and false.
 	//
 	// example:
 	//
 	// true
 	Official *string `json:"official,omitempty" xml:"official,omitempty"`
-	// The name prefix of the layer.
+	// The prefix of the layer name.
 	//
 	// example:
 	//

@@ -26,20 +26,20 @@ type iUpdateCustomDomainInput interface {
 }
 
 type UpdateCustomDomainInput struct {
-	// The configuration of permission authentication.
+	// The authentication configuration.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The configuration of the HTTPS certificate.
+	// Information about the HTTPS certificate.
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
 	CorsConfig *CORSConfig `json:"corsConfig,omitempty" xml:"corsConfig,omitempty"`
-	// The protocol type that is supported by the custom domain name. Valid values: HTTP HTTPS HTTP,HTTPS
+	// The protocol type that the domain name supports. \\`HTTP\\`: supports only the HTTP protocol. \\`HTTPS\\`: supports only the HTTPS protocol. \\`HTTP,HTTPS\\`: supports both HTTP and HTTPS protocols.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The route table that maps paths to functions when the function is invoked by using the custom domain name.
+	// The route table that maps the access paths of the custom domain name to functions.
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
-	// The Transport Layer Security (TLS) configuration.
+	// The TLS configuration.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
 	// The Web Application Firewall (WAF) configuration.
 	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`

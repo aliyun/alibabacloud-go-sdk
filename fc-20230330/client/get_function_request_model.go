@@ -14,7 +14,7 @@ type iGetFunctionRequest interface {
 }
 
 type GetFunctionRequest struct {
-	// 2023-03-10T10:10:10Z
+	// The version or alias of the function.
 	//
 	// example:
 	//

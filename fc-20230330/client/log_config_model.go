@@ -24,32 +24,32 @@ type iLogConfig interface {
 }
 
 type LogConfig struct {
-	// Specifies whether to enable the collection of instance-level metrics. If you enable this feature, you can view core metrics, such as CPU utilization, memory usage, network conditions of instances, and the number of requests that an instance concurrently processes. Valid values: false: disables the collection of instance-level metrics. This is the default value. true: enables the collection of instance-level metrics.
+	// Specifies whether to enable instance-level metrics. When this feature is enabled, you can view core metrics for each instance, such as CPU usage, memory usage, network conditions, and the number of requests. The default value is \\`false\\`, which disables instance-level metrics. Set the value to \\`true\\` to enable them.
 	//
 	// example:
 	//
 	// true
 	EnableInstanceMetrics *bool `json:"enableInstanceMetrics,omitempty" xml:"enableInstanceMetrics,omitempty"`
 	EnableLlmMetrics      *bool `json:"enableLlmMetrics,omitempty" xml:"enableLlmMetrics,omitempty"`
-	// Specifies whether to enable request-level metrics. If you enable this feature, you can view the amount of time and memory consumed for a specific invocation of each function in the service. Valid values: false: disables request-level metrics. true: enables request-level metrics. This is the default value.
+	// Specifies whether to enable request-level metrics. When this feature is enabled, you can view the time and memory consumed by each function invocation in the service. The default value is \\`true\\`, which enables request-level metrics. Set the value to \\`false\\` to disable them.
 	//
 	// example:
 	//
 	// true
 	EnableRequestMetrics *bool `json:"enableRequestMetrics,omitempty" xml:"enableRequestMetrics,omitempty"`
-	// The log segmentation rule.
+	// The rule for matching the first line of a log entry.
 	//
 	// example:
 	//
 	// DefaultRegex
 	LogBeginRule *string `json:"logBeginRule,omitempty" xml:"logBeginRule,omitempty"`
-	// The name of the Logstore of Simple Log Service.
+	// The name of the Logstore in Simple Log Service.
 	//
 	// example:
 	//
 	// test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the project in Simple Log Service.
+	// The name of the Project in Simple Log Service.
 	//
 	// example:
 	//

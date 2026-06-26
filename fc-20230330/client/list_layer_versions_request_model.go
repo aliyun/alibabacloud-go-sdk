@@ -16,13 +16,13 @@ type iListLayerVersionsRequest interface {
 }
 
 type ListLayerVersionsRequest struct {
-	// The number of versions to be returned.
+	// The number of versions to return.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The initial version of the layer.
+	// The version from which to start the query.
 	//
 	// example:
 	//

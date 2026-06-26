@@ -14,7 +14,7 @@ type iUpdateTriggerRequest interface {
 }
 
 type UpdateTriggerRequest struct {
-	// The trigger configurations.
+	// The trigger configuration.
 	//
 	// This parameter is required.
 	Body *UpdateTriggerInput `json:"body,omitempty" xml:"body,omitempty"`

@@ -22,26 +22,26 @@ type iHTTPTriggerConfig interface {
 }
 
 type HTTPTriggerConfig struct {
-	// The authentication configurations.
+	// Authentication configuration
 	//
 	// example:
 	//
 	// {"JWKS":{"foo":"bar"},"TokenLookup":"header:Authorization:Bearer,cookie:AuthorizationCookie","ClaimPassBy":"query:uid:uid,header:name:name"}
 	AuthConfig *string `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The authentication type. Valid values:
+	// The authentication type. Valid values are:
 	//
-	// 	- **function**: requires authentication.
+	// - **function**: Authentication is required.
 	//
-	// 	- **anonymous**: does not require authentication.
+	// - **anonymous**: Authentication is not required.
 	//
-	// >  The default value is **function**
+	// > The default type is **function**.
 	//
 	// example:
 	//
 	// anonymous
 	AuthType   *string     `json:"authType,omitempty" xml:"authType,omitempty"`
 	CorsConfig *CORSConfig `json:"corsConfig,omitempty" xml:"corsConfig,omitempty"`
-	// Specifies whether to disable access to the default Internet domain. If you set this parameter to true, a 403 error is returned if you access the default public URL provided by the function. A value of false does not have affect the running of the function.
+	// Specifies whether to disable access from the default public domain name. If set to true, accessing the function\\"s default public URL returns a 403 error. If set to false, this parameter has no effect.
 	//
 	// example:
 	//

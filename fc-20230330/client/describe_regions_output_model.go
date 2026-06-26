@@ -81,6 +81,10 @@ func (s *DescribeRegionsOutputRegions) Validate() error {
 
 type DescribeRegionsOutputRegionsRegion struct {
 	// The region name.
+	//
+	// example:
+	//
+	// 华北1（青岛）
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The region ID.
 	//

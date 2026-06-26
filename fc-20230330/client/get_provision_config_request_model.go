@@ -14,11 +14,11 @@ type iGetProvisionConfigRequest interface {
 }
 
 type GetProvisionConfigRequest struct {
-	// The function alias.
+	// The alias of the function.
 	//
 	// example:
 	//
-	// LATEST
+	// prod
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 

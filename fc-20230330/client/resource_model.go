@@ -18,13 +18,13 @@ type iResource interface {
 }
 
 type Resource struct {
-	// The name of the resource type. Valid values: ALIYUN::FC::FUNCTION and ALIYUN::FC::SERVICE. The former name is used in Function Compute 3.0, and the latter name is used in earlier versions of Function Compute.
+	// The name of the resource type. For a function in Function Compute 3.0, use ALIYUN::FC::FUNCTION. For a service in an earlier version of Function Compute, use ALIYUN::FC::SERVICE.
 	//
 	// example:
 	//
 	// ALIYUN::FC::FUNCTION
 	ResouceType *string `json:"resouceType,omitempty" xml:"resouceType,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the resource.
+	// The Alibaba Cloud resource descriptor.
 	//
 	// example:
 	//

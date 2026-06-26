@@ -18,19 +18,19 @@ type iListScalingConfigsRequest interface {
 }
 
 type ListScalingConfigsRequest struct {
-	// The name of the function.
+	// The function name.
 	//
 	// example:
 	//
 	// my-func
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// The number of scaling settings to return.
+	// The number of auto scaling configurations to return.
 	//
 	// example:
 	//
 	// 20
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token for the next page.
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//

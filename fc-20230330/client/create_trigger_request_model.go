@@ -14,7 +14,7 @@ type iCreateTriggerRequest interface {
 }
 
 type CreateTriggerRequest struct {
-	// The trigger configurations.
+	// The trigger configuration.
 	//
 	// This parameter is required.
 	Body *CreateTriggerInput `json:"body,omitempty" xml:"body,omitempty"`

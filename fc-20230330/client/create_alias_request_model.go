@@ -14,7 +14,7 @@ type iCreateAliasRequest interface {
 }
 
 type CreateAliasRequest struct {
-	// The request parameters for creating an alias.
+	// The request parameters to create an alias.
 	//
 	// This parameter is required.
 	Body *CreateAliasInput `json:"body,omitempty" xml:"body,omitempty"`

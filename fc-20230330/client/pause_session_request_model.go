@@ -14,6 +14,8 @@ type iPauseSessionRequest interface {
 }
 
 type PauseSessionRequest struct {
+	// The function alias or version associated with the session to pause
+	//
 	// example:
 	//
 	// aliasName1

@@ -17,13 +17,13 @@ type iInvokeFunctionRequest interface {
 }
 
 type InvokeFunctionRequest struct {
-	// The request parameters of function invocation.
+	// Function invocation parameter
 	//
 	// example:
 	//
 	// event
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
-	// The version or alias of the function.
+	// Function version or alias
 	//
 	// example:
 	//
