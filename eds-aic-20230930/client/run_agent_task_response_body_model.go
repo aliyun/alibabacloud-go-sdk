@@ -22,7 +22,7 @@ type iRunAgentTaskResponseBody interface {
 }
 
 type RunAgentTaskResponseBody struct {
-	// The response status code. A value of `200` indicates that the request was successful.
+	// The status code of the operation.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type RunAgentTaskResponseBody struct {
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6C8439B9-7DBF-57F4-92AE-55A9B9D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of tasks.
+	// The list of tasks.
 	Tasks []*RunAgentTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
@@ -119,39 +119,39 @@ func (s *RunAgentTaskResponseBody) Validate() error {
 type RunAgentTaskResponseBodyTasks struct {
 	// The current status of the task. Valid values:
 	//
-	// `PENDING`: The task is being created.
+	// - PENDING: The task is being created.
 	//
-	// `RUNNING`: The task is running.
+	// - RUNNING: The task is running.
 	//
-	// `COMPLETED`: The task completed successfully.
+	// - COMPLETED: The task is completed.
 	//
-	// `FAILED`: The task failed.
+	// - FAILED: The task failed.
 	//
-	// `TIMEOUT`: The task timed out.
+	// - TIMEOUT: The task execution timed out.
 	//
 	// example:
 	//
 	// COMPLETED
 	CurrentStatus *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
-	// The mobile node ID.
+	// The Mobile node ID.
 	//
 	// example:
 	//
 	// acp-ek65k51zoxia3x8xz
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the task started running, in ISO 8601 format.
+	// The time when the task was created, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-04-13T17:42:19Z
 	RunningAt *string `json:"RunningAt,omitempty" xml:"RunningAt,omitempty"`
-	// The globally unique task ID.
+	// The task ID, which is globally unique.
 	//
 	// example:
 	//
 	// t-imr0fufqd7cle****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The user prompt that the Agent used to perform the task.
+	// The user instruction in natural language. The Agent performs operations based on this instruction.
 	//
 	// example:
 	//

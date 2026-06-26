@@ -5843,7 +5843,7 @@ func (client *Client) ResumeAgentTaskWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// Triggers an Agent on a mobile node to run an AI-powered automation task.
+// Triggers an Agent on Mobile nodes to execute an AI automation task.
 //
 // @param request - RunAgentTaskRequest
 //
@@ -5868,6 +5868,14 @@ func (client *Client) RunAgentTaskWithContext(ctx context.Context, request *RunA
 
 	if !dara.IsNil(request.MaxSteps) {
 		query["MaxSteps"] = request.MaxSteps
+	}
+
+	if !dara.IsNil(request.ScheduleId) {
+		query["ScheduleId"] = request.ScheduleId
+	}
+
+	if !dara.IsNil(request.TaskConfigId) {
+		query["TaskConfigId"] = request.TaskConfigId
 	}
 
 	if !dara.IsNil(request.TimeoutSeconds) {

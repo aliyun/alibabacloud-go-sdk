@@ -7746,7 +7746,7 @@ func (client *Client) ResumeAgentTask(request *ResumeAgentTaskRequest) (_result 
 
 // Summary:
 //
-// Triggers an Agent on a mobile node to run an AI-powered automation task.
+// Triggers an Agent on Mobile nodes to execute an AI automation task.
 //
 // @param request - RunAgentTaskRequest
 //
@@ -7771,6 +7771,14 @@ func (client *Client) RunAgentTaskWithOptions(request *RunAgentTaskRequest, runt
 
 	if !dara.IsNil(request.MaxSteps) {
 		query["MaxSteps"] = request.MaxSteps
+	}
+
+	if !dara.IsNil(request.ScheduleId) {
+		query["ScheduleId"] = request.ScheduleId
+	}
+
+	if !dara.IsNil(request.TaskConfigId) {
+		query["TaskConfigId"] = request.TaskConfigId
 	}
 
 	if !dara.IsNil(request.TimeoutSeconds) {
@@ -7806,7 +7814,7 @@ func (client *Client) RunAgentTaskWithOptions(request *RunAgentTaskRequest, runt
 
 // Summary:
 //
-// Triggers an Agent on a mobile node to run an AI-powered automation task.
+// Triggers an Agent on Mobile nodes to execute an AI automation task.
 //
 // @param request - RunAgentTaskRequest
 //
