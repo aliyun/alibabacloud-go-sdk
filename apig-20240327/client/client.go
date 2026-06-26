@@ -235,7 +235,7 @@ func (client *Client) AddGatewayQuotaRule(gatewayId *string, request *AddGateway
 
 // Summary:
 //
-// Adds a security group that authorizes an instance to access services.
+// Authorizes a security group to allow gateway access to services.
 //
 // @param request - AddGatewaySecurityGroupRuleRequest
 //
@@ -290,7 +290,7 @@ func (client *Client) AddGatewaySecurityGroupRuleWithOptions(gatewayId *string, 
 
 // Summary:
 //
-// Adds a security group that authorizes an instance to access services.
+// Authorizes a security group to allow gateway access to services.
 //
 // @param request - AddGatewaySecurityGroupRuleRequest
 //
@@ -309,7 +309,7 @@ func (client *Client) AddGatewaySecurityGroupRule(gatewayId *string, request *Ad
 
 // Summary:
 //
-// Removes consumer authentication rules.
+// Revokes API consumer authorization rules in batches.
 //
 // @param request - BatchDeleteConsumerAuthorizationRuleRequest
 //
@@ -356,7 +356,7 @@ func (client *Client) BatchDeleteConsumerAuthorizationRuleWithOptions(request *B
 
 // Summary:
 //
-// Removes consumer authentication rules.
+// Revokes API consumer authorization rules in batches.
 //
 // @param request - BatchDeleteConsumerAuthorizationRuleRequest
 //
@@ -1096,7 +1096,7 @@ func (client *Client) CreateGateway(request *CreateGatewayRequest) (_result *Cre
 
 // Summary:
 //
-// $.parameters[0].schema.properties.ingressConfig.example
+// Creates an HTTP API.
 //
 // @param request - CreateHttpApiRequest
 //
@@ -1215,7 +1215,7 @@ func (client *Client) CreateHttpApiWithOptions(request *CreateHttpApiRequest, he
 
 // Summary:
 //
-// $.parameters[0].schema.properties.ingressConfig.example
+// Creates an HTTP API.
 //
 // @param request - CreateHttpApiRequest
 //
@@ -4502,7 +4502,7 @@ func (client *Client) GetSource(sourceId *string) (_result *GetSourceResponse, _
 
 // Summary:
 //
-// Queries the tracing configurations of a Cloud-native API Gateway instance.
+// Retrieves the Tracing Analysis configuration.
 //
 // @param request - GetTraceConfigRequest
 //
@@ -4549,7 +4549,7 @@ func (client *Client) GetTraceConfigWithOptions(gatewayId *string, request *GetT
 
 // Summary:
 //
-// Queries the tracing configurations of a Cloud-native API Gateway instance.
+// Retrieves the Tracing Analysis configuration.
 //
 // @param request - GetTraceConfigRequest
 //

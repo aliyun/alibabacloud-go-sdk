@@ -14,7 +14,11 @@ type iGetTraceConfigRequest interface {
 }
 
 type GetTraceConfigRequest struct {
-	// The language in which you want results to be returned. Valid values: zh: Chinese. en: English.
+	// The language type. Valid values:
+	//
+	// zh: Chinese
+	//
+	// en: English.
 	//
 	// example:
 	//

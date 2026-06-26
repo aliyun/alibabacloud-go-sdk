@@ -28,7 +28,7 @@ type GetTraceConfigResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
-	// The data returned.
+	// The response data.
 	Data *GetTraceConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -42,7 +42,11 @@ type GetTraceConfigResponseBody struct {
 	//
 	// 2F46B9E7-67EF-5C8A-BA52-D38D5B32AF2C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true false
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -113,39 +117,43 @@ func (s *GetTraceConfigResponseBody) Validate() error {
 }
 
 type GetTraceConfigResponseBodyData struct {
-	// Indicates whether tracing analysis is enabled. Valid values: true and false
+	// Indicates whether Tracing Analysis is enabled. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: shutdown.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The sampling rate.
+	// The sampling ratio.
 	//
 	// example:
 	//
 	// 50
 	SampleRatio *int32 `json:"sampleRatio,omitempty" xml:"sampleRatio,omitempty"`
-	// The service ID. This parameter exists when the traceType value is SKYWALKING.
+	// The service ID. This parameter is returned only when the Tracing Analysis type is SKYWALKING.
 	//
 	// example:
 	//
 	// ss-co370icmjeu****
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The service port. This parameter exists when the traceType value is SKYWALKING.
+	// The service port. This parameter is returned only when the Tracing Analysis type is SKYWALKING.
 	//
 	// example:
 	//
 	// 8090
 	ServicePort *string `json:"servicePort,omitempty" xml:"servicePort,omitempty"`
-	// The type of tracing analysis. Valid values:
+	// The Tracing Analysis type. Valid values:
 	//
-	// 	- XTRACE
+	// - XTRACE
 	//
-	// 	- SKYWALKING
+	// - SKYWALKING
 	//
-	// 	- OPENTELEMETRY
+	// - OPENTELEMETRY
 	//
-	// 	- OTSKYWALKING
+	// - OTSKYWALKING.
 	//
 	// example:
 	//

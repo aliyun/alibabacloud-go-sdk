@@ -20,21 +20,21 @@ type iCreateHttpApiResponseBody interface {
 }
 
 type CreateHttpApiResponseBody struct {
-	// API for testing
+	// The status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// A protocol.
+	// The API information.
 	Data *CreateHttpApiResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The protocol list for API access.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The API description.
+	// The request ID.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type CreateHttpApiResponseBodyData struct {
 	//
 	// api-xxx
 	HttpApiId *string `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
-	// The API base path, which must start with a forward slash (/).
+	// The API name.
 	//
 	// example:
 	//

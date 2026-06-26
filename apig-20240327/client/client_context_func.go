@@ -120,7 +120,7 @@ func (client *Client) AddGatewayQuotaRuleWithContext(ctx context.Context, gatewa
 
 // Summary:
 //
-// Adds a security group that authorizes an instance to access services.
+// Authorizes a security group to allow gateway access to services.
 //
 // @param request - AddGatewaySecurityGroupRuleRequest
 //
@@ -175,7 +175,7 @@ func (client *Client) AddGatewaySecurityGroupRuleWithContext(ctx context.Context
 
 // Summary:
 //
-// Removes consumer authentication rules.
+// Revokes API consumer authorization rules in batches.
 //
 // @param request - BatchDeleteConsumerAuthorizationRuleRequest
 //
@@ -788,7 +788,7 @@ func (client *Client) CreateGatewayWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// $.parameters[0].schema.properties.ingressConfig.example
+// Creates an HTTP API.
 //
 // @param request - CreateHttpApiRequest
 //
@@ -3211,7 +3211,7 @@ func (client *Client) GetSourceWithContext(ctx context.Context, sourceId *string
 
 // Summary:
 //
-// Queries the tracing configurations of a Cloud-native API Gateway instance.
+// Retrieves the Tracing Analysis configuration.
 //
 // @param request - GetTraceConfigRequest
 //

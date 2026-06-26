@@ -23,8 +23,8 @@ type iHttpApiApiInfo interface {
 	GetDeployConfigs() []*HttpApiDeployConfig
 	SetDescription(v string) *HttpApiApiInfo
 	GetDescription() *string
-	SetEnabelAuth(v bool) *HttpApiApiInfo
-	GetEnabelAuth() *bool
+	SetEnableAuth(v bool) *HttpApiApiInfo
+	GetEnableAuth() *bool
 	SetEnvironments(v []*HttpApiApiInfoEnvironments) *HttpApiApiInfo
 	GetEnvironments() []*HttpApiApiInfoEnvironments
 	SetGatewayId(v string) *HttpApiApiInfo
@@ -70,12 +70,7 @@ type HttpApiApiInfo struct {
 	//
 	// 测试专用API
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to enable authentication.
-	//
-	// example:
-	//
-	// true
-	EnabelAuth *bool `json:"enabelAuth,omitempty" xml:"enabelAuth,omitempty"`
+	EnableAuth  *bool   `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
 	// The API environment information.
 	Environments []*HttpApiApiInfoEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
 	// The instance ID.
@@ -170,8 +165,8 @@ func (s *HttpApiApiInfo) GetDescription() *string {
 	return s.Description
 }
 
-func (s *HttpApiApiInfo) GetEnabelAuth() *bool {
-	return s.EnabelAuth
+func (s *HttpApiApiInfo) GetEnableAuth() *bool {
+	return s.EnableAuth
 }
 
 func (s *HttpApiApiInfo) GetEnvironments() []*HttpApiApiInfoEnvironments {
@@ -249,8 +244,8 @@ func (s *HttpApiApiInfo) SetDescription(v string) *HttpApiApiInfo {
 	return s
 }
 
-func (s *HttpApiApiInfo) SetEnabelAuth(v bool) *HttpApiApiInfo {
-	s.EnabelAuth = &v
+func (s *HttpApiApiInfo) SetEnableAuth(v bool) *HttpApiApiInfo {
+	s.EnableAuth = &v
 	return s
 }
 

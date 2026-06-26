@@ -36,7 +36,11 @@ type ListDomainsRequest struct {
 	//
 	// gw-xxxxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The gateway type used for filtering. Valid values: **AI*	- and **API**.
+	// The gateway type used for filtering. Valid values:
+	//
+	// - **AI**
+	//
+	// - **API**.
 	//
 	// example:
 	//

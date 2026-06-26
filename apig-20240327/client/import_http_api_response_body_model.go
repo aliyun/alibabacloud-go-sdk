@@ -480,9 +480,9 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes) Validate() error 
 type ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents struct {
 	// The action to be performed after the dry run. Valid values:
 	//
-	// - Create: create.
+	// - Create: Create.
 	//
-	// - Update: update.
+	// - Update: Update.
 	//
 	// example:
 	//
@@ -529,9 +529,9 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents) Validate() er
 type ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations struct {
 	// The action to be performed after the dry run. Valid values:
 	//
-	// - Create: create.
+	// - Create: Create.
 	//
-	// - Update: update.
+	// - Update: Update.
 	//
 	// example:
 	//
