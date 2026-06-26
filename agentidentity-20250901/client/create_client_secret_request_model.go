@@ -18,17 +18,8 @@ type iCreateClientSecretRequest interface {
 }
 
 type CreateClientSecretRequest struct {
-	// example:
-	//
-	// client_xxxxxxxxxxxxxxxxxxxx
-	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// example:
-	//
-	// my-web-app
-	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
-	// example:
-	//
-	// my-agent-userpool
+	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientName   *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

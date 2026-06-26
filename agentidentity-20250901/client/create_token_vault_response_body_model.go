@@ -16,9 +16,6 @@ type iCreateTokenVaultResponseBody interface {
 }
 
 type CreateTokenVaultResponseBody struct {
-	// example:
-	//
-	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
 	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TokenVault *CreateTokenVaultResponseBodyTokenVault `json:"TokenVault,omitempty" xml:"TokenVault,omitempty" type:"Struct"`
 }
@@ -59,27 +56,12 @@ func (s *CreateTokenVaultResponseBody) Validate() error {
 }
 
 type CreateTokenVaultResponseBodyTokenVault struct {
-	// example:
-	//
-	// 2026-05-08T06:19:17Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// example description
+	CreateTime       *string                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description      *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
 	EncryptionConfig *CreateTokenVaultResponseBodyTokenVaultEncryptionConfig `json:"EncryptionConfig,omitempty" xml:"EncryptionConfig,omitempty" type:"Struct"`
-	// example:
-	//
-	// acs:ram::123456:role/AliyunAgentIdentityVaultRole
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:123456:tokenvault/default
-	TokenVaultArn *string `json:"TokenVaultArn,omitempty" xml:"TokenVaultArn,omitempty"`
-	// example:
-	//
-	// default
-	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	RoleArn          *string                                                 `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	TokenVaultArn    *string                                                 `json:"TokenVaultArn,omitempty" xml:"TokenVaultArn,omitempty"`
+	TokenVaultName   *string                                                 `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s CreateTokenVaultResponseBodyTokenVault) String() string {
@@ -154,13 +136,7 @@ func (s *CreateTokenVaultResponseBodyTokenVault) Validate() error {
 }
 
 type CreateTokenVaultResponseBodyTokenVaultEncryptionConfig struct {
-	// example:
-	//
-	// SERVICE_MANAGED_KEY
-	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	// example:
-	//
-	// acs:kms:cn-beijing:123456:key/key-bjxxxxxxxx
+	KeyType   *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
 	KmsKeyArn *string `json:"KmsKeyArn,omitempty" xml:"KmsKeyArn,omitempty"`
 }
 

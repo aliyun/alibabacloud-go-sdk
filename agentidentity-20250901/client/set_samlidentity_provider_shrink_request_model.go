@@ -28,33 +28,12 @@ type iSetSAMLIdentityProviderShrinkRequest interface {
 }
 
 type SetSAMLIdentityProviderShrinkRequest struct {
-	// example:
-	//
-	// https://idp.example.com/entity
-	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// example:
-	//
-	// Enabled
-	JITProvisionStatus *string `json:"JITProvisionStatus,omitempty" xml:"JITProvisionStatus,omitempty"`
-	// example:
-	//
-	// Enabled
-	JITUpdateStatus *string `json:"JITUpdateStatus,omitempty" xml:"JITUpdateStatus,omitempty"`
-	// example:
-	//
-	// https://idp.example.com/sso/saml
-	LoginURL *string `json:"LoginURL,omitempty" xml:"LoginURL,omitempty"`
-	// example:
-	//
-	// HTTP-Redirect
-	SAMLBindingType *string `json:"SAMLBindingType,omitempty" xml:"SAMLBindingType,omitempty"`
-	// example:
-	//
-	// Enabled
-	SSOStatus *string `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
-	// example:
-	//
-	// my-agent-userpool
+	EntityId               *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	JITProvisionStatus     *string `json:"JITProvisionStatus,omitempty" xml:"JITProvisionStatus,omitempty"`
+	JITUpdateStatus        *string `json:"JITUpdateStatus,omitempty" xml:"JITUpdateStatus,omitempty"`
+	LoginURL               *string `json:"LoginURL,omitempty" xml:"LoginURL,omitempty"`
+	SAMLBindingType        *string `json:"SAMLBindingType,omitempty" xml:"SAMLBindingType,omitempty"`
+	SSOStatus              *string `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
 	UserPoolName           *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 	X509CertificatesShrink *string `json:"X509Certificates,omitempty" xml:"X509Certificates,omitempty"`
 }

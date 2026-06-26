@@ -17,10 +17,7 @@ type iUpdateGatewayPolicyConfigResponseBody interface {
 
 type UpdateGatewayPolicyConfigResponseBody struct {
 	GatewayPolicyConfig *UpdateGatewayPolicyConfigResponseBodyGatewayPolicyConfig `json:"GatewayPolicyConfig,omitempty" xml:"GatewayPolicyConfig,omitempty" type:"Struct"`
-	// example:
-	//
-	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateGatewayPolicyConfigResponseBody) String() string {
@@ -59,14 +56,8 @@ func (s *UpdateGatewayPolicyConfigResponseBody) Validate() error {
 }
 
 type UpdateGatewayPolicyConfigResponseBodyGatewayPolicyConfig struct {
-	// example:
-	//
-	// ENFORCE
 	EnforcementMode *string `json:"EnforcementMode,omitempty" xml:"EnforcementMode,omitempty"`
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:123456:policyset/default-policy-set
-	PolicySetArn *string `json:"PolicySetArn,omitempty" xml:"PolicySetArn,omitempty"`
+	PolicySetArn    *string `json:"PolicySetArn,omitempty" xml:"PolicySetArn,omitempty"`
 }
 
 func (s UpdateGatewayPolicyConfigResponseBodyGatewayPolicyConfig) String() string {

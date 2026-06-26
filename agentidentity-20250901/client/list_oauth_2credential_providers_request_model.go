@@ -18,13 +18,7 @@ type iListOAuth2CredentialProvidersRequest interface {
 }
 
 type ListOAuth2CredentialProvidersRequest struct {
-	// example:
-	//
-	// 100
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// AAAAAV3MpHK1AP0pfERHZN5pu6mmxm9MUzOLyiXaWmj3GOT8
+	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }

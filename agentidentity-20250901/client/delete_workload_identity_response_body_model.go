@@ -14,9 +14,6 @@ type iDeleteWorkloadIdentityResponseBody interface {
 }
 
 type DeleteWorkloadIdentityResponseBody struct {
-	// example:
-	//
-	// 0946BB5C-15AA-53E6-A2A6-ED87119A640C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

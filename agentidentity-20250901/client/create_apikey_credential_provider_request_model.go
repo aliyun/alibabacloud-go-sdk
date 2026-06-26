@@ -20,19 +20,10 @@ type iCreateAPIKeyCredentialProviderRequest interface {
 }
 
 type CreateAPIKeyCredentialProviderRequest struct {
-	// example:
-	//
-	// example api key
-	APIKey *string `json:"APIKey,omitempty" xml:"APIKey,omitempty"`
-	// example:
-	//
-	// api-key-dash-scope
+	APIKey                       *string `json:"APIKey,omitempty" xml:"APIKey,omitempty"`
 	APIKeyCredentialProviderName *string `json:"APIKeyCredentialProviderName,omitempty" xml:"APIKeyCredentialProviderName,omitempty"`
-	// example:
-	//
-	// example provider
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s CreateAPIKeyCredentialProviderRequest) String() string {

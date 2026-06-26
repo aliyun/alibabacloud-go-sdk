@@ -21,18 +21,9 @@ type iUpdatePolicyShrinkRequest interface {
 
 type UpdatePolicyShrinkRequest struct {
 	DefinitionShrink *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// example:
-	//
-	// example description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// rate-limit-policy
-	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// example:
-	//
-	// default-policy-set
-	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PolicyName       *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicySetName    *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
 }
 
 func (s UpdatePolicyShrinkRequest) String() string {

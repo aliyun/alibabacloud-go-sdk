@@ -14,9 +14,6 @@ type iDeletePolicySetRequest interface {
 }
 
 type DeletePolicySetRequest struct {
-	// example:
-	//
-	// default-policy-set
 	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
 }
 

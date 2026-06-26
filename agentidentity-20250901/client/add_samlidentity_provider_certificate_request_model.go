@@ -16,17 +16,7 @@ type iAddSAMLIdentityProviderCertificateRequest interface {
 }
 
 type AddSAMLIdentityProviderCertificateRequest struct {
-	// example:
-	//
-	// my-agent-userpool
-	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
-	// example:
-	//
-	// -----BEGIN CERTIFICATE-----
-	//
-	// MIIDdz...
-	//
-	// -----END CERTIFICATE-----
+	UserPoolName    *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 

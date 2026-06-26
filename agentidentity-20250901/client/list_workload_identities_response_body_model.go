@@ -22,21 +22,9 @@ type iListWorkloadIdentitiesResponseBody interface {
 }
 
 type ListWorkloadIdentitiesResponseBody struct {
-	// example:
-	//
-	// 100
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// AAAAAcCoknY19uiBwPrAe1W7XMikkA6+rCQddIGHccphiDPypD8zCxQkHV2pg8CkZvyRKg==
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// 173C69C9-9C07-5B25-9477-603A33E5DA32
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 33
+	MaxResults         *int32                                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken          *string                                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount         *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	WorkloadIdentities []*ListWorkloadIdentitiesResponseBodyWorkloadIdentities `json:"WorkloadIdentities,omitempty" xml:"WorkloadIdentities,omitempty" type:"Repeated"`
 }
@@ -109,34 +97,16 @@ func (s *ListWorkloadIdentitiesResponseBody) Validate() error {
 
 type ListWorkloadIdentitiesResponseBodyWorkloadIdentities struct {
 	AllowedResourceOAuth2ReturnURLs []*string `json:"AllowedResourceOAuth2ReturnURLs,omitempty" xml:"AllowedResourceOAuth2ReturnURLs,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2025-12-18T06:19:17Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// example agent
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
-	// example:
-	//
-	// acs:ram::1953507478506681:role/test-rrsa-cb5ca90a20f854671adbac6ed4559a654
-	RoleArn               *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	SessionBindingEnabled *bool   `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
-	SourceAgentArn        *string `json:"SourceAgentArn,omitempty" xml:"SourceAgentArn,omitempty"`
-	SourcePlatform        *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	// example:
-	//
-	// 2025-12-18T06:19:17Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:123456:workloadidentitydirectory/default/workloadidentity/agent-101
-	WorkloadIdentityArn *string `json:"WorkloadIdentityArn,omitempty" xml:"WorkloadIdentityArn,omitempty"`
-	// example:
-	//
-	// agent-101
-	WorkloadIdentityName *string `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
+	CreateTime                      *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description                     *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	IdentityProviderName            *string   `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
+	RoleArn                         *string   `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	SessionBindingEnabled           *bool     `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
+	SourceAgentArn                  *string   `json:"SourceAgentArn,omitempty" xml:"SourceAgentArn,omitempty"`
+	SourcePlatform                  *string   `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	UpdateTime                      *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	WorkloadIdentityArn             *string   `json:"WorkloadIdentityArn,omitempty" xml:"WorkloadIdentityArn,omitempty"`
+	WorkloadIdentityName            *string   `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
 }
 
 func (s ListWorkloadIdentitiesResponseBodyWorkloadIdentities) String() string {

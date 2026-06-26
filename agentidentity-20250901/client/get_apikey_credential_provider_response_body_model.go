@@ -17,10 +17,7 @@ type iGetAPIKeyCredentialProviderResponseBody interface {
 
 type GetAPIKeyCredentialProviderResponseBody struct {
 	APIKeyCredentialProvider *GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider `json:"APIKeyCredentialProvider,omitempty" xml:"APIKeyCredentialProvider,omitempty" type:"Struct"`
-	// example:
-	//
-	// 76BF2570-76F5-5093-87CE-0918DD85752C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAPIKeyCredentialProviderResponseBody) String() string {
@@ -59,27 +56,12 @@ func (s *GetAPIKeyCredentialProviderResponseBody) Validate() error {
 }
 
 type GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider struct {
-	// example:
-	//
-	// api-key-dash-scope
 	APIKeyCredentialProviderName *string `json:"APIKeyCredentialProviderName,omitempty" xml:"APIKeyCredentialProviderName,omitempty"`
-	// example:
-	//
-	// 2025-12-18T06:19:17Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:123456:tokenvault/default/apikeycredentialprovider/api-key-dash-scope
-	CredentialProviderArn *string `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
-	// example:
-	//
-	// example provider
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
-	// example:
-	//
-	// 2025-12-18T06:19:17Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime                   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CredentialProviderArn        *string `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	UpdateTime                   *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) String() string {

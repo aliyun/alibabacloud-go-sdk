@@ -16,9 +16,6 @@ type iCreateRoleAssignmentResponseBody interface {
 }
 
 type CreateRoleAssignmentResponseBody struct {
-	// example:
-	//
-	// AABD6E03-4B3A-5687-88FF-72232670ED0C
 	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RoleAssignment *CreateRoleAssignmentResponseBodyRoleAssignment `json:"RoleAssignment,omitempty" xml:"RoleAssignment,omitempty" type:"Struct"`
 }
@@ -59,34 +56,13 @@ func (s *CreateRoleAssignmentResponseBody) Validate() error {
 }
 
 type CreateRoleAssignmentResponseBodyRoleAssignment struct {
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// user_xxxxxxxxxxxxxxxxxxxx
-	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// example:
-	//
-	// alice
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	PrincipalId   *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	// example:
-	//
-	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// example:
-	//
-	// role_xxxxxxxxxxxxxxxxxxxx
-	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// example:
-	//
-	// Analyst
-	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// example:
-	//
-	// up_xxxxxxxxxxxxxxxxxxxx
-	UserPoolId *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
+	RoleId        *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName      *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	UserPoolId    *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
 }
 
 func (s CreateRoleAssignmentResponseBodyRoleAssignment) String() string {

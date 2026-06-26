@@ -20,19 +20,10 @@ type iCreateIdentityProviderRequest interface {
 }
 
 type CreateIdentityProviderRequest struct {
-	AllowedAudience []*string `json:"AllowedAudience,omitempty" xml:"AllowedAudience,omitempty" type:"Repeated"`
-	// example:
-	//
-	// example agent
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// https://oauth.aliyun.com/.well-known/openid-configuration
-	DiscoveryURL *string `json:"DiscoveryURL,omitempty" xml:"DiscoveryURL,omitempty"`
-	// example:
-	//
-	// identity-provider-okta
-	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
+	AllowedAudience      []*string `json:"AllowedAudience,omitempty" xml:"AllowedAudience,omitempty" type:"Repeated"`
+	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DiscoveryURL         *string   `json:"DiscoveryURL,omitempty" xml:"DiscoveryURL,omitempty"`
+	IdentityProviderName *string   `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
 }
 
 func (s CreateIdentityProviderRequest) String() string {

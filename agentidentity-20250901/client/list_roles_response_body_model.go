@@ -22,23 +22,11 @@ type iListRolesResponseBody interface {
 }
 
 type ListRolesResponseBody struct {
-	// example:
-	//
-	// 100
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// TGlzdFJvbGVzOjoyMA==
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// AABD6E03-4B3A-5687-88FF-72232670ED0C
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Roles     []*ListRolesResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 8
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Roles      []*ListRolesResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRolesResponseBody) String() string {
@@ -108,27 +96,12 @@ func (s *ListRolesResponseBody) Validate() error {
 }
 
 type ListRolesResponseBodyRoles struct {
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// role_xxxxxxxxxxxxxxxxxxxx
-	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// example:
-	//
-	// Analyst
-	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// example:
-	//
-	// Manual
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	RoleId      *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListRolesResponseBodyRoles) String() string {

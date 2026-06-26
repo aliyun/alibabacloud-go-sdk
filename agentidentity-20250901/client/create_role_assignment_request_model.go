@@ -20,22 +20,10 @@ type iCreateRoleAssignmentRequest interface {
 }
 
 type CreateRoleAssignmentRequest struct {
-	// example:
-	//
-	// alice
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	// example:
-	//
-	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// example:
-	//
-	// Analyst
-	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// example:
-	//
-	// my-agent-userpool
-	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	RoleName      *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	UserPoolName  *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s CreateRoleAssignmentRequest) String() string {

@@ -16,9 +16,6 @@ type iCreateRoleResponseBody interface {
 }
 
 type CreateRoleResponseBody struct {
-	// example:
-	//
-	// AABD6E03-4B3A-5687-88FF-72232670ED0C
 	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Role      *CreateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
@@ -59,27 +56,12 @@ func (s *CreateRoleResponseBody) Validate() error {
 }
 
 type CreateRoleResponseBodyRole struct {
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// role_xxxxxxxxxxxxxxxxxxxx
-	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// example:
-	//
-	// Analyst
-	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// example:
-	//
-	// Manual
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	RoleId      *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateRoleResponseBodyRole) String() string {

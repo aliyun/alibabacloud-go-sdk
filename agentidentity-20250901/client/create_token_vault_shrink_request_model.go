@@ -20,19 +20,10 @@ type iCreateTokenVaultShrinkRequest interface {
 }
 
 type CreateTokenVaultShrinkRequest struct {
-	// example:
-	//
-	// example description
 	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EncryptionConfigShrink *string `json:"EncryptionConfig,omitempty" xml:"EncryptionConfig,omitempty"`
-	// example:
-	//
-	// acs:ram::123456:role/AliyunAgentIdentityVaultRole
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// example:
-	//
-	// default
-	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	RoleArn                *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	TokenVaultName         *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s CreateTokenVaultShrinkRequest) String() string {

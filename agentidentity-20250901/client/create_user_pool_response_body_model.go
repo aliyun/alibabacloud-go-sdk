@@ -16,9 +16,6 @@ type iCreateUserPoolResponseBody interface {
 }
 
 type CreateUserPoolResponseBody struct {
-	// example:
-	//
-	// AABD6E03-4B3A-5687-88FF-72232670ED0C
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UserPool  *CreateUserPoolResponseBodyUserPool `json:"UserPool,omitempty" xml:"UserPool,omitempty" type:"Struct"`
 }
@@ -59,23 +56,12 @@ func (s *CreateUserPoolResponseBody) Validate() error {
 }
 
 type CreateUserPoolResponseBodyUserPool struct {
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// up_xxxxxxxxxxxxxxxxxxxx
-	UserPoolId *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
-	// example:
-	//
-	// my-agent-userpool
-	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	UpdateTime     *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserPoolId     *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
+	UserPoolName   *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s CreateUserPoolResponseBodyUserPool) String() string {
@@ -92,6 +78,10 @@ func (s *CreateUserPoolResponseBodyUserPool) GetCreateTime() *string {
 
 func (s *CreateUserPoolResponseBodyUserPool) GetDescription() *string {
 	return s.Description
+}
+
+func (s *CreateUserPoolResponseBodyUserPool) GetSourcePlatform() *string {
+	return s.SourcePlatform
 }
 
 func (s *CreateUserPoolResponseBodyUserPool) GetUpdateTime() *string {
@@ -113,6 +103,11 @@ func (s *CreateUserPoolResponseBodyUserPool) SetCreateTime(v string) *CreateUser
 
 func (s *CreateUserPoolResponseBodyUserPool) SetDescription(v string) *CreateUserPoolResponseBodyUserPool {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateUserPoolResponseBodyUserPool) SetSourcePlatform(v string) *CreateUserPoolResponseBodyUserPool {
+	s.SourcePlatform = &v
 	return s
 }
 

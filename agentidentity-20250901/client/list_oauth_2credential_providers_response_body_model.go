@@ -22,23 +22,11 @@ type iListOAuth2CredentialProvidersResponseBody interface {
 }
 
 type ListOAuth2CredentialProvidersResponseBody struct {
-	// example:
-	//
-	// 100
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// AAAAAV3MpHK1AP0pfERHZN5pu6lURp7zQ6t4/95+g/5jN5r/
+	MaxResults                *int32                                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken                 *string                                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OAuth2CredentialProviders []*ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders `json:"OAuth2CredentialProviders,omitempty" xml:"OAuth2CredentialProviders,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 690C4C7A-AFB9-54ED-9A06-84426F5C6369
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 400
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId                 *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount                *int32                                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListOAuth2CredentialProvidersResponseBody) String() string {
@@ -108,36 +96,15 @@ func (s *ListOAuth2CredentialProvidersResponseBody) Validate() error {
 }
 
 type ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders struct {
-	// example:
-	//
-	// https://agentidentitydata.cn-beijing.aliyuncs.com/oauth2/callback/d51171bc-0dae-3219-8e65-6b4cdafa3beb
-	CallbackURL *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
-	// example:
-	//
-	// 2025-12-18T06:19:17Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:123456:tokenvault/default/oauth2credentialprovider/oauth-provider-aliyun
-	CredentialProviderArn *string `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
-	// example:
-	//
-	// AliyunOAuth2
-	CredentialProviderVendor *string `json:"CredentialProviderVendor,omitempty" xml:"CredentialProviderVendor,omitempty"`
-	// example:
-	//
-	// example provider
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// oauth2-provider-aliyun
+	CallbackURL                  *string               `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
+	CreateTime                   *string               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CredentialProviderArn        *string               `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
+	CredentialProviderVendor     *string               `json:"CredentialProviderVendor,omitempty" xml:"CredentialProviderVendor,omitempty"`
+	Description                  *string               `json:"Description,omitempty" xml:"Description,omitempty"`
 	OAuth2CredentialProviderName *string               `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
 	OAuth2ProviderConfig         *OAuth2ProviderConfig `json:"OAuth2ProviderConfig,omitempty" xml:"OAuth2ProviderConfig,omitempty"`
 	TokenVaultName               *string               `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
-	// example:
-	//
-	// 2025-12-18T06:19:17Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTime                   *string               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) String() string {

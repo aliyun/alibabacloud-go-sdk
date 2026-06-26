@@ -14,9 +14,6 @@ type iDeleteOAuth2CredentialProviderResponseBody interface {
 }
 
 type DeleteOAuth2CredentialProviderResponseBody struct {
-	// example:
-	//
-	// 679B5D1D-F2A2-5D8F-BB56-B62C28CDA9D6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

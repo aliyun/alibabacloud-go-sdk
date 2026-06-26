@@ -23,22 +23,10 @@ type iListIdentityProvidersResponseBody interface {
 
 type ListIdentityProvidersResponseBody struct {
 	IdentityProviders []*ListIdentityProvidersResponseBodyIdentityProviders `json:"IdentityProviders,omitempty" xml:"IdentityProviders,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 100
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// AAAAAV3MpHK1AP0pfERHZN5pu6lsy4U8Dgz6TCndCo6o5TB8
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// D325DF9D-7CA8-5C47-BA0C-9A74873F2BE3
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 33
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults        *int32                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken         *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount        *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListIdentityProvidersResponseBody) String() string {
@@ -108,31 +96,13 @@ func (s *ListIdentityProvidersResponseBody) Validate() error {
 }
 
 type ListIdentityProvidersResponseBodyIdentityProviders struct {
-	AllowedAudience []*string `json:"AllowedAudience,omitempty" xml:"AllowedAudience,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2025-12-18T06:19:17Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// ods_api_public_ios_wanxin_boxgame_user_behavior_integration_di
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// https://oauth.aliyun.com/.well-known/openid-configuration
-	DiscoveryURL *string `json:"DiscoveryURL,omitempty" xml:"DiscoveryURL,omitempty"`
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:123456:identityprovider/identity-provider-okta
-	IdentityProviderArn *string `json:"IdentityProviderArn,omitempty" xml:"IdentityProviderArn,omitempty"`
-	// example:
-	//
-	// identity-provider-okta
-	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
-	// example:
-	//
-	// 2025-06-09T02:04:23
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	AllowedAudience      []*string `json:"AllowedAudience,omitempty" xml:"AllowedAudience,omitempty" type:"Repeated"`
+	CreateTime           *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DiscoveryURL         *string   `json:"DiscoveryURL,omitempty" xml:"DiscoveryURL,omitempty"`
+	IdentityProviderArn  *string   `json:"IdentityProviderArn,omitempty" xml:"IdentityProviderArn,omitempty"`
+	IdentityProviderName *string   `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
+	UpdateTime           *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListIdentityProvidersResponseBodyIdentityProviders) String() string {

@@ -22,21 +22,9 @@ type iListUsersResponseBody interface {
 }
 
 type ListUsersResponseBody struct {
-	// example:
-	//
-	// 100
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// TGlzdFVzZXJzOjoyMA==
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// AABD6E03-4B3A-5687-88FF-72232670ED0C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 30
+	MaxResults *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Users      []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
@@ -108,27 +96,15 @@ func (s *ListUsersResponseBody) Validate() error {
 }
 
 type ListUsersResponseBodyUsers struct {
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// Alice Wang
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// user_xxxxxxxxxxxxxxxxxxxx
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// example:
-	//
-	// alice
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ListUsersResponseBodyUsers) String() string {
@@ -149,6 +125,18 @@ func (s *ListUsersResponseBodyUsers) GetDescription() *string {
 
 func (s *ListUsersResponseBodyUsers) GetDisplayName() *string {
 	return s.DisplayName
+}
+
+func (s *ListUsersResponseBodyUsers) GetEmail() *string {
+	return s.Email
+}
+
+func (s *ListUsersResponseBodyUsers) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListUsersResponseBodyUsers) GetType() *string {
+	return s.Type
 }
 
 func (s *ListUsersResponseBodyUsers) GetUpdateTime() *string {
@@ -175,6 +163,21 @@ func (s *ListUsersResponseBodyUsers) SetDescription(v string) *ListUsersResponse
 
 func (s *ListUsersResponseBodyUsers) SetDisplayName(v string) *ListUsersResponseBodyUsers {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsers) SetEmail(v string) *ListUsersResponseBodyUsers {
+	s.Email = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsers) SetStatus(v string) *ListUsersResponseBodyUsers {
+	s.Status = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsers) SetType(v string) *ListUsersResponseBodyUsers {
+	s.Type = &v
 	return s
 }
 

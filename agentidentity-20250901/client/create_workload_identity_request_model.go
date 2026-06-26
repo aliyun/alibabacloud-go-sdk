@@ -32,25 +32,13 @@ type iCreateWorkloadIdentityRequest interface {
 type CreateWorkloadIdentityRequest struct {
 	AllowedResourceOAuth2ReturnURLs []*string `json:"AllowedResourceOAuth2ReturnURLs,omitempty" xml:"AllowedResourceOAuth2ReturnURLs,omitempty" type:"Repeated"`
 	CreateRAMRole                   *bool     `json:"CreateRAMRole,omitempty" xml:"CreateRAMRole,omitempty"`
-	// example:
-	//
-	// example agent
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// identity-provider-okta
-	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
-	// example:
-	//
-	// acs:ram::123456:role/agent-101-role
-	RoleArn               *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	SessionBindingEnabled *bool   `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
-	SourceAgentArn        *string `json:"SourceAgentArn,omitempty" xml:"SourceAgentArn,omitempty"`
-	SourcePlatform        *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	// example:
-	//
-	// agent-101
-	WorkloadIdentityName *string `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
+	Description                     *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	IdentityProviderName            *string   `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
+	RoleArn                         *string   `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	SessionBindingEnabled           *bool     `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
+	SourceAgentArn                  *string   `json:"SourceAgentArn,omitempty" xml:"SourceAgentArn,omitempty"`
+	SourcePlatform                  *string   `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	WorkloadIdentityName            *string   `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
 }
 
 func (s CreateWorkloadIdentityRequest) String() string {

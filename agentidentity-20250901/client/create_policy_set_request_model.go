@@ -16,13 +16,7 @@ type iCreatePolicySetRequest interface {
 }
 
 type CreatePolicySetRequest struct {
-	// example:
-	//
-	// example description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// default-policy-set
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
 }
 

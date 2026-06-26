@@ -18,14 +18,8 @@ type iDetachPolicySetFromGatewayRequest interface {
 }
 
 type DetachPolicySetFromGatewayRequest struct {
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:123456:gateway/my-gateway
-	GatewayArn  *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
-	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	// example:
-	//
-	// default-policy-set
+	GatewayArn    *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
+	GatewayType   *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
 }
 

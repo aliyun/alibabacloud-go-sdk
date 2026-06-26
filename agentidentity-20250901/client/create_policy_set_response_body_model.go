@@ -17,10 +17,7 @@ type iCreatePolicySetResponseBody interface {
 
 type CreatePolicySetResponseBody struct {
 	PolicySet *CreatePolicySetResponseBodyPolicySet `json:"PolicySet,omitempty" xml:"PolicySet,omitempty" type:"Struct"`
-	// example:
-	//
-	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePolicySetResponseBody) String() string {
@@ -59,21 +56,9 @@ func (s *CreatePolicySetResponseBody) Validate() error {
 }
 
 type CreatePolicySetResponseBodyPolicySet struct {
-	// example:
-	//
-	// 2026-05-08T06:19:17Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// example description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:123456:policyset/default-policy-set
-	PolicySetArn *string `json:"PolicySetArn,omitempty" xml:"PolicySetArn,omitempty"`
-	// example:
-	//
-	// default-policy-set
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PolicySetArn  *string `json:"PolicySetArn,omitempty" xml:"PolicySetArn,omitempty"`
 	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
 }
 

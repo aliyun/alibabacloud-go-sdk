@@ -14,9 +14,6 @@ type iUpdateAPIKeyCredentialProviderResponseBody interface {
 }
 
 type UpdateAPIKeyCredentialProviderResponseBody struct {
-	// example:
-	//
-	// A0FD8DC1-2E36-50F4-97D4-6494F96F7FB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

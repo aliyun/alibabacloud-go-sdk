@@ -16,9 +16,6 @@ type iGetUserResponseBody interface {
 }
 
 type GetUserResponseBody struct {
-	// example:
-	//
-	// AABD6E03-4B3A-5687-88FF-72232670ED0C
 	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	User      *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
@@ -59,27 +56,15 @@ func (s *GetUserResponseBody) Validate() error {
 }
 
 type GetUserResponseBodyUser struct {
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// Alice Wang
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// user_xxxxxxxxxxxxxxxxxxxx
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// example:
-	//
-	// alice
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s GetUserResponseBodyUser) String() string {
@@ -100,6 +85,18 @@ func (s *GetUserResponseBodyUser) GetDescription() *string {
 
 func (s *GetUserResponseBodyUser) GetDisplayName() *string {
 	return s.DisplayName
+}
+
+func (s *GetUserResponseBodyUser) GetEmail() *string {
+	return s.Email
+}
+
+func (s *GetUserResponseBodyUser) GetStatus() *string {
+	return s.Status
+}
+
+func (s *GetUserResponseBodyUser) GetType() *string {
+	return s.Type
 }
 
 func (s *GetUserResponseBodyUser) GetUpdateTime() *string {
@@ -126,6 +123,21 @@ func (s *GetUserResponseBodyUser) SetDescription(v string) *GetUserResponseBodyU
 
 func (s *GetUserResponseBodyUser) SetDisplayName(v string) *GetUserResponseBodyUser {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *GetUserResponseBodyUser) SetEmail(v string) *GetUserResponseBodyUser {
+	s.Email = &v
+	return s
+}
+
+func (s *GetUserResponseBodyUser) SetStatus(v string) *GetUserResponseBodyUser {
+	s.Status = &v
+	return s
+}
+
+func (s *GetUserResponseBodyUser) SetType(v string) *GetUserResponseBodyUser {
+	s.Type = &v
 	return s
 }
 

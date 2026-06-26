@@ -14,9 +14,6 @@ type iDeleteTokenVaultRequest interface {
 }
 
 type DeleteTokenVaultRequest struct {
-	// example:
-	//
-	// default
 	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 

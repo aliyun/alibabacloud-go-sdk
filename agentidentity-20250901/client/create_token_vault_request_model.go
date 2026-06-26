@@ -20,19 +20,10 @@ type iCreateTokenVaultRequest interface {
 }
 
 type CreateTokenVaultRequest struct {
-	// example:
-	//
-	// example description
 	Description      *string           `json:"Description,omitempty" xml:"Description,omitempty"`
 	EncryptionConfig *EncryptionConfig `json:"EncryptionConfig,omitempty" xml:"EncryptionConfig,omitempty"`
-	// example:
-	//
-	// acs:ram::123456:role/AliyunAgentIdentityVaultRole
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// example:
-	//
-	// default
-	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	RoleArn          *string           `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	TokenVaultName   *string           `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
 func (s CreateTokenVaultRequest) String() string {

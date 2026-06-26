@@ -17,10 +17,7 @@ type iCreateIdentityProviderResponseBody interface {
 
 type CreateIdentityProviderResponseBody struct {
 	IdentityProvider *CreateIdentityProviderResponseBodyIdentityProvider `json:"IdentityProvider,omitempty" xml:"IdentityProvider,omitempty" type:"Struct"`
-	// example:
-	//
-	// AABD6E03-4B3A-5687-88FF-72232670ED0C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateIdentityProviderResponseBody) String() string {
@@ -59,31 +56,13 @@ func (s *CreateIdentityProviderResponseBody) Validate() error {
 }
 
 type CreateIdentityProviderResponseBodyIdentityProvider struct {
-	AllowedAudience []*string `json:"AllowedAudience,omitempty" xml:"AllowedAudience,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2025-12-18T06:19:17Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// example identity provider
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// https://oauth.aliyun.com/.well-known/openid-configuration
-	DiscoveryURL *string `json:"DiscoveryURL,omitempty" xml:"DiscoveryURL,omitempty"`
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:123456:identityprovider/identity-provider-okta
-	IdentityProviderArn *string `json:"IdentityProviderArn,omitempty" xml:"IdentityProviderArn,omitempty"`
-	// example:
-	//
-	// identity-provider-okta
-	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
-	// example:
-	//
-	// 2025-12-18T06:19:17Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	AllowedAudience      []*string `json:"AllowedAudience,omitempty" xml:"AllowedAudience,omitempty" type:"Repeated"`
+	CreateTime           *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DiscoveryURL         *string   `json:"DiscoveryURL,omitempty" xml:"DiscoveryURL,omitempty"`
+	IdentityProviderArn  *string   `json:"IdentityProviderArn,omitempty" xml:"IdentityProviderArn,omitempty"`
+	IdentityProviderName *string   `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
+	UpdateTime           *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateIdentityProviderResponseBodyIdentityProvider) String() string {

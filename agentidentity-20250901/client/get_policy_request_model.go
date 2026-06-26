@@ -16,13 +16,7 @@ type iGetPolicyRequest interface {
 }
 
 type GetPolicyRequest struct {
-	// example:
-	//
-	// rate-limit-policy
-	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// example:
-	//
-	// default-policy-set
+	PolicyName    *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
 }
 

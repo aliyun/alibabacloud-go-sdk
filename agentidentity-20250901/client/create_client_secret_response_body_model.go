@@ -17,10 +17,7 @@ type iCreateClientSecretResponseBody interface {
 
 type CreateClientSecretResponseBody struct {
 	ClientSecret *CreateClientSecretResponseBodyClientSecret `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty" type:"Struct"`
-	// example:
-	//
-	// AABD6E03-4B3A-5687-88FF-72232670ED0C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateClientSecretResponseBody) String() string {
@@ -59,30 +56,12 @@ func (s *CreateClientSecretResponseBody) Validate() error {
 }
 
 type CreateClientSecretResponseBodyClientSecret struct {
-	// example:
-	//
-	// client_xxxxxxxxxxxxxxxxxxxx
-	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// example:
-	//
-	// my-web-app
-	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
-	// example:
-	//
-	// secret_xxxxxxxxxxxxxxxxxxxx
-	ClientSecretId *string `json:"ClientSecretId,omitempty" xml:"ClientSecretId,omitempty"`
-	// example:
-	//
-	// xxxxxxxxxxxxxxxx
+	ClientId          *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientName        *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	ClientSecretId    *string `json:"ClientSecretId,omitempty" xml:"ClientSecretId,omitempty"`
 	ClientSecretValue *string `json:"ClientSecretValue,omitempty" xml:"ClientSecretValue,omitempty"`
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// my-agent-userpool
-	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	UserPoolName      *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s CreateClientSecretResponseBodyClientSecret) String() string {

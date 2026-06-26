@@ -23,22 +23,10 @@ type iListRoleAssignmentsResponseBody interface {
 
 type ListRoleAssignmentsResponseBody struct {
 	Assignments []*ListRoleAssignmentsResponseBodyAssignments `json:"Assignments,omitempty" xml:"Assignments,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 100
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// TGlzdEFzc2lnbm1lbnRzOjoyMA==
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// AABD6E03-4B3A-5687-88FF-72232670ED0C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 12
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults  *int32                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRoleAssignmentsResponseBody) String() string {
@@ -108,34 +96,13 @@ func (s *ListRoleAssignmentsResponseBody) Validate() error {
 }
 
 type ListRoleAssignmentsResponseBodyAssignments struct {
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// user_xxxxxxxxxxxxxxxxxxxx
-	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// example:
-	//
-	// alice
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	PrincipalId   *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	// example:
-	//
-	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// example:
-	//
-	// role_xxxxxxxxxxxxxxxxxxxx
-	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// example:
-	//
-	// Analyst
-	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// example:
-	//
-	// up_xxxxxxxxxxxxxxxxxxxx
-	UserPoolId *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
+	RoleId        *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName      *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	UserPoolId    *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
 }
 
 func (s ListRoleAssignmentsResponseBodyAssignments) String() string {

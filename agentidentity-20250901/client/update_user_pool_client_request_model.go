@@ -26,31 +26,13 @@ type iUpdateUserPoolClientRequest interface {
 }
 
 type UpdateUserPoolClientRequest struct {
-	// example:
-	//
-	// 3600
-	AccessTokenValidity *string `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
-	// example:
-	//
-	// my-web-app
-	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
-	// example:
-	//
-	// true
-	EnforcePKCE  *bool     `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
-	RedirectURIs []*string `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 86400
-	RefreshTokenValidity *string `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
-	// example:
-	//
-	// true
-	SecretRequired *bool `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
-	// example:
-	//
-	// my-agent-userpool
-	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	AccessTokenValidity  *string   `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
+	ClientName           *string   `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	EnforcePKCE          *bool     `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
+	RedirectURIs         []*string `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty" type:"Repeated"`
+	RefreshTokenValidity *string   `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
+	SecretRequired       *bool     `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
+	UserPoolName         *string   `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s UpdateUserPoolClientRequest) String() string {

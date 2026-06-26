@@ -16,13 +16,7 @@ type iGetUserRequest interface {
 }
 
 type GetUserRequest struct {
-	// example:
-	//
-	// alice
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// example:
-	//
-	// my-agent-userpool
+	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

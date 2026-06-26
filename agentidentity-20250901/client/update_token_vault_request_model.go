@@ -18,17 +18,8 @@ type iUpdateTokenVaultRequest interface {
 }
 
 type UpdateTokenVaultRequest struct {
-	// example:
-	//
-	// example description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// acs:ram::123456:role/AliyunAgentIdentityVaultRole
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// example:
-	//
-	// default
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RoleArn        *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 

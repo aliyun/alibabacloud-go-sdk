@@ -27,23 +27,11 @@ type UpdateWorkloadIdentityRequest struct {
 	// if can be null:
 	// false
 	AllowedResourceOAuth2ReturnURLs []*string `json:"AllowedResourceOAuth2ReturnURLs,omitempty" xml:"AllowedResourceOAuth2ReturnURLs,omitempty" type:"Repeated"`
-	// example:
-	//
-	// example agent
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// identity-provider-okta
-	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
-	// example:
-	//
-	// acs:ram::123456:role/agent-101-role
-	RoleArn               *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	SessionBindingEnabled *string `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
-	// example:
-	//
-	// agent-101
-	WorkloadIdentityName *string `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
+	Description                     *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	IdentityProviderName            *string   `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
+	RoleArn                         *string   `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	SessionBindingEnabled           *string   `json:"SessionBindingEnabled,omitempty" xml:"SessionBindingEnabled,omitempty"`
+	WorkloadIdentityName            *string   `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
 }
 
 func (s UpdateWorkloadIdentityRequest) String() string {

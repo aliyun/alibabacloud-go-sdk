@@ -16,9 +16,6 @@ type iGetGatewayPolicyConfigRequest interface {
 }
 
 type GetGatewayPolicyConfigRequest struct {
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:123456:gateway/my-gateway
 	GatewayArn  *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
 	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 }

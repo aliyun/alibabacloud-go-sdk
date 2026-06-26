@@ -16,9 +16,6 @@ type iListSAMLIdentityProviderCertificatesResponseBody interface {
 }
 
 type ListSAMLIdentityProviderCertificatesResponseBody struct {
-	// example:
-	//
-	// AABD6E03-4B3A-5687-88FF-72232670ED0C
 	RequestId        *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	X509Certificates []*ListSAMLIdentityProviderCertificatesResponseBodyX509Certificates `json:"X509Certificates,omitempty" xml:"X509Certificates,omitempty" type:"Repeated"`
 }
@@ -63,17 +60,7 @@ func (s *ListSAMLIdentityProviderCertificatesResponseBody) Validate() error {
 }
 
 type ListSAMLIdentityProviderCertificatesResponseBodyX509Certificates struct {
-	// example:
-	//
-	// cert-xxxxxxxxxxxxxxxxxxxx
-	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// example:
-	//
-	// -----BEGIN CERTIFICATE-----
-	//
-	// MIIDdz...
-	//
-	// -----END CERTIFICATE-----
+	CertificateId   *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 

@@ -16,9 +16,6 @@ type iSetSAMLIdentityProviderResponseBody interface {
 }
 
 type SetSAMLIdentityProviderResponseBody struct {
-	// example:
-	//
-	// AABD6E03-4B3A-5687-88FF-72232670ED0C
 	RequestId                        *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SSOIdentityProviderConfiguration *SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration `json:"SSOIdentityProviderConfiguration,omitempty" xml:"SSOIdentityProviderConfiguration,omitempty" type:"Struct"`
 }
@@ -59,31 +56,13 @@ func (s *SetSAMLIdentityProviderResponseBody) Validate() error {
 }
 
 type SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration struct {
-	// example:
-	//
-	// https://idp.example.com/entity
-	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// example:
-	//
-	// Enabled
-	JITProvisionStatus *string `json:"JITProvisionStatus,omitempty" xml:"JITProvisionStatus,omitempty"`
-	// example:
-	//
-	// Enabled
-	JITUpdateStatus *string `json:"JITUpdateStatus,omitempty" xml:"JITUpdateStatus,omitempty"`
-	// example:
-	//
-	// https://idp.example.com/sso/saml
-	LoginURL *string `json:"LoginURL,omitempty" xml:"LoginURL,omitempty"`
-	// example:
-	//
-	// HTTP-Redirect
-	SAMLBindingType *string `json:"SAMLBindingType,omitempty" xml:"SAMLBindingType,omitempty"`
-	// example:
-	//
-	// Enabled
-	SSOStatus        *string                                                                                `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
-	X509Certificates []*SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Certificates `json:"X509Certificates,omitempty" xml:"X509Certificates,omitempty" type:"Repeated"`
+	EntityId           *string                                                                                `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	JITProvisionStatus *string                                                                                `json:"JITProvisionStatus,omitempty" xml:"JITProvisionStatus,omitempty"`
+	JITUpdateStatus    *string                                                                                `json:"JITUpdateStatus,omitempty" xml:"JITUpdateStatus,omitempty"`
+	LoginURL           *string                                                                                `json:"LoginURL,omitempty" xml:"LoginURL,omitempty"`
+	SAMLBindingType    *string                                                                                `json:"SAMLBindingType,omitempty" xml:"SAMLBindingType,omitempty"`
+	SSOStatus          *string                                                                                `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
+	X509Certificates   []*SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Certificates `json:"X509Certificates,omitempty" xml:"X509Certificates,omitempty" type:"Repeated"`
 }
 
 func (s SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration) String() string {
@@ -171,17 +150,7 @@ func (s *SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration) Va
 }
 
 type SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Certificates struct {
-	// example:
-	//
-	// cert-xxxxxxxxxxxxxxxxxxxx
-	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// example:
-	//
-	// -----BEGIN CERTIFICATE-----
-	//
-	// MIIDdz...
-	//
-	// -----END CERTIFICATE-----
+	CertificateId   *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 

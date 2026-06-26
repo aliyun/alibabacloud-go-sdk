@@ -14,9 +14,6 @@ type iDeleteWorkloadIdentityRequest interface {
 }
 
 type DeleteWorkloadIdentityRequest struct {
-	// example:
-	//
-	// agent-101
 	WorkloadIdentityName *string `json:"WorkloadIdentityName,omitempty" xml:"WorkloadIdentityName,omitempty"`
 }
 

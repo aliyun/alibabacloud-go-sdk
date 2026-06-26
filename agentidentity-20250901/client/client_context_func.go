@@ -633,6 +633,70 @@ func (client *Client) CreateTokenVaultWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
+// 创建用户池用户
+//
+// @param request - CreateUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserResponse
+func (client *Client) CreateUserWithContext(ctx context.Context, request *CreateUserRequest, runtime *dara.RuntimeOptions) (_result *CreateUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.Email) {
+		body["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["UserName"] = request.UserName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateUser"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建UserPool
 //
 // @param request - CreateUserPoolRequest
@@ -1697,6 +1761,50 @@ func (client *Client) GetIdentityProviderWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 获取用户池登录相关配置
+//
+// @param request - GetLoginPreferenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLoginPreferenceResponse
+func (client *Client) GetLoginPreferenceWithContext(ctx context.Context, request *GetLoginPreferenceRequest, runtime *dara.RuntimeOptions) (_result *GetLoginPreferenceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLoginPreference"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLoginPreferenceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询 OAuth2 凭证提供商
 //
 // @param request - GetOAuth2CredentialProviderRequest
@@ -1973,6 +2081,54 @@ func (client *Client) GetSAMLServiceProviderInfoWithContext(ctx context.Context,
 
 // Summary:
 //
+// 获取指定的身份提供商
+//
+// @param request - GetSpecificIdentityProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSpecificIdentityProviderResponse
+func (client *Client) GetSpecificIdentityProviderWithContext(ctx context.Context, request *GetSpecificIdentityProviderRequest, runtime *dara.RuntimeOptions) (_result *GetSpecificIdentityProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderType) {
+		body["IdentityProviderType"] = request.IdentityProviderType
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSpecificIdentityProvider"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSpecificIdentityProviderResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取指定凭证库的详细配置。
 //
 // @param request - GetTokenVaultRequest
@@ -2147,6 +2303,54 @@ func (client *Client) GetUserPoolClientWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetUserPoolClientResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取UserPool
+//
+// @param request - GetUserPoolSyncJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserPoolSyncJobResponse
+func (client *Client) GetUserPoolSyncJobWithContext(ctx context.Context, request *GetUserPoolSyncJobRequest, runtime *dara.RuntimeOptions) (_result *GetUserPoolSyncJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SynchronizationJobId) {
+		body["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUserPoolSyncJob"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUserPoolSyncJobResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2819,6 +3023,58 @@ func (client *Client) ListUserPoolClientsWithContext(ctx context.Context, reques
 //
 // 列出IdentityProvider
 //
+// @param request - ListUserPoolSyncJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserPoolSyncJobsResponse
+func (client *Client) ListUserPoolSyncJobsWithContext(ctx context.Context, request *ListUserPoolSyncJobsRequest, runtime *dara.RuntimeOptions) (_result *ListUserPoolSyncJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUserPoolSyncJobs"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUserPoolSyncJobsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出IdentityProvider
+//
 // @param request - ListUserPoolsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2965,6 +3221,58 @@ func (client *Client) ListWorkloadIdentitiesWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 创建UserPool
+//
+// @param request - RunUserPoolSyncJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunUserPoolSyncJobResponse
+func (client *Client) RunUserPoolSyncJobWithContext(ctx context.Context, request *RunUserPoolSyncJobRequest, runtime *dara.RuntimeOptions) (_result *RunUserPoolSyncJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderType) {
+		body["IdentityProviderType"] = request.IdentityProviderType
+	}
+
+	if !dara.IsNil(request.MaxSyncUsers) {
+		body["MaxSyncUsers"] = request.MaxSyncUsers
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunUserPoolSyncJob"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunUserPoolSyncJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建WorkloadIdentity
 //
 // @param tmpReq - SetSAMLIdentityProviderRequest
@@ -3033,6 +3341,118 @@ func (client *Client) SetSAMLIdentityProviderWithContext(ctx context.Context, tm
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetSAMLIdentityProviderResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通用IdP配置
+//
+// @param request - SetSpecificIdentityProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetSpecificIdentityProviderResponse
+func (client *Client) SetSpecificIdentityProviderWithContext(ctx context.Context, request *SetSpecificIdentityProviderRequest, runtime *dara.RuntimeOptions) (_result *SetSpecificIdentityProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IDPMetadata) {
+		body["IDPMetadata"] = request.IDPMetadata
+	}
+
+	if !dara.IsNil(request.IdentityProviderType) {
+		body["IdentityProviderType"] = request.IdentityProviderType
+	}
+
+	if !dara.IsNil(request.SSOStatus) {
+		body["SSOStatus"] = request.SSOStatus
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetSpecificIdentityProvider"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetSpecificIdentityProviderResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改用户登录密码
+//
+// @param request - SetUserPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetUserPasswordResponse
+func (client *Client) SetUserPasswordWithContext(ctx context.Context, request *SetUserPasswordRequest, runtime *dara.RuntimeOptions) (_result *SetUserPasswordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GenerateRandomPassword) {
+		body["GenerateRandomPassword"] = request.GenerateRandomPassword
+	}
+
+	if !dara.IsNil(request.Password) {
+		body["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["UserName"] = request.UserName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetUserPassword"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetUserPasswordResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3203,6 +3623,62 @@ func (client *Client) UpdateIdentityProviderWithContext(ctx context.Context, tmp
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateIdentityProviderResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新用户池登录配置
+//
+// @param tmpReq - UpdateLoginPreferenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLoginPreferenceResponse
+func (client *Client) UpdateLoginPreferenceWithContext(ctx context.Context, tmpReq *UpdateLoginPreferenceRequest, runtime *dara.RuntimeOptions) (_result *UpdateLoginPreferenceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateLoginPreferenceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.LoginPreference) {
+		request.LoginPreferenceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LoginPreference, dara.String("LoginPreference"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.LoginPreferenceShrink) {
+		query["LoginPreference"] = request.LoginPreferenceShrink
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateLoginPreference"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateLoginPreferenceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3487,6 +3963,70 @@ func (client *Client) UpdateTokenVaultWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTokenVaultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新用户池用户
+//
+// @param request - UpdateUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserResponse
+func (client *Client) UpdateUserWithContext(ctx context.Context, request *UpdateUserRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.Email) {
+		body["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["UserName"] = request.UserName
+	}
+
+	if !dara.IsNil(request.UserPoolName) {
+		body["UserPoolName"] = request.UserPoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateUser"),
+		Version:     dara.String("2025-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateUserResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

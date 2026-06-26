@@ -23,22 +23,10 @@ type iListAPIKeyCredentialProvidersResponseBody interface {
 
 type ListAPIKeyCredentialProvidersResponseBody struct {
 	APIKeyCredentialProviders []*ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders `json:"APIKeyCredentialProviders,omitempty" xml:"APIKeyCredentialProviders,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 100
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// AAAAAWbTEdBU0yvszsl8EEXALb8=
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// 4D51596A-8A87-565B-8EDE-45141A02F11C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 452
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults                *int32                                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                 *string                                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId                 *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount                *int32                                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAPIKeyCredentialProvidersResponseBody) String() string {
@@ -108,27 +96,12 @@ func (s *ListAPIKeyCredentialProvidersResponseBody) Validate() error {
 }
 
 type ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders struct {
-	// example:
-	//
-	// api-key-dash-scope
 	APIKeyCredentialProviderName *string `json:"APIKeyCredentialProviderName,omitempty" xml:"APIKeyCredentialProviderName,omitempty"`
-	// example:
-	//
-	// 2025-12-18T06:19:17Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:123456:tokenvault/default/apikeycredentialprovider/api-key-dash-scope
-	CredentialProviderArn *string `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
-	// example:
-	//
-	// example provider
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
-	// example:
-	//
-	// 2025-12-18T06:19:17Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime                   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CredentialProviderArn        *string `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	UpdateTime                   *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders) String() string {

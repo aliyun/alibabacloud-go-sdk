@@ -26,31 +26,13 @@ type iUpdateUserPoolClientShrinkRequest interface {
 }
 
 type UpdateUserPoolClientShrinkRequest struct {
-	// example:
-	//
-	// 3600
-	AccessTokenValidity *string `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
-	// example:
-	//
-	// my-web-app
-	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
-	// example:
-	//
-	// true
-	EnforcePKCE        *bool   `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
-	RedirectURIsShrink *string `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty"`
-	// example:
-	//
-	// 86400
+	AccessTokenValidity  *string `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
+	ClientName           *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	EnforcePKCE          *bool   `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
+	RedirectURIsShrink   *string `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty"`
 	RefreshTokenValidity *string `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
-	// example:
-	//
-	// true
-	SecretRequired *bool `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
-	// example:
-	//
-	// my-agent-userpool
-	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	SecretRequired       *bool   `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
+	UserPoolName         *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s UpdateUserPoolClientShrinkRequest) String() string {

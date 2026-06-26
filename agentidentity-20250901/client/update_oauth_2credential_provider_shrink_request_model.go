@@ -24,23 +24,9 @@ type iUpdateOAuth2CredentialProviderShrinkRequest interface {
 }
 
 type UpdateOAuth2CredentialProviderShrinkRequest struct {
-	// example:
-	//
-	// https://agentidentitydata.cn-beijing.aliyuncs.com/oauth2/callback/d51171bc-0dae-3219-8e65-6b4cdafa3beb
-	CallbackURL *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
-	// AliyunOAuth2
-	//
-	// example:
-	//
-	// AliyunOAuth2
-	CredentialProviderVendor *string `json:"CredentialProviderVendor,omitempty" xml:"CredentialProviderVendor,omitempty"`
-	// example:
-	//
-	// new example provider
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// oauth2-provider-aliyun
+	CallbackURL                  *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
+	CredentialProviderVendor     *string `json:"CredentialProviderVendor,omitempty" xml:"CredentialProviderVendor,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	OAuth2CredentialProviderName *string `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
 	OAuth2ProviderConfigShrink   *string `json:"OAuth2ProviderConfig,omitempty" xml:"OAuth2ProviderConfig,omitempty"`
 	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`

@@ -14,9 +14,6 @@ type iGetPolicySetRequest interface {
 }
 
 type GetPolicySetRequest struct {
-	// example:
-	//
-	// default-policy-set
 	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
 }
 

@@ -20,19 +20,10 @@ type iAttachPolicySetToGatewayRequest interface {
 }
 
 type AttachPolicySetToGatewayRequest struct {
-	// example:
-	//
-	// ENFORCE
 	EnforcementMode *string `json:"EnforcementMode,omitempty" xml:"EnforcementMode,omitempty"`
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:123456:gateway/my-gateway
-	GatewayArn  *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
-	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	// example:
-	//
-	// default-policy-set
-	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
+	GatewayArn      *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
+	GatewayType     *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	PolicySetName   *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
 }
 
 func (s AttachPolicySetToGatewayRequest) String() string {

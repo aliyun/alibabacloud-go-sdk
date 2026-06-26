@@ -23,22 +23,10 @@ type iListPolicySetAttachedGatewaysResponseBody interface {
 
 type ListPolicySetAttachedGatewaysResponseBody struct {
 	AttachedGateways []*ListPolicySetAttachedGatewaysResponseBodyAttachedGateways `json:"AttachedGateways,omitempty" xml:"AttachedGateways,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 20
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// AAAAAdDWBF2
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults       *int32                                                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string                                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId        *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPolicySetAttachedGatewaysResponseBody) String() string {
@@ -108,23 +96,11 @@ func (s *ListPolicySetAttachedGatewaysResponseBody) Validate() error {
 }
 
 type ListPolicySetAttachedGatewaysResponseBodyAttachedGateways struct {
-	// example:
-	//
-	// default-policy-set
 	AttachedPolicySetName *string `json:"AttachedPolicySetName,omitempty" xml:"AttachedPolicySetName,omitempty"`
-	// example:
-	//
-	// 2026-05-08T06:19:17Z
-	AttachedTime *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
-	// example:
-	//
-	// ENFORCE
-	EnforcementMode *string `json:"EnforcementMode,omitempty" xml:"EnforcementMode,omitempty"`
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:123456:gateway/my-gateway
-	GatewayArn  *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
-	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	AttachedTime          *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
+	EnforcementMode       *string `json:"EnforcementMode,omitempty" xml:"EnforcementMode,omitempty"`
+	GatewayArn            *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
+	GatewayType           *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 }
 
 func (s ListPolicySetAttachedGatewaysResponseBodyAttachedGateways) String() string {

@@ -16,10 +16,7 @@ type iCreateUserPoolRequest interface {
 }
 
 type CreateUserPoolRequest struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// my-agent-userpool
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

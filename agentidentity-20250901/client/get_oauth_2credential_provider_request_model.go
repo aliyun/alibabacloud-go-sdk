@@ -16,9 +16,6 @@ type iGetOAuth2CredentialProviderRequest interface {
 }
 
 type GetOAuth2CredentialProviderRequest struct {
-	// example:
-	//
-	// oauth2-provider-aliyun
 	OAuth2CredentialProviderName *string `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
 	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }

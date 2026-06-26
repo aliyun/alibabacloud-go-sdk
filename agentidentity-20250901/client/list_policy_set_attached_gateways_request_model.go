@@ -20,18 +20,9 @@ type iListPolicySetAttachedGatewaysRequest interface {
 }
 
 type ListPolicySetAttachedGatewaysRequest struct {
-	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	// example:
-	//
-	// 20
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// AAAAAdDWBF2
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// default-policy-set
+	GatewayType   *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
 }
 

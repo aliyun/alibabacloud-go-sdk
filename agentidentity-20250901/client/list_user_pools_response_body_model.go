@@ -22,21 +22,9 @@ type iListUserPoolsResponseBody interface {
 }
 
 type ListUserPoolsResponseBody struct {
-	// example:
-	//
-	// 100
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// TGlzdFVzZXJQb29sczo6MjA=
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// AABD6E03-4B3A-5687-88FF-72232670ED0C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 5
+	MaxResults *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	UserPools  []*ListUserPoolsResponseBodyUserPools `json:"UserPools,omitempty" xml:"UserPools,omitempty" type:"Repeated"`
 }
@@ -108,23 +96,12 @@ func (s *ListUserPoolsResponseBody) Validate() error {
 }
 
 type ListUserPoolsResponseBodyUserPools struct {
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// up-xxxxxxxxxxxxxxxxxxxx
-	UserPoolId *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
-	// example:
-	//
-	// my-agent-userpool
-	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	UpdateTime     *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserPoolId     *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
+	UserPoolName   *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s ListUserPoolsResponseBodyUserPools) String() string {
@@ -141,6 +118,10 @@ func (s *ListUserPoolsResponseBodyUserPools) GetCreateTime() *string {
 
 func (s *ListUserPoolsResponseBodyUserPools) GetDescription() *string {
 	return s.Description
+}
+
+func (s *ListUserPoolsResponseBodyUserPools) GetSourcePlatform() *string {
+	return s.SourcePlatform
 }
 
 func (s *ListUserPoolsResponseBodyUserPools) GetUpdateTime() *string {
@@ -162,6 +143,11 @@ func (s *ListUserPoolsResponseBodyUserPools) SetCreateTime(v string) *ListUserPo
 
 func (s *ListUserPoolsResponseBodyUserPools) SetDescription(v string) *ListUserPoolsResponseBodyUserPools {
 	s.Description = &v
+	return s
+}
+
+func (s *ListUserPoolsResponseBodyUserPools) SetSourcePlatform(v string) *ListUserPoolsResponseBodyUserPools {
+	s.SourcePlatform = &v
 	return s
 }
 

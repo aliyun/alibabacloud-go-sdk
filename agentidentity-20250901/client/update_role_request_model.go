@@ -18,14 +18,8 @@ type iUpdateRoleRequest interface {
 }
 
 type UpdateRoleRequest struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// Analyst
-	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// example:
-	//
-	// my-agent-userpool
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

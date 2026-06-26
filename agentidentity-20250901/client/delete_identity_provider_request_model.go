@@ -14,9 +14,6 @@ type iDeleteIdentityProviderRequest interface {
 }
 
 type DeleteIdentityProviderRequest struct {
-	// example:
-	//
-	// identity-provider-okta
 	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
 }
 

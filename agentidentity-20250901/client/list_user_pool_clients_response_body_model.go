@@ -22,23 +22,11 @@ type iListUserPoolClientsResponseBody interface {
 }
 
 type ListUserPoolClientsResponseBody struct {
-	Clients []*ListUserPoolClientsResponseBodyClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 100
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// TGlzdENsaWVudHM6OjIw
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// AABD6E03-4B3A-5687-88FF-72232670ED0C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 5
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Clients    []*ListUserPoolClientsResponseBodyClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
+	MaxResults *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListUserPoolClientsResponseBody) String() string {
@@ -108,44 +96,18 @@ func (s *ListUserPoolClientsResponseBody) Validate() error {
 }
 
 type ListUserPoolClientsResponseBodyClients struct {
-	// example:
-	//
-	// 3600
-	AccessTokenValidity *string `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
-	// example:
-	//
-	// client-xxxxxxxxxxxxxxxxxxxx
-	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// example:
-	//
-	// my-web-app
-	ClientName   *string                                               `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
-	ClientScopes []*ListUserPoolClientsResponseBodyClientsClientScopes `json:"ClientScopes,omitempty" xml:"ClientScopes,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// true
-	EnforcePKCE  *bool     `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
-	RedirectURIs []*string `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 86400
-	RefreshTokenValidity *string `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
-	// example:
-	//
-	// true
-	SecretRequired *bool `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// my-agent-userpool
-	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	AccessTokenValidity  *string                                               `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
+	ClientId             *string                                               `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientName           *string                                               `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	ClientScopes         []*ListUserPoolClientsResponseBodyClientsClientScopes `json:"ClientScopes,omitempty" xml:"ClientScopes,omitempty" type:"Repeated"`
+	ClientType           *string                                               `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	CreateTime           *string                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnforcePKCE          *bool                                                 `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
+	RedirectURIs         []*string                                             `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty" type:"Repeated"`
+	RefreshTokenValidity *string                                               `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
+	SecretRequired       *bool                                                 `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
+	UpdateTime           *string                                               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserPoolName         *string                                               `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s ListUserPoolClientsResponseBodyClients) String() string {
@@ -170,6 +132,10 @@ func (s *ListUserPoolClientsResponseBodyClients) GetClientName() *string {
 
 func (s *ListUserPoolClientsResponseBodyClients) GetClientScopes() []*ListUserPoolClientsResponseBodyClientsClientScopes {
 	return s.ClientScopes
+}
+
+func (s *ListUserPoolClientsResponseBodyClients) GetClientType() *string {
+	return s.ClientType
 }
 
 func (s *ListUserPoolClientsResponseBodyClients) GetCreateTime() *string {
@@ -217,6 +183,11 @@ func (s *ListUserPoolClientsResponseBodyClients) SetClientName(v string) *ListUs
 
 func (s *ListUserPoolClientsResponseBodyClients) SetClientScopes(v []*ListUserPoolClientsResponseBodyClientsClientScopes) *ListUserPoolClientsResponseBodyClients {
 	s.ClientScopes = v
+	return s
+}
+
+func (s *ListUserPoolClientsResponseBodyClients) SetClientType(v string) *ListUserPoolClientsResponseBodyClients {
+	s.ClientType = &v
 	return s
 }
 
@@ -270,10 +241,7 @@ func (s *ListUserPoolClientsResponseBodyClients) Validate() error {
 
 type ListUserPoolClientsResponseBodyClientsClientScopes struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// openid
-	ScopeName *string `json:"ScopeName,omitempty" xml:"ScopeName,omitempty"`
+	ScopeName   *string `json:"ScopeName,omitempty" xml:"ScopeName,omitempty"`
 }
 
 func (s ListUserPoolClientsResponseBodyClientsClientScopes) String() string {

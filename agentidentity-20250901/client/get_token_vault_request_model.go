@@ -14,9 +14,6 @@ type iGetTokenVaultRequest interface {
 }
 
 type GetTokenVaultRequest struct {
-	// example:
-	//
-	// default
 	TokenVaultName *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 

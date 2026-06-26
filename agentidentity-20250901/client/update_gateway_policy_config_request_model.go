@@ -18,15 +18,9 @@ type iUpdateGatewayPolicyConfigRequest interface {
 }
 
 type UpdateGatewayPolicyConfigRequest struct {
-	// example:
-	//
-	// ENFORCE
 	EnforcementMode *string `json:"EnforcementMode,omitempty" xml:"EnforcementMode,omitempty"`
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:123456:gateway/my-gateway
-	GatewayArn  *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
-	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	GatewayArn      *string `json:"GatewayArn,omitempty" xml:"GatewayArn,omitempty"`
+	GatewayType     *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 }
 
 func (s UpdateGatewayPolicyConfigRequest) String() string {

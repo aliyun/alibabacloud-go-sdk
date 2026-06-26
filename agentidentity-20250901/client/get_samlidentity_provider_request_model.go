@@ -14,9 +14,6 @@ type iGetSAMLIdentityProviderRequest interface {
 }
 
 type GetSAMLIdentityProviderRequest struct {
-	// example:
-	//
-	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

@@ -22,23 +22,11 @@ type iListPolicySetsResponseBody interface {
 }
 
 type ListPolicySetsResponseBody struct {
-	// example:
-	//
-	// 20
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// AAAAAdDWBF2
+	MaxResults *int32                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PolicySets []*ListPolicySetsResponseBodyPolicySets `json:"PolicySets,omitempty" xml:"PolicySets,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPolicySetsResponseBody) String() string {
@@ -108,26 +96,11 @@ func (s *ListPolicySetsResponseBody) Validate() error {
 }
 
 type ListPolicySetsResponseBodyPolicySets struct {
-	// example:
-	//
-	// 2026-05-08T06:19:17Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// example description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// acs:agentidentity:cn-beijing:123456:policyset/default-policy-set
-	PolicySetArn *string `json:"PolicySetArn,omitempty" xml:"PolicySetArn,omitempty"`
-	// example:
-	//
-	// default-policy-set
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PolicySetArn  *string `json:"PolicySetArn,omitempty" xml:"PolicySetArn,omitempty"`
 	PolicySetName *string `json:"PolicySetName,omitempty" xml:"PolicySetName,omitempty"`
-	// example:
-	//
-	// 2026-05-08T06:19:17Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListPolicySetsResponseBodyPolicySets) String() string {

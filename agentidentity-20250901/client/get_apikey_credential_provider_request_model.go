@@ -16,9 +16,6 @@ type iGetAPIKeyCredentialProviderRequest interface {
 }
 
 type GetAPIKeyCredentialProviderRequest struct {
-	// example:
-	//
-	// api-key-dash-scope
 	APIKeyCredentialProviderName *string `json:"APIKeyCredentialProviderName,omitempty" xml:"APIKeyCredentialProviderName,omitempty"`
 	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }

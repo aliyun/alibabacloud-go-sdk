@@ -14,9 +14,6 @@ type iAttachPolicySetToGatewayResponseBody interface {
 }
 
 type AttachPolicySetToGatewayResponseBody struct {
-	// example:
-	//
-	// 2A48EB1D-D645-5758-91AF-EDF8E36E257B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

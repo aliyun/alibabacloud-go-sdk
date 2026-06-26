@@ -14,9 +14,6 @@ type iGetSAMLServiceProviderInfoRequest interface {
 }
 
 type GetSAMLServiceProviderInfoRequest struct {
-	// example:
-	//
-	// my-agent-userpool
 	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 

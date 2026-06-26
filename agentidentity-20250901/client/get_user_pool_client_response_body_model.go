@@ -16,11 +16,8 @@ type iGetUserPoolClientResponseBody interface {
 }
 
 type GetUserPoolClientResponseBody struct {
-	Client *GetUserPoolClientResponseBodyClient `json:"Client,omitempty" xml:"Client,omitempty" type:"Struct"`
-	// example:
-	//
-	// AABD6E03-4B3A-5687-88FF-72232670ED0C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Client    *GetUserPoolClientResponseBodyClient `json:"Client,omitempty" xml:"Client,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetUserPoolClientResponseBody) String() string {
@@ -59,44 +56,18 @@ func (s *GetUserPoolClientResponseBody) Validate() error {
 }
 
 type GetUserPoolClientResponseBodyClient struct {
-	// example:
-	//
-	// 3600
-	AccessTokenValidity *string `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
-	// example:
-	//
-	// client_xxxxxxxxxxxxxxxxxxxx
-	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// example:
-	//
-	// my-web-app
-	ClientName   *string                                            `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
-	ClientScopes []*GetUserPoolClientResponseBodyClientClientScopes `json:"ClientScopes,omitempty" xml:"ClientScopes,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// true
-	EnforcePKCE  *bool     `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
-	RedirectURIs []*string `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 86400
-	RefreshTokenValidity *string `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
-	// example:
-	//
-	// true
-	SecretRequired *bool `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
-	// example:
-	//
-	// 2026-05-07T06:19:17Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// my-agent-userpool
-	UserPoolName *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	AccessTokenValidity  *string                                            `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
+	ClientId             *string                                            `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientName           *string                                            `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	ClientScopes         []*GetUserPoolClientResponseBodyClientClientScopes `json:"ClientScopes,omitempty" xml:"ClientScopes,omitempty" type:"Repeated"`
+	ClientType           *string                                            `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	CreateTime           *string                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnforcePKCE          *bool                                              `json:"EnforcePKCE,omitempty" xml:"EnforcePKCE,omitempty"`
+	RedirectURIs         []*string                                          `json:"RedirectURIs,omitempty" xml:"RedirectURIs,omitempty" type:"Repeated"`
+	RefreshTokenValidity *string                                            `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
+	SecretRequired       *bool                                              `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
+	UpdateTime           *string                                            `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserPoolName         *string                                            `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s GetUserPoolClientResponseBodyClient) String() string {
@@ -121,6 +92,10 @@ func (s *GetUserPoolClientResponseBodyClient) GetClientName() *string {
 
 func (s *GetUserPoolClientResponseBodyClient) GetClientScopes() []*GetUserPoolClientResponseBodyClientClientScopes {
 	return s.ClientScopes
+}
+
+func (s *GetUserPoolClientResponseBodyClient) GetClientType() *string {
+	return s.ClientType
 }
 
 func (s *GetUserPoolClientResponseBodyClient) GetCreateTime() *string {
@@ -168,6 +143,11 @@ func (s *GetUserPoolClientResponseBodyClient) SetClientName(v string) *GetUserPo
 
 func (s *GetUserPoolClientResponseBodyClient) SetClientScopes(v []*GetUserPoolClientResponseBodyClientClientScopes) *GetUserPoolClientResponseBodyClient {
 	s.ClientScopes = v
+	return s
+}
+
+func (s *GetUserPoolClientResponseBodyClient) SetClientType(v string) *GetUserPoolClientResponseBodyClient {
+	s.ClientType = &v
 	return s
 }
 
@@ -220,14 +200,8 @@ func (s *GetUserPoolClientResponseBodyClient) Validate() error {
 }
 
 type GetUserPoolClientResponseBodyClientClientScopes struct {
-	// example:
-	//
-	// OpenID Connect authentication
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// openid
-	ScopeName *string `json:"ScopeName,omitempty" xml:"ScopeName,omitempty"`
+	ScopeName   *string `json:"ScopeName,omitempty" xml:"ScopeName,omitempty"`
 }
 
 func (s GetUserPoolClientResponseBodyClientClientScopes) String() string {

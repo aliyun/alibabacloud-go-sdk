@@ -16,14 +16,8 @@ type iListTokenVaultsRequest interface {
 }
 
 type ListTokenVaultsRequest struct {
-	// example:
-	//
-	// 20
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// AAAAAdDWBF2
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListTokenVaultsRequest) String() string {
