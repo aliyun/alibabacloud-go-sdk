@@ -16,7 +16,7 @@ type iDescribePolarClawAgentsRequest interface {
 }
 
 type DescribePolarClawAgentsRequest struct {
-	// A list of agent IDs to query.
+	// The list of agent IDs to describe.
 	//
 	// example:
 	//

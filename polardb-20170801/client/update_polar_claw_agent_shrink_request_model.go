@@ -17,6 +17,10 @@ type iUpdatePolarClawAgentShrinkRequest interface {
 	GetAvatar() *string
 	SetFilesShrink(v string) *UpdatePolarClawAgentShrinkRequest
 	GetFilesShrink() *string
+	SetIsDefault(v bool) *UpdatePolarClawAgentShrinkRequest
+	GetIsDefault() *bool
+	SetKeepWorkspaceFiles(v bool) *UpdatePolarClawAgentShrinkRequest
+	GetKeepWorkspaceFiles() *bool
 	SetModel(v string) *UpdatePolarClawAgentShrinkRequest
 	GetModel() *string
 	SetName(v string) *UpdatePolarClawAgentShrinkRequest
@@ -28,7 +32,7 @@ type iUpdatePolarClawAgentShrinkRequest interface {
 }
 
 type UpdatePolarClawAgentShrinkRequest struct {
-	// The ID of the agent to update.
+	// Agent ID to update
 	//
 	// This parameter is required.
 	//
@@ -36,7 +40,7 @@ type UpdatePolarClawAgentShrinkRequest struct {
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The application ID.
+	// Application ID
 	//
 	// This parameter is required.
 	//
@@ -44,37 +48,45 @@ type UpdatePolarClawAgentShrinkRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The new avatar for the agent.
+	// New avatar
 	//
 	// example:
 	//
 	// test
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	// The file list to update.
+	// List of files to update
 	//
 	// example:
 	//
 	// [{"FileName":"SOUL.md","FileContent":"You are a helpful assistant."}]
 	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
-	// The model to override the agent\\"s default setting.
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// example:
+	//
+	// false
+	KeepWorkspaceFiles *bool `json:"KeepWorkspaceFiles,omitempty" xml:"KeepWorkspaceFiles,omitempty"`
+	// Model override
 	//
 	// example:
 	//
 	// claude-sonnet-4-5
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The new display name for the agent.
+	// New display name
 	//
 	// example:
 	//
 	// Work Bot
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to restart the gateway after the update. The default value is true.
+	// Whether to restart the gateway after creation, default is true
 	//
 	// example:
 	//
 	// true
 	Restart *bool `json:"Restart,omitempty" xml:"Restart,omitempty"`
-	// The new path for the agent\\"s workspace.
+	// New workspace directory path
 	//
 	// example:
 	//
@@ -104,6 +116,14 @@ func (s *UpdatePolarClawAgentShrinkRequest) GetAvatar() *string {
 
 func (s *UpdatePolarClawAgentShrinkRequest) GetFilesShrink() *string {
 	return s.FilesShrink
+}
+
+func (s *UpdatePolarClawAgentShrinkRequest) GetIsDefault() *bool {
+	return s.IsDefault
+}
+
+func (s *UpdatePolarClawAgentShrinkRequest) GetKeepWorkspaceFiles() *bool {
+	return s.KeepWorkspaceFiles
 }
 
 func (s *UpdatePolarClawAgentShrinkRequest) GetModel() *string {
@@ -139,6 +159,16 @@ func (s *UpdatePolarClawAgentShrinkRequest) SetAvatar(v string) *UpdatePolarClaw
 
 func (s *UpdatePolarClawAgentShrinkRequest) SetFilesShrink(v string) *UpdatePolarClawAgentShrinkRequest {
 	s.FilesShrink = &v
+	return s
+}
+
+func (s *UpdatePolarClawAgentShrinkRequest) SetIsDefault(v bool) *UpdatePolarClawAgentShrinkRequest {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *UpdatePolarClawAgentShrinkRequest) SetKeepWorkspaceFiles(v bool) *UpdatePolarClawAgentShrinkRequest {
+	s.KeepWorkspaceFiles = &v
 	return s
 }
 

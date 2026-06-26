@@ -41,6 +41,8 @@ type iDescribePolarFsAttributeResponseBody interface {
 	GetFileSystemId() *string
 	SetLockMode(v string) *DescribePolarFsAttributeResponseBody
 	GetLockMode() *string
+	SetMetaInstanceName(v string) *DescribePolarFsAttributeResponseBody
+	GetMetaInstanceName() *string
 	SetMetaUrl(v string) *DescribePolarFsAttributeResponseBody
 	GetMetaUrl() *string
 	SetMinorVersion(v string) *DescribePolarFsAttributeResponseBody
@@ -90,7 +92,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// alluxio
 	AccelerateType *string `json:"AccelerateType,omitempty" xml:"AccelerateType,omitempty"`
-	// The capacity of the acceleration cache in GB.
+	// The acceleration storage space, in GB.
 	//
 	// example:
 	//
@@ -98,45 +100,45 @@ type DescribePolarFsAttributeResponseBody struct {
 	AcceleratedStorageSpace *float64 `json:"AcceleratedStorageSpace,omitempty" xml:"AcceleratedStorageSpace,omitempty"`
 	// Indicates whether the acceleration cache is enabled. Valid values:
 	//
-	// - **ON**: Enabled
+	// - **ON**: enabled.
 	//
-	// - **OFF**: Disabled
+	// - **OFF**: disabled.
 	//
 	// example:
 	//
 	// ON
 	AcceleratingEnable *string `json:"AcceleratingEnable,omitempty" xml:"AcceleratingEnable,omitempty"`
-	// The bandwidth in MB/s.
+	// The bandwidth, in MB/s.
 	//
 	// example:
 	//
 	// 100
 	Bandwidth *float64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The baseline bandwidth in MB/s per TiB.
+	// The bandwidth baseline, in MB/s/TiB.
 	//
 	// example:
 	//
 	// 100
 	BandwidthBaseLine *float64 `json:"BandwidthBaseLine,omitempty" xml:"BandwidthBaseLine,omitempty"`
-	// The bucket ID.
+	// The storage bucket ID.
 	//
 	// example:
 	//
 	// xxx
 	BucketId *string `json:"BucketId,omitempty" xml:"BucketId,omitempty"`
-	// The edition of the PolarFS instance. Valid values:
+	// The PolarLakebase edition. Valid values:
 	//
-	// - **high_performance**: High-performance Edition
+	// - **high_performance**: High-performance Edition.
 	//
-	// - **basic**: Basic Edition
+	// - **basic**: Basic Edition.
 	//
-	// - **cold**: Cold Storage Edition
+	// - **cold**: Cold Storage Edition.
 	//
 	// example:
 	//
 	// high_performance
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The download path for the client.
+	// The client download URL.
 	//
 	// example:
 	//
@@ -154,13 +156,13 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// xxxxxx-%d.oss-cn-beijing-internal.aliyuncs.com
 	CustomBucketPath *string `json:"CustomBucketPath,omitempty" xml:"CustomBucketPath,omitempty"`
-	// A list of custom storage paths.
+	// The list of custom storage paths.
 	CustomBucketPathList []*DescribePolarFsAttributeResponseBodyCustomBucketPathList `json:"CustomBucketPathList,omitempty" xml:"CustomBucketPathList,omitempty" type:"Repeated"`
-	// The database engine type. Valid values:
+	// The database ecosystem type. Valid values:
 	//
-	// - **MySQL**
+	// 	- **MySQL**
 	//
-	// - **PostgreSQL**
+	// 	- **PostgreSQL**.
 	//
 	// example:
 	//
@@ -168,7 +170,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The expiration time of the cluster.
 	//
-	// > This parameter is returned only for **Prepaid*	- (subscription) clusters. It is empty for **Postpaid*	- (pay-as-you-go) clusters.
+	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription). An empty value is returned for **Postpaid*	- (pay-as-you-go) clusters.
 	//
 	// example:
 	//
@@ -176,7 +178,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the cluster has expired.
 	//
-	// > This parameter is returned only for **Prepaid*	- (subscription) clusters.
+	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription).
 	//
 	// example:
 	//
@@ -190,17 +192,21 @@ type DescribePolarFsAttributeResponseBody struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - **Unlock**: The cluster is not locked.
+	// - **Unlock**: not locked.
 	//
-	// - **ManualLock**: The cluster is manually locked.
+	// - **ManualLock**: manually locked.
 	//
-	// - **LockByExpiration**: The cluster is automatically locked after it expires.
+	// - **LockByExpiration**: automatically locked due to cluster expiration.
 	//
 	// example:
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The encrypted metadata address for the FUSE mount.
+	// example:
+	//
+	// pc-xxxxxxxxxxxxxxxxx
+	MetaInstanceName *string `json:"MetaInstanceName,omitempty" xml:"MetaInstanceName,omitempty"`
+	// The metadata URL for Fuse mounting (encrypted).
 	//
 	// example:
 	//
@@ -224,35 +230,35 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The description of the PolarFS instance.
+	// The description of the PolarLakebase instance.
 	//
 	// example:
 	//
 	// pfs-xxx
 	PolarFsInstanceDescription *string `json:"PolarFsInstanceDescription,omitempty" xml:"PolarFsInstanceDescription,omitempty"`
-	// The ID of the PolarFS instance.
+	// The PolarLakebase instance ID.
 	//
 	// example:
 	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// The status of the PolarFS instance.
+	// The PolarLakebase instance status.
 	//
 	// example:
 	//
 	// Running
 	PolarFsStatus *string `json:"PolarFsStatus,omitempty" xml:"PolarFsStatus,omitempty"`
-	// The version of PolarFS. Valid values:
+	// The instance version. Valid values:
 	//
-	// - **PolarFS 2.0**
+	// - **PolarFS 2.0**: 2.0
 	//
-	// - **PolarFS 1.0**
+	// - **PolarFS 1.0**: 1.0.
 	//
 	// example:
 	//
 	// PolarFS 2.0
 	PolarFsType *string `json:"PolarFsType,omitempty" xml:"PolarFsType,omitempty"`
-	// The version of the PolarFS instance.
+	// The version.
 	//
 	// example:
 	//
@@ -270,63 +276,63 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// pc-2zejpr41d9xk3uk34
 	RelativeDbClusterId *string `json:"RelativeDbClusterId,omitempty" xml:"RelativeDbClusterId,omitempty"`
-	// The ID of the associated PolarFS instance.
+	// The instance ID of the associated PolarLakebase instance.
 	//
 	// example:
 	//
 	// pfs-**********
 	RelativePfsClusterId *string `json:"RelativePfsClusterId,omitempty" xml:"RelativePfsClusterId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 3F9E6A3B-C13E-4064-A010-18582A******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the managed security group.
+	// The managed security group ID.
 	//
 	// example:
 	//
 	// sg-bp**************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The storage capacity in GB.
+	// The storage space, in GB.
 	//
 	// example:
 	//
 	// 1000
 	StorageSpace *float64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// The storage class for the High-performance Edition. Valid values:
+	// Valid values for the High-performance Edition storage type:
 	//
-	// - **ESSDPL1**
+	// 	- **ESSDPL1**
 	//
-	// - **ESSDPL0**
+	// 	- **ESSDPL0**
 	//
-	// The storage class for the Basic Edition. Valid values:
+	// Valid values for the Basic Edition storage type:
 	//
-	// - **city_redundancy**: zone-redundant storage
+	// 	- **city_redundancy**: zone-redundant storage.
 	//
 	// example:
 	//
 	// essdpl1
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The amount of used storage in bytes.
+	// The used storage space, in bytes.
 	//
 	// example:
 	//
 	// 3012558848
 	StorageUsed *float64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	// The ID of the VPC.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-**********
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The VSwitch ID.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-**************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the zone where the vSwitch is located.
+	// The zone ID of the vSwitch.
 	//
 	// example:
 	//
@@ -404,6 +410,10 @@ func (s *DescribePolarFsAttributeResponseBody) GetFileSystemId() *string {
 
 func (s *DescribePolarFsAttributeResponseBody) GetLockMode() *string {
 	return s.LockMode
+}
+
+func (s *DescribePolarFsAttributeResponseBody) GetMetaInstanceName() *string {
+	return s.MetaInstanceName
 }
 
 func (s *DescribePolarFsAttributeResponseBody) GetMetaUrl() *string {
@@ -566,6 +576,11 @@ func (s *DescribePolarFsAttributeResponseBody) SetLockMode(v string) *DescribePo
 	return s
 }
 
+func (s *DescribePolarFsAttributeResponseBody) SetMetaInstanceName(v string) *DescribePolarFsAttributeResponseBody {
+	s.MetaInstanceName = &v
+	return s
+}
+
 func (s *DescribePolarFsAttributeResponseBody) SetMetaUrl(v string) *DescribePolarFsAttributeResponseBody {
 	s.MetaUrl = &v
 	return s
@@ -685,13 +700,13 @@ func (s *DescribePolarFsAttributeResponseBody) Validate() error {
 }
 
 type DescribePolarFsAttributeResponseBodyCustomBucketPathList struct {
-	// The endpoint of the custom storage bucket.
+	// The custom storage bucket.
 	//
 	// example:
 	//
 	// pfs-xxx.oss-[regionId]-internal.aliyuncs.com
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The path in the custom storage bucket.
+	// The custom storage path.
 	//
 	// example:
 	//
@@ -730,7 +745,7 @@ func (s *DescribePolarFsAttributeResponseBodyCustomBucketPathList) Validate() er
 }
 
 type DescribePolarFsAttributeResponseBodyMountInfo struct {
-	// The cluster management address.
+	// The cluster management endpoint.
 	//
 	// example:
 	//

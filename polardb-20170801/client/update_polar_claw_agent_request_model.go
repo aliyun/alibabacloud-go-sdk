@@ -17,6 +17,10 @@ type iUpdatePolarClawAgentRequest interface {
 	GetAvatar() *string
 	SetFiles(v []*UpdatePolarClawAgentRequestFiles) *UpdatePolarClawAgentRequest
 	GetFiles() []*UpdatePolarClawAgentRequestFiles
+	SetIsDefault(v bool) *UpdatePolarClawAgentRequest
+	GetIsDefault() *bool
+	SetKeepWorkspaceFiles(v bool) *UpdatePolarClawAgentRequest
+	GetKeepWorkspaceFiles() *bool
 	SetModel(v string) *UpdatePolarClawAgentRequest
 	GetModel() *string
 	SetName(v string) *UpdatePolarClawAgentRequest
@@ -28,7 +32,7 @@ type iUpdatePolarClawAgentRequest interface {
 }
 
 type UpdatePolarClawAgentRequest struct {
-	// The ID of the agent to update.
+	// Agent ID to update
 	//
 	// This parameter is required.
 	//
@@ -36,7 +40,7 @@ type UpdatePolarClawAgentRequest struct {
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The application ID.
+	// Application ID
 	//
 	// This parameter is required.
 	//
@@ -44,37 +48,45 @@ type UpdatePolarClawAgentRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The new avatar for the agent.
+	// New avatar
 	//
 	// example:
 	//
 	// test
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	// The file list to update.
+	// List of files to update
 	//
 	// example:
 	//
 	// [{"FileName":"SOUL.md","FileContent":"You are a helpful assistant."}]
 	Files []*UpdatePolarClawAgentRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	// The model to override the agent\\"s default setting.
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// example:
+	//
+	// false
+	KeepWorkspaceFiles *bool `json:"KeepWorkspaceFiles,omitempty" xml:"KeepWorkspaceFiles,omitempty"`
+	// Model override
 	//
 	// example:
 	//
 	// claude-sonnet-4-5
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The new display name for the agent.
+	// New display name
 	//
 	// example:
 	//
 	// Work Bot
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to restart the gateway after the update. The default value is true.
+	// Whether to restart the gateway after creation, default is true
 	//
 	// example:
 	//
 	// true
 	Restart *bool `json:"Restart,omitempty" xml:"Restart,omitempty"`
-	// The new path for the agent\\"s workspace.
+	// New workspace directory path
 	//
 	// example:
 	//
@@ -104,6 +116,14 @@ func (s *UpdatePolarClawAgentRequest) GetAvatar() *string {
 
 func (s *UpdatePolarClawAgentRequest) GetFiles() []*UpdatePolarClawAgentRequestFiles {
 	return s.Files
+}
+
+func (s *UpdatePolarClawAgentRequest) GetIsDefault() *bool {
+	return s.IsDefault
+}
+
+func (s *UpdatePolarClawAgentRequest) GetKeepWorkspaceFiles() *bool {
+	return s.KeepWorkspaceFiles
 }
 
 func (s *UpdatePolarClawAgentRequest) GetModel() *string {
@@ -142,6 +162,16 @@ func (s *UpdatePolarClawAgentRequest) SetFiles(v []*UpdatePolarClawAgentRequestF
 	return s
 }
 
+func (s *UpdatePolarClawAgentRequest) SetIsDefault(v bool) *UpdatePolarClawAgentRequest {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *UpdatePolarClawAgentRequest) SetKeepWorkspaceFiles(v bool) *UpdatePolarClawAgentRequest {
+	s.KeepWorkspaceFiles = &v
+	return s
+}
+
 func (s *UpdatePolarClawAgentRequest) SetModel(v string) *UpdatePolarClawAgentRequest {
 	s.Model = &v
 	return s
@@ -176,13 +206,13 @@ func (s *UpdatePolarClawAgentRequest) Validate() error {
 }
 
 type UpdatePolarClawAgentRequestFiles struct {
-	// The file content.
+	// File content
 	//
 	// example:
 	//
 	// You are a helpful assistant.
 	FileContent *string `json:"FileContent,omitempty" xml:"FileContent,omitempty"`
-	// The file name. This must be one of the allowed file names: AGENTS.md, SOUL.md, TOOLS.md, IDENTITY.md, USER.md, HEARTBEAT.md, BOOTSTRAP.md, MEMORY.md, or MEMORY.alt.md.
+	// File name, must be one of the allowed file names (AGENTS.md, SOUL.md, TOOLS.md, IDENTITY.md, USER.md, HEARTBEAT.md, BOOTSTRAP.md, MEMORY.md, MEMORY.alt.md)
 	//
 	// example:
 	//

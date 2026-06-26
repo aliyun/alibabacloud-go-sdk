@@ -28,7 +28,7 @@ type iDescribePolarClawAgentsResponseBody interface {
 }
 
 type DescribePolarClawAgentsResponseBody struct {
-	// The list of agents.
+	// The agent list.
 	Agents []*DescribePolarClawAgentsResponseBodyAgents `json:"Agents,omitempty" xml:"Agents,omitempty" type:"Repeated"`
 	// The application ID.
 	//
@@ -36,7 +36,7 @@ type DescribePolarClawAgentsResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
@@ -48,19 +48,19 @@ type DescribePolarClawAgentsResponseBody struct {
 	//
 	// main
 	DefaultId *string `json:"DefaultId,omitempty" xml:"DefaultId,omitempty"`
-	// The main agent key name.
+	// The primary agent key name.
 	//
 	// example:
 	//
 	// main
 	MainKey *string `json:"MainKey,omitempty" xml:"MainKey,omitempty"`
-	// The message.
+	// The response message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -168,20 +168,31 @@ func (s *DescribePolarClawAgentsResponseBody) Validate() error {
 }
 
 type DescribePolarClawAgentsResponseBodyAgents struct {
-	// The agent ID.
+	// example:
+	//
+	// true
+	Default *bool                                             `json:"Default,omitempty" xml:"Default,omitempty"`
+	Files   []*DescribePolarClawAgentsResponseBodyAgentsFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// Agent ID
 	//
 	// example:
 	//
 	// main
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The agent\\"s identity.
+	// The identity information.
 	Identity *DescribePolarClawAgentsResponseBodyAgentsIdentity `json:"Identity,omitempty" xml:"Identity,omitempty" type:"Struct"`
-	// The agent display name.
+	Model    *DescribePolarClawAgentsResponseBodyAgentsModel    `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// The display name of the agent.
 	//
 	// example:
 	//
 	// main
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Skills []*string `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	// example:
+	//
+	// /home/node/.openclaw/workspace-work
+	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s DescribePolarClawAgentsResponseBodyAgents) String() string {
@@ -192,6 +203,14 @@ func (s DescribePolarClawAgentsResponseBodyAgents) GoString() string {
 	return s.String()
 }
 
+func (s *DescribePolarClawAgentsResponseBodyAgents) GetDefault() *bool {
+	return s.Default
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgents) GetFiles() []*DescribePolarClawAgentsResponseBodyAgentsFiles {
+	return s.Files
+}
+
 func (s *DescribePolarClawAgentsResponseBodyAgents) GetId() *string {
 	return s.Id
 }
@@ -200,8 +219,30 @@ func (s *DescribePolarClawAgentsResponseBodyAgents) GetIdentity() *DescribePolar
 	return s.Identity
 }
 
+func (s *DescribePolarClawAgentsResponseBodyAgents) GetModel() *DescribePolarClawAgentsResponseBodyAgentsModel {
+	return s.Model
+}
+
 func (s *DescribePolarClawAgentsResponseBodyAgents) GetName() *string {
 	return s.Name
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgents) GetSkills() []*string {
+	return s.Skills
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgents) GetWorkspace() *string {
+	return s.Workspace
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgents) SetDefault(v bool) *DescribePolarClawAgentsResponseBodyAgents {
+	s.Default = &v
+	return s
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgents) SetFiles(v []*DescribePolarClawAgentsResponseBodyAgentsFiles) *DescribePolarClawAgentsResponseBodyAgents {
+	s.Files = v
+	return s
 }
 
 func (s *DescribePolarClawAgentsResponseBodyAgents) SetId(v string) *DescribePolarClawAgentsResponseBodyAgents {
@@ -214,22 +255,131 @@ func (s *DescribePolarClawAgentsResponseBodyAgents) SetIdentity(v *DescribePolar
 	return s
 }
 
+func (s *DescribePolarClawAgentsResponseBodyAgents) SetModel(v *DescribePolarClawAgentsResponseBodyAgentsModel) *DescribePolarClawAgentsResponseBodyAgents {
+	s.Model = v
+	return s
+}
+
 func (s *DescribePolarClawAgentsResponseBodyAgents) SetName(v string) *DescribePolarClawAgentsResponseBodyAgents {
 	s.Name = &v
 	return s
 }
 
+func (s *DescribePolarClawAgentsResponseBodyAgents) SetSkills(v []*string) *DescribePolarClawAgentsResponseBodyAgents {
+	s.Skills = v
+	return s
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgents) SetWorkspace(v string) *DescribePolarClawAgentsResponseBodyAgents {
+	s.Workspace = &v
+	return s
+}
+
 func (s *DescribePolarClawAgentsResponseBodyAgents) Validate() error {
+	if s.Files != nil {
+		for _, item := range s.Files {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Identity != nil {
 		if err := s.Identity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Model != nil {
+		if err := s.Model.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
 }
 
+type DescribePolarClawAgentsResponseBodyAgentsFiles struct {
+	// example:
+	//
+	// false
+	Missing *bool `json:"Missing,omitempty" xml:"Missing,omitempty"`
+	// example:
+	//
+	// SOUL.md
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// /home/node/.openclaw/workspace-work/SOUL.md
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 1024
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 1716000000000
+	UpdatedAtMs *int64 `json:"UpdatedAtMs,omitempty" xml:"UpdatedAtMs,omitempty"`
+}
+
+func (s DescribePolarClawAgentsResponseBodyAgentsFiles) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePolarClawAgentsResponseBodyAgentsFiles) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsFiles) GetMissing() *bool {
+	return s.Missing
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsFiles) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsFiles) GetPath() *string {
+	return s.Path
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsFiles) GetSize() *int64 {
+	return s.Size
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsFiles) GetUpdatedAtMs() *int64 {
+	return s.UpdatedAtMs
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsFiles) SetMissing(v bool) *DescribePolarClawAgentsResponseBodyAgentsFiles {
+	s.Missing = &v
+	return s
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsFiles) SetName(v string) *DescribePolarClawAgentsResponseBodyAgentsFiles {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsFiles) SetPath(v string) *DescribePolarClawAgentsResponseBodyAgentsFiles {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsFiles) SetSize(v int64) *DescribePolarClawAgentsResponseBodyAgentsFiles {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsFiles) SetUpdatedAtMs(v int64) *DescribePolarClawAgentsResponseBodyAgentsFiles {
+	s.UpdatedAtMs = &v
+	return s
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsFiles) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribePolarClawAgentsResponseBodyAgentsIdentity struct {
-	// The path or content of the avatar.
+	// The avatar path or content.
 	//
 	// example:
 	//
@@ -241,7 +391,7 @@ type DescribePolarClawAgentsResponseBodyAgentsIdentity struct {
 	//
 	// test
 	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	// The emoji for the identity. This can be a Unicode code point (e.g., `U+1F99E`) or an emoji character.
+	// The emoji identifier in Unicode encoding format such as U+1F99E, or a direct emoji character.
 	//
 	// example:
 	//
@@ -253,7 +403,7 @@ type DescribePolarClawAgentsResponseBodyAgentsIdentity struct {
 	//
 	// PolarClaw
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The identity theme.
+	// The theme.
 	//
 	// example:
 	//
@@ -315,5 +465,43 @@ func (s *DescribePolarClawAgentsResponseBodyAgentsIdentity) SetTheme(v string) *
 }
 
 func (s *DescribePolarClawAgentsResponseBodyAgentsIdentity) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribePolarClawAgentsResponseBodyAgentsModel struct {
+	Fallbacks []*string `json:"Fallbacks,omitempty" xml:"Fallbacks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// claude-sonnet-4-5
+	Primary *string `json:"Primary,omitempty" xml:"Primary,omitempty"`
+}
+
+func (s DescribePolarClawAgentsResponseBodyAgentsModel) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePolarClawAgentsResponseBodyAgentsModel) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsModel) GetFallbacks() []*string {
+	return s.Fallbacks
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsModel) GetPrimary() *string {
+	return s.Primary
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsModel) SetFallbacks(v []*string) *DescribePolarClawAgentsResponseBodyAgentsModel {
+	s.Fallbacks = v
+	return s
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsModel) SetPrimary(v string) *DescribePolarClawAgentsResponseBodyAgentsModel {
+	s.Primary = &v
+	return s
+}
+
+func (s *DescribePolarClawAgentsResponseBodyAgentsModel) Validate() error {
 	return dara.Validate(s)
 }

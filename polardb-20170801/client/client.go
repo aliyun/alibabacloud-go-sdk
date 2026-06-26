@@ -3756,6 +3756,84 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 
 // Summary:
 //
+// Creates API keys in batches.
+//
+// @param request - CreateBatchConsumerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBatchConsumerResponse
+func (client *Client) CreateBatchConsumerWithOptions(request *CreateBatchConsumerRequest, runtime *dara.RuntimeOptions) (_result *CreateBatchConsumerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ConsumerGroupId) {
+		query["ConsumerGroupId"] = request.ConsumerGroupId
+	}
+
+	if !dara.IsNil(request.Count) {
+		query["Count"] = request.Count
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBatchConsumer"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBatchConsumerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates API keys in batches.
+//
+// @param request - CreateBatchConsumerRequest
+//
+// @return CreateBatchConsumerResponse
+func (client *Client) CreateBatchConsumer(request *CreateBatchConsumerRequest) (_result *CreateBatchConsumerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateBatchConsumerResponse{}
+	_body, _err := client.CreateBatchConsumerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a batch task.
 //
 // @param tmpReq - CreateBatchTaskRequest
@@ -10748,7 +10826,7 @@ func (client *Client) DeleteSQLRateLimitingRules(request *DeleteSQLRateLimitingR
 
 // Summary:
 //
-// Gets the details of a custom instance.
+// Queries the details of a custom instance.
 //
 // @param request - DescribeAIDBClusterAttributeRequest
 //
@@ -10808,7 +10886,7 @@ func (client *Client) DescribeAIDBClusterAttributeWithOptions(request *DescribeA
 
 // Summary:
 //
-// Gets the details of a custom instance.
+// Queries the details of a custom instance.
 //
 // @param request - DescribeAIDBClusterAttributeRequest
 //
@@ -12121,6 +12199,80 @@ func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperat
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeActiveOperationTasksResponse{}
 	_body, _err := client.DescribeActiveOperationTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询该apikey的详细信息
+//
+// @param request - DescribeApikeyAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApikeyAttributeResponse
+func (client *Client) DescribeApikeyAttributeWithOptions(request *DescribeApikeyAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeApikeyAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKey) {
+		query["ApiKey"] = request.ApiKey
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApikeyAttribute"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApikeyAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询该apikey的详细信息
+//
+// @param request - DescribeApikeyAttributeRequest
+//
+// @return DescribeApikeyAttributeResponse
+func (client *Client) DescribeApikeyAttribute(request *DescribeApikeyAttributeRequest) (_result *DescribeApikeyAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeApikeyAttributeResponse{}
+	_body, _err := client.DescribeApikeyAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18088,6 +18240,76 @@ func (client *Client) DescribeFirewallRules(request *DescribeFirewallRulesReques
 
 // Summary:
 //
+// Queries all API keys under the current UID.
+//
+// @param request - DescribeGatewayApikeyListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGatewayApikeyListResponse
+func (client *Client) DescribeGatewayApikeyListWithOptions(request *DescribeGatewayApikeyListRequest, runtime *dara.RuntimeOptions) (_result *DescribeGatewayApikeyListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeGatewayApikeyList"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeGatewayApikeyListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries all API keys under the current UID.
+//
+// @param request - DescribeGatewayApikeyListRequest
+//
+// @return DescribeGatewayApikeyListResponse
+func (client *Client) DescribeGatewayApikeyList(request *DescribeGatewayApikeyListRequest) (_result *DescribeGatewayApikeyListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeGatewayApikeyListResponse{}
+	_body, _err := client.DescribeGatewayApikeyListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Viewing gateway instance details
 //
 // @param request - DescribeGatewayAttributeRequest
@@ -20690,7 +20912,7 @@ func (client *Client) DescribePolarAgentUserSessions(request *DescribePolarAgent
 
 // Summary:
 //
-// Queries the details of agents installed in a specified application.
+// Queries all installed plug-ins and their status information under a specified application.
 //
 // @param tmpReq - DescribePolarClawAgentsRequest
 //
@@ -20744,7 +20966,7 @@ func (client *Client) DescribePolarClawAgentsWithOptions(tmpReq *DescribePolarCl
 
 // Summary:
 //
-// Queries the details of agents installed in a specified application.
+// Queries all installed plug-ins and their status information under a specified application.
 //
 // @param request - DescribePolarClawAgentsRequest
 //
@@ -21148,7 +21370,7 @@ func (client *Client) DescribePolarClawTask(request *DescribePolarClawTaskReques
 
 // Summary:
 //
-// Gets the details of a PolarFS instance.
+// Retrieves the details of a PolarLakebase instance.
 //
 // @param request - DescribePolarFsAttributeRequest
 //
@@ -21200,7 +21422,7 @@ func (client *Client) DescribePolarFsAttributeWithOptions(request *DescribePolar
 
 // Summary:
 //
-// Gets the details of a PolarFS instance.
+// Retrieves the details of a PolarLakebase instance.
 //
 // @param request - DescribePolarFsAttributeRequest
 //
@@ -21218,19 +21440,19 @@ func (client *Client) DescribePolarFsAttribute(request *DescribePolarFsAttribute
 
 // Summary:
 //
-// Lists the files and subdirectories at a specified path.
+// Lists the files and subdirectories under a specified path.
 //
 // Description:
 //
-// ## Usage notes
+// ## 请求说明
 //
-// - The **Path*	- parameter must be an absolute path.
+// - **Path*	- 参数必须提供一个绝对路径。
 //
-// - The **Recursive*	- parameter defaults to `false`. If set to `true`, the operation recursively lists the contents of all subdirectories.
+// - **Recursive*	- 参数默认为 `false`，如果设置为 `true`，则会递归列出所有子目录的内容。
 //
-// - The **Depth*	- parameter limits the recursive depth. The default value is `1`.
+// - **Depth*	- 参数用于限制递归深度，默认值为 `1`。
 //
-// - The **Filter*	- parameter supports filtering with wildcards or regular expressions.
+// - **Filter*	- 参数支持通配符或正则表达式过滤结果。
 //
 // @param request - DescribePolarFsObjectsRequest
 //
@@ -21278,19 +21500,19 @@ func (client *Client) DescribePolarFsObjectsWithOptions(request *DescribePolarFs
 
 // Summary:
 //
-// Lists the files and subdirectories at a specified path.
+// Lists the files and subdirectories under a specified path.
 //
 // Description:
 //
-// ## Usage notes
+// ## 请求说明
 //
-// - The **Path*	- parameter must be an absolute path.
+// - **Path*	- 参数必须提供一个绝对路径。
 //
-// - The **Recursive*	- parameter defaults to `false`. If set to `true`, the operation recursively lists the contents of all subdirectories.
+// - **Recursive*	- 参数默认为 `false`，如果设置为 `true`，则会递归列出所有子目录的内容。
 //
-// - The **Depth*	- parameter limits the recursive depth. The default value is `1`.
+// - **Depth*	- 参数用于限制递归深度，默认值为 `1`。
 //
-// - The **Filter*	- parameter supports filtering with wildcards or regular expressions.
+// - **Filter*	- 参数支持通配符或正则表达式过滤结果。
 //
 // @param request - DescribePolarFsObjectsRequest
 //
@@ -35359,6 +35581,14 @@ func (client *Client) UpdatePolarClawAgentWithOptions(tmpReq *UpdatePolarClawAge
 
 	if !dara.IsNil(request.FilesShrink) {
 		query["Files"] = request.FilesShrink
+	}
+
+	if !dara.IsNil(request.IsDefault) {
+		query["IsDefault"] = request.IsDefault
+	}
+
+	if !dara.IsNil(request.KeepWorkspaceFiles) {
+		query["KeepWorkspaceFiles"] = request.KeepWorkspaceFiles
 	}
 
 	if !dara.IsNil(request.Model) {
