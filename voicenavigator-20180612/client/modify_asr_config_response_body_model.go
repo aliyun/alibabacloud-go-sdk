@@ -24,23 +24,34 @@ type iModifyAsrConfigResponseBody interface {
 }
 
 type ModifyAsrConfigResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the modification.
 	Data *ModifyAsrConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Not Found
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// da37319b-6c83-4268-9f19-814aed62e401
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
@@ -119,6 +130,7 @@ func (s *ModifyAsrConfigResponseBody) Validate() error {
 }
 
 type ModifyAsrConfigResponseBodyData struct {
+	// The number of affected rows.
 	AffectedRows *int32 `json:"AffectedRows,omitempty" xml:"AffectedRows,omitempty"`
 }
 

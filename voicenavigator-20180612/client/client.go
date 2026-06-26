@@ -25,6 +25,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-shanghai": dara.String("voicenavigator.cn-shanghai.aliyuncs.com"),
+		"cn-hangzhou": dara.String("voicenavigator.cn-hangzhou.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -56,6 +60,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates a chatbot with a navigation instance.
+//
 // @param request - AssociateChatbotInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -116,6 +124,10 @@ func (client *Client) AssociateChatbotInstanceWithOptions(request *AssociateChat
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates a chatbot with a navigation instance.
+//
 // @param request - AssociateChatbotInstanceRequest
 //
 // @return AssociateChatbotInstanceResponse
@@ -132,7 +144,7 @@ func (client *Client) AssociateChatbotInstance(request *AssociateChatbotInstance
 
 // Summary:
 //
-// # AuditTTSVoice
+// Previews a text-to-speech (TTS) voice.
 //
 // @param request - AuditTTSVoiceRequest
 //
@@ -157,6 +169,10 @@ func (client *Client) AuditTTSVoiceWithOptions(request *AuditTTSVoiceRequest, ru
 
 	if !dara.IsNil(request.Engine) {
 		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.ExtParams) {
+		query["ExtParams"] = request.ExtParams
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -212,7 +228,7 @@ func (client *Client) AuditTTSVoiceWithOptions(request *AuditTTSVoiceRequest, ru
 
 // Summary:
 //
-// # AuditTTSVoice
+// Previews a text-to-speech (TTS) voice.
 //
 // @param request - AuditTTSVoiceRequest
 //
@@ -230,7 +246,7 @@ func (client *Client) AuditTTSVoice(request *AuditTTSVoiceRequest) (_result *Aud
 
 // Summary:
 //
-// 开启会话
+// Starts a conversation.
 //
 // @param request - BeginDialogueRequest
 //
@@ -294,7 +310,7 @@ func (client *Client) BeginDialogueWithOptions(request *BeginDialogueRequest, ru
 
 // Summary:
 //
-// 开启会话
+// Starts a conversation.
 //
 // @param request - BeginDialogueRequest
 //
@@ -310,6 +326,10 @@ func (client *Client) BeginDialogue(request *BeginDialogueRequest) (_result *Beg
 	return _result, _err
 }
 
+// Summary:
+//
+// Collects a number entered by a user during a call.
+//
 // @param request - CollectedNumberRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -366,6 +386,10 @@ func (client *Client) CollectedNumberWithOptions(request *CollectedNumberRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Collects a number entered by a user during a call.
+//
 // @param request - CollectedNumberRequest
 //
 // @return CollectedNumberResponse
@@ -382,7 +406,7 @@ func (client *Client) CollectedNumber(request *CollectedNumberRequest) (_result 
 
 // Summary:
 //
-// # CreateDownloadUrl
+// Generates a temporary URL to download a file.
 //
 // @param request - CreateDownloadUrlRequest
 //
@@ -422,7 +446,7 @@ func (client *Client) CreateDownloadUrlWithOptions(request *CreateDownloadUrlReq
 
 // Summary:
 //
-// # CreateDownloadUrl
+// Generates a temporary URL to download a file.
 //
 // @param request - CreateDownloadUrlRequest
 //
@@ -438,6 +462,10 @@ func (client *Client) CreateDownloadUrl(request *CreateDownloadUrlRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Voice Navigator instance.
+//
 // @param request - CreateInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -498,6 +526,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Voice Navigator instance.
+//
 // @param request - CreateInstanceRequest
 //
 // @return CreateInstanceResponse
@@ -514,7 +546,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
-// 测试窗开启文本对话
+// Starts a conversation in a debugging environment.
 //
 // @param request - DebugBeginDialogueRequest
 //
@@ -578,7 +610,7 @@ func (client *Client) DebugBeginDialogueWithOptions(request *DebugBeginDialogueR
 
 // Summary:
 //
-// 测试窗开启文本对话
+// Starts a conversation in a debugging environment.
 //
 // @param request - DebugBeginDialogueRequest
 //
@@ -596,7 +628,7 @@ func (client *Client) DebugBeginDialogue(request *DebugBeginDialogueRequest) (_r
 
 // Summary:
 //
-// # DebugCollectedNumber
+// Debugs the number collection process.
 //
 // @param request - DebugCollectedNumberRequest
 //
@@ -648,7 +680,7 @@ func (client *Client) DebugCollectedNumberWithOptions(request *DebugCollectedNum
 
 // Summary:
 //
-// # DebugCollectedNumber
+// Debugs the number collection process.
 //
 // @param request - DebugCollectedNumberRequest
 //
@@ -664,6 +696,10 @@ func (client *Client) DebugCollectedNumber(request *DebugCollectedNumberRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Sends a user utterance to the dialogue engine to debug a conversation flow.
+//
 // @param request - DebugDialogueRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -716,6 +752,10 @@ func (client *Client) DebugDialogueWithOptions(request *DebugDialogueRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Sends a user utterance to the dialogue engine to debug a conversation flow.
+//
 // @param request - DebugDialogueRequest
 //
 // @return DebugDialogueResponse
@@ -730,6 +770,10 @@ func (client *Client) DebugDialogue(request *DebugDialogueRequest) (_result *Deb
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a navigation instance.
+//
 // @param request - DeleteInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -770,6 +814,10 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a navigation instance.
+//
 // @param request - DeleteInstanceRequest
 //
 // @return DeleteInstanceResponse
@@ -784,6 +832,10 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves information about a conversation.
+//
 // @param request - DescribeConversationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -820,6 +872,10 @@ func (client *Client) DescribeConversationWithOptions(request *DescribeConversat
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves information about a conversation.
+//
 // @param request - DescribeConversationRequest
 //
 // @return DescribeConversationResponse
@@ -836,7 +892,7 @@ func (client *Client) DescribeConversation(request *DescribeConversationRequest)
 
 // Summary:
 //
-// # DescribeConversationContext
+// Queries the context of a specified conversation.
 //
 // @param request - DescribeConversationContextRequest
 //
@@ -876,7 +932,7 @@ func (client *Client) DescribeConversationContextWithOptions(request *DescribeCo
 
 // Summary:
 //
-// # DescribeConversationContext
+// Queries the context of a specified conversation.
 //
 // @param request - DescribeConversationContextRequest
 //
@@ -894,7 +950,7 @@ func (client *Client) DescribeConversationContext(request *DescribeConversationC
 
 // Summary:
 //
-// # DescribeExportProgress
+// Queries the status of an export task.
 //
 // @param request - DescribeExportProgressRequest
 //
@@ -934,7 +990,7 @@ func (client *Client) DescribeExportProgressWithOptions(request *DescribeExportP
 
 // Summary:
 //
-// # DescribeExportProgress
+// Queries the status of an export task.
 //
 // @param request - DescribeExportProgressRequest
 //
@@ -950,6 +1006,10 @@ func (client *Client) DescribeExportProgress(request *DescribeExportProgressRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves details for a specified instance.
+//
 // @param request - DescribeInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -986,6 +1046,10 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves details for a specified instance.
+//
 // @param request - DescribeInstanceRequest
 //
 // @return DescribeInstanceResponse
@@ -1000,6 +1064,10 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// View the instance IVR configuration.
+//
 // @param request - DescribeNavigationConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1036,6 +1104,10 @@ func (client *Client) DescribeNavigationConfigWithOptions(request *DescribeNavig
 	return _result, _err
 }
 
+// Summary:
+//
+// View the instance IVR configuration.
+//
 // @param request - DescribeNavigationConfigRequest
 //
 // @return DescribeNavigationConfigResponse
@@ -1050,6 +1122,10 @@ func (client *Client) DescribeNavigationConfig(request *DescribeNavigationConfig
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a conversation recording.
+//
 // @param request - DescribeRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1086,6 +1162,10 @@ func (client *Client) DescribeRecordingWithOptions(request *DescribeRecordingReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a conversation recording.
+//
 // @param request - DescribeRecordingRequest
 //
 // @return DescribeRecordingResponse
@@ -1100,6 +1180,10 @@ func (client *Client) DescribeRecording(request *DescribeRecordingRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// View the current instance\\"s statistics.
+//
 // @param request - DescribeStatisticalDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1136,6 +1220,10 @@ func (client *Client) DescribeStatisticalDataWithOptions(request *DescribeStatis
 	return _result, _err
 }
 
+// Summary:
+//
+// View the current instance\\"s statistics.
+//
 // @param request - DescribeStatisticalDataRequest
 //
 // @return DescribeStatisticalDataResponse
@@ -1152,7 +1240,7 @@ func (client *Client) DescribeStatisticalData(request *DescribeStatisticalDataRe
 
 // Summary:
 //
-// 获取TTS配置
+// Queries the TTS configuration.
 //
 // @param request - DescribeTTSConfigRequest
 //
@@ -1192,7 +1280,7 @@ func (client *Client) DescribeTTSConfigWithOptions(request *DescribeTTSConfigReq
 
 // Summary:
 //
-// 获取TTS配置
+// Queries the TTS configuration.
 //
 // @param request - DescribeTTSConfigRequest
 //
@@ -1208,6 +1296,10 @@ func (client *Client) DescribeTTSConfig(request *DescribeTTSConfigRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Use this API to continue a conversation with an intelligent assistant by processing a user\\"s utterance.
+//
 // @param request - DialogueRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1276,6 +1368,10 @@ func (client *Client) DialogueWithOptions(request *DialogueRequest, runtime *dar
 	return _result, _err
 }
 
+// Summary:
+//
+// Use this API to continue a conversation with an intelligent assistant by processing a user\\"s utterance.
+//
 // @param request - DialogueRequest
 //
 // @return DialogueResponse
@@ -1290,6 +1386,10 @@ func (client *Client) Dialogue(request *DialogueRequest) (_result *DialogueRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables a Voice Navigator instance.
+//
 // @param request - DisableInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1330,6 +1430,10 @@ func (client *Client) DisableInstanceWithOptions(request *DisableInstanceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables a Voice Navigator instance.
+//
 // @param request - DisableInstanceRequest
 //
 // @return DisableInstanceResponse
@@ -1344,6 +1448,10 @@ func (client *Client) DisableInstance(request *DisableInstanceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables a Voice Navigator instance.
+//
 // @param request - EnableInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1384,6 +1492,10 @@ func (client *Client) EnableInstanceWithOptions(request *EnableInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables a Voice Navigator instance.
+//
 // @param request - EnableInstanceRequest
 //
 // @return EnableInstanceResponse
@@ -1398,6 +1510,10 @@ func (client *Client) EnableInstance(request *EnableInstanceRequest) (_result *E
 	return _result, _err
 }
 
+// Summary:
+//
+// Ends an ongoing dialogue.
+//
 // @param request - EndDialogueRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1450,6 +1566,10 @@ func (client *Client) EndDialogueWithOptions(request *EndDialogueRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Ends an ongoing dialogue.
+//
 // @param request - EndDialogueRequest
 //
 // @return EndDialogueResponse
@@ -1466,7 +1586,7 @@ func (client *Client) EndDialogue(request *EndDialogueRequest) (_result *EndDial
 
 // Summary:
 //
-// # ExportConversationDetails
+// Exports conversation details.
 //
 // @param request - ExportConversationDetailsRequest
 //
@@ -1542,7 +1662,7 @@ func (client *Client) ExportConversationDetailsWithOptions(request *ExportConver
 
 // Summary:
 //
-// # ExportConversationDetails
+// Exports conversation details.
 //
 // @param request - ExportConversationDetailsRequest
 //
@@ -1558,6 +1678,10 @@ func (client *Client) ExportConversationDetails(request *ExportConversationDetai
 	return _result, _err
 }
 
+// Summary:
+//
+// Exports statistical data.
+//
 // @param request - ExportStatisticalDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1614,6 +1738,10 @@ func (client *Client) ExportStatisticalDataWithOptions(request *ExportStatistica
 	return _result, _err
 }
 
+// Summary:
+//
+// Exports statistical data.
+//
 // @param request - ExportStatisticalDataRequest
 //
 // @return ExportStatisticalDataResponse
@@ -1630,7 +1758,7 @@ func (client *Client) ExportStatisticalData(request *ExportStatisticalDataReques
 
 // Summary:
 //
-// 获取Asr配置
+// Retrieves the ASR configuration.
 //
 // @param request - GetAsrConfigRequest
 //
@@ -1678,7 +1806,7 @@ func (client *Client) GetAsrConfigWithOptions(request *GetAsrConfigRequest, runt
 
 // Summary:
 //
-// 获取Asr配置
+// Retrieves the ASR configuration.
 //
 // @param request - GetAsrConfigRequest
 //
@@ -1696,7 +1824,7 @@ func (client *Client) GetAsrConfig(request *GetAsrConfigRequest) (_result *GetAs
 
 // Summary:
 //
-// # GetRealTimeConcurrency
+// Retrieves the real-time concurrency of an instance.
 //
 // @param request - GetRealTimeConcurrencyRequest
 //
@@ -1736,7 +1864,7 @@ func (client *Client) GetRealTimeConcurrencyWithOptions(request *GetRealTimeConc
 
 // Summary:
 //
-// # GetRealTimeConcurrency
+// Retrieves the real-time concurrency of an instance.
 //
 // @param request - GetRealTimeConcurrencyRequest
 //
@@ -1752,6 +1880,10 @@ func (client *Client) GetRealTimeConcurrency(request *GetRealTimeConcurrencyRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a paginated list of chatbot instances.
+//
 // @param request - ListChatbotInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1788,6 +1920,10 @@ func (client *Client) ListChatbotInstancesWithOptions(request *ListChatbotInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a paginated list of chatbot instances.
+//
 // @param request - ListChatbotInstancesRequest
 //
 // @return ListChatbotInstancesResponse
@@ -1802,6 +1938,10 @@ func (client *Client) ListChatbotInstances(request *ListChatbotInstancesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the conversation details for a specific conversation.
+//
 // @param request - ListConversationDetailsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1838,6 +1978,10 @@ func (client *Client) ListConversationDetailsWithOptions(request *ListConversati
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the conversation details for a specific conversation.
+//
 // @param request - ListConversationDetailsRequest
 //
 // @return ListConversationDetailsResponse
@@ -1854,7 +1998,7 @@ func (client *Client) ListConversationDetails(request *ListConversationDetailsRe
 
 // Summary:
 //
-// 查询会话列表
+// Returns the session list.
 //
 // @param request - ListConversationsRequest
 //
@@ -1894,7 +2038,7 @@ func (client *Client) ListConversationsWithOptions(request *ListConversationsReq
 
 // Summary:
 //
-// 查询会话列表
+// Returns the session list.
 //
 // @param request - ListConversationsRequest
 //
@@ -1912,7 +2056,7 @@ func (client *Client) ListConversations(request *ListConversationsRequest) (_res
 
 // Summary:
 //
-// 下载列表
+// # Download list
 //
 // @param request - ListDownloadTasksRequest
 //
@@ -1960,7 +2104,7 @@ func (client *Client) ListDownloadTasksWithOptions(request *ListDownloadTasksReq
 
 // Summary:
 //
-// 下载列表
+// # Download list
 //
 // @param request - ListDownloadTasksRequest
 //
@@ -1976,6 +2120,10 @@ func (client *Client) ListDownloadTasks(request *ListDownloadTasksRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a paginated list of intelligent navigation instances for the current tenant.
+//
 // @param request - ListInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2012,6 +2160,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a paginated list of intelligent navigation instances for the current tenant.
+//
 // @param request - ListInstancesRequest
 //
 // @return ListInstancesResponse
@@ -2028,7 +2180,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// 修改Asr配置
+// Modifies an ASR configuration.
 //
 // @param request - ModifyAsrConfigRequest
 //
@@ -2108,7 +2260,7 @@ func (client *Client) ModifyAsrConfigWithOptions(request *ModifyAsrConfigRequest
 
 // Summary:
 //
-// 修改Asr配置
+// Modifies an ASR configuration.
 //
 // @param request - ModifyAsrConfigRequest
 //
@@ -2124,6 +2276,10 @@ func (client *Client) ModifyAsrConfig(request *ModifyAsrConfigRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the greeting configuration.
+//
 // @param request - ModifyGreetingConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2176,6 +2332,10 @@ func (client *Client) ModifyGreetingConfigWithOptions(request *ModifyGreetingCon
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the greeting configuration.
+//
 // @param request - ModifyGreetingConfigRequest
 //
 // @return ModifyGreetingConfigResponse
@@ -2190,6 +2350,10 @@ func (client *Client) ModifyGreetingConfig(request *ModifyGreetingConfigRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Modify an instance.
+//
 // @param request - ModifyInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2242,6 +2406,10 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modify an instance.
+//
 // @param request - ModifyInstanceRequest
 //
 // @return ModifyInstanceResponse
@@ -2256,6 +2424,10 @@ func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *M
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the silence timeout configuration for a voice bot instance.
+//
 // @param request - ModifySilenceTimeoutConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2328,6 +2500,10 @@ func (client *Client) ModifySilenceTimeoutConfigWithOptions(request *ModifySilen
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the silence timeout configuration for a voice bot instance.
+//
 // @param request - ModifySilenceTimeoutConfigRequest
 //
 // @return ModifySilenceTimeoutConfigResponse
@@ -2344,7 +2520,7 @@ func (client *Client) ModifySilenceTimeoutConfig(request *ModifySilenceTimeoutCo
 
 // Summary:
 //
-// 修改TTS配置
+// Modifies the TTS configuration.
 //
 // @param request - ModifyTTSConfigRequest
 //
@@ -2373,6 +2549,10 @@ func (client *Client) ModifyTTSConfigWithOptions(request *ModifyTTSConfigRequest
 
 	if !dara.IsNil(request.EngineXunfei) {
 		query["EngineXunfei"] = request.EngineXunfei
+	}
+
+	if !dara.IsNil(request.ExtParams) {
+		query["ExtParams"] = request.ExtParams
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -2428,7 +2608,7 @@ func (client *Client) ModifyTTSConfigWithOptions(request *ModifyTTSConfigRequest
 
 // Summary:
 //
-// 修改TTS配置
+// Modifies the TTS configuration.
 //
 // @param request - ModifyTTSConfigRequest
 //
@@ -2444,6 +2624,10 @@ func (client *Client) ModifyTTSConfig(request *ModifyTTSConfigRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the rejection configuration.
+//
 // @param request - ModifyUnrecognizingConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2504,6 +2688,10 @@ func (client *Client) ModifyUnrecognizingConfigWithOptions(request *ModifyUnreco
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the rejection configuration.
+//
 // @param request - ModifyUnrecognizingConfigRequest
 //
 // @return ModifyUnrecognizingConfigResponse
@@ -2518,6 +2706,10 @@ func (client *Client) ModifyUnrecognizingConfig(request *ModifyUnrecognizingConf
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of conversation records.
+//
 // @param request - QueryConversationsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2554,6 +2746,10 @@ func (client *Client) QueryConversationsWithOptions(request *QueryConversationsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of conversation records.
+//
 // @param request - QueryConversationsRequest
 //
 // @return QueryConversationsResponse
@@ -2568,6 +2764,10 @@ func (client *Client) QueryConversations(request *QueryConversationsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Saves a recording.
+//
 // @param request - SaveRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2640,6 +2840,10 @@ func (client *Client) SaveRecordingWithOptions(request *SaveRecordingRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Saves a recording.
+//
 // @param request - SaveRecordingRequest
 //
 // @return SaveRecordingResponse
@@ -2654,6 +2858,10 @@ func (client *Client) SaveRecording(request *SaveRecordingRequest) (_result *Sav
 	return _result, _err
 }
 
+// Summary:
+//
+// Handles the silence timeout event in a conversation.
+//
 // @param request - SilenceTimeoutRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2706,6 +2914,10 @@ func (client *Client) SilenceTimeoutWithOptions(request *SilenceTimeoutRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Handles the silence timeout event in a conversation.
+//
 // @param request - SilenceTimeoutRequest
 //
 // @return SilenceTimeoutResponse

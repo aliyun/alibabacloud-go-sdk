@@ -16,12 +16,16 @@ type iListDownloadTasksRequest interface {
 }
 
 type ListDownloadTasksRequest struct {
+	// The page number of the results to return.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// This parameter is required.
 	//
 	// example:

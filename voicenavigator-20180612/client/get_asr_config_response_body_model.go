@@ -24,23 +24,34 @@ type iGetAsrConfigResponseBody interface {
 }
 
 type GetAsrConfigResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetAsrConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Not Found
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
@@ -119,35 +130,51 @@ func (s *GetAsrConfigResponseBody) Validate() error {
 }
 
 type GetAsrConfigResponseBodyData struct {
+	// The application key.
+	//
 	// example:
 	//
 	// your-app-key
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The acoustic model ID.
+	//
 	// example:
 	//
 	// 3b1d3031-8b6e-460a-8640-d330f2ca50b8
 	AsrAcousticModelId *string `json:"AsrAcousticModelId,omitempty" xml:"AsrAcousticModelId,omitempty"`
+	// The ASR class vocabulary ID.
+	//
 	// example:
 	//
 	// 3b1d3031-8b6e-460a-8640-d330f2ca50b8
 	AsrClassVocabularyId *string `json:"AsrClassVocabularyId,omitempty" xml:"AsrClassVocabularyId,omitempty"`
+	// The customization ID.
+	//
 	// example:
 	//
 	// 3b1d3031-8b6e-460a-8640-d330f2ca50b8
 	AsrCustomizationId *string `json:"AsrCustomizationId,omitempty" xml:"AsrCustomizationId,omitempty"`
 	AsrOverrides       *string `json:"AsrOverrides,omitempty" xml:"AsrOverrides,omitempty"`
+	// The vocabulary ID. You can view the ID on the [ASR Vocabulary Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
+	//
 	// example:
 	//
 	// 3b1d3031-8b6e-460a-8640-d330f2ca50b8
 	AsrVocabularyId *string `json:"AsrVocabularyId,omitempty" xml:"AsrVocabularyId,omitempty"`
+	// The speech engine.
+	//
 	// example:
 	//
 	// ali
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// Parameters for the iFLYTEK engine.
+	//
 	// example:
 	//
 	// EngineXufei
 	EngineXufei *string `json:"EngineXufei,omitempty" xml:"EngineXufei,omitempty"`
+	// The NLS service type.
+	//
 	// example:
 	//
 	// Authorized

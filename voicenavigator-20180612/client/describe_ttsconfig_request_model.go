@@ -16,12 +16,16 @@ type iDescribeTTSConfigRequest interface {
 }
 
 type DescribeTTSConfigRequest struct {
+	// The scenario ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dc437bba-5a25-4bbc-b4c2-f268864bebb5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance owner.
+	//
 	// example:
 	//
 	// 1971226538081821

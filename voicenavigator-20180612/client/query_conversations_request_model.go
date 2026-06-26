@@ -24,30 +24,42 @@ type iQueryConversationsRequest interface {
 }
 
 type QueryConversationsRequest struct {
+	// The start of the time range to query. This value is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1582183381000
 	BeginTimeLeftRange *int64 `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
+	// The end of the time range to query. This value is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1582356181000
 	BeginTimeRightRange *int64 `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+	// The calling number.
+	//
 	// example:
 	//
 	// 02811111111
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12f407b22cbe4890ac595f09985848d5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:

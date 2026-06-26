@@ -14,6 +14,8 @@ type iGetRealTimeConcurrencyRequest interface {
 }
 
 type GetRealTimeConcurrencyRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

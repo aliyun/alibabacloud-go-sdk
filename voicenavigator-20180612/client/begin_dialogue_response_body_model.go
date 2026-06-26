@@ -22,22 +22,35 @@ type iBeginDialogueResponseBody interface {
 }
 
 type BeginDialogueResponseBody struct {
+	// The action to perform.
+	//
 	// example:
 	//
 	// Broadcast
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The action parameters.
+	//
 	// example:
 	//
 	// {\\"duration\\":31340,\\"endTime\\":1638243934786,\\"hangUpDirection\\":\\"ivr\\",\\"startTime\\":1638243903446}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// Specifies whether the IVR playback can be interrupted.
+	//
 	// example:
 	//
 	// true
 	Interruptible *bool `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The text response.
+	//
+	// example:
+	//
+	// 您好，欢迎致电智能助手
 	TextResponse *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 

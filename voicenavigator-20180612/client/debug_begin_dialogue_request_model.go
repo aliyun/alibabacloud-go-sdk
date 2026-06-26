@@ -24,26 +24,36 @@ type iDebugBeginDialogueRequest interface {
 }
 
 type DebugBeginDialogueRequest struct {
+	// The called number.
+	//
 	// example:
 	//
 	// 10086
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// The calling number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 135815*****
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// The unique ID of the conversation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8a503680-815d-473e-a9b0-e010f47a64d2
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The initial context of the conversation.
+	//
 	// example:
 	//
 	// {}
 	InitialContext *string `json:"InitialContext,omitempty" xml:"InitialContext,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

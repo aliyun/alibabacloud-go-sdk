@@ -22,22 +22,32 @@ type iDebugDialogueResponseBody interface {
 }
 
 type DebugDialogueResponseBody struct {
+	// The next action returned by the dialogue engine.
+	//
 	// example:
 	//
 	// Broadcast
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Parameters for the returned action, as a JSON string.
+	//
 	// example:
 	//
 	// {}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// Indicates whether the Interactive Voice Response (IVR) playback can be interrupted.
+	//
 	// example:
 	//
 	// true
 	Interruptible *bool `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// d74d6290-7cbe-4436-b5d7-014ebb0f4060
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The textual response from the dialogue engine.
+	//
 	// example:
 	//
 	// 80d11be3-faad-4101-b4b0-59dbea28aaf0

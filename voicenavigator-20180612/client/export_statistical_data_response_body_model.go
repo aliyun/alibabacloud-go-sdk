@@ -16,10 +16,14 @@ type iExportStatisticalDataResponseBody interface {
 }
 
 type ExportStatisticalDataResponseBody struct {
+  // The ID of the asynchronous export task.
+  // 
   // example:
   // 
   // 6be5a9f1-406e-424e-a17b-b6fb86ee3cc9
   ExportTaskId *string `json:"ExportTaskId,omitempty" xml:"ExportTaskId,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // c62e6789-28a8-41db-941e-171a01d3b3b9

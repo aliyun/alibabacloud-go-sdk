@@ -14,6 +14,8 @@ type iDisableInstanceRequest interface {
 }
 
 type DisableInstanceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,18 +18,24 @@ type iDebugCollectedNumberRequest interface {
 }
 
 type DebugCollectedNumberRequest struct {
+	// The ID of the conversation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7cefbff0-8d50-4d6f-b93c-73cee23c1555
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The ID of the Voice Navigator instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7cefbff0-8d50-4d6f-b93c-73cee23c1555
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The collected number.
+	//
 	// example:
 	//
 	// 123

@@ -18,14 +18,20 @@ type iDescribeExportProgressResponseBody interface {
 }
 
 type DescribeExportProgressResponseBody struct {
+	// The URL of the file.
+	//
 	// example:
 	//
 	// http://ssml-test.oss-cn-shanghai.aliyuncs.com/key
 	FileHttpUrl *string `json:"FileHttpUrl,omitempty" xml:"FileHttpUrl,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// b19af5ce5314ac08108d1b33fe20e15
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the export task.
+	//
 	// example:
 	//
 	// FINISHED

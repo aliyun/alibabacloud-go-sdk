@@ -22,22 +22,35 @@ type iDebugBeginDialogueResponseBody interface {
 }
 
 type DebugBeginDialogueResponseBody struct {
+	// The action to perform.
+	//
 	// example:
 	//
 	// Broadcast
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The action parameters.
+	//
 	// example:
 	//
 	// {}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// Specifies whether the Interactive Voice Response (IVR) broadcast can be interrupted.
+	//
 	// example:
 	//
 	// true
 	Interruptible *bool `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The broadcast content.
+	//
+	// example:
+	//
+	// 您好，欢迎致电智能助手
 	TextResponse *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 

@@ -16,12 +16,16 @@ type iDescribeExportProgressRequest interface {
 }
 
 type DescribeExportProgressRequest struct {
+	// The ID of the export task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0de8e5ccc2b645039ae6fbda443da73f
 	ExportTaskId *string `json:"ExportTaskId,omitempty" xml:"ExportTaskId,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,7 +16,10 @@ type iListConversationDetailsResponseBody interface {
 }
 
 type ListConversationDetailsResponseBody struct {
+	// The list of conversation details.
 	ConversationDetails []*ListConversationDetailsResponseBodyConversationDetails `json:"ConversationDetails,omitempty" xml:"ConversationDetails,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
@@ -63,30 +66,47 @@ func (s *ListConversationDetailsResponseBody) Validate() error {
 }
 
 type ListConversationDetailsResponseBodyConversationDetails struct {
+	// The action performed during the turn.
+	//
 	// example:
 	//
 	// Dialogue
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The action parameters.
+	//
 	// example:
 	//
 	// {}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// The conversation ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1582266750353
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The sequence ID of the conversational turn.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	SequenceId *string `json:"SequenceId,omitempty" xml:"SequenceId,omitempty"`
+	// The speaker. Valid values: `customer` and `chatbot`.
+	//
 	// example:
 	//
 	// Chatbot
-	Speaker   *string `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
+	Speaker *string `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
+	// The speaker\\"s utterance.
+	//
+	// example:
+	//
+	// 你好
 	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 

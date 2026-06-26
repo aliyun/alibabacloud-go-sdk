@@ -15,6 +15,8 @@ type iAuditTTSVoiceRequest interface {
 	GetAppKey() *string
 	SetEngine(v string) *AuditTTSVoiceRequest
 	GetEngine() *string
+	SetExtParams(v string) *AuditTTSVoiceRequest
+	GetExtParams() *string
 	SetInstanceId(v string) *AuditTTSVoiceRequest
 	GetInstanceId() *string
 	SetPitchRate(v string) *AuditTTSVoiceRequest
@@ -35,6 +37,9 @@ type AuditTTSVoiceRequest struct {
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	AppKey    *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	Engine    *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ExtParams *string `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
+	// The instance ID of the navigation instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -43,20 +48,32 @@ type AuditTTSVoiceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PitchRate  *string `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
 	SecretKey  *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	// The speech rate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100
 	SpeechRate *string `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// The text to preview.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 你好
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The voice.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aixia
 	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// The volume.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -83,6 +100,10 @@ func (s *AuditTTSVoiceRequest) GetAppKey() *string {
 
 func (s *AuditTTSVoiceRequest) GetEngine() *string {
 	return s.Engine
+}
+
+func (s *AuditTTSVoiceRequest) GetExtParams() *string {
+	return s.ExtParams
 }
 
 func (s *AuditTTSVoiceRequest) GetInstanceId() *string {
@@ -125,6 +146,11 @@ func (s *AuditTTSVoiceRequest) SetAppKey(v string) *AuditTTSVoiceRequest {
 
 func (s *AuditTTSVoiceRequest) SetEngine(v string) *AuditTTSVoiceRequest {
 	s.Engine = &v
+	return s
+}
+
+func (s *AuditTTSVoiceRequest) SetExtParams(v string) *AuditTTSVoiceRequest {
+	s.ExtParams = &v
 	return s
 }
 

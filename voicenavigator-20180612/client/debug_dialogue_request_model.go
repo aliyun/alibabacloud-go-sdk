@@ -20,23 +20,35 @@ type iDebugDialogueRequest interface {
 }
 
 type DebugDialogueRequest struct {
+	// The context of the conversation.
+	//
 	// example:
 	//
 	// {}
 	AdditionalContext *string `json:"AdditionalContext,omitempty" xml:"AdditionalContext,omitempty"`
+	// The ID of the conversation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7cefbff0-8d50-4d6f-b93c-73cee23c1555
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// abb4aa26-3a8e-43dd-82f8-0c3898c9c67f
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The user\\"s utterance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 是的
 	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 

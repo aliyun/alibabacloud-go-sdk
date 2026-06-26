@@ -20,15 +20,30 @@ type iModifyGreetingConfigRequest interface {
 }
 
 type ModifyGreetingConfigRequest struct {
+	// The greeting words.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 你好，欢迎使用智能导航。
 	GreetingWords *string `json:"GreetingWords,omitempty" xml:"GreetingWords,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12f407b22cbe4890ac595f09985848d5
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The intent trigger.
+	//
+	// example:
+	//
+	// 开始
 	IntentTrigger *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
+	// The type.
+	//
 	// This parameter is required.
 	//
 	// example:

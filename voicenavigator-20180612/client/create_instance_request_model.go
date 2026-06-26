@@ -24,18 +24,48 @@ type iCreateInstanceRequest interface {
 }
 
 type CreateInstanceRequest struct {
+	// The maximum concurrency of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 10
-	Concurrency *int64  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	// 1
+	Concurrency *int64 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	// The description of the instance.
+	//
+	// example:
+	//
+	// 这是一个测试场景
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the Voice Navigator instance, which identifies the digital employee scenario.
+	//
 	// This parameter is required.
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	//
+	// example:
+	//
+	// 测试场景
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Configuration parameters for the large language model service, in JSON format.
+	//
+	// - Use this parameter to specify a Function Compute service.
 	NluServiceParamsJson *string `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
-	UnionInstanceId      *string `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
-	UnionSource          *string `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
+	// The ID of the source instance.
+	//
+	// > If you set UnionSource to CCC, set this parameter to the ID of the Cloud Contact Center instance.
+	//
+	// example:
+	//
+	// demo-lctms
+	UnionInstanceId *string `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
+	// The source service.
+	//
+	// - CCC: Cloud Contact Center
+	//
+	// example:
+	//
+	// CCC
+	UnionSource *string `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {

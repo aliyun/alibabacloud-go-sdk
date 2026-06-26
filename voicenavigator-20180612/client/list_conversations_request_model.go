@@ -36,50 +36,78 @@ type iListConversationsRequest interface {
 }
 
 type ListConversationsRequest struct {
+	// The start of the time range to query. This value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1638288000000
 	BeginTimeLeftRange *int64 `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1637547875311
 	BeginTimeRightRange *int64 `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+	// The calling number.
+	//
 	// example:
 	//
 	// 138106*****
 	CallingNumber     *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
 	DebugConversation *int32  `json:"DebugConversation,omitempty" xml:"DebugConversation,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// da37319b-6c83-4268-9f19-814aed62e401
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether the conversation is in a sandbox environment. Valid values: `true` and `false`.
+	//
 	// example:
 	//
 	// false
 	IsSandBox *string `json:"IsSandBox,omitempty" xml:"IsSandBox,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search query for filtering conversations.
+	//
 	// example:
 	//
 	// 13788914724
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The result of the conversation.
+	//
 	// example:
 	//
 	// 0
-	Result           *int64 `json:"Result,omitempty" xml:"Result,omitempty"`
-	RoundsLeftRange  *int32 `json:"RoundsLeftRange,omitempty" xml:"RoundsLeftRange,omitempty"`
+	Result *int64 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The minimum number of rounds in the conversation.
+	//
+	// example:
+	//
+	// 1
+	RoundsLeftRange *int32 `json:"RoundsLeftRange,omitempty" xml:"RoundsLeftRange,omitempty"`
+	// The maximum number of rounds in the conversation.
+	//
+	// example:
+	//
+	// 3
 	RoundsRightRange *int32 `json:"RoundsRightRange,omitempty" xml:"RoundsRightRange,omitempty"`
 }
 

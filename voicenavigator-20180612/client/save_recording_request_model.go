@@ -30,46 +30,62 @@ type iSaveRecordingRequest interface {
 }
 
 type SaveRecordingRequest struct {
+	// The ID of the conversation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 390515b5-6115-4ccf-83e2-52d5bfaf2ddf
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The duration of the recording, in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The name of the recording file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e6bef0db439d4048bfcf45322491becf.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The storage path of the recording file, such as a path in Object Storage Service (OSS).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://test/record/
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the account that owns the instance.
+	//
 	// example:
 	//
 	// 1971226538081821
 	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	// The Unix timestamp, in milliseconds, when the recording started.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1582267398628
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The type of the recording file. Example: Source.
+	//
 	// This parameter is required.
 	//
 	// example:

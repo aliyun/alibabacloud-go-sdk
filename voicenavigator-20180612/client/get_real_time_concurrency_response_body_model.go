@@ -20,18 +20,26 @@ type iGetRealTimeConcurrencyResponseBody interface {
 }
 
 type GetRealTimeConcurrencyResponseBody struct {
+	// The maximum concurrency.
+	//
 	// example:
 	//
 	// 2
 	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// The real-time concurrency.
+	//
 	// example:
 	//
 	// 1
 	RealTimeConcurrency *int64 `json:"RealTimeConcurrency,omitempty" xml:"RealTimeConcurrency,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E6E61E1A-D2DC-5ACF-AED4-A115B6691F98
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The timestamp of the request.
+	//
 	// example:
 	//
 	// 1661584255029

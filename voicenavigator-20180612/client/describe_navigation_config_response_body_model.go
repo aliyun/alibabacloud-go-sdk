@@ -20,13 +20,18 @@ type iDescribeNavigationConfigResponseBody interface {
 }
 
 type DescribeNavigationConfigResponseBody struct {
+	// The greeting configuration.
 	GreetingConfig *DescribeNavigationConfigResponseBodyGreetingConfig `json:"GreetingConfig,omitempty" xml:"GreetingConfig,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
-	RequestId            *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The silence timeout configuration.
 	SilenceTimeoutConfig *DescribeNavigationConfigResponseBodySilenceTimeoutConfig `json:"SilenceTimeoutConfig,omitempty" xml:"SilenceTimeoutConfig,omitempty" type:"Struct"`
-	UnrecognizingConfig  *DescribeNavigationConfigResponseBodyUnrecognizingConfig  `json:"UnrecognizingConfig,omitempty" xml:"UnrecognizingConfig,omitempty" type:"Struct"`
+	// The configuration for handling unrecognized input.
+	UnrecognizingConfig *DescribeNavigationConfigResponseBodyUnrecognizingConfig `json:"UnrecognizingConfig,omitempty" xml:"UnrecognizingConfig,omitempty" type:"Struct"`
 }
 
 func (s DescribeNavigationConfigResponseBody) String() string {
@@ -93,8 +98,20 @@ func (s *DescribeNavigationConfigResponseBody) Validate() error {
 }
 
 type DescribeNavigationConfigResponseBodyGreetingConfig struct {
+	// The greeting message.
+	//
+	// example:
+	//
+	// 您好，欢迎致电智能导航
 	GreetingWords *string `json:"GreetingWords,omitempty" xml:"GreetingWords,omitempty"`
+	// The intent trigger.
+	//
+	// example:
+	//
+	// 你好
 	IntentTrigger *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
+	// The source of the configuration.
+	//
 	// example:
 	//
 	// chatbotIntent
@@ -141,30 +158,50 @@ func (s *DescribeNavigationConfigResponseBodyGreetingConfig) Validate() error {
 }
 
 type DescribeNavigationConfigResponseBodySilenceTimeoutConfig struct {
+	// The action to perform after the final silence prompt is played. Valid values: `TransferToAgent`, `TransferToIVR`, `RedirectToPage`, or `HangUp`.
+	//
 	// example:
 	//
 	// HangUp
 	FinalAction *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
+	// Parameters for the final action, such as a redirection target.
+	//
 	// example:
 	//
 	// {}
 	FinalActionParams *string `json:"FinalActionParams,omitempty" xml:"FinalActionParams,omitempty"`
-	FinalPrompt       *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
+	// The prompt that is played when the silence timeout threshold is reached.
+	//
+	// example:
+	//
+	// 抱歉，听不到您说话，请您稍后致电
+	FinalPrompt *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
 	// ""
 	//
 	// example:
 	//
 	// ""
 	IntentTrigger *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
-	Prompt        *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The prompt that is played when a silence timeout occurs.
+	//
+	// example:
+	//
+	// 抱歉，我没听到您说话
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The source of the configuration.
+	//
 	// example:
 	//
 	// chatbotIntent
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The maximum number of silence timeouts.
+	//
 	// example:
 	//
 	// 3
 	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The duration of the silence timeout.
+	//
 	// example:
 	//
 	// 10
@@ -256,16 +293,32 @@ func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) Validate() er
 }
 
 type DescribeNavigationConfigResponseBodyUnrecognizingConfig struct {
+	// The action to take when the number of unrecognized inputs reaches the threshold. Valid values: `TransferToAgent`, `TransferToIVR`, `RedirectToPage`, or `HangUp`.
+	//
 	// example:
 	//
 	// TransferToAgent
 	FinalAction *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
+	// Parameters for the final action, such as a redirection target.
+	//
 	// example:
 	//
 	// { \\"skillGroupId\\": \\"fallbackSkillGroup\\" }
 	FinalActionParams *string `json:"FinalActionParams,omitempty" xml:"FinalActionParams,omitempty"`
-	FinalPrompt       *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
-	Prompt            *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The prompt that is played when the unrecognized input threshold is reached.
+	//
+	// example:
+	//
+	// 抱歉，我暂时无法处理您的问题，即将为您转接人工
+	FinalPrompt *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
+	// The prompt that is played when user input is not recognized.
+	//
+	// example:
+	//
+	// 抱歉，我无法理解您的意思
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The maximum number of times the user\\"s input is not recognized.
+	//
 	// example:
 	//
 	// 3

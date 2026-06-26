@@ -20,20 +20,28 @@ type iDescribeStatisticalDataRequest interface {
 }
 
 type DescribeStatisticalDataRequest struct {
+	// The start of the query time range, specified as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1582283640000
 	BeginTimeLeftRange *int64 `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
+	// The end of the query time range, specified as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1582298040000
 	BeginTimeRightRange *int64 `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c28fc549-d88f-4f6e-85ad-a0806e5e39c0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time unit. Valid values: `Day` and `Hour`.
+	//
 	// This parameter is required.
 	//
 	// example:

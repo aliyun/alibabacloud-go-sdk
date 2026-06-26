@@ -14,6 +14,8 @@ type iEnableInstanceRequest interface {
 }
 
 type EnableInstanceRequest struct {
+  // The instance ID.
+  // 
   // This parameter is required.
   // 
   // example:

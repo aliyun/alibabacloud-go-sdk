@@ -22,22 +22,35 @@ type iSilenceTimeoutResponseBody interface {
 }
 
 type SilenceTimeoutResponseBody struct {
+	// The system\\"s next action.
+	//
 	// example:
 	//
 	// TransferToAgent
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Parameters for the action defined in the Action parameter.
+	//
 	// example:
 	//
 	// { "skillGroupId": "ABC"}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// Indicates whether the action is interruptible.
+	//
 	// example:
 	//
 	// false
 	Interruptible *bool `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The text response to play to the user.
+	//
+	// example:
+	//
+	// 正在为你转接人工坐席
 	TextResponse *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 

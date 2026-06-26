@@ -20,13 +20,22 @@ type iModifyInstanceRequest interface {
 }
 
 type ModifyInstanceRequest struct {
+	// The maximum number of concurrent conversations for the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	Concurrency *int64  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	Concurrency *int64 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	// The description of the instance.
+	//
+	// example:
+	//
+	// 描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

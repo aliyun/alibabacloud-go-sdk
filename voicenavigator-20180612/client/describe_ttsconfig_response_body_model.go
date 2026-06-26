@@ -17,6 +17,8 @@ type iDescribeTTSConfigResponseBody interface {
 	GetEngine() *string
 	SetEngineXunfei(v string) *DescribeTTSConfigResponseBody
 	GetEngineXunfei() *string
+	SetExtParams(v string) *DescribeTTSConfigResponseBody
+	GetExtParams() *string
 	SetNlsServiceType(v string) *DescribeTTSConfigResponseBody
 	GetNlsServiceType() *string
 	SetPitchRate(v int32) *DescribeTTSConfigResponseBody
@@ -34,25 +36,69 @@ type iDescribeTTSConfigResponseBody interface {
 }
 
 type DescribeTTSConfigResponseBody struct {
+	// The custom voice ID.
+	//
+	// example:
+	//
+	// dc458bba-5a25-4cbc-b5c2
 	AliCustomizedVoice *string `json:"AliCustomizedVoice,omitempty" xml:"AliCustomizedVoice,omitempty"`
-	AppKey             *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineXunfei       *string `json:"EngineXunfei,omitempty" xml:"EngineXunfei,omitempty"`
-	NlsServiceType     *string `json:"NlsServiceType,omitempty" xml:"NlsServiceType,omitempty"`
-	PitchRate          *int32  `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	// The AppKey of the third-party voice configuration.
+	//
+	// example:
+	//
+	// 5b358afc
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The TTS engine.
+	//
+	// example:
+	//
+	// bailian
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The iFLYTEK engine parameters.
+	//
+	// example:
+	//
+	// {\\"Voice\\":\\"aisjinger\\"}
+	EngineXunfei *string `json:"EngineXunfei,omitempty" xml:"EngineXunfei,omitempty"`
+	ExtParams    *string `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
+	// The TTS service invoke type.
+	//
+	// example:
+	//
+	// Managed
+	NlsServiceType *string `json:"NlsServiceType,omitempty" xml:"NlsServiceType,omitempty"`
+	// The pitch rate.
+	//
+	// example:
+	//
+	// 0
+	PitchRate *int32 `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F132DDBA-66C4-5BD3-BF7E-9642FE877158
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The speech rate.
+	//
 	// example:
 	//
 	// -150
-	SpeechRate   *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// The TTS error correction dictionary.
+	//
+	// example:
+	//
+	// [{\\"pronunciation\\":\\"环钱\\",\\"word\\":\\"还钱\\"}]
 	TtsOverrides *string `json:"TtsOverrides,omitempty" xml:"TtsOverrides,omitempty"`
+	// The voice.
+	//
 	// example:
 	//
 	// aixia
 	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// The volume.
+	//
 	// example:
 	//
 	// 50
@@ -81,6 +127,10 @@ func (s *DescribeTTSConfigResponseBody) GetEngine() *string {
 
 func (s *DescribeTTSConfigResponseBody) GetEngineXunfei() *string {
 	return s.EngineXunfei
+}
+
+func (s *DescribeTTSConfigResponseBody) GetExtParams() *string {
+	return s.ExtParams
 }
 
 func (s *DescribeTTSConfigResponseBody) GetNlsServiceType() *string {
@@ -128,6 +178,11 @@ func (s *DescribeTTSConfigResponseBody) SetEngine(v string) *DescribeTTSConfigRe
 
 func (s *DescribeTTSConfigResponseBody) SetEngineXunfei(v string) *DescribeTTSConfigResponseBody {
 	s.EngineXunfei = &v
+	return s
+}
+
+func (s *DescribeTTSConfigResponseBody) SetExtParams(v string) *DescribeTTSConfigResponseBody {
+	s.ExtParams = &v
 	return s
 }
 

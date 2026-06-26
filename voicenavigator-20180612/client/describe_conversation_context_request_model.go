@@ -16,12 +16,16 @@ type iDescribeConversationContextRequest interface {
 }
 
 type DescribeConversationContextRequest struct {
+	// The ID of the conversation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 361c8a53-0e29-42f3-8aa7-c7752d010399
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

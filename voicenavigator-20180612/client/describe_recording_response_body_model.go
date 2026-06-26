@@ -20,14 +20,20 @@ type iDescribeRecordingResponseBody interface {
 }
 
 type DescribeRecordingResponseBody struct {
+	// The file name.
+	//
 	// example:
 	//
 	// 2019080913202222.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file download URL.
+	//
 	// example:
 	//
 	// url
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD

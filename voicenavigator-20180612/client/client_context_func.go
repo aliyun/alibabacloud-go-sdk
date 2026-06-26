@@ -7,6 +7,10 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
+// Summary:
+//
+// Associates a chatbot with a navigation instance.
+//
 // @param request - AssociateChatbotInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -69,7 +73,7 @@ func (client *Client) AssociateChatbotInstanceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # AuditTTSVoice
+// Previews a text-to-speech (TTS) voice.
 //
 // @param request - AuditTTSVoiceRequest
 //
@@ -94,6 +98,10 @@ func (client *Client) AuditTTSVoiceWithContext(ctx context.Context, request *Aud
 
 	if !dara.IsNil(request.Engine) {
 		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.ExtParams) {
+		query["ExtParams"] = request.ExtParams
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -149,7 +157,7 @@ func (client *Client) AuditTTSVoiceWithContext(ctx context.Context, request *Aud
 
 // Summary:
 //
-// 开启会话
+// Starts a conversation.
 //
 // @param request - BeginDialogueRequest
 //
@@ -211,6 +219,10 @@ func (client *Client) BeginDialogueWithContext(ctx context.Context, request *Beg
 	return _result, _err
 }
 
+// Summary:
+//
+// Collects a number entered by a user during a call.
+//
 // @param request - CollectedNumberRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -269,7 +281,7 @@ func (client *Client) CollectedNumberWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// # CreateDownloadUrl
+// Generates a temporary URL to download a file.
 //
 // @param request - CreateDownloadUrlRequest
 //
@@ -307,6 +319,10 @@ func (client *Client) CreateDownloadUrlWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Voice Navigator instance.
+//
 // @param request - CreateInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -369,7 +385,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 测试窗开启文本对话
+// Starts a conversation in a debugging environment.
 //
 // @param request - DebugBeginDialogueRequest
 //
@@ -433,7 +449,7 @@ func (client *Client) DebugBeginDialogueWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # DebugCollectedNumber
+// Debugs the number collection process.
 //
 // @param request - DebugCollectedNumberRequest
 //
@@ -483,6 +499,10 @@ func (client *Client) DebugCollectedNumberWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Sends a user utterance to the dialogue engine to debug a conversation flow.
+//
 // @param request - DebugDialogueRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -535,6 +555,10 @@ func (client *Client) DebugDialogueWithContext(ctx context.Context, request *Deb
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a navigation instance.
+//
 // @param request - DeleteInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -575,6 +599,10 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves information about a conversation.
+//
 // @param request - DescribeConversationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -613,7 +641,7 @@ func (client *Client) DescribeConversationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # DescribeConversationContext
+// Queries the context of a specified conversation.
 //
 // @param request - DescribeConversationContextRequest
 //
@@ -653,7 +681,7 @@ func (client *Client) DescribeConversationContextWithContext(ctx context.Context
 
 // Summary:
 //
-// # DescribeExportProgress
+// Queries the status of an export task.
 //
 // @param request - DescribeExportProgressRequest
 //
@@ -691,6 +719,10 @@ func (client *Client) DescribeExportProgressWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves details for a specified instance.
+//
 // @param request - DescribeInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -727,6 +759,10 @@ func (client *Client) DescribeInstanceWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// View the instance IVR configuration.
+//
 // @param request - DescribeNavigationConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -763,6 +799,10 @@ func (client *Client) DescribeNavigationConfigWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a conversation recording.
+//
 // @param request - DescribeRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -799,6 +839,10 @@ func (client *Client) DescribeRecordingWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// View the current instance\\"s statistics.
+//
 // @param request - DescribeStatisticalDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -837,7 +881,7 @@ func (client *Client) DescribeStatisticalDataWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取TTS配置
+// Queries the TTS configuration.
 //
 // @param request - DescribeTTSConfigRequest
 //
@@ -875,6 +919,10 @@ func (client *Client) DescribeTTSConfigWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Use this API to continue a conversation with an intelligent assistant by processing a user\\"s utterance.
+//
 // @param request - DialogueRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -943,6 +991,10 @@ func (client *Client) DialogueWithContext(ctx context.Context, request *Dialogue
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables a Voice Navigator instance.
+//
 // @param request - DisableInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -983,6 +1035,10 @@ func (client *Client) DisableInstanceWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables a Voice Navigator instance.
+//
 // @param request - EnableInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1023,6 +1079,10 @@ func (client *Client) EnableInstanceWithContext(ctx context.Context, request *En
 	return _result, _err
 }
 
+// Summary:
+//
+// Ends an ongoing dialogue.
+//
 // @param request - EndDialogueRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1077,7 +1137,7 @@ func (client *Client) EndDialogueWithContext(ctx context.Context, request *EndDi
 
 // Summary:
 //
-// # ExportConversationDetails
+// Exports conversation details.
 //
 // @param request - ExportConversationDetailsRequest
 //
@@ -1151,6 +1211,10 @@ func (client *Client) ExportConversationDetailsWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Exports statistical data.
+//
 // @param request - ExportStatisticalDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1209,7 +1273,7 @@ func (client *Client) ExportStatisticalDataWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取Asr配置
+// Retrieves the ASR configuration.
 //
 // @param request - GetAsrConfigRequest
 //
@@ -1257,7 +1321,7 @@ func (client *Client) GetAsrConfigWithContext(ctx context.Context, request *GetA
 
 // Summary:
 //
-// # GetRealTimeConcurrency
+// Retrieves the real-time concurrency of an instance.
 //
 // @param request - GetRealTimeConcurrencyRequest
 //
@@ -1295,6 +1359,10 @@ func (client *Client) GetRealTimeConcurrencyWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a paginated list of chatbot instances.
+//
 // @param request - ListChatbotInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1331,6 +1399,10 @@ func (client *Client) ListChatbotInstancesWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the conversation details for a specific conversation.
+//
 // @param request - ListConversationDetailsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1369,7 +1441,7 @@ func (client *Client) ListConversationDetailsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询会话列表
+// Returns the session list.
 //
 // @param request - ListConversationsRequest
 //
@@ -1409,7 +1481,7 @@ func (client *Client) ListConversationsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 下载列表
+// # Download list
 //
 // @param request - ListDownloadTasksRequest
 //
@@ -1455,6 +1527,10 @@ func (client *Client) ListDownloadTasksWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a paginated list of intelligent navigation instances for the current tenant.
+//
 // @param request - ListInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1493,7 +1569,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 修改Asr配置
+// Modifies an ASR configuration.
 //
 // @param request - ModifyAsrConfigRequest
 //
@@ -1571,6 +1647,10 @@ func (client *Client) ModifyAsrConfigWithContext(ctx context.Context, request *M
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the greeting configuration.
+//
 // @param request - ModifyGreetingConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1623,6 +1703,10 @@ func (client *Client) ModifyGreetingConfigWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Modify an instance.
+//
 // @param request - ModifyInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1675,6 +1759,10 @@ func (client *Client) ModifyInstanceWithContext(ctx context.Context, request *Mo
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the silence timeout configuration for a voice bot instance.
+//
 // @param request - ModifySilenceTimeoutConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1749,7 +1837,7 @@ func (client *Client) ModifySilenceTimeoutConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// 修改TTS配置
+// Modifies the TTS configuration.
 //
 // @param request - ModifyTTSConfigRequest
 //
@@ -1778,6 +1866,10 @@ func (client *Client) ModifyTTSConfigWithContext(ctx context.Context, request *M
 
 	if !dara.IsNil(request.EngineXunfei) {
 		query["EngineXunfei"] = request.EngineXunfei
+	}
+
+	if !dara.IsNil(request.ExtParams) {
+		query["ExtParams"] = request.ExtParams
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -1831,6 +1923,10 @@ func (client *Client) ModifyTTSConfigWithContext(ctx context.Context, request *M
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the rejection configuration.
+//
 // @param request - ModifyUnrecognizingConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1891,6 +1987,10 @@ func (client *Client) ModifyUnrecognizingConfigWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of conversation records.
+//
 // @param request - QueryConversationsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1927,6 +2027,10 @@ func (client *Client) QueryConversationsWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Saves a recording.
+//
 // @param request - SaveRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1999,6 +2103,10 @@ func (client *Client) SaveRecordingWithContext(ctx context.Context, request *Sav
 	return _result, _err
 }
 
+// Summary:
+//
+// Handles the silence timeout event in a conversation.
+//
 // @param request - SilenceTimeoutRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

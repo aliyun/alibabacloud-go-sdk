@@ -20,22 +20,30 @@ type iEndDialogueRequest interface {
 }
 
 type EndDialogueRequest struct {
+  // The ID of the conversation.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 8fb819b5-d032-48a9-ae5e-cff041b83596
   ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+  // The hang-up parameters, in a JSON string.
+  // 
   // example:
   // 
   // {\\"duration\\":40,\\"endTime\\":1645082505345,\\"hangUpDirection\\":\\"ivr\\",\\"hasLastPlaybackCompleted\\":true,\\"startTime\\":1645082505305}
   HangUpParams *string `json:"HangUpParams,omitempty" xml:"HangUpParams,omitempty"`
+  // The ID of the instance.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // e48e45dd-e47a-4744-a063-f08cbebb1c5a
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+  // The ID of the instance owner.
+  // 
   // example:
   // 
   // 1399572315967217

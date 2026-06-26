@@ -22,22 +22,35 @@ type iDebugCollectedNumberResponseBody interface {
 }
 
 type DebugCollectedNumberResponseBody struct {
+	// The next action that Voice Navigator performs.
+	//
 	// example:
 	//
 	// Broadcast
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The parameters for the next action.
+	//
 	// example:
 	//
 	// {}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// Indicates whether the voice response can be interrupted.
+	//
 	// example:
 	//
 	// true
 	Interruptible *bool `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// abb4aa26-3a8e-43dd-82f8-0c3898c9c67f
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The text that Voice Navigator plays to the user.
+	//
+	// example:
+	//
+	// 您好，欢迎致电智能助手
 	TextResponse *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 

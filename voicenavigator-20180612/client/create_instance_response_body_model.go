@@ -16,10 +16,14 @@ type iCreateInstanceResponseBody interface {
 }
 
 type CreateInstanceResponseBody struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// c28fc549-d88f-4f6e-85ad-a0806e5e39c0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9ab43460-c0b9-40e2-8447-48d82c97fc67

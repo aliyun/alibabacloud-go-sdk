@@ -14,6 +14,8 @@ type iEndDialogueResponseBody interface {
 }
 
 type EndDialogueResponseBody struct {
+  // The ID of the request.
+  // 
   // example:
   // 
   // e48e45dd-e47a-4744-a063-f08cbebb1c5a

@@ -30,28 +30,40 @@ type iExportConversationDetailsRequest interface {
 }
 
 type ExportConversationDetailsRequest struct {
+  // The beginning of the time range to query. This value is a UNIX timestamp in milliseconds.
+  // 
   // example:
   // 
   // 1582266750353
   BeginTimeLeftRange *int64 `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
+  // The end of the time range to query. This value is a UNIX timestamp in milliseconds.
+  // 
   // example:
   // 
   // 1640793599000
   BeginTimeRightRange *int64 `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+  // The calling number.
+  // 
   // example:
   // 
   // 13581588**
   CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
   DebugConversation *int32 `json:"DebugConversation,omitempty" xml:"DebugConversation,omitempty"`
+  // The ID of the instance.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 6c01a99f-1b72-4f75-a8bd-3875766bd19d
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+  // An array of optional parameters.
   Options []*string `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
+  // The result of the conversation.
   Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
+  // The minimum number of conversation turns.
   RoundsLeftRange *int32 `json:"RoundsLeftRange,omitempty" xml:"RoundsLeftRange,omitempty"`
+  // The maximum number of conversation turns.
   RoundsRightRange *int32 `json:"RoundsRightRange,omitempty" xml:"RoundsRightRange,omitempty"`
 }
 

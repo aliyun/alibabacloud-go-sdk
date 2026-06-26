@@ -14,11 +14,13 @@ type iDescribeInstanceRequest interface {
 }
 
 type DescribeInstanceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ecbfa5e3-1838-4e8a-aa08-fa8b713b82df
+	// cd6fc91bc13445c2af7f2e3e31418520
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

@@ -22,19 +22,28 @@ type iListChatbotInstancesResponseBody interface {
 }
 
 type ListChatbotInstancesResponseBody struct {
+	// The list of chatbot instances.
 	Bots []*ListChatbotInstancesResponseBodyBots `json:"Bots,omitempty" xml:"Bots,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// da37319b-6c83-4268-9f19-814aed62e401
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of chatbot instances.
+	//
 	// example:
 	//
 	// 10
@@ -108,27 +117,44 @@ func (s *ListChatbotInstancesResponseBody) Validate() error {
 }
 
 type ListChatbotInstancesResponseBodyBots struct {
+	// The avatar of the chatbot instance.
+	//
 	// example:
 	//
 	// https://dss0.ali.com/70cFuHS.jpg
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1582266750353
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The description of the chatbot instance.
+	//
 	// example:
 	//
 	// ‘’
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// The language code.
+	//
 	// example:
 	//
 	// zh-cn
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the chatbot instance.
+	//
+	// example:
+	//
+	// 测试机器人
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time zone.
+	//
 	// example:
 	//
 	// UTC+8

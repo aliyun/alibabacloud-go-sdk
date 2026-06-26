@@ -24,11 +24,20 @@ type iAssociateChatbotInstanceRequest interface {
 }
 
 type AssociateChatbotInstanceRequest struct {
+	// The chatbot ID.
+	//
 	// example:
 	//
 	// chatbot-720edd02b66a
 	ChatbotInstanceId *string `json:"ChatbotInstanceId,omitempty" xml:"ChatbotInstanceId,omitempty"`
-	ChatbotName       *string `json:"ChatbotName,omitempty" xml:"ChatbotName,omitempty"`
+	// The name of the chatbot.
+	//
+	// example:
+	//
+	// 客服机器人
+	ChatbotName *string `json:"ChatbotName,omitempty" xml:"ChatbotName,omitempty"`
+	// The navigation instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

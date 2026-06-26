@@ -14,6 +14,8 @@ type iModifyGreetingConfigResponseBody interface {
 }
 
 type ModifyGreetingConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD

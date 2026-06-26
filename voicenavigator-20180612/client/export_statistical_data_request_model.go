@@ -22,26 +22,36 @@ type iExportStatisticalDataRequest interface {
 }
 
 type ExportStatisticalDataRequest struct {
+  // The start of the query time range. The value must be a Unix timestamp in milliseconds.
+  // 
   // example:
   // 
   // 1582266750353
   BeginTimeLeftRange *int64 `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
+  // The end of the query time range. The value must be a Unix timestamp in milliseconds.
+  // 
   // example:
   // 
   // 1582266750353
   BeginTimeRightRange *int64 `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+  // The export type.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // statistical
   ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+  // The ID of the Voice Navigator instance.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 29b52d70-d9fe-4fe0-8476-8aaacbcfdc84
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+  // The time unit.
+  // 
   // This parameter is required.
   // 
   // example:

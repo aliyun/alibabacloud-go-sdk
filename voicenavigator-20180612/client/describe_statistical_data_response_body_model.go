@@ -28,31 +28,46 @@ type iDescribeStatisticalDataResponseBody interface {
 }
 
 type DescribeStatisticalDataResponseBody struct {
+	// The total number of conversations.
+	//
 	// example:
 	//
 	// 100
 	ConversationTotalNum *int64 `json:"ConversationTotalNum,omitempty" xml:"ConversationTotalNum,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of resolved questions.
+	//
 	// example:
 	//
 	// 80
-	ResolvedQuestionTotalNum *int64                                                       `json:"ResolvedQuestionTotalNum,omitempty" xml:"ResolvedQuestionTotalNum,omitempty"`
-	StatisticalDataReports   []*DescribeStatisticalDataResponseBodyStatisticalDataReports `json:"StatisticalDataReports,omitempty" xml:"StatisticalDataReports,omitempty" type:"Repeated"`
+	ResolvedQuestionTotalNum *int64 `json:"ResolvedQuestionTotalNum,omitempty" xml:"ResolvedQuestionTotalNum,omitempty"`
+	// The array of statistical data over time.
+	StatisticalDataReports []*DescribeStatisticalDataResponseBodyStatisticalDataReports `json:"StatisticalDataReports,omitempty" xml:"StatisticalDataReports,omitempty" type:"Repeated"`
+	// The total pass rate of multi-turn dialogues.
+	//
 	// example:
 	//
 	// 80.00%
 	TotalDialoguePassRate *string `json:"TotalDialoguePassRate,omitempty" xml:"TotalDialoguePassRate,omitempty"`
+	// The total knowledge base hit rate.
+	//
 	// example:
 	//
 	// 80.00%
 	TotalKnowledgeHitRate *string `json:"TotalKnowledgeHitRate,omitempty" xml:"TotalKnowledgeHitRate,omitempty"`
+	// The total resolution rate.
+	//
 	// example:
 	//
 	// 80.00%
 	TotalResolutionRate *string `json:"TotalResolutionRate,omitempty" xml:"TotalResolutionRate,omitempty"`
+	// The total valid answer rate.
+	//
 	// example:
 	//
 	// 80.00%
@@ -153,30 +168,44 @@ func (s *DescribeStatisticalDataResponseBody) Validate() error {
 }
 
 type DescribeStatisticalDataResponseBodyStatisticalDataReports struct {
+	// The pass rate of multi-turn dialogues.
+	//
 	// example:
 	//
 	// 80.00%
 	DialoguePassRate *string `json:"DialoguePassRate,omitempty" xml:"DialoguePassRate,omitempty"`
+	// The knowledge base hit rate.
+	//
 	// example:
 	//
 	// 80.00%
 	KnowledgeHitRate *string `json:"KnowledgeHitRate,omitempty" xml:"KnowledgeHitRate,omitempty"`
+	// The resolution rate.
+	//
 	// example:
 	//
 	// 80.00%
 	ResolutionRate *string `json:"ResolutionRate,omitempty" xml:"ResolutionRate,omitempty"`
+	// The number of resolved questions.
+	//
 	// example:
 	//
 	// 80
 	ResolvedQuestionNum *int32 `json:"ResolvedQuestionNum,omitempty" xml:"ResolvedQuestionNum,omitempty"`
+	// The date of the statistics.
+	//
 	// example:
 	//
 	// 19:00:00
 	StatisticalDate *string `json:"StatisticalDate,omitempty" xml:"StatisticalDate,omitempty"`
+	// The total number of conversations.
+	//
 	// example:
 	//
 	// 100
 	TotalConversationNum *int32 `json:"TotalConversationNum,omitempty" xml:"TotalConversationNum,omitempty"`
+	// The valid answer rate.
+	//
 	// example:
 	//
 	// 80.0

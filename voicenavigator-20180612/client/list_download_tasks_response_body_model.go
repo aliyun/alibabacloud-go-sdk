@@ -24,23 +24,34 @@ type iListDownloadTasksResponseBody interface {
 }
 
 type ListDownloadTasksResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code          *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The download task data.
 	DownloadTasks *ListDownloadTasksResponseBodyDownloadTasks `json:"DownloadTasks,omitempty" xml:"DownloadTasks,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D24E0148-6D40-550E-9471-B2C5A34C3D12
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
@@ -119,15 +130,22 @@ func (s *ListDownloadTasksResponseBody) Validate() error {
 }
 
 type ListDownloadTasksResponseBodyDownloadTasks struct {
+	// A list of download tasks.
 	List []*ListDownloadTasksResponseBodyDownloadTasksList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 2
@@ -192,20 +210,32 @@ func (s *ListDownloadTasksResponseBodyDownloadTasks) Validate() error {
 }
 
 type ListDownloadTasksResponseBodyDownloadTasksList struct {
+	// A list of download task files.
 	DownloadTaskFiles []*ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles `json:"DownloadTaskFiles,omitempty" xml:"DownloadTaskFiles,omitempty" type:"Repeated"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 1637119221702
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The status of the task.
+	//
 	// example:
 	//
 	// Expired
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// cb9aba69-f578-42b2-aa2f-3e5a41947db8
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The title of the task.
+	//
+	// example:
+	//
+	// 批量高阶内存整理_2022_02_17_10
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListDownloadTasksResponseBodyDownloadTasksList) String() string {
@@ -275,19 +305,30 @@ func (s *ListDownloadTasksResponseBodyDownloadTasksList) Validate() error {
 }
 
 type ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles struct {
+	// The file ID.
+	//
 	// example:
 	//
 	// c32bf5675b704dc5b19200a89d2e85f1
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The progress of the file download.
+	//
 	// example:
 	//
 	// 70
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The status of the file.
+	//
 	// example:
 	//
 	// Published
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The title of the file.
+	//
+	// example:
+	//
+	// CBU阿里通信反馈-声音延迟
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles) String() string {

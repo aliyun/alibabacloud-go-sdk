@@ -38,31 +38,66 @@ type iDescribeInstanceResponseBody interface {
 }
 
 type DescribeInstanceResponseBody struct {
-	AbilityType          *string   `json:"AbilityType,omitempty" xml:"AbilityType,omitempty"`
+	// The capability type of the instance.<br>
+	//
+	// DEFAULT: Full capabilities.<br>
+	//
+	// VOICE_ONLY: Voice-only capabilities, which do not include conversation intervention.<br><br>
+	//
+	// example:
+	//
+	// VOICE_ONLY
+	AbilityType *string `json:"AbilityType,omitempty" xml:"AbilityType,omitempty"`
+	// Applicable operations.
 	ApplicableOperations []*string `json:"ApplicableOperations,omitempty" xml:"ApplicableOperations,omitempty" type:"Repeated"`
+	// The concurrency of the instance.
+	//
 	// example:
 	//
 	// 10
-	Concurrency *int64  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	Concurrency *int64 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	// The description of the instance.
+	//
+	// example:
+	//
+	// 导航测试实例描述信息
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
-	// test1_instanceId
+	// cd6fc91bc13445c2af7f2e3e31418520
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The last modification time of the instance.
+	//
 	// example:
 	//
-	// 1532436395329
-	ModifyTime           *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ModifyUserName       *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// 1683216000000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The user who last modified the instance.
+	//
+	// example:
+	//
+	// 2508711*******
+	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// 导航测试实例
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NluServiceParamsJson *string `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
+	// 790B5EA3-D251-1666-B1E0-4D1F4B33A592
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the instance.
+	//
 	// example:
 	//
-	// Drafted
+	// Published
 	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	UnionInstanceId *string `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
 	UnionSource     *string `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`

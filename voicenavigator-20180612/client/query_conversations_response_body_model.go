@@ -22,19 +22,28 @@ type iQueryConversationsResponseBody interface {
 }
 
 type QueryConversationsResponseBody struct {
+	// The conversation list.
 	Conversations []*QueryConversationsResponseBodyConversations `json:"Conversations,omitempty" xml:"Conversations,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count of conversation records.
+	//
 	// example:
 	//
 	// 100
@@ -108,34 +117,50 @@ func (s *QueryConversationsResponseBody) Validate() error {
 }
 
 type QueryConversationsResponseBodyConversations struct {
+	// The start time. This value is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1582183381000
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The calling number.
+	//
 	// example:
 	//
 	// 02811111111
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// The conversation ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The effective answer count.
+	//
 	// example:
 	//
 	// 8
 	EffectiveAnswerCount *int32 `json:"EffectiveAnswerCount,omitempty" xml:"EffectiveAnswerCount,omitempty"`
+	// The end time. This value is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1582183481000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the skill group.
+	//
 	// example:
 	//
 	// AAA
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// Whether the conversation was transferred to an agent.
+	//
 	// example:
 	//
 	// true
 	TransferredToAgent *bool `json:"TransferredToAgent,omitempty" xml:"TransferredToAgent,omitempty"`
+	// The user utterance count.
+	//
 	// example:
 	//
 	// 10

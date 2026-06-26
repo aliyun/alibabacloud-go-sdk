@@ -30,42 +30,68 @@ type iModifySilenceTimeoutConfigRequest interface {
 }
 
 type ModifySilenceTimeoutConfigRequest struct {
+	// Action After Prompt
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// TransferToAgent
 	FinalAction *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
+	// Parameters for the post-prompt action, specified in a JSON string.
+	//
 	// example:
 	//
 	// {}
 	FinalActionParams *string `json:"FinalActionParams,omitempty" xml:"FinalActionParams,omitempty"`
+	// The prompt that plays after the silence timeout threshold is reached.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 再见
 	FinalPrompt *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12f407b22cbe4890ac595f09985848d5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The intent trigger for the silence timeout.
+	//
 	// example:
 	//
 	// Timeout
 	IntentTrigger *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
+	// The prompt that plays when the system detects no user input during the specified timeout period.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 不好意思，听不见您说什么
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The type of source that triggers the action.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// chatbotIntent
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The maximum number of times the system plays the silence timeout prompt before it performs the post-prompt action.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The duration of the silence timeout, in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

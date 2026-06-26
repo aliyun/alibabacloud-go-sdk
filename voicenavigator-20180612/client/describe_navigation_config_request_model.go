@@ -14,6 +14,8 @@ type iDescribeNavigationConfigRequest interface {
 }
 
 type DescribeNavigationConfigRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

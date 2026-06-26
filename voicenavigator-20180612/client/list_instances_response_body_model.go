@@ -22,19 +22,28 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
+	// The list of instances.
 	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// A8AED3C8-F57B-5D71-9A34-4A170287533F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -108,34 +117,80 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyInstances struct {
+	// A list of applicable operations.
 	ApplicableOperations []*string `json:"ApplicableOperations,omitempty" xml:"ApplicableOperations,omitempty" type:"Repeated"`
+	// The maximum number of concurrent calls.
+	//
 	// example:
 	//
 	// 10
-	Concurrency *int64  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Concurrency *int64 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	// The time when the instance was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1658202465000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the instance.
+	//
+	// example:
+	//
+	// 测试的实例
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dc437bba-5a25-4bbc-b4c2-f268864bebb5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time when the instance was last modified. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1582266750353
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The user who last modified the instance.
+	//
 	// example:
 	//
 	// xxx
-	ModifyUserName       *string   `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NluServiceParamsJson *string   `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
-	Numbers              []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
+	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// The name of the instance.
+	//
+	// example:
+	//
+	// 测试实例
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameters of the NLU service in the JSON format.
+	//
+	// example:
+	//
+	// {"agentId":"1213503","isCCCAgent":"true","agentKey":"107e04a7519243eb83c9b549ea3b6829_p_ccc_public"}
+	NluServiceParamsJson *string `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
+	// The list of inbound numbers.
+	Numbers []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
+	// The status of the instance.
+	//
 	// example:
 	//
 	// Published
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The instance ID from the source system.
+	//
+	// > If UnionSource is CCC, this parameter indicates the instance ID of the Cloud Communication Center instance.
+	//
+	// example:
+	//
+	// zhyl
 	UnionInstanceId *string `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
-	UnionSource     *string `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
+	// The source of the instance.
+	//
+	// - `CCC`: Cloud Communication Center
+	//
+	// example:
+	//
+	// CCC
+	UnionSource *string `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {

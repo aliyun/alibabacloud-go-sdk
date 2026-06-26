@@ -23,22 +23,30 @@ type iCollectedNumberRequest interface {
 
 type CollectedNumberRequest struct {
 	AdditionalContext *string `json:"AdditionalContext,omitempty" xml:"AdditionalContext,omitempty"`
+	// The ID of the conversation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0099b75d-60fd-4c63-8541-7fbba0ae6bb0
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0099b75d-60fd-4c63-8541-7fbba0ae6bb0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance owner.
+	//
 	// example:
 	//
 	// 1426738157626835
 	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	// The number entered by the user.
+	//
 	// example:
 	//
 	// 1500060224
