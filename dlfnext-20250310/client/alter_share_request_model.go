@@ -18,11 +18,20 @@ type iAlterShareRequest interface {
 }
 
 type AlterShareRequest struct {
+	// The comment for the share.
+	//
 	// example:
 	//
 	// description
-	Comment     *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	EnableWrite *bool   `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// Specifies whether to enable the write permission for the share.
+	//
+	// example:
+	//
+	// false
+	EnableWrite *bool `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
+	// The name of the share.
+	//
 	// example:
 	//
 	// share_name

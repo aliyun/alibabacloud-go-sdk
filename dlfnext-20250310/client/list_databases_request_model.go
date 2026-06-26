@@ -18,11 +18,20 @@ type iListDatabasesRequest interface {
 }
 
 type ListDatabasesRequest struct {
+	// The database name pattern for fuzzy matching.
+	//
+	// example:
+	//
+	// database%
 	DatabaseNamePattern *string `json:"databaseNamePattern,omitempty" xml:"databaseNamePattern,omitempty"`
+	// The maximum number of records to return in a single request.
+	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token for the next page of results. If the response does not provide a token, pass an empty string ("").
+	//
 	// example:
 	//
 	// ""

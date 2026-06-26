@@ -32,36 +32,54 @@ type iDatabase interface {
 }
 
 type Database struct {
+	// The database creation time.
+	//
 	// example:
 	//
 	// 1744970111419
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The database creator.
+	//
 	// example:
 	//
 	// acs:ram::[accountId]:root
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The database UUID.
+	//
 	// example:
 	//
 	// 1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The database URI.
+	//
 	// example:
 	//
 	// oss://clg-paimon-xxx/db-xxx
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// test_database
-	Name    *string            `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The extension options.
 	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	// The owner.
+	//
 	// example:
 	//
 	// acs:ram::[accountId]:root
-	Owner      *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	TableCount *int64  `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The number of tables in the database.
+	TableCount *int64 `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
+	// The time when the database was last updated.
+	//
 	// example:
 	//
 	// 1744970111419
 	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The user who last updated the database.
+	//
 	// example:
 	//
 	// acs:ram::[accountId]:root

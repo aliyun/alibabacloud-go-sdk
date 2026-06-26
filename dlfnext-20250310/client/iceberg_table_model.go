@@ -32,39 +32,58 @@ type iIcebergTable interface {
 }
 
 type IcebergTable struct {
+	// The table creation time.
+	//
 	// example:
 	//
 	// 1747120676378
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The table creator.
+	//
 	// example:
 	//
-	// acs:ram::1045689747920334:root
-	CreatedBy            *string               `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// acs:ram::[accountId]:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The metadata of the table.
 	IcebergTableMetadata *IcebergTableMetadata `json:"icebergTableMetadata,omitempty" xml:"icebergTableMetadata,omitempty"`
+	// The table UUID.
+	//
 	// example:
 	//
-	// tbl-424fc31c-4876-4df5-97a5-c78f3046e739
+	// tbl-xxxx
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// table1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The owner of the table.
+	//
 	// example:
 	//
-	// acs:ram::1045689747920334:root
+	// acs:ram::[accountId]:root
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The table URI.
+	//
 	// example:
 	//
-	// oss://clg-iceberg-bcc387be9d24490da5f194bbaf990906/ns-b314a3c3-dff5-4e30-8ba2-0493a60566c7.db/iceberg-tbl-56539259-1879-4d6d-bd6e-d1ddb3364cc9
+	// oss://clg-iceberg-xxxx/ns-xxxx/table-xxxx
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The time when the table was last updated.
+	//
 	// example:
 	//
 	// 1744970111419
 	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The user who last updated the table.
+	//
 	// example:
 	//
-	// acs:ram::1045689747920334:root
+	// acs:ram::[accountId]:root
 	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// The version of the table.
+	//
 	// example:
 	//
 	// 0

@@ -16,11 +16,14 @@ type iListUsersResponseBody interface {
 }
 
 type ListUsersResponseBody struct {
+	// The pagination token used to retrieve the next page of results. A null value indicates that this is the last page of results.
+	//
 	// example:
 	//
-	// token!
+	// E8ABEB1C3DB893D16576269017992F57
 	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	Users         []*User `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	// The users.
+	Users []*User `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
 
 func (s ListUsersResponseBody) String() string {

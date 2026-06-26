@@ -16,11 +16,14 @@ type iListIcebergTableDetailsResponseBody interface {
 }
 
 type ListIcebergTableDetailsResponseBody struct {
+	// The token to retrieve the next page of results. If this parameter is null, all results have been returned.
+	//
 	// example:
 	//
 	// ""
-	NextPageToken *string         `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	TableDetails  []*IcebergTable `json:"tableDetails,omitempty" xml:"tableDetails,omitempty" type:"Repeated"`
+	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	// A list of data tables.
+	TableDetails []*IcebergTable `json:"tableDetails,omitempty" xml:"tableDetails,omitempty" type:"Repeated"`
 }
 
 func (s ListIcebergTableDetailsResponseBody) String() string {

@@ -18,8 +18,18 @@ type iBatchRevokePermissionsResponseBody interface {
 }
 
 type BatchRevokePermissionsResponseBody struct {
-	ErrorMessage       *string              `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// - A business error message is returned if \\`success\\` is \\`false\\`.
+	//
+	// - This parameter is empty if \\`success\\` is \\`true\\`.
+	//
+	// example:
+	//
+	// 空
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The permissions failed to be revoked.
 	FailurePermissions []*FailurePermission `json:"failurePermissions,omitempty" xml:"failurePermissions,omitempty" type:"Repeated"`
+	// Indicates whether the call succeeded.
+	//
 	// example:
 	//
 	// true

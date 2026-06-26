@@ -20,16 +20,30 @@ type iListTableDetailsRequest interface {
 }
 
 type ListTableDetailsRequest struct {
+	// The maximum number of records to return in a single request.
+	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token to retrieve the next page of results. Pass the token that was returned by the previous request. For the first request, pass an empty string ("").
+	//
 	// example:
 	//
 	// ""
-	PageToken        *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	// The pattern used to filter table names.
+	//
+	// example:
+	//
+	// table%
 	TableNamePattern *string `json:"tableNamePattern,omitempty" xml:"tableNamePattern,omitempty"`
-	Type             *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The type.
+	//
+	// example:
+	//
+	// table
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListTableDetailsRequest) String() string {

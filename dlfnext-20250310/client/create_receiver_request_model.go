@@ -18,11 +18,20 @@ type iCreateReceiverRequest interface {
 }
 
 type CreateReceiverRequest struct {
+	// The comment.
+	//
+	// example:
+	//
+	// Customer A.
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// The name of the receiver.
+	//
 	// example:
 	//
 	// receiver_name
 	ReceiverName *string `json:"receiverName,omitempty" xml:"receiverName,omitempty"`
+	// The ID of the receiver\\"s account.
+	//
 	// example:
 	//
 	// 1111

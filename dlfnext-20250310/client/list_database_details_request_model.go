@@ -18,11 +18,24 @@ type iListDatabaseDetailsRequest interface {
 }
 
 type ListDatabaseDetailsRequest struct {
+	// The database name pattern for fuzzy matching. Supports the percent sign (%).
+	//
+	// example:
+	//
+	// database%
 	DatabaseNamePattern *string `json:"databaseNamePattern,omitempty" xml:"databaseNamePattern,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Default value: 1000.
+	//
+	// Maximum value: 1000.
+	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token to retrieve the next page of results. If the response does not include this token, pass an empty string ("").
+	//
 	// example:
 	//
 	// ""

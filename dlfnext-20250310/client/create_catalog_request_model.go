@@ -22,14 +22,32 @@ type iCreateCatalogRequest interface {
 }
 
 type CreateCatalogRequest struct {
+	// Specifies whether to share the catalog.
+	//
+	// example:
+	//
+	// false
 	IsShared *bool `json:"isShared,omitempty" xml:"isShared,omitempty"`
+	// The catalog name.
+	//
 	// example:
 	//
 	// catalog_demo
-	Name    *string            `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The configuration options for the catalog.
 	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
-	ShareId *string            `json:"shareId,omitempty" xml:"shareId,omitempty"`
-	Type    *string            `json:"type,omitempty" xml:"type,omitempty"`
+	// The share ID.
+	//
+	// example:
+	//
+	// share-xxxx
+	ShareId *string `json:"shareId,omitempty" xml:"shareId,omitempty"`
+	// The catalog type.
+	//
+	// example:
+	//
+	// PAIMON
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateCatalogRequest) String() string {

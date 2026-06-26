@@ -40,55 +40,89 @@ type iDatabaseSummary interface {
 }
 
 type DatabaseSummary struct {
-	// Creation timestamp in milliseconds
+	// The database creation time.
 	//
 	// example:
 	//
 	// 1744970111419
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 库名 - Database name
+	// The database name.
 	//
 	// example:
 	//
 	// default
 	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
-	// Last profile update date in format yyyyMMdd
+	// The date when the storage overview data was updated.
 	//
 	// example:
 	//
 	// 2025-06-01
 	GeneratedDate *string `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
-	// Storage location URI
+	// The storage location.
 	//
 	// example:
 	//
 	// oss://clg-paimon-xxx/db-xxx
-	Location               *string `json:"location,omitempty" xml:"location,omitempty"`
-	ObjTypeArchiveSize     *int64  `json:"objTypeArchiveSize,omitempty" xml:"objTypeArchiveSize,omitempty"`
-	ObjTypeColdArchiveSize *int64  `json:"objTypeColdArchiveSize,omitempty" xml:"objTypeColdArchiveSize,omitempty"`
-	ObjTypeIaSize          *int64  `json:"objTypeIaSize,omitempty" xml:"objTypeIaSize,omitempty"`
-	ObjTypeStandardSize    *int64  `json:"objTypeStandardSize,omitempty" xml:"objTypeStandardSize,omitempty"`
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// The storage size of Archive data files.
+	//
+	// example:
+	//
+	// 10240
+	ObjTypeArchiveSize *int64 `json:"objTypeArchiveSize,omitempty" xml:"objTypeArchiveSize,omitempty"`
+	// The storage size of Cold Archive data files.
+	//
+	// example:
+	//
+	// 10240
+	ObjTypeColdArchiveSize *int64 `json:"objTypeColdArchiveSize,omitempty" xml:"objTypeColdArchiveSize,omitempty"`
+	// The storage size of Infrequent Access data files.
+	//
+	// example:
+	//
+	// 10240
+	ObjTypeIaSize *int64 `json:"objTypeIaSize,omitempty" xml:"objTypeIaSize,omitempty"`
+	// The storage size of Standard data files.
+	//
+	// example:
+	//
+	// 10240
+	ObjTypeStandardSize *int64 `json:"objTypeStandardSize,omitempty" xml:"objTypeStandardSize,omitempty"`
+	// The total number of partitions.
+	//
 	// example:
 	//
 	// 1000
 	PartitionCount *int64 `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
-	// Total storage in bytes
+	// The total number of tables.
 	//
 	// example:
 	//
 	// 50
 	TableCount *int64 `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
+	// The total number of files.
+	//
 	// example:
 	//
 	// 2000
 	TotalFileCount *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
-	// Total file count
+	// The storage capacity.
 	//
 	// example:
 	//
 	// 1048576
 	TotalFileSizeInBytes *int64 `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
-	TotalMetaFileCount   *int64 `json:"totalMetaFileCount,omitempty" xml:"totalMetaFileCount,omitempty"`
+	// The total number of metadata files.
+	//
+	// example:
+	//
+	// 1500
+	TotalMetaFileCount *int64 `json:"totalMetaFileCount,omitempty" xml:"totalMetaFileCount,omitempty"`
+	// The storage size of metadata files, in bytes.
+	//
+	// example:
+	//
+	// 10240
 	TotalMetaSizeInBytes *int64 `json:"totalMetaSizeInBytes,omitempty" xml:"totalMetaSizeInBytes,omitempty"`
 }
 

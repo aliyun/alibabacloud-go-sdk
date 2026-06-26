@@ -18,14 +18,20 @@ type iListIcebergTableDetailsRequest interface {
 }
 
 type ListIcebergTableDetailsRequest struct {
+	// The maximum number of records to return in a single request.
+	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token to retrieve the next page of results. If this parameter is not returned in the response, pass an empty string ("").
+	//
 	// example:
 	//
 	// ""
 	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	// The pattern to filter table names.
+	//
 	// example:
 	//
 	// table%

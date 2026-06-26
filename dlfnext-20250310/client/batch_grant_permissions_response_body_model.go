@@ -18,8 +18,16 @@ type iBatchGrantPermissionsResponseBody interface {
 }
 
 type BatchGrantPermissionsResponseBody struct {
-	ErrorMessage       *string              `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The error message returned if the request fails. If the request is successful, this parameter is empty.
+	//
+	// example:
+	//
+	// 空
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The permissions failed to be granted.
 	FailurePermissions []*FailurePermission `json:"failurePermissions,omitempty" xml:"failurePermissions,omitempty" type:"Repeated"`
+	// Indicates whether the API call was successful.
+	//
 	// example:
 	//
 	// True

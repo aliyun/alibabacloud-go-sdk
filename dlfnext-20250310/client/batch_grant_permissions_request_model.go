@@ -14,6 +14,7 @@ type iBatchGrantPermissionsRequest interface {
 }
 
 type BatchGrantPermissionsRequest struct {
+	// The permissions to grant.
 	Permissions []*Permission `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
 }
 

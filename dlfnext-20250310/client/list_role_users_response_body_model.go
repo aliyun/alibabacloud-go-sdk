@@ -16,11 +16,14 @@ type iListRoleUsersResponseBody interface {
 }
 
 type ListRoleUsersResponseBody struct {
+	// The token to retrieve the next page of results. If null is returned, all results have been retrieved.
+	//
 	// example:
 	//
-	// token!
+	// E8ABEB1C3DB893D16576269017992F57
 	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	Users         []*User `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	// The users.
+	Users []*User `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
 
 func (s ListRoleUsersResponseBody) String() string {

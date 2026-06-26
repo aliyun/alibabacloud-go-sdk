@@ -16,10 +16,14 @@ type iListShareReceiversRequest interface {
 }
 
 type ListShareReceiversRequest struct {
+	// The maximum number of records to return.
+	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token to retrieve the next page of results. If the response does not include this token, pass an empty string ("").
+	//
 	// example:
 	//
 	// ""

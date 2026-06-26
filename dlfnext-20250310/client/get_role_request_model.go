@@ -14,6 +14,8 @@ type iGetRoleRequest interface {
 }
 
 type GetRoleRequest struct {
+	// The resource descriptor of the role.
+	//
 	// example:
 	//
 	// acs:dlf::[accountId]:role/role_name

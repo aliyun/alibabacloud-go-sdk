@@ -14,6 +14,8 @@ type iGetUserRequest interface {
 }
 
 type GetUserRequest struct {
+	// The resource descriptor of the user.
+	//
 	// example:
 	//
 	// acs:ram::[accountId]:user/user_name

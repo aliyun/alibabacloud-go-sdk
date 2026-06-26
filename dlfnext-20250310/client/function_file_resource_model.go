@@ -16,10 +16,14 @@ type iFunctionFileResource interface {
 }
 
 type FunctionFileResource struct {
+	// Resource type
+	//
 	// example:
 	//
 	// JAR
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// Resource path
+	//
 	// example:
 	//
 	// oss://tmp/SimpleUdf.jar

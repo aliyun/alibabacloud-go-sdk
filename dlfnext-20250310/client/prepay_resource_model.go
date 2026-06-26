@@ -26,30 +26,44 @@ type iPrepayResource interface {
 }
 
 type PrepayResource struct {
+	// The catalog ID.
+	//
 	// example:
 	//
 	// clg-xxxx
 	CatalogId *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
+	// The catalog name.
+	//
 	// example:
 	//
 	// test_catalog
 	CatalogName *string `json:"catalogName,omitempty" xml:"catalogName,omitempty"`
+	// The number of CUs.
+	//
 	// example:
 	//
 	// 10
 	Cu *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
+	// The time when the subscription expires.
+	//
 	// example:
 	//
 	// 1769356800000
 	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// The time when the resources are purchased.
+	//
 	// example:
 	//
 	// 1764070447351
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The instance ID of computing resource.
+	//
 	// example:
 	//
 	// dlf-cu-quota-xxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The status of the computing resource.
+	//
 	// example:
 	//
 	// RUNNING

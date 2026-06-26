@@ -18,14 +18,20 @@ type iCreateRoleRequest interface {
 }
 
 type CreateRoleRequest struct {
+	// The role description.
+	//
 	// example:
 	//
 	// role_description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The role display name.
+	//
 	// example:
 	//
 	// role_display_name
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The role name.
+	//
 	// example:
 	//
 	// role_name

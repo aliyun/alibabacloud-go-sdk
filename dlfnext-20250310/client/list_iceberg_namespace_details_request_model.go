@@ -18,14 +18,24 @@ type iListIcebergNamespaceDetailsRequest interface {
 }
 
 type ListIcebergNamespaceDetailsRequest struct {
+	// The number of entries to return on each page.
+	//
+	// Default value: 1000.
+	//
+	// Maximum value: 1000.
+	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The namespace name pattern. Supports right-hand fuzzy matching with the percent sign (%).
+	//
 	// example:
 	//
 	// namespace%
 	NamespaceNamePattern *string `json:"namespaceNamePattern,omitempty" xml:"namespaceNamePattern,omitempty"`
+	// The token for the next page of results. If the response does not include this token, pass an empty string ("").
+	//
 	// example:
 	//
 	// ""

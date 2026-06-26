@@ -16,11 +16,14 @@ type iListViewDetailsResponseBody interface {
 }
 
 type ListViewDetailsResponseBody struct {
+	// The token for the next page of results. If null is returned, all results have been retrieved.
+	//
 	// example:
 	//
 	// “”
 	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	ViewDetails   []*View `json:"viewDetails,omitempty" xml:"viewDetails,omitempty" type:"Repeated"`
+	// A list of views.
+	ViewDetails []*View `json:"viewDetails,omitempty" xml:"viewDetails,omitempty" type:"Repeated"`
 }
 
 func (s ListViewDetailsResponseBody) String() string {

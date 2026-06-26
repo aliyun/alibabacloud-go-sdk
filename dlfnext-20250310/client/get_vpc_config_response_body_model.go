@@ -14,6 +14,7 @@ type iGetVpcConfigResponseBody interface {
 }
 
 type GetVpcConfigResponseBody struct {
+	// List of trusted VPCs.
 	TrustedVpcs []*GetVpcConfigResponseBodyTrustedVpcs `json:"trustedVpcs,omitempty" xml:"trustedVpcs,omitempty" type:"Repeated"`
 }
 
@@ -48,12 +49,15 @@ func (s *GetVpcConfigResponseBody) Validate() error {
 }
 
 type GetVpcConfigResponseBodyTrustedVpcs struct {
+	// The time when the VPC was created, in UNIX timestamp milliseconds.
+	//
 	// example:
 	//
 	// 1744970111419
-	CreatedAt       *int64             `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// List of configuration items.
 	ExtendedOptions map[string]*string `json:"extendedOptions,omitempty" xml:"extendedOptions,omitempty"`
-	// VPC ID。
+	// The ID of the VPC.
 	//
 	// example:
 	//

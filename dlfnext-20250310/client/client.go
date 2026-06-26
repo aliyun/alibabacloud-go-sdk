@@ -24,7 +24,21 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":      dara.String("dlfnext.us-west-1.aliyuncs.com"),
+		"us-east-1":      dara.String("dlfnext.us-east-1.aliyuncs.com"),
+		"eu-central-1":   dara.String("dlfnext.eu-central-1.aliyuncs.com"),
+		"cn-wulanchabu":  dara.String("dlfnext.cn-wulanchabu.aliyuncs.com"),
+		"cn-shenzhen":    dara.String("dlfnext.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":    dara.String("dlfnext.cn-shanghai.aliyuncs.com"),
+		"cn-hongkong":    dara.String("dlfnext.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("dlfnext.cn-hangzhou.aliyuncs.com"),
+		"cn-beijing":     dara.String("dlfnext.cn-beijing.aliyuncs.com"),
+		"ap-southeast-5": dara.String("dlfnext.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-1": dara.String("dlfnext.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-1": dara.String("dlfnext.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +72,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 更新数据目录
+// Updates a catalog.
 //
 // @param request - AlterCatalogRequest
 //
@@ -109,7 +123,7 @@ func (client *Client) AlterCatalogWithOptions(catalog *string, request *AlterCat
 
 // Summary:
 //
-// 更新数据目录
+// Updates a catalog.
 //
 // @param request - AlterCatalogRequest
 //
@@ -128,7 +142,7 @@ func (client *Client) AlterCatalog(catalog *string, request *AlterCatalogRequest
 
 // Summary:
 //
-// 更新数据库
+// Updates a database.
 //
 // @param request - AlterDatabaseRequest
 //
@@ -179,7 +193,7 @@ func (client *Client) AlterDatabaseWithOptions(catalogId *string, database *stri
 
 // Summary:
 //
-// 更新数据库
+// Updates a database.
 //
 // @param request - AlterDatabaseRequest
 //
@@ -198,7 +212,7 @@ func (client *Client) AlterDatabase(catalogId *string, database *string, request
 
 // Summary:
 //
-// 更新接收者
+// Updates a sink.
 //
 // @param request - AlterReceiverRequest
 //
@@ -249,7 +263,7 @@ func (client *Client) AlterReceiverWithOptions(receiver *string, request *AlterR
 
 // Summary:
 //
-// 更新接收者
+// Updates a sink.
 //
 // @param request - AlterReceiverRequest
 //
@@ -268,7 +282,7 @@ func (client *Client) AlterReceiver(receiver *string, request *AlterReceiverRequ
 
 // Summary:
 //
-// 更新共享
+// Updates a share.
 //
 // @param request - AlterShareRequest
 //
@@ -323,7 +337,7 @@ func (client *Client) AlterShareWithOptions(share *string, request *AlterShareRe
 
 // Summary:
 //
-// 更新共享
+// Updates a share.
 //
 // @param request - AlterShareRequest
 //
@@ -342,7 +356,7 @@ func (client *Client) AlterShare(share *string, request *AlterShareRequest) (_re
 
 // Summary:
 //
-// 更新共享中的接收者
+// Updates the receivers of a share.
 //
 // @param request - AlterShareReceiversRequest
 //
@@ -393,7 +407,7 @@ func (client *Client) AlterShareReceiversWithOptions(share *string, request *Alt
 
 // Summary:
 //
-// 更新共享中的接收者
+// Updates the receivers of a share.
 //
 // @param request - AlterShareReceiversRequest
 //
@@ -412,7 +426,7 @@ func (client *Client) AlterShareReceivers(share *string, request *AlterShareRece
 
 // Summary:
 //
-// 更改共享资源
+// Modifies shared resources.
 //
 // @param request - AlterShareResourcesRequest
 //
@@ -463,7 +477,7 @@ func (client *Client) AlterShareResourcesWithOptions(share *string, request *Alt
 
 // Summary:
 //
-// 更改共享资源
+// Modifies shared resources.
 //
 // @param request - AlterShareResourcesRequest
 //
@@ -482,7 +496,7 @@ func (client *Client) AlterShareResources(share *string, request *AlterShareReso
 
 // Summary:
 //
-// 更改Table
+// Updates a table.
 //
 // @param request - AlterTableRequest
 //
@@ -529,7 +543,7 @@ func (client *Client) AlterTableWithOptions(catalogId *string, database *string,
 
 // Summary:
 //
-// 更改Table
+// Updates a table.
 //
 // @param request - AlterTableRequest
 //
@@ -548,7 +562,73 @@ func (client *Client) AlterTable(catalogId *string, database *string, table *str
 
 // Summary:
 //
-// 批量授权
+// Changes the table schema.
+//
+// @param request - AlterTableSchemaRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AlterTableSchemaResponse
+func (client *Client) AlterTableSchemaWithOptions(catalogId *string, database *string, table *string, request *AlterTableSchemaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterTableSchemaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Schema) {
+		body["schema"] = request.Schema
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AlterTableSchema"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases/" + dara.PercentEncode(dara.StringValue(database)) + "/tables/" + dara.PercentEncode(dara.StringValue(table)) + "/schema"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &AlterTableSchemaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the table schema.
+//
+// @param request - AlterTableSchemaRequest
+//
+// @return AlterTableSchemaResponse
+func (client *Client) AlterTableSchema(catalogId *string, database *string, table *string, request *AlterTableSchemaRequest) (_result *AlterTableSchemaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AlterTableSchemaResponse{}
+	_body, _err := client.AlterTableSchemaWithOptions(catalogId, database, table, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Grants permissions to one or more DLF users or roles.
 //
 // @param request - BatchGrantPermissionsRequest
 //
@@ -595,7 +675,7 @@ func (client *Client) BatchGrantPermissionsWithOptions(catalogId *string, reques
 
 // Summary:
 //
-// 批量授权
+// Grants permissions to one or more DLF users or roles.
 //
 // @param request - BatchGrantPermissionsRequest
 //
@@ -614,7 +694,7 @@ func (client *Client) BatchGrantPermissions(catalogId *string, request *BatchGra
 
 // Summary:
 //
-// 批量取消授权
+// Revokes permissions in a batch.
 //
 // @param request - BatchRevokePermissionsRequest
 //
@@ -661,7 +741,7 @@ func (client *Client) BatchRevokePermissionsWithOptions(catalogId *string, reque
 
 // Summary:
 //
-// 批量取消授权
+// Revokes permissions in a batch.
 //
 // @param request - BatchRevokePermissionsRequest
 //
@@ -680,7 +760,7 @@ func (client *Client) BatchRevokePermissions(catalogId *string, request *BatchRe
 
 // Summary:
 //
-// 创建数据目录
+// Creates a catalog.
 //
 // @param request - CreateCatalogRequest
 //
@@ -743,7 +823,7 @@ func (client *Client) CreateCatalogWithOptions(request *CreateCatalogRequest, he
 
 // Summary:
 //
-// 创建数据目录
+// Creates a catalog.
 //
 // @param request - CreateCatalogRequest
 //
@@ -762,7 +842,7 @@ func (client *Client) CreateCatalog(request *CreateCatalogRequest) (_result *Cre
 
 // Summary:
 //
-// 创建数据库
+// Creates a database.
 //
 // @param request - CreateDatabaseRequest
 //
@@ -813,7 +893,7 @@ func (client *Client) CreateDatabaseWithOptions(catalogId *string, request *Crea
 
 // Summary:
 //
-// 创建数据库
+// Creates a database.
 //
 // @param request - CreateDatabaseRequest
 //
@@ -832,7 +912,7 @@ func (client *Client) CreateDatabase(catalogId *string, request *CreateDatabaseR
 
 // Summary:
 //
-// 创建接收者
+// Creates a receiver.
 //
 // @param request - CreateReceiverRequest
 //
@@ -887,7 +967,7 @@ func (client *Client) CreateReceiverWithOptions(request *CreateReceiverRequest, 
 
 // Summary:
 //
-// 创建接收者
+// Creates a receiver.
 //
 // @param request - CreateReceiverRequest
 //
@@ -906,7 +986,7 @@ func (client *Client) CreateReceiver(request *CreateReceiverRequest) (_result *C
 
 // Summary:
 //
-// 创建角色
+// Creates a DLF role.
 //
 // @param request - CreateRoleRequest
 //
@@ -961,7 +1041,7 @@ func (client *Client) CreateRoleWithOptions(request *CreateRoleRequest, headers 
 
 // Summary:
 //
-// 创建角色
+// Creates a DLF role.
 //
 // @param request - CreateRoleRequest
 //
@@ -980,7 +1060,7 @@ func (client *Client) CreateRole(request *CreateRoleRequest) (_result *CreateRol
 
 // Summary:
 //
-// 创建共享
+// Creates a share.
 //
 // @param request - CreateShareRequest
 //
@@ -1035,7 +1115,7 @@ func (client *Client) CreateShareWithOptions(request *CreateShareRequest, header
 
 // Summary:
 //
-// 创建共享
+// Creates a share.
 //
 // @param request - CreateShareRequest
 //
@@ -1054,7 +1134,7 @@ func (client *Client) CreateShare(request *CreateShareRequest) (_result *CreateS
 
 // Summary:
 //
-// 创建表
+// Creates a table.
 //
 // @param request - CreateTableRequest
 //
@@ -1105,7 +1185,7 @@ func (client *Client) CreateTableWithOptions(catalogId *string, database *string
 
 // Summary:
 //
-// 创建表
+// Creates a table.
 //
 // @param request - CreateTableRequest
 //
@@ -1124,7 +1204,7 @@ func (client *Client) CreateTable(catalogId *string, database *string, request *
 
 // Summary:
 //
-// 删除角色
+// Deletes a DLF role.
 //
 // @param request - DeleteRoleRequest
 //
@@ -1171,7 +1251,7 @@ func (client *Client) DeleteRoleWithOptions(request *DeleteRoleRequest, headers 
 
 // Summary:
 //
-// 删除角色
+// Deletes a DLF role.
 //
 // @param request - DeleteRoleRequest
 //
@@ -1190,7 +1270,7 @@ func (client *Client) DeleteRole(request *DeleteRoleRequest) (_result *DeleteRol
 
 // Summary:
 //
-// 查询 DLF 开通地域
+// Retrieves the regions where DLF is activated.
 //
 // @param headers - map
 //
@@ -1223,7 +1303,7 @@ func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, run
 
 // Summary:
 //
-// 查询 DLF 开通地域
+// Retrieves the regions where DLF is activated.
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
@@ -1240,7 +1320,7 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 
 // Summary:
 //
-// 删除数据湖Catalog
+// Deletes a data lake data catalog. The following conditions must be met, otherwise the deletion will fail: all tables and user-created databases under the catalog have been deleted; the databases and tables have been deleted for at least 24 hours.
 //
 // @param headers - map
 //
@@ -1273,7 +1353,7 @@ func (client *Client) DropCatalogWithOptions(catalog *string, headers map[string
 
 // Summary:
 //
-// 删除数据湖Catalog
+// Deletes a data lake data catalog. The following conditions must be met, otherwise the deletion will fail: all tables and user-created databases under the catalog have been deleted; the databases and tables have been deleted for at least 24 hours.
 //
 // @return DropCatalogResponse
 func (client *Client) DropCatalog(catalog *string) (_result *DropCatalogResponse, _err error) {
@@ -1290,7 +1370,7 @@ func (client *Client) DropCatalog(catalog *string) (_result *DropCatalogResponse
 
 // Summary:
 //
-// 删除数据库
+// Drops a database.
 //
 // @param headers - map
 //
@@ -1323,7 +1403,7 @@ func (client *Client) DropDatabaseWithOptions(catalogId *string, database *strin
 
 // Summary:
 //
-// 删除数据库
+// Drops a database.
 //
 // @return DropDatabaseResponse
 func (client *Client) DropDatabase(catalogId *string, database *string) (_result *DropDatabaseResponse, _err error) {
@@ -1340,7 +1420,7 @@ func (client *Client) DropDatabase(catalogId *string, database *string) (_result
 
 // Summary:
 //
-// 删除接收者
+// Removes a receiver.
 //
 // @param headers - map
 //
@@ -1373,7 +1453,7 @@ func (client *Client) DropReceiverWithOptions(receiver *string, headers map[stri
 
 // Summary:
 //
-// 删除接收者
+// Removes a receiver.
 //
 // @return DropReceiverResponse
 func (client *Client) DropReceiver(receiver *string) (_result *DropReceiverResponse, _err error) {
@@ -1390,7 +1470,7 @@ func (client *Client) DropReceiver(receiver *string) (_result *DropReceiverRespo
 
 // Summary:
 //
-// 删除共享
+// Deletes a share.
 //
 // @param headers - map
 //
@@ -1423,7 +1503,7 @@ func (client *Client) DropShareWithOptions(share *string, headers map[string]*st
 
 // Summary:
 //
-// 删除共享
+// Deletes a share.
 //
 // @return DropShareResponse
 func (client *Client) DropShare(share *string) (_result *DropShareResponse, _err error) {
@@ -1440,7 +1520,7 @@ func (client *Client) DropShare(share *string) (_result *DropShareResponse, _err
 
 // Summary:
 //
-// 删除表
+// Drops a table.
 //
 // @param headers - map
 //
@@ -1473,7 +1553,7 @@ func (client *Client) DropTableWithOptions(catalogId *string, database *string, 
 
 // Summary:
 //
-// 删除表
+// Drops a table.
 //
 // @return DropTableResponse
 func (client *Client) DropTable(catalogId *string, database *string, table *string) (_result *DropTableResponse, _err error) {
@@ -1490,7 +1570,7 @@ func (client *Client) DropTable(catalogId *string, database *string, table *stri
 
 // Summary:
 //
-// 查看数据湖Catalog
+// Retrieves the details of a catalog.
 //
 // @param headers - map
 //
@@ -1523,7 +1603,7 @@ func (client *Client) GetCatalogWithOptions(catalog *string, headers map[string]
 
 // Summary:
 //
-// 查看数据湖Catalog
+// Retrieves the details of a catalog.
 //
 // @return GetCatalogResponse
 func (client *Client) GetCatalog(catalog *string) (_result *GetCatalogResponse, _err error) {
@@ -1540,7 +1620,7 @@ func (client *Client) GetCatalog(catalog *string) (_result *GetCatalogResponse, 
 
 // Summary:
 //
-// 查看数据湖Catalog
+// Retrieves the details of a catalog.
 //
 // @param headers - map
 //
@@ -1573,7 +1653,7 @@ func (client *Client) GetCatalogByIdWithOptions(id *string, headers map[string]*
 
 // Summary:
 //
-// 查看数据湖Catalog
+// Retrieves the details of a catalog.
 //
 // @return GetCatalogByIdResponse
 func (client *Client) GetCatalogById(id *string) (_result *GetCatalogByIdResponse, _err error) {
@@ -1590,7 +1670,7 @@ func (client *Client) GetCatalogById(id *string) (_result *GetCatalogByIdRespons
 
 // Summary:
 //
-// 查看表
+// Retrieves the storage overview of a data catalog.
 //
 // @param request - GetCatalogSummaryRequest
 //
@@ -1637,7 +1717,7 @@ func (client *Client) GetCatalogSummaryWithOptions(catalogId *string, request *G
 
 // Summary:
 //
-// 查看表
+// Retrieves the storage overview of a data catalog.
 //
 // @param request - GetCatalogSummaryRequest
 //
@@ -1656,7 +1736,7 @@ func (client *Client) GetCatalogSummary(catalogId *string, request *GetCatalogSu
 
 // Summary:
 //
-// 查看表
+// Retrieves the storage overview trend for a catalog.
 //
 // @param request - GetCatalogSummaryTrendRequest
 //
@@ -1707,7 +1787,7 @@ func (client *Client) GetCatalogSummaryTrendWithOptions(catalogId *string, reque
 
 // Summary:
 //
-// 查看表
+// Retrieves the storage overview trend for a catalog.
 //
 // @param request - GetCatalogSummaryTrendRequest
 //
@@ -1726,7 +1806,7 @@ func (client *Client) GetCatalogSummaryTrend(catalogId *string, request *GetCata
 
 // Summary:
 //
-// 获取数据湖Catalog的临时访问凭证
+// Obtains a temporary access credential (token) for a catalog.
 //
 // @param headers - map
 //
@@ -1759,7 +1839,7 @@ func (client *Client) GetCatalogTokenWithOptions(catalog *string, headers map[st
 
 // Summary:
 //
-// 获取数据湖Catalog的临时访问凭证
+// Obtains a temporary access credential (token) for a catalog.
 //
 // @return GetCatalogTokenResponse
 func (client *Client) GetCatalogToken(catalog *string) (_result *GetCatalogTokenResponse, _err error) {
@@ -1776,7 +1856,7 @@ func (client *Client) GetCatalogToken(catalog *string) (_result *GetCatalogToken
 
 // Summary:
 //
-// 查看数据库
+// Retrieves the details of a database.
 //
 // @param headers - map
 //
@@ -1809,7 +1889,7 @@ func (client *Client) GetDatabaseWithOptions(catalogId *string, database *string
 
 // Summary:
 //
-// 查看数据库
+// Retrieves the details of a database.
 //
 // @return GetDatabaseResponse
 func (client *Client) GetDatabase(catalogId *string, database *string) (_result *GetDatabaseResponse, _err error) {
@@ -1826,7 +1906,7 @@ func (client *Client) GetDatabase(catalogId *string, database *string) (_result 
 
 // Summary:
 //
-// 查看表
+// You can view an inventory overview.
 //
 // @param request - GetDatabaseSummaryRequest
 //
@@ -1873,7 +1953,7 @@ func (client *Client) GetDatabaseSummaryWithOptions(catalogId *string, database 
 
 // Summary:
 //
-// 查看表
+// You can view an inventory overview.
 //
 // @param request - GetDatabaseSummaryRequest
 //
@@ -1892,7 +1972,7 @@ func (client *Client) GetDatabaseSummary(catalogId *string, database *string, re
 
 // Summary:
 //
-// 查看iceberg数据库
+// Retrieves information about an Iceberg namespace.
 //
 // @param headers - map
 //
@@ -1925,7 +2005,7 @@ func (client *Client) GetIcebergNamespaceWithOptions(catalogId *string, namespac
 
 // Summary:
 //
-// 查看iceberg数据库
+// Retrieves information about an Iceberg namespace.
 //
 // @return GetIcebergNamespaceResponse
 func (client *Client) GetIcebergNamespace(catalogId *string, namespace *string) (_result *GetIcebergNamespaceResponse, _err error) {
@@ -1942,7 +2022,7 @@ func (client *Client) GetIcebergNamespace(catalogId *string, namespace *string) 
 
 // Summary:
 //
-// 查看表
+// Retrieves the details of a table.
 //
 // @param headers - map
 //
@@ -1975,7 +2055,7 @@ func (client *Client) GetIcebergTableWithOptions(catalogId *string, namespace *s
 
 // Summary:
 //
-// 查看表
+// Retrieves the details of a table.
 //
 // @return GetIcebergTableResponse
 func (client *Client) GetIcebergTable(catalogId *string, namespace *string, table *string) (_result *GetIcebergTableResponse, _err error) {
@@ -1992,7 +2072,7 @@ func (client *Client) GetIcebergTable(catalogId *string, namespace *string, tabl
 
 // Summary:
 //
-// 获取接收者
+// Retrieves a receiver.
 //
 // @param headers - map
 //
@@ -2025,7 +2105,7 @@ func (client *Client) GetReceiverWithOptions(receiver *string, headers map[strin
 
 // Summary:
 //
-// 获取接收者
+// Retrieves a receiver.
 //
 // @return GetReceiverResponse
 func (client *Client) GetReceiver(receiver *string) (_result *GetReceiverResponse, _err error) {
@@ -2042,7 +2122,7 @@ func (client *Client) GetReceiver(receiver *string) (_result *GetReceiverRespons
 
 // Summary:
 //
-// 查询 DLF 当前地域开通状态
+// Queries the DLF activation status of in a region.
 //
 // @param headers - map
 //
@@ -2075,7 +2155,7 @@ func (client *Client) GetRegionStatusWithOptions(headers map[string]*string, run
 
 // Summary:
 //
-// 查询 DLF 当前地域开通状态
+// Queries the DLF activation status of in a region.
 //
 // @return GetRegionStatusResponse
 func (client *Client) GetRegionStatus() (_result *GetRegionStatusResponse, _err error) {
@@ -2092,7 +2172,7 @@ func (client *Client) GetRegionStatus() (_result *GetRegionStatusResponse, _err 
 
 // Summary:
 //
-// 获取角色
+// Retrieves a role.
 //
 // @param request - GetRoleRequest
 //
@@ -2139,7 +2219,7 @@ func (client *Client) GetRoleWithOptions(request *GetRoleRequest, headers map[st
 
 // Summary:
 //
-// 获取角色
+// Retrieves a role.
 //
 // @param request - GetRoleRequest
 //
@@ -2158,7 +2238,7 @@ func (client *Client) GetRole(request *GetRoleRequest) (_result *GetRoleResponse
 
 // Summary:
 //
-// 获取共享
+// Retrieves the details of a share.
 //
 // @param headers - map
 //
@@ -2191,7 +2271,7 @@ func (client *Client) GetShareWithOptions(share *string, headers map[string]*str
 
 // Summary:
 //
-// 获取共享
+// Retrieves the details of a share.
 //
 // @return GetShareResponse
 func (client *Client) GetShare(share *string) (_result *GetShareResponse, _err error) {
@@ -2208,7 +2288,7 @@ func (client *Client) GetShare(share *string) (_result *GetShareResponse, _err e
 
 // Summary:
 //
-// 查看表
+// Retrieves the details of a table in a data lake.
 //
 // @param headers - map
 //
@@ -2241,7 +2321,7 @@ func (client *Client) GetTableWithOptions(catalogId *string, database *string, t
 
 // Summary:
 //
-// 查看表
+// Retrieves the details of a table in a data lake.
 //
 // @return GetTableResponse
 func (client *Client) GetTable(catalogId *string, database *string, table *string) (_result *GetTableResponse, _err error) {
@@ -2258,7 +2338,7 @@ func (client *Client) GetTable(catalogId *string, database *string, table *strin
 
 // Summary:
 //
-// 查看表Compaction详情
+// Retrieves the compaction details of a table.
 //
 // @param headers - map
 //
@@ -2291,7 +2371,7 @@ func (client *Client) GetTableCompactionWithOptions(catalogId *string, database 
 
 // Summary:
 //
-// 查看表Compaction详情
+// Retrieves the compaction details of a table.
 //
 // @return GetTableCompactionResponse
 func (client *Client) GetTableCompaction(catalogId *string, database *string, table *string) (_result *GetTableCompactionResponse, _err error) {
@@ -2308,7 +2388,7 @@ func (client *Client) GetTableCompaction(catalogId *string, database *string, ta
 
 // Summary:
 //
-// 查看表快照
+// Queries a table snapshot.
 //
 // @param headers - map
 //
@@ -2341,7 +2421,7 @@ func (client *Client) GetTableSnapshotWithOptions(catalogId *string, database *s
 
 // Summary:
 //
-// 查看表快照
+// Queries a table snapshot.
 //
 // @return GetTableSnapshotResponse
 func (client *Client) GetTableSnapshot(catalogId *string, database *string, table *string) (_result *GetTableSnapshotResponse, _err error) {
@@ -2358,7 +2438,7 @@ func (client *Client) GetTableSnapshot(catalogId *string, database *string, tabl
 
 // Summary:
 //
-// 查看表
+// Retrieves the storage summary for a table.
 //
 // @param request - GetTableSummaryRequest
 //
@@ -2405,7 +2485,7 @@ func (client *Client) GetTableSummaryWithOptions(catalogId *string, database *st
 
 // Summary:
 //
-// 查看表
+// Retrieves the storage summary for a table.
 //
 // @param request - GetTableSummaryRequest
 //
@@ -2424,7 +2504,7 @@ func (client *Client) GetTableSummary(catalogId *string, database *string, table
 
 // Summary:
 //
-// 获取数据湖表的临时访问凭证
+// Obtains a temporary access credential for a data lake table.
 //
 // @param request - GetTableTokenRequest
 //
@@ -2471,7 +2551,7 @@ func (client *Client) GetTableTokenWithOptions(catalogId *string, database *stri
 
 // Summary:
 //
-// 获取数据湖表的临时访问凭证
+// Obtains a temporary access credential for a data lake table.
 //
 // @param request - GetTableTokenRequest
 //
@@ -2490,7 +2570,7 @@ func (client *Client) GetTableToken(catalogId *string, database *string, table *
 
 // Summary:
 //
-// 获取用户
+// Retrieves a user.
 //
 // @param request - GetUserRequest
 //
@@ -2537,7 +2617,7 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, headers map[st
 
 // Summary:
 //
-// 获取用户
+// Retrieves a user.
 //
 // @param request - GetUserRequest
 //
@@ -2556,7 +2636,7 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 
 // Summary:
 //
-// 获取可信 VPC 配置
+// Obtain the VPC configuration.
 //
 // @param headers - map
 //
@@ -2589,7 +2669,7 @@ func (client *Client) GetVpcConfigWithOptions(headers map[string]*string, runtim
 
 // Summary:
 //
-// 获取可信 VPC 配置
+// Obtain the VPC configuration.
 //
 // @return GetVpcConfigResponse
 func (client *Client) GetVpcConfig() (_result *GetVpcConfigResponse, _err error) {
@@ -2606,7 +2686,7 @@ func (client *Client) GetVpcConfig() (_result *GetVpcConfigResponse, _err error)
 
 // Summary:
 //
-// 批量授予角色权限给用户
+// Grants a role to one or more users.
 //
 // @param request - GrantRoleToUsersRequest
 //
@@ -2657,7 +2737,7 @@ func (client *Client) GrantRoleToUsersWithOptions(request *GrantRoleToUsersReque
 
 // Summary:
 //
-// 批量授予角色权限给用户
+// Grants a role to one or more users.
 //
 // @param request - GrantRoleToUsersRequest
 //
@@ -2676,7 +2756,7 @@ func (client *Client) GrantRoleToUsers(request *GrantRoleToUsersRequest) (_resul
 
 // Summary:
 //
-// 查看数据目录列表
+// Lists catalogs.
 //
 // @param request - ListCatalogsRequest
 //
@@ -2731,7 +2811,7 @@ func (client *Client) ListCatalogsWithOptions(request *ListCatalogsRequest, head
 
 // Summary:
 //
-// 查看数据目录列表
+// Lists catalogs.
 //
 // @param request - ListCatalogsRequest
 //
@@ -2750,7 +2830,7 @@ func (client *Client) ListCatalogs(request *ListCatalogsRequest) (_result *ListC
 
 // Summary:
 //
-// 查看数据库列表
+// Retrieves database details.
 //
 // @param request - ListDatabaseDetailsRequest
 //
@@ -2805,7 +2885,7 @@ func (client *Client) ListDatabaseDetailsWithOptions(catalogId *string, request 
 
 // Summary:
 //
-// 查看数据库列表
+// Retrieves database details.
 //
 // @param request - ListDatabaseDetailsRequest
 //
@@ -2824,7 +2904,7 @@ func (client *Client) ListDatabaseDetails(catalogId *string, request *ListDataba
 
 // Summary:
 //
-// 查看数据库列表
+// Retrieves databases.
 //
 // @param request - ListDatabasesRequest
 //
@@ -2879,7 +2959,7 @@ func (client *Client) ListDatabasesWithOptions(catalogId *string, request *ListD
 
 // Summary:
 //
-// 查看数据库列表
+// Retrieves databases.
 //
 // @param request - ListDatabasesRequest
 //
@@ -2898,7 +2978,7 @@ func (client *Client) ListDatabases(catalogId *string, request *ListDatabasesReq
 
 // Summary:
 //
-// 查看函数列表
+// Lists functions.
 //
 // @param request - ListFunctionsRequest
 //
@@ -2953,7 +3033,7 @@ func (client *Client) ListFunctionsWithOptions(catalogId *string, database *stri
 
 // Summary:
 //
-// 查看函数列表
+// Lists functions.
 //
 // @param request - ListFunctionsRequest
 //
@@ -2972,7 +3052,7 @@ func (client *Client) ListFunctions(catalogId *string, database *string, request
 
 // Summary:
 //
-// 查看iceberg数据库列表
+// Lists Iceberg namespaces.
 //
 // @param request - ListIcebergNamespaceDetailsRequest
 //
@@ -3027,7 +3107,7 @@ func (client *Client) ListIcebergNamespaceDetailsWithOptions(catalogId *string, 
 
 // Summary:
 //
-// 查看iceberg数据库列表
+// Lists Iceberg namespaces.
 //
 // @param request - ListIcebergNamespaceDetailsRequest
 //
@@ -3046,7 +3126,7 @@ func (client *Client) ListIcebergNamespaceDetails(catalogId *string, request *Li
 
 // Summary:
 //
-// 查看iceberg表快照列表
+// Lists the snapshots of an Iceberg table.
 //
 // @param request - ListIcebergSnapshotsRequest
 //
@@ -3097,7 +3177,7 @@ func (client *Client) ListIcebergSnapshotsWithOptions(catalogId *string, namespa
 
 // Summary:
 //
-// 查看iceberg表快照列表
+// Lists the snapshots of an Iceberg table.
 //
 // @param request - ListIcebergSnapshotsRequest
 //
@@ -3116,7 +3196,7 @@ func (client *Client) ListIcebergSnapshots(catalogId *string, namespace *string,
 
 // Summary:
 //
-// 查看iceberg表详情列表
+// Lists the details of Iceberg tables.
 //
 // @param request - ListIcebergTableDetailsRequest
 //
@@ -3171,7 +3251,7 @@ func (client *Client) ListIcebergTableDetailsWithOptions(catalogId *string, name
 
 // Summary:
 //
-// 查看iceberg表详情列表
+// Lists the details of Iceberg tables.
 //
 // @param request - ListIcebergTableDetailsRequest
 //
@@ -3190,7 +3270,7 @@ func (client *Client) ListIcebergTableDetails(catalogId *string, namespace *stri
 
 // Summary:
 //
-// 查看表
+// Retrieves storage overview for partitions.
 //
 // @param request - ListPartitionSummariesRequest
 //
@@ -3245,7 +3325,7 @@ func (client *Client) ListPartitionSummariesWithOptions(catalogId *string, datab
 
 // Summary:
 //
-// 查看表
+// Retrieves storage overview for partitions.
 //
 // @param request - ListPartitionSummariesRequest
 //
@@ -3264,7 +3344,7 @@ func (client *Client) ListPartitionSummaries(catalogId *string, database *string
 
 // Summary:
 //
-// listPartitions
+// Lists partitions.
 //
 // @param request - ListPartitionsRequest
 //
@@ -3319,7 +3399,7 @@ func (client *Client) ListPartitionsWithOptions(catalogId *string, database *str
 
 // Summary:
 //
-// listPartitions
+// Lists partitions.
 //
 // @param request - ListPartitionsRequest
 //
@@ -3338,7 +3418,73 @@ func (client *Client) ListPartitions(catalogId *string, database *string, table 
 
 // Summary:
 //
-// 获取指定资源或指定Principal的权限信息
+// Retrieves a list of partitions by their names.
+//
+// @param request - ListPartitionsByNamesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPartitionsByNamesResponse
+func (client *Client) ListPartitionsByNamesWithOptions(catalogId *string, database *string, table *string, request *ListPartitionsByNamesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPartitionsByNamesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Specs) {
+		body["specs"] = request.Specs
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPartitionsByNames"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases/" + dara.PercentEncode(dara.StringValue(database)) + "/tables/" + dara.PercentEncode(dara.StringValue(table)) + "/partitions/list-by-names"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPartitionsByNamesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of partitions by their names.
+//
+// @param request - ListPartitionsByNamesRequest
+//
+// @return ListPartitionsByNamesResponse
+func (client *Client) ListPartitionsByNames(catalogId *string, database *string, table *string, request *ListPartitionsByNamesRequest) (_result *ListPartitionsByNamesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPartitionsByNamesResponse{}
+	_body, _err := client.ListPartitionsByNamesWithOptions(catalogId, database, table, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the permissions for a resource or principal.
 //
 // @param request - ListPermissionsRequest
 //
@@ -3413,7 +3559,7 @@ func (client *Client) ListPermissionsWithOptions(catalogId *string, request *Lis
 
 // Summary:
 //
-// 获取指定资源或指定Principal的权限信息
+// Retrieves the permissions for a resource or principal.
 //
 // @param request - ListPermissionsRequest
 //
@@ -3432,7 +3578,7 @@ func (client *Client) ListPermissions(catalogId *string, request *ListPermission
 
 // Summary:
 //
-// 获取提供的共享列表
+// Retrieves shares.
 //
 // @param request - ListProvidedSharesRequest
 //
@@ -3483,7 +3629,7 @@ func (client *Client) ListProvidedSharesWithOptions(request *ListProvidedSharesR
 
 // Summary:
 //
-// 获取提供的共享列表
+// Retrieves shares.
 //
 // @param request - ListProvidedSharesRequest
 //
@@ -3502,7 +3648,7 @@ func (client *Client) ListProvidedShares(request *ListProvidedSharesRequest) (_r
 
 // Summary:
 //
-// 获取接收的共享列表
+// Retrieves received shares.
 //
 // @param request - ListReceivedSharesRequest
 //
@@ -3553,7 +3699,7 @@ func (client *Client) ListReceivedSharesWithOptions(request *ListReceivedSharesR
 
 // Summary:
 //
-// 获取接收的共享列表
+// Retrieves received shares.
 //
 // @param request - ListReceivedSharesRequest
 //
@@ -3572,7 +3718,7 @@ func (client *Client) ListReceivedShares(request *ListReceivedSharesRequest) (_r
 
 // Summary:
 //
-// 获取接收者列表
+// Queries a list of receivers.
 //
 // @param request - ListReceiversRequest
 //
@@ -3627,7 +3773,7 @@ func (client *Client) ListReceiversWithOptions(request *ListReceiversRequest, he
 
 // Summary:
 //
-// 获取接收者列表
+// Queries a list of receivers.
 //
 // @param request - ListReceiversRequest
 //
@@ -3646,7 +3792,7 @@ func (client *Client) ListReceivers(request *ListReceiversRequest) (_result *Lis
 
 // Summary:
 //
-// 获取角色用户列表
+// Retrieves the users for a role.
 //
 // @param request - ListRoleUsersRequest
 //
@@ -3701,7 +3847,7 @@ func (client *Client) ListRoleUsersWithOptions(request *ListRoleUsersRequest, he
 
 // Summary:
 //
-// 获取角色用户列表
+// Retrieves the users for a role.
 //
 // @param request - ListRoleUsersRequest
 //
@@ -3720,7 +3866,7 @@ func (client *Client) ListRoleUsers(request *ListRoleUsersRequest) (_result *Lis
 
 // Summary:
 //
-// 获取角色列表
+// Retrieves roles.
 //
 // @param request - ListRolesRequest
 //
@@ -3775,7 +3921,7 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, headers ma
 
 // Summary:
 //
-// 获取角色列表
+// Retrieves roles.
 //
 // @param request - ListRolesRequest
 //
@@ -3794,7 +3940,7 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 
 // Summary:
 //
-// 获取共享中的接收者列表
+// Gets the receivers of a share.
 //
 // @param request - ListShareReceiversRequest
 //
@@ -3845,7 +3991,7 @@ func (client *Client) ListShareReceiversWithOptions(share *string, request *List
 
 // Summary:
 //
-// 获取共享中的接收者列表
+// Gets the receivers of a share.
 //
 // @param request - ListShareReceiversRequest
 //
@@ -3864,7 +4010,7 @@ func (client *Client) ListShareReceivers(share *string, request *ListShareReceiv
 
 // Summary:
 //
-// 获取共享资源列表
+// Retrieves shared resources.
 //
 // @param request - ListShareResourcesRequest
 //
@@ -3915,7 +4061,7 @@ func (client *Client) ListShareResourcesWithOptions(share *string, request *List
 
 // Summary:
 //
-// 获取共享资源列表
+// Retrieves shared resources.
 //
 // @param request - ListShareResourcesRequest
 //
@@ -3934,7 +4080,7 @@ func (client *Client) ListShareResources(share *string, request *ListShareResour
 
 // Summary:
 //
-// 查看表快照列表
+// Returns a list of table snapshots.
 //
 // @param request - ListSnapshotsRequest
 //
@@ -3985,7 +4131,7 @@ func (client *Client) ListSnapshotsWithOptions(catalogId *string, database *stri
 
 // Summary:
 //
-// 查看表快照列表
+// Returns a list of table snapshots.
 //
 // @param request - ListSnapshotsRequest
 //
@@ -4004,7 +4150,7 @@ func (client *Client) ListSnapshots(catalogId *string, database *string, table *
 
 // Summary:
 //
-// 查看表详情列表
+// Lists the details of one or more tables.
 //
 // @param request - ListTableDetailsRequest
 //
@@ -4063,7 +4209,7 @@ func (client *Client) ListTableDetailsWithOptions(catalogId *string, database *s
 
 // Summary:
 //
-// 查看表详情列表
+// Lists the details of one or more tables.
 //
 // @param request - ListTableDetailsRequest
 //
@@ -4082,7 +4228,7 @@ func (client *Client) ListTableDetails(catalogId *string, database *string, requ
 
 // Summary:
 //
-// 查看表详情列表
+// Retrieves a list of tables.
 //
 // @param request - ListTablesRequest
 //
@@ -4137,7 +4283,7 @@ func (client *Client) ListTablesWithOptions(catalogId *string, database *string,
 
 // Summary:
 //
-// 查看表详情列表
+// Retrieves a list of tables.
 //
 // @param request - ListTablesRequest
 //
@@ -4156,7 +4302,7 @@ func (client *Client) ListTables(catalogId *string, database *string, request *L
 
 // Summary:
 //
-// 获取用户角色列表
+// Retrieves the roles assigned to a user.
 //
 // @param request - ListUserRolesRequest
 //
@@ -4211,7 +4357,7 @@ func (client *Client) ListUserRolesWithOptions(request *ListUserRolesRequest, he
 
 // Summary:
 //
-// 获取用户角色列表
+// Retrieves the roles assigned to a user.
 //
 // @param request - ListUserRolesRequest
 //
@@ -4230,7 +4376,7 @@ func (client *Client) ListUserRoles(request *ListUserRolesRequest) (_result *Lis
 
 // Summary:
 //
-// 获取用户列表
+// Retrieves a list of users.
 //
 // @param request - ListUsersRequest
 //
@@ -4289,7 +4435,7 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, headers ma
 
 // Summary:
 //
-// 获取用户列表
+// Retrieves a list of users.
 //
 // @param request - ListUsersRequest
 //
@@ -4308,7 +4454,7 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 
 // Summary:
 //
-// 查看视图详情列表
+// Lists the details of one or more views.
 //
 // @param request - ListViewDetailsRequest
 //
@@ -4363,7 +4509,7 @@ func (client *Client) ListViewDetailsWithOptions(catalogId *string, database *st
 
 // Summary:
 //
-// 查看视图详情列表
+// Lists the details of one or more views.
 //
 // @param request - ListViewDetailsRequest
 //
@@ -4382,7 +4528,7 @@ func (client *Client) ListViewDetails(catalogId *string, database *string, reque
 
 // Summary:
 //
-// 查看视图详情列表
+// Returns the names of views.
 //
 // @param request - ListViewsRequest
 //
@@ -4437,7 +4583,7 @@ func (client *Client) ListViewsWithOptions(catalogId *string, database *string, 
 
 // Summary:
 //
-// 查看视图详情列表
+// Returns the names of views.
 //
 // @param request - ListViewsRequest
 //
@@ -4456,7 +4602,7 @@ func (client *Client) ListViews(catalogId *string, database *string, request *Li
 
 // Summary:
 //
-// 刷新用户同步
+// Syncs users.
 //
 // @param headers - map
 //
@@ -4489,7 +4635,7 @@ func (client *Client) RefreshUserSyncWithOptions(headers map[string]*string, run
 
 // Summary:
 //
-// 刷新用户同步
+// Syncs users.
 //
 // @return RefreshUserSyncResponse
 func (client *Client) RefreshUserSync() (_result *RefreshUserSyncResponse, _err error) {
@@ -4506,7 +4652,7 @@ func (client *Client) RefreshUserSync() (_result *RefreshUserSyncResponse, _err 
 
 // Summary:
 //
-// 批量取消授予角色权限给用户
+// Revokes a role from one or more users.
 //
 // @param request - RevokeRoleFromUsersRequest
 //
@@ -4557,7 +4703,7 @@ func (client *Client) RevokeRoleFromUsersWithOptions(request *RevokeRoleFromUser
 
 // Summary:
 //
-// 批量取消授予角色权限给用户
+// Revokes a role from one or more users.
 //
 // @param request - RevokeRoleFromUsersRequest
 //
@@ -4576,7 +4722,7 @@ func (client *Client) RevokeRoleFromUsers(request *RevokeRoleFromUsersRequest) (
 
 // Summary:
 //
-// 回滚表
+// Rolls back a table.
 //
 // @param request - RollbackTableRequest
 //
@@ -4623,7 +4769,7 @@ func (client *Client) RollbackTableWithOptions(catalogId *string, database *stri
 
 // Summary:
 //
-// 回滚表
+// Rolls back a table.
 //
 // @param request - RollbackTableRequest
 //
@@ -4642,7 +4788,7 @@ func (client *Client) RollbackTable(catalogId *string, database *string, table *
 
 // Summary:
 //
-// 订阅当前地域的 DLF
+// Subscribes to DLF in the current region.
 //
 // @param headers - map
 //
@@ -4675,7 +4821,7 @@ func (client *Client) SubscribeWithOptions(headers map[string]*string, runtime *
 
 // Summary:
 //
-// 订阅当前地域的 DLF
+// Subscribes to DLF in the current region.
 //
 // @return SubscribeResponse
 func (client *Client) Subscribe() (_result *SubscribeResponse, _err error) {
@@ -4692,7 +4838,7 @@ func (client *Client) Subscribe() (_result *SubscribeResponse, _err error) {
 
 // Summary:
 //
-// 更新角色
+// Updates a DLF role.
 //
 // @param request - UpdateRoleRequest
 //
@@ -4747,7 +4893,7 @@ func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, headers 
 
 // Summary:
 //
-// 更新角色
+// Updates a DLF role.
 //
 // @param request - UpdateRoleRequest
 //
@@ -4766,7 +4912,7 @@ func (client *Client) UpdateRole(request *UpdateRoleRequest) (_result *UpdateRol
 
 // Summary:
 //
-// 更新角色用户
+// Updates the users for a role.
 //
 // @param request - UpdateRoleUsersRequest
 //
@@ -4817,7 +4963,7 @@ func (client *Client) UpdateRoleUsersWithOptions(request *UpdateRoleUsersRequest
 
 // Summary:
 //
-// 更新角色用户
+// Updates the users for a role.
 //
 // @param request - UpdateRoleUsersRequest
 //

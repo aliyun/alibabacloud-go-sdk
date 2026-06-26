@@ -22,24 +22,32 @@ type iIcebergNestedField interface {
 }
 
 type IcebergNestedField struct {
+	// The comment for the field.
+	//
 	// example:
 	//
 	// desc1
 	Doc *string `json:"doc,omitempty" xml:"doc,omitempty"`
-	// id
+	// The field ID.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The field name.
+	//
 	// example:
 	//
 	// col1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Indicates whether the field is optional.
+	//
 	// example:
 	//
 	// true
 	Optional *bool `json:"optional,omitempty" xml:"optional,omitempty"`
+	// The field type.
+	//
 	// example:
 	//
 	// string

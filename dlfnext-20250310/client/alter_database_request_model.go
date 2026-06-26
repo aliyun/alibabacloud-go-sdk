@@ -16,8 +16,10 @@ type iAlterDatabaseRequest interface {
 }
 
 type AlterDatabaseRequest struct {
-	Removals []*string          `json:"removals,omitempty" xml:"removals,omitempty" type:"Repeated"`
-	Updates  map[string]*string `json:"updates,omitempty" xml:"updates,omitempty"`
+	// The items to delete.
+	Removals []*string `json:"removals,omitempty" xml:"removals,omitempty" type:"Repeated"`
+	// The items to update.
+	Updates map[string]*string `json:"updates,omitempty" xml:"updates,omitempty"`
 }
 
 func (s AlterDatabaseRequest) String() string {

@@ -16,10 +16,14 @@ type iListShareResourcesRequest interface {
 }
 
 type ListShareResourcesRequest struct {
+	// The maximum number of records to return.
+	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token used to page through results. If this parameter is not returned, pass an empty string ("").
+	//
 	// example:
 	//
 	// ""

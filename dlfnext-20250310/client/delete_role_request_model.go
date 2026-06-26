@@ -14,6 +14,8 @@ type iDeleteRoleRequest interface {
 }
 
 type DeleteRoleRequest struct {
+	// The resource descriptor of the role to delete.
+	//
 	// example:
 	//
 	// acs:dlf::[accountId]:role/role_name

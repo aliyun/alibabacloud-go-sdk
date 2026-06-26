@@ -20,18 +20,26 @@ type iListUsersRequest interface {
 }
 
 type ListUsersRequest struct {
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token used to retrieve the next page of results. If this parameter is not returned in the response, pass an empty string ("").
+	//
 	// example:
 	//
 	// ""
 	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	// The type of the user.
+	//
 	// example:
 	//
 	// RAM_USER
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The user name.
+	//
 	// example:
 	//
 	// user_name

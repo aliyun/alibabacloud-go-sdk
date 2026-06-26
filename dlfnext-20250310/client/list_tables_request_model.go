@@ -18,14 +18,23 @@ type iListTablesRequest interface {
 }
 
 type ListTablesRequest struct {
+	// The maximum number of records to return.
+	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token to retrieve the next page of results. If the response does not include this parameter, pass an empty string ("").
+	//
 	// example:
 	//
 	// ""
-	PageToken        *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	// The table name pattern.
+	//
+	// example:
+	//
+	// table%
 	TableNamePattern *string `json:"tableNamePattern,omitempty" xml:"tableNamePattern,omitempty"`
 }
 

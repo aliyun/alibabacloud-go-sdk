@@ -16,10 +16,14 @@ type iGetRegionStatusResponseBody interface {
 }
 
 type GetRegionStatusResponseBody struct {
+	// Indicates whether DLF\\"s service-linked role has been created.
+	//
 	// example:
 	//
 	// true
 	ServiceRoleExists *bool `json:"serviceRoleExists,omitempty" xml:"serviceRoleExists,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// READY

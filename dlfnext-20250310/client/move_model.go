@@ -18,14 +18,20 @@ type iMove interface {
 }
 
 type Move struct {
+	// The name of the column.
+	//
 	// example:
 	//
 	// other_col_test
 	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
+	// The name of the reference column.
+	//
 	// example:
 	//
 	// col_test
 	ReferenceFieldName *string `json:"referenceFieldName,omitempty" xml:"referenceFieldName,omitempty"`
+	// The move type.
+	//
 	// example:
 	//
 	// FIRST

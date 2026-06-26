@@ -44,48 +44,72 @@ type iTable interface {
 }
 
 type Table struct {
+	// The time when the table was created.
+	//
 	// example:
 	//
 	// 1741266704867
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The user who created the table.
+	//
 	// example:
 	//
 	// acs:ram::[accountId]:root
 	CreatedBy            *string               `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
 	IcebergTableMetadata *IcebergTableMetadata `json:"icebergTableMetadata,omitempty" xml:"icebergTableMetadata,omitempty"`
+	// The UUID of the table.
+	//
 	// example:
 	//
 	// 1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Indicates whether the table is an external table.
+	//
 	// example:
 	//
 	// true
 	IsExternal *bool `json:"isExternal,omitempty" xml:"isExternal,omitempty"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// table_test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The owner of the table.
+	//
 	// example:
 	//
 	// acs:ram::[accountId]:root
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The table URI.
+	//
 	// example:
 	//
 	// oss://clg-paimon-xxx/db-xxx/tbl-xxxx
-	Path   *string `json:"path,omitempty" xml:"path,omitempty"`
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The table schema.
 	Schema *Schema `json:"schema,omitempty" xml:"schema,omitempty"`
+	// The ID of the schema.
+	//
 	// example:
 	//
 	// 1
-	SchemaId               *int64  `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
-	StorageAction          *string `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
-	StorageActionTimestamp *int64  `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
-	StorageClass           *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
-	Type                   *string `json:"type,omitempty" xml:"type,omitempty"`
+	SchemaId *int64 `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
+	// The storage action.
+	StorageAction *string `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
+	// The timestamp of the storage action.
+	StorageActionTimestamp *int64 `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
+	// The storage class of the table.
+	StorageClass *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The time when the table was last updated.
+	//
 	// example:
 	//
 	// 1741266704867
 	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The user who last updated the table.
+	//
 	// example:
 	//
 	// acs:ram::[accountId]:root

@@ -14,6 +14,11 @@ type iGetDatabaseSummaryRequest interface {
 }
 
 type GetDatabaseSummaryRequest struct {
+	// The date of the storage overview.
+	//
+	// example:
+	//
+	// 2025-10-26
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
 }
 

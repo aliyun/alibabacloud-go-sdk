@@ -18,14 +18,20 @@ type iListRolesRequest interface {
 }
 
 type ListRolesRequest struct {
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token used to retrieve the next page of results. If the response does not return this parameter, pass an empty string ("").
+	//
 	// example:
 	//
 	// ""
 	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	// The role name.
+	//
 	// example:
 	//
 	// role_name

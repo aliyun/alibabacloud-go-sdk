@@ -16,11 +16,14 @@ type iListTableDetailsResponseBody interface {
 }
 
 type ListTableDetailsResponseBody struct {
+	// The token to retrieve the next page of results. A null value indicates that all results have been returned.
+	//
 	// example:
 	//
 	// E8ABEB1C3DB893D16576269017992F57
-	NextPageToken *string  `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	TableDetails  []*Table `json:"tableDetails,omitempty" xml:"tableDetails,omitempty" type:"Repeated"`
+	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	// A list of tables.
+	TableDetails []*Table `json:"tableDetails,omitempty" xml:"tableDetails,omitempty" type:"Repeated"`
 }
 
 func (s ListTableDetailsResponseBody) String() string {

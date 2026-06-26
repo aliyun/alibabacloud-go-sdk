@@ -16,11 +16,13 @@ type iPartitionSummaries interface {
 }
 
 type PartitionSummaries struct {
+	// The token to retrieve the next page of results. A null value indicates that the last page of results has been returned.
+	//
 	// example:
 	//
 	// hh=10
 	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	// Current page of partition profiles
+	// The partitions.
 	Partitions []*PartitionSummary `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
 }
 

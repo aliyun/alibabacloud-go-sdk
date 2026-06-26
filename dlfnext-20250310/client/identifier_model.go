@@ -16,10 +16,14 @@ type iIdentifier interface {
 }
 
 type Identifier struct {
+	// The database name.
+	//
 	// example:
 	//
 	// database_name
 	Database *string `json:"database,omitempty" xml:"database,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// table_name

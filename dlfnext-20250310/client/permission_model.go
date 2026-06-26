@@ -32,26 +32,36 @@ type iPermission interface {
 }
 
 type Permission struct {
+	// The access type.
+	//
 	// example:
 	//
 	// DROP
 	Access  *string            `json:"access,omitempty" xml:"access,omitempty"`
 	Columns *PermissionColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Struct"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// database_name
 	Database   *string `json:"database,omitempty" xml:"database,omitempty"`
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
 	Function   *string `json:"function,omitempty" xml:"function,omitempty"`
+	// The user resource descriptor.
+	//
 	// example:
 	//
 	// acs:ram::[accountId]:user/user_name
 	Principal *string `json:"principal,omitempty" xml:"principal,omitempty"`
+	// The resource type of the permission.
+	//
 	// example:
 	//
 	// CATALOG
 	ResourceType *string    `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	RowFilter    *RowFilter `json:"rowFilter,omitempty" xml:"rowFilter,omitempty"`
+	// The name of the data table.
+	//
 	// example:
 	//
 	// table_name

@@ -40,55 +40,86 @@ type iPartition interface {
 }
 
 type Partition struct {
+	// The time when the partition was created.
+	//
 	// example:
 	//
 	// 1747120676378
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The creator of the partition.
+	//
 	// example:
 	//
 	// acs:ram::[accountId]:root
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// Indicates whether the process is complete.
+	//
 	// example:
 	//
 	// true
 	Done *bool `json:"done,omitempty" xml:"done,omitempty"`
+	// The number of files.
+	//
 	// example:
 	//
 	// 1
 	FileCount *int64 `json:"fileCount,omitempty" xml:"fileCount,omitempty"`
+	// The file size.
+	//
 	// example:
 	//
 	// 1
 	FileSizeInBytes *int64 `json:"fileSizeInBytes,omitempty" xml:"fileSizeInBytes,omitempty"`
+	// The time when the latest file was created.
+	//
 	// example:
 	//
 	// 1741701564261
 	LastFileCreationTime *int64 `json:"lastFileCreationTime,omitempty" xml:"lastFileCreationTime,omitempty"`
+	// The number of records.
+	//
 	// example:
 	//
 	// 1
 	RecordCount *int64 `json:"recordCount,omitempty" xml:"recordCount,omitempty"`
+	// The key-value pairs of the partition values.
+	//
 	// example:
 	//
 	// {"year":"2025"}
 	Spec map[string]interface{} `json:"spec,omitempty" xml:"spec,omitempty"`
+	// The status of the storage class conversion.
+	//
 	// example:
 	//
 	// COMPLETE
 	StorageAction *string `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
+	// The storage class conversion time.
+	//
 	// example:
 	//
 	// 1758189669915
 	StorageActionTimestamp *int64 `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
+	// The storage class.
+	//
 	// example:
 	//
 	// STANDARD
 	StorageClass *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
-	TotalBuckets *int32  `json:"totalBuckets,omitempty" xml:"totalBuckets,omitempty"`
+	// The total number of buckets.
+	//
+	// example:
+	//
+	// 1
+	TotalBuckets *int32 `json:"totalBuckets,omitempty" xml:"totalBuckets,omitempty"`
+	// The time when the partition was last updated.
+	//
 	// example:
 	//
 	// 1744970111419
 	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The user who last updated the partition.
+	//
 	// example:
 	//
 	// acs:ram::[accountId]:root

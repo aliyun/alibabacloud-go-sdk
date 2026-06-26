@@ -40,51 +40,93 @@ type iCacheCluster interface {
 }
 
 type CacheCluster struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// dc-wqewqr*****
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// Cluster name
+	//
 	// example:
 	//
 	// cluster_name
 	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 1744970111419
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// Creator name
+	//
 	// example:
 	//
 	// acs:ram::[accountId]:root
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// Version of the deployed instance
+	//
 	// example:
 	//
 	// 1.0.0
 	DeployInstanceVersion *string `json:"deployInstanceVersion,omitempty" xml:"deployInstanceVersion,omitempty"`
+	// Deployed options version
+	//
 	// example:
 	//
 	// 1.0.0
 	DeployOptionsVersion *int64 `json:"deployOptionsVersion,omitempty" xml:"deployOptionsVersion,omitempty"`
+	// Milvus Version
+	//
 	// example:
 	//
 	// 1.0.0
-	InstanceVersion *string            `json:"instanceVersion,omitempty" xml:"instanceVersion,omitempty"`
-	Options         map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	InstanceVersion *string `json:"instanceVersion,omitempty" xml:"instanceVersion,omitempty"`
+	// Cache cluster configuration
+	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	// Options version
+	//
 	// example:
 	//
 	// 1.0.0
 	OptionsVersion *int64 `json:"optionsVersion,omitempty" xml:"optionsVersion,omitempty"`
+	// Cache cluster status. Valid values:
+	//
+	// ● NEW: Newly created and not started.
+	//
+	// ● STARTING: Starting.
+	//
+	// ● START_FAILED: Start failed.
+	//
+	// ● RUNNING: Running.
+	//
+	// ● PENDING_RESTART: Pending restart.
+	//
+	// ● PENDING_TERMINATE: Pending termination.
+	//
+	// ● TERMINATING: Terminating.
+	//
+	// ● TERMINATE_FAILED: Termination failed.
+	//
+	// ● TERMINATED: Terminated.
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Update time
+	//
 	// example:
 	//
 	// 1764555848748
 	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// Updater name
+	//
 	// example:
 	//
 	// acs:ram::[accountId]:root
-	UpdatedBy *string                  `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// vSwitch list
 	VSwitches []*CacheClusterVSwitches `json:"vSwitches,omitempty" xml:"vSwitches,omitempty" type:"Repeated"`
 	// VPC ID
 	//
@@ -242,10 +284,14 @@ func (s *CacheCluster) Validate() error {
 }
 
 type CacheClusterVSwitches struct {
+	// vSwitch ID
+	//
 	// example:
 	//
 	// vsw-bp1thxw8sgypzj2j*****
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// Instance zone
+	//
 	// example:
 	//
 	// cn-hangzhou-e
