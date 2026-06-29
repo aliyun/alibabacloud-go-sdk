@@ -4,6 +4,12 @@
 - Support API UntagResources.
 
 
+2026-06-29 Version: v9.2.0
+- Support API ListTagResources.
+- Support API TagResources.
+- Support API UntagResources.
+
+
 2026-06-26 Version: v9.1.1
 - Generated golang 2024-03-27 for APIG.
 
