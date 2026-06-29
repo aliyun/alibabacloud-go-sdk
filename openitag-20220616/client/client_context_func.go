@@ -2,65 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-shenzhen": dara.String("openitag.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai": dara.String("openitag.cn-shanghai.aliyuncs.com"),
-		"cn-hangzhou": dara.String("openitag.cn-hangzhou.aliyuncs.com"),
-		"cn-beijing":  dara.String("openitag.cn-beijing.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("openitag"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -73,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddWorkNodeWorkforceResponse
-func (client *Client) AddWorkNodeWorkforceWithOptions(TenantId *string, TaskId *string, WorkNodeId *string, request *AddWorkNodeWorkforceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddWorkNodeWorkforceResponse, _err error) {
+func (client *Client) AddWorkNodeWorkforceWithContext(ctx context.Context, TenantId *string, TaskId *string, WorkNodeId *string, request *AddWorkNodeWorkforceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddWorkNodeWorkforceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -101,30 +46,11 @@ func (client *Client) AddWorkNodeWorkforceWithOptions(TenantId *string, TaskId *
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddWorkNodeWorkforceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Assign personnel to the worker nodes (annotation, quality inspection, and validation) of an annotation job.
-//
-// @param request - AddWorkNodeWorkforceRequest
-//
-// @return AddWorkNodeWorkforceResponse
-func (client *Client) AddWorkNodeWorkforce(TenantId *string, TaskId *string, WorkNodeId *string, request *AddWorkNodeWorkforceRequest) (_result *AddWorkNodeWorkforceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AddWorkNodeWorkforceResponse{}
-	_body, _err := client.AddWorkNodeWorkforceWithOptions(TenantId, TaskId, WorkNodeId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -139,7 +65,7 @@ func (client *Client) AddWorkNodeWorkforce(TenantId *string, TaskId *string, Wor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AppendAllDataToTaskResponse
-func (client *Client) AppendAllDataToTaskWithOptions(TenantId *string, TaskId *string, request *AppendAllDataToTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AppendAllDataToTaskResponse, _err error) {
+func (client *Client) AppendAllDataToTaskWithContext(ctx context.Context, TenantId *string, TaskId *string, request *AppendAllDataToTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AppendAllDataToTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -162,30 +88,11 @@ func (client *Client) AppendAllDataToTaskWithOptions(TenantId *string, TaskId *s
 		BodyType:    dara.String("json"),
 	}
 	_result = &AppendAllDataToTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Append data to a job.
-//
-// @param request - AppendAllDataToTaskRequest
-//
-// @return AppendAllDataToTaskResponse
-func (client *Client) AppendAllDataToTask(TenantId *string, TaskId *string, request *AppendAllDataToTaskRequest) (_result *AppendAllDataToTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AppendAllDataToTaskResponse{}
-	_body, _err := client.AppendAllDataToTaskWithOptions(TenantId, TaskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -200,7 +107,7 @@ func (client *Client) AppendAllDataToTask(TenantId *string, TaskId *string, requ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTaskResponse
-func (client *Client) CreateTaskWithOptions(TenantId *string, request *CreateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
+func (client *Client) CreateTaskWithContext(ctx context.Context, TenantId *string, request *CreateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -223,30 +130,11 @@ func (client *Client) CreateTaskWithOptions(TenantId *string, request *CreateTas
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Create an annotation job for the current tenant.
-//
-// @param request - CreateTaskRequest
-//
-// @return CreateTaskResponse
-func (client *Client) CreateTask(TenantId *string, request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateTaskResponse{}
-	_body, _err := client.CreateTaskWithOptions(TenantId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -261,7 +149,7 @@ func (client *Client) CreateTask(TenantId *string, request *CreateTaskRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTemplateResponse
-func (client *Client) CreateTemplateWithOptions(TenantId *string, request *CreateTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTemplateResponse, _err error) {
+func (client *Client) CreateTemplateWithContext(ctx context.Context, TenantId *string, request *CreateTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -284,30 +172,11 @@ func (client *Client) CreateTemplateWithOptions(TenantId *string, request *Creat
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// You can add a new template for the current tenant and customize the annotation template based on your business requirements.
-//
-// @param request - CreateTemplateRequest
-//
-// @return CreateTemplateResponse
-func (client *Client) CreateTemplate(TenantId *string, request *CreateTemplateRequest) (_result *CreateTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateTemplateResponse{}
-	_body, _err := client.CreateTemplateWithOptions(TenantId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -322,7 +191,7 @@ func (client *Client) CreateTemplate(TenantId *string, request *CreateTemplateRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateUserResponse
-func (client *Client) CreateUserWithOptions(TenantId *string, request *CreateUserRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateUserResponse, _err error) {
+func (client *Client) CreateUserWithContext(ctx context.Context, TenantId *string, request *CreateUserRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateUserResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -362,30 +231,11 @@ func (client *Client) CreateUserWithOptions(TenantId *string, request *CreateUse
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Add a member to the tenant.
-//
-// @param request - CreateUserRequest
-//
-// @return CreateUserResponse
-func (client *Client) CreateUser(TenantId *string, request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateUserResponse{}
-	_body, _err := client.CreateUserWithOptions(TenantId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -398,7 +248,7 @@ func (client *Client) CreateUser(TenantId *string, request *CreateUserRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTaskResponse
-func (client *Client) DeleteTaskWithOptions(TenantId *string, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTaskResponse, _err error) {
+func (client *Client) DeleteTaskWithContext(ctx context.Context, TenantId *string, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTaskResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -414,28 +264,11 @@ func (client *Client) DeleteTaskWithOptions(TenantId *string, TaskId *string, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Delete a job under the current tenant.
-//
-// @return DeleteTaskResponse
-func (client *Client) DeleteTask(TenantId *string, TaskId *string) (_result *DeleteTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteTaskResponse{}
-	_body, _err := client.DeleteTaskWithOptions(TenantId, TaskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -448,7 +281,7 @@ func (client *Client) DeleteTask(TenantId *string, TaskId *string) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTemplateResponse
-func (client *Client) DeleteTemplateWithOptions(TenantId *string, TemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
+func (client *Client) DeleteTemplateWithContext(ctx context.Context, TenantId *string, TemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -464,28 +297,11 @@ func (client *Client) DeleteTemplateWithOptions(TenantId *string, TemplateId *st
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Delete the template under the current tenant.
-//
-// @return DeleteTemplateResponse
-func (client *Client) DeleteTemplate(TenantId *string, TemplateId *string) (_result *DeleteTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteTemplateResponse{}
-	_body, _err := client.DeleteTemplateWithOptions(TenantId, TemplateId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -498,7 +314,7 @@ func (client *Client) DeleteTemplate(TenantId *string, TemplateId *string) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteUserResponse
-func (client *Client) DeleteUserWithOptions(TenantId *string, UserId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
+func (client *Client) DeleteUserWithContext(ctx context.Context, TenantId *string, UserId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -514,28 +330,11 @@ func (client *Client) DeleteUserWithOptions(TenantId *string, UserId *string, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Delete a member within a tenant.
-//
-// @return DeleteUserResponse
-func (client *Client) DeleteUser(TenantId *string, UserId *string) (_result *DeleteUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteUserResponse{}
-	_body, _err := client.DeleteUserWithOptions(TenantId, UserId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -550,7 +349,7 @@ func (client *Client) DeleteUser(TenantId *string, UserId *string) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExportAnnotationsResponse
-func (client *Client) ExportAnnotationsWithOptions(TenantId *string, TaskId *string, request *ExportAnnotationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExportAnnotationsResponse, _err error) {
+func (client *Client) ExportAnnotationsWithContext(ctx context.Context, TenantId *string, TaskId *string, request *ExportAnnotationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExportAnnotationsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -586,30 +385,11 @@ func (client *Client) ExportAnnotationsWithOptions(TenantId *string, TaskId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExportAnnotationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Export the result data of an annotation job.
-//
-// @param request - ExportAnnotationsRequest
-//
-// @return ExportAnnotationsResponse
-func (client *Client) ExportAnnotations(TenantId *string, TaskId *string, request *ExportAnnotationsRequest) (_result *ExportAnnotationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ExportAnnotationsResponse{}
-	_body, _err := client.ExportAnnotationsWithOptions(TenantId, TaskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -624,7 +404,7 @@ func (client *Client) ExportAnnotations(TenantId *string, TaskId *string, reques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetJobResponse
-func (client *Client) GetJobWithOptions(TenantId *string, JobId *string, request *GetJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobResponse, _err error) {
+func (client *Client) GetJobWithContext(ctx context.Context, TenantId *string, JobId *string, request *GetJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -652,30 +432,11 @@ func (client *Client) GetJobWithOptions(TenantId *string, JobId *string, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the information of a single annotation export result.
-//
-// @param request - GetJobRequest
-//
-// @return GetJobResponse
-func (client *Client) GetJob(TenantId *string, JobId *string, request *GetJobRequest) (_result *GetJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetJobResponse{}
-	_body, _err := client.GetJobWithOptions(TenantId, JobId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -688,7 +449,7 @@ func (client *Client) GetJob(TenantId *string, JobId *string, request *GetJobReq
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSubtaskResponse
-func (client *Client) GetSubtaskWithOptions(TenantId *string, TaskID *string, SubtaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSubtaskResponse, _err error) {
+func (client *Client) GetSubtaskWithContext(ctx context.Context, TenantId *string, TaskID *string, SubtaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSubtaskResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -704,28 +465,11 @@ func (client *Client) GetSubtaskWithOptions(TenantId *string, TaskID *string, Su
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSubtaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the information of a single subtask package.
-//
-// @return GetSubtaskResponse
-func (client *Client) GetSubtask(TenantId *string, TaskID *string, SubtaskId *string) (_result *GetSubtaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetSubtaskResponse{}
-	_body, _err := client.GetSubtaskWithOptions(TenantId, TaskID, SubtaskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -738,7 +482,7 @@ func (client *Client) GetSubtask(TenantId *string, TaskID *string, SubtaskId *st
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSubtaskItemResponse
-func (client *Client) GetSubtaskItemWithOptions(TenantId *string, TaskId *string, SubtaskId *string, ItemId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSubtaskItemResponse, _err error) {
+func (client *Client) GetSubtaskItemWithContext(ctx context.Context, TenantId *string, TaskId *string, SubtaskId *string, ItemId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSubtaskItemResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -754,28 +498,11 @@ func (client *Client) GetSubtaskItemWithOptions(TenantId *string, TaskId *string
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSubtaskItemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query a single annotated data item in a subtask package.
-//
-// @return GetSubtaskItemResponse
-func (client *Client) GetSubtaskItem(TenantId *string, TaskId *string, SubtaskId *string, ItemId *string) (_result *GetSubtaskItemResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetSubtaskItemResponse{}
-	_body, _err := client.GetSubtaskItemWithOptions(TenantId, TaskId, SubtaskId, ItemId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -788,7 +515,7 @@ func (client *Client) GetSubtaskItem(TenantId *string, TaskId *string, SubtaskId
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskResponse
-func (client *Client) GetTaskWithOptions(TenantId *string, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskResponse, _err error) {
+func (client *Client) GetTaskWithContext(ctx context.Context, TenantId *string, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -804,28 +531,11 @@ func (client *Client) GetTaskWithOptions(TenantId *string, TaskId *string, heade
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the information of a single annotation job.
-//
-// @return GetTaskResponse
-func (client *Client) GetTask(TenantId *string, TaskId *string) (_result *GetTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTaskResponse{}
-	_body, _err := client.GetTaskWithOptions(TenantId, TaskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -840,7 +550,7 @@ func (client *Client) GetTask(TenantId *string, TaskId *string) (_result *GetTas
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskStatisticsResponse
-func (client *Client) GetTaskStatisticsWithOptions(TenantId *string, TaskId *string, request *GetTaskStatisticsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskStatisticsResponse, _err error) {
+func (client *Client) GetTaskStatisticsWithContext(ctx context.Context, TenantId *string, TaskId *string, request *GetTaskStatisticsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskStatisticsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -868,30 +578,11 @@ func (client *Client) GetTaskStatisticsWithOptions(TenantId *string, TaskId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the current statistics information of a job.
-//
-// @param request - GetTaskStatisticsRequest
-//
-// @return GetTaskStatisticsResponse
-func (client *Client) GetTaskStatistics(TenantId *string, TaskId *string, request *GetTaskStatisticsRequest) (_result *GetTaskStatisticsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTaskStatisticsResponse{}
-	_body, _err := client.GetTaskStatisticsWithOptions(TenantId, TaskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -904,7 +595,7 @@ func (client *Client) GetTaskStatistics(TenantId *string, TaskId *string, reques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskStatusResponse
-func (client *Client) GetTaskStatusWithOptions(TenantId *string, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskStatusResponse, _err error) {
+func (client *Client) GetTaskStatusWithContext(ctx context.Context, TenantId *string, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskStatusResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -920,28 +611,11 @@ func (client *Client) GetTaskStatusWithOptions(TenantId *string, TaskId *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the current status of a job.
-//
-// @return GetTaskStatusResponse
-func (client *Client) GetTaskStatus(TenantId *string, TaskId *string) (_result *GetTaskStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTaskStatusResponse{}
-	_body, _err := client.GetTaskStatusWithOptions(TenantId, TaskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -954,7 +628,7 @@ func (client *Client) GetTaskStatus(TenantId *string, TaskId *string) (_result *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskTemplateResponse
-func (client *Client) GetTaskTemplateWithOptions(TenantId *string, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskTemplateResponse, _err error) {
+func (client *Client) GetTaskTemplateWithContext(ctx context.Context, TenantId *string, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskTemplateResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -970,28 +644,11 @@ func (client *Client) GetTaskTemplateWithOptions(TenantId *string, TaskId *strin
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the current template information of a job.
-//
-// @return GetTaskTemplateResponse
-func (client *Client) GetTaskTemplate(TenantId *string, TaskId *string) (_result *GetTaskTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTaskTemplateResponse{}
-	_body, _err := client.GetTaskTemplateWithOptions(TenantId, TaskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1004,7 +661,7 @@ func (client *Client) GetTaskTemplate(TenantId *string, TaskId *string) (_result
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskTemplateQuestionsResponse
-func (client *Client) GetTaskTemplateQuestionsWithOptions(TenantId *string, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskTemplateQuestionsResponse, _err error) {
+func (client *Client) GetTaskTemplateQuestionsWithContext(ctx context.Context, TenantId *string, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskTemplateQuestionsResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1020,28 +677,11 @@ func (client *Client) GetTaskTemplateQuestionsWithOptions(TenantId *string, Task
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskTemplateQuestionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query job template questions.
-//
-// @return GetTaskTemplateQuestionsResponse
-func (client *Client) GetTaskTemplateQuestions(TenantId *string, TaskId *string) (_result *GetTaskTemplateQuestionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTaskTemplateQuestionsResponse{}
-	_body, _err := client.GetTaskTemplateQuestionsWithOptions(TenantId, TaskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1054,7 +694,7 @@ func (client *Client) GetTaskTemplateQuestions(TenantId *string, TaskId *string)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskTemplateViewsResponse
-func (client *Client) GetTaskTemplateViewsWithOptions(TenantId *string, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskTemplateViewsResponse, _err error) {
+func (client *Client) GetTaskTemplateViewsWithContext(ctx context.Context, TenantId *string, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskTemplateViewsResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1070,28 +710,11 @@ func (client *Client) GetTaskTemplateViewsWithOptions(TenantId *string, TaskId *
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskTemplateViewsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the data display information in the job template.
-//
-// @return GetTaskTemplateViewsResponse
-func (client *Client) GetTaskTemplateViews(TenantId *string, TaskId *string) (_result *GetTaskTemplateViewsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTaskTemplateViewsResponse{}
-	_body, _err := client.GetTaskTemplateViewsWithOptions(TenantId, TaskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1104,7 +727,7 @@ func (client *Client) GetTaskTemplateViews(TenantId *string, TaskId *string) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskWorkforceResponse
-func (client *Client) GetTaskWorkforceWithOptions(TenantId *string, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskWorkforceResponse, _err error) {
+func (client *Client) GetTaskWorkforceWithContext(ctx context.Context, TenantId *string, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskWorkforceResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1120,28 +743,11 @@ func (client *Client) GetTaskWorkforceWithOptions(TenantId *string, TaskId *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskWorkforceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the personnel configuration information of each node in a job.
-//
-// @return GetTaskWorkforceResponse
-func (client *Client) GetTaskWorkforce(TenantId *string, TaskId *string) (_result *GetTaskWorkforceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTaskWorkforceResponse{}
-	_body, _err := client.GetTaskWorkforceWithOptions(TenantId, TaskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1156,7 +762,7 @@ func (client *Client) GetTaskWorkforce(TenantId *string, TaskId *string) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskWorkforceStatisticResponse
-func (client *Client) GetTaskWorkforceStatisticWithOptions(TenantId *string, TaskId *string, request *GetTaskWorkforceStatisticRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskWorkforceStatisticResponse, _err error) {
+func (client *Client) GetTaskWorkforceStatisticWithContext(ctx context.Context, TenantId *string, TaskId *string, request *GetTaskWorkforceStatisticRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskWorkforceStatisticResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1192,30 +798,11 @@ func (client *Client) GetTaskWorkforceStatisticWithOptions(TenantId *string, Tas
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskWorkforceStatisticResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query statistics of each member in a job.
-//
-// @param request - GetTaskWorkforceStatisticRequest
-//
-// @return GetTaskWorkforceStatisticResponse
-func (client *Client) GetTaskWorkforceStatistic(TenantId *string, TaskId *string, request *GetTaskWorkforceStatisticRequest) (_result *GetTaskWorkforceStatisticResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTaskWorkforceStatisticResponse{}
-	_body, _err := client.GetTaskWorkforceStatisticWithOptions(TenantId, TaskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1228,7 +815,7 @@ func (client *Client) GetTaskWorkforceStatistic(TenantId *string, TaskId *string
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTemplateResponse
-func (client *Client) GetTemplateWithOptions(TenantId *string, TemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
+func (client *Client) GetTemplateWithContext(ctx context.Context, TenantId *string, TemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1244,28 +831,11 @@ func (client *Client) GetTemplateWithOptions(TenantId *string, TemplateId *strin
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query template information under a tenant.
-//
-// @return GetTemplateResponse
-func (client *Client) GetTemplate(TenantId *string, TemplateId *string) (_result *GetTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTemplateResponse{}
-	_body, _err := client.GetTemplateWithOptions(TenantId, TemplateId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1278,7 +848,7 @@ func (client *Client) GetTemplate(TenantId *string, TemplateId *string) (_result
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTemplateQuestionsResponse
-func (client *Client) GetTemplateQuestionsWithOptions(TenantId *string, TemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTemplateQuestionsResponse, _err error) {
+func (client *Client) GetTemplateQuestionsWithContext(ctx context.Context, TenantId *string, TemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTemplateQuestionsResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1294,28 +864,11 @@ func (client *Client) GetTemplateQuestionsWithOptions(TenantId *string, Template
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTemplateQuestionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query question information such as Radio and Multiple Choice in a template.
-//
-// @return GetTemplateQuestionsResponse
-func (client *Client) GetTemplateQuestions(TenantId *string, TemplateId *string) (_result *GetTemplateQuestionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTemplateQuestionsResponse{}
-	_body, _err := client.GetTemplateQuestionsWithOptions(TenantId, TemplateId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1328,7 +881,7 @@ func (client *Client) GetTemplateQuestions(TenantId *string, TemplateId *string)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTemplateViewResponse
-func (client *Client) GetTemplateViewWithOptions(TenantId *string, TemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTemplateViewResponse, _err error) {
+func (client *Client) GetTemplateViewWithContext(ctx context.Context, TenantId *string, TemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTemplateViewResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1344,28 +897,11 @@ func (client *Client) GetTemplateViewWithOptions(TenantId *string, TemplateId *s
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTemplateViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the display information such as images, text, and audio in the template.
-//
-// @return GetTemplateViewResponse
-func (client *Client) GetTemplateView(TenantId *string, TemplateId *string) (_result *GetTemplateViewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTemplateViewResponse{}
-	_body, _err := client.GetTemplateViewWithOptions(TenantId, TemplateId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1378,7 +914,7 @@ func (client *Client) GetTemplateView(TenantId *string, TemplateId *string) (_re
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTenantResponse
-func (client *Client) GetTenantWithOptions(TenantId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTenantResponse, _err error) {
+func (client *Client) GetTenantWithContext(ctx context.Context, TenantId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTenantResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1394,28 +930,11 @@ func (client *Client) GetTenantWithOptions(TenantId *string, headers map[string]
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTenantResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query information about the iTAG tenant.
-//
-// @return GetTenantResponse
-func (client *Client) GetTenant(TenantId *string) (_result *GetTenantResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTenantResponse{}
-	_body, _err := client.GetTenantWithOptions(TenantId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1428,7 +947,7 @@ func (client *Client) GetTenant(TenantId *string) (_result *GetTenantResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUserResponse
-func (client *Client) GetUserWithOptions(TenantId *string, UserId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUserResponse, _err error) {
+func (client *Client) GetUserWithContext(ctx context.Context, TenantId *string, UserId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUserResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1444,28 +963,11 @@ func (client *Client) GetUserWithOptions(TenantId *string, UserId *string, heade
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the details of a single member in a tenant.
-//
-// @return GetUserResponse
-func (client *Client) GetUser(TenantId *string, UserId *string) (_result *GetUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetUserResponse{}
-	_body, _err := client.GetUserWithOptions(TenantId, UserId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1480,7 +982,7 @@ func (client *Client) GetUser(TenantId *string, UserId *string) (_result *GetUse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListJobsResponse
-func (client *Client) ListJobsWithOptions(TenantId *string, request *ListJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobsResponse, _err error) {
+func (client *Client) ListJobsWithContext(ctx context.Context, TenantId *string, request *ListJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1516,30 +1018,11 @@ func (client *Client) ListJobsWithOptions(TenantId *string, request *ListJobsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Displays a list of all exported annotation results.
-//
-// @param request - ListJobsRequest
-//
-// @return ListJobsResponse
-func (client *Client) ListJobs(TenantId *string, request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListJobsResponse{}
-	_body, _err := client.ListJobsWithOptions(TenantId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1554,7 +1037,7 @@ func (client *Client) ListJobs(TenantId *string, request *ListJobsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSubtaskItemsResponse
-func (client *Client) ListSubtaskItemsWithOptions(TenantId *string, TaskID *string, SubtaskId *string, request *ListSubtaskItemsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSubtaskItemsResponse, _err error) {
+func (client *Client) ListSubtaskItemsWithContext(ctx context.Context, TenantId *string, TaskID *string, SubtaskId *string, request *ListSubtaskItemsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSubtaskItemsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1586,30 +1069,11 @@ func (client *Client) ListSubtaskItemsWithOptions(TenantId *string, TaskID *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSubtaskItemsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Display the annotation data of a single subtask package.
-//
-// @param request - ListSubtaskItemsRequest
-//
-// @return ListSubtaskItemsResponse
-func (client *Client) ListSubtaskItems(TenantId *string, TaskID *string, SubtaskId *string, request *ListSubtaskItemsRequest) (_result *ListSubtaskItemsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListSubtaskItemsResponse{}
-	_body, _err := client.ListSubtaskItemsWithOptions(TenantId, TaskID, SubtaskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1624,7 +1088,7 @@ func (client *Client) ListSubtaskItems(TenantId *string, TaskID *string, Subtask
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSubtasksResponse
-func (client *Client) ListSubtasksWithOptions(TenantId *string, TaskID *string, request *ListSubtasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSubtasksResponse, _err error) {
+func (client *Client) ListSubtasksWithContext(ctx context.Context, TenantId *string, TaskID *string, request *ListSubtasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSubtasksResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1656,30 +1120,11 @@ func (client *Client) ListSubtasksWithOptions(TenantId *string, TaskID *string, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSubtasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Displays the list of subtask packages.
-//
-// @param request - ListSubtasksRequest
-//
-// @return ListSubtasksResponse
-func (client *Client) ListSubtasks(TenantId *string, TaskID *string, request *ListSubtasksRequest) (_result *ListSubtasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListSubtasksResponse{}
-	_body, _err := client.ListSubtasksWithOptions(TenantId, TaskID, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1694,7 +1139,7 @@ func (client *Client) ListSubtasks(TenantId *string, TaskID *string, request *Li
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTasksResponse
-func (client *Client) ListTasksWithOptions(TenantId *string, request *ListTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTasksResponse, _err error) {
+func (client *Client) ListTasksWithContext(ctx context.Context, TenantId *string, request *ListTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTasksResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1726,30 +1171,11 @@ func (client *Client) ListTasksWithOptions(TenantId *string, request *ListTasksR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Displays the list of annotation jobs for the current tenant.
-//
-// @param request - ListTasksRequest
-//
-// @return ListTasksResponse
-func (client *Client) ListTasks(TenantId *string, request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListTasksResponse{}
-	_body, _err := client.ListTasksWithOptions(TenantId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1764,7 +1190,7 @@ func (client *Client) ListTasks(TenantId *string, request *ListTasksRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTemplatesResponse
-func (client *Client) ListTemplatesWithOptions(TenantId *string, tmpReq *ListTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTemplatesResponse, _err error) {
+func (client *Client) ListTemplatesWithContext(ctx context.Context, TenantId *string, tmpReq *ListTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTemplatesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1810,30 +1236,11 @@ func (client *Client) ListTemplatesWithOptions(TenantId *string, tmpReq *ListTem
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Display the template list of the current tenant.
-//
-// @param request - ListTemplatesRequest
-//
-// @return ListTemplatesResponse
-func (client *Client) ListTemplates(TenantId *string, request *ListTemplatesRequest) (_result *ListTemplatesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListTemplatesResponse{}
-	_body, _err := client.ListTemplatesWithOptions(TenantId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1848,7 +1255,7 @@ func (client *Client) ListTemplates(TenantId *string, request *ListTemplatesRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTenantsResponse
-func (client *Client) ListTenantsWithOptions(request *ListTenantsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTenantsResponse, _err error) {
+func (client *Client) ListTenantsWithContext(ctx context.Context, request *ListTenantsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTenantsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1880,30 +1287,11 @@ func (client *Client) ListTenantsWithOptions(request *ListTenantsRequest, header
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTenantsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query iTAG tenants under an Alibaba Cloud account.
-//
-// @param request - ListTenantsRequest
-//
-// @return ListTenantsResponse
-func (client *Client) ListTenants(request *ListTenantsRequest) (_result *ListTenantsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListTenantsResponse{}
-	_body, _err := client.ListTenantsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1918,7 +1306,7 @@ func (client *Client) ListTenants(request *ListTenantsRequest) (_result *ListTen
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListUsersResponse
-func (client *Client) ListUsersWithOptions(TenantId *string, request *ListUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListUsersResponse, _err error) {
+func (client *Client) ListUsersWithContext(ctx context.Context, TenantId *string, request *ListUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListUsersResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1950,30 +1338,11 @@ func (client *Client) ListUsersWithOptions(TenantId *string, request *ListUsersR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Displays all annotate members under the current tenant.
-//
-// @param request - ListUsersRequest
-//
-// @return ListUsersResponse
-func (client *Client) ListUsers(TenantId *string, request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListUsersResponse{}
-	_body, _err := client.ListUsersWithOptions(TenantId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1988,7 +1357,7 @@ func (client *Client) ListUsers(TenantId *string, request *ListUsersRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveWorkNodeWorkforceResponse
-func (client *Client) RemoveWorkNodeWorkforceWithOptions(TenantId *string, TaskId *string, WorkNodeId *string, request *RemoveWorkNodeWorkforceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveWorkNodeWorkforceResponse, _err error) {
+func (client *Client) RemoveWorkNodeWorkforceWithContext(ctx context.Context, TenantId *string, TaskId *string, WorkNodeId *string, request *RemoveWorkNodeWorkforceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveWorkNodeWorkforceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2016,30 +1385,11 @@ func (client *Client) RemoveWorkNodeWorkforceWithOptions(TenantId *string, TaskI
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveWorkNodeWorkforceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Delete Node Personnel
-//
-// @param request - RemoveWorkNodeWorkforceRequest
-//
-// @return RemoveWorkNodeWorkforceResponse
-func (client *Client) RemoveWorkNodeWorkforce(TenantId *string, TaskId *string, WorkNodeId *string, request *RemoveWorkNodeWorkforceRequest) (_result *RemoveWorkNodeWorkforceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RemoveWorkNodeWorkforceResponse{}
-	_body, _err := client.RemoveWorkNodeWorkforceWithOptions(TenantId, TaskId, WorkNodeId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2054,7 +1404,7 @@ func (client *Client) RemoveWorkNodeWorkforce(TenantId *string, TaskId *string, 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTaskResponse
-func (client *Client) UpdateTaskWithOptions(TenantId *string, TaskId *string, request *UpdateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTaskResponse, _err error) {
+func (client *Client) UpdateTaskWithContext(ctx context.Context, TenantId *string, TaskId *string, request *UpdateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTaskResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2077,30 +1427,11 @@ func (client *Client) UpdateTaskWithOptions(TenantId *string, TaskId *string, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modify a job under the current tenant.
-//
-// @param request - UpdateTaskRequest
-//
-// @return UpdateTaskResponse
-func (client *Client) UpdateTask(TenantId *string, TaskId *string, request *UpdateTaskRequest) (_result *UpdateTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateTaskResponse{}
-	_body, _err := client.UpdateTaskWithOptions(TenantId, TaskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2115,7 +1446,7 @@ func (client *Client) UpdateTask(TenantId *string, TaskId *string, request *Upda
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTaskWorkforceResponse
-func (client *Client) UpdateTaskWorkforceWithOptions(TenantId *string, TaskId *string, request *UpdateTaskWorkforceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTaskWorkforceResponse, _err error) {
+func (client *Client) UpdateTaskWorkforceWithContext(ctx context.Context, TenantId *string, TaskId *string, request *UpdateTaskWorkforceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTaskWorkforceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2143,30 +1474,11 @@ func (client *Client) UpdateTaskWorkforceWithOptions(TenantId *string, TaskId *s
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTaskWorkforceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Update job members.
-//
-// @param request - UpdateTaskWorkforceRequest
-//
-// @return UpdateTaskWorkforceResponse
-func (client *Client) UpdateTaskWorkforce(TenantId *string, TaskId *string, request *UpdateTaskWorkforceRequest) (_result *UpdateTaskWorkforceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateTaskWorkforceResponse{}
-	_body, _err := client.UpdateTaskWorkforceWithOptions(TenantId, TaskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2181,7 +1493,7 @@ func (client *Client) UpdateTaskWorkforce(TenantId *string, TaskId *string, requ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTemplateResponse
-func (client *Client) UpdateTemplateWithOptions(TenantId *string, TemplateId *string, request *UpdateTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTemplateResponse, _err error) {
+func (client *Client) UpdateTemplateWithContext(ctx context.Context, TenantId *string, TemplateId *string, request *UpdateTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTemplateResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2204,30 +1516,11 @@ func (client *Client) UpdateTemplateWithOptions(TenantId *string, TemplateId *st
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modify the template under the current tenant.
-//
-// @param request - UpdateTemplateRequest
-//
-// @return UpdateTemplateResponse
-func (client *Client) UpdateTemplate(TenantId *string, TemplateId *string, request *UpdateTemplateRequest) (_result *UpdateTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateTemplateResponse{}
-	_body, _err := client.UpdateTemplateWithOptions(TenantId, TemplateId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2242,7 +1535,7 @@ func (client *Client) UpdateTemplate(TenantId *string, TemplateId *string, reque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTenantResponse
-func (client *Client) UpdateTenantWithOptions(TenantId *string, request *UpdateTenantRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTenantResponse, _err error) {
+func (client *Client) UpdateTenantWithContext(ctx context.Context, TenantId *string, request *UpdateTenantRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTenantResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2274,30 +1567,11 @@ func (client *Client) UpdateTenantWithOptions(TenantId *string, request *UpdateT
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTenantResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modify the information of an iTAG tenant.
-//
-// @param request - UpdateTenantRequest
-//
-// @return UpdateTenantResponse
-func (client *Client) UpdateTenant(TenantId *string, request *UpdateTenantRequest) (_result *UpdateTenantResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateTenantResponse{}
-	_body, _err := client.UpdateTenantWithOptions(TenantId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2312,7 +1586,7 @@ func (client *Client) UpdateTenant(TenantId *string, request *UpdateTenantReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateUserResponse
-func (client *Client) UpdateUserWithOptions(TenantId *string, UserId *string, request *UpdateUserRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
+func (client *Client) UpdateUserWithContext(ctx context.Context, TenantId *string, UserId *string, request *UpdateUserRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2344,29 +1618,10 @@ func (client *Client) UpdateUserWithOptions(TenantId *string, UserId *string, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Update member information within a tenant.
-//
-// @param request - UpdateUserRequest
-//
-// @return UpdateUserResponse
-func (client *Client) UpdateUser(TenantId *string, UserId *string, request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateUserResponse{}
-	_body, _err := client.UpdateUserWithOptions(TenantId, UserId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
