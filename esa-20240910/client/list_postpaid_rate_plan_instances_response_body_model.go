@@ -24,9 +24,9 @@ type iListPostpaidRatePlanInstancesResponseBody interface {
 }
 
 type ListPostpaidRatePlanInstancesResponseBody struct {
-	// A list of instances.
+	// The list of instance information.
 	InstanceInfo []*ListPostpaidRatePlanInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number, which is the same as the PageNumber request parameter.
 	//
 	// example:
 	//
@@ -38,13 +38,13 @@ type ListPostpaidRatePlanInstancesResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID, used for troubleshooting.
+	// The request ID.
 	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A123425345
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -134,47 +134,47 @@ func (s *ListPostpaidRatePlanInstancesResponseBody) Validate() error {
 }
 
 type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
-	// The billing method. Valid value:
+	// The billable methods. Valid values:
 	//
-	// - `dps_month95`: Monthly 95th percentile.
+	// - dps_month95: monthly 95th percentile billing.
 	//
 	// example:
 	//
 	// SUBSCRIBE
 	BillingMethod *string `json:"BillingMethod,omitempty" xml:"BillingMethod,omitempty"`
-	// The billing mode. Valid value:
+	// The billing mode. Valid values:
 	//
-	// - `POSTPAY`: pay-as-you-go.
+	//  	- POSTPAY: pay-as-you-go.
 	//
 	// example:
 	//
 	// POSTPAY
 	BillingMode *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
-	// The coverage area of the instance. Only sites within this area can be bound to the instance. If multiple areas are supported, they are separated by a comma (`,`). Valid values:
+	// The acceleration regions to which the instance can bindable sites. Multiple values are separated by commas (,). Valid values:
 	//
-	// - `domestic`: Chinese mainland.
+	// - domestic: the Chinese mainland.
 	//
-	// - `overseas`: Regions outside the Chinese mainland.
+	// - overseas: global (excluding the Chinese mainland).
 	//
-	// - `global`: Global (including the Chinese mainland).
+	// - global: global (including the Chinese mainland).
 	//
 	// example:
 	//
 	// domestic
 	Coverages *string `json:"Coverages,omitempty" xml:"Coverages,omitempty"`
-	// The time when the instance was created.
+	// The time when the instance was created. The value is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
-	// YYYY-MM-DDThh:mm:ssZ
+	// 2026-04-19T11:15:20Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time of a scheduled configuration change.
+	// The scheduled specification change time. The value is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
-	// YYYY-MM-DDThh:mm:ssZ
+	// 2026-04-19T11:15:20Z
 	ExpectedUpdateTime *string `json:"ExpectedUpdateTime,omitempty" xml:"ExpectedUpdateTime,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -192,25 +192,25 @@ type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// 测试套餐
 	PlanNameCn *string `json:"PlanNameCn,omitempty" xml:"PlanNameCn,omitempty"`
-	// The type of the plan. Valid values:
+	// The plan type of the instance. Valid values:
 	//
-	// - `normal`: Normal plan.
+	// - normal: Fixed plan.
 	//
-	// - `enterprise`: Enterprise plan.
+	// - enterprise: Enterprise plan.
 	//
 	// example:
 	//
 	// normal
 	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
-	// The maximum number of sites that can be bound to the instance.
+	// The site quota.
 	//
 	// example:
 	//
 	// 1
 	SiteQuota *string `json:"SiteQuota,omitempty" xml:"SiteQuota,omitempty"`
-	// A list of sites bound to the instance.
+	// The list of sites.
 	Sites []*ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
-	// The status of the instance.
+	// The instance status.
 	//
 	// example:
 	//
@@ -348,27 +348,27 @@ func (s *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) Validate() error
 }
 
 type ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites struct {
-	// The ID of the site.
+	// The site ID.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The name of the site.
+	// The site name.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The status of the site. Valid values:
+	// The site status. Valid values:
 	//
-	// - `pending`: The site is awaiting configuration.
+	// - pending: The site is pending configuration.
 	//
-	// - `active`: The site is active.
+	// - active: The site is activated.
 	//
-	// - `offline`: The site is offline.
+	// - offline: The site is offline.
 	//
-	// - `moved`: The site has been replaced.
+	// - moved: The site has been replaced.
 	//
 	// example:
 	//

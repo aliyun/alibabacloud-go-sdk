@@ -14,7 +14,7 @@ type iUpdateRecordResponseBody interface {
 }
 
 type UpdateRecordResponseBody struct {
-	// The unique request ID.
+	// The request ID.
 	//
 	// example:
 	//

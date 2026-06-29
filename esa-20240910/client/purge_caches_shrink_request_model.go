@@ -24,7 +24,7 @@ type iPurgeCachesShrinkRequest interface {
 type PurgeCachesShrinkRequest struct {
 	// The refresh content.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Specifies whether to refresh edge computing cached resources. For example, this allows you to refresh content cached by the Edge Routine CacheAPI API operation using the edge function.
+	// Specifies whether to refresh edge computing cached resources. For example, this allows refreshing content cached by the Edge Routine Cache API operation function.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type PurgeCachesShrinkRequest struct {
 	//
 	// >
 	//
-	// >  This parameter takes effect for directory refresh, cache tag refresh, parameter-ignored refresh, hostname refresh, and full site refresh.
+	// >  This parameter takes effect for directory refresh, cache tag refresh, parameter-ignored refresh, hostname refresh, and full site cache refresh.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type PurgeCachesShrinkRequest struct {
 	//
 	// - **directory**: folder refresh.
 	//
-	// - **ignoreParams**: parameter-ignored refresh. This refers to removing the question mark (?) and all parameters after it from the request URL. When you commit a parameter-stripped URL through this API operation, the committed URL is matched against cached resource URLs after their parameters are also stripped. If a cached resource URL matches the committed URL after parameter stripping, the point of presence executes the refresh on the cached resource.
+	// - **ignoreParams**: parameter-ignored refresh. This refers to removing the question mark (?) and all parameters after it from the request URL. When you commit a parameter-stripped URL through this API operation, the submitted URL is matched against cached resource URLs after their parameters are also stripped. If a cached resource URL matches the submitted URL after parameter stripping, the point of presence executes the refresh on the cached resource.
 	//
 	// - **hostname**: hostname refresh.
 	//

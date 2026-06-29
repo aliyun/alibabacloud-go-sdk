@@ -20,17 +20,17 @@ type iUpdateOriginPoolRequest interface {
 }
 
 type UpdateOriginPoolRequest struct {
-	// Specifies whether to enable the origin pool:
+	// Specifies whether the origin address pool is enabled. Valid values:
 	//
-	// - true: Enables the origin pool.
+	// - true: Enabled.
 	//
-	// - false: Disables the origin pool.
+	// - false: Not enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The origin pool ID. Get this ID by calling the [ListOriginPools](~~ListOriginPools~~) operation.
+	// The origin address pool ID. You can call the [ListOriginPools](~~ListOriginPools~~) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type UpdateOriginPoolRequest struct {
 	//
 	// 1038520525196928
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// An array of origin configurations.
+	// The origin server information added to the origin address pool. Use an array to pass multiple origin servers.
 	Origins []*UpdateOriginPoolRequestOrigins `json:"Origins,omitempty" xml:"Origins,omitempty" type:"Repeated"`
-	// The site ID. Get this ID by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -108,25 +108,25 @@ func (s *UpdateOriginPoolRequest) Validate() error {
 }
 
 type UpdateOriginPoolRequestOrigins struct {
-	// The origin\\"s domain name or IP address.
+	// The addresses of the origin server, such as www.example.com.
 	//
 	// example:
 	//
 	// www.example.com
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The authentication configuration. Required for private OSS or S3 origins.
+	// The authentication information. This parameter is required when the origin server is OSS, S3, or another origin server that requires authentication.
 	AuthConf *UpdateOriginPoolRequestOriginsAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
-	// Specifies whether to enable the origin:
+	// Specifies whether the origin server is enabled. Valid values:
 	//
-	// - true: Enables the origin.
+	// - true: Enabled.
 	//
-	// - false: Disables the origin.
+	// - false: Not enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The request header to add to back-to-origin requests. Only the Host header is supported.
+	// The request header included in back-to-origin requests. Only Host is supported.
 	//
 	// example:
 	//
@@ -140,39 +140,39 @@ type UpdateOriginPoolRequestOrigins struct {
 	//
 	//       }
 	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
-	// The IP version policy for back-to-origin requests. Valid values:
+	// The IP protocol version used for back-to-origin requests. Valid values:
 	//
-	// - round_robin: (Default) Randomly selects an IPv4 or IPv6 origin.
+	// - round_robin: default policy. Randomly polls IPv4 or IPv6 origin servers.
 	//
-	// - ipv4_first: Prioritizes IPv4 origins.
+	// - ipv4_first: preferentially uses IPv4 origin servers.
 	//
-	// - ipv6_first: Prioritizes IPv6 origins.
+	// - ipv6_first: preferentially uses IPv6 origin servers.
 	//
-	// - follow: Uses the same IP version as the client request.
+	// - follow: preferentially follows the IP version used by the client.
 	//
 	// example:
 	//
 	// round_robin
 	IpVersionPolicy *string `json:"IpVersionPolicy,omitempty" xml:"IpVersionPolicy,omitempty"`
-	// The name of the origin. The name must be unique within the origin pool.
+	// The origin server name. The name must be unique within an origin address pool.
 	//
 	// example:
 	//
 	// origin1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The origin type. Valid values:
+	// The origin server type. Valid values:
 	//
-	// - ip_domain: An IP address or a domain name.
+	// - ip_domain: an IP address or domain name-based origin server.
 	//
-	// - OSS: An OSS origin.
+	// - OSS: an OSS address-based origin server.
 	//
-	// - S3: An AWS S3 origin.
+	// - S3: an AWS S3 origin server.
 	//
 	// example:
 	//
 	// OSS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the origin. The value must be an integer from 0 to 100.
+	// The weight. The value is an integer from 0 to 100.
 	//
 	// example:
 	//
@@ -270,7 +270,7 @@ func (s *UpdateOriginPoolRequestOrigins) Validate() error {
 }
 
 type UpdateOriginPoolRequestOriginsAuthConf struct {
-	// The access key for private authentication. Required for private origins.
+	// The AccessKey required for private authentication.
 	//
 	// example:
 	//
@@ -278,31 +278,31 @@ type UpdateOriginPoolRequestOriginsAuthConf struct {
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	// The authentication type. Valid values:
 	//
-	// - public: For public OSS or S3 origins.
+	// - public: public read/write. Use this value when the origin server is OSS or S3 with public read/write access.
 	//
-	// - private_same_account: For private OSS origins in the same account.
+	// - private_same_account: private same-account. Use this value when the origin server is OSS with same-account private authentication.
 	//
-	// - private_cross_account: For private OSS origins that use cross-account authentication.
+	// - private_cross_account: private cross-account. Use this value when the origin server is OSS with cross-account private authentication.
 	//
-	// - private: For private S3 origins.
+	// - private: Use this value when the origin server is S3 with private authentication.
 	//
 	// example:
 	//
 	// public
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The region of the origin. This parameter is required if the origin type is S3.
+	// The region of the origin server required when the origin server is AWS S3.
 	//
 	// example:
 	//
 	// us-east-1
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The secret key for private authentication. Required for private origins.
+	// The SecretKey required for private authentication.
 	//
 	// example:
 	//
 	// yourAccessKeySecret
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	// The signature version. This parameter is required if the origin type is S3.
+	// The signature version required when the origin server is AWS S3.
 	//
 	// example:
 	//

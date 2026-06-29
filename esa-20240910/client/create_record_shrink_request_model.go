@@ -38,27 +38,31 @@ type iCreateRecordShrinkRequest interface {
 }
 
 type CreateRecordShrinkRequest struct {
-	// The origin authentication information of the CNAME record.
+	// The origin authentication information for the CNAME record.
 	AuthConfShrink *string `json:"AuthConf,omitempty" xml:"AuthConf,omitempty"`
-	// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
+	// Used to tag the business scenario of the DNS record. This parameter is required when proxy acceleration is enabled for the DNS record (i.e., when the proxied parameter is set to true), and is not required when proxy acceleration is disabled (i.e., when the proxied parameter is set to false). Valid values:
 	//
-	// 	- **image_video**: video and image.
+	// - **image_video**: Image and video.
 	//
-	// 	- **api**: API.
+	// - **api**: API.
 	//
-	// 	- **web**: web page.
+	// - **web**: Web page.
 	//
 	// example:
 	//
 	// web
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// The comment of the record. The maximum length is 100 characters.
+	// The comment for the record, with a maximum length of 100 characters.
 	//
 	// example:
 	//
 	// This is a remark.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html) .
+	// The DNS information of the record. Different types of records require different content for this field. For more information, see
+	//
+	// <props="china">[Documentation](https://help.aliyun.com/document_detail/2708761.html)<props="intl">[Documentation](https://www.alibabacloud.com/help/doc-detail/2708761.html)
+	//
+	// .
 	//
 	// This parameter is required.
 	//
@@ -70,11 +74,11 @@ type CreateRecordShrinkRequest struct {
 	//
 	// }
 	DataShrink *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
+	// The origin host policy. This takes effect when the record type is CNAME. It specifies the host policy for back-to-origin requests. Two modes are available:
 	//
-	// 	- follow_hostname: Follow the host record.
+	// - **follow_hostname**: Follow the request host.
 	//
-	// 	- follow_origin_domain: match the origin\\"s domain name.
+	// - **follow_origin_domain**: Follow the origin domain.
 	//
 	// example:
 	//
@@ -82,11 +86,11 @@ type CreateRecordShrinkRequest struct {
 	HostPolicy *string `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
 	HttpPorts  *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
 	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
-	// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
+	// Specifies whether to enable proxy acceleration for the record. Only CNAME records or A/AAAA records (i.e., when the type parameter is set to A/AAAA or CNAME) can enable proxy acceleration. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enable proxy acceleration.
 	//
-	// 	- **false**
+	// - **false**: Disable proxy acceleration.
 	//
 	// example:
 	//
@@ -100,7 +104,7 @@ type CreateRecordShrinkRequest struct {
 	//
 	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
 	//
 	// This parameter is required.
 	//
@@ -108,25 +112,25 @@ type CreateRecordShrinkRequest struct {
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+	// The origin type of the CNAME record. This parameter is required when adding a CNAME record (i.e., when the type parameter is set to CNAME). Valid values:
 	//
-	// 	- **OSS**: OSS bucket.
+	// - **OSS**: OSS origin.
 	//
-	// 	- **S3**: S3 bucket.
+	// - **S3**: S3 origin.
 	//
-	// 	- **LB**: load balancer.
+	// - **LB**: Load balancer origin.
 	//
-	// 	- **OP**: origin pool.
+	// - **OP**: Origin pool origin.
 	//
-	// 	- **Domain**: domain name.
+	// - **Domain**: Standard domain origin.
 	//
-	// If you do not pass this parameter or if you leave its value empty, Domain is used by default.
+	// If this parameter is not specified or is left empty, it defaults to Domain, which is the standard domain origin type.
 	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
+	// The time-to-live (TTL) of the record, in seconds. When set to 1, the TTL is automatic.
 	//
 	// This parameter is required.
 	//
@@ -134,7 +138,7 @@ type CreateRecordShrinkRequest struct {
 	//
 	// 30
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The type of the DNS record. For example, A/AAAA, TXT, MX, or CNAME.
+	// The DNS type of the record, such as **A/AAAA**, **CNAME**, **TXT**, etc.
 	//
 	// This parameter is required.
 	//

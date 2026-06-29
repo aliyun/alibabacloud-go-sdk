@@ -24,9 +24,9 @@ type iListVideoProcessingsResponseBody interface {
 }
 
 type ListVideoProcessingsResponseBody struct {
-	// The configurations.
+	// The list of configurations.
 	Configs []*ListVideoProcessingsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The current page number, which is the same as the PageNumber request parameter.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListVideoProcessingsResponseBody struct {
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 55
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -140,45 +140,45 @@ type ListVideoProcessingsResponseBodyConfigs struct {
 	//
 	// 234123**
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The type of the configuration. Valid values:
+	// The configuration type. Valid values:
 	//
-	// 	- global: global configuration.
+	// - global: global configuration.
 	//
-	// 	- rule: rule configuration.
+	// - rule: rule configuration.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The custom end parameter for FLV files.
+	// The custom FLV end parameter.
 	//
 	// example:
 	//
 	// end
 	FlvSeekEnd *string `json:"FlvSeekEnd,omitempty" xml:"FlvSeekEnd,omitempty"`
-	// The custom start parameter for FLV files.
+	// The custom FLV start parameter.
 	//
 	// example:
 	//
 	// start
 	FlvSeekStart *string `json:"FlvSeekStart,omitempty" xml:"FlvSeekStart,omitempty"`
-	// FLV seeking. Valid values:
+	// The FLV seeking mode. Valid values:
 	//
-	// 	- by_byte: Seek by byte.
+	// - by_byte: seek by byte.
 	//
-	// 	- by_time: Seek by time.
+	// - by_time: seek by time.
 	//
 	// example:
 	//
 	// by_byte
 	FlvVideoSeekMode *string `json:"FlvVideoSeekMode,omitempty" xml:"FlvVideoSeekMode,omitempty"`
-	// Customize the mp4 end parameter.
+	// The custom MP4 end parameter.
 	//
 	// example:
 	//
 	// end
 	Mp4SeekEnd *string `json:"Mp4SeekEnd,omitempty" xml:"Mp4SeekEnd,omitempty"`
-	// Customize the mp4 start parameter.
+	// The custom MP4 start parameter.
 	//
 	// example:
 	//
@@ -190,11 +190,11 @@ type ListVideoProcessingsResponseBodyConfigs struct {
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Indicates whether the rule is enabled. Valid values:
+	// The rule switch. Valid values:
 	//
-	// 	- on
+	// - on: enabled.
 	//
-	// 	- off
+	// - off: disabled.
 	//
 	// example:
 	//
@@ -206,23 +206,23 @@ type ListVideoProcessingsResponseBodyConfigs struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The order in which the rule is executed. The smaller the value, the higher the priority.
+	// The execution order of the rule. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The version number of the website configurations.
+	// The version number of the site configuration.
 	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// Video seeking. Valid values:
+	// The audio seeking switch. Valid values:
 	//
-	// 	- on
+	// - on: enabled.
 	//
-	// 	- off
+	// - off: disabled.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iUpdateHttpRequestHeaderModificationRuleResponseBody interface {
 }
 
 type UpdateHttpRequestHeaderModificationRuleResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//

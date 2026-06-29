@@ -16,11 +16,13 @@ type iUpdateSitePauseRequest interface {
 }
 
 type UpdateSitePauseRequest struct {
-	// Indicates whether to pause proxy acceleration for the site. If set to `true`, DNS queries for the site return the record values directly to the client. Valid values:
+	// Specifies whether to temporarily pause the proxy acceleration feature for the entire site. After the feature is paused, all DNS records directly return record values to the client. Valid values:
 	//
-	// - true: Pauses proxy acceleration for the site.
+	// - true: Pauses site acceleration.
 	//
-	// - false: Resumes proxy acceleration for the site.
+	// - false: Resumes normal site acceleration.
+	//
+	// When site acceleration is paused, only activated sites with NS access mode are supported.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +30,7 @@ type UpdateSitePauseRequest struct {
 	//
 	// true
 	Paused *bool `json:"Paused,omitempty" xml:"Paused,omitempty"`
-	// The site ID. To obtain this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID. Check the Status field to confirm the site status and the AccessType field to confirm the access mode of the site.
 	//
 	// This parameter is required.
 	//

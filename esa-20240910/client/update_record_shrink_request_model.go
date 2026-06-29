@@ -36,27 +36,27 @@ type iUpdateRecordShrinkRequest interface {
 }
 
 type UpdateRecordShrinkRequest struct {
-	// The origin authentication settings for the CNAME record.
+	// The origin authentication information of the CNAME record.
 	AuthConfShrink *string `json:"AuthConf,omitempty" xml:"AuthConf,omitempty"`
-	// The use case for proxy acceleration. Omit this parameter if proxy acceleration is disabled. Valid values:
+	// The business scenario for record acceleration. This parameter is not required for records without acceleration enabled. Valid values:
 	//
-	// - **video_image**: Video and images.
+	// - **video_image**: video and image.
 	//
-	// - **api**: APIs.
+	// - **api**: API.
 	//
-	// - **web**: Web pages.
+	// - **web**: web page.
 	//
 	// example:
 	//
 	// web
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// A comment for the record.
+	// The comment for the record.
 	//
 	// example:
 	//
 	// This is a remark.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The DNS data for the record. The required content varies based on the record type. For more information, see <props="china">[Documentation](https://help.aliyun.com/document_detail/2708761.html)<props="intl">[Documentation](https://www.alibabacloud.com/help/doc-detail/2708761.html).
+	// The DNS information of the record. The content varies depending on the record type. For more information, see <props="china">[documentation](https://help.aliyun.com/document_detail/2708761.html)<props="intl">[documentation](https://www.alibabacloud.com/help/doc-detail/2708761.html).
 	//
 	// This parameter is required.
 	//
@@ -68,11 +68,11 @@ type UpdateRecordShrinkRequest struct {
 	//
 	// }
 	DataShrink *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The origin HOST policy. This policy, which applies only to CNAME records, determines the value of the `HOST` header in requests sent to the origin. Valid values:
+	// The back-to-origin HOST policy. This parameter takes effect when the record type is CNAME. Settings the HOST policy for back-to-origin requests. Valid values:
 	//
-	// - **follow_hostname**: Follows the host record.
+	// - **follow_hostname**: follows the host record.
 	//
-	// - **follow_origin_domain**: Follows the origin domain name.
+	// - **follow_origin_domain**: follows the Origin Domain Name.
 	//
 	// example:
 	//
@@ -80,17 +80,17 @@ type UpdateRecordShrinkRequest struct {
 	HostPolicy *string `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
 	HttpPorts  *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
 	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
-	// Indicates whether to enable proxy acceleration for the record. Only CNAME and A/AAAA records support proxy acceleration. Valid values:
+	// Specifies whether to enable proxy acceleration for the record. Only CNAME records and A/AAAA records support proxy acceleration. Valid values:
 	//
-	// - **true**: Enables proxy acceleration.
+	// - **true**: Enable proxy acceleration.
 	//
-	// - **false**: Disables proxy acceleration.
+	// - **false**: Disable proxy acceleration.
 	//
 	// example:
 	//
 	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
-	// The record ID. Call the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation to get this ID.
+	// The ID of the record. You can call [ListRecords](https://help.aliyun.com/document_detail/2850265.html) to obtain the record ID.
 	//
 	// This parameter is required.
 	//
@@ -98,30 +98,35 @@ type UpdateRecordShrinkRequest struct {
 	//
 	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The origin type for the CNAME record. This parameter is required for CNAME records. Valid values:
+	// The origin server type of the CNAME record. This parameter is required when you add a CNAME record. Valid values:
 	//
-	// - **OSS**: An OSS origin.
+	// - **OSS**: OSS origin server.
 	//
-	// - **S3**: An S3 origin.
+	// - **S3**: S3 origin server.
 	//
-	// - **LB**: A load balancer origin.
+	// - **LB**: load balancing origin server.
 	//
-	// - **OP**: An origin address pool origin.
+	// - **OP**: IPAM pool origin server.
 	//
-	// - **Domain**: A standard domain name origin.
+	// - **Domain**: standard domain name origin server.
 	//
-	// If this parameter is omitted or left empty, the default value is `Domain`.
+	// If this parameter is not specified or is left empty, the default value is Domain, which indicates a standard domain name origin server type.
 	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The record\\"s time to live (TTL) in seconds. The value must be an integer from **30 to 86400*	- or 1. A value of 1 sets the TTL to automatic.
+	// The time-to-live (TTL) of the record, in seconds. Valid values: **30 to 86400**, or 1. A value of 1 indicates that the TTL of the record is automatically determined.
 	//
 	// example:
 	//
 	// 30
-	Ttl  *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The DNS type of the record, such as A/AAAA, CNAME, or TXT.
+	//
+	// example:
+	//
+	// A/AAAA
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

@@ -74,19 +74,19 @@ type GetCustomHostnameResponseBodyCustomHostnameModel struct {
 	//
 	// 2
 	CertApplyCode *int64 `json:"CertApplyCode,omitempty" xml:"CertApplyCode,omitempty"`
-	// The error description for the free certificate application.
+	// The error message for the free certificate application.
 	//
 	// example:
 	//
 	// canceled
 	CertApplyMessage *string `json:"CertApplyMessage,omitempty" xml:"CertApplyMessage,omitempty"`
-	// The certificate verification HTTP address.
+	// The HTTP address for certificate verification.
 	//
 	// example:
 	//
 	// http://custom.site.com/.well-known/acme-challenge/jLmMHlEaZ3jb352Qo3ciaSoAC8KZ5Hk0F-4_1xLQtgc
 	CertHttpKey *string `json:"CertHttpKey,omitempty" xml:"CertHttpKey,omitempty"`
-	// The certificate verification HTTP content.
+	// The HTTP content for certificate verification.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type GetCustomHostnameResponseBodyCustomHostnameModel struct {
 	//
 	// baba2c9e90e840b3b55698cedf02b308
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The certificate expiration time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The certificate expiration time, in ISO 8601 format with UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -120,13 +120,13 @@ type GetCustomHostnameResponseBodyCustomHostnameModel struct {
 	//
 	// OK
 	CertStatus *string `json:"CertStatus,omitempty" xml:"CertStatus,omitempty"`
-	// The certificate verification TXT name.
+	// The TXT name for certificate verification.
 	//
 	// example:
 	//
 	// _acme-challenge.custom.site.com
 	CertTxtKey *string `json:"CertTxtKey,omitempty" xml:"CertTxtKey,omitempty"`
-	// The certificate verification TXT content.
+	// The TXT content for certificate verification.
 	//
 	// example:
 	//
@@ -160,11 +160,13 @@ type GetCustomHostnameResponseBodyCustomHostnameModel struct {
 	//
 	// - **existing_origin_pool**: Conflicts with an existing origin IPAM pool.
 	//
+	// - **existing_site**: Conflicts with an existing site.
+	//
 	// example:
 	//
 	// existing_custom_hostname
 	ConflictWith *string `json:"ConflictWith,omitempty" xml:"ConflictWith,omitempty"`
-	// The time when the SaaS domain name was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the SaaS domain name was created, in ISO 8601 format with UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -192,7 +194,7 @@ type GetCustomHostnameResponseBodyCustomHostnameModel struct {
 	//
 	// - **content_violation**: Content violation.
 	//
-	// - **proactively_disabled**: You proactively disabled the domain name or the usage cap that you configured was reached.
+	// - **proactively_disabled**: You proactively disabled the domain name or the usage cap you configured was reached.
 	//
 	// example:
 	//
@@ -254,19 +256,19 @@ type GetCustomHostnameResponseBodyCustomHostnameModel struct {
 	//
 	// active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the SaaS domain name was last updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the SaaS domain name was last updated, in ISO 8601 format with UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2026-04-19T11:15:20Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The domain verification TXT content.
+	// The TXT content for domain verification.
 	//
 	// example:
 	//
 	// verify_16ab7f4d389d4dff6655f995c6a997bd
 	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
-	// The domain verification TXT name.
+	// The TXT name for domain verification.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iCreateSiteResponseBody interface {
 }
 
 type CreateSiteResponseBody struct {
-	// A comma-separated list of name servers assigned to the site. This parameter is returned only if the site uses NS-based access. To activate the site, you must change your domain\\"s DNS servers to these name servers. This verifies your ownership of the site and activates it.
+	// The list of name servers assigned to the site, separated by commas (,). This field has a value when the access type of the site is NS. You need to change the DNS servers of the site to these name servers. Then you can verify the site ownership and activate the site.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type CreateSiteResponseBody struct {
 	//
 	// CB1A380B-09F0-41BB-3C82-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the site.
+	// The site ID.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The verification code for the site. This parameter is returned only if the site uses CNAME-based access. To activate the site, you must add a TXT record to your domain\\"s DNS settings. Set the record\\"s host to **_esaauth.[your_site_name]*	- and its value to this **verification code**. This verifies your ownership of the site and activates it.
+	// The verification code of the site. When the access type of the site is CNAME, you need to add a TXT record with the record name **_esaauth.[site name]*	- and the record value set to the **verification code*	- on the DNS server of the site. Then you can verify the site ownership and activate the site.
 	//
 	// example:
 	//

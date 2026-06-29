@@ -24,15 +24,15 @@ type iListRoutineRoutesResponseBody interface {
 }
 
 type ListRoutineRoutesResponseBody struct {
-	// The list of configurations.
+	// The configuration list in the response body.
 	Configs []*ListRoutineRoutesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The current page number, which is the same as the PageNumber request parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListRoutineRoutesResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that match the query criteria.
+	// The total number of records.
 	//
 	// example:
 	//
 	// 83
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -136,9 +136,9 @@ func (s *ListRoutineRoutesResponseBody) Validate() error {
 type ListRoutineRoutesResponseBodyConfigs struct {
 	// The bypass mode. Valid values:
 	//
-	// - `on`: Enabled.
+	// - on: Enabled.
 	//
-	// - `off`: Disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
@@ -150,21 +150,21 @@ type ListRoutineRoutesResponseBodyConfigs struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The type of configuration. You can query global configurations or rule-based configurations based on this parameter. Valid values:
+	// The configuration type. You can use this parameter to query global or rule configurations. Valid values:
 	//
-	// - `global`: A global configuration.
+	// - global: global configuration.
 	//
-	// - `rule`: A rule-based configuration.
+	// - rule: rule configuration.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Indicates whether to enable fallback to origin. If this feature is enabled, the request is routed to the origin server when an exception occurs in the edge function, such as exceeding the CPU usage limit. Valid values:
+	// The fallback-to-origin switch. When enabled, if the function encounters an exception such as CPU usage exceeding the limit, the request is forwarded to the origin server. Valid values:
 	//
-	// - `on`: Enabled.
+	// - on: Enabled.
 	//
-	// - `off`: Disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
@@ -172,19 +172,19 @@ type ListRoutineRoutesResponseBodyConfigs struct {
 	Fallback *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
 	// The configuration mode. Valid values:
 	//
-	// - `simple`: Simple mode.
+	// - simple: simple mode.
 	//
-	// - `custom`: Custom mode.
+	// - custom: custom mode.
 	//
 	// example:
 	//
 	// simple
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// Indicates whether the route is enabled. Valid values:
+	// The route switch status. Valid values:
 	//
-	// - `on`: Enabled.
+	// - on: Enabled.
 	//
-	// - `off`: Disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type ListRoutineRoutesResponseBodyConfigs struct {
 	//
 	// test_route
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	// The edge function routine name.
+	// The name of the Edge Routine.
 	//
 	// example:
 	//
@@ -208,7 +208,7 @@ type ListRoutineRoutesResponseBodyConfigs struct {
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule execution order.
+	// The execution order of the rule.
 	//
 	// example:
 	//
@@ -226,13 +226,13 @@ type ListRoutineRoutesResponseBodyConfigs struct {
 	//
 	// test.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The site configuration version.
+	// The version number of the site configuration.
 	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// The timeout period. Unit: seconds.
+	// The Edge Routine timeout period. Valid values: 5 to 60.
 	//
 	// example:
 	//

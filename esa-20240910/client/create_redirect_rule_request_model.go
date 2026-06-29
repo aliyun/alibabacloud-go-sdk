@@ -32,11 +32,11 @@ type iCreateRedirectRuleRequest interface {
 }
 
 type CreateRedirectRuleRequest struct {
-	// Specifies whether to preserve the query string from the original request. Valid values:
+	// Specifies whether to preserve the query string. Valid values:
 	//
-	// - `on`: Preserves the query string.
+	// - on: Enabled.
 	//
-	// - `off`: Discards the query string.
+	// - off: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -44,39 +44,39 @@ type CreateRedirectRuleRequest struct {
 	//
 	// on
 	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
-	// The rule content, which is a conditional expression used to match user requests. Do not set this parameter when adding a global configuration. The following use cases are supported:
+	// The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
 	//
-	// - To match all incoming requests, set the value to `true`.
+	// - Match all incoming requests: Set the value to true.
 	//
-	// - To match specific requests, set the value to a custom expression, such as `(http.host eq "video.example.com")`.
+	// - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether to enable the rule. Do not set this parameter when adding a global configuration. Valid values:
+	// The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
 	//
-	// - `on`: The rule is enabled.
+	// - on: Enabled.
 	//
-	// - `off`: The rule is disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. Do not set this parameter when adding a global configuration.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The execution priority of the rule. A smaller value indicates a higher priority.
+	// The rule execution order. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The site ID. To get this value, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -84,13 +84,13 @@ type CreateRedirectRuleRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// For sites with configuration version management enabled, specify the version to which this configuration applies.
+	// The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. The default value is version 0.
 	//
 	// example:
 	//
 	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// The status code that the edge node returns to the client for the redirect. Valid values:
+	// The response status code used by the node when responding to the client with the redirect address. Valid values:
 	//
 	// - 301
 	//
@@ -100,7 +100,7 @@ type CreateRedirectRuleRequest struct {
 	//
 	// - 307
 	//
-	// - 308
+	// - 308.
 	//
 	// This parameter is required.
 	//
@@ -108,7 +108,7 @@ type CreateRedirectRuleRequest struct {
 	//
 	// 301
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// The target URL for the redirect.
+	// The target URL after redirection.
 	//
 	// This parameter is required.
 	//
@@ -118,9 +118,9 @@ type CreateRedirectRuleRequest struct {
 	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
 	// The redirect type. Valid values:
 	//
-	// - `static`: Static mode.
+	// - static: Static pattern.
 	//
-	// - `dynamic`: Dynamic mode.
+	// - dynamic: Dynamic pattern.
 	//
 	// This parameter is required.
 	//

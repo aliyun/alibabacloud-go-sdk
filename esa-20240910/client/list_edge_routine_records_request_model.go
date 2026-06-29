@@ -22,39 +22,39 @@ type iListEdgeRoutineRecordsRequest interface {
 }
 
 type ListEdgeRoutineRecordsRequest struct {
-	// The page number. Default value: **1**.
+	// The page number for a paged query. The value must be greater than or equal to 1. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **500**.
+	// The number of records per page for a paged query. Valid values: 1 to 500. Default value: **500**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The match mode to filter the record names.
+	// The matching mode used to filter by record name. Valid values:
 	//
 	// - **fuzzy**: fuzzy match.
 	//
-	// - **prefix**: match by prefix.
+	// - **prefix**: prefix match.
 	//
-	// - **suffix**: match by suffix.
+	// - **suffix**: suffix match.
 	//
-	// - **exact*	- (default): exact match .
+	// - **exact**: exact match (default).
 	//
 	// example:
 	//
 	// fuzzy
 	RecordMatchType *string `json:"RecordMatchType,omitempty" xml:"RecordMatchType,omitempty"`
-	// The record name.
+	// Filters by the specified record name.
 	//
 	// example:
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

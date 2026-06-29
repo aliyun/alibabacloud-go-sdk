@@ -407,13 +407,13 @@ func (client *Client) ApplyCustomHostnameCertificate(request *ApplyCustomHostnam
 
 // Summary:
 //
-// Add multiple types of DNS records in batches.
+// Creates multiple DNS records in a batch. Multiple record types are supported.
 //
 // Description:
 //
-// This API lets you create or update multiple DNS records in a single request, ideal for managing large-scale DNS configurations. It supports various record types, including A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI, and provides detailed settings such as priority, flag, tag, and weight. For specific record types like CERT, SSHFP, SMIMEA, and TLSA, the API supports advanced settings, including certificate information and encryption algorithm.
+// This API operation allows you to create or update multiple DNS records at a time. It is suitable for scenarios that require managing a large number of DNS configurations. Supported record types include but are not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. Detailed configuration items are provided to meet specific requirements, such as Priority, Flag, Tag, and Weight. In addition, for specific record types such as CERT, SSHFP, SMIMEA, and TLSA, advanced settings such as certificate information and encryption algorithms are supported.
 //
-// The response separates successful and failed operations, allowing you to identify which records failed and why.
+// Successfully and unsuccessfully processed records are listed separately in the response, so that you can identify which records are processed, which records failed, and the failure reasons.
 //
 // @param tmpReq - BatchCreateRecordsRequest
 //
@@ -467,13 +467,13 @@ func (client *Client) BatchCreateRecordsWithOptions(tmpReq *BatchCreateRecordsRe
 
 // Summary:
 //
-// Add multiple types of DNS records in batches.
+// Creates multiple DNS records in a batch. Multiple record types are supported.
 //
 // Description:
 //
-// This API lets you create or update multiple DNS records in a single request, ideal for managing large-scale DNS configurations. It supports various record types, including A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI, and provides detailed settings such as priority, flag, tag, and weight. For specific record types like CERT, SSHFP, SMIMEA, and TLSA, the API supports advanced settings, including certificate information and encryption algorithm.
+// This API operation allows you to create or update multiple DNS records at a time. It is suitable for scenarios that require managing a large number of DNS configurations. Supported record types include but are not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. Detailed configuration items are provided to meet specific requirements, such as Priority, Flag, Tag, and Weight. In addition, for specific record types such as CERT, SSHFP, SMIMEA, and TLSA, advanced settings such as certificate information and encryption algorithms are supported.
 //
-// The response separates successful and failed operations, allowing you to identify which records failed and why.
+// Successfully and unsuccessfully processed records are listed separately in the response, so that you can identify which records are processed, which records failed, and the failure reasons.
 //
 // @param request - BatchCreateRecordsRequest
 //
@@ -4442,7 +4442,7 @@ func (client *Client) CreatePage(request *CreatePageRequest) (_result *CreatePag
 
 // Summary:
 //
-// Creates a DNS record for a specific website.
+// Create a DNS record under a site.
 //
 // @param tmpReq - CreateRecordRequest
 //
@@ -4544,7 +4544,7 @@ func (client *Client) CreateRecordWithOptions(tmpReq *CreateRecordRequest, runti
 
 // Summary:
 //
-// Creates a DNS record for a specific website.
+// Create a DNS record under a site.
 //
 // @param request - CreateRecordRequest
 //
@@ -4562,7 +4562,7 @@ func (client *Client) CreateRecord(request *CreateRecordRequest) (_result *Creat
 
 // Summary:
 //
-// Configure site redirection.
+// Creates a redirect configuration for a site.
 //
 // @param request - CreateRedirectRuleRequest
 //
@@ -4642,7 +4642,7 @@ func (client *Client) CreateRedirectRuleWithOptions(request *CreateRedirectRuleR
 
 // Summary:
 //
-// Configure site redirection.
+// Creates a redirect configuration for a site.
 //
 // @param request - CreateRedirectRuleRequest
 //
@@ -4660,7 +4660,7 @@ func (client *Client) CreateRedirectRule(request *CreateRedirectRuleRequest) (_r
 
 // Summary:
 //
-// Adds a URL rewrite configuration to a site.
+// Create a rewrite URL rule configuration for a site.
 //
 // @param request - CreateRewriteUrlRuleRequest
 //
@@ -4740,7 +4740,7 @@ func (client *Client) CreateRewriteUrlRuleWithOptions(request *CreateRewriteUrlR
 
 // Summary:
 //
-// Adds a URL rewrite configuration to a site.
+// Create a rewrite URL rule configuration for a site.
 //
 // @param request - CreateRewriteUrlRuleRequest
 //
@@ -4828,15 +4828,15 @@ func (client *Client) CreateRoutine(request *CreateRoutineRequest) (_result *Cre
 
 // Summary:
 //
-// Release the version of the function code in proportion to the specified environment.
+// Creates a percentage-based canary deployment for a Routine code version in a specified environment.
 //
 // Description:
 //
-// ## Request description
+// ## Usage notes
 //
-// - When creating a routine code version deployment, the environment name `Env` supports only the staging environment `staging` or the production environment `production`.
+// - When creating a Routine code version deployment, the `Env` parameter only supports `staging` for the staging environment or `production` for the production environment.
 //
-// - The `CodeVersions` parameter supports canary release of up to two versions, and the sum of the traffic percentages for these versions must equal 100%.
+// - The `CodeVersions` parameter supports a maximum of two versions for canary release, and the total percentage of these versions must equal 100%.
 //
 // @param tmpReq - CreateRoutineCodeDeploymentRequest
 //
@@ -4898,15 +4898,15 @@ func (client *Client) CreateRoutineCodeDeploymentWithOptions(tmpReq *CreateRouti
 
 // Summary:
 //
-// Release the version of the function code in proportion to the specified environment.
+// Creates a percentage-based canary deployment for a Routine code version in a specified environment.
 //
 // Description:
 //
-// ## Request description
+// ## Usage notes
 //
-// - When creating a routine code version deployment, the environment name `Env` supports only the staging environment `staging` or the production environment `production`.
+// - When creating a Routine code version deployment, the `Env` parameter only supports `staging` for the staging environment or `production` for the production environment.
 //
-// - The `CodeVersions` parameter supports canary release of up to two versions, and the sum of the traffic percentages for these versions must equal 100%.
+// - The `CodeVersions` parameter supports a maximum of two versions for canary release, and the total percentage of these versions must equal 100%.
 //
 // @param request - CreateRoutineCodeDeploymentRequest
 //
@@ -4994,7 +4994,7 @@ func (client *Client) CreateRoutineRelatedRecord(request *CreateRoutineRelatedRe
 
 // Summary:
 //
-// Create an edge function route configuration.
+// Creates an Edge Routine route configuration.
 //
 // @param request - CreateRoutineRouteRequest
 //
@@ -5070,7 +5070,7 @@ func (client *Client) CreateRoutineRouteWithOptions(request *CreateRoutineRouteR
 
 // Summary:
 //
-// Create an edge function route configuration.
+// Creates an Edge Routine route configuration.
 //
 // @param request - CreateRoutineRouteRequest
 //
@@ -5328,15 +5328,15 @@ func (client *Client) CreateScheduledPreloadJob(request *CreateScheduledPreloadJ
 
 // Summary:
 //
-// Creates a new site.
+// Creates a site.
 //
 // Description:
 //
-// - You must have an active plan instance to create a site.
+// - Before creating a site, you must have an active plan instance.
 //
-// - If the selected acceleration region includes the Chinese mainland, your domain must have a valid ICP filing.
+// - If the acceleration area is set to the Chinese mainland only or global, the site domain name must have a completed Internet Content Provider (ICP) filing.
 //
-// - This operation is rate-limited to 100 calls per user per hour.
+// - Each user can invoke this operation up to 100 times per hour.
 //
 // @param request - CreateSiteRequest
 //
@@ -5396,15 +5396,15 @@ func (client *Client) CreateSiteWithOptions(request *CreateSiteRequest, runtime 
 
 // Summary:
 //
-// Creates a new site.
+// Creates a site.
 //
 // Description:
 //
-// - You must have an active plan instance to create a site.
+// - Before creating a site, you must have an active plan instance.
 //
-// - If the selected acceleration region includes the Chinese mainland, your domain must have a valid ICP filing.
+// - If the acceleration area is set to the Chinese mainland only or global, the site domain name must have a completed Internet Content Provider (ICP) filing.
 //
-// - This operation is rate-limited to 100 calls per user per hour.
+// - Each user can invoke this operation up to 100 times per hour.
 //
 // @param request - CreateSiteRequest
 //
@@ -5703,7 +5703,11 @@ func (client *Client) CreateSlrRoleForRealtimeLog() (_result *CreateSlrRoleForRe
 
 // Summary:
 //
-// Creating a layer 4 acceleration application.
+// Creates a Layer 4 acceleration application.
+//
+// Description:
+//
+// The selected site must be activated. After you create a site, call the VerifySite operation to verify the site. A site that passes verification is automatically activated, which means the Passed response parameter is set to true.
 //
 // @param tmpReq - CreateTransportLayerApplicationRequest
 //
@@ -5781,7 +5785,11 @@ func (client *Client) CreateTransportLayerApplicationWithOptions(tmpReq *CreateT
 
 // Summary:
 //
-// Creating a layer 4 acceleration application.
+// Creates a Layer 4 acceleration application.
+//
+// Description:
+//
+// The selected site must be activated. After you create a site, call the VerifySite operation to verify the site. A site that passes verification is automatically activated, which means the Passed response parameter is set to true.
 //
 // @param request - CreateTransportLayerApplicationRequest
 //
@@ -5799,7 +5807,7 @@ func (client *Client) CreateTransportLayerApplication(request *CreateTransportLa
 
 // Summary:
 //
-// Create a web page monitoring configuration.
+// Creates a web monitoring configuration.
 //
 // @param request - CreateUrlObservationRequest
 //
@@ -5851,7 +5859,7 @@ func (client *Client) CreateUrlObservationWithOptions(request *CreateUrlObservat
 
 // Summary:
 //
-// Create a web page monitoring configuration.
+// Creates a web monitoring configuration.
 //
 // @param request - CreateUrlObservationRequest
 //
@@ -6183,7 +6191,7 @@ func (client *Client) CreateUserWafRuleset(request *CreateUserWafRulesetRequest)
 
 // Summary:
 //
-// Add video processing configurations for a website.
+// Create a site video processing configuration.
 //
 // @param request - CreateVideoProcessingRequest
 //
@@ -6271,7 +6279,7 @@ func (client *Client) CreateVideoProcessingWithOptions(request *CreateVideoProce
 
 // Summary:
 //
-// Add video processing configurations for a website.
+// Create a site video processing configuration.
 //
 // @param request - CreateVideoProcessingRequest
 //
@@ -6731,6 +6739,10 @@ func (client *Client) CreateWaitingRoomEvent(request *CreateWaitingRoomEventRequ
 //
 // Creates a waiting room bypass rule.
 //
+// Description:
+//
+// Your site plan must be Enterprise Edition or higher to use this feature, and the site plan must support this feature.
+//
 // @param request - CreateWaitingRoomRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6790,6 +6802,10 @@ func (client *Client) CreateWaitingRoomRuleWithOptions(request *CreateWaitingRoo
 // Summary:
 //
 // Creates a waiting room bypass rule.
+//
+// Description:
+//
+// Your site plan must be Enterprise Edition or higher to use this feature, and the site plan must support this feature.
 //
 // @param request - CreateWaitingRoomRuleRequest
 //
@@ -11027,6 +11043,64 @@ func (client *Client) DescribeDDoSL7QpsList(request *DescribeDDoSL7QpsListReques
 
 // Summary:
 //
+// Queries the number of DDoS attacks outside China.
+//
+// @param request - DescribeDDoSOverseasAttackCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDDoSOverseasAttackCountResponse
+func (client *Client) DescribeDDoSOverseasAttackCountWithOptions(request *DescribeDDoSOverseasAttackCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeDDoSOverseasAttackCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDDoSOverseasAttackCount"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDDoSOverseasAttackCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the number of DDoS attacks outside China.
+//
+// @param request - DescribeDDoSOverseasAttackCountRequest
+//
+// @return DescribeDDoSOverseasAttackCountResponse
+func (client *Client) DescribeDDoSOverseasAttackCount(request *DescribeDDoSOverseasAttackCountRequest) (_result *DescribeDDoSOverseasAttackCountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDDoSOverseasAttackCountResponse{}
+	_body, _err := client.DescribeDDoSOverseasAttackCountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the maximum burst bandwidth for a DDoS instance in mainland China.
 //
 // @param request - DescribeDdosMaxBurstGbpsRequest
@@ -13635,6 +13709,64 @@ func (client *Client) GetCustomResponseCodeRule(request *GetCustomResponseCodeRu
 
 // Summary:
 //
+// Retrieves the delegated DCV information.
+//
+// @param request - GetDcvDelegationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDcvDelegationResponse
+func (client *Client) GetDcvDelegationWithOptions(request *GetDcvDelegationRequest, runtime *dara.RuntimeOptions) (_result *GetDcvDelegationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDcvDelegation"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDcvDelegationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the delegated DCV information.
+//
+// @param request - GetDcvDelegationRequest
+//
+// @return GetDcvDelegationResponse
+func (client *Client) GetDcvDelegation(request *GetDcvDelegationRequest) (_result *GetDcvDelegationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDcvDelegationResponse{}
+	_body, _err := client.GetDcvDelegationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query Site Developer Mode Configuration
 //
 // @param request - GetDevelopmentModeRequest
@@ -14943,7 +15075,7 @@ func (client *Client) GetIPv6(request *GetIPv6Request) (_result *GetIPv6Response
 
 // Summary:
 //
-// Retrieves a specific image transformation configuration for a site.
+// Queries a single site image transformation configuration.
 //
 // @param request - GetImageTransformRequest
 //
@@ -14983,7 +15115,7 @@ func (client *Client) GetImageTransformWithOptions(request *GetImageTransformReq
 
 // Summary:
 //
-// Retrieves a specific image transformation configuration for a site.
+// Queries a single site image transformation configuration.
 //
 // @param request - GetImageTransformRequest
 //
@@ -16134,7 +16266,7 @@ func (client *Client) GetRealtimeDeliveryField(request *GetRealtimeDeliveryField
 
 // Summary:
 //
-// Retrieves the detailed configuration of a single DNS record, including record value, priority, and back-to-source authentication configuration (for CNAME records only).
+// Retrieves the detailed configuration of a single DNS record, including the record value, priority, and back-to-origin authentication configuration (exclusive to CNAME records).
 //
 // @param request - GetRecordRequest
 //
@@ -16174,7 +16306,7 @@ func (client *Client) GetRecordWithOptions(request *GetRecordRequest, runtime *d
 
 // Summary:
 //
-// Retrieves the detailed configuration of a single DNS record, including record value, priority, and back-to-source authentication configuration (for CNAME records only).
+// Retrieves the detailed configuration of a single DNS record, including the record value, priority, and back-to-origin authentication configuration (exclusive to CNAME records).
 //
 // @param request - GetRecordRequest
 //
@@ -16308,7 +16440,7 @@ func (client *Client) GetRewriteUrlRule(request *GetRewriteUrlRuleRequest) (_res
 
 // Summary:
 //
-// Retrieves the configuration of an edge function Routine, including its code versions, environments, and associated domain names and routes.
+// Queries all configuration information of an Edge Routine, including the code version list, environment configuration list, associated domain name configuration list, and associated route configuration list.
 //
 // @param request - GetRoutineRequest
 //
@@ -16352,7 +16484,7 @@ func (client *Client) GetRoutineWithOptions(request *GetRoutineRequest, runtime 
 
 // Summary:
 //
-// Retrieves the configuration of an edge function Routine, including its code versions, environments, and associated domain names and routes.
+// Queries all configuration information of an Edge Routine, including the code version list, environment configuration list, associated domain name configuration list, and associated route configuration list.
 //
 // @param request - GetRoutineRequest
 //
@@ -16432,7 +16564,7 @@ func (client *Client) GetRoutineAccessToken(request *GetRoutineAccessTokenReques
 
 // Summary:
 //
-// Queries a code version of a routine.
+// Queries the code information of a specific version of an Edge Routine.
 //
 // @param request - GetRoutineCodeVersionRequest
 //
@@ -16480,7 +16612,7 @@ func (client *Client) GetRoutineCodeVersionWithOptions(request *GetRoutineCodeVe
 
 // Summary:
 //
-// Queries a code version of a routine.
+// Queries the code information of a specific version of an Edge Routine.
 //
 // @param request - GetRoutineCodeVersionRequest
 //
@@ -17574,7 +17706,7 @@ func (client *Client) GetTieredCache(request *GetTieredCacheRequest) (_result *G
 
 // Summary:
 //
-// Gets the details of a layer 4 application.
+// Queries the details of a Layer 4 application.
 //
 // @param request - GetTransportLayerApplicationRequest
 //
@@ -17614,7 +17746,7 @@ func (client *Client) GetTransportLayerApplicationWithOptions(request *GetTransp
 
 // Summary:
 //
-// Gets the details of a layer 4 application.
+// Queries the details of a Layer 4 application.
 //
 // @param request - GetTransportLayerApplicationRequest
 //
@@ -18803,7 +18935,7 @@ func (client *Client) ListClientCertificates(request *ListClientCertificatesRequ
 
 // Summary:
 //
-// # Query the list of compression rules
+// Queries the list of compression rule configurations.
 //
 // @param request - ListCompressionRulesRequest
 //
@@ -18843,7 +18975,7 @@ func (client *Client) ListCompressionRulesWithOptions(request *ListCompressionRu
 
 // Summary:
 //
-// # Query the list of compression rules
+// Queries the list of compression rule configurations.
 //
 // @param request - ListCompressionRulesRequest
 //
@@ -18947,7 +19079,7 @@ func (client *Client) ListCustomHostnames(request *ListCustomHostnamesRequest) (
 
 // Summary:
 //
-// List the custom response code configurations for the site.
+// Query the list of custom response code configurations for a site.
 //
 // @param request - ListCustomResponseCodeRulesRequest
 //
@@ -19015,7 +19147,7 @@ func (client *Client) ListCustomResponseCodeRulesWithOptions(request *ListCustom
 
 // Summary:
 //
-// List the custom response code configurations for the site.
+// Query the list of custom response code configurations for a site.
 //
 // @param request - ListCustomResponseCodeRulesRequest
 //
@@ -19548,11 +19680,11 @@ func (client *Client) ListEdgeRoutinePlans() (_result *ListEdgeRoutinePlansRespo
 
 // Summary:
 //
-// Queries the records that are associated with Edge Routine routes for a website.
+// Queries the list of edge routing records for a site.
 //
 // Description:
 //
-// > Each account can call this operation up to 100 times per second.
+// > API call frequency: 100 calls per second.
 //
 // @param request - ListEdgeRoutineRecordsRequest
 //
@@ -19592,11 +19724,11 @@ func (client *Client) ListEdgeRoutineRecordsWithOptions(request *ListEdgeRoutine
 
 // Summary:
 //
-// Queries the records that are associated with Edge Routine routes for a website.
+// Queries the list of edge routing records for a site.
 //
 // Description:
 //
-// > Each account can call this operation up to 100 times per second.
+// > API call frequency: 100 calls per second.
 //
 // @param request - ListEdgeRoutineRecordsRequest
 //
@@ -19614,7 +19746,7 @@ func (client *Client) ListEdgeRoutineRecords(request *ListEdgeRoutineRecordsRequ
 
 // Summary:
 //
-// Queries the configuration details of an incoming HTTP request header modification rule for a website.
+// Queries the list of HTTP incoming request header modification configurations for a site.
 //
 // @param request - ListHttpIncomingRequestHeaderModificationRulesRequest
 //
@@ -19654,7 +19786,7 @@ func (client *Client) ListHttpIncomingRequestHeaderModificationRulesWithOptions(
 
 // Summary:
 //
-// Queries the configuration details of an incoming HTTP request header modification rule for a website.
+// Queries the list of HTTP incoming request header modification configurations for a site.
 //
 // @param request - ListHttpIncomingRequestHeaderModificationRulesRequest
 //
@@ -19672,7 +19804,7 @@ func (client *Client) ListHttpIncomingRequestHeaderModificationRules(request *Li
 
 // Summary:
 //
-// Queries the configurations of an incoming HTTP response header modification rule for a website.
+// Queries the list of configurations for modifying HTTP incoming response headers of a site.
 //
 // @param request - ListHttpIncomingResponseHeaderModificationRulesRequest
 //
@@ -19712,7 +19844,7 @@ func (client *Client) ListHttpIncomingResponseHeaderModificationRulesWithOptions
 
 // Summary:
 //
-// Queries the configurations of an incoming HTTP response header modification rule for a website.
+// Queries the list of configurations for modifying HTTP incoming response headers of a site.
 //
 // @param request - ListHttpIncomingResponseHeaderModificationRulesRequest
 //
@@ -19730,7 +19862,7 @@ func (client *Client) ListHttpIncomingResponseHeaderModificationRules(request *L
 
 // Summary:
 //
-// Lists the HTTP request header configurations.
+// Queries the list of HTTP request header modification configurations.
 //
 // @param request - ListHttpRequestHeaderModificationRulesRequest
 //
@@ -19770,7 +19902,7 @@ func (client *Client) ListHttpRequestHeaderModificationRulesWithOptions(request 
 
 // Summary:
 //
-// Lists the HTTP request header configurations.
+// Queries the list of HTTP request header modification configurations.
 //
 // @param request - ListHttpRequestHeaderModificationRulesRequest
 //
@@ -19788,7 +19920,7 @@ func (client *Client) ListHttpRequestHeaderModificationRules(request *ListHttpRe
 
 // Summary:
 //
-// Gets the HTTP response header configurations for a site.
+// Queries the list of HTTP response header modification configurations for a site.
 //
 // @param request - ListHttpResponseHeaderModificationRulesRequest
 //
@@ -19828,7 +19960,7 @@ func (client *Client) ListHttpResponseHeaderModificationRulesWithOptions(request
 
 // Summary:
 //
-// Gets the HTTP response header configurations for a site.
+// Queries the list of HTTP response header modification configurations for a site.
 //
 // @param request - ListHttpResponseHeaderModificationRulesRequest
 //
@@ -19846,7 +19978,7 @@ func (client *Client) ListHttpResponseHeaderModificationRules(request *ListHttpR
 
 // Summary:
 //
-// Queries multiple HTTPS application configurations.
+// Query multiple HTTPS application configurations.
 //
 // @param request - ListHttpsApplicationConfigurationsRequest
 //
@@ -19886,7 +20018,7 @@ func (client *Client) ListHttpsApplicationConfigurationsWithOptions(request *Lis
 
 // Summary:
 //
-// Queries multiple HTTPS application configurations.
+// Query multiple HTTPS application configurations.
 //
 // @param request - ListHttpsApplicationConfigurationsRequest
 //
@@ -19904,7 +20036,7 @@ func (client *Client) ListHttpsApplicationConfigurations(request *ListHttpsAppli
 
 // Summary:
 //
-// # Query multiple HTTPS basic configurations
+// Queries multiple HTTPS basic configurations.
 //
 // @param request - ListHttpsBasicConfigurationsRequest
 //
@@ -19944,7 +20076,7 @@ func (client *Client) ListHttpsBasicConfigurationsWithOptions(request *ListHttps
 
 // Summary:
 //
-// # Query multiple HTTPS basic configurations
+// Queries multiple HTTPS basic configurations.
 //
 // @param request - ListHttpsBasicConfigurationsRequest
 //
@@ -19962,7 +20094,7 @@ func (client *Client) ListHttpsBasicConfigurations(request *ListHttpsBasicConfig
 
 // Summary:
 //
-// Retrieves site image conversion configurations.
+// Queries the list of image transformation configurations for a site.
 //
 // @param request - ListImageTransformsRequest
 //
@@ -20002,7 +20134,7 @@ func (client *Client) ListImageTransformsWithOptions(request *ListImageTransform
 
 // Summary:
 //
-// Retrieves site image conversion configurations.
+// Queries the list of image transformation configurations for a site.
 //
 // @param request - ListImageTransformsRequest
 //
@@ -20020,7 +20152,7 @@ func (client *Client) ListImageTransforms(request *ListImageTransformsRequest) (
 
 // Summary:
 //
-// Queries the quota details in a subscription plan.
+// Queries the quota details of the plan associated with a specific instance or site by quota name.
 //
 // @param request - ListInstanceQuotasRequest
 //
@@ -20060,7 +20192,7 @@ func (client *Client) ListInstanceQuotasWithOptions(request *ListInstanceQuotasR
 
 // Summary:
 //
-// Queries the quota details in a subscription plan.
+// Queries the quota details of the plan associated with a specific instance or site by quota name.
 //
 // @param request - ListInstanceQuotasRequest
 //
@@ -20612,7 +20744,7 @@ func (client *Client) ListManagedRulesGroups(request *ListManagedRulesGroupsRequ
 
 // Summary:
 //
-// # Query multiple network optimization configurations
+// Queries multiple network optimization configurations.
 //
 // @param request - ListNetworkOptimizationsRequest
 //
@@ -20652,7 +20784,7 @@ func (client *Client) ListNetworkOptimizationsWithOptions(request *ListNetworkOp
 
 // Summary:
 //
-// # Query multiple network optimization configurations
+// Queries multiple network optimization configurations.
 //
 // @param request - ListNetworkOptimizationsRequest
 //
@@ -20844,7 +20976,7 @@ func (client *Client) ListOriginPools(request *ListOriginPoolsRequest) (_result 
 
 // Summary:
 //
-// Lists multiple back-to-origin rules.
+// Query multiple back-to-origin rule configurations.
 //
 // @param request - ListOriginRulesRequest
 //
@@ -20884,7 +21016,7 @@ func (client *Client) ListOriginRulesWithOptions(request *ListOriginRulesRequest
 
 // Summary:
 //
-// Lists multiple back-to-origin rules.
+// Query multiple back-to-origin rule configurations.
 //
 // @param request - ListOriginRulesRequest
 //
@@ -20978,11 +21110,11 @@ func (client *Client) ListPages(request *ListPagesRequest) (_result *ListPagesRe
 
 // Summary:
 //
-// List of post-paid plan instances.
+// Queries the list of pay-as-you-go plan instances.
 //
 // Description:
 //
-// This API retrieves a list of pay-as-you-go plan instances from a user account and supports filtering and sorting by various criteria.
+// Queries the list of pay-as-you-go plan instances under your account. You can filter and sort the results by multiple conditions.
 //
 // @param request - ListPostpaidRatePlanInstancesRequest
 //
@@ -21022,11 +21154,11 @@ func (client *Client) ListPostpaidRatePlanInstancesWithOptions(request *ListPost
 
 // Summary:
 //
-// List of post-paid plan instances.
+// Queries the list of pay-as-you-go plan instances.
 //
 // Description:
 //
-// This API retrieves a list of pay-as-you-go plan instances from a user account and supports filtering and sorting by various criteria.
+// Queries the list of pay-as-you-go plan instances under your account. You can filter and sort the results by multiple conditions.
 //
 // @param request - ListPostpaidRatePlanInstancesRequest
 //
@@ -21044,11 +21176,11 @@ func (client *Client) ListPostpaidRatePlanInstances(request *ListPostpaidRatePla
 
 // Summary:
 //
-// Lists a site\\"s DNS records, including their record value, priority, and authentication configuration. Allows filtering by record name and record type.
+// Queries the list of DNS records under a site, including record values, priorities, authentication configurations, etc. Supports filtering by conditions such as record name and record type.
 //
 // Description:
 //
-// This API does not return DNS records for edge containers, edge functions, and layer 4 acceleration.
+// DNS records corresponding to edge containers, edge functions, and Layer 4 acceleration will not be returned by this API.
 //
 // @param request - ListRecordsRequest
 //
@@ -21088,11 +21220,11 @@ func (client *Client) ListRecordsWithOptions(request *ListRecordsRequest, runtim
 
 // Summary:
 //
-// Lists a site\\"s DNS records, including their record value, priority, and authentication configuration. Allows filtering by record name and record type.
+// Queries the list of DNS records under a site, including record values, priorities, authentication configurations, etc. Supports filtering by conditions such as record name and record type.
 //
 // Description:
 //
-// This API does not return DNS records for edge containers, edge functions, and layer 4 acceleration.
+// DNS records corresponding to edge containers, edge functions, and Layer 4 acceleration will not be returned by this API.
 //
 // @param request - ListRecordsRequest
 //
@@ -21110,7 +21242,7 @@ func (client *Client) ListRecords(request *ListRecordsRequest) (_result *ListRec
 
 // Summary:
 //
-// # Query Redirect Rule List
+// Queries the redirect configuration list of a site.
 //
 // @param request - ListRedirectRulesRequest
 //
@@ -21150,7 +21282,7 @@ func (client *Client) ListRedirectRulesWithOptions(request *ListRedirectRulesReq
 
 // Summary:
 //
-// # Query Redirect Rule List
+// Queries the redirect configuration list of a site.
 //
 // @param request - ListRedirectRulesRequest
 //
@@ -21439,7 +21571,7 @@ func (client *Client) ListRoutineRelatedRecords(request *ListRoutineRelatedRecor
 
 // Summary:
 //
-// Lists the function routes of a specified edge program.
+// Queries the function route list of an Edge Routine.
 //
 // @param request - ListRoutineRoutesRequest
 //
@@ -21491,7 +21623,7 @@ func (client *Client) ListRoutineRoutesWithOptions(request *ListRoutineRoutesReq
 
 // Summary:
 //
-// Lists the function routes of a specified edge program.
+// Queries the function route list of an Edge Routine.
 //
 // @param request - ListRoutineRoutesRequest
 //
@@ -21823,7 +21955,7 @@ func (client *Client) ListSiteRoutes(request *ListSiteRoutesRequest) (_result *L
 
 // Summary:
 //
-// Lists the current user\\"s sites, including their name, status, and configuration.
+// Queries the list of sites under the current user, including site names, statuses, and configurations.
 //
 // @param tmpReq - ListSitesRequest
 //
@@ -21869,7 +22001,7 @@ func (client *Client) ListSitesWithOptions(tmpReq *ListSitesRequest, runtime *da
 
 // Summary:
 //
-// Lists the current user\\"s sites, including their name, status, and configuration.
+// Queries the list of sites under the current user, including site names, statuses, and configurations.
 //
 // @param request - ListSitesRequest
 //
@@ -22067,7 +22199,7 @@ func (client *Client) ListTraceTasks(request *ListTraceTasksRequest) (_result *L
 
 // Summary:
 //
-// Lists the layer 4 applications associated with the site.
+// Query the list of Layer 4 applications for a site.
 //
 // @param request - ListTransportLayerApplicationsRequest
 //
@@ -22107,7 +22239,7 @@ func (client *Client) ListTransportLayerApplicationsWithOptions(request *ListTra
 
 // Summary:
 //
-// Lists the layer 4 applications associated with the site.
+// Query the list of Layer 4 applications for a site.
 //
 // @param request - ListTransportLayerApplicationsRequest
 //
@@ -22315,7 +22447,7 @@ func (client *Client) ListUserDeliveryTasks(request *ListUserDeliveryTasksReques
 
 // Summary:
 //
-// Retrieves a user\\"s purchased package instances and their details.
+// Queries the plan instances purchased by the user and their details.
 //
 // @param request - ListUserRatePlanInstancesRequest
 //
@@ -22355,7 +22487,7 @@ func (client *Client) ListUserRatePlanInstancesWithOptions(request *ListUserRate
 
 // Summary:
 //
-// Retrieves a user\\"s purchased package instances and their details.
+// Queries the plan instances purchased by the user and their details.
 //
 // @param request - ListUserRatePlanInstancesRequest
 //
@@ -22373,11 +22505,11 @@ func (client *Client) ListUserRatePlanInstances(request *ListUserRatePlanInstanc
 
 // Summary:
 //
-// Queries the functions created in your account and the maximum number of functions supported by your plan.
+// Retrieves a paginated list of Edge Routines created by the user along with quota information.
 //
 // Description:
 //
-// Returns a paginated list of all edge functions (routines) in your account, along with the routine quota and usage for your current plan. You can use `PageNumber` and `PageSize` to control pagination, and `SearchKeyWord` to filter routines by name.
+// This operation allows you to perform a paged query for all Edge Routines created under your account. It also returns the Edge Routine quota for your current plan and the number of Edge Routines already in use. You can specify the PageNumber and PageSize paging parameters to control the number of results returned, and use SearchKeyWord to perform a fuzzy search to filter Routine names.
 //
 // @param request - ListUserRoutinesRequest
 //
@@ -22429,11 +22561,11 @@ func (client *Client) ListUserRoutinesWithOptions(request *ListUserRoutinesReque
 
 // Summary:
 //
-// Queries the functions created in your account and the maximum number of functions supported by your plan.
+// Retrieves a paginated list of Edge Routines created by the user along with quota information.
 //
 // Description:
 //
-// Returns a paginated list of all edge functions (routines) in your account, along with the routine quota and usage for your current plan. You can use `PageNumber` and `PageSize` to control pagination, and `SearchKeyWord` to filter routines by name.
+// This operation allows you to perform a paged query for all Edge Routines created under your account. It also returns the Edge Routine quota for your current plan and the number of Edge Routines already in use. You can specify the PageNumber and PageSize paging parameters to control the number of results returned, and use SearchKeyWord to perform a fuzzy search to filter Routine names.
 //
 // @param request - ListUserRoutinesRequest
 //
@@ -22563,7 +22695,7 @@ func (client *Client) ListUserWafRulesets(request *ListUserWafRulesetsRequest) (
 
 // Summary:
 //
-// Queries the video processing configurations of a site.
+// Queries the list of video processing configurations for a site.
 //
 // @param request - ListVideoProcessingsRequest
 //
@@ -22631,7 +22763,7 @@ func (client *Client) ListVideoProcessingsWithOptions(request *ListVideoProcessi
 
 // Summary:
 //
-// Queries the video processing configurations of a site.
+// Queries the list of video processing configurations for a site.
 //
 // @param request - ListVideoProcessingsRequest
 //
@@ -24544,9 +24676,9 @@ func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result 
 
 // Summary:
 //
-// Resets the progress of a scheduled preload job and restarts the preload from the beginning.
+// Resets the progress of a scheduled prefetch task and restarts the prefetch from the beginning.
 //
-// Prerequisite: You must first create a scheduled preload job by calling CreateScheduledPreloadJob to obtain a valid job ID, and then pass it to this API for resetting.
+// Before calling this operation, you must first create a scheduled prefetch task by calling CreateScheduledPreloadJob to obtain a valid task ID, and then pass the ID to this operation for resetting.
 //
 // @param request - ResetScheduledPreloadJobRequest
 //
@@ -24590,9 +24722,9 @@ func (client *Client) ResetScheduledPreloadJobWithOptions(request *ResetSchedule
 
 // Summary:
 //
-// Resets the progress of a scheduled preload job and restarts the preload from the beginning.
+// Resets the progress of a scheduled prefetch task and restarts the prefetch from the beginning.
 //
-// Prerequisite: You must first create a scheduled preload job by calling CreateScheduledPreloadJob to obtain a valid job ID, and then pass it to this API for resetting.
+// Before calling this operation, you must first create a scheduled prefetch task by calling CreateScheduledPreloadJob to obtain a valid task ID, and then pass the ID to this operation for resetting.
 //
 // @param request - ResetScheduledPreloadJobRequest
 //
@@ -25658,9 +25790,9 @@ func (client *Client) StartScheduledPreloadExecution(request *StartScheduledPrel
 
 // Summary:
 //
-// Stops a single scheduled prefetch plan by prefetch plan ID.
+// Stops a single scheduled preload execution plan based on the preload plan ID.
 //
-// Prerequisites: (1) This operation takes effect only when the execution plan is in the running state. Execution plans in the waiting or failed state cannot be stopped. (2) Whether an execution plan can reach the running state depends on whether the associated site has passed the access verification (site Status=active).
+// Prerequisites: (1) This API only takes effect when the execution plan status is running. Execution plans in the waiting or failed status cannot be stopped. (2) Whether an execution plan can reach the running status depends on whether the site it belongs to has completed access verification (site Status=active).
 //
 // @param request - StopScheduledPreloadExecutionRequest
 //
@@ -25704,9 +25836,9 @@ func (client *Client) StopScheduledPreloadExecutionWithOptions(request *StopSche
 
 // Summary:
 //
-// Stops a single scheduled prefetch plan by prefetch plan ID.
+// Stops a single scheduled preload execution plan based on the preload plan ID.
 //
-// Prerequisites: (1) This operation takes effect only when the execution plan is in the running state. Execution plans in the waiting or failed state cannot be stopped. (2) Whether an execution plan can reach the running state depends on whether the associated site has passed the access verification (site Status=active).
+// Prerequisites: (1) This API only takes effect when the execution plan status is running. Execution plans in the waiting or failed status cannot be stopped. (2) Whether an execution plan can reach the running status depends on whether the site it belongs to has completed access verification (site Status=active).
 //
 // @param request - StopScheduledPreloadExecutionRequest
 //
@@ -26334,7 +26466,7 @@ func (client *Client) UpdateCnameFlattening(request *UpdateCnameFlatteningReques
 
 // Summary:
 //
-// Modifies the compression rule configuration for a site.
+// Modifies the compression rule configuration of a site.
 //
 // @param request - UpdateCompressionRuleRequest
 //
@@ -26410,7 +26542,7 @@ func (client *Client) UpdateCompressionRuleWithOptions(request *UpdateCompressio
 
 // Summary:
 //
-// Modifies the compression rule configuration for a site.
+// Modifies the compression rule configuration of a site.
 //
 // @param request - UpdateCompressionRuleRequest
 //
@@ -26428,7 +26560,11 @@ func (client *Client) UpdateCompressionRule(request *UpdateCompressionRuleReques
 
 // Summary:
 //
-// Modifies the configuration of the Chinese mainland network access optimization.
+// Modifies the China mainland network access optimization configuration for a site.
+//
+// Description:
+//
+// The site plan must be Enterprise Edition or higher to enable China mainland network access optimization.
 //
 // @param request - UpdateCrossBorderOptimizationRequest
 //
@@ -26476,7 +26612,11 @@ func (client *Client) UpdateCrossBorderOptimizationWithOptions(request *UpdateCr
 
 // Summary:
 //
-// Modifies the configuration of the Chinese mainland network access optimization.
+// Modifies the China mainland network access optimization configuration for a site.
+//
+// Description:
+//
+// The site plan must be Enterprise Edition or higher to enable China mainland network access optimization.
 //
 // @param request - UpdateCrossBorderOptimizationRequest
 //
@@ -26494,7 +26634,7 @@ func (client *Client) UpdateCrossBorderOptimization(request *UpdateCrossBorderOp
 
 // Summary:
 //
-// Updates the parameters of a Software as a Service (SaaS) domain name, such as the attached record ID and the certificate type.
+// Updates a SaaS domain name. You can modify the bound record ID, certificate type, and other settings.
 //
 // @param request - UpdateCustomHostnameRequest
 //
@@ -26566,7 +26706,7 @@ func (client *Client) UpdateCustomHostnameWithOptions(request *UpdateCustomHostn
 
 // Summary:
 //
-// Updates the parameters of a Software as a Service (SaaS) domain name, such as the attached record ID and the certificate type.
+// Updates a SaaS domain name. You can modify the bound record ID, certificate type, and other settings.
 //
 // @param request - UpdateCustomHostnameRequest
 //
@@ -26584,7 +26724,7 @@ func (client *Client) UpdateCustomHostname(request *UpdateCustomHostnameRequest)
 
 // Summary:
 //
-// Modify the response code configuration for a site.
+// Modifies the response code rewrite configuration of a site.
 //
 // @param request - UpdateCustomResponseCodeRuleRequest
 //
@@ -26656,7 +26796,7 @@ func (client *Client) UpdateCustomResponseCodeRuleWithOptions(request *UpdateCus
 
 // Summary:
 //
-// Modify the response code configuration for a site.
+// Modifies the response code rewrite configuration of a site.
 //
 // @param request - UpdateCustomResponseCodeRuleRequest
 //
@@ -26980,7 +27120,7 @@ func (client *Client) UpdateEdgeContainerAppResourceReserve(request *UpdateEdgeC
 
 // Summary:
 //
-// Configure inbound HTTP request headers.
+// Modify HTTP incoming request header configuration.
 //
 // @param tmpReq - UpdateHttpIncomingRequestHeaderModificationRuleRequest
 //
@@ -27054,7 +27194,7 @@ func (client *Client) UpdateHttpIncomingRequestHeaderModificationRuleWithOptions
 
 // Summary:
 //
-// Configure inbound HTTP request headers.
+// Modify HTTP incoming request header configuration.
 //
 // @param request - UpdateHttpIncomingRequestHeaderModificationRuleRequest
 //
@@ -27072,7 +27212,7 @@ func (client *Client) UpdateHttpIncomingRequestHeaderModificationRule(request *U
 
 // Summary:
 //
-// Update a Site\\"s HTTP Inbound Response Header configuration.
+// Updates the HTTP incoming response header modification configuration for a site.
 //
 // @param tmpReq - UpdateHttpIncomingResponseHeaderModificationRuleRequest
 //
@@ -27146,7 +27286,7 @@ func (client *Client) UpdateHttpIncomingResponseHeaderModificationRuleWithOption
 
 // Summary:
 //
-// Update a Site\\"s HTTP Inbound Response Header configuration.
+// Updates the HTTP incoming response header modification configuration for a site.
 //
 // @param request - UpdateHttpIncomingResponseHeaderModificationRuleRequest
 //
@@ -27164,7 +27304,7 @@ func (client *Client) UpdateHttpIncomingResponseHeaderModificationRule(request *
 
 // Summary:
 //
-// Modify the HTTP request header rule.
+// Modify HTTP request header rules.
 //
 // @param tmpReq - UpdateHttpRequestHeaderModificationRuleRequest
 //
@@ -27238,7 +27378,7 @@ func (client *Client) UpdateHttpRequestHeaderModificationRuleWithOptions(tmpReq 
 
 // Summary:
 //
-// Modify the HTTP request header rule.
+// Modify HTTP request header rules.
 //
 // @param request - UpdateHttpRequestHeaderModificationRuleRequest
 //
@@ -27256,7 +27396,7 @@ func (client *Client) UpdateHttpRequestHeaderModificationRule(request *UpdateHtt
 
 // Summary:
 //
-// Updates a site\\"s HTTP response header configuration.
+// Updates the HTTP response header modification configuration for a site.
 //
 // @param tmpReq - UpdateHttpResponseHeaderModificationRuleRequest
 //
@@ -27330,7 +27470,7 @@ func (client *Client) UpdateHttpResponseHeaderModificationRuleWithOptions(tmpReq
 
 // Summary:
 //
-// Updates a site\\"s HTTP response header configuration.
+// Updates the HTTP response header modification configuration for a site.
 //
 // @param request - UpdateHttpResponseHeaderModificationRuleRequest
 //
@@ -27604,7 +27744,7 @@ func (client *Client) UpdateHttpsBasicConfiguration(request *UpdateHttpsBasicCon
 
 // Summary:
 //
-// Modify the site\\"s IPv6 configuration.
+// Modify IPv6 configuration for a website.
 //
 // @param request - UpdateIPv6Request
 //
@@ -27656,7 +27796,7 @@ func (client *Client) UpdateIPv6WithOptions(request *UpdateIPv6Request, runtime 
 
 // Summary:
 //
-// Modify the site\\"s IPv6 configuration.
+// Modify IPv6 configuration for a website.
 //
 // @param request - UpdateIPv6Request
 //
@@ -27674,7 +27814,7 @@ func (client *Client) UpdateIPv6(request *UpdateIPv6Request) (_result *UpdateIPv
 
 // Summary:
 //
-// Modify the site\\"s image conversion configuration.
+// Modifies the image transformation configuration of a site.
 //
 // @param request - UpdateImageTransformRequest
 //
@@ -27750,7 +27890,7 @@ func (client *Client) UpdateImageTransformWithOptions(request *UpdateImageTransf
 
 // Summary:
 //
-// Modify the site\\"s image conversion configuration.
+// Modifies the image transformation configuration of a site.
 //
 // @param request - UpdateImageTransformRequest
 //
@@ -28176,7 +28316,7 @@ func (client *Client) UpdateNetworkOptimization(request *UpdateNetworkOptimizati
 
 // Summary:
 //
-// Modifies a source address pool, identified by its source address pool ID.
+// Modifies a single origin address pool specified by the origin address pool ID.
 //
 // @param tmpReq - UpdateOriginPoolRequest
 //
@@ -28238,7 +28378,7 @@ func (client *Client) UpdateOriginPoolWithOptions(tmpReq *UpdateOriginPoolReques
 
 // Summary:
 //
-// Modifies a source address pool, identified by its source address pool ID.
+// Modifies a single origin address pool specified by the origin address pool ID.
 //
 // @param request - UpdateOriginPoolRequest
 //
@@ -28622,7 +28762,7 @@ func (client *Client) UpdatePage(request *UpdatePageRequest) (_result *UpdatePag
 
 // Summary:
 //
-// Updates the Performance Data Collection configuration for a Site.
+// Modifies the web data quality collection configuration.
 //
 // @param request - UpdatePerformanceDataCollectionRequest
 //
@@ -28670,7 +28810,7 @@ func (client *Client) UpdatePerformanceDataCollectionWithOptions(request *Update
 
 // Summary:
 //
-// Updates the Performance Data Collection configuration for a Site.
+// Modifies the web data quality collection configuration.
 //
 // @param request - UpdatePerformanceDataCollectionRequest
 //
@@ -28770,23 +28910,23 @@ func (client *Client) UpdateRatePlanSpec(request *UpdateRatePlanSpecRequest) (_r
 
 // Summary:
 //
-// Updates DNS records, supporting multiple record types and origin server authentication.
+// Updates a DNS record. Various record types and origin authentication configurations are supported.
 //
 // Description:
 //
-// This API lets you update various DNS records, including A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. To modify a record, provide its corresponding fields, such as value, priority, and flag. For CNAME origins requiring authentication, such as OSS or S3, the API also lets you configure origin authentication information to secure access.
+// This API operation allows you to update a DNS record, including but not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI record types. You can modify the record content by specifying the corresponding record value, priority, flag, and other fields. For CNAME origin servers that require authentication, such as OSS and S3, this API operation also supports configuring origin authentication information to ensure secure access.
 //
-// ### Notes
+// ### Before you begin
 //
-// - The value must match the record type. For example, a CNAME record must point to a target domain.
+// - The record value (Value) must match the record type. For example, a CNAME record must correspond to a target domain name.
 //
-// - Some record types, such as MX and SRV, require a priority.
+// - Certain record types, such as MX and SRV, require a priority (Priority) value.
 //
-// - CAA records require specific fields, such as Flag and Tag.
+// - CAA records require specific fields such as Flag and Tag.
 //
-// - When updating security records such as CERT and SSHFP, correctly set the Type and Algorithm fields.
+// - When updating security records such as CERT and SSHFP, accurately set the Type, Algorithm, and other fields.
 //
-// - When using OSS or S3 as an origin, configure the authentication details in AuthConf according to your permission settings.
+// - When using OSS or S3 as the origin server, configure the authentication details in AuthConf based on the permission settings.
 //
 // @param tmpReq - UpdateRecordRequest
 //
@@ -28884,23 +29024,23 @@ func (client *Client) UpdateRecordWithOptions(tmpReq *UpdateRecordRequest, runti
 
 // Summary:
 //
-// Updates DNS records, supporting multiple record types and origin server authentication.
+// Updates a DNS record. Various record types and origin authentication configurations are supported.
 //
 // Description:
 //
-// This API lets you update various DNS records, including A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. To modify a record, provide its corresponding fields, such as value, priority, and flag. For CNAME origins requiring authentication, such as OSS or S3, the API also lets you configure origin authentication information to secure access.
+// This API operation allows you to update a DNS record, including but not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI record types. You can modify the record content by specifying the corresponding record value, priority, flag, and other fields. For CNAME origin servers that require authentication, such as OSS and S3, this API operation also supports configuring origin authentication information to ensure secure access.
 //
-// ### Notes
+// ### Before you begin
 //
-// - The value must match the record type. For example, a CNAME record must point to a target domain.
+// - The record value (Value) must match the record type. For example, a CNAME record must correspond to a target domain name.
 //
-// - Some record types, such as MX and SRV, require a priority.
+// - Certain record types, such as MX and SRV, require a priority (Priority) value.
 //
-// - CAA records require specific fields, such as Flag and Tag.
+// - CAA records require specific fields such as Flag and Tag.
 //
-// - When updating security records such as CERT and SSHFP, correctly set the Type and Algorithm fields.
+// - When updating security records such as CERT and SSHFP, accurately set the Type, Algorithm, and other fields.
 //
-// - When using OSS or S3 as an origin, configure the authentication details in AuthConf according to your permission settings.
+// - When using OSS or S3 as the origin server, configure the authentication details in AuthConf based on the permission settings.
 //
 // @param request - UpdateRecordRequest
 //
@@ -29180,7 +29320,7 @@ func (client *Client) UpdateRoutineConfigDescription(request *UpdateRoutineConfi
 
 // Summary:
 //
-// Modify the routing configuration for the edge function.
+// Modifies the route configuration of an Edge Routine.
 //
 // @param request - UpdateRoutineRouteRequest
 //
@@ -29260,7 +29400,7 @@ func (client *Client) UpdateRoutineRouteWithOptions(request *UpdateRoutineRouteR
 
 // Summary:
 //
-// Modify the routing configuration for the edge function.
+// Modifies the route configuration of an Edge Routine.
 //
 // @param request - UpdateRoutineRouteRequest
 //
@@ -29358,7 +29498,7 @@ func (client *Client) UpdateScheduledPreloadExecution(request *UpdateScheduledPr
 
 // Summary:
 //
-// Modifies the search engine crawler configuration for a website.
+// Modifies the search engine crawler allowlisting configuration for a site.
 //
 // @param request - UpdateSeoBypassRequest
 //
@@ -29406,7 +29546,7 @@ func (client *Client) UpdateSeoBypassWithOptions(request *UpdateSeoBypassRequest
 
 // Summary:
 //
-// Modifies the search engine crawler configuration for a website.
+// Modifies the search engine crawler allowlisting configuration for a site.
 //
 // @param request - UpdateSeoBypassRequest
 //
@@ -29506,7 +29646,7 @@ func (client *Client) UpdateSiteAccessType(request *UpdateSiteAccessTypeRequest)
 
 // Summary:
 //
-// Modify a site\\"s acceleration area. Update its acceleration configuration to adapt to traffic changes or improve user access in specific regions.
+// Modifies the acceleration region of a site. Updates the acceleration configuration of a site to adapt to traffic distribution changes or improve the access experience for users in specific regions.
 //
 // @param request - UpdateSiteCoverageRequest
 //
@@ -29554,7 +29694,7 @@ func (client *Client) UpdateSiteCoverageWithOptions(request *UpdateSiteCoverageR
 
 // Summary:
 //
-// Modify a site\\"s acceleration area. Update its acceleration configuration to adapt to traffic changes or improve user access in specific regions.
+// Modifies the acceleration region of a site. Updates the acceleration configuration of a site to adapt to traffic distribution changes or improve the access experience for users in specific regions.
 //
 // @param request - UpdateSiteCoverageRequest
 //
@@ -29800,7 +29940,7 @@ func (client *Client) UpdateSiteDeliveryTaskStatus(request *UpdateSiteDeliveryTa
 
 // Summary:
 //
-// Modifies the site hold configuration of a website. After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA.
+// Modifies the exclusive site name configuration. After this feature is enabled, other accounts can no longer create sites or subsites with the same name as the current site.
 //
 // @param request - UpdateSiteNameExclusiveRequest
 //
@@ -29848,7 +29988,7 @@ func (client *Client) UpdateSiteNameExclusiveWithOptions(request *UpdateSiteName
 
 // Summary:
 //
-// Modifies the site hold configuration of a website. After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA.
+// Modifies the exclusive site name configuration. After this feature is enabled, other accounts can no longer create sites or subsites with the same name as the current site.
 //
 // @param request - UpdateSiteNameExclusiveRequest
 //
@@ -29866,11 +30006,11 @@ func (client *Client) UpdateSiteNameExclusive(request *UpdateSiteNameExclusiveRe
 
 // Summary:
 //
-// Change the site\\"s pause settings.
+// Modifies the site pause configuration.
 //
 // Description:
 //
-// This API can only be called for sites configured in NS mode.
+// This API operation can be called only for sites that use the NS access mode.
 //
 // @param request - UpdateSitePauseRequest
 //
@@ -29918,11 +30058,11 @@ func (client *Client) UpdateSitePauseWithOptions(request *UpdateSitePauseRequest
 
 // Summary:
 //
-// Change the site\\"s pause settings.
+// Modifies the site pause configuration.
 //
 // Description:
 //
-// This API can only be called for sites configured in NS mode.
+// This API operation can be called only for sites that use the NS access mode.
 //
 // @param request - UpdateSitePauseRequest
 //
@@ -29940,7 +30080,11 @@ func (client *Client) UpdateSitePause(request *UpdateSitePauseRequest) (_result 
 
 // Summary:
 //
-// Updates the custom nameserver names for a single website.
+// Modifies the custom nameserver (NS) names for a single site.
+//
+// Description:
+//
+// The site plan must be Enterprise Edition or higher to use the custom NS feature.
 //
 // @param request - UpdateSiteVanityNSRequest
 //
@@ -29988,7 +30132,11 @@ func (client *Client) UpdateSiteVanityNSWithOptions(request *UpdateSiteVanityNSR
 
 // Summary:
 //
-// Updates the custom nameserver names for a single website.
+// Modifies the custom nameserver (NS) names for a single site.
+//
+// Description:
+//
+// The site plan must be Enterprise Edition or higher to use the custom NS feature.
 //
 // @param request - UpdateSiteVanityNSRequest
 //
@@ -30006,7 +30154,7 @@ func (client *Client) UpdateSiteVanityNS(request *UpdateSiteVanityNSRequest) (_r
 
 // Summary:
 //
-// Updates the tiered cache configuration for a site.
+// Modifies the multi-level cache configuration of a site.
 //
 // @param request - UpdateTieredCacheRequest
 //
@@ -30054,7 +30202,7 @@ func (client *Client) UpdateTieredCacheWithOptions(request *UpdateTieredCacheReq
 
 // Summary:
 //
-// Updates the tiered cache configuration for a site.
+// Modifies the multi-level cache configuration of a site.
 //
 // @param request - UpdateTieredCacheRequest
 //
@@ -30072,7 +30220,13 @@ func (client *Client) UpdateTieredCache(request *UpdateTieredCacheRequest) (_res
 
 // Summary:
 //
-// Modify Layer 4 application configurations, such as forwarding rules, for the specified site.
+// Modifies the forwarding rule configurations of a Layer 4 application under a specified site.
+//
+// Description:
+//
+// If ListTransportLayerApplications returns an empty Layer 4 acceleration application list, use CreateTransportLayerApplication to create a Layer 4 acceleration application, and then use this API to modify the configurations of the Layer 4 acceleration application.
+//
+// When creating a Layer 4 acceleration application, the selected site must be an activated site. After creating a site, call the VerifySite API to verify it. A site that passes verification is automatically activated, indicated by the response parameter Passed=true.
 //
 // @param tmpReq - UpdateTransportLayerApplicationRequest
 //
@@ -30150,7 +30304,13 @@ func (client *Client) UpdateTransportLayerApplicationWithOptions(tmpReq *UpdateT
 
 // Summary:
 //
-// Modify Layer 4 application configurations, such as forwarding rules, for the specified site.
+// Modifies the forwarding rule configurations of a Layer 4 application under a specified site.
+//
+// Description:
+//
+// If ListTransportLayerApplications returns an empty Layer 4 acceleration application list, use CreateTransportLayerApplication to create a Layer 4 acceleration application, and then use this API to modify the configurations of the Layer 4 acceleration application.
+//
+// When creating a Layer 4 acceleration application, the selected site must be an activated site. After creating a site, call the VerifySite API to verify it. A site that passes verification is automatically activated, indicated by the response parameter Passed=true.
 //
 // @param request - UpdateTransportLayerApplicationRequest
 //
@@ -30516,7 +30676,7 @@ func (client *Client) UpdateUserWafRuleset(request *UpdateUserWafRulesetRequest)
 
 // Summary:
 //
-// Modifies the video processing configuration of the site.
+// Modifies the video processing configuration of a website.
 //
 // @param request - UpdateVideoProcessingRequest
 //
@@ -30604,7 +30764,7 @@ func (client *Client) UpdateVideoProcessingWithOptions(request *UpdateVideoProce
 
 // Summary:
 //
-// Modifies the video processing configuration of the site.
+// Modifies the video processing configuration of a website.
 //
 // @param request - UpdateVideoProcessingRequest
 //
@@ -30788,7 +30948,7 @@ func (client *Client) UpdateWafRuleset(request *UpdateWafRulesetRequest) (_resul
 
 // Summary:
 //
-// Updates a waiting room.
+// Updates the configuration of a specified waiting room.
 //
 // @param tmpReq - UpdateWaitingRoomRequest
 //
@@ -30906,7 +31066,7 @@ func (client *Client) UpdateWaitingRoomWithOptions(tmpReq *UpdateWaitingRoomRequ
 
 // Summary:
 //
-// Updates a waiting room.
+// Updates the configuration of a specified waiting room.
 //
 // @param request - UpdateWaitingRoomRequest
 //
@@ -30924,7 +31084,7 @@ func (client *Client) UpdateWaitingRoom(request *UpdateWaitingRoomRequest) (_res
 
 // Summary:
 //
-// Updates a waiting room event.
+// Updates the configuration of a waiting room event.
 //
 // @param request - UpdateWaitingRoomEventRequest
 //
@@ -31044,7 +31204,7 @@ func (client *Client) UpdateWaitingRoomEventWithOptions(request *UpdateWaitingRo
 
 // Summary:
 //
-// Updates a waiting room event.
+// Updates the configuration of a waiting room event.
 //
 // @param request - UpdateWaitingRoomEventRequest
 //
@@ -31062,11 +31222,11 @@ func (client *Client) UpdateWaitingRoomEvent(request *UpdateWaitingRoomEventRequ
 
 // Summary:
 //
-// # Modify Waiting Room Rule
+// Updates the waiting room bypass rule configuration for a specified site.
 //
 // Description:
 //
-// This interface allows you to modify the rule settings of a specific waiting room in a site, including the rule name, enable status, and rule content, etc.
+// Modifies the rule settings of a specific waiting room for a site, including the rule name, enabled status, and rule content.
 //
 // @param request - UpdateWaitingRoomRuleRequest
 //
@@ -31126,11 +31286,11 @@ func (client *Client) UpdateWaitingRoomRuleWithOptions(request *UpdateWaitingRoo
 
 // Summary:
 //
-// # Modify Waiting Room Rule
+// Updates the waiting room bypass rule configuration for a specified site.
 //
 // Description:
 //
-// This interface allows you to modify the rule settings of a specific waiting room in a site, including the rule name, enable status, and rule content, etc.
+// Modifies the rule settings of a specific waiting room for a site, including the rule name, enabled status, and rule content.
 //
 // @param request - UpdateWaitingRoomRuleRequest
 //
@@ -31643,7 +31803,7 @@ func (client *Client) UploadSiteOriginClientCertificate(request *UploadSiteOrigi
 
 // Summary:
 //
-// Verifies the ownership of a Software as a Service (SaaS) domain name. After a domain name is verified, the site is automatically activated.
+// Verifies the ownership of a SaaS domain name. Sites that pass the verification are automatically activated.
 //
 // @param request - VerifyCustomHostnameRequest
 //
@@ -31687,7 +31847,7 @@ func (client *Client) VerifyCustomHostnameWithOptions(request *VerifyCustomHostn
 
 // Summary:
 //
-// Verifies the ownership of a Software as a Service (SaaS) domain name. After a domain name is verified, the site is automatically activated.
+// Verifies the ownership of a SaaS domain name. Sites that pass the verification are automatically activated.
 //
 // @param request - VerifyCustomHostnameRequest
 //

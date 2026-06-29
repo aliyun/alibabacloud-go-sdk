@@ -22,19 +22,19 @@ type iListRecordsResponseBody interface {
 }
 
 type ListRecordsResponseBody struct {
-	// The current page number.
+	// The current page number, same as the PageNumber request parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records returned per page.
+	// The number of records displayed per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of DNS records. For details, see the <props="china">[documentation](https://help.aliyun.com/document_detail/2708761.html)<props="intl">[documentation](https://www.alibabacloud.com/help/doc-detail/2708761.html).
+	// DNS information of the records. For details, refer to <props="china">[Documentation](https://help.aliyun.com/document_detail/2708761.html)<props="intl">[Documentation](https://www.alibabacloud.com/help/doc-detail/2708761.html).
 	Records []*ListRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -117,11 +117,11 @@ func (s *ListRecordsResponseBody) Validate() error {
 }
 
 type ListRecordsResponseBodyRecords struct {
-	// The origin authentication settings for the CNAME record.
+	// The origin authentication information of the CNAME record.
 	AuthConf *ListRecordsResponseBodyRecordsAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
 	// The business scenario for record acceleration. Valid values:
 	//
-	// - **image_video**: Images and videos.
+	// - **image_video**: Image and video.
 	//
 	// - **api**: API.
 	//
@@ -131,30 +131,30 @@ type ListRecordsResponseBodyRecords struct {
 	//
 	// web
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// The record\\"s comment.
+	// The comment of the record.
 	//
 	// example:
 	//
 	// this is a remark.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The UTC time when the record was created, in ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+	// The creation time of the record. The date format follows the ISO 8601 standard and uses UTC time in the format of yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CustomPort *string `json:"CustomPort,omitempty" xml:"CustomPort,omitempty"`
-	// The DNS details of the record. The fields in this object vary based on the record type.
+	// The specific DNS information of the record. Different record types contain different information.
 	//
 	// example:
 	//
 	// {"value":"1.1.1.1"}
 	Data *ListRecordsResponseBodyRecordsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The policy for the `HOST` header in back-to-origin requests. This parameter applies only to CNAME records. Valid values:
+	// The origin host policy. This takes effect when the record type is CNAME. It sets the policy for the host header used during origin requests. Two modes are available:
 	//
-	// - **follow_hostname**: Uses the `HOST` header of the incoming request.
+	// - **follow_hostname**: Follow the request host.
 	//
-	// - **follow_origin_domain**: Uses the domain name of the origin server.
+	// - **follow_origin_domain**: Follow the origin domain.
 	//
 	// example:
 	//
@@ -164,15 +164,15 @@ type ListRecordsResponseBodyRecords struct {
 	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
 	// Indicates whether proxy acceleration is enabled for the record. Valid values:
 	//
-	// - **true**: Proxy acceleration is enabled.
+	// - **true**: Proxy enabled.
 	//
-	// - **false**: Proxy acceleration is disabled.
+	// - **false**: Proxy acceleration disabled.
 	//
 	// example:
 	//
 	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
-	// The CNAME value assigned to this record. To enable the service, create a CNAME record in your DNS provider\\"s settings that points to this value.
+	// The CNAME of the record. This is the CNAME value that needs to be configured for the record when the site access method is CNAME access.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type ListRecordsResponseBodyRecords struct {
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The type of origin for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+	// The origin type of the CNAME record. This parameter is required when adding a CNAME record. Valid values:
 	//
 	// - **OSS**: OSS origin.
 	//
@@ -200,15 +200,15 @@ type ListRecordsResponseBodyRecords struct {
 	//
 	// - **OP**: Origin pool.
 	//
-	// - **Domain**: Domain origin.
+	// - **Domain**: Standard domain origin.
 	//
-	// If this parameter is not specified, the default value is `Domain`.
+	// If this parameter is not specified or left empty, the default value is Domain, which indicates a standard domain origin type.
 	//
 	// example:
 	//
 	// OSS
 	RecordSourceType *string `json:"RecordSourceType,omitempty" xml:"RecordSourceType,omitempty"`
-	// The DNS record type, such as **A/AAAA, CNAME, and TXT**.
+	// The DNS type of the record, such as **A/AAAA, CNAME, TXT**, etc.
 	//
 	// example:
 	//
@@ -226,13 +226,13 @@ type ListRecordsResponseBodyRecords struct {
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The Time to Live (TTL) for the record, in seconds. A value of 1 indicates that the TTL is automatic.
+	// The TTL (Time to Live) of the record, in seconds. When the value is 1, it indicates that the TTL is set to automatic.
 	//
 	// example:
 	//
 	// 30
 	Ttl *int64 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The UTC time when the record was last updated, in ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+	// The update time of the record. The date format follows the ISO 8601 standard and uses UTC time in the format of yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -434,45 +434,45 @@ func (s *ListRecordsResponseBodyRecords) Validate() error {
 }
 
 type ListRecordsResponseBodyRecordsAuthConf struct {
-	// The AccessKey for the account that owns the origin server. This parameter is required if the origin type is OSS and the authentication type is `private_cross_account`, or if the origin type is S3 and the authentication type is `private`.
+	// The AccessKey of the account to which the origin belongs. This parameter is available when the origin type is OSS with private cross-account read authentication, or when the origin type is S3 with private read authentication.
 	//
 	// example:
 	//
 	// u0Nkg5gBK***QF5wvKMM504JUHt
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	// The origin authentication type. The available authentication types depend on the origin type, which is specified by the `RecordSourceType` parameter. This parameter is required if the origin type is OSS or S3. Valid values:
+	// The origin authentication type. Different origin types support different authentication types. The origin type refers to the SourceType parameter in this API. When the origin type is OSS or S3, the origin authentication type must be specified. Valid values:
 	//
-	// - **public**: Public read. Use this value if the origin type is OSS or S3 and the origin server allows public read access.
+	// - **public**: Public read. Use this value when the origin type is OSS or S3 and the origin has public read access.
 	//
-	// - **private**: Private read. Use this value if the origin type is S3 and the origin server requires private read access.
+	// - **private**: Private read. Use this value when the origin type is S3 and the origin has private read access.
 	//
-	// - **private_same_account**: Private read within the same account. Use this value if the origin type is OSS, the origin server is in the same Alibaba Cloud account, and requires private read access.
+	// - **private_same_account**: Private same-account read. Use this value when the origin type is OSS, the origin is under the same Alibaba Cloud account, and the origin has private read access.
 	//
-	// - **private_cross_account**: Private read across different accounts. Use this value if the origin type is OSS, the origin server is in a different Alibaba Cloud account, and requires private read access.
+	// - **private_cross_account**: Private cross-account read. Use this value when the origin type is OSS, the origin is not under the same Alibaba Cloud account, and the origin has private read access.
 	//
 	// example:
 	//
 	// private
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The region where the origin server is located. This parameter is required if the origin type is S3. For valid region names, refer to the official S3 documentation.
+	// The region where the origin is located. This parameter is available when the origin type is S3. The region of the origin can be obtained from the official S3 website.
 	//
 	// example:
 	//
 	// us-east-1
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The SecretKey for the account that owns the origin server. This parameter is required if the origin type is OSS and the authentication type is `private_cross_account`, or if the origin type is S3 and the authentication type is `private`.
+	// The SecretKey of the account to which the origin belongs. This parameter is available when the origin type is OSS with private cross-account read authentication, or when the origin type is S3 with private read authentication.
 	//
 	// example:
 	//
 	// VIxuvJSA2S03f***kp208dy5w7
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	// The signature algorithm version. This parameter is required if the origin type is S3 and the authentication type is `private`. Valid values:
+	// The signature algorithm version. This parameter is available when the origin type is S3 and the origin authentication type is private read. Valid values:
 	//
 	// - **v2**
 	//
 	// - **v4**
 	//
-	// The default is `v4`.
+	// Default value: v4.
 	//
 	// example:
 	//
@@ -538,102 +538,107 @@ func (s *ListRecordsResponseBodyRecordsAuthConf) Validate() error {
 }
 
 type ListRecordsResponseBodyRecordsData struct {
-	// The encryption algorithm for the record. The value ranges from **0 to 255**. This parameter is valid only for CERT and SSHFP records.
+	// The encryption algorithm used by the record. Valid values: **0 to 255**. Exclusive to CERT and SSHFP records.
 	//
 	// example:
 	//
 	// 0
 	Algorithm *int32 `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The public key certificate. This parameter is valid only for CERT, SMIMEA, and TLSA records.
+	// The public key certificate information of the record. Exclusive to CERT, SMIMEA, and TLSA records.
 	//
 	// example:
 	//
 	// dGVzdGFkYWxrcw==
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The public key fingerprint. This parameter is valid only for SSHFP records.
+	// The public key fingerprint value of the record. Exclusive to SSHFP records.
 	//
 	// example:
 	//
 	// abcdef1234567890
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	// The record\\"s flag. For a CAA record, the flag determines how a certificate authority (CA) processes the record. The value ranges from **0 to 255**. This parameter applies only to CAA records.
+	// The flag of the record. The Flag of a CAA record indicates its priority and processing method. Valid values: **0 to 255**. Exclusive to CAA records.
 	//
 	// example:
 	//
 	// 128
 	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	// The public key identifier. The value ranges from **0 to 65535**. This parameter is valid only for CERT records.
+	// The public key identifier of the record. Valid values: **0 to 65535**. Exclusive to CERT records.
 	//
 	// example:
 	//
 	// 0
 	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
-	// The algorithm policy for matching or validating certificates. The value ranges from **0 to 255**. This parameter is valid only for SMIMEA and TLSA records.
+	// The algorithm strategy used by the record for matching or verifying certificates. Valid values: **0 to 255**. Exclusive to SMIMEA and TLSA records.
 	//
 	// example:
 	//
 	// 0
 	MatchingType *int32 `json:"MatchingType,omitempty" xml:"MatchingType,omitempty"`
-	// The port number, which must be an integer from **0 to 65535**. This parameter applies only to SRV records.
+	// The port of the record. Valid values: **0 to 65535**. Exclusive to SRV records.
 	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The priority of the record, which must be an integer from **0 to 65535**. A lower value indicates a higher priority. This parameter applies only to MX, SRV, and URI records.
+	// The priority of the record. Valid values: **0 to 65535**. A smaller value indicates a higher priority. Exclusive to MX, SRV, and URI records.
 	//
 	// example:
 	//
 	// 0
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of certificate or public key for the record. The value ranges from **0 to 255**. This parameter is valid only for SMIMEA and TLSA records.
+	// The type of certificate or public key used by the record. Valid values: **0 to 255**. Exclusive to SMIMEA and TLSA records.
 	//
 	// example:
 	//
 	// 0
 	Selector *int32 `json:"Selector,omitempty" xml:"Selector,omitempty"`
-	// The record\\"s tag. For a CAA record, the tag indicates its specific type and purpose. This parameter is valid only for CAA records.
+	// The tag of the record. The Tag of a CAA record indicates its specific type and purpose. Exclusive to CAA records.
 	//
 	// example:
 	//
 	// issue
-	Tag  *string                `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tags of the record.
+	//
+	// example:
+	//
+	// {\\"Name\\":\\"PARAMETER\\"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The certificate type for a CERT record, or the public key type for an SSHFP record.
+	// The certificate type of the record (in CERT records), or the public key type (in SSHFP records).
 	//
 	// example:
 	//
 	// 0
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The usage identifier. The value ranges from **0 to 255**. This parameter is valid only for SMIMEA and TLSA records.
+	// The usage identifier of the record. Valid values: **0 to 255**. Exclusive to SMIMEA and TLSA records.
 	//
 	// example:
 	//
 	// 0
 	Usage *int32 `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	// The value of the record. This parameter applies to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. The meaning of this parameter varies based on the record type:
+	// The record value or partial content. This parameter is included in A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings for different record types:
 	//
-	// - **A/AAAA**: The target IP address. Use an IPv4 address for an A record and an IPv6 address for an AAAA record.
+	// - **A/AAAA**: The IP address pointed to. When there are multiple IPs, they are separated by commas (,). At least one IPv4 address is required.
 	//
-	// - **CNAME**: The target domain name.
+	// - **CNAME**: The target domain name pointed to.
 	//
 	// - **NS**: The name server for the specified domain.
 	//
-	// - **MX**: The domain name of the target mail server.
+	// - **MX**: A valid target mail server domain name.
 	//
-	// - **TXT**: A text string.
+	// - **TXT**: A valid text string.
 	//
-	// - **CAA**: The domain name of the certificate authority.
+	// - **CAA**: A valid certificate authority domain name.
 	//
-	// - **SRV**: The domain name of the target host.
+	// - **SRV**: A valid target host domain name.
 	//
-	// - **URI**: A URI string.
+	// - **URI**: A valid URI string.
 	//
 	// example:
 	//
 	// CNAME
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The weight of the record, which must be an integer from **0 to 65535**. This parameter applies only to SRV and URI records.
+	// The weight of the record. Valid values: **0 to 65535**. Exclusive to SRV and URI records.
 	//
 	// example:
 	//

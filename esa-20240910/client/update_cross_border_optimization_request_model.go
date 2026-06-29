@@ -16,11 +16,11 @@ type iUpdateCrossBorderOptimizationRequest interface {
 }
 
 type UpdateCrossBorderOptimizationRequest struct {
-	// Whether to enable Chinese mainland network access optimization. By default, it is disabled. Valid values:
+	// Specifies whether to enable China mainland network access optimization. This feature is disabled by default. Valid values:
 	//
-	// 	- on
+	// - on: Enabled.
 	//
-	// 	- off
+	// - off: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type UpdateCrossBorderOptimizationRequest struct {
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

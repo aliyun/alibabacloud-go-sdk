@@ -16,11 +16,11 @@ type iUpdateSiteNameExclusiveRequest interface {
 }
 
 type UpdateSiteNameExclusiveRequest struct {
-	// Specifies whether to enable site hold. Valid values:
+	// The feature switch. Valid values:
 	//
-	// 	- on
+	// - on: enabled.
 	//
-	// 	- off
+	// - off: disabled.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type UpdateSiteNameExclusiveRequest struct {
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

@@ -16,11 +16,11 @@ type iUpdatePerformanceDataCollectionRequest interface {
 }
 
 type UpdatePerformanceDataCollectionRequest struct {
-	// Enables or disables Performance Data Collection. Valid values:
+	// Specifies whether to enable quality data collection. Valid values:
 	//
-	// - `on`: Enables the Feature.
+	// - on: Enabled.
 	//
-	// - `off`: Disables the Feature.
+	// - off: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type UpdatePerformanceDataCollectionRequest struct {
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The ID of the Site. You can get this ID by calling the [ListSites](~~ListSites~~) API.
+	// The site ID. You can obtain the ID by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// This parameter is required.
 	//

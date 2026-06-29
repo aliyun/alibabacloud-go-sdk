@@ -26,41 +26,41 @@ type iListCustomResponseCodeRulesRequest interface {
 }
 
 type ListCustomResponseCodeRulesRequest struct {
-	// The configuration ID.
+	// Configuration ID.
 	//
 	// example:
 	//
 	// 436490043994112
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configuration type. Use this parameter to query global or rule configurations. Valid values:
+	// Configuration type. You can use this parameter to query global or rule configurations. Valid values:
 	//
-	// - global: Queries global configurations.
+	// - global: queries global configurations.
 	//
-	// - rule: Queries rule configurations.
+	// - rule: queries rule configurations.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The page number. The default value is 1 if you do not specify this parameter.
+	// Page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The maximum value is 500. The default value is 500 if you do not specify this parameter.
+	// Number of entries per page. Maximum value: 500. Default value: 500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The rule name.
+	// Rule name.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The site ID. For more information, see [ListSites](https://help.aliyun.com/document_detail/2850189.html).
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type ListCustomResponseCodeRulesRequest struct {
 	//
 	// 340035003106221
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the site configuration. For sites with configuration version control enabled, specify the site version for which the configuration takes effect using this parameter. The default value is version 0.
+	// The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
 	//
 	// example:
 	//

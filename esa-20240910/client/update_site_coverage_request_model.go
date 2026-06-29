@@ -16,21 +16,23 @@ type iUpdateSiteCoverageRequest interface {
 }
 
 type UpdateSiteCoverageRequest struct {
-	// The target acceleration area to modify. Valid values:
+	// The target acceleration region to change to. Valid values:
 	//
-	// - **domestic**: Only the Chinese mainland.
+	// - **domestic**: the Chinese mainland only.
 	//
-	// - **global**: Global.
+	// - **global**: global.
 	//
-	// - **overseas**: Global (excluding the Chinese mainland).
+	// - **overseas**: global (excluding the Chinese mainland).
+	//
+	// <props="china">If the value is set to domestic or global, the site corresponding to SiteId must have a valid ICP filing..
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// global
+	// overseas
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The site ID. Get this by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
 	//
 	// This parameter is required.
 	//

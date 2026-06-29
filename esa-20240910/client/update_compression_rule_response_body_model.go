@@ -14,7 +14,7 @@ type iUpdateCompressionRuleResponseBody interface {
 }
 
 type UpdateCompressionRuleResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

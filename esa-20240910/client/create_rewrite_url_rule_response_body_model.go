@@ -22,7 +22,7 @@ type CreateRewriteUrlRuleResponseBody struct {
 	//
 	// 39237781679****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

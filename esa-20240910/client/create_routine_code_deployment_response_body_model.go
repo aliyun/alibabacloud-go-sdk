@@ -20,7 +20,7 @@ type iCreateRoutineCodeDeploymentResponseBody interface {
 }
 
 type CreateRoutineCodeDeploymentResponseBody struct {
-	// The configuration list of the phased release version number.
+	// The list of percentage-based canary release code version configurations.
 	CodeVersions []*CreateRoutineCodeDeploymentResponseBodyCodeVersions `json:"CodeVersions,omitempty" xml:"CodeVersions,omitempty" type:"Repeated"`
 	// The deployment record ID.
 	//
@@ -34,7 +34,7 @@ type CreateRoutineCodeDeploymentResponseBody struct {
 	//
 	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The phased release policy. The constant string is "percentage".
+	// The canary release strategy. Fixed value: percentage.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ func (s *CreateRoutineCodeDeploymentResponseBody) Validate() error {
 }
 
 type CreateRoutineCodeDeploymentResponseBodyCodeVersions struct {
-	// The version of the code.
+	// The code version number.
 	//
 	// example:
 	//
 	// 1723599747213377175
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	// The phased release ratio.
+	// The canary release percentage for the code version.
 	//
 	// example:
 	//

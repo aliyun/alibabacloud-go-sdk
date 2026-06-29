@@ -24,27 +24,27 @@ type iGetRoutineResponseBody interface {
 }
 
 type GetRoutineResponseBody struct {
-	// The creation time of the edge function Routine.
+	// The time when the Edge Routine was created. The time follows the RFC 3339 standard in the UTC time zone.
 	//
 	// example:
 	//
 	// 2024-03-11T01:23:21Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The default domain name for accessing the Routine.
+	// The default access record.
 	//
 	// example:
 	//
 	// routine1.example.com
 	DefaultRelatedRecord *string `json:"DefaultRelatedRecord,omitempty" xml:"DefaultRelatedRecord,omitempty"`
-	// The description of the edge function Routine.
+	// The description of the Edge Routine.
 	//
 	// example:
 	//
 	// ZWRpdCByb3V0aW5lIGNvbmZpZyBkZXNjcmlwdGlvbg
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// A list of environments.
+	// The list of environment context.
 	Envs []*GetRoutineResponseBodyEnvs `json:"Envs,omitempty" xml:"Envs,omitempty" type:"Repeated"`
-	// Indicates whether the Routine includes Assets.
+	// Indicates whether the Routine has the Assets tag.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *GetRoutineResponseBody) Validate() error {
 }
 
 type GetRoutineResponseBodyEnvs struct {
-	// Details of the canary release for a code version.
+	// The percentage-based canary release deployment information.
 	CodeDeploy *GetRoutineResponseBodyEnvsCodeDeploy `json:"CodeDeploy,omitempty" xml:"CodeDeploy,omitempty" type:"Struct"`
 	// The environment name.
 	//
@@ -180,21 +180,21 @@ func (s *GetRoutineResponseBodyEnvs) Validate() error {
 }
 
 type GetRoutineResponseBodyEnvsCodeDeploy struct {
-	// A list of deployed code versions.
+	// The list of deployed code version numbers.
 	CodeVersions []*GetRoutineResponseBodyEnvsCodeDeployCodeVersions `json:"CodeVersions,omitempty" xml:"CodeVersions,omitempty" type:"Repeated"`
-	// The time the deployment was created.
+	// The time when the deployment was created. The time follows the RFC 3339 standard in the UTC time zone.
 	//
 	// example:
 	//
 	// 2023-05-11T09:21:36Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The deployment ID.
+	// The deployment record ID.
 	//
 	// example:
 	//
 	// 589267
 	DeployId *string `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
-	// The deployment strategy. The default value is `percentage`.
+	// The deployment strategy. Default value: percentage.
 	//
 	// example:
 	//
@@ -260,13 +260,13 @@ func (s *GetRoutineResponseBodyEnvsCodeDeploy) Validate() error {
 }
 
 type GetRoutineResponseBodyEnvsCodeDeployCodeVersions struct {
-	// The code version ID.
+	// The code version number.
 	//
 	// example:
 	//
 	// 1746583193971399525
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	// The creation time of the code version.
+	// The time when the code version was created. The time follows the RFC 3339 standard in the UTC time zone.
 	//
 	// example:
 	//
@@ -278,7 +278,7 @@ type GetRoutineResponseBodyEnvsCodeDeployCodeVersions struct {
 	//
 	// code version 1.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The percentage of traffic routed to this code version.
+	// The canary release percentage of the code version.
 	//
 	// example:
 	//

@@ -24,9 +24,9 @@ type iListOriginRulesResponseBody interface {
 }
 
 type ListOriginRulesResponseBody struct {
-	// A list of configurations.
+	// The configurations in the response.
 	Configs []*ListOriginRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The current page number.
+	// The current page number, same as the PageNumber request parameter.
 	//
 	// example:
 	//
@@ -140,177 +140,177 @@ type ListOriginRulesResponseBodyConfigs struct {
 	//
 	// 395386449776640
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configuration type. You can use this parameter to query for global or rule-specific configurations. Valid values:
+	// The configuration type. You can query global or rule configurations based on this parameter. Valid values:
 	//
-	// - `global`: The global configuration.
+	// - global: Query global configurations.
 	//
-	// - `rule`: A rule-specific configuration.
+	// - rule: Query rule configurations.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Overrides the DNS record for the origin request.
+	// The rewritten DNS resolution record for back-to-origin requests.
 	//
 	// example:
 	//
 	// test.example.com
 	DnsRecord *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
-	// Specifies whether to follow 302 redirects from the origin. Valid values:
+	// The back-to-origin 302 redirect follow switch. Valid values:
 	//
-	// - `on`: Enabled.
+	// - on: Enable.
 	//
-	// - `off`: Disabled.
+	// - off: Disable.
 	//
 	// example:
 	//
 	// on
 	Follow302Enable *string `json:"Follow302Enable,omitempty" xml:"Follow302Enable,omitempty"`
-	// The maximum number of 302 redirects to follow. Valid range: 1 to 5.
+	// The maximum number of 302 redirect follows. Valid values: 1 to 5.
 	//
 	// example:
 	//
 	// 1
 	Follow302MaxTries *string `json:"Follow302MaxTries,omitempty" xml:"Follow302MaxTries,omitempty"`
-	// Specifies whether to retain the original request parameters when following a redirect. Valid values:
+	// The switch for retaining original request parameters. Valid values:
 	//
-	// - `on`: Enabled.
+	// - on: Enable.
 	//
-	// - `off`: Disabled.
+	// - off: Disable.
 	//
 	// example:
 	//
 	// on
 	Follow302RetainArgs *string `json:"Follow302RetainArgs,omitempty" xml:"Follow302RetainArgs,omitempty"`
-	// Specifies whether to retain the original request header when following a redirect. Valid values:
+	// The switch for retaining original request headers. Valid values:
 	//
-	// - `on`: Enabled.
+	// - on: Enable.
 	//
-	// - `off`: Disabled.
+	// - off: Disable.
 	//
 	// example:
 	//
 	// on
 	Follow302RetainHeader *string `json:"Follow302RetainHeader,omitempty" xml:"Follow302RetainHeader,omitempty"`
-	// The host to use for the origin request after following a 302 redirect.
+	// The back-to-origin host after 302 redirect modification.
 	//
 	// example:
 	//
 	// test.com
 	Follow302TargetHost *string `json:"Follow302TargetHost,omitempty" xml:"Follow302TargetHost,omitempty"`
-	// The `Host` header carried in the origin request.
+	// The HOST carried in the back-to-origin request.
 	//
 	// example:
 	//
 	// origin.example.com
 	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
-	// The origin server port used for origin requests over HTTP.
+	// The origin server port accessed when using the HTTP protocol for back-to-origin.
 	//
 	// example:
 	//
 	// 8080
 	OriginHttpPort *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
-	// The origin server port used for origin requests over HTTPS.
+	// The origin server port accessed when using the HTTPS protocol for back-to-origin.
 	//
 	// example:
 	//
 	// 4433
 	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
-	// Specifies whether mTLS is enabled. Valid values:
+	// The mTLS switch. Valid values:
 	//
-	// - `on`: Enabled.
+	// - on: Enable.
 	//
-	// - `off`: Disabled.
+	// - off: Disable.
 	//
 	// example:
 	//
 	// on
 	OriginMtls *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
-	// The read timeout, in seconds, for the origin server.
+	// The origin server read timeout period, in seconds.
 	//
 	// example:
 	//
 	// 10
 	OriginReadTimeout *string `json:"OriginReadTimeout,omitempty" xml:"OriginReadTimeout,omitempty"`
-	// The protocol used for origin requests. Valid values:
+	// The protocol used for back-to-origin requests. Valid values:
 	//
-	// - `http`: Use the HTTP protocol for origin requests.
+	// - http: Use the HTTP protocol for back-to-origin.
 	//
-	// - `https`: Use the HTTPS protocol for origin requests.
+	// - https: Use the HTTPS protocol for back-to-origin.
 	//
-	// - `follow`: Use the same protocol as the client request.
+	// - follow: Follow the client protocol for back-to-origin.
 	//
 	// example:
 	//
 	// http
 	OriginScheme *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
-	// The SNI carried in the origin request.
+	// The SNI carried in the back-to-origin request.
 	//
 	// example:
 	//
 	// origin.example.com
 	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
-	// Specifies whether to verify the origin server certificate. Valid values:
+	// The origin server certificate verification switch. Valid values:
 	//
-	// - `on`: Enabled.
+	// - on: Enable.
 	//
-	// - `off`: Disabled.
+	// - off: Disable.
 	//
 	// example:
 	//
 	// on
 	OriginVerify *string `json:"OriginVerify,omitempty" xml:"OriginVerify,omitempty"`
-	// Specifies whether to use range-based requests to retrieve files from the origin. Valid values:
+	// Use range-based slicing for back-to-origin file downloads. Valid values:
 	//
-	// - `on`: Enables range requests.
+	// - on: Enable.
 	//
-	// - `off`: Disables range requests.
+	// - off: Disable.
 	//
-	// - `force`: Forces range requests.
+	// - force: Force enable.
 	//
 	// example:
 	//
 	// on
 	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
-	// The size of each chunk for range requests.
+	// The range chunk size.
 	//
 	// example:
 	//
 	// 1MB
 	RangeChunkSize *string `json:"RangeChunkSize,omitempty" xml:"RangeChunkSize,omitempty"`
-	// The rule content, which uses a conditional expression to match user requests. This parameter is not required for global configurations. It supports two use cases:
+	// The rule content, which uses conditional expressions to match user requests. You do not need to set this parameter when adding a global configuration. There are two usage scenarios:
 	//
-	// - To match all incoming requests, set the value to `true`.
+	// - Match all incoming requests: Set the value to true.
 	//
-	// - To match specific requests, set the value to a custom expression, such as `(http.host eq "video.example.com")`.
+	// - Match specified requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
 	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether the rule is enabled. This parameter is not required for global configurations. Valid values:
+	// The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
 	//
-	// - `on`: Enabled.
+	// - on: Enable.
 	//
-	// - `off`: Disabled.
+	// - off: Disable.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. This parameter is not required for global configurations.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order. Lower values indicate higher priority.
+	// The execution order of the rule. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The site configuration version. If versioning is enabled for the site, this parameter specifies which version to use. The default is 0.
+	// The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
 	//
 	// example:
 	//

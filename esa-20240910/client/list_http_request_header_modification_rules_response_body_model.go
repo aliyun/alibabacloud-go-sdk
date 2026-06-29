@@ -24,15 +24,15 @@ type iListHttpRequestHeaderModificationRulesResponseBody interface {
 }
 
 type ListHttpRequestHeaderModificationRulesResponseBody struct {
-	// The request header modification configurations.
+	// The list of HTTP request header modification configurations.
 	Configs []*ListHttpRequestHeaderModificationRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The page number. Default: **1**.
+	// The current page number, which is the same as the PageNumber request parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. Default: **500**. Range: **1 to 500**.
+	// The number of entries per page. Default value: **500**. Valid values: **1 to 500**.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListHttpRequestHeaderModificationRulesResponseBody struct {
 	//
 	// 35C66C7B-671H-4297-9187-2C4477247A78
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count of entries.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total count of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -142,49 +142,49 @@ type ListHttpRequestHeaderModificationRulesResponseBodyConfigs struct {
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// The configuration type. Valid values:
 	//
-	// - global: Global configuration.
+	// - global: global configuration.
 	//
-	// - rule: Rule configuration.
+	// - rule: rule configuration.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The modifications to apply to the request headers, such as adding, deleting, or modifying them.
+	// The request header modifications, which support add, delete, and modify operations.
 	RequestHeaderModification []*ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
-	// The conditional expression that determines which requests this rule applies to. This parameter is not required for global configurations. There are two use cases:
+	// The rule content, which uses conditional expressions to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
 	//
-	// - To match all incoming requests, set the value to true.
+	// - Match all incoming requests: Set the value to true.
 	//
-	// - To match specified requests, set the value to a custom expression, for example, (http.host eq "video.example.com").
+	// - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether the rule is enabled or disabled. This parameter is not required for global configurations. Valid values:
+	// The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
 	//
-	// - on: Enabled.
+	// - on: enabled.
 	//
-	// - off: Disabled.
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. This parameter is not required for global configurations.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The execution priority of the rule. A smaller value indicates a higher priority.
+	// The execution order of the rule. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies. The default is 0.
+	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
 	//
 	// example:
 	//
@@ -286,19 +286,19 @@ func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigs) Validate() e
 }
 
 type ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification struct {
-	// The header name.
+	// The request header name.
 	//
 	// example:
 	//
 	// headerName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The operation. Valid values:
+	// The operation type. Valid values:
 	//
-	// - add: Add a header.
+	// - add: adds a header.
 	//
-	// - del: Delete a header.
+	// - del: deletes a header.
 	//
-	// - modify: Modify a header.
+	// - modify: modifies a header.
 	//
 	// example:
 	//
@@ -306,15 +306,15 @@ type ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModif
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// The value type. Valid values:
 	//
-	// - static: Static value.
+	// - static: static pattern.
 	//
-	// - dynamic: Dynamic value.
+	// - dynamic: dynamic schema.
 	//
 	// example:
 	//
 	// static
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The header value.
+	// The request header value.
 	//
 	// example:
 	//

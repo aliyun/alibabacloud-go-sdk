@@ -14,7 +14,7 @@ type iUpdateWaitingRoomRuleResponseBody interface {
 }
 
 type UpdateWaitingRoomRuleResponseBody struct {
-	// Request ID, used for tracking the progress of request processing.
+	// The request ID.
 	//
 	// example:
 	//

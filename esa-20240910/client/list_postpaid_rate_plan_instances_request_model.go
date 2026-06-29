@@ -28,37 +28,37 @@ type iListPostpaidRatePlanInstancesRequest interface {
 }
 
 type ListPostpaidRatePlanInstancesRequest struct {
-	// Specifies whether to return only instances that have remaining site quota. Valid values:
+	// Specifies whether to check for remaining site quota. Valid values:
 	//
-	// - `true`: Returns only instances with remaining site quota.
+	// - true: Queries instances that have remaining site quota.
 	//
-	// - `false`: Returns all instances, regardless of site quota.
+	// - false: Does not filter by this condition.
 	//
 	// example:
 	//
 	// true
 	CheckRemainingSiteQuota *string `json:"CheckRemainingSiteQuota,omitempty" xml:"CheckRemainingSiteQuota,omitempty"`
-	// The ID of the instance to query.
+	// The instance ID. Use this parameter to query a specific instance.
 	//
 	// example:
 	//
 	// sp-dps-xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. The value must be greater than or equal to 1.
+	// The page number for paging. The value must be greater than or equal to 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. The maximum value is 500.
+	// The number of entries per page for paging. Valid values: 1 to 500.
 	//
 	// example:
 	//
 	// 12
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field to sort the results by. Valid value:
+	// The field by which to sort the results. Valid values:
 	//
-	// - `CreateTime`: Sorts by creation time.
+	// - CreateTime: sorts by creation time.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type ListPostpaidRatePlanInstancesRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - `asc`: ascending
+	//  	- asc: ascending order
 	//
-	// - `desc`: descending
+	//  	- desc: descending order.
 	//
 	// example:
 	//
@@ -76,17 +76,17 @@ type ListPostpaidRatePlanInstancesRequest struct {
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - `online`: The instance is running.
+	//  	- online: Normal.
 	//
-	// - `overdue`: The payment for the instance is overdue.
+	//  	- overdue: Overdue payment.
 	//
-	// - `disable`: The instance is released.
+	//  	- disable: Released.
 	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of add-on service to filter by, such as `bot` or `ddos`.
+	// Specifies whether the instance has purchased additional bot or DDoS protection.
 	//
 	// example:
 	//

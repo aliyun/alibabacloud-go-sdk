@@ -26,29 +26,29 @@ type iListHttpIncomingRequestHeaderModificationRulesRequest interface {
 }
 
 type ListHttpIncomingRequestHeaderModificationRulesRequest struct {
-	// The configuration ID. You can call the ListHttpIncomingRequestHeaderModificationRules operation to query the ID.
+	// The configuration ID. You can call the ListHttpIncomingRequestHeaderModificationRules operation to obtain the configuration ID.
 	//
 	// example:
 	//
 	// 424371770570752
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configuration type to query. Valid values:
+	// The configuration type. You can use this parameter to query global or rule configurations. Valid values:
 	//
-	// 	- global: global configurations.
+	// - global: queries global configurations.
 	//
-	// 	- rule: rule configurations.
+	// - rule: queries rule configurations.
 	//
 	// example:
 	//
 	// rule
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The page number. Default value: 1.
+	// The page number for a paged query. The value must be greater than or equal to 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: 500. Default value: 500.
+	// The number of entries per page for a paged query. Valid values: 1 to 500.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListHttpIncomingRequestHeaderModificationRulesRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type ListHttpIncomingRequestHeaderModificationRulesRequest struct {
 	//
 	// 608665779308176
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
 	//
 	// example:
 	//

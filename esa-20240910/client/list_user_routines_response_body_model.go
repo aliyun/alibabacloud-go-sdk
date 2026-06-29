@@ -26,7 +26,7 @@ type iListUserRoutinesResponseBody interface {
 }
 
 type ListUserRoutinesResponseBody struct {
-	// The page number. Pages start from page 1. Default value: 1.
+	// The current page number.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListUserRoutinesResponseBody struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The maximum number of functions supported by the billing plan.
+	// The Routine quota for the current plan.
 	//
 	// example:
 	//
@@ -50,15 +50,15 @@ type ListUserRoutinesResponseBody struct {
 	//
 	// 1234567890ABCDEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The functions.
+	// The list of Routines.
 	Routines []*ListUserRoutinesResponseBodyRoutines `json:"Routines,omitempty" xml:"Routines,omitempty" type:"Repeated"`
-	// The total count.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 3
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The number of functions that were already created.
+	// The number of Routines already created.
 	//
 	// example:
 	//
@@ -151,31 +151,31 @@ func (s *ListUserRoutinesResponseBody) Validate() error {
 }
 
 type ListUserRoutinesResponseBodyRoutines struct {
-	// The time when the function was created.
+	// The time when the Edge Routine was created. The time follows the RFC 3339 standard in the UTC time zone.
 	//
 	// example:
 	//
 	// 2024-03-11T01:23:02.883361712Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The default record name to access.
+	// The default access record associated with the Routine.
 	//
 	// example:
 	//
 	// serverless-test-2.154edaf6.er.aliyun-esa.net
 	DefaultRelatedRecord *string `json:"DefaultRelatedRecord,omitempty" xml:"DefaultRelatedRecord,omitempty"`
-	// The function description.
+	// The Routine description.
 	//
 	// example:
 	//
 	// ZWRpdCByb3V0aW5lIGNvbmZpZyBkZXNjcmlwdGlvbg==
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to include the Assets file tag.
+	// Indicates whether the Routine contains asset files.
 	//
 	// example:
 	//
 	// false
 	HasAssets *bool `json:"HasAssets,omitempty" xml:"HasAssets,omitempty"`
-	// The function name.
+	// The Routine name.
 	//
 	// example:
 	//

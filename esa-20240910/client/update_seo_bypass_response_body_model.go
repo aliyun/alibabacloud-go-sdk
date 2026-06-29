@@ -14,7 +14,7 @@ type iUpdateSeoBypassResponseBody interface {
 }
 
 type UpdateSeoBypassResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

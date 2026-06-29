@@ -14,7 +14,7 @@ type iUpdateSitePauseResponseBody interface {
 }
 
 type UpdateSitePauseResponseBody struct {
-	// The unique ID for the request.
+	// The request ID.
 	//
 	// example:
 	//

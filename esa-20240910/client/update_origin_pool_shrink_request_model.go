@@ -20,17 +20,17 @@ type iUpdateOriginPoolShrinkRequest interface {
 }
 
 type UpdateOriginPoolShrinkRequest struct {
-	// Specifies whether to enable the origin pool:
+	// Specifies whether the origin address pool is enabled. Valid values:
 	//
-	// - true: Enables the origin pool.
+	// - true: Enabled.
 	//
-	// - false: Disables the origin pool.
+	// - false: Not enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The origin pool ID. Get this ID by calling the [ListOriginPools](~~ListOriginPools~~) operation.
+	// The origin address pool ID. You can call the [ListOriginPools](~~ListOriginPools~~) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type UpdateOriginPoolShrinkRequest struct {
 	//
 	// 1038520525196928
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// An array of origin configurations.
+	// The origin server information added to the origin address pool. Use an array to pass multiple origin servers.
 	OriginsShrink *string `json:"Origins,omitempty" xml:"Origins,omitempty"`
-	// The site ID. Get this ID by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//

@@ -22,7 +22,7 @@ type CreateWaitingRoomRuleResponseBody struct {
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The waiting room bypass rule ID.
+	// The ID of the waiting room bypass rule.
 	//
 	// example:
 	//

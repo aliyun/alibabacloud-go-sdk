@@ -24,33 +24,33 @@ type iListNetworkOptimizationsResponseBody interface {
 }
 
 type ListNetworkOptimizationsResponseBody struct {
-	// Response body configurations.
+	// The configurations returned in the response body.
 	Configs []*ListNetworkOptimizationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The current page number.
+	// The current page number, which is the same as the PageNumber request parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The size of the page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,23 +134,23 @@ func (s *ListNetworkOptimizationsResponseBody) Validate() error {
 }
 
 type ListNetworkOptimizationsResponseBodyConfigs struct {
-	// Configuration ID.
+	// The configuration ID.
 	//
 	// example:
 	//
 	// 395386449776640
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type, which can be used to query global or rule-based configurations. The value range is as follows:
+	// The configuration type. You can use this parameter to query global or rule configurations. Valid values:
 	//
-	// - global: Query global configuration.
+	// - global: global configuration.
 	//
-	// - rule: Query rule-based configuration.
+	// - rule: rule configuration.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Whether to enable GRPC, default is off. The value range is:
+	// Specifies whether to enable gRPC. This feature is disabled by default. Valid values:
 	//
 	// - on: enabled.
 	//
@@ -160,75 +160,75 @@ type ListNetworkOptimizationsResponseBodyConfigs struct {
 	//
 	// on
 	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
-	// Whether to enable HTTP2 origin, defaulting to off. The value range is as follows:
+	// Specifies whether to enable HTTP/2 back-to-origin. This feature is disabled by default. Valid values:
 	//
-	// - on: Enabled.
+	// - on: enabled.
 	//
-	// - off: Disabled.
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
-	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+	// The rule content, which uses conditional expressions to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
 	//
-	// - Match all incoming requests: Set the value to true
+	// - Match all incoming requests: set the value to true.
 	//
-	// - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
+	// - Match specified requests: set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
 	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. This parameter is not required when adding a global configuration. The value range is as follows:
+	// The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
 	//
-	// - on: Enabled.
+	// - on: enabled.
 	//
-	// - off: Disabled.
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter is not required when adding a global configuration.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Rule execution order. The smaller the value, the higher the priority.
+	// The rule execution order. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Site configuration version number. For sites with version management enabled, this parameter can specify the site version for which the configuration takes effect, defaulting to version 0.
+	// The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
 	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// Whether to enable smart routing service, defaulting to off. The value range is as follows:
+	// Specifies whether to enable the smart routing service. This feature is disabled by default. Valid values:
 	//
-	// - on: Enabled.
+	// - on: enabled.
 	//
-	// - off: Disabled.
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
-	// Maximum file size for upload, in MB. The value range is 100 to 500.
+	// The maximum upload file size, in MB. Valid values: 100 to 500.
 	//
 	// example:
 	//
 	// 500
 	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
-	// Whether to enable Websocket, enabled by default. Value range:
+	// Specifies whether to enable WebSocket. This feature is enabled by default. Valid values:
 	//
-	// - on: Enabled.
+	// - on: enabled.
 	//
-	// - off: Disabled.
+	// - off: disabled.
 	//
 	// example:
 	//

@@ -22,11 +22,11 @@ type iCreateSiteRequest interface {
 }
 
 type CreateSiteRequest struct {
-	// The access type for the site. Valid values:
+	// The access type of the site. Valid values:
 	//
-	// - **NS**: NS-based access.
+	// - **NS**: access by using managed NS.
 	//
-	// - **CNAME**: CNAME-based access.
+	// - **CNAME**: access by configuring a CNAME record.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type CreateSiteRequest struct {
 	//
 	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The acceleration region. Valid values are:
+	// The acceleration region. Valid values:
 	//
-	// - **domestic**: Chinese mainland only.
+	// - **domestic**: the Chinese mainland only.
 	//
-	// - **global**: Global.
+	// - **global**: global.
 	//
-	// - **overseas**: Global (excluding the Chinese mainland).
+	// - **overseas**: global (excluding the Chinese mainland).
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateSiteRequest struct {
 	//
 	// domestic
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The ID of the instance. You can obtain the instance ID by calling the [ListUserRatePlanInstances](https://help.aliyun.com/document_detail/2852398.html) operation. You must specify either the instance ID or the site ID. If you specify both, the instance ID takes precedence.
+	// The instance ID. You can obtain the instance ID by calling the [ListUserRatePlanInstances](https://help.aliyun.com/document_detail/2852398.html) operation. You must specify at least one of the instance ID and site ID. If both are specified, the instance ID takes precedence.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type CreateSiteRequest struct {
 	//
 	// dbaudit-cn-nwy349jdb03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the resource group. If you do not specify this parameter, the system automatically uses the ID of the default resource group.
+	// The resource group ID. If you do not specify this parameter, the system automatically uses the default resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmw4znnok****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The name of the site.
+	// The site name.
 	//
 	// This parameter is required.
 	//

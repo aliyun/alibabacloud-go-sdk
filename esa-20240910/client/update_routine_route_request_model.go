@@ -32,11 +32,11 @@ type iUpdateRoutineRouteRequest interface {
 }
 
 type UpdateRoutineRouteRequest struct {
-	// Specifies whether to enable bypass mode. Valid values:
+	// The bypass mode. Valid values:
 	//
-	// - on: Enabled
+	// - on: enabled
 	//
-	// - off: Disabled
+	// - off: disabled.
 	//
 	// example:
 	//
@@ -50,21 +50,21 @@ type UpdateRoutineRouteRequest struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Specifies whether to enable fallback. If enabled, requests fall back to the origin server if the function encounters an exception, such as exceeding the CPU usage limit. Valid values:
+	// The fallback-to-origin switch. When enabled, if the function encounters an exception such as CPU usage exceeding the limit, the request falls back to the origin server. Valid values:
 	//
-	// - on: Enabled
+	// - on: Enabled.
 	//
-	// - off: Disabled
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	Fallback *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
-	// Specifies whether to enable the route. Valid values:
+	// The route switch. Valid values:
 	//
-	// - on: Enabled
+	// - on: enabled
 	//
-	// - off: Disabled
+	// - off: disabled.
 	//
 	// example:
 	//
@@ -76,25 +76,25 @@ type UpdateRoutineRouteRequest struct {
 	//
 	// test_route
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	// The name of the Routine.
+	// The name of the Edge Routine.
 	//
 	// example:
 	//
 	// test-routine1
 	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
-	// The content of the rule.
+	// The rule content.
 	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The execution sequence of the rule.
+	// The execution order of the rule.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The ID of the site. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -102,6 +102,8 @@ type UpdateRoutineRouteRequest struct {
 	//
 	// 123456******
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The Edge Routine timeout period. Valid values: 5 to 60.
+	//
 	// example:
 	//
 	// 5

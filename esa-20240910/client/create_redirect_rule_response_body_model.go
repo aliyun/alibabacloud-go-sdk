@@ -16,7 +16,7 @@ type iCreateRedirectRuleResponseBody interface {
 }
 
 type CreateRedirectRuleResponseBody struct {
-	// The config ID.
+	// The configuration ID.
 	//
 	// example:
 	//

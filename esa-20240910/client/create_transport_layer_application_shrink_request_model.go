@@ -28,35 +28,47 @@ type iCreateTransportLayerApplicationShrinkRequest interface {
 }
 
 type CreateTransportLayerApplicationShrinkRequest struct {
-	// Enables or disables network optimization for access from the Chinese mainland. This feature is disabled by default. Valid values:
+	// Specifies whether to enable network access optimization for the Chinese mainland. This feature is disabled by default. Valid values:
 	//
-	// - `on`: Enables the optimization.
+	// - on: enabled.
 	//
-	// - `off`: Disables the optimization.
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	CrossBorderOptimization *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
-	// Applies IP access rules from Web Application Firewall (WAF) to this Transport Layer Application. Valid values:
+	// The IP access rule switch. When enabled, IP access rules in WAF take effect for the Layer 4 application. Valid values:
 	//
-	// - `on`: Enables the feature.
+	// - on: enabled.
 	//
-	// - `off`: Disables the feature.
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	IpAccessRule *string `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
-	// Enables or disables IPv6 support.
+	// Specifies whether to enable IPv6. This feature is disabled by default. Valid values:
+	//
+	// - on: enabled.
+	//
+	// - off: disabled.
 	//
 	// example:
 	//
 	// off
 	Ipv6 *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
-	// Enables or disables keep-alive protection.
+	// Specifies whether to enable keep-alive protection. This feature is disabled by default. Valid values:
+	//
+	// - on: enabled.
+	//
+	// - off: disabled.
+	//
+	// example:
+	//
+	// off
 	KeepAliveProtection *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
-	// The domain name of the Transport Layer Application.
+	// The domain name of the Layer 4 application.
 	//
 	// This parameter is required.
 	//
@@ -68,14 +80,23 @@ type CreateTransportLayerApplicationShrinkRequest struct {
 	//
 	// This parameter is required.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID. The site must be activated.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
-	SiteId   *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Specifies whether to enable static IP. This feature is disabled by default. Valid values:
+	//
+	// - on: enabled.
+	//
+	// - off: disabled.
+	//
+	// example:
+	//
+	// off
 	StaticIp *string `json:"StaticIp,omitempty" xml:"StaticIp,omitempty"`
 }
 

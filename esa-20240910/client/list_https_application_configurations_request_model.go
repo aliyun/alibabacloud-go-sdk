@@ -26,43 +26,43 @@ type iListHttpsApplicationConfigurationsRequest interface {
 }
 
 type ListHttpsApplicationConfigurationsRequest struct {
-	// The configuration ID.
+	// Configuration ID.
 	//
 	// example:
 	//
 	// 3528160969****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configuration type. Use this parameter to query the global configuration or rule configurations. Valid values:
+	// Configuration type. You can use this parameter to query global configurations or rule configurations. Valid values:
 	//
-	// - global: Queries the global configuration.
+	// - global: Query global configurations.
 	//
-	// - rule: Queries rule configurations.
+	// - rule: Query rule configurations.
 	//
-	// If this parameter is omitted, the query returns both global and rule configurations.
+	// This parameter is optional. If not specified, no distinction is made between global and rule configurations.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The page number to return. If this parameter is omitted, the default value is 1.
+	// The page number for paginated queries. The value must be greater than or equal to 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. The maximum value is 500. If this parameter is omitted, the default value is 500.
+	// The number of entries per page for paginated queries. Valid values: 1-500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The rule name. This parameter filters the results to include only the rule with the specified name.
+	// Rule name. You can query the rule whose name matches the specified value.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The site ID. You can obtain this ID by calling the [ListSites](~~ListSites~~) operation.
+	// Site ID. You can obtain it by calling the [ListSites](~~ListSites~~) API.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type ListHttpsApplicationConfigurationsRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The site version. For sites with version management enabled, use this parameter to retrieve the configuration for a specific site version. The default value is 0.
+	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: version 0.
 	//
 	// example:
 	//

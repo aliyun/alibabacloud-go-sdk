@@ -28,35 +28,35 @@ type iUpdateCustomHostnameRequest interface {
 }
 
 type UpdateCustomHostnameRequest struct {
-	// The ID of the Alibaba Cloud Security certificate. This parameter is required when CertType is set to cas.
+	// The ID of the SSL Certificates Service certificate. This parameter is required when CertType is set to cas.
 	//
 	// example:
 	//
 	// 30000478
 	CasId *int64 `json:"CasId,omitempty" xml:"CasId,omitempty"`
-	// The region of the Alibaba Cloud Security certificate. This parameter is required when CertType is set to cas.
+	// The region of the SSL Certificates Service certificate. This parameter is required when CertType is set to cas. Valid values:
 	//
-	// - cn-hangzhou: The value for accounts on the Alibaba Cloud China Website (www\\.aliyun.com).
+	// - Chinese mainland accounts: cn-hangzhou.
 	//
-	// - ap-southeast-1: The value for accounts on the Alibaba Cloud International Website (www\\.alibabacloud.com).
+	// - International accounts: ap-southeast-1.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	CasRegion *string `json:"CasRegion,omitempty" xml:"CasRegion,omitempty"`
-	// The certificate type. This parameter is required when SslFlag is set to on.
+	// The certificate type. This parameter is required when SslFlag is set to on. Valid values:
 	//
-	// - **free**: Free certificate.
+	// - **free**: free certificate.
 	//
-	// - **upload**: Uploaded certificate.
+	// - **upload**: uploaded certificate.
 	//
-	// - **cas**: Alibaba Cloud Security certificate.
+	// - **cas**: SSL Certificates Service certificate.
 	//
 	// example:
 	//
 	// cas
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The content of the certificate. This parameter is required when CertType is set to upload.
+	// The certificate content. This parameter is required when CertType is set to upload.
 	//
 	// example:
 	//
@@ -70,19 +70,19 @@ type UpdateCustomHostnameRequest struct {
 	//
 	// 1234567890123
 	HostnameId *int64 `json:"HostnameId,omitempty" xml:"HostnameId,omitempty"`
-	// The private key of the certificate. This parameter is required when CertType is set to upload.
+	// The certificate private key. This parameter is required when CertType is set to upload.
 	//
 	// example:
 	//
 	// -----BEGIN PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	// The ID of the record to attach. You can obtain the ID by calling the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation.
+	// The ID of the record to bind. You can obtain the ID by calling the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation.
 	//
 	// example:
 	//
 	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The SSL switch.
+	// The SSL switch. Valid values:
 	//
 	// - **on**: Enables SSL.
 	//

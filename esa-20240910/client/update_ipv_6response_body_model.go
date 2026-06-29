@@ -14,7 +14,7 @@ type iUpdateIPv6ResponseBody interface {
 }
 
 type UpdateIPv6ResponseBody struct {
-	// A unique ID for the request.
+	// The request ID.
 	//
 	// example:
 	//

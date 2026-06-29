@@ -24,33 +24,33 @@ type iListHttpsApplicationConfigurationsResponseBody interface {
 }
 
 type ListHttpsApplicationConfigurationsResponseBody struct {
-	// A list of HTTPS application configurations.
+	// Response body configurations.
 	Configs []*ListHttpsApplicationConfigurationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The current page number.
+	// Current page number, same as the PageNumber request parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// Page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// Total number of records.
 	//
 	// example:
 	//
 	// 16
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of pages.
+	// Total number of pages.
 	//
 	// example:
 	//
@@ -134,177 +134,177 @@ func (s *ListHttpsApplicationConfigurationsResponseBody) Validate() error {
 }
 
 type ListHttpsApplicationConfigurationsResponseBodyConfigs struct {
-	// Whether to enable the Alt-Svc feature. Default: `off`. Valid values:
+	// Alt-Svc feature switch. Disabled by default. Valid values:
 	//
-	// - `on`: The Alt-Svc feature is enabled.
+	// - on: Enabled.
 	//
-	// - `off`: The Alt-Svc feature is disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	AltSvc *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
-	// Whether the Alt-Svc header includes the `clear` parameter. Default: `off`. Valid values:
+	// Whether the Alt-Svc header includes the clear parameter. Disabled by default. Valid values:
 	//
-	// - `on`: The `clear` parameter is included.
+	// - on: Enabled.
 	//
-	// - `off`: The `clear` parameter is not included.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	AltSvcClear *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
-	// The Alt-Svc max-age in seconds. Default: `86400`.
+	// Alt-Svc validity period in seconds. Default value: 86400 seconds.
 	//
 	// example:
 	//
 	// 86400
 	AltSvcMa *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
-	// Whether the Alt-Svc header includes the `persist` parameter. Default: `off`. Valid values:
+	// Whether the Alt-Svc header includes the persist parameter. Disabled by default. Valid values:
 	//
-	// - `on`: The `persist` parameter is included.
+	// - on: Enabled.
 	//
-	// - `off`: The `persist` parameter is not included.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	AltSvcPersist *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
-	// The configuration ID.
+	// Configuration ID.
 	//
 	// example:
 	//
 	// 395386449776640
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The type of the configuration. Valid values:
+	// Configuration type. You can use this parameter to query global configurations or rule configurations. Valid values:
 	//
-	// - `global`: A global configuration.
+	// - global: Query global configurations.
 	//
-	// - `rule`: A rule-based configuration.
+	// - rule: Query rule configurations.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Whether to enable HSTS. Default: `off`. Valid values:
+	// Whether to enable HSTS. Disabled by default. Valid values:
 	//
-	// - `on`: HSTS is enabled.
+	// - on: Enabled.
 	//
-	// - `off`: HSTS is disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	Hsts *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
-	// Whether the HSTS header includes the `includeSubDomains` directive. Default: `off`. Valid values:
+	// Whether to include subdomains in HSTS. Disabled by default. Valid values:
 	//
-	// - `on`: The `includeSubDomains` directive is included.
+	// - on: Enabled.
 	//
-	// - `off`: The `includeSubDomains` directive is not included.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
-	// The HSTS `max-age`, in seconds.
+	// HSTS expiration time in seconds.
 	//
 	// example:
 	//
 	// 3600
 	HstsMaxAge *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
-	// Whether the HSTS header includes the `preload` directive. Default: `off`. Valid values:
+	// Whether to enable HSTS preload. Disabled by default. Valid values:
 	//
-	// - `on`: The `preload` directive is included.
+	// - on: Enabled.
 	//
-	// - `off`: The `preload` directive is not included.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	HstsPreload *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
-	// Whether to enable HTTPS redirection. Default: `off`. Valid values:
+	// Whether to enable forced HTTPS. Disabled by default. Valid values:
 	//
-	// - `on`: HTTPS redirection is enabled.
+	// - on: Enabled.
 	//
-	// - `off`: HTTPS redirection is disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	HttpsForce *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
-	// The status code for HTTPS redirection. Valid values:
+	// Forced HTTPS redirect status code. Valid values:
 	//
-	// - `301`
+	// - 301
 	//
-	// - `302`
+	// - 302
 	//
-	// - `307`
+	// - 307
 	//
-	// - `308`
+	// - 308
 	//
 	// example:
 	//
 	// 301
 	HttpsForceCode *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
-	// Whether to reject TLS handshake requests that lack an SNI. Default: `off`. Valid values:
+	// Whether to enable denial of TLS handshake requests without SNI. Disabled by default. Valid values:
 	//
-	// - `on`: Requests that lack an SNI are rejected.
+	// - on: Enabled.
 	//
-	// - `off`: Requests that lack an SNI are not rejected.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	HttpsNoSniDeny *string `json:"HttpsNoSniDeny,omitempty" xml:"HttpsNoSniDeny,omitempty"`
-	// Whether to enable SNI verification. Default: `off`. Valid values:
+	// Whether to enable SNI verification. Disabled by default. Valid values:
 	//
-	// - `on`: SNI verification is enabled.
+	// - on: Enabled.
 	//
-	// - `off`: SNI verification is disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	HttpsSniVerify *string `json:"HttpsSniVerify,omitempty" xml:"HttpsSniVerify,omitempty"`
-	// The SNI allowlist. Separate multiple values with a space.
+	// Specifies the list of allowed SNI whitelist entries, separated by spaces.
 	//
 	// example:
 	//
 	// abc edf
 	HttpsSniWhitelist *string `json:"HttpsSniWhitelist,omitempty" xml:"HttpsSniWhitelist,omitempty"`
-	// The content of the rule, a conditional expression that matches user requests. This parameter is not required for a global configuration. The following use cases are supported:
+	// Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
 	//
-	// - To match all incoming requests, set the value to `true`.
+	// - Match all incoming requests: Set the value to true.
 	//
-	// - To match specific requests, set the value to a custom expression, such as `(http.host eq "video.example.com")`.
+	// - Match specified requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
 	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Whether the rule is enabled. This parameter is not required for a global configuration. Valid values:
+	// Rule switch. This parameter does not need to be set when adding a global configuration. Valid values:
 	//
-	// - `on`: The rule is enabled.
+	// - on: Enabled.
 	//
-	// - `off`: The rule is disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The name of the rule. This parameter is not required for a global configuration.
+	// Rule name. This parameter does not need to be set when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The execution priority of the rule. A smaller value indicates a higher priority.
+	// Rule execution order. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The site configuration version. For sites with version management, this specifies the version to which the configuration applies. Default: `0`.
+	// The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: version 0.
 	//
 	// example:
 	//

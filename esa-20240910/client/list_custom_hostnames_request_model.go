@@ -46,17 +46,17 @@ type ListCustomHostnamesRequest struct {
 	//
 	// exact
 	NameMatchType *string `json:"NameMatchType,omitempty" xml:"NameMatchType,omitempty"`
-	// The page number, starting from 1. Default value: 1.
+	// The page number for a paged query. The value must be greater than or equal to 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 100. Maximum value: 500.
+	// The number of entries per page for a paged query. Valid values: 1 to 500.
 	//
 	// example:
 	//
-	// 100
+	// 500
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The associated record ID. You can call the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation to obtain the record ID.
 	//

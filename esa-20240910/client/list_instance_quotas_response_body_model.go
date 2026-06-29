@@ -20,13 +20,13 @@ type iListInstanceQuotasResponseBody interface {
 }
 
 type ListInstanceQuotasResponseBody struct {
-	// The plan ID.
+	// The plan instance ID.
 	//
 	// example:
 	//
 	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The quotas in the plan.
+	// The list of plan instance quotas.
 	Quotas []*ListInstanceQuotasResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -34,13 +34,13 @@ type ListInstanceQuotasResponseBody struct {
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247B78
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The plan status. Valid values:
+	// The plan instance status. Valid values:
 	//
-	// 	- online: The plan is in service.
+	// - **online**: The instance is in normal service.
 	//
-	// 	- offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
+	// - **offline**: The instance has expired but has not exceeded the grace period and is unavailable.
 	//
-	// 	- disable: The plan is released.
+	// - **disable**: The instance has been released.
 	//
 	// example:
 	//
@@ -120,15 +120,15 @@ type ListInstanceQuotasResponseBodyQuotas struct {
 	QuotaValue *string `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
 	// The threshold type of the quota. Valid values:
 	//
-	// 	- value: enumerates the values of the quota.
+	// - **value**: enumeration type. The enumeration range of quota values.
 	//
-	// 	- bool: specifies whether the quota is available.
+	// - **bool**: Boolean type. Indicates whether the quota is available.
 	//
-	// 	- num: the upper limit of the quota.
+	// - **num**: numeric type. The maximum usage of the quota.
 	//
-	// 	- range: the value range for the quota.
+	// - **range**: range type. The value range of the quota.
 	//
-	// 	- custom: other types than the preceding four quota threshold types.
+	// - **custom**: custom type. Other types that do not fall into the preceding four threshold types.
 	//
 	// example:
 	//

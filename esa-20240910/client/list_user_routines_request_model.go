@@ -18,7 +18,7 @@ type iListUserRoutinesRequest interface {
 }
 
 type ListUserRoutinesRequest struct {
-	// The page number of the returned page. Default value: 1. Valid values: 1 to 10.
+	// The page number. Default value: 1. Maximum value: 10.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListUserRoutinesRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keyword used for fuzzy search.
+	// The keyword for fuzzy match.
 	//
 	// example:
 	//

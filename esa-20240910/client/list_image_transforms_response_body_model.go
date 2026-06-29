@@ -24,15 +24,15 @@ type iListImageTransformsResponseBody interface {
 }
 
 type ListImageTransformsResponseBody struct {
-	// A list of configurations.
+	// The list of configurations.
 	Configs []*ListImageTransformsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The current page number.
+	// The current page number, which is the same as the PageNumber request parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page, ranging from **1 to 500**. The default is **500**.
+	// The number of entries per page. Valid values: **1 to 500**. Default value: **500**.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListImageTransformsResponseBody struct {
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -134,61 +134,65 @@ func (s *ListImageTransformsResponseBody) Validate() error {
 }
 
 type ListImageTransformsResponseBodyConfigs struct {
+	// The adaptive AVIF setting.
+	//
 	// example:
 	//
 	// on
 	AutoAvif *string `json:"AutoAvif,omitempty" xml:"AutoAvif,omitempty"`
+	// The adaptive WebP setting.
+	//
 	// example:
 	//
 	// on
 	AutoWebp *string `json:"AutoWebp,omitempty" xml:"AutoWebp,omitempty"`
-	// The ID of the configuration.
+	// The configuration ID.
 	//
 	// example:
 	//
 	// 395386449776640
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The type of the configuration. Valid values:
+	// The configuration type. Valid values:
 	//
-	// - `global`: A global configuration.
+	// - global: global configuration.
 	//
-	// - `rule`: A rule-based configuration.
+	// - rule: rule configuration.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Indicates whether the configuration is enabled. Valid values:
+	// The switch status. Valid values:
 	//
-	// - **on**: Enabled.
+	// - **on**: enabled.
 	//
-	// - **off**: Disabled.
+	// - **off**: disabled.
 	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The conditional expression that defines the rule used to match user requests. This parameter is not applicable to global configurations.
+	// The rule content, which uses conditional expressions to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
 	//
-	// - A value of `true` matches all incoming requests.
+	// - Match all incoming requests: set the value to true.
 	//
-	// - A custom expression, such as `(http.host eq "video.example.com")`, matches specific requests.
+	// - Match specified requests: set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
 	//
 	// example:
 	//
 	// (http.request.uri.path.file_name eq \\"jpg\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Indicates whether the rule is enabled. This parameter is not applicable to global configurations. Valid values:
+	// The rule switch. This parameter is not required when you add a global configuration. Valid values:
 	//
-	// - **on**: Enabled.
+	// - on: enabled.
 	//
-	// - **off**: Disabled.
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The name of the rule. This parameter is not applicable to global configurations.
+	// The rule name. This parameter is not required when you add a global configuration.
 	//
 	// example:
 	//
@@ -200,7 +204,7 @@ type ListImageTransformsResponseBodyConfigs struct {
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The version of the site configuration. For a site with version management enabled, this parameter specifies the site version to which the configuration applies. The default is 0.
+	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
 	//
 	// example:
 	//

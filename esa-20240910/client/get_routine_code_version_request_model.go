@@ -16,7 +16,7 @@ type iGetRoutineCodeVersionRequest interface {
 }
 
 type GetRoutineCodeVersionRequest struct {
-	// The code version.
+	// The code version number.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetRoutineCodeVersionRequest struct {
 	//
 	// 1710120201067203242
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	// The routine name.
+	// The name of the Edge Routine.
 	//
 	// This parameter is required.
 	//

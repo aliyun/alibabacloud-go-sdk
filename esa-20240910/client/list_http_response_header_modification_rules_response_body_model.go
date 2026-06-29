@@ -24,15 +24,15 @@ type iListHttpResponseHeaderModificationRulesResponseBody interface {
 }
 
 type ListHttpResponseHeaderModificationRulesResponseBody struct {
-	// A list of HTTP response header modification rules.
+	// The list of HTTP response header modifications.
 	Configs []*ListHttpResponseHeaderModificationRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number, which is the same as the PageNumber request parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -140,51 +140,51 @@ type ListHttpResponseHeaderModificationRulesResponseBodyConfigs struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The type of configuration. Valid values:
+	// The configuration type. Valid values:
 	//
-	// - `global`: A global configuration.
+	// - global: global configuration.
 	//
-	// - `rule`: A rule configuration.
+	// - rule: rule configuration.
 	//
 	// example:
 	//
 	// rule
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The response header modifications. You can add, remove, or modify headers.
+	// The response header modifications. Three operations are supported: add, delete, and modify.
 	ResponseHeaderModification []*ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
-	// The conditional expression that matches user requests. This parameter is not required for a global configuration.
+	// The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when you add a global configuration. Two scenarios are supported:
 	//
-	// - To match all incoming requests, set the value to `true`.
+	// - Match all incoming requests: set the value to true.
 	//
-	// - To match specific requests, set a custom expression. Example: `(http.host eq "video.example.com")`
+	// - Match specific requests: set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Whether the rule is enabled. This parameter is not required for a global configuration. Valid values:
+	// The rule switch. You do not need to set this parameter when you add a global configuration. Valid values:
 	//
-	// - `on`: Enabled.
+	// - on: enabled.
 	//
-	// - `off`: Disabled.
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The name of the rule. This parameter is not required for a global configuration.
+	// The rule name. You do not need to set this parameter when you add a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The execution priority of the rule. Rules with smaller values have higher priority.
+	// The execution order of the rule. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The version number of the site configuration. For sites with version management enabled, this specifies the version to which the configuration applies. The default is 0.
+	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
 	//
 	// example:
 	//
@@ -292,13 +292,13 @@ type ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderMod
 	//
 	// headerName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The modification operation. Valid values:
+	// The operation type. Valid values:
 	//
-	// - `add`: Adds a header.
+	// - add: adds a response header.
 	//
-	// - `del`: Removes a header.
+	// - del: deletes a response header.
 	//
-	// - `modify`: Modifies a header.
+	// - modify: modifies a response header.
 	//
 	// example:
 	//
@@ -306,9 +306,9 @@ type ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderMod
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// The value type. Valid values:
 	//
-	// - `static`: Static mode.
+	// - static: static pattern.
 	//
-	// - `dynamic`: Dynamic mode.
+	// - dynamic: dynamic schema.
 	//
 	// example:
 	//

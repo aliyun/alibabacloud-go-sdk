@@ -52,7 +52,7 @@ type iUpdateWaitingRoomEventRequest interface {
 }
 
 type UpdateWaitingRoomEventRequest struct {
-	// The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+	// The custom waiting room page content. This parameter is required when the waiting room type is set to custom. The content must use Base64 encoding.
 	//
 	// example:
 	//
@@ -66,25 +66,25 @@ type UpdateWaitingRoomEventRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to disable session renewal. Valid values:
 	//
-	// - on
+	// - **on**: Enabled.
 	//
-	// - off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// off
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
-	// Specifies whether to enable the waiting room event. Valid values:
+	// The enabling status. Valid values:
 	//
-	// - `on`
+	//  - **on**: Enables the waiting room event.
 	//
-	// - `off`
+	//  - **off**: Disables the waiting room event.
 	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The end time of the event. This value is a UNIX timestamp.
+	// The timestamp of the event end time.
 	//
 	// example:
 	//
@@ -92,21 +92,21 @@ type UpdateWaitingRoomEventRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Specifies whether to enable JSON response. Valid values:
 	//
-	// - on
+	// - **on**: Enabled.
 	//
-	// - off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// off
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
-	// The default language. Valid values:
+	// The default language setting. Valid values:
 	//
-	// - `enus`: English.
+	//  - **enus**: English.
 	//
-	// - `zhcn`: Simplified Chinese.
+	// - **zhcn**: Simplified Chinese.
 	//
-	// - `zhhk`: Traditional Chinese.
+	// - **zhhk**: Traditional Chinese.
 	//
 	// example:
 	//
@@ -116,25 +116,25 @@ type UpdateWaitingRoomEventRequest struct {
 	//
 	// example:
 	//
-	// Test event 2
+	// 测试事件2
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The maximum number of new users per minute.
+	// The number of new users per minute.
 	//
 	// example:
 	//
 	// 300
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
-	// Specifies whether to enable pre-queuing.
+	// Specifies whether to enable pre-queuing. Valid values:
 	//
-	// - on
+	// - **on**: Enabled.
 	//
-	// - off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	PreQueueEnable *string `json:"PreQueueEnable,omitempty" xml:"PreQueueEnable,omitempty"`
-	// The start time for pre-queuing.
+	// The timestamp of the pre-queuing start time.
 	//
 	// example:
 	//
@@ -142,47 +142,47 @@ type UpdateWaitingRoomEventRequest struct {
 	PreQueueStartTime *string `json:"PreQueueStartTime,omitempty" xml:"PreQueueStartTime,omitempty"`
 	// The queuing method. Valid values:
 	//
-	// - random: Users gain access to the origin randomly, regardless of the arrival time.
+	// - **random**: random.
 	//
-	// - fifo: Users gain access to the origin in order of arrival.
+	// - **fifo**: first-in, first-out.
 	//
-	// - passthrough: Users pass through the waiting room and go straight to the origin.
+	// - **passthrough**: passthrough.
 	//
-	// - reject-all: All requests are blocked from accessing the origin.
+	// - **reject-all**: reject all.
 	//
 	// example:
 	//
 	// fifo
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
-	// The HTTP status code to return while a user is in the queue. Valid values:
+	// The waiting room status code. Valid values:
 	//
-	// - 200
+	// - **200**
 	//
-	// - 202
+	// - **202**
 	//
-	// - 429
+	// - **429**
 	//
 	// example:
 	//
 	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
-	// Specifies whether to enable random queuing.
+	// Specifies whether to enable random pre-queuing. Valid values:
 	//
-	// - on
+	// - **on**: Enabled.
 	//
-	// - off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	RandomPreQueueEnable *string `json:"RandomPreQueueEnable,omitempty" xml:"RandomPreQueueEnable,omitempty"`
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	// The user session duration, in minutes.
 	//
 	// example:
 	//
 	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -190,19 +190,19 @@ type UpdateWaitingRoomEventRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The start time of the event. This value is a UNIX timestamp.
+	// The timestamp of the event start time.
 	//
 	// example:
 	//
 	// 1719763200
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The maximum number of active users.
+	// The total number of active users.
 	//
 	// example:
 	//
 	// 200
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
-	// The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
+	// The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -212,9 +212,9 @@ type UpdateWaitingRoomEventRequest struct {
 	WaitingRoomEventId *int64 `json:"WaitingRoomEventId,omitempty" xml:"WaitingRoomEventId,omitempty"`
 	// The type of the waiting room. Valid values:
 	//
-	// - default
+	// - **default**: default type.
 	//
-	// - custom
+	// - **custom**: custom type.
 	//
 	// example:
 	//

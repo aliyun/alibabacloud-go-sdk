@@ -22,7 +22,7 @@ type CreateUrlObservationResponseBody struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

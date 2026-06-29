@@ -16,7 +16,7 @@ type iCreateRecordResponseBody interface {
 }
 
 type CreateRecordResponseBody struct {
-	// The record ID.
+	// The ID of the created record.
 	//
 	// example:
 	//

@@ -18,11 +18,11 @@ type iCreateUrlObservationRequest interface {
 }
 
 type CreateUrlObservationRequest struct {
-	// SDK integration. Supported
+	// The SDK integration method. Valid values:
 	//
-	// 	- **automatic**
+	// - **automatic**: automatic integration.
 	//
-	// 	- **manual**
+	// - **manual**: manual integration.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type CreateUrlObservationRequest struct {
 	//
 	// automatic
 	SdkType *string `json:"SdkType,omitempty" xml:"SdkType,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type CreateUrlObservationRequest struct {
 	//
 	// 123456******
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The URL of the web page to monitor.
+	// The URL of the web page to monitor. If the site name is example.com, set Url to example.com/test or site DNS record name/path.
 	//
 	// This parameter is required.
 	//

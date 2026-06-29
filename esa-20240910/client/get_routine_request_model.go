@@ -14,7 +14,7 @@ type iGetRoutineRequest interface {
 }
 
 type GetRoutineRequest struct {
-	// The name of the edge function Routine.
+	// The name of the Edge Routine.
 	//
 	// This parameter is required.
 	//

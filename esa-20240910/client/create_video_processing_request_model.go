@@ -36,73 +36,73 @@ type iCreateVideoProcessingRequest interface {
 }
 
 type CreateVideoProcessingRequest struct {
-	// Set custom end parameters for FLV files.
+	// The custom FLV end parameter.
 	//
 	// example:
 	//
 	// end
 	FlvSeekEnd *string `json:"FlvSeekEnd,omitempty" xml:"FlvSeekEnd,omitempty"`
-	// The custom start parameter for FLV files.
+	// The custom FLV start parameter.
 	//
 	// example:
 	//
 	// start
 	FlvSeekStart *string `json:"FlvSeekStart,omitempty" xml:"FlvSeekStart,omitempty"`
-	// FLV seeking. Valid values:
+	// The FLV seek mode. Valid values:
 	//
-	// 	- by_byte: seek by byte
+	// - by_byte: seek by byte.
 	//
-	// 	- by_time: seek by time.
+	// - by_time: seek by time.
 	//
 	// example:
 	//
 	// by_byte
 	FlvVideoSeekMode *string `json:"FlvVideoSeekMode,omitempty" xml:"FlvVideoSeekMode,omitempty"`
-	// Customize the mp4 end parameter.
+	// The custom MP4 end parameter.
 	//
 	// example:
 	//
 	// end
 	Mp4SeekEnd *string `json:"Mp4SeekEnd,omitempty" xml:"Mp4SeekEnd,omitempty"`
-	// Customize the mp4 start parameter.
+	// The custom MP4 start parameter.
 	//
 	// example:
 	//
 	// start
 	Mp4SeekStart *string `json:"Mp4SeekStart,omitempty" xml:"Mp4SeekStart,omitempty"`
-	// The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configuration. Use cases:
+	// The rule content, which uses conditional expressions to match user requests. You do not need to set this parameter when adding a global configuration. Two usage scenarios are supported:
 	//
-	// 	- true: Match all incoming requests.
+	// - Match all incoming requests: set the value to true.
 	//
-	// 	- Set the value to a custom expression, for example:(http.host eq "video.example.com"): Match the specified request.
+	// - Match specified requests: set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
 	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configuration. Specifies whether to check the image used by the instance supports hot migration. Valid values:
+	// The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
 	//
-	// 	- on
+	// - on: enabled.
 	//
-	// 	- off
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The name of the scheduling rule. You do not need to set this parameter when you add global configuration.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The order in which the rule is executed. A smaller value gives priority to the rule.
+	// The rule execution order. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -110,17 +110,17 @@ type CreateVideoProcessingRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+	// The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
 	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// Video seeking. Valid values:
+	// The video seek (drag-and-play) switch. Valid values:
 	//
-	// 	- on
+	// - on: enabled.
 	//
-	// 	- off
+	// - off: disabled.
 	//
 	// example:
 	//

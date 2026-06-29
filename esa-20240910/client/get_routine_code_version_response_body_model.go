@@ -26,7 +26,7 @@ type GetRoutineCodeVersionResponseBody struct {
 	//
 	// test ver code desc
 	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
-	// The time when the version was created.
+	// The creation time. The time follows the RFC 3339 standard in the UTC time zone.
 	//
 	// example:
 	//
