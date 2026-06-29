@@ -1648,6 +1648,92 @@ func (client *Client) CreateAppTokenService(request *CreateAppTokenServiceReques
 
 // Summary:
 //
+// Creates a resource plan.
+//
+// @param request - CreateInspirationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInspirationResponse
+func (client *Client) CreateInspirationWithOptions(request *CreateInspirationRequest, runtime *dara.RuntimeOptions) (_result *CreateInspirationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Amountspec) {
+		query["Amountspec"] = request.Amountspec
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Duration) {
+		query["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.Extend) {
+		query["Extend"] = request.Extend
+	}
+
+	if !dara.IsNil(request.PaymentType) {
+		query["PaymentType"] = request.PaymentType
+	}
+
+	if !dara.IsNil(request.PricingCycle) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !dara.IsNil(request.Quantity) {
+		query["Quantity"] = request.Quantity
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInspiration"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInspirationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a resource plan.
+//
+// @param request - CreateInspirationRequest
+//
+// @return CreateInspirationResponse
+func (client *Client) CreateInspiration(request *CreateInspirationRequest) (_result *CreateInspirationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateInspirationResponse{}
+	_body, _err := client.CreateInspirationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits a task to create a logo.
 //
 // @param request - CreateLogoTaskRequest
