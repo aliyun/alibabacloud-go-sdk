@@ -18,16 +18,22 @@ type iListVpcInfoByInstanceRequest interface {
 }
 
 type ListVpcInfoByInstanceRequest struct {
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mkdd-test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of VPCs to return on each page.
+	//
 	// example:
 	//
 	// 8

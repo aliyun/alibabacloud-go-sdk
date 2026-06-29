@@ -18,14 +18,20 @@ type iBindInstance2VpcResponseBody interface {
 }
 
 type BindInstance2VpcResponseBody struct {
+	// The domain name.
+	//
 	// example:
 	//
 	// xu6666-mkdd-test.cn-hangzhou.vpc.ots.aliyuncs.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The connection endpoint for the instance.
+	//
 	// example:
 	//
 	// 172.**.***.34
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The ID of the request. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// E734979F-5A44-5993-9CE5-C23103576923

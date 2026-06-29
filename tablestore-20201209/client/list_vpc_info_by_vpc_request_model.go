@@ -18,15 +18,19 @@ type iListVpcInfoByVpcRequest interface {
 }
 
 type ListVpcInfoByVpcRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of VPCs to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// VPC ID
+	// The ID of the VPC.
 	//
 	// This parameter is required.
 	//

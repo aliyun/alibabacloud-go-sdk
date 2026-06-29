@@ -24,7 +24,35 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":             dara.String("tablestore.us-west-1.aliyuncs.com"),
+		"us-east-1":             dara.String("tablestore.us-east-1.aliyuncs.com"),
+		"me-east-1":             dara.String("tablestore.me-east-1.aliyuncs.com"),
+		"me-central-1":          dara.String("tablestore.me-central-1.aliyuncs.com"),
+		"eu-west-1":             dara.String("tablestore.eu-west-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("tablestore.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("tablestore.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("tablestore.cn-wulanchabu.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("tablestore.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("tablestore.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shanghai":           dara.String("tablestore.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":            dara.String("tablestore.cn-qingdao.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("tablestore.cn-huhehaote.aliyuncs.com"),
+		"cn-hongkong":           dara.String("tablestore.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("tablestore.cn-hangzhou.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("tablestore.cn-guangzhou.aliyuncs.com"),
+		"cn-chengdu":            dara.String("tablestore.cn-chengdu.aliyuncs.com"),
+		"cn-beijing":            dara.String("tablestore.cn-beijing.aliyuncs.com"),
+		"ap-southeast-7":        dara.String("tablestore.ap-southeast-7.aliyuncs.com"),
+		"ap-southeast-6":        dara.String("tablestore.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("tablestore.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("tablestore.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-2":        dara.String("tablestore.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("tablestore.ap-southeast-1.aliyuncs.com"),
+		"ap-south-1":            dara.String("tablestore.ap-south-1.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("tablestore.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +86,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 绑定vpc
+// Binds an instance to a VPC.
 //
 // @param request - BindInstance2VpcRequest
 //
@@ -117,7 +145,7 @@ func (client *Client) BindInstance2VpcWithOptions(request *BindInstance2VpcReque
 
 // Summary:
 //
-// 绑定vpc
+// Binds an instance to a VPC.
 //
 // @param request - BindInstance2VpcRequest
 //
@@ -276,6 +304,120 @@ func (client *Client) CheckInstancePolicy(request *CheckInstancePolicyRequest) (
 
 // Summary:
 //
+// Creates an agent storage instance.
+//
+// Description:
+//
+// - **Before you call this operation, make sure that you fully understand the billing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
+//
+// - You can create up to 10 agent storage instances within a single Alibaba Cloud account. Agent storage instance names must be unique within the same region.
+//
+// [_single.params.body.props.Network.title](Deprecated) The network type of the instance. Valid values: NORMAL, VPC_CONSOLE. Default value: NORMAL.
+//
+// [_single.params.body.props.Network.desc](Deprecated) The network type of the agent storage instance. Valid values: NORMAL, VPC_CONSOLE. Default value: NORMAL.
+//
+// @param request - CreateAgentStorageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgentStorageResponse
+func (client *Client) CreateAgentStorageWithOptions(request *CreateAgentStorageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAgentStorageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentStorageDescription) {
+		body["AgentStorageDescription"] = request.AgentStorageDescription
+	}
+
+	if !dara.IsNil(request.AgentStorageName) {
+		body["AgentStorageName"] = request.AgentStorageName
+	}
+
+	if !dara.IsNil(request.Network) {
+		body["Network"] = request.Network
+	}
+
+	if !dara.IsNil(request.NetworkSourceACL) {
+		body["NetworkSourceACL"] = request.NetworkSourceACL
+	}
+
+	if !dara.IsNil(request.NetworkTypeACL) {
+		body["NetworkTypeACL"] = request.NetworkTypeACL
+	}
+
+	if !dara.IsNil(request.Policy) {
+		body["Policy"] = request.Policy
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		body["Tags"] = request.Tags
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgentStorage"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/createagentstorage"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgentStorageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an agent storage instance.
+//
+// Description:
+//
+// - **Before you call this operation, make sure that you fully understand the billing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
+//
+// - You can create up to 10 agent storage instances within a single Alibaba Cloud account. Agent storage instance names must be unique within the same region.
+//
+// [_single.params.body.props.Network.title](Deprecated) The network type of the instance. Valid values: NORMAL, VPC_CONSOLE. Default value: NORMAL.
+//
+// [_single.params.body.props.Network.desc](Deprecated) The network type of the agent storage instance. Valid values: NORMAL, VPC_CONSOLE. Default value: NORMAL.
+//
+// @param request - CreateAgentStorageRequest
+//
+// @return CreateAgentStorageResponse
+func (client *Client) CreateAgentStorage(request *CreateAgentStorageRequest) (_result *CreateAgentStorageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAgentStorageResponse{}
+	_body, _err := client.CreateAgentStorageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an instance.
 //
 // Description:
@@ -394,7 +536,15 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
-// 创建VCU实例
+// Creates a VCU instance.
+//
+// Description:
+//
+// - **Before you call this operation, ensure that you understand the billing methods and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
+//
+// - An Alibaba Cloud account can create a maximum of 10 instances. The instance names must be unique within the same region.
+//
+// - The cluster type (instance type) cannot be changed after an instance is created. Select the cluster type with caution.
 //
 // @param request - CreateVCUInstanceRequest
 //
@@ -481,7 +631,15 @@ func (client *Client) CreateVCUInstanceWithOptions(request *CreateVCUInstanceReq
 
 // Summary:
 //
-// 创建VCU实例
+// Creates a VCU instance.
+//
+// Description:
+//
+// - **Before you call this operation, ensure that you understand the billing methods and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
+//
+// - An Alibaba Cloud account can create a maximum of 10 instances. The instance names must be unique within the same region.
+//
+// - The cluster type (instance type) cannot be changed after an instance is created. Select the cluster type with caution.
 //
 // @param request - CreateVCUInstanceRequest
 //
@@ -491,6 +649,84 @@ func (client *Client) CreateVCUInstance(request *CreateVCUInstanceRequest) (_res
 	headers := make(map[string]*string)
 	_result = &CreateVCUInstanceResponse{}
 	_body, _err := client.CreateVCUInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an agent store.
+//
+// Description:
+//
+// - To avoid conflicts, do not create an agent store with the same name as the agent store being deleted during the deletion process.
+//
+// - After an agent store is deleted, the agent store becomes unavailable, and the tables, table data, and related indexes in the agent store cannot be recovered. Proceed with caution.
+//
+// @param request - DeleteAgentStorageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgentStorageResponse
+func (client *Client) DeleteAgentStorageWithOptions(request *DeleteAgentStorageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAgentStorageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentStorageName) {
+		body["AgentStorageName"] = request.AgentStorageName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgentStorage"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/deleteagentstorage"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgentStorageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an agent store.
+//
+// Description:
+//
+// - To avoid conflicts, do not create an agent store with the same name as the agent store being deleted during the deletion process.
+//
+// - After an agent store is deleted, the agent store becomes unavailable, and the tables, table data, and related indexes in the agent store cannot be recovered. Proceed with caution.
+//
+// @param request - DeleteAgentStorageRequest
+//
+// @return DeleteAgentStorageResponse
+func (client *Client) DeleteAgentStorage(request *DeleteAgentStorageRequest) (_result *DeleteAgentStorageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAgentStorageResponse{}
+	_body, _err := client.DeleteAgentStorageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -664,7 +900,7 @@ func (client *Client) DeleteInstancePolicy(request *DeleteInstancePolicyRequest)
 
 // Summary:
 //
-// 删除VCU实例
+// Deletes a VCU instance.
 //
 // @param request - DeleteVCUInstanceRequest
 //
@@ -711,7 +947,7 @@ func (client *Client) DeleteVCUInstanceWithOptions(request *DeleteVCUInstanceReq
 
 // Summary:
 //
-// 删除VCU实例
+// Deletes a VCU instance.
 //
 // @param request - DeleteVCUInstanceRequest
 //
@@ -730,7 +966,7 @@ func (client *Client) DeleteVCUInstance(request *DeleteVCUInstanceRequest) (_res
 
 // Summary:
 //
-// Queries supported regions.
+// Retrieves a list of available regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -777,7 +1013,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// Queries supported regions.
+// Retrieves a list of available regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -787,6 +1023,72 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &DescribeRegionsResponse{}
 	_body, _err := client.DescribeRegionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves agent storage.
+//
+// @param request - GetAgentStorageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentStorageResponse
+func (client *Client) GetAgentStorageWithOptions(request *GetAgentStorageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAgentStorageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentStorageName) {
+		query["AgentStorageName"] = request.AgentStorageName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentStorage"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/getagentstorage"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentStorageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves agent storage.
+//
+// @param request - GetAgentStorageRequest
+//
+// @return GetAgentStorageResponse
+func (client *Client) GetAgentStorage(request *GetAgentStorageRequest) (_result *GetAgentStorageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAgentStorageResponse{}
+	_body, _err := client.GetAgentStorageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -862,7 +1164,107 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 
 // Summary:
 //
-// 列举集群类型
+// Lists agent storages.
+//
+// @param tmpReq - ListAgentStoragesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgentStoragesResponse
+func (client *Client) ListAgentStoragesWithOptions(tmpReq *ListAgentStoragesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAgentStoragesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAgentStoragesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AgentStorageNameList) {
+		request.AgentStorageNameListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AgentStorageNameList, dara.String("AgentStorageNameList"), dara.String("simple"))
+	}
+
+	if !dara.IsNil(tmpReq.Tag) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, dara.String("Tag"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentStorageName) {
+		query["AgentStorageName"] = request.AgentStorageName
+	}
+
+	if !dara.IsNil(request.AgentStorageNameListShrink) {
+		query["AgentStorageNameList"] = request.AgentStorageNameListShrink
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TagShrink) {
+		query["Tag"] = request.TagShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgentStorages"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/listagentstorages"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgentStoragesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists agent storages.
+//
+// @param request - ListAgentStoragesRequest
+//
+// @return ListAgentStoragesResponse
+func (client *Client) ListAgentStorages(request *ListAgentStoragesRequest) (_result *ListAgentStoragesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAgentStoragesResponse{}
+	_body, _err := client.ListAgentStoragesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the supported cluster types in the current region.
 //
 // @param headers - map
 //
@@ -895,7 +1297,7 @@ func (client *Client) ListClusterTypeWithOptions(headers map[string]*string, run
 
 // Summary:
 //
-// 列举集群类型
+// Lists the supported cluster types in the current region.
 //
 // @return ListClusterTypeResponse
 func (client *Client) ListClusterType() (_result *ListClusterTypeResponse, _err error) {
@@ -1104,7 +1506,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 获取实例的vpcInfo列表
+// Retrieves a list of VPC information for an instance.
 //
 // @param request - ListVpcInfoByInstanceRequest
 //
@@ -1159,7 +1561,7 @@ func (client *Client) ListVpcInfoByInstanceWithOptions(request *ListVpcInfoByIns
 
 // Summary:
 //
-// 获取实例的vpcInfo列表
+// Retrieves a list of VPC information for an instance.
 //
 // @param request - ListVpcInfoByInstanceRequest
 //
@@ -1178,7 +1580,7 @@ func (client *Client) ListVpcInfoByInstance(request *ListVpcInfoByInstanceReques
 
 // Summary:
 //
-// 获取实例的vpcInfo列表
+// Retrieves a list of VpcInfo objects for a specified Virtual Private Cloud (VPC).
 //
 // @param request - ListVpcInfoByVpcRequest
 //
@@ -1233,7 +1635,7 @@ func (client *Client) ListVpcInfoByVpcWithOptions(request *ListVpcInfoByVpcReque
 
 // Summary:
 //
-// 获取实例的vpcInfo列表
+// Retrieves a list of VpcInfo objects for a specified Virtual Private Cloud (VPC).
 //
 // @param request - ListVpcInfoByVpcRequest
 //
@@ -1326,7 +1728,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 解绑vpc
+// Detaches an instance from a VPC.
 //
 // @param request - UnbindInstance2VpcRequest
 //
@@ -1377,7 +1779,7 @@ func (client *Client) UnbindInstance2VpcWithOptions(request *UnbindInstance2VpcR
 
 // Summary:
 //
-// 解绑vpc
+// Detaches an instance from a VPC.
 //
 // @param request - UnbindInstance2VpcRequest
 //
@@ -1482,6 +1884,92 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
+// Updates agent storage.
+//
+// @param request - UpdateAgentStorageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAgentStorageResponse
+func (client *Client) UpdateAgentStorageWithOptions(request *UpdateAgentStorageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAgentStorageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentStorageDescription) {
+		body["AgentStorageDescription"] = request.AgentStorageDescription
+	}
+
+	if !dara.IsNil(request.AgentStorageName) {
+		body["AgentStorageName"] = request.AgentStorageName
+	}
+
+	if !dara.IsNil(request.AliasName) {
+		body["AliasName"] = request.AliasName
+	}
+
+	if !dara.IsNil(request.Network) {
+		body["Network"] = request.Network
+	}
+
+	if !dara.IsNil(request.NetworkSourceACL) {
+		body["NetworkSourceACL"] = request.NetworkSourceACL
+	}
+
+	if !dara.IsNil(request.NetworkTypeACL) {
+		body["NetworkTypeACL"] = request.NetworkTypeACL
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAgentStorage"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/updateagentstorage"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAgentStorageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates agent storage.
+//
+// @param request - UpdateAgentStorageRequest
+//
+// @return UpdateAgentStorageResponse
+func (client *Client) UpdateAgentStorage(request *UpdateAgentStorageRequest) (_result *UpdateAgentStorageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAgentStorageResponse{}
+	_body, _err := client.UpdateAgentStorageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates instance information.
 //
 // @param request - UpdateInstanceRequest
@@ -1572,11 +2060,11 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 //
 // Description:
 //
-//	  **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
+// - **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
 //
-//		- After you enable scalability for an instance, the default upper limit for the VCUs of the instance is the sum of the scalability and the reserved VCUs.
+// - After you enable scalability for an instance, the default upper limit for the VCUs of the instance is the sum of the scalability and the reserved VCUs.
 //
-//		- To use more computing resources when your business grows, you can modify the upper limit for the VCUs of your instance. The new upper limit for the VCUs of your instance immediately takes effect.
+// - To use more computing resources when your business grows, you can modify the upper limit for the VCUs of your instance. The new upper limit for the VCUs of your instance immediately takes effect.
 //
 // @param request - UpdateInstanceElasticVCUUpperLimitRequest
 //
@@ -1631,11 +2119,11 @@ func (client *Client) UpdateInstanceElasticVCUUpperLimitWithOptions(request *Upd
 //
 // Description:
 //
-//	  **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
+// - **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
 //
-//		- After you enable scalability for an instance, the default upper limit for the VCUs of the instance is the sum of the scalability and the reserved VCUs.
+// - After you enable scalability for an instance, the default upper limit for the VCUs of the instance is the sum of the scalability and the reserved VCUs.
 //
-//		- To use more computing resources when your business grows, you can modify the upper limit for the VCUs of your instance. The new upper limit for the VCUs of your instance immediately takes effect.
+// - To use more computing resources when your business grows, you can modify the upper limit for the VCUs of your instance. The new upper limit for the VCUs of your instance immediately takes effect.
 //
 // @param request - UpdateInstanceElasticVCUUpperLimitRequest
 //

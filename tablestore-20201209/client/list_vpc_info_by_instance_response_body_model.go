@@ -24,27 +24,38 @@ type iListVpcInfoByInstanceResponseBody interface {
 }
 
 type ListVpcInfoByInstanceResponseBody struct {
+	// The name of the instance.
+	//
 	// example:
 	//
 	// mkdd-test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 8
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request. You can use the ID to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// 44FDC379-4443-560E-B652-9F7476D8854F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of VPCs.
+	//
 	// example:
 	//
 	// 1
-	TotalCount *int64                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	VpcInfos   []*ListVpcInfoByInstanceResponseBodyVpcInfos `json:"VpcInfos,omitempty" xml:"VpcInfos,omitempty" type:"Repeated"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The details of the VPCs.
+	VpcInfos []*ListVpcInfoByInstanceResponseBodyVpcInfos `json:"VpcInfos,omitempty" xml:"VpcInfos,omitempty" type:"Repeated"`
 }
 
 func (s ListVpcInfoByInstanceResponseBody) String() string {
@@ -123,23 +134,31 @@ func (s *ListVpcInfoByInstanceResponseBody) Validate() error {
 }
 
 type ListVpcInfoByInstanceResponseBodyVpcInfos struct {
+	// The endpoint of the VPC.
+	//
 	// example:
 	//
 	// http://xu6666-mkdd-test.cn-hangzhou.vpc.ots.aliyuncs.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The endpoint of the instance.
+	//
 	// example:
 	//
 	// http://172.**.***.34:80/
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The name of the VPC.
+	//
 	// example:
 	//
 	// xu6666
 	InstanceVpcName *string `json:"InstanceVpcName,omitempty" xml:"InstanceVpcName,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// VPC ID
+	// The ID of the VPC.
 	//
 	// example:
 	//

@@ -34,15 +34,19 @@ type iCreateVCUInstanceRequest interface {
 }
 
 type CreateVCUInstanceRequest struct {
+	// The alias of the instance.
+	//
 	// example:
 	//
-	// 实例别名
+	// test
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The auto-renewal cycle. This parameter is required if auto-renewal is enabled.
+	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriodInMonth *int64 `json:"AutoRenewPeriodInMonth,omitempty" xml:"AutoRenewPeriodInMonth,omitempty"`
-	// cluster type
+	// The cluster type.
 	//
 	// This parameter is required.
 	//
@@ -50,30 +54,40 @@ type CreateVCUInstanceRequest struct {
 	//
 	// SSD vs HYBRID
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// Specifies whether to perform a dry run. If you perform a dry run, no instance is created.
+	//
 	// example:
 	//
 	// false
-	DryRun           *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EnableAutoRenew  *bool `json:"EnableAutoRenew,omitempty" xml:"EnableAutoRenew,omitempty"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to enable auto-renewal.
+	EnableAutoRenew *bool `json:"EnableAutoRenew,omitempty" xml:"EnableAutoRenew,omitempty"`
+	// Specifies whether to enable instance elasticity. If you enable instance elasticity, the peak VCU usage can exceed the purchased VCU amount, but additional fees are incurred.
 	EnableElasticVCU *bool `json:"EnableElasticVCU,omitempty" xml:"EnableElasticVCU,omitempty"`
+	// The description of the instance.
+	//
 	// example:
 	//
-	// 实例描述
+	// testvcu
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The subscription duration. Unit: month.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PeriodInMonth *int64 `json:"PeriodInMonth,omitempty" xml:"PeriodInMonth,omitempty"`
-	// resource group id
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmxh4em5jnbcd
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// tag
+	// The tags.
 	Tags []*CreateVCUInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The instance type: the number of VCUs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -203,12 +217,16 @@ func (s *CreateVCUInstanceRequest) Validate() error {
 }
 
 type CreateVCUInstanceRequestTags struct {
+	// The key of the tag. The key can be up to 64 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// created
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag. The value can be up to 64 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:

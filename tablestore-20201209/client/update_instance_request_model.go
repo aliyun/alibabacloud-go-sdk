@@ -56,11 +56,11 @@ type UpdateInstanceRequest struct {
 	NetworkSourceACL []*string `json:"NetworkSourceACL,omitempty" xml:"NetworkSourceACL,omitempty" type:"Repeated"`
 	// The new types of the network from which access is allowed. By default, all types of networks are allowed. Valid values:
 	//
-	// 	- INTERNET: the Internet
+	// - INTERNET: the Internet
 	//
-	// 	- VPC: VPCs
+	// - VPC: VPCs
 	//
-	// 	- CLASSIC: the classic network
+	// - CLASSIC: the classic network
 	NetworkTypeACL []*string `json:"NetworkTypeACL,omitempty" xml:"NetworkTypeACL,omitempty" type:"Repeated"`
 }
 

@@ -14,6 +14,8 @@ type iDeleteVCUInstanceResponseBody interface {
 }
 
 type DeleteVCUInstanceResponseBody struct {
+	// The ID of the request. You can use this ID to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// 39871ED2-62C0-578F-A32E-B88072D5582F

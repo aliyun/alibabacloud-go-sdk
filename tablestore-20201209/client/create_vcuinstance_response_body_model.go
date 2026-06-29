@@ -20,19 +20,25 @@ type iCreateVCUInstanceResponseBody interface {
 }
 
 type CreateVCUInstanceResponseBody struct {
+	// The status code of the response.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The name of the created instance.
+	//
 	// example:
 	//
 	// instance-test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The description of the response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// request id
+	// The request ID.
 	//
 	// example:
 	//

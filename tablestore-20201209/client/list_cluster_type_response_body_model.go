@@ -18,8 +18,12 @@ type iListClusterTypeResponseBody interface {
 }
 
 type ListClusterTypeResponseBody struct {
+	// A list of the detailed information about the cluster types.
 	ClusterTypeInfos []*ListClusterTypeResponseBodyClusterTypeInfos `json:"ClusterTypeInfos,omitempty" xml:"ClusterTypeInfos,omitempty" type:"Repeated"`
-	ClusterTypes     []*string                                      `json:"ClusterTypes,omitempty" xml:"ClusterTypes,omitempty" type:"Repeated"`
+	// A list of cluster types.
+	ClusterTypes []*string `json:"ClusterTypes,omitempty" xml:"ClusterTypes,omitempty" type:"Repeated"`
+	// The request ID. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 88BA193C-4918-08C4-9870-E1FE6BBECF34
@@ -75,11 +79,26 @@ func (s *ListClusterTypeResponseBody) Validate() error {
 }
 
 type ListClusterTypeResponseBodyClusterTypeInfos struct {
+	// The cluster type.
+	//
+	// - HYBRID: Capacity.
+	//
+	// - SSD: Performance.
+	//
 	// example:
 	//
 	// SSD
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	IsMultiAZ   *bool   `json:"IsMultiAZ,omitempty" xml:"IsMultiAZ,omitempty"`
+	// Indicates whether the cluster supports deployment in multiple availability zones (AZs).
+	//
+	// - true: The cluster supports multi-zone deployment and provides zone-redundant storage.
+	//
+	// - false: The cluster does not support multi-zone deployment and provides locally redundant storage.
+	//
+	// example:
+	//
+	// true
+	IsMultiAZ *bool `json:"IsMultiAZ,omitempty" xml:"IsMultiAZ,omitempty"`
 }
 
 func (s ListClusterTypeResponseBodyClusterTypeInfos) String() string {

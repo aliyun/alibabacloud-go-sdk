@@ -16,12 +16,16 @@ type iUnbindInstance2VpcRequest interface {
 }
 
 type UnbindInstance2VpcRequest struct {
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mkdd-test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The name of the VPC.
+	//
 	// This parameter is required.
 	//
 	// example:

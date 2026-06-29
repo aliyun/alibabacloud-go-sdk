@@ -20,25 +20,31 @@ type iBindInstance2VpcRequest interface {
 }
 
 type BindInstance2VpcRequest struct {
+	// The instance name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mkdd-test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The VPC name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xu6666
 	InstanceVpcName *string `json:"InstanceVpcName,omitempty" xml:"InstanceVpcName,omitempty"`
+	// The virtual switch ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-uf6***********ez6ge
 	VirtualSwitchId *string `json:"VirtualSwitchId,omitempty" xml:"VirtualSwitchId,omitempty"`
-	// VPC ID
+	// The VPC ID.
 	//
 	// This parameter is required.
 	//

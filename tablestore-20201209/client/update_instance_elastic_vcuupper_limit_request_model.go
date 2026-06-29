@@ -18,7 +18,7 @@ type iUpdateInstanceElasticVCUUpperLimitRequest interface {
 type UpdateInstanceElasticVCUUpperLimitRequest struct {
 	// The upper limit for the VCUs of the instance.
 	//
-	// >  Valid values of the upper limit for the VCUs of an instance: **Number of reserved VCUs+0.1 to 2000**. You can upgrade or downgrade configurations to modify the number of reserved VCUs by increments or decrements of 1. You can dynamically modify the upper limit for the VCUs of an instance by increments or decrements of 0.1
+	// > Valid values of the upper limit for the VCUs of an instance: **Number of reserved VCUs+0.1 to 2000**. You can upgrade or downgrade configurations to modify the number of reserved VCUs by increments or decrements of 1. You can dynamically modify the upper limit for the VCUs of an instance by increments or decrements of 0.1
 	//
 	// This parameter is required.
 	//

@@ -14,6 +14,8 @@ type iDeleteVCUInstanceRequest interface {
 }
 
 type DeleteVCUInstanceRequest struct {
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,6 +14,8 @@ type iUnbindInstance2VpcResponseBody interface {
 }
 
 type UnbindInstance2VpcResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 18DD77BF-F967-576D-80D1-79121399AB53

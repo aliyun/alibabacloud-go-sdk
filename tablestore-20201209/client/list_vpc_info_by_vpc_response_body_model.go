@@ -24,28 +24,37 @@ type iListVpcInfoByVpcResponseBody interface {
 }
 
 type ListVpcInfoByVpcResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4141784E-91FF-56E3-9371-FD011FF876F4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of VPCs.
+	//
 	// example:
 	//
 	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// VPC ID
+	// The ID of the VPC.
 	//
 	// example:
 	//
 	// vpc-bp1***********0mh8
-	VpcId    *string                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The details of the VPCs.
 	VpcInfos []*ListVpcInfoByVpcResponseBodyVpcInfos `json:"VpcInfos,omitempty" xml:"VpcInfos,omitempty" type:"Repeated"`
 }
 
@@ -125,22 +134,32 @@ func (s *ListVpcInfoByVpcResponseBody) Validate() error {
 }
 
 type ListVpcInfoByVpcResponseBodyVpcInfos struct {
+	// The VPC endpoint.
+	//
 	// example:
 	//
 	// http://xu6666-mkdd-test.cn-hangzhou.vpc.ots.aliyuncs.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The endpoint of the instance.
+	//
 	// example:
 	//
 	// http://172.**.***.34:80/
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The name of the instance.
+	//
 	// example:
 	//
 	// mkdd-test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The name of the VPC.
+	//
 	// example:
 	//
 	// xu6666
 	InstanceVpcName *string `json:"InstanceVpcName,omitempty" xml:"InstanceVpcName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
