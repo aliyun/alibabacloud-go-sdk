@@ -11,12 +11,6 @@ type iAddOrganizationMemberRequest interface {
 	GoString() string
 	SetAccountName(v string) *AddOrganizationMemberRequest
 	GetAccountName() *string
-	SetCallerUacAccountId(v string) *AddOrganizationMemberRequest
-	GetCallerUacAccountId() *string
-	SetNamespaceId(v string) *AddOrganizationMemberRequest
-	GetNamespaceId() *string
-	SetOrgId(v string) *AddOrganizationMemberRequest
-	GetOrgId() *string
 	SetOrgRoleCode(v string) *AddOrganizationMemberRequest
 	GetOrgRoleCode() *string
 	SetSpecType(v string) *AddOrganizationMemberRequest
@@ -24,7 +18,7 @@ type iAddOrganizationMemberRequest interface {
 }
 
 type AddOrganizationMemberRequest struct {
-	// The display name. If this parameter is not empty, the name field of the account is also updated.
+	// The display name. If this parameter is not empty, the name field of the account is updated synchronously.
 	//
 	// This parameter is required.
 	//
@@ -32,27 +26,7 @@ type AddOrganizationMemberRequest struct {
 	//
 	// 账号名称
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The account information of the TokenPlan management platform.
-	//
-	// example:
-	//
-	// acc_123456789
-	CallerUacAccountId *string `json:"CallerUacAccountId,omitempty" xml:"CallerUacAccountId,omitempty"`
-	// The product namespace ID. For the TokenPlan product, this field is fixed to namespace-1.
-	//
-	// example:
-	//
-	// namespace-1
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The organization ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// org_123456789
-	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The organization role code. Valid values: ORG_ADMIN and ORG_MEMBER. Default value: ORG_MEMBER.
+	// The organization role code. Only ORG_ADMIN or ORG_MEMBER is allowed. Default value: ORG_MEMBER.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +34,13 @@ type AddOrganizationMemberRequest struct {
 	//
 	// ORG_MEMBER
 	OrgRoleCode *string `json:"OrgRoleCode,omitempty" xml:"OrgRoleCode,omitempty"`
-	// The seat specification.
+	// The seat specification. Valid values:
+	//
+	// - standard: standard seat.
+	//
+	// - pro: premium seat.
+	//
+	// - max: exclusive seat.
 	//
 	// example:
 	//
@@ -80,18 +60,6 @@ func (s *AddOrganizationMemberRequest) GetAccountName() *string {
 	return s.AccountName
 }
 
-func (s *AddOrganizationMemberRequest) GetCallerUacAccountId() *string {
-	return s.CallerUacAccountId
-}
-
-func (s *AddOrganizationMemberRequest) GetNamespaceId() *string {
-	return s.NamespaceId
-}
-
-func (s *AddOrganizationMemberRequest) GetOrgId() *string {
-	return s.OrgId
-}
-
 func (s *AddOrganizationMemberRequest) GetOrgRoleCode() *string {
 	return s.OrgRoleCode
 }
@@ -102,21 +70,6 @@ func (s *AddOrganizationMemberRequest) GetSpecType() *string {
 
 func (s *AddOrganizationMemberRequest) SetAccountName(v string) *AddOrganizationMemberRequest {
 	s.AccountName = &v
-	return s
-}
-
-func (s *AddOrganizationMemberRequest) SetCallerUacAccountId(v string) *AddOrganizationMemberRequest {
-	s.CallerUacAccountId = &v
-	return s
-}
-
-func (s *AddOrganizationMemberRequest) SetNamespaceId(v string) *AddOrganizationMemberRequest {
-	s.NamespaceId = &v
-	return s
-}
-
-func (s *AddOrganizationMemberRequest) SetOrgId(v string) *AddOrganizationMemberRequest {
-	s.OrgId = &v
 	return s
 }
 

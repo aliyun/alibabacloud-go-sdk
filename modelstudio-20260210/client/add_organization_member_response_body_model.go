@@ -24,7 +24,7 @@ type iAddOrganizationMemberResponseBody interface {
 }
 
 type AddOrganizationMemberResponseBody struct {
-	// The error code. This parameter is empty if the request is successful.
+	// The response status code.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type AddOrganizationMemberResponseBody struct {
 	//
 	// None
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message. This parameter is empty if the request is successful.
+	// The response message.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type AddOrganizationMemberResponseBodyData struct {
 	//
 	// acc_123456789
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// Indicates whether the seat was successfully assigned.
+	// Indicates whether the seat was assigned successfully.
 	//
 	// example:
 	//

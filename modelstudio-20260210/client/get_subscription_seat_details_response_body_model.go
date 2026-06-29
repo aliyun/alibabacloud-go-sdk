@@ -34,7 +34,7 @@ type GetSubscriptionSeatDetailsResponseBody struct {
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
 	// - true: Successful.
 	//
@@ -180,19 +180,19 @@ func (s *GetSubscriptionSeatDetailsResponseBodyData) Validate() error {
 }
 
 type GetSubscriptionSeatDetailsResponseBodyDataItems struct {
-	// The email address of the member account.
+	// The mailbox of the member accounts.
 	//
 	// example:
 	//
 	// test@email.com
 	AccountEmail *string `json:"AccountEmail,omitempty" xml:"AccountEmail,omitempty"`
-	// The ID of the attached member account.
+	// The ID of the attached member accounts.
 	//
 	// example:
 	//
 	// acc_123456789
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the member account.
+	// The name of the member accounts.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ type GetSubscriptionSeatDetailsResponseBodyDataItems struct {
 	//
 	// - ASSIGNED
 	//
-	// - UNASSIGNED.
+	// - UNASSIGNED
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type GetSubscriptionSeatDetailsResponseBodyDataItems struct {
 	//
 	// 1781422733
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The currently active equity instances. For the TokenPlan product, this list contains only one active equity instance.
+	// The currently active equity instances. For TokenPlan products, this list contains only one active equity instance.
 	EquityList []*GetSubscriptionSeatDetailsResponseBodyDataItemsEquityList `json:"EquityList,omitempty" xml:"EquityList,omitempty" type:"Repeated"`
 	// The instance code of the seat.
 	//
@@ -230,11 +230,11 @@ type GetSubscriptionSeatDetailsResponseBodyDataItems struct {
 	SeatId *string `json:"SeatId,omitempty" xml:"SeatId,omitempty"`
 	// The seat type. Valid values:
 	//
-	// - standard
+	// - standard: standard seat.
 	//
-	// - pro
+	// - pro: pro seat.
 	//
-	// - max.
+	// - max: premium seat.
 	//
 	// example:
 	//
@@ -393,7 +393,7 @@ type GetSubscriptionSeatDetailsResponseBodyDataItemsEquityList struct {
 	//
 	// 1755273600
 	CycleEndTime *int64 `json:"CycleEndTime,omitempty" xml:"CycleEndTime,omitempty"`
-	// The equity code (subscription code). This does not need to be consumed in the CREDITS scenario.
+	// The equity code (subscription code). This does not need to be consumed in CREDITS scenarios.
 	//
 	// example:
 	//
@@ -417,7 +417,7 @@ type GetSubscriptionSeatDetailsResponseBodyDataItemsEquityList struct {
 	//
 	// 100.00000000
 	CycleTotalValue *float64 `json:"CycleTotalValue,omitempty" xml:"CycleTotalValue,omitempty"`
-	// The sequential version of the current cycle.
+	// The time-series version of the current cycle.
 	//
 	// example:
 	//

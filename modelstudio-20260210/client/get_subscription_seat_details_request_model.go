@@ -9,10 +9,6 @@ type iGetSubscriptionSeatDetailsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCallerUacAccountId(v string) *GetSubscriptionSeatDetailsRequest
-	GetCallerUacAccountId() *string
-	SetNamespaceId(v string) *GetSubscriptionSeatDetailsRequest
-	GetNamespaceId() *string
 	SetPageNo(v int32) *GetSubscriptionSeatDetailsRequest
 	GetPageNo() *int32
 	SetPageSize(v int32) *GetSubscriptionSeatDetailsRequest
@@ -25,23 +21,9 @@ type iGetSubscriptionSeatDetailsRequest interface {
 	GetSeatType() *string
 	SetStatusList(v []*string) *GetSubscriptionSeatDetailsRequest
 	GetStatusList() []*string
-	SetStatusListStr(v string) *GetSubscriptionSeatDetailsRequest
-	GetStatusListStr() *string
 }
 
 type GetSubscriptionSeatDetailsRequest struct {
-	// The ID of the caller account that initiates this call.
-	//
-	// example:
-	//
-	// acc_123456789
-	CallerUacAccountId *string `json:"CallerUacAccountId,omitempty" xml:"CallerUacAccountId,omitempty"`
-	// The product namespace ID. For the TokenPlan product, this field is fixed to namespace-1.
-	//
-	// example:
-	//
-	// namespace-1
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// The page number. Default value: 1. Valid values: positive integers.
 	//
 	// example:
@@ -68,11 +50,11 @@ type GetSubscriptionSeatDetailsRequest struct {
 	SeatId *string `json:"SeatId,omitempty" xml:"SeatId,omitempty"`
 	// The seat type (specType). Valid values:
 	//
-	// - standard
+	// - standard: standard seat.
 	//
-	// - pro
+	// - pro: pro seat.
 	//
-	// - max.
+	// - max: premium seat.
 	//
 	// example:
 	//
@@ -80,12 +62,6 @@ type GetSubscriptionSeatDetailsRequest struct {
 	SeatType *string `json:"SeatType,omitempty" xml:"SeatType,omitempty"`
 	// The list of seat statuses used for filtering.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	// The string form of StatusList.
-	//
-	// example:
-	//
-	// [\\"CREATING\\",\\"NORMAL\\"]
-	StatusListStr *string `json:"StatusListStr,omitempty" xml:"StatusListStr,omitempty"`
 }
 
 func (s GetSubscriptionSeatDetailsRequest) String() string {
@@ -94,14 +70,6 @@ func (s GetSubscriptionSeatDetailsRequest) String() string {
 
 func (s GetSubscriptionSeatDetailsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetSubscriptionSeatDetailsRequest) GetCallerUacAccountId() *string {
-	return s.CallerUacAccountId
-}
-
-func (s *GetSubscriptionSeatDetailsRequest) GetNamespaceId() *string {
-	return s.NamespaceId
 }
 
 func (s *GetSubscriptionSeatDetailsRequest) GetPageNo() *int32 {
@@ -126,20 +94,6 @@ func (s *GetSubscriptionSeatDetailsRequest) GetSeatType() *string {
 
 func (s *GetSubscriptionSeatDetailsRequest) GetStatusList() []*string {
 	return s.StatusList
-}
-
-func (s *GetSubscriptionSeatDetailsRequest) GetStatusListStr() *string {
-	return s.StatusListStr
-}
-
-func (s *GetSubscriptionSeatDetailsRequest) SetCallerUacAccountId(v string) *GetSubscriptionSeatDetailsRequest {
-	s.CallerUacAccountId = &v
-	return s
-}
-
-func (s *GetSubscriptionSeatDetailsRequest) SetNamespaceId(v string) *GetSubscriptionSeatDetailsRequest {
-	s.NamespaceId = &v
-	return s
 }
 
 func (s *GetSubscriptionSeatDetailsRequest) SetPageNo(v int32) *GetSubscriptionSeatDetailsRequest {
@@ -169,11 +123,6 @@ func (s *GetSubscriptionSeatDetailsRequest) SetSeatType(v string) *GetSubscripti
 
 func (s *GetSubscriptionSeatDetailsRequest) SetStatusList(v []*string) *GetSubscriptionSeatDetailsRequest {
 	s.StatusList = v
-	return s
-}
-
-func (s *GetSubscriptionSeatDetailsRequest) SetStatusListStr(v string) *GetSubscriptionSeatDetailsRequest {
-	s.StatusListStr = &v
 	return s
 }
 

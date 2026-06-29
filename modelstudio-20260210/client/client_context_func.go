@@ -30,18 +30,6 @@ func (client *Client) AddOrganizationMemberWithContext(ctx context.Context, requ
 		query["AccountName"] = request.AccountName
 	}
 
-	if !dara.IsNil(request.CallerUacAccountId) {
-		query["CallerUacAccountId"] = request.CallerUacAccountId
-	}
-
-	if !dara.IsNil(request.NamespaceId) {
-		query["NamespaceId"] = request.NamespaceId
-	}
-
-	if !dara.IsNil(request.OrgId) {
-		query["OrgId"] = request.OrgId
-	}
-
 	if !dara.IsNil(request.OrgRoleCode) {
 		query["OrgRoleCode"] = request.OrgRoleCode
 	}
@@ -76,7 +64,7 @@ func (client *Client) AddOrganizationMemberWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Assigns seats in bulk to the member level.
+// Assigns seats in batches to the member level.
 //
 // @param request - BatchAssignSeatsRequest
 //
@@ -97,28 +85,12 @@ func (client *Client) BatchAssignSeatsWithContext(ctx context.Context, request *
 		query["AccountIds"] = request.AccountIds
 	}
 
-	if !dara.IsNil(request.AccountIdsStr) {
-		query["AccountIdsStr"] = request.AccountIdsStr
-	}
-
-	if !dara.IsNil(request.CallerUacAccountId) {
-		query["CallerUacAccountId"] = request.CallerUacAccountId
-	}
-
 	if !dara.IsNil(request.Locale) {
 		query["Locale"] = request.Locale
 	}
 
-	if !dara.IsNil(request.NamespaceId) {
-		query["NamespaceId"] = request.NamespaceId
-	}
-
 	if !dara.IsNil(request.SeatType) {
 		query["SeatType"] = request.SeatType
-	}
-
-	if !dara.IsNil(request.WorkspaceId) {
-		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -137,6 +109,63 @@ func (client *Client) BatchAssignSeatsWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchAssignSeatsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes member-level seats in batches.
+//
+// @param tmpReq - BatchRevokeSeatsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchRevokeSeatsResponse
+func (client *Client) BatchRevokeSeatsWithContext(ctx context.Context, tmpReq *BatchRevokeSeatsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchRevokeSeatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchRevokeSeatsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Items) {
+		request.ItemsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Items, dara.String("Items"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ItemsShrink) {
+		query["Items"] = request.ItemsShrink
+	}
+
+	if !dara.IsNil(request.Locale) {
+		query["Locale"] = request.Locale
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchRevokeSeats"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/subscription/seat-revocations"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchRevokeSeatsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -204,6 +233,71 @@ func (client *Client) CreateApiKeyWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
+// Creates a TokenPlan member invitation link.
+//
+// Description:
+//
+// A user can have only one valid invitation link at a time.
+//
+// If the user already has a valid invitation link, this operation returns the existing link.
+//
+// To create a new link, call the RevokeTokenPlanInviteLink operation to invalidate the current link first.
+//
+// This operation returns only the generated token. The invitation link is assembled in the following format: `https://{host}/accept-invite?token=[token]&orgId=[orgId]`
+//
+//   - For the China site, the host is tokenplan-enterprise.bailian.aliyunportal.com.
+//
+//   - For the China site, the host is tokenplan-enterprise.modelstudio.aliyunportal.com.
+//
+// @param request - CreateTokenPlanInviteLinkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTokenPlanInviteLinkResponse
+func (client *Client) CreateTokenPlanInviteLinkWithContext(ctx context.Context, request *CreateTokenPlanInviteLinkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTokenPlanInviteLinkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExpireType) {
+		query["ExpireType"] = request.ExpireType
+	}
+
+	if !dara.IsNil(request.SsoSource) {
+		query["SsoSource"] = request.SsoSource
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTokenPlanInviteLink"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/invite/link/create"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTokenPlanInviteLinkResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a UAC API key.
 //
 // @param request - CreateTokenPlanKeyRequest
@@ -225,20 +319,8 @@ func (client *Client) CreateTokenPlanKeyWithContext(ctx context.Context, request
 		query["AccountId"] = request.AccountId
 	}
 
-	if !dara.IsNil(request.CallerUacAccountId) {
-		query["CallerUacAccountId"] = request.CallerUacAccountId
-	}
-
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
-	}
-
-	if !dara.IsNil(request.NamespaceId) {
-		query["NamespaceId"] = request.NamespaceId
-	}
-
-	if !dara.IsNil(request.WorkspaceId) {
-		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -527,6 +609,92 @@ func (client *Client) GetApiKeyWithContext(ctx context.Context, apiKeyId *string
 
 // Summary:
 //
+// Retrieves information about a specified organization.
+//
+// Description:
+//
+// Retrieves information about a specified organization by OrgId.
+//
+// @param request - GetOrganizationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOrganizationResponse
+func (client *Client) GetOrganizationWithContext(ctx context.Context, request *GetOrganizationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetOrganizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetOrganization"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/organization"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetOrganizationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries organization member statistics information, including the total number of members, the number of administrators, the number of regular members, the number of members with allocated seats, and the number of members without allocated seats.
+//
+// @param request - GetOrganizationMemberSeatStatsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOrganizationMemberSeatStatsResponse
+func (client *Client) GetOrganizationMemberSeatStatsWithContext(ctx context.Context, request *GetOrganizationMemberSeatStatsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetOrganizationMemberSeatStatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetOrganizationMemberSeatStats"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/organization/member-seat-stats"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetOrganizationMemberSeatStatsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries seat details by paging.
 //
 // @param request - GetSubscriptionSeatDetailsRequest
@@ -544,14 +712,6 @@ func (client *Client) GetSubscriptionSeatDetailsWithContext(ctx context.Context,
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.CallerUacAccountId) {
-		query["CallerUacAccountId"] = request.CallerUacAccountId
-	}
-
-	if !dara.IsNil(request.NamespaceId) {
-		query["NamespaceId"] = request.NamespaceId
-	}
-
 	if !dara.IsNil(request.PageNo) {
 		query["PageNo"] = request.PageNo
 	}
@@ -574,10 +734,6 @@ func (client *Client) GetSubscriptionSeatDetailsWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.StatusList) {
 		query["StatusList"] = request.StatusList
-	}
-
-	if !dara.IsNil(request.StatusListStr) {
-		query["StatusListStr"] = request.StatusListStr
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -606,7 +762,183 @@ func (client *Client) GetSubscriptionSeatDetailsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Obtain the list of authentication credential API Key information.
+// Queries the number of members and seats for member management.
+//
+// @param request - GetSubscriptionStatsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSubscriptionStatsResponse
+func (client *Client) GetSubscriptionStatsWithContext(ctx context.Context, request *GetSubscriptionStatsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSubscriptionStatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSubscriptionStats"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/subscription/stats"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSubscriptionStatsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the TokenPlan account details and organization information.
+//
+// Description:
+//
+// Retrieves the TokenPlan management platform account information when the user is logged in.
+//
+// @param request - GetTokenPlanAccountDetailRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTokenPlanAccountDetailResponse
+func (client *Client) GetTokenPlanAccountDetailWithContext(ctx context.Context, request *GetTokenPlanAccountDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTokenPlanAccountDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTokenPlanAccountDetail"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/account"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTokenPlanAccountDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the TokenPlan member invitation link.
+//
+// Description:
+//
+// This operation returns only the generated token and expiration time. The invitation link is assembled in the following format: `https://{host}/accept-invite?token=[token]&orgId=[orgId]`
+//
+//   - For the China site, the host is tokenplan-enterprise.bailian.aliyunportal.com.
+//
+//   - For the international site, the host is tokenplan-enterprise.modelstudio.aliyunportal.com.
+//
+// @param request - GetTokenPlanInviteLinkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTokenPlanInviteLinkResponse
+func (client *Client) GetTokenPlanInviteLinkWithContext(ctx context.Context, request *GetTokenPlanInviteLinkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTokenPlanInviteLinkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTokenPlanInviteLink"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/invite/link/get"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTokenPlanInviteLinkResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the TokenPlan member invitation configuration.
+//
+// @param request - GetTokenPlanOrgInviteConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTokenPlanOrgInviteConfigResponse
+func (client *Client) GetTokenPlanOrgInviteConfigWithContext(ctx context.Context, request *GetTokenPlanOrgInviteConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTokenPlanOrgInviteConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTokenPlanOrgInviteConfig"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/invite/config/get"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTokenPlanOrgInviteConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of API key authentication credentials.
 //
 // @param request - ListApiKeysRequest
 //
@@ -639,6 +971,14 @@ func (client *Client) ListApiKeysWithContext(ctx context.Context, request *ListA
 		query["nextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.Order) {
+		query["order"] = request.Order
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["orderBy"] = request.OrderBy
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		query["workspaceId"] = request.WorkspaceId
 	}
@@ -659,6 +999,124 @@ func (client *Client) ListApiKeysWithContext(ctx context.Context, request *ListA
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListApiKeysResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of organization members including seat information. Supports filtering by name, status, and seat assignment, and supports pagination.
+//
+// @param request - ListOrganizationMembersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOrganizationMembersResponse
+func (client *Client) ListOrganizationMembersWithContext(ctx context.Context, request *ListOrganizationMembersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListOrganizationMembersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HasSeat) {
+		query["HasSeat"] = request.HasSeat
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOrganizationMembers"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/organization/members"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOrganizationMembersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of shared packages by paging.
+//
+// @param request - ListSubscriptionSharedPackagesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSubscriptionSharedPackagesResponse
+func (client *Client) ListSubscriptionSharedPackagesWithContext(ctx context.Context, request *ListSubscriptionSharedPackagesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSubscriptionSharedPackagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StatusList) {
+		query["StatusList"] = request.StatusList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSubscriptionSharedPackages"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/subscription/shared-packages"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSubscriptionSharedPackagesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -728,6 +1186,57 @@ func (client *Client) ListWorkspacesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
+// Removes organization members. Before removal, checks whether the member holds a seat. If the member holds a seat, the removal is rejected.
+//
+// @param request - RemoveOrganizationMemberRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveOrganizationMemberResponse
+func (client *Client) RemoveOrganizationMemberWithContext(ctx context.Context, request *RemoveOrganizationMemberRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveOrganizationMemberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountIds) {
+		query["AccountIds"] = request.AccountIds
+	}
+
+	if !dara.IsNil(request.Locale) {
+		query["Locale"] = request.Locale
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveOrganizationMember"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/organization/member-removals"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveOrganizationMemberResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Resets an API key.
 //
 // Description:
@@ -763,6 +1272,149 @@ func (client *Client) ResetApiKeyWithContext(ctx context.Context, apiKeyId *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetApiKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes a TokenPlan member invitation link.
+//
+// @param request - RevokeTokenPlanInviteLinkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeTokenPlanInviteLinkResponse
+func (client *Client) RevokeTokenPlanInviteLinkWithContext(ctx context.Context, request *RevokeTokenPlanInviteLinkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RevokeTokenPlanInviteLinkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeTokenPlanInviteLink"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/invite/link/revoke"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeTokenPlanInviteLinkResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Resets a UAC API key.
+//
+// Description:
+//
+// Only the API Key value changes. The API Key ID remains unchanged.
+//
+// @param request - RotateTokenPlanKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RotateTokenPlanKeyResponse
+func (client *Client) RotateTokenPlanKeyWithContext(ctx context.Context, request *RotateTokenPlanKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RotateTokenPlanKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["ApiKeyId"] = request.ApiKeyId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RotateTokenPlanKey"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/api-key-rotations"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RotateTokenPlanKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Configures the member invitation settings for a TokenPlan.
+//
+// @param request - SetTokenPlanOrgInviteConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetTokenPlanOrgInviteConfigResponse
+func (client *Client) SetTokenPlanOrgInviteConfigWithContext(ctx context.Context, request *SetTokenPlanOrgInviteConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SetTokenPlanOrgInviteConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DefaultRoleId) {
+		query["DefaultRoleId"] = request.DefaultRoleId
+	}
+
+	if !dara.IsNil(request.SeatAssignStrategy) {
+		query["SeatAssignStrategy"] = request.SeatAssignStrategy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetTokenPlanOrgInviteConfig"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/invite/config/set"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetTokenPlanOrgInviteConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -816,6 +1468,108 @@ func (client *Client) UpdateApiKeyWithContext(ctx context.Context, apiKeyId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateApiKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies organization information.
+//
+// @param request - UpdateOrganizationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOrganizationResponse
+func (client *Client) UpdateOrganizationWithContext(ctx context.Context, request *UpdateOrganizationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateOrganizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateOrganization"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/organization"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateOrganizationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改组织成员角色
+//
+// @param request - UpdateOrganizationMemberRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOrganizationMemberResponse
+func (client *Client) UpdateOrganizationMemberWithContext(ctx context.Context, request *UpdateOrganizationMemberRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateOrganizationMemberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountIds) {
+		query["AccountIds"] = request.AccountIds
+	}
+
+	if !dara.IsNil(request.NewRoleCode) {
+		query["NewRoleCode"] = request.NewRoleCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateOrganizationMember"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tokenplan/organization/members/update"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateOrganizationMemberResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

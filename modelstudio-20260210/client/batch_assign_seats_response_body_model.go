@@ -18,13 +18,13 @@ type iBatchAssignSeatsResponseBody interface {
 }
 
 type BatchAssignSeatsResponseBody struct {
-	// The error code. This parameter is empty if the request was successful.
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message. This parameter is empty if the request was successful.
+	// The response message.
 	//
 	// example:
 	//

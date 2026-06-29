@@ -30,33 +30,33 @@ type iListApiKeysResponseBody interface {
 }
 
 type ListApiKeysResponseBody struct {
-	// List of API Keys.
+	// The list of API keys.
 	ApiKeys []*ListApiKeysResponseBodyApiKeys `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
-	// Response status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Page size.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Used to return more results. This parameter is not required for the first query. The token required for subsequent queries can be obtained from the returned results.
+	// The token used to retrieve more results. You do not need to provide this parameter for the first query. For subsequent queries, use the token obtained from the previous response.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ListApiKeysResponseBody struct {
 	//
 	// E4C14AE6-E987-5C2F-9230-9960AB48F4F2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Whether the API call is successful:
+	// Indicates whether the API call was successful. Valid values:
 	//
 	// - true: Successful.
 	//
@@ -78,7 +78,7 @@ type ListApiKeysResponseBody struct {
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -189,33 +189,33 @@ func (s *ListApiKeysResponseBody) Validate() error {
 }
 
 type ListApiKeysResponseBodyApiKeys struct {
-	// API Key ID.
+	// API Key ID。
 	//
 	// example:
 	//
 	// 2965964
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
-	// Value of the API Key.
+	// The value of the API key.
 	//
 	// example:
 	//
 	// sk-ws-djI.8O7d*****2aICctnid4u4
 	ApiKeyValue *string `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
-	// Permission settings.
+	// The permission settings.
 	Auth *ListApiKeysResponseBodyApiKeysAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
-	// Creator.
+	// The creator.
 	//
 	// example:
 	//
 	// 1378030599924858
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Whether the API Key is disabled.
+	// Indicates whether the API key is disabled. Valid values:
 	//
 	// - **0**: Active.
 	//
@@ -225,13 +225,13 @@ type ListApiKeysResponseBodyApiKeys struct {
 	//
 	// 0
 	Disabled *int32 `json:"disabled,omitempty" xml:"disabled,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1774338222000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Workspace ID.
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -329,9 +329,9 @@ func (s *ListApiKeysResponseBodyApiKeys) Validate() error {
 }
 
 type ListApiKeysResponseBodyApiKeysAuth struct {
-	// IP access whitelist.
+	// The IP address whitelist.
 	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
-	// All: All permissions; Custom: Custom permissions.
+	// All: all permissions. Custom: custom permissions.
 	//
 	// example:
 	//
