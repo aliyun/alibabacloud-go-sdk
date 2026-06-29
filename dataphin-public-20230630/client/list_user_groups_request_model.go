@@ -16,8 +16,12 @@ type iListUserGroupsRequest interface {
 }
 
 type ListUserGroupsRequest struct {
+	// The paged query parameters.
+	//
 	// This parameter is required.
 	ListQuery *ListUserGroupsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,22 +66,36 @@ func (s *ListUserGroupsRequest) Validate() error {
 }
 
 type ListUserGroupsRequestListQuery struct {
+	// Specifies whether the user group is enabled.
+	//
 	// example:
 	//
 	// true
-	Active      *bool     `json:"Active,omitempty" xml:"Active,omitempty"`
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The user IDs of the user group administrators.
 	AdminIdList []*string `json:"AdminIdList,omitempty" xml:"AdminIdList,omitempty" type:"Repeated"`
+	// Specifies whether to filter user groups that the current user belongs to.
+	//
 	// example:
 	//
 	// false
-	FilterMine *bool   `json:"FilterMine,omitempty" xml:"FilterMine,omitempty"`
-	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	FilterMine *bool `json:"FilterMine,omitempty" xml:"FilterMine,omitempty"`
+	// The keyword for the user group name.
+	//
+	// example:
+	//
+	// xx测试
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of records per page.
+	//
 	// This parameter is required.
 	//
 	// example:

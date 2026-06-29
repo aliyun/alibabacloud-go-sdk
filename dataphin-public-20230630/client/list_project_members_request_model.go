@@ -18,18 +18,24 @@ type iListProjectMembersRequest interface {
 }
 
 type ListProjectMembersRequest struct {
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1030111021
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request object.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1030111021
 	ListQuery *ListProjectMembersRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -83,16 +89,22 @@ func (s *ListProjectMembersRequest) Validate() error {
 }
 
 type ListProjectMembersRequestListQuery struct {
+	// The project environment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 20

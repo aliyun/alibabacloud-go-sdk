@@ -18,10 +18,16 @@ type iCreatePipelineByAsyncRequest interface {
 }
 
 type CreatePipelineByAsyncRequest struct {
+	// Request context information
+	//
 	// This parameter is required.
 	Context *CreatePipelineByAsyncRequestContext `json:"Context,omitempty" xml:"Context,omitempty" type:"Struct"`
+	// Create pipeline/workflow task configuration
+	//
 	// This parameter is required.
 	CreateCommand *CreatePipelineByAsyncRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -80,12 +86,16 @@ func (s *CreatePipelineByAsyncRequest) Validate() error {
 }
 
 type CreatePipelineByAsyncRequestContext struct {
+	// Current operating environment env: DEV - indicates the development environment, PROD - indicates the production environment (for workflows, only PROD is currently supported)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Project ID to which the integration pipeline/workflow task belongs
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -125,37 +135,54 @@ func (s *CreatePipelineByAsyncRequestContext) Validate() error {
 }
 
 type CreatePipelineByAsyncRequestCreateCommand struct {
+	// Comment
+	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Integration pipeline configuration mode: PIPELINE - indicates pipeline mode (default), JSON - indicates script mode. This is not applicable to workflows.
+	//
 	// example:
 	//
 	// PIPELINE
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// Integration pipeline task basic information
+	//
 	// This parameter is required.
 	NodeInfo *CreatePipelineByAsyncRequestCreateCommandNodeInfo `json:"NodeInfo,omitempty" xml:"NodeInfo,omitempty" type:"Struct"`
+	// Integration pipeline component/workflow operator configuration
+	//
 	// This parameter is required.
 	PipelineConfig *CreatePipelineByAsyncRequestCreateCommandPipelineConfig `json:"PipelineConfig,omitempty" xml:"PipelineConfig,omitempty" type:"Struct"`
+	// In script mode: integration pipeline configuration (in JSON string format). Workflow tasks do not support script mode
+	//
 	// example:
 	//
 	// {}
 	PipelineJson *string `json:"PipelineJson,omitempty" xml:"PipelineJson,omitempty"`
+	// Task type: 0 - indicates offline integration (default), 1 - indicates real-time integration, 14 - indicates a workflow task
+	//
 	// example:
 	//
 	// 0
 	PipelineType *int32 `json:"PipelineType,omitempty" xml:"PipelineType,omitempty"`
+	// Scheduling configuration in JSON string format. Refer to the utility class: com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAScheduleConfig#toJsonString method
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"cronExpression":"0 0 0 	- 	- ?"}
 	ScheduleConfig *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
+	// Channel configuration in JSON string format. Refer to the utility class: com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAPipelineSetting#toJsonString method
+	//
 	// example:
 	//
 	// {}
 	Settings *string `json:"Settings,omitempty" xml:"Settings,omitempty"`
-	Submit   *bool   `json:"Submit,omitempty" xml:"Submit,omitempty"`
+	// Whether to submit. The default is to submit
+	Submit *bool `json:"Submit,omitempty" xml:"Submit,omitempty"`
 }
 
 func (s CreatePipelineByAsyncRequestCreateCommand) String() string {
@@ -262,24 +289,34 @@ func (s *CreatePipelineByAsyncRequestCreateCommand) Validate() error {
 }
 
 type CreatePipelineByAsyncRequestCreateCommandNodeInfo struct {
+	// Integration pipeline task node directory (defaults to the root directory). The directory must exist. If it does not exist, call the relevant API to create a directory of type offlinePipeline
+	//
 	// example:
 	//
 	// /
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// Pipeline file ID. Leave empty for the first creation. When updating a pipeline task, at least one of pipelineId, fileId, or nodeId must be configured
+	//
 	// example:
 	//
 	// 123
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// Pipeline task scheduling node ID. Leave empty for the first creation. When updating a pipeline task, at least one of pipelineId, fileId, or nodeId must be configured
+	//
 	// example:
 	//
 	// n_123
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Integration pipeline task name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// Pipeline task ID. Leave empty for the first creation. When updating a pipeline task, at least one of pipelineId, fileId, or nodeId must be configured
+	//
 	// example:
 	//
 	// 123
@@ -344,8 +381,12 @@ func (s *CreatePipelineByAsyncRequestCreateCommandNodeInfo) Validate() error {
 }
 
 type CreatePipelineByAsyncRequestCreateCommandPipelineConfig struct {
+	// DAG (Directed Acyclic Graph) link configuration: describes the connection relationships of all components
+	//
 	// This parameter is required.
 	Hops []*CreatePipelineByAsyncRequestCreateCommandPipelineConfigHops `json:"Hops,omitempty" xml:"Hops,omitempty" type:"Repeated"`
+	// Component/operator configuration: contains detailed configurations of all components/operators used
+	//
 	// This parameter is required.
 	Steps []*CreatePipelineByAsyncRequestCreateCommandPipelineConfigSteps `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
 }
@@ -399,13 +440,18 @@ func (s *CreatePipelineByAsyncRequestCreateCommandPipelineConfig) Validate() err
 }
 
 type CreatePipelineByAsyncRequestCreateCommandPipelineConfigHops struct {
+	// For conditional distribution components, set to true when the downstream connection condition is true, otherwise set to false. This is not applicable to workflow tasks.
 	SendTo *bool `json:"SendTo,omitempty" xml:"SendTo,omitempty"`
+	// Input step name, i.e., Steps[*].StepName
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mysql_reader
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Output step name, i.e., Steps[*].StepName
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -454,25 +500,34 @@ func (s *CreatePipelineByAsyncRequestCreateCommandPipelineConfigHops) Validate()
 }
 
 type CreatePipelineByAsyncRequestCreateCommandPipelineConfigSteps struct {
+	// Indicates the data distribution method when the current component has multiple downstream components: true - indicates that the data of the current component is sent to all downstream components in a round-robin manner. For example, if the current component has 100 records and two downstream components, each downstream component receives 50 records. The default value is true. false - indicates that the data of the current component is sent in full to all downstream components. For example, if the current component has 100 records and two downstream components, both downstream components receive 100 records. This value is not applicable to workflow tasks.
 	IsDistribute *bool `json:"IsDistribute,omitempty" xml:"IsDistribute,omitempty"`
+	// Plugin ID. Each plugin/operator has a unique identifier. Refer to the utility class: com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig#stepKey. Developers should extend the component/operator configuration class to implement the corresponding component/operator configuration. Each component/operator configuration has the same structure as a configuration created on the Dataphin page
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mysqlinput
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Specific component configuration in JSON string format. Refer to the utility class: subclasses of com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig (for workflow operators, use com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.unstructured.BaseOAUnstructuredNeuronConfig) and their toJsonString methods. Developers should extend the component/operator configuration class to implement the corresponding component/operator configuration. Each component/operator configuration has the same structure as a task configuration created on the Dataphin page
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {}
 	PluginConfig *string `json:"PluginConfig,omitempty" xml:"PluginConfig,omitempty"`
+	// Step name. Step names must be unique within the same pipeline task
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mysql_reader
 	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// Component type: input - indicates an input component, output - indicates an output component, transform - indicates a transform component, process - indicates a flow control component. For workflow tasks, it indicates the operator type, for example: image - image, text - text. Refer to the utility class: com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig#stepType. Developers should extend the component/operator configuration class to implement the corresponding component/operator configuration. Each component/operator configuration has the same structure as a configuration created on the Dataphin page
+	//
 	// This parameter is required.
 	//
 	// example:

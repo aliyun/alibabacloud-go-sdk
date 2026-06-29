@@ -16,8 +16,12 @@ type iListResourcePermissionOperationLogRequest interface {
 }
 
 type ListResourcePermissionOperationLogRequest struct {
+	// The paged request parameters.
+	//
 	// This parameter is required.
 	ListQuery *ListResourcePermissionOperationLogRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,22 +66,34 @@ func (s *ListResourcePermissionOperationLogRequest) Validate() error {
 }
 
 type ListResourcePermissionOperationLogRequestListQuery struct {
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of records per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search keyword.
+	//
 	// example:
 	//
 	// xx测试
 	SearchText *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
+	// The tab name. Valid values:
+	//
+	// - TABLE: table
+	//
+	// - DATASOURCE: datasource.
+	//
 	// This parameter is required.
 	//
 	// example:

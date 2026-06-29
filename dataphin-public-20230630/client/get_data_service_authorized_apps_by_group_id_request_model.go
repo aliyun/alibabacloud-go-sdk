@@ -18,16 +18,22 @@ type iGetDataServiceAuthorizedAppsByGroupIdRequest interface {
 }
 
 type GetDataServiceAuthorizedAppsByGroupIdRequest struct {
+	// The app group ID.
+	//
 	// example:
 	//
 	// 202102
 	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The data service project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

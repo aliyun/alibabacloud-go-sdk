@@ -22,14 +22,20 @@ type iUpdateStandardMappingToInvalidResponseBody interface {
 }
 
 type UpdateStandardMappingToInvalidResponseBody struct {
+	// Backend response code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP response code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Backend response exception details
+	//
 	// example:
 	//
 	// internal error
@@ -40,7 +46,8 @@ type UpdateStandardMappingToInvalidResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Whether the request is successful
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateStandardMappingToInvalidResponseBody) String() string {

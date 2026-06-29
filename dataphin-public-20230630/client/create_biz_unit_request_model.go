@@ -16,8 +16,12 @@ type iCreateBizUnitRequest interface {
 }
 
 type CreateBizUnitRequest struct {
+	// The create request.
+	//
 	// This parameter is required.
 	CreateCommand *CreateBizUnitRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,28 +66,68 @@ func (s *CreateBizUnitRequest) Validate() error {
 }
 
 type CreateBizUnitRequestCreateCommand struct {
+	// The list of data domain architects.
+	//
 	// This parameter is required.
 	BizUnitAccountList []*CreateBizUnitRequestCreateCommandBizUnitAccountList `json:"BizUnitAccountList,omitempty" xml:"BizUnitAccountList,omitempty" type:"Repeated"`
+	// The description of the business object. The description can be up to 128 characters in length.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the business object. The name can be up to 64 characters in length and can contain only Chinese characters, letters, digits, underscores, and hyphens.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// create_object_name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The preset icon. Valid values:
+	//
+	// - icon-e-commerce: E-commerce.
+	//
+	// - icon-finance: Finance.
+	//
+	// - con-cloud-computing: Cloud computing.
+	//
+	// - icon-advertisement: Advertising and marketing.
+	//
+	// - icon-logistics: Logistics.
+	//
+	// - icon-entertainment: Entertainment.
+	//
+	// - icon-traffic: Travel.
+	//
+	// - icon-health: Health.
+	//
+	// - icon-social-contact: Social and communication.
+	//
+	// - con-dining: Dining.
+	//
+	// - icon-education: Education.
+	//
+	// - icon-environment: Environment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// icon-environment
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// The production mode. Valid values:
+	//
+	// - BASIC: single-environment mode.
+	//
+	// - DEV_PROD: development/production dual-environment mode.
+	//
 	// example:
 	//
 	// DEV_PROD
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The code name of the business object. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For ADB_PG engines, the code name can be up to 40 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -168,6 +212,8 @@ func (s *CreateBizUnitRequestCreateCommand) Validate() error {
 }
 
 type CreateBizUnitRequestCreateCommandBizUnitAccountList struct {
+	// The user ID.
+	//
 	// This parameter is required.
 	//
 	// example:

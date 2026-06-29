@@ -16,8 +16,12 @@ type iCreateStandardSetShrinkRequest interface {
 }
 
 type CreateStandardSetShrinkRequest struct {
+	// The create instruction.
+	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

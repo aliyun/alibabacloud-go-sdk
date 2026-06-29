@@ -24,24 +24,34 @@ type iParseBatchTaskDependencyResponseBody interface {
 }
 
 type ParseBatchTaskDependencyResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message     *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The parsing result.
 	ParseResult *ParseBatchTaskDependencyResponseBodyParseResult `json:"ParseResult,omitempty" xml:"ParseResult,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ParseBatchTaskDependencyResponseBody) String() string {
@@ -116,6 +126,7 @@ func (s *ParseBatchTaskDependencyResponseBody) Validate() error {
 }
 
 type ParseBatchTaskDependencyResponseBodyParseResult struct {
+	// The list of dependent nodes.
 	DependNodeList []*ParseBatchTaskDependencyResponseBodyParseResultDependNodeList `json:"DependNodeList,omitempty" xml:"DependNodeList,omitempty" type:"Repeated"`
 }
 
@@ -150,10 +161,13 @@ func (s *ParseBatchTaskDependencyResponseBodyParseResult) Validate() error {
 }
 
 type ParseBatchTaskDependencyResponseBodyParseResultDependNodeList struct {
+	// The input/output type. Valid values: input (dependent node) and output (node output name).
+	//
 	// example:
 	//
 	// input
-	NodeIoType           *string                                                                              `json:"NodeIoType,omitempty" xml:"NodeIoType,omitempty"`
+	NodeIoType *string `json:"NodeIoType,omitempty" xml:"NodeIoType,omitempty"`
+	// The list of schedule nodes.
 	ScheduleNodeInfoList []*ParseBatchTaskDependencyResponseBodyParseResultDependNodeListScheduleNodeInfoList `json:"ScheduleNodeInfoList,omitempty" xml:"ScheduleNodeInfoList,omitempty" type:"Repeated"`
 }
 
@@ -197,27 +211,40 @@ func (s *ParseBatchTaskDependencyResponseBodyParseResultDependNodeList) Validate
 }
 
 type ParseBatchTaskDependencyResponseBodyParseResultDependNodeListScheduleNodeInfoList struct {
+	// The list of fields. This parameter applies only to logical table dependencies.
 	FieldList []*string `json:"FieldList,omitempty" xml:"FieldList,omitempty" type:"Repeated"`
+	// The node ID. A value of -1 is returned if no node is found for the corresponding input table.
+	//
 	// example:
 	//
 	// n_11013121
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The node name. This parameter is empty if no node is found for the corresponding input table.
+	//
 	// example:
 	//
 	// test11
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The output name of the node.
+	//
 	// example:
 	//
 	// t_test
 	OutputName *string `json:"OutputName,omitempty" xml:"OutputName,omitempty"`
+	// The owner of the node. This parameter is empty if no node is found for the corresponding input table.
+	//
 	// example:
 	//
 	// 张三
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The owner of the node. This parameter is empty if no node is found for the corresponding input table.
+	//
 	// example:
 	//
 	// 201122301
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The output table name of the node.
+	//
 	// example:
 	//
 	// t_test

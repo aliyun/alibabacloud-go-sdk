@@ -18,13 +18,18 @@ type iGetTableColumnLineagesRequest interface {
 }
 
 type GetTableColumnLineagesRequest struct {
+	// The filter conditions.
 	FilterQuery *GetTableColumnLineagesRequestFilterQuery `json:"FilterQuery,omitempty" xml:"FilterQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The GUID of the table, which is the unique identifier of the asset.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -78,13 +83,19 @@ func (s *GetTableColumnLineagesRequest) Validate() error {
 }
 
 type GetTableColumnLineagesRequestFilterQuery struct {
-	NeedDownstream     *bool `json:"NeedDownstream,omitempty" xml:"NeedDownstream,omitempty"`
+	// Specifies whether to query downstream lineage. Default value: true.
+	NeedDownstream *bool `json:"NeedDownstream,omitempty" xml:"NeedDownstream,omitempty"`
+	// Specifies whether to return tables that do not exist in the asset inventory. Default value: false.
 	NeedNotExistObject *bool `json:"NeedNotExistObject,omitempty" xml:"NeedNotExistObject,omitempty"`
-	NeedUpstream       *bool `json:"NeedUpstream,omitempty" xml:"NeedUpstream,omitempty"`
+	// Specifies whether to query upstream lineage. Default value: true.
+	NeedUpstream *bool `json:"NeedUpstream,omitempty" xml:"NeedUpstream,omitempty"`
+	// The environment of the nodes to query. Valid values: dev and prod.
+	//
 	// example:
 	//
 	// dev
-	NodeEnv    *string   `json:"NodeEnv,omitempty" xml:"NodeEnv,omitempty"`
+	NodeEnv *string `json:"NodeEnv,omitempty" xml:"NodeEnv,omitempty"`
+	// The list of node IDs to filter.
 	NodeIdList []*string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
 }
 

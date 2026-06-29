@@ -18,13 +18,18 @@ type iGetTableColumnLineagesShrinkRequest interface {
 }
 
 type GetTableColumnLineagesShrinkRequest struct {
+	// The filter conditions.
 	FilterQueryShrink *string `json:"FilterQuery,omitempty" xml:"FilterQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The GUID of the table, which is the unique identifier of the asset.
+	//
 	// This parameter is required.
 	//
 	// example:

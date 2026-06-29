@@ -24,14 +24,20 @@ type iGetStandardResponseBody interface {
 }
 
 type GetStandardResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -41,9 +47,11 @@ type GetStandardResponseBody struct {
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
-	RequestId    *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The standard details.
 	StandardInfo *GetStandardResponseBodyStandardInfo `json:"StandardInfo,omitempty" xml:"StandardInfo,omitempty" type:"Struct"`
-	Success      *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetStandardResponseBody) String() string {
@@ -118,52 +126,82 @@ func (s *GetStandardResponseBody) Validate() error {
 }
 
 type GetStandardResponseBodyStandardInfo struct {
+	// The attribute value configurations.
 	AttributeWithValueList []*GetStandardResponseBodyStandardInfoAttributeWithValueList `json:"AttributeWithValueList,omitempty" xml:"AttributeWithValueList,omitempty" type:"Repeated"`
+	// The standard code.
+	//
 	// example:
 	//
 	// zz
-	Code    *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The creator.
 	Creator *GetStandardResponseBodyStandardInfoCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	// The description.
+	//
 	// example:
 	//
 	// test
-	Description         *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The effective period configuration.
 	EffectiveTimeConfig *GetStandardResponseBodyStandardInfoEffectiveTimeConfig `json:"EffectiveTimeConfig,omitempty" xml:"EffectiveTimeConfig,omitempty" type:"Struct"`
+	// The English name of the standard.
+	//
 	// example:
 	//
 	// test
 	EnglishName *string `json:"EnglishName,omitempty" xml:"EnglishName,omitempty"`
+	// The lookup table.
+	//
 	// example:
 	//
 	// 1234
-	Id                   *int64                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
-	LastModifier         *GetStandardResponseBodyStandardInfoLastModifier           `json:"LastModifier,omitempty" xml:"LastModifier,omitempty" type:"Struct"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The last modifier.
+	LastModifier *GetStandardResponseBodyStandardInfoLastModifier `json:"LastModifier,omitempty" xml:"LastModifier,omitempty" type:"Struct"`
+	// The list of associated lookup tables.
 	LookupTableRelations []*GetStandardResponseBodyStandardInfoLookupTableRelations `json:"LookupTableRelations,omitempty" xml:"LookupTableRelations,omitempty" type:"Repeated"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The standard name.
+	//
 	// example:
 	//
 	// test
-	Name  *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner.
 	Owner *GetStandardResponseBodyStandardInfoOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
+	// The stage to which the standard belongs.
+	//
 	// example:
 	//
 	// dev
-	Stage                        *string                                                          `json:"Stage,omitempty" xml:"Stage,omitempty"`
+	Stage *string `json:"Stage,omitempty" xml:"Stage,omitempty"`
+	// The standard monitoring configuration.
 	StandardGeneralMonitorConfig *GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfig `json:"StandardGeneralMonitorConfig,omitempty" xml:"StandardGeneralMonitorConfig,omitempty" type:"Struct"`
-	StandardRelations            []*GetStandardResponseBodyStandardInfoStandardRelations          `json:"StandardRelations,omitempty" xml:"StandardRelations,omitempty" type:"Repeated"`
-	StandardSet                  *GetStandardResponseBodyStandardInfoStandardSet                  `json:"StandardSet,omitempty" xml:"StandardSet,omitempty" type:"Struct"`
-	StandardTemplate             *GetStandardResponseBodyStandardInfoStandardTemplate             `json:"StandardTemplate,omitempty" xml:"StandardTemplate,omitempty" type:"Struct"`
+	// The list of associated standards.
+	StandardRelations []*GetStandardResponseBodyStandardInfoStandardRelations `json:"StandardRelations,omitempty" xml:"StandardRelations,omitempty" type:"Repeated"`
+	// The standard set on which the current standard depends.
+	StandardSet *GetStandardResponseBodyStandardInfoStandardSet `json:"StandardSet,omitempty" xml:"StandardSet,omitempty" type:"Struct"`
+	// The standard template on which the current standard depends.
+	StandardTemplate *GetStandardResponseBodyStandardInfoStandardTemplate `json:"StandardTemplate,omitempty" xml:"StandardTemplate,omitempty" type:"Struct"`
+	// The status of the standard.
+	//
 	// example:
 	//
 	// draft
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The standard type.
+	//
 	// example:
 	//
 	// zz
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1
@@ -425,7 +463,10 @@ func (s *GetStandardResponseBodyStandardInfo) Validate() error {
 }
 
 type GetStandardResponseBodyStandardInfoAttributeWithValueList struct {
+	// The attribute details.
 	Attribute *GetStandardResponseBodyStandardInfoAttributeWithValueListAttribute `json:"Attribute,omitempty" xml:"Attribute,omitempty" type:"Struct"`
+	// The attribute value.
+	//
 	// example:
 	//
 	// test
@@ -468,30 +509,59 @@ func (s *GetStandardResponseBodyStandardInfoAttributeWithValueList) Validate() e
 }
 
 type GetStandardResponseBodyStandardInfoAttributeWithValueListAttribute struct {
+	// The attribute code.
+	//
 	// example:
 	//
 	// test_attr
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableMonitorConfig *bool   `json:"EnableMonitorConfig,omitempty" xml:"EnableMonitorConfig,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the monitoring configuration is enabled.
+	EnableMonitorConfig *bool `json:"EnableMonitorConfig,omitempty" xml:"EnableMonitorConfig,omitempty"`
+	// The attribute ID.
+	//
 	// example:
 	//
 	// 1011
-	Id            *int64                                                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The monitoring configuration.
 	MonitorConfig *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeMonitorConfig `json:"MonitorConfig,omitempty" xml:"MonitorConfig,omitempty" type:"Struct"`
+	// The attribute name.
+	//
 	// example:
 	//
 	// attr1
-	Name         *string                                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The referenced attribute information.
 	RefAttribute *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeRefAttribute `json:"RefAttribute,omitempty" xml:"RefAttribute,omitempty" type:"Struct"`
-	Required     *bool                                                                           `json:"Required,omitempty" xml:"Required,omitempty"`
+	// Indicates whether the attribute is required.
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// The attribute type. Valid values:
+	//
+	// - BIZ_ATTRIBUTE: business attribute.
+	//
+	// - TECH_ATTRIBUTE: technical attribute.
+	//
+	// - MANAGEMENT_ATTRIBUTE: management attribute.
+	//
+	// - QUALITY_ATTRIBUTE: quality attribute.
+	//
+	// - MASTER_DATA_ATTRIBUTE: master data attribute.
+	//
+	// - LIFECYCLE_ATTRIBUTE: lifecycle attribute.
+	//
+	// - SECURITY_ATTRIBUTE: security attribute.
+	//
 	// example:
 	//
 	// BIZ_ATTRIBUTE
-	Type        *string                                                                        `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value configuration.
 	ValueConfig *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueConfig `json:"ValueConfig,omitempty" xml:"ValueConfig,omitempty" type:"Struct"`
 }
 
@@ -613,11 +683,20 @@ func (s *GetStandardResponseBodyStandardInfoAttributeWithValueListAttribute) Val
 }
 
 type GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeMonitorConfig struct {
+	// The field to check.
+	//
 	// example:
 	//
 	// column1
-	ColumnName      *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	IsCaseSensitive *bool   `json:"IsCaseSensitive,omitempty" xml:"IsCaseSensitive,omitempty"`
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// Indicates whether the check is case-sensitive.
+	IsCaseSensitive *bool `json:"IsCaseSensitive,omitempty" xml:"IsCaseSensitive,omitempty"`
+	// The monitoring method. Valid values:
+	//
+	// - METADATA: metadata monitoring.
+	//
+	// - QUALITY: data quality monitoring.
+	//
 	// example:
 	//
 	// METADATA
@@ -664,7 +743,10 @@ func (s *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeMonit
 }
 
 type GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeRefAttribute struct {
+	// The attribute source.
 	AttributeFromInfo *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeRefAttributeAttributeFromInfo `json:"AttributeFromInfo,omitempty" xml:"AttributeFromInfo,omitempty" type:"Struct"`
+	// The attribute ID.
+	//
 	// example:
 	//
 	// 123
@@ -707,10 +789,19 @@ func (s *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeRefAt
 }
 
 type GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeRefAttributeAttributeFromInfo struct {
+	// The attribute source. Valid values:
+	//
+	// - SYSTEM: system attribute.
+	//
+	// - CUSTOM: custom attribute.
+	//
+	// - STANDARD: standard.
+	//
 	// example:
 	//
 	// CUSTOM
-	AttributeFrom     *string                                                                                                           `json:"AttributeFrom,omitempty" xml:"AttributeFrom,omitempty"`
+	AttributeFrom *string `json:"AttributeFrom,omitempty" xml:"AttributeFrom,omitempty"`
+	// The corresponding standard. This parameter takes effect when the attribute source is set to STANDARD.
 	StandardReference *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeRefAttributeAttributeFromInfoStandardReference `json:"StandardReference,omitempty" xml:"StandardReference,omitempty" type:"Struct"`
 }
 
@@ -750,10 +841,14 @@ func (s *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeRefAt
 }
 
 type GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeRefAttributeAttributeFromInfoStandardReference struct {
+	// The standard ID.
+	//
 	// example:
 	//
 	// 22
 	StandardId *int64 `json:"StandardId,omitempty" xml:"StandardId,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1
@@ -791,22 +886,51 @@ func (s *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeRefAt
 }
 
 type GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueConfig struct {
+	// The data type of the attribute value. Valid values:
+	//
+	// - STRING: string.
+	//
+	// - BIGINT: numeric type.
+	//
+	// - DOUBLE: floating-point type.
+	//
+	// - DATE: date, accurate to the day.
+	//
+	// - DATETIME: date, accurate to milliseconds.
+	//
+	// - BOOLEAN: Boolean.
+	//
 	// example:
 	//
 	// STRING
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The default value.
+	//
 	// example:
 	//
 	// test
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The length of the attribute value. If empty or -1, the length is not limited. Typically, only string types have a length limit for attribute values.
+	//
 	// example:
 	//
 	// 1
 	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The attribute value type. Valid values:
+	//
+	// - CUSTOMIZED: custom input.
+	//
+	// - SINGLE_ENUM: single enumeration value.
+	//
+	// - MULTIPLE_ENUMS: multiple enumeration values.
+	//
+	// - RANGE: range value.
+	//
 	// example:
 	//
 	// CUSTOMIZED
-	Type       *string                                                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value range.
 	ValueRange *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueConfigValueRange `json:"ValueRange,omitempty" xml:"ValueRange,omitempty" type:"Struct"`
 }
 
@@ -873,17 +997,48 @@ func (s *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValue
 }
 
 type GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueConfigValueRange struct {
+	// The value range. This parameter takes effect when the value source is set to DATAPHIN_ATTRIBUTE. Valid values:
+	//
+	// - BIZ_UNIT: business unit.
+	//
+	// - PROJECT: project.
+	//
+	// - USER: user.
+	//
+	// - USER_GROUP: user group.
+	//
 	// example:
 	//
 	// DATAPHIN_ATTRIBUTE
-	DataphinAttributeType *string                                                                                                      `json:"DataphinAttributeType,omitempty" xml:"DataphinAttributeType,omitempty"`
-	LookupTableReference  *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueConfigValueRangeLookupTableReference `json:"LookupTableReference,omitempty" xml:"LookupTableReference,omitempty" type:"Struct"`
-	MinMaxValueConfig     *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueConfigValueRangeMinMaxValueConfig    `json:"MinMaxValueConfig,omitempty" xml:"MinMaxValueConfig,omitempty" type:"Struct"`
+	DataphinAttributeType *string `json:"DataphinAttributeType,omitempty" xml:"DataphinAttributeType,omitempty"`
+	// The value range. This parameter takes effect when the value source is set to LOOKUP_TABLE.
+	LookupTableReference *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueConfigValueRangeLookupTableReference `json:"LookupTableReference,omitempty" xml:"LookupTableReference,omitempty" type:"Struct"`
+	// The value range. This parameter takes effect when the value source is set to MIN_MAX.
+	MinMaxValueConfig *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueConfigValueRangeMinMaxValueConfig `json:"MinMaxValueConfig,omitempty" xml:"MinMaxValueConfig,omitempty" type:"Struct"`
+	// The value source. Valid values:
+	//
+	// - NONE: no constraint.
+	//
+	// - LIST: obtained from a list.
+	//
+	// - LOOKUP_TABLE: lookup table.
+	//
+	// - MIN_MAX: value between the minimum and maximum.
+	//
+	// - DATAPHIN_ATTRIBUTE: Dataphin system property.
+	//
+	// - BUILT_IN_DATA_TYPES: built-in data types.
+	//
+	// - BUILT_IN_DATA_CLASSIFICATION: built-in data categorization.
+	//
+	// - BUILT_IN_DATA_LEVEL: built-in data security classification.
+	//
 	// example:
 	//
 	// NONE
-	ValueConstraint *string   `json:"ValueConstraint,omitempty" xml:"ValueConstraint,omitempty"`
-	ValueList       []*string `json:"ValueList,omitempty" xml:"ValueList,omitempty" type:"Repeated"`
+	ValueConstraint *string `json:"ValueConstraint,omitempty" xml:"ValueConstraint,omitempty"`
+	// The value range. This parameter takes effect when the value source is set to LIST.
+	ValueList []*string `json:"ValueList,omitempty" xml:"ValueList,omitempty" type:"Repeated"`
 }
 
 func (s GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueConfigValueRange) String() string {
@@ -954,10 +1109,14 @@ func (s *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValue
 }
 
 type GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueConfigValueRangeLookupTableReference struct {
+	// The referenced lookup table field.
+	//
 	// example:
 	//
 	// col1
 	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	// The lookup table ID.
+	//
 	// example:
 	//
 	// 11
@@ -995,12 +1154,18 @@ func (s *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValue
 }
 
 type GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValueConfigValueRangeMinMaxValueConfig struct {
+	// Indicates whether the maximum value is included.
 	IncludeMaxValue *bool `json:"IncludeMaxValue,omitempty" xml:"IncludeMaxValue,omitempty"`
+	// Indicates whether the minimum value is included.
 	IncludeMinValue *bool `json:"IncludeMinValue,omitempty" xml:"IncludeMinValue,omitempty"`
+	// The maximum value.
+	//
 	// example:
 	//
 	// 100
 	MaxValue *string `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	// The minimum value.
+	//
 	// example:
 	//
 	// 0
@@ -1056,10 +1221,14 @@ func (s *GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeValue
 }
 
 type GetStandardResponseBodyStandardInfoCreator struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 300000913
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// susan
@@ -1097,14 +1266,24 @@ func (s *GetStandardResponseBodyStandardInfoCreator) Validate() error {
 }
 
 type GetStandardResponseBodyStandardInfoEffectiveTimeConfig struct {
+	// The end time of the effective period.
+	//
 	// example:
 	//
 	// 2025-12-30 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the effective period.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The effective period type. Valid values:
+	//
+	// - FOREVER: permanent.
+	//
+	// - TIME_PERIOD: time period.
+	//
 	// example:
 	//
 	// TIME_PERIOD
@@ -1151,10 +1330,14 @@ func (s *GetStandardResponseBodyStandardInfoEffectiveTimeConfig) Validate() erro
 }
 
 type GetStandardResponseBodyStandardInfoLastModifier struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 300000913
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// susan
@@ -1192,22 +1375,32 @@ func (s *GetStandardResponseBodyStandardInfoLastModifier) Validate() error {
 }
 
 type GetStandardResponseBodyStandardInfoLookupTableRelations struct {
+	// The attribute name.
+	//
 	// example:
 	//
 	// zz
 	AttributeCode *string `json:"AttributeCode,omitempty" xml:"AttributeCode,omitempty"`
+	// The attribute ID.
+	//
 	// example:
 	//
 	// 1122
 	AttributeId *int64 `json:"AttributeId,omitempty" xml:"AttributeId,omitempty"`
+	// The attribute name.
+	//
 	// example:
 	//
 	// test
 	AttributeName *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
+	// The lookup table code.
+	//
 	// example:
 	//
 	// test
 	LookupTableCode *string `json:"LookupTableCode,omitempty" xml:"LookupTableCode,omitempty"`
+	// The lookup table ID.
+	//
 	// example:
 	//
 	// 1121
@@ -1272,10 +1465,14 @@ func (s *GetStandardResponseBodyStandardInfoLookupTableRelations) Validate() err
 }
 
 type GetStandardResponseBodyStandardInfoOwner struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 300000913
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// susan
@@ -1313,6 +1510,7 @@ func (s *GetStandardResponseBodyStandardInfoOwner) Validate() error {
 }
 
 type GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfig struct {
+	// The list of standard monitoring configurations.
 	StandardMonitorConfigList []*GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMonitorConfigList `json:"StandardMonitorConfigList,omitempty" xml:"StandardMonitorConfigList,omitempty" type:"Repeated"`
 }
 
@@ -1347,38 +1545,72 @@ func (s *GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfig) Valida
 }
 
 type GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMonitorConfigList struct {
+	// The associated attribute ID.
+	//
 	// example:
 	//
 	// 112
-	AttributeId            *int64                                                                                                          `json:"AttributeId,omitempty" xml:"AttributeId,omitempty"`
+	AttributeId *int64 `json:"AttributeId,omitempty" xml:"AttributeId,omitempty"`
+	// The monitoring configuration of the associated attribute.
 	AttributeMonitorConfig *GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMonitorConfigListAttributeMonitorConfig `json:"AttributeMonitorConfig,omitempty" xml:"AttributeMonitorConfig,omitempty" type:"Struct"`
+	// The attribute name.
+	//
 	// example:
 	//
 	// teset
 	AttributeName *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
+	// The rule description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The monitoring configuration ID. If empty, a new monitoring configuration is created. If an existing monitoring configuration ID is specified, the corresponding monitoring configuration is updated.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The method by which the monitoring configuration is added. Valid values:
+	//
+	// - BY_USER: manually added.
+	//
+	// - BY_SYSTEM_ATTRIBUTE: preset by system attribute.
+	//
 	// example:
 	//
 	// BY_SYSTEM_ATTRIBUTE
-	MonitorFrom         *string                                                                                                      `json:"MonitorFrom,omitempty" xml:"MonitorFrom,omitempty"`
+	MonitorFrom *string `json:"MonitorFrom,omitempty" xml:"MonitorFrom,omitempty"`
+	// The rule template. This parameter is required when the monitoring type is QUALITY.
 	QualityRuleTemplate *GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMonitorConfigListQualityRuleTemplate `json:"QualityRuleTemplate,omitempty" xml:"QualityRuleTemplate,omitempty" type:"Struct"`
-	RuleConfigList      []*GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMonitorConfigListRuleConfigList    `json:"RuleConfigList,omitempty" xml:"RuleConfigList,omitempty" type:"Repeated"`
+	// The rule configurations. This parameter is required when the monitoring type is QUALITY.
+	RuleConfigList []*GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMonitorConfigListRuleConfigList `json:"RuleConfigList,omitempty" xml:"RuleConfigList,omitempty" type:"Repeated"`
+	// The rule name.
+	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The rule subtype. Valid values:
+	//
+	// - BY_ATTRIBUTE: configured based on attributes.
+	//
+	// - CUSTOMIZED: custom configuration.
+	//
+	// This parameter is required when the monitoring type is QUALITY.
+	//
 	// example:
 	//
 	// CUSTOMIZED
-	RuleSubType            *string                                                                                                           `json:"RuleSubType,omitempty" xml:"RuleSubType,omitempty"`
+	RuleSubType *string `json:"RuleSubType,omitempty" xml:"RuleSubType,omitempty"`
+	// The rule validation configurations. This parameter is required when the monitoring type is QUALITY.
 	RuleValidateConfigList []*GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMonitorConfigListRuleValidateConfigList `json:"RuleValidateConfigList,omitempty" xml:"RuleValidateConfigList,omitempty" type:"Repeated"`
+	// The monitoring type. Valid values:
+	//
+	// - METADATA: metadata monitoring.
+	//
+	// - QUALITY: data quality monitoring.
+	//
 	// example:
 	//
 	// METADATA
@@ -1534,11 +1766,20 @@ func (s *GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandard
 }
 
 type GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMonitorConfigListAttributeMonitorConfig struct {
+	// The field to check.
+	//
 	// example:
 	//
 	// column1
-	ColumnName      *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	IsCaseSensitive *bool   `json:"IsCaseSensitive,omitempty" xml:"IsCaseSensitive,omitempty"`
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// Indicates whether the check is case-sensitive.
+	IsCaseSensitive *bool `json:"IsCaseSensitive,omitempty" xml:"IsCaseSensitive,omitempty"`
+	// The monitoring method. Valid values:
+	//
+	// - METADATA: metadata monitoring.
+	//
+	// - QUALITY: data quality monitoring.
+	//
 	// example:
 	//
 	// METADATA
@@ -1585,14 +1826,24 @@ func (s *GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandard
 }
 
 type GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMonitorConfigListQualityRuleTemplate struct {
+	// The template ID.
+	//
 	// example:
 	//
 	// 22
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// CUSTOMIZED
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The template source. Valid values:
+	//
+	// - FROM_SYSTEM: system template.
+	//
+	// - CUSTOMIZED: custom template.
+	//
 	// example:
 	//
 	// CUSTOMIZED
@@ -1639,10 +1890,14 @@ func (s *GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandard
 }
 
 type GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMonitorConfigListRuleConfigList struct {
+	// The configuration item.
+	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The configuration item value.
+	//
 	// example:
 	//
 	// v1
@@ -1680,30 +1935,66 @@ func (s *GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandard
 }
 
 type GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandardMonitorConfigListRuleValidateConfigList struct {
+	// The validation configuration ID. This ID is randomly generated by the business and must be unique.
+	//
 	// example:
 	//
 	// abc
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The metric. This parameter is required when the validation type is EXPRESSION.
+	//
 	// example:
 	//
 	// a
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The metric name. This parameter is required when the validation type is EXPRESSION.
+	//
 	// example:
 	//
 	// test
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The operator. If the validation type is EXPRESSION, valid values:
+	//
+	// - EQUAL: equal to.
+	//
+	// - NOT_EQUAL: not equal to.
+	//
+	// - LARGER: greater than.
+	//
+	// - LARGE_OR_EQUAL: greater than or equal to.
+	//
+	// - SMALLER: less than.
+	//
+	// - SMALLER_OR_EQUAL: less than or equal to.
+	//
+	// If the validation type is RELATION, valid values:
+	//
+	// - AND: and.
+	//
+	// - OR: or.
+	//
 	// example:
 	//
 	// AND
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The parent validation configuration ID. The parent rule validation type can only be RELATION.
+	//
 	// example:
 	//
 	// a
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The rule validation type. Valid values:
+	//
+	// - RELATION: relation.
+	//
+	// - EXPRESSION: expression.
+	//
 	// example:
 	//
 	// RELATION
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The comparison value.
+	//
 	// example:
 	//
 	// 1
@@ -1786,22 +2077,34 @@ func (s *GetStandardResponseBodyStandardInfoStandardGeneralMonitorConfigStandard
 }
 
 type GetStandardResponseBodyStandardInfoStandardRelations struct {
+	// The association type. Valid values:
+	//
+	// - RELATIVE.
+	//
 	// example:
 	//
 	// RELATIVE
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	// The standard ID.
+	//
 	// example:
 	//
 	// 1121
 	StandardId *int64 `json:"StandardId,omitempty" xml:"StandardId,omitempty"`
+	// The stage of the standard.
+	//
 	// example:
 	//
 	// DEV
 	StandardStage *string `json:"StandardStage,omitempty" xml:"StandardStage,omitempty"`
+	// The standard status.
+	//
 	// example:
 	//
 	// draft
 	StandardStatus *string `json:"StandardStatus,omitempty" xml:"StandardStatus,omitempty"`
+	// The standard version number.
+	//
 	// example:
 	//
 	// 1
@@ -1866,18 +2169,26 @@ func (s *GetStandardResponseBodyStandardInfoStandardRelations) Validate() error 
 }
 
 type GetStandardResponseBodyStandardInfoStandardSet struct {
+	// The standard set code.
+	//
 	// example:
 	//
 	// cc
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The folder to which the standard set belongs.
+	//
 	// example:
 	//
 	// /dir1
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// The standard set ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The standard set name.
+	//
 	// example:
 	//
 	// test
@@ -1933,22 +2244,36 @@ func (s *GetStandardResponseBodyStandardInfoStandardSet) Validate() error {
 }
 
 type GetStandardResponseBodyStandardInfoStandardTemplate struct {
+	// The standard template code.
+	//
 	// example:
 	//
 	// 1121
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The standard template ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The standard template name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The source of the standard template. Valid values:
+	//
+	// - CUSTOM: Custom standard template.
+	//
+	// - SYSTEM: System built-in standard template.
+	//
 	// example:
 	//
 	// SYSTEM
 	TemplateFrom *string `json:"TemplateFrom,omitempty" xml:"TemplateFrom,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1

@@ -24,24 +24,34 @@ type iGetAdHocTaskLogResponseBody interface {
 }
 
 type GetAdHocTaskLogResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	LogInfo        *GetAdHocTaskLogResponseBodyLogInfo `json:"LogInfo,omitempty" xml:"LogInfo,omitempty" type:"Struct"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The log details.
+	LogInfo *GetAdHocTaskLogResponseBodyLogInfo `json:"LogInfo,omitempty" xml:"LogInfo,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAdHocTaskLogResponseBody) String() string {
@@ -116,24 +126,36 @@ func (s *GetAdHocTaskLogResponseBody) Validate() error {
 }
 
 type GetAdHocTaskLogResponseBodyLogInfo struct {
+	// The runtime log content.
+	//
 	// example:
 	//
 	// test
-	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	HasNext   *bool   `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
-	HasResult *bool   `json:"HasResult,omitempty" xml:"HasResult,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Indicates whether the next log entry exists.
+	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// Indicates whether the current query produces a result.
+	HasResult *bool `json:"HasResult,omitempty" xml:"HasResult,omitempty"`
+	// The start position of the next log entry.
+	//
 	// example:
 	//
 	// 2021
 	NextOffset *int32 `json:"NextOffset,omitempty" xml:"NextOffset,omitempty"`
+	// The subtask ID.
+	//
 	// example:
 	//
 	// 0
 	SubTaskId *int32 `json:"SubTaskId,omitempty" xml:"SubTaskId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// MaxCompute_SQL_300000843_1611548758327
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task running status. Example: WAIT_RESOURCE indicates that the task is waiting for resources.
+	//
 	// example:
 	//
 	// WAIT_RESOURCE

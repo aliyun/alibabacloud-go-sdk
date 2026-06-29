@@ -18,14 +18,20 @@ type iGetPipelineByIdRequest interface {
 }
 
 type GetPipelineByIdRequest struct {
+	// The request context information.
+	//
 	// This parameter is required.
 	Context *GetPipelineByIdRequestContext `json:"Context,omitempty" xml:"Context,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID used to query the pipeline task.
+	//
 	// This parameter is required.
 	QueryId *GetPipelineByIdRequestQueryId `json:"QueryId,omitempty" xml:"QueryId,omitempty" type:"Struct"`
 }
@@ -80,12 +86,20 @@ func (s *GetPipelineByIdRequest) Validate() error {
 }
 
 type GetPipelineByIdRequestContext struct {
+	// The current operating environment. Valid values:
+	//
+	// - DEV: the development environment.
+	//
+	// - PROD: the production environment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The ID of the project to which the integration pipeline task belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -125,14 +139,20 @@ func (s *GetPipelineByIdRequestContext) Validate() error {
 }
 
 type GetPipelineByIdRequestQueryId struct {
+	// Supports querying by the integration task file ID (fileId).
+	//
 	// example:
 	//
 	// 123
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// Supports querying by the integration task scheduling node ID (nodeId).
+	//
 	// example:
 	//
 	// n_123
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Supports querying by the integration pipeline primary key (pipelineId).
+	//
 	// example:
 	//
 	// 123

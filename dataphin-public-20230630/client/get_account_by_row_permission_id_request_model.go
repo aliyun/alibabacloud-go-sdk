@@ -16,8 +16,12 @@ type iGetAccountByRowPermissionIdRequest interface {
 }
 
 type GetAccountByRowPermissionIdRequest struct {
+	// The request command.
+	//
 	// This parameter is required.
 	GetAccountByRowPermissionIdQuery *GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery `json:"GetAccountByRowPermissionIdQuery,omitempty" xml:"GetAccountByRowPermissionIdQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,12 +66,16 @@ func (s *GetAccountByRowPermissionIdRequest) Validate() error {
 }
 
 type GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery struct {
+	// The row-level permission ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 300001234
 	RowPermissionId *int64 `json:"RowPermissionId,omitempty" xml:"RowPermissionId,omitempty"`
+	// The row-level permission rule IDs.
+	//
 	// This parameter is required.
 	RuleIds []*int64 `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 }

@@ -24,14 +24,20 @@ type iSubmitQualityWatchTasksResponseBody interface {
 }
 
 type SubmitQualityWatchTasksResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -41,9 +47,11 @@ type SubmitQualityWatchTasksResponseBody struct {
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
-	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The execution result.
 	SubmitResult *SubmitQualityWatchTasksResponseBodySubmitResult `json:"SubmitResult,omitempty" xml:"SubmitResult,omitempty" type:"Struct"`
-	Success      *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SubmitQualityWatchTasksResponseBody) String() string {
@@ -118,6 +126,7 @@ func (s *SubmitQualityWatchTasksResponseBody) Validate() error {
 }
 
 type SubmitQualityWatchTasksResponseBodySubmitResult struct {
+	// The list of quality watchtask IDs.
 	WatchTaskIdList []*int64 `json:"WatchTaskIdList,omitempty" xml:"WatchTaskIdList,omitempty" type:"Repeated"`
 }
 

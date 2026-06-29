@@ -16,12 +16,16 @@ type iUpdateDataServiceAppRequest interface {
 }
 
 type UpdateDataServiceAppRequest struct {
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The command to update the data service application.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateDataServiceAppRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,21 +66,30 @@ func (s *UpdateDataServiceAppRequest) Validate() error {
 }
 
 type UpdateDataServiceAppRequestUpdateCommand struct {
+	// Application group ID.
+	//
 	// example:
 	//
 	// 200000000
 	AppGroupId *int32 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
+	// Application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Application name.
+	//
 	// example:
 	//
 	// 默认应用
-	AppName  *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// List of owner IDs.
 	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	// Application scenarios.
+	//
 	// example:
 	//
 	// 数据分析

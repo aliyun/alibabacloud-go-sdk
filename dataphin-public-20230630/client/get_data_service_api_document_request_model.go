@@ -18,18 +18,24 @@ type iGetDataServiceApiDocumentRequest interface {
 }
 
 type GetDataServiceApiDocumentRequest struct {
+	// The API ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 102101
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The version.
+	//
 	// example:
 	//
 	// 1

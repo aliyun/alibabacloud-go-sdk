@@ -14,6 +14,8 @@ type iListBizUnitsRequest interface {
 }
 
 type ListBizUnitsRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,8 +16,12 @@ type iOfflineStandardRequest interface {
 }
 
 type OfflineStandardRequest struct {
+	// The offline instruction.
+	//
 	// This parameter is required.
 	OfflineCommand *OfflineStandardRequestOfflineCommand `json:"OfflineCommand,omitempty" xml:"OfflineCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,12 +66,16 @@ func (s *OfflineStandardRequest) Validate() error {
 }
 
 type OfflineStandardRequestOfflineCommand struct {
+	// The review remarks. The value can be up to 128 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The standard ID.
+	//
 	// This parameter is required.
 	//
 	// example:

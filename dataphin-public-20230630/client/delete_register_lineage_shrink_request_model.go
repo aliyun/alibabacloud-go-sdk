@@ -16,8 +16,12 @@ type iDeleteRegisterLineageShrinkRequest interface {
 }
 
 type DeleteRegisterLineageShrinkRequest struct {
+	// The command for deleting registered lineage.
+	//
 	// This parameter is required.
 	DeleteRegisterLineageCommandShrink *string `json:"DeleteRegisterLineageCommand,omitempty" xml:"DeleteRegisterLineageCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

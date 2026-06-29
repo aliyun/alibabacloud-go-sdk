@@ -14,6 +14,8 @@ type iGetDataServiceMyProjectsRequest interface {
 }
 
 type GetDataServiceMyProjectsRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

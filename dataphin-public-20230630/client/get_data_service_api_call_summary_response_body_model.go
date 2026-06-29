@@ -24,15 +24,22 @@ type iGetDataServiceApiCallSummaryResponseBody interface {
 }
 
 type GetDataServiceApiCallSummaryResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The aggregate statistics of API calls.
 	Data *GetDataServiceApiCallSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type GetDataServiceApiCallSummaryResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataServiceApiCallSummaryResponseBody) String() string {
@@ -118,26 +126,38 @@ func (s *GetDataServiceApiCallSummaryResponseBody) Validate() error {
 }
 
 type GetDataServiceApiCallSummaryResponseBodyData struct {
+	// The number of API calls.
+	//
 	// example:
 	//
 	// 1021
 	CallCount *int64 `json:"CallCount,omitempty" xml:"CallCount,omitempty"`
+	// The number of APIs with call errors.
+	//
 	// example:
 	//
 	// 8
 	ErrorApiCount *int64 `json:"ErrorApiCount,omitempty" xml:"ErrorApiCount,omitempty"`
+	// The number of applications affected by errors.
+	//
 	// example:
 	//
 	// 2
 	ErrorAppCount *int64 `json:"ErrorAppCount,omitempty" xml:"ErrorAppCount,omitempty"`
+	// The number of failed calls.
+	//
 	// example:
 	//
 	// 102
 	ErrorCount *int64 `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
+	// The error rate.
+	//
 	// example:
 	//
 	// 10.01
 	ErrorRate *float64 `json:"ErrorRate,omitempty" xml:"ErrorRate,omitempty"`
+	// The offline percentage.
+	//
 	// example:
 	//
 	// 2.03

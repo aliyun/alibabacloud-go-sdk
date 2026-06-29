@@ -24,15 +24,22 @@ type iGetPipelineAsyncResultResponseBody interface {
 }
 
 type GetPipelineAsyncResultResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The asynchronous execution result.
 	Data *GetPipelineAsyncResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error details returned by the backend.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type GetPipelineAsyncResultResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetPipelineAsyncResultResponseBody) String() string {
@@ -118,38 +126,62 @@ func (s *GetPipelineAsyncResultResponseBody) Validate() error {
 }
 
 type GetPipelineAsyncResultResponseBodyData struct {
+	// The asynchronous execution query ID.
+	//
 	// example:
 	//
 	// 123
 	AsyncId *int64 `json:"AsyncId,omitempty" xml:"AsyncId,omitempty"`
+	// The error code returned when the execution fails.
+	//
 	// example:
 	//
 	// DPN.Pipeline.InnerError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned when the execution fails.
+	//
 	// example:
 	//
 	// NullPointException
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The information about the server host that processes the execution request.
+	//
 	// example:
 	//
 	// hostName:hostIp
 	HostMachine *string `json:"HostMachine,omitempty" xml:"HostMachine,omitempty"`
+	// The scheduling node ID of the pipeline task.
+	//
 	// example:
 	//
 	// n_123
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The primary key ID of the pipeline.
+	//
 	// example:
 	//
 	// 123
 	PipelineId *int64 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The current execution status. Valid values:
+	//
+	// - SUCCESS: execution succeeded.
+	//
+	// - FAILED: execution failed.
+	//
+	// - RUNNING: execution in progress.
+	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The publish ID generated after the pipeline task is submitted. You can use this ID to publish the task through the publish domain.
+	//
 	// example:
 	//
 	// 123
 	SubmitId *int64 `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
+	// The version number generated when the pipeline task is submitted.
+	//
 	// example:
 	//
 	// 1

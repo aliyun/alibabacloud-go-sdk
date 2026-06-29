@@ -24,16 +24,22 @@ type iGetCheckConnectivityJobsResponseBody interface {
 }
 
 type GetCheckConnectivityJobsResponseBody struct {
+	// The response code returned by the backend.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// result
 	Data []*GetCheckConnectivityJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error details returned by the backend.
+	//
 	// example:
 	//
 	// internal error
@@ -44,6 +50,8 @@ type GetCheckConnectivityJobsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -126,30 +134,44 @@ func (s *GetCheckConnectivityJobsResponseBody) Validate() error {
 }
 
 type GetCheckConnectivityJobsResponseBodyData struct {
+	// The data source ID.
+	//
 	// example:
 	//
 	// 192
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The error message that provides a detailed error description when the task fails.
+	//
 	// example:
 	//
 	// notFoundIp
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 123123
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The task type, such as application-level or cluster-level.
+	//
 	// example:
 	//
 	// application/cluster
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 30001011
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The Voldemort task ID, which is used to associate with the underlying execution task.
+	//
 	// example:
 	//
 	// t_7572319950395080706_20251225_7572319950395080707

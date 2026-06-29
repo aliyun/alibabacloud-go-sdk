@@ -18,14 +18,20 @@ type iListDataServiceApiCallStatisticsRequest interface {
 }
 
 type ListDataServiceApiCallStatisticsRequest struct {
+	// Search conditions.
+	//
 	// This parameter is required.
 	ListQuery *ListDataServiceApiCallStatisticsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Data service project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -79,32 +85,46 @@ func (s *ListDataServiceApiCallStatisticsRequest) Validate() error {
 }
 
 type ListDataServiceApiCallStatisticsRequestListQuery struct {
+	// End time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-06-30 20:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Search keyword.
+	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Sort column. Valid values: CALL_COUNT (call count), ERROR_COUNT (error count), ERROR_RATE (error rate), AVG_RESPONSE_TIME (average response time), and OFFLINE_RATE (offline percentage). Default value: CALL_COUNT.
+	//
 	// example:
 	//
 	// CALL_COUNT
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
+	// Sort order. Valid values: 1 (ascending) and 2 (descending). Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	OrderType *int32 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// Page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Number of entries per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Start time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// This parameter is required.
 	//
 	// example:

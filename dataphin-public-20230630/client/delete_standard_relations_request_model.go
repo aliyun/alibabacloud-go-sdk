@@ -16,8 +16,12 @@ type iDeleteStandardRelationsRequest interface {
 }
 
 type DeleteStandardRelationsRequest struct {
+	// The delete instruction.
+	//
 	// This parameter is required.
 	DeleteCommand *DeleteStandardRelationsRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,18 +66,24 @@ func (s *DeleteStandardRelationsRequest) Validate() error {
 }
 
 type DeleteStandardRelationsRequestDeleteCommand struct {
+	// The standard association type: RELATIVE.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// RELATIVE
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	// The standard ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	StandardId *int64 `json:"StandardId,omitempty" xml:"StandardId,omitempty"`
+	// The list of referenced standards.
+	//
 	// This parameter is required.
 	StandardRefList []*DeleteStandardRelationsRequestDeleteCommandStandardRefList `json:"StandardRefList,omitempty" xml:"StandardRefList,omitempty" type:"Repeated"`
 }
@@ -127,6 +137,8 @@ func (s *DeleteStandardRelationsRequestDeleteCommand) Validate() error {
 }
 
 type DeleteStandardRelationsRequestDeleteCommandStandardRefList struct {
+	// The standard ID.
+	//
 	// This parameter is required.
 	//
 	// example:

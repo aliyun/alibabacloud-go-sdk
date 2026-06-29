@@ -16,8 +16,12 @@ type iOnlineBizEntityShrinkRequest interface {
 }
 
 type OnlineBizEntityShrinkRequest struct {
+	// The online request.
+	//
 	// This parameter is required.
 	OnlineCommandShrink *string `json:"OnlineCommand,omitempty" xml:"OnlineCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

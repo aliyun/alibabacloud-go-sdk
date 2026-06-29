@@ -18,16 +18,26 @@ type iResumePhysicalNodeShrinkRequest interface {
 }
 
 type ResumePhysicalNodeShrinkRequest struct {
+	// Environment identifier.
+	//
+	// - DEV: Development environment
+	//
+	// - PROD (default): Production environment
+	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Resume scheduling request.
+	//
 	// This parameter is required.
 	ResumeCommandShrink *string `json:"ResumeCommand,omitempty" xml:"ResumeCommand,omitempty"`
 }

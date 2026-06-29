@@ -16,8 +16,12 @@ type iExecuteAdHocTaskRequest interface {
 }
 
 type ExecuteAdHocTaskRequest struct {
+  // The execution command.
+  // 
   // This parameter is required.
   ExecuteCommand *ExecuteAdHocTaskRequestExecuteCommand `json:"ExecuteCommand,omitempty" xml:"ExecuteCommand,omitempty" type:"Struct"`
+  // The tenant ID.
+  // 
   // This parameter is required.
   // 
   // example:
@@ -62,31 +66,44 @@ func (s *ExecuteAdHocTaskRequest) Validate() error {
 }
 
 type ExecuteAdHocTaskRequestExecuteCommand struct {
+  // The node script.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // show tables;
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The catalog for a database SQL task. This parameter takes effect only for data source types that require a catalog, such as Presto.
+  // 
   // example:
   // 
   // mysql_catalog
   DataSourceCatalog *string `json:"DataSourceCatalog,omitempty" xml:"DataSourceCatalog,omitempty"`
+  // The data source ID for a database SQL task.
+  // 
   // example:
   // 
   // 12131111
   DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+  // The schema for a database SQL task. This parameter takes effect only for data source types that require a schema, such as Oracle.
+  // 
   // example:
   // 
   // erp
   DataSourceSchema *string `json:"DataSourceSchema,omitempty" xml:"DataSourceSchema,omitempty"`
+  // The node type.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // MaxCompute_SQL
   OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+  // The runtime parameters.
   ParamList []*ExecuteAdHocTaskRequestExecuteCommandParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
+  // The project ID.
+  // 
   // This parameter is required.
   // 
   // example:
@@ -180,12 +197,16 @@ func (s *ExecuteAdHocTaskRequestExecuteCommand) Validate() error {
 }
 
 type ExecuteAdHocTaskRequestExecuteCommandParamList struct {
+  // The parameter.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // param1
   Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+  // The parameter value.
+  // 
   // This parameter is required.
   // 
   // example:

@@ -20,24 +20,32 @@ type iGetBatchTaskInfoByVersionRequest interface {
 }
 
 type GetBatchTaskInfoByVersionRequest struct {
+	// The node ID in the node directory tree.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12113111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the project to which the node belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 131211211
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The version number.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,12 +16,15 @@ type iTransferOwnershipForAllObjectRequest interface {
 }
 
 type TransferOwnershipForAllObjectRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
-	OpTenantId              *int64                                                       `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The transfer information.
 	PrivilegeTransferRecord *TransferOwnershipForAllObjectRequestPrivilegeTransferRecord `json:"PrivilegeTransferRecord,omitempty" xml:"PrivilegeTransferRecord,omitempty" type:"Struct"`
 }
 
@@ -61,18 +64,24 @@ func (s *TransferOwnershipForAllObjectRequest) Validate() error {
 }
 
 type TransferOwnershipForAllObjectRequestPrivilegeTransferRecord struct {
+	// The user ID of the new owner.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30000002
 	NewOwner *string `json:"NewOwner,omitempty" xml:"NewOwner,omitempty"`
+	// The user ID of the original owner.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30000001
 	OldOwner *string `json:"OldOwner,omitempty" xml:"OldOwner,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// comment

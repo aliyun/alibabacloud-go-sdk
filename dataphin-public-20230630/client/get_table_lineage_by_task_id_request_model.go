@@ -16,12 +16,16 @@ type iGetTableLineageByTaskIdRequest interface {
 }
 
 type GetTableLineageByTaskIdRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The data structure for querying table lineage.
+	//
 	// This parameter is required.
 	TableLineageByTaskIdQuery *GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery `json:"TableLineageByTaskIdQuery,omitempty" xml:"TableLineageByTaskIdQuery,omitempty" type:"Struct"`
 }
@@ -62,11 +66,16 @@ func (s *GetTableLineageByTaskIdRequest) Validate() error {
 }
 
 type GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery struct {
+	// Specifies whether to return tables that do not exist in the asset inventory. If this parameter is not specified, non-existent tables are not returned.
 	NeedNotExistObject *bool `json:"NeedNotExistObject,omitempty" xml:"NeedNotExistObject,omitempty"`
+	// The environment of the task to query: DEV or PROD.
+	//
 	// example:
 	//
 	// DEV
 	TaskEnv *string `json:"TaskEnv,omitempty" xml:"TaskEnv,omitempty"`
+	// The task (node) ID used to filter the query.
+	//
 	// This parameter is required.
 	//
 	// example:

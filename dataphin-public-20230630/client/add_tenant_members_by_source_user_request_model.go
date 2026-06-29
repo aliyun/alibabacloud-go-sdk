@@ -16,7 +16,10 @@ type iAddTenantMembersBySourceUserRequest interface {
 }
 
 type AddTenantMembersBySourceUserRequest struct {
+	// The add request.
 	AddCommand *AddTenantMembersBySourceUserRequestAddCommand `json:"AddCommand,omitempty" xml:"AddCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -61,6 +64,7 @@ func (s *AddTenantMembersBySourceUserRequest) Validate() error {
 }
 
 type AddTenantMembersBySourceUserRequestAddCommand struct {
+	// The list of source users.
 	SourceUserList []*AddTenantMembersBySourceUserRequestAddCommandSourceUserList `json:"SourceUserList,omitempty" xml:"SourceUserList,omitempty" type:"Repeated"`
 }
 
@@ -95,23 +99,38 @@ func (s *AddTenantMembersBySourceUserRequestAddCommand) Validate() error {
 }
 
 type AddTenantMembersBySourceUserRequestAddCommandSourceUserList struct {
+	// The account name.
+	//
 	// example:
 	//
 	// 123@xx.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The DingTalk number.
+	//
 	// example:
 	//
 	// 123@dingding
-	DingNumber  *string `json:"DingNumber,omitempty" xml:"DingNumber,omitempty"`
+	DingNumber *string `json:"DingNumber,omitempty" xml:"DingNumber,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// xx测试
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address.
+	//
 	// example:
 	//
 	// 123@xx.com
 	Mail *string `json:"Mail,omitempty" xml:"Mail,omitempty"`
+	// The phone number.
+	//
 	// example:
 	//
 	// 13888888888
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	// The original ID of the user.
+	//
 	// example:
 	//
 	// 2323131

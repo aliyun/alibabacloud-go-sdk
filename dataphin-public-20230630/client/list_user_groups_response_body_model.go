@@ -24,23 +24,34 @@ type iListUserGroupsResponseBody interface {
 }
 
 type ListUserGroupsResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paged query result.
 	PageResult *ListUserGroupsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,10 +130,13 @@ func (s *ListUserGroupsResponseBody) Validate() error {
 }
 
 type ListUserGroupsResponseBodyPageResult struct {
+	// The total number of records.
+	//
 	// example:
 	//
 	// 49
-	TotalCount    *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The paged list.
 	UserGroupList []*ListUserGroupsResponseBodyPageResultUserGroupList `json:"UserGroupList,omitempty" xml:"UserGroupList,omitempty" type:"Repeated"`
 }
 
@@ -166,21 +180,38 @@ func (s *ListUserGroupsResponseBodyPageResult) Validate() error {
 }
 
 type ListUserGroupsResponseBodyPageResultUserGroupList struct {
+	// Specifies whether the user group is enabled.
+	//
 	// example:
 	//
 	// true
-	Active      *bool                                                         `json:"Active,omitempty" xml:"Active,omitempty"`
-	AdminList   []*ListUserGroupsResponseBodyPageResultUserGroupListAdminList `json:"AdminList,omitempty" xml:"AdminList,omitempty" type:"Repeated"`
-	Description *string                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The administrators of the user group.
+	AdminList []*ListUserGroupsResponseBodyPageResultUserGroupListAdminList `json:"AdminList,omitempty" xml:"AdminList,omitempty" type:"Repeated"`
+	// The description of the user group.
+	//
+	// example:
+	//
+	// xx 测试
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The user group ID.
+	//
 	// example:
 	//
 	// 31313232
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The role of the current user in the user group.
+	//
 	// example:
 	//
 	// SECURITY_ADMIN
 	MyRole *string `json:"MyRole,omitempty" xml:"MyRole,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The user group name.
+	//
+	// example:
+	//
+	// xx测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListUserGroupsResponseBodyPageResultUserGroupList) String() string {
@@ -259,11 +290,20 @@ func (s *ListUserGroupsResponseBodyPageResultUserGroupList) Validate() error {
 }
 
 type ListUserGroupsResponseBodyPageResultUserGroupListAdminList struct {
+	// The account name of the user.
+	//
 	// example:
 	//
 	// zhangsan
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// 张三
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 32313131

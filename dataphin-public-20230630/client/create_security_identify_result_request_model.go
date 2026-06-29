@@ -16,8 +16,12 @@ type iCreateSecurityIdentifyResultRequest interface {
 }
 
 type CreateSecurityIdentifyResultRequest struct {
+	// The create request.
+	//
 	// This parameter is required.
 	CreateCommand *CreateSecurityIdentifyResultRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,46 +66,74 @@ func (s *CreateSecurityIdentifyResultRequest) Validate() error {
 }
 
 type CreateSecurityIdentifyResultRequestCreateCommand struct {
+	// The classification ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	ClassifyId *int64 `json:"ClassifyId,omitempty" xml:"ClassifyId,omitempty"`
+	// The deduplication strategy. Valid values:
+	//
+	// - COVER_ALL: overwrites all online tags.
+	//
+	// - COVER_UNLOCKED: overwrites only unlocked online tags.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// COVER_ALL
 	ConflictStrategy *string `json:"ConflictStrategy,omitempty" xml:"ConflictStrategy,omitempty"`
+	// The datasource environment identifier. This parameter is required only for datasource tables.
+	//
 	// example:
 	//
 	// DEV
 	DatasourceEnv *string `json:"DatasourceEnv,omitempty" xml:"DatasourceEnv,omitempty"`
+	// The datasource name. This parameter is required only for datasource tables.
+	//
 	// example:
 	//
 	// test
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// Specifies whether to enable the result. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
+	//
+	// Default value: true.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The field name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// col1
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// Specifies whether the table is a datasource table. Default value: false (treated as a Dataphin table).
+	//
 	// example:
 	//
 	// true
 	IsDatasourceTable *bool `json:"IsDatasourceTable,omitempty" xml:"IsDatasourceTable,omitempty"`
+	// The table catalog. For a datasource table, specify the database or schema name. For a Dataphin physical table, specify the project name in English. For a Dataphin logical table, specify the business unit name in English.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	TableCatalog *string `json:"TableCatalog,omitempty" xml:"TableCatalog,omitempty"`
+	// The table name.
+	//
 	// This parameter is required.
 	//
 	// example:

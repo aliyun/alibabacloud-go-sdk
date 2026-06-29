@@ -16,8 +16,12 @@ type iListDataSourceWithConfigRequest interface {
 }
 
 type ListDataSourceWithConfigRequest struct {
+	// Paginated query
+	//
 	// This parameter is required.
 	ListQuery *ListDataSourceWithConfigRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,26 +66,54 @@ func (s *ListDataSourceWithConfigRequest) Validate() error {
 }
 
 type ListDataSourceWithConfigRequestListQuery struct {
+	// Data source name
+	//
 	// example:
 	//
 	// vcns-test
-	Name      *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Data source owner
 	OwnerList []*string `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
+	// Page number. The value starts from 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// Number of records per page
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
-	PageSize  *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Data source scope. Valid values:
+	//
+	// - STREAMING: Real-time
+	//
+	// - OFFLINE: Offline
+	//
+	// - DIP_META_SYNC: Meta warehouse initialization
+	//
+	// - DATA_DISTILL: Data distillation
+	//
+	// - CUMPUTE_SOURCE_SHADOW: Shadow compute source
+	//
+	// - LABEL: Label
+	//
+	// - ALL: Offline + Real-time
 	ScopeList []*string `json:"ScopeList,omitempty" xml:"ScopeList,omitempty" type:"Repeated"`
-	Tag       *string   `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	TypeList  []*string `json:"TypeList,omitempty" xml:"TypeList,omitempty" type:"Repeated"`
+	// Tag marked when creating the data source
+	//
+	// example:
+	//
+	// xx测试
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Data source type
+	TypeList []*string `json:"TypeList,omitempty" xml:"TypeList,omitempty" type:"Repeated"`
 }
 
 func (s ListDataSourceWithConfigRequestListQuery) String() string {

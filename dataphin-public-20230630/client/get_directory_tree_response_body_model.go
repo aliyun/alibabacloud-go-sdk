@@ -24,24 +24,34 @@ type iGetDirectoryTreeResponseBody interface {
 }
 
 type GetDirectoryTreeResponseBody struct {
+	// Error code. OK indicates a successful request.
+	//
 	// example:
 	//
 	// OK
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Directory tree information. Returns the directory tree with all edge information, traversed level by level from the root node.
 	Data []*GetDirectoryTreeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDirectoryTreeResponseBody) String() string {
@@ -120,8 +130,10 @@ func (s *GetDirectoryTreeResponseBody) Validate() error {
 }
 
 type GetDirectoryTreeResponseBodyData struct {
+	// Child node.
 	Children *GetDirectoryTreeResponseBodyDataChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Struct"`
-	Parent   *GetDirectoryTreeResponseBodyDataParent   `json:"Parent,omitempty" xml:"Parent,omitempty" type:"Struct"`
+	// Parent node.
+	Parent *GetDirectoryTreeResponseBodyDataParent `json:"Parent,omitempty" xml:"Parent,omitempty" type:"Struct"`
 }
 
 func (s GetDirectoryTreeResponseBodyData) String() string {
@@ -165,58 +177,86 @@ func (s *GetDirectoryTreeResponseBodyData) Validate() error {
 }
 
 type GetDirectoryTreeResponseBodyDataChildren struct {
+	// Directory type.
+	//
 	// example:
 	//
 	// codeManage
 	CategoryType *string `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
+	// Creator ID.
+	//
 	// example:
 	//
 	// 300000907
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Creator name.
+	//
 	// example:
 	//
 	// John
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// Data cell ID.
+	//
 	// example:
 	//
 	// 41342
 	DataCellId *int64 `json:"DataCellId,omitempty" xml:"DataCellId,omitempty"`
+	// Directory path. Valid only for file or resource nodes.
+	//
 	// example:
 	//
 	// /
 	DirName *string `json:"DirName,omitempty" xml:"DirName,omitempty"`
+	// Creation time. Empty for non-entity object nodes.
+	//
 	// example:
 	//
 	// 2024-11-01 18:08:17
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Modification time. Empty for non-entity object nodes.
+	//
 	// example:
 	//
 	// 2024-11-01 18:08:17
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Directory ID.
+	//
 	// example:
 	//
 	// 3
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Last modifier ID.
+	//
 	// example:
 	//
 	// 300000907
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
+	// Last modifier name.
+	//
 	// example:
 	//
 	// John
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
+	// Display name of the object.
+	//
 	// example:
 	//
 	// 代码管理
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Project ID.
+	//
 	// example:
 	//
 	// 7081229106458752
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Directory string ID.
+	//
 	// example:
 	//
 	// 3
 	StringId *string `json:"StringId,omitempty" xml:"StringId,omitempty"`
+	// Object type.
+	//
 	// example:
 	//
 	// codeManage
@@ -362,58 +402,86 @@ func (s *GetDirectoryTreeResponseBodyDataChildren) Validate() error {
 }
 
 type GetDirectoryTreeResponseBodyDataParent struct {
+	// Directory type.
+	//
 	// example:
 	//
 	// codeManage
 	CategoryType *string `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
+	// Creator ID.
+	//
 	// example:
 	//
 	// 300000907
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Creator name.
+	//
 	// example:
 	//
 	// John
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// Data cell ID.
+	//
 	// example:
 	//
 	// 3213
 	DataCellId *int64 `json:"DataCellId,omitempty" xml:"DataCellId,omitempty"`
+	// Directory path. Valid only for file or resource nodes.
+	//
 	// example:
 	//
 	// /
 	DirName *string `json:"DirName,omitempty" xml:"DirName,omitempty"`
+	// Creation time. Empty for non-entity object nodes.
+	//
 	// example:
 	//
 	// 2024-11-01 18:08:17
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Modification time. Empty for non-entity object nodes.
+	//
 	// example:
 	//
 	// 2024-11-01 18:08:17
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Directory ID.
+	//
 	// example:
 	//
 	// 3
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Last modifier ID.
+	//
 	// example:
 	//
 	// 300000907
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
+	// Last modifier name.
+	//
 	// example:
 	//
 	// John
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
+	// Display name of the object.
+	//
 	// example:
 	//
 	// 代码管理
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Project ID.
+	//
 	// example:
 	//
 	// 7081229106458752
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Directory string ID.
+	//
 	// example:
 	//
 	// 3
 	StringId *string `json:"StringId,omitempty" xml:"StringId,omitempty"`
+	// Object type.
+	//
 	// example:
 	//
 	// codeManage

@@ -16,8 +16,12 @@ type iListPublishRecordsShrinkRequest interface {
 }
 
 type ListPublishRecordsShrinkRequest struct {
+	// Query command.
+	//
 	// This parameter is required.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

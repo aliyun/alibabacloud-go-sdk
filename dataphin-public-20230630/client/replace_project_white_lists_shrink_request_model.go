@@ -18,18 +18,24 @@ type iReplaceProjectWhiteListsShrinkRequest interface {
 }
 
 type ReplaceProjectWhiteListsShrinkRequest struct {
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1030111021
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The edit command.
+	//
 	// This parameter is required.
 	ReplaceCommandShrink *string `json:"ReplaceCommand,omitempty" xml:"ReplaceCommand,omitempty"`
 }

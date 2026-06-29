@@ -24,23 +24,34 @@ type iCheckResourcePermissionResponseBody interface {
 }
 
 type CheckResourcePermissionResponseBody struct {
+	// Error code. OK indicates a successful request
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code returned by the backend
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
-	RequestId              *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Resource permission list
 	ResourcePermissionList []*CheckResourcePermissionResponseBodyResourcePermissionList `json:"ResourcePermissionList,omitempty" xml:"ResourcePermissionList,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful
+	//
 	// example:
 	//
 	// true
@@ -123,10 +134,14 @@ func (s *CheckResourcePermissionResponseBody) Validate() error {
 }
 
 type CheckResourcePermissionResponseBodyResourcePermissionList struct {
+	// Indicates whether the user has the permission on the specified resource
+	//
 	// example:
 	//
 	// true
 	HasPermission *bool `json:"HasPermission,omitempty" xml:"HasPermission,omitempty"`
+	// Resource ID
+	//
 	// example:
 	//
 	// hadoop.300000806.data_distill.behavior_gameinfor_01

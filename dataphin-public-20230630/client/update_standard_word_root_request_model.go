@@ -16,12 +16,16 @@ type iUpdateStandardWordRootRequest interface {
 }
 
 type UpdateStandardWordRootRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update instruction.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateStandardWordRootRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,28 +66,38 @@ func (s *UpdateStandardWordRootRequest) Validate() error {
 }
 
 type UpdateStandardWordRootRequestUpdateCommand struct {
+	// The abbreviation of the root word.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// avg
 	Abbreviation *string `json:"Abbreviation,omitempty" xml:"Abbreviation,omitempty"`
+	// The description of the root word.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The full name of the root word.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// average
 	FullName *string `json:"FullName,omitempty" xml:"FullName,omitempty"`
+	// The name of the root word.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 平均值
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the root word before the update.
+	//
 	// This parameter is required.
 	//
 	// example:

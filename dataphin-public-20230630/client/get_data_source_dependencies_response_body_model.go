@@ -24,15 +24,22 @@ type iGetDataSourceDependenciesResponseBody interface {
 }
 
 type GetDataSourceDependenciesResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code           *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dependency records.
 	DependencyList []*GetDataSourceDependenciesResponseBodyDependencyList `json:"DependencyList,omitempty" xml:"DependencyList,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type GetDataSourceDependenciesResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataSourceDependenciesResponseBody) String() string {
@@ -122,18 +130,26 @@ func (s *GetDataSourceDependenciesResponseBody) Validate() error {
 }
 
 type GetDataSourceDependenciesResponseBodyDependencyList struct {
+	// The ID of the dependency record.
+	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the dependency record.
+	//
 	// example:
 	//
 	// jytest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the dependency record.
+	//
 	// example:
 	//
 	// pipeline
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type code of the dependency record.
+	//
 	// example:
 	//
 	// pipeline

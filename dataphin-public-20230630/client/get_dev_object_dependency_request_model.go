@@ -22,30 +22,50 @@ type iGetDevObjectDependencyRequest interface {
 }
 
 type GetDevObjectDependencyRequest struct {
+	// Development object source.
+	//
+	// - BLACK_BOX: Logical table
+	//
+	// - DATA_PROCESS: Compute task
+	//
+	// - PIPELINE: Integration task
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DATA_PROCESS
 	ObjectFrom *string `json:"ObjectFrom,omitempty" xml:"ObjectFrom,omitempty"`
+	// Object ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7026498387616064
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// Development object type.
+	//
+	// - FILE_ID: Task FileId
+	//
+	// - MODEL_ID: Logical table
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7026498387616064
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

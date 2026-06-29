@@ -24,23 +24,34 @@ type iCreateDataSourceResponseBody interface {
 }
 
 type CreateDataSourceResponseBody struct {
+	// Error code. OK indicates that the request is successful.
+	//
 	// example:
 	//
 	// OK
-	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data source creation result
 	CreateResult *CreateDataSourceResponseBodyCreateResult `json:"CreateResult,omitempty" xml:"CreateResult,omitempty" type:"Struct"`
+	// HTTP status code returned by the backend
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful
+	//
 	// example:
 	//
 	// true
@@ -119,10 +130,14 @@ func (s *CreateDataSourceResponseBody) Validate() error {
 }
 
 type CreateDataSourceResponseBodyCreateResult struct {
+	// Development environment data source ID
+	//
 	// example:
 	//
 	// 123
 	DevDataSourceId *int64 `json:"DevDataSourceId,omitempty" xml:"DevDataSourceId,omitempty"`
+	// Production environment data source ID
+	//
 	// example:
 	//
 	// 12345

@@ -16,7 +16,10 @@ type iListTablesRequest interface {
 }
 
 type ListTablesRequest struct {
+	// The paged query conditions.
 	ListQuery *ListTablesRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -61,20 +64,28 @@ func (s *ListTablesRequest) Validate() error {
 }
 
 type ListTablesRequestListQuery struct {
+	// The asset catalog, such as the project name or business unit name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// LD_test01_dev
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
+	// The keyword for searching. Table names are supported.
+	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of records per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20

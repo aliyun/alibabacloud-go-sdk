@@ -24,15 +24,22 @@ type iUpdatePipelineResponseBody interface {
 }
 
 type UpdatePipelineResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The update result of the pipeline or workflow node.
 	Data *UpdatePipelineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error details returned by the backend.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type UpdatePipelineResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdatePipelineResponseBody) String() string {
@@ -118,22 +126,32 @@ func (s *UpdatePipelineResponseBody) Validate() error {
 }
 
 type UpdatePipelineResponseBodyData struct {
+	// The name and IP address of the server that executed the request.
+	//
 	// example:
 	//
 	// hostName:hostIp
 	HostMachine *string `json:"HostMachine,omitempty" xml:"HostMachine,omitempty"`
+	// The scheduling node ID of the pipeline or workflow node.
+	//
 	// example:
 	//
 	// 123
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The pipeline or workflow ID.
+	//
 	// example:
 	//
 	// 123
 	PipelineId *int64 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The submit ID generated upon successful submission of the pipeline or workflow, which is added to the pending publish list and can be published through the publish domain. This value is not returned for workflow nodes because they only support PROD.
+	//
 	// example:
 	//
 	// 123
 	SubmitId *int64 `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
+	// The version number pending publish. This value is not returned for workflow nodes because they only support PROD.
+	//
 	// example:
 	//
 	// 1

@@ -16,12 +16,16 @@ type iUpsertQualityScheduleShrinkRequest interface {
 }
 
 type UpsertQualityScheduleShrinkRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update instruction.
+	//
 	// This parameter is required.
 	UpsertCommandShrink *string `json:"UpsertCommand,omitempty" xml:"UpsertCommand,omitempty"`
 }

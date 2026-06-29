@@ -14,6 +14,8 @@ type iListAddableRolesRequest interface {
 }
 
 type ListAddableRolesRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

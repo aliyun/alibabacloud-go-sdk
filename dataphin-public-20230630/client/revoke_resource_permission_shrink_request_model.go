@@ -16,12 +16,16 @@ type iRevokeResourcePermissionShrinkRequest interface {
 }
 
 type RevokeResourcePermissionShrinkRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The authorization revocation request.
+	//
 	// This parameter is required.
 	RevokeCommandShrink *string `json:"RevokeCommand,omitempty" xml:"RevokeCommand,omitempty"`
 }

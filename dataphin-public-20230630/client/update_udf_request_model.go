@@ -16,12 +16,16 @@ type iUpdateUdfRequest interface {
 }
 
 type UpdateUdfRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update command.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateUdfRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,48 +66,84 @@ func (s *UpdateUdfRequest) Validate() error {
 }
 
 type UpdateUdfRequestUpdateCommand struct {
+	// The category. Valid values:
+	//
+	// - 1: window function
+	//
+	// - 2: aggregate function
+	//
+	// - 3: numerical function
+	//
+	// - 4: string function
+	//
+	// - 5: time function
+	//
+	// - 6: IP address utility function
+	//
+	// - 7: URL-related function
+	//
+	// - 8: encoding and decoding function
+	//
+	// - 9: business-related function
+	//
+	// - 10: other.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The class name that implements the function in the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// com.lydaas.SleepTest
 	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
+	// The command format for function calling to invoke.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// udf_sleep(100)
 	CommandHelp *string `json:"CommandHelp,omitempty" xml:"CommandHelp,omitempty"`
+	// The commit remarks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 测试
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The description.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the user-defined function.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 711833
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The IDs of the referenced resources.
+	//
 	// This parameter is required.
 	RefResourceIdList []*int64 `json:"RefResourceIdList,omitempty" xml:"RefResourceIdList,omitempty" type:"Repeated"`
 }

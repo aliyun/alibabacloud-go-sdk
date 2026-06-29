@@ -16,12 +16,16 @@ type iUpdateQualityRuleSwitchRequest interface {
 }
 
 type UpdateQualityRuleSwitchRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update instruction.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateQualityRuleSwitchRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,8 +66,12 @@ func (s *UpdateQualityRuleSwitchRequest) Validate() error {
 }
 
 type UpdateQualityRuleSwitchRequestUpdateCommand struct {
+	// Specifies whether to enable the quality rules.
+	//
 	// This parameter is required.
 	Open *bool `json:"Open,omitempty" xml:"Open,omitempty"`
+	// The list of rule IDs.
+	//
 	// This parameter is required.
 	RuleIdList []*int64 `json:"RuleIdList,omitempty" xml:"RuleIdList,omitempty" type:"Repeated"`
 }

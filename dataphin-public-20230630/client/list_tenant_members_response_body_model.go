@@ -24,23 +24,34 @@ type iListTenantMembersResponseBody interface {
 }
 
 type ListTenantMembersResponseBody struct {
+	// The error code. OK indicates a successful request.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message    *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paginated query result.
 	PageResult *ListTenantMembersResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,11 +130,14 @@ func (s *ListTenantMembersResponseBody) Validate() error {
 }
 
 type ListTenantMembersResponseBodyPageResult struct {
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 110
-	TotalCount *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	UserList   []*ListTenantMembersResponseBodyPageResultUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of users.
+	UserList []*ListTenantMembersResponseBodyPageResultUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
 
 func (s ListTenantMembersResponseBodyPageResult) String() string {
@@ -166,65 +180,102 @@ func (s *ListTenantMembersResponseBodyPageResult) Validate() error {
 }
 
 type ListTenantMembersResponseBodyPageResultUserList struct {
+	// The account name.
+	//
 	// example:
 	//
 	// zhangsan
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The DingTalk number.
+	//
 	// example:
 	//
 	// dd123123
 	DingNumber *string `json:"DingNumber,omitempty" xml:"DingNumber,omitempty"`
+	// The display name of the user.
+	//
 	// example:
 	//
 	// zhangsan
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The display name of the user without status.
+	//
 	// example:
 	//
 	// zhangsan
 	DisplayNameWithoutStatus *string `json:"DisplayNameWithoutStatus,omitempty" xml:"DisplayNameWithoutStatus,omitempty"`
+	// Indicates whether the IP address whitelist is enabled.
+	//
 	// example:
 	//
 	// true
 	EnableWhiteIp *string `json:"EnableWhiteIp,omitempty" xml:"EnableWhiteIp,omitempty"`
+	// The time when the user was created.
+	//
 	// example:
 	//
 	// 1730000000000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the user was last modified.
+	//
 	// example:
 	//
 	// 1730000000000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 132321
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The email address.
+	//
 	// example:
 	//
 	// 123@aliyun.com
 	Mail *string `json:"Mail,omitempty" xml:"Mail,omitempty"`
+	// The phone number.
+	//
 	// example:
 	//
 	// 13888888888
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// zhangsan
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The nickname of the user.
+	//
 	// example:
 	//
 	// susan
-	NickName *string   `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	RealName *string   `json:"RealName,omitempty" xml:"RealName,omitempty"`
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// The real name of the user.
+	//
+	// example:
+	//
+	// 张三
+	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
+	// The list of member roles.
 	RoleList []*string `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
+	// The user source ID.
+	//
 	// example:
 	//
 	// 213213232422222
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The user source.
+	//
 	// example:
 	//
 	// aliyun
-	SourceType    *string                                                         `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The list of user groups to which the user belongs.
 	UserGroupList []*ListTenantMembersResponseBodyPageResultUserListUserGroupList `json:"UserGroupList,omitempty" xml:"UserGroupList,omitempty" type:"Repeated"`
+	// The IP address whitelist.
+	//
 	// example:
 	//
 	// 0.0.0.0/0
@@ -415,15 +466,29 @@ func (s *ListTenantMembersResponseBodyPageResultUserList) Validate() error {
 }
 
 type ListTenantMembersResponseBodyPageResultUserListUserGroupList struct {
+	// Indicates whether the user group is enabled.
+	//
 	// example:
 	//
 	// true
-	Active      *bool   `json:"Active,omitempty" xml:"Active,omitempty"`
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The user group ID.
+	//
 	// example:
 	//
 	// 121313
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the user group.
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

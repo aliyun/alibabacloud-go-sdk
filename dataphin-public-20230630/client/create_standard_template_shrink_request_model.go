@@ -16,8 +16,12 @@ type iCreateStandardTemplateShrinkRequest interface {
 }
 
 type CreateStandardTemplateShrinkRequest struct {
+	// Create command.
+	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

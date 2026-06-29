@@ -24,28 +24,44 @@ type iGetInstanceUpDownStreamRequest interface {
 }
 
 type GetInstanceUpDownStreamRequest struct {
+	// The number of downstream node levels. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	DownStreamDepth *int32 `json:"DownStreamDepth,omitempty" xml:"DownStreamDepth,omitempty"`
+	// The environment identifier. Valid values:
+	//
+	// - DEV: development environment.
+	//
+	// - PROD (default): production environment.
+	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The center node.
+	//
 	// This parameter is required.
 	InstanceId *GetInstanceUpDownStreamRequestInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1001121
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The number of upstream node levels. Default value: 1.
+	//
 	// example:
 	//
 	// 1
@@ -124,7 +140,10 @@ func (s *GetInstanceUpDownStreamRequest) Validate() error {
 }
 
 type GetInstanceUpDownStreamRequestInstanceId struct {
+	// The list of field IDs. This parameter can be specified when the node is a logical table instance ID. If this parameter is not specified, the full table is used by default.
 	FieldInstanceIdList []*string `json:"FieldInstanceIdList,omitempty" xml:"FieldInstanceIdList,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

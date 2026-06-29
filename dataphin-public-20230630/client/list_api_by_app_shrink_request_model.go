@@ -16,12 +16,16 @@ type iListApiByAppShrinkRequest interface {
 }
 
 type ListApiByAppShrinkRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The paged query parameters.
+	//
 	// This parameter is required.
 	PageQueryShrink *string `json:"PageQuery,omitempty" xml:"PageQuery,omitempty"`
 }

@@ -16,7 +16,10 @@ type iGetBelongAssetMappingRequest interface {
 }
 
 type GetBelongAssetMappingRequest struct {
+	// Query command.
 	AssetMappingQuery *GetBelongAssetMappingRequestAssetMappingQuery `json:"AssetMappingQuery,omitempty" xml:"AssetMappingQuery,omitempty" type:"Struct"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -61,12 +64,16 @@ func (s *GetBelongAssetMappingRequest) Validate() error {
 }
 
 type GetBelongAssetMappingRequestAssetMappingQuery struct {
+	// The GUID of the belonging asset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1121
 	BelongGuid *string `json:"BelongGuid,omitempty" xml:"BelongGuid,omitempty"`
+	// The mapping relationship type. Valid values: VALID (mapped) and INVALID (invalid mapping).
+	//
 	// example:
 	//
 	// VALID

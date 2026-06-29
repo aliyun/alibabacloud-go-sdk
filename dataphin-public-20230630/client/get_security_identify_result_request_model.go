@@ -16,12 +16,16 @@ type iGetSecurityIdentifyResultRequest interface {
 }
 
 type GetSecurityIdentifyResultRequest struct {
+	// The identification result ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

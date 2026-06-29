@@ -16,12 +16,16 @@ type iUpsertQualityRuleShrinkRequest interface {
 }
 
 type UpsertQualityRuleShrinkRequest struct {
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The upsert command.
+	//
 	// This parameter is required.
 	UpsertCommandShrink *string `json:"UpsertCommand,omitempty" xml:"UpsertCommand,omitempty"`
 }

@@ -18,18 +18,24 @@ type iGetBatchTaskUdfLineagesRequest interface {
 }
 
 type GetBatchTaskUdfLineagesRequest struct {
+	// The node ID of the task directory tree.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12113111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project to which the task belongs.
+	//
 	// This parameter is required.
 	//
 	// example:

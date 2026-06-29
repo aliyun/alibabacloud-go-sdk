@@ -18,18 +18,24 @@ type iDeleteAdHocFileRequest interface {
 }
 
 type DeleteAdHocFileRequest struct {
+	// The file ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12121111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

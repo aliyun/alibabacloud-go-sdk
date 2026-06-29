@@ -16,7 +16,10 @@ type iGetMyTenantsRequest interface {
 }
 
 type GetMyTenantsRequest struct {
+	// The feature codes owned by the tenant.
 	FeatureCodeList []*string `json:"FeatureCodeList,omitempty" xml:"FeatureCodeList,omitempty" type:"Repeated"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

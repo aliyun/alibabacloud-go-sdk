@@ -16,8 +16,12 @@ type iListAddableUsersRequest interface {
 }
 
 type ListAddableUsersRequest struct {
+	// The request object.
+	//
 	// This parameter is required.
 	ListQuery *ListAddableUsersRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,14 +66,20 @@ func (s *ListAddableUsersRequest) Validate() error {
 }
 
 type ListAddableUsersRequestListQuery struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search keyword.
+	//
 	// example:
 	//
 	// xx

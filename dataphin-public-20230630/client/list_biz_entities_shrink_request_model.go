@@ -16,8 +16,12 @@ type iListBizEntitiesShrinkRequest interface {
 }
 
 type ListBizEntitiesShrinkRequest struct {
+	// The query request.
+	//
 	// This parameter is required.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

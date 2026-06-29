@@ -18,18 +18,28 @@ type iGetStreamJobsRequest interface {
 }
 
 type GetStreamJobsRequest struct {
+	// The Dataphin environment. Valid values:
+	//
+	// - DEV
+	//
+	// - PROD.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The Dataphin project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

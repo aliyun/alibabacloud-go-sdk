@@ -24,24 +24,34 @@ type iGetLatestSubmitDetailResponseBody interface {
 }
 
 type GetLatestSubmitDetailResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
-	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pending submit details.
 	SubmitDetailResult *GetLatestSubmitDetailResponseBodySubmitDetailResult `json:"SubmitDetailResult,omitempty" xml:"SubmitDetailResult,omitempty" type:"Struct"`
-	Success            *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetLatestSubmitDetailResponseBody) String() string {
@@ -116,19 +126,56 @@ func (s *GetLatestSubmitDetailResponseBody) Validate() error {
 }
 
 type GetLatestSubmitDetailResponseBodySubmitDetailResult struct {
+	// The submit record ID.
+	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The publish status. Valid values:
+	//
+	// - NOT_VERIFIED: not verified.
+	//
+	// - APPROVING: approval in progress.
+	//
+	// - APPROVE_FAILED: approval failed.
+	//
+	// - APPROVE_SUCCESS: approval succeeded.
+	//
+	// - APPROVE_REVOKED: approval revoked.
+	//
+	// - CHECKING: publish verification in progress.
+	//
+	// - CHECK_FAILED: publish verification failed.
+	//
+	// - CHECK_SUCCESS: publish verification succeeded.
+	//
+	// - PUBLISHING: publishing in progress.
+	//
+	// - FAILED: publish failed.
+	//
+	// - SUCCESS: publish succeeded.
+	//
 	// example:
 	//
 	// SUCCESS
-	PublishStatus *string                                                           `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	PublishStatus *string `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	// The pending submit record object.
 	ReleaseObject *GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObject `json:"ReleaseObject,omitempty" xml:"ReleaseObject,omitempty" type:"Struct"`
+	// The submit status. Valid values:
+	//
+	// - TO_BE_PUBLISHED: pending.
+	//
+	// - PUBLISHED: published.
+	//
+	// - PUBLISHING: publishing.
+	//
 	// example:
 	//
 	// TO_BE_PUBLISHED
 	SubmitStatus *string `json:"SubmitStatus,omitempty" xml:"SubmitStatus,omitempty"`
+	// The record tag.
+	//
 	// example:
 	//
 	// tag
@@ -198,27 +245,38 @@ func (s *GetLatestSubmitDetailResponseBodySubmitDetailResult) Validate() error {
 }
 
 type GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObject struct {
+	// The change type. Valid values: CREATE, UPDATE, and DELETE.
+	//
 	// example:
 	//
 	// DELETE
 	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// n_1234
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The object version.
+	//
 	// example:
 	//
 	// 1
 	ObjectVersion *string `json:"ObjectVersion,omitempty" xml:"ObjectVersion,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 1234
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The submit comment.
+	//
 	// example:
 	//
 	// 提交说明
-	SubmitComment *string                                                                       `json:"SubmitComment,omitempty" xml:"SubmitComment,omitempty"`
-	SubmitObject  *GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObjectSubmitObject `json:"SubmitObject,omitempty" xml:"SubmitObject,omitempty" type:"Struct"`
+	SubmitComment *string `json:"SubmitComment,omitempty" xml:"SubmitComment,omitempty"`
+	// The submit object.
+	SubmitObject *GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObjectSubmitObject `json:"SubmitObject,omitempty" xml:"SubmitObject,omitempty" type:"Struct"`
 }
 
 func (s GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObject) String() string {
@@ -293,14 +351,20 @@ func (s *GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObject) Valid
 }
 
 type GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObjectSubmitObject struct {
+	// The object ID.
+	//
 	// example:
 	//
 	// 1234
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The object name.
+	//
 	// example:
 	//
 	// abc
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
+	// The object type.
+	//
 	// example:
 	//
 	// MAX_COMPUTE_SQL

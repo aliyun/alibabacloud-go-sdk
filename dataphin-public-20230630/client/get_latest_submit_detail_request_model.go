@@ -16,12 +16,16 @@ type iGetLatestSubmitDetailRequest interface {
 }
 
 type GetLatestSubmitDetailRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The pending submit query request.
+	//
 	// This parameter is required.
 	SubmitDetailQuery *GetLatestSubmitDetailRequestSubmitDetailQuery `json:"SubmitDetailQuery,omitempty" xml:"SubmitDetailQuery,omitempty" type:"Struct"`
 }
@@ -62,12 +66,16 @@ func (s *GetLatestSubmitDetailRequest) Validate() error {
 }
 
 type GetLatestSubmitDetailRequestSubmitDetailQuery struct {
+	// The object ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The object type.
+	//
 	// This parameter is required.
 	//
 	// example:

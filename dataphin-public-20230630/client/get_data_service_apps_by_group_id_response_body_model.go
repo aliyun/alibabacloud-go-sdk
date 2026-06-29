@@ -24,15 +24,22 @@ type iGetDataServiceAppsByGroupIdResponseBody interface {
 }
 
 type GetDataServiceAppsByGroupIdResponseBody struct {
+	// The list of application groups.
 	AppInfoList []*GetDataServiceAppsByGroupIdResponseBodyAppInfoList `json:"AppInfoList,omitempty" xml:"AppInfoList,omitempty" type:"Repeated"`
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type GetDataServiceAppsByGroupIdResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataServiceAppsByGroupIdResponseBody) String() string {
@@ -128,6 +136,8 @@ type GetDataServiceAppsByGroupIdResponseBodyAppInfoList struct {
 	//
 	// 1021
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// test

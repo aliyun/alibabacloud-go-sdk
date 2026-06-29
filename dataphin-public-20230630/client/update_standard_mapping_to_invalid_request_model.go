@@ -16,12 +16,16 @@ type iUpdateStandardMappingToInvalidRequest interface {
 }
 
 type UpdateStandardMappingToInvalidRequest struct {
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Update Command
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateStandardMappingToInvalidRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,8 +66,12 @@ func (s *UpdateStandardMappingToInvalidRequest) Validate() error {
 }
 
 type UpdateStandardMappingToInvalidRequestUpdateCommand struct {
+	// Belonging GUID list, with an upper limit of 1000
 	BelongGuidList []*string `json:"BelongGuidList,omitempty" xml:"BelongGuidList,omitempty" type:"Repeated"`
-	GuidList       []*string `json:"GuidList,omitempty" xml:"GuidList,omitempty" type:"Repeated"`
+	// GUID list, with an upper limit of 1000
+	GuidList []*string `json:"GuidList,omitempty" xml:"GuidList,omitempty" type:"Repeated"`
+	// Standard ID
+	//
 	// This parameter is required.
 	//
 	// example:

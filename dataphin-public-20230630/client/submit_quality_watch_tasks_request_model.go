@@ -16,12 +16,16 @@ type iSubmitQualityWatchTasksRequest interface {
 }
 
 type SubmitQualityWatchTasksRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The submit command.
+	//
 	// This parameter is required.
 	SubmitCommand *SubmitQualityWatchTasksRequestSubmitCommand `json:"SubmitCommand,omitempty" xml:"SubmitCommand,omitempty" type:"Struct"`
 }
@@ -62,14 +66,20 @@ func (s *SubmitQualityWatchTasksRequest) Validate() error {
 }
 
 type SubmitQualityWatchTasksRequestSubmitCommand struct {
+	// The business date, in the yyyy-MM-dd format.
+	//
 	// example:
 	//
 	// 2025-06-30
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// The partition expression. This is a custom expression.
+	//
 	// example:
 	//
 	// ds=${yyyyMMdd}
 	PartitionExpression *string `json:"PartitionExpression,omitempty" xml:"PartitionExpression,omitempty"`
+	// The monitored object IDs.
+	//
 	// This parameter is required.
 	WatchIdList []*int64 `json:"WatchIdList,omitempty" xml:"WatchIdList,omitempty" type:"Repeated"`
 }

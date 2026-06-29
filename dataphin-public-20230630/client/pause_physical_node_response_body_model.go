@@ -24,23 +24,34 @@ type iPausePhysicalNodeResponseBody interface {
 }
 
 type PausePhysicalNodeResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message               *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The results of the pause scheduling operations on the nodes.
 	NodeOperateResultList []*PausePhysicalNodeResponseBodyNodeOperateResultList `json:"NodeOperateResultList,omitempty" xml:"NodeOperateResultList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -123,14 +134,20 @@ func (s *PausePhysicalNodeResponseBody) Validate() error {
 }
 
 type PausePhysicalNodeResponseBodyNodeOperateResultList struct {
+	// The error message returned when the operation fails.
+	//
 	// example:
 	//
 	// xx
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// n_123456
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The operation result.
+	//
 	// example:
 	//
 	// SUCCESS

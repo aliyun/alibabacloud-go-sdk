@@ -16,8 +16,12 @@ type iCheckDataSourceConnectivityRequest interface {
 }
 
 type CheckDataSourceConnectivityRequest struct {
+	// The object to check.
+	//
 	// This parameter is required.
 	CheckCommand *CheckDataSourceConnectivityRequestCheckCommand `json:"CheckCommand,omitempty" xml:"CheckCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,8 +66,12 @@ func (s *CheckDataSourceConnectivityRequest) Validate() error {
 }
 
 type CheckDataSourceConnectivityRequestCheckCommand struct {
+	// The connection configuration items.
+	//
 	// This parameter is required.
 	ConfigItemList []*CheckDataSourceConnectivityRequestCheckCommandConfigItemList `json:"ConfigItemList,omitempty" xml:"ConfigItemList,omitempty" type:"Repeated"`
+	// The data source type. For supported data source types, see the documentation for creating a data source.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -112,12 +120,16 @@ func (s *CheckDataSourceConnectivityRequestCheckCommand) Validate() error {
 }
 
 type CheckDataSourceConnectivityRequestCheckCommandConfigItemList struct {
+	// The configuration item.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The configuration value.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,8 +16,12 @@ type iAddRegisterLineageShrinkRequest interface {
 }
 
 type AddRegisterLineageShrinkRequest struct {
+	// The command for registering and adding data lineage.
+	//
 	// This parameter is required.
 	AddRegisterLineageCommandShrink *string `json:"AddRegisterLineageCommand,omitempty" xml:"AddRegisterLineageCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

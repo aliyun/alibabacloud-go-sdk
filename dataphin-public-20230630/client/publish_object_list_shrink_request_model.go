@@ -16,12 +16,16 @@ type iPublishObjectListShrinkRequest interface {
 }
 
 type PublishObjectListShrinkRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The publish command.
+	//
 	// This parameter is required.
 	PublishCommandShrink *string `json:"PublishCommand,omitempty" xml:"PublishCommand,omitempty"`
 }

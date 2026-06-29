@@ -24,14 +24,20 @@ type iGetProjectWhiteListsResponseBody interface {
 }
 
 type GetProjectWhiteListsResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -41,8 +47,10 @@ type GetProjectWhiteListsResponseBody struct {
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The project whitelist.
 	WhiteLists []*GetProjectWhiteListsResponseBodyWhiteLists `json:"WhiteLists,omitempty" xml:"WhiteLists,omitempty" type:"Repeated"`
 }
 
@@ -122,6 +130,8 @@ func (s *GetProjectWhiteListsResponseBody) Validate() error {
 }
 
 type GetProjectWhiteListsResponseBodyWhiteLists struct {
+	// The description.
+	//
 	// example:
 	//
 	// 测试
@@ -132,6 +142,8 @@ type GetProjectWhiteListsResponseBodyWhiteLists struct {
 	//
 	// 10.1.0.2
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The port.
+	//
 	// example:
 	//
 	// 5432

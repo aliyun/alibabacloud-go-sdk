@@ -24,7 +24,14 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-shenzhen": dara.String("dataphin-public.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai": dara.String("dataphin-public.cn-shanghai.aliyuncs.com"),
+		"cn-hangzhou": dara.String("dataphin-public.cn-hangzhou.aliyuncs.com"),
+		"cn-chengdu":  dara.String("dataphin-public.cn-chengdu.aliyuncs.com"),
+		"cn-beijing":  dara.String("dataphin-public.cn-beijing.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +65,9 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 新增数据服务应用的普通成员。
+// Adds a regular member to a data service application. Only the application owner can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param tmpReq - AddDataServiceAppMemberRequest
 //
@@ -114,7 +123,9 @@ func (client *Client) AddDataServiceAppMemberWithOptions(tmpReq *AddDataServiceA
 
 // Summary:
 //
-// 新增数据服务应用的普通成员。
+// Adds a regular member to a data service application. Only the application owner can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - AddDataServiceAppMemberRequest
 //
@@ -132,7 +143,7 @@ func (client *Client) AddDataServiceAppMember(request *AddDataServiceAppMemberRe
 
 // Summary:
 //
-// 添加数据服务项目用户并设置角色。
+// Adds users to a data service project and assigns roles to them.
 //
 // @param tmpReq - AddDataServiceProjectMemberRequest
 //
@@ -192,7 +203,7 @@ func (client *Client) AddDataServiceProjectMemberWithOptions(tmpReq *AddDataServ
 
 // Summary:
 //
-// 添加数据服务项目用户并设置角色。
+// Adds users to a data service project and assigns roles to them.
 //
 // @param request - AddDataServiceProjectMemberRequest
 //
@@ -210,7 +221,7 @@ func (client *Client) AddDataServiceProjectMember(request *AddDataServiceProject
 
 // Summary:
 //
-// 增加项目成员。
+// Adds members to a project.
 //
 // @param tmpReq - AddProjectMemberRequest
 //
@@ -270,7 +281,7 @@ func (client *Client) AddProjectMemberWithOptions(tmpReq *AddProjectMemberReques
 
 // Summary:
 //
-// 增加项目成员。
+// Adds members to a project.
 //
 // @param request - AddProjectMemberRequest
 //
@@ -288,7 +299,7 @@ func (client *Client) AddProjectMember(request *AddProjectMemberRequest) (_resul
 
 // Summary:
 //
-// 新增注册血缘。
+// Registers data lineage. Available since version v5.4.0.
 //
 // @param tmpReq - AddRegisterLineageRequest
 //
@@ -344,7 +355,7 @@ func (client *Client) AddRegisterLineageWithOptions(tmpReq *AddRegisterLineageRe
 
 // Summary:
 //
-// 新增注册血缘。
+// Registers data lineage. Available since version v5.4.0.
 //
 // @param request - AddRegisterLineageRequest
 //
@@ -362,7 +373,7 @@ func (client *Client) AddRegisterLineage(request *AddRegisterLineageRequest) (_r
 
 // Summary:
 //
-// 新增租户成员
+// Adds users to a tenant in batches. Only super administrators (SuperAdmin) and system administrators can invoke this API operation.
 //
 // @param tmpReq - AddTenantMembersRequest
 //
@@ -418,7 +429,7 @@ func (client *Client) AddTenantMembersWithOptions(tmpReq *AddTenantMembersReques
 
 // Summary:
 //
-// 新增租户成员
+// Adds users to a tenant in batches. Only super administrators (SuperAdmin) and system administrators can invoke this API operation.
 //
 // @param request - AddTenantMembersRequest
 //
@@ -436,7 +447,7 @@ func (client *Client) AddTenantMembers(request *AddTenantMembersRequest) (_resul
 
 // Summary:
 //
-// 通过原始用户添加租户成员.
+// Adds tenant members by using original user identities.
 //
 // @param tmpReq - AddTenantMembersBySourceUserRequest
 //
@@ -492,7 +503,7 @@ func (client *Client) AddTenantMembersBySourceUserWithOptions(tmpReq *AddTenantM
 
 // Summary:
 //
-// 通过原始用户添加租户成员.
+// Adds tenant members by using original user identities.
 //
 // @param request - AddTenantMembersBySourceUserRequest
 //
@@ -510,7 +521,7 @@ func (client *Client) AddTenantMembersBySourceUser(request *AddTenantMembersBySo
 
 // Summary:
 //
-// 添加用户组成员.
+// Adds members to a user group.
 //
 // @param tmpReq - AddUserGroupMemberRequest
 //
@@ -566,7 +577,7 @@ func (client *Client) AddUserGroupMemberWithOptions(tmpReq *AddUserGroupMemberRe
 
 // Summary:
 //
-// 添加用户组成员.
+// Adds members to a user group.
 //
 // @param request - AddUserGroupMemberRequest
 //
@@ -584,7 +595,7 @@ func (client *Client) AddUserGroupMember(request *AddUserGroupMemberRequest) (_r
 
 // Summary:
 //
-// 申请API权限。
+// Applies for API permissions.
 //
 // @param tmpReq - ApplyDataServiceApiRequest
 //
@@ -644,7 +655,7 @@ func (client *Client) ApplyDataServiceApiWithOptions(tmpReq *ApplyDataServiceApi
 
 // Summary:
 //
-// 申请API权限。
+// Applies for API permissions.
 //
 // @param request - ApplyDataServiceApiRequest
 //
@@ -662,7 +673,7 @@ func (client *Client) ApplyDataServiceApi(request *ApplyDataServiceApiRequest) (
 
 // Summary:
 //
-// 申请应用权限。
+// Applies for application permissions.
 //
 // @param tmpReq - ApplyDataServiceAppRequest
 //
@@ -722,7 +733,7 @@ func (client *Client) ApplyDataServiceAppWithOptions(tmpReq *ApplyDataServiceApp
 
 // Summary:
 //
-// 申请应用权限。
+// Applies for application permissions.
 //
 // @param request - ApplyDataServiceAppRequest
 //
@@ -740,7 +751,9 @@ func (client *Client) ApplyDataServiceApp(request *ApplyDataServiceAppRequest) (
 
 // Summary:
 //
-// 指定质量规则和调度设置进行绑定。
+// Binds specified quality rules to schedule settings.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - AssignQualityRuleOfAllRuleScopeSchedulesRequest
 //
@@ -796,7 +809,9 @@ func (client *Client) AssignQualityRuleOfAllRuleScopeSchedulesWithOptions(tmpReq
 
 // Summary:
 //
-// 指定质量规则和调度设置进行绑定。
+// Binds specified quality rules to schedule settings.
+//
+// Release version: v5.4.2.
 //
 // @param request - AssignQualityRuleOfAllRuleScopeSchedulesRequest
 //
@@ -814,7 +829,7 @@ func (client *Client) AssignQualityRuleOfAllRuleScopeSchedules(request *AssignQu
 
 // Summary:
 //
-// 项目计算源连通性检查。
+// Checks the connectivity of a compute source.
 //
 // @param tmpReq - CheckComputeSourceConnectivityRequest
 //
@@ -870,7 +885,7 @@ func (client *Client) CheckComputeSourceConnectivityWithOptions(tmpReq *CheckCom
 
 // Summary:
 //
-// 项目计算源连通性检查。
+// Checks the connectivity of a compute source.
 //
 // @param request - CheckComputeSourceConnectivityRequest
 //
@@ -888,7 +903,7 @@ func (client *Client) CheckComputeSourceConnectivity(request *CheckComputeSource
 
 // Summary:
 //
-// 计算源连通性检查。
+// Checks the connectivity of an existing compute source by compute source ID.
 //
 // @param request - CheckComputeSourceConnectivityByIdRequest
 //
@@ -936,7 +951,7 @@ func (client *Client) CheckComputeSourceConnectivityByIdWithOptions(request *Che
 
 // Summary:
 //
-// 计算源连通性检查。
+// Checks the connectivity of an existing compute source by compute source ID.
 //
 // @param request - CheckComputeSourceConnectivityByIdRequest
 //
@@ -954,7 +969,7 @@ func (client *Client) CheckComputeSourceConnectivityById(request *CheckComputeSo
 
 // Summary:
 //
-// 检查数据源连通性
+// Checks the connectivity of a data source.
 //
 // @param tmpReq - CheckDataSourceConnectivityRequest
 //
@@ -1010,7 +1025,7 @@ func (client *Client) CheckDataSourceConnectivityWithOptions(tmpReq *CheckDataSo
 
 // Summary:
 //
-// 检查数据源连通性
+// Checks the connectivity of a data source.
 //
 // @param request - CheckDataSourceConnectivityRequest
 //
@@ -1028,7 +1043,7 @@ func (client *Client) CheckDataSourceConnectivity(request *CheckDataSourceConnec
 
 // Summary:
 //
-// 检查已创建的数据源是否正常连通
+// Checks the connectivity of a data source.
 //
 // @param request - CheckDataSourceConnectivityByIdRequest
 //
@@ -1076,7 +1091,7 @@ func (client *Client) CheckDataSourceConnectivityByIdWithOptions(request *CheckD
 
 // Summary:
 //
-// 检查已创建的数据源是否正常连通
+// Checks the connectivity of a data source.
 //
 // @param request - CheckDataSourceConnectivityByIdRequest
 //
@@ -1094,7 +1109,7 @@ func (client *Client) CheckDataSourceConnectivityById(request *CheckDataSourceCo
 
 // Summary:
 //
-// 检查项目是否存在依赖。
+// Checks whether a project has data dependencies such as tasks.
 //
 // @param request - CheckProjectHasDependencyRequest
 //
@@ -1142,7 +1157,7 @@ func (client *Client) CheckProjectHasDependencyWithOptions(request *CheckProject
 
 // Summary:
 //
-// 检查项目是否存在依赖。
+// Checks whether a project has data dependencies such as tasks.
 //
 // @param request - CheckProjectHasDependencyRequest
 //
@@ -1160,7 +1175,7 @@ func (client *Client) CheckProjectHasDependency(request *CheckProjectHasDependen
 
 // Summary:
 //
-// 校验用户是否有指定资源权限点.
+// Checks whether a user has the permission on a specified resource.
 //
 // @param tmpReq - CheckResourcePermissionRequest
 //
@@ -1216,7 +1231,7 @@ func (client *Client) CheckResourcePermissionWithOptions(tmpReq *CheckResourcePe
 
 // Summary:
 //
-// 校验用户是否有指定资源权限点.
+// Checks whether a user has the permission on a specified resource.
 //
 // @param request - CheckResourcePermissionRequest
 //
@@ -1234,7 +1249,7 @@ func (client *Client) CheckResourcePermission(request *CheckResourcePermissionRe
 
 // Summary:
 //
-// 创建即席查询文件
+// Creates an ad hoc query file.
 //
 // @param tmpReq - CreateAdHocFileRequest
 //
@@ -1290,7 +1305,7 @@ func (client *Client) CreateAdHocFileWithOptions(tmpReq *CreateAdHocFileRequest,
 
 // Summary:
 //
-// 创建即席查询文件
+// Creates an ad hoc query file.
 //
 // @param request - CreateAdHocFileRequest
 //
@@ -1308,7 +1323,7 @@ func (client *Client) CreateAdHocFile(request *CreateAdHocFileRequest) (_result 
 
 // Summary:
 //
-// 创建离线计算任务。
+// Creates a batch task.
 //
 // @param tmpReq - CreateBatchTaskRequest
 //
@@ -1364,7 +1379,7 @@ func (client *Client) CreateBatchTaskWithOptions(tmpReq *CreateBatchTaskRequest,
 
 // Summary:
 //
-// 创建离线计算任务。
+// Creates a batch task.
 //
 // @param request - CreateBatchTaskRequest
 //
@@ -1382,7 +1397,7 @@ func (client *Client) CreateBatchTask(request *CreateBatchTaskRequest) (_result 
 
 // Summary:
 //
-// 创建业务实体。
+// Creates a business entity.
 //
 // @param tmpReq - CreateBizEntityRequest
 //
@@ -1438,7 +1453,7 @@ func (client *Client) CreateBizEntityWithOptions(tmpReq *CreateBizEntityRequest,
 
 // Summary:
 //
-// 创建业务实体。
+// Creates a business entity.
 //
 // @param request - CreateBizEntityRequest
 //
@@ -1456,7 +1471,9 @@ func (client *Client) CreateBizEntity(request *CreateBizEntityRequest) (_result 
 
 // Summary:
 //
-// 新建业务指标
+// Creates a business metric.
+//
+// Release version: v5.5.0.
 //
 // @param tmpReq - CreateBizMetricRequest
 //
@@ -1512,7 +1529,9 @@ func (client *Client) CreateBizMetricWithOptions(tmpReq *CreateBizMetricRequest,
 
 // Summary:
 //
-// 新建业务指标
+// Creates a business metric.
+//
+// Release version: v5.5.0.
 //
 // @param request - CreateBizMetricRequest
 //
@@ -1530,7 +1549,7 @@ func (client *Client) CreateBizMetric(request *CreateBizMetricRequest) (_result 
 
 // Summary:
 //
-// 创建数据板块。
+// Creates a data domain.
 //
 // @param tmpReq - CreateBizUnitRequest
 //
@@ -1586,7 +1605,7 @@ func (client *Client) CreateBizUnitWithOptions(tmpReq *CreateBizUnitRequest, run
 
 // Summary:
 //
-// 创建数据板块。
+// Creates a data domain.
 //
 // @param request - CreateBizUnitRequest
 //
@@ -1604,7 +1623,7 @@ func (client *Client) CreateBizUnit(request *CreateBizUnitRequest) (_result *Cre
 
 // Summary:
 //
-// 创建计算源。
+// Creates a compute source. Business unit administrators and project administrators have permissions to perform this operation.
 //
 // @param tmpReq - CreateComputeSourceRequest
 //
@@ -1660,7 +1679,7 @@ func (client *Client) CreateComputeSourceWithOptions(tmpReq *CreateComputeSource
 
 // Summary:
 //
-// 创建计算源。
+// Creates a compute source. Business unit administrators and project administrators have permissions to perform this operation.
 //
 // @param request - CreateComputeSourceRequest
 //
@@ -1678,7 +1697,7 @@ func (client *Client) CreateComputeSource(request *CreateComputeSourceRequest) (
 
 // Summary:
 //
-// 创建主题域。
+// Creates a data domain.
 //
 // @param tmpReq - CreateDataDomainRequest
 //
@@ -1734,7 +1753,7 @@ func (client *Client) CreateDataDomainWithOptions(tmpReq *CreateDataDomainReques
 
 // Summary:
 //
-// 创建主题域。
+// Creates a data domain.
 //
 // @param request - CreateDataDomainRequest
 //
@@ -1752,7 +1771,7 @@ func (client *Client) CreateDataDomain(request *CreateDataDomainRequest) (_resul
 
 // Summary:
 //
-// 创建新的数据服务API并提交。
+// Creates a data service API and submits it.
 //
 // @param tmpReq - CreateDataServiceApiRequest
 //
@@ -1808,7 +1827,7 @@ func (client *Client) CreateDataServiceApiWithOptions(tmpReq *CreateDataServiceA
 
 // Summary:
 //
-// 创建新的数据服务API并提交。
+// Creates a data service API and submits it.
 //
 // @param request - CreateDataServiceApiRequest
 //
@@ -1826,7 +1845,9 @@ func (client *Client) CreateDataServiceApi(request *CreateDataServiceApiRequest)
 
 // Summary:
 //
-// 创建数据服务应用。
+// Creates a data service application. Only super administrators or system administrators can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param tmpReq - CreateDataServiceAppRequest
 //
@@ -1882,7 +1903,9 @@ func (client *Client) CreateDataServiceAppWithOptions(tmpReq *CreateDataServiceA
 
 // Summary:
 //
-// 创建数据服务应用。
+// Creates a data service application. Only super administrators or system administrators can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - CreateDataServiceAppRequest
 //
@@ -1900,7 +1923,9 @@ func (client *Client) CreateDataServiceApp(request *CreateDataServiceAppRequest)
 
 // Summary:
 //
-// 创建数据服务应用分组。
+// Creates a data service application group. Only superusers and system administrators can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - CreateDataServiceAppGroupRequest
 //
@@ -1948,7 +1973,9 @@ func (client *Client) CreateDataServiceAppGroupWithOptions(request *CreateDataSe
 
 // Summary:
 //
-// 创建数据服务应用分组。
+// Creates a data service application group. Only superusers and system administrators can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - CreateDataServiceAppGroupRequest
 //
@@ -1966,7 +1993,7 @@ func (client *Client) CreateDataServiceAppGroup(request *CreateDataServiceAppGro
 
 // Summary:
 //
-// 新建数据源
+// Create Data Source: Tenant administrators, data administrators, business unit administrators, project administrators, and operations administrators have permission to perform this operation.
 //
 // @param tmpReq - CreateDataSourceRequest
 //
@@ -2022,7 +2049,7 @@ func (client *Client) CreateDataSourceWithOptions(tmpReq *CreateDataSourceReques
 
 // Summary:
 //
-// 新建数据源
+// Create Data Source: Tenant administrators, data administrators, business unit administrators, project administrators, and operations administrators have permission to perform this operation.
 //
 // @param request - CreateDataSourceRequest
 //
@@ -2040,7 +2067,7 @@ func (client *Client) CreateDataSource(request *CreateDataSourceRequest) (_resul
 
 // Summary:
 //
-// 创建菜单树文件目录
+// Creates a menu tree directory. This operation supports features such as compute nodes, data integration, and synchronization tasks.
 //
 // @param tmpReq - CreateDirectoryRequest
 //
@@ -2096,7 +2123,7 @@ func (client *Client) CreateDirectoryWithOptions(tmpReq *CreateDirectoryRequest,
 
 // Summary:
 //
-// 创建菜单树文件目录
+// Creates a menu tree directory. This operation supports features such as compute nodes, data integration, and synchronization tasks.
 //
 // @param request - CreateDirectoryRequest
 //
@@ -2114,7 +2141,11 @@ func (client *Client) CreateDirectory(request *CreateDirectoryRequest) (_result 
 
 // Summary:
 //
-// 通用补数据接口 1.会生成补数据实例运行：影响相关产产出表数据 2.会进行任务运行：造成计算的费用以及存储的费用
+// General-purpose backfill API that supports both list-mode and bulk-mode backfill:
+//
+// 1. Backfill instances will be generated and executed, affecting the data output of related tables.
+//
+// 2. Task execution will incur computing costs and storage costs.
 //
 // @param tmpReq - CreateNodeSupplementRequest
 //
@@ -2174,7 +2205,11 @@ func (client *Client) CreateNodeSupplementWithOptions(tmpReq *CreateNodeSuppleme
 
 // Summary:
 //
-// 通用补数据接口 1.会生成补数据实例运行：影响相关产产出表数据 2.会进行任务运行：造成计算的费用以及存储的费用
+// General-purpose backfill API that supports both list-mode and bulk-mode backfill:
+//
+// 1. Backfill instances will be generated and executed, affecting the data output of related tables.
+//
+// 2. Task execution will incur computing costs and storage costs.
 //
 // @param request - CreateNodeSupplementRequest
 //
@@ -2192,7 +2227,7 @@ func (client *Client) CreateNodeSupplement(request *CreateNodeSupplementRequest)
 
 // Summary:
 //
-// 创建集成管道任务。
+// Create an integration pipeline/unstructured workflow task.
 //
 // @param tmpReq - CreatePipelineRequest
 //
@@ -2256,7 +2291,7 @@ func (client *Client) CreatePipelineWithOptions(tmpReq *CreatePipelineRequest, r
 
 // Summary:
 //
-// 创建集成管道任务。
+// Create an integration pipeline/unstructured workflow task.
 //
 // @param request - CreatePipelineRequest
 //
@@ -2274,7 +2309,7 @@ func (client *Client) CreatePipeline(request *CreatePipelineRequest) (_result *C
 
 // Summary:
 //
-// 异步创建集成管道任务。
+// Asynchronously create a pipeline/unstructured workflow.
 //
 // @param tmpReq - CreatePipelineByAsyncRequest
 //
@@ -2338,7 +2373,7 @@ func (client *Client) CreatePipelineByAsyncWithOptions(tmpReq *CreatePipelineByA
 
 // Summary:
 //
-// 异步创建集成管道任务。
+// Asynchronously create a pipeline/unstructured workflow.
 //
 // @param request - CreatePipelineByAsyncRequest
 //
@@ -2356,7 +2391,7 @@ func (client *Client) CreatePipelineByAsync(request *CreatePipelineByAsyncReques
 
 // Summary:
 //
-// 创建数据集成任务。
+// Creates a data integration task. Note: This operation is deprecated starting from Dataphin v5.3.1. Use CreatePipeline instead.
 //
 // @param tmpReq - CreatePipelineNodeRequest
 //
@@ -2412,7 +2447,7 @@ func (client *Client) CreatePipelineNodeWithOptions(tmpReq *CreatePipelineNodeRe
 
 // Summary:
 //
-// 创建数据集成任务。
+// Creates a data integration task. Note: This operation is deprecated starting from Dataphin v5.3.1. Use CreatePipeline instead.
 //
 // @param request - CreatePipelineNodeRequest
 //
@@ -2430,7 +2465,7 @@ func (client *Client) CreatePipelineNode(request *CreatePipelineNodeRequest) (_r
 
 // Summary:
 //
-// 创建资源文件。
+// Creates a resource file.
 //
 // @param tmpReq - CreateResourceRequest
 //
@@ -2486,7 +2521,7 @@ func (client *Client) CreateResourceWithOptions(tmpReq *CreateResourceRequest, r
 
 // Summary:
 //
-// 创建资源文件。
+// Creates a resource file.
 //
 // @param request - CreateResourceRequest
 //
@@ -2504,7 +2539,11 @@ func (client *Client) CreateResource(request *CreateResourceRequest) (_result *C
 
 // Summary:
 //
-// 创建行级权限
+// Creates a row-level permission.
+//
+// Description:
+//
+// You can query detailed information about published APIs based on the appKey.
 //
 // @param tmpReq - CreateRowPermissionRequest
 //
@@ -2560,7 +2599,11 @@ func (client *Client) CreateRowPermissionWithOptions(tmpReq *CreateRowPermission
 
 // Summary:
 //
-// 创建行级权限
+// Creates a row-level permission.
+//
+// Description:
+//
+// You can query detailed information about published APIs based on the appKey.
 //
 // @param request - CreateRowPermissionRequest
 //
@@ -2578,7 +2621,7 @@ func (client *Client) CreateRowPermission(request *CreateRowPermissionRequest) (
 
 // Summary:
 //
-// 新建数据分类。
+// Creates a data classification. Available since v5.4.2.
 //
 // @param tmpReq - CreateSecurityClassifyRequest
 //
@@ -2634,7 +2677,7 @@ func (client *Client) CreateSecurityClassifyWithOptions(tmpReq *CreateSecurityCl
 
 // Summary:
 //
-// 新建数据分类。
+// Creates a data classification. Available since v5.4.2.
 //
 // @param request - CreateSecurityClassifyRequest
 //
@@ -2652,7 +2695,7 @@ func (client *Client) CreateSecurityClassify(request *CreateSecurityClassifyRequ
 
 // Summary:
 //
-// 新建数据分类目录。
+// Creates a data classification folder. Available since v5.4.2.
 //
 // @param tmpReq - CreateSecurityClassifyCatalogRequest
 //
@@ -2708,7 +2751,7 @@ func (client *Client) CreateSecurityClassifyCatalogWithOptions(tmpReq *CreateSec
 
 // Summary:
 //
-// 新建数据分类目录。
+// Creates a data classification folder. Available since v5.4.2.
 //
 // @param request - CreateSecurityClassifyCatalogRequest
 //
@@ -2726,7 +2769,9 @@ func (client *Client) CreateSecurityClassifyCatalog(request *CreateSecurityClass
 
 // Summary:
 //
-// 新建安全识别结果。
+// Creates a security identification result.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - CreateSecurityIdentifyResultRequest
 //
@@ -2782,7 +2827,9 @@ func (client *Client) CreateSecurityIdentifyResultWithOptions(tmpReq *CreateSecu
 
 // Summary:
 //
-// 新建安全识别结果。
+// Creates a security identification result.
+//
+// Release version: v5.4.2.
 //
 // @param request - CreateSecurityIdentifyResultRequest
 //
@@ -2800,7 +2847,7 @@ func (client *Client) CreateSecurityIdentifyResult(request *CreateSecurityIdenti
 
 // Summary:
 //
-// 新建数据分级。
+// Creates a data classification level. Available since v5.4.2.
 //
 // @param tmpReq - CreateSecurityLevelRequest
 //
@@ -2856,7 +2903,7 @@ func (client *Client) CreateSecurityLevelWithOptions(tmpReq *CreateSecurityLevel
 
 // Summary:
 //
-// 新建数据分级。
+// Creates a data classification level. Available since v5.4.2.
 //
 // @param request - CreateSecurityLevelRequest
 //
@@ -2874,7 +2921,9 @@ func (client *Client) CreateSecurityLevel(request *CreateSecurityLevelRequest) (
 
 // Summary:
 //
-// 创建标准。
+// Creates a standard.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardRequest
 //
@@ -2930,7 +2979,9 @@ func (client *Client) CreateStandardWithOptions(tmpReq *CreateStandardRequest, r
 
 // Summary:
 //
-// 创建标准。
+// Creates a standard.
+//
+// Release version: v5.4.2.
 //
 // @param request - CreateStandardRequest
 //
@@ -2948,7 +2999,9 @@ func (client *Client) CreateStandard(request *CreateStandardRequest) (_result *C
 
 // Summary:
 //
-// 创建数据标准码表。
+// Creates a data standard lookup table.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardLookupTableRequest
 //
@@ -3004,7 +3057,9 @@ func (client *Client) CreateStandardLookupTableWithOptions(tmpReq *CreateStandar
 
 // Summary:
 //
-// 创建数据标准码表。
+// Creates a data standard lookup table.
+//
+// Release version: v5.4.2.
 //
 // @param request - CreateStandardLookupTableRequest
 //
@@ -3022,7 +3077,9 @@ func (client *Client) CreateStandardLookupTable(request *CreateStandardLookupTab
 
 // Summary:
 //
-// 创建标准映射关系, 包括有效映射和无效映射。
+// Creates standard mapping relationships, including valid mappings and invalid mappings.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardMappingRequest
 //
@@ -3078,7 +3135,9 @@ func (client *Client) CreateStandardMappingWithOptions(tmpReq *CreateStandardMap
 
 // Summary:
 //
-// 创建标准映射关系, 包括有效映射和无效映射。
+// Creates standard mapping relationships, including valid mappings and invalid mappings.
+//
+// Release version: v5.4.2.
 //
 // @param request - CreateStandardMappingRequest
 //
@@ -3096,7 +3155,7 @@ func (client *Client) CreateStandardMapping(request *CreateStandardMappingReques
 
 // Summary:
 //
-// 创建标准关联关系。
+// Creates a standard association. Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardRelationsRequest
 //
@@ -3152,7 +3211,7 @@ func (client *Client) CreateStandardRelationsWithOptions(tmpReq *CreateStandardR
 
 // Summary:
 //
-// 创建标准关联关系。
+// Creates a standard association. Release version: v5.4.2.
 //
 // @param request - CreateStandardRelationsRequest
 //
@@ -3170,7 +3229,9 @@ func (client *Client) CreateStandardRelations(request *CreateStandardRelationsRe
 
 // Summary:
 //
-// 创建标准集。
+// Creates a standard set.
+//
+// Available since: v5.4.2.
 //
 // @param tmpReq - CreateStandardSetRequest
 //
@@ -3226,7 +3287,9 @@ func (client *Client) CreateStandardSetWithOptions(tmpReq *CreateStandardSetRequ
 
 // Summary:
 //
-// 创建标准集。
+// Creates a standard set.
+//
+// Available since: v5.4.2.
 //
 // @param request - CreateStandardSetRequest
 //
@@ -3244,7 +3307,9 @@ func (client *Client) CreateStandardSet(request *CreateStandardSetRequest) (_res
 
 // Summary:
 //
-// 创建数据标准模板。
+// Create a data standard template.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardTemplateRequest
 //
@@ -3300,7 +3365,9 @@ func (client *Client) CreateStandardTemplateWithOptions(tmpReq *CreateStandardTe
 
 // Summary:
 //
-// 创建数据标准模板。
+// Create a data standard template.
+//
+// Release version: v5.4.2.
 //
 // @param request - CreateStandardTemplateRequest
 //
@@ -3318,7 +3385,9 @@ func (client *Client) CreateStandardTemplate(request *CreateStandardTemplateRequ
 
 // Summary:
 //
-// 创建数据标准词根。
+// Creates a data standard root word.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardWordRootRequest
 //
@@ -3374,7 +3443,9 @@ func (client *Client) CreateStandardWordRootWithOptions(tmpReq *CreateStandardWo
 
 // Summary:
 //
-// 创建数据标准词根。
+// Creates a data standard root word.
+//
+// Release version: v5.4.2.
 //
 // @param request - CreateStandardWordRootRequest
 //
@@ -3392,7 +3463,7 @@ func (client *Client) CreateStandardWordRoot(request *CreateStandardWordRootRequ
 
 // Summary:
 //
-// 创建流批一体任务
+// Creates a stream-batch integrated node.
 //
 // @param tmpReq - CreateStreamBatchJobMappingRequest
 //
@@ -3448,7 +3519,7 @@ func (client *Client) CreateStreamBatchJobMappingWithOptions(tmpReq *CreateStrea
 
 // Summary:
 //
-// 创建流批一体任务
+// Creates a stream-batch integrated node.
 //
 // @param request - CreateStreamBatchJobMappingRequest
 //
@@ -3466,7 +3537,7 @@ func (client *Client) CreateStreamBatchJobMapping(request *CreateStreamBatchJobM
 
 // Summary:
 //
-// 创建自定义函数。
+// Creates a user-defined function.
 //
 // @param tmpReq - CreateUdfRequest
 //
@@ -3522,7 +3593,7 @@ func (client *Client) CreateUdfWithOptions(tmpReq *CreateUdfRequest, runtime *da
 
 // Summary:
 //
-// 创建自定义函数。
+// Creates a user-defined function.
 //
 // @param request - CreateUdfRequest
 //
@@ -3540,7 +3611,7 @@ func (client *Client) CreateUdf(request *CreateUdfRequest) (_result *CreateUdfRe
 
 // Summary:
 //
-// 新建用户组.
+// Creates a user group.
 //
 // @param tmpReq - CreateUserGroupRequest
 //
@@ -3596,7 +3667,7 @@ func (client *Client) CreateUserGroupWithOptions(tmpReq *CreateUserGroupRequest,
 
 // Summary:
 //
-// 新建用户组.
+// Creates a user group.
 //
 // @param request - CreateUserGroupRequest
 //
@@ -3614,7 +3685,7 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 
 // Summary:
 //
-// 删除菜单树即席查询文件
+// Deletes an ad hoc query file from the menu tree.
 //
 // @param request - DeleteAdHocFileRequest
 //
@@ -3666,7 +3737,7 @@ func (client *Client) DeleteAdHocFileWithOptions(request *DeleteAdHocFileRequest
 
 // Summary:
 //
-// 删除菜单树即席查询文件
+// Deletes an ad hoc query file from the menu tree.
 //
 // @param request - DeleteAdHocFileRequest
 //
@@ -3684,7 +3755,7 @@ func (client *Client) DeleteAdHocFile(request *DeleteAdHocFileRequest) (_result 
 
 // Summary:
 //
-// 删除离线计算任务，如果任务还没下线需要先下线再删除。
+// Deletes a batch task. If the node has not been offlined, you must offline it before deleting it.
 //
 // @param tmpReq - DeleteBatchTaskRequest
 //
@@ -3740,7 +3811,7 @@ func (client *Client) DeleteBatchTaskWithOptions(tmpReq *DeleteBatchTaskRequest,
 
 // Summary:
 //
-// 删除离线计算任务，如果任务还没下线需要先下线再删除。
+// Deletes a batch task. If the node has not been offlined, you must offline it before deleting it.
 //
 // @param request - DeleteBatchTaskRequest
 //
@@ -3758,7 +3829,7 @@ func (client *Client) DeleteBatchTask(request *DeleteBatchTaskRequest) (_result 
 
 // Summary:
 //
-// 删除业务实体。
+// Deletes a business entity.
 //
 // @param request - DeleteBizEntityRequest
 //
@@ -3814,7 +3885,7 @@ func (client *Client) DeleteBizEntityWithOptions(request *DeleteBizEntityRequest
 
 // Summary:
 //
-// 删除业务实体。
+// Deletes a business entity.
 //
 // @param request - DeleteBizEntityRequest
 //
@@ -3832,7 +3903,9 @@ func (client *Client) DeleteBizEntity(request *DeleteBizEntityRequest) (_result 
 
 // Summary:
 //
-// 删除业务指标
+// Deletes a business metric.
+//
+// Release version: v5.5.0.
 //
 // @param tmpReq - DeleteBizMetricRequest
 //
@@ -3888,7 +3961,9 @@ func (client *Client) DeleteBizMetricWithOptions(tmpReq *DeleteBizMetricRequest,
 
 // Summary:
 //
-// 删除业务指标
+// Deletes a business metric.
+//
+// Release version: v5.5.0.
 //
 // @param request - DeleteBizMetricRequest
 //
@@ -3906,7 +3981,7 @@ func (client *Client) DeleteBizMetric(request *DeleteBizMetricRequest) (_result 
 
 // Summary:
 //
-// 删除数据板块。
+// Deletes a data domain.
 //
 // @param request - DeleteBizUnitRequest
 //
@@ -3954,7 +4029,7 @@ func (client *Client) DeleteBizUnitWithOptions(request *DeleteBizUnitRequest, ru
 
 // Summary:
 //
-// 删除数据板块。
+// Deletes a data domain.
 //
 // @param request - DeleteBizUnitRequest
 //
@@ -3972,7 +4047,7 @@ func (client *Client) DeleteBizUnit(request *DeleteBizUnitRequest) (_result *Del
 
 // Summary:
 //
-// 删除计算源。
+// Deletes a compute source.
 //
 // @param request - DeleteComputeSourceRequest
 //
@@ -4020,7 +4095,7 @@ func (client *Client) DeleteComputeSourceWithOptions(request *DeleteComputeSourc
 
 // Summary:
 //
-// 删除计算源。
+// Deletes a compute source.
 //
 // @param request - DeleteComputeSourceRequest
 //
@@ -4038,7 +4113,7 @@ func (client *Client) DeleteComputeSource(request *DeleteComputeSourceRequest) (
 
 // Summary:
 //
-// 删除主题域。
+// Deletes a subject domain.
 //
 // @param request - DeleteDataDomainRequest
 //
@@ -4090,7 +4165,7 @@ func (client *Client) DeleteDataDomainWithOptions(request *DeleteDataDomainReque
 
 // Summary:
 //
-// 删除主题域。
+// Deletes a subject domain.
 //
 // @param request - DeleteDataDomainRequest
 //
@@ -4108,7 +4183,9 @@ func (client *Client) DeleteDataDomain(request *DeleteDataDomainRequest) (_resul
 
 // Summary:
 //
-// 删除数据服务应用。
+// Deletes a data service application. Only superusers, system administrators, or application owners can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - DeleteDataServiceAppRequest
 //
@@ -4156,7 +4233,9 @@ func (client *Client) DeleteDataServiceAppWithOptions(request *DeleteDataService
 
 // Summary:
 //
-// 删除数据服务应用。
+// Deletes a data service application. Only superusers, system administrators, or application owners can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - DeleteDataServiceAppRequest
 //
@@ -4174,7 +4253,9 @@ func (client *Client) DeleteDataServiceApp(request *DeleteDataServiceAppRequest)
 
 // Summary:
 //
-// 删除数据服务应用分组。
+// Deletes a data service application group. Only superusers and system administrators can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - DeleteDataServiceAppGroupRequest
 //
@@ -4222,7 +4303,9 @@ func (client *Client) DeleteDataServiceAppGroupWithOptions(request *DeleteDataSe
 
 // Summary:
 //
-// 删除数据服务应用分组。
+// Deletes a data service application group. Only superusers and system administrators can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - DeleteDataServiceAppGroupRequest
 //
@@ -4240,7 +4323,7 @@ func (client *Client) DeleteDataServiceAppGroup(request *DeleteDataServiceAppGro
 
 // Summary:
 //
-// 删除数据源
+// Deletes a data source.
 //
 // @param tmpReq - DeleteDataSourceRequest
 //
@@ -4296,7 +4379,7 @@ func (client *Client) DeleteDataSourceWithOptions(tmpReq *DeleteDataSourceReques
 
 // Summary:
 //
-// 删除数据源
+// Deletes a data source.
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -4314,7 +4397,7 @@ func (client *Client) DeleteDataSource(request *DeleteDataSourceRequest) (_resul
 
 // Summary:
 //
-// 删除菜单树文件目录
+// Deletes a file directory from the menu tree.
 //
 // @param request - DeleteDirectoryRequest
 //
@@ -4366,7 +4449,7 @@ func (client *Client) DeleteDirectoryWithOptions(request *DeleteDirectoryRequest
 
 // Summary:
 //
-// 删除菜单树文件目录
+// Deletes a file directory from the menu tree.
 //
 // @param request - DeleteDirectoryRequest
 //
@@ -4384,7 +4467,9 @@ func (client *Client) DeleteDirectory(request *DeleteDirectoryRequest) (_result 
 
 // Summary:
 //
-// 批量删除质量规则对象。
+// Deletes quality rule objects in batches.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - DeleteQualityRulesRequest
 //
@@ -4440,7 +4525,9 @@ func (client *Client) DeleteQualityRulesWithOptions(tmpReq *DeleteQualityRulesRe
 
 // Summary:
 //
-// 批量删除质量规则对象。
+// Deletes quality rule objects in batches.
+//
+// Release version: v5.4.2.
 //
 // @param request - DeleteQualityRulesRequest
 //
@@ -4458,7 +4545,9 @@ func (client *Client) DeleteQualityRules(request *DeleteQualityRulesRequest) (_r
 
 // Summary:
 //
-// 批量删除质量调度对象。
+// Deletes quality scheduling objects in batches.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - DeleteQualitySchedulesRequest
 //
@@ -4514,7 +4603,9 @@ func (client *Client) DeleteQualitySchedulesWithOptions(tmpReq *DeleteQualitySch
 
 // Summary:
 //
-// 批量删除质量调度对象。
+// Deletes quality scheduling objects in batches.
+//
+// Release version: v5.4.2.
 //
 // @param request - DeleteQualitySchedulesRequest
 //
@@ -4532,7 +4623,9 @@ func (client *Client) DeleteQualitySchedules(request *DeleteQualitySchedulesRequ
 
 // Summary:
 //
-// 批量删除质量模板对象。
+// Deletes quality template objects in batches.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - DeleteQualityTemplatesRequest
 //
@@ -4588,7 +4681,9 @@ func (client *Client) DeleteQualityTemplatesWithOptions(tmpReq *DeleteQualityTem
 
 // Summary:
 //
-// 批量删除质量模板对象。
+// Deletes quality template objects in batches.
+//
+// Online version: v5.4.2.
 //
 // @param request - DeleteQualityTemplatesRequest
 //
@@ -4606,7 +4701,9 @@ func (client *Client) DeleteQualityTemplates(request *DeleteQualityTemplatesRequ
 
 // Summary:
 //
-// 批量删除质量监控对象。
+// Deletes monitored objects in batches.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - DeleteQualityWatchesRequest
 //
@@ -4662,7 +4759,9 @@ func (client *Client) DeleteQualityWatchesWithOptions(tmpReq *DeleteQualityWatch
 
 // Summary:
 //
-// 批量删除质量监控对象。
+// Deletes monitored objects in batches.
+//
+// Release version: v5.4.2.
 //
 // @param request - DeleteQualityWatchesRequest
 //
@@ -4680,7 +4779,7 @@ func (client *Client) DeleteQualityWatches(request *DeleteQualityWatchesRequest)
 
 // Summary:
 //
-// 删除注册血缘。
+// Deletes registered lineage. Available since version v5.4.0.
 //
 // @param tmpReq - DeleteRegisterLineageRequest
 //
@@ -4736,7 +4835,7 @@ func (client *Client) DeleteRegisterLineageWithOptions(tmpReq *DeleteRegisterLin
 
 // Summary:
 //
-// 删除注册血缘。
+// Deletes registered lineage. Available since version v5.4.0.
 //
 // @param request - DeleteRegisterLineageRequest
 //
@@ -4754,7 +4853,7 @@ func (client *Client) DeleteRegisterLineage(request *DeleteRegisterLineageReques
 
 // Summary:
 //
-// 删除资源文件。
+// Delete a resource file.
 //
 // @param request - DeleteResourceRequest
 //
@@ -4810,7 +4909,7 @@ func (client *Client) DeleteResourceWithOptions(request *DeleteResourceRequest, 
 
 // Summary:
 //
-// 删除资源文件。
+// Delete a resource file.
 //
 // @param request - DeleteResourceRequest
 //
@@ -4828,7 +4927,7 @@ func (client *Client) DeleteResource(request *DeleteResourceRequest) (_result *D
 
 // Summary:
 //
-// 删除行级权限
+// Deletes a row-level permission.
 //
 // @param tmpReq - DeleteRowPermissionRequest
 //
@@ -4884,7 +4983,7 @@ func (client *Client) DeleteRowPermissionWithOptions(tmpReq *DeleteRowPermission
 
 // Summary:
 //
-// 删除行级权限
+// Deletes a row-level permission.
 //
 // @param request - DeleteRowPermissionRequest
 //
@@ -4902,7 +5001,7 @@ func (client *Client) DeleteRowPermission(request *DeleteRowPermissionRequest) (
 
 // Summary:
 //
-// 删除数据分类。
+// Deletes a data categorization. Available since v5.4.2.
 //
 // @param tmpReq - DeleteSecurityClassifyRequest
 //
@@ -4958,7 +5057,7 @@ func (client *Client) DeleteSecurityClassifyWithOptions(tmpReq *DeleteSecurityCl
 
 // Summary:
 //
-// 删除数据分类。
+// Deletes a data categorization. Available since v5.4.2.
 //
 // @param request - DeleteSecurityClassifyRequest
 //
@@ -4976,7 +5075,7 @@ func (client *Client) DeleteSecurityClassify(request *DeleteSecurityClassifyRequ
 
 // Summary:
 //
-// 删除数据分类目录。
+// Deletes a data classification catalog. Release version: v5.4.2.
 //
 // @param tmpReq - DeleteSecurityClassifyCatalogRequest
 //
@@ -5032,7 +5131,7 @@ func (client *Client) DeleteSecurityClassifyCatalogWithOptions(tmpReq *DeleteSec
 
 // Summary:
 //
-// 删除数据分类目录。
+// Deletes a data classification catalog. Release version: v5.4.2.
 //
 // @param request - DeleteSecurityClassifyCatalogRequest
 //
@@ -5050,7 +5149,7 @@ func (client *Client) DeleteSecurityClassifyCatalog(request *DeleteSecurityClass
 
 // Summary:
 //
-// 批量删除安全识别结果。
+// Deletes security identification results in batches. Release version: v5.4.2.
 //
 // @param tmpReq - DeleteSecurityIdentifyResultsRequest
 //
@@ -5106,7 +5205,7 @@ func (client *Client) DeleteSecurityIdentifyResultsWithOptions(tmpReq *DeleteSec
 
 // Summary:
 //
-// 批量删除安全识别结果。
+// Deletes security identification results in batches. Release version: v5.4.2.
 //
 // @param request - DeleteSecurityIdentifyResultsRequest
 //
@@ -5124,7 +5223,7 @@ func (client *Client) DeleteSecurityIdentifyResults(request *DeleteSecurityIdent
 
 // Summary:
 //
-// 删除数据分级。
+// Deletes a data classification level. Available since v5.4.2.
 //
 // @param tmpReq - DeleteSecurityLevelRequest
 //
@@ -5180,7 +5279,7 @@ func (client *Client) DeleteSecurityLevelWithOptions(tmpReq *DeleteSecurityLevel
 
 // Summary:
 //
-// 删除数据分级。
+// Deletes a data classification level. Available since v5.4.2.
 //
 // @param request - DeleteSecurityLevelRequest
 //
@@ -5198,7 +5297,9 @@ func (client *Client) DeleteSecurityLevel(request *DeleteSecurityLevelRequest) (
 
 // Summary:
 //
-// 删除标准。
+// Deletes a standard.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - DeleteStandardRequest
 //
@@ -5254,7 +5355,9 @@ func (client *Client) DeleteStandardWithOptions(tmpReq *DeleteStandardRequest, r
 
 // Summary:
 //
-// 删除标准。
+// Deletes a standard.
+//
+// Online version: v5.4.2.
 //
 // @param request - DeleteStandardRequest
 //
@@ -5272,7 +5375,9 @@ func (client *Client) DeleteStandard(request *DeleteStandardRequest) (_result *D
 
 // Summary:
 //
-// 删除无效映射关系。
+// Deletes invalid mapping relationships.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - DeleteStandardInValidMappingRequest
 //
@@ -5328,7 +5433,9 @@ func (client *Client) DeleteStandardInValidMappingWithOptions(tmpReq *DeleteStan
 
 // Summary:
 //
-// 删除无效映射关系。
+// Deletes invalid mapping relationships.
+//
+// Online version: v5.4.2.
 //
 // @param request - DeleteStandardInValidMappingRequest
 //
@@ -5346,7 +5453,7 @@ func (client *Client) DeleteStandardInValidMapping(request *DeleteStandardInVali
 
 // Summary:
 //
-// 删除数据标准码表。
+// Deletes a data standard lookup table. Release version: v5.4.2.
 //
 // @param request - DeleteStandardLookupTableRequest
 //
@@ -5394,7 +5501,7 @@ func (client *Client) DeleteStandardLookupTableWithOptions(request *DeleteStanda
 
 // Summary:
 //
-// 删除数据标准码表。
+// Deletes a data standard lookup table. Release version: v5.4.2.
 //
 // @param request - DeleteStandardLookupTableRequest
 //
@@ -5412,7 +5519,9 @@ func (client *Client) DeleteStandardLookupTable(request *DeleteStandardLookupTab
 
 // Summary:
 //
-// 批量删除标准关联关系。
+// Deletes standard associations in batches.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - DeleteStandardRelationsRequest
 //
@@ -5468,7 +5577,9 @@ func (client *Client) DeleteStandardRelationsWithOptions(tmpReq *DeleteStandardR
 
 // Summary:
 //
-// 批量删除标准关联关系。
+// Deletes standard associations in batches.
+//
+// Release version: v5.4.2.
 //
 // @param request - DeleteStandardRelationsRequest
 //
@@ -5486,7 +5597,9 @@ func (client *Client) DeleteStandardRelations(request *DeleteStandardRelationsRe
 
 // Summary:
 //
-// 删除标准集。
+// Deletes a standard set.
+//
+// Online version: v5.4.2.
 //
 // @param request - DeleteStandardSetRequest
 //
@@ -5534,7 +5647,9 @@ func (client *Client) DeleteStandardSetWithOptions(request *DeleteStandardSetReq
 
 // Summary:
 //
-// 删除标准集。
+// Deletes a standard set.
+//
+// Online version: v5.4.2.
 //
 // @param request - DeleteStandardSetRequest
 //
@@ -5552,7 +5667,9 @@ func (client *Client) DeleteStandardSet(request *DeleteStandardSetRequest) (_res
 
 // Summary:
 //
-// 删除有效映射关系。
+// Deletes valid mapping relationships.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - DeleteStandardValidMappingRequest
 //
@@ -5608,7 +5725,9 @@ func (client *Client) DeleteStandardValidMappingWithOptions(tmpReq *DeleteStanda
 
 // Summary:
 //
-// 删除有效映射关系。
+// Deletes valid mapping relationships.
+//
+// Release version: v5.4.2.
 //
 // @param request - DeleteStandardValidMappingRequest
 //
@@ -5626,7 +5745,9 @@ func (client *Client) DeleteStandardValidMapping(request *DeleteStandardValidMap
 
 // Summary:
 //
-// 删除数据标准词根。
+// Deletes a data standard root word.
+//
+// Online version: v5.4.2.
 //
 // @param request - DeleteStandardWordRootRequest
 //
@@ -5674,7 +5795,9 @@ func (client *Client) DeleteStandardWordRootWithOptions(request *DeleteStandardW
 
 // Summary:
 //
-// 删除数据标准词根。
+// Deletes a data standard root word.
+//
+// Online version: v5.4.2.
 //
 // @param request - DeleteStandardWordRootRequest
 //
@@ -5692,7 +5815,7 @@ func (client *Client) DeleteStandardWordRoot(request *DeleteStandardWordRootRequ
 
 // Summary:
 //
-// 删除自定义函数。
+// Deletes a user-defined function.
 //
 // @param request - DeleteUdfRequest
 //
@@ -5748,7 +5871,7 @@ func (client *Client) DeleteUdfWithOptions(request *DeleteUdfRequest, runtime *d
 
 // Summary:
 //
-// 删除自定义函数。
+// Deletes a user-defined function.
 //
 // @param request - DeleteUdfRequest
 //
@@ -5766,7 +5889,7 @@ func (client *Client) DeleteUdf(request *DeleteUdfRequest) (_result *DeleteUdfRe
 
 // Summary:
 //
-// 删除用户组.
+// Deletes a user group.
 //
 // @param request - DeleteUserGroupRequest
 //
@@ -5814,7 +5937,7 @@ func (client *Client) DeleteUserGroupWithOptions(request *DeleteUserGroupRequest
 
 // Summary:
 //
-// 删除用户组.
+// Deletes a user group.
 //
 // @param request - DeleteUserGroupRequest
 //
@@ -5832,7 +5955,7 @@ func (client *Client) DeleteUserGroup(request *DeleteUserGroupRequest) (_result 
 
 // Summary:
 //
-// 执行即席查询任务。
+// Executes an ad hoc query task.
 //
 // @param tmpReq - ExecuteAdHocTaskRequest
 //
@@ -5888,7 +6011,7 @@ func (client *Client) ExecuteAdHocTaskWithOptions(tmpReq *ExecuteAdHocTaskReques
 
 // Summary:
 //
-// 执行即席查询任务。
+// Executes an ad hoc query task.
 //
 // @param request - ExecuteAdHocTaskRequest
 //
@@ -5906,7 +6029,7 @@ func (client *Client) ExecuteAdHocTask(request *ExecuteAdHocTaskRequest) (_resul
 
 // Summary:
 //
-// 运行手动调度节点。
+// Runs a manually scheduled node.
 //
 // @param tmpReq - ExecuteManualNodeRequest
 //
@@ -5966,7 +6089,7 @@ func (client *Client) ExecuteManualNodeWithOptions(tmpReq *ExecuteManualNodeRequ
 
 // Summary:
 //
-// 运行手动调度节点。
+// Runs a manually scheduled node.
 //
 // @param request - ExecuteManualNodeRequest
 //
@@ -5984,7 +6107,7 @@ func (client *Client) ExecuteManualNode(request *ExecuteManualNodeRequest) (_res
 
 // Summary:
 //
-// 运行触发式节点。
+// Runs a trigger-based node.
 //
 // @param request - ExecuteTriggerNodeRequest
 //
@@ -6048,7 +6171,7 @@ func (client *Client) ExecuteTriggerNodeWithOptions(request *ExecuteTriggerNodeR
 
 // Summary:
 //
-// 运行触发式节点。
+// Runs a trigger-based node.
 //
 // @param request - ExecuteTriggerNodeRequest
 //
@@ -6066,7 +6189,7 @@ func (client *Client) ExecuteTriggerNode(request *ExecuteTriggerNodeRequest) (_r
 
 // Summary:
 //
-// 重跑下游(修复链路数据), 支持强制重跑下游。影响范围: 1. 会产生计算成本；2. 会影响数据产出
+// Reruns downstream nodes to fix data link issues. Supports forced rerun of downstream nodes. Impact: incurs compute costs and affects data output.
 //
 // @param tmpReq - FixDataRequest
 //
@@ -6126,7 +6249,7 @@ func (client *Client) FixDataWithOptions(tmpReq *FixDataRequest, runtime *dara.R
 
 // Summary:
 //
-// 重跑下游(修复链路数据), 支持强制重跑下游。影响范围: 1. 会产生计算成本；2. 会影响数据产出
+// Reruns downstream nodes to fix data link issues. Supports forced rerun of downstream nodes. Impact: incurs compute costs and affects data output.
 //
 // @param request - FixDataRequest
 //
@@ -6144,7 +6267,7 @@ func (client *Client) FixData(request *FixDataRequest) (_result *FixDataResponse
 
 // Summary:
 //
-// 根据行级权限ID获取某一行级权限下的所有授权账号
+// Retrieves all authorized accounts under a specific row-level permission by row-level permission ID.
 //
 // @param tmpReq - GetAccountByRowPermissionIdRequest
 //
@@ -6200,7 +6323,7 @@ func (client *Client) GetAccountByRowPermissionIdWithOptions(tmpReq *GetAccountB
 
 // Summary:
 //
-// 根据行级权限ID获取某一行级权限下的所有授权账号
+// Retrieves all authorized accounts under a specific row-level permission by row-level permission ID.
 //
 // @param request - GetAccountByRowPermissionIdRequest
 //
@@ -6218,7 +6341,7 @@ func (client *Client) GetAccountByRowPermissionId(request *GetAccountByRowPermis
 
 // Summary:
 //
-// 查询即席查询文件。
+// Queries a custom query file in the directory tree.
 //
 // @param request - GetAdHocFileRequest
 //
@@ -6270,7 +6393,7 @@ func (client *Client) GetAdHocFileWithOptions(request *GetAdHocFileRequest, runt
 
 // Summary:
 //
-// 查询即席查询文件。
+// Queries a custom query file in the directory tree.
 //
 // @param request - GetAdHocFileRequest
 //
@@ -6288,7 +6411,7 @@ func (client *Client) GetAdHocFile(request *GetAdHocFileRequest) (_result *GetAd
 
 // Summary:
 //
-// 获取即席查询任务运行日志。
+// Retrieves the runtime logs of an ad hoc query task.
 //
 // @param request - GetAdHocTaskLogRequest
 //
@@ -6348,7 +6471,7 @@ func (client *Client) GetAdHocTaskLogWithOptions(request *GetAdHocTaskLogRequest
 
 // Summary:
 //
-// 获取即席查询任务运行日志。
+// Retrieves the runtime logs of an ad hoc query task.
 //
 // @param request - GetAdHocTaskLogRequest
 //
@@ -6366,7 +6489,7 @@ func (client *Client) GetAdHocTaskLog(request *GetAdHocTaskLogRequest) (_result 
 
 // Summary:
 //
-// 获取即席查询的任务运行结果。
+// Retrieves the task execution result of an ad hoc query.
 //
 // @param request - GetAdHocTaskResultRequest
 //
@@ -6422,7 +6545,7 @@ func (client *Client) GetAdHocTaskResultWithOptions(request *GetAdHocTaskResultR
 
 // Summary:
 //
-// 获取即席查询的任务运行结果。
+// Retrieves the task execution result of an ad hoc query.
 //
 // @param request - GetAdHocTaskResultRequest
 //
@@ -6440,7 +6563,7 @@ func (client *Client) GetAdHocTaskResult(request *GetAdHocTaskResultRequest) (_r
 
 // Summary:
 //
-// 获取告警事件详情
+// Retrieves the details of an alert event.
 //
 // @param request - GetAlertEventRequest
 //
@@ -6488,7 +6611,7 @@ func (client *Client) GetAlertEventWithOptions(request *GetAlertEventRequest, ru
 
 // Summary:
 //
-// 获取告警事件详情
+// Retrieves the details of an alert event.
 //
 // @param request - GetAlertEventRequest
 //
@@ -6506,7 +6629,9 @@ func (client *Client) GetAlertEvent(request *GetAlertEventRequest) (_result *Get
 
 // Summary:
 //
-// 根据资产对象GUID查询映射关系。
+// Queries mapping relationships by asset object GUID.
+//
+// Available since: v5.4.2.
 //
 // @param tmpReq - GetAssetMappingRelationsRequest
 //
@@ -6562,7 +6687,9 @@ func (client *Client) GetAssetMappingRelationsWithOptions(tmpReq *GetAssetMappin
 
 // Summary:
 //
-// 根据资产对象GUID查询映射关系。
+// Queries mapping relationships by asset object GUID.
+//
+// Available since: v5.4.2.
 //
 // @param request - GetAssetMappingRelationsRequest
 //
@@ -6580,7 +6707,7 @@ func (client *Client) GetAssetMappingRelations(request *GetAssetMappingRelations
 
 // Summary:
 //
-// 获取离线计算任务详情。
+// Retrieves the details of an offline compute node.
 //
 // @param request - GetBatchTaskInfoRequest
 //
@@ -6640,7 +6767,7 @@ func (client *Client) GetBatchTaskInfoWithOptions(request *GetBatchTaskInfoReque
 
 // Summary:
 //
-// 获取离线计算任务详情。
+// Retrieves the details of an offline compute node.
 //
 // @param request - GetBatchTaskInfoRequest
 //
@@ -6658,7 +6785,7 @@ func (client *Client) GetBatchTaskInfo(request *GetBatchTaskInfoRequest) (_resul
 
 // Summary:
 //
-// 获取离线计算任务指定版本任务详情。
+// Retrieves the details of a specified version of a batch task.
 //
 // @param request - GetBatchTaskInfoByVersionRequest
 //
@@ -6714,7 +6841,7 @@ func (client *Client) GetBatchTaskInfoByVersionWithOptions(request *GetBatchTask
 
 // Summary:
 //
-// 获取离线计算任务指定版本任务详情。
+// Retrieves the details of a specified version of a batch task.
 //
 // @param request - GetBatchTaskInfoByVersionRequest
 //
@@ -6732,7 +6859,7 @@ func (client *Client) GetBatchTaskInfoByVersion(request *GetBatchTaskInfoByVersi
 
 // Summary:
 //
-// 获取离线任务自定义血缘。
+// Obtains the custom lineage of an offline task.
 //
 // @param request - GetBatchTaskUdfLineagesRequest
 //
@@ -6784,7 +6911,7 @@ func (client *Client) GetBatchTaskUdfLineagesWithOptions(request *GetBatchTaskUd
 
 // Summary:
 //
-// 获取离线任务自定义血缘。
+// Obtains the custom lineage of an offline task.
 //
 // @param request - GetBatchTaskUdfLineagesRequest
 //
@@ -6802,7 +6929,7 @@ func (client *Client) GetBatchTaskUdfLineages(request *GetBatchTaskUdfLineagesRe
 
 // Summary:
 //
-// 获取离线计算任务版本列表。
+// Retrieves the version list of a batch task.
 //
 // @param request - GetBatchTaskVersionsRequest
 //
@@ -6854,7 +6981,7 @@ func (client *Client) GetBatchTaskVersionsWithOptions(request *GetBatchTaskVersi
 
 // Summary:
 //
-// 获取离线计算任务版本列表。
+// Retrieves the version list of a batch task.
 //
 // @param request - GetBatchTaskVersionsRequest
 //
@@ -6872,7 +6999,9 @@ func (client *Client) GetBatchTaskVersions(request *GetBatchTaskVersionsRequest)
 
 // Summary:
 //
-// 根据归属资产GUID查询映射关系。
+// Query mapping relationships by belonging asset GUID.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - GetBelongAssetMappingRequest
 //
@@ -6928,7 +7057,9 @@ func (client *Client) GetBelongAssetMappingWithOptions(tmpReq *GetBelongAssetMap
 
 // Summary:
 //
-// 根据归属资产GUID查询映射关系。
+// Query mapping relationships by belonging asset GUID.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetBelongAssetMappingRequest
 //
@@ -6946,7 +7077,7 @@ func (client *Client) GetBelongAssetMapping(request *GetBelongAssetMappingReques
 
 // Summary:
 //
-// 获取业务实体详情。
+// Retrieves the details of a business entity.
 //
 // @param request - GetBizEntityInfoRequest
 //
@@ -6998,7 +7129,7 @@ func (client *Client) GetBizEntityInfoWithOptions(request *GetBizEntityInfoReque
 
 // Summary:
 //
-// 获取业务实体详情。
+// Retrieves the details of a business entity.
 //
 // @param request - GetBizEntityInfoRequest
 //
@@ -7016,7 +7147,7 @@ func (client *Client) GetBizEntityInfo(request *GetBizEntityInfoRequest) (_resul
 
 // Summary:
 //
-// 查询指定版本的业务实体的详情。
+// Queries the details of a business entity of a specified version.
 //
 // @param request - GetBizEntityInfoByVersionRequest
 //
@@ -7072,7 +7203,7 @@ func (client *Client) GetBizEntityInfoByVersionWithOptions(request *GetBizEntity
 
 // Summary:
 //
-// 查询指定版本的业务实体的详情。
+// Queries the details of a business entity of a specified version.
 //
 // @param request - GetBizEntityInfoByVersionRequest
 //
@@ -7090,7 +7221,9 @@ func (client *Client) GetBizEntityInfoByVersion(request *GetBizEntityInfoByVersi
 
 // Summary:
 //
-// 查询业务指标详情
+// Query business metric details by name.
+//
+// Release version: v5.5.0.
 //
 // @param tmpReq - GetBizMetricByNameRequest
 //
@@ -7146,7 +7279,9 @@ func (client *Client) GetBizMetricByNameWithOptions(tmpReq *GetBizMetricByNameRe
 
 // Summary:
 //
-// 查询业务指标详情
+// Query business metric details by name.
+//
+// Release version: v5.5.0.
 //
 // @param request - GetBizMetricByNameRequest
 //
@@ -7164,7 +7299,7 @@ func (client *Client) GetBizMetricByName(request *GetBizMetricByNameRequest) (_r
 
 // Summary:
 //
-// 获取数据板块详情。
+// Retrieves the details of a data domain.
 //
 // @param request - GetBizUnitInfoRequest
 //
@@ -7212,7 +7347,7 @@ func (client *Client) GetBizUnitInfoWithOptions(request *GetBizUnitInfoRequest, 
 
 // Summary:
 //
-// 获取数据板块详情。
+// Retrieves the details of a data domain.
 //
 // @param request - GetBizUnitInfoRequest
 //
@@ -7230,7 +7365,7 @@ func (client *Client) GetBizUnitInfo(request *GetBizUnitInfoRequest) (_result *G
 
 // Summary:
 //
-// 查询数据目录资产详情。
+// Queries asset details. Release version: v6.1.0.
 //
 // @param tmpReq - GetCatalogAssetDetailsRequest
 //
@@ -7286,7 +7421,7 @@ func (client *Client) GetCatalogAssetDetailsWithOptions(tmpReq *GetCatalogAssetD
 
 // Summary:
 //
-// 查询数据目录资产详情。
+// Queries asset details. Release version: v6.1.0.
 //
 // @param request - GetCatalogAssetDetailsRequest
 //
@@ -7304,7 +7439,13 @@ func (client *Client) GetCatalogAssetDetails(request *GetCatalogAssetDetailsRequ
 
 // Summary:
 //
-// 查询数据源连通性检查任务。
+// Queries the list of connectivity check tasks for a specified data source ID. This operation includes null value validation and tenant permission verification to prevent cross-tenant access.
+//
+// Release version: v5.5.0.
+//
+// Description:
+//
+// Queries the details of connectivity tasks that have been tested for a specified data source ID.
 //
 // @param request - GetCheckConnectivityJobsRequest
 //
@@ -7352,7 +7493,13 @@ func (client *Client) GetCheckConnectivityJobsWithOptions(request *GetCheckConne
 
 // Summary:
 //
-// 查询数据源连通性检查任务。
+// Queries the list of connectivity check tasks for a specified data source ID. This operation includes null value validation and tenant permission verification to prevent cross-tenant access.
+//
+// Release version: v5.5.0.
+//
+// Description:
+//
+// Queries the details of connectivity tasks that have been tested for a specified data source ID.
 //
 // @param request - GetCheckConnectivityJobsRequest
 //
@@ -7370,7 +7517,7 @@ func (client *Client) GetCheckConnectivityJobs(request *GetCheckConnectivityJobs
 
 // Summary:
 //
-// 根据环境获取集群信息
+// Retrieves cluster information based on the environment.
 //
 // @param request - GetClusterQueueInfoByEnvRequest
 //
@@ -7426,7 +7573,7 @@ func (client *Client) GetClusterQueueInfoByEnvWithOptions(request *GetClusterQue
 
 // Summary:
 //
-// 根据环境获取集群信息
+// Retrieves cluster information based on the environment.
 //
 // @param request - GetClusterQueueInfoByEnvRequest
 //
@@ -7444,7 +7591,7 @@ func (client *Client) GetClusterQueueInfoByEnv(request *GetClusterQueueInfoByEnv
 
 // Summary:
 //
-// 获取计算源详情。
+// Retrieves the details of a compute source by compute source ID.
 //
 // @param request - GetComputeSourceRequest
 //
@@ -7492,7 +7639,7 @@ func (client *Client) GetComputeSourceWithOptions(request *GetComputeSourceReque
 
 // Summary:
 //
-// 获取计算源详情。
+// Retrieves the details of a compute source by compute source ID.
 //
 // @param request - GetComputeSourceRequest
 //
@@ -7510,7 +7657,7 @@ func (client *Client) GetComputeSource(request *GetComputeSourceRequest) (_resul
 
 // Summary:
 //
-// 获取主题域详情。
+// Retrieves the details of a data domain.
 //
 // @param request - GetDataDomainInfoRequest
 //
@@ -7558,7 +7705,7 @@ func (client *Client) GetDataDomainInfoWithOptions(request *GetDataDomainInfoReq
 
 // Summary:
 //
-// 获取主题域详情。
+// Retrieves the details of a data domain.
 //
 // @param request - GetDataDomainInfoRequest
 //
@@ -7576,7 +7723,7 @@ func (client *Client) GetDataDomainInfo(request *GetDataDomainInfoRequest) (_res
 
 // Summary:
 //
-// 运维监控Api调用汇总统计。
+// Service Monitoring: Retrieves the aggregate statistics of API calls.
 //
 // @param request - GetDataServiceApiCallSummaryRequest
 //
@@ -7632,7 +7779,7 @@ func (client *Client) GetDataServiceApiCallSummaryWithOptions(request *GetDataSe
 
 // Summary:
 //
-// 运维监控Api调用汇总统计。
+// Service Monitoring: Retrieves the aggregate statistics of API calls.
 //
 // @param request - GetDataServiceApiCallSummaryRequest
 //
@@ -7650,7 +7797,7 @@ func (client *Client) GetDataServiceApiCallSummary(request *GetDataServiceApiCal
 
 // Summary:
 //
-// 运维监控Api访问趋势分析。
+// Service Monitoring: Analyzes API access trends.
 //
 // @param request - GetDataServiceApiCallTrendRequest
 //
@@ -7706,7 +7853,7 @@ func (client *Client) GetDataServiceApiCallTrendWithOptions(request *GetDataServ
 
 // Summary:
 //
-// 运维监控Api访问趋势分析。
+// Service Monitoring: Analyzes API access trends.
 //
 // @param request - GetDataServiceApiCallTrendRequest
 //
@@ -7724,7 +7871,7 @@ func (client *Client) GetDataServiceApiCallTrend(request *GetDataServiceApiCallT
 
 // Summary:
 //
-// 获取API文档。
+// Retrieves API documentation.
 //
 // @param request - GetDataServiceApiDocumentRequest
 //
@@ -7776,7 +7923,7 @@ func (client *Client) GetDataServiceApiDocumentWithOptions(request *GetDataServi
 
 // Summary:
 //
-// 获取API文档。
+// Retrieves API documentation.
 //
 // @param request - GetDataServiceApiDocumentRequest
 //
@@ -7794,7 +7941,7 @@ func (client *Client) GetDataServiceApiDocument(request *GetDataServiceApiDocume
 
 // Summary:
 //
-// 获取API异常影响汇总。
+// Retrieves the summary of API exception impacts.
 //
 // @param request - GetDataServiceApiErrorImpactRequest
 //
@@ -7850,7 +7997,7 @@ func (client *Client) GetDataServiceApiErrorImpactWithOptions(request *GetDataSe
 
 // Summary:
 //
-// 获取API异常影响汇总。
+// Retrieves the summary of API exception impacts.
 //
 // @param request - GetDataServiceApiErrorImpactRequest
 //
@@ -7868,7 +8015,7 @@ func (client *Client) GetDataServiceApiErrorImpact(request *GetDataServiceApiErr
 
 // Summary:
 //
-// 查询数据服务API分组列表。
+// Queries the list of API groups in Data Service.
 //
 // @param request - GetDataServiceApiGroupsRequest
 //
@@ -7916,7 +8063,7 @@ func (client *Client) GetDataServiceApiGroupsWithOptions(request *GetDataService
 
 // Summary:
 //
-// 查询数据服务API分组列表。
+// Queries the list of API groups in Data Service.
 //
 // @param request - GetDataServiceApiGroupsRequest
 //
@@ -7934,7 +8081,9 @@ func (client *Client) GetDataServiceApiGroups(request *GetDataServiceApiGroupsRe
 
 // Summary:
 //
-// 查询数据服务应用详情。
+// Queries the details of a data service application, including the project, application name, authentication information, and IP whitelist. Only application members can view the details.
+//
+// Release version: v6.0.0.
 //
 // @param request - GetDataServiceAppRequest
 //
@@ -7982,7 +8131,9 @@ func (client *Client) GetDataServiceAppWithOptions(request *GetDataServiceAppReq
 
 // Summary:
 //
-// 查询数据服务应用详情。
+// Queries the details of a data service application, including the project, application name, authentication information, and IP whitelist. Only application members can view the details.
+//
+// Release version: v6.0.0.
 //
 // @param request - GetDataServiceAppRequest
 //
@@ -8000,7 +8151,7 @@ func (client *Client) GetDataServiceApp(request *GetDataServiceAppRequest) (_res
 
 // Summary:
 //
-// 获取应用有权限的用户列表。
+// Retrieves the list of users who have permissions on an application.
 //
 // @param request - GetDataServiceAppAuthorizedUsersRequest
 //
@@ -8052,7 +8203,7 @@ func (client *Client) GetDataServiceAppAuthorizedUsersWithOptions(request *GetDa
 
 // Summary:
 //
-// 获取应用有权限的用户列表。
+// Retrieves the list of users who have permissions on an application.
 //
 // @param request - GetDataServiceAppAuthorizedUsersRequest
 //
@@ -8070,7 +8221,7 @@ func (client *Client) GetDataServiceAppAuthorizedUsers(request *GetDataServiceAp
 
 // Summary:
 //
-// 查询数据服务项目的应用分组列表。
+// Queries the list of application groups for a data service project.
 //
 // @param request - GetDataServiceAppGroupsRequest
 //
@@ -8118,7 +8269,7 @@ func (client *Client) GetDataServiceAppGroupsWithOptions(request *GetDataService
 
 // Summary:
 //
-// 查询数据服务项目的应用分组列表。
+// Queries the list of application groups for a data service project.
 //
 // @param request - GetDataServiceAppGroupsRequest
 //
@@ -8136,7 +8287,9 @@ func (client *Client) GetDataServiceAppGroups(request *GetDataServiceAppGroupsRe
 
 // Summary:
 //
-// 查询数据服务应用的成员列表。
+// Queries the member list of a data service application, including regular members and owners. Only application owners can call this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - GetDataServiceAppMembersRequest
 //
@@ -8184,7 +8337,9 @@ func (client *Client) GetDataServiceAppMembersWithOptions(request *GetDataServic
 
 // Summary:
 //
-// 查询数据服务应用的成员列表。
+// Queries the member list of a data service application, including regular members and owners. Only application owners can call this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - GetDataServiceAppMembersRequest
 //
@@ -8202,7 +8357,7 @@ func (client *Client) GetDataServiceAppMembers(request *GetDataServiceAppMembers
 
 // Summary:
 //
-// 查询分组下应用列表。
+// Queries the list of applications in a group.
 //
 // @param request - GetDataServiceAppsByGroupIdRequest
 //
@@ -8254,7 +8409,7 @@ func (client *Client) GetDataServiceAppsByGroupIdWithOptions(request *GetDataSer
 
 // Summary:
 //
-// 查询分组下应用列表。
+// Queries the list of applications in a group.
 //
 // @param request - GetDataServiceAppsByGroupIdRequest
 //
@@ -8272,7 +8427,7 @@ func (client *Client) GetDataServiceAppsByGroupId(request *GetDataServiceAppsByG
 
 // Summary:
 //
-// 根据App分组Id查询账号有权限的应用列表。
+// Queries the list of applications that the account has permissions to access based on the app group ID.
 //
 // @param request - GetDataServiceAuthorizedAppsByGroupIdRequest
 //
@@ -8324,7 +8479,7 @@ func (client *Client) GetDataServiceAuthorizedAppsByGroupIdWithOptions(request *
 
 // Summary:
 //
-// 根据App分组Id查询账号有权限的应用列表。
+// Queries the list of applications that the account has permissions to access based on the app group ID.
 //
 // @param request - GetDataServiceAuthorizedAppsByGroupIdRequest
 //
@@ -8342,7 +8497,7 @@ func (client *Client) GetDataServiceAuthorizedAppsByGroupId(request *GetDataServ
 
 // Summary:
 //
-// 查询有权限的项目列表。
+// Queries the list of projects that the current user has permissions to access.
 //
 // @param request - GetDataServiceAuthorizedProjectsRequest
 //
@@ -8386,7 +8541,7 @@ func (client *Client) GetDataServiceAuthorizedProjectsWithOptions(request *GetDa
 
 // Summary:
 //
-// 查询有权限的项目列表。
+// Queries the list of projects that the current user has permissions to access.
 //
 // @param request - GetDataServiceAuthorizedProjectsRequest
 //
@@ -8404,7 +8559,7 @@ func (client *Client) GetDataServiceAuthorizedProjects(request *GetDataServiceAu
 
 // Summary:
 //
-// 当前登录当前用户作为负责人的项目列表。
+// Retrieves the list of projects for which the current user is the owner.
 //
 // @param request - GetDataServiceMyProjectsRequest
 //
@@ -8448,7 +8603,7 @@ func (client *Client) GetDataServiceMyProjectsWithOptions(request *GetDataServic
 
 // Summary:
 //
-// 当前登录当前用户作为负责人的项目列表。
+// Retrieves the list of projects for which the current user is the owner.
 //
 // @param request - GetDataServiceMyProjectsRequest
 //
@@ -8466,7 +8621,7 @@ func (client *Client) GetDataServiceMyProjects(request *GetDataServiceMyProjects
 
 // Summary:
 //
-// 获取可添加到项目成员的用户列表。
+// Retrieves the list of users who can be added as project members.
 //
 // @param request - GetDataServiceProjectAddableUsersRequest
 //
@@ -8514,7 +8669,7 @@ func (client *Client) GetDataServiceProjectAddableUsersWithOptions(request *GetD
 
 // Summary:
 //
-// 获取可添加到项目成员的用户列表。
+// Retrieves the list of users who can be added as project members.
 //
 // @param request - GetDataServiceProjectAddableUsersRequest
 //
@@ -8532,7 +8687,7 @@ func (client *Client) GetDataServiceProjectAddableUsers(request *GetDataServiceP
 
 // Summary:
 //
-// 查询数据源变更影响的集成任务及数据库SQL任务。
+// Queries the integration tasks and database SQL tasks affected by data source changes.
 //
 // @param request - GetDataSourceDependenciesRequest
 //
@@ -8580,7 +8735,7 @@ func (client *Client) GetDataSourceDependenciesWithOptions(request *GetDataSourc
 
 // Summary:
 //
-// 查询数据源变更影响的集成任务及数据库SQL任务。
+// Queries the integration tasks and database SQL tasks affected by data source changes.
 //
 // @param request - GetDataSourceDependenciesRequest
 //
@@ -8598,7 +8753,7 @@ func (client *Client) GetDataSourceDependencies(request *GetDataSourceDependenci
 
 // Summary:
 //
-// 查询开发态对象上游依赖。
+// Query upstream dependencies of development objects.
 //
 // @param request - GetDevObjectDependencyRequest
 //
@@ -8658,7 +8813,7 @@ func (client *Client) GetDevObjectDependencyWithOptions(request *GetDevObjectDep
 
 // Summary:
 //
-// 查询开发态对象上游依赖。
+// Query upstream dependencies of development objects.
 //
 // @param request - GetDevObjectDependencyRequest
 //
@@ -8676,7 +8831,7 @@ func (client *Client) GetDevObjectDependency(request *GetDevObjectDependencyRequ
 
 // Summary:
 //
-// 获取文件夹目录树
+// Retrieves the folder directory tree.
 //
 // @param request - GetDirectoryTreeRequest
 //
@@ -8728,7 +8883,7 @@ func (client *Client) GetDirectoryTreeWithOptions(request *GetDirectoryTreeReque
 
 // Summary:
 //
-// 获取文件夹目录树
+// Retrieves the folder directory tree.
 //
 // @param request - GetDirectoryTreeRequest
 //
@@ -8746,7 +8901,7 @@ func (client *Client) GetDirectoryTree(request *GetDirectoryTreeRequest) (_resul
 
 // Summary:
 //
-// 获取文件存储临时读写授权。
+// Obtains temporary read/write authorization for file storage.
 //
 // @param request - GetFileStorageCredentialRequest
 //
@@ -8802,7 +8957,7 @@ func (client *Client) GetFileStorageCredentialWithOptions(request *GetFileStorag
 
 // Summary:
 //
-// 获取文件存储临时读写授权。
+// Obtains temporary read/write authorization for file storage.
 //
 // @param request - GetFileStorageCredentialRequest
 //
@@ -8820,7 +8975,7 @@ func (client *Client) GetFileStorageCredential(request *GetFileStorageCredential
 
 // Summary:
 //
-// 根据起始的实例查询该实例的下游
+// Queries the downstream instances of a specified instance.
 //
 // @param tmpReq - GetInstanceDownStreamRequest
 //
@@ -8888,7 +9043,7 @@ func (client *Client) GetInstanceDownStreamWithOptions(tmpReq *GetInstanceDownSt
 
 // Summary:
 //
-// 根据起始的实例查询该实例的下游
+// Queries the downstream instances of a specified instance.
 //
 // @param request - GetInstanceDownStreamRequest
 //
@@ -8906,7 +9061,7 @@ func (client *Client) GetInstanceDownStream(request *GetInstanceDownStreamReques
 
 // Summary:
 //
-// 查询实例的上下游，支持逻辑表和代码任务。
+// Queries the dag of an instance. Logical tables and code nodes are supported.
 //
 // @param tmpReq - GetInstanceUpDownStreamRequest
 //
@@ -8978,7 +9133,7 @@ func (client *Client) GetInstanceUpDownStreamWithOptions(tmpReq *GetInstanceUpDo
 
 // Summary:
 //
-// 查询实例的上下游，支持逻辑表和代码任务。
+// Queries the dag of an instance. Logical tables and code nodes are supported.
 //
 // @param request - GetInstanceUpDownStreamRequest
 //
@@ -8996,7 +9151,7 @@ func (client *Client) GetInstanceUpDownStream(request *GetInstanceUpDownStreamRe
 
 // Summary:
 //
-// 获取最新的待发布记录详情
+// Retrieves the details of the latest pending submit record.
 //
 // @param tmpReq - GetLatestSubmitDetailRequest
 //
@@ -9052,7 +9207,7 @@ func (client *Client) GetLatestSubmitDetailWithOptions(tmpReq *GetLatestSubmitDe
 
 // Summary:
 //
-// 获取最新的待发布记录详情
+// Retrieves the details of the latest pending submit record.
 //
 // @param request - GetLatestSubmitDetailRequest
 //
@@ -9070,7 +9225,7 @@ func (client *Client) GetLatestSubmitDetail(request *GetLatestSubmitDetailReques
 
 // Summary:
 //
-// 获取用户角色列表
+// Retrieves the list of roles for the current user.
 //
 // @param request - GetMyRolesRequest
 //
@@ -9114,7 +9269,7 @@ func (client *Client) GetMyRolesWithOptions(request *GetMyRolesRequest, runtime 
 
 // Summary:
 //
-// 获取用户角色列表
+// Retrieves the list of roles for the current user.
 //
 // @param request - GetMyRolesRequest
 //
@@ -9132,7 +9287,7 @@ func (client *Client) GetMyRoles(request *GetMyRolesRequest) (_result *GetMyRole
 
 // Summary:
 //
-// 获取当前用户归属租户.
+// Retrieves the tenants to which the current user belongs.
 //
 // @param tmpReq - GetMyTenantsRequest
 //
@@ -9188,7 +9343,7 @@ func (client *Client) GetMyTenantsWithOptions(tmpReq *GetMyTenantsRequest, runti
 
 // Summary:
 //
-// 获取当前用户归属租户.
+// Retrieves the tenants to which the current user belongs.
 //
 // @param request - GetMyTenantsRequest
 //
@@ -9206,7 +9361,7 @@ func (client *Client) GetMyTenants(request *GetMyTenantsRequest) (_result *GetMy
 
 // Summary:
 //
-// 通用查询节点上下游接口
+// Queries the dag of a node. This is a general-purpose operation.
 //
 // @param tmpReq - GetNodeUpDownStreamRequest
 //
@@ -9278,7 +9433,7 @@ func (client *Client) GetNodeUpDownStreamWithOptions(tmpReq *GetNodeUpDownStream
 
 // Summary:
 //
-// 通用查询节点上下游接口
+// Queries the dag of a node. This is a general-purpose operation.
 //
 // @param request - GetNodeUpDownStreamRequest
 //
@@ -9296,7 +9451,7 @@ func (client *Client) GetNodeUpDownStream(request *GetNodeUpDownStreamRequest) (
 
 // Summary:
 //
-// 查询补数据提交的状态
+// Queries the submit status of a data backfill request.
 //
 // @param request - GetOperationSubmitStatusRequest
 //
@@ -9348,7 +9503,7 @@ func (client *Client) GetOperationSubmitStatusWithOptions(request *GetOperationS
 
 // Summary:
 //
-// 查询补数据提交的状态
+// Queries the submit status of a data backfill request.
 //
 // @param request - GetOperationSubmitStatusRequest
 //
@@ -9366,7 +9521,7 @@ func (client *Client) GetOperationSubmitStatus(request *GetOperationSubmitStatus
 
 // Summary:
 //
-// 查询脚本的实例信息, 包括实例状态、运行时间等信息.
+// Gets instance information.
 //
 // @param request - GetPhysicalInstanceRequest
 //
@@ -9422,7 +9577,7 @@ func (client *Client) GetPhysicalInstanceWithOptions(request *GetPhysicalInstanc
 
 // Summary:
 //
-// 查询脚本的实例信息, 包括实例状态、运行时间等信息.
+// Gets instance information.
 //
 // @param request - GetPhysicalInstanceRequest
 //
@@ -9440,7 +9595,7 @@ func (client *Client) GetPhysicalInstance(request *GetPhysicalInstanceRequest) (
 
 // Summary:
 //
-// 获取实例执行的日志，如果实例重跑了多次，则会有多条日志
+// Retrieves the execution logs of an instance. If the instance has been rerun multiple times, multiple log entries are returned.
 //
 // @param request - GetPhysicalInstanceLogRequest
 //
@@ -9496,7 +9651,7 @@ func (client *Client) GetPhysicalInstanceLogWithOptions(request *GetPhysicalInst
 
 // Summary:
 //
-// 获取实例执行的日志，如果实例重跑了多次，则会有多条日志
+// Retrieves the execution logs of an instance. If the instance has been rerun multiple times, multiple log entries are returned.
 //
 // @param request - GetPhysicalInstanceLogRequest
 //
@@ -9514,7 +9669,7 @@ func (client *Client) GetPhysicalInstanceLog(request *GetPhysicalInstanceLogRequ
 
 // Summary:
 //
-// 查询物理调度节点。
+// Queries a physical schedule resource.
 //
 // @param request - GetPhysicalNodeRequest
 //
@@ -9566,7 +9721,7 @@ func (client *Client) GetPhysicalNodeWithOptions(request *GetPhysicalNodeRequest
 
 // Summary:
 //
-// 查询物理调度节点。
+// Queries a physical schedule resource.
 //
 // @param request - GetPhysicalNodeRequest
 //
@@ -9584,7 +9739,7 @@ func (client *Client) GetPhysicalNode(request *GetPhysicalNodeRequest) (_result 
 
 // Summary:
 //
-// 根据输出名查询对应的物理节点。
+// Queries a physical node by output name. Only offline code nodes and integration task nodes are supported.
 //
 // @param request - GetPhysicalNodeByOutputNameRequest
 //
@@ -9636,7 +9791,7 @@ func (client *Client) GetPhysicalNodeByOutputNameWithOptions(request *GetPhysica
 
 // Summary:
 //
-// 根据输出名查询对应的物理节点。
+// Queries a physical node by output name. Only offline code nodes and integration task nodes are supported.
 //
 // @param request - GetPhysicalNodeByOutputNameRequest
 //
@@ -9654,7 +9809,7 @@ func (client *Client) GetPhysicalNodeByOutputName(request *GetPhysicalNodeByOutp
 
 // Summary:
 //
-// 查询调度节点代码内容。
+// Queries the code content of a schedule resource node.
 //
 // @param request - GetPhysicalNodeContentRequest
 //
@@ -9706,7 +9861,7 @@ func (client *Client) GetPhysicalNodeContentWithOptions(request *GetPhysicalNode
 
 // Summary:
 //
-// 查询调度节点代码内容。
+// Queries the code content of a schedule resource node.
 //
 // @param request - GetPhysicalNodeContentRequest
 //
@@ -9724,7 +9879,7 @@ func (client *Client) GetPhysicalNodeContent(request *GetPhysicalNodeContentRequ
 
 // Summary:
 //
-// 查询节点的操作日志。
+// Queries the operation logs of a node.
 //
 // @param request - GetPhysicalNodeOperationLogRequest
 //
@@ -9776,7 +9931,7 @@ func (client *Client) GetPhysicalNodeOperationLogWithOptions(request *GetPhysica
 
 // Summary:
 //
-// 查询节点的操作日志。
+// Queries the operation logs of a node.
 //
 // @param request - GetPhysicalNodeOperationLogRequest
 //
@@ -9794,7 +9949,7 @@ func (client *Client) GetPhysicalNodeOperationLog(request *GetPhysicalNodeOperat
 
 // Summary:
 //
-// 查询异步操作管道任务的执行结果。
+// Queries the execution result of an asynchronous pipeline task.
 //
 // @param tmpReq - GetPipelineAsyncResultRequest
 //
@@ -9854,7 +10009,7 @@ func (client *Client) GetPipelineAsyncResultWithOptions(tmpReq *GetPipelineAsync
 
 // Summary:
 //
-// 查询异步操作管道任务的执行结果。
+// Queries the execution result of an asynchronous pipeline task.
 //
 // @param request - GetPipelineAsyncResultRequest
 //
@@ -9872,7 +10027,7 @@ func (client *Client) GetPipelineAsyncResult(request *GetPipelineAsyncResultRequ
 
 // Summary:
 //
-// 根据管道任务id查询管道任务。
+// Queries a pipeline task by pipeline task ID.
 //
 // @param tmpReq - GetPipelineByIdRequest
 //
@@ -9936,7 +10091,7 @@ func (client *Client) GetPipelineByIdWithOptions(tmpReq *GetPipelineByIdRequest,
 
 // Summary:
 //
-// 根据管道任务id查询管道任务。
+// Queries a pipeline task by pipeline task ID.
 //
 // @param request - GetPipelineByIdRequest
 //
@@ -9954,7 +10109,7 @@ func (client *Client) GetPipelineById(request *GetPipelineByIdRequest) (_result 
 
 // Summary:
 //
-// 获取项目详情。
+// Get project details by project ID.
 //
 // @param request - GetProjectRequest
 //
@@ -10006,7 +10161,7 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 
 // Summary:
 //
-// 获取项目详情。
+// Get project details by project ID.
 //
 // @param request - GetProjectRequest
 //
@@ -10024,7 +10179,7 @@ func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjec
 
 // Summary:
 //
-// 通过项目名获取项目详情。
+// Retrieves project details by project name.
 //
 // @param request - GetProjectByNameRequest
 //
@@ -10072,7 +10227,7 @@ func (client *Client) GetProjectByNameWithOptions(request *GetProjectByNameReque
 
 // Summary:
 //
-// 通过项目名获取项目详情。
+// Retrieves project details by project name.
 //
 // @param request - GetProjectByNameRequest
 //
@@ -10090,7 +10245,7 @@ func (client *Client) GetProjectByName(request *GetProjectByNameRequest) (_resul
 
 // Summary:
 //
-// 获取项目生产账号
+// Retrieves the production account of a project. Only a super administrator (SuperAdmin) can call this API operation.
 //
 // @param request - GetProjectProduceUserRequest
 //
@@ -10138,7 +10293,7 @@ func (client *Client) GetProjectProduceUserWithOptions(request *GetProjectProduc
 
 // Summary:
 //
-// 获取项目生产账号
+// Retrieves the production account of a project. Only a super administrator (SuperAdmin) can call this API operation.
 //
 // @param request - GetProjectProduceUserRequest
 //
@@ -10156,7 +10311,7 @@ func (client *Client) GetProjectProduceUser(request *GetProjectProduceUserReques
 
 // Summary:
 //
-// 获取项目白名单。
+// Retrieves the whitelist of a project.
 //
 // @param request - GetProjectWhiteListsRequest
 //
@@ -10204,7 +10359,7 @@ func (client *Client) GetProjectWhiteListsWithOptions(request *GetProjectWhiteLi
 
 // Summary:
 //
-// 获取项目白名单。
+// Retrieves the whitelist of a project.
 //
 // @param request - GetProjectWhiteListsRequest
 //
@@ -10222,7 +10377,7 @@ func (client *Client) GetProjectWhiteLists(request *GetProjectWhiteListsRequest)
 
 // Summary:
 //
-// 通过监控对象ID获取告警设置。
+// Retrieves alert settings by monitored object ID. Release version: v5.4.2.
 //
 // @param request - GetQualityAlertOfAllRuleScopeByWatchIdRequest
 //
@@ -10270,7 +10425,7 @@ func (client *Client) GetQualityAlertOfAllRuleScopeByWatchIdWithOptions(request 
 
 // Summary:
 //
-// 通过监控对象ID获取告警设置。
+// Retrieves alert settings by monitored object ID. Release version: v5.4.2.
 //
 // @param request - GetQualityAlertOfAllRuleScopeByWatchIdRequest
 //
@@ -10288,7 +10443,9 @@ func (client *Client) GetQualityAlertOfAllRuleScopeByWatchId(request *GetQuality
 
 // Summary:
 //
-// 获取质量规则对象。
+// Retrieves a quality rule object.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualityRuleRequest
 //
@@ -10336,7 +10493,9 @@ func (client *Client) GetQualityRuleWithOptions(request *GetQualityRuleRequest, 
 
 // Summary:
 //
-// 获取质量规则对象。
+// Retrieves a quality rule object.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualityRuleRequest
 //
@@ -10354,7 +10513,7 @@ func (client *Client) GetQualityRule(request *GetQualityRuleRequest) (_result *G
 
 // Summary:
 //
-// 获取质量任务对象详情。
+// Retrieves the details of a quality node task object. Online version: v5.4.2.
 //
 // @param request - GetQualityRuleTaskRequest
 //
@@ -10402,7 +10561,7 @@ func (client *Client) GetQualityRuleTaskWithOptions(request *GetQualityRuleTaskR
 
 // Summary:
 //
-// 获取质量任务对象详情。
+// Retrieves the details of a quality node task object. Online version: v5.4.2.
 //
 // @param request - GetQualityRuleTaskRequest
 //
@@ -10420,7 +10579,9 @@ func (client *Client) GetQualityRuleTask(request *GetQualityRuleTaskRequest) (_r
 
 // Summary:
 //
-// 获取质量任务对象日志内容。
+// Retrieves the log content of a quality node task object.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetQualityRuleTaskLogRequest
 //
@@ -10468,7 +10629,9 @@ func (client *Client) GetQualityRuleTaskLogWithOptions(request *GetQualityRuleTa
 
 // Summary:
 //
-// 获取质量任务对象日志内容。
+// Retrieves the log content of a quality node task object.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetQualityRuleTaskLogRequest
 //
@@ -10486,7 +10649,9 @@ func (client *Client) GetQualityRuleTaskLog(request *GetQualityRuleTaskLogReques
 
 // Summary:
 //
-// 获取质量调度对象。
+// Retrieves a quality schedule object.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualityScheduleRequest
 //
@@ -10534,7 +10699,9 @@ func (client *Client) GetQualityScheduleWithOptions(request *GetQualityScheduleR
 
 // Summary:
 //
-// 获取质量调度对象。
+// Retrieves a quality schedule object.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualityScheduleRequest
 //
@@ -10552,7 +10719,9 @@ func (client *Client) GetQualitySchedule(request *GetQualityScheduleRequest) (_r
 
 // Summary:
 //
-// 通过监控对象ID获取调度设置列表。
+// Retrieves a list of schedule settings by monitored object ID.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualitySchedulesByWatchIdRequest
 //
@@ -10600,7 +10769,9 @@ func (client *Client) GetQualitySchedulesByWatchIdWithOptions(request *GetQualit
 
 // Summary:
 //
-// 通过监控对象ID获取调度设置列表。
+// Retrieves a list of schedule settings by monitored object ID.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualitySchedulesByWatchIdRequest
 //
@@ -10618,7 +10789,9 @@ func (client *Client) GetQualitySchedulesByWatchId(request *GetQualitySchedulesB
 
 // Summary:
 //
-// 获取质量模板对象。
+// Retrieves a quality template object.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualityTemplateRequest
 //
@@ -10666,7 +10839,9 @@ func (client *Client) GetQualityTemplateWithOptions(request *GetQualityTemplateR
 
 // Summary:
 //
-// 获取质量模板对象。
+// Retrieves a quality template object.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualityTemplateRequest
 //
@@ -10684,7 +10859,9 @@ func (client *Client) GetQualityTemplate(request *GetQualityTemplateRequest) (_r
 
 // Summary:
 //
-// 获取质量监控对象。
+// Retrieves a quality monitored object.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualityWatchRequest
 //
@@ -10732,7 +10909,9 @@ func (client *Client) GetQualityWatchWithOptions(request *GetQualityWatchRequest
 
 // Summary:
 //
-// 获取质量监控对象。
+// Retrieves a quality monitored object.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualityWatchRequest
 //
@@ -10750,7 +10929,9 @@ func (client *Client) GetQualityWatch(request *GetQualityWatchRequest) (_result 
 
 // Summary:
 //
-// 通过监控对象原始ID获取监控对象记录，例如：数据源、表、指标等的ID。
+// Retrieves a quality watchtask record by the original ID of the monitored object, such as the ID of a datasource, table, or metric.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualityWatchByObjectIdRequest
 //
@@ -10802,7 +10983,9 @@ func (client *Client) GetQualityWatchByObjectIdWithOptions(request *GetQualityWa
 
 // Summary:
 //
-// 通过监控对象原始ID获取监控对象记录，例如：数据源、表、指标等的ID。
+// Retrieves a quality watchtask record by the original ID of the monitored object, such as the ID of a datasource, table, or metric.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualityWatchByObjectIdRequest
 //
@@ -10820,7 +11003,9 @@ func (client *Client) GetQualityWatchByObjectId(request *GetQualityWatchByObject
 
 // Summary:
 //
-// 获取监控任务对象。
+// Retrieves a monitoring node task object.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetQualityWatchTaskRequest
 //
@@ -10868,7 +11053,9 @@ func (client *Client) GetQualityWatchTaskWithOptions(request *GetQualityWatchTas
 
 // Summary:
 //
-// 获取监控任务对象。
+// Retrieves a monitoring node task object.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetQualityWatchTaskRequest
 //
@@ -10886,7 +11073,9 @@ func (client *Client) GetQualityWatchTask(request *GetQualityWatchTaskRequest) (
 
 // Summary:
 //
-// 获取监控任务对象的日志内容。
+// Retrieves the log content of a monitoring task object.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetQualityWatchTaskLogRequest
 //
@@ -10934,7 +11123,9 @@ func (client *Client) GetQualityWatchTaskLogWithOptions(request *GetQualityWatch
 
 // Summary:
 //
-// 获取监控任务对象的日志内容。
+// Retrieves the log content of a monitoring task object.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetQualityWatchTaskLogRequest
 //
@@ -10952,7 +11143,7 @@ func (client *Client) GetQualityWatchTaskLog(request *GetQualityWatchTaskLogRequ
 
 // Summary:
 //
-// 根据集群ID获取集群版本
+// Retrieves the cluster version based on the cluster ID.
 //
 // @param request - GetQueueEngineVersionByEnvRequest
 //
@@ -11016,7 +11207,7 @@ func (client *Client) GetQueueEngineVersionByEnvWithOptions(request *GetQueueEng
 
 // Summary:
 //
-// 根据集群ID获取集群版本
+// Retrieves the cluster version based on the cluster ID.
 //
 // @param request - GetQueueEngineVersionByEnvRequest
 //
@@ -11034,7 +11225,7 @@ func (client *Client) GetQueueEngineVersionByEnv(request *GetQueueEngineVersionB
 
 // Summary:
 //
-// 获取资源文件详情。
+// Retrieves the details of a resource file.
 //
 // @param request - GetResourceRequest
 //
@@ -11086,7 +11277,7 @@ func (client *Client) GetResourceWithOptions(request *GetResourceRequest, runtim
 
 // Summary:
 //
-// 获取资源文件详情。
+// Retrieves the details of a resource file.
 //
 // @param request - GetResourceRequest
 //
@@ -11104,7 +11295,7 @@ func (client *Client) GetResource(request *GetResourceRequest) (_result *GetReso
 
 // Summary:
 //
-// 获取资源文件指定版本详情。
+// Gets the details of a specified version of a resource file.
 //
 // @param request - GetResourceByVersionRequest
 //
@@ -11160,7 +11351,7 @@ func (client *Client) GetResourceByVersionWithOptions(request *GetResourceByVers
 
 // Summary:
 //
-// 获取资源文件指定版本详情。
+// Gets the details of a specified version of a resource file.
 //
 // @param request - GetResourceByVersionRequest
 //
@@ -11178,7 +11369,7 @@ func (client *Client) GetResourceByVersion(request *GetResourceByVersionRequest)
 
 // Summary:
 //
-// 根据表Guid检索行级权限
+// Release version: v5.4.2.
 //
 // @param tmpReq - GetRowPermissionByTableGuidsRequest
 //
@@ -11234,7 +11425,7 @@ func (client *Client) GetRowPermissionByTableGuidsWithOptions(tmpReq *GetRowPerm
 
 // Summary:
 //
-// 根据表Guid检索行级权限
+// Release version: v5.4.2.
 //
 // @param request - GetRowPermissionByTableGuidsRequest
 //
@@ -11252,7 +11443,7 @@ func (client *Client) GetRowPermissionByTableGuids(request *GetRowPermissionByTa
 
 // Summary:
 //
-// 获取数据分类详情。
+// Retrieves the details of a data classification. Release version: v5.4.2.
 //
 // @param request - GetSecurityClassifyRequest
 //
@@ -11300,7 +11491,7 @@ func (client *Client) GetSecurityClassifyWithOptions(request *GetSecurityClassif
 
 // Summary:
 //
-// 获取数据分类详情。
+// Retrieves the details of a data classification. Release version: v5.4.2.
 //
 // @param request - GetSecurityClassifyRequest
 //
@@ -11318,7 +11509,9 @@ func (client *Client) GetSecurityClassify(request *GetSecurityClassifyRequest) (
 
 // Summary:
 //
-// 获取识别结果详情。
+// Retrieves the details of an identification result.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetSecurityIdentifyResultRequest
 //
@@ -11366,7 +11559,9 @@ func (client *Client) GetSecurityIdentifyResultWithOptions(request *GetSecurityI
 
 // Summary:
 //
-// 获取识别结果详情。
+// Retrieves the details of an identification result.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetSecurityIdentifyResultRequest
 //
@@ -11384,7 +11579,7 @@ func (client *Client) GetSecurityIdentifyResult(request *GetSecurityIdentifyResu
 
 // Summary:
 //
-// 获取数据分级详情。
+// Retrieves the details of a data classification level. Available since v5.4.2.
 //
 // @param request - GetSecurityLevelRequest
 //
@@ -11432,7 +11627,7 @@ func (client *Client) GetSecurityLevelWithOptions(request *GetSecurityLevelReque
 
 // Summary:
 //
-// 获取数据分级详情。
+// Retrieves the details of a data classification level. Available since v5.4.2.
 //
 // @param request - GetSecurityLevelRequest
 //
@@ -11450,7 +11645,7 @@ func (client *Client) GetSecurityLevel(request *GetSecurityLevelRequest) (_resul
 
 // Summary:
 //
-// 通过密钥名称获取密钥值。
+// Retrieves a key value by key name. Online version: v5.4.2.
 //
 // @param request - GetSecuritySecretKeyRequest
 //
@@ -11498,7 +11693,7 @@ func (client *Client) GetSecuritySecretKeyWithOptions(request *GetSecuritySecret
 
 // Summary:
 //
-// 通过密钥名称获取密钥值。
+// Retrieves a key value by key name. Online version: v5.4.2.
 //
 // @param request - GetSecuritySecretKeyRequest
 //
@@ -11516,7 +11711,7 @@ func (client *Client) GetSecuritySecretKey(request *GetSecuritySecretKeyRequest)
 
 // Summary:
 //
-// 获取计算源对应集群的spark客户信息
+// Retrieves the Spark client information of the cluster associated with a compute source.
 //
 // @param request - GetSparkLocalClientInfoRequest
 //
@@ -11568,7 +11763,7 @@ func (client *Client) GetSparkLocalClientInfoWithOptions(request *GetSparkLocalC
 
 // Summary:
 //
-// 获取计算源对应集群的spark客户信息
+// Retrieves the Spark client information of the cluster associated with a compute source.
 //
 // @param request - GetSparkLocalClientInfoRequest
 //
@@ -11586,7 +11781,9 @@ func (client *Client) GetSparkLocalClientInfo(request *GetSparkLocalClientInfoRe
 
 // Summary:
 //
-// 获取标准详情。
+// Retrieves the details of a standard.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - GetStandardRequest
 //
@@ -11642,7 +11839,9 @@ func (client *Client) GetStandardWithOptions(tmpReq *GetStandardRequest, runtime
 
 // Summary:
 //
-// 获取标准详情。
+// Retrieves the details of a standard.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetStandardRequest
 //
@@ -11660,7 +11859,9 @@ func (client *Client) GetStandard(request *GetStandardRequest) (_result *GetStan
 
 // Summary:
 //
-// 获取数据标准码表详情。
+// Retrieves the details of a data standard lookup table.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetStandardLookupTableRequest
 //
@@ -11712,7 +11913,9 @@ func (client *Client) GetStandardLookupTableWithOptions(request *GetStandardLook
 
 // Summary:
 //
-// 获取数据标准码表详情。
+// Retrieves the details of a data standard lookup table.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetStandardLookupTableRequest
 //
@@ -11730,7 +11933,9 @@ func (client *Client) GetStandardLookupTable(request *GetStandardLookupTableRequ
 
 // Summary:
 //
-// 获取标准集详情。
+// Retrieves the details of a standard set.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetStandardSetRequest
 //
@@ -11782,7 +11987,9 @@ func (client *Client) GetStandardSetWithOptions(request *GetStandardSetRequest, 
 
 // Summary:
 //
-// 获取标准集详情。
+// Retrieves the details of a standard set.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetStandardSetRequest
 //
@@ -11800,7 +12007,9 @@ func (client *Client) GetStandardSet(request *GetStandardSetRequest) (_result *G
 
 // Summary:
 //
-// 查询目录下按照标准类型统计标准数目。
+// Queries the number of standards grouped by standard type under a specified folder.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - GetStandardStatisticsRequest
 //
@@ -11856,7 +12065,9 @@ func (client *Client) GetStandardStatisticsWithOptions(tmpReq *GetStandardStatis
 
 // Summary:
 //
-// 查询目录下按照标准类型统计标准数目。
+// Queries the number of standards grouped by standard type under a specified folder.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetStandardStatisticsRequest
 //
@@ -11874,7 +12085,9 @@ func (client *Client) GetStandardStatistics(request *GetStandardStatisticsReques
 
 // Summary:
 //
-// 获取数据标准模板详情。
+// Retrieves the details of a data standard template.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - GetStandardTemplateRequest
 //
@@ -11938,7 +12151,9 @@ func (client *Client) GetStandardTemplateWithOptions(tmpReq *GetStandardTemplate
 
 // Summary:
 //
-// 获取数据标准模板详情。
+// Retrieves the details of a data standard template.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetStandardTemplateRequest
 //
@@ -11956,7 +12171,9 @@ func (client *Client) GetStandardTemplate(request *GetStandardTemplateRequest) (
 
 // Summary:
 //
-// 获取数据标准词根详情。
+// Retrieves the details of a data standard word root.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetStandardWordRootRequest
 //
@@ -12008,7 +12225,9 @@ func (client *Client) GetStandardWordRootWithOptions(request *GetStandardWordRoo
 
 // Summary:
 //
-// 获取数据标准词根详情。
+// Retrieves the details of a data standard word root.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetStandardWordRootRequest
 //
@@ -12026,7 +12245,7 @@ func (client *Client) GetStandardWordRoot(request *GetStandardWordRootRequest) (
 
 // Summary:
 //
-// 获取dataphin实时研发任务集合
+// Retrieves the list of real-time development nodes.
 //
 // @param request - GetStreamJobsRequest
 //
@@ -12078,7 +12297,7 @@ func (client *Client) GetStreamJobsWithOptions(request *GetStreamJobsRequest, ru
 
 // Summary:
 //
-// 获取dataphin实时研发任务集合
+// Retrieves the list of real-time development nodes.
 //
 // @param request - GetStreamJobsRequest
 //
@@ -12096,7 +12315,7 @@ func (client *Client) GetStreamJobs(request *GetStreamJobsRequest) (_result *Get
 
 // Summary:
 //
-// 获取补数据工作流所有业务日期的Dagrun信息。
+// Retrieves dagrun information for all business dates of a data backfill instance workflow.
 //
 // @param request - GetSupplementDagrunRequest
 //
@@ -12148,7 +12367,7 @@ func (client *Client) GetSupplementDagrunWithOptions(request *GetSupplementDagru
 
 // Summary:
 //
-// 获取补数据工作流所有业务日期的Dagrun信息。
+// Retrieves dagrun information for all business dates of a data backfill instance workflow.
 //
 // @param request - GetSupplementDagrunRequest
 //
@@ -12166,7 +12385,7 @@ func (client *Client) GetSupplementDagrun(request *GetSupplementDagrunRequest) (
 
 // Summary:
 //
-// 列出补数据工作流下具体一个业务日期的所有节点的实例。
+// Lists the instances of all nodes for a specific business date in a data backfill workflow.
 //
 // @param request - GetSupplementDagrunInstanceRequest
 //
@@ -12218,7 +12437,7 @@ func (client *Client) GetSupplementDagrunInstanceWithOptions(request *GetSupplem
 
 // Summary:
 //
-// 列出补数据工作流下具体一个业务日期的所有节点的实例。
+// Lists the instances of all nodes for a specific business date in a data backfill workflow.
 //
 // @param request - GetSupplementDagrunInstanceRequest
 //
@@ -12236,7 +12455,7 @@ func (client *Client) GetSupplementDagrunInstance(request *GetSupplementDagrunIn
 
 // Summary:
 //
-// 查询表字段血缘信息
+// Queries table column lineage information.
 //
 // @param tmpReq - GetTableColumnLineageByTaskIdRequest
 //
@@ -12292,7 +12511,7 @@ func (client *Client) GetTableColumnLineageByTaskIdWithOptions(tmpReq *GetTableC
 
 // Summary:
 //
-// 查询表字段血缘信息
+// Queries table column lineage information.
 //
 // @param request - GetTableColumnLineageByTaskIdRequest
 //
@@ -12310,7 +12529,9 @@ func (client *Client) GetTableColumnLineageByTaskId(request *GetTableColumnLinea
 
 // Summary:
 //
-// 查询资产表字段血缘信息。
+// Queries the column-level data lineage of an asset table.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - GetTableColumnLineagesRequest
 //
@@ -12370,7 +12591,9 @@ func (client *Client) GetTableColumnLineagesWithOptions(tmpReq *GetTableColumnLi
 
 // Summary:
 //
-// 查询资产表字段血缘信息。
+// Queries the column-level data lineage of an asset table.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetTableColumnLineagesRequest
 //
@@ -12388,7 +12611,9 @@ func (client *Client) GetTableColumnLineages(request *GetTableColumnLineagesRequ
 
 // Summary:
 //
-// 查询资产清单中Dataphin表的字段。
+// Queries columns of a Dataphin table in the asset inventory. Supported table types: dimension logical table, fact logical table, aggregate logical table, tag logical table, logical table view, physical table, physical view, and materialized view.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetTableColumnsRequest
 //
@@ -12440,7 +12665,9 @@ func (client *Client) GetTableColumnsWithOptions(request *GetTableColumnsRequest
 
 // Summary:
 //
-// 查询资产清单中Dataphin表的字段。
+// Queries columns of a Dataphin table in the asset inventory. Supported table types: dimension logical table, fact logical table, aggregate logical table, tag logical table, logical table view, physical table, physical view, and materialized view.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetTableColumnsRequest
 //
@@ -12458,7 +12685,7 @@ func (client *Client) GetTableColumns(request *GetTableColumnsRequest) (_result 
 
 // Summary:
 //
-// 查询表血缘信息
+// Queries table lineage information.
 //
 // @param tmpReq - GetTableLineageByTaskIdRequest
 //
@@ -12514,7 +12741,7 @@ func (client *Client) GetTableLineageByTaskIdWithOptions(tmpReq *GetTableLineage
 
 // Summary:
 //
-// 查询表血缘信息
+// Queries table lineage information.
 //
 // @param request - GetTableLineageByTaskIdRequest
 //
@@ -12532,7 +12759,9 @@ func (client *Client) GetTableLineageByTaskId(request *GetTableLineageByTaskIdRe
 
 // Summary:
 //
-// 查询资产表血缘信息。
+// Queries lineage information of an asset table.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - GetTableLineagesRequest
 //
@@ -12592,7 +12821,9 @@ func (client *Client) GetTableLineagesWithOptions(tmpReq *GetTableLineagesReques
 
 // Summary:
 //
-// 查询资产表血缘信息。
+// Queries lineage information of an asset table.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetTableLineagesRequest
 //
@@ -12610,7 +12841,7 @@ func (client *Client) GetTableLineages(request *GetTableLineagesRequest) (_resul
 
 // Summary:
 //
-// 根据转交任务ID查询转交任务的进度
+// Queries the progress of a transfer task by transfer task ID.
 //
 // @param request - GetTransferInfoRequest
 //
@@ -12658,7 +12889,7 @@ func (client *Client) GetTransferInfoWithOptions(request *GetTransferInfoRequest
 
 // Summary:
 //
-// 根据转交任务ID查询转交任务的进度
+// Queries the progress of a transfer task by transfer task ID.
 //
 // @param request - GetTransferInfoRequest
 //
@@ -12676,7 +12907,7 @@ func (client *Client) GetTransferInfo(request *GetTransferInfoRequest) (_result 
 
 // Summary:
 //
-// 获取自定义函数详情。
+// Retrieves the details of a user-defined function.
 //
 // @param request - GetUdfRequest
 //
@@ -12728,7 +12959,7 @@ func (client *Client) GetUdfWithOptions(request *GetUdfRequest, runtime *dara.Ru
 
 // Summary:
 //
-// 获取自定义函数详情。
+// Retrieves the details of a user-defined function.
 //
 // @param request - GetUdfRequest
 //
@@ -12746,7 +12977,7 @@ func (client *Client) GetUdf(request *GetUdfRequest) (_result *GetUdfResponse, _
 
 // Summary:
 //
-// 查询自定义函数版本详情。
+// Queries the details of a specific version of a user-defined function.
 //
 // @param request - GetUdfByVersionRequest
 //
@@ -12802,7 +13033,7 @@ func (client *Client) GetUdfByVersionWithOptions(request *GetUdfByVersionRequest
 
 // Summary:
 //
-// 查询自定义函数版本详情。
+// Queries the details of a specific version of a user-defined function.
 //
 // @param request - GetUdfByVersionRequest
 //
@@ -12820,7 +13051,7 @@ func (client *Client) GetUdfByVersion(request *GetUdfByVersionRequest) (_result 
 
 // Summary:
 //
-// 通过用户原始Id（如阿里云Id）获取用户详情
+// Retrieves user details by original user ID.
 //
 // @param request - GetUserBySourceIdRequest
 //
@@ -12868,7 +13099,7 @@ func (client *Client) GetUserBySourceIdWithOptions(request *GetUserBySourceIdReq
 
 // Summary:
 //
-// 通过用户原始Id（如阿里云Id）获取用户详情
+// Retrieves user details by original user ID.
 //
 // @param request - GetUserBySourceIdRequest
 //
@@ -12886,7 +13117,7 @@ func (client *Client) GetUserBySourceId(request *GetUserBySourceIdRequest) (_res
 
 // Summary:
 //
-// 获取用户组详情.
+// Retrieves the details of a user group.
 //
 // @param request - GetUserGroupRequest
 //
@@ -12934,7 +13165,7 @@ func (client *Client) GetUserGroupWithOptions(request *GetUserGroupRequest, runt
 
 // Summary:
 //
-// 获取用户组详情.
+// Retrieves the details of a user group.
 //
 // @param request - GetUserGroupRequest
 //
@@ -12952,7 +13183,7 @@ func (client *Client) GetUserGroup(request *GetUserGroupRequest) (_result *GetUs
 
 // Summary:
 //
-// 获取用户详情
+// Retrieves user information in batches by user ID.
 //
 // @param tmpReq - GetUsersRequest
 //
@@ -13008,7 +13239,7 @@ func (client *Client) GetUsersWithOptions(tmpReq *GetUsersRequest, runtime *dara
 
 // Summary:
 //
-// 获取用户详情
+// Retrieves user information in batches by user ID.
 //
 // @param request - GetUsersRequest
 //
@@ -13026,7 +13257,7 @@ func (client *Client) GetUsers(request *GetUsersRequest) (_result *GetUsersRespo
 
 // Summary:
 //
-// API授权。
+// Grants API authorization.
 //
 // @param tmpReq - GrantDataServiceApiRequest
 //
@@ -13086,7 +13317,7 @@ func (client *Client) GrantDataServiceApiWithOptions(tmpReq *GrantDataServiceApi
 
 // Summary:
 //
-// API授权。
+// Grants API authorization.
 //
 // @param request - GrantDataServiceApiRequest
 //
@@ -13104,7 +13335,7 @@ func (client *Client) GrantDataServiceApi(request *GrantDataServiceApiRequest) (
 
 // Summary:
 //
-// 通过资源点对用户授权
+// Grants permissions on resources to users by resource point.
 //
 // @param tmpReq - GrantResourcePermissionRequest
 //
@@ -13160,7 +13391,7 @@ func (client *Client) GrantResourcePermissionWithOptions(tmpReq *GrantResourcePe
 
 // Summary:
 //
-// 通过资源点对用户授权
+// Grants permissions on resources to users by resource point.
 //
 // @param request - GrantResourcePermissionRequest
 //
@@ -13178,7 +13409,7 @@ func (client *Client) GrantResourcePermission(request *GrantResourcePermissionRe
 
 // Summary:
 //
-// 获取用户角色列表
+// Retrieves the global roles that can be assigned to tenant members. Only built-in global roles are supported. Custom global roles are not supported.
 //
 // @param request - ListAddableRolesRequest
 //
@@ -13222,7 +13453,7 @@ func (client *Client) ListAddableRolesWithOptions(request *ListAddableRolesReque
 
 // Summary:
 //
-// 获取用户角色列表
+// Retrieves the global roles that can be assigned to tenant members. Only built-in global roles are supported. Custom global roles are not supported.
 //
 // @param request - ListAddableRolesRequest
 //
@@ -13240,7 +13471,7 @@ func (client *Client) ListAddableRoles(request *ListAddableRolesRequest) (_resul
 
 // Summary:
 //
-// 获取可加入租户成员列表的用户
+// Queries users that can be added to a tenant. Only the super administrator (SuperAdmin) and system administrator can call this operation. The users must already exist in the Dataphin instance member list but have not yet been added to the tenant member list.
 //
 // @param tmpReq - ListAddableUsersRequest
 //
@@ -13296,7 +13527,7 @@ func (client *Client) ListAddableUsersWithOptions(tmpReq *ListAddableUsersReques
 
 // Summary:
 //
-// 获取可加入租户成员列表的用户
+// Queries users that can be added to a tenant. Only the super administrator (SuperAdmin) and system administrator can call this operation. The users must already exist in the Dataphin instance member list but have not yet been added to the tenant member list.
 //
 // @param request - ListAddableUsersRequest
 //
@@ -13314,7 +13545,7 @@ func (client *Client) ListAddableUsers(request *ListAddableUsersRequest) (_resul
 
 // Summary:
 //
-// 根据条件查询多个告警事件
+// Performs a conditional query to list multiple alerting events.
 //
 // @param tmpReq - ListAlertEventsRequest
 //
@@ -13370,7 +13601,7 @@ func (client *Client) ListAlertEventsWithOptions(tmpReq *ListAlertEventsRequest,
 
 // Summary:
 //
-// 根据条件查询多个告警事件
+// Performs a conditional query to list multiple alerting events.
 //
 // @param request - ListAlertEventsRequest
 //
@@ -13388,7 +13619,7 @@ func (client *Client) ListAlertEvents(request *ListAlertEventsRequest) (_result 
 
 // Summary:
 //
-// 根据条件查询多个推送记录
+// Performs a conditional query to list multiple push records.
 //
 // @param tmpReq - ListAlertNotificationsRequest
 //
@@ -13444,7 +13675,7 @@ func (client *Client) ListAlertNotificationsWithOptions(tmpReq *ListAlertNotific
 
 // Summary:
 //
-// 根据条件查询多个推送记录
+// Performs a conditional query to list multiple push records.
 //
 // @param request - ListAlertNotificationsRequest
 //
@@ -13462,7 +13693,11 @@ func (client *Client) ListAlertNotifications(request *ListAlertNotificationsRequ
 
 // Summary:
 //
-// 根据app查询api列表
+// Queries the list of APIs by application.
+//
+// Description:
+//
+// Queries the detailed information of published APIs by appKey.
 //
 // @param tmpReq - ListApiByAppRequest
 //
@@ -13518,7 +13753,11 @@ func (client *Client) ListApiByAppWithOptions(tmpReq *ListApiByAppRequest, runti
 
 // Summary:
 //
-// 根据app查询api列表
+// Queries the list of APIs by application.
+//
+// Description:
+//
+// Queries the detailed information of published APIs by appKey.
 //
 // @param request - ListApiByAppRequest
 //
@@ -13536,7 +13775,7 @@ func (client *Client) ListApiByApp(request *ListApiByAppRequest) (_result *ListA
 
 // Summary:
 //
-// 查询应用已申请的API的具体的字段列表
+// Queries the list of specific fields for APIs that an application has requested.
 //
 // @param tmpReq - ListAuthorizedDataServiceApiDetailsRequest
 //
@@ -13592,7 +13831,7 @@ func (client *Client) ListAuthorizedDataServiceApiDetailsWithOptions(tmpReq *Lis
 
 // Summary:
 //
-// 查询应用已申请的API的具体的字段列表
+// Queries the list of specific fields for APIs that an application has requested.
 //
 // @param request - ListAuthorizedDataServiceApiDetailsRequest
 //
@@ -13610,7 +13849,7 @@ func (client *Client) ListAuthorizedDataServiceApiDetails(request *ListAuthorize
 
 // Summary:
 //
-// 查询业务实体列表。
+// Queries a list of business entities.
 //
 // @param tmpReq - ListBizEntitiesRequest
 //
@@ -13666,7 +13905,7 @@ func (client *Client) ListBizEntitiesWithOptions(tmpReq *ListBizEntitiesRequest,
 
 // Summary:
 //
-// 查询业务实体列表。
+// Queries a list of business entities.
 //
 // @param request - ListBizEntitiesRequest
 //
@@ -13684,7 +13923,7 @@ func (client *Client) ListBizEntities(request *ListBizEntitiesRequest) (_result 
 
 // Summary:
 //
-// 获取当前租户下的所有数据板块
+// Retrieves all business units under the current tenant.
 //
 // @param request - ListBizUnitsRequest
 //
@@ -13728,7 +13967,7 @@ func (client *Client) ListBizUnitsWithOptions(request *ListBizUnitsRequest, runt
 
 // Summary:
 //
-// 获取当前租户下的所有数据板块
+// Retrieves all business units under the current tenant.
 //
 // @param request - ListBizUnitsRequest
 //
@@ -13746,7 +13985,7 @@ func (client *Client) ListBizUnits(request *ListBizUnitsRequest) (_result *ListB
 
 // Summary:
 //
-// 查询数据目录资产列表。
+// Queries the list of asset catalog entries. Online version: v6.1.0.
 //
 // @param tmpReq - ListCatalogAssetsRequest
 //
@@ -13802,7 +14041,7 @@ func (client *Client) ListCatalogAssetsWithOptions(tmpReq *ListCatalogAssetsRequ
 
 // Summary:
 //
-// 查询数据目录资产列表。
+// Queries the list of asset catalog entries. Online version: v6.1.0.
 //
 // @param request - ListCatalogAssetsRequest
 //
@@ -13820,7 +14059,7 @@ func (client *Client) ListCatalogAssets(request *ListCatalogAssetsRequest) (_res
 
 // Summary:
 //
-// 查询计算源列表。
+// Query the list of compute sources.
 //
 // @param tmpReq - ListComputeSourcesRequest
 //
@@ -13876,7 +14115,7 @@ func (client *Client) ListComputeSourcesWithOptions(tmpReq *ListComputeSourcesRe
 
 // Summary:
 //
-// 查询计算源列表。
+// Query the list of compute sources.
 //
 // @param request - ListComputeSourcesRequest
 //
@@ -13894,7 +14133,7 @@ func (client *Client) ListComputeSources(request *ListComputeSourcesRequest) (_r
 
 // Summary:
 //
-// 获取主题域列表。
+// Retrieves a list of data domains.
 //
 // @param tmpReq - ListDataDomainsRequest
 //
@@ -13950,7 +14189,7 @@ func (client *Client) ListDataDomainsWithOptions(tmpReq *ListDataDomainsRequest,
 
 // Summary:
 //
-// 获取主题域列表。
+// Retrieves a list of data domains.
 //
 // @param request - ListDataDomainsRequest
 //
@@ -13968,7 +14207,7 @@ func (client *Client) ListDataDomains(request *ListDataDomainsRequest) (_result 
 
 // Summary:
 //
-// 查询API运维统计信息。
+// O&M analysis: API call statistics.
 //
 // @param tmpReq - ListDataServiceApiCallStatisticsRequest
 //
@@ -14028,7 +14267,7 @@ func (client *Client) ListDataServiceApiCallStatisticsWithOptions(tmpReq *ListDa
 
 // Summary:
 //
-// 查询API运维统计信息。
+// O&M analysis: API call statistics.
 //
 // @param request - ListDataServiceApiCallStatisticsRequest
 //
@@ -14046,7 +14285,7 @@ func (client *Client) ListDataServiceApiCallStatistics(request *ListDataServiceA
 
 // Summary:
 //
-// 分页查询数据服务调用日志。
+// Queries data service call logs with pagination.
 //
 // @param tmpReq - ListDataServiceApiCallsRequest
 //
@@ -14106,7 +14345,7 @@ func (client *Client) ListDataServiceApiCallsWithOptions(tmpReq *ListDataService
 
 // Summary:
 //
-// 分页查询数据服务调用日志。
+// Queries data service call logs with pagination.
 //
 // @param request - ListDataServiceApiCallsRequest
 //
@@ -14124,7 +14363,7 @@ func (client *Client) ListDataServiceApiCalls(request *ListDataServiceApiCallsRe
 
 // Summary:
 //
-// API影响分析列表。
+// Operations analysis: analyzes the impact of abnormal API calls.
 //
 // @param tmpReq - ListDataServiceApiImpactsRequest
 //
@@ -14184,7 +14423,7 @@ func (client *Client) ListDataServiceApiImpactsWithOptions(tmpReq *ListDataServi
 
 // Summary:
 //
-// API影响分析列表。
+// Operations analysis: analyzes the impact of abnormal API calls.
 //
 // @param request - ListDataServiceApiImpactsRequest
 //
@@ -14202,7 +14441,9 @@ func (client *Client) ListDataServiceApiImpacts(request *ListDataServiceApiImpac
 
 // Summary:
 //
-// 查询租户下所有的应用列表。
+// Queries the list of all applications under a data service tenant. All tenant members can perform this operation.
+//
+// Release version: v6.0.0.
 //
 // @param tmpReq - ListDataServiceAppsRequest
 //
@@ -14258,7 +14499,9 @@ func (client *Client) ListDataServiceAppsWithOptions(tmpReq *ListDataServiceApps
 
 // Summary:
 //
-// 查询租户下所有的应用列表。
+// Queries the list of all applications under a data service tenant. All tenant members can perform this operation.
+//
+// Release version: v6.0.0.
 //
 // @param request - ListDataServiceAppsRequest
 //
@@ -14276,7 +14519,7 @@ func (client *Client) ListDataServiceApps(request *ListDataServiceAppsRequest) (
 
 // Summary:
 //
-// 查询当前用户有权限的应用列表。
+// Queries the list of applications that the current user has permissions to access.
 //
 // @param tmpReq - ListDataServiceAuthorizedAppsRequest
 //
@@ -14336,7 +14579,7 @@ func (client *Client) ListDataServiceAuthorizedAppsWithOptions(tmpReq *ListDataS
 
 // Summary:
 //
-// 查询当前用户有权限的应用列表。
+// Queries the list of applications that the current user has permissions to access.
 //
 // @param request - ListDataServiceAuthorizedAppsRequest
 //
@@ -14354,7 +14597,7 @@ func (client *Client) ListDataServiceAuthorizedApps(request *ListDataServiceAuth
 
 // Summary:
 //
-// 获取我管理的API权限列表。
+// Obtain the list of API permissions managed by me.
 //
 // @param tmpReq - ListDataServiceMyApiPermissionsRequest
 //
@@ -14414,7 +14657,7 @@ func (client *Client) ListDataServiceMyApiPermissionsWithOptions(tmpReq *ListDat
 
 // Summary:
 //
-// 获取我管理的API权限列表。
+// Obtain the list of API permissions managed by me.
 //
 // @param request - ListDataServiceMyApiPermissionsRequest
 //
@@ -14432,7 +14675,7 @@ func (client *Client) ListDataServiceMyApiPermissions(request *ListDataServiceMy
 
 // Summary:
 //
-// 查询当前用户有权限的应用。
+// Queries the applications that the current user has permissions to access.
 //
 // @param tmpReq - ListDataServiceMyAppPermissionsRequest
 //
@@ -14492,7 +14735,7 @@ func (client *Client) ListDataServiceMyAppPermissionsWithOptions(tmpReq *ListDat
 
 // Summary:
 //
-// 查询当前用户有权限的应用。
+// Queries the applications that the current user has permissions to access.
 //
 // @param request - ListDataServiceMyAppPermissionsRequest
 //
@@ -14510,7 +14753,7 @@ func (client *Client) ListDataServiceMyAppPermissions(request *ListDataServiceMy
 
 // Summary:
 //
-// 分页查询已发布的API列表。
+// Queries the list of published APIs by page.
 //
 // @param tmpReq - ListDataServicePublishedApisRequest
 //
@@ -14570,7 +14813,7 @@ func (client *Client) ListDataServicePublishedApisWithOptions(tmpReq *ListDataSe
 
 // Summary:
 //
-// 分页查询已发布的API列表。
+// Queries the list of published APIs by page.
 //
 // @param request - ListDataServicePublishedApisRequest
 //
@@ -14588,7 +14831,7 @@ func (client *Client) ListDataServicePublishedApis(request *ListDataServicePubli
 
 // Summary:
 //
-// 搜索数据源，所属结果包含数据源配置项
+// Search for data sources. The results include data source configuration items.
 //
 // @param tmpReq - ListDataSourceWithConfigRequest
 //
@@ -14644,7 +14887,7 @@ func (client *Client) ListDataSourceWithConfigWithOptions(tmpReq *ListDataSource
 
 // Summary:
 //
-// 搜索数据源，所属结果包含数据源配置项
+// Search for data sources. The results include data source configuration items.
 //
 // @param request - ListDataSourceWithConfigRequest
 //
@@ -14662,7 +14905,7 @@ func (client *Client) ListDataSourceWithConfig(request *ListDataSourceWithConfig
 
 // Summary:
 //
-// 遍历菜单树目录文件。
+// Query the directory tree file list.
 //
 // @param tmpReq - ListFilesRequest
 //
@@ -14718,7 +14961,7 @@ func (client *Client) ListFilesWithOptions(tmpReq *ListFilesRequest, runtime *da
 
 // Summary:
 //
-// 遍历菜单树目录文件。
+// Query the directory tree file list.
 //
 // @param request - ListFilesRequest
 //
@@ -14736,7 +14979,7 @@ func (client *Client) ListFiles(request *ListFilesRequest) (_result *ListFilesRe
 
 // Summary:
 //
-// 分页查询实例。
+// Paginate and query instances.
 //
 // @param tmpReq - ListInstancesRequest
 //
@@ -14796,7 +15039,7 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, run
 
 // Summary:
 //
-// 分页查询实例。
+// Paginate and query instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -14814,7 +15057,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// 查询节点下游，创建补数据工作流时可以作为数据参考
+// Queries the downstream nodes of a node. The query results can be used as a data reference when you create a data backfill workflow.
 //
 // @param tmpReq - ListNodeDownStreamRequest
 //
@@ -14874,7 +15117,7 @@ func (client *Client) ListNodeDownStreamWithOptions(tmpReq *ListNodeDownStreamRe
 
 // Summary:
 //
-// 查询节点下游，创建补数据工作流时可以作为数据参考
+// Queries the downstream nodes of a node. The query results can be used as a data reference when you create a data backfill workflow.
 //
 // @param request - ListNodeDownStreamRequest
 //
@@ -14892,7 +15135,7 @@ func (client *Client) ListNodeDownStream(request *ListNodeDownStreamRequest) (_r
 
 // Summary:
 //
-// 查询调度节点列表。
+// Retrieves a list of scheduling nodes.
 //
 // @param tmpReq - ListNodesRequest
 //
@@ -14952,7 +15195,7 @@ func (client *Client) ListNodesWithOptions(tmpReq *ListNodesRequest, runtime *da
 
 // Summary:
 //
-// 查询调度节点列表。
+// Retrieves a list of scheduling nodes.
 //
 // @param request - ListNodesRequest
 //
@@ -14970,7 +15213,7 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 
 // Summary:
 //
-// 获取项目成员列表。
+// Queries the list of project members.
 //
 // @param tmpReq - ListProjectMembersRequest
 //
@@ -15030,7 +15273,7 @@ func (client *Client) ListProjectMembersWithOptions(tmpReq *ListProjectMembersRe
 
 // Summary:
 //
-// 获取项目成员列表。
+// Queries the list of project members.
 //
 // @param request - ListProjectMembersRequest
 //
@@ -15048,7 +15291,7 @@ func (client *Client) ListProjectMembers(request *ListProjectMembersRequest) (_r
 
 // Summary:
 //
-// 获取项目列表。
+// Retrieves a list of projects.
 //
 // @param tmpReq - ListProjectsRequest
 //
@@ -15104,7 +15347,7 @@ func (client *Client) ListProjectsWithOptions(tmpReq *ListProjectsRequest, runti
 
 // Summary:
 //
-// 获取项目列表。
+// Retrieves a list of projects.
 //
 // @param request - ListProjectsRequest
 //
@@ -15122,7 +15365,7 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 
 // Summary:
 //
-// 分页获取发布记录列表
+// Retrieves a paginated list of publish records.
 //
 // @param tmpReq - ListPublishRecordsRequest
 //
@@ -15178,7 +15421,7 @@ func (client *Client) ListPublishRecordsWithOptions(tmpReq *ListPublishRecordsRe
 
 // Summary:
 //
-// 分页获取发布记录列表
+// Retrieves a paginated list of publish records.
 //
 // @param request - ListPublishRecordsRequest
 //
@@ -15196,7 +15439,9 @@ func (client *Client) ListPublishRecords(request *ListPublishRecordsRequest) (_r
 
 // Summary:
 //
-// 分页查询质量规则任务。
+// Queries quality rule tasks by paging.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - ListQualityRuleTasksRequest
 //
@@ -15252,7 +15497,9 @@ func (client *Client) ListQualityRuleTasksWithOptions(tmpReq *ListQualityRuleTas
 
 // Summary:
 //
-// 分页查询质量规则任务。
+// Queries quality rule tasks by paging.
+//
+// Online version: v5.4.2.
 //
 // @param request - ListQualityRuleTasksRequest
 //
@@ -15270,7 +15517,9 @@ func (client *Client) ListQualityRuleTasks(request *ListQualityRuleTasksRequest)
 
 // Summary:
 //
-// 分页查询质量规则。
+// Queries quality rules by paging.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - ListQualityRulesRequest
 //
@@ -15326,7 +15575,9 @@ func (client *Client) ListQualityRulesWithOptions(tmpReq *ListQualityRulesReques
 
 // Summary:
 //
-// 分页查询质量规则。
+// Queries quality rules by paging.
+//
+// Online version: v5.4.2.
 //
 // @param request - ListQualityRulesRequest
 //
@@ -15344,7 +15595,9 @@ func (client *Client) ListQualityRules(request *ListQualityRulesRequest) (_resul
 
 // Summary:
 //
-// 分页查询质量模板。
+// Queries quality templates by paging.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - ListQualityTemplatesRequest
 //
@@ -15400,7 +15653,9 @@ func (client *Client) ListQualityTemplatesWithOptions(tmpReq *ListQualityTemplat
 
 // Summary:
 //
-// 分页查询质量模板。
+// Queries quality templates by paging.
+//
+// Online version: v5.4.2.
 //
 // @param request - ListQualityTemplatesRequest
 //
@@ -15418,7 +15673,9 @@ func (client *Client) ListQualityTemplates(request *ListQualityTemplatesRequest)
 
 // Summary:
 //
-// 分页查询质量监控任务。
+// Queries quality monitoring nodes by paged query.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - ListQualityWatchTasksRequest
 //
@@ -15474,7 +15731,9 @@ func (client *Client) ListQualityWatchTasksWithOptions(tmpReq *ListQualityWatchT
 
 // Summary:
 //
-// 分页查询质量监控任务。
+// Queries quality monitoring nodes by paged query.
+//
+// Online version: v5.4.2.
 //
 // @param request - ListQualityWatchTasksRequest
 //
@@ -15492,7 +15751,9 @@ func (client *Client) ListQualityWatchTasks(request *ListQualityWatchTasksReques
 
 // Summary:
 //
-// 分页查询质量监控对象。
+// Performs a paged query of quality monitored objects.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - ListQualityWatchesRequest
 //
@@ -15548,7 +15809,9 @@ func (client *Client) ListQualityWatchesWithOptions(tmpReq *ListQualityWatchesRe
 
 // Summary:
 //
-// 分页查询质量监控对象。
+// Performs a paged query of quality monitored objects.
+//
+// Online version: v5.4.2.
 //
 // @param request - ListQualityWatchesRequest
 //
@@ -15566,7 +15829,7 @@ func (client *Client) ListQualityWatches(request *ListQualityWatchesRequest) (_r
 
 // Summary:
 //
-// 分页获取权限操作列表
+// Retrieves a paginated list of permission operation logs.
 //
 // @param tmpReq - ListResourcePermissionOperationLogRequest
 //
@@ -15622,7 +15885,7 @@ func (client *Client) ListResourcePermissionOperationLogWithOptions(tmpReq *List
 
 // Summary:
 //
-// 分页获取权限操作列表
+// Retrieves a paginated list of permission operation logs.
 //
 // @param request - ListResourcePermissionOperationLogRequest
 //
@@ -15640,7 +15903,7 @@ func (client *Client) ListResourcePermissionOperationLog(request *ListResourcePe
 
 // Summary:
 //
-// 分页获取权限记录列表
+// Retrieves permission authorization records with pagination.
 //
 // @param tmpReq - ListResourcePermissionsRequest
 //
@@ -15696,7 +15959,7 @@ func (client *Client) ListResourcePermissionsWithOptions(tmpReq *ListResourcePer
 
 // Summary:
 //
-// 分页获取权限记录列表
+// Retrieves permission authorization records with pagination.
 //
 // @param request - ListResourcePermissionsRequest
 //
@@ -15714,7 +15977,7 @@ func (client *Client) ListResourcePermissions(request *ListResourcePermissionsRe
 
 // Summary:
 //
-// 分页查询行级权限
+// Performs a paged query of row-level permissions.
 //
 // @param tmpReq - ListRowPermissionRequest
 //
@@ -15770,7 +16033,7 @@ func (client *Client) ListRowPermissionWithOptions(tmpReq *ListRowPermissionRequ
 
 // Summary:
 //
-// 分页查询行级权限
+// Performs a paged query of row-level permissions.
 //
 // @param request - ListRowPermissionRequest
 //
@@ -15788,7 +16051,7 @@ func (client *Client) ListRowPermission(request *ListRowPermissionRequest) (_res
 
 // Summary:
 //
-// 分页查询指定用户行级权限
+// Queries row-level permissions of a specified user by paging.
 //
 // @param tmpReq - ListRowPermissionByUserIdRequest
 //
@@ -15844,7 +16107,7 @@ func (client *Client) ListRowPermissionByUserIdWithOptions(tmpReq *ListRowPermis
 
 // Summary:
 //
-// 分页查询指定用户行级权限
+// Queries row-level permissions of a specified user by paging.
 //
 // @param request - ListRowPermissionByUserIdRequest
 //
@@ -15862,7 +16125,9 @@ func (client *Client) ListRowPermissionByUserId(request *ListRowPermissionByUser
 
 // Summary:
 //
-// 分页查询安全识别结果的识别记录。
+// Queries identification records of security identification results by paging.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - ListSecurityIdentifyRecordsRequest
 //
@@ -15918,7 +16183,9 @@ func (client *Client) ListSecurityIdentifyRecordsWithOptions(tmpReq *ListSecurit
 
 // Summary:
 //
-// 分页查询安全识别结果的识别记录。
+// Queries identification records of security identification results by paging.
+//
+// Online version: v5.4.2.
 //
 // @param request - ListSecurityIdentifyRecordsRequest
 //
@@ -15936,7 +16203,9 @@ func (client *Client) ListSecurityIdentifyRecords(request *ListSecurityIdentifyR
 
 // Summary:
 //
-// 分页查询安全识别结果。
+// Query security identification results by page.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - ListSecurityIdentifyResultsRequest
 //
@@ -15992,7 +16261,9 @@ func (client *Client) ListSecurityIdentifyResultsWithOptions(tmpReq *ListSecurit
 
 // Summary:
 //
-// 分页查询安全识别结果。
+// Query security identification results by page.
+//
+// Release version: v5.4.2.
 //
 // @param request - ListSecurityIdentifyResultsRequest
 //
@@ -16010,7 +16281,9 @@ func (client *Client) ListSecurityIdentifyResults(request *ListSecurityIdentifyR
 
 // Summary:
 //
-// 分页查询标准列表。
+// Query the standard list by page.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - ListStandardsRequest
 //
@@ -16066,7 +16339,9 @@ func (client *Client) ListStandardsWithOptions(tmpReq *ListStandardsRequest, run
 
 // Summary:
 //
-// 分页查询标准列表。
+// Query the standard list by page.
+//
+// Release version: v5.4.2.
 //
 // @param request - ListStandardsRequest
 //
@@ -16084,7 +16359,7 @@ func (client *Client) ListStandards(request *ListStandardsRequest) (_result *Lis
 
 // Summary:
 //
-// 分页获取待发布记录列表
+// Paginate and retrieve the list of pending deployment records.
 //
 // @param tmpReq - ListSubmitRecordsRequest
 //
@@ -16140,7 +16415,7 @@ func (client *Client) ListSubmitRecordsWithOptions(tmpReq *ListSubmitRecordsRequ
 
 // Summary:
 //
-// 分页获取待发布记录列表
+// Paginate and retrieve the list of pending deployment records.
 //
 // @param request - ListSubmitRecordsRequest
 //
@@ -16158,7 +16433,9 @@ func (client *Client) ListSubmitRecords(request *ListSubmitRecordsRequest) (_res
 
 // Summary:
 //
-// 分页查询查询资产表元数据。
+// Performs a paged query to retrieve asset table metadata.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - ListTablesRequest
 //
@@ -16214,7 +16491,9 @@ func (client *Client) ListTablesWithOptions(tmpReq *ListTablesRequest, runtime *
 
 // Summary:
 //
-// 分页查询查询资产表元数据。
+// Performs a paged query to retrieve asset table metadata.
+//
+// Online version: v5.4.2.
 //
 // @param request - ListTablesRequest
 //
@@ -16232,7 +16511,7 @@ func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTable
 
 // Summary:
 //
-// 查询租户成员列表
+// Queries the list of tenant members.
 //
 // @param tmpReq - ListTenantMembersRequest
 //
@@ -16288,7 +16567,7 @@ func (client *Client) ListTenantMembersWithOptions(tmpReq *ListTenantMembersRequ
 
 // Summary:
 //
-// 查询租户成员列表
+// Queries the list of tenant members.
 //
 // @param request - ListTenantMembersRequest
 //
@@ -16306,7 +16585,7 @@ func (client *Client) ListTenantMembers(request *ListTenantMembersRequest) (_res
 
 // Summary:
 //
-// 用户组成员列表分页查询.
+// Performs a paging query of user group members.
 //
 // @param tmpReq - ListUserGroupMembersRequest
 //
@@ -16362,7 +16641,7 @@ func (client *Client) ListUserGroupMembersWithOptions(tmpReq *ListUserGroupMembe
 
 // Summary:
 //
-// 用户组成员列表分页查询.
+// Performs a paging query of user group members.
 //
 // @param request - ListUserGroupMembersRequest
 //
@@ -16380,7 +16659,7 @@ func (client *Client) ListUserGroupMembers(request *ListUserGroupMembersRequest)
 
 // Summary:
 //
-// 用户组列表分页查询.
+// Queries user groups by paging.
 //
 // @param tmpReq - ListUserGroupsRequest
 //
@@ -16436,7 +16715,7 @@ func (client *Client) ListUserGroupsWithOptions(tmpReq *ListUserGroupsRequest, r
 
 // Summary:
 //
-// 用户组列表分页查询.
+// Queries user groups by paging.
 //
 // @param request - ListUserGroupsRequest
 //
@@ -16454,7 +16733,7 @@ func (client *Client) ListUserGroups(request *ListUserGroupsRequest) (_result *L
 
 // Summary:
 //
-// 下线离线计算任务。
+// Offlines a batch task.
 //
 // @param request - OfflineBatchTaskRequest
 //
@@ -16510,7 +16789,7 @@ func (client *Client) OfflineBatchTaskWithOptions(request *OfflineBatchTaskReque
 
 // Summary:
 //
-// 下线离线计算任务。
+// Offlines a batch task.
 //
 // @param request - OfflineBatchTaskRequest
 //
@@ -16528,7 +16807,7 @@ func (client *Client) OfflineBatchTask(request *OfflineBatchTaskRequest) (_resul
 
 // Summary:
 //
-// 下线业务实体、
+// Offline a business entity.
 //
 // @param tmpReq - OfflineBizEntityRequest
 //
@@ -16584,7 +16863,7 @@ func (client *Client) OfflineBizEntityWithOptions(tmpReq *OfflineBizEntityReques
 
 // Summary:
 //
-// 下线业务实体、
+// Offline a business entity.
 //
 // @param request - OfflineBizEntityRequest
 //
@@ -16602,7 +16881,7 @@ func (client *Client) OfflineBizEntity(request *OfflineBizEntityRequest) (_resul
 
 // Summary:
 //
-// 下线集成管道任务。
+// Offlines an integration pipeline node.
 //
 // @param tmpReq - OfflinePipelineRequest
 //
@@ -16666,7 +16945,7 @@ func (client *Client) OfflinePipelineWithOptions(tmpReq *OfflinePipelineRequest,
 
 // Summary:
 //
-// 下线集成管道任务。
+// Offlines an integration pipeline node.
 //
 // @param request - OfflinePipelineRequest
 //
@@ -16684,7 +16963,7 @@ func (client *Client) OfflinePipeline(request *OfflinePipelineRequest) (_result 
 
 // Summary:
 //
-// 异步下线集成管道任务。
+// Asynchronously offlines an integration pipeline node.
 //
 // @param tmpReq - OfflinePipelineByAsyncRequest
 //
@@ -16748,7 +17027,7 @@ func (client *Client) OfflinePipelineByAsyncWithOptions(tmpReq *OfflinePipelineB
 
 // Summary:
 //
-// 异步下线集成管道任务。
+// Asynchronously offlines an integration pipeline node.
 //
 // @param request - OfflinePipelineByAsyncRequest
 //
@@ -16766,7 +17045,9 @@ func (client *Client) OfflinePipelineByAsync(request *OfflinePipelineByAsyncRequ
 
 // Summary:
 //
-// 下线标准。
+// Offlines a standard.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - OfflineStandardRequest
 //
@@ -16822,7 +17103,9 @@ func (client *Client) OfflineStandardWithOptions(tmpReq *OfflineStandardRequest,
 
 // Summary:
 //
-// 下线标准。
+// Offlines a standard.
+//
+// Online version: v5.4.2.
 //
 // @param request - OfflineStandardRequest
 //
@@ -16840,7 +17123,7 @@ func (client *Client) OfflineStandard(request *OfflineStandardRequest) (_result 
 
 // Summary:
 //
-// 上线业务实体。
+// Brings a business entity online.
 //
 // @param tmpReq - OnlineBizEntityRequest
 //
@@ -16896,7 +17179,7 @@ func (client *Client) OnlineBizEntityWithOptions(tmpReq *OnlineBizEntityRequest,
 
 // Summary:
 //
-// 上线业务实体。
+// Brings a business entity online.
 //
 // @param request - OnlineBizEntityRequest
 //
@@ -16914,7 +17197,7 @@ func (client *Client) OnlineBizEntity(request *OnlineBizEntityRequest) (_result 
 
 // Summary:
 //
-// 运维实例。
+// Performs batch O&M operations on instances. Both physical instances and logical table instances are supported.
 //
 // @param tmpReq - OperateInstanceRequest
 //
@@ -16974,7 +17257,7 @@ func (client *Client) OperateInstanceWithOptions(tmpReq *OperateInstanceRequest,
 
 // Summary:
 //
-// 运维实例。
+// Performs batch O&M operations on instances. Both physical instances and logical table instances are supported.
 //
 // @param request - OperateInstanceRequest
 //
@@ -16992,7 +17275,7 @@ func (client *Client) OperateInstance(request *OperateInstanceRequest) (_result 
 
 // Summary:
 //
-// 解析离线计算任务的逻辑表依赖，注意解析结果上游依赖信息中可能包含自依赖节点（上游节点ID和解析代码的任务节点ID相同）需要用户自己进行处理。
+// Parses the logical table dependencies of an offline compute node. The parsing result may contain self-dependent nodes in the upstream dependency information, where the upstream node ID is the same as the node ID of the parsed code. You must handle such cases on your own.
 //
 // @param tmpReq - ParseBatchTaskDependencyRequest
 //
@@ -17048,7 +17331,7 @@ func (client *Client) ParseBatchTaskDependencyWithOptions(tmpReq *ParseBatchTask
 
 // Summary:
 //
-// 解析离线计算任务的逻辑表依赖，注意解析结果上游依赖信息中可能包含自依赖节点（上游节点ID和解析代码的任务节点ID相同）需要用户自己进行处理。
+// Parses the logical table dependencies of an offline compute node. The parsing result may contain self-dependent nodes in the upstream dependency information, where the upstream node ID is the same as the node ID of the parsed code. You must handle such cases on your own.
 //
 // @param request - ParseBatchTaskDependencyRequest
 //
@@ -17066,7 +17349,7 @@ func (client *Client) ParseBatchTaskDependency(request *ParseBatchTaskDependency
 
 // Summary:
 //
-// 暂停物理节点调度。
+// Pauses the scheduling of physical nodes. This stops the scheduling of nodes, and downstream nodes cannot be triggered. Currently, only offline code nodes and integration nodes are supported.
 //
 // @param tmpReq - PausePhysicalNodeRequest
 //
@@ -17126,7 +17409,7 @@ func (client *Client) PausePhysicalNodeWithOptions(tmpReq *PausePhysicalNodeRequ
 
 // Summary:
 //
-// 暂停物理节点调度。
+// Pauses the scheduling of physical nodes. This stops the scheduling of nodes, and downstream nodes cannot be triggered. Currently, only offline code nodes and integration nodes are supported.
 //
 // @param request - PausePhysicalNodeRequest
 //
@@ -17144,7 +17427,7 @@ func (client *Client) PausePhysicalNode(request *PausePhysicalNodeRequest) (_res
 
 // Summary:
 //
-// 发布数据服务API到生产环境。
+// Publishes a data service API to the production environment.
 //
 // @param request - PublishDataServiceApiRequest
 //
@@ -17200,7 +17483,7 @@ func (client *Client) PublishDataServiceApiWithOptions(request *PublishDataServi
 
 // Summary:
 //
-// 发布数据服务API到生产环境。
+// Publishes a data service API to the production environment.
 //
 // @param request - PublishDataServiceApiRequest
 //
@@ -17218,7 +17501,7 @@ func (client *Client) PublishDataServiceApi(request *PublishDataServiceApiReques
 
 // Summary:
 //
-// 批量发布对象
+// Publishes objects in batches.
 //
 // @param tmpReq - PublishObjectListRequest
 //
@@ -17274,7 +17557,7 @@ func (client *Client) PublishObjectListWithOptions(tmpReq *PublishObjectListRequ
 
 // Summary:
 //
-// 批量发布对象
+// Publishes objects in batches.
 //
 // @param request - PublishObjectListRequest
 //
@@ -17292,7 +17575,9 @@ func (client *Client) PublishObjectList(request *PublishObjectListRequest) (_res
 
 // Summary:
 //
-// 发布标准。
+// Publishes a standard.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - PublishStandardRequest
 //
@@ -17348,7 +17633,9 @@ func (client *Client) PublishStandardWithOptions(tmpReq *PublishStandardRequest,
 
 // Summary:
 //
-// 发布标准。
+// Publishes a standard.
+//
+// Release version: v5.4.2.
 //
 // @param request - PublishStandardRequest
 //
@@ -17366,7 +17653,9 @@ func (client *Client) PublishStandard(request *PublishStandardRequest) (_result 
 
 // Summary:
 //
-// 删除数据服务应用的普通成员。
+// Remove regular members from a data service application. Only the application owner can perform this operation.
+//
+// Released version: v6.0.0.
 //
 // @param tmpReq - RemoveDataServiceAppMemberRequest
 //
@@ -17422,7 +17711,9 @@ func (client *Client) RemoveDataServiceAppMemberWithOptions(tmpReq *RemoveDataSe
 
 // Summary:
 //
-// 删除数据服务应用的普通成员。
+// Remove regular members from a data service application. Only the application owner can perform this operation.
+//
+// Released version: v6.0.0.
 //
 // @param request - RemoveDataServiceAppMemberRequest
 //
@@ -17440,7 +17731,7 @@ func (client *Client) RemoveDataServiceAppMember(request *RemoveDataServiceAppMe
 
 // Summary:
 //
-// 删除项目成员。
+// Deletes a project member.
 //
 // @param tmpReq - RemoveProjectMemberRequest
 //
@@ -17500,7 +17791,7 @@ func (client *Client) RemoveProjectMemberWithOptions(tmpReq *RemoveProjectMember
 
 // Summary:
 //
-// 删除项目成员。
+// Deletes a project member.
 //
 // @param request - RemoveProjectMemberRequest
 //
@@ -17518,7 +17809,9 @@ func (client *Client) RemoveProjectMember(request *RemoveProjectMemberRequest) (
 
 // Summary:
 //
-// 批量删除质量规则和调度的绑定关系。
+// Deletes the bindings between quality rules and schedules in batches.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - RemoveQualityRuleSchedulesRequest
 //
@@ -17574,7 +17867,9 @@ func (client *Client) RemoveQualityRuleSchedulesWithOptions(tmpReq *RemoveQualit
 
 // Summary:
 //
-// 批量删除质量规则和调度的绑定关系。
+// Deletes the bindings between quality rules and schedules in batches.
+//
+// Release version: v5.4.2.
 //
 // @param request - RemoveQualityRuleSchedulesRequest
 //
@@ -17592,7 +17887,7 @@ func (client *Client) RemoveQualityRuleSchedules(request *RemoveQualityRuleSched
 
 // Summary:
 //
-// 删除租户成员
+// Removes a tenant member. Only superusers and system administrators can call this API operation.
 //
 // @param tmpReq - RemoveTenantMemberRequest
 //
@@ -17648,7 +17943,7 @@ func (client *Client) RemoveTenantMemberWithOptions(tmpReq *RemoveTenantMemberRe
 
 // Summary:
 //
-// 删除租户成员
+// Removes a tenant member. Only superusers and system administrators can call this API operation.
 //
 // @param request - RemoveTenantMemberRequest
 //
@@ -17666,7 +17961,7 @@ func (client *Client) RemoveTenantMember(request *RemoveTenantMemberRequest) (_r
 
 // Summary:
 //
-// 移除用户组成员.
+// Removes members from a user group.
 //
 // @param tmpReq - RemoveUserGroupMemberRequest
 //
@@ -17722,7 +18017,7 @@ func (client *Client) RemoveUserGroupMemberWithOptions(tmpReq *RemoveUserGroupMe
 
 // Summary:
 //
-// 移除用户组成员.
+// Removes members from a user group.
 //
 // @param request - RemoveUserGroupMemberRequest
 //
@@ -17740,7 +18035,7 @@ func (client *Client) RemoveUserGroupMember(request *RemoveUserGroupMemberReques
 
 // Summary:
 //
-// 更新项目白名单。
+// Updates the whitelist of a project.
 //
 // @param tmpReq - ReplaceProjectWhiteListsRequest
 //
@@ -17800,7 +18095,7 @@ func (client *Client) ReplaceProjectWhiteListsWithOptions(tmpReq *ReplaceProject
 
 // Summary:
 //
-// 更新项目白名单。
+// Updates the whitelist of a project.
 //
 // @param request - ReplaceProjectWhiteListsRequest
 //
@@ -17818,7 +18113,9 @@ func (client *Client) ReplaceProjectWhiteLists(request *ReplaceProjectWhiteLists
 
 // Summary:
 //
-// 重置数据服务应用密钥。
+// Reset the Data Service application key. Only the application owner can perform this operation.
+//
+// Release version: v6.0.0.
 //
 // @param tmpReq - ResetDataServiceAppSecretRequest
 //
@@ -17874,7 +18171,9 @@ func (client *Client) ResetDataServiceAppSecretWithOptions(tmpReq *ResetDataServ
 
 // Summary:
 //
-// 重置数据服务应用密钥。
+// Reset the Data Service application key. Only the application owner can perform this operation.
+//
+// Release version: v6.0.0.
 //
 // @param request - ResetDataServiceAppSecretRequest
 //
@@ -17892,7 +18191,7 @@ func (client *Client) ResetDataServiceAppSecret(request *ResetDataServiceAppSecr
 
 // Summary:
 //
-// 恢复物理节点调度。
+// Resume physical node scheduling.
 //
 // @param tmpReq - ResumePhysicalNodeRequest
 //
@@ -17952,7 +18251,7 @@ func (client *Client) ResumePhysicalNodeWithOptions(tmpReq *ResumePhysicalNodeRe
 
 // Summary:
 //
-// 恢复物理节点调度。
+// Resume physical node scheduling.
 //
 // @param request - ResumePhysicalNodeRequest
 //
@@ -17970,7 +18269,7 @@ func (client *Client) ResumePhysicalNode(request *ResumePhysicalNodeRequest) (_r
 
 // Summary:
 //
-// 重新转交运行失败的转交任务
+// Retransfers a failed transfer task.
 //
 // @param tmpReq - RetryTransferOwnershipRequest
 //
@@ -18026,7 +18325,7 @@ func (client *Client) RetryTransferOwnershipWithOptions(tmpReq *RetryTransferOwn
 
 // Summary:
 //
-// 重新转交运行失败的转交任务
+// Retransfers a failed transfer task.
 //
 // @param request - RetryTransferOwnershipRequest
 //
@@ -18044,7 +18343,7 @@ func (client *Client) RetryTransferOwnership(request *RetryTransferOwnershipRequ
 
 // Summary:
 //
-// 回收API授权。
+// Revokes API authorization.
 //
 // @param tmpReq - RevokeDataServiceApiRequest
 //
@@ -18104,7 +18403,7 @@ func (client *Client) RevokeDataServiceApiWithOptions(tmpReq *RevokeDataServiceA
 
 // Summary:
 //
-// 回收API授权。
+// Revokes API authorization.
 //
 // @param request - RevokeDataServiceApiRequest
 //
@@ -18122,7 +18421,7 @@ func (client *Client) RevokeDataServiceApi(request *RevokeDataServiceApiRequest)
 
 // Summary:
 //
-// 回收用户资源授权
+// Revokes resource authorization from a user.
 //
 // @param tmpReq - RevokeResourcePermissionRequest
 //
@@ -18178,7 +18477,7 @@ func (client *Client) RevokeResourcePermissionWithOptions(tmpReq *RevokeResource
 
 // Summary:
 //
-// 回收用户资源授权
+// Revokes resource authorization from a user.
 //
 // @param request - RevokeResourcePermissionRequest
 //
@@ -18196,7 +18495,7 @@ func (client *Client) RevokeResourcePermission(request *RevokeResourcePermission
 
 // Summary:
 //
-// 终止即席查询任务。
+// Stops an ad hoc query task.
 //
 // @param request - StopAdHocTaskRequest
 //
@@ -18248,7 +18547,7 @@ func (client *Client) StopAdHocTaskWithOptions(request *StopAdHocTaskRequest, ru
 
 // Summary:
 //
-// 终止即席查询任务。
+// Stops an ad hoc query task.
 //
 // @param request - StopAdHocTaskRequest
 //
@@ -18266,7 +18565,7 @@ func (client *Client) StopAdHocTask(request *StopAdHocTaskRequest) (_result *Sto
 
 // Summary:
 //
-// 提交离线计算任务。
+// Submits a batch task.
 //
 // @param tmpReq - SubmitBatchTaskRequest
 //
@@ -18322,7 +18621,7 @@ func (client *Client) SubmitBatchTaskWithOptions(tmpReq *SubmitBatchTaskRequest,
 
 // Summary:
 //
-// 提交离线计算任务。
+// Submits a batch task.
 //
 // @param request - SubmitBatchTaskRequest
 //
@@ -18340,7 +18639,9 @@ func (client *Client) SubmitBatchTask(request *SubmitBatchTaskRequest) (_result 
 
 // Summary:
 //
-// 批量提交规则任务,支持试跑。
+// Batch submit rule tasks with support for test runs.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - SubmitQualityRuleTasksRequest
 //
@@ -18396,7 +18697,9 @@ func (client *Client) SubmitQualityRuleTasksWithOptions(tmpReq *SubmitQualityRul
 
 // Summary:
 //
-// 批量提交规则任务,支持试跑。
+// Batch submit rule tasks with support for test runs.
+//
+// Release version: v5.4.2.
 //
 // @param request - SubmitQualityRuleTasksRequest
 //
@@ -18414,7 +18717,9 @@ func (client *Client) SubmitQualityRuleTasks(request *SubmitQualityRuleTasksRequ
 
 // Summary:
 //
-// 批量提交监控对象校验任务。
+// Submits quality watchtask check tasks in batches.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - SubmitQualityWatchTasksRequest
 //
@@ -18470,7 +18775,9 @@ func (client *Client) SubmitQualityWatchTasksWithOptions(tmpReq *SubmitQualityWa
 
 // Summary:
 //
-// 批量提交监控对象校验任务。
+// Submits quality watchtask check tasks in batches.
+//
+// Online version: v5.4.2.
 //
 // @param request - SubmitQualityWatchTasksRequest
 //
@@ -18488,7 +18795,11 @@ func (client *Client) SubmitQualityWatchTasks(request *SubmitQualityWatchTasksRe
 
 // Summary:
 //
-// 同步部门信息。
+// Synchronizes department information.
+//
+// Description:
+//
+// Queries the details of a published API operation by AppKey.
 //
 // @param tmpReq - SyncDepartmentRequest
 //
@@ -18544,7 +18855,11 @@ func (client *Client) SyncDepartmentWithOptions(tmpReq *SyncDepartmentRequest, r
 
 // Summary:
 //
-// 同步部门信息。
+// Synchronizes department information.
+//
+// Description:
+//
+// Queries the details of a published API operation by AppKey.
 //
 // @param request - SyncDepartmentRequest
 //
@@ -18562,7 +18877,7 @@ func (client *Client) SyncDepartment(request *SyncDepartmentRequest) (_result *S
 
 // Summary:
 //
-// 同步部门成员信息
+// Synchronizes department member information.
 //
 // @param tmpReq - SyncDepartmentUserRequest
 //
@@ -18618,7 +18933,7 @@ func (client *Client) SyncDepartmentUserWithOptions(tmpReq *SyncDepartmentUserRe
 
 // Summary:
 //
-// 同步部门成员信息
+// Synchronizes department member information.
 //
 // @param request - SyncDepartmentUserRequest
 //
@@ -18636,7 +18951,7 @@ func (client *Client) SyncDepartmentUser(request *SyncDepartmentUserRequest) (_r
 
 // Summary:
 //
-// 一键转交负责人
+// Transfers ownership to a new owner in one click.
 //
 // @param tmpReq - TransferOwnershipForAllObjectRequest
 //
@@ -18692,7 +19007,7 @@ func (client *Client) TransferOwnershipForAllObjectWithOptions(tmpReq *TransferO
 
 // Summary:
 //
-// 一键转交负责人
+// Transfers ownership to a new owner in one click.
 //
 // @param request - TransferOwnershipForAllObjectRequest
 //
@@ -18710,7 +19025,7 @@ func (client *Client) TransferOwnershipForAllObject(request *TransferOwnershipFo
 
 // Summary:
 //
-// 编辑即席查询文件。
+// Modifies an ad hoc query file.
 //
 // @param tmpReq - UpdateAdHocFileRequest
 //
@@ -18766,7 +19081,7 @@ func (client *Client) UpdateAdHocFileWithOptions(tmpReq *UpdateAdHocFileRequest,
 
 // Summary:
 //
-// 编辑即席查询文件。
+// Modifies an ad hoc query file.
 //
 // @param request - UpdateAdHocFileRequest
 //
@@ -18784,7 +19099,7 @@ func (client *Client) UpdateAdHocFile(request *UpdateAdHocFileRequest) (_result 
 
 // Summary:
 //
-// 编辑离线计算任务。
+// Updates an offline compute node.
 //
 // @param tmpReq - UpdateBatchTaskRequest
 //
@@ -18840,7 +19155,7 @@ func (client *Client) UpdateBatchTaskWithOptions(tmpReq *UpdateBatchTaskRequest,
 
 // Summary:
 //
-// 编辑离线计算任务。
+// Updates an offline compute node.
 //
 // @param request - UpdateBatchTaskRequest
 //
@@ -18858,7 +19173,7 @@ func (client *Client) UpdateBatchTask(request *UpdateBatchTaskRequest) (_result 
 
 // Summary:
 //
-// 编辑离线计算任务自定义血缘。
+// Edits the custom data lineage of a batch task.
 //
 // @param tmpReq - UpdateBatchTaskUdfLineagesRequest
 //
@@ -18914,7 +19229,7 @@ func (client *Client) UpdateBatchTaskUdfLineagesWithOptions(tmpReq *UpdateBatchT
 
 // Summary:
 //
-// 编辑离线计算任务自定义血缘。
+// Edits the custom data lineage of a batch task.
 //
 // @param request - UpdateBatchTaskUdfLineagesRequest
 //
@@ -18932,7 +19247,7 @@ func (client *Client) UpdateBatchTaskUdfLineages(request *UpdateBatchTaskUdfLine
 
 // Summary:
 //
-// 更新业务实体、
+// Updates a business entity.
 //
 // @param tmpReq - UpdateBizEntityRequest
 //
@@ -18988,7 +19303,7 @@ func (client *Client) UpdateBizEntityWithOptions(tmpReq *UpdateBizEntityRequest,
 
 // Summary:
 //
-// 更新业务实体、
+// Updates a business entity.
 //
 // @param request - UpdateBizEntityRequest
 //
@@ -19006,7 +19321,9 @@ func (client *Client) UpdateBizEntity(request *UpdateBizEntityRequest) (_result 
 
 // Summary:
 //
-// 更新业务指标
+// Update a business metric.
+//
+// Release version: v5.5.0.
 //
 // @param tmpReq - UpdateBizMetricRequest
 //
@@ -19062,7 +19379,9 @@ func (client *Client) UpdateBizMetricWithOptions(tmpReq *UpdateBizMetricRequest,
 
 // Summary:
 //
-// 更新业务指标
+// Update a business metric.
+//
+// Release version: v5.5.0.
 //
 // @param request - UpdateBizMetricRequest
 //
@@ -19080,7 +19399,7 @@ func (client *Client) UpdateBizMetric(request *UpdateBizMetricRequest) (_result 
 
 // Summary:
 //
-// 更新数据板块。
+// Updates a data domain.
 //
 // @param tmpReq - UpdateBizUnitRequest
 //
@@ -19136,7 +19455,7 @@ func (client *Client) UpdateBizUnitWithOptions(tmpReq *UpdateBizUnitRequest, run
 
 // Summary:
 //
-// 更新数据板块。
+// Updates a data domain.
 //
 // @param request - UpdateBizUnitRequest
 //
@@ -19154,7 +19473,7 @@ func (client *Client) UpdateBizUnit(request *UpdateBizUnitRequest) (_result *Upd
 
 // Summary:
 //
-// 修改计算源。
+// Edits a compute source. Business unit administrators and project administrators have permissions to perform this operation.
 //
 // @param tmpReq - UpdateComputeSourceRequest
 //
@@ -19210,7 +19529,7 @@ func (client *Client) UpdateComputeSourceWithOptions(tmpReq *UpdateComputeSource
 
 // Summary:
 //
-// 修改计算源。
+// Edits a compute source. Business unit administrators and project administrators have permissions to perform this operation.
 //
 // @param request - UpdateComputeSourceRequest
 //
@@ -19228,7 +19547,7 @@ func (client *Client) UpdateComputeSource(request *UpdateComputeSourceRequest) (
 
 // Summary:
 //
-// 更新主题域。
+// Updates a data domain.
 //
 // @param tmpReq - UpdateDataDomainRequest
 //
@@ -19284,7 +19603,7 @@ func (client *Client) UpdateDataDomainWithOptions(tmpReq *UpdateDataDomainReques
 
 // Summary:
 //
-// 更新主题域。
+// Updates a data domain.
 //
 // @param request - UpdateDataDomainRequest
 //
@@ -19302,7 +19621,9 @@ func (client *Client) UpdateDataDomain(request *UpdateDataDomainRequest) (_resul
 
 // Summary:
 //
-// 更新数据服务应用。
+// Updates a data service application. Only super administrators, system administrators, and application owners can perform this operation.
+//
+// Release version: v6.0.0.
 //
 // @param tmpReq - UpdateDataServiceAppRequest
 //
@@ -19358,7 +19679,9 @@ func (client *Client) UpdateDataServiceAppWithOptions(tmpReq *UpdateDataServiceA
 
 // Summary:
 //
-// 更新数据服务应用。
+// Updates a data service application. Only super administrators, system administrators, and application owners can perform this operation.
+//
+// Release version: v6.0.0.
 //
 // @param request - UpdateDataServiceAppRequest
 //
@@ -19376,7 +19699,9 @@ func (client *Client) UpdateDataServiceApp(request *UpdateDataServiceAppRequest)
 
 // Summary:
 //
-// 更新数据服务应用分组。
+// Updates a data service application group. Only superusers and system administrators can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param tmpReq - UpdateDataServiceAppGroupRequest
 //
@@ -19432,7 +19757,9 @@ func (client *Client) UpdateDataServiceAppGroupWithOptions(tmpReq *UpdateDataSer
 
 // Summary:
 //
-// 更新数据服务应用分组。
+// Updates a data service application group. Only superusers and system administrators can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - UpdateDataServiceAppGroupRequest
 //
@@ -19450,7 +19777,9 @@ func (client *Client) UpdateDataServiceAppGroup(request *UpdateDataServiceAppGro
 
 // Summary:
 //
-// 更新数据服务应用的普通成员。
+// Updates the regular members of a data service application. Only the application owner can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param tmpReq - UpdateDataServiceAppMemberRequest
 //
@@ -19506,7 +19835,9 @@ func (client *Client) UpdateDataServiceAppMemberWithOptions(tmpReq *UpdateDataSe
 
 // Summary:
 //
-// 更新数据服务应用的普通成员。
+// Updates the regular members of a data service application. Only the application owner can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - UpdateDataServiceAppMemberRequest
 //
@@ -19524,7 +19855,7 @@ func (client *Client) UpdateDataServiceAppMember(request *UpdateDataServiceAppMe
 
 // Summary:
 //
-// 编辑数据源基本信息
+// Edits the basic information of a data source. Tenant administrators, data administrators, business segment administrators, project administrators, and operations administrators have permissions to perform this operation.
 //
 // @param tmpReq - UpdateDataSourceBasicInfoRequest
 //
@@ -19580,7 +19911,7 @@ func (client *Client) UpdateDataSourceBasicInfoWithOptions(tmpReq *UpdateDataSou
 
 // Summary:
 //
-// 编辑数据源基本信息
+// Edits the basic information of a data source. Tenant administrators, data administrators, business segment administrators, project administrators, and operations administrators have permissions to perform this operation.
 //
 // @param request - UpdateDataSourceBasicInfoRequest
 //
@@ -19598,7 +19929,7 @@ func (client *Client) UpdateDataSourceBasicInfo(request *UpdateDataSourceBasicIn
 
 // Summary:
 //
-// 编辑数据源连接配置项
+// Edits the connection configuration items of a data source. Tenant administrators, data administrators, business unit administrators, project administrators, and operations administrators have permissions to perform this operation.
 //
 // @param tmpReq - UpdateDataSourceConfigRequest
 //
@@ -19654,7 +19985,7 @@ func (client *Client) UpdateDataSourceConfigWithOptions(tmpReq *UpdateDataSource
 
 // Summary:
 //
-// 编辑数据源连接配置项
+// Edits the connection configuration items of a data source. Tenant administrators, data administrators, business unit administrators, project administrators, and operations administrators have permissions to perform this operation.
 //
 // @param request - UpdateDataSourceConfigRequest
 //
@@ -19672,7 +20003,7 @@ func (client *Client) UpdateDataSourceConfig(request *UpdateDataSourceConfigRequ
 
 // Summary:
 //
-// 修改菜单树文件所在目录
+// Moves the file position in the menu tree.
 //
 // @param request - UpdateFileDirectoryRequest
 //
@@ -19728,7 +20059,7 @@ func (client *Client) UpdateFileDirectoryWithOptions(request *UpdateFileDirector
 
 // Summary:
 //
-// 修改菜单树文件所在目录
+// Moves the file position in the menu tree.
 //
 // @param request - UpdateFileDirectoryRequest
 //
@@ -19746,7 +20077,7 @@ func (client *Client) UpdateFileDirectory(request *UpdateFileDirectoryRequest) (
 
 // Summary:
 //
-// 修改菜单树文件名称
+// Updates a file name.
 //
 // @param request - UpdateFileNameRequest
 //
@@ -19802,7 +20133,7 @@ func (client *Client) UpdateFileNameWithOptions(request *UpdateFileNameRequest, 
 
 // Summary:
 //
-// 修改菜单树文件名称
+// Updates a file name.
 //
 // @param request - UpdateFileNameRequest
 //
@@ -19820,7 +20151,7 @@ func (client *Client) UpdateFileName(request *UpdateFileNameRequest) (_result *U
 
 // Summary:
 //
-// 更新集成管道任务。
+// Updates an integration pipeline or unstructured workflow node.
 //
 // @param tmpReq - UpdatePipelineRequest
 //
@@ -19884,7 +20215,7 @@ func (client *Client) UpdatePipelineWithOptions(tmpReq *UpdatePipelineRequest, r
 
 // Summary:
 //
-// 更新集成管道任务。
+// Updates an integration pipeline or unstructured workflow node.
 //
 // @param request - UpdatePipelineRequest
 //
@@ -19902,7 +20233,7 @@ func (client *Client) UpdatePipeline(request *UpdatePipelineRequest) (_result *U
 
 // Summary:
 //
-// 异步更新集成管道任务。
+// Asynchronously updates a pipeline or unstructured workflow node.
 //
 // @param tmpReq - UpdatePipelineByAsyncRequest
 //
@@ -19966,7 +20297,7 @@ func (client *Client) UpdatePipelineByAsyncWithOptions(tmpReq *UpdatePipelineByA
 
 // Summary:
 //
-// 异步更新集成管道任务。
+// Asynchronously updates a pipeline or unstructured workflow node.
 //
 // @param request - UpdatePipelineByAsyncRequest
 //
@@ -19984,7 +20315,7 @@ func (client *Client) UpdatePipelineByAsync(request *UpdatePipelineByAsyncReques
 
 // Summary:
 //
-// 增加项目成员。
+// Edits project members.
 //
 // @param tmpReq - UpdateProjectMemberRequest
 //
@@ -20044,7 +20375,7 @@ func (client *Client) UpdateProjectMemberWithOptions(tmpReq *UpdateProjectMember
 
 // Summary:
 //
-// 增加项目成员。
+// Edits project members.
 //
 // @param request - UpdateProjectMemberRequest
 //
@@ -20062,7 +20393,9 @@ func (client *Client) UpdateProjectMember(request *UpdateProjectMemberRequest) (
 
 // Summary:
 //
-// 批量开启或关闭质量规则。
+// Enables or disables quality rules in batches.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateQualityRuleSwitchRequest
 //
@@ -20118,7 +20451,9 @@ func (client *Client) UpdateQualityRuleSwitchWithOptions(tmpReq *UpdateQualityRu
 
 // Summary:
 //
-// 批量开启或关闭质量规则。
+// Enables or disables quality rules in batches.
+//
+// Release version: v5.4.2.
 //
 // @param request - UpdateQualityRuleSwitchRequest
 //
@@ -20136,7 +20471,9 @@ func (client *Client) UpdateQualityRuleSwitch(request *UpdateQualityRuleSwitchRe
 
 // Summary:
 //
-// 批量开启或关闭质量监控对象。
+// Starts or stops quality monitored objects in batches.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateQualityWatchSwitchRequest
 //
@@ -20192,7 +20529,9 @@ func (client *Client) UpdateQualityWatchSwitchWithOptions(tmpReq *UpdateQualityW
 
 // Summary:
 //
-// 批量开启或关闭质量监控对象。
+// Starts or stops quality monitored objects in batches.
+//
+// Release version: v5.4.2.
 //
 // @param request - UpdateQualityWatchSwitchRequest
 //
@@ -20210,7 +20549,7 @@ func (client *Client) UpdateQualityWatchSwitch(request *UpdateQualityWatchSwitch
 
 // Summary:
 //
-// 编辑资源文件。
+// Edits a resource file.
 //
 // @param tmpReq - UpdateResourceRequest
 //
@@ -20266,7 +20605,7 @@ func (client *Client) UpdateResourceWithOptions(tmpReq *UpdateResourceRequest, r
 
 // Summary:
 //
-// 编辑资源文件。
+// Edits a resource file.
 //
 // @param request - UpdateResourceRequest
 //
@@ -20284,7 +20623,7 @@ func (client *Client) UpdateResource(request *UpdateResourceRequest) (_result *U
 
 // Summary:
 //
-// 更新行级权限
+// Updates a row-level permission.
 //
 // @param tmpReq - UpdateRowPermissionRequest
 //
@@ -20340,7 +20679,7 @@ func (client *Client) UpdateRowPermissionWithOptions(tmpReq *UpdateRowPermission
 
 // Summary:
 //
-// 更新行级权限
+// Updates a row-level permission.
 //
 // @param request - UpdateRowPermissionRequest
 //
@@ -20358,7 +20697,9 @@ func (client *Client) UpdateRowPermission(request *UpdateRowPermissionRequest) (
 
 // Summary:
 //
-// 更新数据分类。
+// Updates a data classification.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateSecurityClassifyRequest
 //
@@ -20414,7 +20755,9 @@ func (client *Client) UpdateSecurityClassifyWithOptions(tmpReq *UpdateSecurityCl
 
 // Summary:
 //
-// 更新数据分类。
+// Updates a data classification.
+//
+// Release version: v5.4.2.
 //
 // @param request - UpdateSecurityClassifyRequest
 //
@@ -20432,7 +20775,7 @@ func (client *Client) UpdateSecurityClassify(request *UpdateSecurityClassifyRequ
 
 // Summary:
 //
-// 更新数据分类目录。
+// Updates a data classification folder. Release version: v5.4.2.
 //
 // @param tmpReq - UpdateSecurityClassifyCatalogRequest
 //
@@ -20488,7 +20831,7 @@ func (client *Client) UpdateSecurityClassifyCatalogWithOptions(tmpReq *UpdateSec
 
 // Summary:
 //
-// 更新数据分类目录。
+// Updates a data classification folder. Release version: v5.4.2.
 //
 // @param request - UpdateSecurityClassifyCatalogRequest
 //
@@ -20506,7 +20849,9 @@ func (client *Client) UpdateSecurityClassifyCatalog(request *UpdateSecurityClass
 
 // Summary:
 //
-// 更新安全识别结果的生效状态。
+// Updates the effective status of security identification results.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateSecurityIdentifyResultStatusRequest
 //
@@ -20562,7 +20907,9 @@ func (client *Client) UpdateSecurityIdentifyResultStatusWithOptions(tmpReq *Upda
 
 // Summary:
 //
-// 更新安全识别结果的生效状态。
+// Updates the effective status of security identification results.
+//
+// Release version: v5.4.2.
 //
 // @param request - UpdateSecurityIdentifyResultStatusRequest
 //
@@ -20580,7 +20927,9 @@ func (client *Client) UpdateSecurityIdentifyResultStatus(request *UpdateSecurity
 
 // Summary:
 //
-// 通过分级顺序更新数据分级。
+// Updates data classification.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - UpdateSecurityLevelRequest
 //
@@ -20636,7 +20985,9 @@ func (client *Client) UpdateSecurityLevelWithOptions(tmpReq *UpdateSecurityLevel
 
 // Summary:
 //
-// 通过分级顺序更新数据分级。
+// Updates data classification.
+//
+// Online version: v5.4.2.
 //
 // @param request - UpdateSecurityLevelRequest
 //
@@ -20654,7 +21005,9 @@ func (client *Client) UpdateSecurityLevel(request *UpdateSecurityLevelRequest) (
 
 // Summary:
 //
-// 更新标准。
+// Updates a standard.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardRequest
 //
@@ -20710,7 +21063,9 @@ func (client *Client) UpdateStandardWithOptions(tmpReq *UpdateStandardRequest, r
 
 // Summary:
 //
-// 更新标准。
+// Updates a standard.
+//
+// Release version: v5.4.2.
 //
 // @param request - UpdateStandardRequest
 //
@@ -20728,7 +21083,9 @@ func (client *Client) UpdateStandard(request *UpdateStandardRequest) (_result *U
 
 // Summary:
 //
-// 更新数据标准码表。
+// Updates a data standard lookup table.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardLookupTableRequest
 //
@@ -20784,7 +21141,9 @@ func (client *Client) UpdateStandardLookupTableWithOptions(tmpReq *UpdateStandar
 
 // Summary:
 //
-// 更新数据标准码表。
+// Updates a data standard lookup table.
+//
+// Release version: v5.4.2.
 //
 // @param request - UpdateStandardLookupTableRequest
 //
@@ -20802,7 +21161,9 @@ func (client *Client) UpdateStandardLookupTable(request *UpdateStandardLookupTab
 
 // Summary:
 //
-// 将标准映射关系置为无效映射。
+// Sets the standard mapping relationship to invalid mapping.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardMappingToInvalidRequest
 //
@@ -20858,7 +21219,9 @@ func (client *Client) UpdateStandardMappingToInvalidWithOptions(tmpReq *UpdateSt
 
 // Summary:
 //
-// 将标准映射关系置为无效映射。
+// Sets the standard mapping relationship to invalid mapping.
+//
+// Release version: v5.4.2.
 //
 // @param request - UpdateStandardMappingToInvalidRequest
 //
@@ -20876,7 +21239,9 @@ func (client *Client) UpdateStandardMappingToInvalid(request *UpdateStandardMapp
 
 // Summary:
 //
-// 更新标准集。
+// Update standard set.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardSetRequest
 //
@@ -20932,7 +21297,9 @@ func (client *Client) UpdateStandardSetWithOptions(tmpReq *UpdateStandardSetRequ
 
 // Summary:
 //
-// 更新标准集。
+// Update standard set.
+//
+// Release version: v5.4.2.
 //
 // @param request - UpdateStandardSetRequest
 //
@@ -20950,7 +21317,9 @@ func (client *Client) UpdateStandardSet(request *UpdateStandardSetRequest) (_res
 
 // Summary:
 //
-// 更新数据标准模板。
+// Updates a data standard template.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardTemplateRequest
 //
@@ -21006,7 +21375,9 @@ func (client *Client) UpdateStandardTemplateWithOptions(tmpReq *UpdateStandardTe
 
 // Summary:
 //
-// 更新数据标准模板。
+// Updates a data standard template.
+//
+// Release version: v5.4.2.
 //
 // @param request - UpdateStandardTemplateRequest
 //
@@ -21024,7 +21395,9 @@ func (client *Client) UpdateStandardTemplate(request *UpdateStandardTemplateRequ
 
 // Summary:
 //
-// 更新数据标准词根。
+// Updates a data standard root word.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardWordRootRequest
 //
@@ -21080,7 +21453,9 @@ func (client *Client) UpdateStandardWordRootWithOptions(tmpReq *UpdateStandardWo
 
 // Summary:
 //
-// 更新数据标准词根。
+// Updates a data standard root word.
+//
+// Online version: v5.4.2.
 //
 // @param request - UpdateStandardWordRootRequest
 //
@@ -21098,7 +21473,7 @@ func (client *Client) UpdateStandardWordRoot(request *UpdateStandardWordRootRequ
 
 // Summary:
 //
-// 修改租户计算设置。
+// Modifies the compute settings of a tenant.
 //
 // @param tmpReq - UpdateTenantComputeEngineRequest
 //
@@ -21154,7 +21529,7 @@ func (client *Client) UpdateTenantComputeEngineWithOptions(tmpReq *UpdateTenantC
 
 // Summary:
 //
-// 修改租户计算设置。
+// Modifies the compute settings of a tenant.
 //
 // @param request - UpdateTenantComputeEngineRequest
 //
@@ -21172,7 +21547,7 @@ func (client *Client) UpdateTenantComputeEngine(request *UpdateTenantComputeEngi
 
 // Summary:
 //
-// 编辑租户成员
+// Edits tenant members.
 //
 // @param tmpReq - UpdateTenantMemberRequest
 //
@@ -21228,7 +21603,7 @@ func (client *Client) UpdateTenantMemberWithOptions(tmpReq *UpdateTenantMemberRe
 
 // Summary:
 //
-// 编辑租户成员
+// Edits tenant members.
 //
 // @param request - UpdateTenantMemberRequest
 //
@@ -21246,7 +21621,7 @@ func (client *Client) UpdateTenantMember(request *UpdateTenantMemberRequest) (_r
 
 // Summary:
 //
-// 编辑自定义函数。
+// Edits a user-defined function.
 //
 // @param tmpReq - UpdateUdfRequest
 //
@@ -21302,7 +21677,7 @@ func (client *Client) UpdateUdfWithOptions(tmpReq *UpdateUdfRequest, runtime *da
 
 // Summary:
 //
-// 编辑自定义函数。
+// Edits a user-defined function.
 //
 // @param request - UpdateUdfRequest
 //
@@ -21320,7 +21695,7 @@ func (client *Client) UpdateUdf(request *UpdateUdfRequest) (_result *UpdateUdfRe
 
 // Summary:
 //
-// 编辑用户组.
+// Edits a user group.
 //
 // @param tmpReq - UpdateUserGroupRequest
 //
@@ -21376,7 +21751,7 @@ func (client *Client) UpdateUserGroupWithOptions(tmpReq *UpdateUserGroupRequest,
 
 // Summary:
 //
-// 编辑用户组.
+// Edits a user group.
 //
 // @param request - UpdateUserGroupRequest
 //
@@ -21394,7 +21769,7 @@ func (client *Client) UpdateUserGroup(request *UpdateUserGroupRequest) (_result 
 
 // Summary:
 //
-// 编辑用户组启用开关.
+// Modifies the enabled status of a user group.
 //
 // @param request - UpdateUserGroupSwitchRequest
 //
@@ -21446,7 +21821,7 @@ func (client *Client) UpdateUserGroupSwitchWithOptions(request *UpdateUserGroupS
 
 // Summary:
 //
-// 编辑用户组启用开关.
+// Modifies the enabled status of a user group.
 //
 // @param request - UpdateUserGroupSwitchRequest
 //
@@ -21464,7 +21839,9 @@ func (client *Client) UpdateUserGroupSwitch(request *UpdateUserGroupSwitchReques
 
 // Summary:
 //
-// 新建或者修改质量规则。
+// Create or modify a quality rule.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpsertQualityRuleRequest
 //
@@ -21520,7 +21897,9 @@ func (client *Client) UpsertQualityRuleWithOptions(tmpReq *UpsertQualityRuleRequ
 
 // Summary:
 //
-// 新建或者修改质量规则。
+// Create or modify a quality rule.
+//
+// Release version: v5.4.2.
 //
 // @param request - UpsertQualityRuleRequest
 //
@@ -21538,7 +21917,9 @@ func (client *Client) UpsertQualityRule(request *UpsertQualityRuleRequest) (_res
 
 // Summary:
 //
-// 新建或者修改调度设置。
+// Creates or updates scheduling settings.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpsertQualityScheduleRequest
 //
@@ -21594,7 +21975,9 @@ func (client *Client) UpsertQualityScheduleWithOptions(tmpReq *UpsertQualitySche
 
 // Summary:
 //
-// 新建或者修改调度设置。
+// Creates or updates scheduling settings.
+//
+// Release version: v5.4.2.
 //
 // @param request - UpsertQualityScheduleRequest
 //
@@ -21612,7 +21995,9 @@ func (client *Client) UpsertQualitySchedule(request *UpsertQualityScheduleReques
 
 // Summary:
 //
-// 新建或者修改质量模板。
+// Creates or updates a quality template.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpsertQualityTemplateRequest
 //
@@ -21668,7 +22053,9 @@ func (client *Client) UpsertQualityTemplateWithOptions(tmpReq *UpsertQualityTemp
 
 // Summary:
 //
-// 新建或者修改质量模板。
+// Creates or updates a quality template.
+//
+// Release version: v5.4.2.
 //
 // @param request - UpsertQualityTemplateRequest
 //
@@ -21686,7 +22073,9 @@ func (client *Client) UpsertQualityTemplate(request *UpsertQualityTemplateReques
 
 // Summary:
 //
-// 新建或更改质量监控对象, 支持添加多种类型的质量监控对象，包括：Dataphin表，全域表，数据源，指标，实时元表。
+// Creates or updates a quality monitored object. You can add multiple types of quality monitored objects, including Dataphin tables, global tables, data sources, metrics, and real-time meta tables.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpsertQualityWatchRequest
 //
@@ -21742,7 +22131,9 @@ func (client *Client) UpsertQualityWatchWithOptions(tmpReq *UpsertQualityWatchRe
 
 // Summary:
 //
-// 新建或更改质量监控对象, 支持添加多种类型的质量监控对象，包括：Dataphin表，全域表，数据源，指标，实时元表。
+// Creates or updates a quality monitored object. You can add multiple types of quality monitored objects, including Dataphin tables, global tables, data sources, metrics, and real-time meta tables.
+//
+// Release version: v5.4.2.
 //
 // @param request - UpsertQualityWatchRequest
 //
@@ -21760,7 +22151,9 @@ func (client *Client) UpsertQualityWatch(request *UpsertQualityWatchRequest) (_r
 
 // Summary:
 //
-// 新建或者修改监控对象告警设置。
+// Creates or updates alert settings for a monitored object.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpsertQualityWatchAlertRequest
 //
@@ -21816,7 +22209,9 @@ func (client *Client) UpsertQualityWatchAlertWithOptions(tmpReq *UpsertQualityWa
 
 // Summary:
 //
-// 新建或者修改监控对象告警设置。
+// Creates or updates alert settings for a monitored object.
+//
+// Release version: v5.4.2.
 //
 // @param request - UpsertQualityWatchAlertRequest
 //

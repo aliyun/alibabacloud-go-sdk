@@ -16,8 +16,12 @@ type iCreateDataServiceAppRequest interface {
 }
 
 type CreateDataServiceAppRequest struct {
+	// The command to create a data service application.
+	//
 	// This parameter is required.
 	CreateCommand *CreateDataServiceAppRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,28 +66,50 @@ func (s *CreateDataServiceAppRequest) Validate() error {
 }
 
 type CreateDataServiceAppRequestCreateCommand struct {
+	// The application group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 200000000
 	AppGroupId *int32 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
+	// The application key, which must be globally unique and is used when calling APIs.
+	//
+	// The key must be 8 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// This parameter can be customized only when using Alibaba Cloud API Gateway or the built-in gateway. This parameter is ignored when using a dedicated cloud gateway.
+	//
 	// example:
 	//
 	// 200000001
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 默认应用
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The app secret.
+	//
+	// If this parameter is not specified, the system automatically generates a new AppSecret value.
+	//
+	// The secret must be 8 to 127 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// This parameter can be customized only when using Alibaba Cloud API Gateway or the built-in gateway. This parameter is ignored when using a dedicated cloud gateway.
+	//
 	// example:
 	//
 	// abc123456789
 	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	// The list of owner IDs.
+	//
 	// This parameter is required.
 	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	// Common scenarios.
+	//
 	// This parameter is required.
 	//
 	// example:

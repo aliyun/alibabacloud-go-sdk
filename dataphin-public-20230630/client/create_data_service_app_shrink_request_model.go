@@ -16,8 +16,12 @@ type iCreateDataServiceAppShrinkRequest interface {
 }
 
 type CreateDataServiceAppShrinkRequest struct {
+	// The command to create a data service application.
+	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

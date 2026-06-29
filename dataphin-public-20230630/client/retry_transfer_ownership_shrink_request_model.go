@@ -16,12 +16,15 @@ type iRetryTransferOwnershipShrinkRequest interface {
 }
 
 type RetryTransferOwnershipShrinkRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
-	OpTenantId                    *int64  `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The transfer information.
 	PrivilegeTransferRecordShrink *string `json:"PrivilegeTransferRecord,omitempty" xml:"PrivilegeTransferRecord,omitempty"`
 }
 

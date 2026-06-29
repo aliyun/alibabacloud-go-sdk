@@ -16,12 +16,16 @@ type iCreateStreamBatchJobMappingShrinkRequest interface {
 }
 
 type CreateStreamBatchJobMappingShrinkRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The stream-batch integrated node information.
+	//
 	// This parameter is required.
 	StreamBatchJobMappingCreateCommandShrink *string `json:"StreamBatchJobMappingCreateCommand,omitempty" xml:"StreamBatchJobMappingCreateCommand,omitempty"`
 }

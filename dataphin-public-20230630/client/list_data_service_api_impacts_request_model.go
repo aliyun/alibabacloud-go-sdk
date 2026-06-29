@@ -18,14 +18,20 @@ type iListDataServiceApiImpactsRequest interface {
 }
 
 type ListDataServiceApiImpactsRequest struct {
+	// The query conditions.
+	//
 	// This parameter is required.
 	ListQuery *ListDataServiceApiImpactsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the data service project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -79,38 +85,54 @@ func (s *ListDataServiceApiImpactsRequest) Validate() error {
 }
 
 type ListDataServiceApiImpactsRequestListQuery struct {
+	// The ID of the called API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1021
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The end time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-06-30 20:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The column used for sorting. Valid values: CALL_COUNT: the number of calls. ERROR_COUNT: the number of errors. ERROR_RATE: the error rate. Default value: CALL_COUNT.
+	//
 	// example:
 	//
 	// CALL_COUNT
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
+	// The sort order. Valid values: 1: ascending order. 2: descending order. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	OrderType *int32 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of records per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// This parameter is required.
 	//
 	// example:

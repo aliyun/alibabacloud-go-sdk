@@ -16,8 +16,12 @@ type iCreateDirectoryRequest interface {
 }
 
 type CreateDirectoryRequest struct {
+	// The create request.
+	//
 	// This parameter is required.
 	CreateCommand *CreateDirectoryRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,24 +66,54 @@ func (s *CreateDirectoryRequest) Validate() error {
 }
 
 type CreateDirectoryRequestCreateCommand struct {
+	// The menu tree category. Valid values:
+	//
+	// - tempCode: custom query
+	//
+	// - codeManage: code node
+	//
+	// - offlinePipeline: offline pipeline
+	//
+	// - offlinePipelineCustomPlugin: pipeline custom component
+	//
+	// - dataX: synchronization task
+	//
+	// - streamMeta: real-time meta table
+	//
+	// - streamCustomDataSource: real-time custom source
+	//
+	// - streamTemplate: real-time compute template
+	//
+	// - resourceManage: resource management
+	//
+	// - udfResource: offline function
+	//
+	// - streamFunction: real-time function.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// tempCode
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The parent directory of the new file directory.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// The name of the new file directory.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_xx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

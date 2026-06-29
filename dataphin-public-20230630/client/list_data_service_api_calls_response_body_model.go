@@ -24,18 +24,25 @@ type iListDataServiceApiCallsResponseBody interface {
 }
 
 type ListDataServiceApiCallsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// internal error
-	Message    *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paginated query result.
 	PageResult *ListDataServiceApiCallsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type ListDataServiceApiCallsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDataServiceApiCallsResponseBody) String() string {
@@ -118,7 +126,10 @@ func (s *ListDataServiceApiCallsResponseBody) Validate() error {
 }
 
 type ListDataServiceApiCallsResponseBodyPageResult struct {
+	// The list of API call logs.
 	CallLogList []*ListDataServiceApiCallsResponseBodyPageResultCallLogList `json:"CallLogList,omitempty" xml:"CallLogList,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 68
@@ -165,117 +176,174 @@ func (s *ListDataServiceApiCallsResponseBodyPageResult) Validate() error {
 }
 
 type ListDataServiceApiCallsResponseBodyPageResultCallLogList struct {
+	// The ID of the API.
+	//
 	// example:
 	//
 	// 102112
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The name of the API.
+	//
 	// example:
 	//
 	// test
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	// Deprecated
 	//
+	// The application key.
+	//
+	// 	Notice: This parameter is deprecated. Use AppKeyStr instead.
+	//
 	// example:
 	//
-	// 201211
+	// 12345
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The application key.
+	//
 	// example:
 	//
 	// abc12345
 	AppKeyStr *string `json:"AppKeyStr,omitempty" xml:"AppKeyStr,omitempty"`
+	// The name of the application.
+	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The business status code.
+	//
 	// example:
 	//
 	// OK
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The description of the business status code.
+	//
 	// example:
 	//
 	// OK
 	BizCodeDescription *string `json:"BizCodeDescription,omitempty" xml:"BizCodeDescription,omitempty"`
+	// The IP address of the request.
+	//
 	// example:
 	//
 	// 192.168.1.1
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The duration of the request, in milliseconds.
+	//
 	// example:
 	//
 	// 2000
 	CostTime *int32 `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	// The end time of the request. Format: yyyy-MM-dd HH:mm:ss.SSS.
+	//
 	// example:
 	//
 	// 2024-11-01 01:01:03.000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The environment. Valid values: 0 (dev) and 1 (prod).
+	//
 	// example:
 	//
 	// 1
 	Env *int32 `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The execution duration.
+	//
 	// example:
 	//
 	// 1000
 	ExecuteCostTime *int32 `json:"ExecuteCostTime,omitempty" xml:"ExecuteCostTime,omitempty"`
+	// The execution mode. Valid values: 1 (synchronous) and 2 (asynchronous).
+	//
 	// example:
 	//
 	// 1
 	ExecuteMode *int32 `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The description of the status code.
+	//
 	// example:
 	//
 	// OK
 	HttpStatusDescription *string `json:"HttpStatusDescription,omitempty" xml:"HttpStatusDescription,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// 102356
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 102356
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the project.
+	//
 	// example:
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1234567890-232sds-3e232-ae2e232
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request parameters.
+	//
 	// example:
 	//
 	// {"name":"test"}
 	RequestParameter *string `json:"RequestParameter,omitempty" xml:"RequestParameter,omitempty"`
+	// The size of the request.
+	//
 	// example:
 	//
 	// 1024
 	RequestSize *int32 `json:"RequestSize,omitempty" xml:"RequestSize,omitempty"`
+	// The response parameters.
+	//
 	// example:
 	//
 	// {"code":"200","message":"success"}
 	ResponseParameter *string `json:"ResponseParameter,omitempty" xml:"ResponseParameter,omitempty"`
+	// The size of the response.
+	//
 	// example:
 	//
 	// 1024
 	ResponseSize *int32 `json:"ResponseSize,omitempty" xml:"ResponseSize,omitempty"`
+	// The number of returned data records.
+	//
 	// example:
 	//
 	// 1
 	ResultCount *int32 `json:"ResultCount,omitempty" xml:"ResultCount,omitempty"`
+	// The SQL statement.
+	//
 	// example:
 	//
 	// select col1 from t_test1 limit 100;
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	// The start time of the request. Format: yyyy-MM-dd HH:mm:ss.SSS.
+	//
 	// example:
 	//
 	// 2024-11-01 01:01:01.000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The call status of the job.
+	//
 	// example:
 	//
 	// 1
-	Status     *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	Successful *bool  `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	Successful *bool `json:"Successful,omitempty" xml:"Successful,omitempty"`
 }
 
 func (s ListDataServiceApiCallsResponseBodyPageResultCallLogList) String() string {

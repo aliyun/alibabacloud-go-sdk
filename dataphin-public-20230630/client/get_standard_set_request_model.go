@@ -18,13 +18,18 @@ type iGetStandardSetRequest interface {
 }
 
 type GetStandardSetRequest struct {
+	// The standard set ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
-	Id       *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	Nullable *bool  `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Specifies whether to allow a null value to be returned when the standard set does not exist. If set to false, an exception is thrown. Default value: true.
+	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

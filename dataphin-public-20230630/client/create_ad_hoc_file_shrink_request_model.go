@@ -16,8 +16,12 @@ type iCreateAdHocFileShrinkRequest interface {
 }
 
 type CreateAdHocFileShrinkRequest struct {
+	// The request for creating an ad hoc query file.
+	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,12 +16,16 @@ type iUpdateStandardLookupTableRequest interface {
 }
 
 type UpdateStandardLookupTableRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update command.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateStandardLookupTableRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,30 +66,42 @@ func (s *UpdateStandardLookupTableRequest) Validate() error {
 }
 
 type UpdateStandardLookupTableRequestUpdateCommand struct {
+	// The lookup table code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CITY
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The lookup table description.
+	//
 	// example:
 	//
 	// test
-	Description        *string                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The directory to which the lookup table belongs.
 	DirectoryReference *UpdateStandardLookupTableRequestUpdateCommandDirectoryReference `json:"DirectoryReference,omitempty" xml:"DirectoryReference,omitempty" type:"Struct"`
+	// The lookup table ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
-	Id                   *int64                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The list of lookup table values.
 	LookupTableValueList []*UpdateStandardLookupTableRequestUpdateCommandLookupTableValueList `json:"LookupTableValueList,omitempty" xml:"LookupTableValueList,omitempty" type:"Repeated"`
+	// The lookup table name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 城市码表
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the lookup table owner. Default value: the user ID of the caller.
+	//
 	// example:
 	//
 	// 30012021
@@ -182,6 +198,8 @@ func (s *UpdateStandardLookupTableRequestUpdateCommand) Validate() error {
 }
 
 type UpdateStandardLookupTableRequestUpdateCommandDirectoryReference struct {
+	// The directory to which the lookup table belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -212,20 +230,28 @@ func (s *UpdateStandardLookupTableRequestUpdateCommandDirectoryReference) Valida
 }
 
 type UpdateStandardLookupTableRequestUpdateCommandLookupTableValueList struct {
+	// The code description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The English name of the code.
+	//
 	// example:
 	//
 	// HZ
 	EnglishName *string `json:"EnglishName,omitempty" xml:"EnglishName,omitempty"`
+	// The code name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Hangzhou
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The code value.
+	//
 	// This parameter is required.
 	//
 	// example:

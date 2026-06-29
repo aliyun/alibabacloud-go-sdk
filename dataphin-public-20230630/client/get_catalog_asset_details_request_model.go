@@ -16,8 +16,12 @@ type iGetCatalogAssetDetailsRequest interface {
 }
 
 type GetCatalogAssetDetailsRequest struct {
+	// The paging query for the listing asset catalog list.
+	//
 	// This parameter is required.
 	GetCatalogAssetDetailsQuery *GetCatalogAssetDetailsRequestGetCatalogAssetDetailsQuery `json:"GetCatalogAssetDetailsQuery,omitempty" xml:"GetCatalogAssetDetailsQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,14 +66,26 @@ func (s *GetCatalogAssetDetailsRequest) Validate() error {
 }
 
 type GetCatalogAssetDetailsRequestGetCatalogAssetDetailsQuery struct {
+	// The asset GUID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dp_ds_table.300023201.7311626611751680256.load_test.abc
-	Guid                      *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	IncludeColumns            *bool   `json:"IncludeColumns,omitempty" xml:"IncludeColumns,omitempty"`
-	IncludeDetailedAttributes *bool   `json:"IncludeDetailedAttributes,omitempty" xml:"IncludeDetailedAttributes,omitempty"`
+	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
+	// Specifies whether to include the field list. Default value: false. Valid values:
+	//
+	// - false: Not included.
+	//
+	// - true: Included.
+	IncludeColumns *bool `json:"IncludeColumns,omitempty" xml:"IncludeColumns,omitempty"`
+	// Specifies whether to include detailed data. Default value: false. Valid values:
+	//
+	// - false: Not included.
+	//
+	// - true: Included.
+	IncludeDetailedAttributes *bool `json:"IncludeDetailedAttributes,omitempty" xml:"IncludeDetailedAttributes,omitempty"`
 }
 
 func (s GetCatalogAssetDetailsRequestGetCatalogAssetDetailsQuery) String() string {

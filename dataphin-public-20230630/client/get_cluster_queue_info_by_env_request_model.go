@@ -20,24 +20,32 @@ type iGetClusterQueueInfoByEnvRequest interface {
 }
 
 type GetClusterQueueInfoByEnvRequest struct {
+	// The environment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7081229106458752
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The stream-batch mode.
+	//
 	// This parameter is required.
 	//
 	// example:

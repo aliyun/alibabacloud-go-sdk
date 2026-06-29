@@ -18,13 +18,18 @@ type iListDataServiceAuthorizedAppsShrinkRequest interface {
 }
 
 type ListDataServiceAuthorizedAppsShrinkRequest struct {
+	// The query conditions.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the data service project.
+	//
 	// This parameter is required.
 	//
 	// example:

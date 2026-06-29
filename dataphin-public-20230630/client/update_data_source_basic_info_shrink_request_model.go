@@ -16,12 +16,16 @@ type iUpdateDataSourceBasicInfoShrinkRequest interface {
 }
 
 type UpdateDataSourceBasicInfoShrinkRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The basic information to edit for the data source.
+	//
 	// This parameter is required.
 	UpdateCommandShrink *string `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty"`
 }

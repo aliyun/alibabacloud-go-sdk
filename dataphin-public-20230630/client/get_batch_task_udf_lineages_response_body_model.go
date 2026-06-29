@@ -24,24 +24,34 @@ type iGetBatchTaskUdfLineagesResponseBody interface {
 }
 
 type GetBatchTaskUdfLineagesResponseBody struct {
+	// The error code. The value OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *GetBatchTaskUdfLineagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetBatchTaskUdfLineagesResponseBody) String() string {
@@ -116,6 +126,7 @@ func (s *GetBatchTaskUdfLineagesResponseBody) Validate() error {
 }
 
 type GetBatchTaskUdfLineagesResponseBodyData struct {
+	// The list of lineage groups.
 	LineageGroupList []*GetBatchTaskUdfLineagesResponseBodyDataLineageGroupList `json:"LineageGroupList,omitempty" xml:"LineageGroupList,omitempty" type:"Repeated"`
 }
 
@@ -150,7 +161,9 @@ func (s *GetBatchTaskUdfLineagesResponseBodyData) Validate() error {
 }
 
 type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupList struct {
-	InputLineageList  []*GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageList  `json:"InputLineageList,omitempty" xml:"InputLineageList,omitempty" type:"Repeated"`
+	// The collection of input lineage tables.
+	InputLineageList []*GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageList `json:"InputLineageList,omitempty" xml:"InputLineageList,omitempty" type:"Repeated"`
+	// The collection of output lineage tables.
 	OutputLineageList []*GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageList `json:"OutputLineageList,omitempty" xml:"OutputLineageList,omitempty" type:"Repeated"`
 }
 
@@ -203,52 +216,78 @@ func (s *GetBatchTaskUdfLineagesResponseBodyDataLineageGroupList) Validate() err
 }
 
 type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageList struct {
+	// The business unit ID.
+	//
 	// example:
 	//
 	// 103111231
 	BizUnitId *string `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The business unit name.
+	//
 	// example:
 	//
 	// xx测试
-	BizUnitName *string                                                                              `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
-	ColumnList  []*GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageListColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
+	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
+	// The list of lineage columns.
+	ColumnList []*GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageListColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
+	// The description.
+	//
 	// example:
 	//
 	// test xx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the table.
+	//
 	// example:
 	//
 	// t_input
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The environment. Valid values: prod and dev.
+	//
 	// example:
 	//
 	// dev
-	Env       *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	FullTable *bool   `json:"FullTable,omitempty" xml:"FullTable,omitempty"`
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Indicates whether the full table is selected.
+	FullTable *bool `json:"FullTable,omitempty" xml:"FullTable,omitempty"`
+	// The globally unique ID.
+	//
 	// example:
 	//
 	// Guid_101121
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// t_input
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner of the table.
+	//
 	// example:
 	//
 	// 张三
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The owner of the table.
+	//
 	// example:
 	//
 	// 20112101
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The project to which the table belongs.
+	//
 	// example:
 	//
 	// 131211211
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project to which the table belongs.
+	//
 	// example:
 	//
 	// prj_test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The table subtype. For example, dim indicates a dimension logical table.
+	//
 	// example:
 	//
 	// dim
@@ -403,24 +442,34 @@ func (s *GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageList
 }
 
 type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageListColumnList struct {
+	// The data type.
+	//
 	// example:
 	//
 	// varchar
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// xx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The column ID.
+	//
 	// example:
 	//
 	// c011
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The column name.
+	//
 	// example:
 	//
 	// c011
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PartitionKey *bool   `json:"PartitionKey,omitempty" xml:"PartitionKey,omitempty"`
-	PrimaryKey   *bool   `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the column is a partition key.
+	PartitionKey *bool `json:"PartitionKey,omitempty" xml:"PartitionKey,omitempty"`
+	// Indicates whether the column is a primary key.
+	PrimaryKey *bool `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
 }
 
 func (s GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageListColumnList) String() string {
@@ -490,52 +539,78 @@ func (s *GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageList
 }
 
 type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageList struct {
+	// The business unit ID.
+	//
 	// example:
 	//
 	// 103111231
 	BizUnitId *string `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The business unit name.
+	//
 	// example:
 	//
 	// xx测试
-	BizUnitName *string                                                                               `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
-	ColumnList  []*GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageListColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
+	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
+	// The list of lineage columns.
+	ColumnList []*GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageListColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
+	// The description.
+	//
 	// example:
 	//
 	// test xx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the table.
+	//
 	// example:
 	//
 	// t_input
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The environment. Valid values: prod and dev.
+	//
 	// example:
 	//
 	// dev
-	Env       *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	FullTable *bool   `json:"FullTable,omitempty" xml:"FullTable,omitempty"`
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Indicates whether the full table is selected.
+	FullTable *bool `json:"FullTable,omitempty" xml:"FullTable,omitempty"`
+	// The globally unique ID.
+	//
 	// example:
 	//
 	// Guid_101121
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// t_input
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner of the table.
+	//
 	// example:
 	//
 	// 张三
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The owner of the table.
+	//
 	// example:
 	//
 	// 20112101
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The project to which the table belongs.
+	//
 	// example:
 	//
 	// 131211211
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project to which the table belongs.
+	//
 	// example:
 	//
 	// prj_test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The table subtype. For example, dim indicates a dimension logical table.
+	//
 	// example:
 	//
 	// dim
@@ -690,24 +765,34 @@ func (s *GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageLis
 }
 
 type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageListColumnList struct {
+	// The data type.
+	//
 	// example:
 	//
 	// varchar
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// xx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The column ID.
+	//
 	// example:
 	//
 	// c011
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The column name.
+	//
 	// example:
 	//
 	// c011
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PartitionKey *bool   `json:"PartitionKey,omitempty" xml:"PartitionKey,omitempty"`
-	PrimaryKey   *bool   `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the column is a partition key.
+	PartitionKey *bool `json:"PartitionKey,omitempty" xml:"PartitionKey,omitempty"`
+	// Indicates whether the column is a primary key.
+	PrimaryKey *bool `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
 }
 
 func (s GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageListColumnList) String() string {

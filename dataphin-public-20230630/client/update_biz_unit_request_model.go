@@ -16,12 +16,16 @@ type iUpdateBizUnitRequest interface {
 }
 
 type UpdateBizUnitRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update request.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateBizUnitRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,30 +66,42 @@ func (s *UpdateBizUnitRequest) Validate() error {
 }
 
 type UpdateBizUnitRequestUpdateCommand struct {
+	// The domain architects.
+	//
 	// This parameter is required.
 	BizUnitAccountList []*UpdateBizUnitRequestUpdateCommandBizUnitAccountList `json:"BizUnitAccountList,omitempty" xml:"BizUnitAccountList,omitempty" type:"Repeated"`
+	// The data domain ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 545844456
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the data domain.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 测试
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The preset icon. For more information, refer to the create data domain operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// icon-environment
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// The data domain code.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -170,6 +186,8 @@ func (s *UpdateBizUnitRequestUpdateCommand) Validate() error {
 }
 
 type UpdateBizUnitRequestUpdateCommandBizUnitAccountList struct {
+	// The user ID.
+	//
 	// This parameter is required.
 	//
 	// example:

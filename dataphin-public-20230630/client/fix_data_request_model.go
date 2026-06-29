@@ -18,12 +18,22 @@ type iFixDataRequest interface {
 }
 
 type FixDataRequest struct {
+	// The environment identifier. Valid values:
+	//
+	// - DEV: development environment.
+	//
+	// - PROD (default): production environment.
+	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The command to rerun downstream nodes to fix data link issues. You can choose to force a rerun.
+	//
 	// This parameter is required.
 	FixDataCommand *FixDataRequestFixDataCommand `json:"FixDataCommand,omitempty" xml:"FixDataCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -77,25 +87,44 @@ func (s *FixDataRequest) Validate() error {
 }
 
 type FixDataRequestFixDataCommand struct {
+	// Specifies whether to rerun the root instance. If you do not specify this parameter, the default value is true.
+	//
 	// example:
 	//
 	// false
-	ContainRootInstance      *bool                                                   `json:"ContainRootInstance,omitempty" xml:"ContainRootInstance,omitempty"`
+	ContainRootInstance *bool `json:"ContainRootInstance,omitempty" xml:"ContainRootInstance,omitempty"`
+	// The downstream instances. If you have specified a downstream range, you do not need to specify this parameter. Otherwise, you must specify the list of downstream instances.
 	DownStreamInstanceIdList []*FixDataRequestFixDataCommandDownStreamInstanceIdList `json:"DownStreamInstanceIdList,omitempty" xml:"DownStreamInstanceIdList,omitempty" type:"Repeated"`
+	// The downstream range. Valid values:
+	//
+	// - ALL_FAILED_INSTANCE: all failed instances.
+	//
+	// - ALL_INSTANCE: all instances.
+	//
+	// - ALL_FINAL_INSTANCE: all desired state instances.
+	//
+	// - If you do not specify this parameter, the rerun is performed based on the specified downstream instances.
+	//
 	// example:
 	//
 	// ALL_INSTANCE
 	DownstreamRange *string `json:"DownstreamRange,omitempty" xml:"DownstreamRange,omitempty"`
+	// Specifies whether to force a rerun.
+	//
 	// example:
 	//
 	// false
 	ForceRerun *bool `json:"ForceRerun,omitempty" xml:"ForceRerun,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 132344
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The root instance.
+	//
 	// This parameter is required.
 	RootInstanceId *FixDataRequestFixDataCommandRootInstanceId `json:"RootInstanceId,omitempty" xml:"RootInstanceId,omitempty" type:"Struct"`
 }
@@ -181,7 +210,10 @@ func (s *FixDataRequestFixDataCommand) Validate() error {
 }
 
 type FixDataRequestFixDataCommandDownStreamInstanceIdList struct {
+	// The field instance ID.
 	FieldInstanceIdList []*string `json:"FieldInstanceIdList,omitempty" xml:"FieldInstanceIdList,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// t_2323421
@@ -219,7 +251,10 @@ func (s *FixDataRequestFixDataCommandDownStreamInstanceIdList) Validate() error 
 }
 
 type FixDataRequestFixDataCommandRootInstanceId struct {
+	// The field IDs. This parameter is available when the node is a logical table instance ID. If you do not specify this parameter, the full table is used by default.
 	FieldInstanceIdList []*string `json:"FieldInstanceIdList,omitempty" xml:"FieldInstanceIdList,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

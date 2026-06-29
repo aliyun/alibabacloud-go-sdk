@@ -16,12 +16,16 @@ type iRevokeResourcePermissionRequest interface {
 }
 
 type RevokeResourcePermissionRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The authorization revocation request.
+	//
 	// This parameter is required.
 	RevokeCommand *RevokeResourcePermissionRequestRevokeCommand `json:"RevokeCommand,omitempty" xml:"RevokeCommand,omitempty" type:"Struct"`
 }
@@ -62,19 +66,28 @@ func (s *RevokeResourcePermissionRequest) Validate() error {
 }
 
 type RevokeResourcePermissionRequestRevokeCommand struct {
+	// The list of operations.
 	OperateList []*string `json:"OperateList,omitempty" xml:"OperateList,omitempty" type:"Repeated"`
+	// The reason for revoking the authorization.
+	//
 	// example:
 	//
 	// xx
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The list of resources.
+	//
 	// This parameter is required.
 	ResourceList []*RevokeResourcePermissionRequestRevokeCommandResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+	// The resource type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PHYSICAL_TABLE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The user ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -150,6 +163,8 @@ func (s *RevokeResourcePermissionRequestRevokeCommand) Validate() error {
 }
 
 type RevokeResourcePermissionRequestRevokeCommandResourceList struct {
+	// The resource ID.
+	//
 	// example:
 	//
 	// odps.300002102.beginner_test.amin_table

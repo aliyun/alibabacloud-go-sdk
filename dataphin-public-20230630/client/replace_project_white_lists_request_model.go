@@ -18,18 +18,24 @@ type iReplaceProjectWhiteListsRequest interface {
 }
 
 type ReplaceProjectWhiteListsRequest struct {
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1030111021
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The edit command.
+	//
 	// This parameter is required.
 	ReplaceCommand *ReplaceProjectWhiteListsRequestReplaceCommand `json:"ReplaceCommand,omitempty" xml:"ReplaceCommand,omitempty" type:"Struct"`
 }
@@ -79,6 +85,8 @@ func (s *ReplaceProjectWhiteListsRequest) Validate() error {
 }
 
 type ReplaceProjectWhiteListsRequestReplaceCommand struct {
+	// The project whitelist.
+	//
 	// This parameter is required.
 	WhiteLists []*ReplaceProjectWhiteListsRequestReplaceCommandWhiteLists `json:"WhiteLists,omitempty" xml:"WhiteLists,omitempty" type:"Repeated"`
 }
@@ -114,6 +122,8 @@ func (s *ReplaceProjectWhiteListsRequestReplaceCommand) Validate() error {
 }
 
 type ReplaceProjectWhiteListsRequestReplaceCommandWhiteLists struct {
+	// The description.
+	//
 	// example:
 	//
 	// 测试
@@ -126,6 +136,8 @@ type ReplaceProjectWhiteListsRequestReplaceCommandWhiteLists struct {
 	//
 	// 10.1.0.2
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The port.
+	//
 	// This parameter is required.
 	//
 	// example:

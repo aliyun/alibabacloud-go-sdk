@@ -18,13 +18,18 @@ type iListDataServiceMyApiPermissionsRequest interface {
 }
 
 type ListDataServiceMyApiPermissionsRequest struct {
+	// Search conditions.
 	ListQuery *ListDataServiceMyApiPermissionsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Data service project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -78,14 +83,20 @@ func (s *ListDataServiceMyApiPermissionsRequest) Validate() error {
 }
 
 type ListDataServiceMyApiPermissionsRequestListQuery struct {
+	// Search keyword.
+	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Number of records per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20

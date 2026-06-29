@@ -24,23 +24,34 @@ type iListProjectMembersResponseBody interface {
 }
 
 type ListProjectMembersResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message    *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paging query result.
 	PageResult *ListProjectMembersResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,7 +130,10 @@ func (s *ListProjectMembersResponseBody) Validate() error {
 }
 
 type ListProjectMembersResponseBodyPageResult struct {
+	// The list of project members.
 	ProjectMemberList []*ListProjectMembersResponseBodyPageResultProjectMemberList `json:"ProjectMemberList,omitempty" xml:"ProjectMemberList,omitempty" type:"Repeated"`
+	// The total number of project members.
+	//
 	// example:
 	//
 	// 101
@@ -166,34 +180,49 @@ func (s *ListProjectMembersResponseBodyPageResult) Validate() error {
 }
 
 type ListProjectMembersResponseBodyPageResultProjectMemberList struct {
+	// The creation timestamp.
+	//
 	// example:
 	//
 	// 1702692675000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The last modified timestamp.
+	//
 	// example:
 	//
 	// 1721720955000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 12356
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the user who last modified the record.
+	//
 	// example:
 	//
 	// 101111
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
+	// The name of the user who last modified the record.
+	//
 	// example:
 	//
-	// test
-	LastModifierName *string  `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
-	RoleIdList       []*int32 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
+	// 测试用户
+	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
+	// The roles.
+	RoleIdList []*int32 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
+	// The user ID of the member.
+	//
 	// example:
 	//
 	// 101111
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username of the member.
+	//
 	// example:
 	//
-	// 张三
+	// 测试用户
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

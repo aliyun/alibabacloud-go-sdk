@@ -24,15 +24,22 @@ type iGetDataServiceApiDocumentResponseBody interface {
 }
 
 type GetDataServiceApiDocumentResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The API documentation.
 	Data *GetDataServiceApiDocumentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type GetDataServiceApiDocumentResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataServiceApiDocumentResponseBody) String() string {
@@ -118,122 +126,238 @@ func (s *GetDataServiceApiDocumentResponseBody) Validate() error {
 }
 
 type GetDataServiceApiDocumentResponseBodyData struct {
+	// The API ID.
+	//
 	// example:
 	//
 	// 102101
-	ApiId           *int64                                                    `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The API registration information.
 	ApiRegisterInfo *GetDataServiceApiDocumentResponseBodyDataApiRegisterInfo `json:"ApiRegisterInfo,omitempty" xml:"ApiRegisterInfo,omitempty" type:"Struct"`
+	// The timeout period of the direct API, in seconds.
+	//
 	// example:
 	//
 	// 60
 	ApiTimeout *int32 `json:"ApiTimeout,omitempty" xml:"ApiTimeout,omitempty"`
+	// The business unit name. This parameter has a value only for logical tables.
+	//
 	// example:
 	//
 	// bizUnit_test
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
+	// The cache duration, in seconds.
+	//
 	// example:
 	//
 	// 600
 	CacheTime *string `json:"CacheTime,omitempty" xml:"CacheTime,omitempty"`
+	// The creation type. Valid values:
+	//
+	// - 0: custom mode
+	//
+	// - 1: wizard mode
+	//
+	// - 2: direct API.
+	//
 	// example:
 	//
 	// 1
 	CreateType *int32 `json:"CreateType,omitempty" xml:"CreateType,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The data source ID of the direct API.
+	//
 	// example:
 	//
 	// 1
 	DirectDatasourceId *int64 `json:"DirectDatasourceId,omitempty" xml:"DirectDatasourceId,omitempty"`
+	// The data source name of the direct API.
+	//
 	// example:
 	//
 	// test
 	DirectDatasourceName *string `json:"DirectDatasourceName,omitempty" xml:"DirectDatasourceName,omitempty"`
+	// The environment. Valid values:
+	//
+	// - 0: dev
+	//
+	// - 1: prod.
+	//
 	// example:
 	//
 	// 1
 	Env *int32 `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The API group ID.
+	//
 	// example:
 	//
 	// 1011
 	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The API group name.
+	//
 	// example:
 	//
 	// 1011
-	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IsLogicalTable *bool   `json:"IsLogicalTable,omitempty" xml:"IsLogicalTable,omitempty"`
-	IsPagedQuery   *bool   `json:"IsPagedQuery,omitempty" xml:"IsPagedQuery,omitempty"`
-	IsSpecialSql   *bool   `json:"IsSpecialSql,omitempty" xml:"IsSpecialSql,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Indicates whether the table is a logical table.
+	IsLogicalTable *bool `json:"IsLogicalTable,omitempty" xml:"IsLogicalTable,omitempty"`
+	// Indicates whether the query is a paged query. Valid values:
+	//
+	// - 1: Yes.
+	//
+	// - 0: No.
+	IsPagedQuery *bool `json:"IsPagedQuery,omitempty" xml:"IsPagedQuery,omitempty"`
+	// Specifies whether the SQL is special. Valid values:
+	//
+	// - 0: No.
+	//
+	// - 1: Yes.
+	IsSpecialSql *bool `json:"IsSpecialSql,omitempty" xml:"IsSpecialSql,omitempty"`
+	// The mode. Valid values:
+	//
+	// - 0: basic
+	//
+	// - 1: dev_prod.
+	//
 	// example:
 	//
 	// 1
 	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The API name.
+	//
 	// example:
 	//
 	// 测试
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OpenCache *bool   `json:"OpenCache,omitempty" xml:"OpenCache,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether caching is enabled. Valid values:
+	//
+	// - 0: Disabled.
+	//
+	// - 1: Enabled.
+	OpenCache *bool `json:"OpenCache,omitempty" xml:"OpenCache,omitempty"`
+	// The data service project ID.
+	//
 	// example:
 	//
 	// 10201
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The data service project name.
+	//
 	// example:
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The protocol. Valid values:
+	//
+	// - 1: HTTPS
+	//
+	// - 2: HTTP
+	//
+	// - 3: both HTTP and HTTPS.
+	//
 	// example:
 	//
 	// 1
-	Protocol        *int32                                                      `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol *int32 `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The list of common parameters.
 	PublicParamList []*GetDataServiceApiDocumentResponseBodyDataPublicParamList `json:"PublicParamList,omitempty" xml:"PublicParamList,omitempty" type:"Repeated"`
+	// The request method. Valid values:
+	//
+	// - 1: get
+	//
+	// - 2: list.
+	//
 	// example:
 	//
 	// 1
-	RequestMethod    *int32                                                       `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
+	RequestMethod *int32 `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
+	// The list of request parameters.
 	RequestParamList []*GetDataServiceApiDocumentResponseBodyDataRequestParamList `json:"RequestParamList,omitempty" xml:"RequestParamList,omitempty" type:"Repeated"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// 10021
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource group name.
+	//
 	// example:
 	//
 	// test
-	ResourceGroupName *string                                                       `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// The list of response parameters.
 	ResponseParamList []*GetDataServiceApiDocumentResponseBodyDataResponseParamList `json:"ResponseParamList,omitempty" xml:"ResponseParamList,omitempty" type:"Repeated"`
+	// The sample invocation result.
+	//
 	// example:
 	//
 	// {"count": 88}
 	ResultSample *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
+	// The maximum number of records returned by the direct API.
+	//
 	// example:
 	//
 	// 100
 	ReturnLimit *int32 `json:"ReturnLimit,omitempty" xml:"ReturnLimit,omitempty"`
+	// The return data type. Valid values:
+	//
+	// - 1: JSON.
+	//
 	// example:
 	//
 	// 1
 	ReturnType *int32 `json:"ReturnType,omitempty" xml:"ReturnType,omitempty"`
+	// The script type. Valid values:
+	//
+	// - NORMAL_SQL: basic SQL
+	//
+	// - MYBATIS_SQL: advanced SQL
+	//
+	// - AVIATOR: Aviator expression.
+	//
 	// example:
 	//
 	// NORMAL_SQL
 	ScriptType *string `json:"ScriptType,omitempty" xml:"ScriptType,omitempty"`
+	// The SQL statement.
+	//
 	// example:
 	//
 	// select col1 from table1;
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	// The logical table name. This parameter has a value only for logical tables.
+	//
 	// example:
 	//
 	// t_logical_test1
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The timeout period, in seconds.
+	//
 	// example:
 	//
 	// 60
 	Timeout *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The update frequency. Valid values:
+	//
+	// - 0: custom
+	//
+	// - 1: daily
+	//
+	// - 2: hourly
+	//
+	// - 3: every minute.
+	//
 	// example:
 	//
 	// 1
 	UpdateRate *int32 `json:"UpdateRate,omitempty" xml:"UpdateRate,omitempty"`
+	// The version.
+	//
 	// example:
 	//
 	// 1.0
@@ -609,38 +733,74 @@ func (s *GetDataServiceApiDocumentResponseBodyData) Validate() error {
 }
 
 type GetDataServiceApiDocumentResponseBodyDataApiRegisterInfo struct {
+	// The authentication method for the API data source. Valid values:
+	//
+	// - 1: BearToken
+	//
+	// - 2: ApiKey
+	//
+	// - 3: None
+	//
+	// - 4: AppKeyAuth
+	//
+	// - 5: BasicAuth.
+	//
 	// example:
 	//
 	// 3
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The API data source ID.
+	//
 	// example:
 	//
 	// 102311
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The API data source name.
+	//
 	// example:
 	//
 	// test
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// The HTTP method for the registered API. Valid values:
+	//
+	// - 1: GET
+	//
+	// - 2: POST.
+	//
 	// example:
 	//
 	// 2
 	HttpMethod *int32 `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
+	// The mode. Valid values:
+	//
+	// - 0: basic
+	//
+	// - 1: dev_prod.
+	//
 	// example:
 	//
 	// 1
 	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The service path.
+	//
 	// example:
 	//
 	// /api/test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The request protocol for the API data source.
+	//
 	// example:
 	//
 	// https
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The timeout period, in seconds.
+	//
 	// example:
 	//
 	// 60
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The API data source URL.
+	//
 	// example:
 	//
 	// http://192.168.1.1:8080
@@ -741,19 +901,32 @@ func (s *GetDataServiceApiDocumentResponseBodyDataApiRegisterInfo) Validate() er
 }
 
 type GetDataServiceApiDocumentResponseBodyDataPublicParamList struct {
+	// The parameter description.
+	//
 	// example:
 	//
 	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IsRequired  *bool   `json:"IsRequired,omitempty" xml:"IsRequired,omitempty"`
+	// Specifies whether the request parameter is required. Valid values:
+	//
+	// - 1: Required.
+	//
+	// - 0: Optional.
+	IsRequired *bool `json:"IsRequired,omitempty" xml:"IsRequired,omitempty"`
+	// The frontend parameter name.
+	//
 	// example:
 	//
 	// col1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter example.
+	//
 	// example:
 	//
 	// test
 	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// The parameter type.
+	//
 	// example:
 	//
 	// string
@@ -818,23 +991,38 @@ func (s *GetDataServiceApiDocumentResponseBodyDataPublicParamList) Validate() er
 }
 
 type GetDataServiceApiDocumentResponseBodyDataRequestParamList struct {
+	// The default value.
+	//
 	// example:
 	//
 	// 1
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The parameter description.
+	//
 	// example:
 	//
 	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IsRequired  *bool   `json:"IsRequired,omitempty" xml:"IsRequired,omitempty"`
+	// Specifies whether the request parameter is required. Valid values:
+	//
+	// - 1: Required.
+	//
+	// - 0: Optional.
+	IsRequired *bool `json:"IsRequired,omitempty" xml:"IsRequired,omitempty"`
+	// The frontend parameter name.
+	//
 	// example:
 	//
 	// col1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter example.
+	//
 	// example:
 	//
 	// test
 	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// The parameter type.
+	//
 	// example:
 	//
 	// string
@@ -908,18 +1096,26 @@ func (s *GetDataServiceApiDocumentResponseBodyDataRequestParamList) Validate() e
 }
 
 type GetDataServiceApiDocumentResponseBodyDataResponseParamList struct {
+	// The parameter description.
+	//
 	// example:
 	//
 	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The frontend parameter name.
+	//
 	// example:
 	//
 	// col1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter example.
+	//
 	// example:
 	//
 	// test
 	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// The parameter type.
+	//
 	// example:
 	//
 	// string

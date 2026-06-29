@@ -16,12 +16,16 @@ type iUpdateDataDomainRequest interface {
 }
 
 type UpdateDataDomainRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update request.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateDataDomainRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,40 +66,54 @@ func (s *UpdateDataDomainRequest) Validate() error {
 }
 
 type UpdateDataDomainRequestUpdateCommand struct {
+	// The abbreviation of the data domain.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dm_code_name
 	Abbreviation *string `json:"Abbreviation,omitempty" xml:"Abbreviation,omitempty"`
+	// The ID of the data board.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 545844456
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The ID of the data domain.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1241844456
 	DataDomainId *int64 `json:"DataDomainId,omitempty" xml:"DataDomainId,omitempty"`
+	// The description of the data domain.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the data domain.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 主题域测试
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The code of the data domain.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dm_code_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the parent data domain.
+	//
 	// example:
 	//
 	// 10232311

@@ -24,18 +24,26 @@ type iCreateDataServiceAppResponseBody interface {
 }
 
 type CreateDataServiceAppResponseBody struct {
+	// The response code returned by the backend.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// -809333788831
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error details returned by the backend.
+	//
 	// example:
 	//
 	// internal error
@@ -46,7 +54,8 @@ type CreateDataServiceAppResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDataServiceAppResponseBody) String() string {

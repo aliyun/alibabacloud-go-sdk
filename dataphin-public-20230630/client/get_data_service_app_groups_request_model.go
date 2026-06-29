@@ -16,6 +16,8 @@ type iGetDataServiceAppGroupsRequest interface {
 }
 
 type GetDataServiceAppGroupsRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -23,6 +25,10 @@ type GetDataServiceAppGroupsRequest struct {
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
 	// Deprecated
+	//
+	// The data service project ID.
+	//
+	// 	Notice: This field is deprecated.</notice>.
 	//
 	// example:
 	//

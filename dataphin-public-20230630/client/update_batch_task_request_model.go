@@ -16,12 +16,16 @@ type iUpdateBatchTaskRequest interface {
 }
 
 type UpdateBatchTaskRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update request.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateBatchTaskRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,77 +66,143 @@ func (s *UpdateBatchTaskRequest) Validate() error {
 }
 
 type UpdateBatchTaskRequestUpdateCommand struct {
+	// The node code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// show tables;
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The cron expression for automatic scheduling. Refer to the Linux cron expression syntax.
+	//
 	// example:
 	//
 	// 0 0 1 	- 	- ?
-	CronExpression       *string                                                  `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The custom scheduling interval configuration.
 	CustomScheduleConfig *UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig `json:"CustomScheduleConfig,omitempty" xml:"CustomScheduleConfig,omitempty" type:"Struct"`
+	// The catalog for database SQL nodes. This parameter takes effect only for data source types that require a catalog, such as Presto.
+	//
 	// example:
 	//
 	// mysql_catalog
 	DataSourceCatalog *string `json:"DataSourceCatalog,omitempty" xml:"DataSourceCatalog,omitempty"`
+	// The data source ID for database SQL nodes.
+	//
 	// example:
 	//
 	// 12131111
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The schema for database SQL nodes. This parameter takes effect only for data source types that require a schema, such as Oracle.
+	//
 	// example:
 	//
 	// erp
 	DataSourceSchema *string `json:"DataSourceSchema,omitempty" xml:"DataSourceSchema,omitempty"`
+	// The execution engine for the node, such as a Python node. Valid values:
+	//
+	// - PYTHON2_7
+	//
+	// - PYTHON3_7
+	//
+	// - PYTHON3_11.
+	//
 	// example:
 	//
 	// PYTHON3_7
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The ID of the node in the folder tree.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12113111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The name of the offline node.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test111
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the node.
+	//
 	// example:
 	//
 	// xx测试
-	NodeDescription    *string   `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
+	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
+	// The list of node output names.
 	NodeOutputNameList []*string `json:"NodeOutputNameList,omitempty" xml:"NodeOutputNameList,omitempty" type:"Repeated"`
+	// The node status. Valid values:
+	//
+	// - 1: Normal.
+	//
+	// - 2: Paused.
+	//
+	// - 3: Dry run.
+	//
 	// example:
 	//
 	// 1
-	NodeStatus *int32                                          `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
-	ParamList  []*UpdateBatchTaskRequestUpdateCommandParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
+	NodeStatus *int32 `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	// The list of custom parameters.
+	ParamList []*UpdateBatchTaskRequestUpdateCommandParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
+	// The scheduling priority of the node. Valid values: 1 to 9. A larger value indicates a lower priority.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the project to which the node belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10121101
-	ProjectId        *int64    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The third-party Python packages that the node depends on.
 	PythonModuleList []*string `json:"PythonModuleList,omitempty" xml:"PythonModuleList,omitempty" type:"Repeated"`
+	// The scheduling period. Valid values:
+	//
+	// - YEARLY
+	//
+	// - MONTHLY
+	//
+	// - WEEKLY
+	//
+	// - DAILY
+	//
+	// - HOURLY
+	//
+	// - MINUTELY.
+	//
 	// example:
 	//
 	// DAILY
-	SchedulePeriod  *string                                             `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
+	SchedulePeriod *string `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
+	// The Spark client information.
 	SparkClientInfo *UpdateBatchTaskRequestUpdateCommandSparkClientInfo `json:"SparkClientInfo,omitempty" xml:"SparkClientInfo,omitempty" type:"Struct"`
+	// The node type. Valid values:
+	//
+	// - 1: Hive_SQL.
+	//
+	// - 5: MaxCompute_SQL.
+	//
+	// - 10: Shell.
+	//
+	// - 21: Python.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 21
-	TaskType     *int32                                             `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The upstream dependencies.
 	UpStreamList []*UpdateBatchTaskRequestUpdateCommandUpStreamList `json:"UpStreamList,omitempty" xml:"UpStreamList,omitempty" type:"Repeated"`
 }
 
@@ -357,30 +427,56 @@ func (s *UpdateBatchTaskRequestUpdateCommand) Validate() error {
 }
 
 type UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig struct {
+	// The end time in the format of HH:mm.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20:59
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The custom interval.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The interval unit. Valid values:
+	//
+	// - MINUTE: minute
+	//
+	// - HOUR: hour.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HOUR
 	IntervalUnit *string `json:"IntervalUnit,omitempty" xml:"IntervalUnit,omitempty"`
+	// The scheduling period. Valid values:
+	//
+	// - YEARLY
+	//
+	// - MONTHLY
+	//
+	// - WEEKLY
+	//
+	// - DAILY
+	//
+	// - HOURLY
+	//
+	// - MINUTELY.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DAILY
 	SchedulePeriod *string `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
+	// The start time in the format of HH:mm.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -447,12 +543,16 @@ func (s *UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig) Validate() err
 }
 
 type UpdateBatchTaskRequestUpdateCommandParamList struct {
+	// The parameter name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The parameter value.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -492,6 +592,8 @@ func (s *UpdateBatchTaskRequestUpdateCommandParamList) Validate() error {
 }
 
 type UpdateBatchTaskRequestUpdateCommandSparkClientInfo struct {
+	// The version name of the Spark client.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -522,33 +624,60 @@ func (s *UpdateBatchTaskRequestUpdateCommandSparkClientInfo) Validate() error {
 }
 
 type UpdateBatchTaskRequestUpdateCommandUpStreamList struct {
+	// The dependency period.
 	DependPeriod *UpdateBatchTaskRequestUpdateCommandUpStreamListDependPeriod `json:"DependPeriod,omitempty" xml:"DependPeriod,omitempty" type:"Struct"`
+	// The dependency strategy. Valid values:
+	//
+	// - ALL: all.
+	//
+	// - FIRST: first.
+	//
+	// - LAST: last.
+	//
+	// - NEAR: nearest.
+	//
 	// example:
 	//
 	// LAST
-	DependStrategy *string   `json:"DependStrategy,omitempty" xml:"DependStrategy,omitempty"`
-	FieldList      []*string `json:"FieldList,omitempty" xml:"FieldList,omitempty" type:"Repeated"`
+	DependStrategy *string `json:"DependStrategy,omitempty" xml:"DependStrategy,omitempty"`
+	// The fields of the dependent logical table.
+	FieldList []*string `json:"FieldList,omitempty" xml:"FieldList,omitempty" type:"Repeated"`
+	// The type of the upstream dependency node. Valid values:
+	//
+	// - PHYSICAL: physical node.
+	//
+	// - LOGICAL: logical table dependency.
+	//
 	// example:
 	//
 	// PHYSICAL
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The period offset. A value of 0 indicates a same-period dependency. A positive integer indicates a dependency on the previous N periods.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	PeriodDiff        *int32 `json:"PeriodDiff,omitempty" xml:"PeriodDiff,omitempty"`
-	SourceNodeEnabled *bool  `json:"SourceNodeEnabled,omitempty" xml:"SourceNodeEnabled,omitempty"`
+	PeriodDiff *int32 `json:"PeriodDiff,omitempty" xml:"PeriodDiff,omitempty"`
+	// Specifies whether the upstream node is enabled.
+	SourceNodeEnabled *bool `json:"SourceNodeEnabled,omitempty" xml:"SourceNodeEnabled,omitempty"`
+	// The ID of the upstream node.
+	//
 	// example:
 	//
 	// n_2001
 	SourceNodeId *string `json:"SourceNodeId,omitempty" xml:"SourceNodeId,omitempty"`
+	// The output name of the upstream node.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// t_input1
 	SourceNodeOutputName *string `json:"SourceNodeOutputName,omitempty" xml:"SourceNodeOutputName,omitempty"`
+	// The name of the input table.
+	//
 	// example:
 	//
 	// t_input1
@@ -654,10 +783,22 @@ func (s *UpdateBatchTaskRequestUpdateCommandUpStreamList) Validate() error {
 }
 
 type UpdateBatchTaskRequestUpdateCommandUpStreamListDependPeriod struct {
+	// The period offset. This parameter is required when dependencyPeriodType is set to LAST_N_PERIOD.
+	//
 	// example:
 	//
 	// 1
 	PeriodOffset *int32 `json:"PeriodOffset,omitempty" xml:"PeriodOffset,omitempty"`
+	// The dependency period type. Valid values:
+	//
+	// - CURRENT_PERIOD: current period.
+	//
+	// - LAST_PERIOD: previous period.
+	//
+	// - LAST_N_PERIOD: last N days.
+	//
+	// - LAST_24_HOUR: last 24 hours.
+	//
 	// This parameter is required.
 	//
 	// example:

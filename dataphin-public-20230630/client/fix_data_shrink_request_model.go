@@ -18,12 +18,22 @@ type iFixDataShrinkRequest interface {
 }
 
 type FixDataShrinkRequest struct {
+	// The environment identifier. Valid values:
+	//
+	// - DEV: development environment.
+	//
+	// - PROD (default): production environment.
+	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The command to rerun downstream nodes to fix data link issues. You can choose to force a rerun.
+	//
 	// This parameter is required.
 	FixDataCommandShrink *string `json:"FixDataCommand,omitempty" xml:"FixDataCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,7 +16,10 @@ type iAddUserGroupMemberShrinkRequest interface {
 }
 
 type AddUserGroupMemberShrinkRequest struct {
+	// The command to add user group members.
 	AddCommandShrink *string `json:"AddCommand,omitempty" xml:"AddCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

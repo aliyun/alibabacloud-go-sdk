@@ -16,12 +16,16 @@ type iSubmitQualityRuleTasksRequest interface {
 }
 
 type SubmitQualityRuleTasksRequest struct {
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Submit command
+	//
 	// This parameter is required.
 	SubmitCommand *SubmitQualityRuleTasksRequestSubmitCommand `json:"SubmitCommand,omitempty" xml:"SubmitCommand,omitempty" type:"Struct"`
 }
@@ -62,24 +66,36 @@ func (s *SubmitQualityRuleTasksRequest) Validate() error {
 }
 
 type SubmitQualityRuleTasksRequestSubmitCommand struct {
+	// Business date, format: yyyy-MM-dd
+	//
 	// example:
 	//
 	// 2025-06-30
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// Whether it is a test run: true for test run, false for formal run.
+	//
 	// This parameter is required.
 	IsTestRun *bool `json:"IsTestRun,omitempty" xml:"IsTestRun,omitempty"`
+	// Partition expression - custom expression
+	//
 	// example:
 	//
 	// ds=${yyyyMMdd}
 	PartitionExpression *string `json:"PartitionExpression,omitempty" xml:"PartitionExpression,omitempty"`
+	// Source of the test run partition expression: SCHEDULE for existing schedule, CUSTOM for custom.
+	//
 	// example:
 	//
 	// CUSTOM
 	PartitionExpressionFrom *string `json:"PartitionExpressionFrom,omitempty" xml:"PartitionExpressionFrom,omitempty"`
+	// Existing schedule ID
+	//
 	// example:
 	//
 	// 1
 	ScheduleId *int64 `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	// Monitoring object and rule IDs
+	//
 	// This parameter is required.
 	WatchRuleIdList []*SubmitQualityRuleTasksRequestSubmitCommandWatchRuleIdList `json:"WatchRuleIdList,omitempty" xml:"WatchRuleIdList,omitempty" type:"Repeated"`
 }
@@ -160,12 +176,16 @@ func (s *SubmitQualityRuleTasksRequestSubmitCommand) Validate() error {
 }
 
 type SubmitQualityRuleTasksRequestSubmitCommandWatchRuleIdList struct {
+	// Rule ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// Monitoring object ID
+	//
 	// This parameter is required.
 	//
 	// example:

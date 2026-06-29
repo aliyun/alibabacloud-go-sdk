@@ -18,16 +18,26 @@ type iGetPhysicalNodeContentRequest interface {
 }
 
 type GetPhysicalNodeContentRequest struct {
+	// The environment identifier. Valid values:
+	//
+	// - DEV: Development environment.
+	//
+	// - PROD (default): Production environment.
+	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The node ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// n_232411
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

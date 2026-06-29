@@ -18,14 +18,20 @@ type iApplyDataServiceApiRequest interface {
 }
 
 type ApplyDataServiceApiRequest struct {
+	// The apply command.
+	//
 	// This parameter is required.
 	ApplyCommand *ApplyDataServiceApiRequestApplyCommand `json:"ApplyCommand,omitempty" xml:"ApplyCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The data service project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -79,33 +85,68 @@ func (s *ApplyDataServiceApiRequest) Validate() error {
 }
 
 type ApplyDataServiceApiRequestApplyCommand struct {
+	// The API ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1021
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// AppId
+	// The application ID.
 	//
 	// example:
 	//
 	// 1203
-	AppId     *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ApplyDev  *bool  `json:"ApplyDev,omitempty" xml:"ApplyDev,omitempty"`
-	ApplyProd *bool  `json:"ApplyProd,omitempty" xml:"ApplyProd,omitempty"`
+	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Specifies whether to apply for permissions on operation-type APIs in the development environment.
+	//
+	// example:
+	//
+	// true
+	ApplyDev *bool `json:"ApplyDev,omitempty" xml:"ApplyDev,omitempty"`
+	// Specifies whether to apply for permissions on operation-type APIs in the production environment.
+	//
+	// example:
+	//
+	// true
+	ApplyProd *bool `json:"ApplyProd,omitempty" xml:"ApplyProd,omitempty"`
+	// The application type. Valid values:
+	//
+	// - APP: application.
+	//
+	// - USER: individual account.
+	//
 	// example:
 	//
 	// APP
-	ApplyType    *string                                               `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
-	AuthTypes    []*string                                             `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty" type:"Repeated"`
+	ApplyType *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	// The list of permission types.
+	//
+	// - When the principal is an application, the following permission types are supported. To apply for delegation permissions, you must also apply for usage permissions.
+	//
+	//   - USE: usage permission.
+	//
+	//   - DELEGATION: delegation permission.
+	//
+	// - When the principal is an individual, only USE (usage) permission is supported.
+	//
+	// - If this parameter is not specified, the default value is USE (usage) permission.
+	AuthTypes []*string `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty" type:"Repeated"`
+	// The list of permission fields for query-type APIs in the development environment. This parameter is required in dev-prod mode. DevFieldList and ProdFieldList cannot both be empty.
 	DevFieldList []*ApplyDataServiceApiRequestApplyCommandDevFieldList `json:"DevFieldList,omitempty" xml:"DevFieldList,omitempty" type:"Repeated"`
+	// The expiration date in the format of yyyy-MM-dd.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-06-30
-	ExpireDate    *string                                                `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The list of permission fields for query-type APIs in the production environment. This parameter is required in basic mode.
 	ProdFieldList []*ApplyDataServiceApiRequestApplyCommandProdFieldList `json:"ProdFieldList,omitempty" xml:"ProdFieldList,omitempty" type:"Repeated"`
+	// The reason for the application.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -235,6 +276,8 @@ func (s *ApplyDataServiceApiRequestApplyCommand) Validate() error {
 }
 
 type ApplyDataServiceApiRequestApplyCommandDevFieldList struct {
+	// The API permission field ID.
+	//
 	// example:
 	//
 	// 22
@@ -263,6 +306,8 @@ func (s *ApplyDataServiceApiRequestApplyCommandDevFieldList) Validate() error {
 }
 
 type ApplyDataServiceApiRequestApplyCommandProdFieldList struct {
+	// The API permission field ID.
+	//
 	// example:
 	//
 	// 22

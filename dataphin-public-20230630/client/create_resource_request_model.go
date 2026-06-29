@@ -16,8 +16,12 @@ type iCreateResourceRequest interface {
 }
 
 type CreateResourceRequest struct {
+	// The create command.
+	//
 	// This parameter is required.
 	CreateCommand *CreateResourceRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,48 +66,78 @@ func (s *CreateResourceRequest) Validate() error {
 }
 
 type CreateResourceRequestCreateCommand struct {
+	// The commit remarks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xx 测试
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The compute engine type. Valid values:
+	//
+	// - MAX_COMPUTE
+	//
+	// - HADOOP
+	//
+	// - NONE.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MAX_COMPUTE
 	ComputeEngineType *string `json:"ComputeEngineType,omitempty" xml:"ComputeEngineType,omitempty"`
+	// The description of the resource file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xx 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The folder in which the resource file is stored.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// The resource name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// udf_sleep.jar
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 711833
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The type of the resource file. Valid values:
+	//
+	// - FILE: common file.
+	//
+	// - JAR: JAR file.
+	//
+	// - PYTHON: Python file.
+	//
+	// - OTHERS: other type of file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// JAR
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The storage address of the resource file.
+	//
 	// This parameter is required.
 	//
 	// example:

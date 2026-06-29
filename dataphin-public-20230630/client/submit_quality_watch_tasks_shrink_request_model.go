@@ -16,12 +16,16 @@ type iSubmitQualityWatchTasksShrinkRequest interface {
 }
 
 type SubmitQualityWatchTasksShrinkRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The submit command.
+	//
 	// This parameter is required.
 	SubmitCommandShrink *string `json:"SubmitCommand,omitempty" xml:"SubmitCommand,omitempty"`
 }

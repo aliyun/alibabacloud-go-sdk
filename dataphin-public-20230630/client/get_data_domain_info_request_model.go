@@ -16,12 +16,16 @@ type iGetDataDomainInfoRequest interface {
 }
 
 type GetDataDomainInfoRequest struct {
+	// The data domain ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1241844456
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

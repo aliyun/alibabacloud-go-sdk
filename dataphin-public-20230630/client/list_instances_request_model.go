@@ -18,11 +18,20 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
+	// Environment identifier
+	//
+	// - DEV: Development environment
+	//
+	// - PROD (default): Production environment
+	//
 	// example:
 	//
 	// PROD
-	Env       *string                        `json:"Env,omitempty" xml:"Env,omitempty"`
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Query Request
 	ListQuery *ListInstancesRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -76,65 +85,161 @@ func (s *ListInstancesRequest) Validate() error {
 }
 
 type ListInstancesRequestListQuery struct {
+	// Business Type
+	//
+	// - SCRIPT: Script Instance
+	//
+	// - LOGICAL_TABLE: Logical Table
+	//
 	// example:
 	//
 	// SCRIPT
-	BizType   *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	BizUnitId *int64  `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	FlowId    *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// Business unit ID. Required when querying summary logical tables.
+	//
+	// example:
+	//
+	// 6232322111
+	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// Workflow ID
+	//
+	// example:
+	//
+	// 1021
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// End business date and time. The time format must conform to the partition format specified by the business unit.
+	//
 	// example:
 	//
 	// 2024-05-31
 	MaxBizDate *string `json:"MaxBizDate,omitempty" xml:"MaxBizDate,omitempty"`
+	// Maximum instance run time
+	//
 	// example:
 	//
 	// 2024-05-31
 	MaxRunDate *string `json:"MaxRunDate,omitempty" xml:"MaxRunDate,omitempty"`
+	// Start business date and time. The time format must conform to the partition format specified by the business unit.
+	//
 	// example:
 	//
 	// 2024-05-30
 	MinBizDate *string `json:"MinBizDate,omitempty" xml:"MinBizDate,omitempty"`
+	// Minimum instance run time
+	//
 	// example:
 	//
 	// 2024-05-30
 	MinRunDate *string `json:"MinRunDate,omitempty" xml:"MinRunDate,omitempty"`
+	// Node ID
+	//
 	// example:
 	//
 	// n_23131
-	NodeId    *string   `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Node Owner
 	OwnerList []*string `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
+	// Page Number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// Page Size
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
-	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Priority
+	//
+	// - HIGHEST
+	//
+	// - HIGH
+	//
+	// - MIDDLE
+	//
+	// - LOW
+	//
+	// - LOWEST
 	PriorityList []*string `json:"PriorityList,omitempty" xml:"PriorityList,omitempty" type:"Repeated"`
+	// Project ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 131311111321
-	ProjectId          *int64    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RunStatusList      []*string `json:"RunStatusList,omitempty" xml:"RunStatusList,omitempty" type:"Repeated"`
-	SchedulePaused     *bool     `json:"SchedulePaused,omitempty" xml:"SchedulePaused,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Running status
+	//
+	// - INIT: Initialized
+	//
+	// - WAIT_SUBMISSION: Waiting for Submission
+	//
+	// - WAIT_SCHEDULE: Waiting for Schedule Time
+	//
+	// - DISPATCH_BLOCKED: Throttled
+	//
+	// - WAIT_RESOURCE: Waiting for Scheduling Resources
+	//
+	// - RUNNING: Running
+	//
+	// - SUCCESS: Succeeded
+	//
+	// - FAILED: Failed
+	RunStatusList []*string `json:"RunStatusList,omitempty" xml:"RunStatusList,omitempty" type:"Repeated"`
+	// Whether scheduling is paused
+	SchedulePaused *bool `json:"SchedulePaused,omitempty" xml:"SchedulePaused,omitempty"`
+	// Schedule Period
+	//
+	// - YEARLY
+	//
+	// - MONTHLY
+	//
+	// - WEEKLY
+	//
+	// - DAILY
+	//
+	// - HOURLY
+	//
+	// - MINUTELY
 	SchedulePeriodList []*string `json:"SchedulePeriodList,omitempty" xml:"SchedulePeriodList,omitempty" type:"Repeated"`
+	// Instance schedule type
+	//
+	// - NORMAL (Periodic Instance)
+	//
+	// - MANUAL (Manual Instance)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// NORMAL
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
+	// Fuzzy match by node name or exact match by node ID
+	//
 	// example:
 	//
 	// xx
-	SearchText     *string   `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
+	SearchText *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
+	// Sub-business Type
+	//
+	// - MAX_COMPUTE_SQL
+	//
+	// - HIVE_SQL
+	//
+	// - SHELL
+	//
+	// - PYTHON
+	//
+	// - ONE_SERVICE_SQL
+	//
+	// - DATABASE_SQL
 	SubBizTypeList []*string `json:"SubBizTypeList,omitempty" xml:"SubBizTypeList,omitempty" type:"Repeated"`
 }
 

@@ -16,12 +16,16 @@ type iGetQualityRuleTaskLogRequest interface {
 }
 
 type GetQualityRuleTaskLogRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The rule task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

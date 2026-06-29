@@ -18,18 +18,24 @@ type iUpdateUserGroupSwitchRequest interface {
 }
 
 type UpdateUserGroupSwitchRequest struct {
+	// Specifies whether to enable the user group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The user group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,24 +24,34 @@ type iGetDataDomainInfoResponseBody interface {
 }
 
 type GetDataDomainInfoResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code           *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data domain details.
 	DataDomainInfo *GetDataDomainInfoResponseBodyDataDomainInfo `json:"DataDomainInfo,omitempty" xml:"DataDomainInfo,omitempty" type:"Struct"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataDomainInfoResponseBody) String() string {
@@ -116,54 +126,80 @@ func (s *GetDataDomainInfoResponseBody) Validate() error {
 }
 
 type GetDataDomainInfoResponseBodyDataDomainInfo struct {
+	// The abbreviation of the data domain.
+	//
 	// example:
 	//
 	// dm_code_name
 	Abbreviation *string `json:"Abbreviation,omitempty" xml:"Abbreviation,omitempty"`
+	// The ID of the business unit to which the data domain belongs.
+	//
 	// example:
 	//
 	// 545844456
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The description of the business object.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name.
+	//
 	// example:
 	//
 	// 测试
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The data domain ID.
+	//
 	// example:
 	//
 	// 1241844456
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the user who last modified the data domain.
+	//
 	// example:
 	//
 	// 30010010
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
+	// The name of the user who last modified the data domain.
+	//
 	// example:
 	//
 	// 张三
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// dm_code_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the business object owner.
+	//
 	// example:
 	//
 	// 张三
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The ID of the business object owner.
+	//
 	// example:
 	//
 	// 30010010
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The ID of the parent data domain.
+	//
 	// example:
 	//
 	// 10232311

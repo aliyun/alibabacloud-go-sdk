@@ -16,8 +16,12 @@ type iListUserGroupMembersRequest interface {
 }
 
 type ListUserGroupMembersRequest struct {
+	// The paged query parameters.
+	//
 	// This parameter is required.
 	ListQuery *ListUserGroupMembersRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,27 +66,36 @@ func (s *ListUserGroupMembersRequest) Validate() error {
 }
 
 type ListUserGroupMembersRequestListQuery struct {
+	// The username keyword.
+	//
 	// example:
 	//
 	// a
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of records per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The user group ID.
+	//
 	// example:
 	//
 	// 232231
-	UserGroupId *string   `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	UserIdList  []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	// The user ID.
+	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
 }
 
 func (s ListUserGroupMembersRequestListQuery) String() string {

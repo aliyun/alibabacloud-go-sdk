@@ -16,12 +16,16 @@ type iListRowPermissionShrinkRequest interface {
 }
 
 type ListRowPermissionShrinkRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The request command.
+	//
 	// This parameter is required.
 	PageRowPermissionQueryShrink *string `json:"PageRowPermissionQuery,omitempty" xml:"PageRowPermissionQuery,omitempty"`
 }

@@ -16,8 +16,12 @@ type iDeleteSecurityLevelRequest interface {
 }
 
 type DeleteSecurityLevelRequest struct {
+	// The delete instruction.
+	//
 	// This parameter is required.
 	DeleteCommand *DeleteSecurityLevelRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,10 +66,14 @@ func (s *DeleteSecurityLevelRequest) Validate() error {
 }
 
 type DeleteSecurityLevelRequestDeleteCommand struct {
+	// The sensitivity level of the classification level. If this parameter is not specified, the classification level is deleted based on an exact match of the classification level name.
+	//
 	// example:
 	//
 	// 1
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The classification level name.
+	//
 	// example:
 	//
 	// test

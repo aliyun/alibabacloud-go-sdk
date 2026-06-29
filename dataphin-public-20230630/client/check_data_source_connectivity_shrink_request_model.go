@@ -16,8 +16,12 @@ type iCheckDataSourceConnectivityShrinkRequest interface {
 }
 
 type CheckDataSourceConnectivityShrinkRequest struct {
+	// The object to check.
+	//
 	// This parameter is required.
 	CheckCommandShrink *string `json:"CheckCommand,omitempty" xml:"CheckCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

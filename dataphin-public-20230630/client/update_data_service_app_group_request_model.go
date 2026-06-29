@@ -16,12 +16,16 @@ type iUpdateDataServiceAppGroupRequest interface {
 }
 
 type UpdateDataServiceAppGroupRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update command for the data service application group.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateDataServiceAppGroupRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,12 +66,16 @@ func (s *UpdateDataServiceAppGroupRequest) Validate() error {
 }
 
 type UpdateDataServiceAppGroupRequestUpdateCommand struct {
+	// The group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The group name.
+	//
 	// This parameter is required.
 	//
 	// example:

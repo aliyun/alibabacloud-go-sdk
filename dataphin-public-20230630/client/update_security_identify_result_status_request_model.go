@@ -16,12 +16,16 @@ type iUpdateSecurityIdentifyResultStatusRequest interface {
 }
 
 type UpdateSecurityIdentifyResultStatusRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update instruction.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateSecurityIdentifyResultStatusRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,8 +66,12 @@ func (s *UpdateSecurityIdentifyResultStatusRequest) Validate() error {
 }
 
 type UpdateSecurityIdentifyResultStatusRequestUpdateCommand struct {
+	// Specifies whether the result is effective.
+	//
 	// This parameter is required.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The list of identification result IDs.
+	//
 	// This parameter is required.
 	IdentifyResultIdList []*int64 `json:"IdentifyResultIdList,omitempty" xml:"IdentifyResultIdList,omitempty" type:"Repeated"`
 }

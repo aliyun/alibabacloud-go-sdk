@@ -16,12 +16,16 @@ type iUpdateBatchTaskUdfLineagesRequest interface {
 }
 
 type UpdateBatchTaskUdfLineagesRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update instruction.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateBatchTaskUdfLineagesRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,14 +66,20 @@ func (s *UpdateBatchTaskUdfLineagesRequest) Validate() error {
 }
 
 type UpdateBatchTaskUdfLineagesRequestUpdateCommand struct {
+	// The node ID in the logical definition subtree.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12113111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The list of lineage groups.
+	//
 	// This parameter is required.
 	LineageGroupList []*UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupList `json:"LineageGroupList,omitempty" xml:"LineageGroupList,omitempty" type:"Repeated"`
+	// The project to which the node belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -127,8 +137,12 @@ func (s *UpdateBatchTaskUdfLineagesRequestUpdateCommand) Validate() error {
 }
 
 type UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupList struct {
+	// The collection of lineage input tables.
+	//
 	// This parameter is required.
 	InputLineageList []*UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListInputLineageList `json:"InputLineageList,omitempty" xml:"InputLineageList,omitempty" type:"Repeated"`
+	// The collection of lineage output tables.
+	//
 	// This parameter is required.
 	OutputLineageList []*UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListOutputLineageList `json:"OutputLineageList,omitempty" xml:"OutputLineageList,omitempty" type:"Repeated"`
 }
@@ -182,16 +196,24 @@ func (s *UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupList) Validat
 }
 
 type UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListInputLineageList struct {
+	// The list of lineage fields.
+	//
 	// This parameter is required.
 	ColumnList []*string `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
+	// The environment. Valid values: prod, dev, and auto.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dev
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Specifies whether to select the full table.
+	//
 	// This parameter is required.
 	FullTable *bool `json:"FullTable,omitempty" xml:"FullTable,omitempty"`
+	// The table name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -249,16 +271,24 @@ func (s *UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListInputLine
 }
 
 type UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListOutputLineageList struct {
+	// The list of lineage fields.
+	//
 	// This parameter is required.
 	ColumnList []*string `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
+	// The environment. Valid values: prod, dev, and auto.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dev
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Specifies whether to select the full table.
+	//
 	// This parameter is required.
 	FullTable *bool `json:"FullTable,omitempty" xml:"FullTable,omitempty"`
+	// The table name.
+	//
 	// This parameter is required.
 	//
 	// example:

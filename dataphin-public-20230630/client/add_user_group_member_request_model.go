@@ -16,7 +16,10 @@ type iAddUserGroupMemberRequest interface {
 }
 
 type AddUserGroupMemberRequest struct {
+	// The command to add user group members.
 	AddCommand *AddUserGroupMemberRequestAddCommand `json:"AddCommand,omitempty" xml:"AddCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -61,13 +64,16 @@ func (s *AddUserGroupMemberRequest) Validate() error {
 }
 
 type AddUserGroupMemberRequestAddCommand struct {
+	// The user group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 132331
-	UserGroupId *string   `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	UserIdList  []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	// The list of user IDs.
+	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
 }
 
 func (s AddUserGroupMemberRequestAddCommand) String() string {

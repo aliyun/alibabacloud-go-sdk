@@ -16,12 +16,16 @@ type iDeleteBizUnitRequest interface {
 }
 
 type DeleteBizUnitRequest struct {
+	// The business domain ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6798087749072704
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

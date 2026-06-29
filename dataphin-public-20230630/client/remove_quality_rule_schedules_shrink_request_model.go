@@ -16,12 +16,16 @@ type iRemoveQualityRuleSchedulesShrinkRequest interface {
 }
 
 type RemoveQualityRuleSchedulesShrinkRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The unbinding instruction.
+	//
 	// This parameter is required.
 	RemoveCommandShrink *string `json:"RemoveCommand,omitempty" xml:"RemoveCommand,omitempty"`
 }

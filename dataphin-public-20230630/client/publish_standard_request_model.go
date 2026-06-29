@@ -16,12 +16,16 @@ type iPublishStandardRequest interface {
 }
 
 type PublishStandardRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The publish command.
+	//
 	// This parameter is required.
 	PublishCommand *PublishStandardRequestPublishCommand `json:"PublishCommand,omitempty" xml:"PublishCommand,omitempty" type:"Struct"`
 }
@@ -62,24 +66,34 @@ func (s *PublishStandardRequest) Validate() error {
 }
 
 type PublishStandardRequestPublishCommand struct {
+	// Specifies whether to automatically publish after approval. Default value: true.
 	AutoPublishAfterApproval *bool `json:"AutoPublishAfterApproval,omitempty" xml:"AutoPublishAfterApproval,omitempty"`
+	// The review comment. Maximum length: 128 characters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The standard ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
-	Id             *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The specified reviewers.
 	ReviewerIdList []*string `json:"ReviewerIdList,omitempty" xml:"ReviewerIdList,omitempty" type:"Repeated"`
+	// The stage of the standard. Valid values: DEV and PROD. Default value: DEV.
+	//
 	// example:
 	//
 	// DEV
 	StandardStage *string `json:"StandardStage,omitempty" xml:"StandardStage,omitempty"`
+	// The version number. Default value: -1 (latest version).
+	//
 	// example:
 	//
 	// 1

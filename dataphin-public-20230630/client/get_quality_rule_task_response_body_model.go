@@ -24,14 +24,20 @@ type iGetQualityRuleTaskResponseBody interface {
 }
 
 type GetQualityRuleTaskResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -41,9 +47,11 @@ type GetQualityRuleTaskResponseBody struct {
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The rule task details.
 	RuleTaskInfo *GetQualityRuleTaskResponseBodyRuleTaskInfo `json:"RuleTaskInfo,omitempty" xml:"RuleTaskInfo,omitempty" type:"Struct"`
-	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetQualityRuleTaskResponseBody) String() string {
@@ -118,71 +126,106 @@ func (s *GetQualityRuleTaskResponseBody) Validate() error {
 }
 
 type GetQualityRuleTaskResponseBodyRuleTaskInfo struct {
+	// The business date.
+	//
 	// example:
 	//
 	// 2025-06-30
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// The business date format.
+	//
 	// example:
 	//
 	// yyyy-MM-dd
 	BizDateFormat *string `json:"BizDateFormat,omitempty" xml:"BizDateFormat,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator.
+	//
 	// example:
 	//
 	// 30012011
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The rule task ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the user who last modified the task.
+	//
 	// example:
 	//
 	// 30012011
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 11
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 11
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The validation object name.
+	//
 	// example:
 	//
 	// test
 	ValidateObjectName *string `json:"ValidateObjectName,omitempty" xml:"ValidateObjectName,omitempty"`
+	// The validation object type.
+	//
 	// example:
 	//
 	// column
 	ValidateObjectType *string `json:"ValidateObjectType,omitempty" xml:"ValidateObjectType,omitempty"`
+	// The validation partition.
+	//
 	// example:
 	//
 	// 20251011
 	ValidatePartition *string `json:"ValidatePartition,omitempty" xml:"ValidatePartition,omitempty"`
-	ValidateSuccess   *bool   `json:"ValidateSuccess,omitempty" xml:"ValidateSuccess,omitempty"`
+	// Indicates whether the validation passed.
+	ValidateSuccess *bool `json:"ValidateSuccess,omitempty" xml:"ValidateSuccess,omitempty"`
+	// The ID of the associated monitor.
+	//
 	// example:
 	//
 	// 1
 	WatchId *int64 `json:"WatchId,omitempty" xml:"WatchId,omitempty"`
+	// The monitor task ID. This ID is empty for trial-run rule tasks.
+	//
 	// example:
 	//
 	// 1

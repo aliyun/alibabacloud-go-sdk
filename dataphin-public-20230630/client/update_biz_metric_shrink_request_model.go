@@ -16,12 +16,16 @@ type iUpdateBizMetricShrinkRequest interface {
 }
 
 type UpdateBizMetricShrinkRequest struct {
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Update request
+	//
 	// This parameter is required.
 	UpdateBizMetricCommandShrink *string `json:"UpdateBizMetricCommand,omitempty" xml:"UpdateBizMetricCommand,omitempty"`
 }

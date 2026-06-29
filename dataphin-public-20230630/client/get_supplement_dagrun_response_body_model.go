@@ -24,23 +24,34 @@ type iGetSupplementDagrunResponseBody interface {
 }
 
 type GetSupplementDagrunResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code       *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of dagruns.
 	DagrunList []*GetSupplementDagrunResponseBodyDagrunList `json:"DagrunList,omitempty" xml:"DagrunList,omitempty" type:"Repeated"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -123,14 +134,20 @@ func (s *GetSupplementDagrunResponseBody) Validate() error {
 }
 
 type GetSupplementDagrunResponseBodyDagrunList struct {
+	// The business date. The time format must conform to the partition format specified by the business unit.
+	//
 	// example:
 	//
 	// 2024-04-01
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// The runtime duration, in seconds.
+	//
 	// example:
 	//
 	// 60s
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The execution end timestamp.
+	//
 	// example:
 	//
 	// 1717081789000
@@ -141,14 +158,36 @@ type GetSupplementDagrunResponseBodyDagrunList struct {
 	//
 	// dr_2242792_14542
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The execution start timestamp.
+	//
 	// example:
 	//
 	// 1717081729000
 	StartExecuteTime *int64 `json:"StartExecuteTime,omitempty" xml:"StartExecuteTime,omitempty"`
+	// The status of the data backfill instance workflow. Valid values:
+	//
+	// - INIT: dagrun init.
+	//
+	// - CREATE_FAILED: dagrun creation failed.
+	//
+	// - CREATED: dagrun created.
+	//
+	// - READY: dagrun ready for exec.
+	//
+	// - RUNNING: dagrun running.
+	//
+	// - KILLED: dagrun stopped.
+	//
+	// - FAILED: dagrun failed.
+	//
+	// - SUCCESS: dagrun succeeded.
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the data backfill instance workflow.
+	//
 	// example:
 	//
 	// f_8241792_20201202_2099680

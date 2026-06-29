@@ -16,8 +16,12 @@ type iGetBizMetricByNameShrinkRequest interface {
 }
 
 type GetBizMetricByNameShrinkRequest struct {
+	// Query request.
+	//
 	// This parameter is required.
 	BizMetricByNameQueryShrink *string `json:"BizMetricByNameQuery,omitempty" xml:"BizMetricByNameQuery,omitempty"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

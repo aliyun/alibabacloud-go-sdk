@@ -24,15 +24,22 @@ type iDeleteSecurityLevelResponseBody interface {
 }
 
 type DeleteSecurityLevelResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code         *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The deletion result.
 	DeleteResult *DeleteSecurityLevelResponseBodyDeleteResult `json:"DeleteResult,omitempty" xml:"DeleteResult,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type DeleteSecurityLevelResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteSecurityLevelResponseBody) String() string {
@@ -118,12 +126,16 @@ func (s *DeleteSecurityLevelResponseBody) Validate() error {
 }
 
 type DeleteSecurityLevelResponseBodyDeleteResult struct {
+	// The error code.
+	//
 	// example:
 	//
 	// E10012011
-	ErrorCode             *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The list of data classification IDs that are associated with the current classification level. This parameter is returned only when this error is triggered.
 	RelatedClassifyIdList []*int64 `json:"RelatedClassifyIdList,omitempty" xml:"RelatedClassifyIdList,omitempty" type:"Repeated"`
-	Success               *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the deletion was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteSecurityLevelResponseBodyDeleteResult) String() string {

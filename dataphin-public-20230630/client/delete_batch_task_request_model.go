@@ -16,8 +16,12 @@ type iDeleteBatchTaskRequest interface {
 }
 
 type DeleteBatchTaskRequest struct {
+	// The delete request.
+	//
 	// This parameter is required.
 	DeleteCommand *DeleteBatchTaskRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,18 +66,24 @@ func (s *DeleteBatchTaskRequest) Validate() error {
 }
 
 type DeleteBatchTaskRequestDeleteCommand struct {
+	// The description of the delete operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test task
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the node in the folder.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12113111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The ID of the project to which the node belongs.
+	//
 	// This parameter is required.
 	//
 	// example:

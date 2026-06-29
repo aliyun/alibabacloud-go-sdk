@@ -16,8 +16,12 @@ type iCreateStandardLookupTableRequest interface {
 }
 
 type CreateStandardLookupTableRequest struct {
+	// The create command.
+	//
 	// This parameter is required.
 	CreateCommand *CreateStandardLookupTableRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,24 +66,34 @@ func (s *CreateStandardLookupTableRequest) Validate() error {
 }
 
 type CreateStandardLookupTableRequestCreateCommand struct {
+	// The code of the lookup table.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CITY
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The description of the lookup table.
+	//
 	// example:
 	//
 	// test
-	Description          *string                                                              `json:"Description,omitempty" xml:"Description,omitempty"`
-	DirectoryReference   *CreateStandardLookupTableRequestCreateCommandDirectoryReference     `json:"DirectoryReference,omitempty" xml:"DirectoryReference,omitempty" type:"Struct"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The directory to which the lookup table belongs.
+	DirectoryReference *CreateStandardLookupTableRequestCreateCommandDirectoryReference `json:"DirectoryReference,omitempty" xml:"DirectoryReference,omitempty" type:"Struct"`
+	// The list of lookup table values.
 	LookupTableValueList []*CreateStandardLookupTableRequestCreateCommandLookupTableValueList `json:"LookupTableValueList,omitempty" xml:"LookupTableValueList,omitempty" type:"Repeated"`
+	// The name of the lookup table.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 城市码表
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the lookup table owner. Default value: the user ID of the caller.
+	//
 	// example:
 	//
 	// 30012021
@@ -167,6 +181,8 @@ func (s *CreateStandardLookupTableRequestCreateCommand) Validate() error {
 }
 
 type CreateStandardLookupTableRequestCreateCommandDirectoryReference struct {
+	// The directory to which the lookup table belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -197,20 +213,28 @@ func (s *CreateStandardLookupTableRequestCreateCommandDirectoryReference) Valida
 }
 
 type CreateStandardLookupTableRequestCreateCommandLookupTableValueList struct {
+	// The description of the code.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The English name of the code.
+	//
 	// example:
 	//
 	// HZ
 	EnglishName *string `json:"EnglishName,omitempty" xml:"EnglishName,omitempty"`
+	// The code name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Hangzhou
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The code value.
+	//
 	// This parameter is required.
 	//
 	// example:

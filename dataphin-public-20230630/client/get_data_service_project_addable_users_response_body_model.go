@@ -24,14 +24,20 @@ type iGetDataServiceProjectAddableUsersResponseBody interface {
 }
 
 type GetDataServiceProjectAddableUsersResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -41,9 +47,11 @@ type GetDataServiceProjectAddableUsersResponseBody struct {
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
-	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	UserList  []*GetDataServiceProjectAddableUsersResponseBodyUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The list of project members.
+	UserList []*GetDataServiceProjectAddableUsersResponseBodyUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
 
 func (s GetDataServiceProjectAddableUsersResponseBody) String() string {
@@ -122,14 +130,20 @@ func (s *GetDataServiceProjectAddableUsersResponseBody) Validate() error {
 }
 
 type GetDataServiceProjectAddableUsersResponseBodyUserList struct {
+	// The username of the user.
+	//
 	// example:
 	//
 	// xx@aliyuncs.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The nickname of the user.
+	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 30012011

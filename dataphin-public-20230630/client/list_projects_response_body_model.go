@@ -24,18 +24,25 @@ type iListProjectsResponseBody interface {
 }
 
 type ListProjectsResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
-	Message    *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paging query result.
 	PageResult *ListProjectsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type ListProjectsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListProjectsResponseBody) String() string {
@@ -118,7 +126,10 @@ func (s *ListProjectsResponseBody) Validate() error {
 }
 
 type ListProjectsResponseBodyPageResult struct {
+	// The paginated list of projects.
 	ProjectList []*ListProjectsResponseBodyPageResultProjectList `json:"ProjectList,omitempty" xml:"ProjectList,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 68
@@ -165,66 +176,98 @@ func (s *ListProjectsResponseBodyPageResult) Validate() error {
 }
 
 type ListProjectsResponseBodyPageResultProjectList struct {
+	// The business unit ID.
+	//
 	// example:
 	//
 	// 162112
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The compute source ID.
+	//
 	// example:
 	//
 	// 1121
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The name of the compute source.
+	//
 	// example:
 	//
 	// ds1
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the project.
+	//
 	// example:
 	//
 	// 测试
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The environment identifier.
+	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The time when the project was created, in the yyyy-MM-dd HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2025-06-10 10:01:01
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the project was last modified, in the yyyy-MM-dd HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2025-06-10 10:01:01
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 1030111021
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The project mode.
+	//
 	// example:
 	//
 	// BASIC
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// demo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The project owner.
+	//
 	// example:
 	//
 	// 30012112
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The project owner.
+	//
 	// example:
 	//
 	// 张三
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The real-time compute source ID.
+	//
 	// example:
 	//
 	// 1122
 	RealtimeDataSourceId *int64 `json:"RealtimeDataSourceId,omitempty" xml:"RealtimeDataSourceId,omitempty"`
+	// The name of the real-time compute source.
+	//
 	// example:
 	//
 	// ds2
 	RealtimeDataSourceName *string `json:"RealtimeDataSourceName,omitempty" xml:"RealtimeDataSourceName,omitempty"`
+	// The project type.
+	//
 	// example:
 	//
 	// GENERAL

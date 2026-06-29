@@ -24,23 +24,34 @@ type iUpdateBizMetricResponseBody interface {
 }
 
 type UpdateBizMetricResponseBody struct {
+	// Error code. A value of OK indicates the request was successful
+	//
 	// example:
 	//
 	// OK
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Operation result
 	Data *UpdateBizMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful
+	//
 	// example:
 	//
 	// true
@@ -119,10 +130,14 @@ func (s *UpdateBizMetricResponseBody) Validate() error {
 }
 
 type UpdateBizMetricResponseBodyData struct {
+	// Exception message
+	//
 	// example:
 	//
 	// npe
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the update was successful. Valid values: true (success) and false (failure)
+	//
 	// example:
 	//
 	// true

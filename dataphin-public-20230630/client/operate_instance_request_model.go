@@ -18,16 +18,26 @@ type iOperateInstanceRequest interface {
 }
 
 type OperateInstanceRequest struct {
+	// The environment identifier. Valid values:
+	//
+	// - DEV: development environment.
+	//
+	// - PROD (default): production environment.
+	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operation request.
+	//
 	// This parameter is required.
 	OperateCommand *OperateInstanceRequestOperateCommand `json:"OperateCommand,omitempty" xml:"OperateCommand,omitempty" type:"Struct"`
 }
@@ -77,14 +87,30 @@ func (s *OperateInstanceRequest) Validate() error {
 }
 
 type OperateInstanceRequestOperateCommand struct {
+	// The list of instances to operate on.
+	//
 	// This parameter is required.
 	InstanceIdList []*OperateInstanceRequestOperateCommandInstanceIdList `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+	// The operation to perform. Valid values:
+	//
+	// - RERUN: Reruns the instance.
+	//
+	// - PAUSE: Pauses the instance.
+	//
+	// - RESUME: Resumes the instance.
+	//
+	// - TERMINATE: Stops the instance.
+	//
+	// - SET_SUCCESS: Sets the instance status to successful.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// RERUN
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -142,7 +168,10 @@ func (s *OperateInstanceRequestOperateCommand) Validate() error {
 }
 
 type OperateInstanceRequestOperateCommandInstanceIdList struct {
+	// The field instance IDs.
 	FieldInstanceIdList []*string `json:"FieldInstanceIdList,omitempty" xml:"FieldInstanceIdList,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

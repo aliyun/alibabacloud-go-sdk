@@ -18,18 +18,24 @@ type iListProjectMembersShrinkRequest interface {
 }
 
 type ListProjectMembersShrinkRequest struct {
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1030111021
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request object.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1030111021
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

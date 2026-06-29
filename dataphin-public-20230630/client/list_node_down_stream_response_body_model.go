@@ -24,23 +24,34 @@ type iListNodeDownStreamResponseBody interface {
 }
 
 type ListNodeDownStreamResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message      *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of nodes.
 	NodeInfoList []*ListNodeDownStreamResponseBodyNodeInfoList `json:"NodeInfoList,omitempty" xml:"NodeInfoList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -123,16 +134,28 @@ func (s *ListNodeDownStreamResponseBody) Validate() error {
 }
 
 type ListNodeDownStreamResponseBodyNodeInfoList struct {
+	// The depth level.
+	//
 	// example:
 	//
 	// 1
-	Depth       *int32    `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	Depth *int32 `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	// The list of field IDs.
 	FieldIdList []*string `json:"FieldIdList,omitempty" xml:"FieldIdList,omitempty" type:"Repeated"`
+	// The node ID.
+	//
 	// example:
 	//
 	// n_2423351
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The node name.
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The node type.
+	//
 	// example:
 	//
 	// DATA_PROCESS

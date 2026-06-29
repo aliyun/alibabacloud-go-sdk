@@ -16,8 +16,12 @@ type iCreatePipelineNodeRequest interface {
 }
 
 type CreatePipelineNodeRequest struct {
+	// The command to create a pipeline. Both offline and real-time pipelines are supported.
+	//
 	// This parameter is required.
 	CreatePipelineNodeCommand *CreatePipelineNodeRequestCreatePipelineNodeCommand `json:"CreatePipelineNodeCommand,omitempty" xml:"CreatePipelineNodeCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,26 +66,36 @@ func (s *CreatePipelineNodeRequest) Validate() error {
 }
 
 type CreatePipelineNodeRequestCreatePipelineNodeCommand struct {
+	// The task file information.
+	//
 	// This parameter is required.
 	FileInfo *CreatePipelineNodeRequestCreatePipelineNodeCommandFileInfo `json:"FileInfo,omitempty" xml:"FileInfo,omitempty" type:"Struct"`
+	// The node type. Valid values: NORMAL, MANUAL, and REAL_TIME.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// REAL_TIME
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The pipeline name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_pipeline
 	PipelineName *string `json:"PipelineName,omitempty" xml:"PipelineName,omitempty"`
+	// The pipeline type. Valid values: OFFLINE_PIPELINE and REAL_TIME_PIPELINE.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// REAL_TIME_PIPELINE
 	PipelineType *string `json:"PipelineType,omitempty" xml:"PipelineType,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -153,14 +167,20 @@ func (s *CreatePipelineNodeRequestCreatePipelineNodeCommand) Validate() error {
 }
 
 type CreatePipelineNodeRequestCreatePipelineNodeCommandFileInfo struct {
+	// The file description.
+	//
 	// example:
 	//
 	// desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The full path of the parent directory of the file. If this parameter is left empty, the root path (/) is used.
+	//
 	// example:
 	//
 	// test
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// The file name.
+	//
 	// This parameter is required.
 	//
 	// example:

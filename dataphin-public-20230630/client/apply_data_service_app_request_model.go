@@ -18,14 +18,20 @@ type iApplyDataServiceAppRequest interface {
 }
 
 type ApplyDataServiceAppRequest struct {
+	// The apply command.
+	//
 	// This parameter is required.
 	ApplyCommand *ApplyDataServiceAppRequestApplyCommand `json:"ApplyCommand,omitempty" xml:"ApplyCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The data service project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -87,12 +93,16 @@ type ApplyDataServiceAppRequestApplyCommand struct {
 	//
 	// 2011
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The expiration date in the format of yyyy-MM-dd.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-06-30
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The reason for the application.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,12 +16,16 @@ type iUpdateResourceRequest interface {
 }
 
 type UpdateResourceRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The edit command.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateResourceRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,42 +66,60 @@ func (s *UpdateResourceRequest) Validate() error {
 }
 
 type UpdateResourceRequestUpdateCommand struct {
+	// The commit remarks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xx 测试
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The compute engine type. Valid values:
+	//
+	// - MAX_COMPUTE
+	//
+	// - HADOOP.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MAX_COMPUTE
 	ComputeEngineType *string `json:"ComputeEngineType,omitempty" xml:"ComputeEngineType,omitempty"`
+	// The resource description.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xx 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The resource ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10112101
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The resource name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 711833
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The storage address of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,16 +18,26 @@ type iOperateInstanceShrinkRequest interface {
 }
 
 type OperateInstanceShrinkRequest struct {
+	// The environment identifier. Valid values:
+	//
+	// - DEV: development environment.
+	//
+	// - PROD (default): production environment.
+	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operation request.
+	//
 	// This parameter is required.
 	OperateCommandShrink *string `json:"OperateCommand,omitempty" xml:"OperateCommand,omitempty"`
 }

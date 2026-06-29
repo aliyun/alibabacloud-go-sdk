@@ -16,12 +16,16 @@ type iSyncDepartmentRequest interface {
 }
 
 type SyncDepartmentRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The request command.
+	//
 	// This parameter is required.
 	SyncDepartmentCommand *SyncDepartmentRequestSyncDepartmentCommand `json:"SyncDepartmentCommand,omitempty" xml:"SyncDepartmentCommand,omitempty" type:"Struct"`
 }
@@ -62,6 +66,8 @@ func (s *SyncDepartmentRequest) Validate() error {
 }
 
 type SyncDepartmentRequestSyncDepartmentCommand struct {
+	// The department list (full organization tree).
+	//
 	// This parameter is required.
 	DepartmentList []*SyncDepartmentRequestSyncDepartmentCommandDepartmentList `json:"DepartmentList,omitempty" xml:"DepartmentList,omitempty" type:"Repeated"`
 }
@@ -97,18 +103,24 @@ func (s *SyncDepartmentRequestSyncDepartmentCommand) Validate() error {
 }
 
 type SyncDepartmentRequestSyncDepartmentCommandDepartmentList struct {
+	// The department ID (unique identifier of the department).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10001
 	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// The display name of the department.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 研发中心
 	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
+	// The parent department ID (unique identifier of the parent department). Set to null if no parent department exists.
+	//
 	// example:
 	//
 	// 10001

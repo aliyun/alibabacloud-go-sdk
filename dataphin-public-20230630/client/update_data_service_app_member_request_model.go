@@ -16,12 +16,16 @@ type iUpdateDataServiceAppMemberRequest interface {
 }
 
 type UpdateDataServiceAppMemberRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The command to update regular members of a data service application.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateDataServiceAppMemberRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,12 +66,16 @@ func (s *UpdateDataServiceAppMemberRequest) Validate() error {
 }
 
 type UpdateDataServiceAppMemberRequestUpdateCommand struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 200000000
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The list of members.
+	//
 	// This parameter is required.
 	MemberList []*UpdateDataServiceAppMemberRequestUpdateCommandMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
 }
@@ -112,12 +120,16 @@ func (s *UpdateDataServiceAppMemberRequestUpdateCommand) Validate() error {
 }
 
 type UpdateDataServiceAppMemberRequestUpdateCommandMemberList struct {
+	// The authorization expiration time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2026-12-12
 	EffectiveEnd *string `json:"EffectiveEnd,omitempty" xml:"EffectiveEnd,omitempty"`
+	// The user ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,12 +16,16 @@ type iUpdateAdHocFileRequest interface {
 }
 
 type UpdateAdHocFileRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update request.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateAdHocFileRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,18 +66,24 @@ func (s *UpdateAdHocFileRequest) Validate() error {
 }
 
 type UpdateAdHocFileRequestUpdateCommand struct {
+	// The file content.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// select 1;
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The file ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2311113
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,12 +16,16 @@ type iPublishObjectListRequest interface {
 }
 
 type PublishObjectListRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The publish command.
+	//
 	// This parameter is required.
 	PublishCommand *PublishObjectListRequestPublishCommand `json:"PublishCommand,omitempty" xml:"PublishCommand,omitempty" type:"Struct"`
 }
@@ -62,18 +66,24 @@ func (s *PublishObjectListRequest) Validate() error {
 }
 
 type PublishObjectListRequestPublishCommand struct {
+	// The publish comment. The string can be up to 1024 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 发布
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234567
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The list of pending publish record IDs to be published. A maximum of 50 submit IDs can be specified.
+	//
 	// This parameter is required.
 	SubmitIdList []*int64 `json:"SubmitIdList,omitempty" xml:"SubmitIdList,omitempty" type:"Repeated"`
 }

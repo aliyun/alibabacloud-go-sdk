@@ -18,18 +18,24 @@ type iGetResourceRequest interface {
 }
 
 type GetResourceRequest struct {
+	// The name of the resource file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// udf_sleep.jar
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,7 +16,10 @@ type iListAlertNotificationsShrinkRequest interface {
 }
 
 type ListAlertNotificationsShrinkRequest struct {
+	// The query conditions.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

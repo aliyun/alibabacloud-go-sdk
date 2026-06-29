@@ -16,12 +16,16 @@ type iUpsertQualityRuleRequest interface {
 }
 
 type UpsertQualityRuleRequest struct {
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The upsert command.
+	//
 	// This parameter is required.
 	UpsertCommand *UpsertQualityRuleRequestUpsertCommand `json:"UpsertCommand,omitempty" xml:"UpsertCommand,omitempty" type:"Struct"`
 }
@@ -62,44 +66,126 @@ func (s *UpsertQualityRuleRequest) Validate() error {
 }
 
 type UpsertQualityRuleRequestUpsertCommand struct {
+	// The rule business attribute configuration.
 	AttributeWithValueList []*UpsertQualityRuleRequestUpsertCommandAttributeWithValueList `json:"AttributeWithValueList,omitempty" xml:"AttributeWithValueList,omitempty" type:"Repeated"`
+	// The rule category. Valid values: CONSISTENT (Consistency), EFFECTIVE (Effectiveness), TIMELINESE (Timeliness), ACCURATE (Accuracy), UNIQUENESS (Uniqueness), COMPLETENESS (Completeness), STABILITY (Stability), CUSTOM (Custom).
+	//
 	// This parameter is required.
 	CatalogList []*string `json:"CatalogList,omitempty" xml:"CatalogList,omitempty" type:"Repeated"`
+	// The description of the quality rule.
+	//
 	// example:
 	//
 	// test
-	Description        *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableErrorArchive *bool                                                    `json:"EnableErrorArchive,omitempty" xml:"EnableErrorArchive,omitempty"`
-	FormPropertyList   []*UpsertQualityRuleRequestUpsertCommandFormPropertyList `json:"FormPropertyList,omitempty" xml:"FormPropertyList,omitempty" type:"Repeated"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable error archiving.
+	EnableErrorArchive *bool `json:"EnableErrorArchive,omitempty" xml:"EnableErrorArchive,omitempty"`
+	// The rule configuration key-value pairs. The configuration varies based on the template type. Different template types return different form key-value pair configurations.
+	FormPropertyList []*UpsertQualityRuleRequestUpsertCommandFormPropertyList `json:"FormPropertyList,omitempty" xml:"FormPropertyList,omitempty" type:"Repeated"`
+	// Rule ID. A non-empty value indicates a modification, and an empty value indicates a creation.
+	//
 	// example:
 	//
 	// 11
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the quality rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The rule strength. Valid values: STRONG, WEAK.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// STRONG
 	Strength *string `json:"Strength,omitempty" xml:"Strength,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template type. Valid values:
+	//
+	//   - FIELD_NULL_VALUE_VALIDATE: Field null value validation
+	//
+	//   - FIELD_EMPTY_STRING_VALIDATE: Field empty string validation
+	//
+	//   - FIELD_UNIQUE_VALIDATE: Field uniqueness validation
+	//
+	//   - FIELD_GROUP_COUNT_VALIDATE: Field unique value count validation
+	//
+	//   - FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: Field duplicate value count validation
+	//
+	//   - FUNCTION_TIME_COMPARE: Time function comparison
+	//
+	//   - SINGLE_TABLE_TIME_COMPARE: Single-table time field comparison
+	//
+	//   - DOUBLE_TABLE_TIME_COMPARE: Cross-table time field comparison
+	//
+	//   - FIELD_FORMAT_VALIDATE: Field format validation
+	//
+	//   - FIELD_LENGTH_VALIDATE: Field length validation
+	//
+	//   - FIELD_VALUE_RANGE_VALIDATE: Field value range validation
+	//
+	//   - CODE_TABLE_COMPARE: Code table reference comparison
+	//
+	//   - STANDARD_CODE_TABLE_COMPARE: Data standard code table reference comparison
+	//
+	//   - SINGLE_TABLE_FIELD_VALUE_COMPARE: Single-table field value consistency comparison
+	//
+	//   - SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: Single-table field statistical value consistency comparison
+	//
+	//   - SINGLE_TABLE_FIELD_EXP_COMPARE: Single-table field business logic consistency comparison
+	//
+	//   - DOUBLE_TABLE_FIELD_VALUE_COMPARE: Cross-table field value consistency comparison
+	//
+	//   - DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: Cross-table field statistical value consistency comparison
+	//
+	//   - CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: Cross-source cross-table field statistical value consistency comparison
+	//
+	//   - DOUBLE_TABLE_FIELD_EXP_COMPARE: Cross-table field business logic consistency comparison
+	//
+	//   - TABLE_STABILITY_VALIDATE: Table stability validation
+	//
+	//   - TABLE_FLUCTUATION_VALIDATE: Table fluctuation validation
+	//
+	//   - FIELD_STABILITY_VALIDATE: Field stability validation
+	//
+	//   - FIELD_FLUCTUATION_VALIDATE: Field fluctuation validation
+	//
+	//   - CUSTOM_STATISTICAL_VALIDATE: Custom statistical metric validation
+	//
+	//   - CUSTOM_DATA_DETAILS_VALIDATE: Custom data details validation
+	//
+	//   - DATASOURCE_AVAILABLE_CHECK: Data source connectivity check
+	//
+	//   - TABLE_SCHEMA_CHECK: Table schema change monitoring
+	//
+	//   - REAL_TIME_OFFLINE_COMPARE: Real-time offline comparison
+	//
+	//   - REAL_TIME_STATISTICAL_VALIDATE: Real-time statistical value monitoring
+	//
+	//   - REAL_TIME_MULTI_CHAIN_COMPARE: Real-time multi-chain comparison, etc.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FIELD_NULL_VALUE_VALIDATE
-	TemplateType          *string                                                       `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The validation conditions.
 	ValidateConditionList []*UpsertQualityRuleRequestUpsertCommandValidateConditionList `json:"ValidateConditionList,omitempty" xml:"ValidateConditionList,omitempty" type:"Repeated"`
+	// The ID of the associated monitor.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -256,7 +342,9 @@ func (s *UpsertQualityRuleRequestUpsertCommand) Validate() error {
 }
 
 type UpsertQualityRuleRequestUpsertCommandAttributeWithValueList struct {
-	AttributeInfo  *UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeInfo  `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty" type:"Struct"`
+	// The attribute details.
+	AttributeInfo *UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeInfo `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty" type:"Struct"`
+	// The attribute value.
 	AttributeValue *UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeValue `json:"AttributeValue,omitempty" xml:"AttributeValue,omitempty" type:"Struct"`
 }
 
@@ -301,21 +389,31 @@ func (s *UpsertQualityRuleRequestUpsertCommandAttributeWithValueList) Validate()
 }
 
 type UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeInfo struct {
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Enabled     *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Specifies whether to enable the attribute.
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The attribute ID.
+	//
 	// example:
 	//
 	// 711484689131
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The attribute name.
+	//
 	// example:
 	//
 	// attr01
-	Name        *string                                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	Required    *bool                                                                                `json:"Required,omitempty" xml:"Required,omitempty"`
-	Searchable  *bool                                                                                `json:"Searchable,omitempty" xml:"Searchable,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether the attribute is required.
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// Specifies whether the attribute is searchable.
+	Searchable *bool `json:"Searchable,omitempty" xml:"Searchable,omitempty"`
+	// The attribute value configuration details.
 	ValueConfig *UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeInfoValueConfig `json:"ValueConfig,omitempty" xml:"ValueConfig,omitempty" type:"Struct"`
 }
 
@@ -400,19 +498,27 @@ func (s *UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeInf
 }
 
 type UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeInfoValueConfig struct {
+	// The attribute field type. Valid values: STRING (Text), BIGINT (Integer), DOUBLE (Floating-point), BOOLEAN (Boolean), DATE (Date), DATETIME (Datetime).
+	//
 	// example:
 	//
 	// STRING
-	DataType     *string                                                                                          `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The attribute default value.
 	DefaultValue *UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeInfoValueConfigDefaultValue `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty" type:"Struct"`
+	// The attribute field length. Used to constrain the maximum length of text-type attribute values.
+	//
 	// example:
 	//
 	// 986992
 	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The attribute value input method. Valid values: CUSTOMIZED (Custom input), SINGLE_ENUM (Single-select dropdown), MULTIPLE_ENUMS (Multi-select dropdown), RANGE (Range interval).
+	//
 	// example:
 	//
 	// CUSTOMIZED
-	Type          *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The attribute option values. Only applicable to attributes with the single-select dropdown or multi-select dropdown input method.
 	ValueEnumList []*string `json:"ValueEnumList,omitempty" xml:"ValueEnumList,omitempty" type:"Repeated"`
 }
 
@@ -479,16 +585,23 @@ func (s *UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeInf
 }
 
 type UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeInfoValueConfigDefaultValue struct {
+	// Specifies whether to include the maximum value.
 	IncludeMaxValue *bool `json:"IncludeMaxValue,omitempty" xml:"IncludeMaxValue,omitempty"`
+	// Specifies whether to include the minimum value.
 	IncludeMinValue *bool `json:"IncludeMinValue,omitempty" xml:"IncludeMinValue,omitempty"`
+	// The maximum value. Applicable to range interval attributes.
+	//
 	// example:
 	//
 	// 11
 	MaxValue *string `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	// The minimum value. Applicable to range interval attributes.
+	//
 	// example:
 	//
 	// 1
-	MinValue  *string   `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	MinValue *string `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	// The attribute value list. Applicable to attributes with the custom input, single-select dropdown, or multi-select dropdown input method.
 	ValueList []*string `json:"ValueList,omitempty" xml:"ValueList,omitempty" type:"Repeated"`
 }
 
@@ -550,16 +663,23 @@ func (s *UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeInf
 }
 
 type UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeValue struct {
+	// Specifies whether to include the maximum value.
 	IncludeMaxValue *bool `json:"IncludeMaxValue,omitempty" xml:"IncludeMaxValue,omitempty"`
+	// Specifies whether to include the minimum value.
 	IncludeMinValue *bool `json:"IncludeMinValue,omitempty" xml:"IncludeMinValue,omitempty"`
+	// The maximum value. Applicable to range interval attributes.
+	//
 	// example:
 	//
 	// 11
 	MaxValue *string `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	// The minimum value. Applicable to range interval attributes.
+	//
 	// example:
 	//
 	// 1
-	MinValue  *string   `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	MinValue *string `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	// The attribute value list. Applicable to attributes with the custom input, single-select dropdown, or multi-select dropdown input method.
 	ValueList []*string `json:"ValueList,omitempty" xml:"ValueList,omitempty" type:"Repeated"`
 }
 
@@ -621,14 +741,20 @@ func (s *UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeVal
 }
 
 type UpsertQualityRuleRequestUpsertCommandFormPropertyList struct {
+	// The component type.
+	//
 	// example:
 	//
 	// expression
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	// The property name.
+	//
 	// example:
 	//
 	// col
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The property value.
+	//
 	// example:
 	//
 	// abc
@@ -675,26 +801,38 @@ func (s *UpsertQualityRuleRequestUpsertCommandFormPropertyList) Validate() error
 }
 
 type UpsertQualityRuleRequestUpsertCommandValidateConditionList struct {
+	// The ID of the condition node.
+	//
 	// example:
 	//
 	// 268
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The metric.
+	//
 	// example:
 	//
 	// test
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The operator. Valid values: EQUAL, NOT_EQUAL, LARGER, SMALLER, LARGE_OR_EQUAL, SMALLER_OR_EQUAL, AND, OR.
+	//
 	// example:
 	//
 	// AND
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The ID of the parent condition node.
+	//
 	// example:
 	//
 	// 123
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The condition type. Valid values: RELATION, EXPRESSION.
+	//
 	// example:
 	//
 	// RELATION
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value.
+	//
 	// example:
 	//
 	// 1

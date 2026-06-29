@@ -18,16 +18,26 @@ type iPausePhysicalNodeRequest interface {
 }
 
 type PausePhysicalNodeRequest struct {
+	// The environment identifier. Valid values:
+	//
+	// - DEV: development environment
+	//
+	// - PROD (default): production environment.
+	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The pause scheduling request.
+	//
 	// This parameter is required.
 	PauseCommand *PausePhysicalNodeRequestPauseCommand `json:"PauseCommand,omitempty" xml:"PauseCommand,omitempty" type:"Struct"`
 }
@@ -77,8 +87,12 @@ func (s *PausePhysicalNodeRequest) Validate() error {
 }
 
 type PausePhysicalNodeRequestPauseCommand struct {
+	// The list of node IDs.
+	//
 	// This parameter is required.
 	NodeIdList []*string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

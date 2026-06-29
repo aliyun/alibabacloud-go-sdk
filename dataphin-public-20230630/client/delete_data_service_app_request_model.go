@@ -16,12 +16,16 @@ type iDeleteDataServiceAppRequest interface {
 }
 
 type DeleteDataServiceAppRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// -535093682933
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

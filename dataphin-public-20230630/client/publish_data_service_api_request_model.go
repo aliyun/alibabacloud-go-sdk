@@ -20,24 +20,32 @@ type iPublishDataServiceApiRequest interface {
 }
 
 type PublishDataServiceApiRequest struct {
+	// The API ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 102102
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The data service project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 102102
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The API version number.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,15 +24,22 @@ type iCreatePipelineResponseBody interface {
 }
 
 type CreatePipelineResponseBody struct {
+	// Backend response code
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Integration pipeline/workflow task creation result
 	Data *CreatePipelineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Backend response exception details
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type CreatePipelineResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Whether the request was successful
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreatePipelineResponseBody) String() string {
@@ -118,22 +126,36 @@ func (s *CreatePipelineResponseBody) Validate() error {
 }
 
 type CreatePipelineResponseBodyData struct {
+	// Server-side execution machine name and IP
+	//
 	// example:
 	//
 	// hostName:hostIp
 	HostMachine *string `json:"HostMachine,omitempty" xml:"HostMachine,omitempty"`
+	// Scheduling node ID of the pipeline/workflow task after successful creation
+	//
 	// example:
 	//
 	// 123
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Pipeline/workflow ID after successful creation
+	//
 	// example:
 	//
 	// 123
 	PipelineId *int64 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// Submit ID of the pending release list generated after successfully submitting the pipeline, used for release through the release domain.
+	//
+	// Workflow tasks only support PROD, so this value is not applicable.
+	//
 	// example:
 	//
 	// 123
 	SubmitId *int64 `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
+	// Pending release version number generated after pipeline submission.
+	//
+	// Workflow tasks only support PROD, so this value is not applicable.
+	//
 	// example:
 	//
 	// 1

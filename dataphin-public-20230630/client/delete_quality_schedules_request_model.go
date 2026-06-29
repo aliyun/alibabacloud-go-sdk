@@ -16,8 +16,12 @@ type iDeleteQualitySchedulesRequest interface {
 }
 
 type DeleteQualitySchedulesRequest struct {
+	// The delete instruction.
+	//
 	// This parameter is required.
 	DeleteCommand *DeleteQualitySchedulesRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,6 +66,8 @@ func (s *DeleteQualitySchedulesRequest) Validate() error {
 }
 
 type DeleteQualitySchedulesRequestDeleteCommand struct {
+	// The IDs of the scheduling objects.
+	//
 	// This parameter is required.
 	ScheduleIdList []*int64 `json:"ScheduleIdList,omitempty" xml:"ScheduleIdList,omitempty" type:"Repeated"`
 }

@@ -16,8 +16,12 @@ type iCreateUdfRequest interface {
 }
 
 type CreateUdfRequest struct {
+	// The create command.
+	//
 	// This parameter is required.
 	CreateCommand *CreateUdfRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,58 +66,78 @@ func (s *CreateUdfRequest) Validate() error {
 }
 
 type CreateUdfRequestCreateCommand struct {
+	// The UDF category identifier. Valid values: 1: window function. 2: statistical function. 3: numerical function. 4: string function. 5: time function. 6: IP address utility function. 7: URL-related function. 8: encoding and decoding function. 9: business-related function. 10: other.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The class name that implements the function in the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// com.lydaas.SleepTest
 	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
+	// The command format for function calling invoke.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// udf_sleep(100)
 	CommandHelp *string `json:"CommandHelp,omitempty" xml:"CommandHelp,omitempty"`
+	// The commit remarks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 测试
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The compute engine type. Valid values: MAX_COMPUTE, HADOOP.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MAX_COMPUTE
 	ComputeEngineType *string `json:"ComputeEngineType,omitempty" xml:"ComputeEngineType,omitempty"`
+	// The description.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The directory in which the function is stored.
+	//
 	// example:
 	//
 	// /
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// The function name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my_udf
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 711833
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The IDs of referenced resources.
+	//
 	// This parameter is required.
 	RefResourceIdList []*int64 `json:"RefResourceIdList,omitempty" xml:"RefResourceIdList,omitempty" type:"Repeated"`
 }

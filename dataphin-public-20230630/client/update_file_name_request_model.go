@@ -20,24 +20,32 @@ type iUpdateFileNameRequest interface {
 }
 
 type UpdateFileNameRequest struct {
+	// The file ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12121111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The new file name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxNew
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,23 +24,34 @@ type iListUserGroupMembersResponseBody interface {
 }
 
 type ListUserGroupMembersResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paged query result.
 	PageResult *ListUserGroupMembersResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,7 +130,10 @@ func (s *ListUserGroupMembersResponseBody) Validate() error {
 }
 
 type ListUserGroupMembersResponseBodyPageResult struct {
+	// The paged list.
 	MemberList []*ListUserGroupMembersResponseBodyPageResultMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 217
@@ -166,20 +180,30 @@ func (s *ListUserGroupMembersResponseBodyPageResult) Validate() error {
 }
 
 type ListUserGroupMembersResponseBodyPageResultMemberList struct {
+	// The user who added the member.
 	Creator *ListUserGroupMembersResponseBodyPageResultMemberListCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	// The time when the member was added to the user group.
+	//
 	// example:
 	//
 	// zhangsan
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The user group member ID.
+	//
 	// example:
 	//
 	// 2324211
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The user group ID.
+	//
 	// example:
 	//
 	// 231111
-	UserGroupId *string                                                       `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	UserInfo    *ListUserGroupMembersResponseBodyPageResultMemberListUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	// The user group member.
+	UserInfo *ListUserGroupMembersResponseBodyPageResultMemberListUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+	// The role of the member in the user group.
+	//
 	// example:
 	//
 	// SECURITY_ADMIN
@@ -263,14 +287,20 @@ func (s *ListUserGroupMembersResponseBodyPageResultMemberList) Validate() error 
 }
 
 type ListUserGroupMembersResponseBodyPageResultMemberListCreator struct {
+	// The account name of the user.
+	//
 	// example:
 	//
 	// 12121111
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// zhangsan
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 12121111
@@ -317,11 +347,20 @@ func (s *ListUserGroupMembersResponseBodyPageResultMemberListCreator) Validate()
 }
 
 type ListUserGroupMembersResponseBodyPageResultMemberListUserInfo struct {
+	// The account name of the user.
+	//
 	// example:
 	//
 	// atest
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// xx测试
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 13232

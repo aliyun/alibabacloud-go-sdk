@@ -16,8 +16,12 @@ type iCreatePipelineNodeShrinkRequest interface {
 }
 
 type CreatePipelineNodeShrinkRequest struct {
+	// The command to create a pipeline. Both offline and real-time pipelines are supported.
+	//
 	// This parameter is required.
 	CreatePipelineNodeCommandShrink *string `json:"CreatePipelineNodeCommand,omitempty" xml:"CreatePipelineNodeCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

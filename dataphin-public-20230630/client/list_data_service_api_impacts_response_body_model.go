@@ -24,18 +24,25 @@ type iListDataServiceApiImpactsResponseBody interface {
 }
 
 type ListDataServiceApiImpactsResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
-	Message    *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paged query result.
 	PageResult *ListDataServiceApiImpactsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type ListDataServiceApiImpactsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDataServiceApiImpactsResponseBody) String() string {
@@ -118,7 +126,10 @@ func (s *ListDataServiceApiImpactsResponseBody) Validate() error {
 }
 
 type ListDataServiceApiImpactsResponseBodyPageResult struct {
+	// The list of API impact analysis results.
 	ImpactList []*ListDataServiceApiImpactsResponseBodyPageResultImpactList `json:"ImpactList,omitempty" xml:"ImpactList,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 68
@@ -177,54 +188,80 @@ type ListDataServiceApiImpactsResponseBodyPageResultImpactList struct {
 	//
 	// 1101
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The number of calls.
+	//
 	// example:
 	//
 	// 11
 	CallCount *int64 `json:"CallCount,omitempty" xml:"CallCount,omitempty"`
+	// The number of client failures.
+	//
 	// example:
 	//
 	// 2
 	ClientFailCount *int64 `json:"ClientFailCount,omitempty" xml:"ClientFailCount,omitempty"`
+	// The source IP address of the access request.
+	//
 	// example:
 	//
 	// 192.168.1.1
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The number of abnormal API calls.
+	//
 	// example:
 	//
 	// 1
 	ErrorApiCount *int64 `json:"ErrorApiCount,omitempty" xml:"ErrorApiCount,omitempty"`
+	// The number of errors.
+	//
 	// example:
 	//
 	// 1
 	ErrorCount *int64 `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
+	// The error rate.
+	//
 	// example:
 	//
 	// 10.0
 	ErrorRate *string `json:"ErrorRate,omitempty" xml:"ErrorRate,omitempty"`
+	// The most recent call time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2025-06-30 08:00:00
 	LastCallTime *string `json:"LastCallTime,omitempty" xml:"LastCallTime,omitempty"`
+	// The gateway statistics time. Format: yyyy_MMdd_HHmm.
+	//
 	// example:
 	//
 	// 2025_0611_1011
 	Minute *string `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	// The number of offline instances.
+	//
 	// example:
 	//
 	// 1
 	OfflineCount *int64 `json:"OfflineCount,omitempty" xml:"OfflineCount,omitempty"`
+	// The total time consumed by successful calls.
+	//
 	// example:
 	//
 	// 99
 	SuccessTimeCost *string `json:"SuccessTimeCost,omitempty" xml:"SuccessTimeCost,omitempty"`
+	// The total number of calls.
+	//
 	// example:
 	//
 	// 88
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total time consumed by the API, including failed calls.
+	//
 	// example:
 	//
 	// 231

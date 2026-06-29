@@ -24,14 +24,20 @@ type iGetStandardWordRootResponseBody interface {
 }
 
 type GetStandardWordRootResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -41,8 +47,10 @@ type GetStandardWordRootResponseBody struct {
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
-	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The word root details.
 	WordRootInfo *GetStandardWordRootResponseBodyWordRootInfo `json:"WordRootInfo,omitempty" xml:"WordRootInfo,omitempty" type:"Struct"`
 }
 
@@ -118,42 +126,62 @@ func (s *GetStandardWordRootResponseBody) Validate() error {
 }
 
 type GetStandardWordRootResponseBodyWordRootInfo struct {
+	// The abbreviation of the word root.
+	//
 	// example:
 	//
 	// avg
 	Abbreviation *string `json:"Abbreviation,omitempty" xml:"Abbreviation,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The user ID of the creator.
+	//
 	// example:
 	//
 	// 30012021
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The username of the creator.
+	//
 	// example:
 	//
 	// test
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The description of the word root.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The full name of the word root.
+	//
 	// example:
 	//
 	// average
 	FullName *string `json:"FullName,omitempty" xml:"FullName,omitempty"`
+	// The user ID of the last modifier.
+	//
 	// example:
 	//
 	// 30012021
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
+	// The username of the last modifier.
+	//
 	// example:
 	//
 	// test
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The name of the word root.
+	//
 	// example:
 	//
 	// 平均值

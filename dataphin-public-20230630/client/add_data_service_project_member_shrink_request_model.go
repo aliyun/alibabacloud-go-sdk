@@ -18,14 +18,20 @@ type iAddDataServiceProjectMemberShrinkRequest interface {
 }
 
 type AddDataServiceProjectMemberShrinkRequest struct {
+	// The command to add project members.
+	//
 	// This parameter is required.
 	AddCommandShrink *string `json:"AddCommand,omitempty" xml:"AddCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The data service project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

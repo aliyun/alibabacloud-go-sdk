@@ -24,26 +24,37 @@ type iGetMyTenantsResponseBody interface {
 }
 
 type GetMyTenantsResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
-	Success    *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The list of tenants.
 	TenantList []*GetMyTenantsResponseBodyTenantList `json:"TenantList,omitempty" xml:"TenantList,omitempty" type:"Repeated"`
 }
 
@@ -123,37 +134,64 @@ func (s *GetMyTenantsResponseBody) Validate() error {
 }
 
 type GetMyTenantsResponseBodyTenantList struct {
+	// The time when the tenant was deleted.
+	//
 	// example:
 	//
 	// 1717343597000
 	DeleteTime *int64 `json:"DeleteTime,omitempty" xml:"DeleteTime,omitempty"`
+	// Indicates whether the tenant is deleted.
+	//
 	// example:
 	//
 	// false
-	Deleted     *bool   `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// The tenant description.
+	//
+	// example:
+	//
+	// xx 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 132311
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant name.
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the tenant is an O&M tenant.
+	//
 	// example:
 	//
 	// false
 	OpsTenant *bool `json:"OpsTenant,omitempty" xml:"OpsTenant,omitempty"`
+	// The ID of the user to whom the tenant belongs.
+	//
 	// example:
 	//
 	// 21323231
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Indicates whether resource quota calculation is performed.
+	//
 	// example:
 	//
 	// false
-	ResourceLimited *bool     `json:"ResourceLimited,omitempty" xml:"ResourceLimited,omitempty"`
-	TenantTypeList  []*string `json:"TenantTypeList,omitempty" xml:"TenantTypeList,omitempty" type:"Repeated"`
+	ResourceLimited *bool `json:"ResourceLimited,omitempty" xml:"ResourceLimited,omitempty"`
+	// The tenant types.
+	TenantTypeList []*string `json:"TenantTypeList,omitempty" xml:"TenantTypeList,omitempty" type:"Repeated"`
+	// The title type of the tenant.
+	//
 	// example:
 	//
 	// icon
 	TitleType *string `json:"TitleType,omitempty" xml:"TitleType,omitempty"`
+	// Indicates whether the tenant is visible.
+	//
 	// example:
 	//
 	// true

@@ -24,14 +24,20 @@ type iGetSecurityLevelResponseBody interface {
 }
 
 type GetSecurityLevelResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend response exception.
+	//
 	// example:
 	//
 	// internal error
@@ -41,9 +47,11 @@ type GetSecurityLevelResponseBody struct {
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
-	RequestId         *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data classification level details.
 	SecurityLevelInfo *GetSecurityLevelResponseBodySecurityLevelInfo `json:"SecurityLevelInfo,omitempty" xml:"SecurityLevelInfo,omitempty" type:"Struct"`
-	Success           *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSecurityLevelResponseBody) String() string {
@@ -118,22 +126,31 @@ func (s *GetSecurityLevelResponseBody) Validate() error {
 }
 
 type GetSecurityLevelResponseBodySecurityLevelInfo struct {
+	// The abbreviated name of the data classification level.
+	//
 	// example:
 	//
 	// test
 	Abbreviation *string `json:"Abbreviation,omitempty" xml:"Abbreviation,omitempty"`
+	// The description of the data classification level.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The sensitivity level of the data classification.
+	//
 	// example:
 	//
 	// 1
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The name of the data classification level.
+	//
 	// example:
 	//
 	// test
-	Name                  *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of data categorization IDs associated with the current data classification level.
 	RelatedClassifyIdList []*int64 `json:"RelatedClassifyIdList,omitempty" xml:"RelatedClassifyIdList,omitempty" type:"Repeated"`
 }
 

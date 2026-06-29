@@ -16,8 +16,12 @@ type iListCatalogAssetsShrinkRequest interface {
 }
 
 type ListCatalogAssetsShrinkRequest struct {
+	// The query parameters.
+	//
 	// This parameter is required.
 	ListCatalogAssetsQueryShrink *string `json:"ListCatalogAssetsQuery,omitempty" xml:"ListCatalogAssetsQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

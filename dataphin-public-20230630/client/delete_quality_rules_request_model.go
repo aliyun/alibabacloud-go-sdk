@@ -16,8 +16,12 @@ type iDeleteQualityRulesRequest interface {
 }
 
 type DeleteQualityRulesRequest struct {
+	// The delete instruction.
+	//
 	// This parameter is required.
 	DeleteCommand *DeleteQualityRulesRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,6 +66,8 @@ func (s *DeleteQualityRulesRequest) Validate() error {
 }
 
 type DeleteQualityRulesRequestDeleteCommand struct {
+	// The rule IDs.
+	//
 	// This parameter is required.
 	RuleIdList []*int64 `json:"RuleIdList,omitempty" xml:"RuleIdList,omitempty" type:"Repeated"`
 }

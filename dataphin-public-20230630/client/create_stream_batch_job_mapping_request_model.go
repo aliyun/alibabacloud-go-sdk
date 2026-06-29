@@ -16,12 +16,16 @@ type iCreateStreamBatchJobMappingRequest interface {
 }
 
 type CreateStreamBatchJobMappingRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The stream-batch integrated node information.
+	//
 	// This parameter is required.
 	StreamBatchJobMappingCreateCommand *CreateStreamBatchJobMappingRequestStreamBatchJobMappingCreateCommand `json:"StreamBatchJobMappingCreateCommand,omitempty" xml:"StreamBatchJobMappingCreateCommand,omitempty" type:"Struct"`
 }
@@ -62,58 +66,78 @@ func (s *CreateStreamBatchJobMappingRequest) Validate() error {
 }
 
 type CreateStreamBatchJobMappingRequestStreamBatchJobMappingCreateCommand struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 61187014-a3ba-4cdd-8609-1f0aa3df4a3d
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// 这是一段任务的描述信息
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The folder in which the node is generated.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /karel
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// The Flink DPI engine version.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vvr-8.0.9-flink-1.17
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The environment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The file name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// karel_hover_3
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FLINK_SQL
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7081229106458752
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The queue name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default-queue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The VVP cluster type. Valid values: SESSION and PREJOB. This parameter is specific to VVP. If not applicable, leave this parameter empty or do not pass it.
+	//
 	// This parameter is required.
 	//
 	// example:

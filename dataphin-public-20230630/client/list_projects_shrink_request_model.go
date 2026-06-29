@@ -16,8 +16,12 @@ type iListProjectsShrinkRequest interface {
 }
 
 type ListProjectsShrinkRequest struct {
+	// The query conditions.
+	//
 	// This parameter is required.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

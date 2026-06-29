@@ -24,24 +24,34 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
+	// Request error code. OK indicates a normal request.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Backend response HTTP code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request error message
+	//
 	// example:
 	//
 	// successful
-	Message    *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Paginated result
 	PageResult *ListInstancesResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Whether the request was successful
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -116,7 +126,10 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyPageResult struct {
+	// Paginated records
 	Data []*ListInstancesResponseBodyPageResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 107
@@ -163,40 +176,58 @@ func (s *ListInstancesResponseBodyPageResult) Validate() error {
 }
 
 type ListInstancesResponseBodyPageResultData struct {
+	// Business Date
+	//
 	// example:
 	//
 	// 2024-05-30
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// Schedule Time
+	//
 	// example:
 	//
 	// 2024-05-30 16:47:13
 	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// Running duration, in seconds
+	//
 	// example:
 	//
 	// 60s
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Execution End Time
+	//
 	// example:
 	//
 	// 2024-05-30 16:47:13
 	EndExecuteTime *int64 `json:"EndExecuteTime,omitempty" xml:"EndExecuteTime,omitempty"`
+	// Node extended information: specific information for instances from different business systems, such as pipeline fileId, whether the logical table has hierarchical dimensions, mid node information, and instance output name
+	//
 	// example:
 	//
 	// xx
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// t_23231
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Hourly/Minutely instance sequence number
+	//
 	// example:
 	//
 	// 1
-	Index    *int32                                           `json:"Index,omitempty" xml:"Index,omitempty"`
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// Node Details
 	NodeInfo *ListInstancesResponseBodyPageResultDataNodeInfo `json:"NodeInfo,omitempty" xml:"NodeInfo,omitempty" type:"Struct"`
+	// Execution start time
+	//
 	// example:
 	//
 	// 2024-05-30 16:46:13
-	StartExecuteTime *int64    `json:"StartExecuteTime,omitempty" xml:"StartExecuteTime,omitempty"`
-	StatusList       []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
+	StartExecuteTime *int64 `json:"StartExecuteTime,omitempty" xml:"StartExecuteTime,omitempty"`
+	// Instance Status
+	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 
 func (s ListInstancesResponseBodyPageResultData) String() string {
@@ -307,51 +338,118 @@ func (s *ListInstancesResponseBodyPageResultData) Validate() error {
 }
 
 type ListInstancesResponseBodyPageResultDataNodeInfo struct {
+	// Business Unit
+	//
+	// example:
+	//
+	// xx测试
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 2024-05-30 16:47:13
-	CreateTime  *string                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Creator     *ListInstancesResponseBodyPageResultDataNodeInfoCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
-	Description *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Node Creator
+	Creator *ListInstancesResponseBodyPageResultDataNodeInfoCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	// Node Description
+	//
+	// example:
+	//
+	// xx 测试
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether to dry run
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Node Source
+	//
 	// example:
 	//
 	// DATA_PROCES
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// Whether a development environment exists
+	//
 	// example:
 	//
 	// false
 	HasDev *bool `json:"HasDev,omitempty" xml:"HasDev,omitempty"`
+	// Whether a production environment exists
+	//
 	// example:
 	//
 	// true
 	HasProd *bool `json:"HasProd,omitempty" xml:"HasProd,omitempty"`
+	// Node ID
+	//
 	// example:
 	//
 	// n_132331
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Last Modified Time
+	//
 	// example:
 	//
 	// 2024-05-30 16:47:13
-	LastModifiedTime  *string                                                     `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	Modifier          *ListInstancesResponseBodyPageResultDataNodeInfoModifier    `json:"Modifier,omitempty" xml:"Modifier,omitempty" type:"Struct"`
-	Name              *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerList         []*ListInstancesResponseBodyPageResultDataNodeInfoOwnerList `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
-	PriorityList      []*string                                                   `json:"PriorityList,omitempty" xml:"PriorityList,omitempty" type:"Repeated"`
-	ResourceGroupList []*string                                                   `json:"ResourceGroupList,omitempty" xml:"ResourceGroupList,omitempty" type:"Repeated"`
+	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	// Modifier
+	Modifier *ListInstancesResponseBodyPageResultDataNodeInfoModifier `json:"Modifier,omitempty" xml:"Modifier,omitempty" type:"Struct"`
+	// Node Name
+	//
+	// example:
+	//
+	// xx测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Owner
+	OwnerList []*ListInstancesResponseBodyPageResultDataNodeInfoOwnerList `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
+	// Priority
+	//
+	// - HIGHEST
+	//
+	// - HIGH
+	//
+	// - MIDDLE
+	//
+	// - LOW
+	//
+	// - LOWEST
+	PriorityList []*string `json:"PriorityList,omitempty" xml:"PriorityList,omitempty" type:"Repeated"`
+	// Running Resource Group
+	ResourceGroupList []*string `json:"ResourceGroupList,omitempty" xml:"ResourceGroupList,omitempty" type:"Repeated"`
+	// Whether scheduling is paused
+	//
 	// example:
 	//
 	// false
-	SchedulePaused     *bool     `json:"SchedulePaused,omitempty" xml:"SchedulePaused,omitempty"`
+	SchedulePaused *bool `json:"SchedulePaused,omitempty" xml:"SchedulePaused,omitempty"`
+	// Schedule Period
 	SchedulePeriodList []*string `json:"SchedulePeriodList,omitempty" xml:"SchedulePeriodList,omitempty" type:"Repeated"`
+	// Sub-business Type
+	//
+	// - MAX_COMPUTE_SQL
+	//
+	// - HIVE_SQL
+	//
+	// - SHELL
+	//
+	// - PYTHON
+	//
+	// - ONE_SERVICE_SQL
+	//
+	// - DATABASE_SQL
+	//
 	// example:
 	//
 	// SHELL
 	SubDetailType *string `json:"SubDetailType,omitempty" xml:"SubDetailType,omitempty"`
+	// Node Business Type
+	//
+	// - SCRIPT: Script
+	//
+	// - LOGICAL_TABLE: Logical Table
+	//
 	// example:
 	//
 	// DATA_PROCES
@@ -561,10 +659,17 @@ func (s *ListInstancesResponseBodyPageResultDataNodeInfo) Validate() error {
 }
 
 type ListInstancesResponseBodyPageResultDataNodeInfoCreator struct {
+	// User ID
+	//
 	// example:
 	//
 	// 21313112
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Username
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -599,10 +704,17 @@ func (s *ListInstancesResponseBodyPageResultDataNodeInfoCreator) Validate() erro
 }
 
 type ListInstancesResponseBodyPageResultDataNodeInfoModifier struct {
+	// Username
+	//
 	// example:
 	//
 	// 21313112
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Username
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -637,10 +749,17 @@ func (s *ListInstancesResponseBodyPageResultDataNodeInfoModifier) Validate() err
 }
 
 type ListInstancesResponseBodyPageResultDataNodeInfoOwnerList struct {
+	// User ID
+	//
 	// example:
 	//
 	// 21313112
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Username
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

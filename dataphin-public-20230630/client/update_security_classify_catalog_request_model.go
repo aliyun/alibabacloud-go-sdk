@@ -16,12 +16,16 @@ type iUpdateSecurityClassifyCatalogRequest interface {
 }
 
 type UpdateSecurityClassifyCatalogRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update instruction.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateSecurityClassifyCatalogRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,23 +66,38 @@ func (s *UpdateSecurityClassifyCatalogRequest) Validate() error {
 }
 
 type UpdateSecurityClassifyCatalogRequestUpdateCommand struct {
+	// The name of the classification folder.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
-	Name      *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of administrator IDs. This parameter takes effect only when the parent folder is the root folder.
 	OwnerList []*string `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
+	// The full path of the parent classification folder. Default value: /.
+	//
 	// example:
 	//
 	// /d1/
 	ParentPath *string `json:"ParentPath,omitempty" xml:"ParentPath,omitempty"`
+	// The original full path of the folder.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /d1/d2/
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The visibility scope of the classification folder. This parameter takes effect only when the parent folder is the root folder. Valid values:
+	//
+	// - PUBLIC: visible to all users.
+	//
+	// - PRIVATE: visible only to administrators.
+	//
+	// Default value: PUBLIC.
+	//
 	// example:
 	//
 	// PUBLIC

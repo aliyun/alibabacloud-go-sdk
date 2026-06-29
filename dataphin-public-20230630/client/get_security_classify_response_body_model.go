@@ -24,14 +24,20 @@ type iGetSecurityClassifyResponseBody interface {
 }
 
 type GetSecurityClassifyResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -41,9 +47,11 @@ type GetSecurityClassifyResponseBody struct {
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
-	RequestId            *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data classification details.
 	SecurityClassifyInfo *GetSecurityClassifyResponseBodySecurityClassifyInfo `json:"SecurityClassifyInfo,omitempty" xml:"SecurityClassifyInfo,omitempty" type:"Struct"`
-	Success              *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSecurityClassifyResponseBody) String() string {
@@ -118,30 +126,44 @@ func (s *GetSecurityClassifyResponseBody) Validate() error {
 }
 
 type GetSecurityClassifyResponseBodySecurityClassifyInfo struct {
+	// The classification abbreviation.
+	//
 	// example:
 	//
 	// test
 	Abbreviation *string `json:"Abbreviation,omitempty" xml:"Abbreviation,omitempty"`
+	// The data classification ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The security level abbreviation.
+	//
 	// example:
 	//
 	// lv_test
 	LevelAbbreviation *string `json:"LevelAbbreviation,omitempty" xml:"LevelAbbreviation,omitempty"`
+	// The security level index.
+	//
 	// example:
 	//
 	// 1
 	LevelIndex *int64 `json:"LevelIndex,omitempty" xml:"LevelIndex,omitempty"`
+	// The security level name.
+	//
 	// example:
 	//
 	// lv_teat
 	LevelName *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
+	// The classification name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The classification path.
+	//
 	// example:
 	//
 	// /a/b/c

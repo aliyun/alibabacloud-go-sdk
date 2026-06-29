@@ -24,18 +24,25 @@ type iListQualityWatchesResponseBody interface {
 }
 
 type ListQualityWatchesResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
-	Message    *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paged query result.
 	PageResult *ListQualityWatchesResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type ListQualityWatchesResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListQualityWatchesResponseBody) String() string {
@@ -118,7 +126,10 @@ func (s *ListQualityWatchesResponseBody) Validate() error {
 }
 
 type ListQualityWatchesResponseBodyPageResult struct {
+	// The paged list of quality watchtasks.
 	QualityWatchList []*ListQualityWatchesResponseBodyPageResultQualityWatchList `json:"QualityWatchList,omitempty" xml:"QualityWatchList,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 68
@@ -165,65 +176,112 @@ func (s *ListQualityWatchesResponseBodyPageResult) Validate() error {
 }
 
 type ListQualityWatchesResponseBodyPageResultQualityWatchList struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator.
+	//
 	// example:
 	//
 	// 30012011
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The creator name.
+	//
 	// example:
 	//
 	// test
-	CreatorName    *string                                                                 `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The data source details.
 	DataSourceInfo *ListQualityWatchesResponseBodyPageResultQualityWatchListDataSourceInfo `json:"DataSourceInfo,omitempty" xml:"DataSourceInfo,omitempty" type:"Struct"`
+	// The number of enabled rules.
+	//
 	// example:
 	//
 	// 1
 	EnabledRuleCount *int64 `json:"EnabledRuleCount,omitempty" xml:"EnabledRuleCount,omitempty"`
+	// The monitored object ID.
+	//
 	// example:
 	//
 	// 11
-	Id        *int64                                                             `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The metric details.
 	IndexInfo *ListQualityWatchesResponseBodyPageResultQualityWatchListIndexInfo `json:"IndexInfo,omitempty" xml:"IndexInfo,omitempty" type:"Struct"`
+	// The record ID of the latest quality watchtask for the monitored object.
+	//
 	// example:
 	//
 	// 1
 	LatestWatchTaskId *int64 `json:"LatestWatchTaskId,omitempty" xml:"LatestWatchTaskId,omitempty"`
+	// The record status of the latest quality watchtask for the monitored object.
+	//
 	// example:
 	//
 	// SUCCESS
 	LatestWatchTaskStatus *string `json:"LatestWatchTaskStatus,omitempty" xml:"LatestWatchTaskStatus,omitempty"`
+	// The user ID of the last modifier.
+	//
 	// example:
 	//
 	// 30012011
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The monitored object name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The quality owner user ID.
+	//
 	// example:
 	//
 	// 30012011
 	QualityOwner *string `json:"QualityOwner,omitempty" xml:"QualityOwner,omitempty"`
+	// The quality owner display name.
+	//
 	// example:
 	//
 	// test
 	QualityOwnerName *string `json:"QualityOwnerName,omitempty" xml:"QualityOwnerName,omitempty"`
+	// The number of rules.
+	//
 	// example:
 	//
 	// 11
 	RuleCount *int64 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
+	// The status. Valid values:
+	//
+	// - ENABLE
+	//
+	// - DISABLE.
+	//
 	// example:
 	//
 	// ENABLE
-	Status    *string                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The monitored table object.
 	TableInfo *ListQualityWatchesResponseBodyPageResultQualityWatchListTableInfo `json:"TableInfo,omitempty" xml:"TableInfo,omitempty" type:"Struct"`
+	// The monitored object type. Valid values:
+	//
+	// - TABLE: Dataphin table
+	//
+	// - DATASOURCE_TABLE: full-domain table
+	//
+	// - DATASOURCE: data source
+	//
+	// - INDEX: metric
+	//
+	// - REALTIME_LOGICAL_TABLE: real-time meta table.
+	//
 	// example:
 	//
 	// TABLE
@@ -420,42 +478,66 @@ func (s *ListQualityWatchesResponseBodyPageResultQualityWatchList) Validate() er
 }
 
 type ListQualityWatchesResponseBodyPageResultQualityWatchListDataSourceInfo struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator.
+	//
 	// example:
 	//
 	// 30012011
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The creator name.
+	//
 	// example:
 	//
 	// test
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The environment identifier. Valid values:
+	//
+	// - PROD
+	//
+	// - DEV.
+	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The data source IDs.
+	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The data source name.
+	//
 	// example:
 	//
 	// 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner user ID.
+	//
 	// example:
 	//
 	// 30012011
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The owner name.
+	//
 	// example:
 	//
 	// test
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The data source type, such as MAX_COMPUTE or HADOOP.
+	//
 	// example:
 	//
 	// MAX_COMPUTE
@@ -565,74 +647,120 @@ func (s *ListQualityWatchesResponseBodyPageResultQualityWatchListDataSourceInfo)
 }
 
 type ListQualityWatchesResponseBodyPageResultQualityWatchListIndexInfo struct {
+	// The business unit ID.
+	//
 	// example:
 	//
 	// 1121
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The business unit name.
+	//
 	// example:
 	//
 	// test
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
+	// The metric catalog.
+	//
 	// example:
 	//
 	// test
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
+	// The cell aggregate table name.
+	//
 	// example:
 	//
 	// dws_all
 	CellSumLogicTableName *string `json:"CellSumLogicTableName,omitempty" xml:"CellSumLogicTableName,omitempty"`
+	// The metric computation type. Valid values:
+	//
+	// - AUTO
+	//
+	// - CUSTOM
+	//
+	// - MOUNT
+	//
+	// - COMBINE.
+	//
 	// example:
 	//
 	// AUTO
 	ComputeType *string `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
+	// The metric data type.
+	//
 	// example:
 	//
 	// bigint
 	DateType *string `json:"DateType,omitempty" xml:"DateType,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The metric display name.
+	//
 	// example:
 	//
 	// logic
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The statistical granularity name.
+	//
 	// example:
 	//
 	// 全站汇总表
 	GranularityDisplayName *string `json:"GranularityDisplayName,omitempty" xml:"GranularityDisplayName,omitempty"`
+	// The statistical granularity ID.
+	//
 	// example:
 	//
 	// 18755764
 	GranularityId *int64 `json:"GranularityId,omitempty" xml:"GranularityId,omitempty"`
+	// The metric GUID.
+	//
 	// example:
 	//
 	// 1121
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
+	// The metric ID.
+	//
 	// example:
 	//
 	// 11
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The metric name.
+	//
 	// example:
 	//
 	// logic
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner user ID.
+	//
 	// example:
 	//
 	// 30012011
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The owner name.
+	//
 	// example:
 	//
 	// test
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 1121
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The metric type. Valid values:
+	//
+	// - INDEX.
+	//
 	// example:
 	//
 	// INDEX
@@ -814,59 +942,104 @@ func (s *ListQualityWatchesResponseBodyPageResultQualityWatchListIndexInfo) Vali
 }
 
 type ListQualityWatchesResponseBodyPageResultQualityWatchListTableInfo struct {
+	// The business unit ID.
+	//
 	// example:
 	//
 	// 1121
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The business unit name.
+	//
 	// example:
 	//
 	// test
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
+	// The table catalog.
+	//
 	// example:
 	//
 	// test
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 22
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The data source type.
+	//
 	// example:
 	//
 	// MAX_COMPUTE
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The environment identifier. Valid values:
+	//
+	// - DEV
+	//
+	// - PROD.
+	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The table ID.
+	//
 	// example:
 	//
 	// test
-	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsPartitionTable *bool   `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the table is a partitioned table.
+	IsPartitionTable *bool `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner user ID.
+	//
 	// example:
 	//
 	// 30012011
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The owner name.
+	//
 	// example:
 	//
 	// test
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 1121
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The type. Valid values:
+	//
+	// - LOGIC_DIM_TABLE: logical dimension table
+	//
+	// - LOGIC_FACT_TABLE: logical fact table
+	//
+	// - LOGIC_SUM_TABLE: logical aggregate table
+	//
+	// - LOGIC_LABEL_TABLE: logical label table
+	//
+	// - PHYSICAL_TABLE: physical table
+	//
+	// - REALTIME_LOGICAL_TABLE: real-time meta table.
+	//
 	// example:
 	//
 	// LOGIC_DIM_TABLE

@@ -24,23 +24,34 @@ type iGetPhysicalInstanceResponseBody interface {
 }
 
 type GetPhysicalInstanceResponseBody struct {
+	// Error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Instance       *GetPhysicalInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Instance details
+	Instance *GetPhysicalInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	// Error message
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,40 +130,58 @@ func (s *GetPhysicalInstanceResponseBody) Validate() error {
 }
 
 type GetPhysicalInstanceResponseBodyInstance struct {
+	// Business date
+	//
 	// example:
 	//
 	// 2023-06-25
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// Scheduled time
+	//
 	// example:
 	//
 	// 2023-06-27 00:30:00
 	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// Execution duration
+	//
 	// example:
 	//
 	// 3600s
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// End execution time
+	//
 	// example:
 	//
 	// 2023-06-27 02:30:00
 	EndExecuteTime *int64 `json:"EndExecuteTime,omitempty" xml:"EndExecuteTime,omitempty"`
+	// Extended information
+	//
 	// example:
 	//
 	// xx
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// t_23231
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Running instance index
+	//
 	// example:
 	//
 	// 1
-	Index    *int32                                           `json:"Index,omitempty" xml:"Index,omitempty"`
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// Node details
 	NodeInfo *GetPhysicalInstanceResponseBodyInstanceNodeInfo `json:"NodeInfo,omitempty" xml:"NodeInfo,omitempty" type:"Struct"`
+	// Start execution time
+	//
 	// example:
 	//
 	// 2023-06-27 01:30:00
-	StartExecuteTime *int64    `json:"StartExecuteTime,omitempty" xml:"StartExecuteTime,omitempty"`
-	StatusList       []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
+	StartExecuteTime *int64 `json:"StartExecuteTime,omitempty" xml:"StartExecuteTime,omitempty"`
+	// Status list
+	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 
 func (s GetPhysicalInstanceResponseBodyInstance) String() string {
@@ -263,54 +292,144 @@ func (s *GetPhysicalInstanceResponseBodyInstance) Validate() error {
 }
 
 type GetPhysicalInstanceResponseBodyInstanceNodeInfo struct {
+	// Business unit name
+	//
 	// example:
 	//
 	// xx
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 2023-02-02 23:53:17
-	CreateTime  *string                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Creator     *GetPhysicalInstanceResponseBodyInstanceNodeInfoCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
-	Description *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creator
+	Creator *GetPhysicalInstanceResponseBodyInstanceNodeInfoCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	// Description
+	//
+	// example:
+	//
+	// xx 测试
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether this is a dry run.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Source system of the node
+	//
 	// example:
 	//
 	// DATA_PROCESS
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// Indicates whether the development environment exists.
+	//
 	// example:
 	//
 	// true
 	HasDev *bool `json:"HasDev,omitempty" xml:"HasDev,omitempty"`
+	// Indicates whether the production environment exists.
+	//
 	// example:
 	//
 	// true
 	HasProd *bool `json:"HasProd,omitempty" xml:"HasProd,omitempty"`
+	// Node ID
+	//
 	// example:
 	//
 	// n_3232312
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Last modified time
+	//
 	// example:
 	//
 	// 2024-02-02 23:53:17
-	LastModifiedTime  *string                                                     `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	Modifier          *GetPhysicalInstanceResponseBodyInstanceNodeInfoModifier    `json:"Modifier,omitempty" xml:"Modifier,omitempty" type:"Struct"`
-	Name              *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerList         []*GetPhysicalInstanceResponseBodyInstanceNodeInfoOwnerList `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
-	PriorityList      []*string                                                   `json:"PriorityList,omitempty" xml:"PriorityList,omitempty" type:"Repeated"`
-	ResourceGroupList []*string                                                   `json:"ResourceGroupList,omitempty" xml:"ResourceGroupList,omitempty" type:"Repeated"`
+	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	// Modifier
+	Modifier *GetPhysicalInstanceResponseBodyInstanceNodeInfoModifier `json:"Modifier,omitempty" xml:"Modifier,omitempty" type:"Struct"`
+	// Node name
+	//
+	// example:
+	//
+	// xx测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Owner list
+	OwnerList []*GetPhysicalInstanceResponseBodyInstanceNodeInfoOwnerList `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
+	// Priority
+	//
+	// - HIGHEST
+	//
+	// - HIGH
+	//
+	// - MIDDLE
+	//
+	// - LOW
+	//
+	// - LOWEST
+	PriorityList []*string `json:"PriorityList,omitempty" xml:"PriorityList,omitempty" type:"Repeated"`
+	// Resource group list
+	ResourceGroupList []*string `json:"ResourceGroupList,omitempty" xml:"ResourceGroupList,omitempty" type:"Repeated"`
+	// Indicates whether scheduling is paused.
+	//
 	// example:
 	//
 	// false
-	SchedulePaused     *bool     `json:"SchedulePaused,omitempty" xml:"SchedulePaused,omitempty"`
+	SchedulePaused *bool `json:"SchedulePaused,omitempty" xml:"SchedulePaused,omitempty"`
+	// Scheduling period
+	//
+	// - YEARLY
+	//
+	// - MONTHLY
+	//
+	// - WEEKLY
+	//
+	// - DAILY
+	//
+	// - HOURLY
+	//
+	// - MINUTELY
 	SchedulePeriodList []*string `json:"SchedulePeriodList,omitempty" xml:"SchedulePeriodList,omitempty" type:"Repeated"`
+	// Sub-business type
+	//
+	// - MAX_COMPUTE_SQL
+	//
+	// - HIVE_SQL
+	//
+	// - SHELL
+	//
+	// - PYTHON
+	//
+	// - ONE_SERVICE_SQL
+	//
+	// - DATABASE_SQL
+	//
 	// example:
 	//
 	// SHELL
 	SubDetailType *string `json:"SubDetailType,omitempty" xml:"SubDetailType,omitempty"`
+	// Node type
+	//
+	// - BBOX_LOGIC_TABLE_NODE: Logical table node
+	//
+	// - BBOX_LOGIC_FIELD_NODE: Logical field node
+	//
+	// - BBOX_LOGIC_FIELD_GROUP_NODE: Field group node
+	//
+	// - BBOX_INNER_TEMP_NODE: Logical table temp node
+	//
+	// - DATA_PROCESS: Code task
+	//
+	// - STREAM_TASK_NODE: Real-time task
+	//
+	// - PIPELINE_NODE: Pipeline node
+	//
+	// - FLINK_BATCH: Flink batch task
+	//
+	// - ODM_NODE: ODM node
+	//
 	// example:
 	//
 	// DATA_PROCESS
@@ -520,10 +639,14 @@ func (s *GetPhysicalInstanceResponseBodyInstanceNodeInfo) Validate() error {
 }
 
 type GetPhysicalInstanceResponseBodyInstanceNodeInfoCreator struct {
+	// User ID
+	//
 	// example:
 	//
 	// 2323111
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Username
+	//
 	// example:
 	//
 	// zhangsan
@@ -561,10 +684,14 @@ func (s *GetPhysicalInstanceResponseBodyInstanceNodeInfoCreator) Validate() erro
 }
 
 type GetPhysicalInstanceResponseBodyInstanceNodeInfoModifier struct {
+	// User ID
+	//
 	// example:
 	//
 	// 2323111
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Username
+	//
 	// example:
 	//
 	// zhangsan
@@ -602,10 +729,14 @@ func (s *GetPhysicalInstanceResponseBodyInstanceNodeInfoModifier) Validate() err
 }
 
 type GetPhysicalInstanceResponseBodyInstanceNodeInfoOwnerList struct {
+	// User ID
+	//
 	// example:
 	//
 	// 2323111
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Username
+	//
 	// example:
 	//
 	// zhangsan

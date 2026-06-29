@@ -16,7 +16,10 @@ type iGetMyTenantsShrinkRequest interface {
 }
 
 type GetMyTenantsShrinkRequest struct {
+	// The feature codes owned by the tenant.
 	FeatureCodeListShrink *string `json:"FeatureCodeList,omitempty" xml:"FeatureCodeList,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

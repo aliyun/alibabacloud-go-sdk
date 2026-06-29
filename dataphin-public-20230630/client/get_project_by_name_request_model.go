@@ -16,12 +16,16 @@ type iGetProjectByNameRequest interface {
 }
 
 type GetProjectByNameRequest struct {
+	// The project name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

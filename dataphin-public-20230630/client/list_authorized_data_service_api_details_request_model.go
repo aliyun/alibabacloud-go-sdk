@@ -16,8 +16,16 @@ type iListAuthorizedDataServiceApiDetailsRequest interface {
 }
 
 type ListAuthorizedDataServiceApiDetailsRequest struct {
+	// The query request.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
 	ListQuery *ListAuthorizedDataServiceApiDetailsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -64,22 +72,30 @@ func (s *ListAuthorizedDataServiceApiDetailsRequest) Validate() error {
 type ListAuthorizedDataServiceApiDetailsRequestListQuery struct {
 	// Deprecated
 	//
-	// AppKey
+	// The application key.
+	//
+	// 	Notice: Deprecated. Use AppKeyStr instead.</notice>.
 	//
 	// example:
 	//
 	// 200000000
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The application key.
+	//
 	// example:
 	//
-	// app12345
+	// APP_200000000
 	AppKeyStr *string `json:"AppKeyStr,omitempty" xml:"AppKeyStr,omitempty"`
+	// The page number, starting from 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	//
 	// This parameter is required.
 	//
 	// example:

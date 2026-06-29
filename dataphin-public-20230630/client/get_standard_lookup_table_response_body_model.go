@@ -24,15 +24,22 @@ type iGetStandardLookupTableResponseBody interface {
 }
 
 type GetStandardLookupTableResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode  *int32                                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The lookup table details.
 	LookupTableInfo *GetStandardLookupTableResponseBodyLookupTableInfo `json:"LookupTableInfo,omitempty" xml:"LookupTableInfo,omitempty" type:"Struct"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type GetStandardLookupTableResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetStandardLookupTableResponseBody) String() string {
@@ -118,52 +126,78 @@ func (s *GetStandardLookupTableResponseBody) Validate() error {
 }
 
 type GetStandardLookupTableResponseBodyLookupTableInfo struct {
+	// The code of the lookup table.
+	//
 	// example:
 	//
 	// CITY
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The user ID of the creator.
+	//
 	// example:
 	//
 	// 30012021
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The username of the creator.
+	//
 	// example:
 	//
 	// test
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The description of the lookup table.
+	//
 	// example:
 	//
 	// test
-	Description        *string                                                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The directory to which the lookup table belongs.
 	DirectoryReference *GetStandardLookupTableResponseBodyLookupTableInfoDirectoryReference `json:"DirectoryReference,omitempty" xml:"DirectoryReference,omitempty" type:"Struct"`
+	// The lookup table ID.
+	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The user ID of the last modifier.
+	//
 	// example:
 	//
 	// 30012021
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
+	// The username of the last modifier.
+	//
 	// example:
 	//
 	// test
-	LastModifierName     *string                                                                  `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
+	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
+	// The list of lookup table values.
 	LookupTableValueList []*GetStandardLookupTableResponseBodyLookupTableInfoLookupTableValueList `json:"LookupTableValueList,omitempty" xml:"LookupTableValueList,omitempty" type:"Repeated"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The name of the lookup table.
+	//
 	// example:
 	//
 	// 城市码表
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The user ID of the owner.
+	//
 	// example:
 	//
 	// 30012021
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The username of the owner.
+	//
 	// example:
 	//
 	// test
@@ -323,6 +357,8 @@ func (s *GetStandardLookupTableResponseBodyLookupTableInfo) Validate() error {
 }
 
 type GetStandardLookupTableResponseBodyLookupTableInfoDirectoryReference struct {
+	// The directory to which the lookup table belongs.
+	//
 	// example:
 	//
 	// /dir1/dir2
@@ -351,18 +387,26 @@ func (s *GetStandardLookupTableResponseBodyLookupTableInfoDirectoryReference) Va
 }
 
 type GetStandardLookupTableResponseBodyLookupTableInfoLookupTableValueList struct {
+	// The code description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The English name of the code.
+	//
 	// example:
 	//
 	// HZ
 	EnglishName *string `json:"EnglishName,omitempty" xml:"EnglishName,omitempty"`
+	// The code name.
+	//
 	// example:
 	//
 	// Hangzhou
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The code value.
+	//
 	// example:
 	//
 	// 杭州

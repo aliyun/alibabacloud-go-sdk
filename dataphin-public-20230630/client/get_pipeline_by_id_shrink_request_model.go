@@ -18,14 +18,20 @@ type iGetPipelineByIdShrinkRequest interface {
 }
 
 type GetPipelineByIdShrinkRequest struct {
+	// The request context information.
+	//
 	// This parameter is required.
 	ContextShrink *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID used to query the pipeline task.
+	//
 	// This parameter is required.
 	QueryIdShrink *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }

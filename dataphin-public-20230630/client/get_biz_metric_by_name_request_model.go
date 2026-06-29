@@ -16,8 +16,12 @@ type iGetBizMetricByNameRequest interface {
 }
 
 type GetBizMetricByNameRequest struct {
+	// Query request.
+	//
 	// This parameter is required.
 	BizMetricByNameQuery *GetBizMetricByNameRequestBizMetricByNameQuery `json:"BizMetricByNameQuery,omitempty" xml:"BizMetricByNameQuery,omitempty" type:"Struct"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,12 +66,16 @@ func (s *GetBizMetricByNameRequest) Validate() error {
 }
 
 type GetBizMetricByNameRequestBizMetricByNameQuery struct {
+	// Specifies whether to query draft or published asset details. Set this parameter to True to query draft details, or False to query published details.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// True
 	Draft *bool `json:"Draft,omitempty" xml:"Draft,omitempty"`
+	// The name of the business metric.
+	//
 	// This parameter is required.
 	//
 	// example:

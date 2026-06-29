@@ -16,8 +16,12 @@ type iListAlertEventsRequest interface {
 }
 
 type ListAlertEventsRequest struct {
+	// The query request.
+	//
 	// This parameter is required.
 	ListQuery *ListAlertEventsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,47 +66,84 @@ func (s *ListAlertEventsRequest) Validate() error {
 }
 
 type ListAlertEventsRequestListQuery struct {
+	// The end date of the alert.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-11-27 13:47:00
-	AlertEndTime        *string   `json:"AlertEndTime,omitempty" xml:"AlertEndTime,omitempty"`
+	AlertEndTime *string `json:"AlertEndTime,omitempty" xml:"AlertEndTime,omitempty"`
+	// The list of alert object types.
 	AlertObjectTypeList []*string `json:"AlertObjectTypeList,omitempty" xml:"AlertObjectTypeList,omitempty" type:"Repeated"`
-	AlertReasonList     []*string `json:"AlertReasonList,omitempty" xml:"AlertReasonList,omitempty" type:"Repeated"`
+	// The list of alert reasons.
+	AlertReasonList []*string `json:"AlertReasonList,omitempty" xml:"AlertReasonList,omitempty" type:"Repeated"`
+	// The start date of the alert.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-11-16 00:00:00
-	AlertStartTime *string   `json:"AlertStartTime,omitempty" xml:"AlertStartTime,omitempty"`
-	BizNameList    []*string `json:"BizNameList,omitempty" xml:"BizNameList,omitempty" type:"Repeated"`
+	AlertStartTime *string `json:"AlertStartTime,omitempty" xml:"AlertStartTime,omitempty"`
+	// The list of business units.
+	BizNameList []*string `json:"BizNameList,omitempty" xml:"BizNameList,omitempty" type:"Repeated"`
+	// The keyword for the query.
+	//
 	// example:
 	//
 	// test
-	Keyword             *string   `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The list of monitored item IDs.
 	MonitoredItemIdList []*string `json:"MonitoredItemIdList,omitempty" xml:"MonitoredItemIdList,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of projects.
 	ProjectNameList []*string `json:"ProjectNameList,omitempty" xml:"ProjectNameList,omitempty" type:"Repeated"`
+	// The source system. Valid values:
+	//
+	// - ALL: all
+	//
+	// - DQE: data quality
+	//
+	// - OS: data service
+	//
+	// - STREAM: real-time computing
+	//
+	// - VDM_BATCH: offline computing
+	//
+	// - SOP: O&M platform
+	//
+	// - REAL_TIME_PIPELINE: real-time integration
+	//
+	// - KGB: baseline monitoring
+	//
+	// and more.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ALL
-	SourceSystem *string   `json:"SourceSystem,omitempty" xml:"SourceSystem,omitempty"`
-	StatusList   []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	UserIdList   []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
+	SourceSystem *string `json:"SourceSystem,omitempty" xml:"SourceSystem,omitempty"`
+	// The list of alert statuses.
+	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
+	// The list of alert contact IDs.
+	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
 }
 
 func (s ListAlertEventsRequestListQuery) String() string {

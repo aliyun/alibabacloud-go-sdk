@@ -16,12 +16,15 @@ type iRetryTransferOwnershipRequest interface {
 }
 
 type RetryTransferOwnershipRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
-	OpTenantId              *int64                                                `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The transfer information.
 	PrivilegeTransferRecord *RetryTransferOwnershipRequestPrivilegeTransferRecord `json:"PrivilegeTransferRecord,omitempty" xml:"PrivilegeTransferRecord,omitempty" type:"Struct"`
 }
 
@@ -61,18 +64,24 @@ func (s *RetryTransferOwnershipRequest) Validate() error {
 }
 
 type RetryTransferOwnershipRequestPrivilegeTransferRecord struct {
+	// The ID of the transfer task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The user ID of the recipient.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30000001
 	NewOwner *string `json:"NewOwner,omitempty" xml:"NewOwner,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// comment

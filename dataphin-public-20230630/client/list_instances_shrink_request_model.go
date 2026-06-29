@@ -18,11 +18,20 @@ type iListInstancesShrinkRequest interface {
 }
 
 type ListInstancesShrinkRequest struct {
+	// Environment identifier
+	//
+	// - DEV: Development environment
+	//
+	// - PROD (default): Production environment
+	//
 	// example:
 	//
 	// PROD
-	Env             *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Query Request
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -20,24 +20,32 @@ type iGetDataServiceApiCallSummaryRequest interface {
 }
 
 type GetDataServiceApiCallSummaryRequest struct {
+	// The end time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-06-30 20:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the data service project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 102102
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The start time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// This parameter is required.
 	//
 	// example:

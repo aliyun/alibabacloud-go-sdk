@@ -24,15 +24,22 @@ type iListDataServiceAppsResponseBody interface {
 }
 
 type ListDataServiceAppsResponseBody struct {
+	// Backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of all applications under the tenant.
 	Data *ListDataServiceAppsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type ListDataServiceAppsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDataServiceAppsResponseBody) String() string {
@@ -118,7 +126,10 @@ func (s *ListDataServiceAppsResponseBody) Validate() error {
 }
 
 type ListDataServiceAppsResponseBodyData struct {
+	// Application list.
 	AppList []*ListDataServiceAppsResponseBodyDataAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Repeated"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 68
@@ -165,19 +176,27 @@ func (s *ListDataServiceAppsResponseBodyData) Validate() error {
 }
 
 type ListDataServiceAppsResponseBodyDataAppList struct {
+	// Application group name.
+	//
 	// example:
 	//
 	// 默认分组
 	AppGroup *string `json:"AppGroup,omitempty" xml:"AppGroup,omitempty"`
+	// Application ID.
+	//
 	// example:
 	//
 	// 12345
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Application name.
+	//
 	// example:
 	//
 	// 默认应用
-	AppName   *string                                                `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	IsMember  *bool                                                  `json:"IsMember,omitempty" xml:"IsMember,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Indicates whether the current user has joined the application.
+	IsMember *bool `json:"IsMember,omitempty" xml:"IsMember,omitempty"`
+	// Owner list.
 	OwnerList []*ListDataServiceAppsResponseBodyDataAppListOwnerList `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
 }
 
@@ -248,10 +267,14 @@ func (s *ListDataServiceAppsResponseBodyDataAppList) Validate() error {
 }
 
 type ListDataServiceAppsResponseBodyDataAppListOwnerList struct {
+	// User ID.
+	//
 	// example:
 	//
 	// 12345
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Username.
+	//
 	// example:
 	//
 	// 张三

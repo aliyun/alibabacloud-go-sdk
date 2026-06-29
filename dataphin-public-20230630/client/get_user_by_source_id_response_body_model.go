@@ -24,27 +24,38 @@ type iGetUserBySourceIdResponseBody interface {
 }
 
 type GetUserBySourceIdResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
-	Success *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	User    *GetUserBySourceIdResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The user object.
+	User *GetUserBySourceIdResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s GetUserBySourceIdResponseBody) String() string {
@@ -119,7 +130,14 @@ func (s *GetUserBySourceIdResponseBody) Validate() error {
 }
 
 type GetUserBySourceIdResponseBodyUser struct {
+	// The display name of the user.
+	//
+	// example:
+	//
+	// xx测试
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 23231231

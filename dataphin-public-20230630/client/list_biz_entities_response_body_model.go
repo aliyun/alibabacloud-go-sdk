@@ -24,24 +24,34 @@ type iListBizEntitiesResponseBody interface {
 }
 
 type ListBizEntitiesResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message    *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paginated result.
 	PageResult *ListBizEntitiesResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListBizEntitiesResponseBody) String() string {
@@ -116,7 +126,10 @@ func (s *ListBizEntitiesResponseBody) Validate() error {
 }
 
 type ListBizEntitiesResponseBodyPageResult struct {
+	// The list of business entities.
 	BizEntityList []*ListBizEntitiesResponseBodyPageResultBizEntityList `json:"BizEntityList,omitempty" xml:"BizEntityList,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 66
@@ -163,76 +176,140 @@ func (s *ListBizEntitiesResponseBodyPageResult) Validate() error {
 }
 
 type ListBizEntitiesResponseBodyPageResultBizEntityList struct {
+	// The list of parent business process IDs. This parameter is valid only when the entity type is business process.
 	BelongToBizEntityIdList []*int64 `json:"BelongToBizEntityIdList,omitempty" xml:"BelongToBizEntityIdList,omitempty" type:"Repeated"`
+	// The ID of the business unit to which the business process belongs.
+	//
 	// example:
 	//
 	// 6798087749072704
-	BizUnitId            *int64   `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The list of child business object IDs. This parameter is valid only when the entity type is business object.
 	ChildBizEntityIdList []*int64 `json:"ChildBizEntityIdList,omitempty" xml:"ChildBizEntityIdList,omitempty" type:"Repeated"`
+	// The ID of the data domain to which the business process belongs.
+	//
 	// example:
 	//
 	// 20101011
 	DataDomainId *int64 `json:"DataDomainId,omitempty" xml:"DataDomainId,omitempty"`
+	// The description of the business entity.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the business entity.
+	//
 	// example:
 	//
 	// 业务活动测试
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The time when the business entity was created.
+	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the business entity was last modified.
+	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
-	GmtModified       *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	HasChildBizEntity *bool   `json:"HasChildBizEntity,omitempty" xml:"HasChildBizEntity,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the entity is a child business object.
+	HasChildBizEntity *bool `json:"HasChildBizEntity,omitempty" xml:"HasChildBizEntity,omitempty"`
+	// The ID of the business entity.
+	//
 	// example:
 	//
 	// 12121111
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the user who last modified the business entity.
+	//
 	// example:
 	//
 	// 30010010
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
+	// The name of the user who last modified the business entity.
+	//
 	// example:
 	//
 	// 张三
-	LastModifierName  *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
-	LevelSubBizObject *bool   `json:"LevelSubBizObject,omitempty" xml:"LevelSubBizObject,omitempty"`
+	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
+	// Indicates whether the entity is a sublevel of a hierarchy dimension.
+	LevelSubBizObject *bool `json:"LevelSubBizObject,omitempty" xml:"LevelSubBizObject,omitempty"`
+	// The name of the business entity.
+	//
 	// example:
 	//
 	// create_process_code_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The online status of the business entity. Valid values:
+	//
+	// - SUBMITTED: not online.
+	//
+	// - APPROVING: pending approval.
+	//
+	// - PUBLISHED: online.
+	//
+	// - REJECT: failed to go online.
+	//
 	// example:
 	//
 	// SUBMITTED
 	OnlineStatus *string `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
+	// The ID of the business entity owner.
+	//
 	// example:
 	//
 	// 张三
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The ID of the business entity owner.
+	//
 	// example:
 	//
 	// 30010010
-	OwnerUserId        *string  `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The list of associated central business entity IDs.
 	RefBizEntityIdList []*int64 `json:"RefBizEntityIdList,omitempty" xml:"RefBizEntityIdList,omitempty" type:"Repeated"`
+	// The number of associated logical tables.
+	//
 	// example:
 	//
 	// 1
 	RefTableCount *int32 `json:"RefTableCount,omitempty" xml:"RefTableCount,omitempty"`
+	// The status of the business entity. Valid values:
+	//
+	// - DRAFT: draft or not online.
+	//
+	// - SUBMITTING: being submitted.
+	//
+	// - SUBMITTED: submitted.
+	//
+	// - DEVELOPING: under development.
+	//
+	// - PUBLISHING: being published.
+	//
+	// - PUBLISHED: published.
+	//
 	// example:
 	//
 	// SUBMITTED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The subtype of the business entity.
+	//
 	// example:
 	//
 	// NORMAL
-	SubType               *string  `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// The list of subsequent business process IDs. This parameter is valid only when the entity type is business process.
 	SuffixBizEntityIdList []*int64 `json:"SuffixBizEntityIdList,omitempty" xml:"SuffixBizEntityIdList,omitempty" type:"Repeated"`
+	// The type of the business entity. Valid values:
+	//
+	// - BIZ_OBJECT: business object.
+	//
+	// - BIZ_PROCESS: business process.
+	//
 	// example:
 	//
 	// BIZ_OBJECT

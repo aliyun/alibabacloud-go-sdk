@@ -16,8 +16,12 @@ type iCreateStandardMappingRequest interface {
 }
 
 type CreateStandardMappingRequest struct {
+	// The create command.
+	//
 	// This parameter is required.
 	CreateCommand *CreateStandardMappingRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,16 +66,36 @@ func (s *CreateStandardMappingRequest) Validate() error {
 }
 
 type CreateStandardMappingRequestCreateCommand struct {
+	// The list of asset GUIDs.
+	//
 	// This parameter is required.
 	AssetGuidList []*string `json:"AssetGuidList,omitempty" xml:"AssetGuidList,omitempty" type:"Repeated"`
+	// The processing policy for invalid mappings when importing mapping relationships. Valid values:
+	//
+	// - SET_INVALID_TO_VALID: sets invalid mappings to valid mappings.
+	//
+	// - KEEP_INVALID_AND_SKIP: retains invalid mappings and skips them.
+	//
+	// Default value: SET_INVALID_TO_VALID.
+	//
 	// example:
 	//
 	// SET_INVALID_TO_VALID
 	InvalidMappingRelationOperationType *string `json:"InvalidMappingRelationOperationType,omitempty" xml:"InvalidMappingRelationOperationType,omitempty"`
+	// The mapping relationship type. Valid values:
+	//
+	// - VALID: valid mapping.
+	//
+	// - INVALID: invalid mapping.
+	//
+	// Default value: VALID.
+	//
 	// example:
 	//
 	// VALID
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	// The standard ID.
+	//
 	// This parameter is required.
 	//
 	// example:

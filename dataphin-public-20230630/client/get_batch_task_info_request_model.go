@@ -22,23 +22,38 @@ type iGetBatchTaskInfoRequest interface {
 }
 
 type GetBatchTaskInfoRequest struct {
+	// The environment identifier. Valid values:
+	//
+	// - dev
+	//
+	// - prod
+	//
+	// Default value: dev.
+	//
 	// example:
 	//
 	// dev
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The node ID in the directory tree.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12113111
-	FileId              *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	IncludeAllUpStreams *bool  `json:"IncludeAllUpStreams,omitempty" xml:"IncludeAllUpStreams,omitempty"`
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// Specifies whether to include all upstream nodes, including invalid dependencies. Default value: false.
+	IncludeAllUpStreams *bool `json:"IncludeAllUpStreams,omitempty" xml:"IncludeAllUpStreams,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the project to which the node belongs.
+	//
 	// This parameter is required.
 	//
 	// example:

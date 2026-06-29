@@ -16,8 +16,12 @@ type iListFilesRequest interface {
 }
 
 type ListFilesRequest struct {
+	// Query conditions
+	//
 	// This parameter is required.
 	ListQuery *ListFilesRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,30 +66,70 @@ func (s *ListFilesRequest) Validate() error {
 }
 
 type ListFilesRequestListQuery struct {
+	// Menu tree category
+	//
+	// - Ad hoc query: tempCode
+	//
+	// - Code task: codeManage
+	//
+	// - Offline pipeline: offlinePipeline
+	//
+	// - Pipeline custom component: offlinePipelineCustomPlugin
+	//
+	// - Sync task: dataX
+	//
+	// - Real-time meta table: streamMeta
+	//
+	// - Real-time custom source: streamCustomDataSource
+	//
+	// - Real-time computing template: streamTemplate
+	//
+	// - Resource management: resourceManage
+	//
+	// - Offline function: udfResource
+	//
+	// - Real-time function: streamFunction
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// tempCode
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// File directory
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /xx/x
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// Environment identifier
+	//
+	// - DEV
+	//
+	// - PROD
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Project ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 11112311
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Whether to recursively traverse and query
+	//
+	// - true: Yes, returns all nodes under the directory
+	//
+	// - false: No, returns only the first-level nodes under the directory
+	//
 	// This parameter is required.
 	//
 	// example:

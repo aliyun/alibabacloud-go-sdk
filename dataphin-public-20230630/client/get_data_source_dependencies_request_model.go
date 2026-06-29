@@ -16,12 +16,16 @@ type iGetDataSourceDependenciesRequest interface {
 }
 
 type GetDataSourceDependenciesRequest struct {
+	// The data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1023211
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

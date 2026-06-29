@@ -16,8 +16,12 @@ type iListBizEntitiesRequest interface {
 }
 
 type ListBizEntitiesRequest struct {
+	// The query request.
+	//
 	// This parameter is required.
 	ListQuery *ListBizEntitiesRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,15 +66,22 @@ func (s *ListBizEntitiesRequest) Validate() error {
 }
 
 type ListBizEntitiesRequestListQuery struct {
+	// The filter criteria for the query.
 	FilterCriteria *ListBizEntitiesRequestListQueryFilterCriteria `json:"FilterCriteria,omitempty" xml:"FilterCriteria,omitempty" type:"Struct"`
+	// The search keyword.
+	//
 	// example:
 	//
 	// object_
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of records per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -131,14 +142,22 @@ func (s *ListBizEntitiesRequestListQuery) Validate() error {
 }
 
 type ListBizEntitiesRequestListQueryFilterCriteria struct {
-	BizUnitIdList      []*int64  `json:"BizUnitIdList,omitempty" xml:"BizUnitIdList,omitempty" type:"Repeated"`
-	BizUnitNameList    []*string `json:"BizUnitNameList,omitempty" xml:"BizUnitNameList,omitempty" type:"Repeated"`
-	DataDomainIdList   []*int64  `json:"DataDomainIdList,omitempty" xml:"DataDomainIdList,omitempty" type:"Repeated"`
+	// The list of business unit IDs.
+	BizUnitIdList []*int64 `json:"BizUnitIdList,omitempty" xml:"BizUnitIdList,omitempty" type:"Repeated"`
+	// The list of business unit IDs.
+	BizUnitNameList []*string `json:"BizUnitNameList,omitempty" xml:"BizUnitNameList,omitempty" type:"Repeated"`
+	// The list of data domain IDs.
+	DataDomainIdList []*int64 `json:"DataDomainIdList,omitempty" xml:"DataDomainIdList,omitempty" type:"Repeated"`
+	// The list of data domain IDs.
 	DataDomainNameList []*string `json:"DataDomainNameList,omitempty" xml:"DataDomainNameList,omitempty" type:"Repeated"`
-	HasTableRef        *bool     `json:"HasTableRef,omitempty" xml:"HasTableRef,omitempty"`
-	OwnerUserIdList    []*string `json:"OwnerUserIdList,omitempty" xml:"OwnerUserIdList,omitempty" type:"Repeated"`
-	StatusList         []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	SubTypeList        []*string `json:"SubTypeList,omitempty" xml:"SubTypeList,omitempty" type:"Repeated"`
+	// Specifies whether the business entity is associated with a logical table.
+	HasTableRef *bool `json:"HasTableRef,omitempty" xml:"HasTableRef,omitempty"`
+	// The list of owner user IDs.
+	OwnerUserIdList []*string `json:"OwnerUserIdList,omitempty" xml:"OwnerUserIdList,omitempty" type:"Repeated"`
+	// The list of business entity statuses. For more information, refer to the API operation for querying business entity details.
+	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
+	// The list of business entity subtypes. For more information, refer to the API operation for querying business entity details.
+	SubTypeList []*string `json:"SubTypeList,omitempty" xml:"SubTypeList,omitempty" type:"Repeated"`
 }
 
 func (s ListBizEntitiesRequestListQueryFilterCriteria) String() string {

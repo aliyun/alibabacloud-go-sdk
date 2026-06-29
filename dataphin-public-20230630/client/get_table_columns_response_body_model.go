@@ -24,15 +24,22 @@ type iGetTableColumnsResponseBody interface {
 }
 
 type GetTableColumnsResponseBody struct {
+	// Backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code       *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of asset table columns.
 	ColumnList []*GetTableColumnsResponseBodyColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
+	// HTTP response code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Backend response exception details.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type GetTableColumnsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetTableColumnsResponseBody) String() string {
@@ -122,86 +130,130 @@ func (s *GetTableColumnsResponseBody) Validate() error {
 }
 
 type GetTableColumnsResponseBodyColumnList struct {
+	// Data classification ID.
+	//
 	// example:
 	//
 	// 12345
 	ClassifyId *int64 `json:"ClassifyId,omitempty" xml:"ClassifyId,omitempty"`
+	// Data classification name.
+	//
 	// example:
 	//
 	// test
 	ClassifyName *string `json:"ClassifyName,omitempty" xml:"ClassifyName,omitempty"`
+	// Column comment.
+	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creator.
+	//
 	// example:
 	//
 	// 30012011
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Data source ID.
+	//
 	// example:
 	//
 	// 3301
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// Data source type.
+	//
 	// example:
 	//
 	// MAX_COMPUTE
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// Data type.
+	//
 	// example:
 	//
 	// varchar
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// Default value.
+	//
 	// example:
 	//
 	// test
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// Column display name.
+	//
 	// example:
 	//
 	// 年龄
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Environment: dev or prod.
+	//
 	// example:
 	//
 	// dev
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Column GUID.
+	//
 	// example:
 	//
 	// 1121.col1
-	Guid              *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	IsForeignKey      *bool   `json:"IsForeignKey,omitempty" xml:"IsForeignKey,omitempty"`
-	IsPartitionColumn *bool   `json:"IsPartitionColumn,omitempty" xml:"IsPartitionColumn,omitempty"`
-	IsPrimaryKey      *bool   `json:"IsPrimaryKey,omitempty" xml:"IsPrimaryKey,omitempty"`
+	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
+	// Whether this is a foreign key.
+	IsForeignKey *bool `json:"IsForeignKey,omitempty" xml:"IsForeignKey,omitempty"`
+	// Whether this is a partition column.
+	IsPartitionColumn *bool `json:"IsPartitionColumn,omitempty" xml:"IsPartitionColumn,omitempty"`
+	// Whether this is a primary key.
+	IsPrimaryKey *bool `json:"IsPrimaryKey,omitempty" xml:"IsPrimaryKey,omitempty"`
+	// Last modifier.
+	//
 	// example:
 	//
 	// 30012011
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
+	// Data level abbreviation.
+	//
 	// example:
 	//
 	// L1
 	LevelAbbreviation *string `json:"LevelAbbreviation,omitempty" xml:"LevelAbbreviation,omitempty"`
+	// Modification time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Column name.
+	//
 	// example:
 	//
 	// age
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Nullable *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Whether null values are allowed.
+	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	// Sequence number.
+	//
 	// example:
 	//
 	// 1
 	SeqNumber *int32 `json:"SeqNumber,omitempty" xml:"SeqNumber,omitempty"`
+	// Table GUID.
+	//
 	// example:
 	//
 	// 1121
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// Table name.
+	//
 	// example:
 	//
 	// t_test
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// Query count in the last 30 days.
+	//
 	// example:
 	//
 	// 99

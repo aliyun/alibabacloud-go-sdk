@@ -16,7 +16,10 @@ type iListQualityRulesRequest interface {
 }
 
 type ListQualityRulesRequest struct {
+	// The paged query conditions.
 	ListQuery *ListQualityRulesRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -61,24 +64,96 @@ func (s *ListQualityRulesRequest) Validate() error {
 }
 
 type ListQualityRulesRequestListQuery struct {
+	// The rule type. Valid values:
+	//
+	// - CONSISTENT: consistency.
+	//
+	// - EFFECTIVE: validity.
+	//
+	// - TIMELINESE: timeliness.
+	//
+	// - ACCURATE: accuracy.
+	//
+	// - UNIQUENESS: uniqueness.
+	//
+	// - COMPLETENESS: completeness.
+	//
+	// - STABILITY: stability.
+	//
+	// - CUSTOM: custom.
 	CatalogList []*string `json:"CatalogList,omitempty" xml:"CatalogList,omitempty" type:"Repeated"`
+	// The search keyword for filtering. Supports searching by rule name and validation object.
+	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of records per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
-	PageSize                      *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RuleStrengthList              []*string `json:"RuleStrengthList,omitempty" xml:"RuleStrengthList,omitempty" type:"Repeated"`
-	StatusList                    []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	TemplateIdList                []*int64  `json:"TemplateIdList,omitempty" xml:"TemplateIdList,omitempty" type:"Repeated"`
-	TestRunTaskStatusList         []*string `json:"TestRunTaskStatusList,omitempty" xml:"TestRunTaskStatusList,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The rule strength. Valid values:
+	//
+	// - STRONG: strong.
+	//
+	// - WEAK: weak.
+	RuleStrengthList []*string `json:"RuleStrengthList,omitempty" xml:"RuleStrengthList,omitempty" type:"Repeated"`
+	// The rule effective status. Valid values:
+	//
+	// - ENABLE: enabled.
+	//
+	// - DISABLE: disabled.
+	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
+	// The rule template.
+	TemplateIdList []*int64 `json:"TemplateIdList,omitempty" xml:"TemplateIdList,omitempty" type:"Repeated"`
+	// The task status. Valid values:
+	//
+	// - NOT_RUN: not executed.
+	//
+	// - WAITING: waiting.
+	//
+	// - RUNNING: executing.
+	//
+	// - SUCCESS: execution succeeded.
+	//
+	// - FAILED: execution failed.
+	//
+	// - CANCEL: canceled.
+	//
+	// - TIMEOUT: timed out.
+	//
+	// - OFFLINE: offline.
+	TestRunTaskStatusList []*string `json:"TestRunTaskStatusList,omitempty" xml:"TestRunTaskStatusList,omitempty" type:"Repeated"`
+	// The trial run validation result. Valid values:
+	//
+	// - NOT_RUN: not executed.
+	//
+	// - WAITING: waiting for execution.
+	//
+	// - RUNNING: executing.
+	//
+	// - PASS: passed.
+	//
+	// - NOT_PASS: not passed.
+	//
+	// - FAILED: execution failed.
+	//
+	// - OFFLINE: offline. The task needs to be restarted.
+	//
+	// - CANCEL: task canceled.
+	//
+	// - TIMEOUT: task timed out.
 	TestRunTaskValidateResultList []*string `json:"TestRunTaskValidateResultList,omitempty" xml:"TestRunTaskValidateResultList,omitempty" type:"Repeated"`
+	// The monitoring ID.
+	//
 	// example:
 	//
 	// 1

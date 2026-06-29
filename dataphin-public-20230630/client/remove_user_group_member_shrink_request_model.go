@@ -16,12 +16,16 @@ type iRemoveUserGroupMemberShrinkRequest interface {
 }
 
 type RemoveUserGroupMemberShrinkRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The command to remove user group members.
+	//
 	// This parameter is required.
 	RemoveCommandShrink *string `json:"RemoveCommand,omitempty" xml:"RemoveCommand,omitempty"`
 }

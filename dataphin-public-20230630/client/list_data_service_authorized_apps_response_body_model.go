@@ -24,18 +24,25 @@ type iListDataServiceAuthorizedAppsResponseBody interface {
 }
 
 type ListDataServiceAuthorizedAppsResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
-	Message    *string                                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paging query result.
 	PageResult *ListDataServiceAuthorizedAppsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type ListDataServiceAuthorizedAppsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDataServiceAuthorizedAppsResponseBody) String() string {
@@ -118,7 +126,10 @@ func (s *ListDataServiceAuthorizedAppsResponseBody) Validate() error {
 }
 
 type ListDataServiceAuthorizedAppsResponseBodyPageResult struct {
+	// The paginated list of authorized applications.
 	AuthorizedAppList []*ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList `json:"AuthorizedAppList,omitempty" xml:"AuthorizedAppList,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 68
@@ -165,56 +176,90 @@ func (s *ListDataServiceAuthorizedAppsResponseBodyPageResult) Validate() error {
 }
 
 type ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList struct {
+	// The primary key ID of the application.
+	//
 	// example:
 	//
 	// 1022
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the permission account, which is the applicant ID.
+	//
 	// example:
 	//
 	// 30012101
-	ApplyUserId   *string `json:"ApplyUserId,omitempty" xml:"ApplyUserId,omitempty"`
+	ApplyUserId *string `json:"ApplyUserId,omitempty" xml:"ApplyUserId,omitempty"`
+	// The permission account, which is the applicant.
+	//
+	// example:
+	//
+	// 测试
 	ApplyUserName *string `json:"ApplyUserName,omitempty" xml:"ApplyUserName,omitempty"`
+	// The expiration date in the format of yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2025-06-30
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// 1121
-	Id               *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsProjectManager *bool  `json:"IsProjectManager,omitempty" xml:"IsProjectManager,omitempty"`
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the current user is a project administrator.
+	IsProjectManager *bool `json:"IsProjectManager,omitempty" xml:"IsProjectManager,omitempty"`
+	// The ID of the owner.
+	//
 	// example:
 	//
 	// 1121
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The name of the owner.
+	//
 	// example:
 	//
 	// test
 	OwnerUserName *string `json:"OwnerUserName,omitempty" xml:"OwnerUserName,omitempty"`
+	// The permission account. Valid values: 0: individual account.
+	//
 	// example:
 	//
 	// 0
 	PrivilegeAccount *int32 `json:"PrivilegeAccount,omitempty" xml:"PrivilegeAccount,omitempty"`
+	// The permission type. Valid values: 0: usage permission. 1: development permission.
+	//
 	// example:
 	//
 	// 1
 	PrivilegeType *int32 `json:"PrivilegeType,omitempty" xml:"PrivilegeType,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 102122
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// test
-	ProjectName           *string                                                                                   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RealHasOwnerPrivilege *bool                                                                                     `json:"RealHasOwnerPrivilege,omitempty" xml:"RealHasOwnerPrivilege,omitempty"`
-	RealHasPrivilege      *bool                                                                                     `json:"RealHasPrivilege,omitempty" xml:"RealHasPrivilege,omitempty"`
-	RemarkForDebugList    []*ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppListRemarkForDebugList `json:"RemarkForDebugList,omitempty" xml:"RemarkForDebugList,omitempty" type:"Repeated"`
-	Revocable             *bool                                                                                     `json:"Revocable,omitempty" xml:"Revocable,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Indicates whether the user actually has owner permissions on this application. The user may lack permissions because of expiration or other reasons.
+	RealHasOwnerPrivilege *bool `json:"RealHasOwnerPrivilege,omitempty" xml:"RealHasOwnerPrivilege,omitempty"`
+	// Indicates whether the user actually has permissions.
+	RealHasPrivilege *bool `json:"RealHasPrivilege,omitempty" xml:"RealHasPrivilege,omitempty"`
+	// The descriptions used for troubleshooting.
+	RemarkForDebugList []*ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppListRemarkForDebugList `json:"RemarkForDebugList,omitempty" xml:"RemarkForDebugList,omitempty" type:"Repeated"`
+	// Indicates whether the permissions can be returned or revoked.
+	Revocable *bool `json:"Revocable,omitempty" xml:"Revocable,omitempty"`
+	// The detailed status of the revoke button. Valid values: -1: super administrators cannot revoke. -2: owners cannot revoke. -3: project administrators without actual permissions are grayed out. -4: regular users without permissions cannot revoke. 1: project administrators with actual permissions can revoke. 2: regular users with permissions can revoke.
+	//
 	// example:
 	//
 	// -1
@@ -405,10 +450,14 @@ func (s *ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList) V
 }
 
 type ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppListRemarkForDebugList struct {
+	// The configuration item.
+	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// v1

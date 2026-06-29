@@ -16,8 +16,12 @@ type iListSecurityIdentifyRecordsRequest interface {
 }
 
 type ListSecurityIdentifyRecordsRequest struct {
+	// The query conditions.
+	//
 	// This parameter is required.
 	ListQuery *ListSecurityIdentifyRecordsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,39 +66,56 @@ func (s *ListSecurityIdentifyRecordsRequest) Validate() error {
 }
 
 type ListSecurityIdentifyRecordsRequestListQuery struct {
+	// The datasource environment identifier. This parameter is required only for datasource tables.
+	//
 	// example:
 	//
 	// DEV
 	DatasourceEnv *string `json:"DatasourceEnv,omitempty" xml:"DatasourceEnv,omitempty"`
+	// The datasource name. This parameter is required only for datasource tables.
+	//
 	// example:
 	//
 	// test
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// The field name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// col1
-	FieldName         *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	IsDatasourceTable *bool   `json:"IsDatasourceTable,omitempty" xml:"IsDatasourceTable,omitempty"`
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// Specifies whether the table is a datasource table. Default value: false (treated as a Dataphin table).
+	IsDatasourceTable *bool `json:"IsDatasourceTable,omitempty" xml:"IsDatasourceTable,omitempty"`
+	// The search keyword. The search scope is the field name.
+	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of records per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The table catalog. For datasource tables, specify the database or schema name. For Dataphin physical tables, specify the project name in English. For Dataphin logical tables, specify the business unit name in English.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	TableCatalog *string `json:"TableCatalog,omitempty" xml:"TableCatalog,omitempty"`
+	// The table name.
+	//
 	// This parameter is required.
 	//
 	// example:

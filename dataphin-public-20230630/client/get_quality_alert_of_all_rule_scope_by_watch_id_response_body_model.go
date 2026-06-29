@@ -24,18 +24,25 @@ type iGetQualityAlertOfAllRuleScopeByWatchIdResponseBody interface {
 }
 
 type GetQualityAlertOfAllRuleScopeByWatchIdResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
-	Message          *string                                                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The alert settings details.
 	QualityAlertInfo *GetQualityAlertOfAllRuleScopeByWatchIdResponseBodyQualityAlertInfo `json:"QualityAlertInfo,omitempty" xml:"QualityAlertInfo,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type GetQualityAlertOfAllRuleScopeByWatchIdResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetQualityAlertOfAllRuleScopeByWatchIdResponseBody) String() string {
@@ -118,12 +126,20 @@ func (s *GetQualityAlertOfAllRuleScopeByWatchIdResponseBody) Validate() error {
 }
 
 type GetQualityAlertOfAllRuleScopeByWatchIdResponseBodyQualityAlertInfo struct {
-	AlertDutyChannelList         []*string                                                                          `json:"AlertDutyChannelList,omitempty" xml:"AlertDutyChannelList,omitempty" type:"Repeated"`
-	AlertDutyList                []*GetQualityAlertOfAllRuleScopeByWatchIdResponseBodyQualityAlertInfoAlertDutyList `json:"AlertDutyList,omitempty" xml:"AlertDutyList,omitempty" type:"Repeated"`
-	AlertQualityOwnerChannelList []*string                                                                          `json:"AlertQualityOwnerChannelList,omitempty" xml:"AlertQualityOwnerChannelList,omitempty" type:"Repeated"`
-	AlertUserChannelList         []*string                                                                          `json:"AlertUserChannelList,omitempty" xml:"AlertUserChannelList,omitempty" type:"Repeated"`
-	AlertUserList                []*GetQualityAlertOfAllRuleScopeByWatchIdResponseBodyQualityAlertInfoAlertUserList `json:"AlertUserList,omitempty" xml:"AlertUserList,omitempty" type:"Repeated"`
-	EnableAlertQualityOwner      *bool                                                                              `json:"EnableAlertQualityOwner,omitempty" xml:"EnableAlertQualityOwner,omitempty"`
+	// The duty roster alert channels.
+	AlertDutyChannelList []*string `json:"AlertDutyChannelList,omitempty" xml:"AlertDutyChannelList,omitempty" type:"Repeated"`
+	// The duty roster alert list.
+	AlertDutyList []*GetQualityAlertOfAllRuleScopeByWatchIdResponseBodyQualityAlertInfoAlertDutyList `json:"AlertDutyList,omitempty" xml:"AlertDutyList,omitempty" type:"Repeated"`
+	// The quality owner alert channels.
+	AlertQualityOwnerChannelList []*string `json:"AlertQualityOwnerChannelList,omitempty" xml:"AlertQualityOwnerChannelList,omitempty" type:"Repeated"`
+	// The user alert channels.
+	AlertUserChannelList []*string `json:"AlertUserChannelList,omitempty" xml:"AlertUserChannelList,omitempty" type:"Repeated"`
+	// The user alert list.
+	AlertUserList []*GetQualityAlertOfAllRuleScopeByWatchIdResponseBodyQualityAlertInfoAlertUserList `json:"AlertUserList,omitempty" xml:"AlertUserList,omitempty" type:"Repeated"`
+	// Indicates whether alerting is enabled for the quality owner.
+	EnableAlertQualityOwner *bool `json:"EnableAlertQualityOwner,omitempty" xml:"EnableAlertQualityOwner,omitempty"`
+	// The monitored object ID.
+	//
 	// example:
 	//
 	// 1
@@ -224,10 +240,14 @@ func (s *GetQualityAlertOfAllRuleScopeByWatchIdResponseBodyQualityAlertInfo) Val
 }
 
 type GetQualityAlertOfAllRuleScopeByWatchIdResponseBodyQualityAlertInfoAlertDutyList struct {
+	// The alert duty roster ID.
+	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The alert duty roster name.
+	//
 	// example:
 	//
 	// test
@@ -265,10 +285,14 @@ func (s *GetQualityAlertOfAllRuleScopeByWatchIdResponseBodyQualityAlertInfoAlert
 }
 
 type GetQualityAlertOfAllRuleScopeByWatchIdResponseBodyQualityAlertInfoAlertUserList struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 30012011
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// test

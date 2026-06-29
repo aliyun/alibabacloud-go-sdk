@@ -18,7 +18,7 @@ type iGetDataServiceAppAuthorizedUsersRequest interface {
 }
 
 type GetDataServiceAppAuthorizedUsersRequest struct {
-	// AppId
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,12 +26,16 @@ type GetDataServiceAppAuthorizedUsersRequest struct {
 	//
 	// 1022
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The data service project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

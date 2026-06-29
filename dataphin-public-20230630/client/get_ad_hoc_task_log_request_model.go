@@ -22,30 +22,40 @@ type iGetAdHocTaskLogRequest interface {
 }
 
 type GetAdHocTaskLogRequest struct {
+	// The offset for querying logs. Increment the value based on the returned result. Set the initial value to 0.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1021
 	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 131211211
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The subtask ID. The value starts from 0.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	SubTaskId *int32 `json:"SubTaskId,omitempty" xml:"SubTaskId,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

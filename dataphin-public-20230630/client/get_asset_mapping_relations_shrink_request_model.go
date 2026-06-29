@@ -16,7 +16,10 @@ type iGetAssetMappingRelationsShrinkRequest interface {
 }
 
 type GetAssetMappingRelationsShrinkRequest struct {
+	// The query instruction.
 	AssetMappingQueryShrink *string `json:"AssetMappingQuery,omitempty" xml:"AssetMappingQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,23 +24,34 @@ type iGetPhysicalNodeResponseBody interface {
 }
 
 type GetPhysicalNodeResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message  *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The node details.
 	NodeInfo *GetPhysicalNodeResponseBodyNodeInfo `json:"NodeInfo,omitempty" xml:"NodeInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,57 +130,136 @@ func (s *GetPhysicalNodeResponseBody) Validate() error {
 }
 
 type GetPhysicalNodeResponseBodyNodeInfo struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1717343597000
-	CreateTime *int64                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Creator    *GetPhysicalNodeResponseBodyNodeInfoCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The node creator.
+	Creator *GetPhysicalNodeResponseBodyNodeInfoCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	// The cron expression used to calculate the scheduling time.
+	//
 	// example:
 	//
 	// 0 0 10 	- 	- *
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 123456789
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The data source schema. This parameter takes effect only for data source types that require a schema, such as Oracle. If set to "default", the value is null.
+	//
 	// example:
 	//
 	// null
 	DataSourceSchema *string `json:"DataSourceSchema,omitempty" xml:"DataSourceSchema,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The node description.
+	//
+	// example:
+	//
+	// xx测试
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The node source. Valid values:
+	//
+	// - DATA_PROCESS: code development.
+	//
+	// - BLACK_BOX: modeling development.
+	//
+	// - PIPELINE: pipeline.
+	//
 	// example:
 	//
 	// DATA_PROCESS
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// n_232132
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time of the last modification.
+	//
 	// example:
 	//
 	// 1717343597000
-	LastModifiedTime *int64                                       `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	Modifier         *GetPhysicalNodeResponseBodyNodeInfoModifier `json:"Modifier,omitempty" xml:"Modifier,omitempty" type:"Struct"`
-	Name             *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	LastModifiedTime *int64 `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	// The user who last modified the node.
+	Modifier *GetPhysicalNodeResponseBodyNodeInfoModifier `json:"Modifier,omitempty" xml:"Modifier,omitempty" type:"Struct"`
+	// The node name.
+	//
+	// example:
+	//
+	// 节点名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The node subtype. Valid values:
+	//
+	// - MAX_COMPUTE_SQL
+	//
+	// - HIVE_SQL
+	//
+	// - SHELL
+	//
+	// - PYTHON
+	//
+	// - ONE_SERVICE_SQL
+	//
+	// - DATABASE_SQL and others.
+	//
 	// example:
 	//
 	// SHELL
-	OperatorType   *string                                   `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
-	OutputNameList []*string                                 `json:"OutputNameList,omitempty" xml:"OutputNameList,omitempty" type:"Repeated"`
-	Owner          *GetPhysicalNodeResponseBodyNodeInfoOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
+	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+	// The list of output names.
+	OutputNameList []*string `json:"OutputNameList,omitempty" xml:"OutputNameList,omitempty" type:"Repeated"`
+	// The node owner.
+	Owner *GetPhysicalNodeResponseBodyNodeInfoOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
+	// The scheduling priority. Valid values:
+	//
+	// - HIGHEST
+	//
+	// - HIGH
+	//
+	// - MIDDLE
+	//
+	// - LOW
+	//
+	// - LOWEST.
+	//
 	// example:
 	//
 	// MIDDLE
-	Priority    *string                                         `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The project to which the node belongs.
 	ProjectInfo *GetPhysicalNodeResponseBodyNodeInfoProjectInfo `json:"ProjectInfo,omitempty" xml:"ProjectInfo,omitempty" type:"Struct"`
+	// The scheduling cycle type. Valid values:
+	//
+	// - MINUTELY
+	//
+	// - HOURLY
+	//
+	// - DAILY
+	//
+	// - WEEKLY
+	//
+	// - MONTHLY
+	//
+	// - QUARTERLY.
+	//
 	// example:
 	//
 	// DAILY
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
+	// The scheduling status.
+	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The trigger configuration, which is used to implement field-level dependencies on logical tables.
+	//
 	// example:
 	//
 	// {"expression":"any_success"}
@@ -380,10 +470,17 @@ func (s *GetPhysicalNodeResponseBodyNodeInfo) Validate() error {
 }
 
 type GetPhysicalNodeResponseBodyNodeInfoCreator struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 101312
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -418,10 +515,17 @@ func (s *GetPhysicalNodeResponseBodyNodeInfoCreator) Validate() error {
 }
 
 type GetPhysicalNodeResponseBodyNodeInfoModifier struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 101312
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -456,10 +560,17 @@ func (s *GetPhysicalNodeResponseBodyNodeInfoModifier) Validate() error {
 }
 
 type GetPhysicalNodeResponseBodyNodeInfoOwner struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 101312
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -494,10 +605,17 @@ func (s *GetPhysicalNodeResponseBodyNodeInfoOwner) Validate() error {
 }
 
 type GetPhysicalNodeResponseBodyNodeInfoProjectInfo struct {
+	// The project ID.
+	//
 	// example:
 	//
 	// 102132
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The project name.
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

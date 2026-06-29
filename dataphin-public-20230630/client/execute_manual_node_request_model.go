@@ -18,12 +18,22 @@ type iExecuteManualNodeRequest interface {
 }
 
 type ExecuteManualNodeRequest struct {
+  // The environment identifier. Valid values:
+  // 
+  // - DEV: development environment 
+  // 
+  // - PROD (default): production environment.
+  // 
   // example:
   // 
   // PROD
   Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+  // The request for running a manual task.
+  // 
   // This parameter is required.
   ExecuteCommand *ExecuteManualNodeRequestExecuteCommand `json:"ExecuteCommand,omitempty" xml:"ExecuteCommand,omitempty" type:"Struct"`
+  // The tenant ID.
+  // 
   // This parameter is required.
   // 
   // example:
@@ -77,29 +87,40 @@ func (s *ExecuteManualNodeRequest) Validate() error {
 }
 
 type ExecuteManualNodeRequestExecuteCommand struct {
+  // The end business date.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 2024-05-07
   EndBizDate *string `json:"EndBizDate,omitempty" xml:"EndBizDate,omitempty"`
+  // The workflow name.
+  // 
   // example:
   // 
   // xx测试
   FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+  // The node ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // n_12132
   NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+  // The runtime parameters.
   ParamList []*ExecuteManualNodeRequestExecuteCommandParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
+  // The project ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 123324
   ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+  // The start business date.
+  // 
   // This parameter is required.
   // 
   // example:
@@ -184,10 +205,14 @@ func (s *ExecuteManualNodeRequestExecuteCommand) Validate() error {
 }
 
 type ExecuteManualNodeRequestExecuteCommandParamList struct {
+  // The parameter.
+  // 
   // example:
   // 
   // param1
   Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+  // The parameter value.
+  // 
   // example:
   // 
   // 1

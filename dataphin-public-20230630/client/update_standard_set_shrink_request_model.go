@@ -16,12 +16,16 @@ type iUpdateStandardSetShrinkRequest interface {
 }
 
 type UpdateStandardSetShrinkRequest struct {
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Update command.
+	//
 	// This parameter is required.
 	UpdateCommandShrink *string `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty"`
 }

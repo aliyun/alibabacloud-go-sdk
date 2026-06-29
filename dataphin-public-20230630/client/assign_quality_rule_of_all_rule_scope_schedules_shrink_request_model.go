@@ -16,8 +16,12 @@ type iAssignQualityRuleOfAllRuleScopeSchedulesShrinkRequest interface {
 }
 
 type AssignQualityRuleOfAllRuleScopeSchedulesShrinkRequest struct {
+	// The assignment binding instruction.
+	//
 	// This parameter is required.
 	AssignCommandShrink *string `json:"AssignCommand,omitempty" xml:"AssignCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

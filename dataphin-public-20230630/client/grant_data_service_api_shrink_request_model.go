@@ -18,14 +18,20 @@ type iGrantDataServiceApiShrinkRequest interface {
 }
 
 type GrantDataServiceApiShrinkRequest struct {
+	// The grant command.
+	//
 	// This parameter is required.
 	GrantCommandShrink *string `json:"GrantCommand,omitempty" xml:"GrantCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The data service project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,26 +24,34 @@ type iListComputeSourcesResponseBody interface {
 }
 
 type ListComputeSourcesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned if the request failed.
+	//
 	// example:
 	//
 	// internal error
-	Message    *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paginated query result.
 	PageResult *ListComputeSourcesResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListComputeSourcesResponseBody) String() string {
@@ -118,7 +126,10 @@ func (s *ListComputeSourcesResponseBody) Validate() error {
 }
 
 type ListComputeSourcesResponseBodyPageResult struct {
+	// The paginated list of compute sources.
 	ComputeSourceList []*ListComputeSourcesResponseBodyPageResultComputeSourceList `json:"ComputeSourceList,omitempty" xml:"ComputeSourceList,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 68
@@ -165,55 +176,82 @@ func (s *ListComputeSourcesResponseBodyPageResult) Validate() error {
 }
 
 type ListComputeSourcesResponseBodyPageResultComputeSourceList struct {
+	// Indicates whether the compute source is bound to a project.
 	BindProject *bool `json:"BindProject,omitempty" xml:"BindProject,omitempty"`
+	// The ID of the bound project.
+	//
 	// example:
 	//
 	// 10132131111
 	BindProjectId *int64 `json:"BindProjectId,omitempty" xml:"BindProjectId,omitempty"`
+	// The name of the bound project.
+	//
 	// example:
 	//
 	// testPrj
 	BindProjectName *string `json:"BindProjectName,omitempty" xml:"BindProjectName,omitempty"`
+	// The ID of the creator.
+	//
 	// example:
 	//
 	// 30012211
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The name of the creator.
+	//
 	// example:
 	//
 	// 张三
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The description of the compute source.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the compute source.
+	//
 	// example:
 	//
 	// test1011
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The time when the compute source was created, in the yyyy-MM-dd HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2025-06-30 08:00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the compute source was last modified, in the yyyy-MM-dd HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2025-06-30 08:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the compute source.
+	//
 	// example:
 	//
 	// 102111
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the compute source.
+	//
 	// example:
 	//
 	// test1011
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the compute source owner.
+	//
 	// example:
 	//
 	// 30012211
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The name of the compute source owner.
+	//
 	// example:
 	//
 	// 张三
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The type of the compute source.
+	//
 	// example:
 	//
 	// MaxCompute

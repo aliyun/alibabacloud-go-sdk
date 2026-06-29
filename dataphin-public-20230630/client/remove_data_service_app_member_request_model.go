@@ -16,12 +16,16 @@ type iRemoveDataServiceAppMemberRequest interface {
 }
 
 type RemoveDataServiceAppMemberRequest struct {
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Remove regular members from a data service application
+	//
 	// This parameter is required.
 	RemoveCommand *RemoveDataServiceAppMemberRequestRemoveCommand `json:"RemoveCommand,omitempty" xml:"RemoveCommand,omitempty" type:"Struct"`
 }
@@ -62,12 +66,16 @@ func (s *RemoveDataServiceAppMemberRequest) Validate() error {
 }
 
 type RemoveDataServiceAppMemberRequestRemoveCommand struct {
+	// Application ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 200000000
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// List of application member IDs
+	//
 	// This parameter is required.
 	MemberIds []*string `json:"MemberIds,omitempty" xml:"MemberIds,omitempty" type:"Repeated"`
 }

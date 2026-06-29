@@ -16,12 +16,16 @@ type iCreateDataServiceAppGroupRequest interface {
 }
 
 type CreateDataServiceAppGroupRequest struct {
+	// The group name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default_app_group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

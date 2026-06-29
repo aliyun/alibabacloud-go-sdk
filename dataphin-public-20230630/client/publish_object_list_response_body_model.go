@@ -24,24 +24,34 @@ type iPublishObjectListResponseBody interface {
 }
 
 type PublishObjectListResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message       *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The publish result.
 	PublishResult *PublishObjectListResponseBodyPublishResult `json:"PublishResult,omitempty" xml:"PublishResult,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PublishObjectListResponseBody) String() string {
@@ -116,6 +126,7 @@ func (s *PublishObjectListResponseBody) Validate() error {
 }
 
 type PublishObjectListResponseBodyPublishResult struct {
+	// The list of pending publish record IDs.
 	SubmitIdList []*int64 `json:"SubmitIdList,omitempty" xml:"SubmitIdList,omitempty" type:"Repeated"`
 }
 

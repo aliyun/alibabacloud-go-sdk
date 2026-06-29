@@ -18,16 +18,26 @@ type iGetOperationSubmitStatusRequest interface {
 }
 
 type GetOperationSubmitStatusRequest struct {
+	// The environment identifier. Valid values:
+	//
+	// - DEV: Development environment.
+	//
+	// - PROD (default): Production environment.
+	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The job ID returned after submission in batch mode.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1324444131
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

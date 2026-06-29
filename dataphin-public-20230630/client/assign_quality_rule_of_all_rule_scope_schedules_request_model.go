@@ -16,8 +16,12 @@ type iAssignQualityRuleOfAllRuleScopeSchedulesRequest interface {
 }
 
 type AssignQualityRuleOfAllRuleScopeSchedulesRequest struct {
+	// The assignment binding instruction.
+	//
 	// This parameter is required.
 	AssignCommand *AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand `json:"AssignCommand,omitempty" xml:"AssignCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,10 +66,16 @@ func (s *AssignQualityRuleOfAllRuleScopeSchedulesRequest) Validate() error {
 }
 
 type AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand struct {
+	// The rule IDs.
+	//
 	// This parameter is required.
 	RuleIdList []*int64 `json:"RuleIdList,omitempty" xml:"RuleIdList,omitempty" type:"Repeated"`
+	// The schedule IDs.
+	//
 	// This parameter is required.
 	ScheduleIdList []*int64 `json:"ScheduleIdList,omitempty" xml:"ScheduleIdList,omitempty" type:"Repeated"`
+	// The ID of the monitored object.
+	//
 	// This parameter is required.
 	//
 	// example:

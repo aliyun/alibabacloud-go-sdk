@@ -24,23 +24,34 @@ type iListFilesResponseBody interface {
 }
 
 type ListFilesResponseBody struct {
+	// Request error code. OK indicates a normal request.
+	//
 	// example:
 	//
 	// OK
-	Code     *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// File list
 	FileList []*ListFilesResponseBodyFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	// Backend response HTTP code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request error message
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request was successful
+	//
 	// example:
 	//
 	// true
@@ -123,46 +134,68 @@ func (s *ListFilesResponseBody) Validate() error {
 }
 
 type ListFilesResponseBodyFileList struct {
+	// File category
+	//
 	// example:
 	//
 	// tempCode
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// File content
+	//
 	// example:
 	//
 	// select 1;
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Creator
+	//
 	// example:
 	//
 	// 1212111
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// File directory
+	//
 	// example:
 	//
 	// /xx/x
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// File type, such as directory
+	//
 	// example:
 	//
 	// directory
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 1717483193830
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Modification time
+	//
 	// example:
 	//
 	// 1717483193830
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// File ID
+	//
 	// example:
 	//
 	// 111231112
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Last modifier
+	//
 	// example:
 	//
 	// 1212111
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
+	// File name
+	//
 	// example:
 	//
 	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Project ID
+	//
 	// example:
 	//
 	// 312112121

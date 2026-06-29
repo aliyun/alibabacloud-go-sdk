@@ -24,23 +24,34 @@ type iGetProjectResponseBody interface {
 }
 
 type GetProjectResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message     *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The project details.
 	ProjectInfo *GetProjectResponseBodyProjectInfo `json:"ProjectInfo,omitempty" xml:"ProjectInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,78 +130,119 @@ func (s *GetProjectResponseBody) Validate() error {
 }
 
 type GetProjectResponseBodyProjectInfo struct {
+	// The dependent data module display name.
+	//
 	// example:
 	//
-	// 测试
+	// 业务板块显示名
 	BizUnitDisplayName *string `json:"BizUnitDisplayName,omitempty" xml:"BizUnitDisplayName,omitempty"`
+	// The dependent data module ID.
+	//
 	// example:
 	//
-	// 101131
+	// 业务板块Id
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The compute source ID.
+	//
 	// example:
 	//
-	// 101711
+	// 项目依赖计算源Id
 	ComputeSourceId *int64 `json:"ComputeSourceId,omitempty" xml:"ComputeSourceId,omitempty"`
+	// The compute source name.
+	//
 	// example:
 	//
-	// ds1
+	// 项目依赖计算源名
 	ComputeSourceName *string `json:"ComputeSourceName,omitempty" xml:"ComputeSourceName,omitempty"`
+	// The project description.
+	//
 	// example:
 	//
 	// project for xxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The project display name.
+	//
 	// example:
 	//
-	// xx test
+	// 项目显示名
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The environment.
+	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1703048484000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1703048484000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 12356
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The project mode. Valid values:
+	//
+	// - BASIC
+	//
+	// - DEV_PROD
+	//
 	// example:
 	//
 	// BASIC
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// dp_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The project tag.
+	//
 	// example:
 	//
 	// GENERAL
 	NameSpaceTag *string `json:"NameSpaceTag,omitempty" xml:"NameSpaceTag,omitempty"`
+	// The project owner ID.
+	//
 	// example:
 	//
 	// 101111
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The project owner.
+	//
 	// example:
 	//
-	// 张三
+	// 测试用户
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The stream compute source ID.
+	//
 	// example:
 	//
-	// 201711
+	// 项目依赖实时计算源Id
 	StreamComputeSourceId *int64 `json:"StreamComputeSourceId,omitempty" xml:"StreamComputeSourceId,omitempty"`
+	// The stream compute source name.
+	//
 	// example:
 	//
-	// ds2
+	// 项目依赖实时计算源名
 	StreamComputeSourceName *string `json:"StreamComputeSourceName,omitempty" xml:"StreamComputeSourceName,omitempty"`
+	// The project type.
+	//
 	// example:
 	//
 	// GENERAL
-	Type       *string                                        `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The whitelists.
 	WhiteLists []*GetProjectResponseBodyProjectInfoWhiteLists `json:"WhiteLists,omitempty" xml:"WhiteLists,omitempty" type:"Repeated"`
 }
 
@@ -387,16 +439,20 @@ func (s *GetProjectResponseBodyProjectInfo) Validate() error {
 }
 
 type GetProjectResponseBodyProjectInfoWhiteLists struct {
+	// The whitelist description.
+	//
 	// example:
 	//
 	// whitelist for xxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// ip
+	// The IP address.
 	//
 	// example:
 	//
 	// 10.209.47.198
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The port.
+	//
 	// example:
 	//
 	// 3306

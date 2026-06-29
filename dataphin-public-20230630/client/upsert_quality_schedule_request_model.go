@@ -16,12 +16,16 @@ type iUpsertQualityScheduleRequest interface {
 }
 
 type UpsertQualityScheduleRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update instruction.
+	//
 	// This parameter is required.
 	UpsertCommand *UpsertQualityScheduleRequestUpsertCommand `json:"UpsertCommand,omitempty" xml:"UpsertCommand,omitempty" type:"Struct"`
 }
@@ -62,52 +66,120 @@ func (s *UpsertQualityScheduleRequest) Validate() error {
 }
 
 type UpsertQualityScheduleRequestUpsertCommand struct {
+	// The cron expression for timed scheduling.
+	//
 	// example:
 	//
 	// 	- 	- 1/	- 	- 	- *
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The ID of the schedule resource. If specified, the operation updates the existing resource. If not specified, the operation creates a new resource.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the schedule resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The partition expression for custom expressions.
+	//
 	// example:
 	//
 	// ds=${yyyyMMdd}
 	PartitionExpression *string `json:"PartitionExpression,omitempty" xml:"PartitionExpression,omitempty"`
+	// The partition type. Valid values:
+	//
+	// - EVERY_DAY: every day.
+	//
+	// - PRE_DAY: previous day.
+	//
+	// - TODAY: current day.
+	//
+	// - FIRST_DAY_OF_WEEK: first day of the week (Sunday).
+	//
+	// - CUSTOM: custom.
+	//
 	// example:
 	//
 	// CUSTOM
 	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
+	// The scheduling interval type for timed scheduling. Valid values:
+	//
+	// - DAILY: day.
+	//
+	// - WEEKLY: week.
+	//
+	// - MONTHLY: month.
+	//
+	// - HOURLY: hour.
+	//
+	// - MINUTELY: minute.
+	//
 	// example:
 	//
 	// DAILY
-	PeriodScheduleIntervalType *string   `json:"PeriodScheduleIntervalType,omitempty" xml:"PeriodScheduleIntervalType,omitempty"`
-	PeriodScheduleParamList    []*string `json:"PeriodScheduleParamList,omitempty" xml:"PeriodScheduleParamList,omitempty" type:"Repeated"`
+	PeriodScheduleIntervalType *string `json:"PeriodScheduleIntervalType,omitempty" xml:"PeriodScheduleIntervalType,omitempty"`
+	// The scheduling interval values for timed scheduling.
+	PeriodScheduleParamList []*string `json:"PeriodScheduleParamList,omitempty" xml:"PeriodScheduleParamList,omitempty" type:"Repeated"`
+	// The trigger method for fixed task triggers. Valid values:
+	//
+	// - ALL_TASKS_FINISHED
+	//
+	// - ONE_TASKS_FINISHED
+	//
+	// - PRE_ONE_TASKS_START.
+	//
 	// example:
 	//
 	// ONE_TASKS_FINISHED
-	StaticTaskTriggerType *string   `json:"StaticTaskTriggerType,omitempty" xml:"StaticTaskTriggerType,omitempty"`
-	TriggerNodeList       []*string `json:"TriggerNodeList,omitempty" xml:"TriggerNodeList,omitempty" type:"Repeated"`
+	StaticTaskTriggerType *string `json:"StaticTaskTriggerType,omitempty" xml:"StaticTaskTriggerType,omitempty"`
+	// The checklist of trigger nodes for trigger scheduling.
+	TriggerNodeList []*string `json:"TriggerNodeList,omitempty" xml:"TriggerNodeList,omitempty" type:"Repeated"`
+	// The trigger method for trigger scheduling. Valid values:
+	//
+	// - STATIC_TASK_TRIGGER: fixed task trigger.
+	//
+	// - CODE_CHECK_TRIGGER: code check trigger.
+	//
 	// example:
 	//
 	// STATIC_TASK_TRIGGER
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The scheduling type. Valid values:
+	//
+	// - PERIOD_SCHEDULE: timed scheduling.
+	//
+	// - MANUAL_SCHEDULE: manual trigger.
+	//
+	// - CODE_CHECK_TRIGGER: code check trigger.
+	//
+	// - STATIC_TASK_TRIGGER: fixed task trigger.
+	//
+	// - DEPENDENCY_SCHEDULE: dependency scheduling.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PERIOD_SCHEDULE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The validation scope. Valid values:
+	//
+	// - TASK_REFERRED_PARTITION: task update partition.
+	//
+	// - USER_DEFINED_PARTITION: custom partition.
+	//
 	// example:
 	//
 	// TASK_REFERRED_PARTITION
 	ValidatePartitionType *string `json:"ValidatePartitionType,omitempty" xml:"ValidatePartitionType,omitempty"`
+	// The ID of the monitored object.
+	//
 	// This parameter is required.
 	//
 	// example:

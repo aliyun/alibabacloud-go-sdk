@@ -24,23 +24,34 @@ type iGetInstanceUpDownStreamResponseBody interface {
 }
 
 type GetInstanceUpDownStreamResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode  *int32                                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The instance dag data, including the current instance and its upstream and downstream instances.
 	InstanceDagInfo *GetInstanceUpDownStreamResponseBodyInstanceDagInfo `json:"InstanceDagInfo,omitempty" xml:"InstanceDagInfo,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,9 +130,12 @@ func (s *GetInstanceUpDownStreamResponseBody) Validate() error {
 }
 
 type GetInstanceUpDownStreamResponseBodyInstanceDagInfo struct {
-	DownInstanceList  []*GetInstanceUpDownStreamResponseBodyInstanceDagInfoDownInstanceList  `json:"DownInstanceList,omitempty" xml:"DownInstanceList,omitempty" type:"Repeated"`
+	// The downstream instances.
+	DownInstanceList []*GetInstanceUpDownStreamResponseBodyInstanceDagInfoDownInstanceList `json:"DownInstanceList,omitempty" xml:"DownInstanceList,omitempty" type:"Repeated"`
+	// The center instances.
 	StartInstanceList []*GetInstanceUpDownStreamResponseBodyInstanceDagInfoStartInstanceList `json:"StartInstanceList,omitempty" xml:"StartInstanceList,omitempty" type:"Repeated"`
-	UpInstanceList    []*GetInstanceUpDownStreamResponseBodyInstanceDagInfoUpInstanceList    `json:"UpInstanceList,omitempty" xml:"UpInstanceList,omitempty" type:"Repeated"`
+	// The upstream instances.
+	UpInstanceList []*GetInstanceUpDownStreamResponseBodyInstanceDagInfoUpInstanceList `json:"UpInstanceList,omitempty" xml:"UpInstanceList,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceUpDownStreamResponseBodyInstanceDagInfo) String() string {
@@ -191,19 +205,28 @@ func (s *GetInstanceUpDownStreamResponseBodyInstanceDagInfo) Validate() error {
 }
 
 type GetInstanceUpDownStreamResponseBodyInstanceDagInfoDownInstanceList struct {
+	// The list of field IDs.
 	FieldInstanceIdList []*string `json:"FieldInstanceIdList,omitempty" xml:"FieldInstanceIdList,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// t_1234567
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The node name.
+	//
 	// example:
 	//
 	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// n_1234567
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The node type.
+	//
 	// example:
 	//
 	// DATA_PROCESS
@@ -268,19 +291,34 @@ func (s *GetInstanceUpDownStreamResponseBodyInstanceDagInfoDownInstanceList) Val
 }
 
 type GetInstanceUpDownStreamResponseBodyInstanceDagInfoStartInstanceList struct {
+	// The list of field IDs.
 	FieldInstanceIdList []*string `json:"FieldInstanceIdList,omitempty" xml:"FieldInstanceIdList,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// t_1234567
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The node name.
+	//
 	// example:
 	//
 	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// n_1234567
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The node type. Valid values:
+	//
+	// - DATA_PROCESS: code node.
+	//
+	// - BBOX_LOGIC_TABLE_NODE: logical table node.
+	//
+	// - PIPELINE_NODE: pipeline node.
+	//
 	// example:
 	//
 	// DATA_PROCESS
@@ -345,19 +383,28 @@ func (s *GetInstanceUpDownStreamResponseBodyInstanceDagInfoStartInstanceList) Va
 }
 
 type GetInstanceUpDownStreamResponseBodyInstanceDagInfoUpInstanceList struct {
+	// The list of field IDs.
 	FieldInstanceIdList []*string `json:"FieldInstanceIdList,omitempty" xml:"FieldInstanceIdList,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// t_1234567
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The node name.
+	//
 	// example:
 	//
 	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// n_1234567
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The node type.
+	//
 	// example:
 	//
 	// DATA_PROCESS

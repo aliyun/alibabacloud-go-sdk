@@ -16,12 +16,16 @@ type iUpdateSecurityLevelRequest interface {
 }
 
 type UpdateSecurityLevelRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update instruction.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateSecurityLevelRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,14 +66,20 @@ func (s *UpdateSecurityLevelRequest) Validate() error {
 }
 
 type UpdateSecurityLevelRequestUpdateCommand struct {
+	// The classification description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The classification order. If this parameter is not specified, the classification name is used for matching.
+	//
 	// example:
 	//
 	// 1
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The classification name.
+	//
 	// example:
 	//
 	// test

@@ -16,8 +16,12 @@ type iCreateDataDomainRequest interface {
 }
 
 type CreateDataDomainRequest struct {
+	// The create request.
+	//
 	// This parameter is required.
 	CreateCommand *CreateDataDomainRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,34 +66,46 @@ func (s *CreateDataDomainRequest) Validate() error {
 }
 
 type CreateDataDomainRequestCreateCommand struct {
+	// The abbreviation of the data domain.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dm_code_name
 	Abbreviation *string `json:"Abbreviation,omitempty" xml:"Abbreviation,omitempty"`
+	// The ID of the data unit to which the data domain belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 545844456
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The description of the data domain.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the data domain.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 主题域测试
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The code of the data domain.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dm_code_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the parent data domain.
+	//
 	// example:
 	//
 	// 10232311

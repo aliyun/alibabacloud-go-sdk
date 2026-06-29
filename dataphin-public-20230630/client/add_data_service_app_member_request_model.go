@@ -16,8 +16,12 @@ type iAddDataServiceAppMemberRequest interface {
 }
 
 type AddDataServiceAppMemberRequest struct {
+	// The regular member to add to the data service application.
+	//
 	// This parameter is required.
 	AddCommand *AddDataServiceAppMemberRequestAddCommand `json:"AddCommand,omitempty" xml:"AddCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,12 +66,16 @@ func (s *AddDataServiceAppMemberRequest) Validate() error {
 }
 
 type AddDataServiceAppMemberRequestAddCommand struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 200000000
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The list of members.
+	//
 	// This parameter is required.
 	MemberList []*AddDataServiceAppMemberRequestAddCommandMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
 }
@@ -112,12 +120,16 @@ func (s *AddDataServiceAppMemberRequestAddCommand) Validate() error {
 }
 
 type AddDataServiceAppMemberRequestAddCommandMemberList struct {
+	// The authorization expiration time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2026-12-12
 	EffectiveEnd *string `json:"EffectiveEnd,omitempty" xml:"EffectiveEnd,omitempty"`
+	// The user ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,24 +24,34 @@ type iGetClusterQueueInfoByEnvResponseBody interface {
 }
 
 type GetClusterQueueInfoByEnvResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*GetClusterQueueInfoByEnvResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetClusterQueueInfoByEnvResponseBody) String() string {
@@ -120,62 +130,92 @@ func (s *GetClusterQueueInfoByEnvResponseBody) Validate() error {
 }
 
 type GetClusterQueueInfoByEnvResponseBodyData struct {
+	// The annotations.
+	//
 	// example:
 	//
 	// {  "creator": "new_datasource@test.aliyunid.com",  "modifier": "new_datasource@test.aliyunid.com" }
 	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// 61187014-a3ba-4cdd-8609-1f0aa3df4a3d
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-10-31 10:29:17
 	CreateAt *string `json:"CreateAt,omitempty" xml:"CreateAt,omitempty"`
+	// The Flink image registry address.
+	//
 	// example:
 	//
 	// xxxx-registry-vpc.cn-shanghai.cr.aliyuncs.com/xxxx/flink:1.15.4-scala_2.12
 	FlinkImageRegistry *string `json:"FlinkImageRegistry,omitempty" xml:"FlinkImageRegistry,omitempty"`
+	// The Flink image repository.
+	//
 	// example:
 	//
 	// xxxx-registry-vpc.cn-shanghai.cr.aliyuncs.com
 	FlinkImageRepository *string `json:"FlinkImageRepository,omitempty" xml:"FlinkImageRepository,omitempty"`
+	// The Flink image tag.
+	//
 	// example:
 	//
 	// 1.15.4
 	FlinkImageTag *string `json:"FlinkImageTag,omitempty" xml:"FlinkImageTag,omitempty"`
+	// The Flink version.
+	//
 	// example:
 	//
 	// 1.15
 	FlinkVersion *string `json:"FlinkVersion,omitempty" xml:"FlinkVersion,omitempty"`
+	// The labels.
+	//
 	// example:
 	//
 	// cdh
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The maximum number of vCores provided by each queue.
+	//
 	// example:
 	//
 	// 10
 	MaxVcore *string `json:"MaxVcore,omitempty" xml:"MaxVcore,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2024-10-31 10:29:17
 	ModifiedAt *string `json:"ModifiedAt,omitempty" xml:"ModifiedAt,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// dataphinv45prod
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The queue name, which serves as a unique identifier. For Kubernetes, this is the resource group name.
+	//
 	// example:
 	//
 	// default-queue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The resource version.
+	//
 	// example:
 	//
 	// 1
 	ResourceVersion *string `json:"ResourceVersion,omitempty" xml:"ResourceVersion,omitempty"`
+	// The resource specification.
+	//
 	// example:
 	//
 	// {\\n  \\"kind\\" : \\"kubernetes\\",\\n  \\"kubernetes\\{"namespace" : "n1730341728989z7",    "clusterName" : "a51578bdcce145"  },  "state" : "ONLINE"}
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The VVP cluster type.
+	//
 	// example:
 	//
 	// PREJOB

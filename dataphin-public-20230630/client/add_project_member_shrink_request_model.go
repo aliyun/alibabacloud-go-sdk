@@ -18,14 +18,20 @@ type iAddProjectMemberShrinkRequest interface {
 }
 
 type AddProjectMemberShrinkRequest struct {
+	// The command to add members.
+	//
 	// This parameter is required.
 	AddCommandShrink *string `json:"AddCommand,omitempty" xml:"AddCommand,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 711833
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

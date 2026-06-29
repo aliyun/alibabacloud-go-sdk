@@ -16,8 +16,12 @@ type iCreateBizEntityRequest interface {
 }
 
 type CreateBizEntityRequest struct {
+	// The create request.
+	//
 	// This parameter is required.
 	CreateCommand *CreateBizEntityRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,20 +66,32 @@ func (s *CreateBizEntityRequest) Validate() error {
 }
 
 type CreateBizEntityRequestCreateCommand struct {
-	BizObject  *CreateBizEntityRequestCreateCommandBizObject  `json:"BizObject,omitempty" xml:"BizObject,omitempty" type:"Struct"`
+	// The business object.
+	BizObject *CreateBizEntityRequestCreateCommandBizObject `json:"BizObject,omitempty" xml:"BizObject,omitempty" type:"Struct"`
+	// The business activity.
 	BizProcess *CreateBizEntityRequestCreateCommandBizProcess `json:"BizProcess,omitempty" xml:"BizProcess,omitempty" type:"Struct"`
+	// The ID of the business unit to which the business activity belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6798087749072704
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The ID of the data domain to which the business activity belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20101011
 	DataDomainId *int64 `json:"DataDomainId,omitempty" xml:"DataDomainId,omitempty"`
+	// The business type. Valid values:
+	//
+	// - BIZ_OBJECT: business object.
+	//
+	// - BIZ_PROCESS: business activity.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -152,31 +168,52 @@ func (s *CreateBizEntityRequestCreateCommand) Validate() error {
 }
 
 type CreateBizEntityRequestCreateCommandBizObject struct {
+	// The description of the business object. The description can be up to 128 characters in length.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the business object. The name can be up to 64 characters in length and can contain only Chinese characters, letters, digits, underscores, and hyphens.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// create_object_name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The code name of the business object. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For ADB_PG engines, the code name can be up to 40 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// create_object_code_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The user ID of the business object owner.
+	//
 	// example:
 	//
 	// 30010010
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The parent entity from which the business object inherits. Only common business objects support inheritance, and the parent entity must be an online business object.
+	//
 	// example:
 	//
 	// 116306
-	ParentId           *int64   `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The list of associated online business entity IDs.
 	RefBizEntityIdList []*int64 `json:"RefBizEntityIdList,omitempty" xml:"RefBizEntityIdList,omitempty" type:"Repeated"`
+	// The object type of the business object. Valid values:
+	//
+	// - NORMAL: common object.
+	//
+	// - ENUM: enumeration object.
+	//
+	// - VIRTUAL: virtual object.
+	//
+	// - HIERARCHY: hierarchy object.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -261,29 +298,48 @@ func (s *CreateBizEntityRequestCreateCommandBizObject) Validate() error {
 }
 
 type CreateBizEntityRequestCreateCommandBizProcess struct {
+	// The list of business event activity IDs included in the business process activity. This parameter takes effect only when the current activity is a business process activity.
 	BizEventEntityIdList []*int64 `json:"BizEventEntityIdList,omitempty" xml:"BizEventEntityIdList,omitempty" type:"Repeated"`
+	// The description of the business activity. The description can be up to 128 characters in length.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the business activity. The name can be up to 64 characters in length and can contain only Chinese characters, letters, digits, underscores, and hyphens.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// create_process_name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The code name of the business activity. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For ADB_PG engines, the code name can be up to 40 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// create_process_code_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The user ID of the business activity owner.
+	//
 	// example:
 	//
 	// 30010010
-	OwnerUserId         *string  `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The list of preceding business process activity IDs for the business process activity.
 	PreBizProcessIdList []*int64 `json:"PreBizProcessIdList,omitempty" xml:"PreBizProcessIdList,omitempty" type:"Repeated"`
-	RefBizEntityIdList  []*int64 `json:"RefBizEntityIdList,omitempty" xml:"RefBizEntityIdList,omitempty" type:"Repeated"`
+	// The list of associated online business entity IDs.
+	RefBizEntityIdList []*int64 `json:"RefBizEntityIdList,omitempty" xml:"RefBizEntityIdList,omitempty" type:"Repeated"`
+	// The type of the business activity. Valid values:
+	//
+	// - BIZ_EVENT: business event.
+	//
+	// - BIZ_SNAPSHOT: business snapshot.
+	//
+	// - BIZ_PROCESS: business process.
+	//
 	// This parameter is required.
 	//
 	// example:

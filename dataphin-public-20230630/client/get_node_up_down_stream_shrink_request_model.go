@@ -24,26 +24,42 @@ type iGetNodeUpDownStreamShrinkRequest interface {
 }
 
 type GetNodeUpDownStreamShrinkRequest struct {
+	// The downstream depth. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	DownStreamDepth *int32 `json:"DownStreamDepth,omitempty" xml:"DownStreamDepth,omitempty"`
+	// The environment identifier. Valid values:
+	//
+	// - DEV: development environment.
+	//
+	// - PROD (default): production environment.
+	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The node ID.
+	//
 	// This parameter is required.
 	NodeIdShrink *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 113123
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The upstream depth. Default value: 1.
+	//
 	// example:
 	//
 	// 1

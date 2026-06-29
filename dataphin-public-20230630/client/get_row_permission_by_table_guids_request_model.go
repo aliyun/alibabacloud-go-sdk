@@ -16,8 +16,12 @@ type iGetRowPermissionByTableGuidsRequest interface {
 }
 
 type GetRowPermissionByTableGuidsRequest struct {
+	// Request command
+	//
 	// This parameter is required.
 	GetRowPermissionByTableGuidsQuery *GetRowPermissionByTableGuidsRequestGetRowPermissionByTableGuidsQuery `json:"GetRowPermissionByTableGuidsQuery,omitempty" xml:"GetRowPermissionByTableGuidsQuery,omitempty" type:"Struct"`
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,6 +66,8 @@ func (s *GetRowPermissionByTableGuidsRequest) Validate() error {
 }
 
 type GetRowPermissionByTableGuidsRequestGetRowPermissionByTableGuidsQuery struct {
+	// List of table GUIDs
+	//
 	// This parameter is required.
 	TableGuids []*string `json:"TableGuids,omitempty" xml:"TableGuids,omitempty" type:"Repeated"`
 }

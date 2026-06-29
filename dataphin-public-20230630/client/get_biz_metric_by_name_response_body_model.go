@@ -24,15 +24,22 @@ type iGetBizMetricByNameResponseBody interface {
 }
 
 type GetBizMetricByNameResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the business metric.
 	Data *GetBizMetricByNameResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// SUCCESS
@@ -43,6 +50,8 @@ type GetBizMetricByNameResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,55 +130,83 @@ func (s *GetBizMetricByNameResponseBody) Validate() error {
 }
 
 type GetBizMetricByNameResponseBodyData struct {
+	// The list of associated technical metrics.
 	AssociatedTechMetrics []*GetBizMetricByNameResponseBodyDataAssociatedTechMetrics `json:"AssociatedTechMetrics,omitempty" xml:"AssociatedTechMetrics,omitempty" type:"Repeated"`
+	// The name of the business owner.
+	//
 	// example:
 	//
 	// SuperAdmin
-	BizOwnerName    *string                                              `json:"BizOwnerName,omitempty" xml:"BizOwnerName,omitempty"`
-	Catalogs        []*GetBizMetricByNameResponseBodyDataCatalogs        `json:"Catalogs,omitempty" xml:"Catalogs,omitempty" type:"Repeated"`
+	BizOwnerName *string `json:"BizOwnerName,omitempty" xml:"BizOwnerName,omitempty"`
+	// The list of affiliated catalogs.
+	Catalogs []*GetBizMetricByNameResponseBodyDataCatalogs `json:"Catalogs,omitempty" xml:"Catalogs,omitempty" type:"Repeated"`
+	// The list of custom attributes.
 	CustomAttribute []*GetBizMetricByNameResponseBodyDataCustomAttribute `json:"CustomAttribute,omitempty" xml:"CustomAttribute,omitempty" type:"Repeated"`
+	// The description.
+	//
 	// example:
 	//
 	// Metric Desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name.
+	//
 	// example:
 	//
 	// Metric Display Name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The GUID of the business metric.
+	//
 	// example:
 	//
 	// guid
-	Guid   *string   `json:"Guid,omitempty" xml:"Guid,omitempty"`
+	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
+	// The list of labels.
 	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The metric definition.
+	//
 	// example:
 	//
 	// [Metric1]+[Metric2]
 	MetricDefinition *string `json:"MetricDefinition,omitempty" xml:"MetricDefinition,omitempty"`
+	// The expression of the metric relation diagram.
+	//
 	// example:
 	//
 	// [Metric2]*10
 	MetricRelationDiagramExpression *string `json:"MetricRelationDiagramExpression,omitempty" xml:"MetricRelationDiagramExpression,omitempty"`
+	// Indicates whether the metric relation diagram is enabled. A value of true indicates that the diagram is enabled. A value of false indicates that the diagram is disabled.
+	//
 	// example:
 	//
 	// true
 	MetricRelationDiagramSwitchOpen *bool `json:"MetricRelationDiagramSwitchOpen,omitempty" xml:"MetricRelationDiagramSwitchOpen,omitempty"`
+	// The name of the business metric.
+	//
 	// example:
 	//
 	// Metric1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The text content of the operation instruction.
+	//
 	// example:
 	//
 	// content
 	OperateInstructionContent *string `json:"OperateInstructionContent,omitempty" xml:"OperateInstructionContent,omitempty"`
+	// Indicates whether the operation instruction is enabled. A value of true indicates that the operation instruction is enabled. A value of false indicates that the operation instruction is disabled.
+	//
 	// example:
 	//
 	// true
-	OperateInstructionEnabled *bool                                                  `json:"OperateInstructionEnabled,omitempty" xml:"OperateInstructionEnabled,omitempty"`
-	RelatedBizMetrics         []*GetBizMetricByNameResponseBodyDataRelatedBizMetrics `json:"RelatedBizMetrics,omitempty" xml:"RelatedBizMetrics,omitempty" type:"Repeated"`
+	OperateInstructionEnabled *bool `json:"OperateInstructionEnabled,omitempty" xml:"OperateInstructionEnabled,omitempty"`
+	// The list of related business metrics.
+	RelatedBizMetrics []*GetBizMetricByNameResponseBodyDataRelatedBizMetrics `json:"RelatedBizMetrics,omitempty" xml:"RelatedBizMetrics,omitempty" type:"Repeated"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 30001011
-	TenantId  *int64                                       `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The view scope.
 	ViewScope *GetBizMetricByNameResponseBodyDataViewScope `json:"ViewScope,omitempty" xml:"ViewScope,omitempty" type:"Struct"`
 }
 
@@ -380,24 +417,32 @@ func (s *GetBizMetricByNameResponseBodyData) Validate() error {
 }
 
 type GetBizMetricByNameResponseBodyDataAssociatedTechMetrics struct {
+	// The description.
+	//
 	// example:
 	//
 	// desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name.
+	//
 	// example:
 	//
 	// display name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// guid
+	// The GUID.
 	//
 	// example:
 	//
 	// table1.a.b
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// metric3
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the technical metric. Valid values: INDEX (modeling metric) and CUSTOM_INDEX (custom metric).
+	//
 	// example:
 	//
 	// CUSTOM_INDEX
@@ -462,30 +507,44 @@ func (s *GetBizMetricByNameResponseBodyDataAssociatedTechMetrics) Validate() err
 }
 
 type GetBizMetricByNameResponseBodyDataCatalogs struct {
+	// The catalog description.
+	//
 	// example:
 	//
 	// catalog desc
 	CatalogDesc *string `json:"CatalogDesc,omitempty" xml:"CatalogDesc,omitempty"`
+	// The catalog ID.
+	//
 	// example:
 	//
 	// 1561740764851842
 	CatalogId *int64 `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// The catalog name.
+	//
 	// example:
 	//
 	// test catalog
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The parent catalog ID.
+	//
 	// example:
 	//
 	// 1561740764851841
 	ParentCatalogId *int64 `json:"ParentCatalogId,omitempty" xml:"ParentCatalogId,omitempty"`
+	// The parent path of the catalog.
+	//
 	// example:
 	//
 	// /catalog1/
 	ParentPath *string `json:"ParentPath,omitempty" xml:"ParentPath,omitempty"`
+	// The topic ID to which the catalog belongs.
+	//
 	// example:
 	//
 	// 43297700
 	TopicId *int64 `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
+	// The topic name to which the catalog belongs.
+	//
 	// example:
 	//
 	// test topic
@@ -568,10 +627,13 @@ func (s *GetBizMetricByNameResponseBodyDataCatalogs) Validate() error {
 }
 
 type GetBizMetricByNameResponseBodyDataCustomAttribute struct {
+	// The code of the custom attribute.
+	//
 	// example:
 	//
 	// CustomAttributeCode
-	Code   *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of attribute values. 1. For custom input and single-select dropdown attributes, the first value in the list is used. 2. For multi-select dropdown attributes, all values in the list are used. 3. For hyperlink attributes, the first value is the display text and the second value is the link URL.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -606,24 +668,32 @@ func (s *GetBizMetricByNameResponseBodyDataCustomAttribute) Validate() error {
 }
 
 type GetBizMetricByNameResponseBodyDataRelatedBizMetrics struct {
+	// The description.
+	//
 	// example:
 	//
 	// desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name.
+	//
 	// example:
 	//
 	// display name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// guid
+	// The GUID.
 	//
 	// example:
 	//
 	// test
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// Metric2
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The relation type. Valid values: POSITIVE (positive correlation), NEGATIVE (negative correlation), and OTHER (other).
+	//
 	// example:
 	//
 	// POSITIVE
@@ -688,12 +758,16 @@ func (s *GetBizMetricByNameResponseBodyDataRelatedBizMetrics) Validate() error {
 }
 
 type GetBizMetricByNameResponseBodyDataViewScope struct {
+	// The type of view scope. Valid values: ALL_USERS_CAN_VIEW (visible to all users), PART_USERS_CAN_VIEW (visible to specific users), and PART_USERS_CAN_NOT_VIEW (invisible to specific users).
+	//
 	// example:
 	//
 	// PART_USERS_CAN_NOT_VIEW
-	ScopeType      *string   `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	// The names of user groups. This parameter takes effect only when the view scope is set to PART_USERS_CAN_VIEW or PART_USERS_CAN_NOT_VIEW.
 	UserGroupNames []*string `json:"UserGroupNames,omitempty" xml:"UserGroupNames,omitempty" type:"Repeated"`
-	UserNames      []*string `json:"UserNames,omitempty" xml:"UserNames,omitempty" type:"Repeated"`
+	// The usernames of individual accounts. This parameter is valid only when the view scope is set to PART_USERS_CAN_VIEW or PART_USERS_CAN_NOT_VIEW.
+	UserNames []*string `json:"UserNames,omitempty" xml:"UserNames,omitempty" type:"Repeated"`
 }
 
 func (s GetBizMetricByNameResponseBodyDataViewScope) String() string {

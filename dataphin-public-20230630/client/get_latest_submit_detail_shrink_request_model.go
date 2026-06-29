@@ -16,12 +16,16 @@ type iGetLatestSubmitDetailShrinkRequest interface {
 }
 
 type GetLatestSubmitDetailShrinkRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The pending submit query request.
+	//
 	// This parameter is required.
 	SubmitDetailQueryShrink *string `json:"SubmitDetailQuery,omitempty" xml:"SubmitDetailQuery,omitempty"`
 }

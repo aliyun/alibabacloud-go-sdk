@@ -16,8 +16,12 @@ type iExecuteAdHocTaskShrinkRequest interface {
 }
 
 type ExecuteAdHocTaskShrinkRequest struct {
+  // The execution command.
+  // 
   // This parameter is required.
   ExecuteCommandShrink *string `json:"ExecuteCommand,omitempty" xml:"ExecuteCommand,omitempty"`
+  // The tenant ID.
+  // 
   // This parameter is required.
   // 
   // example:

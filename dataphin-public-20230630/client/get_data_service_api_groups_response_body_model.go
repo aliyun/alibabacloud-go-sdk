@@ -24,15 +24,22 @@ type iGetDataServiceApiGroupsResponseBody interface {
 }
 
 type GetDataServiceApiGroupsResponseBody struct {
+	// The list of API groups.
 	ApiGroupList []*GetDataServiceApiGroupsResponseBodyApiGroupList `json:"ApiGroupList,omitempty" xml:"ApiGroupList,omitempty" type:"Repeated"`
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type GetDataServiceApiGroupsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataServiceApiGroupsResponseBody) String() string {
@@ -122,10 +130,14 @@ func (s *GetDataServiceApiGroupsResponseBody) Validate() error {
 }
 
 type GetDataServiceApiGroupsResponseBodyApiGroupList struct {
+	// The group ID.
+	//
 	// example:
 	//
 	// 101231
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The group name.
+	//
 	// example:
 	//
 	// test

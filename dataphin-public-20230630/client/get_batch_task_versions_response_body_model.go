@@ -24,24 +24,34 @@ type iGetBatchTaskVersionsResponseBody interface {
 }
 
 type GetBatchTaskVersionsResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request result.
 	Data *GetBatchTaskVersionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetBatchTaskVersionsResponseBody) String() string {
@@ -116,6 +126,7 @@ func (s *GetBatchTaskVersionsResponseBody) Validate() error {
 }
 
 type GetBatchTaskVersionsResponseBodyData struct {
+	// The list of batch task versions.
 	BatchTaskVersionList []*GetBatchTaskVersionsResponseBodyDataBatchTaskVersionList `json:"BatchTaskVersionList,omitempty" xml:"BatchTaskVersionList,omitempty" type:"Repeated"`
 }
 
@@ -150,35 +161,52 @@ func (s *GetBatchTaskVersionsResponseBodyData) Validate() error {
 }
 
 type GetBatchTaskVersionsResponseBodyDataBatchTaskVersionList struct {
+	// The comment for the submission.
+	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-10-10 10:10:10
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2024-10-10 10:10:10
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// n_10231001
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 10232111011
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Published *bool  `json:"Published,omitempty" xml:"Published,omitempty"`
+	// Indicates whether the version has been published to the production environment.
+	Published *bool `json:"Published,omitempty" xml:"Published,omitempty"`
+	// The ID of the user who submitted the version.
+	//
 	// example:
 	//
 	// 20110110
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the user who submitted the version.
+	//
 	// example:
 	//
 	// 张三
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1

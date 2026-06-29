@@ -24,18 +24,25 @@ type iListDataServiceMyAppPermissionsResponseBody interface {
 }
 
 type ListDataServiceMyAppPermissionsResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
-	Message    *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paging query result.
 	PageResult *ListDataServiceMyAppPermissionsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type ListDataServiceMyAppPermissionsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDataServiceMyAppPermissionsResponseBody) String() string {
@@ -118,7 +126,10 @@ func (s *ListDataServiceMyAppPermissionsResponseBody) Validate() error {
 }
 
 type ListDataServiceMyAppPermissionsResponseBodyPageResult struct {
+	// The paginated permission list.
 	PermissionList []*ListDataServiceMyAppPermissionsResponseBodyPageResultPermissionList `json:"PermissionList,omitempty" xml:"PermissionList,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 68
@@ -171,47 +182,80 @@ type ListDataServiceMyAppPermissionsResponseBodyPageResultPermissionList struct 
 	//
 	// 1021
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The name of the creator.
+	//
 	// example:
 	//
 	// test
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// The ID of the creator.
+	//
 	// example:
 	//
 	// 1121
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The role of the current logon user relative to this record. Valid values:
+	//
+	// - SuperAdmin: the current user is a super administrator.
+	//
+	// - ProjMan: the current user is a project administrator for this record.
+	//
+	// - NormalUser: the current user is a regular user for this record, meaning the user is neither a super administrator nor a project administrator.
+	//
 	// example:
 	//
 	// NormalUser
 	CurrentUserRole *string `json:"CurrentUserRole,omitempty" xml:"CurrentUserRole,omitempty"`
+	// The ID of the owner.
+	//
 	// example:
 	//
 	// 1121
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The name of the owner.
+	//
 	// example:
 	//
 	// test
 	OwnerUserName *string `json:"OwnerUserName,omitempty" xml:"OwnerUserName,omitempty"`
+	// The user to whom the permission belongs.
+	//
 	// example:
 	//
 	// 1121
 	PrivilegeBelongTo *string `json:"PrivilegeBelongTo,omitempty" xml:"PrivilegeBelongTo,omitempty"`
+	// The source of the authorization. Valid values:
+	//
+	// - 0: owner.
+	//
 	// example:
 	//
 	// 0
 	PrivilegeFrom *int32 `json:"PrivilegeFrom,omitempty" xml:"PrivilegeFrom,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 112101
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// test
-	ProjectName        *string                                                                                  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The description, used for troubleshooting.
 	RemarkForDebugList []*ListDataServiceMyAppPermissionsResponseBodyPageResultPermissionListRemarkForDebugList `json:"RemarkForDebugList,omitempty" xml:"RemarkForDebugList,omitempty" type:"Repeated"`
+	// The role. Valid values:
+	//
+	// - 0: owner.
+	//
 	// example:
 	//
 	// 0
@@ -357,10 +401,14 @@ func (s *ListDataServiceMyAppPermissionsResponseBodyPageResultPermissionList) Va
 }
 
 type ListDataServiceMyAppPermissionsResponseBodyPageResultPermissionListRemarkForDebugList struct {
+	// The configuration item.
+	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The configuration item value.
+	//
 	// example:
 	//
 	// v1

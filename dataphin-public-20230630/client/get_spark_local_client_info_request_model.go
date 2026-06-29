@@ -18,15 +18,33 @@ type iGetSparkLocalClientInfoRequest interface {
 }
 
 type GetSparkLocalClientInfoRequest struct {
+	// The environment identifier. Valid values:
+	//
+	// - DEV: development environment.
+	//
+	// - PROD: production environment.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// DEV
 	EnvEnum *string `json:"EnvEnum,omitempty" xml:"EnvEnum,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 232432343
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 

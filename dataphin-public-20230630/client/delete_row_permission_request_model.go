@@ -16,8 +16,12 @@ type iDeleteRowPermissionRequest interface {
 }
 
 type DeleteRowPermissionRequest struct {
+	// The request command.
+	//
 	// This parameter is required.
 	DeleteRowPermissionCommand *DeleteRowPermissionRequestDeleteRowPermissionCommand `json:"DeleteRowPermissionCommand,omitempty" xml:"DeleteRowPermissionCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,6 +66,8 @@ func (s *DeleteRowPermissionRequest) Validate() error {
 }
 
 type DeleteRowPermissionRequestDeleteRowPermissionCommand struct {
+	// The row-level permission ID.
+	//
 	// This parameter is required.
 	//
 	// example:

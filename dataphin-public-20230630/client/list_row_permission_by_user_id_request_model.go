@@ -16,8 +16,12 @@ type iListRowPermissionByUserIdRequest interface {
 }
 
 type ListRowPermissionByUserIdRequest struct {
+	// The request command.
+	//
 	// This parameter is required.
 	ListRowPermissionByUserIdQuery *ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery `json:"ListRowPermissionByUserIdQuery,omitempty" xml:"ListRowPermissionByUserIdQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,18 +66,24 @@ func (s *ListRowPermissionByUserIdRequest) Validate() error {
 }
 
 type ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery struct {
+	// The specified operator.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30008888
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The page size.
+	//
 	// This parameter is required.
 	//
 	// example:

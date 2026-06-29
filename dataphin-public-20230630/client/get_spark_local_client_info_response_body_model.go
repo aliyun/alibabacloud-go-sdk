@@ -24,24 +24,34 @@ type iGetSparkLocalClientInfoResponseBody interface {
 }
 
 type GetSparkLocalClientInfoResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data []*GetSparkLocalClientInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSparkLocalClientInfoResponseBody) String() string {
@@ -120,18 +130,26 @@ func (s *GetSparkLocalClientInfoResponseBody) Validate() error {
 }
 
 type GetSparkLocalClientInfoResponseBodyData struct {
+	// The client file ID.
+	//
 	// example:
 	//
 	// XXXX-XXXX-XXXX-XXXX
 	ClientFileResourceId *string `json:"ClientFileResourceId,omitempty" xml:"ClientFileResourceId,omitempty"`
+	// The client file name.
+	//
 	// example:
 	//
 	// spark-cleint.zip
 	ClientFileResourceName *string `json:"ClientFileResourceName,omitempty" xml:"ClientFileResourceName,omitempty"`
+	// The client name.
+	//
 	// example:
 	//
 	// spark-clinet
 	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	// Indicates whether the client information is editable.
+	//
 	// example:
 	//
 	// true/false

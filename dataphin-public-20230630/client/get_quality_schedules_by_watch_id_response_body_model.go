@@ -24,18 +24,25 @@ type iGetQualitySchedulesByWatchIdResponseBody interface {
 }
 
 type GetQualitySchedulesByWatchIdResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
-	Message             *string                                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of schedule objects.
 	QualityScheduleList []*GetQualitySchedulesByWatchIdResponseBodyQualityScheduleList `json:"QualityScheduleList,omitempty" xml:"QualityScheduleList,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type GetQualitySchedulesByWatchIdResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetQualitySchedulesByWatchIdResponseBody) String() string {
@@ -122,65 +130,142 @@ func (s *GetQualitySchedulesByWatchIdResponseBody) Validate() error {
 }
 
 type GetQualitySchedulesByWatchIdResponseBodyQualityScheduleList struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The user ID of the creator.
+	//
 	// example:
 	//
 	// 30012011
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The cron expression for timed scheduling.
+	//
 	// example:
 	//
 	// 	- 	- 1/	- 	- 	- *
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The schedule object ID.
+	//
 	// example:
 	//
 	// 1
-	Id          *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsRefByRule *bool  `json:"IsRefByRule,omitempty" xml:"IsRefByRule,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the schedule is referenced by a rule.
+	IsRefByRule *bool `json:"IsRefByRule,omitempty" xml:"IsRefByRule,omitempty"`
+	// The user ID of the last modifier.
+	//
 	// example:
 	//
 	// 30012011
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The schedule object name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The partition expression. A custom expression.
+	//
 	// example:
 	//
 	// ds=${yyyyMMdd}
 	PartitionExpression *string `json:"PartitionExpression,omitempty" xml:"PartitionExpression,omitempty"`
+	// The partition type. Valid values:
+	//
+	// - EVERY_DAY: every day.
+	//
+	// - PRE_DAY: yesterday.
+	//
+	// - TODAY: today.
+	//
+	// - FIRST_DAY_OF_WEEK: first day of the week (Sunday).
+	//
+	// - CUSTOM: custom.
+	//
 	// example:
 	//
 	// CUSTOM
 	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
+	// The interval type for timed scheduling. Valid values:
+	//
+	// - DAILY: day.
+	//
+	// - WEEKLY: week.
+	//
+	// - MONTHLY: month.
+	//
+	// - HOURLY: hour.
+	//
+	// - MINUTELY: minute.
+	//
 	// example:
 	//
 	// DAILY
-	PeriodScheduleIntervalType *string   `json:"PeriodScheduleIntervalType,omitempty" xml:"PeriodScheduleIntervalType,omitempty"`
-	PeriodScheduleParamList    []*string `json:"PeriodScheduleParamList,omitempty" xml:"PeriodScheduleParamList,omitempty" type:"Repeated"`
+	PeriodScheduleIntervalType *string `json:"PeriodScheduleIntervalType,omitempty" xml:"PeriodScheduleIntervalType,omitempty"`
+	// The interval values for timed scheduling.
+	PeriodScheduleParamList []*string `json:"PeriodScheduleParamList,omitempty" xml:"PeriodScheduleParamList,omitempty" type:"Repeated"`
+	// The trigger method for fixed task triggers. Valid values:
+	//
+	// - ALL_TASKS_FINISHED
+	//
+	// - ONE_TASKS_FINISHED
+	//
+	// - PRE_ONE_TASKS_START.
+	//
 	// example:
 	//
 	// ONE_TASKS_FINISHED
-	StaticTaskTriggerType *string   `json:"StaticTaskTriggerType,omitempty" xml:"StaticTaskTriggerType,omitempty"`
-	TriggerNodeList       []*string `json:"TriggerNodeList,omitempty" xml:"TriggerNodeList,omitempty" type:"Repeated"`
+	StaticTaskTriggerType *string `json:"StaticTaskTriggerType,omitempty" xml:"StaticTaskTriggerType,omitempty"`
+	// The list of trigger nodes for trigger-based scheduling.
+	TriggerNodeList []*string `json:"TriggerNodeList,omitempty" xml:"TriggerNodeList,omitempty" type:"Repeated"`
+	// The trigger method for trigger-based scheduling. Valid values:
+	//
+	// - STATIC_TASK_TRIGGER: fixed task trigger.
+	//
+	// - CODE_CHECK_TRIGGER: code check trigger.
+	//
 	// example:
 	//
 	// STATIC_TASK_TRIGGER
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The schedule type. Valid values:
+	//
+	// - PERIOD_SCHEDULE: timed scheduling.
+	//
+	// - MANUAL_SCHEDULE: manual trigger.
+	//
+	// - CODE_CHECK_TRIGGER: code check trigger.
+	//
+	// - STATIC_TASK_TRIGGER: fixed task trigger.
+	//
+	// - DEPENDENCY_SCHEDULE: dependency scheduling.
+	//
 	// example:
 	//
 	// PERIOD_SCHEDULE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The validation scope. Valid values:
+	//
+	// - TASK_REFERRED_PARTITION: task-updated partition.
+	//
+	// - USER_DEFINED_PARTITION: custom partition.
+	//
 	// example:
 	//
 	// TASK_REFERRED_PARTITION
 	ValidatePartitionType *string `json:"ValidatePartitionType,omitempty" xml:"ValidatePartitionType,omitempty"`
+	// The monitored object ID.
+	//
 	// example:
 	//
 	// 22

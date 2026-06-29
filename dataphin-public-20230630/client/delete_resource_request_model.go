@@ -20,24 +20,32 @@ type iDeleteResourceRequest interface {
 }
 
 type DeleteResourceRequest struct {
+	// Remarks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 测试
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Resource file ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10300010201
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

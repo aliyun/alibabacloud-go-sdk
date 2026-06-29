@@ -18,18 +18,24 @@ type iUpdateProjectMemberRequest interface {
 }
 
 type UpdateProjectMemberRequest struct {
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 711833
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update command.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateProjectMemberRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -79,12 +85,16 @@ func (s *UpdateProjectMemberRequest) Validate() error {
 }
 
 type UpdateProjectMemberRequestUpdateCommand struct {
+	// The environment identifier.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The list of user members.
+	//
 	// This parameter is required.
 	UserList []*UpdateProjectMemberRequestUpdateCommandUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
@@ -129,8 +139,12 @@ func (s *UpdateProjectMemberRequestUpdateCommand) Validate() error {
 }
 
 type UpdateProjectMemberRequestUpdateCommandUserList struct {
+	// The member role. Valid values: 1: project administrator. 2: developer. 3: visitor. 4: analyst. 5: O&M engineer.
+	//
 	// This parameter is required.
 	RoleList []*int32 `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
+	// The user ID.
+	//
 	// This parameter is required.
 	//
 	// example:

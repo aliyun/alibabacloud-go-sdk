@@ -24,14 +24,20 @@ type iGetSecuritySecretKeyResponseBody interface {
 }
 
 type GetSecuritySecretKeyResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -41,9 +47,11 @@ type GetSecuritySecretKeyResponseBody struct {
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
-	RequestId             *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The security key details.
 	SecuritySecretKeyInfo *GetSecuritySecretKeyResponseBodySecuritySecretKeyInfo `json:"SecuritySecretKeyInfo,omitempty" xml:"SecuritySecretKeyInfo,omitempty" type:"Struct"`
-	Success               *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSecuritySecretKeyResponseBody) String() string {
@@ -118,45 +126,76 @@ func (s *GetSecuritySecretKeyResponseBody) Validate() error {
 }
 
 type GetSecuritySecretKeyResponseBodySecuritySecretKeyInfo struct {
+	// The algorithm type. Valid values: AES, DES, DESEDE, SM2, SM4, RSA, and FF1.
+	//
 	// example:
 	//
 	// AES
 	AlgorithmType *string `json:"AlgorithmType,omitempty" xml:"AlgorithmType,omitempty"`
+	// The alias of the algorithm type.
+	//
 	// example:
 	//
 	// AES
 	AlgorithmTypeAlias *string `json:"AlgorithmTypeAlias,omitempty" xml:"AlgorithmTypeAlias,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableOpenapiQuery *bool   `json:"EnableOpenapiQuery,omitempty" xml:"EnableOpenapiQuery,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether OpenAPI query is supported.
+	EnableOpenapiQuery *bool `json:"EnableOpenapiQuery,omitempty" xml:"EnableOpenapiQuery,omitempty"`
+	// The generation method. Valid values:
+	//
+	// - SYSTEM_GENERATION: system-generated.
+	//
+	// - USER_GENERATION: user-generated.
+	//
 	// example:
 	//
 	// SYSTEM_GENERATION
 	GenerationType *string `json:"GenerationType,omitempty" xml:"GenerationType,omitempty"`
+	// The key ID.
+	//
 	// example:
 	//
 	// 1
-	Id                *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsOwnerManageOnly *bool  `json:"IsOwnerManageOnly,omitempty" xml:"IsOwnerManageOnly,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether only the owner can manage the key.
+	IsOwnerManageOnly *bool `json:"IsOwnerManageOnly,omitempty" xml:"IsOwnerManageOnly,omitempty"`
+	// The key name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner.
+	//
 	// example:
 	//
 	// 30012011
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The owner name.
+	//
 	// example:
 	//
 	// 张三
-	OwnerName     *string   `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The key values.
 	SecretKeyList []*string `json:"SecretKeyList,omitempty" xml:"SecretKeyList,omitempty" type:"Repeated"`
+	// The number of sub-keys.
+	//
 	// example:
 	//
 	// 2
 	SubKeyCount *int64 `json:"SubKeyCount,omitempty" xml:"SubKeyCount,omitempty"`
+	// The key type. Valid values:
+	//
+	// - HASH: hashing and masking.
+	//
+	// - ENCRYPT: encryption and decryption.
+	//
 	// example:
 	//
 	// HASH

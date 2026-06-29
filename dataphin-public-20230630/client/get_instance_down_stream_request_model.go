@@ -22,24 +22,48 @@ type iGetInstanceDownStreamRequest interface {
 }
 
 type GetInstanceDownStreamRequest struct {
+	// Number of levels to expand downstream in the DAG query. Valid values: 1 to 6.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	DownStreamDepth *int32 `json:"DownStreamDepth,omitempty" xml:"DownStreamDepth,omitempty"`
+	// Environment identifier.
+	//
+	// - DEV: Development environment.
+	//
+	// - PROD (default): Production environment.
+	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The request body.
+	//
 	// This parameter is required.
 	InstanceGet *GetInstanceDownStreamRequestInstanceGet `json:"InstanceGet,omitempty" xml:"InstanceGet,omitempty" type:"Struct"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Run status of the instance.
+	//
+	// - INIT
+	//
+	// - WATING
+	//
+	// - RUNNING
+	//
+	// - SUCCESS
+	//
+	// - FAILED
+	//
 	// example:
 	//
 	// SUCCESS
@@ -109,12 +133,30 @@ func (s *GetInstanceDownStreamRequest) Validate() error {
 }
 
 type GetInstanceDownStreamRequestInstanceGet struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// t_5929472_20210411_9577721
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Node type of the instance.
+	//
+	// - BBOX_LOGIC_TABLE_NODE
+	//
+	// - BBOX_LOGIC_FIELD_NODE
+	//
+	// - BBOX_LOGIC_FIELD_GROUP_NODE
+	//
+	// - BBOX_INNER_TEMP_NODE
+	//
+	// - DATA_PROCESS
+	//
+	// - STREAM_TASK_NODE
+	//
+	// - FLINK_BATCH
+	//
 	// This parameter is required.
 	//
 	// example:

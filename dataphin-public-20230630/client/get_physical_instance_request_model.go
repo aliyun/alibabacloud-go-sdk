@@ -20,22 +20,34 @@ type iGetPhysicalInstanceRequest interface {
 }
 
 type GetPhysicalInstanceRequest struct {
+	// Environment identifier.
+	//
+	// DEV: Development environment.
+	//
+	// PROD (default): Production environment.
+	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// t_23231
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Project ID
+	//
 	// This parameter is required.
 	//
 	// example:

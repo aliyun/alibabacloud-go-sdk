@@ -22,23 +22,32 @@ type iOfflineBizEntityResponseBody interface {
 }
 
 type OfflineBizEntityResponseBody struct {
+	// Error code of the request. OK indicates a successful request.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code returned by the backend
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message of the request
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Whether the request was successful
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s OfflineBizEntityResponseBody) String() string {

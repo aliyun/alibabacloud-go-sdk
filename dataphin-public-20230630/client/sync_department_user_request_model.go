@@ -16,12 +16,16 @@ type iSyncDepartmentUserRequest interface {
 }
 
 type SyncDepartmentUserRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The request command.
+	//
 	// This parameter is required.
 	SyncDepartmentUserCommand *SyncDepartmentUserRequestSyncDepartmentUserCommand `json:"SyncDepartmentUserCommand,omitempty" xml:"SyncDepartmentUserCommand,omitempty" type:"Struct"`
 }
@@ -62,6 +66,8 @@ func (s *SyncDepartmentUserRequest) Validate() error {
 }
 
 type SyncDepartmentUserRequestSyncDepartmentUserCommand struct {
+	// The mapping between users and their affiliated departments.
+	//
 	// This parameter is required.
 	DeptUserMapping []*SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping `json:"DeptUserMapping,omitempty" xml:"DeptUserMapping,omitempty" type:"Repeated"`
 }
@@ -97,7 +103,10 @@ func (s *SyncDepartmentUserRequestSyncDepartmentUserCommand) Validate() error {
 }
 
 type SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping struct {
+	// The list of department IDs to which the user belongs. If this parameter is left empty, the user-department affiliation is deleted.
 	DepartmentIdList []*string `json:"DepartmentIdList,omitempty" xml:"DepartmentIdList,omitempty" type:"Repeated"`
+	// The user ID in the user system. This value is the unique identifier of the user.
+	//
 	// This parameter is required.
 	//
 	// example:

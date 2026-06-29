@@ -16,12 +16,16 @@ type iUpdateQualityWatchSwitchRequest interface {
 }
 
 type UpdateQualityWatchSwitchRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update instruction.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateQualityWatchSwitchRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,8 +66,12 @@ func (s *UpdateQualityWatchSwitchRequest) Validate() error {
 }
 
 type UpdateQualityWatchSwitchRequestUpdateCommand struct {
+	// Specifies whether to enable the monitored object.
+	//
 	// This parameter is required.
 	Open *bool `json:"Open,omitempty" xml:"Open,omitempty"`
+	// The list of monitoring IDs.
+	//
 	// This parameter is required.
 	WatchIdList []*int64 `json:"WatchIdList,omitempty" xml:"WatchIdList,omitempty" type:"Repeated"`
 }

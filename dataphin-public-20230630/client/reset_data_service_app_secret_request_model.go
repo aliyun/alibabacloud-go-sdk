@@ -16,12 +16,16 @@ type iResetDataServiceAppSecretRequest interface {
 }
 
 type ResetDataServiceAppSecretRequest struct {
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Reset Data Service Application Key
+	//
 	// This parameter is required.
 	UpdateCommand *ResetDataServiceAppSecretRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,16 +66,32 @@ func (s *ResetDataServiceAppSecretRequest) Validate() error {
 }
 
 type ResetDataServiceAppSecretRequestUpdateCommand struct {
+	// Application ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The new application key, which must be globally unique and is used when calling APIs.
+	//
+	// The length is 8 to 128 English characters, and can contain digits, underscores (_), and hyphens (-).
+	//
+	// Customization is supported only when using Alibaba Cloud API Gateway or the built-in gateway. This configuration is ignored when using a dedicated cloud gateway.
+	//
 	// example:
 	//
 	// 200000001
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The new application secret.
+	//
+	// If this parameter is left empty, the system automatically generates a new AppSecret value.
+	//
+	// The length is 8 to 127 English characters, and can contain digits, underscores (_), and hyphens (-).
+	//
+	// Customization is supported only when using Alibaba Cloud API Gateway or the built-in gateway. This configuration is ignored when using a dedicated cloud gateway.
+	//
 	// example:
 	//
 	// abc123456789

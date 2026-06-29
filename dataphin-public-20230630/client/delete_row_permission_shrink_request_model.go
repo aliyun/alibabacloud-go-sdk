@@ -16,8 +16,12 @@ type iDeleteRowPermissionShrinkRequest interface {
 }
 
 type DeleteRowPermissionShrinkRequest struct {
+	// The request command.
+	//
 	// This parameter is required.
 	DeleteRowPermissionCommandShrink *string `json:"DeleteRowPermissionCommand,omitempty" xml:"DeleteRowPermissionCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

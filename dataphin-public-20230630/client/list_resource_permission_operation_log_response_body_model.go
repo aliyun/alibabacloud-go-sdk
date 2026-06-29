@@ -24,23 +24,34 @@ type iListResourcePermissionOperationLogResponseBody interface {
 }
 
 type ListResourcePermissionOperationLogResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message    *string                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paging query result.
 	PageResult *ListResourcePermissionOperationLogResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,7 +130,10 @@ func (s *ListResourcePermissionOperationLogResponseBody) Validate() error {
 }
 
 type ListResourcePermissionOperationLogResponseBodyPageResult struct {
+	// The paginated records.
 	Data []*ListResourcePermissionOperationLogResponseBodyPageResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 121
@@ -166,29 +180,53 @@ func (s *ListResourcePermissionOperationLogResponseBodyPageResult) Validate() er
 }
 
 type ListResourcePermissionOperationLogResponseBodyPageResultData struct {
+	// The operator.
 	Account *ListResourcePermissionOperationLogResponseBodyPageResultDataAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
+	// The authorization scope of the table. Valid values:
+	//
+	// - selectTable: specified table
+	//
+	// - projectAllTable: all tables in the project
+	//
+	// - bizUnitAllLogicTable: all logical tables in the business unit.
+	//
 	// example:
 	//
 	// selectTable
 	AuthScope *string `json:"AuthScope,omitempty" xml:"AuthScope,omitempty"`
+	// The operation ID.
+	//
 	// example:
 	//
 	// 123133
 	OperateId *int64 `json:"OperateId,omitempty" xml:"OperateId,omitempty"`
+	// The operation time.
+	//
 	// example:
 	//
 	// 1710012121000
 	OperateTime *int64 `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
+	// The operation type. Valid values:
+	//
+	// - APPLY: Apply for permissions.
+	//
+	// - GRANT: Grant permissions.
+	//
 	// example:
 	//
 	// APPLY
-	OperateType *string                                                             `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	Period      *ListResourcePermissionOperationLogResponseBodyPageResultDataPeriod `json:"Period,omitempty" xml:"Period,omitempty" type:"Struct"`
+	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// The validity period settings.
+	Period *ListResourcePermissionOperationLogResponseBodyPageResultDataPeriod `json:"Period,omitempty" xml:"Period,omitempty" type:"Struct"`
+	// The reason.
+	//
 	// example:
 	//
 	// xx测试
-	Reason        *string                                                                    `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	ResourceInfo  *ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfo  `json:"ResourceInfo,omitempty" xml:"ResourceInfo,omitempty" type:"Struct"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The permission resource.
+	ResourceInfo *ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfo `json:"ResourceInfo,omitempty" xml:"ResourceInfo,omitempty" type:"Struct"`
+	// The authorized object.
 	TargetAccount *ListResourcePermissionOperationLogResponseBodyPageResultDataTargetAccount `json:"TargetAccount,omitempty" xml:"TargetAccount,omitempty" type:"Struct"`
 }
 
@@ -306,14 +344,32 @@ func (s *ListResourcePermissionOperationLogResponseBodyPageResultData) Validate(
 }
 
 type ListResourcePermissionOperationLogResponseBodyPageResultDataAccount struct {
+	// The account ID.
+	//
+	// - Individual account: the userId on the Dataphin side.
+	//
+	// - Production account: the UserId obtained by calling the GetProjectProduceUser operation.
+	//
+	// - User group: the user group ID obtained by calling the ListUserGroup operation.
+	//
 	// example:
 	//
 	// 1212131
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The account name.
+	//
 	// example:
 	//
 	// xx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The authorization account type. Valid values:
+	//
+	// - PERSONAL: individual account
+	//
+	// - PRODUCE: production account
+	//
+	// - USER_GROUP: user group.
+	//
 	// example:
 	//
 	// PERSONAL
@@ -360,10 +416,24 @@ func (s *ListResourcePermissionOperationLogResponseBodyPageResultDataAccount) Va
 }
 
 type ListResourcePermissionOperationLogResponseBodyPageResultDataPeriod struct {
+	// The expiration time.
+	//
 	// example:
 	//
 	// 1712000000000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The validity period type. Valid values:
+	//
+	// - CUSTOM: custom
+	//
+	// - LONG_TERM: permanently valid
+	//
+	// - DAYS_30: valid for 30 days
+	//
+	// - DAYS_90: valid for 90 days
+	//
+	// - DAYS_180: valid for 180 days.
+	//
 	// example:
 	//
 	// CUSTOM
@@ -401,24 +471,54 @@ func (s *ListResourcePermissionOperationLogResponseBodyPageResultDataPeriod) Val
 }
 
 type ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfo struct {
+	// The business unit information.
 	BizUnitInfo *ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfoBizUnitInfo `json:"BizUnitInfo,omitempty" xml:"BizUnitInfo,omitempty" type:"Struct"`
+	// The display name of the resource.
+	//
 	// example:
 	//
 	// tb1
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The resource environment. Valid values:
+	//
+	// - DEV
+	//
+	// - PROD.
+	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The permission resource ID.
+	//
 	// example:
 	//
 	// a.tb1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The permission resource name.
+	//
 	// example:
 	//
 	// tb1
-	Name        *string                                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The project information.
 	ProjectInfo *ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfoProjectInfo `json:"ProjectInfo,omitempty" xml:"ProjectInfo,omitempty" type:"Struct"`
+	// The resource type. Valid values:
+	//
+	// - PHYSICAL_TABLE: physical table
+	//
+	// - PHYSICAL_VIEW: physical view
+	//
+	// - LOGICAL_TABLE: fact logical table
+	//
+	// - LOGICAL_VIEW: fact logical view
+	//
+	// - REALTIME_LOGICAL_TABLE: real-time meta table
+	//
+	// - REALTIME_MIRROR_TABLE: real-time meta table
+	//
+	// - DATASOURCE: datasource.
+	//
 	// example:
 	//
 	// PHYSICAL_TABLE
@@ -511,10 +611,18 @@ func (s *ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInf
 }
 
 type ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfoBizUnitInfo struct {
+	// The display name.
+	//
 	// example:
 	//
 	// xx
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The environment identifier. Valid values:
+	//
+	// - DEV
+	//
+	// - PROD.
+	//
 	// example:
 	//
 	// DEV
@@ -525,6 +633,8 @@ type ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfoBiz
 	//
 	// 121323
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// xx
@@ -580,18 +690,30 @@ func (s *ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInf
 }
 
 type ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfoProjectInfo struct {
+	// The display name.
+	//
 	// example:
 	//
 	// xx
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The environment identifier. Valid values:
+	//
+	// - DEV
+	//
+	// - PROD.
+	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 1123131
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// xx
@@ -647,14 +769,20 @@ func (s *ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInf
 }
 
 type ListResourcePermissionOperationLogResponseBodyPageResultDataTargetAccount struct {
+	// The account ID.
+	//
 	// example:
 	//
 	// 1212131
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The account name.
+	//
 	// example:
 	//
 	// xx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The authorized account type.
+	//
 	// example:
 	//
 	// PERSONAL

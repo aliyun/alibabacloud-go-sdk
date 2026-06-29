@@ -16,8 +16,12 @@ type iGrantResourcePermissionRequest interface {
 }
 
 type GrantResourcePermissionRequest struct {
+	// The grant request.
+	//
 	// This parameter is required.
 	GrantCommand *GrantResourcePermissionRequestGrantCommand `json:"GrantCommand,omitempty" xml:"GrantCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,26 +66,38 @@ func (s *GrantResourcePermissionRequest) Validate() error {
 }
 
 type GrantResourcePermissionRequestGrantCommand struct {
+	// The expiration timestamp, in milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1717343597000
 	EffectiveEnd *string `json:"EffectiveEnd,omitempty" xml:"EffectiveEnd,omitempty"`
+	// The operation types.
+	//
 	// This parameter is required.
 	OperateList []*string `json:"OperateList,omitempty" xml:"OperateList,omitempty" type:"Repeated"`
+	// The reason for the authorization.
+	//
 	// example:
 	//
 	// xx
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The list of resources.
+	//
 	// This parameter is required.
 	ResourceList []*GrantResourcePermissionRequestGrantCommandResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+	// The resource type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PHYSICAL_TABLE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The authorized users pending authorization.
+	//
 	// This parameter is required.
 	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
 }
@@ -162,6 +178,8 @@ func (s *GrantResourcePermissionRequestGrantCommand) Validate() error {
 }
 
 type GrantResourcePermissionRequestGrantCommandResourceList struct {
+	// The resource ID.
+	//
 	// example:
 	//
 	// hadoop.300000806.data_distill.behavior_gameinfor_01

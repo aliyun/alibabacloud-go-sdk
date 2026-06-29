@@ -24,18 +24,25 @@ type iListDataServiceApiCallStatisticsResponseBody interface {
 }
 
 type ListDataServiceApiCallStatisticsResponseBody struct {
+	// Backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Backend error details.
+	//
 	// example:
 	//
 	// internal error
-	Message    *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Paginated query result.
 	PageResult *ListDataServiceApiCallStatisticsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type ListDataServiceApiCallStatisticsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDataServiceApiCallStatisticsResponseBody) String() string {
@@ -118,7 +126,10 @@ func (s *ListDataServiceApiCallStatisticsResponseBody) Validate() error {
 }
 
 type ListDataServiceApiCallStatisticsResponseBodyPageResult struct {
+	// API call statistics list.
 	CallStatisticsList []*ListDataServiceApiCallStatisticsResponseBodyPageResultCallStatisticsList `json:"CallStatisticsList,omitempty" xml:"CallStatisticsList,omitempty" type:"Repeated"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 68
@@ -165,55 +176,82 @@ func (s *ListDataServiceApiCallStatisticsResponseBodyPageResult) Validate() erro
 }
 
 type ListDataServiceApiCallStatisticsResponseBodyPageResultCallStatisticsList struct {
+	// API ID.
+	//
 	// example:
 	//
 	// 1003
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// API name.
+	//
 	// example:
 	//
 	// test
-	ApiName     *string   `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// Authorized application names.
 	AppNameList []*string `json:"AppNameList,omitempty" xml:"AppNameList,omitempty" type:"Repeated"`
+	// Number of authorized applications.
+	//
 	// example:
 	//
 	// 1
 	AuthorizedAppCount *int32 `json:"AuthorizedAppCount,omitempty" xml:"AuthorizedAppCount,omitempty"`
+	// Average response time, in milliseconds.
+	//
 	// example:
 	//
 	// 11
 	AvgResponseTime *float64 `json:"AvgResponseTime,omitempty" xml:"AvgResponseTime,omitempty"`
+	// Number of calls.
+	//
 	// example:
 	//
 	// 100
 	CallCount *int64 `json:"CallCount,omitempty" xml:"CallCount,omitempty"`
+	// Creator.
+	//
 	// example:
 	//
 	// 30012011
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Number of call errors.
+	//
 	// example:
 	//
 	// 22
 	ErrorCount *string `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
+	// Error rate.
+	//
 	// example:
 	//
 	// 23.2%
 	ErrorRate *string `json:"ErrorRate,omitempty" xml:"ErrorRate,omitempty"`
+	// Last call time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2025-06-30 08:00:00
 	LastCallTime *string `json:"LastCallTime,omitempty" xml:"LastCallTime,omitempty"`
+	// Offline percentage.
+	//
 	// example:
 	//
 	// 23.2%
 	OfflineRate *string `json:"OfflineRate,omitempty" xml:"OfflineRate,omitempty"`
+	// Data service project ID.
+	//
 	// example:
 	//
 	// 101201
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Data service project.
+	//
 	// example:
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// SQL table primary key.
+	//
 	// example:
 	//
 	// 1121

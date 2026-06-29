@@ -16,8 +16,12 @@ type iListComputeSourcesRequest interface {
 }
 
 type ListComputeSourcesRequest struct {
+	// The query conditions.
+	//
 	// This parameter is required.
 	ListQuery *ListComputeSourcesRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,19 +66,28 @@ func (s *ListComputeSourcesRequest) Validate() error {
 }
 
 type ListComputeSourcesRequestListQuery struct {
+	// Specifies whether the compute source is bound to a project.
 	BindProject *bool `json:"BindProject,omitempty" xml:"BindProject,omitempty"`
+	// The keyword used for filtering.
+	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of records per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the compute source.
+	//
 	// example:
 	//
 	// MaxCompute

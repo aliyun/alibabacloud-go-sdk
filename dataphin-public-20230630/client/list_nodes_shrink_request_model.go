@@ -18,12 +18,22 @@ type iListNodesShrinkRequest interface {
 }
 
 type ListNodesShrinkRequest struct {
+	// The environment identifier. Valid values:
+	//
+	// - DEV: development environment
+	//
+	// - PROD (default): production environment.
+	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The query conditions.
+	//
 	// This parameter is required.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,8 +16,12 @@ type iListSubmitRecordsRequest interface {
 }
 
 type ListSubmitRecordsRequest struct {
+	// Query command.
+	//
 	// This parameter is required.
 	ListQuery *ListSubmitRecordsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,10 +66,14 @@ func (s *ListSubmitRecordsRequest) Validate() error {
 }
 
 type ListSubmitRecordsRequestListQuery struct {
+	// Search keyword.
+	//
 	// example:
 	//
 	// abc
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Pending deployment record filter.
+	//
 	// This parameter is required.
 	SearchFilter *ListSubmitRecordsRequestListQuerySearchFilter `json:"SearchFilter,omitempty" xml:"SearchFilter,omitempty" type:"Struct"`
 }
@@ -106,30 +114,42 @@ func (s *ListSubmitRecordsRequestListQuery) Validate() error {
 }
 
 type ListSubmitRecordsRequestListQuerySearchFilter struct {
+	// List of change types (0: Create / 1: Update / 2: Delete).
 	ChangeTypeList []*int32 `json:"ChangeTypeList,omitempty" xml:"ChangeTypeList,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// Page size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Project ID.
+	//
 	// This parameter is required.
 	ProjectIdList []*int64 `json:"ProjectIdList,omitempty" xml:"ProjectIdList,omitempty" type:"Repeated"`
+	// Submission end time in the yyyy-MM-dd HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	SubmitEndTime *string `json:"SubmitEndTime,omitempty" xml:"SubmitEndTime,omitempty"`
+	// Submission start time in the yyyy-MM-dd HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
-	SubmitStartTime *string   `json:"SubmitStartTime,omitempty" xml:"SubmitStartTime,omitempty"`
-	SubmitterList   []*string `json:"SubmitterList,omitempty" xml:"SubmitterList,omitempty" type:"Repeated"`
+	SubmitStartTime *string `json:"SubmitStartTime,omitempty" xml:"SubmitStartTime,omitempty"`
+	// Submitter.
+	SubmitterList []*string `json:"SubmitterList,omitempty" xml:"SubmitterList,omitempty" type:"Repeated"`
 }
 
 func (s ListSubmitRecordsRequestListQuerySearchFilter) String() string {

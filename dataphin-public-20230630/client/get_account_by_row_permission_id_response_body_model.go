@@ -24,24 +24,34 @@ type iGetAccountByRowPermissionIdResponseBody interface {
 }
 
 type GetAccountByRowPermissionIdResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The query result.
 	Data []*GetAccountByRowPermissionIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAccountByRowPermissionIdResponseBody) String() string {
@@ -120,10 +130,13 @@ func (s *GetAccountByRowPermissionIdResponseBody) Validate() error {
 }
 
 type GetAccountByRowPermissionIdResponseBodyData struct {
+	// The row-level permission rule IDs.
+	//
 	// example:
 	//
 	// 300001235
-	Id              *int64                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The accounts associated with the rule.
 	UserMappingList []*GetAccountByRowPermissionIdResponseBodyDataUserMappingList `json:"UserMappingList,omitempty" xml:"UserMappingList,omitempty" type:"Repeated"`
 }
 
@@ -167,11 +180,14 @@ func (s *GetAccountByRowPermissionIdResponseBodyData) Validate() error {
 }
 
 type GetAccountByRowPermissionIdResponseBodyDataUserMappingList struct {
+	// The type of the account associated with the rule.
+	//
 	// example:
 	//
 	// PERSONAL
-	AccountType *string                                                               `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	Accounts    []*GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The accounts associated with the rule.
+	Accounts []*GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
 }
 
 func (s GetAccountByRowPermissionIdResponseBodyDataUserMappingList) String() string {
@@ -214,10 +230,17 @@ func (s *GetAccountByRowPermissionIdResponseBodyDataUserMappingList) Validate() 
 }
 
 type GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts struct {
+	// The ID of the account associated with the rule.
+	//
 	// example:
 	//
 	// 300901111
-	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The name of the account associated with the rule.
+	//
+	// example:
+	//
+	// 张三
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 }
 

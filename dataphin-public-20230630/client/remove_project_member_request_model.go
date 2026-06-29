@@ -18,18 +18,24 @@ type iRemoveProjectMemberRequest interface {
 }
 
 type RemoveProjectMemberRequest struct {
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 711833
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The command to remove a member.
+	//
 	// This parameter is required.
 	RemoveCommand *RemoveProjectMemberRequestRemoveCommand `json:"RemoveCommand,omitempty" xml:"RemoveCommand,omitempty" type:"Struct"`
 }
@@ -79,12 +85,15 @@ func (s *RemoveProjectMemberRequest) Validate() error {
 }
 
 type RemoveProjectMemberRequestRemoveCommand struct {
+	// The environment identifier. Valid values: DEV and PROD.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEV
-	Env        *string   `json:"Env,omitempty" xml:"Env,omitempty"`
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The user IDs.
 	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
 }
 

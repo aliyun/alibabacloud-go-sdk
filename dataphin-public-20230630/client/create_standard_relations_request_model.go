@@ -16,8 +16,12 @@ type iCreateStandardRelationsRequest interface {
 }
 
 type CreateStandardRelationsRequest struct {
+	// The create command.
+	//
 	// This parameter is required.
 	CreateCommand *CreateStandardRelationsRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,18 +66,24 @@ func (s *CreateStandardRelationsRequest) Validate() error {
 }
 
 type CreateStandardRelationsRequestCreateCommand struct {
+	// The standard association type: RELATIVE.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// RELATIVE
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	// The standard ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	StandardId *int64 `json:"StandardId,omitempty" xml:"StandardId,omitempty"`
+	// The list of referenced standards.
+	//
 	// This parameter is required.
 	StandardRefList []*CreateStandardRelationsRequestCreateCommandStandardRefList `json:"StandardRefList,omitempty" xml:"StandardRefList,omitempty" type:"Repeated"`
 }
@@ -127,6 +137,8 @@ func (s *CreateStandardRelationsRequestCreateCommand) Validate() error {
 }
 
 type CreateStandardRelationsRequestCreateCommandStandardRefList struct {
+	// The standard ID.
+	//
 	// This parameter is required.
 	//
 	// example:

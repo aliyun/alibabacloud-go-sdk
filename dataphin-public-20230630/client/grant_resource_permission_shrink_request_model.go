@@ -16,8 +16,12 @@ type iGrantResourcePermissionShrinkRequest interface {
 }
 
 type GrantResourcePermissionShrinkRequest struct {
+	// The grant request.
+	//
 	// This parameter is required.
 	GrantCommandShrink *string `json:"GrantCommand,omitempty" xml:"GrantCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

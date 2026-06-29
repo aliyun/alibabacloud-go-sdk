@@ -16,8 +16,12 @@ type iListFilesShrinkRequest interface {
 }
 
 type ListFilesShrinkRequest struct {
+	// Query conditions
+	//
 	// This parameter is required.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,14 +24,20 @@ type iGetFileStorageCredentialResponseBody interface {
 }
 
 type GetFileStorageCredentialResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -41,9 +47,11 @@ type GetFileStorageCredentialResponseBody struct {
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
-	RequestId         *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the temporary read/write authorization.
 	StorageCredential *GetFileStorageCredentialResponseBodyStorageCredential `json:"StorageCredential,omitempty" xml:"StorageCredential,omitempty" type:"Struct"`
-	Success           *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetFileStorageCredentialResponseBody) String() string {
@@ -118,26 +126,38 @@ func (s *GetFileStorageCredentialResponseBody) Validate() error {
 }
 
 type GetFileStorageCredentialResponseBodyStorageCredential struct {
+	// The temporary AccessKey ID.
+	//
 	// example:
 	//
 	// temp.akId
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// The temporary AccessKey ID.
+	//
 	// example:
 	//
 	// temp.akKey
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// The file storage bucket.
+	//
 	// example:
 	//
 	// dataphin
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The endpoint.
+	//
 	// example:
 	//
 	// oss-cn-shanghai.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 17343434343434
 	Expiration *int64 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// The storage object.
+	//
 	// example:
 	//
 	// 1023231111/abc
@@ -148,10 +168,14 @@ type GetFileStorageCredentialResponseBodyStorageCredential struct {
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The temporary security token.
+	//
 	// example:
 	//
 	// temp.token
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The storage cluster type. Valid values: oss and ceph.
+	//
 	// example:
 	//
 	// oss

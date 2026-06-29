@@ -24,18 +24,25 @@ type iListSecurityIdentifyResultsResponseBody interface {
 }
 
 type ListSecurityIdentifyResultsResponseBody struct {
+	// Backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Backend response error details.
+	//
 	// example:
 	//
 	// internal error
-	Message    *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Paginated query result.
 	PageResult *ListSecurityIdentifyResultsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type ListSecurityIdentifyResultsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListSecurityIdentifyResultsResponseBody) String() string {
@@ -118,7 +126,10 @@ func (s *ListSecurityIdentifyResultsResponseBody) Validate() error {
 }
 
 type ListSecurityIdentifyResultsResponseBodyPageResult struct {
+	// Paginated identification result list.
 	SecurityIdentifyResultList []*ListSecurityIdentifyResultsResponseBodyPageResultSecurityIdentifyResultList `json:"SecurityIdentifyResultList,omitempty" xml:"SecurityIdentifyResultList,omitempty" type:"Repeated"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 68
@@ -165,141 +176,212 @@ func (s *ListSecurityIdentifyResultsResponseBodyPageResult) Validate() error {
 }
 
 type ListSecurityIdentifyResultsResponseBodyPageResultSecurityIdentifyResultList struct {
+	// Business date.
+	//
 	// example:
 	//
 	// 2025-06-30
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// Business unit display name.
+	//
 	// example:
 	//
 	// LD_test
 	BizUnitDisplayName *string `json:"BizUnitDisplayName,omitempty" xml:"BizUnitDisplayName,omitempty"`
+	// Business unit ID.
+	//
 	// example:
 	//
 	// 1
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// Business unit name.
+	//
 	// example:
 	//
 	// LD_test
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
+	// Classification abbreviation.
+	//
 	// example:
 	//
 	// test
 	ClassifyAbbreviation *string `json:"ClassifyAbbreviation,omitempty" xml:"ClassifyAbbreviation,omitempty"`
+	// Classification ID.
+	//
 	// example:
 	//
 	// 33
 	ClassifyId *int64 `json:"ClassifyId,omitempty" xml:"ClassifyId,omitempty"`
+	// Classification name.
+	//
 	// example:
 	//
 	// test
 	ClassifyName *string `json:"ClassifyName,omitempty" xml:"ClassifyName,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2025-06-30 10:30:30
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creator.
+	//
 	// example:
 	//
 	// 30012011
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Data source ID.
+	//
 	// example:
 	//
 	// 101121
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// Data source name.
+	//
 	// example:
 	//
 	// ds1
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// Field description.
+	//
 	// example:
 	//
 	// test
 	FieldDescription *string `json:"FieldDescription,omitempty" xml:"FieldDescription,omitempty"`
+	// Field ID.
+	//
 	// example:
 	//
 	// t_test.col1
 	FieldId *string `json:"FieldId,omitempty" xml:"FieldId,omitempty"`
+	// Field name.
+	//
 	// example:
 	//
 	// col1
-	FieldName     *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	HasBetterRule *bool   `json:"HasBetterRule,omitempty" xml:"HasBetterRule,omitempty"`
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// Whether a better matching result exists.
+	HasBetterRule *bool `json:"HasBetterRule,omitempty" xml:"HasBetterRule,omitempty"`
+	// Identification result ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Identification record ID.
+	//
 	// example:
 	//
 	// 99
 	IdentifyRecordId *int64 `json:"IdentifyRecordId,omitempty" xml:"IdentifyRecordId,omitempty"`
-	IsCustomIdentify *bool  `json:"IsCustomIdentify,omitempty" xml:"IsCustomIdentify,omitempty"`
-	IsLocked         *bool  `json:"IsLocked,omitempty" xml:"IsLocked,omitempty"`
+	// Whether it is a custom tagging rule.
+	IsCustomIdentify *bool `json:"IsCustomIdentify,omitempty" xml:"IsCustomIdentify,omitempty"`
+	// Whether it is locked.
+	IsLocked *bool `json:"IsLocked,omitempty" xml:"IsLocked,omitempty"`
+	// Security level abbreviation.
+	//
 	// example:
 	//
 	// test
 	LevelAbbreviation *string `json:"LevelAbbreviation,omitempty" xml:"LevelAbbreviation,omitempty"`
+	// Security level color.
+	//
 	// example:
 	//
 	// 1
 	LevelColor *int64 `json:"LevelColor,omitempty" xml:"LevelColor,omitempty"`
+	// Security level index.
+	//
 	// example:
 	//
 	// 1
 	LevelIndex *int64 `json:"LevelIndex,omitempty" xml:"LevelIndex,omitempty"`
+	// Security level name.
+	//
 	// example:
 	//
 	// test
 	LevelName *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
+	// Modifier.
+	//
 	// example:
 	//
 	// 30012011
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// Modification time.
+	//
 	// example:
 	//
 	// 2025-06-30 10:30:30
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Project display name.
+	//
 	// example:
 	//
 	// test
 	ProjectDisplayName *string `json:"ProjectDisplayName,omitempty" xml:"ProjectDisplayName,omitempty"`
+	// Project ID.
+	//
 	// example:
 	//
 	// 101121
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Project name.
+	//
 	// example:
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Scan task ID.
+	//
 	// example:
 	//
 	// 11
 	ScanTaskId *int64 `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
+	// Status. Valid values: ENABLE and DISABLE.
+	//
 	// example:
 	//
 	// ENABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Table catalog.
+	//
 	// example:
 	//
 	// testdb
 	TableCatalog *string `json:"TableCatalog,omitempty" xml:"TableCatalog,omitempty"`
+	// Table description.
+	//
 	// example:
 	//
 	// test
 	TableDescription *string `json:"TableDescription,omitempty" xml:"TableDescription,omitempty"`
+	// Table environment.
+	//
 	// example:
 	//
 	// DEV
 	TableEnv *string `json:"TableEnv,omitempty" xml:"TableEnv,omitempty"`
+	// Table ID.
+	//
 	// example:
 	//
 	// 1
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// Table name.
+	//
 	// example:
 	//
 	// t_test
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// Table identification task ID.
+	//
 	// example:
 	//
 	// 22
 	TableTaskId *int64 `json:"TableTaskId,omitempty" xml:"TableTaskId,omitempty"`
+	// Table type. Valid values: LOGIC_TABLE (logical table), LOGIC_DIM_TABLE (dimension logical table), LOGIC_FACT_TABLE (fact logical table), LOGIC_SUM_TABLE (summary logical table), LOGIC_ODM_SOURCE (source table), LOGIC_LABEL_TABLE (label logical table), PHYSICAL_TABLE (physical table), REAL_TIME_LOGIC_TABLE (real-time configured logical table).
+	//
 	// example:
 	//
 	// LOGIC_TABLE

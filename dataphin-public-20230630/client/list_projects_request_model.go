@@ -16,8 +16,12 @@ type iListProjectsRequest interface {
 }
 
 type ListProjectsRequest struct {
+	// The query conditions.
+	//
 	// This parameter is required.
 	ListQuery *ListProjectsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,27 +66,38 @@ func (s *ListProjectsRequest) Validate() error {
 }
 
 type ListProjectsRequestListQuery struct {
+	// The environment identifier.
+	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The keyword for fuzzy match.
+	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The project mode.
+	//
 	// example:
 	//
 	// BASIC
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of records per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
-	PageSize *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TagList  []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The project tags.
+	TagList []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 }
 
 func (s ListProjectsRequestListQuery) String() string {

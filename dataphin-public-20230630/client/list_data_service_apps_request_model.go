@@ -16,8 +16,12 @@ type iListDataServiceAppsRequest interface {
 }
 
 type ListDataServiceAppsRequest struct {
+	// Query the list of all applications under the tenant.
+	//
 	// This parameter is required.
 	ListQuery *ListDataServiceAppsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,18 +66,26 @@ func (s *ListDataServiceAppsRequest) Validate() error {
 }
 
 type ListDataServiceAppsRequestListQuery struct {
+	// Application group ID.
+	//
 	// example:
 	//
 	// 12345
 	AppGroupId *int32 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
+	// Application name search keyword.
+	//
 	// example:
 	//
 	// 营销看板
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Number of records per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20

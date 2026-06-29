@@ -16,8 +16,12 @@ type iListDataDomainsRequest interface {
 }
 
 type ListDataDomainsRequest struct {
+	// The query request.
+	//
 	// This parameter is required.
 	ListQuery *ListDataDomainsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,11 +66,15 @@ func (s *ListDataDomainsRequest) Validate() error {
 }
 
 type ListDataDomainsRequestListQuery struct {
+	// The IDs of the business units to which the data domains belong.
 	BizUnitIdList []*int64 `json:"BizUnitIdList,omitempty" xml:"BizUnitIdList,omitempty" type:"Repeated"`
+	// The search keyword. You can search by data domain name, code, or description.
+	//
 	// example:
 	//
 	// test
-	Keyword      *string  `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The IDs of the parent data domains.
 	ParentIdList []*int64 `json:"ParentIdList,omitempty" xml:"ParentIdList,omitempty" type:"Repeated"`
 }
 

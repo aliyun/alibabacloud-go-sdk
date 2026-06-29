@@ -24,23 +24,34 @@ type iListDataSourceWithConfigResponseBody interface {
 }
 
 type ListDataSourceWithConfigResponseBody struct {
+	// Error code. OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// successful
-	Message    *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Query result.
 	PageResult *ListDataSourceWithConfigResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request was successful
+	//
 	// example:
 	//
 	// true
@@ -119,7 +130,10 @@ func (s *ListDataSourceWithConfigResponseBody) Validate() error {
 }
 
 type ListDataSourceWithConfigResponseBodyPageResult struct {
+	// Paginated list
 	DataSourceList []*ListDataSourceWithConfigResponseBodyPageResultDataSourceList `json:"DataSourceList,omitempty" xml:"DataSourceList,omitempty" type:"Repeated"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 39
@@ -166,9 +180,9 @@ func (s *ListDataSourceWithConfigResponseBodyPageResult) Validate() error {
 }
 
 type ListDataSourceWithConfigResponseBodyPageResultDataSourceList struct {
-	// 开发环境数据源信息
+	// Development environment data source
 	DevDataSourceInfo *ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSourceInfo `json:"DevDataSourceInfo,omitempty" xml:"DevDataSourceInfo,omitempty" type:"Struct"`
-	// 生产环境数据源
+	// Production environment data source
 	ProdDataSourceInfo *ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSourceInfo `json:"ProdDataSourceInfo,omitempty" xml:"ProdDataSourceInfo,omitempty" type:"Struct"`
 }
 
@@ -213,39 +227,76 @@ func (s *ListDataSourceWithConfigResponseBodyPageResultDataSourceList) Validate(
 }
 
 type ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSourceInfo struct {
+	// Connection configuration items
 	ConfigItemList []*ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSourceInfoConfigItemList `json:"ConfigItemList,omitempty" xml:"ConfigItemList,omitempty" type:"Repeated"`
+	// Creation time
+	//
 	// example:
 	//
 	// 1710209552704
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creator ID
+	//
 	// example:
 	//
 	// 212211111
-	Creator     *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Creator name
+	//
+	// example:
+	//
+	// 张三
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// Description
+	//
+	// example:
+	//
+	// xx 项目
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Environment of the data source
+	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Data source ID
+	//
 	// example:
 	//
 	// 12313123131
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Modification time
+	//
 	// example:
 	//
 	// 1710209552704
-	ModifyTime *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Data source name
+	//
+	// example:
+	//
+	// xx测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Owner ID
+	//
 	// example:
 	//
 	// 212211111
-	Owner     *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// Owner name
+	//
+	// example:
+	//
+	// 张三
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// Data source scope
+	//
 	// example:
 	//
 	// ALL
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// Data source type
+	//
 	// example:
 	//
 	// MAX_COMPUTE
@@ -391,10 +442,14 @@ func (s *ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSour
 }
 
 type ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSourceInfoConfigItemList struct {
+	// Configuration item ID
+	//
 	// example:
 	//
 	// param1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Configuration item value
+	//
 	// example:
 	//
 	// value1
@@ -432,39 +487,76 @@ func (s *ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSour
 }
 
 type ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSourceInfo struct {
+	// Connection configuration items
 	ConfigItemList []*ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSourceInfoConfigItemList `json:"ConfigItemList,omitempty" xml:"ConfigItemList,omitempty" type:"Repeated"`
+	// Creation time
+	//
 	// example:
 	//
 	// 1708303959000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creator ID
+	//
 	// example:
 	//
 	// 212211111
-	Creator     *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Creator name
+	//
+	// example:
+	//
+	// 张三
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// Description
+	//
+	// example:
+	//
+	// xx 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Environment of the data source
+	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Data source ID
+	//
 	// example:
 	//
 	// 300000028799
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Modification time
+	//
 	// example:
 	//
 	// 1708303959000
-	ModifyTime *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Data source name
+	//
+	// example:
+	//
+	// xx测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Owner ID
+	//
 	// example:
 	//
 	// 212211111
-	Owner     *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// Owner name
+	//
+	// example:
+	//
+	// 张三
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// Data source scope
+	//
 	// example:
 	//
 	// ALL
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// Data source type
+	//
 	// example:
 	//
 	// MAX_COMPUTE
@@ -610,10 +702,14 @@ func (s *ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSou
 }
 
 type ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSourceInfoConfigItemList struct {
+	// Configuration item ID
+	//
 	// example:
 	//
 	// param1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Configuration item value
+	//
 	// example:
 	//
 	// value1

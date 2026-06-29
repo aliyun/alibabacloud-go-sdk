@@ -16,7 +16,10 @@ type iCreateDataSourceRequest interface {
 }
 
 type CreateDataSourceRequest struct {
+	// Request object
 	CreateCommand *CreateDataSourceRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -61,8 +64,9 @@ func (s *CreateDataSourceRequest) Validate() error {
 }
 
 type CreateDataSourceRequestCreateCommand struct {
+	// Development environment data source
 	DevDataSourceCreate *CreateDataSourceRequestCreateCommandDevDataSourceCreate `json:"DevDataSourceCreate,omitempty" xml:"DevDataSourceCreate,omitempty" type:"Struct"`
-	// 数据源创建结构体
+	// Production environment data source
 	ProdDataSourceCreate *CreateDataSourceRequestCreateCommandProdDataSourceCreate `json:"ProdDataSourceCreate,omitempty" xml:"ProdDataSourceCreate,omitempty" type:"Struct"`
 }
 
@@ -107,8 +111,10 @@ func (s *CreateDataSourceRequestCreateCommand) Validate() error {
 }
 
 type CreateDataSourceRequestCreateCommandDevDataSourceCreate struct {
-	// 数据源创建结构体
+	// Development environment data source
 	DataSourceCreate *CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreate `json:"DataSourceCreate,omitempty" xml:"DataSourceCreate,omitempty" type:"Struct"`
+	// Associated production environment data source ID. This parameter cannot be empty when only creating a development environment compute source.
+	//
 	// example:
 	//
 	// 1011
@@ -151,22 +157,32 @@ func (s *CreateDataSourceRequestCreateCommandDevDataSourceCreate) Validate() err
 }
 
 type CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreate struct {
+	// Whether to check connectivity
+	//
 	// example:
 	//
 	// true
 	CheckActivity *bool `json:"CheckActivity,omitempty" xml:"CheckActivity,omitempty"`
+	// List of connection configuration items
+	//
 	// This parameter is required.
 	ConfigItemList []*CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreateConfigItemList `json:"ConfigItemList,omitempty" xml:"ConfigItemList,omitempty" type:"Repeated"`
+	// Description
+	//
 	// example:
 	//
 	// datasource for xxx in dev
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Data source name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dp_test_dev
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Data source type
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -242,17 +258,21 @@ func (s *CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreate
 }
 
 type CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreateConfigItemList struct {
+	// Configuration item. For the key values required by different databases, see the supplementary description at the bottom of the document.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// k1
+	// jdbc.username
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Configuration item value
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// v1
+	// username
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -287,22 +307,78 @@ func (s *CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreate
 }
 
 type CreateDataSourceRequestCreateCommandProdDataSourceCreate struct {
+	// Whether to check connectivity
+	//
 	// example:
 	//
 	// true
 	CheckActivity *bool `json:"CheckActivity,omitempty" xml:"CheckActivity,omitempty"`
+	// List of connection configuration items
+	//
 	// This parameter is required.
 	ConfigItemList []*CreateDataSourceRequestCreateCommandProdDataSourceCreateConfigItemList `json:"ConfigItemList,omitempty" xml:"ConfigItemList,omitempty" type:"Repeated"`
+	// Data source description
+	//
 	// example:
 	//
 	// datasource for xx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Data source name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dp_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Data source type:
+	//
+	// - MAX_COMPUTE
+	//
+	// - HDFS
+	//
+	// - LOG_HUB
+	//
+	// - POLARDB
+	//
+	// - HBASE_0_9_4
+	//
+	// - HBASE_1_1_X
+	//
+	// - DRDS
+	//
+	// - HIVE
+	//
+	// - FTP
+	//
+	// - ELASTIC_SEARCH
+	//
+	// - MYSQL
+	//
+	// - MONGODB
+	//
+	// - OSS
+	//
+	// - HANA
+	//
+	// - SQL_SERVER
+	//
+	// - POSTGRE_SQL
+	//
+	// - ANALYTICDB
+	//
+	// - ADB_FOR_MYSQL_V3
+	//
+	// - ADB_FOR_PG
+	//
+	// - ORACLE
+	//
+	// - VERTICA
+	//
+	// - DB2
+	//
+	// - TERA_DATA, etc.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -378,17 +454,21 @@ func (s *CreateDataSourceRequestCreateCommandProdDataSourceCreate) Validate() er
 }
 
 type CreateDataSourceRequestCreateCommandProdDataSourceCreateConfigItemList struct {
+	// Configuration item. For the key values required by different databases, see the supplementary description at the bottom of the document.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// k1
+	// jdbc.username
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Configuration item value
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// v1
+	// username
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

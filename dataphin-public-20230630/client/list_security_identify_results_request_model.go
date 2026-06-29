@@ -16,7 +16,10 @@ type iListSecurityIdentifyResultsRequest interface {
 }
 
 type ListSecurityIdentifyResultsRequest struct {
+	// Query conditions.
 	ListQuery *ListSecurityIdentifyResultsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -61,30 +64,46 @@ func (s *ListSecurityIdentifyResultsRequest) Validate() error {
 }
 
 type ListSecurityIdentifyResultsRequestListQuery struct {
+	// Business unit names.
 	BizUnitNameList []*string `json:"BizUnitNameList,omitempty" xml:"BizUnitNameList,omitempty" type:"Repeated"`
+	// Data classification ID.
+	//
 	// example:
 	//
 	// 1
-	ClassifyId         *int64    `json:"ClassifyId,omitempty" xml:"ClassifyId,omitempty"`
+	ClassifyId *int64 `json:"ClassifyId,omitempty" xml:"ClassifyId,omitempty"`
+	// Data source names.
 	DatasourceNameList []*string `json:"DatasourceNameList,omitempty" xml:"DatasourceNameList,omitempty" type:"Repeated"`
+	// Environment identifier of the data source, project, or business unit.
+	//
 	// example:
 	//
 	// DEV
-	Env      *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	IsLocked *bool   `json:"IsLocked,omitempty" xml:"IsLocked,omitempty"`
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Whether it is locked.
+	IsLocked *bool `json:"IsLocked,omitempty" xml:"IsLocked,omitempty"`
+	// Keyword filter. Supports matching by table catalog, table name, table display name, and field name.
+	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Number of records per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
-	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Project names.
 	ProjectNameList []*string `json:"ProjectNameList,omitempty" xml:"ProjectNameList,omitempty" type:"Repeated"`
+	// Effective status filter: ENABLE or DISABLE.
+	//
 	// example:
 	//
 	// ENABLE

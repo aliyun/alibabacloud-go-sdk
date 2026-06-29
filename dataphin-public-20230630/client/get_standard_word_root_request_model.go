@@ -18,13 +18,18 @@ type iGetStandardWordRootRequest interface {
 }
 
 type GetStandardWordRootRequest struct {
+	// The name of the word root.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 平均值
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Nullable *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether to allow a null value to be returned when the word root does not exist. If set to false, an exception is thrown. Default value: true.
+	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

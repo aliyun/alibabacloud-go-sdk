@@ -24,18 +24,25 @@ type iListDataServiceMyApiPermissionsResponseBody interface {
 }
 
 type ListDataServiceMyApiPermissionsResponseBody struct {
+	// Backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Backend response exception details.
+	//
 	// example:
 	//
 	// internal error
-	Message    *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Paginated query result.
 	PageResult *ListDataServiceMyApiPermissionsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type ListDataServiceMyApiPermissionsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDataServiceMyApiPermissionsResponseBody) String() string {
@@ -118,7 +126,10 @@ func (s *ListDataServiceMyApiPermissionsResponseBody) Validate() error {
 }
 
 type ListDataServiceMyApiPermissionsResponseBodyPageResult struct {
+	// Paginated permission list.
 	PermissionList []*ListDataServiceMyApiPermissionsResponseBodyPageResultPermissionList `json:"PermissionList,omitempty" xml:"PermissionList,omitempty" type:"Repeated"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 68
@@ -165,46 +176,68 @@ func (s *ListDataServiceMyApiPermissionsResponseBodyPageResult) Validate() error
 }
 
 type ListDataServiceMyApiPermissionsResponseBodyPageResultPermissionList struct {
+	// API ID.
+	//
 	// example:
 	//
 	// 1322
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// API name.
+	//
 	// example:
 	//
 	// teset
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// Creator name.
+	//
 	// example:
 	//
 	// test
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// Creator ID.
+	//
 	// example:
 	//
 	// 1121
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Owner ID.
+	//
 	// example:
 	//
 	// 1121
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// Owner name.
+	//
 	// example:
 	//
 	// test
 	OwnerUserName *string `json:"OwnerUserName,omitempty" xml:"OwnerUserName,omitempty"`
+	// The user to whom the privilege belongs.
+	//
 	// example:
 	//
 	// 1121
 	PrivilegeBelongTo *string `json:"PrivilegeBelongTo,omitempty" xml:"PrivilegeBelongTo,omitempty"`
+	// Authorization source. Valid value: 0, which indicates the owner.
+	//
 	// example:
 	//
 	// 0
 	PrivilegeFrom *int32 `json:"PrivilegeFrom,omitempty" xml:"PrivilegeFrom,omitempty"`
+	// Project ID.
+	//
 	// example:
 	//
 	// 102122
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Project name.
+	//
 	// example:
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Role. Valid value: 0, which indicates the owner.
+	//
 	// example:
 	//
 	// 0

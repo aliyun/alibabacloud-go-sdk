@@ -24,24 +24,34 @@ type iListPublishRecordsResponseBody interface {
 }
 
 type ListPublishRecordsResponseBody struct {
+	// Error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Backend response HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	ListResult     *ListPublishRecordsResponseBodyListResult `json:"ListResult,omitempty" xml:"ListResult,omitempty" type:"Struct"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Query result.
+	ListResult *ListPublishRecordsResponseBodyListResult `json:"ListResult,omitempty" xml:"ListResult,omitempty" type:"Struct"`
+	// Error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListPublishRecordsResponseBody) String() string {
@@ -116,7 +126,10 @@ func (s *ListPublishRecordsResponseBody) Validate() error {
 }
 
 type ListPublishRecordsResponseBodyListResult struct {
+	// Publish record list.
 	Data []*ListPublishRecordsResponseBodyListResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Total count.
+	//
 	// example:
 	//
 	// 100
@@ -163,66 +176,98 @@ func (s *ListPublishRecordsResponseBodyListResult) Validate() error {
 }
 
 type ListPublishRecordsResponseBodyListResultData struct {
+	// Change type. Valid values: 0: Create. 1: Update. 2: Delete.
+	//
 	// example:
 	//
 	// 0
 	ChangeType *int32 `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
+	// Publish error message.
+	//
 	// example:
 	//
 	// error
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Publish completion time in the yyyy-MM-dd HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2024-10-10 10:10:10
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// Creation time in the yyyy-MM-dd HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Modification time in the yyyy-MM-dd HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	// Publish record ID, which is not the object ID and is globally unique in the publish list.
+	//
 	// example:
 	//
 	// 1241844456
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Node ID.
+	//
 	// example:
 	//
 	// n_123456
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Object ID.
+	//
 	// example:
 	//
 	// 1234567
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// Object name.
+	//
 	// example:
 	//
 	// 对象A
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
+	// Object type.
+	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// Object version.
+	//
 	// example:
 	//
 	// 1
 	ObjectVersion *string `json:"ObjectVersion,omitempty" xml:"ObjectVersion,omitempty"`
+	// Project ID.
+	//
 	// example:
 	//
 	// 1241844456
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Publish name.
+	//
 	// example:
 	//
 	// test_lc__20241118171502
 	PublishName *string `json:"PublishName,omitempty" xml:"PublishName,omitempty"`
+	// Publish status. Valid values: 0: Failed. 1: Succeeded. 2: Publishing.
+	//
 	// example:
 	//
 	// 1
 	PublishStatus *int32 `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	// Publisher ID.
+	//
 	// example:
 	//
 	// 307999999
 	Publisher *string `json:"Publisher,omitempty" xml:"Publisher,omitempty"`
+	// Publisher name.
+	//
 	// example:
 	//
 	// 张三

@@ -16,8 +16,12 @@ type iListAddableUsersShrinkRequest interface {
 }
 
 type ListAddableUsersShrinkRequest struct {
+	// The request object.
+	//
 	// This parameter is required.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

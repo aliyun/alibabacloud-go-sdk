@@ -24,18 +24,25 @@ type iGetProjectByNameResponseBody interface {
 }
 
 type GetProjectByNameResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
-	Message     *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The project details.
 	ProjectInfo *GetProjectByNameResponseBodyProjectInfo `json:"ProjectInfo,omitempty" xml:"ProjectInfo,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type GetProjectByNameResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetProjectByNameResponseBody) String() string {
@@ -118,78 +126,125 @@ func (s *GetProjectByNameResponseBody) Validate() error {
 }
 
 type GetProjectByNameResponseBodyProjectInfo struct {
+	// The display name of the business unit to which the project belongs.
+	//
 	// example:
 	//
 	// 测试
 	BizUnitDisplayName *string `json:"BizUnitDisplayName,omitempty" xml:"BizUnitDisplayName,omitempty"`
+	// The ID of the business unit to which the project belongs.
+	//
 	// example:
 	//
 	// 101131
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The ID of the associated compute source.
+	//
 	// example:
 	//
 	// 101711
 	ComputeSourceId *int64 `json:"ComputeSourceId,omitempty" xml:"ComputeSourceId,omitempty"`
+	// The name of the associated compute source.
+	//
 	// example:
 	//
 	// ds1
 	ComputeSourceName *string `json:"ComputeSourceName,omitempty" xml:"ComputeSourceName,omitempty"`
+	// The project description.
+	//
 	// example:
 	//
 	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the project.
+	//
 	// example:
 	//
 	// xx test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The environment identifier.
+	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The creation time, in the format of yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2025-06-10 10:01:01
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time, in the format of yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2025-06-10 10:01:01
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 1030111021
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The project mode.
+	//
 	// example:
 	//
 	// BASIC
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace type. Valid values:
+	//
+	// - PUBLIC: public type
+	//
+	// - APPLICATION: application type
+	//
+	// - BASE: base type.
+	//
 	// example:
 	//
 	// BASE
 	NameSpaceTag *string `json:"NameSpaceTag,omitempty" xml:"NameSpaceTag,omitempty"`
+	// The project owner.
+	//
 	// example:
 	//
 	// 30012011
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The project owner.
+	//
 	// example:
 	//
 	// 张三
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The ID of the associated real-time compute source.
+	//
 	// example:
 	//
 	// 201711
 	StreamComputeSourceId *int64 `json:"StreamComputeSourceId,omitempty" xml:"StreamComputeSourceId,omitempty"`
+	// The name of the associated real-time compute source.
+	//
 	// example:
 	//
 	// ds2
 	StreamComputeSourceName *string `json:"StreamComputeSourceName,omitempty" xml:"StreamComputeSourceName,omitempty"`
+	// The project type. Valid values:
+	//
+	// - DISTILL: distillation project
+	//
+	// - GENERAL: general project.
+	//
 	// example:
 	//
 	// GENERAL
-	Type       *string                                              `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The whitelists.
 	WhiteLists []*GetProjectByNameResponseBodyProjectInfoWhiteLists `json:"WhiteLists,omitempty" xml:"WhiteLists,omitempty" type:"Repeated"`
 }
 
@@ -386,6 +441,8 @@ func (s *GetProjectByNameResponseBodyProjectInfo) Validate() error {
 }
 
 type GetProjectByNameResponseBodyProjectInfoWhiteLists struct {
+	// The description.
+	//
 	// example:
 	//
 	// xx 白名单
@@ -396,6 +453,8 @@ type GetProjectByNameResponseBodyProjectInfoWhiteLists struct {
 	//
 	// 10.11.1.21
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The port.
+	//
 	// example:
 	//
 	// 5432

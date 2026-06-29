@@ -16,8 +16,12 @@ type iDeleteStandardRequest interface {
 }
 
 type DeleteStandardRequest struct {
+	// The delete command.
+	//
 	// This parameter is required.
 	DeleteCommand *DeleteStandardRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,6 +66,8 @@ func (s *DeleteStandardRequest) Validate() error {
 }
 
 type DeleteStandardRequestDeleteCommand struct {
+	// The standard ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,18 +24,25 @@ type iGetDataServiceMyProjectsResponseBody interface {
 }
 
 type GetDataServiceMyProjectsResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
-	Message     *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of data service projects.
 	ProjectList []*GetDataServiceMyProjectsResponseBodyProjectList `json:"ProjectList,omitempty" xml:"ProjectList,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type GetDataServiceMyProjectsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataServiceMyProjectsResponseBody) String() string {
@@ -122,14 +130,30 @@ func (s *GetDataServiceMyProjectsResponseBody) Validate() error {
 }
 
 type GetDataServiceMyProjectsResponseBodyProjectList struct {
+	// The data service project ID.
+	//
 	// example:
 	//
 	// 102011
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The role. Valid values:
+	//
+	// - 1: super administrator
+	//
+	// - 2: developer
+	//
+	// - 3: application member
+	//
+	// - 4: service project administrator
+	//
+	// - 5: O&M engineer.
+	//
 	// example:
 	//
 	// 1

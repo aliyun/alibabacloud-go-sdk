@@ -16,8 +16,12 @@ type iListDataSourceWithConfigShrinkRequest interface {
 }
 
 type ListDataSourceWithConfigShrinkRequest struct {
+	// Paginated query
+	//
 	// This parameter is required.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,23 +24,34 @@ type iListNodesResponseBody interface {
 }
 
 type ListNodesResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message    *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paging query result.
 	PageResult *ListNodesResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,7 +130,10 @@ func (s *ListNodesResponseBody) Validate() error {
 }
 
 type ListNodesResponseBodyPageResult struct {
+	// The list of nodes on the current page.
 	NodeList []*ListNodesResponseBodyPageResultNodeList `json:"NodeList,omitempty" xml:"NodeList,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -166,58 +180,110 @@ func (s *ListNodesResponseBodyPageResult) Validate() error {
 }
 
 type ListNodesResponseBodyPageResultNodeList struct {
+	// The name of the business unit to which the node belongs.
+	//
+	// example:
+	//
+	// xx测试
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-05-30 16:47:13
-	CreateTime *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Creator    *ListNodesResponseBodyPageResultNodeListCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator.
+	Creator *ListNodesResponseBodyPageResultNodeListCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	// The description.
+	//
 	// example:
 	//
 	// xx test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to perform a dry run.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The extended information.
+	//
 	// example:
 	//
 	// {"xx":"zz"}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// DATA_PROCESS
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// Indicates whether a development environment exists.
+	//
 	// example:
 	//
 	// true
 	HasDev *bool `json:"HasDev,omitempty" xml:"HasDev,omitempty"`
+	// Indicates whether a production environment exists.
+	//
 	// example:
 	//
 	// true
 	HasProd *bool `json:"HasProd,omitempty" xml:"HasProd,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// n_31111
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 2024-05-30 16:47:13
-	LastModifiedTime *string                                             `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	Modifier         *ListNodesResponseBodyPageResultNodeListModifier    `json:"Modifier,omitempty" xml:"Modifier,omitempty" type:"Struct"`
-	Name             *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerList        []*ListNodesResponseBodyPageResultNodeListOwnerList `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
-	PriorityList     []*string                                           `json:"PriorityList,omitempty" xml:"PriorityList,omitempty" type:"Repeated"`
-	ProjectInfo      *ListNodesResponseBodyPageResultNodeListProjectInfo `json:"ProjectInfo,omitempty" xml:"ProjectInfo,omitempty" type:"Struct"`
+	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	// The user who last modified the node.
+	Modifier *ListNodesResponseBodyPageResultNodeListModifier `json:"Modifier,omitempty" xml:"Modifier,omitempty" type:"Struct"`
+	// The node name.
+	//
+	// example:
+	//
+	// xx测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner.
+	OwnerList []*ListNodesResponseBodyPageResultNodeListOwnerList `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
+	// The priority.
+	PriorityList []*string `json:"PriorityList,omitempty" xml:"PriorityList,omitempty" type:"Repeated"`
+	// The project to which the node belongs.
+	ProjectInfo *ListNodesResponseBodyPageResultNodeListProjectInfo `json:"ProjectInfo,omitempty" xml:"ProjectInfo,omitempty" type:"Struct"`
+	// Indicates whether scheduling is paused.
+	//
 	// example:
 	//
 	// true
-	SchedulePaused     *bool     `json:"SchedulePaused,omitempty" xml:"SchedulePaused,omitempty"`
+	SchedulePaused *bool `json:"SchedulePaused,omitempty" xml:"SchedulePaused,omitempty"`
+	// The scheduling period.
 	SchedulePeriodList []*string `json:"SchedulePeriodList,omitempty" xml:"SchedulePeriodList,omitempty" type:"Repeated"`
+	// The sub-business types. Valid values:
+	//
+	// - MAX_COMPUTE_SQL
+	//
+	// - HIVE_SQL
+	//
+	// - SHELL
+	//
+	// - PYTHON
+	//
+	// - ONE_SERVICE_SQL
+	//
+	// - DATABASE_SQL.
+	//
 	// example:
 	//
 	// SHELL
 	SubDetailType *string `json:"SubDetailType,omitempty" xml:"SubDetailType,omitempty"`
+	// The node type.
+	//
 	// example:
 	//
 	// DATA_PROCESS
@@ -441,10 +507,17 @@ func (s *ListNodesResponseBodyPageResultNodeList) Validate() error {
 }
 
 type ListNodesResponseBodyPageResultNodeListCreator struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 23222
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -479,10 +552,17 @@ func (s *ListNodesResponseBodyPageResultNodeListCreator) Validate() error {
 }
 
 type ListNodesResponseBodyPageResultNodeListModifier struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 311131
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -517,10 +597,17 @@ func (s *ListNodesResponseBodyPageResultNodeListModifier) Validate() error {
 }
 
 type ListNodesResponseBodyPageResultNodeListOwnerList struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 23222
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -555,10 +642,17 @@ func (s *ListNodesResponseBodyPageResultNodeListOwnerList) Validate() error {
 }
 
 type ListNodesResponseBodyPageResultNodeListProjectInfo struct {
+	// The project ID.
+	//
 	// example:
 	//
 	// 1121321
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The project name.
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

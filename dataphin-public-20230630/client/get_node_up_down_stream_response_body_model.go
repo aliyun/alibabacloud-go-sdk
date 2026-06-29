@@ -24,23 +24,34 @@ type iGetNodeUpDownStreamResponseBody interface {
 }
 
 type GetNodeUpDownStreamResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message     *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The dag data of the node.
 	NodeDagInfo *GetNodeUpDownStreamResponseBodyNodeDagInfo `json:"NodeDagInfo,omitempty" xml:"NodeDagInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,9 +130,12 @@ func (s *GetNodeUpDownStreamResponseBody) Validate() error {
 }
 
 type GetNodeUpDownStreamResponseBodyNodeDagInfo struct {
+	// The downstream nodes.
 	DownStreamNodeList []*GetNodeUpDownStreamResponseBodyNodeDagInfoDownStreamNodeList `json:"DownStreamNodeList,omitempty" xml:"DownStreamNodeList,omitempty" type:"Repeated"`
-	StartNodeList      []*GetNodeUpDownStreamResponseBodyNodeDagInfoStartNodeList      `json:"StartNodeList,omitempty" xml:"StartNodeList,omitempty" type:"Repeated"`
-	UpStreamNodeList   []*GetNodeUpDownStreamResponseBodyNodeDagInfoUpStreamNodeList   `json:"UpStreamNodeList,omitempty" xml:"UpStreamNodeList,omitempty" type:"Repeated"`
+	// The center nodes.
+	StartNodeList []*GetNodeUpDownStreamResponseBodyNodeDagInfoStartNodeList `json:"StartNodeList,omitempty" xml:"StartNodeList,omitempty" type:"Repeated"`
+	// The upstream nodes.
+	UpStreamNodeList []*GetNodeUpDownStreamResponseBodyNodeDagInfoUpStreamNodeList `json:"UpStreamNodeList,omitempty" xml:"UpStreamNodeList,omitempty" type:"Repeated"`
 }
 
 func (s GetNodeUpDownStreamResponseBodyNodeDagInfo) String() string {
@@ -191,15 +205,28 @@ func (s *GetNodeUpDownStreamResponseBodyNodeDagInfo) Validate() error {
 }
 
 type GetNodeUpDownStreamResponseBodyNodeDagInfoDownStreamNodeList struct {
+	// The list of field IDs.
 	FieldIdList []*string `json:"FieldIdList,omitempty" xml:"FieldIdList,omitempty" type:"Repeated"`
+	// The node ID.
+	//
 	// example:
 	//
 	// n_123456
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The node name.
+	//
 	// example:
 	//
 	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The node type. Valid values:
+	//
+	// - DATA_PROCESS: code task.
+	//
+	// - BBOX_LOGIC_TABLE_NODE: logical table node.
+	//
+	// - PIPELINE_NODE: pipeline node.
+	//
 	// example:
 	//
 	// DATA_PROCESS
@@ -255,15 +282,28 @@ func (s *GetNodeUpDownStreamResponseBodyNodeDagInfoDownStreamNodeList) Validate(
 }
 
 type GetNodeUpDownStreamResponseBodyNodeDagInfoStartNodeList struct {
+	// The list of field IDs.
 	FieldIdList []*string `json:"FieldIdList,omitempty" xml:"FieldIdList,omitempty" type:"Repeated"`
+	// The node ID.
+	//
 	// example:
 	//
 	// n_123456
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The node name.
+	//
 	// example:
 	//
 	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The node type. Valid values:
+	//
+	// - DATA_PROCESS: code task.
+	//
+	// - BBOX_LOGIC_TABLE_NODE: logical table node.
+	//
+	// - PIPELINE_NODE: pipeline node.
+	//
 	// example:
 	//
 	// DATA_PROCESS
@@ -319,15 +359,28 @@ func (s *GetNodeUpDownStreamResponseBodyNodeDagInfoStartNodeList) Validate() err
 }
 
 type GetNodeUpDownStreamResponseBodyNodeDagInfoUpStreamNodeList struct {
+	// The list of field IDs.
 	FieldIdList []*string `json:"FieldIdList,omitempty" xml:"FieldIdList,omitempty" type:"Repeated"`
+	// The node ID.
+	//
 	// example:
 	//
 	// n_123456
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The node name.
+	//
 	// example:
 	//
 	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The node type. Valid values:
+	//
+	// - DATA_PROCESS: code task.
+	//
+	// - BBOX_LOGIC_TABLE_NODE: black box logical table node.
+	//
+	// - PIPELINE_NODE: pipeline node.
+	//
 	// example:
 	//
 	// DATA_PROCESS

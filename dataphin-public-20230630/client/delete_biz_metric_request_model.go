@@ -16,8 +16,12 @@ type iDeleteBizMetricRequest interface {
 }
 
 type DeleteBizMetricRequest struct {
+	// The delete request.
+	//
 	// This parameter is required.
 	DeleteBizMetricCommand *DeleteBizMetricRequestDeleteBizMetricCommand `json:"DeleteBizMetricCommand,omitempty" xml:"DeleteBizMetricCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,6 +66,8 @@ func (s *DeleteBizMetricRequest) Validate() error {
 }
 
 type DeleteBizMetricRequestDeleteBizMetricCommand struct {
+	// The name of the business metric to delete.
+	//
 	// This parameter is required.
 	//
 	// example:

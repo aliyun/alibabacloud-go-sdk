@@ -16,12 +16,16 @@ type iGetSecurityLevelRequest interface {
 }
 
 type GetSecurityLevelRequest struct {
+	// The sensitivity level of the data classification.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

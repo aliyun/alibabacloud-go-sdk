@@ -20,24 +20,32 @@ type iGetResourceByVersionRequest interface {
 }
 
 type GetResourceByVersionRequest struct {
+	// Resource file name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// udf_sleep.jar
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1030111021
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Version ID.
+	//
 	// This parameter is required.
 	//
 	// example:

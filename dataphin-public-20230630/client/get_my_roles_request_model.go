@@ -14,6 +14,8 @@ type iGetMyRolesRequest interface {
 }
 
 type GetMyRolesRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

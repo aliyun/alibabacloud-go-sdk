@@ -20,24 +20,32 @@ type iGetUdfByVersionRequest interface {
 }
 
 type GetUdfByVersionRequest struct {
+	// The ID of the user-defined function.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1030111021
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The version number.
+	//
 	// This parameter is required.
 	//
 	// example:

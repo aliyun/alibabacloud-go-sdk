@@ -18,14 +18,20 @@ type iGetPipelineAsyncResultRequest interface {
 }
 
 type GetPipelineAsyncResultRequest struct {
+	// The asynchronous execution ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	AsyncId *int64 `json:"AsyncId,omitempty" xml:"AsyncId,omitempty"`
+	// The request context information.
+	//
 	// This parameter is required.
 	Context *GetPipelineAsyncResultRequestContext `json:"Context,omitempty" xml:"Context,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -79,12 +85,20 @@ func (s *GetPipelineAsyncResultRequest) Validate() error {
 }
 
 type GetPipelineAsyncResultRequestContext struct {
+	// The current operation environment. Valid values:
+	//
+	// - DEV: development environment.
+	//
+	// - PROD: production environment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The ID of the project to which the integration pipeline task belongs.
+	//
 	// This parameter is required.
 	//
 	// example:

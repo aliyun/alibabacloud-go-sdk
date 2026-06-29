@@ -16,8 +16,12 @@ type iOfflineStandardShrinkRequest interface {
 }
 
 type OfflineStandardShrinkRequest struct {
+	// The offline instruction.
+	//
 	// This parameter is required.
 	OfflineCommandShrink *string `json:"OfflineCommand,omitempty" xml:"OfflineCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

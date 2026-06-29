@@ -18,10 +18,16 @@ type iOfflinePipelineShrinkRequest interface {
 }
 
 type OfflinePipelineShrinkRequest struct {
+	// The request context information.
+	//
 	// This parameter is required.
 	ContextShrink *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// The offline command for the pipeline node.
+	//
 	// This parameter is required.
 	OfflineCommandShrink *string `json:"OfflineCommand,omitempty" xml:"OfflineCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

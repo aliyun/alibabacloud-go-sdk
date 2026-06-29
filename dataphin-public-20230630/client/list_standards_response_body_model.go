@@ -24,18 +24,25 @@ type iListStandardsResponseBody interface {
 }
 
 type ListStandardsResponseBody struct {
+	// Backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP response code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Details of the backend response error.
+	//
 	// example:
 	//
 	// internal error
-	Message    *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Paginated query result.
 	PageResult *ListStandardsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type ListStandardsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListStandardsResponseBody) String() string {
@@ -118,7 +126,10 @@ func (s *ListStandardsResponseBody) Validate() error {
 }
 
 type ListStandardsResponseBodyPageResult struct {
+	// Standard list.
 	StandardList []*ListStandardsResponseBodyPageResultStandardList `json:"StandardList,omitempty" xml:"StandardList,omitempty" type:"Repeated"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 68
@@ -165,49 +176,76 @@ func (s *ListStandardsResponseBodyPageResult) Validate() error {
 }
 
 type ListStandardsResponseBodyPageResultStandardList struct {
+	// Attribute value configuration list.
 	AttributeWithValueList []*ListStandardsResponseBodyPageResultStandardListAttributeWithValueList `json:"AttributeWithValueList,omitempty" xml:"AttributeWithValueList,omitempty" type:"Repeated"`
+	// Standard code.
+	//
 	// example:
 	//
 	// zz
-	Code    *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Creator.
 	Creator *ListStandardsResponseBodyPageResultStandardListCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	// Description.
+	//
 	// example:
 	//
 	// test
-	Description         *string                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Effective time configuration.
 	EffectiveTimeConfig *ListStandardsResponseBodyPageResultStandardListEffectiveTimeConfig `json:"EffectiveTimeConfig,omitempty" xml:"EffectiveTimeConfig,omitempty" type:"Struct"`
+	// Standard English name.
+	//
 	// example:
 	//
 	// test
 	EnglishName *string `json:"EnglishName,omitempty" xml:"EnglishName,omitempty"`
+	// Standard ID.
+	//
 	// example:
 	//
 	// 1234
-	Id           *int64                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Last modifier.
 	LastModifier *ListStandardsResponseBodyPageResultStandardListLastModifier `json:"LastModifier,omitempty" xml:"LastModifier,omitempty" type:"Struct"`
+	// Last modified time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Standard name.
+	//
 	// example:
 	//
 	// test
-	Name  *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Owner.
 	Owner *ListStandardsResponseBodyPageResultStandardListOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
+	// Stage of the standard.
+	//
 	// example:
 	//
 	// dev
-	Stage            *string                                                          `json:"Stage,omitempty" xml:"Stage,omitempty"`
-	StandardSet      *ListStandardsResponseBodyPageResultStandardListStandardSet      `json:"StandardSet,omitempty" xml:"StandardSet,omitempty" type:"Struct"`
+	Stage *string `json:"Stage,omitempty" xml:"Stage,omitempty"`
+	// Standard set that the current standard depends on.
+	StandardSet *ListStandardsResponseBodyPageResultStandardListStandardSet `json:"StandardSet,omitempty" xml:"StandardSet,omitempty" type:"Struct"`
+	// Standard template that the current standard depends on.
 	StandardTemplate *ListStandardsResponseBodyPageResultStandardListStandardTemplate `json:"StandardTemplate,omitempty" xml:"StandardTemplate,omitempty" type:"Struct"`
+	// Status of the standard.
+	//
 	// example:
 	//
 	// draft
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Standard type.
+	//
 	// example:
 	//
 	// zz
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Version number.
+	//
 	// example:
 	//
 	// 1
@@ -419,7 +457,10 @@ func (s *ListStandardsResponseBodyPageResultStandardList) Validate() error {
 }
 
 type ListStandardsResponseBodyPageResultStandardListAttributeWithValueList struct {
+	// Attribute details.
 	Attribute *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttribute `json:"Attribute,omitempty" xml:"Attribute,omitempty" type:"Struct"`
+	// Attribute value.
+	//
 	// example:
 	//
 	// test
@@ -462,30 +503,45 @@ func (s *ListStandardsResponseBodyPageResultStandardListAttributeWithValueList) 
 }
 
 type ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttribute struct {
+	// Attribute code.
+	//
 	// example:
 	//
 	// test_attr
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Description.
+	//
 	// example:
 	//
 	// test
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableMonitorConfig *bool   `json:"EnableMonitorConfig,omitempty" xml:"EnableMonitorConfig,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether to enable monitor configuration.
+	EnableMonitorConfig *bool `json:"EnableMonitorConfig,omitempty" xml:"EnableMonitorConfig,omitempty"`
+	// Attribute ID.
+	//
 	// example:
 	//
 	// 1011
-	Id            *int64                                                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Monitor configuration.
 	MonitorConfig *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeMonitorConfig `json:"MonitorConfig,omitempty" xml:"MonitorConfig,omitempty" type:"Struct"`
+	// Attribute name.
+	//
 	// example:
 	//
 	// attr1
-	Name         *string                                                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Referenced attribute information.
 	RefAttribute *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeRefAttribute `json:"RefAttribute,omitempty" xml:"RefAttribute,omitempty" type:"Struct"`
-	Required     *bool                                                                                       `json:"Required,omitempty" xml:"Required,omitempty"`
+	// Whether it is required.
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// Attribute type: BIZ_ATTRIBUTE for business attribute, TECH_ATTRIBUTE for technical attribute, MANAGEMENT_ATTRIBUTE for management attribute, QUALITY_ATTRIBUTE for quality attribute, MASTER_DATA_ATTRIBUTE for master data attribute, LIFECYCLE_ATTRIBUTE for lifecycle attribute, SECURITY_ATTRIBUTE for security attribute.
+	//
 	// example:
 	//
 	// BIZ_ATTRIBUTE
-	Type        *string                                                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Value configuration.
 	ValueConfig *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeValueConfig `json:"ValueConfig,omitempty" xml:"ValueConfig,omitempty" type:"Struct"`
 }
 
@@ -607,11 +663,16 @@ func (s *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAt
 }
 
 type ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeMonitorConfig struct {
+	// Column to check.
+	//
 	// example:
 	//
 	// column1
-	ColumnName      *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	IsCaseSensitive *bool   `json:"IsCaseSensitive,omitempty" xml:"IsCaseSensitive,omitempty"`
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// Whether case-sensitive.
+	IsCaseSensitive *bool `json:"IsCaseSensitive,omitempty" xml:"IsCaseSensitive,omitempty"`
+	// Monitor type: METADATA for metadata monitoring, QUALITY for data quality monitoring.
+	//
 	// example:
 	//
 	// METADATA
@@ -658,7 +719,10 @@ func (s *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAt
 }
 
 type ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeRefAttribute struct {
+	// Attribute source.
 	AttributeFromInfo *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeRefAttributeAttributeFromInfo `json:"AttributeFromInfo,omitempty" xml:"AttributeFromInfo,omitempty" type:"Struct"`
+	// Attribute ID.
+	//
 	// example:
 	//
 	// 123
@@ -701,10 +765,13 @@ func (s *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAt
 }
 
 type ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeRefAttributeAttributeFromInfo struct {
+	// Attribute source: SYSTEM for system attribute, CUSTOM for custom attribute, STANDARD for standard.
+	//
 	// example:
 	//
 	// CUSTOM
-	AttributeFrom     *string                                                                                                                       `json:"AttributeFrom,omitempty" xml:"AttributeFrom,omitempty"`
+	AttributeFrom *string `json:"AttributeFrom,omitempty" xml:"AttributeFrom,omitempty"`
+	// Corresponding standard, effective when attribute source is STANDARD.
 	StandardReference *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeRefAttributeAttributeFromInfoStandardReference `json:"StandardReference,omitempty" xml:"StandardReference,omitempty" type:"Struct"`
 }
 
@@ -744,10 +811,14 @@ func (s *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAt
 }
 
 type ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeRefAttributeAttributeFromInfoStandardReference struct {
+	// Standard ID.
+	//
 	// example:
 	//
 	// 22
 	StandardId *int64 `json:"StandardId,omitempty" xml:"StandardId,omitempty"`
+	// Version number.
+	//
 	// example:
 	//
 	// 1
@@ -785,22 +856,31 @@ func (s *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAt
 }
 
 type ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeValueConfig struct {
+	// Data type of the attribute value: STRING for string, BIGINT for numeric type, DOUBLE for floating-point type, DATE for date accurate to day, DATETIME for date accurate to milliseconds, BOOLEAN for boolean.
+	//
 	// example:
 	//
 	// STRING
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// Default value.
+	//
 	// example:
 	//
 	// test
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// Attribute value length. If empty or -1, the length is not limited. Typically, only string types limit the attribute value length.
+	//
 	// example:
 	//
 	// 1
 	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
+	// Attribute value type: CUSTOMIZED for custom input, SINGLE_ENUM for single enumeration value, MULTIPLE_ENUMS for multiple enumeration values, RANGE for range value.
+	//
 	// example:
 	//
 	// CUSTOMIZED
-	Type       *string                                                                                              `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Value range.
 	ValueRange *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeValueConfigValueRange `json:"ValueRange,omitempty" xml:"ValueRange,omitempty" type:"Struct"`
 }
 
@@ -867,17 +947,24 @@ func (s *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAt
 }
 
 type ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeValueConfigValueRange struct {
+	// Value range, effective when value constraint is DATAPHIN_ATTRIBUTE: BIZ_UNIT for data business unit, PROJECT for project, USER for user, USER_GROUP for user group.
+	//
 	// example:
 	//
 	// DATAPHIN_ATTRIBUTE
-	DataphinAttributeType *string                                                                                                                  `json:"DataphinAttributeType,omitempty" xml:"DataphinAttributeType,omitempty"`
-	LookupTableReference  *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeValueConfigValueRangeLookupTableReference `json:"LookupTableReference,omitempty" xml:"LookupTableReference,omitempty" type:"Struct"`
-	MinMaxValueConfig     *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeValueConfigValueRangeMinMaxValueConfig    `json:"MinMaxValueConfig,omitempty" xml:"MinMaxValueConfig,omitempty" type:"Struct"`
+	DataphinAttributeType *string `json:"DataphinAttributeType,omitempty" xml:"DataphinAttributeType,omitempty"`
+	// Value range, effective when value constraint is LOOKUP_TABLE.
+	LookupTableReference *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeValueConfigValueRangeLookupTableReference `json:"LookupTableReference,omitempty" xml:"LookupTableReference,omitempty" type:"Struct"`
+	// Value range, effective when value constraint is MIN_MAX.
+	MinMaxValueConfig *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeValueConfigValueRangeMinMaxValueConfig `json:"MinMaxValueConfig,omitempty" xml:"MinMaxValueConfig,omitempty" type:"Struct"`
+	// Value constraint: NONE for no constraint, LIST for obtaining from a list, LOOKUP_TABLE for lookup table, MIN_MAX for values between minimum and maximum, DATAPHIN_ATTRIBUTE for Dataphin system attribute, BUILT_IN_DATA_TYPES for built-in data types, BUILT_IN_DATA_CLASSIFICATION for built-in data classification, BUILT_IN_DATA_LEVEL for built-in data security level.
+	//
 	// example:
 	//
 	// NONE
-	ValueConstraint *string   `json:"ValueConstraint,omitempty" xml:"ValueConstraint,omitempty"`
-	ValueList       []*string `json:"ValueList,omitempty" xml:"ValueList,omitempty" type:"Repeated"`
+	ValueConstraint *string `json:"ValueConstraint,omitempty" xml:"ValueConstraint,omitempty"`
+	// Value range, effective when value constraint is LIST.
+	ValueList []*string `json:"ValueList,omitempty" xml:"ValueList,omitempty" type:"Repeated"`
 }
 
 func (s ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeValueConfigValueRange) String() string {
@@ -948,10 +1035,14 @@ func (s *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAt
 }
 
 type ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeValueConfigValueRangeLookupTableReference struct {
+	// Referenced lookup table column.
+	//
 	// example:
 	//
 	// col1
 	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	// Lookup table ID.
+	//
 	// example:
 	//
 	// 11
@@ -989,12 +1080,18 @@ func (s *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAt
 }
 
 type ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAttributeValueConfigValueRangeMinMaxValueConfig struct {
+	// Whether to include the maximum value.
 	IncludeMaxValue *bool `json:"IncludeMaxValue,omitempty" xml:"IncludeMaxValue,omitempty"`
+	// Whether to include the minimum value.
 	IncludeMinValue *bool `json:"IncludeMinValue,omitempty" xml:"IncludeMinValue,omitempty"`
+	// Maximum value.
+	//
 	// example:
 	//
 	// 100
 	MaxValue *string `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	// Minimum value.
+	//
 	// example:
 	//
 	// 0
@@ -1050,10 +1147,14 @@ func (s *ListStandardsResponseBodyPageResultStandardListAttributeWithValueListAt
 }
 
 type ListStandardsResponseBodyPageResultStandardListCreator struct {
+	// User ID.
+	//
 	// example:
 	//
 	// 300000913
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// User name.
+	//
 	// example:
 	//
 	// susan
@@ -1091,14 +1192,20 @@ func (s *ListStandardsResponseBodyPageResultStandardListCreator) Validate() erro
 }
 
 type ListStandardsResponseBodyPageResultStandardListEffectiveTimeConfig struct {
+	// End time of the effective period.
+	//
 	// example:
 	//
 	// 2025-12-30 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Start time of the effective period.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Effective time type: FOREVER for permanent, TIME_PERIOD for a time period.
+	//
 	// example:
 	//
 	// TIME_PERIOD
@@ -1145,10 +1252,14 @@ func (s *ListStandardsResponseBodyPageResultStandardListEffectiveTimeConfig) Val
 }
 
 type ListStandardsResponseBodyPageResultStandardListLastModifier struct {
+	// User ID.
+	//
 	// example:
 	//
 	// 300000913
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// User name.
+	//
 	// example:
 	//
 	// susan
@@ -1186,10 +1297,14 @@ func (s *ListStandardsResponseBodyPageResultStandardListLastModifier) Validate()
 }
 
 type ListStandardsResponseBodyPageResultStandardListOwner struct {
+	// User ID.
+	//
 	// example:
 	//
 	// 300000913
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// User name.
+	//
 	// example:
 	//
 	// susan
@@ -1227,18 +1342,26 @@ func (s *ListStandardsResponseBodyPageResultStandardListOwner) Validate() error 
 }
 
 type ListStandardsResponseBodyPageResultStandardListStandardSet struct {
+	// Standard set code.
+	//
 	// example:
 	//
 	// cc
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Directory of the standard set.
+	//
 	// example:
 	//
 	// /dir1
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// Standard set ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Standard set name.
+	//
 	// example:
 	//
 	// test
@@ -1294,22 +1417,32 @@ func (s *ListStandardsResponseBodyPageResultStandardListStandardSet) Validate() 
 }
 
 type ListStandardsResponseBodyPageResultStandardListStandardTemplate struct {
+	// Standard template code.
+	//
 	// example:
 	//
 	// 1121
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Standard template ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Standard template name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Standard template source: CUSTOM for custom standard templates, SYSTEM for system built-in standard templates.
+	//
 	// example:
 	//
 	// SYSTEM
 	TemplateFrom *string `json:"TemplateFrom,omitempty" xml:"TemplateFrom,omitempty"`
+	// Version number.
+	//
 	// example:
 	//
 	// 1

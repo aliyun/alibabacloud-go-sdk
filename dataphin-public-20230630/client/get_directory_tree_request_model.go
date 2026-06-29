@@ -18,18 +18,46 @@ type iGetDirectoryTreeRequest interface {
 }
 
 type GetDirectoryTreeRequest struct {
+	// Directory type.
+	//
+	// - Ad-hoc Query: tempCode
+	//
+	// - Code Task: codeManage
+	//
+	// - Offline Pipeline: offlinePipeline
+	//
+	// - Pipeline Custom Component: offlinePipelineCustomPlugin
+	//
+	// - Sync Task: dataX
+	//
+	// - Real-time Meta Table: streamMeta
+	//
+	// - Real-time Custom Source: streamCustomDataSource
+	//
+	// - Real-time Compute Template: streamTemplate
+	//
+	// - Resource Management: resourceManage
+	//
+	// - Offline Function: udfResource
+	//
+	// - Real-time Function: streamFunction
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// codeManage
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

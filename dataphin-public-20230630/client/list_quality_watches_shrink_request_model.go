@@ -16,7 +16,10 @@ type iListQualityWatchesShrinkRequest interface {
 }
 
 type ListQualityWatchesShrinkRequest struct {
+	// The paged query conditions.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

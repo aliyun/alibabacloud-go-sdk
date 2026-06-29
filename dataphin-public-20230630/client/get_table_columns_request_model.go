@@ -18,18 +18,24 @@ type iGetTableColumnsRequest interface {
 }
 
 type GetTableColumnsRequest struct {
+	// Asset table catalog: name of the business unit or project space.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// LD_test01_dev
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Table name.
+	//
 	// This parameter is required.
 	//
 	// example:

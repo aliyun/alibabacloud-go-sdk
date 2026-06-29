@@ -16,7 +16,10 @@ type iGetBelongAssetMappingShrinkRequest interface {
 }
 
 type GetBelongAssetMappingShrinkRequest struct {
+	// Query command.
 	AssetMappingQueryShrink *string `json:"AssetMappingQuery,omitempty" xml:"AssetMappingQuery,omitempty"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

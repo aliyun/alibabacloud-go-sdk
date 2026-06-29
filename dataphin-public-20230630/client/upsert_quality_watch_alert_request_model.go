@@ -16,12 +16,16 @@ type iUpsertQualityWatchAlertRequest interface {
 }
 
 type UpsertQualityWatchAlertRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update instruction.
+	//
 	// This parameter is required.
 	UpsertCommand *UpsertQualityWatchAlertRequestUpsertCommand `json:"UpsertCommand,omitempty" xml:"UpsertCommand,omitempty" type:"Struct"`
 }
@@ -62,8 +66,12 @@ func (s *UpsertQualityWatchAlertRequest) Validate() error {
 }
 
 type UpsertQualityWatchAlertRequestUpsertCommand struct {
+	// The alert configuration details.
+	//
 	// This parameter is required.
 	QualityAlertInfo *UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfo `json:"QualityAlertInfo,omitempty" xml:"QualityAlertInfo,omitempty" type:"Struct"`
+	// The ID of the monitored object.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -108,12 +116,18 @@ func (s *UpsertQualityWatchAlertRequestUpsertCommand) Validate() error {
 }
 
 type UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfo struct {
-	AlertDutyChannelList         []*string                                                                   `json:"AlertDutyChannelList,omitempty" xml:"AlertDutyChannelList,omitempty" type:"Repeated"`
-	AlertDutyList                []*UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfoAlertDutyList `json:"AlertDutyList,omitempty" xml:"AlertDutyList,omitempty" type:"Repeated"`
-	AlertQualityOwnerChannelList []*string                                                                   `json:"AlertQualityOwnerChannelList,omitempty" xml:"AlertQualityOwnerChannelList,omitempty" type:"Repeated"`
-	AlertUserChannelList         []*string                                                                   `json:"AlertUserChannelList,omitempty" xml:"AlertUserChannelList,omitempty" type:"Repeated"`
-	AlertUserList                []*UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfoAlertUserList `json:"AlertUserList,omitempty" xml:"AlertUserList,omitempty" type:"Repeated"`
-	EnableAlertQualityOwner      *bool                                                                       `json:"EnableAlertQualityOwner,omitempty" xml:"EnableAlertQualityOwner,omitempty"`
+	// The alert channels for on-duty schedules.
+	AlertDutyChannelList []*string `json:"AlertDutyChannelList,omitempty" xml:"AlertDutyChannelList,omitempty" type:"Repeated"`
+	// The list of on-duty schedules for alerts.
+	AlertDutyList []*UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfoAlertDutyList `json:"AlertDutyList,omitempty" xml:"AlertDutyList,omitempty" type:"Repeated"`
+	// The alert channels for the quality owner.
+	AlertQualityOwnerChannelList []*string `json:"AlertQualityOwnerChannelList,omitempty" xml:"AlertQualityOwnerChannelList,omitempty" type:"Repeated"`
+	// The alert channels for users.
+	AlertUserChannelList []*string `json:"AlertUserChannelList,omitempty" xml:"AlertUserChannelList,omitempty" type:"Repeated"`
+	// The list of users to receive alerts.
+	AlertUserList []*UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfoAlertUserList `json:"AlertUserList,omitempty" xml:"AlertUserList,omitempty" type:"Repeated"`
+	// Specifies whether to enable alerts for the quality owner.
+	EnableAlertQualityOwner *bool `json:"EnableAlertQualityOwner,omitempty" xml:"EnableAlertQualityOwner,omitempty"`
 }
 
 func (s UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfo) String() string {
@@ -201,10 +215,14 @@ func (s *UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfo) Validate()
 }
 
 type UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfoAlertDutyList struct {
+	// The ID of the on-duty alert schedule.
+	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the on-duty alert schedule.
+	//
 	// example:
 	//
 	// test
@@ -242,10 +260,14 @@ func (s *UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfoAlertDutyLis
 }
 
 type UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfoAlertUserList struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 30012011
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// test

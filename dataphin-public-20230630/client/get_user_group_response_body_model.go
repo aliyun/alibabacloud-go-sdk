@@ -24,26 +24,37 @@ type iGetUserGroupResponseBody interface {
 }
 
 type GetUserGroupResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
-	Success       *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The user group details.
 	UserGroupInfo *GetUserGroupResponseBodyUserGroupInfo `json:"UserGroupInfo,omitempty" xml:"UserGroupInfo,omitempty" type:"Struct"`
 }
 
@@ -119,24 +130,38 @@ func (s *GetUserGroupResponseBody) Validate() error {
 }
 
 type GetUserGroupResponseBodyUserGroupInfo struct {
+	// Indicates whether the user group is enabled.
+	//
 	// example:
 	//
 	// true
-	Active    *bool                                             `json:"Active,omitempty" xml:"Active,omitempty"`
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The administrators of the user group.
 	AdminList []*GetUserGroupResponseBodyUserGroupInfoAdminList `json:"AdminList,omitempty" xml:"AdminList,omitempty" type:"Repeated"`
+	// The description of the user group.
+	//
 	// example:
 	//
 	// xx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The user group ID.
+	//
 	// example:
 	//
 	// 1313213
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The role of the current user in the user group.
+	//
 	// example:
 	//
 	// xx
 	MyRole *string `json:"MyRole,omitempty" xml:"MyRole,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the user group.
+	//
+	// example:
+	//
+	// xx测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetUserGroupResponseBodyUserGroupInfo) String() string {
@@ -215,11 +240,20 @@ func (s *GetUserGroupResponseBodyUserGroupInfo) Validate() error {
 }
 
 type GetUserGroupResponseBodyUserGroupInfoAdminList struct {
+	// The account name of the user.
+	//
 	// example:
 	//
 	// xx
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// xx测试
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 131313

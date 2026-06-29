@@ -16,8 +16,12 @@ type iDeleteBizMetricShrinkRequest interface {
 }
 
 type DeleteBizMetricShrinkRequest struct {
+	// The delete request.
+	//
 	// This parameter is required.
 	DeleteBizMetricCommandShrink *string `json:"DeleteBizMetricCommand,omitempty" xml:"DeleteBizMetricCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

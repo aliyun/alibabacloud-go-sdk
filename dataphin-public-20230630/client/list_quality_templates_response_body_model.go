@@ -24,18 +24,25 @@ type iListQualityTemplatesResponseBody interface {
 }
 
 type ListQualityTemplatesResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
-	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paged query result.
 	PageResult *ListQualityTemplatesResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type ListQualityTemplatesResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListQualityTemplatesResponseBody) String() string {
@@ -118,7 +126,10 @@ func (s *ListQualityTemplatesResponseBody) Validate() error {
 }
 
 type ListQualityTemplatesResponseBodyPageResult struct {
+	// The list of quality templates.
 	QualityTemplateList []*ListQualityTemplatesResponseBodyPageResultQualityTemplateList `json:"QualityTemplateList,omitempty" xml:"QualityTemplateList,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 68
@@ -165,66 +176,178 @@ func (s *ListQualityTemplatesResponseBodyPageResult) Validate() error {
 }
 
 type ListQualityTemplatesResponseBodyPageResultQualityTemplateList struct {
+	// The template category. Valid values:
+	//
+	// - CONSISTENT: consistency
+	//
+	// - EFFECTIVE: validity
+	//
+	// - TIMELINESE: timeliness
+	//
+	// - ACCURATE: accuracy
+	//
+	// - UNIQUENESS: uniqueness
+	//
+	// - COMPLETENESS: completeness
+	//
+	// - STABILITY: stability
+	//
+	// - CUSTOM: custom.
+	//
 	// example:
 	//
 	// CONSISTENT
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
+	// The display name of the template category.
+	//
 	// example:
 	//
 	// 一致性
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The user ID of the creator.
+	//
 	// example:
 	//
 	// 30012011
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The name of the creator.
+	//
 	// example:
 	//
 	// test
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The template description.
+	//
 	// example:
 	//
 	// test
-	Description      *string                                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The rule configuration key-value pairs.
 	FormPropertyList []*ListQualityTemplatesResponseBodyPageResultQualityTemplateListFormPropertyList `json:"FormPropertyList,omitempty" xml:"FormPropertyList,omitempty" type:"Repeated"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 1
-	Id               *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsSystemTemplate *bool  `json:"IsSystemTemplate,omitempty" xml:"IsSystemTemplate,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the template is a system template.
+	IsSystemTemplate *bool `json:"IsSystemTemplate,omitempty" xml:"IsSystemTemplate,omitempty"`
+	// The user ID of the last modifier.
+	//
 	// example:
 	//
 	// 30012011
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// The name of the last modifier.
+	//
 	// example:
 	//
 	// test
 	ModifierName *string `json:"ModifierName,omitempty" xml:"ModifierName,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The user ID of the owner.
+	//
 	// example:
 	//
 	// 30012011
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The name of the owner.
+	//
 	// example:
 	//
 	// test
-	OwnerName                 *string   `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	SupportAllDataSourceType  *bool     `json:"SupportAllDataSourceType,omitempty" xml:"SupportAllDataSourceType,omitempty"`
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// Indicates whether all data source types are supported.
+	SupportAllDataSourceType *bool `json:"SupportAllDataSourceType,omitempty" xml:"SupportAllDataSourceType,omitempty"`
+	// The supported data source types, such as MySQL, Oracle, Microsoft SQL Server, MaxCompute, and Hive.
 	SupportDataSourceTypeList []*string `json:"SupportDataSourceTypeList,omitempty" xml:"SupportDataSourceTypeList,omitempty" type:"Repeated"`
+	// The templatetype. Valid values:
+	//
+	// - FIELD_NULL_VALUE_VALIDATE: field null value check
+	//
+	// - FIELD_EMPTY_STRING_VALIDATE: field empty character string check
+	//
+	// - FIELD_UNIQUE_VALIDATE: field uniqueness check
+	//
+	// - FIELD_GROUP_COUNT_VALIDATE: field unique value count check
+	//
+	// - FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: field duplicate value count check
+	//
+	// - FUNCTION_TIME_COMPARE: time function comparison
+	//
+	// - SINGLE_TABLE_TIME_COMPARE: non-partitioned table time field comparison
+	//
+	// - DOUBLE_TABLE_TIME_COMPARE: two-table time field comparison
+	//
+	// - FIELD_FORMAT_VALIDATE: field format check
+	//
+	// - FIELD_LENGTH_VALIDATE: field length check
+	//
+	// - FIELD_VALUE_RANGE_VALIDATE: field value range check
+	//
+	// - CODE_TABLE_COMPARE: lookup table reference comparison
+	//
+	// - STANDARD_CODE_TABLE_COMPARE: data standard lookup table reference comparison
+	//
+	// - SINGLE_TABLE_FIELD_VALUE_COMPARE: non-partitioned table field value consistency comparison
+	//
+	// - SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: non-partitioned table field statistical value consistency comparison
+	//
+	// - SINGLE_TABLE_FIELD_EXP_COMPARE: non-partitioned table field business logic consistency comparison
+	//
+	// - DOUBLE_TABLE_FIELD_VALUE_COMPARE: two-table field value consistency comparison
+	//
+	// - DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: two-table field statistical value consistency comparison
+	//
+	// - CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: cross-source two-table field statistical value consistency comparison
+	//
+	// - DOUBLE_TABLE_FIELD_EXP_COMPARE: two-table field business logic consistency comparison
+	//
+	// - TABLE_STABILITY_VALIDATE: table stability check
+	//
+	// - TABLE_FLUCTUATION_VALIDATE: table fluctuation check
+	//
+	// - FIELD_STABILITY_VALIDATE: field stability check
+	//
+	// - FIELD_FLUCTUATION_VALIDATE: field fluctuation check
+	//
+	// - CUSTOM_STATISTICAL_VALIDATE: custom statistical metric check
+	//
+	// - CUSTOM_DATA_DETAILS_VALIDATE: custom data details check
+	//
+	// - DATASOURCE_AVAILABLE_CHECK: data source connectivity monitoring
+	//
+	// - TABLE_SCHEMA_CHECK: table schema change monitoring
+	//
+	// - REAL_TIME_OFFLINE_COMPARE: real-time and offline comparison
+	//
+	// - REAL_TIME_STATISTICAL_VALIDATE: real-time statistical value monitoring
+	//
+	// - REAL_TIME_MULTI_CHAIN_COMPARE: real-time multi-link comparison.
+	//
 	// example:
 	//
 	// FIELD_NULL_VALUE_VALIDATE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The display name of the templatetype.
+	//
 	// example:
 	//
 	// 字段空值校验
@@ -424,14 +547,20 @@ func (s *ListQualityTemplatesResponseBodyPageResultQualityTemplateList) Validate
 }
 
 type ListQualityTemplatesResponseBodyPageResultQualityTemplateListFormPropertyList struct {
+	// The control type.
+	//
 	// example:
 	//
 	// expression
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	// The property name.
+	//
 	// example:
 	//
 	// col
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The property value.
+	//
 	// example:
 	//
 	// abc

@@ -16,8 +16,12 @@ type iAddTenantMembersRequest interface {
 }
 
 type AddTenantMembersRequest struct {
+	// The request command.
+	//
 	// This parameter is required.
 	AddCommand *AddTenantMembersRequestAddCommand `json:"AddCommand,omitempty" xml:"AddCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,6 +66,8 @@ func (s *AddTenantMembersRequest) Validate() error {
 }
 
 type AddTenantMembersRequestAddCommand struct {
+	// The list of members.
+	//
 	// This parameter is required.
 	UserList []*AddTenantMembersRequestAddCommandUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
@@ -97,10 +103,29 @@ func (s *AddTenantMembersRequestAddCommand) Validate() error {
 }
 
 type AddTenantMembersRequestAddCommandUserList struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 1323241
-	Id       *string   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The list of roles. Valid values:
+	//
+	// - SYSTEM_ADMIN
+	//
+	// - DATASOURCE_MANAGER
+	//
+	// - SECURITY_ADMIN
+	//
+	// - QUALITY_MANAGER
+	//
+	// - EXPORT_ADMIN
+	//
+	// - DATA_STANDARD_MANAGER
+	//
+	// - LABELS_BUSINESS_PLANNER
+	//
+	// - BUSINESS_MEMBER.
 	RoleList []*string `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
 }
 

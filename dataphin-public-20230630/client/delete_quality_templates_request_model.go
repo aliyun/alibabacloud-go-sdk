@@ -16,8 +16,12 @@ type iDeleteQualityTemplatesRequest interface {
 }
 
 type DeleteQualityTemplatesRequest struct {
+	// The delete instruction.
+	//
 	// This parameter is required.
 	DeleteCommand *DeleteQualityTemplatesRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,6 +66,8 @@ func (s *DeleteQualityTemplatesRequest) Validate() error {
 }
 
 type DeleteQualityTemplatesRequestDeleteCommand struct {
+	// The template object IDs.
+	//
 	// This parameter is required.
 	TemplateIdList []*int64 `json:"TemplateIdList,omitempty" xml:"TemplateIdList,omitempty" type:"Repeated"`
 }

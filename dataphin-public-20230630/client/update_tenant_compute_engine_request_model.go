@@ -16,12 +16,16 @@ type iUpdateTenantComputeEngineRequest interface {
 }
 
 type UpdateTenantComputeEngineRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The update command.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateTenantComputeEngineRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,14 +66,20 @@ func (s *UpdateTenantComputeEngineRequest) Validate() error {
 }
 
 type UpdateTenantComputeEngineRequestUpdateCommand struct {
+	// The list of cluster node endpoints.
+	//
 	// This parameter is required.
 	ClusterUrlList []*string `json:"ClusterUrlList,omitempty" xml:"ClusterUrlList,omitempty" type:"Repeated"`
+	// The compute source type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MacCompute
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1.0

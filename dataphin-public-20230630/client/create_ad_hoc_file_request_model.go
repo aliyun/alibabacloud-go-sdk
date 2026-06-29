@@ -16,8 +16,12 @@ type iCreateAdHocFileRequest interface {
 }
 
 type CreateAdHocFileRequest struct {
+	// The request for creating an ad hoc query file.
+	//
 	// This parameter is required.
 	CreateCommand *CreateAdHocFileRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,24 +66,32 @@ func (s *CreateAdHocFileRequest) Validate() error {
 }
 
 type CreateAdHocFileRequestCreateCommand struct {
+	// The file content.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// select 1;
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The directory where the file is located.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /xx1/xx2/
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// The file name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_xx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

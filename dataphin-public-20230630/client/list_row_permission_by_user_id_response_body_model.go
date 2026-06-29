@@ -24,24 +24,34 @@ type iListRowPermissionByUserIdResponseBody interface {
 }
 
 type ListRowPermissionByUserIdResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message    *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paged query result.
 	PageResult *ListRowPermissionByUserIdResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListRowPermissionByUserIdResponseBody) String() string {
@@ -116,7 +126,10 @@ func (s *ListRowPermissionByUserIdResponseBody) Validate() error {
 }
 
 type ListRowPermissionByUserIdResponseBodyPageResult struct {
+	// The query result.
 	Data []*ListRowPermissionByUserIdResponseBodyPageResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 121
@@ -163,24 +176,36 @@ func (s *ListRowPermissionByUserIdResponseBodyPageResult) Validate() error {
 }
 
 type ListRowPermissionByUserIdResponseBodyPageResultData struct {
+	// The creator.
+	//
 	// example:
 	//
 	// 30008888
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2023-03-30T21:37:23Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2025-03-03T10:14Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The modifier.
+	//
 	// example:
 	//
 	// 30008888
-	Modifier *string                                                      `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	Rules    []*ListRowPermissionByUserIdResponseBodyPageResultDataRules  `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	Tables   []*ListRowPermissionByUserIdResponseBodyPageResultDataTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// The rules.
+	Rules []*ListRowPermissionByUserIdResponseBodyPageResultDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The related tables.
+	Tables []*ListRowPermissionByUserIdResponseBodyPageResultDataTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 30000001
@@ -281,24 +306,39 @@ func (s *ListRowPermissionByUserIdResponseBodyPageResultData) Validate() error {
 }
 
 type ListRowPermissionByUserIdResponseBodyPageResultDataRules struct {
+	// The rule expressions.
 	Expressions []*ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the rule is deleted.
+	//
 	// example:
 	//
 	// 0
-	IsDelete *bool   `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
+	IsDelete *bool `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// 业务管控
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The scope type of the rule.
+	//
 	// example:
 	//
 	// SELECT_COLUMN
 	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	// The rule status.
+	//
 	// example:
 	//
 	// 1
-	Status          *int32                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The accounts bound to the rule.
 	UserMappingList []*ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList `json:"UserMappingList,omitempty" xml:"UserMappingList,omitempty" type:"Repeated"`
 }
 
@@ -396,19 +436,27 @@ func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRules) Validate() er
 }
 
 type ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions struct {
+	// The mapping field name.
+	//
 	// example:
 	//
 	// business_id
 	MappingColumnName *string `json:"MappingColumnName,omitempty" xml:"MappingColumnName,omitempty"`
+	// The expression operator.
+	//
 	// example:
 	//
 	// EQUAL
-	Operator      *string       `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The sub-expressions.
 	SubConditions []interface{} `json:"SubConditions,omitempty" xml:"SubConditions,omitempty" type:"Repeated"`
+	// The expression type.
+	//
 	// example:
 	//
 	// EXPRESSION
-	Type   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The expression operation values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -470,11 +518,14 @@ func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions) Va
 }
 
 type ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList struct {
+	// The type of the account bound to the rule.
+	//
 	// example:
 	//
 	// PERSONAL
-	AccountType *string                                                                            `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	Accounts    []*ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingListAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The accounts bound to the rule.
+	Accounts []*ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingListAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
 }
 
 func (s ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList) String() string {
@@ -517,6 +568,8 @@ func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList
 }
 
 type ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingListAccounts struct {
+	// The ID of the account bound to the rule.
+	//
 	// example:
 	//
 	// 30008888
@@ -545,11 +598,20 @@ func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList
 }
 
 type ListRowPermissionByUserIdResponseBodyPageResultDataTables struct {
+	// The table field.
+	//
 	// example:
 	//
 	// business_id
-	ColumnName        *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The mapping field name.
+	//
+	// example:
+	//
+	// 拦截规则
 	MappingColumnName *string `json:"MappingColumnName,omitempty" xml:"MappingColumnName,omitempty"`
+	// The table GUID.
+	//
 	// example:
 	//
 	// odps.300199897.project_name.table_name

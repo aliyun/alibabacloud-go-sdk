@@ -24,26 +24,40 @@ type iCreateNodeSupplementResponseBody interface {
 }
 
 type CreateNodeSupplementResponseBody struct {
+	// Error code. A value of OK indicates a successful request.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code returned by the backend
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// - Standard mode: the FlowId is returned.
+	//
+	// - Bulk mode: the submitted JobId is returned. You can call GetOperationSubmitStatus to query the task submission status. After the submission succeeds, the FlowId is returned.
+	//
 	// example:
 	//
 	// f_2264518792396800000_20210223_2329354897145659392
 	SubmitId *string `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true/false

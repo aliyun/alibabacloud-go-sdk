@@ -16,12 +16,16 @@ type iUpdateDataSourceConfigRequest interface {
 }
 
 type UpdateDataSourceConfigRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The data source configuration item change.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateDataSourceConfigRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,8 +66,12 @@ func (s *UpdateDataSourceConfigRequest) Validate() error {
 }
 
 type UpdateDataSourceConfigRequestUpdateCommand struct {
+	// The connection configuration items.
+	//
 	// This parameter is required.
 	ConfigItemList []*UpdateDataSourceConfigRequestUpdateCommandConfigItemList `json:"ConfigItemList,omitempty" xml:"ConfigItemList,omitempty" type:"Repeated"`
+	// The data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -112,12 +120,16 @@ func (s *UpdateDataSourceConfigRequestUpdateCommand) Validate() error {
 }
 
 type UpdateDataSourceConfigRequestUpdateCommandConfigItemList struct {
+	// The key ID of the configuration item.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The configuration value.
+	//
 	// This parameter is required.
 	//
 	// example:

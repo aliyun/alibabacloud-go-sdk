@@ -16,12 +16,16 @@ type iResetDataServiceAppSecretShrinkRequest interface {
 }
 
 type ResetDataServiceAppSecretShrinkRequest struct {
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Reset Data Service Application Key
+	//
 	// This parameter is required.
 	UpdateCommandShrink *string `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty"`
 }

@@ -16,12 +16,16 @@ type iGetStandardRequest interface {
 }
 
 type GetStandardRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The query command.
+	//
 	// This parameter is required.
 	StandardGetQuery *GetStandardRequestStandardGetQuery `json:"StandardGetQuery,omitempty" xml:"StandardGetQuery,omitempty" type:"Struct"`
 }
@@ -62,18 +66,32 @@ func (s *GetStandardRequest) Validate() error {
 }
 
 type GetStandardRequestStandardGetQuery struct {
+	// Specifies whether to return associated standards and associated lookup tables. Default value: false.
 	NeedRelation *bool `json:"NeedRelation,omitempty" xml:"NeedRelation,omitempty"`
-	Nullable     *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	// Specifies whether to return a null value when the standard does not exist. If set to false, an exception is thrown. Default value: true.
+	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	// The standard ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	StandardId *int64 `json:"StandardId,omitempty" xml:"StandardId,omitempty"`
+	// The stage to which the standard belongs. Valid values:
+	//
+	// - dev: development stage.
+	//
+	// - prod: production stage.
+	//
+	// Default value: prod.
+	//
 	// example:
 	//
 	// dev
 	StandardStage *string `json:"StandardStage,omitempty" xml:"StandardStage,omitempty"`
+	// The version number. If left empty, the latest version is used.
+	//
 	// example:
 	//
 	// 1

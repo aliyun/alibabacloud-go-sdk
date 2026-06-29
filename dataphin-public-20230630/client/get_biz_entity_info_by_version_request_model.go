@@ -20,24 +20,32 @@ type iGetBizEntityInfoByVersionRequest interface {
 }
 
 type GetBizEntityInfoByVersionRequest struct {
+	// The business entity ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 101001201
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The business type. Valid values: BIZ_OBJECT and BIZ_PROCESS.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// BIZ_OBJECT
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,18 +18,34 @@ type iGetQualityWatchByObjectIdRequest interface {
 }
 
 type GetQualityWatchByObjectIdRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The object ID, such as a table ID, datasource ID, or metric ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc
 	WatchObjectId *string `json:"WatchObjectId,omitempty" xml:"WatchObjectId,omitempty"`
+	// The monitored object type. Valid values:
+	//
+	// - TABLE: Dataphin table.
+	//
+	// - DATASOURCE_TABLE: global table.
+	//
+	// - DATASOURCE: datasource.
+	//
+	// - INDEX: metric.
+	//
+	// - REALTIME_LOGICAL_TABLE: real-time meta table.
+	//
 	// This parameter is required.
 	//
 	// example:

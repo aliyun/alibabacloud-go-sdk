@@ -16,8 +16,12 @@ type iDeleteStandardValidMappingRequest interface {
 }
 
 type DeleteStandardValidMappingRequest struct {
+	// The delete instruction.
+	//
 	// This parameter is required.
 	DeleteCommand *DeleteStandardValidMappingRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,8 +66,12 @@ func (s *DeleteStandardValidMappingRequest) Validate() error {
 }
 
 type DeleteStandardValidMappingRequestDeleteCommand struct {
+	// The list of parent GUIDs. A maximum of 1000 GUIDs are supported.
 	BelongGuidList []*string `json:"BelongGuidList,omitempty" xml:"BelongGuidList,omitempty" type:"Repeated"`
-	GuidList       []*string `json:"GuidList,omitempty" xml:"GuidList,omitempty" type:"Repeated"`
+	// The list of GUIDs. A maximum of 1000 GUIDs are supported.
+	GuidList []*string `json:"GuidList,omitempty" xml:"GuidList,omitempty" type:"Repeated"`
+	// The standard ID.
+	//
 	// This parameter is required.
 	//
 	// example:

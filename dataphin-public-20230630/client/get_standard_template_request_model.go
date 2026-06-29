@@ -20,14 +20,20 @@ type iGetStandardTemplateRequest interface {
 }
 
 type GetStandardTemplateRequest struct {
+	// The filter condition.
 	FilterQuery *GetStandardTemplateRequestFilterQuery `json:"FilterQuery,omitempty" xml:"FilterQuery,omitempty" type:"Struct"`
+	// The standard template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 22
-	Id       *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	Nullable *bool  `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Specifies whether to allow a null value to be returned when the template does not exist. If set to false, an exception is thrown. Default value: true.
+	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -90,6 +96,8 @@ func (s *GetStandardTemplateRequest) Validate() error {
 }
 
 type GetStandardTemplateRequestFilterQuery struct {
+	// The version number. If this parameter is left empty or set to -1, the latest version is used.
+	//
 	// example:
 	//
 	// 1

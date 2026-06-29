@@ -24,15 +24,22 @@ type iDeleteSecurityClassifyCatalogResponseBody interface {
 }
 
 type DeleteSecurityClassifyCatalogResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The deletion result details.
 	Data *DeleteSecurityClassifyCatalogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type DeleteSecurityClassifyCatalogResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteSecurityClassifyCatalogResponseBody) String() string {
@@ -118,9 +126,12 @@ func (s *DeleteSecurityClassifyCatalogResponseBody) Validate() error {
 }
 
 type DeleteSecurityClassifyCatalogResponseBodyData struct {
+	// The list of full paths of child catalogs that were also deleted.
 	ChildCatalogFullPathList []*string `json:"ChildCatalogFullPathList,omitempty" xml:"ChildCatalogFullPathList,omitempty" type:"Repeated"`
-	ClassifyIdList           []*int64  `json:"ClassifyIdList,omitempty" xml:"ClassifyIdList,omitempty" type:"Repeated"`
-	Success                  *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The list of classification IDs that were also deleted.
+	ClassifyIdList []*int64 `json:"ClassifyIdList,omitempty" xml:"ClassifyIdList,omitempty" type:"Repeated"`
+	// Indicates whether the deletion was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteSecurityClassifyCatalogResponseBodyData) String() string {

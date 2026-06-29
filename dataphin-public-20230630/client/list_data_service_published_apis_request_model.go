@@ -18,13 +18,18 @@ type iListDataServicePublishedApisRequest interface {
 }
 
 type ListDataServicePublishedApisRequest struct {
+	// Search conditions.
 	ListQuery *ListDataServicePublishedApisRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Data service project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -78,18 +83,26 @@ func (s *ListDataServicePublishedApisRequest) Validate() error {
 }
 
 type ListDataServicePublishedApisRequestListQuery struct {
+	// API name.
+	//
 	// example:
 	//
 	// test
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// Group ID.
+	//
 	// example:
 	//
 	// 102113
 	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Number of records per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20

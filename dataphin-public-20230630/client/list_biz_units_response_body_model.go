@@ -24,24 +24,34 @@ type iListBizUnitsResponseBody interface {
 }
 
 type ListBizUnitsResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The query result.
 	Data *ListBizUnitsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListBizUnitsResponseBody) String() string {
@@ -116,6 +126,7 @@ func (s *ListBizUnitsResponseBody) Validate() error {
 }
 
 type ListBizUnitsResponseBodyData struct {
+	// The business unit details.
 	BizUnitList []*ListBizUnitsResponseBodyDataBizUnitList `json:"BizUnitList,omitempty" xml:"BizUnitList,omitempty" type:"Repeated"`
 }
 
@@ -150,55 +161,90 @@ func (s *ListBizUnitsResponseBodyData) Validate() error {
 }
 
 type ListBizUnitsResponseBodyDataBizUnitList struct {
+	// The business unit architects.
 	AccountList []*ListBizUnitsResponseBodyDataBizUnitListAccountList `json:"AccountList,omitempty" xml:"AccountList,omitempty" type:"Repeated"`
+	// The description of the business object.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name.
+	//
 	// example:
 	//
 	// 测试
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The environment identifier. Valid values:
+	//
+	// - DEV: development environment.
+	//
+	// - PROD: production environment.
+	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The business unit icon.
+	//
 	// example:
 	//
 	// icon-e-commerce
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// The business unit ID.
+	//
 	// example:
 	//
 	// 101001201
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the user who last modified the business unit.
+	//
 	// example:
 	//
 	// 30010010
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
+	// The name of the user who last modified the business unit.
+	//
 	// example:
 	//
 	// 张三
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
+	// The production mode. Valid values:
+	//
+	// - BASIC: single-environment mode.
+	//
+	// - DEV_PROD: development/production dual-environment mode.
+	//
 	// example:
 	//
 	// DEV_PROD
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// test01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner of the business object.
+	//
 	// example:
 	//
 	// 张三
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The owner of the business object.
+	//
 	// example:
 	//
 	// 30010010
@@ -353,6 +399,8 @@ func (s *ListBizUnitsResponseBodyDataBizUnitList) Validate() error {
 }
 
 type ListBizUnitsResponseBodyDataBizUnitListAccountList struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 20001201

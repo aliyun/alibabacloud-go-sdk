@@ -18,14 +18,20 @@ type iGetPipelineAsyncResultShrinkRequest interface {
 }
 
 type GetPipelineAsyncResultShrinkRequest struct {
+	// The asynchronous execution ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	AsyncId *int64 `json:"AsyncId,omitempty" xml:"AsyncId,omitempty"`
+	// The request context information.
+	//
 	// This parameter is required.
 	ContextShrink *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

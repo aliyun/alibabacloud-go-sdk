@@ -24,23 +24,34 @@ type iGetComputeSourceResponseBody interface {
 }
 
 type GetComputeSourceResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code              *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The compute source details.
 	ComputeSourceInfo *GetComputeSourceResponseBodyComputeSourceInfo `json:"ComputeSourceInfo,omitempty" xml:"ComputeSourceInfo,omitempty" type:"Struct"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,58 +130,86 @@ func (s *GetComputeSourceResponseBody) Validate() error {
 }
 
 type GetComputeSourceResponseBodyComputeSourceInfo struct {
+	// Indicates whether a project is associated.
+	//
 	// example:
 	//
 	// true
 	BindProject *bool `json:"BindProject,omitempty" xml:"BindProject,omitempty"`
+	// The ID of the associated project.
+	//
 	// example:
 	//
 	// 10101101
 	BindProjectId *int64 `json:"BindProjectId,omitempty" xml:"BindProjectId,omitempty"`
+	// The name of the associated project.
+	//
 	// example:
 	//
 	// dp_mctest
 	BindProjectName *string `json:"BindProjectName,omitempty" xml:"BindProjectName,omitempty"`
+	// The ID of the compute source creator.
+	//
 	// example:
 	//
 	// 101101
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The name of the compute source creator.
+	//
 	// example:
 	//
 	// test
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// compute source for xxx.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name.
+	//
 	// example:
 	//
 	// dp_test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The creation timestamp.
+	//
 	// example:
 	//
 	// 1681881607000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The last modification timestamp.
+	//
 	// example:
 	//
 	// 1711881607000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The compute source ID.
+	//
 	// example:
 	//
 	// 12356
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the compute source.
+	//
 	// example:
 	//
 	// dp_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the compute source owner.
+	//
 	// example:
 	//
 	// 101101
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The name of the compute source owner.
+	//
 	// example:
 	//
 	// test
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The type of the compute source.
+	//
 	// example:
 	//
 	// MAX_COMPUTE

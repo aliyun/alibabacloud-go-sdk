@@ -16,8 +16,12 @@ type iCheckComputeSourceConnectivityRequest interface {
 }
 
 type CheckComputeSourceConnectivityRequest struct {
+	// The check command.
+	//
 	// This parameter is required.
 	CheckCommand *CheckComputeSourceConnectivityRequestCheckCommand `json:"CheckCommand,omitempty" xml:"CheckCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,8 +66,12 @@ func (s *CheckComputeSourceConnectivityRequest) Validate() error {
 }
 
 type CheckComputeSourceConnectivityRequestCheckCommand struct {
+	// The connection configuration items.
+	//
 	// This parameter is required.
 	ConfigList []*CheckComputeSourceConnectivityRequestCheckCommandConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	// The compute source type.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -112,12 +120,16 @@ func (s *CheckComputeSourceConnectivityRequestCheckCommand) Validate() error {
 }
 
 type CheckComputeSourceConnectivityRequestCheckCommandConfigList struct {
+	// The configuration item.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the configuration item.
+	//
 	// This parameter is required.
 	//
 	// example:

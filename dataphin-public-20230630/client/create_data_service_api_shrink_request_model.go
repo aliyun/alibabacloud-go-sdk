@@ -16,8 +16,12 @@ type iCreateDataServiceApiShrinkRequest interface {
 }
 
 type CreateDataServiceApiShrinkRequest struct {
+	// The request for creating an API.
+	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

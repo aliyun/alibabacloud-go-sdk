@@ -16,7 +16,10 @@ type iAddTenantMembersBySourceUserShrinkRequest interface {
 }
 
 type AddTenantMembersBySourceUserShrinkRequest struct {
+	// The add request.
 	AddCommandShrink *string `json:"AddCommand,omitempty" xml:"AddCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

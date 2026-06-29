@@ -16,12 +16,16 @@ type iRemoveUserGroupMemberRequest interface {
 }
 
 type RemoveUserGroupMemberRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The command to remove user group members.
+	//
 	// This parameter is required.
 	RemoveCommand *RemoveUserGroupMemberRequestRemoveCommand `json:"RemoveCommand,omitempty" xml:"RemoveCommand,omitempty" type:"Struct"`
 }
@@ -62,12 +66,16 @@ func (s *RemoveUserGroupMemberRequest) Validate() error {
 }
 
 type RemoveUserGroupMemberRequestRemoveCommand struct {
+	// The user group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2311
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	// The list of user IDs.
+	//
 	// This parameter is required.
 	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
 }

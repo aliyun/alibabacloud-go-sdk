@@ -16,8 +16,12 @@ type iCreateComputeSourceRequest interface {
 }
 
 type CreateComputeSourceRequest struct {
+	// The create command.
+	//
 	// This parameter is required.
 	CreateCommand *CreateComputeSourceRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,18 +66,26 @@ func (s *CreateComputeSourceRequest) Validate() error {
 }
 
 type CreateComputeSourceRequestCreateCommand struct {
+	// The connection configuration items.
+	//
 	// This parameter is required.
 	ConfigList []*CreateComputeSourceRequestCreateCommandConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the compute source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test1011
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the compute source.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -140,12 +152,16 @@ func (s *CreateComputeSourceRequestCreateCommand) Validate() error {
 }
 
 type CreateComputeSourceRequestCreateCommandConfigList struct {
+	// The configuration item.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the configuration item.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,12 +16,16 @@ type iRemoveTenantMemberRequest interface {
 }
 
 type RemoveTenantMemberRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The request command.
+	//
 	// This parameter is required.
 	RemoveCommand *RemoveTenantMemberRequestRemoveCommand `json:"RemoveCommand,omitempty" xml:"RemoveCommand,omitempty" type:"Struct"`
 }
@@ -62,6 +66,8 @@ func (s *RemoveTenantMemberRequest) Validate() error {
 }
 
 type RemoveTenantMemberRequestRemoveCommand struct {
+	// The source ID of the user.
+	//
 	// This parameter is required.
 	//
 	// example:

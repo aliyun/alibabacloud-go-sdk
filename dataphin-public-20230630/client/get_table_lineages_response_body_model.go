@@ -24,14 +24,20 @@ type iGetTableLineagesResponseBody interface {
 }
 
 type GetTableLineagesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// internal error
@@ -41,8 +47,10 @@ type GetTableLineagesResponseBody struct {
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
-	RequestId        *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success          *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The table lineage list.
 	TableLineageList []*GetTableLineagesResponseBodyTableLineageList `json:"TableLineageList,omitempty" xml:"TableLineageList,omitempty" type:"Repeated"`
 }
 
@@ -122,68 +130,102 @@ func (s *GetTableLineagesResponseBody) Validate() error {
 }
 
 type GetTableLineagesResponseBodyTableLineageList struct {
+	// The ID of the business unit to which the input table belongs.
+	//
 	// example:
 	//
 	// 1
 	InputBizUnitId *int64 `json:"InputBizUnitId,omitempty" xml:"InputBizUnitId,omitempty"`
+	// The ID of the data source to which the input table belongs.
+	//
 	// example:
 	//
 	// 1
 	InputDataSourceId *int64 `json:"InputDataSourceId,omitempty" xml:"InputDataSourceId,omitempty"`
+	// The type of the data source to which the input table belongs.
+	//
 	// example:
 	//
 	// MAX_COMPUTE
 	InputDataSourceType *string `json:"InputDataSourceType,omitempty" xml:"InputDataSourceType,omitempty"`
+	// The ID of the project to which the input table belongs.
+	//
 	// example:
 	//
 	// 1233
-	InputProjectId    *int64 `json:"InputProjectId,omitempty" xml:"InputProjectId,omitempty"`
-	InputTableDeleted *bool  `json:"InputTableDeleted,omitempty" xml:"InputTableDeleted,omitempty"`
+	InputProjectId *int64 `json:"InputProjectId,omitempty" xml:"InputProjectId,omitempty"`
+	// Indicates whether the input table has been deleted.
+	InputTableDeleted *bool `json:"InputTableDeleted,omitempty" xml:"InputTableDeleted,omitempty"`
+	// The environment to which the input table belongs. Valid values: dev and prod.
+	//
 	// example:
 	//
 	// dev
 	InputTableEnv *string `json:"InputTableEnv,omitempty" xml:"InputTableEnv,omitempty"`
+	// The GUID of the input table. Each asset has a unique identifier.
+	//
 	// example:
 	//
 	// 123211
 	InputTableGuid *string `json:"InputTableGuid,omitempty" xml:"InputTableGuid,omitempty"`
+	// The name of the input table.
+	//
 	// example:
 	//
 	// t_input
 	InputTableName *string `json:"InputTableName,omitempty" xml:"InputTableName,omitempty"`
+	// The environment to which the task belongs. Valid values: dev and prod.
+	//
 	// example:
 	//
 	// dev
 	NodeEnv *string `json:"NodeEnv,omitempty" xml:"NodeEnv,omitempty"`
+	// The task ID associated with the lineage.
+	//
 	// example:
 	//
 	// 110021
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The ID of the business unit to which the output table belongs.
+	//
 	// example:
 	//
 	// 1
 	OutputBizUnitId *int64 `json:"OutputBizUnitId,omitempty" xml:"OutputBizUnitId,omitempty"`
+	// The ID of the data source to which the output table belongs.
+	//
 	// example:
 	//
 	// 1
 	OutputDataSourceId *int64 `json:"OutputDataSourceId,omitempty" xml:"OutputDataSourceId,omitempty"`
+	// The type of the data source to which the output table belongs.
+	//
 	// example:
 	//
 	// MAX_COMPUTE
 	OutputDataSourceType *string `json:"OutputDataSourceType,omitempty" xml:"OutputDataSourceType,omitempty"`
+	// The ID of the project to which the output table belongs.
+	//
 	// example:
 	//
 	// 1233
-	OutputProjectId    *int64 `json:"OutputProjectId,omitempty" xml:"OutputProjectId,omitempty"`
-	OutputTableDeleted *bool  `json:"OutputTableDeleted,omitempty" xml:"OutputTableDeleted,omitempty"`
+	OutputProjectId *int64 `json:"OutputProjectId,omitempty" xml:"OutputProjectId,omitempty"`
+	// Indicates whether the output table has been deleted.
+	OutputTableDeleted *bool `json:"OutputTableDeleted,omitempty" xml:"OutputTableDeleted,omitempty"`
+	// The environment to which the output table belongs. Valid values: dev and prod.
+	//
 	// example:
 	//
 	// dev
 	OutputTableEnv *string `json:"OutputTableEnv,omitempty" xml:"OutputTableEnv,omitempty"`
+	// The GUID of the output table. Each asset has a unique identifier.
+	//
 	// example:
 	//
 	// 2231
 	OutputTableGuid *string `json:"OutputTableGuid,omitempty" xml:"OutputTableGuid,omitempty"`
+	// The name of the output table.
+	//
 	// example:
 	//
 	// t_output

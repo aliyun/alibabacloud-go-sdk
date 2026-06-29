@@ -16,12 +16,16 @@ type iGetStandardStatisticsRequest interface {
 }
 
 type GetStandardStatisticsRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The statistical query instruction.
+	//
 	// This parameter is required.
 	StatisticsQuery *GetStandardStatisticsRequestStatisticsQuery `json:"StatisticsQuery,omitempty" xml:"StatisticsQuery,omitempty" type:"Struct"`
 }
@@ -62,13 +66,17 @@ func (s *GetStandardStatisticsRequest) Validate() error {
 }
 
 type GetStandardStatisticsRequestStatisticsQuery struct {
+	// The creation time period.
 	CreateTimePeriod *GetStandardStatisticsRequestStatisticsQueryCreateTimePeriod `json:"CreateTimePeriod,omitempty" xml:"CreateTimePeriod,omitempty" type:"Struct"`
+	// The folder to which the standards belong. The search includes all subfolders under this folder.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /dir1
-	Directory         *string   `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// The stages to which the standards belong.
 	StandardStageList []*string `json:"StandardStageList,omitempty" xml:"StandardStageList,omitempty" type:"Repeated"`
 }
 
@@ -117,11 +125,16 @@ func (s *GetStandardStatisticsRequestStatisticsQuery) Validate() error {
 }
 
 type GetStandardStatisticsRequestStatisticsQueryCreateTimePeriod struct {
+	// The end time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	IncludeEndTime *bool   `json:"IncludeEndTime,omitempty" xml:"IncludeEndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Specifies whether to include the end time. Default value: false.
+	IncludeEndTime *bool `json:"IncludeEndTime,omitempty" xml:"IncludeEndTime,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2025-06-01 00:00:00

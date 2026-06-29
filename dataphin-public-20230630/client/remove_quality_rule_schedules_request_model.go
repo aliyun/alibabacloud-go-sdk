@@ -16,12 +16,16 @@ type iRemoveQualityRuleSchedulesRequest interface {
 }
 
 type RemoveQualityRuleSchedulesRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The unbinding instruction.
+	//
 	// This parameter is required.
 	RemoveCommand *RemoveQualityRuleSchedulesRequestRemoveCommand `json:"RemoveCommand,omitempty" xml:"RemoveCommand,omitempty" type:"Struct"`
 }
@@ -62,14 +66,20 @@ func (s *RemoveQualityRuleSchedulesRequest) Validate() error {
 }
 
 type RemoveQualityRuleSchedulesRequestRemoveCommand struct {
+	// The rule ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 11
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The schedule IDs.
+	//
 	// This parameter is required.
 	ScheduleIdList []*int64 `json:"ScheduleIdList,omitempty" xml:"ScheduleIdList,omitempty" type:"Repeated"`
+	// The ID of the monitored object.
+	//
 	// This parameter is required.
 	//
 	// example:

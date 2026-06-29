@@ -16,8 +16,12 @@ type iListUserGroupsShrinkRequest interface {
 }
 
 type ListUserGroupsShrinkRequest struct {
+	// The paged query parameters.
+	//
 	// This parameter is required.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

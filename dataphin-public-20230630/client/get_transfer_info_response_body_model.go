@@ -24,24 +24,34 @@ type iGetTransferInfoResponseBody interface {
 }
 
 type GetTransferInfoResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The query result.
 	Data *GetTransferInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetTransferInfoResponseBody) String() string {
@@ -116,39 +126,64 @@ func (s *GetTransferInfoResponseBody) Validate() error {
 }
 
 type GetTransferInfoResponseBodyData struct {
+	// The creator.
 	Creator *GetTransferInfoResponseBodyDataCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	// The approval flow ID.
+	//
 	// example:
 	//
 	// 1753669315426
 	FlowId *int64 `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1632036495973809
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 1632036495973809
-	GmtModified  *string                                      `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The last modifier.
 	LastModifier *GetTransferInfoResponseBodyDataLastModifier `json:"LastModifier,omitempty" xml:"LastModifier,omitempty" type:"Struct"`
-	NewOwner     *GetTransferInfoResponseBodyDataNewOwner     `json:"NewOwner,omitempty" xml:"NewOwner,omitempty" type:"Struct"`
-	OldOwner     *GetTransferInfoResponseBodyDataOldOwner     `json:"OldOwner,omitempty" xml:"OldOwner,omitempty" type:"Struct"`
+	// The new owner.
+	NewOwner *GetTransferInfoResponseBodyDataNewOwner `json:"NewOwner,omitempty" xml:"NewOwner,omitempty" type:"Struct"`
+	// The previous owner.
+	OldOwner *GetTransferInfoResponseBodyDataOldOwner `json:"OldOwner,omitempty" xml:"OldOwner,omitempty" type:"Struct"`
+	// The transfer mode. Valid values:
+	//
+	// - ONE_STOP: one-click transfer.
+	//
+	// - FUNCTION_MODULE_BASED: transfer by function module.
+	//
 	// example:
 	//
 	// ONE_STOP
-	PrivilegeTransferMode          *string                                                          `json:"PrivilegeTransferMode,omitempty" xml:"PrivilegeTransferMode,omitempty"`
+	PrivilegeTransferMode *string `json:"PrivilegeTransferMode,omitempty" xml:"PrivilegeTransferMode,omitempty"`
+	// The transfer details of function modules.
 	PrivilegeTransferResultEntries []*GetTransferInfoResponseBodyDataPrivilegeTransferResultEntries `json:"PrivilegeTransferResultEntries,omitempty" xml:"PrivilegeTransferResultEntries,omitempty" type:"Repeated"`
+	// The approval ID.
+	//
 	// example:
 	//
 	// 1
 	ProposalId *int64 `json:"ProposalId,omitempty" xml:"ProposalId,omitempty"`
+	// The approval title.
+	//
 	// example:
 	//
 	// transefer title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The transfer description.
+	//
 	// example:
 	//
 	// comment
 	TransferComment *string `json:"TransferComment,omitempty" xml:"TransferComment,omitempty"`
+	// The transfer status.
+	//
 	// example:
 	//
 	// APPROVED
@@ -314,10 +349,14 @@ func (s *GetTransferInfoResponseBodyData) Validate() error {
 }
 
 type GetTransferInfoResponseBodyDataCreator struct {
+	// The username.
+	//
 	// example:
 	//
 	// zhangsan
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 30000001
@@ -355,10 +394,14 @@ func (s *GetTransferInfoResponseBodyDataCreator) Validate() error {
 }
 
 type GetTransferInfoResponseBodyDataLastModifier struct {
+	// The username.
+	//
 	// example:
 	//
 	// zhangsan
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 30000001
@@ -396,10 +439,14 @@ func (s *GetTransferInfoResponseBodyDataLastModifier) Validate() error {
 }
 
 type GetTransferInfoResponseBodyDataNewOwner struct {
+	// The username.
+	//
 	// example:
 	//
 	// zhangsan
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 30000001
@@ -437,10 +484,14 @@ func (s *GetTransferInfoResponseBodyDataNewOwner) Validate() error {
 }
 
 type GetTransferInfoResponseBodyDataOldOwner struct {
+	// The username.
+	//
 	// example:
 	//
 	// zhangsan
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 30000001
@@ -478,14 +529,20 @@ func (s *GetTransferInfoResponseBodyDataOldOwner) Validate() error {
 }
 
 type GetTransferInfoResponseBodyDataPrivilegeTransferResultEntries struct {
+	// The error message.
+	//
 	// example:
 	//
 	// userId is error
 	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	// The name of the transfer module.
+	//
 	// example:
 	//
 	// table owner
 	PrivilegeDisplayName *string `json:"PrivilegeDisplayName,omitempty" xml:"PrivilegeDisplayName,omitempty"`
+	// The status of the transfer module.
+	//
 	// example:
 	//
 	// SUCCESS

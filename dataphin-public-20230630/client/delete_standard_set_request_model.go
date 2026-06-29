@@ -16,12 +16,16 @@ type iDeleteStandardSetRequest interface {
 }
 
 type DeleteStandardSetRequest struct {
+	// The standard set ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

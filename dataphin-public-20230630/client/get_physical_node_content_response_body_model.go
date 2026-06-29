@@ -24,23 +24,34 @@ type iGetPhysicalNodeContentResponseBody interface {
 }
 
 type GetPhysicalNodeContentResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The node information.
 	Data *GetPhysicalNodeContentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,14 +130,23 @@ func (s *GetPhysicalNodeContentResponseBody) Validate() error {
 }
 
 type GetPhysicalNodeContentResponseBodyData struct {
+	// The node code content.
+	//
 	// example:
 	//
 	// select 1;
 	CodeContent *string `json:"CodeContent,omitempty" xml:"CodeContent,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// n_232411
-	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The node name.
+	//
+	// example:
+	//
+	// xx测试
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 }
 

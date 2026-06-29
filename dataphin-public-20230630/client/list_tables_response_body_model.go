@@ -24,18 +24,25 @@ type iListTablesResponseBody interface {
 }
 
 type ListTablesResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
-	Message    *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paged query result.
 	PageResult *ListTablesResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -43,7 +50,8 @@ type ListTablesResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListTablesResponseBody) String() string {
@@ -118,7 +126,10 @@ func (s *ListTablesResponseBody) Validate() error {
 }
 
 type ListTablesResponseBodyPageResult struct {
+	// The list of tables.
 	TableList []*ListTablesResponseBodyPageResultTableList `json:"TableList,omitempty" xml:"TableList,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 68
@@ -165,114 +176,180 @@ func (s *ListTablesResponseBodyPageResult) Validate() error {
 }
 
 type ListTablesResponseBodyPageResultTableList struct {
+	// The asset inventory tags.
 	AssetTagList []*string `json:"AssetTagList,omitempty" xml:"AssetTagList,omitempty" type:"Repeated"`
+	// The ID of the business unit.
+	//
 	// example:
 	//
 	// 2011
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The name of the business unit.
+	//
 	// example:
 	//
 	// LD_test01
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
+	// The comment of the table.
+	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the creator.
+	//
 	// example:
 	//
 	// 30011211
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The ID of the data domain.
+	//
 	// example:
 	//
 	// 211
 	DataDomainId *int64 `json:"DataDomainId,omitempty" xml:"DataDomainId,omitempty"`
+	// The name of the data domain.
+	//
 	// example:
 	//
 	// 211
 	DataDomainName *string `json:"DataDomainName,omitempty" xml:"DataDomainName,omitempty"`
+	// The ID of the data source.
+	//
 	// example:
 	//
 	// 3301
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The display name of the table.
+	//
 	// example:
 	//
 	// 学生
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The environment. Valid values:
+	//
+	// - dev
+	//
+	// - prod.
+	//
 	// example:
 	//
 	// dev
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The file ID. This value is used to navigate to the ODM model.
+	//
 	// example:
 	//
 	// 2
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The GUID of the table.
+	//
 	// example:
 	//
 	// 10011
-	Guid             *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	IsBasicMode      *bool   `json:"IsBasicMode,omitempty" xml:"IsBasicMode,omitempty"`
-	IsPartitionTable *bool   `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
+	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
+	// Indicates whether the project or business version to which the table belongs is in Basic mode.
+	IsBasicMode *bool `json:"IsBasicMode,omitempty" xml:"IsBasicMode,omitempty"`
+	// Indicates whether the table is a partitioned table.
+	IsPartitionTable *bool `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
+	// The time when the table DDL was last modified.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	LastDdlTime *string `json:"LastDdlTime,omitempty" xml:"LastDdlTime,omitempty"`
+	// The time when the table data was last updated.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	LastDmlTime *string `json:"LastDmlTime,omitempty" xml:"LastDmlTime,omitempty"`
+	// The time when the data was last viewed.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	LastQueryTime *string `json:"LastQueryTime,omitempty" xml:"LastQueryTime,omitempty"`
+	// The lifecycle of the table, in days.
+	//
 	// example:
 	//
 	// 30
 	LifeCycle *int64 `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// t_test01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Dataphin user ID of the table owner. This value may be empty if the owner is not bound.
+	//
 	// example:
 	//
 	// 30011211
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The ID of the parent model. This value is used to navigate to the ODM model.
+	//
 	// example:
 	//
 	// 1
 	ParentModelId *string `json:"ParentModelId,omitempty" xml:"ParentModelId,omitempty"`
+	// The ID of the logical project.
+	//
 	// example:
 	//
 	// 1011
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the logical project.
+	//
 	// example:
 	//
 	// testPrj
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The security classification.
+	//
 	// example:
 	//
 	// 1
 	SecurityLevel *int64 `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	// The abbreviation of the security classification name.
+	//
 	// example:
 	//
 	// 高级
 	SecurityLevelAbbreviation *string `json:"SecurityLevelAbbreviation,omitempty" xml:"SecurityLevelAbbreviation,omitempty"`
+	// The name of the security classification.
+	//
 	// example:
 	//
 	// 高级
 	SecurityLevelName *string `json:"SecurityLevelName,omitempty" xml:"SecurityLevelName,omitempty"`
+	// The storage type. Valid values:
+	//
+	// - HIVE
+	//
+	// - MAX_COMPUTE.
+	//
 	// example:
 	//
 	// HIVE
-	StorageType       *string                                                       `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The dynamic properties of the real-time meta table.
 	StreamTableConfig []*ListTablesResponseBodyPageResultTableListStreamTableConfig `json:"StreamTableConfig,omitempty" xml:"StreamTableConfig,omitempty" type:"Repeated"`
+	// The total storage size of the table, in bytes.
+	//
 	// example:
 	//
 	// 10241024
 	TableSizeInBytes *int64 `json:"TableSizeInBytes,omitempty" xml:"TableSizeInBytes,omitempty"`
+	// The number of visits in the last 30 days.
+	//
 	// example:
 	//
 	// 22
@@ -580,10 +657,14 @@ func (s *ListTablesResponseBodyPageResultTableList) Validate() error {
 }
 
 type ListTablesResponseBodyPageResultTableListStreamTableConfig struct {
+	// The configuration item.
+	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// v1

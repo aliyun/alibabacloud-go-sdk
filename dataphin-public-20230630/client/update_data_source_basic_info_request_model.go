@@ -16,12 +16,16 @@ type iUpdateDataSourceBasicInfoRequest interface {
 }
 
 type UpdateDataSourceBasicInfoRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The basic information to edit for the data source.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateDataSourceBasicInfoRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,19 +66,29 @@ func (s *UpdateDataSourceBasicInfoRequest) Validate() error {
 }
 
 type UpdateDataSourceBasicInfoRequestUpdateCommand struct {
+	// The data source description.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23231
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The data source name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

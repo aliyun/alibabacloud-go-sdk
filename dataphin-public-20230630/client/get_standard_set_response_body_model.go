@@ -24,14 +24,20 @@ type iGetStandardSetResponseBody interface {
 }
 
 type GetStandardSetResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -41,9 +47,11 @@ type GetStandardSetResponseBody struct {
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
-	RequestId       *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the standard set.
 	StandardSetInfo *GetStandardSetResponseBodyStandardSetInfo `json:"StandardSetInfo,omitempty" xml:"StandardSetInfo,omitempty" type:"Struct"`
-	Success         *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetStandardSetResponseBody) String() string {
@@ -118,43 +126,66 @@ func (s *GetStandardSetResponseBody) Validate() error {
 }
 
 type GetStandardSetResponseBodyStandardSetInfo struct {
+	// The approval configuration for going online.
 	ApprovalConfig *GetStandardSetResponseBodyStandardSetInfoApprovalConfig `json:"ApprovalConfig,omitempty" xml:"ApprovalConfig,omitempty" type:"Struct"`
+	// The code of the standard set.
+	//
 	// example:
 	//
 	// CITY
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the standard set was created.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
-	CreateTime *string                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Creator    *GetStandardSetResponseBodyStandardSetInfoCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator.
+	Creator *GetStandardSetResponseBodyStandardSetInfoCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	// The default standard template ID.
+	//
 	// example:
 	//
 	// 1001
 	DefaultStandardTemplateId *int64 `json:"DefaultStandardTemplateId,omitempty" xml:"DefaultStandardTemplateId,omitempty"`
+	// The description of the standard set.
+	//
 	// example:
 	//
 	// test
-	Description        *string                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The directory to which the standard set belongs.
 	DirectoryReference *GetStandardSetResponseBodyStandardSetInfoDirectoryReference `json:"DirectoryReference,omitempty" xml:"DirectoryReference,omitempty" type:"Struct"`
+	// The standard set ID.
+	//
 	// example:
 	//
 	// 1234
-	Id              *int64                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
-	LastModifier    *GetStandardSetResponseBodyStandardSetInfoLastModifier      `json:"LastModifier,omitempty" xml:"LastModifier,omitempty" type:"Struct"`
-	MaintainerList  []*GetStandardSetResponseBodyStandardSetInfoMaintainerList  `json:"MaintainerList,omitempty" xml:"MaintainerList,omitempty" type:"Repeated"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The user who last modified the standard set.
+	LastModifier *GetStandardSetResponseBodyStandardSetInfoLastModifier `json:"LastModifier,omitempty" xml:"LastModifier,omitempty" type:"Struct"`
+	// The list of maintainers.
+	MaintainerList []*GetStandardSetResponseBodyStandardSetInfoMaintainerList `json:"MaintainerList,omitempty" xml:"MaintainerList,omitempty" type:"Repeated"`
+	// The list of member groups.
 	MemberGroupList []*GetStandardSetResponseBodyStandardSetInfoMemberGroupList `json:"MemberGroupList,omitempty" xml:"MemberGroupList,omitempty" type:"Repeated"`
-	MemberList      []*GetStandardSetResponseBodyStandardSetInfoMemberList      `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
+	// The list of members.
+	MemberList []*GetStandardSetResponseBodyStandardSetInfoMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
+	// The time when the standard set was last modified.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The name of the standard set.
+	//
 	// example:
 	//
 	// test
-	Name                  *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The approval configuration for going offline.
 	OfflineApprovalConfig *GetStandardSetResponseBodyStandardSetInfoOfflineApprovalConfig `json:"OfflineApprovalConfig,omitempty" xml:"OfflineApprovalConfig,omitempty" type:"Struct"`
-	VisibilityConfig      *GetStandardSetResponseBodyStandardSetInfoVisibilityConfig      `json:"VisibilityConfig,omitempty" xml:"VisibilityConfig,omitempty" type:"Struct"`
+	// The visibility configuration.
+	VisibilityConfig *GetStandardSetResponseBodyStandardSetInfoVisibilityConfig `json:"VisibilityConfig,omitempty" xml:"VisibilityConfig,omitempty" type:"Struct"`
 }
 
 func (s GetStandardSetResponseBodyStandardSetInfo) String() string {
@@ -371,12 +402,22 @@ func (s *GetStandardSetResponseBodyStandardSetInfo) Validate() error {
 }
 
 type GetStandardSetResponseBodyStandardSetInfoApprovalConfig struct {
+	// The approval process type. Valid values:
+	//
+	// - BY_DEFAULT: default approval type.
+	//
+	// - BY_TEMPLATE: approval based on an approval template.
+	//
 	// example:
 	//
 	// BY_DEFAULT
-	ApprovalType    *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
-	EnableApproval  *bool   `json:"EnableApproval,omitempty" xml:"EnableApproval,omitempty"`
-	IsSubmitInBatch *bool   `json:"IsSubmitInBatch,omitempty" xml:"IsSubmitInBatch,omitempty"`
+	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// Indicates whether approval is enabled.
+	EnableApproval *bool `json:"EnableApproval,omitempty" xml:"EnableApproval,omitempty"`
+	// Indicates whether batch approval submission is enabled.
+	IsSubmitInBatch *bool `json:"IsSubmitInBatch,omitempty" xml:"IsSubmitInBatch,omitempty"`
+	// The approval template ID. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
+	//
 	// example:
 	//
 	// 1121
@@ -432,10 +473,14 @@ func (s *GetStandardSetResponseBodyStandardSetInfoApprovalConfig) Validate() err
 }
 
 type GetStandardSetResponseBodyStandardSetInfoCreator struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 300000913
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// susan
@@ -473,6 +518,8 @@ func (s *GetStandardSetResponseBodyStandardSetInfoCreator) Validate() error {
 }
 
 type GetStandardSetResponseBodyStandardSetInfoDirectoryReference struct {
+	// The parent directory.
+	//
 	// example:
 	//
 	// /dir1
@@ -501,10 +548,14 @@ func (s *GetStandardSetResponseBodyStandardSetInfoDirectoryReference) Validate()
 }
 
 type GetStandardSetResponseBodyStandardSetInfoLastModifier struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 300000913
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// susan
@@ -542,10 +593,14 @@ func (s *GetStandardSetResponseBodyStandardSetInfoLastModifier) Validate() error
 }
 
 type GetStandardSetResponseBodyStandardSetInfoMaintainerList struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 300000913
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// susan
@@ -583,10 +638,14 @@ func (s *GetStandardSetResponseBodyStandardSetInfoMaintainerList) Validate() err
 }
 
 type GetStandardSetResponseBodyStandardSetInfoMemberGroupList struct {
+	// The user group ID.
+	//
 	// example:
 	//
 	// 1121
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The user group name.
+	//
 	// example:
 	//
 	// testGroup
@@ -624,10 +683,14 @@ func (s *GetStandardSetResponseBodyStandardSetInfoMemberGroupList) Validate() er
 }
 
 type GetStandardSetResponseBodyStandardSetInfoMemberList struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 300000913
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// susan
@@ -665,12 +728,22 @@ func (s *GetStandardSetResponseBodyStandardSetInfoMemberList) Validate() error {
 }
 
 type GetStandardSetResponseBodyStandardSetInfoOfflineApprovalConfig struct {
+	// The approval process type. Valid values:
+	//
+	// - BY_DEFAULT: default approval type.
+	//
+	// - BY_TEMPLATE: approval based on an approval template.
+	//
 	// example:
 	//
 	// BY_DEFAULT
-	ApprovalType    *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
-	EnableApproval  *bool   `json:"EnableApproval,omitempty" xml:"EnableApproval,omitempty"`
-	IsSubmitInBatch *bool   `json:"IsSubmitInBatch,omitempty" xml:"IsSubmitInBatch,omitempty"`
+	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// Indicates whether approval is enabled.
+	EnableApproval *bool `json:"EnableApproval,omitempty" xml:"EnableApproval,omitempty"`
+	// Indicates whether batch approval submission is enabled.
+	IsSubmitInBatch *bool `json:"IsSubmitInBatch,omitempty" xml:"IsSubmitInBatch,omitempty"`
+	// The approval template ID. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
+	//
 	// example:
 	//
 	// 1121
@@ -726,7 +799,16 @@ func (s *GetStandardSetResponseBodyStandardSetInfoOfflineApprovalConfig) Validat
 }
 
 type GetStandardSetResponseBodyStandardSetInfoVisibilityConfig struct {
+	// The list of specified users who can view the standard set. This parameter takes effect only when the visibility type is set to SPECIFIED.
 	SpecifiedUserList []*GetStandardSetResponseBodyStandardSetInfoVisibilityConfigSpecifiedUserList `json:"SpecifiedUserList,omitempty" xml:"SpecifiedUserList,omitempty" type:"Repeated"`
+	// The visibility type. Valid values:
+	//
+	// - PUBLIC: public.
+	//
+	// - PRIVATE: private. Only standard set members and administrators can view the standard set.
+	//
+	// - SPECIFIED: visible to specified users only.
+	//
 	// example:
 	//
 	// PUBLIC
@@ -773,10 +855,14 @@ func (s *GetStandardSetResponseBodyStandardSetInfoVisibilityConfig) Validate() e
 }
 
 type GetStandardSetResponseBodyStandardSetInfoVisibilityConfigSpecifiedUserList struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 300000913
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// susan

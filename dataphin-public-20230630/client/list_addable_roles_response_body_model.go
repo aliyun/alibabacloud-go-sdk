@@ -24,23 +24,34 @@ type iListAddableRolesResponseBody interface {
 }
 
 type ListAddableRolesResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleList  []*ListAddableRolesResponseBodyRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of roles.
+	RoleList []*ListAddableRolesResponseBodyRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -123,10 +134,17 @@ func (s *ListAddableRolesResponseBody) Validate() error {
 }
 
 type ListAddableRolesResponseBodyRoleList struct {
+	// The role code.
+	//
 	// example:
 	//
 	// SECURITY_ADMIN
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The role name.
+	//
+	// example:
+	//
+	// 安全管理员
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

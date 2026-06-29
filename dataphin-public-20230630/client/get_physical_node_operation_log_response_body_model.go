@@ -24,23 +24,34 @@ type iGetPhysicalNodeOperationLogResponseBody interface {
 }
 
 type GetPhysicalNodeOperationLogResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message          *string                                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The node operation logs.
 	OperationLogList []*GetPhysicalNodeOperationLogResponseBodyOperationLogList `json:"OperationLogList,omitempty" xml:"OperationLogList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -123,22 +134,51 @@ func (s *GetPhysicalNodeOperationLogResponseBody) Validate() error {
 }
 
 type GetPhysicalNodeOperationLogResponseBodyOperationLogList struct {
+	// The log details.
+	//
 	// example:
 	//
 	// xx
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// The operation time.
+	//
 	// example:
 	//
 	// 2024-05-30 16:47:13
 	OperationTime *string `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
+	// The operation type. Valid values:
+	//
+	// - TASK_UPDATE_PRIORITY: updates the node priority.
+	//
+	// - PAUSE_TASK: pauses scheduling.
+	//
+	// - RESUME_TASK: resumes scheduling.
+	//
+	// - CREATE_NODE: creates a node.
+	//
+	// - FORCE_DELETE_NODE: force deletes a node.
+	//
+	// - UPDATE_NODE: updates a node.
+	//
+	// - DELETE_NODE: deletes a node.
+	//
+	// - CHANGE_NODE_OWNER: changes the node owner.
+	//
 	// example:
 	//
 	// PAUSE_TASK
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 132222
-	Operator     *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The operator name.
+	//
+	// example:
+	//
+	// xx测试
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
 }
 

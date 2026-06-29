@@ -16,12 +16,15 @@ type iUpdateUserGroupShrinkRequest interface {
 }
 
 type UpdateUserGroupShrinkRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
-	OpTenantId          *int64  `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The command to edit the user group.
 	UpdateCommandShrink *string `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty"`
 }
 

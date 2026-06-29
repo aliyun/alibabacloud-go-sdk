@@ -16,8 +16,12 @@ type iCreateRowPermissionShrinkRequest interface {
 }
 
 type CreateRowPermissionShrinkRequest struct {
+	// Request command.
+	//
 	// This parameter is required.
 	CreateRowPermissionCommandShrink *string `json:"CreateRowPermissionCommand,omitempty" xml:"CreateRowPermissionCommand,omitempty"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

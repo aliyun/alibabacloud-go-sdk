@@ -16,12 +16,16 @@ type iDeleteDataServiceAppGroupRequest interface {
 }
 
 type DeleteDataServiceAppGroupRequest struct {
+	// The group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 550980364236
 	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,23 +24,34 @@ type iOperateInstanceResponseBody interface {
 }
 
 type OperateInstanceResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode     *int32                                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The O&M results of the instances.
 	InstanceStatusList []*OperateInstanceResponseBodyInstanceStatusList `json:"InstanceStatusList,omitempty" xml:"InstanceStatusList,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -123,21 +134,44 @@ func (s *OperateInstanceResponseBody) Validate() error {
 }
 
 type OperateInstanceResponseBodyInstanceStatusList struct {
+	// The display name of the instance.
+	//
+	// example:
+	//
+	// xx测试
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The error message returned when the operation fails.
+	//
 	// example:
 	//
 	// xx
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// t_132435
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner of the instance.
+	//
 	// example:
 	//
 	// 121311
-	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The owner of the instance.
+	//
+	// example:
+	//
+	// xx测试
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The result of the operation, which indicates success or failure.
+	//
 	// example:
 	//
 	// SUCCESS

@@ -16,8 +16,12 @@ type iGetCatalogAssetDetailsShrinkRequest interface {
 }
 
 type GetCatalogAssetDetailsShrinkRequest struct {
+	// The paging query for the listing asset catalog list.
+	//
 	// This parameter is required.
 	GetCatalogAssetDetailsQueryShrink *string `json:"GetCatalogAssetDetailsQuery,omitempty" xml:"GetCatalogAssetDetailsQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,7 +16,10 @@ type iListQualityTemplatesRequest interface {
 }
 
 type ListQualityTemplatesRequest struct {
+	// The paged query conditions.
 	ListQuery *ListQualityTemplatesRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -61,25 +64,130 @@ func (s *ListQualityTemplatesRequest) Validate() error {
 }
 
 type ListQualityTemplatesRequestListQuery struct {
-	CatalogList      []*string `json:"CatalogList,omitempty" xml:"CatalogList,omitempty" type:"Repeated"`
-	CurrentUserOwned *bool     `json:"CurrentUserOwned,omitempty" xml:"CurrentUserOwned,omitempty"`
+	// The rule type. Valid values:
+	//
+	// - CONSISTENT: consistency
+	//
+	// - EFFECTIVE: validity
+	//
+	// - TIMELINESE: timeliness
+	//
+	// - ACCURATE: accuracy
+	//
+	// - UNIQUENESS: uniqueness
+	//
+	// - COMPLETENESS: completeness
+	//
+	// - STABILITY: stability
+	//
+	// - CUSTOM: custom.
+	CatalogList []*string `json:"CatalogList,omitempty" xml:"CatalogList,omitempty" type:"Repeated"`
+	// Specifies whether to query only templates owned by the current user.
+	CurrentUserOwned *bool `json:"CurrentUserOwned,omitempty" xml:"CurrentUserOwned,omitempty"`
+	// The search keyword. Template name filtering is supported.
+	//
 	// example:
 	//
 	// abc
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of records per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
-	PageSize                  *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The supported data source types, such as MAX_COMPUTE, MYSQL, and HIVE.
 	SupportDataSourceTypeList []*string `json:"SupportDataSourceTypeList,omitempty" xml:"SupportDataSourceTypeList,omitempty" type:"Repeated"`
-	TemplateOwnerList         []*string `json:"TemplateOwnerList,omitempty" xml:"TemplateOwnerList,omitempty" type:"Repeated"`
-	TemplateSourceList        []*string `json:"TemplateSourceList,omitempty" xml:"TemplateSourceList,omitempty" type:"Repeated"`
-	TemplateTypeList          []*string `json:"TemplateTypeList,omitempty" xml:"TemplateTypeList,omitempty" type:"Repeated"`
-	WatchTypeList             []*string `json:"WatchTypeList,omitempty" xml:"WatchTypeList,omitempty" type:"Repeated"`
+	// The template owners.
+	TemplateOwnerList []*string `json:"TemplateOwnerList,omitempty" xml:"TemplateOwnerList,omitempty" type:"Repeated"`
+	// The template source. Valid values:
+	//
+	// - SYSTEM: system template
+	//
+	// - CUSTOM: custom template.
+	TemplateSourceList []*string `json:"TemplateSourceList,omitempty" xml:"TemplateSourceList,omitempty" type:"Repeated"`
+	// The templatetype. Valid values:
+	//
+	// - FIELD_NULL_VALUE_VALIDATE: field null value check
+	//
+	// - FIELD_EMPTY_STRING_VALIDATE: field empty character string check
+	//
+	// - FIELD_UNIQUE_VALIDATE: field uniqueness check
+	//
+	// - FIELD_GROUP_COUNT_VALIDATE: field unique value count check
+	//
+	// - FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: field duplicate value count check
+	//
+	// - FUNCTION_TIME_COMPARE: time function comparison
+	//
+	// - SINGLE_TABLE_TIME_COMPARE: non-partitioned table time field comparison
+	//
+	// - DOUBLE_TABLE_TIME_COMPARE: two-table time field comparison
+	//
+	// - FIELD_FORMAT_VALIDATE: field format check
+	//
+	// - FIELD_LENGTH_VALIDATE: field length check
+	//
+	// - FIELD_VALUE_RANGE_VALIDATE: field value range check
+	//
+	// - CODE_TABLE_COMPARE: lookup table reference comparison
+	//
+	// - STANDARD_CODE_TABLE_COMPARE: data standard lookup table reference comparison
+	//
+	// - SINGLE_TABLE_FIELD_VALUE_COMPARE: non-partitioned table field value consistency comparison
+	//
+	// - SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: non-partitioned table field statistical value consistency comparison
+	//
+	// - SINGLE_TABLE_FIELD_EXP_COMPARE: non-partitioned table field business logic consistency comparison
+	//
+	// - DOUBLE_TABLE_FIELD_VALUE_COMPARE: two-table field value consistency comparison
+	//
+	// - DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: two-table field statistical value consistency comparison
+	//
+	// - CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: cross-source two-table field statistical value consistency comparison
+	//
+	// - DOUBLE_TABLE_FIELD_EXP_COMPARE: two-table field business logic consistency comparison
+	//
+	// - TABLE_STABILITY_VALIDATE: table stability check
+	//
+	// - TABLE_FLUCTUATION_VALIDATE: table fluctuation check
+	//
+	// - FIELD_STABILITY_VALIDATE: field stability check
+	//
+	// - FIELD_FLUCTUATION_VALIDATE: field fluctuation check
+	//
+	// - CUSTOM_STATISTICAL_VALIDATE: custom statistical metric check
+	//
+	// - CUSTOM_DATA_DETAILS_VALIDATE: custom data details check
+	//
+	// - DATASOURCE_AVAILABLE_CHECK: data source connectivity monitoring
+	//
+	// - TABLE_SCHEMA_CHECK: table schema change monitoring
+	//
+	// - REAL_TIME_OFFLINE_COMPARE: real-time and offline comparison
+	//
+	// - REAL_TIME_STATISTICAL_VALIDATE: real-time statistical value monitoring
+	//
+	// - REAL_TIME_MULTI_CHAIN_COMPARE: real-time multi-link comparison.
+	TemplateTypeList []*string `json:"TemplateTypeList,omitempty" xml:"TemplateTypeList,omitempty" type:"Repeated"`
+	// The monitored object type. Valid values:
+	//
+	// - TABLE: Dataphin table
+	//
+	// - DATASOURCE_TABLE: full-domain table
+	//
+	// - DATASOURCE: data source
+	//
+	// - INDEX: metric
+	//
+	// - REALTIME_LOGICAL_TABLE: real-time meta table.
+	WatchTypeList []*string `json:"WatchTypeList,omitempty" xml:"WatchTypeList,omitempty" type:"Repeated"`
 }
 
 func (s ListQualityTemplatesRequestListQuery) String() string {

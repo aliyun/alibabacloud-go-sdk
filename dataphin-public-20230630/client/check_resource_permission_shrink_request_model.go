@@ -16,8 +16,12 @@ type iCheckResourcePermissionShrinkRequest interface {
 }
 
 type CheckResourcePermissionShrinkRequest struct {
+	// Check user resource permission
+	//
 	// This parameter is required.
 	CheckCommandShrink *string `json:"CheckCommand,omitempty" xml:"CheckCommand,omitempty"`
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:

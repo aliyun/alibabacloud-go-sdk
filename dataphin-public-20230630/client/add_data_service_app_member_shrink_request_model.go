@@ -16,8 +16,12 @@ type iAddDataServiceAppMemberShrinkRequest interface {
 }
 
 type AddDataServiceAppMemberShrinkRequest struct {
+	// The regular member to add to the data service application.
+	//
 	// This parameter is required.
 	AddCommandShrink *string `json:"AddCommand,omitempty" xml:"AddCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

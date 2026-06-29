@@ -16,12 +16,16 @@ type iGetTransferInfoRequest interface {
 }
 
 type GetTransferInfoRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The transfer record ID.
+	//
 	// This parameter is required.
 	//
 	// example:

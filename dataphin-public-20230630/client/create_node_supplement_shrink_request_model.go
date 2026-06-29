@@ -18,12 +18,22 @@ type iCreateNodeSupplementShrinkRequest interface {
 }
 
 type CreateNodeSupplementShrinkRequest struct {
+	// Create backfill request
+	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
+	// Environment identifier.
+	//
+	// - DEV: development environment.
+	//
+	// - PROD (default): production environment.
+	//
 	// example:
 	//
-	// DEV/PROD
+	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:

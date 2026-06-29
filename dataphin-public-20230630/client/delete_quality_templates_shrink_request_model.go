@@ -16,8 +16,12 @@ type iDeleteQualityTemplatesShrinkRequest interface {
 }
 
 type DeleteQualityTemplatesShrinkRequest struct {
+	// The delete instruction.
+	//
 	// This parameter is required.
 	DeleteCommandShrink *string `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

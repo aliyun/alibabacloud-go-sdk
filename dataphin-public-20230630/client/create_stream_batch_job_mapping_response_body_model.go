@@ -24,24 +24,34 @@ type iCreateStreamBatchJobMappingResponseBody interface {
 }
 
 type CreateStreamBatchJobMappingResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result returned when the node is created.
 	Data *CreateStreamBatchJobMappingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateStreamBatchJobMappingResponseBody) String() string {
@@ -116,14 +126,20 @@ func (s *CreateStreamBatchJobMappingResponseBody) Validate() error {
 }
 
 type CreateStreamBatchJobMappingResponseBodyData struct {
+	// The job file ID.
+	//
 	// example:
 	//
 	// 7083701105376640
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// JobId
+	//
 	// example:
 	//
 	// 123123
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The redirect relative path.
+	//
 	// example:
 	//
 	// /dev/streamJob/7083701105376640?env=DEV&projectId=7081229106458752&tenantId=300001420

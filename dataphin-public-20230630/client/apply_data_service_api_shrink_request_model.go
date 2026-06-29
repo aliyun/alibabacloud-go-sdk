@@ -18,14 +18,20 @@ type iApplyDataServiceApiShrinkRequest interface {
 }
 
 type ApplyDataServiceApiShrinkRequest struct {
+	// The apply command.
+	//
 	// This parameter is required.
 	ApplyCommandShrink *string `json:"ApplyCommand,omitempty" xml:"ApplyCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The data service project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

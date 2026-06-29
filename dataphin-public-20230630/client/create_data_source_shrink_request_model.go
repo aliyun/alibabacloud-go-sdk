@@ -16,7 +16,10 @@ type iCreateDataSourceShrinkRequest interface {
 }
 
 type CreateDataSourceShrinkRequest struct {
+	// Request object
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:

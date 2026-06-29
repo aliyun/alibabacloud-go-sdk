@@ -16,8 +16,12 @@ type iOnlineBizEntityRequest interface {
 }
 
 type OnlineBizEntityRequest struct {
+	// The online request.
+	//
 	// This parameter is required.
 	OnlineCommand *OnlineBizEntityRequestOnlineCommand `json:"OnlineCommand,omitempty" xml:"OnlineCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,24 +66,36 @@ func (s *OnlineBizEntityRequest) Validate() error {
 }
 
 type OnlineBizEntityRequestOnlineCommand struct {
+	// The ID of the business unit to which the entity belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6798087749072704
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// The remarks for the offline operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the business entity.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 101001201
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The business type. Valid values:
+	//
+	// - BIZ_OBJECT
+	//
+	// - BIZ_PROCESS.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,12 +16,16 @@ type iGetQualityRuleRequest interface {
 }
 
 type GetQualityRuleRequest struct {
+	// The rule ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 11
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

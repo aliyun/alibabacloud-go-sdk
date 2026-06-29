@@ -24,24 +24,34 @@ type iGetAdHocFileResponseBody interface {
 }
 
 type GetAdHocFileResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code     *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the custom query file.
 	FileInfo *GetAdHocFileResponseBodyFileInfo `json:"FileInfo,omitempty" xml:"FileInfo,omitempty" type:"Struct"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAdHocFileResponseBody) String() string {
@@ -116,30 +126,44 @@ func (s *GetAdHocFileResponseBody) Validate() error {
 }
 
 type GetAdHocFileResponseBodyFileInfo struct {
+	// The file content.
+	//
 	// example:
 	//
 	// select 1;
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The creator.
+	//
 	// example:
 	//
 	// 12121
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The directory where the file is located.
+	//
 	// example:
 	//
 	// /xx1/xx2/
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// The file ID.
+	//
 	// example:
 	//
 	// 12121111
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The last modifier.
+	//
 	// example:
 	//
 	// 12121
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 12132323

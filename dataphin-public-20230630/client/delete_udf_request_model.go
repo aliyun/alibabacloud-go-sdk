@@ -20,24 +20,32 @@ type iDeleteUdfRequest interface {
 }
 
 type DeleteUdfRequest struct {
+	// The comment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 测试
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the user-defined function.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10300010201
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,8 +16,12 @@ type iCreateStandardSetRequest interface {
 }
 
 type CreateStandardSetRequest struct {
+	// The create instruction.
+	//
 	// This parameter is required.
 	CreateCommand *CreateStandardSetRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,33 +66,48 @@ func (s *CreateStandardSetRequest) Validate() error {
 }
 
 type CreateStandardSetRequestCreateCommand struct {
+	// The approval configuration for going online.
 	ApprovalConfig *CreateStandardSetRequestCreateCommandApprovalConfig `json:"ApprovalConfig,omitempty" xml:"ApprovalConfig,omitempty" type:"Struct"`
+	// The code of the standard set.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CITY
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the default standard template.
+	//
 	// example:
 	//
 	// 1001
 	DefaultStandardTemplateId *int64 `json:"DefaultStandardTemplateId,omitempty" xml:"DefaultStandardTemplateId,omitempty"`
+	// The description of the standard set.
+	//
 	// example:
 	//
 	// test
-	Description        *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The directory to which the standard set belongs.
 	DirectoryReference *CreateStandardSetRequestCreateCommandDirectoryReference `json:"DirectoryReference,omitempty" xml:"DirectoryReference,omitempty" type:"Struct"`
-	MaintainerList     []*string                                                `json:"MaintainerList,omitempty" xml:"MaintainerList,omitempty" type:"Repeated"`
-	MemberGroupList    []*string                                                `json:"MemberGroupList,omitempty" xml:"MemberGroupList,omitempty" type:"Repeated"`
-	MemberList         []*string                                                `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
+	// The list of maintainers.
+	MaintainerList []*string `json:"MaintainerList,omitempty" xml:"MaintainerList,omitempty" type:"Repeated"`
+	// The list of member groups.
+	MemberGroupList []*string `json:"MemberGroupList,omitempty" xml:"MemberGroupList,omitempty" type:"Repeated"`
+	// The list of members.
+	MemberList []*string `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
+	// The name of the standard set.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
-	Name                  *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The approval configuration for going offline.
 	OfflineApprovalConfig *CreateStandardSetRequestCreateCommandOfflineApprovalConfig `json:"OfflineApprovalConfig,omitempty" xml:"OfflineApprovalConfig,omitempty" type:"Struct"`
-	VisibilityConfig      *CreateStandardSetRequestCreateCommandVisibilityConfig      `json:"VisibilityConfig,omitempty" xml:"VisibilityConfig,omitempty" type:"Struct"`
+	// The visibility configuration.
+	VisibilityConfig *CreateStandardSetRequestCreateCommandVisibilityConfig `json:"VisibilityConfig,omitempty" xml:"VisibilityConfig,omitempty" type:"Struct"`
 }
 
 func (s CreateStandardSetRequestCreateCommand) String() string {
@@ -223,16 +242,28 @@ func (s *CreateStandardSetRequestCreateCommand) Validate() error {
 }
 
 type CreateStandardSetRequestCreateCommandApprovalConfig struct {
+	// The approval process type. Valid values:
+	//
+	// - BY_DEFAULT: the default approval type.
+	//
+	// - BY_TEMPLATE: approval based on an approval template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// BY_DEFAULT
 	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// Specifies whether to enable approval.
+	//
 	// This parameter is required.
 	EnableApproval *bool `json:"EnableApproval,omitempty" xml:"EnableApproval,omitempty"`
+	// Specifies whether to submit approvals in batches.
+	//
 	// This parameter is required.
 	IsSubmitInBatch *bool `json:"IsSubmitInBatch,omitempty" xml:"IsSubmitInBatch,omitempty"`
+	// The ID of the approval template. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
+	//
 	// example:
 	//
 	// 1121
@@ -288,6 +319,8 @@ func (s *CreateStandardSetRequestCreateCommandApprovalConfig) Validate() error {
 }
 
 type CreateStandardSetRequestCreateCommandDirectoryReference struct {
+	// The directory to which the standard set belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -318,16 +351,28 @@ func (s *CreateStandardSetRequestCreateCommandDirectoryReference) Validate() err
 }
 
 type CreateStandardSetRequestCreateCommandOfflineApprovalConfig struct {
+	// The approval process type. Valid values:
+	//
+	// - BY_DEFAULT: the default approval type.
+	//
+	// - BY_TEMPLATE: approval based on an approval template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// BY_DEFAULT
 	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// Specifies whether to enable approval.
+	//
 	// This parameter is required.
 	EnableApproval *bool `json:"EnableApproval,omitempty" xml:"EnableApproval,omitempty"`
+	// Specifies whether to submit approvals in batches.
+	//
 	// This parameter is required.
 	IsSubmitInBatch *bool `json:"IsSubmitInBatch,omitempty" xml:"IsSubmitInBatch,omitempty"`
+	// The ID of the approval template. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
+	//
 	// example:
 	//
 	// 1121
@@ -383,7 +428,16 @@ func (s *CreateStandardSetRequestCreateCommandOfflineApprovalConfig) Validate() 
 }
 
 type CreateStandardSetRequestCreateCommandVisibilityConfig struct {
+	// The list of specified users who can view the standard set. This parameter takes effect only when the visibility type is set to SPECIFIED.
 	SpecifiedUserList []*string `json:"SpecifiedUserList,omitempty" xml:"SpecifiedUserList,omitempty" type:"Repeated"`
+	// The visibility type. Valid values:
+	//
+	// - PUBLIC: visible to all users.
+	//
+	// - PRIVATE: visible only to standard set members and administrators.
+	//
+	// - SPECIFIED: visible only to specified users.
+	//
 	// This parameter is required.
 	//
 	// example:

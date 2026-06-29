@@ -16,8 +16,12 @@ type iCreateBizMetricShrinkRequest interface {
 }
 
 type CreateBizMetricShrinkRequest struct {
+	// The create request.
+	//
 	// This parameter is required.
 	CreateBizMetricCommandShrink *string `json:"CreateBizMetricCommand,omitempty" xml:"CreateBizMetricCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

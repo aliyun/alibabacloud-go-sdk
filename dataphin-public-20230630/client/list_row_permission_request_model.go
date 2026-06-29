@@ -16,12 +16,16 @@ type iListRowPermissionRequest interface {
 }
 
 type ListRowPermissionRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The request command.
+	//
 	// This parameter is required.
 	PageRowPermissionQuery *ListRowPermissionRequestPageRowPermissionQuery `json:"PageRowPermissionQuery,omitempty" xml:"PageRowPermissionQuery,omitempty" type:"Struct"`
 }
@@ -62,13 +66,22 @@ func (s *ListRowPermissionRequest) Validate() error {
 }
 
 type ListRowPermissionRequestPageRowPermissionQuery struct {
+	// The search keyword.
+	//
+	// example:
+	//
+	// 业务
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:

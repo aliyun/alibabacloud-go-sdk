@@ -16,8 +16,12 @@ type iListPublishRecordsRequest interface {
 }
 
 type ListPublishRecordsRequest struct {
+	// Query command.
+	//
 	// This parameter is required.
 	ListQuery *ListPublishRecordsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,10 +66,14 @@ func (s *ListPublishRecordsRequest) Validate() error {
 }
 
 type ListPublishRecordsRequestListQuery struct {
+	// Search keyword.
+	//
 	// example:
 	//
 	// abc
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Publish record filter.
+	//
 	// This parameter is required.
 	SearchFilter *ListPublishRecordsRequestListQuerySearchFilter `json:"SearchFilter,omitempty" xml:"SearchFilter,omitempty" type:"Struct"`
 }
@@ -106,31 +114,44 @@ func (s *ListPublishRecordsRequestListQuery) Validate() error {
 }
 
 type ListPublishRecordsRequestListQuerySearchFilter struct {
+	// List of change types (0: Create, 1: Update, 2: Delete).
 	ChangeTypeList []*int32 `json:"ChangeTypeList,omitempty" xml:"ChangeTypeList,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// Page size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// List of project IDs.
+	//
 	// This parameter is required.
 	ProjectIdList []*int64 `json:"ProjectIdList,omitempty" xml:"ProjectIdList,omitempty" type:"Repeated"`
+	// Publish end time in the yyyy-MM-dd HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	PublishEndTime *string `json:"PublishEndTime,omitempty" xml:"PublishEndTime,omitempty"`
+	// Publish start time in the yyyy-MM-dd HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
-	PublishStartTime  *string   `json:"PublishStartTime,omitempty" xml:"PublishStartTime,omitempty"`
-	PublishStatusList []*int32  `json:"PublishStatusList,omitempty" xml:"PublishStatusList,omitempty" type:"Repeated"`
-	SubmitterList     []*string `json:"SubmitterList,omitempty" xml:"SubmitterList,omitempty" type:"Repeated"`
+	PublishStartTime *string `json:"PublishStartTime,omitempty" xml:"PublishStartTime,omitempty"`
+	// List of publish statuses (0: Failed, 1: Succeeded, 2: Publishing).
+	PublishStatusList []*int32 `json:"PublishStatusList,omitempty" xml:"PublishStatusList,omitempty" type:"Repeated"`
+	// List of submitter IDs.
+	SubmitterList []*string `json:"SubmitterList,omitempty" xml:"SubmitterList,omitempty" type:"Repeated"`
 }
 
 func (s ListPublishRecordsRequestListQuerySearchFilter) String() string {

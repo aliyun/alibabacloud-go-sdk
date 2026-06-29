@@ -24,26 +24,37 @@ type iGetPhysicalInstanceLogResponseBody interface {
 }
 
 type GetPhysicalInstanceLogResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
-	Success        *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// All execution logs of the instance, including logs from multiple reruns.
 	TaskrunLogList []*GetPhysicalInstanceLogResponseBodyTaskrunLogList `json:"TaskrunLogList,omitempty" xml:"TaskrunLogList,omitempty" type:"Repeated"`
 }
 
@@ -123,26 +134,38 @@ func (s *GetPhysicalInstanceLogResponseBody) Validate() error {
 }
 
 type GetPhysicalInstanceLogResponseBodyTaskrunLogList struct {
+	// The execution duration of the task. Unit: seconds.
+	//
 	// example:
 	//
 	// 60s
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The time when the task finished running.
+	//
 	// example:
 	//
 	// 2024-05-30 16:48:13
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The execution log content. This value is empty if the task has not been run.
+	//
 	// example:
 	//
 	// xx
 	LogContent *string `json:"LogContent,omitempty" xml:"LogContent,omitempty"`
+	// The time when the task started running.
+	//
 	// example:
 	//
 	// 2024-05-30 16:47:13
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The execution status.
+	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID for each run.
+	//
 	// example:
 	//
 	// tr_23231

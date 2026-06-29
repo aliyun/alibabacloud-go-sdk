@@ -24,23 +24,34 @@ type iGetMyRolesResponseBody interface {
 }
 
 type GetMyRolesResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleList  []*GetMyRolesResponseBodyRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of roles.
+	RoleList []*GetMyRolesResponseBodyRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -123,11 +134,20 @@ func (s *GetMyRolesResponseBody) Validate() error {
 }
 
 type GetMyRolesResponseBodyRoleList struct {
+	// The role description.
+	//
+	// example:
+	//
+	// dataphin管理员
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The role ID.
+	//
 	// example:
 	//
 	// 300047957
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The role name.
+	//
 	// example:
 	//
 	// dataphinAdmin

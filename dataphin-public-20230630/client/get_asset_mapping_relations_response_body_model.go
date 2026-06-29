@@ -24,15 +24,22 @@ type iGetAssetMappingRelationsResponseBody interface {
 }
 
 type GetAssetMappingRelationsResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode      *int32                                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The list of mapping relationships.
 	MappingRelationList []*GetAssetMappingRelationsResponseBodyMappingRelationList `json:"MappingRelationList,omitempty" xml:"MappingRelationList,omitempty" type:"Repeated"`
+	// The error details from the backend response.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type GetAssetMappingRelationsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAssetMappingRelationsResponseBody) String() string {
@@ -122,46 +130,72 @@ func (s *GetAssetMappingRelationsResponseBody) Validate() error {
 }
 
 type GetAssetMappingRelationsResponseBodyMappingRelationList struct {
+	// The Asset Type. Valid values:
+	//
+	// - COLUMN: field.
+	//
+	// - INDEX: metric.
+	//
 	// example:
 	//
 	// COLUMN
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// The GUID of the asset.
+	//
 	// example:
 	//
 	// 1122
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The name of the asset.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The code of the standard.
+	//
 	// example:
 	//
 	// cc
 	StandardCode *string `json:"StandardCode,omitempty" xml:"StandardCode,omitempty"`
+	// The ID of the standard.
+	//
 	// example:
 	//
 	// 1
 	StandardId *int64 `json:"StandardId,omitempty" xml:"StandardId,omitempty"`
+	// The name of the standard.
+	//
 	// example:
 	//
 	// test
 	StandardName *string `json:"StandardName,omitempty" xml:"StandardName,omitempty"`
+	// The folder in which the standard set resides.
+	//
 	// example:
 	//
 	// /dir1
 	StandardSetDirectory *string `json:"StandardSetDirectory,omitempty" xml:"StandardSetDirectory,omitempty"`
+	// The ID of the standard set.
+	//
 	// example:
 	//
 	// 2
 	StandardSetId *int64 `json:"StandardSetId,omitempty" xml:"StandardSetId,omitempty"`
+	// The name of the standard set.
+	//
 	// example:
 	//
 	// test
 	StandardSetName *string `json:"StandardSetName,omitempty" xml:"StandardSetName,omitempty"`
+	// The stage of the standard.
+	//
 	// example:
 	//
 	// PROD

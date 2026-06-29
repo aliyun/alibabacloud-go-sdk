@@ -24,15 +24,22 @@ type iGetDataServiceAuthorizedAppsByGroupIdResponseBody interface {
 }
 
 type GetDataServiceAuthorizedAppsByGroupIdResponseBody struct {
+	// The list of API groups.
 	AppInfoList []*GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList `json:"AppInfoList,omitempty" xml:"AppInfoList,omitempty" type:"Repeated"`
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type GetDataServiceAuthorizedAppsByGroupIdResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataServiceAuthorizedAppsByGroupIdResponseBody) String() string {
@@ -124,12 +132,16 @@ func (s *GetDataServiceAuthorizedAppsByGroupIdResponseBody) Validate() error {
 type GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList struct {
 	// Deprecated
 	//
-	// AppKey
+	// The application key.
+	//
+	// 	Notice: Deprecated. Use AppKeyStr instead.</notice>.
 	//
 	// example:
 	//
-	// 202212
+	// 12345
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The application key.
+	//
 	// example:
 	//
 	// app12345
@@ -140,6 +152,8 @@ type GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList struct {
 	//
 	// 1021
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The app name.
+	//
 	// example:
 	//
 	// test

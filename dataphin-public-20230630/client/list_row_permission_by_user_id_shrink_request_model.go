@@ -16,8 +16,12 @@ type iListRowPermissionByUserIdShrinkRequest interface {
 }
 
 type ListRowPermissionByUserIdShrinkRequest struct {
+	// The request command.
+	//
 	// This parameter is required.
 	ListRowPermissionByUserIdQueryShrink *string `json:"ListRowPermissionByUserIdQuery,omitempty" xml:"ListRowPermissionByUserIdQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

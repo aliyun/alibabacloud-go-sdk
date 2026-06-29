@@ -20,24 +20,32 @@ type iGetAdHocTaskResultRequest interface {
 }
 
 type GetAdHocTaskResultRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 131211211
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The subtask ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	SubTaskId *int32 `json:"SubTaskId,omitempty" xml:"SubTaskId,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

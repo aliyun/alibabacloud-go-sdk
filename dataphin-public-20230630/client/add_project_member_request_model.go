@@ -18,14 +18,20 @@ type iAddProjectMemberRequest interface {
 }
 
 type AddProjectMemberRequest struct {
+	// The command to add members.
+	//
 	// This parameter is required.
 	AddCommand *AddProjectMemberRequestAddCommand `json:"AddCommand,omitempty" xml:"AddCommand,omitempty" type:"Struct"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 711833
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -79,12 +85,16 @@ func (s *AddProjectMemberRequest) Validate() error {
 }
 
 type AddProjectMemberRequestAddCommand struct {
+	// The environment identifier. Valid values: DEV and PROD.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The list of user members.
+	//
 	// This parameter is required.
 	UserList []*AddProjectMemberRequestAddCommandUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
@@ -129,8 +139,12 @@ func (s *AddProjectMemberRequestAddCommand) Validate() error {
 }
 
 type AddProjectMemberRequestAddCommandUserList struct {
+	// The member role. Valid values: 1: project administrator. 2: developer. 3: visitor. 4: analyst. 5: O&M engineer.
+	//
 	// This parameter is required.
 	RoleList []*int32 `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
+	// The user ID.
+	//
 	// This parameter is required.
 	//
 	// example:

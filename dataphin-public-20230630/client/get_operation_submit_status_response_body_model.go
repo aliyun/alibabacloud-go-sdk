@@ -24,23 +24,34 @@ type iGetOperationSubmitStatusResponseBody interface {
 }
 
 type GetOperationSubmitStatusResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message            *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The submit status of the operation.
 	OperationSubmitJob *GetOperationSubmitStatusResponseBodyOperationSubmitJob `json:"OperationSubmitJob,omitempty" xml:"OperationSubmitJob,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,26 +130,40 @@ func (s *GetOperationSubmitStatusResponseBody) Validate() error {
 }
 
 type GetOperationSubmitStatusResponseBodyOperationSubmitJob struct {
+	// The business ID. If the operation is a data backfill, this value is the data backfill workflow ID.
+	//
 	// example:
 	//
 	// f_122_232342
 	ExternalBizId *string `json:"ExternalBizId,omitempty" xml:"ExternalBizId,omitempty"`
+	// The submit ID of the data backfill request.
+	//
 	// example:
 	//
 	// 123456
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The operation type. Valid values:
+	//
+	// - SUPPLY_DATA: data backfill.
+	//
 	// example:
 	//
 	// SUPPLY_DATA
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// SUCCESS
 	OperationStatus *string `json:"OperationStatus,omitempty" xml:"OperationStatus,omitempty"`
+	// The user ID of the submitter.
+	//
 	// example:
 	//
 	// 132344
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The progress.
+	//
 	// example:
 	//
 	// 80

@@ -16,8 +16,12 @@ type iListCatalogAssetsRequest interface {
 }
 
 type ListCatalogAssetsRequest struct {
+	// The query parameters.
+	//
 	// This parameter is required.
 	ListCatalogAssetsQuery *ListCatalogAssetsRequestListCatalogAssetsQuery `json:"ListCatalogAssetsQuery,omitempty" xml:"ListCatalogAssetsQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,26 +66,52 @@ func (s *ListCatalogAssetsRequest) Validate() error {
 }
 
 type ListCatalogAssetsRequestListCatalogAssetsQuery struct {
+	// The asset type. Default value: TABLE. Valid values:
+	//
+	// - TABLE: table, including views and materialized views.
+	//
+	// - INDEX: technical metric.
+	//
+	// - BIZ_INDEX: business metric.
+	//
+	// - API: API.
+	//
+	// - PAGE: dashboard.
+	//
 	// example:
 	//
 	// TABLE
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// The search keyword. Used when queryMode is set to ASSET_SEARCH. Supports keyword matching against the asset full name, asset name, asset display name, and asset description. If this parameter is not specified, all assets are queried.
+	//
 	// example:
 	//
 	// abc
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The asset name. Used when queryMode is set to EXACT_MATCH. If this parameter is not specified, all assets are queried.
+	//
 	// example:
 	//
 	// abc
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The page size. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query type. Determines whether to use name for exact matching or keyword for fuzzy search. Default value: EXACT_MATCH. Valid values:
+	//
+	// - EXACT_MATCH: exact match.
+	//
+	// - ASSET_SEARCH: fuzzy search.
+	//
 	// example:
 	//
 	// EXACT_MATCH

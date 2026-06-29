@@ -24,15 +24,22 @@ type iListApiByAppResponseBody interface {
 }
 
 type ListApiByAppResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	ListResult     *ListApiByAppResponseBodyListResult `json:"ListResult,omitempty" xml:"ListResult,omitempty" type:"Struct"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The query result.
+	ListResult *ListApiByAppResponseBodyListResult `json:"ListResult,omitempty" xml:"ListResult,omitempty" type:"Struct"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -43,6 +50,8 @@ type ListApiByAppResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,7 +130,10 @@ func (s *ListApiByAppResponseBody) Validate() error {
 }
 
 type ListApiByAppResponseBodyListResult struct {
+	// The API list.
 	Data []*ListApiByAppResponseBodyListResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -168,159 +180,246 @@ func (s *ListApiByAppResponseBodyListResult) Validate() error {
 }
 
 type ListApiByAppResponseBodyListResultData struct {
+	// The API number.
+	//
 	// example:
 	//
 	// 987654321
 	ApiNo *int64 `json:"ApiNo,omitempty" xml:"ApiNo,omitempty"`
+	// The API timeout.
+	//
 	// example:
 	//
 	// 30
 	ApiTimeout *int64 `json:"ApiTimeout,omitempty" xml:"ApiTimeout,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// exampleApp
-	AppName   *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The list of permission types.
 	AuthTypes []*string `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty" type:"Repeated"`
+	// The business module name.
+	//
 	// example:
 	//
 	// exampleModule
 	BizModuleEnName *string `json:"BizModuleEnName,omitempty" xml:"BizModuleEnName,omitempty"`
+	// The API cache switch.
+	//
 	// example:
 	//
 	// 1
 	CacheSwitch *string `json:"CacheSwitch,omitempty" xml:"CacheSwitch,omitempty"`
+	// The cache duration, in seconds.
+	//
 	// example:
 	//
 	// 60
 	CacheTime *string `json:"CacheTime,omitempty" xml:"CacheTime,omitempty"`
+	// The creation type. Valid values:
+	//
+	// SQL_MODE(0, "Logical table API - SQL mode"),
+	//
+	// WIZARD_MODE(1, "Logical table API - wizard mode"),
+	//
+	// DIRECT_API_MODE(2, "Direct datasource - SQL mode"),
+	//
+	// REGISTER_API_MODE(3, "Registered API mode"),
+	//
+	// COMPOSITE_API_MODE(4, "Composite API mode").
+	//
 	// example:
 	//
 	// 1
 	CreateType *int64 `json:"CreateType,omitempty" xml:"CreateType,omitempty"`
+	// The data environment.
+	//
 	// example:
 	//
 	// 0
 	DbEnv *int64 `json:"DbEnv,omitempty" xml:"DbEnv,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// 这是一个示例API
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The datasource ID of the direct API.
+	//
 	// example:
 	//
 	// 54321
 	DirectDatasourceId *int64 `json:"DirectDatasourceId,omitempty" xml:"DirectDatasourceId,omitempty"`
+	// The datasource name of the direct API.
+	//
 	// example:
 	//
 	// directDatasource
 	DirectDatasourceName *string `json:"DirectDatasourceName,omitempty" xml:"DirectDatasourceName,omitempty"`
+	// The API group ID.
+	//
 	// example:
 	//
 	// 67890
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The API group name.
+	//
 	// example:
 	//
 	// exampleGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The API ID.
+	//
 	// example:
 	//
 	// 12345
-	Id             *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsLogicalTable *bool  `json:"IsLogicalTable,omitempty" xml:"IsLogicalTable,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the table is a logical table.
+	IsLogicalTable *bool `json:"IsLogicalTable,omitempty" xml:"IsLogicalTable,omitempty"`
+	// Indicates whether the query is a paged query.
+	//
 	// example:
 	//
 	// 0
 	IsPagedQuery *int64 `json:"IsPagedQuery,omitempty" xml:"IsPagedQuery,omitempty"`
+	// The maximum number of returned records.
+	//
 	// example:
 	//
 	// 100
 	MaxReturnNum *int64 `json:"MaxReturnNum,omitempty" xml:"MaxReturnNum,omitempty"`
+	// The model type.
+	//
 	// example:
 	//
 	// 0
 	ModelType *int64 `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// The API name.
+	//
 	// example:
 	//
 	// exampleApi
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The service project ID.
+	//
 	// example:
 	//
 	// 112233
 	ProjId *int64 `json:"ProjId,omitempty" xml:"ProjId,omitempty"`
+	// The service project name.
+	//
 	// example:
 	//
 	// exampleProject
 	ProjName *string `json:"ProjName,omitempty" xml:"ProjName,omitempty"`
+	// The protocol.
+	//
 	// example:
 	//
 	// 3
 	Protocol *int64 `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The protocol name.
+	//
 	// example:
 	//
 	// HTTP和HTTPS
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 	// -
 	PublicParamList []*ListApiByAppResponseBodyListResultDataPublicParamList `json:"PublicParamList,omitempty" xml:"PublicParamList,omitempty" type:"Repeated"`
-	RegisterApi     *ListApiByAppResponseBodyListResultDataRegisterApi       `json:"RegisterApi,omitempty" xml:"RegisterApi,omitempty" type:"Struct"`
+	// The registered API information.
+	RegisterApi *ListApiByAppResponseBodyListResultDataRegisterApi `json:"RegisterApi,omitempty" xml:"RegisterApi,omitempty" type:"Struct"`
+	// The request method.
+	//
 	// example:
 	//
 	// 1
 	RequestMethod *int64 `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
+	// The request method name.
+	//
 	// example:
 	//
 	// GET
 	RequestMethodName *string `json:"RequestMethodName,omitempty" xml:"RequestMethodName,omitempty"`
 	// -
 	RequestParamList []*ListApiByAppResponseBodyListResultDataRequestParamList `json:"RequestParamList,omitempty" xml:"RequestParamList,omitempty" type:"Repeated"`
+	// The resource group name.
+	//
 	// example:
 	//
 	// exampleResourceGroup
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 	// -
 	ResponseParamList []*ListApiByAppResponseBodyListResultDataResponseParamList `json:"ResponseParamList,omitempty" xml:"ResponseParamList,omitempty" type:"Repeated"`
+	// The sample call result.
+	//
 	// example:
 	//
 	// {"status":"success","data":[]}
 	ResultSample *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
+	// The return type.
+	//
 	// example:
 	//
 	// 3
 	ReturnType *int64 `json:"ReturnType,omitempty" xml:"ReturnType,omitempty"`
+	// The return type name.
+	//
 	// example:
 	//
 	// JSON
 	ReturnTypeName *string `json:"ReturnTypeName,omitempty" xml:"ReturnTypeName,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// grp12345
 	RsGrpId *string `json:"RsGrpId,omitempty" xml:"RsGrpId,omitempty"`
+	// The script type.
+	//
 	// example:
 	//
 	// SQL
 	ScriptType *string `json:"ScriptType,omitempty" xml:"ScriptType,omitempty"`
+	// The special SQL flag.
+	//
 	// example:
 	//
 	// 0
 	SpecialSql *int64 `json:"SpecialSql,omitempty" xml:"SpecialSql,omitempty"`
+	// The SQL statement.
+	//
 	// example:
 	//
 	// SELECT 	- FROM example_table
 	SqlStatement *string `json:"SqlStatement,omitempty" xml:"SqlStatement,omitempty"`
+	// The logical table name.
+	//
 	// example:
 	//
 	// exampleTable
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The timeout duration, in seconds.
+	//
 	// example:
 	//
 	// 10
 	Timeout *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The update frequency.
+	//
 	// example:
 	//
 	// 2
 	UpdateRate *int64 `json:"UpdateRate,omitempty" xml:"UpdateRate,omitempty"`
+	// The update frequency name.
+	//
 	// example:
 	//
 	// 每日更新
 	UpdateRateName *string `json:"UpdateRateName,omitempty" xml:"UpdateRateName,omitempty"`
+	// The API version.
+	//
 	// example:
 	//
 	// v1.0
@@ -759,62 +858,92 @@ func (s *ListApiByAppResponseBodyListResultData) Validate() error {
 }
 
 type ListApiByAppResponseBodyListResultDataPublicParamList struct {
+	// The date format.
+	//
 	// example:
 	//
 	// yyyy-MM-dd
 	DateFormat *string `json:"DateFormat,omitempty" xml:"DateFormat,omitempty"`
+	// The default value for registered APIs.
+	//
 	// example:
 	//
 	// default_public_value
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The parameter description.
+	//
 	// example:
 	//
 	// 这是一个示例公共参数
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The parameter description code.
+	//
 	// example:
 	//
 	// CODE_003
 	DescriptionCode *string `json:"DescriptionCode,omitempty" xml:"DescriptionCode,omitempty"`
+	// The primary key ID.
+	//
 	// example:
 	//
 	// 3001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The initial value.
+	//
 	// example:
 	//
 	// app_key_value
 	InitialValue *string `json:"InitialValue,omitempty" xml:"InitialValue,omitempty"`
+	// The frontend binding field.
+	//
 	// example:
 	//
 	// publicColumn1
 	MappingColumn *string `json:"MappingColumn,omitempty" xml:"MappingColumn,omitempty"`
+	// Indicates whether the request parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Must *int64 `json:"Must,omitempty" xml:"Must,omitempty"`
+	// The operator.
+	//
 	// example:
 	//
 	// =
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Indicates whether the parameter is editable.
+	//
 	// example:
 	//
 	// 1
 	Optional *int64 `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	// The original field name.
+	//
 	// example:
 	//
 	// original_public_column
 	OriginalColumn *string `json:"OriginalColumn,omitempty" xml:"OriginalColumn,omitempty"`
+	// The frontend parameter name.
+	//
 	// example:
 	//
 	// publicParam1
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// The parameter type.
+	//
 	// example:
 	//
 	// String
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The request parameter location for registered APIs or the value path for response parameters.
+	//
 	// example:
 	//
 	// /path/to/public_param
 	ParameterLocation *string `json:"ParameterLocation,omitempty" xml:"ParameterLocation,omitempty"`
+	// The parameter example.
+	//
 	// example:
 	//
 	// publicValue1
@@ -989,22 +1118,32 @@ func (s *ListApiByAppResponseBodyListResultDataPublicParamList) Validate() error
 }
 
 type ListApiByAppResponseBodyListResultDataPublicParamListTableAndDsList struct {
+	// The datasource ID.
+	//
 	// example:
 	//
 	// ds54321
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The datasource name.
+	//
 	// example:
 	//
 	// publicDatasource
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// The datasource type.
+	//
 	// example:
 	//
 	// 3
 	DatasourceType *int64 `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
+	// The datasource URL.
+	//
 	// example:
 	//
 	// https://example.com/public_datasource
 	DatasourceUrl *string `json:"DatasourceUrl,omitempty" xml:"DatasourceUrl,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// public_table
@@ -1069,50 +1208,74 @@ func (s *ListApiByAppResponseBodyListResultDataPublicParamListTableAndDsList) Va
 }
 
 type ListApiByAppResponseBodyListResultDataRegisterApi struct {
+	// The primary key of data_api.
+	//
 	// example:
 	//
 	// 67890
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The API datasource authentication mode.
+	//
 	// example:
 	//
 	// OAuth2
 	AuthenticationMode *string `json:"AuthenticationMode,omitempty" xml:"AuthenticationMode,omitempty"`
+	// The API datasource ID.
+	//
 	// example:
 	//
 	// ds67890
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The API datasource name.
+	//
 	// example:
 	//
 	// registerDatasource
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// The failure example.
+	//
 	// example:
 	//
 	// {"status":"error","message":"Invalid request"}
 	FailExample *string `json:"FailExample,omitempty" xml:"FailExample,omitempty"`
+	// The HTTP method of the registered API.
+	//
 	// example:
 	//
 	// 1
 	HttpMethod *int64 `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
+	// The model type.
+	//
 	// example:
 	//
 	// 0
 	ModelType *int64 `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// The service path.
+	//
 	// example:
 	//
 	// /api/v1/register
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The API datasource request protocol.
+	//
 	// example:
 	//
 	// HTTPS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The success example.
+	//
 	// example:
 	//
 	// {"status":"success","data":[]}
 	SuccessExample *string `json:"SuccessExample,omitempty" xml:"SuccessExample,omitempty"`
+	// The timeout period.
+	//
 	// example:
 	//
 	// 30
 	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The API datasource URL.
+	//
 	// example:
 	//
 	// https://example.com/register_api
@@ -1240,62 +1403,92 @@ func (s *ListApiByAppResponseBodyListResultDataRegisterApi) Validate() error {
 }
 
 type ListApiByAppResponseBodyListResultDataRequestParamList struct {
+	// The date format.
+	//
 	// example:
 	//
 	// yyyy-MM-dd
 	DateFormat *string `json:"DateFormat,omitempty" xml:"DateFormat,omitempty"`
+	// The default value for registered APIs.
+	//
 	// example:
 	//
 	// default_value
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The parameter description.
+	//
 	// example:
 	//
 	// 这是一个示例参数
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The parameter description code.
+	//
 	// example:
 	//
 	// CODE_001
 	DescriptionCode *string `json:"DescriptionCode,omitempty" xml:"DescriptionCode,omitempty"`
+	// The primary key ID.
+	//
 	// example:
 	//
 	// 1001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The initial value.
+	//
 	// example:
 	//
 	// app_key_value
 	InitialValue *string `json:"InitialValue,omitempty" xml:"InitialValue,omitempty"`
+	// The frontend binding field.
+	//
 	// example:
 	//
 	// column1
 	MappingColumn *string `json:"MappingColumn,omitempty" xml:"MappingColumn,omitempty"`
+	// Indicates whether the request parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Must *int64 `json:"Must,omitempty" xml:"Must,omitempty"`
+	// The operator.
+	//
 	// example:
 	//
 	// =
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Indicates whether the parameter is editable.
+	//
 	// example:
 	//
 	// 1
 	Optional *int64 `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	// The original field name.
+	//
 	// example:
 	//
 	// original_column
 	OriginalColumn *string `json:"OriginalColumn,omitempty" xml:"OriginalColumn,omitempty"`
+	// The frontend parameter name.
+	//
 	// example:
 	//
 	// param1
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// The parameter type.
+	//
 	// example:
 	//
 	// String
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The request parameter location for registered APIs or the value path for response parameters.
+	//
 	// example:
 	//
 	// /path/to/param
 	ParameterLocation *string `json:"ParameterLocation,omitempty" xml:"ParameterLocation,omitempty"`
+	// The parameter example.
+	//
 	// example:
 	//
 	// value1
@@ -1470,22 +1663,32 @@ func (s *ListApiByAppResponseBodyListResultDataRequestParamList) Validate() erro
 }
 
 type ListApiByAppResponseBodyListResultDataRequestParamListTableAndDsList struct {
+	// The datasource ID.
+	//
 	// example:
 	//
 	// ds12345
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The datasource name.
+	//
 	// example:
 	//
 	// exampleDatasource
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// The datasource type.
+	//
 	// example:
 	//
 	// 1
 	DatasourceType *int64 `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
+	// The datasource URL.
+	//
 	// example:
 	//
 	// https://example.com/datasource
 	DatasourceUrl *string `json:"DatasourceUrl,omitempty" xml:"DatasourceUrl,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// example_table
@@ -1550,62 +1753,92 @@ func (s *ListApiByAppResponseBodyListResultDataRequestParamListTableAndDsList) V
 }
 
 type ListApiByAppResponseBodyListResultDataResponseParamList struct {
+	// The date format.
+	//
 	// example:
 	//
 	// yyyy-MM-dd
 	DateFormat *string `json:"DateFormat,omitempty" xml:"DateFormat,omitempty"`
+	// The default value for registered APIs.
+	//
 	// example:
 	//
 	// default_response_value
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The parameter description.
+	//
 	// example:
 	//
 	// 这是一个示例响应参数
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The parameter description code.
+	//
 	// example:
 	//
 	// CODE_002
 	DescriptionCode *string `json:"DescriptionCode,omitempty" xml:"DescriptionCode,omitempty"`
+	// The primary key ID.
+	//
 	// example:
 	//
 	// 2001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The initial value.
+	//
 	// example:
 	//
 	// app_key_value
 	InitialValue *string `json:"InitialValue,omitempty" xml:"InitialValue,omitempty"`
+	// The frontend binding field.
+	//
 	// example:
 	//
 	// responseColumn1
 	MappingColumn *string `json:"MappingColumn,omitempty" xml:"MappingColumn,omitempty"`
+	// Indicates whether the request parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Must *int64 `json:"Must,omitempty" xml:"Must,omitempty"`
+	// The operator.
+	//
 	// example:
 	//
 	// =
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Indicates whether the parameter is editable.
+	//
 	// example:
 	//
 	// 1
 	Optional *int64 `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	// The original field name.
+	//
 	// example:
 	//
 	// original_response_column
 	OriginalColumn *string `json:"OriginalColumn,omitempty" xml:"OriginalColumn,omitempty"`
+	// The frontend parameter name.
+	//
 	// example:
 	//
 	// responseParam1
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// The parameter type.
+	//
 	// example:
 	//
 	// String
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The request parameter location for registered APIs or the value path for response parameters.
+	//
 	// example:
 	//
 	// /path/to/response_param
 	ParameterLocation *string `json:"ParameterLocation,omitempty" xml:"ParameterLocation,omitempty"`
+	// The parameter example.
+	//
 	// example:
 	//
 	// responseValue1
@@ -1780,22 +2013,32 @@ func (s *ListApiByAppResponseBodyListResultDataResponseParamList) Validate() err
 }
 
 type ListApiByAppResponseBodyListResultDataResponseParamListTableAndDsList struct {
+	// The datasource ID.
+	//
 	// example:
 	//
 	// ds67890
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The datasource name.
+	//
 	// example:
 	//
 	// responseDatasource
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// The datasource type.
+	//
 	// example:
 	//
 	// 2
 	DatasourceType *int64 `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
+	// The datasource URL.
+	//
 	// example:
 	//
 	// https://example.com/response_datasource
 	DatasourceUrl *string `json:"DatasourceUrl,omitempty" xml:"DatasourceUrl,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// response_table

@@ -24,36 +24,48 @@ type iGetQueueEngineVersionByEnvRequest interface {
 }
 
 type GetQueueEngineVersionByEnvRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 61187014-a3ba-4cdd-8609-1f0aa3df4a3d
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The environment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7081229106458752
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The queue name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default-queue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The stream-batch mode.
+	//
 	// This parameter is required.
 	//
 	// example:

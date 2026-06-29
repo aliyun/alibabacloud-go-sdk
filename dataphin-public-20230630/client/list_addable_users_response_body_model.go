@@ -24,24 +24,34 @@ type iListAddableUsersResponseBody interface {
 }
 
 type ListAddableUsersResponseBody struct {
+	// The error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message    *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paging query result.
 	PageResult *ListAddableUsersResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListAddableUsersResponseBody) String() string {
@@ -116,11 +126,14 @@ func (s *ListAddableUsersResponseBody) Validate() error {
 }
 
 type ListAddableUsersResponseBodyPageResult struct {
+	// The total number of records.
+	//
 	// example:
 	//
 	// 66
-	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	UserList   []*ListAddableUsersResponseBodyPageResultUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of users.
+	UserList []*ListAddableUsersResponseBodyPageResultUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
 
 func (s ListAddableUsersResponseBodyPageResult) String() string {
@@ -163,78 +176,116 @@ func (s *ListAddableUsersResponseBodyPageResult) Validate() error {
 }
 
 type ListAddableUsersResponseBodyPageResultUserList struct {
+	// The account name.
+	//
 	// example:
 	//
 	// 123@xx.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The DingTalk ID.
+	//
 	// example:
 	//
 	// 123@dingding
 	DingNumber *string `json:"DingNumber,omitempty" xml:"DingNumber,omitempty"`
+	// The display name of the user.
+	//
 	// example:
 	//
 	// xx
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The display name of the user without the status.
+	//
 	// example:
 	//
 	// xx
 	DisplayNameWithoutStatus *string `json:"DisplayNameWithoutStatus,omitempty" xml:"DisplayNameWithoutStatus,omitempty"`
+	// Indicates whether the IP whitelist is enabled.
+	//
 	// example:
 	//
 	// true
 	EnableWhiteIp *string `json:"EnableWhiteIp,omitempty" xml:"EnableWhiteIp,omitempty"`
+	// The Lark chatbot.
+	//
 	// example:
 	//
 	// xx
 	FeiShuRobot *string `json:"FeiShuRobot,omitempty" xml:"FeiShuRobot,omitempty"`
+	// The time when the user was created.
+	//
 	// example:
 	//
 	// 1717343597000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the user was last modified.
+	//
 	// example:
 	//
 	// 1717343597000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 123231
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The email address.
+	//
 	// example:
 	//
 	// 123@xx.com
 	Mail *string `json:"Mail,omitempty" xml:"Mail,omitempty"`
+	// The phone number.
+	//
 	// example:
 	//
 	// 13888888888
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// xx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The nickname of the user.
+	//
 	// example:
 	//
 	// xx
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// The ID of the parent Alibaba Cloud account to which the user belongs.
+	//
 	// example:
 	//
 	// 231313
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The real name of the user.
+	//
 	// example:
 	//
 	// xx
 	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
+	// The source ID of the user.
+	//
 	// example:
 	//
 	// 123@xx.com
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The source type of the user.
+	//
 	// example:
 	//
 	// aliyun
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The WeCom chatbot.
+	//
 	// example:
 	//
 	// xx
 	WeChatRobot *string `json:"WeChatRobot,omitempty" xml:"WeChatRobot,omitempty"`
+	// The IP whitelist.
+	//
 	// example:
 	//
 	// *

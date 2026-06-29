@@ -18,18 +18,24 @@ type iGetBizEntityInfoRequest interface {
 }
 
 type GetBizEntityInfoRequest struct {
+	// The business entity ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 101001201
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The business entity type. For more information, refer to the create business entity operation.
+	//
 	// This parameter is required.
 	//
 	// example:

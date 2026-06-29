@@ -9,7 +9,9 @@ import (
 
 // Summary:
 //
-// 新增数据服务应用的普通成员。
+// Adds a regular member to a data service application. Only the application owner can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param tmpReq - AddDataServiceAppMemberRequest
 //
@@ -65,7 +67,7 @@ func (client *Client) AddDataServiceAppMemberWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 添加数据服务项目用户并设置角色。
+// Adds users to a data service project and assigns roles to them.
 //
 // @param tmpReq - AddDataServiceProjectMemberRequest
 //
@@ -125,7 +127,7 @@ func (client *Client) AddDataServiceProjectMemberWithContext(ctx context.Context
 
 // Summary:
 //
-// 增加项目成员。
+// Adds members to a project.
 //
 // @param tmpReq - AddProjectMemberRequest
 //
@@ -185,7 +187,7 @@ func (client *Client) AddProjectMemberWithContext(ctx context.Context, tmpReq *A
 
 // Summary:
 //
-// 新增注册血缘。
+// Registers data lineage. Available since version v5.4.0.
 //
 // @param tmpReq - AddRegisterLineageRequest
 //
@@ -241,7 +243,7 @@ func (client *Client) AddRegisterLineageWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 新增租户成员
+// Adds users to a tenant in batches. Only super administrators (SuperAdmin) and system administrators can invoke this API operation.
 //
 // @param tmpReq - AddTenantMembersRequest
 //
@@ -297,7 +299,7 @@ func (client *Client) AddTenantMembersWithContext(ctx context.Context, tmpReq *A
 
 // Summary:
 //
-// 通过原始用户添加租户成员.
+// Adds tenant members by using original user identities.
 //
 // @param tmpReq - AddTenantMembersBySourceUserRequest
 //
@@ -353,7 +355,7 @@ func (client *Client) AddTenantMembersBySourceUserWithContext(ctx context.Contex
 
 // Summary:
 //
-// 添加用户组成员.
+// Adds members to a user group.
 //
 // @param tmpReq - AddUserGroupMemberRequest
 //
@@ -409,7 +411,7 @@ func (client *Client) AddUserGroupMemberWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 申请API权限。
+// Applies for API permissions.
 //
 // @param tmpReq - ApplyDataServiceApiRequest
 //
@@ -469,7 +471,7 @@ func (client *Client) ApplyDataServiceApiWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 申请应用权限。
+// Applies for application permissions.
 //
 // @param tmpReq - ApplyDataServiceAppRequest
 //
@@ -529,7 +531,9 @@ func (client *Client) ApplyDataServiceAppWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 指定质量规则和调度设置进行绑定。
+// Binds specified quality rules to schedule settings.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - AssignQualityRuleOfAllRuleScopeSchedulesRequest
 //
@@ -585,7 +589,7 @@ func (client *Client) AssignQualityRuleOfAllRuleScopeSchedulesWithContext(ctx co
 
 // Summary:
 //
-// 项目计算源连通性检查。
+// Checks the connectivity of a compute source.
 //
 // @param tmpReq - CheckComputeSourceConnectivityRequest
 //
@@ -641,7 +645,7 @@ func (client *Client) CheckComputeSourceConnectivityWithContext(ctx context.Cont
 
 // Summary:
 //
-// 计算源连通性检查。
+// Checks the connectivity of an existing compute source by compute source ID.
 //
 // @param request - CheckComputeSourceConnectivityByIdRequest
 //
@@ -689,7 +693,7 @@ func (client *Client) CheckComputeSourceConnectivityByIdWithContext(ctx context.
 
 // Summary:
 //
-// 检查数据源连通性
+// Checks the connectivity of a data source.
 //
 // @param tmpReq - CheckDataSourceConnectivityRequest
 //
@@ -745,7 +749,7 @@ func (client *Client) CheckDataSourceConnectivityWithContext(ctx context.Context
 
 // Summary:
 //
-// 检查已创建的数据源是否正常连通
+// Checks the connectivity of a data source.
 //
 // @param request - CheckDataSourceConnectivityByIdRequest
 //
@@ -793,7 +797,7 @@ func (client *Client) CheckDataSourceConnectivityByIdWithContext(ctx context.Con
 
 // Summary:
 //
-// 检查项目是否存在依赖。
+// Checks whether a project has data dependencies such as tasks.
 //
 // @param request - CheckProjectHasDependencyRequest
 //
@@ -841,7 +845,7 @@ func (client *Client) CheckProjectHasDependencyWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 校验用户是否有指定资源权限点.
+// Checks whether a user has the permission on a specified resource.
 //
 // @param tmpReq - CheckResourcePermissionRequest
 //
@@ -897,7 +901,7 @@ func (client *Client) CheckResourcePermissionWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 创建即席查询文件
+// Creates an ad hoc query file.
 //
 // @param tmpReq - CreateAdHocFileRequest
 //
@@ -953,7 +957,7 @@ func (client *Client) CreateAdHocFileWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// 创建离线计算任务。
+// Creates a batch task.
 //
 // @param tmpReq - CreateBatchTaskRequest
 //
@@ -1009,7 +1013,7 @@ func (client *Client) CreateBatchTaskWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// 创建业务实体。
+// Creates a business entity.
 //
 // @param tmpReq - CreateBizEntityRequest
 //
@@ -1065,7 +1069,9 @@ func (client *Client) CreateBizEntityWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// 新建业务指标
+// Creates a business metric.
+//
+// Release version: v5.5.0.
 //
 // @param tmpReq - CreateBizMetricRequest
 //
@@ -1121,7 +1127,7 @@ func (client *Client) CreateBizMetricWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// 创建数据板块。
+// Creates a data domain.
 //
 // @param tmpReq - CreateBizUnitRequest
 //
@@ -1177,7 +1183,7 @@ func (client *Client) CreateBizUnitWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
-// 创建计算源。
+// Creates a compute source. Business unit administrators and project administrators have permissions to perform this operation.
 //
 // @param tmpReq - CreateComputeSourceRequest
 //
@@ -1233,7 +1239,7 @@ func (client *Client) CreateComputeSourceWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 创建主题域。
+// Creates a data domain.
 //
 // @param tmpReq - CreateDataDomainRequest
 //
@@ -1289,7 +1295,7 @@ func (client *Client) CreateDataDomainWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// 创建新的数据服务API并提交。
+// Creates a data service API and submits it.
 //
 // @param tmpReq - CreateDataServiceApiRequest
 //
@@ -1345,7 +1351,9 @@ func (client *Client) CreateDataServiceApiWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 创建数据服务应用。
+// Creates a data service application. Only super administrators or system administrators can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param tmpReq - CreateDataServiceAppRequest
 //
@@ -1401,7 +1409,9 @@ func (client *Client) CreateDataServiceAppWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 创建数据服务应用分组。
+// Creates a data service application group. Only superusers and system administrators can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - CreateDataServiceAppGroupRequest
 //
@@ -1449,7 +1459,7 @@ func (client *Client) CreateDataServiceAppGroupWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 新建数据源
+// Create Data Source: Tenant administrators, data administrators, business unit administrators, project administrators, and operations administrators have permission to perform this operation.
 //
 // @param tmpReq - CreateDataSourceRequest
 //
@@ -1505,7 +1515,7 @@ func (client *Client) CreateDataSourceWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// 创建菜单树文件目录
+// Creates a menu tree directory. This operation supports features such as compute nodes, data integration, and synchronization tasks.
 //
 // @param tmpReq - CreateDirectoryRequest
 //
@@ -1561,7 +1571,11 @@ func (client *Client) CreateDirectoryWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// 通用补数据接口 1.会生成补数据实例运行：影响相关产产出表数据 2.会进行任务运行：造成计算的费用以及存储的费用
+// General-purpose backfill API that supports both list-mode and bulk-mode backfill:
+//
+// 1. Backfill instances will be generated and executed, affecting the data output of related tables.
+//
+// 2. Task execution will incur computing costs and storage costs.
 //
 // @param tmpReq - CreateNodeSupplementRequest
 //
@@ -1621,7 +1635,7 @@ func (client *Client) CreateNodeSupplementWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 创建集成管道任务。
+// Create an integration pipeline/unstructured workflow task.
 //
 // @param tmpReq - CreatePipelineRequest
 //
@@ -1685,7 +1699,7 @@ func (client *Client) CreatePipelineWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// 异步创建集成管道任务。
+// Asynchronously create a pipeline/unstructured workflow.
 //
 // @param tmpReq - CreatePipelineByAsyncRequest
 //
@@ -1749,7 +1763,7 @@ func (client *Client) CreatePipelineByAsyncWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 创建数据集成任务。
+// Creates a data integration task. Note: This operation is deprecated starting from Dataphin v5.3.1. Use CreatePipeline instead.
 //
 // @param tmpReq - CreatePipelineNodeRequest
 //
@@ -1805,7 +1819,7 @@ func (client *Client) CreatePipelineNodeWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 创建资源文件。
+// Creates a resource file.
 //
 // @param tmpReq - CreateResourceRequest
 //
@@ -1861,7 +1875,11 @@ func (client *Client) CreateResourceWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// 创建行级权限
+// Creates a row-level permission.
+//
+// Description:
+//
+// You can query detailed information about published APIs based on the appKey.
 //
 // @param tmpReq - CreateRowPermissionRequest
 //
@@ -1917,7 +1935,7 @@ func (client *Client) CreateRowPermissionWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 新建数据分类。
+// Creates a data classification. Available since v5.4.2.
 //
 // @param tmpReq - CreateSecurityClassifyRequest
 //
@@ -1973,7 +1991,7 @@ func (client *Client) CreateSecurityClassifyWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 新建数据分类目录。
+// Creates a data classification folder. Available since v5.4.2.
 //
 // @param tmpReq - CreateSecurityClassifyCatalogRequest
 //
@@ -2029,7 +2047,9 @@ func (client *Client) CreateSecurityClassifyCatalogWithContext(ctx context.Conte
 
 // Summary:
 //
-// 新建安全识别结果。
+// Creates a security identification result.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - CreateSecurityIdentifyResultRequest
 //
@@ -2085,7 +2105,7 @@ func (client *Client) CreateSecurityIdentifyResultWithContext(ctx context.Contex
 
 // Summary:
 //
-// 新建数据分级。
+// Creates a data classification level. Available since v5.4.2.
 //
 // @param tmpReq - CreateSecurityLevelRequest
 //
@@ -2141,7 +2161,9 @@ func (client *Client) CreateSecurityLevelWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 创建标准。
+// Creates a standard.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardRequest
 //
@@ -2197,7 +2219,9 @@ func (client *Client) CreateStandardWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// 创建数据标准码表。
+// Creates a data standard lookup table.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardLookupTableRequest
 //
@@ -2253,7 +2277,9 @@ func (client *Client) CreateStandardLookupTableWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 创建标准映射关系, 包括有效映射和无效映射。
+// Creates standard mapping relationships, including valid mappings and invalid mappings.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardMappingRequest
 //
@@ -2309,7 +2335,7 @@ func (client *Client) CreateStandardMappingWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 创建标准关联关系。
+// Creates a standard association. Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardRelationsRequest
 //
@@ -2365,7 +2391,9 @@ func (client *Client) CreateStandardRelationsWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 创建标准集。
+// Creates a standard set.
+//
+// Available since: v5.4.2.
 //
 // @param tmpReq - CreateStandardSetRequest
 //
@@ -2421,7 +2449,9 @@ func (client *Client) CreateStandardSetWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 创建数据标准模板。
+// Create a data standard template.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardTemplateRequest
 //
@@ -2477,7 +2507,9 @@ func (client *Client) CreateStandardTemplateWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 创建数据标准词根。
+// Creates a data standard root word.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardWordRootRequest
 //
@@ -2533,7 +2565,7 @@ func (client *Client) CreateStandardWordRootWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 创建流批一体任务
+// Creates a stream-batch integrated node.
 //
 // @param tmpReq - CreateStreamBatchJobMappingRequest
 //
@@ -2589,7 +2621,7 @@ func (client *Client) CreateStreamBatchJobMappingWithContext(ctx context.Context
 
 // Summary:
 //
-// 创建自定义函数。
+// Creates a user-defined function.
 //
 // @param tmpReq - CreateUdfRequest
 //
@@ -2645,7 +2677,7 @@ func (client *Client) CreateUdfWithContext(ctx context.Context, tmpReq *CreateUd
 
 // Summary:
 //
-// 新建用户组.
+// Creates a user group.
 //
 // @param tmpReq - CreateUserGroupRequest
 //
@@ -2701,7 +2733,7 @@ func (client *Client) CreateUserGroupWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// 删除菜单树即席查询文件
+// Deletes an ad hoc query file from the menu tree.
 //
 // @param request - DeleteAdHocFileRequest
 //
@@ -2753,7 +2785,7 @@ func (client *Client) DeleteAdHocFileWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 删除离线计算任务，如果任务还没下线需要先下线再删除。
+// Deletes a batch task. If the node has not been offlined, you must offline it before deleting it.
 //
 // @param tmpReq - DeleteBatchTaskRequest
 //
@@ -2809,7 +2841,7 @@ func (client *Client) DeleteBatchTaskWithContext(ctx context.Context, tmpReq *De
 
 // Summary:
 //
-// 删除业务实体。
+// Deletes a business entity.
 //
 // @param request - DeleteBizEntityRequest
 //
@@ -2865,7 +2897,9 @@ func (client *Client) DeleteBizEntityWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 删除业务指标
+// Deletes a business metric.
+//
+// Release version: v5.5.0.
 //
 // @param tmpReq - DeleteBizMetricRequest
 //
@@ -2921,7 +2955,7 @@ func (client *Client) DeleteBizMetricWithContext(ctx context.Context, tmpReq *De
 
 // Summary:
 //
-// 删除数据板块。
+// Deletes a data domain.
 //
 // @param request - DeleteBizUnitRequest
 //
@@ -2969,7 +3003,7 @@ func (client *Client) DeleteBizUnitWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 删除计算源。
+// Deletes a compute source.
 //
 // @param request - DeleteComputeSourceRequest
 //
@@ -3017,7 +3051,7 @@ func (client *Client) DeleteComputeSourceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除主题域。
+// Deletes a subject domain.
 //
 // @param request - DeleteDataDomainRequest
 //
@@ -3069,7 +3103,9 @@ func (client *Client) DeleteDataDomainWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除数据服务应用。
+// Deletes a data service application. Only superusers, system administrators, or application owners can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - DeleteDataServiceAppRequest
 //
@@ -3117,7 +3153,9 @@ func (client *Client) DeleteDataServiceAppWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除数据服务应用分组。
+// Deletes a data service application group. Only superusers and system administrators can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - DeleteDataServiceAppGroupRequest
 //
@@ -3165,7 +3203,7 @@ func (client *Client) DeleteDataServiceAppGroupWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 删除数据源
+// Deletes a data source.
 //
 // @param tmpReq - DeleteDataSourceRequest
 //
@@ -3221,7 +3259,7 @@ func (client *Client) DeleteDataSourceWithContext(ctx context.Context, tmpReq *D
 
 // Summary:
 //
-// 删除菜单树文件目录
+// Deletes a file directory from the menu tree.
 //
 // @param request - DeleteDirectoryRequest
 //
@@ -3273,7 +3311,9 @@ func (client *Client) DeleteDirectoryWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 批量删除质量规则对象。
+// Deletes quality rule objects in batches.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - DeleteQualityRulesRequest
 //
@@ -3329,7 +3369,9 @@ func (client *Client) DeleteQualityRulesWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 批量删除质量调度对象。
+// Deletes quality scheduling objects in batches.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - DeleteQualitySchedulesRequest
 //
@@ -3385,7 +3427,9 @@ func (client *Client) DeleteQualitySchedulesWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 批量删除质量模板对象。
+// Deletes quality template objects in batches.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - DeleteQualityTemplatesRequest
 //
@@ -3441,7 +3485,9 @@ func (client *Client) DeleteQualityTemplatesWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 批量删除质量监控对象。
+// Deletes monitored objects in batches.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - DeleteQualityWatchesRequest
 //
@@ -3497,7 +3543,7 @@ func (client *Client) DeleteQualityWatchesWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 删除注册血缘。
+// Deletes registered lineage. Available since version v5.4.0.
 //
 // @param tmpReq - DeleteRegisterLineageRequest
 //
@@ -3553,7 +3599,7 @@ func (client *Client) DeleteRegisterLineageWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 删除资源文件。
+// Delete a resource file.
 //
 // @param request - DeleteResourceRequest
 //
@@ -3609,7 +3655,7 @@ func (client *Client) DeleteResourceWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 删除行级权限
+// Deletes a row-level permission.
 //
 // @param tmpReq - DeleteRowPermissionRequest
 //
@@ -3665,7 +3711,7 @@ func (client *Client) DeleteRowPermissionWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 删除数据分类。
+// Deletes a data categorization. Available since v5.4.2.
 //
 // @param tmpReq - DeleteSecurityClassifyRequest
 //
@@ -3721,7 +3767,7 @@ func (client *Client) DeleteSecurityClassifyWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 删除数据分类目录。
+// Deletes a data classification catalog. Release version: v5.4.2.
 //
 // @param tmpReq - DeleteSecurityClassifyCatalogRequest
 //
@@ -3777,7 +3823,7 @@ func (client *Client) DeleteSecurityClassifyCatalogWithContext(ctx context.Conte
 
 // Summary:
 //
-// 批量删除安全识别结果。
+// Deletes security identification results in batches. Release version: v5.4.2.
 //
 // @param tmpReq - DeleteSecurityIdentifyResultsRequest
 //
@@ -3833,7 +3879,7 @@ func (client *Client) DeleteSecurityIdentifyResultsWithContext(ctx context.Conte
 
 // Summary:
 //
-// 删除数据分级。
+// Deletes a data classification level. Available since v5.4.2.
 //
 // @param tmpReq - DeleteSecurityLevelRequest
 //
@@ -3889,7 +3935,9 @@ func (client *Client) DeleteSecurityLevelWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 删除标准。
+// Deletes a standard.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - DeleteStandardRequest
 //
@@ -3945,7 +3993,9 @@ func (client *Client) DeleteStandardWithContext(ctx context.Context, tmpReq *Del
 
 // Summary:
 //
-// 删除无效映射关系。
+// Deletes invalid mapping relationships.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - DeleteStandardInValidMappingRequest
 //
@@ -4001,7 +4051,7 @@ func (client *Client) DeleteStandardInValidMappingWithContext(ctx context.Contex
 
 // Summary:
 //
-// 删除数据标准码表。
+// Deletes a data standard lookup table. Release version: v5.4.2.
 //
 // @param request - DeleteStandardLookupTableRequest
 //
@@ -4049,7 +4099,9 @@ func (client *Client) DeleteStandardLookupTableWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 批量删除标准关联关系。
+// Deletes standard associations in batches.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - DeleteStandardRelationsRequest
 //
@@ -4105,7 +4157,9 @@ func (client *Client) DeleteStandardRelationsWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 删除标准集。
+// Deletes a standard set.
+//
+// Online version: v5.4.2.
 //
 // @param request - DeleteStandardSetRequest
 //
@@ -4153,7 +4207,9 @@ func (client *Client) DeleteStandardSetWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除有效映射关系。
+// Deletes valid mapping relationships.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - DeleteStandardValidMappingRequest
 //
@@ -4209,7 +4265,9 @@ func (client *Client) DeleteStandardValidMappingWithContext(ctx context.Context,
 
 // Summary:
 //
-// 删除数据标准词根。
+// Deletes a data standard root word.
+//
+// Online version: v5.4.2.
 //
 // @param request - DeleteStandardWordRootRequest
 //
@@ -4257,7 +4315,7 @@ func (client *Client) DeleteStandardWordRootWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除自定义函数。
+// Deletes a user-defined function.
 //
 // @param request - DeleteUdfRequest
 //
@@ -4313,7 +4371,7 @@ func (client *Client) DeleteUdfWithContext(ctx context.Context, request *DeleteU
 
 // Summary:
 //
-// 删除用户组.
+// Deletes a user group.
 //
 // @param request - DeleteUserGroupRequest
 //
@@ -4361,7 +4419,7 @@ func (client *Client) DeleteUserGroupWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 执行即席查询任务。
+// Executes an ad hoc query task.
 //
 // @param tmpReq - ExecuteAdHocTaskRequest
 //
@@ -4417,7 +4475,7 @@ func (client *Client) ExecuteAdHocTaskWithContext(ctx context.Context, tmpReq *E
 
 // Summary:
 //
-// 运行手动调度节点。
+// Runs a manually scheduled node.
 //
 // @param tmpReq - ExecuteManualNodeRequest
 //
@@ -4477,7 +4535,7 @@ func (client *Client) ExecuteManualNodeWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 运行触发式节点。
+// Runs a trigger-based node.
 //
 // @param request - ExecuteTriggerNodeRequest
 //
@@ -4541,7 +4599,7 @@ func (client *Client) ExecuteTriggerNodeWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 重跑下游(修复链路数据), 支持强制重跑下游。影响范围: 1. 会产生计算成本；2. 会影响数据产出
+// Reruns downstream nodes to fix data link issues. Supports forced rerun of downstream nodes. Impact: incurs compute costs and affects data output.
 //
 // @param tmpReq - FixDataRequest
 //
@@ -4601,7 +4659,7 @@ func (client *Client) FixDataWithContext(ctx context.Context, tmpReq *FixDataReq
 
 // Summary:
 //
-// 根据行级权限ID获取某一行级权限下的所有授权账号
+// Retrieves all authorized accounts under a specific row-level permission by row-level permission ID.
 //
 // @param tmpReq - GetAccountByRowPermissionIdRequest
 //
@@ -4657,7 +4715,7 @@ func (client *Client) GetAccountByRowPermissionIdWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询即席查询文件。
+// Queries a custom query file in the directory tree.
 //
 // @param request - GetAdHocFileRequest
 //
@@ -4709,7 +4767,7 @@ func (client *Client) GetAdHocFileWithContext(ctx context.Context, request *GetA
 
 // Summary:
 //
-// 获取即席查询任务运行日志。
+// Retrieves the runtime logs of an ad hoc query task.
 //
 // @param request - GetAdHocTaskLogRequest
 //
@@ -4769,7 +4827,7 @@ func (client *Client) GetAdHocTaskLogWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 获取即席查询的任务运行结果。
+// Retrieves the task execution result of an ad hoc query.
 //
 // @param request - GetAdHocTaskResultRequest
 //
@@ -4825,7 +4883,7 @@ func (client *Client) GetAdHocTaskResultWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取告警事件详情
+// Retrieves the details of an alert event.
 //
 // @param request - GetAlertEventRequest
 //
@@ -4873,7 +4931,9 @@ func (client *Client) GetAlertEventWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 根据资产对象GUID查询映射关系。
+// Queries mapping relationships by asset object GUID.
+//
+// Available since: v5.4.2.
 //
 // @param tmpReq - GetAssetMappingRelationsRequest
 //
@@ -4929,7 +4989,7 @@ func (client *Client) GetAssetMappingRelationsWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 获取离线计算任务详情。
+// Retrieves the details of an offline compute node.
 //
 // @param request - GetBatchTaskInfoRequest
 //
@@ -4989,7 +5049,7 @@ func (client *Client) GetBatchTaskInfoWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取离线计算任务指定版本任务详情。
+// Retrieves the details of a specified version of a batch task.
 //
 // @param request - GetBatchTaskInfoByVersionRequest
 //
@@ -5045,7 +5105,7 @@ func (client *Client) GetBatchTaskInfoByVersionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取离线任务自定义血缘。
+// Obtains the custom lineage of an offline task.
 //
 // @param request - GetBatchTaskUdfLineagesRequest
 //
@@ -5097,7 +5157,7 @@ func (client *Client) GetBatchTaskUdfLineagesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取离线计算任务版本列表。
+// Retrieves the version list of a batch task.
 //
 // @param request - GetBatchTaskVersionsRequest
 //
@@ -5149,7 +5209,9 @@ func (client *Client) GetBatchTaskVersionsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 根据归属资产GUID查询映射关系。
+// Query mapping relationships by belonging asset GUID.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - GetBelongAssetMappingRequest
 //
@@ -5205,7 +5267,7 @@ func (client *Client) GetBelongAssetMappingWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 获取业务实体详情。
+// Retrieves the details of a business entity.
 //
 // @param request - GetBizEntityInfoRequest
 //
@@ -5257,7 +5319,7 @@ func (client *Client) GetBizEntityInfoWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询指定版本的业务实体的详情。
+// Queries the details of a business entity of a specified version.
 //
 // @param request - GetBizEntityInfoByVersionRequest
 //
@@ -5313,7 +5375,9 @@ func (client *Client) GetBizEntityInfoByVersionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询业务指标详情
+// Query business metric details by name.
+//
+// Release version: v5.5.0.
 //
 // @param tmpReq - GetBizMetricByNameRequest
 //
@@ -5369,7 +5433,7 @@ func (client *Client) GetBizMetricByNameWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 获取数据板块详情。
+// Retrieves the details of a data domain.
 //
 // @param request - GetBizUnitInfoRequest
 //
@@ -5417,7 +5481,7 @@ func (client *Client) GetBizUnitInfoWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 查询数据目录资产详情。
+// Queries asset details. Release version: v6.1.0.
 //
 // @param tmpReq - GetCatalogAssetDetailsRequest
 //
@@ -5473,7 +5537,13 @@ func (client *Client) GetCatalogAssetDetailsWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 查询数据源连通性检查任务。
+// Queries the list of connectivity check tasks for a specified data source ID. This operation includes null value validation and tenant permission verification to prevent cross-tenant access.
+//
+// Release version: v5.5.0.
+//
+// Description:
+//
+// Queries the details of connectivity tasks that have been tested for a specified data source ID.
 //
 // @param request - GetCheckConnectivityJobsRequest
 //
@@ -5521,7 +5591,7 @@ func (client *Client) GetCheckConnectivityJobsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 根据环境获取集群信息
+// Retrieves cluster information based on the environment.
 //
 // @param request - GetClusterQueueInfoByEnvRequest
 //
@@ -5577,7 +5647,7 @@ func (client *Client) GetClusterQueueInfoByEnvWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取计算源详情。
+// Retrieves the details of a compute source by compute source ID.
 //
 // @param request - GetComputeSourceRequest
 //
@@ -5625,7 +5695,7 @@ func (client *Client) GetComputeSourceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取主题域详情。
+// Retrieves the details of a data domain.
 //
 // @param request - GetDataDomainInfoRequest
 //
@@ -5673,7 +5743,7 @@ func (client *Client) GetDataDomainInfoWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 运维监控Api调用汇总统计。
+// Service Monitoring: Retrieves the aggregate statistics of API calls.
 //
 // @param request - GetDataServiceApiCallSummaryRequest
 //
@@ -5729,7 +5799,7 @@ func (client *Client) GetDataServiceApiCallSummaryWithContext(ctx context.Contex
 
 // Summary:
 //
-// 运维监控Api访问趋势分析。
+// Service Monitoring: Analyzes API access trends.
 //
 // @param request - GetDataServiceApiCallTrendRequest
 //
@@ -5785,7 +5855,7 @@ func (client *Client) GetDataServiceApiCallTrendWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取API文档。
+// Retrieves API documentation.
 //
 // @param request - GetDataServiceApiDocumentRequest
 //
@@ -5837,7 +5907,7 @@ func (client *Client) GetDataServiceApiDocumentWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取API异常影响汇总。
+// Retrieves the summary of API exception impacts.
 //
 // @param request - GetDataServiceApiErrorImpactRequest
 //
@@ -5893,7 +5963,7 @@ func (client *Client) GetDataServiceApiErrorImpactWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询数据服务API分组列表。
+// Queries the list of API groups in Data Service.
 //
 // @param request - GetDataServiceApiGroupsRequest
 //
@@ -5941,7 +6011,9 @@ func (client *Client) GetDataServiceApiGroupsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询数据服务应用详情。
+// Queries the details of a data service application, including the project, application name, authentication information, and IP whitelist. Only application members can view the details.
+//
+// Release version: v6.0.0.
 //
 // @param request - GetDataServiceAppRequest
 //
@@ -5989,7 +6061,7 @@ func (client *Client) GetDataServiceAppWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取应用有权限的用户列表。
+// Retrieves the list of users who have permissions on an application.
 //
 // @param request - GetDataServiceAppAuthorizedUsersRequest
 //
@@ -6041,7 +6113,7 @@ func (client *Client) GetDataServiceAppAuthorizedUsersWithContext(ctx context.Co
 
 // Summary:
 //
-// 查询数据服务项目的应用分组列表。
+// Queries the list of application groups for a data service project.
 //
 // @param request - GetDataServiceAppGroupsRequest
 //
@@ -6089,7 +6161,9 @@ func (client *Client) GetDataServiceAppGroupsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询数据服务应用的成员列表。
+// Queries the member list of a data service application, including regular members and owners. Only application owners can call this operation.
+//
+// Online version: v6.0.0.
 //
 // @param request - GetDataServiceAppMembersRequest
 //
@@ -6137,7 +6211,7 @@ func (client *Client) GetDataServiceAppMembersWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询分组下应用列表。
+// Queries the list of applications in a group.
 //
 // @param request - GetDataServiceAppsByGroupIdRequest
 //
@@ -6189,7 +6263,7 @@ func (client *Client) GetDataServiceAppsByGroupIdWithContext(ctx context.Context
 
 // Summary:
 //
-// 根据App分组Id查询账号有权限的应用列表。
+// Queries the list of applications that the account has permissions to access based on the app group ID.
 //
 // @param request - GetDataServiceAuthorizedAppsByGroupIdRequest
 //
@@ -6241,7 +6315,7 @@ func (client *Client) GetDataServiceAuthorizedAppsByGroupIdWithContext(ctx conte
 
 // Summary:
 //
-// 查询有权限的项目列表。
+// Queries the list of projects that the current user has permissions to access.
 //
 // @param request - GetDataServiceAuthorizedProjectsRequest
 //
@@ -6285,7 +6359,7 @@ func (client *Client) GetDataServiceAuthorizedProjectsWithContext(ctx context.Co
 
 // Summary:
 //
-// 当前登录当前用户作为负责人的项目列表。
+// Retrieves the list of projects for which the current user is the owner.
 //
 // @param request - GetDataServiceMyProjectsRequest
 //
@@ -6329,7 +6403,7 @@ func (client *Client) GetDataServiceMyProjectsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取可添加到项目成员的用户列表。
+// Retrieves the list of users who can be added as project members.
 //
 // @param request - GetDataServiceProjectAddableUsersRequest
 //
@@ -6377,7 +6451,7 @@ func (client *Client) GetDataServiceProjectAddableUsersWithContext(ctx context.C
 
 // Summary:
 //
-// 查询数据源变更影响的集成任务及数据库SQL任务。
+// Queries the integration tasks and database SQL tasks affected by data source changes.
 //
 // @param request - GetDataSourceDependenciesRequest
 //
@@ -6425,7 +6499,7 @@ func (client *Client) GetDataSourceDependenciesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询开发态对象上游依赖。
+// Query upstream dependencies of development objects.
 //
 // @param request - GetDevObjectDependencyRequest
 //
@@ -6485,7 +6559,7 @@ func (client *Client) GetDevObjectDependencyWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取文件夹目录树
+// Retrieves the folder directory tree.
 //
 // @param request - GetDirectoryTreeRequest
 //
@@ -6537,7 +6611,7 @@ func (client *Client) GetDirectoryTreeWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取文件存储临时读写授权。
+// Obtains temporary read/write authorization for file storage.
 //
 // @param request - GetFileStorageCredentialRequest
 //
@@ -6593,7 +6667,7 @@ func (client *Client) GetFileStorageCredentialWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 根据起始的实例查询该实例的下游
+// Queries the downstream instances of a specified instance.
 //
 // @param tmpReq - GetInstanceDownStreamRequest
 //
@@ -6661,7 +6735,7 @@ func (client *Client) GetInstanceDownStreamWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 查询实例的上下游，支持逻辑表和代码任务。
+// Queries the dag of an instance. Logical tables and code nodes are supported.
 //
 // @param tmpReq - GetInstanceUpDownStreamRequest
 //
@@ -6733,7 +6807,7 @@ func (client *Client) GetInstanceUpDownStreamWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 获取最新的待发布记录详情
+// Retrieves the details of the latest pending submit record.
 //
 // @param tmpReq - GetLatestSubmitDetailRequest
 //
@@ -6789,7 +6863,7 @@ func (client *Client) GetLatestSubmitDetailWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 获取用户角色列表
+// Retrieves the list of roles for the current user.
 //
 // @param request - GetMyRolesRequest
 //
@@ -6833,7 +6907,7 @@ func (client *Client) GetMyRolesWithContext(ctx context.Context, request *GetMyR
 
 // Summary:
 //
-// 获取当前用户归属租户.
+// Retrieves the tenants to which the current user belongs.
 //
 // @param tmpReq - GetMyTenantsRequest
 //
@@ -6889,7 +6963,7 @@ func (client *Client) GetMyTenantsWithContext(ctx context.Context, tmpReq *GetMy
 
 // Summary:
 //
-// 通用查询节点上下游接口
+// Queries the dag of a node. This is a general-purpose operation.
 //
 // @param tmpReq - GetNodeUpDownStreamRequest
 //
@@ -6961,7 +7035,7 @@ func (client *Client) GetNodeUpDownStreamWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 查询补数据提交的状态
+// Queries the submit status of a data backfill request.
 //
 // @param request - GetOperationSubmitStatusRequest
 //
@@ -7013,7 +7087,7 @@ func (client *Client) GetOperationSubmitStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询脚本的实例信息, 包括实例状态、运行时间等信息.
+// Gets instance information.
 //
 // @param request - GetPhysicalInstanceRequest
 //
@@ -7069,7 +7143,7 @@ func (client *Client) GetPhysicalInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取实例执行的日志，如果实例重跑了多次，则会有多条日志
+// Retrieves the execution logs of an instance. If the instance has been rerun multiple times, multiple log entries are returned.
 //
 // @param request - GetPhysicalInstanceLogRequest
 //
@@ -7125,7 +7199,7 @@ func (client *Client) GetPhysicalInstanceLogWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询物理调度节点。
+// Queries a physical schedule resource.
 //
 // @param request - GetPhysicalNodeRequest
 //
@@ -7177,7 +7251,7 @@ func (client *Client) GetPhysicalNodeWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 根据输出名查询对应的物理节点。
+// Queries a physical node by output name. Only offline code nodes and integration task nodes are supported.
 //
 // @param request - GetPhysicalNodeByOutputNameRequest
 //
@@ -7229,7 +7303,7 @@ func (client *Client) GetPhysicalNodeByOutputNameWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询调度节点代码内容。
+// Queries the code content of a schedule resource node.
 //
 // @param request - GetPhysicalNodeContentRequest
 //
@@ -7281,7 +7355,7 @@ func (client *Client) GetPhysicalNodeContentWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询节点的操作日志。
+// Queries the operation logs of a node.
 //
 // @param request - GetPhysicalNodeOperationLogRequest
 //
@@ -7333,7 +7407,7 @@ func (client *Client) GetPhysicalNodeOperationLogWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询异步操作管道任务的执行结果。
+// Queries the execution result of an asynchronous pipeline task.
 //
 // @param tmpReq - GetPipelineAsyncResultRequest
 //
@@ -7393,7 +7467,7 @@ func (client *Client) GetPipelineAsyncResultWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 根据管道任务id查询管道任务。
+// Queries a pipeline task by pipeline task ID.
 //
 // @param tmpReq - GetPipelineByIdRequest
 //
@@ -7457,7 +7531,7 @@ func (client *Client) GetPipelineByIdWithContext(ctx context.Context, tmpReq *Ge
 
 // Summary:
 //
-// 获取项目详情。
+// Get project details by project ID.
 //
 // @param request - GetProjectRequest
 //
@@ -7509,7 +7583,7 @@ func (client *Client) GetProjectWithContext(ctx context.Context, request *GetPro
 
 // Summary:
 //
-// 通过项目名获取项目详情。
+// Retrieves project details by project name.
 //
 // @param request - GetProjectByNameRequest
 //
@@ -7557,7 +7631,7 @@ func (client *Client) GetProjectByNameWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取项目生产账号
+// Retrieves the production account of a project. Only a super administrator (SuperAdmin) can call this API operation.
 //
 // @param request - GetProjectProduceUserRequest
 //
@@ -7605,7 +7679,7 @@ func (client *Client) GetProjectProduceUserWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取项目白名单。
+// Retrieves the whitelist of a project.
 //
 // @param request - GetProjectWhiteListsRequest
 //
@@ -7653,7 +7727,7 @@ func (client *Client) GetProjectWhiteListsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 通过监控对象ID获取告警设置。
+// Retrieves alert settings by monitored object ID. Release version: v5.4.2.
 //
 // @param request - GetQualityAlertOfAllRuleScopeByWatchIdRequest
 //
@@ -7701,7 +7775,9 @@ func (client *Client) GetQualityAlertOfAllRuleScopeByWatchIdWithContext(ctx cont
 
 // Summary:
 //
-// 获取质量规则对象。
+// Retrieves a quality rule object.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualityRuleRequest
 //
@@ -7749,7 +7825,7 @@ func (client *Client) GetQualityRuleWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 获取质量任务对象详情。
+// Retrieves the details of a quality node task object. Online version: v5.4.2.
 //
 // @param request - GetQualityRuleTaskRequest
 //
@@ -7797,7 +7873,9 @@ func (client *Client) GetQualityRuleTaskWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取质量任务对象日志内容。
+// Retrieves the log content of a quality node task object.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetQualityRuleTaskLogRequest
 //
@@ -7845,7 +7923,9 @@ func (client *Client) GetQualityRuleTaskLogWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取质量调度对象。
+// Retrieves a quality schedule object.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualityScheduleRequest
 //
@@ -7893,7 +7973,9 @@ func (client *Client) GetQualityScheduleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 通过监控对象ID获取调度设置列表。
+// Retrieves a list of schedule settings by monitored object ID.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualitySchedulesByWatchIdRequest
 //
@@ -7941,7 +8023,9 @@ func (client *Client) GetQualitySchedulesByWatchIdWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取质量模板对象。
+// Retrieves a quality template object.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualityTemplateRequest
 //
@@ -7989,7 +8073,9 @@ func (client *Client) GetQualityTemplateWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取质量监控对象。
+// Retrieves a quality monitored object.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualityWatchRequest
 //
@@ -8037,7 +8123,9 @@ func (client *Client) GetQualityWatchWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 通过监控对象原始ID获取监控对象记录，例如：数据源、表、指标等的ID。
+// Retrieves a quality watchtask record by the original ID of the monitored object, such as the ID of a datasource, table, or metric.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetQualityWatchByObjectIdRequest
 //
@@ -8089,7 +8177,9 @@ func (client *Client) GetQualityWatchByObjectIdWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取监控任务对象。
+// Retrieves a monitoring node task object.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetQualityWatchTaskRequest
 //
@@ -8137,7 +8227,9 @@ func (client *Client) GetQualityWatchTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取监控任务对象的日志内容。
+// Retrieves the log content of a monitoring task object.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetQualityWatchTaskLogRequest
 //
@@ -8185,7 +8277,7 @@ func (client *Client) GetQualityWatchTaskLogWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 根据集群ID获取集群版本
+// Retrieves the cluster version based on the cluster ID.
 //
 // @param request - GetQueueEngineVersionByEnvRequest
 //
@@ -8249,7 +8341,7 @@ func (client *Client) GetQueueEngineVersionByEnvWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取资源文件详情。
+// Retrieves the details of a resource file.
 //
 // @param request - GetResourceRequest
 //
@@ -8301,7 +8393,7 @@ func (client *Client) GetResourceWithContext(ctx context.Context, request *GetRe
 
 // Summary:
 //
-// 获取资源文件指定版本详情。
+// Gets the details of a specified version of a resource file.
 //
 // @param request - GetResourceByVersionRequest
 //
@@ -8357,7 +8449,7 @@ func (client *Client) GetResourceByVersionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 根据表Guid检索行级权限
+// Release version: v5.4.2.
 //
 // @param tmpReq - GetRowPermissionByTableGuidsRequest
 //
@@ -8413,7 +8505,7 @@ func (client *Client) GetRowPermissionByTableGuidsWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取数据分类详情。
+// Retrieves the details of a data classification. Release version: v5.4.2.
 //
 // @param request - GetSecurityClassifyRequest
 //
@@ -8461,7 +8553,9 @@ func (client *Client) GetSecurityClassifyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取识别结果详情。
+// Retrieves the details of an identification result.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetSecurityIdentifyResultRequest
 //
@@ -8509,7 +8603,7 @@ func (client *Client) GetSecurityIdentifyResultWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取数据分级详情。
+// Retrieves the details of a data classification level. Available since v5.4.2.
 //
 // @param request - GetSecurityLevelRequest
 //
@@ -8557,7 +8651,7 @@ func (client *Client) GetSecurityLevelWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 通过密钥名称获取密钥值。
+// Retrieves a key value by key name. Online version: v5.4.2.
 //
 // @param request - GetSecuritySecretKeyRequest
 //
@@ -8605,7 +8699,7 @@ func (client *Client) GetSecuritySecretKeyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取计算源对应集群的spark客户信息
+// Retrieves the Spark client information of the cluster associated with a compute source.
 //
 // @param request - GetSparkLocalClientInfoRequest
 //
@@ -8657,7 +8751,9 @@ func (client *Client) GetSparkLocalClientInfoWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取标准详情。
+// Retrieves the details of a standard.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - GetStandardRequest
 //
@@ -8713,7 +8809,9 @@ func (client *Client) GetStandardWithContext(ctx context.Context, tmpReq *GetSta
 
 // Summary:
 //
-// 获取数据标准码表详情。
+// Retrieves the details of a data standard lookup table.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetStandardLookupTableRequest
 //
@@ -8765,7 +8863,9 @@ func (client *Client) GetStandardLookupTableWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取标准集详情。
+// Retrieves the details of a standard set.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetStandardSetRequest
 //
@@ -8817,7 +8917,9 @@ func (client *Client) GetStandardSetWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 查询目录下按照标准类型统计标准数目。
+// Queries the number of standards grouped by standard type under a specified folder.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - GetStandardStatisticsRequest
 //
@@ -8873,7 +8975,9 @@ func (client *Client) GetStandardStatisticsWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 获取数据标准模板详情。
+// Retrieves the details of a data standard template.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - GetStandardTemplateRequest
 //
@@ -8937,7 +9041,9 @@ func (client *Client) GetStandardTemplateWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 获取数据标准词根详情。
+// Retrieves the details of a data standard word root.
+//
+// Online version: v5.4.2.
 //
 // @param request - GetStandardWordRootRequest
 //
@@ -8989,7 +9095,7 @@ func (client *Client) GetStandardWordRootWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取dataphin实时研发任务集合
+// Retrieves the list of real-time development nodes.
 //
 // @param request - GetStreamJobsRequest
 //
@@ -9041,7 +9147,7 @@ func (client *Client) GetStreamJobsWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 获取补数据工作流所有业务日期的Dagrun信息。
+// Retrieves dagrun information for all business dates of a data backfill instance workflow.
 //
 // @param request - GetSupplementDagrunRequest
 //
@@ -9093,7 +9199,7 @@ func (client *Client) GetSupplementDagrunWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 列出补数据工作流下具体一个业务日期的所有节点的实例。
+// Lists the instances of all nodes for a specific business date in a data backfill workflow.
 //
 // @param request - GetSupplementDagrunInstanceRequest
 //
@@ -9145,7 +9251,7 @@ func (client *Client) GetSupplementDagrunInstanceWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询表字段血缘信息
+// Queries table column lineage information.
 //
 // @param tmpReq - GetTableColumnLineageByTaskIdRequest
 //
@@ -9201,7 +9307,9 @@ func (client *Client) GetTableColumnLineageByTaskIdWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查询资产表字段血缘信息。
+// Queries the column-level data lineage of an asset table.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - GetTableColumnLineagesRequest
 //
@@ -9261,7 +9369,9 @@ func (client *Client) GetTableColumnLineagesWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 查询资产清单中Dataphin表的字段。
+// Queries columns of a Dataphin table in the asset inventory. Supported table types: dimension logical table, fact logical table, aggregate logical table, tag logical table, logical table view, physical table, physical view, and materialized view.
+//
+// Release version: v5.4.2.
 //
 // @param request - GetTableColumnsRequest
 //
@@ -9313,7 +9423,7 @@ func (client *Client) GetTableColumnsWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 查询表血缘信息
+// Queries table lineage information.
 //
 // @param tmpReq - GetTableLineageByTaskIdRequest
 //
@@ -9369,7 +9479,9 @@ func (client *Client) GetTableLineageByTaskIdWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 查询资产表血缘信息。
+// Queries lineage information of an asset table.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - GetTableLineagesRequest
 //
@@ -9429,7 +9541,7 @@ func (client *Client) GetTableLineagesWithContext(ctx context.Context, tmpReq *G
 
 // Summary:
 //
-// 根据转交任务ID查询转交任务的进度
+// Queries the progress of a transfer task by transfer task ID.
 //
 // @param request - GetTransferInfoRequest
 //
@@ -9477,7 +9589,7 @@ func (client *Client) GetTransferInfoWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 获取自定义函数详情。
+// Retrieves the details of a user-defined function.
 //
 // @param request - GetUdfRequest
 //
@@ -9529,7 +9641,7 @@ func (client *Client) GetUdfWithContext(ctx context.Context, request *GetUdfRequ
 
 // Summary:
 //
-// 查询自定义函数版本详情。
+// Queries the details of a specific version of a user-defined function.
 //
 // @param request - GetUdfByVersionRequest
 //
@@ -9585,7 +9697,7 @@ func (client *Client) GetUdfByVersionWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 通过用户原始Id（如阿里云Id）获取用户详情
+// Retrieves user details by original user ID.
 //
 // @param request - GetUserBySourceIdRequest
 //
@@ -9633,7 +9745,7 @@ func (client *Client) GetUserBySourceIdWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取用户组详情.
+// Retrieves the details of a user group.
 //
 // @param request - GetUserGroupRequest
 //
@@ -9681,7 +9793,7 @@ func (client *Client) GetUserGroupWithContext(ctx context.Context, request *GetU
 
 // Summary:
 //
-// 获取用户详情
+// Retrieves user information in batches by user ID.
 //
 // @param tmpReq - GetUsersRequest
 //
@@ -9737,7 +9849,7 @@ func (client *Client) GetUsersWithContext(ctx context.Context, tmpReq *GetUsersR
 
 // Summary:
 //
-// API授权。
+// Grants API authorization.
 //
 // @param tmpReq - GrantDataServiceApiRequest
 //
@@ -9797,7 +9909,7 @@ func (client *Client) GrantDataServiceApiWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 通过资源点对用户授权
+// Grants permissions on resources to users by resource point.
 //
 // @param tmpReq - GrantResourcePermissionRequest
 //
@@ -9853,7 +9965,7 @@ func (client *Client) GrantResourcePermissionWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 获取用户角色列表
+// Retrieves the global roles that can be assigned to tenant members. Only built-in global roles are supported. Custom global roles are not supported.
 //
 // @param request - ListAddableRolesRequest
 //
@@ -9897,7 +10009,7 @@ func (client *Client) ListAddableRolesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取可加入租户成员列表的用户
+// Queries users that can be added to a tenant. Only the super administrator (SuperAdmin) and system administrator can call this operation. The users must already exist in the Dataphin instance member list but have not yet been added to the tenant member list.
 //
 // @param tmpReq - ListAddableUsersRequest
 //
@@ -9953,7 +10065,7 @@ func (client *Client) ListAddableUsersWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// 根据条件查询多个告警事件
+// Performs a conditional query to list multiple alerting events.
 //
 // @param tmpReq - ListAlertEventsRequest
 //
@@ -10009,7 +10121,7 @@ func (client *Client) ListAlertEventsWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// 根据条件查询多个推送记录
+// Performs a conditional query to list multiple push records.
 //
 // @param tmpReq - ListAlertNotificationsRequest
 //
@@ -10065,7 +10177,11 @@ func (client *Client) ListAlertNotificationsWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 根据app查询api列表
+// Queries the list of APIs by application.
+//
+// Description:
+//
+// Queries the detailed information of published APIs by appKey.
 //
 // @param tmpReq - ListApiByAppRequest
 //
@@ -10121,7 +10237,7 @@ func (client *Client) ListApiByAppWithContext(ctx context.Context, tmpReq *ListA
 
 // Summary:
 //
-// 查询应用已申请的API的具体的字段列表
+// Queries the list of specific fields for APIs that an application has requested.
 //
 // @param tmpReq - ListAuthorizedDataServiceApiDetailsRequest
 //
@@ -10177,7 +10293,7 @@ func (client *Client) ListAuthorizedDataServiceApiDetailsWithContext(ctx context
 
 // Summary:
 //
-// 查询业务实体列表。
+// Queries a list of business entities.
 //
 // @param tmpReq - ListBizEntitiesRequest
 //
@@ -10233,7 +10349,7 @@ func (client *Client) ListBizEntitiesWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// 获取当前租户下的所有数据板块
+// Retrieves all business units under the current tenant.
 //
 // @param request - ListBizUnitsRequest
 //
@@ -10277,7 +10393,7 @@ func (client *Client) ListBizUnitsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 查询数据目录资产列表。
+// Queries the list of asset catalog entries. Online version: v6.1.0.
 //
 // @param tmpReq - ListCatalogAssetsRequest
 //
@@ -10333,7 +10449,7 @@ func (client *Client) ListCatalogAssetsWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 查询计算源列表。
+// Query the list of compute sources.
 //
 // @param tmpReq - ListComputeSourcesRequest
 //
@@ -10389,7 +10505,7 @@ func (client *Client) ListComputeSourcesWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 获取主题域列表。
+// Retrieves a list of data domains.
 //
 // @param tmpReq - ListDataDomainsRequest
 //
@@ -10445,7 +10561,7 @@ func (client *Client) ListDataDomainsWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// 查询API运维统计信息。
+// O&M analysis: API call statistics.
 //
 // @param tmpReq - ListDataServiceApiCallStatisticsRequest
 //
@@ -10505,7 +10621,7 @@ func (client *Client) ListDataServiceApiCallStatisticsWithContext(ctx context.Co
 
 // Summary:
 //
-// 分页查询数据服务调用日志。
+// Queries data service call logs with pagination.
 //
 // @param tmpReq - ListDataServiceApiCallsRequest
 //
@@ -10565,7 +10681,7 @@ func (client *Client) ListDataServiceApiCallsWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// API影响分析列表。
+// Operations analysis: analyzes the impact of abnormal API calls.
 //
 // @param tmpReq - ListDataServiceApiImpactsRequest
 //
@@ -10625,7 +10741,9 @@ func (client *Client) ListDataServiceApiImpactsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询租户下所有的应用列表。
+// Queries the list of all applications under a data service tenant. All tenant members can perform this operation.
+//
+// Release version: v6.0.0.
 //
 // @param tmpReq - ListDataServiceAppsRequest
 //
@@ -10681,7 +10799,7 @@ func (client *Client) ListDataServiceAppsWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 查询当前用户有权限的应用列表。
+// Queries the list of applications that the current user has permissions to access.
 //
 // @param tmpReq - ListDataServiceAuthorizedAppsRequest
 //
@@ -10741,7 +10859,7 @@ func (client *Client) ListDataServiceAuthorizedAppsWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取我管理的API权限列表。
+// Obtain the list of API permissions managed by me.
 //
 // @param tmpReq - ListDataServiceMyApiPermissionsRequest
 //
@@ -10801,7 +10919,7 @@ func (client *Client) ListDataServiceMyApiPermissionsWithContext(ctx context.Con
 
 // Summary:
 //
-// 查询当前用户有权限的应用。
+// Queries the applications that the current user has permissions to access.
 //
 // @param tmpReq - ListDataServiceMyAppPermissionsRequest
 //
@@ -10861,7 +10979,7 @@ func (client *Client) ListDataServiceMyAppPermissionsWithContext(ctx context.Con
 
 // Summary:
 //
-// 分页查询已发布的API列表。
+// Queries the list of published APIs by page.
 //
 // @param tmpReq - ListDataServicePublishedApisRequest
 //
@@ -10921,7 +11039,7 @@ func (client *Client) ListDataServicePublishedApisWithContext(ctx context.Contex
 
 // Summary:
 //
-// 搜索数据源，所属结果包含数据源配置项
+// Search for data sources. The results include data source configuration items.
 //
 // @param tmpReq - ListDataSourceWithConfigRequest
 //
@@ -10977,7 +11095,7 @@ func (client *Client) ListDataSourceWithConfigWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 遍历菜单树目录文件。
+// Query the directory tree file list.
 //
 // @param tmpReq - ListFilesRequest
 //
@@ -11033,7 +11151,7 @@ func (client *Client) ListFilesWithContext(ctx context.Context, tmpReq *ListFile
 
 // Summary:
 //
-// 分页查询实例。
+// Paginate and query instances.
 //
 // @param tmpReq - ListInstancesRequest
 //
@@ -11093,7 +11211,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// 查询节点下游，创建补数据工作流时可以作为数据参考
+// Queries the downstream nodes of a node. The query results can be used as a data reference when you create a data backfill workflow.
 //
 // @param tmpReq - ListNodeDownStreamRequest
 //
@@ -11153,7 +11271,7 @@ func (client *Client) ListNodeDownStreamWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 查询调度节点列表。
+// Retrieves a list of scheduling nodes.
 //
 // @param tmpReq - ListNodesRequest
 //
@@ -11213,7 +11331,7 @@ func (client *Client) ListNodesWithContext(ctx context.Context, tmpReq *ListNode
 
 // Summary:
 //
-// 获取项目成员列表。
+// Queries the list of project members.
 //
 // @param tmpReq - ListProjectMembersRequest
 //
@@ -11273,7 +11391,7 @@ func (client *Client) ListProjectMembersWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 获取项目列表。
+// Retrieves a list of projects.
 //
 // @param tmpReq - ListProjectsRequest
 //
@@ -11329,7 +11447,7 @@ func (client *Client) ListProjectsWithContext(ctx context.Context, tmpReq *ListP
 
 // Summary:
 //
-// 分页获取发布记录列表
+// Retrieves a paginated list of publish records.
 //
 // @param tmpReq - ListPublishRecordsRequest
 //
@@ -11385,7 +11503,9 @@ func (client *Client) ListPublishRecordsWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 分页查询质量规则任务。
+// Queries quality rule tasks by paging.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - ListQualityRuleTasksRequest
 //
@@ -11441,7 +11561,9 @@ func (client *Client) ListQualityRuleTasksWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 分页查询质量规则。
+// Queries quality rules by paging.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - ListQualityRulesRequest
 //
@@ -11497,7 +11619,9 @@ func (client *Client) ListQualityRulesWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// 分页查询质量模板。
+// Queries quality templates by paging.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - ListQualityTemplatesRequest
 //
@@ -11553,7 +11677,9 @@ func (client *Client) ListQualityTemplatesWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 分页查询质量监控任务。
+// Queries quality monitoring nodes by paged query.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - ListQualityWatchTasksRequest
 //
@@ -11609,7 +11735,9 @@ func (client *Client) ListQualityWatchTasksWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 分页查询质量监控对象。
+// Performs a paged query of quality monitored objects.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - ListQualityWatchesRequest
 //
@@ -11665,7 +11793,7 @@ func (client *Client) ListQualityWatchesWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 分页获取权限操作列表
+// Retrieves a paginated list of permission operation logs.
 //
 // @param tmpReq - ListResourcePermissionOperationLogRequest
 //
@@ -11721,7 +11849,7 @@ func (client *Client) ListResourcePermissionOperationLogWithContext(ctx context.
 
 // Summary:
 //
-// 分页获取权限记录列表
+// Retrieves permission authorization records with pagination.
 //
 // @param tmpReq - ListResourcePermissionsRequest
 //
@@ -11777,7 +11905,7 @@ func (client *Client) ListResourcePermissionsWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 分页查询行级权限
+// Performs a paged query of row-level permissions.
 //
 // @param tmpReq - ListRowPermissionRequest
 //
@@ -11833,7 +11961,7 @@ func (client *Client) ListRowPermissionWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 分页查询指定用户行级权限
+// Queries row-level permissions of a specified user by paging.
 //
 // @param tmpReq - ListRowPermissionByUserIdRequest
 //
@@ -11889,7 +12017,9 @@ func (client *Client) ListRowPermissionByUserIdWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 分页查询安全识别结果的识别记录。
+// Queries identification records of security identification results by paging.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - ListSecurityIdentifyRecordsRequest
 //
@@ -11945,7 +12075,9 @@ func (client *Client) ListSecurityIdentifyRecordsWithContext(ctx context.Context
 
 // Summary:
 //
-// 分页查询安全识别结果。
+// Query security identification results by page.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - ListSecurityIdentifyResultsRequest
 //
@@ -12001,7 +12133,9 @@ func (client *Client) ListSecurityIdentifyResultsWithContext(ctx context.Context
 
 // Summary:
 //
-// 分页查询标准列表。
+// Query the standard list by page.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - ListStandardsRequest
 //
@@ -12057,7 +12191,7 @@ func (client *Client) ListStandardsWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// 分页获取待发布记录列表
+// Paginate and retrieve the list of pending deployment records.
 //
 // @param tmpReq - ListSubmitRecordsRequest
 //
@@ -12113,7 +12247,9 @@ func (client *Client) ListSubmitRecordsWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 分页查询查询资产表元数据。
+// Performs a paged query to retrieve asset table metadata.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - ListTablesRequest
 //
@@ -12169,7 +12305,7 @@ func (client *Client) ListTablesWithContext(ctx context.Context, tmpReq *ListTab
 
 // Summary:
 //
-// 查询租户成员列表
+// Queries the list of tenant members.
 //
 // @param tmpReq - ListTenantMembersRequest
 //
@@ -12225,7 +12361,7 @@ func (client *Client) ListTenantMembersWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 用户组成员列表分页查询.
+// Performs a paging query of user group members.
 //
 // @param tmpReq - ListUserGroupMembersRequest
 //
@@ -12281,7 +12417,7 @@ func (client *Client) ListUserGroupMembersWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 用户组列表分页查询.
+// Queries user groups by paging.
 //
 // @param tmpReq - ListUserGroupsRequest
 //
@@ -12337,7 +12473,7 @@ func (client *Client) ListUserGroupsWithContext(ctx context.Context, tmpReq *Lis
 
 // Summary:
 //
-// 下线离线计算任务。
+// Offlines a batch task.
 //
 // @param request - OfflineBatchTaskRequest
 //
@@ -12393,7 +12529,7 @@ func (client *Client) OfflineBatchTaskWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 下线业务实体、
+// Offline a business entity.
 //
 // @param tmpReq - OfflineBizEntityRequest
 //
@@ -12449,7 +12585,7 @@ func (client *Client) OfflineBizEntityWithContext(ctx context.Context, tmpReq *O
 
 // Summary:
 //
-// 下线集成管道任务。
+// Offlines an integration pipeline node.
 //
 // @param tmpReq - OfflinePipelineRequest
 //
@@ -12513,7 +12649,7 @@ func (client *Client) OfflinePipelineWithContext(ctx context.Context, tmpReq *Of
 
 // Summary:
 //
-// 异步下线集成管道任务。
+// Asynchronously offlines an integration pipeline node.
 //
 // @param tmpReq - OfflinePipelineByAsyncRequest
 //
@@ -12577,7 +12713,9 @@ func (client *Client) OfflinePipelineByAsyncWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 下线标准。
+// Offlines a standard.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - OfflineStandardRequest
 //
@@ -12633,7 +12771,7 @@ func (client *Client) OfflineStandardWithContext(ctx context.Context, tmpReq *Of
 
 // Summary:
 //
-// 上线业务实体。
+// Brings a business entity online.
 //
 // @param tmpReq - OnlineBizEntityRequest
 //
@@ -12689,7 +12827,7 @@ func (client *Client) OnlineBizEntityWithContext(ctx context.Context, tmpReq *On
 
 // Summary:
 //
-// 运维实例。
+// Performs batch O&M operations on instances. Both physical instances and logical table instances are supported.
 //
 // @param tmpReq - OperateInstanceRequest
 //
@@ -12749,7 +12887,7 @@ func (client *Client) OperateInstanceWithContext(ctx context.Context, tmpReq *Op
 
 // Summary:
 //
-// 解析离线计算任务的逻辑表依赖，注意解析结果上游依赖信息中可能包含自依赖节点（上游节点ID和解析代码的任务节点ID相同）需要用户自己进行处理。
+// Parses the logical table dependencies of an offline compute node. The parsing result may contain self-dependent nodes in the upstream dependency information, where the upstream node ID is the same as the node ID of the parsed code. You must handle such cases on your own.
 //
 // @param tmpReq - ParseBatchTaskDependencyRequest
 //
@@ -12805,7 +12943,7 @@ func (client *Client) ParseBatchTaskDependencyWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 暂停物理节点调度。
+// Pauses the scheduling of physical nodes. This stops the scheduling of nodes, and downstream nodes cannot be triggered. Currently, only offline code nodes and integration nodes are supported.
 //
 // @param tmpReq - PausePhysicalNodeRequest
 //
@@ -12865,7 +13003,7 @@ func (client *Client) PausePhysicalNodeWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 发布数据服务API到生产环境。
+// Publishes a data service API to the production environment.
 //
 // @param request - PublishDataServiceApiRequest
 //
@@ -12921,7 +13059,7 @@ func (client *Client) PublishDataServiceApiWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 批量发布对象
+// Publishes objects in batches.
 //
 // @param tmpReq - PublishObjectListRequest
 //
@@ -12977,7 +13115,9 @@ func (client *Client) PublishObjectListWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 发布标准。
+// Publishes a standard.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - PublishStandardRequest
 //
@@ -13033,7 +13173,9 @@ func (client *Client) PublishStandardWithContext(ctx context.Context, tmpReq *Pu
 
 // Summary:
 //
-// 删除数据服务应用的普通成员。
+// Remove regular members from a data service application. Only the application owner can perform this operation.
+//
+// Released version: v6.0.0.
 //
 // @param tmpReq - RemoveDataServiceAppMemberRequest
 //
@@ -13089,7 +13231,7 @@ func (client *Client) RemoveDataServiceAppMemberWithContext(ctx context.Context,
 
 // Summary:
 //
-// 删除项目成员。
+// Deletes a project member.
 //
 // @param tmpReq - RemoveProjectMemberRequest
 //
@@ -13149,7 +13291,9 @@ func (client *Client) RemoveProjectMemberWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 批量删除质量规则和调度的绑定关系。
+// Deletes the bindings between quality rules and schedules in batches.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - RemoveQualityRuleSchedulesRequest
 //
@@ -13205,7 +13349,7 @@ func (client *Client) RemoveQualityRuleSchedulesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 删除租户成员
+// Removes a tenant member. Only superusers and system administrators can call this API operation.
 //
 // @param tmpReq - RemoveTenantMemberRequest
 //
@@ -13261,7 +13405,7 @@ func (client *Client) RemoveTenantMemberWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 移除用户组成员.
+// Removes members from a user group.
 //
 // @param tmpReq - RemoveUserGroupMemberRequest
 //
@@ -13317,7 +13461,7 @@ func (client *Client) RemoveUserGroupMemberWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 更新项目白名单。
+// Updates the whitelist of a project.
 //
 // @param tmpReq - ReplaceProjectWhiteListsRequest
 //
@@ -13377,7 +13521,9 @@ func (client *Client) ReplaceProjectWhiteListsWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 重置数据服务应用密钥。
+// Reset the Data Service application key. Only the application owner can perform this operation.
+//
+// Release version: v6.0.0.
 //
 // @param tmpReq - ResetDataServiceAppSecretRequest
 //
@@ -13433,7 +13579,7 @@ func (client *Client) ResetDataServiceAppSecretWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 恢复物理节点调度。
+// Resume physical node scheduling.
 //
 // @param tmpReq - ResumePhysicalNodeRequest
 //
@@ -13493,7 +13639,7 @@ func (client *Client) ResumePhysicalNodeWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 重新转交运行失败的转交任务
+// Retransfers a failed transfer task.
 //
 // @param tmpReq - RetryTransferOwnershipRequest
 //
@@ -13549,7 +13695,7 @@ func (client *Client) RetryTransferOwnershipWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 回收API授权。
+// Revokes API authorization.
 //
 // @param tmpReq - RevokeDataServiceApiRequest
 //
@@ -13609,7 +13755,7 @@ func (client *Client) RevokeDataServiceApiWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 回收用户资源授权
+// Revokes resource authorization from a user.
 //
 // @param tmpReq - RevokeResourcePermissionRequest
 //
@@ -13665,7 +13811,7 @@ func (client *Client) RevokeResourcePermissionWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 终止即席查询任务。
+// Stops an ad hoc query task.
 //
 // @param request - StopAdHocTaskRequest
 //
@@ -13717,7 +13863,7 @@ func (client *Client) StopAdHocTaskWithContext(ctx context.Context, request *Sto
 
 // Summary:
 //
-// 提交离线计算任务。
+// Submits a batch task.
 //
 // @param tmpReq - SubmitBatchTaskRequest
 //
@@ -13773,7 +13919,9 @@ func (client *Client) SubmitBatchTaskWithContext(ctx context.Context, tmpReq *Su
 
 // Summary:
 //
-// 批量提交规则任务,支持试跑。
+// Batch submit rule tasks with support for test runs.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - SubmitQualityRuleTasksRequest
 //
@@ -13829,7 +13977,9 @@ func (client *Client) SubmitQualityRuleTasksWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 批量提交监控对象校验任务。
+// Submits quality watchtask check tasks in batches.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - SubmitQualityWatchTasksRequest
 //
@@ -13885,7 +14035,11 @@ func (client *Client) SubmitQualityWatchTasksWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 同步部门信息。
+// Synchronizes department information.
+//
+// Description:
+//
+// Queries the details of a published API operation by AppKey.
 //
 // @param tmpReq - SyncDepartmentRequest
 //
@@ -13941,7 +14095,7 @@ func (client *Client) SyncDepartmentWithContext(ctx context.Context, tmpReq *Syn
 
 // Summary:
 //
-// 同步部门成员信息
+// Synchronizes department member information.
 //
 // @param tmpReq - SyncDepartmentUserRequest
 //
@@ -13997,7 +14151,7 @@ func (client *Client) SyncDepartmentUserWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 一键转交负责人
+// Transfers ownership to a new owner in one click.
 //
 // @param tmpReq - TransferOwnershipForAllObjectRequest
 //
@@ -14053,7 +14207,7 @@ func (client *Client) TransferOwnershipForAllObjectWithContext(ctx context.Conte
 
 // Summary:
 //
-// 编辑即席查询文件。
+// Modifies an ad hoc query file.
 //
 // @param tmpReq - UpdateAdHocFileRequest
 //
@@ -14109,7 +14263,7 @@ func (client *Client) UpdateAdHocFileWithContext(ctx context.Context, tmpReq *Up
 
 // Summary:
 //
-// 编辑离线计算任务。
+// Updates an offline compute node.
 //
 // @param tmpReq - UpdateBatchTaskRequest
 //
@@ -14165,7 +14319,7 @@ func (client *Client) UpdateBatchTaskWithContext(ctx context.Context, tmpReq *Up
 
 // Summary:
 //
-// 编辑离线计算任务自定义血缘。
+// Edits the custom data lineage of a batch task.
 //
 // @param tmpReq - UpdateBatchTaskUdfLineagesRequest
 //
@@ -14221,7 +14375,7 @@ func (client *Client) UpdateBatchTaskUdfLineagesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 更新业务实体、
+// Updates a business entity.
 //
 // @param tmpReq - UpdateBizEntityRequest
 //
@@ -14277,7 +14431,9 @@ func (client *Client) UpdateBizEntityWithContext(ctx context.Context, tmpReq *Up
 
 // Summary:
 //
-// 更新业务指标
+// Update a business metric.
+//
+// Release version: v5.5.0.
 //
 // @param tmpReq - UpdateBizMetricRequest
 //
@@ -14333,7 +14489,7 @@ func (client *Client) UpdateBizMetricWithContext(ctx context.Context, tmpReq *Up
 
 // Summary:
 //
-// 更新数据板块。
+// Updates a data domain.
 //
 // @param tmpReq - UpdateBizUnitRequest
 //
@@ -14389,7 +14545,7 @@ func (client *Client) UpdateBizUnitWithContext(ctx context.Context, tmpReq *Upda
 
 // Summary:
 //
-// 修改计算源。
+// Edits a compute source. Business unit administrators and project administrators have permissions to perform this operation.
 //
 // @param tmpReq - UpdateComputeSourceRequest
 //
@@ -14445,7 +14601,7 @@ func (client *Client) UpdateComputeSourceWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 更新主题域。
+// Updates a data domain.
 //
 // @param tmpReq - UpdateDataDomainRequest
 //
@@ -14501,7 +14657,9 @@ func (client *Client) UpdateDataDomainWithContext(ctx context.Context, tmpReq *U
 
 // Summary:
 //
-// 更新数据服务应用。
+// Updates a data service application. Only super administrators, system administrators, and application owners can perform this operation.
+//
+// Release version: v6.0.0.
 //
 // @param tmpReq - UpdateDataServiceAppRequest
 //
@@ -14557,7 +14715,9 @@ func (client *Client) UpdateDataServiceAppWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 更新数据服务应用分组。
+// Updates a data service application group. Only superusers and system administrators can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param tmpReq - UpdateDataServiceAppGroupRequest
 //
@@ -14613,7 +14773,9 @@ func (client *Client) UpdateDataServiceAppGroupWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 更新数据服务应用的普通成员。
+// Updates the regular members of a data service application. Only the application owner can perform this operation.
+//
+// Online version: v6.0.0.
 //
 // @param tmpReq - UpdateDataServiceAppMemberRequest
 //
@@ -14669,7 +14831,7 @@ func (client *Client) UpdateDataServiceAppMemberWithContext(ctx context.Context,
 
 // Summary:
 //
-// 编辑数据源基本信息
+// Edits the basic information of a data source. Tenant administrators, data administrators, business segment administrators, project administrators, and operations administrators have permissions to perform this operation.
 //
 // @param tmpReq - UpdateDataSourceBasicInfoRequest
 //
@@ -14725,7 +14887,7 @@ func (client *Client) UpdateDataSourceBasicInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 编辑数据源连接配置项
+// Edits the connection configuration items of a data source. Tenant administrators, data administrators, business unit administrators, project administrators, and operations administrators have permissions to perform this operation.
 //
 // @param tmpReq - UpdateDataSourceConfigRequest
 //
@@ -14781,7 +14943,7 @@ func (client *Client) UpdateDataSourceConfigWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 修改菜单树文件所在目录
+// Moves the file position in the menu tree.
 //
 // @param request - UpdateFileDirectoryRequest
 //
@@ -14837,7 +14999,7 @@ func (client *Client) UpdateFileDirectoryWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 修改菜单树文件名称
+// Updates a file name.
 //
 // @param request - UpdateFileNameRequest
 //
@@ -14893,7 +15055,7 @@ func (client *Client) UpdateFileNameWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 更新集成管道任务。
+// Updates an integration pipeline or unstructured workflow node.
 //
 // @param tmpReq - UpdatePipelineRequest
 //
@@ -14957,7 +15119,7 @@ func (client *Client) UpdatePipelineWithContext(ctx context.Context, tmpReq *Upd
 
 // Summary:
 //
-// 异步更新集成管道任务。
+// Asynchronously updates a pipeline or unstructured workflow node.
 //
 // @param tmpReq - UpdatePipelineByAsyncRequest
 //
@@ -15021,7 +15183,7 @@ func (client *Client) UpdatePipelineByAsyncWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 增加项目成员。
+// Edits project members.
 //
 // @param tmpReq - UpdateProjectMemberRequest
 //
@@ -15081,7 +15243,9 @@ func (client *Client) UpdateProjectMemberWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 批量开启或关闭质量规则。
+// Enables or disables quality rules in batches.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateQualityRuleSwitchRequest
 //
@@ -15137,7 +15301,9 @@ func (client *Client) UpdateQualityRuleSwitchWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 批量开启或关闭质量监控对象。
+// Starts or stops quality monitored objects in batches.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateQualityWatchSwitchRequest
 //
@@ -15193,7 +15359,7 @@ func (client *Client) UpdateQualityWatchSwitchWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 编辑资源文件。
+// Edits a resource file.
 //
 // @param tmpReq - UpdateResourceRequest
 //
@@ -15249,7 +15415,7 @@ func (client *Client) UpdateResourceWithContext(ctx context.Context, tmpReq *Upd
 
 // Summary:
 //
-// 更新行级权限
+// Updates a row-level permission.
 //
 // @param tmpReq - UpdateRowPermissionRequest
 //
@@ -15305,7 +15471,9 @@ func (client *Client) UpdateRowPermissionWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 更新数据分类。
+// Updates a data classification.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateSecurityClassifyRequest
 //
@@ -15361,7 +15529,7 @@ func (client *Client) UpdateSecurityClassifyWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 更新数据分类目录。
+// Updates a data classification folder. Release version: v5.4.2.
 //
 // @param tmpReq - UpdateSecurityClassifyCatalogRequest
 //
@@ -15417,7 +15585,9 @@ func (client *Client) UpdateSecurityClassifyCatalogWithContext(ctx context.Conte
 
 // Summary:
 //
-// 更新安全识别结果的生效状态。
+// Updates the effective status of security identification results.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateSecurityIdentifyResultStatusRequest
 //
@@ -15473,7 +15643,9 @@ func (client *Client) UpdateSecurityIdentifyResultStatusWithContext(ctx context.
 
 // Summary:
 //
-// 通过分级顺序更新数据分级。
+// Updates data classification.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - UpdateSecurityLevelRequest
 //
@@ -15529,7 +15701,9 @@ func (client *Client) UpdateSecurityLevelWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 更新标准。
+// Updates a standard.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardRequest
 //
@@ -15585,7 +15759,9 @@ func (client *Client) UpdateStandardWithContext(ctx context.Context, tmpReq *Upd
 
 // Summary:
 //
-// 更新数据标准码表。
+// Updates a data standard lookup table.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardLookupTableRequest
 //
@@ -15641,7 +15817,9 @@ func (client *Client) UpdateStandardLookupTableWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 将标准映射关系置为无效映射。
+// Sets the standard mapping relationship to invalid mapping.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardMappingToInvalidRequest
 //
@@ -15697,7 +15875,9 @@ func (client *Client) UpdateStandardMappingToInvalidWithContext(ctx context.Cont
 
 // Summary:
 //
-// 更新标准集。
+// Update standard set.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardSetRequest
 //
@@ -15753,7 +15933,9 @@ func (client *Client) UpdateStandardSetWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 更新数据标准模板。
+// Updates a data standard template.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardTemplateRequest
 //
@@ -15809,7 +15991,9 @@ func (client *Client) UpdateStandardTemplateWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 更新数据标准词根。
+// Updates a data standard root word.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardWordRootRequest
 //
@@ -15865,7 +16049,7 @@ func (client *Client) UpdateStandardWordRootWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 修改租户计算设置。
+// Modifies the compute settings of a tenant.
 //
 // @param tmpReq - UpdateTenantComputeEngineRequest
 //
@@ -15921,7 +16105,7 @@ func (client *Client) UpdateTenantComputeEngineWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 编辑租户成员
+// Edits tenant members.
 //
 // @param tmpReq - UpdateTenantMemberRequest
 //
@@ -15977,7 +16161,7 @@ func (client *Client) UpdateTenantMemberWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 编辑自定义函数。
+// Edits a user-defined function.
 //
 // @param tmpReq - UpdateUdfRequest
 //
@@ -16033,7 +16217,7 @@ func (client *Client) UpdateUdfWithContext(ctx context.Context, tmpReq *UpdateUd
 
 // Summary:
 //
-// 编辑用户组.
+// Edits a user group.
 //
 // @param tmpReq - UpdateUserGroupRequest
 //
@@ -16089,7 +16273,7 @@ func (client *Client) UpdateUserGroupWithContext(ctx context.Context, tmpReq *Up
 
 // Summary:
 //
-// 编辑用户组启用开关.
+// Modifies the enabled status of a user group.
 //
 // @param request - UpdateUserGroupSwitchRequest
 //
@@ -16141,7 +16325,9 @@ func (client *Client) UpdateUserGroupSwitchWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 新建或者修改质量规则。
+// Create or modify a quality rule.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpsertQualityRuleRequest
 //
@@ -16197,7 +16383,9 @@ func (client *Client) UpsertQualityRuleWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 新建或者修改调度设置。
+// Creates or updates scheduling settings.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpsertQualityScheduleRequest
 //
@@ -16253,7 +16441,9 @@ func (client *Client) UpsertQualityScheduleWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 新建或者修改质量模板。
+// Creates or updates a quality template.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpsertQualityTemplateRequest
 //
@@ -16309,7 +16499,9 @@ func (client *Client) UpsertQualityTemplateWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 新建或更改质量监控对象, 支持添加多种类型的质量监控对象，包括：Dataphin表，全域表，数据源，指标，实时元表。
+// Creates or updates a quality monitored object. You can add multiple types of quality monitored objects, including Dataphin tables, global tables, data sources, metrics, and real-time meta tables.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpsertQualityWatchRequest
 //
@@ -16365,7 +16557,9 @@ func (client *Client) UpsertQualityWatchWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 新建或者修改监控对象告警设置。
+// Creates or updates alert settings for a monitored object.
+//
+// Release version: v5.4.2.
 //
 // @param tmpReq - UpsertQualityWatchAlertRequest
 //

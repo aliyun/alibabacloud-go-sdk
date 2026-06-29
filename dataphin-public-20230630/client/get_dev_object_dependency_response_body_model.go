@@ -24,23 +24,34 @@ type iGetDevObjectDependencyResponseBody interface {
 }
 
 type GetDevObjectDependencyResponseBody struct {
+	// Error code. OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code                    *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Dependency list.
 	DevObjectDependencyList []*GetDevObjectDependencyResponseBodyDevObjectDependencyList `json:"DevObjectDependencyList,omitempty" xml:"DevObjectDependencyList,omitempty" type:"Repeated"`
+	// HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -123,83 +134,190 @@ func (s *GetDevObjectDependencyResponseBody) Validate() error {
 }
 
 type GetDevObjectDependencyResponseBodyDevObjectDependencyList struct {
+	// Indicates whether the task is automatically parsed.
+	//
 	// example:
 	//
 	// true
 	AutoParse *bool `json:"AutoParse,omitempty" xml:"AutoParse,omitempty"`
+	// Business type.
+	//
+	// - SCRIPT: Script
+	//
+	// - LOGICAL_TABLE: Logical table
+	//
 	// example:
 	//
 	// SCRIPT
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// Business unit ID.
+	//
 	// example:
 	//
 	// 13111
-	BizUnitId   *string `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	BizUnitId *string `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
+	// Business unit name.
+	//
+	// example:
+	//
+	// xx测试
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
+	// Cron expression for the scheduling node.
+	//
 	// example:
 	//
 	// 0 0 0 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// Indicates whether a custom cron expression is used for the scheduling node.
+	//
 	// example:
 	//
 	// true
-	CustomCronExpression *bool                                                                      `json:"CustomCronExpression,omitempty" xml:"CustomCronExpression,omitempty"`
-	DependFieldList      []*string                                                                  `json:"DependFieldList,omitempty" xml:"DependFieldList,omitempty" type:"Repeated"`
-	DependencyPeriod     *GetDevObjectDependencyResponseBodyDevObjectDependencyListDependencyPeriod `json:"DependencyPeriod,omitempty" xml:"DependencyPeriod,omitempty" type:"Struct"`
+	CustomCronExpression *bool `json:"CustomCronExpression,omitempty" xml:"CustomCronExpression,omitempty"`
+	// Dependency fields.
+	DependFieldList []*string `json:"DependFieldList,omitempty" xml:"DependFieldList,omitempty" type:"Repeated"`
+	// Dependency period configuration.
+	DependencyPeriod *GetDevObjectDependencyResponseBodyDevObjectDependencyListDependencyPeriod `json:"DependencyPeriod,omitempty" xml:"DependencyPeriod,omitempty" type:"Struct"`
+	// Dependency strategy.
+	//
+	// - ALL
+	//
+	// - FIRST
+	//
+	// - LAST
+	//
+	// - NEAR
+	//
 	// example:
 	//
 	// ALL
 	DependencyStrategy *string `json:"DependencyStrategy,omitempty" xml:"DependencyStrategy,omitempty"`
+	// Indicates whether the node is a dimension table intermediate node.
+	//
 	// example:
 	//
 	// true
-	DimMidNode      *bool     `json:"DimMidNode,omitempty" xml:"DimMidNode,omitempty"`
+	DimMidNode *bool `json:"DimMidNode,omitempty" xml:"DimMidNode,omitempty"`
+	// Effect fields.
 	EffectFieldList []*string `json:"EffectFieldList,omitempty" xml:"EffectFieldList,omitempty" type:"Repeated"`
-	ExternalBizInfo *string   `json:"ExternalBizInfo,omitempty" xml:"ExternalBizInfo,omitempty"`
+	// Additional business information.
+	//
+	// example:
+	//
+	// 所有字段信息/hasProd/hasDev等信息
+	ExternalBizInfo *string `json:"ExternalBizInfo,omitempty" xml:"ExternalBizInfo,omitempty"`
+	// Indicates whether the dependency is manually added.
+	//
 	// example:
 	//
 	// false
 	ManuallyAdd *bool `json:"ManuallyAdd,omitempty" xml:"ManuallyAdd,omitempty"`
+	// Node ID.
+	//
 	// example:
 	//
 	// n_13211
-	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Node name.
+	//
+	// example:
+	//
+	// xx测试
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// Node output name.
+	//
 	// example:
 	//
 	// n_xx
 	NodeOutputName *string `json:"NodeOutputName,omitempty" xml:"NodeOutputName,omitempty"`
+	// Output table information.
+	//
 	// example:
 	//
 	// t_xx
 	NodeOutputTableName *string `json:"NodeOutputTableName,omitempty" xml:"NodeOutputTableName,omitempty"`
+	// Node type.
+	//
+	// - DATA_PROCESS: Code task
+	//
+	// - BBOX_LOGIC_TABLE_NODE: Black box logical table node
+	//
+	// - ONE_ID_LABEL: ID label node
+	//
+	// - ONE_ID_RULE: ID rule node
+	//
+	// - PIPELINE_NODE: Pipeline node
+	//
 	// example:
 	//
 	// DATA_PROCESS
-	NodeType               *string                                                                            `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// Cross-node output parameters.
 	OutputContextParamList []*GetDevObjectDependencyResponseBodyDevObjectDependencyListOutputContextParamList `json:"OutputContextParamList,omitempty" xml:"OutputContextParamList,omitempty" type:"Repeated"`
-	OwnerList              []*GetDevObjectDependencyResponseBodyDevObjectDependencyListOwnerList              `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
+	// Node owners.
+	OwnerList []*GetDevObjectDependencyResponseBodyDevObjectDependencyListOwnerList `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
+	// Dependency period difference.
+	//
 	// example:
 	//
 	// 1
 	PeriodDiff *int32 `json:"PeriodDiff,omitempty" xml:"PeriodDiff,omitempty"`
+	// Project ID.
+	//
 	// example:
 	//
 	// 123131
-	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Project name.
+	//
+	// example:
+	//
+	// xx测试
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Schedule type.
+	//
+	// - MINUTELY: Minute
+	//
+	// - HOURLY: Hour
+	//
+	// - DAILY: Day
+	//
+	// - WEEKLY: Week
+	//
+	// - MONTHLY: Month
+	//
+	// - YEARLY: Year
+	//
 	// example:
 	//
 	// DAILY
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
+	// Indicates whether the node has a self-dependency.
+	//
 	// example:
 	//
 	// true
 	SelfDepend *bool `json:"SelfDepend,omitempty" xml:"SelfDepend,omitempty"`
+	// Sub-business type.
+	//
+	// - MAX_COMPUTE_SQL
+	//
+	// - HIVE_SQL
+	//
+	// - SHELL
+	//
+	// - PYTHON
+	//
+	// - ONE_SERVICE_SQL
+	//
+	// - DATABASE_SQL, etc.
+	//
 	// example:
 	//
 	// SHELL
 	SubBizType *string `json:"SubBizType,omitempty" xml:"SubBizType,omitempty"`
+	// Indicates whether the configuration is valid.
+	//
 	// example:
 	//
 	// true
@@ -485,10 +603,22 @@ func (s *GetDevObjectDependencyResponseBodyDevObjectDependencyList) Validate() e
 }
 
 type GetDevObjectDependencyResponseBodyDevObjectDependencyListDependencyPeriod struct {
+	// Period offset. This parameter is required when the dependency period type is LAST_N_PERIOD.
+	//
 	// example:
 	//
 	// 1
 	PeriodOffset *int32 `json:"PeriodOffset,omitempty" xml:"PeriodOffset,omitempty"`
+	// Dependency period type.
+	//
+	// - CURRENT_PERIOD
+	//
+	// - LAST_PERIOD
+	//
+	// - LAST_N_PERIOD
+	//
+	// - LAST_24_HOUR
+	//
 	// example:
 	//
 	// CURRENT_PERIOD
@@ -526,14 +656,20 @@ func (s *GetDevObjectDependencyResponseBodyDevObjectDependencyListDependencyPeri
 }
 
 type GetDevObjectDependencyResponseBodyDevObjectDependencyListOutputContextParamList struct {
+	// Default value.
+	//
 	// example:
 	//
 	// v1
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// Description.
+	//
 	// example:
 	//
 	// xxtest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Parameter key.
+	//
 	// example:
 	//
 	// v1
@@ -580,10 +716,17 @@ func (s *GetDevObjectDependencyResponseBodyDevObjectDependencyListOutputContextP
 }
 
 type GetDevObjectDependencyResponseBodyDevObjectDependencyListOwnerList struct {
+	// Node ID.
+	//
 	// example:
 	//
 	// 11123
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Node name.
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

@@ -16,8 +16,12 @@ type iListSecurityIdentifyRecordsShrinkRequest interface {
 }
 
 type ListSecurityIdentifyRecordsShrinkRequest struct {
+	// The query conditions.
+	//
 	// This parameter is required.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

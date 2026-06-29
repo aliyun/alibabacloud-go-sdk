@@ -16,12 +16,16 @@ type iListApiByAppRequest interface {
 }
 
 type ListApiByAppRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The paged query parameters.
+	//
 	// This parameter is required.
 	PageQuery *ListApiByAppRequestPageQuery `json:"PageQuery,omitempty" xml:"PageQuery,omitempty" type:"Struct"`
 }
@@ -64,24 +68,34 @@ func (s *ListApiByAppRequest) Validate() error {
 type ListApiByAppRequestPageQuery struct {
 	// Deprecated
 	//
-	// appKey
+	// The application key.
+	//
+	// 	Notice: Deprecated. Use AppKeyStr instead.</notice>.
 	//
 	// example:
 	//
-	// 10121101
+	// 200000000
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The application key.
+	//
 	// example:
 	//
-	// app12345
+	// APP_200000000
 	AppKeyStr *string `json:"AppKeyStr,omitempty" xml:"AppKeyStr,omitempty"`
+	// The keyword.
+	//
 	// example:
 	//
 	// apiName
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 20

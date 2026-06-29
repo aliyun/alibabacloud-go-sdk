@@ -16,8 +16,12 @@ type iDeleteSecurityIdentifyResultsRequest interface {
 }
 
 type DeleteSecurityIdentifyResultsRequest struct {
+	// The delete instruction.
+	//
 	// This parameter is required.
 	DeleteCommand *DeleteSecurityIdentifyResultsRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,6 +66,7 @@ func (s *DeleteSecurityIdentifyResultsRequest) Validate() error {
 }
 
 type DeleteSecurityIdentifyResultsRequestDeleteCommand struct {
+	// The list of identification result IDs.
 	IdentifyResultIdList []*int64 `json:"IdentifyResultIdList,omitempty" xml:"IdentifyResultIdList,omitempty" type:"Repeated"`
 }
 

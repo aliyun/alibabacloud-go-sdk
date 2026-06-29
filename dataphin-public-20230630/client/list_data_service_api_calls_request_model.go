@@ -18,14 +18,20 @@ type iListDataServiceApiCallsRequest interface {
 }
 
 type ListDataServiceApiCallsRequest struct {
+	// The query conditions.
+	//
 	// This parameter is required.
 	ListQuery *ListDataServiceApiCallsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The ID of the tenant.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the data service project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -79,51 +85,70 @@ func (s *ListDataServiceApiCallsRequest) Validate() error {
 }
 
 type ListDataServiceApiCallsRequestListQuery struct {
+	// The ID of the API.
+	//
 	// example:
 	//
 	// 20122
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The name of the API.
+	//
 	// example:
 	//
 	// test
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	// Deprecated
 	//
-	// appKey
+	// The application key.
+	//
+	// 	Notice: This parameter is deprecated. Use AppKeyStr instead.
 	//
 	// example:
 	//
-	// 1021
+	// 12345
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The application key.
+	//
 	// example:
 	//
 	// app12345
 	AppKeyStr *string `json:"AppKeyStr,omitempty" xml:"AppKeyStr,omitempty"`
+	// The IP address.
+	//
 	// example:
 	//
 	// 192.168.1.1
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The end time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-06-30 20:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-06-30 08:00:00
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Indicates whether the call was successful.
+	Successful *bool `json:"Successful,omitempty" xml:"Successful,omitempty"`
 }
 
 func (s ListDataServiceApiCallsRequestListQuery) String() string {

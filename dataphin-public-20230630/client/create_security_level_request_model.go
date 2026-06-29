@@ -16,8 +16,12 @@ type iCreateSecurityLevelRequest interface {
 }
 
 type CreateSecurityLevelRequest struct {
+	// The create command.
+	//
 	// This parameter is required.
 	CreateCommand *CreateSecurityLevelRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,18 +66,26 @@ func (s *CreateSecurityLevelRequest) Validate() error {
 }
 
 type CreateSecurityLevelRequestCreateCommand struct {
+	// The abbreviation of the classification level.
+	//
 	// example:
 	//
 	// test
 	Abbreviation *string `json:"Abbreviation,omitempty" xml:"Abbreviation,omitempty"`
+	// The description of the classification level.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The sort order of the classification level. If this parameter is not specified, the current maximum order ID is used by default.
+	//
 	// example:
 	//
 	// 1
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The name of the classification level.
+	//
 	// This parameter is required.
 	//
 	// example:

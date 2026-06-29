@@ -16,8 +16,16 @@ type iListAuthorizedDataServiceApiDetailsShrinkRequest interface {
 }
 
 type ListAuthorizedDataServiceApiDetailsShrinkRequest struct {
+	// The query request.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

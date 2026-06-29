@@ -16,12 +16,15 @@ type iUpdateUserGroupRequest interface {
 }
 
 type UpdateUserGroupRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
-	OpTenantId    *int64                               `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The command to edit the user group.
 	UpdateCommand *UpdateUserGroupRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
 
@@ -61,17 +64,27 @@ func (s *UpdateUserGroupRequest) Validate() error {
 }
 
 type UpdateUserGroupRequestUpdateCommand struct {
+	// The list of administrator user IDs for the user group.
 	AdminUserIdList []*string `json:"AdminUserIdList,omitempty" xml:"AdminUserIdList,omitempty" type:"Repeated"`
+	// The description of the user group.
+	//
 	// example:
 	//
 	// xx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the user group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 13423
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the user group.
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

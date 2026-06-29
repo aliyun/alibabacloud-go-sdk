@@ -16,8 +16,12 @@ type iDeleteQualityWatchesRequest interface {
 }
 
 type DeleteQualityWatchesRequest struct {
+	// The delete instruction.
+	//
 	// This parameter is required.
 	DeleteCommand *DeleteQualityWatchesRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,6 +66,8 @@ func (s *DeleteQualityWatchesRequest) Validate() error {
 }
 
 type DeleteQualityWatchesRequestDeleteCommand struct {
+	// The IDs of the monitored objects.
+	//
 	// This parameter is required.
 	WatchIdList []*int64 `json:"WatchIdList,omitempty" xml:"WatchIdList,omitempty" type:"Repeated"`
 }

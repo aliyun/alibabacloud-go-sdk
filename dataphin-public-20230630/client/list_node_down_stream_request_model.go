@@ -18,12 +18,22 @@ type iListNodeDownStreamRequest interface {
 }
 
 type ListNodeDownStreamRequest struct {
+	// The environment identifier. Valid values:
+	//
+	// - DEV: development environment.
+	//
+	// - PROD (default): production environment.
+	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The request for querying node downstream.
+	//
 	// This parameter is required.
 	ListQuery *ListNodeDownStreamRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -77,13 +87,20 @@ func (s *ListNodeDownStreamRequest) Validate() error {
 }
 
 type ListNodeDownStreamRequestListQuery struct {
+	// The depth. Default value: 3.
+	//
 	// example:
 	//
 	// 1
-	DownStreamDepth *int32                                          `json:"DownStreamDepth,omitempty" xml:"DownStreamDepth,omitempty"`
-	FilterList      []*ListNodeDownStreamRequestListQueryFilterList `json:"FilterList,omitempty" xml:"FilterList,omitempty" type:"Repeated"`
+	DownStreamDepth *int32 `json:"DownStreamDepth,omitempty" xml:"DownStreamDepth,omitempty"`
+	// The filters. You can include or exclude results based on projects or nodes. Default value: empty.
+	FilterList []*ListNodeDownStreamRequestListQueryFilterList `json:"FilterList,omitempty" xml:"FilterList,omitempty" type:"Repeated"`
+	// The list of nodes.
+	//
 	// This parameter is required.
 	NodeIdList []*ListNodeDownStreamRequestListQueryNodeIdList `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 123011
@@ -157,14 +174,25 @@ func (s *ListNodeDownStreamRequestListQuery) Validate() error {
 }
 
 type ListNodeDownStreamRequestListQueryFilterList struct {
+	// Specifies whether to exclude the matched results. Default value: false.
+	//
 	// example:
 	//
 	// false
 	Exclude *bool `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	// The filter key. Valid values:
+	//
+	// - PROJECT: project
+	//
+	// - PHYSICAL_NODE_ID: physical node ID
+	//
+	// - LOGICAL_TABLE_NODE_ID: logical table ID.
+	//
 	// example:
 	//
 	// PROJECT
-	Key       *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The list of filter values.
 	ValueList []*string `json:"ValueList,omitempty" xml:"ValueList,omitempty" type:"Repeated"`
 }
 
@@ -208,10 +236,14 @@ func (s *ListNodeDownStreamRequestListQueryFilterList) Validate() error {
 }
 
 type ListNodeDownStreamRequestListQueryNodeIdList struct {
+	// The list of field IDs. This parameter can be specified when the node ID is a logical table node ID. If this parameter is not specified, all fields in the table are used by default.
+	//
 	// example:
 	//
 	// 112
 	FieldIdList []*string `json:"FieldIdList,omitempty" xml:"FieldIdList,omitempty" type:"Repeated"`
+	// The node ID.
+	//
 	// example:
 	//
 	// n_23431

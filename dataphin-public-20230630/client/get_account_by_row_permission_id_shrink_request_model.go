@@ -16,8 +16,12 @@ type iGetAccountByRowPermissionIdShrinkRequest interface {
 }
 
 type GetAccountByRowPermissionIdShrinkRequest struct {
+	// The request command.
+	//
 	// This parameter is required.
 	GetAccountByRowPermissionIdQueryShrink *string `json:"GetAccountByRowPermissionIdQuery,omitempty" xml:"GetAccountByRowPermissionIdQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

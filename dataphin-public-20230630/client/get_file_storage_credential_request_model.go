@@ -20,21 +20,36 @@ type iGetFileStorageCredentialRequest interface {
 }
 
 type GetFileStorageCredentialRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project ID. This parameter is required when the temporary authorization is used to create resource files.
+	//
 	// example:
 	//
 	// 1030131021
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The purpose of the authorization. Valid values:
+	//
+	// - RESOURCE: creates resource files.
+	//
+	// - COMPUTE_SOURCE_SETTING: stores compute source configurations.
+	//
+	// - NONE: no specific purpose.
+	//
+	// Default value: NONE.
+	//
 	// example:
 	//
 	// RESOURCE
-	Purpose        *string `json:"Purpose,omitempty" xml:"Purpose,omitempty"`
-	UseVpcEndpoint *bool   `json:"UseVpcEndpoint,omitempty" xml:"UseVpcEndpoint,omitempty"`
+	Purpose *string `json:"Purpose,omitempty" xml:"Purpose,omitempty"`
+	// Specifies whether to use an internal endpoint. Default value: false.
+	UseVpcEndpoint *bool `json:"UseVpcEndpoint,omitempty" xml:"UseVpcEndpoint,omitempty"`
 }
 
 func (s GetFileStorageCredentialRequest) String() string {

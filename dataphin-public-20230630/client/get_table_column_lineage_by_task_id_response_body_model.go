@@ -24,23 +24,34 @@ type iGetTableColumnLineageByTaskIdResponseBody interface {
 }
 
 type GetTableColumnLineageByTaskIdResponseBody struct {
+	// Error code. A value of OK indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Query results.
 	Data []*GetTableColumnLineageByTaskIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -123,104 +134,184 @@ func (s *GetTableColumnLineageByTaskIdResponseBody) Validate() error {
 }
 
 type GetTableColumnLineageByTaskIdResponseBodyData struct {
+	// Business unit ID of the input table.
+	//
 	// example:
 	//
 	// 123
 	InputBizUnitId *int64 `json:"InputBizUnitId,omitempty" xml:"InputBizUnitId,omitempty"`
+	// GUID of the input column.
+	//
 	// example:
 	//
 	// odps.123.test_project.input_table.id
 	InputColumnId *string `json:"InputColumnId,omitempty" xml:"InputColumnId,omitempty"`
+	// Input column name.
+	//
 	// example:
 	//
 	// id
 	InputColumnName *string `json:"InputColumnName,omitempty" xml:"InputColumnName,omitempty"`
+	// Data source ID of the input table.
+	//
 	// example:
 	//
 	// 123
 	InputDataSourceId *int64 `json:"InputDataSourceId,omitempty" xml:"InputDataSourceId,omitempty"`
+	// Storage type of the input table.
+	//
 	// example:
 	//
 	// MAX_COMPUTE
 	InputDataSourceType *string `json:"InputDataSourceType,omitempty" xml:"InputDataSourceType,omitempty"`
+	// Database type of the input table.
+	//
 	// example:
 	//
 	// MAX_COMPUTE
 	InputDbType *string `json:"InputDbType,omitempty" xml:"InputDbType,omitempty"`
+	// Environment of the input table: DEV or PROD.
+	//
 	// example:
 	//
 	// DEV
 	InputEnv *string `json:"InputEnv,omitempty" xml:"InputEnv,omitempty"`
+	// Project ID of the input table.
+	//
 	// example:
 	//
 	// 123
-	InputProjectId    *int64 `json:"InputProjectId,omitempty" xml:"InputProjectId,omitempty"`
-	InputTableDeleted *bool  `json:"InputTableDeleted,omitempty" xml:"InputTableDeleted,omitempty"`
+	InputProjectId *int64 `json:"InputProjectId,omitempty" xml:"InputProjectId,omitempty"`
+	// Indicates whether the input table is deleted.
+	InputTableDeleted *bool `json:"InputTableDeleted,omitempty" xml:"InputTableDeleted,omitempty"`
+	// GUID of the input table. Each asset has a unique GUID in the following format:
+	//
+	// - Logical table: dp_table.[TenantId].[BizUnitName].[TableName]
+	//
+	// - Compute source physical table: [EngineType].[TenantId].[ProjectName].[TableName]
+	//
+	// - Data source table: dp_ds_table.[TenantId].[DataSourceId].[SchemaName].[TableName]
+	//
 	// example:
 	//
 	// odps.123.test_project.order
 	InputTableId *string `json:"InputTableId,omitempty" xml:"InputTableId,omitempty"`
+	// Input table name.
+	//
 	// example:
 	//
 	// order
 	InputTableName *string `json:"InputTableName,omitempty" xml:"InputTableName,omitempty"`
+	// Input table type. Valid values:
+	//
+	// - PHYSICAL_TABLE: Physical table (compute source)
+	//
+	// - DIM_LOGIC_TABLE: Dimension logical table
+	//
+	// - FACT_LOGIC_TABLE: Fact logical table
+	//
+	// - SUM_LOGIC_TABLE: Summary logical table
+	//
+	// - REAL_TIME_LOGIC_TABLE: Real-time meta table
+	//
+	// - REAL_TIME_MIRROR_TABLE: Real-time mirror table
+	//
+	// - PHYSICAL_VIEW: Physical view
+	//
+	// - LOGICAL_VIEW: Logical view
+	//
+	// - DATA_SOURCE_PHYSICAL_TABLE: Data source table
+	//
+	// - DATA_SOURCE_VIEW: Data source view
+	//
+	// - DATA_SOURCE_MATERIALIZED_VIEW: Data source materialized view
+	//
 	// example:
 	//
 	// PHYSICAL_TABLE
 	InputTableType *string `json:"InputTableType,omitempty" xml:"InputTableType,omitempty"`
+	// Business unit ID of the output table.
+	//
 	// example:
 	//
 	// 123
 	OutputBizUnitId *int64 `json:"OutputBizUnitId,omitempty" xml:"OutputBizUnitId,omitempty"`
+	// GUID of the output column.
+	//
 	// example:
 	//
 	// odps.123.test_project.input_table.id
 	OutputColumnId *string `json:"OutputColumnId,omitempty" xml:"OutputColumnId,omitempty"`
+	// Output column name.
+	//
 	// example:
 	//
 	// id
 	OutputColumnName *string `json:"OutputColumnName,omitempty" xml:"OutputColumnName,omitempty"`
+	// Data source ID of the output table.
+	//
 	// example:
 	//
 	// 123
 	OutputDataSourceId *int64 `json:"OutputDataSourceId,omitempty" xml:"OutputDataSourceId,omitempty"`
+	// Storage type of the output table.
+	//
 	// example:
 	//
 	// MAX_COMPUTE
 	OutputDataSourceType *string `json:"OutputDataSourceType,omitempty" xml:"OutputDataSourceType,omitempty"`
+	// Database type of the output table.
+	//
 	// example:
 	//
 	// MAX_COMPUTE
 	OutputDbType *string `json:"OutputDbType,omitempty" xml:"OutputDbType,omitempty"`
+	// Environment of the output table: DEV or PROD.
+	//
 	// example:
 	//
 	// DEV
 	OutputEnv *string `json:"OutputEnv,omitempty" xml:"OutputEnv,omitempty"`
+	// Project ID of the output table.
+	//
 	// example:
 	//
 	// 123
-	OutputProjectId    *int64 `json:"OutputProjectId,omitempty" xml:"OutputProjectId,omitempty"`
-	OutputTableDeleted *bool  `json:"OutputTableDeleted,omitempty" xml:"OutputTableDeleted,omitempty"`
+	OutputProjectId *int64 `json:"OutputProjectId,omitempty" xml:"OutputProjectId,omitempty"`
+	// Indicates whether the output table is deleted.
+	OutputTableDeleted *bool `json:"OutputTableDeleted,omitempty" xml:"OutputTableDeleted,omitempty"`
+	// GUID of the output table. Each asset has a unique GUID. For the format, see InputTableId.
+	//
 	// example:
 	//
 	// odps.123.test_project.order
 	OutputTableId *string `json:"OutputTableId,omitempty" xml:"OutputTableId,omitempty"`
+	// Output table name.
+	//
 	// example:
 	//
 	// order
 	OutputTableName *string `json:"OutputTableName,omitempty" xml:"OutputTableName,omitempty"`
+	// Output table type. For valid values, see InputTableType.
+	//
 	// example:
 	//
 	// PHYSICAL_TABLE
 	OutputTableType *string `json:"OutputTableType,omitempty" xml:"OutputTableType,omitempty"`
+	// Environment of the task (node) associated with the lineage: DEV or PROD.
+	//
 	// example:
 	//
 	// DEV
 	TaskEnv *string `json:"TaskEnv,omitempty" xml:"TaskEnv,omitempty"`
+	// Task (node) ID associated with the lineage.
+	//
 	// example:
 	//
 	// n_123
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Tenant ID.
+	//
 	// example:
 	//
 	// 12345

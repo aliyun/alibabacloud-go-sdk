@@ -16,8 +16,12 @@ type iCreateStandardWordRootRequest interface {
 }
 
 type CreateStandardWordRootRequest struct {
+	// The create instruction.
+	//
 	// This parameter is required.
 	CreateCommand *CreateStandardWordRootRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,22 +66,30 @@ func (s *CreateStandardWordRootRequest) Validate() error {
 }
 
 type CreateStandardWordRootRequestCreateCommand struct {
+	// The abbreviation of the root word.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// avg
 	Abbreviation *string `json:"Abbreviation,omitempty" xml:"Abbreviation,omitempty"`
+	// The description of the root word.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The full name of the root word.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// average
 	FullName *string `json:"FullName,omitempty" xml:"FullName,omitempty"`
+	// The name of the root word.
+	//
 	// This parameter is required.
 	//
 	// example:

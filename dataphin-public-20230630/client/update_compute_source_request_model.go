@@ -16,12 +16,16 @@ type iUpdateComputeSourceRequest interface {
 }
 
 type UpdateComputeSourceRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The edit command.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateComputeSourceRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,26 +66,36 @@ func (s *UpdateComputeSourceRequest) Validate() error {
 }
 
 type UpdateComputeSourceRequestUpdateCommand struct {
+	// The connection configuration items.
+	//
 	// This parameter is required.
 	ConfigList []*UpdateComputeSourceRequestUpdateCommandConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	// The description.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the compute source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 102311
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the compute source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test1021
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the compute source.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -157,12 +171,16 @@ func (s *UpdateComputeSourceRequestUpdateCommand) Validate() error {
 }
 
 type UpdateComputeSourceRequestUpdateCommandConfigList struct {
+	// The key of the configuration item.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the configuration item.
+	//
 	// This parameter is required.
 	//
 	// example:

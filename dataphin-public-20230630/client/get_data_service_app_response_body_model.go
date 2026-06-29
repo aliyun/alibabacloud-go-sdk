@@ -24,15 +24,22 @@ type iGetDataServiceAppResponseBody interface {
 }
 
 type GetDataServiceAppResponseBody struct {
+	// The response code returned by the backend.
+	//
 	// example:
 	//
 	// OK
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the data service application.
 	Data *GetDataServiceAppResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned by the backend.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type GetDataServiceAppResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataServiceAppResponseBody) String() string {
@@ -118,32 +126,52 @@ func (s *GetDataServiceAppResponseBody) Validate() error {
 }
 
 type GetDataServiceAppResponseBodyData struct {
+	// The application group name.
+	//
 	// example:
 	//
 	// 默认分组
 	AppGroup *string `json:"AppGroup,omitempty" xml:"AppGroup,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// 12345
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The AppKey of the application.
+	//
 	// example:
 	//
 	// 默认应用
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// 默认应用
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The AppSecret of the application.
+	//
 	// example:
 	//
 	// 默认应用
 	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	// The IP whitelist addresses. Specify IP addresses or CIDR blocks separated by semicolons (;). CIDR blocks end with a slash (/) followed by a number in the range of 1 to 32. Example: 192.168.3.12/24.
+	//
 	// example:
 	//
 	// true
-	IpWhitelist       *string                                       `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
-	IpWhitelistStatus *bool                                         `json:"IpWhitelistStatus,omitempty" xml:"IpWhitelistStatus,omitempty"`
-	OwnerList         []*GetDataServiceAppResponseBodyDataOwnerList `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
+	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+	// Indicates whether the IP whitelist is enabled. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
+	IpWhitelistStatus *bool `json:"IpWhitelistStatus,omitempty" xml:"IpWhitelistStatus,omitempty"`
+	// The list of owners.
+	OwnerList []*GetDataServiceAppResponseBodyDataOwnerList `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
+	// The common scenarios.
+	//
 	// example:
 	//
 	// 数据分析
@@ -253,10 +281,14 @@ func (s *GetDataServiceAppResponseBodyData) Validate() error {
 }
 
 type GetDataServiceAppResponseBodyDataOwnerList struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 12345
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// 张三

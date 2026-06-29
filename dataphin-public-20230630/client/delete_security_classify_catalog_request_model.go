@@ -16,8 +16,12 @@ type iDeleteSecurityClassifyCatalogRequest interface {
 }
 
 type DeleteSecurityClassifyCatalogRequest struct {
+	// The delete instruction.
+	//
 	// This parameter is required.
 	DeleteCommand *DeleteSecurityClassifyCatalogRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,13 +66,16 @@ func (s *DeleteSecurityClassifyCatalogRequest) Validate() error {
 }
 
 type DeleteSecurityClassifyCatalogRequestDeleteCommand struct {
+	// The full path of the original catalog.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /d1/d2/
-	Path                 *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	ReturnRemovedDetails *bool   `json:"ReturnRemovedDetails,omitempty" xml:"ReturnRemovedDetails,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// Specifies whether to return deletion details. Default value: true.
+	ReturnRemovedDetails *bool `json:"ReturnRemovedDetails,omitempty" xml:"ReturnRemovedDetails,omitempty"`
 }
 
 func (s DeleteSecurityClassifyCatalogRequestDeleteCommand) String() string {

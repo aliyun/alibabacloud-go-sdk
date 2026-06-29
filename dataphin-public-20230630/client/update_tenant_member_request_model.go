@@ -16,12 +16,16 @@ type iUpdateTenantMemberRequest interface {
 }
 
 type UpdateTenantMemberRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The request object.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateTenantMemberRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -62,6 +66,8 @@ func (s *UpdateTenantMemberRequest) Validate() error {
 }
 
 type UpdateTenantMemberRequestUpdateCommand struct {
+	// The list of members.
+	//
 	// This parameter is required.
 	MemberList []*UpdateTenantMemberRequestUpdateCommandMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
 }
@@ -97,19 +103,28 @@ func (s *UpdateTenantMemberRequestUpdateCommand) Validate() error {
 }
 
 type UpdateTenantMemberRequestUpdateCommandMemberList struct {
+	// The DingTalk number.
+	//
 	// example:
 	//
 	// 123@dingding
 	DingNumber *string `json:"DingNumber,omitempty" xml:"DingNumber,omitempty"`
+	// The email address.
+	//
 	// example:
 	//
 	// 123@xx.com
 	Mail *string `json:"Mail,omitempty" xml:"Mail,omitempty"`
+	// The phone number.
+	//
 	// example:
 	//
 	// 13888888888
-	MobilePhone *string   `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	RoleList    []*string `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
+	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	// The list of roles.
+	RoleList []*string `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 2331

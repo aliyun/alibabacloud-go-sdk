@@ -18,14 +18,20 @@ type iGrantDataServiceApiRequest interface {
 }
 
 type GrantDataServiceApiRequest struct {
+	// The grant command.
+	//
 	// This parameter is required.
 	GrantCommand *GrantDataServiceApiRequestGrantCommand `json:"GrantCommand,omitempty" xml:"GrantCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The data service project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -79,39 +85,76 @@ func (s *GrantDataServiceApiRequest) Validate() error {
 }
 
 type GrantDataServiceApiRequestGrantCommand struct {
+	// The API ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1021
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// AppID
+	// The application ID.
 	//
 	// example:
 	//
 	// 1201
-	AppId        *int32                                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ApplyDev     *bool                                                 `json:"ApplyDev,omitempty" xml:"ApplyDev,omitempty"`
-	ApplyProd    *bool                                                 `json:"ApplyProd,omitempty" xml:"ApplyProd,omitempty"`
-	AuthTypes    []*string                                             `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty" type:"Repeated"`
+	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Specifies whether to request development environment permissions for operation-type APIs.
+	//
+	// example:
+	//
+	// true
+	ApplyDev *bool `json:"ApplyDev,omitempty" xml:"ApplyDev,omitempty"`
+	// Specifies whether to request production environment permissions for operation-type APIs.
+	//
+	// example:
+	//
+	// true
+	ApplyProd *bool `json:"ApplyProd,omitempty" xml:"ApplyProd,omitempty"`
+	// The list of authorization permission types. Valid values:
+	//
+	// - When the grantee is an application, the following permission types are supported. To grant delegation permissions, you must also grant usage permissions.
+	//
+	//   - USE: usage permission.
+	//
+	//   - DELEGATION: delegation permission.
+	//
+	// - When the grantee is an individual, only USE (usage) permission is supported.
+	//
+	// - If this parameter is not specified, the default value is USE (usage) permission.
+	AuthTypes []*string `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty" type:"Repeated"`
+	// The list of development environment permission fields for query-type APIs. This parameter is required in dev-prod mode. DevFieldList and ProdFieldList cannot both be empty. This parameter is not required for operation-type APIs.
 	DevFieldList []*GrantDataServiceApiRequestGrantCommandDevFieldList `json:"DevFieldList,omitempty" xml:"DevFieldList,omitempty" type:"Repeated"`
+	// The expiration date in the format of yyyy-MM-dd.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-06-30
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The authorization object type. Valid values:
+	//
+	// - APP: application.
+	//
+	// - USER: user.
+	//
 	// example:
 	//
 	// APP
-	GranteeType   *string                                                `json:"GranteeType,omitempty" xml:"GranteeType,omitempty"`
+	GranteeType *string `json:"GranteeType,omitempty" xml:"GranteeType,omitempty"`
+	// The list of production environment permission fields for query-type APIs. This parameter is required in basic mode. This parameter is not required for operation-type APIs.
 	ProdFieldList []*GrantDataServiceApiRequestGrantCommandProdFieldList `json:"ProdFieldList,omitempty" xml:"ProdFieldList,omitempty" type:"Repeated"`
+	// The reason for the authorization request.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 12345
@@ -248,6 +291,11 @@ func (s *GrantDataServiceApiRequestGrantCommand) Validate() error {
 }
 
 type GrantDataServiceApiRequestGrantCommandDevFieldList struct {
+	// The API permission field ID.
+	//
+	// example:
+	//
+	// 1
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -273,6 +321,11 @@ func (s *GrantDataServiceApiRequestGrantCommandDevFieldList) Validate() error {
 }
 
 type GrantDataServiceApiRequestGrantCommandProdFieldList struct {
+	// The API permission field ID.
+	//
+	// example:
+	//
+	// 1
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

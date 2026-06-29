@@ -16,8 +16,12 @@ type iCreateStandardMappingShrinkRequest interface {
 }
 
 type CreateStandardMappingShrinkRequest struct {
+	// The create command.
+	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

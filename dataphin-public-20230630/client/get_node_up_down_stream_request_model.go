@@ -24,26 +24,42 @@ type iGetNodeUpDownStreamRequest interface {
 }
 
 type GetNodeUpDownStreamRequest struct {
+	// The downstream depth. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	DownStreamDepth *int32 `json:"DownStreamDepth,omitempty" xml:"DownStreamDepth,omitempty"`
+	// The environment identifier. Valid values:
+	//
+	// - DEV: development environment.
+	//
+	// - PROD (default): production environment.
+	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The node ID.
+	//
 	// This parameter is required.
 	NodeId *GetNodeUpDownStreamRequestNodeId `json:"NodeId,omitempty" xml:"NodeId,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 113123
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The upstream depth. Default value: 1.
+	//
 	// example:
 	//
 	// 1
@@ -122,10 +138,14 @@ func (s *GetNodeUpDownStreamRequest) Validate() error {
 }
 
 type GetNodeUpDownStreamRequestNodeId struct {
+	// This parameter can be specified when the node ID is a logical table node ID. If this parameter is not specified, the full table is used by default.
+	//
 	// example:
 	//
 	// 12
 	FieldIdList *string `json:"FieldIdList,omitempty" xml:"FieldIdList,omitempty"`
+	// The node ID.
+	//
 	// This parameter is required.
 	//
 	// example:

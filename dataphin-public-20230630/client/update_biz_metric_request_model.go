@@ -16,12 +16,16 @@ type iUpdateBizMetricRequest interface {
 }
 
 type UpdateBizMetricRequest struct {
+	// Tenant ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// Update request
+	//
 	// This parameter is required.
 	UpdateBizMetricCommand *UpdateBizMetricRequestUpdateBizMetricCommand `json:"UpdateBizMetricCommand,omitempty" xml:"UpdateBizMetricCommand,omitempty" type:"Struct"`
 }
@@ -62,54 +66,80 @@ func (s *UpdateBizMetricRequest) Validate() error {
 }
 
 type UpdateBizMetricRequestUpdateBizMetricCommand struct {
+	// List of associated technical metrics. Enter the full name of the technical metric in the format of "TableFullName.MetricName", where "TableFullName" equals "AssetSource.TableName". A technical metric can only be associated with one business metric and cannot be associated repeatedly
 	AssociatedTechMetricFullNames []*string `json:"AssociatedTechMetricFullNames,omitempty" xml:"AssociatedTechMetricFullNames,omitempty" type:"Repeated"`
+	// Business owner. Enter the username of the owner account
+	//
 	// example:
 	//
 	// SuperAdmin
-	BizOwnerName    *string                                                        `json:"BizOwnerName,omitempty" xml:"BizOwnerName,omitempty"`
-	CatalogIds      []*int64                                                       `json:"CatalogIds,omitempty" xml:"CatalogIds,omitempty" type:"Repeated"`
+	BizOwnerName *string `json:"BizOwnerName,omitempty" xml:"BizOwnerName,omitempty"`
+	// List of catalog IDs
+	CatalogIds []*int64 `json:"CatalogIds,omitempty" xml:"CatalogIds,omitempty" type:"Repeated"`
+	// List of custom attributes. Enter the attribute code and attribute values for each
 	CustomAttribute []*UpdateBizMetricRequestUpdateBizMetricCommandCustomAttribute `json:"CustomAttribute,omitempty" xml:"CustomAttribute,omitempty" type:"Repeated"`
+	// Description
+	//
 	// example:
 	//
 	// Metric Desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Display name
+	//
 	// example:
 	//
 	// Metric1_DisplayName
-	DisplayName *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Labels      []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Asset labels
+	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// Metric definition. To reference other business metrics, enclose the metric name in square brackets [ ]
+	//
 	// example:
 	//
 	// [Metric2]+[Metric3]
 	MetricDefinition *string `json:"MetricDefinition,omitempty" xml:"MetricDefinition,omitempty"`
+	// This parameter is read only when the metric relationship diagram is enabled. Only a calculation expression composed of metric names selected from related business metrics is supported. Supported operators include +, -, *, /, (), %, and ∑. Each metric name must be enclosed in square brackets [ ]. If no operator is specified between two metrics, the system automatically fills in a placeholder. If no metric relationship expression is configured, the metric relationship diagram switch is automatically disabled
+	//
 	// example:
 	//
 	// [Metric1]+[Metric2]
 	MetricRelationDiagramExpression *string `json:"MetricRelationDiagramExpression,omitempty" xml:"MetricRelationDiagramExpression,omitempty"`
+	// Metric relationship diagram switch. Valid values: true (enabled) and false (disabled). This can be enabled only when at least one related business metric exists. Otherwise, it is automatically disabled
+	//
 	// example:
 	//
 	// true
 	MetricRelationDiagramSwitchOpen *bool `json:"MetricRelationDiagramSwitchOpen,omitempty" xml:"MetricRelationDiagramSwitchOpen,omitempty"`
+	// Enter the name of the business metric to update
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Metric1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The new name. Enter this when you need to modify the metric name
+	//
 	// example:
 	//
 	// Metric1_new
 	NewName *string `json:"NewName,omitempty" xml:"NewName,omitempty"`
+	// Content of the usage instructions. Only text format is supported
+	//
 	// example:
 	//
 	// content test
 	OperateInstructionContent *string `json:"OperateInstructionContent,omitempty" xml:"OperateInstructionContent,omitempty"`
+	// Specifies whether the usage instructions are enabled. Valid values: true (enabled) and false (disabled)
+	//
 	// example:
 	//
 	// true
-	OperateInstructionEnabled *bool                                                            `json:"OperateInstructionEnabled,omitempty" xml:"OperateInstructionEnabled,omitempty"`
-	RelatedBizMetrics         []*UpdateBizMetricRequestUpdateBizMetricCommandRelatedBizMetrics `json:"RelatedBizMetrics,omitempty" xml:"RelatedBizMetrics,omitempty" type:"Repeated"`
-	ViewScope                 *UpdateBizMetricRequestUpdateBizMetricCommandViewScope           `json:"ViewScope,omitempty" xml:"ViewScope,omitempty" type:"Struct"`
+	OperateInstructionEnabled *bool `json:"OperateInstructionEnabled,omitempty" xml:"OperateInstructionEnabled,omitempty"`
+	// List of related business metrics
+	RelatedBizMetrics []*UpdateBizMetricRequestUpdateBizMetricCommandRelatedBizMetrics `json:"RelatedBizMetrics,omitempty" xml:"RelatedBizMetrics,omitempty" type:"Repeated"`
+	// Visibility scope
+	ViewScope *UpdateBizMetricRequestUpdateBizMetricCommandViewScope `json:"ViewScope,omitempty" xml:"ViewScope,omitempty" type:"Struct"`
 }
 
 func (s UpdateBizMetricRequestUpdateBizMetricCommand) String() string {
@@ -292,10 +322,13 @@ func (s *UpdateBizMetricRequestUpdateBizMetricCommand) Validate() error {
 }
 
 type UpdateBizMetricRequestUpdateBizMetricCommandCustomAttribute struct {
+	// Custom attribute code
+	//
 	// example:
 	//
 	// CustomAttributeCode
-	Code   *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of attribute values. 1. For custom input and single-select dropdown attributes, only the first value in the list is read. 2. For multi-select dropdown attributes, all values in the list are read. 3. For hyperlink attributes, the first value is used as the display text and the second value is used as the link URL.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -330,10 +363,14 @@ func (s *UpdateBizMetricRequestUpdateBizMetricCommandCustomAttribute) Validate()
 }
 
 type UpdateBizMetricRequestUpdateBizMetricCommandRelatedBizMetrics struct {
+	// Business metric name
+	//
 	// example:
 	//
 	// Metric2
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Correlation type. Valid values: POSITIVE (positive correlation), NEGATIVE (negative correlation), and OTHER (other)
+	//
 	// example:
 	//
 	// POSITIVE
@@ -371,12 +408,16 @@ func (s *UpdateBizMetricRequestUpdateBizMetricCommandRelatedBizMetrics) Validate
 }
 
 type UpdateBizMetricRequestUpdateBizMetricCommandViewScope struct {
+	// Visibility scope type. Valid values: ALL_USERS_CAN_VIEW (visible to all users), PART_USERS_CAN_VIEW (visible to specified users), and PART_USERS_CAN_NOT_VIEW (invisible to specified users)
+	//
 	// example:
 	//
 	// ALL_USERS_CAN_VIEW
-	ScopeType      *string   `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	// Enter user group names. This parameter is read only when the visibility scope is set to PART_USERS_CAN_VIEW or PART_USERS_CAN_NOT_VIEW
 	UserGroupNames []*string `json:"UserGroupNames,omitempty" xml:"UserGroupNames,omitempty" type:"Repeated"`
-	UserNames      []*string `json:"UserNames,omitempty" xml:"UserNames,omitempty" type:"Repeated"`
+	// Enter the usernames of individual accounts. This parameter takes effect only when the visibility scope is set to PART_USERS_CAN_VIEW or PART_USERS_CAN_NOT_VIEW
+	UserNames []*string `json:"UserNames,omitempty" xml:"UserNames,omitempty" type:"Repeated"`
 }
 
 func (s UpdateBizMetricRequestUpdateBizMetricCommandViewScope) String() string {

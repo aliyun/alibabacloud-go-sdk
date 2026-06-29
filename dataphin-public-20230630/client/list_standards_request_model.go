@@ -16,8 +16,12 @@ type iListStandardsRequest interface {
 }
 
 type ListStandardsRequest struct {
+	// Search conditions.
+	//
 	// This parameter is required.
 	ListQuery *ListStandardsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
+	// Tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,32 +66,48 @@ func (s *ListStandardsRequest) Validate() error {
 }
 
 type ListStandardsRequestListQuery struct {
+	// Directory of the standard.
+	//
 	// example:
 	//
 	// /dir1/dir2
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// Search keyword: fuzzy search by standard name, English name, or code. Case-insensitive, sorted by relevance.
+	//
 	// example:
 	//
 	// Test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Number of records per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
-	PageSize          *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Standard set ID list.
 	StandardSetIdList []*int64 `json:"StandardSetIdList,omitempty" xml:"StandardSetIdList,omitempty" type:"Repeated"`
+	// Stage of the standard: DEV or PROD.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEV
-	StandardStage          *string   `json:"StandardStage,omitempty" xml:"StandardStage,omitempty"`
-	StandardStatusList     []*string `json:"StandardStatusList,omitempty" xml:"StandardStatusList,omitempty" type:"Repeated"`
-	StandardTemplateIdList []*int64  `json:"StandardTemplateIdList,omitempty" xml:"StandardTemplateIdList,omitempty" type:"Repeated"`
-	StandardTypeList       []*string `json:"StandardTypeList,omitempty" xml:"StandardTypeList,omitempty" type:"Repeated"`
+	StandardStage *string `json:"StandardStage,omitempty" xml:"StandardStage,omitempty"`
+	// Standard status list. Standard statuses under DEV stage: DRAFT, UNDER_REVISION, UNDER_REVIEW, REVIEW_PASSED, IN_PUBLISH. Standard statuses under PROD stage: NOT_ACTIVATED, ACTIVE, EXPIRED.
+	StandardStatusList []*string `json:"StandardStatusList,omitempty" xml:"StandardStatusList,omitempty" type:"Repeated"`
+	// Standard template ID list.
+	StandardTemplateIdList []*int64 `json:"StandardTemplateIdList,omitempty" xml:"StandardTemplateIdList,omitempty" type:"Repeated"`
+	// Standard type: Basic, EMPTY indicates the standard type is empty.
+	StandardTypeList []*string `json:"StandardTypeList,omitempty" xml:"StandardTypeList,omitempty" type:"Repeated"`
+	// User ID: only queries standards visible to this user ID. If empty, queries standards visible to the current user.
+	//
 	// example:
 	//
 	// 30012011

@@ -16,7 +16,10 @@ type iCreateUserGroupRequest interface {
 }
 
 type CreateUserGroupRequest struct {
+	// The creation request.
 	CreateCommand *CreateUserGroupRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -61,16 +64,26 @@ func (s *CreateUserGroupRequest) Validate() error {
 }
 
 type CreateUserGroupRequestCreateCommand struct {
+	// Specifies whether to enable the user group.
+	//
 	// example:
 	//
 	// true
-	Active          *bool     `json:"Active,omitempty" xml:"Active,omitempty"`
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The user IDs of the user group administrators.
 	AdminUserIdList []*string `json:"AdminUserIdList,omitempty" xml:"AdminUserIdList,omitempty" type:"Repeated"`
+	// The description of the user group.
+	//
 	// example:
 	//
 	// xx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the user group.
+	//
+	// example:
+	//
+	// xx用户组
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateUserGroupRequestCreateCommand) String() string {

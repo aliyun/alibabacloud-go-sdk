@@ -24,15 +24,22 @@ type iCreateStandardRelationsResponseBody interface {
 }
 
 type CreateStandardRelationsResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The creation result.
 	Data *CreateStandardRelationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type CreateStandardRelationsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateStandardRelationsResponseBody) String() string {
@@ -118,7 +126,10 @@ func (s *CreateStandardRelationsResponseBody) Validate() error {
 }
 
 type CreateStandardRelationsResponseBodyData struct {
+	// The list of standard IDs that do not exist.
 	NotExistStandardIdList []*int64 `json:"NotExistStandardIdList,omitempty" xml:"NotExistStandardIdList,omitempty" type:"Repeated"`
+	// The number of successfully added items.
+	//
 	// example:
 	//
 	// 2

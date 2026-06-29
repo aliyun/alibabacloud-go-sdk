@@ -18,18 +18,24 @@ type iRevokeDataServiceApiRequest interface {
 }
 
 type RevokeDataServiceApiRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The data service project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 102102
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The revoke instruction.
+	//
 	// This parameter is required.
 	RevokeCommand *RevokeDataServiceApiRequestRevokeCommand `json:"RevokeCommand,omitempty" xml:"RevokeCommand,omitempty" type:"Struct"`
 }
@@ -79,34 +85,60 @@ func (s *RevokeDataServiceApiRequest) Validate() error {
 }
 
 type RevokeDataServiceApiRequestRevokeCommand struct {
+	// The API ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1021
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The ID of the application.
+	//
 	// example:
 	//
 	// 1203
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The permission type. Valid values:
+	//
+	// - USE: use permission
+	//
+	// - DELEGATION: delegation permission.
+	//
 	// example:
 	//
 	// USE
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The API environment. Valid values:
+	//
+	// - DEV: development environment
+	//
+	// - PROD: production environment.
+	//
 	// example:
 	//
-	// DEV
+	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The authorization object type. Valid values:
+	//
+	// - APP: application
+	//
+	// - USER: user.
+	//
 	// example:
 	//
 	// APP
 	GranteeType *string `json:"GranteeType,omitempty" xml:"GranteeType,omitempty"`
+	// The reason for the request.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 12345

@@ -24,23 +24,34 @@ type iGetPhysicalNodeByOutputNameResponseBody interface {
 }
 
 type GetPhysicalNodeByOutputNameResponseBody struct {
+	// Error code. OK indicates a successful request.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code returned by the backend
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// successful
-	Message  *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Node details
 	NodeInfo *GetPhysicalNodeByOutputNameResponseBodyNodeInfo `json:"NodeInfo,omitempty" xml:"NodeInfo,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful
+	//
 	// example:
 	//
 	// true
@@ -119,44 +130,118 @@ func (s *GetPhysicalNodeByOutputNameResponseBody) Validate() error {
 }
 
 type GetPhysicalNodeByOutputNameResponseBodyNodeInfo struct {
+	// Creation time
+	//
 	// example:
 	//
 	// 1717343597000
-	CreateTime  *int64                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Creator     *GetPhysicalNodeByOutputNameResponseBodyNodeInfoCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
-	Description *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Node creator
+	Creator *GetPhysicalNodeByOutputNameResponseBodyNodeInfoCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	// Description
+	//
+	// example:
+	//
+	// xx测试
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Node source
+	//
+	// - DATA_PROCESS: Code development
+	//
+	// - BLACK_BOX: Black box
+	//
+	// - ONE_ID: Extraction
+	//
+	// - PIPELINE: Pipeline
+	//
 	// example:
 	//
 	// DATA_PROCESS
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// Node ID
+	//
 	// example:
 	//
 	// n_2321
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Last modified time
+	//
 	// example:
 	//
 	// 1717343597000
-	LastModifiedTime *int64                                                   `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	Modifier         *GetPhysicalNodeByOutputNameResponseBodyNodeInfoModifier `json:"Modifier,omitempty" xml:"Modifier,omitempty" type:"Struct"`
-	Name             *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	LastModifiedTime *int64 `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	// Node modifier
+	Modifier *GetPhysicalNodeByOutputNameResponseBodyNodeInfoModifier `json:"Modifier,omitempty" xml:"Modifier,omitempty" type:"Struct"`
+	// Name
+	//
+	// example:
+	//
+	// xx测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Node subtype
+	//
+	// - MAX_COMPUTE_SQL
+	//
+	// - HIVE_SQL
+	//
+	// - SHELL
+	//
+	// - PYTHON
+	//
+	// - ONE_SERVICE_SQL
+	//
+	// - DATABASE_SQL, etc.
+	//
 	// example:
 	//
 	// SHELL
-	OperatorType *string                                               `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
-	Owner        *GetPhysicalNodeByOutputNameResponseBodyNodeInfoOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
+	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+	// Node owner
+	Owner *GetPhysicalNodeByOutputNameResponseBodyNodeInfoOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
+	// Priority
+	//
+	// - HIGHEST
+	//
+	// - HIGH
+	//
+	// - MIDDLE
+	//
+	// - LOW
+	//
+	// - LOWEST
+	//
 	// example:
 	//
 	// MIDDLE
-	Priority    *string                                                     `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Project to which the node belongs
 	ProjectInfo *GetPhysicalNodeByOutputNameResponseBodyNodeInfoProjectInfo `json:"ProjectInfo,omitempty" xml:"ProjectInfo,omitempty" type:"Struct"`
+	// Scheduling period type
+	//
+	// - MINUTELY
+	//
+	// - HOURLY
+	//
+	// - DAILY
+	//
+	// - WEEKLY
+	//
+	// - MONTHLY
+	//
+	// - YEARLY
+	//
 	// example:
 	//
 	// DAILY
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
+	// Node scheduling status
+	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Trigger configuration, used to implement field dependencies on logical tables
+	//
 	// example:
 	//
 	// {"expression":"any_success"}
@@ -331,10 +416,17 @@ func (s *GetPhysicalNodeByOutputNameResponseBodyNodeInfo) Validate() error {
 }
 
 type GetPhysicalNodeByOutputNameResponseBodyNodeInfoCreator struct {
+	// User ID
+	//
 	// example:
 	//
 	// 1311131
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Username
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -369,10 +461,17 @@ func (s *GetPhysicalNodeByOutputNameResponseBodyNodeInfoCreator) Validate() erro
 }
 
 type GetPhysicalNodeByOutputNameResponseBodyNodeInfoModifier struct {
+	// User ID
+	//
 	// example:
 	//
 	// 1311131
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Username
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -407,10 +506,17 @@ func (s *GetPhysicalNodeByOutputNameResponseBodyNodeInfoModifier) Validate() err
 }
 
 type GetPhysicalNodeByOutputNameResponseBodyNodeInfoOwner struct {
+	// User ID
+	//
 	// example:
 	//
 	// 1311131
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Username
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -445,10 +551,17 @@ func (s *GetPhysicalNodeByOutputNameResponseBodyNodeInfoOwner) Validate() error 
 }
 
 type GetPhysicalNodeByOutputNameResponseBodyNodeInfoProjectInfo struct {
+	// Project ID
+	//
 	// example:
 	//
 	// 1324211
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Project name
+	//
+	// example:
+	//
+	// xx测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

@@ -16,12 +16,16 @@ type iGetCheckConnectivityJobsRequest interface {
 }
 
 type GetCheckConnectivityJobsRequest struct {
+	// The data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 462935472785
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

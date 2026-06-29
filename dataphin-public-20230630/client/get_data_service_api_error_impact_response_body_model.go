@@ -24,15 +24,22 @@ type iGetDataServiceApiErrorImpactResponseBody interface {
 }
 
 type GetDataServiceApiErrorImpactResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The summary of call exception impacts.
 	Data *GetDataServiceApiErrorImpactResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The backend exception details.
+	//
 	// example:
 	//
 	// internal error
@@ -43,7 +50,8 @@ type GetDataServiceApiErrorImpactResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataServiceApiErrorImpactResponseBody) String() string {
@@ -118,7 +126,9 @@ func (s *GetDataServiceApiErrorImpactResponseBody) Validate() error {
 }
 
 type GetDataServiceApiErrorImpactResponseBodyData struct {
+	// The list of APIs affected by exceptions.
 	ErrorApiList []*GetDataServiceApiErrorImpactResponseBodyDataErrorApiList `json:"ErrorApiList,omitempty" xml:"ErrorApiList,omitempty" type:"Repeated"`
+	// The list of apps affected by exceptions.
 	ErrorAppList []*GetDataServiceApiErrorImpactResponseBodyDataErrorAppList `json:"ErrorAppList,omitempty" xml:"ErrorAppList,omitempty" type:"Repeated"`
 }
 
@@ -171,14 +181,20 @@ func (s *GetDataServiceApiErrorImpactResponseBodyData) Validate() error {
 }
 
 type GetDataServiceApiErrorImpactResponseBodyDataErrorApiList struct {
+	// The API name.
+	//
 	// example:
 	//
 	// test
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The API ID.
+	//
 	// example:
 	//
 	// 2012
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The number of exceptions for the API.
+	//
 	// example:
 	//
 	// 100
@@ -237,10 +253,14 @@ type GetDataServiceApiErrorImpactResponseBodyDataErrorAppList struct {
 	//
 	// 100211
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The app name.
+	//
 	// example:
 	//
 	// app1
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The number of exceptions for the app.
+	//
 	// example:
 	//
 	// 10
