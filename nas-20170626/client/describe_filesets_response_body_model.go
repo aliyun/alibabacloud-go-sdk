@@ -23,17 +23,17 @@ type DescribeFilesetsResponseBody struct {
 	Entries *DescribeFilesetsResponseBodyEntries `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Struct"`
 	// Deprecated
 	//
-	// The ID of the file system.
+	// The file system ID.
 	//
-	// 	- The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
+	// - CPFS: The ID must start with `cpfs-`, such as cpfs-099394bd928c****.
 	//
-	// 	- The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
+	// - CPFS for Lingjun: The ID must start with `bmcpfs-`, such as bmcpfs-290w65p03ok64ya****.
 	//
 	// example:
 	//
 	// bmcpfs-290w65p03ok64ya****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token that is used in the next request to retrieve a new page of results. If the response is truncated, you can use this token in the next request to retrieve the remaining results.
 	//
 	// example:
 	//

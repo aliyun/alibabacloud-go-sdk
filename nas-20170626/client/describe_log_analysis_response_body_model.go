@@ -25,19 +25,19 @@ type iDescribeLogAnalysisResponseBody interface {
 
 type DescribeLogAnalysisResponseBody struct {
 	Analyses *DescribeLogAnalysisResponseBodyAnalyses `json:"Analyses,omitempty" xml:"Analyses,omitempty" type:"Struct"`
-	// The HTTP status code.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The page number.
+	// The page number of the log analysis entries.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of log dump entries returned per page.
+	// The number of log analysis entries on each page.
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type DescribeLogAnalysisResponseBody struct {
 	//
 	// C84F77AF-3DE5-48F1-B19B-37FCBE24****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of log dump entries in the region.
+	// The total number of log analysis entries in the region.
 	//
 	// example:
 	//

@@ -23,13 +23,13 @@ type iDescribeAccessGroupsResponseBody interface {
 
 type DescribeAccessGroupsResponseBody struct {
 	AccessGroups *DescribeAccessGroupsResponseBodyAccessGroups `json:"AccessGroups,omitempty" xml:"AccessGroups,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of permission groups returned per page.
+	// The number of permission groups on each page.
 	//
 	// example:
 	//

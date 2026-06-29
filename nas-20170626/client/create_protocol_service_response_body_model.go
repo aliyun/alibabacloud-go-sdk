@@ -16,7 +16,7 @@ type iCreateProtocolServiceResponseBody interface {
 }
 
 type CreateProtocolServiceResponseBody struct {
-	// The ID of the protocol service.
+	// The protocol service cluster ID.
 	//
 	// example:
 	//

@@ -26,15 +26,15 @@ type iDescribeFileSystemsRequest interface {
 }
 
 type DescribeFileSystemsRequest struct {
-	// The ID of the file system.
+	// The file system ID.
 	//
-	// - For General-purpose NAS file systems, the ID is a string of characters, such as `31a8e4****`.
+	// - General-purpose NAS: 31a8e4****.
 	//
-	// - For Extreme NAS file systems, the ID must start with `extreme-`, such as `extreme-0015****`.
+	// - Extreme NAS: Must start with extreme-, such as extreme-0015****.
 	//
-	// - For Cloud Parallel File System (CPFS) file systems, the ID must start with `cpfs-`, such as `cpfs-125487****`.
+	// - CPFS (locally redundant): Must start with cpfs-, such as cpfs-125487****.
 	//
-	// - For Cloud Parallel File System SE (CPFS SE) file systems, the ID must start with `cpfsse-`, such as `cpfsse-022c71b134****`.
+	// - CPFS SE (zone-redundant): Must start with cpfsse-, such as cpfsse-022c71b134****.
 	//
 	// example:
 	//
@@ -44,17 +44,17 @@ type DescribeFileSystemsRequest struct {
 	//
 	// Valid values:
 	//
-	// - `all` (default): all file system types.
+	// - all (default): queries all types.
 	//
-	// - `standard`: General-purpose NAS.
+	// - standard: General-purpose NAS.
 	//
-	// - `extreme`: Extreme NAS.
+	// - extreme: Extreme NAS.
 	//
-	// - `cpfs`: Cloud Parallel File System (CPFS).
+	// - cpfs: Cloud Parallel File Storage (CPFS) (locally redundant).
 	//
-	// - `cpfsse`: Cloud Parallel File System SE (CPFS SE).
+	// - cpfsse: CPFS SE (zone-redundant).
 	//
-	// > Separate multiple types with commas.
+	// > To query multiple types, separate them with commas (,).
 	//
 	// example:
 	//
@@ -62,15 +62,15 @@ type DescribeFileSystemsRequest struct {
 	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
 	// The page number of the file system list.
 	//
-	// The page number starts at 1. The default value is 1.
+	// Start value (default value): 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of file systems to return on each page.
+	// The number of file systems on each page in a paging query.
 	//
-	// Value range: 1 to 100.
+	// Valid values: 1 to 100.
 	//
 	// Default value: 10.
 	//
@@ -78,19 +78,19 @@ type DescribeFileSystemsRequest struct {
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
-	// You can view this ID in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?).
+	// You can view the resource group ID in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?).
 	//
 	// example:
 	//
 	// rg-acfmwavnfef****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags used to filter file systems. You can specify 1 to 20 tags.
+	// The tag information.
 	Tag []*DescribeFileSystemsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the VPC.
+	// The virtual private cloud (VPC) ID.
 	//
-	// The file system and the ECS instance used for mounting must be in the same VPC.
+	// The VPC must be the same as the VPC of the Elastic Computing Service (ECS) server to which you want to mount the file system.
 	//
 	// example:
 	//
@@ -187,13 +187,13 @@ type DescribeFileSystemsRequestTag struct {
 	//
 	// Limits:
 	//
-	// -
+	// - Valid values of N: 1 to 20.
 	//
-	// - The tag key can be up to 128 characters long.
+	// - The tag key can be up to 128 characters in length.
 	//
-	// - It cannot start with `aliyun` or `acs:`.
+	// - The tag key cannot start with `aliyun` or `acs:`.
 	//
-	// - It cannot contain `http://` or `https://`.
+	// - The tag key cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -203,13 +203,13 @@ type DescribeFileSystemsRequestTag struct {
 	//
 	// Limits:
 	//
-	// -
+	// - Valid values of N: 1 to 20.
 	//
-	// - The tag value can be up to 128 characters long.
+	// - The tag value can be up to 128 characters in length.
 	//
-	// - It cannot start with `aliyun` or `acs:`.
+	// - The tag value cannot start with `aliyun` or `acs:`.
 	//
-	// - It cannot contain `http://` or `https://`.
+	// - The tag value cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

@@ -23,13 +23,13 @@ type iDescribeFileSystemsResponseBody interface {
 
 type DescribeFileSystemsResponseBody struct {
 	FileSystems *DescribeFileSystemsResponseBodyFileSystems `json:"FileSystems,omitempty" xml:"FileSystems,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the file system list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of file systems returned per page.
+	// The number of file systems on each page.
 	//
 	// example:
 	//

@@ -131,29 +131,29 @@ func (client *Client) ApplyAutoSnapshotPolicyWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Adds AutoRefresh configurations to a dataflow.
+// Configures automatic updates for a specified data flow.
 //
 // Description:
 //
-// - 该接口仅适用于CPFS文件系统。
+// - This operation applies only to Cloud Parallel File Storage (CPFS) file systems.
 //
-// - 仅CPFS 2.2.0及以上版本支持数据流动。您可以在控制台文件系统详情页面查看版本信息。
+// - Only CPFS 2.2.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
-// - 仅支持状态为`Running（正常）`状态的数据流动添加自动更新配置。
+// - You can add auto-refresh configurations only for data flows in the `Running` state.
 //
-// - 一个数据流动最多可以添加5个自动更新配置。
+// - You can add up to five auto-refresh configurations for a data flow.
 //
-// - 创建自动更新配置一般耗时2～5分钟，您可以通过[DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html)查询数据流动状态。
+// - It takes 2 to 5 minutes to create an auto-refresh configuration. You can call [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) to query the data flow status.
 //
-// - 自动更新依赖EventBridge收集源端OSS存储的对象修改事件。需要先[开通EventBridge服务](https://help.aliyun.com/document_detail/182246.html)。
+// - Auto-refresh relies on EventBridge to collect object modification events from the source OSS storage. [Activate EventBridge](https://help.aliyun.com/document_detail/182246.html) before you proceed.
 //
-//	> CPFS在EventBridge创建的事件总线、事件规则带有`Create for cpfs auto refresh`的描述，事件总线、事件规则都不能修改和删除，否则自动更新无法正常工作。
+//	> The event buses and event rules that CPFS creates in EventBridge contain the description `Create for cpfs auto refresh`. Do not modify or delete these event buses or event rules. Otherwise, auto-refresh cannot work properly.
 //
-// - 自动更新的作用对象是prefix，由参数RefreshPath指定。在CPFS数据流动对prefix配置自动更新时，会在用户侧创建事件总线，并创建源端OSS Bucket的prefix的事件规则。当源端OSS Bucket的prefix内发生对象修改后，会在EventBridge中产生OSS事件，由CPFS数据流动处理。
+// - Auto-refresh targets a prefix specified by the RefreshPath parameter. When you configure auto-refresh for a prefix in a CPFS data flow, an event bus is created on the user side, and an event rule is created for the prefix of the source OSS bucket. When objects within the prefix of the source OSS bucket are modified, OSS events are generated in EventBridge and processed by the CPFS data flow.
 //
-// - 配置自动更新（AutoRefresh）后，当源端存储数据发生变化时，变化的元数据会自动同步到CPFS文件系统，变化的数据会在用户访问文件时按需加载，或者启动数据流动任务加载数据。
+// - After you configure auto-refresh (AutoRefresh), when data changes in the source storage, the changed metadata is automatically synchronized to the CPFS file system. The changed data is loaded on demand when a user accesses the file, or loaded by starting a data flow node to load data.
 //
-// - 自动更新间隔（AutoRefreshInterval）指CPFS每隔该时间间隔，检查源端OSS Bucket该prefix内是否存在数据更新，如果有数据更新则启动自动更新任务。当OSS源端的对象修改事件频率超过CPFS数据流动处理能力时，自动更新任务会堆积，元数据更新会延迟，数据流动的状态为Misconfigured，您可以提升数据流动规格，或者降低OSS修改频率来解决。
+// - The auto-refresh interval (AutoRefreshInterval) specifies the interval at which CPFS checks whether data updates exist in the prefix of the source OSS bucket. If data updates exist, an auto-refresh node is started. When the frequency of object modification events in the source OSS bucket exceeds the processing capacity of the CPFS data flow, automatic synchronization nodes accumulate, metadata updates are delayed, and the data stream status changes to Misconfigured. To resolve this issue, upgrade the data stream specifications or reduce the modification frequency in OSS.
 //
 // @param request - ApplyDataFlowAutoRefreshRequest
 //
@@ -221,13 +221,13 @@ func (client *Client) ApplyDataFlowAutoRefreshWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Associates the VSC device with the file system.
+// Associates a VSC device with a file system.
 //
 // Description:
 //
-// - 仅CPFS智算版支持该功能。
+// - Only CPFS for Lingjun supports this feature.
 //
-// - 支持批量执行，批量执行情况下，目前仅支持1个VscId关联到多个FileSystemId，即ResourceIds.VscId需相等。
+// - Batch operations are supported. In batch mode, only one VscId can be associated with multiple file system IDs (FileSystemId). This means the ResourceIds.VscId values must be the same.
 //
 // @param request - AttachVscToFilesystemsRequest
 //
@@ -279,13 +279,25 @@ func (client *Client) AttachVscToFilesystemsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Removes automatic snapshot policies from one or more file systems.
+// Cancels the automatic snapshot policy that is created for a file system.
 //
 // Description:
 //
-//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+// <props="china">.
 //
-//		- Only advanced Extreme NAS file systems support this feature.
+// -  This feature is in free public preview. During the public preview, the [File Storage NAS Service-Level Agreement (SLA)](https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud201803061139_99860.html?spm=a2c4g.11186623.0.0.5c895ff2YPLrwe) is not guaranteed.
+//
+// -  Only Advanced Extreme NAS supports this feature.
+//
+// .
+//
+// <props="intl">.
+//
+// -  This feature is in free public preview. During the public preview, the [File Storage NAS Service-Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed.
+//
+// -  Only Advanced Extreme NAS supports this feature.
+//
+// .
 //
 // @param request - CancelAutoSnapshotPolicyRequest
 //
@@ -541,11 +553,11 @@ func (client *Client) CancelDataFlowTaskWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Cancels the directory quota of a file system.
+// Cancels a directory quota for a file system.
 //
 // Description:
 //
-// Only General-purpose file systems support the directory quota feature.
+// Only General-purpose NAS NFS file systems support the directory quota feature.
 //
 // @param request - CancelDirQuotaRequest
 //
@@ -759,7 +771,7 @@ func (client *Client) CancelRecycleBinJobWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Changes the resource group to which a file system belongs.
+// Changes the resource group to which a file system instance belongs.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -819,11 +831,11 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// - 一个阿里云账号在单个地域内最多可以创建20个权限组。
+// - You can create up to 20 permission groups in a single region within an Alibaba Cloud account.
 //
-// - 一个权限组最多支持添加300个规则。
+// - A permission group supports up to 300 rules.
 //
-// - 仅支持创建专有网络类型的权限组。
+// - Only permission groups of the VPC network type can be created.
 //
 // @param request - CreateAccessGroupRequest
 //
@@ -883,11 +895,11 @@ func (client *Client) CreateAccessGroupWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// - 在使用CreateAccessPoint接口创建接入点时部分资源的生成是异步完成的。因此在执行CreateAccessPoint接口成功后，请先调用[DescribeAccessPoints](https://help.aliyun.com/document_detail/2712239.html)或者[DescribeAccessPoint](https://help.aliyun.com/document_detail/2712240.html)接口查询接入点状态，当接入点状态为**Active**后再执行挂载文件系统操作，否则可能会挂载失败。
+// - When you invoke the CreateAccessPoint operation to create an access point, some resources are generated asynchronously. After the CreateAccessPoint operation succeeds, execute the [DescribeAccessPoints](https://help.aliyun.com/document_detail/2712239.html) or [DescribeAccessPoint](https://help.aliyun.com/document_detail/2712240.html) operation to query the access point status. Mount the file system only after the access point status becomes **Active**. Otherwise, the mount operation may fail.
 //
-// - 仅通用型NAS NFS协议文件系统支持该功能。
+// - Only General-purpose NAS NFS file systems support this feature.
 //
-// - 如果开启RAM策略（EnabledRam），需要配置对应的RAM权限，具体请参考[管理接入点](https://help.aliyun.com/document_detail/2545998.html)。
+// - If you enable the RAM policy (EnabledRam), configure the corresponding RAM permissions. For more information, see [Manage access points](https://help.aliyun.com/document_detail/2545998.html).
 //
 // @param request - CreateAccessPointRequest
 //
@@ -908,6 +920,10 @@ func (client *Client) CreateAccessPointWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.AccessPointName) {
 		query["AccessPointName"] = request.AccessPointName
+	}
+
+	if !dara.IsNil(request.AgenticSpaceId) {
+		query["AgenticSpaceId"] = request.AgenticSpaceId
 	}
 
 	if !dara.IsNil(request.EnabledRam) {
@@ -983,11 +999,11 @@ func (client *Client) CreateAccessPointWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a rule for a permission group.
+// Creates a permission rule for a permission group.
 //
 // Description:
 //
-// 一个权限组最多支持添加300个规则。
+// A maximum of 300 rules can be added to a permission group.
 //
 // @param request - CreateAccessRuleRequest
 //
@@ -1055,29 +1071,129 @@ func (client *Client) CreateAccessRuleWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 创建Agentic空间
+//
+// Description:
+//
+// 适用agentic类型文件系统。
+//
+// @param request - CreateAgenticSpaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgenticSpaceResponse
+func (client *Client) CreateAgenticSpaceWithContext(ctx context.Context, request *CreateAgenticSpaceRequest, runtime *dara.RuntimeOptions) (_result *CreateAgenticSpaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Azone) {
+		query["Azone"] = request.Azone
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.FileSystemPath) {
+		query["FileSystemPath"] = request.FileSystemPath
+	}
+
+	if !dara.IsNil(request.Quota) {
+		query["Quota"] = request.Quota
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgenticSpace"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgenticSpaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an automatic snapshot policy.
 //
 // Description:
 //
-//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+// <props="china">.
 //
-//		- Only advanced Extreme NAS file systems support the snapshot feature.
+// - This feature is in free public preview. During the public preview, the [File Storage NAS Service-Level Agreement (SLA)](https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud201803061139_99860.html?spm=a2c4g.11186623.0.0.5c895ff2YPLrwe) is not guaranteed.
 //
-//		- You can create a maximum of 100 automatic snapshot policies in each region for an Alibaba Cloud account.
+// - Only Advanced Extreme NAS supports this feature.
 //
-//		- If an auto snapshot is being created when the scheduled time for a new auto snapshot arrives, the creation of the new snapshot is skipped. This occurs if the file system stores a large volume of data. For example, you have scheduled auto snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a file system. The system starts to create an auto snapshot at 09:00:00 and does not complete the process until 10:20:00. The process takes 80 minutes because the file system has a large volume of data. In this case, the system does not create an auto snapshot at 10:00:00, but creates an auto snapshot at 11:00:00.
+// - You can create a maximum of 100 automatic snapshot policies per Alibaba Cloud account in each region.
 //
-//		- A maximum of 128 auto snapshots can be created for a file system. If the upper limit is reached, the earliest auto snapshot is deleted. This rule does not apply to manual snapshots.
+// - If a file system contains a large amount of data and the time required to create an automatic snapshot exceeds the interval between two scheduled time points, the next time point is automatically skipped. For example, you set 09:00, 10:00, 11:00, and 12:00 as automatic snapshot time points. Because the file system contains a large amount of data, snapshot creation starts at 09:00 and completes at 10:20, taking 80 minutes. The system skips the 10:00 time point and creates the next automatic snapshot at 11:00.
 //
-//		- If you modify the retention period of an automatic snapshot policy, the modification applies only to subsequent snapshots, but not to the existing snapshots.
+// - Each file system supports a maximum of 128 automatic snapshots. After the snapshot quota is reached, the system automatically deletes the earliest automatic snapshots. Manual snapshots are not affected.
 //
-//		- If an auto snapshot is being created for a file system, you cannot create a manual snapshot for the file system. You must wait after the auto snapshot is created.
+// - When you modify the retention period of an automatic snapshot policy, the change takes effect only for new snapshots. Existing snapshots retain their original retention period.
 //
-//		- You can only apply automatic snapshot policies to a file system that is in the Running state.
+// - If an automatic snapshot is being created for a file system, you must wait until the automatic snapshot is complete before you can manually create a snapshot.
 //
-//		- All auto snapshots are named in the `auto_yyyyMMdd_X` format, where: `auto` indicates that the snapshot is created based on an automatic snapshot policy. `yyyyMMdd` indicates the date on which the snapshot is created. `y` indicates the year. `M` indicates the month. `d` indicates the day. `X` indicates the ordinal number of the snapshot on the current day. For example, `auto_20201018_1` indicates the first auto snapshot that was created on October 18, 2020.
+// - Automatic snapshot policies cannot be executed on file systems that are not in the Normal state.
 //
-//		- After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to a file system and call the ModifyAutoSnapshotPolicy operation to modify the policy.
+// - Automatic snapshots follow a unified naming format: `auto_yyyyMMdd_X`. In this format, `auto` indicates an automatic snapshot, distinguishing it from manual snapshots. `yyyyMMdd` indicates the date when the snapshot is created, where `y` represents the year, `M` represents the month, and `d` represents the day. `X` indicates the sequence number of the automatic snapshot created on that day. For example, `auto_20201018_1` indicates the first automatic snapshot created on October 18, 2020.
+//
+// - A created automatic snapshot policy can be applied to any file system by calling ApplyAutoSnapshotPolicy, and the policy content can be modified by calling ModifyAutoSnapshotPolicy.
+//
+// .
+//
+// <props="intl">.
+//
+// - This feature is in free public preview. During the public preview, the [File Storage NAS Service-Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed.
+//
+// - Only Advanced Extreme NAS supports this feature.
+//
+// - You can create a maximum of 100 automatic snapshot policies per Alibaba Cloud account in each region.
+//
+// - If a file system contains a large amount of data and the time required to create an automatic snapshot exceeds the interval between two scheduled time points, the next time point is automatically skipped. For example, you set 09:00, 10:00, 11:00, and 12:00 as automatic snapshot time points. Because the file system contains a large amount of data, snapshot creation starts at 09:00 and completes at 10:20, taking 80 minutes. The system skips the 10:00 time point and creates the next automatic snapshot at 11:00.
+//
+// - Each file system supports a maximum of 128 automatic snapshots. After the snapshot quota is reached, the system automatically deletes the earliest automatic snapshots. Manual snapshots are not affected.
+//
+// - When you modify the retention period of an automatic snapshot policy, the change takes effect only for new snapshots. Existing snapshots retain their original retention period.
+//
+// - If an automatic snapshot is being created for a file system, you must wait until the automatic snapshot is complete before you can manually create a snapshot.
+//
+// - Automatic snapshot policies cannot be executed on file systems that are not in the Normal state.
+//
+// - Automatic snapshots follow a unified naming format: `auto_yyyyMMdd_X`. In this format, `auto` indicates an automatic snapshot, distinguishing it from manual snapshots. `yyyyMMdd` indicates the date when the snapshot is created, where `y` represents the year, `M` represents the month, and `d` represents the day. `X` indicates the sequence number of the automatic snapshot created on that day. For example, `auto_20201018_1` indicates the first automatic snapshot created on October 18, 2020.
+//
+// - A created automatic snapshot policy can be applied to any file system by calling ApplyAutoSnapshotPolicy, and the policy content can be modified by calling ModifyAutoSnapshotPolicy.
+//
+// .
 //
 // @param request - CreateAutoSnapshotPolicyRequest
 //
@@ -2079,9 +2195,9 @@ func (client *Client) CreateLifecyclePolicyWithContext(ctx context.Context, requ
 //
 // Description:
 //
-//	  Only General-purpose NAS file systems support this operation.
+// - Only General-purpose NAS file systems support this feature.
 //
-//		- You can run a maximum of 20 data retrieval tasks in each region within an Alibaba Cloud account.
+// - Each Alibaba Cloud account can have up to 20 running data retrieval tasks in the same region.
 //
 // @param request - CreateLifecycleRetrieveJobRequest
 //
@@ -2185,9 +2301,9 @@ func (client *Client) CreateLogAnalysisWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// - 在使用CreateMountTarget接口创建挂载点时部分资源的生成是异步完成的。因此在执行CreateMountTarget接口成功后，请先调用DescribeMountTargets接口查询挂载点状态，当挂载点状态为**Active**后再执行挂载文件系统操作，否则可能会挂载失败。
+// - When you call the CreateMountTarget operation to create a mount target, some resources are generated asynchronously. After the CreateMountTarget operation succeeds, first invoke the DescribeMountTargets operation to query the mount target status. Execute the file system mount operation only after the mount target status changes to **Active**. Otherwise, the mount operation may fail.
 //
-// - 调用此接口将自动创建操作所需的NAS服务关联角色。更多信息，请参见[管理NAS服务关联角色](https://help.aliyun.com/document_detail/208530.html)。
+// - Invoking this operation triggers the automatic creation of the service-linked role required for the operation. For more information, see [Manage the service-linked role for NAS](https://help.aliyun.com/document_detail/208530.html).
 //
 // @param request - CreateMountTargetRequest
 //
@@ -2263,21 +2379,21 @@ func (client *Client) CreateMountTargetWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// -  该接口仅适用于CPFS文件系统。
+// -  This operation is applicable only to Cloud Parallel File Storage (CPFS) file systems.
 //
-// -  前提条件
+// -  Before you begin
 //
-//	已创建协议服务。
+//	The CPFS file system must be in the Running state and a protocol service must be created.
 //
-// - 其它
+// - Other information
 //
-//   - 协议服务的导出VPC网段不可与文件系统VPC网段重叠。
+//   - The VPC CIDR block of the protocol service export cannot overlap with the VPC CIDR block of the file system.
 //
-//   - 一个协议服务上的多个导出VPC之间网段不可重叠。
+//   - The VPC CIDR blocks of multiple exports on the same protocol service cannot overlap with each other.
 //
-//   - 同一个协议服务最多可以创建10个导出目录。
+//   - You can create up to 10 export directories for a single protocol service.
 //
-//   - 创建协议服务导出目录会消耗指定vSwitch上的IP地址（最多消耗32个IP地址），请确保目标vSwitch IP资源充足。
+//   - Creating a protocol service export directory consumes IP addresses from the specified vSwitch (up to 32 IP addresses). Make sure that the target vSwitch has sufficient IP address resources.
 //
 // @param request - CreateProtocolMountTargetRequest
 //
@@ -2361,35 +2477,39 @@ func (client *Client) CreateProtocolMountTargetWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Creates a protocol service for a Cloud Parallel File Storage (CPFS) file system. The creation takes about 5 to 10 minutes.
+// Creates a protocol service for a Cloud Parallel File Storage (CPFS) file system. The creation process takes approximately 5 to 10 minutes.
 //
 // Description:
 //
-// - 该接口仅适用于CPFS文件系统。
+// - This operation is applicable only to CPFS file systems.
 //
-// -  仅CPFS 2.3.0及以上版本支持协议服务。您可以通过调用[DescribeFileSystems](https://help.aliyun.com/document_detail/163314.html)接口查询目标文件系统的版本号。
+// -  Only CPFS 2.3.0 and later support protocol services. You can call the [DescribeFileSystems](https://help.aliyun.com/document_detail/163314.html) operation to query the version of the file system.
 //
-// - 协议服务规格
+// - Protocol service specifications.
 //
-//	协议服务包括两种协议类型：通用型和缓存型。缓存型相比通用型，提供热点数据缓存能力。在命中缓存的情况下，缓存型协议服务的带宽可超过CPFS文件系统的带宽，达到协议服务设定的最大带宽值。
+//	Protocol services include two Protocol Types: General and Cache. Compared with the General type, the Cache type provides hot spot data caching. When the cache is hit, the bandwidth of the Cache type protocol service can exceed the bandwidth of the CPFS file system and reach the maximum bandwidth configured for the protocol service.
 //
 //
 //
-//	  -   通用型：为CPFS提供NFS协议访问能力和[目录级挂载点](https://help.aliyun.com/document_detail/427175.html)，用户无需配置POSIX客户端管理集群。该功能免费。
+//	  -   General: Provides NFS protocol access and [folder-level mount targets](https://help.aliyun.com/document_detail/427175.html) for CPFS. You do not need to configure a POSIX client cluster management. This feature is free of charge.
 //
-//	  -  缓存型：在通用型基础上提供基于LRU策略的服务端内存缓存。当数据缓存于内存中时，CPFS可提供更高的内网带宽。缓存型协议服务分为缓存1型和缓存2型两种协议服务规格，差异点为内网带宽大小和内存缓存大小。
+//	  -  Cache: Provides server-side in-memory caching based on the LRU policy in addition to the General type capabilities. When data is cached in memory, CPFS can provide higher internal network bandwidth. The Cache type protocol service is available in two specifications: Cache L1 and Cache L2, which differ in internal network bandwidth and memory cache size.
 //
-//	   >  缓存型协议服务为收费服务，正在邀测。有关缓存型协议服务的付费方式，请参见[计费项](https://help.aliyun.com/document_detail/111858.html)。如果您有任何反馈或疑问，欢迎加入钉钉用户群（钉钉群号：31045006299）与CPFS工程师进行交流讨论。
+//	   >  The Cache type protocol service is a paid service and is in invitational preview. For information about the billing of the Cache type protocol service, see [Billable items](https://help.aliyun.com/document_detail/111858.html). If you have any feedback or questions, join the DingTalk user group (group ID: 31045006299) to communicate with CPFS engineers.
 //
-// - 协议类型
+// - Protocol type.
 //
-//	仅支持NFSv3协议。
+//	Only NFSv3 is supported.
 //
-// - 其它
+// - Prerequisites.
 //
-//   - 一个CPFS文件系统只能创建一个协议服务。
+//	The CPFS file system must be created and in the Running state.
 //
-//   - 创建协议服务会消耗指定vSwitch上的IP地址（最多消耗32个IP地址），请确保目标vSwitch IP资源充足。
+// - Other information.
+//
+//   - Only one protocol service can be created for each CPFS file system.
+//
+//   - Creating a protocol service consumes IP addresses on the specified vSwitch (up to 32 IP addresses). Make sure that the target vSwitch has sufficient IP address resources.
 //
 // @param request - CreateProtocolServiceRequest
 //
@@ -2639,11 +2759,11 @@ func (client *Client) CreateSnapshotWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Deletes a permission group.
+// Delete an existing access group.
 //
 // Description:
 //
-// 默认权限组（DEFAULT_VPC_GROUP_NAME）不支持删除。
+// The default access group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
 //
 // @param request - DeleteAccessGroupRequest
 //
@@ -2745,11 +2865,11 @@ func (client *Client) DeleteAccessPointWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes a rule from a permission group.
+// Deletes a permission rule from a permission group.
 //
 // Description:
 //
-// 默认权限组（DEFAULT_VPC_GROUP_NAME）中的规则不支持删除。
+// Rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
 //
 // @param request - DeleteAccessRuleRequest
 //
@@ -2791,6 +2911,66 @@ func (client *Client) DeleteAccessRuleWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAccessRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Agentic空间
+//
+// Description:
+//
+// 适用agentic类型文件系统。
+//
+// @param request - DeleteAgenticSpaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgenticSpaceResponse
+func (client *Client) DeleteAgenticSpaceWithContext(ctx context.Context, request *DeleteAgenticSpaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteAgenticSpaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgenticSpaceId) {
+		query["AgenticSpaceId"] = request.AgenticSpaceId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgenticSpace"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgenticSpaceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2973,11 +3153,13 @@ func (client *Client) DeleteFileSystemWithContext(ctx context.Context, request *
 //
 // Description:
 //
-// - This operation is supported only for CPFS file systems of version 2.2.0 or later and CPFS for AI and HPC file systems of version 2.7.0 or later. Deleting a fileset permanently removes all data in the associated directory. Use this operation with caution.
+// - Only CPFS 2.2.0 and later and CPFS for Lingjun 2.7.0 and later support fileset deletion. After a fileset is deleted, all data in the directory is permanently deleted and cannot be recovered. Proceed with caution.
 //
-// - If deletion protection is enabled, you must disable it before you can delete the fileset.
+// - If deletion protection is enabled, disable it before you delete the fileset.
 //
-// - When you delete a fileset from a CPFS file system, the disk space is released immediately. When you delete a fileset from a CPFS for AI and HPC file system, the disk space is released gradually.
+// - All filesets on the target file system must be in the CREATED desired state before you can perform the deletion.
+//
+// - Deleting a CPFS general-purpose fileset immediately releases disk space. Deleting a CPFS for Lingjun fileset gradually releases disk space. Deleted data cannot be recovered. Proceed with caution.
 //
 // @param request - DeleteFilesetRequest
 //
@@ -3367,13 +3549,23 @@ func (client *Client) DeleteProtocolServiceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes a snapshot or cancels a snapshot that is being created.
+// Deletes a specified snapshot or cancels a snapshot task that is being created.
 //
 // Description:
 //
-//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+// <props="china">.
 //
-//		- Only advanced Extreme NAS file systems support this feature.
+// - This feature is in free public preview. During the public preview, the [File Storage NAS Service-Level Agreement (SLA)](https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud201803061139_99860.html?spm=a2c4g.11186623.0.0.5c895ff2YPLrwe) is not guaranteed.
+//
+// - Only Advanced Extreme NAS file systems support this feature.
+//
+// <props="intl">.
+//
+// - This feature is in free public preview. During the public preview, the [File Storage NAS Service-Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed.
+//
+// - Only Advanced Extreme NAS file systems support this feature.
+//
+// .
 //
 // @param request - DeleteSnapshotRequest
 //
@@ -3417,7 +3609,7 @@ func (client *Client) DeleteSnapshotWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Queries permission groups.
+// Queries permission group information.
 //
 // @param request - DescribeAccessGroupsRequest
 //
@@ -3481,7 +3673,7 @@ func (client *Client) DescribeAccessGroupsWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// 仅通用型NAS NFS协议文件系统支持该功能。
+// Only General-purpose NAS NFS file systems support this feature.
 //
 // @param request - DescribeAccessPointRequest
 //
@@ -3527,13 +3719,15 @@ func (client *Client) DescribeAccessPointWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeAccessPoints is deprecated, please use NAS::2017-06-26::ListAccessPoints instead.
+//
 // Summary:
 //
-// Queries a list of access points.
+// Queries access point information.
 //
 // Description:
 //
-// 仅通用型NAS NFS协议文件系统支持该功能。
+// Only General-purpose NAS NFS file systems support this feature.
 //
 // @param request - DescribeAccessPointsRequest
 //
@@ -3643,6 +3837,66 @@ func (client *Client) DescribeAccessRulesWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAccessRulesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Agentic空间
+//
+// Description:
+//
+// 适用 agentic 类型文件系统。
+//
+// @param request - DescribeAgenticSpacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAgenticSpacesResponse
+func (client *Client) DescribeAgenticSpacesWithContext(ctx context.Context, request *DescribeAgenticSpacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAgenticSpacesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.Filters) {
+		query["Filters"] = request.Filters
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAgenticSpaces"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAgenticSpacesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4137,7 +4391,7 @@ func (client *Client) DescribeFileSystemStatisticsWithContext(ctx context.Contex
 
 // Summary:
 //
-// This operation retrieves information about file systems.
+// Queries file system information.
 //
 // @param request - DescribeFileSystemsRequest
 //
@@ -4205,15 +4459,15 @@ func (client *Client) DescribeFileSystemsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the information about created filesets.
+// Queries the list of created filesets.
 //
 // Description:
 //
-// - 仅CPFS 2.2.0和CPFS智算版2.7.0及以上版本支持Fileset。您可以在控制台文件系统详情页面查看版本信息。
+// - Only CPFS 2.2.0 and later and CPFS for Lingjun 2.7.0 and later support filesets. You can view the version information on the file system details page in the console.
 //
-// - 筛选键（Filters）中，FsetIds需要做全字匹配，FileSystemPath、Description支持模糊匹配。
+// - In the filter keys (Filters), FsetIds requires an exact match, while FileSystemPath and Description support fuzzy match.
 //
-// - 支持组合查询。
+// - Combination queries are supported.
 //
 // @param request - DescribeFilesetsRequest
 //
@@ -4337,13 +4591,13 @@ func (client *Client) DescribeFilesystemsAssociatedHpnZonesWithContext(ctx conte
 
 // Summary:
 //
-// Queries information about virtual storage channels associated with a file system.
+// Queries the information about virtual storage channels associated with a file system.
 //
 // Description:
 //
-// - 仅CPFS智算版支持该功能。
+// - Only CPFS for Lingjun supports this feature.
 //
-// - 支持批量执行，批量执行情况下，目前仅支持1个VscId关联到多个FileSystemId，即ResourceIds.VscId需相等。
+// - Batch execution is supported. In batch execution mode, only one VscId can be associated with multiple FileSystemIds, which means the values of ResourceIds.VscId must be the same.
 //
 // @param request - DescribeFilesystemsVscAttachInfoRequest
 //
@@ -4399,11 +4653,11 @@ func (client *Client) DescribeFilesystemsVscAttachInfoWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries lifecycle policies.
+// Retrieves a list of lifecycle management policies.
 //
 // Description:
 //
-// 仅通用型NAS文件系统和 CPFS 智算版支持该功能。
+// Only General-purpose NAS file systems and CPFS for Lingjun support this feature.
 //
 // @param request - DescribeLifecyclePoliciesRequest
 //
@@ -4503,7 +4757,7 @@ func (client *Client) DescribeLifecyclePolicyLogsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the log dump information configured in log analysis.
+// Lists the log analysis configurations in log analysis.
 //
 // @param request - DescribeLogAnalysisRequest
 //
@@ -5155,13 +5409,13 @@ func (client *Client) DescribeZonesWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// Unassociates a VSC device from a file system.
+// Dissociates a VSC device from a file system.
 //
 // Description:
 //
-// - 仅CPFS智算版支持该功能。
+// - Only CPFS for Lingjun supports this feature.
 //
-// - 支持批量执行，批量执行情况下，目前仅支持1个VscId关联到多个FileSystemId，即ResourceIds.VscId需相等。
+// - Batch operations are supported. For batch operations, only one VscId can be associated with multiple FileSystemIds. This means the ResourceIds.VscId values must be the same.
 //
 // @param request - DetachVscFromFilesystemsRequest
 //
@@ -5505,6 +5759,58 @@ func (client *Client) EnableSmbAclWithContext(ctx context.Context, request *Enab
 
 // Summary:
 //
+// 查询Agentic空间
+//
+// Description:
+//
+// 适用 agentic 类型文件系统。
+//
+// @param request - GetAgenticSpaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgenticSpaceResponse
+func (client *Client) GetAgenticSpaceWithContext(ctx context.Context, request *GetAgenticSpaceRequest, runtime *dara.RuntimeOptions) (_result *GetAgenticSpaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgenticSpaceId) {
+		query["AgenticSpaceId"] = request.AgenticSpaceId
+	}
+
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgenticSpace"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgenticSpaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Checks if a specified directory contains infrequent access or archive storage files, or if a specified file is an infrequent access or archive storage file.
 //
 // Description:
@@ -5707,6 +6013,66 @@ func (client *Client) GetRecycleBinAttributeWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRecycleBinAttributeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询接入点信息
+//
+// Description:
+//
+// 仅通用型 NAS NFS 协议文件系统支持。
+//
+// @param request - ListAccessPointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAccessPointsResponse
+func (client *Client) ListAccessPointsWithContext(ctx context.Context, request *ListAccessPointsRequest, runtime *dara.RuntimeOptions) (_result *ListAccessPointsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.Filters) {
+		query["Filters"] = request.Filters
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAccessPoints"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAccessPointsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6095,11 +6461,11 @@ func (client *Client) ModifyAccessGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies the information about an access point.
+// Modifies access point information.
 //
 // Description:
 //
-// Only General-purpose Network File System (NFS) file systems support this operation.
+// Only General-purpose NAS NFS file systems support this feature.
 //
 // @param request - ModifyAccessPointRequest
 //
@@ -6225,6 +6591,70 @@ func (client *Client) ModifyAccessRuleWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAccessRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改Agentic空间
+//
+// Description:
+//
+// 适用agentic类型文件系统。
+//
+// @param request - ModifyAgenticSpaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAgenticSpaceResponse
+func (client *Client) ModifyAgenticSpaceWithContext(ctx context.Context, request *ModifyAgenticSpaceRequest, runtime *dara.RuntimeOptions) (_result *ModifyAgenticSpaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgenticSpaceId) {
+		query["AgenticSpaceId"] = request.AgenticSpaceId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAgenticSpace"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAgenticSpaceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7143,6 +7573,74 @@ func (client *Client) RetryLifecycleRetrieveJobWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &RetryLifecycleRetrieveJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置Agentic空间配额
+//
+// Description:
+//
+// 适用agentic类型文件系统。
+//
+// @param request - SetAgenticSpaceQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAgenticSpaceQuotaResponse
+func (client *Client) SetAgenticSpaceQuotaWithContext(ctx context.Context, request *SetAgenticSpaceQuotaRequest, runtime *dara.RuntimeOptions) (_result *SetAgenticSpaceQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgenticSpaceId) {
+		query["AgenticSpaceId"] = request.AgenticSpaceId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.FileCountLimit) {
+		query["FileCountLimit"] = request.FileCountLimit
+	}
+
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.SizeLimit) {
+		query["SizeLimit"] = request.SizeLimit
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetAgenticSpaceQuota"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetAgenticSpaceQuotaResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

@@ -16,7 +16,7 @@ type iCreateProtocolMountTargetResponseBody interface {
 }
 
 type CreateProtocolMountTargetResponseBody struct {
-	// The ID of the export directory for the protocol service.
+	// The ID of the protocol service export directory.
 	//
 	// example:
 	//
