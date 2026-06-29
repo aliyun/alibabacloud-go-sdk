@@ -32,25 +32,71 @@ type iAiStatisticsPathField interface {
 }
 
 type AiStatisticsPathField struct {
-	// The category to which the field belongs, used for grouping and organizing fields.
+	// The secondary category.
+	//
+	// example:
+	//
+	// conversation
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// A detailed description that provides additional context about the field\\"s purpose and usage.
+	// The field description.
+	//
+	// example:
+	//
+	// 用户输入的问题内容
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The unique key used to identify the field in statistical results.
+	// The log key.
+	//
+	// example:
+	//
+	// question
 	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
-	// Specifies whether the field is an input or an output. Valid values are typically `IN` or `OUT`.
+	// The request or response direction.
+	//
+	// example:
+	//
+	// request
 	Io *string `json:"io,omitempty" xml:"io,omitempty"`
-	// The JSONPath expression to extract the field value from the source data.
+	// The corresponding JSON path (GJSON syntax).
+	//
+	// example:
+	//
+	// messages.#.content
 	JsonPath *string `json:"jsonPath,omitempty" xml:"jsonPath,omitempty"`
-	// The display name of the field, used for labeling in user interfaces or reports.
+	// The display name of the field.
+	//
+	// example:
+	//
+	// 问题内容
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Specifies whether logging is enabled for this field. If set to `true`, the system records the field\\"s value in logs.
+	// Specifies whether collection is enabled.
+	//
+	// example:
+	//
+	// true
 	RecordEnabled *bool `json:"recordEnabled,omitempty" xml:"recordEnabled,omitempty"`
-	// A rule or condition applied to the extracted field. The rule\\"s format and effect are implementation-specific.
+	// The rule used for streaming response extraction. Valid values:
+	//
+	// - append: appends content
+	//
+	// - first: retrieves the first value
+	//
+	// - replace: retrieves the last value
+	//
+	// example:
+	//
+	// append
 	Rule *string `json:"rule,omitempty" xml:"rule,omitempty"`
-	// Indicates whether the field contains sensitive information. If set to `true`, the system may apply masking or other security measures.
+	// Indicates whether the field is sensitive.
+	//
+	// example:
+	//
+	// false
 	Sensitive *bool `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
-	// The data source from which the field is extracted. For example, `Request` or `Response`.
+	// The data source.
+	//
+	// example:
+	//
+	// request_body
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 }
 

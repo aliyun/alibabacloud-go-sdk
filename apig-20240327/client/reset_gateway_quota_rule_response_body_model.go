@@ -221,8 +221,14 @@ func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error 
 }
 
 type ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
+	// example:
+	//
+	// week
 	ConflictPeriodType *string `json:"conflictPeriodType,omitempty" xml:"conflictPeriodType,omitempty"`
-	ConflictType       *string `json:"conflictType,omitempty" xml:"conflictType,omitempty"`
+	// example:
+	//
+	// calendar
+	ConflictType *string `json:"conflictType,omitempty" xml:"conflictType,omitempty"`
 	// example:
 	//
 	// cs-d82n1g6m1hkm3xxxxxxx

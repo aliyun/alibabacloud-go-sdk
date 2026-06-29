@@ -24,15 +24,15 @@ type iGetDashboardResponseBody interface {
 }
 
 type GetDashboardResponseBody struct {
-	// The HTTP status code.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
-	// The data returned.
+	// The response data.
 	Data *GetDashboardResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code.
+	// The backend error code.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *GetDashboardResponseBody) Validate() error {
 }
 
 type GetDashboardResponseBodyData struct {
-	// The instance ID.
+	// The unique identifier of the gateway.
 	//
 	// example:
 	//

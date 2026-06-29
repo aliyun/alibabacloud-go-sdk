@@ -26,25 +26,25 @@ type iUpdateAndAttachPolicyRequest interface {
 }
 
 type UpdateAndAttachPolicyRequest struct {
-	// The association IDs.
+	// The list of mount point IDs.
 	//
 	// This parameter is required.
 	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
-	// The supported associated resource type. Valid values:
+	// The type of mount point supported by the policy. Valid values:
 	//
-	// 	- HttpApi: an HTTP API
+	// - HttpApi: HttpApi.
 	//
-	// 	- Operation: an operation in an HTTP API
+	// - Operation: Operation of HttpApi.
 	//
-	// 	- GatewayRoute: a route
+	// - GatewayRoute: gateway rule.
 	//
-	// 	- GatewayService: a service
+	// - GatewayService: gateway service.
 	//
-	// 	- GatewayServicePort: a service port
+	// - GatewayServicePort: gateway service port.
 	//
-	// 	- Domain: a domain name
+	// - Domain: gateway domain name.
 	//
-	// 	- Gateway: an instance
+	// - Gateway: gateway.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type UpdateAndAttachPolicyRequest struct {
 	//
 	// HttpApi
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// The policy configurations. The value is a JSON string.
+	// The configuration information. The value is a JSON string.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type UpdateAndAttachPolicyRequest struct {
 	//
 	// env-cq2avtllhtgja4dk5djg
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The instance ID.
+	// The gateway ID.
 	//
 	// example:
 	//

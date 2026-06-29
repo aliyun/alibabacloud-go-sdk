@@ -453,7 +453,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Creates and associates a policy.
+// Creates and attaches a policy.
 //
 // @param request - CreateAndAttachPolicyRequest
 //
@@ -528,7 +528,7 @@ func (client *Client) CreateAndAttachPolicyWithOptions(request *CreateAndAttachP
 
 // Summary:
 //
-// Creates and associates a policy.
+// Creates and attaches a policy.
 //
 // @param request - CreateAndAttachPolicyRequest
 //
@@ -719,7 +719,7 @@ func (client *Client) CreateConsumerAuthorizationRule(consumerId *string, reques
 
 // Summary:
 //
-// Create consumer authorization rules.
+// Creates consumer authorization rules.
 //
 // @param request - CreateConsumerAuthorizationRulesRequest
 //
@@ -766,7 +766,7 @@ func (client *Client) CreateConsumerAuthorizationRulesWithOptions(request *Creat
 
 // Summary:
 //
-// Create consumer authorization rules.
+// Creates consumer authorization rules.
 //
 // @param request - CreateConsumerAuthorizationRulesRequest
 //
@@ -990,7 +990,7 @@ func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_res
 
 // Summary:
 //
-// The zone information.
+// Creates a cloud-native gateway.
 //
 // @param request - CreateGatewayRequest
 //
@@ -1077,7 +1077,7 @@ func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, he
 
 // Summary:
 //
-// The zone information.
+// Creates a cloud-native gateway.
 //
 // @param request - CreateGatewayRequest
 //
@@ -1398,7 +1398,7 @@ func (client *Client) CreateHttpApiRoute(httpApiId *string, request *CreateHttpA
 
 // Summary:
 //
-// Creates an MCP server.
+// Creates a Model Context Protocol (MCP) server.
 //
 // @param request - CreateMcpServerRequest
 //
@@ -1497,7 +1497,7 @@ func (client *Client) CreateMcpServerWithOptions(request *CreateMcpServerRequest
 
 // Summary:
 //
-// Creates an MCP server.
+// Creates a Model Context Protocol (MCP) server.
 //
 // @param request - CreateMcpServerRequest
 //
@@ -1516,7 +1516,7 @@ func (client *Client) CreateMcpServer(request *CreateMcpServerRequest) (_result 
 
 // Summary:
 //
-// Attaches a plug-in.
+// Mounts a plug-in.
 //
 // @param request - CreatePluginAttachmentRequest
 //
@@ -1587,7 +1587,7 @@ func (client *Client) CreatePluginAttachmentWithOptions(request *CreatePluginAtt
 
 // Summary:
 //
-// Attaches a plug-in.
+// Mounts a plug-in.
 //
 // @param request - CreatePluginAttachmentRequest
 //
@@ -1856,7 +1856,7 @@ func (client *Client) CreateSecret(request *CreateSecretRequest) (_result *Creat
 //
 // Description:
 //
-// You can call this operation to create multiple services at a time.
+// This operation supports creating multiple services.
 //
 // @param request - CreateServiceRequest
 //
@@ -1925,7 +1925,7 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 //
 // Description:
 //
-// You can call this operation to create multiple services at a time.
+// This operation supports creating multiple services.
 //
 // @param request - CreateServiceRequest
 //
@@ -2014,7 +2014,7 @@ func (client *Client) CreateServiceVersion(serviceId *string, request *CreateSer
 
 // Summary:
 //
-// Create a source.
+// Creates a source.
 //
 // @param request - CreateSourceRequest
 //
@@ -2077,7 +2077,7 @@ func (client *Client) CreateSourceWithOptions(request *CreateSourceRequest, head
 
 // Summary:
 //
-// Create a source.
+// Creates a source.
 //
 // @param request - CreateSourceRequest
 //
@@ -2096,7 +2096,7 @@ func (client *Client) CreateSource(request *CreateSourceRequest) (_result *Creat
 
 // Summary:
 //
-// Deletes a consumer.
+// Deletes an API consumer.
 //
 // @param headers - map
 //
@@ -2129,7 +2129,7 @@ func (client *Client) DeleteConsumerWithOptions(consumerId *string, headers map[
 
 // Summary:
 //
-// Deletes a consumer.
+// Deletes an API consumer.
 //
 // @return DeleteConsumerResponse
 func (client *Client) DeleteConsumer(consumerId *string) (_result *DeleteConsumerResponse, _err error) {
@@ -2146,7 +2146,7 @@ func (client *Client) DeleteConsumer(consumerId *string) (_result *DeleteConsume
 
 // Summary:
 //
-// Deletes a consumer authorization rule.
+// Deletes an API consumer authorization rule.
 //
 // @param headers - map
 //
@@ -2179,7 +2179,7 @@ func (client *Client) DeleteConsumerAuthorizationRuleWithOptions(consumerAuthori
 
 // Summary:
 //
-// Deletes a consumer authorization rule.
+// Deletes an API consumer authorization rule.
 //
 // @return DeleteConsumerAuthorizationRuleResponse
 func (client *Client) DeleteConsumerAuthorizationRule(consumerAuthorizationRuleId *string, consumerId *string) (_result *DeleteConsumerAuthorizationRuleResponse, _err error) {
@@ -2301,7 +2301,7 @@ func (client *Client) DeleteEnvironment(environmentId *string) (_result *DeleteE
 
 // Summary:
 //
-// Deletes a Cloud-native API Gateway instance.
+// Deletes a gateway.
 //
 // @param headers - map
 //
@@ -2334,7 +2334,7 @@ func (client *Client) DeleteGatewayWithOptions(gatewayId *string, headers map[st
 
 // Summary:
 //
-// Deletes a Cloud-native API Gateway instance.
+// Deletes a gateway.
 //
 // @return DeleteGatewayResponse
 func (client *Client) DeleteGateway(gatewayId *string) (_result *DeleteGatewayResponse, _err error) {
@@ -2419,7 +2419,7 @@ func (client *Client) DeleteGatewayQuotaRule(gatewayId *string, ruleId *string, 
 
 // Summary:
 //
-// Deletes a security group rule from a Cloud-native API Gateway instance.
+// Deletes a gateway security group rule.
 //
 // @param request - DeleteGatewaySecurityGroupRuleRequest
 //
@@ -2466,7 +2466,7 @@ func (client *Client) DeleteGatewaySecurityGroupRuleWithOptions(gatewayId *strin
 
 // Summary:
 //
-// Deletes a security group rule from a Cloud-native API Gateway instance.
+// Deletes a gateway security group rule.
 //
 // @param request - DeleteGatewaySecurityGroupRuleRequest
 //
@@ -2535,7 +2535,7 @@ func (client *Client) DeleteHttpApi(httpApiId *string) (_result *DeleteHttpApiRe
 
 // Summary:
 //
-// Deletes an operation from an HTTP API.
+// Deletes a specified operation.
 //
 // @param headers - map
 //
@@ -2568,7 +2568,7 @@ func (client *Client) DeleteHttpApiOperationWithOptions(httpApiId *string, opera
 
 // Summary:
 //
-// Deletes an operation from an HTTP API.
+// Deletes a specified operation.
 //
 // @return DeleteHttpApiOperationResponse
 func (client *Client) DeleteHttpApiOperation(httpApiId *string, operationId *string) (_result *DeleteHttpApiOperationResponse, _err error) {
@@ -2685,7 +2685,7 @@ func (client *Client) DeleteMcpServer(mcpServerId *string) (_result *DeleteMcpSe
 
 // Summary:
 //
-// Deletes a plug-in attachment.
+// Deletes a plugin mount.
 //
 // @param headers - map
 //
@@ -2718,7 +2718,7 @@ func (client *Client) DeletePluginAttachmentWithOptions(pluginAttachmentId *stri
 
 // Summary:
 //
-// Deletes a plug-in attachment.
+// Deletes a plugin mount.
 //
 // @return DeletePluginAttachmentResponse
 func (client *Client) DeletePluginAttachment(pluginAttachmentId *string) (_result *DeletePluginAttachmentResponse, _err error) {
@@ -2993,7 +2993,7 @@ func (client *Client) DeleteServiceVersion(serviceId *string, name *string) (_re
 
 // Summary:
 //
-// Delete a service source.
+// Deletes a service source.
 //
 // @param headers - map
 //
@@ -3026,7 +3026,7 @@ func (client *Client) DeleteSourceWithOptions(sourceId *string, headers map[stri
 
 // Summary:
 //
-// Delete a service source.
+// Deletes a service source.
 //
 // @return DeleteSourceResponse
 func (client *Client) DeleteSource(sourceId *string) (_result *DeleteSourceResponse, _err error) {
@@ -3043,7 +3043,7 @@ func (client *Client) DeleteSource(sourceId *string) (_result *DeleteSourceRespo
 
 // Summary:
 //
-// Deploy an HTTP API, including REST and HTTP API routes.
+// Publishes an HTTP API. This includes REST APIs and routes within HTTP APIs.
 //
 // @param request - DeployHttpApiRequest
 //
@@ -3098,7 +3098,7 @@ func (client *Client) DeployHttpApiWithOptions(httpApiId *string, request *Deplo
 
 // Summary:
 //
-// Deploy an HTTP API, including REST and HTTP API routes.
+// Publishes an HTTP API. This includes REST APIs and routes within HTTP APIs.
 //
 // @param request - DeployHttpApiRequest
 //
@@ -3233,7 +3233,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Exports the specified HTTP API.
+// Exports a specified HTTP API.
 //
 // @param request - ExportHttpApiRequest
 //
@@ -3288,7 +3288,7 @@ func (client *Client) ExportHttpApiWithOptions(httpApiId *string, request *Expor
 
 // Summary:
 //
-// Exports the specified HTTP API.
+// Exports a specified HTTP API.
 //
 // @param request - ExportHttpApiRequest
 //
@@ -3407,7 +3407,7 @@ func (client *Client) GetConsumerAuthorizationRule(consumerAuthorizationRuleId *
 
 // Summary:
 //
-// Obtains data from dashboards.
+// Retrieves the monitoring log dashboard.
 //
 // @param tmpReq - GetDashboardRequest
 //
@@ -3492,7 +3492,7 @@ func (client *Client) GetDashboardWithOptions(gatewayId *string, tmpReq *GetDash
 
 // Summary:
 //
-// Obtains data from dashboards.
+// Retrieves the monitoring log dashboard.
 //
 // @param request - GetDashboardRequest
 //
@@ -3912,7 +3912,7 @@ func (client *Client) GetHttpApi(httpApiId *string) (_result *GetHttpApiResponse
 
 // Summary:
 //
-// # Get Operation
+// Retrieves operation information.
 //
 // @param headers - map
 //
@@ -3945,7 +3945,7 @@ func (client *Client) GetHttpApiOperationWithOptions(httpApiId *string, operatio
 
 // Summary:
 //
-// # Get Operation
+// Retrieves operation information.
 //
 // @return GetHttpApiOperationResponse
 func (client *Client) GetHttpApiOperation(httpApiId *string, operationId *string) (_result *GetHttpApiOperationResponse, _err error) {
@@ -4120,7 +4120,7 @@ func (client *Client) GetPluginAttachment(pluginAttachmentId *string) (_result *
 
 // Summary:
 //
-// Queries a policy.
+// Retrieves a policy.
 //
 // @param headers - map
 //
@@ -4153,7 +4153,7 @@ func (client *Client) GetPolicyWithOptions(policyId *string, headers map[string]
 
 // Summary:
 //
-// Queries a policy.
+// Retrieves a policy.
 //
 // @return GetPolicyResponse
 func (client *Client) GetPolicy(policyId *string) (_result *GetPolicyResponse, _err error) {
@@ -4402,7 +4402,7 @@ func (client *Client) GetSecretValue(name *string) (_result *GetSecretValueRespo
 
 // Summary:
 //
-// Queries a service.
+// Gets service details.
 //
 // @param headers - map
 //
@@ -4435,7 +4435,7 @@ func (client *Client) GetServiceWithOptions(serviceId *string, headers map[strin
 
 // Summary:
 //
-// Queries a service.
+// Gets service details.
 //
 // @return GetServiceResponse
 func (client *Client) GetService(serviceId *string) (_result *GetServiceResponse, _err error) {
@@ -4452,7 +4452,7 @@ func (client *Client) GetService(serviceId *string) (_result *GetServiceResponse
 
 // Summary:
 //
-// Queries the details of a service source.
+// Retrieves the details of a service source.
 //
 // @param headers - map
 //
@@ -4485,7 +4485,7 @@ func (client *Client) GetSourceWithOptions(sourceId *string, headers map[string]
 
 // Summary:
 //
-// Queries the details of a service source.
+// Retrieves the details of a service source.
 //
 // @return GetSourceResponse
 func (client *Client) GetSource(sourceId *string) (_result *GetSourceResponse, _err error) {
@@ -6369,7 +6369,7 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 
 // Summary:
 //
-// Queries policy templates.
+// Retrieves policy templates.
 //
 // @param request - ListPolicyClassesRequest
 //
@@ -6440,7 +6440,7 @@ func (client *Client) ListPolicyClassesWithOptions(request *ListPolicyClassesReq
 
 // Summary:
 //
-// Queries policy templates.
+// Retrieves policy templates.
 //
 // @param request - ListPolicyClassesRequest
 //
@@ -6623,7 +6623,7 @@ func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSec
 
 // Summary:
 //
-// Queries a list of services.
+// Retrieves a list of services.
 //
 // @param request - ListServicesRequest
 //
@@ -6694,7 +6694,7 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 
 // Summary:
 //
-// Queries a list of services.
+// Retrieves a list of services.
 //
 // @param request - ListServicesRequest
 //
@@ -6782,6 +6782,94 @@ func (client *Client) ListSslCerts(request *ListSslCertsRequest) (_result *ListS
 	headers := make(map[string]*string)
 	_result = &ListSslCertsResponse{}
 	_body, _err := client.ListSslCertsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查标签接口
+//
+// @param tmpReq - ListTagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListTagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ResourceId) {
+		request.ResourceIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceId, dara.String("ResourceId"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Tag) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, dara.String("Tag"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceIdShrink) {
+		query["ResourceId"] = request.ResourceIdShrink
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TagShrink) {
+		query["Tag"] = request.TagShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTagResources"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/tags"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查标签接口
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7263,6 +7351,80 @@ func (client *Client) SyncMCPServers(request *SyncMCPServersRequest) (_result *S
 
 // Summary:
 //
+// 打标签接口
+//
+// @param request - TagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceId) {
+		body["resourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Tag) {
+		body["tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TagResources"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/tags"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 打标签接口
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Undeploys an MCP server.
 //
 // @param headers - map
@@ -7441,7 +7603,95 @@ func (client *Client) UninstallPlugin(pluginId *string) (_result *UninstallPlugi
 
 // Summary:
 //
-// Updates and associates a policy.
+// 删标签接口
+//
+// @param tmpReq - UntagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UntagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ResourceId) {
+		request.ResourceIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceId, dara.String("ResourceId"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TagKey) {
+		request.TagKeyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagKey, dara.String("TagKey"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.All) {
+		query["All"] = request.All
+	}
+
+	if !dara.IsNil(request.ResourceIdShrink) {
+		query["ResourceId"] = request.ResourceIdShrink
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TagKeyShrink) {
+		query["TagKey"] = request.TagKeyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UntagResources"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/tags"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删标签接口
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates and mounts a policy.
 //
 // @param request - UpdateAndAttachPolicyRequest
 //
@@ -7512,7 +7762,7 @@ func (client *Client) UpdateAndAttachPolicyWithOptions(policyId *string, request
 
 // Summary:
 //
-// Updates and associates a policy.
+// Updates and mounts a policy.
 //
 // @param request - UpdateAndAttachPolicyRequest
 //
@@ -7691,7 +7941,7 @@ func (client *Client) UpdateConsumerAuthorizationRule(consumerId *string, consum
 //
 // Description:
 //
-// Only sources of the **Container Service*	- type can update the listener Ingress configuration.
+// Only sources of the **Container Service*	- type allow you to update the listener Ingress configuration.
 //
 // @param request - UpdateDomainRequest
 //
@@ -7782,7 +8032,7 @@ func (client *Client) UpdateDomainWithOptions(domainId *string, request *UpdateD
 //
 // Description:
 //
-// Only sources of the **Container Service*	- type can update the listener Ingress configuration.
+// Only sources of the **Container Service*	- type allow you to update the listener Ingress configuration.
 //
 // @param request - UpdateDomainRequest
 //
@@ -7940,6 +8190,8 @@ func (client *Client) UpdateGatewayFeature(gatewayId *string, name *string, requ
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateGatewayName is deprecated
+//
 // Summary:
 //
 // The response message returned.
@@ -7987,6 +8239,8 @@ func (client *Client) UpdateGatewayNameWithOptions(gatewayId *string, request *U
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateGatewayName is deprecated
+//
 // Summary:
 //
 // The response message returned.
@@ -7994,6 +8248,7 @@ func (client *Client) UpdateGatewayNameWithOptions(gatewayId *string, request *U
 // @param request - UpdateGatewayNameRequest
 //
 // @return UpdateGatewayNameResponse
+// Deprecated
 func (client *Client) UpdateGatewayName(gatewayId *string, request *UpdateGatewayNameRequest) (_result *UpdateGatewayNameResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)

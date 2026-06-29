@@ -26,51 +26,51 @@ type iListPolicyClassesRequest interface {
 }
 
 type ListPolicyClassesRequest struct {
-	// The resource ID to attach the policy
+	// The ID of the attached resource.
 	//
 	// example:
 	//
 	// route-001
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// The supported mount point type. Valid values:
+	// The type of resource that the policy can be attached to. Valid values:
 	//
-	// 	- HttpApi: an HTTP API
+	// - HttpApi: HttpApi.
 	//
-	// 	- Operation: an operation in an HTTP API
+	// - Operation: an operation of an HttpApi.
 	//
-	// 	- GatewayRoute: a route
+	// - GatewayRoute: a gateway route.
 	//
-	// 	- GatewayService: a service
+	// - GatewayService: a gateway service.
 	//
-	// 	- GatewayServicePort: a service port
+	// - GatewayServicePort: a gateway service port.
 	//
-	// 	- Domain: a domain name
+	// - Domain: a gateway domain name.
 	//
-	// 	- Gateway: an instance
+	// - Gateway: a gateway.
 	//
 	// example:
 	//
 	// Operation
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// The direction of traffic on which the policy takes effect. Valid values:
+	// The direction of the policy. Valid values:
 	//
-	// 	- OutBound
+	// - OutBound: outbound.
 	//
-	// 	- InBound
+	// - InBound: inbound.
 	//
-	// 	- Both
+	// - Both: both directions.
 	//
 	// example:
 	//
 	// InBound
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
-	// The gateway ID
+	// The gateway ID.
 	//
 	// example:
 	//
 	// gw-001
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The page number of the page to return. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type ListPolicyClassesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The template type.
+	// The policy templatetype.
 	//
 	// example:
 	//

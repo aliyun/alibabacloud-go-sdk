@@ -82,13 +82,13 @@ type CreateDomainRequest struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The HTTP/2 setting.
+	// The HTTP/2 settings.
 	//
 	// example:
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
-	// Specifies whether to enable mutual TLS (mTLS) authentication.
+	// Specifies whether to enable mTLS mutual authentication.
 	MTLSEnabled *bool `json:"mTLSEnabled,omitempty" xml:"mTLSEnabled,omitempty"`
 	// The domain name.
 	//
@@ -116,13 +116,13 @@ type CreateDomainRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The cipher suite configuration.
 	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
-	// The maximum TLS version. TLS 1.3 is the maximum supported version.
+	// The maximum TLS protocol version. TLS 1.3 is the maximum supported version.
 	//
 	// example:
 	//
 	// TLS1.3
 	TlsMax *string `json:"tlsMax,omitempty" xml:"tlsMax,omitempty"`
-	// The minimum TLS version. TLS 1.0 is the minimum supported version.
+	// The minimum TLS protocol version. TLS 1.0 is the minimum supported version.
 	//
 	// example:
 	//

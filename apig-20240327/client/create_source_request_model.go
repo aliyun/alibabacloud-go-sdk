@@ -22,15 +22,15 @@ type iCreateSourceRequest interface {
 }
 
 type CreateSourceRequest struct {
-	// The gateway instance ID.
+	// The gateway ID.
 	//
 	// example:
 	//
 	// gw-cq7l5s5lhtgi6q***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The source configuration when the source type is K8S.
+	// The Container Service source configuration.
 	K8sSourceConfig *CreateSourceRequestK8sSourceConfig `json:"k8sSourceConfig,omitempty" xml:"k8sSourceConfig,omitempty" type:"Struct"`
-	// The source configuration when the source type is MSE_NACOS.
+	// The MSE Nacos source configuration.
 	NacosSourceConfig *CreateSourceRequestNacosSourceConfig `json:"nacosSourceConfig,omitempty" xml:"nacosSourceConfig,omitempty" type:"Struct"`
 	// The resource group ID.
 	//
@@ -40,9 +40,9 @@ type CreateSourceRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The source type. Valid values:
 	//
-	// 	- MSE_NACOS: MSE Nacos
+	// - MSE_NACOS: MSE Nacos.
 	//
-	// 	- K8S: Container Service for Kubernetes (ACK)
+	// - K8S: Container Service.
 	//
 	// example:
 	//
@@ -118,9 +118,9 @@ func (s *CreateSourceRequest) Validate() error {
 }
 
 type CreateSourceRequestK8sSourceConfig struct {
-	// The security group rules.
+	// The list of gateway security group authorization rule configurations.
 	AuthorizeSecurityGroupRules []*CreateSourceRequestK8sSourceConfigAuthorizeSecurityGroupRules `json:"authorizeSecurityGroupRules,omitempty" xml:"authorizeSecurityGroupRules,omitempty" type:"Repeated"`
-	// The ID of the ACK cluster.
+	// The Container Service cluster ID.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type CreateSourceRequestK8sSourceConfigAuthorizeSecurityGroupRules struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of port ranges.
 	PortRanges []*string `json:"portRanges,omitempty" xml:"portRanges,omitempty" type:"Repeated"`
-	// The ID of a security group.
+	// The security group ID.
 	//
 	// example:
 	//

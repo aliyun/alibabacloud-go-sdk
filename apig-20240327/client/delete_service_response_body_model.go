@@ -18,13 +18,13 @@ type iDeleteServiceResponseBody interface {
 }
 
 type DeleteServiceResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The status message.
+	// The response message.
 	//
 	// example:
 	//

@@ -60,11 +60,13 @@ type UpdateDomainRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
+	// The domain name scope.
+	//
 	// example:
 	//
-	// Serverless
+	// Dedicated
 	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
-	// Specifies whether to enable forced HTTPS redirect when the protocol type is set to HTTPS. This parameter is required when the protocol is HTTPS.
+	// Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is set. When the protocol is HTTPS, forceHttps is required.
 	//
 	// example:
 	//
@@ -80,9 +82,9 @@ type UpdateDomainRequest struct {
 	MTLSEnabled *bool `json:"mTLSEnabled,omitempty" xml:"mTLSEnabled,omitempty"`
 	// The protocol type supported by the domain name.
 	//
-	// - HTTP: Only HTTP is supported.
+	// - HTTP: Only the HTTP protocol is supported.
 	//
-	// - HTTPS: Only HTTPS is supported.
+	// - HTTPS: Only the HTTPS protocol is supported.
 	//
 	// example:
 	//

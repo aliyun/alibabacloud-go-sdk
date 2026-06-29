@@ -34,59 +34,63 @@ type iCreateGatewayRequest interface {
 }
 
 type CreateGatewayRequest struct {
-	// The logging configurations.
+	// The billing method.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// Gateway instance edition:
+	// The gateway instance edition. Valid values:
 	//
-	// - Standard instance: Professional
+	// - Professional: Standard instance.
 	//
-	// - Serverless: Serverless (currently supports only AI gateway)
+	// - Serverless: Serverless instance.
+	//
+	// - MultiTenantServerless: Multi-tenant Serverless instance.
+	//
+	// - Unknown: Unknown.
 	//
 	// example:
 	//
 	// Professional
 	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
-	// The ID of the resource group.
+	// The gateway type.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// Gateway log configuration.
+	// The gateway log configuration.
 	LogConfig *CreateGatewayRequestLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
-	// The ID of the vSwitch.
+	// The gateway name.
 	//
 	// example:
 	//
 	// test-ceshi
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The gateway edition.
+	// The network access configuration.
 	NetworkAccessConfig *CreateGatewayRequestNetworkAccessConfig `json:"networkAccessConfig,omitempty" xml:"networkAccessConfig,omitempty" type:"Struct"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-ahr5uil8raz0rq3b
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The tag key.
+	// The node specifications.
 	//
 	// example:
 	//
 	// apigw.dev.x2
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The list of labels.
+	// The list of tags.
 	Tag []*CreateGatewayRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The tag value.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-zm0x16tomfiat1mk9f6rs
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The status message.
+	// The zone configuration.
 	ZoneConfig *CreateGatewayRequestZoneConfig `json:"zoneConfig,omitempty" xml:"zoneConfig,omitempty" type:"Struct"`
 }
 
@@ -226,7 +230,7 @@ func (s *CreateGatewayRequest) Validate() error {
 }
 
 type CreateGatewayRequestLogConfig struct {
-	// SLS log configuration.
+	// The Simple Log Service (SLS) log configuration.
 	Sls *CreateGatewayRequestLogConfigSls `json:"sls,omitempty" xml:"sls,omitempty" type:"Struct"`
 }
 
@@ -257,7 +261,7 @@ func (s *CreateGatewayRequestLogConfig) Validate() error {
 }
 
 type CreateGatewayRequestLogConfigSls struct {
-	// Whether to enable.
+	// Specifies whether to enable SLS logging.
 	//
 	// example:
 	//
@@ -287,7 +291,7 @@ func (s *CreateGatewayRequestLogConfigSls) Validate() error {
 }
 
 type CreateGatewayRequestNetworkAccessConfig struct {
-	// -
+	// The network access type.
 	//
 	// example:
 	//
@@ -323,7 +327,7 @@ type CreateGatewayRequestTag struct {
 	//
 	// key
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of the label.
+	// The tag value.
 	//
 	// example:
 	//
@@ -362,19 +366,19 @@ func (s *CreateGatewayRequestTag) Validate() error {
 }
 
 type CreateGatewayRequestZoneConfig struct {
-	// The response payload.
+	// The zone selection option.
 	//
 	// example:
 	//
 	// Manual
 	SelectOption *string `json:"selectOption,omitempty" xml:"selectOption,omitempty"`
-	// Virtual switch ID.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-xxx
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// List of supported zones.
+	// The list of supported zones.
 	Zones []*CreateGatewayRequestZoneConfigZones `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
 }
 
@@ -427,13 +431,13 @@ func (s *CreateGatewayRequestZoneConfig) Validate() error {
 }
 
 type CreateGatewayRequestZoneConfigZones struct {
-	// The ID of the virtual switch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-xx
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// The ID of the zone.
+	// The zone ID.
 	//
 	// example:
 	//

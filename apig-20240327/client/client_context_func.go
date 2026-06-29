@@ -281,7 +281,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates and associates a policy.
+// Creates and attaches a policy.
 //
 // @param request - CreateAndAttachPolicyRequest
 //
@@ -490,7 +490,7 @@ func (client *Client) CreateConsumerAuthorizationRuleWithContext(ctx context.Con
 
 // Summary:
 //
-// Create consumer authorization rules.
+// Creates consumer authorization rules.
 //
 // @param request - CreateConsumerAuthorizationRulesRequest
 //
@@ -701,7 +701,7 @@ func (client *Client) CreateEnvironmentWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// The zone information.
+// Creates a cloud-native gateway.
 //
 // @param request - CreateGatewayRequest
 //
@@ -1033,7 +1033,7 @@ func (client *Client) CreateHttpApiRouteWithContext(ctx context.Context, httpApi
 
 // Summary:
 //
-// Creates an MCP server.
+// Creates a Model Context Protocol (MCP) server.
 //
 // @param request - CreateMcpServerRequest
 //
@@ -1132,7 +1132,7 @@ func (client *Client) CreateMcpServerWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Attaches a plug-in.
+// Mounts a plug-in.
 //
 // @param request - CreatePluginAttachmentRequest
 //
@@ -1396,7 +1396,7 @@ func (client *Client) CreateSecretWithContext(ctx context.Context, request *Crea
 //
 // Description:
 //
-// You can call this operation to create multiple services at a time.
+// This operation supports creating multiple services.
 //
 // @param request - CreateServiceRequest
 //
@@ -1512,7 +1512,7 @@ func (client *Client) CreateServiceVersionWithContext(ctx context.Context, servi
 
 // Summary:
 //
-// Create a source.
+// Creates a source.
 //
 // @param request - CreateSourceRequest
 //
@@ -1575,7 +1575,7 @@ func (client *Client) CreateSourceWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Deletes a consumer.
+// Deletes an API consumer.
 //
 // @param headers - map
 //
@@ -1608,7 +1608,7 @@ func (client *Client) DeleteConsumerWithContext(ctx context.Context, consumerId 
 
 // Summary:
 //
-// Deletes a consumer authorization rule.
+// Deletes an API consumer authorization rule.
 //
 // @param headers - map
 //
@@ -1709,7 +1709,7 @@ func (client *Client) DeleteEnvironmentWithContext(ctx context.Context, environm
 
 // Summary:
 //
-// Deletes a Cloud-native API Gateway instance.
+// Deletes a gateway.
 //
 // @param headers - map
 //
@@ -1787,7 +1787,7 @@ func (client *Client) DeleteGatewayQuotaRuleWithContext(ctx context.Context, gat
 
 // Summary:
 //
-// Deletes a security group rule from a Cloud-native API Gateway instance.
+// Deletes a gateway security group rule.
 //
 // @param request - DeleteGatewaySecurityGroupRuleRequest
 //
@@ -1867,7 +1867,7 @@ func (client *Client) DeleteHttpApiWithContext(ctx context.Context, httpApiId *s
 
 // Summary:
 //
-// Deletes an operation from an HTTP API.
+// Deletes a specified operation.
 //
 // @param headers - map
 //
@@ -1966,7 +1966,7 @@ func (client *Client) DeleteMcpServerWithContext(ctx context.Context, mcpServerI
 
 // Summary:
 //
-// Deletes a plug-in attachment.
+// Deletes a plugin mount.
 //
 // @param headers - map
 //
@@ -2168,7 +2168,7 @@ func (client *Client) DeleteServiceVersionWithContext(ctx context.Context, servi
 
 // Summary:
 //
-// Delete a service source.
+// Deletes a service source.
 //
 // @param headers - map
 //
@@ -2201,7 +2201,7 @@ func (client *Client) DeleteSourceWithContext(ctx context.Context, sourceId *str
 
 // Summary:
 //
-// Deploy an HTTP API, including REST and HTTP API routes.
+// Publishes an HTTP API. This includes REST APIs and routes within HTTP APIs.
 //
 // @param request - DeployHttpApiRequest
 //
@@ -2336,7 +2336,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Exports the specified HTTP API.
+// Exports a specified HTTP API.
 //
 // @param request - ExportHttpApiRequest
 //
@@ -2457,7 +2457,7 @@ func (client *Client) GetConsumerAuthorizationRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// Obtains data from dashboards.
+// Retrieves the monitoring log dashboard.
 //
 // @param tmpReq - GetDashboardRequest
 //
@@ -2822,7 +2822,7 @@ func (client *Client) GetHttpApiWithContext(ctx context.Context, httpApiId *stri
 
 // Summary:
 //
-// # Get Operation
+// Retrieves operation information.
 //
 // @param headers - map
 //
@@ -2958,7 +2958,7 @@ func (client *Client) GetPluginAttachmentWithContext(ctx context.Context, plugin
 
 // Summary:
 //
-// Queries a policy.
+// Retrieves a policy.
 //
 // @param headers - map
 //
@@ -3145,7 +3145,7 @@ func (client *Client) GetSecretValueWithContext(ctx context.Context, name *strin
 
 // Summary:
 //
-// Queries a service.
+// Gets service details.
 //
 // @param headers - map
 //
@@ -3178,7 +3178,7 @@ func (client *Client) GetServiceWithContext(ctx context.Context, serviceId *stri
 
 // Summary:
 //
-// Queries the details of a service source.
+// Retrieves the details of a service source.
 //
 // @param headers - map
 //
@@ -4681,7 +4681,7 @@ func (client *Client) ListPoliciesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries policy templates.
+// Retrieves policy templates.
 //
 // @param request - ListPolicyClassesRequest
 //
@@ -4870,7 +4870,7 @@ func (client *Client) ListSecretsWithContext(ctx context.Context, request *ListS
 
 // Summary:
 //
-// Queries a list of services.
+// Retrieves a list of services.
 //
 // @param request - ListServicesRequest
 //
@@ -4990,6 +4990,75 @@ func (client *Client) ListSslCertsWithContext(ctx context.Context, request *List
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSslCertsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查标签接口
+//
+// @param tmpReq - ListTagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithContext(ctx context.Context, tmpReq *ListTagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListTagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ResourceId) {
+		request.ResourceIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceId, dara.String("ResourceId"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Tag) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, dara.String("Tag"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceIdShrink) {
+		query["ResourceId"] = request.ResourceIdShrink
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TagShrink) {
+		query["Tag"] = request.TagShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTagResources"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/tags"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5344,6 +5413,61 @@ func (client *Client) SyncMCPServersWithContext(ctx context.Context, request *Sy
 
 // Summary:
 //
+// 打标签接口
+//
+// @param request - TagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceId) {
+		body["resourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Tag) {
+		body["tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TagResources"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/tags"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Undeploys an MCP server.
 //
 // @param headers - map
@@ -5469,7 +5593,76 @@ func (client *Client) UninstallPluginWithContext(ctx context.Context, pluginId *
 
 // Summary:
 //
-// Updates and associates a policy.
+// 删标签接口
+//
+// @param tmpReq - UntagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithContext(ctx context.Context, tmpReq *UntagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UntagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ResourceId) {
+		request.ResourceIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceId, dara.String("ResourceId"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TagKey) {
+		request.TagKeyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagKey, dara.String("TagKey"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.All) {
+		query["All"] = request.All
+	}
+
+	if !dara.IsNil(request.ResourceIdShrink) {
+		query["ResourceId"] = request.ResourceIdShrink
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TagKeyShrink) {
+		query["TagKey"] = request.TagKeyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UntagResources"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/tags"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates and mounts a policy.
 //
 // @param request - UpdateAndAttachPolicyRequest
 //
@@ -5662,7 +5855,7 @@ func (client *Client) UpdateConsumerAuthorizationRuleWithContext(ctx context.Con
 //
 // Description:
 //
-// Only sources of the **Container Service*	- type can update the listener Ingress configuration.
+// Only sources of the **Container Service*	- type allow you to update the listener Ingress configuration.
 //
 // @param request - UpdateDomainRequest
 //
@@ -5847,6 +6040,8 @@ func (client *Client) UpdateGatewayFeatureWithContext(ctx context.Context, gatew
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateGatewayName is deprecated
+//
 // Summary:
 //
 // The response message returned.

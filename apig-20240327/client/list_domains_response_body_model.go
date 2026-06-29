@@ -96,7 +96,7 @@ func (s *ListDomainsResponseBody) Validate() error {
 }
 
 type ListDomainsResponseBodyData struct {
-	// 域名信息列表。
+	// The list of domain name information.
 	Items []*DomainInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//

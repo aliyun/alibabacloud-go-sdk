@@ -20,21 +20,21 @@ type iCreateAndAttachPolicyResponseBody interface {
 }
 
 type CreateAndAttachPolicyResponseBody struct {
-	// The status code returned.
+	// Response code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// Response data.
 	Data *CreateAndAttachPolicyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message returned.
+	// Response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, which is used to trace the call link.
+	// Request ID, used for tracing the API call chain.
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ func (s *CreateAndAttachPolicyResponseBody) Validate() error {
 }
 
 type CreateAndAttachPolicyResponseBodyData struct {
-	// The association information of the policy.
+	// Attachment information.
 	Attachment *Attachment `json:"attachment,omitempty" xml:"attachment,omitempty"`
-	// The policy ID.
+	// Policy ID.
 	//
 	// example:
 	//

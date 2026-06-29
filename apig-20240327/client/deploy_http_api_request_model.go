@@ -22,9 +22,9 @@ type DeployHttpApiRequest struct {
 	//
 	// The HTTP API deployment configuration.
 	HttpApiConfig *DeployHttpApiRequestHttpApiConfig `json:"httpApiConfig,omitempty" xml:"httpApiConfig,omitempty" type:"Struct"`
-	// The REST API deployment configuration. This parameter is required when you deploy an HTTP API as a REST API.
+	// The deployment configuration for the REST API. This parameter is required when the HTTP API to be published is a REST API.
 	RestApiConfig *DeployHttpApiRequestRestApiConfig `json:"restApiConfig,omitempty" xml:"restApiConfig,omitempty" type:"Struct"`
-	// The route ID. This parameter is required when you deploy a route for an HTTP API.
+	// The route ID. This parameter is required when you publish a route of an HTTP API.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type DeployHttpApiRequestHttpApiConfig struct {
 	//
 	// gw-csrhgfmm1hknf0hu6o3g
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// A list of route IDs.
+	// The route IDs.
 	RouteIds []*string `json:"routeIds,omitempty" xml:"routeIds,omitempty" type:"Repeated"`
 }
 
@@ -123,13 +123,13 @@ func (s *DeployHttpApiRequestHttpApiConfig) Validate() error {
 }
 
 type DeployHttpApiRequestRestApiConfig struct {
-	// The deployment description.
+	// The publish description.
 	//
 	// example:
 	//
 	// 用户服务API发布。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The deployment environment configuration.
+	// The publish environment configuration.
 	Environment *DeployHttpApiRequestRestApiConfigEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
 	// The gateway ID.
 	//
@@ -137,13 +137,13 @@ type DeployHttpApiRequestRestApiConfig struct {
 	//
 	// gw-cvn2u46m1hkun04oll8g
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// A list of operation-level deployment controls.
+	// The operation-level deployment control list.
 	OperationDeployments []*DeployHttpApiRequestRestApiConfigOperationDeployments `json:"operationDeployments,omitempty" xml:"operationDeployments,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// A list of operation IDs.
+	// The operation IDs.
 	OperationIds []*string `json:"operationIds,omitempty" xml:"operationIds,omitempty" type:"Repeated"`
-	// The revision ID. If you specify this parameter, the deployment uses the settings from the specified revision.
+	// The historical version number. If this parameter is specified, the publish information is based on the historical version.
 	//
 	// example:
 	//
@@ -234,13 +234,13 @@ func (s *DeployHttpApiRequestRestApiConfig) Validate() error {
 type DeployHttpApiRequestRestApiConfigEnvironment struct {
 	// Deprecated
 	//
-	// The API deployment scenario.
+	// The API publish scenario.
 	//
 	// example:
 	//
 	// SingleService
 	BackendScene *string `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
-	// A list of custom domain IDs.
+	// The list of custom domain names.
 	CustomDomainIds []*string `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
 	// Deprecated
 	//
@@ -252,7 +252,7 @@ type DeployHttpApiRequestRestApiConfigEnvironment struct {
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
 	// Deprecated
 	//
-	// The configurations for one or more backend services. A single-service scenario allows only one entry, while other scenarios, such as canary release by ratio and content-based routing, allow multiple entries.
+	// The existing service configurations. In the single-service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed.
 	//
 	// if can be null:
 	// true
@@ -317,7 +317,7 @@ func (s *DeployHttpApiRequestRestApiConfigEnvironment) Validate() error {
 }
 
 type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
-	// The conditions that a request must meet to be routed to this service. This parameter is used for content-based routing.
+	// The match condition configuration related to API publishing.
 	//
 	// example:
 	//
@@ -329,7 +329,7 @@ type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The service protocol.
+	// The service protocol. Valid values:
 	//
 	// - HTTP
 	//
@@ -351,7 +351,7 @@ type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The weight, which must be an integer from 1 to 100. This parameter applies only to the canary release by ratio scenario.
+	// The weight. Valid values: 1 to 100. This parameter takes effect only in the ratio-based scenario.
 	//
 	// example:
 	//
@@ -437,7 +437,7 @@ type DeployHttpApiRequestRestApiConfigOperationDeployments struct {
 	//
 	// Publish
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The unique ID of the operation.
+	// The unique identifier of the operation.
 	//
 	// example:
 	//

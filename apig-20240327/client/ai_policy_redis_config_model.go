@@ -24,17 +24,41 @@ type iAiPolicyRedisConfig interface {
 }
 
 type AiPolicyRedisConfig struct {
-	// The zero-based index of the Redis database to use. The default value is 0.
+	// The Redis database number.
+	//
+	// example:
+	//
+	// 0
 	DatabaseNumber *int32 `json:"databaseNumber,omitempty" xml:"databaseNumber,omitempty"`
-	// The hostname of the Redis instance.
+	// The Redis host address.
+	//
+	// example:
+	//
+	// r-xxx.redis.rds.aliyuncs.com
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
-	// The password for Redis authentication.
+	// The Redis password.
+	//
+	// example:
+	//
+	// pass
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// The port number of the Redis instance.
+	// The Redis port.
+	//
+	// example:
+	//
+	// 6379
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The connection timeout in milliseconds.
+	// The timeout period, in milliseconds.
+	//
+	// example:
+	//
+	// 5000
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// The username for Redis authentication.
+	// The Redis username.
+	//
+	// example:
+	//
+	// user
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 

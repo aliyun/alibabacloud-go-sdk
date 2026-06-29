@@ -18,11 +18,19 @@ type iAiStatisticsConfig interface {
 }
 
 type AiStatisticsConfig struct {
-	// Specifies whether to record the body of incoming requests.
+	// Specifies whether to log request content (controls whether question-related attributes are generated).
+	//
+	// example:
+	//
+	// true
 	LogRequestContent *bool `json:"logRequestContent,omitempty" xml:"logRequestContent,omitempty"`
-	// Specifies whether to record the body of outgoing responses.
+	// Specifies whether to log response content (controls whether answer-related attributes are generated).
+	//
+	// example:
+	//
+	// true
 	LogResponseContent *bool `json:"logResponseContent,omitempty" xml:"logResponseContent,omitempty"`
-	// An array of configurations for extracting data from specific paths.
+	// The list of custom field collection configurations, configured by API path.
 	PathFieldConfigs []*AiStatisticsConfigPathFieldConfigs `json:"pathFieldConfigs,omitempty" xml:"pathFieldConfigs,omitempty" type:"Repeated"`
 }
 
@@ -75,9 +83,13 @@ func (s *AiStatisticsConfig) Validate() error {
 }
 
 type AiStatisticsConfigPathFieldConfigs struct {
-	// A key-value map for extracting fields. Keys are custom names, and values are paths to the data within the request or response body.
+	// The field collection configuration.
 	FieldPaths map[string]*AiStatisticsPathField `json:"fieldPaths,omitempty" xml:"fieldPaths,omitempty"`
-	// The API endpoint path to which this configuration applies, such as /user/id.
+	// The API path.
+	//
+	// example:
+	//
+	// /v1/chat/completions
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
 }
 

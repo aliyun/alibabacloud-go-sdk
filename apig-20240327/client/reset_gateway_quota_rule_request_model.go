@@ -35,8 +35,14 @@ type ResetGatewayQuotaRuleRequest struct {
 	// example:
 	//
 	// false
-	DryRun           *bool  `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	Overwrite        *bool  `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// example:
+	//
+	// false
+	Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
+	// example:
+	//
+	// 1
 	PeriodMultiplier *int64 `json:"periodMultiplier,omitempty" xml:"periodMultiplier,omitempty"`
 	// example:
 	//
@@ -49,7 +55,10 @@ type ResetGatewayQuotaRuleRequest struct {
 	// example:
 	//
 	// UTC+8
-	Timezone        *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	// example:
+	//
+	// calendar
 	WindowAlignment *string `json:"windowAlignment,omitempty" xml:"windowAlignment,omitempty"`
 }
 

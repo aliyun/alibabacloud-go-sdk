@@ -24,17 +24,41 @@ type iAiTokenRateLimitConfigRule interface {
 }
 
 type AiTokenRateLimitConfigRule struct {
-	// The action to take when a request exceeds the token rate limit.
+	// The throttling mode.
+	//
+	// example:
+	//
+	// TokenPerMinute
 	LimitMode *string `json:"limitMode,omitempty" xml:"limitMode,omitempty"`
-	// The scope of the rate limit, such as per user or per project.
+	// The throttling type.
+	//
+	// example:
+	//
+	// Consumer
 	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
-	// The maximum number of tokens allowed within the defined time period. For example, if the time unit is one minute, this value represents the tokens-per-minute (TPM) limit.
+	// The throttling value.
+	//
+	// example:
+	//
+	// 1000
 	LimitValue *int32 `json:"limitValue,omitempty" xml:"limitValue,omitempty"`
-	// The key that identifies the request source. Its value is extracted from the request context to apply the rule.
+	// The match key name.
+	//
+	// example:
+	//
+	// X-API-Key
 	MatchKey *string `json:"matchKey,omitempty" xml:"matchKey,omitempty"`
-	// The matching logic applied to the value of `matchKey`.
+	// The matching method.
+	//
+	// example:
+	//
+	// Exact
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	// The value to match. The rate limit applies only when the value of `matchKey` in the request matches this value, according to the `matchType`.
+	// The match value.
+	//
+	// example:
+	//
+	// consumer-a
 	MatchValue *string `json:"matchValue,omitempty" xml:"matchValue,omitempty"`
 }
 

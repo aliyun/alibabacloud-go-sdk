@@ -20,15 +20,15 @@ type iGetSourceResponseBody interface {
 }
 
 type GetSourceResponseBody struct {
-	// Response status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data.
+	// The response data.
 	Data *GetSourceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
@@ -104,47 +104,47 @@ type GetSourceResponseBodyData struct {
 	//
 	// ASSOCIATED
 	AssociationStatus *string `json:"associationStatus,omitempty" xml:"associationStatus,omitempty"`
-	// Creation timestamp.
+	// The creation timestamp.
 	//
 	// example:
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// Gateway ID.
+	// The gateway ID.
 	//
 	// example:
 	//
 	// gw-cq2vundlhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// K8s source information.
+	// The Kubernetes source information.
 	K8SSourceInfo *GetSourceResponseBodyDataK8SSourceInfo `json:"k8SSourceInfo,omitempty" xml:"k8SSourceInfo,omitempty" type:"Struct"`
-	// MSE Nacos source information.
+	// The Microservices Engine (MSE) Nacos source information.
 	NacosSourceInfo *GetSourceResponseBodyDataNacosSourceInfo `json:"nacosSourceInfo,omitempty" xml:"nacosSourceInfo,omitempty" type:"Struct"`
-	// Name.
+	// The name.
 	//
 	// example:
 	//
 	// import-test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aekz4us4iruleja
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Source ID.
+	// The source ID.
 	//
 	// example:
 	//
 	// src-crdddallhtgt***
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// Type.
+	// The type.
 	//
 	// example:
 	//
 	// K8S
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Update timestamp.
+	// The update timestamp.
 	//
 	// example:
 	//
@@ -274,7 +274,7 @@ func (s *GetSourceResponseBodyData) Validate() error {
 }
 
 type GetSourceResponseBodyDataK8SSourceInfo struct {
-	// Container Service cluster ID.
+	// The container service cluster ID.
 	//
 	// example:
 	//
@@ -304,19 +304,19 @@ func (s *GetSourceResponseBodyDataK8SSourceInfo) Validate() error {
 }
 
 type GetSourceResponseBodyDataNacosSourceInfo struct {
-	// Nacos instance access address.
+	// The access address of the Nacos instance.
 	//
 	// example:
 	//
 	// mse
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// fluss-cn-w7k4hann601
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// Nacos instance ID.
+	// The Nacos instance ID.
 	//
 	// example:
 	//

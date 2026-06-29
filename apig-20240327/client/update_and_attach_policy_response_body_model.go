@@ -18,19 +18,19 @@ type iUpdateAndAttachPolicyResponseBody interface {
 }
 
 type UpdateAndAttachPolicyResponseBody struct {
-	// The status code returned.
+	// The response code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response message returned.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, which is used to trace the call link.
+	// The request ID, which is used to trace the API call chain.
 	//
 	// example:
 	//

@@ -18,19 +18,19 @@ type iDeleteConsumerAuthorizationRuleResponseBody interface {
 }
 
 type DeleteConsumerAuthorizationRuleResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The status message.
+	// The response message.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

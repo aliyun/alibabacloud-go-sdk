@@ -22,7 +22,7 @@ type iCreateServiceRequest interface {
 }
 
 type CreateServiceRequest struct {
-	// The gateway instance ID.
+	// The gateway ID.
 	//
 	// example:
 	//
@@ -34,41 +34,31 @@ type CreateServiceRequest struct {
 	//
 	// rg-xxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The list of service configurations.
+	// The list of service configurations. At least one service configuration is required.
 	ServiceConfigs []*CreateServiceRequestServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
-	// The service source type. Valid values:
+	// The service source. Valid values:
 	//
-	// 	- MSE_NACOS: MSE Nacos instance services
+	// - MSE_NACOS: a service in MSE Nacos.
 	//
-	// 	- K8S: Container Service for Kubernetes (ACK) cluster services
+	// - K8S: a service in a Kubernetes cluster of Container Service.
 	//
-	// 	- VIP: fixed IP addresses
+	// - VIP: a fixed address service.
 	//
-	// 	- DNS: Domain Name System (DNS) domains
+	// - DNS: a DNS domain name service.
 	//
-	// 	- FC3: Function Compute services
+	// - FC3: a service in Function Compute.
 	//
-	// 	- SAE_K8S_SERVICE: Serverless App Engine (SAE) Kubernetes services
+	// - SAE_K8S_SERVICE: an SAE Kubernetes service.
 	//
-	// Valid values:
+	// - AI: an AI service.
 	//
-	// 	- SAE_K8S_SERVICE
-	//
-	// 	- K8S
-	//
-	// 	- FC3
-	//
-	// 	- DNS
-	//
-	// 	- VIP
-	//
-	// 	- MSE_NACOS
+	// - AGENT: an Agent service.
 	//
 	// example:
 	//
 	// MSE_NACOS
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// clientToken
+	// The client token.
 	//
 	// example:
 	//
@@ -143,21 +133,21 @@ func (s *CreateServiceRequest) Validate() error {
 }
 
 type CreateServiceRequestServiceConfigs struct {
-	// The list of domain names or fixed IP addresses.
+	// The list of domain names or fixed addresses.
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
-	// Agent service configuration
+	// The Agent service configuration. This parameter is required when sourceType is set to AGENT.
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
-	// The AI service configurations.
+	// The AI service configuration.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
-	// The list of DNS service addresses.
+	// The list of DNS server addresses.
 	DnsServers []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
-	// Express type
+	// The service expression type that identifies the special type or mode of the service.
 	//
 	// example:
 	//
 	// Standard
 	ExpressType *string `json:"expressType,omitempty" xml:"expressType,omitempty"`
-	// The service group name. This parameter is required if sourceType is set to MSE_NACOS.
+	// The service group name. This parameter is required when sourceType is set to MSE_NACOS.
 	//
 	// example:
 	//
@@ -169,31 +159,31 @@ type CreateServiceRequestServiceConfigs struct {
 	//
 	// user-service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The service namespace. This parameter is required when sourceType is set to K8S or MSE_NACOS.
+	// The namespace of the service.
 	//
-	// 	- If sourceType is set to K8S, this parameter specifies the namespace where the K8s service resides.
+	// - If sourceType is set to K8S, this parameter specifies the namespace of the Kubernetes service.
 	//
-	// 	- If sourceType is set to MSE_NACOS, this parameter specifies a namespace in Nacos.
+	// - If sourceType is set to MSE_NACOS, this parameter specifies the namespace in Nacos.
 	//
-	// This parameter is required if sourceType is set to K8S or MSE_NACOS.
+	// This parameter is required when sourceType is set to K8S or MSE_NACOS.
 	//
 	// example:
 	//
 	// PUBLIC
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The function version/alias.
+	// The function version or alias.
 	//
 	// example:
 	//
 	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// Service source ID
+	// The service source ID. This parameter is required in multi-Nacos instance scenarios.
 	//
 	// example:
 	//
 	// nacos-instance-001
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// Validation options
+	// The validation options for service verification configuration.
 	ValidationOptions *CreateServiceRequestServiceConfigsValidationOptions `json:"validationOptions,omitempty" xml:"validationOptions,omitempty" type:"Struct"`
 }
 
@@ -324,7 +314,7 @@ func (s *CreateServiceRequestServiceConfigs) Validate() error {
 }
 
 type CreateServiceRequestServiceConfigsValidationOptions struct {
-	// Skip AI chat completion verification
+	// Specifies whether to skip AI chat completion verification.
 	SkipVerifyAIChatCompletion *bool `json:"skipVerifyAIChatCompletion,omitempty" xml:"skipVerifyAIChatCompletion,omitempty"`
 }
 

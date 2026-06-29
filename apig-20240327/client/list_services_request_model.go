@@ -26,19 +26,19 @@ type iListServicesRequest interface {
 }
 
 type ListServicesRequest struct {
-	// The ID of the Cloud-native API Gateway instance.
+	// The ID of the cloud-native API gateway.
 	//
 	// example:
 	//
 	// gw-cpv4sqdl*****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The service name.
+	// The service name for exact match query.
 	//
 	// example:
 	//
 	// user-service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The page number to return. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -56,35 +56,23 @@ type ListServicesRequest struct {
 	//
 	// rg-acfmxxe5rc6cvla
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The service source. Valid values:
+	// The source type of the service. Valid values:
 	//
-	// 	- MSE_NACOS: a service in an MSE Nacos instance
+	// - MSE_NACOS: The service is from MSE Nacos.
 	//
-	// 	- K8S: a service in a Kubernetes (K8s) cluster in Container Service for Kubernetes (ACK)
+	// - K8S: The service is from a Kubernetes cluster in Container Service.
 	//
-	// 	- FC3: a service in Function Compute
+	// - FC3: The service is from Function Compute.
 	//
-	// 	- VIP: a fixed address
+	// - VIP: The service is from a fixed address.
 	//
-	// 	- DNS: a domain name
-	//
-	// Enumerated values:
-	//
-	// 	- K8S
-	//
-	// 	- FC3
-	//
-	// 	- DNS
-	//
-	// 	- VIP
-	//
-	// 	- MSE_NACOS
+	// - DNS: The service is from a domain name.
 	//
 	// example:
 	//
 	// MSE_NACOS
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// List of service source types
+	// The list of service source types.
 	//
 	// example:
 	//

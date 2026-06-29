@@ -93,8 +93,14 @@ func (s *DescribeRegionsResponseBody) Validate() error {
 }
 
 type DescribeRegionsResponseBodyData struct {
+	// example:
+	//
+	// China (Beijing)
 	LocalName *string `json:"localName,omitempty" xml:"localName,omitempty"`
-	RegionId  *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyData) String() string {

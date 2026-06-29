@@ -20,16 +20,16 @@ type iAiToolSelectionConfig interface {
 }
 
 type AiToolSelectionConfig struct {
-	// Conditions for activating the tool selection feature.
+	// The enable conditions configuration. Controls when the overall feature is triggered.
 	EnableConditions *AiToolSelectionConfigEnableConditions `json:"enableConditions,omitempty" xml:"enableConditions,omitempty" type:"Struct"`
-	// The status of the AI tool selection plugin.
+	// The plug-in running status.
 	//
 	// if can be null:
 	// true
 	PluginStatus *AiPluginStatus `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty"`
-	// Configuration for query rewriting, which optimizes user queries before tool selection.
+	// The query rewrite configuration. Rewrites user queries before tool reranking to improve matching precision.
 	QueryRewriting *AiToolSelectionConfigQueryRewriting `json:"queryRewriting,omitempty" xml:"queryRewriting,omitempty" type:"Struct"`
-	// Configuration for tool reranking, which controls how tools are scored and filtered.
+	// The tool reranking configuration. Uses a model to rank and filter candidate tools.
 	ToolReranking *AiToolSelectionConfigToolReranking `json:"toolReranking,omitempty" xml:"toolReranking,omitempty" type:"Struct"`
 }
 
@@ -102,7 +102,11 @@ func (s *AiToolSelectionConfig) Validate() error {
 }
 
 type AiToolSelectionConfigEnableConditions struct {
-	// The minimum number of tools required to activate tool selection.
+	// The tool count threshold.
+	//
+	// example:
+	//
+	// 10
 	ToolCountThreshold *int32 `json:"toolCountThreshold,omitempty" xml:"toolCountThreshold,omitempty"`
 }
 
@@ -128,19 +132,31 @@ func (s *AiToolSelectionConfigEnableConditions) Validate() error {
 }
 
 type AiToolSelectionConfigQueryRewriting struct {
-	// Method for selecting the conversation context for query rewriting.
+	// The context selection configuration.
 	ContextSelection *AiToolSelectionConfigQueryRewritingContextSelection `json:"contextSelection,omitempty" xml:"contextSelection,omitempty" type:"Struct"`
-	// Whether to enable query rewriting.
+	// Specifies whether query rewrite is enabled.
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The fallback strategy used if query rewriting fails or returns no results.
+	// The fallback strategy.
+	//
+	// example:
+	//
+	// skip
 	FallbackStrategy *string `json:"fallbackStrategy,omitempty" xml:"fallbackStrategy,omitempty"`
-	// The maximum number of tokens to generate for the rewritten query.
+	// The maximum number of output tokens for rewriting.
+	//
+	// example:
+	//
+	// 50
 	MaxOutputTokens *int32 `json:"maxOutputTokens,omitempty" xml:"maxOutputTokens,omitempty"`
-	// Model service configuration for query rewriting.
+	// The rewriting model service configuration.
 	ModelService *AiToolSelectionConfigQueryRewritingModelService `json:"modelService,omitempty" xml:"modelService,omitempty" type:"Struct"`
-	// Prompt configuration for query rewriting.
+	// The prompt configuration.
 	PromptConfig *AiToolSelectionConfigQueryRewritingPromptConfig `json:"promptConfig,omitempty" xml:"promptConfig,omitempty" type:"Struct"`
-	// Conditions for activating query rewriting.
+	// The trigger condition configuration.
 	TriggerConditions *AiToolSelectionConfigQueryRewritingTriggerConditions `json:"triggerConditions,omitempty" xml:"triggerConditions,omitempty" type:"Struct"`
 }
 
@@ -240,9 +256,17 @@ func (s *AiToolSelectionConfigQueryRewriting) Validate() error {
 }
 
 type AiToolSelectionConfigQueryRewritingContextSelection struct {
-	// The strategy for selecting the conversation context.
+	// The context selection method.
+	//
+	// example:
+	//
+	// allMessages
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value associated with the context selection strategy, such as the number of messages to include.
+	// The number of retained messages or characters.
+	//
+	// example:
+	//
+	// 5
 	Value *int32 `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -277,11 +301,23 @@ func (s *AiToolSelectionConfigQueryRewritingContextSelection) Validate() error {
 }
 
 type AiToolSelectionConfigQueryRewritingModelService struct {
-	// The name of the model used for query rewriting.
+	// The model name.
+	//
+	// example:
+	//
+	// gte-rerank-v2
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The ID of the model service used for query rewriting.
+	// The model service ID.
+	//
+	// example:
+	//
+	// svc-xxx
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The request timeout in milliseconds for the query rewriting model service.
+	// The request timeout period, in milliseconds.
+	//
+	// example:
+	//
+	// 5000
 	TimeoutMillisecond *int32 `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
 }
 
@@ -325,9 +361,17 @@ func (s *AiToolSelectionConfigQueryRewritingModelService) Validate() error {
 }
 
 type AiToolSelectionConfigQueryRewritingPromptConfig struct {
-	// The custom prompt template for query rewriting. This parameter is required if `type` is set to `custom`.
+	// The custom prompt content.
+	//
+	// example:
+	//
+	// 请将以下用户问题改写为...
 	CustomPrompt *string `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
-	// The type of prompt, such as default or custom.
+	// The prompt type.
+	//
+	// example:
+	//
+	// builtIn
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -362,7 +406,11 @@ func (s *AiToolSelectionConfigQueryRewritingPromptConfig) Validate() error {
 }
 
 type AiToolSelectionConfigQueryRewritingTriggerConditions struct {
-	// The minimum number of messages in the conversation history required to activate query rewriting.
+	// The number of conversation turns after which rewriting is triggered.
+	//
+	// example:
+	//
+	// 1
 	MessageCountThreshold *int32 `json:"messageCountThreshold,omitempty" xml:"messageCountThreshold,omitempty"`
 }
 
@@ -388,17 +436,37 @@ func (s *AiToolSelectionConfigQueryRewritingTriggerConditions) Validate() error 
 }
 
 type AiToolSelectionConfigToolReranking struct {
-	// The fallback strategy used if tool reranking fails or returns no results.
+	// The fallback strategy upon failure.
+	//
+	// example:
+	//
+	// skip
 	FallbackStrategy *string `json:"fallbackStrategy,omitempty" xml:"fallbackStrategy,omitempty"`
-	// The method for filtering tools after reranking.
+	// The filtering method.
+	//
+	// example:
+	//
+	// topN
 	FilteringMethod *string `json:"filteringMethod,omitempty" xml:"filteringMethod,omitempty"`
-	// Model service configuration for tool reranking.
+	// The reranking model service configuration.
 	ModelService *AiToolSelectionConfigToolRerankingModelService `json:"modelService,omitempty" xml:"modelService,omitempty" type:"Struct"`
-	// The minimum score a tool must have to be selected. Tools with scores below this threshold are filtered out.
+	// The score threshold.
+	//
+	// example:
+	//
+	// 0.5
 	ScoreThreshold *float32 `json:"scoreThreshold,omitempty" xml:"scoreThreshold,omitempty"`
-	// The percentage of top-ranked tools to select. This parameter only applies when `filteringMethod` is set to a percentage-based method.
+	// The retention percentage.
+	//
+	// example:
+	//
+	// 50
 	TopKPercent *int32 `json:"topKPercent,omitempty" xml:"topKPercent,omitempty"`
-	// The number of top-ranked tools to select. This parameter only applies when `filteringMethod` is set to a count-based method.
+	// The retention count.
+	//
+	// example:
+	//
+	// 5
 	TopNCount *int32 `json:"topNCount,omitempty" xml:"topNCount,omitempty"`
 }
 
@@ -474,11 +542,23 @@ func (s *AiToolSelectionConfigToolReranking) Validate() error {
 }
 
 type AiToolSelectionConfigToolRerankingModelService struct {
-	// The name of the model used for reranking.
+	// The model name.
+	//
+	// example:
+	//
+	// gte-rerank-v2
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The ID of the model service used for reranking.
+	// The model service ID.
+	//
+	// example:
+	//
+	// svc-xxx
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The request timeout in milliseconds for the reranking model service.
+	// The request timeout period, in milliseconds.
+	//
+	// example:
+	//
+	// 5000
 	TimeoutMillisecond *int32 `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
 }
 

@@ -30,9 +30,9 @@ type iCreateHttpApiRouteRequest interface {
 }
 
 type CreateHttpApiRouteRequest struct {
-	// The backend service configurations for the route.
+	// The backend service configuration of the route.
 	BackendConfig *CreateHttpApiRouteRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	// deployConfigs
+	// The API deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// The route description.
 	//
@@ -40,7 +40,7 @@ type CreateHttpApiRouteRequest struct {
 	//
 	// 用户登录路由。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The list of domain IDs.
+	// The domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
 	// The environment ID.
 	//
@@ -50,7 +50,7 @@ type CreateHttpApiRouteRequest struct {
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
 	// The route match rule.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
-	// The MCP route configuration
+	// The MCP route configuration.
 	McpRouteConfig *CreateHttpApiRouteRequestMcpRouteConfig `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
 	// The route name.
 	//
@@ -58,7 +58,7 @@ type CreateHttpApiRouteRequest struct {
 	//
 	// login
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The route-level policy configurations
+	// The policy type.
 	PolicyConfigs []*HttpApiPolicyConfigs `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
 }
 
@@ -191,13 +191,13 @@ func (s *CreateHttpApiRouteRequest) Validate() error {
 type CreateHttpApiRouteRequestBackendConfig struct {
 	// The backend service scenario. Valid values:
 	//
-	// 	- SingleService
+	// - SingleService: Single service.
 	//
-	// 	- MultiServiceByRatio
+	// - MultiServiceByRatio: Multiple services with ratio-based canary release.
 	//
-	// 	- Mock
+	// - Mock: Mock service.
 	//
-	// 	- Redirect
+	// - Redirect: Redirect service.
 	//
 	// example:
 	//
@@ -247,7 +247,7 @@ func (s *CreateHttpApiRouteRequestBackendConfig) Validate() error {
 }
 
 type CreateHttpApiRouteRequestBackendConfigServices struct {
-	// The service port (omit for dynamic ports).
+	// The service port. Do not specify this parameter for dynamic ports.
 	//
 	// example:
 	//
@@ -255,9 +255,9 @@ type CreateHttpApiRouteRequestBackendConfigServices struct {
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 	// The service protocol. Valid values:
 	//
-	// 	- HTTP
+	// - HTTP.
 	//
-	// 	- HTTPS
+	// - HTTPS.
 	//
 	// example:
 	//
@@ -269,13 +269,13 @@ type CreateHttpApiRouteRequestBackendConfigServices struct {
 	//
 	// svc-crbgq0dlhtgr***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The service version (valid only in tag-based scenarios).
+	// The service version. This parameter is valid only in the tag-based scenario.
 	//
 	// example:
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The traffic weight percentage.
+	// The percentage value of the traffic ratio.
 	//
 	// example:
 	//
@@ -341,19 +341,25 @@ func (s *CreateHttpApiRouteRequestBackendConfigServices) Validate() error {
 }
 
 type CreateHttpApiRouteRequestMcpRouteConfig struct {
-	// The exposed URI path
+	// The exposed URI path.
 	//
 	// example:
 	//
 	// /v1/chat/completions
 	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
-	// mcpStatisticsEnable
+	// Specifies whether to enable MCP observability. Default value: false.
 	//
 	// example:
 	//
 	// false
 	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
-	// The MCP protocol
+	// The service protocol. Valid values:
+	//
+	// - TCP.
+	//
+	// - HTTP.
+	//
+	// - DUBBO.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iCreateConsumerAuthorizationRulesRequest interface {
 }
 
 type CreateConsumerAuthorizationRulesRequest struct {
-	// Consumer authorization rules.
+	// The consumer authentication rules.
 	AuthorizationRules []*CreateConsumerAuthorizationRulesRequestAuthorizationRules `json:"authorizationRules,omitempty" xml:"authorizationRules,omitempty" type:"Repeated"`
 }
 
@@ -49,27 +49,27 @@ func (s *CreateConsumerAuthorizationRulesRequest) Validate() error {
 }
 
 type CreateConsumerAuthorizationRulesRequestAuthorizationRules struct {
-	// Consumer ID.
+	// The consumer ID.
 	//
 	// example:
 	//
 	// cs-******
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// Expiration mode. Currently only LongTerm is supported.
+	// The expiration mode. Currently, only LongTerm is supported.
 	//
 	// example:
 	//
 	// LongTerm
 	ExpireMode *string `json:"expireMode,omitempty" xml:"expireMode,omitempty"`
-	// Expiration time.
+	// The expiration time.
 	//
 	// example:
 	//
 	// 174116222x
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	// Resource identifier, provided to non-standard code sources as a unique identifier for space reuse
+	// The resource identifier, which serves as a unique identifier for non-standard code sources for space reuse.
 	ResourceIdentifier *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty" type:"Struct"`
-	// Resource type.
+	// The resource type.
 	//
 	// example:
 	//
@@ -140,25 +140,25 @@ func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) Validate() e
 }
 
 type CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier struct {
-	// Environment ID.
+	// The environment ID.
 	//
 	// example:
 	//
 	// env-******
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Parent resource ID.
+	// The parent resource ID.
 	//
 	// example:
 	//
 	// api-******
 	ParentResourceId *string `json:"parentResourceId,omitempty" xml:"parentResourceId,omitempty"`
-	// Resource ID.
+	// The resource ID.
 	//
 	// example:
 	//
 	// ha-cn-li942gy8p03
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// Resource information.
+	// The resource information.
 	Resources []*string `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
 }
 

@@ -20,21 +20,21 @@ type iCreatePluginAttachmentResponseBody interface {
 }
 
 type CreatePluginAttachmentResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *CreatePluginAttachmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message returned.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreatePluginAttachmentResponseBody) Validate() error {
 }
 
 type CreatePluginAttachmentResponseBodyData struct {
-	// The plug-in ID.
+	// The plug-in attachment ID.
 	//
 	// example:
 	//

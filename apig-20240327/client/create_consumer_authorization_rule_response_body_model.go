@@ -20,15 +20,15 @@ type iCreateConsumerAuthorizationRuleResponseBody interface {
 }
 
 type CreateConsumerAuthorizationRuleResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response payload.
+	// The response data.
 	Data *CreateConsumerAuthorizationRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The status message.
+	// The response message.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreateConsumerAuthorizationRuleResponseBody) Validate() error {
 }
 
 type CreateConsumerAuthorizationRuleResponseBodyData struct {
-	// Filters the list of operations based on a specific consumer authorization rule ID. Only authorized operations are returned in the response.
+	// The consumer authorization rule ID. When this ID is used to filter the API list, the response contains only the authorized APIs.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iExportHttpApiResponseBody interface {
 }
 
 type ExportHttpApiResponseBody struct {
-  // The response code.
+  // The response status code.
   // 
   // example:
   // 
   // Ok
   Code *string `json:"code,omitempty" xml:"code,omitempty"`
-  // The API definition.
+  // The API definition information.
   Data *ExportHttpApiResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
   // The response message.
   // 

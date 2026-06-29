@@ -96,7 +96,7 @@ func (s *ListSslCertsResponseBody) Validate() error {
 }
 
 type ListSslCertsResponseBodyData struct {
-	// 证书信息列表。
+	// The list of certificate information.
 	Items []*SslCertMetaInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//

@@ -28,13 +28,13 @@ type CreateSourceResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The response data.
 	Data *CreateSourceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreateSourceResponseBody) Validate() error {
 }
 
 type CreateSourceResponseBodyData struct {
-	// Source ID
+	// The source ID.
 	//
 	// example:
 	//

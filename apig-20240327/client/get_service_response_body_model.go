@@ -20,7 +20,7 @@ type iGetServiceResponseBody interface {
 }
 
 type GetServiceResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type GetServiceResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The service details.
 	Data *Service `json:"data,omitempty" xml:"data,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

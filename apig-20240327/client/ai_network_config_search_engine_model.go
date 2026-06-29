@@ -32,25 +32,61 @@ type iAiNetworkConfigSearchEngine interface {
 }
 
 type AiNetworkConfigSearchEngine struct {
-	// Required. The API key to authenticate requests to the search engine service.
+	// The API key of the search engine.
+	//
+	// example:
+	//
+	// sk-xxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	// The search content mode, which determines how the service interprets the query and returns results.
+	// Quark-specific: the content mode.
+	//
+	// example:
+	//
+	// summary
 	ContentMode *string `json:"contentMode,omitempty" xml:"contentMode,omitempty"`
-	// The number of search results to return. If this parameter is omitted, the service uses a default value.
+	// The number of results returned per search.
+	//
+	// example:
+	//
+	// 5
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The endpoint URL for the search engine service.
+	// The endpoint of the search engine.
+	//
+	// example:
+	//
+	// https://cloud-iqs.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The industry context for tailoring search results to a specific domain.
+	// Quark-specific: the industry filter.
+	//
+	// example:
+	//
+	// 互联网
 	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
-	// Optional. A key-value map for service-specific parameters not covered by the standard configuration.
+	// The search engine-specific parameters in key-value pair format.
 	OptionArgs map[string]*string `json:"optionArgs,omitempty" xml:"optionArgs,omitempty"`
-	// The starting offset for the search results, used for pagination. For example, a value of 10 skips the first 10 results. The default is 0.
+	// The offset of search results.
+	//
+	// example:
+	//
+	// 0
 	Start *int32 `json:"start,omitempty" xml:"start,omitempty"`
-	// The time range for filtering results by their creation or modification date.
+	// Quark-specific: the time range filter.
+	//
+	// example:
+	//
+	// 7d
 	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
-	// The request timeout in milliseconds. If a request exceeds this time, the service terminates it.
+	// The API call timeout period, in milliseconds.
+	//
+	// example:
+	//
+	// 5000
 	TimeoutMillisecond *int32 `json:"timeoutMillisecond,omitempty" xml:"timeoutMillisecond,omitempty"`
-	// Specifies the search engine service to use.
+	// The search engine type.
+	//
+	// example:
+	//
+	// aliyunQuark
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

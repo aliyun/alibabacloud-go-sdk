@@ -42,11 +42,13 @@ type iListHttpApiRoutesRequest interface {
 }
 
 type ListHttpApiRoutesRequest struct {
+	// The backend service name. You can use this name to filter routes.
+	//
 	// example:
 	//
 	// test-svc
 	BackendServiceName *string `json:"backendServiceName,omitempty" xml:"backendServiceName,omitempty"`
-	// The consumer authorization rule ID. If specified, the response includes only routes that are authorized by the specified rule.
+	// Filters the API list by a specific consumer authorization rule ID. The response only includes authorized APIs.
 	//
 	// example:
 	//
@@ -58,7 +60,7 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// NotDeployed
 	DeployStatuses *string `json:"deployStatuses,omitempty" xml:"deployStatuses,omitempty"`
-	// The domain name ID used to filter routes.
+	// Filters route information by domain name ID.
 	//
 	// example:
 	//
@@ -70,7 +72,7 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// env-cpqnr6tlhtgubc***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Specifies whether the query is for a deployment scenario.
+	// Specifies whether the request is for a deployment scenario.
 	//
 	// example:
 	//
@@ -88,43 +90,43 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// itemcenter-gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The route name for fuzzy match.
+	// Fuzzy match by route name.
 	//
 	// example:
 	//
 	// item
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The page number. Pages start from 1. Default value: 1.
+	// The page number, starting from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The page size. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The route path for fuzzy match.
+	// Fuzzy match by route path.
 	//
 	// example:
 	//
 	// /v1
 	PathLike *string `json:"pathLike,omitempty" xml:"pathLike,omitempty"`
-	// Specifies whether to include consumer authorization information in the response.
+	// Includes consumer authorization information in the response.
 	//
 	// example:
 	//
 	// true
 	WithAuthPolicyInfo *bool `json:"withAuthPolicyInfo,omitempty" xml:"withAuthPolicyInfo,omitempty"`
-	// The consumer ID. If specified, the response includes the authorization rule list for the specified consumer in each route.
+	// Includes the authorization rule list of the specified consumer ID for each route in the response.
 	//
 	// example:
 	//
 	// cs-xxx
 	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
-	// The plug-in ID. If specified, the response includes the attachment information of the specified plug-in for each route.
+	// Includes the mount information of the specified plug-in ID for each route in the response.
 	//
 	// example:
 	//

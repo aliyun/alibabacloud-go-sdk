@@ -44,40 +44,84 @@ type iAiSecurityGuardConfig interface {
 }
 
 type AiSecurityGuardConfig struct {
-	// The buffer limit in bytes for streaming content checks. The service buffers content up to this limit before sending it for analysis.
+	// The response buffer size in KB. Default value: 1000. Valid values: 1 to 1500.
+	//
+	// example:
+	//
+	// 1000
 	BufferLimit *int32 `json:"bufferLimit,omitempty" xml:"bufferLimit,omitempty"`
-	// Specifies whether to check the content of incoming requests.
+	// Specifies whether to check request content.
+	//
+	// example:
+	//
+	// true
 	CheckRequest *bool `json:"checkRequest,omitempty" xml:"checkRequest,omitempty"`
-	// Specifies whether to check incoming requests for image content. Requires `checkRequest` to be `true`.
+	// Specifies whether to check request images.
+	//
+	// example:
+	//
+	// false
 	CheckRequestImage *bool `json:"checkRequestImage,omitempty" xml:"checkRequestImage,omitempty"`
-	// Specifies whether to check the content of outgoing responses.
+	// Specifies whether to check response content.
+	//
+	// example:
+	//
+	// true
 	CheckResponse *bool `json:"checkResponse,omitempty" xml:"checkResponse,omitempty"`
-	// Specifies whether to check outgoing responses for image content. Requires `checkResponse` to be `true`.
+	// Specifies whether to check response images.
+	//
+	// example:
+	//
+	// false
 	CheckResponseImage *bool `json:"checkResponseImage,omitempty" xml:"checkResponseImage,omitempty"`
-	// Specifies consumer-specific configurations for the request check service.
+	// The consumer-level request detection service configuration.
 	ConsumerRequestCheckService []*AiSecurityGuardConfigConsumerRequestCheckService `json:"consumerRequestCheckService,omitempty" xml:"consumerRequestCheckService,omitempty" type:"Repeated"`
-	// Specifies consumer-specific configurations for the response check service.
+	// The consumer-level response detection service configuration.
 	ConsumerResponseCheckService []*AiSecurityGuardConfigConsumerResponseCheckService `json:"consumerResponseCheckService,omitempty" xml:"consumerResponseCheckService,omitempty" type:"Repeated"`
-	// Specifies customized risk thresholds for different consumers.
+	// The consumer-level risk level configuration.
 	ConsumerRiskLevel []*AiSecurityGuardConfigConsumerRiskLevel `json:"consumerRiskLevel,omitempty" xml:"consumerRiskLevel,omitempty" type:"Repeated"`
-	// Controls whether the AI Security Guard plugin is enabled or disabled.
+	// The plugin running status.
 	//
 	// if can be null:
 	// true
 	PluginStatus *AiPluginStatus `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty"`
-	// The identifier of the request check service for text content.
+	// The ServiceCode of the request text detection service (system-injected default value).
+	//
+	// example:
+	//
+	// query_security_check
 	RequestCheckService *string `json:"requestCheckService,omitempty" xml:"requestCheckService,omitempty"`
-	// The identifier of the request check service for image content.
+	// The ServiceCode of the request image detection service (system-injected default value).
+	//
+	// example:
+	//
+	// img_query_guard
 	RequestImageCheckService *string `json:"requestImageCheckService,omitempty" xml:"requestImageCheckService,omitempty"`
-	// The identifier of the response check service for text content.
+	// The ServiceCode of the response text detection service (system-injected default value).
+	//
+	// example:
+	//
+	// response_security_check
 	ResponseCheckService *string `json:"responseCheckService,omitempty" xml:"responseCheckService,omitempty"`
-	// The identifier of the response check service for image content.
+	// The ServiceCode of the response image detection service (system-injected default value).
+	//
+	// example:
+	//
+	// img_response_guard
 	ResponseImageCheckService *string `json:"responseImageCheckService,omitempty" xml:"responseImageCheckService,omitempty"`
-	// The risk alert level. The service triggers an alert when a detected risk meets or exceeds this level.
+	// The global risk alert level.
+	//
+	// example:
+	//
+	// high
 	RiskAlertLevel *string `json:"riskAlertLevel,omitempty" xml:"riskAlertLevel,omitempty"`
-	// Specifies general risk configurations.
+	// The risk dimension configuration list (system-injected, normalized from ConsumerRiskLevel).
 	RiskConfig []*AiSecurityGuardConfigRiskConfig `json:"riskConfig,omitempty" xml:"riskConfig,omitempty" type:"Repeated"`
-	// The service address of the security check endpoint.
+	// The security guardrail service address (green-cip endpoint). Use the VPC internal address when the gateway and security guardrail are in the same region.
+	//
+	// example:
+	//
+	// https://green-cip-vpc.cn-shanghai.aliyuncs.com
 	ServiceAddress *string `json:"serviceAddress,omitempty" xml:"serviceAddress,omitempty"`
 }
 
@@ -279,15 +323,35 @@ func (s *AiSecurityGuardConfig) Validate() error {
 }
 
 type AiSecurityGuardConfigConsumerRequestCheckService struct {
-	// The match type for identifying the consumer. For example: `header` or `query`.
+	// The consumer matching method.
+	//
+	// example:
+	//
+	// exact
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	// The modality type for this rule. For example: `text` or `image`.
+	// The modality type.
+	//
+	// example:
+	//
+	// Text
 	ModalityType *string `json:"modalityType,omitempty" xml:"modalityType,omitempty"`
-	// The identifier of the consumer.
+	// The consumer name.
+	//
+	// example:
+	//
+	// consumer-a
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The identifier of the request check service for text content for this consumer.
+	// The check service.
+	//
+	// example:
+	//
+	// query_security_check
 	RequestCheckService *string `json:"requestCheckService,omitempty" xml:"requestCheckService,omitempty"`
-	// The identifier of the request check service for image content for this consumer.
+	// The image check service.
+	//
+	// example:
+	//
+	// img_query_guard
 	RequestImageCheckService *string `json:"requestImageCheckService,omitempty" xml:"requestImageCheckService,omitempty"`
 }
 
@@ -349,15 +413,35 @@ func (s *AiSecurityGuardConfigConsumerRequestCheckService) Validate() error {
 }
 
 type AiSecurityGuardConfigConsumerResponseCheckService struct {
-	// The match type for identifying the consumer. For example: `header` or `query`.
+	// The consumer matching method.
+	//
+	// example:
+	//
+	// exact
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	// The modality type for this rule. For example: `text` or `image`.
+	// The modality type.
+	//
+	// example:
+	//
+	// Text
 	ModalityType *string `json:"modalityType,omitempty" xml:"modalityType,omitempty"`
-	// The identifier of the consumer.
+	// The consumer name.
+	//
+	// example:
+	//
+	// consumer-a
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The identifier of the response check service for text content for this consumer.
+	// The check service.
+	//
+	// example:
+	//
+	// query_security_check
 	ResponseCheckService *string `json:"responseCheckService,omitempty" xml:"responseCheckService,omitempty"`
-	// The identifier of the response check service for image content for this consumer.
+	// The image check service.
+	//
+	// example:
+	//
+	// img_query_guard
 	ResponseImageCheckService *string `json:"responseImageCheckService,omitempty" xml:"responseImageCheckService,omitempty"`
 }
 
@@ -419,13 +503,29 @@ func (s *AiSecurityGuardConfigConsumerResponseCheckService) Validate() error {
 }
 
 type AiSecurityGuardConfigConsumerRiskLevel struct {
-	// The risk level to apply to the specified consumer and risk type. For example: `low`, `medium`, or `high`.
+	// The risk level.
+	//
+	// example:
+	//
+	// high
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The match type for identifying the consumer. For example: `header` or `query`.
+	// The consumer matching method.
+	//
+	// example:
+	//
+	// exact
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	// The identifier of the consumer.
+	// The consumer name.
+	//
+	// example:
+	//
+	// consumer-a
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of risk to configure. For example: `profanity` or `spam`.
+	// The risk dimension type.
+	//
+	// example:
+	//
+	// ContentModeration
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -478,11 +578,19 @@ func (s *AiSecurityGuardConfigConsumerRiskLevel) Validate() error {
 }
 
 type AiSecurityGuardConfigRiskConfig struct {
-	// Contains rules that override the default settings for specific consumers.
+	// The consumer-level matching rules.
 	ConsumerRules *AiSecurityGuardConfigRiskConfigConsumerRules `json:"consumerRules,omitempty" xml:"consumerRules,omitempty" type:"Struct"`
-	// The default risk level for this risk type. For example: `low`, `medium`, or `high`.
+	// The risk level.
+	//
+	// example:
+	//
+	// high
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The type of risk to configure. For example: `profanity` or `spam`.
+	// The risk dimension type.
+	//
+	// example:
+	//
+	// ContentModeration
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -531,9 +639,17 @@ func (s *AiSecurityGuardConfigRiskConfig) Validate() error {
 }
 
 type AiSecurityGuardConfigRiskConfigConsumerRules struct {
-	// The location in the request to search for the `pattern`. For example: `header` or `query`.
+	// The matching method.
+	//
+	// example:
+	//
+	// Exact
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	// The pattern for matching a consumer. This can be a regular expression.
+	// The consumer matching pattern value.
+	//
+	// example:
+	//
+	// consumer-a
 	Pattern *string `json:"pattern,omitempty" xml:"pattern,omitempty"`
 }
 

@@ -20,7 +20,7 @@ type iCreateHttpApiRouteResponseBody interface {
 }
 
 type CreateHttpApiRouteResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type CreateHttpApiRouteResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The response data.
 	Data *CreateHttpApiRouteResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

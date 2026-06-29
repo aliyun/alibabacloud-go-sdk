@@ -20,15 +20,15 @@ type iGetPolicyResponseBody interface {
 }
 
 type GetPolicyResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The data returned.
+	// The response data.
 	Data *PolicyDetailInfo `json:"data,omitempty" xml:"data,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

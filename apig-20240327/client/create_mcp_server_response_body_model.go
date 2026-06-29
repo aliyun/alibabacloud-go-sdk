@@ -20,15 +20,15 @@ type iCreateMcpServerResponseBody interface {
 }
 
 type CreateMcpServerResponseBody struct {
-	// code
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// object
+	// The response data.
 	Data *CreateMcpServerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// message
+	// The response message.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type CreateMcpServerResponseBodyData struct {
 	//
 	// mcp-afegaijoijaoji24a
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// MCP server name
+	// The MCP server name.
 	//
 	// example:
 	//
