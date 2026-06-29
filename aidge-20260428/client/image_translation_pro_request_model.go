@@ -9,6 +9,8 @@ type iImageTranslationProRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAsync(v bool) *ImageTranslationProRequest
+	GetAsync() *bool
 	SetGlossary(v string) *ImageTranslationProRequest
 	GetGlossary() *string
 	SetImageUrl(v string) *ImageTranslationProRequest
@@ -23,18 +25,17 @@ type iImageTranslationProRequest interface {
 	GetTranslatingBrandInTheProduct() *bool
 	SetUseImageEditor(v bool) *ImageTranslationProRequest
 	GetUseImageEditor() *bool
-	SetCallType(v string) *ImageTranslationProRequest
-	GetCallType() *string
 }
 
 type ImageTranslationProRequest struct {
-	// The ID of the intervention glossary. Optional. Create the glossary in the console and provide its ID. If the glossary ID is empty, the translation results are not modified.
+	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
+	// Glossary ID, optional. You need to create a glossary separately in the console and provide its ID. If the provided glossary ID is empty, the translation results will not be modified.
 	//
 	// example:
 	//
 	// glossary_1
 	Glossary *string `json:"Glossary,omitempty" xml:"Glossary,omitempty"`
-	// The URL of the original image. Required. Image requirements: width and height must not exceed 4000 × 4000. File size must not exceed 10 MB. Supported formats: png, jpeg, jpg, bmp, and webp.
+	// Original image URL, required. Image requirements: width and height must not exceed 4000×4000; size must not exceed 10MB; supported formats include png, jpeg, jpg, bmp, and webp.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +43,13 @@ type ImageTranslationProRequest struct {
 	//
 	// https://img.alicdn.com/imgextra/i3/O1CN01HTDhDi28Fd85ZYs7H_!!6000000007903-0-tps-800-800.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Specifies whether to translate text on the image subject. Optional. Default value: false. This helps protect information such as embedded product names from being translated.
+	// Choose whether to translate text on the image subject, optional, default false. This helps you protect information by avoiding translation of embedded content such as product names.
 	//
 	// example:
 	//
 	// false
 	IncludingProductArea *bool `json:"IncludingProductArea,omitempty" xml:"IncludingProductArea,omitempty"`
-	// The source language code. Required. For supported language directions, see the supported language direction list.
+	// Source language code, required. See the supported language pairs list for available translation directions.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +57,7 @@ type ImageTranslationProRequest struct {
 	//
 	// en
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	// The target language code. Required. For supported language directions, see the supported language direction list.
+	// Target language code, required. See the supported language pairs list for available translation directions.
 	//
 	// This parameter is required.
 	//
@@ -64,24 +65,18 @@ type ImageTranslationProRequest struct {
 	//
 	// ko
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// Specifies whether to translate brand names on images. Optional. Default value: false. This helps protect brand name information from being translated.
+	// Choose whether to translate brand names on the image, optional, default false. This helps you protect brand name information from being translated.
 	//
 	// example:
 	//
 	// false
 	TranslatingBrandInTheProduct *bool `json:"TranslatingBrandInTheProduct,omitempty" xml:"TranslatingBrandInTheProduct,omitempty"`
-	// Specifies whether to return layout information such as text position, font, and color. Optional. Default value: false. This can be used for secondary editing when integrated with an image editor.
+	// Whether to return layout information such as text position, font, and color, optional, default false. This can be used for secondary editing when integrating with an image editor.
 	//
 	// example:
 	//
 	// false
 	UseImageEditor *bool `json:"UseImageEditor,omitempty" xml:"UseImageEditor,omitempty"`
-	// The call type. This is an internal system parameter. Optional.
-	//
-	// example:
-	//
-	// sync
-	CallType *string `json:"callType,omitempty" xml:"callType,omitempty"`
 }
 
 func (s ImageTranslationProRequest) String() string {
@@ -90,6 +85,10 @@ func (s ImageTranslationProRequest) String() string {
 
 func (s ImageTranslationProRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ImageTranslationProRequest) GetAsync() *bool {
+	return s.Async
 }
 
 func (s *ImageTranslationProRequest) GetGlossary() *string {
@@ -120,8 +119,9 @@ func (s *ImageTranslationProRequest) GetUseImageEditor() *bool {
 	return s.UseImageEditor
 }
 
-func (s *ImageTranslationProRequest) GetCallType() *string {
-	return s.CallType
+func (s *ImageTranslationProRequest) SetAsync(v bool) *ImageTranslationProRequest {
+	s.Async = &v
+	return s
 }
 
 func (s *ImageTranslationProRequest) SetGlossary(v string) *ImageTranslationProRequest {
@@ -156,11 +156,6 @@ func (s *ImageTranslationProRequest) SetTranslatingBrandInTheProduct(v bool) *Im
 
 func (s *ImageTranslationProRequest) SetUseImageEditor(v bool) *ImageTranslationProRequest {
 	s.UseImageEditor = &v
-	return s
-}
-
-func (s *ImageTranslationProRequest) SetCallType(v string) *ImageTranslationProRequest {
-	s.CallType = &v
 	return s
 }
 

@@ -1105,34 +1105,64 @@ func (client *Client) ImageRemoveWithContext(ctx context.Context, tmpReq *ImageR
 
 // Summary:
 //
-// Image Translation Pro is designed specifically for e-commerce images. It integrates multimodal foundation model technology to achieve more accurate image understanding, significantly improve translation quality, and continuously expand and optimize multilingual translation capabilities. More than 100 language directions are supported, including bridged translations.
+// Image Translation Plus is designed specifically for e-commerce images. It uses a Mixture of Experts (MOE) architecture and outperforms Image Translation Lite and Pro in translation accuracy for multiple minor languages. We recommend using it for the following 8 language pairs, with more to be supported in the future.
 //
 // Description:
 //
 // ## Product Introduction
 //
-// Image Translation Pro is designed specifically for e-commerce images. It integrates multimodal foundation model technology to achieve more accurate image understanding, significantly improve translation quality, and continuously expand and optimize multilingual translation capabilities. More than 100 language directions are supported, including bridged translations.
+// Image Translation Plus is designed specifically for e-commerce images. It uses a Mixture of Experts (MOE) architecture and outperforms Image Translation Lite and Pro in translation accuracy for multiple minor languages. We recommend using it for the following language pairs, with more to be supported in the future.
 //
-// ## Scenarios
+// Supported language pairs:
 //
-// E-commerce product images, marketing images, and images for various other scenarios.
+// | **No.*	- | **Source Language*	- |  | **Target Language*	- |  |
 //
-// ## Features
+// | --- | --- | --- | --- | --- |
 //
-// - **Product subject information protection**: Specify whether to translate text on the product subject. This helps protect subject information such as embedded product names from being translated.
+// |  | Language Code | Language Name | Language Code | Language Name |
 //
-// - **Post-translation editing**: Specify whether to return layout information such as text position, font, and color. This can be used for secondary editing when integrated with an image editor. The editor SDK is not yet available. Follow platform notifications for updates.
+// | 1 | en | English | ar | Arabic |
 //
-// - **Brand name protection**: Specify whether to translate brand names on images. This helps protect brand name information from being translated.
+// | 2 | en | English | id | Indonesian |
 //
-// - **Translation intervention**: Customize translation results, including do-not-translate (ABC→ABC), specified translation (ABC→DEF), and remove text (ABC→empty value). This is commonly used for brand name protection. Pass the corresponding intervention glossary ID when calling the API to meet translation needs across different scenarios. You can upload up to 100,000 intervention terms. Contact the platform if you need more.
+// | 3 | en | English | th | Thai |
 //
-// @param request - ImageTranslationProRequest
+// | 4 | en | English | ko | Korean |
+//
+// | 5 | en | English | ja | Japanese |
+//
+// | 6 | en | English | vi | Vietnamese |
+//
+// | 7 | en | English | ru | Russian |
+//
+// | 8 | en | English | tl | Filipino |
+//
+// | 9 | en | English | es | Spanish |
+//
+// | 10 | en | English | fr | French |
+//
+// | 11 | en | English | de | German |
+//
+// | 12 | en | English | pl | Polish |.
+//
+// ## Common scenarios
+//
+// Main product images and detail images for cross-border e-commerce.
+//
+// ## Functions and features
+//
+//   - **Product body information protection**: Supports custom selection of whether to translate text on the product body. This helps protect body information such as embedded product names from being translated.
+//
+//   - **Brand name protection**: Supports custom selection of whether to translate brand names on images. This helps protect brand name information from being translated.
+//
+//   - **Translation intervention**: Supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and no translation (ABC-empty value). This is commonly used for brand name protection scenarios. Simply pass the corresponding intervention glossary ID when calling the API to meet your translation needs in different scenarios. You can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
+//
+// @param request - ImageTranslationPlusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
-// @return ImageTranslationProResponse
-func (client *Client) ImageTranslationProWithContext(ctx context.Context, request *ImageTranslationProRequest, runtime *dara.RuntimeOptions) (_result *ImageTranslationProResponse, _err error) {
+// @return ImageTranslationPlusResponse
+func (client *Client) ImageTranslationPlusWithContext(ctx context.Context, request *ImageTranslationPlusRequest, runtime *dara.RuntimeOptions) (_result *ImageTranslationPlusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1168,8 +1198,96 @@ func (client *Client) ImageTranslationProWithContext(ctx context.Context, reques
 		body["UseImageEditor"] = request.UseImageEditor
 	}
 
-	if !dara.IsNil(request.CallType) {
-		body["callType"] = request.CallType
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImageTranslationPlus"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImageTranslationPlusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// The Image Translation Pro version is specifically designed for e-commerce images, integrating multimodal large model technology to achieve more accurate understanding of images, significantly improving translation quality, and continuously expanding and optimizing multilingual translation capabilities. It supports over 100 language pairs (including bridged translations).
+//
+// Description:
+//
+// ## Product Introduction
+//
+// The Image Translation Pro version is specifically designed for e-commerce images, integrating multimodal large model technology to achieve more accurate understanding of images, significantly improving translation quality, and continuously expanding and optimizing multilingual translation capabilities. It supports over 100 language pairs (including bridged translations).
+//
+// ## Applicable Scenarios
+//
+// # E-commerce product images, marketing images, and images for various other scenarios
+//
+// ## Features
+//
+// - **Product Subject Information Protection**: Supports custom selection of whether to translate text on the product subject, helping you protect subject information from being translated, such as embedded product names.
+//
+// - **Post-translation Secondary Editing**: Supports custom selection of whether to return layout information such as text position, font, and color. This can be used for secondary editing when integrating with an image editor. The editor SDK package is not yet publicly available; please follow platform notifications.
+//
+// - **Brand Name Protection**: Supports custom selection of whether to translate brand names on images, helping you protect brand name information from being translated.
+//
+// - **Translation Intervention Support**: Allows customization of translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and no translation (ABC-empty value). Commonly used for brand name protection scenarios. Simply pass the corresponding glossary ID when calling the API to achieve this, meeting your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. For additional needs, please contact the platform for assistance.
+//
+// @param request - ImageTranslationProRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageTranslationProResponse
+func (client *Client) ImageTranslationProWithContext(ctx context.Context, request *ImageTranslationProRequest, runtime *dara.RuntimeOptions) (_result *ImageTranslationProResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Async) {
+		body["Async"] = request.Async
+	}
+
+	if !dara.IsNil(request.Glossary) {
+		body["Glossary"] = request.Glossary
+	}
+
+	if !dara.IsNil(request.ImageUrl) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !dara.IsNil(request.IncludingProductArea) {
+		body["IncludingProductArea"] = request.IncludingProductArea
+	}
+
+	if !dara.IsNil(request.SourceLanguage) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !dara.IsNil(request.TargetLanguage) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
+	if !dara.IsNil(request.TranslatingBrandInTheProduct) {
+		body["TranslatingBrandInTheProduct"] = request.TranslatingBrandInTheProduct
+	}
+
+	if !dara.IsNil(request.UseImageEditor) {
+		body["UseImageEditor"] = request.UseImageEditor
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1319,6 +1437,94 @@ func (client *Client) LanguageDetectWithContext(ctx context.Context, request *La
 		BodyType:    dara.String("json"),
 	}
 	_result = &LanguageDetectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 物料陈列检测
+//
+// Description:
+//
+// ## **适用场景**
+//
+// -   **门店营销物料合规巡检**：自动判定门店内是否按总部下发的标准陈列指引摆放 / 张贴指定营销物料（功能台卡、海报、门型展架等），识别「未摆放、摆放错误、内容不符」等典型问题。
+//
+// -   **新品 / 活动期素材落地核验**：新品发布或大促活动期间，对门店实拍图中的活动物料是否已按要求上架进行批量自动核验，替代人工抽检。
+//
+// -   **双图比对与单图检测自适应**：同一接口同时支持「参考图 + 目标图」双图比对（模式 A）与「仅目标图」单图检测（模式 B），根据是否传入 `ImageRefer` 自动切换，调用方无需区分调用方式。
+//
+// ## **功能介绍**
+//
+// -   **多模式智能路由**：内置物料类型解析能力，基于 `Rules` 自然语言文本自动识别目标物料类型，路由至对应的素材检测链路；调用方仅需传入图像 URL 与规则文本。目前已支持「功能台卡」「海报」「门型展架」「其他素材」4 套检测项路由，后续将持续增加细分营销物料类型的检测链路。
+//
+// -   **MLLM 语义级理解 + 规则结构化协同**：采用多模态大模型完成物料识别、内容比对、文字 OCR 等语义级理解，配合规则清洗与结构化模型将自然语言规则拆解为可逐条判定的步骤（S1 / S2…），在保证准确率的同时兼顾规则灵活性与可追溯性。
+//
+// -   **结构化审核结论输出**：输出统一为 `Result.OverallResult` + `Result.Steps[]` + `Result.Evidence` 的结构，整体结论由各步骤逻辑 AND 得出，每条步骤独立可见，便于直接驱动下游业务系统并支持 case 级人审追溯。
+//
+// -   **支持的输入格式**：当前支持公网可访问的图像 URL；支持单图（模式 B）与双图（模式 A）两种调用形态，输出结构完全一致。
+//
+// ## **调用方式**
+//
+// -   **同步调用**：单次请求即返回检测结果，无需轮询。响应为 `Code` / `Message` / `RequestId` / `Success` / `Data` 统一信封。
+//
+// -   **鉴权与签名**：经 Aidge 网关调用，鉴权、签名与公共参数遵循平台统一接入方式。具体请求路径以正式发布的接口文档为准。
+//
+// -   **超时设置**：建议将请求超时设置为不低于接口的最长响应时间（具体值以正式发布为准）。
+//
+// @param request - MaterialInspectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MaterialInspectionResponse
+func (client *Client) MaterialInspectionWithContext(ctx context.Context, request *MaterialInspectionRequest, runtime *dara.RuntimeOptions) (_result *MaterialInspectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiId) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !dara.IsNil(request.ImageRefer) {
+		query["ImageRefer"] = request.ImageRefer
+	}
+
+	if !dara.IsNil(request.ImageUrl) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !dara.IsNil(request.ReqId) {
+		query["ReqId"] = request.ReqId
+	}
+
+	if !dara.IsNil(request.Rules) {
+		query["Rules"] = request.Rules
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MaterialInspection"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MaterialInspectionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
