@@ -16219,6 +16219,62 @@ func (client *Client) ResetAccountPasswordWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// Resets a Supabase branch.
+//
+// Description:
+//
+// Resets a child branch to the latest data of its parent branch. The main branch, branches without a parent branch, branches with child branches, and protected branches cannot be reset.
+//
+// @param request - ResetBranchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetBranchResponse
+func (client *Client) ResetBranchWithContext(ctx context.Context, request *ResetBranchRequest, runtime *dara.RuntimeOptions) (_result *ResetBranchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BranchId) {
+		query["BranchId"] = request.BranchId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetBranch"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetBranchResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Resets the IMV statistics.
 //
 // @param request - ResetIMVMonitorDataRequest
@@ -16421,6 +16477,82 @@ func (client *Client) RestartSupabaseProjectWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartSupabaseProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Recovers a Supabase branch.
+//
+// Description:
+//
+// Recovers a target branch to a specified point in time or LSN of the source branch. Before recovery, you can specify a backup branch name to preserve the original target branch.
+//
+// @param request - RestoreBranchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestoreBranchResponse
+func (client *Client) RestoreBranchWithContext(ctx context.Context, request *RestoreBranchRequest, runtime *dara.RuntimeOptions) (_result *RestoreBranchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BranchId) {
+		query["BranchId"] = request.BranchId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.PreserveUnderName) {
+		query["PreserveUnderName"] = request.PreserveUnderName
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SourceBranchId) {
+		query["SourceBranchId"] = request.SourceBranchId
+	}
+
+	if !dara.IsNil(request.SourceBranchLsn) {
+		query["SourceBranchLsn"] = request.SourceBranchLsn
+	}
+
+	if !dara.IsNil(request.SourceBranchTimestamp) {
+		query["SourceBranchTimestamp"] = request.SourceBranchTimestamp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RestoreBranch"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RestoreBranchResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -16705,6 +16837,62 @@ func (client *Client) ResumeSupabaseProjectWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResumeSupabaseProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the default branch for a Supabase project.
+//
+// Description:
+//
+// Sets a specified branch as the default branch for a Supabase project.
+//
+// @param request - SetAsDefaultBranchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAsDefaultBranchResponse
+func (client *Client) SetAsDefaultBranchWithContext(ctx context.Context, request *SetAsDefaultBranchRequest, runtime *dara.RuntimeOptions) (_result *SetAsDefaultBranchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BranchId) {
+		query["BranchId"] = request.BranchId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetAsDefaultBranch"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetAsDefaultBranchResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -17353,6 +17541,86 @@ func (client *Client) UntagSupabaseProjectWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagSupabaseProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates Supabase branch information.
+//
+// Description:
+//
+// This operation modifies the branch name, description, tags, protection status, and automatic deletion time upon expiration.
+//
+// @param request - UpdateBranchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBranchResponse
+func (client *Client) UpdateBranchWithContext(ctx context.Context, request *UpdateBranchRequest, runtime *dara.RuntimeOptions) (_result *UpdateBranchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BranchId) {
+		query["BranchId"] = request.BranchId
+	}
+
+	if !dara.IsNil(request.BranchName) {
+		query["BranchName"] = request.BranchName
+	}
+
+	if !dara.IsNil(request.ClearExpiresAt) {
+		query["ClearExpiresAt"] = request.ClearExpiresAt
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExpiresAt) {
+		query["ExpiresAt"] = request.ExpiresAt
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Protected) {
+		query["Protected"] = request.Protected
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateBranch"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateBranchResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
