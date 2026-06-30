@@ -9,6 +9,8 @@ type iGrantPromotionOfferForPartnerRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetActivityCode(v string) *GrantPromotionOfferForPartnerRequest
+	GetActivityCode() *string
 	SetActivityId(v string) *GrantPromotionOfferForPartnerRequest
 	GetActivityId() *string
 	SetBelongId(v string) *GrantPromotionOfferForPartnerRequest
@@ -22,6 +24,7 @@ type iGrantPromotionOfferForPartnerRequest interface {
 }
 
 type GrantPromotionOfferForPartnerRequest struct {
+	ActivityCode *string `json:"ActivityCode,omitempty" xml:"ActivityCode,omitempty"`
 	// The activity ID.
 	//
 	// example:
@@ -62,6 +65,10 @@ func (s GrantPromotionOfferForPartnerRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GrantPromotionOfferForPartnerRequest) GetActivityCode() *string {
+	return s.ActivityCode
+}
+
 func (s *GrantPromotionOfferForPartnerRequest) GetActivityId() *string {
 	return s.ActivityId
 }
@@ -80,6 +87,11 @@ func (s *GrantPromotionOfferForPartnerRequest) GetEmployeeCode() *string {
 
 func (s *GrantPromotionOfferForPartnerRequest) GetRemark() *string {
 	return s.Remark
+}
+
+func (s *GrantPromotionOfferForPartnerRequest) SetActivityCode(v string) *GrantPromotionOfferForPartnerRequest {
+	s.ActivityCode = &v
+	return s
 }
 
 func (s *GrantPromotionOfferForPartnerRequest) SetActivityId(v string) *GrantPromotionOfferForPartnerRequest {

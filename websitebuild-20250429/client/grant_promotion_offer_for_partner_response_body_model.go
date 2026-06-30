@@ -52,7 +52,7 @@ type GrantPromotionOfferForPartnerResponseBody struct {
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is not in use. Ignore it.
+	// The dynamic code. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type GrantPromotionOfferForPartnerResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The returned error parameters.
+	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *GrantPromotionOfferForPartnerResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -80,13 +80,13 @@ type GrantPromotionOfferForPartnerResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The exception message.
+	// The root error message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is processed synchronously.
+	// Indicates whether the request is synchronously processed.
 	//
 	// example:
 	//

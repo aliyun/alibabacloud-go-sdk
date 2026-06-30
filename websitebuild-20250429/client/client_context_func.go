@@ -3841,6 +3841,10 @@ func (client *Client) GrantPromotionOfferForPartnerWithContext(ctx context.Conte
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActivityCode) {
+		query["ActivityCode"] = request.ActivityCode
+	}
+
 	if !dara.IsNil(request.ActivityId) {
 		query["ActivityId"] = request.ActivityId
 	}

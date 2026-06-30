@@ -44,7 +44,7 @@ type ListPromotionOfferRecordsForPartnerResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type ListPromotionOfferRecordsForPartnerResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The exception message.
+	// The error message.
 	//
 	// example:
 	//
@@ -261,7 +261,7 @@ type ListPromotionOfferRecordsForPartnerResponseBodyModule struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The list of issuance records.
 	Records []*ListPromotionOfferRecordsForPartnerResponseBodyModuleRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
