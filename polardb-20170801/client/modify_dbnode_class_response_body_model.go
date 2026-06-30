@@ -18,7 +18,7 @@ type iModifyDBNodeClassResponseBody interface {
 }
 
 type ModifyDBNodeClassResponseBody struct {
-	// The cluster ID.
+	// The database cluster ID.
 	//
 	// example:
 	//

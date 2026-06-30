@@ -32,7 +32,7 @@ type iUpdatePolarClawAgentRequest interface {
 }
 
 type UpdatePolarClawAgentRequest struct {
-	// Agent ID to update
+	// The ID of the agent to update.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type UpdatePolarClawAgentRequest struct {
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// Application ID
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -48,45 +48,49 @@ type UpdatePolarClawAgentRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// New avatar
+	// The new avatar.
 	//
 	// example:
 	//
 	// test
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	// List of files to update
+	// The list of files to update.
 	//
 	// example:
 	//
 	// [{"FileName":"SOUL.md","FileContent":"You are a helpful assistant."}]
 	Files []*UpdatePolarClawAgentRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// Specifies whether to set the agent as the default agent.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// Specifies whether to keep files when switching the workspace.
+	//
 	// example:
 	//
 	// false
 	KeepWorkspaceFiles *bool `json:"KeepWorkspaceFiles,omitempty" xml:"KeepWorkspaceFiles,omitempty"`
-	// Model override
+	// The model override.
 	//
 	// example:
 	//
 	// claude-sonnet-4-5
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// New display name
+	// The new display name of the agent.
 	//
 	// example:
 	//
 	// Work Bot
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Whether to restart the gateway after creation, default is true
+	// Specifies whether to restart the gateway after creation. Default value: true.
 	//
 	// example:
 	//
 	// true
 	Restart *bool `json:"Restart,omitempty" xml:"Restart,omitempty"`
-	// New workspace directory path
+	// The new working directory path.
 	//
 	// example:
 	//
@@ -206,13 +210,13 @@ func (s *UpdatePolarClawAgentRequest) Validate() error {
 }
 
 type UpdatePolarClawAgentRequestFiles struct {
-	// File content
+	// The file content.
 	//
 	// example:
 	//
 	// You are a helpful assistant.
 	FileContent *string `json:"FileContent,omitempty" xml:"FileContent,omitempty"`
-	// File name, must be one of the allowed file names (AGENTS.md, SOUL.md, TOOLS.md, IDENTITY.md, USER.md, HEARTBEAT.md, BOOTSTRAP.md, MEMORY.md, MEMORY.alt.md)
+	// The file name. The value must be one of the following allowed file names: AGENTS.md, SOUL.md, TOOLS.md, IDENTITY.md, USER.md, HEARTBEAT.md, BOOTSTRAP.md, MEMORY.md, or MEMORY.alt.md.
 	//
 	// example:
 	//

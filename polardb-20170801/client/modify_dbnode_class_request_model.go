@@ -44,23 +44,23 @@ type iModifyDBNodeClassRequest interface {
 }
 
 type ModifyDBNodeClassRequest struct {
-	// Specifies whether to automatically use a coupon. Valid values:
+	// Specifies whether to automatically use coupons. Valid values:
 	//
-	// - `true` (default): A coupon is automatically applied.
+	// 	- true (default): Uses coupons.
 	//
-	// - `false`: A coupon is not applied.
+	// 	- false: Does not use coupons.
 	//
 	// example:
 	//
 	// true
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// A client-generated token that ensures the idempotence of the request. The token must be unique across requests. It is case-sensitive and can be up to 64 ASCII characters long.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token is case-sensitive and can contain a maximum of 64 ASCII characters.
 	//
 	// example:
 	//
 	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The cloud provider of the instance.
+	// The cloud service provider of the instance.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ModifyDBNodeClassRequest struct {
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The target node specifications for all nodes in the cluster. For more information, see [compute node specifications](https://help.aliyun.com/document_detail/102542.html).
+	// The target specifications for all nodes. For more information, see [Compute node specifications](https://help.aliyun.com/document_detail/102542.html).
 	//
 	// This parameter is required.
 	//
@@ -82,17 +82,17 @@ type ModifyDBNodeClassRequest struct {
 	//
 	// polar.mysql.x4.large
 	DBNodeTargetClass *string `json:"DBNodeTargetClass,omitempty" xml:"DBNodeTargetClass,omitempty"`
-	// To modify the specifications of an AI node, you must set this parameter to `DLNode`.
+	// The node type. Set this parameter to DLNode only when you change the node specifications of an AI node.
 	//
 	// example:
 	//
 	// DLNode
 	DBNodeType *string `json:"DBNodeType,omitempty" xml:"DBNodeType,omitempty"`
-	// The modification type. Valid values:
+	// The type of the specification change. Valid values:
 	//
-	// - **Upgrade**: Upgrades the node specifications.
+	// 	- **Upgrade**: upgrades the specifications.
 	//
-	// - **Downgrade**: Downgrades the node specifications.
+	// 	- **Downgrade**: downgrades the specifications.
 	//
 	// This parameter is required.
 	//
@@ -102,41 +102,35 @@ type ModifyDBNodeClassRequest struct {
 	ModifyType   *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The latest time to start the scheduled task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	// The latest start time of the scheduled specification change task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
 	//
-	// > - The latest start time must be at least 30 minutes later than the earliest start time.
+	// > 	- The latest time must be at least 30 minutes later than the start time.
 	//
-	// >
-	//
-	// > - If you specify `PlannedStartTime` but omit this parameter, the latest start time defaults to `PlannedStartTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and leave this parameter empty, the task starts no later than `2021-01-14T09:30:00Z`.
+	// > 	- If `PlannedStartTime` is set but this parameter is not specified, the latest time defaults to `start time + 30 minutes`. For example, if `PlannedStartTime` is set to `2021-01-14T09:00:00Z` and this parameter is left empty, the task starts no later than `2021-01-14T09:30:00Z`.
 	//
 	// example:
 	//
 	// 2021-01-14T09:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
-	// The planned time for a transient disconnection. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	// The planned transient disconnection time.
 	//
 	// example:
 	//
 	// 2021-01-14T09:30:00Z
 	PlannedFlashingOffTime *string `json:"PlannedFlashingOffTime,omitempty" xml:"PlannedFlashingOffTime,omitempty"`
-	// The earliest time to start the scheduled upgrade or downgrade task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	// The earliest start time of the scheduled specification change task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
 	//
-	// > - This parameter is valid only when `ModifyType` is set to `Upgrade` or `Downgrade`.
+	// > 	- This parameter takes effect when `ModifyType` is set to `Upgrade` or `Downgrade`.
 	//
-	// >
+	// > 	- The start time must be within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, the valid range for the start time is from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
 	//
-	// > - The start time must be within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can set the start time to a value in the range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
-	//
-	// >
-	//
-	// > - If you leave this parameter empty, the task is immediately executed.
+	// > 	- If this parameter is left empty, the specification change task is immediately executed.
 	//
 	// example:
 	//
 	// 2021-01-14T09:00:00Z
 	PlannedStartTime *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
-	// The coupon code. If you omit this parameter, the system applies the default coupon.
+	// The coupon code. If this parameter is not specified, the default coupon is used.
 	//
 	// example:
 	//
@@ -144,13 +138,13 @@ type ModifyDBNodeClassRequest struct {
 	PromotionCode        *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The subcategory of the cluster. Valid values:
+	// The cluster sub-series. Valid values:
 	//
-	// - **normal_exclusive**: dedicated specifications
+	// - **normal_exclusive**: Dedicated
 	//
-	// - **normal_general**: general-purpose specifications
+	// - **normal_general**: General-purpose
 	//
-	// This parameter is required when switching between dedicated and general-purpose specifications.
+	// This parameter is required when you change specifications between Dedicated and General-purpose.
 	//
 	// example:
 	//

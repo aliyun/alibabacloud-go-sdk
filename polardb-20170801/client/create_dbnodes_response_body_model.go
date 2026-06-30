@@ -20,7 +20,7 @@ type iCreateDBNodesResponseBody interface {
 }
 
 type CreateDBNodesResponseBody struct {
-	// The database cluster ID.
+	// The cluster ID.
 	//
 	// example:
 	//

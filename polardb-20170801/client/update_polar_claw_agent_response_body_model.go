@@ -24,7 +24,7 @@ type iUpdatePolarClawAgentResponseBody interface {
 }
 
 type UpdatePolarClawAgentResponseBody struct {
-	// Updated Agent details
+	// The details of the updated agent.
 	Agent *UpdatePolarClawAgentResponseBodyAgent `json:"Agent,omitempty" xml:"Agent,omitempty" type:"Struct"`
 	// Agent ID
 	//
@@ -32,19 +32,19 @@ type UpdatePolarClawAgentResponseBody struct {
 	//
 	// main
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// Application ID
+	// The application ID.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Response status code
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Response message
+	// The response message.
 	//
 	// example:
 	//
@@ -136,15 +136,15 @@ type UpdatePolarClawAgentResponseBodyAgent struct {
 	//
 	// main
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Identity information
+	// The identity information.
 	Identity *UpdatePolarClawAgentResponseBodyAgentIdentity `json:"Identity,omitempty" xml:"Identity,omitempty" type:"Struct"`
-	// Agent display name
+	// The display name of the agent.
 	//
 	// example:
 	//
 	// PolarClaw
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Workspace directory path
+	// The working directory path.
 	//
 	// example:
 	//
@@ -206,31 +206,31 @@ func (s *UpdatePolarClawAgentResponseBodyAgent) Validate() error {
 }
 
 type UpdatePolarClawAgentResponseBodyAgentIdentity struct {
-	// Avatar path or content
+	// The avatar path or content.
 	//
 	// example:
 	//
 	// test
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	// Avatar URL
+	// The avatar URL.
 	//
 	// example:
 	//
 	// test
 	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	// Emoji identifier (Unicode format such as U+1F99E, or direct emoji character)
+	// The emoji identifier. The value is in Unicode encoding format such as U+1F99E, or a direct emoji character.
 	//
 	// example:
 	//
 	// U+1F99E
 	Emoji *string `json:"Emoji,omitempty" xml:"Emoji,omitempty"`
-	// Identity name
+	// The identity name.
 	//
 	// example:
 	//
 	// PolarClaw
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Theme
+	// The theme.
 	//
 	// example:
 	//

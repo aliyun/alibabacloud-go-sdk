@@ -168,11 +168,14 @@ func (s *DescribePolarClawAgentsResponseBody) Validate() error {
 }
 
 type DescribePolarClawAgentsResponseBodyAgents struct {
+	// Indicates whether this is the default agent.
+	//
 	// example:
 	//
 	// true
-	Default *bool                                             `json:"Default,omitempty" xml:"Default,omitempty"`
-	Files   []*DescribePolarClawAgentsResponseBodyAgentsFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	Default *bool `json:"Default,omitempty" xml:"Default,omitempty"`
+	// The agent file list.
+	Files []*DescribePolarClawAgentsResponseBodyAgentsFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
 	// Agent ID
 	//
 	// example:
@@ -181,14 +184,18 @@ type DescribePolarClawAgentsResponseBodyAgents struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The identity information.
 	Identity *DescribePolarClawAgentsResponseBodyAgentsIdentity `json:"Identity,omitempty" xml:"Identity,omitempty" type:"Struct"`
-	Model    *DescribePolarClawAgentsResponseBodyAgentsModel    `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	// The display name of the agent.
+	// The model configuration.
+	Model *DescribePolarClawAgentsResponseBodyAgentsModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// The agent display name.
 	//
 	// example:
 	//
 	// main
-	Name   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of skills available to the agent.
 	Skills []*string `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	// The working directory path.
+	//
 	// example:
 	//
 	// /home/node/.openclaw/workspace-work
@@ -299,22 +306,32 @@ func (s *DescribePolarClawAgentsResponseBodyAgents) Validate() error {
 }
 
 type DescribePolarClawAgentsResponseBodyAgentsFiles struct {
+	// Indicates whether the file is missing.
+	//
 	// example:
 	//
 	// false
 	Missing *bool `json:"Missing,omitempty" xml:"Missing,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// SOUL.md
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The file path.
+	//
 	// example:
 	//
 	// /home/node/.openclaw/workspace-work/SOUL.md
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The file size, in bytes.
+	//
 	// example:
 	//
 	// 1024
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The last updated timestamp, in milliseconds.
+	//
 	// example:
 	//
 	// 1716000000000
@@ -391,7 +408,7 @@ type DescribePolarClawAgentsResponseBodyAgentsIdentity struct {
 	//
 	// test
 	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	// The emoji identifier in Unicode encoding format such as U+1F99E, or a direct emoji character.
+	// The emoji identifier in Unicode format such as U+1F99E, or a direct emoji character.
 	//
 	// example:
 	//
@@ -469,7 +486,10 @@ func (s *DescribePolarClawAgentsResponseBodyAgentsIdentity) Validate() error {
 }
 
 type DescribePolarClawAgentsResponseBodyAgentsModel struct {
+	// The fallback model list.
 	Fallbacks []*string `json:"Fallbacks,omitempty" xml:"Fallbacks,omitempty" type:"Repeated"`
+	// The primary model.
+	//
 	// example:
 	//
 	// claude-sonnet-4-5
