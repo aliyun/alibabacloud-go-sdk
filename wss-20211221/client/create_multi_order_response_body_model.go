@@ -16,7 +16,10 @@ type iCreateMultiOrderResponseBody interface {
 }
 
 type CreateMultiOrderResponseBody struct {
+	// A list of order IDs.
 	OrderIds []*int64 `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 833C4D2C-09C7-5CE6-8159-06758B964970

@@ -14,6 +14,8 @@ type iSetAgentCreditQuotaResponseBody interface {
 }
 
 type SetAgentCreditQuotaResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 9B353D6D-53C9-1C24-95D5-2D24596DBCF1

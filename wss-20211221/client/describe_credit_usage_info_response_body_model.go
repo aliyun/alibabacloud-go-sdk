@@ -16,10 +16,13 @@ type iDescribeCreditUsageInfoResponseBody interface {
 }
 
 type DescribeCreditUsageInfoResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 68BD3312-53D8-123E-BB32-1A9F25E07A03
-	RequestId     *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of usage data.
 	UsageInfoList []*DescribeCreditUsageInfoResponseBodyUsageInfoList `json:"UsageInfoList,omitempty" xml:"UsageInfoList,omitempty" type:"Repeated"`
 }
 
@@ -63,7 +66,10 @@ func (s *DescribeCreditUsageInfoResponseBody) Validate() error {
 }
 
 type DescribeCreditUsageInfoResponseBodyUsageInfoList struct {
+	// The usage data details.
 	UsageInfo *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo `json:"UsageInfo,omitempty" xml:"UsageInfo,omitempty" type:"Struct"`
+	// The usage primary key. When `UsageType=User`, this is the `aliUid`. When `UsageType=CreditPackage`, this is the credit package instance ID. When `UsageType=Agent`, this is the `AgentId`.
+	//
 	// example:
 	//
 	// agent-abc
@@ -106,30 +112,81 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoList) Validate() error {
 }
 
 type DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo struct {
+	// The hourly consumption samples of the current credit package.
 	CreditTrendList []*DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList `json:"CreditTrendList,omitempty" xml:"CreditTrendList,omitempty" type:"Repeated"`
+	// The instance ID of the current active credit package.
+	//
 	// example:
 	//
 	// cp-inst-001
-	CurrentInstanceId   *string `json:"CurrentInstanceId,omitempty" xml:"CurrentInstanceId,omitempty"`
-	CurrentRemainCredit *int64  `json:"CurrentRemainCredit,omitempty" xml:"CurrentRemainCredit,omitempty"`
-	CurrentTotalCredit  *int64  `json:"CurrentTotalCredit,omitempty" xml:"CurrentTotalCredit,omitempty"`
-	CurrentUsedCredit   *int64  `json:"CurrentUsedCredit,omitempty" xml:"CurrentUsedCredit,omitempty"`
-	DayUsedCredit       *int64  `json:"DayUsedCredit,omitempty" xml:"DayUsedCredit,omitempty"`
+	CurrentInstanceId *string `json:"CurrentInstanceId,omitempty" xml:"CurrentInstanceId,omitempty"`
+	// The remaining credits of the current active credit package.
+	//
+	// example:
+	//
+	// 当前周期积分余量
+	CurrentRemainCredit *int64 `json:"CurrentRemainCredit,omitempty" xml:"CurrentRemainCredit,omitempty"`
+	// The total credits of the current active credit package.
+	//
+	// example:
+	//
+	// 当前周期积分配额
+	CurrentTotalCredit *int64 `json:"CurrentTotalCredit,omitempty" xml:"CurrentTotalCredit,omitempty"`
+	// The used credits of the current active credit package.
+	//
+	// example:
+	//
+	// 当前周期积分消耗
+	CurrentUsedCredit *int64 `json:"CurrentUsedCredit,omitempty" xml:"CurrentUsedCredit,omitempty"`
+	// The credit usage in the last 1 day.
+	//
+	// example:
+	//
+	// 最近一天消耗积分
+	DayUsedCredit *int64 `json:"DayUsedCredit,omitempty" xml:"DayUsedCredit,omitempty"`
+	// The shared credit quota in the current active period.
+	//
 	// example:
 	//
 	// 300
 	PeriodTotalCredit *int64 `json:"PeriodTotalCredit,omitempty" xml:"PeriodTotalCredit,omitempty"`
+	// The shared credit usage in the current active period.
+	//
 	// example:
 	//
 	// 120
 	PeriodUsedCredit *int64 `json:"PeriodUsedCredit,omitempty" xml:"PeriodUsedCredit,omitempty"`
-	RemainCredit     *int64 `json:"RemainCredit,omitempty" xml:"RemainCredit,omitempty"`
-	TotalCredit      *int64 `json:"TotalCredit,omitempty" xml:"TotalCredit,omitempty"`
-	TotalUsedCredit  *int64 `json:"TotalUsedCredit,omitempty" xml:"TotalUsedCredit,omitempty"`
+	// The cumulative remaining credits.
+	//
+	// example:
+	//
+	// 积分余量
+	RemainCredit *int64  `json:"RemainCredit,omitempty" xml:"RemainCredit,omitempty"`
+	TodayUsed    *string `json:"TodayUsed,omitempty" xml:"TodayUsed,omitempty"`
+	// The cumulative total credits.
+	//
+	// example:
+	//
+	// 积分配额
+	TotalCredit *int64  `json:"TotalCredit,omitempty" xml:"TotalCredit,omitempty"`
+	TotalUsed   *string `json:"TotalUsed,omitempty" xml:"TotalUsed,omitempty"`
+	// The cumulative credit usage.
+	//
+	// example:
+	//
+	// 共计消耗积分
+	TotalUsedCredit *int64 `json:"TotalUsedCredit,omitempty" xml:"TotalUsedCredit,omitempty"`
+	// The alert threshold percentage (0–100).
+	//
 	// example:
 	//
 	// 80
-	WarnPercent    *int32 `json:"WarnPercent,omitempty" xml:"WarnPercent,omitempty"`
+	WarnPercent *int32 `json:"WarnPercent,omitempty" xml:"WarnPercent,omitempty"`
+	// The credit usage in the last 1 week.
+	//
+	// example:
+	//
+	// 最近一周消耗积分
 	WeekUsedCredit *int64 `json:"WeekUsedCredit,omitempty" xml:"WeekUsedCredit,omitempty"`
 }
 
@@ -177,8 +234,16 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetRemainCre
 	return s.RemainCredit
 }
 
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetTodayUsed() *string {
+	return s.TodayUsed
+}
+
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetTotalCredit() *int64 {
 	return s.TotalCredit
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetTotalUsed() *string {
+	return s.TotalUsed
 }
 
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetTotalUsedCredit() *int64 {
@@ -238,8 +303,18 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetRemainCre
 	return s
 }
 
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetTodayUsed(v string) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
+	s.TodayUsed = &v
+	return s
+}
+
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetTotalCredit(v int64) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
 	s.TotalCredit = &v
+	return s
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetTotalUsed(v string) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
+	s.TotalUsed = &v
 	return s
 }
 
@@ -272,10 +347,14 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) Validate() e
 }
 
 type DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList struct {
+	// The time point in the format of `yyyy-MM-dd HH` (accurate to the hour).
+	//
 	// example:
 	//
 	// 2026-05-02 10
 	TimePoint *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
+	// The number of credits consumed during the hour.
+	//
 	// example:
 	//
 	// 12

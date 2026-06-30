@@ -20,15 +20,22 @@ type iDescribeMultiPriceRequest interface {
 }
 
 type DescribeMultiPriceRequest struct {
+	// The order items.
 	OrderItems []*DescribeMultiPriceRequestOrderItems `json:"OrderItems,omitempty" xml:"OrderItems,omitempty" type:"Repeated"`
+	// The order type.
+	//
 	// example:
 	//
 	// create
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The package code. This parameter is not required for non-package types.
+	//
 	// example:
 	//
 	// pacakge
 	PackageCode *string `json:"PackageCode,omitempty" xml:"PackageCode,omitempty"`
+	// The ID of the user who owns the resource in the reseller model. This parameter is not required in non-reseller mode.
+	//
 	// example:
 	//
 	// 182864463481****
@@ -93,26 +100,45 @@ func (s *DescribeMultiPriceRequest) Validate() error {
 }
 
 type DescribeMultiPriceRequestOrderItems struct {
+	// The quantity to purchase.
+	//
 	// example:
 	//
 	// 1
-	Amount      *int32                                           `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	Components  []*DescribeMultiPriceRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	Data        *string                                          `json:"Data,omitempty" xml:"Data,omitempty"`
-	InstanceIds []*string                                        `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// A list of components.
+	Components []*DescribeMultiPriceRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	Data       *string                                          `json:"Data,omitempty" xml:"Data,omitempty"`
+	// A list of instance IDs.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The subscription period. Valid values:
+	//
+	// - If `PeriodUnit` is `Year`, the valid values are 1, 2, and 3.
+	//
+	// - If `PeriodUnit` is `Month`, the valid values are 1, 2, 3, and 6.
+	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription period.
+	//
 	// example:
 	//
 	// Year
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The promotion ID.
+	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
-	PromotionId *string   `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// A list of resource IDs.
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// The resource type.
+	//
+	// > The value is case-sensitive.
+	//
 	// example:
 	//
 	// DurationPackage
@@ -232,10 +258,58 @@ func (s *DescribeMultiPriceRequestOrderItems) Validate() error {
 }
 
 type DescribeMultiPriceRequestOrderItemsComponents struct {
+	// The key of the component.
+	//
 	// example:
 	//
 	// RegionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the component.
+	//
+	// The following are the keys and their sample or enumerated values for a monthly duration package of the enterprise edition:
+	//
+	// - `RegionId`: cn-shanghai
+	//
+	// - `InstanceType`: eds.enterprise_office.4c8g
+	//
+	// - `DurationType` (in hours): [enum]
+	//
+	//   - 120
+	//
+	//   - 250
+	//
+	// - `OsType`: [enum]
+	//
+	//   - Windows
+	//
+	//   - Linux
+	//
+	// - `RootDiskSize` (in GiB): 80
+	//
+	// - `RootDiskCategory`: [enum]
+	//
+	//   - `cloud_efficiency` (Ultra Cloud Disk)
+	//
+	//   - `cloud_auto` (AutoPL Cloud Disk)
+	//
+	//   - `cloud_essd` (Enhanced SSD (ESSD), available only for specific instance types)
+	//
+	// - `RootPerformanceLevel`: [enum]
+	//
+	//   - PL0
+	//
+	//   - PL1
+	//
+	//   - PL2
+	//
+	//   - PL3
+	//
+	// - `DataDiskSize` (in GiB): Same as `RootDiskSize`.
+	//
+	// - `DataDiskCategory`: Same as `RootDiskCategory`.
+	//
+	// - `DataPerformanceLevel`: Same as `RootPerformanceLevel`.
+	//
 	// example:
 	//
 	// cn-shanghai

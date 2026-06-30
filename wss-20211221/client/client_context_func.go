@@ -9,7 +9,19 @@ import (
 
 // Summary:
 //
-// 多商品组合下单
+// Use this API to order, renew, and modify specific products, such as monthly resource plans for Elastic Desktop Service (EDS) Enterprise Edition.
+//
+// Description:
+//
+// <props="china">
+//
+// Before calling this API, make sure you understand how Wuying Workspace is billed and its [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws).
+//
+// <props="intl">
+//
+// Before calling this API, make sure you understand how Wuying Workspace is billed and its [pricing](https://www.alibabacloud.com/zh/product/cloud-desktop?#J_8623712560).
+//
+// If you do not specify automatic payment, this API does not handle the payment. You must use the returned order ID to construct a payment URL. The order becomes active and the resource is provisioned only after the payment is complete.
 //
 // @param tmpReq - CreateMultiOrderRequest
 //
@@ -75,7 +87,21 @@ func (client *Client) CreateMultiOrderWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// 查询积分包Agent列表
+// Queries a list of agents and their usage information.
+//
+// Description:
+//
+// ## Usage notes
+//
+// - **Pagination**: This operation supports pagination by using the `NextToken` and `MaxResults` parameters. For the first request, set `NextToken` to an empty string.
+//
+// - **Filtering**: Use the `AgentType` and `AgentIds` parameters to filter the results.
+//
+// - **Status filtering**: Use the `Status` parameter to filter agents by status. Valid values are 0 (deleted) and 1 (active).
+//
+// - **Sorting**: By default, the results are sorted by `id` in ascending order.
+//
+// - **Additional parameter for anonymous edition**: The `FillInstance` parameter automatically populates the ID of the JVS_COPILOT agent that is associated with the current user.
 //
 // @param request - DescribeCreditPackageAgentsRequest
 //
@@ -135,7 +161,29 @@ func (client *Client) DescribeCreditPackageAgentsWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询积分包用量信息
+// Queries credit usage by a specified dimension such as user, credit package, or agent.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API operation queries credit usage details based on the dimension specified by `UsageType` (User, CreditPackage, or Agent). The response includes the total, remaining, and used credits of the current credit package, hourly consumption samples, alert thresholds, period quotas, and other information.
+//
+// - **User**: User dimension. Returns the aggregated usage and remaining credits across all active credit packages for the current user.
+//
+// - **CreditPackage**: Credit package dimension. Returns the total, remaining, and consumption samples for a specified credit package instance.
+//
+// - **Agent**: Agent dimension. Returns the cumulative usage, current period usage, quota, alert, and other information for a specified agent.
+//
+// **Notes**:
+//
+// - The `InstanceIds` parameter can be omitted when `UsageType=User`. Set this parameter to the credit package instance ID when `UsageType=CreditPackage`, or to the AgentId when `UsageType=Agent`.
+//
+// - Anonymous requests support the `FillInstance` parameter. If `InstanceIds` is not explicitly specified and `FillInstance=true`, the server automatically populates the bound `JVS_COPILOT` AgentId based on the current logon `wyId`.
+//
+// - Time window constants: The `dayUsedCredit` statistics window is `now - ONE_DAY_MILLIS`, and the `weekUsedCredit` statistics window is `now - ONE_WEEK_MILLIS`.
+//
+// - The consumption samples in `currentCreditConsumeList` are aggregated by hour and may have an asynchronous synchronization delay of up to 5 minutes.
 //
 // @param request - DescribeCreditUsageInfoRequest
 //
@@ -187,7 +235,23 @@ func (client *Client) DescribeCreditUsageInfoWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询计量消耗信息
+// Retrieves resource deduction and usage statistics based on specified criteria.
+//
+// Description:
+//
+// ## Request
+//
+// - This API supports GET and POST methods.
+//
+// - The `periods` parameter is a JSON array of `PeriodParam` objects, each containing the `periodUnit` and `baseTime` fields.
+//
+// - The `resourceTypes` parameter is a JSON array of resource type strings.
+//
+// - The `startTime` and `endTime` parameters are timestamps that define the query\\"s time range.
+//
+// - The `nextToken`, `maxResults`, `pageNo`, and `pageSize` parameters control pagination and the number of results to return.
+//
+// - The API throws a `SalesClientException` if the `resourceTypes` parameter contains an invalid value or if the `periods` parameter fails JSON parsing.
 //
 // @param request - DescribeDeductionStatisticRequest
 //
@@ -247,7 +311,13 @@ func (client *Client) DescribeDeductionStatisticWithContext(ctx context.Context,
 
 // Summary:
 //
-// 批量询价
+// Queries prices for Elastic Desktop Service products, covering order types such as purchase, renewal, configuration change, and cancellation.
+//
+// Description:
+//
+// <props="china">
+//
+// Before using this interface, ensure you understand the billing methods and [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws) for Wuying Workspace.
 //
 // @param request - DescribeMultiPriceRequest
 //
@@ -303,7 +373,7 @@ func (client *Client) DescribeMultiPriceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询核时包抵扣明细
+// Query deduction details for time-based packages.
 //
 // @param request - DescribePackageDeductionsRequest
 //
@@ -375,7 +445,7 @@ func (client *Client) DescribePackageDeductionsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 更新实例属性
+// Modifies the attributes of an instance.
 //
 // @param request - ModifyInstancePropertiesRequest
 //
@@ -435,7 +505,23 @@ func (client *Client) ModifyInstancePropertiesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 批量设置Agent积分配额
+// Sets the credit quota for specified Agents.
+//
+// Description:
+//
+// ## Description
+//
+// This operation sets the credit quota for one or more Agents of a specific type.
+//
+// ### Usage notes
+//
+// - The `AgentType` parameter specifies the type of Agent to which the quota applies, such as `JVSClaw` or `OpenClaw`.
+//
+// - The `AgentIds` parameter is an array of up to 100 Agent IDs.
+//
+// - The `CreditQuota` parameter specifies the credit quota for each Agent.
+//
+// ### Examples
 //
 // @param request - SetAgentCreditQuotaRequest
 //

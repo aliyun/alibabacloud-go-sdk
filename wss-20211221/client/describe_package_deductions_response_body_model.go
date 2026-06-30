@@ -28,26 +28,45 @@ type iDescribePackageDeductionsResponseBody interface {
 }
 
 type DescribePackageDeductionsResponseBody struct {
+	// The deduction details.
 	Deductions []*DescribePackageDeductionsResponseBodyDeductions `json:"Deductions,omitempty" xml:"Deductions,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 833C4D2C-09C7-5CE6-8159-06758B964970
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of matching entries.
+	//
 	// example:
 	//
 	// 100
-	TotalCount           *int64   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalUsedCoreTime    *float32 `json:"TotalUsedCoreTime,omitempty" xml:"TotalUsedCoreTime,omitempty"`
-	TotalUsedTime        *int64   `json:"TotalUsedTime,omitempty" xml:"TotalUsedTime,omitempty"`
-	TotalUsedTimeDecimal *string  `json:"TotalUsedTimeDecimal,omitempty" xml:"TotalUsedTimeDecimal,omitempty"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total core-hours deducted for all matching entries.
+	//
+	// example:
+	//
+	// 10.1
+	TotalUsedCoreTime *float32 `json:"TotalUsedCoreTime,omitempty" xml:"TotalUsedCoreTime,omitempty"`
+	// The total usage duration of all matching entries, in seconds.
+	//
+	// example:
+	//
+	// 100000
+	TotalUsedTime        *int64  `json:"TotalUsedTime,omitempty" xml:"TotalUsedTime,omitempty"`
+	TotalUsedTimeDecimal *string `json:"TotalUsedTimeDecimal,omitempty" xml:"TotalUsedTimeDecimal,omitempty"`
 }
 
 func (s DescribePackageDeductionsResponseBody) String() string {
@@ -144,55 +163,84 @@ func (s *DescribePackageDeductionsResponseBody) Validate() error {
 }
 
 type DescribePackageDeductionsResponseBodyDeductions struct {
+	// The number of vCPUs.
+	//
 	// example:
 	//
 	// 4
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The cloud computer ID.
+	//
 	// example:
 	//
 	// ecd-6wye9optu0kag****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The cloud computer name.
+	//
 	// example:
 	//
 	// DemoComputer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// The desktop type.
+	//
 	// example:
 	//
 	// eds.enterprise_office.4c8g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
+	// The billing cycle end time.
+	//
 	// example:
 	//
 	// 2024-07-31T03:00Z
 	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	GroupResourceType *string `json:"GroupResourceType,omitempty" xml:"GroupResourceType,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The core-hour package state.
+	//
 	// example:
 	//
 	// Deleted
 	InstanceState *string `json:"InstanceState,omitempty" xml:"InstanceState,omitempty"`
 	InstanceType  *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The memory size, in MB.
+	//
 	// example:
 	//
 	// 8192
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The OS of the cloud computer.
+	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource type.
+	//
+	// example:
+	//
+	// Desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SessionId    *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The billing cycle start time.
+	//
 	// example:
 	//
 	// 2024-07-31T02:00Z
 	StaTime *string `json:"StaTime,omitempty" xml:"StaTime,omitempty"`
+	// The deducted core-hours.
+	//
 	// example:
 	//
 	// 4.0
 	UsedCoreTime *float32 `json:"UsedCoreTime,omitempty" xml:"UsedCoreTime,omitempty"`
+	// The usage duration, in seconds.
+	//
 	// example:
 	//
 	// 3600

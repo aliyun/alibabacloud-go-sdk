@@ -16,7 +16,10 @@ type iDescribeDeductionStatisticResponseBody interface {
 }
 
 type DescribeDeductionStatisticResponseBody struct {
+	// The deduction data.
 	Data *DescribeDeductionStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A1B2C3D4-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -59,9 +62,12 @@ func (s *DescribeDeductionStatisticResponseBody) Validate() error {
 }
 
 type DescribeDeductionStatisticResponseBodyData struct {
+	// **The available core-hour packages.**
 	AvailableCorePackages []*DescribeDeductionStatisticResponseBodyDataAvailableCorePackages `json:"AvailableCorePackages,omitempty" xml:"AvailableCorePackages,omitempty" type:"Repeated"`
-	Deductions            []*DescribeDeductionStatisticResponseBodyDataDeductions            `json:"Deductions,omitempty" xml:"Deductions,omitempty" type:"Repeated"`
-	Usages                []*DescribeDeductionStatisticResponseBodyDataUsages                `json:"Usages,omitempty" xml:"Usages,omitempty" type:"Repeated"`
+	// The deduction details.
+	Deductions []*DescribeDeductionStatisticResponseBodyDataDeductions `json:"Deductions,omitempty" xml:"Deductions,omitempty" type:"Repeated"`
+	// **The usage details.**
+	Usages []*DescribeDeductionStatisticResponseBodyDataUsages `json:"Usages,omitempty" xml:"Usages,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDeductionStatisticResponseBodyData) String() string {
@@ -131,47 +137,86 @@ func (s *DescribeDeductionStatisticResponseBodyData) Validate() error {
 }
 
 type DescribeDeductionStatisticResponseBodyDataAvailableCorePackages struct {
+	// The Alibaba Cloud account ID.
+	//
+	// example:
+	//
+	// 1568857911493620
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
 	// 2024-12-31 23:59:59
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 2024-12-31 23:59:59
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The group ID.
+	//
 	// example:
 	//
 	// g-xxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The group resource type.
+	//
 	// example:
 	//
 	// CoreHour
 	GroupResourceType *string `json:"GroupResourceType,omitempty" xml:"GroupResourceType,omitempty"`
-	NoLx              *bool   `json:"NoLx,omitempty" xml:"NoLx,omitempty"`
-	NoLxSource        *string `json:"NoLxSource,omitempty" xml:"NoLxSource,omitempty"`
+	// Indicates whether the resource is a No-Lx resource.
+	NoLx *bool `json:"NoLx,omitempty" xml:"NoLx,omitempty"`
+	// The source of the No-Lx resource.
+	//
+	// example:
+	//
+	// 无凌霄来源示例值
+	NoLxSource *string `json:"NoLxSource,omitempty" xml:"NoLxSource,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// res-xxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The group resource type.
+	//
 	// example:
 	//
 	// CoreHour
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// Active
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalTime *int64  `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
-	UsedTime  *int64  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total duration.
+	//
+	// example:
+	//
+	// 1000000
+	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	// The used duration.
+	//
+	// example:
+	//
+	// 40000
+	UsedTime *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 }
 
 func (s DescribeDeductionStatisticResponseBodyDataAvailableCorePackages) String() string {
@@ -313,11 +358,20 @@ func (s *DescribeDeductionStatisticResponseBodyDataAvailableCorePackages) Valida
 }
 
 type DescribeDeductionStatisticResponseBodyDataDeductions struct {
+	// The consumption duration in seconds.
+	//
+	// example:
+	//
+	// 7000
 	ConsumeSecond *int64 `json:"ConsumeSecond,omitempty" xml:"ConsumeSecond,omitempty"`
+	// The deduction date.
+	//
 	// example:
 	//
 	// 2024-01-01
 	DeductionDate *string `json:"DeductionDate,omitempty" xml:"DeductionDate,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// CloudDesktop
@@ -364,11 +418,20 @@ func (s *DescribeDeductionStatisticResponseBodyDataDeductions) Validate() error 
 }
 
 type DescribeDeductionStatisticResponseBodyDataUsages struct {
+	// **The consumption duration in seconds.**
+	//
+	// example:
+	//
+	// 6000
 	ConsumeSecond *int64 `json:"ConsumeSecond,omitempty" xml:"ConsumeSecond,omitempty"`
+	// **The time period.**
+	//
 	// example:
 	//
 	// 2024-01-01
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// **The resource type.**
+	//
 	// example:
 	//
 	// CloudDesktop

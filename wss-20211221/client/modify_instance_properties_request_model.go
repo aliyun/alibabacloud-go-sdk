@@ -22,21 +22,40 @@ type iModifyInstancePropertiesRequest interface {
 }
 
 type ModifyInstancePropertiesRequest struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// mdp-0c62ayep0nk4v****
-	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance ID.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The key of the attribute.
+	//
 	// example:
 	//
 	// PackageUsedUpStrategy
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The resource type.
+	//
+	// > This parameter is case-sensitive. Ensure that the value is spelled correctly.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DurationPackage
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The value of the attribute.
+	//
+	// - PackageUsedUpStrategy: Valid values:
+	//
+	//    - Postpaid: Enters the pay-as-you-go phase.
+	//
+	//    - Shutdown: Hibernation.
+	//
+	//    - Maintenance: Shuts down and enters O&M mode. Client connections are not allowed.
+	//
 	// example:
 	//
 	// Postpaid

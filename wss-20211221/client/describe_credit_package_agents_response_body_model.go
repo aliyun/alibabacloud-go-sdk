@@ -20,15 +20,22 @@ type iDescribeCreditPackageAgentsResponseBody interface {
 }
 
 type DescribeCreditPackageAgentsResponseBody struct {
+	// A list of agents.
 	Agents []*DescribeCreditPackageAgentsResponseBodyAgents `json:"Agents,omitempty" xml:"Agents,omitempty" type:"Repeated"`
+	// The number of results returned on the current page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results. If this value is empty, all results have been returned.
+	//
 	// example:
 	//
 	// eyJvZmZzZXQiOjIwfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID. Provide this ID when contacting support.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx
@@ -93,36 +100,50 @@ func (s *DescribeCreditPackageAgentsResponseBody) Validate() error {
 }
 
 type DescribeCreditPackageAgentsResponseBodyAgents struct {
-	// Agent ID
+	// The ID of the agent.
 	//
 	// example:
 	//
 	// agent-abc
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// **The creation time of the instance.**
+	//
 	// example:
 	//
 	// 2026-04-01 10:00:00
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// **The ID of the active credit package instance.**
+	//
 	// example:
 	//
 	// cp-inst-001
 	CreditPackageId *string `json:"CreditPackageId,omitempty" xml:"CreditPackageId,omitempty"`
+	// **The expiration time of the instance.**
+	//
 	// example:
 	//
 	// 2026-10-01 10:00:00
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The instance type.
+	//
 	// example:
 	//
 	// jvs-copilot.standard
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// **The total credit.**
+	//
 	// example:
 	//
 	// 2000
 	TotalCredit *int64 `json:"TotalCredit,omitempty" xml:"TotalCredit,omitempty"`
+	// **The amount of credit used.**
+	//
 	// example:
 	//
 	// 100
 	UsedCredit *int64 `json:"UsedCredit,omitempty" xml:"UsedCredit,omitempty"`
+	// **The alarm threshold, specified as a percentage. Valid values: 0 to 100.**
+	//
 	// example:
 	//
 	// 80

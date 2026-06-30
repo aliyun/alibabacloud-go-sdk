@@ -28,23 +28,41 @@ type iDescribePackageDeductionsRequest interface {
 }
 
 type DescribePackageDeductionsRequest struct {
-	EndTime     *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end time, in Unix timestamp format.
+	//
+	// example:
+	//
+	// 1709117383000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// An array of instance IDs. If you specify this parameter, the `PackageIds` parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	PackageIds  []*string `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
+	// An array of package IDs.
+	PackageIds []*string `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
-	// CorePackage
+	// Desktop
 	ResourceType  *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
-	StartTime     *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start time, in Unix timestamp format.
+	//
+	// example:
+	//
+	// 1709117383000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribePackageDeductionsRequest) String() string {

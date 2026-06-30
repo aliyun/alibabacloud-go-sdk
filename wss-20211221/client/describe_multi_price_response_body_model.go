@@ -16,7 +16,10 @@ type iDescribeMultiPriceResponseBody interface {
 }
 
 type DescribeMultiPriceResponseBody struct {
+	// The detailed price information.
 	PriceInfo *DescribeMultiPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 833C4D2C-09C7-5CE6-8159-06758B964970
@@ -59,7 +62,9 @@ func (s *DescribeMultiPriceResponseBody) Validate() error {
 }
 
 type DescribeMultiPriceResponseBodyPriceInfo struct {
-	Price *DescribeMultiPriceResponseBodyPriceInfoPrice   `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// The price information.
+	Price *DescribeMultiPriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// A list of promotion rules.
 	Rules []*DescribeMultiPriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -108,25 +113,42 @@ func (s *DescribeMultiPriceResponseBodyPriceInfo) Validate() error {
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPrice struct {
+	// The currency.
+	//
+	// China site: CNY.
+	//
+	// International site: USD.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discount amount.
+	//
 	// example:
 	//
 	// 534.6
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 6800
-	OriginalPrice            *float32                                                    `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	PriceDetails             []*DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails `json:"PriceDetails,omitempty" xml:"PriceDetails,omitempty" type:"Repeated"`
-	Promotions               []*DescribeMultiPriceResponseBodyPriceInfoPricePromotions   `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
-	RefundInstanceIdPriceMap map[string]*float32                                         `json:"RefundInstanceIdPriceMap,omitempty" xml:"RefundInstanceIdPriceMap,omitempty"`
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// A list of price details.
+	PriceDetails []*DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails `json:"PriceDetails,omitempty" xml:"PriceDetails,omitempty" type:"Repeated"`
+	// A list of promotions.
+	Promotions []*DescribeMultiPriceResponseBodyPriceInfoPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	// A map of instance IDs to their corresponding refund amounts.
+	RefundInstanceIdPriceMap map[string]*float32 `json:"RefundInstanceIdPriceMap,omitempty" xml:"RefundInstanceIdPriceMap,omitempty"`
+	// The refund amount.
+	//
 	// example:
 	//
 	// 60.00
 	RefundPrice *float32 `json:"RefundPrice,omitempty" xml:"RefundPrice,omitempty"`
+	// The trade price, which is the original price minus the discount amount.
+	//
 	// example:
 	//
 	// 82.6
@@ -236,11 +258,15 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPrice) Validate() error {
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails struct {
+	// A list of pricing module details.
 	ModuleDetails []*DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Repeated"`
+	// The sort order.
+	//
 	// example:
 	//
 	// 1
-	OrderItem   *int32                                                               `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
+	OrderItem *int32 `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
+	// A breakdown of the price.
 	PriceDetail *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail `json:"PriceDetail,omitempty" xml:"PriceDetail,omitempty" type:"Struct"`
 }
 
@@ -298,24 +324,39 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails) Validate() er
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails struct {
+	// The discount amount.
+	//
 	// example:
 	//
 	// 734.65
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The module code.
+	//
 	// example:
 	//
 	// DesktopType
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	// The module name.
+	//
+	// example:
+	//
+	// 企业办公型-8C32G
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// The module value.
+	//
 	// example:
 	//
 	// eds.enterprise_office.8c32g
 	ModuleValue *string `json:"ModuleValue,omitempty" xml:"ModuleValue,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 10900
 	OriginalPrice           *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	SavingPlanDiscountPrice *float32 `json:"SavingPlanDiscountPrice,omitempty" xml:"SavingPlanDiscountPrice,omitempty"`
+	// The trade price, which is the original price minus the discount amount.
+	//
 	// example:
 	//
 	// 292.2
@@ -398,19 +439,27 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) 
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail struct {
+	// The discount amount.
+	//
 	// example:
 	//
 	// 20.00
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 100.00
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// DurationPackage
 	ResourceType             *string  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SavingPlanRecommendPrice *float32 `json:"SavingPlanRecommendPrice,omitempty" xml:"SavingPlanRecommendPrice,omitempty"`
+	// The trade price, which is the original price minus the discount amount.
+	//
 	// example:
 	//
 	// 80.00
@@ -475,16 +524,32 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) Va
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePromotions struct {
+	// The option code.
+	//
 	// example:
 	//
 	// new
-	OptionCode    *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// The promotion description.
+	//
+	// example:
+	//
+	// 促销
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The promotion ID.
+	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
-	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The promotion name.
+	//
+	// example:
+	//
+	// 优惠活动名称
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// Indicates whether the promotion is selected.
+	//
 	// example:
 	//
 	// true
@@ -549,10 +614,14 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) Validate() erro
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoRules struct {
+	// The promotion rule description.
+	//
 	// example:
 	//
 	// accounts_suspect_users
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The promotion rule ID.
+	//
 	// example:
 	//
 	// hrzdvc

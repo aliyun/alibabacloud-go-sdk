@@ -20,13 +20,26 @@ type iSetAgentCreditQuotaRequest interface {
 }
 
 type SetAgentCreditQuotaRequest struct {
+	// A list of Agent IDs.
 	AgentIds []*string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	// The Agent type.
+	//
 	// example:
 	//
 	// JVSClaw
-	AgentType   *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	CreditQuota *int32  `json:"CreditQuota,omitempty" xml:"CreditQuota,omitempty"`
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The business type.
+	//
+	// example:
+	//
+	// BUSINESS
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The credit quota.
+	//
+	// example:
+	//
+	// 200
+	CreditQuota *int32 `json:"CreditQuota,omitempty" xml:"CreditQuota,omitempty"`
 }
 
 func (s SetAgentCreditQuotaRequest) String() string {

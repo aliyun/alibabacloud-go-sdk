@@ -22,13 +22,27 @@ type iDescribeDeductionStatisticRequest interface {
 }
 
 type DescribeDeductionStatisticRequest struct {
-	EndTime     *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end time, specified as a Unix timestamp.
+	//
+	// example:
+	//
+	// 2025-06-06T02:14:00Z
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The list of instance IDs, specified as a JSON array.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The list of periods, formatted as a JSON array of `PeriodParam` objects.
+	//
 	// if can be null:
 	// true
-	Periods       []*DescribeDeductionStatisticRequestPeriods `json:"Periods,omitempty" xml:"Periods,omitempty" type:"Repeated"`
-	ResourceTypes []*string                                   `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
-	StartTime     *int64                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Periods []*DescribeDeductionStatisticRequestPeriods `json:"Periods,omitempty" xml:"Periods,omitempty" type:"Repeated"`
+	// The list of resource types, specified as a JSON array.
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+	// The start time, specified as a Unix timestamp.
+	//
+	// example:
+	//
+	// 2026-03-20T16:00:00Z
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDeductionStatisticRequest) String() string {
@@ -98,10 +112,17 @@ func (s *DescribeDeductionStatisticRequest) Validate() error {
 }
 
 type DescribeDeductionStatisticRequestPeriods struct {
+	// The base time.
+	//
 	// example:
 	//
 	// 2024-01-01
-	BaseTime   *string `json:"BaseTime,omitempty" xml:"BaseTime,omitempty"`
+	BaseTime *string `json:"BaseTime,omitempty" xml:"BaseTime,omitempty"`
+	// The period unit. For valid values, see the `PeriodUnit` enumeration.
+	//
+	// example:
+	//
+	// Year
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 }
 
