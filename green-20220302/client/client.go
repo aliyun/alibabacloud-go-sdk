@@ -1013,7 +1013,7 @@ func (client *Client) ManualModeration(request *ManualModerationRequest) (_resul
 
 // Summary:
 //
-// Retrieves the manual moderation result.
+// Retrieves the manual review result.
 //
 // @param request - ManualModerationResultRequest
 //
@@ -1057,7 +1057,7 @@ func (client *Client) ManualModerationResultWithOptions(request *ManualModeratio
 
 // Summary:
 //
-// Retrieves the manual moderation result.
+// Retrieves the manual review result.
 //
 // @param request - ManualModerationResultRequest
 //
@@ -1952,11 +1952,11 @@ func (client *Client) VideoModerationCancel(request *VideoModerationCancelReques
 
 // Summary:
 //
-// Retrieves the results of an enhanced video moderation task.
+// Retrieves the task result of an enhanced video content moderation node.
 //
 // Description:
 //
-// This operation is free. We recommend querying for the result 30 seconds after submitting the asynchronous detection task. You must retrieve the result within 24 hours, or it will be automatically deleted.
+// This operation is not billed. Set the query interval to 30 seconds (that is, query the results 30 seconds after submitting the asynchronous moderation task). The maximum query window is 24 hours. After 24 hours, the results are automatically deleted.
 //
 // @param request - VideoModerationResultRequest
 //
@@ -2004,11 +2004,11 @@ func (client *Client) VideoModerationResultWithOptions(request *VideoModerationR
 
 // Summary:
 //
-// Retrieves the results of an enhanced video moderation task.
+// Retrieves the task result of an enhanced video content moderation node.
 //
 // Description:
 //
-// This operation is free. We recommend querying for the result 30 seconds after submitting the asynchronous detection task. You must retrieve the result within 24 hours, or it will be automatically deleted.
+// This operation is not billed. Set the query interval to 30 seconds (that is, query the results 30 seconds after submitting the asynchronous moderation task). The maximum query window is 24 hours. After 24 hours, the results are automatically deleted.
 //
 // @param request - VideoModerationResultRequest
 //

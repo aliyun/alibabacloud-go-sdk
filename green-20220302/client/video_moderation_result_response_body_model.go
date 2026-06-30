@@ -20,7 +20,7 @@ type iVideoModerationResultResponseBody interface {
 }
 
 type VideoModerationResultResponseBody struct {
-	// The return code. A value of 200 indicates that the request was successful.
+	// The response code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -28,13 +28,13 @@ type VideoModerationResultResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The moderation result data.
 	Data *VideoModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success finished
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,17 +96,17 @@ func (s *VideoModerationResultResponseBody) Validate() error {
 }
 
 type VideoModerationResultResponseBodyData struct {
-	// The moderation results for the video\\"s audio segments.
+	// The segmented results of video audio moderation.
 	AudioResult *VideoModerationResultResponseBodyDataAudioResult `json:"AudioResult,omitempty" xml:"AudioResult,omitempty" type:"Struct"`
-	// The value of the `dataId` parameter passed in the request. This field is returned only if the parameter was included in the request.
+	// The value of dataId passed in the API request. This field is not returned if dataId was not specified in the request.
 	//
 	// example:
 	//
 	// product_content-2055763
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// Additional information.
+	// The extended information.
 	Ext *VideoModerationResultResponseBodyDataExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
-	// The results for video snapshots.
+	// The list of video frame capture results.
 	FrameResult *VideoModerationResultResponseBodyDataFrameResult `json:"FrameResult,omitempty" xml:"FrameResult,omitempty" type:"Struct"`
 	// The unique ID of the live stream.
 	//
@@ -120,15 +120,17 @@ type VideoModerationResultResponseBodyData struct {
 	//
 	// xxxxx-xxxxx
 	ManualTaskId *string `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
-	// The risk level, which is determined by the configured thresholds for high and low risk scores. Valid values:
+	// The risk level, returned based on the configured high and low risk score thresholds. Valid values:
 	//
-	// - `high`: high risk
+	// - high: High risk.
 	//
-	// - `medium`: medium risk
+	// - medium: Medium risk.
 	//
-	// - `low`: low risk
 	//
-	// - `none`: no risk detected
+	//
+	// - low: Low risk.
+	//
+	// - none: No risk detected.
 	//
 	// example:
 	//
@@ -242,17 +244,19 @@ func (s *VideoModerationResultResponseBodyData) Validate() error {
 }
 
 type VideoModerationResultResponseBodyDataAudioResult struct {
-	// A list of summaries for audio labels.
+	// The audio label summary.
 	AudioSummarys []*VideoModerationResultResponseBodyDataAudioResultAudioSummarys `json:"AudioSummarys,omitempty" xml:"AudioSummarys,omitempty" type:"Repeated"`
-	// The risk level, which is determined by the configured thresholds for high and low risk scores. Valid values:
+	// The risk level, returned based on the configured high and low risk score thresholds. Valid values:
 	//
-	// - `high`: high risk
+	// - high: High risk.
 	//
-	// - `medium`: medium risk
+	// - medium: Medium risk.
 	//
-	// - `low`: low risk
 	//
-	// - `none`: no risk detected
+	//
+	// - low: Low risk.
+	//
+	// - none: No risk detected.
 	//
 	// example:
 	//
@@ -320,13 +324,13 @@ func (s *VideoModerationResultResponseBodyDataAudioResult) Validate() error {
 }
 
 type VideoModerationResultResponseBodyDataAudioResultAudioSummarys struct {
-	// The description of the label.
+	// The label descriptions.
 	//
 	// example:
 	//
 	// 疑似违禁内容
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The audio moderation label.
+	// The video audio label.
 	//
 	// example:
 	//
@@ -380,69 +384,72 @@ func (s *VideoModerationResultResponseBodyDataAudioResultAudioSummarys) Validate
 }
 
 type VideoModerationResultResponseBodyDataAudioResultSliceDetails struct {
-	// The description of the label.
+	// The label descriptions.
 	//
 	// example:
 	//
 	// 疑似违禁内容
 	Descriptions *string `json:"Descriptions,omitempty" xml:"Descriptions,omitempty"`
-	// The end time of the audio segment, in seconds.
+	// The end time of the segment, in seconds.
 	//
 	// example:
 	//
 	// 30
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The end timestamp, in milliseconds.
+	// The end timestamp.
 	//
 	// example:
 	//
 	// 1685245261939
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// The extension field.
+	// The extended field.
 	//
 	// example:
 	//
 	// {\\"consoleProduct\\":\\"slbnext\\"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The detected violation labels.
+	// The violation labels that are hit.
 	//
 	// example:
 	//
 	// porn
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The risk level, which is determined by the configured thresholds for high and low risk scores. Valid values:
+	Labels *string                                                               `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Result []*VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The risk level, returned based on the configured high and low risk score thresholds. Valid values:
 	//
-	// - `high`: high risk
+	// - high: High risk.
 	//
-	// - `medium`: medium risk
+	// - medium: Medium risk.
 	//
-	// - `low`: low risk
 	//
-	// - `none`: no risk detected
+	//
+	// - low: Low risk.
+	//
+	// - none: No risk detected.
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The details of the detected risk.
+	// The details of the hit risk.
 	//
 	// example:
 	//
 	// ""
 	RiskTips *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
-	// The detected risk keywords.
+	// The risk keywords that are hit.
 	//
 	// example:
 	//
 	// ""
 	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
-	// The risk score. The value ranges from 0 to 99 by default.
+	// The risk score. Default range: 0 to 99.
 	//
 	// example:
 	//
 	// 5
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The start time of the audio segment, in seconds.
+	// The start time of the segment, in seconds.
 	//
 	// example:
 	//
@@ -454,7 +461,7 @@ type VideoModerationResultResponseBodyDataAudioResultSliceDetails struct {
 	//
 	// 1659935002123
 	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	// The transcribed text from the audio segment.
+	// The transcribed text of the audio segment.
 	//
 	// example:
 	//
@@ -494,6 +501,10 @@ func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) GetExtend
 
 func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) GetLabels() *string {
 	return s.Labels
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) GetResult() []*VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult {
+	return s.Result
 }
 
 func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) GetRiskLevel() *string {
@@ -553,6 +564,11 @@ func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetLabels
 	return s
 }
 
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetResult(v []*VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
+	s.Result = v
+	return s
+}
+
 func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetRiskLevel(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetails {
 	s.RiskLevel = &v
 	return s
@@ -594,11 +610,203 @@ func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetUrl(v 
 }
 
 func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) Validate() error {
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult struct {
+	Confidence    *float32                                                                           `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	CustomizedHit []*VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit `json:"CustomizedHit,omitempty" xml:"CustomizedHit,omitempty" type:"Repeated"`
+	Description   *string                                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	Label         *string                                                                            `json:"Label,omitempty" xml:"Label,omitempty"`
+	RiskLevel     *string                                                                            `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskPositions []*VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions `json:"RiskPositions,omitempty" xml:"RiskPositions,omitempty" type:"Repeated"`
+	RiskWords     *string                                                                            `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) GetConfidence() *float32 {
+	return s.Confidence
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) GetCustomizedHit() []*VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit {
+	return s.CustomizedHit
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) GetDescription() *string {
+	return s.Description
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) GetLabel() *string {
+	return s.Label
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) GetRiskLevel() *string {
+	return s.RiskLevel
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) GetRiskPositions() []*VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions {
+	return s.RiskPositions
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) GetRiskWords() *string {
+	return s.RiskWords
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) SetConfidence(v float32) *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult {
+	s.Confidence = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) SetCustomizedHit(v []*VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit) *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult {
+	s.CustomizedHit = v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) SetDescription(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult {
+	s.Description = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) SetLabel(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult {
+	s.Label = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) SetRiskLevel(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) SetRiskPositions(v []*VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions) *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult {
+	s.RiskPositions = v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) SetRiskWords(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult {
+	s.RiskWords = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) Validate() error {
+	if s.CustomizedHit != nil {
+		for _, item := range s.CustomizedHit {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RiskPositions != nil {
+		for _, item := range s.RiskPositions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit struct {
+	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	LibName  *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit) String() string {
+	return dara.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit) GetKeyWords() *string {
+	return s.KeyWords
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit) GetLibName() *string {
+	return s.LibName
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit) SetKeyWords(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit {
+	s.KeyWords = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit) SetLibName(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit {
+	s.LibName = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit) Validate() error {
+	return dara.Validate(s)
+}
+
+type VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions struct {
+	EndPos   *int32  `json:"EndPos,omitempty" xml:"EndPos,omitempty"`
+	RiskWord *string `json:"RiskWord,omitempty" xml:"RiskWord,omitempty"`
+	StartPos *int32  `json:"StartPos,omitempty" xml:"StartPos,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions) GetEndPos() *int32 {
+	return s.EndPos
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions) GetRiskWord() *string {
+	return s.RiskWord
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions) GetStartPos() *int32 {
+	return s.StartPos
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions) SetEndPos(v int32) *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions {
+	s.EndPos = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions) SetRiskWord(v string) *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions {
+	s.RiskWord = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions) SetStartPos(v int32) *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions {
+	s.StartPos = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions) Validate() error {
 	return dara.Validate(s)
 }
 
 type VideoModerationResultResponseBodyDataExt struct {
-	// The AIGC metadata detection results.
+	// The AIGC metadata detection result.
 	AigcData *VideoModerationResultResponseBodyDataExtAigcData `json:"AigcData,omitempty" xml:"AigcData,omitempty" type:"Struct"`
 }
 
@@ -675,53 +883,53 @@ func (s *VideoModerationResultResponseBodyDataExtAigcData) Validate() error {
 }
 
 type VideoModerationResultResponseBodyDataExtAigcDataAIGC struct {
-	// The code or name identifying the service provider of the content.
+	// The code or name of the service provider, used to identify the content producer.
 	//
 	// example:
 	//
 	// 001191******M000100Y43
 	ContentProducer *string `json:"ContentProducer,omitempty" xml:"ContentProducer,omitempty"`
-	// The name, ID, or code of the propagation platform. For service providers of AI-generated content, this value can be the same as `ContentProducer`.
+	// The name, ID, or code of the propagation platform. For services that provide artificial intelligence-generated content, this value can be the same as ContentProducer.
 	//
 	// example:
 	//
 	// 001191******M000100Y43
 	ContentPropagator *string `json:"ContentPropagator,omitempty" xml:"ContentPropagator,omitempty"`
-	// Indicates whether the content is generated by AI. Valid values:
+	// Indicates whether the content is generated by artificial intelligence (AI). Valid values:
 	//
-	// - `1`: The content is generated by AI.
+	// - 1: The content is generated through artificial intelligence content generation.
 	//
-	// - `2`: (For propagation platforms only) The content may be generated by AI.
+	// - 2: (Propagation platforms only) The content may be generated through artificial intelligence content generation.
 	//
-	// - `3`: (For propagation platforms only) The content is suspected to be generated by AI.
+	// - 3: (Propagation platforms only) The content is suspected to be generated through artificial intelligence content generation.
 	//
 	// example:
 	//
 	// 1
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The content production ID, a unique identifier from the production platform for tracing generated content.
+	// The content production ID, which is the unique identifier used by the production platform to trace synthesized content.
 	//
 	// example:
 	//
 	// 123******456
 	ProduceID *string `json:"ProduceID,omitempty" xml:"ProduceID,omitempty"`
-	// The content propagation ID, a unique identifier from the propagation platform for the propagated content.
+	// The content propagation ID, which is the unique identifier assigned by the propagation platform to the propagated AI-generated content.
 	//
 	// example:
 	//
 	// 123******456
 	PropagateID *string `json:"PropagateID,omitempty" xml:"PropagateID,omitempty"`
-	// A reserved field.
+	// The reserved field.
 	//
-	// Can be used by the content generation service provider to ensure the security and integrity of content and its identifiers. For example, a hash of `ContentProducer` and `ProduceID` may be used to store and verify key information.
+	// This field can store information used by the content generation service provider for self-initiated security protection to safeguard content and identifier integrity. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify critical information.
 	//
 	// example:
 	//
 	// d41d**********427e
 	ReservedCode1 *string `json:"ReservedCode1,omitempty" xml:"ReservedCode1,omitempty"`
-	// A reserved field.
+	// The reserved field.
 	//
-	// Can be used by the content propagation service provider to ensure the security and integrity of content and its identifiers. For example, a hash of `ContentPropagator` and `PropagateID` may be used to store and verify key information.
+	// This field can be used by the content propagation service provider for self-initiated security protection to safeguard content and identifier integrity. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify critical information.
 	//
 	// example:
 	//
@@ -805,25 +1013,27 @@ func (s *VideoModerationResultResponseBodyDataExtAigcDataAIGC) Validate() error 
 }
 
 type VideoModerationResultResponseBodyDataFrameResult struct {
-	// The number of frames with results.
+	// The number of result frames.
 	//
 	// example:
 	//
 	// 10
 	FrameNum *int32 `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
-	// A list of summaries for video snapshot labels.
+	// The video frame label summary.
 	FrameSummarys []*VideoModerationResultResponseBodyDataFrameResultFrameSummarys `json:"FrameSummarys,omitempty" xml:"FrameSummarys,omitempty" type:"Repeated"`
-	// Information about the video snapshots that contain detected labels.
+	// The information about video frames that contain hit labels.
 	Frames []*VideoModerationResultResponseBodyDataFrameResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
-	// The risk level, which is determined by the configured thresholds for high and low risk scores. Valid values:
+	// The risk level, returned based on the configured high and low risk score thresholds. Valid values:
 	//
-	// - `high`: high risk
+	// - high: High risk.
 	//
-	// - `medium`: medium risk
+	// - medium: Medium risk.
 	//
-	// - `low`: low risk
 	//
-	// - `none`: no risk detected
+	//
+	// - low: Low risk.
+	//
+	// - none: No risk detected.
 	//
 	// example:
 	//
@@ -898,13 +1108,13 @@ func (s *VideoModerationResultResponseBodyDataFrameResult) Validate() error {
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFrameSummarys struct {
-	// The description of the `Label` parameter.
+	// The description of the Label field.
 	//
 	// example:
 	//
 	// 未检测出风险
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The video snapshot label.
+	// The video frame label.
 	//
 	// example:
 	//
@@ -958,35 +1168,37 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFrameSummarys) Validate
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFrames struct {
-	// The snapshot offset.
+	// The offset of the captured frame.
 	//
 	// example:
 	//
 	// 338
 	Offset *float32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The detection results for the frame.
+	// The frame detection result details.
 	Results []*VideoModerationResultResponseBodyDataFrameResultFramesResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// The risk level, which is determined by the configured thresholds for high and low risk scores. Valid values:
+	// The risk level, returned based on the configured high and low risk score thresholds. Valid values:
 	//
-	// - `high`: high risk
+	// - high: High risk.
 	//
-	// - `medium`: medium risk
+	// - medium: Medium risk.
 	//
-	// - `low`: low risk
 	//
-	// - `none`: no risk detected
+	//
+	// - low: Low risk.
+	//
+	// - none: No risk detected.
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The temporary URL of the snapshot image.
+	// The temporary URL of the captured frame image.
 	//
 	// example:
 	//
 	// http://xxxx.abc.jpg
 	TempUrl *string `json:"TempUrl,omitempty" xml:"TempUrl,omitempty"`
-	// The absolute timestamp, in milliseconds.
+	// The absolute timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -1061,23 +1273,23 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFrames) Validate() erro
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResults struct {
-	// Information about the matched custom image library. Returned only when a match is found.
+	// The custom image library information that is hit. This field is returned only when a custom image library is hit.
 	CustomImage []*VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
-	// Information about detected logos. Returned only if a logo is identified.
+	// The logo information returned when the video contains a logo.
 	LogoData []*VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData `json:"LogoData,omitempty" xml:"LogoData,omitempty" type:"Repeated"`
-	// Information about recognized public figures. Returned only if a public figure is identified.
+	// The recognized public figure codes returned when the video contains specific public figures.
 	PublicFigure []*VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure `json:"PublicFigure,omitempty" xml:"PublicFigure,omitempty" type:"Repeated"`
-	// The detection results from this service.
+	// The hit result details.
 	Result []*VideoModerationResultResponseBodyDataFrameResultFramesResultsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The type of the image moderation service.
+	// The image moderation service type.
 	//
 	// example:
 	//
 	// tonalityImprove
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// Information about text in the image.
+	// The text information in the image that is hit.
 	TextInImage map[string]interface{} `json:"TextInImage,omitempty" xml:"TextInImage,omitempty"`
-	// The results from the large model.
+	// The foundation model result.
 	VlContent *VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent `json:"VlContent,omitempty" xml:"VlContent,omitempty" type:"Struct"`
 }
 
@@ -1198,13 +1410,13 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) Validate
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage struct {
-	// The ID of the matched image in the custom image library.
+	// The ID of the custom image that is hit.
 	//
 	// example:
 	//
 	// 1234
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the matched custom image library.
+	// The ID of the custom image library that is hit.
 	//
 	// example:
 	//
@@ -1243,9 +1455,9 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImag
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData struct {
-	// The bounding box and coordinate information of the logo.
+	// The text line and coordinate information.
 	Location *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	// A list of identified logos.
+	// The logo identification information.
 	Logo []*VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
 }
 
@@ -1294,25 +1506,25 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData) 
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation struct {
-	// The height of the logo area, in pixels.
+	// The height of the text area. Unit: pixels.
 	//
 	// example:
 	//
 	// 111
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
-	// The width of the logo area, in pixels.
+	// The width of the text area. Unit: pixels.
 	//
 	// example:
 	//
 	// 111
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
-	// The x-coordinate of the top-left corner of the logo\\"s bounding box, relative to the top-left corner of the image. Unit: pixels.
+	// The distance from the upper-left corner of the text area to the y-axis, with the upper-left corner of the image as the origin. Unit: pixels.
 	//
 	// example:
 	//
 	// 111
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
-	// The y-coordinate of the top-left corner of the logo\\"s bounding box, relative to the top-left corner of the image. Unit: pixels.
+	// The distance from the upper-left corner of the text area to the x-axis, with the upper-left corner of the image as the origin. Unit: pixels.
 	//
 	// example:
 	//
@@ -1369,19 +1581,19 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLo
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo struct {
-	// The confidence score. The value ranges from 0 to 100 and is accurate to two decimal places.
+	// The confidence score, ranging from 0 to 100, rounded to two decimal places.
 	//
 	// example:
 	//
 	// 99.1
 	Confidence *int64 `json:"confidence,omitempty" xml:"confidence,omitempty"`
-	// The detected label.
+	// The hit label.
 	//
 	// example:
 	//
 	// pt_logotoSocialNetwork
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// The name of the logo.
+	// The logo name.
 	//
 	// example:
 	//
@@ -1429,7 +1641,7 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLo
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure struct {
-	// The ID of the recognized public figure.
+	// The code of the recognized public figure.
 	//
 	// example:
 	//
@@ -1441,7 +1653,7 @@ type VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure s
 	//
 	// 张三
 	FigureName *string `json:"FigureName,omitempty" xml:"FigureName,omitempty"`
-	// The position of the recognized public figure.
+	// The location of the recognized public figure.
 	Location []*VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Repeated"`
 }
 
@@ -1494,25 +1706,25 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigu
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation struct {
-	// The height of the bounding box, in pixels.
+	// The height.
 	//
 	// example:
 	//
 	// 222
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
-	// The width of the bounding box, in pixels.
+	// The width.
 	//
 	// example:
 	//
 	// 111
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
-	// The x-coordinate of the top-left corner of the bounding box.
+	// The x-coordinate of the starting point.
 	//
 	// example:
 	//
 	// 111
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
-	// The y-coordinate of the top-left corner of the bounding box.
+	// The y-coordinate of the starting point.
 	//
 	// example:
 	//
@@ -1569,19 +1781,19 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigu
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsResult struct {
-	// The confidence score. The value ranges from 0 to 100 and is accurate to two decimal places.
+	// The confidence score, ranging from 0 to 100, rounded to two decimal places.
 	//
 	// example:
 	//
 	// 50
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The description of the `Label` parameter.
+	// The description of the Label field.
 	//
 	// example:
 	//
 	// 未检测出风险
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The category of the detection result.
+	// The classification of the detection result.
 	//
 	// example:
 	//
@@ -1629,7 +1841,7 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsResult) Va
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent struct {
-	// The text output from the large model.
+	// The output text from the foundation model.
 	//
 	// example:
 	//

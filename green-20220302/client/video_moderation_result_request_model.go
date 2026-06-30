@@ -22,7 +22,7 @@ type VideoModerationResultRequest struct {
 	//
 	// videoDetection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// A JSON string that contains the `taskId` of the detection task. You can specify only one `taskId` per request.
+	// The parameter set required by the moderation service. taskId specifies the task ID of the moderation task to query. Only one taskId can be specified per request.
 	//
 	// example:
 	//

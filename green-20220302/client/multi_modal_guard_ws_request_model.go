@@ -22,7 +22,7 @@ type iMultiModalGuardWsRequest interface {
 type MultiModalGuardWsRequest struct {
 	// The model type. Valid values:
 	//
-	// - LLM.
+	// - LLM
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type MultiModalGuardWsRequest struct {
 	//
 	// - DashScope
 	//
-	// - Anthropic.
+	// - Anthropic
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type MultiModalGuardWsRequest struct {
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The moderation service category. Valid values:
 	//
-	// - query_security_check_pro: AI input content security detection (Pro edition).
+	// - query_security_check_pro: AI input content security detection (pro edition).
 	//
-	// - response_security_check_pro: AI-generated content security detection (Pro edition).
+	// - response_security_check_pro: AI-generated content security detection (pro edition).
 	//
 	// - img_query_security_check: AIGC input image security detection.
 	//

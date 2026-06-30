@@ -96,17 +96,20 @@ func (s *ManualModerationResultResponseBody) Validate() error {
 }
 
 type ManualModerationResultResponseBodyData struct {
-	// The value of the dataId parameter that you specified in the API request. If you did not specify this parameter in the request, this field is not returned.
+	// The value of dataId passed in the API request. This field is not returned if dataId was not specified in the request.
 	//
 	// example:
 	//
 	// data1234
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The detailed results of the labels.
-	Result []*ManualModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The risk level. The value is returned based on the specified high-risk and low-risk scores. Valid values include the following:
+	// The detailed label results.
+	Result      []*ManualModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	ReviewCount *string                                         `json:"ReviewCount,omitempty" xml:"ReviewCount,omitempty"`
+	// The risk level, returned based on the configured high and low risk scores. Valid values:
 	//
 	// - high: high risk
+	//
+	//
 	//
 	// - low: low risk
 	//
@@ -140,6 +143,10 @@ func (s *ManualModerationResultResponseBodyData) GetResult() []*ManualModeration
 	return s.Result
 }
 
+func (s *ManualModerationResultResponseBodyData) GetReviewCount() *string {
+	return s.ReviewCount
+}
+
 func (s *ManualModerationResultResponseBodyData) GetRiskLevel() *string {
 	return s.RiskLevel
 }
@@ -155,6 +162,11 @@ func (s *ManualModerationResultResponseBodyData) SetDataId(v string) *ManualMode
 
 func (s *ManualModerationResultResponseBodyData) SetResult(v []*ManualModerationResultResponseBodyDataResult) *ManualModerationResultResponseBodyData {
 	s.Result = v
+	return s
+}
+
+func (s *ManualModerationResultResponseBodyData) SetReviewCount(v string) *ManualModerationResultResponseBodyData {
+	s.ReviewCount = &v
 	return s
 }
 
@@ -182,7 +194,7 @@ func (s *ManualModerationResultResponseBodyData) Validate() error {
 }
 
 type ManualModerationResultResponseBodyDataResult struct {
-	// The description of the label.
+	// The label description.
 	//
 	// example:
 	//
