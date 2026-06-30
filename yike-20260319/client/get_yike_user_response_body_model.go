@@ -21,8 +21,9 @@ type GetYikeUserResponseBody struct {
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UserInfo  *GetYikeUserResponseBodyUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The user information.
+	UserInfo *GetYikeUserResponseBodyUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
 func (s GetYikeUserResponseBody) String() string {
@@ -61,18 +62,26 @@ func (s *GetYikeUserResponseBody) Validate() error {
 }
 
 type GetYikeUserResponseBodyUserInfo struct {
+	// The nickname.
+	//
 	// example:
 	//
 	// nick
 	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// name
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// spaceId
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// id

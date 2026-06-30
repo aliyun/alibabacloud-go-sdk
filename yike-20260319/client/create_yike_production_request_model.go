@@ -16,12 +16,16 @@ type iCreateYikeProductionRequest interface {
 }
 
 type CreateYikeProductionRequest struct {
+	// The project title.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 581236

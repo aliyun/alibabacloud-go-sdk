@@ -16,10 +16,14 @@ type iListYikeWorkspacesRequest interface {
 }
 
 type ListYikeWorkspacesRequest struct {
+	// Current page number
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Number of records per page
+	//
 	// example:
 	//
 	// 20

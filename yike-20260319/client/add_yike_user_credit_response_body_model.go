@@ -18,6 +18,10 @@ type iAddYikeUserCreditResponseBody interface {
 }
 
 type AddYikeUserCreditResponseBody struct {
+	// The error code returned when the increase fails. Valid values:
+	//
+	// - NOT_ENOUGH_ALLOCATE_CREDIT_QUOTA: The primary account does not have sufficient credit balance.
+	//
 	// example:
 	//
 	// NOT_ENOUGH_ALLOCATE_CREDIT_QUOTA
@@ -28,6 +32,8 @@ type AddYikeUserCreditResponseBody struct {
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the credits were increased successfully.
+	//
 	// example:
 	//
 	// true

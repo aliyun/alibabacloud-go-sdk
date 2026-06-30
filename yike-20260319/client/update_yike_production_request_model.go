@@ -16,12 +16,16 @@ type iUpdateYikeProductionRequest interface {
 }
 
 type UpdateYikeProductionRequest struct {
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pd_12334**
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
+	// The project title.
+	//
 	// example:
 	//
 	// title

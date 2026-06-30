@@ -16,7 +16,10 @@ type iDeleteYikeAssetMediaInfosResponseBody interface {
 }
 
 type DeleteYikeAssetMediaInfosResponseBody struct {
+	// The IDs or input URLs for which errors occurred during retrieval.
 	IgnoredList []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******

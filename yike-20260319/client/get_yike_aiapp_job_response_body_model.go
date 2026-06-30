@@ -32,39 +32,68 @@ type iGetYikeAIAppJobResponseBody interface {
 }
 
 type GetYikeAIAppJobResponseBody struct {
+	// The AI application ID.
+	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The input parameters for the AI application run. The value is a string obtained after JSON serialize.
+	//
 	// example:
 	//
 	// {\\"LoadImage.1.TargetImage\\":\\"MediaId1\\"}
 	AppParams *string `json:"AppParams,omitempty" xml:"AppParams,omitempty"`
+	// The time when the task ended. The time is in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
+	//
 	// example:
 	//
 	// 2026-02-06T18:53:18.809+08:00
 	ExecutionFinishTime *string `json:"ExecutionFinishTime,omitempty" xml:"ExecutionFinishTime,omitempty"`
+	// The time when the task started. The time is in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
+	//
 	// example:
 	//
 	// 2026-02-06T18:53:34.001+08:00
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitempty" xml:"ExecutionStartTime,omitempty"`
+	// The folder ID.
+	//
 	// example:
 	//
 	// folder-u3ilwhoc36ux9a****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0622C702-41BE-467E-AF2E-883D4517962E
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetYikeAIAppJobResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task execution result.
+	Result *GetYikeAIAppJobResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The task status. Valid values:
+	//
+	// - Created: The task is created.
+	//
+	// - Queuing: The task is queuing.
+	//
+	// - Executing: The task is being executed.
+	//
+	// - Finished: The task is finished.
+	//
+	// - Failed: The task failed.
+	//
 	// example:
 	//
 	// Created
@@ -179,8 +208,11 @@ func (s *GetYikeAIAppJobResponseBody) Validate() error {
 }
 
 type GetYikeAIAppJobResponseBodyResult struct {
+	// The audio task result.
 	AudioResult []*GetYikeAIAppJobResponseBodyResultAudioResult `json:"AudioResult,omitempty" xml:"AudioResult,omitempty" type:"Repeated"`
+	// The image task result.
 	ImageResult []*GetYikeAIAppJobResponseBodyResultImageResult `json:"ImageResult,omitempty" xml:"ImageResult,omitempty" type:"Repeated"`
+	// The video task result.
 	VideoResult []*GetYikeAIAppJobResponseBodyResultVideoResult `json:"VideoResult,omitempty" xml:"VideoResult,omitempty" type:"Repeated"`
 }
 
@@ -251,10 +283,14 @@ func (s *GetYikeAIAppJobResponseBodyResult) Validate() error {
 }
 
 type GetYikeAIAppJobResponseBodyResultAudioResult struct {
+	// The media asset ID.
+	//
 	// example:
 	//
 	// 1a7852b032c371f0b64fe6f6c74b****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The output file URL.
+	//
 	// example:
 	//
 	// http://outin-***.oss-cn-shanghai.aliyuncs.com/stream/48555e8b-181dd5a8c07/48555e8b-181dd5a8c07.mp3
@@ -292,10 +328,14 @@ func (s *GetYikeAIAppJobResponseBodyResultAudioResult) Validate() error {
 }
 
 type GetYikeAIAppJobResponseBodyResultImageResult struct {
+	// The media asset ID.
+	//
 	// example:
 	//
 	// 1a7852b032c371f0b64fe6f6c74b****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The output file URL.
+	//
 	// example:
 	//
 	// http://outin-***.oss-cn-shanghai.aliyuncs.com/stream/48555e8b-181dd5a8c07/48555e8b-181dd5a8c07.png
@@ -333,10 +373,14 @@ func (s *GetYikeAIAppJobResponseBodyResultImageResult) Validate() error {
 }
 
 type GetYikeAIAppJobResponseBodyResultVideoResult struct {
+	// The media asset ID.
+	//
 	// example:
 	//
 	// 1a7852b032c371f0b64fe6f6c74b****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The output file URL.
+	//
 	// example:
 	//
 	// http://outin-***.oss-cn-shanghai.aliyuncs.com/stream/48555e8b-181dd5a8c07/48555e8b-181dd5a8c07.mp4

@@ -26,27 +26,46 @@ type iGetYikeVoiceNarratorJobResponseBody interface {
 }
 
 type GetYikeVoiceNarratorJobResponseBody struct {
+	// The error code. This parameter is returned only when JobStatus is Failed.
+	//
 	// example:
 	//
 	// WorkflowTaskFailed
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// task_abc123def456
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The input parameters of the task, in JSON string format.
+	//
 	// example:
 	//
 	// {\\"TextType\\":2,\\"TextContent\\":\\"Today, Beijing held a press conference to announce plans to further optimize the city\\"s transportation network, including adding three new subway lines within the next three years....\\",\\"AspectRatio\\":\\"16:9\\", \\"Resolution\\":\\"720P\\", \\"OutputLanguages\\":[\\"CN\\",\\"YUE\\"]"}
-	JobParams *string                                         `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
+	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
+	// The task results. This parameter is valid only when JobStatus is Succeeded.
 	JobResult []*GetYikeVoiceNarratorJobResponseBodyJobResult `json:"JobResult,omitempty" xml:"JobResult,omitempty" type:"Repeated"`
+	// The task status. Valid values:
+	//
+	// - Running
+	//
+	// - Succeeded
+	//
+	// - Failed.
+	//
 	// example:
 	//
 	// Running
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// req_query_20260420_002
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The custom user data passed in when the task was created. The value is returned as-is.
+	//
 	// example:
 	//
 	// {\\"newsKey\\":\\"NEWS_20260420_001\\",\\"key1\\":\\"value1\\", \\"NotifyAddress\\":\\"https://cms.example.com/callback/video-task\\"}
@@ -138,18 +157,26 @@ func (s *GetYikeVoiceNarratorJobResponseBody) Validate() error {
 }
 
 type GetYikeVoiceNarratorJobResponseBodyJobResult struct {
+	// The online editing project ID.
+	//
 	// example:
 	//
 	// 01a6adbbd181437eb5030d3d93e0182d
 	EditingProjectId *string `json:"EditingProjectId,omitempty" xml:"EditingProjectId,omitempty"`
+	// The asset ID.
+	//
 	// example:
 	//
 	// 9d7e982012c671f1b803e7f6d75a6302
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The output language.
+	//
 	// example:
 	//
 	// CN
 	OutputLanguage *string `json:"OutputLanguage,omitempty" xml:"OutputLanguage,omitempty"`
+	// The download URL.
+	//
 	// example:
 	//
 	// https://test.oss-cn-shanghai.aliyuncs.com/videos/task_abc123def456.mp4

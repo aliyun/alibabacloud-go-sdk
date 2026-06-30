@@ -16,12 +16,16 @@ type iCreateYikeAssetUploadRequest interface {
 }
 
 type CreateYikeAssetUploadRequest struct {
+	// The file name extension.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mp4
 	FileExt *string `json:"FileExt,omitempty" xml:"FileExt,omitempty"`
+	// The file type. Default value: Media.
+	//
 	// example:
 	//
 	// StoryboardInput

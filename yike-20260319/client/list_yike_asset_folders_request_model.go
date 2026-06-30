@@ -18,14 +18,20 @@ type iListYikeAssetFoldersRequest interface {
 }
 
 type ListYikeAssetFoldersRequest struct {
+	// The current page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 50.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The project ID. If this parameter is not specified, the default project is queried.
+	//
 	// example:
 	//
 	// ProductionId

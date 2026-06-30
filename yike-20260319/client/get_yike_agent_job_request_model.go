@@ -14,6 +14,8 @@ type iGetYikeAgentJobRequest interface {
 }
 
 type GetYikeAgentJobRequest struct {
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

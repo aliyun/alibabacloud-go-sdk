@@ -14,6 +14,8 @@ type iGetYikeVoiceNarratorJobRequest interface {
 }
 
 type GetYikeVoiceNarratorJobRequest struct {
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

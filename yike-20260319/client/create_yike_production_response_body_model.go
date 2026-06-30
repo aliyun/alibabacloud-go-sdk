@@ -16,6 +16,8 @@ type iCreateYikeProductionResponseBody interface {
 }
 
 type CreateYikeProductionResponseBody struct {
+	// The project ID.
+	//
 	// example:
 	//
 	// ProductionId

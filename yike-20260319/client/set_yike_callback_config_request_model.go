@@ -16,12 +16,24 @@ type iSetYikeCallbackConfigRequest interface {
 }
 
 type SetYikeCallbackConfigRequest struct {
+	// The callback configuration. CallbackEventList supports multiple events, including:
+	//
+	// - EventType: the event type. Valid values:
+	//
+	//   - UserCreated: The user is created.
+	//
+	//   - UserCreditAdded: Credits are added to the user.
+	//
+	// - UserData: a JSON object that contains user-defined data.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"CallbackEventList":[{"EventType":"UserCreditAdded","UserData":"{}"}]}
 	CallbackConfig *string `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty"`
+	// The HTTP callback URL.
+	//
 	// This parameter is required.
 	//
 	// example:

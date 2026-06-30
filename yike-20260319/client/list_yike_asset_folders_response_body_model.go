@@ -22,12 +22,32 @@ type iListYikeAssetFoldersResponseBody interface {
 }
 
 type ListYikeAssetFoldersResponseBody struct {
+	// The folder list.
 	FolderList []*ListYikeAssetFoldersResponseBodyFolderList `json:"FolderList,omitempty" xml:"FolderList,omitempty" type:"Repeated"`
-	MaxResults *int32                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of results.
+	//
+	// example:
+	//
+	// 50
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page.
+	//
+	// example:
+	//
+	// Token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The total number of folders.
+	//
+	// example:
+	//
+	// 78
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListYikeAssetFoldersResponseBody) String() string {
@@ -97,12 +117,42 @@ func (s *ListYikeAssetFoldersResponseBody) Validate() error {
 }
 
 type ListYikeAssetFoldersResponseBodyFolderList struct {
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FolderId     *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	FolderName   *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
-	IsDefault    *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2025-06-03T02:23:01Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The folder ID.
+	//
+	// example:
+	//
+	// fd-YhFKIuciRP
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The folder name.
+	//
+	// example:
+	//
+	// default
+	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
+	// Indicates whether the folder is the default folder.
+	//
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// pd_1833************
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
-	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// llm-odl2p61i4vfbph4g
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListYikeAssetFoldersResponseBodyFolderList) String() string {

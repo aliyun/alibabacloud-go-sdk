@@ -18,11 +18,20 @@ type iPrecheckYikeAIAppJobResponseBody interface {
 }
 
 type PrecheckYikeAIAppJobResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*PrecheckYikeAIAppJobResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The parameters that failed the pre-check. This parameter is returned only when the pre-check fails.
+	Result []*PrecheckYikeAIAppJobResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The pre-check result. Valid values:
+	//
+	// - Success: The pre-check is successful.
+	//
+	// - Failed: The pre-check failed.
+	//
 	// example:
 	//
 	// Success
@@ -78,10 +87,14 @@ func (s *PrecheckYikeAIAppJobResponseBody) Validate() error {
 }
 
 type PrecheckYikeAIAppJobResponseBodyResult struct {
+	// The cause of the parameter check failure.
+	//
 	// example:
 	//
 	// ImageCheckFailed
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The application parameter name.
+	//
 	// example:
 	//
 	// LoadImage.1.TargetImage

@@ -16,10 +16,14 @@ type iSubmitYikeAvatarNarratorJobResponseBody interface {
 }
 
 type SubmitYikeAvatarNarratorJobResponseBody struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// task_abc123def456
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// req_create_20260420_001

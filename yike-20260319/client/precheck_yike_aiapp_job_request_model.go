@@ -16,10 +16,14 @@ type iPrecheckYikeAIAppJobRequest interface {
 }
 
 type PrecheckYikeAIAppJobRequest struct {
+	// The AI application ID.
+	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The input parameters for running the AI application. The value is a JSON-serialized string.
+	//
 	// example:
 	//
 	// {\\"LoadImage.1.TargetImage\\":\\"MediaId1\\"}

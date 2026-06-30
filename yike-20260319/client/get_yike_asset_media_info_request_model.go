@@ -14,6 +14,8 @@ type iGetYikeAssetMediaInfoRequest interface {
 }
 
 type GetYikeAssetMediaInfoRequest struct {
+	// The media asset ID.
+	//
 	// This parameter is required.
 	//
 	// example:

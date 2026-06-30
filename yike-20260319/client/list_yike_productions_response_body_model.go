@@ -20,15 +20,22 @@ type iListYikeProductionsResponseBody interface {
 }
 
 type ListYikeProductionsResponseBody struct {
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token for the next page.
+	//
 	// example:
 	//
 	// Token
-	NextToken      *string                                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of projects.
 	ProductionList []*ListYikeProductionsResponseBodyProductionList `json:"ProductionList,omitempty" xml:"ProductionList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -93,34 +100,50 @@ func (s *ListYikeProductionsResponseBody) Validate() error {
 }
 
 type ListYikeProductionsResponseBodyProductionList struct {
+	// The authentication method.
+	//
 	// example:
 	//
 	// Manage
 	Auth *string `json:"Auth,omitempty" xml:"Auth,omitempty"`
+	// The cover URL.
+	//
 	// example:
 	//
 	// https://tagvvcloud-material-center-prod.oss-cn-hangzhou.aliyuncs.com/sumvideo/utils_image/sumvideo-video-cover.png
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-01-07T02:21:36Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The username of the creator.
+	//
 	// example:
 	//
 	// aliyun_183*************
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// The project description.
+	//
 	// example:
 	//
 	// Swas_QuerySwasInstanceByRegion
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// pd_463862****
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
+	// The project title.
+	//
 	// example:
 	//
 	// Harvest
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// llm-m3r546h1n9kq3mtm

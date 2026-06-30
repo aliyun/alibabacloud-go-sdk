@@ -20,22 +20,30 @@ type iRegisterYikeAssetMediaInfoRequest interface {
 }
 
 type RegisterYikeAssetMediaInfoRequest struct {
+	// The folder ID.
+	//
 	// example:
 	//
 	// fd-ABMFfAB2bA
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The URL of the media asset. You can pass in the FileURL returned by the CreateYikeAssetUpload operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// The type of the media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The project ID. If this parameter is not specified, the media asset is uploaded to the default project.
+	//
 	// example:
 	//
 	// ProductionId

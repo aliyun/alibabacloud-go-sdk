@@ -22,22 +22,32 @@ type iListYikeProductionsRequest interface {
 }
 
 type ListYikeProductionsRequest struct {
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token for the next page.
+	//
 	// example:
 	//
 	// Token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 50.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// llm-zna577pdximvztk5

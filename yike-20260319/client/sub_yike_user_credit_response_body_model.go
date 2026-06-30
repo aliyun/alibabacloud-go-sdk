@@ -18,6 +18,10 @@ type iSubYikeUserCreditResponseBody interface {
 }
 
 type SubYikeUserCreditResponseBody struct {
+	// The error code returned when the deduction fails.
+	//
+	// - NOT_ENOUGH_ALLOCATE_CREDIT_QUOTA: the account credit balance is insufficient.
+	//
 	// example:
 	//
 	// NOT_ENOUGH_ALLOCATE_CREDIT_QUOTA
@@ -28,6 +32,12 @@ type SubYikeUserCreditResponseBody struct {
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true

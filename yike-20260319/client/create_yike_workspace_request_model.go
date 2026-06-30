@@ -16,12 +16,16 @@ type iCreateYikeWorkspaceRequest interface {
 }
 
 type CreateYikeWorkspaceRequest struct {
+	// The project title.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The maximum number of team users allowed in the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

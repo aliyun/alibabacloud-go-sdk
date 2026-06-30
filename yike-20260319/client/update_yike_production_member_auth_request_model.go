@@ -18,19 +18,33 @@ type iUpdateYikeProductionMemberAuthRequest interface {
 }
 
 type UpdateYikeProductionMemberAuthRequest struct {
+	// The permission name. Valid values:
+	//
+	// - Manage: manageable
+	//
+	// - Edit: editable.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Manage
 	Auth *string `json:"Auth,omitempty" xml:"Auth,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pd_061716****
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
+	// The RAM user ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 21******
 	YikeUserId *string `json:"YikeUserId,omitempty" xml:"YikeUserId,omitempty"`
 }
 

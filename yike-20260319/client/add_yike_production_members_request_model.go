@@ -16,12 +16,16 @@ type iAddYikeProductionMembersRequest interface {
 }
 
 type AddYikeProductionMembersRequest struct {
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pd_061716***
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
+	// The IDs of the RAM users.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,6 +14,8 @@ type iGetYikePromptExpansionVoiceFixJobRequest interface {
 }
 
 type GetYikePromptExpansionVoiceFixJobRequest struct {
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

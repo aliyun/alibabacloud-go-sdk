@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 增加一刻项目成员
+// Adds a member to a Yike project.
 //
 // @param request - AddYikeProductionMembersRequest
 //
@@ -57,7 +57,7 @@ func (client *Client) AddYikeProductionMembersWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 增加用户积分
+// Increases user credits.
 //
 // @param request - AddYikeUserCreditRequest
 //
@@ -105,7 +105,7 @@ func (client *Client) AddYikeUserCreditWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 批量获取一刻AI应用生成任务
+// Retrieves multiple Yike AI application generation tasks in a batch.
 //
 // @param request - BatchGetYikeAIAppJobRequest
 //
@@ -149,7 +149,7 @@ func (client *Client) BatchGetYikeAIAppJobWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 批量获取媒资信息
+// Retrieves information about multiple media assets in a batch.
 //
 // @param request - BatchGetYikeAssetMediaInfosRequest
 //
@@ -193,7 +193,7 @@ func (client *Client) BatchGetYikeAssetMediaInfosWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取一刻媒资上传凭证
+// Retrieves the upload credential for a media asset.
 //
 // @param request - CreateYikeAssetUploadRequest
 //
@@ -241,7 +241,7 @@ func (client *Client) CreateYikeAssetUploadWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建一刻项目
+// Creates a project.
 //
 // @param request - CreateYikeProductionRequest
 //
@@ -289,7 +289,7 @@ func (client *Client) CreateYikeProductionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建一刻子用户
+// Creates a sub-account user in WonderClip.
 //
 // @param request - CreateYikeUserRequest
 //
@@ -349,7 +349,7 @@ func (client *Client) CreateYikeUserWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建工作室
+// Creates a workspace.
 //
 // @param request - CreateYikeWorkspaceRequest
 //
@@ -397,7 +397,7 @@ func (client *Client) CreateYikeWorkspaceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除媒资信息
+// Deletes media asset information.
 //
 // @param request - DeleteYikeAssetMediaInfosRequest
 //
@@ -445,7 +445,7 @@ func (client *Client) DeleteYikeAssetMediaInfosWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取一刻AI应用任务
+// Retrieves the details of an AI application task.
 //
 // @param request - GetYikeAIAppJobRequest
 //
@@ -489,7 +489,7 @@ func (client *Client) GetYikeAIAppJobWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 查询一刻口播视频生成任务
+// Queries an agent task.
 //
 // @param request - GetYikeAgentJobRequest
 //
@@ -533,7 +533,7 @@ func (client *Client) GetYikeAgentJobWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 获取一刻媒资内容信息
+// Retrieves the content information of a media asset.
 //
 // @param request - GetYikeAssetMediaInfoRequest
 //
@@ -577,7 +577,51 @@ func (client *Client) GetYikeAssetMediaInfoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询一刻提示词扩写和音频修复视频生成任务
+// Queries the information and results of an editing project export task.
+//
+// @param request - GetYikeProjectExportJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYikeProjectExportJobResponse
+func (client *Client) GetYikeProjectExportJobWithContext(ctx context.Context, request *GetYikeProjectExportJobRequest, runtime *dara.RuntimeOptions) (_result *GetYikeProjectExportJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYikeProjectExportJob"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYikeProjectExportJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a Yike prompt enhancement and audio repair video generation task.
 //
 // @param request - GetYikePromptExpansionVoiceFixJobRequest
 //
@@ -621,7 +665,7 @@ func (client *Client) GetYikePromptExpansionVoiceFixJobWithContext(ctx context.C
 
 // Summary:
 //
-// 获取一刻故事板任务
+// Retrieves a storyboard task.
 //
 // @param request - GetYikeStoryboardJobRequest
 //
@@ -665,7 +709,7 @@ func (client *Client) GetYikeStoryboardJobWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取一刻子用户信息
+// Retrieves information about a WonderClip sub-account.
 //
 // @param request - GetYikeUserRequest
 //
@@ -709,7 +753,7 @@ func (client *Client) GetYikeUserWithContext(ctx context.Context, request *GetYi
 
 // Summary:
 //
-// 查询一刻用户积分
+// Queries the credit balance of a WonderClip user.
 //
 // @param request - GetYikeUserCreditRequest
 //
@@ -753,7 +797,7 @@ func (client *Client) GetYikeUserCreditWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询一刻口播视频生成任务
+// Queries an intelligent video generation task for a narration-only video without a digital human.
 //
 // @param request - GetYikeVoiceNarratorJobRequest
 //
@@ -797,7 +841,7 @@ func (client *Client) GetYikeVoiceNarratorJobWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取一刻文件夹列表
+// Retrieves the list of folders.
 //
 // @param request - ListYikeAssetFoldersRequest
 //
@@ -849,7 +893,7 @@ func (client *Client) ListYikeAssetFoldersWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取一刻项目列表
+// Retrieves a list of Yike projects.
 //
 // @param request - ListYikeProductionsRequest
 //
@@ -909,7 +953,7 @@ func (client *Client) ListYikeProductionsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取一刻工作室列表
+// # Get Yike Workspace List
 //
 // @param request - ListYikeWorkspacesRequest
 //
@@ -957,7 +1001,7 @@ func (client *Client) ListYikeWorkspacesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 检查应用参数是否合法
+// Checks whether the application parameters are valid.
 //
 // @param request - PrecheckYikeAIAppJobRequest
 //
@@ -1005,7 +1049,7 @@ func (client *Client) PrecheckYikeAIAppJobWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 注册一刻媒资
+// Registers a Yike media asset.
 //
 // @param request - RegisterYikeAssetMediaInfoRequest
 //
@@ -1061,7 +1105,7 @@ func (client *Client) RegisterYikeAssetMediaInfoWithContext(ctx context.Context,
 
 // Summary:
 //
-// 故事板任务恢复继续执行任务
+// Resumes the execution of a storyboard task.
 //
 // @param request - ResumeYikeStoryboardJobRequest
 //
@@ -1105,7 +1149,7 @@ func (client *Client) ResumeYikeStoryboardJobWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 配置一刻事件回调
+// Configures event callbacks for the business system.
 //
 // @param request - SetYikeCallbackConfigRequest
 //
@@ -1153,7 +1197,7 @@ func (client *Client) SetYikeCallbackConfigWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 设置用户角色
+// Sets the user role.
 //
 // @param request - SetYikeUserRoleRequest
 //
@@ -1201,7 +1245,7 @@ func (client *Client) SetYikeUserRoleWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// 扣减用户积分
+// Reclaims credits from a user.
 //
 // @param request - SubYikeUserCreditRequest
 //
@@ -1249,7 +1293,7 @@ func (client *Client) SubYikeUserCreditWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 提交一刻AI应用任务
+// Submits an AI application task to Yike AI.
 //
 // @param request - SubmitYikeAIAppJobRequest
 //
@@ -1305,7 +1349,13 @@ func (client *Client) SubmitYikeAIAppJobWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 提交一刻数字人口播视频生成任务
+// Creates an intelligent video production task for a digital human oral broadcasting scenario. This task is applicable to video scenarios such as influencer product promotion and knowledge sharing.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API operation generates a video featuring a virtual human delivering an oral broadcast based on the provided text content and other parameters such as digital human information and common scenario type. You must specify key configuration items including the text type (raw script or oral broadcast script), video dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - SubmitYikeAvatarNarratorJobRequest
 //
@@ -1353,7 +1403,59 @@ func (client *Client) SubmitYikeAvatarNarratorJobWithContext(ctx context.Context
 
 // Summary:
 //
-// 提交一刻提示词扩写和音频修复视频生成任务
+// Submits an online editing project export task that supports exporting pure audio and SRT subtitles.
+//
+// @param request - SubmitYikeProjectExportJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitYikeProjectExportJobResponse
+func (client *Client) SubmitYikeProjectExportJobWithContext(ctx context.Context, request *SubmitYikeProjectExportJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitYikeProjectExportJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExportType) {
+		query["ExportType"] = request.ExportType
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitYikeProjectExportJob"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitYikeProjectExportJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a video generation task with prompt enhancement and audio repair.
 //
 // @param request - SubmitYikePromptExpansionVoiceFixJobRequest
 //
@@ -1401,7 +1503,11 @@ func (client *Client) SubmitYikePromptExpansionVoiceFixJobWithContext(ctx contex
 
 // Summary:
 //
-// 提交一刻故事板全链路编排任务
+// Submits a storyboard generation task.
+//
+// Description:
+//
+// Ensure that your credits remain above 5,000 when calling this operation. Insufficient credits may cause the task to be interrupted.
 //
 // @param request - SubmitYikeStoryboardJobRequest
 //
@@ -1503,7 +1609,7 @@ func (client *Client) SubmitYikeStoryboardJobWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 提交一刻口播视频生成任务
+// Creates an intelligent video generation task for a voiceover-only scenario (without a digital human). This task is applicable to video scenarios such as product showcases and news broadcasts.
 //
 // @param request - SubmitYikeVoiceNarratorJobRequest
 //
@@ -1551,7 +1657,7 @@ func (client *Client) SubmitYikeVoiceNarratorJobWithContext(ctx context.Context,
 
 // Summary:
 //
-// 更新一刻项目
+// # Update a Yike project
 //
 // @param request - UpdateYikeProductionRequest
 //
@@ -1599,7 +1705,7 @@ func (client *Client) UpdateYikeProductionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 修改一刻项目成员权限
+// Modifies the permissions of a Yike project member.
 //
 // @param request - UpdateYikeProductionMemberAuthRequest
 //

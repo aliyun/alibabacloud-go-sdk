@@ -24,7 +24,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-shanghai": dara.String("yike.cn-shanghai.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +61,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 增加一刻项目成员
+// Adds a member to a Yike project.
 //
 // @param request - AddYikeProductionMembersRequest
 //
@@ -106,7 +109,7 @@ func (client *Client) AddYikeProductionMembersWithOptions(request *AddYikeProduc
 
 // Summary:
 //
-// 增加一刻项目成员
+// Adds a member to a Yike project.
 //
 // @param request - AddYikeProductionMembersRequest
 //
@@ -124,7 +127,7 @@ func (client *Client) AddYikeProductionMembers(request *AddYikeProductionMembers
 
 // Summary:
 //
-// 增加用户积分
+// Increases user credits.
 //
 // @param request - AddYikeUserCreditRequest
 //
@@ -172,7 +175,7 @@ func (client *Client) AddYikeUserCreditWithOptions(request *AddYikeUserCreditReq
 
 // Summary:
 //
-// 增加用户积分
+// Increases user credits.
 //
 // @param request - AddYikeUserCreditRequest
 //
@@ -190,7 +193,7 @@ func (client *Client) AddYikeUserCredit(request *AddYikeUserCreditRequest) (_res
 
 // Summary:
 //
-// 批量获取一刻AI应用生成任务
+// Retrieves multiple Yike AI application generation tasks in a batch.
 //
 // @param request - BatchGetYikeAIAppJobRequest
 //
@@ -234,7 +237,7 @@ func (client *Client) BatchGetYikeAIAppJobWithOptions(request *BatchGetYikeAIApp
 
 // Summary:
 //
-// 批量获取一刻AI应用生成任务
+// Retrieves multiple Yike AI application generation tasks in a batch.
 //
 // @param request - BatchGetYikeAIAppJobRequest
 //
@@ -252,7 +255,7 @@ func (client *Client) BatchGetYikeAIAppJob(request *BatchGetYikeAIAppJobRequest)
 
 // Summary:
 //
-// 批量获取媒资信息
+// Retrieves information about multiple media assets in a batch.
 //
 // @param request - BatchGetYikeAssetMediaInfosRequest
 //
@@ -296,7 +299,7 @@ func (client *Client) BatchGetYikeAssetMediaInfosWithOptions(request *BatchGetYi
 
 // Summary:
 //
-// 批量获取媒资信息
+// Retrieves information about multiple media assets in a batch.
 //
 // @param request - BatchGetYikeAssetMediaInfosRequest
 //
@@ -314,7 +317,7 @@ func (client *Client) BatchGetYikeAssetMediaInfos(request *BatchGetYikeAssetMedi
 
 // Summary:
 //
-// 获取一刻媒资上传凭证
+// Retrieves the upload credential for a media asset.
 //
 // @param request - CreateYikeAssetUploadRequest
 //
@@ -362,7 +365,7 @@ func (client *Client) CreateYikeAssetUploadWithOptions(request *CreateYikeAssetU
 
 // Summary:
 //
-// 获取一刻媒资上传凭证
+// Retrieves the upload credential for a media asset.
 //
 // @param request - CreateYikeAssetUploadRequest
 //
@@ -380,7 +383,7 @@ func (client *Client) CreateYikeAssetUpload(request *CreateYikeAssetUploadReques
 
 // Summary:
 //
-// 创建一刻项目
+// Creates a project.
 //
 // @param request - CreateYikeProductionRequest
 //
@@ -428,7 +431,7 @@ func (client *Client) CreateYikeProductionWithOptions(request *CreateYikeProduct
 
 // Summary:
 //
-// 创建一刻项目
+// Creates a project.
 //
 // @param request - CreateYikeProductionRequest
 //
@@ -446,7 +449,7 @@ func (client *Client) CreateYikeProduction(request *CreateYikeProductionRequest)
 
 // Summary:
 //
-// 创建一刻子用户
+// Creates a sub-account user in WonderClip.
 //
 // @param request - CreateYikeUserRequest
 //
@@ -506,7 +509,7 @@ func (client *Client) CreateYikeUserWithOptions(request *CreateYikeUserRequest, 
 
 // Summary:
 //
-// 创建一刻子用户
+// Creates a sub-account user in WonderClip.
 //
 // @param request - CreateYikeUserRequest
 //
@@ -524,7 +527,7 @@ func (client *Client) CreateYikeUser(request *CreateYikeUserRequest) (_result *C
 
 // Summary:
 //
-// 创建工作室
+// Creates a workspace.
 //
 // @param request - CreateYikeWorkspaceRequest
 //
@@ -572,7 +575,7 @@ func (client *Client) CreateYikeWorkspaceWithOptions(request *CreateYikeWorkspac
 
 // Summary:
 //
-// 创建工作室
+// Creates a workspace.
 //
 // @param request - CreateYikeWorkspaceRequest
 //
@@ -590,7 +593,7 @@ func (client *Client) CreateYikeWorkspace(request *CreateYikeWorkspaceRequest) (
 
 // Summary:
 //
-// 删除媒资信息
+// Deletes media asset information.
 //
 // @param request - DeleteYikeAssetMediaInfosRequest
 //
@@ -638,7 +641,7 @@ func (client *Client) DeleteYikeAssetMediaInfosWithOptions(request *DeleteYikeAs
 
 // Summary:
 //
-// 删除媒资信息
+// Deletes media asset information.
 //
 // @param request - DeleteYikeAssetMediaInfosRequest
 //
@@ -656,7 +659,7 @@ func (client *Client) DeleteYikeAssetMediaInfos(request *DeleteYikeAssetMediaInf
 
 // Summary:
 //
-// 获取一刻AI应用任务
+// Retrieves the details of an AI application task.
 //
 // @param request - GetYikeAIAppJobRequest
 //
@@ -700,7 +703,7 @@ func (client *Client) GetYikeAIAppJobWithOptions(request *GetYikeAIAppJobRequest
 
 // Summary:
 //
-// 获取一刻AI应用任务
+// Retrieves the details of an AI application task.
 //
 // @param request - GetYikeAIAppJobRequest
 //
@@ -718,7 +721,7 @@ func (client *Client) GetYikeAIAppJob(request *GetYikeAIAppJobRequest) (_result 
 
 // Summary:
 //
-// 查询一刻口播视频生成任务
+// Queries an agent task.
 //
 // @param request - GetYikeAgentJobRequest
 //
@@ -762,7 +765,7 @@ func (client *Client) GetYikeAgentJobWithOptions(request *GetYikeAgentJobRequest
 
 // Summary:
 //
-// 查询一刻口播视频生成任务
+// Queries an agent task.
 //
 // @param request - GetYikeAgentJobRequest
 //
@@ -780,7 +783,7 @@ func (client *Client) GetYikeAgentJob(request *GetYikeAgentJobRequest) (_result 
 
 // Summary:
 //
-// 获取一刻媒资内容信息
+// Retrieves the content information of a media asset.
 //
 // @param request - GetYikeAssetMediaInfoRequest
 //
@@ -824,7 +827,7 @@ func (client *Client) GetYikeAssetMediaInfoWithOptions(request *GetYikeAssetMedi
 
 // Summary:
 //
-// 获取一刻媒资内容信息
+// Retrieves the content information of a media asset.
 //
 // @param request - GetYikeAssetMediaInfoRequest
 //
@@ -842,7 +845,69 @@ func (client *Client) GetYikeAssetMediaInfo(request *GetYikeAssetMediaInfoReques
 
 // Summary:
 //
-// 查询一刻提示词扩写和音频修复视频生成任务
+// Queries the information and results of an editing project export task.
+//
+// @param request - GetYikeProjectExportJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYikeProjectExportJobResponse
+func (client *Client) GetYikeProjectExportJobWithOptions(request *GetYikeProjectExportJobRequest, runtime *dara.RuntimeOptions) (_result *GetYikeProjectExportJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYikeProjectExportJob"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYikeProjectExportJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information and results of an editing project export task.
+//
+// @param request - GetYikeProjectExportJobRequest
+//
+// @return GetYikeProjectExportJobResponse
+func (client *Client) GetYikeProjectExportJob(request *GetYikeProjectExportJobRequest) (_result *GetYikeProjectExportJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetYikeProjectExportJobResponse{}
+	_body, _err := client.GetYikeProjectExportJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a Yike prompt enhancement and audio repair video generation task.
 //
 // @param request - GetYikePromptExpansionVoiceFixJobRequest
 //
@@ -886,7 +951,7 @@ func (client *Client) GetYikePromptExpansionVoiceFixJobWithOptions(request *GetY
 
 // Summary:
 //
-// 查询一刻提示词扩写和音频修复视频生成任务
+// Queries a Yike prompt enhancement and audio repair video generation task.
 //
 // @param request - GetYikePromptExpansionVoiceFixJobRequest
 //
@@ -904,7 +969,7 @@ func (client *Client) GetYikePromptExpansionVoiceFixJob(request *GetYikePromptEx
 
 // Summary:
 //
-// 获取一刻故事板任务
+// Retrieves a storyboard task.
 //
 // @param request - GetYikeStoryboardJobRequest
 //
@@ -948,7 +1013,7 @@ func (client *Client) GetYikeStoryboardJobWithOptions(request *GetYikeStoryboard
 
 // Summary:
 //
-// 获取一刻故事板任务
+// Retrieves a storyboard task.
 //
 // @param request - GetYikeStoryboardJobRequest
 //
@@ -966,7 +1031,7 @@ func (client *Client) GetYikeStoryboardJob(request *GetYikeStoryboardJobRequest)
 
 // Summary:
 //
-// 获取一刻子用户信息
+// Retrieves information about a WonderClip sub-account.
 //
 // @param request - GetYikeUserRequest
 //
@@ -1010,7 +1075,7 @@ func (client *Client) GetYikeUserWithOptions(request *GetYikeUserRequest, runtim
 
 // Summary:
 //
-// 获取一刻子用户信息
+// Retrieves information about a WonderClip sub-account.
 //
 // @param request - GetYikeUserRequest
 //
@@ -1028,7 +1093,7 @@ func (client *Client) GetYikeUser(request *GetYikeUserRequest) (_result *GetYike
 
 // Summary:
 //
-// 查询一刻用户积分
+// Queries the credit balance of a WonderClip user.
 //
 // @param request - GetYikeUserCreditRequest
 //
@@ -1072,7 +1137,7 @@ func (client *Client) GetYikeUserCreditWithOptions(request *GetYikeUserCreditReq
 
 // Summary:
 //
-// 查询一刻用户积分
+// Queries the credit balance of a WonderClip user.
 //
 // @param request - GetYikeUserCreditRequest
 //
@@ -1090,7 +1155,7 @@ func (client *Client) GetYikeUserCredit(request *GetYikeUserCreditRequest) (_res
 
 // Summary:
 //
-// 查询一刻口播视频生成任务
+// Queries an intelligent video generation task for a narration-only video without a digital human.
 //
 // @param request - GetYikeVoiceNarratorJobRequest
 //
@@ -1134,7 +1199,7 @@ func (client *Client) GetYikeVoiceNarratorJobWithOptions(request *GetYikeVoiceNa
 
 // Summary:
 //
-// 查询一刻口播视频生成任务
+// Queries an intelligent video generation task for a narration-only video without a digital human.
 //
 // @param request - GetYikeVoiceNarratorJobRequest
 //
@@ -1152,7 +1217,7 @@ func (client *Client) GetYikeVoiceNarratorJob(request *GetYikeVoiceNarratorJobRe
 
 // Summary:
 //
-// 获取一刻文件夹列表
+// Retrieves the list of folders.
 //
 // @param request - ListYikeAssetFoldersRequest
 //
@@ -1204,7 +1269,7 @@ func (client *Client) ListYikeAssetFoldersWithOptions(request *ListYikeAssetFold
 
 // Summary:
 //
-// 获取一刻文件夹列表
+// Retrieves the list of folders.
 //
 // @param request - ListYikeAssetFoldersRequest
 //
@@ -1222,7 +1287,7 @@ func (client *Client) ListYikeAssetFolders(request *ListYikeAssetFoldersRequest)
 
 // Summary:
 //
-// 获取一刻项目列表
+// Retrieves a list of Yike projects.
 //
 // @param request - ListYikeProductionsRequest
 //
@@ -1282,7 +1347,7 @@ func (client *Client) ListYikeProductionsWithOptions(request *ListYikeProduction
 
 // Summary:
 //
-// 获取一刻项目列表
+// Retrieves a list of Yike projects.
 //
 // @param request - ListYikeProductionsRequest
 //
@@ -1300,7 +1365,7 @@ func (client *Client) ListYikeProductions(request *ListYikeProductionsRequest) (
 
 // Summary:
 //
-// 获取一刻工作室列表
+// # Get Yike Workspace List
 //
 // @param request - ListYikeWorkspacesRequest
 //
@@ -1348,7 +1413,7 @@ func (client *Client) ListYikeWorkspacesWithOptions(request *ListYikeWorkspacesR
 
 // Summary:
 //
-// 获取一刻工作室列表
+// # Get Yike Workspace List
 //
 // @param request - ListYikeWorkspacesRequest
 //
@@ -1366,7 +1431,7 @@ func (client *Client) ListYikeWorkspaces(request *ListYikeWorkspacesRequest) (_r
 
 // Summary:
 //
-// 检查应用参数是否合法
+// Checks whether the application parameters are valid.
 //
 // @param request - PrecheckYikeAIAppJobRequest
 //
@@ -1414,7 +1479,7 @@ func (client *Client) PrecheckYikeAIAppJobWithOptions(request *PrecheckYikeAIApp
 
 // Summary:
 //
-// 检查应用参数是否合法
+// Checks whether the application parameters are valid.
 //
 // @param request - PrecheckYikeAIAppJobRequest
 //
@@ -1432,7 +1497,7 @@ func (client *Client) PrecheckYikeAIAppJob(request *PrecheckYikeAIAppJobRequest)
 
 // Summary:
 //
-// 注册一刻媒资
+// Registers a Yike media asset.
 //
 // @param request - RegisterYikeAssetMediaInfoRequest
 //
@@ -1488,7 +1553,7 @@ func (client *Client) RegisterYikeAssetMediaInfoWithOptions(request *RegisterYik
 
 // Summary:
 //
-// 注册一刻媒资
+// Registers a Yike media asset.
 //
 // @param request - RegisterYikeAssetMediaInfoRequest
 //
@@ -1506,7 +1571,7 @@ func (client *Client) RegisterYikeAssetMediaInfo(request *RegisterYikeAssetMedia
 
 // Summary:
 //
-// 故事板任务恢复继续执行任务
+// Resumes the execution of a storyboard task.
 //
 // @param request - ResumeYikeStoryboardJobRequest
 //
@@ -1550,7 +1615,7 @@ func (client *Client) ResumeYikeStoryboardJobWithOptions(request *ResumeYikeStor
 
 // Summary:
 //
-// 故事板任务恢复继续执行任务
+// Resumes the execution of a storyboard task.
 //
 // @param request - ResumeYikeStoryboardJobRequest
 //
@@ -1568,7 +1633,7 @@ func (client *Client) ResumeYikeStoryboardJob(request *ResumeYikeStoryboardJobRe
 
 // Summary:
 //
-// 配置一刻事件回调
+// Configures event callbacks for the business system.
 //
 // @param request - SetYikeCallbackConfigRequest
 //
@@ -1616,7 +1681,7 @@ func (client *Client) SetYikeCallbackConfigWithOptions(request *SetYikeCallbackC
 
 // Summary:
 //
-// 配置一刻事件回调
+// Configures event callbacks for the business system.
 //
 // @param request - SetYikeCallbackConfigRequest
 //
@@ -1634,7 +1699,7 @@ func (client *Client) SetYikeCallbackConfig(request *SetYikeCallbackConfigReques
 
 // Summary:
 //
-// 设置用户角色
+// Sets the user role.
 //
 // @param request - SetYikeUserRoleRequest
 //
@@ -1682,7 +1747,7 @@ func (client *Client) SetYikeUserRoleWithOptions(request *SetYikeUserRoleRequest
 
 // Summary:
 //
-// 设置用户角色
+// Sets the user role.
 //
 // @param request - SetYikeUserRoleRequest
 //
@@ -1700,7 +1765,7 @@ func (client *Client) SetYikeUserRole(request *SetYikeUserRoleRequest) (_result 
 
 // Summary:
 //
-// 扣减用户积分
+// Reclaims credits from a user.
 //
 // @param request - SubYikeUserCreditRequest
 //
@@ -1748,7 +1813,7 @@ func (client *Client) SubYikeUserCreditWithOptions(request *SubYikeUserCreditReq
 
 // Summary:
 //
-// 扣减用户积分
+// Reclaims credits from a user.
 //
 // @param request - SubYikeUserCreditRequest
 //
@@ -1766,7 +1831,7 @@ func (client *Client) SubYikeUserCredit(request *SubYikeUserCreditRequest) (_res
 
 // Summary:
 //
-// 提交一刻AI应用任务
+// Submits an AI application task to Yike AI.
 //
 // @param request - SubmitYikeAIAppJobRequest
 //
@@ -1822,7 +1887,7 @@ func (client *Client) SubmitYikeAIAppJobWithOptions(request *SubmitYikeAIAppJobR
 
 // Summary:
 //
-// 提交一刻AI应用任务
+// Submits an AI application task to Yike AI.
 //
 // @param request - SubmitYikeAIAppJobRequest
 //
@@ -1840,7 +1905,13 @@ func (client *Client) SubmitYikeAIAppJob(request *SubmitYikeAIAppJobRequest) (_r
 
 // Summary:
 //
-// 提交一刻数字人口播视频生成任务
+// Creates an intelligent video production task for a digital human oral broadcasting scenario. This task is applicable to video scenarios such as influencer product promotion and knowledge sharing.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API operation generates a video featuring a virtual human delivering an oral broadcast based on the provided text content and other parameters such as digital human information and common scenario type. You must specify key configuration items including the text type (raw script or oral broadcast script), video dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - SubmitYikeAvatarNarratorJobRequest
 //
@@ -1888,7 +1959,13 @@ func (client *Client) SubmitYikeAvatarNarratorJobWithOptions(request *SubmitYike
 
 // Summary:
 //
-// 提交一刻数字人口播视频生成任务
+// Creates an intelligent video production task for a digital human oral broadcasting scenario. This task is applicable to video scenarios such as influencer product promotion and knowledge sharing.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API operation generates a video featuring a virtual human delivering an oral broadcast based on the provided text content and other parameters such as digital human information and common scenario type. You must specify key configuration items including the text type (raw script or oral broadcast script), video dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - SubmitYikeAvatarNarratorJobRequest
 //
@@ -1906,7 +1983,77 @@ func (client *Client) SubmitYikeAvatarNarratorJob(request *SubmitYikeAvatarNarra
 
 // Summary:
 //
-// 提交一刻提示词扩写和音频修复视频生成任务
+// Submits an online editing project export task that supports exporting pure audio and SRT subtitles.
+//
+// @param request - SubmitYikeProjectExportJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitYikeProjectExportJobResponse
+func (client *Client) SubmitYikeProjectExportJobWithOptions(request *SubmitYikeProjectExportJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitYikeProjectExportJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExportType) {
+		query["ExportType"] = request.ExportType
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitYikeProjectExportJob"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitYikeProjectExportJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits an online editing project export task that supports exporting pure audio and SRT subtitles.
+//
+// @param request - SubmitYikeProjectExportJobRequest
+//
+// @return SubmitYikeProjectExportJobResponse
+func (client *Client) SubmitYikeProjectExportJob(request *SubmitYikeProjectExportJobRequest) (_result *SubmitYikeProjectExportJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitYikeProjectExportJobResponse{}
+	_body, _err := client.SubmitYikeProjectExportJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a video generation task with prompt enhancement and audio repair.
 //
 // @param request - SubmitYikePromptExpansionVoiceFixJobRequest
 //
@@ -1954,7 +2101,7 @@ func (client *Client) SubmitYikePromptExpansionVoiceFixJobWithOptions(request *S
 
 // Summary:
 //
-// 提交一刻提示词扩写和音频修复视频生成任务
+// Submits a video generation task with prompt enhancement and audio repair.
 //
 // @param request - SubmitYikePromptExpansionVoiceFixJobRequest
 //
@@ -1972,7 +2119,11 @@ func (client *Client) SubmitYikePromptExpansionVoiceFixJob(request *SubmitYikePr
 
 // Summary:
 //
-// 提交一刻故事板全链路编排任务
+// Submits a storyboard generation task.
+//
+// Description:
+//
+// Ensure that your credits remain above 5,000 when calling this operation. Insufficient credits may cause the task to be interrupted.
 //
 // @param request - SubmitYikeStoryboardJobRequest
 //
@@ -2074,7 +2225,11 @@ func (client *Client) SubmitYikeStoryboardJobWithOptions(request *SubmitYikeStor
 
 // Summary:
 //
-// 提交一刻故事板全链路编排任务
+// Submits a storyboard generation task.
+//
+// Description:
+//
+// Ensure that your credits remain above 5,000 when calling this operation. Insufficient credits may cause the task to be interrupted.
 //
 // @param request - SubmitYikeStoryboardJobRequest
 //
@@ -2092,7 +2247,7 @@ func (client *Client) SubmitYikeStoryboardJob(request *SubmitYikeStoryboardJobRe
 
 // Summary:
 //
-// 提交一刻口播视频生成任务
+// Creates an intelligent video generation task for a voiceover-only scenario (without a digital human). This task is applicable to video scenarios such as product showcases and news broadcasts.
 //
 // @param request - SubmitYikeVoiceNarratorJobRequest
 //
@@ -2140,7 +2295,7 @@ func (client *Client) SubmitYikeVoiceNarratorJobWithOptions(request *SubmitYikeV
 
 // Summary:
 //
-// 提交一刻口播视频生成任务
+// Creates an intelligent video generation task for a voiceover-only scenario (without a digital human). This task is applicable to video scenarios such as product showcases and news broadcasts.
 //
 // @param request - SubmitYikeVoiceNarratorJobRequest
 //
@@ -2158,7 +2313,7 @@ func (client *Client) SubmitYikeVoiceNarratorJob(request *SubmitYikeVoiceNarrato
 
 // Summary:
 //
-// 更新一刻项目
+// # Update a Yike project
 //
 // @param request - UpdateYikeProductionRequest
 //
@@ -2206,7 +2361,7 @@ func (client *Client) UpdateYikeProductionWithOptions(request *UpdateYikeProduct
 
 // Summary:
 //
-// 更新一刻项目
+// # Update a Yike project
 //
 // @param request - UpdateYikeProductionRequest
 //
@@ -2224,7 +2379,7 @@ func (client *Client) UpdateYikeProduction(request *UpdateYikeProductionRequest)
 
 // Summary:
 //
-// 修改一刻项目成员权限
+// Modifies the permissions of a Yike project member.
 //
 // @param request - UpdateYikeProductionMemberAuthRequest
 //
@@ -2276,7 +2431,7 @@ func (client *Client) UpdateYikeProductionMemberAuthWithOptions(request *UpdateY
 
 // Summary:
 //
-// 修改一刻项目成员权限
+// Modifies the permissions of a Yike project member.
 //
 // @param request - UpdateYikeProductionMemberAuthRequest
 //

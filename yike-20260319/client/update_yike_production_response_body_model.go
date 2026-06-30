@@ -16,6 +16,8 @@ type iUpdateYikeProductionResponseBody interface {
 }
 
 type UpdateYikeProductionResponseBody struct {
+	// The project ID.
+	//
 	// example:
 	//
 	// pd_12334**

@@ -14,6 +14,8 @@ type iGetYikeUserRequest interface {
 }
 
 type GetYikeUserRequest struct {
+	// The username of the WonderClip sub-account.
+	//
 	// example:
 	//
 	// test.xxx@xxx.yikeai

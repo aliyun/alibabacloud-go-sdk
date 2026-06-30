@@ -16,12 +16,16 @@ type iSubYikeUserCreditRequest interface {
 }
 
 type SubYikeUserCreditRequest struct {
+	// The number of credits to reclaim. The value must be greater than 0 and cannot exceed the sub-account credit balance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 50
 	Credit *int32 `json:"Credit,omitempty" xml:"Credit,omitempty"`
+	// The sub-account user ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,6 +22,12 @@ type SetYikeUserRoleResponseBody struct {
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the role is set. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
