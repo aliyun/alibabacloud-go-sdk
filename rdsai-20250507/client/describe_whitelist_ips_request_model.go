@@ -14,6 +14,8 @@ type iDescribeWhitelistIpsRequest interface {
 }
 
 type DescribeWhitelistIpsRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// rds_copilot****_public_cn-4****02

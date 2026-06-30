@@ -18,13 +18,16 @@ type iUpdateMOQuotaAlertThresholdResponseBody interface {
 }
 
 type UpdateMOQuotaAlertThresholdResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*UpdateMOQuotaAlertThresholdResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result list.
+	Results []*UpdateMOQuotaAlertThresholdResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// A value of `true` indicates that the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -80,25 +83,36 @@ func (s *UpdateMOQuotaAlertThresholdResponseBody) Validate() error {
 }
 
 type UpdateMOQuotaAlertThresholdResponseBodyResults struct {
-	// API Key
+	// The API key.
 	//
 	// example:
 	//
 	// sk-rds-*****
 	Apikey *string `json:"Apikey,omitempty" xml:"Apikey,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rds_copilot***_public_cn-o*****1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The API key name.
+	//
 	// example:
 	//
 	// api-*****
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// The key type.
+	//
 	// example:
 	//
 	// system / custom
-	KeyType          *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	ThresholdPercent *int32  `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
+	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	// The alert threshold percentage. For example, a value of 80 triggers an alert when usage reaches 80% of the usage quota. The alert is reset after the usage falls below this percentage.
+	//
+	// example:
+	//
+	// [0, 100]，0 会清理告警设置
+	ThresholdPercent *int32 `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
 }
 
 func (s UpdateMOQuotaAlertThresholdResponseBodyResults) String() string {

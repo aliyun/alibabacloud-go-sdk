@@ -14,11 +14,11 @@ type iGetCustomAgentRequest interface {
 }
 
 type GetCustomAgentRequest struct {
-	// The operation that you want to perform. Set the value to **GetCustomAgent**.
+	// The ID of the custom agent.
 	//
 	// example:
 	//
-	// ebe44453-3b41-4c74-94d1-01d088d7xxxx
+	// ebe44453-3b41-4c74-94d1-01d088d7****
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
 }
 

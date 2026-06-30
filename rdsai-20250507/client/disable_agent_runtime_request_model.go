@@ -18,16 +18,22 @@ type iDisableAgentRuntimeRequest interface {
 }
 
 type DisableAgentRuntimeRequest struct {
+	// An idempotent parameter.
+	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88**********
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the AI application instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The ID of the region where the instance is located.
+	//
 	// example:
 	//
 	// cn-beijing

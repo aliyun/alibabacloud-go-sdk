@@ -28,27 +28,27 @@ type iDescribeEventsListResponseBody interface {
 }
 
 type DescribeEventsListResponseBody struct {
-	// The total number of events.
+	// The count for each event code.
 	//
 	// example:
 	//
 	// OtherException:3,MysqlIOException:1
 	EventCodeCounts *string `json:"EventCodeCounts,omitempty" xml:"EventCodeCounts,omitempty"`
-	// The information about the events.
+	// A list of events.
 	Events []*DescribeEventsListResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// The total number of pages.
+	// The number of pages returned.
 	//
 	// example:
 	//
 	// 1
 	PageCount *int64 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type DescribeEventsListResponseBody struct {
 	//
 	// example:
 	//
-	// FE9C65D7-930F-57A5-A207-8C396329241C
+	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 20
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The number of entries per page.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -174,21 +174,25 @@ type DescribeEventsListResponseBodyEvents struct {
 	//
 	// ExceptionEvent
 	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
-	// The state of the event.
+	// The event status.
 	//
 	// example:
 	//
 	// None
 	EventStatus *string `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	// The event.
+	// A list of event times.
 	EventTimeList []*string `json:"EventTimeList,omitempty" xml:"EventTimeList,omitempty" type:"Repeated"`
-	// The description of the instance.
+	// The instance description.
+	//
+	// example:
+	//
+	// 测试实例
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
-	// rm-2zecnb327gp36e7lh
+	// rm-2zecnb327gp36****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The recovery time.
 	//
@@ -196,7 +200,8 @@ type DescribeEventsListResponseBodyEvents struct {
 	//
 	// 2025-07-23T02:11:07Z
 	RecoveryTime *string `json:"RecoveryTime,omitempty" xml:"RecoveryTime,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeEventsListResponseBodyEvents) String() string {

@@ -135,7 +135,13 @@ func (client *Client) ChatMessagesTaskStopWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建实例密钥
+// Create a custom API key.
+//
+// Description:
+//
+// ### Supported engines
+//
+// [RDS AI Assistant Ultimate Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - CreateApiKeyRequest
 //
@@ -150,6 +156,10 @@ func (client *Client) CreateApiKeyWithContext(ctx context.Context, request *Crea
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DailyTokenQuota) {
+		query["DailyTokenQuota"] = request.DailyTokenQuota
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -203,15 +213,13 @@ func (client *Client) CreateApiKeyWithContext(ctx context.Context, request *Crea
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Supported Engine
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### Related Function Documentation
 //
-// >  Fees of an instance are changed if the call is successful. Before you call this operation, carefully read the related topics.
-//
-// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//	Warning: This API operation involves a Fee. Carefully read the related Function Documentation before performing this operation.
 //
 // @param tmpReq - CreateAppInstanceRequest
 //
@@ -266,6 +274,10 @@ func (client *Client) CreateAppInstanceWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.DashboardUsername) {
 		query["DashboardUsername"] = request.DashboardUsername
+	}
+
+	if !dara.IsNil(request.Database) {
+		query["Database"] = request.Database
 	}
 
 	if !dara.IsNil(request.DatabasePassword) {
@@ -325,7 +337,7 @@ func (client *Client) CreateAppInstanceWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Creates a dedicated agent.
+// Creates a user-specific agent.
 //
 // @param tmpReq - CreateCustomAgentRequest
 //
@@ -395,7 +407,7 @@ func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Creates an inspection task for multiple instances.
+// Creates an inspection task for one or more instances.
 //
 // @param request - CreateInspectionTaskRequest
 //
@@ -467,7 +479,97 @@ func (client *Client) CreateInspectionTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a new scheduled inspection configuration for multiple instances.
+// 创建沙箱模板
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS Supabase
+//
+// ### 相关功能文档
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// @param request - CreateSandboxTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSandboxTemplateResponse
+func (client *Client) CreateSandboxTemplateWithContext(ctx context.Context, request *CreateSandboxTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateSandboxTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DefaultCpu) {
+		query["DefaultCpu"] = request.DefaultCpu
+	}
+
+	if !dara.IsNil(request.DefaultMemory) {
+		query["DefaultMemory"] = request.DefaultMemory
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Replicas) {
+		query["Replicas"] = request.Replicas
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSandboxTemplate"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSandboxTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a scheduled inspection task for one or more instances.
+//
+// Description:
+//
+// ### Supported engines
+//
+// # RDS PostgreSQL
+//
+// ### Related feature documentation
+//
+//	Warning: This API operation may incur charges. Please read the related feature documentation carefully before you proceed.
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - CreateScheduledTaskRequest
 //
@@ -617,7 +719,13 @@ func (client *Client) CreateSkillWithContext(ctx context.Context, tmpReq *Create
 
 // Summary:
 //
-// 删除apiKey
+// Deletes a custom API key.
+//
+// Description:
+//
+// ### Applicable engine
+//
+// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -669,17 +777,17 @@ func (client *Client) DeleteApiKeyWithContext(ctx context.Context, request *Dele
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
-// >  Fees of an instance are changed if the call is successful. Before you call this operation, carefully read the related topics.
+//	Warning: 该API操作涉及费用，请仔细阅读相关功能文档后再进行操作。
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// >  If you delete an RDS Supabase instance, the created RDS for PostgreSQL instance and the created NAT gateway are not automatically deleted. You must manually release the instance and delete the Internet NAT gateway and EIP.
+//	Notice: 删除RDS Supabase项目并不会自动删除在创建该项目时所生成的RDS PostgreSQL实例及开通的NAT网关，您需要[手动释放该实例](https://help.aliyun.com/document_detail/96749.html)，并删除[公网NAT网关](https://help.aliyun.com/document_detail/121139.html)和[EIP](https://help.aliyun.com/document_detail/121527.html)。
 //
 // @param request - DeleteAppInstanceRequest
 //
@@ -765,6 +873,68 @@ func (client *Client) DeleteCustomAgentWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCustomAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除沙箱模板
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS Supabase
+//
+// ### 相关功能文档
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// @param request - DeleteSandboxTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSandboxTemplateResponse
+func (client *Client) DeleteSandboxTemplateWithContext(ctx context.Context, request *DeleteSandboxTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteSandboxTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSandboxTemplate"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSandboxTemplateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -863,15 +1033,15 @@ func (client *Client) DeleteSkillWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// Queries the details of an RDS Supabase instance.
+// Queries the details of an RDS AI application instance.
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -921,15 +1091,15 @@ func (client *Client) DescribeAppInstanceAttributeWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the RDS Supabase instances.
+// This API retrieves a list of RDS AI application instances.
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -991,7 +1161,69 @@ func (client *Client) DescribeAppInstancesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the events.
+// 查询已支持的沙箱模板列表
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS Supabase
+//
+// ### 相关功能文档
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// @param request - DescribeCommonSandboxTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCommonSandboxTemplatesResponse
+func (client *Client) DescribeCommonSandboxTemplatesWithContext(ctx context.Context, request *DescribeCommonSandboxTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCommonSandboxTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCommonSandboxTemplates"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCommonSandboxTemplatesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// This API retrieves the list of events.
 //
 // @param request - DescribeEventsListRequest
 //
@@ -1055,15 +1287,15 @@ func (client *Client) DescribeEventsListWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the authentication information about an RDS Supabase instance.
+// Queries the authentication information of an RDS AI application instance.
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1117,11 +1349,11 @@ func (client *Client) DescribeInstanceAuthInfoWithContext(ctx context.Context, r
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1175,11 +1407,11 @@ func (client *Client) DescribeInstanceEndpointsWithContext(ctx context.Context, 
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1285,11 +1517,11 @@ func (client *Client) DescribeInstanceRAGConfigWithContext(ctx context.Context, 
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1343,15 +1575,15 @@ func (client *Client) DescribeInstanceSSLWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// >  Only Object Storage Service (OSS) is supported for the storage of RDS Supabase.
+// > 当前仅支持对象存储OSS。
 //
 // @param request - DescribeInstanceStorageConfigRequest
 //
@@ -1399,7 +1631,13 @@ func (client *Client) DescribeInstanceStorageConfigWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查看 model operator 实例具体 token 使用情况
+// Queries the token usage records of RDS AI Assistant Ultimate Edition.
+//
+// Description:
+//
+// ### Applicable engine
+//
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra).
 //
 // @param request - DescribeMOTokenUsageDetailRequest
 //
@@ -1454,6 +1692,10 @@ func (client *Client) DescribeMOTokenUsageDetailWithContext(ctx context.Context,
 		query["StartTime"] = request.StartTime
 	}
 
+	if !dara.IsNil(request.UsageType) {
+		query["UsageType"] = request.UsageType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1479,7 +1721,13 @@ func (client *Client) DescribeMOTokenUsageDetailWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询MO实例信息
+// View basic information and usage for the RDS AI Assistant Ultimate Edition.
+//
+// Description:
+//
+// ### Supported engines
+//
+// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DescribeModelOperatorRequest
 //
@@ -1523,7 +1771,13 @@ func (client *Client) DescribeModelOperatorWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询监控数据
+// Retrieves monitoring data for an RDS AI Assistant Ultimate Edition instance.
+//
+// Description:
+//
+// ### Supported engines
+//
+// [RDS AI Assistant Ultimate Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param tmpReq - DescribeMonitorDataRequest
 //
@@ -1593,7 +1847,17 @@ func (client *Client) DescribeMonitorDataWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 查询沙箱模板列表
+// Lists the sandbox templates you can use to create Supabase sandboxes.
+//
+// Description:
+//
+// ### Applicable engine
+//
+// # RDS Supabase
+//
+// ### Related documents
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - DescribeSandboxTemplatesRequest
 //
@@ -1661,7 +1925,13 @@ func (client *Client) DescribeSandboxTemplatesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 更新旗舰版白名单
+// Describes the whitelist of an RDS AI Assistant Enterprise Edition instance.
+//
+// Description:
+//
+// ### Supported engine
+//
+// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DescribeWhitelistIpsRequest
 //
@@ -1705,7 +1975,13 @@ func (client *Client) DescribeWhitelistIpsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 关闭Supabase的沙箱和边缘函数能力
+// Disables the sandbox and edge function capabilities for a Supabase instance. Note: This operation deletes all sandboxes and edge functions of the instance. Fully assess the business risks before you proceed.
+//
+// Description:
+//
+// Disables the sandbox and edge function capabilities for a Supabase instance.
+//
+//	Notice: This operation deletes all sandboxes and edge functions of the Supabase instance. Fully assess the business risks before you proceed.
 //
 // @param request - DisableAgentRuntimeRequest
 //
@@ -1757,7 +2033,15 @@ func (client *Client) DisableAgentRuntimeWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 启用Supabase的沙箱和边缘函数能力
+// Enables the sandbox and Edge Routine capabilities for a Supabase instance. Read the operation description before you call this operation.
+//
+// Description:
+//
+// During the public preview, the sandbox and Edge Routine features are free of charge.
+//
+// ### Before you begin
+//
+// Before using this feature, you must complete [service-linked role authorization](https://api.aliyun.com/api/ResourceManager/2020-03-31/CreateServiceLinkedRole?spm=api-workbench.API%20Document.0.0.4ea75094rJgPzK&RegionId=cn-beijing&tab=DEBUG&params=%7B%2522ServiceName%2522:%2522supabase.rdsai.aliyuncs.com%2522%7D&sdkStyle=old). The service-linked role used is [AliyunServiceRoleForRDSAISupabase](https://www.alibabacloud.com/help/en/ram/product-overview/services-that-work-with-service-linked-roles).
 //
 // @param request - EnableAgentRuntimeRequest
 //
@@ -1818,6 +2102,12 @@ func (client *Client) EnableAgentRuntimeWithContext(ctx context.Context, request
 // Summary:
 //
 // # GetAvailableLLMModels
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS SUPABASE
 //
 // @param request - GetAvailableLLMModelsRequest
 //
@@ -1925,7 +2215,7 @@ func (client *Client) GetConversationsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the dedicated agents created by a user.
+// Retrieves details for a specified custom agent.
 //
 // @param request - GetCustomAgentRequest
 //
@@ -2021,7 +2311,7 @@ func (client *Client) GetInspectionReportWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries specific conversation messages.
+// Retrieves a list of messages in a specific conversation.
 //
 // @param request - GetMessagesRequest
 //
@@ -2078,6 +2368,10 @@ func (client *Client) GetMessagesWithContext(ctx context.Context, request *GetMe
 // Summary:
 //
 // # Obtain RDS AI Assistant Ultimate order information
+//
+// Description:
+//
+// ### Applicable DPI engine
 //
 // @param request - GetModelOperatorOrderRequest
 //
@@ -2166,7 +2460,7 @@ func (client *Client) GetScheduledInstancesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the list of all inspection reports for a specified scheduled task. You can filter and paginate inspection reports by time range.
+// Retrieves all inspection reports for a specified scheduled task. You can filter the results by time range and use pagination.
 //
 // @param request - GetScheduledReportsRequest
 //
@@ -2274,7 +2568,7 @@ func (client *Client) GetSkillWithContext(ctx context.Context, request *GetSkill
 
 // Summary:
 //
-// Queries the individual inspection reports of all non-scheduled tasks under a specified user. Pagination is supported.
+// Retrieves paginated standalone inspection reports on a specified user\\"s non-scheduled tasks.
 //
 // @param request - GetStandAloneReportsRequest
 //
@@ -2334,7 +2628,13 @@ func (client *Client) GetStandAloneReportsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询实例密钥信息
+// # View Custom API Key
+//
+// Description:
+//
+// ### Supported engines
+//
+// [DAS Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - ListApiKeysRequest
 //
@@ -2386,7 +2686,7 @@ func (client *Client) ListApiKeysWithContext(ctx context.Context, request *ListA
 
 // Summary:
 //
-// Queries the dedicated agents created by a user.
+// Lists your custom agents.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -2435,6 +2735,12 @@ func (client *Client) ListCustomAgentWithContext(ctx context.Context, request *L
 // Summary:
 //
 // # ListLLMTokenUsage
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS SUPABASE
 //
 // @param request - ListLLMTokenUsageRequest
 //
@@ -2494,7 +2800,7 @@ func (client *Client) ListLLMTokenUsageWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the basic information of all inspection configurations under a specified user.
+// Lists basic information about all inspection configurations for the specified user ID.
 //
 // @param request - ListScheduledTasksRequest
 //
@@ -2600,6 +2906,16 @@ func (client *Client) ListSkillWithContext(ctx context.Context, request *ListSki
 //
 // 修改RDS AI应用实例
 //
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS PostgreSQL
+//
+// ### 相关功能文档
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
 // @param tmpReq - ModifyAppInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2664,13 +2980,11 @@ func (client *Client) ModifyAppInstanceWithContext(ctx context.Context, tmpReq *
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Applicable Engine
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
-//
-// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+// ### Related Function Documentation
 //
 // @param tmpReq - ModifyInstanceAuthConfigRequest
 //
@@ -2792,11 +3106,11 @@ func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -2932,11 +3246,11 @@ func (client *Client) ModifyInstanceRAGConfigWithContext(ctx context.Context, tm
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -3006,15 +3320,11 @@ func (client *Client) ModifyInstanceSSLWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Supported Engine
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
-//
-// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
-//
-// >  Only Object Storage Service (OSS) is supported for the storage of RDS Supabase.
+// ### Related Function Documentation
 //
 // @param tmpReq - ModifyInstanceStorageConfigRequest
 //
@@ -3080,11 +3390,11 @@ func (client *Client) ModifyInstanceStorageConfigWithContext(ctx context.Context
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -3208,6 +3518,80 @@ func (client *Client) ModifyMessagesFeedbacksWithContext(ctx context.Context, re
 
 // Summary:
 //
+// 修改沙箱模板
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS Supabase
+//
+// ### 相关功能文档
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// @param request - ModifySandboxTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySandboxTemplateResponse
+func (client *Client) ModifySandboxTemplateWithContext(ctx context.Context, request *ModifySandboxTemplateRequest, runtime *dara.RuntimeOptions) (_result *ModifySandboxTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DefaultCpu) {
+		query["DefaultCpu"] = request.DefaultCpu
+	}
+
+	if !dara.IsNil(request.DefaultMemory) {
+		query["DefaultMemory"] = request.DefaultMemory
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Replicas) {
+		query["Replicas"] = request.Replicas
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySandboxTemplate"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySandboxTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies an existing inspection configuration.
 //
 // @param request - ModifyScheduledTaskRequest
@@ -3284,7 +3668,13 @@ func (client *Client) ModifyScheduledTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 更新旗舰版白名单
+// Modifies the IP whitelist for an RDS AI Assistant Enterprise Edition instance.
+//
+// Description:
+//
+// ### Applicable engines
+//
+// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - ModifyWhitelistIpsRequest
 //
@@ -3332,7 +3722,13 @@ func (client *Client) ModifyWhitelistIpsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 重命名实例密钥
+// Renames an API key.
+//
+// Description:
+//
+// ### Applicable engines
+//
+// [RDS AI Assistant (Ultimate Edition)](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - RenameApiKeyRequest
 //
@@ -3384,7 +3780,13 @@ func (client *Client) RenameApiKeyWithContext(ctx context.Context, request *Rena
 
 // Summary:
 //
-// 重置apiKey
+// Resets an API key.
+//
+// Description:
+//
+// ### Applicable engines
+//
+// [RDS AI Assistant (Ultimate Edition)](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - ResetApiKeyRequest
 //
@@ -3436,15 +3838,15 @@ func (client *Client) ResetApiKeyWithContext(ctx context.Context, request *Reset
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// >  You can only change the password of a RDS Supabase Dashboard user.
+// > 当前仅支持修改RDS Supabase Dashboard用户的密码。
 //
 // @param request - ResetInstancePasswordRequest
 //
@@ -3504,11 +3906,11 @@ func (client *Client) ResetInstancePasswordWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -3562,11 +3964,11 @@ func (client *Client) RestartInstanceWithContext(ctx context.Context, request *R
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -3620,11 +4022,11 @@ func (client *Client) StartInstanceWithContext(ctx context.Context, request *Sta
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -3678,7 +4080,13 @@ func (client *Client) StopInstanceWithContext(ctx context.Context, request *Stop
 
 // Summary:
 //
-// 修改实例密钥配额
+// # Modify the API KEY Quota
+//
+// Description:
+//
+// ### Supported engine
+//
+// [RDS AI Assistant Ultimate Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param tmpReq - UpdateApiKeyQuotaRequest
 //
@@ -3732,7 +4140,7 @@ func (client *Client) UpdateApiKeyQuotaWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Updates the custom agent.
+// Updates a custom agent.
 //
 // @param tmpReq - UpdateCustomAgentRequest
 //
@@ -3806,7 +4214,13 @@ func (client *Client) UpdateCustomAgentWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 更新 API key 的告警百分比阈值
+// Updates the alert threshold percentage for API keys.
+//
+// Description:
+//
+// ### Applicable engines
+//
+// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param tmpReq - UpdateMOQuotaAlertThresholdRequest
 //

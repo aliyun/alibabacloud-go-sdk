@@ -25,6 +25,8 @@ type iCreateAppInstanceShrinkRequest interface {
 	GetDashboardPassword() *string
 	SetDashboardUsername(v string) *CreateAppInstanceShrinkRequest
 	GetDashboardUsername() *string
+	SetDatabase(v string) *CreateAppInstanceShrinkRequest
+	GetDatabase() *string
 	SetDatabasePassword(v string) *CreateAppInstanceShrinkRequest
 	GetDatabasePassword() *string
 	SetInitializeWithExistingData(v bool) *CreateAppInstanceShrinkRequest
@@ -63,7 +65,8 @@ type CreateAppInstanceShrinkRequest struct {
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// List of modules
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
 	// A reserved parameter.
 	DBInstanceConfigShrink *string `json:"DBInstanceConfig,omitempty" xml:"DBInstanceConfig,omitempty"`
@@ -87,6 +90,10 @@ type CreateAppInstanceShrinkRequest struct {
 	//
 	// supabase
 	DashboardUsername *string `json:"DashboardUsername,omitempty" xml:"DashboardUsername,omitempty"`
+	// example:
+	//
+	// test_database_01
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The idempotency token. The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
 	//
 	// example:
@@ -189,6 +196,10 @@ func (s *CreateAppInstanceShrinkRequest) GetDashboardUsername() *string {
 	return s.DashboardUsername
 }
 
+func (s *CreateAppInstanceShrinkRequest) GetDatabase() *string {
+	return s.Database
+}
+
 func (s *CreateAppInstanceShrinkRequest) GetDatabasePassword() *string {
 	return s.DatabasePassword
 }
@@ -258,6 +269,11 @@ func (s *CreateAppInstanceShrinkRequest) SetDashboardPassword(v string) *CreateA
 
 func (s *CreateAppInstanceShrinkRequest) SetDashboardUsername(v string) *CreateAppInstanceShrinkRequest {
 	s.DashboardUsername = &v
+	return s
+}
+
+func (s *CreateAppInstanceShrinkRequest) SetDatabase(v string) *CreateAppInstanceShrinkRequest {
+	s.Database = &v
 	return s
 }
 

@@ -22,20 +22,28 @@ type iCreateCustomAgentRequest interface {
 }
 
 type CreateCustomAgentRequest struct {
-	// The system prompts.
+	// Specifies whether to enable tools.
 	//
 	// example:
 	//
 	// true
 	EnableTools *bool `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
-	// The operation that you want to perform. Set the value to **CreateCustomAgent**.
+	// The name of the agent.
+	//
+	// example:
+	//
+	// 查询实例列表Agent
 	Name     *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	SkillIds []*string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty" type:"Repeated"`
-	// The name of the dedicated agent.
+	// The system prompt.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 我是您用来查询实例列表的专属Agent
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	// Specifies whether to enable tools.
+	// The tool information.
 	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
 }
 

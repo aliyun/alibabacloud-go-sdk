@@ -21,6 +21,10 @@ type iCreateSkillShrinkRequest interface {
 
 type CreateSkillShrinkRequest struct {
 	// The content of the skill.
+	//
+	// example:
+	//
+	// {"MySQL": "MySQL 优化指南...","PostgreSQL": "PostgreSQL 优化指南..."}
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The list of database engines.
 	//
@@ -29,6 +33,10 @@ type CreateSkillShrinkRequest struct {
 	// The description of the skill. It can be up to 1000 characters in length.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// SQL 查询优化技能。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the skill, which can contain only lowercase letters, numbers, and hyphens.
 	//

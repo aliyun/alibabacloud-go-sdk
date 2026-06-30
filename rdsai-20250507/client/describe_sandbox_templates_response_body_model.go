@@ -26,29 +26,40 @@ type iDescribeSandboxTemplatesResponseBody interface {
 }
 
 type DescribeSandboxTemplatesResponseBody struct {
+	// This parameter is reserved.
+	//
 	// example:
 	//
 	// None
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results. If this parameter is empty, all results have been returned.
+	//
 	// example:
 	//
 	// AAAAAc3HCuYhJi/wvpk4xOr0VLYz/NvD85HpgBeRBCusEIeVQ0dHZH9jr+NP3X9Jx0iSoql55b9nd4PIDm252/a0f+U=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on the current page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
-	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of sandbox templates.
 	SandboxTemplates []*DescribeSandboxTemplatesResponseBodySandboxTemplates `json:"SandboxTemplates,omitempty" xml:"SandboxTemplates,omitempty" type:"Repeated"`
+	// The total number of entries that match the query.
+	//
 	// example:
 	//
 	// 20
@@ -140,27 +151,40 @@ func (s *DescribeSandboxTemplatesResponseBody) Validate() error {
 }
 
 type DescribeSandboxTemplatesResponseBodySandboxTemplates struct {
+	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	// The default number of CPUs for a sandbox created from this template.
+	//
 	// example:
 	//
 	// 2
 	DefaultCpu *string `json:"DefaultCpu,omitempty" xml:"DefaultCpu,omitempty"`
+	// The default memory size for a sandbox created from this template.
+	//
 	// example:
 	//
 	// 4Gi
 	DefaultMemory *string `json:"DefaultMemory,omitempty" xml:"DefaultMemory,omitempty"`
+	// The description of the sandbox template.
+	//
 	// example:
 	//
 	// code-interpreter-vpc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether sandboxes created from this template can access resources in the VPC of the parent RDS Supabase instance.
+	//
 	// example:
 	//
 	// true
 	EnableVpcAccess *string `json:"EnableVpcAccess,omitempty" xml:"EnableVpcAccess,omitempty"`
+	// The name of the sandbox template.
+	//
 	// example:
 	//
 	// code-interpreter
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Replicas *int64  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The ID of the sandbox template. Use this ID when you create a sandbox.
+	//
 	// example:
 	//
 	// code-interpreter-asdxxxx
@@ -173,6 +197,10 @@ func (s DescribeSandboxTemplatesResponseBodySandboxTemplates) String() string {
 
 func (s DescribeSandboxTemplatesResponseBodySandboxTemplates) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) GetCreatedBy() *string {
+	return s.CreatedBy
 }
 
 func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) GetDefaultCpu() *string {
@@ -201,6 +229,11 @@ func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) GetReplicas() *in
 
 func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) GetTemplateId() *string {
 	return s.TemplateId
+}
+
+func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) SetCreatedBy(v string) *DescribeSandboxTemplatesResponseBodySandboxTemplates {
+	s.CreatedBy = &v
+	return s
 }
 
 func (s *DescribeSandboxTemplatesResponseBodySandboxTemplates) SetDefaultCpu(v string) *DescribeSandboxTemplatesResponseBodySandboxTemplates {

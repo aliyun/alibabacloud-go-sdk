@@ -16,6 +16,8 @@ type iEnableAgentRuntimeResponseBody interface {
 }
 
 type EnableAgentRuntimeResponseBody struct {
+  // The instance ID of the AI application.
+  // 
   // example:
   // 
   // ra-supabase-8moov5lxba****

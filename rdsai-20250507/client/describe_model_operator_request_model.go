@@ -14,6 +14,8 @@ type iDescribeModelOperatorRequest interface {
 }
 
 type DescribeModelOperatorRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// rds_copilot***_public_cn-*********6

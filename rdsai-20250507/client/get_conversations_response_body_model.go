@@ -113,8 +113,16 @@ type GetConversationsResponseBodyData struct {
 	// 60b335ca-124d-4ee1-864b-de554987****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The introduction to the conversation.
+	//
+	// example:
+	//
+	// 测试搜索RDS资源
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
 	// The name of the history conversation.
+	//
+	// example:
+	//
+	// 搜索RDS资源。
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

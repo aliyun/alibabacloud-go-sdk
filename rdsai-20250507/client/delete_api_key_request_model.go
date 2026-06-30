@@ -16,7 +16,7 @@ type iDeleteApiKeyRequest interface {
 }
 
 type DeleteApiKeyRequest struct {
-	// Api Key
+	// The API key to delete.
 	//
 	// This parameter is required.
 	//
@@ -24,6 +24,8 @@ type DeleteApiKeyRequest struct {
 	//
 	// sk-rds-*****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rds_copilot***_public_cn-*********6

@@ -20,17 +20,22 @@ type iUpdateApiKeyQuotaResponseBody interface {
 }
 
 type UpdateApiKeyQuotaResponseBody struct {
+	// The returned data.
 	Data *UpdateApiKeyQuotaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -91,6 +96,7 @@ func (s *UpdateApiKeyQuotaResponseBody) Validate() error {
 }
 
 type UpdateApiKeyQuotaResponseBodyData struct {
+	// The list of custom API keys.
 	CustomKeyList []*UpdateApiKeyQuotaResponseBodyDataCustomKeyList `json:"CustomKeyList,omitempty" xml:"CustomKeyList,omitempty" type:"Repeated"`
 }
 
@@ -125,7 +131,7 @@ func (s *UpdateApiKeyQuotaResponseBodyData) Validate() error {
 }
 
 type UpdateApiKeyQuotaResponseBodyDataCustomKeyList struct {
-	// Api Key
+	// The API key.
 	//
 	// example:
 	//
@@ -133,12 +139,28 @@ type UpdateApiKeyQuotaResponseBodyDataCustomKeyList struct {
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// example:
 	//
+	// 1000000000
+	DailyTokenQuota *int64 `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
+	// The limit rate.
+	//
+	// example:
+	//
 	// 0.2
 	LimitRate *float32 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
+	// The quota limiting method. Valid values:
+	//
+	// - `ratio`: Sets the limit based on a ratio.
+	//
+	// - `fixed`: Sets the limit to a fixed value.
+	//
+	// - `auto`: Allocates the limit automatically.
+	//
 	// example:
 	//
 	// fixed
 	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
+	// The token quota for the API key.
+	//
 	// example:
 	//
 	// 10000
@@ -157,6 +179,10 @@ func (s *UpdateApiKeyQuotaResponseBodyDataCustomKeyList) GetApiKey() *string {
 	return s.ApiKey
 }
 
+func (s *UpdateApiKeyQuotaResponseBodyDataCustomKeyList) GetDailyTokenQuota() *int64 {
+	return s.DailyTokenQuota
+}
+
 func (s *UpdateApiKeyQuotaResponseBodyDataCustomKeyList) GetLimitRate() *float32 {
 	return s.LimitRate
 }
@@ -171,6 +197,11 @@ func (s *UpdateApiKeyQuotaResponseBodyDataCustomKeyList) GetTokenQuota() *int64 
 
 func (s *UpdateApiKeyQuotaResponseBodyDataCustomKeyList) SetApiKey(v string) *UpdateApiKeyQuotaResponseBodyDataCustomKeyList {
 	s.ApiKey = &v
+	return s
+}
+
+func (s *UpdateApiKeyQuotaResponseBodyDataCustomKeyList) SetDailyTokenQuota(v int64) *UpdateApiKeyQuotaResponseBodyDataCustomKeyList {
+	s.DailyTokenQuota = &v
 	return s
 }
 

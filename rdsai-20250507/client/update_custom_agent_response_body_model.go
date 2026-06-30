@@ -32,13 +32,17 @@ type UpdateCustomAgentResponseBody struct {
 	//
 	// true
 	EnableTools *string `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
-	// The ID of the agent.
+	// AgentId.
 	//
 	// example:
 	//
 	// 82cf3d62-0add-47bd-869f-877131f7****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the agent.
+	// The name of the custom agent.
+	//
+	// example:
+	//
+	// 查询实例列表Agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The request ID.
 	//
@@ -47,9 +51,13 @@ type UpdateCustomAgentResponseBody struct {
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Skills    []*UpdateCustomAgentResponseBodySkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
-	// The system prompts.
+	// The system prompt.
+	//
+	// example:
+	//
+	// 我是您用来查询实例列表的专属Agent
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	// The information about the tool.
+	// The tools that the custom agent can use.
 	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
 }
 

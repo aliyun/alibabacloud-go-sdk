@@ -19,6 +19,10 @@ type iModifyScheduledTaskResponseBody interface {
 
 type ModifyScheduledTaskResponseBody struct {
 	// The response message.
+	//
+	// example:
+	//
+	// 定时任务更新成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -26,7 +30,7 @@ type ModifyScheduledTaskResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

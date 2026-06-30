@@ -20,17 +20,22 @@ type iCreateApiKeyResponseBody interface {
 }
 
 type CreateApiKeyResponseBody struct {
+	// The response data.
 	Data *CreateApiKeyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -91,11 +96,16 @@ func (s *CreateApiKeyResponseBody) Validate() error {
 }
 
 type CreateApiKeyResponseBodyData struct {
+	// The endpoint for model invocation.
+	//
 	// example:
 	//
 	// http://xxx.yy/v1
-	BaseUrl       *string                                      `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// The list of custom API keys.
 	CustomKeyList []*CreateApiKeyResponseBodyDataCustomKeyList `json:"CustomKeyList,omitempty" xml:"CustomKeyList,omitempty" type:"Repeated"`
+	// The system-generated API key.
+	//
 	// example:
 	//
 	// sk-rds-xxx
@@ -151,24 +161,39 @@ func (s *CreateApiKeyResponseBodyData) Validate() error {
 }
 
 type CreateApiKeyResponseBodyDataCustomKeyList struct {
-	// Api Key
+	// The API key.
 	//
 	// example:
 	//
 	// sk-rds-*****
-	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	ApiKey          *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	DailyTokenQuota *int64  `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
+	// The API key name.
+	//
 	// example:
 	//
 	// api-*****
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// The quota ratio. This parameter takes effect only when **LimitType*	- is set to **ratio**.
+	//
 	// example:
 	//
 	// 0.2
 	LimitRate *float32 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
+	// The quota allocation method. Valid values:
+	//
+	// - **fixed**: The quota is a fixed value.
+	//
+	// - **ratio**: The quota is specified as a ratio of the total available resources.
+	//
+	// - **auto**: The quota is automatically allocated.
+	//
 	// example:
 	//
 	// fixed
 	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
+	// The token quota for the API key.
+	//
 	// example:
 	//
 	// 100000
@@ -185,6 +210,10 @@ func (s CreateApiKeyResponseBodyDataCustomKeyList) GoString() string {
 
 func (s *CreateApiKeyResponseBodyDataCustomKeyList) GetApiKey() *string {
 	return s.ApiKey
+}
+
+func (s *CreateApiKeyResponseBodyDataCustomKeyList) GetDailyTokenQuota() *int64 {
+	return s.DailyTokenQuota
 }
 
 func (s *CreateApiKeyResponseBodyDataCustomKeyList) GetKeyName() *string {
@@ -205,6 +234,11 @@ func (s *CreateApiKeyResponseBodyDataCustomKeyList) GetTokenQuota() *int64 {
 
 func (s *CreateApiKeyResponseBodyDataCustomKeyList) SetApiKey(v string) *CreateApiKeyResponseBodyDataCustomKeyList {
 	s.ApiKey = &v
+	return s
+}
+
+func (s *CreateApiKeyResponseBodyDataCustomKeyList) SetDailyTokenQuota(v int64) *CreateApiKeyResponseBodyDataCustomKeyList {
+	s.DailyTokenQuota = &v
 	return s
 }
 

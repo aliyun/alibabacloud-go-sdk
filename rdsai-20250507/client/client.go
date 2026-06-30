@@ -24,7 +24,23 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":      dara.String("rdsai.us-west-1.aliyuncs.com"),
+		"eu-central-1":   dara.String("rdsai.eu-central-1.aliyuncs.com"),
+		"cn-wulanchabu":  dara.String("rdsai.aliyuncs.com"),
+		"cn-shenzhen":    dara.String("rdsai.aliyuncs.com"),
+		"cn-shanghai":    dara.String("rdsai.aliyuncs.com"),
+		"cn-hongkong":    dara.String("rdsai.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("rdsai.aliyuncs.com"),
+		"cn-guangzhou":   dara.String("rdsai.aliyuncs.com"),
+		"cn-chengdu":     dara.String("rdsai.cn-chengdu.aliyuncs.com"),
+		"cn-beijing":     dara.String("rdsai.aliyuncs.com"),
+		"ap-southeast-5": dara.String("rdsai.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3": dara.String("rdsai.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-1": dara.String("rdsai.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-1": dara.String("rdsai.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -219,7 +235,13 @@ func (client *Client) ChatMessagesTaskStop(request *ChatMessagesTaskStopRequest)
 
 // Summary:
 //
-// 创建实例密钥
+// Create a custom API key.
+//
+// Description:
+//
+// ### Supported engines
+//
+// [RDS AI Assistant Ultimate Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - CreateApiKeyRequest
 //
@@ -234,6 +256,10 @@ func (client *Client) CreateApiKeyWithOptions(request *CreateApiKeyRequest, runt
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DailyTokenQuota) {
+		query["DailyTokenQuota"] = request.DailyTokenQuota
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -283,7 +309,13 @@ func (client *Client) CreateApiKeyWithOptions(request *CreateApiKeyRequest, runt
 
 // Summary:
 //
-// 创建实例密钥
+// Create a custom API key.
+//
+// Description:
+//
+// ### Supported engines
+//
+// [RDS AI Assistant Ultimate Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - CreateApiKeyRequest
 //
@@ -305,15 +337,13 @@ func (client *Client) CreateApiKey(request *CreateApiKeyRequest) (_result *Creat
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Supported Engine
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### Related Function Documentation
 //
-// >  Fees of an instance are changed if the call is successful. Before you call this operation, carefully read the related topics.
-//
-// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//	Warning: This API operation involves a Fee. Carefully read the related Function Documentation before performing this operation.
 //
 // @param tmpReq - CreateAppInstanceRequest
 //
@@ -368,6 +398,10 @@ func (client *Client) CreateAppInstanceWithOptions(tmpReq *CreateAppInstanceRequ
 
 	if !dara.IsNil(request.DashboardUsername) {
 		query["DashboardUsername"] = request.DashboardUsername
+	}
+
+	if !dara.IsNil(request.Database) {
+		query["Database"] = request.Database
 	}
 
 	if !dara.IsNil(request.DatabasePassword) {
@@ -431,15 +465,13 @@ func (client *Client) CreateAppInstanceWithOptions(tmpReq *CreateAppInstanceRequ
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Supported Engine
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### Related Function Documentation
 //
-// >  Fees of an instance are changed if the call is successful. Before you call this operation, carefully read the related topics.
-//
-// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//	Warning: This API operation involves a Fee. Carefully read the related Function Documentation before performing this operation.
 //
 // @param request - CreateAppInstanceRequest
 //
@@ -457,7 +489,7 @@ func (client *Client) CreateAppInstance(request *CreateAppInstanceRequest) (_res
 
 // Summary:
 //
-// Creates a dedicated agent.
+// Creates a user-specific agent.
 //
 // @param tmpReq - CreateCustomAgentRequest
 //
@@ -527,7 +559,7 @@ func (client *Client) CreateCustomAgentWithOptions(tmpReq *CreateCustomAgentRequ
 
 // Summary:
 //
-// Creates a dedicated agent.
+// Creates a user-specific agent.
 //
 // @param request - CreateCustomAgentRequest
 //
@@ -545,7 +577,7 @@ func (client *Client) CreateCustomAgent(request *CreateCustomAgentRequest) (_res
 
 // Summary:
 //
-// Creates an inspection task for multiple instances.
+// Creates an inspection task for one or more instances.
 //
 // @param request - CreateInspectionTaskRequest
 //
@@ -617,7 +649,7 @@ func (client *Client) CreateInspectionTaskWithOptions(request *CreateInspectionT
 
 // Summary:
 //
-// Creates an inspection task for multiple instances.
+// Creates an inspection task for one or more instances.
 //
 // @param request - CreateInspectionTaskRequest
 //
@@ -635,7 +667,125 @@ func (client *Client) CreateInspectionTask(request *CreateInspectionTaskRequest)
 
 // Summary:
 //
-// Creates a new scheduled inspection configuration for multiple instances.
+// 创建沙箱模板
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS Supabase
+//
+// ### 相关功能文档
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// @param request - CreateSandboxTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSandboxTemplateResponse
+func (client *Client) CreateSandboxTemplateWithOptions(request *CreateSandboxTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateSandboxTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DefaultCpu) {
+		query["DefaultCpu"] = request.DefaultCpu
+	}
+
+	if !dara.IsNil(request.DefaultMemory) {
+		query["DefaultMemory"] = request.DefaultMemory
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Replicas) {
+		query["Replicas"] = request.Replicas
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSandboxTemplate"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSandboxTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建沙箱模板
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS Supabase
+//
+// ### 相关功能文档
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// @param request - CreateSandboxTemplateRequest
+//
+// @return CreateSandboxTemplateResponse
+func (client *Client) CreateSandboxTemplate(request *CreateSandboxTemplateRequest) (_result *CreateSandboxTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateSandboxTemplateResponse{}
+	_body, _err := client.CreateSandboxTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a scheduled inspection task for one or more instances.
+//
+// Description:
+//
+// ### Supported engines
+//
+// # RDS PostgreSQL
+//
+// ### Related feature documentation
+//
+//	Warning: This API operation may incur charges. Please read the related feature documentation carefully before you proceed.
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - CreateScheduledTaskRequest
 //
@@ -719,7 +869,19 @@ func (client *Client) CreateScheduledTaskWithOptions(request *CreateScheduledTas
 
 // Summary:
 //
-// Creates a new scheduled inspection configuration for multiple instances.
+// Creates a scheduled inspection task for one or more instances.
+//
+// Description:
+//
+// ### Supported engines
+//
+// # RDS PostgreSQL
+//
+// ### Related feature documentation
+//
+//	Warning: This API operation may incur charges. Please read the related feature documentation carefully before you proceed.
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - CreateScheduledTaskRequest
 //
@@ -821,7 +983,13 @@ func (client *Client) CreateSkill(request *CreateSkillRequest) (_result *CreateS
 
 // Summary:
 //
-// 删除apiKey
+// Deletes a custom API key.
+//
+// Description:
+//
+// ### Applicable engine
+//
+// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -869,7 +1037,13 @@ func (client *Client) DeleteApiKeyWithOptions(request *DeleteApiKeyRequest, runt
 
 // Summary:
 //
-// 删除apiKey
+// Deletes a custom API key.
+//
+// Description:
+//
+// ### Applicable engine
+//
+// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -891,17 +1065,17 @@ func (client *Client) DeleteApiKey(request *DeleteApiKeyRequest) (_result *Delet
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
-// >  Fees of an instance are changed if the call is successful. Before you call this operation, carefully read the related topics.
+//	Warning: 该API操作涉及费用，请仔细阅读相关功能文档后再进行操作。
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// >  If you delete an RDS Supabase instance, the created RDS for PostgreSQL instance and the created NAT gateway are not automatically deleted. You must manually release the instance and delete the Internet NAT gateway and EIP.
+//	Notice: 删除RDS Supabase项目并不会自动删除在创建该项目时所生成的RDS PostgreSQL实例及开通的NAT网关，您需要[手动释放该实例](https://help.aliyun.com/document_detail/96749.html)，并删除[公网NAT网关](https://help.aliyun.com/document_detail/121139.html)和[EIP](https://help.aliyun.com/document_detail/121527.html)。
 //
 // @param request - DeleteAppInstanceRequest
 //
@@ -957,17 +1131,17 @@ func (client *Client) DeleteAppInstanceWithOptions(request *DeleteAppInstanceReq
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
-// >  Fees of an instance are changed if the call is successful. Before you call this operation, carefully read the related topics.
+//	Warning: 该API操作涉及费用，请仔细阅读相关功能文档后再进行操作。
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// >  If you delete an RDS Supabase instance, the created RDS for PostgreSQL instance and the created NAT gateway are not automatically deleted. You must manually release the instance and delete the Internet NAT gateway and EIP.
+//	Notice: 删除RDS Supabase项目并不会自动删除在创建该项目时所生成的RDS PostgreSQL实例及开通的NAT网关，您需要[手动释放该实例](https://help.aliyun.com/document_detail/96749.html)，并删除[公网NAT网关](https://help.aliyun.com/document_detail/121139.html)和[EIP](https://help.aliyun.com/document_detail/121527.html)。
 //
 // @param request - DeleteAppInstanceRequest
 //
@@ -1038,6 +1212,96 @@ func (client *Client) DeleteCustomAgent(request *DeleteCustomAgentRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteCustomAgentResponse{}
 	_body, _err := client.DeleteCustomAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除沙箱模板
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS Supabase
+//
+// ### 相关功能文档
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// @param request - DeleteSandboxTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSandboxTemplateResponse
+func (client *Client) DeleteSandboxTemplateWithOptions(request *DeleteSandboxTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteSandboxTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSandboxTemplate"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSandboxTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除沙箱模板
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS Supabase
+//
+// ### 相关功能文档
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// @param request - DeleteSandboxTemplateRequest
+//
+// @return DeleteSandboxTemplateResponse
+func (client *Client) DeleteSandboxTemplate(request *DeleteSandboxTemplateRequest) (_result *DeleteSandboxTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteSandboxTemplateResponse{}
+	_body, _err := client.DeleteSandboxTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1171,15 +1435,15 @@ func (client *Client) DeleteSkill(request *DeleteSkillRequest) (_result *DeleteS
 
 // Summary:
 //
-// Queries the details of an RDS Supabase instance.
+// Queries the details of an RDS AI application instance.
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1229,15 +1493,15 @@ func (client *Client) DescribeAppInstanceAttributeWithOptions(request *DescribeA
 
 // Summary:
 //
-// Queries the details of an RDS Supabase instance.
+// Queries the details of an RDS AI application instance.
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1257,15 +1521,15 @@ func (client *Client) DescribeAppInstanceAttribute(request *DescribeAppInstanceA
 
 // Summary:
 //
-// Queries the RDS Supabase instances.
+// This API retrieves a list of RDS AI application instances.
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1327,15 +1591,15 @@ func (client *Client) DescribeAppInstancesWithOptions(request *DescribeAppInstan
 
 // Summary:
 //
-// Queries the RDS Supabase instances.
+// This API retrieves a list of RDS AI application instances.
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1355,7 +1619,97 @@ func (client *Client) DescribeAppInstances(request *DescribeAppInstancesRequest)
 
 // Summary:
 //
-// Queries the events.
+// 查询已支持的沙箱模板列表
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS Supabase
+//
+// ### 相关功能文档
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// @param request - DescribeCommonSandboxTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCommonSandboxTemplatesResponse
+func (client *Client) DescribeCommonSandboxTemplatesWithOptions(request *DescribeCommonSandboxTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCommonSandboxTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCommonSandboxTemplates"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCommonSandboxTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询已支持的沙箱模板列表
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS Supabase
+//
+// ### 相关功能文档
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// @param request - DescribeCommonSandboxTemplatesRequest
+//
+// @return DescribeCommonSandboxTemplatesResponse
+func (client *Client) DescribeCommonSandboxTemplates(request *DescribeCommonSandboxTemplatesRequest) (_result *DescribeCommonSandboxTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeCommonSandboxTemplatesResponse{}
+	_body, _err := client.DescribeCommonSandboxTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// This API retrieves the list of events.
 //
 // @param request - DescribeEventsListRequest
 //
@@ -1419,7 +1773,7 @@ func (client *Client) DescribeEventsListWithOptions(request *DescribeEventsListR
 
 // Summary:
 //
-// Queries the events.
+// This API retrieves the list of events.
 //
 // @param request - DescribeEventsListRequest
 //
@@ -1437,15 +1791,15 @@ func (client *Client) DescribeEventsList(request *DescribeEventsListRequest) (_r
 
 // Summary:
 //
-// Queries the authentication information about an RDS Supabase instance.
+// Queries the authentication information of an RDS AI application instance.
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1495,15 +1849,15 @@ func (client *Client) DescribeInstanceAuthInfoWithOptions(request *DescribeInsta
 
 // Summary:
 //
-// Queries the authentication information about an RDS Supabase instance.
+// Queries the authentication information of an RDS AI application instance.
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1527,11 +1881,11 @@ func (client *Client) DescribeInstanceAuthInfo(request *DescribeInstanceAuthInfo
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1585,11 +1939,11 @@ func (client *Client) DescribeInstanceEndpointsWithOptions(request *DescribeInst
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1613,11 +1967,11 @@ func (client *Client) DescribeInstanceEndpoints(request *DescribeInstanceEndpoin
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1675,11 +2029,11 @@ func (client *Client) DescribeInstanceIpWhitelistWithOptions(request *DescribeIn
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1769,11 +2123,11 @@ func (client *Client) DescribeInstanceRAGConfig(request *DescribeInstanceRAGConf
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1827,11 +2181,11 @@ func (client *Client) DescribeInstanceSSLWithOptions(request *DescribeInstanceSS
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1855,15 +2209,15 @@ func (client *Client) DescribeInstanceSSL(request *DescribeInstanceSSLRequest) (
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// >  Only Object Storage Service (OSS) is supported for the storage of RDS Supabase.
+// > 当前仅支持对象存储OSS。
 //
 // @param request - DescribeInstanceStorageConfigRequest
 //
@@ -1915,15 +2269,15 @@ func (client *Client) DescribeInstanceStorageConfigWithOptions(request *Describe
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// >  Only Object Storage Service (OSS) is supported for the storage of RDS Supabase.
+// > 当前仅支持对象存储OSS。
 //
 // @param request - DescribeInstanceStorageConfigRequest
 //
@@ -1941,7 +2295,13 @@ func (client *Client) DescribeInstanceStorageConfig(request *DescribeInstanceSto
 
 // Summary:
 //
-// 查看 model operator 实例具体 token 使用情况
+// Queries the token usage records of RDS AI Assistant Ultimate Edition.
+//
+// Description:
+//
+// ### Applicable engine
+//
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra).
 //
 // @param request - DescribeMOTokenUsageDetailRequest
 //
@@ -1996,6 +2356,10 @@ func (client *Client) DescribeMOTokenUsageDetailWithOptions(request *DescribeMOT
 		query["StartTime"] = request.StartTime
 	}
 
+	if !dara.IsNil(request.UsageType) {
+		query["UsageType"] = request.UsageType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2021,7 +2385,13 @@ func (client *Client) DescribeMOTokenUsageDetailWithOptions(request *DescribeMOT
 
 // Summary:
 //
-// 查看 model operator 实例具体 token 使用情况
+// Queries the token usage records of RDS AI Assistant Ultimate Edition.
+//
+// Description:
+//
+// ### Applicable engine
+//
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra).
 //
 // @param request - DescribeMOTokenUsageDetailRequest
 //
@@ -2039,7 +2409,13 @@ func (client *Client) DescribeMOTokenUsageDetail(request *DescribeMOTokenUsageDe
 
 // Summary:
 //
-// 查询MO实例信息
+// View basic information and usage for the RDS AI Assistant Ultimate Edition.
+//
+// Description:
+//
+// ### Supported engines
+//
+// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DescribeModelOperatorRequest
 //
@@ -2083,7 +2459,13 @@ func (client *Client) DescribeModelOperatorWithOptions(request *DescribeModelOpe
 
 // Summary:
 //
-// 查询MO实例信息
+// View basic information and usage for the RDS AI Assistant Ultimate Edition.
+//
+// Description:
+//
+// ### Supported engines
+//
+// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DescribeModelOperatorRequest
 //
@@ -2101,7 +2483,13 @@ func (client *Client) DescribeModelOperator(request *DescribeModelOperatorReques
 
 // Summary:
 //
-// 查询监控数据
+// Retrieves monitoring data for an RDS AI Assistant Ultimate Edition instance.
+//
+// Description:
+//
+// ### Supported engines
+//
+// [RDS AI Assistant Ultimate Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param tmpReq - DescribeMonitorDataRequest
 //
@@ -2171,7 +2559,13 @@ func (client *Client) DescribeMonitorDataWithOptions(tmpReq *DescribeMonitorData
 
 // Summary:
 //
-// 查询监控数据
+// Retrieves monitoring data for an RDS AI Assistant Ultimate Edition instance.
+//
+// Description:
+//
+// ### Supported engines
+//
+// [RDS AI Assistant Ultimate Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DescribeMonitorDataRequest
 //
@@ -2189,7 +2583,17 @@ func (client *Client) DescribeMonitorData(request *DescribeMonitorDataRequest) (
 
 // Summary:
 //
-// 查询沙箱模板列表
+// Lists the sandbox templates you can use to create Supabase sandboxes.
+//
+// Description:
+//
+// ### Applicable engine
+//
+// # RDS Supabase
+//
+// ### Related documents
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - DescribeSandboxTemplatesRequest
 //
@@ -2257,7 +2661,17 @@ func (client *Client) DescribeSandboxTemplatesWithOptions(request *DescribeSandb
 
 // Summary:
 //
-// 查询沙箱模板列表
+// Lists the sandbox templates you can use to create Supabase sandboxes.
+//
+// Description:
+//
+// ### Applicable engine
+//
+// # RDS Supabase
+//
+// ### Related documents
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - DescribeSandboxTemplatesRequest
 //
@@ -2275,7 +2689,13 @@ func (client *Client) DescribeSandboxTemplates(request *DescribeSandboxTemplates
 
 // Summary:
 //
-// 更新旗舰版白名单
+// Describes the whitelist of an RDS AI Assistant Enterprise Edition instance.
+//
+// Description:
+//
+// ### Supported engine
+//
+// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DescribeWhitelistIpsRequest
 //
@@ -2319,7 +2739,13 @@ func (client *Client) DescribeWhitelistIpsWithOptions(request *DescribeWhitelist
 
 // Summary:
 //
-// 更新旗舰版白名单
+// Describes the whitelist of an RDS AI Assistant Enterprise Edition instance.
+//
+// Description:
+//
+// ### Supported engine
+//
+// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DescribeWhitelistIpsRequest
 //
@@ -2337,7 +2763,13 @@ func (client *Client) DescribeWhitelistIps(request *DescribeWhitelistIpsRequest)
 
 // Summary:
 //
-// 关闭Supabase的沙箱和边缘函数能力
+// Disables the sandbox and edge function capabilities for a Supabase instance. Note: This operation deletes all sandboxes and edge functions of the instance. Fully assess the business risks before you proceed.
+//
+// Description:
+//
+// Disables the sandbox and edge function capabilities for a Supabase instance.
+//
+//	Notice: This operation deletes all sandboxes and edge functions of the Supabase instance. Fully assess the business risks before you proceed.
 //
 // @param request - DisableAgentRuntimeRequest
 //
@@ -2389,7 +2821,13 @@ func (client *Client) DisableAgentRuntimeWithOptions(request *DisableAgentRuntim
 
 // Summary:
 //
-// 关闭Supabase的沙箱和边缘函数能力
+// Disables the sandbox and edge function capabilities for a Supabase instance. Note: This operation deletes all sandboxes and edge functions of the instance. Fully assess the business risks before you proceed.
+//
+// Description:
+//
+// Disables the sandbox and edge function capabilities for a Supabase instance.
+//
+//	Notice: This operation deletes all sandboxes and edge functions of the Supabase instance. Fully assess the business risks before you proceed.
 //
 // @param request - DisableAgentRuntimeRequest
 //
@@ -2407,7 +2845,15 @@ func (client *Client) DisableAgentRuntime(request *DisableAgentRuntimeRequest) (
 
 // Summary:
 //
-// 启用Supabase的沙箱和边缘函数能力
+// Enables the sandbox and Edge Routine capabilities for a Supabase instance. Read the operation description before you call this operation.
+//
+// Description:
+//
+// During the public preview, the sandbox and Edge Routine features are free of charge.
+//
+// ### Before you begin
+//
+// Before using this feature, you must complete [service-linked role authorization](https://api.aliyun.com/api/ResourceManager/2020-03-31/CreateServiceLinkedRole?spm=api-workbench.API%20Document.0.0.4ea75094rJgPzK&RegionId=cn-beijing&tab=DEBUG&params=%7B%2522ServiceName%2522:%2522supabase.rdsai.aliyuncs.com%2522%7D&sdkStyle=old). The service-linked role used is [AliyunServiceRoleForRDSAISupabase](https://www.alibabacloud.com/help/en/ram/product-overview/services-that-work-with-service-linked-roles).
 //
 // @param request - EnableAgentRuntimeRequest
 //
@@ -2467,7 +2913,15 @@ func (client *Client) EnableAgentRuntimeWithOptions(request *EnableAgentRuntimeR
 
 // Summary:
 //
-// 启用Supabase的沙箱和边缘函数能力
+// Enables the sandbox and Edge Routine capabilities for a Supabase instance. Read the operation description before you call this operation.
+//
+// Description:
+//
+// During the public preview, the sandbox and Edge Routine features are free of charge.
+//
+// ### Before you begin
+//
+// Before using this feature, you must complete [service-linked role authorization](https://api.aliyun.com/api/ResourceManager/2020-03-31/CreateServiceLinkedRole?spm=api-workbench.API%20Document.0.0.4ea75094rJgPzK&RegionId=cn-beijing&tab=DEBUG&params=%7B%2522ServiceName%2522:%2522supabase.rdsai.aliyuncs.com%2522%7D&sdkStyle=old). The service-linked role used is [AliyunServiceRoleForRDSAISupabase](https://www.alibabacloud.com/help/en/ram/product-overview/services-that-work-with-service-linked-roles).
 //
 // @param request - EnableAgentRuntimeRequest
 //
@@ -2486,6 +2940,12 @@ func (client *Client) EnableAgentRuntime(request *EnableAgentRuntimeRequest) (_r
 // Summary:
 //
 // # GetAvailableLLMModels
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS SUPABASE
 //
 // @param request - GetAvailableLLMModelsRequest
 //
@@ -2538,6 +2998,12 @@ func (client *Client) GetAvailableLLMModelsWithOptions(request *GetAvailableLLMM
 // Summary:
 //
 // # GetAvailableLLMModels
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS SUPABASE
 //
 // @param request - GetAvailableLLMModelsRequest
 //
@@ -2629,7 +3095,7 @@ func (client *Client) GetConversations(request *GetConversationsRequest) (_resul
 
 // Summary:
 //
-// Queries the dedicated agents created by a user.
+// Retrieves details for a specified custom agent.
 //
 // @param request - GetCustomAgentRequest
 //
@@ -2673,7 +3139,7 @@ func (client *Client) GetCustomAgentWithOptions(request *GetCustomAgentRequest, 
 
 // Summary:
 //
-// Queries the dedicated agents created by a user.
+// Retrieves details for a specified custom agent.
 //
 // @param request - GetCustomAgentRequest
 //
@@ -2761,7 +3227,7 @@ func (client *Client) GetInspectionReport(request *GetInspectionReportRequest) (
 
 // Summary:
 //
-// Queries specific conversation messages.
+// Retrieves a list of messages in a specific conversation.
 //
 // @param request - GetMessagesRequest
 //
@@ -2817,7 +3283,7 @@ func (client *Client) GetMessagesWithOptions(request *GetMessagesRequest, runtim
 
 // Summary:
 //
-// Queries specific conversation messages.
+// Retrieves a list of messages in a specific conversation.
 //
 // @param request - GetMessagesRequest
 //
@@ -2836,6 +3302,10 @@ func (client *Client) GetMessages(request *GetMessagesRequest) (_result *GetMess
 // Summary:
 //
 // # Obtain RDS AI Assistant Ultimate order information
+//
+// Description:
+//
+// ### Applicable DPI engine
 //
 // @param request - GetModelOperatorOrderRequest
 //
@@ -2873,6 +3343,10 @@ func (client *Client) GetModelOperatorOrderWithOptions(request *GetModelOperator
 // Summary:
 //
 // # Obtain RDS AI Assistant Ultimate order information
+//
+// Description:
+//
+// ### Applicable DPI engine
 //
 // @param request - GetModelOperatorOrderRequest
 //
@@ -2960,7 +3434,7 @@ func (client *Client) GetScheduledInstances(request *GetScheduledInstancesReques
 
 // Summary:
 //
-// Queries the list of all inspection reports for a specified scheduled task. You can filter and paginate inspection reports by time range.
+// Retrieves all inspection reports for a specified scheduled task. You can filter the results by time range and use pagination.
 //
 // @param request - GetScheduledReportsRequest
 //
@@ -3020,7 +3494,7 @@ func (client *Client) GetScheduledReportsWithOptions(request *GetScheduledReport
 
 // Summary:
 //
-// Queries the list of all inspection reports for a specified scheduled task. You can filter and paginate inspection reports by time range.
+// Retrieves all inspection reports for a specified scheduled task. You can filter the results by time range and use pagination.
 //
 // @param request - GetScheduledReportsRequest
 //
@@ -3104,7 +3578,7 @@ func (client *Client) GetSkill(request *GetSkillRequest) (_result *GetSkillRespo
 
 // Summary:
 //
-// Queries the individual inspection reports of all non-scheduled tasks under a specified user. Pagination is supported.
+// Retrieves paginated standalone inspection reports on a specified user\\"s non-scheduled tasks.
 //
 // @param request - GetStandAloneReportsRequest
 //
@@ -3164,7 +3638,7 @@ func (client *Client) GetStandAloneReportsWithOptions(request *GetStandAloneRepo
 
 // Summary:
 //
-// Queries the individual inspection reports of all non-scheduled tasks under a specified user. Pagination is supported.
+// Retrieves paginated standalone inspection reports on a specified user\\"s non-scheduled tasks.
 //
 // @param request - GetStandAloneReportsRequest
 //
@@ -3182,7 +3656,13 @@ func (client *Client) GetStandAloneReports(request *GetStandAloneReportsRequest)
 
 // Summary:
 //
-// 查询实例密钥信息
+// # View Custom API Key
+//
+// Description:
+//
+// ### Supported engines
+//
+// [DAS Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - ListApiKeysRequest
 //
@@ -3234,7 +3714,13 @@ func (client *Client) ListApiKeysWithOptions(request *ListApiKeysRequest, runtim
 
 // Summary:
 //
-// 查询实例密钥信息
+// # View Custom API Key
+//
+// Description:
+//
+// ### Supported engines
+//
+// [DAS Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - ListApiKeysRequest
 //
@@ -3252,7 +3738,7 @@ func (client *Client) ListApiKeys(request *ListApiKeysRequest) (_result *ListApi
 
 // Summary:
 //
-// Queries the dedicated agents created by a user.
+// Lists your custom agents.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -3300,7 +3786,7 @@ func (client *Client) ListCustomAgentWithOptions(request *ListCustomAgentRequest
 
 // Summary:
 //
-// Queries the dedicated agents created by a user.
+// Lists your custom agents.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -3365,6 +3851,12 @@ func (client *Client) ListCustomAgentTools() (_result *ListCustomAgentToolsRespo
 //
 // # ListLLMTokenUsage
 //
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS SUPABASE
+//
 // @param request - ListLLMTokenUsageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3425,6 +3917,12 @@ func (client *Client) ListLLMTokenUsageWithOptions(request *ListLLMTokenUsageReq
 //
 // # ListLLMTokenUsage
 //
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS SUPABASE
+//
 // @param request - ListLLMTokenUsageRequest
 //
 // @return ListLLMTokenUsageResponse
@@ -3441,7 +3939,7 @@ func (client *Client) ListLLMTokenUsage(request *ListLLMTokenUsageRequest) (_res
 
 // Summary:
 //
-// Queries the basic information of all inspection configurations under a specified user.
+// Lists basic information about all inspection configurations for the specified user ID.
 //
 // @param request - ListScheduledTasksRequest
 //
@@ -3493,7 +3991,7 @@ func (client *Client) ListScheduledTasksWithOptions(request *ListScheduledTasksR
 
 // Summary:
 //
-// Queries the basic information of all inspection configurations under a specified user.
+// Lists basic information about all inspection configurations for the specified user ID.
 //
 // @param request - ListScheduledTasksRequest
 //
@@ -3583,6 +4081,16 @@ func (client *Client) ListSkill(request *ListSkillRequest) (_result *ListSkillRe
 //
 // 修改RDS AI应用实例
 //
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS PostgreSQL
+//
+// ### 相关功能文档
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
 // @param tmpReq - ModifyAppInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3645,6 +4153,16 @@ func (client *Client) ModifyAppInstanceWithOptions(tmpReq *ModifyAppInstanceRequ
 //
 // 修改RDS AI应用实例
 //
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS PostgreSQL
+//
+// ### 相关功能文档
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
 // @param request - ModifyAppInstanceRequest
 //
 // @return ModifyAppInstanceResponse
@@ -3665,13 +4183,11 @@ func (client *Client) ModifyAppInstance(request *ModifyAppInstanceRequest) (_res
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Applicable Engine
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
-//
-// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+// ### Related Function Documentation
 //
 // @param tmpReq - ModifyInstanceAuthConfigRequest
 //
@@ -3733,13 +4249,11 @@ func (client *Client) ModifyInstanceAuthConfigWithOptions(tmpReq *ModifyInstance
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Applicable Engine
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
-//
-// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+// ### Related Function Documentation
 //
 // @param request - ModifyInstanceAuthConfigRequest
 //
@@ -3839,11 +4353,11 @@ func (client *Client) ModifyInstanceConfig(request *ModifyInstanceConfigRequest)
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -3913,11 +4427,11 @@ func (client *Client) ModifyInstanceIpWhitelistWithOptions(request *ModifyInstan
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -4025,11 +4539,11 @@ func (client *Client) ModifyInstanceRAGConfig(request *ModifyInstanceRAGConfigRe
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -4099,11 +4613,11 @@ func (client *Client) ModifyInstanceSSLWithOptions(request *ModifyInstanceSSLReq
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -4127,15 +4641,11 @@ func (client *Client) ModifyInstanceSSL(request *ModifyInstanceSSLRequest) (_res
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Supported Engine
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
-//
-// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
-//
-// >  Only Object Storage Service (OSS) is supported for the storage of RDS Supabase.
+// ### Related Function Documentation
 //
 // @param tmpReq - ModifyInstanceStorageConfigRequest
 //
@@ -4201,15 +4711,11 @@ func (client *Client) ModifyInstanceStorageConfigWithOptions(tmpReq *ModifyInsta
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### Supported Engine
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
-//
-// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
-//
-// >  Only Object Storage Service (OSS) is supported for the storage of RDS Supabase.
+// ### Related Function Documentation
 //
 // @param request - ModifyInstanceStorageConfigRequest
 //
@@ -4231,11 +4737,11 @@ func (client *Client) ModifyInstanceStorageConfig(request *ModifyInstanceStorage
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -4311,11 +4817,11 @@ func (client *Client) ModifyInstancesSSLWithOptions(tmpReq *ModifyInstancesSSLRe
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -4396,6 +4902,108 @@ func (client *Client) ModifyMessagesFeedbacks(request *ModifyMessagesFeedbacksRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyMessagesFeedbacksResponse{}
 	_body, _err := client.ModifyMessagesFeedbacksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改沙箱模板
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS Supabase
+//
+// ### 相关功能文档
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// @param request - ModifySandboxTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySandboxTemplateResponse
+func (client *Client) ModifySandboxTemplateWithOptions(request *ModifySandboxTemplateRequest, runtime *dara.RuntimeOptions) (_result *ModifySandboxTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DefaultCpu) {
+		query["DefaultCpu"] = request.DefaultCpu
+	}
+
+	if !dara.IsNil(request.DefaultMemory) {
+		query["DefaultMemory"] = request.DefaultMemory
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Replicas) {
+		query["Replicas"] = request.Replicas
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySandboxTemplate"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySandboxTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改沙箱模板
+//
+// Description:
+//
+// ### 适用引擎
+//
+// # RDS Supabase
+//
+// ### 相关功能文档
+//
+// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+//
+// @param request - ModifySandboxTemplateRequest
+//
+// @return ModifySandboxTemplateResponse
+func (client *Client) ModifySandboxTemplate(request *ModifySandboxTemplateRequest) (_result *ModifySandboxTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifySandboxTemplateResponse{}
+	_body, _err := client.ModifySandboxTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4499,7 +5107,13 @@ func (client *Client) ModifyScheduledTask(request *ModifyScheduledTaskRequest) (
 
 // Summary:
 //
-// 更新旗舰版白名单
+// Modifies the IP whitelist for an RDS AI Assistant Enterprise Edition instance.
+//
+// Description:
+//
+// ### Applicable engines
+//
+// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - ModifyWhitelistIpsRequest
 //
@@ -4547,7 +5161,13 @@ func (client *Client) ModifyWhitelistIpsWithOptions(request *ModifyWhitelistIpsR
 
 // Summary:
 //
-// 更新旗舰版白名单
+// Modifies the IP whitelist for an RDS AI Assistant Enterprise Edition instance.
+//
+// Description:
+//
+// ### Applicable engines
+//
+// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - ModifyWhitelistIpsRequest
 //
@@ -4565,7 +5185,13 @@ func (client *Client) ModifyWhitelistIps(request *ModifyWhitelistIpsRequest) (_r
 
 // Summary:
 //
-// 重命名实例密钥
+// Renames an API key.
+//
+// Description:
+//
+// ### Applicable engines
+//
+// [RDS AI Assistant (Ultimate Edition)](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - RenameApiKeyRequest
 //
@@ -4617,7 +5243,13 @@ func (client *Client) RenameApiKeyWithOptions(request *RenameApiKeyRequest, runt
 
 // Summary:
 //
-// 重命名实例密钥
+// Renames an API key.
+//
+// Description:
+//
+// ### Applicable engines
+//
+// [RDS AI Assistant (Ultimate Edition)](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - RenameApiKeyRequest
 //
@@ -4635,7 +5267,13 @@ func (client *Client) RenameApiKey(request *RenameApiKeyRequest) (_result *Renam
 
 // Summary:
 //
-// 重置apiKey
+// Resets an API key.
+//
+// Description:
+//
+// ### Applicable engines
+//
+// [RDS AI Assistant (Ultimate Edition)](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - ResetApiKeyRequest
 //
@@ -4683,7 +5321,13 @@ func (client *Client) ResetApiKeyWithOptions(request *ResetApiKeyRequest, runtim
 
 // Summary:
 //
-// 重置apiKey
+// Resets an API key.
+//
+// Description:
+//
+// ### Applicable engines
+//
+// [RDS AI Assistant (Ultimate Edition)](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - ResetApiKeyRequest
 //
@@ -4705,15 +5349,15 @@ func (client *Client) ResetApiKey(request *ResetApiKeyRequest) (_result *ResetAp
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// >  You can only change the password of a RDS Supabase Dashboard user.
+// > 当前仅支持修改RDS Supabase Dashboard用户的密码。
 //
 // @param request - ResetInstancePasswordRequest
 //
@@ -4773,15 +5417,15 @@ func (client *Client) ResetInstancePasswordWithOptions(request *ResetInstancePas
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// >  You can only change the password of a RDS Supabase Dashboard user.
+// > 当前仅支持修改RDS Supabase Dashboard用户的密码。
 //
 // @param request - ResetInstancePasswordRequest
 //
@@ -4803,11 +5447,11 @@ func (client *Client) ResetInstancePassword(request *ResetInstancePasswordReques
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -4861,11 +5505,11 @@ func (client *Client) RestartInstanceWithOptions(request *RestartInstanceRequest
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -4889,11 +5533,11 @@ func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result 
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -4947,11 +5591,11 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, ru
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -4975,11 +5619,11 @@ func (client *Client) StartInstance(request *StartInstanceRequest) (_result *Sta
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -5037,11 +5681,11 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### 适用引擎
 //
 // # RDS PostgreSQL
 //
-// ### [](#)References
+// ### 相关功能文档
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -5061,7 +5705,13 @@ func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopI
 
 // Summary:
 //
-// 修改实例密钥配额
+// # Modify the API KEY Quota
+//
+// Description:
+//
+// ### Supported engine
+//
+// [RDS AI Assistant Ultimate Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param tmpReq - UpdateApiKeyQuotaRequest
 //
@@ -5115,7 +5765,13 @@ func (client *Client) UpdateApiKeyQuotaWithOptions(tmpReq *UpdateApiKeyQuotaRequ
 
 // Summary:
 //
-// 修改实例密钥配额
+// # Modify the API KEY Quota
+//
+// Description:
+//
+// ### Supported engine
+//
+// [RDS AI Assistant Ultimate Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - UpdateApiKeyQuotaRequest
 //
@@ -5133,7 +5789,7 @@ func (client *Client) UpdateApiKeyQuota(request *UpdateApiKeyQuotaRequest) (_res
 
 // Summary:
 //
-// Updates the custom agent.
+// Updates a custom agent.
 //
 // @param tmpReq - UpdateCustomAgentRequest
 //
@@ -5207,7 +5863,7 @@ func (client *Client) UpdateCustomAgentWithOptions(tmpReq *UpdateCustomAgentRequ
 
 // Summary:
 //
-// Updates the custom agent.
+// Updates a custom agent.
 //
 // @param request - UpdateCustomAgentRequest
 //
@@ -5225,7 +5881,13 @@ func (client *Client) UpdateCustomAgent(request *UpdateCustomAgentRequest) (_res
 
 // Summary:
 //
-// 更新 API key 的告警百分比阈值
+// Updates the alert threshold percentage for API keys.
+//
+// Description:
+//
+// ### Applicable engines
+//
+// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param tmpReq - UpdateMOQuotaAlertThresholdRequest
 //
@@ -5279,7 +5941,13 @@ func (client *Client) UpdateMOQuotaAlertThresholdWithOptions(tmpReq *UpdateMOQuo
 
 // Summary:
 //
-// 更新 API key 的告警百分比阈值
+// Updates the alert threshold percentage for API keys.
+//
+// Description:
+//
+// ### Applicable engines
+//
+// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - UpdateMOQuotaAlertThresholdRequest
 //

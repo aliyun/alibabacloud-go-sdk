@@ -20,17 +20,22 @@ type iListApiKeysResponseBody interface {
 }
 
 type ListApiKeysResponseBody struct {
+	// The response data.
 	Data *ListApiKeysResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The unique request ID.
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates if the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -91,25 +96,50 @@ func (s *ListApiKeysResponseBody) Validate() error {
 }
 
 type ListApiKeysResponseBodyData struct {
+	// The base URL for model calls.
+	//
 	// example:
 	//
 	// http://xxx.yy/v1
-	BaseUrl       *string                                     `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// The custom API key list.
 	CustomKeyList []*ListApiKeysResponseBodyDataCustomKeyList `json:"CustomKeyList,omitempty" xml:"CustomKeyList,omitempty" type:"Repeated"`
-	IsRateLimited *bool                                       `json:"IsRateLimited,omitempty" xml:"IsRateLimited,omitempty"`
+	// example:
+	//
+	// 100000000
+	DailyTokenQuota *int64 `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
+	// Specifies if the system-generated key is rate-limited.
+	//
+	// example:
+	//
+	// false
+	IsRateLimited *bool `json:"IsRateLimited,omitempty" xml:"IsRateLimited,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The system-generated key.
+	//
 	// example:
 	//
 	// sk-rds-xxx
-	SystemApiKey     *string `json:"SystemApiKey,omitempty" xml:"SystemApiKey,omitempty"`
-	ThresholdPercent *int32  `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
+	SystemApiKey *string `json:"SystemApiKey,omitempty" xml:"SystemApiKey,omitempty"`
+	// The alarm threshold percentage for the SystemApiKey. For example, a value of 80 indicates that an alarm is triggered when usage reaches 80% of the quota. The alarm clears when usage falls below this threshold.
+	//
+	// example:
+	//
+	// 80
+	ThresholdPercent *int32 `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 138
@@ -130,6 +160,10 @@ func (s *ListApiKeysResponseBodyData) GetBaseUrl() *string {
 
 func (s *ListApiKeysResponseBodyData) GetCustomKeyList() []*ListApiKeysResponseBodyDataCustomKeyList {
 	return s.CustomKeyList
+}
+
+func (s *ListApiKeysResponseBodyData) GetDailyTokenQuota() *int64 {
+	return s.DailyTokenQuota
 }
 
 func (s *ListApiKeysResponseBodyData) GetIsRateLimited() *bool {
@@ -163,6 +197,11 @@ func (s *ListApiKeysResponseBodyData) SetBaseUrl(v string) *ListApiKeysResponseB
 
 func (s *ListApiKeysResponseBodyData) SetCustomKeyList(v []*ListApiKeysResponseBodyDataCustomKeyList) *ListApiKeysResponseBodyData {
 	s.CustomKeyList = v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyData) SetDailyTokenQuota(v int64) *ListApiKeysResponseBodyData {
+	s.DailyTokenQuota = &v
 	return s
 }
 
@@ -210,26 +249,54 @@ func (s *ListApiKeysResponseBodyData) Validate() error {
 }
 
 type ListApiKeysResponseBodyDataCustomKeyList struct {
-	// API Key
+	// The API key.
 	//
 	// example:
 	//
 	// sk-rds-*****
-	ApiKey        *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	IsRateLimited *bool   `json:"IsRateLimited,omitempty" xml:"IsRateLimited,omitempty"`
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// example:
+	//
+	// 100000000
+	DailyTokenQuota *int64 `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
+	// Specifies if the API key is rate-limited.
+	//
+	// example:
+	//
+	// false
+	IsRateLimited *bool `json:"IsRateLimited,omitempty" xml:"IsRateLimited,omitempty"`
+	// The key name.
+	//
 	// example:
 	//
 	// api-*****
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// The limit, specified as a ratio in decimal format. This parameter is used when LimitType is ratio.
+	//
 	// example:
 	//
 	// 0.2
 	LimitRate *float32 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
+	// The limit type. Valid values:
+	//
+	// - **fixed**: A fixed value.
+	//
+	// - **ratio**: A percentage of the total quota.
+	//
+	// - **auto**: The quota is allocated automatically.
+	//
 	// example:
 	//
 	// fixed
-	LimitType        *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
-	ThresholdPercent *int32  `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
+	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
+	// The alarm threshold percentage. For example, a value of 80 indicates that an alarm is triggered when usage reaches 80% of the quota. The alarm clears when usage falls below this threshold.
+	//
+	// example:
+	//
+	// 80
+	ThresholdPercent *int32 `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
+	// The token quota.
+	//
 	// example:
 	//
 	// 10000
@@ -246,6 +313,10 @@ func (s ListApiKeysResponseBodyDataCustomKeyList) GoString() string {
 
 func (s *ListApiKeysResponseBodyDataCustomKeyList) GetApiKey() *string {
 	return s.ApiKey
+}
+
+func (s *ListApiKeysResponseBodyDataCustomKeyList) GetDailyTokenQuota() *int64 {
+	return s.DailyTokenQuota
 }
 
 func (s *ListApiKeysResponseBodyDataCustomKeyList) GetIsRateLimited() *bool {
@@ -274,6 +345,11 @@ func (s *ListApiKeysResponseBodyDataCustomKeyList) GetTokenQuota() *int64 {
 
 func (s *ListApiKeysResponseBodyDataCustomKeyList) SetApiKey(v string) *ListApiKeysResponseBodyDataCustomKeyList {
 	s.ApiKey = &v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyDataCustomKeyList) SetDailyTokenQuota(v int64) *ListApiKeysResponseBodyDataCustomKeyList {
+	s.DailyTokenQuota = &v
 	return s
 }
 

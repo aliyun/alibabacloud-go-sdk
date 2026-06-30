@@ -16,8 +16,12 @@ type iUpdateMOQuotaAlertThresholdShrinkRequest interface {
 }
 
 type UpdateMOQuotaAlertThresholdShrinkRequest struct {
+	// A list of API keys.
+	//
 	// This parameter is required.
 	ApikeyShrink *string `json:"Apikey,omitempty" xml:"Apikey,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

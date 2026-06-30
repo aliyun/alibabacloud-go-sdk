@@ -24,7 +24,7 @@ type iUpdateCustomAgentShrinkRequest interface {
 }
 
 type UpdateCustomAgentShrinkRequest struct {
-	// The operation that you want to perform. Set the value to **UpdateCustomAgent**.
+	// The agent ID.
 	//
 	// This parameter is required.
 	//
@@ -32,18 +32,26 @@ type UpdateCustomAgentShrinkRequest struct {
 	//
 	// ebe44453-3b41-4c74-94d1-01d088d7****
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// The system prompts.
+	// Specifies whether to enable tools.
 	//
 	// example:
 	//
 	// true
 	EnableTools *bool `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
-	// The ID of the agent.
+	// The name of the custom agent.
+	//
+	// example:
+	//
+	// 查询实例列表Agent
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	SkillIdsShrink *string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty"`
-	// The name of the agent.
+	// The system prompt.
+	//
+	// example:
+	//
+	// 我是您用来查询实例列表的专属Agent
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	// Specifies whether to enable tools.
+	// The tools that the custom agent can use.
 	ToolsShrink *string `json:"Tools,omitempty" xml:"Tools,omitempty"`
 }
 

@@ -24,31 +24,31 @@ type iDescribeEventsListRequest interface {
 }
 
 type DescribeEventsListRequest struct {
-	// The start time of the query period.
+	// The end of the time range to query. Specify the time in the YYYY-MM-DD HH:mm:ss format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2025-08-28 18:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The region ID.
+	// The instance IDs. You can specify one or more instance IDs.
 	//
 	// example:
 	//
-	// r-uf6ce0r08lr7xnriq2
+	// r-uf6ce0r08lr7xn****
 	InstanceIdList *string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty"`
-	// The number of records per page.
+	// The number of the page to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The end time of the query period.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeEventsList**.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type DescribeEventsListRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The RDS Supabase instances.
+	// The beginning of the time range to query. Specify the time in the YYYY-MM-DD HH:mm:ss format. The time must be in UTC.
 	//
 	// example:
 	//

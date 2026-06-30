@@ -24,15 +24,15 @@ type iListCustomAgentResponseBody interface {
 }
 
 type ListCustomAgentResponseBody struct {
-	// The returned data.
+	// A list of custom agents.
 	Data []*ListCustomAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -43,9 +43,10 @@ type ListCustomAgentResponseBody struct {
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Skills    []*ListCustomAgentResponseBodySkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
-	// The total number of entries returned. By default, this parameter is not returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of skills.
+	Skills []*ListCustomAgentResponseBodySkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	// The total number of entries that match the query. This parameter is not returned by default.
 	//
 	// example:
 	//
@@ -138,7 +139,7 @@ func (s *ListCustomAgentResponseBody) Validate() error {
 }
 
 type ListCustomAgentResponseBodyData struct {
-	// The creation time of the agent.
+	// The creation time.
 	//
 	// example:
 	//
@@ -150,19 +151,27 @@ type ListCustomAgentResponseBodyData struct {
 	//
 	// true
 	EnableTools *bool `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
-	// The ID of the agent.
+	// The agent ID.
 	//
 	// example:
 	//
 	// d1b7d639-f34e-44c7-8231-987da14d****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the dedicated agent.
+	// The name of the custom agent.
+	//
+	// example:
+	//
+	// 日志分析Agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The system prompts.
+	// The system prompt.
+	//
+	// example:
+	//
+	// 我是您用来查询实例列表的专属Agent。
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	// The information about the tool.
+	// A list of tools.
 	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
-	// The modification time of the agent.
+	// The update time.
 	//
 	// example:
 	//
@@ -246,10 +255,14 @@ func (s *ListCustomAgentResponseBodyData) Validate() error {
 }
 
 type ListCustomAgentResponseBodySkills struct {
+	// The description of the skill.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SkillType   *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
+	// The skill ID.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the skill.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the skill.
+	SkillType *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
 }
 
 func (s ListCustomAgentResponseBodySkills) String() string {

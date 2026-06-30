@@ -18,7 +18,7 @@ type iRenameApiKeyRequest interface {
 }
 
 type RenameApiKeyRequest struct {
-	// API KEY
+	// The API key to rename.
 	//
 	// This parameter is required.
 	//
@@ -26,10 +26,14 @@ type RenameApiKeyRequest struct {
 	//
 	// sk-rds-*****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The new name for the API key.
+	//
 	// This parameter is required.
 	//
 	// example:

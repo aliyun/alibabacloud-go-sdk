@@ -25,6 +25,8 @@ type iCreateAppInstanceRequest interface {
 	GetDashboardPassword() *string
 	SetDashboardUsername(v string) *CreateAppInstanceRequest
 	GetDashboardUsername() *string
+	SetDatabase(v string) *CreateAppInstanceRequest
+	GetDatabase() *string
 	SetDatabasePassword(v string) *CreateAppInstanceRequest
 	GetDatabasePassword() *string
 	SetInitializeWithExistingData(v bool) *CreateAppInstanceRequest
@@ -63,8 +65,9 @@ type CreateAppInstanceRequest struct {
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken *string                               `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Components  []*CreateAppInstanceRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// List of modules
+	Components []*CreateAppInstanceRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// A reserved parameter.
 	DBInstanceConfig *CreateAppInstanceRequestDBInstanceConfig `json:"DBInstanceConfig,omitempty" xml:"DBInstanceConfig,omitempty" type:"Struct"`
 	// The instance type. Only **rdsai.supabase.basic*	- is supported.
@@ -87,6 +90,10 @@ type CreateAppInstanceRequest struct {
 	//
 	// supabase
 	DashboardUsername *string `json:"DashboardUsername,omitempty" xml:"DashboardUsername,omitempty"`
+	// example:
+	//
+	// test_database_01
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The idempotency token. The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
 	//
 	// example:
@@ -189,6 +196,10 @@ func (s *CreateAppInstanceRequest) GetDashboardUsername() *string {
 	return s.DashboardUsername
 }
 
+func (s *CreateAppInstanceRequest) GetDatabase() *string {
+	return s.Database
+}
+
 func (s *CreateAppInstanceRequest) GetDatabasePassword() *string {
 	return s.DatabasePassword
 }
@@ -261,6 +272,11 @@ func (s *CreateAppInstanceRequest) SetDashboardUsername(v string) *CreateAppInst
 	return s
 }
 
+func (s *CreateAppInstanceRequest) SetDatabase(v string) *CreateAppInstanceRequest {
+	s.Database = &v
+	return s
+}
+
 func (s *CreateAppInstanceRequest) SetDatabasePassword(v string) *CreateAppInstanceRequest {
 	s.DatabasePassword = &v
 	return s
@@ -320,6 +336,11 @@ func (s *CreateAppInstanceRequest) Validate() error {
 }
 
 type CreateAppInstanceRequestComponents struct {
+	// Module type
+	//
+	// example:
+	//
+	// supabase
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -345,14 +366,20 @@ func (s *CreateAppInstanceRequestComponents) Validate() error {
 }
 
 type CreateAppInstanceRequestDBInstanceConfig struct {
+	// The instance type of the database instance.
+	//
 	// example:
 	//
 	// pg.n2.2c.1m
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// The storage capacity of the database instance.
+	//
 	// example:
 	//
 	// 100
 	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
+	// The payment type of the database instance.
+	//
 	// example:
 	//
 	// Postpaid

@@ -35,51 +35,69 @@ type iCreateScheduledTaskRequest interface {
 
 type CreateScheduledTaskRequest struct {
 	// The description of the scheduled inspection task.
+	//
+	// example:
+	//
+	// 定时RDS实例巡检任务
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The new inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
+	// The inspection frequency. Use commas (,) to separate multiple values. The default is DAILY. Valid values:
 	//
-	// 	- DAILY
+	// - DAILY: Every day
 	//
-	// 	- Monday
+	// - Monday: Monday
 	//
-	// 	- Tuesday
+	// - Tuesday: Tuesday
 	//
-	// 	- Wednesday
+	// - Wednesday: Wednesday
 	//
-	// 	- Thursday
+	// - Thursday: Thursday
 	//
-	// 	- Friday
+	// - Friday: Friday
 	//
-	// 	- Saturday \\*Sunday
+	// - Saturday: Saturday
 	//
-	// ### [](#daily--dailymonday--daily-)Note: DAILY takes precedence over other values. For example, if you enter DAILY,Monday, the backend uses DAILY as the inspection frequency.
+	// - Sunday: Sunday
+	//
+	// ### Note: DAILY overrides weekly values. For example, if you enter DAILY,Monday, the system uses DAILY as the inspection frequency.
 	//
 	// example:
 	//
 	// Monday
 	Frequency       *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
-	// The IDs of the related instances. Separate multiple IDs with commas (,).
+	// The IDs of the instances for the task. Use commas (,) to separate multiple IDs.
 	//
 	// example:
 	//
 	// rm-2ze6mk259v322****,rm-2zef3b65430j0****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The name of the scheduled inspection task. The name cannot exceed 64 characters in length.
+	// The name of the scheduled inspection task. The maximum length is 64 characters.
 	//
 	// This parameter is required.
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// example:
+	//
+	// RDS巡检
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The report language. The default value is zh-CN. Supported values: zh-CN, zh-TW, ja-JP, and en-US.
+	//
+	// example:
+	//
+	// zh-CN
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	// The ID of the region where the report is stored.
 	ReportRegionId *string `json:"ReportRegionId,omitempty" xml:"ReportRegionId,omitempty"`
-	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The time when the inspection task is executed. Specify the time in the ISO 8601 standard in the HH:mm:ssZ format. The time must be in UTC. Default value: 02:00 AM.
+	// The type of the report.
+	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	// The execution time for the scheduled inspection task. Specify the time in the HH:mm:ssZ format (UTC time). The default is 02:00:00Z.
 	//
 	// example:
 	//
 	// 02:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The inspection time range. The default value is the latest 24 hours. Valid values: 1 to 168. The maximum value is 7 days.
+	// The time range of data to inspect, in hours. Valid values are from 1 to 168 (7 days). The default is 24.
 	//
 	// example:
 	//

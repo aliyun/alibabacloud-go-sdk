@@ -30,40 +30,48 @@ type iModifyScheduledTaskRequest interface {
 }
 
 type ModifyScheduledTaskRequest struct {
-	// The description of the new inspection configuration.
+	// The new description of the inspection configuration.
+	//
+	// example:
+	//
+	// 定时RDS实例巡检任务
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The new inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
+	// The new inspection frequency. Separate multiple values with a comma (,). The default value is DAILY. Valid values:
 	//
-	// 	- DAILY
+	// - DAILY: Every day
 	//
-	// 	- Monday
+	// - Monday: Every Monday
 	//
-	// 	- Tuesday
+	// - Tuesday: Every Tuesday
 	//
-	// 	- Wednesday
+	// - Wednesday: Every Wednesday
 	//
-	// 	- Thursday
+	// - Thursday: Every Thursday
 	//
-	// 	- Friday
+	// - Friday: Every Friday
 	//
-	// 	- Saturday
+	// - Saturday: Every Saturday
 	//
-	// 	- Sunday
+	// - Sunday: Every Sunday
 	//
-	// ### [](#daily--dailymonday--daily-)Note: DAILY takes precedence over other values. For example, if you enter DAILY,Monday, the backend will use DAILY as the inspection frequency.
+	// ### Note: `DAILY` overrides all other day-of-the-week settings. For example, if you specify `DAILY,Monday`, the system uses `DAILY` as the inspection frequency.
 	//
 	// example:
 	//
 	// Monday
 	Frequency       *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
-	// The new list of related instances. Separate multiple instances with commas (,).
+	// The new instance IDs to associate with the task. Separate multiple IDs with a comma (,).
 	//
 	// example:
 	//
 	// rm-2ze6mk259v322****,rm-2zef3b65430j0****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The name of the new inspection configuration.
+	// The new name of the inspection configuration.
+	//
+	// example:
+	//
+	// RDS巡检任务
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
 	// The ID of the scheduled inspection configuration.
@@ -74,13 +82,13 @@ type ModifyScheduledTaskRequest struct {
 	//
 	// 847268a4-196f-416b-aa12-bfe0c115****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
-	// The new execution time of the inspection task. Specify the time in the ISO 8601 standard in the HH:mm:ssZ format. The time must be in UTC.
+	// The new time to run the inspection task. The time must be in the `HH:mm:ssZ` format and in UTC.
 	//
 	// example:
 	//
 	// 02:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The inspection time range. The default value is the latest 24 hours. Valid values: 1 to 168. The maximum value is 7 days.
+	// The inspection time range in hours. The default is 24, which means data from the last 24 hours is inspected. Valid values: 1 to 168. The maximum supported range is 7 days.
 	//
 	// example:
 	//

@@ -20,21 +20,21 @@ type iGetMessagesResponseBody interface {
 }
 
 type GetMessagesResponseBody struct {
-	// The returned results.
+	// A list of message objects.
 	Data []*GetMessagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Indicates whether the current page is followed by a page.
+	// Indicates whether there are more messages to retrieve.
 	//
 	// example:
 	//
 	// true
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The maximum number of entries to return.
+	// The value of the Limit parameter used for this request.
 	//
 	// example:
 	//
 	// 100
 	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The request ID.
+	// The unique identifier for the request.
 	//
 	// example:
 	//
@@ -100,22 +100,26 @@ func (s *GetMessagesResponseBody) Validate() error {
 }
 
 type GetMessagesResponseBodyData struct {
-	// The response to the query.
+	// The AI-generated response to the query.
+	//
+	// example:
+	//
+	// 您询问的实例rm-bp14as9914vd3***	- 磁盘使用率为23%，暂时不需要进行扩容。如果您需要进一步查看某个实例的详细配置、性能监控或进行其他操作，请告诉我具体需求！
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	// The ID of the conversation.
+	// The unique identifier for the conversation.
 	//
 	// example:
 	//
 	// 9cbbe885-b240-4803-9d15-6781a3fd****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The creation time of the conversation.
+	// The Unix timestamp (in seconds) when the message was created.
 	//
 	// example:
 	//
 	// 1763986004
 	CreatedAt *string                              `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
 	Events    []*GetMessagesResponseBodyDataEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// The feedback.
+	// The user\\"s feedback on the answer, such as "like" or "dislike".
 	//
 	// example:
 	//
@@ -124,16 +128,20 @@ type GetMessagesResponseBodyData struct {
 	GenerationFinishedAt *string `json:"GenerationFinishedAt,omitempty" xml:"GenerationFinishedAt,omitempty"`
 	GenerationStartedAt  *string `json:"GenerationStartedAt,omitempty" xml:"GenerationStartedAt,omitempty"`
 	GenerationStatus     *string `json:"GenerationStatus,omitempty" xml:"GenerationStatus,omitempty"`
-	// The message ID.
+	// The unique identifier for the message.
 	//
 	// example:
 	//
 	// 84dc9f9b-424a-404d-9c36-35e9d000****
 	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	LastSentEntryId *string `json:"LastSentEntryId,omitempty" xml:"LastSentEntryId,omitempty"`
-	// The query statement.
+	// The user\\"s query.
+	//
+	// example:
+	//
+	// 实例rm-bp14as9914vd3***	- 磁盘使用率，是否需要扩容
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The retriever resources.
+	// The resources that were retrieved to generate the answer.
 	RetrieverResources []interface{} `json:"RetrieverResources,omitempty" xml:"RetrieverResources,omitempty" type:"Repeated"`
 	StreamKey          *string       `json:"StreamKey,omitempty" xml:"StreamKey,omitempty"`
 }

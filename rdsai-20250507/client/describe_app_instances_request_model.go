@@ -22,31 +22,31 @@ type iDescribeAppInstancesRequest interface {
 }
 
 type DescribeAppInstancesRequest struct {
-	// The ID of the RDS for PostgreSQL instance with which the RDS Supabase instances are associated. If you specify this parameter, the RDS Supabase instances associated with the specified RDS for PostgreSQL instance are queried.
+	// The application type. The only supported value is **supabase**, which indicates [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
 	//
 	// example:
 	//
 	// supabase
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The region ID.
+	// The ID of an RDS PostgreSQL instance to return only the associated AI application instances.
 	//
 	// example:
 	//
 	// pgm-2ze49qv594vi****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The number of records per page. Valid values: **1 to 50**.
+	// The page number of the results to return. The value must be greater than 0.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The application type. Only **supabase*	- is supported. For more information, see [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
+	// The number of AI application instances to return on each page. Valid values: **1 to 50**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeAppInstances**.
+	// The region ID.
 	//
 	// example:
 	//

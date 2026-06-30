@@ -23,6 +23,10 @@ type GetInspectionReportResponseBody struct {
 	// The details of the result.
 	Data []*GetInspectionReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The report text in the markdown format.
+	//
+	// example:
+	//
+	// # RDS批量巡检汇总报告\\n\\n> 本次批量巡检共检查 **1*	- 个实例；发现 **1*	- 个实例存在警告（共 1 项警告）……
 	MarkdownText *string `json:"MarkdownText,omitempty" xml:"MarkdownText,omitempty"`
 	// The request ID.
 	//
@@ -111,6 +115,10 @@ type GetInspectionReportResponseBodyData struct {
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	// The description of the instance.
+	//
+	// example:
+	//
+	// 测试实例
 	InstanceDesc *string `json:"InstanceDesc,omitempty" xml:"InstanceDesc,omitempty"`
 	// The instance ID.
 	//
@@ -125,6 +133,10 @@ type GetInspectionReportResponseBodyData struct {
 	// 	- If the InstanceId parameter is not specified, all content of the inspection report is returned. However, the MarkdownText field is empty.
 	//
 	// 	- If the InstanceId parameter is specified, the content related to the instance is returned in the MarkdownText field.
+	//
+	// example:
+	//
+	// # RDS实例巡检报告\\n\\n**实例ID**: `rm-2zep6e5u6l2yu****`\\n\\n**引擎类型**: MySQL\\n\\n**地域**: cn-beijing\\n\\n**时间范围(UTC)**: 2026-02-04T03:31:00Z ~ 2026-02-05T03:31:00Z\\n\\n> 本次巡检共包含 **60*	- 项检查，其中 1项警告、57项正常、2项数据获取失败。……
 	MarkdownText *string `json:"MarkdownText,omitempty" xml:"MarkdownText,omitempty"`
 	// The region where the instance resides.
 	//
@@ -307,6 +319,10 @@ type GetInspectionReportResponseBodyDataDataItems struct {
 	// Normal
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The response message.
+	//
+	// example:
+	//
+	// 实例运行状态正常
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The name of the category.
 	//

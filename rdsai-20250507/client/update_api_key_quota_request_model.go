@@ -16,11 +16,14 @@ type iUpdateApiKeyQuotaRequest interface {
 }
 
 type UpdateApiKeyQuotaRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// rds_copilot***_public_cn-*********6
-	InstanceId *string                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Keys       []*UpdateApiKeyQuotaRequestKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A list of API keys.
+	Keys []*UpdateApiKeyQuotaRequestKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 }
 
 func (s UpdateApiKeyQuotaRequest) String() string {
@@ -63,7 +66,7 @@ func (s *UpdateApiKeyQuotaRequest) Validate() error {
 }
 
 type UpdateApiKeyQuotaRequestKeys struct {
-	// API KEY
+	// The API key.
 	//
 	// example:
 	//
@@ -71,12 +74,28 @@ type UpdateApiKeyQuotaRequestKeys struct {
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// example:
 	//
+	// 100000000
+	DailyTokenQuota *int64 `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
+	// The limit rate. This parameter is required when `LimitType` is set to `ratio`.
+	//
+	// example:
+	//
 	// 0.2
 	LimitRate *float64 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
+	// The limit type. Valid values:
+	//
+	// - `ratio`: Allocates the quota proportionally.
+	//
+	// - `fixed`: Allocates a fixed quota.
+	//
+	// - `auto`: Allocates the quota automatically.
+	//
 	// example:
 	//
 	// fixed
 	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
+	// The token quota. This parameter is required when `LimitType` is set to `fixed`.
+	//
 	// example:
 	//
 	// 100000
@@ -95,6 +114,10 @@ func (s *UpdateApiKeyQuotaRequestKeys) GetApiKey() *string {
 	return s.ApiKey
 }
 
+func (s *UpdateApiKeyQuotaRequestKeys) GetDailyTokenQuota() *int64 {
+	return s.DailyTokenQuota
+}
+
 func (s *UpdateApiKeyQuotaRequestKeys) GetLimitRate() *float64 {
 	return s.LimitRate
 }
@@ -109,6 +132,11 @@ func (s *UpdateApiKeyQuotaRequestKeys) GetTokenQuota() *int64 {
 
 func (s *UpdateApiKeyQuotaRequestKeys) SetApiKey(v string) *UpdateApiKeyQuotaRequestKeys {
 	s.ApiKey = &v
+	return s
+}
+
+func (s *UpdateApiKeyQuotaRequestKeys) SetDailyTokenQuota(v int64) *UpdateApiKeyQuotaRequestKeys {
+	s.DailyTokenQuota = &v
 	return s
 }
 

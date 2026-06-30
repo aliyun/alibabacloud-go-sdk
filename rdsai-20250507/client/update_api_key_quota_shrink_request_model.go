@@ -16,10 +16,13 @@ type iUpdateApiKeyQuotaShrinkRequest interface {
 }
 
 type UpdateApiKeyQuotaShrinkRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A list of API keys.
 	KeysShrink *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
 }
 

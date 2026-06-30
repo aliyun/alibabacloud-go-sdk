@@ -29,6 +29,10 @@ type GetScheduledInstancesResponseBody struct {
 	// The list of instances included in the inspection configuration.
 	Instances []*GetScheduledInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The response message.
+	//
+	// example:
+	//
+	// 获取巡检实例ID列表成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The page number. Pages start from 1. Default value: 1.
 	//
@@ -154,6 +158,10 @@ type GetScheduledInstancesResponseBodyInstances struct {
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	// The instance description.
+	//
+	// example:
+	//
+	// 巡检测试实例。
 	InstanceDesc *string `json:"InstanceDesc,omitempty" xml:"InstanceDesc,omitempty"`
 	// The instance ID.
 	//

@@ -123,10 +123,14 @@ func (s *ModifyInstanceRAGConfigRequest) Validate() error {
 }
 
 type ModifyInstanceRAGConfigRequestConfigList struct {
+	// The name of the configuration item.
+	//
 	// example:
 	//
 	// LLM_MODEL
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// qwen-flash

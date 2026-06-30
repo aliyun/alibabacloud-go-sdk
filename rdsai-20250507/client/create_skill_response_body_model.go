@@ -29,6 +29,10 @@ type iCreateSkillResponseBody interface {
 
 type CreateSkillResponseBody struct {
 	// The database engine-specific content.
+	//
+	// example:
+	//
+	// {"MySQL": "MySQL 优化指南...","PostgreSQL": "PostgreSQL 优化指南..."}
 	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The creation time of the skill.
 	//
@@ -39,6 +43,10 @@ type CreateSkillResponseBody struct {
 	// The list of database engines.
 	Dbtypes []*string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty" type:"Repeated"`
 	// The description of the skill.
+	//
+	// example:
+	//
+	// SQL查询优化技能。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The unique identifier of the skill.
 	//

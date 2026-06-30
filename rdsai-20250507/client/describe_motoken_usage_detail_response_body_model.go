@@ -21,32 +21,49 @@ type iDescribeMOTokenUsageDetailResponseBody interface {
 	GetRequestId() *string
 	SetTotalCount(v int32) *DescribeMOTokenUsageDetailResponseBody
 	GetTotalCount() *int32
+	SetUsageType(v string) *DescribeMOTokenUsageDetailResponseBody
+	GetUsageType() *string
 }
 
 type DescribeMOTokenUsageDetailResponseBody struct {
+	// The cursor for the next page. An empty value indicates the last page.
+	//
 	// example:
 	//
 	// eyJpZCI6MTIzNDUsInRzIjoiMjAyNi0wNC0wOFQwMDowMDowMFoifQ==
 	NextCursor *string `json:"NextCursor,omitempty" xml:"NextCursor,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records  []*DescribeMOTokenUsageDetailResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of records returned.
+	Records []*DescribeMOTokenUsageDetailResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records that match the query conditions.
+	//
 	// example:
 	//
 	// 20
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The usage type.
+	//
+	// example:
+	//
+	// text
+	UsageType *string `json:"UsageType,omitempty" xml:"UsageType,omitempty"`
 }
 
 func (s DescribeMOTokenUsageDetailResponseBody) String() string {
@@ -81,6 +98,10 @@ func (s *DescribeMOTokenUsageDetailResponseBody) GetTotalCount() *int32 {
 	return s.TotalCount
 }
 
+func (s *DescribeMOTokenUsageDetailResponseBody) GetUsageType() *string {
+	return s.UsageType
+}
+
 func (s *DescribeMOTokenUsageDetailResponseBody) SetNextCursor(v string) *DescribeMOTokenUsageDetailResponseBody {
 	s.NextCursor = &v
 	return s
@@ -111,6 +132,11 @@ func (s *DescribeMOTokenUsageDetailResponseBody) SetTotalCount(v int32) *Describ
 	return s
 }
 
+func (s *DescribeMOTokenUsageDetailResponseBody) SetUsageType(v string) *DescribeMOTokenUsageDetailResponseBody {
+	s.UsageType = &v
+	return s
+}
+
 func (s *DescribeMOTokenUsageDetailResponseBody) Validate() error {
 	if s.Records != nil {
 		for _, item := range s.Records {
@@ -125,34 +151,56 @@ func (s *DescribeMOTokenUsageDetailResponseBody) Validate() error {
 }
 
 type DescribeMOTokenUsageDetailResponseBodyRecords struct {
+	// The consumer associated with the API key.
+	//
 	// example:
 	//
 	// 16******4_rds_copilot****_public_cn-4****02
 	ConsumerName *string `json:"ConsumerName,omitempty" xml:"ConsumerName,omitempty"`
+	// The additional information passed by the user in the extra_info field during the request. The value is a JSON string.
+	//
+	// example:
+	//
+	// {"label": "test"}
+	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// The number of input tokens consumed.
+	//
 	// example:
 	//
 	// 10000
 	InputTokens *float64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The model that was called.
+	//
 	// example:
 	//
 	// qwen-flash
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The number of output tokens consumed.
+	//
 	// example:
 	//
 	// 10000
 	OutputTokens *float64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// The region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The request time in ISO 8601 format (UTC).
+	//
 	// example:
 	//
 	// 2026-04-01T01:00:00Z
 	RequestTime *string `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
+	// The total number of tokens.
+	//
 	// example:
 	//
 	// 100000
@@ -169,6 +217,10 @@ func (s DescribeMOTokenUsageDetailResponseBodyRecords) GoString() string {
 
 func (s *DescribeMOTokenUsageDetailResponseBodyRecords) GetConsumerName() *string {
 	return s.ConsumerName
+}
+
+func (s *DescribeMOTokenUsageDetailResponseBodyRecords) GetExtraInfo() *string {
+	return s.ExtraInfo
 }
 
 func (s *DescribeMOTokenUsageDetailResponseBodyRecords) GetInputTokens() *float64 {
@@ -201,6 +253,11 @@ func (s *DescribeMOTokenUsageDetailResponseBodyRecords) GetTotalTokens() *float6
 
 func (s *DescribeMOTokenUsageDetailResponseBodyRecords) SetConsumerName(v string) *DescribeMOTokenUsageDetailResponseBodyRecords {
 	s.ConsumerName = &v
+	return s
+}
+
+func (s *DescribeMOTokenUsageDetailResponseBodyRecords) SetExtraInfo(v string) *DescribeMOTokenUsageDetailResponseBodyRecords {
+	s.ExtraInfo = &v
 	return s
 }
 

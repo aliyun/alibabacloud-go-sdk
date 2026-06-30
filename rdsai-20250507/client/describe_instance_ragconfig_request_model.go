@@ -22,7 +22,7 @@ type DescribeInstanceRAGConfigRequest struct {
 	//
 	// example:
 	//
-	// ra-supabase-8moov5lxba***
+	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The operation that you want to perform. Set the value to **DescribeInstanceRAGConfig**.
 	//

@@ -27,6 +27,10 @@ type iListScheduledTasksResponseBody interface {
 
 type ListScheduledTasksResponseBody struct {
 	// The response message.
+	//
+	// example:
+	//
+	// 任务信息查询成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The page number.
 	//
@@ -34,7 +38,7 @@ type ListScheduledTasksResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -46,7 +50,7 @@ type ListScheduledTasksResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of scheduled inspection tasks.
+	// A list of scheduled inspection tasks.
 	Schedules []*ListScheduledTasksResponseBodySchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Repeated"`
 	// Indicates whether the request was successful.
 	//
@@ -54,7 +58,7 @@ type ListScheduledTasksResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries that are returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -147,46 +151,54 @@ func (s *ListScheduledTasksResponseBody) Validate() error {
 }
 
 type ListScheduledTasksResponseBodySchedules struct {
-	// The creation time of the task.
+	// The time the task was created, in UTC.
 	//
 	// example:
 	//
 	// 2026-02-04T06:51:24Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the inspection task.
+	// The description of the inspection.
+	//
+	// example:
+	//
+	// 每天凌晨2点自动巡检生产环境RDS实例
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The new inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
+	// The inspection frequency. Multiple values are separated by commas. The default is DAILY. Valid values:
 	//
-	// 	- DAILY
+	// - DAILY: Every day
 	//
-	// 	- Monday
+	// - Monday: Monday
 	//
-	// 	- Tuesday
+	// - Tuesday: Tuesday
 	//
-	// 	- Wednesday
+	// - Wednesday: Wednesday
 	//
-	// 	- Thursday
+	// - Thursday: Thursday
 	//
-	// 	- Friday
+	// - Friday: Friday
 	//
-	// 	- Saturday
+	// - Saturday: Saturday
 	//
-	// 	- Sunday
+	// - Sunday: Sunday
 	//
-	// ### [](#daily--dailymonday--daily-)Note: DAILY takes precedence over other values. For example, if you set this parameter to DAILY,Monday, the backend will use DAILY as the inspection frequency.
+	// ### Note: The DAILY setting overrides any specified days of the week. For example, if you specify DAILY,Monday, the inspection runs daily.
 	//
 	// example:
 	//
 	// Monday
 	Frequency       *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
-	// The number of instances covered by the task.
+	// The number of instances in the task.
 	//
 	// example:
 	//
 	// 1
 	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
 	// The name of the task.
+	//
+	// example:
+	//
+	// 巡检测试
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
@@ -197,13 +209,17 @@ type ListScheduledTasksResponseBodySchedules struct {
 	//
 	// 9d246af2-a0cd-4f69-857d-3785048f****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
-	// The actual start time of the task.
+	// The task start time, in UTC.
 	//
 	// example:
 	//
 	// 18:00:00Z
 	TaskStartTime *string `json:"TaskStartTime,omitempty" xml:"TaskStartTime,omitempty"`
-	// The inspection time range. The default value is the latest 24 hours. Valid values: 1 to 168. The maximum value is 7 days.
+	// The inspection time range in hours. Default: 24. Valid values: 1 to 168.
+	//
+	// example:
+	//
+	// 24小时
 	TimeRange *string `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
 }
 

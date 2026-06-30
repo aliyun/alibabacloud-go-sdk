@@ -27,20 +27,24 @@ type iGetStandAloneReportsResponseBody interface {
 
 type GetStandAloneReportsResponseBody struct {
 	// The response message.
+	//
+	// example:
+	//
+	// 获取巡检报告列表成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number. Pages start from 1. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on each page. Default value: 20. Maximum value: 100.
+	// The number of entries per page. The default value is 20 and the maximum value is 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The reports.
+	// A list of inspection reports.
 	Reports []*GetStandAloneReportsResponseBodyReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -48,13 +52,13 @@ type GetStandAloneReportsResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of records.
+	// The total number of entries across all pages.
 	//
 	// example:
 	//
@@ -147,23 +151,24 @@ func (s *GetStandAloneReportsResponseBody) Validate() error {
 }
 
 type GetStandAloneReportsResponseBodyReports struct {
-	// The creation time of the inspection task.
+	// The time the inspection task was created.
 	//
 	// example:
 	//
 	// 2026-01-22T08:20:31Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The end time of the inspection. The time is in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The end time of the inspection. The time is in UTC and uses the `YYYY-MM-DDTHH:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2026-01-23T08:20:31Z
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReportLanguage  *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
-	ReportType      *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The start time of the inspection. The time is in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The ID of the region.
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	// The start time of the inspection. The time is in UTC and uses the `YYYY-MM-DDTHH:mm:ssZ` format.
 	//
 	// example:
 	//
@@ -175,7 +180,7 @@ type GetStandAloneReportsResponseBodyReports struct {
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the inspection report.
+	// The ID of the inspection task.
 	//
 	// example:
 	//

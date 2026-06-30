@@ -16,11 +16,13 @@ type iDisableAgentRuntimeResponseBody interface {
 }
 
 type DisableAgentRuntimeResponseBody struct {
+	// The ID of the AI application instance.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

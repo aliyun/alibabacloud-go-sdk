@@ -27,6 +27,8 @@ type iDescribeAppInstanceAttributeResponseBody interface {
 	GetInstanceMinorVersion() *string
 	SetInstanceName(v string) *DescribeAppInstanceAttributeResponseBody
 	GetInstanceName() *string
+	SetLoginToken(v string) *DescribeAppInstanceAttributeResponseBody
+	GetLoginToken() *string
 	SetNatCreatedBy(v string) *DescribeAppInstanceAttributeResponseBody
 	GetNatCreatedBy() *string
 	SetNatGatewayId(v string) *DescribeAppInstanceAttributeResponseBody
@@ -39,8 +41,16 @@ type iDescribeAppInstanceAttributeResponseBody interface {
 	GetRegionId() *string
 	SetRequestId(v string) *DescribeAppInstanceAttributeResponseBody
 	GetRequestId() *string
+	SetRetentionHours(v string) *DescribeAppInstanceAttributeResponseBody
+	GetRetentionHours() *string
+	SetSqlExtendMoInstanceId(v string) *DescribeAppInstanceAttributeResponseBody
+	GetSqlExtendMoInstanceId() *string
 	SetStatus(v string) *DescribeAppInstanceAttributeResponseBody
 	GetStatus() *string
+	SetUploadKey(v string) *DescribeAppInstanceAttributeResponseBody
+	GetUploadKey() *string
+	SetUploadKeyList(v []*DescribeAppInstanceAttributeResponseBodyUploadKeyList) *DescribeAppInstanceAttributeResponseBody
+	GetUploadKeyList() []*DescribeAppInstanceAttributeResponseBodyUploadKeyList
 	SetVSwitchId(v string) *DescribeAppInstanceAttributeResponseBody
 	GetVSwitchId() *string
 	SetVpcConnectionString(v string) *DescribeAppInstanceAttributeResponseBody
@@ -56,14 +66,14 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// test-supabase
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The application type. Only **supabase*	- is supported. For more information, see [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
+	// The application type. Currently, only **supabase*	- is supported, which indicates [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
 	//
 	// example:
 	//
 	// supabase
 	AppType    *string                                               `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	Components []*DescribeAppInstanceAttributeResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The ID of the RDS for PostgreSQL instance with which the RDS Supabase instances are associated.
+	// The instance ID of the ApsaraDB RDS for PostgreSQL database to which the AI application is connected.
 	//
 	// example:
 	//
@@ -71,24 +81,25 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	EipId          *string `json:"EipId,omitempty" xml:"EipId,omitempty"`
 	EipStatus      *string `json:"EipStatus,omitempty" xml:"EipStatus,omitempty"`
-	// The instance type of the RDS Supabase instance.
+	// The instance type of the AI application.
 	//
 	// example:
 	//
 	// rdsai.supabase.basic
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The minor version number of RDS Supabase instance.
+	// The minor version of the RDS AI application instance.
 	//
 	// example:
 	//
 	// 20241231
 	InstanceMinorVersion *string `json:"InstanceMinorVersion,omitempty" xml:"InstanceMinorVersion,omitempty"`
-	// The ID of the RDS Supabase instance.
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	LoginToken   *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
 	NatCreatedBy *string `json:"NatCreatedBy,omitempty" xml:"NatCreatedBy,omitempty"`
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	NatStatus    *string `json:"NatStatus,omitempty" xml:"NatStatus,omitempty"`
@@ -109,14 +120,18 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the instance. For more information, see [Instance state table](https://help.aliyun.com/document_detail/2623972.html).
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RetentionHours        *string `json:"RetentionHours,omitempty" xml:"RetentionHours,omitempty"`
+	SqlExtendMoInstanceId *string `json:"SqlExtendMoInstanceId,omitempty" xml:"SqlExtendMoInstanceId,omitempty"`
+	// The instance status. For more information, see [Instance status](https://help.aliyun.com/document_detail/2623972.html).
 	//
 	// example:
 	//
 	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the vSwitch.
+	Status        *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	UploadKey     *string                                                  `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
+	UploadKeyList []*DescribeAppInstanceAttributeResponseBodyUploadKeyList `json:"UploadKeyList,omitempty" xml:"UploadKeyList,omitempty" type:"Repeated"`
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -180,6 +195,10 @@ func (s *DescribeAppInstanceAttributeResponseBody) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *DescribeAppInstanceAttributeResponseBody) GetLoginToken() *string {
+	return s.LoginToken
+}
+
 func (s *DescribeAppInstanceAttributeResponseBody) GetNatCreatedBy() *string {
 	return s.NatCreatedBy
 }
@@ -204,8 +223,24 @@ func (s *DescribeAppInstanceAttributeResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *DescribeAppInstanceAttributeResponseBody) GetRetentionHours() *string {
+	return s.RetentionHours
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) GetSqlExtendMoInstanceId() *string {
+	return s.SqlExtendMoInstanceId
+}
+
 func (s *DescribeAppInstanceAttributeResponseBody) GetStatus() *string {
 	return s.Status
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) GetUploadKey() *string {
+	return s.UploadKey
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) GetUploadKeyList() []*DescribeAppInstanceAttributeResponseBodyUploadKeyList {
+	return s.UploadKeyList
 }
 
 func (s *DescribeAppInstanceAttributeResponseBody) GetVSwitchId() *string {
@@ -265,6 +300,11 @@ func (s *DescribeAppInstanceAttributeResponseBody) SetInstanceName(v string) *De
 	return s
 }
 
+func (s *DescribeAppInstanceAttributeResponseBody) SetLoginToken(v string) *DescribeAppInstanceAttributeResponseBody {
+	s.LoginToken = &v
+	return s
+}
+
 func (s *DescribeAppInstanceAttributeResponseBody) SetNatCreatedBy(v string) *DescribeAppInstanceAttributeResponseBody {
 	s.NatCreatedBy = &v
 	return s
@@ -295,8 +335,28 @@ func (s *DescribeAppInstanceAttributeResponseBody) SetRequestId(v string) *Descr
 	return s
 }
 
+func (s *DescribeAppInstanceAttributeResponseBody) SetRetentionHours(v string) *DescribeAppInstanceAttributeResponseBody {
+	s.RetentionHours = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) SetSqlExtendMoInstanceId(v string) *DescribeAppInstanceAttributeResponseBody {
+	s.SqlExtendMoInstanceId = &v
+	return s
+}
+
 func (s *DescribeAppInstanceAttributeResponseBody) SetStatus(v string) *DescribeAppInstanceAttributeResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) SetUploadKey(v string) *DescribeAppInstanceAttributeResponseBody {
+	s.UploadKey = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) SetUploadKeyList(v []*DescribeAppInstanceAttributeResponseBodyUploadKeyList) *DescribeAppInstanceAttributeResponseBody {
+	s.UploadKeyList = v
 	return s
 }
 
@@ -318,6 +378,15 @@ func (s *DescribeAppInstanceAttributeResponseBody) SetZoneId(v string) *Describe
 func (s *DescribeAppInstanceAttributeResponseBody) Validate() error {
 	if s.Components != nil {
 		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UploadKeyList != nil {
+		for _, item := range s.UploadKeyList {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -360,5 +429,70 @@ func (s *DescribeAppInstanceAttributeResponseBodyComponents) SetType(v string) *
 }
 
 func (s *DescribeAppInstanceAttributeResponseBodyComponents) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeAppInstanceAttributeResponseBodyUploadKeyList struct {
+	IsSystemKey     *bool   `json:"IsSystemKey,omitempty" xml:"IsSystemKey,omitempty"`
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SlsStorageBytes *int64  `json:"SlsStorageBytes,omitempty" xml:"SlsStorageBytes,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UploadKey       *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
+}
+
+func (s DescribeAppInstanceAttributeResponseBodyUploadKeyList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAppInstanceAttributeResponseBodyUploadKeyList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyUploadKeyList) GetIsSystemKey() *bool {
+	return s.IsSystemKey
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyUploadKeyList) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyUploadKeyList) GetSlsStorageBytes() *int64 {
+	return s.SlsStorageBytes
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyUploadKeyList) GetStatus() *string {
+	return s.Status
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyUploadKeyList) GetUploadKey() *string {
+	return s.UploadKey
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyUploadKeyList) SetIsSystemKey(v bool) *DescribeAppInstanceAttributeResponseBodyUploadKeyList {
+	s.IsSystemKey = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyUploadKeyList) SetRemark(v string) *DescribeAppInstanceAttributeResponseBodyUploadKeyList {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyUploadKeyList) SetSlsStorageBytes(v int64) *DescribeAppInstanceAttributeResponseBodyUploadKeyList {
+	s.SlsStorageBytes = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyUploadKeyList) SetStatus(v string) *DescribeAppInstanceAttributeResponseBodyUploadKeyList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyUploadKeyList) SetUploadKey(v string) *DescribeAppInstanceAttributeResponseBodyUploadKeyList {
+	s.UploadKey = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyUploadKeyList) Validate() error {
 	return dara.Validate(s)
 }

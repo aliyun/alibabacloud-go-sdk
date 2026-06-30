@@ -30,7 +30,11 @@ type iChatMessagesResponseBody interface {
 }
 
 type ChatMessagesResponseBody struct {
-	// The answer.
+	// The content of the generated answer.
+	//
+	// example:
+	//
+	// 您询问的实例rm-bp14as9914vd3***	- 磁盘使用率为23%，暂时不需要进行扩容。如果您需要进一步查看某个实例的详细配置、性能监控或进行其他操作，请告诉我你的具体需求！
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
 	// The ID of the conversation.
 	//
@@ -38,33 +42,37 @@ type ChatMessagesResponseBody struct {
 	//
 	// 9cbbe885-b240-4803-9d15-6781a3fd****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The creation time of the conversation.
+	// The time when the message was created. This value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1763986004
 	CreatedAt *int64 `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The event.
+	// The event associated with the message.
 	//
 	// example:
 	//
 	// MysqlIOException
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The message ID.
+	// The ID of the message, which is distinct from `MessageId`.
 	//
 	// example:
 	//
 	// 60b335ca-124d-4ee1-864b-de554987****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The message ID.
+	// The unique ID of the message.
 	//
 	// example:
 	//
 	// oas8pwy2-slxw-sf98-bx83-cb2hkktl****
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 	// The query mode.
+	//
+	// example:
+	//
+	// 以后会下线，不用关注。
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

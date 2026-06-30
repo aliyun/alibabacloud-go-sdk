@@ -20,7 +20,11 @@ type iCreateScheduledTaskResponseBody interface {
 }
 
 type CreateScheduledTaskResponseBody struct {
-	// The returned message.
+	// Provides details about the request outcome, such as a success message or an error description.
+	//
+	// example:
+	//
+	// 创建定时巡检任务成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -28,13 +32,13 @@ type CreateScheduledTaskResponseBody struct {
 	//
 	// D984FD38-6C2D-55DF-B0D7-8BCAC2E1F8C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the scheduled inspection configuration.
+	// The ID of the scheduled inspection task.
 	//
 	// example:
 	//
 	// 847268a4-196f-416b-aa12-bfe0c115****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
-	// The returned results.
+	// Indicates whether the request succeeded. A value of true indicates success.
 	//
 	// example:
 	//

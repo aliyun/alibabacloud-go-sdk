@@ -73,6 +73,10 @@ type ListCustomAgentToolsResponseBodyData struct {
 	// Queries RDS instances.
 	En *string `json:"En,omitempty" xml:"En,omitempty"`
 	// The description in Japanese.
+	//
+	// example:
+	//
+	// RDS インスタンスの一覧を照会します。
 	Ja *string `json:"Ja,omitempty" xml:"Ja,omitempty"`
 	// The tool name.
 	//
@@ -81,6 +85,10 @@ type ListCustomAgentToolsResponseBodyData struct {
 	// describe_db_instances
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The description in Traditional Chinese.
+	//
+	// example:
+	//
+	// 查詢 RDS 實例清單。
 	Tc *string `json:"Tc,omitempty" xml:"Tc,omitempty"`
 	// The read/write type of the tool.
 	//
@@ -89,6 +97,10 @@ type ListCustomAgentToolsResponseBodyData struct {
 	// get
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The description in Simplified Chinese.
+	//
+	// example:
+	//
+	// 查询RDS实例列表。
 	Zh *string `json:"Zh,omitempty" xml:"Zh,omitempty"`
 }
 

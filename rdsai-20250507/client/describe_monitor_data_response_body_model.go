@@ -20,17 +20,22 @@ type iDescribeMonitorDataResponseBody interface {
 }
 
 type DescribeMonitorDataResponseBody struct {
+	// The response data.
 	Data []*DescribeMonitorDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -95,10 +100,13 @@ func (s *DescribeMonitorDataResponseBody) Validate() error {
 }
 
 type DescribeMonitorDataResponseBodyData struct {
+	// The metric name.
+	//
 	// example:
 	//
 	// qps
-	Name  *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// An array of data points for the metric.
 	Value []*DescribeMonitorDataResponseBodyDataValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -142,10 +150,14 @@ func (s *DescribeMonitorDataResponseBodyData) Validate() error {
 }
 
 type DescribeMonitorDataResponseBodyDataValue struct {
+	// The timestamp of the data point.
+	//
 	// example:
 	//
 	// 1774972800
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The value of the metric at the specified timestamp.
+	//
 	// example:
 	//
 	// 60

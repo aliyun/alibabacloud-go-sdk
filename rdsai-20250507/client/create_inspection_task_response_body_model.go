@@ -20,9 +20,13 @@ type iCreateInspectionTaskResponseBody interface {
 }
 
 type CreateInspectionTaskResponseBody struct {
-	// Indicates whether the result is returned.
+	// The response data.
 	Data *CreateInspectionTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
+	//
+	// example:
+	//
+	// 任务创建成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

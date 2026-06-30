@@ -20,17 +20,22 @@ type iResetApiKeyResponseBody interface {
 }
 
 type ResetApiKeyResponseBody struct {
+	// The returned data.
 	Data *ResetApiKeyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -91,14 +96,19 @@ func (s *ResetApiKeyResponseBody) Validate() error {
 }
 
 type ResetApiKeyResponseBodyData struct {
+	// The new system API key.
+	//
 	// example:
 	//
 	// sk-rds-*****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The model invocation URL.
+	//
 	// example:
 	//
 	// http://xxx.yy/v1
-	BaseUrl       *string                                     `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// A list of custom API keys.
 	CustomKeyList []*ResetApiKeyResponseBodyDataCustomKeyList `json:"CustomKeyList,omitempty" xml:"CustomKeyList,omitempty" type:"Repeated"`
 }
 
@@ -151,10 +161,14 @@ func (s *ResetApiKeyResponseBodyData) Validate() error {
 }
 
 type ResetApiKeyResponseBodyDataCustomKeyList struct {
+	// The custom API key.
+	//
 	// example:
 	//
 	// sk-rds-*****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The name of the API key.
+	//
 	// example:
 	//
 	// api-*****

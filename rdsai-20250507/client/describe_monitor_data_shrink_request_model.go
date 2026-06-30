@@ -24,27 +24,50 @@ type iDescribeMonitorDataShrinkRequest interface {
 }
 
 type DescribeMonitorDataShrinkRequest struct {
+	// The names of the API keys to use for filtering the data. If this parameter is not specified, data from all keys is returned.
 	ApiKeyNameShrink *string `json:"ApiKeyName,omitempty" xml:"ApiKeyName,omitempty"`
+	// The end of the query time range, specified as a Unix timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1627269085
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The aggregation interval for monitoring data, in seconds. Default: 15.
+	//
 	// example:
 	//
 	// 15
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The metric to query. Valid values:
+	//
+	// - `pv`
+	//
+	// - `uv`
+	//
+	// - `qps`
+	//
+	// - `success_rate`
+	//
+	// - `rt`
+	//
+	// - `rate_limited_count`
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ● pv
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The start of the query time range, specified as a Unix timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

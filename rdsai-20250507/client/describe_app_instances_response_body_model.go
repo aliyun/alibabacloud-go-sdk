@@ -24,21 +24,21 @@ type iDescribeAppInstancesResponseBody interface {
 }
 
 type DescribeAppInstancesResponseBody struct {
-	// The information about the RDS Supabase instances.
+	// A list of instances.
 	Instances []*DescribeAppInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// A reserved parameter. You do not need to specify this parameter.
+	// This parameter is reserved for future use.
 	//
 	// example:
 	//
 	// None
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -134,20 +134,21 @@ func (s *DescribeAppInstancesResponseBody) Validate() error {
 }
 
 type DescribeAppInstancesResponseBodyInstances struct {
-	// The name of the AI application.
+	// The application name.
 	//
 	// example:
 	//
 	// test-supabase
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The application type. Only **supabase*	- is supported. For more information, see [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
+	// The application type. The only supported value is **supabase**, which represents [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
 	//
 	// example:
 	//
 	// supabase
-	AppType    *string                                                `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The components of the instance.
 	Components []*DescribeAppInstancesResponseBodyInstancesComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The ID of the RDS for PostgreSQL instance with which the RDS Supabase instances are associated.
+	// The DB instance ID of the connected ApsaraDB RDS for PostgreSQL instance.
 	//
 	// example:
 	//
@@ -159,19 +160,19 @@ type DescribeAppInstancesResponseBodyInstances struct {
 	//
 	// rdsai.supabase.basic
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The minor version number of RDS Supabase instance.
+	// The minor version of the AI application.
 	//
 	// example:
 	//
 	// 20241231
 	InstanceMinorVersion *string `json:"InstanceMinorVersion,omitempty" xml:"InstanceMinorVersion,omitempty"`
-	// The ID of the RDS Supabase instance.
+	// The ID of the application instance.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The public endpoint of the AI application.
+	// The public connection string.
 	//
 	// example:
 	//
@@ -183,19 +184,19 @@ type DescribeAppInstancesResponseBodyInstances struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The instance status. For more information, see [Instance state table](https://help.aliyun.com/document_detail/2623972.html).
+	// The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/2623972.html).
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the vSwitch.
+	// The VSwitch ID.
 	//
 	// example:
 	//
 	// vsw-2zeaepb8k4ku05ov2****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The internal endpoint of the AI application.
+	// The VPC connection string.
 	//
 	// example:
 	//
@@ -333,8 +334,10 @@ func (s *DescribeAppInstancesResponseBodyInstances) Validate() error {
 }
 
 type DescribeAppInstancesResponseBodyInstancesComponents struct {
+	// The component status.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The component type.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeAppInstancesResponseBodyInstancesComponents) String() string {
