@@ -22,22 +22,32 @@ type iUpdateOrganizationMemberResponseBody interface {
 }
 
 type UpdateOrganizationMemberResponseBody struct {
+	// The error code. This parameter is empty if the operation is successful.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// None
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message. This parameter is empty if the operation is successful.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9531C132-DF05-5C7F-8BB0-96EA8C4D00D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// True

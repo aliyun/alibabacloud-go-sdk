@@ -16,7 +16,10 @@ type iUpdateOrganizationMemberRequest interface {
 }
 
 type UpdateOrganizationMemberRequest struct {
+	// The list of account IDs for batch operations.
 	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// The code of the new role. When you perform a batch operation, all specified accounts are changed to this role.
+	//
 	// This parameter is required.
 	//
 	// example:

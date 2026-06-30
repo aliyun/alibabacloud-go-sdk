@@ -2208,7 +2208,7 @@ func (client *Client) UpdateOrganization(request *UpdateOrganizationRequest) (_r
 
 // Summary:
 //
-// 修改组织成员角色
+// Modifies the roles of organization members.
 //
 // @param request - UpdateOrganizationMemberRequest
 //
@@ -2259,7 +2259,7 @@ func (client *Client) UpdateOrganizationMemberWithOptions(request *UpdateOrganiz
 
 // Summary:
 //
-// 修改组织成员角色
+// Modifies the roles of organization members.
 //
 // @param request - UpdateOrganizationMemberRequest
 //

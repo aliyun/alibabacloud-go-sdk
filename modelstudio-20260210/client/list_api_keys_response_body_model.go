@@ -330,7 +330,8 @@ func (s *ListApiKeysResponseBodyApiKeys) Validate() error {
 
 type ListApiKeysResponseBodyApiKeysAuth struct {
 	// The IP address whitelist.
-	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
+	AccessIps        []*string                                           `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
+	ModelAccessScope *ListApiKeysResponseBodyApiKeysAuthModelAccessScope `json:"modelAccessScope,omitempty" xml:"modelAccessScope,omitempty" type:"Struct"`
 	// All: all permissions. Custom: custom permissions.
 	//
 	// example:
@@ -351,6 +352,10 @@ func (s *ListApiKeysResponseBodyApiKeysAuth) GetAccessIps() []*string {
 	return s.AccessIps
 }
 
+func (s *ListApiKeysResponseBodyApiKeysAuth) GetModelAccessScope() *ListApiKeysResponseBodyApiKeysAuthModelAccessScope {
+	return s.ModelAccessScope
+}
+
 func (s *ListApiKeysResponseBodyApiKeysAuth) GetType() *string {
 	return s.Type
 }
@@ -360,11 +365,56 @@ func (s *ListApiKeysResponseBodyApiKeysAuth) SetAccessIps(v []*string) *ListApiK
 	return s
 }
 
+func (s *ListApiKeysResponseBodyApiKeysAuth) SetModelAccessScope(v *ListApiKeysResponseBodyApiKeysAuthModelAccessScope) *ListApiKeysResponseBodyApiKeysAuth {
+	s.ModelAccessScope = v
+	return s
+}
+
 func (s *ListApiKeysResponseBodyApiKeysAuth) SetType(v string) *ListApiKeysResponseBodyApiKeysAuth {
 	s.Type = &v
 	return s
 }
 
 func (s *ListApiKeysResponseBodyApiKeysAuth) Validate() error {
+	if s.ModelAccessScope != nil {
+		if err := s.ModelAccessScope.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListApiKeysResponseBodyApiKeysAuthModelAccessScope struct {
+	AccessibleModels []*string `json:"accessibleModels,omitempty" xml:"accessibleModels,omitempty" type:"Repeated"`
+	AllowAllModels   *bool     `json:"allowAllModels,omitempty" xml:"allowAllModels,omitempty"`
+}
+
+func (s ListApiKeysResponseBodyApiKeysAuthModelAccessScope) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListApiKeysResponseBodyApiKeysAuthModelAccessScope) GoString() string {
+	return s.String()
+}
+
+func (s *ListApiKeysResponseBodyApiKeysAuthModelAccessScope) GetAccessibleModels() []*string {
+	return s.AccessibleModels
+}
+
+func (s *ListApiKeysResponseBodyApiKeysAuthModelAccessScope) GetAllowAllModels() *bool {
+	return s.AllowAllModels
+}
+
+func (s *ListApiKeysResponseBodyApiKeysAuthModelAccessScope) SetAccessibleModels(v []*string) *ListApiKeysResponseBodyApiKeysAuthModelAccessScope {
+	s.AccessibleModels = v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyApiKeysAuthModelAccessScope) SetAllowAllModels(v bool) *ListApiKeysResponseBodyApiKeysAuthModelAccessScope {
+	s.AllowAllModels = &v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyApiKeysAuthModelAccessScope) Validate() error {
 	return dara.Validate(s)
 }

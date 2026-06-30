@@ -1529,7 +1529,7 @@ func (client *Client) UpdateOrganizationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 修改组织成员角色
+// Modifies the roles of organization members.
 //
 // @param request - UpdateOrganizationMemberRequest
 //
