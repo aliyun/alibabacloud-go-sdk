@@ -16,7 +16,7 @@ type iListCommonAreasResponseBody interface {
 }
 
 type ListCommonAreasResponseBody struct {
-	// The information about the areas.
+	// The area information.
 	Areas []*ListCommonAreasResponseBodyAreas `json:"Areas,omitempty" xml:"Areas,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -78,7 +78,7 @@ type ListCommonAreasResponseBodyAreas struct {
 	//
 	// North China
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The information about the regions.
+	// The region list.
 	RegionList []*ListCommonAreasResponseBodyAreasRegionList `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
 }
 

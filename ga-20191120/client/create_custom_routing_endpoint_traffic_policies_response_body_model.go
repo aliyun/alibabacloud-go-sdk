@@ -16,9 +16,9 @@ type iCreateCustomRoutingEndpointTrafficPoliciesResponseBody interface {
 }
 
 type CreateCustomRoutingEndpointTrafficPoliciesResponseBody struct {
-	// The IDs of the traffic destinations.
+	// The IDs of the traffic policies.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

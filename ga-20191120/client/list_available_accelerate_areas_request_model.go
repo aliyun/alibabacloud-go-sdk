@@ -18,14 +18,23 @@ type iListAvailableAccelerateAreasRequest interface {
 }
 
 type ListAvailableAccelerateAreasRequest struct {
-	// The ID of the GA instance.
+	// The ID of the Global Accelerator instance.
 	//
 	// example:
 	//
 	// ga-bp1yeeq8yfoyszmqy****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	AccessMode    *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+	// The access mode of the acceleration area. Valid values:
+	//
+	// - anycast: queries the supported anycast acceleration areas.
+	//
+	// - Other values: queries the supported non-anycast acceleration areas.
+	//
+	// example:
+	//
+	// anycast
+	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	// The ID of the region where the Global Accelerator instance is deployed. Set the value to **cn-hangzhou**.
 	//
 	// This parameter is required.
 	//

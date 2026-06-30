@@ -24,7 +24,7 @@ type iCreateEndpointGroupsRequest interface {
 }
 
 type CreateEndpointGroupsRequest struct {
-	// The ID of the GA instance.
+	// The ID of the accelerator.
 	//
 	// This parameter is required.
 	//
@@ -32,35 +32,35 @@ type CreateEndpointGroupsRequest struct {
 	//
 	// ga-bp1odcab8tmno0hdq****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure request idempotence.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can generate the token on your client. Ensure that it is unique across different requests. The value of `ClientToken` can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the request as the **ClientToken**. The **RequestId*	- is unique for each API request.
 	//
 	// example:
 	//
 	// 1F4B6A4A-C89E-489E-BAF1-52777EE148EF
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, a 2xx HTTP status code is returned.
+	// - **true**: performs a dry run but does not create the resource. The system checks the required parameters, request format, and service limits. If the request fails the dry run, the system returns an error message. If the request passes the dry run, the system returns a 2xx HTTP status code.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): sends a normal request and creates the resource if the request passes.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The information about the endpoint groups.
+	// The configurations of the endpoint groups.
 	//
-	// You can enter the information about up to 10 endpoint groups.
+	// You can configure up to 10 endpoint groups.
 	//
 	// This parameter is required.
 	EndpointGroupConfigurations []*CreateEndpointGroupsRequestEndpointGroupConfigurations `json:"EndpointGroupConfigurations,omitempty" xml:"EndpointGroupConfigurations,omitempty" type:"Repeated"`
 	// The ID of the listener.
 	//
-	// >  If the listener protocol is **HTTP*	- or **HTTPS**, you can call the **CreateEndpointGroups*	- operation to create only one endpoint group.
+	// > If the listener protocol is **HTTP*	- or **HTTPS**, you can create only one endpoint group in each **CreateEndpointGroups*	- call.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type CreateEndpointGroupsRequest struct {
 	//
 	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the region where the accelerator is deployed. Set the value to **cn-hangzhou**.
 	//
 	// This parameter is required.
 	//
@@ -154,147 +154,165 @@ func (s *CreateEndpointGroupsRequest) Validate() error {
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurations struct {
-	// The endpoints that are associated with the intelligent routing listener.
+	// The configurations of the endpoints in the endpoint group.
 	EndpointConfigurations []*CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	// The description of the endpoint group.
 	//
-	// The description must be up to 200 characters in length, and cannot start with http:// or https://.
+	// The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
-	// group1
+	// EndpointGroup
 	EndpointGroupDescription *string `json:"EndpointGroupDescription,omitempty" xml:"EndpointGroupDescription,omitempty"`
 	// The name of the endpoint group.
 	//
-	// The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	// The name must be 1 to 128 characters long, start with a letter or a Chinese character, and contain digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// group1
 	EndpointGroupName *string `json:"EndpointGroupName,omitempty" xml:"EndpointGroupName,omitempty"`
-	// The ID of the region where the endpoint group is created.
+	// The ID of the region where the endpoint group is deployed.
 	//
-	// You can enter the IDs of up to 10 regions.
+	// You can enter up to 10 endpoint group region IDs.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-hongkong
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
-	// The type of the endpoint group associated with the intelligent routing listener. Valid values:
+	// The type of the endpoint group in an intelligent routing listener. Valid values:
 	//
-	// 	- **default*	- (default)
+	// - **default*	- (default): a default endpoint group.
 	//
-	// 	- **virtual**: a virtual endpoint group.
+	// - **virtual**: a virtual endpoint group.
 	//
-	// You can specify up to 10 endpoint group types.
+	// You can enter up to 10 endpoint group types.
 	//
 	// example:
 	//
 	// default
 	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	// The IP version of the backend service. Valid values:
+	//
+	// - **IPv4*	- (default): Global Accelerator uses only IPv4 addresses to communicate with the backend service.
+	//
+	// - **IPv6**: Global Accelerator uses only IPv6 addresses to communicate with the backend service.
+	//
+	// - **ProtocolAffinity**: Global Accelerator communicates with the backend service using the same IP version as the client request.
+	//
+	// example:
+	//
+	// IPv4
 	EndpointIpVersion *string `json:"EndpointIpVersion,omitempty" xml:"EndpointIpVersion,omitempty"`
-	// The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values:
+	// The protocol version of the backend service. Valid values:
 	//
-	// 	- **HTTP1.1*	- (default)
+	// - **HTTP1.1*	- (default): HTTP 1.1.
 	//
-	// 	- **HTTP2**
+	// - **HTTP2**: HTTP 2.
 	//
-	// >  You can specify this parameter only if the EndpointRequestProtocol parameter is set to HTTPS.
+	// > You can set this parameter only when `EndpointRequestProtocol` is set to **HTTPS**.
 	//
 	// example:
 	//
 	// HTTP1.1
 	EndpointProtocolVersion *string `json:"EndpointProtocolVersion,omitempty" xml:"EndpointProtocolVersion,omitempty"`
-	// The backend service protocol. Valid values:
+	// The protocol of the backend service. Valid values:
 	//
-	// 	- **HTTP**
+	// - **HTTP**
 	//
-	// 	- **HTTPS**
+	// - **HTTPS**
 	//
-	// > 	- You can specify this parameter only if the listener that is associated with the endpoint group uses HTTP or HTTPS.
+	// > 	- You can set this parameter only when you create an endpoint group for an HTTP or HTTPS listener.
 	//
-	// >	- The backend service protocol of an HTTP listener must be HTTP.
+	// >
+	//
+	// > 	- For an HTTP listener, you can set this parameter only to HTTP.
 	//
 	// example:
 	//
-	// HTTP
+	// HTTPS
 	EndpointRequestProtocol *string `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
 	// Specifies whether to enable health checks for the endpoint group. Valid values:
 	//
-	// 	- **true**: enables the health check feature.
+	// - **true**: enables health checks.
 	//
-	// 	- **false*	- (default): disables the health check feature.
+	// - **false*	- (default): disables health checks.
 	//
-	// You can enable the health check feature for up to 10 endpoint groups.
+	// You can enable health checks for up to 10 endpoint groups.
 	//
 	// example:
 	//
 	// false
-	HealthCheckEnabled *bool   `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	HealthCheckHost    *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
-	// The interval at which health checks are performed. Unit: seconds.
-	//
-	// You can specify up to 10 health check intervals.
+	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	// The domain name to which health check requests are sent.
 	//
 	// example:
 	//
-	// 3
-	HealthCheckIntervalSeconds *int64 `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
-	// The health check path.
+	// www.taobao.com
+	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
+	// The interval between health checks, in seconds.
 	//
-	// You can specify up to 10 health check paths.
+	// You can enter up to 10 health check intervals.
+	//
+	// example:
+	//
+	// 5
+	HealthCheckIntervalSeconds *int64 `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
+	// The path used for health checks.
+	//
+	// You can enter up to 10 health check paths.
 	//
 	// example:
 	//
 	// /healthcheck
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	// The port that you want to use for health checks. Valid values: **1*	- to **65535**.
+	// The port used for health checks. Valid values: **1*	- to **65535**.
 	//
-	// You can specify up to 10 ports for health checks.
+	// You can enter up to 10 ports for health checks.
 	//
 	// example:
 	//
-	// 20
+	// 443
 	HealthCheckPort *int64 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	// The protocol over which health check requests are sent. Valid values:
+	// The protocol used for health checks. Valid values:
 	//
-	// 	- **tcp*	- or **TCP**
+	// - **tcp*	- or **TCP**: TCP protocol.
 	//
-	// 	- **http*	- or **HTTP**
+	// - **http*	- or **HTTP**: HTTP protocol.
 	//
-	// 	- **https*	- or **HTTPS**
+	// - **https*	- or **HTTPS**: HTTPS protocol.
 	//
-	// You can specify up to 10 health check protocols.
+	// You can enter up to 10 health check protocols.
 	//
 	// example:
 	//
-	// tcp
+	// HTTPS
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	// The port mappings.
+	// The port override settings.
 	PortOverrides []*CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
-	// This parameter is not in use. Ignore this parameter.
+	// This parameter is reserved.
 	SystemTag []*CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag `json:"SystemTag,omitempty" xml:"SystemTag,omitempty" type:"Repeated"`
-	// The tags of the endpoint group.
+	// The tags to add to the endpoint group. You can specify up to 20 tags.
 	Tag []*CreateEndpointGroupsRequestEndpointGroupConfigurationsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The number of consecutive health check failures that must occur before a healthy endpoint group is considered unhealthy, or the number of consecutive health check successes that must occur before an unhealthy endpoint group is considered healthy. Valid values: **2*	- to **10**. Default value: **3**.
+	// The number of consecutive health checks that must succeed for an endpoint to be considered healthy, or fail for it to be considered unhealthy. Valid values: **2*	- to **10**. Default value: **3**.
 	//
-	// You can specify up to 10 values (the number of consecutive health check successes or consecutive health check failures).
+	// You can enter up to 10 values for the number of consecutive health checks required for a health status change.
 	//
 	// example:
 	//
 	// 3
 	ThresholdCount *int64 `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
-	// The traffic distribution ratio. If an intelligent routing listener is associated with multiple endpoint groups, you can configure this parameter to specify the ratio of traffic distributed to each endpoint group.
+	// The traffic distribution percentage for the endpoint group. If an intelligent routing listener is associated with multiple endpoint groups, this parameter specifies the percentage of traffic that is routed to this endpoint group.
 	//
 	// Valid values: **1*	- to **100**. Default value: **100**.
 	//
-	// You can specify the traffic distribution ratios for up to 10 endpoint groups.
+	// You can enter traffic dial values for up to 10 endpoint groups.
 	//
 	// example:
 	//
-	// 20
+	// 100
 	TrafficPercentage *int64 `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
 }
 
@@ -519,107 +537,127 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) Validate() erro
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations struct {
 	ApiKeys []*string `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
-	// Specifies whether to automatically preserve client IP addresses. Valid values:
+	// Specifies whether to preserve client IP addresses. Valid values:
 	//
-	// 	- **true**
+	// - **true**: preserves client IP addresses.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): does not preserve client IP addresses.
 	//
-	// > 	- By default, client IP address preservation is disabled for an endpoint group of a UDP or TCP listener. You can configure this parameter based on your business requirements.
+	// > 	- For endpoint groups of UDP and TCP listeners, the preserve client IP feature is disabled by default. You can enable this feature based on your business requirements.
 	//
-	// > 	- By default, client IP address preservation is enabled for an endpoint group of an HTTP or HTTP listener. You can obtain client IP addresses by using the X-Forwarded-For header. You cannot disable the feature.
+	// >
 	//
-	// > 	- EnableClientIPPreservation and EnableProxyProtocol cannot be set to true at the same time.
+	// > 	- For endpoint groups of HTTP and HTTPS listeners, the preserve client IP feature is enabled by default. Client IP addresses are preserved in the X-Forwarded-For header. You cannot disable this feature.
 	//
-	// > > For more information, see [Preserve client IP addresses](https://help.aliyun.com/document_detail/158080.html).
+	// >
+	//
+	// > 	- `EnableClientIPPreservation` and `EnableProxyProtocol` cannot be set to `true` at the same time.
+	//
+	// >
+	//
+	// > 	- For more information, see [preserve client IP addresses](https://help.aliyun.com/document_detail/158080.html).
 	//
 	// example:
 	//
 	// false
 	EnableClientIPPreservation *bool `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
-	// Specifies whether to use the proxy protocol to preserve client IP addresses. Valid values:
+	// Specifies whether to use the Proxy Protocol to preserve client IP addresses. Valid values:
 	//
-	// 	- **true**
+	// - **true**: uses the Proxy Protocol to preserve client IP addresses.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): does not use the Proxy Protocol to preserve client IP addresses.
 	//
-	// > 	- This parameter is available only to endpoint groups of TCP listeners.
+	// > 	- This parameter is available only for endpoint groups that are associated with TCP listeners.
 	//
-	// > 	- EnableClientIPPreservation and EnableProxyProtocol cannot be set to true at the same time.
+	// >
 	//
-	// > >  For more information, see [Preserve client IP addresses](https://help.aliyun.com/document_detail/158080.html).
+	// > 	- `EnableClientIPPreservation` and `EnableProxyProtocol` cannot be set to `true` at the same time.
+	//
+	// >
+	//
+	// > 	- For more information, see [preserve client IP addresses](https://help.aliyun.com/document_detail/158080.html).
 	//
 	// example:
 	//
 	// false
 	EnableProxyProtocol *bool `json:"EnableProxyProtocol,omitempty" xml:"EnableProxyProtocol,omitempty"`
-	// The IP address or domain name of the endpoint that is associated with the intelligent routing listener.
+	// The IP address or domain name of the endpoint.
 	//
-	// You can enter the IP addresses or domain names of up to 100 endpoints in an endpoint group that is associated with the intelligent routing listener.
+	// In an endpoint group of an intelligent routing listener, you can enter a maximum of 100 endpoint IP addresses or domain names.
 	//
 	// example:
 	//
-	// 47.0.XX.XX
+	// 1.1.1.1
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// example:
 	//
 	// BAILIAN
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// The private IP address of the ENI.
+	// The private IP address of the elastic network interface (ENI).
 	//
-	// >  This parameter is available only when you set the endpoint type to **ENI**. If you leave this parameter empty, the primary private IP address of the ENI is used.
+	// > This parameter is available only when the endpoint type is **ENI**. If you do not specify this parameter, the system uses the primary private IP address of the ENI.
 	//
 	// example:
 	//
 	// 172.168.XX.XX
 	SubAddress *string `json:"SubAddress,omitempty" xml:"SubAddress,omitempty"`
-	// The type of the endpoint that is associated with the intelligent routing listener. Valid values:
+	// The type of endpoint in an intelligent routing listener. Valid values:
 	//
-	// 	- **Domain**: a custom domain name.
+	// - **Domain**: a custom domain name.
 	//
-	// 	- **Ip**: a custom IP address.
+	// - **Ip**: a custom IP address.
 	//
-	// 	- **IpTarget**: a custom private IP address.
+	// - **IpTarget**: a custom private IP address.
 	//
-	// 	- **PublicIp**: a public IP address provided by Alibaba Cloud.
+	// - **PublicIp**: an Alibaba Cloud public IP address.
 	//
-	// 	- **ECS**: an Elastic Compute Service (ECS) instance.
+	// - **ECS**: an ECS instance.
 	//
-	// 	- **SLB**: a Server Load Balancer (SLB) instance.
+	// - **SLB**: an SLB instance.
 	//
-	// 	- **ALB**: an Application Load Balancer (ALB) instance.
+	// - **ALB**: an ALB instance.
 	//
-	// 	- **OSS**: an Object Storage Service (OSS) bucket.
+	// - **OSS**: an OSS bucket.
 	//
-	// 	- **ENI**: an elastic network interface (ENI).
+	// - **ENI**: an elastic network interface.
 	//
-	// 	- **NLB**: a Network Load Balancer (NLB) instance.
+	// - **NLB**: an NLB instance.
 	//
-	// You can specify up to 100 endpoint types in the endpoint group that is associated with the intelligent routing listener.
+	// In an endpoint group of an intelligent routing listener, you can specify up to 100 endpoints.
 	//
-	// > 	- If you set **Type*	- to **Standard**, you can configure the endpoint group and endpoint that are associated with the intelligent routing listener. In addition, this parameter is required.
+	// > - If the routing type of the listener is **Standard*	- (intelligent routing), you must configure the endpoint group and endpoint information for the listener. This parameter is required.
 	//
-	// > 	- If you set this parameter to **ECS**, **ENI**, **SLB**, **ALB**, **NLB**, or **IpTarget*	- and the AliyunServiceRoleForGaVpcEndpoint service-linked role does not exist, the system automatically creates the role.
+	// >
 	//
-	// > 	- If you set this parameter to **ALB*	- and the AliyunServiceRoleForGaAlb service-linked role does not exist, the system automatically creates the role.
+	// > - If you set Type to **ECS**, **ENI**, **SLB**, or **IpTarget*	- and a service-linked role does not exist, the system automatically creates a service-linked role named AliyunServiceRoleForGaVpcEndpoint.
 	//
-	// > 	- If you set this parameter to **OSS*	- and the AliyunServiceRoleForGaOss service-linked role does not exist, the system automatically creates the role.
+	// >
 	//
-	// > 	- If you set this parameter to **NLB*	- and the AliyunServiceRoleForGaNlb service-linked role does not exist, the system automatically creates the role.
+	// > - If you set Type to **ALB*	- and a service-linked role does not exist, the system automatically creates a service-linked role named AliyunServiceRoleForGaAlb.
 	//
-	// >>  For more information, see [Service-linked roles](https://help.aliyun.com/document_detail/178360.html).
+	// >
+	//
+	// > - If you set Type to **OSS*	- and a service-linked role does not exist, the system automatically creates a service-linked role named AliyunServiceRoleForGaOss.
+	//
+	// >
+	//
+	// > - If you set Type to **NLB*	- and a service-linked role does not exist, the system automatically creates a service-linked role named AliyunServiceRoleForGaNlb.
+	//
+	// >
+	//
+	// > > For more information, see [service-linked roles](https://help.aliyun.com/document_detail/178360.html).
 	//
 	// example:
 	//
-	// Ip
+	// Domain
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The IDs of vSwitches that are deployed in the VPC.
+	// A list of VSwitch IDs.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The virtual private cloud (VPC) ID.
+	// The ID of the VPC.
 	//
-	// You can specify one VPC ID for an endpoint group of an intelligent routing listener.
+	// In an endpoint group of an intelligent routing listener, you can specify only one VPC ID.
 	//
-	// >  This parameter is valid and required only if Type is set to **IpTarget**.
+	// > This parameter is required only when you set Type to **IpTarget**.
 	//
 	// example:
 	//
@@ -629,11 +667,11 @@ type CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfiguration
 	//
 	// Valid values: **0*	- to **255**.
 	//
-	// >  If you set the weight of an endpoint to 0, GA stops distributing traffic to the endpoint. Proceed with caution.
+	// > If you set the weight of an endpoint to 0, Global Accelerator stops distributing traffic to the endpoint. Proceed with caution.
 	//
 	// example:
 	//
-	// 20
+	// 255
 	Weight *int64 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -740,25 +778,29 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigura
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides struct {
-	// The endpoint port that is mapped to the listener port.
+	// The endpoint port used for the port override.
 	//
 	// example:
 	//
-	// 80
+	// 443
 	EndpointPort *int64 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
 	// The listener port.
 	//
 	// Valid values: **1*	- to **65499**.
 	//
-	// > 	- You cannot configure port mappings for virtual endpoint groups of TCP listeners. If a virtual endpoint group already exists on the listener, you cannot configure port mappings for the default endpoint group. If port mappings are configured for the default endpoint group, you cannot add a virtual endpoint group.
+	// > - For TCP listeners, you cannot configure port overrides for a virtual endpoint group. If a virtual endpoint group already exists for the listener, you cannot configure port overrides for the default endpoint group. If port overrides are configured for the default endpoint group, you cannot add a virtual endpoint group.
 	//
-	// >	- If you configure port mappings for a listener, you cannot modify the listener protocol. You can only switch between HTTP and HTTPS.
+	// >
 	//
-	// >	- Listener port: When you modify the listener port range, make sure that the port range includes the ports configured in port mappings. For example, if you set the listener port range to 80 to 82 and map the listener ports to endpoint ports 100 to 102, you cannot change the listener port range to 80 to 81.
+	// > - After you configure a port override, you cannot change the listener protocol, except for switching between HTTP and HTTPS.
+	//
+	// >
+	//
+	// > - When you modify the listener port range, the new range must include all listener ports that are used in the port overrides. For example, if the listener port range is 80-82 and a port override is configured to map listener ports to endpoint ports 100-102, you cannot change the listener port range to 80-81.
 	//
 	// example:
 	//
-	// 443
+	// 80
 	ListenerPort *int64 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
@@ -793,23 +835,23 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) Va
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag struct {
-	// This parameter is not in use. Ignore this parameter.
+	// This parameter is reserved.
 	//
 	// example:
 	//
-	// system-tag-key
+	// -
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// This parameter is not in use. Ignore this parameter.
+	// This parameter is reserved.
 	//
 	// example:
 	//
-	// public
+	// -
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// This parameter is not in use. Ignore this parameter.
+	// This parameter is reserved.
 	//
 	// example:
 	//
-	// system-tag-value
+	// -
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -853,9 +895,9 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag) Valida
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurationsTag struct {
-	// The tag key of the endpoint group. The tag key cannot be an empty string.
+	// The key of the tag. The tag key cannot be an empty string.
 	//
-	// The tag key must be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// You can enter up to 20 tag keys.
 	//
@@ -863,9 +905,9 @@ type CreateEndpointGroupsRequestEndpointGroupConfigurationsTag struct {
 	//
 	// tag-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the endpoint group. The tag value can be an empty string.
+	// The value of the tag. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// You can enter up to 20 tag values.
 	//

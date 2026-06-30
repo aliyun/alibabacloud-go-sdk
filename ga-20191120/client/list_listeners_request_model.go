@@ -22,7 +22,7 @@ type iListListenersRequest interface {
 }
 
 type ListListenersRequest struct {
-	// The ID of the GA instance.
+	// The ID of the Global Accelerator instance.
 	//
 	// This parameter is required.
 	//
@@ -30,20 +30,25 @@ type ListListenersRequest struct {
 	//
 	// ga-bp1odcab8tmno0hdq****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to **50**. Default value: **10**.
+	// The number of entries to return on each page. The maximum value is **50**. The default value is **10**.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The transport layer protocol used by the listener.
+	//
+	// example:
+	//
+	// HTTP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the region where the Global Accelerator instance is deployed. Set the value to **cn-hangzhou**.
 	//
 	// This parameter is required.
 	//

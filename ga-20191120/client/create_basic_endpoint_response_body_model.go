@@ -18,19 +18,19 @@ type iCreateBasicEndpointResponseBody interface {
 }
 
 type CreateBasicEndpointResponseBody struct {
-	// The ID of the endpoint group.
+	// The endpoint group ID of the basic Alibaba Cloud Global Accelerator (GA) instance.
 	//
 	// example:
 	//
 	// epg-bp1dmlohjjz4kqaun****
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The ID of the endpoint.
+	// The endpoint ID of the basic Alibaba Cloud Global Accelerator (GA) instance.
 	//
 	// example:
 	//
 	// ep-bp14sz7ftcwwjgrdm****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

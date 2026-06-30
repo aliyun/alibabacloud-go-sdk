@@ -24,11 +24,11 @@ type GetHealthStatusResponseBody struct {
 	EndpointGroups []*GetHealthStatusResponseBodyEndpointGroups `json:"EndpointGroups,omitempty" xml:"EndpointGroups,omitempty" type:"Repeated"`
 	// The health status of endpoints and endpoint groups. Valid values:
 	//
-	// 	- **normal**
+	// - **normal**
 	//
-	// 	- **abnormal**
+	// - **abnormal**
 	//
-	// 	- **partiallyAbnormal**
+	// - **partiallyAbnormal**
 	//
 	// example:
 	//
@@ -114,9 +114,9 @@ type GetHealthStatusResponseBodyEndpointGroups struct {
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	// The type of the endpoint group. Valid values:
 	//
-	// 	- **default:*	- the default endpoint group.
+	// - **default:*	- the default endpoint group.
 	//
-	// 	- **virtual:*	- a virtual endpoint group.
+	// - **virtual:*	- a virtual endpoint group.
 	//
 	// example:
 	//
@@ -128,13 +128,13 @@ type GetHealthStatusResponseBodyEndpointGroups struct {
 	ForwardingRuleIds []*string `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
 	// The health status of the endpoint group. Valid values:
 	//
-	// 	- **init:*	- The endpoint group is being initialized.
+	// - **init:*	- The endpoint group is being initialized.
 	//
-	// 	- **normal:*	- The endpoint group is normal.
+	// - **normal:*	- The endpoint group is normal.
 	//
-	// 	- **abnormal:*	- The endpoint group is abnormal.
+	// - **abnormal:*	- The endpoint group is abnormal.
 	//
-	// 	- **partiallyAbnormal:*	- The endpoint group is partially abnormal.
+	// - **partiallyAbnormal:*	- The endpoint group is partially abnormal.
 	//
 	// example:
 	//
@@ -223,19 +223,19 @@ type GetHealthStatusResponseBodyEndpointGroupsEndpoints struct {
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The health check details of the endpoint.
 	//
-	// >  This parameter is unavailable.
+	// > This parameter is unavailable.
 	//
 	// example:
 	//
-	// null
+	// 无
 	HealthDetail *string `json:"HealthDetail,omitempty" xml:"HealthDetail,omitempty"`
 	// The health status of the endpoint. Valid values:
 	//
-	// 	- **init:*	- The endpoint is being initialized.
+	// - **init:*	- The endpoint is being initialized.
 	//
-	// 	- **normal:*	- The endpoint is normal.
+	// - **normal:*	- The endpoint is normal.
 	//
-	// 	- **abnormal:*	- The endpoint is abnormal.
+	// - **abnormal:*	- The endpoint is abnormal.
 	//
 	// example:
 	//
@@ -249,23 +249,23 @@ type GetHealthStatusResponseBodyEndpointGroupsEndpoints struct {
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The type of the endpoint. Valid values:
 	//
-	// 	- **Domain:*	- a custom domain name.
+	// - **Domain:*	- a custom domain name.
 	//
-	// 	- **Ip:*	- a custom IP address.
+	// - **Ip:*	- a custom IP address.
 	//
-	// 	- **PublicIp:*	- a public IP address provided by Alibaba Cloud.
+	// - **PublicIp:*	- a public IP address provided by Alibaba Cloud.
 	//
-	// 	- **ECS:*	- an Elastic Compute Service (ECS) instance.
+	// - **ECS:*	- an Elastic Compute Service (ECS) instance.
 	//
-	// 	- **SLB:*	- a Classic Load Balancer (CLB) instance.
+	// - **SLB:*	- a Classic Load Balancer (CLB) instance.
 	//
-	// 	- **ALB:*	- an Application Load Balancer (ALB) instance.
+	// - **ALB:*	- an Application Load Balancer (ALB) instance.
 	//
-	// 	- **OSS:*	- an Object Storage Service (OSS) bucket.
+	// - **OSS:*	- an Object Storage Service (OSS) bucket.
 	//
-	// 	- **ENI:*	- an elastic network interface (ENI).
+	// - **ENI:*	- an elastic network interface (ENI).
 	//
-	// 	- **NLB:*	- a Network Load Balancer (NLB) instance.
+	// - **NLB:*	- a Network Load Balancer (NLB) instance.
 	//
 	// example:
 	//

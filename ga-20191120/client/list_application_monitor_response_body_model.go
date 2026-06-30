@@ -131,9 +131,9 @@ type ListApplicationMonitorResponseBodyApplicationMonitors struct {
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// Indicates whether the automatic diagnostics feature is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -175,13 +175,13 @@ type ListApplicationMonitorResponseBodyApplicationMonitors struct {
 	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
 	// The status of the origin probing task. Valid values:
 	//
-	// 	- **active:*	- The origin probing task is running.
+	// - **active:*	- The origin probing task is running.
 	//
-	// 	- **inactive:*	- The origin probing task is stopped.
+	// - **inactive:*	- The origin probing task is stopped.
 	//
-	// 	- **init:*	- The origin probing task is being initialized.
+	// - **init:*	- The origin probing task is being initialized.
 	//
-	// 	- **deleting:*	- The origin probing task is being deleted.
+	// - **deleting:*	- The origin probing task is being deleted.
 	//
 	// example:
 	//

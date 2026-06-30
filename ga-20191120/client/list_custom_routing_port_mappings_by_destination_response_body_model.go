@@ -22,27 +22,27 @@ type iListCustomRoutingPortMappingsByDestinationResponseBody interface {
 }
 
 type ListCustomRoutingPortMappingsByDestinationResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Details about the port mapping table.
+	// The information about the port mappings.
 	PortMappings []*ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// String	04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListCustomRoutingPortMappingsByDestinationResponseBody) Validate() erro
 }
 
 type ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings struct {
-	// The ID of the GA instance.
+	// The ID of the Global Accelerator instance to which the port mapping belongs.
 	//
 	// example:
 	//
@@ -131,11 +131,11 @@ type ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings struct {
 	AcceleratorPort *int32 `json:"AcceleratorPort,omitempty" xml:"AcceleratorPort,omitempty"`
 	// The service IP address and port of the backend instance.
 	DestinationSocketAddress *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappingsDestinationSocketAddress `json:"DestinationSocketAddress,omitempty" xml:"DestinationSocketAddress,omitempty" type:"Struct"`
-	// The access policy of traffic for the backend instance.
+	// The traffic policy for the backend instance.
 	//
-	// 	- **allow**: allows traffic to the backend instance.
+	// - **allow**: allows the backend instance to receive traffic.
 	//
-	// 	- **deny**: denies all traffic to the backend instance.
+	// - **deny**: denies the backend instance from receiving traffic.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings struct {
 	//
 	// epg-bp14sz7ftcwwjgrdm****
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The ID of the region in which the endpoint group resides.
+	// The ID of the region where the endpoint group is deployed.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ type ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings struct {
 	//
 	// ep-bp14sz7ftcwwjgrdm****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The ID of the listener.
+	// The ID of the custom routing listener to which the port mapping belongs.
 	//
 	// example:
 	//
@@ -167,11 +167,11 @@ type ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings struct {
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The protocol of the backend service.
 	//
-	// 	- **tcp**: TCP
+	// - **TCP**: TCP.
 	//
-	// 	- **udp**: UDP
+	// - **UDP**: UDP.
 	Protocols []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
-	// The name of the endpoint (vSwitch).
+	// The name of the vSwitch instance of the endpoint.
 	//
 	// example:
 	//

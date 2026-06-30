@@ -16,7 +16,7 @@ type iAddEntriesToAclResponseBody interface {
 }
 
 type AddEntriesToAclResponseBody struct {
-	// The ACL ID.
+	// The ID of the access control policy group.
 	//
 	// example:
 	//

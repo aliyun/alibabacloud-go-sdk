@@ -66,33 +66,33 @@ type DescribeListenerResponseBody struct {
 	//
 	// ga-bp1odcab8tmno0hdq****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The type of the ACL. Valid values:
+	// The type of the ACL.
 	//
-	// 	- **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists are suitable for scenarios in which you want to allow only specific IP addresses to access an application. If a whitelist is improperly configured, risks may arise. After a whitelist is configured for a listener, only requests from the IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled but no IP addresses are added to the ACL, the listener does not forward requests.
+	// - **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists are suitable for applications that allow access only from specific IP addresses. If you enable a whitelist but do not add an IP address to the ACL, the GA listener does not forward requests.
 	//
-	// 	- **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. Blacklists are suitable for scenarios in which you want to deny access from specific IP addresses to an application. If the blacklist is enabled but no IP addresses are added to the ACL, the listener forwards all requests.
+	// - **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are denied. Blacklists are suitable for applications that deny access from specific IP addresses. If you enable a blacklist but do not add an IP address to the ACL, the GA listener forwards all requests.
 	//
-	// This parameter is returned only if the value of **Status*	- is **on**.
+	// This parameter is returned when an ACL is associated with the listener.
 	//
 	// example:
 	//
 	// white
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The information about the backend ports.
+	// The backend port information.
 	BackendPorts []*DescribeListenerResponseBodyBackendPorts `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
-	// The SSL certificates.
+	// The list of SSL certificates.
 	Certificates []*DescribeListenerResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// Indicates whether client affinity is enabled for the listener.
+	// Client affinity.
 	//
-	// 	- If **NONE*	- is returned, client affinity is disabled. Requests from the same client may be forwarded to different endpoints.
+	// - If **NONE*	- is returned, client affinity is disabled. In this case, requests from the same client may be forwarded to different endpoints.
 	//
-	// 	- If **SOURCE_IP*	- is returned, client affinity is enabled. When a client accesses stateful applications, requests from the same client are forwarded to the same endpoint regardless of the source port or protocol.
+	// - If **SOURCE_IP*	- is returned, client affinity is enabled. When a client accesses a stateful application, all requests from the same client are forwarded to the same endpoint regardless of the source port or protocol.
 	//
 	// example:
 	//
 	// SOURCE_IP
 	ClientAffinity *string `json:"ClientAffinity,omitempty" xml:"ClientAffinity,omitempty"`
-	// The time when the listener was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	// The timestamp that indicates when the listener was created. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -106,25 +106,25 @@ type DescribeListenerResponseBody struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The maximum version of the HTTP protocol. Valid values:
 	//
-	// 	- **http3**
+	// - **http3**: HTTP/3.
 	//
-	// 	- **http2**
+	// - **http2**: HTTP/2.
 	//
-	// 	- **http1.1**
+	// - **http1.1**: HTTP/1.1.
 	//
-	// >  This parameter is returned only for HTTPS listeners.
+	// > This parameter is available only for HTTPS listeners.
 	//
 	// example:
 	//
 	// http2
 	HttpVersion *string `json:"HttpVersion,omitempty" xml:"HttpVersion,omitempty"`
-	// The timeout period of idle connections. Unit: seconds.
+	// The timeout period for idle connections. Unit: seconds.
 	//
 	// example:
 	//
 	// 900
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// The ID of the listener.
+	// The listener ID.
 	//
 	// example:
 	//
@@ -136,45 +136,45 @@ type DescribeListenerResponseBody struct {
 	//
 	// Listener
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The information about the listener ports.
+	// The listener port information.
 	PortRanges []*DescribeListenerResponseBodyPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	// The network transmission protocol that is used by the listener. Valid values:
+	// The network transport protocol that is used by the listener.
 	//
-	// 	- **tcp**: TCP.
+	// - **TCP**: TCP.
 	//
-	// 	- **udp**: UDP.
+	// - **UDP**: UDP.
 	//
-	// 	- **http**: HTTP.
+	// - **HTTP**: HTTP.
 	//
-	// 	- **https**: HTTPS.
+	// - **HTTPS**: HTTPS.
 	//
 	// example:
 	//
-	// tcp
+	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// Deprecated
 	//
-	// Indicates whether the client IP address preservation feature is enabled. Valid values:
+	// Indicates whether the proxy protocol is used to preserve client IP addresses.
 	//
-	// 	- **true*	- You can view the source IP addresses of clients over the backend service.
+	// - **true**: The proxy protocol is used to preserve client IP addresses. After this feature is enabled, you can view the original IP addresses of clients on the backend service.
 	//
-	// 	- **false**
+	// - **false**: The proxy protocol is not used to preserve client IP addresses.
 	//
 	// example:
 	//
 	// false
 	ProxyProtocol *bool `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
-	// The information about the access control list (ACL) that is associated with the listener.
+	// The access control policy groups that are associated with the listener.
 	RelatedAcls []*DescribeListenerResponseBodyRelatedAcls `json:"RelatedAcls,omitempty" xml:"RelatedAcls,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6FEA0CF3-D3B9-43E5-A304-D217037876A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The timeout period of HTTP or HTTPS requests. Unit: seconds.
+	// The timeout period for HTTP or HTTPS requests. Unit: seconds.
 	//
-	// >  This parameter is returned only for HTTP and HTTPS listeners. If no responses are received from the backend server within the specified timeout period, GA returns the HTTP 504 error code to the client.
+	// > This parameter is available only for HTTP and HTTPS listeners. If a backend server does not respond within the timeout period, GA returns an HTTP 504 error to the client.
 	//
 	// example:
 	//
@@ -182,37 +182,37 @@ type DescribeListenerResponseBody struct {
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The ID of the security policy.
 	//
-	// 	- **tls_cipher_policy_1_0**
+	// - **tls_cipher_policy_1_0**
 	//
-	//     	- Supported Transport Layer Security (TLS) versions: TLS 1.0, TLS 1.1, and TLS 1.2.
+	//   - Supported TLS versions: TLS 1.0, TLS 1.1, and TLS 1.2.
 	//
-	//     	- Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+	//   - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
 	//
-	// 	- **tls_cipher_policy_1_1**
+	// - **tls_cipher_policy_1_1**
 	//
-	//     	- Supported TLS versions: TLS 1.1 and TLS 1.2.
+	//   - Supported TLS versions: TLS 1.1 and TLS 1.2.
 	//
-	//     	- Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+	//   - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
 	//
-	// 	- **tls_cipher_policy_1_2**
+	// - **tls_cipher_policy_1_2**
 	//
-	//     	- Supported TLS version: TLS 1.2.
+	//   - Supported TLS versions: TLS 1.2.
 	//
-	//     	- Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+	//   - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
 	//
-	// 	- **tls_cipher_policy_1_2_strict**
+	// - **tls_cipher_policy_1_2_strict**
 	//
-	//     	- Supported TLS version: TLS 1.2.
+	//   - Supported TLS versions: TLS 1.2.
 	//
-	//     	- Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA.
+	//   - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA.
 	//
-	// 	- **tls_cipher_policy_1_2_strict_with_1_3**
+	// - **tls_cipher_policy_1_2_strict_with_1_3**
 	//
-	//     	- Supported TLS versions: TLS 1.2 and TLS 1.3.
+	//   - Supported TLS versions: TLS 1.2 and TLS 1.3.
 	//
-	//     	- Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA.
+	//   - Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA.
 	//
-	// >  This parameter is returned only for HTTPS listeners.
+	// > This parameter is available only for HTTPS listeners.
 	//
 	// example:
 	//
@@ -220,53 +220,55 @@ type DescribeListenerResponseBody struct {
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The ID of the service that manages the instance.
 	//
-	// >  This parameter is returned only if the value of **ServiceManaged*	- is **true**.
+	// > This parameter is returned only when **ServiceManaged*	- is set to **True**.
 	//
 	// example:
 	//
 	// ALB
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// Indicates whether the instance is managed. Valid values:
+	// Indicates whether the instance is a managed instance. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The instance is a managed instance.
 	//
-	// 	- **false**
+	// - **false**: The instance is not a managed instance.
 	//
 	// example:
 	//
 	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The actions that users can perform on the managed instance.
+	// The actions that you can perform on the managed instance.
 	//
-	// >	- This parameter is returned only if the value of **ServiceManaged*	- is **true**.
+	// > - This parameter is returned only when **ServiceManaged*	- is set to **True**.
 	//
-	// >	- Users can perform only specific actions on a managed instance.
+	// >
+	//
+	// > - When the instance is in a managed state, you cannot perform some operations on the instance.
 	ServiceManagedInfos []*DescribeListenerResponseBodyServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
-	// The status of the listener. Valid values:
+	// The status of the listener.
 	//
-	// 	- **configuring**: The listener is being configured.
+	// - **configuring**: The listener is being configured.
 	//
-	// 	- **init**: The listener is being initialized.
+	// - **init**: The listener is being initialized.
 	//
-	// 	- **updating**: The listener is being updated.
+	// - **updating**: The listener is being updated.
 	//
-	// 	- **deleting:*	- The listener is being deleted.
+	// - **deleting**: The listener is being deleted.
 	//
 	// example:
 	//
 	// active
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The routing type of the listener. Valid values:
+	// The routing type of the listener.
 	//
-	// 	- **Standard**: intelligent routing.
+	// - **Standard**: intelligent routing.
 	//
-	// 	- **CustomRouting**: custom routing.
+	// - **CustomRouting**: custom routing.
 	//
 	// example:
 	//
 	// Standard
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The configurations of the `XForward` headers.
+	// The configurations of the `X-Forwarded-For` headers.
 	XForwardedForConfig *DescribeListenerResponseBodyXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
@@ -549,15 +551,15 @@ func (s *DescribeListenerResponseBody) Validate() error {
 }
 
 type DescribeListenerResponseBodyBackendPorts struct {
-	// The first port in the range of ports that are used by the backend server to receive requests.
+	// The start port of the backend server that is used to receive requests.
 	//
-	// This parameter is returned only if an HTTPS listener is configured and the listener port is the same as the service port of the backend server.
+	// This parameter is returned only when the listener protocol is HTTPS and the listener port is the same as the service port of the backend server.
 	//
 	// example:
 	//
 	// 80
 	FromPort *string `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
-	// The last port in the range of ports that are used by the backend server to receive requests.
+	// The end port of the backend server that is used to receive requests.
 	//
 	// example:
 	//
@@ -602,9 +604,9 @@ type DescribeListenerResponseBodyCertificates struct {
 	//
 	// 449****-cn-hangzhou
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type of the SSL certificate.
+	// The type of the certificate.
 	//
-	// Only **Server*	- may be returned, which indicates a server certificate.
+	// Only **Server*	- is returned, which indicates a server-side certificate.
 	//
 	// example:
 	//
@@ -643,13 +645,13 @@ func (s *DescribeListenerResponseBodyCertificates) Validate() error {
 }
 
 type DescribeListenerResponseBodyPortRanges struct {
-	// The first port in the range of listener ports that are used to receive and forward requests to endpoints.
+	// The start of the listener port range that is used to receive and forward requests to endpoints.
 	//
 	// example:
 	//
 	// 20
 	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
-	// The last port in the range of listener ports that are used to receive and forward requests to endpoints.
+	// The end of the listener port range that is used to receive and forward requests to endpoints.
 	//
 	// example:
 	//
@@ -688,21 +690,19 @@ func (s *DescribeListenerResponseBodyPortRanges) Validate() error {
 }
 
 type DescribeListenerResponseBodyRelatedAcls struct {
-	// The ID of the ACL that is associated with the listener.
+	// The ID of the access control list (ACL) that is associated with the listener.
 	//
 	// example:
 	//
 	// 123
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// Indicates whether the access control feature is enabled. Valid values:
+	// Indicates whether the access control feature is enabled.
 	//
-	// 	- **on**: enabled.
-	//
-	// 	- **off**: disabled.
+	// - **Associated**: The access control feature is enabled.
 	//
 	// example:
 	//
-	// off
+	// Associated
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -739,17 +739,17 @@ func (s *DescribeListenerResponseBodyRelatedAcls) Validate() error {
 type DescribeListenerResponseBodyServiceManagedInfos struct {
 	// The name of the action on the managed instance. Valid values:
 	//
-	// 	- **Create**
+	// - **Create**: Create an instance.
 	//
-	// 	- **Update**
+	// - **Update**: Update the current instance.
 	//
-	// 	- **Delete**
+	// - **Delete**: Delete the current instance.
 	//
-	// 	- **Associate**
+	// - **Associate**: Associate the instance with other resources.
 	//
-	// 	- **UserUnmanaged**
+	// - **UserUnmanaged**: Unmanage the instance.
 	//
-	// 	- **CreateChild**
+	// - **CreateChild**: Create a child resource in the instance.
 	//
 	// example:
 	//
@@ -757,31 +757,31 @@ type DescribeListenerResponseBodyServiceManagedInfos struct {
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// The type of the child resource. Valid values:
 	//
-	// 	- **Listener**: a listener.
+	// - **Listener**: listener.
 	//
-	// 	- **IpSet**: an acceleration region.
+	// - **IpSet**: acceleration region.
 	//
-	// 	- **EndpointGroup**: an endpoint group.
+	// - **EndpointGroup**: endpoint group.
 	//
-	// 	- **ForwardingRule**: a forwarding rule.
+	// - **ForwardingRule**: forwarding rule.
 	//
-	// 	- **Endpoint**: an endpoint.
+	// - **Endpoint**: endpoint.
 	//
-	// 	- **EndpointGroupDestination**: a protocol mapping of an endpoint group associated with a custom routing listener.
+	// - **EndpointGroupDestination**: protocol mapping of an endpoint group associated with a custom routing listener.
 	//
-	// 	- **EndpointPolicy**: a traffic policy of an endpoint associated with a custom routing listener.
+	// - **EndpointPolicy**: traffic policy of an endpoint associated with a custom routing listener.
 	//
-	// >  This parameter is returned only if the value of **Action*	- is **CreateChild**.
+	// > This parameter is returned only when **Action*	- is set to **CreateChild**.
 	//
 	// example:
 	//
 	// Listener
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	// Indicates whether the specified actions are managed.
+	// Indicates whether the specified action is managed. Valid values:
 	//
-	// 	- **true**: The specified actions are managed, and users cannot perform the specified actions on the managed instance.
+	// - **true**: The specified action is managed. You cannot perform the specified action on the managed instance.
 	//
-	// 	- **false**: The specified actions are not managed, and users can perform the specified actions on the managed instance.
+	// - **false**: The specified action is not managed. You can perform the specified action on the managed instance.
 	//
 	// example:
 	//
@@ -829,61 +829,61 @@ func (s *DescribeListenerResponseBodyServiceManagedInfos) Validate() error {
 }
 
 type DescribeListenerResponseBodyXForwardedForConfig struct {
-	// Indicates whether the `GA-AP` header is used to retrieve information about acceleration regions. Valid values:
+	// Indicates whether the `GA-AP` header is used to retrieve information about the acceleration region.
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
-	// 	- **false**
+	// - **false**: no.
 	//
-	// >  This parameter is returned only for HTTP and HTTPS listeners.
+	// > This parameter is available only for HTTP and HTTPS listeners.
 	//
 	// example:
 	//
 	// false
 	XForwardedForGaApEnabled *bool `json:"XForwardedForGaApEnabled,omitempty" xml:"XForwardedForGaApEnabled,omitempty"`
-	// Indicates whether the `GA-ID` header is used to retrieve the ID of the GA instance. Valid values:
+	// Indicates whether the `GA-ID` header is used to retrieve the ID of the GA instance.
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
-	// 	- **false**
+	// - **false**: no.
 	//
-	// >  This parameter is returned only for HTTP and HTTPS listeners.
+	// > This parameter is available only for HTTP and HTTPS listeners.
 	//
 	// example:
 	//
 	// false
 	XForwardedForGaIdEnabled *bool `json:"XForwardedForGaIdEnabled,omitempty" xml:"XForwardedForGaIdEnabled,omitempty"`
-	// Indicates whether the `GA-X-Forward-Port` header is used to retrieve the listener ports of the GA instance. Valid values:
+	// Indicates whether the `GA-X-Forward-Port` header is used to retrieve the listener port of the GA instance.
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
-	// 	- **false**
+	// - **false**: no.
 	//
-	// >  This parameter is returned only for HTTP and HTTPS listeners.
+	// > This parameter is available only for HTTP and HTTPS listeners.
 	//
 	// example:
 	//
 	// false
 	XForwardedForPortEnabled *bool `json:"XForwardedForPortEnabled,omitempty" xml:"XForwardedForPortEnabled,omitempty"`
-	// Indicates whether the `GA-X-Forward-Proto` header is used to retrieve the listener protocol of the GA instance. Valid values:
+	// Indicates whether the `GA-X-Forward-Proto` header is used to retrieve the listener protocol of the GA instance.
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
-	// 	- **false**
+	// - **false**: no.
 	//
-	// >  This parameter is returned only for HTTP and HTTPS listeners.
+	// > This parameter is available only for HTTP and HTTPS listeners.
 	//
 	// example:
 	//
 	// false
 	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
-	// Indicates whether the `X-Real-IP` header is used to retrieve client IP addresses. Valid values:
+	// Indicates whether the `X-Real-IP` header is used to retrieve the real IP addresses of clients.
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
-	// 	- **false**
+	// - **false**: no.
 	//
-	// >  This parameter is returned only for HTTP and HTTPS listeners.
+	// > This parameter is available only for HTTP and HTTPS listeners.
 	//
 	// example:
 	//

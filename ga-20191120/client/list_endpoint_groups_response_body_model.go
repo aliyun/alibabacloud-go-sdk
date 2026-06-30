@@ -22,9 +22,9 @@ type iListEndpointGroupsResponseBody interface {
 }
 
 type ListEndpointGroupsResponseBody struct {
-	// The configurations of the endpoint groups.
+	// The list of endpoint groups.
 	EndpointGroups []*ListEndpointGroupsResponseBodyEndpointGroups `json:"EndpointGroups,omitempty" xml:"EndpointGroups,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListEndpointGroupsResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListEndpointGroupsResponseBody) Validate() error {
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroups struct {
-	// The ID of the GA instance.
+	// The ID of the Global Accelerator instance.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type ListEndpointGroupsResponseBodyEndpointGroups struct {
 	//
 	// group1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The configurations of the endpoints in the endpoint group.
+	// A list of endpoint configurations.
 	EndpointConfigurations []*ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	// The ID of the endpoint group.
 	//
@@ -137,9 +137,13 @@ type ListEndpointGroupsResponseBodyEndpointGroups struct {
 	//
 	// epg-bp16jdc00bhe97sr5****
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The endpoint group IP addresses.
+	// A list of public egress IP addresses of the endpoint group.
+	//
+	// 	Notice:
+	//
+	// For endpoint groups connected to private backend services, the console shows only the private source IP addresses, not the public ones. If the network connection type of a backend service changes (for example, from private to public), monitor the source IP addresses and update the backend service\\"s access control list (ACL).
 	EndpointGroupIpList []*string `json:"EndpointGroupIpList,omitempty" xml:"EndpointGroupIpList,omitempty" type:"Repeated"`
-	// The ID of the region where the endpoint group is created.
+	// The ID of the region where the endpoint group is deployed.
 	//
 	// example:
 	//
@@ -147,72 +151,93 @@ type ListEndpointGroupsResponseBodyEndpointGroups struct {
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
 	// The type of the endpoint group. Valid values:
 	//
-	// 	- **default**: a default endpoint group
+	// - **default**: a default endpoint group.
 	//
-	// 	- **virtual:*	- a virtual endpoint group.
+	// - **virtual**: a virtual endpoint group.
 	//
 	// example:
 	//
 	// default
 	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
-	// The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
-	EndpointGroupUnconfirmedIpList []*string                                                            `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
-	EndpointIpVersion              *string                                                              `json:"EndpointIpVersion,omitempty" xml:"EndpointIpVersion,omitempty"`
-	EndpointPrivateIpList          []*ListEndpointGroupsResponseBodyEndpointGroupsEndpointPrivateIpList `json:"EndpointPrivateIpList,omitempty" xml:"EndpointPrivateIpList,omitempty" type:"Repeated"`
-	// The protocol version that is used by the backend service. Valid values:
+	// The list of new IP addresses in the endpoint group that require confirmation after a Global Accelerator instance is upgraded.
+	EndpointGroupUnconfirmedIpList []*string `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
+	// The IP protocol of the backend service. Valid values:
 	//
-	// 	- **HTTP1.1**
+	// - **IPv4*	- (default): Connections to the backend service use IPv4.
 	//
-	// 	- **HTTP2**
+	// - **IPv6**: Connections to the backend service use IPv6.
+	//
+	// - **ProtocolAffinity**: The connection to the backend service uses the same IP protocol as the client request.
+	//
+	// example:
+	//
+	// IPv4
+	EndpointIpVersion *string `json:"EndpointIpVersion,omitempty" xml:"EndpointIpVersion,omitempty"`
+	// A list of private IP addresses of the endpoints.
+	EndpointPrivateIpList []*ListEndpointGroupsResponseBodyEndpointGroupsEndpointPrivateIpList `json:"EndpointPrivateIpList,omitempty" xml:"EndpointPrivateIpList,omitempty" type:"Repeated"`
+	// The version of the backend service protocol. Valid values:
+	//
+	// - **HTTP1.1**: HTTP/1.1
+	//
+	// - **HTTP2**: HTTP/2
+	//
+	// example:
+	//
+	// HTTP1.1
 	EndpointProtocolVersion *string `json:"EndpointProtocolVersion,omitempty" xml:"EndpointProtocolVersion,omitempty"`
-	// The protocol that is used by the backend server.
+	// The protocol of the backend service. Valid values:
 	//
-	// 	- **HTTP**
+	// - **HTTP**: HTTP
 	//
-	// 	- **HTTPS**
+	// - **HTTPS**: HTTPS
 	//
 	// example:
 	//
 	// HTTP
 	EndpointRequestProtocol *string `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
-	// The IDs of the forwarding rules that are associated with the endpoint group.
+	// The IDs of forwarding rules associated with the endpoint group.
 	ForwardingRuleIds []*string `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
-	// Indicates whether the health check feature is enabled.
+	// Specifies whether to enable health checks.
 	//
-	// 	- **true**
+	// - **true**: Health checks are enabled.
 	//
-	// 	- **false**
+	// - **false**: Health checks are disabled.
 	//
 	// example:
 	//
 	// true
-	HealthCheckEnabled *bool   `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	HealthCheckHost    *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
-	// The interval at which you want to perform health checks. Unit: seconds.
+	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	// The domain name used for health checks.
+	//
+	// example:
+	//
+	// www.taobao.com
+	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
+	// The health check interval, in seconds.
 	//
 	// example:
 	//
 	// 3
 	HealthCheckIntervalSeconds *int32 `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
-	// The path that is used for health checks.
+	// The health check path.
 	//
 	// example:
 	//
 	// /healthcheck
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	// The port that is used for health checks.
+	// The port used for health checks.
 	//
 	// example:
 	//
 	// 10
 	HealthCheckPort *int32 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	// The protocol over which health check requests are sent. Valid values:
+	// The protocol used for health checks.
 	//
-	// 	- **tcp*	- or **TCP**
+	// - **tcp*	- or **TCP**: TCP
 	//
-	// 	- **http*	- or **HTTP**
+	// - **http*	- or **HTTP**: HTTP
 	//
-	// 	- **https*	- or **HTTPS**
+	// - **https*	- or **HTTPS**: HTTPS
 	//
 	// example:
 	//
@@ -230,59 +255,61 @@ type ListEndpointGroupsResponseBodyEndpointGroups struct {
 	//
 	// group1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The port mapping.
+	// The port mappings.
 	PortOverrides []*ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
-	// The service that manages the instance.
+	// The ID of the service that manages the instance.
 	//
-	// >  This parameter takes effect only if the value of **Service managed*	- is **true**.
+	// > This parameter is returned only if **ServiceManaged*	- is **true**.
 	//
 	// example:
 	//
 	// ALB
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// Indicates whether the GA instance is managed. Valid values:
+	// Specifies whether the instance is managed. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The instance is a managed instance.
 	//
-	// 	- **false**
+	// - **false**: The instance is not a managed instance.
 	//
 	// example:
 	//
 	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The actions that users can perform on the managed instance.
+	// The actions that you can perform on the managed instance.
 	//
-	// > -  This parameter takes effect only if the value of **ServiceManaged*	- is **true**.
+	// > - This parameter is returned only if **ServiceManaged*	- is **true**.
 	//
-	// > -   Users can perform only specific actions on a managed instance.
+	// >
+	//
+	// > - Your permissions to operate on a managed instance are restricted.
 	ServiceManagedInfos []*ListEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
-	// The status of the endpoint group. Valid values:
+	// The state of the endpoint group.
 	//
-	// 	- **init:*	- The endpoint group is being initialized.
+	// - **init**: The endpoint group is initializing.
 	//
-	// 	- **active:*	- The endpoint group is running normally.
+	// - **active**: The endpoint group is stable.
 	//
-	// 	- **updating:**The endpoint group is being updated.
+	// - **updating**: The endpoint group is updating.
 	//
-	// 	- **deleteing:*	- The endpoint group is being deleted.
+	// - **deleting**: The endpoint group is deleting.
 	//
 	// example:
 	//
 	// active
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The tag of the endpoint group.
+	// The tags attached to the endpoint group.
 	Tags []*ListEndpointGroupsResponseBodyEndpointGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The number of consecutive failed health checks that must occur before an endpoint is considered unhealthy.
+	// The number of consecutive failed health checks required to mark an endpoint as unhealthy.
 	//
 	// example:
 	//
 	// 3
 	ThresholdCount *int32 `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
-	// The value of the traffic distribution ratio. If a listener is associated with multiple endpoint groups, you can set this parameter to distribute different percentages of traffic to the endpoint groups.
+	// The percentage of traffic routed to the endpoint group. This parameter applies only if a listener is associated with multiple endpoint groups.
 	//
 	// example:
 	//
-	// 20
+	// 100
 	TrafficPercentage *int32 `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
 }
 
@@ -605,24 +632,25 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroups) Validate() error {
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations struct {
+	// The API keys in the endpoint configuration.
 	ApiKeys []*string `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
-	// Indicates whether the client IP address preservation feature is enabled. Valid values:
+	// Specifies whether to preserve client IP addresses.
 	//
-	// 	- **true**
+	// - **true**: Client IP preservation is enabled.
 	//
-	// 	- **false**
+	// - **false**: Client IP preservation is disabled.
 	//
 	// example:
 	//
 	// false
 	EnableClientIPPreservation *bool `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
-	// Indicates whether the proxy protocol is used to preserve client IP addresses. Valid values:
+	// Specifies whether to use Proxy Protocol to preserve client IP addresses.
 	//
-	// 	- **true**
+	// - **true**: Proxy Protocol is enabled.
 	//
-	// 	- **false**
+	// - **false**: Proxy Protocol is disabled.
 	EnableProxyProtocol *bool `json:"EnableProxyProtocol,omitempty" xml:"EnableProxyProtocol,omitempty"`
-	// The IP address or domain name of the endpoint.
+	// The endpoint\\"s IP address, domain name, or instance ID.
 	//
 	// example:
 	//
@@ -634,61 +662,63 @@ type ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations struct {
 	//
 	// ep-bp1d2utp8qqe2a44t****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The port that is used to monitor latency.
+	// The port used for latency monitoring probes.
 	//
 	// example:
 	//
 	// 80
 	ProbePort *int32 `json:"ProbePort,omitempty" xml:"ProbePort,omitempty"`
-	// The protocol that is used to monitor latency.
+	// The protocol that is used for latency monitoring probes.
 	//
-	// 	- **icmp**
+	// - **icmp**: ICMP
 	//
-	// 	- **tcp**
+	// - **tcp**: TCP
 	//
 	// example:
 	//
 	// tcp
 	ProbeProtocol *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
+	// The service provider.
+	//
 	// example:
 	//
 	// BAILIAN
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// The private IP address of the ENI.
+	// The private IP address of the elastic network interface.
 	//
 	// example:
 	//
 	// 172.168.XX.XX
 	SubAddress *string `json:"SubAddress,omitempty" xml:"SubAddress,omitempty"`
-	// The type of the endpoint. Valid values:
+	// The type of endpoint. Valid values:
 	//
-	// 	- **Domain**: a custom domain name.
+	// - **Domain**: a custom domain name.
 	//
-	// 	- **Ip**: a custom IP address.
+	// - **Ip**: a custom IP address.
 	//
-	// 	- **IpTarget**: a custom private IP address.
+	// - **IpTarget**: a custom private IP address.
 	//
-	// 	- **PublicIp**: a public IP address provided by Alibaba Cloud.
+	// - **PublicIp**: an Alibaba Cloud public IP address.
 	//
-	// 	- **ECS**: an Elastic Compute Service (ECS) instance.
+	// - **ECS**: an Alibaba Cloud ECS instance.
 	//
-	// 	- **SLB**: a Server Load Balancer (SLB) instance.
+	// - **SLB**: an Alibaba Cloud SLB instance.
 	//
-	// 	- **ALB**: an Application Load Balancer (ALB) instance.
+	// - **ALB**: an Alibaba Cloud ALB instance.
 	//
-	// 	- **OSS**: an Object Storage Service (OSS) bucket.
+	// - **OSS**: an Alibaba Cloud OSS bucket.
 	//
-	// 	- **ENI**: an elastic network interface (ENI).
+	// - **ENI**: an Alibaba Cloud elastic network interface.
 	//
-	// 	- **NLB**: a Network Load Balancer (NLB) instance.
+	// - **NLB**: an Alibaba Cloud NLB instance.
 	//
 	// example:
 	//
 	// Ip
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The IDs of vSwitches that are deployed in the VPC.
+	// A list of vSwitches in the VPC.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -832,8 +862,18 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) Val
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroupsEndpointPrivateIpList struct {
-	CIDR      *string `json:"CIDR,omitempty" xml:"CIDR,omitempty"`
+	CIDR *string `json:"CIDR,omitempty" xml:"CIDR,omitempty"`
+	// The private IP address.
+	//
+	// example:
+	//
+	// 172.19.115.37
 	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// gsw-0jl6tmriqep1ga***
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -922,19 +962,19 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides) Validate() e
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos struct {
-	// The name of the action that was performed on the managed instance. Valid values:
+	// The name of the action on the managed instance. Valid values:
 	//
-	// 	- **Create:*	- Create an instance.
+	// - **Create**: creates an instance.
 	//
-	// 	- **Update:*	- Update the current instance.
+	// - **Update**: updates the instance.
 	//
-	// 	- **Delete:*	- Delete the current instance.
+	// - **Delete**: deletes the instance.
 	//
-	// 	- **Associate:*	- Reference the current instance.
+	// - **Associate**: associates the instance with other resources.
 	//
-	// 	- **UserUnmanaged:*	- Unmanage the instance.
+	// - **UserUnmanaged**: Reverts the instance to an unmanaged state.
 	//
-	// 	- **CreateChild:*	- Create a child resource in the current instance.
+	// - **CreateChild**: creates a child resource for the instance.
 	//
 	// example:
 	//
@@ -942,31 +982,31 @@ type ListEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos struct {
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// The type of the child resource. Valid values:
 	//
-	// 	- **Listener:*	- listener.
+	// - **Listener**: a listener.
 	//
-	// 	- **IpSet:*	- acceleration region.
+	// - **IpSet**: an acceleration region.
 	//
-	// 	- **EndpointGroup:*	- endpoint group.
+	// - **EndpointGroup**: an endpoint group.
 	//
-	// 	- **ForwardingRule:*	- forwarding rule.
+	// - **ForwardingRule**: a forwarding rule.
 	//
-	// 	- **Endpoint:*	- endpoint.
+	// - **Endpoint**: an endpoint.
 	//
-	// 	- **EndpointGroupDestination:*	- the protocol mapping of an endpoint group associated with a custom routing listener.
+	// - **EndpointGroupDestination**: a protocol mapping for an endpoint group of a custom routing listener.
 	//
-	// 	- **EndpointPolicy:*	- the traffic policy of an endpoint associated with a custom routing listener.
+	// - **EndpointPolicy**: a traffic policy for an endpoint of a custom routing listener.
 	//
-	// >  This parameter takes effect only if you set **Action*	- to **CreateChild**.
+	// > This parameter is returned only if **Action*	- is set to **CreateChild**.
 	//
 	// example:
 	//
 	// Listener
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	// Indicates whether the specified actions are managed. Valid values:
+	// Specifies whether the action is managed. Valid values:
 	//
-	// 	- **true**: The specified actions are managed, and users cannot perform the specified actions on the managed instance.
+	// - **true**: The action is managed. You cannot perform the specified action on the managed instance.
 	//
-	// 	- **false**: The specified actions are not managed, and users can perform the specified actions on the managed instance.
+	// - **false**: The action is not managed. You can perform the specified action on the managed instance.
 	//
 	// example:
 	//
@@ -1014,13 +1054,13 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos) Valida
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroupsTags struct {
-	// The tag key of the endpoint group.
+	// The tag key.
 	//
 	// example:
 	//
 	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the endpoint group.
+	// The tag value.
 	//
 	// example:
 	//

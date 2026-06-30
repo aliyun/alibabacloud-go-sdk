@@ -16,13 +16,13 @@ type iCreateEndpointGroupResponseBody interface {
 }
 
 type CreateEndpointGroupResponseBody struct {
-	// The ID of the endpoint group.
+	// The endpoint group ID.
 	//
 	// example:
 	//
 	// epg-bp1dmlohjjz4kqaun****
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

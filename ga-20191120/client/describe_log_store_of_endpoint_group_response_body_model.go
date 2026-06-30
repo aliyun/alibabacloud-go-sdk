@@ -84,9 +84,7 @@ type DescribeLogStoreOfEndpointGroupResponseBody struct {
 	//
 	// example:
 	//
-	// on - binding
-	//
-	// off - unbinding
+	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

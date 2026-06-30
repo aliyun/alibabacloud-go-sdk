@@ -16,7 +16,7 @@ type iDescribeBandwidthPackageRequest interface {
 }
 
 type DescribeBandwidthPackageRequest struct {
-	// The ID of the bandwidth plan that you want to query.
+	// The ID of the bandwidth plan to query.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeBandwidthPackageRequest struct {
 	//
 	// gbwp-bp1sgzldyj6b4q7cx****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
 	//
 	// This parameter is required.
 	//

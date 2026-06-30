@@ -18,7 +18,7 @@ type iCreateBasicAcceleratorResponseBody interface {
 }
 
 type CreateBasicAcceleratorResponseBody struct {
-	// The ID of the basic GA instance.
+	// The instance ID of the basic Alibaba Cloud Global Accelerator (GA) instance.
 	//
 	// example:
 	//
@@ -26,15 +26,17 @@ type CreateBasicAcceleratorResponseBody struct {
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// The order ID.
 	//
-	// This parameter is returned only if ChargeType is set to PREPAY.
+	// This parameter is returned only when ChargeType is set to PREPAY (upfront).
 	//
-	// If **AutoPay*	- is set to **false**, go to [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment after an order is generated.
+	// If **AutoPay*	- is set to **false**, which means automatic payment of the bill is not enabled, go to the <props="china">[Order Center](https://usercenter2.aliyun.com/order/list)
+	//
+	// <props="intl">[Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
 	//
 	// example:
 	//
 	// 2082574365
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

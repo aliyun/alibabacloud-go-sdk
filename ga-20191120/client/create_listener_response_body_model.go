@@ -16,13 +16,13 @@ type iCreateListenerResponseBody interface {
 }
 
 type CreateListenerResponseBody struct {
-	// The ID of the listener.
+	// The ID of the created listener.
 	//
 	// example:
 	//
 	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

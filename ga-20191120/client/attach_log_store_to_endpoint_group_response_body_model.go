@@ -14,7 +14,7 @@ type iAttachLogStoreToEndpointGroupResponseBody interface {
 }
 
 type AttachLogStoreToEndpointGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

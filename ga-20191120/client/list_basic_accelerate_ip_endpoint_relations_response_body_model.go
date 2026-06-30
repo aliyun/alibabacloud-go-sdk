@@ -189,7 +189,7 @@ type ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelat
 	//
 	// example:
 	//
-	// NLB
+	// ENI
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	// The ID of the zone where the endpoint is created.
 	//

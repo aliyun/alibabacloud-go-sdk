@@ -36,13 +36,13 @@ type iGetBasicAccelerateIpEndpointRelationResponseBody interface {
 }
 
 type GetBasicAccelerateIpEndpointRelationResponseBody struct {
-	// The ID of the accelerated IP address.
+	// The accelerated IP address instance ID of the basic Global Accelerator (GA) instance.
 	//
 	// example:
 	//
 	// gaip-bp1****
 	AccelerateIpId *string `json:"AccelerateIpId,omitempty" xml:"AccelerateIpId,omitempty"`
-	// The ID of the basic GA instance.
+	// The instance ID of the basic Global Accelerator (GA) instance.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type GetBasicAccelerateIpEndpointRelationResponseBody struct {
 	//
 	// eni-bp1a05txelswuj8g****
 	EndpointAddress *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
-	// The ID of the endpoint.
+	// The endpoint ID of the basic Global Accelerator (GA) instance.
 	//
 	// example:
 	//
 	// ep-bp14sz7ftcwwjgrdm****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The name of the endpoint.
+	// The name of the endpoint of the basic Global Accelerator (GA) instance.
 	//
 	// example:
 	//
@@ -68,67 +68,67 @@ type GetBasicAccelerateIpEndpointRelationResponseBody struct {
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	// The secondary address of the endpoint.
 	//
-	// This parameter is returned if the endpoint type is **ECS**, **ENI**, or **NLB**.
+	// This parameter is returned when the endpoint type attached to the accelerated IP address is **ECS**, **ENI**, or **NLB**.
 	//
-	// 	- If the endpoint type is **ECS**, **EndpointSubAddress*	- returns the primary or secondary private IP address of the primary ENI.
+	// - If the endpoint type is **ECS**, EndpointSubAddress is the secondary private IP address or the primary private IP address of the primary network interface controller (NIC).
 	//
-	// 	- If the endpoint type is **ENI**, **EndpointSubAddress*	- returns the primary or secondary private IP address of the secondary ENI.
+	// - If the endpoint type is **ENI**, EndpointSubAddress is the secondary private IP address or the primary private IP address of the secondary elastic network interface (ENI).
 	//
-	// 	- If the endpoint type is **NLB**, **EndpointSubAddress*	- returns the primary private IP address of the NLB backend server.
+	// - If the endpoint type is **NLB**, EndpointSubAddress is the primary private IP address of the NLB backend server.
 	//
 	// example:
 	//
 	// 172.16.XX.XX
 	EndpointSubAddress *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
-	// The type of the secondary address of the endpoint.
+	// The type of the secondary address of the endpoint. Valid values:
 	//
-	// 	- **primary**: a primary private IP address.
+	// - **primary**: The secondary address type is the primary private IP address.
 	//
-	// 	- **secondary**: a secondary private IP address.
+	// - **secondary**: The secondary address type is the secondary private IP address.
 	//
-	// This parameter is returned if the endpoint type is **ECS**, **ENI**, or **NLB**. If the endpoint type is set to **NLB**, **primary*	- is returned.
+	// This parameter is returned when the endpoint type bound to the accelerated IP address is **ECS**, **ENI**, or **NLB**. If the endpoint type is **NLB**, only **primary*	- is returned.
 	//
 	// example:
 	//
 	// primary
 	EndpointSubAddressType *string `json:"EndpointSubAddressType,omitempty" xml:"EndpointSubAddressType,omitempty"`
-	// The type of endpoint. Valid values:
+	// The endpoint type. Valid values:
 	//
-	// 	- **ENI**: elastic network interface (ENI).
+	// - **ENI**: an Alibaba Cloud elastic network interface (ENI).
 	//
-	// 	- **SLB**: Classic Load Balancer (CLB) instance.
+	// - **SLB**: an Alibaba Cloud Classic Load Balancer (CLB) instance.
 	//
-	// 	- **ECS**: Elastic Compute Service (ECS) instance.
+	// - **ECS**: an Alibaba Cloud ECS instance.
 	//
-	// 	- **NLB**: Network Load Balancer (NLB) instance.
+	// - **NLB**: an Alibaba Cloud Network Load Balancer (NLB) instance.
 	//
 	// example:
 	//
 	// ENI
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The ID of the zone where the endpoint is created.
+	// The zone ID of the endpoint.
 	//
-	// This parameter is returned only when the endpoint type is **NLB**.
+	// Currently, this parameter is returned only when the endpoint type bound to the accelerated IP address is **NLB**.
 	//
 	// example:
 	//
 	// cn-hangzhou-g
 	EndpointZoneId *string `json:"EndpointZoneId,omitempty" xml:"EndpointZoneId,omitempty"`
-	// The accelerated IP address of the basic GA instance.
+	// The accelerated IP address of the basic Global Accelerator (GA) instance.
 	//
 	// example:
 	//
 	// 116.132.XX.XX
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The association status between the accelerated IP address and endpoint.
+	// The status of the attachment between the accelerated IP address and the endpoint of the basic Global Accelerator (GA) instance.
 	//
-	// A value of **active*	- indicates that the accelerated IP address is associated with the endpoint.
+	// The value **active*	- indicates that the accelerated IP address is attached to the endpoint.
 	//
 	// example:
 	//

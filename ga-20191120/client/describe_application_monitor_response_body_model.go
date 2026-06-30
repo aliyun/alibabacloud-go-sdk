@@ -54,9 +54,9 @@ type DescribeApplicationMonitorResponseBody struct {
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// Indicates whether the automatic diagnostics feature is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -114,15 +114,15 @@ type DescribeApplicationMonitorResponseBody struct {
 	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
 	// The status of the origin probing task. Valid values:
 	//
-	// 	- **init**
+	// - **init**
 	//
-	// 	- **active**
+	// - **active**
 	//
-	// 	- **updating**
+	// - **updating**
 	//
-	// 	- **inactive**
+	// - **inactive**
 	//
-	// 	- **deleting**
+	// - **deleting**
 	//
 	// example:
 	//
@@ -300,7 +300,7 @@ type DescribeApplicationMonitorResponseBodyIspCityList struct {
 	//
 	// example:
 	//
-	// Singapore
+	// 新加坡
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
 	// The probe point ID of the ISP.
 	//
@@ -312,7 +312,7 @@ type DescribeApplicationMonitorResponseBodyIspCityList struct {
 	//
 	// example:
 	//
-	// Alibaba
+	// 阿里巴巴
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 

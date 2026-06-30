@@ -16,7 +16,7 @@ type iAssociateAdditionalCertificatesWithListenerResponseBody interface {
 }
 
 type AssociateAdditionalCertificatesWithListenerResponseBody struct {
-	// The listener ID.
+	// The listener instance ID.
 	//
 	// example:
 	//

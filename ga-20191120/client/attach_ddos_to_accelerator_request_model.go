@@ -24,18 +24,19 @@ type iAttachDdosToAcceleratorRequest interface {
 }
 
 type AttachDdosToAcceleratorRequest struct {
-	// The ID of the GA instance with which the Anti-DDoS Pro/Premium instance is associated.
+	// The ID of the Global Accelerator (GA) instance with which you want to associate the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ga-bp1odcab8tmno0hdq****
-	AcceleratorId  *string                                         `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// The list of Anti-DDoS Pro or Anti-DDoS Premium instances to associate with the Global Accelerator (GA) instance.
 	DdosConfigList []*AttachDdosToAcceleratorRequestDdosConfigList `json:"DdosConfigList,omitempty" xml:"DdosConfigList,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// The ID of the Anti-DDoS Pro/Premium instance to be associated with the GA instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to associate with the Global Accelerator (GA) instance.
 	//
 	// example:
 	//
@@ -43,18 +44,27 @@ type AttachDdosToAcceleratorRequest struct {
 	DdosId *string `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
 	// Deprecated
 	//
-	// The region where the Anti-DDoS Pro/Premium instance is deployed. Valid values:
+	// The region of the Anti-DDoS Pro or Anti-DDoS Premium instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: regions in the Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: regions outside the Chinese mainland
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// Specifies whether to perform a dry run. Valid values:
+	//
+	// - **true**: performs a dry run without actually associating the instances. The system checks the required parameters, request syntax, and business limits. If the check fails, the corresponding error is returned. If the check passes, an HTTP 2xx status code is returned.
+	//
+	// - **false*	- (default): sends the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
 	//
 	// example:
 	//
@@ -138,7 +148,21 @@ func (s *AttachDdosToAcceleratorRequest) Validate() error {
 }
 
 type AttachDdosToAcceleratorRequestDdosConfigList struct {
-	DdosId       *string `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to associate with the Global Accelerator (GA) instance.
+	//
+	// example:
+	//
+	// ddoscoo-cn-zz11vq7j****
+	DdosId *string `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
+	// The region of the Anti-DDoS Pro or Anti-DDoS Premium instance. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 }
 

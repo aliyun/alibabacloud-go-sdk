@@ -16,13 +16,13 @@ type iCreateBasicAccelerateIpEndpointRelationsResponseBody interface {
 }
 
 type CreateBasicAccelerateIpEndpointRelationsResponseBody struct {
-	// The ID of the basic GA instance.
+	// The ID of the basic Global Accelerator instance.
 	//
 	// example:
 	//
 	// ga-bp17frjjh0udz4qz****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

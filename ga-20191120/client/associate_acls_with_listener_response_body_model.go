@@ -18,15 +18,15 @@ type iAssociateAclsWithListenerResponseBody interface {
 }
 
 type AssociateAclsWithListenerResponseBody struct {
-	// The ID of the ACL.
+	// The ID of the access control policy group.
 	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
-	// The ID of the listener.
+	// The listener ID.
 	//
 	// example:
 	//
 	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

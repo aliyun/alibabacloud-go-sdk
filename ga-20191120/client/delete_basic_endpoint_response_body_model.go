@@ -16,13 +16,13 @@ type iDeleteBasicEndpointResponseBody interface {
 }
 
 type DeleteBasicEndpointResponseBody struct {
-	// The ID of the endpoint.
+	// The ID of the endpoint of the basic Alibaba Cloud Global Accelerator (GA) instance.
 	//
 	// example:
 	//
 	// ep-bp14sz7ftcwwjgrdm****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

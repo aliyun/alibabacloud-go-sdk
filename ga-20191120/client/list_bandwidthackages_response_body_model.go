@@ -24,19 +24,19 @@ type iListBandwidthackagesResponseBody interface {
 type ListBandwidthackagesResponseBody struct {
 	// The details of the bandwidth plans.
 	BandwidthPackages []*ListBandwidthackagesResponseBodyBandwidthPackages `json:"BandwidthPackages,omitempty" xml:"BandwidthPackages,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -117,9 +117,9 @@ func (s *ListBandwidthackagesResponseBody) Validate() error {
 }
 
 type ListBandwidthackagesResponseBodyBandwidthPackages struct {
-	// The IDs of the GA instances that are associated with the bandwidth plans.
+	// The IDs of the Global Accelerator instances that are associated with the bandwidth plan.
 	Accelerators []*string `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
-	// The bandwidth of the bandwidth plan. Unit: Mbit/s.
+	// The bandwidth of the bandwidth plan. Unit: Mbps.
 	//
 	// example:
 	//
@@ -131,17 +131,17 @@ type ListBandwidthackagesResponseBodyBandwidthPackages struct {
 	//
 	// gbwp-bp1sgzldyj6b4q7cx****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The billing method of the bandwidth plan. Valid values:
+	// The billing method.
 	//
-	// 	- **PREPAY**: subscription. This is the default value.
+	// - **PREPAY*	- (default): subscription.
 	//
-	// 	- **POSTPAY**: pay-as-you-go.
+	// - **POSTPAY**: pay-as-you-go.
 	//
 	// example:
 	//
 	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the bandwidth plan was created.
+	// The timestamp that indicates when the bandwidth plan was created.
 	//
 	// example:
 	//
@@ -153,19 +153,19 @@ type ListBandwidthackagesResponseBodyBandwidthPackages struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The expiration time of the bandwidth plan.
+	// The timestamp that indicates when the bandwidth plan expires.
 	//
 	// example:
 	//
 	// 1578966918000
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The name of the GA instance.
+	// The name of the bandwidth plan.
 	//
 	// example:
 	//
 	// Accelerator
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The request ID.
+	// The ID of the region.
 	//
 	// example:
 	//
@@ -177,29 +177,29 @@ type ListBandwidthackagesResponseBodyBandwidthPackages struct {
 	//
 	// rg-aekzzwgr7vz2liy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the bandwidth plan. Valid values:
+	// The status of the bandwidth plan.
 	//
-	// 	- **init:*	- The bandwidth plan is being initialized.
+	// - **init**: The bandwidth plan is being initialized.
 	//
-	// 	- **active:*	- The bandwidth plan is available.
+	// - **active**: The bandwidth plan is available.
 	//
-	// 	- **binded:*	- The bandwidth plan is associated with a GA instance.
+	// - **binded**: The bandwidth plan is bound.
 	//
-	// 	- **binding:*	- The bandwidth plan is being associated with a GA instance.
+	// - **binding**: The bandwidth plan is being bound.
 	//
-	// 	- **unbinding:*	- The bandwidth plan is being disassociated from a GA instance.
+	// - **unbinding**: The bandwidth plan is being unbound.
 	//
-	// 	- **updating:*	- The bandwidth plan is being updated.
+	// - **updating**: The bandwidth plan is being updated.
 	//
-	// 	- **finacialLocked:*	- The bandwidth plan is locked due to overdue payments.
+	// - **finacialLocked**: The bandwidth plan is financially locked.
 	//
-	// 	- **locked:*	- The bandwidth plan is locked.
+	// - **locked**: The bandwidth plan is locked.
 	//
 	// example:
 	//
 	// active
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The tag of the bandwidth plan.
+	// The tags of the resource.
 	Tags []*ListBandwidthackagesResponseBodyBandwidthPackagesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -333,13 +333,13 @@ func (s *ListBandwidthackagesResponseBodyBandwidthPackages) Validate() error {
 }
 
 type ListBandwidthackagesResponseBodyBandwidthPackagesTags struct {
-	// The tag key of the bandwidth plan.
+	// The tag key.
 	//
 	// example:
 	//
 	// tag-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the bandwidth plan.
+	// The tag value.
 	//
 	// example:
 	//

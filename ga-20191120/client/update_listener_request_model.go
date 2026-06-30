@@ -50,9 +50,9 @@ type UpdateListenerRequest struct {
 	Certificates []*UpdateListenerRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	// Indicates whether client affinity is enabled for the listener. Valid values:
 	//
-	// 	- **NONE**: Client affinity is disabled. Requests from the same client may be forwarded to different endpoints.
+	// - **NONE**: Client affinity is disabled. Requests from the same client may be forwarded to different endpoints.
 	//
-	// 	- **SOURCE_IP**: Client affinity is enabled. When a client accesses stateful applications, requests from the same client are forwarded to the same endpoint regardless of the source port or protocol.
+	// - **SOURCE_IP**: Client affinity is enabled. When a client accesses stateful applications, requests from the same client are forwarded to the same endpoint regardless of the source port or protocol.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type UpdateListenerRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type UpdateListenerRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The maximum version of the HTTP protocol. Valid values:
 	//
-	// 	- **http3**
+	// - **http3**
 	//
-	// 	- **http2**
+	// - **http2**
 	//
-	// 	- **http1.1**
+	// - **http1.1**
 	//
-	// >  Only HTTPS listeners support this parameter.
+	// > Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
@@ -92,11 +92,11 @@ type UpdateListenerRequest struct {
 	HttpVersion *string `json:"HttpVersion,omitempty" xml:"HttpVersion,omitempty"`
 	// The timeout period for idle connections. Unit: seconds.
 	//
-	// 	- TCP: 10-900. Default value: 900. Unit: seconds.
+	// - TCP: 10-900. Default value: 900. Unit: seconds.
 	//
-	// 	- UDP: 10-20. Default value: 20. Unit: seconds.
+	// - UDP: 10-20. Default value: 20. Unit: seconds.
 	//
-	// 	- HTTP/HTTPS: 1-60. Default value: 15. Unit: seconds.
+	// - HTTP/HTTPS: 1-60. Default value: 15. Unit: seconds.
 	//
 	// example:
 	//
@@ -126,13 +126,13 @@ type UpdateListenerRequest struct {
 	PortRanges []*UpdateListenerRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 	// The network transmission protocol that is used by the listener. Valid values:
 	//
-	// 	- **tcp**: TCP
+	// - **tcp**: TCP
 	//
-	// 	- **udp**: UDP
+	// - **udp**: UDP
 	//
-	// 	- **http**: HTTP
+	// - **http**: HTTP
 	//
-	// 	- **https**: HTTPS
+	// - **https**: HTTPS
 	//
 	// example:
 	//
@@ -142,11 +142,11 @@ type UpdateListenerRequest struct {
 	//
 	// Specifies whether to preserve source IP addresses of clients.
 	//
-	// 	- **true*	- This feature allows you to view client IP addresses on backend servers.
+	// - **true*	- This feature allows you to view client IP addresses on backend servers.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default)
 	//
-	// >  This parameter will be discontinued in the API operations that are used to configure listeners. We recommend that you set this parameter when you call API operations to configure endpoint groups. For more information about the **ProxyProtocol*	- parameter, see [CreateEndpointGroup](https://help.aliyun.com/document_detail/153259.html) and [UpdateEndpointGroup](https://help.aliyun.com/document_detail/153262.html).
+	// > This parameter will be discontinued in the API operations that are used to configure listeners. We recommend that you set this parameter when you call API operations to configure endpoint groups. For more information about the **ProxyProtocol*	- parameter, see [CreateEndpointGroup](https://help.aliyun.com/document_detail/153259.html) and [UpdateEndpointGroup](https://help.aliyun.com/document_detail/153262.html).
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type UpdateListenerRequest struct {
 	//
 	// Valid values: 1 to 180. Default value: 60. Unit: seconds.
 	//
-	// >  This parameter takes effect only for HTTP or HTTPS listeners. If the backend server does not respond within the timeout period, GA returns an HTTP 504 error code to the client.
+	// > This parameter takes effect only for HTTP or HTTPS listeners. If the backend server does not respond within the timeout period, GA returns an HTTP 504 error code to the client.
 	//
 	// example:
 	//
@@ -170,35 +170,35 @@ type UpdateListenerRequest struct {
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The ID of the security policy. Valid values:
 	//
-	// 	- **tls_cipher_policy_1_0**
+	// - **tls_cipher_policy_1_0**
 	//
-	//     	- Supported Transport Layer Security (TLS) versions: TLS 1.0, TLS 1.1, and TLS 1.2
+	//   - Supported Transport Layer Security (TLS) versions: TLS 1.0, TLS 1.1, and TLS 1.2
 	//
-	//     	- Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
+	//   - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
 	//
-	// 	- **tls_cipher_policy_1_1**
+	// - **tls_cipher_policy_1_1**
 	//
-	//     	- Supported TLS versions: TLS 1.1 and TLS 1.2
+	//   - Supported TLS versions: TLS 1.1 and TLS 1.2
 	//
-	//     	- Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
+	//   - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
 	//
-	// 	- **tls_cipher_policy_1_2**
+	// - **tls_cipher_policy_1_2**
 	//
-	//     	- Supported TLS version: TLS 1.2
+	//   - Supported TLS version: TLS 1.2
 	//
-	//     	- Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
+	//   - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
 	//
-	// 	- **tls_cipher_policy_1_2_strict**
+	// - **tls_cipher_policy_1_2_strict**
 	//
-	//     	- Supported TLS version: TLS 1.2
+	//   - Supported TLS version: TLS 1.2
 	//
-	//     	- Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
+	//   - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
 	//
-	// 	- **tls_cipher_policy_1_2_strict_with_1_3**
+	// - **tls_cipher_policy_1_2_strict_with_1_3**
 	//
-	//     	- Supported TLS versions: TLS 1.2 and TLS 1.3
+	//   - Supported TLS versions: TLS 1.2 and TLS 1.3
 	//
-	//     	- Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
+	//   - Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
 	//
 	// > This parameter is available only when you create an HTTPS listener.
 	//
@@ -543,9 +543,9 @@ func (s *UpdateListenerRequestPortRanges) Validate() error {
 type UpdateListenerRequestXForwardedForConfig struct {
 	// Specifies whether to use the `GA-AP` header to retrieve information about acceleration regions. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes
 	//
-	// 	- **false*	- (default): no
+	// - **false*	- (default): no
 	//
 	// > This parameter is available only when you create an HTTPS or HTTP listener.
 	//
@@ -555,9 +555,9 @@ type UpdateListenerRequestXForwardedForConfig struct {
 	XForwardedForGaApEnabled *bool `json:"XForwardedForGaApEnabled,omitempty" xml:"XForwardedForGaApEnabled,omitempty"`
 	// Specifies whether to use the `GA-ID` header to retrieve the ID of the GA instance. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes
 	//
-	// 	- **false*	- (default): no
+	// - **false*	- (default): no
 	//
 	// > This parameter is available only when you create an HTTPS or HTTP listener.
 	//
@@ -567,9 +567,9 @@ type UpdateListenerRequestXForwardedForConfig struct {
 	XForwardedForGaIdEnabled *bool `json:"XForwardedForGaIdEnabled,omitempty" xml:"XForwardedForGaIdEnabled,omitempty"`
 	// Specifies whether to use the `GA-X-Forward-Port` header to retrieve the listener ports of the GA instance. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes
 	//
-	// 	- **false*	- (default): no
+	// - **false*	- (default): no
 	//
 	// > This parameter is available only when you create an HTTPS or HTTP listener.
 	//
@@ -579,9 +579,9 @@ type UpdateListenerRequestXForwardedForConfig struct {
 	XForwardedForPortEnabled *bool `json:"XForwardedForPortEnabled,omitempty" xml:"XForwardedForPortEnabled,omitempty"`
 	// Specifies whether to use the `GA-X-Forward-Proto` header to retrieve the listener protocol of the GA instance. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes
 	//
-	// 	- **false*	- (default): no
+	// - **false*	- (default): no
 	//
 	// > This parameter is available only when you create an HTTPS or HTTP listener.
 	//
@@ -591,9 +591,9 @@ type UpdateListenerRequestXForwardedForConfig struct {
 	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
 	// Specifies whether to use the `X-Real-IP` header to retrieve client IP addresses. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes
 	//
-	// 	- **false*	- (default): no
+	// - **false*	- (default): no
 	//
 	// > This parameter is available only when you create an HTTPS or HTTP listener.
 	//

@@ -16,7 +16,7 @@ type iCreateBasicEndpointGroupResponseBody interface {
 }
 
 type CreateBasicEndpointGroupResponseBody struct {
-	// The endpoint group ID.
+	// The ID of the endpoint group for the basic Alibaba Cloud Global Accelerator (GA) instance.
 	//
 	// example:
 	//

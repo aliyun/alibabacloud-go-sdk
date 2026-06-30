@@ -20,17 +20,27 @@ type iDetachDdosFromAcceleratorRequest interface {
 }
 
 type DetachDdosFromAcceleratorRequest struct {
-	// The ID of the GA instance.
+	// The ID of the Global Accelerator instance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ga-bp1odcab8tmno0hdq****
-	AcceleratorId  *string                                           `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// A list of Anti-DDoS Pro or Anti-DDoS Premium instances that are associated with the Global Accelerator instance.
 	DdosConfigList []*DetachDdosFromAcceleratorRequestDdosConfigList `json:"DdosConfigList,omitempty" xml:"DdosConfigList,omitempty" type:"Repeated"`
-	DryRun         *bool                                             `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// Specifies whether to perform a dry run. Valid values:
+	//
+	// - **true**: performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns an HTTP 2xx status code.
+	//
+	// - **false*	- (default): sends a normal request. After the request passes the check, an HTTP 2xx status code is returned and the instance is detached.
+	//
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the region where the Global Accelerator instance is deployed. Set the value to **cn-hangzhou**.
 	//
 	// example:
 	//
@@ -96,7 +106,21 @@ func (s *DetachDdosFromAcceleratorRequest) Validate() error {
 }
 
 type DetachDdosFromAcceleratorRequestDdosConfigList struct {
-	DdosId       *string `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance that is associated with the Global Accelerator instance.
+	//
+	// example:
+	//
+	// ddosDip-cn-pj64b8cz101
+	DdosId *string `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
+	// The region where the Anti-DDoS Pro or Anti-DDoS Premium instance is deployed. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// ap-southeast-1
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 }
 

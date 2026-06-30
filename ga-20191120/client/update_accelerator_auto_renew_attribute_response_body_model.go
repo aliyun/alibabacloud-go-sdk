@@ -16,13 +16,13 @@ type iUpdateAcceleratorAutoRenewAttributeResponseBody interface {
 }
 
 type UpdateAcceleratorAutoRenewAttributeResponseBody struct {
-	// The ID of the GA instance.
+	// The ID of the Global Accelerator instance.
 	//
 	// example:
 	//
 	// ga-bp17frjjh0udz4qz****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

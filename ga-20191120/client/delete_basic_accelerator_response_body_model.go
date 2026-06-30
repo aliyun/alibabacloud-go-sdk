@@ -16,13 +16,13 @@ type iDeleteBasicAcceleratorResponseBody interface {
 }
 
 type DeleteBasicAcceleratorResponseBody struct {
-	// The ID of the basic GA instance.
+	// The instance ID of the basic Alibaba Cloud Global Accelerator (GA) instance.
 	//
 	// example:
 	//
 	// ga-bp17frjjh0udz4qz****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

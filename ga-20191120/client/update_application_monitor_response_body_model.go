@@ -14,7 +14,7 @@ type iUpdateApplicationMonitorResponseBody interface {
 }
 
 type UpdateApplicationMonitorResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

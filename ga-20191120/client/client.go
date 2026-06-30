@@ -25,6 +25,9 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-hangzhou": dara.String("ga.cn-hangzhou.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,17 +61,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds IP addresses or CIDR blocks to an access control list (ACL). You can add IP addresses or CIDR blocks to an ACL and configure a whitelist or blacklist to allow or deny requests from clients.
+// Adds IP entries to an access control policy group and allows or restricts the forwarding of access requests to listeners for these IP entries by using Settings such as whitelists or blacklists, enabling precise control over client requests. You can call the AddEntriesToAcl operation to add IP entries to an access control policy group.
 //
 // Description:
 //
-//	  **AddEntriesToAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetAcl](https://help.aliyun.com/document_detail/258292.html) or [ListAcls](https://help.aliyun.com/document_detail/258291.html) operation to query the status of the ACL to which you want to add IP entries.
+// - **AddEntriesToAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID, but the IP entries are not yet added. The addition node continues in the background. You can call [GetAcl](https://help.aliyun.com/document_detail/258292.html) or [ListAcls](https://help.aliyun.com/document_detail/258291.html) to query the status of the access control policy group:
 //
-//	    	- If the ACL is in the **configuring*	- state, it indicates that IP entries are added to the ACL. In this case, you can perform only query operations.
+//   - If the access control policy group is in the **configuring*	- state, the IP entries are being added. In this state, you can only perform query operations and cannot perform other operations.
 //
-//	    	- If the ACL is in the **active*	- state, it indicates that IP entries are added to the ACL.
+//   - If the access control policy group is in the **active*	- state, the IP entries are added.
 //
-//		- The **AddEntriesToAcl*	- operation holds an exclusive lock on the Global Accelerator (GA) instance. While the operation is in progress, you cannot call the same operation in the same Alibaba Cloud account.
+// - You cannot concurrently call **AddEntriesToAcl*	- to add IP entries to an access control policy group within the same Global Accelerator (GA) instance.
 //
 // @param request - AddEntriesToAclRequest
 //
@@ -128,17 +131,17 @@ func (client *Client) AddEntriesToAclWithOptions(request *AddEntriesToAclRequest
 
 // Summary:
 //
-// Adds IP addresses or CIDR blocks to an access control list (ACL). You can add IP addresses or CIDR blocks to an ACL and configure a whitelist or blacklist to allow or deny requests from clients.
+// Adds IP entries to an access control policy group and allows or restricts the forwarding of access requests to listeners for these IP entries by using Settings such as whitelists or blacklists, enabling precise control over client requests. You can call the AddEntriesToAcl operation to add IP entries to an access control policy group.
 //
 // Description:
 //
-//	  **AddEntriesToAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetAcl](https://help.aliyun.com/document_detail/258292.html) or [ListAcls](https://help.aliyun.com/document_detail/258291.html) operation to query the status of the ACL to which you want to add IP entries.
+// - **AddEntriesToAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID, but the IP entries are not yet added. The addition node continues in the background. You can call [GetAcl](https://help.aliyun.com/document_detail/258292.html) or [ListAcls](https://help.aliyun.com/document_detail/258291.html) to query the status of the access control policy group:
 //
-//	    	- If the ACL is in the **configuring*	- state, it indicates that IP entries are added to the ACL. In this case, you can perform only query operations.
+//   - If the access control policy group is in the **configuring*	- state, the IP entries are being added. In this state, you can only perform query operations and cannot perform other operations.
 //
-//	    	- If the ACL is in the **active*	- state, it indicates that IP entries are added to the ACL.
+//   - If the access control policy group is in the **active*	- state, the IP entries are added.
 //
-//		- The **AddEntriesToAcl*	- operation holds an exclusive lock on the Global Accelerator (GA) instance. While the operation is in progress, you cannot call the same operation in the same Alibaba Cloud account.
+// - You cannot concurrently call **AddEntriesToAcl*	- to add IP entries to an access control policy group within the same Global Accelerator (GA) instance.
 //
 // @param request - AddEntriesToAclRequest
 //
@@ -156,19 +159,17 @@ func (client *Client) AddEntriesToAcl(request *AddEntriesToAclRequest) (_result 
 
 // Summary:
 //
-// Associates access control lists (ACLs) with a listener.
+// Invokes the AssociateAclsWithListener operation to associate access control policy groups with a listener.
 //
 // Description:
 //
-// ## Description
+// - **AssociateAclsWithListener*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the access control policy group is not yet associated with the listener. The association node continues to run in the background. You can invoke [DescribeListener](https://help.aliyun.com/document_detail/153254.html) to query the listener status:
 //
-//   - **AssociateAclsWithListener*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeListener](https://help.aliyun.com/document_detail/153254.html) operation to query the state of the listener with which you attempt to associate an ACL.
+//   - If the listener is in the **updating*	- state, the access control policy group is being associated with the listener. In this state, you can only execute query operations and cannot execute other operations.
 //
-//   - If the listener is in the **updating*	- state, it indicates that the ACL is being associated. In this case, you can perform only query operations.
+//   - If the listener is in the **active*	- state, the access control policy group is associated with the listener.
 //
-//   - If the listener is in the **active*	- state, it indicates that the ACL is associated.
-//
-//   - The **AssociateAclsWithListener*	- operation cannot be called repeatedly for the same Global Accelerator (GA) instance within a specific period of time.
+// - You cannot concurrently associate access control policy groups with listeners within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - AssociateAclsWithListenerRequest
 //
@@ -232,19 +233,17 @@ func (client *Client) AssociateAclsWithListenerWithOptions(request *AssociateAcl
 
 // Summary:
 //
-// Associates access control lists (ACLs) with a listener.
+// Invokes the AssociateAclsWithListener operation to associate access control policy groups with a listener.
 //
 // Description:
 //
-// ## Description
+// - **AssociateAclsWithListener*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the access control policy group is not yet associated with the listener. The association node continues to run in the background. You can invoke [DescribeListener](https://help.aliyun.com/document_detail/153254.html) to query the listener status:
 //
-//   - **AssociateAclsWithListener*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeListener](https://help.aliyun.com/document_detail/153254.html) operation to query the state of the listener with which you attempt to associate an ACL.
+//   - If the listener is in the **updating*	- state, the access control policy group is being associated with the listener. In this state, you can only execute query operations and cannot execute other operations.
 //
-//   - If the listener is in the **updating*	- state, it indicates that the ACL is being associated. In this case, you can perform only query operations.
+//   - If the listener is in the **active*	- state, the access control policy group is associated with the listener.
 //
-//   - If the listener is in the **active*	- state, it indicates that the ACL is associated.
-//
-//   - The **AssociateAclsWithListener*	- operation cannot be called repeatedly for the same Global Accelerator (GA) instance within a specific period of time.
+// - You cannot concurrently associate access control policy groups with listeners within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - AssociateAclsWithListenerRequest
 //
@@ -262,19 +261,19 @@ func (client *Client) AssociateAclsWithListener(request *AssociateAclsWithListen
 
 // Summary:
 //
-// Associates additional certificates with an HTTPS listener. You can associate multiple certificates with an HTTPS listener and configure virtual endpoint groups and forwarding rules to accelerate access to multiple HTTPS-capable domain names.
+// Binds multiple certificates to an HTTPS listener of a Global Accelerator instance. Combined with virtual endpoint groups and forwarding rules, this enables accelerated access to multiple HTTPS domain names. You can call the AssociateAdditionalCertificatesWithListener operation to bind additional certificates to an HTTPS listener.
 //
 // Description:
 //
-//	  Only HTTPS listeners can be associated with additional certificates.
+// - Only HTTPS protocol listeners support attaching extension certificates.
 //
-//		- **AssociateAdditionalCertificatesWithListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeListener](https://help.aliyun.com/document_detail/153254.html) operation to query the status of the listener with which you want to associate an additional certificate.
+// - The **AssociateAdditionalCertificatesWithListener*	- operation is asynchronous. After you send a request, the system returns a request ID, but the attachment between the HTTPS listener and the extension certificates is not yet complete because the association node is still running in the background. You can invoke [DescribeListener](https://help.aliyun.com/document_detail/153254.html) to query the listener status:
 //
-//	    	- If the listener is in the **updating*	- state, it indicates that the additional certificate is being associated. In this case, you can perform only query operations.
+//   - If the listener is in the **updating*	- state, the HTTPS listener and extension certificates are being attached. In this state, you can only execute query operations.
 //
-//	    	- If the listener is in the **active*	- state, it indicates that the additional certificate is associated.
+//   - If the listener is in the **active*	- state, the HTTPS listener and extension certificates are attached.
 //
-//		- The **AssociateAdditionalCertificatesWithListener*	- operation holds an exclusive lock on the Global Accelerator (GA) instance. While the operation is in progress, you cannot call the same operation in the same Alibaba Cloud account.
+// - The **AssociateAdditionalCertificatesWithListener*	- operation does not support concurrent requests to attach extension certificates to HTTPS listeners within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - AssociateAdditionalCertificatesWithListenerRequest
 //
@@ -334,19 +333,19 @@ func (client *Client) AssociateAdditionalCertificatesWithListenerWithOptions(req
 
 // Summary:
 //
-// Associates additional certificates with an HTTPS listener. You can associate multiple certificates with an HTTPS listener and configure virtual endpoint groups and forwarding rules to accelerate access to multiple HTTPS-capable domain names.
+// Binds multiple certificates to an HTTPS listener of a Global Accelerator instance. Combined with virtual endpoint groups and forwarding rules, this enables accelerated access to multiple HTTPS domain names. You can call the AssociateAdditionalCertificatesWithListener operation to bind additional certificates to an HTTPS listener.
 //
 // Description:
 //
-//	  Only HTTPS listeners can be associated with additional certificates.
+// - Only HTTPS protocol listeners support attaching extension certificates.
 //
-//		- **AssociateAdditionalCertificatesWithListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeListener](https://help.aliyun.com/document_detail/153254.html) operation to query the status of the listener with which you want to associate an additional certificate.
+// - The **AssociateAdditionalCertificatesWithListener*	- operation is asynchronous. After you send a request, the system returns a request ID, but the attachment between the HTTPS listener and the extension certificates is not yet complete because the association node is still running in the background. You can invoke [DescribeListener](https://help.aliyun.com/document_detail/153254.html) to query the listener status:
 //
-//	    	- If the listener is in the **updating*	- state, it indicates that the additional certificate is being associated. In this case, you can perform only query operations.
+//   - If the listener is in the **updating*	- state, the HTTPS listener and extension certificates are being attached. In this state, you can only execute query operations.
 //
-//	    	- If the listener is in the **active*	- state, it indicates that the additional certificate is associated.
+//   - If the listener is in the **active*	- state, the HTTPS listener and extension certificates are attached.
 //
-//		- The **AssociateAdditionalCertificatesWithListener*	- operation holds an exclusive lock on the Global Accelerator (GA) instance. While the operation is in progress, you cannot call the same operation in the same Alibaba Cloud account.
+// - The **AssociateAdditionalCertificatesWithListener*	- operation does not support concurrent requests to attach extension certificates to HTTPS listeners within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - AssociateAdditionalCertificatesWithListenerRequest
 //
@@ -364,7 +363,7 @@ func (client *Client) AssociateAdditionalCertificatesWithListener(request *Assoc
 
 // Summary:
 //
-// # GA集成云产品
+// # Alibaba Cloud Global Accelerator (GA) Integration with Cloud Products
 //
 // @param request - AssociateResourcesRequest
 //
@@ -432,7 +431,7 @@ func (client *Client) AssociateResourcesWithOptions(request *AssociateResourcesR
 
 // Summary:
 //
-// # GA集成云产品
+// # Alibaba Cloud Global Accelerator (GA) Integration with Cloud Products
 //
 // @param request - AssociateResourcesRequest
 //
@@ -450,19 +449,19 @@ func (client *Client) AssociateResources(request *AssociateResourcesRequest) (_r
 
 // Summary:
 //
-// Associates an Anti-DDoS Pro or Anti-DDoS Premium instance with a Global Accelerator (GA) instance.
+// If you want to protect your Global Accelerator (GA) applications from large-scale DDoS attacks and ensure service stability and availability, you can call the AttachDdosToAccelerator operation to associate an Anti-DDoS Pro or Anti-DDoS Premium instance with a GA instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// Note the following when you call this operation:
 //
-//   - **AttachDdosToAccelerator*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) or [ListAccelerators](https://help.aliyun.com/document_detail/153236.html) operation to query the status of the GA instance.
+// - AttachDdosToAccelerator is an asynchronous operation. After you send a request, the system returns a request ID, but the Anti-DDoS Pro or Anti-DDoS Premium instance is not yet associated with the Global Accelerator (GA) instance. The associate task continues to run in the background. You can call [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) or [ListAccelerators](https://help.aliyun.com/document_detail/153236.html) to query the status of the GA instance:
 //
-//   - If the GA instance is in the **configuring*	- state, the Anti-DDoS Pro or Anti-DDoS Premium instance is being associated with the GA instance. In this case, you can perform only query operations.
+//   - If the GA instance is in the **configuring*	- state, the Anti-DDoS Pro or Anti-DDoS Premium instance is being associated with the GA instance. In this state, you can only perform query operations.
 //
 //   - If the GA instance is in the **active*	- state, the Anti-DDoS Pro or Anti-DDoS Premium instance is associated with the GA instance.
 //
-//   - You cannot repeatedly call the **AttachDdosToAccelerator*	- operation for the same GA instance within a specific period of time.
+// - The AttachDdosToAccelerator operation does not support concurrent requests to associate Anti-DDoS Pro or Anti-DDoS Premium instances with the same GA instance.
 //
 // @param request - AttachDdosToAcceleratorRequest
 //
@@ -526,19 +525,19 @@ func (client *Client) AttachDdosToAcceleratorWithOptions(request *AttachDdosToAc
 
 // Summary:
 //
-// Associates an Anti-DDoS Pro or Anti-DDoS Premium instance with a Global Accelerator (GA) instance.
+// If you want to protect your Global Accelerator (GA) applications from large-scale DDoS attacks and ensure service stability and availability, you can call the AttachDdosToAccelerator operation to associate an Anti-DDoS Pro or Anti-DDoS Premium instance with a GA instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// Note the following when you call this operation:
 //
-//   - **AttachDdosToAccelerator*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) or [ListAccelerators](https://help.aliyun.com/document_detail/153236.html) operation to query the status of the GA instance.
+// - AttachDdosToAccelerator is an asynchronous operation. After you send a request, the system returns a request ID, but the Anti-DDoS Pro or Anti-DDoS Premium instance is not yet associated with the Global Accelerator (GA) instance. The associate task continues to run in the background. You can call [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) or [ListAccelerators](https://help.aliyun.com/document_detail/153236.html) to query the status of the GA instance:
 //
-//   - If the GA instance is in the **configuring*	- state, the Anti-DDoS Pro or Anti-DDoS Premium instance is being associated with the GA instance. In this case, you can perform only query operations.
+//   - If the GA instance is in the **configuring*	- state, the Anti-DDoS Pro or Anti-DDoS Premium instance is being associated with the GA instance. In this state, you can only perform query operations.
 //
 //   - If the GA instance is in the **active*	- state, the Anti-DDoS Pro or Anti-DDoS Premium instance is associated with the GA instance.
 //
-//   - You cannot repeatedly call the **AttachDdosToAccelerator*	- operation for the same GA instance within a specific period of time.
+// - The AttachDdosToAccelerator operation does not support concurrent requests to associate Anti-DDoS Pro or Anti-DDoS Premium instances with the same GA instance.
 //
 // @param request - AttachDdosToAcceleratorRequest
 //
@@ -556,17 +555,17 @@ func (client *Client) AttachDdosToAccelerator(request *AttachDdosToAcceleratorRe
 
 // Summary:
 //
-// Associates a Log Service Logstore with an endpoint group.
+// Associates a Simple Log Service (SLS) Logstore with an endpoint group.
 //
 // Description:
 //
-//	  **AttachLogStoreToEndpointGroup*	- is an asynchronous operation. After you send a request, the system returns a request ID, but this operation is still being performed in the system background. You can call the [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) operation to query the state of an endpoint group.
+// - **AttachLogStoreToEndpointGroup*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the association between the SLS Logstore and the endpoint group is not yet complete. The association node continues to run in the background. You can invoke [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) to query the status of the endpoint group:
 //
-//	    	- If the endpoint group is in the **updating*	- state, it indicates that a Logstore is being associated with the group. In this case, you can perform only query operations.
+//   - If the endpoint group is in the **updating*	- state, the SLS Logstore is being associated with the endpoint group. In this state, you can only execute query operations.
 //
-//	    	- If the endpoint group is in the **active*	- state, it indicates that a Logstore is associated with the group.
+//   - If the endpoint group is in the **active*	- state, the SLS Logstore is associated with the endpoint group.
 //
-//		- The **AttachLogStoreToEndpointGroup*	- operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
+// - **AttachLogStoreToEndpointGroup*	- does not support concurrent association of SLS Logstores with endpoint groups within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - AttachLogStoreToEndpointGroupRequest
 //
@@ -646,17 +645,17 @@ func (client *Client) AttachLogStoreToEndpointGroupWithOptions(request *AttachLo
 
 // Summary:
 //
-// Associates a Log Service Logstore with an endpoint group.
+// Associates a Simple Log Service (SLS) Logstore with an endpoint group.
 //
 // Description:
 //
-//	  **AttachLogStoreToEndpointGroup*	- is an asynchronous operation. After you send a request, the system returns a request ID, but this operation is still being performed in the system background. You can call the [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) operation to query the state of an endpoint group.
+// - **AttachLogStoreToEndpointGroup*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the association between the SLS Logstore and the endpoint group is not yet complete. The association node continues to run in the background. You can invoke [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) to query the status of the endpoint group:
 //
-//	    	- If the endpoint group is in the **updating*	- state, it indicates that a Logstore is being associated with the group. In this case, you can perform only query operations.
+//   - If the endpoint group is in the **updating*	- state, the SLS Logstore is being associated with the endpoint group. In this state, you can only execute query operations.
 //
-//	    	- If the endpoint group is in the **active*	- state, it indicates that a Logstore is associated with the group.
+//   - If the endpoint group is in the **active*	- state, the SLS Logstore is associated with the endpoint group.
 //
-//		- The **AttachLogStoreToEndpointGroup*	- operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
+// - **AttachLogStoreToEndpointGroup*	- does not support concurrent association of SLS Logstores with endpoint groups within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - AttachLogStoreToEndpointGroupRequest
 //
@@ -674,17 +673,17 @@ func (client *Client) AttachLogStoreToEndpointGroup(request *AttachLogStoreToEnd
 
 // Summary:
 //
-// Associates a bandwidth plan with a Global Accelerator (GA) instance.
+// Invokes the BandwidthPackageAddAccelerator operation to attach a bandwidth plan to an Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  **BandwidthPackageAddAccelerator*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) operation to query the status of the bandwidth plan that you want to associate.
+// - **BandwidthPackageAddAccelerator*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the bandwidth plan is not yet attached to the Alibaba Cloud Global Accelerator (GA) instance. The attachment node continues to run in the background. You can invoke [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) to query the status of the bandwidth plan:
 //
-//	    	- If the bandwidth plan is in the **binding*	- state, it indicates that the bandwidth plan is being associated. In this case, you can perform only query operations.
+//   - If the bandwidth plan is in the **binding*	- state, the bandwidth plan is being attached to the Alibaba Cloud Global Accelerator (GA) instance. In this state, you can only execute query operations.
 //
-//	    	- If the bandwidth plan is in the **active*	- state, it indicates that the bandwidth plan is associated.
+//   - If the bandwidth plan is in the **active*	- state, the bandwidth plan is attached to the Alibaba Cloud Global Accelerator (GA) instance.
 //
-//		- The **BandwidthPackageAddAccelerator*	- operation holds an exclusive lock on the GA instance. While the operation is in progress, you cannot call the same operation in the same Alibaba Cloud account.
+// - The **BandwidthPackageAddAccelerator*	- operation does not support concurrent requests to attach bandwidth plans to the same Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - BandwidthPackageAddAcceleratorRequest
 //
@@ -736,17 +735,17 @@ func (client *Client) BandwidthPackageAddAcceleratorWithOptions(request *Bandwid
 
 // Summary:
 //
-// Associates a bandwidth plan with a Global Accelerator (GA) instance.
+// Invokes the BandwidthPackageAddAccelerator operation to attach a bandwidth plan to an Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  **BandwidthPackageAddAccelerator*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) operation to query the status of the bandwidth plan that you want to associate.
+// - **BandwidthPackageAddAccelerator*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the bandwidth plan is not yet attached to the Alibaba Cloud Global Accelerator (GA) instance. The attachment node continues to run in the background. You can invoke [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) to query the status of the bandwidth plan:
 //
-//	    	- If the bandwidth plan is in the **binding*	- state, it indicates that the bandwidth plan is being associated. In this case, you can perform only query operations.
+//   - If the bandwidth plan is in the **binding*	- state, the bandwidth plan is being attached to the Alibaba Cloud Global Accelerator (GA) instance. In this state, you can only execute query operations.
 //
-//	    	- If the bandwidth plan is in the **active*	- state, it indicates that the bandwidth plan is associated.
+//   - If the bandwidth plan is in the **active*	- state, the bandwidth plan is attached to the Alibaba Cloud Global Accelerator (GA) instance.
 //
-//		- The **BandwidthPackageAddAccelerator*	- operation holds an exclusive lock on the GA instance. While the operation is in progress, you cannot call the same operation in the same Alibaba Cloud account.
+// - The **BandwidthPackageAddAccelerator*	- operation does not support concurrent requests to attach bandwidth plans to the same Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - BandwidthPackageAddAcceleratorRequest
 //
@@ -764,17 +763,23 @@ func (client *Client) BandwidthPackageAddAccelerator(request *BandwidthPackageAd
 
 // Summary:
 //
-// Disassociates a bandwidth plan from a Global Accelerator (GA) instance.
+// Invokes the BandwidthPackageRemoveAccelerator operation to disassociate a bandwidth plan from an Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  **BandwidthPackageRemoveAccelerator*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) operation to query the status of the bandwidth plan that you attempt to disassociate.
+// - Before you invoke the **BandwidthPackageRemoveAccelerator*	- operation, make sure that no acceleration regions or endpoint groups exist under the Alibaba Cloud Global Accelerator (GA) instance.
 //
-//	    	- If the bandwidth plan is in the **unbinding*	- state, it indicates that the bandwidth plan is being disassociated. In this case, you can perform only query operations.
+//   - To delete an acceleration region, see [DeleteIpSet](https://help.aliyun.com/document_detail/2253276.html) or [DeleteIpSets](https://help.aliyun.com/document_detail/2253278.html).
 //
-//	    	- If the bandwidth plan is in the **active*	- state, it indicates that the bandwidth plan is disassociated.
+//   - To delete an endpoint group, see [DeleteEndpointGroup](https://help.aliyun.com/document_detail/2253305.html), [DeleteEndpointGroups](https://help.aliyun.com/document_detail/2253311.html), or [DeleteCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/2303183.html).
 //
-//		- The **BandwidthPackageRemoveAccelerator*	- cannot be called repeatedly for the same GA instance.
+// - The **BandwidthPackageRemoveAccelerator*	- operation is asynchronous. After you send a request, the system returns a request ID, but the disassociation has not yet completed. The disassociation node continues to run in the background. You can invoke [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) to query the status of the bandwidth plan:
+//
+//   - If the bandwidth plan is in the **unbinding*	- state, the bandwidth plan is being disassociated from the GA instance. In this state, you can only execute query operations.
+//
+//   - If the bandwidth plan is in the **active*	- state, the bandwidth plan is disassociated from the GA instance.
+//
+// - The **BandwidthPackageRemoveAccelerator*	- operation does not support concurrent disassociation of bandwidth plans from the same GA instance.
 //
 // @param request - BandwidthPackageRemoveAcceleratorRequest
 //
@@ -826,17 +831,23 @@ func (client *Client) BandwidthPackageRemoveAcceleratorWithOptions(request *Band
 
 // Summary:
 //
-// Disassociates a bandwidth plan from a Global Accelerator (GA) instance.
+// Invokes the BandwidthPackageRemoveAccelerator operation to disassociate a bandwidth plan from an Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  **BandwidthPackageRemoveAccelerator*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) operation to query the status of the bandwidth plan that you attempt to disassociate.
+// - Before you invoke the **BandwidthPackageRemoveAccelerator*	- operation, make sure that no acceleration regions or endpoint groups exist under the Alibaba Cloud Global Accelerator (GA) instance.
 //
-//	    	- If the bandwidth plan is in the **unbinding*	- state, it indicates that the bandwidth plan is being disassociated. In this case, you can perform only query operations.
+//   - To delete an acceleration region, see [DeleteIpSet](https://help.aliyun.com/document_detail/2253276.html) or [DeleteIpSets](https://help.aliyun.com/document_detail/2253278.html).
 //
-//	    	- If the bandwidth plan is in the **active*	- state, it indicates that the bandwidth plan is disassociated.
+//   - To delete an endpoint group, see [DeleteEndpointGroup](https://help.aliyun.com/document_detail/2253305.html), [DeleteEndpointGroups](https://help.aliyun.com/document_detail/2253311.html), or [DeleteCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/2303183.html).
 //
-//		- The **BandwidthPackageRemoveAccelerator*	- cannot be called repeatedly for the same GA instance.
+// - The **BandwidthPackageRemoveAccelerator*	- operation is asynchronous. After you send a request, the system returns a request ID, but the disassociation has not yet completed. The disassociation node continues to run in the background. You can invoke [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) to query the status of the bandwidth plan:
+//
+//   - If the bandwidth plan is in the **unbinding*	- state, the bandwidth plan is being disassociated from the GA instance. In this state, you can only execute query operations.
+//
+//   - If the bandwidth plan is in the **active*	- state, the bandwidth plan is disassociated from the GA instance.
+//
+// - The **BandwidthPackageRemoveAccelerator*	- operation does not support concurrent disassociation of bandwidth plans from the same GA instance.
 //
 // @param request - BandwidthPackageRemoveAcceleratorRequest
 //
@@ -854,11 +865,11 @@ func (client *Client) BandwidthPackageRemoveAccelerator(request *BandwidthPackag
 
 // Summary:
 //
-// Changes the resource group to which a Global Accelerator (GA) resource belongs.
+// Modifies the resource group to which a Global Accelerator resource belongs by calling the ChangeResourceGroup operation.
 //
 // Description:
 //
-// The **ChangeResourceGroup*	- operation cannot be repeatedly called for the same GA instance within a specific period of time.
+// The **ChangeResourceGroup*	- operation does not support concurrent modifications to the resource group of Global Accelerator resources within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -918,11 +929,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// Changes the resource group to which a Global Accelerator (GA) resource belongs.
+// Modifies the resource group to which a Global Accelerator resource belongs by calling the ChangeResourceGroup operation.
 //
 // Description:
 //
-// The **ChangeResourceGroup*	- operation cannot be repeatedly called for the same GA instance within a specific period of time.
+// The **ChangeResourceGroup*	- operation does not support concurrent modifications to the resource group of Global Accelerator resources within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -1050,17 +1061,15 @@ func (client *Client) ConfigEndpointProbe(request *ConfigEndpointProbeRequest) (
 
 // Summary:
 //
-// Creates a Global Accelerator (GA) instance. GA is a high-availability and high-performance network acceleration service for global users. By leveraging the high-quality BGP bandwidth and global network of Alibaba Cloud, GA allows service providers to deploy applications across regions and users to connect to the nearest access points for content delivery acceleration. This reduces network issues, such as network latency, network jitters, and packet loss.
+// Global Accelerator (GA) is a network acceleration service that provides coverage across the globe. It uses Alibaba Cloud\\"s high-quality Border Gateway Protocol (BGP) bandwidth and global transmission network to provide low-latency access from nearby locations. This reduces the impact of network issues, such as latency, jitter, and packet loss, on your service quality. GA provides a high-availability and high-performance network acceleration service for users worldwide. You can call the CreateAccelerator operation to create a Global Accelerator instance.
 //
 // Description:
 //
-// ## Description
+// The **CreateAccelerator*	- operation is asynchronous. After you send a request, the system returns a Global Accelerator instance ID, but the instance is still being created in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation to query the status of the Global Accelerator instance:
 //
-// **CreateAccelerator*	- is an asynchronous operation. After you send a request, the system returns the ID of a GA instance, but the operation is still being performed in the system background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation to query the state of a GA instance.
+// - If a Global Accelerator instance is in the **init*	- state, the instance is being created. You can only perform query operations on the instance.
 //
-//   - If the GA instance is in the **init*	- state, it indicates that the GA instance is being created. In this case, you can perform only query operations.
-//
-//   - If the GA instance is in the **active*	- state, it indicates that the GA instance is created.
+// - If a Global Accelerator instance is in the **active*	- state, the instance is created.
 //
 // @param request - CreateAcceleratorRequest
 //
@@ -1172,17 +1181,15 @@ func (client *Client) CreateAcceleratorWithOptions(request *CreateAcceleratorReq
 
 // Summary:
 //
-// Creates a Global Accelerator (GA) instance. GA is a high-availability and high-performance network acceleration service for global users. By leveraging the high-quality BGP bandwidth and global network of Alibaba Cloud, GA allows service providers to deploy applications across regions and users to connect to the nearest access points for content delivery acceleration. This reduces network issues, such as network latency, network jitters, and packet loss.
+// Global Accelerator (GA) is a network acceleration service that provides coverage across the globe. It uses Alibaba Cloud\\"s high-quality Border Gateway Protocol (BGP) bandwidth and global transmission network to provide low-latency access from nearby locations. This reduces the impact of network issues, such as latency, jitter, and packet loss, on your service quality. GA provides a high-availability and high-performance network acceleration service for users worldwide. You can call the CreateAccelerator operation to create a Global Accelerator instance.
 //
 // Description:
 //
-// ## Description
+// The **CreateAccelerator*	- operation is asynchronous. After you send a request, the system returns a Global Accelerator instance ID, but the instance is still being created in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation to query the status of the Global Accelerator instance:
 //
-// **CreateAccelerator*	- is an asynchronous operation. After you send a request, the system returns the ID of a GA instance, but the operation is still being performed in the system background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation to query the state of a GA instance.
+// - If a Global Accelerator instance is in the **init*	- state, the instance is being created. You can only perform query operations on the instance.
 //
-//   - If the GA instance is in the **init*	- state, it indicates that the GA instance is being created. In this case, you can perform only query operations.
-//
-//   - If the GA instance is in the **active*	- state, it indicates that the GA instance is created.
+// - If a Global Accelerator instance is in the **active*	- state, the instance is created.
 //
 // @param request - CreateAcceleratorRequest
 //
@@ -1200,15 +1207,15 @@ func (client *Client) CreateAccelerator(request *CreateAcceleratorRequest) (_res
 
 // Summary:
 //
-// Creates an access control list (ACL).
+// Invokes the CreateAcl operation to create an access control policy group.
 //
 // Description:
 //
-// *CreateAcl*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [GetAcl](https://help.aliyun.com/document_detail/258292.html) or [ListAcls](https://help.aliyun.com/document_detail/258291.html) operation to query the state of an ACL.
+// *CreateAcl*	- is an asynchronous operation. After you invoke the operation, the system returns an access control policy group ID but the access control policy group is not yet created. The creation node continues to run in the background. You can invoke [GetAcl](https://help.aliyun.com/document_detail/258292.html) or [ListAcls](https://help.aliyun.com/document_detail/258291.html) to query the status of the access control policy group:
 //
-//   - If the ACL is in the **init*	- state, the ACL is being created. In this case, you can only perform only query operations.
+// - If the access control policy group is in the **init*	- state, the access control policy group is being created. In this state, you can only execute query operations and cannot execute other operations.
 //
-//   - If the ACL is in the **active*	- state, the ACL is created.
+// - If the access control policy group is in the **active*	- state, the access control policy group is created.
 //
 // @param request - CreateAclRequest
 //
@@ -1280,15 +1287,15 @@ func (client *Client) CreateAclWithOptions(request *CreateAclRequest, runtime *d
 
 // Summary:
 //
-// Creates an access control list (ACL).
+// Invokes the CreateAcl operation to create an access control policy group.
 //
 // Description:
 //
-// *CreateAcl*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [GetAcl](https://help.aliyun.com/document_detail/258292.html) or [ListAcls](https://help.aliyun.com/document_detail/258291.html) operation to query the state of an ACL.
+// *CreateAcl*	- is an asynchronous operation. After you invoke the operation, the system returns an access control policy group ID but the access control policy group is not yet created. The creation node continues to run in the background. You can invoke [GetAcl](https://help.aliyun.com/document_detail/258292.html) or [ListAcls](https://help.aliyun.com/document_detail/258291.html) to query the status of the access control policy group:
 //
-//   - If the ACL is in the **init*	- state, the ACL is being created. In this case, you can only perform only query operations.
+// - If the access control policy group is in the **init*	- state, the access control policy group is being created. In this state, you can only execute query operations and cannot execute other operations.
 //
-//   - If the ACL is in the **active*	- state, the ACL is created.
+// - If the access control policy group is in the **active*	- state, the access control policy group is created.
 //
 // @param request - CreateAclRequest
 //
@@ -1306,27 +1313,27 @@ func (client *Client) CreateAcl(request *CreateAclRequest) (_result *CreateAclRe
 
 // Summary:
 //
-// Creates an origin probing task.
+// Creates an origin probing task by calling the CreateApplicationMonitor operation.
 //
 // Description:
 //
-// You can call the **CreateApplicationMonitor*	- operation to create an origin probing task. An origin probing task monitors the network quality between a client and an origin server and checks the availability of the origin server.
+// You can call the **CreateApplicationMonitor*	- operation to create an origin probing task. This task monitors the end-to-end network quality from the probing point through Global Accelerator (GA) to the origin server in real time, helping you quickly locate network faults and perform targeted network optimization.
 //
-// Before you call this operation, take note of the following items:
+// Before you begin:
 //
-//   - You can create origin detection tasks only for subscription Standard Global Accelerator (GA) instances whose specification is Medium Ⅰ.
+// - Only subscription Alibaba Cloud Global Accelerator (GA) instances of Medium Ⅰ or higher specifications support origin probing tasks.
 //
-//   - You cannot create an origin probe task for a UDP listener.
+// - Origin probing tasks cannot be created for UDP protocol listeners.
 //
-//   - The service port of the URL or IP address that is probed must be within the listening port range.
+// - The service port of the monitoring address must be within the listener port range.
 //
-//   - **CreateApplicationMonitor*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeApplicationMonitor](https://help.aliyun.com/document_detail/408463.html) or [ListApplicationMonitor](https://help.aliyun.com/document_detail/408462.html) operation to query the status of the origin probing task.
+// - The **CreateApplicationMonitor*	- operation is asynchronous. After you invoke this operation, the system returns a node ID for the origin probing task, but the node is not yet created. The node creation continues in the background. You can invoke [DescribeApplicationMonitor](https://help.aliyun.com/document_detail/408463.html) or [ListApplicationMonitor](https://help.aliyun.com/document_detail/408462.html) to query the status of the origin probing task:
 //
-//   - If the origin probing task is in the **init*	- state, it indicates that the task is being created. You can perform only query operations.
+//   - If the origin probing task is in the **init*	- state, the task is being created. In this state, you can only perform query operations.
 //
-//   - If the origin probing task is in the **active*	- state, it indicates that the task is created.
+//   - If the origin probing task is in the **active*	- state, the task is created.
 //
-//   - The **CreateApplicationMonitor*	- operation cannot be called repeatedly for the same GA instance within a specific period of time.
+// - The **CreateApplicationMonitor*	- operation does not support concurrent creation of origin probing nodes within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - CreateApplicationMonitorRequest
 //
@@ -1410,27 +1417,27 @@ func (client *Client) CreateApplicationMonitorWithOptions(request *CreateApplica
 
 // Summary:
 //
-// Creates an origin probing task.
+// Creates an origin probing task by calling the CreateApplicationMonitor operation.
 //
 // Description:
 //
-// You can call the **CreateApplicationMonitor*	- operation to create an origin probing task. An origin probing task monitors the network quality between a client and an origin server and checks the availability of the origin server.
+// You can call the **CreateApplicationMonitor*	- operation to create an origin probing task. This task monitors the end-to-end network quality from the probing point through Global Accelerator (GA) to the origin server in real time, helping you quickly locate network faults and perform targeted network optimization.
 //
-// Before you call this operation, take note of the following items:
+// Before you begin:
 //
-//   - You can create origin detection tasks only for subscription Standard Global Accelerator (GA) instances whose specification is Medium Ⅰ.
+// - Only subscription Alibaba Cloud Global Accelerator (GA) instances of Medium Ⅰ or higher specifications support origin probing tasks.
 //
-//   - You cannot create an origin probe task for a UDP listener.
+// - Origin probing tasks cannot be created for UDP protocol listeners.
 //
-//   - The service port of the URL or IP address that is probed must be within the listening port range.
+// - The service port of the monitoring address must be within the listener port range.
 //
-//   - **CreateApplicationMonitor*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeApplicationMonitor](https://help.aliyun.com/document_detail/408463.html) or [ListApplicationMonitor](https://help.aliyun.com/document_detail/408462.html) operation to query the status of the origin probing task.
+// - The **CreateApplicationMonitor*	- operation is asynchronous. After you invoke this operation, the system returns a node ID for the origin probing task, but the node is not yet created. The node creation continues in the background. You can invoke [DescribeApplicationMonitor](https://help.aliyun.com/document_detail/408463.html) or [ListApplicationMonitor](https://help.aliyun.com/document_detail/408462.html) to query the status of the origin probing task:
 //
-//   - If the origin probing task is in the **init*	- state, it indicates that the task is being created. You can perform only query operations.
+//   - If the origin probing task is in the **init*	- state, the task is being created. In this state, you can only perform query operations.
 //
-//   - If the origin probing task is in the **active*	- state, it indicates that the task is created.
+//   - If the origin probing task is in the **active*	- state, the task is created.
 //
-//   - The **CreateApplicationMonitor*	- operation cannot be called repeatedly for the same GA instance within a specific period of time.
+// - The **CreateApplicationMonitor*	- operation does not support concurrent creation of origin probing nodes within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - CreateApplicationMonitorRequest
 //
@@ -1452,23 +1459,23 @@ func (client *Client) CreateApplicationMonitor(request *CreateApplicationMonitor
 //
 // Description:
 //
-// To use Global Accelerator (GA) for acceleration, you must purchase a basic bandwidth plan. A basic bandwidth plan supports the following bandwidth types:
+// You must create a basic bandwidth plan to use Global Accelerator (GA) for network acceleration. A basic bandwidth plan supports the following bandwidth types:
 //
-//   - **Basic**: Both the default acceleration region and the default service region are in the Chinese mainland. The accelerated service is deployed on Alibaba Cloud.
+// - **Basic bandwidth**: The acceleration area and the area where the endpoint is deployed are in the Chinese mainland. The accelerated service is deployed on Alibaba Cloud.
 //
-//   - **Enhanced**: Both the default acceleration region and the default service region are in the Chinese mainland. The accelerated service can be deployed on and off Alibaba Cloud.
+// - **Enhanced bandwidth**: The acceleration area and the area where the endpoint is deployed are in the Chinese mainland. This bandwidth type can accelerate services on both Alibaba Cloud and public networks outside Alibaba Cloud.
 //
-//   - **Premium**: Both the default acceleration region and the default service region are outside the Chinese mainland. The accelerated service can be deployed on and off Alibaba Cloud. If you want to accelerate data transfer for clients in the Chinese mainland, you must select China (Hong Kong) as the acceleration region.
+// - **Advanced bandwidth**: The acceleration area and the area where the endpoint is deployed are outside the Chinese mainland. This bandwidth type can accelerate services on both Alibaba Cloud and public networks outside Alibaba Cloud. To accelerate access for users in the Chinese mainland, you can select China (Hong Kong) as the acceleration area.
 //
-// When you call this operation, take note of the following items:
+// Note the following when you call this operation:
 //
-//   - **CreateBandwidthPackage*	- is an asynchronous operation. After you send a request, the system returns the ID of a bandwidth plan, but the bandwidth plan is still being created in the system background. You can call the [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) operation to query the status of the bandwidth plan.
+// - The **CreateBandwidthPackage*	- operation is asynchronous. After you send a request, the system returns a bandwidth plan ID, but the bandwidth plan is not created immediately. The system creates the bandwidth plan in the background. You can call the [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) operation to query the status of the bandwidth plan:
 //
-//   - If the bandwidth plan is in the **init*	- state, it indicates that the bandwidth plan is being created. In this case, you can perform only query operations.
+//   - If a bandwidth plan is in the **init*	- state, the bandwidth plan is being created. In this state, you can only query the bandwidth plan and cannot perform other operations.
 //
-//   - If the bandwidth plan is in the **active*	- state, it indicates that the bandwidth plan is created.
+//   - If a bandwidth plan is in the **active*	- state, the bandwidth plan is created.
 //
-//   - The **CreateBandwidthPackage*	- operation cannot be repeatedly called for the same GA instance within a specific period of time.
+// - The **CreateBandwidthPackage*	- operation does not support concurrent requests to create bandwidth plans for the same Global Accelerator instance.
 //
 // @param request - CreateBandwidthPackageRequest
 //
@@ -1588,23 +1595,23 @@ func (client *Client) CreateBandwidthPackageWithOptions(request *CreateBandwidth
 //
 // Description:
 //
-// To use Global Accelerator (GA) for acceleration, you must purchase a basic bandwidth plan. A basic bandwidth plan supports the following bandwidth types:
+// You must create a basic bandwidth plan to use Global Accelerator (GA) for network acceleration. A basic bandwidth plan supports the following bandwidth types:
 //
-//   - **Basic**: Both the default acceleration region and the default service region are in the Chinese mainland. The accelerated service is deployed on Alibaba Cloud.
+// - **Basic bandwidth**: The acceleration area and the area where the endpoint is deployed are in the Chinese mainland. The accelerated service is deployed on Alibaba Cloud.
 //
-//   - **Enhanced**: Both the default acceleration region and the default service region are in the Chinese mainland. The accelerated service can be deployed on and off Alibaba Cloud.
+// - **Enhanced bandwidth**: The acceleration area and the area where the endpoint is deployed are in the Chinese mainland. This bandwidth type can accelerate services on both Alibaba Cloud and public networks outside Alibaba Cloud.
 //
-//   - **Premium**: Both the default acceleration region and the default service region are outside the Chinese mainland. The accelerated service can be deployed on and off Alibaba Cloud. If you want to accelerate data transfer for clients in the Chinese mainland, you must select China (Hong Kong) as the acceleration region.
+// - **Advanced bandwidth**: The acceleration area and the area where the endpoint is deployed are outside the Chinese mainland. This bandwidth type can accelerate services on both Alibaba Cloud and public networks outside Alibaba Cloud. To accelerate access for users in the Chinese mainland, you can select China (Hong Kong) as the acceleration area.
 //
-// When you call this operation, take note of the following items:
+// Note the following when you call this operation:
 //
-//   - **CreateBandwidthPackage*	- is an asynchronous operation. After you send a request, the system returns the ID of a bandwidth plan, but the bandwidth plan is still being created in the system background. You can call the [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) operation to query the status of the bandwidth plan.
+// - The **CreateBandwidthPackage*	- operation is asynchronous. After you send a request, the system returns a bandwidth plan ID, but the bandwidth plan is not created immediately. The system creates the bandwidth plan in the background. You can call the [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) operation to query the status of the bandwidth plan:
 //
-//   - If the bandwidth plan is in the **init*	- state, it indicates that the bandwidth plan is being created. In this case, you can perform only query operations.
+//   - If a bandwidth plan is in the **init*	- state, the bandwidth plan is being created. In this state, you can only query the bandwidth plan and cannot perform other operations.
 //
-//   - If the bandwidth plan is in the **active*	- state, it indicates that the bandwidth plan is created.
+//   - If a bandwidth plan is in the **active*	- state, the bandwidth plan is created.
 //
-//   - The **CreateBandwidthPackage*	- operation cannot be repeatedly called for the same GA instance within a specific period of time.
+// - The **CreateBandwidthPackage*	- operation does not support concurrent requests to create bandwidth plans for the same Global Accelerator instance.
 //
 // @param request - CreateBandwidthPackageRequest
 //
@@ -1814,17 +1821,17 @@ func (client *Client) CreateBasicAccelerateIpEndpointRelation(request *CreateBas
 
 // Summary:
 //
-// Creates mappings between accelerated IP addresses and endpoints for a basic Global Accelerator (GA) instance.
+// Calls the CreateBasicAccelerateIpEndpointRelations operation to batch attach accelerated IP addresses to endpoints for a basic Global Accelerator instance.
 //
 // Description:
 //
-//	  The **CreateBasicAccelerateIpEndpointRelations*	- is asynchronous. After you send a request, the system returns a request ID and runs the task in the system background. You can call the [GetBasicAccelerateIp](https://help.aliyun.com/document_detail/466794.html) or [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) API operation to query the status of an accelerated IP address or an endpoint to determine the association status.
+// - **CreateBasicAccelerateIpEndpointRelations*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the task of batch attaching accelerated IP addresses to endpoints is still in progress. You can call [GetBasicAccelerateIp](https://help.aliyun.com/document_detail/466794.html) or [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) to query the status of accelerated IP addresses and endpoints respectively to confirm whether the attachments are created:
 //
-//	    	- If an accelerated IP address and the endpoint are in the **binding*	- state, the accelerated IP address is being associated with the endpoint. In this case, you can only query the accelerated IP address and endpoint, but cannot perform other operations.
+//   - If an accelerated IP address or endpoint is in the **binding*	- state, the attachment is being created. In this state, you can only perform query operations.
 //
-//	    	- If all the accelerated IP addresses and the endpoint are in the **bound*	- state, and the association status returned by the [ListBasicAccelerateIpEndpointRelations](https://help.aliyun.com/document_detail/466803.html) API operation is **active**, the accelerated IP addresses are associated with the endpoints.
+//   - If all accelerated IP addresses and endpoints are in the **bound*	- state, and the attachment status returned by [ListBasicAccelerateIpEndpointRelations](https://help.aliyun.com/document_detail/466803.html) is **active**, the batch task of attaching accelerated IP addresses to endpoints is complete.
 //
-//		- The **CreateBasicAccelerateIpEndpointRelations*	- API operation cannot be repeatedly called for the same basic GA instance within a period of time.
+// - **CreateBasicAccelerateIpEndpointRelations*	- does not support concurrent batch attaching of accelerated IP addresses to endpoints within the same basic Global Accelerator instance.
 //
 // @param request - CreateBasicAccelerateIpEndpointRelationsRequest
 //
@@ -1880,17 +1887,17 @@ func (client *Client) CreateBasicAccelerateIpEndpointRelationsWithOptions(reques
 
 // Summary:
 //
-// Creates mappings between accelerated IP addresses and endpoints for a basic Global Accelerator (GA) instance.
+// Calls the CreateBasicAccelerateIpEndpointRelations operation to batch attach accelerated IP addresses to endpoints for a basic Global Accelerator instance.
 //
 // Description:
 //
-//	  The **CreateBasicAccelerateIpEndpointRelations*	- is asynchronous. After you send a request, the system returns a request ID and runs the task in the system background. You can call the [GetBasicAccelerateIp](https://help.aliyun.com/document_detail/466794.html) or [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) API operation to query the status of an accelerated IP address or an endpoint to determine the association status.
+// - **CreateBasicAccelerateIpEndpointRelations*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the task of batch attaching accelerated IP addresses to endpoints is still in progress. You can call [GetBasicAccelerateIp](https://help.aliyun.com/document_detail/466794.html) or [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) to query the status of accelerated IP addresses and endpoints respectively to confirm whether the attachments are created:
 //
-//	    	- If an accelerated IP address and the endpoint are in the **binding*	- state, the accelerated IP address is being associated with the endpoint. In this case, you can only query the accelerated IP address and endpoint, but cannot perform other operations.
+//   - If an accelerated IP address or endpoint is in the **binding*	- state, the attachment is being created. In this state, you can only perform query operations.
 //
-//	    	- If all the accelerated IP addresses and the endpoint are in the **bound*	- state, and the association status returned by the [ListBasicAccelerateIpEndpointRelations](https://help.aliyun.com/document_detail/466803.html) API operation is **active**, the accelerated IP addresses are associated with the endpoints.
+//   - If all accelerated IP addresses and endpoints are in the **bound*	- state, and the attachment status returned by [ListBasicAccelerateIpEndpointRelations](https://help.aliyun.com/document_detail/466803.html) is **active**, the batch task of attaching accelerated IP addresses to endpoints is complete.
 //
-//		- The **CreateBasicAccelerateIpEndpointRelations*	- API operation cannot be repeatedly called for the same basic GA instance within a period of time.
+// - **CreateBasicAccelerateIpEndpointRelations*	- does not support concurrent batch attaching of accelerated IP addresses to endpoints within the same basic Global Accelerator instance.
 //
 // @param request - CreateBasicAccelerateIpEndpointRelationsRequest
 //
@@ -1908,15 +1915,15 @@ func (client *Client) CreateBasicAccelerateIpEndpointRelations(request *CreateBa
 
 // Summary:
 //
-// Basic Global Accelerator (GA) instances leverage the immense bandwidth of the high-quality global network of Alibaba Cloud to provide end-to-end acceleration services. You can use basic GA instances to accelerate content delivery at Layer 3 (IP). You can call the CreateBasicAccelerator operation to create a basic GA instance.
+// Basic Alibaba Cloud Global Accelerator (GA) instances leverage Alibaba Cloud\\"s premium global the Internet bandwidth and high-quality transmission network to provide users with point-to-point acceleration. Basic Alibaba Cloud Global Accelerator (GA) instances are primarily used for Layer 3 (IP protocol) network acceleration. You can invoke the CreateBasicAccelerator operation to create a basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-// *CreateBasicAccelerator*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetBasicAccelerator](https://help.aliyun.com/document_detail/353188.html) or [ListBasicAccelerators](https://help.aliyun.com/document_detail/353189.html) operation to query the status of the task.
+// *CreateBasicAccelerator*	- is an asynchronous operation. After you invoke this operation, the system returns a basic Alibaba Cloud Global Accelerator (GA) instance ID, but the instance is not yet created. The creation node continues to execute in the background. You can invoke [GetBasicAccelerator](https://help.aliyun.com/document_detail/353188.html) or [ListBasicAccelerators](https://help.aliyun.com/document_detail/353189.html) to query the status of the basic GA instance:
 //
-//   - If the basic GA instance is in the **init*	- state, it indicates that the basic GA instance is being created. In this case, you can perform only query operations.
+// - If the basic GA instance is in the **init*	- state, the instance is being created. In this state, you can only perform query operations.
 //
-//   - If the basic GA instance is in the **active*	- state, it indicates that the basic GA instance is created.
+// - If the basic GA instance is in the **active*	- state, the instance is created.
 //
 // @param request - CreateBasicAcceleratorRequest
 //
@@ -2012,15 +2019,15 @@ func (client *Client) CreateBasicAcceleratorWithOptions(request *CreateBasicAcce
 
 // Summary:
 //
-// Basic Global Accelerator (GA) instances leverage the immense bandwidth of the high-quality global network of Alibaba Cloud to provide end-to-end acceleration services. You can use basic GA instances to accelerate content delivery at Layer 3 (IP). You can call the CreateBasicAccelerator operation to create a basic GA instance.
+// Basic Alibaba Cloud Global Accelerator (GA) instances leverage Alibaba Cloud\\"s premium global the Internet bandwidth and high-quality transmission network to provide users with point-to-point acceleration. Basic Alibaba Cloud Global Accelerator (GA) instances are primarily used for Layer 3 (IP protocol) network acceleration. You can invoke the CreateBasicAccelerator operation to create a basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-// *CreateBasicAccelerator*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetBasicAccelerator](https://help.aliyun.com/document_detail/353188.html) or [ListBasicAccelerators](https://help.aliyun.com/document_detail/353189.html) operation to query the status of the task.
+// *CreateBasicAccelerator*	- is an asynchronous operation. After you invoke this operation, the system returns a basic Alibaba Cloud Global Accelerator (GA) instance ID, but the instance is not yet created. The creation node continues to execute in the background. You can invoke [GetBasicAccelerator](https://help.aliyun.com/document_detail/353188.html) or [ListBasicAccelerators](https://help.aliyun.com/document_detail/353189.html) to query the status of the basic GA instance:
 //
-//   - If the basic GA instance is in the **init*	- state, it indicates that the basic GA instance is being created. In this case, you can perform only query operations.
+// - If the basic GA instance is in the **init*	- state, the instance is being created. In this state, you can only perform query operations.
 //
-//   - If the basic GA instance is in the **active*	- state, it indicates that the basic GA instance is created.
+// - If the basic GA instance is in the **active*	- state, the instance is created.
 //
 // @param request - CreateBasicAcceleratorRequest
 //
@@ -2038,17 +2045,17 @@ func (client *Client) CreateBasicAccelerator(request *CreateBasicAcceleratorRequ
 
 // Summary:
 //
-// Creates an endpoint for a basic Global Accelerator (GA) instance.
+// Invokes the CreateBasicEndpoint operation to create an endpoint for a basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  **CreateBasicEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) API operation to query the status of an endpoint.
+// - **CreateBasicEndpoint*	- is an asynchronous operation. After you invoke this operation, the system returns an endpoint ID for the basic Alibaba Cloud Global Accelerator (GA) instance, but the endpoint is not yet created. The creation task continues to execute in the background. You can invoke [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) to query the endpoint status:
 //
-//	    	- If the endpoint is in the **init*	- state, the endpoint is being created. In this case, you can perform only query operations.
+//   - When the endpoint is in the **init*	- state, the endpoint is being created. In this state, you can only execute query operations.
 //
-//	    	- If the endpoint is in the **active*	- state, the endpoint is created.
+//   - When the endpoint is in the **active*	- state, the endpoint is created.
 //
-//		- The **CreateBasicEndpoint*	- API operation cannot be repeatedly called for the same basic GA instance within a specific period of time.
+// - **CreateBasicEndpoint*	- does not support concurrent endpoint creation within the same basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - CreateBasicEndpointRequest
 //
@@ -2128,17 +2135,17 @@ func (client *Client) CreateBasicEndpointWithOptions(request *CreateBasicEndpoin
 
 // Summary:
 //
-// Creates an endpoint for a basic Global Accelerator (GA) instance.
+// Invokes the CreateBasicEndpoint operation to create an endpoint for a basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  **CreateBasicEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) API operation to query the status of an endpoint.
+// - **CreateBasicEndpoint*	- is an asynchronous operation. After you invoke this operation, the system returns an endpoint ID for the basic Alibaba Cloud Global Accelerator (GA) instance, but the endpoint is not yet created. The creation task continues to execute in the background. You can invoke [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) to query the endpoint status:
 //
-//	    	- If the endpoint is in the **init*	- state, the endpoint is being created. In this case, you can perform only query operations.
+//   - When the endpoint is in the **init*	- state, the endpoint is being created. In this state, you can only execute query operations.
 //
-//	    	- If the endpoint is in the **active*	- state, the endpoint is created.
+//   - When the endpoint is in the **active*	- state, the endpoint is created.
 //
-//		- The **CreateBasicEndpoint*	- API operation cannot be repeatedly called for the same basic GA instance within a specific period of time.
+// - **CreateBasicEndpoint*	- does not support concurrent endpoint creation within the same basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - CreateBasicEndpointRequest
 //
@@ -2156,17 +2163,17 @@ func (client *Client) CreateBasicEndpoint(request *CreateBasicEndpointRequest) (
 
 // Summary:
 //
-// Creates an endpoint group for a basic Global Accelerator (GA) instance.
+// Invokes the CreateBasicEndpointGroup operation to create an endpoint group for a basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  **CreateBasicEndpointGroup*	- is an asynchronous operation. After a request is sent, the system returns an endpoint group ID and runs the task in the background. You can call the [GetBasicEndpointGroup](https://help.aliyun.com/document_detail/362984.html) operation to query the status of the task.
+// - **CreateBasicEndpointGroup*	- is an asynchronous operation. After you invoke this operation, the system returns an endpoint group ID before the endpoint group is created. The endpoint group is being created in the background. You can invoke [GetBasicEndpointGroup](https://help.aliyun.com/document_detail/362984.html) to query the status of the endpoint group:
 //
-//	    	- If the endpoint group is in the **init*	- state, the endpoint is being created. In this case, you can perform only query operations.
+//   - If the endpoint group is in the **init*	- state, the endpoint group is being created. In this state, you can only perform query operations.
 //
-//	    	- If the endpoint group is in the **active*	- state, the endpoint group is created.
+//   - If the endpoint group is in the **active*	- state, the endpoint group is created.
 //
-//		- You cannot call the **CreateBasicEndpointGroup*	- operation again on the same GA instance before the previous request is completed.
+// - **CreateBasicEndpointGroup*	- does not support concurrent requests to create an endpoint group for the same basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - CreateBasicEndpointGroupRequest
 //
@@ -2242,17 +2249,17 @@ func (client *Client) CreateBasicEndpointGroupWithOptions(request *CreateBasicEn
 
 // Summary:
 //
-// Creates an endpoint group for a basic Global Accelerator (GA) instance.
+// Invokes the CreateBasicEndpointGroup operation to create an endpoint group for a basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  **CreateBasicEndpointGroup*	- is an asynchronous operation. After a request is sent, the system returns an endpoint group ID and runs the task in the background. You can call the [GetBasicEndpointGroup](https://help.aliyun.com/document_detail/362984.html) operation to query the status of the task.
+// - **CreateBasicEndpointGroup*	- is an asynchronous operation. After you invoke this operation, the system returns an endpoint group ID before the endpoint group is created. The endpoint group is being created in the background. You can invoke [GetBasicEndpointGroup](https://help.aliyun.com/document_detail/362984.html) to query the status of the endpoint group:
 //
-//	    	- If the endpoint group is in the **init*	- state, the endpoint is being created. In this case, you can perform only query operations.
+//   - If the endpoint group is in the **init*	- state, the endpoint group is being created. In this state, you can only perform query operations.
 //
-//	    	- If the endpoint group is in the **active*	- state, the endpoint group is created.
+//   - If the endpoint group is in the **active*	- state, the endpoint group is created.
 //
-//		- You cannot call the **CreateBasicEndpointGroup*	- operation again on the same GA instance before the previous request is completed.
+// - **CreateBasicEndpointGroup*	- does not support concurrent requests to create an endpoint group for the same basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - CreateBasicEndpointGroupRequest
 //
@@ -2360,21 +2367,21 @@ func (client *Client) CreateBasicEndpoints(request *CreateBasicEndpointsRequest)
 
 // Summary:
 //
-// Creates an acceleration region for a basic Global Accelerator (GA) instance.
+// Invokes the CreateBasicIpSet operation to create an acceleration region for a basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-// Take note of the following limits:
+// When you invoke this operation, take note of the following items:
 //
-//   - You can specify only one acceleration region for each basic GA instance, and only IPv4 clients can connect to basic GA instances.
+// - A basic Alibaba Cloud Global Accelerator (GA) instance supports only one acceleration region and supports only the IPv4 protocol.
 //
-//   - **CreateBasicIpSet*	- is an asynchronous operation. After you send a request, the system returns an acceleration region ID and runs the task in the background. You can call the [GetBasicIpSet](https://help.aliyun.com/document_detail/362987.html) operation to query the status of the task.
+// - **CreateBasicIpSet*	- is an asynchronous operation. After a request is sent, the system returns an acceleration region instance ID but the acceleration region is not yet created. The creation node continues to run in the background. You can invoke [GetBasicIpSet](https://help.aliyun.com/document_detail/362987.html) to query the status of the acceleration region:
 //
-//   - If the acceleration region is in the **init*	- state, the acceleration region is being created. In this case, you can perform only query operations.
+//   - If the acceleration region is in the **init*	- state, the acceleration region is being created. In this state, you can only execute query operations.
 //
 //   - If the acceleration region is in the **active*	- state, the acceleration region is created.
 //
-//   - You cannot call the **CreateBasicIpSet*	- operation again on the same GA instance before the previous task is completed.
+// - The **CreateBasicIpSet*	- operation does not support concurrent creation of acceleration regions within the same basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - CreateBasicIpSetRequest
 //
@@ -2438,21 +2445,21 @@ func (client *Client) CreateBasicIpSetWithOptions(request *CreateBasicIpSetReque
 
 // Summary:
 //
-// Creates an acceleration region for a basic Global Accelerator (GA) instance.
+// Invokes the CreateBasicIpSet operation to create an acceleration region for a basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-// Take note of the following limits:
+// When you invoke this operation, take note of the following items:
 //
-//   - You can specify only one acceleration region for each basic GA instance, and only IPv4 clients can connect to basic GA instances.
+// - A basic Alibaba Cloud Global Accelerator (GA) instance supports only one acceleration region and supports only the IPv4 protocol.
 //
-//   - **CreateBasicIpSet*	- is an asynchronous operation. After you send a request, the system returns an acceleration region ID and runs the task in the background. You can call the [GetBasicIpSet](https://help.aliyun.com/document_detail/362987.html) operation to query the status of the task.
+// - **CreateBasicIpSet*	- is an asynchronous operation. After a request is sent, the system returns an acceleration region instance ID but the acceleration region is not yet created. The creation node continues to run in the background. You can invoke [GetBasicIpSet](https://help.aliyun.com/document_detail/362987.html) to query the status of the acceleration region:
 //
-//   - If the acceleration region is in the **init*	- state, the acceleration region is being created. In this case, you can perform only query operations.
+//   - If the acceleration region is in the **init*	- state, the acceleration region is being created. In this state, you can only execute query operations.
 //
 //   - If the acceleration region is in the **active*	- state, the acceleration region is created.
 //
-//   - You cannot call the **CreateBasicIpSet*	- operation again on the same GA instance before the previous task is completed.
+// - The **CreateBasicIpSet*	- operation does not support concurrent creation of acceleration regions within the same basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - CreateBasicIpSetRequest
 //
@@ -2470,11 +2477,35 @@ func (client *Client) CreateBasicIpSet(request *CreateBasicIpSetRequest) (_resul
 
 // Summary:
 //
-// Creates mappings for an endpoint group that is associated with a custom routing listener.
+// Invokes the CreateCustomRoutingEndpointGroupDestinations operation to create mapping configurations for an endpoint group that is associated with a custom route listener.
 //
 // Description:
 //
-// readAndWrite
+// An Alibaba Cloud Global Accelerator (GA) instance can generate a port mapping table based on the configured listener port range, the mapping configurations (protocols and port ranges) of the destination endpoint group, and the IP address information of the endpoints (vSwitches). This enables deterministic routing of traffic to specific IP addresses and ports within the vSwitches.
+//
+// This operation creates mapping configurations for an endpoint group that is associated with a custom route listener. When you invoke this operation, take note of the following items:
+//
+// - **CreateCustomRoutingEndpointGroupDestinations*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the mapping configurations for the endpoint group are not yet created. The creation node continues to run in the background. You can invoke the [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) operation to query the status of the endpoint group and confirm whether the mapping configurations are created:
+//
+//   - If the endpoint group is in the **updating*	- state, the mapping configurations are being created. In this state, you can only execute query operations.
+//
+//   - If the endpoint group is in the **active*	- state, the mapping configurations are created.
+//
+// - **CreateCustomRoutingEndpointGroupDestinations*	- does not support concurrent creation of mapping configurations for endpoint groups associated with custom route listeners within the same Alibaba Cloud Global Accelerator (GA) instance.
+//
+// ### Before you begin
+//
+// Before you create mapping configurations for an endpoint group associated with a custom route listener, make sure that you have completed the following operations:
+//
+// - A standard Alibaba Cloud Global Accelerator (GA) instance is created. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
+//
+// - A bandwidth plan is attached to the standard Global Accelerator instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
+//
+// - You have completed the deployment of the required applications as backend services to accept forwarded requests from Global Accelerator. Custom route listeners support only vSwitches as backend service types.
+//
+// - You have obtained the permissions to use custom route listeners and created a custom route listener. The custom route listener type is in invitational preview. To use this feature, contact your account manager. To create a custom route listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
+//
+// - You have created an endpoint group for the custom route listener. For more information, see [CreateCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449363.html).
 //
 // @param request - CreateCustomRoutingEndpointGroupDestinationsRequest
 //
@@ -2534,11 +2565,35 @@ func (client *Client) CreateCustomRoutingEndpointGroupDestinationsWithOptions(re
 
 // Summary:
 //
-// Creates mappings for an endpoint group that is associated with a custom routing listener.
+// Invokes the CreateCustomRoutingEndpointGroupDestinations operation to create mapping configurations for an endpoint group that is associated with a custom route listener.
 //
 // Description:
 //
-// readAndWrite
+// An Alibaba Cloud Global Accelerator (GA) instance can generate a port mapping table based on the configured listener port range, the mapping configurations (protocols and port ranges) of the destination endpoint group, and the IP address information of the endpoints (vSwitches). This enables deterministic routing of traffic to specific IP addresses and ports within the vSwitches.
+//
+// This operation creates mapping configurations for an endpoint group that is associated with a custom route listener. When you invoke this operation, take note of the following items:
+//
+// - **CreateCustomRoutingEndpointGroupDestinations*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the mapping configurations for the endpoint group are not yet created. The creation node continues to run in the background. You can invoke the [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) operation to query the status of the endpoint group and confirm whether the mapping configurations are created:
+//
+//   - If the endpoint group is in the **updating*	- state, the mapping configurations are being created. In this state, you can only execute query operations.
+//
+//   - If the endpoint group is in the **active*	- state, the mapping configurations are created.
+//
+// - **CreateCustomRoutingEndpointGroupDestinations*	- does not support concurrent creation of mapping configurations for endpoint groups associated with custom route listeners within the same Alibaba Cloud Global Accelerator (GA) instance.
+//
+// ### Before you begin
+//
+// Before you create mapping configurations for an endpoint group associated with a custom route listener, make sure that you have completed the following operations:
+//
+// - A standard Alibaba Cloud Global Accelerator (GA) instance is created. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
+//
+// - A bandwidth plan is attached to the standard Global Accelerator instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
+//
+// - You have completed the deployment of the required applications as backend services to accept forwarded requests from Global Accelerator. Custom route listeners support only vSwitches as backend service types.
+//
+// - You have obtained the permissions to use custom route listeners and created a custom route listener. The custom route listener type is in invitational preview. To use this feature, contact your account manager. To create a custom route listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
+//
+// - You have created an endpoint group for the custom route listener. For more information, see [CreateCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449363.html).
 //
 // @param request - CreateCustomRoutingEndpointGroupDestinationsRequest
 //
@@ -2556,39 +2611,39 @@ func (client *Client) CreateCustomRoutingEndpointGroupDestinations(request *Crea
 
 // Summary:
 //
-// Creates endpoint groups for a custom routing listener.
+// Invokes the CreateCustomRoutingEndpointGroups operation to create endpoint groups for a custom routing type listener in batches.
 //
 // Description:
 //
-// Global Accelerator (GA) forwards client requests to endpoints in an endpoint group based on the routing type of the listener that is associated with the endpoint group.
+// Global Accelerator allocates traffic to endpoints within endpoint groups based on the forwarding method defined by the listener routing type.
 //
-//   - After you configure an intelligent routing listener for a GA instance, the GA instance selects a nearby and healthy endpoint group and forwards client requests to a healthy endpoint in the endpoint group.
+// - After you configure an intelligent routing listener, the Alibaba Cloud Global Accelerator (GA) instance automatically selects the nearest healthy endpoint group for traffic forwarding based on latency factors (primarily depending on geographic location and network link conditions), and ultimately delivers client network access requests to healthy endpoints.
 //
-//   - After you configure a custom routing listener for a GA instance, the instance generates a port mapping table based on the listener port range, protocols and port ranges of the associated endpoint groups, and IP addresses of endpoints (vSwitches), and forwards client requests to specified IP addresses and ports in the vSwitches.
+// - After you configure a custom routing type listener, the Alibaba Cloud Global Accelerator (GA) instance generates a port mapping table based on the configured listener port range, destination endpoint group protocol and port range, and IP address information of the endpoints (vSwitches), to deterministically route traffic to specific IP addresses and ports within vSwitches.
 //
-// You can call this operation to create endpoint groups for custom routing listeners. For information about how to create endpoint groups for intelligent routing listeners, see [CreateEndpointGroup](https://help.aliyun.com/document_detail/153259.html).
+// This operation creates endpoint groups for a custom routing type listener. To create endpoint groups for an intelligent routing listener, invoke [CreateEndpointGroup](https://help.aliyun.com/document_detail/153259.html).
 //
-// When you call this operation, take note of the following items:
+// When you invoke this operation, take note of the following items:
 //
-//   - **CreateCustomRoutingEndpointGroups*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) or [ListCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449374.html) operation to query the status of the endpoint groups that are associated with custom routing listeners.
+// - **CreateCustomRoutingEndpointGroups*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the endpoint groups for the custom routing type listener are not yet created. The creation task continues to execute in the background. You can invoke [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) or [ListCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449374.html) to query the status of the endpoint groups:
 //
-//   - If one or more endpoint groups are in the **init*	- state, it indicates that the endpoint groups are being created. In this case, you can perform only query operations.
+//   - If an endpoint group is in the **init*	- state, the endpoint groups are being created in batches. In this state, you can only execute query operations.
 //
-//   - If all endpoint groups are in the **active*	- state, it indicates that the endpoint groups are created.
+//   - When all endpoint groups are in the **active*	- state, the batch creation is complete.
 //
-//   - The **CreateCustomRoutingEndpointGroups*	- operation cannot be called repeatedly for the same GA instance within a specific period of time.
+// - **CreateCustomRoutingEndpointGroups*	- does not support concurrent creation of endpoint groups for custom routing type listeners within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Make sure that the following requirements are met before you call this operation:
+// Before you create endpoint groups for a custom routing type listener, make sure that you have completed the following operations:
 //
-//   - A standard GA instance is created. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
+// - A standard Global Accelerator instance is created. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
 //
-//   - A bandwidth plan is associated with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
+// - A bandwidth plan is attached to the standard Alibaba Cloud Global Accelerator (GA) instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
 //
-//   - An application is deployed to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
+// - You have deployed the relevant applications as backend services for Global Accelerator to accept forwarded requests. Custom routing type listeners support only vSwitches as the backend service type.
 //
-//   - The permissions to use custom routing listeners are acquired and a custom routing listener is created for the GA instance. Custom routing listeners are in invitational preview. To use custom routing listeners, contact your account manager. For more information about how to create a custom routing listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
+// - You have applied for permissions to use custom routing type listeners and created a custom routing type listener. The custom routing type for listeners is in invitational preview. To use this feature, contact your account manager. To create a custom routing type listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
 //
 // @param request - CreateCustomRoutingEndpointGroupsRequest
 //
@@ -2652,39 +2707,39 @@ func (client *Client) CreateCustomRoutingEndpointGroupsWithOptions(request *Crea
 
 // Summary:
 //
-// Creates endpoint groups for a custom routing listener.
+// Invokes the CreateCustomRoutingEndpointGroups operation to create endpoint groups for a custom routing type listener in batches.
 //
 // Description:
 //
-// Global Accelerator (GA) forwards client requests to endpoints in an endpoint group based on the routing type of the listener that is associated with the endpoint group.
+// Global Accelerator allocates traffic to endpoints within endpoint groups based on the forwarding method defined by the listener routing type.
 //
-//   - After you configure an intelligent routing listener for a GA instance, the GA instance selects a nearby and healthy endpoint group and forwards client requests to a healthy endpoint in the endpoint group.
+// - After you configure an intelligent routing listener, the Alibaba Cloud Global Accelerator (GA) instance automatically selects the nearest healthy endpoint group for traffic forwarding based on latency factors (primarily depending on geographic location and network link conditions), and ultimately delivers client network access requests to healthy endpoints.
 //
-//   - After you configure a custom routing listener for a GA instance, the instance generates a port mapping table based on the listener port range, protocols and port ranges of the associated endpoint groups, and IP addresses of endpoints (vSwitches), and forwards client requests to specified IP addresses and ports in the vSwitches.
+// - After you configure a custom routing type listener, the Alibaba Cloud Global Accelerator (GA) instance generates a port mapping table based on the configured listener port range, destination endpoint group protocol and port range, and IP address information of the endpoints (vSwitches), to deterministically route traffic to specific IP addresses and ports within vSwitches.
 //
-// You can call this operation to create endpoint groups for custom routing listeners. For information about how to create endpoint groups for intelligent routing listeners, see [CreateEndpointGroup](https://help.aliyun.com/document_detail/153259.html).
+// This operation creates endpoint groups for a custom routing type listener. To create endpoint groups for an intelligent routing listener, invoke [CreateEndpointGroup](https://help.aliyun.com/document_detail/153259.html).
 //
-// When you call this operation, take note of the following items:
+// When you invoke this operation, take note of the following items:
 //
-//   - **CreateCustomRoutingEndpointGroups*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) or [ListCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449374.html) operation to query the status of the endpoint groups that are associated with custom routing listeners.
+// - **CreateCustomRoutingEndpointGroups*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the endpoint groups for the custom routing type listener are not yet created. The creation task continues to execute in the background. You can invoke [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) or [ListCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449374.html) to query the status of the endpoint groups:
 //
-//   - If one or more endpoint groups are in the **init*	- state, it indicates that the endpoint groups are being created. In this case, you can perform only query operations.
+//   - If an endpoint group is in the **init*	- state, the endpoint groups are being created in batches. In this state, you can only execute query operations.
 //
-//   - If all endpoint groups are in the **active*	- state, it indicates that the endpoint groups are created.
+//   - When all endpoint groups are in the **active*	- state, the batch creation is complete.
 //
-//   - The **CreateCustomRoutingEndpointGroups*	- operation cannot be called repeatedly for the same GA instance within a specific period of time.
+// - **CreateCustomRoutingEndpointGroups*	- does not support concurrent creation of endpoint groups for custom routing type listeners within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Make sure that the following requirements are met before you call this operation:
+// Before you create endpoint groups for a custom routing type listener, make sure that you have completed the following operations:
 //
-//   - A standard GA instance is created. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
+// - A standard Global Accelerator instance is created. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
 //
-//   - A bandwidth plan is associated with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
+// - A bandwidth plan is attached to the standard Alibaba Cloud Global Accelerator (GA) instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
 //
-//   - An application is deployed to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
+// - You have deployed the relevant applications as backend services for Global Accelerator to accept forwarded requests. Custom routing type listeners support only vSwitches as the backend service type.
 //
-//   - The permissions to use custom routing listeners are acquired and a custom routing listener is created for the GA instance. Custom routing listeners are in invitational preview. To use custom routing listeners, contact your account manager. For more information about how to create a custom routing listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
+// - You have applied for permissions to use custom routing type listeners and created a custom routing type listener. The custom routing type for listeners is in invitational preview. To use this feature, contact your account manager. To create a custom routing type listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
 //
 // @param request - CreateCustomRoutingEndpointGroupsRequest
 //
@@ -2702,37 +2757,37 @@ func (client *Client) CreateCustomRoutingEndpointGroups(request *CreateCustomRou
 
 // Summary:
 //
-// Creates traffic destinations for an endpoint that is associated with a custom routing listener.
+// Invokes the CreateCustomRoutingEndpointTrafficPolicies operation to create an endpoint traffic policy (custom route type listener).
 //
 // Description:
 //
-// This operation takes effect only when the traffic access policy of an endpoint allows traffic to specified destinations. You can call the [DescribeCustomRoutingEndpoint](https://help.aliyun.com/document_detail/449386.html) operation to query the traffic access policy of an endpoint. This operation takes effect only if the value of **TrafficToEndpointPolicy*	- is set to **AllowCustom**, which allows traffic to specific destinations.
+// This operation takes effect only when the traffic policy of the backend service for the endpoint is set to allow traffic to specified destinations that can accept access traffic. You can invoke [DescribeCustomRoutingEndpoint](https://help.aliyun.com/document_detail/449386.html) to query the traffic policy of the backend service for a specified endpoint. This operation takes effect only when **TrafficToEndpointPolicy*	- is set to **AllowCustom*	- (specifying destinations that can accept access traffic).
 //
-// When you call this operation, take note of the following items:
+// Before you invoke this operation, take note of the following items:
 //
-//   - **CreateCustomRoutingEndpointTrafficPolicies*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) operation to query the status of the task.
+// - **CreateCustomRoutingEndpointTrafficPolicies*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the endpoint traffic policies for the custom route type listener are not yet created. The creation task continues to run in the background. You can invoke [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) to query the status of the endpoint group to confirm whether the traffic policies are created.
 //
-//   - If the endpoint group is in the **updating*	- state, the traffic destinations are being created. In this state, you can only query the traffic destinations.
+//   - If the endpoint group is in the **updating*	- state, the traffic policies are being created. In this state, you can only execute query operations.
 //
-//   - If the endpoint group is in the **active*	- state, the traffic destinations are created.
+//   - If the endpoint group is in the **active*	- state, the traffic policies are created.
 //
-//   - You cannot call the **CreateCustomRoutingEndpointTrafficPolicies*	- operation repeatedly for the same GA instance in a specific period of time.
+// - The **CreateCustomRoutingEndpointTrafficPolicies*	- operation does not support concurrent creation of endpoint traffic policies within the same Global Accelerator instance.
 //
-// ### [](#)Prerequisites
+// ### Before you begin
 //
-// Before you call this operation, make sure that the following requirements are met:
+// Before you create an endpoint traffic policy, make sure that you have completed the following operations:
 //
-//   - A standard GA instance is created. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
+// - A standard Global Accelerator instance is created. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
 //
-//   - If the bandwidth metering method of the standard GA instance is **pay-by-bandwidth**, a bandwidth plan must be associated with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
+// - If the billing method of the standard Global Accelerator instance is **pay-by-bandwidth**, a basic bandwidth plan is attached to the standard Global Accelerator instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
 //
-//   - An application that serves as the endpoint of the standard GA instance is deployed to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
+// - You have deployed the required applications as backend services to accept forwarded requests from Global Accelerator. The backend service type for custom route type listeners supports only vSwitches.
 //
-//   - The permissions to use custom routing listeners are acquired, and a custom routing listener is created. Custom routing listeners are in invitational preview. To use custom routing listeners, contact your account manager. For more information about how to create a custom routing listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
+// - You have obtained the permissions to use custom route type listeners and created a custom route type listener. The custom route type for listeners is in invitational preview. To use this feature, contact your account manager. To create a custom route type listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
 //
-//   - Endpoint groups are created for the custom routing listener. For more information, see [CreateCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449363.html).
+// - An endpoint group is created for the custom route type listener. For more information, see [CreateCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449363.html).
 //
-//   - Endpoints are created for the custom routing listener. For more information, see [CreateCustomRoutingEndpoints](https://help.aliyun.com/document_detail/449382.html).
+// - An endpoint is created for the custom route type listener. For more information, see [CreateCustomRoutingEndpoints](https://help.aliyun.com/document_detail/449382.html).
 //
 // @param request - CreateCustomRoutingEndpointTrafficPoliciesRequest
 //
@@ -2788,37 +2843,37 @@ func (client *Client) CreateCustomRoutingEndpointTrafficPoliciesWithOptions(requ
 
 // Summary:
 //
-// Creates traffic destinations for an endpoint that is associated with a custom routing listener.
+// Invokes the CreateCustomRoutingEndpointTrafficPolicies operation to create an endpoint traffic policy (custom route type listener).
 //
 // Description:
 //
-// This operation takes effect only when the traffic access policy of an endpoint allows traffic to specified destinations. You can call the [DescribeCustomRoutingEndpoint](https://help.aliyun.com/document_detail/449386.html) operation to query the traffic access policy of an endpoint. This operation takes effect only if the value of **TrafficToEndpointPolicy*	- is set to **AllowCustom**, which allows traffic to specific destinations.
+// This operation takes effect only when the traffic policy of the backend service for the endpoint is set to allow traffic to specified destinations that can accept access traffic. You can invoke [DescribeCustomRoutingEndpoint](https://help.aliyun.com/document_detail/449386.html) to query the traffic policy of the backend service for a specified endpoint. This operation takes effect only when **TrafficToEndpointPolicy*	- is set to **AllowCustom*	- (specifying destinations that can accept access traffic).
 //
-// When you call this operation, take note of the following items:
+// Before you invoke this operation, take note of the following items:
 //
-//   - **CreateCustomRoutingEndpointTrafficPolicies*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) operation to query the status of the task.
+// - **CreateCustomRoutingEndpointTrafficPolicies*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the endpoint traffic policies for the custom route type listener are not yet created. The creation task continues to run in the background. You can invoke [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) to query the status of the endpoint group to confirm whether the traffic policies are created.
 //
-//   - If the endpoint group is in the **updating*	- state, the traffic destinations are being created. In this state, you can only query the traffic destinations.
+//   - If the endpoint group is in the **updating*	- state, the traffic policies are being created. In this state, you can only execute query operations.
 //
-//   - If the endpoint group is in the **active*	- state, the traffic destinations are created.
+//   - If the endpoint group is in the **active*	- state, the traffic policies are created.
 //
-//   - You cannot call the **CreateCustomRoutingEndpointTrafficPolicies*	- operation repeatedly for the same GA instance in a specific period of time.
+// - The **CreateCustomRoutingEndpointTrafficPolicies*	- operation does not support concurrent creation of endpoint traffic policies within the same Global Accelerator instance.
 //
-// ### [](#)Prerequisites
+// ### Before you begin
 //
-// Before you call this operation, make sure that the following requirements are met:
+// Before you create an endpoint traffic policy, make sure that you have completed the following operations:
 //
-//   - A standard GA instance is created. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
+// - A standard Global Accelerator instance is created. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
 //
-//   - If the bandwidth metering method of the standard GA instance is **pay-by-bandwidth**, a bandwidth plan must be associated with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
+// - If the billing method of the standard Global Accelerator instance is **pay-by-bandwidth**, a basic bandwidth plan is attached to the standard Global Accelerator instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
 //
-//   - An application that serves as the endpoint of the standard GA instance is deployed to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
+// - You have deployed the required applications as backend services to accept forwarded requests from Global Accelerator. The backend service type for custom route type listeners supports only vSwitches.
 //
-//   - The permissions to use custom routing listeners are acquired, and a custom routing listener is created. Custom routing listeners are in invitational preview. To use custom routing listeners, contact your account manager. For more information about how to create a custom routing listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
+// - You have obtained the permissions to use custom route type listeners and created a custom route type listener. The custom route type for listeners is in invitational preview. To use this feature, contact your account manager. To create a custom route type listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
 //
-//   - Endpoint groups are created for the custom routing listener. For more information, see [CreateCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449363.html).
+// - An endpoint group is created for the custom route type listener. For more information, see [CreateCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449363.html).
 //
-//   - Endpoints are created for the custom routing listener. For more information, see [CreateCustomRoutingEndpoints](https://help.aliyun.com/document_detail/449382.html).
+// - An endpoint is created for the custom route type listener. For more information, see [CreateCustomRoutingEndpoints](https://help.aliyun.com/document_detail/449382.html).
 //
 // @param request - CreateCustomRoutingEndpointTrafficPoliciesRequest
 //
@@ -2836,35 +2891,35 @@ func (client *Client) CreateCustomRoutingEndpointTrafficPolicies(request *Create
 
 // Summary:
 //
-// Creates endpoints for a custom routing listener.
+// Invokes the CreateCustomRoutingEndpoints operation to create endpoints for a custom route type listener.
 //
 // Description:
 //
-// After you configure a custom routing listener for a Global Accelerator (GA) instance, the instance generates a port mapping table based on the listener port range, the protocols and port ranges of the associated endpoint groups, and the IP addresses of endpoints (vSwitches), and forwards client requests to specified IP addresses and ports in the vSwitches.
+// After you configure a custom route type listener, the Alibaba Cloud Global Accelerator (GA) instance generates a port mapping table based on the configured listener port range, the protocol and port range of the destination endpoint group, and the IP address information of the endpoints (vSwitches). This way, traffic is deterministically routed to specific IP addresses and ports in the vSwitches.
 //
-// This operation is used to create endpoints for custom routing listeners. When you call this operation, take note of the following items:
+// This operation creates endpoints for a custom route type listener. When you invoke this operation, take note of the following items:
 //
-//   - **CreateCustomRoutingEndpoints*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) operation to query the status of an endpoint group and determine whether endpoints are created in the endpoint group.
+// - **CreateCustomRoutingEndpoints*	- is an asynchronous operation. After a request is sent, the system returns a request ID, but the endpoints are not yet created. The creation node continues to run in the background. You can invoke the [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) operation to query the status of the endpoint group to confirm whether the endpoints are created:
 //
-//   - If the endpoint group is in the **updating*	- state, it indicates that endpoints are being created. In this case, you can perform only query operations.
+//   - If the endpoint group is in the **updating*	- state, the endpoints are being created. In this state, you can only execute query operations.
 //
-//   - If the endpoint group is in the **active*	- state, it indicates that endpoints are created.
+//   - If the endpoint group is in the **active*	- state, the endpoints are created.
 //
-//   - The **CreateCustomRoutingEndpoints*	- operation cannot be called repeatedly for the same GA instance within a specific period of time.
+// - The **CreateCustomRoutingEndpoints*	- operation does not support concurrent requests to create endpoints for custom route listeners within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// The following operations are complete before you call this operation:
+// Before you create endpoints for a custom route type listener, make sure that the following operations are complete:
 //
-//   - Create a standard GA instance. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
+// - A standard Global Accelerator instance is created. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
 //
-//   - Associate a bandwidth plan with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
+// - A bandwidth plan is attached to the standard Alibaba Cloud Global Accelerator (GA) instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
 //
-//   - Deploy an application that serves as the endpoint of the GA instance. The application is used to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
+// - Applications are deployed as backend services of Global Accelerator to accept forwarded requests. Custom route type listeners support only vSwitches as the backend service type.
 //
-//   - Apply for permissions to use custom routing listeners and create a custom routing listener for the standard GA instance. Custom routing listeners are in invitational preview. To use custom routing listeners, contact your account manager. For more information about how to create a custom routing listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
+// - You have obtained the permissions to use custom route type listeners and created a custom route type listener. The custom route type for listeners is in invitational preview. To use this feature, contact your account manager. To create a custom route type listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
 //
-//   - Create an endpoint group for the custom routing listener. For more information, see [CreateCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449363.html).
+// - An endpoint group for the custom route type listener is created. For more information, see [CreateCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449363.html).
 //
 // @param request - CreateCustomRoutingEndpointsRequest
 //
@@ -2920,35 +2975,35 @@ func (client *Client) CreateCustomRoutingEndpointsWithOptions(request *CreateCus
 
 // Summary:
 //
-// Creates endpoints for a custom routing listener.
+// Invokes the CreateCustomRoutingEndpoints operation to create endpoints for a custom route type listener.
 //
 // Description:
 //
-// After you configure a custom routing listener for a Global Accelerator (GA) instance, the instance generates a port mapping table based on the listener port range, the protocols and port ranges of the associated endpoint groups, and the IP addresses of endpoints (vSwitches), and forwards client requests to specified IP addresses and ports in the vSwitches.
+// After you configure a custom route type listener, the Alibaba Cloud Global Accelerator (GA) instance generates a port mapping table based on the configured listener port range, the protocol and port range of the destination endpoint group, and the IP address information of the endpoints (vSwitches). This way, traffic is deterministically routed to specific IP addresses and ports in the vSwitches.
 //
-// This operation is used to create endpoints for custom routing listeners. When you call this operation, take note of the following items:
+// This operation creates endpoints for a custom route type listener. When you invoke this operation, take note of the following items:
 //
-//   - **CreateCustomRoutingEndpoints*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) operation to query the status of an endpoint group and determine whether endpoints are created in the endpoint group.
+// - **CreateCustomRoutingEndpoints*	- is an asynchronous operation. After a request is sent, the system returns a request ID, but the endpoints are not yet created. The creation node continues to run in the background. You can invoke the [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) operation to query the status of the endpoint group to confirm whether the endpoints are created:
 //
-//   - If the endpoint group is in the **updating*	- state, it indicates that endpoints are being created. In this case, you can perform only query operations.
+//   - If the endpoint group is in the **updating*	- state, the endpoints are being created. In this state, you can only execute query operations.
 //
-//   - If the endpoint group is in the **active*	- state, it indicates that endpoints are created.
+//   - If the endpoint group is in the **active*	- state, the endpoints are created.
 //
-//   - The **CreateCustomRoutingEndpoints*	- operation cannot be called repeatedly for the same GA instance within a specific period of time.
+// - The **CreateCustomRoutingEndpoints*	- operation does not support concurrent requests to create endpoints for custom route listeners within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// The following operations are complete before you call this operation:
+// Before you create endpoints for a custom route type listener, make sure that the following operations are complete:
 //
-//   - Create a standard GA instance. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
+// - A standard Global Accelerator instance is created. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
 //
-//   - Associate a bandwidth plan with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
+// - A bandwidth plan is attached to the standard Alibaba Cloud Global Accelerator (GA) instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
 //
-//   - Deploy an application that serves as the endpoint of the GA instance. The application is used to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
+// - Applications are deployed as backend services of Global Accelerator to accept forwarded requests. Custom route type listeners support only vSwitches as the backend service type.
 //
-//   - Apply for permissions to use custom routing listeners and create a custom routing listener for the standard GA instance. Custom routing listeners are in invitational preview. To use custom routing listeners, contact your account manager. For more information about how to create a custom routing listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
+// - You have obtained the permissions to use custom route type listeners and created a custom route type listener. The custom route type for listeners is in invitational preview. To use this feature, contact your account manager. To create a custom route type listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
 //
-//   - Create an endpoint group for the custom routing listener. For more information, see [CreateCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449363.html).
+// - An endpoint group for the custom route type listener is created. For more information, see [CreateCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449363.html).
 //
 // @param request - CreateCustomRoutingEndpointsRequest
 //
@@ -2966,19 +3021,19 @@ func (client *Client) CreateCustomRoutingEndpoints(request *CreateCustomRoutingE
 
 // Summary:
 //
-// Creates a domain name and associates the domain name with Global Accelerator (GA) instances.
+// Creates an accelerated domain name and associates it with one or more GA instances.
 //
 // Description:
 //
 // After you associate an accelerated domain name that has obtained an ICP number with a Global Accelerator (GA) instance, you do not need to complete filing for the accelerated domain name or its subdomains on Alibaba Cloud.
 //
-// You can call this operation to add an accelerated domain name and associate the accelerated domain name with GA instances. When you call this operation, take note of the following items:
+// This operation adds an accelerated domain name and associates it with GA instances. Take note of the following items when calling this operation:
 //
-//   - If your accelerated domain name is hosted in the Chinese mainland, you must obtain an ICP number for the domain name.
+// - If your accelerated domain name is hosted in the Chinese mainland, you must obtain an ICP number for the domain name.
 //
-//   - The same accelerated domain name cannot be repeatedly associated with the same GA instance.
+// - The same accelerated domain name cannot be repeatedly associated with the same GA instance.
 //
-//   - You cannot repeatedly call the **CreateDomain*	- operation by using the same Alibaba Cloud account within a specific period of time.
+// - You cannot repeatedly call the **CreateDomain*	- operation by using the same Alibaba Cloud account within a specific period of time.
 //
 // @param request - CreateDomainRequest
 //
@@ -3034,19 +3089,19 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runt
 
 // Summary:
 //
-// Creates a domain name and associates the domain name with Global Accelerator (GA) instances.
+// Creates an accelerated domain name and associates it with one or more GA instances.
 //
 // Description:
 //
 // After you associate an accelerated domain name that has obtained an ICP number with a Global Accelerator (GA) instance, you do not need to complete filing for the accelerated domain name or its subdomains on Alibaba Cloud.
 //
-// You can call this operation to add an accelerated domain name and associate the accelerated domain name with GA instances. When you call this operation, take note of the following items:
+// This operation adds an accelerated domain name and associates it with GA instances. Take note of the following items when calling this operation:
 //
-//   - If your accelerated domain name is hosted in the Chinese mainland, you must obtain an ICP number for the domain name.
+// - If your accelerated domain name is hosted in the Chinese mainland, you must obtain an ICP number for the domain name.
 //
-//   - The same accelerated domain name cannot be repeatedly associated with the same GA instance.
+// - The same accelerated domain name cannot be repeatedly associated with the same GA instance.
 //
-//   - You cannot repeatedly call the **CreateDomain*	- operation by using the same Alibaba Cloud account within a specific period of time.
+// - You cannot repeatedly call the **CreateDomain*	- operation by using the same Alibaba Cloud account within a specific period of time.
 //
 // @param request - CreateDomainRequest
 //
@@ -3068,15 +3123,15 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 //
 // Description:
 //
-//	  When you call this operation to create a virtual endpoint group for a Layer 4 listener, make sure that a default endpoint group is created.
+// - Before you create a virtual endpoint group for a Layer 4 listener, you must first create a default endpoint group.
 //
-//		- **CreateEndpointGroup*	- is an asynchronous operation. After you send a request, the system returns the ID of an endpoint group, but the endpoint group is still being created in the system background. You can call the [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) operation to query the state of the endpoint group.
+// - **CreateEndpointGroup*	- is an asynchronous operation. After you send a request, the system returns an endpoint group ID and begins creating the endpoint group in the background. You can call [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) to query the status of the endpoint group:
 //
-//	    	- If the endpoint group is in the **init*	- state, it indicates that the endpoint group is being created. In this case, you can perform only query operations.
+//   - If the endpoint group is in the **init*	- state, it is being created. In this state, you can only perform query operations.
 //
-//	    	- If the endpoint group is in the **active*	- state, it indicates that the endpoint group is created.
+//   - If the endpoint group is in the **active*	- state, it has been created.
 //
-//		- The **CreateEndpointGroup*	- operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
+// - You cannot make concurrent calls to the **CreateEndpointGroup*	- operation for the same Global Accelerator instance.
 //
 // @param request - CreateEndpointGroupRequest
 //
@@ -3212,15 +3267,15 @@ func (client *Client) CreateEndpointGroupWithOptions(request *CreateEndpointGrou
 //
 // Description:
 //
-//	  When you call this operation to create a virtual endpoint group for a Layer 4 listener, make sure that a default endpoint group is created.
+// - Before you create a virtual endpoint group for a Layer 4 listener, you must first create a default endpoint group.
 //
-//		- **CreateEndpointGroup*	- is an asynchronous operation. After you send a request, the system returns the ID of an endpoint group, but the endpoint group is still being created in the system background. You can call the [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) operation to query the state of the endpoint group.
+// - **CreateEndpointGroup*	- is an asynchronous operation. After you send a request, the system returns an endpoint group ID and begins creating the endpoint group in the background. You can call [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) to query the status of the endpoint group:
 //
-//	    	- If the endpoint group is in the **init*	- state, it indicates that the endpoint group is being created. In this case, you can perform only query operations.
+//   - If the endpoint group is in the **init*	- state, it is being created. In this state, you can only perform query operations.
 //
-//	    	- If the endpoint group is in the **active*	- state, it indicates that the endpoint group is created.
+//   - If the endpoint group is in the **active*	- state, it has been created.
 //
-//		- The **CreateEndpointGroup*	- operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
+// - You cannot make concurrent calls to the **CreateEndpointGroup*	- operation for the same Global Accelerator instance.
 //
 // @param request - CreateEndpointGroupRequest
 //
@@ -3238,21 +3293,21 @@ func (client *Client) CreateEndpointGroup(request *CreateEndpointGroupRequest) (
 
 // Summary:
 //
-// Creates multiple endpoint groups at a time.
+// Creates endpoint groups in batches.
 //
 // Description:
 //
-//	  You can call this operation to create multiple endpoint groups at a time. However, you cannot create a default endpoint group and a virtual endpoint group at the same time.
+// - Creates endpoint groups in batches. Default and virtual endpoint groups cannot be created in a single call.
 //
-//		- You cannot create a virtual endpoint group for a Layer 4 listener. To create a virtual endpoint group for a Layer 4 listener, call the [CreateEndpointGroup](https://help.aliyun.com/document_detail/2302394.html) operation.
+// - This API does not support creating virtual endpoint groups for Layer-4 listeners. To create a virtual endpoint group for a Layer-4 listener, call [CreateEndpointGroup](https://help.aliyun.com/document_detail/2302394.html).
 //
-//		- **CreateEndpointGroups*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) or [ListEndpointGroups](https://help.aliyun.com/document_detail/153261.html) operation to query the status of endpoint groups.
+// - **CreateEndpointGroups*	- is an asynchronous API. It returns a request ID and creates the endpoint groups in the background. You can call [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) or [ListEndpointGroups](https://help.aliyun.com/document_detail/153261.html) to query the status of an endpoint group:
 //
-//	    	- If the endpoint groups are in the **init*	- state, the endpoint groups are being created. In this case, you can perform only query operations.
+//   - If an endpoint group is in the **init*	- state, it is initializing. You can only query the endpoint group in this state.
 //
-//	    	- If all endpoint groups are in the **active*	- state, the endpoint groups are created.
+//   - The batch creation is complete when all endpoint groups are in the **active*	- state.
 //
-//		- The **CreateEndpointGroups*	- operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
+// - You cannot make concurrent calls to **CreateEndpointGroups*	- for the same Global Accelerator instance.
 //
 // @param request - CreateEndpointGroupsRequest
 //
@@ -3321,21 +3376,21 @@ func (client *Client) CreateEndpointGroupsWithOptions(request *CreateEndpointGro
 
 // Summary:
 //
-// Creates multiple endpoint groups at a time.
+// Creates endpoint groups in batches.
 //
 // Description:
 //
-//	  You can call this operation to create multiple endpoint groups at a time. However, you cannot create a default endpoint group and a virtual endpoint group at the same time.
+// - Creates endpoint groups in batches. Default and virtual endpoint groups cannot be created in a single call.
 //
-//		- You cannot create a virtual endpoint group for a Layer 4 listener. To create a virtual endpoint group for a Layer 4 listener, call the [CreateEndpointGroup](https://help.aliyun.com/document_detail/2302394.html) operation.
+// - This API does not support creating virtual endpoint groups for Layer-4 listeners. To create a virtual endpoint group for a Layer-4 listener, call [CreateEndpointGroup](https://help.aliyun.com/document_detail/2302394.html).
 //
-//		- **CreateEndpointGroups*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) or [ListEndpointGroups](https://help.aliyun.com/document_detail/153261.html) operation to query the status of endpoint groups.
+// - **CreateEndpointGroups*	- is an asynchronous API. It returns a request ID and creates the endpoint groups in the background. You can call [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) or [ListEndpointGroups](https://help.aliyun.com/document_detail/153261.html) to query the status of an endpoint group:
 //
-//	    	- If the endpoint groups are in the **init*	- state, the endpoint groups are being created. In this case, you can perform only query operations.
+//   - If an endpoint group is in the **init*	- state, it is initializing. You can only query the endpoint group in this state.
 //
-//	    	- If all endpoint groups are in the **active*	- state, the endpoint groups are created.
+//   - The batch creation is complete when all endpoint groups are in the **active*	- state.
 //
-//		- The **CreateEndpointGroups*	- operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
+// - You cannot make concurrent calls to **CreateEndpointGroups*	- for the same Global Accelerator instance.
 //
 // @param request - CreateEndpointGroupsRequest
 //
@@ -3353,21 +3408,21 @@ func (client *Client) CreateEndpointGroups(request *CreateEndpointGroupsRequest)
 
 // Summary:
 //
-// If you want to distribute and process traffic based on request attributes, such as domain names and paths, or information in requests, such as HTTP headers and cookies, you can create custom forwarding rules for a listener. The listener forwards requests based on the forwarding rules. You can call the CreateForwardingRules operation to create forwarding rules.
+// If you need to distribute traffic based on request attributes such as the domain name, path, HTTP headers, and cookies, you can create custom forwarding rules for a listener. The listener evaluates incoming requests against these rules and performs different forwarding actions. To create forwarding rules, call the `CreateForwardingRules` API.
 //
 // Description:
 //
-// Before you call this operation to create forwarding rules, we recommend that you learn how forwarding rules work and how requests are matched against forwarding rules. For more information, see [Configure forwarding rules](https://help.aliyun.com/document_detail/204224.html).
+// Before you call this API, you should understand how forwarding rules work and their matching conditions. For more information, see [Forwarding rules](https://help.aliyun.com/document_detail/204224.html).
 //
-// When you call this operation, take note of the following items:
+// When you call this API, note the following:
 //
-//   - **CreateForwardingRules*	- is an asynchronous operation. After you send a request, the system returns a forwarding rule ID and runs the task in the background. You can call the [ListForwardingRules](https://help.aliyun.com/document_detail/205817.html) operation to query the status of a forwarding rule.
+// - The **CreateForwardingRules*	- API is asynchronous. After the call is made, the system returns a forwarding rule ID, but the rule is still being created. You can call [ListForwardingRules](https://help.aliyun.com/document_detail/205817.html) to query the status of the forwarding rule:
 //
-//   - If the forwarding rule is in the **configuring*	- state, the rule is being created. In this case, you can only perform query operations.
+//   - If a forwarding rule is in the **configuring*	- status, it is still being created, and you can only perform query operations.
 //
-//   - If the forwarding rule is in the **active*	- state, the rule is created.
+//   - If a forwarding rule is in the **active*	- status, the rule has been created.
 //
-//   - The **CreateForwardingRules*	- operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
+// - You cannot use the **CreateForwardingRules*	- API to create forwarding rules concurrently for the same Global Accelerator instance.
 //
 // @param request - CreateForwardingRulesRequest
 //
@@ -3432,21 +3487,21 @@ func (client *Client) CreateForwardingRulesWithOptions(request *CreateForwarding
 
 // Summary:
 //
-// If you want to distribute and process traffic based on request attributes, such as domain names and paths, or information in requests, such as HTTP headers and cookies, you can create custom forwarding rules for a listener. The listener forwards requests based on the forwarding rules. You can call the CreateForwardingRules operation to create forwarding rules.
+// If you need to distribute traffic based on request attributes such as the domain name, path, HTTP headers, and cookies, you can create custom forwarding rules for a listener. The listener evaluates incoming requests against these rules and performs different forwarding actions. To create forwarding rules, call the `CreateForwardingRules` API.
 //
 // Description:
 //
-// Before you call this operation to create forwarding rules, we recommend that you learn how forwarding rules work and how requests are matched against forwarding rules. For more information, see [Configure forwarding rules](https://help.aliyun.com/document_detail/204224.html).
+// Before you call this API, you should understand how forwarding rules work and their matching conditions. For more information, see [Forwarding rules](https://help.aliyun.com/document_detail/204224.html).
 //
-// When you call this operation, take note of the following items:
+// When you call this API, note the following:
 //
-//   - **CreateForwardingRules*	- is an asynchronous operation. After you send a request, the system returns a forwarding rule ID and runs the task in the background. You can call the [ListForwardingRules](https://help.aliyun.com/document_detail/205817.html) operation to query the status of a forwarding rule.
+// - The **CreateForwardingRules*	- API is asynchronous. After the call is made, the system returns a forwarding rule ID, but the rule is still being created. You can call [ListForwardingRules](https://help.aliyun.com/document_detail/205817.html) to query the status of the forwarding rule:
 //
-//   - If the forwarding rule is in the **configuring*	- state, the rule is being created. In this case, you can only perform query operations.
+//   - If a forwarding rule is in the **configuring*	- status, it is still being created, and you can only perform query operations.
 //
-//   - If the forwarding rule is in the **active*	- state, the rule is created.
+//   - If a forwarding rule is in the **active*	- status, the rule has been created.
 //
-//   - The **CreateForwardingRules*	- operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
+// - You cannot use the **CreateForwardingRules*	- API to create forwarding rules concurrently for the same Global Accelerator instance.
 //
 // @param request - CreateForwardingRulesRequest
 //
@@ -3558,19 +3613,19 @@ func (client *Client) CreateIpSets(request *CreateIpSetsRequest) (_result *Creat
 
 // Summary:
 //
-// A listener checks connection requests and distributes the requests to endpoints based on forwarding rules that are defined by the scheduling algorithm. You can call the CreateListener operation to create a listener for a GA instance.
+// Create a listener for your GA instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// Note the following when you call this operation:
 //
-//   - **CreateListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeListener](https://help.aliyun.com/document_detail/153254.html) operation to query the status of the task.
+// - **CreateListener*	- is an asynchronous operation. After you send a request, the system returns a listener ID but the listener is still being created in the background. You can call [DescribeListener](https://help.aliyun.com/document_detail/153254.html) to check the listener\\"s status:
 //
-//   - If the listener is in the **init*	- state, the listener is being created. In this state, you can perform only query operations.
+//   - An **init*	- status indicates that the listener is being created. In this state, you can only perform query operations.
 //
-//   - If the listener is in the **active*	- state, the listener is created.
+//   - An **active*	- status indicates that the listener is ready.
 //
-//   - You cannot repeatedly call the **CreateListener*	- operation for the same GA instance within the specified period of time.
+// - You cannot concurrently create multiple listeners for the same Global Accelerator instance by using the **CreateListener*	- operation.
 //
 // @param request - CreateListenerRequest
 //
@@ -3678,19 +3733,19 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 
 // Summary:
 //
-// A listener checks connection requests and distributes the requests to endpoints based on forwarding rules that are defined by the scheduling algorithm. You can call the CreateListener operation to create a listener for a GA instance.
+// Create a listener for your GA instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// Note the following when you call this operation:
 //
-//   - **CreateListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeListener](https://help.aliyun.com/document_detail/153254.html) operation to query the status of the task.
+// - **CreateListener*	- is an asynchronous operation. After you send a request, the system returns a listener ID but the listener is still being created in the background. You can call [DescribeListener](https://help.aliyun.com/document_detail/153254.html) to check the listener\\"s status:
 //
-//   - If the listener is in the **init*	- state, the listener is being created. In this state, you can perform only query operations.
+//   - An **init*	- status indicates that the listener is being created. In this state, you can only perform query operations.
 //
-//   - If the listener is in the **active*	- state, the listener is created.
+//   - An **active*	- status indicates that the listener is ready.
 //
-//   - You cannot repeatedly call the **CreateListener*	- operation for the same GA instance within the specified period of time.
+// - You cannot concurrently create multiple listeners for the same Global Accelerator instance by using the **CreateListener*	- operation.
 //
 // @param request - CreateListenerRequest
 //
@@ -3810,13 +3865,13 @@ func (client *Client) CreateSpareIps(request *CreateSpareIpsRequest) (_result *C
 //
 // Description:
 //
-//	  You cannot delete subscription GA instances.
+// - You cannot delete subscription GA instances.
 //
-//		- **DeleteAccelerator*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation to query the status of the task.
+// - **DeleteAccelerator*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation to query the status of the task.
 //
-//	    	- If the GA instance is in the **deleting*	- state, the GA instance is being deleted. In this case, you can perform only query operations.
+//   - If the GA instance is in the **deleting*	- state, the GA instance is being deleted. In this case, you can perform only query operations.
 //
-//	    	- If the GA instance cannot be queried, the GA instance is deleted.
+//   - If the GA instance cannot be queried, the GA instance is deleted.
 //
 // @param request - DeleteAcceleratorRequest
 //
@@ -3868,13 +3923,13 @@ func (client *Client) DeleteAcceleratorWithOptions(request *DeleteAcceleratorReq
 //
 // Description:
 //
-//	  You cannot delete subscription GA instances.
+// - You cannot delete subscription GA instances.
 //
-//		- **DeleteAccelerator*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation to query the status of the task.
+// - **DeleteAccelerator*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation to query the status of the task.
 //
-//	    	- If the GA instance is in the **deleting*	- state, the GA instance is being deleted. In this case, you can perform only query operations.
+//   - If the GA instance is in the **deleting*	- state, the GA instance is being deleted. In this case, you can perform only query operations.
 //
-//	    	- If the GA instance cannot be queried, the GA instance is deleted.
+//   - If the GA instance cannot be queried, the GA instance is deleted.
 //
 // @param request - DeleteAcceleratorRequest
 //
@@ -3892,15 +3947,15 @@ func (client *Client) DeleteAccelerator(request *DeleteAcceleratorRequest) (_res
 
 // Summary:
 //
-// Deletes a access control list (ACL) of a Global Accelerator (GA) instance.
+// Invokes the DeleteAcl operation to delete an access control policy group.
 //
 // Description:
 //
-// *DeleteAcl*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [GetAcl](https://help.aliyun.com/document_detail/258292.html) operation to query the status of an ACL.
+// *DeleteAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID, but the access control policy group is not immediately deleted. The deletion node continues to run in the background. You can invoke [GetAcl](https://help.aliyun.com/document_detail/258292.html) to query the status of the access control policy group:
 //
-//   - If the ACL is in the **deleting*	- state, it indicates that the ACL is being deleted. In this case, you can perform only query operations.
+// - If the access control policy group is in the **deleting*	- state, the access control policy group is being deleted. In this state, you can only execute query operations and cannot execute other operations.
 //
-//   - If the ACL cannot be queried, it indicates that the ACL is deleted.
+// - If the access control policy group cannot be found, the access control policy group is deleted.
 //
 // @param request - DeleteAclRequest
 //
@@ -3956,15 +4011,15 @@ func (client *Client) DeleteAclWithOptions(request *DeleteAclRequest, runtime *d
 
 // Summary:
 //
-// Deletes a access control list (ACL) of a Global Accelerator (GA) instance.
+// Invokes the DeleteAcl operation to delete an access control policy group.
 //
 // Description:
 //
-// *DeleteAcl*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [GetAcl](https://help.aliyun.com/document_detail/258292.html) operation to query the status of an ACL.
+// *DeleteAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID, but the access control policy group is not immediately deleted. The deletion node continues to run in the background. You can invoke [GetAcl](https://help.aliyun.com/document_detail/258292.html) to query the status of the access control policy group:
 //
-//   - If the ACL is in the **deleting*	- state, it indicates that the ACL is being deleted. In this case, you can perform only query operations.
+// - If the access control policy group is in the **deleting*	- state, the access control policy group is being deleted. In this state, you can only execute query operations and cannot execute other operations.
 //
-//   - If the ACL cannot be queried, it indicates that the ACL is deleted.
+// - If the access control policy group cannot be found, the access control policy group is deleted.
 //
 // @param request - DeleteAclRequest
 //
@@ -3982,17 +4037,17 @@ func (client *Client) DeleteAcl(request *DeleteAclRequest) (_result *DeleteAclRe
 
 // Summary:
 //
-// Deletes an origin probing task.
+// Calls the DeleteApplicationMonitor operation to delete an origin probing task.
 //
 // Description:
 //
-//	  **DeleteApplicationMonitor*	- is an asynchronous operation. After you call this operation, the system returns a request ID, but the operation is still being performed in the system background. You can call the [ListApplicationMonitor](https://help.aliyun.com/document_detail/408462.html) operation to query the state of an origin probing task.
+// - The **DeleteApplicationMonitor*	- operation is asynchronous. After you send a request, the system returns a request ID, but the origin probing node is not yet deleted. The deletion node continues to run in the background. You can invoke [ListApplicationMonitor](https://help.aliyun.com/document_detail/408462.html) to query the status of the origin probing node:
 //
-//	    	- If the origin probing task is in the **deleting*	- state, it indicates that the task is being deleted. In this case, you can perform only query operations.
+//   - If the origin probing node is in the **deleting*	- state, the node is being deleted. In this state, you can only execute query operations.
 //
-//	    	- If the origin probing task cannot be queried, it indicates that the task is deleted.
+//   - If the origin probing node cannot be found, the node is deleted.
 //
-//		- The **DeleteApplicationMonitor*	- operation cannot be called repeatedly for the same Global Accelerator (GA) instance within a specific period of time.
+// - The **DeleteApplicationMonitor*	- operation does not support concurrent deletion of origin probing nodes within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - DeleteApplicationMonitorRequest
 //
@@ -4044,17 +4099,17 @@ func (client *Client) DeleteApplicationMonitorWithOptions(request *DeleteApplica
 
 // Summary:
 //
-// Deletes an origin probing task.
+// Calls the DeleteApplicationMonitor operation to delete an origin probing task.
 //
 // Description:
 //
-//	  **DeleteApplicationMonitor*	- is an asynchronous operation. After you call this operation, the system returns a request ID, but the operation is still being performed in the system background. You can call the [ListApplicationMonitor](https://help.aliyun.com/document_detail/408462.html) operation to query the state of an origin probing task.
+// - The **DeleteApplicationMonitor*	- operation is asynchronous. After you send a request, the system returns a request ID, but the origin probing node is not yet deleted. The deletion node continues to run in the background. You can invoke [ListApplicationMonitor](https://help.aliyun.com/document_detail/408462.html) to query the status of the origin probing node:
 //
-//	    	- If the origin probing task is in the **deleting*	- state, it indicates that the task is being deleted. In this case, you can perform only query operations.
+//   - If the origin probing node is in the **deleting*	- state, the node is being deleted. In this state, you can only execute query operations.
 //
-//	    	- If the origin probing task cannot be queried, it indicates that the task is deleted.
+//   - If the origin probing node cannot be found, the node is deleted.
 //
-//		- The **DeleteApplicationMonitor*	- operation cannot be called repeatedly for the same Global Accelerator (GA) instance within a specific period of time.
+// - The **DeleteApplicationMonitor*	- operation does not support concurrent deletion of origin probing nodes within the same Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - DeleteApplicationMonitorRequest
 //
@@ -4260,17 +4315,17 @@ func (client *Client) DeleteBasicAccelerateIp(request *DeleteBasicAccelerateIpRe
 
 // Summary:
 //
-// Deletes a mapping between an accelerated IP address and an endpoint for a basic Global Accelerator (GA) instance.
+// Deletes the attach relationship between an accelerated IP address and an endpoint of a basic Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  **DeleteBasicAccelerateIpEndpointRelation*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the following operations to check whether an accelerated IP address is disassociated from an endpoint:
+// - **DeleteBasicAccelerateIpEndpointRelation*	- is an asynchronous operation. After a request is sent, the system returns a request ID, but the attach relationship between the accelerated IP address and the endpoint of the basic Global Accelerator (GA) instance is not immediately removed. The deletion task continues to run in the background. You can call the following operations to check whether the attach relationship between the accelerated IP address and the endpoint is deleted:
 //
-//	    	- You can call the [GetBasicAccelerateIp](https://help.aliyun.com/document_detail/466794.html) and [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) operations to query the status of an accelerated IP address and an endpoint. If the accelerated IP address and the endpoint are in the **unbinding*	- state, the accelerated IP address is being disassociated from the endpoint. In this case, you can query the IP address and endpoint but cannot perform other operations.
+//   - Call [GetBasicAccelerateIp](https://help.aliyun.com/document_detail/466794.html) or [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) to query the status of the accelerated IP address and the endpoint respectively. If the status of the accelerated IP address and the endpoint is **unbinding**, the attach relationship is being deleted. In this state, you can only perform query operations and cannot perform other operations.
 //
-//	    	- If the association status between the accelerated IP address and the endpoint cannot be queried by calling the [ListBasicAccelerateIpEndpointRelations](https://help.aliyun.com/document_detail/466803.html) operation, the accelerated IP address is disassociated from the endpoint.
+//   - Call [ListBasicAccelerateIpEndpointRelations](https://help.aliyun.com/document_detail/466803.html) to query the attach status between the accelerated IP address and the endpoint. If no attach information is returned, the attach relationship between the accelerated IP address and the endpoint is deleted.
 //
-//		- The **DeleteBasicAccelerateIpEndpointRelation*	- API operation cannot be repeatedly called for the same basic GA instance within a period of time.
+// - **DeleteBasicAccelerateIpEndpointRelation*	- does not support concurrent deletion of attach relationships between accelerated IP addresses and endpoints within the same basic GA instance.
 //
 // @param request - DeleteBasicAccelerateIpEndpointRelationRequest
 //
@@ -4330,17 +4385,17 @@ func (client *Client) DeleteBasicAccelerateIpEndpointRelationWithOptions(request
 
 // Summary:
 //
-// Deletes a mapping between an accelerated IP address and an endpoint for a basic Global Accelerator (GA) instance.
+// Deletes the attach relationship between an accelerated IP address and an endpoint of a basic Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  **DeleteBasicAccelerateIpEndpointRelation*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the following operations to check whether an accelerated IP address is disassociated from an endpoint:
+// - **DeleteBasicAccelerateIpEndpointRelation*	- is an asynchronous operation. After a request is sent, the system returns a request ID, but the attach relationship between the accelerated IP address and the endpoint of the basic Global Accelerator (GA) instance is not immediately removed. The deletion task continues to run in the background. You can call the following operations to check whether the attach relationship between the accelerated IP address and the endpoint is deleted:
 //
-//	    	- You can call the [GetBasicAccelerateIp](https://help.aliyun.com/document_detail/466794.html) and [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) operations to query the status of an accelerated IP address and an endpoint. If the accelerated IP address and the endpoint are in the **unbinding*	- state, the accelerated IP address is being disassociated from the endpoint. In this case, you can query the IP address and endpoint but cannot perform other operations.
+//   - Call [GetBasicAccelerateIp](https://help.aliyun.com/document_detail/466794.html) or [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) to query the status of the accelerated IP address and the endpoint respectively. If the status of the accelerated IP address and the endpoint is **unbinding**, the attach relationship is being deleted. In this state, you can only perform query operations and cannot perform other operations.
 //
-//	    	- If the association status between the accelerated IP address and the endpoint cannot be queried by calling the [ListBasicAccelerateIpEndpointRelations](https://help.aliyun.com/document_detail/466803.html) operation, the accelerated IP address is disassociated from the endpoint.
+//   - Call [ListBasicAccelerateIpEndpointRelations](https://help.aliyun.com/document_detail/466803.html) to query the attach status between the accelerated IP address and the endpoint. If no attach information is returned, the attach relationship between the accelerated IP address and the endpoint is deleted.
 //
-//		- The **DeleteBasicAccelerateIpEndpointRelation*	- API operation cannot be repeatedly called for the same basic GA instance within a period of time.
+// - **DeleteBasicAccelerateIpEndpointRelation*	- does not support concurrent deletion of attach relationships between accelerated IP addresses and endpoints within the same basic GA instance.
 //
 // @param request - DeleteBasicAccelerateIpEndpointRelationRequest
 //
@@ -4358,29 +4413,29 @@ func (client *Client) DeleteBasicAccelerateIpEndpointRelation(request *DeleteBas
 
 // Summary:
 //
-// Deletes a basic Global Accelerator (GA) instance.
+// Invokes the DeleteBasicAccelerator operation to delete a specified basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  You cannot delete subscription basic GA instances. You can unsubscribe from a basic GA instance on the [Unsubscribe](https://usercenter2-intl.aliyun.com/refund/refund) page. Before you unsubscribe from a basic GA instance, make sure that the acceleration areas and endpoint groups of the GA instance are deleted and no bandwidth plans are associated with the GA instance.
+// - Upfront (subscription) basic Alibaba Cloud Global Accelerator (GA) instances cannot be deleted. You can unsubscribe on the <props="china">[Unsubscribe](https://usercenter2.aliyun.com/refund/refund)<props="intl">[Unsubscribe](https://usercenter2-intl.aliyun.com/refund/refund) page. Before you unsubscribe, make sure that the basic Alibaba Cloud Global Accelerator (GA) instance has no acceleration area or endpoint group configurations and is not attached to a bandwidth plan.
 //
-//	    	- For information about how to delete an acceleration area, see [DeleteBasicIpSet](https://help.aliyun.com/document_detail/2253388.html).
+//   - To delete an acceleration area, refer to [DeleteBasicIpSet](https://help.aliyun.com/document_detail/2253388.html).
 //
-//	    	- For information about how to delete an endpoint group, see [DeleteBasicEndpointGroup](https://help.aliyun.com/document_detail/2253399.html).
+//   - To delete an endpoint group, refer to [DeleteBasicEndpointGroup](https://help.aliyun.com/document_detail/2253399.html).
 //
-//	    	- For information about how to disassociate a bandwidth plan from a basic GA instance, see [BandwidthPackageRemoveAccelerator](https://help.aliyun.com/document_detail/153240.html).
+//   - To disassociate a bandwidth plan from a basic Alibaba Cloud Global Accelerator (GA) instance, refer to [BandwidthPackageRemoveAccelerator](https://help.aliyun.com/document_detail/153240.html).
 //
-//		- Before you call this operation to delete a pay-as-you-go basic GA instance, make sure that all data is migrated and the acceleration areas and endpoint groups of the instance are deleted.
+// - Before you invoke this operation to delete a pay-as-you-go basic Alibaba Cloud Global Accelerator (GA) instance, make sure that data migration is complete and that the acceleration area and endpoint group configurations under the instance are deleted.
 //
-//	    	- For information about how to delete an acceleration area, see [DeleteBasicIpSet](https://help.aliyun.com/document_detail/2253388.html).
+//   - To delete an acceleration area, refer to [DeleteBasicIpSet](https://help.aliyun.com/document_detail/2253388.html).
 //
-//	    	- For information about how to delete an endpoint group, see [DeleteBasicEndpointGroup](https://help.aliyun.com/document_detail/2253399.html).
+//   - To delete an endpoint group, refer to [DeleteBasicEndpointGroup](https://help.aliyun.com/document_detail/2253399.html).
 //
-//		- **DeleteBasicAccelerator*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetBasicAccelerator](https://help.aliyun.com/document_detail/353188.html) operation to query the status of the task.
+// - **DeleteBasicAccelerator*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the node in the background. You can invoke [GetBasicAccelerator](https://help.aliyun.com/document_detail/353188.html) to query the status of the basic Alibaba Cloud Global Accelerator (GA) instance:
 //
-//	    	- If the basic GA instance is in the **deleting*	- state, it indicates that the instance is being deleted. In this case, you can perform only query operations.
+//   - If the instance is in the **deleting*	- state, the instance is being deleted. In this state, you can only execute query operations.
 //
-//	    	- If the information about the basic GA instance is not displayed in the response, it indicates that the instance is deleted.
+//   - If the instance cannot be found, the instance is deleted.
 //
 // @param request - DeleteBasicAcceleratorRequest
 //
@@ -4428,29 +4483,29 @@ func (client *Client) DeleteBasicAcceleratorWithOptions(request *DeleteBasicAcce
 
 // Summary:
 //
-// Deletes a basic Global Accelerator (GA) instance.
+// Invokes the DeleteBasicAccelerator operation to delete a specified basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  You cannot delete subscription basic GA instances. You can unsubscribe from a basic GA instance on the [Unsubscribe](https://usercenter2-intl.aliyun.com/refund/refund) page. Before you unsubscribe from a basic GA instance, make sure that the acceleration areas and endpoint groups of the GA instance are deleted and no bandwidth plans are associated with the GA instance.
+// - Upfront (subscription) basic Alibaba Cloud Global Accelerator (GA) instances cannot be deleted. You can unsubscribe on the <props="china">[Unsubscribe](https://usercenter2.aliyun.com/refund/refund)<props="intl">[Unsubscribe](https://usercenter2-intl.aliyun.com/refund/refund) page. Before you unsubscribe, make sure that the basic Alibaba Cloud Global Accelerator (GA) instance has no acceleration area or endpoint group configurations and is not attached to a bandwidth plan.
 //
-//	    	- For information about how to delete an acceleration area, see [DeleteBasicIpSet](https://help.aliyun.com/document_detail/2253388.html).
+//   - To delete an acceleration area, refer to [DeleteBasicIpSet](https://help.aliyun.com/document_detail/2253388.html).
 //
-//	    	- For information about how to delete an endpoint group, see [DeleteBasicEndpointGroup](https://help.aliyun.com/document_detail/2253399.html).
+//   - To delete an endpoint group, refer to [DeleteBasicEndpointGroup](https://help.aliyun.com/document_detail/2253399.html).
 //
-//	    	- For information about how to disassociate a bandwidth plan from a basic GA instance, see [BandwidthPackageRemoveAccelerator](https://help.aliyun.com/document_detail/153240.html).
+//   - To disassociate a bandwidth plan from a basic Alibaba Cloud Global Accelerator (GA) instance, refer to [BandwidthPackageRemoveAccelerator](https://help.aliyun.com/document_detail/153240.html).
 //
-//		- Before you call this operation to delete a pay-as-you-go basic GA instance, make sure that all data is migrated and the acceleration areas and endpoint groups of the instance are deleted.
+// - Before you invoke this operation to delete a pay-as-you-go basic Alibaba Cloud Global Accelerator (GA) instance, make sure that data migration is complete and that the acceleration area and endpoint group configurations under the instance are deleted.
 //
-//	    	- For information about how to delete an acceleration area, see [DeleteBasicIpSet](https://help.aliyun.com/document_detail/2253388.html).
+//   - To delete an acceleration area, refer to [DeleteBasicIpSet](https://help.aliyun.com/document_detail/2253388.html).
 //
-//	    	- For information about how to delete an endpoint group, see [DeleteBasicEndpointGroup](https://help.aliyun.com/document_detail/2253399.html).
+//   - To delete an endpoint group, refer to [DeleteBasicEndpointGroup](https://help.aliyun.com/document_detail/2253399.html).
 //
-//		- **DeleteBasicAccelerator*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetBasicAccelerator](https://help.aliyun.com/document_detail/353188.html) operation to query the status of the task.
+// - **DeleteBasicAccelerator*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the node in the background. You can invoke [GetBasicAccelerator](https://help.aliyun.com/document_detail/353188.html) to query the status of the basic Alibaba Cloud Global Accelerator (GA) instance:
 //
-//	    	- If the basic GA instance is in the **deleting*	- state, it indicates that the instance is being deleted. In this case, you can perform only query operations.
+//   - If the instance is in the **deleting*	- state, the instance is being deleted. In this state, you can only execute query operations.
 //
-//	    	- If the information about the basic GA instance is not displayed in the response, it indicates that the instance is deleted.
+//   - If the instance cannot be found, the instance is deleted.
 //
 // @param request - DeleteBasicAcceleratorRequest
 //
@@ -4468,17 +4523,17 @@ func (client *Client) DeleteBasicAccelerator(request *DeleteBasicAcceleratorRequ
 
 // Summary:
 //
-// Deletes an endpoint that is associated with a basic Global Accelerator (GA) instance.
+// Invokes the DeleteBasicEndpoint operation to delete an endpoint of a basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  **DeleteBasicEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) operation to query the status of endpoints.
+// - **DeleteBasicEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID, but the endpoint is not yet deleted and the deletion node continues in the background. You can invoke [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) to query the status of the endpoint:
 //
-//	    	- If the endpoint is in the **deleting*	- state, it indicates that the endpoint is being deleted. In this case, you can perform only query operations.
+//   - If the endpoint is in the **deleting*	- state, the endpoint is being deleted. In this state, you can only execute query operations.
 //
-//	    	- If the endpoint cannot be found, it indicates that the endpoint is deleted.
+//   - If the endpoint cannot be found, the endpoint is deleted.
 //
-//		- The **DeleteBasicEndpoint*	- API operation cannot be repeatedly called for the same basic GA instance within a period of time.
+// - **DeleteBasicEndpoint*	- does not support concurrent deletion of endpoints within the same basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - DeleteBasicEndpointRequest
 //
@@ -4534,17 +4589,17 @@ func (client *Client) DeleteBasicEndpointWithOptions(request *DeleteBasicEndpoin
 
 // Summary:
 //
-// Deletes an endpoint that is associated with a basic Global Accelerator (GA) instance.
+// Invokes the DeleteBasicEndpoint operation to delete an endpoint of a basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  **DeleteBasicEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) operation to query the status of endpoints.
+// - **DeleteBasicEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID, but the endpoint is not yet deleted and the deletion node continues in the background. You can invoke [ListBasicEndpoints](https://help.aliyun.com/document_detail/466831.html) to query the status of the endpoint:
 //
-//	    	- If the endpoint is in the **deleting*	- state, it indicates that the endpoint is being deleted. In this case, you can perform only query operations.
+//   - If the endpoint is in the **deleting*	- state, the endpoint is being deleted. In this state, you can only execute query operations.
 //
-//	    	- If the endpoint cannot be found, it indicates that the endpoint is deleted.
+//   - If the endpoint cannot be found, the endpoint is deleted.
 //
-//		- The **DeleteBasicEndpoint*	- API operation cannot be repeatedly called for the same basic GA instance within a period of time.
+// - **DeleteBasicEndpoint*	- does not support concurrent deletion of endpoints within the same basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - DeleteBasicEndpointRequest
 //
@@ -5882,7 +5937,7 @@ func (client *Client) DeleteSpareIps(request *DeleteSpareIpsRequest) (_result *D
 
 // Summary:
 //
-// Queries information about a Global Accelerator (GA) instance.
+// You can call the DescribeAccelerator operation to query information about a specified Global Accelerator instance.
 //
 // @param request - DescribeAcceleratorRequest
 //
@@ -5930,7 +5985,7 @@ func (client *Client) DescribeAcceleratorWithOptions(request *DescribeAccelerato
 
 // Summary:
 //
-// Queries information about a Global Accelerator (GA) instance.
+// You can call the DescribeAccelerator operation to query information about a specified Global Accelerator instance.
 //
 // @param request - DescribeAcceleratorRequest
 //
@@ -6146,7 +6201,7 @@ func (client *Client) DescribeApplicationMonitor(request *DescribeApplicationMon
 
 // Summary:
 //
-// Queries information about a bandwidth plan.
+// Queries the details of a bandwidth plan by calling the DescribeBandwidthPackage operation.
 //
 // @param request - DescribeBandwidthPackageRequest
 //
@@ -6194,7 +6249,7 @@ func (client *Client) DescribeBandwidthPackageWithOptions(request *DescribeBandw
 
 // Summary:
 //
-// Queries information about a bandwidth plan.
+// Queries the details of a bandwidth plan by calling the DescribeBandwidthPackage operation.
 //
 // @param request - DescribeBandwidthPackageRequest
 //
@@ -6278,7 +6333,7 @@ func (client *Client) DescribeBandwidthPackageAutoRenewAttribute(request *Descri
 
 // Summary:
 //
-// Queries information about commodities.
+// Queries the pricing and specification details of Global Accelerator commodity options available for purchase.
 //
 // @param request - DescribeCommodityRequest
 //
@@ -6330,7 +6385,7 @@ func (client *Client) DescribeCommodityWithOptions(request *DescribeCommodityReq
 
 // Summary:
 //
-// Queries information about commodities.
+// Queries the pricing and specification details of Global Accelerator commodity options available for purchase.
 //
 // @param request - DescribeCommodityRequest
 //
@@ -6702,7 +6757,7 @@ func (client *Client) DescribeCustomRoutingEndpointGroupDestinations(request *De
 
 // Summary:
 //
-// Queries information about an endpoint group.
+// Queries a specified endpoint group.
 //
 // @param request - DescribeEndpointGroupRequest
 //
@@ -6750,7 +6805,7 @@ func (client *Client) DescribeEndpointGroupWithOptions(request *DescribeEndpoint
 
 // Summary:
 //
-// Queries information about an endpoint group.
+// Queries a specified endpoint group.
 //
 // @param request - DescribeEndpointGroupRequest
 //
@@ -6768,7 +6823,7 @@ func (client *Client) DescribeEndpointGroup(request *DescribeEndpointGroupReques
 
 // Summary:
 //
-// Queries information about an acceleration region.
+// Returns the configuration of a specified acceleration region, including its accelerated IP addresses.
 //
 // @param request - DescribeIpSetRequest
 //
@@ -6816,7 +6871,7 @@ func (client *Client) DescribeIpSetWithOptions(request *DescribeIpSetRequest, ru
 
 // Summary:
 //
-// Queries information about an acceleration region.
+// Returns the configuration of a specified acceleration region, including its accelerated IP addresses.
 //
 // @param request - DescribeIpSetRequest
 //
@@ -6834,11 +6889,11 @@ func (client *Client) DescribeIpSet(request *DescribeIpSetRequest) (_result *Des
 
 // Summary:
 //
-// Queries configuration information about a listener of a Global Accelerator (GA) instance.
+// Describes the configurations of a specific listener.
 //
 // Description:
 //
-// This operation is used to query configuration information about a listener of a GA instance. The information includes the routing type of the listener, the status of the listener, the timestamp that indicates when the listener was created, and the listener ports.
+// This operation queries the configuration of a specified listener, such as its routing type, status, creation timestamp, and port information.
 //
 // @param request - DescribeListenerRequest
 //
@@ -6886,11 +6941,11 @@ func (client *Client) DescribeListenerWithOptions(request *DescribeListenerReque
 
 // Summary:
 //
-// Queries configuration information about a listener of a Global Accelerator (GA) instance.
+// Describes the configurations of a specific listener.
 //
 // Description:
 //
-// This operation is used to query configuration information about a listener of a GA instance. The information includes the routing type of the listener, the status of the listener, the timestamp that indicates when the listener was created, and the listener ports.
+// This operation queries the configuration of a specified listener, such as its routing type, status, creation timestamp, and port information.
 //
 // @param request - DescribeListenerRequest
 //
@@ -7044,17 +7099,17 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Disassociates a Global Accelerator (GA) instance from an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Call the DetachDdosFromAccelerator operation to detach an Anti-DDoS Pro or Anti-DDoS Premium instance from a Global Accelerator instance.
 //
 // Description:
 //
-//	  The **DetachDdosFromAccelerator*	- operation is asynchronous. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) or [ListAccelerators](https://help.aliyun.com/document_detail/153236.html) operation to query the status of the GA instance.
+// - **DetachDdosFromAccelerator*	- is an asynchronous operation. After you send a request, the system returns a request ID and performs the operation in the background. The Anti-DDoS Pro or Anti-DDoS Premium instance is not immediately detached. You can call [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) or [ListAccelerators](https://help.aliyun.com/document_detail/153236.html) to query the state of the Global Accelerator instance:
 //
-//	    	- If the GA instance is in the **configuring*	- state, the Anti-DDoS Pro/Premium instance is being disassociated from the GA instance. In this case, you can perform only query operations.
+//   - If the Global Accelerator instance is in the **configuring*	- state, the Anti-DDoS Pro or Anti-DDoS Premium instance is being detached. In this state, you can only perform query operations.
 //
-//	    	- If the GA instance is in the **active*	- state, the Anti-DDoS Pro/Premium instance is disassociated from the GA instance.
+//   - If the Global Accelerator instance is in the **active*	- state, the Anti-DDoS Pro or Anti-DDoS Premium instance is detached.
 //
-//		- **DetachDdosFromAccelerator*	- cannot be repeatedly called for the same GA instance within a specific period of time.
+// - The **DetachDdosFromAccelerator*	- operation does not support concurrent requests to detach Anti-DDoS instances from the same Global Accelerator instance.
 //
 // @param request - DetachDdosFromAcceleratorRequest
 //
@@ -7110,17 +7165,17 @@ func (client *Client) DetachDdosFromAcceleratorWithOptions(request *DetachDdosFr
 
 // Summary:
 //
-// Disassociates a Global Accelerator (GA) instance from an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Call the DetachDdosFromAccelerator operation to detach an Anti-DDoS Pro or Anti-DDoS Premium instance from a Global Accelerator instance.
 //
 // Description:
 //
-//	  The **DetachDdosFromAccelerator*	- operation is asynchronous. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) or [ListAccelerators](https://help.aliyun.com/document_detail/153236.html) operation to query the status of the GA instance.
+// - **DetachDdosFromAccelerator*	- is an asynchronous operation. After you send a request, the system returns a request ID and performs the operation in the background. The Anti-DDoS Pro or Anti-DDoS Premium instance is not immediately detached. You can call [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) or [ListAccelerators](https://help.aliyun.com/document_detail/153236.html) to query the state of the Global Accelerator instance:
 //
-//	    	- If the GA instance is in the **configuring*	- state, the Anti-DDoS Pro/Premium instance is being disassociated from the GA instance. In this case, you can perform only query operations.
+//   - If the Global Accelerator instance is in the **configuring*	- state, the Anti-DDoS Pro or Anti-DDoS Premium instance is being detached. In this state, you can only perform query operations.
 //
-//	    	- If the GA instance is in the **active*	- state, the Anti-DDoS Pro/Premium instance is disassociated from the GA instance.
+//   - If the Global Accelerator instance is in the **active*	- state, the Anti-DDoS Pro or Anti-DDoS Premium instance is detached.
 //
-//		- **DetachDdosFromAccelerator*	- cannot be repeatedly called for the same GA instance within a specific period of time.
+// - The **DetachDdosFromAccelerator*	- operation does not support concurrent requests to detach Anti-DDoS instances from the same Global Accelerator instance.
 //
 // @param request - DetachDdosFromAcceleratorRequest
 //
@@ -7384,7 +7439,7 @@ func (client *Client) DisableApplicationMonitor(request *DisableApplicationMonit
 
 // Summary:
 //
-// 解绑GA集成云产品
+// # Detach integrated cloud product from GA
 //
 // @param request - DisassociateResourcesRequest
 //
@@ -7448,7 +7503,7 @@ func (client *Client) DisassociateResourcesWithOptions(request *DisassociateReso
 
 // Summary:
 //
-// 解绑GA集成云产品
+// # Detach integrated cloud product from GA
 //
 // @param request - DisassociateResourcesRequest
 //
@@ -7876,7 +7931,7 @@ func (client *Client) GetBasicAccelerateIp(request *GetBasicAccelerateIpRequest)
 
 // Summary:
 //
-// Queries whether the accelerated IP address of a basic Global Accelerator (GA) instance is associated with an endpoint.
+// Queries the attachment information of an accelerated IP address or endpoint of a basic Global Accelerator (GA) instance.
 //
 // @param request - GetBasicAccelerateIpEndpointRelationRequest
 //
@@ -7936,7 +7991,7 @@ func (client *Client) GetBasicAccelerateIpEndpointRelationWithOptions(request *G
 
 // Summary:
 //
-// Queries whether the accelerated IP address of a basic Global Accelerator (GA) instance is associated with an endpoint.
+// Queries the attachment information of an accelerated IP address or endpoint of a basic Global Accelerator (GA) instance.
 //
 // @param request - GetBasicAccelerateIpEndpointRelationRequest
 //
@@ -7954,7 +8009,7 @@ func (client *Client) GetBasicAccelerateIpEndpointRelation(request *GetBasicAcce
 
 // Summary:
 //
-// Queries the number of idle accelerated IP addresses of a Global Accelerator (GA) instance.
+// Invokes the GetBasicAccelerateIpIdleCount operation to query the number of idle accelerated IP addresses of a basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - GetBasicAccelerateIpIdleCountRequest
 //
@@ -8006,7 +8061,7 @@ func (client *Client) GetBasicAccelerateIpIdleCountWithOptions(request *GetBasic
 
 // Summary:
 //
-// Queries the number of idle accelerated IP addresses of a Global Accelerator (GA) instance.
+// Invokes the GetBasicAccelerateIpIdleCount operation to query the number of idle accelerated IP addresses of a basic Alibaba Cloud Global Accelerator (GA) instance.
 //
 // @param request - GetBasicAccelerateIpIdleCountRequest
 //
@@ -8300,7 +8355,7 @@ func (client *Client) GetBasicIpSet(request *GetBasicIpSetRequest) (_result *Get
 
 // Summary:
 //
-// 获取GA实例关联的云产品
+// # Obtain the cloud products associated with a Global Accelerator (GA) instance
 //
 // @param request - GetGlobalAcceleratorResourcesRequest
 //
@@ -8360,7 +8415,7 @@ func (client *Client) GetGlobalAcceleratorResourcesWithOptions(request *GetGloba
 
 // Summary:
 //
-// 获取GA实例关联的云产品
+// # Obtain the cloud products associated with a Global Accelerator (GA) instance
 //
 // @param request - GetGlobalAcceleratorResourcesRequest
 //
@@ -8456,7 +8511,7 @@ func (client *Client) GetHealthStatus(request *GetHealthStatusRequest) (_result 
 
 // Summary:
 //
-// Queries the number of invalid domain names.
+// Calls the GetInvalidDomainCount operation to retrieve the total number of invalid domain names.
 //
 // @param request - GetInvalidDomainCountRequest
 //
@@ -8500,7 +8555,7 @@ func (client *Client) GetInvalidDomainCountWithOptions(request *GetInvalidDomain
 
 // Summary:
 //
-// Queries the number of invalid domain names.
+// Calls the GetInvalidDomainCount operation to retrieve the total number of invalid domain names.
 //
 // @param request - GetInvalidDomainCountRequest
 //
@@ -8519,6 +8574,10 @@ func (client *Client) GetInvalidDomainCount(request *GetInvalidDomainCountReques
 // Summary:
 //
 // Queries the maximum bandwidth of an acceleration area.
+//
+// Description:
+//
+// 本接口用于查询带宽计费方式为**按带宽**的标准型全球加速实例各加速地域的带宽峰值限额，即全球加速实例所绑定基础带宽包的带宽值。
 //
 // @param request - GetIpsetsBandwidthLimitRequest
 //
@@ -8568,6 +8627,10 @@ func (client *Client) GetIpsetsBandwidthLimitWithOptions(request *GetIpsetsBandw
 //
 // Queries the maximum bandwidth of an acceleration area.
 //
+// Description:
+//
+// 本接口用于查询带宽计费方式为**按带宽**的标准型全球加速实例各加速地域的带宽峰值限额，即全球加速实例所绑定基础带宽包的带宽值。
+//
 // @param request - GetIpsetsBandwidthLimitRequest
 //
 // @return GetIpsetsBandwidthLimitResponse
@@ -8584,7 +8647,7 @@ func (client *Client) GetIpsetsBandwidthLimit(request *GetIpsetsBandwidthLimitRe
 
 // Summary:
 //
-// Queries the status of a secondary IP address that is associated with a CNAME.
+// Queries the status of a CNAME spare IP address.
 //
 // @param request - GetSpareIpRequest
 //
@@ -8644,7 +8707,7 @@ func (client *Client) GetSpareIpWithOptions(request *GetSpareIpRequest, runtime 
 
 // Summary:
 //
-// Queries the status of a secondary IP address that is associated with a CNAME.
+// Queries the status of a CNAME spare IP address.
 //
 // @param request - GetSpareIpRequest
 //
@@ -8724,7 +8787,7 @@ func (client *Client) ListAccelerateAreas(request *ListAccelerateAreasRequest) (
 
 // Summary:
 //
-// Queries Global Accelerator (GA) instances.
+// Queries a list of Global Accelerator instances.
 //
 // @param request - ListAcceleratorsRequest
 //
@@ -8792,7 +8855,7 @@ func (client *Client) ListAcceleratorsWithOptions(request *ListAcceleratorsReque
 
 // Summary:
 //
-// Queries Global Accelerator (GA) instances.
+// Queries a list of Global Accelerator instances.
 //
 // @param request - ListAcceleratorsRequest
 //
@@ -9056,7 +9119,7 @@ func (client *Client) ListApplicationMonitorDetectResult(request *ListApplicatio
 
 // Summary:
 //
-// Queries available acceleration regions.
+// You can call the ListAvailableAccelerateAreas operation to query available acceleration areas.
 //
 // @param request - ListAvailableAccelerateAreasRequest
 //
@@ -9108,7 +9171,7 @@ func (client *Client) ListAvailableAccelerateAreasWithOptions(request *ListAvail
 
 // Summary:
 //
-// Queries available acceleration regions.
+// You can call the ListAvailableAccelerateAreas operation to query available acceleration areas.
 //
 // @param request - ListAvailableAccelerateAreasRequest
 //
@@ -9282,11 +9345,11 @@ func (client *Client) ListBandwidthPackages(request *ListBandwidthPackagesReques
 
 // Summary:
 //
-// Queries bandwidth plans.
+// Queries a list of bandwidth plans.
 //
 // Description:
 //
-// To query the detailed information about a bandwidth plan, call the **ListBandwidthPackages*	- operation. For more information, see [ListBandwidthPackages](https://help.aliyun.com/document_detail/2253239.html).
+// This operation is deprecated. Use [ListBandwidthPackages](https://help.aliyun.com/document_detail/2253239.html) instead.
 //
 // @param request - ListBandwidthackagesRequest
 //
@@ -9338,11 +9401,11 @@ func (client *Client) ListBandwidthackagesWithOptions(request *ListBandwidthacka
 
 // Summary:
 //
-// Queries bandwidth plans.
+// Queries a list of bandwidth plans.
 //
 // Description:
 //
-// To query the detailed information about a bandwidth plan, call the **ListBandwidthPackages*	- operation. For more information, see [ListBandwidthPackages](https://help.aliyun.com/document_detail/2253239.html).
+// This operation is deprecated. Use [ListBandwidthPackages](https://help.aliyun.com/document_detail/2253239.html) instead.
 //
 // @param request - ListBandwidthackagesRequest
 //
@@ -9770,11 +9833,11 @@ func (client *Client) ListBusiRegions(request *ListBusiRegionsRequest) (_result 
 
 // Summary:
 //
-// Queries available acceleration areas and regions.
+// Queries the available acceleration areas and regions by calling the ListCommonAreas operation.
 //
 // Description:
 //
-// You can call this operation to query the acceleration areas and regions that you can specify on the wizard page of Global Accelerator (GA) and for free-trial GA instances. You can filter acceleration areas and regions based on specified conditions.
+// This operation is used to query the available acceleration areas and regions for the intelligent recommendation and free trial on the Global Accelerator wizard page. You can filter results based on specified conditions.
 //
 // @param request - ListCommonAreasRequest
 //
@@ -9826,11 +9889,11 @@ func (client *Client) ListCommonAreasWithOptions(request *ListCommonAreasRequest
 
 // Summary:
 //
-// Queries available acceleration areas and regions.
+// Queries the available acceleration areas and regions by calling the ListCommonAreas operation.
 //
 // Description:
 //
-// You can call this operation to query the acceleration areas and regions that you can specify on the wizard page of Global Accelerator (GA) and for free-trial GA instances. You can filter acceleration areas and regions based on specified conditions.
+// This operation is used to query the available acceleration areas and regions for the intelligent recommendation and free trial on the Global Accelerator wizard page. You can filter results based on specified conditions.
 //
 // @param request - ListCommonAreasRequest
 //
@@ -9848,7 +9911,7 @@ func (client *Client) ListCommonAreas(request *ListCommonAreasRequest) (_result 
 
 // Summary:
 //
-// Queries endpoint group mapping configurations of a custom routing listener of a Global Accelerator (GA) instance.
+// Invokes the ListCustomRoutingEndpointGroupDestinations operation to query the destination configurations of an endpoint group for a custom route listener.
 //
 // @param request - ListCustomRoutingEndpointGroupDestinationsRequest
 //
@@ -9924,7 +9987,7 @@ func (client *Client) ListCustomRoutingEndpointGroupDestinationsWithOptions(requ
 
 // Summary:
 //
-// Queries endpoint group mapping configurations of a custom routing listener of a Global Accelerator (GA) instance.
+// Invokes the ListCustomRoutingEndpointGroupDestinations operation to query the destination configurations of an endpoint group for a custom route listener.
 //
 // @param request - ListCustomRoutingEndpointGroupDestinationsRequest
 //
@@ -10040,7 +10103,7 @@ func (client *Client) ListCustomRoutingEndpointGroups(request *ListCustomRouting
 
 // Summary:
 //
-// Queries the traffic policies of an endpoint that belongs to a custom routing listener.
+// Invokes the ListCustomRoutingEndpointTrafficPolicies operation to query the list of endpoint traffic policies for a custom routing type listener.
 //
 // @param request - ListCustomRoutingEndpointTrafficPoliciesRequest
 //
@@ -10112,7 +10175,7 @@ func (client *Client) ListCustomRoutingEndpointTrafficPoliciesWithOptions(reques
 
 // Summary:
 //
-// Queries the traffic policies of an endpoint that belongs to a custom routing listener.
+// Invokes the ListCustomRoutingEndpointTrafficPolicies operation to query the list of endpoint traffic policies for a custom routing type listener.
 //
 // @param request - ListCustomRoutingEndpointTrafficPoliciesRequest
 //
@@ -10216,7 +10279,7 @@ func (client *Client) ListCustomRoutingEndpoints(request *ListCustomRoutingEndpo
 //
 // Description:
 //
-// After you configure a custom routing listener for a Global Accelerator (GA) instance, the instance generates a port mapping table based on the listener port range, backend service protocols and port ranges of the associated endpoint groups, and IP addresses of endpoints (vSwitches). The custom routing listener forwards client requests to specified IP addresses and ports in the vSwitches based on the port mapping table. This operation is used to query the generated port mapping table.
+// After you configure a custom routing listener and an endpoint group, the Global Accelerator (GA) instance generates a port mapping table. This table is based on the listener port range, the protocols and port ranges of the destination endpoint group, and the IP addresses of the endpoints (vSwitches). A custom routing listener uses this port mapping table to deterministically route traffic to specific IP addresses and ports in a vSwitch. This operation queries the generated port mapping table.
 //
 // @param request - ListCustomRoutingPortMappingsRequest
 //
@@ -10284,7 +10347,7 @@ func (client *Client) ListCustomRoutingPortMappingsWithOptions(request *ListCust
 //
 // Description:
 //
-// After you configure a custom routing listener for a Global Accelerator (GA) instance, the instance generates a port mapping table based on the listener port range, backend service protocols and port ranges of the associated endpoint groups, and IP addresses of endpoints (vSwitches). The custom routing listener forwards client requests to specified IP addresses and ports in the vSwitches based on the port mapping table. This operation is used to query the generated port mapping table.
+// After you configure a custom routing listener and an endpoint group, the Global Accelerator (GA) instance generates a port mapping table. This table is based on the listener port range, the protocols and port ranges of the destination endpoint group, and the IP addresses of the endpoints (vSwitches). A custom routing listener uses this port mapping table to deterministically route traffic to specific IP addresses and ports in a vSwitch. This operation queries the generated port mapping table.
 //
 // @param request - ListCustomRoutingPortMappingsRequest
 //
@@ -10302,7 +10365,7 @@ func (client *Client) ListCustomRoutingPortMappings(request *ListCustomRoutingPo
 
 // Summary:
 //
-// Queries the port mapping table of a specified backend instance that is associated with a custom routing listener.
+// Call the ListCustomRoutingPortMappingsByDestination operation to query the port mappings of a specified backend instance for a custom route listener.
 //
 // @param request - ListCustomRoutingPortMappingsByDestinationRequest
 //
@@ -10362,7 +10425,7 @@ func (client *Client) ListCustomRoutingPortMappingsByDestinationWithOptions(requ
 
 // Summary:
 //
-// Queries the port mapping table of a specified backend instance that is associated with a custom routing listener.
+// Call the ListCustomRoutingPortMappingsByDestination operation to query the port mappings of a specified backend instance for a custom route listener.
 //
 // @param request - ListCustomRoutingPortMappingsByDestinationRequest
 //
@@ -10532,7 +10595,7 @@ func (client *Client) ListEndpointGroupIpAddressCidrBlocks(request *ListEndpoint
 
 // Summary:
 //
-// Queries a list of endpoint groups.
+// Lists endpoint groups.
 //
 // @param request - ListEndpointGroupsRequest
 //
@@ -10557,6 +10620,10 @@ func (client *Client) ListEndpointGroupsWithOptions(request *ListEndpointGroupsR
 
 	if !dara.IsNil(request.EndpointGroupId) {
 		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !dara.IsNil(request.EndpointGroupRegion) {
+		query["EndpointGroupRegion"] = request.EndpointGroupRegion
 	}
 
 	if !dara.IsNil(request.EndpointGroupType) {
@@ -10608,7 +10675,7 @@ func (client *Client) ListEndpointGroupsWithOptions(request *ListEndpointGroupsR
 
 // Summary:
 //
-// Queries a list of endpoint groups.
+// Lists endpoint groups.
 //
 // @param request - ListEndpointGroupsRequest
 //
@@ -10630,7 +10697,7 @@ func (client *Client) ListEndpointGroups(request *ListEndpointGroupsRequest) (_r
 //
 // Description:
 //
-// >  This operation is used to query only custom forwarding rules, not the default forwarding rule.
+// > Queries only custom forwarding rules. The default forwarding rule is not included in the results.
 //
 // @param request - ListForwardingRulesRequest
 //
@@ -10702,7 +10769,7 @@ func (client *Client) ListForwardingRulesWithOptions(request *ListForwardingRule
 //
 // Description:
 //
-// >  This operation is used to query only custom forwarding rules, not the default forwarding rule.
+// > Queries only custom forwarding rules. The default forwarding rule is not included in the results.
 //
 // @param request - ListForwardingRulesRequest
 //
@@ -10946,11 +11013,11 @@ func (client *Client) ListListenerCertificates(request *ListListenerCertificates
 
 // Summary:
 //
-// Queries the listeners of a Global Accelerator (GA) instance.
+// Retrieves a list of listeners.
 //
 // Description:
 //
-// This operation is used to query information about the listeners of a GA instance, including the status of each listener, the timestamp that indicates when each listener was created, and the listener ports.
+// This operation retrieves the listeners of a Global Accelerator instance. The response includes the routing type, status, creation timestamp, and port details for each listener.
 //
 // @param request - ListListenersRequest
 //
@@ -11010,11 +11077,11 @@ func (client *Client) ListListenersWithOptions(request *ListListenersRequest, ru
 
 // Summary:
 //
-// Queries the listeners of a Global Accelerator (GA) instance.
+// Retrieves a list of listeners.
 //
 // Description:
 //
-// This operation is used to query information about the listeners of a GA instance, including the status of each listener, the timestamp that indicates when each listener was created, and the listener ports.
+// This operation retrieves the listeners of a Global Accelerator instance. The response includes the routing type, status, creation timestamp, and port details for each listener.
 //
 // @param request - ListListenersRequest
 //
@@ -11782,17 +11849,17 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Modifies a Global Accelerator (GA) instance.
+// Use the UpdateAccelerator operation to modify a Global Accelerator instance.
 //
 // Description:
 //
-//	  **UpdateAccelerator*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation to query the status of a GA instance.
+// - **UpdateAccelerator*	- is an asynchronous operation. After you send a request, the system returns a request ID and performs the modification in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation to query the state of a Global Accelerator (GA) instance:
 //
-//	    	- If the GA instance is in the **configuring*	- state, the GA instance is being modified. In this case, you can perform only query operations.
+//   - If the GA instance is in the **configuring*	- state, the instance is being modified. In this state, you can only perform query operations.
 //
-//	    	- If the GA instance is in the **active*	- state, the GA instance is modified.
+//   - If the GA instance is in the **active*	- state, the modification is complete.
 //
-//		- The **UpdateAccelerator*	- operation cannot be repeatedly called for the same GA instance within a specific period of time.
+// - You cannot call the **UpdateAccelerator*	- operation concurrently on the same GA instance.
 //
 // @param request - UpdateAcceleratorRequest
 //
@@ -11868,17 +11935,17 @@ func (client *Client) UpdateAcceleratorWithOptions(request *UpdateAcceleratorReq
 
 // Summary:
 //
-// Modifies a Global Accelerator (GA) instance.
+// Use the UpdateAccelerator operation to modify a Global Accelerator instance.
 //
 // Description:
 //
-//	  **UpdateAccelerator*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation to query the status of a GA instance.
+// - **UpdateAccelerator*	- is an asynchronous operation. After you send a request, the system returns a request ID and performs the modification in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation to query the state of a Global Accelerator (GA) instance:
 //
-//	    	- If the GA instance is in the **configuring*	- state, the GA instance is being modified. In this case, you can perform only query operations.
+//   - If the GA instance is in the **configuring*	- state, the instance is being modified. In this state, you can only perform query operations.
 //
-//	    	- If the GA instance is in the **active*	- state, the GA instance is modified.
+//   - If the GA instance is in the **active*	- state, the modification is complete.
 //
-//		- The **UpdateAccelerator*	- operation cannot be repeatedly called for the same GA instance within a specific period of time.
+// - You cannot call the **UpdateAccelerator*	- operation concurrently on the same GA instance.
 //
 // @param request - UpdateAcceleratorRequest
 //
@@ -11896,11 +11963,11 @@ func (client *Client) UpdateAccelerator(request *UpdateAcceleratorRequest) (_res
 
 // Summary:
 //
-// Modifies the auto-renewal settings of a Global Accelerator (GA) instance.
+// You can call the UpdateAcceleratorAutoRenewAttribute operation to modify the auto-renewal property of a Global Accelerator instance.
 //
 // Description:
 //
-// You cannot repeatedly call the **UpdateAcceleratorAutoRenewAttribute*	- operation for the same GA instance within a specific period of time.
+// The **UpdateAcceleratorAutoRenewAttribute*	- operation does not support concurrent modifications to the auto-renewal property of the same Global Accelerator instance.
 //
 // @param request - UpdateAcceleratorAutoRenewAttributeRequest
 //
@@ -11968,11 +12035,11 @@ func (client *Client) UpdateAcceleratorAutoRenewAttributeWithOptions(request *Up
 
 // Summary:
 //
-// Modifies the auto-renewal settings of a Global Accelerator (GA) instance.
+// You can call the UpdateAcceleratorAutoRenewAttribute operation to modify the auto-renewal property of a Global Accelerator instance.
 //
 // Description:
 //
-// You cannot repeatedly call the **UpdateAcceleratorAutoRenewAttribute*	- operation for the same GA instance within a specific period of time.
+// The **UpdateAcceleratorAutoRenewAttribute*	- operation does not support concurrent modifications to the auto-renewal property of the same Global Accelerator instance.
 //
 // @param request - UpdateAcceleratorAutoRenewAttributeRequest
 //
@@ -12084,11 +12151,11 @@ func (client *Client) UpdateAcceleratorConfirm(request *UpdateAcceleratorConfirm
 //
 // Description:
 //
-// You can call this operation to change the type of transmission network for a **standard*	- GA instance whose bandwidth metering method is **pay-by-data-transfer**. Before you call this operation, make sure that the following requirements are met:
+// Changes the type of transmission network for a **standard*	- GA instance whose bandwidth metering method is **pay-by-data-transfer**. Before you call this operation, make sure that the following requirements are met:
 //
-//   - Cloud Data Transfer (CDT) is activated. When you call the [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html) operation and set **BandwidthBillingType*	- to **CDT*	- to create a **standard*	- GA instance whose bandwidth metering method is **pay-by-data-transfer**, CDT is automatically activated. The data transfer fees are managed by CDT.
+// - Cloud Data Transfer (CDT) is activated. When you call the [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html) operation and set **BandwidthBillingType*	- to **CDT*	- to create a **standard*	- GA instance whose bandwidth metering method is **pay-by-data-transfer**, CDT is automatically activated. The data transfer fees are managed by CDT.
 //
-//   - If you want to set **CrossBorderMode*	- to **private**, which specifies cross-border Express Connect circuit as the type of transmission network, make sure that real-name verification is complete for your enterprise account. For more information, see [Real-name verification](https://help.aliyun.com/document_detail/52595.html).
+// - If you want to set **CrossBorderMode*	- to **private**, which specifies cross-border Express Connect circuit as the type of transmission network, make sure that real-name verification is complete for your enterprise account. For more information, see [Real-name verification](https://help.aliyun.com/document_detail/52595.html).
 //
 // @param request - UpdateAcceleratorCrossBorderModeRequest
 //
@@ -12148,11 +12215,11 @@ func (client *Client) UpdateAcceleratorCrossBorderModeWithOptions(request *Updat
 //
 // Description:
 //
-// You can call this operation to change the type of transmission network for a **standard*	- GA instance whose bandwidth metering method is **pay-by-data-transfer**. Before you call this operation, make sure that the following requirements are met:
+// Changes the type of transmission network for a **standard*	- GA instance whose bandwidth metering method is **pay-by-data-transfer**. Before you call this operation, make sure that the following requirements are met:
 //
-//   - Cloud Data Transfer (CDT) is activated. When you call the [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html) operation and set **BandwidthBillingType*	- to **CDT*	- to create a **standard*	- GA instance whose bandwidth metering method is **pay-by-data-transfer**, CDT is automatically activated. The data transfer fees are managed by CDT.
+// - Cloud Data Transfer (CDT) is activated. When you call the [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html) operation and set **BandwidthBillingType*	- to **CDT*	- to create a **standard*	- GA instance whose bandwidth metering method is **pay-by-data-transfer**, CDT is automatically activated. The data transfer fees are managed by CDT.
 //
-//   - If you want to set **CrossBorderMode*	- to **private**, which specifies cross-border Express Connect circuit as the type of transmission network, make sure that real-name verification is complete for your enterprise account. For more information, see [Real-name verification](https://help.aliyun.com/document_detail/52595.html).
+// - If you want to set **CrossBorderMode*	- to **private**, which specifies cross-border Express Connect circuit as the type of transmission network, make sure that real-name verification is complete for your enterprise account. For more information, see [Real-name verification](https://help.aliyun.com/document_detail/52595.html).
 //
 // @param request - UpdateAcceleratorCrossBorderModeRequest
 //
@@ -12174,7 +12241,7 @@ func (client *Client) UpdateAcceleratorCrossBorderMode(request *UpdateAccelerato
 //
 // Description:
 //
-// You can call this operation to enable or disable cross-border data transmission for basic or standard GA instances that use Cloud Data Transfer (CDT) to bill data transfers.
+// Enables or disables cross-border data transmission for basic or standard GA instances that use Cloud Data Transfer (CDT) to bill data transfers.
 //
 // @param request - UpdateAcceleratorCrossBorderStatusRequest
 //
@@ -12234,7 +12301,7 @@ func (client *Client) UpdateAcceleratorCrossBorderStatusWithOptions(request *Upd
 //
 // Description:
 //
-// You can call this operation to enable or disable cross-border data transmission for basic or standard GA instances that use Cloud Data Transfer (CDT) to bill data transfers.
+// Enables or disables cross-border data transmission for basic or standard GA instances that use Cloud Data Transfer (CDT) to bill data transfers.
 //
 // @param request - UpdateAcceleratorCrossBorderStatusRequest
 //
@@ -12440,15 +12507,15 @@ func (client *Client) UpdateAdditionalCertificateWithListener(request *UpdateAdd
 
 // Summary:
 //
-// Modifies an origin probing task.
+// Modifies the configuration of an origin probing task by calling the UpdateApplicationMonitor operation.
 //
 // Description:
 //
-// *UpdateApplicationMonitor*	- is an asynchronous operation. After you send a request, the system returns a request ID, but this operation is still being performed in the system background. You can call the [DescribeApplicationMonitor](https://help.aliyun.com/document_detail/408463.html) or [ListApplicationMonitor](https://help.aliyun.com/document_detail/408462.html) operation to check whether the configurations of an origin probing task are modified.
+// *UpdateApplicationMonitor*	- is an asynchronous operation. After you call this operation, the system returns a request ID, but the origin probing task is not yet modified. The modification task continues to run in the background. You can call [DescribeApplicationMonitor](https://help.aliyun.com/document_detail/408463.html) or [ListApplicationMonitor](https://help.aliyun.com/document_detail/408462.html) to check whether the origin probing task configuration has been modified:
 //
-//   - If the values of modified parameters remain unchanged, it indicates that the origin probing task is being modified. In this case, you can perform only query operations.
+// - If the modified parameter values have not changed, the origin probing task is still being modified. In this case, you can only perform query operations and cannot perform other operations.
 //
-//   - If the values of modified parameters change, it indicates that the origin probing task is modified.
+// - If the modified parameter values have changed, the origin probing task has been modified.
 //
 // @param request - UpdateApplicationMonitorRequest
 //
@@ -12532,15 +12599,15 @@ func (client *Client) UpdateApplicationMonitorWithOptions(request *UpdateApplica
 
 // Summary:
 //
-// Modifies an origin probing task.
+// Modifies the configuration of an origin probing task by calling the UpdateApplicationMonitor operation.
 //
 // Description:
 //
-// *UpdateApplicationMonitor*	- is an asynchronous operation. After you send a request, the system returns a request ID, but this operation is still being performed in the system background. You can call the [DescribeApplicationMonitor](https://help.aliyun.com/document_detail/408463.html) or [ListApplicationMonitor](https://help.aliyun.com/document_detail/408462.html) operation to check whether the configurations of an origin probing task are modified.
+// *UpdateApplicationMonitor*	- is an asynchronous operation. After you call this operation, the system returns a request ID, but the origin probing task is not yet modified. The modification task continues to run in the background. You can call [DescribeApplicationMonitor](https://help.aliyun.com/document_detail/408463.html) or [ListApplicationMonitor](https://help.aliyun.com/document_detail/408462.html) to check whether the origin probing task configuration has been modified:
 //
-//   - If the values of modified parameters remain unchanged, it indicates that the origin probing task is being modified. In this case, you can perform only query operations.
+// - If the modified parameter values have not changed, the origin probing task is still being modified. In this case, you can only perform query operations and cannot perform other operations.
 //
-//   - If the values of modified parameters change, it indicates that the origin probing task is modified.
+// - If the modified parameter values have changed, the origin probing task has been modified.
 //
 // @param request - UpdateApplicationMonitorRequest
 //
@@ -12652,27 +12719,27 @@ func (client *Client) UpdateBandwidthPackagaAutoRenewAttribute(request *UpdateBa
 
 // Summary:
 //
-// Modifies the configurations of a bandwidth plan.
+// You can call the UpdateBandwidthPackage operation to modify the configuration of a bandwidth plan.
 //
 // Description:
 //
-// Take note of the following items:
+// Before you call this operation, note the following:
 //
-//   - **UpdateBandwidthPackage*	- is a synchronous operation when you call the operation to modify the configuration excluding the bandwidth value of a bandwidth plan. The new configuration immediately takes effect after the operation is performed.
+// - If you do not change the bandwidth value, **UpdateBandwidthPackage*	- is a synchronous operation. The modification takes effect immediately.
 //
-//   - **UpdateBandwidthPackage*	- is an asynchronous operation when you call the operation to modify the configuration including the bandwidth value of a bandwidth plan that is not associated with a Global Accelerator (GA) instance. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) operation to query the status of the task.
+// - If you change the bandwidth value of a bandwidth plan that is not associated with a Global Accelerator (GA) instance, **UpdateBandwidthPackage*	- is an asynchronous operation. The system returns a request ID, but the modification is not complete. The system performs the task in the background. You can call the [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) operation to query whether the configuration of the bandwidth plan is modified:
 //
-//   - If the parameter values of the bandwidth plan remain unchanged, the bandwidth plan is being modified. In this case, you can perform only query operations.
+//   - If the values of the parameters that you want to modify remain unchanged, the bandwidth plan is being modified. In this case, you can only perform query operations.
 //
-//   - If the parameter values of the bandwidth plan are changed, the bandwidth plan is modified.
+//   - If the values of the parameters that you want to modify have changed, the modification is complete.
 //
-//   - **UpdateBandwidthPackage*	- is an asynchronous operation when you call the operation to modify the configuration including the bandwidth value of a bandwidth plan that is associated with a GA instance. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation to query the status of the task.
+// - If you change the bandwidth value of a bandwidth plan that is associated with a GA instance, **UpdateBandwidthPackage*	- is an asynchronous operation. The system returns a request ID, but the modification is not complete. The system performs the task in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation and query the status of the GA instance to check whether the bandwidth plan is modified:
 //
-//   - If the GA instance is in the **configuring*	- state, the bandwidth plan is being modified. In this case, you can perform only query operations.
+//   - If the GA instance is in the **configuring*	- state, the bandwidth plan that is associated with the GA instance is being modified. In this case, you can only perform query operations.
 //
-//   - If the GA instance is in the **active*	- state, the bandwidth plan is modified.
+//   - If the GA instance is in the **active*	- state, the bandwidth plan that is associated with the GA instance has been modified.
 //
-//   - You cannot repeatedly call the **UpdateBandwidthPackage*	- operation for the same bandwidth plan within a specific period of time.
+// - You cannot repeatedly call the **UpdateBandwidthPackage*	- operation to modify the configuration of the same bandwidth plan.
 //
 // @param request - UpdateBandwidthPackageRequest
 //
@@ -12744,27 +12811,27 @@ func (client *Client) UpdateBandwidthPackageWithOptions(request *UpdateBandwidth
 
 // Summary:
 //
-// Modifies the configurations of a bandwidth plan.
+// You can call the UpdateBandwidthPackage operation to modify the configuration of a bandwidth plan.
 //
 // Description:
 //
-// Take note of the following items:
+// Before you call this operation, note the following:
 //
-//   - **UpdateBandwidthPackage*	- is a synchronous operation when you call the operation to modify the configuration excluding the bandwidth value of a bandwidth plan. The new configuration immediately takes effect after the operation is performed.
+// - If you do not change the bandwidth value, **UpdateBandwidthPackage*	- is a synchronous operation. The modification takes effect immediately.
 //
-//   - **UpdateBandwidthPackage*	- is an asynchronous operation when you call the operation to modify the configuration including the bandwidth value of a bandwidth plan that is not associated with a Global Accelerator (GA) instance. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) operation to query the status of the task.
+// - If you change the bandwidth value of a bandwidth plan that is not associated with a Global Accelerator (GA) instance, **UpdateBandwidthPackage*	- is an asynchronous operation. The system returns a request ID, but the modification is not complete. The system performs the task in the background. You can call the [DescribeBandwidthPackage](https://help.aliyun.com/document_detail/153241.html) operation to query whether the configuration of the bandwidth plan is modified:
 //
-//   - If the parameter values of the bandwidth plan remain unchanged, the bandwidth plan is being modified. In this case, you can perform only query operations.
+//   - If the values of the parameters that you want to modify remain unchanged, the bandwidth plan is being modified. In this case, you can only perform query operations.
 //
-//   - If the parameter values of the bandwidth plan are changed, the bandwidth plan is modified.
+//   - If the values of the parameters that you want to modify have changed, the modification is complete.
 //
-//   - **UpdateBandwidthPackage*	- is an asynchronous operation when you call the operation to modify the configuration including the bandwidth value of a bandwidth plan that is associated with a GA instance. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation to query the status of the task.
+// - If you change the bandwidth value of a bandwidth plan that is associated with a GA instance, **UpdateBandwidthPackage*	- is an asynchronous operation. The system returns a request ID, but the modification is not complete. The system performs the task in the background. You can call the [DescribeAccelerator](https://help.aliyun.com/document_detail/153235.html) operation and query the status of the GA instance to check whether the bandwidth plan is modified:
 //
-//   - If the GA instance is in the **configuring*	- state, the bandwidth plan is being modified. In this case, you can perform only query operations.
+//   - If the GA instance is in the **configuring*	- state, the bandwidth plan that is associated with the GA instance is being modified. In this case, you can only perform query operations.
 //
-//   - If the GA instance is in the **active*	- state, the bandwidth plan is modified.
+//   - If the GA instance is in the **active*	- state, the bandwidth plan that is associated with the GA instance has been modified.
 //
-//   - You cannot repeatedly call the **UpdateBandwidthPackage*	- operation for the same bandwidth plan within a specific period of time.
+// - You cannot repeatedly call the **UpdateBandwidthPackage*	- operation to modify the configuration of the same bandwidth plan.
 //
 // @param request - UpdateBandwidthPackageRequest
 //
@@ -12938,17 +13005,17 @@ func (client *Client) UpdateBasicEndpoint(request *UpdateBasicEndpointRequest) (
 
 // Summary:
 //
-// Modifies the configurations of an endpoint group that is associated with a basic Global Accelerator (GA) instance.
+// Updates the configurations of an endpoint group that is associated with a basic Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  **UpdateBasicEndpointGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. The system modifies the configurations of an endpoint group that is associated with a basic GA instance by deleting the endpoint group and creating a new endpoint group. You can call the [GetBasicAccelerator](https://help.aliyun.com/document_detail/353188.html) operation to query the status of the task.
+// - **UpdateBasicEndpointGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. The system modifies the configurations of an endpoint group that is associated with a basic GA instance by deleting the endpoint group and creating a new endpoint group. You can call the [GetBasicAccelerator](https://help.aliyun.com/document_detail/353188.html) operation to query the status of the task.
 //
-//	    	- If the basic GA instance is in the **configuring*	- state, the configurations of the endpoint group are being modified. In this case, you can perform only query operations.
+//   - If the basic GA instance is in the **configuring*	- state, the configurations of the endpoint group are being modified. In this case, you can perform only query operations.
 //
-//	    	- If the basic GA instance is in the **active*	- state, the configurations of the endpoint group are modified.
+//   - If the basic GA instance is in the **active*	- state, the configurations of the endpoint group are modified.
 //
-//		- The **UpdateBasicEndpointGroup*	- operation cannot be repeatedly called for the same basic GA instance within a specific period of time.
+// - The **UpdateBasicEndpointGroup*	- operation cannot be repeatedly called for the same basic GA instance within a specific period of time.
 //
 // @param request - UpdateBasicEndpointGroupRequest
 //
@@ -13020,17 +13087,17 @@ func (client *Client) UpdateBasicEndpointGroupWithOptions(request *UpdateBasicEn
 
 // Summary:
 //
-// Modifies the configurations of an endpoint group that is associated with a basic Global Accelerator (GA) instance.
+// Updates the configurations of an endpoint group that is associated with a basic Global Accelerator (GA) instance.
 //
 // Description:
 //
-//	  **UpdateBasicEndpointGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. The system modifies the configurations of an endpoint group that is associated with a basic GA instance by deleting the endpoint group and creating a new endpoint group. You can call the [GetBasicAccelerator](https://help.aliyun.com/document_detail/353188.html) operation to query the status of the task.
+// - **UpdateBasicEndpointGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. The system modifies the configurations of an endpoint group that is associated with a basic GA instance by deleting the endpoint group and creating a new endpoint group. You can call the [GetBasicAccelerator](https://help.aliyun.com/document_detail/353188.html) operation to query the status of the task.
 //
-//	    	- If the basic GA instance is in the **configuring*	- state, the configurations of the endpoint group are being modified. In this case, you can perform only query operations.
+//   - If the basic GA instance is in the **configuring*	- state, the configurations of the endpoint group are being modified. In this case, you can perform only query operations.
 //
-//	    	- If the basic GA instance is in the **active*	- state, the configurations of the endpoint group are modified.
+//   - If the basic GA instance is in the **active*	- state, the configurations of the endpoint group are modified.
 //
-//		- The **UpdateBasicEndpointGroup*	- operation cannot be repeatedly called for the same basic GA instance within a specific period of time.
+// - The **UpdateBasicEndpointGroup*	- operation cannot be repeatedly called for the same basic GA instance within a specific period of time.
 //
 // @param request - UpdateBasicEndpointGroupRequest
 //
@@ -13150,7 +13217,7 @@ func (client *Client) UpdateBasicIpSet(request *UpdateBasicIpSetRequest) (_resul
 
 // Summary:
 //
-// Modifies the name and description of an endpoint group that is associated with a custom routing listener.
+// You can call the UpdateCustomRoutingEndpointGroupAttribute operation to modify the name and description of an endpoint group associated with a custom routing listener.
 //
 // @param request - UpdateCustomRoutingEndpointGroupAttributeRequest
 //
@@ -13210,7 +13277,7 @@ func (client *Client) UpdateCustomRoutingEndpointGroupAttributeWithOptions(reque
 
 // Summary:
 //
-// Modifies the name and description of an endpoint group that is associated with a custom routing listener.
+// You can call the UpdateCustomRoutingEndpointGroupAttribute operation to modify the name and description of an endpoint group associated with a custom routing listener.
 //
 // @param request - UpdateCustomRoutingEndpointGroupAttributeRequest
 //
@@ -13518,13 +13585,13 @@ func (client *Client) UpdateCustomRoutingEndpoints(request *UpdateCustomRoutingE
 
 // Summary:
 //
-// Modifies an accelerated domain name.
+// Calls the UpdateDomain operation to update a domain name.
 //
 // Description:
 //
-// You can call this operation to modify an accelerated domain name. If the new accelerated domain name is hosted in the Chinese mainland, you must obtain an Internet content provider (ICP) number for the domain name.
+// This operation is used to update an accelerated domain name. If the new accelerated domain name is deployed in the Chinese mainland, the domain name must have obtained an ICP filing.
 //
-// You cannot call the **UpdateDomain*	- operation again by using the same Alibaba Cloud account before the previous request is completed.
+// The **UpdateDomain*	- operation does not support concurrent updates of accelerated domain names within the same account.
 //
 // @param request - UpdateDomainRequest
 //
@@ -13576,13 +13643,13 @@ func (client *Client) UpdateDomainWithOptions(request *UpdateDomainRequest, runt
 
 // Summary:
 //
-// Modifies an accelerated domain name.
+// Calls the UpdateDomain operation to update a domain name.
 //
 // Description:
 //
-// You can call this operation to modify an accelerated domain name. If the new accelerated domain name is hosted in the Chinese mainland, you must obtain an Internet content provider (ICP) number for the domain name.
+// This operation is used to update an accelerated domain name. If the new accelerated domain name is deployed in the Chinese mainland, the domain name must have obtained an ICP filing.
 //
-// You cannot call the **UpdateDomain*	- operation again by using the same Alibaba Cloud account before the previous request is completed.
+// The **UpdateDomain*	- operation does not support concurrent updates of accelerated domain names within the same account.
 //
 // @param request - UpdateDomainRequest
 //
@@ -13600,11 +13667,11 @@ func (client *Client) UpdateDomain(request *UpdateDomainRequest) (_result *Updat
 
 // Summary:
 //
-// Updates the ICP filing status of an accelerated domain name.
+// Queries and updates the ICP filing status of an accelerated domain name.
 //
 // Description:
 //
-// You can call this operation to query and update the ICP filing status of an accelerated domain name.
+// This operation queries the latest ICP filing status of an accelerated domain name and updates the status accordingly.
 //
 // The **UpdateDomainState*	- operation holds an exclusive lock on the GA instance. While the operation is in progress, you cannot call the same operation with the same Alibaba Cloud account.
 //
@@ -13654,11 +13721,11 @@ func (client *Client) UpdateDomainStateWithOptions(request *UpdateDomainStateReq
 
 // Summary:
 //
-// Updates the ICP filing status of an accelerated domain name.
+// Queries and updates the ICP filing status of an accelerated domain name.
 //
 // Description:
 //
-// You can call this operation to query and update the ICP filing status of an accelerated domain name.
+// This operation queries the latest ICP filing status of an accelerated domain name and updates the status accordingly.
 //
 // The **UpdateDomainState*	- operation holds an exclusive lock on the GA instance. While the operation is in progress, you cannot call the same operation with the same Alibaba Cloud account.
 //
@@ -13678,17 +13745,17 @@ func (client *Client) UpdateDomainState(request *UpdateDomainStateRequest) (_res
 
 // Summary:
 //
-// Modifies the configurations of an endpoint group.
+// Updates the configuration of an endpoint group.
 //
 // Description:
 //
-//	  **UpdateEndpointGroup*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) operation to query the state of an endpoint group.
+// - The **UpdateEndpointGroup*	- API is an asynchronous API. After you call this API, the system returns a request ID and starts the update in the background; the configuration is not modified immediately. Call [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) to check the status of the endpoint group:
 //
-//	    	- If the endpoint group is in the **updating*	- state, it indicates that the configurations of the endpoint group are being modified. In this case, you can perform only query operations.
+//   - If an endpoint group is in the **updating*	- status, its configuration is being modified, and you can only perform queries.
 //
-//	    	- If the endpoint group is in the **active*	- state, it indicates that the configurations of the endpoint group are modified.
+//   - If an endpoint group is in the **active*	- status, the update is complete.
 //
-//		- The **UpdateEndpointGroup*	- operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
+// - The **UpdateEndpointGroup*	- API does not support concurrent updates to endpoint groups in the same Global Accelerator (GA) instance.
 //
 // @param request - UpdateEndpointGroupRequest
 //
@@ -13804,17 +13871,17 @@ func (client *Client) UpdateEndpointGroupWithOptions(request *UpdateEndpointGrou
 
 // Summary:
 //
-// Modifies the configurations of an endpoint group.
+// Updates the configuration of an endpoint group.
 //
 // Description:
 //
-//	  **UpdateEndpointGroup*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) operation to query the state of an endpoint group.
+// - The **UpdateEndpointGroup*	- API is an asynchronous API. After you call this API, the system returns a request ID and starts the update in the background; the configuration is not modified immediately. Call [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) to check the status of the endpoint group:
 //
-//	    	- If the endpoint group is in the **updating*	- state, it indicates that the configurations of the endpoint group are being modified. In this case, you can perform only query operations.
+//   - If an endpoint group is in the **updating*	- status, its configuration is being modified, and you can only perform queries.
 //
-//	    	- If the endpoint group is in the **active*	- state, it indicates that the configurations of the endpoint group are modified.
+//   - If an endpoint group is in the **active*	- status, the update is complete.
 //
-//		- The **UpdateEndpointGroup*	- operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
+// - The **UpdateEndpointGroup*	- API does not support concurrent updates to endpoint groups in the same Global Accelerator (GA) instance.
 //
 // @param request - UpdateEndpointGroupRequest
 //
@@ -13910,19 +13977,19 @@ func (client *Client) UpdateEndpointGroupAttribute(request *UpdateEndpointGroupA
 
 // Summary:
 //
-// Modifies the endpoint groups that are associated with a listener.
+// Modifies endpoint groups for a listener in a batch.
 //
 // Description:
 //
-// ### Description
+// ### Usage notes
 //
-//   - **UpdateEndpointGroups*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) or [ListEndpointGroups](https://help.aliyun.com/document_detail/153261.html) operation to query the status of an endpoint group.
+// - **UpdateEndpointGroups*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the operation continues to run in the background. You can call the or [](t2323644.xdita#)operation to query the state of an endpoint group.
 //
-//   - If the endpoint group is in the **updating*	- state, it indicates that the configuration of the endpoint group is being modified. In this case, you can perform only query operations.
+//   - If an endpoint group is in the **updating*	- state, its configuration is being modified. In this state, you can only perform query operations.
 //
-//   - If the endpoint group is in the **active*	- state, it indicates that the configuration of the endpoint group is modified.
+//   - If an endpoint group is in the **active*	- state, its configuration has been modified.
 //
-//   - The **UpdateEndpointGroups*	- operation holds an exclusive lock on the Global Accelerator (GA) instance. While the operation is in progress, you cannot call the same operation in the same Alibaba Cloud account.
+// - You cannot concurrently call the **UpdateEndpointGroups*	- operation to modify the configurations of endpoint groups that belong to the same Global Accelerator (GA) instance.
 //
 // @param request - UpdateEndpointGroupsRequest
 //
@@ -13982,19 +14049,19 @@ func (client *Client) UpdateEndpointGroupsWithOptions(request *UpdateEndpointGro
 
 // Summary:
 //
-// Modifies the endpoint groups that are associated with a listener.
+// Modifies endpoint groups for a listener in a batch.
 //
 // Description:
 //
-// ### Description
+// ### Usage notes
 //
-//   - **UpdateEndpointGroups*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEndpointGroup](https://help.aliyun.com/document_detail/153260.html) or [ListEndpointGroups](https://help.aliyun.com/document_detail/153261.html) operation to query the status of an endpoint group.
+// - **UpdateEndpointGroups*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the operation continues to run in the background. You can call the or [](t2323644.xdita#)operation to query the state of an endpoint group.
 //
-//   - If the endpoint group is in the **updating*	- state, it indicates that the configuration of the endpoint group is being modified. In this case, you can perform only query operations.
+//   - If an endpoint group is in the **updating*	- state, its configuration is being modified. In this state, you can only perform query operations.
 //
-//   - If the endpoint group is in the **active*	- state, it indicates that the configuration of the endpoint group is modified.
+//   - If an endpoint group is in the **active*	- state, its configuration has been modified.
 //
-//   - The **UpdateEndpointGroups*	- operation holds an exclusive lock on the Global Accelerator (GA) instance. While the operation is in progress, you cannot call the same operation in the same Alibaba Cloud account.
+// - You cannot concurrently call the **UpdateEndpointGroups*	- operation to modify the configurations of endpoint groups that belong to the same Global Accelerator (GA) instance.
 //
 // @param request - UpdateEndpointGroupsRequest
 //
@@ -14012,17 +14079,17 @@ func (client *Client) UpdateEndpointGroups(request *UpdateEndpointGroupsRequest)
 
 // Summary:
 //
-// Updates a forwarding rule.
+// To update forwarding rules, call the UpdateForwardingRules API.
 //
 // Description:
 //
-//	  **UpdateForwardingRules*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListForwardingRules](https://help.aliyun.com/document_detail/205817.html) operation to query the status of a forwarding rule.
+// - **UpdateForwardingRules*	- is an asynchronous API. A call to this API returns a request ID and runs the update in the background. You can call [ListForwardingRules](https://help.aliyun.com/document_detail/205817.html) to query the status of the forwarding rule:
 //
-//	    	- If the forwarding rule is in the **configuring*	- state, it indicates that the forwarding rule is being modified. In this case, you can perform only query operations.
+//   - A status of **configuring*	- indicates that the forwarding rule is being updated. During this process, you can only perform query operations.
 //
-//	    	- If the forwarding rule is in the **active*	- state, it indicates that the forwarding rule is modified.
+//   - A status of **active*	- indicates that the update is complete.
 //
-//		- The **UpdateForwardingRules*	- operation holds an exclusive lock on the Global Accelerator (GA) instance. While the operation is in progress, you cannot call the same operation in the same Alibaba Cloud account.
+// - You cannot use **UpdateForwardingRules*	- to concurrently update forwarding rules within the same Global Accelerator instance.
 //
 // @param request - UpdateForwardingRulesRequest
 //
@@ -14082,17 +14149,17 @@ func (client *Client) UpdateForwardingRulesWithOptions(request *UpdateForwarding
 
 // Summary:
 //
-// Updates a forwarding rule.
+// To update forwarding rules, call the UpdateForwardingRules API.
 //
 // Description:
 //
-//	  **UpdateForwardingRules*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListForwardingRules](https://help.aliyun.com/document_detail/205817.html) operation to query the status of a forwarding rule.
+// - **UpdateForwardingRules*	- is an asynchronous API. A call to this API returns a request ID and runs the update in the background. You can call [ListForwardingRules](https://help.aliyun.com/document_detail/205817.html) to query the status of the forwarding rule:
 //
-//	    	- If the forwarding rule is in the **configuring*	- state, it indicates that the forwarding rule is being modified. In this case, you can perform only query operations.
+//   - A status of **configuring*	- indicates that the forwarding rule is being updated. During this process, you can only perform query operations.
 //
-//	    	- If the forwarding rule is in the **active*	- state, it indicates that the forwarding rule is modified.
+//   - A status of **active*	- indicates that the update is complete.
 //
-//		- The **UpdateForwardingRules*	- operation holds an exclusive lock on the Global Accelerator (GA) instance. While the operation is in progress, you cannot call the same operation in the same Alibaba Cloud account.
+// - You cannot use **UpdateForwardingRules*	- to concurrently update forwarding rules within the same Global Accelerator instance.
 //
 // @param request - UpdateForwardingRulesRequest
 //
@@ -14290,21 +14357,21 @@ func (client *Client) UpdateIpSets(request *UpdateIpSetsRequest) (_result *Updat
 
 // Summary:
 //
-// Modifies the configurations of a listener for a Global Accelerator (GA) instance.
+// Updates the configurations of a listener for a Global Accelerator (GA) instance.
 //
 // Description:
 //
-// This operation can be called to modify the configurations such as the protocol and ports of a listener to meet your business requirements.
+// Modifies the protocol, ports, and other configurations of a listener to meet your business requirements.
 //
 // When you call this operation, take note of the following items:
 //
-//   - **UpdateListener*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeListener](https://help.aliyun.com/document_detail/153254.html) operation to query the status of a listener.
+// - **UpdateListener*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeListener](https://help.aliyun.com/document_detail/153254.html) operation to query the status of a listener.
 //
 //   - If the listener is in the **updating*	- state, it indicates that its configurations are being modified. In this case, you can perform only query operations.
 //
 //   - If the listener is in the **active*	- state, it indicates that its configurations are modified.
 //
-//   - The **UpdateListener*	- operation cannot be repeatedly called to modify listener configurations for the same GA instance within a specific period of time.
+// - The **UpdateListener*	- operation cannot be repeatedly called to modify listener configurations for the same GA instance within a specific period of time.
 //
 // @param request - UpdateListenerRequest
 //
@@ -14408,21 +14475,21 @@ func (client *Client) UpdateListenerWithOptions(request *UpdateListenerRequest, 
 
 // Summary:
 //
-// Modifies the configurations of a listener for a Global Accelerator (GA) instance.
+// Updates the configurations of a listener for a Global Accelerator (GA) instance.
 //
 // Description:
 //
-// This operation can be called to modify the configurations such as the protocol and ports of a listener to meet your business requirements.
+// Modifies the protocol, ports, and other configurations of a listener to meet your business requirements.
 //
 // When you call this operation, take note of the following items:
 //
-//   - **UpdateListener*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeListener](https://help.aliyun.com/document_detail/153254.html) operation to query the status of a listener.
+// - **UpdateListener*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeListener](https://help.aliyun.com/document_detail/153254.html) operation to query the status of a listener.
 //
 //   - If the listener is in the **updating*	- state, it indicates that its configurations are being modified. In this case, you can perform only query operations.
 //
 //   - If the listener is in the **active*	- state, it indicates that its configurations are modified.
 //
-//   - The **UpdateListener*	- operation cannot be repeatedly called to modify listener configurations for the same GA instance within a specific period of time.
+// - The **UpdateListener*	- operation cannot be repeatedly called to modify listener configurations for the same GA instance within a specific period of time.
 //
 // @param request - UpdateListenerRequest
 //
@@ -14440,7 +14507,7 @@ func (client *Client) UpdateListener(request *UpdateListenerRequest) (_result *U
 
 // Summary:
 //
-// 修改SLS日志配置
+// # Modify Simple Log Service log configuration
 //
 // @param request - UpdateLogStoreConfigRequest
 //
@@ -14516,7 +14583,7 @@ func (client *Client) UpdateLogStoreConfigWithOptions(request *UpdateLogStoreCon
 
 // Summary:
 //
-// 修改SLS日志配置
+// # Modify Simple Log Service log configuration
 //
 // @param request - UpdateLogStoreConfigRequest
 //

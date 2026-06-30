@@ -26,7 +26,7 @@ type iUpdateAcceleratorAutoRenewAttributeRequest interface {
 }
 
 type UpdateAcceleratorAutoRenewAttributeRequest struct {
-	// The ID of the GA instance.
+	// The ID of the Global Accelerator instance.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type UpdateAcceleratorAutoRenewAttributeRequest struct {
 	//
 	// ga-bp17frjjh0udz4qz****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// Specifies whether to enable auto-renewal for the GA instance. Valid values:
+	// Specifies whether to enable auto-renewal for the instance. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Auto-renewal is enabled.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): Auto-renewal is disabled.
 	//
-	// >  **AutoRenew*	- and **RenewalStatus*	- cannot be left empty at the same time.
+	// > You must specify at least one of **AutoRenew*	- and **RenewalStatus**.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type UpdateAcceleratorAutoRenewAttributeRequest struct {
 	//
 	// Valid values: **1*	- to **12**.
 	//
-	// >  This parameter takes effect only if you set **AutoRenew*	- to **true**.
+	// > This parameter takes effect only when **AutoRenew*	- is set to **true**.
 	//
 	// example:
 	//
@@ -60,39 +60,39 @@ type UpdateAcceleratorAutoRenewAttributeRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the request as the **ClientToken**. The **RequestId*	- may be different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the GA instance.
+	// The name of the Global Accelerator instance.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+	// The name must be 1 to 128 characters in length, start with a letter or a Chinese character, and can contain letters, digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the Global Accelerator instance. Set the value to **cn-hangzhou**.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies how to renew the GA instance. Valid values:
+	// The auto-renewal status of the Global Accelerator instance. Valid values:
 	//
-	// 	- **AutoRenewal**: The system automatically renews the GA instance.
+	// - **AutoRenewal**: The instance is configured for auto-renewal.
 	//
-	// 	- **Normal**: You must manually renew the GA instance.
+	// - **Normal**: The instance is configured for manual renewal.
 	//
-	// 	- **NotRenewal**: The GA instance is not renewed after the instance expires. The system sends only a non-renewal reminder three days before the expiration date. The system no longer reminds you to renew the GA instance. To renew a GA instance whose RenewalStatus is set to NotRenewal, change the value of RenewalStatus from NotRenewal to **Normal**, and then manually renew the instance. You can also set RenewalStatus to **AutoRenewal**.
+	// - NotRenewal: The instance is not renewed. The system does not send expiration reminders, but sends a non-renewal reminder three days before the expiration date. You can change the renewal status from **NotRenewal*	- to **Normal*	- to manually renew the instance, or change the renewal status to **AutoRenewal**.
+	//
+	// > 	- You must specify at least one of **AutoRenew*	- and **RenewalStatus**.
 	//
 	// >
 	//
-	// 	- **AutoRenew*	- and **RenewalStatus*	- cannot be left empty at the same time.
-	//
-	// 	- **RenewalStatus*	- takes precedence over **AutoRenew**. By default, if you do not specify **RenewalStatus**, **AutoRenew*	- is used.
+	// > 	- The **RenewalStatus*	- parameter takes precedence over the **AutoRenew*	- parameter. If you do not specify **RenewalStatus**, the value of **AutoRenew*	- is used.
 	//
 	// example:
 	//

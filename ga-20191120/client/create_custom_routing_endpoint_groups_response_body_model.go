@@ -16,9 +16,9 @@ type iCreateCustomRoutingEndpointGroupsResponseBody interface {
 }
 
 type CreateCustomRoutingEndpointGroupsResponseBody struct {
-	// The IDs of the endpoint groups.
+	// The list of endpoint group IDs.
 	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

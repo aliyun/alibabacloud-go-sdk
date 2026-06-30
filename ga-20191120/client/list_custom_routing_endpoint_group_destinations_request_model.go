@@ -30,7 +30,7 @@ type iListCustomRoutingEndpointGroupDestinationsRequest interface {
 }
 
 type ListCustomRoutingEndpointGroupDestinationsRequest struct {
-	// The ID of the GA instance.
+	// The instance ID of the Alibaba Cloud Global Accelerator (GA) instance for which you want to query endpoint group destination configurations.
 	//
 	// This parameter is required.
 	//
@@ -38,51 +38,51 @@ type ListCustomRoutingEndpointGroupDestinationsRequest struct {
 	//
 	// ga-bp1odcab8tmno0hdq****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The ID of the endpoint group.
+	// The ID of the endpoint group for which you want to query destination configurations.
 	//
 	// example:
 	//
 	// epg-bp16jdc00bhe97sr5****
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The start port of the backend service port range of the endpoint group.
+	// The start port of the backend service of the endpoint group.
 	//
-	// Valid values: **1*	- to **65499**. The **FromPort*	- value must be smaller than or equal to the **ToPort*	- value.
+	// Valid values: **1*	- to **65499**. The value of **FromPort*	- must be less than or equal to the value of **ToPort**.
 	//
 	// example:
 	//
 	// 80
 	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
-	// The ID of the listener.
+	// The ID of the listener for which you want to query endpoint group destination configurations.
 	//
 	// example:
 	//
 	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The backend service protocols of the endpoint group. Valid values:
+	// The protocol type of the backend service of the endpoint group. Valid values:
 	//
-	// - **TCP**: TCP.
+	// - **TCP**: TCP protocol.
 	//
-	// - **UDP**: UDP.
+	// - **UDP**: UDP protocol.
 	//
-	// - **TCP,UDP**: TCP and UDP.
+	// - **TCP,UDP**: TCP and UDP protocols.
 	//
-	// If this parameter is empty, all types of protocols are queried.
+	// If this parameter is left empty, all protocol types are queried.
 	//
-	// You can specify up to 10 protocols.
+	// You can specify up to 10 protocol entries.
 	Protocols []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
-	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
+	// The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
 	//
 	// This parameter is required.
 	//
@@ -90,9 +90,9 @@ type ListCustomRoutingEndpointGroupDestinationsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The end port of the backend service port range of the endpoint group.
+	// The end port of the backend service of the endpoint group.
 	//
-	// Valid values: **1*	- to **65499**. The **FromPort*	- value must be smaller than or equal to the **ToPort*	- value.
+	// Valid values: **1*	- to **65499**. The value of **FromPort*	- must be less than or equal to the value of **ToPort**.
 	//
 	// example:
 	//

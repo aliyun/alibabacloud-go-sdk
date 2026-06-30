@@ -16,9 +16,9 @@ type iListAvailableAccelerateAreasResponseBody interface {
 }
 
 type ListAvailableAccelerateAreasResponseBody struct {
-	// The information about acceleration areas.
+	// The list of areas.
 	Areas []*ListAvailableAccelerateAreasResponseBodyAreas `json:"Areas,omitempty" xml:"Areas,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ func (s *ListAvailableAccelerateAreasResponseBody) Validate() error {
 }
 
 type ListAvailableAccelerateAreasResponseBodyAreas struct {
-	// The ID of the acceleration area.
+	// The ID of the area.
 	//
 	// example:
 	//
 	// cn-huabei
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
-	// The acceleration area name.
+	// The name of the area.
 	//
 	// example:
 	//
-	// North China
+	// China North
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The information about acceleration regions.
+	// The list of regions.
 	RegionList []*ListAvailableAccelerateAreasResponseBodyAreasRegionList `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
 }
 
@@ -133,37 +133,37 @@ func (s *ListAvailableAccelerateAreasResponseBodyAreas) Validate() error {
 type ListAvailableAccelerateAreasResponseBodyAreasRegionList struct {
 	// Indicates whether the region is in the Chinese mainland. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The region is in the Chinese mainland.
 	//
-	// 	- **false**
+	// - **false**: The region is not in the Chinese mainland.
 	//
 	// example:
 	//
-	// false
+	// true
 	ChinaMainland *bool `json:"ChinaMainland,omitempty" xml:"ChinaMainland,omitempty"`
-	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values:
+	// The line type of the public IP address in the acceleration region.
 	//
-	// 	- **BGP**: BGP (Multi-ISP) lines.
+	// - **BGP*	- (default): BGP (Multi-ISP) line.
 	//
-	// 	- **BGP_PRO**: BGP (Multi-ISP) Pro lines.
+	// - **BGP_PRO**: BGP (Multi-ISP) Pro line.
 	IspTypeList []*string `json:"IspTypeList,omitempty" xml:"IspTypeList,omitempty" type:"Repeated"`
-	// The acceleration region name.
+	// The name of the region.
 	//
 	// example:
 	//
 	// China (Qingdao)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// Indicates whether multiple zones are supported. Valid values:
+	// Indicates whether multi-zone deployment is supported. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Multi-zone deployment is supported.
 	//
-	// 	- **false**
+	// - **false**: Multi-zone deployment is not supported.
 	//
 	// example:
 	//
 	// true
 	MultiAz *bool `json:"MultiAz,omitempty" xml:"MultiAz,omitempty"`
-	// The ID of the acceleration region.
+	// The ID of the region.
 	//
 	// example:
 	//
@@ -171,9 +171,9 @@ type ListAvailableAccelerateAreasResponseBodyAreasRegionList struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Indicates whether IPv6 is supported. Valid values:
 	//
-	// 	- **true**
+	// - **true**: IPv6 is supported.
 	//
-	// 	- **false**
+	// - **false**: IPv6 is not supported.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iListCustomRoutingEndpointTrafficPoliciesRequest interface {
 }
 
 type ListCustomRoutingEndpointTrafficPoliciesRequest struct {
-	// The ID of the GA instance to which the traffic policies belong.
+	// The instance ID of the Alibaba Cloud Global Accelerator (GA) instance for which you want to query traffic policies.
 	//
 	// This parameter is required.
 	//
@@ -36,43 +36,43 @@ type ListCustomRoutingEndpointTrafficPoliciesRequest struct {
 	//
 	// ga-bp1odcab8tmno0hdq****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The IP address of the traffic destination.
+	// The IP address of the traffic policy destination.
 	//
 	// example:
 	//
 	// 10.0.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The ID of the endpoint group to which the traffic policies belong.
+	// The ID of the endpoint group for which you want to query traffic policies.
 	//
 	// example:
 	//
 	// lsr-bp1bpn0kn908w4nbw****
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The ID of the endpoint to which the traffic policies belong.
+	// The ID of the endpoint for which you want to query traffic policies.
 	//
 	// example:
 	//
 	// ep-bp16jdc00bhe97sr5****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The ID of the listener to which the traffic policies belong.
+	// The ID of the listener for which you want to query traffic policies.
 	//
 	// example:
 	//
 	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 50**. Default value: **10**.
+	// The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
+	// The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **ap-southeast-1**.
 	//
 	// This parameter is required.
 	//

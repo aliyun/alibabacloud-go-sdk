@@ -18,15 +18,15 @@ type iBandwidthPackageRemoveAcceleratorResponseBody interface {
 }
 
 type BandwidthPackageRemoveAcceleratorResponseBody struct {
-	// The ID of the GA instance.
+	// The ID of the Alibaba Cloud Global Accelerator (GA) instance disassociated from the bandwidth plan.
 	Accelerators []*string `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
-	// The ID of the bandwidth plan.
+	// The ID of the bandwidth plan disassociated from the Alibaba Cloud Global Accelerator (GA) instance.
 	//
 	// example:
 	//
 	// gbwp-bp1sgzldyj6b4q7cx****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -377,7 +377,7 @@ type ListCustomRoutingEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfo
 	//
 	// example:
 	//
-	// false
+	// true
 	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 }
 

@@ -22,11 +22,11 @@ type GetSpareIpResponseBody struct {
 	//
 	// 6FEA0CF3-D3B9-43E5-A304-D217037876A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the secondary IP address. Valid values:
+	// The status of the CNAME spare IP address. Valid values:
 	//
-	// 	- **active:*	- The secondary IP address is available.
+	// - **active**: active.
 	//
-	// 	- **inuse:*	- The secondary IP address is in use.
+	// - **inuse**: in use.
 	//
 	// example:
 	//

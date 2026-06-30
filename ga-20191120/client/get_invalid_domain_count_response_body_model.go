@@ -22,7 +22,7 @@ type GetInvalidDomainCountResponseBody struct {
 	//
 	// 1
 	InvalidDomainCount *string `json:"InvalidDomainCount,omitempty" xml:"InvalidDomainCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

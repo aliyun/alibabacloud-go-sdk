@@ -32,9 +32,9 @@ type ListForwardingRulesResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used for the next query. Valid values:
 	//
-	// 	- If **NextToken*	- is not returned, it indicates that no additional results exist.
+	// - If **NextToken*	- is not returned, it indicates that no additional results exist.
 	//
-	// 	- If **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token that is used for the next query.
 	//
 	// example:
 	//
@@ -143,11 +143,11 @@ type ListForwardingRulesResponseBodyForwardingRules struct {
 	ForwardingRuleName *string `json:"ForwardingRuleName,omitempty" xml:"ForwardingRuleName,omitempty"`
 	// The state of the forwarding rule. Valid values:
 	//
-	// 	- **active:*	- The forwarding rule is normal.
+	// - **active:*	- The forwarding rule is normal.
 	//
-	// 	- **configuring:*	- The forwarding rule is being modified.
+	// - **configuring:*	- The forwarding rule is being modified.
 	//
-	// 	- **deleting:*	- The forwarding rule is being deleted.
+	// - **deleting:*	- The forwarding rule is being deleted.
 	//
 	// example:
 	//
@@ -173,7 +173,7 @@ type ListForwardingRulesResponseBodyForwardingRules struct {
 	RuleConditions []*ListForwardingRulesResponseBodyForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
 	// The ID of the service that manages the instance.
 	//
-	// >  This parameter is returned only if the value of **ServiceManaged*	- is **true**.
+	// > This parameter is returned only if the value of **ServiceManaged*	- is **true**.
 	//
 	// example:
 	//
@@ -181,9 +181,9 @@ type ListForwardingRulesResponseBodyForwardingRules struct {
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// Indicates whether the GA instance is managed. Valid values:
 	//
-	// 	- **true**: The GA instance is managed.
+	// - **true**: The GA instance is managed.
 	//
-	// 	- **false**: The GA instance is not managed.
+	// - **false**: The GA instance is not managed.
 	//
 	// example:
 	//
@@ -191,9 +191,9 @@ type ListForwardingRulesResponseBodyForwardingRules struct {
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// The actions that you can perform on the managed instance.
 	//
-	// >  This parameter takes effect only if **ServiceManaged*	- is set to **True**.
+	// > This parameter takes effect only if **ServiceManaged*	- is set to **True**.
 	//
-	// 	- You can perform only specific actions on the managed instance.
+	// - You can perform only specific actions on the managed instance.
 	ServiceManagedInfos []*ListForwardingRulesResponseBodyForwardingRulesServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
 }
 
@@ -338,11 +338,11 @@ func (s *ListForwardingRulesResponseBodyForwardingRules) Validate() error {
 type ListForwardingRulesResponseBodyForwardingRulesRuleActions struct {
 	// The forwarding action configuration.
 	//
-	// >  GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions and actions by calling the **RuleActionType*	- and **RuleActionValue*	- operations.
+	// > GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions and actions by calling the **RuleActionType*	- and **RuleActionValue*	- operations.
 	ForwardGroupConfig *ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	// The forwarding priority.
 	//
-	// >  This parameter does not take effect.
+	// > This parameter does not take effect.
 	//
 	// example:
 	//
@@ -350,19 +350,19 @@ type ListForwardingRulesResponseBodyForwardingRulesRuleActions struct {
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The type of the forwarding action. Valid values:
 	//
-	// 	- **ForwardGroup**: forwards a request.
+	// - **ForwardGroup**: forwards a request.
 	//
-	// 	- **Redirect**: redirects a request.
+	// - **Redirect**: redirects a request.
 	//
-	// 	- **FixResponse**: returns a fixed response.
+	// - **FixResponse**: returns a fixed response.
 	//
-	// 	- **Rewrite**: rewrites a request.
+	// - **Rewrite**: rewrites a request.
 	//
-	// 	- **AddHeader**: adds a header to a request.
+	// - **AddHeader**: adds a header to a request.
 	//
-	// 	- **RemoveHeaderConfig**: deletes the header from a request.
+	// - **RemoveHeaderConfig**: deletes the header from a request.
 	//
-	// 	- **Drop**: drops a request.
+	// - **Drop**: drops a request.
 	//
 	// example:
 	//
@@ -372,53 +372,53 @@ type ListForwardingRulesResponseBodyForwardingRulesRuleActions struct {
 	//
 	// Different JSON strings are returned based on the value of **RuleActionType**.
 	//
-	// 	- If you set **RuleActionType*	- to **ForwardGroup**, the information about a virtual endpoint group is returned. The following section describes the parameters:
+	// - If you set **RuleActionType*	- to **ForwardGroup**, the information about a virtual endpoint group is returned. The following section describes the parameters:
 	//
-	//     	- `type`: `endpointgroup` is returned.
+	//   - `type`: `endpointgroup` is returned.
 	//
-	//     	- `value`: the ID of the virtual endpoint group.
+	//   - `value`: the ID of the virtual endpoint group.
 	//
-	// 	- If you set **RuleActionType*	- to **Redirect**, the redirecting configuration is returned. The following section describes the parameters:
+	// - If you set **RuleActionType*	- to **Redirect**, the redirecting configuration is returned. The following section describes the parameters:
 	//
-	//     	- `protocol`: the protocol of requests after the requests are redirected.
+	//   - `protocol`: the protocol of requests after the requests are redirected.
 	//
-	//     	- `domain`: the domain name to which requests are redirected.
+	//   - `domain`: the domain name to which requests are redirected.
 	//
-	//     	- `port`: the port to which requests are redirected.
+	//   - `port`: the port to which requests are redirected.
 	//
-	//     	- `path`: the path to which requests are redirected.
+	//   - `path`: the path to which requests are redirected.
 	//
-	//     	- `query`: the query string of the requests that are redirected.
+	//   - `query`: the query string of the requests that are redirected.
 	//
-	//     	- `code`: the redirecting code.
+	//   - `code`: the redirecting code.
 	//
-	// 	- If you set **RuleActionType*	- to **FixResponse**, the information about the fixed response that you configured is returned. The following section describes the parameters:
+	// - If you set **RuleActionType*	- to **FixResponse**, the information about the fixed response that you configured is returned. The following section describes the parameters:
 	//
-	//     	- `code`: the HTTP status code.
+	//   - `code`: the HTTP status code.
 	//
-	//     	- `type`: the content type of the response.
+	//   - `type`: the content type of the response.
 	//
-	//     	- `content`: the content of the response.
+	//   - `content`: the content of the response.
 	//
-	// 	- If **RuleActionType*	- is set to **AddHeader**, the information about the HTTP header that is added is returned. The following section describes the parameters:
+	// - If **RuleActionType*	- is set to **AddHeader**, the information about the HTTP header that is added is returned. The following section describes the parameters:
 	//
-	//     	- `name`: the name of the HTTP header.
+	//   - `name`: the name of the HTTP header.
 	//
-	//     	- `type`: the content type of the HTTP header.
+	//   - `type`: the content type of the HTTP header.
 	//
-	//     	- `value`: the content of the HTTP header.
+	//   - `value`: the content of the HTTP header.
 	//
-	// 	- If you set **RuleActionType*	- to **RemoveHeader**, the information about the HTTP header that is deleted is returned.
+	// - If you set **RuleActionType*	- to **RemoveHeader**, the information about the HTTP header that is deleted is returned.
 	//
-	// 	- If you set **RuleActionType*	- to **Rewrite**, the rewriting configuration is returned. The following section describes the parameters:
+	// - If you set **RuleActionType*	- to **Rewrite**, the rewriting configuration is returned. The following section describes the parameters:
 	//
-	//     	- `domain`: the domain name to which requests are redirected.
+	//   - `domain`: the domain name to which requests are redirected.
 	//
-	//     	- `path`: the path to which requests are redirected.
+	//   - `path`: the path to which requests are redirected.
 	//
-	//     	- `query`: the query string of the requests that are redirected.
+	//   - `query`: the query string of the requests that are redirected.
 	//
-	// 	- If you set **RuleActionType*	- to **Drop**, an empty string is returned.
+	// - If you set **RuleActionType*	- to **Drop**, an empty string is returned.
 	//
 	// example:
 	//
@@ -482,7 +482,7 @@ func (s *ListForwardingRulesResponseBodyForwardingRulesRuleActions) Validate() e
 type ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupConfig struct {
 	// The information about the endpoint groups.
 	//
-	// >  GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions and actions by calling the **RuleActionType*	- and **RuleActionValue*	- operations.
+	// > GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions and actions by calling the **RuleActionType*	- and **RuleActionValue*	- operations.
 	ServerGroupTuples []*ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
@@ -519,7 +519,7 @@ func (s *ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupCo
 type ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupConfigServerGroupTuples struct {
 	// The endpoint group ID.
 	//
-	// >  GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions and actions by calling the **RuleActionType*	- and **RuleActionValue*	- operations.
+	// > GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions and actions by calling the **RuleActionType*	- and **RuleActionValue*	- operations.
 	//
 	// example:
 	//
@@ -551,27 +551,27 @@ func (s *ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupCo
 type ListForwardingRulesResponseBodyForwardingRulesRuleConditions struct {
 	// The domain name configuration.
 	//
-	// >  GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions and actions by calling the **RuleActionType*	- and **RuleActionValue*	- operations.
+	// > GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions and actions by calling the **RuleActionType*	- and **RuleActionValue*	- operations.
 	HostConfig *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
 	// The path configuration.
 	//
-	// >  GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions and actions by calling the **RuleActionType*	- and **RuleActionValue*	- operations.
+	// > GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions and actions by calling the **RuleActionType*	- and **RuleActionValue*	- operations.
 	PathConfig *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
 	// The type of the forwarding condition. Valid values:
 	//
-	// 	- **Host:*	- domain name.
+	// - **Host:*	- domain name.
 	//
-	// 	- **Path:*	- path.
+	// - **Path:*	- path.
 	//
-	// 	- **RequestHeader:*	- HTTP header.
+	// - **RequestHeader:*	- HTTP header.
 	//
-	// 	- **Query:*	- query string.
+	// - **Query:*	- query string.
 	//
-	// 	- **Method:*	- HTTP method.
+	// - **Method:*	- HTTP method.
 	//
-	// 	- **Cookie:*	- cookie.
+	// - **Cookie:*	- cookie.
 	//
-	// 	- **SourceIP:*	- source IP address.
+	// - **SourceIP:*	- source IP address.
 	//
 	// example:
 	//
@@ -581,19 +581,19 @@ type ListForwardingRulesResponseBodyForwardingRulesRuleConditions struct {
 	//
 	// Different JSON strings are returned based on the value of the **RuleConditionType*	- parameter.
 	//
-	// 	- If you set **RuleConditionType*	- to **Host**, a domain name condition is returned. If multiple domain names are returned in a forwarding condition, the relationship between the domain names is OR.
+	// - If you set **RuleConditionType*	- to **Host**, a domain name condition is returned. If multiple domain names are returned in a forwarding condition, the relationship between the domain names is OR.
 	//
-	// 	- If you set **RuleConditionType*	- to **Path**, a path condition is returned. If multiple forwarding conditions of the path type are returned in a forwarding rule, the relationship between the forwarding conditions is OR. If multiple paths are returned in a forwarding condition, the relationship between the paths is OR.
+	// - If you set **RuleConditionType*	- to **Path**, a path condition is returned. If multiple forwarding conditions of the path type are returned in a forwarding rule, the relationship between the forwarding conditions is OR. If multiple paths are returned in a forwarding condition, the relationship between the paths is OR.
 	//
-	// 	- If you set **RuleConditionType*	- to **RequestHeader**, an HTTP header condition that consists of key-value pairs is returned.
+	// - If you set **RuleConditionType*	- to **RequestHeader**, an HTTP header condition that consists of key-value pairs is returned.
 	//
-	// 	- If you set **RuleConditionType*	- to **Query**, a query string condition that consists of key-value pairs is returned.
+	// - If you set **RuleConditionType*	- to **Query**, a query string condition that consists of key-value pairs is returned.
 	//
-	// 	- If you set **RuleConditionType*	- to **Method**, an HTTP method condition is returned.
+	// - If you set **RuleConditionType*	- to **Method**, an HTTP method condition is returned.
 	//
-	// 	- If you set **RuleConditionType*	- to **Cookie**, a cookie condition that consists of key-value pairs is returned.
+	// - If you set **RuleConditionType*	- to **Cookie**, a cookie condition that consists of key-value pairs is returned.
 	//
-	// 	- If you set **RuleConditionType*	- to **SourceIP**, a source IP address condition is returned. If multiple source IP addresses are returned in a forwarding condition, the relationship between the source IP addresses is OR.
+	// - If you set **RuleConditionType*	- to **SourceIP**, a source IP address condition is returned. If multiple source IP addresses are returned in a forwarding condition, the relationship between the source IP addresses is OR.
 	//
 	// example:
 	//
@@ -662,7 +662,7 @@ func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditions) Validate(
 type ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig struct {
 	// The domain name configuration.
 	//
-	// >  GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions and actions by calling the **RuleActionType*	- and **RuleActionValue*	- operations.
+	// > GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions and actions by calling the **RuleActionType*	- and **RuleActionValue*	- operations.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -690,7 +690,7 @@ func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig)
 type ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig struct {
 	// The path configuration.
 	//
-	// >  GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions and actions by calling the **RuleActionType*	- and **RuleActionValue*	- operations.
+	// > GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions and actions by calling the **RuleActionType*	- and **RuleActionValue*	- operations.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -718,17 +718,17 @@ func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig)
 type ListForwardingRulesResponseBodyForwardingRulesServiceManagedInfos struct {
 	// The name of the action that you can perform on the managed instance. Valid values:
 	//
-	// 	- **Create**: Create an instance.
+	// - **Create**: Create an instance.
 	//
-	// 	- **Update**: Update the current instance.
+	// - **Update**: Update the current instance.
 	//
-	// 	- **Delete**: Delete the current instance.
+	// - **Delete**: Delete the current instance.
 	//
-	// 	- **Associate**: Reference the current instance.
+	// - **Associate**: Reference the current instance.
 	//
-	// 	- **UserUnmanaged**: Unmanage the instance.
+	// - **UserUnmanaged**: Unmanage the instance.
 	//
-	// 	- **CreateChild**: Create a child resource on the current instance.
+	// - **CreateChild**: Create a child resource on the current instance.
 	//
 	// example:
 	//
@@ -736,21 +736,21 @@ type ListForwardingRulesResponseBodyForwardingRulesServiceManagedInfos struct {
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// The type of the child resource. Valid values:
 	//
-	// 	- **Listener**: listener.
+	// - **Listener**: listener.
 	//
-	// 	- **IpSet**: acceleration region.
+	// - **IpSet**: acceleration region.
 	//
-	// 	- **EndpointGroup**: endpoint group.
+	// - **EndpointGroup**: endpoint group.
 	//
-	// 	- **ForwardingRule**: forwarding rule.
+	// - **ForwardingRule**: forwarding rule.
 	//
-	// 	- **Endpoint**: endpoint.
+	// - **Endpoint**: endpoint.
 	//
-	// 	- **EndpointGroupDestination**: the protocol mapping of an endpoint group associated with a custom routing listener.
+	// - **EndpointGroupDestination**: the protocol mapping of an endpoint group associated with a custom routing listener.
 	//
-	// 	- **EndpointPolicy**: the traffic policy of an endpoint associated with a custom routing listener.
+	// - **EndpointPolicy**: the traffic policy of an endpoint associated with a custom routing listener.
 	//
-	// >  This parameter is returned only if the value of **Action*	- is **CreateChild**.
+	// > This parameter is returned only if the value of **Action*	- is **CreateChild**.
 	//
 	// example:
 	//
@@ -758,9 +758,9 @@ type ListForwardingRulesResponseBodyForwardingRulesServiceManagedInfos struct {
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
 	// Indicates whether the specified actions are managed. Valid values:
 	//
-	// 	- **true**: The specified actions are managed, and users cannot perform the specified actions on the managed instance.
+	// - **true**: The specified actions are managed, and users cannot perform the specified actions on the managed instance.
 	//
-	// 	- **false**: The specified actions are not managed, and users can perform the specified actions on the managed instance.
+	// - **false**: The specified actions are not managed, and users can perform the specified actions on the managed instance.
 	//
 	// example:
 	//

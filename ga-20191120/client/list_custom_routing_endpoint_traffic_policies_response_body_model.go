@@ -22,19 +22,19 @@ type iListCustomRoutingEndpointTrafficPoliciesResponseBody interface {
 }
 
 type ListCustomRoutingEndpointTrafficPoliciesResponseBody struct {
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of traffic policies.
+	// The list of traffic policies.
 	Policies []*ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -117,13 +117,13 @@ func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBody) Validate() error 
 }
 
 type ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies struct {
-	// The ID of the GA instance to which the endpoint belongs.
+	// The instance ID of the Alibaba Cloud Global Accelerator (GA) instance to which the endpoint belongs.
 	//
 	// example:
 	//
 	// ga-bp1odcab8tmno0hdq****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The IP addresses of the traffic policies.
+	// The IP address of the traffic policy destination.
 	//
 	// example:
 	//
@@ -141,23 +141,23 @@ type ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies struct {
 	//
 	// ep-bp14sz7ftcwwjgrdm****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The ID of the custom routing listener to which the endpoint belongs.
+	// The ID of the custom routing type listener to which the endpoint belongs.
 	//
 	// example:
 	//
 	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The ID of the traffic policy.
+	// The traffic policy ID.
 	//
 	// example:
 	//
 	// ply-bp1dmlohjjz4kqaun****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The port range of the traffic policy.
+	// The port range of the traffic policy destination.
 	PortRanges []*ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	// The ID of the service that manages the instance.
+	// The ID of the service to which the managed instance belongs.
 	//
-	// >  This parameter is returned only if the value of **ServiceManaged*	- is **true**.
+	// > This parameter is valid only when **ServiceManaged*	- is set to **True**.
 	//
 	// example:
 	//
@@ -165,19 +165,19 @@ type ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies struct {
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// Indicates whether the instance is managed. Valid values:
 	//
-	// 	- **true**: The GA instance is managed.
+	// - **true**: The instance is managed.
 	//
-	// 	- **false**: The GA instance is not managed.
+	// - **false**: The instance is not managed.
 	//
 	// example:
 	//
 	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The actions that users can perform on the managed instance.
+	// The list of action policies that the user can perform on the managed instance.
 	//
-	// > 	- This parameter is returned only if the value of **ServiceManaged*	- is **true**.
+	// > - This parameter is valid only when **ServiceManaged*	- is set to **True**.
 	//
-	// >	- Users can perform only specific actions on a managed instance.
+	// > - When the instance is in the managed state, user operations on the instance are restricted, and certain operations are prohibited.
 	ServiceManagedInfos []*ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
 }
 
@@ -302,13 +302,13 @@ func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies) Validate(
 }
 
 type ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges struct {
-	// The first port of the port range used by the traffic destination to process requests.
+	// The start port of the traffic policy destination for processing requests.
 	//
 	// example:
 	//
 	// 80
 	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
-	// The last port of the port range used by the traffic destination to process requests.
+	// The end port of the traffic policy destination for processing requests.
 	//
 	// example:
 	//
@@ -347,19 +347,19 @@ func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges)
 }
 
 type ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesServiceManagedInfos struct {
-	// The name of the action on the managed instance. Valid values:
+	// The name of the managed policy action. Valid values:
 	//
-	// 	- **Create**: Create an instance.
+	// - **Create**: Create an instance.
 	//
-	// 	- **Update**: Update the current instance.
+	// - **Update**: Update the current instance.
 	//
-	// 	- **Delete**: Delete the current instance.
+	// - **Delete**: Delete the current instance.
 	//
-	// 	- **Associate**: Reference the current instance.
+	// - **Associate**: Reference or be referenced by the current instance.
 	//
-	// 	- **UserUnmanaged**: Unmanage the instance.
+	// - **UserUnmanaged**: Unmanage the instance.
 	//
-	// 	- **CreateChild**: Create a child resource in the current instance.
+	// - **CreateChild**: Create a child resource under the current instance.
 	//
 	// example:
 	//
@@ -367,31 +367,31 @@ type ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesServiceManagedI
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// The type of the child resource. Valid values:
 	//
-	// 	- **Listener**: listener.
+	// - **Listener**: listener resource.
 	//
-	// 	- **IpSet**: acceleration region.
+	// - **IpSet**: acceleration region resource.
 	//
-	// 	- **EndpointGroup**: endpoint group.
+	// - **EndpointGroup**: endpoint group resource.
 	//
-	// 	- **ForwardingRule**: forwarding rule.
+	// - **ForwardingRule**: forwarding rule resource.
 	//
-	// 	- **Endpoint**: endpoint.
+	// - **Endpoint**: endpoint resource.
 	//
-	// 	- **EndpointGroupDestination**: protocol mapping of an endpoint group associated with a custom routing listener.
+	// - **EndpointGroupDestination**: protocol mapping resource of the endpoint group under the custom routing listener.
 	//
-	// 	- **EndpointPolicy**: traffic policy of an endpoint associated with a custom routing listener.
+	// - **EndpointPolicy**: traffic policy resource of the endpoint under the custom routing listener.
 	//
-	// >  This parameter is returned only if the value of **Action*	- is **CreateChild**.
+	// > This parameter is valid only when **Action*	- is set to **CreateChild**.
 	//
 	// example:
 	//
 	// Listener
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	// Indicates whether the specified actions are managed. Valid values:
+	// Indicates whether the managed policy action is managed. Valid values:
 	//
-	// 	- **true**: The specified actions are managed, and users cannot perform the specified actions on the managed instance.
+	// - **true**: The managed policy action is managed. The user cannot perform the action specified by Action on the managed instance.
 	//
-	// 	- **false**: The specified actions are not managed, and users can perform the specified actions on the managed instance.
+	// - **false**: The managed policy action is not managed. The user can perform the action specified by Action on the managed instance.
 	//
 	// example:
 	//

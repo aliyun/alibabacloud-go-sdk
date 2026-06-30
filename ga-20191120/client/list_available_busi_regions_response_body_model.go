@@ -68,9 +68,9 @@ func (s *ListAvailableBusiRegionsResponseBody) Validate() error {
 type ListAvailableBusiRegionsResponseBodyRegions struct {
 	// Indicates whether the region is in the Chinese mainland. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -84,9 +84,9 @@ type ListAvailableBusiRegionsResponseBodyRegions struct {
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// Indicates whether it is a point of presence (PoP) of Alibaba Cloud. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

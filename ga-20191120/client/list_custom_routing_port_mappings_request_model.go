@@ -24,7 +24,7 @@ type iListCustomRoutingPortMappingsRequest interface {
 }
 
 type ListCustomRoutingPortMappingsRequest struct {
-	// The ID of the GA instance.
+	// The ID of the GA instance whose port mapping table you want to query.
 	//
 	// This parameter is required.
 	//
@@ -32,25 +32,25 @@ type ListCustomRoutingPortMappingsRequest struct {
 	//
 	// ga-bp1odcab8tmno0hdq****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The ID of the endpoint group.
+	// The ID of the endpoint group whose port mapping table you want to query.
 	//
 	// example:
 	//
 	// epg-bp16jdc00bhe97sr5****
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The ID of the listener.
+	// The ID of the listener whose port mapping table you want to query.
 	//
 	// example:
 	//
 	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//

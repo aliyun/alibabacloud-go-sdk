@@ -16,9 +16,9 @@ type iCreateCustomRoutingEndpointGroupDestinationsResponseBody interface {
 }
 
 type CreateCustomRoutingEndpointGroupDestinationsResponseBody struct {
-	// The IDs of the endpoint group mappings.
+	// The list of mapping configuration IDs for the endpoint group.
 	DestinationIds []*string `json:"DestinationIds,omitempty" xml:"DestinationIds,omitempty" type:"Repeated"`
-	// The IDs of the endpoint group mappings.
+	// The request ID.
 	//
 	// example:
 	//

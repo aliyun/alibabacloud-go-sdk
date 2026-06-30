@@ -32,7 +32,7 @@ type UpdateBasicEndpointGroupRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type UpdateBasicEndpointGroupRequest struct {
 	//
 	// This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
 	//
-	// 	- If you set the endpoint type to **ECS**, you can set **EndpointSubAddress*	- to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+	// - If you set the endpoint type to **ECS**, you can set **EndpointSubAddress*	- to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
 	//
-	// 	- If you set the endpoint type to **ENI**, you can set **EndpointSubAddress*	- to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
+	// - If you set the endpoint type to **ENI**, you can set **EndpointSubAddress*	- to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
 	//
 	// example:
 	//
@@ -74,11 +74,11 @@ type UpdateBasicEndpointGroupRequest struct {
 	EndpointSubAddress *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
 	// The type of the endpoint. Valid values:
 	//
-	// 	- **ENI**: elastic network interface (ENI).
+	// - **ENI**: elastic network interface (ENI).
 	//
-	// 	- **SLB**: Classic Load Balancer (CLB) instance.
+	// - **SLB**: Classic Load Balancer (CLB) instance.
 	//
-	// 	- **ECS**: Elastic Compute Service (ECS) instance.
+	// - **ECS**: Elastic Compute Service (ECS) instance.
 	//
 	// example:
 	//

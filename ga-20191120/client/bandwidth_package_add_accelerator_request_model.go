@@ -18,7 +18,7 @@ type iBandwidthPackageAddAcceleratorRequest interface {
 }
 
 type BandwidthPackageAddAcceleratorRequest struct {
-	// The GA instance ID.
+	// The ID of the Alibaba Cloud Global Accelerator (GA) instance to which the bandwidth plan is attached.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type BandwidthPackageAddAcceleratorRequest struct {
 	//
 	// ga-bp1qe94o52ot4pkfn****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The bandwidth plan ID.
+	// The ID of the bandwidth plan to attach to the Alibaba Cloud Global Accelerator (GA) instance.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type BandwidthPackageAddAcceleratorRequest struct {
 	//
 	// gbwp-bp1sgzldyj6b4q7cx****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
+	// The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
 	//
 	// This parameter is required.
 	//

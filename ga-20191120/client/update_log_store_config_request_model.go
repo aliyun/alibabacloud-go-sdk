@@ -30,45 +30,68 @@ type iUpdateLogStoreConfigRequest interface {
 }
 
 type UpdateLogStoreConfigRequest struct {
+	// The instance ID of Alibaba Cloud Global Accelerator (GA).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ga-bp1odcab8tmno0hdq****
-	AcceleratorId                       *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// A list of custom header field names to be included in access logs.
 	AccessLogRecordCustomizedHeaderList []*string `json:"AccessLogRecordCustomizedHeaderList,omitempty" xml:"AccessLogRecordCustomizedHeaderList,omitempty" type:"Repeated"`
+	// Specifies whether to include custom headers in access logs. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false*	- (default): No.
+	//
+	// > You can set this parameter to **true*	- only when the **AccessLogEnabled*	- toggle for the instance is turned on.
+	//
 	// example:
 	//
 	// False
 	AccessLogRecordCustomizedHeadersEnabled *bool `json:"AccessLogRecordCustomizedHeadersEnabled,omitempty" xml:"AccessLogRecordCustomizedHeadersEnabled,omitempty"`
+	// An idempotent token.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the endpoint group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// epg-bp1dmlohjjz4kqaun****
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	// The listener ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lsr-xxxxxxxxxxxxxxx
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	// The region ID of the Alibaba Cloud Global Accelerator (GA) instance. The only valid value is cn-hangzhou.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the Logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ga-access-log-epg-01
 	SlsLogStoreName *string `json:"SlsLogStoreName,omitempty" xml:"SlsLogStoreName,omitempty"`
+	// The name of the Data Service Project.
+	//
 	// This parameter is required.
 	//
 	// example:

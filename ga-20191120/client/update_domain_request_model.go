@@ -28,13 +28,13 @@ type UpdateDomainRequest struct {
 	//
 	// example.net
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The accelerated domain name to be modified.
+	// The accelerated domain name that you want to update.
 	//
 	// This parameter is required.
 	//

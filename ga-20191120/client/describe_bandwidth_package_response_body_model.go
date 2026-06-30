@@ -50,7 +50,7 @@ type iDescribeBandwidthPackageResponseBody interface {
 }
 
 type DescribeBandwidthPackageResponseBody struct {
-	// The ID of the GA instance that is associated with the bandwidth plan.
+	// The instance ID of the Alibaba Cloud Global Accelerator (GA) instance attached to the bandwidth plan.
 	Accelerators []*string `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
 	// The bandwidth value of the bandwidth plan. Unit: Mbit/s.
 	//
@@ -58,61 +58,61 @@ type DescribeBandwidthPackageResponseBody struct {
 	//
 	// 2
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the bandwidth plan.
+	// The bandwidth plan ID.
 	//
 	// example:
 	//
 	// gbwp-bp1sgzldyj6b4q7cx****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The type of the bandwidth. Valid values:
+	// The bandwidth type. Valid values:
 	//
-	// 	- **Basic**: basic bandwidth
+	// - **Basic**: standard acceleration bandwidth.
 	//
-	// 	- **Enhanced**: enhanced bandwidth
+	// - **Enhanced**: enhanced acceleration bandwidth.
 	//
-	// 	- **Advanced**: premium bandwidth
+	// - **Advanced**: premium acceleration bandwidth.
 	//
 	// example:
 	//
 	// Basic
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
-	// The metering method that is used when you use the pay-as-you-go billing method. Valid values:
+	// The billable methods for the pay-as-you-go billing method. Valid values:
 	//
-	// 	- **PayByTraffic**: pay-by-data-transfer
+	// - **PayByTraffic**: pay-by-data-transfer.
 	//
-	// 	- **PayBY95**: pay-by-95th-percentile
+	// - **PayBY95**: pay-by-95th-percentile.
 	//
 	// example:
 	//
 	// PayByTraffic
 	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
-	// Area A specified in the cross-region acceleration bandwidth plan. Only **China-mainland*	- (the Chinese mainland) is returned.
+	// The interconnected area A of the cross-border acceleration bandwidth plan. The value is returned only as **China-mainland*	- (the Chinese mainland).
 	//
-	// This parameter is returned only if you call this operation on the International site (alibabacloud.com).
+	// This parameter is returned only on the Alibaba Cloud International Website (www.alibabacloud.com).
 	//
 	// example:
 	//
 	// China-mainland
 	CbnGeographicRegionIdA *string `json:"CbnGeographicRegionIdA,omitempty" xml:"CbnGeographicRegionIdA,omitempty"`
-	// Area B specified in the cross-region acceleration bandwidth plan. Only **Global*	- (global) is returned.
+	// The interconnected area B of the cross-border acceleration bandwidth plan. The value is returned only as **Global**.
 	//
-	// This parameter is returned only if you call this operation on the International site (alibabacloud.com).
+	// This parameter is returned only on the Chinese site (Chinese mainland).
 	//
 	// example:
 	//
 	// Global
 	CbnGeographicRegionIdB *string `json:"CbnGeographicRegionIdB,omitempty" xml:"CbnGeographicRegionIdB,omitempty"`
-	// The billing method of the bandwidth plan.
+	// The billing method. Valid values:
 	//
-	// 	- **PREPAY**: subscription. This is the default value.
+	// - **PREPAY*	- (default): subscription.
 	//
-	// 	- **POSTPAY**: pay-as-you-go.
+	// - **POSTPAY**: pay-as-you-go.
 	//
 	// example:
 	//
 	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The timestamp that indicates when the bandwidth plan was created.
+	// The timestamp when the bandwidth plan was created.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type DescribeBandwidthPackageResponseBody struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The timestamp that indicates when the bandwidth plan expires.
+	// The timestamp when the bandwidth plan expires.
 	//
 	// example:
 	//
@@ -136,61 +136,61 @@ type DescribeBandwidthPackageResponseBody struct {
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The percentage of the minimum bandwidth guaranteed if the pay-by-95th-percentile-bandwidth metering method is used. Valid values: **30*	- to **100**.
+	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: **30*	- to **100**.
 	//
 	// example:
 	//
 	// 30
 	Ratio *int32 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	// The ID of the region where GA instance is deployed. **cn-hangzhou*	- is returned.
+	// The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4B6DBBB0-2D01-4C6A-A384-4129266E6B78
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfnvueepcihjiq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The state of the bandwidth plan. Valid values:
+	// The status of the bandwidth plan. Valid values:
 	//
-	// 	- **init**: The bandwidth plan is being initialized.
+	// - **init**: initialization.
 	//
-	// 	- **active**: The bandwidth plan is available.
+	// - **active**: active.
 	//
-	// 	- **binded**: The bandwidth plan is associated with a GA instance.
+	// - **binded**: attached.
 	//
-	// 	- **binding**: The bandwidth plan is being associated.
+	// - **binding**: being attached.
 	//
-	// 	- **unbinding**: The bandwidth plan is being disassociated.
+	// - **unbinding**: being disassociated.
 	//
-	// 	- **updating**: The bandwidth plan is being updated.
+	// - **updating**: being updated.
 	//
-	// 	- **finacialLocked**: The bandwidth plan is locked due to overdue payments.
+	// - **finacialLocked**: locked due to overdue payment.
 	//
-	// 	- **Locked**: The bandwidth plan is locked.
+	// - **locked**: locked.
 	//
 	// example:
 	//
 	// active
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// Tag objects.
+	// The resource tags.
 	Tags []*DescribeBandwidthPackageResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The type of the bandwidth plan. Valid values:
 	//
-	// 	- **Basic**: a basic bandwidth plan
+	// - **Basic**: basic bandwidth plan.
 	//
-	// 	- **CrossDomain**: a cross-region acceleration bandwidth plan
+	// - **CrossDomain**: cross-border acceleration bandwidth plan.
 	//
-	// If you call this operation on the Alibaba Cloud China Site (aliyun.com), only **Basic*	- is returned.
+	// Only **Basic*	- is returned on the Alibaba Cloud China Website (www.aliyun.com).
 	//
 	// example:
 	//
@@ -391,13 +391,13 @@ func (s *DescribeBandwidthPackageResponseBody) Validate() error {
 }
 
 type DescribeBandwidthPackageResponseBodyTags struct {
-	// The key of tag N that is added to the bandwidth plan.
+	// The tag key.
 	//
 	// example:
 	//
 	// tag-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that is added to the bandwidth plan.
+	// The tag value.
 	//
 	// example:
 	//

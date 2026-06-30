@@ -32,13 +32,13 @@ type UpdateDomainStateResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ICP filing status of the accelerated domain name. Valid values:
 	//
-	// 	- **illegal:*	- The domain name is illegal.
+	// - **illegal:*	- The domain name is illegal.
 	//
-	// 	- **inactive:*	- The domain name has not completed ICP filing.
+	// - **inactive:*	- The domain name has not completed ICP filing.
 	//
-	// 	- **active:*	- The domain name has a valid ICP number.
+	// - **active:*	- The domain name has a valid ICP number.
 	//
-	// 	- **unknown:*	- The ICP filing status is unknown.
+	// - **unknown:*	- The ICP filing status is unknown.
 	//
 	// example:
 	//

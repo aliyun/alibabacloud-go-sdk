@@ -18,7 +18,7 @@ type iUpdateEndpointGroupsResponseBody interface {
 type UpdateEndpointGroupsResponseBody struct {
 	// The IDs of the endpoint groups.
 	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

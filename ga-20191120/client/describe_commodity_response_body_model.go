@@ -24,15 +24,15 @@ type DescribeCommodityResponseBody struct {
 	//
 	// Examples for the China site (aliyun.com):
 	//
-	// 	- **ga_gapluspre_public_cn**: GA instance.
+	// - **ga_gapluspre_public_cn**: GA instance.
 	//
-	// 	- **ga_plusbwppre_public_cn**: basic bandwidth plan.
+	// - **ga_plusbwppre_public_cn**: basic bandwidth plan.
 	//
 	// Examples for the international site (alibabacloud.com):
 	//
-	// 	- **ga_pluspre_public_intl**: GA instance.
+	// - **ga_pluspre_public_intl**: GA instance.
 	//
-	// 	- **ga_bwppreintl_public_intl**: basic bandwidth plan.
+	// - **ga_bwppreintl_public_intl**: basic bandwidth plan.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type DescribeCommodityResponseBodyComponents struct {
 	//
 	// example:
 	//
-	// Duration
+	// Subscription duration
 	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
 	// The name of the commodity module.
 	//
@@ -128,7 +128,7 @@ type DescribeCommodityResponseBodyComponents struct {
 	//
 	// example:
 	//
-	// Duration
+	// Subscription duration
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
 	// The attributes of the commodity module.
 	//
@@ -199,7 +199,7 @@ type DescribeCommodityResponseBodyComponentsProperties struct {
 	//
 	// example:
 	//
-	// Duration
+	// Subscription duration
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of attribute values of the commodity module.
 	//
@@ -270,7 +270,7 @@ type DescribeCommodityResponseBodyComponentsPropertiesPropertyValueList struct {
 	//
 	// example:
 	//
-	// 1 Month
+	// 1 month
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The message of the attribute.
 	//
@@ -278,7 +278,7 @@ type DescribeCommodityResponseBodyComponentsPropertiesPropertyValueList struct {
 	//
 	// example:
 	//
-	// 1 Month
+	// 1 month
 	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
 	// The value of the attribute.
 	//

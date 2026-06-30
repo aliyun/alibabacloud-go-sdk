@@ -18,31 +18,31 @@ type iListCommonAreasRequest interface {
 }
 
 type ListCommonAreasRequest struct {
-	// The IP version used to connect to the GA instance. Valid values:
+	// The IP address protocol used to connect to Global Accelerator (GA). Valid values:
 	//
-	// 	- **IPv4*	- (default)
+	// - **IPv4*	- (default): IPv4 address protocol. Queries regions that support IPv4.
 	//
-	// 	- **IPv6**
+	// - **IPv6**: IPv6 address protocol. Queries regions that support IPv6.
 	//
 	// example:
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// Specifies whether to query regions where endpoint groups of GA can be deployed. Valid values:
+	// Specifies whether the region is an endpoint group region supported by Global Accelerator.
 	//
-	// 	- **true**: yes
+	// - **true**: Yes.
 	//
-	// 	- **false*	- (default): no
+	// - **false*	- (default): No.
 	//
 	// example:
 	//
 	// true
 	IsEpg *bool `json:"IsEpg,omitempty" xml:"IsEpg,omitempty"`
-	// Specifies whether to query regions supported by GA. Valid values:
+	// Specifies whether the region is an acceleration area supported by Global Accelerator.
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): No.
 	//
 	// example:
 	//

@@ -18,9 +18,9 @@ type iBandwidthPackageAddAcceleratorResponseBody interface {
 }
 
 type BandwidthPackageAddAcceleratorResponseBody struct {
-	// The GA instance IDs.
+	// The ID of the Alibaba Cloud Global Accelerator (GA) instance to which the bandwidth plan is attached.
 	Accelerators []*string `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
-	// The bandwidth plan ID.
+	// The ID of the bandwidth plan attached to the Alibaba Cloud Global Accelerator (GA) instance.
 	//
 	// example:
 	//

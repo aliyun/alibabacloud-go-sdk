@@ -16,7 +16,7 @@ type iDescribeEndpointGroupRequest interface {
 }
 
 type DescribeEndpointGroupRequest struct {
-	// The ID of the endpoint group that you want to query.
+	// The ID of the endpoint group.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeEndpointGroupRequest struct {
 	//
 	// epg-bp14sz7ftcwwjgrdm****
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The ID of the region where your Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the Global Accelerator instance. Set the value to **cn-hangzhou**.
 	//
 	// This parameter is required.
 	//

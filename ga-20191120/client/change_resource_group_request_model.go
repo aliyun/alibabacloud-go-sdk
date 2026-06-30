@@ -22,11 +22,11 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of a request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **client token*	- can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId*	- as the value of **ClientToken**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// rg-aekzrnd67gq****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **ap-southeast-1**.
 	//
 	// This parameter is required.
 	//
@@ -48,15 +48,15 @@ type ChangeResourceGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the GA resource.
+	// The instance ID of the Global Accelerator resource for which you want to modify the resource group.
 	//
-	// 	- If you set **ResourceType*	- to **accelerator**, set the value of ResourceId to the ID of a standard GA instance.
+	// - If **ResourceType*	- is set to **accelerator**, set this parameter to the instance ID of a standard Global Accelerator instance.
 	//
-	// 	- If you set **ResourceType*	- to **basicaccelerator**, set the value of ResourceId to the ID of a basic GA instance.
+	// - If **ResourceType*	- is set to **basicaccelerator**, set this parameter to the instance ID of a basic Global Accelerator instance.
 	//
-	// 	- If you set **ResourceType*	- to **bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
+	// - If **ResourceType*	- is set to **bandwidthpackage**, set this parameter to the ID of a bandwidth plan.
 	//
-	// 	- If you set **ResourceType*	- to **acl**, set the value of ResourceId to the ID of an access control list (ACL).
+	// - If **ResourceType*	- is set to **acl**, set this parameter to the ID of an access control policy group.
 	//
 	// This parameter is required.
 	//
@@ -64,15 +64,15 @@ type ChangeResourceGroupRequest struct {
 	//
 	// ga-bp149u6o36qt1as9b****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the GA resource. Valid values:
+	// The type of the Global Accelerator resource for which you want to modify the resource group. Valid values:
 	//
-	// 	- **accelerator:*	- a standard GA instance.
+	// - **accelerator**: a standard Alibaba Cloud Global Accelerator (GA) instance.
 	//
-	// 	- **basicaccelerator:*	- a basic GA instance.
+	// - **basicaccelerator**: a basic Alibaba Cloud Global Accelerator (GA) instance.
 	//
-	// 	- **bandwidthpackage:*	- a bandwidth plan.
+	// - **bandwidthpackage**: a bandwidth plan.
 	//
-	// 	- **acl:*	- an ACL.
+	// - **acl**: an access control policy group.
 	//
 	// This parameter is required.
 	//

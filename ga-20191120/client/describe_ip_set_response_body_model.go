@@ -64,11 +64,11 @@ type DescribeIpSetResponseBody struct {
 	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
 	// The IP version. Valid values:
 	//
-	// 	- **IPv4**
+	// - **IPv4**
 	//
-	// 	- **IPv6**
+	// - **IPv6**
 	//
-	// 	- **DUAL_STACK**
+	// - **DUAL_STACK**
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type DescribeIpSetResponseBody struct {
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values:
 	//
-	// 	- **BGP**: BGP (Multi-ISP) lines. This is the default value.
+	// - **BGP**: BGP (Multi-ISP) lines. This is the default value.
 	//
-	// 	- **BGP_PRO**: BGP (Multi-ISP) Pro lines.
+	// - **BGP_PRO**: BGP (Multi-ISP) Pro lines.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type DescribeIpSetResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the service that manages the instance.
 	//
-	// >  This parameter is returned only if the value of **ServiceManaged*	- is **true**.
+	// > This parameter is returned only if the value of **ServiceManaged*	- is **true**.
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ type DescribeIpSetResponseBody struct {
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// Indicates whether the GA instance is managed. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -110,19 +110,21 @@ type DescribeIpSetResponseBody struct {
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// The actions that users can perform on the managed instance.
 	//
-	// > 	- This parameter is returned only if the value of **ServiceManaged*	- is **true**.
+	// > - This parameter is returned only if the value of **ServiceManaged*	- is **true**.
 	//
-	// >	- Users can perform only specific actions on a managed instance.
+	// >
+	//
+	// > - Users can perform only specific actions on a managed instance.
 	ServiceManagedInfos []*DescribeIpSetResponseBodyServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
 	// The status of the acceleration region. Valid values:
 	//
-	// 	- **init**: The acceleration region is being initialized.
+	// - **init**: The acceleration region is being initialized.
 	//
-	// 	- **active**: The acceleration region is in the running state.
+	// - **active**: The acceleration region is in the running state.
 	//
-	// 	- **updating**: The acceleration region is being configured.
+	// - **updating**: The acceleration region is being configured.
 	//
-	// 	- **deleting**: The GA instance is being deleted.
+	// - **deleting**: The GA instance is being deleted.
 	//
 	// example:
 	//
@@ -262,17 +264,17 @@ func (s *DescribeIpSetResponseBody) Validate() error {
 type DescribeIpSetResponseBodyServiceManagedInfos struct {
 	// The name of the action on the managed instance. Valid values:
 	//
-	// 	- **Create**
+	// - **Create**
 	//
-	// 	- **Update**
+	// - **Update**
 	//
-	// 	- **Delete**
+	// - **Delete**
 	//
-	// 	- **Associate**
+	// - **Associate**
 	//
-	// 	- **UserUnmanaged**
+	// - **UserUnmanaged**
 	//
-	// 	- **CreateChild**
+	// - **CreateChild**
 	//
 	// example:
 	//
@@ -280,21 +282,21 @@ type DescribeIpSetResponseBodyServiceManagedInfos struct {
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// The type of the child resource. Valid values:
 	//
-	// 	- **Listener**: listener.
+	// - **Listener**: listener.
 	//
-	// 	- **IpSet**: acceleration region.
+	// - **IpSet**: acceleration region.
 	//
-	// 	- **EndpointGroup**: endpoint group.
+	// - **EndpointGroup**: endpoint group.
 	//
-	// 	- **ForwardingRule**: forwarding rule.
+	// - **ForwardingRule**: forwarding rule.
 	//
-	// 	- **Endpoint**: endpoint.
+	// - **Endpoint**: endpoint.
 	//
-	// 	- **EndpointGroupDestination**: protocol mapping of an endpoint group associated with a custom routing listener.
+	// - **EndpointGroupDestination**: protocol mapping of an endpoint group associated with a custom routing listener.
 	//
-	// 	- **EndpointPolicy**: traffic policy of an endpoint associated with a custom routing listener.
+	// - **EndpointPolicy**: traffic policy of an endpoint associated with a custom routing listener.
 	//
-	// >  This parameter takes effect only if **Action*	- is set to **CreateChild**.
+	// > This parameter takes effect only if **Action*	- is set to **CreateChild**.
 	//
 	// example:
 	//
@@ -302,9 +304,9 @@ type DescribeIpSetResponseBodyServiceManagedInfos struct {
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
 	// Indicates whether the specified actions are managed.
 	//
-	// 	- **true**: The specified actions are managed, and users cannot perform the actions on the managed instance.
+	// - **true**: The specified actions are managed, and users cannot perform the actions on the managed instance.
 	//
-	// 	- **false**: The specified actions are not managed, and users can perform the actions on the managed instance.
+	// - **false**: The specified actions are not managed, and users can perform the actions on the managed instance.
 	//
 	// example:
 	//

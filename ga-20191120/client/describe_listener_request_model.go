@@ -24,7 +24,7 @@ type DescribeListenerRequest struct {
 	//
 	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the region where the Alibaba Cloud Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
 	//
 	// This parameter is required.
 	//

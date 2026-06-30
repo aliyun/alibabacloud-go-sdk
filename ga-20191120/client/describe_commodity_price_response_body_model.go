@@ -30,9 +30,9 @@ type iDescribeCommodityPriceResponseBody interface {
 type DescribeCommodityPriceResponseBody struct {
 	// The currency unit.
 	//
-	// 	- China site: **CNY**.
+	// - China site: **CNY**.
 	//
-	// 	- International site: **USD**.
+	// - International site: **USD**.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeCommodityPriceResponseBody struct {
 	OriginalPrice *float64 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	// The details of the coupon.
 	//
-	// >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+	// > This parameter does not take effect for accounts registered on the China site (aliyun.com).
 	Promotions []*DescribeCommodityPriceResponseBodyPromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -194,7 +194,7 @@ type DescribeCommodityPriceResponseBodyOrderDetails struct {
 	//
 	// example:
 	//
-	// Global Accelerator_Instance Type (Subscription)
+	// 全球加速_实例规格（包年包月）
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
 	// The discount.
 	//
@@ -212,7 +212,7 @@ type DescribeCommodityPriceResponseBodyOrderDetails struct {
 	OriginalPrice *float64 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	// The details of the discount.
 	//
-	// >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+	// > This parameter does not take effect for accounts registered on the China site (aliyun.com).
 	PromDetails []*DescribeCommodityPriceResponseBodyOrderDetailsPromDetails `json:"PromDetails,omitempty" xml:"PromDetails,omitempty" type:"Repeated"`
 	// The number of instances that are purchased.
 	//
@@ -358,7 +358,7 @@ type DescribeCommodityPriceResponseBodyOrderDetailsModuleDetails struct {
 	//
 	// example:
 	//
-	// Specification
+	// 规格
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 	// The original price.
 	//
@@ -434,7 +434,7 @@ func (s *DescribeCommodityPriceResponseBodyOrderDetailsModuleDetails) Validate()
 type DescribeCommodityPriceResponseBodyOrderDetailsPromDetails struct {
 	// The discounted price.
 	//
-	// >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+	// > This parameter does not take effect for accounts registered on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -442,7 +442,7 @@ type DescribeCommodityPriceResponseBodyOrderDetailsPromDetails struct {
 	FinalPromFee *float64 `json:"FinalPromFee,omitempty" xml:"FinalPromFee,omitempty"`
 	// The code of the discount option.
 	//
-	// >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+	// > This parameter does not take effect for accounts registered on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -450,7 +450,7 @@ type DescribeCommodityPriceResponseBodyOrderDetailsPromDetails struct {
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
 	// The sub-type of the discount.
 	//
-	// >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+	// > This parameter does not take effect for accounts registered on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -458,7 +458,7 @@ type DescribeCommodityPriceResponseBodyOrderDetailsPromDetails struct {
 	PromType *string `json:"PromType,omitempty" xml:"PromType,omitempty"`
 	// The ID of the discount item.
 	//
-	// >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+	// > This parameter does not take effect for accounts registered on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -466,7 +466,7 @@ type DescribeCommodityPriceResponseBodyOrderDetailsPromDetails struct {
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The name of the discount item.
 	//
-	// >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+	// > This parameter does not take effect for accounts registered on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -534,7 +534,7 @@ func (s *DescribeCommodityPriceResponseBodyOrderDetailsPromDetails) Validate() e
 type DescribeCommodityPriceResponseBodyPromotions struct {
 	// The discounted amount.
 	//
-	// >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+	// > This parameter does not take effect for accounts registered on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -542,7 +542,7 @@ type DescribeCommodityPriceResponseBodyPromotions struct {
 	CanPromFee *float64 `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
 	// The code of the commodity to which the coupon can be applied.
 	//
-	// >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+	// > This parameter does not take effect for accounts registered on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -550,7 +550,7 @@ type DescribeCommodityPriceResponseBodyPromotions struct {
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
 	// The name of the coupon.
 	//
-	// >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+	// > This parameter does not take effect for accounts registered on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -558,9 +558,11 @@ type DescribeCommodityPriceResponseBodyPromotions struct {
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 	// The code of the coupon.
 	//
-	// > 	- `youhuiquan_promotion_option_id_for_blank` indicates coupons that cannot be applied to the commodity.
+	// > - `youhuiquan_promotion_option_id_for_blank` indicates coupons that cannot be applied to the commodity.
 	//
-	// > 	- This parameter does not take effect for accounts registered on the China site (aliyun.com).
+	// >
+	//
+	// > - This parameter does not take effect for accounts registered on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -568,11 +570,11 @@ type DescribeCommodityPriceResponseBodyPromotions struct {
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 	// Indicates whether the coupon was selected.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
-	// >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+	// > This parameter does not take effect for accounts registered on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -648,7 +650,7 @@ type DescribeCommodityPriceResponseBodyRuleDetails struct {
 	//
 	// example:
 	//
-	// GA New Customers Small II Specification Monthly Subscription - 20% Discount
+	// GA新客户小型II规格月付-8折优惠
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 

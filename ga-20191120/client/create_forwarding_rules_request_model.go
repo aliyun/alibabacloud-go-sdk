@@ -22,7 +22,7 @@ type iCreateForwardingRulesRequest interface {
 }
 
 type CreateForwardingRulesRequest struct {
-	// The ID of the GA instance.
+	// The ID of the Global Accelerator instance.
 	//
 	// This parameter is required.
 	//
@@ -32,15 +32,15 @@ type CreateForwardingRulesRequest struct {
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can generate a client token from your client and make sure that the client token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the request as the **ClientToken**. The **RequestId*	- of each request is different.
 	//
 	// example:
 	//
 	// 02fb3da4****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The configurations of the forwarding rules.
+	// The forwarding rule configurations.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type CreateForwardingRulesRequest struct {
 	//
 	// lsr-bp1s0vzbi5bxlx5****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the region where the Global Accelerator instance is deployed. The only valid value is **cn-hangzhou**.
 	//
 	// This parameter is required.
 	//
@@ -133,29 +133,31 @@ func (s *CreateForwardingRulesRequest) Validate() error {
 }
 
 type CreateForwardingRulesRequestForwardingRules struct {
-	// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	// The name of the forwarding rule. The name must be 2 to 128 characters long. It must start with a letter or a Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// test
 	ForwardingRuleName *string `json:"ForwardingRuleName,omitempty" xml:"ForwardingRuleName,omitempty"`
-	// The priority of the forwarding rule. Valid values: **1*	- to **10000**. A lower value specifies a higher priority.
+	// The priority of the forwarding rule.
+	//
+	// Valid values: **1*	- to **10000**. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
-	// 1000
+	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The configurations of the forwarding action.
+	// The rule actions.
 	//
 	// This parameter is required.
 	RuleActions []*CreateForwardingRulesRequestForwardingRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
-	// The forwarding conditions.
+	// The rule conditions.
 	//
 	// This parameter is required.
 	RuleConditions []*CreateForwardingRulesRequestForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
-	// The direction in which the rule takes effect. You do not need to specify this parameter.
+	// The direction in which the rule takes effect. This parameter does not need to be configured.
 	//
-	// By default, this parameter is set to **request**, which specifies that the rule takes effect on requests.
+	// By default, this parameter is set to **request**, which indicates that the rule applies to requests.
 	//
 	// example:
 	//
@@ -239,13 +241,13 @@ func (s *CreateForwardingRulesRequestForwardingRules) Validate() error {
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleActions struct {
-	// The forwarding configurations.
+	// The forwarding configuration.
 	//
-	// >  We recommend that you use **RuleActionType*	- and **RuleActionValue*	- rather than this parameter to configure forwarding conditions.
+	// > This parameter is deprecated. We recommend that you use **RuleActionType*	- and **RuleActionValue*	- to configure rule actions.
 	ForwardGroupConfig *CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// The forwarding priority.
+	// The priority of the action.
 	//
-	// >  This parameter does not take effect. Ignore this parameter.
+	// > This parameter is not in use and can be ignored.
 	//
 	// This parameter is required.
 	//
@@ -253,21 +255,21 @@ type CreateForwardingRulesRequestForwardingRulesRuleActions struct {
 	//
 	// 20
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The type of the forwarding action. Valid values:
+	// The type of the rule action. Valid values:
 	//
-	// 	- **ForwardGroup**: forwards a request.
+	// - **ForwardGroup**: Forwards requests.
 	//
-	// 	- **Redirect**: redirects a request.
+	// - **Redirect**: Redirects requests.
 	//
-	// 	- **FixResponse**: returns a fixed response.
+	// - **FixResponse**: Returns a fixed response.
 	//
-	// 	- **Rewrite**: rewrites a request.
+	// - **Rewrite**: Rewrites requests.
 	//
-	// 	- **AddHeader**: adds a header to a request.
+	// - **AddHeader**: Adds a header.
 	//
-	// 	- **RemoveHeaderConfig**: deletes the header from a request.
+	// - **RemoveHeader**: Removes a header.
 	//
-	// 	- **Drop**: drops a request.
+	// - **Drop**: Drops requests.
 	//
 	// This parameter is required.
 	//
@@ -275,63 +277,63 @@ type CreateForwardingRulesRequestForwardingRulesRuleActions struct {
 	//
 	// ForwardGroup
 	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
-	// The value of the forwarding action.
+	// The value for the rule action.
 	//
-	// You must specify different JSON strings based on the **RuleActionType*	- parameter.
+	// This is a JSON-formatted string whose structure depends on the specified **RuleActionType**.
 	//
-	// A forwarding rule can contain only one forwarding action whose type is **ForwardGroup**, **Redirect**, or **FixResponse**. You must specify a forwarding action whose type is **Rewrite**, **AddHeader**, or **RemoveHeader*	- before a forwarding action whose type is **ForwardGroup**.
+	// A forwarding rule can have at most one action of type **ForwardGroup**, **Redirect**, or **FixResponse**. Actions of type **Rewrite**, **AddHeader**, and **RemoveHeader*	- must be specified before a **ForwardGroup*	- action.
 	//
-	// 	- If **RuleActionType*	- is set to **ForwardGroup**, this parameter specifies the information of a virtual endpoint group. You can forward requests to only one virtual endpoint group. Example: `{"type":"endpointgroup", "value":"epg-bp1enpdcrqhl78g6r****"}`.
+	// - If **RuleActionType*	- is set to **ForwardGroup**, this parameter specifies the endpoint group. You can forward requests to only one endpoint group. Example: `{"type":"endpointgroup", "value":"epg-bp1enpdcrqhl78g6r****"}`, where:
 	//
-	//     	- `type`: Set this parameter to `endpointgroup`.
+	//   - `type`: Set the value to` endpointgroup`.
 	//
-	//     	- `value`: Set this parameter to the ID of a virtual endpoint group.
+	//   - `value`: The ID of the target endpoint group.
 	//
-	// 	- If **RuleActionType*	- is set to **Redirect**, this parameter specifies redirecting configurations. You cannot leave all the following parameters empty or use the default values for all the following parameters for a forwarding action whose type is **Redirect**: `protocol`, `domain`, `port`, `path`, and `query`. Example: `{"protocol":"HTTP", "domain":"www.example.com", "port":"80", "path":"/a","query":"value1", "code":"301" }`.
+	// - If **RuleActionType*	- is set to **Redirect**, this parameter specifies the redirect configuration. At least one of the `protocol`, `domain`, `port`, `path`, or `query` fields must be set to a value other than its default. Example: `{"protocol":"HTTP", "domain":"www.example.com", "port":"80", "path":"/a","query":"value1", "code":"301" }`, where:
 	//
-	//     	- `protocol`: the protocol of requests after the requests are redirected. Valid values: `${protocol}` (default), `HTTP`, and `HTTPS`.
+	//   - `protocol`: The protocol for the redirect. Valid values: `${protocol}` (default), `HTTP`, and `HTTPS`.
 	//
-	//     	- `domain`: the domain name to which requests are redirected. Default value: `${host}`. You can also enter a domain name. The domain name must be 3 to 128 characters in length, and can contain only letters, digits, and the following special characters: `. - ? = ~ _ - + / ^ 	- ! $ & | ( ) [ ]`.
+	//   - `domain`: The domain name for the redirect. The default value is `${host}`. You can also specify another domain name. A domain name must be 3 to 128 characters long and can contain only lowercase letters, digits, and the following special characters:` .-=~_-+/^*!$&()[]?`.
 	//
-	//     	- `port`: the port to which requests are redirected. Default value: `${port}`. You can enter a port number that ranges from 1 to 63335.
+	//   - `port`: The port for the redirect. The default value is `${port}`. You can also specify a port number. Valid values: 1 to 63335.
 	//
-	//     	- `path`: the path to which requests are redirected. Default value: `${path}`. The path must be 1 to 128 characters in length. To use a regular expression, the path can contain letters, digits, and the following special characters: `. - _ / = ? ~ ^ 	- $ : ( ) [ ] +`. The path must start with a tilde (~). If you do not want to use a regular expression, the path can contain letters, digits, and the following special characters: `. - _ / = ? :`. The path must start with a forward slash (/).
+	//   - `path`: The path for the redirect. The default value is `${path}`. The path must be 1 to 128 characters long. For a regular expression path, it must start with a tilde (\\~) and can contain uppercase and lowercase letters, digits, and the following special characters:` .-_/=?~^*$:()[]+`. For a non-regular expression path, it must start with a forward slash (/) and can contain uppercase and lowercase letters, digits, and the following special characters:` .-_/=:?`.
 	//
-	//     	- `query`: the query string to which requests are redirected. Default value: `${query}`. You can also specify a query string. The query string must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. The query string cannot contain uppercase letters, space characters, or the following special characters: `[ ] { } < > # &`.
+	//   - `query`: The query string for the redirect. The default value is `${query}`. You can also specify another query string. The query string must be 1 to 128 characters long and contain only printable characters within the ASCII range of` ch >= 32 && ch < 127`. Letters must be lowercase. Spaces and the following special characters are not supported:` []{}<>\\#&`.
 	//
-	//     	- `code`: the redirect code. Valid values: `301`, `302`, `303`, `307`, and `308`.
+	//   - `code`: The redirect code. Valid values: `301`, `302`, `303`, `307`, and `308`.
 	//
-	// 	- If **RuleActionType*	- is set to **FixResponse**, this parameter specifies a fixed response. Example: `{"code":"200", "type":"text/plain", "content":"dssacav" }`.
+	// - If **RuleActionType*	- is set to **FixResponse**, this parameter specifies the fixed response configuration. Example: `{"code":"200", "type":"text/plain", "content":"dssacav" }`, where:
 	//
-	//     	- `code`: the HTTP response status code. The response status code must be one of the following numeric strings: `2xx`, `4xx`, and `5xx`. The letter `x` is a digit.
+	//   - `code`: The response status code. The value must be a numeric string in the `2xx`, `4xx`, or `5xx` format, where `x` is any digit.
 	//
-	//     	- `type`: the type of the response content. Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**.
+	//   - `type`: The content type of the response body. Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**.
 	//
-	//     	- `content`: the response content. The response content cannot exceed 1,000 characters in length, and does not support Chinese characters.
+	//   - `content`: The content of the response body. The content cannot exceed 1,000 characters and does not support Chinese characters.
 	//
-	// 	- If **RuleActionType*	- is set to **AddHeader**, this parameter specifies an HTTP header to be added. If a forwarding rule contains a forwarding action whose type is **AddHeader**, you must specify another forwarding action whose type is **ForwardGroup**. Example: `[{"name":"header1","type":"userdefined", "value":"value"}]`.
+	// - If **RuleActionType*	- is set to **AddHeader**, this parameter specifies the configuration for adding an HTTP header. If a forwarding rule contains an **AddHeader*	- action, it must also contain a **ForwardGroup*	- action. Example: `[{"name":"header1","type":"user-defined", "value":"value"}]`, where:
 	//
-	//     	- `name`: the name of the HTTP header. The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). The name of the HTTP header specified by **AddHeader*	- must be unique and cannot be the same as the name of the HTTP header specified by **RemoveHeader**.
+	//   - `name`: The name of the HTTP header. The name must be 1 to 40 characters long and can contain uppercase and lowercase letters, digits, hyphens (-), and underscores (_). The header names in **AddHeader*	- actions must be unique and cannot be the same as any header name in a **RemoveHeader*	- action.
 	//
-	//     	- `type`: the content type of the HTTP header. Valid values: `user-defined`, `ref`, and `system-defined`.
+	//   - `type`: The type of the header value. Valid values: `user-defined`, `ref` (reference), and `system-defined`.
 	//
-	//     	- `value`: the content of the HTTP header. You cannot leave this parameter empty. If you set `type` to `user-defined`, the content must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. The content can contain letters, digits, hyphens (-), and underscores (_*). The content cannot start or end with a space character. If you set `type` to `ref`, the content must be 1 to 128 characters in length, and can contain letters, digits, hyphens (-), and underscores (_*). The content cannot start or end with a space character. If you set `type` to `system-defined`, only `ClientSrcIp` is supported.
+	//   - `value`: The content of the HTTP header. This field cannot be empty. If `type` is `user-defined`, the value must be 1 to 128 characters long and contain only printable characters within the ASCII range of `ch >= 32 && ch < 127`. The value can contain uppercase and lowercase letters, digits, hyphens (-), and underscores (_), and cannot start or end with a space. If `type` is `ref`, the value must be 1 to 128 characters long and can contain uppercase and lowercase letters, digits, hyphens (-), and underscores (_). The value cannot start or end with a space. If `type` is `system-defined`, the only valid value is `ClientSrcIp`.
 	//
-	// 	- If **RuleActionType*	- is set to **RemoveHeader**, this parameter specifies an HTTP header to be removed. If a forwarding rule contains a forwarding action whose type is **RemoveHeader**, you must specify another forwarding action whose type is **ForwardGroup**. The header must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). Example: `["header1"]`.
+	// - If **RuleActionType*	- is set to **RemoveHeader**, this parameter specifies the HTTP headers to remove. If a forwarding rule contains a **RemoveHeader*	- action, it must also contain a **ForwardGroup*	- action. The value must be 1 to 40 characters long and can contain uppercase and lowercase letters, digits, hyphens (-), and underscores (_). Example: `["header1"]`.
 	//
-	// 	- If **RuleActionType*	- is set to **Rewrite**, this parameter specifies the rewriting configuration. If a forwarding rule contains a forwarding action whose type is **Rewrite**, you must specify another forwarding action whose type is **ForwardGroup**. Example: `{"domain":"value1", "path":"value2", "query":"value3"}`.
+	// - If **RuleActionType*	- is set to **Rewrite**, this parameter specifies the rewrite configuration. If a forwarding rule contains a **Rewrite*	- action, it must also contain a **ForwardGroup*	- action. Example: `{"domain":"value1", "path":"value2", "query":"value3"}`, where:
 	//
-	//     	- `domain`: the domain name to which requests are redirected. Default value: `${host}`. You can also enter a domain name. The domain name must be 3 to 128 characters in length, and can contain only lowercase letters, digits, and the following special characters: `. - ? = ~ _ - + / ^ 	- ! $ & | ( ) [ ]`.
+	//   - `domain`: The domain name to rewrite. The default value is `${host}`. You can also specify another domain name. A domain name must be 3 to 128 characters long and can contain only lowercase letters, digits, and the following special characters:` .-=~_-+/^*!$&()[]?`.
 	//
-	//     	- `path`: the path to which requests are redirected. Default value: `${path}`. The path must be 1 to 128 characters in length. To use a regular expression, the path can contain letters, digits, and the following special characters: `. - _ / = ? ~ ^ 	- $ : ( ) [ ] +`. The path must start with a tilde (~). If you do not want to use a regular expression, the path can contain letters, digits, and the following special characters: `. - _ / = ? :`. The path must start with a forward slash (/).
+	//   - `path`: The path to rewrite. The default value is `${path}`. The path must be 1 to 128 characters long. For a regular expression path, it must start with a tilde (\\~) and can contain uppercase and lowercase letters, digits, and the following special characters:` .-_/=?~^*$:()[]+`. For a non-regular expression path, it must start with a forward slash (/) and can contain uppercase and lowercase letters, digits, and the following special characters:` .-_/=:?`.
 	//
-	//     	- `query`: the query string to which requests are redirected. Default value: `${query}`. You can also specify a query string. The query string must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. The query string cannot contain uppercase letters, space characters, or the following special characters: `[ ] { } < > # &`.
+	//   - `query`: The query string to rewrite. The default value is `${query}`. You can also specify another query string. The query string must be 1 to 128 characters long and contain only printable characters within the ASCII range of` ch >= 32 && ch < 127`. Letters must be lowercase. Spaces and the following special characters are not supported:` []{}<>\\#&`.
 	//
-	// 	- If **RuleActionType*	- is set to **Drop**, you do not need to specify this parameter.
+	// - If **RuleActionType*	- is set to **Drop**, you do not need to specify a value for this parameter.
 	//
 	// example:
 	//
-	// [{"type":"endpointgroup", "value":"epg-bp1enpdcrqhl78g6r****"}]
+	// [{"type":"endpointgroup","value":"epg-bp1l49ltx6iengvf2ks5z****"}]
 	RuleActionValue *string `json:"RuleActionValue,omitempty" xml:"RuleActionValue,omitempty"`
 }
 
@@ -389,9 +391,9 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleActions) Validate() erro
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig struct {
-	// The configurations of an endpoint group.
+	// The endpoint group configuration.
 	//
-	// >  We recommend that you use **RuleActionType*	- and **RuleActionValue*	- rather than this parameter to configure forwarding conditions.
+	// > This parameter is deprecated. We recommend that you use **RuleActionType*	- and **RuleActionValue*	- to configure rule actions.
 	//
 	// This parameter is required.
 	ServerGroupTuples []*CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
@@ -430,13 +432,13 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfi
 type CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfigServerGroupTuples struct {
 	// The ID of the endpoint group.
 	//
-	// >  We recommend that you use **RuleActionType*	- and **RuleActionValue*	- rather than this parameter to configure forwarding conditions.
+	// > This parameter is deprecated. We recommend that you use **RuleActionType*	- and **RuleActionValue*	- to configure rule actions.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// epg-bp1ieei9664r5nv****
+	// epg-bp1nktp3qgbcq9ih6****
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 }
 
@@ -462,61 +464,63 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfi
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleConditions struct {
-	// The configuration of the domain name.
+	// The domain name configuration.
 	//
-	// >  We recommend that you use **RuleConditionType*	- and **RuleConditionValue*	- rather than this parameter to configure forwarding conditions.
+	// > This parameter is deprecated. We recommend that you use **RuleConditionType*	- and **RuleConditionValue*	- to configure rule conditions.
 	HostConfig *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-	// The configuration of the path.
+	// The path configuration.
 	//
-	// >  We recommend that you use **RuleConditionType*	- and **RuleConditionValue*	- rather than this parameter to configure forwarding conditions.
+	// > This parameter is deprecated. We recommend that you use **RuleConditionType*	- and **RuleConditionValue*	- to configure rule conditions.
 	PathConfig *CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	// The type of the forwarding condition. Valid values:
+	// The type of the rule condition. Valid values:
 	//
-	// 	- **Host**: Requests are forwarded based on domain names.
+	// - **Host**: Matches requests by domain name.
 	//
-	// 	- **Path**: Requests are forwarded based on paths.
+	// - **Path**: Matches requests by path.
 	//
-	// 	- **RequestHeader**: Requests are forwarded based on HTTP headers.
+	// - **RequestHeader**: Matches requests by HTTP header.
 	//
-	// 	- **Query**: Requests are forwarded based on query strings.
+	// - **Query**: Matches requests by query string.
 	//
-	// 	- **Method**: Requests are forwarded based on HTTP request methods.
+	// - **Method**: Matches requests by HTTP method.
 	//
-	// 	- **Cookie**: Requests are forwarded based on cookies.
+	// - **Cookie**: Matches requests by cookie.
 	//
-	// 	- **SourceIP**: Requests are forwarded based on source IP addresses.
+	// - **SourceIP**: Matches requests by source IP address.
 	//
 	// example:
 	//
 	// Host
 	RuleConditionType *string `json:"RuleConditionType,omitempty" xml:"RuleConditionType,omitempty"`
-	// The value of the forwarding condition. You must specify different JSON strings based on **RuleConditionType**.
+	// The value of the rule condition.
 	//
-	// 	- If **RuleConditionType*	- is set to **Host**, RuleConditionValue specifies a domain name condition. A forwarding rule can contain only one forwarding condition of the Host type. You can specify multiple domain names in a forwarding condition. The relationship between multiple domain names is OR. The domain name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), and periods (.). You can use asterisks (\\*) and question marks (?) as wildcard characters. Example: `["www.example.com", "www.aliyun.com"]`.
+	// This is a JSON-formatted string whose structure depends on the specified **RuleConditionType**.
 	//
-	// 	- If **RuleConditionType*	- is set to **Path**, RuleConditionValue specifies a path condition. A forwarding rule can contain multiple forwarding conditions of the Path type. The relationship between multiple path conditions is OR. You can specify multiple paths in a forwarding condition. The relationship between multiple paths is OR. The path must be 1 to 128 characters in length, and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ : \\". Supported wildcard characters are asterisks (\\*) and question marks (?). Example: `["/a", "/b/"]`.
+	// - If **RuleConditionType*	- is set to **Host**, this parameter specifies the domain name conditions. A forwarding rule can have only one **Host*	- rule condition. This rule condition can contain multiple domain names, which are evaluated with a logical OR. A domain name must be 3 to 128 characters long and can contain letters, digits, hyphens (-), and periods (.). You can use asterisks (\\*) and question marks (?) as wildcards. Example: `["www.example.com", "www.aliyun.com"]`.
 	//
-	// 	- If **RuleConditionType*	- is set to **RequestHeader**, RuleConditionValue specifies an HTTP header condition. An HTTP header consists of a key and a value. The header values in a forwarding condition must be unique. Example: `[{"header1":["value1","value2"]}]`.
+	// - If **RuleConditionType*	- is set to **Path**, this parameter specifies the path conditions. A forwarding rule can have multiple **Path*	- rule conditions, which are evaluated with a logical OR. Each path rule condition can contain multiple paths, which are also evaluated with a logical OR. A path must be 1 to 128 characters long and must start with a forward slash (/). It can contain letters, digits, dollar signs ($), hyphens (-), underscores (_), periods (.), plus signs (+), forward slashes (/), ampersands (&), tildes (\\~), at signs (@), colons (:), and apostrophes (\\"). You can use asterisks (\\*) and question marks (?) as wildcards. Example: `["/a", "/b/"]`.
 	//
-	//     	- Key: The key of an HTTP header must be 1 to 40 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	// - If **RuleConditionType*	- is set to **RequestHeader**, this parameter specifies the HTTP header conditions. The value is a key-value pair. The header values within the same rule condition must be unique. Example: `[{"header1":["value1","value2"]}]`.
 	//
-	//     	- Value: The value of an HTTP header must be 1 to 128 characters in length and can contain printable characters whose ASCII values `are larger than or equal to 32 and smaller than 127`. The value cannot start or end with a space.
+	//   - Key: The HTTP header key must be 1 to 40 characters long and can contain letters, digits, hyphens (-), and underscores (_).
 	//
-	// 	- If **RuleConditionType*	- is set to **Query**, RuleConditionValue specifies a query string condition. A query string consists of a key and a value. Example: `[{"query1":["value1"]}, {"query2":["value2"]}]`.
+	//   - Value: The HTTP header value must be 1 to 128 characters long and contain only printable characters within the ASCII range of` ch >= 32 && ch < 127`. The value cannot start or end with a space.
 	//
-	//     	- Key: The key must be 1 to 100 characters in length and can contain printable characters whose ASCII values `are larger than or equal to 32 and smaller than 127`, excluding uppercase letters, spaces, and the following special characters: `[ ] { } < > \\ ; / ? : @ & = + , $ % " ^ ~`.
+	// - If **RuleConditionType*	- is set to **Query**, this parameter specifies the query string conditions. The value is a key-value pair. Example: `[{"query1":["value1"]}, {"query2":["value2"]}]`.
 	//
-	//     	- Value: The value must be 1 to 128 characters in length and can contain printable characters whose ASCII values `are larger than or equal to 32 and smaller than 127`, excluding uppercase letters, spaces, and the following special characters: `[ ] { } < > \\ ; / ? : @ & = + , $ % " ^ ~`.
+	//   - Key: The key must be 1 to 100 characters long and contain only printable characters within the ASCII range of` ch >= 32 && ch < 127`. Letters must be lowercase. Spaces and the following characters are not supported:` []{}<>\\;/?:@&=+,$%"^~`.
 	//
-	// 	- If **RuleConditionType*	- is set to **Method**, RuleConditionValue specifies an HTTP method condition. Valid values: **HEAD**, **GET**, **POST**, **OPTIONS**, **PUT**, **PATCH**, and **DELETE**. Example: `["GET", "OPTIONS", "POST"]`.
+	//   - Value: The value must be 1 to 128 characters long and contain only printable characters within the ASCII range of` ch >= 32 && ch < 127`. Letters must be lowercase. Spaces and the following characters are not supported:` []{}<>\\;/?:@&=+,$%"^~`.
 	//
-	// 	- If **RuleConditionType*	- is set to **Cookie**, RuleConditionValue specifies a cookie condition. A cookie consists of a key and a value. Example: `[{"cookie1":["value1"]}, {"cookie2":["value2"]}]`.
+	// - If **RuleConditionType*	- is set to **Method**, this parameter specifies the HTTP method conditions. Valid values: **HEAD**, **GET**, **POST**, **OPTIONS**, **PUT**, **PATCH**, and **DELETE**. Example: `["GET", "OPTIONS", "POST"]`.
 	//
-	//     	- Key: The key of a cookie must be 1 to 100 characters in length and can contain printable characters whose ASCII values `are larger than or equal to 32 and smaller than 127`, excluding uppercase letters, spaces, and the following special characters: `# [ ] { } \\ < > &`.
+	// - If **RuleConditionType*	- is set to **Cookie**, this parameter specifies the cookie conditions. The value is a key-value pair. Example: `[{"cookie1":["value1"]}, {"cookie2":["value2"]}]`
 	//
-	//     	- Value: The value of a cookie must be 1 to 128 characters in length and can contain printable characters whose ASCII values `are larger than or equal to 32 and smaller than 127`, excluding uppercase letters, spaces, and the following special characters: `# [ ] { } \\ < > &`.
+	//   - Key: The cookie key must be 1 to 100 characters long and contain only printable characters within the ASCII range of` ch >= 32 && ch < 127`. Letters must be lowercase. Spaces and the following characters are not supported:` #[]{}\\<>&`.
 	//
-	// 	- If **RuleConditionType*	- is set to **SourceIP**, RuleConditionValue specifies a source IP address condition. IP addresses, such as 1.1.XX.XX/32, and CIDR blocks, such as 2.2.XX.XX/24, are supported. A forwarding rule can contain only one forwarding condition of the SourceIP type. You can specify multiple source IP addresses or CIDR blocks in a forwarding condition. The relationship between multiple IP addresses or CIDR blocks is OR. Example: `["1.1.XX.XX/32", "2.2.XX.XX/24"]`.
+	//   - Value: The cookie value must be 1 to 128 characters long and contain only printable characters within the ASCII range of` ch >= 32 && ch < 127`. Letters must be lowercase. Spaces and the following characters are not supported:` #[]{}\\<>&`.
+	//
+	// - If **RuleConditionType*	- is set to **SourceIP**, this parameter specifies the source IP conditions. You can specify IP addresses, for example, `1.1.XX.XX/32`, or CIDR blocks, for example, `2.2.XX.XX/24`. A forwarding rule can have only one **SourceIP*	- rule condition. This rule condition can contain multiple source IP addresses, which are evaluated with a logical OR. Example: `["1.1.XX.XX/32", "2.2.XX.XX/24"]`.
 	//
 	// example:
 	//
@@ -583,9 +587,9 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleConditions) Validate() e
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig struct {
-	// The domain name.
+	// The domain name configuration.
 	//
-	// >  We recommend that you use **RuleConditionType*	- and **RuleConditionValue*	- rather than this parameter to configure forwarding conditions.
+	// > This parameter is deprecated. We recommend that you use **RuleConditionType*	- and **RuleConditionValue*	- to configure rule conditions.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -611,11 +615,11 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) Va
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig struct {
-	// The path.
+	// The path configuration.
 	//
-	// The path must be 1 to 128 characters in length, and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ : \\". Supported wildcard characters are asterisks (\\*) and question marks (?).
+	// A path must be 1 to 128 characters long and must start with a forward slash (/). It can contain letters, digits, dollar signs ($), hyphens (-), underscores (_), periods (.), plus signs (+), forward slashes (/), ampersands (&), tildes (\\~), at signs (@), colons (:), and apostrophes (\\"). You can use asterisks (\\*) and question marks (?) as wildcards.
 	//
-	// >  We recommend that you use **RuleConditionType*	- and **RuleConditionValue*	- rather than this parameter to configure forwarding conditions.
+	// > This parameter is deprecated. We recommend that you use **RuleConditionType*	- and **RuleConditionValue*	- to configure rule conditions.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

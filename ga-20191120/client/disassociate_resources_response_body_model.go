@@ -18,15 +18,19 @@ type iDisassociateResourcesResponseBody interface {
 }
 
 type DisassociateResourcesResponseBody struct {
+	// Alibaba Cloud Global Accelerator (GA) instance ID.
+	//
 	// example:
 	//
 	// ga-bp1odcab8tmno0hdq****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// Linked instance ID.
+	//
 	// example:
 	//
 	// c66d65f411b9143bab253bfef61c03c48
 	AssociatedResourceId *string `json:"AssociatedResourceId,omitempty" xml:"AssociatedResourceId,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//

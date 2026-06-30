@@ -18,19 +18,19 @@ type iListBandwidthackagesRequest interface {
 }
 
 type ListBandwidthackagesRequest struct {
-	// The page number. Default value: **1**.
+	// The page number of the list. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **100**. Default value: **10**.
+	// The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the Global Accelerator instance. Set the value to **cn-hangzhou**.
 	//
 	// This parameter is required.
 	//

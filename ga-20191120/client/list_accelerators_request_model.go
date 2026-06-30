@@ -26,7 +26,7 @@ type iListAcceleratorsRequest interface {
 }
 
 type ListAcceleratorsRequest struct {
-	// The ID of the GA instance.
+	// The ID of the Global Accelerator instance.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListAcceleratorsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Deprecated
 	//
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the Global Accelerator instance. Set the value to **cn-hangzhou**.
 	//
 	// This parameter is required.
 	//
@@ -60,27 +60,27 @@ type ListAcceleratorsRequest struct {
 	//
 	// rg-aekztkx4zwc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the GA instance. Valid values:
+	// The state of the Global Accelerator instance. Valid values:
 	//
-	// 	- **init**: The GA instance is being initialized.
+	// - **init**: The instance is being initialized.
 	//
-	// 	- **active**: The GA instance is available.
+	// - **active**: The instance is active.
 	//
-	// 	- **configuring**: The GA instance is being configured.
+	// - **configuring**: The instance is being configured.
 	//
-	// 	- **binding**: The GA instance is being associated.
+	// - **binding**: The instance is being bound.
 	//
-	// 	- **unbinding**: The GA instance is being disassociated.
+	// - **unbinding**: The instance is being unbound.
 	//
-	// 	- **deleting**: The GA instance is being deleted.
+	// - **deleting**: The instance is being deleted.
 	//
-	// 	- **finacialLocked**: The GA instance is locked due to overdue payments.
+	// - **finacialLocked**: The instance is locked due to an overdue payment.
 	//
 	// example:
 	//
 	// active
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The tags of the GA instance.
+	// The tags of the resource.
 	Tag []*ListAcceleratorsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -169,9 +169,9 @@ func (s *ListAcceleratorsRequest) Validate() error {
 }
 
 type ListAcceleratorsRequestTag struct {
-	// The tag key of the GA resource. The tag key cannot be an empty string.
+	// The tag key of the Global Accelerator resource. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// You can specify up to 20 tag keys.
 	//
@@ -179,9 +179,9 @@ type ListAcceleratorsRequestTag struct {
 	//
 	// tag-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the GA resource. The tag value can be an empty string.
+	// The tag value of the Global Accelerator resource. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// You can specify up to 20 tag values.
 	//

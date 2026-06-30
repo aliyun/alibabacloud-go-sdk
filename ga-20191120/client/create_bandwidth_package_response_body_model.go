@@ -18,7 +18,7 @@ type iCreateBandwidthPackageResponseBody interface {
 }
 
 type CreateBandwidthPackageResponseBody struct {
-	// The ID of the bandwidth plan.
+	// The bandwidth plan ID.
 	//
 	// example:
 	//
@@ -26,15 +26,17 @@ type CreateBandwidthPackageResponseBody struct {
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The order ID.
 	//
-	// If bills are not automatically paid, you must go to the Order Center to complete the payments.
+	// <props="china">This parameter is returned only when you set ChargeType to PREPAY. If you set AutoPay to false, go to the [Order Hub](https://usercenter2.aliyun.com/order/list) to complete the payment.
 	//
-	// This parameter is returned only if ChargeType is set to PREPAY. If AutoPay is set to false, you must go to the [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
+	// <props="intl">
+	//
+	// This parameter is returned only when you set ChargeType to PREPAY. If you set AutoPay to false, go to the [Order Hub](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
 	//
 	// example:
 	//
 	// 208257****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

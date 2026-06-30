@@ -16,8 +16,9 @@ type iGetGlobalAcceleratorResourcesResponseBody interface {
 }
 
 type GetGlobalAcceleratorResourcesResponseBody struct {
+	// List of linked instances.
 	AssociatedResources []*GetGlobalAcceleratorResourcesResponseBodyAssociatedResources `json:"AssociatedResources,omitempty" xml:"AssociatedResources,omitempty" type:"Repeated"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -65,26 +66,50 @@ func (s *GetGlobalAcceleratorResourcesResponseBody) Validate() error {
 }
 
 type GetGlobalAcceleratorResourcesResponseBodyAssociatedResources struct {
+	// Instance ID of Alibaba Cloud Global Accelerator (GA).
+	//
 	// example:
 	//
 	// ga-bp1odcab8tmno0hdq****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// Association pattern:
+	//
+	// - **Managed**: Managed mode, where GA restricts user operations based on management policies.
+	//
+	// - **Associated*	- (default): Loose coupling association, where GA does not restrict user operations; WAF uses loose coupling.
+	//
 	// example:
 	//
 	// Associated
 	AssociatedMode *string `json:"AssociatedMode,omitempty" xml:"AssociatedMode,omitempty"`
+	// ID of the linked instance.
+	//
 	// example:
 	//
 	// waf_v2_public_cn-x0r****gr1i
 	AssociatedResourceId *string `json:"AssociatedResourceId,omitempty" xml:"AssociatedResourceId,omitempty"`
+	// Region ID of the linked instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	AssociatedResourceRegionId *string `json:"AssociatedResourceRegionId,omitempty" xml:"AssociatedResourceRegionId,omitempty"`
+	// Resource type of the linked instance.
+	//
 	// example:
 	//
 	// WAF
 	AssociatedResourceType *string `json:"AssociatedResourceType,omitempty" xml:"AssociatedResourceType,omitempty"`
+	// Status of the association between the Alibaba Cloud Global Accelerator (GA) instance and other cloud product resources.
+	//
+	// - **active**: The resource is active.
+	//
+	// - **binding**: The resource is being attached.
+	//
+	// - **unBinding**: The resource is being detached.
+	//
+	// - **wafRelease**: The WAF instance has been released.
+	//
 	// example:
 	//
 	// active

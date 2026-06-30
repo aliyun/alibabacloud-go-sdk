@@ -18,13 +18,13 @@ type iDetachDdosFromAcceleratorResponseBody interface {
 type DetachDdosFromAcceleratorResponseBody struct {
 	// Deprecated
 	//
-	// The ID of the Anti-DDoS Pro/Premium instance that was disassociated from the GA instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance that is detached from the Global Accelerator instance.
 	//
 	// example:
 	//
 	// ddoscoo-cn-zz11vq7j****
 	DdosId *string `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

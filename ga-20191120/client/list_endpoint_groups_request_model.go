@@ -15,6 +15,8 @@ type iListEndpointGroupsRequest interface {
 	GetAccessLogSwitch() *string
 	SetEndpointGroupId(v string) *ListEndpointGroupsRequest
 	GetEndpointGroupId() *string
+	SetEndpointGroupRegion(v string) *ListEndpointGroupsRequest
+	GetEndpointGroupRegion() *string
 	SetEndpointGroupType(v string) *ListEndpointGroupsRequest
 	GetEndpointGroupType() *string
 	SetListenerId(v string) *ListEndpointGroupsRequest
@@ -30,7 +32,7 @@ type iListEndpointGroupsRequest interface {
 }
 
 type ListEndpointGroupsRequest struct {
-	// The ID of the GA instance.
+	// The ID of the Global Accelerator instance.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +40,11 @@ type ListEndpointGroupsRequest struct {
 	//
 	// ga-bp1odcab8tmno0hdq****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// Specifies whether the access logging feature is enabled. Default value: off. Valid values:
+	// Whether to enable the access log. Valid values:
 	//
-	// 	- **on**: The access logging feature is enabled.
+	// - **on**: enables the access log.
 	//
-	// 	- **off**: The access logging feature is disabled.
+	// - **off*	- (default): disables the access log.
 	//
 	// example:
 	//
@@ -53,14 +55,15 @@ type ListEndpointGroupsRequest struct {
 	// example:
 	//
 	// epg-bp16jdc00bhe97sr5****
-	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The type of the endpoint group. Valid values: Valid values:
+	EndpointGroupId     *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	// The type of the endpoint group. Valid values:
 	//
-	// 	- **default**
+	// - **default**: a default endpoint group.
 	//
-	// 	- **virtual**
+	// - **virtual**: a virtual endpoint group.
 	//
-	// 	- If you leave this parameter empty, all default and virtual endpoint groups are queried.
+	// - If you omit this parameter, the operation returns all default and virtual endpoint groups.
 	//
 	// example:
 	//
@@ -78,13 +81,13 @@ type ListEndpointGroupsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the region where the Global Accelerator instance is deployed. Set the value to **cn-hangzhou**.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +95,7 @@ type ListEndpointGroupsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tag of the endpoint group.
+	// The tags used to filter endpoint groups. You can specify up to 20 tags.
 	//
 	// if can be null:
 	// false
@@ -117,6 +120,10 @@ func (s *ListEndpointGroupsRequest) GetAccessLogSwitch() *string {
 
 func (s *ListEndpointGroupsRequest) GetEndpointGroupId() *string {
 	return s.EndpointGroupId
+}
+
+func (s *ListEndpointGroupsRequest) GetEndpointGroupRegion() *string {
+	return s.EndpointGroupRegion
 }
 
 func (s *ListEndpointGroupsRequest) GetEndpointGroupType() *string {
@@ -155,6 +162,11 @@ func (s *ListEndpointGroupsRequest) SetAccessLogSwitch(v string) *ListEndpointGr
 
 func (s *ListEndpointGroupsRequest) SetEndpointGroupId(v string) *ListEndpointGroupsRequest {
 	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *ListEndpointGroupsRequest) SetEndpointGroupRegion(v string) *ListEndpointGroupsRequest {
+	s.EndpointGroupRegion = &v
 	return s
 }
 
@@ -202,21 +214,17 @@ func (s *ListEndpointGroupsRequest) Validate() error {
 }
 
 type ListEndpointGroupsRequestTag struct {
-	// The tag key of the endpoint group. It cannot be an empty string.
+	// The tag key. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
-	//
-	// You can specify up to 20 tag keys.
+	// The tag key can be up to 64 characters long and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the endpoint group. The tag value can be an empty string.
+	// The tag value. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
-	//
-	// You can specify up to 20 tag values.
+	// The tag value can be up to 128 characters long and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iCreateEndpointGroupsResponseBody interface {
 type CreateEndpointGroupsResponseBody struct {
 	// The IDs of the endpoint groups.
 	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

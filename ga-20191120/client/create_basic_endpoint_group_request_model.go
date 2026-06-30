@@ -30,7 +30,7 @@ type iCreateBasicEndpointGroupRequest interface {
 }
 
 type CreateBasicEndpointGroupRequest struct {
-	// The ID of the basic GA instance.
+	// The instance ID of the basic Alibaba Cloud Global Accelerator (GA).
 	//
 	// This parameter is required.
 	//
@@ -40,15 +40,15 @@ type CreateBasicEndpointGroupRequest struct {
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- value as the **ClientToken*	- value. The **RequestId*	- value is different for each API request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the endpoint group.
+	// The description of the endpoint group for the basic Alibaba Cloud Global Accelerator (GA) instance.
 	//
 	// The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -56,15 +56,15 @@ type CreateBasicEndpointGroupRequest struct {
 	//
 	// BasicEndpointGroup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The endpoint address.
+	// The address of the endpoint.
 	//
 	// example:
 	//
 	// eni-bp1a05txelswuj8g****
 	EndpointAddress *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
-	// The ID of the region to which the endpoint group belongs.
+	// The region ID of the endpoint group for the basic Alibaba Cloud Global Accelerator (GA) instance.
 	//
-	// You can call the [ListAvailableBusiRegions](https://help.aliyun.com/document_detail/2253223.html) operation to query the region ID.
+	// You can invoke the [ListAvailableBusiRegions](https://help.aliyun.com/document_detail/2253223.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -74,37 +74,37 @@ type CreateBasicEndpointGroupRequest struct {
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
 	// The secondary address of the endpoint.
 	//
-	// You must specify this parameter when the accelerated IP address is associated with the secondary private IP address of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
+	// Specify this parameter when the accelerated IP address is associated with a secondary private IP address of an ECS instance or an ENI.
 	//
-	// 	- When the endpoint type is **ECS**, you can set **EndpointSubAddress*	- to the secondary private IP address of the primary ENI. If the parameter is left empty, the primary private IP address of the primary ENI is used.
+	// - If the endpoint type is **ECS**, EndpointSubAddress can be set to a secondary private IP address of the primary ENI. If this parameter is left empty, the primary private IP address of the primary ENI is used.
 	//
-	// 	- If the endpoint type is **ENI**, you can set **EndpointSubAddress*	- to the secondary private IP address of the secondary ENI. If the parameter is left empty, the primary private IP address of the secondary ENI is used.
+	// - If the endpoint type is **ENI**, EndpointSubAddress can be set to a secondary private IP address of the secondary ENI. If this parameter is left empty, the primary private IP address of the secondary ENI is used.
 	//
 	// example:
 	//
 	// 172.16.XX.XX
 	EndpointSubAddress *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
-	// The type of the endpoint. Valid values:
+	// The endpoint type. Valid values:
 	//
-	// 	- **ENI**
+	// - **ENI**: elastic network interface (ENI).
 	//
-	// 	- **SLB**
+	// - **SLB**: Classic Load Balancer (CLB) instance.
 	//
-	// 	- **ECS**
+	// - **ECS**: ECS instance.
 	//
 	// example:
 	//
 	// ENI
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The name of the endpoint group.
+	// The name of the endpoint group for the basic Alibaba Cloud Global Accelerator (GA) instance.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+	// The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// group1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
+	// The region ID of the basic Alibaba Cloud Global Accelerator (GA) instance. Set the value to **ap-southeast-1**.
 	//
 	// This parameter is required.
 	//

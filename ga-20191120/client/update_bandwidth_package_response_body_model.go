@@ -20,7 +20,7 @@ type iUpdateBandwidthPackageResponseBody interface {
 }
 
 type UpdateBandwidthPackageResponseBody struct {
-	// The bandwidth plan ID.
+	// The ID of the bandwidth plan.
 	//
 	// example:
 	//

@@ -52,19 +52,19 @@ type iCreateBandwidthPackageRequest interface {
 type CreateBandwidthPackageRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// 	- **false*	- (default): disables automatic payment. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
+	// - **false*	- (default): Disables automatic payment. After an order is generated, go to the Order Hub to complete the payment.
 	//
-	// 	- **true**: enables automatic payment. Payments are automatically completed.
+	// - **true**: Enables automatic payment. Payments are automatically completed.
 	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal for the bandwidth plan. Valid values:
+	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- **true**: enables auto-renewal.
+	// - **true**: Yes.
 	//
-	// 	- **false*	- (default): does not enable auto-renewal.
+	// - **false*	- (default): No.
 	//
 	// example:
 	//
@@ -74,25 +74,25 @@ type CreateBandwidthPackageRequest struct {
 	//
 	// Valid values: **1*	- to **12**. Default value: **1**.
 	//
-	// >  This parameter is required only if **AutoRenew*	- is set to **true**.
+	// > This parameter takes effect only if **AutoRenew*	- is set to **true**.
 	//
 	// example:
 	//
 	// 1
 	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
-	// Specifies whether to automatically pay bills by using coupons. Valid values:
+	// Specifies whether to use a coupon to automatically pay for the bill. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: Yes.
 	//
-	// 	- **false*	- (default): no
+	// - **false*	- (default): No.
 	//
-	// >  This parameter is required only if **AutoPay*	- is set to **true**.
+	// > This parameter takes effect only if **AutoPay*	- is set to **true**.
 	//
 	// example:
 	//
 	// false
 	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// The bandwidth of the bandwidth plan. Unit: Mbit/s.
+	// The bandwidth of the bandwidth plan. Unit: Mbps.
 	//
 	// Valid values: **2*	- to **2000**.
 	//
@@ -102,53 +102,53 @@ type CreateBandwidthPackageRequest struct {
 	//
 	// 2
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The type of the bandwidth. Valid values:
+	// The type of bandwidth. Valid values:
 	//
-	// 	- **Basic**: standard bandwidth
+	// - **Basic**: Basic bandwidth.
 	//
-	// 	- **Enhanced**: enhanced bandwidth
+	// - **Enhanced**: Enhanced bandwidth.
 	//
-	// 	- **Advanced**: premium bandwidth
+	// - **Advanced**: Advanced bandwidth.
 	//
-	// If **Type*	- is set to **Basic**, this parameter is required.
+	// This parameter is required if you set **Type*	- to **Basic**.
 	//
 	// example:
 	//
 	// Basic
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
-	// The metering method that is used when you use the pay-as-you-go billing method. Valid values:
+	// The billing method for a pay-as-you-go bandwidth plan. Valid values:
 	//
-	// 	- **PayByTraffic*	- (default)
+	// - **PayByTraffic*	- (default): pay-by-traffic.
 	//
-	// 	- **PayBY95*	- By default, the pay-by-95th-percentile metering method is unavailable. If you want to use the metering method, contact your account manager.
+	// - **PayBY95**: pay-by-95th-percentile. This billing method is not available by default. Contact your account manager to use this billing method.
 	//
-	// >  This parameter takes effect only if you set **ChargeType*	- to **POSTPAY**.
+	// > This parameter takes effect only if **ChargeType*	- is set to **POSTPAY**.
 	//
 	// example:
 	//
 	// PayByTraffic
 	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
-	// Area A to be connected. Set the value to **China-mainland**.
+	// Connected area A of the cross-region acceleration bandwidth plan. Set the value to **China-mainland**.
 	//
-	// You can set this parameter only if you call this operation on the international site (alibabacloud.com).
+	// This parameter is available only on the Alibaba Cloud International Website (www\\.alibabacloud.com).
 	//
 	// example:
 	//
 	// China-mainland
 	CbnGeographicRegionIdA *string `json:"CbnGeographicRegionIdA,omitempty" xml:"CbnGeographicRegionIdA,omitempty"`
-	// Area B to be connected. Set the value to **Global**.
+	// Connected area B of the cross-region acceleration bandwidth plan. Set the value to **Global**.
 	//
-	// You can set this parameter only if you call this operation on the international site (alibabacloud.com).
+	// This parameter is available only on the Alibaba Cloud International Website (www\\.alibabacloud.com).
 	//
 	// example:
 	//
 	// Global
 	CbnGeographicRegionIdB *string `json:"CbnGeographicRegionIdB,omitempty" xml:"CbnGeographicRegionIdB,omitempty"`
-	// The billing method of the bandwidth plan. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- **PREPAY*	- (default): subscription.
+	// - **PREPAY*	- (default): subscription.
 	//
-	// 	- **POSTPAY**: pay-as-you-go. By default, the pay-as-you-go billing method is unavailable. If you want to use the billing method, contact your account manager.
+	// - **POSTPAY**: pay-as-you-go. The pay-as-you-go billing method is not available by default. Contact your account manager to use this billing method.
 	//
 	// example:
 	//
@@ -156,9 +156,9 @@ type CreateBandwidthPackageRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// Generate a client token from your client to make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the request as the **ClientToken**. The **RequestId*	- may be different for each request.
 	//
 	// example:
 	//
@@ -166,11 +166,11 @@ type CreateBandwidthPackageRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The subscription duration.
 	//
-	// 	- If the **PricingCycle*	- parameter is set to **Month**, the valid values for the **Duration*	- parameter are **1*	- to **9**.
+	// - If you set **PricingCycle*	- to **Month**, valid values for **Duration*	- are **1*	- to **9**.
 	//
-	// 	- If the **PricingCycle*	- parameter is set to **Year**, the valid values for the **Duration*	- parameter are **1*	- to **3**.
+	// - If you set **PricingCycle*	- to **Year**, valid values for **Duration*	- are **1*	- to **3**.
 	//
-	// If **ChargeType*	- is set to **PREPAY**, this parameter is required.
+	// This parameter is required if you set **ChargeType*	- to **PREPAY**.
 	//
 	// example:
 	//
@@ -178,11 +178,11 @@ type CreateBandwidthPackageRequest struct {
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The billing cycle. Valid values:
 	//
-	// 	- **Month**: billed on a monthly basis.
+	// - **Month**: monthly billing.
 	//
-	// 	- **Year**: billed on an annual basis.
+	// - **Year**: yearly billing.
 	//
-	// If **ChargeType*	- is set to **PREPAY**, this parameter is required.
+	// This parameter is required if you set **ChargeType*	- to **PREPAY**.
 	//
 	// example:
 	//
@@ -190,21 +190,21 @@ type CreateBandwidthPackageRequest struct {
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// The coupon code.
 	//
-	// >  This parameter is only available on the international site (alibabacloud.com).
+	// > This parameter is available only on the Alibaba Cloud International Website (www\\.alibabacloud.com).
 	//
 	// example:
 	//
 	// 50003298014****
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	// The percentage of the minimum bandwidth guaranteed if the pay-by-95th-percentile-bandwidth metering method is used. Valid values: **30*	- to **100**.
+	// The percentage of the guaranteed minimum bandwidth if you use the pay-by-95th-percentile metering method. Valid values: **30*	- to **100**.
 	//
-	// >  This parameter is required only if **BillingType*	- is set to **PayBY95**.
+	// > This parameter takes effect only if **BillingType*	- is set to **PayBY95**.
 	//
 	// example:
 	//
 	// 30
 	Ratio *int32 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	// The ID of the region where the GA instance is deployed. **cn-hangzhou*	- is returned.
+	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
 	//
 	// This parameter is required.
 	//
@@ -212,21 +212,21 @@ type CreateBandwidthPackageRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aekzrnd67gq****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags to add to the bandwidth plan.
+	// The tags of the bandwidth plan.
 	Tag []*CreateBandwidthPackageRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The type of the bandwidth plan. Valid values:
 	//
-	// 	- **Basic**: a basic bandwidth plan
+	// - **Basic**: a basic bandwidth plan.
 	//
-	// 	- **CrossDomain**: a cross-region acceleration bandwidth plan
+	// - **CrossDomain**: a cross-region acceleration bandwidth plan.
 	//
-	// If you call this operation on the Alibaba Cloud China site, only **Basic*	- is supported.
+	// Only **Basic*	- is supported on the Alibaba Cloud China Website (www\\.aliyun.com).
 	//
 	// This parameter is required.
 	//
@@ -429,21 +429,21 @@ func (s *CreateBandwidthPackageRequest) Validate() error {
 }
 
 type CreateBandwidthPackageRequestTag struct {
-	// The tag key.
+	// The tag key of the bandwidth plan. The tag key cannot be an empty string.
 	//
-	// The tag keys cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// You can specify at most 20 tag keys.
+	// You can specify up to 20 tag keys.
 	//
 	// example:
 	//
 	// tag-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the bandwidth plan. The tag value can be an empty string.
 	//
-	// Each tag key corresponds to a tag value. Valid values of **N**: **1*	- to **20**.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// The value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// You can specify up to 20 tag values.
 	//
 	// example:
 	//

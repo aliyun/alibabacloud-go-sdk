@@ -26,36 +26,58 @@ type iAssociateResourcesRequest interface {
 }
 
 type AssociateResourcesRequest struct {
+	// Alibaba Cloud Global Accelerator (GA) instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ga-bp1odcab8tmno0hdq****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// Association pattern:
+	//
+	// - **Managed**: Managed mode. GA restricts user operations based on management policies. Currently, no resources use this type.
+	//
+	// - **Associated*	- (default): Loose coupling association. GA does not restrict user operations. WAF uses loose coupling.
+	//
 	// example:
 	//
 	// Associated
 	AssociatedMode *string `json:"AssociatedMode,omitempty" xml:"AssociatedMode,omitempty"`
+	// Resource ID of the linked instance.
+	//
 	// example:
 	//
 	// waf_xx
 	AssociatedResourceId *string `json:"AssociatedResourceId,omitempty" xml:"AssociatedResourceId,omitempty"`
+	// Region of the linked instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	AssociatedResourceRegionId *string `json:"AssociatedResourceRegionId,omitempty" xml:"AssociatedResourceRegionId,omitempty"`
+	// Resource type of the linked instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WAF
 	AssociatedResourceType *string `json:"AssociatedResourceType,omitempty" xml:"AssociatedResourceType,omitempty"`
+	// Indicates whether to perform a dry run of the request. Valid values:
+	//
+	// - **true**: Sends a dry run request without associating resources. Checks include required parameters, request format, and business restrictions. If the check fails, an error is returned. If the check passes, an HTTP 2xx status code is returned.
+	//
+	// - **false*	- (Default Value): Sends a normal request. If the check passes, an HTTP 2xx status code is returned and the endpoint group is created immediately.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Region ID of the basic Alibaba Cloud Global Accelerator (GA) instance. Valid value: **cn-hangzhou*	- only.
+	//
 	// example:
 	//
 	// cn-hangzhou

@@ -22,7 +22,7 @@ type iDeleteBasicAccelerateIpEndpointRelationResponseBody interface {
 }
 
 type DeleteBasicAccelerateIpEndpointRelationResponseBody struct {
-	// The ID of the accelerated IP address of the basic GA instance.
+	// The accelerated IP address instance ID of the basic GA instance.
 	//
 	// example:
 	//
@@ -34,21 +34,21 @@ type DeleteBasicAccelerateIpEndpointRelationResponseBody struct {
 	//
 	// ga-bp17frjjh0udz4qz****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The ID of the endpoint that is associated with the basic GA instance.
+	// The endpoint ID of the basic GA instance.
 	//
 	// example:
 	//
 	// ep-bp14sz7ftcwwjgrdm****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the mapping between the accelerated IP address and endpoint.
+	// The attach status between the accelerated IP address and the endpoint of the basic GA instance.
 	//
-	// >  This parameter is not in use and empty.
+	// > This parameter is not currently in use.
 	//
 	// example:
 	//

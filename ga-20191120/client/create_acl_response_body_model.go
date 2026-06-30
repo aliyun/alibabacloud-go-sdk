@@ -16,13 +16,13 @@ type iCreateAclResponseBody interface {
 }
 
 type CreateAclResponseBody struct {
-	// The ID of the ACL.
+	// The access control policy group ID.
 	//
 	// example:
 	//
 	// nacl-hp34s2h0xx1ht4nwo****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

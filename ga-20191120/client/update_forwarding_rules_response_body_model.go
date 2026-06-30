@@ -16,9 +16,9 @@ type iUpdateForwardingRulesResponseBody interface {
 }
 
 type UpdateForwardingRulesResponseBody struct {
-	// Details about the forwarding rules.
+	// A list of forwarding rules.
 	ForwardingRules []*UpdateForwardingRulesResponseBodyForwardingRules `json:"ForwardingRules,omitempty" xml:"ForwardingRules,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *UpdateForwardingRulesResponseBody) Validate() error {
 }
 
 type UpdateForwardingRulesResponseBodyForwardingRules struct {
-	// The forwarding rule ID.
+	// The ID of the forwarding rule.
 	//
 	// example:
 	//

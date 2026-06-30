@@ -70,105 +70,113 @@ type iDescribeAcceleratorResponseBody interface {
 }
 
 type DescribeAcceleratorResponseBody struct {
-	// The ID of the GA instance.
+	// The ID of the Global Accelerator instance.
 	//
 	// example:
 	//
 	// ga-bp1odcab8tmno0hdq****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	Bandwidth     *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The bandwidth metering method. Valid values:
+	// The bandwidth of the standard Global Accelerator instance. Unit: Mbps.
 	//
-	// 	- **BandwidthPackage:*	- billed based on bandwidth plans.
+	// > This parameter is valid only when the access mode of the acceleration area is Anycast.
 	//
-	// 	- **CDT**: billed based on data transfer.
+	// example:
+	//
+	// 200
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The billing method of the bandwidth. Valid values:
+	//
+	// - **BandwidthPackage**: pay-by-bandwidth-plan.
+	//
+	// - **CDT**: pay-by-data-transfer.
 	//
 	// example:
 	//
 	// CDT
 	BandwidthBillingType *string `json:"BandwidthBillingType,omitempty" xml:"BandwidthBillingType,omitempty"`
-	// The details about the basic bandwidth plan that is associated with the GA instance.
+	// The details of the basic bandwidth plan that is associated with the Global Accelerator instance.
 	BasicBandwidthPackage *DescribeAcceleratorResponseBodyBasicBandwidthPackage `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
-	// The ID of the Cloud Enterprise Network (CEN) instance with which the GA instance is associated.
+	// The ID of the Cloud Enterprise Network (CEN) instance that is associated with the Global Accelerator instance.
 	//
 	// example:
 	//
 	// cen-hjkduu767hc****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The timestamp that indicates when the GA instance is created.
+	// The timestamp that indicates when the Global Accelerator instance was created.
 	//
 	// example:
 	//
 	// 1650643200
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The type of cross-border acceleration. This parameter is returned for GA instances whose bandwidth metering method is pay-by-data-transfer (CDT).
+	// The type of cross-border acceleration. This parameter is returned for pay-by-data-transfer instances.
 	//
-	// Only **bpgPro*	- may be returned, which indicates BGP (Multi-ISP) Pro lines.
+	// **bpgPro**: premium bandwidth for cross-border acceleration.
 	//
 	// example:
 	//
 	// bpgPro
 	CrossBorderMode *string `json:"CrossBorderMode,omitempty" xml:"CrossBorderMode,omitempty"`
-	// Indicates whether cross-border acceleration is enabled.
+	// Indicates whether the cross-border line feature is enabled for the Global Accelerator instance. Valid values:
 	//
-	// - **true**: yes
+	// - **true**: The cross-border line feature is enabled. You can use Global Accelerator to accelerate data transmission across borders.
 	//
-	// - **false**: no
+	// - **false**: The cross-border line feature is disabled. You cannot use Global Accelerator to accelerate data transmission across borders.
 	//
 	// example:
 	//
 	// false
 	CrossBorderStatus *bool `json:"CrossBorderStatus,omitempty" xml:"CrossBorderStatus,omitempty"`
-	// The details about the cross-border acceleration bandwidth plan that is associated with the GA instance.
+	// The details of the cross-region bandwidth plan that is associated with the Global Accelerator instance.
 	//
-	// This array is returned only for GA instances that are created on the international site (alibabacloud.com).
+	// This parameter is returned only by the Alibaba Cloud International Website (www\\.alibabacloud.com).
 	CrossDomainBandwidthPackage *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage `json:"CrossDomainBandwidthPackage,omitempty" xml:"CrossDomainBandwidthPackage,omitempty" type:"Struct"`
-	// Indicates whether cross-border acceleration is enabled.
+	// Indicates whether cross-border bandwidth is enabled.
 	//
-	// 	- **true**: yes
+	// - **true**: enabled.
 	//
-	// 	- **false**: no
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// false
-	CrossPrivateState *string                                          `json:"CrossPrivateState,omitempty" xml:"CrossPrivateState,omitempty"`
-	DdosConfigList    []*DescribeAcceleratorResponseBodyDdosConfigList `json:"DdosConfigList,omitempty" xml:"DdosConfigList,omitempty" type:"Repeated"`
+	CrossPrivateState *string `json:"CrossPrivateState,omitempty" xml:"CrossPrivateState,omitempty"`
+	// The list of Anti-DDoS instances that are associated with the Global Accelerator instance.
+	DdosConfigList []*DescribeAcceleratorResponseBodyDdosConfigList `json:"DdosConfigList,omitempty" xml:"DdosConfigList,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// The ID of the Anti-DDoS Pro/Premium instance that is associated with the GA instance.
+	// The ID of the Anti-DDoS instance that is associated with the Global Accelerator instance.
 	//
 	// example:
 	//
 	// ddoscoo-cn-zz11vq7j****
 	DdosId *string `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
-	// The description of the GA instance.
+	// The description of the Global Accelerator instance.
 	//
 	// example:
 	//
 	// Accelerator
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The canonical name (CNAME) that is assigned to the GA instance.
+	// The canonical name (CNAME) that is assigned to the Global Accelerator instance.
 	//
 	// example:
 	//
 	// ga-bp15u1i2hmtbk8c3i****.aliyunga0019.com
 	DnsName *string `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
-	// The timestamp that indicates when the GA instance expires.
+	// The timestamp that indicates when the Global Accelerator instance expires.
 	//
 	// example:
 	//
 	// 1653235200
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The billing method of the GA instance.
+	// The billing method of the Global Accelerator instance.
 	//
 	// example:
 	//
 	// PREPAY
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The configurations of the acceleration area.
+	// The configuration of the acceleration area.
 	IpSetConfig *DescribeAcceleratorResponseBodyIpSetConfig `json:"IpSetConfig,omitempty" xml:"IpSetConfig,omitempty" type:"Struct"`
-	// The name of the GA instance.
+	// The name of the Global Accelerator instance.
 	//
 	// example:
 	//
@@ -176,13 +184,13 @@ type DescribeAcceleratorResponseBody struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Deprecated
 	//
-	// The region ID of the GA instance.
+	// The region where the Global Accelerator instance is deployed.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -194,109 +202,109 @@ type DescribeAcceleratorResponseBody struct {
 	//
 	// rg-acfmw2vwdbujqbq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The CNAME that is used to integrate the GA instance with the Anti-DDoS service.
+	// The CNAME of the Anti-DDoS instance that is associated with the Global Accelerator instance.
 	//
 	// example:
 	//
 	// ga-bp1f609c76zg6zuna****-1.aliyunga0047.com
 	SecondDnsName *string `json:"SecondDnsName,omitempty" xml:"SecondDnsName,omitempty"`
-	// The ID of the service that manages the GA instance.
+	// The ID of the service that manages the instance.
 	//
-	// >  This parameter is returned only if the value of **ServiceManaged*	- is **true**.
+	// > This parameter is valid only when **ServiceManaged*	- is set to **True**.
 	//
 	// example:
 	//
 	// ALB
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// Indicates whether the GA instance is managed. Valid values:
+	// Indicates whether the instance is a managed instance. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The instance is a managed instance.
 	//
-	// 	- **false**
+	// - **false**: The instance is not a managed instance.
 	//
 	// example:
 	//
 	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The actions that users can perform on the managed instance.
+	// The actions that you can perform on the managed instance.
+	//
+	// > - This parameter is valid only when **ServiceManaged*	- is set to **True**.
 	//
 	// >
 	//
-	// 	- This parameter is returned only if the value of **ServiceManaged*	- is **true**.
-	//
-	// 	- Users can perform only specific actions on a managed instance.
+	// > - When the instance is managed, you cannot perform some operations on the instance.
 	ServiceManagedInfos []*DescribeAcceleratorResponseBodyServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
-	// The specification of the GA instance. Valid values:
+	// The specification of the Global Accelerator instance. Valid values:
 	//
-	// 	- **1**: Small Ⅰ
+	// - **1**: Small I.
 	//
-	// 	- **2**: Small Ⅱ
+	// - **2**: Small II.
 	//
-	// 	- **3**: Small Ⅲ
+	// - **3**: Small III.
 	//
-	// 	- **5**: Medium Ⅰ
+	// - **5**: Medium I.
 	//
-	// 	- **8**: Medium Ⅱ
+	// - **8**: Medium II.
 	//
-	// 	- **10**: Medium Ⅲ
+	// - **10**: Medium III.
 	//
-	// 	- **20**: Large Ⅰ
+	// - **20**: Large I.
 	//
-	// 	- **30**: Large Ⅱ
+	// - **30**: Large II.
 	//
-	// 	- **40**: Large Ⅲ
+	// - **40**: Large III.
 	//
-	// 	- **50**: Large Ⅳ
+	// - **50**: Large IV.
 	//
-	// 	- **60**: Large Ⅴ
+	// - **60**: Large V.
 	//
-	// 	- **70**: Large Ⅵ
+	// - **70**: Large VI.
 	//
-	// 	- **80**: Large VⅡ
+	// - **80**: Large VII.
 	//
-	// 	- **90**: Large VⅢ
+	// - **90**: Large VIII.
 	//
-	// 	- **100**: Super Large Ⅰ
+	// - **100**: Super Large I.
 	//
-	// 	- **200**: Super Large Ⅱ
+	// - **200**: Super Large II.
 	//
-	// >  The Large Ⅲ specification and higher specifications are available only to users that are added to the whitelist. To use these specifications, contact your Alibaba Cloud account manager.
+	// > The Large III and higher specifications are available only to users on the whitelist. To use these specifications, contact your account manager.
 	//
-	// Different specifications provide different capabilities. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/153127.html).
+	// The definitions of different specifications vary. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/153127.html).
 	//
 	// example:
 	//
 	// 1
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The status of the GA instance. Valid values:
+	// The status of the Global Accelerator instance. Valid values:
 	//
-	// 	- **init**: The GA instance is being initialized.
+	// - **init**: The instance is being initialized.
 	//
-	// 	- **active**: The GA instance is available.
+	// - **active**: The instance is available.
 	//
-	// 	- **configuring**: The GA instance is being configured.
+	// - **configuring**: The instance is being configured.
 	//
-	// 	- **binding**: The GA instance is being associated.
+	// - **binding**: The instance is being associated.
 	//
-	// 	- **unbinding**: The GA instance is being disassociated.
+	// - **unbinding**: The instance is being disassociated.
 	//
-	// 	- **deleting**: The GA instance is being deleted.
+	// - **deleting**: The instance is being deleted.
 	//
-	// 	- **finacialLocked**: The GA instance is locked due to overdue payments.
+	// - **finacialLocked**: The instance is financially locked.
 	//
 	// example:
 	//
 	// active
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The tags of the GA instance.
+	// The tags of the resource.
 	Tags []*DescribeAcceleratorResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// Indicates whether the GA instance can be upgraded. Valid values:
+	// The upgrade status of the Global Accelerator instance. Valid values:
 	//
-	// 	- **notUpgradable:*	- The GA instance does not need to be upgraded.
+	// - **notUpgradable**: The instance does not need to be upgraded.
 	//
-	// 	- **upgradable:*	- The GA instance can be upgraded to the latest version.
+	// - **upgradable**: The instance can be upgraded.
 	//
-	// 	- **upgradeFailed:*	- The GA instance failed to be upgraded.
+	// - **upgradeFailed**: The instance failed to be upgraded.
 	//
 	// example:
 	//
@@ -620,19 +628,19 @@ func (s *DescribeAcceleratorResponseBody) Validate() error {
 }
 
 type DescribeAcceleratorResponseBodyBasicBandwidthPackage struct {
-	// The bandwidth value of the basic bandwidth plan. Unit: Mbit/s.
+	// The bandwidth of the basic bandwidth plan. Unit: Mbps.
 	//
 	// example:
 	//
 	// 2
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The type of the bandwidth that is provided by the basic bandwidth plan. Valid values:
+	// The type of the bandwidth of the basic bandwidth plan. Valid values:
 	//
-	// 	- **Basic**: basic
+	// - **Basic**: standard acceleration bandwidth.
 	//
-	// 	- **Enhanced**: enhanced
+	// - **Enhanced**: enhanced acceleration bandwidth.
 	//
-	// 	- **Advanced**: premium
+	// - **Advanced**: premium acceleration bandwidth.
 	//
 	// example:
 	//
@@ -686,13 +694,13 @@ func (s *DescribeAcceleratorResponseBodyBasicBandwidthPackage) Validate() error 
 }
 
 type DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage struct {
-	// The bandwidth that is provided by the cross-border acceleration bandwidth plan. Unit: Mbit/s.
+	// The bandwidth of the cross-region bandwidth plan. Unit: Mbps.
 	//
 	// example:
 	//
 	// 2
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the cross-border acceleration bandwidth plan.
+	// The ID of the cross-region bandwidth plan.
 	//
 	// example:
 	//
@@ -731,7 +739,21 @@ func (s *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage) Validate() 
 }
 
 type DescribeAcceleratorResponseBodyDdosConfigList struct {
-	DdosId       *string `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
+	// The ID of the Anti-DDoS instance that is associated with the Global Accelerator instance.
+	//
+	// example:
+	//
+	// ddoscoo-cn-zz11vq7j****
+	DdosId *string `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
+	// The region where the Anti-DDoS instance is deployed. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// ap-southeast-1
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 }
 
@@ -768,9 +790,9 @@ func (s *DescribeAcceleratorResponseBodyDdosConfigList) Validate() error {
 type DescribeAcceleratorResponseBodyIpSetConfig struct {
 	// The access mode of the acceleration area. Valid values:
 	//
-	// 	- **UserDefine**: custom nearby access mode. You can select acceleration areas and regions based on your business requirements. GA allocates a separate elastic IP address (EIP) to each acceleration region.
+	// - **UserDefine**: custom. You can select acceleration areas and regions based on your business needs. Global Accelerator provides a separate elastic IP address (EIP) for each acceleration region.
 	//
-	// 	- **Anycast**: automatic nearby access mode. You do not need to specify an acceleration area. GA allocates an Anycast EIP to multiple regions across the globe. Users can connect to the nearest access point of the Alibaba Cloud global transmission network by sending requests to the Anycast EIP.
+	// - **Anycast**: automatic. You do not need to configure an acceleration area. Global Accelerator provides an Anycast EIP for multiple regions. Users can connect to the nearest access point of the Alibaba Cloud network using the Anycast EIP.
 	//
 	// example:
 	//
@@ -800,19 +822,19 @@ func (s *DescribeAcceleratorResponseBodyIpSetConfig) Validate() error {
 }
 
 type DescribeAcceleratorResponseBodyServiceManagedInfos struct {
-	// The name of the action performed on the managed instance. Valid values:
+	// The name of the action on the managed instance. Valid values:
 	//
-	// 	- **Create**
+	// - **Create**: creates an instance.
 	//
-	// 	- **Update**
+	// - **Update**: updates the current instance.
 	//
-	// 	- **Delete**
+	// - **Delete**: deletes the current instance.
 	//
-	// 	- **Associate**
+	// - **Associate**: associates the instance with other resources.
 	//
-	// 	- **UserUnmanaged**
+	// - **UserUnmanaged**: unmanages the instance.
 	//
-	// 	- **CreateChild**
+	// - **CreateChild**: creates a child resource in the instance.
 	//
 	// example:
 	//
@@ -820,31 +842,31 @@ type DescribeAcceleratorResponseBodyServiceManagedInfos struct {
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// The type of the child resource. Valid values:
 	//
-	// 	- **Listener**: a listener.
+	// - **Listener**: listener.
 	//
-	// 	- **IpSet**: an acceleration region.
+	// - **IpSet**: acceleration region.
 	//
-	// 	- **EndpointGroup**: an endpoint group.
+	// - **EndpointGroup**: endpoint group.
 	//
-	// 	- **ForwardingRule**: a forwarding rule.
+	// - **ForwardingRule**: forwarding rule.
 	//
-	// 	- **Endpoint**: an endpoint.
+	// - **Endpoint**: endpoint.
 	//
-	// 	- **EndpointGroupDestination**: a protocol mapping of an endpoint group associated with a custom routing listener.
+	// - **EndpointGroupDestination**: protocol mapping of an endpoint group associated with a custom routing listener.
 	//
-	// 	- **EndpointPolicy**: a traffic policy of an endpoint associated with a custom routing listener.
+	// - **EndpointPolicy**: access policy of an endpoint associated with a custom routing listener.
 	//
-	// >  This parameter is returned only if the value of **Action*	- is **CreateChild**.
+	// > This parameter is valid only when **Action*	- is set to **CreateChild**.
 	//
 	// example:
 	//
 	// Listener
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	// Indicates whether the specified actions are managed. Valid values:
+	// Indicates whether the specified action is managed. Valid values:
 	//
-	// 	- **true**: The specified actions are managed, and you cannot perform the specified actions on the managed instance.
+	// - **true**: The action is managed. You cannot perform the specified action on the managed instance.
 	//
-	// 	- **false**: The specified actions are not managed, and you can perform the specified actions on the managed instance.
+	// - **false**: The action is not managed. You can perform the specified action on the managed instance.
 	//
 	// example:
 	//
@@ -892,13 +914,13 @@ func (s *DescribeAcceleratorResponseBodyServiceManagedInfos) Validate() error {
 }
 
 type DescribeAcceleratorResponseBodyTags struct {
-	// The key of tag N that is added to the GA instance.
+	// The tag key.
 	//
 	// example:
 	//
 	// tag-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that is added to the GA instance.
+	// The tag value.
 	//
 	// example:
 	//

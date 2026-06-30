@@ -20,19 +20,19 @@ type iAttachDdosToAcceleratorResponseBody interface {
 type AttachDdosToAcceleratorResponseBody struct {
 	// Deprecated
 	//
-	// The ID of the Anti-DDoS Pro/Premium instance that is associated with the GA instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance associated with the Global Accelerator (GA) instance.
 	//
 	// example:
 	//
 	// ddoscoo-cn-zz11vq7j****
 	DdosId *string `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
-	// The ID of the GA instance that is associated with the Anti-DDoS Pro/Premium instance.
+	// The ID of the Global Accelerator (GA) instance with which the Anti-DDoS Pro or Anti-DDoS Premium instance is associated.
 	//
 	// example:
 	//
 	// ga-bp1odcab8tmno0hdq****
 	GaId *string `json:"GaId,omitempty" xml:"GaId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

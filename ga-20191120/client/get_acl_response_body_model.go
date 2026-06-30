@@ -258,7 +258,7 @@ type GetAclResponseBodyRelatedListeners struct {
 	//
 	// example:
 	//
-	// White
+	// white
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	// The ID of the listener.
 	//

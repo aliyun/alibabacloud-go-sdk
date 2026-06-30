@@ -24,32 +24,48 @@ type iDisassociateResourcesRequest interface {
 }
 
 type DisassociateResourcesRequest struct {
+	// Alibaba Cloud Global Accelerator (GA) instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ga-bp1odcab8tmno0hdq****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// Linked instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cd498437eb9a346c38be8482689800e91
 	AssociatedResourceId *string `json:"AssociatedResourceId,omitempty" xml:"AssociatedResourceId,omitempty"`
+	// Region ID of the linked instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	AssociatedResourceRegionId *string `json:"AssociatedResourceRegionId,omitempty" xml:"AssociatedResourceRegionId,omitempty"`
+	// Resource type of the linked peripheral resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WAF
 	AssociatedResourceType *string `json:"AssociatedResourceType,omitempty" xml:"AssociatedResourceType,omitempty"`
+	// Specifies whether to perform a dry run of the request. Valid values:
+	//
+	// - **true**: Sends a dry run request without detaching the resource. The system checks whether required parameters are specified, whether the request format is valid, and whether business limits are met. If the check fails, an error is returned. If the check passes, an HTTP 2xx status code is returned.
+	//
+	// - **false*	- (default): Sends a normal request. If the check passes, an HTTP 2xx status code is returned and the endpoint group is created immediately.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Region ID of the Alibaba Cloud Global Accelerator (GA) instance. Valid value: **cn-hangzhou*	- only.
+	//
 	// example:
 	//
 	// cn-hangzhou

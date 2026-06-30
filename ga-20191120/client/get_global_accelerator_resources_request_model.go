@@ -22,24 +22,34 @@ type iGetGlobalAcceleratorResourcesRequest interface {
 }
 
 type GetGlobalAcceleratorResourcesRequest struct {
+	// The instance ID of the Alibaba Cloud Global Accelerator (GA).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ga-bp1odcab8tmno0hdq****
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// The ID of the linked peripheral resource.
+	//
 	// example:
 	//
 	// waf_v2_public_cn-x0r****gr1i
 	AssociatedResourceId *string `json:"AssociatedResourceId,omitempty" xml:"AssociatedResourceId,omitempty"`
+	// The Region ID where the linked instance is located.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	AssociatedResourceRegionId *string `json:"AssociatedResourceRegionId,omitempty" xml:"AssociatedResourceRegionId,omitempty"`
+	// The resource type of the linked peripheral resource.
+	//
 	// example:
 	//
 	// WAF
 	AssociatedResourceType *string `json:"AssociatedResourceType,omitempty" xml:"AssociatedResourceType,omitempty"`
+	// The Region ID where the Alibaba Cloud Global Accelerator (GA) instance is located. The only valid value is cn-hangzhou.
+	//
 	// This parameter is required.
 	//
 	// example:

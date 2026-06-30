@@ -16,7 +16,7 @@ type iDeleteAclResponseBody interface {
 }
 
 type DeleteAclResponseBody struct {
-	// The ID of the ACL.
+	// The ID of the access control policy group.
 	//
 	// example:
 	//
