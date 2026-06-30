@@ -34,7 +34,7 @@ type iListTransitRouterVpnAttachmentsRequest interface {
 }
 
 type ListTransitRouterVpnAttachmentsRequest struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The ID of the CEN instance.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type ListTransitRouterVpnAttachmentsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the next query. Valid values:
+	// The token that is used for the next query. Valid values:
 	//
-	// 	- If this is your first query and no subsequent queries are to be sent, ignore this parameter.
+	// - If this is your first query or no next query is to be sent, you do not need to specify this parameter.
 	//
-	// 	- If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+	// - If a next query is to be sent, set the value to the NextToken value returned from the last API call.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type ListTransitRouterVpnAttachmentsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the transit router.
+	// The ID of the region where the transit router is deployed.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// For more information, see [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html).
 	//
 	// example:
 	//
@@ -68,11 +68,11 @@ type ListTransitRouterVpnAttachmentsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The information about the tags that are added to the CEN instance.
+	// The tags of the CEN instance.
 	//
-	// You can query at most 20 tags in each call.
+	// You can query a maximum of 20 tags at a time.
 	Tag []*ListTransitRouterVpnAttachmentsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the VPN attachment.
+	// The ID of the VPN connection.
 	//
 	// example:
 	//
@@ -209,9 +209,9 @@ func (s *ListTransitRouterVpnAttachmentsRequest) Validate() error {
 type ListTransitRouterVpnAttachmentsRequestTag struct {
 	// The tag key.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https:// `.
 	//
-	// You can specify at most 20 tag keys.
+	// You can specify up to 20 tag keys.
 	//
 	// example:
 	//
@@ -219,9 +219,9 @@ type ListTransitRouterVpnAttachmentsRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be an empty string or a string of up to 128 characters. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https:// `.
 	//
-	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	// Each tag key must have a unique tag value. You can specify up to 20 tag values.
 	//
 	// example:
 	//

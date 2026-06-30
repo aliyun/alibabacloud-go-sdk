@@ -22,31 +22,31 @@ type iListGrantVSwitchesToCenResponseBody interface {
 }
 
 type ListGrantVSwitchesToCenResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// A9288C78-881A-5D30-A8A9-68E05EE0A086
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of vSwitches.
+	// A list of vSwitches.
 	VSwitches []*ListGrantVSwitchesToCenResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 }
 

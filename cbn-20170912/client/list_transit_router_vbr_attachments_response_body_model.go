@@ -22,13 +22,17 @@ type iListTransitRouterVbrAttachmentsResponseBody interface {
 }
 
 type ListTransitRouterVbrAttachmentsResponseBody struct {
-	// The number of entries returned per page.
+	// The maximum number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	// The token that is used for the next query.
+	//
+	// - If this parameter is empty, no more data is returned.
+	//
+	// - If a value is returned for this parameter, it is the token that you can use to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -117,11 +121,11 @@ func (s *ListTransitRouterVbrAttachmentsResponseBody) Validate() error {
 }
 
 type ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments struct {
-	// Indicates whether the Enterprise Edition transit router is allowed to automatically advertise routes to the VBR. Valid values:
+	// Indicates whether the Enterprise Edition transit router automatically advertises routes to the VBR.
 	//
-	// 	- **false*	- (default)
+	// - **false**: no.
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
 	// example:
 	//
@@ -135,52 +139,44 @@ type ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments struct 
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The time when the VBR connection was created.
 	//
-	// The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time is displayed in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-06-15T15:20Z
 	CreationTime   *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	ManagedService *string `json:"ManagedService,omitempty" xml:"ManagedService,omitempty"`
-	// The entity that pays the fees of the network instance. Valid values:
+	// The payer for the network instance. Valid values:
 	//
-	// 	- **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
+	// - **PayByCenOwner**: The connection fee and data transfer fee for the VBR are paid by the account that owns the transit router.
 	//
-	// 	- **PayByResourceOwner**: the Alibaba Cloud account that owns the network instance.
+	// - **PayByResourceOwner**: The connection fee and data transfer fee for the VBR are paid by the account that owns the VBR.
 	//
 	// example:
 	//
 	// PayByCenOwner
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The type of resource to which the transit router is connected. Valid values:
+	// The resource type of the connection.
 	//
-	// 	- **VPC**
-	//
-	// 	- **CCN**
-	//
-	// 	- **VBR**
-	//
-	// 	- **TR**
+	// The value is set to **VBR**, which indicates a VBR instance.
 	//
 	// example:
 	//
 	// VBR
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the VBR connection. Valid values:
+	// The status of the VBR connection.
 	//
-	// 	- **Attached**
+	// - **Attached**: The connection is established.
 	//
-	// 	- **Attaching**
+	// - **Attaching**: The connection is being established.
 	//
-	// 	- **Detaching**
-	//
-	// 	- **Detached**
+	// - **Detaching**: The connection is being removed.
 	//
 	// example:
 	//
 	// Attached
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A list of tags.
+	// The list of tags.
 	Tags []*ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The description of the VBR connection.
 	//
@@ -200,7 +196,7 @@ type ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments struct 
 	//
 	// testa
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
-	// The description of the Enterprise Edition transit router.
+	// The ID of the Enterprise Edition transit router.
 	//
 	// example:
 	//
@@ -218,7 +214,7 @@ type ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments struct 
 	//
 	// 1688111111111111
 	VbrOwnerId *int64 `json:"VbrOwnerId,omitempty" xml:"VbrOwnerId,omitempty"`
-	// The region ID of the VBR.
+	// The ID of the region where the VBR is deployed.
 	//
 	// example:
 	//

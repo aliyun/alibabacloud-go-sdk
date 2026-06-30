@@ -38,17 +38,17 @@ type iListTransitRouterRouteTablesRequest interface {
 }
 
 type ListTransitRouterRouteTablesRequest struct {
-	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
+	// The token that is used for the next query. Valid values:
 	//
-	// 	- If this is your first query or no subsequent query is to be sent, ignore this parameter.
+	// - If this is your first query or no next query is to be sent, do not specify this parameter.
 	//
-	// 	- If a subsequent query is to be sent, set the value to the value of **NextToken*	- that is returned from the last call.
+	// - If a next query is to be sent, set the value to the **NextToken*	- value returned from the last API call.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type ListTransitRouterRouteTablesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The features of the route table.
 	RouteTableOptions *ListTransitRouterRouteTablesRequestRouteTableOptions `json:"RouteTableOptions,omitempty" xml:"RouteTableOptions,omitempty" type:"Struct"`
-	// The information about the tags.
+	// The tag.
 	//
-	// You can specify at most 20 tags in each call.
+	// You can specify up to 20 tags.
 	Tag []*ListTransitRouterRouteTablesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the Enterprise Edition transit router.
 	//
@@ -72,7 +72,7 @@ type ListTransitRouterRouteTablesRequest struct {
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The ID of the route table.
 	//
-	// You can query multiple route tables in each call. Maximum value of **N**: **20**.
+	// You can query multiple route tables at a time. The maximum value of **N*	- is **20**.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type ListTransitRouterRouteTablesRequest struct {
 	TransitRouterRouteTableIds []*string `json:"TransitRouterRouteTableIds,omitempty" xml:"TransitRouterRouteTableIds,omitempty" type:"Repeated"`
 	// The name of the route table.
 	//
-	// You can query multiple route tables in each call. Maximum value of **N**: **20**.
+	// You can query multiple route tables at a time. The maximum value of **N*	- is **20**.
 	//
-	// > If you set both **TransitRouterRouteTableNames.N*	- and **TransitRouterRouteTableIds.N**, make sure that the specified name and ID belong to the same route table.
+	// > If you query route tables using both **TransitRouterRouteTableNames.N*	- and **TransitRouterRouteTableIds.N**, make sure that the names and IDs match.
 	//
 	// example:
 	//
@@ -90,11 +90,11 @@ type ListTransitRouterRouteTablesRequest struct {
 	TransitRouterRouteTableNames []*string `json:"TransitRouterRouteTableNames,omitempty" xml:"TransitRouterRouteTableNames,omitempty" type:"Repeated"`
 	// The status of the route table. Valid values:
 	//
-	// 	- **Creating**: The route table is being created.
+	// - **Creating**: The route table is being created.
 	//
-	// 	- **Deleting**: The route table is being deleted.
+	// - **Deleting**: The route table is being deleted.
 	//
-	// 	- **Active**: The route table is available.
+	// - **Active**: The route table is available.
 	//
 	// example:
 	//
@@ -102,9 +102,9 @@ type ListTransitRouterRouteTablesRequest struct {
 	TransitRouterRouteTableStatus *string `json:"TransitRouterRouteTableStatus,omitempty" xml:"TransitRouterRouteTableStatus,omitempty"`
 	// The type of the route table. Valid values:
 	//
-	// 	- **Custom**: a custom route table
+	// - **Custom**: a custom route table.
 	//
-	// 	- **System**: the default route table
+	// - **System**: the default route table.
 	//
 	// example:
 	//
@@ -256,11 +256,11 @@ func (s *ListTransitRouterRouteTablesRequest) Validate() error {
 }
 
 type ListTransitRouterRouteTablesRequestRouteTableOptions struct {
-	// Specifies whether to enable equal-cost multi-path (ECMP) routing. Valid values:
+	// The multi-region equal-cost multi-path (ECMP) routing feature. Valid values:
 	//
-	// 	- **disable**: disables ECMP routing If you disable ECMP routing, routes that are learned from different regions but have the same prefix and attributes select the transit router with the smallest region ID as the next hop. Region IDs are sorted in alphabetic order. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
+	// - **disable**: Disables multi-region ECMP routing. After this feature is disabled, for routes that are learned from different regions and have the same prefix and other attributes, the system selects the transit router with the smallest region ID as the next hop. Region IDs are sorted in alphabetical order. This changes the latency and bandwidth consumption between different regions. Make sure that you fully evaluate the impact before you disable the feature.
 	//
-	// 	- **enable**: enables ECMP routing. If you enable ECMP routing, routes that are learned from different regions but have the same prefix and attributes form an ECMP route. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
+	// - **enable**: Enables multi-region ECMP routing. After this feature is enabled, for routes that are learned from different regions and have the same prefix and other attributes, ECMP routing is formed. This changes the latency and bandwidth consumption between different regions. Make sure that you fully evaluate the impact before you enable the feature.
 	//
 	// example:
 	//
@@ -292,9 +292,9 @@ func (s *ListTransitRouterRouteTablesRequestRouteTableOptions) Validate() error 
 type ListTransitRouterRouteTablesRequestTag struct {
 	// The tag key.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https:// `.
 	//
-	// You can specify at most 20 tag keys.
+	// You can specify up to 20 tag keys.
 	//
 	// example:
 	//
@@ -302,9 +302,9 @@ type ListTransitRouterRouteTablesRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be an empty string or a string of up to 128 characters. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https:// `.
 	//
-	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	// Each tag key must have a corresponding tag value. You can specify up to 20 tag values.
 	//
 	// example:
 	//

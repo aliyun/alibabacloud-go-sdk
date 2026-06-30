@@ -34,21 +34,21 @@ type iUpdateTransitRouterVpnAttachmentAttributeRequest interface {
 }
 
 type UpdateTransitRouterVpnAttachmentAttributeRequest struct {
-	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
+	// Specifies whether to allow the Enterprise Edition transit router to automatically publish routes to the IPsec-VPN connection. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: The Enterprise Edition transit router automatically publishes routes to the IPsec-VPN connection.
 	//
-	// 	- **false**: no
+	// - **false**: The Enterprise Edition transit router does not automatically publish routes to the IPsec-VPN connection.
 	//
 	// example:
 	//
 	// true
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// A client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the request as the **ClientToken**. The **RequestId*	- may be different for each request.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type UpdateTransitRouterVpnAttachmentAttributeRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**:performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: Performs a dry run to check the request without modifying the attributes of the VPN connection. The system checks the required parameters, request format, and service limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and sends the request.
+	// - **false*	- (Default): Sends a normal request. If the request passes the check, the system modifies the attributes of the VPN connection.
 	//
 	// example:
 	//
@@ -72,15 +72,15 @@ type UpdateTransitRouterVpnAttachmentAttributeRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The new description of the VPN attachment.
+	// The new description of the VPN connection.
 	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	// The description can be empty or 1 to 256 characters in length, and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
 	// desctest
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
-	// The ID of the VPN attachment.
+	// The ID of the VPN connection.
 	//
 	// This parameter is required.
 	//
@@ -88,9 +88,9 @@ type UpdateTransitRouterVpnAttachmentAttributeRequest struct {
 	//
 	// tr-attach-a6p8voaodog5c0****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The name of the VPN attachment.
+	// The new name of the VPN connection.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//

@@ -34,23 +34,23 @@ type iDeregisterTransitRouterMulticastGroupMembersRequest interface {
 type DeregisterTransitRouterMulticastGroupMembersRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
+	// Generate a unique value from your client for each request. The ClientToken parameter supports only ASCII characters.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: Sends a check request without deleting the multicast member. The system checks required parameters, the request format, and service limits. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	// - **false*	- (default): Sends a normal request. After the request passes the check, the multicast member is deleted.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The IP address of the multicast group to which the multicast members belong.
+	// The IP address of the multicast group to which the multicast member belongs.
 	//
 	// This parameter is required.
 	//
@@ -58,15 +58,15 @@ type DeregisterTransitRouterMulticastGroupMembersRequest struct {
 	//
 	// 239.XX.XX.2
 	GroupIpAddress *string `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
-	// The IDs of elastic network interfaces (ENIs).
+	// A list of Elastic Network Interface (ENI) IDs.
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
 	OwnerAccount        *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the multicast domain that is in a different region.
+	// A list of inter-region multicast domain IDs.
 	PeerTransitRouterMulticastDomains []*string `json:"PeerTransitRouterMulticastDomains,omitempty" xml:"PeerTransitRouterMulticastDomains,omitempty" type:"Repeated"`
 	ResourceOwnerAccount              *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId                   *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the multicast domain to which the multicast members belong.
+	// The ID of the multicast domain to which the multicast member belongs.
 	//
 	// This parameter is required.
 	//

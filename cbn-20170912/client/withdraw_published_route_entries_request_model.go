@@ -36,7 +36,7 @@ type WithdrawPublishedRouteEntriesRequest struct {
 	//
 	// cen-sxjfjkjfkjfiein****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the attached network instance.
+	// The ID of the network instance.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,9 @@ type WithdrawPublishedRouteEntriesRequest struct {
 	//
 	// vpc-rj9gt5nll27onu7****
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The ID of the region where the attached network instance is created.
+	// The region ID of the network instance.
+	//
+	// Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +54,7 @@ type WithdrawPublishedRouteEntriesRequest struct {
 	//
 	// cn-hangzhou
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The ID of the route table of the attached network instance.
+	// The route table ID of the network instance.
 	//
 	// This parameter is required.
 	//
@@ -60,9 +62,11 @@ type WithdrawPublishedRouteEntriesRequest struct {
 	//
 	// vtb-bp174d1gje79u1g4t****
 	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
-	// The type of the attached network instance.
+	// The type of the network instance. Valid values:
 	//
-	// Set the value to **VPC**, which indicates a virtual private cloud (VPC).
+	// - **VPC**: virtual private cloud.
+	//
+	// - **VBR**: virtual border router.
 	//
 	// This parameter is required.
 	//
@@ -70,13 +74,13 @@ type WithdrawPublishedRouteEntriesRequest struct {
 	//
 	// VPC
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	// The destination CIDR block of the route that you want to withdraw.
+	// The destination CIDR block of the route entry that you want to withdraw.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 172.XX.XX.0/24
+	// 172.16.1.0/24
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

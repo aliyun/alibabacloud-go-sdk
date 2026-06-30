@@ -36,7 +36,7 @@ type iListGrantVSwitchEnisRequest interface {
 }
 
 type ListGrantVSwitchEnisRequest struct {
-	// The ID of the CEN instance to which the VPC is attached.
+	// The ID of the CEN instance to which the VPC is connected.
 	//
 	// This parameter is required.
 	//
@@ -44,19 +44,19 @@ type ListGrantVSwitchEnisRequest struct {
 	//
 	// cen-a7syd349kne38g****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The number of entries to return on each page. Valid values: 10 to 500.
+	// The maximum number of entries to return on each page. Valid values: 10 to 500.
 	//
 	// Default value:
 	//
-	// 	- If you do not specify a value, the default value is 20.
+	// - If you do not specify this parameter, the default value is 20.
 	//
-	// 	- If this parameter is set to a value greater than 500, the default value is 500.
+	// - If you specify a value greater than 500, the default value is 500.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The ID of ENI N. Valid values of N: 1 to 100.
+	// The ID of the ENI.
 	NetworkInterfaceId []*string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty" type:"Repeated"`
 	// The name of the ENI.
 	//
@@ -64,7 +64,11 @@ type ListGrantVSwitchEnisRequest struct {
 	//
 	// test-eni-name
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token that is used for the next query. Valid values:
+	//
+	// - If this is your first query, you do not need to specify this parameter.
+	//
+	// - If a next query is to be sent, set the value to the NextToken value that was returned from the last call.
 	//
 	// example:
 	//
@@ -76,11 +80,13 @@ type ListGrantVSwitchEnisRequest struct {
 	//
 	// example:
 	//
-	// 192.168.XX.XX
+	// ``192.168.**.**``
 	PrimaryIpAddress     *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of a vSwitch in the VPC. You can specify only one vSwitch in each call.
+	// The ID of a vSwitch in the VPC.
+	//
+	// You can query information about the ENIs in only one vSwitch at a time.
 	//
 	// This parameter is required.
 	//

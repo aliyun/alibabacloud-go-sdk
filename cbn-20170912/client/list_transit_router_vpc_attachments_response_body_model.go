@@ -22,35 +22,35 @@ type iListTransitRouterVpcAttachmentsResponseBody interface {
 }
 
 type ListTransitRouterVpcAttachmentsResponseBody struct {
-	// The number of entries returned per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the next query. Valid values:
+	// The token to retrieve the next page of results.
 	//
-	// 	- If **NextToken*	- is returned, it indicates that no additional results exist.
+	// - If this parameter is empty, all results have been returned.
 	//
-	// 	- If **NextToken*	- was returned in the previous query, specify the value to obtain the next set of results.
+	// - If a value is returned for **NextToken**, it is the token to start the next query.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region.
+	// The request ID.
 	//
 	// example:
 	//
 	// C97FF53F-3EF8-4883-B459-60E171924B23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The information about the VPC connection.
+	// A list of VPC connections.
 	TransitRouterAttachments []*ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments `json:"TransitRouterAttachments,omitempty" xml:"TransitRouterAttachments,omitempty" type:"Repeated"`
 }
 
@@ -121,11 +121,11 @@ func (s *ListTransitRouterVpcAttachmentsResponseBody) Validate() error {
 }
 
 type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments struct {
-	// Indicates whether the Enterprise Edition transit router can automatically advertise routes to the VPC. Valid values:
+	// Specifies whether the Enterprise Edition transit router automatically advertises routes to the VPC.
 	//
-	// 	- **false**
+	// - **false**: Routes are not automatically advertised.
 	//
-	// 	- **true**
+	// - **true**: Routes are automatically advertised.
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments struct 
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The billing method of the VPC connection.
 	//
-	// Only **POSTPAY*	- may be returned, which indicates the default pay-as-you-go billing method.
+	// The value is always **POSTPAY**, which indicates the pay-as-you-go billing method.
 	//
 	// example:
 	//
@@ -147,45 +147,51 @@ type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments struct 
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The time when the VPC connection was created.
 	//
-	// The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time is in the `YYYY-MM-DDThh:mmZ` format and in UTC.
 	//
 	// example:
 	//
 	// 2021-06-15T02:14Z
-	CreationTime   *string                                                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	ManagedService *string                                                                     `json:"ManagedService,omitempty" xml:"ManagedService,omitempty"`
-	Options        *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
-	// The entity that pays the fees of the network instance. Valid values:
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The cloud service to which the resource belongs.
 	//
-	// 	- **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
+	// example:
 	//
-	// 	- **PayByResourceOwner**: the Alibaba Cloud account that owns the network instance.
+	// SAS
+	ManagedService *string `json:"ManagedService,omitempty" xml:"ManagedService,omitempty"`
+	// A collection of feature attributes.
+	Options *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
+	// Specifies who pays for the network instance. Valid values:
+	//
+	// - **PayByCenOwner**: The account that owns the CEN instance pays the fees.
+	//
+	// - **PayByResourceOwner**: The account that owns the network instance pays the fees.
 	//
 	// example:
 	//
 	// PayByCenOwner
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The type of resource to which the transit router is connected.
+	// The type of resource to which the connection is attached.
 	//
-	// Only **VPC*	- may be returned, which indicates VPCs.
+	// The value is always **VPC**, which indicates a VPC.
 	//
 	// example:
 	//
 	// VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the VPC connection. Valid values:
+	// The status of the VPC connection.
 	//
-	// 	- **Attached**
+	// - **Attached**: The connection is established.
 	//
-	// 	- **Attaching**
+	// - **Attaching**: The connection is being created.
 	//
-	// 	- **Detaching**
+	// - **Detaching**: The connection is being deleted.
 	//
 	// example:
 	//
 	// Attached
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// A list of tags.
 	Tags []*ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The description of the VPC connection.
 	//
@@ -193,7 +199,7 @@ type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments struct 
 	//
 	// testdesc
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
-	// The VPC connection ID.
+	// The ID of the VPC connection.
 	//
 	// example:
 	//
@@ -205,33 +211,33 @@ type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments struct 
 	//
 	// testname
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
-	// The description of the Enterprise Edition transit router.
+	// The ID of the Enterprise Edition transit router.
 	//
 	// example:
 	//
 	// tr-bp1su1ytdxtataupl****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The features of the VPC connection.
+	// The feature attributes of the VPC connection. This parameter is deprecated. We recommend that you use the Options parameter instead.
 	TransitRouterVPCAttachmentOptions map[string]*string `json:"TransitRouterVPCAttachmentOptions,omitempty" xml:"TransitRouterVPCAttachmentOptions,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//
 	// vpc-bp1h8vbrbcgohcju5****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	// The ID of the account that owns the VPC.
 	//
 	// example:
 	//
 	// 1250123456123456
 	VpcOwnerId *int64 `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
-	// The region ID of the VPC.
+	// The ID of the region where the VPC is deployed.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	VpcRegionId *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
-	// The primary and secondary zones, vSwitches, and ENIs of the VPC.
+	// The zone mappings of the VPC connection. This includes the vSwitches and elastic network interfaces (ENIs) in the associated VPC.
 	ZoneMappings []*ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
@@ -442,8 +448,26 @@ func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) Va
 }
 
 type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions struct {
+	// Specifies whether appliance mode is enabled.
+	//
+	// - **disable*	- (default): Appliance mode is disabled.
+	//
+	// - **enable**: Appliance mode is enabled.
+	//
+	// example:
+	//
+	// enable
 	ApplianceModeSupport *string `json:"ApplianceModeSupport,omitempty" xml:"ApplianceModeSupport,omitempty"`
-	Ipv6Support          *string `json:"Ipv6Support,omitempty" xml:"Ipv6Support,omitempty"`
+	// Specifies whether IPv6 is enabled.
+	//
+	// - **disable*	- (default): IPv6 is disabled.
+	//
+	// - **enable**: IPv6 is enabled.
+	//
+	// example:
+	//
+	// enable
+	Ipv6Support *string `json:"Ipv6Support,omitempty" xml:"Ipv6Support,omitempty"`
 }
 
 func (s ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions) String() string {
@@ -522,19 +546,19 @@ func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsTags
 }
 
 type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMappings struct {
-	// The ID of the ENI created by the Enterprise Edition transit router in the vSwitch.
+	// The ID of the ENI that the Enterprise Edition transit router creates in the vSwitch.
 	//
 	// example:
 	//
 	// eni-bp149hmyaqegerml****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// vsw-bp1a214sbus8z3b54****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone ID.
+	// The ID of the zone.
 	//
 	// example:
 	//

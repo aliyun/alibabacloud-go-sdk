@@ -30,7 +30,7 @@ type iSetCenInterRegionBandwidthLimitRequest interface {
 }
 
 type SetCenInterRegionBandwidthLimitRequest struct {
-	// The maximum bandwidth value of the inter-region connection. Unit: Mbit/s.
+	// The inter-region bandwidth between the two regions. Unit: Mbps.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type SetCenInterRegionBandwidthLimitRequest struct {
 	//
 	// 8
 	BandwidthLimit *int64 `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
-	// The bandwidth allocation method. Valid values:
+	// The method used to allocate bandwidth. Valid value:
 	//
-	// **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
+	// - **BandwidthPackage*	- (default): allocates bandwidth from a bandwidth plan.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type SetCenInterRegionBandwidthLimitRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The ID of the local region.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query regions where you can attach network instances to a CEN instance.
+	// Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the regions where network instances can be attached to a CEN instance.
 	//
 	// This parameter is required.
 	//

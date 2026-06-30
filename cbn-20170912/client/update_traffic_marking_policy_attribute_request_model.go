@@ -340,7 +340,7 @@ type UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules struct {
 	//
 	// example:
 	//
-	// Guangzhou Testing
+	// Guangzhou test
 	TrafficMatchRuleName *string `json:"TrafficMatchRuleName,omitempty" xml:"TrafficMatchRuleName,omitempty"`
 }
 
@@ -480,7 +480,7 @@ type UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules struct {
 	//
 	// example:
 	//
-	// Hangzhou-to-Qingdao CAT
+	// Hangzhou-Qingdao CAT
 	TrafficMatchRuleDescription *string `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
 	// The name of the traffic classification rule.
 	//

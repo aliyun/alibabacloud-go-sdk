@@ -58,13 +58,13 @@ type GrantInstanceToTransitRouterRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of network instance. Valid values:
 	//
-	// 	- **VPC**: VPC
+	// - **VPC**: VPC
 	//
-	// 	- **ExpressConnect**: VBR
+	// - **ExpressConnect**: VBR
 	//
-	// 	- **VPN**: IPsec-VPN connection
+	// - **VPN**: IPsec-VPN connection
 	//
-	// 	- **ECR**: ECR
+	// - **ECR**: ECR
 	//
 	// This parameter is required.
 	//
@@ -74,9 +74,9 @@ type GrantInstanceToTransitRouterRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The entity that pays the fees of the network instance. Valid values:
 	//
-	// 	- **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
+	// - **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
 	//
-	// 	- **PayByResourceOwner**: the Alibaba Cloud account that owns the network instance.
+	// - **PayByResourceOwner**: the Alibaba Cloud account that owns the network instance.
 	//
 	// example:
 	//

@@ -40,11 +40,11 @@ type ListCenInterRegionTrafficQosPoliciesRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
+	// The token for the next page of results. Valid values:
 	//
-	// 	- If this is your first query or no subsequent query is to be sent, ignore this parameter.
+	// - If this is your first query or no next page exists, do not specify this parameter.
 	//
-	// 	- If a next query is to be sent, set the value to the value of **NextToken*	- that is returned from the last call.
+	// - If a next page exists, set the value to the **NextToken*	- value returned from the previous call.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListCenInterRegionTrafficQosPoliciesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The description of the QoS policy.
 	//
-	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+	// The description can be empty or 1 to 256 characters in length. It cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListCenInterRegionTrafficQosPoliciesRequest struct {
 	TrafficQosPolicyId *string `json:"TrafficQosPolicyId,omitempty" xml:"TrafficQosPolicyId,omitempty"`
 	// The name of the QoS policy.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+	// The name can be empty or 1 to 128 characters in length. It cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type ListCenInterRegionTrafficQosPoliciesRequest struct {
 	//
 	// tr-attach-r6g0m3epjehw57****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the transit router.
+	// The ID of the TransitRouter instance.
 	//
 	// example:
 	//

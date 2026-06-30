@@ -22,7 +22,7 @@ type iDescribeCenRouteMapsResponseBody interface {
 }
 
 type DescribeCenRouteMapsResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//

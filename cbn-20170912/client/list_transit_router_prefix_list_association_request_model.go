@@ -42,29 +42,29 @@ type iListTransitRouterPrefixListAssociationRequest interface {
 }
 
 type ListTransitRouterPrefixListAssociationRequest struct {
-	// The ID of the next hop.
+	// The ID of the next hop connection.
 	//
-	// > Set the value to **BlackHole*	- if you want to query the prefix list that generates blackhole routes.
+	// > If you want to query information about the prefix list that is used to generate blackhole routes, set this parameter to **BlackHole**.
 	//
 	// example:
 	//
 	// tr-attach-flbq507rg2ckrj****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The ID of the network instance associated with the next hop connection.
+	// The ID of the network instance that is associated with the next hop connection.
 	//
 	// example:
 	//
 	// vpc-6eh7fp9hdqa2wv85t****
 	NextHopInstanceId *string `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
-	// The type of the next hop. Valid values:
+	// The next hop type. Valid values:
 	//
-	// 	- **BlackHole**: The prefix list that generates blackhole routes.
+	// - **BlackHole**: queries the prefix lists that generate blackhole routes.
 	//
-	// 	- **VPC**: The prefix list whose next hop is a virtual private cloud (VPC) connection.
+	// - **VPC**: queries the prefix lists whose next hop is a Virtual Private Cloud (VPC) connection.
 	//
-	// 	- **VBR**: The prefix list whose next hop is a virtual border router (VBR) connection.
+	// - **VBR**: queries the prefix lists whose next hop is a virtual border router (VBR) connection.
 	//
-	// 	- **TR**: The prefix list whose next hop is an inter-region connection on the transit router.
+	// - **TR**: queries the prefix lists whose next hop is an inter-region connection.
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ type ListTransitRouterPrefixListAssociationRequest struct {
 	//
 	// pl-6ehtn5kqxgeyy08fi****
 	PrefixListId *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
-	// The ID of the region where the transit router is deployed.
+	// The region ID of the transit router.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -108,11 +108,11 @@ type ListTransitRouterPrefixListAssociationRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the prefix list. Valid values:
+	// The status of the prefix list.
 	//
-	// 	- **Active**
+	// - **Active**: The prefix list is active.
 	//
-	// 	- **Updating**
+	// - **Updating**: The prefix list is being updated.
 	//
 	// example:
 	//

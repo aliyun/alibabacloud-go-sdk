@@ -30,11 +30,11 @@ type iCreateCenRequest interface {
 }
 
 type CreateCenRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// Generate a unique parameter value from your client for each request. \\`ClientToken\\` supports only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the request as the **ClientToken**. The **RequestId*	- is different for each request.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateCenRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the CEN instance.
 	//
-	// The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
+	// The description can be empty or 1 to 256 characters in length. It cannot start with \\`http\\://\\` or \\`https\\://\\`.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateCenRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the CEN instance.
 	//
-	// The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
+	// The name can be empty or 1 to 128 characters in length. It cannot start with \\`http\\://\\` or \\`https\\://\\`.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type CreateCenRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The level of CIDR block overlapping.
+	// The level of CIDR block overlap.
 	//
-	// Set the value to **REDUCED*	- (default). This value specifies that CIDR blocks can overlap but cannot be the same.
+	// Set the value to **REDUCED**. This is the default value. This value specifies that CIDR blocks can overlap but cannot be identical.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type CreateCenRequest struct {
 	ProtectionLevel      *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags.
+	// The tag information.
 	//
-	// You can specify up to 20 tags in each call.
+	// You can specify up to 20 tags.
 	Tag []*CreateCenRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -179,7 +179,7 @@ func (s *CreateCenRequest) Validate() error {
 type CreateCenRequestTag struct {
 	// The tag key.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. It can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// You can specify up to 20 tag keys.
 	//
@@ -189,9 +189,9 @@ type CreateCenRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be empty or a string of up to 128 characters. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// Each tag key must have a unique tag value. You can specify up to 20 tag values in each call.
+	// Each tag key must have a corresponding tag value. You can specify up to 20 tag values.
 	//
 	// example:
 	//

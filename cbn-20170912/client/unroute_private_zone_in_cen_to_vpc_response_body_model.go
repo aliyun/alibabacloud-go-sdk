@@ -14,6 +14,8 @@ type iUnroutePrivateZoneInCenToVpcResponseBody interface {
 }
 
 type UnroutePrivateZoneInCenToVpcResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// C0245BEF-52AC-44A8-A776-EF96FD26A5CA

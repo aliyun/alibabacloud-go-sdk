@@ -38,7 +38,7 @@ type iCreateTransitRouterShrinkRequest interface {
 }
 
 type CreateTransitRouterShrinkRequest struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The ID of the CEN instance.
 	//
 	// This parameter is required.
 	//
@@ -48,19 +48,19 @@ type CreateTransitRouterShrinkRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// Generate a client token to make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId*	- as **ClientToken**. The value of **RequestId*	- of each API request is different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the request as the **ClientToken**. The **RequestId*	- may be different for each request.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-001****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to check the request without performing the operation. Check items include permissions and the status of the specified cloud resources. Valid values:
+	// Specifies whether to perform a dry run. The dry run checks permissions and whether the required parameters are specified. Valid values:
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the check, an Enterprise Edition transit router is created.
+	// - **false*	- (default): sends the request and creates the instance after the request passes the check.
 	//
-	// 	- **true**: checks the request but does not create the Enterprise Edition transit router. If you use this value, the system checks whether the required parameters are set, and whether the request syntax is valid. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	// - **true**: sends a dry run request to check the parameters without creating the instance. The system checks the required parameters, request format, and permissions. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
 	// example:
 	//
@@ -82,31 +82,31 @@ type CreateTransitRouterShrinkRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
 	//
-	// 	- **false*	- (default): no
+	// - **false*	- (default): disables the multicast feature.
 	//
-	// 	- **true**: yes
+	// - **true**: enables the multicast feature.
 	//
-	// The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://help.aliyun.com/document_detail/261356.html) to query the regions that support multicast.
+	// The multicast feature is supported only in some regions. You can call the [ListTransitRouterAvailableResource](https://help.aliyun.com/document_detail/261356.html) operation to query the regions that support multicast.
 	//
 	// example:
 	//
 	// false
 	SupportMulticast *bool `json:"SupportMulticast,omitempty" xml:"SupportMulticast,omitempty"`
-	// The tags.
+	// The tag.
 	Tag []*CreateTransitRouterShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The CIDR blocks to be added to the transit router.
+	// The CIDR blocks of the transit router.
 	TransitRouterCidrListShrink *string `json:"TransitRouterCidrList,omitempty" xml:"TransitRouterCidrList,omitempty"`
 	// The description of the Enterprise Edition transit router instance.
 	//
-	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+	// The description can be empty or 1 to 256 characters in length, and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
 	// testdesc
 	TransitRouterDescription *string `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
-	// The name of the Enterprise Edition transit router.
+	// The name of the Enterprise Edition transit router instance.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
@@ -255,9 +255,9 @@ func (s *CreateTransitRouterShrinkRequest) Validate() error {
 type CreateTransitRouterShrinkRequestTag struct {
 	// The tag key.
 	//
-	// The tag keys cannot be an empty string. The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https:// `.
 	//
-	// You can specify at most 20 tag keys in each call.
+	// You can specify at most 20 tag keys.
 	//
 	// example:
 	//
@@ -265,9 +265,9 @@ type CreateTransitRouterShrinkRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// The tag value can be an empty string or up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag value can be empty or a string of up to 128 characters. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https:// `.
 	//
-	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	// Each tag key must have a unique tag value. You can specify at most 20 tag values.
 	//
 	// example:
 	//

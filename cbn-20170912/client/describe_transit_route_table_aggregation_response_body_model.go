@@ -22,7 +22,7 @@ type iDescribeTransitRouteTableAggregationResponseBody interface {
 }
 
 type DescribeTransitRouteTableAggregationResponseBody struct {
-	// The number of entries returned per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
@@ -32,21 +32,21 @@ type DescribeTransitRouteTableAggregationResponseBody struct {
 	Data []*DescribeTransitRouteTableAggregationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no next page exists.
 	//
-	// 	- If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	// - If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0C2EE7A8-74D4-4081-8236-CEBDE3BBCF50
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -135,35 +135,35 @@ type DescribeTransitRouteTableAggregationResponseBodyData struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the aggregate route.
 	//
-	// The valid value is **Static**, which indicates a static route. By default, aggregate routes advertised to a VPC are considered custom routes.
+	// The value is set to **Static**. This indicates that the route is a static route. After the aggregate route is advertised to a VPC, it becomes a custom route entry by default.
 	//
 	// example:
 	//
 	// Static
 	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	// The scope of networks that you want to advertise the aggregate route.
+	// The scope of the aggregate route.
 	//
-	// The valid value is **VPC**, which indicates that the aggregate route is advertised to all virtual private clouds (VPCs) that are in associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
+	// The value is set to **VPC**. This indicates that the aggregate route is advertised to all VPCs that are associated with the route table of the Enterprise Edition transit router and have route synchronization enabled.
 	//
 	// example:
 	//
 	// VPC
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The list of propagation ranges of the aggregation route.
+	// The list of scopes of the aggregate route.
 	//
-	// >  You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
+	// > You must specify at least one of the Scope and ScopeList properties. We recommend that you specify ScopeList. The elements in ScopeList cannot be the same as the value of Scope.
 	ScopeList []*string `json:"ScopeList,omitempty" xml:"ScopeList,omitempty" type:"Repeated"`
-	// The status of the advertisement of the aggregate route. Valid values:
+	// The advertising status of the aggregate route.
 	//
-	// 	- **AllConfigured**: The aggregate route is advertised to all VPCs.
+	// - **AllConfigured**: The aggregate route is advertised to all VPCs.
 	//
-	// 	- **Configuring**: The aggregate route is being advertised.
+	// - **Configuring**: The aggregate route is being advertised.
 	//
-	// 	- **ConfigFailed**: The aggregate route failed to be advertised.
+	// - **ConfigFailed**: The aggregate route failed to be advertised.
 	//
-	// 	- **PartialConfigured**: Failed to advertise the aggregate route to some VPCs.
+	// - **PartialConfigured**: The aggregate route is advertised to some VPCs.
 	//
-	// 	- **Deleting**: The aggregate route is being deleted.
+	// - **Deleting**: The aggregate route is being deleted.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type iListTransitRouterMulticastDomainAssociationsRequest interface {
 type ListTransitRouterMulticastDomainAssociationsRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can only contain ASCII characters.
+	// Generate a token from your client to ensure that it is unique among different requests. The ClientToken parameter can contain only ASCII characters.
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type ListTransitRouterMulticastDomainAssociationsRequest struct {
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
+	// The token that determines the start point of the next query. Valid values:
 	//
-	// 	- If this is your first query and no next queries are to be sent, ignore this parameter.
+	// - If this is your first query and no next query is to be sent, ignore this parameter.
 	//
-	// 	- If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+	// - If a next query is to be sent, set the value to the NextToken value returned from the last API call.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ListTransitRouterMulticastDomainAssociationsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of resource associated with the multicast domain.
 	//
-	// Valid value: **VPC**.
+	// The value is **VPC**.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type ListTransitRouterMulticastDomainAssociationsRequest struct {
 	//
 	// tr-mcast-domain-91wpg6wbhchjeq****
 	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
-	// The IDs of vSwitches.
+	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 

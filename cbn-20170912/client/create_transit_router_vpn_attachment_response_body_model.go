@@ -16,13 +16,13 @@ type iCreateTransitRouterVpnAttachmentResponseBody interface {
 }
 
 type CreateTransitRouterVpnAttachmentResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 8B5DD40A-3A29-5AC0-B8DA-05FD10D5C893
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the VPN attachment.
+	// The ID of the VPN connection.
 	//
 	// example:
 	//

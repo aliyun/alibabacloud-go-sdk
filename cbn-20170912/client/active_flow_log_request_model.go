@@ -38,7 +38,7 @@ type ActiveFlowLogRequest struct {
 	//
 	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId may be different for each request.
+	// > If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId may be different for each request.
 	//
 	// example:
 	//

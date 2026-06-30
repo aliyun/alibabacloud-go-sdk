@@ -14,7 +14,7 @@ type iDeleteCenChildInstanceRouteEntryToCenResponseBody interface {
 }
 
 type DeleteCenChildInstanceRouteEntryToCenResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

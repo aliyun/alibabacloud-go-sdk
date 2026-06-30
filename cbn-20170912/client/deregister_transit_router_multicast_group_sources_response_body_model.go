@@ -14,7 +14,7 @@ type iDeregisterTransitRouterMulticastGroupSourcesResponseBody interface {
 }
 
 type DeregisterTransitRouterMulticastGroupSourcesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

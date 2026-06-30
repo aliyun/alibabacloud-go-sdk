@@ -28,29 +28,29 @@ type ListTransitRouterRouteTableAssociationsResponseBody struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
+	// The token for the next query.
 	//
-	// 	- If **NextToken*	- was not returned, it indicates that no additional results exist.
+	// - If this parameter is not returned, it indicates that no more results are to be returned.
 	//
-	// 	- If **NextToken*	- was returned in the previous query, specify the value to obtain the next set of results.
+	// - If a value is returned for this parameter, the value is the token that is used for the next query.
 	//
 	// example:
 	//
 	// a415****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F6B1D9AB-176D-4399-801D-8BC576F4EB0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of associated forwarding correlations.
+	// A list of forwarding associations.
 	TransitRouterAssociations []*ListTransitRouterRouteTableAssociationsResponseBodyTransitRouterAssociations `json:"TransitRouterAssociations,omitempty" xml:"TransitRouterAssociations,omitempty" type:"Repeated"`
 }
 
@@ -121,35 +121,35 @@ func (s *ListTransitRouterRouteTableAssociationsResponseBody) Validate() error {
 }
 
 type ListTransitRouterRouteTableAssociationsResponseBodyTransitRouterAssociations struct {
-	// The ID of the next hop.
+	// The ID of the next hop resource.
 	//
 	// example:
 	//
 	// vpc-bp1h8vbrbcgohcju5****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of next hop. Valid values:
+	// The type of the next hop resource.
 	//
-	// 	- **VPC**: VPC
+	// - **VPC**: virtual private cloud (VPC).
 	//
-	// 	- **VBR**: VBR
+	// - **VBR**: virtual border router (VBR).
 	//
-	// 	- **TR**: transit router
+	// - **TR**: transit router.
 	//
-	// 	- **VPN*	- :VPN attachment
+	// - **VPN**: VPN connection.
 	//
 	// example:
 	//
 	// VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the associated forwarding correlation. Valid values:
+	// The status of the association.
 	//
-	// 	- **Active**: The associated forwarding correlation is available.
+	// - **Active**: The association is active.
 	//
-	// 	- **Associating**: The associated forwarding correlation is being created.
+	// - **Associating**: The association is being created.
 	//
-	// 	- **Dissociating**: The associated forwarding correlation is being deleted.
+	// - **Dissociating**: The association is being deleted.
 	//
-	// 	- **Deleted**: The associated forwarding correlation is deleted.
+	// - **Deleted**: The association is deleted.
 	//
 	// example:
 	//

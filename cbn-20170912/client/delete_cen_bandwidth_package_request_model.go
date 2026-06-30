@@ -22,6 +22,8 @@ type iDeleteCenBandwidthPackageRequest interface {
 }
 
 type DeleteCenBandwidthPackageRequest struct {
+	// The ID of the bandwidth plan that you want to delete.
+	//
 	// This parameter is required.
 	//
 	// example:

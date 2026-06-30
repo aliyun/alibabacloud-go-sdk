@@ -16,13 +16,13 @@ type iCreateTransitRouterCidrResponseBody interface {
 }
 
 type CreateTransitRouterCidrResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0876E54E-3E36-5C31-89F0-9EE8A9266F9A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the CIDR block.
+	// The ID of the transit router CIDR block.
 	//
 	// example:
 	//

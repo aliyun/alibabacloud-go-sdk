@@ -22,22 +22,35 @@ type iListTransitRouterMulticastDomainVSwitchesResponseBody interface {
 }
 
 type ListTransitRouterMulticastDomainVSwitchesResponseBody struct {
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query. Valid values:
+	//
+	// - If **NextToken*	- is empty, there is no next query.
+	//
+	// - If **NextToken*	- has a return value, the value is the token for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B0E7E43C-979A-5130-AA0D-B3ADA69E0827
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of entries in the list.
+	//
 	// example:
 	//
 	// 2
-	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 

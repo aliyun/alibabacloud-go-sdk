@@ -34,7 +34,7 @@ type iDescribeRouteConflictRequest interface {
 }
 
 type DescribeRouteConflictRequest struct {
-	// The ID of the network instance that you want to query.
+	// The ID of the network instance to query.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DescribeRouteConflictRequest struct {
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
 	// The ID of the region where the network instance is deployed.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type DescribeRouteConflictRequest struct {
 	//
 	// ccn-cn-shanghai
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The ID of the route table that is configured on the network instance.
+	// The ID of the route table of the network instance.
 	//
 	// This parameter is required.
 	//
@@ -62,11 +62,11 @@ type DescribeRouteConflictRequest struct {
 	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// 	- **VPC**: virtual private cloud (VPC)
+	// - **VPC**: virtual private cloud.
 	//
-	// 	- **VBR**: virtual border router (VBR)
+	// - **VBR**: virtual border router.
 	//
-	// 	- **CCN**: Cloud Connect Network (CCN) instance
+	// - **CCN**: Cloud Connect Network.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type DescribeRouteConflictRequest struct {
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDeleteCenRouteMapResponseBody interface {
 }
 
 type DeleteCenRouteMapResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type DescribeCenPrivateZoneRoutesResponseBody struct {
 	//
 	// cen-7qthudw0ll6jmc****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -44,20 +44,20 @@ type DescribeCenPrivateZoneRoutesResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IP address of the DNS server used by PrivateZone.
+	// The IP addresses of the DNS servers for the PrivateZone service.
 	//
 	// example:
 	//
 	// 100.100.XX.XX/32,100.100.XX.XX/32
 	PrivateZoneDnsServers *string                                                   `json:"PrivateZoneDnsServers,omitempty" xml:"PrivateZoneDnsServers,omitempty"`
 	PrivateZoneInfos      *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos `json:"PrivateZoneInfos,omitempty" xml:"PrivateZoneInfos,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 461EC1B5-04A8-4706-8764-8F5BCEF48A6F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

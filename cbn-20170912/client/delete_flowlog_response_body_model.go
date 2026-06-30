@@ -16,17 +16,17 @@ type iDeleteFlowlogResponseBody interface {
 }
 
 type DeleteFlowlogResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F7DDDC17-FA06-4AC2-8F35-59D2470FCFC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the call is successful. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**
 	//
-	// 	- **false**: no
+	// - **false**
 	//
 	// example:
 	//

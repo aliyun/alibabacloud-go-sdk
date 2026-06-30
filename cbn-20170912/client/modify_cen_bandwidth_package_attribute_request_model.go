@@ -34,17 +34,17 @@ type ModifyCenBandwidthPackageAttributeRequest struct {
 	//
 	// cenbwp-4c2zaavbvh5fx****
 	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
-	// The new description of the bandwidth plan.
+	// The new description for the bandwidth plan.
 	//
-	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+	// The description can be empty or 1 to 256 characters long. It cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
-	// Bandwidth Plans
+	// Bandwidth package
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The new name of the bandwidth plan.
+	// The new name for the bandwidth plan.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+	// The name can be empty or 1 to 128 characters long. It cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//

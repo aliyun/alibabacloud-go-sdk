@@ -26,6 +26,12 @@ type iRefreshTransitRouteTableAggregationRequest interface {
 }
 
 type RefreshTransitRouteTableAggregationRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// Use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// > When left empty, the system automatically uses the RequestId as the ClientToken. The RequestId is different for each API request.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-001****
@@ -34,12 +40,16 @@ type RefreshTransitRouteTableAggregationRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The destination CIDR block of the aggregate route.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 192.168.53.0/24
 	TransitRouteTableAggregationCidr *string `json:"TransitRouteTableAggregationCidr,omitempty" xml:"TransitRouteTableAggregationCidr,omitempty"`
+	// The route table ID of the Enterprise Edition transit router.
+	//
 	// This parameter is required.
 	//
 	// example:

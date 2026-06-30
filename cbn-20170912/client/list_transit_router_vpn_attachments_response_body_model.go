@@ -28,29 +28,29 @@ type ListTransitRouterVpnAttachmentsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the next query. Valid values:
+	// The token that is used for the next query. Valid values:
 	//
-	// 	- If **NextToken*	- is not returned, it indicates that no additional results exist.
+	// - If **NextToken*	- is empty, it indicates that no next query is to be sent.
 	//
-	// 	- If **NextToken*	- was returned in the previous query, specify the value to obtain the next set of results.
+	// - If a value is returned for **NextToken**, the value is the token that is used for the next query.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3D5530D2-3BBB-524E-8E98-59AB06A250E4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The information about the VPN attachment.
+	// A list of VPN connections.
 	TransitRouterAttachments []*ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments `json:"TransitRouterAttachments,omitempty" xml:"TransitRouterAttachments,omitempty" type:"Repeated"`
 }
 
@@ -121,25 +121,25 @@ func (s *ListTransitRouterVpnAttachmentsResponseBody) Validate() error {
 }
 
 type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments struct {
-	// Indicates the transit router can automatically advertise routes to the IPsec connection. Valid values:
+	// Indicates whether the transit router automatically advertises routes to the IPsec-VPN connection. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: enabled.
 	//
-	// 	- **false**: no
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// true
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The ID of the CEN instance.
 	//
 	// example:
 	//
 	// cen-j3jzhw1zpau2km****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The billing method of the VPN attachment.
+	// The billing method of the VPN connection.
 	//
-	// Only POSTPAY may be returned, which is the default pay-as-you-go billing method.
+	// The value is set to POSTPAY, which indicates the pay-as-you-go billing method.
 	//
 	// example:
 	//
@@ -147,37 +147,37 @@ type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments struct 
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The time when the VPN connection was created.
 	//
-	// The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time is displayed in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-07-08T08:45Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The entity that pays the fees of the network instance. Valid values:
+	// The party that pays for the network instance. Valid values:
 	//
-	// 	- **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
+	// - **PayByCenOwner**: The fees for the network instance are paid by the account that owns the CEN instance.
 	//
-	// 	- **PayByResourceOwner**: the Alibaba Cloud account that owns the network instance.
+	// - **PayByResourceOwner**: The fees for the network instance are paid by the account that owns the network instance.
 	//
 	// example:
 	//
 	// PayByCenOwner
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The type of resource attached to the transit router.
+	// The resource type of the VPN connection.
 	//
-	// Only **VPN*	- may be returned, which indicates that an IPsec-VPN connection is attached to the transit router.
+	// The value is set to **VPN**, which indicates that the transit router is connected to an IPsec-VPN connection.
 	//
 	// example:
 	//
 	// VPN
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the VPN connection. Valid values:
+	// The status of the VPN connection.
 	//
-	// 	- **Attached**
+	// - **Attached**: The VPN connection is attached.
 	//
-	// 	- **Attaching**
+	// - **Attaching**: The VPN connection is being attached.
 	//
-	// 	- **Detaching**
+	// - **Detaching**: The VPN connection is being detached.
 	//
 	// example:
 	//
@@ -185,19 +185,19 @@ type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments struct 
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// A list of tags.
 	Tags []*ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The description of the IPsec-VPN connection.
+	// The description of the VPN connection.
 	//
 	// example:
 	//
 	// desctest
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
-	// The ID of the VPN attachment.
+	// The ID of the VPN connection.
 	//
 	// example:
 	//
 	// tr-attach-a6p8voaodog5c0****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The name of the VPN attachment.
+	// The name of the VPN connection.
 	//
 	// example:
 	//
@@ -221,15 +221,15 @@ type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments struct 
 	//
 	// 1210123456123456
 	VpnOwnerId *int64 `json:"VpnOwnerId,omitempty" xml:"VpnOwnerId,omitempty"`
-	// The ID of the region to which the IPsec-VPN connection belongs.
+	// The ID of the region where the IPsec-VPN connection is deployed.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/36063.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	VpnRegionId *string `json:"VpnRegionId,omitempty" xml:"VpnRegionId,omitempty"`
-	// The zones in which the VPN attachment is deployed.
+	// A list of zones where the VPN connection is deployed.
 	Zones []*ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -455,7 +455,7 @@ func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsTags
 type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsZones struct {
 	// The zone ID.
 	//
-	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the most recent zone list.
+	// For more information, see [DescribeZones](https://help.aliyun.com/document_detail/36064.html).
 	//
 	// example:
 	//

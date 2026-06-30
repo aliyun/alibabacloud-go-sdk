@@ -50,7 +50,7 @@ type DescribePublishedRouteEntriesRequest struct {
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
 	// The ID of the region where the network instance is deployed.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// For more information, see [](t2264556.xdita#).
 	//
 	// This parameter is required.
 	//
@@ -66,11 +66,11 @@ type DescribePublishedRouteEntriesRequest struct {
 	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// 	- **VPC**: VPC
+	// - **VPC**: virtual private cloud.
 	//
-	// 	- **VBR**: VBR
+	// - **VBR**: virtual border router.
 	//
-	// 	- **CCN**: Cloud Connect Network (CCN) instance
+	// - **CCN**: Cloud Connect Network.
 	//
 	// This parameter is required.
 	//
@@ -84,13 +84,13 @@ type DescribePublishedRouteEntriesRequest struct {
 	//
 	// 172.16.0.0/16
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**. Valid values: **1*	- to **50**.
+	// The number of entries per page. Default value: **10**. Valid values: **1*	- to **500**.
 	//
 	// example:
 	//

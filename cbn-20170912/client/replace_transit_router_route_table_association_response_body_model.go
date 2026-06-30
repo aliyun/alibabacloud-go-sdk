@@ -14,7 +14,7 @@ type iReplaceTransitRouterRouteTableAssociationResponseBody interface {
 }
 
 type ReplaceTransitRouterRouteTableAssociationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

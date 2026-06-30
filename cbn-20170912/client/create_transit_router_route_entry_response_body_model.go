@@ -16,13 +16,13 @@ type iCreateTransitRouterRouteEntryResponseBody interface {
 }
 
 type CreateTransitRouterRouteEntryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 835E7F4B-B380-4E0F-96A5-6EA572388047
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the route.
+	// The ID of the route entry.
 	//
 	// example:
 	//

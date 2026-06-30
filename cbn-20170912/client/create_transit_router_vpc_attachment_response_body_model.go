@@ -16,7 +16,7 @@ type iCreateTransitRouterVpcAttachmentResponseBody interface {
 }
 
 type CreateTransitRouterVpcAttachmentResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

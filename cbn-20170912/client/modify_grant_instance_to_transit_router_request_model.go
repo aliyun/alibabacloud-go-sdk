@@ -28,6 +28,8 @@ type iModifyGrantInstanceToTransitRouterRequest interface {
 }
 
 type ModifyGrantInstanceToTransitRouterRequest struct {
+	// The ID of the CEN instance.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -37,10 +39,18 @@ type ModifyGrantInstanceToTransitRouterRequest struct {
 	//
 	// cen-dc4vwznpwbobrl****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// A token used to ensure the idempotence of the request.
+	//
+	// You can generate this token from your client, but you must ensure it is unique for each request. The client token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system uses the request\\"s **RequestId*	- as the **ClientToken**. The **RequestId*	- is unique for each API request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the network instance.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -50,6 +60,8 @@ type ModifyGrantInstanceToTransitRouterRequest struct {
 	//
 	// vpc-bp1h8vbrbcgohcju5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The payer for the network instance.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -32,11 +32,11 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The token that determines the start point of the query. Valid values:
+	// The token that is used for the next query. Valid values:
 	//
-	// 	- If this is your first query and no next queries are to be sent, ignore this parameter.
+	// - If this is your first query or no next query is to be sent, you do not need to specify this parameter.
 	//
-	// 	- If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+	// - If a subsequent query is to be sent, set the value to the NextToken value that is returned from the last API call.
 	//
 	// example:
 	//
@@ -52,15 +52,15 @@ type ListTagResourcesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region where the resource is deployed.
 	//
-	// You can ignore this parameter if ResourceType is set to Cen or BandwidthPackage.
+	// This parameter is not required for the Cen and BandwidthPackage resource types. It is required for all other resource types.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the CEN instances.
+	// The ID of the CEN instance.
 	//
-	// You can specify at most 20 IDs in each call.
+	// You can enter a maximum of 20 CEN instance IDs.
 	//
 	// example:
 	//
@@ -68,27 +68,27 @@ type ListTagResourcesRequest struct {
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource to which you want to add the tag. Valid values:
+	// The resource type. Valid values:
 	//
-	// **Cen**: CEN instance
+	// **Cen**: a CEN instance.
 	//
-	// **BandwidthPackage**: bandwidth plan
+	// **BandwidthPackage**: a bandwidth plan.
 	//
-	// **TransitRouter**: transit router
+	// **TransitRouter**: a transit router.
 	//
-	// **TransitRouterVpcAttachment**: virtual private cloud (VPC) connection
+	// **TransitRouterVpcAttachment**: a VPC connection.
 	//
-	// **TransitRouterVbrAttachment**: virtual border router (VBR) connection
+	// **TransitRouterVbrAttachment**: a VBR connection.
 	//
-	// **TransitRouterPeerAttachment**: inter-region connection
+	// **TransitRouterPeerAttachment**: an inter-region connection.
 	//
-	// **TransitRouterVpnAttachment**: VPN connection
+	// **TransitRouterVpnAttachment**: a VPN connection.
 	//
-	// **TransitRouterRouteTable**: route table
+	// **TransitRouterRouteTable**: a route table.
 	//
-	// **Flowlog**: flow log
+	// **Flowlog**: a flow log.
 	//
-	// **TransitRouterMulticastDomain**: multicast domain
+	// **TransitRouterMulticastDomain**: a multicast domain.
 	//
 	// This parameter is required.
 	//
@@ -96,9 +96,9 @@ type ListTagResourcesRequest struct {
 	//
 	// cen
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The information about the tags that are added to the CEN instance.
+	// The tags of the CEN instance.
 	//
-	// You can query at most 20 tags in each call.
+	// You can query a maximum of 20 tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -216,9 +216,9 @@ func (s *ListTagResourcesRequest) Validate() error {
 type ListTagResourcesRequestTag struct {
 	// The tag key.
 	//
-	// The tag key cannot exceed 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
-	// You can specify at most 20 tag keys.
+	// You can enter a maximum of 20 tag keys.
 	//
 	// example:
 	//
@@ -226,9 +226,9 @@ type ListTagResourcesRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// The tag value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
-	// You can specify at most 20 tag values.
+	// You can enter a maximum of 20 tag values.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type iDescribeGrantRulesToCenRequest interface {
 }
 
 type DescribeGrantRulesToCenRequest struct {
-	// The CEN instance ID.
+	// The ID of the CEN instance.
 	//
 	// This parameter is required.
 	//
@@ -44,41 +44,41 @@ type DescribeGrantRulesToCenRequest struct {
 	//
 	// cen-nye53d7p3hzyu4****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the network instance that you want to query.
+	// The ID of the network instance to query.
 	//
 	// example:
 	//
 	// vpc-rj9gt5nll27onu7****
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the network instance belongs.
+	// The ID of the Alibaba Cloud account that owns the network instance.
 	//
 	// example:
 	//
-	// 125012345612****
+	// 1250123456123456
 	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	// Specifies whether to enable IPv6.
+	// Specifies whether IPv6 is enabled.
 	//
-	// 1.  This parameter takes effect only if ProductType is set to VPC.
+	// 1. This parameter applies only when **ProductType*	- is set to **VPC**.
 	//
-	// 2.  true: enables IPv6. false: disables IPv6. If you do not specify a value, network instances are not filtered based on this parameter.
+	// 2. Set to **true*	- to return only VPCs with IPv6 enabled, or **false*	- to return only those with IPv6 disabled. If you omit this parameter, the response is not filtered by the IPv6 status.
 	//
 	// example:
 	//
 	// true
 	EnabledIpv6 *bool `json:"EnabledIpv6,omitempty" xml:"EnabledIpv6,omitempty"`
-	// 	- If you do not set **MaxResults**, it indicates that you do not need to query results in batches. The value of **MaxResults*	- in the response indicates the total number of entries returned.
+	// - If you omit this parameter, all entries are returned. The **MaxResults*	- value in the response then indicates the total number of entries.
 	//
-	// 	- If you specify a value for **MaxResults**, it indicates that you need to query results in batches. The value of **MaxResults*	- indicates the number of entries to return in each batch. Valid values: **1*	- to **100**. The value of **MaxResults*	- in the response indicates the number of entries in the current batch. We recommend that you set **MaxResults*	- to **20**.
+	// - If you set this parameter, the response is paginated. The **MaxResults*	- value specifies the number of entries to return on each page. Valid values: **1*	- to **100**. The **MaxResults*	- value in the response indicates the number of entries on the current page. Setting **MaxResults*	- to **20*	- is recommended.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token used to retrieve the next page of results.
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - Omit this parameter for the first request.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// - Set this parameter to the **NextToken*	- value from the previous response to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -88,13 +88,15 @@ type DescribeGrantRulesToCenRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// 	- **VPC**
+	// - **VPC**: a virtual private cloud (VPC).
 	//
-	// 	- **VBR**
+	// - **VBR**: a virtual border router (VBR).
 	//
-	// 	- **CCN**
+	// - **CCN**: a Cloud Connect Network (CCN) instance.
 	//
-	// 	- **VPN**
+	// - **VPN**: an IPsec-VPN connection.
+	//
+	// - **ECR**: an Express Connect router.
 	//
 	// This parameter is required.
 	//
@@ -102,9 +104,9 @@ type DescribeGrantRulesToCenRequest struct {
 	//
 	// VPC
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The region ID of the network instance.
+	// The ID of the region where the network instance is located.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call the [](t2264556.xdita#)operation to query region IDs.
 	//
 	// example:
 	//

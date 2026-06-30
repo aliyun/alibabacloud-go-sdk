@@ -30,7 +30,7 @@ type iDescribeCenRegionDomainRouteEntriesRequest interface {
 }
 
 type DescribeCenRegionDomainRouteEntriesRequest struct {
-	// The CEN instance ID.
+	// The ID of the CEN instance.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeCenRegionDomainRouteEntriesRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The region ID.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// Call [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type DescribeCenRegionDomainRouteEntriesRequest struct {
 	CenRegionId  *string `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1*	- to **500**. Default value: **10**.
+	// The number of entries to return on each page. The default value is **10**. Valid values: **1*	- to **500**.
 	//
 	// example:
 	//
@@ -64,17 +64,17 @@ type DescribeCenRegionDomainRouteEntriesRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The route status. Valid values:
+	// The status of the route entry. Valid values:
 	//
-	// 	- **Active*	- (default): available
+	// - **Active*	- (default): active.
 	//
-	// 	- **Candidate**: standby
+	// - **Candidate**: backup.
 	//
-	// 	- **Rejected**: rejected
+	// - **Rejected**: rejected.
 	//
-	// 	- **Prohibited**: prohibited
+	// - **Prohibited**: disabled.
 	//
-	// 	- **All*	- (default value): all routes
+	// - **All**: all route entries in the current region, regardless of their status.
 	//
 	// example:
 	//

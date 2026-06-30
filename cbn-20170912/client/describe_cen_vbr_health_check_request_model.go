@@ -40,13 +40,13 @@ type DescribeCenVbrHealthCheckRequest struct {
 	CenId        *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **1*	- to **50**. Default value: **10**.
+	// The number of entries per page. Valid values: **1*	- to **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -60,15 +60,15 @@ type DescribeCenVbrHealthCheckRequest struct {
 	//
 	// vbr-bp1kznorjeembsuhl****
 	VbrInstanceId *string `json:"VbrInstanceId,omitempty" xml:"VbrInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the VBRs.
+	// The ID of the Alibaba Cloud account that owns the VBR.
 	//
 	// example:
 	//
 	// 1250123456123456
 	VbrInstanceOwnerId *int64 `json:"VbrInstanceOwnerId,omitempty" xml:"VbrInstanceOwnerId,omitempty"`
-	// The ID of the region where the VBRs are deployed.
+	// The ID of the region where the Virtual Border Router (VBR) is deployed.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// For more information, see [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html).
 	//
 	// This parameter is required.
 	//

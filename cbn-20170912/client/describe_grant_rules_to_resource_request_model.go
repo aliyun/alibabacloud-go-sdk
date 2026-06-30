@@ -30,19 +30,19 @@ type iDescribeGrantRulesToResourceRequest interface {
 }
 
 type DescribeGrantRulesToResourceRequest struct {
-	// 	- If you do not specify a value for **MaxResults**, entries are returned in one response. After you send the request, the value of **MaxResults*	- includes all entries.
+	// - If you omit this parameter, all entries are returned in a single response. In this case, the **MaxResults*	- field in the response indicates the total number of entries.
 	//
-	// 	- If you specify a value for **MaxResults**, entries are returned in batches. The value of **MaxResults*	- indicates the total number of entries returned per batch. Valid values: **1*	- to **100**. After you send the request, the value of **MaxResults*	- indicates the number of entries returned in the current response. We recommend that you set **MaxResults*	- to **20**.
+	// - If you specify the **MaxResults*	- parameter, the query is paginated. **MaxResults*	- sets the number of entries per page. The value must be an integer from **1*	- to **100**. The **MaxResults*	- value in the response indicates the number of entries on the current page. The recommended value for this parameter is **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token used to retrieve the next page of results. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - Omit this parameter for the first request.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of the **NextToken*	- parameter.
+	// - For subsequent requests, set this parameter to the **NextToken*	- value from the previous response.
 	//
 	// example:
 	//
@@ -50,15 +50,15 @@ type DescribeGrantRulesToResourceRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The type of network instance. Valid values:
+	// The type of the network instance. Valid values:
 	//
-	// 	- **VPC**: virtual private cloud (VPC)
+	// - **VPC**: a Virtual Private Cloud (VPC) instance.
 	//
-	// 	- **ExpressConnect**: virtual border router (VBR)
+	// - **ExpressConnect**: a Virtual Border Router (VBR) instance.
 	//
-	// 	- **VPN**: IPsec-VPN connection
+	// - **VPN**: an IPsec connection.
 	//
-	// 	- **ECR**: Express Connect Router (ECR)
+	// - **ECR**: an ExpressConnect Router (ECR) instance.
 	//
 	// This parameter is required.
 	//
@@ -68,13 +68,13 @@ type DescribeGrantRulesToResourceRequest struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The region ID of the network instance.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The network instance ID.
+	// The ID of the network instance.
 	//
 	// This parameter is required.
 	//

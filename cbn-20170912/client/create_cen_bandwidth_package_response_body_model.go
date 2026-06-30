@@ -30,7 +30,7 @@ type CreateCenBandwidthPackageResponseBody struct {
 	//
 	// 20156420004****
 	CenBandwidthPackageOrderId *string `json:"CenBandwidthPackageOrderId,omitempty" xml:"CenBandwidthPackageOrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

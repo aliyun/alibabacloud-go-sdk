@@ -40,11 +40,11 @@ type ListTransitRouterRouteTableAssociationsRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
+	// The token for the next query.
 	//
-	// 	- If this is your first query or no subsequent query is to be sent, ignore this parameter.
+	// - You do not need to specify this parameter for the first query.
 	//
-	// 	- If a next query is to be sent, set the value to the value of **NextToken*	- that is returned from the last call.
+	// - For a subsequent query, set this parameter to the **NextToken*	- value returned from the previous query.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type ListTransitRouterRouteTableAssociationsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the associated forwarding correlation. Valid values:
+	// The status of the association.
 	//
-	// 	- **Active**: The associated forwarding correlation is available.
+	// - **Active**: The association is active.
 	//
-	// 	- **Associating**: The associated forwarding correlation is being created.
+	// - **Associating**: The association is being created.
 	//
-	// 	- **Dissociating**: The associated forwarding correlation is being deleted.
+	// - **Dissociating**: The association is being deleted.
 	//
 	// example:
 	//
@@ -72,21 +72,21 @@ type ListTransitRouterRouteTableAssociationsRequest struct {
 	//
 	// tr-attach-nls9fzkfat8934****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the next hop.
+	// The ID of the next hop resource.
 	//
 	// example:
 	//
 	// vpc-bp1h8vbrbcgohcju5****
 	TransitRouterAttachmentResourceId *string `json:"TransitRouterAttachmentResourceId,omitempty" xml:"TransitRouterAttachmentResourceId,omitempty"`
-	// The type of next hop. Valid values:
+	// The type of the next hop resource.
 	//
-	// 	- **VPC**: virtual private cloud (VPC)
+	// - **VPC**: virtual private cloud (VPC).
 	//
-	// 	- **VBR**: virtual border router (VBR)
+	// - **VBR**: virtual border router (VBR).
 	//
-	// 	- **TR**: transit router
+	// - **TR**: transit router.
 	//
-	// 	- **VPN**: VPN attachment
+	// - **VPN**: VPN connection.
 	//
 	// example:
 	//

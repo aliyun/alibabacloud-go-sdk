@@ -32,17 +32,17 @@ type iDisassociateTransitRouterMulticastDomainRequest interface {
 type DisassociateTransitRouterMulticastDomainRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+	// Generate a token from your client to make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the API request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: prechecks the request but does not disassociate the vSwitch from the multicast domain. The system checks the required parameters, the request format, and the service limits. If the request fails the check, an error message is returned. If the request passes the check, the DryRunOperation error code is returned.
+	// - **true**: performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): sends the request. The vSwitch is disassociated from the multicast domain after the request passes the precheck.
+	// - **false*	- (default): performs a normal request. If the request passes the check, the vSwitch is dissociated from the multicast domain.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type DisassociateTransitRouterMulticastDomainRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the virtual private cloud (VPC) connection.
+	// The ID of the VPC connection.
 	//
-	// A connection ID is generated after a VPC to which the vSwitch belongs is connected to a transit router.
+	// The VPC connection is created after the Virtual Private Cloud (VPC) to which the vSwitch belongs is connected to the transit router.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type DisassociateTransitRouterMulticastDomainRequest struct {
 	//
 	// tr-mcast-domain-91wpg6wbhchjeq****
 	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
-	// The IDs of vSwitches.
+	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 

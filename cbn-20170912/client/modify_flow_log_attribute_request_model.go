@@ -34,17 +34,15 @@ type iModifyFlowLogAttributeRequest interface {
 }
 
 type ModifyFlowLogAttributeRequest struct {
-	// The CEN instance ID.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	//
 	// example:
 	//
 	// cen-7qthudw0ll6jmc****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The unique, one-use client token that is used to ensure the idempotence of the request. It can contain only ASCII characters.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
+	// > If you leave this parameter empty, the system automatically uses the **request ID*	- as the **client token**.
 	//
 	// example:
 	//
@@ -52,7 +50,7 @@ type ModifyFlowLogAttributeRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The new description of the flow log.
 	//
-	// The description can be empty or 1 to 256 characters in length, and cannot start with http:// or https://.
+	// The description can be empty or 1 to 256 characters in length, and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
@@ -68,13 +66,13 @@ type ModifyFlowLogAttributeRequest struct {
 	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	// The new name of the flow log.
 	//
-	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
 	// myFlowlog
 	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	// The time window for collecting log data. Unit: seconds. Valid values: **60*	- or **600*	- Default value: **600**.
+	// The duraton of the capture window. Unit: seconds. Valid values: **60*	- and **600**. Default value: **600**.
 	//
 	// example:
 	//
@@ -84,7 +82,7 @@ type ModifyFlowLogAttributeRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region where the flow log is deployed.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

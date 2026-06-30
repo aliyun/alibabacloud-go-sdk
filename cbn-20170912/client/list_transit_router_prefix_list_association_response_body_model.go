@@ -22,21 +22,21 @@ type iListTransitRouterPrefixListAssociationResponseBody interface {
 }
 
 type ListTransitRouterPrefixListAssociationResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of prefix lists.
+	// The information about the prefix lists.
 	PrefixLists []*ListTransitRouterPrefixListAssociationResponseBodyPrefixLists `json:"PrefixLists,omitempty" xml:"PrefixLists,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -117,29 +117,29 @@ func (s *ListTransitRouterPrefixListAssociationResponseBody) Validate() error {
 }
 
 type ListTransitRouterPrefixListAssociationResponseBodyPrefixLists struct {
-	// The ID of the next hop.
+	// The ID of the next hop connection.
 	//
-	// > A value of **BlackHole*	- indicates that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+	// > If **BlackHole*	- is returned, it indicates that all CIDR blocks in the prefix list are blackhole routes. All traffic destined for the CIDR blocks in the prefix list is dropped.
 	//
 	// example:
 	//
 	// tr-attach-flbq507rg2ckrj****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The ID of the network instance associated with the next hop connection.
+	// The ID of the network instance that is associated with the next hop connection.
 	//
 	// example:
 	//
 	// vpc-6eh7fp9hdqa2wv85t****
 	NextHopInstanceId *string `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
-	// The type of the next hop. Valid values:
+	// The next hop type.
 	//
-	// 	- **BlackHole**: All the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+	// - **BlackHole**: The routes are blackhole routes. All traffic destined for the CIDR blocks in the prefix list is dropped.
 	//
-	// 	- **VPC**: The next hop of the CIDR blocks in the prefix list is a VPC connection.
+	// - **VPC**: The next hop is a Virtual Private Cloud (VPC) connection.
 	//
-	// 	- **VBR**: The next hop of the CIDR blocks in the prefix list is a VBR connection.
+	// - **VBR**: The next hop is a virtual border router (VBR) connection.
 	//
-	// 	- **TR**: The next hop of the CIDR blocks in the prefix list is an inter-region connection.
+	// - **TR**: The next hop is an inter-region connection.
 	//
 	// example:
 	//
@@ -157,11 +157,11 @@ type ListTransitRouterPrefixListAssociationResponseBodyPrefixLists struct {
 	//
 	// pl-6ehtn5kqxgeyy08fi****
 	PrefixListId *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
-	// The status of the prefix list. Valid values:
+	// The status of the prefix list.
 	//
-	// 	- **Active**: The prefix list is effective.
+	// - **Active**: The prefix list is active.
 	//
-	// 	- **Updating**: The prefix list is being updated.
+	// - **Updating**: The prefix list is being updated.
 	//
 	// example:
 	//

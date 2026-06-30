@@ -22,29 +22,31 @@ type iListGrantVSwitchEnisResponseBody interface {
 }
 
 type ListGrantVSwitchEnisResponseBody struct {
-	// The information about the ENI.
+	// A list of ENI information.
 	GrantVSwitchEnis []*ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis `json:"GrantVSwitchEnis,omitempty" xml:"GrantVSwitchEnis,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The maximum number of entries returned.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	// The token that is used for the next query.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// DBFE1736-2F33-5309-9954-875B11E9519D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
-	// > If MaxResults and NextToken are sued to query results by page, ignore this parameter.
+	// 	Notice:
+	//
+	// This parameter is invalid if you use MaxResults and NextToken to perform a paged query.
 	//
 	// example:
 	//
@@ -119,19 +121,19 @@ func (s *ListGrantVSwitchEnisResponseBody) Validate() error {
 }
 
 type ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis struct {
-	// The ENI description.
+	// The description of the ENI.
 	//
 	// example:
 	//
 	// created by CBN
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ENI ID.
+	// The ID of the ENI.
 	//
 	// example:
 	//
 	// eni-p0w172vv82kxzb49****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The ENI name.
+	// The name of the ENI.
 	//
 	// example:
 	//
@@ -141,27 +143,27 @@ type ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis struct {
 	//
 	// example:
 	//
-	// 192.168.XX.XX
+	// ``192.168.**.**``
 	PrimaryIpAddress *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
-	// Indicates whether the ENI is created by a transit router. Valid values:
+	// Indicates whether the ENI is created by a transit router.
 	//
-	// 	- **true**
+	// - **true**: The ENI is created by a transit router.
 	//
-	// 	- **false**
+	// - **false**: The ENI is not created by a transit router.
 	//
-	// ENIs that are created by transit routers cannot be used as multicast sources or members.
+	// ENIs created by transit routers cannot be used as multicast sources or members.
 	//
 	// example:
 	//
 	// false
 	TransitRouterFlag *bool `json:"TransitRouterFlag,omitempty" xml:"TransitRouterFlag,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// vsw-p0w9s2ig1jnwgrbzl****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//

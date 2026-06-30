@@ -76,17 +76,22 @@ type DescribeCenAttachedChildInstanceAttributeResponseBody struct {
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// 	- **VPC**: VPC
+	// - **VPC**: VPC
 	//
-	// 	- **VBR**: VBR
+	// - **VBR**: VBR
 	//
-	// 	- **CCN**: CCN instance
+	// - **CCN**: CCN instance
 	//
 	// example:
 	//
 	// VPC
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	ManagedService    *string `json:"ManagedService,omitempty" xml:"ManagedService,omitempty"`
+	// The cloud service that the network instance belongs to. Its standard code is only returned when the VPC is connected to the transit router. For self-managed VPCs, no code is returned.
+	//
+	// example:
+	//
+	// swas
+	ManagedService *string `json:"ManagedService,omitempty" xml:"ManagedService,omitempty"`
 	// The ID of the request.
 	//
 	// example:
@@ -95,11 +100,11 @@ type DescribeCenAttachedChildInstanceAttributeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the network instance is attached to the CEN instance.
 	//
-	// 	- **Attaching**: The network instance is being attached to the CEN instance.
+	// - **Attaching**: The network instance is being attached to the CEN instance.
 	//
-	// 	- **Attached**: The network instance is attached to the CEN instance.
+	// - **Attached**: The network instance is attached to the CEN instance.
 	//
-	// 	- **Detaching**: The network instance is being detached from the CEN instance.
+	// - **Detaching**: The network instance is being detached from the CEN instance.
 	//
 	// example:
 	//

@@ -38,11 +38,11 @@ type ListTrafficMarkingPoliciesRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
+	// The token that is used for the next query. Valid values:
 	//
-	// 	- If this is your first query or no subsequent query is to be sent, ignore this parameter.
+	// - You do not need to specify this parameter for the first query.
 	//
-	// 	- If a next query is to be sent, set the value to the value of **NextToken*	- that is returned from the last call.
+	// - If a next query is to be sent, set the value to the **NextToken*	- value returned from the last API call.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListTrafficMarkingPoliciesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The description of the traffic marking policy.
 	//
-	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
+	// The description can be empty or 1 to 256 characters in length. It cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type ListTrafficMarkingPoliciesRequest struct {
 	TrafficMarkingPolicyId *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
 	// The name of the traffic marking policy.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://.
+	// The name can be empty or 1 to 128 characters in length. It cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
 	// nametest
 	TrafficMarkingPolicyName *string `json:"TrafficMarkingPolicyName,omitempty" xml:"TrafficMarkingPolicyName,omitempty"`
-	// The ID of the transit router.
+	// The ID of the TransitRouter instance.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDeleteTransitRouterMulticastDomainResponseBody interface {
 }
 
 type DeleteTransitRouterMulticastDomainResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

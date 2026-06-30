@@ -60,9 +60,9 @@ type ListTransitRouterRouteEntriesRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - You do not need to specify this parameter for the first request.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// - You must specify the token that is obtained from the previous query as the value of **NextToken**.
 	//
 	// example:
 	//
@@ -114,13 +114,13 @@ type ListTransitRouterRouteEntriesRequest struct {
 	TransitRouterRouteEntryNextHopResourceId *string `json:"TransitRouterRouteEntryNextHopResourceId,omitempty" xml:"TransitRouterRouteEntryNextHopResourceId,omitempty"`
 	// The next hop type. Valid values:
 	//
-	// 	- **VPC**
+	// - **VPC**
 	//
-	// 	- **VBR**
+	// - **VBR**
 	//
-	// 	- **TR**
+	// - **TR**
 	//
-	// 	- **VPN**
+	// - **VPN**
 	//
 	// example:
 	//
@@ -128,9 +128,9 @@ type ListTransitRouterRouteEntriesRequest struct {
 	TransitRouterRouteEntryNextHopResourceType *string `json:"TransitRouterRouteEntryNextHopResourceType,omitempty" xml:"TransitRouterRouteEntryNextHopResourceType,omitempty"`
 	// The next hop type. Valid values:
 	//
-	// 	- **BlackHole**: routes network traffic to a black hole.
+	// - **BlackHole**: routes network traffic to a black hole.
 	//
-	// 	- **Attachment**: routes network traffic to a network instance connection.
+	// - **Attachment**: routes network traffic to a network instance connection.
 	//
 	// example:
 	//
@@ -144,13 +144,13 @@ type ListTransitRouterRouteEntriesRequest struct {
 	TransitRouterRouteEntryOriginResourceId *string `json:"TransitRouterRouteEntryOriginResourceId,omitempty" xml:"TransitRouterRouteEntryOriginResourceId,omitempty"`
 	// The source instance type. Valid values:
 	//
-	// 	- **VPC**
+	// - **VPC**
 	//
-	// 	- **VBR**
+	// - **VBR**
 	//
-	// 	- **TR**
+	// - **TR**
 	//
-	// 	- **VPN**
+	// - **VPN**
 	//
 	// example:
 	//
@@ -158,17 +158,17 @@ type ListTransitRouterRouteEntriesRequest struct {
 	TransitRouterRouteEntryOriginResourceType *string `json:"TransitRouterRouteEntryOriginResourceType,omitempty" xml:"TransitRouterRouteEntryOriginResourceType,omitempty"`
 	// The status of the route. Valid values:
 	//
-	// 	- **All**
+	// - **All**
 	//
-	// 	- **Active*	- (default)
+	// - **Active*	- (default)
 	//
-	// 	- **Rejected**
+	// - **Rejected**
 	//
-	// 	- **Prohibited**
+	// - **Prohibited**
 	//
-	// 	- **Standby**
+	// - **Standby**
 	//
-	// 	- **Candidate**
+	// - **Candidate**
 	//
 	// If you do not specify a value, routes in the active state are queried.
 	//
@@ -178,9 +178,9 @@ type ListTransitRouterRouteEntriesRequest struct {
 	TransitRouterRouteEntryStatus *string `json:"TransitRouterRouteEntryStatus,omitempty" xml:"TransitRouterRouteEntryStatus,omitempty"`
 	// The route type. Valid values:
 	//
-	// 	- **Propagated**: automatically learned by the route table.
+	// - **Propagated**: automatically learned by the route table.
 	//
-	// 	- **Static**: static routes.
+	// - **Static**: static routes.
 	//
 	// example:
 	//
@@ -400,13 +400,13 @@ func (s *ListTransitRouterRouteEntriesRequest) Validate() error {
 type ListTransitRouterRouteEntriesRequestRouteFilter struct {
 	// The match pattern for filtering CIDR blocks. Valid values:
 	//
-	// 	- **PrefixExactMatchCidrs**: exact matching.
+	// - **PrefixExactMatchCidrs**: exact matching.
 	//
-	// 	- **LongestPrefixMatchCidrs**: longest prefix matching. You can specify IP addresses and CIDR blocks.
+	// - **LongestPrefixMatchCidrs**: longest prefix matching. You can specify IP addresses and CIDR blocks.
 	//
-	// 	- **SubnetOfMatchCidrs**: subnet matching. The subnets of the specified CIDR blocks, including the CIDR block, are matches against the match conditions.
+	// - **SubnetOfMatchCidrs**: subnet matching. The subnets of the specified CIDR blocks, including the CIDR block, are matches against the match conditions.
 	//
-	// 	- **SupernetOfMatchCidrs**: supernet matching. The supernets of the CIDR block, including the CIDR block, are matched against the match conditions.
+	// - **SupernetOfMatchCidrs**: supernet matching. The supernets of the CIDR block, including the CIDR block, are matched against the match conditions.
 	//
 	// By default, the logical operator among filter conditions is **AND**. Information about a route entry is returned only if the route entry matches all filter conditions. Filter conditions must be unique.
 	//

@@ -38,7 +38,7 @@ type ModifyCenAttributeRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The description of the CEN instance.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter or Chinese character and cannot start with `http://` or `https://`.
+	// The description can be empty or must be 1 to 256 characters in length. The description cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ModifyCenAttributeRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the CEN instance.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter and cannot start with `http://` or `https://`.
+	// The name can be empty or must be 1 to 128 characters in length. The name cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type ModifyCenAttributeRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The level of CIDR block overlapping.
+	// The level of CIDR block overlap.
 	//
-	// Set the value to **REDUCED*	- (default). This value specifies that CIDR blocks can overlap but cannot be the same.
+	// Set the value to **REDUCED**. This is the default value. This value specifies that CIDR blocks can overlap but cannot be identical.
 	//
 	// example:
 	//

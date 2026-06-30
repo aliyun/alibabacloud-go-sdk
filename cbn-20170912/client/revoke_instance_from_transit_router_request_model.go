@@ -56,13 +56,13 @@ type RevokeInstanceFromTransitRouterRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// 	- **VPC**: VPC
+	// - **VPC**: VPC
 	//
-	// 	- **ExpressConnect**: VBR
+	// - **ExpressConnect**: VBR
 	//
-	// 	- **VPN**: IPsec-VPN connection
+	// - **VPN**: IPsec-VPN connection
 	//
-	// 	- **ECR**: ECR
+	// - **ECR**: ECR
 	//
 	// This parameter is required.
 	//

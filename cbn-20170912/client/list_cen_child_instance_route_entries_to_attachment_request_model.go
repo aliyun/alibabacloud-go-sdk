@@ -40,7 +40,7 @@ type ListCenChildInstanceRouteEntriesToAttachmentRequest struct {
 	//
 	// cen-dc4vwznpwbobrl****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the route table configured on the network instance.
+	// The ID of the route table of the network instance.
 	//
 	// This parameter is required.
 	//
@@ -48,17 +48,17 @@ type ListCenChildInstanceRouteEntriesToAttachmentRequest struct {
 	//
 	// vtb-bp174d1gje79u1g4t****
 	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
+	// The number of entries to return on each page. The default value is **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
+	// The token for the next page of results.
 	//
-	// 	- If this is your first query and no subsequent queries are to be sent, ignore this parameter.
+	// - If this is your first query, leave this parameter empty.
 	//
-	// 	- If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+	// - If a next query is required, set the value to the NextToken value returned from the last call.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type ListCenChildInstanceRouteEntriesToAttachmentRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The filter condition for the destination CIDR block.
+	// The filter for the destination CIDR block.
 	RouteFilter []*ListCenChildInstanceRouteEntriesToAttachmentRequestRouteFilter `json:"RouteFilter,omitempty" xml:"RouteFilter,omitempty" type:"Repeated"`
-	// Specifies whether to host the route. If you leave the parameter empty, the route is not hosted. A value of TR specifies that the route is hosted on a transit router.
+	// The type of the managed routing service. If this parameter is empty, the route is not managed. Set the value to TR. This value indicates that the route is managed by a transit router.
 	//
 	// example:
 	//
@@ -207,15 +207,15 @@ func (s *ListCenChildInstanceRouteEntriesToAttachmentRequest) Validate() error {
 }
 
 type ListCenChildInstanceRouteEntriesToAttachmentRequestRouteFilter struct {
-	// The match mode of the route.
+	// The route matching mode.
 	//
-	// 	- **prefix-exact-match**: exact match.
+	// - **prefix-exact-match**: exact match
 	//
 	// example:
 	//
 	// prefix-exact-match
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The destination CIDR blocks.
+	// A list of destination CIDR blocks.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

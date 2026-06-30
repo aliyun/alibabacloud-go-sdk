@@ -23,7 +23,7 @@ type iDescribeCensResponseBody interface {
 
 type DescribeCensResponseBody struct {
 	Cens *DescribeCensResponseBodyCens `json:"Cens,omitempty" xml:"Cens,omitempty" type:"Struct"`
-	// The number of the page returned.
+	// The page number of the returned page.
 	//
 	// example:
 	//

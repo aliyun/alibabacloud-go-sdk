@@ -18,9 +18,9 @@ type iCheckTransitRouterServiceResponseBody interface {
 type CheckTransitRouterServiceResponseBody struct {
 	// Indicates whether the transit router feature is activated.
 	//
-	// 	- **true**: activated
+	// - **true**: activated
 	//
-	// 	- If this value is not returned, the system prompts that the current account does not have the transit router feature activated.
+	// - If this value is not returned, the system prompts that the current account does not have the transit router feature activated.
 	//
 	// example:
 	//

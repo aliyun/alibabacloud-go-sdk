@@ -14,7 +14,7 @@ type iUnassociateCenBandwidthPackageResponseBody interface {
 }
 
 type UnassociateCenBandwidthPackageResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

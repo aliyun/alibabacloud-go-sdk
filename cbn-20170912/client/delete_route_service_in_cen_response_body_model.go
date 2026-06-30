@@ -14,7 +14,7 @@ type iDeleteRouteServiceInCenResponseBody interface {
 }
 
 type DeleteRouteServiceInCenResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

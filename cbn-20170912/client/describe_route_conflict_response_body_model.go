@@ -22,13 +22,13 @@ type iDescribeRouteConflictResponseBody interface {
 }
 
 type DescribeRouteConflictResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeRouteConflictResponseBody struct {
 	// EE3A2CC7-41F1-58DB-8306-CFC99D9C747B
 	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteConflicts *DescribeRouteConflictResponseBodyRouteConflicts `json:"RouteConflicts,omitempty" xml:"RouteConflicts,omitempty" type:"Struct"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

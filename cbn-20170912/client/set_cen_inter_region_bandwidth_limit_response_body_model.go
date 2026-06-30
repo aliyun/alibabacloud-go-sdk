@@ -14,7 +14,7 @@ type iSetCenInterRegionBandwidthLimitResponseBody interface {
 }
 
 type SetCenInterRegionBandwidthLimitResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -24,12 +24,18 @@ type iUnroutePrivateZoneInCenToVpcRequest interface {
 }
 
 type UnroutePrivateZoneInCenToVpcRequest struct {
+	// The ID of the region where the PrivateZone connection is accessed.
+	//
+	// Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to get the region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	AccessRegionId *string `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	//
 	// This parameter is required.
 	//
 	// example:

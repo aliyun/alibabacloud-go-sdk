@@ -28,13 +28,13 @@ type iDescribeGeographicRegionMembershipRequest interface {
 type DescribeGeographicRegionMembershipRequest struct {
 	// The ID of the area that you want to query. Valid values:
 	//
-	// 	- **china**: the Chinese mainland
+	// - **china**: the Chinese mainland
 	//
-	// 	- **asia-pacific**: Asia Pacific
+	// - **asia-pacific**: Asia Pacific
 	//
-	// 	- **europe**: Europe
+	// - **europe**: Europe
 	//
-	// 	- **north-america**: North America
+	// - **north-america**: North America
 	//
 	// This parameter is required.
 	//

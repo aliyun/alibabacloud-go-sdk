@@ -28,29 +28,29 @@ type ListCenInterRegionTrafficQosPoliciesResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
-	// 	- If **NextToken*	- was not returned in the previous query, it indicates that no additional results exist.
+	// - If **NextToken*	- is empty, no next page exists.
 	//
-	// 	- If **NextToken*	- was returned in the previous query, specify the value to obtain the next set of results.
+	// - If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 113BFD47-63DF-5D9D-972C-033FB9C360CD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The number of entries returned.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of QoS policies.
+	// The list of QoS policies.
 	TrafficQosPolicies []*ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies `json:"TrafficQosPolicies,omitempty" xml:"TrafficQosPolicies,omitempty" type:"Repeated"`
 }
 
@@ -121,11 +121,11 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponseBody) Validate() error {
 }
 
 type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies struct {
-	// The guaranteed bandwidth mode.
+	// The bandwidth guarantee type.
 	//
-	// 	- **byBandwidth**: allocates absolute bandwidth values to QoS queues.
+	// - **byBandwidth**: The QoS queues are configured based on an absolute bandwidth value.
 	//
-	// 	- **byBandwidthPercent**: assigns bandwidth percentages to QoS queues.
+	// - **byBandwidthPercent**: The QoS queues are configured based on a bandwidth percentage.
 	//
 	// example:
 	//
@@ -151,19 +151,19 @@ type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies struct {
 	TrafficQosPolicyName *string `json:"TrafficQosPolicyName,omitempty" xml:"TrafficQosPolicyName,omitempty"`
 	// The status of the QoS policy.
 	//
-	// 	- **Creating**: The QoS policy is being created.
+	// - **Creating**: The policy is being created.
 	//
-	// 	- **Active**: The QoS policy is available.
+	// - **Active**: The policy is active.
 	//
-	// 	- **Modifying**: The policy is being modified.
+	// - **Modifying**: The policy is being modified.
 	//
-	// 	- **Deleting**: The QoS policy is being deleted.
+	// - **Deleting**: The policy is being deleted.
 	//
 	// example:
 	//
 	// Creating
 	TrafficQosPolicyStatus *string `json:"TrafficQosPolicyStatus,omitempty" xml:"TrafficQosPolicyStatus,omitempty"`
-	// A list of queues.
+	// The list of queues.
 	TrafficQosQueues []*ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues `json:"TrafficQosQueues,omitempty" xml:"TrafficQosQueues,omitempty" type:"Repeated"`
 	// The ID of the network instance connection.
 	//
@@ -171,7 +171,7 @@ type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies struct {
 	//
 	// tr-attach-q7ct7c06jpw***
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the transit router.
+	// The ID of the TransitRouter instance.
 	//
 	// example:
 	//
@@ -273,15 +273,15 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies) Val
 }
 
 type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues struct {
-	// If the QoS queues are assigned absolute bandwidth values, this parameter indicates the absolute bandwidth value that is allocated to the queue.
+	// The bandwidth value allocated to the queue of the inter-region connection. This parameter is returned when the bandwidth guarantee type is byBandwidth.
 	//
 	// example:
 	//
 	// 1
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The differentiated services code point (DSCP) value that is used to match packets.
+	// The Differentiated Services Code Point (DSCP) values of the traffic messages that are matched by the queue.
 	Dscps []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
-	// The actual bandwidth value of the current queue.
+	// The actual bandwidth of the queue.
 	//
 	// example:
 	//
@@ -293,7 +293,7 @@ type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQo
 	//
 	// desctest
 	QosQueueDescription *string `json:"QosQueueDescription,omitempty" xml:"QosQueueDescription,omitempty"`
-	// The queue ID.
+	// The ID of the queue.
 	//
 	// example:
 	//
@@ -305,7 +305,7 @@ type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQo
 	//
 	// namtest
 	QosQueueName *string `json:"QosQueueName,omitempty" xml:"QosQueueName,omitempty"`
-	// If the QoS queues are assigned bandwidth percentages, this parameter indicates the percentage of bandwidth that is allocated to the queue.
+	// The percentage of the inter-region connection bandwidth that is used by the queue. This parameter is returned when the bandwidth guarantee type is byBandwidthPercent.
 	//
 	// example:
 	//

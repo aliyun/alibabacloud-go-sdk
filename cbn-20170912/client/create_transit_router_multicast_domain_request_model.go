@@ -46,7 +46,7 @@ type CreateTransitRouterMulticastDomainRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+	// Generate a token on your client to make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
 	// example:
 	//
@@ -54,21 +54,21 @@ type CreateTransitRouterMulticastDomainRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the required parameters, request format, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and sends the request.
+	// - **false*	- (default): sends a normal request. After the request passes the check, the multicast domain is created.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Multicast domain feature.
+	// The multicast domain options.
 	Options      *CreateTransitRouterMulticastDomainRequestOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
 	OwnerAccount *string                                           `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the transit router.
+	// The ID of the region where the transit router is deployed.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain region IDs.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type CreateTransitRouterMulticastDomainRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The information about the tags.
+	// The tag.
 	//
-	// You can specify at most 20 tags in each call.
+	// You can specify up to 20 tags in each call.
 	Tag []*CreateTransitRouterMulticastDomainRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the transit router.
 	//
@@ -88,7 +88,7 @@ type CreateTransitRouterMulticastDomainRequest struct {
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The description of the multicast domain.
 	//
-	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+	// The description can be empty or 1 to 256 characters in length, and cannot start with \\`http\\://\\` or \\`https\\://\\`.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type CreateTransitRouterMulticastDomainRequest struct {
 	TransitRouterMulticastDomainDescription *string `json:"TransitRouterMulticastDomainDescription,omitempty" xml:"TransitRouterMulticastDomainDescription,omitempty"`
 	// The name of the multicast domain.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with \\`http\\://\\` or \\`https\\://\\`.
 	//
 	// example:
 	//
@@ -248,20 +248,26 @@ func (s *CreateTransitRouterMulticastDomainRequest) Validate() error {
 }
 
 type CreateTransitRouterMulticastDomainRequestOptions struct {
-	// Indicates whether the IGMP feature is enabled for the multicast domain. Once enabled, hosts can dynamically join or leave multicast groups by using IGMP protocol. Valid values:
+	// Specifies whether to enable the Internet Group Management Protocol (IGMP) feature for the multicast domain. After you enable IGMP, hosts can dynamically join or leave multicast groups using IGMP. Valid values:
 	//
-	// 	- **enable**: enables IGMP.
+	// - **enable**: enables the IGMP feature.
 	//
-	// 	- **disable**(default): disables IGMP.
+	// - **disable*	- (default): disables the IGMP feature.
 	//
-	// > 	- The IGMP feature is in beta testing. To use it, contact your account manager.
+	// > 	- The IGMP feature is in public preview. To use this feature, contact your account manager to request permissions.
 	//
-	// > 	- If you select this option, you cannot disable IPv6 after the VBR is created.
+	// >
+	//
+	// > 	- After the IGMP feature is enabled, you cannot disable it.
 	//
 	// example:
 	//
 	// enable
 	Igmpv2Support *string `json:"Igmpv2Support,omitempty" xml:"Igmpv2Support,omitempty"`
+	// example:
+	//
+	// enable
+	StrictSourceControl *string `json:"StrictSourceControl,omitempty" xml:"StrictSourceControl,omitempty"`
 }
 
 func (s CreateTransitRouterMulticastDomainRequestOptions) String() string {
@@ -276,8 +282,17 @@ func (s *CreateTransitRouterMulticastDomainRequestOptions) GetIgmpv2Support() *s
 	return s.Igmpv2Support
 }
 
+func (s *CreateTransitRouterMulticastDomainRequestOptions) GetStrictSourceControl() *string {
+	return s.StrictSourceControl
+}
+
 func (s *CreateTransitRouterMulticastDomainRequestOptions) SetIgmpv2Support(v string) *CreateTransitRouterMulticastDomainRequestOptions {
 	s.Igmpv2Support = &v
+	return s
+}
+
+func (s *CreateTransitRouterMulticastDomainRequestOptions) SetStrictSourceControl(v string) *CreateTransitRouterMulticastDomainRequestOptions {
+	s.StrictSourceControl = &v
 	return s
 }
 
@@ -288,9 +303,9 @@ func (s *CreateTransitRouterMulticastDomainRequestOptions) Validate() error {
 type CreateTransitRouterMulticastDomainRequestTag struct {
 	// The tag key.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https:// `.
 	//
-	// You can specify at most 20 tag keys.
+	// You can specify up to 20 tag keys.
 	//
 	// example:
 	//
@@ -298,9 +313,9 @@ type CreateTransitRouterMulticastDomainRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be an empty string or a string of up to 128 characters. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https:// `.
 	//
-	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	// Each tag key must have a unique tag value. You can specify up to 20 tag values.
 	//
 	// example:
 	//

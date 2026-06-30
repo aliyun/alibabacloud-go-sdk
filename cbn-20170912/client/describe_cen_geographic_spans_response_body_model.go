@@ -23,25 +23,25 @@ type iDescribeCenGeographicSpansResponseBody interface {
 
 type DescribeCenGeographicSpansResponseBody struct {
 	GeographicSpanModels *DescribeCenGeographicSpansResponseBodyGeographicSpanModels `json:"GeographicSpanModels,omitempty" xml:"GeographicSpanModels,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 09780287-BC24-4164-8334-773432E32696
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

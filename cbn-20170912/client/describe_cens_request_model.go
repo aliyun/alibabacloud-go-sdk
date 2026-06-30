@@ -32,11 +32,11 @@ type iDescribeCensRequest interface {
 type DescribeCensRequest struct {
 	// The filter conditions.
 	//
-	// You can specify at most five filter conditions in each call.
+	// You can specify up to five filter conditions.
 	Filter       []*DescribeCensRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	OwnerAccount *string                      `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeCensRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The tags.
 	//
-	// You can specify at most 20 tags in each call.
+	// You can specify up to 20 tags.
 	Tag []*DescribeCensRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -174,25 +174,25 @@ func (s *DescribeCensRequest) Validate() error {
 }
 
 type DescribeCensRequestFilter struct {
-	// The key of the filter. Valid values:
+	// The filter key. Valid values:
 	//
-	// 	- **CenId**: the ID of a CEN instance.
+	// - **CenId**: The ID of the CEN instance.
 	//
-	// 	- **Name**: the name of a CEN instance.
+	// - **Name**: The name of the CEN instance.
 	//
-	// By default, the logical operator among filter conditions is **AND**. Information about a CEN instance is returned only if the CEN instance matches all filter conditions.
+	// The logical relationship among multiple filter conditions is **AND**. All filter conditions must be met.
 	//
-	// You can specify at most five filter conditions in each call.
+	// You can specify up to five filter conditions.
 	//
 	// example:
 	//
 	// CenId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the filter condition.
+	// The filter value.
 	//
-	// Specify a filter value based on the **Key*	- parameter. You can specify multiple values for a filter **key**. The logical operator among multiple filter values is **OR**. If a CEN instance matches one or more of the values that you specify, the CEN instance matches the filter condition.
+	// Specify the filter value based on the **Key**. You can specify multiple values for a key. The logical relationship among the values is **OR**. A resource is a match if it meets any of the specified values.
 	//
-	// You can specify at most five values in each filter condition.
+	// You can specify up to five filter values for a filter condition.
 	//
 	// example:
 	//
@@ -231,21 +231,21 @@ func (s *DescribeCensRequestFilter) Validate() error {
 }
 
 type DescribeCensRequestTag struct {
-	// The tag keys.
+	// The tag key of the resource.
 	//
-	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// You can specify at most 20 tag keys.
+	// You can specify up to 20 tag keys.
 	//
 	// example:
 	//
 	// tagtest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag values.
+	// The tag value of the resource.
 	//
-	// The tag values can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be an empty string or a string of up to 128 characters. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
-	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	// Each tag key must have a corresponding tag value. You can specify up to 20 tag values.
 	//
 	// example:
 	//

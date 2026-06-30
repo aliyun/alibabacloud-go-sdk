@@ -14,7 +14,7 @@ type iDeleteTransitRouterVpnAttachmentResponseBody interface {
 }
 
 type DeleteTransitRouterVpnAttachmentResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -30,25 +30,38 @@ type iListTransitRouterMulticastDomainVSwitchesRequest interface {
 }
 
 type ListTransitRouterMulticastDomainVSwitchesRequest struct {
+	// The ID of the Cloud Enterprise Network instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cen-44m0p68spvlrqq****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The number of entries to return on each page. Minimum value: **0**. Default value: **20**.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query. Valid values:
+	//
+	// - You do not need to specify this parameter for the first query or if there is no next query.
+	//
+	// - If there is a next query, set the value to the **NextToken*	- value that is returned from the previous API call.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
-	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VSwitchIds           []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The list of vSwitch IDs.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The ID of the VPC instance.
+	//
 	// This parameter is required.
 	//
 	// example:

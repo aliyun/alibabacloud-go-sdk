@@ -22,19 +22,19 @@ type iListTransitRoutersResponseBody interface {
 }
 
 type ListTransitRoutersResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type ListTransitRoutersResponseBodyTransitRouters struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The time when the transit router was created.
 	//
-	// The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
+	// The time is displayed in the `YYYY-MM-DDThh:mmZ` format in UTC.
 	//
 	// example:
 	//
@@ -143,27 +143,27 @@ type ListTransitRoutersResponseBodyTransitRouters struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the transit router. Valid values:
+	// The status of the transit router.
 	//
-	// 	- **Creating**: The transit router is being created.
+	// - **Creating**: The transit router is being created.
 	//
-	// 	- **Active**: The transit router is available.
+	// - **Active**: The transit router is available.
 	//
-	// 	- **Modifying**: The transit router is being modified
+	// - **Modifying**: The transit router is being modified.
 	//
-	// 	- **Deleting**: The transit router is being deleted.
+	// - **Deleting**: The transit router is being deleted.
 	//
-	// 	- **Upgrading**: The transit router is being upgraded.
+	// - **Upgrading**: The transit router is being upgraded.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether multicast is enabled for the transit router. Valid values:
+	// Indicates whether the multicast feature is enabled for the transit router.
 	//
-	// 	- **true**: enabled
+	// - **true**: enabled.
 	//
-	// 	- **false**: disabled
+	// - **false**: disabled.
 	//
 	// example:
 	//
@@ -171,7 +171,7 @@ type ListTransitRoutersResponseBodyTransitRouters struct {
 	SupportMulticast *bool `json:"SupportMulticast,omitempty" xml:"SupportMulticast,omitempty"`
 	// A list of tags.
 	Tags []*ListTransitRoutersResponseBodyTransitRoutersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The CIDR blocks of the transit router.
+	// A list of CIDR blocks of the transit router.
 	TransitRouterCidrList []*ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList `json:"TransitRouterCidrList,omitempty" xml:"TransitRouterCidrList,omitempty" type:"Repeated"`
 	// The description of the transit router.
 	//
@@ -191,11 +191,11 @@ type ListTransitRoutersResponseBodyTransitRouters struct {
 	//
 	// testname
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
-	// The edition of the transit router. Valid values:
+	// The type of the transit router.
 	//
-	// 	- **Enterprise**: Enhance Edition
+	// - **Enterprise**: Enterprise Edition.
 	//
-	// 	- **Basic**: Basic Edition
+	// - **Basic**: Basic Edition.
 	//
 	// example:
 	//
@@ -405,17 +405,17 @@ type ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList struct {
 	//
 	// CIDRname
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the system is allowed to automatically add a route to the route table of the transit router. Valid values:
+	// Indicates whether the system automatically adds a route for the transit router CIDR block to the route table of the transit router.
 	//
-	// - **true**: yes
+	// - **true**: Yes.
 	//
-	//   A value of **true*	- indicates that after you create a private VPN connection and create a route learning correlation for the private VPC connection, the system automatically adds the following route to the route table of the transit router that is in route learning correlation with the private VPN connection: A blackhole route whose destination CIDR block is the CIDR block of the transit router. The CIDR block of the transit router refers to the CIDR block from which gateway IP addresses are allocated to IPsec-VPN connections.
+	//   If this parameter is set to **true**, after you create a VPN connection of the private gateway type and enable route learning for the VPN connection, the system automatically adds a blackhole route to the route table of the transit router that is in a route learning correlation with the VPN connection.
 	//
+	//   The destination CIDR block of the blackhole route is the CIDR block of the transit router. The CIDR block of the transit router is the CIDR block from which an IP address is allocated to the IPsec-VPN connection.
 	//
+	//   This blackhole route is advertised only to the route tables of the virtual border routers (VBRs) that are connected to the transit router.
 	//
-	//   The blackhole route is advertised only to the route tables of virtual border routers (VBRs) that are connected to the transit router.
-	//
-	// - **false**: no
+	// - **false**: No.
 	//
 	// example:
 	//

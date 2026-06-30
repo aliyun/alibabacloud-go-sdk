@@ -22,7 +22,7 @@ type iDescribeCenVbrHealthCheckResponseBody interface {
 }
 
 type DescribeCenVbrHealthCheckResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//

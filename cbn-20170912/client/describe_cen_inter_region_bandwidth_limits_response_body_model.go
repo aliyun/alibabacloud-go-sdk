@@ -23,7 +23,7 @@ type iDescribeCenInterRegionBandwidthLimitsResponseBody interface {
 
 type DescribeCenInterRegionBandwidthLimitsResponseBody struct {
 	CenInterRegionBandwidthLimits *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits `json:"CenInterRegionBandwidthLimits,omitempty" xml:"CenInterRegionBandwidthLimits,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeCenInterRegionBandwidthLimitsResponseBody struct {
 	//
 	// 7A30C665-8766-5AAA-9274-C97380E2D850
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

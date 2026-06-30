@@ -28,25 +28,25 @@ type ListTransitRouterRouteTablePropagationsResponseBody struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query.
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// dd20****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04C81E0D-945E-4D61-A561-3DEA322F243B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of route learning correlations.
+	// A list of the route propagations.
 	TransitRouterPropagations []*ListTransitRouterRouteTablePropagationsResponseBodyTransitRouterPropagations `json:"TransitRouterPropagations,omitempty" xml:"TransitRouterPropagations,omitempty" type:"Repeated"`
 }
 
@@ -123,27 +123,27 @@ type ListTransitRouterRouteTablePropagationsResponseBodyTransitRouterPropagation
 	//
 	// vpc-bp1h8vbrbcgohcju5****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the network instance. Valid values:
+	// The type of the network instance.
 	//
-	// 	- **VPC**: VPC
+	// - **VPC**: a VPC.
 	//
-	// 	- **VBR**: VBR
+	// - **VBR**: a VBR.
 	//
-	// 	- **TR**: transit router
+	// - **TR**: a transit router.
 	//
-	// 	- **VPN**: VPN connection
+	// - **VPN**: a VPN connection.
 	//
 	// example:
 	//
 	// VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the route learning correlation. Valid values:
+	// The status of the route propagation.
 	//
-	// 	- **Enabling**: being enabled
+	// - **Enabling**: The propagation is being enabled.
 	//
-	// 	- **Disabling**: being disabled
+	// - **Disabling**: The propagation is being disabled.
 	//
-	// 	- **Active**: available
+	// - **Active**: The propagation is active.
 	//
 	// example:
 	//

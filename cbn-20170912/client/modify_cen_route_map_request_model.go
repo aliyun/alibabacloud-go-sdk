@@ -80,9 +80,9 @@ type iModifyCenRouteMapRequest interface {
 type ModifyCenRouteMapRequest struct {
 	// The match method that is used to match routes based on the AS path. Valid values:
 	//
-	// 	- **Include**: fuzzy match. A route is a match if the AS path of the route overlaps with the AS path in the match conditions.
+	// - **Include**: fuzzy match. A route is a match if the AS path of the route overlaps with the AS path in the match conditions.
 	//
-	// 	- **Complete**: exact match. A route is a match only if the AS path of the route matches the AS path in the match conditions.
+	// - **Complete**: exact match. A route is a match only if the AS path of the route matches the AS path in the match conditions.
 	//
 	// example:
 	//
@@ -108,11 +108,11 @@ type ModifyCenRouteMapRequest struct {
 	CenRegionId *string `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
 	// The match method that is used to match routes against the prefix list. Valid values:
 	//
-	// 	- **Include**: fuzzy match. A route is a match if the route prefix is included in the match conditions.
+	// - **Include**: fuzzy match. A route is a match if the route prefix is included in the match conditions.
 	//
 	// For example, if you set the match condition to 10.10.0.0/16 and fuzzy match is applied, the route whose prefix is 10.10.1.0/24 meets the match condition.
 	//
-	// 	- **Complete**: exact match. A route is a match only if the route prefix is the same as the prefix specified in the match condition.
+	// - **Complete**: exact match. A route is a match only if the route prefix is the same as the prefix specified in the match condition.
 	//
 	// For example, if you set the match condition to 10.10.0.0/16 and exact match is applied, only the route whose prefix is 10.10.0.0/16 meets the match condition.
 	//
@@ -122,9 +122,9 @@ type ModifyCenRouteMapRequest struct {
 	CidrMatchMode *string `json:"CidrMatchMode,omitempty" xml:"CidrMatchMode,omitempty"`
 	// The match method that is used to match routes based on the community. Valid values:
 	//
-	// 	- **Include**: fuzzy match. A route is a match if the community of the route overlaps with the community in the match conditions.
+	// - **Include**: fuzzy match. A route is a match if the community of the route overlaps with the community in the match conditions.
 	//
-	// 	- **Complete**: exact match. A route is a match only if the community of the route matches the community in the match conditions.
+	// - **Complete**: exact match. A route is a match only if the community of the route matches the community in the match conditions.
 	//
 	// example:
 	//
@@ -132,9 +132,9 @@ type ModifyCenRouteMapRequest struct {
 	CommunityMatchMode *string `json:"CommunityMatchMode,omitempty" xml:"CommunityMatchMode,omitempty"`
 	// The action to be performed on the community. Valid values:
 	//
-	// 	- **Additive**: adds the community to the route.
+	// - **Additive**: adds the community to the route.
 	//
-	// 	- **Replace**: replaces the original community of the route.
+	// - **Replace**: replaces the original community of the route.
 	//
 	// This parameter specifies the action to be performed when a route meets the match condition.
 	//
@@ -144,7 +144,7 @@ type ModifyCenRouteMapRequest struct {
 	CommunityOperateMode *string `json:"CommunityOperateMode,omitempty" xml:"CommunityOperateMode,omitempty"`
 	// The description of the routing policy.
 	//
-	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
@@ -152,15 +152,15 @@ type ModifyCenRouteMapRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The types of destination network instance to which the routes belong. The following types of network instances are supported:
 	//
-	// 	- **VPC**: VPC
+	// - **VPC**: VPC
 	//
-	// 	- **VBR**: VBR
+	// - **VBR**: VBR
 	//
-	// 	- **CCN**: CCN instance
+	// - **CCN**: CCN instance
 	//
-	// 	- **VPN**: IPsec connection
+	// - **VPN**: IPsec connection
 	//
-	//     > This parameter does not take effect if the IPsec-VPN connection or SSL client is associated with a transit router through a VPN gateway and a VPC. This parameter takes effect only if the IPsec connection is directly connected to the transit router.
+	//   > This parameter does not take effect if the IPsec-VPN connection or SSL client is associated with a transit router through a VPN gateway and a VPC. This parameter takes effect only if the IPsec connection is directly connected to the transit router.
 	//
 	// The destination network instance types are valid only if the routing policy is applied to scenarios where routes are advertised from the gateway in the current region to network instances in the current region.
 	//
@@ -170,7 +170,7 @@ type ModifyCenRouteMapRequest struct {
 	DestinationChildInstanceTypes []*string `json:"DestinationChildInstanceTypes,omitempty" xml:"DestinationChildInstanceTypes,omitempty" type:"Repeated"`
 	// The prefix list against which routes are matched.
 	//
-	// You must specify the IP addresses in CIDR notation. You can enter at most 32 CIDR blocks.
+	// You must specify the IP addresses in CIDR notation. You can enter at most 64 CIDR blocks.
 	//
 	// example:
 	//
@@ -178,17 +178,17 @@ type ModifyCenRouteMapRequest struct {
 	DestinationCidrBlocks []*string `json:"DestinationCidrBlocks,omitempty" xml:"DestinationCidrBlocks,omitempty" type:"Repeated"`
 	// The IDs of the destination network instances to which the routes belong. The following network instance types are supported:
 	//
-	// 	- VPC
+	// - VPC
 	//
-	// 	- VBR
+	// - VBR
 	//
-	// 	- CCN instance
+	// - CCN instance
 	//
-	// 	- SAG instance
+	// - SAG instance
 	//
-	// 	- The ID of the IPsec-VPN connection.
+	// - The ID of the IPsec-VPN connection.
 	//
-	// You can enter at most 32 IDs.
+	// You can enter at most 64 IDs.
 	//
 	// > The destination instance IDs take effect only when Direction is set to Export from Regional Gateway and the destination instances are deployed in the current region.
 	//
@@ -198,17 +198,17 @@ type ModifyCenRouteMapRequest struct {
 	DestinationInstanceIds []*string `json:"DestinationInstanceIds,omitempty" xml:"DestinationInstanceIds,omitempty" type:"Repeated"`
 	// Specifies whether to exclude destination instance IDs. Valid values:
 	//
-	// 	- **false*	- (default): A route is a match if the destination instance ID is included in the list specified by **SourceInstanceIds.N**.
+	// - **false*	- (default): A route is a match if the destination instance ID is included in the list specified by **SourceInstanceIds.N**.
 	//
-	// 	- **true**: A route is a match if the destination network instance ID is not in the list specified by **SourceInstanceIds.N**.
+	// - **true**: A route is a match if the destination network instance ID is not in the list specified by **SourceInstanceIds.N**.
 	//
 	// example:
 	//
 	// false
 	DestinationInstanceIdsReverseMatch *bool `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
-	// The destination region IDs of the route. You can specify at most 32 region IDs.
+	// The destination region IDs of the route. You can specify at most 64 region IDs.
 	DestinationRegionIds []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
-	// The IDs of the destination route tables to which the routes belong. You can enter at most 32 route table IDs.
+	// The IDs of the destination route tables to which the routes belong. You can enter at most 64 route table IDs.
 	//
 	// > The destination route table IDs take effect only when Direction is set to Export from Regional Gateway and the destination route tables belong to network instances deployed in the current region.
 	//
@@ -218,9 +218,9 @@ type ModifyCenRouteMapRequest struct {
 	DestinationRouteTableIds []*string `json:"DestinationRouteTableIds,omitempty" xml:"DestinationRouteTableIds,omitempty" type:"Repeated"`
 	// The action to be performed on a route that meets all the match conditions. Valid values:
 	//
-	// 	- **Permit**: the route is permitted.
+	// - **Permit**: the route is permitted.
 	//
-	// 	- **Deny**: the route is denied.
+	// - **Deny**: the route is denied.
 	//
 	// This parameter is required.
 	//
@@ -230,9 +230,9 @@ type ModifyCenRouteMapRequest struct {
 	MapResult *string `json:"MapResult,omitempty" xml:"MapResult,omitempty"`
 	// The type of IP address in the match condition. Valid values:
 	//
-	// 	- **IPv4**: IPv4 address
+	// - **IPv4**: IPv4 address
 	//
-	// 	- **IPv6**: IPv6 address
+	// - **IPv6**: IPv6 address
 	//
 	// This parameter can be empty. If no value is specified, all types of IP address are a match.
 	//
@@ -252,7 +252,7 @@ type ModifyCenRouteMapRequest struct {
 	//
 	// Specify the community in the format of n:m. Valid values of n and m: **1*	- to **65535**. Each community must comply with the RFC 1997 standard. The RFC 8092 standard that defines BGP large communities is not supported.
 	//
-	// You can specify at most 32 communities.
+	// You can specify at most 64 communities.
 	//
 	// > If the configurations of the communities are incorrect, routes may fail to be advertised to your data center.
 	//
@@ -262,11 +262,11 @@ type ModifyCenRouteMapRequest struct {
 	MatchCommunitySet []*string `json:"MatchCommunitySet,omitempty" xml:"MatchCommunitySet,omitempty" type:"Repeated"`
 	// The priority of the routing policy that you want to associate with the current one.
 	//
-	// 	- This parameter takes effect only when the **MapResult*	- parameter is set to **Permit**. This way, the permitted route is matched against the next routing policy.
+	// - This parameter takes effect only when the **MapResult*	- parameter is set to **Permit**. This way, the permitted route is matched against the next routing policy.
 	//
-	// 	- The region and direction of the routing policy to be associated must be the same as those of the current routing policy.
+	// - The region and direction of the routing policy to be associated must be the same as those of the current routing policy.
 	//
-	// 	- The priority of the routing policy to be associated must be lower than the priority of the current routing policy.
+	// - The priority of the routing policy to be associated must be lower than the priority of the current routing policy.
 	//
 	// example:
 	//
@@ -300,9 +300,9 @@ type ModifyCenRouteMapRequest struct {
 	//
 	// The AS paths vary based on the direction in which the routing policy is applied:
 	//
-	// 	- If AS paths are prepended to a routing policy that is applied in the inbound direction, you must specify source network instance IDs and the source region in the match condition. In addition, the source region must be the same as the region where the routing policy is applied.
+	// - If AS paths are prepended to a routing policy that is applied in the inbound direction, you must specify source network instance IDs and the source region in the match condition. In addition, the source region must be the same as the region where the routing policy is applied.
 	//
-	// 	- If AS paths are prepended to a routing policy that is applied in the outbound direction, you must specify destination network instance IDs in the match condition.
+	// - If AS paths are prepended to a routing policy that is applied in the outbound direction, you must specify destination network instance IDs in the match condition.
 	//
 	// This parameter specifies the action to be performed when a route meets the match condition.
 	//
@@ -332,11 +332,11 @@ type ModifyCenRouteMapRequest struct {
 	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
 	// The type of route to be matched against the match condition. The following route types are supported:
 	//
-	// 	- **System**: system routes that are automatically generated by the system.
+	// - **System**: system routes that are automatically generated by the system.
 	//
-	// 	- **Custom**: custom routes that are manually added.
+	// - **Custom**: custom routes that are manually added.
 	//
-	// 	- **BGP**: routes that are advertised over BGP.
+	// - **BGP**: routes that are advertised over BGP.
 	//
 	// example:
 	//
@@ -344,17 +344,17 @@ type ModifyCenRouteMapRequest struct {
 	RouteTypes []*string `json:"RouteTypes,omitempty" xml:"RouteTypes,omitempty" type:"Repeated"`
 	// The types of source network instance to which the routes belong. The following types of network instances are supported:
 	//
-	// 	- **VPC**: VPC
+	// - **VPC**: VPC
 	//
-	// 	- **VBR**: VBR
+	// - **VBR**: VBR
 	//
-	// 	- **CCN**: CCN instance
+	// - **CCN**: CCN instance
 	//
-	// 	- **VPN*	- :VPN gateway or IPsec-VPN connection
+	// - **VPN*	- :VPN gateway or IPsec-VPN connection
 	//
-	//     	- If the IPsec-VPN connection or SSL client is associated with a VPN gateway, the VPC associated with the VPN gateway must be connected to a transit router, and the VPN gateway must use Border Gateway Protocol (BGP) dynamic routing. Otherwise, this parameter cannot take effect.
+	//   - If the IPsec-VPN connection or SSL client is associated with a VPN gateway, the VPC associated with the VPN gateway must be connected to a transit router, and the VPN gateway must use Border Gateway Protocol (BGP) dynamic routing. Otherwise, this parameter cannot take effect.
 	//
-	//     	- This parameter takes effect if the IPsec connection is directly connected to a transit router.
+	//   - This parameter takes effect if the IPsec connection is directly connected to a transit router.
 	//
 	// example:
 	//
@@ -362,17 +362,17 @@ type ModifyCenRouteMapRequest struct {
 	SourceChildInstanceTypes []*string `json:"SourceChildInstanceTypes,omitempty" xml:"SourceChildInstanceTypes,omitempty" type:"Repeated"`
 	// The IDs of the source network instances to which the routes belong. The following network instance types are supported:
 	//
-	// 	- Virtual private cloud (VPC)
+	// - Virtual private cloud (VPC)
 	//
-	// 	- Virtual border router (VBR)
+	// - Virtual border router (VBR)
 	//
-	// 	- Cloud Connect Network (CCN) instance
+	// - Cloud Connect Network (CCN) instance
 	//
-	// 	- Smart Access Gateway (SAG) instance
+	// - Smart Access Gateway (SAG) instance
 	//
-	// 	- The ID of the IPsec-VPN connection.
+	// - The ID of the IPsec-VPN connection.
 	//
-	// You can enter at most 32 IDs.
+	// You can enter at most 64 IDs.
 	//
 	// example:
 	//
@@ -380,15 +380,15 @@ type ModifyCenRouteMapRequest struct {
 	SourceInstanceIds []*string `json:"SourceInstanceIds,omitempty" xml:"SourceInstanceIds,omitempty" type:"Repeated"`
 	// Specifies whether to exclude source instance IDs. Valid values:
 	//
-	// 	- **false*	- (default): A route is a match if the source instance ID is included in the list specified by **SourceInstanceIds.N**.
+	// - **false*	- (default): A route is a match if the source instance ID is included in the list specified by **SourceInstanceIds.N**.
 	//
-	// 	- **true**: A route is a match if the source network instance ID is not in the list specified by **SourceInstanceIds.N**.
+	// - **true**: A route is a match if the source network instance ID is not in the list specified by **SourceInstanceIds.N**.
 	//
 	// example:
 	//
 	// false
 	SourceInstanceIdsReverseMatch *bool `json:"SourceInstanceIdsReverseMatch,omitempty" xml:"SourceInstanceIdsReverseMatch,omitempty"`
-	// The IDs of the source regions to which the routes belong. You can enter at most 32 region IDs.
+	// The IDs of the source regions to which the routes belong. You can enter at most 64 region IDs.
 	//
 	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
 	//
@@ -396,7 +396,7 @@ type ModifyCenRouteMapRequest struct {
 	//
 	// cn-beijing
 	SourceRegionIds []*string `json:"SourceRegionIds,omitempty" xml:"SourceRegionIds,omitempty" type:"Repeated"`
-	// The IDs of the source route tables to which the routes belong. You can enter at most 32 route table IDs.
+	// The IDs of the source route tables to which the routes belong. You can enter at most 64 route table IDs.
 	//
 	// example:
 	//

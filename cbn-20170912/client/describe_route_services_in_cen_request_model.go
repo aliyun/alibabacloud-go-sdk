@@ -48,23 +48,23 @@ type DescribeRouteServicesInCenRequest struct {
 	//
 	// cen-pfa6ugf3xl0qsd****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The service address of the cloud service.
+	// The endpoint of the Alibaba Cloud service.
 	//
-	// You can enter a domain name, an IP address, or a CIDR block.
+	// The endpoint can be a domain name, an IP address, or a CIDR block.
 	//
 	// example:
 	//
 	// 100.118.28.0/24
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The region ID of the cloud service.
+	// The ID of the region where the Alibaba Cloud service is deployed.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	HostRegionId *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
-	// The ID of the VPC associated with the cloud service.
+	// The ID of the VPC that is associated with the Alibaba Cloud service.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type DescribeRouteServicesInCenRequest struct {
 	HostVpcId    *string `json:"HostVpcId,omitempty" xml:"HostVpcId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**. Valid values: **1*	- to **50**.
+	// The number of entries to return on each page. The default value is **10**. Valid values: **1*	- to **50**.
 	//
 	// example:
 	//

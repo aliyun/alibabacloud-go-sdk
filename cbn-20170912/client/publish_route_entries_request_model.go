@@ -46,7 +46,7 @@ type PublishRouteEntriesRequest struct {
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
 	// The ID of the region where the network instance is deployed.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type PublishRouteEntriesRequest struct {
 	//
 	// us-west-1
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The ID of the route table configured on the network instance.
+	// The ID of the route table of the network instance.
 	//
 	// This parameter is required.
 	//
@@ -64,9 +64,9 @@ type PublishRouteEntriesRequest struct {
 	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// 	- **VPC**: VPC
+	// - **VPC**: virtual private cloud.
 	//
-	// 	- **VBR**: VBR
+	// - **VBR**: virtual border router.
 	//
 	// This parameter is required.
 	//

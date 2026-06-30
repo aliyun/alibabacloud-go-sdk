@@ -48,11 +48,11 @@ type DescribeCenAttachedChildInstancesRequest struct {
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// 	- **VPC**: virtual private cloud (VPC)
+	// - **VPC**: virtual private cloud (VPC)
 	//
-	// 	- **VBR**: virtual border router (VBR)
+	// - **VBR**: virtual border router (VBR)
 	//
-	// 	- **CCN**: Cloud Connect Network (CCN) instance
+	// - **CCN**: Cloud Connect Network (CCN) instance
 	//
 	// example:
 	//

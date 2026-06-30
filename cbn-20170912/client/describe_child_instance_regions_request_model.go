@@ -24,7 +24,7 @@ type iDescribeChildInstanceRegionsRequest interface {
 }
 
 type DescribeChildInstanceRegionsRequest struct {
-	// The language of the response. Valid values: zh-CN (Chinese, which is the default language), en-US (English), and ja (Japanese).
+	// The language of the response. Valid values:
 	//
 	// example:
 	//
@@ -34,11 +34,11 @@ type DescribeChildInstanceRegionsRequest struct {
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// 	- **VPC**: virtual private cloud (VPC)
+	// - **VPC**: a virtual private cloud (VPC).
 	//
-	// 	- **VBR**: virtual border router (VBR)
+	// - **VBR**: a virtual border router (VBR).
 	//
-	// 	- **CCN**: Cloud Connect Network (CCN) instance
+	// - **CCN**: a Cloud Connect Network (CCN) instance.
 	//
 	// example:
 	//

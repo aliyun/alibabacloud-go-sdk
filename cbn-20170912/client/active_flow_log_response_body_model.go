@@ -24,9 +24,9 @@ type ActiveFlowLogResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful.
 	//
-	// 	- **true**: yes
+	// - **true**: yes
 	//
-	// 	- **false**: no
+	// - **false**: no
 	//
 	// example:
 	//

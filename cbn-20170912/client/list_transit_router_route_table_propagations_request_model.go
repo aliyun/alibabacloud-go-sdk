@@ -34,13 +34,13 @@ type iListTransitRouterRouteTablePropagationsRequest interface {
 }
 
 type ListTransitRouterRouteTablePropagationsRequest struct {
-	// The number of entries to return on each page. Default value: **50**.
+	// The number of entries to return on each page. The default value is **50**.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query.
+	// The token that is used to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type ListTransitRouterRouteTablePropagationsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the route learning correlation. Valid values:
+	// The status of the route propagation.
 	//
-	// 	- **Active**: available
+	// - **Active**: The propagation is active.
 	//
-	// 	- **Enabling**: being enabled
+	// - **Enabling**: The propagation is being enabled.
 	//
-	// 	- **Disabling**: being disabled
+	// - **Disabling**: The propagation is being disabled.
 	//
 	// example:
 	//
@@ -74,15 +74,15 @@ type ListTransitRouterRouteTablePropagationsRequest struct {
 	//
 	// vpc-bp1h8vbrbcgohcju5****
 	TransitRouterAttachmentResourceId *string `json:"TransitRouterAttachmentResourceId,omitempty" xml:"TransitRouterAttachmentResourceId,omitempty"`
-	// The type of the network instance. Valid values:
+	// The type of the network instance.
 	//
-	// 	- **VPC**: virtual private cloud (VPC)
+	// - **VPC**: a virtual private cloud (VPC).
 	//
-	// 	- **VBR**: virtual border router (VBR)
+	// - **VBR**: a virtual border router (VBR).
 	//
-	// 	- **TR**: transit router
+	// - **TR**: a transit router.
 	//
-	// 	- **VPN**: VPN connection
+	// - **VPN**: a VPN connection.
 	//
 	// example:
 	//

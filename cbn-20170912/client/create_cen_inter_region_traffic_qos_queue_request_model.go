@@ -76,7 +76,7 @@ type CreateCenInterRegionTrafficQosQueueRequest struct {
 	OwnerId      *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The description of the queue.
 	//
-	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type CreateCenInterRegionTrafficQosQueueRequest struct {
 	QosQueueDescription *string `json:"QosQueueDescription,omitempty" xml:"QosQueueDescription,omitempty"`
 	// The name of the queue.
 	//
-	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//

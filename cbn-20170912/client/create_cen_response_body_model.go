@@ -16,7 +16,7 @@ type iCreateCenResponseBody interface {
 }
 
 type CreateCenResponseBody struct {
-	// The CEN instance ID.
+	// The ID of the CEN instance.
 	//
 	// example:
 	//

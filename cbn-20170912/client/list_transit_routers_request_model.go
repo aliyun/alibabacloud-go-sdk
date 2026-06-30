@@ -46,17 +46,17 @@ type ListTransitRoutersRequest struct {
 	//
 	// cen-j3jzhw1zpau2km****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The field that is used to enable or disable a feature of the transit router.
+	// The feature to be filtered.
 	FeatureFilter []*ListTransitRoutersRequestFeatureFilter `json:"FeatureFilter,omitempty" xml:"FeatureFilter,omitempty" type:"Repeated"`
 	OwnerAccount  *string                                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64                                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **1*	- to **50**. Default value: **10**.
+	// The number of entries per page. Valid values: **1*	- to **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -72,25 +72,25 @@ type ListTransitRoutersRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the transit router. Valid values:
+	// The status of the transit router.
 	//
-	// 	- **Creating**: The transit router is being created.
+	// - **Creating**: The transit router is being created.
 	//
-	// 	- **Active**: The transit router is available.
+	// - **Active**: The transit router is available.
 	//
-	// 	- **Modifying**: The transit router is being modified
+	// - **Modifying**: The transit router is being modified.
 	//
-	// 	- **Deleting**: The transit router is being deleted.
+	// - **Deleting**: The transit router is being deleted.
 	//
-	// 	- **Upgrading**: The transit router is being upgraded.
+	// - **Upgrading**: The transit router is being upgraded.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The information about the tags.
+	// The tags.
 	//
-	// You can specify at most 20 tags in each call.
+	// You can specify up to 20 tags.
 	Tag []*ListTransitRoutersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the transit router.
 	//
@@ -98,19 +98,19 @@ type ListTransitRoutersRequest struct {
 	//
 	// tr-uf654ttymmljlvh2x****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The name of the Enterprise Edition transit router.
+	// The name of the transit router.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// testname
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
-	// The edition of the transit router. Valid values:
+	// The type of the transit router.
 	//
-	// 	- **Enterprise**: Enhance Edition
+	// - **Enterprise**: Enterprise Edition.
 	//
-	// 	- **Basic**: Basic Edition
+	// - **Basic**: Basic Edition.
 	//
 	// example:
 	//
@@ -275,19 +275,23 @@ func (s *ListTransitRoutersRequest) Validate() error {
 }
 
 type ListTransitRoutersRequestFeatureFilter struct {
-	// The value of the field that is used to enable or disable a feature of the transit router. Supported fields:
+	// The key of the feature to be filtered.
 	//
-	// 	- **Multicast**: the multicast feature.
+	// The following key is supported:
+	//
+	// - **Multicast**: the multicast feature.
 	//
 	// example:
 	//
 	// Multicast
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The fields that are used to enable or disable the features of the transit router. The **Multicast*	- field supports only one value. Valid values:
+	// A list of values for the feature.
 	//
-	// 	- **Enabled**: enables multicast.
+	// If you set the key to **Multicast**, you can specify only one value. Valid values:
 	//
-	// 	- **Disabled**: disables multicast.
+	// - **Enabled**: Multicast is supported.
+	//
+	// - **Disabled**: Multicast is not supported.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -324,9 +328,9 @@ func (s *ListTransitRoutersRequestFeatureFilter) Validate() error {
 type ListTransitRoutersRequestTag struct {
 	// The tag key.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// You can specify at most 20 tag keys.
+	// You can specify up to 20 tag keys.
 	//
 	// example:
 	//
@@ -334,9 +338,9 @@ type ListTransitRoutersRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be an empty string or a string of up to 128 characters. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
-	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	// Each tag key must have a unique tag value. You can specify up to 20 tag values.
 	//
 	// example:
 	//

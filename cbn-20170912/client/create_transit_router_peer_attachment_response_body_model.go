@@ -16,7 +16,7 @@ type iCreateTransitRouterPeerAttachmentResponseBody interface {
 }
 
 type CreateTransitRouterPeerAttachmentResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

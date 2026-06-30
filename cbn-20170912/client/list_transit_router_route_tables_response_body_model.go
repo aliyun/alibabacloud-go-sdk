@@ -28,17 +28,17 @@ type ListTransitRouterRouteTablesResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the next query. Valid values:
+	// The token that is used for the next query. Valid values:
 	//
-	// 	- If **NextToken*	- was returned in the previous query, specify the value to obtain the next set of results.
+	// - If **NextToken*	- is empty, it indicates that no next query is to be sent.
 	//
-	// 	- If a value of **NextToken*	- is not returned, it indicates that no additional results exist.
+	// - If a value is returned for **NextToken**, the value is the token that is used for the next query.
 	//
 	// example:
 	//
 	// dd20****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListTransitRouterRouteTablesResponseBody struct {
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of route tables.
+	// The list of route tables.
 	TransitRouterRouteTables []*ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables `json:"TransitRouterRouteTables,omitempty" xml:"TransitRouterRouteTables,omitempty" type:"Repeated"`
 }
 
@@ -123,13 +123,13 @@ func (s *ListTransitRouterRouteTablesResponseBody) Validate() error {
 type ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables struct {
 	// The time when the route table was created.
 	//
-	// The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
+	// The time is displayed in the YYYY-MM-DDThh:mmZ format in UTC.
 	//
 	// example:
 	//
 	// 2021-03-15T09:39Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The region ID of the Enterprise Edition transit router.
+	// The ID of the region where the Enterprise Edition transit router is deployed.
 	//
 	// example:
 	//
@@ -137,9 +137,9 @@ type ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The features of the route table.
 	RouteTableOptions *ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesRouteTableOptions `json:"RouteTableOptions,omitempty" xml:"RouteTableOptions,omitempty" type:"Struct"`
-	// The tags.
+	// The list of tags.
 	Tags []*ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The transit router ID.
+	// The ID of the transit router.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables struct {
 	//
 	// testdesc
 	TransitRouterRouteTableDescription *string `json:"TransitRouterRouteTableDescription,omitempty" xml:"TransitRouterRouteTableDescription,omitempty"`
-	// The ID of the route table.
+	// The route table ID.
 	//
 	// example:
 	//
@@ -163,23 +163,23 @@ type ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables struct {
 	//
 	// testname
 	TransitRouterRouteTableName *string `json:"TransitRouterRouteTableName,omitempty" xml:"TransitRouterRouteTableName,omitempty"`
-	// The status of the route table. Valid values:
+	// The status of the route table.
 	//
-	// 	- **Creating**
+	// - **Creating**: The route table is being created.
 	//
-	// 	- **Deleting**
+	// - **Deleting**: The route table is being deleted.
 	//
-	// 	- **Active**
+	// - **Active**: The route table is available.
 	//
 	// example:
 	//
 	// Active
 	TransitRouterRouteTableStatus *string `json:"TransitRouterRouteTableStatus,omitempty" xml:"TransitRouterRouteTableStatus,omitempty"`
-	// The type of the route table. Valid values:
+	// The type of the route table.
 	//
-	// 	- **Custom**
+	// - **Custom**: a custom route table.
 	//
-	// 	- **System**
+	// - **System**: the default route table.
 	//
 	// example:
 	//
@@ -304,11 +304,11 @@ func (s *ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables) Valid
 }
 
 type ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesRouteTableOptions struct {
-	// Indicates whether ECMP routing is enabled. Valid values:
+	// The multi-region ECMP routing feature. Valid values:
 	//
-	// 	- **disable*	- If ECMP routing is disabled, routes that are learned from different regions but have the same prefix and attributes select the transit router with the smallest region ID as the next hop. Region IDs are sorted in alphabetic order. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
+	// - **disable**: Disables multi-region ECMP routing. After this feature is disabled, for routes that are learned from different regions and have the same prefix and other attributes, the system selects the transit router with the smallest region ID as the next hop. Region IDs are sorted in alphabetical order. This changes the latency and bandwidth consumption between different regions. Make sure that you fully evaluate the impact before you disable the feature.
 	//
-	// 	- **enable*	- If ECMP routing is enabled, routes that are learned from different regions but have the same prefix and attributes form an ECMP route. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
+	// - **enable**: Enables multi-region ECMP routing. After this feature is enabled, for routes that are learned from different regions and have the same prefix and other attributes, ECMP routing is formed. This changes the latency and bandwidth consumption between different regions. Make sure that you fully evaluate the impact before you enable the feature.
 	//
 	// example:
 	//

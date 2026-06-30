@@ -34,19 +34,23 @@ type iListTransitRouterVbrAttachmentsRequest interface {
 }
 
 type ListTransitRouterVbrAttachmentsRequest struct {
-	// The IDs of the CEN instances.
+	// The ID of the CEN instance.
 	//
 	// example:
 	//
 	// cen-j3jzhw1zpau2km****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
+	// The maximum number of entries to return for a single query. The default value is **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token that is used for the next query. Valid values:
+	//
+	// - If this is your first query, you do not need to specify this parameter.
+	//
+	// - If a subsequent query is to be sent, set the value to the NextToken value that is returned in the previous request.
 	//
 	// example:
 	//
@@ -54,9 +58,9 @@ type ListTransitRouterVbrAttachmentsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the Enterprise Edition transit router.
+	// The ID of the region where the Enterprise Edition transit router is deployed.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// example:
 	//
@@ -64,9 +68,9 @@ type ListTransitRouterVbrAttachmentsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The information about the tags.
+	// The tag.
 	//
-	// You can specify at most 20 tags in each call.
+	// You can specify up to 20 tags.
 	Tag []*ListTransitRouterVbrAttachmentsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the VBR connection.
 	//
@@ -203,21 +207,21 @@ func (s *ListTransitRouterVbrAttachmentsRequest) Validate() error {
 }
 
 type ListTransitRouterVbrAttachmentsRequestTag struct {
-	// The tag key.
+	// The tag key of the resource.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https:// `.
 	//
-	// You can specify at most 20 tag keys.
+	// You can specify up to 20 tag keys.
 	//
 	// example:
 	//
 	// tagtest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the resource.
 	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be an empty string or a string of up to 128 characters. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https:// `.
 	//
-	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	// Each tag key must have a unique tag value. You can specify up to 20 tag values.
 	//
 	// example:
 	//

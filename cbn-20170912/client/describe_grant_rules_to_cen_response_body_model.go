@@ -23,19 +23,19 @@ type iDescribeGrantRulesToCenResponseBody interface {
 
 type DescribeGrantRulesToCenResponseBody struct {
 	GrantRules *DescribeGrantRulesToCenResponseBodyGrantRules `json:"GrantRules,omitempty" xml:"GrantRules,omitempty" type:"Struct"`
-	// 	- If no value is specified for **MaxResults**, query results are returned in one batch. The value of **MaxResults*	- indicates the total number of entries.
+	// - The maximum number of entries to return per page.
 	//
-	// 	- If a value is specified for **MaxResults**, it indicates that you need to query results in batches. The value of **MaxResults*	- in the response indicates the number of entries in the current batch.
+	// - This value is the same as the **MaxResults*	- value that you specified in the request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If the **NextToken*	- parameter is empty, no more results are available.
 	//
-	// 	- If a value of **NextToken*	- was returned in the previous query, specify the value to obtain the next set of results.
+	// - To retrieve the next page, set the NextToken request parameter to this value.
 	//
 	// example:
 	//
@@ -47,7 +47,7 @@ type DescribeGrantRulesToCenResponseBody struct {
 	//
 	// 4906B209-8613-5C19-9CC9-B7A3FFDA731C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

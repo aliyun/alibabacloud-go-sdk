@@ -30,7 +30,7 @@ type iDeleteRouteServiceInCenRequest interface {
 }
 
 type DeleteRouteServiceInCenRequest struct {
-	// The ID of the region where the cloud service is accessed.
+	// The region ID from which the Alibaba Cloud service is accessed.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DeleteRouteServiceInCenRequest struct {
 	//
 	// cn-hangzhou
 	AccessRegionId *string `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
-	// The ID of the CEN instance.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DeleteRouteServiceInCenRequest struct {
 	//
 	// cen-7qthudw0ll6jmc****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The IP addresses or CIDR blocks of the cloud service.
+	// The IP address or CIDR block of the Alibaba Cloud service.
 	//
 	// This parameter is required.
 	//
@@ -54,9 +54,9 @@ type DeleteRouteServiceInCenRequest struct {
 	//
 	// 100.118.28.0/24
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The region ID of the cloud service.
+	// The region ID of the Alibaba Cloud service.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type DeleteRouteServiceInCenRequest struct {
 	//
 	// cn-hangzhou
 	HostRegionId *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
-	// The ID of the virtual private cloud (VPC) that is associated with the cloud service.
+	// The ID of the VPC that is associated with the Alibaba Cloud service.
 	//
 	// example:
 	//

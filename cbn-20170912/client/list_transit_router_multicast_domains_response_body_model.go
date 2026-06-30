@@ -22,17 +22,17 @@ type iListTransitRouterMulticastDomainsResponseBody interface {
 }
 
 type ListTransitRouterMulticastDomainsResponseBody struct {
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+	// The token for the next query.
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If the value of **NextToken*	- is empty, it indicates that no next query is to be sent.
 	//
-	// 	- If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	// - If a value is returned for **NextToken**, the value is the token that is used for the next query.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListTransitRouterMulticastDomainsResponseBody struct {
 	//
 	// 8A0F93D1-FD6C-56FC-B6D2-668FC92D12D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -121,17 +121,17 @@ func (s *ListTransitRouterMulticastDomainsResponseBody) Validate() error {
 }
 
 type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains struct {
-	// The CEN instance ID.
+	// The ID of the CEN instance.
 	//
 	// example:
 	//
-	// cen-a7syd349kne38g****
+	// cen-h19xdb0qy2b3ir****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// Multicast domain feature.
+	// The options of the multicast domain.
 	Options *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
-	// The region ID of the transit router.
+	// The ID of the region where the transit router is deployed.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
 	//
 	// example:
 	//
@@ -139,15 +139,15 @@ type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains 
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The status of the multicast domain.
 	//
-	// The valid value is **Active**, which indicates that the multicast domain is available.
+	// The value is **Active**, which indicates that the multicast domain is available.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tags []*ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The transit router ID.
+	// The ID of the transit router.
 	//
 	// example:
 	//
@@ -281,12 +281,16 @@ func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDoma
 }
 
 type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions struct {
-	// Indicates whether the IGMP feature is enabled for the multicast domain.
+	// Indicates whether IGMPv2 is enabled for the multicast domain.
 	//
 	// example:
 	//
 	// enable
 	Igmpv2Support *string `json:"Igmpv2Support,omitempty" xml:"Igmpv2Support,omitempty"`
+	// example:
+	//
+	// enable
+	StrictSourceControl *string `json:"StrictSourceControl,omitempty" xml:"StrictSourceControl,omitempty"`
 }
 
 func (s ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions) String() string {
@@ -301,8 +305,17 @@ func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDoma
 	return s.Igmpv2Support
 }
 
+func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions) GetStrictSourceControl() *string {
+	return s.StrictSourceControl
+}
+
 func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions) SetIgmpv2Support(v string) *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions {
 	s.Igmpv2Support = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions) SetStrictSourceControl(v string) *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions {
+	s.StrictSourceControl = &v
 	return s
 }
 

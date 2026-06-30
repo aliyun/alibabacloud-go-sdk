@@ -16,13 +16,13 @@ type iDescribeCenGeographicSpanRemainingBandwidthResponseBody interface {
 }
 
 type DescribeCenGeographicSpanRemainingBandwidthResponseBody struct {
-	// The remaining bandwidth of the bandwidth plan. Unit: Mbit/s.
+	// The remaining bandwidth of the bandwidth plan. Unit: Mbps.
 	//
 	// example:
 	//
 	// 2
 	RemainingBandwidth *int64 `json:"RemainingBandwidth,omitempty" xml:"RemainingBandwidth,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -66,11 +66,11 @@ type AttachCenChildInstanceRequest struct {
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// 	- **VPC**: VPC
+	// - **VPC**: VPC
 	//
-	// 	- **VBR**: VBR
+	// - **VBR**: VBR
 	//
-	// 	- **CCN**: CCN instance
+	// - **CCN**: CCN instance
 	//
 	// This parameter is required.
 	//

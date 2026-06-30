@@ -14,6 +14,8 @@ type iRefreshTransitRouteTableAggregationResponseBody interface {
 }
 
 type RefreshTransitRouteTableAggregationResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0C2EE7A8-74D4-4081-8236-CEBDE3BBCF50

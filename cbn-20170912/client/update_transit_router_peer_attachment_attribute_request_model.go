@@ -42,9 +42,9 @@ type iUpdateTransitRouterPeerAttachmentAttributeRequest interface {
 type UpdateTransitRouterPeerAttachmentAttributeRequest struct {
 	// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
 	//
-	// 	- **false*	- (default): no
+	// - **false*	- (default): no
 	//
-	// 	- **true**: yes
+	// - **true**: yes
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type UpdateTransitRouterPeerAttachmentAttributeRequest struct {
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
 	// The bandwidth value of the inter-region connection. Unit: Mbit/s.
 	//
-	// 	- This parameter specifies the maximum bandwidth value for the inter-region connection if you set **BandwidthType*	- to **BandwidthPackage**.
+	// - This parameter specifies the maximum bandwidth value for the inter-region connection if you set **BandwidthType*	- to **BandwidthPackage**.
 	//
-	// 	- This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set **BandwidthType*	- to **DataTransfer**.
+	// - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set **BandwidthType*	- to **DataTransfer**.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type UpdateTransitRouterPeerAttachmentAttributeRequest struct {
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The bandwidth allocation method. Valid values:
 	//
-	// 	- **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
+	// - **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
 	//
-	// 	- **DataTransfer**: bandwidth is billed based on the pay-by-data-transfer metering method.
+	// - **DataTransfer**: bandwidth is billed based on the pay-by-data-transfer metering method.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type UpdateTransitRouterPeerAttachmentAttributeRequest struct {
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
 	// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
 	//
-	// >  If you set **BandwidthType*	- to **DataTransfer**, you do not need to set this parameter.
+	// > If you set **BandwidthType*	- to **DataTransfer**, you do not need to set this parameter.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type UpdateTransitRouterPeerAttachmentAttributeRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request may be different.
+	// > If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request may be different.
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ type UpdateTransitRouterPeerAttachmentAttributeRequest struct {
 	DefaultLinkType *string `json:"DefaultLinkType,omitempty" xml:"DefaultLinkType,omitempty"`
 	// Specifies whether to perform a dry run to check information such as the permissions and the instance status. Default values:
 	//
-	// 	- **false*	- (default): performs a dry run and sends the request.
+	// - **false*	- (default): performs a dry run and sends the request.
 	//
-	// 	- **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
+	// - **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type UpdateTransitRouterPeerAttachmentAttributeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The new description of the inter-region connection.
 	//
-	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type UpdateTransitRouterPeerAttachmentAttributeRequest struct {
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 	// The new name of the inter-region connection.
 	//
-	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//

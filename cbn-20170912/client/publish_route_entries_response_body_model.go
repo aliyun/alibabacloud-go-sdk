@@ -14,7 +14,7 @@ type iPublishRouteEntriesResponseBody interface {
 }
 
 type PublishRouteEntriesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

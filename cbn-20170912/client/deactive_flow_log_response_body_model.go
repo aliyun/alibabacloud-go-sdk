@@ -16,7 +16,7 @@ type iDeactiveFlowLogResponseBody interface {
 }
 
 type DeactiveFlowLogResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -24,9 +24,9 @@ type DeactiveFlowLogResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**
 	//
-	// 	- **false**: no
+	// - **false**
 	//
 	// example:
 	//

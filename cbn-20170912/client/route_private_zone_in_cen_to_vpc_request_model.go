@@ -28,11 +28,11 @@ type iRoutePrivateZoneInCenToVpcRequest interface {
 }
 
 type RoutePrivateZoneInCenToVpcRequest struct {
-	// The ID of the region where PrivateZone is accessed.
+	// The ID of the region from which the PrivateZone service is accessed.
 	//
-	// This region refers to the region in which PrivateZone is accessed by clients.
+	// The access region is the region from which the PrivateZone service is accessed.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type RoutePrivateZoneInCenToVpcRequest struct {
 	//
 	// cen-7qthudw0ll6jmc****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the region where PrivateZone is deployed.
+	// The ID of the region where the PrivateZone service is located.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type RoutePrivateZoneInCenToVpcRequest struct {
 	//
 	// cn-hangzhou
 	HostRegionId *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
-	// The ID of the VPC that is associated with PrivateZone.
+	// The ID of the VPC instance that is associated with the PrivateZone service.
 	//
 	// This parameter is required.
 	//

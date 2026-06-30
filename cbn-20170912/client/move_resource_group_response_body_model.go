@@ -14,7 +14,7 @@ type iMoveResourceGroupResponseBody interface {
 }
 
 type MoveResourceGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
