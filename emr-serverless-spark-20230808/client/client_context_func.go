@@ -1563,7 +1563,7 @@ func (client *Client) GetAICenterStateWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// 获取CacheCluster详情
+// Retrieves the details of a Cache cluster.
 //
 // @param request - GetCacheClusterRequest
 //
@@ -2001,6 +2001,57 @@ func (client *Client) GetRayJobWithContext(ctx context.Context, workspaceId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRayJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the log of a Ray job.
+//
+// @param request - GetRayLogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRayLogResponse
+func (client *Client) GetRayLogWithContext(ctx context.Context, workspaceId *string, instanceId *string, request *GetRayLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRayLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BucketName) {
+		query["bucketName"] = request.BucketName
+	}
+
+	if !dara.IsNil(request.Path) {
+		query["path"] = request.Path
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRayLog"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/interactive/v1/workspace/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ray/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/log"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRayLogResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3175,6 +3226,69 @@ func (client *Client) ListRayJobWithContext(ctx context.Context, workspaceId *st
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRayJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists Ray logs.
+//
+// @param request - ListRayLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRayLogsResponse
+func (client *Client) ListRayLogsWithContext(ctx context.Context, workspaceId *string, instanceId *string, request *ListRayLogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRayLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BucketName) {
+		query["bucketName"] = request.BucketName
+	}
+
+	if !dara.IsNil(request.Delimiter) {
+		query["delimiter"] = request.Delimiter
+	}
+
+	if !dara.IsNil(request.Marker) {
+		query["marker"] = request.Marker
+	}
+
+	if !dara.IsNil(request.MaxKeys) {
+		query["maxKeys"] = request.MaxKeys
+	}
+
+	if !dara.IsNil(request.Prefix) {
+		query["prefix"] = request.Prefix
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRayLogs"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/interactive/v1/workspace/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ray/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/logs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRayLogsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

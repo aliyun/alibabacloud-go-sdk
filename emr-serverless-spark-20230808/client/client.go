@@ -24,7 +24,24 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":      dara.String("emr-serverless-spark.us-west-1.aliyuncs.com"),
+		"us-east-1":      dara.String("emr-serverless-spark.us-east-1.aliyuncs.com"),
+		"na-south-1":     dara.String("emr-serverless-spark.na-south-1.aliyuncs.com"),
+		"eu-central-1":   dara.String("emr-serverless-spark.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou": dara.String("emr-serverless-spark.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":  dara.String("emr-serverless-spark.cn-wulanchabu.aliyuncs.com"),
+		"cn-shenzhen":    dara.String("emr-serverless-spark.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":    dara.String("emr-serverless-spark.cn-shanghai.aliyuncs.com"),
+		"cn-hongkong":    dara.String("emr-serverless-spark.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("emr-serverless-spark.cn-hangzhou.aliyuncs.com"),
+		"cn-chengdu":     dara.String("emr-serverless-spark.cn-chengdu.aliyuncs.com"),
+		"cn-beijing":     dara.String("emr-serverless-spark.cn-beijing.aliyuncs.com"),
+		"ap-southeast-5": dara.String("emr-serverless-spark.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-1": dara.String("emr-serverless-spark.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-1": dara.String("emr-serverless-spark.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -2064,7 +2081,7 @@ func (client *Client) GetAICenterState(workspaceId *string, request *GetAICenter
 
 // Summary:
 //
-// 获取CacheCluster详情
+// Retrieves the details of a Cache cluster.
 //
 // @param request - GetCacheClusterRequest
 //
@@ -2111,7 +2128,7 @@ func (client *Client) GetCacheClusterWithOptions(cacheClusterId *string, request
 
 // Summary:
 //
-// 获取CacheCluster详情
+// Retrieves the details of a Cache cluster.
 //
 // @param request - GetCacheClusterRequest
 //
@@ -2689,6 +2706,76 @@ func (client *Client) GetRayJob(workspaceId *string, submissionId *string, reque
 	headers := make(map[string]*string)
 	_result = &GetRayJobResponse{}
 	_body, _err := client.GetRayJobWithOptions(workspaceId, submissionId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the log of a Ray job.
+//
+// @param request - GetRayLogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRayLogResponse
+func (client *Client) GetRayLogWithOptions(workspaceId *string, instanceId *string, request *GetRayLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRayLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BucketName) {
+		query["bucketName"] = request.BucketName
+	}
+
+	if !dara.IsNil(request.Path) {
+		query["path"] = request.Path
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRayLog"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/interactive/v1/workspace/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ray/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/log"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRayLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the log of a Ray job.
+//
+// @param request - GetRayLogRequest
+//
+// @return GetRayLogResponse
+func (client *Client) GetRayLog(workspaceId *string, instanceId *string, request *GetRayLogRequest) (_result *GetRayLogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRayLogResponse{}
+	_body, _err := client.GetRayLogWithOptions(workspaceId, instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4241,6 +4328,88 @@ func (client *Client) ListRayJob(workspaceId *string, request *ListRayJobRequest
 	headers := make(map[string]*string)
 	_result = &ListRayJobResponse{}
 	_body, _err := client.ListRayJobWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists Ray logs.
+//
+// @param request - ListRayLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRayLogsResponse
+func (client *Client) ListRayLogsWithOptions(workspaceId *string, instanceId *string, request *ListRayLogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRayLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BucketName) {
+		query["bucketName"] = request.BucketName
+	}
+
+	if !dara.IsNil(request.Delimiter) {
+		query["delimiter"] = request.Delimiter
+	}
+
+	if !dara.IsNil(request.Marker) {
+		query["marker"] = request.Marker
+	}
+
+	if !dara.IsNil(request.MaxKeys) {
+		query["maxKeys"] = request.MaxKeys
+	}
+
+	if !dara.IsNil(request.Prefix) {
+		query["prefix"] = request.Prefix
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRayLogs"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/interactive/v1/workspace/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ray/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/logs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRayLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists Ray logs.
+//
+// @param request - ListRayLogsRequest
+//
+// @return ListRayLogsResponse
+func (client *Client) ListRayLogs(workspaceId *string, instanceId *string, request *ListRayLogsRequest) (_result *ListRayLogsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRayLogsResponse{}
+	_body, _err := client.ListRayLogsWithOptions(workspaceId, instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

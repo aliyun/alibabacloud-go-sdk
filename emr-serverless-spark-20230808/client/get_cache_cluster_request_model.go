@@ -14,6 +14,8 @@ type iGetCacheClusterRequest interface {
 }
 
 type GetCacheClusterRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
