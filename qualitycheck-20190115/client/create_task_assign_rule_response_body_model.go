@@ -22,22 +22,32 @@ type iCreateTaskAssignRuleResponseBody interface {
 }
 
 type CreateTaskAssignRuleResponseBody struct {
+	// Result code. A value of **200*	- indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// ID of the created rule.
+	//
 	// example:
 	//
 	// 54
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error details if the request fails. Returns "successful" on success.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24F4CE647
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. A value of true means success. A value of false or null means failure.
+	//
 	// example:
 	//
 	// true

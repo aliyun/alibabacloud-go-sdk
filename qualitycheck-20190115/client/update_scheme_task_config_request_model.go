@@ -16,9 +16,18 @@ type iUpdateSchemeTaskConfigRequest interface {
 }
 
 type UpdateSchemeTaskConfigRequest struct {
-	// baseMeAgentId
-	BaseMeAgentId *int64  `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	JsonStr       *string `json:"jsonStr,omitempty" xml:"jsonStr,omitempty"`
+	// Workspace ID
+	//
+	// example:
+	//
+	// 123456
+	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Input parameter JSON. For details, see the request parameters section.
+	//
+	// example:
+	//
+	// {"schemeTaskConfigId":368,"status":1,"name":"检测任务 2022-09-21 16:59:50"}
+	JsonStr *string `json:"jsonStr,omitempty" xml:"jsonStr,omitempty"`
 }
 
 func (s UpdateSchemeTaskConfigRequest) String() string {

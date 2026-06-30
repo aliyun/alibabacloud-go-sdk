@@ -22,19 +22,32 @@ type iCreateMiningTaskRequest interface {
 }
 
 type CreateMiningTaskRequest struct {
+	// Workspace ID
+	//
 	// example:
 	//
 	// 123456
-	BaseMeAgentId *int64  `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	CallbackUrl   *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Webhook address
+	//
+	// example:
+	//
+	// https://xxxxxxxxk.com
+	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// File path
+	//
 	// example:
 	//
 	// 123.22.com/11.csv
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// Task parameters
+	//
 	// example:
 	//
 	// {"startDate":"20250505"}
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// Task type
+	//
 	// example:
 	//
 	// demandMining

@@ -22,19 +22,31 @@ type iUploadRuleResponseBody interface {
 }
 
 type UploadRuleResponseBody struct {
+	// Result code. **200*	- means success. Any other value indicates failure. Use this field to diagnose errors.
+	//
 	// example:
 	//
 	// 200
 	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *UploadRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error details if the call fails. **successful*	- if successful.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 4987D326-83D9-4A42-B9A5-0B27F9B40539
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request succeeded. Use this field to verify success:
+	//
+	// - **true*	- means success.
+	//
+	// - false or **null*	- means failure.
+	//
 	// example:
 	//
 	// true

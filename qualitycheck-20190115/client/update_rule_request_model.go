@@ -16,9 +16,15 @@ type iUpdateRuleRequest interface {
 }
 
 type UpdateRuleRequest struct {
-	// baseMeAgentId
+	// Workspace ID
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// A complete JSON string. For details, see the following section.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"conditions":"所有条件的配置信息"}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

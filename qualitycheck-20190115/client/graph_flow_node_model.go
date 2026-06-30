@@ -32,32 +32,50 @@ type iGraphFlowNode interface {
 }
 
 type GraphFlowNode struct {
+	// Operator information.
 	Conditions []*ConditionBasicInfo `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// Used for frontend display.
+	//
 	// example:
 	//
 	// {}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Node ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// index
+	// Index
 	//
 	// example:
 	//
 	// 1
-	Index     *int32                    `json:"Index,omitempty" xml:"Index,omitempty"`
-	Name      *string                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// Node name
+	//
+	// example:
+	//
+	// 开始节点
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Child nodes
 	NextNodes []*GraphFlowNodeNextNodes `json:"NextNodes,omitempty" xml:"NextNodes,omitempty" type:"Repeated"`
+	// Node Type
+	//
 	// example:
 	//
 	// startNode
-	NodeType   *string                  `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// Node properties
 	Properties *GraphFlowNodeProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	// Rule ID. \\`rid\\` is empty if the rule is not persisted. If the rule is persisted, \\`rid\\` equals \\`ID\\`.
+	//
 	// example:
 	//
 	// 1
 	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// Whether to use operator matching or legacy matching.
+	//
 	// example:
 	//
 	// true
@@ -190,27 +208,38 @@ func (s *GraphFlowNode) Validate() error {
 }
 
 type GraphFlowNodeNextNodes struct {
+	// Quality check dimension
+	//
 	// example:
 	//
 	// 1
 	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	// Flow branch priority. A smaller value indicates higher priority.
+	//
 	// example:
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// Lambda expression for the next hop.
+	//
 	// example:
 	//
 	// a
 	Lambda *string `json:"Lambda,omitempty" xml:"Lambda,omitempty"`
+	// Conditional branch name.
+	//
 	// example:
 	//
 	// a
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Next node ID.
+	//
 	// example:
 	//
 	// 31533
-	NextNodeId *int64    `json:"NextNodeId,omitempty" xml:"NextNodeId,omitempty"`
-	Triggers   []*string `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+	NextNodeId *int64 `json:"NextNodeId,omitempty" xml:"NextNodeId,omitempty"`
+	// Operators to follow.
+	Triggers []*string `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
 
 func (s GraphFlowNodeNextNodes) String() string {
@@ -280,49 +309,78 @@ func (s *GraphFlowNodeNextNodes) Validate() error {
 }
 
 type GraphFlowNodeProperties struct {
+	// 1: Do not auto-review.
+	//
 	// example:
 	//
 	// 1
 	AutoReview *int32 `json:"AutoReview,omitempty" xml:"AutoReview,omitempty"`
+	// Enable branch judgment.
+	//
 	// example:
 	//
 	// true
 	BranchJudge *bool `json:"BranchJudge,omitempty" xml:"BranchJudge,omitempty"`
+	// Maximum N sentences to check.
+	//
 	// example:
 	//
 	// 1
 	CheckMoreSize *int32 `json:"CheckMoreSize,omitempty" xml:"CheckMoreSize,omitempty"`
+	// Quality check dimension
+	//
 	// example:
 	//
 	// 1
 	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	// General operator logic.
+	//
 	// example:
 	//
 	// a
 	Lambda *string `json:"Lambda,omitempty" xml:"Lambda,omitempty"`
-	Role   *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Role when the type is \\`single\\`.
+	//
+	// example:
+	//
+	// 客户
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Is scored.
+	//
 	// example:
 	//
 	// 1
-	RuleScoreType *int32  `json:"RuleScoreType,omitempty" xml:"RuleScoreType,omitempty"`
-	SayType       *string `json:"SayType,omitempty" xml:"SayType,omitempty"`
+	RuleScoreType *int32 `json:"RuleScoreType,omitempty" xml:"RuleScoreType,omitempty"`
+	// Indicates expression when the type is \\`single\\`.
+	SayType *string `json:"SayType,omitempty" xml:"SayType,omitempty"`
+	// Score value
+	//
 	// example:
 	//
 	// 1
 	ScoreNum *int32 `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
+	// 0: Add or deduct points after the rule is triggered; 1: Score once after the rule is triggered.
+	//
 	// example:
 	//
 	// 1
 	ScoreNumType *int32 `json:"ScoreNumType,omitempty" xml:"ScoreNumType,omitempty"`
+	// 0: Score when the node is hit.
+	//
 	// example:
 	//
 	// 0
 	ScoreRuleHitType *int32 `json:"ScoreRuleHitType,omitempty" xml:"ScoreRuleHitType,omitempty"`
+	// 1: Add points; 3: Deduct points; default is 1.
+	//
 	// example:
 	//
 	// 1
-	ScoreType *int32    `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
-	Triggers  []*string `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+	ScoreType *int32 `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
+	// Operators to follow.
+	Triggers []*string `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+	// Property type
+	//
 	// example:
 	//
 	// xx

@@ -22,19 +22,38 @@ type iDeleteBusinessCategoryResponseBody interface {
 }
 
 type DeleteBusinessCategoryResponseBody struct {
+	// The result code. A value of **200*	- indicates that the request was successful. Other values indicate that the request failed. Use this field to determine the cause of the failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
+	//
+	// example:
+	//
+	// 无
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// If the request fails, this parameter returns the error details. If the request is successful, this parameter returns **successful**.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4987D326-83D9-4A42-B9A5-0B27F9B40539
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// Use this field to determine whether the request was successful:
+	//
+	// - **true**: The request was successful.
+	//
+	// - false or **null**: The request failed.
+	//
 	// example:
 	//
 	// true

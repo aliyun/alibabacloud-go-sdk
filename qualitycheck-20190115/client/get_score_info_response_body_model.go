@@ -22,19 +22,27 @@ type iGetScoreInfoResponseBody interface {
 }
 
 type GetScoreInfoResponseBody struct {
+	// The result code. A value of **200*	- means the call succeeded. Any other value means the call failed. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *GetScoreInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Details about the error if the call fails. If the call succeeds, this value is successful.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. A value of true means success. A value of false or null means failure.
+	//
 	// example:
 	//
 	// true

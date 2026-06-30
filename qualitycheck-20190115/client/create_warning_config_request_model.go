@@ -16,9 +16,15 @@ type iCreateWarningConfigRequest interface {
 }
 
 type CreateWarningConfigRequest struct {
-	// baseMeAgentId
+	// Workspace ID
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Complete JSON string information. See the following details for specific content.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"ridList":[15670],"configName":"投诉预警","channels":[{"type":1,"url":"https://xxx"}]}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

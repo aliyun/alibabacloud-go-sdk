@@ -20,16 +20,22 @@ type iDeleteRuleRequest interface {
 }
 
 type DeleteRuleRequest struct {
-	// baseMeAgentId
+	// Workspace ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Whether to delete the rule even if it is associated with a quality check task.
+	//
 	// example:
 	//
 	// true
 	ForceDelete *bool `json:"ForceDelete,omitempty" xml:"ForceDelete,omitempty"`
+	// Indicates whether this is the new version of quality check. 0: old version. 1: new version. Default is 1.
+	//
 	// example:
 	//
 	// 1
 	IsSchemeData *int32 `json:"IsSchemeData,omitempty" xml:"IsSchemeData,omitempty"`
+	// Rule ID.
+	//
 	// This parameter is required.
 	//
 	// example:

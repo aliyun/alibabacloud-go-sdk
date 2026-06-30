@@ -16,10 +16,14 @@ type iGetSchemeTaskConfigRequest interface {
 }
 
 type GetSchemeTaskConfigRequest struct {
+	// Workspace ID
+	//
 	// example:
 	//
 	// 12345
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// A complete JSON string. See the detailed information below.
+	//
 	// example:
 	//
 	// {"sourceDataType":3,"id":588}

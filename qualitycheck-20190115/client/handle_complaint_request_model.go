@@ -16,9 +16,19 @@ type iHandleComplaintRequest interface {
 }
 
 type HandleComplaintRequest struct {
-	// baseMeAgentId
+	// The ID of the business space.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// A JSON string that contains the request parameters. For details, see the following section.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"taskId":"任务ID"}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

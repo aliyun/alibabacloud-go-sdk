@@ -20,10 +20,26 @@ type iRuleTestDialogue interface {
 }
 
 type RuleTestDialogue struct {
-	Content   []*RuleTestDialogueContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	Id        *int64                     `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name      *string                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	UserGroup *string                    `json:"UserGroup,omitempty" xml:"UserGroup,omitempty"`
+	// Content
+	Content []*RuleTestDialogueContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// Conversation ID
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Conversation Name
+	//
+	// example:
+	//
+	// xx
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// group
+	//
+	// example:
+	//
+	// xx
+	UserGroup *string `json:"UserGroup,omitempty" xml:"UserGroup,omitempty"`
 }
 
 func (s RuleTestDialogue) String() string {
@@ -84,16 +100,66 @@ func (s *RuleTestDialogue) Validate() error {
 }
 
 type RuleTestDialogueContent struct {
-	Begin           *int64  `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	BeginTime       *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EmotionValue    *int32  `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
-	End             *int64  `json:"End,omitempty" xml:"End,omitempty"`
-	HourMinSec      *string `json:"HourMinSec,omitempty" xml:"HourMinSec,omitempty"`
-	Identity        *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
-	Role            *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	SilenceDuration *int64  `json:"SilenceDuration,omitempty" xml:"SilenceDuration,omitempty"`
-	SpeechRate      *int64  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Words           *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	// Start Time in long
+	//
+	// example:
+	//
+	// 360
+	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// Start Time in long
+	//
+	// example:
+	//
+	// 350
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// Emotion energy value
+	//
+	// example:
+	//
+	// 1
+	EmotionValue *int32 `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
+	// End time in long
+	//
+	// example:
+	//
+	// 1360
+	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	// Hour, minute, second
+	//
+	// example:
+	//
+	// 00:00:00
+	HourMinSec *string `json:"HourMinSec,omitempty" xml:"HourMinSec,omitempty"`
+	// Identity
+	//
+	// example:
+	//
+	// 客户
+	Identity *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	// Role
+	//
+	// example:
+	//
+	// 客户
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Silence duration
+	//
+	// example:
+	//
+	// 100
+	SilenceDuration *int64 `json:"SilenceDuration,omitempty" xml:"SilenceDuration,omitempty"`
+	// Speech rate
+	//
+	// example:
+	//
+	// 100
+	SpeechRate *int64 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// Dialogue
+	//
+	// example:
+	//
+	// 方便
+	Words *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s RuleTestDialogueContent) String() string {

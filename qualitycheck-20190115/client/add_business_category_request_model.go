@@ -16,9 +16,15 @@ type iAddBusinessCategoryRequest interface {
 }
 
 type AddBusinessCategoryRequest struct {
-	// baseMeAgentId
+	// Workspace ID
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// A complete JSON string. For details, see the table below.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"name":"适用业务名称"}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

@@ -16,9 +16,21 @@ type iSubmitReviewInfoRequest interface {
 }
 
 type SubmitReviewInfoRequest struct {
-	// baseMeAgentId
+	// Workspace ID
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// The complete JSON string information. See the following details for specific content.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "taskId": "任务ID",
+	//
+	//     "vid": "文件ID"
+	//
+	// }
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

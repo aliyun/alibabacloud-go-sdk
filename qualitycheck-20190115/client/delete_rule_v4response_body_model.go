@@ -24,23 +24,33 @@ type iDeleteRuleV4ResponseBody interface {
 }
 
 type DeleteRuleV4ResponseBody struct {
+	// The result code. **200*	- indicates success. Other values indicate failure. Callers can use this field to determine the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Provides error details if an error occurs. If successful, the value is **successful**.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *DeleteRuleV4ResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// F190ADE9-619A-447D-84E3-7E241A5C428E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Callers can use this field to determine if the request succeeded: true means success; false/null means failure.
+	//
 	// example:
 	//
 	// true

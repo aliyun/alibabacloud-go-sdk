@@ -17,7 +17,13 @@ type iUpdateSyncQualityCheckDataRequest interface {
 
 type UpdateSyncQualityCheckDataRequest struct {
 	// baseMeAgentId
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// jsonStr is a JSON string that contains all Custom Parameters for this API. For details, see **jsonStr property description*	- below.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,19 +22,28 @@ type iGetRuleResponseBody interface {
 }
 
 type GetRuleResponseBody struct {
+	// The result code. **200*	- means success. Any other value means failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
-	Code *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data
 	Data *GetRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error details if the request fails. Returns **successful*	- if the request succeeds.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID
+	//
 	// example:
 	//
 	// F190ADE9-619A-447D-84E3-7E241A5C428E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. true means success. **false*	- or **null*	- means failure.
+	//
 	// example:
 	//
 	// true

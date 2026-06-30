@@ -22,19 +22,28 @@ type iDelRuleCategoryResponseBody interface {
 }
 
 type DelRuleCategoryResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *DelRuleCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,6 +113,8 @@ func (s *DelRuleCategoryResponseBody) Validate() error {
 }
 
 type DelRuleCategoryResponseBodyData struct {
+	// Indicates whether to select a new rule category.
+	//
 	// example:
 	//
 	// false

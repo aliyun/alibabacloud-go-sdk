@@ -22,19 +22,28 @@ type iSyncQualityCheckResponseBody interface {
 }
 
 type SyncQualityCheckResponseBody struct {
+	// Result status code. 200 indicates success. Other values indicate failure. The caller can determine the reason for failure using this field.
+	//
 	// example:
 	//
 	// 200
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned result, including hit information.
 	Data *SyncQualityCheckResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error details if an error occurs. "successful" if successful.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier.
+	//
 	// example:
 	//
 	// 66E1ACB8-17B2-4BE8-8581-954A8*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. The caller can use this field to determine if the request succeeded: true for success; false/null for failure.
+	//
 	// example:
 	//
 	// true
@@ -104,19 +113,28 @@ func (s *SyncQualityCheckResponseBody) Validate() error {
 }
 
 type SyncQualityCheckResponseBodyData struct {
+	// Time of recording and dialogue occurrence, in milliseconds since January 1, 1970, 00:00:00 UTC (UNIX timestamp in milliseconds, such as 1584535485856).
+	//
 	// example:
 	//
 	// 1584535485856
-	BeginTime *int64                                   `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	Rules     []*SyncQualityCheckResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// List of hit rules. Each item is a rule. Only hit rule information and hit rule location information are returned.
+	Rules []*SyncQualityCheckResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Final score, with a maximum of 100.
+	//
 	// example:
 	//
 	// 100
 	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// 66E1ACB866E1ACB8
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Unique identifier for the current conversation.
+	//
 	// example:
 	//
 	// 20200876-66E1ACB8
@@ -190,13 +208,22 @@ func (s *SyncQualityCheckResponseBodyData) Validate() error {
 }
 
 type SyncQualityCheckResponseBodyDataRules struct {
+	// List of hit sentences. For this API, if a hit occurs, it is a single data entry.
 	Hit []*SyncQualityCheckResponseBodyDataRulesHit `json:"Hit,omitempty" xml:"Hit,omitempty" type:"Repeated"`
+	// ID of the hit rule.
+	//
 	// example:
 	//
 	// 232232
-	Rid          *string                                            `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	Rid *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// Rule basic information
 	RuleInfoBase *SyncQualityCheckResponseBodyDataRulesRuleInfoBase `json:"RuleInfoBase,omitempty" xml:"RuleInfoBase,omitempty" type:"Struct"`
-	RuleName     *string                                            `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Name of the hit rule.
+	//
+	// example:
+	//
+	// 禁用语
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s SyncQualityCheckResponseBodyDataRules) String() string {
@@ -262,8 +289,10 @@ func (s *SyncQualityCheckResponseBodyDataRules) Validate() error {
 }
 
 type SyncQualityCheckResponseBodyDataRulesHit struct {
+	// Keywords that met the condition.
 	HitKeyWords []*SyncQualityCheckResponseBodyDataRulesHitHitKeyWords `json:"HitKeyWords,omitempty" xml:"HitKeyWords,omitempty" type:"Repeated"`
-	Phrase      *SyncQualityCheckResponseBodyDataRulesHitPhrase        `json:"Phrase,omitempty" xml:"Phrase,omitempty" type:"Struct"`
+	// Dialogue content that met the condition.
+	Phrase *SyncQualityCheckResponseBodyDataRulesHitPhrase `json:"Phrase,omitempty" xml:"Phrase,omitempty" type:"Struct"`
 }
 
 func (s SyncQualityCheckResponseBodyDataRulesHit) String() string {
@@ -311,22 +340,35 @@ func (s *SyncQualityCheckResponseBodyDataRulesHit) Validate() error {
 }
 
 type SyncQualityCheckResponseBodyDataRulesHitHitKeyWords struct {
+	// Condition ID of the rule.
+	//
 	// example:
 	//
 	// 2312
 	Cid *int32 `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	// Start position of the keyword.
+	//
 	// example:
 	//
 	// 1
 	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
+	// Index value of the hit sentence in the entire conversation.
+	//
 	// example:
 	//
 	// 4
 	Pid *int32 `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// End position of the keyword.
+	//
 	// example:
 	//
 	// 4
-	To  *int32  `json:"To,omitempty" xml:"To,omitempty"`
+	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
+	// Keyword.
+	//
+	// example:
+	//
+	// 你好
 	Val *string `json:"Val,omitempty" xml:"Val,omitempty"`
 }
 
@@ -388,32 +430,54 @@ func (s *SyncQualityCheckResponseBodyDataRulesHitHitKeyWords) Validate() error {
 }
 
 type SyncQualityCheckResponseBodyDataRulesHitPhrase struct {
+	// Start time of this sentence relative to the entire conversation, in milliseconds.
+	//
 	// example:
 	//
 	// 1230
 	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// Emotional value of this sentence, 0-10. Higher values indicate stronger emotions.
+	//
 	// example:
 	//
 	// 6
 	EmotionValue *int32 `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
+	// End time of this sentence relative to the entire conversation, in milliseconds.
+	//
 	// example:
 	//
 	// 3440
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	// Deprecated field. Ignore it.
+	//
 	// example:
 	//
 	// xxx
 	Identity *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
-	Role     *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Role of this sentence. Valid values: customer service representative, customer.
+	//
+	// example:
+	//
+	// 客服
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Deprecated field. Ignore it.
+	//
 	// example:
 	//
 	// 123
 	SilenceDuration *int32 `json:"SilenceDuration,omitempty" xml:"SilenceDuration,omitempty"`
+	// Speech rate of this sentence, in characters per minute.
+	//
 	// example:
 	//
 	// 233
-	SpeechRate *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Words      *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// Dialogue content.
+	//
+	// example:
+	//
+	// 你好请问有什么可以帮您的
+	Words *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s SyncQualityCheckResponseBodyDataRulesHitPhrase) String() string {
@@ -501,13 +565,52 @@ func (s *SyncQualityCheckResponseBodyDataRulesHitPhrase) Validate() error {
 }
 
 type SyncQualityCheckResponseBodyDataRulesRuleInfoBase struct {
-	Comments         *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	Level            *int32  `json:"Level,omitempty" xml:"Level,omitempty"`
+	// Rule remarks
+	//
+	// example:
+	//
+	// 邀约客户，客户不同意参加试听
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// Rule importance level
+	//
+	// example:
+	//
+	// 2
+	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// Rule category name
+	//
+	// 	Notice: The requiredFields parameter must include "ruleInfoBase.ruleCategoryName".
+	//
+	// example:
+	//
+	// 服务规范
 	RuleCategoryName *string `json:"RuleCategoryName,omitempty" xml:"RuleCategoryName,omitempty"`
-	ScoreNum         *int32  `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
-	ScoreNumType     *int32  `json:"ScoreNumType,omitempty" xml:"ScoreNumType,omitempty"`
-	ScoreType        *int32  `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
-	Type             *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Score value
+	//
+	// example:
+	//
+	// 1
+	ScoreNum *int32 `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
+	// Scoring type. 0: bonus/penalty points, 1: one-time score.
+	//
+	// example:
+	//
+	// 1
+	ScoreNumType *int32 `json:"ScoreNumType,omitempty" xml:"ScoreNumType,omitempty"`
+	// 1 for bonus points, 3 for penalty points. Default is 1.
+	//
+	// example:
+	//
+	// 1
+	ScoreType *int32 `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
+	// Rule type ID
+	//
+	// 	Notice: The requiredFields parameter must include "ruleInfoBase".
+	//
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SyncQualityCheckResponseBodyDataRulesRuleInfoBase) String() string {

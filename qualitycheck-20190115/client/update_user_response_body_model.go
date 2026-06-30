@@ -20,18 +20,26 @@ type iUpdateUserResponseBody interface {
 }
 
 type UpdateUserResponseBody struct {
+	// Result code. **200*	- indicates success. Other values indicate failure. Use this field to determine the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error details on failure. "successful" on success.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24F4CE647
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates if the request succeeded. Use this field to determine if the request succeeded: \\`true\\` for success; \\`false\\`/\\`null\\` for failure.
+	//
 	// example:
 	//
 	// true

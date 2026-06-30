@@ -22,19 +22,27 @@ type iListAsrVocabResponseBody interface {
 }
 
 type ListAsrVocabResponseBody struct {
+	// The result code. A value of **200*	- indicates that the request was successful. Other values indicate that the request failed. You can use this field to determine the cause of the failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *ListAsrVocabResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error details if the request fails. If the request is successful, the value is **successful**.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 66E1ACB8-17B2-4BE8-8581-954A8EE1324B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Use this field to determine if the request was successful. A value of true indicates success. A value of **false*	- or **null*	- indicates failure.
+	//
 	// example:
 	//
 	// true

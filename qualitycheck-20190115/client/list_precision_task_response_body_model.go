@@ -28,31 +28,45 @@ type iListPrecisionTaskResponseBody interface {
 }
 
 type ListPrecisionTaskResponseBody struct {
+	// Result code. A value of **200*	- means success. Any other value means failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 22
 	Count *int32                             `json:"Count,omitempty" xml:"Count,omitempty"`
 	Data  *ListPrecisionTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error details if the request failed. Returns successful if the request succeeded.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of items per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24F4CE647
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. If true, the request succeeded. If false or null, the request failed.
+	//
 	// example:
 	//
 	// true

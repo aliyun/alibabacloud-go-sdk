@@ -22,22 +22,32 @@ type iCreateAsrVocabResponseBody interface {
 }
 
 type CreateAsrVocabResponseBody struct {
+	// Result code. **200*	- means success. Any other value means failure. Use this field to diagnose errors.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Hotword ID
+	//
 	// example:
 	//
 	// 71b1795ac8634bd8bdf4d3878480c7c2
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error details if the call fails. Returns **successful*	- on success.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 96138D8D-8D26-4E41-BFF4-77AED1088BBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. true means success. **false*	- or **null*	- means failure.
+	//
 	// example:
 	//
 	// true

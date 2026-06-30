@@ -20,15 +20,26 @@ type iSaveConfigDataSetResponseBody interface {
 }
 
 type SaveConfigDataSetResponseBody struct {
+	// The result code. A value of **200*	- indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message if the request fails. If the request succeeds, the value is successful.
+	//
 	// example:
 	//
 	// successful
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// F050E835-4E5B-4799-BAE3-D622DC529AB3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. A value of true means success. A value of false or null means failure.
+	//
 	// example:
 	//
 	// true

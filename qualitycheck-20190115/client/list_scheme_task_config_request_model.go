@@ -18,6 +18,8 @@ type iListSchemeTaskConfigRequest interface {
 type ListSchemeTaskConfigRequest struct {
 	// baseMeAgentId
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// The request parameter JSON. For details, see the supplementary description of request parameters.
+	//
 	// example:
 	//
 	// {"pageNumber":1,"pageSize":10,"sourceDataType":"1"}

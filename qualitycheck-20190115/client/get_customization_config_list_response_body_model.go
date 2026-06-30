@@ -22,19 +22,27 @@ type iGetCustomizationConfigListResponseBody interface {
 }
 
 type GetCustomizationConfigListResponseBody struct {
+	// The result code. A value of **200*	- indicates that the request succeeded. Other values indicate failure. Use this field to identify the cause of a failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *GetCustomizationConfigListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// If an error occurs, this field contains error details. If the request succeeds, the value is \\`successful\\`.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24F4CE647
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Use this field to check the request status. A value of \\`true\\` means success. A value of \\`false\\` or \\`null\\` means failure.
+	//
 	// example:
 	//
 	// true

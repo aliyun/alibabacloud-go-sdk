@@ -18,11 +18,16 @@ type iRunCompletionMessageShrinkRequest interface {
 }
 
 type RunCompletionMessageShrinkRequest struct {
+	// A list of messages that form the conversation history and the current prompt.
 	MessagesShrink *string `json:"Messages,omitempty" xml:"Messages,omitempty"`
+	// The model specification to use. Valid values: `TYXM_PLUS` and `TYXM_TURBO`.
+	//
 	// example:
 	//
 	// TYXM_PLUS
 	ModelCode *string `json:"ModelCode,omitempty" xml:"ModelCode,omitempty"`
+	// Specifies whether to stream the response using Server-Sent Events (SSE). If `true`, the response is streamed. Defaults to `false`.
+	//
 	// example:
 	//
 	// true

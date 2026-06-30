@@ -16,9 +16,15 @@ type iDelRuleCategoryRequest interface {
 }
 
 type DelRuleCategoryRequest struct {
-	// baseMeAgentId
+	// The workspace ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// The complete JSON string. For more information, see the details below.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"type":"规则类型ID"}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

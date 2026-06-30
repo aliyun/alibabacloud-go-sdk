@@ -17,8 +17,18 @@ type iAddRuleCategoryRequest interface {
 
 type AddRuleCategoryRequest struct {
 	// baseMeAgentId
+	//
+	// example:
+	//
+	// 1232927
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// A JSON-formatted string. For details, see the following information.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"typeName":"规则类型A"}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

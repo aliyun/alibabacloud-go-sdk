@@ -16,8 +16,10 @@ type iDeleteCustomizationConfigRequest interface {
 }
 
 type DeleteCustomizationConfigRequest struct {
-	// baseMeAgentId
+	// Workspace ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// A complete JSON string. For details, see the table that follows.
+	//
 	// This parameter is required.
 	//
 	// example:

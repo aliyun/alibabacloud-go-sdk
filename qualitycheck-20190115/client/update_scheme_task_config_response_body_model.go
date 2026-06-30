@@ -24,23 +24,33 @@ type iUpdateSchemeTaskConfigResponseBody interface {
 }
 
 type UpdateSchemeTaskConfigResponseBody struct {
+	// Result code. **200*	- means success. Other values mean failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error details if an error occurs. When successful, the value is **successful**.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *UpdateSchemeTaskConfigResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. true means success. false or null means failure.
+	//
 	// example:
 	//
 	// true

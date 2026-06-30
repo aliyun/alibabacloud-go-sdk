@@ -22,22 +22,36 @@ type iDeleteAsrVocabResponseBody interface {
 }
 
 type DeleteAsrVocabResponseBody struct {
+	// The result code. A value of **200*	- means success. Any other value means failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The hotword ID you specified as vocabId.
+	//
 	// example:
 	//
 	// 71b1795ac8634bd8bdf4d3878480c7c2
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Details about the error if the request fails. If the request succeeds, the value is **successful**.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4987D326-83D9-4A42-B9A5-0B27F9B40539
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Use this field to check the result:
+	//
+	// - **true*	- means success.
+	//
+	// - false or **null*	- means failure.
+	//
 	// example:
 	//
 	// true

@@ -26,27 +26,39 @@ type iCreateCheckTypeToSchemeResponseBody interface {
 }
 
 type CreateCheckTypeToSchemeResponseBody struct {
+	// Result code. **200*	- means success. Any other value means failure. Callers can use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Quality check dimension ID.
+	//
 	// example:
 	//
 	// 5
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error details when the request fails. Returns **successful*	- on success.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *CreateCheckTypeToSchemeResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24F4CE647
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Callers can use this field to determine success: true means success. false or null means failure.
+	//
 	// example:
 	//
 	// true

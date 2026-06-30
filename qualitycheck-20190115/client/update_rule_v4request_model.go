@@ -19,9 +19,21 @@ type iUpdateRuleV4Request interface {
 
 type UpdateRuleV4Request struct {
 	// baseMeAgentId
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// For details about JsonStrForRule, see the document [`Rule Object Description`](https://help.aliyun.com/document_detail/453053.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 无
 	JsonStrForRule *string `json:"JsonStrForRule,omitempty" xml:"JsonStrForRule,omitempty"`
+	// Rule ID.
+	//
 	// example:
 	//
 	// 1

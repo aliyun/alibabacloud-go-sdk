@@ -26,24 +26,40 @@ type iGetRuleByIdResponseBody interface {
 }
 
 type GetRuleByIdResponseBody struct {
+	// The result code. A value of **200*	- indicates success. Other values indicate an error.
+	//
 	// example:
 	//
 	// 200
-	Code *string    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The detailed information about the rule.
+	//
+	// example:
+	//
+	// 无
 	Data *RulesInfo `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. A value of successful is returned on success, and an error message is returned on failure.
+	//
 	// example:
 	//
 	// successful
-	Message  *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Details about the error. This parameter is used when multiple messages are returned.
 	Messages []*string `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3CEA0495-341B-4482-9AD9-8191EF4***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. A value of true indicates success, and false or null indicates failure.
+	//
 	// example:
 	//
 	// true

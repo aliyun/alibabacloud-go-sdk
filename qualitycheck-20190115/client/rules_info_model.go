@@ -24,25 +24,36 @@ type iRulesInfo interface {
 }
 
 type RulesInfo struct {
+	// Rule condition information; conditions for multiple rules are all placed in a single list
+	//
 	// if can be null:
 	// true
 	Conditions []*ConditionBasicInfo `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// Total number of entries
+	//
 	// example:
 	//
 	// 100
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Testing copy
+	//
 	// if can be null:
 	// true
 	Dialogues []*RuleTestDialogue `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Repeated"`
+	// Current page
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rules    []*RuleInfo `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Basic rule information; multiple rules may exist
+	Rules []*RuleInfo `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s RulesInfo) String() string {

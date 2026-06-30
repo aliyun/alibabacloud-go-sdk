@@ -22,19 +22,28 @@ type iGetResultToReviewResponseBody interface {
 }
 
 type GetResultToReviewResponseBody struct {
+	// Result code. **200*	- means success. Any other value means failure. Use this field to identify the cause.
+	//
 	// example:
 	//
 	// 200
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Detailed response data.
 	Data *GetResultToReviewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error details if the call fails. Returns **successful*	- on success.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 82C91484-B2D5-4D2A-A21F-A6D73F4***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. true means success. **false*	- or **null*	- means failure.
+	//
 	// example:
 	//
 	// true
@@ -104,23 +113,33 @@ func (s *GetResultToReviewResponseBody) Validate() error {
 }
 
 type GetResultToReviewResponseBodyData struct {
+	// Protocol used in the audio URL. Possible values: http, https.
+	//
 	// example:
 	//
 	// https
 	AudioScheme *string `json:"AudioScheme,omitempty" xml:"AudioScheme,omitempty"`
+	// Audio URL without the protocol prefix (http\\:// or https\\://). Combine with AudioScheme to form the full URL.
+	//
 	// example:
 	//
 	// sca-ccc-test.oss-cn-beijing.aliyuncs.com/xxxxx
 	AudioURL *string `json:"AudioURL,omitempty" xml:"AudioURL,omitempty"`
+	// Review comments.
+	//
 	// example:
 	//
 	// xxx
 	Comments  *string                                     `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	Dialogues *GetResultToReviewResponseBodyDataDialogues `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Struct"`
+	// File ID.
+	//
 	// example:
 	//
 	// e790e6c919d84b82b64ee*****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// File name.
+	//
 	// example:
 	//
 	// xxx.wav
@@ -129,14 +148,20 @@ type GetResultToReviewResponseBodyData struct {
 	ManualScoreInfoList   *GetResultToReviewResponseBodyDataManualScoreInfoList   `json:"ManualScoreInfoList,omitempty" xml:"ManualScoreInfoList,omitempty" type:"Struct"`
 	ReviewHistoryList     *GetResultToReviewResponseBodyDataReviewHistoryList     `json:"ReviewHistoryList,omitempty" xml:"ReviewHistoryList,omitempty" type:"Struct"`
 	ReviewTypeIdList      *GetResultToReviewResponseBodyDataReviewTypeIdList      `json:"ReviewTypeIdList,omitempty" xml:"ReviewTypeIdList,omitempty" type:"Struct"`
+	// Current task status. 0: incomplete. 1: complete. Use this field to check completion. Any other value indicates an error.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Quality inspection score.
+	//
 	// example:
 	//
 	// 99
 	TotalScore *int32 `json:"TotalScore,omitempty" xml:"TotalScore,omitempty"`
+	// File ID.
+	//
 	// example:
 	//
 	// 6fa76916-3ce6-45d8-ac64-01b7f31***

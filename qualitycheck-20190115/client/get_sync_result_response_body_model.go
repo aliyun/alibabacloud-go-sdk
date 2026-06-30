@@ -30,35 +30,52 @@ type iGetSyncResultResponseBody interface {
 }
 
 type GetSyncResultResponseBody struct {
+	// Result code. A value of 200 indicates success. Any other value indicates failure. The caller can use this field to determine the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Total number of entries.
+	//
 	// example:
 	//
 	// 1
-	Count *int32                           `json:"Count,omitempty" xml:"Count,omitempty"`
-	Data  []*GetSyncResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Query result.
+	Data []*GetSyncResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Error details when an error occurs; "successful" when the operation succeeded.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 76DB5D8C-5BD9-42A7-B527-5AF3A5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Internal field. Ignore it.
+	//
 	// example:
 	//
 	// xxx
 	ResultCountId *string `json:"ResultCountId,omitempty" xml:"ResultCountId,omitempty"`
+	// Indicates whether the request succeeded. The caller can use this field to determine the request status: true indicates success; false or null indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -168,44 +185,76 @@ func (s *GetSyncResultResponseBody) Validate() error {
 }
 
 type GetSyncResultResponseBodyData struct {
-	Agent     *GetSyncResultResponseBodyDataAgent       `json:"Agent,omitempty" xml:"Agent,omitempty" type:"Struct"`
+	// Agent information
+	Agent *GetSyncResultResponseBodyDataAgent `json:"Agent,omitempty" xml:"Agent,omitempty" type:"Struct"`
+	// Transcription result (dialogue text)
 	AsrResult []*GetSyncResultResponseBodyDataAsrResult `json:"AsrResult,omitempty" xml:"AsrResult,omitempty" type:"Repeated"`
+	// Review comments.
+	//
 	// example:
 	//
 	// xxx
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// Job Creation Time.
+	//
 	// example:
 	//
 	// 2019-07-24T19:31Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// When status is neither 0 nor 1, this field indicates the Error Details.
+	//
 	// example:
 	//
 	// xxxx
-	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HitResult    []*GetSyncResultResponseBodyDataHitResult `json:"HitResult,omitempty" xml:"HitResult,omitempty" type:"Repeated"`
-	Recording    *GetSyncResultResponseBodyDataRecording   `json:"Recording,omitempty" xml:"Recording,omitempty" type:"Struct"`
-	Resolver     *string                                   `json:"Resolver,omitempty" xml:"Resolver,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Rule hit result.
+	HitResult []*GetSyncResultResponseBodyDataHitResult `json:"HitResult,omitempty" xml:"HitResult,omitempty" type:"Repeated"`
+	// Recording file information
+	Recording *GetSyncResultResponseBodyDataRecording `json:"Recording,omitempty" xml:"Recording,omitempty" type:"Struct"`
+	// The quality inspector who actually reviewed the task.
+	//
+	// example:
+	//
+	// 张三
+	Resolver *string `json:"Resolver,omitempty" xml:"Resolver,omitempty"`
+	// Review accuracy. Possible values: 0 (fault); 1 (correct); 2 (partially correct); 3 (pending review).
+	//
 	// example:
 	//
 	// 3
 	ReviewResult *int32 `json:"ReviewResult,omitempty" xml:"ReviewResult,omitempty"`
+	// Review status; possible values: 0 (not reviewed); 1 (reviewed).
+	//
 	// example:
 	//
 	// 1
-	ReviewStatus *int32  `json:"ReviewStatus,omitempty" xml:"ReviewStatus,omitempty"`
-	Reviewer     *string `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
+	ReviewStatus *int32 `json:"ReviewStatus,omitempty" xml:"ReviewStatus,omitempty"`
+	// Username of the assigned quality inspector.
+	//
+	// example:
+	//
+	// 张三
+	Reviewer *string `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
+	// Quality inspection score, with a maximum of 100.
+	//
 	// example:
 	//
 	// 100
 	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Current job status. Possible values: 0 (not completed); 1 (completed). The caller can use this field to determine whether the job is complete. Values other than 0 or 1 indicate an error; see the errorMessage field for Error Details.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// 20201231de3d34ec-40fa-4a55-8d27-76ea*****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Internal field. Ignore it.
+	//
 	// example:
 	//
 	// xxx
@@ -388,11 +437,23 @@ func (s *GetSyncResultResponseBodyData) Validate() error {
 }
 
 type GetSyncResultResponseBodyDataAgent struct {
+	// Agent ID.
+	//
 	// example:
 	//
 	// 12221
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Agent name
+	//
+	// example:
+	//
+	// 李四
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Skill group name
+	//
+	// example:
+	//
+	// 客服组
 	SkillGroup *string `json:"SkillGroup,omitempty" xml:"SkillGroup,omitempty"`
 }
 
@@ -436,28 +497,48 @@ func (s *GetSyncResultResponseBodyDataAgent) Validate() error {
 }
 
 type GetSyncResultResponseBodyDataAsrResult struct {
+	// The start time of this sentence, which is the offset from the starting point in milliseconds.
+	//
 	// example:
 	//
 	// 340
 	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// Emotion intensity value ranging from 1 to 10. A higher value indicates stronger emotion.
+	//
 	// example:
 	//
 	// 6
 	EmotionValue *int32 `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
+	// The end time of this sentence, which is the offset from the starting point in milliseconds.
+	//
 	// example:
 	//
 	// 3000
-	End  *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	// Role in the dialogue content. Possible values: agent, Customer.
+	//
+	// example:
+	//
+	// 客服
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Internal field. Ignore it.
+	//
 	// example:
 	//
 	// 11
 	SilenceDuration *int32 `json:"SilenceDuration,omitempty" xml:"SilenceDuration,omitempty"`
+	// The average speech rate of this sentence, in characters per minute.
+	//
 	// example:
 	//
 	// 221
-	SpeechRate *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Words      *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// Dialogue content.
+	//
+	// example:
+	//
+	// 您好，很高兴为您服务
+	Words *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s GetSyncResultResponseBodyDataAsrResult) String() string {
@@ -536,16 +617,28 @@ func (s *GetSyncResultResponseBodyDataAsrResult) Validate() error {
 }
 
 type GetSyncResultResponseBodyDataHitResult struct {
+	// Specific hit location information. At the sentence dimension, returns which condition in the rule was hit and which specific characters triggered the hit within the sentence.
 	Hits []*GetSyncResultResponseBodyDataHitResultHits `json:"Hits,omitempty" xml:"Hits,omitempty" type:"Repeated"`
-	Name *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Hit rule name.
+	//
+	// example:
+	//
+	// 测试规则
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Review accuracy; possible values: 0 (fault); 1 (correct).
+	//
 	// example:
 	//
 	// 1
 	ReviewResult *int32 `json:"ReviewResult,omitempty" xml:"ReviewResult,omitempty"`
+	// Hit rule ID.
+	//
 	// example:
 	//
 	// 1211
 	Rid *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// Rule type associated with the hit rule.
+	//
 	// example:
 	//
 	// 2
@@ -619,9 +712,12 @@ func (s *GetSyncResultResponseBodyDataHitResult) Validate() error {
 }
 
 type GetSyncResultResponseBodyDataHitResultHits struct {
-	Cid      []*string                                             `json:"Cid,omitempty" xml:"Cid,omitempty" type:"Repeated"`
+	// List of hit condition IDs.
+	Cid []*string `json:"Cid,omitempty" xml:"Cid,omitempty" type:"Repeated"`
+	// Returns the specific characters in the current sentence that hit the rule, which are the keywords to be highlighted.
 	KeyWords []*GetSyncResultResponseBodyDataHitResultHitsKeyWords `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
-	Phrase   *GetSyncResultResponseBodyDataHitResultHitsPhrase     `json:"Phrase,omitempty" xml:"Phrase,omitempty" type:"Struct"`
+	// Details of the sentence that hit the current rule.
+	Phrase *GetSyncResultResponseBodyDataHitResultHitsPhrase `json:"Phrase,omitempty" xml:"Phrase,omitempty" type:"Struct"`
 }
 
 func (s GetSyncResultResponseBodyDataHitResultHits) String() string {
@@ -678,18 +774,29 @@ func (s *GetSyncResultResponseBodyDataHitResultHits) Validate() error {
 }
 
 type GetSyncResultResponseBodyDataHitResultHitsKeyWords struct {
+	// The ID of the condition that was hit.
+	//
 	// example:
 	//
 	// 66666
 	Cid *string `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	// The starting character position (inclusive) of the keyword to be highlighted. The value starts from 0 and can be at most the total number of characters in the sentence minus 1.
+	//
 	// example:
 	//
 	// 2
 	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
+	// The ending character position (exclusive) of the keyword to be highlighted. The maximum value is the total number of characters in the sentence minus 1. For example, in the sentence “不可能给你退货的”, if from=0 and to=3, the highlighted keyword is “不可能”, which consists of three characters.
+	//
 	// example:
 	//
 	// 5
-	To  *int32  `json:"To,omitempty" xml:"To,omitempty"`
+	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
+	// The exact keyword content.
+	//
+	// example:
+	//
+	// 投诉
 	Val *string `json:"Val,omitempty" xml:"Val,omitempty"`
 }
 
@@ -742,28 +849,48 @@ func (s *GetSyncResultResponseBodyDataHitResultHitsKeyWords) Validate() error {
 }
 
 type GetSyncResultResponseBodyDataHitResultHitsPhrase struct {
+	// The Start Time of this sentence, represented as an offset in milliseconds from the starting point.
+	//
 	// example:
 	//
 	// 440
 	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// Emotion intensity value ranging from 1 to 10. A higher value indicates stronger emotion.
+	//
 	// example:
 	//
 	// 6
 	EmotionValue *int32 `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
+	// The End Time of this sentence, represented as an offset in milliseconds from the starting point.
+	//
 	// example:
 	//
 	// 4000
-	End  *int32  `json:"End,omitempty" xml:"End,omitempty"`
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	// The role in the conversation content. Possible values: agent, Customer, System.
+	//
+	// example:
+	//
+	// 客服
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Internal field. Ignore.
+	//
 	// example:
 	//
 	// 1
 	SilenceDuration *int32 `json:"SilenceDuration,omitempty" xml:"SilenceDuration,omitempty"`
+	// The speech rate of this sentence.
+	//
 	// example:
 	//
 	// 234
-	SpeechRate *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Words      *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// A sentence spoken by this role.
+	//
+	// example:
+	//
+	// 我要投诉
+	Words *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s GetSyncResultResponseBodyDataHitResultHitsPhrase) String() string {
@@ -842,63 +969,102 @@ func (s *GetSyncResultResponseBodyDataHitResultHitsPhrase) Validate() error {
 }
 
 type GetSyncResultResponseBodyDataRecording struct {
+	// Line-of-business name.
+	//
+	// example:
+	//
+	// 客服部
 	Business *string `json:"Business,omitempty" xml:"Business,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// xxx
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// Recording generation UNIX timestamp, accurate to milliseconds.
+	//
 	// example:
 	//
 	// 1563967699000
 	CallTime *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
+	// Call type:
+	//
+	// - 1: Outgoing call
+	//
+	// - 3: Incoming call
+	//
 	// example:
 	//
 	// 1
 	CallType *int32 `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// Callee number.
+	//
 	// example:
 	//
 	// 1888888***
 	Callee *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	// Caller number.
+	//
 	// example:
 	//
 	// 0108888****
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// Internal field. Ignore this.
+	//
 	// example:
 	//
 	// xxx
 	DataSetName *string `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
+	// Total number of words in the conversation.
+	//
 	// example:
 	//
 	// 232
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Call duration.
+	//
 	// example:
 	//
 	// 120
 	DurationAudio *int64 `json:"DurationAudio,omitempty" xml:"DurationAudio,omitempty"`
+	// File ID, which is the callId in the request parameters. If not specified, a random ID will be generated.
+	//
 	// example:
 	//
 	// xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Recording file name.
+	//
 	// example:
 	//
 	// 123123.wav
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Internal field. Ignore it.
+	//
 	// example:
 	//
 	// xxxx
 	PrimaryId *string `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
+	// Custom data 1.
+	//
 	// example:
 	//
 	// xxx
 	Remark1 *string `json:"Remark1,omitempty" xml:"Remark1,omitempty"`
+	// Custom data 2.
+	//
 	// example:
 	//
 	// xxx
 	Remark2 *string `json:"Remark2,omitempty" xml:"Remark2,omitempty"`
+	// Custom data 3.
+	//
 	// example:
 	//
 	// xxx
 	Remark3 *string `json:"Remark3,omitempty" xml:"Remark3,omitempty"`
+	// Recording file URL, used for playback.
+	//
 	// example:
 	//
 	// http://aliyun.com/xxx.wav

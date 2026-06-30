@@ -22,19 +22,31 @@ type iGetBusinessCategoryListResponseBody interface {
 }
 
 type GetBusinessCategoryListResponseBody struct {
+	// Result code. The value **200*	- indicates success. Any other value indicates failure, and the caller can determine the cause of failure based on this field.
+	//
 	// example:
 	//
 	// 200
 	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *GetBusinessCategoryListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// When an error occurs, this field provides error details; when successful, the value is **successful**.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// A186A419-FDBE-464C-AED4-7121CAC73BF1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. The caller can use this field to determine the request outcome:
+	//
+	// - **true*	- indicates success
+	//
+	// - **false/null*	- indicates failure
+	//
 	// example:
 	//
 	// false

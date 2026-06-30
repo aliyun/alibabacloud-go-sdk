@@ -22,19 +22,28 @@ type iGetNextResultToVerifyResponseBody interface {
 }
 
 type GetNextResultToVerifyResponseBody struct {
+	// The result code. A value of **200*	- indicates success. Other values indicate failure. The caller can determine the cause of failure using this field.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// File details.
 	Data *GetNextResultToVerifyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error details if an error occurs. If successful, the value is \\"successful\\".
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24F4CE647
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. The caller can determine if the request was successful using this field: \\`true\\` indicates success; \\`false\\`/\\`null\\` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -104,55 +113,81 @@ func (s *GetNextResultToVerifyResponseBody) Validate() error {
 }
 
 type GetNextResultToVerifyResponseBodyData struct {
+	// The protocol of the audio URL. Possible values: http, https.
+	//
 	// example:
 	//
 	// http
 	AudioScheme *string `json:"AudioScheme,omitempty" xml:"AudioScheme,omitempty"`
+	// The audio URL, excluding http/https.
+	//
 	// example:
 	//
 	// sca-bucket.oss-cn-hangzhou.aliyuncs.com/upload_1173636551461420/dateset_1584674455133_SzC/%E4%BA%BA%E5%B7%A5%E6%A0%A1%E9%AA%8C%E6%B5%8B%E8%AF%95-%E6%9F%A5%E5%8C%97%E4%BA%AC%E5%A4%A9%E6%B0%94.wav?Expires=1584847372&amp;OSSAccessKeyId=*****&amp;Signature=HccAKnLOJwoYvzE*********
 	AudioURL  *string                                         `json:"AudioURL,omitempty" xml:"AudioURL,omitempty"`
 	Dialogues *GetNextResultToVerifyResponseBodyDataDialogues `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Struct"`
+	// The total duration of files in the current task, in seconds.
+	//
 	// example:
 	//
 	// 23421
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// File ID.
+	//
 	// example:
 	//
 	// e790e6c919d84b82b64ee*****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// File name.
+	//
 	// example:
 	//
 	// xxx.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The number of incorrect words in the transcription.
+	//
 	// example:
 	//
 	// 23
 	IncorrectWords *int32 `json:"IncorrectWords,omitempty" xml:"IncorrectWords,omitempty"`
+	// The index of the current file. Pass this value when manually verifying the next data entry. It starts from 1, so the first entry has a value of 1.
+	//
 	// example:
 	//
 	// 2
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// Current recognition accuracy.
+	//
 	// example:
 	//
 	// 0.97079998
 	Precision *float32 `json:"Precision,omitempty" xml:"Precision,omitempty"`
+	// File status. Possible values: 0: Not completed; 1: Not completed; 2: Completed; 3: Completed.
+	//
 	// example:
 	//
 	// 3
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of files for this task.
+	//
 	// example:
 	//
 	// 3
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Last update time.
+	//
 	// example:
 	//
 	// 2020-03-20T11:26Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Indicates whether manual verification has been performed. Possible values: \\`false\\`: Not yet verified; \\`true\\`: Already verified.
+	//
 	// example:
 	//
 	// true
 	Verified *bool `json:"Verified,omitempty" xml:"Verified,omitempty"`
+	// The total number of verified files.
+	//
 	// example:
 	//
 	// 2

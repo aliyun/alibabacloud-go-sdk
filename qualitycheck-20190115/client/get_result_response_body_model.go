@@ -30,35 +30,51 @@ type iGetResultResponseBody interface {
 }
 
 type GetResultResponseBody struct {
+	// Result code. `200` indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 1
 	Count *int32                     `json:"Count,omitempty" xml:"Count,omitempty"`
 	Data  *GetResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error details if the request failed. Returns successful if the request succeeded.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of records per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Unique request ID.
+	//
 	// example:
 	//
 	// 3CEA0495-341B-4482-9AD9-8191EF4***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Reserved field. Ignore this field.
+	//
 	// example:
 	//
 	// XXX
 	ResultCountId *string `json:"ResultCountId,omitempty" xml:"ResultCountId,omitempty"`
+	// Indicates whether the request succeeded. A value of true means success. A value of false or null means failure.
+	//
 	// example:
 	//
 	// true

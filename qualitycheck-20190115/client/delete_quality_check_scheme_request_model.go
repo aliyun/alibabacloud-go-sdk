@@ -16,8 +16,10 @@ type iDeleteQualityCheckSchemeRequest interface {
 }
 
 type DeleteQualityCheckSchemeRequest struct {
-	// baseMeAgentId
+	// Workspace ID
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// JSON request body. For details, see the parameter description below.
+	//
 	// example:
 	//
 	// {"schemeId":191}

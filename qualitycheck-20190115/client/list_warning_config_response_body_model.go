@@ -22,19 +22,27 @@ type iListWarningConfigResponseBody interface {
 }
 
 type ListWarningConfigResponseBody struct {
+	// Result code. A value of **200*	- indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *ListWarningConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error details if the request fails. Returns successful if the request succeeds.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 82C91484-B2D5-4D2A-A21F-A6D73F4D55C6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. A value of true means success. A value of false or null means failure.
+	//
 	// example:
 	//
 	// true

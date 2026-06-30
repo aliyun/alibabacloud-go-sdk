@@ -22,19 +22,28 @@ type iUpdateSyncQualityCheckDataResponseBody interface {
 }
 
 type UpdateSyncQualityCheckDataResponseBody struct {
+	// The Result code. A value of 200 indicates Succeeded. Any other value indicates failed. The API caller can determine the cause of failure based on this field.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The complete response Content.
 	Data *UpdateSyncQualityCheckDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Details of the error when an error occurs; "successful" when the operation succeeded.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID, which is the UUID of the request.
+	//
 	// example:
 	//
 	// 76DB5D8C-5BD9-42A7-B527-5AF3A5F8***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the Request succeeded. The API caller can use this field to determine whether the Request succeeded: true indicates success; false or null indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -104,10 +113,14 @@ func (s *UpdateSyncQualityCheckDataResponseBody) Validate() error {
 }
 
 type UpdateSyncQualityCheckDataResponseBodyData struct {
+	// The Job ID.
+	//
 	// example:
 	//
 	// 123123D8C-5BD9-42A7-B527-1235F8**
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The UUID of the call.
+	//
 	// example:
 	//
 	// 20210101-1212121***

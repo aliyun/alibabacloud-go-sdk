@@ -38,45 +38,70 @@ type iListSessionGroupResponseBody interface {
 }
 
 type ListSessionGroupResponseBody struct {
+	// The result code. A value of \\`200\\` indicates that the request was successful. Other values indicate that the request failed.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 2228
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of the returned page. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Data        *ListSessionGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The data marker. To retrieve more than 10,000 records, include the LastDataId from the previous response in the next request.
+	//
 	// example:
 	//
 	// xxx
 	LastDataId *string `json:"LastDataId,omitempty" xml:"LastDataId,omitempty"`
+	// The error details if the request fails. \\`successful\\` is returned if the request is successful.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *ListSessionGroupResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// The number of the current page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F190ADE9-619A-447D-84E3-7E241A5C428E
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A reserved parameter. You can ignore this parameter.
+	//
+	// example:
+	//
+	// 忽略
 	ResultCountId *string `json:"ResultCountId,omitempty" xml:"ResultCountId,omitempty"`
+	// Indicates whether the request was successful. A value of \\`true\\` indicates that the request was successful. A value of \\`false\\` or \\`null\\` indicates that the request failed.
+	//
 	// example:
 	//
 	// true

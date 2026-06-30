@@ -16,9 +16,19 @@ type iCreateQualityCheckSchemeRequest interface {
 }
 
 type CreateQualityCheckSchemeRequest struct {
-	// baseMeAgentId
+	// Workspace ID
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// JSON request body. For details, see the parameter description in the request parameters section.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"dataType":1,"name":"质检方案A","type":1}
 	JsonStr *string `json:"jsonStr,omitempty" xml:"jsonStr,omitempty"`
 }
 

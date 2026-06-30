@@ -17,7 +17,13 @@ type iGetSyncResultRequest interface {
 
 type GetSyncResultRequest struct {
 	// baseMeAgentId
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Complete JSON string. For details, see the following information.
+	//
 	// This parameter is required.
 	//
 	// example:

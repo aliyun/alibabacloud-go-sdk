@@ -22,22 +22,32 @@ type iAddBusinessCategoryResponseBody interface {
 }
 
 type AddBusinessCategoryResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business category ID
+	//
 	// example:
 	//
 	// 348193421
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Response message
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 76DB5D8C-5BD9-42A7-B527-5AF3A5F83F12
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true

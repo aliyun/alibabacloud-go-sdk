@@ -16,9 +16,18 @@ type iCreateUserRequest interface {
 }
 
 type CreateUserRequest struct {
-	// baseMeAgentId
-	BaseMeAgentId *int64  `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	JsonStr       *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
+	// Workspace ID
+	//
+	// example:
+	//
+	// 123456
+	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// A complete **JSON string**. For details, see the table below.
+	//
+	// example:
+	//
+	// [{"aliUid":123,"roleName":"AGENT","userName":"kefu01"}]
+	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 
 func (s CreateUserRequest) String() string {

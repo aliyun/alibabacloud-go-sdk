@@ -26,13 +26,44 @@ type iTaskGraphFlow interface {
 }
 
 type TaskGraphFlow struct {
-	FlowRuleScoreType            *int32           `json:"FlowRuleScoreType,omitempty" xml:"FlowRuleScoreType,omitempty"`
-	Id                           *int64           `json:"Id,omitempty" xml:"Id,omitempty"`
-	Nodes                        []*GraphFlowNode `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	Rid                          *int64           `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	RuleName                     *string          `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	ShowProperties               *string          `json:"ShowProperties,omitempty" xml:"ShowProperties,omitempty"`
-	SkipWhenFirstSessionNodeMiss *bool            `json:"SkipWhenFirstSessionNodeMiss,omitempty" xml:"SkipWhenFirstSessionNodeMiss,omitempty"`
+	// Flow scoring logic settings
+	//
+	// example:
+	//
+	// 1
+	FlowRuleScoreType *int32 `json:"FlowRuleScoreType,omitempty" xml:"FlowRuleScoreType,omitempty"`
+	// Canvas ID of the flow
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// All nodes in the flow
+	Nodes []*GraphFlowNode `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// Rule ID
+	//
+	// example:
+	//
+	// 1
+	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// Rule Name
+	//
+	// example:
+	//
+	// 违规
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Used for frontend display
+	//
+	// example:
+	//
+	// {}
+	ShowProperties *string `json:"ShowProperties,omitempty" xml:"ShowProperties,omitempty"`
+	// Skip if the first session node is not hit
+	//
+	// example:
+	//
+	// true
+	SkipWhenFirstSessionNodeMiss *bool `json:"SkipWhenFirstSessionNodeMiss,omitempty" xml:"SkipWhenFirstSessionNodeMiss,omitempty"`
 }
 
 func (s TaskGraphFlow) String() string {

@@ -22,22 +22,36 @@ type iUpdateRuleResponseBody interface {
 }
 
 type UpdateRuleResponseBody struct {
+	// The result code. A value of **200*	- indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	//
 	// example:
 	//
 	// xxx
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Details about the error if the call fails. Returns **successful*	- if the call succeeds.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4987D326-83D9-4A42-B9A5-0B27F9B40539
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Use this field to determine success:
+	//
+	// - **true*	- means success
+	//
+	// - false or **null*	- means failure
+	//
 	// example:
 	//
 	// true

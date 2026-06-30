@@ -34,40 +34,58 @@ type iListDataSetResponseBody interface {
 }
 
 type ListDataSetResponseBody struct {
+	// Result code. **200*	- indicates success. Other values indicate failure. Callers can use this field to determine the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 23
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 10
 	CurrentPage *int32                       `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Data        *ListDataSetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error details if an error occurs; "successful" on success.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *ListDataSetResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// Current page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of items displayed per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 96138D8D-8D26-4E41-BFF4-77AED1088BBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Callers can use this field to determine if the request succeeded: true for success; false/null for failure.
+	//
 	// example:
 	//
 	// true

@@ -24,23 +24,33 @@ type iDeleteSchemeTaskConfigResponseBody interface {
 }
 
 type DeleteSchemeTaskConfigResponseBody struct {
+	// The status code of the response. A value of **200*	- indicates that the request was successful. Other values indicate that the request failed.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code. A value of 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned for the request. If the request is successful, successful is returned. If the request fails, an error message is returned.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *DeleteSchemeTaskConfigResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 82C91484-B2D5-4D2A-A21F-A6D73F4D55C6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates success. A value of false or null indicates failure.
+	//
 	// example:
 	//
 	// true

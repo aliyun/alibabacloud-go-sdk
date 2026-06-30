@@ -22,19 +22,36 @@ type iGetSkillGroupConfigResponseBody interface {
 }
 
 type GetSkillGroupConfigResponseBody struct {
+	// The response code. A value of **200*	- indicates a successful response.
+	//
+	// > Other values indicate a failed response. You can use this field to identify the cause of the failure.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the skill group rule configuration.
 	Data *GetSkillGroupConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message. If the request is successful, a value of **successful*	- is returned. If the request fails, an error message is returned.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3CEA0495-341B-4482-9AD9-8191EF4***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// The caller can use this field to determine whether the request was successful:
+	//
+	// - **true**: The request was successful.
+	//
+	// - false or **null**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -104,76 +121,120 @@ func (s *GetSkillGroupConfigResponseBody) Validate() error {
 }
 
 type GetSkillGroupConfigResponseBodyData struct {
+	// Indicates whether to perform a full-text quality check after the real-time quality check is complete. Valid values:
+	//
+	// - 1: yes
+	//
+	// - 0: no
+	//
 	// example:
 	//
 	// 1
 	AllContentQualityCheck *int32 `json:"AllContentQualityCheck,omitempty" xml:"AllContentQualityCheck,omitempty"`
+	// The ID of the rule used for the full-text quality check.
+	//
 	// example:
 	//
 	// 223
 	AllRids     *string                                         `json:"AllRids,omitempty" xml:"AllRids,omitempty"`
 	AllRuleList *GetSkillGroupConfigResponseBodyDataAllRuleList `json:"AllRuleList,omitempty" xml:"AllRuleList,omitempty" type:"Struct"`
+	// The time when the configuration was created.
+	//
 	// example:
 	//
 	// 2020-12-01T15:12Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The configuration ID.
+	//
 	// example:
 	//
 	// 1212
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This is an internal parameter. You can ignore it.
+	//
 	// example:
 	//
 	// xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language model ID.
+	//
 	// example:
 	//
 	// 1321
 	ModelId *int64 `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The language model name.
+	//
 	// example:
 	//
 	// xxx
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The configuration name.
+	//
 	// example:
 	//
 	// xxx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The quality check type. Valid values:
+	//
+	// - 0: offline
+	//
+	// - 1: real-time
+	//
 	// example:
 	//
 	// 0
 	QualityCheckType *int32 `json:"QualityCheckType,omitempty" xml:"QualityCheckType,omitempty"`
+	// The quality check rule ID.
+	//
 	// example:
 	//
 	// 2332
 	Rid      *string                                      `json:"Rid,omitempty" xml:"Rid,omitempty"`
 	RuleList *GetSkillGroupConfigResponseBodyDataRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Struct"`
+	// The source of the skill group. The value is fixed at 0.
+	//
 	// example:
 	//
 	// 0
 	SkillGroupFrom *int32 `json:"SkillGroupFrom,omitempty" xml:"SkillGroupFrom,omitempty"`
+	// The skill group ID.
+	//
 	// example:
 	//
 	// 111
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// The skill group name.
+	//
 	// example:
 	//
 	// xxx
 	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
+	// The status of the configuration. Valid values: 0 (disabled) and 1 (enabled).
+	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The configuration type. Valid values: 1 (custom configuration) and 0 (built-in configuration).
+	//
 	// example:
 	//
 	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the configuration was last updated.
+	//
 	// example:
 	//
 	// 2020-12-01T19:28Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The hotword ID.
+	//
 	// example:
 	//
 	// 123
 	VocabId *int64 `json:"VocabId,omitempty" xml:"VocabId,omitempty"`
+	// The hotword name.
+	//
 	// example:
 	//
 	// test

@@ -28,31 +28,45 @@ type iListTaskAssignRulesResponseBody interface {
 }
 
 type ListTaskAssignRulesResponseBody struct {
+	// Result code. **200*	- indicates success. Other values indicate failure. Callers can use this field to determine the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Total number of entries.
+	//
 	// example:
 	//
 	// 23
 	Count *int32                               `json:"Count,omitempty" xml:"Count,omitempty"`
 	Data  *ListTaskAssignRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error details if an error occurs. "successful" if the request succeeds.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24F4CE647
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Callers can use this field to determine if the request succeeded: true for success, false/null for failure.
+	//
 	// example:
 	//
 	// true

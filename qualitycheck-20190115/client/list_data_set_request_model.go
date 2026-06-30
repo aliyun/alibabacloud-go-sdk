@@ -16,8 +16,10 @@ type iListDataSetRequest interface {
 }
 
 type ListDataSetRequest struct {
-	// baseMeAgentId
+	// Workspace ID
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Input parameter JSON string
+	//
 	// example:
 	//
 	// {"pageNumber":1,"pageSize":10}

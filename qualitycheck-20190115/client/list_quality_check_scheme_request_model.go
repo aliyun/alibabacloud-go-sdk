@@ -16,9 +16,19 @@ type iListQualityCheckSchemeRequest interface {
 }
 
 type ListQualityCheckSchemeRequest struct {
-	// baseMeAgentId
+	// The ID of the baseMe agent.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// The complete JSON string. For more information, see the details that follow.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "name": "质检方案A"
+	//
+	// }
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

@@ -26,27 +26,39 @@ type iUpdateCheckTypeToSchemeResponseBody interface {
 }
 
 type UpdateCheckTypeToSchemeResponseBody struct {
+	// The result code. A value of **200*	- indicates success. Other values indicate failure. This code helps identify the cause of a failed request.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
+	//
 	// example:
 	//
 	// 4
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error details if the request fails. If the request is successful, the value is **successful**.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *UpdateCheckTypeToSchemeResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F190ADE9-619A-447D-84E3-7E241A5C428E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates success. A value of false or null indicates failure.
+	//
 	// example:
 	//
 	// true

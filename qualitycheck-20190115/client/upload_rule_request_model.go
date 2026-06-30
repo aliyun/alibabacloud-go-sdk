@@ -16,8 +16,10 @@ type iUploadRuleRequest interface {
 }
 
 type UploadRuleRequest struct {
-	// baseMeAgentId
+	// Workspace ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Complete JSON string. For details, see the following sections.
+	//
 	// This parameter is required.
 	//
 	// example:

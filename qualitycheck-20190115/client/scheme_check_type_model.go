@@ -28,13 +28,45 @@ type iSchemeCheckType interface {
 }
 
 type SchemeCheckType struct {
-	CheckName             *string                                 `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
-	CheckType             *int64                                  `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	Enable                *int32                                  `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	SchemeId              *int64                                  `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
-	SchemeScoreInfoList   []*SchemeCheckTypeSchemeScoreInfoList   `json:"SchemeScoreInfoList,omitempty" xml:"SchemeScoreInfoList,omitempty" type:"Repeated"`
-	Score                 *int32                                  `json:"Score,omitempty" xml:"Score,omitempty"`
-	SourceScore           *int32                                  `json:"SourceScore,omitempty" xml:"SourceScore,omitempty"`
+	// Check item name
+	//
+	// example:
+	//
+	// 流程规则
+	CheckName *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
+	// Quality inspection dimension ID
+	//
+	// example:
+	//
+	// 1
+	CheckType *int64 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	// Is enabled
+	//
+	// example:
+	//
+	// 1
+	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Quality inspection scheme ID
+	//
+	// example:
+	//
+	// 1
+	SchemeId *int64 `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
+	// List of scoring items under the check item. See SchemeScoreInfo.
+	SchemeScoreInfoList []*SchemeCheckTypeSchemeScoreInfoList `json:"SchemeScoreInfoList,omitempty" xml:"SchemeScoreInfoList,omitempty" type:"Repeated"`
+	// Final score
+	//
+	// example:
+	//
+	// 50
+	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Original score
+	//
+	// example:
+	//
+	// 1
+	SourceScore *int32 `json:"SourceScore,omitempty" xml:"SourceScore,omitempty"`
+	// List of scoring items under the check item. See TaskFlowScoreInfo.
 	TaskFlowScoreInfoList []*SchemeCheckTypeTaskFlowScoreInfoList `json:"TaskFlowScoreInfoList,omitempty" xml:"TaskFlowScoreInfoList,omitempty" type:"Repeated"`
 }
 
@@ -141,14 +173,54 @@ func (s *SchemeCheckType) Validate() error {
 }
 
 type SchemeCheckTypeSchemeScoreInfoList struct {
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Rid              *int64  `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	ScoreNum         *int32  `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
-	ScoreNumType     *int32  `json:"ScoreNumType,omitempty" xml:"ScoreNumType,omitempty"`
-	ScoreRuleHitType *int32  `json:"ScoreRuleHitType,omitempty" xml:"ScoreRuleHitType,omitempty"`
-	ScoreType        *int32  `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
-	TaskFlowId       *int64  `json:"TaskFlowId,omitempty" xml:"TaskFlowId,omitempty"`
-	TaskFlowName     *string `json:"TaskFlowName,omitempty" xml:"TaskFlowName,omitempty"`
+	// Rule Name
+	//
+	// example:
+	//
+	// xx
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Rule ID
+	//
+	// example:
+	//
+	// 1
+	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// Agent rating: default 0, [0, 100]
+	//
+	// example:
+	//
+	// 1
+	ScoreNum *int32 `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
+	// 0 – Add or subtract points after triggering a rule
+	//
+	// example:
+	//
+	// 0
+	ScoreNumType *int32 `json:"ScoreNumType,omitempty" xml:"ScoreNumType,omitempty"`
+	// 0 – Score when hitting an edge zone
+	//
+	// example:
+	//
+	// 0
+	ScoreRuleHitType *int32 `json:"ScoreRuleHitType,omitempty" xml:"ScoreRuleHitType,omitempty"`
+	// 1 for adding points, 3 for deducting points; default is 1
+	//
+	// example:
+	//
+	// 1
+	ScoreType *int32 `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
+	// Flow ID
+	//
+	// example:
+	//
+	// 1
+	TaskFlowId *int64 `json:"TaskFlowId,omitempty" xml:"TaskFlowId,omitempty"`
+	// Flow name
+	//
+	// example:
+	//
+	// xx
+	TaskFlowName *string `json:"TaskFlowName,omitempty" xml:"TaskFlowName,omitempty"`
 }
 
 func (s SchemeCheckTypeSchemeScoreInfoList) String() string {
@@ -236,10 +308,26 @@ func (s *SchemeCheckTypeSchemeScoreInfoList) Validate() error {
 }
 
 type SchemeCheckTypeTaskFlowScoreInfoList struct {
+	// list of scoring items
 	SchemeScoreInfoList []*SchemeCheckTypeTaskFlowScoreInfoListSchemeScoreInfoList `json:"SchemeScoreInfoList,omitempty" xml:"SchemeScoreInfoList,omitempty" type:"Repeated"`
-	TaskFlowId          *int64                                                     `json:"TaskFlowId,omitempty" xml:"TaskFlowId,omitempty"`
-	TaskFlowName        *string                                                    `json:"TaskFlowName,omitempty" xml:"TaskFlowName,omitempty"`
-	TaskFlowType        *int32                                                     `json:"TaskFlowType,omitempty" xml:"TaskFlowType,omitempty"`
+	// Flow ID
+	//
+	// example:
+	//
+	// 1
+	TaskFlowId *int64 `json:"TaskFlowId,omitempty" xml:"TaskFlowId,omitempty"`
+	// flow name
+	//
+	// example:
+	//
+	// xx
+	TaskFlowName *string `json:"TaskFlowName,omitempty" xml:"TaskFlowName,omitempty"`
+	// \\"Flow version: 0: tree, 1: graph\\"
+	//
+	// example:
+	//
+	// 1
+	TaskFlowType *int32 `json:"TaskFlowType,omitempty" xml:"TaskFlowType,omitempty"`
 }
 
 func (s SchemeCheckTypeTaskFlowScoreInfoList) String() string {
@@ -300,14 +388,54 @@ func (s *SchemeCheckTypeTaskFlowScoreInfoList) Validate() error {
 }
 
 type SchemeCheckTypeTaskFlowScoreInfoListSchemeScoreInfoList struct {
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Rid              *int64  `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	ScoreNum         *int32  `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
-	ScoreNumType     *int32  `json:"ScoreNumType,omitempty" xml:"ScoreNumType,omitempty"`
-	ScoreRuleHitType *int32  `json:"ScoreRuleHitType,omitempty" xml:"ScoreRuleHitType,omitempty"`
-	ScoreType        *int32  `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
-	TaskFlowId       *int64  `json:"TaskFlowId,omitempty" xml:"TaskFlowId,omitempty"`
-	TaskFlowName     *string `json:"TaskFlowName,omitempty" xml:"TaskFlowName,omitempty"`
+	// Rule Name
+	//
+	// example:
+	//
+	// xx
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Rule ID
+	//
+	// example:
+	//
+	// 1
+	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// Agent score: default is 0, range [0, 100]
+	//
+	// example:
+	//
+	// 11
+	ScoreNum *int32 `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
+	// 0 – Points added or deducted after a rule is triggered
+	//
+	// example:
+	//
+	// 0
+	ScoreNumType *int32 `json:"ScoreNumType,omitempty" xml:"ScoreNumType,omitempty"`
+	// 0—score when a hit occurs at an edge zone
+	//
+	// example:
+	//
+	// 0
+	ScoreRuleHitType *int32 `json:"ScoreRuleHitType,omitempty" xml:"ScoreRuleHitType,omitempty"`
+	// 1 for adding points, 3 for deducting points; default is 1
+	//
+	// example:
+	//
+	// 1
+	ScoreType *int32 `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
+	// Flow ID
+	//
+	// example:
+	//
+	// 1
+	TaskFlowId *int64 `json:"TaskFlowId,omitempty" xml:"TaskFlowId,omitempty"`
+	// flow name
+	//
+	// example:
+	//
+	// xx
+	TaskFlowName *string `json:"TaskFlowName,omitempty" xml:"TaskFlowName,omitempty"`
 }
 
 func (s SchemeCheckTypeTaskFlowScoreInfoListSchemeScoreInfoList) String() string {

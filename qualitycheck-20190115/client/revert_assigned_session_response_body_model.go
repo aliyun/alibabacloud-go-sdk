@@ -24,23 +24,33 @@ type iRevertAssignedSessionResponseBody interface {
 }
 
 type RevertAssignedSessionResponseBody struct {
+	// Result code. A value of **200*	- indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error details if the request failed. Returns **successful*	- if the request succeeded.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *RevertAssignedSessionResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 82C91484-B2D5-4D2A-A21F-A6D73F4D55C6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Set to true for success. Set to false or null for failure.
+	//
 	// example:
 	//
 	// true

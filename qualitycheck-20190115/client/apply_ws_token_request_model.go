@@ -16,10 +16,14 @@ type iApplyWsTokenRequest interface {
 }
 
 type ApplyWsTokenRequest struct {
+	// Workspace ID
+	//
 	// example:
 	//
 	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Complete JSON string information. For details, see the following specifications.
+	//
 	// example:
 	//
 	// {

@@ -22,22 +22,30 @@ type iUpdateRuleByIdRequest interface {
 }
 
 type UpdateRuleByIdRequest struct {
-	// baseMeAgentId
+	// Workspace ID
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Whether to copy. Setting to true is equivalent to copying the rule.
+	//
 	// example:
 	//
 	// false
 	IsCopy *bool `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
+	// For more information about the format of JsonStrForlRule, see [`Rule object description`](https://help.aliyun.com/document_detail/453053.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {}
 	JsonStrForRule *string `json:"JsonStrForRule,omitempty" xml:"JsonStrForRule,omitempty"`
+	// Returns the IDs and names of quality inspection schemes associated with this rule.
+	//
 	// example:
 	//
 	// 1
 	ReturnRelatedSchemes *bool `json:"ReturnRelatedSchemes,omitempty" xml:"ReturnRelatedSchemes,omitempty"`
+	// Rule ID. Not required when creating, required when modifying.
+	//
 	// example:
 	//
 	// 1

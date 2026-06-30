@@ -26,27 +26,39 @@ type iCreateSchemeTaskConfigResponseBody interface {
 }
 
 type CreateSchemeTaskConfigResponseBody struct {
+	// Result code. **200*	- indicates success. Any other value indicates failure. The caller can use this field to determine the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// ID of the newly created quality inspection job.
+	//
 	// example:
 	//
 	// 22
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// When an error occurs, this field provides error details. When the operation succeeds, the value is "successful".
+	//
 	// example:
 	//
 	// successful
 	Message  *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *CreateSchemeTaskConfigResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 3CEA0495-341B-4482-9AD9-8191EF4***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. The caller can use this field to determine the request outcome: true indicates success; false or null indicates failure.
+	//
 	// example:
 	//
 	// true

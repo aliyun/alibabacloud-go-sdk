@@ -14,7 +14,13 @@ type iGetRuleV4Request interface {
 }
 
 type GetRuleV4Request struct {
+	// Rule ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 531
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 

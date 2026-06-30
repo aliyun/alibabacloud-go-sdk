@@ -16,8 +16,10 @@ type iDeleteTaskAssignRuleRequest interface {
 }
 
 type DeleteTaskAssignRuleRequest struct {
-	// baseMeAgentId
+	// Workspace ID
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// A complete JSON string. For details, see the input parameter description below.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,23 +24,33 @@ type iAssignReviewerBySessionGroupResponseBody interface {
 }
 
 type AssignReviewerBySessionGroupResponseBody struct {
+	// Result code. A value of 200 indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error details if the request failed. Returns successful if the request succeeded.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *AssignReviewerBySessionGroupResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// F190ADE9-619A-447D-84E3-7E241A5C428E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Set to true for success. Set to false or null for failure.
+	//
 	// example:
 	//
 	// true

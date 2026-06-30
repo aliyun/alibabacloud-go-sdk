@@ -24,23 +24,33 @@ type iUpdateRuleByIdResponseBody interface {
 }
 
 type UpdateRuleByIdResponseBody struct {
+	// Result code. **200*	- indicates success. Other values indicate failure. Callers can use this field to determine the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Provides error details on failure, and **successful*	- on success.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *UpdateRuleByIdResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 82C91484-B2D5-4D2A-A21F-A6D73F4D55C6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Callers can use this field to determine if the request succeeded: true for success, false/null for failure.
+	//
 	// example:
 	//
 	// true

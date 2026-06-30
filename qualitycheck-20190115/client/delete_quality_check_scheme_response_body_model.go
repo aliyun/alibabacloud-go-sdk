@@ -24,23 +24,33 @@ type iDeleteQualityCheckSchemeResponseBody interface {
 }
 
 type DeleteQualityCheckSchemeResponseBody struct {
+	// Result code. A value of 200 means success. Any other value means failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error details if the request failed. Returns "successful" if the request succeeded.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *DeleteQualityCheckSchemeResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. If true, the request succeeded. If **false*	- or **null**, the request failed.
+	//
 	// example:
 	//
 	// true

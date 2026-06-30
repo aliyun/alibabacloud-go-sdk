@@ -22,22 +22,32 @@ type iCreateWarningConfigResponseBody interface {
 }
 
 type CreateWarningConfigResponseBody struct {
+	// Result code. **200*	- indicates success. Other values indicate failure. The caller can determine the failure reason based on this field.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the warning configuration successfully created.
+	//
 	// example:
 	//
 	// 30
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error details when an error occurs. Returns \\"successful\\" on success.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 82C91484-B2D5-4D2A-A21F-A6D73F4D55C6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request was successful. The caller can determine if the request was successful based on this field: true indicates success, false/null indicates failure.
+	//
 	// example:
 	//
 	// true

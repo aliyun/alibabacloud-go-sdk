@@ -26,27 +26,39 @@ type iUpdateRuleToSchemeResponseBody interface {
 }
 
 type UpdateRuleToSchemeResponseBody struct {
+	// Result code. **200*	- means success. Any other value means failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Quality check plan ID.
+	//
 	// example:
 	//
 	// 30
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error details if the request failed. Returns successful if the request succeeded.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *UpdateRuleToSchemeResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 9987D326-83D9-4A42-B9A5-0B27F9B40539
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Use this field to determine success: true means success. **false*	- or **null*	- means failure.
+	//
 	// example:
 	//
 	// true

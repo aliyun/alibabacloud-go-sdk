@@ -16,8 +16,10 @@ type iListTaskAssignRulesRequest interface {
 }
 
 type ListTaskAssignRulesRequest struct {
-	// baseMeAgentId
+	// Workspace ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Complete JSON string information. See the details below for specific content.
+	//
 	// This parameter is required.
 	//
 	// example:

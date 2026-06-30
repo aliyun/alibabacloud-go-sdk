@@ -16,8 +16,10 @@ type iListSkillGroupConfigRequest interface {
 }
 
 type ListSkillGroupConfigRequest struct {
-	// baseMeAgentId
+	// Workspace ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// The complete JSON string. For details, see the following section.
+	//
 	// This parameter is required.
 	//
 	// example:

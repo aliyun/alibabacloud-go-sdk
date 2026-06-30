@@ -16,9 +16,15 @@ type iUpdateAsrVocabRequest interface {
 }
 
 type UpdateAsrVocabRequest struct {
-	// baseMeAgentId
+	// The ID of the workspace.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// The request parameters that are configured as a JSON string. For more information, see the details below.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"vocabId":"指定热词Id"}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

@@ -16,9 +16,15 @@ type iSubmitQualityCheckTaskRequest interface {
 }
 
 type SubmitQualityCheckTaskRequest struct {
-	// baseMeAgentId
+	// Workspace ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// The complete JSON string. For details, see the following sections.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// "{"jobName":"任务 2020-03-19 14:16:55","jobType":0,"jsonStr":{"dataSetIds":[123**],"modeCustomizationId":"046db35352904c5dbb0564****","ruleIds":[185**,185**],"vocabId":"0f0cd63546c747bcb306bb05***"}}"
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

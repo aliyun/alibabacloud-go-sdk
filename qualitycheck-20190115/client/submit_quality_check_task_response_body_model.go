@@ -22,19 +22,32 @@ type iSubmitQualityCheckTaskResponseBody interface {
 }
 
 type SubmitQualityCheckTaskResponseBody struct {
+	// Result code. **200*	- indicates success. Any other value indicates failure. Use this field to determine the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// F6C2B68F-2311-4495-82AC-DAE86C9****
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error details if the request failed. Returns "successful" on success.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 00A044A2-D59B-4104-96BA-84060AE8345F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. true means success. false or null means failure.
+	//
 	// example:
 	//
 	// true

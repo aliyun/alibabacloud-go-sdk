@@ -24,23 +24,33 @@ type iBatchSubmitReviewInfoResponseBody interface {
 }
 
 type BatchSubmitReviewInfoResponseBody struct {
+	// The result code. A value of **200*	- indicates success. Other values indicate failure. You can use this code to identify the cause of a failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error details if the request fails. If the request is successful, the value is \\`successful\\`.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *BatchSubmitReviewInfoResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F190ADE9-619A-447D-84E3-7E241A5C428E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of \\`true\\` indicates success. A value of \\`false\\` or \\`null\\` indicates failure.
+	//
 	// example:
 	//
 	// true

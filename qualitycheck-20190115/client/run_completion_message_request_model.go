@@ -18,11 +18,16 @@ type iRunCompletionMessageRequest interface {
 }
 
 type RunCompletionMessageRequest struct {
+	// A list of messages that form the conversation history and the current prompt.
 	Messages []*RunCompletionMessageRequestMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// The model specification to use. Valid values: `TYXM_PLUS` and `TYXM_TURBO`.
+	//
 	// example:
 	//
 	// TYXM_PLUS
 	ModelCode *string `json:"ModelCode,omitempty" xml:"ModelCode,omitempty"`
+	// Specifies whether to stream the response using Server-Sent Events (SSE). If `true`, the response is streamed. Defaults to `false`.
+	//
 	// example:
 	//
 	// true
@@ -78,7 +83,14 @@ func (s *RunCompletionMessageRequest) Validate() error {
 }
 
 type RunCompletionMessageRequestMessages struct {
+	// The content of the message.
+	//
+	// example:
+	//
+	// 请用50字总结一下对话
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The role of the message sender. Valid values: `user`, `agent`, `system`, and `function`.
+	//
 	// example:
 	//
 	// user

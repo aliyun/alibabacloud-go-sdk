@@ -24,23 +24,33 @@ type iUpdateQualityCheckSchemeResponseBody interface {
 }
 
 type UpdateQualityCheckSchemeResponseBody struct {
+	// The result code. A value of **200*	- indicates success. Other values indicate failure. Use this field to determine the cause of a failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error details if the request fails. If the request is successful, the value is \\`successful\\`.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *UpdateQualityCheckSchemeResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 96138D8D-8D26-4E41-BFF4-77AED1088BBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of \\`true\\` indicates success. A value of \\`false\\` or \\`null\\` indicates failure.
+	//
 	// example:
 	//
 	// true

@@ -20,18 +20,26 @@ type iDeleteDataSetResponseBody interface {
 }
 
 type DeleteDataSetResponseBody struct {
+	// The result code. **200*	- indicates success. Other values indicate failure. The caller can determine the cause of failure based on this field.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error details if an error occurs, or **successful*	- if the operation succeeds.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 9987D326-83D9-4A42-B9A5-0B27F9B40539
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. The caller can determine if the request was successful based on this field: **true*	- indicates success, and **false/null*	- indicates failure.
+	//
 	// example:
 	//
 	// true

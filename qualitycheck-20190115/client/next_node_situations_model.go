@@ -16,8 +16,14 @@ type iNextNodeSituations interface {
 }
 
 type NextNodeSituations struct {
+	// Judgment Conditions
 	ConditionGroup []*NextNodeSituationsConditionGroup `json:"ConditionGroup,omitempty" xml:"ConditionGroup,omitempty" type:"Repeated"`
-	Type           *string                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The matching relationship between conditions: currently all are OR relationships.
+	//
+	// example:
+	//
+	// 1
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s NextNodeSituations) String() string {
@@ -60,8 +66,14 @@ func (s *NextNodeSituations) Validate() error {
 }
 
 type NextNodeSituationsConditionGroup struct {
+	// Collection of matching conditions
 	Conditions []*JudgeNodeMetaDesc `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	Type       *string              `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The matching relationship between conditions
+	//
+	// example:
+	//
+	// 1
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s NextNodeSituationsConditionGroup) String() string {

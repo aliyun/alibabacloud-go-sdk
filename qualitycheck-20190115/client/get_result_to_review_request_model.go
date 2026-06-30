@@ -16,9 +16,19 @@ type iGetResultToReviewRequest interface {
 }
 
 type GetResultToReviewRequest struct {
-	// baseMeAgentId
+	// Workspace ID.
+	//
+	// example:
+	//
+	// 12345
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Full JSON string. See the detailed description below.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"taskId":"任务ID",“ fileId”:"文件ID"}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

@@ -16,9 +16,15 @@ type iDeleteBusinessCategoryRequest interface {
 }
 
 type DeleteBusinessCategoryRequest struct {
-	// baseMeAgentId
+	// The workspace ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// The complete JSON string. For more information, see the details below.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"bid ":"适用业务ID"}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

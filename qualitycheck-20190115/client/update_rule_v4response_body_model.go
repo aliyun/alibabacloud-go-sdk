@@ -26,27 +26,39 @@ type iUpdateRuleV4ResponseBody interface {
 }
 
 type UpdateRuleV4ResponseBody struct {
+	// Result code. A value of 200 indicates success. Any other value indicates failure. The caller can use this field to determine the reason for failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The updated rule ID.
+	//
 	// example:
 	//
 	// 1
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP response status code returned by the HTTP Request. A value of 200 indicates that the request succeeded.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// When an error occurs, this field provides error details. When the request succeeds, the value is **successful**.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *UpdateRuleV4ResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. The caller can use this field to determine the request status: true indicates success; false or null indicates failure.
+	//
 	// example:
 	//
 	// true

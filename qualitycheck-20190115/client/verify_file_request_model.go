@@ -16,9 +16,15 @@ type iVerifyFileRequest interface {
 }
 
 type VerifyFileRequest struct {
-	// baseMeAgentId
+	// Workspace ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Complete JSON string information. For details, see the following information.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// "{"taskId":"EA701F66-8CA2-4A79-8E3C-A6F2****","fileName":"人工校验测试-订购茶叶.wav"}"
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

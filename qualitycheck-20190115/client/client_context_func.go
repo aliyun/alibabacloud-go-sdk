@@ -8,6 +8,10 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
+// Summary:
+//
+// Adds a business category.
+//
 // @param request - AddBusinessCategoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -52,6 +56,10 @@ func (client *Client) AddBusinessCategoryWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Add a rule category.
+//
 // @param request - AddRuleCategoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -98,7 +106,7 @@ func (client *Client) AddRuleCategoryWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// # V4创建规则
+// This operation creates a rule on the Quality Inspection Rule Configuration page. For Apsara Stack, the URL is ip:port/api/client/UpdateRuleById.json.
 //
 // @param request - AddRuleV4Request
 //
@@ -152,7 +160,55 @@ func (client *Client) AddRuleV4WithContext(ctx context.Context, request *AddRule
 
 // Summary:
 //
-// 申领实时语音所需token
+// Performs tag categorization.
+//
+// @param request - AnalyzeLabelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AnalyzeLabelResponse
+func (client *Client) AnalyzeLabelWithContext(ctx context.Context, request *AnalyzeLabelRequest, runtime *dara.RuntimeOptions) (_result *AnalyzeLabelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		query["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		query["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AnalyzeLabel"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AnalyzeLabelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Apply for the token required for real-time speech processing.
 //
 // @param request - ApplyWsTokenRequest
 //
@@ -198,6 +254,18 @@ func (client *Client) ApplyWsTokenWithContext(ctx context.Context, request *Appl
 	return _result, _err
 }
 
+// Summary:
+//
+// Manually assign quality reviewers.
+//
+// Description:
+//
+// You can manually assign files that have completed quality inspection to reviewers. Assignments can be made one file at a time or in batches:
+//
+// Single-file assignment: Assign a specific file to a specified reviewer.
+//
+// Batch assignment: Assign multiple filtered files to one or more reviewers. You can specify how many files each reviewer receives, or let the system distribute the files evenly among reviewers.
+//
 // @param request - AssignReviewerRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -246,7 +314,7 @@ func (client *Client) AssignReviewerWithContext(ctx context.Context, request *As
 //
 // Summary:
 //
-// 会话组批量分配
+// Frontend location: Quality Check Plan Management > Task Results > Session Groups > Batch Assign. Apsara Stack URL: ip:port/api/job/AssignReviewerBySessionGroup.json.
 //
 // @param request - AssignReviewerBySessionGroupRequest
 //
@@ -294,7 +362,13 @@ func (client *Client) AssignReviewerBySessionGroupWithContext(ctx context.Contex
 
 // Summary:
 //
-// 批量复核
+// This operation implements the Batch Review feature, which is available in the frontend under Task Management > Task Result.
+//
+// For private cloud deployments, use the URL: ip:port/api/qcsBatchSubmitReviewInfo.json.
+//
+// You can use this operation to perform a batch review on all filtered data.
+//
+// Note: This operation updates a large volume of data. The changes may take some time to appear.
 //
 // @param request - BatchSubmitReviewInfoRequest
 //
@@ -342,7 +416,107 @@ func (client *Client) BatchSubmitReviewInfoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建热词模型
+// Creates an agent.
+//
+// @param request - CreateAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgentResponse
+func (client *Client) CreateAgentWithContext(ctx context.Context, request *CreateAgentRequest, runtime *dara.RuntimeOptions) (_result *CreateAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		body["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		body["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgent"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an Agent batch task for conversation analysis. The application call supports HTTP calls to complete the customer response.
+//
+// @param request - CreateAgentTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgentTaskResponse
+func (client *Client) CreateAgentTaskWithContext(ctx context.Context, request *CreateAgentTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateAgentTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		body["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		body["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgentTask"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgentTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads a set of speech hotwords to the server and obtains the hotword ID in the response.
+//
+// Description:
+//
+// > Hotwords help improve recognition accuracy for specific terms, such as names, place names, or technical terms. [Learn more](https://help.aliyun.com/document_detail/213249.html).
 //
 // @param request - CreateAsrVocabRequest
 //
@@ -390,7 +564,7 @@ func (client *Client) CreateAsrVocabWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建质检方案中的质检维度
+// UI path: Quality Check Plan Management > Add or Edit Quality Check Dimension > Add Quality Check Dimension. Apsara Stack API endpoint: ip:port/api/qcs/CreateCheckTypeToScheme.json.
 //
 // @param request - CreateCheckTypeToSchemeRequest
 //
@@ -438,7 +612,7 @@ func (client *Client) CreateCheckTypeToSchemeWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 创建标签挖掘任务
+// Creates a label mining task.
 //
 // @param request - CreateMiningTaskRequest
 //
@@ -500,7 +674,7 @@ func (client *Client) CreateMiningTaskWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 新增质检方案
+// You can access this operation from the Quality Check Plan Management page in the console. The Apsara Stack endpoint is ip:port/api/qcs/CreateQualityCheckScheme.json.
 //
 // @param request - CreateQualityCheckSchemeRequest
 //
@@ -548,7 +722,7 @@ func (client *Client) CreateQualityCheckSchemeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 新建质检任务
+// Corresponding frontend feature location: Plan Management > Create Quality Inspection Job. Apsara Stack URL: ip:port/api/task/CreateSchemeTaskConfig.json.
 //
 // @param request - CreateSchemeTaskConfigRequest
 //
@@ -596,6 +770,10 @@ func (client *Client) CreateSchemeTaskConfigWithContext(ctx context.Context, req
 
 // Deprecated: OpenAPI CreateSkillGroupConfig is deprecated
 //
+// Summary:
+//
+// Create a configuration.
+//
 // @param request - CreateSkillGroupConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -640,6 +818,58 @@ func (client *Client) CreateSkillGroupConfigWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a label node.
+//
+// @param request - CreateTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTagResponse
+func (client *Client) CreateTagWithContext(ctx context.Context, request *CreateTagRequest, runtime *dara.RuntimeOptions) (_result *CreateTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		query["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		query["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTag"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTagResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an automatic allocation rule for quality review tasks.
+//
 // @param request - CreateTaskAssignRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -686,7 +916,11 @@ func (client *Client) CreateTaskAssignRuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建用户
+// # Create a user
+//
+// Description:
+//
+// Alibaba Cloud uses Resource Access Management (RAM) for unified account management. Before you create a user in Smart Conversation Analysis, first create the user in [RAM](https://ram.console.aliyun.com). Then, obtain the user’s UID, username, and display name. Finally, add the RAM user to Smart Conversation Analysis to grant them access to the Smart Conversation Analysis service.
 //
 // @param request - CreateUserRequest
 //
@@ -732,6 +966,10 @@ func (client *Client) CreateUserWithContext(ctx context.Context, request *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a warning configuration.
+//
 // @param request - CreateWarningConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -824,6 +1062,10 @@ func (client *Client) CreateWarningStrategyConfigWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a rule category.
+//
 // @param request - DelRuleCategoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -868,6 +1110,58 @@ func (client *Client) DelRuleCategoryWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an agent.
+//
+// @param request - DeleteAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgentResponse
+func (client *Client) DeleteAgentWithContext(ctx context.Context, request *DeleteAgentRequest, runtime *dara.RuntimeOptions) (_result *DeleteAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		body["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		body["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgent"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a hotword group.
+//
 // @param request - DeleteAsrVocabRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -912,6 +1206,10 @@ func (client *Client) DeleteAsrVocabWithContext(ctx context.Context, request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a business category.
+//
 // @param request - DeleteBusinessCategoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -958,7 +1256,7 @@ func (client *Client) DeleteBusinessCategoryWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除质检唯独
+// Deletes a dimension from a quality inspection scheme.
 //
 // @param request - DeleteCheckTypeToSchemeRequest
 //
@@ -1004,6 +1302,10 @@ func (client *Client) DeleteCheckTypeToSchemeWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a language model.
+//
 // @param request - DeleteCustomizationConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1050,6 +1352,10 @@ func (client *Client) DeleteCustomizationConfigWithContext(ctx context.Context, 
 
 // Deprecated: OpenAPI DeleteDataSet is deprecated
 //
+// Summary:
+//
+// Deletes a dataset.
+//
 // @param request - DeleteDataSetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1094,6 +1400,10 @@ func (client *Client) DeleteDataSetWithContext(ctx context.Context, request *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete a speech recognition quality check task.
+//
 // @param request - DeletePrecisionTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1140,7 +1450,7 @@ func (client *Client) DeletePrecisionTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除质检方案
+// You can delete a quality check plan from the Quality Check Plan Management page by clicking the Delete button on the right side of the plan. The Apsara Stack API endpoint is ip:port/api/qcs/DeleteQualityCheckScheme.json.
 //
 // @param request - DeleteQualityCheckSchemeRequest
 //
@@ -1190,7 +1500,7 @@ func (client *Client) DeleteQualityCheckSchemeWithContext(ctx context.Context, r
 //
 // Summary:
 //
-// 删除规则
+// This operation deletes a quality check rule. You can access it from the Quality Check Rule Configuration page in the Apsara Stack console. The API endpoint is ip:port/api/client/DeleteRule.json.
 //
 // @param request - DeleteRuleRequest
 //
@@ -1248,7 +1558,7 @@ func (client *Client) DeleteRuleWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// # V4删除规则
+// Frontend feature location: Quality Inspection Rule Configuration — Delete. Apsara Stack URL: ip:port/api/client/DeleteRule.json.
 //
 // @param request - DeleteRuleV4Request
 //
@@ -1302,7 +1612,7 @@ func (client *Client) DeleteRuleV4WithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// 删除质检任务
+// This feature is not available on the frontend. The Apsara Stack API endpoint is ip:port/api/task/DeleteSchemeTaskConfig.json.
 //
 // @param request - DeleteSchemeTaskConfigRequest
 //
@@ -1350,6 +1660,10 @@ func (client *Client) DeleteSchemeTaskConfigWithContext(ctx context.Context, req
 
 // Deprecated: OpenAPI DeleteSkillGroupConfig is deprecated
 //
+// Summary:
+//
+// Delete a configuration.
+//
 // @param request - DeleteSkillGroupConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1394,6 +1708,58 @@ func (client *Client) DeleteSkillGroupConfigWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a label node.
+//
+// @param request - DeleteTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTagResponse
+func (client *Client) DeleteTagWithContext(ctx context.Context, request *DeleteTagRequest, runtime *dara.RuntimeOptions) (_result *DeleteTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		query["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		query["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteTag"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteTagResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an automatic allocation rule for review tasks.
+//
 // @param request - DeleteTaskAssignRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1438,6 +1804,10 @@ func (client *Client) DeleteTaskAssignRuleWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a warning configuration.
+//
 // @param request - DeleteWarningConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1530,6 +1900,221 @@ func (client *Client) DeleteWarningStrategyConfigWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Runs an agent.
+//
+// @param request - ExecuteAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteAgentResponse
+func (client *Client) ExecuteAgentWithSSECtx(ctx context.Context, request *ExecuteAgentRequest, runtime *dara.RuntimeOptions, _yield chan *ExecuteAgentResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.executeAgentWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// Runs an agent.
+//
+// @param request - ExecuteAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteAgentResponse
+func (client *Client) ExecuteAgentWithContext(ctx context.Context, request *ExecuteAgentRequest, runtime *dara.RuntimeOptions) (_result *ExecuteAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		body["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		body["JsonStr"] = request.JsonStr
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["Stream"] = request.Stream
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecuteAgent"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecuteAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Generates labels.
+//
+// @param request - GenerateLabelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateLabelResponse
+func (client *Client) GenerateLabelWithContext(ctx context.Context, request *GenerateLabelRequest, runtime *dara.RuntimeOptions) (_result *GenerateLabelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		query["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		query["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateLabel"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateLabelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an agent.
+//
+// @param request - GetAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentResponse
+func (client *Client) GetAgentWithContext(ctx context.Context, request *GetAgentRequest, runtime *dara.RuntimeOptions) (_result *GetAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		body["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		body["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgent"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the task result of an agent node.
+//
+// @param request - GetAgentTaskResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentTaskResultResponse
+func (client *Client) GetAgentTaskResultWithContext(ctx context.Context, request *GetAgentTaskResultRequest, runtime *dara.RuntimeOptions) (_result *GetAgentTaskResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		body["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		body["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentTaskResult"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentTaskResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves details for a specified hotword group.
+//
 // @param request - GetAsrVocabRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1574,6 +2159,10 @@ func (client *Client) GetAsrVocabWithContext(ctx context.Context, request *GetAs
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtain the list of applicable businesses.
+//
 // @param request - GetBusinessCategoryListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1620,7 +2209,7 @@ func (client *Client) GetBusinessCategoryListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取语音模型列表
+// Retrieves a list of language models.
 //
 // @param request - GetCustomizationConfigListRequest
 //
@@ -1668,7 +2257,103 @@ func (client *Client) GetCustomizationConfigListWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取标签挖掘任务结果
+// Queries the results of tag categorization analysis.
+//
+// @param request - GetLabelAnalysisResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLabelAnalysisResultResponse
+func (client *Client) GetLabelAnalysisResultWithContext(ctx context.Context, request *GetLabelAnalysisResultRequest, runtime *dara.RuntimeOptions) (_result *GetLabelAnalysisResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		query["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		query["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLabelAnalysisResult"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLabelAnalysisResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the result of a label generation task.
+//
+// @param request - GetLabelGeneratedResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLabelGeneratedResultResponse
+func (client *Client) GetLabelGeneratedResultWithContext(ctx context.Context, request *GetLabelGeneratedResultRequest, runtime *dara.RuntimeOptions) (_result *GetLabelGeneratedResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		query["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		query["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLabelGeneratedResult"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLabelGeneratedResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieve the result of a tag mining task.
 //
 // @param request - GetMiningTaskResultRequest
 //
@@ -1714,6 +2399,10 @@ func (client *Client) GetMiningTaskResultWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve the next file details for manual verification.
+//
 // @param request - GetNextResultToVerifyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1758,6 +2447,10 @@ func (client *Client) GetNextResultToVerifyWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of a (speech recognition) detection task.
+//
 // @param request - GetPrecisionTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1804,7 +2497,7 @@ func (client *Client) GetPrecisionTaskWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取质检方案
+// This operation implements the query feature in quality check plan management on the frontend. The Apsara Stack URL is ip:port/api/qcs/GetQualityCheckScheme.json.
 //
 // @param request - GetQualityCheckSchemeRequest
 //
@@ -1852,7 +2545,11 @@ func (client *Client) GetQualityCheckSchemeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取质检结果
+// Query quality inspection results. Some fields require the requiredFields parameter to be explicitly specified in the request. Set the service endpoint (Region) to Hangzhou (cn-hangzhou).
+//
+// Description:
+//
+// You can query data uploaded using [UploadAudioData](https://help.aliyun.com/document_detail/139399.html) or [UploadData](https://help.aliyun.com/document_detail/111394.html). You can also query data from dataset-based quality inspection tasks created with [SubmitQualityCheckTask](https://help.aliyun.com/document_detail/158890.html). You can search by task ID (taskId) or by time range.
 //
 // @param request - GetResultRequest
 //
@@ -1900,7 +2597,7 @@ func (client *Client) GetResultWithContext(ctx context.Context, request *GetResu
 
 // Summary:
 //
-// 获取质检结果详情用于复核
+// Retrieves the quality inspection results for a specified file. The response includes the transcript, audio URL, and details of detected rule hits. You can use this information to review the file by listening to the audio, reading the transcript, and locating where rules were triggered.
 //
 // @param request - GetResultToReviewRequest
 //
@@ -1947,6 +2644,14 @@ func (client *Client) GetResultToReviewWithContext(ctx context.Context, request 
 }
 
 // Deprecated: OpenAPI GetRule is deprecated, please use Qualitycheck::2019-01-15::GetRuleV4 instead.
+//
+// Summary:
+//
+// Retrieves basic information about rules.
+//
+// Description:
+//
+// > This operation returns basic rule information such as the **id*	- and **name**. You can use this information with [GetRuleDetails](https://help.aliyun.com/document_detail/142310.html).
 //
 // @param request - GetRuleRequest
 //
@@ -1996,7 +2701,7 @@ func (client *Client) GetRuleWithContext(ctx context.Context, request *GetRuleRe
 //
 // Summary:
 //
-// 获取规则
+// Retrieves the details of a specific quality inspection rule. It corresponds to the **Edit*	- action on the **Quality Inspection Rule Configuration*	- page. The URL for this operation in a private cloud is `ip:port/api/client/GetRuleById.json`.
 //
 // @param request - GetRuleByIdRequest
 //
@@ -2044,6 +2749,10 @@ func (client *Client) GetRuleByIdWithContext(ctx context.Context, request *GetRu
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of rule types.
+//
 // @param request - GetRuleCategoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2089,6 +2798,14 @@ func (client *Client) GetRuleCategoryWithContext(ctx context.Context, request *G
 }
 
 // Deprecated: OpenAPI GetRuleDetail is deprecated, please use Qualitycheck::2019-01-15::GetRuleV4 instead.
+//
+// Summary:
+//
+// Retrieves the detailed information of a rule.
+//
+// Description:
+//
+// > This operation is used in conjunction with [Get basic rule information](https://help.aliyun.com/document_detail/142333.html). First, call the GetRule operation to obtain the rule ID. Then, use the rule ID as a parameter to call the **GetRuleDetail*	- operation.
 //
 // @param request - GetRuleDetailRequest
 //
@@ -2136,7 +2853,7 @@ func (client *Client) GetRuleDetailWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// # V4获取规则
+// This API is located in the frontend at Quality Check Rule Configuration > Query. The Apsara Stack URL is ip:port/api/client/GetRuleById.json.
 //
 // @param request - GetRuleV4Request
 //
@@ -2180,7 +2897,7 @@ func (client *Client) GetRuleV4WithContext(ctx context.Context, request *GetRule
 
 // Summary:
 //
-// 获得规则列表
+// Corresponds to the frontend feature location: Quality Inspection Rule Configuration > List. Apsara Stack URL: ip:port/api/rule/GetRulesCountList.json.
 //
 // @param request - GetRulesCountListRequest
 //
@@ -2326,7 +3043,7 @@ func (client *Client) GetRulesCountListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取质检任务配置详情
+// Obtain the configuration details of a quality inspection task.
 //
 // @param request - GetSchemeTaskConfigRequest
 //
@@ -2374,6 +3091,10 @@ func (client *Client) GetSchemeTaskConfigWithContext(ctx context.Context, reques
 
 // Deprecated: OpenAPI GetScoreInfo is deprecated
 //
+// Summary:
+//
+// Retrieves information about all scoring items.
+//
 // @param request - GetScoreInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2419,6 +3140,10 @@ func (client *Client) GetScoreInfoWithContext(ctx context.Context, request *GetS
 }
 
 // Deprecated: OpenAPI GetSkillGroupConfig is deprecated
+//
+// Summary:
+//
+// Retrieves the configuration that is specified by its ID.
 //
 // @param request - GetSkillGroupConfigRequest
 //
@@ -2466,6 +3191,10 @@ func (client *Client) GetSkillGroupConfigWithContext(ctx context.Context, reques
 
 // Deprecated: OpenAPI GetSyncResult is deprecated, please use Qualitycheck::2019-01-15::GetResult instead.
 //
+// Summary:
+//
+// You can obtain the real-time quality inspection result of the hotline.
+//
 // @param request - GetSyncResultRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2502,6 +3231,54 @@ func (client *Client) GetSyncResultWithContext(ctx context.Context, request *Get
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSyncResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a label node.
+//
+// @param request - GetTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTagResponse
+func (client *Client) GetTagWithContext(ctx context.Context, request *GetTagRequest, runtime *dara.RuntimeOptions) (_result *GetTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		query["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		query["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTag"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTagResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2558,6 +3335,14 @@ func (client *Client) GetWarningStrategyConfigWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Handles a complaint.
+//
+// Description:
+//
+// Only quality checkers or administrators can call this operation.
+//
 // @param request - HandleComplaintRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2603,6 +3388,10 @@ func (client *Client) HandleComplaintWithContext(ctx context.Context, request *H
 }
 
 // Deprecated: OpenAPI InvalidRule is deprecated, please use Qualitycheck::2019-01-15::DeleteRuleV4 instead.
+//
+// Summary:
+//
+// Delete rules.
 //
 // @param request - InvalidRuleRequest
 //
@@ -2650,7 +3439,7 @@ func (client *Client) InvalidRuleWithContext(ctx context.Context, request *Inval
 
 // Summary:
 //
-// 获取热词模型列表
+// Retrieves a list of vocabulary groups without their specific content.
 //
 // @param request - ListAsrVocabRequest
 //
@@ -2700,7 +3489,7 @@ func (client *Client) ListAsrVocabWithContext(ctx context.Context, request *List
 //
 // Summary:
 //
-// 获取数据集列表
+// This feature is located in the Dataset management section of the frontend. The Apsara Stack URL is ip:port/api/dataset/ListDataSet.json.
 //
 // @param request - ListDataSetRequest
 //
@@ -2746,6 +3535,10 @@ func (client *Client) ListDataSetWithContext(ctx context.Context, request *ListD
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve the list of speech recognition precision tasks. Set the service endpoint to Hangzhou (cn-hangzhou).
+//
 // @param request - ListPrecisionTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2792,7 +3585,7 @@ func (client *Client) ListPrecisionTaskWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 质检方案列表
+// Retrieves a list of quality check schemes.
 //
 // @param request - ListQualityCheckSchemeRequest
 //
@@ -2840,6 +3633,10 @@ func (client *Client) ListQualityCheckSchemeWithContext(ctx context.Context, req
 
 // Deprecated: OpenAPI ListRules is deprecated, please use Qualitycheck::2019-01-15::ListRulesV4 instead.
 //
+// Summary:
+//
+// Lists rules.
+//
 // @param request - ListRulesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2886,7 +3683,7 @@ func (client *Client) ListRulesWithContext(ctx context.Context, request *ListRul
 
 // Summary:
 //
-// # V4获得规则列表
+// Frontend location: Quality inspection rule configuration — List. Apsara Stack URL: ip:port/api/rule/GetRulesCountList.json.
 //
 // @param request - ListRulesV4Request
 //
@@ -3032,7 +3829,7 @@ func (client *Client) ListRulesV4WithContext(ctx context.Context, request *ListR
 
 // Summary:
 //
-// 获取质检任务列表
+// This operation is used for the Task Management feature on the frontend. The Apsara Stack URL is ip:port/api/task/ListSchemeTaskInfo.json.
 //
 // @param request - ListSchemeTaskConfigRequest
 //
@@ -3082,7 +3879,7 @@ func (client *Client) ListSchemeTaskConfigWithContext(ctx context.Context, reque
 //
 // Summary:
 //
-// 获取会话组列表
+// This API corresponds to the frontend location: Task Management > View Results > Task Result > Session Group Results tab. The Apsara Stack URL is: ip:port/api/session/group/ListSessionGroup.json. It aggregates multi-turn sessions by their session group ID for unified management. You must pass the `sessionGroupId` field. For more information, see the UploadData and UploadAudioData API documentation.
 //
 // @param request - ListSessionGroupRequest
 //
@@ -3130,6 +3927,10 @@ func (client *Client) ListSessionGroupWithContext(ctx context.Context, request *
 
 // Deprecated: OpenAPI ListSkillGroupConfig is deprecated
 //
+// Summary:
+//
+// You can call ListSkillGroupConfig to obtain the configuration list.
+//
 // @param request - ListSkillGroupConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3174,6 +3975,58 @@ func (client *Client) ListSkillGroupConfigWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of label nodes.
+//
+// @param request - ListTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResponse
+func (client *Client) ListTagWithContext(ctx context.Context, request *ListTagRequest, runtime *dara.RuntimeOptions) (_result *ListTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		query["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		query["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTag"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTagResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists automatic allocation rules for review tasks.
+//
 // @param request - ListTaskAssignRulesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3218,6 +4071,10 @@ func (client *Client) ListTaskAssignRulesWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of users. Set the service endpoint to China (Hangzhou) (cn-hangzhou).
+//
 // @param request - ListUsersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3262,6 +4119,10 @@ func (client *Client) ListUsersWithContext(ctx context.Context, request *ListUse
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists warning configurations.
+//
 // @param request - ListWarningConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3356,7 +4217,7 @@ func (client *Client) ListWarningStrategyConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 批量回收
+// Frontend location: Task Management > Task Results > Batch Revoke. Apsara Stack URL: ip:port/api/job/RevertAssignedSession.json.
 //
 // @param request - RevertAssignedSessionRequest
 //
@@ -3406,7 +4267,7 @@ func (client *Client) RevertAssignedSessionWithContext(ctx context.Context, requ
 //
 // Summary:
 //
-// 会话组批量回收
+// You can use this feature in the frontend console under Plan Management > Task Result > Session Group > Batch Revoke. The Apsara Stack URL for this operation is `ip:port/api/job/RevertAssignedSessionGroup.json`.
 //
 // @param request - RevertAssignedSessionGroupRequest
 //
@@ -3454,7 +4315,7 @@ func (client *Client) RevertAssignedSessionGroupWithContext(ctx context.Context,
 
 // Summary:
 //
-// 使用原生Prompt调用通义晓蜜
+// This operation calls a large model using the message protocol to generate a response. You can make calls using standard HTTP for a complete response or use Server-Sent Events (SSE) for a streaming response.
 //
 // @param tmpReq - RunCompletionMessageRequest
 //
@@ -3469,7 +4330,7 @@ func (client *Client) RunCompletionMessageWithSSECtx(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 使用原生Prompt调用通义晓蜜
+// This operation calls a large model using the message protocol to generate a response. You can make calls using standard HTTP for a complete response or use Server-Sent Events (SSE) for a streaming response.
 //
 // @param tmpReq - RunCompletionMessageRequest
 //
@@ -3527,6 +4388,10 @@ func (client *Client) RunCompletionMessageWithContext(ctx context.Context, tmpRe
 
 // Deprecated: OpenAPI SaveConfigDataSet is deprecated
 //
+// Summary:
+//
+// Saves the speaker role configuration for a dataset.
+//
 // @param request - SaveConfigDataSetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3571,6 +4436,10 @@ func (client *Client) SaveConfigDataSetWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a complaint.
+//
 // @param request - SubmitComplaintRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3615,6 +4484,10 @@ func (client *Client) SubmitComplaintWithContext(ctx context.Context, request *S
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a speech recognition evaluation task. The service endpoint is China East 1 (Hangzhou) (cn-hangzhou).
+//
 // @param request - SubmitPrecisionTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3659,6 +4532,10 @@ func (client *Client) SubmitPrecisionTaskWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a new dataset quality check task.
+//
 // @param request - SubmitQualityCheckTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3703,6 +4580,14 @@ func (client *Client) SubmitQualityCheckTaskWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Save review results. This is only supported by the legacy Smart Conversation Analysis.
+//
+// Description:
+//
+// You can manually review files after quality inspection. After completing the review, call this API to save the review results. This involves manually reviewing rules identified by the system as hits to determine if they are true hits or false positives. Refer to the file review feature on the console page. For more information, see [File Review](https://help.aliyun.com/document_detail/139653.html#h2-u6587u4EF6u590Du68385).
+//
 // @param request - SubmitReviewInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3749,7 +4634,7 @@ func (client *Client) SubmitReviewInfoWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 提交复核结果v4
+// # Review quality inspection results
 //
 // @param request - SubmitReviewInfoV4Request
 //
@@ -3795,6 +4680,36 @@ func (client *Client) SubmitReviewInfoV4WithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Perform real-time quality inspection for hotlines.
+//
+// Description:
+//
+// Real-time hotline quality inspection transcribes spoken dialogue into text during a call. It sends the text to the Smart Conversation Analysis system for real-time quality inspection to detect potential issues or risks. You can display the dialogue text and inspection results in real time on the customer service representative\\"s workbench (a third-party system). This differs from offline quality inspection, which uses UploadAudioData for inspection or dataset inspection. For details, see the developer guide. Offline quality inspection occurs after the call ends and the recording file is generated.
+//
+// **Usage Flow**
+//
+// You can implement real-time transcription of audio streams to text during calls, or use Alibaba Cloud Call Center (CC) directly. CC integrates deeply with Smart Conversation Analysis, enabling real-time quality inspection during calls without API integration.
+//
+// If you implement audio-to-text conversion yourself, invoke the SyncQualityCheck API for real-time quality inspection after a speaker finishes a sentence and generates dialogue text. This returns the inspection result for that sentence synchronously.
+//
+// You should include skill group information when uploading data. Then, you can use the Call Center Quality Inspection - Configuration Management feature to configure different quality inspection rules for calls from different skill groups.
+//
+// After the call ends, you can store the recording file on a storage server accessible over the public network. You can invoke the recording information maintenance API: UpdateSyncQualityCheckData. You can submit the recording name, recording file URL, and other details to the Smart Conversation Analysis service. This lets quality inspectors play back the recording during review.
+//
+// After the call ends, you can view the quality inspection results in Call Center Quality Inspection - Result Display - Real-time Quality Inspection Results. You can also invoke the real-time quality inspection result query API: GetSyncResult to retrieve the results. You can use Score Dashboard - Real-time Dashboard to view data charts for customer service representatives, skill groups, and scoring items.
+//
+// **Full-Text Quality Inspection**
+//
+// Quality inspection rules include dozens of operators. Some operators require dialogue context (multi-turn conversations between customer service representatives and customers) for analysis. However, real-time quality inspection occurs during a call and typically uses text from only one sentence spoken by a single speaker. Some operators are not suitable for real-time quality inspection. Therefore, quality inspection rules are divided into real-time quality inspection rules and full-text quality inspection rules:
+//
+// **Real-time quality inspection rules**: Rules used for real-time quality inspection. They support a limited number of operator types. They do not support specifying the detection range for operators.
+//
+// **Full-text quality inspection rules**: Rules used for offline quality inspection. They support all operator types. They support custom detection ranges for operators.
+//
+// For calls that underwent real-time quality inspection, you can apply full-text quality inspection rules to the complete dialogue text after the call ends. To enable full-text quality inspection after real-time inspection, see the full-text quality inspection description in Call Center Quality Inspection - Configuration Management.
+//
 // @param request - SyncQualityCheckRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3841,7 +4756,7 @@ func (client *Client) SyncQualityCheckWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 测试规则
+// Frontend location: Quality Check Rule Configuration > Test. Apsara Stack URL: http://<ip>:<port>/api/client/TestRule.json.
 //
 // @param request - TestRuleV4Request
 //
@@ -3887,6 +4802,58 @@ func (client *Client) TestRuleV4WithContext(ctx context.Context, request *TestRu
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an agent.
+//
+// @param request - UpdateAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAgentResponse
+func (client *Client) UpdateAgentWithContext(ctx context.Context, request *UpdateAgentRequest, runtime *dara.RuntimeOptions) (_result *UpdateAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		body["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		body["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAgent"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the hotword vocabulary.
+//
 // @param request - UpdateAsrVocabRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3933,7 +4900,7 @@ func (client *Client) UpdateAsrVocabWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 更新质检方案中的质检维度
+// You can access this operation from the frontend by navigating to Plan Management > Create Quality Inspection Task or Edit > Edit icon next to the quality inspection dimension name. The Apsara Stack endpoint is ip:port/api/qcs/UpdateCheckTypeToScheme.json.
 //
 // @param request - UpdateCheckTypeToSchemeRequest
 //
@@ -3981,7 +4948,7 @@ func (client *Client) UpdateCheckTypeToSchemeWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 更新会话随录数据
+// Update session recording data (third-party business fields) to facilitate statistics and queries across more business dimensions.
 //
 // @param request - UpdateQualityCheckDataRequest
 //
@@ -4029,7 +4996,7 @@ func (client *Client) UpdateQualityCheckDataWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 更新质检方案
+// Updates a quality check scheme.
 //
 // @param request - UpdateQualityCheckSchemeRequest
 //
@@ -4076,6 +5043,14 @@ func (client *Client) UpdateQualityCheckSchemeWithContext(ctx context.Context, r
 }
 
 // Deprecated: OpenAPI UpdateRule is deprecated, please use Qualitycheck::2019-01-15::UpdateRuleV4 instead.
+//
+// Summary:
+//
+// Update rule information.
+//
+// Description:
+//
+// > Update an existing rule. You can modify its conditions and operators as needed. The rule ID (rid) remains unchanged, but condition IDs and operator IDs may change.
 //
 // @param request - UpdateRuleRequest
 //
@@ -4125,7 +5100,7 @@ func (client *Client) UpdateRuleWithContext(ctx context.Context, request *Update
 //
 // Summary:
 //
-// 更新规则
+// This API maps to the frontend function location: Quality Inspection Rule Configuration - Create & Update. The Apsara Stack URL is: ip:port/api/client/UpdateRuleById.json.
 //
 // @param request - UpdateRuleByIdRequest
 //
@@ -4187,7 +5162,7 @@ func (client *Client) UpdateRuleByIdWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 更新质检方案的规则
+// Frontend location: Quality Check Plan Management > Create or edit a quality check task > Associate quality check rules. Apsara Stack URL: ip:port/api/qcs/UpdateRuleToScheme.json.
 //
 // @param request - UpdateRuleToSchemeRequest
 //
@@ -4235,7 +5210,7 @@ func (client *Client) UpdateRuleToSchemeWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # V4更新规则
+// Corresponding frontend feature location: Rule Configuration - Update. Apsara Stack URL: ip:port/api/client/UpdateRuleById.json.
 //
 // @param request - UpdateRuleV4Request
 //
@@ -4289,7 +5264,11 @@ func (client *Client) UpdateRuleV4WithContext(ctx context.Context, request *Upda
 
 // Summary:
 //
-// 更新质检任务
+// Frontend path: Task Management > Edit any data on the right. Apsara Stack URL: ip:port/api/task/UpdateSchemeTaskConfig.json.
+//
+// Description:
+//
+// Updates quality inspection task information.
 //
 // @param request - UpdateSchemeTaskConfigRequest
 //
@@ -4337,6 +5316,10 @@ func (client *Client) UpdateSchemeTaskConfigWithContext(ctx context.Context, req
 
 // Deprecated: OpenAPI UpdateSkillGroupConfig is deprecated
 //
+// Summary:
+//
+// You can call UpdateSkillGroupConfig to update a configuration.
+//
 // @param request - UpdateSkillGroupConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4381,6 +5364,10 @@ func (client *Client) UpdateSkillGroupConfigWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Maintain the recording information after real-time quality inspection is completed, which is used to play back the recording during review. After the recording information is maintained, the task status will change to Succeeded.
+//
 // @param request - UpdateSyncQualityCheckDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4425,6 +5412,58 @@ func (client *Client) UpdateSyncQualityCheckDataWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a label node.
+//
+// @param request - UpdateTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTagResponse
+func (client *Client) UpdateTagWithContext(ctx context.Context, request *UpdateTagRequest, runtime *dara.RuntimeOptions) (_result *UpdateTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		query["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		query["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateTag"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateTagResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Update the automatic allocation rule for quality review tasks.
+//
 // @param request - UpdateTaskAssignRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4469,6 +5508,14 @@ func (client *Client) UpdateTaskAssignRuleWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Update users by modifying their roles in batches.
+//
+// Description:
+//
+// When you update users, you can modify only their roles. You cannot modify other account information because all Alibaba Cloud products use a unified account management system. Smart Conversation Analysis uses these accounts. To modify account information, go to [Resource Access Management (RAM)](https://ram.console.aliyun.com/).
+//
 // @param request - UpdateUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4513,6 +5560,10 @@ func (client *Client) UpdateUserWithContext(ctx context.Context, request *Update
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the warning configuration.
+//
 // @param request - UpdateWarningConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4605,6 +5656,58 @@ func (client *Client) UpdateWarningStrategyConfigWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Uploads offline audio data—such as recorded call session files—for quality inspection. This operation supports two call center agent scenarios.
+//
+// Scenario 1: Native integration with Alibaba Cloud Call Center (CC). No development is required. You can push call data to Smart Conversation Analysis (SCA) with a single click.
+//
+// Scenario 2: Integration with your own call center system. Each time a recording is generated, the call center pushes it to SCA for analysis.
+//
+// Description:
+//
+// ### Process description
+//
+// The process is as follows: An API call uploads the audio file for quality inspection → The audio file is converted to text → The transcribed text is separated by speaker role (agent and customer), based on the specified channel separation method → The role-separated text is analyzed using quality inspection rules → Quality inspection completes.
+//
+// ### Task execution efficiency
+//
+// Task execution speed depends on how quickly the audio file is transcribed. A 5-minute audio file is typically transcribed in about 2 minutes. However, if the transcription service queue is long, a waiting period occurs. Transcription usually completes within 6 hours, except when large volumes of data are uploaded simultaneously—more than 500 hours of audio within 30 minutes. After transcription, quality inspection analysis completes in milliseconds.
+//
+// ### Audio file URL requirements
+//
+// - Supports single-channel or dual-channel audio files in WAV or MP3 format. File size must be less than 512 MB.
+//
+// - The URL must be accessible over HTTP. Local files are not supported. The audio file must have public access permissions.
+//
+// - The URL must use a domain name, not an IP address. The URL cannot contain spaces or Chinese characters.
+//
+// - After transcription, the system deletes the downloaded audio file. No copy of the recording is retained.
+//
+// - If your audio URL has an expiration period—such as a presigned URL for an audio file stored in Alibaba Cloud Object Storage Service (OSS)—set the validity period to at least 12 hours. Ideally, set it to 24 hours. Because transcription may involve queuing, the audio file is downloaded only when transcription begins. A longer validity period prevents the URL from expiring before download starts.
+//
+// - After quality inspection completes, the provided URL is used for playback when you review the file in the console. Ensure the URL remains valid long-term. Otherwise, audio playback fails.
+//
+// ### Role separation
+//
+// After transcription, the system automatically separates the text into two speaker roles but cannot determine which role corresponds to the agent and which to the customer. You must define rules for role separation. Role separation accuracy is critical because many quality inspection rules apply to a specific role—for example, checking only agent or only customer utterances. Incorrect role separation significantly reduces quality inspection accuracy.
+//
+// Audio files are typically either single-channel (mono) or dual-channel (stereo):
+//
+// - Single-channel recording: The voices of the agent and customer are mixed on one channel. After transcription, the system uses a built-in algorithm to separate dialogue into two roles. You can provide a list of keywords commonly spoken by agents. The system analyzes the transcribed text sentence by sentence. When a sentence contains a keyword, that speaker is identified as the agent, and the other speaker is identified as the customer. For more information, see the recognizeRoleDataSetId and serviceChannelKeywords request parameters. Because conversations can be unpredictable—for example, speakers may talk over each other—role separation for single-channel recordings cannot achieve 100% accuracy. We strongly recommend saving recordings as dual-channel audio.
+//
+// - Dual-channel recording: The voices of the agent and customer are stored on separate channels. Even if speakers talk over each other, transcription accurately distinguishes between them. Specify the agent and customer channels using the serviceChannel and clientChannel request parameters.
+//
+// ### Retrieve quality inspection results
+//
+// Because audio analysis is asynchronous, you must retrieve results asynchronously. You can retrieve results in one of the following three ways:
+//
+// - Message notification: For more information, see [Message Queue](https://help.aliyun.com/document_detail/213237.html). After you receive a message, call the GetResult operation to retrieve detailed results. (Recommended)
+//
+// - Callback: Specify a callbackUrl in the request parameters. The system initiates a callback after the task completes. After you receive the callback, call the GetResult operation to retrieve detailed results.
+//
+// - Polling: The operation returns a task ID (taskId). Use the taskId to poll the getResult operation and retrieve the result asynchronously. Check the `status` parameter in the response to determine whether the task is complete. We recommend a polling interval of 30 seconds or longer because analysis typically completes within a few minutes. (Not recommended)
+//
 // @param request - UploadAudioDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4653,7 +5756,17 @@ func (client *Client) UploadAudioDataWithContext(ctx context.Context, request *U
 //
 // Summary:
 //
-// 推荐使用UploadDataV4接口,支持更长的JsonStr,但仅支持POST方法.
+// Upload offline plain text quality inspection data (plain text sessions). This applies to online agent scenarios. Use the UploadDataV4 API. Differences between UploadDataV4 and UploadData include the following: UploadDataV4 supports only POST requests, and it supports longer JsonStr values.
+//
+// Description:
+//
+// You can call UploadData.json to upload text-based quality inspection data. Text typically originates from online customer service interactions or tickets. The API returns a task ID. You can retrieve results in one of three ways:
+//
+// - Message notification: For details, see [message queues](https://help.aliyun.com/document_detail/213237.html). After you receive a message, call the GetResult API to retrieve detailed results. (Recommended)
+//
+// - Callback: Specify a callback URL in your request parameters. After the task completes, the system sends a callback to that URL. Then call the GetResult API to retrieve detailed results.
+//
+// - Polling: Use the returned task ID to poll the GetResult API asynchronously. Check whether the status field in the response indicates completion. (Not recommended)
 //
 // @param request - UploadDataRequest
 //
@@ -4701,7 +5814,15 @@ func (client *Client) UploadDataWithContext(ctx context.Context, request *Upload
 
 // Summary:
 //
-// http_hsf
+// # Real-time text quality check
+//
+// Description:
+//
+// This API pushes text data to SCA for real-time quality inspection based on specified rules and synchronously returns the analysis results. Unlike post-call quality inspection, which requires uploading the full transcript after a dialogue ends, real-time quality inspection offers lower latency by analyzing text immediately after a speaker completes one or more utterances.
+//
+// - If you push a single utterance from one speaker, some rule operators may fail because the required dialogue context is missing. Examples include the context repetition check, speech interruption check, and call mute check.
+//
+// - SCA returns analysis results synchronously and does not save call records, so you cannot query the results later via an API.
 //
 // @param request - UploadDataSyncRequest
 //
@@ -4768,12 +5889,14 @@ func (client *Client) UploadDataSyncForLLMWithContext(ctx context.Context, reque
 		query["BaseMeAgentId"] = request.BaseMeAgentId
 	}
 
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.JsonStr) {
-		query["JsonStr"] = request.JsonStr
+		body["JsonStr"] = request.JsonStr
 	}
 
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UploadDataSyncForLLM"),
@@ -4797,7 +5920,17 @@ func (client *Client) UploadDataSyncForLLMWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # UploadDataV4
+// Uploads offline plain text conversation data for quality inspection in online agent scenarios. We recommend that you use the UploadDataV4 API. Compared to the UploadData API, UploadDataV4 supports only POST requests and allows a longer JsonStr.
+//
+// Description:
+//
+// You can call the UploadData.json operation to upload text data for quality inspection. The text usually comes from sources such as online customer service and tickets. The API returns a task ID. You can retrieve the results in one of the following three ways:
+//
+// - Message notifications: After you receive a notification, call the GetResult API to obtain the detailed results. For more information, see [Message Queue](https://help.aliyun.com/document_detail/213237.html). (Recommended)
+//
+// - Callbacks: Specify a callbackUrl in the request parameters. The system automatically initiates a callback after the task is complete. After you receive the callback, call the GetResult API to retrieve the detailed results.
+//
+// - Polling: Use the task ID returned by this API to poll the GetResult API and asynchronously retrieve the results. Check the status in the response to determine whether the task is complete. (Not recommended)
 //
 // @param request - UploadDataV4Request
 //
@@ -4843,6 +5976,14 @@ func (client *Client) UploadDataV4WithContext(ctx context.Context, request *Uplo
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a rule. You can use this operation to provide your own rule editing interface.
+//
+// Description:
+//
+// > For more information, see [Rule configuration](https://help.aliyun.com/document_detail/213225.html).
+//
 // @param request - UploadRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4887,6 +6028,10 @@ func (client *Client) UploadRuleWithContext(ctx context.Context, request *Upload
 	return _result, _err
 }
 
+// Summary:
+//
+// Saves the verification result of a single file.
+//
 // @param request - VerifyFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4931,6 +6076,10 @@ func (client *Client) VerifyFileWithContext(ctx context.Context, request *Verify
 	return _result, _err
 }
 
+// Summary:
+//
+// Save the verification result for a single sentence.
+//
 // @param request - VerifySentenceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4973,6 +6122,62 @@ func (client *Client) VerifySentenceWithContext(ctx context.Context, request *Ve
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) executeAgentWithSSECtx_opYieldFunc(_yield chan *ExecuteAgentResponse, _yieldErr chan error, ctx context.Context, request *ExecuteAgentRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		body["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		body["JsonStr"] = request.JsonStr
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["Stream"] = request.Stream
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecuteAgent"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }
 
 func (client *Client) runCompletionMessageWithSSECtx_opYieldFunc(_yield chan *RunCompletionMessageResponse, _yieldErr chan error, ctx context.Context, tmpReq *RunCompletionMessageRequest, runtime *dara.RuntimeOptions) {

@@ -18,13 +18,25 @@ type iAddRuleV4Request interface {
 }
 
 type AddRuleV4Request struct {
-	// baseMeAgentId
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Specifies whether to copy the rule. Set this to \\`true\\` to copy the rule.
+	//
 	// example:
 	//
 	// false
 	IsCopy *bool `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
+	// For more information about JsonStrForRule, see [`Rule object description`](https://help.aliyun.com/document_detail/453053.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 无
 	JsonStrForRule *string `json:"JsonStrForRule,omitempty" xml:"JsonStrForRule,omitempty"`
 }
 

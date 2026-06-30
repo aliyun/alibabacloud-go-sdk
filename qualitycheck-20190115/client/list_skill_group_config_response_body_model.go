@@ -22,19 +22,27 @@ type iListSkillGroupConfigResponseBody interface {
 }
 
 type ListSkillGroupConfigResponseBody struct {
+	// The result code. A value of 200 indicates success. Any other value indicates failure. Use this field to determine the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *ListSkillGroupConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Details of the error if the request failed. If successful, the value is "successful".
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3CEA0495-341B-4482-9AD9-8191EF4***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. A value of true means success. A value of false or null means failure.
+	//
 	// example:
 	//
 	// true

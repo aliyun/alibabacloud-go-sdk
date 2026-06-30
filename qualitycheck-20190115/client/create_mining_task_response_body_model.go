@@ -24,25 +24,34 @@ type iCreateMiningTaskResponseBody interface {
 }
 
 type CreateMiningTaskResponseBody struct {
+	// Result code. A value of **200*	- indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response data
 	Data *CreateMiningTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error details if the call failed. Returns successful if the call succeeded.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24F4CE647
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call succeeded
+	//
 	// example:
 	//
 	// true
@@ -121,6 +130,8 @@ func (s *CreateMiningTaskResponseBody) Validate() error {
 }
 
 type CreateMiningTaskResponseBodyData struct {
+	// Task ID
+	//
 	// example:
 	//
 	// 7C1DEF5F-2C18-4D36-99C6-8C27*****

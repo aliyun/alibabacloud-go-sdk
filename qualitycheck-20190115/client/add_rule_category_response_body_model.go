@@ -22,16 +22,28 @@ type iAddRuleCategoryResponseBody interface {
 }
 
 type AddRuleCategoryResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// 200
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return Result
 	Data *AddRuleCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Response message
+	//
 	// example:
 	//
 	// successful
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// D10B9203-1A6A-49DA-AE56-4D160DD37DBC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -101,8 +113,18 @@ func (s *AddRuleCategoryResponseBody) Validate() error {
 }
 
 type AddRuleCategoryResponseBodyData struct {
-	Select *bool  `json:"Select,omitempty" xml:"Select,omitempty"`
-	Type   *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Indicates whether the newly added rule category is selected.
+	//
+	// example:
+	//
+	// false
+	Select *bool `json:"Select,omitempty" xml:"Select,omitempty"`
+	// Rule category ID
+	//
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AddRuleCategoryResponseBodyData) String() string {

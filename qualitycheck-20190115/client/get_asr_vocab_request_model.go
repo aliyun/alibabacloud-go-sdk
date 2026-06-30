@@ -16,9 +16,14 @@ type iGetAsrVocabRequest interface {
 }
 
 type GetAsrVocabRequest struct {
-	// baseMeAgentId
-	BaseMeAgentId *int64  `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	JsonStr       *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
+	// Workspace ID
+	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// A complete JSON string. For details, see the following information.
+	//
+	// example:
+	//
+	// {"vocabId":"指定热词Id"}
+	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 
 func (s GetAsrVocabRequest) String() string {

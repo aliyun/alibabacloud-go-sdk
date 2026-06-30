@@ -22,22 +22,32 @@ type iVerifyFileResponseBody interface {
 }
 
 type VerifyFileResponseBody struct {
+	// Result code. **200*	- indicates success. Other values indicate failure. Callers can determine the failure reason using this field.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Current detection accuracy: Number of incorrect characters in verified files / Total number of characters in verified files.
+	//
 	// example:
 	//
 	// 0.9485294
 	Data *float32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error details when an error occurs. Successful when successful.
+	//
 	// example:
 	//
 	// s
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24F4CE647
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Callers can determine if the request was successful using this field: true indicates success; false/null indicates failure.
+	//
 	// example:
 	//
 	// true

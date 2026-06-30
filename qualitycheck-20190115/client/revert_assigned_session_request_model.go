@@ -16,8 +16,10 @@ type iRevertAssignedSessionRequest interface {
 }
 
 type RevertAssignedSessionRequest struct {
-	// baseMeAgentId
+	// Workspace ID
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Input JSON. For details, see the request parameter description.
+	//
 	// example:
 	//
 	// {"isSchemeData":1,"searchParam":{"schemeTaskConfigId":1,"sourceDataType":1,"startTime":"2022-09-20 00:00:00","endTime":"2022-09-26 23:59:59"}}

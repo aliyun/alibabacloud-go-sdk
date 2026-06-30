@@ -16,8 +16,14 @@ type iUpdateRuleToSchemeRequest interface {
 }
 
 type UpdateRuleToSchemeRequest struct {
-	// baseMeAgentId
+	// Workspace ID.
+	//
+	// example:
+	//
+	// 1232927
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Request JSON. For details, see the request parameter description below.
+	//
 	// example:
 	//
 	// {"schemeId":"10","schemeRules":[{"ruleId":229,"checkType":0}]}

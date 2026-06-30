@@ -16,8 +16,10 @@ type iUpdateUserRequest interface {
 }
 
 type UpdateUserRequest struct {
-	// baseMeAgentId
+	// Workspace ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// This API supports batch modification of user roles. The value of the \\`jsonStr\\` input parameter is a List type. Refer to the example value. See the detailed information below for the complete JSON string content.
+	//
 	// This parameter is required.
 	//
 	// example:

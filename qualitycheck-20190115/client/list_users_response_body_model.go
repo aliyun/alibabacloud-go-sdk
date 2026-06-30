@@ -28,31 +28,45 @@ type iListUsersResponseBody interface {
 }
 
 type ListUsersResponseBody struct {
+	// The result code. A value of `200` indicates success. Other values indicate failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 12
 	Count *int32                     `json:"Count,omitempty" xml:"Count,omitempty"`
 	Data  *ListUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned. The value is successful if the request is successful. Otherwise, an error message is returned.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries displayed per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24F4CE647
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates success. A value of false or null indicates failure.
+	//
 	// example:
 	//
 	// true

@@ -16,8 +16,10 @@ type iGetRuleByIdRequest interface {
 }
 
 type GetRuleByIdRequest struct {
-	// baseMeAgentId
+	// The business space ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// The rule ID.
+	//
 	// This parameter is required.
 	//
 	// example:

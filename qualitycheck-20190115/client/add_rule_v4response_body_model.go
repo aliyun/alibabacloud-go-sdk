@@ -26,24 +26,39 @@ type iAddRuleV4ResponseBody interface {
 }
 
 type AddRuleV4ResponseBody struct {
+	// The result code. \\`**200**\\` indicates that the request was successful. Other values indicate that the request failed. You can use this parameter to identify the cause of a failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the new rule.
+	//
+	// example:
+	//
+	// 无
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code. A value of 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message  *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *AddRuleV4ResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. \\`true\\`: The request was successful. \\`false\\` or \\`null\\`: The request failed.
+	//
 	// example:
 	//
 	// true

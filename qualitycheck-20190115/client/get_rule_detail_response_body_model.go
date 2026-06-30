@@ -22,19 +22,32 @@ type iGetRuleDetailResponseBody interface {
 }
 
 type GetRuleDetailResponseBody struct {
+	// The result code. **200*	- means success. Any other value means failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *GetRuleDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message if the request fails. If the request succeeds, the value is **successful**.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4987D326-83D9-4A42-B9A5-0B27F9B40539
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Use this field to check the result:
+	//
+	// - **true*	- means success.
+	//
+	// - false or **null*	- means failure.
+	//
 	// example:
 	//
 	// true
@@ -105,14 +118,20 @@ func (s *GetRuleDetailResponseBody) Validate() error {
 
 type GetRuleDetailResponseBodyData struct {
 	Conditions *GetRuleDetailResponseBodyDataConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Struct"`
+	// The total number of items.
+	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of items per page.
+	//
 	// example:
 	//
 	// 10

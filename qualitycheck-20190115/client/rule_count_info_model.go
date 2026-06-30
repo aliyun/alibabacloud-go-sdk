@@ -106,53 +106,298 @@ type iRuleCountInfo interface {
 }
 
 type RuleCountInfo struct {
-	AutoReview                    *int32                       `json:"AutoReview,omitempty" xml:"AutoReview,omitempty"`
+	// The review option.
+	//
+	// - 1: Manual review
+	//
+	// - 3: Automatic review
+	//
+	// example:
+	//
+	// 1
+	AutoReview *int32 `json:"AutoReview,omitempty" xml:"AutoReview,omitempty"`
+	// A list of basic information about business categories.
 	BusinessCategoryBasicInfoList []*BusinessCategoryBasicInfo `json:"BusinessCategoryBasicInfoList,omitempty" xml:"BusinessCategoryBasicInfoList,omitempty" type:"Repeated"`
-	BusinessCategoryNameList      []*string                    `json:"BusinessCategoryNameList,omitempty" xml:"BusinessCategoryNameList,omitempty" type:"Repeated"`
-	BusinessRange                 []*int32                     `json:"BusinessRange,omitempty" xml:"BusinessRange,omitempty" type:"Repeated"`
-	CheckNumber                   *int64                       `json:"CheckNumber,omitempty" xml:"CheckNumber,omitempty"`
-	Comments                      *string                      `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateEmpName                 *string                      `json:"CreateEmpName,omitempty" xml:"CreateEmpName,omitempty"`
-	CreateEmpid                   *string                      `json:"CreateEmpid,omitempty" xml:"CreateEmpid,omitempty"`
-	CreateTime                    *string                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Deny                          *int32                       `json:"Deny,omitempty" xml:"Deny,omitempty"`
-	Effective                     *int32                       `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	EffectiveEndTime              *string                      `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
-	EffectiveStartTime            *string                      `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
-	EndTime                       *string                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FullCycle                     *int32                       `json:"FullCycle,omitempty" xml:"FullCycle,omitempty"`
-	GraphFlow                     interface{}                  `json:"GraphFlow,omitempty" xml:"GraphFlow,omitempty"`
-	HitNumber                     *int64                       `json:"HitNumber,omitempty" xml:"HitNumber,omitempty"`
-	HitRate                       *float32                     `json:"HitRate,omitempty" xml:"HitRate,omitempty"`
-	HitRealViolationRate          *float32                     `json:"HitRealViolationRate,omitempty" xml:"HitRealViolationRate,omitempty"`
-	IsDelete                      *int32                       `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
-	IsSelect                      *bool                        `json:"IsSelect,omitempty" xml:"IsSelect,omitempty"`
-	JobName                       *string                      `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	LastUpdateEmpName             *string                      `json:"LastUpdateEmpName,omitempty" xml:"LastUpdateEmpName,omitempty"`
-	LastUpdateEmpid               *string                      `json:"LastUpdateEmpid,omitempty" xml:"LastUpdateEmpid,omitempty"`
-	LastUpdateTime                *string                      `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	Name                          *string                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	OperationMode                 *int32                       `json:"OperationMode,omitempty" xml:"OperationMode,omitempty"`
-	PreReviewNumber               *int64                       `json:"PreReviewNumber,omitempty" xml:"PreReviewNumber,omitempty"`
-	ProblemNumber                 *int64                       `json:"ProblemNumber,omitempty" xml:"ProblemNumber,omitempty"`
-	QualityCheckType              *int32                       `json:"QualityCheckType,omitempty" xml:"QualityCheckType,omitempty"`
-	RealViolationNumber           *int32                       `json:"RealViolationNumber,omitempty" xml:"RealViolationNumber,omitempty"`
-	ReviewAccuracyRate            *float32                     `json:"ReviewAccuracyRate,omitempty" xml:"ReviewAccuracyRate,omitempty"`
-	ReviewNumber                  *int64                       `json:"ReviewNumber,omitempty" xml:"ReviewNumber,omitempty"`
-	ReviewRate                    *float32                     `json:"ReviewRate,omitempty" xml:"ReviewRate,omitempty"`
-	ReviewStatusName              *string                      `json:"ReviewStatusName,omitempty" xml:"ReviewStatusName,omitempty"`
-	Rid                           *int64                       `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	RuleScoreSingleType           *int32                       `json:"RuleScoreSingleType,omitempty" xml:"RuleScoreSingleType,omitempty"`
-	RuleScoreType                 *int32                       `json:"RuleScoreType,omitempty" xml:"RuleScoreType,omitempty"`
-	RuleType                      *int32                       `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	ScoreSubId                    *int64                       `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
-	StartTime                     *string                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status                        *int32                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetType                    *int32                       `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	Type                          *int32                       `json:"Type,omitempty" xml:"Type,omitempty"`
-	TypeName                      *string                      `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
-	UnReviewNumber                *int64                       `json:"UnReviewNumber,omitempty" xml:"UnReviewNumber,omitempty"`
-	UserGroup                     *string                      `json:"UserGroup,omitempty" xml:"UserGroup,omitempty"`
+	// A list of business category names.
+	BusinessCategoryNameList []*string `json:"BusinessCategoryNameList,omitempty" xml:"BusinessCategoryNameList,omitempty" type:"Repeated"`
+	// The business scope.
+	BusinessRange []*int32 `json:"BusinessRange,omitempty" xml:"BusinessRange,omitempty" type:"Repeated"`
+	// The number of checked sessions.
+	//
+	// example:
+	//
+	// 1
+	CheckNumber *int64 `json:"CheckNumber,omitempty" xml:"CheckNumber,omitempty"`
+	// The comments.
+	//
+	// example:
+	//
+	// 测试
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The name of the creator.
+	//
+	// example:
+	//
+	// 张三
+	CreateEmpName *string `json:"CreateEmpName,omitempty" xml:"CreateEmpName,omitempty"`
+	// The employee ID of the creator.
+	//
+	// example:
+	//
+	// 1
+	CreateEmpid *string `json:"CreateEmpid,omitempty" xml:"CreateEmpid,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1615133575000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// You can set this parameter to 1 to reject rule edits, or to 0 or null to allow rule edits.
+	//
+	// example:
+	//
+	// 1
+	Deny *int32 `json:"Deny,omitempty" xml:"Deny,omitempty"`
+	// Indicates if the rule is active. \\`0\\`: No. \\`1\\`: Yes.
+	//
+	// example:
+	//
+	// 1
+	Effective *int32 `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	// The effective end time.
+	//
+	// example:
+	//
+	// 1662685868850
+	EffectiveEndTime *string `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
+	// The effective start time.
+	//
+	// example:
+	//
+	// 1662685868850
+	EffectiveStartTime *string `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
+	// The end time.
+	//
+	// example:
+	//
+	// 1650092585176
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Indicates if the rule is active for the entire lifecycle. \\`0\\`: No. \\`1\\`: Yes.
+	//
+	// example:
+	//
+	// 1
+	FullCycle *int32 `json:"FullCycle,omitempty" xml:"FullCycle,omitempty"`
+	// The flow canvas, in JSON format.
+	//
+	// example:
+	//
+	// 较复杂，忽略
+	GraphFlow interface{} `json:"GraphFlow,omitempty" xml:"GraphFlow,omitempty"`
+	// The number of hit sessions.
+	//
+	// example:
+	//
+	// 1
+	HitNumber *int64 `json:"HitNumber,omitempty" xml:"HitNumber,omitempty"`
+	// The hit rate.
+	//
+	// example:
+	//
+	// 1
+	HitRate *float32 `json:"HitRate,omitempty" xml:"HitRate,omitempty"`
+	// The hit rate of actual violations.
+	//
+	// example:
+	//
+	// 1
+	HitRealViolationRate *float32 `json:"HitRealViolationRate,omitempty" xml:"HitRealViolationRate,omitempty"`
+	// Indicates if the rule is deleted.
+	//
+	// example:
+	//
+	// 1
+	IsDelete *int32 `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
+	// Indicates if the rule is selected.
+	//
+	// example:
+	//
+	// true
+	IsSelect *bool `json:"IsSelect,omitempty" xml:"IsSelect,omitempty"`
+	// The scheduled task name.
+	//
+	// example:
+	//
+	// job-1-20221012-105943
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The name of the user who last updated the rule.
+	//
+	// example:
+	//
+	// 张三
+	LastUpdateEmpName *string `json:"LastUpdateEmpName,omitempty" xml:"LastUpdateEmpName,omitempty"`
+	// The employee ID of the user who last updated the rule.
+	//
+	// example:
+	//
+	// 1
+	LastUpdateEmpid *string `json:"LastUpdateEmpid,omitempty" xml:"LastUpdateEmpid,omitempty"`
+	// The last update time.
+	//
+	// example:
+	//
+	// 1648200901000
+	LastUpdateTime *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// 0801转封装测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The operation mode.
+	//
+	// example:
+	//
+	// 1
+	OperationMode *int32 `json:"OperationMode,omitempty" xml:"OperationMode,omitempty"`
+	// The number of items pending review.
+	//
+	// example:
+	//
+	// 1
+	PreReviewNumber *int64 `json:"PreReviewNumber,omitempty" xml:"PreReviewNumber,omitempty"`
+	// The number of problems found.
+	//
+	// example:
+	//
+	// 1
+	ProblemNumber *int64 `json:"ProblemNumber,omitempty" xml:"ProblemNumber,omitempty"`
+	// The quality check type.
+	//
+	// - 0: Offline
+	//
+	// - 1: Real-time
+	//
+	// example:
+	//
+	// 1
+	QualityCheckType *int32 `json:"QualityCheckType,omitempty" xml:"QualityCheckType,omitempty"`
+	// The number of actual violations after review.
+	//
+	// example:
+	//
+	// 1
+	RealViolationNumber *int32 `json:"RealViolationNumber,omitempty" xml:"RealViolationNumber,omitempty"`
+	// The review accuracy rate.
+	//
+	// example:
+	//
+	// 1
+	ReviewAccuracyRate *float32 `json:"ReviewAccuracyRate,omitempty" xml:"ReviewAccuracyRate,omitempty"`
+	// The number of reviewed items.
+	//
+	// example:
+	//
+	// 1
+	ReviewNumber *int64 `json:"ReviewNumber,omitempty" xml:"ReviewNumber,omitempty"`
+	// The review rate.
+	//
+	// example:
+	//
+	// 1
+	ReviewRate *float32 `json:"ReviewRate,omitempty" xml:"ReviewRate,omitempty"`
+	// The review status name.
+	//
+	// example:
+	//
+	// 通过
+	ReviewStatusName *string `json:"ReviewStatusName,omitempty" xml:"ReviewStatusName,omitempty"`
+	// The rule ID.
+	//
+	// example:
+	//
+	// 123
+	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// The scoring type. \\`8\\`: No score is set.
+	//
+	// example:
+	//
+	// 1
+	RuleScoreSingleType *int32 `json:"RuleScoreSingleType,omitempty" xml:"RuleScoreSingleType,omitempty"`
+	// Specifies if a score is calculated.
+	//
+	// - 1: No
+	//
+	// - 3: Yes
+	//
+	// example:
+	//
+	// 1
+	RuleScoreType *int32 `json:"RuleScoreType,omitempty" xml:"RuleScoreType,omitempty"`
+	// The rule origin. For example, a built-in rule or a user-created rule.
+	//
+	// example:
+	//
+	// 1
+	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The sub-item ID.
+	//
+	// example:
+	//
+	// 1
+	ScoreSubId *int64 `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
+	// The start time.
+	//
+	// example:
+	//
+	// 1662685868850
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the rule.
+	//
+	// - 0: Pending
+	//
+	// - 1: Active
+	//
+	// - 2: Expired
+	//
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The rule category.
+	//
+	// - 10: Standard
+	//
+	// - 11: Flow-based
+	//
+	// example:
+	//
+	// 10
+	TargetType *int32 `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The rule type.
+	//
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type name.
+	//
+	// example:
+	//
+	// 全部类别
+	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+	// The number of unreviewed items.
+	//
+	// example:
+	//
+	// 1
+	UnReviewNumber *int64 `json:"UnReviewNumber,omitempty" xml:"UnReviewNumber,omitempty"`
+	// The user group.
+	//
+	// example:
+	//
+	// xxxx
+	UserGroup *string `json:"UserGroup,omitempty" xml:"UserGroup,omitempty"`
 }
 
 func (s RuleCountInfo) String() string {

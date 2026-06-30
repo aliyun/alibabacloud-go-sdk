@@ -22,22 +22,32 @@ type iSubmitPrecisionTaskResponseBody interface {
 }
 
 type SubmitPrecisionTaskResponseBody struct {
+	// Result code. A value of **200*	- indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// ID of the created task.
+	//
 	// example:
 	//
 	// EA701F66-8CA2-4A79-8E3C-A6F2FA****
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error details if the call fails. Returns successful if the call succeeds.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24F4CE647
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. true means success. false or null means failure.
+	//
 	// example:
 	//
 	// true

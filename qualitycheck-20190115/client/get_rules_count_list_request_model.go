@@ -64,92 +64,150 @@ type iGetRulesCountListRequest interface {
 }
 
 type GetRulesCountListRequest struct {
-	// baseMeAgentId
-	BaseMeAgentId *int64  `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	BusinessName  *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
+	// Workspace ID.
+	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Business name to which the rule belongs.
+	//
+	// example:
+	//
+	// 电话业务
+	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
+	// Broad business category.
+	//
 	// example:
 	//
 	// 1
-	BusinessRange *int32  `json:"BusinessRange,omitempty" xml:"BusinessRange,omitempty"`
-	CategoryName  *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	BusinessRange *int32 `json:"BusinessRange,omitempty" xml:"BusinessRange,omitempty"`
+	// Category name.
+	//
+	// example:
+	//
+	// 分类名称A
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// Whether to count the total number.
+	//
 	// example:
 	//
 	// true
 	CountTotal *bool `json:"CountTotal,omitempty" xml:"CountTotal,omitempty"`
+	// Rule creator ID. Same as CreateUserId. Use either one.
+	//
 	// example:
 	//
 	// 63
 	CreateEmpid *string `json:"CreateEmpid,omitempty" xml:"CreateEmpid,omitempty"`
+	// Rule creator ID. Same as CreateEmpid. Use either one.
+	//
 	// example:
 	//
 	// 63
 	CreateUserId *int64 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Filter by creation time (start of range).
+	//
 	// example:
 	//
 	// 2022-10-08 23:59:59
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Rule updater ID. Same as UpdateUserId. Use either one.
+	//
 	// example:
 	//
 	// 63
 	LastUpdateEmpid *string `json:"LastUpdateEmpid,omitempty" xml:"LastUpdateEmpid,omitempty"`
+	// Page number of the rule list.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Required fields.
 	RequireInfos []*string `json:"RequireInfos,omitempty" xml:"RequireInfos,omitempty" type:"Repeated"`
+	// Search by rule ID.
+	//
 	// example:
 	//
 	// 123
 	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// Search by rule ID or rule name.
+	//
 	// example:
 	//
 	// 123
 	RuleIdOrRuleName *string `json:"RuleIdOrRuleName,omitempty" xml:"RuleIdOrRuleName,omitempty"`
+	// Scoring type.
+	//
 	// example:
 	//
 	// 1
 	RuleScoreSingleType *int32 `json:"RuleScoreSingleType,omitempty" xml:"RuleScoreSingleType,omitempty"`
+	// Rule category.
+	//
 	// example:
 	//
 	// 1
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// Quality inspection scheme ID.
+	//
 	// example:
 	//
 	// 123
 	SchemeId *int64 `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
+	// Source type.
+	//
 	// example:
 	//
 	// 0
 	SourceType *int32 `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// Filter by creation time (end of range).
+	//
 	// example:
 	//
 	// 2022-10-07 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Rule status:
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Type value of the rule category to which the rule belongs.
+	//
 	// example:
 	//
 	// 1
-	Type     *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Name of the rule category to which the rule belongs.
+	//
+	// example:
+	//
+	// 全部类别
 	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+	// Filter by update time (end of range).
+	//
 	// example:
 	//
 	// 2022-10-08 23:59:59
 	UpdateEndTime *string `json:"UpdateEndTime,omitempty" xml:"UpdateEndTime,omitempty"`
+	// Filter by update time (start of range).
+	//
 	// example:
 	//
 	// 2022-10-07 00:00:00
 	UpdateStartTime *string `json:"UpdateStartTime,omitempty" xml:"UpdateStartTime,omitempty"`
+	// Rule updater ID. Same as LastUpdateEmpid. Use either one.
+	//
 	// example:
 	//
 	// 63

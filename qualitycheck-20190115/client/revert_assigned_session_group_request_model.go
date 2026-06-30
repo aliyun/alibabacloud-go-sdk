@@ -16,8 +16,10 @@ type iRevertAssignedSessionGroupRequest interface {
 }
 
 type RevertAssignedSessionGroupRequest struct {
-	// baseMeAgentId
+	// The ID of the baseMeAgent.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// For more information, see the description of the request parameters.
+	//
 	// example:
 	//
 	// {"isSchemeData":1,"forceRevertSessionGroup":true,"sessionGroupIdList":["1"]}

@@ -16,10 +16,14 @@ type iDeleteCheckTypeToSchemeRequest interface {
 }
 
 type DeleteCheckTypeToSchemeRequest struct {
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// A JSON string that contains the custom parameters for the operation. For more information, see the **jsonStr properties*	- section below.
+	//
 	// example:
 	//
 	// {"schemeId":"1376","checkType":"4"}

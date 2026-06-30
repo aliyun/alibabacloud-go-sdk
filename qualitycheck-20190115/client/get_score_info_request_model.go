@@ -16,8 +16,10 @@ type iGetScoreInfoRequest interface {
 }
 
 type GetScoreInfoRequest struct {
-	// baseMeAgentId
+	// Workspace ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Paged queries are not supported. Pass an empty string.
+	//
 	// This parameter is required.
 	//
 	// example:

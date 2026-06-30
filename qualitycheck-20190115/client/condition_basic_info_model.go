@@ -30,15 +30,52 @@ type iConditionBasicInfo interface {
 }
 
 type ConditionBasicInfo struct {
+	// Detection range
 	CheckRange *ConditionBasicInfoCheckRange `json:"Check_range,omitempty" xml:"Check_range,omitempty" type:"Struct"`
-	Cid        *string                       `json:"Cid,omitempty" xml:"Cid,omitempty"`
-	Exclusion  *int32                        `json:"Exclusion,omitempty" xml:"Exclusion,omitempty"`
-	Id         *int64                        `json:"Id,omitempty" xml:"Id,omitempty"`
-	Lambda     *string                       `json:"Lambda,omitempty" xml:"Lambda,omitempty"`
-	Name       *string                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	Operators  []*OperatorBasicInfo          `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Repeated"`
-	Rid        *string                       `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	UserGroup  *string                       `json:"UserGroup,omitempty" xml:"UserGroup,omitempty"`
+	// Condition ID, which may be the primary key in the database or a transformed identifier such as a, b, or c
+	//
+	// example:
+	//
+	// a
+	Cid *string `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	// Exclude
+	//
+	// example:
+	//
+	// 0
+	Exclusion *int32 `json:"Exclusion,omitempty" xml:"Exclusion,omitempty"`
+	// Primary key in the database
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Lambda expression; for example: a&&b
+	//
+	// example:
+	//
+	// a
+	Lambda *string `json:"Lambda,omitempty" xml:"Lambda,omitempty"`
+	// Condition name
+	//
+	// example:
+	//
+	// xx
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// List of operators
+	Operators []*OperatorBasicInfo `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Repeated"`
+	// ID of the rule to which the condition belongs
+	//
+	// example:
+	//
+	// 1
+	Rid *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// User group
+	//
+	// example:
+	//
+	// xxxx
+	UserGroup *string `json:"UserGroup,omitempty" xml:"UserGroup,omitempty"`
 }
 
 func (s ConditionBasicInfo) String() string {
@@ -149,12 +186,34 @@ func (s *ConditionBasicInfo) Validate() error {
 }
 
 type ConditionBasicInfoCheckRange struct {
-	Absolute            *bool                               `json:"Absolute,omitempty" xml:"Absolute,omitempty"`
-	AllSentencesSatisfy *bool                               `json:"AllSentencesSatisfy,omitempty" xml:"AllSentencesSatisfy,omitempty"`
-	Anchor              *ConditionBasicInfoCheckRangeAnchor `json:"Anchor,omitempty" xml:"Anchor,omitempty" type:"Struct"`
-	Range               *ConditionBasicInfoCheckRangeRange  `json:"Range,omitempty" xml:"Range,omitempty" type:"Struct"`
-	Role                *string                             `json:"Role,omitempty" xml:"Role,omitempty"`
-	RoleId              *int32                              `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// false: relative position; the sentence position is determined in combination with the anchor and the role
+	//
+	// example:
+	//
+	// true
+	Absolute *bool `json:"Absolute,omitempty" xml:"Absolute,omitempty"`
+	// true: Every sentence must satisfy the condition;
+	//
+	// example:
+	//
+	// true
+	AllSentencesSatisfy *bool `json:"AllSentencesSatisfy,omitempty" xml:"AllSentencesSatisfy,omitempty"`
+	// Precondition and postcondition
+	Anchor *ConditionBasicInfoCheckRangeAnchor `json:"Anchor,omitempty" xml:"Anchor,omitempty" type:"Struct"`
+	// Relative range
+	Range *ConditionBasicInfoCheckRangeRange `json:"Range,omitempty" xml:"Range,omitempty" type:"Struct"`
+	// Corresponds to RoleType.type
+	//
+	// example:
+	//
+	// 客服
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Corresponds to RoleType.id
+	//
+	// example:
+	//
+	// 1
+	RoleId *int32 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 }
 
 func (s ConditionBasicInfoCheckRange) String() string {
@@ -234,8 +293,23 @@ func (s *ConditionBasicInfoCheckRange) Validate() error {
 }
 
 type ConditionBasicInfoCheckRangeAnchor struct {
-	Cid      *string `json:"Cid,omitempty" xml:"Cid,omitempty"`
-	HitTime  *int32  `json:"Hit_time,omitempty" xml:"Hit_time,omitempty"`
+	// Condition ID
+	//
+	// example:
+	//
+	// a
+	Cid *string `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	// Hit count
+	//
+	// example:
+	//
+	// 1
+	HitTime *int32 `json:"Hit_time,omitempty" xml:"Hit_time,omitempty"`
+	// Location
+	//
+	// example:
+	//
+	// BEFORE
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
@@ -279,8 +353,18 @@ func (s *ConditionBasicInfoCheckRangeAnchor) Validate() error {
 }
 
 type ConditionBasicInfoCheckRangeRange struct {
+	// Start index of the conversation
+	//
+	// example:
+	//
+	// 1
 	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	To   *int32 `json:"To,omitempty" xml:"To,omitempty"`
+	// End index of the conversation
+	//
+	// example:
+	//
+	// 2
+	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
 }
 
 func (s ConditionBasicInfoCheckRangeRange) String() string {

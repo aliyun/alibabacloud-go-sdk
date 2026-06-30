@@ -16,10 +16,14 @@ type iUploadAudioDataRequest interface {
 }
 
 type UploadAudioDataRequest struct {
+	// The workspace ID. This ID is used to select a specific workspace in a multi-workspace scenario. The default workspace is used if you do not specify this parameter.
+	//
 	// example:
 	//
 	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// The complete JSON string. For more information, see the details below.
+	//
 	// This parameter is required.
 	//
 	// example:

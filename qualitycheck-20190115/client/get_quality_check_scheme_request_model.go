@@ -17,7 +17,13 @@ type iGetQualityCheckSchemeRequest interface {
 
 type GetQualityCheckSchemeRequest struct {
 	// baseMeAgentId
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// The request parameters in JSON format. For more information, see the additional information for request parameters.
+	//
 	// example:
 	//
 	// {"schemeId":"187","ruleRequireInfos":["BusinessNameInfo","RuleCategory"]}

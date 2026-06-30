@@ -20,11 +20,16 @@ type iApplyWsTokenResponseBody interface {
 }
 
 type ApplyWsTokenResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// 200
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return Result
 	Data *ApplyWsTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -91,14 +96,20 @@ func (s *ApplyWsTokenResponseBody) Validate() error {
 }
 
 type ApplyWsTokenResponseBodyData struct {
+	// Session ID.
+	//
 	// example:
 	//
 	// 42e59bcd-7206-44c5-ad34-525d364687c4
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// User access token
+	//
 	// example:
 	//
 	// 5607b21d1728700640
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// WebSocket connection domain name
+	//
 	// example:
 	//
 	// wss://ws-gateway-real-voice.aliyuncs.com

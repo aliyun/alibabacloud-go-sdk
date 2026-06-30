@@ -16,9 +16,15 @@ type iCreateAsrVocabRequest interface {
 }
 
 type CreateAsrVocabRequest struct {
-	// baseMeAgentId
+	// Workspace ID
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Full JSON string. See the details below.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"name":"热词名称"}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

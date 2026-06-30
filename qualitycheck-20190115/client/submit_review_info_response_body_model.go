@@ -22,22 +22,40 @@ type iSubmitReviewInfoResponseBody interface {
 }
 
 type SubmitReviewInfoResponseBody struct {
+	// The result code. 200 indicates success.
+	//
+	// > If the value is different, it indicates failure. Callers can use this field to determine the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returns the quality inspection score after review upon successful saving.
+	//
 	// example:
 	//
 	// 95
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates error details on failure, or **successful*	- on success.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 9987D326-83D9-4A42-B9A5-0B27F9B40539
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// Callers can use this field to determine if the request was successful:
+	//
+	// - true indicates success
+	//
+	// - false/null indicates failure
+	//
 	// example:
 	//
 	// true

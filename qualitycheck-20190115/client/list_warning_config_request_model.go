@@ -16,8 +16,10 @@ type iListWarningConfigRequest interface {
 }
 
 type ListWarningConfigRequest struct {
-	// baseMeAgentId
+	// Workspace ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Full JSON string. For details, see the parameter descriptions below.
+	//
 	// This parameter is required.
 	//
 	// example:

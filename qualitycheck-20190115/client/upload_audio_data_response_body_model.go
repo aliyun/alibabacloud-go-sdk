@@ -22,22 +22,32 @@ type iUploadAudioDataResponseBody interface {
 }
 
 type UploadAudioDataResponseBody struct {
+	// The result code. A value of 200 indicates success. Other values indicate failure. You can use this field to determine the cause of a failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The task ID. Use this ID to get the task result.
+	//
 	// example:
 	//
 	// 76DB5D8C-5BD9-42A7-B527-5AF3A5***
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error details if the request fails. If the request is successful, the value is \\`successful\\`.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. This is the unique identifier of the request.
+	//
 	// example:
 	//
 	// 76DB5D8C-5BD9-42A7-B527-5AF3A5F8***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. You can use this field to determine if the request succeeded. A value of \\`true\\` indicates success. A value of \\`false\\` or \\`null\\` indicates failure.
+	//
 	// example:
 	//
 	// true

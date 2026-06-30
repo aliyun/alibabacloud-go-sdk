@@ -17,8 +17,17 @@ type iCreateSchemeTaskConfigRequest interface {
 
 type CreateSchemeTaskConfigRequest struct {
 	// baseMeAgentId
-	BaseMeAgentId *int64  `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	JsonStr       *string `json:"jsonStr,omitempty" xml:"jsonStr,omitempty"`
+	//
+	// example:
+	//
+	// 123456
+	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Input parameter in JSON format. For details, see Request Parameters.
+	//
+	// example:
+	//
+	// {"manualReview":0,"name":"检测任务 2022-09-21 16:59:50","asrTaskPriority":2,"modeCustomizationId":"englishxxx","vocabId":"xxxx5b98d98f8405xxxxxe5dbb383ca1df","dataConfig":{"assignConfigs":[{"assignConfigContests":[{"name":"fileName","symbol":1,"value":["1"],"dataType":2}]}]},"schemeIdList":[187],"sourceDataType":1}
+	JsonStr *string `json:"jsonStr,omitempty" xml:"jsonStr,omitempty"`
 }
 
 func (s CreateSchemeTaskConfigRequest) String() string {

@@ -16,8 +16,10 @@ type iListAsrVocabRequest interface {
 }
 
 type ListAsrVocabRequest struct {
-	// baseMeAgentId
+	// The workspace ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// The complete JSON string. For more information, see the details below.
+	//
 	// This parameter is required.
 	//
 	// example:

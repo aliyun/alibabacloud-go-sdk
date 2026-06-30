@@ -28,31 +28,46 @@ type iListRulesResponseBody interface {
 }
 
 type ListRulesResponseBody struct {
+	// The result code. A value of 200 means success. Any other value means failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 20
-	Count *int32                       `json:"Count,omitempty" xml:"Count,omitempty"`
-	Data  []*ListRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The rule list.
+	Data []*ListRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Details about an error if the request failed. If the request succeeded, the value is successful.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number of the rule list.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 82C91484-B2D5-4D2A-A21F-A6D73F**
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. A value of true means success. A value of false or null means failure.
+	//
 	// example:
 	//
 	// true
@@ -153,25 +168,53 @@ func (s *ListRulesResponseBody) Validate() error {
 }
 
 type ListRulesResponseBodyData struct {
+	// The names of business categories associated with the rule.
 	BusinessCategoryNameList []*string `json:"BusinessCategoryNameList,omitempty" xml:"BusinessCategoryNameList,omitempty" type:"Repeated"`
-	Comments                 *string   `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// Comments for the rule.
+	//
+	// example:
+	//
+	// 检测是否出现了禁用语
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The time when the rule was created.
+	//
 	// example:
 	//
 	// 2020-04-20T20:10Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// 禁用语检测
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 1234567
 	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// The rule category. Valid values:
+	//
+	// - 1: Custom rule
+	//
+	// - 0: System-provided rule
+	//
 	// example:
 	//
 	// 1
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The type value of the rule\\"s rule type.
+	//
 	// example:
 	//
 	// 1
-	Type     *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the rule\\"s rule type.
+	//
+	// example:
+	//
+	// 服务规范
 	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }
 

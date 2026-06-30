@@ -22,21 +22,28 @@ type iGetMiningTaskResultResponseBody interface {
 }
 
 type GetMiningTaskResultResponseBody struct {
+	// Result code. **200*	- indicates success. Any other value indicates failure. Use this field to determine the cause of failure.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Quality inspection task ID.
 	Data *GetMiningTaskResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Details of the error if an error occurs. Otherwise, **successful**.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. true means success. false or null means failure.
+	//
 	// example:
 	//
 	// true
@@ -106,19 +113,28 @@ func (s *GetMiningTaskResultResponseBody) Validate() error {
 }
 
 type GetMiningTaskResultResponseBodyData struct {
+	// File path
+	//
 	// example:
 	//
-	// 123.22.com/manger/static/login-back.jpg
-	FilePath     *string                                            `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// 123.22.com/manager/static/login-back.jpg
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// List of returned file paths
 	FilePathList []*GetMiningTaskResultResponseBodyDataFilePathList `json:"FilePathList,omitempty" xml:"FilePathList,omitempty" type:"Repeated"`
+	// Markdown file path
+	//
 	// example:
 	//
-	// 123.22.com/manger/static/login-back.md
+	// 123.22.com/manager/static/login-back.md
 	FilePathMd *string `json:"FilePathMd,omitempty" xml:"FilePathMd,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// 20201231de3d34ec-40fa-4a55-8d27-76ea*****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task status
+	//
 	// example:
 	//
 	// finish
@@ -192,8 +208,18 @@ func (s *GetMiningTaskResultResponseBodyData) Validate() error {
 }
 
 type GetMiningTaskResultResponseBodyDataFilePathList struct {
+	// Generated file type
+	//
+	// example:
+	//
+	// CSV
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Generated file URL
+	//
+	// example:
+	//
+	// http://vxxxcustomer-pop.oss-cn-shanghai.aliyuncs.com/100.csv
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 }
 
 func (s GetMiningTaskResultResponseBodyDataFilePathList) String() string {

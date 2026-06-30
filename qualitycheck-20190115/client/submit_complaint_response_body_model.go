@@ -22,22 +22,32 @@ type iSubmitComplaintResponseBody interface {
 }
 
 type SubmitComplaintResponseBody struct {
+	// The result code. A value of **200*	- indicates success. Other values indicate failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The current quality check score.
+	//
 	// example:
 	//
 	// 90
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response message. If the request is successful, "successful" is returned. If the request fails, an error message is returned.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 82C91484-B2D5-4D2A-A21F-A6D73F4D55C6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of `true` indicates success, and a value of `false` or `null` indicates failure.
+	//
 	// example:
 	//
 	// true

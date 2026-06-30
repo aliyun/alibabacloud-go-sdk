@@ -16,8 +16,10 @@ type iListRulesRequest interface {
 }
 
 type ListRulesRequest struct {
-	// baseMeAgentId
+	// Workspace ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// A JSON string. For the full structure, see the details that follow.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,23 +24,36 @@ type iGetSchemeTaskConfigResponseBody interface {
 }
 
 type GetSchemeTaskConfigResponseBody struct {
+	// Result code. **200*	- means success.
+	//
+	// > Any other value means failure. The caller can use this field to identify the cause.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response data. See the additional notes below.
 	Data *GetSchemeTaskConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error details if the request failed. Returns successful if the request succeeded.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 3CEA0495-341B-4482-9AD9-8191EF4***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Use this field to check the result: true means success, false or null means failure.
+	//
 	// example:
 	//
 	// true
@@ -119,30 +132,92 @@ func (s *GetSchemeTaskConfigResponseBody) Validate() error {
 }
 
 type GetSchemeTaskConfigResponseBodyData struct {
-	AsrTaskPriority *int32                                         `json:"AsrTaskPriority,omitempty" xml:"AsrTaskPriority,omitempty"`
-	AssignType      *int32                                         `json:"AssignType,omitempty" xml:"AssignType,omitempty"`
-	DataConfig      *GetSchemeTaskConfigResponseBodyDataDataConfig `json:"DataConfig,omitempty" xml:"DataConfig,omitempty" type:"Struct"`
+	// Task priority:
+	//
+	// - 0 (low)
+	//
+	// - 1 (medium)
+	//
+	// - 2 (high)
+	//
+	// example:
+	//
+	// 2
+	AsrTaskPriority *int32 `json:"AsrTaskPriority,omitempty" xml:"AsrTaskPriority,omitempty"`
+	// Assignment type
+	//
+	// example:
+	//
+	// 0
+	AssignType *int32 `json:"AssignType,omitempty" xml:"AssignType,omitempty"`
+	// Data configuration
+	DataConfig *GetSchemeTaskConfigResponseBodyDataDataConfig `json:"DataConfig,omitempty" xml:"DataConfig,omitempty" type:"Struct"`
+	// Quality inspection task ID
+	//
 	// example:
 	//
 	// 3
-	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	ManualReview        *int32  `json:"ManualReview,omitempty" xml:"ManualReview,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Manual review
+	//
+	// example:
+	//
+	// 0
+	ManualReview *int32 `json:"ManualReview,omitempty" xml:"ManualReview,omitempty"`
+	// Language model ID
+	//
+	// example:
+	//
+	// cdae396590b*****ec40f3476e274fc
 	ModeCustomizationId *string `json:"ModeCustomizationId,omitempty" xml:"ModeCustomizationId,omitempty"`
-	ModelName           *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Language model name
+	//
+	// example:
+	//
+	// 自定义模型
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Quality inspection task name
+	//
 	// example:
 	//
 	// test
-	Name         *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	SchemeIdList []*int64                                         `json:"SchemeIdList,omitempty" xml:"SchemeIdList,omitempty" type:"Repeated"`
-	SchemeList   []*GetSchemeTaskConfigResponseBodyDataSchemeList `json:"SchemeList,omitempty" xml:"SchemeList,omitempty" type:"Repeated"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Quality inspection scheme IDs
+	SchemeIdList []*int64 `json:"SchemeIdList,omitempty" xml:"SchemeIdList,omitempty" type:"Repeated"`
+	// Quality inspection schemes
+	SchemeList []*GetSchemeTaskConfigResponseBodyDataSchemeList `json:"SchemeList,omitempty" xml:"SchemeList,omitempty" type:"Repeated"`
+	// Quality inspection task ID
+	//
 	// example:
 	//
 	// 123
 	SchemeTaskConfigId *int64 `json:"SchemeTaskConfigId,omitempty" xml:"SchemeTaskConfigId,omitempty"`
+	// Quality inspection result type:
+	//
+	// - 1: offline voice
+	//
+	// - 2: offline text
+	//
+	// - 3: real-time voice
+	//
+	// - 4: real-time text
+	//
+	// - 5: contact center secondary quality inspection
+	//
+	// - 51: call center voice secondary quality inspection
+	//
+	// - 52: call center text secondary quality inspection
+	//
+	// - 11: dataset voice
+	//
+	// - 12: dataset text
+	//
 	// example:
 	//
 	// 1
 	SourceDataType *string `json:"SourceDataType,omitempty" xml:"SourceDataType,omitempty"`
+	// Enable status. Valid values: 0 (disabled) or 1 (enabled)
+	//
 	// example:
 	//
 	// 1
@@ -293,15 +368,22 @@ func (s *GetSchemeTaskConfigResponseBodyData) Validate() error {
 }
 
 type GetSchemeTaskConfigResponseBodyDataDataConfig struct {
+	// Data screening items for on-the-fly recording
 	AssignConfigs []*GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigs `json:"AssignConfigs,omitempty" xml:"AssignConfigs,omitempty" type:"Repeated"`
+	// Dataset task. Manage datasets.
+	//
 	// example:
 	//
 	// []
 	DataSets *string `json:"DataSets,omitempty" xml:"DataSets,omitempty"`
+	// Index number
+	//
 	// example:
 	//
 	// 0
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// JSON text for filtering conditions used in secondary quality inspection. For details, see the request parameters of the GetResult API.
+	//
 	// example:
 	//
 	// {}
@@ -366,6 +448,7 @@ func (s *GetSchemeTaskConfigResponseBodyDataDataConfig) Validate() error {
 }
 
 type GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigs struct {
+	// Parameter matching configurations for on-the-fly recording
 	AssignConfigContests []*GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests `json:"AssignConfigContests,omitempty" xml:"AssignConfigContests,omitempty" type:"Repeated"`
 }
 
@@ -400,19 +483,60 @@ func (s *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigs) Validate() 
 }
 
 type GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests struct {
+	// Type of the value
+	//
+	// - 0: String
+	//
+	// - 1: Number
+	//
+	// - 2: List (use list type for all parameter values when using =)
+	//
+	// - 3: Date
+	//
+	// - 4: List_Json
+	//
 	// example:
 	//
 	// 3
-	DataType   *int32        `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DataType *int32 `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// List of on-the-fly recording data
 	ListObject []interface{} `json:"ListObject,omitempty" xml:"ListObject,omitempty" type:"Repeated"`
+	// Check item name
+	//
 	// example:
 	//
 	// callStartTime
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Operator
+	//
+	// - 1: ==
+	//
+	// - 2: >
+	//
+	// - 3: <
+	//
+	// - 4: range
+	//
+	// - 5: >=
+	//
+	// - 6: <=
+	//
+	// - 7: !=
+	//
+	// - 8: null
+	//
+	// - 9: not null
+	//
+	// - 10: contains
+	//
+	// - 11: does not contain
+	//
 	// example:
 	//
 	// 4
 	Symbol *int32 `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
+	// Matching value for on-the-fly recording data
+	//
 	// example:
 	//
 	// {\\"start\\":\\"2022-09-01 00:00:00\\",\\"end\\":\\"2022-09-30 00:00:00\\"}
@@ -477,7 +601,14 @@ func (s *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigC
 }
 
 type GetSchemeTaskConfigResponseBodyDataSchemeList struct {
+	// Quality inspection scheme name
+	//
+	// example:
+	//
+	// 质检方案B
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Quality inspection scheme ID
+	//
 	// example:
 	//
 	// 158

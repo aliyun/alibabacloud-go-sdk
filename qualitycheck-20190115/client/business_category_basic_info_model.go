@@ -20,10 +20,29 @@ type iBusinessCategoryBasicInfo interface {
 }
 
 type BusinessCategoryBasicInfo struct {
-	Bid  *int32  `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// Business ID
+	//
+	// example:
+	//
+	// 1
+	Bid *int32 `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// Business name
+	//
+	// example:
+	//
+	// 全部
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// originalId
-	OriginalId  *int64 `json:"OriginalId,omitempty" xml:"OriginalId,omitempty"`
+	//
+	// example:
+	//
+	// 1
+	OriginalId *int64 `json:"OriginalId,omitempty" xml:"OriginalId,omitempty"`
+	// Service Type (ServiceCategory).
+	//
+	// example:
+	//
+	// 1
 	ServiceType *int32 `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 

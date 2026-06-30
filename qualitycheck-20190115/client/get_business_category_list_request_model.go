@@ -16,7 +16,14 @@ type iGetBusinessCategoryListRequest interface {
 }
 
 type GetBusinessCategoryListRequest struct {
+	// Workspace ID
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Pass an empty string as the value.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -26,24 +26,36 @@ type iGetRuleV4ResponseBody interface {
 }
 
 type GetRuleV4ResponseBody struct {
+	// Result code. A value of **200*	- indicates success. Other values indicate failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
-	Code *string    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Rule information.
 	Data *RulesInfo `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code returned by the request. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error details if the request failed. Returns **successful*	- if the request succeeded.
+	//
 	// example:
 	//
 	// successful
-	Message  *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Error details if the request failed. Use this field when returning multiple messages.
 	Messages []*string `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Set to true for success. Set to false or null for failure.
+	//
 	// example:
 	//
 	// true

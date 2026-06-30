@@ -16,8 +16,14 @@ type iSyncQualityCheckRequest interface {
 }
 
 type SyncQualityCheckRequest struct {
-	// baseMeAgentId
+	// Workspace ID.
+	//
+	// example:
+	//
+	// 1244721
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Complete JSON string information. See the details below.
+	//
 	// This parameter is required.
 	//
 	// example:

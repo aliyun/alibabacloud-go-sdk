@@ -16,8 +16,10 @@ type iCreateSkillGroupConfigRequest interface {
 }
 
 type CreateSkillGroupConfigRequest struct {
-	// baseMeAgentId
+	// Workspace ID
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// A JSON-formatted string. For details, see the following table.
+	//
 	// This parameter is required.
 	//
 	// example:

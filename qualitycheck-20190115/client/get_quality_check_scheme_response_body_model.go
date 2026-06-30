@@ -26,24 +26,36 @@ type iGetQualityCheckSchemeResponseBody interface {
 }
 
 type GetQualityCheckSchemeResponseBody struct {
+	// The result code. A value of 200 indicates success. Other values indicate failure. Use this code to determine the cause of a failure.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The QualityCheckScheme object. This is the JSON object of the quality check plan. For more information, see [`Description of quality check task objects`](https://help.aliyun.com/document_detail/453292.html).
 	Data *GetQualityCheckSchemeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// If an error occurs, this field provides details about the error. If the request is successful, the value is **successful**.
+	//
 	// example:
 	//
 	// successful
-	Message  *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of returned messages.
 	Messages []*string `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 96138D8D-8D26-4E41-BFF4-77AED1088BBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates success. A value of false or null indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -131,55 +143,92 @@ func (s *GetQualityCheckSchemeResponseBody) Validate() error {
 }
 
 type GetQualityCheckSchemeResponseBodyData struct {
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 1616113198000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The username of the creator.
+	//
 	// example:
 	//
 	// xxx
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// The data type of the quality check plan. Valid values: 0 (text) and 1 (audio).
+	//
 	// example:
 	//
 	// 1
-	DataType    *int32  `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DataType *int32 `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// 售前使用
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InitScore   *string `json:"InitScore,omitempty" xml:"InitScore,omitempty"`
+	// The total score of the quality check plan.
+	//
+	// example:
+	//
+	// 100
+	InitScore *string `json:"InitScore,omitempty" xml:"InitScore,omitempty"`
+	// The name of the quality check plan.
+	//
 	// example:
 	//
 	// xxx
-	Name                *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	RuleIds             []*string                                                   `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
-	RuleList            []*RulesInfo                                                `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of associated rule IDs.
+	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	// The list of rules.
+	RuleList []*RulesInfo `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+	// The list of quality check dimensions.
 	SchemeCheckTypeList []*GetQualityCheckSchemeResponseBodyDataSchemeCheckTypeList `json:"SchemeCheckTypeList,omitempty" xml:"SchemeCheckTypeList,omitempty" type:"Repeated"`
+	// The quality check plan ID.
+	//
 	// example:
 	//
 	// 112**
 	SchemeId *int64 `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
+	// The quality check plan template ID.
+	//
 	// example:
 	//
 	// 1
 	SchemeTemplateId *int64 `json:"SchemeTemplateId,omitempty" xml:"SchemeTemplateId,omitempty"`
+	// The status. Valid values: 0 (deleted), 1 (published), 2 (unpublished), and 3 (updated but not published). Default value: 2.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the quality check plan template. Valid values: 1 (system-built) and 2 (custom).
+	//
 	// example:
 	//
 	// 1
 	TemplateType *int32 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The type of the quality check plan. Valid values: 0 (system-built) and 1 (custom).
+	//
 	// example:
 	//
 	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the plan was last updated.
+	//
 	// example:
 	//
 	// 1616113198000
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The username of the user who last updated the plan.
+	//
 	// example:
 	//
 	// xxx
 	UpdateUserName *string `json:"UpdateUserName,omitempty" xml:"UpdateUserName,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1616113198000
@@ -370,23 +419,38 @@ func (s *GetQualityCheckSchemeResponseBodyData) Validate() error {
 }
 
 type GetQualityCheckSchemeResponseBodyDataSchemeCheckTypeList struct {
+	// The name of the quality check dimension.
+	//
+	// example:
+	//
+	// 服务规范性检测
 	CheckName *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
+	// The ID of the quality check dimension type.
+	//
 	// example:
 	//
 	// 0
 	CheckType *int64 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	// The status. Valid values: 0 (disabled) and 1 (enabled).
+	//
 	// example:
 	//
 	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The quality check plan ID.
+	//
 	// example:
 	//
 	// 32
 	SchemeId *int64 `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
+	// The score of the quality check dimension.
+	//
 	// example:
 	//
 	// 20
 	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The original score.
+	//
 	// example:
 	//
 	// 10

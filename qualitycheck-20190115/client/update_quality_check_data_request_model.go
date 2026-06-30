@@ -17,7 +17,13 @@ type iUpdateQualityCheckDataRequest interface {
 
 type UpdateQualityCheckDataRequest struct {
 	// baseMeAgentId
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Complete JSON string containing detailed information. For specific content, see the details below.
+	//
 	// This parameter is required.
 	//
 	// example:

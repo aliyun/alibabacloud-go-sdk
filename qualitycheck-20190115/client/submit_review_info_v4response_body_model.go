@@ -20,20 +20,26 @@ type iSubmitReviewInfoV4ResponseBody interface {
 }
 
 type SubmitReviewInfoV4ResponseBody struct {
+	// Result code. Use this field to identify failure causes.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error details if the request failed. Returns **successful*	- if the request succeeded.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. true = success, false or null = failure
+	//
 	// example:
 	//
 	// true

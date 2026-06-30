@@ -16,10 +16,14 @@ type iGetMiningTaskResultRequest interface {
 }
 
 type GetMiningTaskResultRequest struct {
+	// Workspace ID
+	//
 	// example:
 	//
 	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24***

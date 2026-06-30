@@ -22,22 +22,32 @@ type iUploadDataResponseBody interface {
 }
 
 type UploadDataResponseBody struct {
+	// Result code. **200*	- means success. Any other value means failure. Use this field to diagnose failures.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Task ID for this request.
+	//
 	// example:
 	//
 	// 6F5934C7-C223-4F0F-BBF3-5B3594***
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error details if the request failed. Returns successful if the request succeeded.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID. A unique identifier for this request. Use it to trace the request.
+	//
 	// example:
 	//
 	// 6F5934C7-C223-4F0F-BBF3-5B3594****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. true means success. false or null means failure.
+	//
 	// example:
 	//
 	// true

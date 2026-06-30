@@ -24,23 +24,34 @@ type iTestRuleV4ResponseBody interface {
 }
 
 type TestRuleV4ResponseBody struct {
+	// Result code. 200 indicates success. Other values indicate failure. Callers can use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Full response body.
 	Data *TestRuleV4ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error details when an error occurs. Returns successful when the request succeeds.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 96138D8D-XXXX-4E41-XXXX-77AED1088BBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Callers can use this field to determine success: true means success; false or null means failure.
+	//
 	// example:
 	//
 	// true
@@ -119,8 +130,11 @@ func (s *TestRuleV4ResponseBody) Validate() error {
 }
 
 type TestRuleV4ResponseBodyData struct {
-	HitRuleReviewInfoList   []*TestRuleV4ResponseBodyDataHitRuleReviewInfoList   `json:"HitRuleReviewInfoList,omitempty" xml:"HitRuleReviewInfoList,omitempty" type:"Repeated"`
-	HitTaskFlowList         []*TestRuleV4ResponseBodyDataHitTaskFlowList         `json:"HitTaskFlowList,omitempty" xml:"HitTaskFlowList,omitempty" type:"Repeated"`
+	// Information about hit check items.
+	HitRuleReviewInfoList []*TestRuleV4ResponseBodyDataHitRuleReviewInfoList `json:"HitRuleReviewInfoList,omitempty" xml:"HitRuleReviewInfoList,omitempty" type:"Repeated"`
+	// List of hit advanced flow nodes.
+	HitTaskFlowList []*TestRuleV4ResponseBodyDataHitTaskFlowList `json:"HitTaskFlowList,omitempty" xml:"HitTaskFlowList,omitempty" type:"Repeated"`
+	// Information about rules that were not hit.
 	UnhitRuleReviewInfoList []*TestRuleV4ResponseBodyDataUnhitRuleReviewInfoList `json:"UnhitRuleReviewInfoList,omitempty" xml:"UnhitRuleReviewInfoList,omitempty" type:"Repeated"`
 }
 
@@ -191,39 +205,68 @@ func (s *TestRuleV4ResponseBodyData) Validate() error {
 }
 
 type TestRuleV4ResponseBodyDataHitRuleReviewInfoList struct {
+	// ID of the hit branch.
+	//
 	// example:
 	//
 	// 1
-	BranchHitId          *int64                                                                 `json:"BranchHitId,omitempty" xml:"BranchHitId,omitempty"`
-	BranchInfoList       []*TestRuleV4ResponseBodyDataHitRuleReviewInfoListBranchInfoList       `json:"BranchInfoList,omitempty" xml:"BranchInfoList,omitempty" type:"Repeated"`
+	BranchHitId *int64 `json:"BranchHitId,omitempty" xml:"BranchHitId,omitempty"`
+	// List of branch information.
+	BranchInfoList []*TestRuleV4ResponseBodyDataHitRuleReviewInfoListBranchInfoList `json:"BranchInfoList,omitempty" xml:"BranchInfoList,omitempty" type:"Repeated"`
+	// Information about hit conditions.
 	ConditionHitInfoList []*TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoList `json:"ConditionHitInfoList,omitempty" xml:"ConditionHitInfoList,omitempty" type:"Repeated"`
-	ConditionInfoList    []*ConditionBasicInfo                                                  `json:"ConditionInfoList,omitempty" xml:"ConditionInfoList,omitempty" type:"Repeated"`
-	JudgeNodeName        *string                                                                `json:"JudgeNodeName,omitempty" xml:"JudgeNodeName,omitempty"`
+	// List of conditions.
+	ConditionInfoList []*ConditionBasicInfo `json:"ConditionInfoList,omitempty" xml:"ConditionInfoList,omitempty" type:"Repeated"`
+	// Judgement node name.
+	//
+	// example:
+	//
+	// 判断节点A
+	JudgeNodeName *string `json:"JudgeNodeName,omitempty" xml:"JudgeNodeName,omitempty"`
+	// Lambda expression. Example: a&\\&b.
+	//
 	// example:
 	//
 	// a&&b
 	Lambda *string `json:"Lambda,omitempty" xml:"Lambda,omitempty"`
+	// Whether the rule was hit.
+	//
 	// example:
 	//
 	// true
 	Matched *bool `json:"Matched,omitempty" xml:"Matched,omitempty"`
+	// Node type.
+	//
 	// example:
 	//
 	// 0
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// Check item ID.
+	//
 	// example:
 	//
 	// 451
-	Rid      *int64  `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// Rule name.
+	//
+	// example:
+	//
+	// 规则A
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// Whether scoring applies. Valid values: 1 (no scoring) and 3 (scoring).
+	//
 	// example:
 	//
 	// 1
 	RuleScoreType *int32 `json:"RuleScoreType,omitempty" xml:"RuleScoreType,omitempty"`
+	// Scoring type. Valid values: 0 (add or subtract points on hit) and 1 (one-time score on hit).
+	//
 	// example:
 	//
 	// 1
 	ScoreNumType *int32 `json:"ScoreNumType,omitempty" xml:"ScoreNumType,omitempty"`
+	// Flow ID.
+	//
 	// example:
 	//
 	// 1
@@ -387,25 +430,40 @@ func (s *TestRuleV4ResponseBodyDataHitRuleReviewInfoList) Validate() error {
 }
 
 type TestRuleV4ResponseBodyDataHitRuleReviewInfoListBranchInfoList struct {
+	// Check item type.
+	//
 	// example:
 	//
 	// 0
 	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	// Index number.
+	//
 	// example:
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// Lambda expression.
+	//
 	// example:
 	//
 	// a&&b
 	Lambda *string `json:"Lambda,omitempty" xml:"Lambda,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Node name.
+	//
+	// example:
+	//
+	// 节点A
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// ID of the next flow node.
+	//
 	// example:
 	//
 	// 2
-	NextNodeId *int64              `json:"NextNodeId,omitempty" xml:"NextNodeId,omitempty"`
-	Situation  *NextNodeSituations `json:"Situation,omitempty" xml:"Situation,omitempty"`
-	Triggers   []*string           `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+	NextNodeId *int64 `json:"NextNodeId,omitempty" xml:"NextNodeId,omitempty"`
+	// Flow node condition.
+	Situation *NextNodeSituations `json:"Situation,omitempty" xml:"Situation,omitempty"`
+	// List of trigger IDs.
+	Triggers []*string `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
 
 func (s TestRuleV4ResponseBodyDataHitRuleReviewInfoListBranchInfoList) String() string {
@@ -489,9 +547,12 @@ func (s *TestRuleV4ResponseBodyDataHitRuleReviewInfoListBranchInfoList) Validate
 }
 
 type TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoList struct {
-	Cid      []*string                                                                      `json:"Cid,omitempty" xml:"Cid,omitempty" type:"Repeated"`
+	// Condition ID.
+	Cid []*string `json:"Cid,omitempty" xml:"Cid,omitempty" type:"Repeated"`
+	// Key information that was hit. This information appears highlighted on the review page. Examples include keywords matched by a keyword-check operator or category information matched by an agent-model-check operator.
 	KeyWords []*TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListKeyWords `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
-	Phrase   *TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListPhrase     `json:"Phrase,omitempty" xml:"Phrase,omitempty" type:"Struct"`
+	// Sentence details for the current hit check item.
+	Phrase *TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListPhrase `json:"Phrase,omitempty" xml:"Phrase,omitempty" type:"Struct"`
 }
 
 func (s TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoList) String() string {
@@ -548,32 +609,72 @@ func (s *TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoList) Va
 }
 
 type TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListKeyWords struct {
+	// Condition ID.
+	//
 	// example:
 	//
 	// 4
-	Cid           *string `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	Cid *string `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	// Internal field. Ignore this field.
+	//
+	// example:
+	//
+	// 无
 	CustomizeCode *string `json:"CustomizeCode,omitempty" xml:"CustomizeCode,omitempty"`
+	// Starting character position for highlighting. Index starts at 0. Maximum value is the total number of characters in the sentence minus 1. The character at position from is included in the highlight.
+	//
 	// example:
 	//
 	// 1
 	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
+	// Operator ID.
+	//
 	// example:
 	//
 	// 123
-	Oid         *string `json:"Oid,omitempty" xml:"Oid,omitempty"`
+	Oid *string `json:"Oid,omitempty" xml:"Oid,omitempty"`
+	// Key information matched by the operator.
+	//
+	// example:
+	//
+	// 无
 	OperatorKey *string `json:"OperatorKey,omitempty" xml:"OperatorKey,omitempty"`
+	// Index of this sentence in the full list of sentences. This is the index of the sentence in the dialogues array of the request parameters, starting from 0.
+	//
 	// example:
 	//
 	// 13
-	Pid           *int32  `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Pid *int32 `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// Similar phrase.
+	//
+	// example:
+	//
+	// 您好
 	SimilarPhrase *string `json:"SimilarPhrase,omitempty" xml:"SimilarPhrase,omitempty"`
-	Tid           *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// Internal use only. Ignore this field.
+	//
+	// example:
+	//
+	// 无
+	Tid *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The position of the character that follows the highlighted keyword. The character at the \\`to\\` position is not included in the highlight. For example, if \\`from\\` is 0 and \\`to\\` is 3, the highlighted keyword consists of the characters at indices 0, 1, and 2. The maximum value is one less than the total number of characters in the sentence.
+	//
 	// example:
 	//
 	// 3
-	To   *int32  `json:"To,omitempty" xml:"To,omitempty"`
+	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
+	// Internal use only. Ignore this field.
+	//
+	// example:
+	//
+	// 无
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	Val  *string `json:"Val,omitempty" xml:"Val,omitempty"`
+	// Key information matched by the operator. For details, see **Detailed explanation of Val key information*	- in the response parameter description below.
+	//
+	// example:
+	//
+	// 你好
+	Val *string `json:"Val,omitempty" xml:"Val,omitempty"`
 }
 
 func (s TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListKeyWords) String() string {
@@ -688,53 +789,112 @@ func (s *TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListKeyW
 }
 
 type TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListPhrase struct {
+	// Start time offset of this sentence relative to the start of the full dialogue, in milliseconds. For example, if the total audio duration is 2 minutes and 10 seconds, and a customer starts speaking at 1 minute and 12 seconds and finishes at 1 minute and 20 seconds, then begin equals 72000 and end equals 80000.
+	//
 	// example:
 	//
 	// 72000
 	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// Start time of this sentence. Example: 2019-11-25 15:37:16.
+	//
 	// example:
 	//
 	// 2019-11-25 15:37:16
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// Channel ID.
+	//
 	// example:
 	//
 	// 0
-	ChannelId               *int32 `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ChannelId *int32 `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Internal use only. Ignore this field.
+	//
+	// example:
+	//
+	// 忽略
 	EmotionFineGrainedValue *int32 `json:"EmotionFineGrainedValue,omitempty" xml:"EmotionFineGrainedValue,omitempty"`
+	// Emotion intensity score. Value equals volume in decibels divided by 10. Valid range: [1, 10]. Higher values indicate stronger emotion.
+	//
 	// example:
 	//
 	// 7
 	EmotionValue *int32 `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
+	// End time offset of this sentence relative to the start of the full dialogue, in milliseconds. For example, if the total audio duration is 2 minutes and 10 seconds, and a customer starts speaking at 1 minute and 12 seconds and finishes at 1 minute and 20 seconds, then begin equals 72000 and end equals 80000.
+	//
 	// example:
 	//
 	// 80000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	// Hit status. Valid values:
+	//
+	// - **0**: Not hit
+	//
+	// - **1**: Hit
+	//
 	// example:
 	//
 	// 1
 	HitStatus *int32 `json:"HitStatus,omitempty" xml:"HitStatus,omitempty"`
+	// Start time of this sentence in hh:mm:ss format.
+	//
 	// example:
 	//
 	// 10:00:00
 	HourMinSec *string `json:"HourMinSec,omitempty" xml:"HourMinSec,omitempty"`
-	Identity   *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	// Role identifier. In offline voice scenarios, roles are limited to agent or customer. In offline text quality check scenarios, this field shows the identity value passed in during upload.
+	//
+	// example:
+	//
+	// 客服
+	Identity *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	// Index of this sentence in the full list of sentences. This is the index of the sentence in the dialogues array of the request parameters, starting from 0.
+	//
 	// example:
 	//
 	// 3
-	Pid      *int32  `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	RenterId *int64  `json:"RenterId,omitempty" xml:"RenterId,omitempty"`
-	Role     *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Sid      *int64  `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	Pid *int32 `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// Internal use only. Ignore this field.
+	//
+	// example:
+	//
+	// 无
+	RenterId *int64 `json:"RenterId,omitempty" xml:"RenterId,omitempty"`
+	// Speaker role for this sentence. Valid values: agent and customer.
+	//
+	// example:
+	//
+	// 客服
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Internal use only. Ignore this field.
+	//
+	// example:
+	//
+	// 无
+	Sid *int64 `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	// Silence duration, in milliseconds.
+	//
 	// example:
 	//
 	// 1000
 	SilenceDuration *int32 `json:"SilenceDuration,omitempty" xml:"SilenceDuration,omitempty"`
+	// Average speech rate for this sentence, in words per minute.
+	//
 	// example:
 	//
 	// 100
-	SpeechRate *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	Words      *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// Internal use only. Ignore this field.
+	//
+	// example:
+	//
+	// 无
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// Dialogue content.
+	//
+	// example:
+	//
+	// 你好，请问有什么可以帮您
+	Words *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListPhrase) String() string {
@@ -903,11 +1063,19 @@ func (s *TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListPhra
 }
 
 type TestRuleV4ResponseBodyDataHitTaskFlowList struct {
+	// Flowchart canvas.
 	GraphFlow *TaskGraphFlow `json:"GraphFlow,omitempty" xml:"GraphFlow,omitempty"`
+	// Rule ID.
+	//
 	// example:
 	//
 	// 1
-	Rid          *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// Flowchart type. Deprecated. Default value: 1.
+	//
+	// example:
+	//
+	// 无
 	TaskFlowType *int32 `json:"TaskFlowType,omitempty" xml:"TaskFlowType,omitempty"`
 }
 
@@ -956,15 +1124,25 @@ func (s *TestRuleV4ResponseBodyDataHitTaskFlowList) Validate() error {
 }
 
 type TestRuleV4ResponseBodyDataUnhitRuleReviewInfoList struct {
+	// List of conditions.
 	ConditionInfoList []*ConditionBasicInfo `json:"ConditionInfoList,omitempty" xml:"ConditionInfoList,omitempty" type:"Repeated"`
+	// Whether the rule was hit.
+	//
 	// example:
 	//
 	// true
 	Matched *bool `json:"Matched,omitempty" xml:"Matched,omitempty"`
+	// The ID of the rule.
+	//
 	// example:
 	//
 	// 2
-	Rid          *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+	// Flowchart type. Deprecated. Default value: 1.
+	//
+	// example:
+	//
+	// 忽略
 	TaskFlowType *int32 `json:"TaskFlowType,omitempty" xml:"TaskFlowType,omitempty"`
 }
 

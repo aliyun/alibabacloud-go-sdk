@@ -38,45 +38,72 @@ type iListRulesV4ResponseBody interface {
 }
 
 type ListRulesV4ResponseBody struct {
+	// Business type. This field has no practical use. Ignore it.
+	//
+	// example:
+	//
+	// 无
 	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// Result code. **200*	- means success. Any other value means failure. Callers can use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 219
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 10
-	CurrentPage *int32           `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data        []*RuleCountInfo `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Response data.
+	Data []*RuleCountInfo `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error details if the request failed. Returns **successful*	- if the request succeeded.
+	//
 	// example:
 	//
 	// successful
-	Message  *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Error details if the request failed. Use this field when multiple messages are returned.
 	Messages []*string `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of rows per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 96138D8D-8D26-4E41-BFF4-77AED1088BBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Callers can use this field to determine success: true means success. **false*	- or **null*	- means failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 219

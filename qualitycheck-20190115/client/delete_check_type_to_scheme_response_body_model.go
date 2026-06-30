@@ -24,23 +24,34 @@ type iDeleteCheckTypeToSchemeResponseBody interface {
 }
 
 type DeleteCheckTypeToSchemeResponseBody struct {
+	// The result code. A value of **200*	- indicates that the request was successful. Other values indicate that the request failed.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// 48864
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message returned. If the request is successful, \\`successful\\` is returned. If the request fails, an error message is returned.
+	//
 	// example:
 	//
 	// successful
-	Message  *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of returned messages.
 	Messages []*string `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F190ADE9-619A-447D-84E3-7E241A5C428E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates success. A value of false or null indicates failure.
+	//
 	// example:
 	//
 	// true

@@ -16,9 +16,14 @@ type iUpdateCheckTypeToSchemeRequest interface {
 }
 
 type UpdateCheckTypeToSchemeRequest struct {
-	// baseMeAgentId
-	BaseMeAgentId *int64  `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	JsonStr       *string `json:"jsonStr,omitempty" xml:"jsonStr,omitempty"`
+	// The baseMeAgentId.
+	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// Input parameter in JSON format. For more information, see the request parameters.
+	//
+	// example:
+	//
+	// {"schemeId":"187","checkName":"服务规范性检测2","sourceScore":20,"checkType":0}
+	JsonStr *string `json:"jsonStr,omitempty" xml:"jsonStr,omitempty"`
 }
 
 func (s UpdateCheckTypeToSchemeRequest) String() string {

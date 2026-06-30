@@ -22,19 +22,32 @@ type iGetAsrVocabResponseBody interface {
 }
 
 type GetAsrVocabResponseBody struct {
+	// The result code. A value of **200*	- means success. Any other value means failure. Use this field to identify the cause of failure.
+	//
 	// example:
 	//
 	// 200
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *GetAsrVocabResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error details if the request fails. If successful, the value is **successful**.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3CEA0495-341B-4482-9AD9-8191EF4***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Use this field to check the result:
+	//
+	// - **true*	- means success
+	//
+	// - false or **null*	- means failure
+	//
 	// example:
 	//
 	// true
@@ -104,8 +117,24 @@ func (s *GetAsrVocabResponseBody) Validate() error {
 }
 
 type GetAsrVocabResponseBodyData struct {
-	AsrVersion           *int32  `json:"AsrVersion,omitempty" xml:"AsrVersion,omitempty"`
+	// The ASR version.
+	//
+	// - 2 or **null**: V2 (Intelligent Speech Interaction ASR)
+	//
+	// - **3**: V3 (Paraformer ASR)
+	//
+	// example:
+	//
+	// 3
+	AsrVersion *int32 `json:"AsrVersion,omitempty" xml:"AsrVersion,omitempty"`
+	// The language model ID. This field appears only for V3.
+	//
+	// example:
+	//
+	// paraformer-8k-v2
 	ModelCustomizationId *string `json:"ModelCustomizationId,omitempty" xml:"ModelCustomizationId,omitempty"`
+	// The hotword group name.
+	//
 	// example:
 	//
 	// test
