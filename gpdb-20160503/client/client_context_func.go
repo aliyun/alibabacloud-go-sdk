@@ -2353,6 +2353,50 @@ func (client *Client) CreateJDBCDataSourceWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 创建模型算子 API KEY
+//
+// @param request - CreateModelOperatorApiKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelOperatorApiKeyResponse
+func (client *Client) CreateModelOperatorApiKeyWithContext(ctx context.Context, request *CreateModelOperatorApiKeyRequest, runtime *dara.RuntimeOptions) (_result *CreateModelOperatorApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateModelOperatorApiKey"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateModelOperatorApiKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a model service.
 //
 // Description:
@@ -8415,6 +8459,132 @@ func (client *Client) DescribeLogBackupsWithContext(ctx context.Context, request
 
 // Summary:
 //
+// 获取模型算子 API KEY 详情
+//
+// @param request - DescribeModelOperatorApiKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeModelOperatorApiKeyResponse
+func (client *Client) DescribeModelOperatorApiKeyWithContext(ctx context.Context, request *DescribeModelOperatorApiKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribeModelOperatorApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["ApiKeyId"] = request.ApiKeyId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeModelOperatorApiKey"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeModelOperatorApiKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取模型算子用量
+//
+// @param tmpReq - DescribeModelOperatorUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeModelOperatorUsageResponse
+func (client *Client) DescribeModelOperatorUsageWithContext(ctx context.Context, tmpReq *DescribeModelOperatorUsageRequest, runtime *dara.RuntimeOptions) (_result *DescribeModelOperatorUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribeModelOperatorUsageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ApiKeyIds) {
+		request.ApiKeyIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApiKeyIds, dara.String("ApiKeyIds"), dara.String("simple"))
+	}
+
+	if !dara.IsNil(tmpReq.Keys) {
+		request.KeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Keys, dara.String("Keys"), dara.String("simple"))
+	}
+
+	if !dara.IsNil(tmpReq.ModelNames) {
+		request.ModelNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ModelNames, dara.String("ModelNames"), dara.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyIdsShrink) {
+		query["ApiKeyIds"] = request.ApiKeyIdsShrink
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.GroupBy) {
+		query["GroupBy"] = request.GroupBy
+	}
+
+	if !dara.IsNil(request.KeysShrink) {
+		query["Keys"] = request.KeysShrink
+	}
+
+	if !dara.IsNil(request.ModelNamesShrink) {
+		query["ModelNames"] = request.ModelNamesShrink
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeModelOperatorUsage"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeModelOperatorUsageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a model service.
 //
 // Description:
@@ -12367,6 +12537,102 @@ func (client *Client) ListInstanceExtensionsWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInstanceExtensionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取模型算子 API KEY 列表
+//
+// @param request - ListModelOperatorApiKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelOperatorApiKeysResponse
+func (client *Client) ListModelOperatorApiKeysWithContext(ctx context.Context, request *ListModelOperatorApiKeysRequest, runtime *dara.RuntimeOptions) (_result *ListModelOperatorApiKeysResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModelOperatorApiKeys"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelOperatorApiKeysResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取模型服务列表
+//
+// @param request - ListModelOperatorServicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelOperatorServicesResponse
+func (client *Client) ListModelOperatorServicesWithContext(ctx context.Context, request *ListModelOperatorServicesRequest, runtime *dara.RuntimeOptions) (_result *ListModelOperatorServicesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModelOperatorServices"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelOperatorServicesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
